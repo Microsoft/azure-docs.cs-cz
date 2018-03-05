@@ -100,6 +100,8 @@
           href: disk-scalability-targets.md
         - name: Zálohování a zotavení po havárii pro disky
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Řešení potíží s připojenými virtuálními pevnými disky
+          href: troubleshoot-vhds.md
     - name: Sítě
       href: network-overview.md
     - name: Automatické škálování aplikací

@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/14/2018
   ms.author: mimig
-  ms.openlocfilehash: c5a09b76eee27300a7814bba69c5b73f5b2e5aad
-  ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+  ms.openlocfilehash: 556b60d6489f51e23d09290906b3e0d24b72cbdc
+  ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/22/2018
+  ms.lasthandoff: 03/02/2018
 abstract:
   description: "Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů. Tyto Rychlé starty, kurzy a ukázky vám pomůžou s vývojem databází dokumentů, párů klíč-hodnota, širokých sloupců a grafů s použitím oblíbených rozhraní API a programovacích modelů. Potom se naučíte replikovat data do libovolného počtu oblastí Azure a škálovat propustnost nezávisle na úložišti s využitím výhod komplexních smluv SLA."
   aside:
@@ -112,7 +112,7 @@ sections:
     className: cardsD
     items:
     - title: "Rozhraní SQL API"
-      html: "<p><a href=\"/rest/api/documentdb/\">REST</a></p><p><a href=\"https://aka.ms/acdbnetref\">.NET</a></p><p><a href=\"sql-api-sdk-dotnet-changefeed\">Kanál změn .NET</a></p><p><a href=\"https://aka.ms/acdbnetcoreref\">.NET Core</a></p><p><a href=\"https://aka.ms/acdbnoderef\">Node.js</a></p><p><a href=\"https://aka.ms/acdbjavaref\">Java</a></p><p><a href=\"https://aka.ms/acdbpythonref\">Python</a></p><p><a href=\"/rest/api/documentdbresourceprovider/\">Poskytovatel prostředků REST</a></p><p><a href=\"sql-api-sql-query-reference\">SQL</a></p>"
+      html: "<p><a href=\"sql-api-sdk-dotnet\">.NET</a></p><p><a href=\"sql-api-sdk-dotnet-changefeed\">Kanál změn .NET</a></p><p><a href=\"sql-api-sdk-dotnet-core\">.NET Core</a></p><p><a href=\"sql-api-sdk-node\">Node.js</a></p><p><a href=\"sql-api-sdk-async-java\">Async Java</a></p><p><a href=\"sql-api-sdk-java\">Java</a></p><p><a href=\"sql-api-sdk-python\">Python</a></p><p><a href=\"/rest/api/documentdb/\">REST</a></p><p><a href=\"/rest/api/documentdbresourceprovider/\">Poskytovatel prostředků REST</a></p><p><a href=\"sql-api-sql-query-reference\">SQL</a></p>"
     - title: "Rozhraní MongoDB API"
       html: <p><a href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">Wire Protocol</a></p><p><a href="https://mongodb.github.io/node-mongodb-native/ ">Node.js</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>
     - title: "Rozhraní Table API"

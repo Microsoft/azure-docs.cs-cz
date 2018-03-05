@@ -4,10 +4,9 @@
 ## [Bash – rychlý start](quickstart.md)
 ## [PowerShell – rychlý start](quickstart-powershell.md)
 
-# Koncepty
+# Funkce a nástroje
 ## [Bash – funkce a nástroje](features.md)
 ## [PowerShell – funkce a nástroje](features-powershell.md)
-## [Omezení](limitations.md)
 
 # Postupy
 ## [Bash – zachování úložiště](persisting-shell-storage.md)
@@ -20,7 +19,7 @@
 
 # [Vložení služby Cloud Shell](embed-cloud-shell.md)
 
-# [Řešení potíží](troubleshooting.md)
+# [Řešení potíží a omezení](troubleshooting.md)
 
 # Referenční informace
 ## [Azure CLI](/cli/azure)
