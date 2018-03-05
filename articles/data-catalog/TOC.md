@@ -1,3 +1,5 @@
+# [Dokumentace ke službě Data Catalog](index.md)
+
 # Přehled
 ## [Co je Data Catalog?](data-catalog-what-is-data-catalog.md)
 ## [Obvyklé scénáře](data-catalog-common-scenarios.md)
@@ -29,7 +31,7 @@
 ## [Reference k syntaxi služby Search](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [Koncepce pro vývojáře](data-catalog-developer-concepts.md)
 
-# Zdroje
+# Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
 ## [Klávesové zkratky pro Azure Data Catalog](data-catalog-keyboard-shortcuts.md)
 ## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)

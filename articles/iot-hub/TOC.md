@@ -1,3 +1,5 @@
+# [Dokumentace ke službě IoT Hub](index.md)
+
 # Přehled
 ## [Azure a IoT](iot-hub-what-is-azure-iot.md)
 ## [Co je Azure IoT Hub?](iot-hub-what-is-iot-hub.md)

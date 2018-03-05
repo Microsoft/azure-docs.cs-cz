@@ -1,3 +1,5 @@
+# [Dokumentace ke službě StorSimple](index.md)
+
 # StorSimple Virtual Array
 
 ## Přehled

@@ -1,3 +1,5 @@
+# [Dokumentace k sadě IoT Suite](index.md)
+
 # Přehled
 ## [Koncepce architektury IoT](iot-suite-what-is-azure-iot.md)
 ## [Porovnání možností Azure IoT](iot-suite-options.md)
