@@ -1,3 +1,5 @@
+# [Dokumentace ke službě Azure Resource Manager](index.md)
+
 # Přehled
 ## [Co je Resource Manager?](resource-group-overview.md)
 ## [Poskytovatelé a typy prostředků](resource-manager-supported-services.md)
@@ -43,13 +45,11 @@
 ### [Azure PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
 ### [portál Azure Portal](resource-group-portal.md)
-### [REST API](resource-manager-rest-api.md)
 ### [Použití značek k uspořádání prostředků](resource-group-using-tags.md)
 ### [Přesunutí prostředků do nové skupiny nebo předplatného](resource-group-move-resources.md)
 ### [Vytvoření skupin pro správu](management-groups-create.md)
 ### [Správa skupin pro správu](management-groups-manage.md)
 ### [Příklady zásad správného řízení](resource-manager-subscription-examples.md)
-### [Spravované aplikace](../managed-applications/overview.md)
 
 ## Řízení přístupu
 ### Vytvoření instančního objektu

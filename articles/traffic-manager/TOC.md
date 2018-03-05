@@ -1,3 +1,5 @@
+# [Dokumentace ke službě Traffic Manager](index.md)
+
 # Přehled
 ## [Co je Traffic Manager?](traffic-manager-overview.md)
 ## [Metody směrování](traffic-manager-routing-methods.md)
@@ -49,7 +51,7 @@
 # Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://azure.microsoft.com/blog/topics/networking/)
-## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
+## [Fórum na webu MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Ceny](https://azure.microsoft.com/pricing/details/traffic-manager/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Omezení služby](../azure-subscription-service-limits.md#traffic-manager-limits)

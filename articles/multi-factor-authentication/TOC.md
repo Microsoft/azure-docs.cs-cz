@@ -1,3 +1,5 @@
+# [Dokumentace ke službě Multi-factor Authentication](index.md)
+
 # Přehled
 ## [Co je Azure Multi-Factor Authentication?](multi-factor-authentication.md)
 ## [Jak to funguje](multi-factor-authentication-how-it-works.md)

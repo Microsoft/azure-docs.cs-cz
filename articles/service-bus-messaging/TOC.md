@@ -1,3 +1,5 @@
+# [Dokumentace k zasílání zpráv služby Service Bus](index.md)
+
 # Přehled
 ## [Co je Service Bus Messaging?](service-bus-messaging-overview.md)
 ## [Základy služby Service Bus](service-bus-fundamentals-hybrid-solutions.md)

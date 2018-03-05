@@ -1,3 +1,5 @@
+# [Dokumentace ke službě Notification Hubs](index.md)
+
 # Přehled
 ## [Co je Azure Notification Hubs](notification-hubs-push-notification-overview.md)
 # Začínáme

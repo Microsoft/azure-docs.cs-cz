@@ -1,3 +1,5 @@
+# [Dokumentace k DevTest Labs](index.md)
+
 # Přehled
 ## [Služba Azure Devtest Labs](devtest-lab-overview.md)
 ## [Koncepty](devtest-lab-concepts.md)
@@ -65,7 +67,7 @@
 ## Integrace s CI/CD
 ### [Integrace testovacího prostředí do kanálu CI/CD VSTS](devtest-lab-integrate-ci-cd-vsts.md)
 
-# Odkaz
+# Referenční informace
 ## [CLI 2.0](/cli/azure/lab)
 ## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [Automatická tvorba a úpravy testovacích prostředí](devtest-lab-use-arm-and-powershell-for-lab-resources.md)

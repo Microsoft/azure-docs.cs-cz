@@ -1,3 +1,5 @@
+# [Dokumentace ke službě Service Bus Relay](index.md)
+
 # Přehled
 ## [Co je Relay?](relay-what-is-it.md)
 ## [Nejčastější dotazy](relay-faq.md)

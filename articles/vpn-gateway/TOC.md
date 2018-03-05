@@ -1,3 +1,5 @@
+# [Dokumentace ke službě VPN Gateway](index.md)
+
 # Přehled
 ## [Informace o službě VPN Gateway](vpn-gateway-about-vpngateways.md)
 ## [VPN Gateway – nejčastější dotazy](vpn-gateway-vpn-faq.md)

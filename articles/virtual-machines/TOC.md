@@ -1,3 +1,5 @@
+# [Dokumentace ke službě Virtual Machines](index.md)
+
 # [Virtuální počítače s Linuxem](linux/overview.md)
 # [Virtuální počítače s Windows](windows/overview.md)
 # [Virtuální počítače s Linuxem používající nasazení Classic](linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)

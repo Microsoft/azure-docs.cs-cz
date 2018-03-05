@@ -1,3 +1,5 @@
+# [Dokumentace ke službě Application Gateway](index.md)
+
 # Přehled
 ## [Co je Application Gateway?](application-gateway-introduction.md)
 ## [Nejčastější dotazy k Application Gateway](application-gateway-faq.md)

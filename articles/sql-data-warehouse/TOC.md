@@ -1,3 +1,5 @@
+# [Dokumentace ke službě SQL Data Warehouse](index.md)
+
 # Přehled
 
 ## [Informace o službě SQL Data Warehouse](sql-data-warehouse-overview-what-is.md)

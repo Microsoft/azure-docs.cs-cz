@@ -1,3 +1,5 @@
+# [Dokumentace k Azure Active Directory](index.md)
+
 # Přehled
 ## [Představení služby Azure Active Directory](active-directory-whatis.md)
 ## [Správa identit Azure](identity-fundamentals.md)
@@ -248,6 +250,13 @@
 ##### [Konfigurace](active-directory-application-config-content-map.md)
 ##### [Přihlášení](active-directory-application-sign-in-content-map.md)
 ##### [Zřizování](active-directory-application-provisioning-content-map.md)
+###### [Ověření zřízení uživatele](application-provisioning-when-will-provisioning-finish-specific-user.md)
+###### [Zřizování trvá příliš dlouho](application-provisioning-when-will-provisioning-finish.md)
+###### [Postup konfigurace zřizování uživatelů](application-provisioning-config-how-to.md)
+###### [Problém konfigurace zřizování](application-provisioning-config-problem.md)
+###### [Problém s uložením přihlašovacích údajů správce](application-provisioning-config-problem-storage-limit.md)
+###### [Neprobíhá zřizování žádných uživatelů](application-provisioning-config-problem-no-users-provisioned.md)
+###### [Probíhá zřizování nesprávných uživatelů](application-provisioning-config-problem-wrong-users-provisioned.md)
 ##### [Správa přístupu](active-directory-application-access-content-map.md)
 ##### [Přístupový panel](active-directory-application-access-panel-content-map.md)
 ##### [Proxy soubor aplikace](active-directory-application-proxy-content-map.md)

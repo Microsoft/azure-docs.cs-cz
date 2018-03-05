@@ -1,3 +1,5 @@
+# [Dokumentace ke službě ExpressRoute](index.md)
+
 # Přehled
 ## [Co je ExpressRoute?](expressroute-introduction.md)
 ## [ExpressRoute – nejčastější dotazy](expressroute-faqs.md)
@@ -17,24 +19,24 @@
 
 # Postup
 ## Vytvoření a změny okruhu
-### [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+### [portál Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-circuit-arm.md)
 ### [Azure CLI](howto-circuit-cli.md)
 ## Vytvoření a změny konfigurace partnerského vztahu
-### [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+### [portál Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-routing-arm.md)
 ### [Azure CLI](howto-routing-cli.md)
 ## Propojení virtuální sítě k okruhu ExpressRoute
-### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+### [portál Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-linkvnet-arm.md)
 ### [Azure CLI](howto-linkvnet-cli.md)
 ## [Konfigurace sítě VPN typu Site-to-Site přes partnerský vztah Microsoftu](site-to-site-vpn-over-microsoft-peering.md)
 ## Konfigurace brány virtuální sítě pro ExpressRoute
-### [Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
+### [portál Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [Konfigurace společně používaných připojení typu Site-to-Site a ExpressRoute](expressroute-howto-coexist-resource-manager.md)
 ## Konfigurace filtrů směrování pro partnerský vztah Microsoftu
-### [Azure Portal](how-to-routefilter-portal.md)
+### [portál Azure Portal](how-to-routefilter-portal.md)
 ### [Azure PowerShell](how-to-routefilter-powershell.md)
 ### [Azure CLI](how-to-routefilter-cli.md)
 ## [Přechod od veřejného partnerského vztahu k partnerskému vztahu Microsoftu](how-to-move-peering.md)

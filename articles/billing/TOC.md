@@ -1,3 +1,5 @@
+# [Dokumentace ke službě Azure Billing](index.md)
+
 # Začínáme
 ## [Jak zabránit neočekávaným nákladům](billing-getting-started.md)
 ## [Vytvoření služeb zahrnutých v bezplatném účtu](billing-create-free-services-included-free-account.md)
@@ -54,7 +56,7 @@
 ## [REST pro využití a RateCard](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)
 ## [Partnerské řešení: Cloud Cruiser](billing-usage-rate-card-partner-solution-cloudcruiser.md)
 
-# Zdroje
+# Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
 ## [Kontaktování podpory](../azure-supportability/how-to-create-azure-support-request.md)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
