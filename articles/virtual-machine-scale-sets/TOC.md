@@ -1,3 +1,5 @@
+# [Dokumentace ke službě Virtual Machine Scale Sets](index.md)
+
 # Přehled
 ## [Co jsou škálovací sady virtuálních počítačů?](virtual-machine-scale-sets-overview.md)
 
@@ -12,6 +14,7 @@
 # Postup
 ## Plánování a návrh
 ### [Aspekty návrhu](virtual-machine-scale-sets-design-overview.md)
+### [Vysvětlení ID instancí](virtual-machine-scale-sets-instance-ids.md)
 
 ## Vytvoření šablony
 ### [Další informace o šablonách škálovacích sad](virtual-machine-scale-sets-mvss-start.md)

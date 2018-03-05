@@ -43,7 +43,7 @@
           href: app-service-web-tutorial-java-mysql.md
         - name: Python s PostgreSQL
           href: app-service-web-tutorial-python-postgresql.md
-    - name: 1. Vytvoření rozhraní RESTful API
+    - name: 1. Hostování rozhraní RESTful API
       href: app-service-web-tutorial-rest-api.md
     - name: 2. Mapování vlastní domény
       href: app-service-web-tutorial-custom-domain.md
@@ -57,6 +57,8 @@
       href: app-service-cli-samples.md
     - name: Azure PowerShell
       href: app-service-powershell-samples.md
+    - name: Šablony Resource Manageru
+      href: app-service-rm-template-samples.md
 - name: Koncepty
   items:
     - name: Jak funguje App Service
@@ -111,6 +113,8 @@
           href: app-service-deployment-credentials.md
         - name: Vytvoření přípravných prostředí
           href: web-sites-staged-publishing.md
+        - name: Pokyny pro šablony Resource Manageru
+          href: web-sites-rm-template-guidance.md
     - name: Mapování vlastní domény
       items:
         - name: Zakoupení domény
@@ -226,7 +230,7 @@
     - name: Podrobné návody
       items:
         - name: Referenční architektury
-          href: ../guidance/guidance-ra-app-service.md
+          href: /azure/architecture/reference-architectures/app-service-web-app/
         - name: Skripty nasazení
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Řešení potíží

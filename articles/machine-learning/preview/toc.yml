@@ -9,15 +9,15 @@
       href: model-management-overview.md
 - name: Šablony Rychlý start
   items:
-    - name: Instalace a vytvoření
+    - name: Instalace a spuštění
       href: quickstart-installation.md
 - name: Kurzy
   items:
     - name: 1. Příprava dat
       href: tutorial-classifying-iris-part-1.md
-    - name: 2. Sestavení modelu
+    - name: 2. Sestavení modelů
       href: tutorial-classifying-iris-part-2.md
-    - name: 3. Nasazení modelu
+    - name: 3. Nasazení modelů
       href: tutorial-classifying-iris-part-3.md
     - name: 4. Pokročilá příprava dat
       href: tutorial-bikeshare-dataprep.md
@@ -194,25 +194,15 @@
   items:
     - name: Nejčastější dotazy
       href: frequently-asked-questions.md
-    - name: Známé problémy a řešení potíží
+    - name: Potíže a jejich řešení
       href: known-issues-and-troubleshooting-guide.md
-    - name: Dokumentace k vědeckému zpracování týmových dat
-      href: ../team-data-science-process/overview.md
-    - name: Dokumentace k virtuálním počítačům pro datové vědy
-      href: ../data-science-virtual-machine/overview.md
+    - name: Podpora a školení
+      href: support-for-aml-services.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
-    - name: Videa
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
-    - name: Fórum pro názory
-      href: 'https://feedback.azure.com/forums/257792-machine-learning'
+      href: aml-services-pricing.md
     - name: Dostupnost v oblastech
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Možnosti podpory
-      href: 'https://azure.microsoft.com/support/options/'
+    - name: Vědecké zpracování týmových dat
+      href: ../team-data-science-process/overview.md

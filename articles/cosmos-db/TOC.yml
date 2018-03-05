@@ -258,6 +258,8 @@
               href: mongodb-robomongo.md
             - name: Pomocí Mongoose
               href: mongodb-mongoose.md
+            - name: Použití předvoleb pro čtení
+              href: mongodb-readpreference.md
             - name: Podpora funkce MongoDB
               href: mongodb-feature-support.md
             - name: Série kurzů Angular
@@ -395,6 +397,8 @@
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cosmos-db'
     - name: Rozhraní SQL API
       items:
+        - name: Async Java
+          href: sql-api-sdk-async-java.md
         - name: Java
           href: sql-api-sdk-java.md
         - name: .NET

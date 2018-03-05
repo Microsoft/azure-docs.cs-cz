@@ -52,7 +52,15 @@
           href: msi-qs-configure-template-windows-vm.md
         - name: Pomocí sady Azure SDK
           href: msi-qs-configure-sdk-windows-vm.md
-    - name: Udělení přístupu MSI virtuálního počítače k Resource Manageru
+    - name: Konfigurace MSI pro Azure VMSS
+      items:
+        - name: Použití Portálu Azure
+          href: msi-qs-configure-portal-windows-vmss.md
+        - name: Použití Azure CLI
+          href: msi-qs-configure-cli-windows-vmss.md
+        - name: Pomocí šablony Azure Resource Manageru
+          href: msi-qs-configure-template-windows-vmss.md
+    - name: Udělení přístupu MSI virtuálního počítače nebo škálovací sady virtuálních počítačů k Resource Manageru
       items:
         - name: Pomocí webu Azure Portal
           href: msi-howto-assign-access-portal.md
