@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: f7a8b60e26b42668e505b3d466bfc447d0cfb48b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 02bbeafd9cd8ca93f22cf9e1a2c107e01c082ba3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET
 
@@ -34,6 +34,7 @@ Následující přednastavení JSON a XML lze použít k vytvoření jediného v
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -58,9 +59,11 @@ Následující přednastavení JSON a XML lze použít k vytvoření jediného v
         }
       ]
     }
+```
     
 ### <a name="xml-preset"></a>Přednastavení XML
 
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -79,6 +82,7 @@ Následující přednastavení JSON a XML lze použít k vytvoření jediného v
         </Output>
       </Outputs>
     </Preset>
+```
 
 ## <a name="example-of-a-series-of-jpeg-images-preset"></a>Příklad přednastavení "řadu JPEG – obrázky"
 
@@ -86,6 +90,7 @@ Následující přednastavení JSON a XML lze vytvořit sady 10 Image v časová
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -113,9 +118,11 @@ Následující přednastavení JSON a XML lze vytvořit sady 10 Image v časová
         }
       ]
     }
+```
 
 ### <a name="xml-preset"></a>Přednastavení XML
     
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -135,6 +142,7 @@ Následující přednastavení JSON a XML lze vytvořit sady 10 Image v časová
         </Output>
       </Outputs>
     </Preset>
+```
 
 ## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Příklad přednastavení "jednu bitovou kopii v konkrétní časové razítko"
 
@@ -142,6 +150,7 @@ Následující přednastavení JSON a XML lze použít k vytvoření jedné JPEG
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -169,9 +178,10 @@ Následující přednastavení JSON a XML lze použít k vytvoření jedné JPEG
         }
       ]
     }
-    
+```
+
 ### <a name="xml-preset"></a>Přednastavení XML
-    
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -191,7 +201,8 @@ Následující přednastavení JSON a XML lze použít k vytvoření jedné JPEG
         </Output>
       </Outputs>
     </Preset>
-    
+```
+
 ## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>Příklad přednastavení "miniatur na různá řešení"
 
 Následující přednastavení slouží k vytváření miniatur na různá řešení v jeden úkol. V příkladu v umístění % 5 15 %,..., 95 % vstupní osy kodér vytvoří dvě bitové kopie – jeden na 100 % vstupní video řešení a jiné na 50 %.
@@ -200,6 +211,7 @@ Všimněte si použití {řešení} makro v názvu souboru; označuje kodéru po
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -234,9 +246,10 @@ Všimněte si použití {řešení} makro v názvu souboru; označuje kodéru po
         }
       ]
     }
+```
 
 ### <a name="xml-preset"></a>Přednastavení XML
-
+```xml
     <?xml version="1.0" encoding="utf-8"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
     <Encoding>
@@ -261,7 +274,8 @@ Všimněte si použití {řešení} makro v názvu souboru; označuje kodéru po
       </Output>
     </Outputs>
     </Preset>
-    
+```
+
 ## <a name="example-of-generating-a-thumbnail-while-encoding"></a>Příklad generování miniaturu při kódování
 
 Když mají všechny výše uvedené příklady popsané, jak můžete odeslat kódování úloh, která jenom vytváří bitové kopie, můžete také kombinovat video nebo zvuk kódování se miniatur generací. Sdělte následující přednastavení JSON a XML **Media Encoder Standard** ke generování miniaturu při kódování.
@@ -269,6 +283,7 @@ Když mají všechny výše uvedené příklady popsané, jak můžete odeslat k
 ### <a id="json"></a>Přednastavení JSON
 Informace o schématu najdete v tématu [to](https://msdn.microsoft.com/library/mt269962.aspx) článku.
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -328,10 +343,12 @@ Informace o schématu najdete v tématu [to](https://msdn.microsoft.com/library/
         }
       ]
     }
+```
 
 ### <a id="xml"></a>Přednastavení XML
 Informace o schématu najdete v tématu [to](https://msdn.microsoft.com/library/mt269962.aspx) článku.
-    
+
+```csharp
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -381,6 +398,7 @@ Informace o schématu najdete v tématu [to](https://msdn.microsoft.com/library/
         </Output>
       </Outputs>
     </Preset>   
+```
 
 ## <a id="code_sample"></a>Zakódovat video a generovat miniaturu s rozhraním .NET
 
@@ -400,7 +418,7 @@ Následující příklad kódu používá sadu Media Services .NET SDK k provád
 
 Najdete v článku [vývoj Media Services pomocí rozhraní .NET](media-services-dotnet-how-to-use.md) článku Pokyny o tom, jak nastavit svoje prostředí vývojářů.
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;
@@ -542,7 +560,7 @@ Platí následující aspekty:
   * Výchozí nastavení: Spuštění: {nejlepší}
 * Výstupní formát je třeba explicitně zadat pro každý formát obrázku: Jpg nebo Png nebo BmpFormat. Pokud jsou k dispozici, odpovídá MES JpgVideo k JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, které musí být k dispozici (jednou a jen jednou) pro výstupní formáty bitové kopie.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Můžete zkontrolovat [úlohy průběh](media-services-check-job-progress.md) úlohy kódování je očekávána.
 
