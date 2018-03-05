@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 03/02/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: f93fc95d6bed517cae3adb706f690941f97c366e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 25ef6ba9ff105486f39cee8b6181a8c63e64ec13
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Aspekty Datacenter integrace pro Azure zásobníku integrované systémy
 Pokud byste chtěli v systému Azure zásobníku integrované, byste měli porozumět některé hlavní informace o plánování řešení nasazení a jak systému zapadá do vašeho datového centra. Tento článek obsahuje přehled těchto aspektů, který vám pomůže provádět rozhodnutí důležité infrastruktury pro systém Azure zásobníku více uzly. Pochopení těchto aspektů pomáhá při práci s dodavatele hardwaru, od výrobců OEM jako jejich nasazení do vašeho datového centra Azure zásobníku.  
@@ -30,6 +30,15 @@ Pokud byste chtěli v systému Azure zásobníku integrované, byste měli poroz
 K nasazení Azure zásobníku, potřebujete poskytovat informace o plánování pro poskytovatele řešení, před zahájením nasazení pomohou proces přejděte rychle a bez problémů. Informace požadované rozsahy napříč sítí, zabezpečení a informace o identitě s mnoha důležitých rozhodnutí, které mohou vyžadovat znalost z mnoha různých oblastech a vedoucím pracovníkům. Proto můžete chtít stáhnout osoby z více týmy ve vaší organizaci k zajištění, že máte všechny požadované informace, které jsou připravené před zahájením nasazení. Obraťte se na dodavatele hardwaru, při shromažďování těchto informací, protože mohou mít užitečné vaše rozhodování Rady, jak může pomoct.
 
 Analýza a shromažďování požadované informace, možná budete muset udělat nějaké změny konfigurace před nasazením do prostředí vaší sítě. To může zahrnovat rezervování adresní prostory IP adres pro řešení Azure zásobníku, konfigurace směrovače, přepínače a brány firewall, aby příprava pro připojení k nové řešení přepínače zásobník Azure. Ujistěte se, že máte expert oblasti subjektu leží až, vám pomohou s plánování.
+
+## <a name="capacity-planning-considerations"></a>Informace o plánování kapacity
+Při posuzování o Azure zásobníku řešení pro získávání, musí být provedeny možnostmi konfigurace hardwaru, které mají přímý vliv na celkové kapacity své řešení Azure zásobníku. Mezi ně patří classic Výběr procesoru, paměti hustotu, konfigurace úložiště a škálování celkového řešení (například počet serverů). Na rozdíl od tradičních virtualizace řešení nevztahuje jednoduché aritmetické operace tyto součásti k určení použitelné kapacity. Prvním důvodem je, že zásobník Azure je navržen pro hostování součásti infrastruktury nebo správu v rámci řešení sám sebe. Druhý důvodem je skutečnost, že některé kapacity na řešení je vyhrazen na podporu odolnosti; aktualizace softwaru na řešení tak, aby minimalizuje narušení úlohy klientů. 
+
+[Tabulky Plánovač kapacity zásobník Azure](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) pomáhá provedete informován rozhodnutí ohledně plánování kapacity dvěma způsoby: buď výběrem nabídku hardwaru a pokus o kombinaci prostředků nebo přizpůsobit tak, že definujete zatížení, které Azure zásobníku se má spustit zobrazíte dostupného hardwaru SKU, které ji podporují. Nakonec tabulku slouží jako vodítko při přijímání rozhodnutí související s Azure zásobník plánování a konfigurace. 
+
+Tabulku není určeno k sloužit jako náhrada pro zkoumání a analýzu.  Společnost Microsoft neposkytuje žádná vyjádření či záruky, vyjádřené nebo předpokládané, s ohledem na informace uvedené v tabulce.
+
+
 
 ## <a name="management-considerations"></a>Aspekty správy
 Azure zásobník je zapečetěné systému, kde infrastruktury je uzamčené z oprávnění i a síťový perspektivy. Sítě seznamy řízení přístupu (ACL) se použijí pro blokovat veškerý příchozí provoz neoprávněným a všechny zbytečné komunikace mezi součástmi infrastruktury. Díky tomu je obtížné neoprávněným uživatelům přístup k systému.
