@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 92c730addb69bc4d12708ccd789edce0c2336c80
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4f40c9364d02929fe5bb193b4e8eb0a0157d34d2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Použít miniatur videa Azure Media k vytvoření Videosouhrn
 ## <a name="overview"></a>Přehled
@@ -44,7 +44,11 @@ Tady jsou některé příklady co můžete dělat procesor médií miniatur vide
 ## <a name="task-configuration-preset"></a>Konfigurace úlohy (přednastavených)
 Při vytváření miniatur videa úlohy s **miniatur videa Azure Media**, je nutné zadat jedno z přednastavení konfigurace. Ukázka výše miniatur byl vytvořen s následující konfigurací základní JSON:
 
-    {"version":"1.0"}
+```json
+    {
+        "version":"1.0"
+    }
+```
 
 V současné době můžete změnit následující parametry:
 
@@ -63,6 +67,7 @@ Následující tabulka popisuje výchozí doba, kdy **maxMotionThumbnailInSecs**
 
 Následujícím kódu JSON nastaví dostupné parametry.
 
+```json
     {
         "version": "1.0",
         "options": {
@@ -71,6 +76,7 @@ Následujícím kódu JSON nastaví dostupné parametry.
             "fadeInFadeOut": "true"
         }
     }
+```
 
 ## <a name="net-sample-code"></a>Ukázkový kód rozhraní .NET
 
@@ -78,23 +84,27 @@ Program zobrazí následující postup:
 
 1. Vytvořte asset a nahrajte soubor média do assetu.
 2. Vytvoří úlohu s video miniatur úloh podle konfigurační soubor, který obsahuje následující přednastavení json: 
-   
-        {                
-            "version": "1.0",
-            "options": {
-                "outputAudio": "true",
-                "maxMotionThumbnailDurationInSecs": "30",
-                "fadeInFadeOut": "false"
+    
+    ```json
+            {                
+                "version": "1.0",
+                "options": {
+                    "outputAudio": "true",
+                    "maxMotionThumbnailDurationInSecs": "30",
+                    "fadeInFadeOut": "false"
+                }
             }
-        }
+    ```
+
 3. Výstupní soubory stáhne. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
+```csharp
     using System;
     using System.Configuration;
     using System.IO;
@@ -262,6 +272,7 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
 
         }
     }
+```
 
 ### <a name="video-thumbnail-output"></a>Miniatury výstupu videa
 [Miniatury výstupu videa](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
