@@ -12,20 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2017
+ms.date: 03/02/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 2410b1a3c3c2856cceda87ced7e66f140ea0c323
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 03682e7f5867360cc3d854f0dff2bc5d1c1c9619
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Požadavky nasazení Azure Stack
 
 *Platí pro: Azure zásobníku Development Kit*
 
-Před nasazením [Azure zásobníku Development Kit](azure-stack-poc.md), zajistěte, aby váš počítač splňuje následující požadavky:
+Před nasazením [Azure zásobníku Development Kit (ASDK)](azure-stack-poc.md), ujistěte se, že hostitelského počítače development kit splňuje požadavky popsané v tomto článku.
 
+> [!NOTE]
+> ASDK musí být nainstalován na fyzickém hostitelském počítači. Instalace ASDK ve virtuálním počítači Azure není podporována.
 
 ## <a name="hardware"></a>Hardware
 | Komponenta | Minimální | Doporučené |
@@ -122,7 +124,6 @@ Ověřte si dostupnost serveru DHCP v síti, do které se síťová karta připo
 ### <a name="internet-access"></a>Přístup k internetu
 Zásobník Azure vyžaduje přístup k Internetu, buď přímo nebo prostřednictvím proxy serveru transparentní. Azure zásobník nepodporuje konfiguraci webového proxy serveru pro povolení přístupu k Internetu. IP adresa hostitele a nových IP přiřazená MAS-BGPNAT01 (pomocí protokolu DHCP nebo statickou IP adresu) musí být mít přístup k Internetu. V rámci domény graph.windows.net a login.microsoftonline.com používají porty 80 a 443.
 
-Otázka: je možné spustit ASDK na virtuální počítač Azure? Odpověď: Ne. K dnešnímu dni ho není oficiálně podporován.
 
 ## <a name="next-steps"></a>Další postup
 [Stažení balíčku pro nasazení Azure zásobníku development kit](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
