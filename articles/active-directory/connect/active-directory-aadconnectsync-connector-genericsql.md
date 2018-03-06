@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/19/2017
 ms.author: billmath
 ms.openlocfilehash: 66e3559c244a76101be7b7d944a48cd6dd99bd4c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Technické informace o obecné konektor SQL
 Tento článek popisuje obecný konektor SQL. Se článek vztahuje následující produkty:
@@ -250,9 +250,9 @@ Udělejte toto:
 
 * Pokud máte množství dat, se doporučuje implementovat stránkování se vaše uložené procedury.
 * Pro vaše uloženou proceduru pro podporu stránkování potřebujete poskytovat Start a End indexem. Přejděte na téma: [efektivně stránkování prostřednictvím velké objemy dat](https://msdn.microsoft.com/library/bb445504.aspx).
-* @StartIndexa @EndIndex v době provedení nahradí se hodnota velikosti stránky příslušné nakonfigurované na **krok konfigurace** stránky. Například když konektor načte první stránka a velikost stránky nastavená 500, v takové situaci @StartIndex by bylo 1 a @EndIndex 500. Tyto hodnoty zvýšit, když konektor načte následující stránky a změňte @StartIndex & @EndIndex hodnotu.
+* @StartIndex a @EndIndex v době provedení nahradí se hodnota velikosti stránky příslušné nakonfigurované na **krok konfigurace** stránky. Například když konektor načte první stránka a velikost stránky nastavená 500, v takové situaci @StartIndex by bylo 1 a @EndIndex 500. Tyto hodnoty zvýšit, když konektor načte následující stránky a změňte @StartIndex & @EndIndex hodnotu.
 * Chcete-li provést parametrizované uloženou proceduru, zadat parametry v `[Name]:[Direction]:[Value]` formátu. Zadejte každý parametr na samostatném řádku (pomocí kláves Ctrl + Enter získat nový řádek).
-* Obecné SQL konektor rovněž podporuje operace importu z odkazované servery v systému Microsoft SQL Server. Pokud mají být načtena informace z tabulky propojené serveru, by měl tabulky zadané ve formátu:`[ServerName].[Database].[Schema].[TableName]`
+* Obecné SQL konektor rovněž podporuje operace importu z odkazované servery v systému Microsoft SQL Server. Pokud mají být načtena informace z tabulky propojené serveru, by měl tabulky zadané ve formátu: `[ServerName].[Database].[Schema].[TableName]`
 * Obecné SQL konektor podporuje pouze ty objekty, které mají podobnou strukturou (alias název i datový typ) mezi, která spustit kroky zjišťování informace a schéma. Pokud vybraný objekt ze schématu a zadaných informací v kroku spuštění se liší, je konektor služby SQL nelze pro tento typ scénáře podporován.
 
 **Dotaz SQL**  
@@ -269,7 +269,7 @@ Udělejte toto:
 Rozdílový Import konfigurace vyžaduje určitou další konfiguraci ve srovnání s úplný Import.
 
 * Pokud si zvolíte aktivační události nebo snímek přístup ke sledování rozdílové změny, zadejte Tabulka historie nebo snímek databáze v **název tabulky historie nebo snímek databáze** pole.
-* Musíte také zadat podmínku připojení mezi Tabulka historie a nadřazené tabulky, například`Employee.ID=History.EmployeeID`
+* Musíte také zadat podmínku připojení mezi Tabulka historie a nadřazené tabulky, například `Employee.ID=History.EmployeeID`
 * Sledovat transakce pro nadřazenou tabulku z tabulky historie, je nutné zadat název sloupce, který obsahuje informace o operaci (přidat, aktualizace nebo odstranění).
 * Pokud si zvolíte vodoznak sledovat rozdílové změny, zadejte název sloupce, který obsahuje informace o operaci v **název sloupce označit horních**.
 * **Změnit atribut Type** je vyžadován pro daný typ změny sloupec. V tomto sloupci mapuje změnu, ke kterému dochází v primární tabulce nebo tabulky s více hodnotami typu změny v zobrazení rozdílu. Tento sloupec může obsahovat daný typ změny Modify_Attribute pro úroveň atributu změnit nebo přidat, upravit, nebo odstraňte změnit typ pro typ změny na úrovni objektů. Pokud je jiný než výchozí hodnota přidat, upravit, nebo odstraňte a potom můžete definovat tyto hodnoty pomocí této možnosti.
@@ -306,7 +306,7 @@ Pokud zvolíte možnost dotazu SQL, vyžaduje Export tři různé dotazy k prov�
 * **Vložte dotaz**: spuštění tohoto dotazu, pokud libovolného objektu je teď dostupná i konektor pro vložení v příslušné tabulce.
 * **Aktualizace dotazu**: spuštění tohoto dotazu, pokud libovolného objektu je teď dostupná i konektor pro aktualizaci v příslušné tabulce.
 * **Dotaz odstranit**: spuštění tohoto dotazu, pokud libovolného objektu je teď dostupná i konektor pro odstranění v příslušné tabulce.
-* Atribut vybrané ze schématu použít jako hodnotu parametru do dotazu, například`Insert into Employee (ID, Name) Values (@ID, @EmployeeName)`
+* Atribut vybrané ze schématu použít jako hodnotu parametru do dotazu, například `Insert into Employee (ID, Name) Values (@ID, @EmployeeName)`
 
 ## <a name="troubleshooting"></a>Řešení potíží
 * Informace o tom, jak povolit protokolování pro řešení potíží s konektoru najdete v tématu [postup povolení trasování ETW pro konektory](http://go.microsoft.com/fwlink/?LinkId=335731).
