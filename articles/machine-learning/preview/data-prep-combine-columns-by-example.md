@@ -5,17 +5,17 @@ services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 528d7ff5f74948fd1ae7b829d4b2fc38fa2f1109
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 469fefa48ea795a56b0e7525f99634c5149a780f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="combine-columns-by-example-transformation"></a>Sloučení sloupců podle příkladu transformace
 Tato transformace umožňuje uživateli přidat nový sloupec kombinací hodnoty z více sloupců. Uživatele můžete určit oddělovač nebo příklady kombinované hodnoty k provedení této transformace. Když uživatel obsahuje příklady kombinaci, transformaci používá stejný **podle příkladu** modul, který se používá v **odvozena sloupec podle příkladu** transformace.
@@ -66,7 +66,7 @@ Středník a mezerou se používá jako oddělovač v tomto příkladu se zkombi
 
 Hodnota v **tučné** byla poskytnuta jako příklad.
 
-|Datum|Měsíc|Rok|Hodina|Minuta|Sekunda|Kombinovaná sloupce|
+|Datum|Měsíc|Rok|Hodina|Minuta|1 sekunda|Kombinovaná sloupce|
 |:----|:----|:----|:----|:----|:----|:----|
 |13|Říj|2016|15|01|23|**13. října 2016 15:01:23 PDT**|
 |16|Říj|2016|16|22|33|16. října 2016 15:01:33 PDT|

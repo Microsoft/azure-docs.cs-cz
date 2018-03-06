@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2017
+ms.date: 03/02/2018
 ms.author: sethm
-ms.openlocfilehash: aa9fc3b03e24d0b4d1a7ecd9a945b67d8d182492
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: aaedb8ed2be85017b17a2015ff2fcaaf76c20058
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="event-hubs-features-overview"></a>Přehled funkcí služby Event Hubs
 
@@ -52,7 +52,7 @@ Názvy zdrojů není potřeba vytvářet dopředu, při publikování události 
 
 ## <a name="capture"></a>Zachycování
 
-[Zaznamenat centra událostí](event-hubs-capture-overview.md) umožňuje automaticky zachycení dat ve službě Event Hubs a uložit ho do svého výběru účtu úložiště Blob nebo účet služby Azure Data Lake. Můžete povolit sběr dat z portálu Azure a zadejte časové okno k zaznamenání a minimální velikost. Použití funkce Capture centra událostí, je zadat vlastní účet Azure Blob Storage a kontejner nebo účet služby Azure Data Lake, který se používá k ukládání zaznamenaná data. Zaznamenaná data je zapsaný ve formátu Apache Avro.
+[Zaznamenat centra událostí](event-hubs-capture-overview.md) umožňuje automaticky zachycení dat ve službě Event Hubs a uložit ho do svého výběru účtu úložiště Blob nebo účet služby Azure Data Lake. Můžete povolit sběr dat z portálu Azure a zadejte časové okno k zaznamenání a minimální velikost. Použití funkce Capture centra událostí, je zadat vlastní účet Azure Blob Storage a kontejner nebo účet služby Azure Data Lake, z nichž jeden se používá k ukládání zaznamenaná data. Zaznamenaná data je zapsaný ve formátu Apache Avro.
 
 ## <a name="partitions"></a>Oddíly
 
@@ -159,7 +159,7 @@ Doporučujeme vám, že můžete vyrovnávat jednotky propustnosti a oddíly, ab
 
 Podrobné informace o cenách služby Event Hubs najdete na stránce [Ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
 

@@ -6,17 +6,17 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: ab66bc9c90950070e69c2486bf09b7664b1c9ad2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9d9ebef66be269c63a62d393eda76254946b13e7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
 Tento článek popisuje, jak k vyhodnocení velkého počtu místní virtuální počítače (VM) pomocí [Azure migrovat](migrate-overview.md). Azure migrací vyhodnocuje počítače, které chcete zkontrolovat, zda jsou vhodné pro migraci na Azure. Služba poskytuje velikost a cenově odhady pro spouštění počítačů v Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **VMware**: virtuálních počítačů, která chcete migrovat se musí spravovat přes vCenter Server 5.5, 6.0 nebo 6.5 verze. Kromě toho musíte jedna ESXi hostitele spuštěné verze 5.0 nebo novější k nasazení kolekcí virtuálních počítačů.
 - **účet vCenter**: je třeba účet jen pro čtení pro přístup k systému vCenter Server. Azure Migrate ho použije ke zjištění místních virtuálních počítačů.
@@ -29,7 +29,7 @@ Plánování zjišťování a vyhodnocování podle následující omezení:
 
 | **Entity** | **Limit pro počítače** |
 | ---------- | ----------------- |
-| Projekt    | 1,500              | 
+| Project    | 1,500              | 
 | Zjišťování  | 1,500              |
 | Posouzení | 1,500               |
 
@@ -47,7 +47,7 @@ Plánování zjišťování a vyhodnocování podle následující omezení:
 Stejné kolekce Azure migraci můžete udělat několik zjišťování na jeden nebo více projekty. Tyto aspekty plánování mějte na paměti:
  
 - Při zjišťování pomocí Azure migraci kolekce, můžete nastavit obor zjišťování pro složku na serveru vCenter, datacenter, cluster nebo hostitele.
-- Více než jedno zjišťování proveďte ověření v systému vCenter Server, které jsou virtuální počítače, které chcete zjistit v složek, datových center, clusterům nebo hostitele, kteří podporují omezení 1 000 počítačů.
+- Více než jedno zjišťování provedete ověřte v systému vCenter Server, které jsou virtuální počítače, které chcete zjistit v složek, datových center, clusterům nebo hostitele, kteří podporují omezení 1 500 počítačů.
 - Doporučujeme, aby pro účely hodnocení, byl počítače s vzájemné závislosti v rámci stejného projektu a hodnocení. V systému vCenter Server Ujistěte se, že závislé počítače jsou ve stejné složce, datacenter nebo clusteru pro hodnocení.
 
 
@@ -85,6 +85,14 @@ Zkontrolujte, jestli soubor vajíčka zabezpečené před nasazením:
 
    Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Ujistěte se, že generované hodnoty hash odpovídá následující nastavení.
+
+    Pro verzi vajíčka 1.0.9.5
+
+    **Algoritmus** | **Hodnota hash**
+    --- | ---
+    MD5 | fb11ca234ed1f779a61fbb8439d82969
+    SHA1 | 5bee071a6334b6a46226ec417f0d2c494709a42e
+    SHA256 | b92ad637e7f522c1d7385b009e7d20904b7b9c28d6f1592e8a14d88fbdd3241c  
 
     Pro verzi vajíčka 1.0.9.2
 
@@ -151,8 +159,8 @@ Následující tabulka uvádí také výsledky hodnocení, které bude mít vliv
 
 |Čítač                                  |Úroveň    |Úroveň za zařízení  |Dopad hodnocení                               |
 |-----------------------------------------|---------|------------------|------------------------------------------------|
-|cpu.usage.average                        | 1       |není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
-|mem.usage.average                        | 1       |není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
+|cpu.usage.average                        | 1       |Není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
+|mem.usage.average                        | 1       |Není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
 |virtualDisk.read.average                 | 2       |2                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
 |virtualDisk.write.average                | 2       |2                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
 |virtualDisk.numberReadAveraged.average   | 1       |3                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |

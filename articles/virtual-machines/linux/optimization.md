@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 5484f0422e67c75320cc76ffcf08a2b8d6cc6108
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e143ed1e6bcece7efac9126c8e46408e7a88a5c0
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytvoření virtuálního počítače (VM) Linux je snadné provést z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit jste ho nastavili za účelem optimalizace jeho výkon na platformě Microsoft Azure. Toto téma používá virtuálního počítače s Ubuntu Server, ale můžete vytvořit také pomocí virtuálních počítačů Linux [vlastní Image jako šablona](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -58,7 +58,7 @@ Ubuntu cloudu Image musíte použít cloudové init ke konfiguraci oddílu odkl�
 
 Pro Image bez podpory cloudu init být Image virtuálních počítačů nasadit v Azure Marketplace Agent virtuálních počítačů Linux integrované s operačním systémem. Tento agent umožňuje virtuálnímu počítači komunikovat s různými službami Azure. Za předpokladu, že jste nasadili standardní bitové kopie z Azure Marketplace, museli byste ji správně nakonfigurovat Linux odkládací soubor následujícím způsobem:
 
-Vyhledejte a upravit dvě položky v **/etc/waagent.conf** souboru. Tím i určovat existenci vyhrazené odkládací soubor a velikost odkládacího souboru. Hledáte upravit parametry jsou `ResourceDisk.EnableSwap=N` a`ResourceDisk.SwapSizeMB=0` 
+Vyhledejte a upravit dvě položky v **/etc/waagent.conf** souboru. Tím i určovat existenci vyhrazené odkládací soubor a velikost odkládacího souboru. Hledáte upravit parametry jsou `ResourceDisk.EnableSwap=N` a `ResourceDisk.SwapSizeMB=0` 
 
 Změňte parametry následující nastavení:
 
@@ -131,8 +131,7 @@ Pamatujte si, jak se všechny diskuse optimalizace, potřebujete provést testy 
 
 Některé užitečné odkazy na další zdroje informací: 
 
-* [Storage úrovně Premium: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../windows/premium-storage.md)
-* [Uživatelská příručka k Azure Linux Agent](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Optimalizace výkonu databáze MySQL na virtuálních počítačích Azure Linux](classic/optimize-mysql.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Konfigurace softwaru diskového pole RAID v systému Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+* [Storage úrovně Premium: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](premium-storage.md)
+* [Uživatelská příručka k Azure Linux Agent](agent-user-guide.md)
+* [Optimalizace výkonu databáze MySQL na virtuálních počítačích Azure Linux](classic/optimize-mysql.md)
+* [Konfigurace softwaru diskového pole RAID v systému Linux](configure-raid.md)

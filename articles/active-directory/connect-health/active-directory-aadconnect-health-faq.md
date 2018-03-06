@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: bd93b3473143f425b47f141efb3af3007614794f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 312980ded8fad84f2ea4a41078597dd3a6cb8ca7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure AD Connect Health
 Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o stavu připojení služby Azure Active Directory (Azure AD). Tyto nejčastější dotazy se týkají dotazy o tom, jak používat službu, která zahrnuje fakturační model, možnosti, omezení a podpory.
@@ -128,12 +128,7 @@ Agent stavu můžete nezdaří jejich registrace z následujících možných d�
 
 **Otázka: I mě získávání upozornění, že "služba Health Service data nejsou aktuální." Jak odstranit potíže?**
 
-Azure AD Connect Health vygeneruje výstrahu, pokud neobdrží datových bodů ze serveru za posledních dvou hodin. Může být několik důvodů pro tuto výstrahu.
-
-* Agent nemůže komunikovat s požadované koncové body, protože brána firewall neblokuje přenosy. To je zvlášť běžné na proxy servery webových aplikací. Ujistěte se, že se povolí odchozí komunikaci požadované koncové body a porty. Najdete v článku [v části požadavky na](active-directory-aadconnect-health-agent-install.md#requirements) podrobnosti.
-* Odchozí komunikaci se vztahuje kontrola SSL vrstvou sítě. To způsobí, že certifikát, který agent používá nahradit za kontroly serveru nebo entity a dojde k selhání odesílat data do služby Azure AD Connect Health.
-* Můžete použít příkaz připojení, který je součástí agenta. [Přečtěte si další informace](active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service).
-* Agenti také podporují odchozí připojení přes neověřené server Proxy protokolu HTTP. [Přečtěte si další informace](active-directory-aadconnect-health-agent-install.md##configure-azure-ad-connect-health-agents-to-use-http-proxy).
+Azure AD Connect Health vygeneruje výstrahu, pokud neobdrží datových bodů ze serveru za posledních dvou hodin. [Přečtěte si další informace](active-directory-aadconnect-health-data-freshness.md).
 
 ## <a name="operations-questions"></a>Operace otázky
 **Otázka: Potřebuji povolení auditování na proxy servery webových aplikací?**

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: da589905babd20b46ea7bc0baba753415b3b5d5b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2e829ae90aa0366964f96b3c43f88503c7f3e894
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Dotazy týkající se služby Azure Backup
 Tento článek obsahuje odpovědi na časté otázky týkající se součástí Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Můžete klást otázky týkající se Azure Backup kliknutím na **Komentáře** (napravo). Komentáře se zobrazují v dolní části tohoto článku. Pro komentáře je potřeba účet Livefyre. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -30,7 +30,7 @@ K rychlému procházení částmi tohoto článku použijte odkazy vpravo v čá
 ## <a name="recovery-services-vault"></a>Trezor služby Recovery Services
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription-br"></a>Je v rámci předplatného Azure nějak omezený počet trezorů, které lze vytvořit? <br/>
-Ano. Od září 2016 můžete vytvořit 25 trezorů služeb zotavení jedno předplatné. Můžete vytvořit až 25 trezorů služby Recovery Services pro každou podporovanou oblast služby Azure Backup na jedno předplatné. Pokud potřebujete další trezory, vytvořte další předplatné.
+Ano. Od ledna 2018 je možné vytvořit až 25 trezorů služeb zotavení, za podporovanou oblast Azure Backup za předplatné. Pokud potřebujete další trezory, vytvořte další předplatné.
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Je nějak omezený počet serverů nebo počítačů, které lze zaregistrovat k trezoru? <br/>
 Můžete zaregistrovat až 200 Azure virtuálních počítačů na jeden trezor. Pokud používáte MAB agenta můžete zaregistrovat až 50 MAB agentů na jeden trezor. A můžete zaregistrovat servery pro 50 serverů nebo DPM MAB do trezoru.
@@ -164,7 +164,7 @@ Počet obnovení z Azure Backup není omezený.
 Ne. Vaše obnovení jsou zdarma a výchozí přenos vám není účtován.
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>Co se stane, když změnit Moje zásady zálohování?
-Při použití nové zásady, plán a uchovávání nové zásady a pod ním. Pokud je rozšířeno uchování, stávajících bodů obnovení jsou označeny k jejich podle nové zásady. Pokud je snížen uchovávání, jsou označeny pro vyřazení v další úlohy čištění a následně odstranit.
+Při použití nové zásady, plán a uchovávání nové zásady a pod ním. Pokud se doba uchovávání prodlouží, existující body obnovení se označí k zachování pro novou zásadu. Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a následně se odstraní.
 
 ## <a name="azure-backup-encryption"></a>Šifrování ve službě Azure Backup
 ### <a name="is-the-data-sent-to-azure-encrypted-br"></a>Jsou data odesílaná do Azure šifrovaná? <br/>

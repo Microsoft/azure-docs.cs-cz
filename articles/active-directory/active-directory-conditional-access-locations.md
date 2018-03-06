@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/11/2018
+ms.date: 03/01/2018
 ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 028a3f4411e6984b70e0f98c5cf3284e5be1c3b2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.reviewer: calebb
+ms.openlocfilehash: c9712cf0cf20bbcfc089eb18896370f9e02eb571
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Podmínky umístění v Azure Active Directory podmíněného přístupu 
 
@@ -120,9 +120,12 @@ Pomocí této možnosti můžete vybrat jeden nebo více umístění s názvem. 
 
 Zásady podmíněného přístupu se vyhodnocují při: 
 
-- Původně přihlášení uživatele 
+- Uživatel se původně přihlásí do aplikace webové aplikace, mobilní nebo plochy. 
 
-- Azure AD vydá token pro cloudové aplikace, které zásady podmíněného přístupu je nastavená na. 
+- Mobilní nebo desktopové aplikace, která používá moderní ověřování, použije token obnovení pro získání nového tokenu přístupu. Ve výchozím nastavení je to jednou za hodinu. 
+
+To znamená pro mobilní a desktopové aplikace používající moderní ověřování, by být zjištěna změna v umístění v rámci hodinu změny umístění v síti. Pro mobilních a desktopových aplikací, které nepoužívají moderní ověřování se zásady použijí na každé žádosti o token. Frekvence žádosti může lišit v závislosti na aplikaci. Pro webové aplikace, podobně zásady platí při počáteční přihlášení a je vhodný pro doba platnosti relace ve webové aplikaci. Vzhledem k rozdílům v trvání relace napříč aplikacemi budou lišit čas mezi vyhodnocení zásad. Pokaždé, když aplikace požádá o nový token přihlašování, zásady se použijí.
+
 
 Ve výchozím nastavení Azure AD vydá token hodinu. Po přesunutí vypnout podnikovou síť, v rámci hodiny zásady se vynucují pro aplikace používající moderní ověřování.
 

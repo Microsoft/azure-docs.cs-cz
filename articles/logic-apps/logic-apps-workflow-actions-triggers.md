@@ -1,6 +1,6 @@
 ---
 title: "Pracovní postup triggery a akce - Azure Logic Apps | Microsoft Docs"
-description: "Další informace o typech triggery a akce, které můžete použít pro vytváření a automatizaci pracovních postupů a procesů službou Azure Logic Apps"
+description: "Další informace o aktivační události a akce vytvoření automatizované pracovní postupy a procesy s logic apps"
 services: logic-apps
 author: MandiOhlinger
 manager: anneta
@@ -12,13 +12,13 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/17/2016
-ms.author: LADocs; mandia
-ms.openlocfilehash: 981bf5555d1941509e787adf656fe6310dd43cb9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 10/13/2017
+ms.author: klam; LADocs
+ms.openlocfilehash: af30fd30f389cdc2070c45ae3b6e2cb1165239e7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="triggers-and-actions-for-logic-app-workflows"></a>Triggery a akce pro pracovní postupy aplikace logiky
 
@@ -26,28 +26,28 @@ Všechny aplikace logiky začínat aktivační událost následuje akce. Tento �
   
 ## <a name="triggers-overview"></a>Přehled aktivační události 
 
-Všechny aplikace logiky začínat aktivační událost, která určuje volání, které lze spustit spusťte aplikaci logiky. Zde jsou dva způsoby, které můžete spustit inicializovat spuštění pracovního postupu:  
+Všechny aplikace logiky začínat aktivační událost, která určuje volání, které lze spustit spusťte aplikaci logiky. Toto jsou typy služby aktivačních událostí, které můžete použít:
 
-* Aktivační událost dotazování  
-* Aktivační událost nabízené, který volá [rozhraní API REST služby pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflows)  
+* A *dotazování* aktivační události, které slouží k ověření koncového bodu protokolu HTTP služby v pravidelných intervalech
+* A *nabízené* aktivovat, který volá [rozhraní API REST služby pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflows)
   
 Žádná z aktivačních událostí obsahovat tyto prvky nejvyšší úrovně:  
   
 ```json
-"trigger-name": {
-    "type": "trigger-type",
-    "inputs": { call-settings },
+"<myTriggerName>": {
+    "type": "<triggerType>",
+    "inputs": { <callSettings> },
     "recurrence": {  
-        "frequency": "Second|Minute|Hour|Day|Week|Month",
-        "interval": recurrence-interval-based-on-frequency
+        "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
+        "interval": "<recurrence-interval-based-on-frequency>"
     },
-    "conditions": [ array-of-required-conditions ],
-    "splitOn": "property-used-for-creating-separate-workflows",
-    "operationOptions": "operation-options-for-trigger"
+    "conditions": [ <array-with-required-conditions> ],
+    "splitOn": "<property-used-for-creating-runs>",
+    "operationOptions": "<options-for-operations-on-the-trigger>"
 }
 ```
 
-### <a name="trigger-types-and-inputs"></a>Typy aktivační události a vstupy  
+## <a name="trigger-types-and-inputs"></a>Typy aktivační události a vstupy  
 
 Každý typ aktivační událost má jiné rozhraní a jiné *vstupy* své chování, který definuje. 
 
@@ -57,15 +57,19 @@ Každý typ aktivační událost má jiné rozhraní a jiné *vstupy* své chov�
 | **Požadavek**  | Umožňuje aplikaci logiky do koncový bod, který bude možné volat, také známé jako "Ruční" aktivační událost. | 
 | **HTTP** | Kontroluje, nebo *hlasování*, koncový bod webové HTTP. Koncový bod HTTP musí odpovídat kontraktu konkrétní spouštěcí pomocí "202" asynchronní vzor nebo vrácením pole. | 
 | **ApiConnection** | Dotazuje jako aktivační procedury protokolu HTTP, ale používá [Microsoft spravovaná rozhraní API](../connectors/apis-list.md). | 
-| **HTTPWebhook** | Umožňuje aplikaci logiky do koncový bod volatelná aplikacemi, jako jsou žádosti o aktivaci, ale volá zadaná adresa URL pro registraci a zrušení registrace. |
+| **HTTPWebhook** | Umožňuje aplikaci logiky do koncový bod volatelná aplikacemi, jako **požadavku** aktivovat, ale volá zadaná adresa URL pro registraci a zrušení registrace. |
 | **ApiConnectionWebhook** | Funguje, jako **HTTPWebhook** aktivační událost, ale používá rozhraní API pro spravovaný společností Microsoft. | 
 ||| 
 
-Informace o další podrobnosti najdete v tématu [jazyk definic workflowů](../logic-apps/logic-apps-workflow-definition-language.md). 
-  
+Další informace najdete v tématu [jazyk definic workflowů](../logic-apps/logic-apps-workflow-definition-language.md). 
+
+<a name="recurrence-trigger"></a>
+
 ## <a name="recurrence-trigger"></a>Aktivační událost opakování  
 
-Této aktivační události běží podle plánu a způsob opakování, které zadáte a poskytuje snadný způsob pro pravidelné spouštění pracovního postupu. Zde je příklad aktivační událost základní opakování, který spouští každý den:
+Této aktivační události běží podle plánu a způsob opakování, které zadáte a poskytuje snadný způsob pro pravidelné spouštění pracovního postupu. 
+
+Zde je příklad aktivační událost základní opakování, který spouští každý den:
 
 ```json
 "myRecurrenceTrigger": {
@@ -76,6 +80,7 @@ Této aktivační události běží podle plánu a způsob opakování, které z
     }
 }
 ```
+
 Můžete také naplánovat počáteční datum a čas pro ohlásí aktivační událost. Například spusťte sestavu týdenní každé pondělí, můžete naplánovat aplikaci logiky ke spuštění na konkrétní pondělí jako tento ukázkový: 
 
 ```json
@@ -84,29 +89,29 @@ Můžete také naplánovat počáteční datum a čas pro ohlásí aktivační u
     "recurrence": {
         "frequency": "Week",
         "interval": "1",
-        "startTime" : "2017-09-18T00:00:00Z"
+        "startTime": "2017-09-18T00:00:00Z"
     }
 }
 ```
 
-Zde je definice této aktivační události: 
+Zde je definice této aktivační události:
 
 ```json
 "myRecurrenceTrigger": {
     "type": "Recurrence",
     "recurrence": {
         "frequency": "second|minute|hour|day|week|month",
-        "interval": recurrence-interval-based-on-frequency,
+        "interval": <recurrence-interval-based-on-frequency>,
         "schedule": {
             // Applies only when frequency is Day or Week. Separate values with commas.
-            "hours": [ one-or-more-hour-marks ], 
+            "hours": [ <one-or-more-hour-marks> ], 
             // Applies only when frequency is Day or Week. Separate values with commas.
-            "minutes": [ one-or-more-minute-marks ], 
+            "minutes": [ <one-or-more-minute-marks> ], 
             // Applies only when frequency is Week. Separate values with commas.
             "weekDays": [ "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday" ] 
         },
-        "startTime": "start-date-time-with-format-YYYY-MM-DDThh:mm:ss",
-        "timeZone": "specify-time-zone"
+        "startTime": "<start-date-time-with-format-YYYY-MM-DDThh:mm:ss>",
+        "timeZone": "<specify-time-zone>"
     }
 }
 ```
@@ -120,35 +125,31 @@ Zde je definice této aktivační události:
 | weekDays | Ne | Řetězec nebo pole řetězců | Pokud zadáte "Týden" pro `frequency`, můžete zadat jeden nebo více dní, oddělených čárkami, pokud chcete spustit pracovní postup: "Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota" a "Neděle" | 
 | hours | Ne | Celé číslo nebo číslo pole | Pokud zadáte "Dne" nebo "Týden" pro `frequency`, můžete určit jeden nebo více celá čísla od 0 do 23, oddělených čárkami, jako hodin dne, kdy chcete spustit pracovní postup. <p>Například pokud zadáte "10", "12" a "14", získáte 10 AM, 12 PM a 14: 00 jako značky hodinu. | 
 | minutes | Ne | Celé číslo nebo číslo pole | Pokud zadáte "Den" nebo "Týden" pro `frequency`, můžete určit jeden nebo více celá čísla od 0 do 59, oddělených čárkami, jako počet minut za hodinu, kdy chcete spustit pracovní postup. <p>Například můžete zadat "30" jako minutu značky a použijeme předchozí příklad hodin dne, získáte 10:30 AM, 12:30:00 a 14:30:00. | 
-|||||| 
+||||| 
 
 Například této aktivační události opakování určuje, že aplikace logiky spouští každý týden každé pondělí v 10:30 AM, 12:30:00 a 14:30:00 Tichomoří (běžný čas), od dříve než 9 září 2017 ve 2:00:
 
 ``` json
-{
-    "triggers": {
-        "myRecurrenceTrigger": {
-            "type": "Recurrence",
-            "recurrence": {
-                "frequency": "Week",
-                "interval": 1,
-                "schedule": {
-                    "hours": [
-                        10,
-                        12,
-                        14
-                    ],
-                    "minutes": [
-                        30
-                    ],
-                    "weekDays": [
-                        "Monday"
-                    ]
-                },
-               "startTime": "2017-09-07T14:00:00",
-               "timeZone": "Pacific Standard Time"
-            }
-        }
+"myRecurrenceTrigger": {
+    "type": "Recurrence",
+    "recurrence": {
+        "frequency": "Week",
+        "interval": 1,
+        "schedule": {
+            "hours": [
+                10,
+                12,
+                14
+            ],
+            "minutes": [
+                30
+            ],
+            "weekDays": [
+                "Monday"
+            ]
+        },
+       "startTime": "2017-09-07T14:00:00",
+       "timeZone": "Pacific Standard Time"
     }
 }
 ```
@@ -176,18 +177,18 @@ Této aktivační události slouží jako koncový bod, který můžete použít
 } 
 ```
 
-Této aktivační události je volitelná vlastnost s názvem *schématu*:
+Této aktivační události je volitelná vlastnost s názvem `schema`:
   
 | Název elementu | Požaduje se | Typ | Popis |
 | ------------ | -------- | ---- | ----------- |
 | schema | Ne | Objekt | Schéma JSON, který ověří příchozí žádost. Užitečné pomáháte kroky následné pracovního postupu vědět, vlastnosti, které chcete odkazovat. | 
 ||||| 
 
-K vyvolání tento koncový bod, je třeba volat *listCallbackUrl* rozhraní API. V tématu [rozhraní API REST služby pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflows).
+K vyvolání této aktivační události jako koncový bod, je třeba volat `listCallbackUrl` rozhraní API. V tématu [rozhraní API REST služby pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflows).
 
 ## <a name="http-trigger"></a>Trigger HTTP  
 
-Aktivace protokolu HTTP dotazování zadaný koncový bod a zkontrolujte odpovědi k určení, zda se má spustit pracovní postup. Zde `inputs` objekt trvá těchto parametrů požadovaných pro tvorbu volání protokolu HTTP:  
+Této aktivační události dotazuje zadaný koncový bod a zkontroluje odpověď na zjistit, zda by měl pracovní postup spuštěn, nebo ne. Zde `inputs` objekt trvá těchto parametrů požadovaných pro tvorbu volání protokolu HTTP: 
 
 | Název elementu | Požaduje se | Typ | Popis | 
 | ------------ | -------- | ---- | ----------- | 
@@ -199,7 +200,17 @@ Aktivace protokolu HTTP dotazování zadaný koncový bod a zkontrolujte odpově
 | retryPolicy | Ne | Objekt | Tento objekt použijte k přizpůsobení chování opakování 4xx nebo 5xx chyby. Další informace najdete v tématu [opakujte zásady](../logic-apps/logic-apps-exception-handling.md). | 
 | Ověřování | Ne | Objekt | Představuje metodu, která požadavek by měl používat pro ověřování. Další informace najdete v tématu [odchozí ověření Scheduleru](../scheduler/scheduler-outbound-authentication.md). <p>Nad Scheduler, existuje více podporované jednu vlastnost: `authority`. Ve výchozím nastavení, tato hodnota je `https://login.windows.net` není-li zadána, ale můžete použít jinou hodnotu, jako například`https://login.windows\-ppe.net`. | 
 ||||| 
- 
+
+A *zásady opakování* platí pro náhodnými poruchami, vyznačují jako stavové kódy HTTP 408 429 a 5xx kromě všechny výjimky připojení. Můžete definovat tyto zásady se `retryPolicy` objektu, jak je vidět tady:
+  
+```json
+"retryPolicy": {
+    "type": "<retry-policy-type>",
+    "interval": <retry-interval>,
+    "count": <number-of-retry-attempts>
+}
+```
+
 Chcete-li funkce fungují dobře u aplikace logiky, triggeru protokolu HTTP vyžaduje rozhraní API HTTP tak, aby odpovídala pomocí specifického vzoru. Aktivační událost rozpoznává tyto vlastnosti:  
   
 | Odpověď | Požaduje se | Popis | 
@@ -214,7 +225,7 @@ Zde jsou některé příklad chování pro různé typy požadavků:
 | Kód odpovědi | Opakovat po | Chování | 
 | ------------- | ----------- | -------- | 
 | 200 | {none} | Spusťte pracovní postup, a poté znovu zkontrolujte pro další data po definované opakování. | 
-| 200 | 10 sekund. | Spusťte pracovní postup, a poté znovu zkontrolujte pro další data po 10 sekundách. |  
+| 200 | 10 sekund | Spusťte pracovní postup, a poté znovu zkontrolujte pro další data po 10 sekundách. |  
 | 202 | 60 sekund | Nemáte spustit pracovní postup. Další pokus se stane za jednu minutu, podstoupí definované opakování. Pokud je definovaný opakování je menší než jedna minuta, záhlaví opakovat po přednost. Jinak je použít definované opakování. | 
 | 400 | {none} | Chybný požadavek, nespouštět pracovního postupu. Pokud žádné `retryPolicy` je definován, je použita výchozí zásady. Po překročení počet opakovaných pokusů, aktivační událost zjišťuje znovu data po definované opakování. | 
 | 500 | {none}| Chyba serveru nelze spustit pracovní postup. Pokud žádné `retryPolicy` je definován, je použita výchozí zásady. Po překročení počet opakovaných pokusů, aktivační událost zjišťuje znovu data po definované opakování. | 
@@ -228,9 +239,11 @@ Zde jsou výstupy aktivace protokolu HTTP:
 | hlavní část | Objekt | Text odpovědi HTTP | 
 |||| 
 
-## <a name="api-connection-trigger"></a>Aktivační události připojení k rozhraní API  
+<a name="apiconnection-trigger"></a>
 
-Aktivační událost připojení rozhraní API je podobná triggeru protokolu HTTP v jeho základních funkcí. Parametry pro identifikaci akce se ale liší. Zde naleznete příklad:  
+## <a name="apiconnection-trigger"></a>Aktivační událost APIConnection  
+
+V základních funkcí této aktivační události funguje jako triggeru protokolu HTTP. Parametry pro identifikaci akce se ale liší. Zde naleznete příklad:   
   
 ```json
 "myDailyReportTrigger": {
@@ -247,7 +260,7 @@ Aktivační událost připojení rozhraní API je podobná triggeru protokolu HT
     },  
     "method": "POST",
     "body": {
-        "category": "awesomest"
+        "category": "myCategory"
     }
 }
 ```
@@ -271,6 +284,16 @@ Pro `host` objektu, tady jsou vlastnosti:
 | Název připojení |  | Název připojení spravované rozhraní API, které používá pracovní postup. Parametr s názvem musí odkazovat na `$connection`. |
 |||| 
 
+A *zásady opakování* platí pro náhodnými poruchami, vyznačují jako stavové kódy HTTP 408 429 a 5xx kromě všechny výjimky připojení. Můžete definovat tyto zásady se `retryPolicy` objektu, jak je vidět tady:
+  
+```json
+"retryPolicy": {
+    "type": "<retry-policy-type>",
+    "interval": <retry-interval>,
+    "count": <number-of-retry-attempts>
+}
+```
+
 Zde jsou výstupy pro aktivační procedury pro připojení k rozhraní API:
   
 | Název elementu | Typ | Popis |
@@ -283,7 +306,7 @@ Další informace o [jak ceny funguje pro připojení k rozhraní API aktivuje](
 
 ## <a name="httpwebhook-trigger"></a>Aktivační událost HTTPWebhook  
 
-Aktivační událost HTTPWebhook poskytuje koncový bod, podobně jako na žádost o aktivaci, ale aktivační událost HTTPWebhook také voláním zadaná adresa URL pro registraci a zrušení registrace. Tady je příklad, jak může vypadat aktivační procedury HTTPWebhook:  
+Této aktivační události obsahuje koncový bod, podobně jako `Request` aktivační událost, ale aktivační událost HTTPWebhook také voláním zadaná adresa URL pro registraci a zrušení registrace. Tady je příklad, jak může vypadat aktivační procedury HTTPWebhook:
 
 ```json
 "myAppsSpotTrigger": {
@@ -292,27 +315,27 @@ Aktivační událost HTTPWebhook poskytuje koncový bod, podobně jako na žádo
         "subscribe": {
             "method": "POST",
             "uri": "https://pubsubhubbub.appspot.com/subscribe",
-            "headers": { },
+            "headers": {},
             "body": {
                 "hub.callback": "@{listCallbackUrl()}",
                 "hub.mode": "subscribe",
                 "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
             },
-            "authentication": { },
-            "retryPolicy": { }
+            "authentication": {},
+            "retryPolicy": {}
         },
         "unsubscribe": {
+            "method": "POST",
             "url": "https://pubsubhubbub.appspot.com/subscribe",
             "body": {
                 "hub.callback": "@{workflow().endpoint}@{listCallbackUrl()}",
                 "hub.mode": "unsubscribe",
                 "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
             },
-            "method": "POST",
-            "authentication": { }
+            "authentication": {}
         }
     },
-    "conditions": [ ]
+    "conditions": []
 }
 ```
 
@@ -324,13 +347,13 @@ Mnoho z těchto částí je volitelné a chování aktivační událost HTTPWebh
 | Odhlásit | Ne | Určuje odchozí žádost volat při aktivační událost je odstranit. | 
 |||| 
 
-Můžete zadat omezení na akce webhooku stejným způsobem jako [HTTP asynchronní omezení](#asynchronous-limits). Zde jsou další informace o `subscribe` a `unsubscribe` akce:
+Můžete zadat omezení na aktivační události webhooku stejným způsobem jako [HTTP asynchronní omezení](#asynchronous-limits). Zde jsou další informace o `subscribe` a `unsubscribe` akce:
 
-* `subscribe`je volána, aby aktivační událost můžete zahájit naslouchání na události. Toto volání odchozí spustí se stejnými parametry jako standardní akce HTTP. Toto volání se stane, když pracovní postup změny žádným způsobem, například když přihlašovací údaje jsou vráceny, nebo změňte vstupní parametry aktivační události. 
+* `subscribe` je volána, aby aktivační událost můžete zahájit naslouchání na události. Toto volání odchozí spustí se stejnými parametry jako standardní akce HTTP. Toto volání se stane, když pracovní postup změny žádným způsobem, například když přihlašovací údaje jsou vráceny, nebo změňte vstupní parametry aktivační události. 
   
   Pro podporu tohoto volání `@listCallbackUrl()` funkce vrátí jedinečnou adresu URL pro tuto konkrétní aktivační událost v pracovním postupu. Tato adresa URL představuje jedinečný identifikátor pro koncové body, které používají rozhraní API služby REST.
   
-* `unsubscribe`je volána automaticky, když operace vykreslí této aktivační události neplatná, včetně těchto operací:
+* `unsubscribe` je volána automaticky, když operace vykreslí této aktivační události neplatná, včetně těchto operací:
 
   * Odstranit nebo zakázat aktivační událost. 
   * Odstranit nebo zakázat pracovní postup. 
@@ -346,9 +369,9 @@ Tady jsou výstupy z HTTPWebhook aktivovat a jsou příchozí žádost o:
 | hlavní část | Objekt | Text odpovědi HTTP | 
 |||| 
 
-## <a name="conditions"></a>Podmínky  
+## <a name="triggers-conditions"></a>Aktivační události: podmínky
 
-Pro všechny aktivační události můžete jednu nebo víc podmínek k určení, zda se má pracovní postup spustit nebo ne. Příklad:  
+Pro všechny aktivační události můžete jednu nebo víc podmínek k určení, zda se má pracovní postup spustit nebo ne. V tomto příkladu pouze aktivační události sestavy při pracovního postupu `sendReports` parametr je nastaven na hodnotu true. 
 
 ```json
 "myDailyReportTrigger": {
@@ -365,7 +388,7 @@ Pro všechny aktivační události můžete jednu nebo víc podmínek k určení
 }
 ```
 
-V takovém případě aktivuje pouze sestavy při pracovního postupu `sendReports` parametr je nastaven na hodnotu true. Nakonec můžete odkazovat na podmínky stavový kód aktivační události. Můžete například spustit pracovní postup, pouze v případě, že váš web vrátí stavový kód 500, například:
+Nakonec můžete odkazovat na podmínky stavový kód aktivační události. Můžete například spustit pracovní postup, pouze v případě, že váš web vrátí stavový kód 500:
   
 ``` json
 "conditions": [ 
@@ -374,59 +397,73 @@ V takovém případě aktivuje pouze sestavy při pracovního postupu `sendRepor
     }  
 ]  
 ```  
-  
-> [!NOTE]  
-> Při jakékoli výraz odkazuje aktivační událost stavový kód žádným způsobem, výchozí chování, která se spustí pouze v 200 "OK", se nahradí. Například pokud chcete aktivovat na stavovým kódem 200 a stavový kód 201, je nutné zahrnout: `@or(equals(triggers().code, 200),equals(triggers().code,201))` jako vaše podmínky.
-  
-## <a name="start-multiple-runs-for-a-request"></a>Spuštění více spuštění pro žádost
 
-Chcete-li ji více spuštění pro jeden požadavek, `splitOn` je užitečné, například, když chcete dotazování koncový bod, který může mít několik nových položek mezi intervaly cyklického dotazování.
-  
-S `splitOn`, určete vlastnost do datové části odpovědi, která obsahuje pole položek, každý z nich chcete použít ke spuštění spuštění aktivační události. Představte si například, že máte rozhraní API, které vrátí této odpovědi:  
+> [!NOTE]
+> Ve výchozím nastavení, aktivační událost aktivuje pouze na příjem "200 OK" odpovědi. Když výraz odkazuje aktivační událost stavový kód žádným způsobem, se nahradí výchozí chování aktivační události. Ano Pokud chcete, aby aktivační událost podle víc stavových kódů, třeba ještě efektivněji, stavovým kódem 200 a stavový kód 201, musí obsahovat tento příkaz jako vaše podmínky: 
+>
+> `@or(equals(triggers().code, 200),equals(triggers().code, 201))` 
+
+<a name="split-on-debatch"></a>
+
+## <a name="triggers-process-an-array-with-multiple-runs"></a>Aktivační události: Pole s více spustí zpracovat
+
+Pokud aktivační událost vrátí pole pro svou aplikaci logiky ke zpracování, někdy smyčka "pro každou" může trvat příliš dlouho zpracování každé položky pole. Místo toho můžete použít **SplitOn** vlastnost ve vaší aktivační *debatch* pole. 
+
+Debatching rozdělí si položky pole a spustí novou instanci aplikace logiky spuštěná pro každou položku pole. Tento přístup je užitečné, například pokud chcete dotazování koncový bod, který může vrátit více nové položky mezi intervaly cyklického dotazování.
+Pro maximální počet pole položek, které **SplitOn** můžete zpracovat spuštění jedné logiku aplikace najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
+
+> [!NOTE]
+> Můžete přidat **SplitOn** pouze pro aktivační události ruční definování nebo přepsání v zobrazení kódu pro definici aplikace logiky JSON. Nemůžete použít **SplitOn** když chcete implementovat vzor synchronní odpovědi. Jakýkoli pracovní postup, který používá **SplitOn** a obsahuje odpovědi na akce spustí asynchronně a, ihned odešle `202 ACCEPTED` odpovědi.
+
+Pokud soubor Swagger vaše aktivační událost popisuje datové části, která je pole, **SplitOn** vlastnost se automaticky přidá do vašeho aktivační události. Jinak přidejte tuto vlastnost uvnitř datové části odpovědi, která má pole, které chcete debatch. 
+
+Předpokládejme například, že máte rozhraní API, které vrátí této odpovědi: 
   
 ```json
 {
-    "status": "Succeeded",
-    "rows": [
-        {  
-            "id" : 938109380,
-            "name" : "myFirstRow"
+    "Status": "Succeeded",
+    "Rows": [ 
+        { 
+            "id": 938109380,
+            "name": "customer-name-one"
         },
         {
-            "id" : 938109381,
-            "name" : "mySecondRow"
+            "id": 938109381,
+            "name": "customer-name-two"
         }
     ]
 }
 ```
   
-Aplikace logiky stačí `rows` obsahu, takže můžete vytvořit aktivační událost jako tento ukázkový:  
+Aplikace logiky, stačí obsah z `Rows`, takže si můžete vytvořit aktivační událost jako tento ukázkový.
 
-```json
-"mySplitterTrigger": {
+``` json
+"myDebatchTrigger": {
     "type": "Http",
     "recurrence": {
-        "frequency": "minute",
-        "interval": 1
+        "frequency": "Second",
+        "interval": "1"
     },
-    "intputs": {
+    "inputs": {
         "uri": "https://mydomain.com/myAPI",
         "method": "GET"
     },
-    "splitOn": "@triggerBody()?.rows"
+    "splitOn": "@triggerBody()?.Rows"
 }
 ```
-> [!NOTE]  
-> Pokud použijete `SplitOn` příkaz, nelze získat vlastnosti, které jsou mimo pole, takže například nelze získat `status` vrácena vlastnost v odpovědi z rozhraní API.
-> Také v tomto příkladu používáme `?` operátor, takže jsme se můžete vyhnout selhání. Pokud `rows` vlastnost neexistuje. 
 
-Ano v definici pracovního postupu `@triggerBody().name` vrátí `myFirstRow` pro první spuštění a `mySecondRow` pro druhý spustit. Vzhled výstupy aktivační událost následujícím způsobem:  
+> [!NOTE]
+> Pokud použijete `SplitOn` příkaz, nelze získat vlastnosti, které jsou mimo pole. Takže například nelze získat `status` vrácena vlastnost v odpovědi z rozhraní API.
+> 
+> Aby nedošlo k selhání, pokud `Rows` vlastnost neexistuje, tento příklad používá `?` operátor.
+
+Teď můžete použít svou definici pracovního postupu `@triggerBody().name` získat `customer-name-one` z během prvního spuštění a `customer-name-two` z druhé spustit. Ano, aktivační událost výstupy vzhled jako tyto příklady:
 
 ```json
 {
     "body": {
         "id": 938109380,
-        "name": "mySecondRow"
+        "name": "customer-name-one"
     }
 }
 ```
@@ -435,26 +472,25 @@ Ano v definici pracovního postupu `@triggerBody().name` vrátí `myFirstRow` pr
 {
     "body": {
         "id": 938109381,
-        "name": "mySecondRow"
+        "name": "customer-name-two"
     }
 }
 ```
   
-## <a name="single-run-instance"></a>Spuštění jedné instance
+## <a name="triggers-fire-only-after-all-active-runs-finish"></a>Aktivační události: Ještě efektivněji, které dokončit pouze po všechny aktivní spustí
 
-Aktivuje opakování můžete nakonfigurovat tak, aby se aktivují, pouze když byly dokončeny všechny aktivní spustí. Pokud naplánované opakování se stane, když je spuštěna instance pracovního postupu, aktivační událost přeskočí a čeká, až další interval opakování naplánované zkontrolujte znovu.
-Chcete-li nakonfigurovat tato nastavení, nastavte `operationOptions` vlastnost `singleInstance`:
+Aktivuje opakování můžete nakonfigurovat tak, aby se aktivují, pouze když byly dokončeny všechny aktivní spustí. Chcete-li nakonfigurovat tato nastavení, nastavte `operationOptions` vlastnost `singleInstance`:
 
 ```json
-"triggers": {
-    "myHTTPTrigger": {
-        "type": "Http",
-        "inputs": { ... },
-        "recurrence": { ... },
-        "operationOptions": "singleInstance"
-    }
+"myTrigger": {
+    "type": "Http",
+    "inputs": { },
+    "recurrence": { },
+    "operationOptions": "singleInstance"
 }
 ```
+
+Pokud naplánované opakování se stane, když je spuštěna instance pracovního postupu, aktivační událost přeskočí a čeká, až další interval opakování naplánované zkontrolujte znovu.
 
 ## <a name="actions-overview"></a>Akce – přehled
 
@@ -468,6 +504,7 @@ Existuje mnoho typů akcí, každý s jedinečný chování. Každý typ akce m�
 | **ApiConnection**  | Funguje jako akce HTTP, ale používá [Microsoft spravovaná rozhraní API](https://docs.microsoft.com/azure/connectors/apis-list). | 
 | **ApiConnectionWebhook** | Funguje jako HTTPWebhook, ale používá rozhraní API pro spravovaný společností Microsoft. | 
 | **Odpověď** | Definuje odpověď pro příchozí volání. | 
+| **Vytvoření** | Vytvoří objekt libovolný z akce vstupy. | 
 | **Funkce** | Představuje Azure funkce. | 
 | **Počkej** | Počká pevnou hodnotu čas, nebo dokud určitý čas. | 
 | **Workflow** | Představuje vnořený pracovní postup. | 
@@ -476,21 +513,24 @@ Existuje mnoho typů akcí, každý s jedinečný chování. Každý typ akce m�
 | **Výběr** | Projekty každý element pole na novou hodnotu. Například můžete převést pole čísla do pole objektů. | 
 | **Tabulka** | Převede pole položek do tabulky CSV nebo HTML. | 
 | **Ukončení** | Zastaví pracovní postup. | 
+| **Počkej** | Počká pevnou hodnotu čas, nebo dokud určitý čas. | 
+| **Workflow** | Představuje vnořený pracovní postup. | 
 ||| 
 
 ### <a name="collection-actions"></a>Kolekce akce
 
 | Typ akce | Popis | 
 | ----------- | ----------- | 
-| **Podmínka** | Vyhodnotí výraz a na základě výsledku, spustí odpovídající firemní pobočky. | 
-| **Rozsah** | Použití pro logicky seskupování dalších akcí. | 
+| **If** | Vyhodnocení výrazu a na základě výsledku, spustí odpovídající firemní pobočky. | 
+| **Switch** | Proveďte různé akce, které jsou založené na konkrétní hodnoty objektu. | 
 | **ForEach** | Tato akce opakování iteruje v rámci pole a provede vnitřní akce na každou položku pole. | 
-| **Dokud** | Tato opakování akce provede vnitřní akce, dokud podmínku výsledků na hodnotu true. | 
-||| 
+| **dokud** | Tato opakování akce provede vnitřní akce, dokud podmínku výsledků na hodnotu true. | 
+| **Rozsah** | Použití pro logicky seskupování dalších akcí. | 
+|||  
 
 ## <a name="http-action"></a>Akce HTTP  
 
-Akce HTTP volání zadaný koncový bod a zkontrolujte odpovědi k určení, zda se má spustit pracovní postup. Příklad:
+Akce HTTP volá zadaný koncový bod a zkontroluje odpověď na zjistit, zda by měl pracovní postup spuštěn, nebo ne. Příklad:
   
 ```json
 "myLatestNewsAction": {
@@ -516,6 +556,16 @@ Zde `inputs` objekt trvá těchto parametrů požadovaných pro tvorbu volání 
 | Ověřování | Ne | Objekt | Představuje metodu, která požadavek by měl používat pro ověřování. Další informace najdete v tématu [odchozí ověření Scheduleru](../scheduler/scheduler-outbound-authentication.md). <p>Nad Scheduler, existuje více podporované jednu vlastnost: `authority`. Ve výchozím nastavení, tato hodnota je `https://login.windows.net` není-li zadána, ale můžete použít jinou hodnotu, jako například`https://login.windows\-ppe.net`. | 
 ||||| 
 
+Akce HTTP a APIConnection akce, které podporují *opakujte zásady*. Zásady opakování platí pro náhodnými poruchami, vyznačují jako stavové kódy HTTP 408 429 a 5xx kromě všechny výjimky připojení. Můžete definovat tyto zásady se `retryPolicy` objektu, jak je vidět tady:
+  
+```json
+"retryPolicy": {
+    "type": "<retry-policy-type>",
+    "interval": <retry-interval>,
+    "count": <number-of-retry-attempts>
+}
+```
+
 Tento příklad akce HTTP opakovat, pokud existují občasné chyby celkem tři spuštěních a 30 sekund zpoždění mezi jednotlivými pokusy o načítání dvakrát nejnovější informace:
   
 ```json
@@ -524,7 +574,7 @@ Tento příklad akce HTTP opakovat, pokud existují občasné chyby celkem tři 
     "inputs": {
         "method": "GET",
         "uri": "https://mynews.example.com/latest",
-        "retryPolicy" : {
+        "retryPolicy": {
             "type": "fixed",
             "interval": "PT30S",
             "count": 2
@@ -533,7 +583,7 @@ Tento příklad akce HTTP opakovat, pokud existují občasné chyby celkem tři 
 }
 ```
 
-Interval opakování je uveden v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Tento interval má výchozí a minimální hodnotu 20 sekund, zatímco maximální hodnota je jedna hodina. Výchozí a maximální počet opakování je čtyři hodiny. Pokud nezadáte definice zásady opakování, `fixed` strategie se používá s výchozí hodnoty a interval opakování. Chcete-li zakázat zásady opakovaných pokusů, nastavte její typ na `None`.
+Interval opakování je uveden v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Tento interval má výchozí a minimální hodnotu 20 sekund, zatímco maximální hodnota je jedna hodina. Výchozí a maximální počet opakování je čtyři hodiny. Pokud nezadáte definici zásady opakování `fixed` strategie se používá s výchozí hodnoty a interval opakování. Chcete-li zakázat zásady opakovaných pokusů, nastavte její typ na `None`.
 
 ### <a name="asynchronous-patterns"></a>Asynchronními vzory
 
@@ -551,14 +601,16 @@ Chcete-li zakázat asynchronní chování se popisuje výš, nastavte `operation
     "operationOptions": "DisableAsyncPattern"
 }
 ```
+
 <a name="asynchronous-limits"></a>
 
 #### <a name="asynchronous-limits"></a>Asynchronní omezení
 
-Můžete omezit dobu trvání pro asynchronní vzor na určitém časovém intervalu. Pokud časový interval uplynutí bez dosažení stavu terminálu, že stav akce označená `Cancelled` s `ActionTimedOut` kódu. Časový limit omezení je zadána ve formátu ISO 8601. Omezení můžete určit, jak je vidět tady:
+Můžete omezit dobu trvání pro asynchronní vzor na určitém časovém intervalu. Pokud časový interval uplynutí bez dosažení stavu terminálu, že stav akce označená `Cancelled` s `ActionTimedOut` kódu. Časový limit omezení je zadána ve formátu ISO 8601. Tento příklad ukazuje, jak můžete zadat omezení:
+
 
 ``` json
-"action-name": {
+"<action-name>": {
     "type": "Workflow|Webhook|Http|ApiConnectionWebhook|ApiConnection",
     "inputs": { },
     "limit": {
@@ -569,8 +621,7 @@ Můžete omezit dobu trvání pro asynchronní vzor na určitém časovém inter
   
 ## <a name="apiconnection-action"></a>APIConnection akce
 
-Akce APIConnection odkazuje konektor spravovaný společností Microsoft. Tato akce vyžaduje odkaz na platné připojení a informace o rozhraní API a parametry.
-Tady je příklad akce APIConnection:
+Tato akce odkazuje konektor spravovaný společností Microsoft, vyžadování odkaz na platné připojení a informace o rozhraní API a parametry. Tady je příklad akce APIConnection:
 
 ```json
 "Send_Email": {
@@ -608,6 +659,16 @@ Tady je příklad akce APIConnection:
 | operationsOptions | Ne | Řetězec | Definuje sadu zvláštní chování potlačit. | 
 | Ověřování | Ne | Objekt | Představuje metodu, která požadavek by měl používat pro ověřování. Další informace najdete v tématu [odchozí ověření Scheduleru](../scheduler/scheduler-outbound-authentication.md). |
 ||||| 
+
+Zásady opakování platí pro náhodnými poruchami, vyznačují jako stavové kódy HTTP 408 429 a 5xx kromě všechny výjimky připojení. Můžete definovat tyto zásady se `retryPolicy` objektu, jak je vidět tady:
+
+```json
+"retryPolicy": {
+    "type": "<retry-policy-type>",
+    "interval": <retry-interval>,
+    "count": <number-of-retry-attempts>
+}
+```
 
 ## <a name="apiconnection-webhook-action"></a>Akce webhooku APIConnection
 
@@ -658,7 +719,7 @@ Tato akce obsahuje datové části celé odpovědi z požadavku HTTP a zahrnuje 
   
 ```json
 "myResponseAction": {
-    "type": "response",
+    "type": "Response",
     "inputs": {
         "statusCode": 200,
         "body": {
@@ -682,16 +743,36 @@ Akce odpovědi má zvláštní omezení, která se nevztahují na jiné akce, ko
   
 * Nelze použít pracovního postupu s akce reagující `splitOn` příkazů v definici aktivační událost, protože volání vytvoří několik spustí. V důsledku toho zkontrolujte pro tento případ, když je pracovní postup operaci PUT a vrátí odpověď "Chybný požadavek".
 
-## <a name="function-action"></a>Akce – funkce   
+## <a name="compose-action"></a>Vytvořit akce
+
+Tato akce umožňuje vytvořit libovolný objekt a výstupem je výsledkem vyhodnocení akce vstupy. 
+
+> [!NOTE]
+> Můžete použít `Compose` akce pro tvorbu žádný výstup, včetně objektů, pole a jiný typ nativně podporuje logiku aplikace jako soubor XML a binární.
+
+Například můžete použít `Compose` akce pro slučování výstupy z více akcí:
+
+```json
+"composeUserRecordAction": {
+    "type": "Compose",
+    "inputs": {
+        "firstName": "@actions('getUser').firstName",
+        "alias": "@actions('getUser').alias",
+        "thumbnailLink": "@actions('lookupThumbnail').url"
+    }
+}
+```
+
+## <a name="function-action"></a>Akce – funkce
 
 Tato akce vám umožní představují a volání [Azure funkce](../azure-functions/functions-overview.md), například:
 
 ```json
-"my-Azure-Function-name": {
+"<my-Azure-Function-name>": {
    "type": "Function",
     "inputs": {
         "function": {
-            "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Web/sites/{your-Azure-function-app-name}/functions/{your-Azure-function-name}"
+            "id": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/sites/<your-Azure-function-app-name>/functions/<your-Azure-function-name>"
         },
         "queries": {
             "extrafield": "specialValue"
@@ -708,6 +789,7 @@ Tato akce vám umožní představují a volání [Azure funkce](../azure-functio
     "runAfter": {}
 }
 ```
+
 | Název elementu | Požaduje se | Typ | Popis | 
 | ------------ | -------- | ---- | ----------- |  
 | id – funkce | Ano | Řetězec | ID prostředku pro funkci Azure, kterou chcete volat. | 
@@ -717,14 +799,162 @@ Tato akce vám umožní představují a volání [Azure funkce](../azure-functio
 | hlavní část | Ne | Objekt | Představuje datovou část, která je odeslána koncovému bodu. | 
 |||||
 
-Při ukládání aplikace logiky Azure Logic Apps provádí kontroly na odkazované funkce:
+Při ukládání aplikace logiky, modul Logic Apps provádí některé kontroly na odkazované funkce:
 
 * Musíte mít přístup k funkci.
-* Můžete použít pouze standardní aktivační události protokolu HTTP nebo obecné aktivační události webhooku JSON.
+* Můžete použít pouze standardní triggeru protokolu HTTP nebo obecné aktivační události Webhooku JSON.
 * Funkce by neměl mít všechny trasy definované.
-* Pouze "funkce" a "anonymní" oprávnění na úrovni je povolen.
+* Jsou povoleny pouze "funkce" a "anonymní" autorizace úrovně.
 
-Adresa URL aktivační události je načíst, do mezipaměti a použít za běhu. Takže pokud všechny operace by způsobila neplatnost adresu URL v mezipaměti, akce selže za běhu. Chcete-li tento problém obejít, uložte aplikaci logiky znovu, což způsobí, že aplikace logiky načíst a znovu mezipaměti adresu URL aktivační události.
+> [!NOTE]
+> Modul Logic Apps načítá a ukládá do mezipaměti adresu URL aktivační událost, která se používá za běhu. Takže pokud všechny operace by způsobila neplatnost adresu URL v mezipaměti, akce selže za běhu. Chcete-li tento problém obejít, uložte aplikaci logiky znovu, což způsobí, že aplikace logiky načíst a znovu mezipaměti adresu URL aktivační událost.
+
+## <a name="select-action"></a>Vyberte akci
+
+Tato akce umožňuje projektu každý element pole na novou hodnotu. Tento příklad převede pole čísel na pole objektů:
+
+```json
+"selectNumbersAction": {
+    "type": "Select",
+    "inputs": {
+        "from": [ 1, 3, 0, 5, 4, 2 ],
+        "select": { "number": "@item()" }
+    }
+}
+```
+
+| Název | Požaduje se | Typ | Popis | 
+| ---- | -------- | ---- | ----------- | 
+| od | Ano | Pole | Zdrojové pole |
+| vybrat | Ano | Všechny | Projekce použít pro každý prvek v poli zdroje |
+||||| 
+
+Výstup `select` pole, které má stejné mohutnost jako vstupní pole není akce. Každý prvek převede podle definice `select` vlastnost. Pokud vstup je prázdné pole, je výstup také prázdné pole.
+
+## <a name="terminate-action"></a>Ukončit akce
+
+Tato akce zastaví spuštění pracovního postupu zrušení všechny akce v průběhu a přeskočení všechny zbývající akce. Akce ukončení neovlivní již dokončených akcí.
+
+Chcete-li například zastavit spuštění, který má `Failed` stavu:
+
+```json
+"HandleUnexpectedResponse": {
+    "type": "Terminate",
+    "inputs": {
+        "runStatus": "Failed",
+        "runError": {
+            "code": "UnexpectedResponse",
+            "message": "Received an unexpected response",
+        }
+    }
+}
+```
+
+| Název | Požaduje se | Typ | Popis | 
+| ---- | -------- | ---- | ----------- | 
+| runStatus | Ano | Řetězec | Cílových spouštění je stav, který je buď `Failed` nebo `Cancelled` |
+| runError | Ne | Objekt | Podrobnosti o chybě. Podporované pouze tehdy, když `runStatus` je nastaven na `Failed`. |
+| runError kódu | Ne | Řetězec | Kód chyby spuštění |
+| zpráva runError | Ne | Řetězec | Chybová zpráva spuštění | 
+||||| 
+
+## <a name="query-action"></a>Akce dotazu
+
+Tato akce umožňuje filtrovat pole na základě podmínky. 
+
+> [!NOTE]
+> Vytvářené akci nelze použít k vytvoření žádný výstup, včetně objektů, pole a jiný typ nativně podporuje logiku aplikace jako soubor XML a binární.
+
+Chcete-li například vyberte čísla větší než 2:
+
+```json
+"filterNumbersAction": {
+    "type": "Query",
+    "inputs": {
+        "from": [ 1, 3, 0, 5, 4, 2 ],
+        "where": "@greater(item(), 2)"
+    }
+}
+```
+
+| Název | Požaduje se | Typ | Popis | 
+| ---- | -------- | ---- | ----------- | 
+| od | Ano | Pole | Zdrojové pole |
+| kde | Ano | Řetězec | Podmínku, která se použije pro každý element ze zdrojové pole. Pokud žádné hodnoty odpovídají `where` podmínka, výsledek je prázdné pole. |
+||||| 
+
+Výstup `query` akce je pole, které má elementy ze vstupní pole, které splňují zadanou podmínku.
+
+## <a name="table-action"></a>Tabulka akcí
+
+Tato akce umožňuje převod pole do tabulky CSV nebo HTML. 
+
+```json
+"ConvertToTable": {
+    "type": "Table",
+    "inputs": {
+        "from": "<source-array>",
+        "format": "CSV | HTML"
+    }
+}
+```
+
+| Název | Požaduje se | Typ | Popis | 
+| ---- | -------- | ---- | ----------- | 
+| od | Ano | Pole | Zdrojové pole. Pokud `from` hodnota vlastnosti je prázdné pole, výstup je prázdná tabulka. | 
+| Formát | Ano | Řetězec | Formát tabulky, který chcete, "CSV" nebo "HTML" | 
+| sloupce | Ne | Pole | Sloupce tabulky, které chcete. Slouží k přepisu výchozí tabulky tvar. | 
+| záhlaví sloupce | Ne | Řetězec | Záhlaví sloupce | 
+| Hodnota sloupce | Ano | Řetězec | Hodnota sloupce | 
+||||| 
+
+Předpokládejme, že definujete tabulka akcí, jako v tomto příkladu:
+
+```json
+"convertToTableAction": {
+    "type": "Table",
+    "inputs": {
+        "from": "@triggerBody()",
+        "format": "HTML"
+    }
+}
+```
+
+A používat toto pole pro `@triggerBody()`:
+
+```json
+[ {"ID": 0, "Name": "apples"},{"ID": 1, "Name": "oranges"} ]
+```
+
+Toto je výstup z tohoto příkladu:
+
+<table><thead><tr><th>ID</th><th>Název</th></tr></thead><tbody><tr><td>0</td><td>jablka</td></tr><tr><td>1</td><td>Pomeranče</td></tr></tbody></table>
+
+Chcete-li přizpůsobit tuto tabulku, můžete určit sloupce, které explicitně, například:
+
+```json
+"ConvertToTableAction": {
+    "type": "Table",
+    "inputs": {
+        "from": "@triggerBody()",
+        "format": "html",
+        "columns": [ 
+            {
+                "header": "Produce ID",
+                "value": "@item().id"
+            },
+            {
+              "header": "Description",
+              "value": "@concat('fresh ', item().name)"
+            }
+        ]
+    }
+}
+```
+
+Toto je výstup z tohoto příkladu:
+
+<table><thead><tr><th>Vytvoření ID</th><th>Popis</th></tr></thead><tbody><tr><td>0</td><td>Čerstvá jablka</td></tr><tr><td>1</td><td>čerstvé pomeranče</td></tr></tbody></table>
 
 ## <a name="wait-action"></a>Počkejte akce  
 
@@ -756,8 +986,8 @@ Alternativně počkejte chvilku konkrétní v čase, můžete v tomto příkladu
 ```
   
 > [!NOTE]  
-> Doba čekání buď pomocí parametru `until` objekt nebo `interval` objektu, ale ne obojí.
-  
+> U buď můžete určit dobu čekání `interval` objekt nebo `until` objektu, ale ne obojí.
+
 | Název elementu | Požaduje se | Typ | Popis | 
 | ------------ | -------- | ---- | ----------- | 
 | do | Ne | Objekt | Doba čekání na základě v bodě v čase | 
@@ -767,18 +997,16 @@ Alternativně počkejte chvilku konkrétní v čase, můžete v tomto příkladu
 | počet intervalu | Ano | Integer | Kladné celé číslo představující počet jednotek intervalu používat po celou dobu čekání | 
 ||||| 
 
-## <a name="workflow-action"></a>Akce pracovního postupu   
+## <a name="workflow-action"></a>Akce pracovního postupu
 
-Tato akce představuje jiného pracovního postupu. Služba Logic Apps provede kontrolu přístupu na pracovního postupu nebo přesněji řečeno, aktivační události, což znamená, že je nutné mít přístup do pracovního postupu.
-
-Tato akce výstupy jsou založené na definovat v `response` akce pro podřízené pracovní postup. Pokud není definována `response` akce a potom výstupy jsou prázdné.
+Tato akce umožňuje vnořit pracovního postupu. Modul Logic Apps provede kontrolu přístupu na podřízené pracovní postup, přesněji řečeno, aktivační událost, takže musíte mít přístup k podřízeného pracovního postupu. Příklad:
 
 ```json
-"myNestedWorkflowAction": {
+"<my-nested-workflow-action-name>": {
     "type": "Workflow",
     "inputs": {
         "host": {
-            "id": "/subscriptions/xxxxyyyyzzz/resourceGroups/rg001/providers/Microsoft.Logic/mywf001",
+            "id": "/subscriptions/<my-subscription-ID>/resourceGroups/<my-resource-group-name>/providers/Microsoft.Logic/<my-nested-workflow-action-name>",
             "triggerName": "mytrigger001"
         },
         "queries": {
@@ -804,259 +1032,199 @@ Tato akce výstupy jsou založené na definovat v `response` akce pro podřízen
 | Dotazy | Ne | Objekt | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
 | hlavičky | Ne | Objekt | Představuje každá hlavička odeslaný v požadavku. <p>Chcete-li například nastavení jazyka a typu na vyžádání: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | hlavní část | Ne | Objekt | Představuje datovou část, která je odeslána koncovému bodu. | 
-|||||   
-
-## <a name="compose-action"></a>Vytvořit akce
-
-Tato akce umožňuje vytvořit libovolný objekt a výstupem je výsledkem vyhodnocení akce vstupy. 
-
-> [!NOTE]
-> Můžete použít `Compose` akce pro tvorbu žádný výstup, včetně objektů, pole a jiný typ nativně podporuje logiku aplikace jako soubor XML a binární.
-
-Například můžete použít akci vytvářené ke sloučení výstupy z více akcí:
-
-```json
-"composeUserRecordAction": {
-    "type": "Compose",
-    "inputs": {
-        "firstName": "@actions('getUser').firstName",
-        "alias": "@actions('getUser').alias",
-        "thumbnailLink": "@actions('lookupThumbnail').url"
-    }
-}
-```
-
-## <a name="select-action"></a>Vyberte akci
-
-Tato akce umožňuje projektu každý element pole na novou hodnotu.
-Například k převedení pole čísla do pole objektů, můžete použít:
-
-```json
-"selectNumbersAction": {
-    "type": "Select",
-    "inputs": {
-        "from": [ 1, 3, 0, 5, 4, 2 ],
-        "select": { "number": "@item()" }
-    }
-}
-```
-
-| Název | Požaduje se | Typ | Popis | 
-| ---- | -------- | ---- | ----------- | 
-| od | Ano | Pole | Zdrojové pole |
-| vybrat | Ano | Všechny | Projekce použít pro každý prvek v poli zdroje |
 ||||| 
 
-Výstup `select` pole, které má stejné mohutnost jako vstupní pole není akce. Každý prvek převede podle definice `select` vlastnost. Pokud vstup je prázdné pole, je výstup také prázdné pole.
-
-## <a name="query-action"></a>Akce dotazu
-
-Tato akce umožňuje filtrovat pole na základě podmínky. Tento příklad vybere čísla větší než 2:
-
-```json
-"filterNumbersAction": {
-    "type": "Query",
-    "inputs": {
-        "from": [ 1, 3, 0, 5, 4, 2 ],
-        "where": "@greater(item(), 2)"
-    }
-}
-```
-
-Výstup `query` akce je pole, které má elementy ze vstupní pole, které splňují zadanou podmínku.
-
-> [!NOTE]
-> Pokud žádné hodnoty odpovídají `where` podmínka, výsledek je prázdné pole.
-
-| Název | Požaduje se | Typ | Popis | 
-| ---- | -------- | ---- | ----------- | 
-| od | Ano | Pole | Zdrojové pole |
-| kde | Ano | Řetězec | Podmínku, která se použije pro každý element ze zdrojové pole |
-||||| 
-
-## <a name="table-action"></a>Tabulka akcí
-
-Tato akce umožňuje převod pole položek do **CSV** nebo **HTML** tabulky. Předpokládejme například, že máte `@triggerBody()` s toto pole:
-
-```json
-[ 
-    {
-      "id": 0,
-      "name": "apples"
-    },
-    {
-      "id": 1, 
-      "name": "oranges"
-    }
-]
-```
-
-A definovat akce tabulky jako tento ukázkový:
-
-```json
-"convertToTableAction": {
-    "type": "Table",
-    "inputs": {
-        "from": "@triggerBody()",
-        "format": "html"
-    }
-}
-```
-
-Výsledek z tohoto příkladu vypadá této tabulky HTML: 
-
-<table><thead><tr><th>id</th><th>jméno</th></tr></thead><tbody><tr><td>0</td><td>jablka</td></tr><tr><td>1</td><td>Pomeranče</td></tr></tbody></table>
-
-Chcete-li přizpůsobit tuto tabulku, můžete určit sloupce, které explicitně, například:
-
-```json
-"ConvertToTableAction": {
-    "type": "Table",
-    "inputs": {
-        "from": "@triggerBody()",
-        "format": "html",
-        "columns": [ 
-            {
-                "header": "Produce ID",
-                "value": "@item().id"
-            },
-            {
-              "header": "Description",
-              "value": "@concat('fresh ', item().name)"
-            }
-        ]
-    }
-}
-```
-
-Výsledek z tohoto příkladu vypadá této tabulky HTML: 
-
-<table><thead><tr><th>Vytvoření ID</th><th>Popis</th></tr></thead><tbody><tr><td>0</td><td>Čerstvá jablka</td></tr><tr><td>1</td><td>čerstvé pomeranče</td></tr></tbody></table>
-
-| Název | Požaduje se | Typ | Popis | 
-| ---- | -------- | ---- | ----------- | 
-| od | Ano | Pole | Zdrojové pole. Pokud `from` hodnota vlastnosti je prázdné pole, výstup je prázdná tabulka. | 
-| Formát | Ano | Řetězec | Formát tabulky, který chcete buď **CSV** nebo **HTML** | 
-| sloupce | Ne | Pole | Sloupce tabulky, které chcete. Slouží k přepisu výchozí tabulky tvar. | 
-| záhlaví sloupce | Ne | Řetězec | Záhlaví sloupce | 
-| Hodnota sloupce | Ano | Řetězec | Hodnota sloupce | 
-||||| 
-
-## <a name="terminate-action"></a>Ukončit akce
-
-Tato akce zastaví spustit pracovní postup, zruší všechny během letu akce a přeskočí všechny zbývající akce. Akce ukončení neovlivní žádné dokončení akce.
-
-Například k zastavení spuštění, které má "se nezdařilo" stav, můžete v tomto příkladu:
-
-```json
-"handleUnexpectedResponseAction": {
-    "type": "Terminate",
-    "inputs": {
-        "runStatus": "Failed",
-        "runError": {
-            "code": "UnexpectedResponse",
-            "message": "Received an unexpected response"
-        }
-    }
-}
-```
-
-| Název | Požaduje se | Typ | Popis | 
-| ---- | -------- | ---- | ----------- | 
-| runStatus | Ano | Řetězec | Cílových spouštění je stav, který je buď `Failed` nebo`Cancelled` |
-| runError | Ne | Objekt | Podrobnosti o chybě. Podporované pouze tehdy, když `runStatus` je nastaven na `Failed`. |
-| runError kódu | Ne | Řetězec | Kód chyby spuštění |
-| zpráva runError | Ne | Řetězec | Chybová zpráva spuštění |
-||||| 
+Tato akce výstupy jsou založené na definovat v `Response` akce pro podřízené pracovní postup. Pokud se nedefinuje podřízeného pracovního postupu `Response` akce, výstupy jsou prázdné.
 
 ## <a name="collection-actions-overview"></a>Přehled akce kolekce
 
-Některé akce mohou obsahovat akce v rámci sami. Odkaz akce v kolekci může být odkaz přímo mimo kolekce. Například pokud definujete `Http` v `scope`, pak `@body('http')` je stále platný kdekoli v pracovním postupu. Akce může mít v kolekci `runAfter` pouze s další kroky provedené ve stejné kolekci.
+Abyste řízení provádění pracovního postupu, akce kolekce může obsahovat další akce. Můžete odkazovat přímo k odkazování na akce v kolekci mimo kolekce. Například pokud definujete `Http` akce v oboru, pak `@body('http')` je stále platný kdekoli v pracovním postupu. Také akce v kolekci můžete jenom "spustit" dalších akcí ve stejné kolekci.
 
-## <a name="condition-if-action"></a>Podmínka: Pokud akce
+## <a name="if-action"></a>Pokud se akce
 
-Tato akce umožňuje vyhodnotit podmínku a provést větev založené na tom, jestli je vyhodnocen `true`. 
-  
+Tato akce, která je podmíněného prohlášení, umožňuje vyhodnotit podmínku a provést větev založené na tom, jestli se výraz vyhodnotí jako true. Pokud je podmínka vyhodnocena jako true úspěšně, podmínky je označen "Succeeded". Akce, které jsou v `actions` nebo `else` objekty být tyto hodnoty:
+
+* "Bylo úspěšně dokončeno" při jejich spuštění a úspěšné
+* "Se nezdařilo" při jejich spuštění a selhání
+* "" Při přeskočen nefunguje odpovídající firemní pobočky
+
+Další informace o [podmíněné příkazy v aplikacích logiky](../logic-apps/logic-apps-control-flow-conditional-statement.md).
+
+``` json
+"<my-condition-name>": {
+  "type": "If",
+  "expression": "<condition>",
+  "actions": {
+    "if-true-run-this-action": {
+      "type": <action-type>,
+      "inputs": {},
+      "runAfter": {}
+    }
+  },
+  "else": {
+    "actions": {
+        "if-false-run-this-action": {
+            "type": <action-type>,
+            "inputs": {},
+            "runAfter": {}
+        }
+    }
+  },
+  "runAfter": {}
+}
+```
+
+| Název | Požaduje se | Typ | Popis | 
+| ---- | -------- | ---- | ----------- | 
+| Akce | Ano | Objekt | Vnitřní akce, které spustí, když `expression` vyhodnocen `true` | 
+| výraz | Ano | Řetězec | Výraz k vyhodnocení |
+| else | Ne | Objekt | Vnitřní akce, které spustí, když `expression` vyhodnocen `false` |
+||||| 
+
+Příklad:
+
 ```json
 "myCondition": {
     "type": "If",
     "actions": {
-        "if_true": {
+        "if-true-check-this-website": {
             "type": "Http",
             "inputs": {
                 "method": "GET",
-                "uri": "http://myurl"
+                "uri": "http://this-url"
             },
             "runAfter": {}
         }
     },
     "else": {
         "actions": {
-            "if_false": {
+            "if-false-check-this-other-website": {
                 "type": "Http",
                 "inputs": {
                     "method": "GET",
-                    "uri": "http://myurl"
+                    "uri": "http://this-other-url"
                 },
                 "runAfter": {}
             }
         }
-    },
-    "expression": "@equals(triggerBody(), json(true))",
-    "runAfter": {}
-}
-``` 
-
-| Název | Požaduje se | Typ | Popis | 
-| ---- | -------- | ---- | ----------- | 
-| Akce | Ano | Objekt | Vnitřní akce, které spustí, když `expression` vyhodnocen`true` | 
-| výraz | Ano | Řetězec | Výraz k vyhodnocení |
-| else | Ne | Objekt | Vnitřní akce, které spustí, když `expression` vyhodnocen`false` |
-||||| 
-
-Pokud je výsledkem úspěšně, podmínky je označen jako `Succeeded`. Akce buď `actions` nebo `else` objekty vyhodnocení: 
-
-* `Succeeded`Při spuštění a úspěšné
-* `Failed`Při spuštění a selhání
-* `Skipped`Pokud nefunguje odpovídající firemní pobočky
-
-Zde jsou příklady, které ukazují, jak můžete podmínky použití výrazů v akci:
-  
-| Hodnota JSON | Výsledek | 
-| ---------- | -------| 
-| `"expression": "@parameters('hasSpecialAction')"` | Hodnotu, která vyhodnotí na hodnotu true způsobí, že tato podmínka předat. Podporuje pouze výrazy logických hodnot. Chcete-li jiné typy převést na logickou hodnotu, použijte tyto funkce: `empty` a`equals` | 
-| `"expression": "@greater(actions('act1').output.value, parameters('threshold'))"` | Podporuje funkce porovnání. V tomto příkladu akce je spuštěna pouze při výstup `act1` je větší než prahová hodnota. | 
-| `"expression": "@or(greater(actions('act1').output.value, parameters('threshold')), less(actions('act1').output.value, 100))"` | Podporuje funkce logiku pro vytvoření vnořené výrazy logických hodnot. V tomto příkladu akci spustí, když výstup `act1` je nad prahovou hodnotou nebo nižší než 100. | 
-| `"expression": "@equals(length(actions('act1').outputs.errors), 0))"` | Pokud chcete zkontrolovat, zda pole má všechny položky, můžete použít funkce pole. V tomto příkladu akci spustí, když `errors` pole je prázdné. | 
-| `"expression": "parameters('hasSpecialAction')"` | Chyba, není platný podmínky, protože @ je vyžadován pro podmínky. |  
-|||
-
-## <a name="scope-action"></a>Akce oboru
-
-Tato akce umožňuje logicky akce skupiny v pracovním postupu.
-
-```json
-"myScope": {
-    "type": "Scope",
-    "actions": {
-        "call_bing": {
-            "type": "Http",
-             "inputs": {
-                "url": "http://www.bing.com"
-            }
-        }
     }
+}
+```  
+
+### <a name="how-conditions-can-use-expressions-in-actions"></a>Jak podmínky použití výrazů v akce
+
+Zde jsou některé příklady, které ukazují, jak můžete použít výrazy v podmínkách:
+  
+| Výraz JSON | Výsledek | 
+| --------------- | ------ | 
+| `"expression": "@parameters('hasSpecialAction')"` | Libovolná hodnota, která vyhodnotí jako true způsobí, že tato podmínka předat. Podporuje pouze výrazy logických hodnot. Chcete-li jiné typy převést na logickou hodnotu, použijte tyto funkce: `empty` nebo `equals` | 
+| `"expression": "@greater(actions('action1').output.value, parameters('threshold'))"` | Podporuje funkce porovnání. V tomto příkladu akci spustí pouze v případě, že výstupem action1 je větší než prahová hodnota. | 
+| `"expression": "@or(greater(actions('action1').output.value, parameters('threshold')), less(actions('action1').output.value, 100))"` | Podporuje funkce logiku pro vytvoření vnořené výrazy logických hodnot. V tomto příkladu spustí akci v případě, že výstupem action1 je více než prahová hodnota nebo pod 100. | 
+| `"expression": "@equals(length(actions('action1').outputs.errors), 0))"` | Pokud chcete zkontrolovat, zda pole má všechny položky, můžete použít funkce pole. V tomto příkladu spustí akci při chybách pole je prázdné. | 
+| `"expression": "parameters('hasSpecialAction')"` | Tento výraz způsobí chybu a není platný stav. Musíte použít podmínek "@" symbol. | 
+||| 
+
+## <a name="switch-action"></a>Přepínač akce
+
+Tato akce, který je příkaz switch, provádí různé akce podle konkrétní hodnoty objektu, výraz nebo token. Tato akce vyhodnocena jako objekt, výraz nebo token, vybere případu, který odpovídá výsledek a spouští akce pro pouze v takovém případě. Když žádném případě odpovídá výsledek, spustí se výchozí akci. Po spuštění příkazu switch pouze jeden případ by měl odpovídat výsledek. Další informace o [přepínač příkazy ve aplikace logiky](../logic-apps/logic-apps-control-flow-switch-statement.md).
+
+``` json
+"<my-switch-statement-name>": {
+   "type": "Switch",
+   "expression": "<evaluate-this-object-expression-token>",
+   "cases": {
+      "myCase1" : {
+         "actions" : {
+           "myAction1": {}
+         },
+         "case": "<result1>"
+      },
+      "myCase2": {
+         "actions" : {
+           "myAction2": {}
+         },
+         "case": "<result2>"
+      }
+   },
+   "default": {
+      "actions": {
+          "myDefaultAction": {}
+      }
+   },
+   "runAfter": {}
 }
 ```
 
 | Název | Požaduje se | Typ | Popis | 
-| ---- | -------- | ---- | ----------- |  
-| Akce | Ano | Objekt | Vnitřní akce, které jsou spouštěny v rámci oboru |
+| ---- | -------- | ---- | ----------- | 
+| výraz | Ano | Řetězec | Objekt, výraz nebo tokenu k vyhodnocení | 
+| Případy | Ano | Objekt | Obsahuje sadu vnitřní akce, které běží na základě na výsledek výrazu. | 
+| Případ | Ano | Řetězec | Hodnota, která má odpovídat výsledek | 
+| Akce | Ano | Objekt | Vnitřní akce, které spustit pro případ odpovídající výsledek výrazu | 
+| výchozí | Ne | Objekt | Vnitřní akce, které spustit, když žádné případy odpovídají výsledku | 
 ||||| 
 
-## <a name="foreach-action"></a>Akce ForEach
+Příklad:
 
-Tato akce opakování iteruje v rámci pole a provede vnitřní akce na každou položku pole. Ve výchozím nastavení `foreach` smyčky běží paralelně a může běžet 20 spuštěních paralelně ve stejnou dobu. Chcete-li nastavit pravidla spouštění, použijte `operationOptions` parametr.
+``` json
+"myApprovalEmailAction": {
+   "type": "Switch",
+   "expression": "@body('Send_approval_email')?['SelectedOption']",
+   "cases": {
+      "Case": {
+         "actions" : {
+           "Send_an_email": {...}
+         },
+         "case": "Approve"
+      },
+      "Case_2": {
+         "actions" : {
+           "Send_an_email_2": {...}
+         },
+         "case": "Reject"
+      }
+   },
+   "default": {
+      "actions": {}
+   },
+   "runAfter": {
+      "Send_approval_email": [
+         "Succeeded"
+      ]
+   }
+}
+```
+
+## <a name="foreach-action"></a>Akce foreach
+
+Tato akce opakování iteruje v rámci pole a provede vnitřní akce na každou položku pole. Ve výchozím nastavení smyčka typu Foreach běží paralelně. Pro maximální počet paralelní cyklů, který "pro každou" smyčky můžete spustit najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). Chcete-li spustit každý cyklus postupně, nastavte `operationOptions` parametru `Sequential`. Další informace o [Foreach cyklu v aplikacích logiky](../logic-apps/logic-apps-control-flow-loops.md#foreach-loop).
+
+```json
+"<my-forEach-loop-name>": {
+    "type": "Foreach",
+    "actions": {
+        "myInnerAction1": {
+            "type": "<action-type>",
+            "inputs": {}
+        },
+        "myInnerAction2": {
+            "type": "<action-type>",
+            "inputs": {}
+        }
+    },
+    "foreach": "<array>",
+    "runAfter": {}
+}
+```
+
+| Název | Požaduje se | Typ | Popis | 
+| ---- | -------- | ---- | ----------- | 
+| Akce | Ano | Objekt | Vnitřní akce pro spuštění uvnitř smyčky | 
+| foreach | Ano | Řetězec | Pole k iteraci v rámci | 
+| operationOptions | Ne | Řetězec | Určuje operaci možnosti přizpůsobení chování. Aktuálně podporuje pouze `Sequential` postupně spuštění iterací kde je paralelní výchozí chování. |
+||||| 
+
+Příklad:
 
 ```json
 "forEach_EmailAction": {
@@ -1079,37 +1247,28 @@ Tato akce opakování iteruje v rámci pole a provede vnitřní akce na každou 
             }
         }
     },
+    "foreach": "@body('email_filter')",
     "runAfter": {
         "email_filter": [ "Succeeded" ]
     }
 }
 ```
 
-| Název | Požaduje se | Typ | Popis | 
-| ---- | -------- | ---- | ----------- | 
-| Akce | Ano | Objekt | Vnitřní akce pro spuštění uvnitř smyčky | 
-| foreach | Ano | Řetězec | Pole k iteraci v rámci | 
-| operationOptions | Ne | Řetězec | Určuje operaci možnosti přizpůsobení chování. Aktuálně podporuje pouze `Sequential` postupně spuštění iterací kde je paralelní výchozí chování. |
-||||| 
-
 ## <a name="until-action"></a>Dokud akce
 
-Tato opakování akce spustí vnitřní akce až podmínku výsledky na hodnotu true.
+Tato opakování akce spustí vnitřní akce, dokud je podmínka vyhodnocena jako jako true. Další informace o ["do" smyčky v aplikacích logiky](../logic-apps/logic-apps-control-flow-loops.md#until-loop).
 
 ```json
- "runUntilSucceededAction": {
+ "<my-Until-loop-name>": {
     "type": "Until",
     "actions": {
-        "Http": {
-            "type": "Http",
-            "inputs": {
-                "method": "GET",
-                "uri": "http://myurl"
-            },
+        "myActionName": {
+            "type": "<action-type>",
+            "inputs": {},
             "runAfter": {}
         }
     },
-    "expression": "@equals(outputs('Http')['statusCode', 200)",
+    "expression": "<myCondition>",
     "limit": {
         "count": 1000,
         "timeout": "PT1H"
@@ -1127,7 +1286,56 @@ Tato opakování akce spustí vnitřní akce až podmínku výsledky na hodnotu 
 | timeout | Ne | Řetězec | Časový limit v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) který určuje, jak dlouho má spustit smyčky |
 ||||| 
 
+Příklad:
+
+```json
+ "runUntilSucceededAction": {
+    "type": "Until",
+    "actions": {
+        "Http": {
+            "type": "Http",
+            "inputs": {
+                "method": "GET",
+                "uri": "http://myurl"
+            },
+            "runAfter": {}
+        }
+    },
+    "expression": "@equals(outputs('Http')['statusCode', 200)",
+    "limit": {
+        "count": 100,
+        "timeout": "PT1H"
+    },
+    "runAfter": {}
+}
+```
+
+## <a name="scope-action"></a>Akce oboru
+
+Tato akce umožňuje logicky akce skupiny v pracovním postupu. Oboru také získá svůj vlastní stav po všechny akce v dokončit tento obor systémem. Další informace o [obory](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md).
+
+```json
+"<my-scope-action-name>": {
+    "type": "Scope",
+    "actions": {
+        "myInnerAction1": {
+            "type": "<action-type>",
+            "inputs": {}
+        },
+        "myInnerAction2": {
+            "type": "<action-type>",
+            "inputs": {}
+        }
+    }
+}
+```
+
+| Název | Požaduje se | Typ | Popis | 
+| ---- | -------- | ---- | ----------- |  
+| Akce | Ano | Objekt | Vnitřní akce, které jsou spouštěny v rámci oboru |
+||||| 
+
 ## <a name="next-steps"></a>Další postup
 
-* [Jazyk definic workflowů funkce](../logic-apps/logic-apps-workflow-definition-language.md)
-* [Rozhraní API REST pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflows)
+* Další informace o [jazyk definic workflowů funkce](../logic-apps/logic-apps-workflow-definition-language.md)
+* Další informace o [pracovního postupu REST API](https://docs.microsoft.com/rest/api/logic/workflows)

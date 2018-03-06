@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 8146c2a41a2b8fc241131a42ec74227795867609
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: aa213a3b1a8949f0fca5e4bbb7ec5a6a775ae6ec
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="sample-of-custom-data-flow-transforms-python"></a>Ukázka vlastních dat toku transformací (Python) 
 Je název transformace v nabídce **transformace toku dat (skript)**. Před čtením této příloha, přečtěte si [Python rozšiřitelnost přehled](data-prep-python-extensibility-overview.md).
@@ -42,8 +42,8 @@ Reformulates data podle vzorce pro snížení zatížení odlehlé hodnoty ve sl
 
 ## <a name="transform-data-flow"></a>Transformace toku dat
 ### <a name="fill-down"></a>Vyplnit dolů 
-Výplně dolů vyžaduje dva transformací. Předpokládá data, která vypadá takto:
 
+Výplně dolů vyžaduje dva transformací. Předpokládá data, která vypadá jako v následující tabulce:
 
 |Stav         |Město       |
 |--------------|-----------|
@@ -58,16 +58,17 @@ Výplně dolů vyžaduje dva transformací. Předpokládá data, která vypadá 
 |              |Síť SAN Antonio|
 |              |Houston    |
 
-Nejprve vytvořte transformaci přidat sloupec (skript), který obsahuje následující kód:
+1. Vytvořte transformaci "Přidat sloupec (skript)" pomocí následujícího kódu:
 ```python
     row['State'] if len(row['State']) > 0 else None
 ```
-Nyní vytvoří transformace transformace toku dat (skript), který obsahuje následující kód:
+
+2. Vytvořte transformace "Transformace datový tok (skript)", který obsahuje následující kód:
 ```python
     df = df.fillna( method='pad')
 ```
 
-Data nyní vypadá takto:
+Data se nyní vypadá jako v následující tabulce:
 
 |Stav         |Nový stav         |Město       |
 |--------------|--------------|-----------|

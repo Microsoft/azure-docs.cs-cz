@@ -5,17 +5,17 @@ services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 5d624735a91d0828c4ac3796bde6c17acf6e131a
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 497c1725fc4554792add11c0ec069d1628a89fbd
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="split-column-by-example-transformation"></a>Rozdělit sloupec podle příkladu transformace
 Tato transformace predictively rozdělí obsah sloupce na smysluplný hranicích bez zásahu uživatele. Algoritmus rozdělení vybere hranice po analýze obsahu sloupce. Může být definovaná tyto hranice

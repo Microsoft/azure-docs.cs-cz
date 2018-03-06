@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3f8b5e8b8af4be85e830bde8eb0587c632a9dd1f
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 6a1d56a270ae0c44db18f26091cc3c550a37e420
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutím prostředků do nové skupiny prostředků nebo předplatného
 
@@ -178,7 +178,7 @@ Spravované disky nepodporují move. Toto omezení znamená, že několik souvis
 * Snímků vytvořených z spravovaných disků
 * Sady dostupnosti s virtuálními počítači s spravované disky
 
-Virtuální počítače vytvořené z Marketplace prostředků nelze přesunout ve předplatných. Zrušení zřízení virtuálního počítače v aktuálním předplatném a znovu nasaďte v rámci nového předplatného.
+Virtuální počítače vytvořené z Marketplace prostředků pomocí plánů připojené nelze přesunout mezi skupinami prostředků nebo předplatných. Zrušení zřízení virtuálního počítače v aktuálním předplatném a znovu nasaďte v rámci nového předplatného.
 
 Virtuální počítače s certifikát uložený v Key Vault můžete přesunout do nové skupiny prostředků v rámci stejného předplatného, ale ne odběry.
 

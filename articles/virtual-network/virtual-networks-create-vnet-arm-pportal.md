@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 201da4e6ec86a6c2a79a9e948245c0d83708c3f9
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c89b455212ad428dbe67d7f1d95517072c220d8e
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets-using-the-azure-portal"></a>Vytvoření virtuální sítě s několika podsítěmi pomocí portálu Azure
 
@@ -53,8 +53,8 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 2. Vyberte **podsítě** a pak vyberte **+ podsítě**, jak je znázorněno na následujícím obrázku:
 
      ![Přidat podsíť](./media/virtual-networks-create-vnet-arm-pportal/add-subnet.png)
-
-3. V **přidat podsíť** pole, která se zobrazí, zadejte *privátní* pro **název**, zadejte *10.0.1.0/24* pro **rozsahadres**a potom vyberte **OK**. 
+     
+3. V **přidat podsíť** pole, která se zobrazí, zadejte *privátní* pro **název**, zadejte *10.0.1.0/24* pro **rozsahadres**a potom vyberte **OK**.  Rozsah adres podsítě se nesmí překrývat s rozsahy adres z jiné podsítě virtuální sítě. 
 
 Před nasazením virtuálních sítí Azure a podsítě pro použití v provozním prostředí, doporučujeme, že jste důkladně Seznamte se s adresním prostorem [aspekty](virtual-network-manage-network.md#create-a-virtual-network) a [limity virtuální síťové](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Jakmile se prostředky nasadí do podsítí, může vyžadovat některé virtuální síť a podsíť změny, jako je například změna rozsahy adres, opakované nasazení existující prostředky Azure, které jsou nasazeny v rámci podsítě.
 
@@ -83,6 +83,8 @@ Virtuální síť umožňuje několik typů prostředků Azure pro komunikaci s 
 7. Proveďte kroky 1 – 6 znovu, ale zadat *myVmMgmt* pro **název** virtuálního počítače a vyberte **privátní** pro **podsítě**.
 
 Virtuální počítače trvat několik minut pro vytvoření. Příklady zbývajících kroků nepokračujte, dokud jsou oba virtuální počítače vytvořené.
+
+Virtuální počítače vytvořené v tomto článku mít jeden [síťové rozhraní](virtual-network-network-interface.md) s jednu IP adresu, která se dynamicky přiřadit síťové rozhraní. Poté, co nasadíte virtuální počítač, můžete [přidat víc veřejných a privátních IP adres, nebo změnit způsob přiřazení IP adresy statické](virtual-network-network-interface-addresses.md#add-ip-addresses). Můžete [přidat síťových rozhraní](virtual-network-network-interface-vm.md#vm-add-nic), až do limitu nepodporuje [velikost virtuálního počítače](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vyberete při vytváření virtuálního počítače. Můžete také [povolit single-root I/O virtualization (SR-IOV)](create-vm-accelerated-networking-powershell.md) virtuálních počítačů, ale pouze tehdy, když vytvoření virtuálního počítače s velikostí virtuálních počítačů, která podporuje možnost.
 
 ### <a name="communicate-between-virtual-machines-and-with-the-internet"></a>Komunikace mezi virtuálními počítači a s Internetem
 
@@ -127,7 +129,9 @@ Virtuální počítače trvat několik minut pro vytvoření. Příklady zbývaj
         Minimum = 0ms, Maximum = 0ms, Average = 0ms
     ```
       
-    Uvidíte, že adresa *myVmMgmt* 10.0.1.4 je virtuální počítač. 10.0.1.4 se první dostupná IP adresa v rozsahu adres *privátní* podsítě, které jste nasadili *myVmMgmt* virtuálního počítače v předchozím kroku.  Zjistíte, že plně kvalifikovaný název domény virtuálního počítače je *myvmmgmt.dar5p44cif3ulfq00wxznl3i3f.bx.internal.cloudapp.net*. I když *dar5p44cif3ulfq00wxznl3i3f* část názvu domény se liší pro virtuální počítač, zbývající části názvu domény jsou stejné. Ve výchozím nastavení používají všechny virtuální počítače Azure výchozí služba Azure DNS. Všechny virtuální počítače v rámci virtuální sítě můžete vyřešit názvy všechny ostatní virtuální počítače ve stejné virtuální síti pomocí služby DNS Azure, je výchozí. Místo použití služba DNS výchozí Azure, můžete použít serveru DNS nebo funkcí privátní domény služby Azure DNS. Podrobnosti najdete v tématu [překladu IP adresy serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) nebo [pomocí Azure DNS pro domény privátní](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    Uvidíte, že adresa *myVmMgmt* 10.0.1.4 je virtuální počítač. 10.0.1.4 se první dostupná IP adresa v rozsahu adres *privátní* podsítě, které jste nasadili *myVmMgmt* virtuálního počítače v předchozím kroku.  Zjistíte, že plně kvalifikovaný název domény virtuálního počítače je *myvmmgmt.dar5p44cif3ulfq00wxznl3i3f.bx.internal.cloudapp.net*. I když *dar5p44cif3ulfq00wxznl3i3f* část názvu domény se liší pro virtuální počítač, zbývající části názvu domény jsou stejné. 
+
+    Ve výchozím nastavení používají všechny virtuální počítače Azure výchozí služba Azure DNS. Všechny virtuální počítače v rámci virtuální sítě můžete vyřešit názvy všechny ostatní virtuální počítače ve stejné virtuální síti pomocí služby DNS Azure, je výchozí. Místo použití služba DNS výchozí Azure, můžete použít serveru DNS nebo funkcí privátní domény služby Azure DNS. Podrobnosti najdete v tématu [překladu IP adresy serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) nebo [pomocí Azure DNS pro domény privátní](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 9. Instalace Internetové informační služby (IIS) pro systém Windows Server na *myVmWeb* virtuální počítač, zadejte následující příkaz z relace prostředí PowerShell:
 
@@ -137,13 +141,12 @@ Virtuální počítače trvat několik minut pro vytvoření. Příklady zbývaj
 
 10. Po dokončení instalace služby IIS odpojit *myVmWeb* relace vzdálené plochy, což zanechá v *myVmMgmt* relace vzdálené plochy. Otevřete webový prohlížeč a přejděte do http://myvmweb. Zobrazí úvodní stránce služby IIS.
 11. Odpojení *myVmMgmt* relace vzdálené plochy.
-12. Pokus o zobrazení úvodní stránka IIS ze svého počítače. Vytvoření Azure *myVmWeb* virtuální počítač, prostředek veřejné IP adresy s názvem *myVmWeb* také vytvořil a přiřazené k virtuálnímu počítači. Uvidíte, že byl přiřazen 52.170.5.92 *myVmMgmt* virtuálního počítače na obrázku v kroku 2. K vyhledání přiřazené veřejné IP adresy *myVmWeb* virtuální počítač, vyhledejte *myVmWeb* do vyhledávacího pole, pak ho vyberte když se objeví ve výsledcích hledání. 
+12. Najít veřejnou IP adresu *myVmWeb* virtuálního počítače. Vytvoření Azure *myVmWeb* virtuální počítač, prostředek veřejné IP adresy s názvem *myVmWeb* také vytvořil a přiřazené k virtuálnímu počítači. Uvidíte, že byl přiřazen 52.170.5.92 pro **veřejnou IP adresu** k *myVmMgmt* virtuálního počítače na obrázku v kroku 2. K vyhledání přiřazené veřejné IP adresy *myVmWeb* virtuální počítač, vyhledejte *myVmWeb* na portálu vyhledávacího pole, pak ho vyberte když se objeví ve výsledcích hledání.
 
     Když virtuální počítač není potřeba mít přiřazené veřejnou IP adresu, Azure přiřadí veřejnou IP adresu pro každý virtuální počítač, který vytvoříte, ve výchozím nastavení. K virtuálnímu počítači komunikovat z Internetu, musí mít veřejnou IP adresu přiřazenou k virtuálnímu počítači. Všechny virtuální počítače mohou komunikovat odchozí přes Internet, zda je k virtuálnímu počítači přiřazena veřejnou IP adresu. Další informace o odchozí připojení k Internetu v Azure najdete v tématu [odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+13. Ve vašem počítači, přejděte na veřejnou IP adresu *myVmWeb* virtuálního počítače. Pokus o zobrazení úvodní stránka IIS ze svého počítače selže. Pokus selže, protože když byly nasazené virtuální počítače, Azure vytvoří skupinu zabezpečení sítě pro každý virtuální počítač, ve výchozím nastavení. 
 
-    Ve vašem počítači, přejděte na veřejnou IP adresu *myVmWeb* virtuálního počítače. Pokus o zobrazení úvodní stránka IIS ze svého počítače selže. Pokus selže, protože když byly nasazené virtuální počítače, Azure vytvoří skupinu zabezpečení sítě pro každý virtuální počítač, ve výchozím nastavení. 
-
-    Skupina zabezpečení sítě obsahuje pravidla zabezpečení, která povolují nebo odepírají příchozí a odchozí síťový provoz pomocí portu a IP adresy. Výchozí skupina zabezpečení sítě, který vytvořili Azure umožňuje komunikaci přes všechny porty mezi prostředky ve stejné virtuální síti. Pro virtuální počítače s Windows skupinu zabezpečení sítě výchozí odmítne veškerý příchozí provoz z Internetu přes všechny porty, potvrďte TCP port 3389 (RDP). V důsledku toho ve výchozím nastavení, můžete také RDP přímo na *myVmWeb* virtuálního počítače z Internetu, i když není vhodné portu 3389 otevřete na webový server. Vzhledem k tomu, že procházení webu komunikuje přes port 80, komunikaci z Internetu se nezdaří, protože není pravidlo ve skupině zabezpečení výchozí sítě umožňuje provoz přes port 80.
+     Skupina zabezpečení sítě obsahuje pravidla zabezpečení, která povolují nebo odepírají příchozí a odchozí síťový provoz pomocí portu a IP adresy. Výchozí skupina zabezpečení sítě, který vytvořili Azure umožňuje komunikaci přes všechny porty mezi prostředky ve stejné virtuální síti. Pro virtuální počítače s Windows skupinu zabezpečení sítě výchozí odmítne veškerý příchozí provoz z Internetu přes všechny porty, potvrďte TCP port 3389 (RDP). V důsledku toho ve výchozím nastavení, můžete také RDP přímo na *myVmWeb* virtuálního počítače z Internetu, i když není vhodné portu 3389 otevřete na webový server. Vzhledem k tomu, že procházení webu komunikuje přes port 80, komunikaci z Internetu se nezdaří, protože není pravidlo ve skupině zabezpečení výchozí sítě umožňuje provoz přes port 80.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

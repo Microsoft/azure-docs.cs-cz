@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 1903655a262583f1ba78b728bf404a81278e2275
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 091cfaaf8fa1cccf2f8b819732946bbbd08fd426
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy Azure API Management
 Získejte odpovědi na časté otázky, vzorce a osvědčené postupy pro Azure API Management.
@@ -122,7 +122,7 @@ IP adresa (nebo adresy, v nasazení s více oblast) můžete získat na stránce
 Zjistěte, jak nakonfigurovat zabezpečení služby Active Directory Federation Services (AD FS) serveru ověřování OAuth 2.0, najdete v tématu [pomocí služby AD FS ve službě API Management](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/).
 
 ### <a name="what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations"></a>V nasazení na více geografické polohy jaké metody směrování používá rozhraní API Management?
-Používá rozhraní API Management [metoda směrování provozu výkonu](../traffic-manager/traffic-manager-routing-methods.md#priority) v nasazení na více geografické polohy. Příchozí provoz se směruje na nejbližší Brána rozhraní API. Pokud jedné oblasti přejde do režimu offline, se automaticky příchozí provoz směruje na další nejbližší brány. Další informace o metodách směrování v [metody směrování Traffic Manageru](../traffic-manager/traffic-manager-routing-methods.md).
+Používá rozhraní API Management [metoda směrování provozu výkonu](../traffic-manager/traffic-manager-routing-methods.md#performance) v nasazení na více geografické polohy. Příchozí provoz se směruje na nejbližší Brána rozhraní API. Pokud jedné oblasti přejde do režimu offline, se automaticky příchozí provoz směruje na další nejbližší brány. Další informace o metodách směrování v [metody směrování Traffic Manageru](../traffic-manager/traffic-manager-routing-methods.md).
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Můžete použít šablonu Azure Resource Manageru k vytvoření instance služby API Management?
 Ano. Najdete v článku [Azure API Management Service](http://aka.ms/apimtemplate) šablony rychlý start.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: gwallace
-ms.openlocfilehash: bb20137cc3ac8daf82ee21300be6981e09ce3fe0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 9280925cdd5cccf8d1d2f2b33a7de8523a07cd14
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
@@ -56,8 +56,8 @@ Následující tabulka uvádí seznam podporovaných operačních systémů:
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Windows Server 2008 a vyšší     | Podporuje pouze aktualizovat vyhodnocování         |
-|Windows Server 2008 R2 SP1 a vyšší     |Rozhraní .NET framework 4.5 a WMF 5.0 nebo novější, jsou potřebné pro Windows Server 2008 R2 SP1<br>Nano Server není podporována.         |
+|Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze aktualizovat vyhodnocování         |
+|Windows Server 2008 R2 SP1 a vyšší     |Rozhraní .NET framework 4.5 a WMF 5.0 nebo novější, jsou potřebné pro Windows Server 2008 R2 SP1        |
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
@@ -70,7 +70,7 @@ Následující tabulka uvádí operační systémy, které nejsou podporovány:
 |Operační systém  |Poznámky  |
 |---------|---------|
 |Klient Windows     | Klientské operační systémy (Windows 7, Windows 10 atd.) nejsou podporovány.        |
-|Nano Server     | Nano server je součástí systému Windows 2016.        |
+|Windows Server 2016 Nano Server     | Nepodporuje se       |
 
 ### <a name="client-requirements"></a>Požadavky na klienta
 

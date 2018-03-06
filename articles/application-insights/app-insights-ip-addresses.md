@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 37fbe7fa3160d39e85614c3481061d5ce458b29a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9b48b17b214f6ff22c7c68421ba8c89104c8b4b1
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP adresy používané při Application Insights a analýzy protokolů
 [Azure Application Insights](app-insights-overview.md) služba používá počet IP adres. Možná budete muset vědět tyto adresy, pokud je aplikace, kterou monitorujete hostované za bránou firewall.
@@ -30,16 +30,16 @@ ms.lasthandoff: 03/02/2018
 ## <a name="outgoing-ports"></a>Odchozí porty
 Je třeba otevřít některé Odchozí porty v bráně firewall umožňující Application Insights SDK nebo monitorování stavu, které k odesílání dat do portálu:
 
-| Účel | URL | IP | Porty |
+| Účel | zprostředkovatele identity | IP adresa | Porty |
 | --- | --- | --- | --- |
-| Telemetrie |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244 |443 |
+| Telemetrická data |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244 |443 |
 | Živý datový proud metriky |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
 | Interní Telemetrie |breeze.aimon.applicationinsights.io |52.161.11.71 |443 |
 
 ## <a name="status-monitor"></a>Monitorování stavu
 Stav monitorování konfigurace – je potřeba pouze při provádění změn.
 
-| Účel | URL | IP | Porty |
+| Účel | zprostředkovatele identity | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Konfigurace |`management.core.windows.net` | |`443` |
 | Konfigurace |`management.azure.com` | |`443` |
@@ -48,10 +48,10 @@ Stav monitorování konfigurace – je potřeba pouze při provádění změn.
 | Konfigurace |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | Konfigurace |`auth.gfx.ms` | |`443` |
 | Konfigurace |`login.live.com` | |`443` |
-| Instalace |`packages.nuget.org` , `nuget.org` | |`443` |
+| Instalace |`packages.nuget.org` , `nuget.org`, `api.nuget.org` | |`443` |
 
 ## <a name="hockeyapp"></a>HockeyApp
-| Účel | URL | IP | Porty |
+| Účel | zprostředkovatele identity | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Data o chybách |gate.hockeyapp.net |104.45.136.42 |80, 443 |
 
@@ -187,21 +187,21 @@ East US
 ```  
 
 ## <a name="application-insights-api"></a>Application Insights API
-| Účel | Identifikátor URI | IP | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
-| API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |13.82.26.252<br/>40.76.213.73 |80,443 |
+| Rozhraní API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |13.82.26.252<br/>40.76.213.73 |80,443 |
 | Dokumentace rozhraní API |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |13.82.24.149<br/>40.114.82.10 |80,443 |
 | Vnitřní rozhraní API |aigs.aisvc.visualstudio.com<br/>aigs1.aisvc.visualstudio.com<br/>aigs2.aisvc.visualstudio.com<br/>aigs3.aisvc.visualstudio.com<br/>aigs4.aisvc.visualstudio.com<br/>aigs5.aisvc.visualstudio.com<br/>aigs6.aisvc.visualstudio.com |dynamické|443 |
 
 ## <a name="log-analytics-api"></a>Log Analytics API
-| Účel | Identifikátor URI | IP | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
-| API |api.loganalytics.io<br/>*.api.loganalytics.io |dynamické |80,443 |
+| Rozhraní API |api.loganalytics.io<br/>*.api.loganalytics.io |dynamické |80,443 |
 | Dokumentace rozhraní API |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |dynamické |80,443 |
 
 ## <a name="application-insights-analytics"></a>Analýza statistiky aplikace
 
-| Účel | Identifikátor URI | IP | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Portálu analýza | analytics.applicationinsights.io | dynamické | 80,443 |
 | CDN | applicationanalytics.azureedge.net | dynamické | 80,443 |
@@ -211,7 +211,7 @@ Poznámka: *. vlastní domény applicationinsights.io týmem Application Insight
 
 ## <a name="log-analytics-portal"></a>Portálu Analýza protokolů
 
-| Účel | Identifikátor URI | IP | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Portál | portal.loganalytics.io | dynamické | 80,443 |
 | CDN | applicationanalytics.azureedge.net | dynamické | 80,443 |
@@ -220,21 +220,21 @@ Poznámka: *. vlastní domény loganalytics.io tým analýzy protokolů.
 
 ## <a name="application-insights-azure-portal-extension"></a>Application Insights rozšíření portálu Azure
 
-| Účel | Identifikátor URI | IP | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Rozšíření Application Insights | stamp2.app.insightsportal.visualstudio.com | dynamické | 80,443 |
 | Application Insights rozšíření CDN | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | dynamické | 80,443 |
 
 ## <a name="application-insights-sdks"></a>Sadách Application Insights SDK
 
-| Účel | Identifikátor URI | IP | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Application Insights JS SDK CDN | az416426.vo.msecnd.net | dynamické | 80,443 |
 | Application Insights Java SDK | aijavasdk.blob.core.windows.net | dynamické | 80,443 |
 
 ## <a name="profiler"></a>Profiler
 
-| Účel | Identifikátor URI | IP | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71 | 443
 | Portál | gateway.azureserviceprofiler.net | dynamické | 443
@@ -242,7 +242,7 @@ Poznámka: *. vlastní domény loganalytics.io tým analýzy protokolů.
 
 ## <a name="snapshot-debugger"></a>Ladicí program snímků
 
-| Účel | Identifikátor URI | IP | Porty |
+| Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 23.101.68.84<br/>52.174.44.101<br/>52.250.121.195<br/>51.143.88.187<br/> | 443
 | Portál | ppe.gateway.azureserviceprofiler.net | dynamické | 443

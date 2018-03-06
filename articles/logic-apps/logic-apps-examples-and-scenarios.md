@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: logic-apps
-ms.date: 09/13/2017
+ms.date: 01/31/18
 ms.author: LADocs; jehollan
-ms.openlocfilehash: b88d0c1ccb7a729c95299bcdc3cba5fd73fcdeac
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b979096731caa7513c02a9fb398c14da4d4819ae
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, příklady, kurzy a návody pro Azure Logic Apps
 
@@ -63,14 +63,15 @@ Pro systémy a služby, které nemusí být publikovány konektory můžete tak�
 * [Reakce na externí události a akce s webhooky](../logic-apps/logic-apps-create-api-app.md)
 * [Volání, aktivaci nebo vnořit pracovních s synchronní odpovědí na požadavky HTTP](../logic-apps/logic-apps-http-endpoint.md)
 * [Kurz: Sestavení používá technologii AI sociálních řídicím v minutách s Logic Apps a Power BI](http://aka.ms/logicappsdemo)
-* [Kurz: Reakce na webhooky Twilio SMS a odeslání text odpovědi](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
+* [Video: Reakce na webhooky Twilio SMS a odeslání text odpovědi](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## <a name="control-flow-error-handling-and-logging-capabilities"></a>Tok řízení, zpracování chyb a možnosti protokolování
 
 Aplikace logiky patří bohaté možnosti pro pokročilé řízení toku, jako jsou podmínky, přepínače, smyčky a oborů. Aby odolné řešení, můžete taky implementovat chyb a zpracování výjimek v vaše pracovní postupy. Azure Logic Apps pro oznámení a diagnostické protokoly pro pracovní postup spustit stavu, poskytuje také monitorování a výstrahy.
 
-* [Proces položky v poli a kolekce s smyčky a listy v aplikacích logiky](../logic-apps/logic-apps-loops-and-scopes.md)
-* [Provádění různých akcí s příkazech switch](../logic-apps/logic-apps-switch-case.md)
+* Provádění různých akcí na základě [podmíněné příkazy](../logic-apps/logic-apps-control-flow-conditional-statement.md) a [přepínače – příkazy](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Opakujte kroky nebo proces položky v poli a kolekce s smyčky](../logic-apps/logic-apps-control-flow-loops.md)
+* [Akce skupiny společně s obory](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [Chyba autora a zpracování výjimek v pracovním postupu](../logic-apps/logic-apps-exception-handling.md)
 * [Případ použití: jak zdravotní péče společnost používá zpracování pro pracovní postupy HL7 FHIR výjimek aplikace logiky](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Zapnout sledování, protokolování a výstrahy pro existující aplikace logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md)
@@ -89,7 +90,7 @@ Můžete plně vývoj a nasazení aplikací logiky pomocí sady Visual Studio, V
 Můžete používat, převod a transformace více typů obsahu pomocí mnoho funkcí v Azure Logic Apps [jazyk definic workflowů](http://aka.ms/logicappsdocs). Například můžete převést mezi řetězec, JSON a XML s `@json()` a `@xml()` výrazy pracovního postupu. Modul Logic Apps zachovává typy obsahu pro podporu obsahu přenos beze ztrát způsobem mezi službami.
 
 * [Jak fungují výrazy pracovního postupu v aplikace logiky](../logic-apps/logic-apps-author-definitions.md)
-* [Zpracování typy obsahu bez JSON](../logic-apps/logic-apps-content-type.md), například `application/xml`, `application/octet-stream`, a`multipart/formdata`
+* [Zpracování typy obsahu bez JSON](../logic-apps/logic-apps-content-type.md), například `application/xml`, `application/octet-stream`, a `multipart/formdata`
 * [– Referenční informace: Jazyk definic workflowů funkce Azure Logic Apps](http://aka.ms/logicappsdocs)
 
 ## <a name="other-integrations-and-capabilities"></a>Další integrace a funkce
@@ -98,15 +99,22 @@ Aplikace logiky také nabízí integraci s mnoha služeb, jako jsou funkce Azure
 
 * [Vytvořte v reálném čase sociálních řídicí bez serveru Azure](../logic-apps/logic-apps-scenario-social-serverless.md)
 * [Azure Functions volání z aplikace logiky](../logic-apps/logic-apps-azure-functions.md)
-* [Scénář: Aktivační událost logiku aplikace s Azure Functions](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
+* [Kurz: Aktivační událost logiku aplikace s Azure Functions](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
+* [Kurz: Sledování změn virtuálního počítače se mřížka událostí Azure a Logic Apps](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
+* [Kurz: Vytvoření funkci, která se integruje se službou Azure Logic Apps a kognitivní služby Microsoft analýza sentimentu Twitter post](../azure-functions/functions-twitter-email.md)
+* [Kurz: Vzdáleného sledování IoT a oznámení s Azure Logic Apps připojení služby IoT hub a poštovní schránky](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [Blog: Volání koncových bodů protokolu SOAP z aplikace logiky](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 
 ## <a name="end-to-end-scenarios"></a>Kompletní scénáře
 
-* [Dokument White Paper: Enterprise začátku do konce případu vedení integrace se službami Azure, jako jsou aplikace logiky](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
+* [Dokument White Paper: Začátku do konce případu správu integrace se službami Azure, jako je například Logic Apps](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
+
+## <a name="customer-stories"></a>Příběhy zákazníků
+
+Zjistěte, jak Azure Logic Apps, společně s dalším službám Azure a produkty společnosti Microsoft, pomohl [tyto společnosti](https://aka.ms/logic-apps-customer-stories) zlepšit jejich flexibility a zaměřit se na svého podnikání základní zjednodušit, uspořádání, automatizaci a Orchestrace komplexní procesy.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Definice pracovního postupu vytvořit pomocí jazyka pro definici pracovního postupu](../logic-apps/logic-apps-author-definitions.md)
+* [Sestavení v definicích aplikaci logiky s JSON](../logic-apps/logic-apps-author-definitions.md)
 * [Zpracování chyb a výjimek v aplikacích logiky](../logic-apps/logic-apps-exception-handling.md)
-* [Odesílat dotazy, komentáře, zpětnou vazbu nebo návrhy pro jak budeme vylepšovat Azure Logic Apps](https://feedback.azure.com/forums/287593-logic-apps)
+* [Odesílat dotazy, komentáře, zpětnou vazbu nebo návrhy pro zlepšení Azure Logic Apps](https://feedback.azure.com/forums/287593-logic-apps)

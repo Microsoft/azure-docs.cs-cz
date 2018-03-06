@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c6cc4ba95f440f09f11a93927fd67873f8813e8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f51d85da1bda0d9483883301b71c20e405724b9b
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 V tomto článku bude zmíněn kroky konfigurace sestav pro Azure Backup pomocí trezoru služeb zotavení a chcete dostat k sestavám pomocí Power BI. Po provedení těchto kroků, můžete přímo přejít k Power BI. Chcete-li zobrazit všechny sestavy, přizpůsobení a vytváření sestav. 
@@ -123,7 +123,7 @@ Po konfiguraci účtu úložiště pro sestavy na základě trezoru služeb zota
 
 2. **Co je četnost datová oznámení k účtu úložiště a balíček obsahu Azure Backup v Power BI?**
 
-   Pro uživatele, dne 0 to by trvat přibližně 24 hodin pro zápis dat do účtu úložiště. Jakmile bude tato počáteční nabízené compelete, data se aktualizují s následující frekvence uvedený na následujícím obrázku. 
+   Pro uživatele, dne 0 to by trvat přibližně 24 hodin pro zápis dat do účtu úložiště. Po dokončení této počáteční nabízené data se aktualizují s následující frekvence uvedený na následujícím obrázku. 
       * Data související s **úlohy, výstrahy, zálohování položek, trezory, chráněných serverů a zásady** vložena do účtu úložiště zákazníka jako a při protokolování.
       * Data související s **úložiště** vložena do účtu úložiště zákazníka každých 24 hodin.
    

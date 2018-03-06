@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.openlocfilehash: 2db9e60fe2807b1aa8ed7cab7eed6f7db8059a89
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro zřizování automatické uživatelů
 
@@ -43,9 +43,9 @@ Workday uživatele pracovní postupy zřizování podporována službou Azure AD
 
 * **Zaměstnanec atribut a profil aktualizace** – když záznam se aktualizuje v Workday (například jeho název, název nebo správce), jejich uživatelské účty se automaticky aktualizuje v Active Directory, Azure Active Directory a volitelně Office 365 a [jiné aplikace SaaS podporovaný službou Azure AD](active-directory-saas-app-provisioning.md).
 
-* **Zaměstnanec ukončení** – Pokud zaměstnanec je ukončen v Workday, jejich uživatelský účet je automaticky zakázán v Active Directory, Azure Active Directory a volitelně Office 365 a [jiné aplikace SaaS podporovaný službou Azure AD](active-directory-saas-app-provisioning.md).
+* **Zaměstnanec ukončení** – Pokud zaměstnanec je ukončen v Workday, jejich uživatelský účet je automaticky zakázán v Active Directory, Azure Active Directory a volitelně Office 365 a [jiné aplikace SaaS nepodporuje v Azure AD](active-directory-saas-app-provisioning.md).
 
-* **Zaměstnanec znovu najímá** – Pokud zaměstnanec je rehired ve Workday, jejich starý účet může být automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaši volbu) služby Active Directory, Azure Active Directory a volitelně Office 365 a [jiné aplikace SaaS podporovaný službou Azure AD](active-directory-saas-app-provisioning.md).
+* **Zaměstnanec znovu najímá** – Pokud zaměstnanec je rehired ve Workday, jejich starý účet můžete automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaši volbu) služby Active Directory, Azure Active Directory a volitelně Office 365 a [jiné aplikace SaaS podporovaný službou Azure AD](active-directory-saas-app-provisioning.md).
 
 
 ## <a name="planning-your-solution"></a>Plánování řešení
@@ -105,7 +105,7 @@ Pro usnadnění těchto více pracovních postupů na několika zdrojové a cíl
 
 * **WORKDAY Active Directory zřízení** -tuto aplikaci usnadňuje účet zřizování uživatelů z Workday do jedné doménové struktury služby Active Directory. Pokud máte více doménových struktur, můžete přidat z galerii aplikací Azure AD pro každou doménovou strukturu služby Active Directory, které budete muset zřídit na jednu instanci této aplikace.
 
-* **WORKDAY do Azure AD zřizování** – AAD Connect je nástroj, který se má použít pro synchronizaci služby Active Directory uživatelům Azure Active Directory, tato aplikace lze použít k usnadnění zřizování jenom pro cloud uživatelů z Workday do jednoho klienta Azure Active Directory.
+* **WORKDAY do Azure AD zřizování** – AAD Connect je nástroj, který se má použít pro synchronizaci služby Active Directory uživatelům Azure Active Directory, tato aplikace lze použít k usnadnění zřizování jenom pro cloud uživatelů z Workday do jednoho Azure Klienta Active Directory.
 
 * **Zpětný zápis WORKDAY** -tuto aplikaci usnadňuje zpětný zápis e-mailové adresy uživatele ze služby Azure Active Directory k Workday.
 
@@ -229,7 +229,7 @@ Postupujte podle těchto pokynů ke konfiguraci zřizování z Workday pro každ
 
 **Postup konfigurace Workday zřízení služby Active Directory:**
 
-1.  Přejděte na <https://portal.azure.com>
+1.  Přejděte na <https://portal.azure.com>.
 
 2.  V levém navigačním panelu, vyberte **Azure Active Directory**
 
@@ -245,7 +245,7 @@ Postupujte podle těchto pokynů ke konfiguraci zřizování z Workday pro každ
 
 8.  Dokončení **přihlašovací údaje správce** části následujícím způsobem:
 
-   * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integrace Workday, s připojeným názvem domény klienta. **By měl vypadat podobně jako:username@contoso4**
+   * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integrace Workday, s připojeným názvem domény klienta. **By měl vypadat podobně jako: username@contoso4**
 
    * **Heslo správce –** zadejte heslo účtu Workday integrace systému
 
@@ -340,20 +340,20 @@ V této části nakonfigurujete, jak jsou data uživatele z Workday do služby A
 | **Fax**      | facsimileTelephoneNumber     |     |    Vytvoření + aktualizace |
 | **FirstName**   | givenName       |     |    Vytvoření + aktualizace |
 | **Přepínače (\[Active\],, "0", "True", "1")** |  AccountDisabled      |     | Vytvoření + aktualizace |
-| **Mobile**  |    mobilní       |     |       Vytvoření + aktualizace |
+| **mobilní**  |    mobilní       |     |       Vytvoření + aktualizace |
 | **EmailAddress**    | mail    |     |     Vytvoření + aktualizace |
 | **ManagerReference**   | Správce  |     |  Vytvoření + aktualizace |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Vytvoření + aktualizace |
 | **PSČ**  |   PSČ  |     | Vytvoření + aktualizace |
 | **LocalReference** |  preferredLanguage  |     |  Vytvoření + aktualizace |
-| **Nahraďte (Mid (Nahraďte (\[EmployeeID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\\[\\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Zapisovat pouze na vytvoření |
+| **Nahraďte (Mid (Nahraďte (\[EmployeeID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[\\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Zapisovat pouze na vytvoření |
 | **LastName**   |   sn   |     |  Vytvoření + aktualizace |
 | **CountryRegionReference** |  St     |     | Vytvoření + aktualizace |
 | **AddressLineData**    |  StreetAddress  |     |   Vytvoření + aktualizace |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | Vytvoření + aktualizace |
 | **BusinessTitle**   |  název     |     |  Vytvoření + aktualizace |
-| **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])" ,, "m",), "([ñńňÑŃŇN])", "n",), "([öòőõôóÖÒŐÕÔÓO])", "o",), "([P])", "p",), "([Q])", "d:",), "([řŘR])", "r",), "([ßšśŠŚS])", "s",), "([TŤť])", "t",), "([üùûúůűÜÙÛÚŮŰU])", "u",), "([V])", "v",), "([W])", "w",), "([ýÿýŸÝY])", "y",), "([źžżŹŽŻZ])", "z",), "",,, "",), "contoso.com")**   | userPrincipalName     |     | Zapisovat pouze na vytvoření                                                   
-| **Přepínače (\[okres\], "organizační jednotky standardní uživatelé, OU = Uživatelé, OU = výchozí, OU = umístění, DC = = contoso, DC = com", "Dallas", "organizační jednotky standardní uživatelé, OU = = Users, organizační jednotky Dallas, OU = umístění, DC = = contoso, DC = com", "Austinu", "organizační jednotky standardní uživatelé, OU = = oj uživatelé Austinu, OU = umístění, DC = = contoso, DC = com", "Seattle", "organizační jednotky standardní uživatelé, OU = = Users, organizační jednotky Seattle, OU = umístění, DC = = contoso, DC = com", "Praha", "organizační jednotky = standardní uživatelé Organizační jednotky Uživatelé, OU = Londýn, OU = = umístění, DC = contoso, DC = com ")**  | parentDistinguishedName     |     |  Vytvoření + aktualizace |
+| **Připojení k ("@", nahraďte (nahradit (nahradit (nahradit (nahradit (Nahraďte (nahradit (Nahraďte (Nahraďte (položku (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte ( Nahraďte (připojení (".", [jméno], [Příjmení]), "([Øø])", "oe",), "[Ææ]", "ae",), "([äãàâãåáąÄÃÀÂÃÅÁĄA])", "a",), "([B])", "b",), "([CçčćÇČĆ])", "c",), "([ďĎD])", "d",), "([ëèéêęěËÈÉÊĘĚE])", "e",), "([F])", "f",), "([G])" ,, "g",), "([H])", "h",), "([ïîìíÏÎÌÍI])", "i",), "([J])", "d",), "([K])", "k",), "([ľłŁĽL])", "l",), "([M])", "m",), "([ñńňÑŃŇN])", "n",), "([öòőõôóÖÒŐÕÔÓO])", "o",), "([P])", "p",), "([Q])", "d:",),  "([ŘŘR])", "r",), "([ßšśŠŚS])", "s",), "([TŤť])", "t",), "([üùûúůűÜÙÛÚŮŰU])", "u",), "([V])", "v",), "([W])", "w",), "([ýÿýŸÝY])", "y",), "([źžżŹŽŻZ])", "z",), "",,, "",), "contoso.com")**   | userPrincipalName     |     | Zapisovat pouze na vytvoření                                                   
+| **Přepínače (\[okres\], "organizační jednotky standardní uživatelé, OU = Uživatelé, OU = výchozí, OU = umístění, DC = = contoso, DC = com", "Dallas", "organizační jednotky standardní uživatelé, OU = Uživatelé, OU = Dallas, OU = umístění, DC = = contoso, DC = com", "Austinu", "organizační jednotky standardní uživatelé, OU = Uživatelé, OU = Austinu, OU = umístění, DC = = contoso, DC = com ","Seattle"," organizační jednotky standardní uživatelé, OU = Uživatelé, OU = Seattle, OU = umístění, DC = = contoso, DC = com ","Praha"," organizační jednotky standardní uživatelé, OU = = oj uživatelé Londýn, OU = umístění, DC = = contoso, DC = com ")**  | parentDistinguishedName     |     |  Vytvoření + aktualizace |
   
 ### <a name="part-3-configure-the-on-premises-synchronization-agent"></a>Část 3: Konfigurace agenta synchronizace na místě
 
@@ -484,7 +484,7 @@ Následující části popisují nastavení připojení mezi Workday a Azure AD 
 
 **Postup konfigurace Workday zřízení Azure Active Directory pro uživatele jenom pro cloud:**
 
-1.  Přejděte na <https://portal.azure.com>.
+1.  Přejděte do části <https://portal.azure.com> (Soubor > Nový > Jiné).
 
 2.  V levém navigačním panelu, vyberte **Azure Active Directory**
 
@@ -500,7 +500,7 @@ Následující části popisují nastavení připojení mezi Workday a Azure AD 
 
 8.  Dokončení **přihlašovací údaje správce** části následujícím způsobem:
 
-   * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integrace Workday, s připojeným názvem domény klienta. By měl vypadat podobně jako:username@contoso4
+   * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integrace Workday, s připojeným názvem domény klienta. By měl vypadat podobně jako: username@contoso4
 
    * **Heslo správce –** zadejte heslo účtu Workday integrace systému
 
@@ -589,7 +589,7 @@ Postupujte podle těchto pokynů můžete nakonfigurovat zpětný zápis e-mailo
 
 **Postup konfigurace Workday zřízení služby Active Directory:**
 
-1.  Přejděte na <https://portal.azure.com>
+1.  Přejděte na <https://portal.azure.com>.
 
 2.  V levém navigačním panelu, vyberte **Azure Active Directory**
 
@@ -605,7 +605,7 @@ Postupujte podle těchto pokynů můžete nakonfigurovat zpětný zápis e-mailo
 
 8.  Dokončení **přihlašovací údaje správce** části následujícím způsobem:
 
-   * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integrace Workday, s připojeným názvem domény klienta. By měl vypadat podobně jako:username@contoso4
+   * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integrace Workday, s připojeným názvem domény klienta. By měl vypadat podobně jako: username@contoso4
 
    * **Heslo správce –** zadejte heslo účtu Workday integrace systému
 
@@ -743,7 +743,7 @@ Chcete-li to provést, musíte použít [Workday Studio](https://community.workd
 
 8. Pro **typ**, vyberte typ, který odpovídá správně k atributu (**řetězec** je nejběžnější).
 
-9. Pro **rozhraní API výraz**, zadejte výraz XPath, který jste zkopírovali z Workday Studio. Příklad:`wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
+9. Pro **rozhraní API výraz**, zadejte výraz XPath, který jste zkopírovali z Workday Studio. Příklad: `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
 
 10. Vyberte **přidejte atribut**.
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.date: 03/01/2018
 ms.author: jonbeck
-ms.openlocfilehash: 51fb2c2799b79151927fc3fbbb94cd37e48d0dd8
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4e08a108d27d94a5df1cf6ee7308f1b5fa6e305f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Velikosti pro virtuální počítače s Windows v Azure
 
@@ -32,7 +32,7 @@ Tento článek popisuje dostupné velikosti a možnosti pro virtuální počíta
 | [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)        | Fsv2 služby Fs, F             | Vysoký poměr procesorů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery.        |
 | [Optimalizované z hlediska paměti](../virtual-machines-windows-sizes-memory.md)         | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Vysoký poměr paměť procesoru. Velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti.                 |
 | [Optimalizované z hlediska úložiště](../virtual-machines-windows-sizes-storage.md)        | Ls                | Vysoká propustnost disku a V/V. Ideální pro databáze NoSQL, SQL a velké objemy dat.                                                         |
-| [GPU](sizes-gpu.md)            | NV, NC, NCv2, ND            | Specializované virtuální počítače cílené pro velkou grafické vykreslování a úpravy videa, jakož i model školení a inferencing (a) s hloubkovým učení. K dispozici jeden nebo více grafickými procesory.       |
+| [GPU](sizes-gpu.md)            | NV, NC, NCv2, NCv3, ND            | Specializované virtuální počítače cílené pro velkou grafické vykreslování a úpravy videa, jakož i model školení a inferencing (a) s hloubkovým učení. K dispozici jeden nebo více grafickými procesory.       |
 | [Vysokovýkonné výpočetní prostředí](sizes-hpc.md) | H, A8-11          | Naše nejrychlejší a procesorově nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). 
 
 <br> 

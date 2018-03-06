@@ -113,6 +113,7 @@
 #### [Konfigurace pojmenovaných umístění](active-directory-named-locations.md)
 #### [Vyhledávání sestav aktivit](active-directory-reporting-migration.md)
 #### [Použití sady Azure Active Directory Power BI Content Pack](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [Oprava uživatelů označených příznakem rizika](active-directory-report-security-user-at-risk-remediation.md)
 ### Referenční informace
 #### [Uchování](active-directory-reporting-retention.md)
 #### [Latence](active-directory-reporting-latencies-azure-portal.md)

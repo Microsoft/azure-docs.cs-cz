@@ -7,7 +7,7 @@
 | Počet fondů na účet Batch | 20 - 100 | 2500 |
 
 > [!NOTE]
-> Výchozí omezení se liší v závislosti na typu předplatné, které použijete k vytvoření účtu Batch. Kvóty jader zobrazí jsou pro účty Batch v režimu služby Batch.
+> Výchozí omezení se liší v závislosti na typu předplatné, které použijete k vytvoření účtu Batch. Kvóty jader zobrazí jsou pro účty Batch v režimu služby Batch. [Zobrazit kvóty v účtu Batch](../articles/batch/batch-quota-limit.md#view-batch-quotas). 
 
 <sup>1</sup> je možné zvýšit počet vyhrazených jader na účtu Batch, ale maximální počet není zadána. Požádejte podporu Azure o zvýšení možnosti popisují.
 

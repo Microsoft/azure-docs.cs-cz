@@ -4,18 +4,18 @@ description: Azure Machine Learning modelu dat kolekce API odkaz.
 services: machine-learning
 author: aashishb
 ms.author: aashishb
-manager: neerajkh
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: hjerez
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 7a0fda8a44d13bcaba84b4124d9b693c05874154
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2de5e8bc8880fea5e7f57c88590e32a9fbb60ac6
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Azure Machine Learning modelu dat kolekce API – referenční informace
 
@@ -48,27 +48,27 @@ V vyhodnocování souboru, který se používá pro operationalization importujt
 ## <a name="model-data-collector-instantiation"></a>Vytváření instancí kolekce dat modelu
 Vytvořit novou instanci třídy ModelDataCollector:
 
-DC = ModelDataCollector (název_modelu, identifikátor = výchozí, což feature_names = None, model_management_account_id = "Neznámý", webservice_name = "Neznámý", model_id = "Neznámý", model_version = "Neznámý")
+dc = ModelDataCollector(model_name, identifier='default', feature_names=None, model_management_account_id='unknown', webservice_name='unknown', model_id='unknown', model_version='unknown')
 
 Zobrazit podrobnosti třídy a parametr:
 
-### <a name="class"></a>– Třída
-| Name (Název) | Popis |
+### <a name="class"></a>Třída
+| Název | Popis |
 |--------------------|--------------------|
 | ModelDataCollector | Třída v oboru názvů azureml.datacollector. Instance této třídy se používá ke shromažďování dat modelu. Jeden vyhodnocování soubor může obsahovat více ModelDataCollectors. Každá instance se mají použít pro shromažďování dat do jedné diskrétní umístění v vyhodnocování souboru tak, aby zůstala konzistentní schéma shromážděná data (tj. vstupy a předpovědi)|
 
 
 ### <a name="parameters"></a>Parametry
 
-| Name (Název) | Typ | Popis |
+| Název | Typ | Popis |
 |-------------|------------|-------------------------|
-| název_modelu | Řetězec | Název modelu, která data se shromažďují pro |
-| Identifikátor | Řetězec | umístění v kódu, který identifikuje tato data, tj. 'RawInput' nebo 'předpovědi. |
+| model_name | řetězec | Název modelu, která data se shromažďují pro |
+| identifikátor | řetězec | umístění v kódu, který identifikuje tato data, tj. 'RawInput' nebo 'předpovědi. |
 | feature_names | seznam řetězců | seznam názvů funkcí, které se stanou csv záhlaví při zadaný |
-| model_management_account_id | Řetězec | identifikátor pro účet správy modelu se uloží tento model. To je naplněny automaticky při modely jsou operationalized prostřednictvím AML |
-| webservice_name | Řetězec | Název webové služby, ke kterému je tento model aktuálně nasazená. To je naplněny automaticky při modely jsou operationalized prostřednictvím AML |
-| model_id | Řetězec | Jedinečný identifikátor pro tento model v kontextu účtu správy modelu. To je naplněny automaticky při modely jsou operationalized prostřednictvím AML |
-| model_version | Řetězec | číslo verze tohoto modelu v kontextu účtu správy modelu. To je naplněny automaticky při modely jsou operationalized prostřednictvím AML |
+| model_management_account_id | řetězec | identifikátor pro účet správy modelu se uloží tento model. To je naplněny automaticky při modely jsou operationalized prostřednictvím AML |
+| webservice_name | řetězec | Název webové služby, ke kterému je tento model aktuálně nasazená. To je naplněny automaticky při modely jsou operationalized prostřednictvím AML |
+| model_id | řetězec | Jedinečný identifikátor pro tento model v kontextu účtu správy modelu. To je naplněny automaticky při modely jsou operationalized prostřednictvím AML |
+| model_version | řetězec | číslo verze tohoto modelu v kontextu účtu správy modelu. To je naplněny automaticky při modely jsou operationalized prostřednictvím AML |
 
 
 
@@ -83,15 +83,15 @@ Můžete shromáždit data modelu pomocí instance ModelDataCollector vytvořili
 Podrobnosti najdete v tématu metoda a parametr:
 
 ### <a name="method"></a>Metoda
-| Name (Název) | Popis |
+| Název | Popis |
 |--------------------|--------------------|
 | shromažďování | Používá ke shromažďování dat pro model vstup nebo předpovědi|
 
 
 ### <a name="parameters"></a>Parametry
 
-| Name (Název) | Typ | Popis |
+| Název | Typ | Popis |
 |-------------|------------|-------------------------|
 | input_data | více typů | data, která mají být shromažďovány (aktuálně přijímá seznam typů, numpy.array, pandas. DataFrame, pyspark.sql.DataFrame). Pro typy dataframe, pokud existuje hlavička s názvy funkce tato informace je obsažena v cílovém umístění dat (bez nutnosti explicitně předávání názvů funkcí v konstruktoru ModelDataCollector) |
-| user_correlation_id | Řetězec | volitelné korelace id, které lze zadat uživatel ke korelaci tento předpovědi |
+| user_correlation_id | řetězec | volitelné korelace id, které lze zadat uživatel ke korelaci tento předpovědi |
 

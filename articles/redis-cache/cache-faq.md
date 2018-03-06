@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 02850243caaa66a354f06b650a5505a79d7aee54
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 82c01419d65e00ddf27dfeb8fd444d5d3d81803c
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-redis-cache-faq"></a>Nejčastější dotazy k Azure Redis Cache
 Další odpovědi na časté otázky, vzorce a osvědčené postupy pro Azure Redis Cache.
@@ -135,7 +135,7 @@ Z této tabulky jsme kreslení následující závěry:
 | Cenová úroveň | Velikost | Procesorová jádra | Dostupná šířka pásma | Velikost hodnoty 1 KB | Velikost hodnoty 1 KB |
 | --- | --- | --- | --- | --- | --- |
 | **Standardní mezipaměti velikosti** | | |**Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Požadavky na druhý bez SSL (RPS)** |**Požadavky na druhý protokol SSL (RPS)** |
-| C0 |250 MB |Shared |100 / 12.5 |15,000 |7,500 |
+| C0 |250 MB |Shared |100 / 12.5 |15,000 |7 500 |
 | C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
 | C2 |2,5 GB |2 |500 / 62.5 |41,000 |37,000 |
 | C3 |6 GB |4 |1000 / 125 |100,000 |90,000 |
@@ -246,9 +246,7 @@ Můžete používat kterýkoli z příkazů uvedený na [Redis příkazy](http:/
 * Můžete také použít nástroje příkazového řádku Redis. Používat, proveďte následující kroky:
 * Stažení [nástroje příkazového řádku Redis](https://github.com/MSOpenTech/redis/releases/).
 * Připojení k mezipaměti pomocí `redis-cli.exe`. Předejte mezipaměti koncový bod pomocí -h přepínač a klíč pomocí - a jak je znázorněno v následujícím příkladu:
-* `redis-cli -h <your cache="" name="">
-  .redis.cache.windows.net -a <key>
-  `
+* `redis-cli -h <redis cache name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
 > Nástroje příkazového řádku Redis nefungují s portem SSL, ale můžete pomocí nástroje, jako `stunnel` bezpečně připojit nástroje podle pokynů v SSL port [uvedení ASP.NET poskytovatele stavu relace pro Redis verze Preview](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) příspěvku na blogu.
@@ -270,7 +268,7 @@ Ano, použití Azure Redis Cache jako mezipaměť relace PHP, zadejte připojova
 >
 > `session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
 >
-> Pokud není klíč kódovaná adresou URL, se může zobrazit výjimka zprávu jako:`Failed to parse session.save_path`
+> Pokud není klíč kódovaná adresou URL, se může zobrazit výjimka zprávu jako: `Failed to parse session.save_path`
 >
 >
 

@@ -42,12 +42,13 @@
 
 ## Vytváření a správa fondů
 ### [Automatické škálování výpočetních uzlů](batch-automatic-scaling.md)
-### [Virtuální počítače náročné na výpočetní výkon](batch-pool-compute-intensive-sizes.md)
+### [Výběr velikosti virtuálního počítače pro výpočetní uzly](batch-pool-vm-sizes.md)
 ### [Konfigurace přístupu k výpočetním uzlům](pool-endpoint-configuration.md)
 ### [Vytvoření fondu s využitím vlastní image](batch-custom-images.md)
 ### [Vytvoření fondu ve virtuální síti](batch-virtual-network.md)
-### [Výpočetní uzly s Linuxem](batch-linux-nodes.md)
-### [Virtuální počítače s nízkou prioritou](batch-low-pri-vms.md)
+### [Použití virtuálních počítačů náročných na výpočetní výkon](batch-pool-compute-intensive-sizes.md)
+### [Použití výpočetních uzlů s Linuxem](batch-linux-nodes.md)
+### [Použití virtuálních počítačů s nízkou prioritou](batch-low-pri-vms.md)
 
 ## Správa úloh a úkolů
 ### [Příprava úlohy a dokončovací úkoly](batch-job-prep-release.md)

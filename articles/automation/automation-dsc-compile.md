@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
-ms.date: 02/07/2017
+ms.date: 03/02/2018
 ms.author: magoedte; gwallace
-ms.openlocfilehash: c84f1671d8e23e5ff222455192e020700f1ff51e
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: b267f64a836851e1142475568556eebf74adf2dd
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Kompilování konfigurace v Azure Automation DSC.
 
@@ -58,7 +58,7 @@ Můžete použít [ `Start-AzureRmAutomationDscCompilationJob` ](/powershell/mod
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "SampleConfig"
 ```
 
-`Start-AzureRmAutomationDscCompilationJob`Vrátí objekt úlohy kompilace, která můžete použít ke sledování jeho stavu. Pak můžete použít tento objekt úlohy kompilace s [ `Get-AzureRmAutomationDscCompilationJob` ](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob) k určení stavu úlohy kompilace a [ `Get-AzureRmAutomationDscCompilationJobOutput` ](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput) zobrazíte její datové proudy (výstup). Následující vzorový kód spustí kompilaci **SampleConfig** konfigurace, čeká na dokončení a potom zobrazí jeho datové proudy.
+`Start-AzureRmAutomationDscCompilationJob` Vrátí objekt úlohy kompilace, která můžete použít ke sledování jeho stavu. Pak můžete použít tento objekt úlohy kompilace s [ `Get-AzureRmAutomationDscCompilationJob` ](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob) k určení stavu úlohy kompilace a [ `Get-AzureRmAutomationDscCompilationJobOutput` ](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput) zobrazíte její datové proudy (výstup). Následující vzorový kód spustí kompilaci **SampleConfig** konfigurace, čeká na dokončení a potom zobrazí jeho datové proudy.
 
 ```powershell
 $CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "SampleConfig"
@@ -238,7 +238,7 @@ Asset odkazy jsou stejné ve sady runbook a konfigurace Azure Automation DSC. Na
 
 ### <a name="credential-assets"></a>Prostředků přihlašovacích údajů
 
-Během konfigurace DSC ve službě Azure Automation, můžete odkazovat pomocí prostředků přihlašovacích údajů **Get-AzureRmAutomationCredential**, prostředků přihlašovacích údajů můžete také být předán prostřednictvím parametrů, v případě potřeby. Pokud konfigurace přebírá parametr **PSCredential** typ, je třeba předat název řetězce objektu prostředek přihlašovacích údajů Azure Automation jako hodnota tohoto parametru, a nikoli objekt PSCredential. Na pozadí je prostředek přihlašovacích údajů Azure Automation s tímto názvem načíst a předána do konfigurace.
+Během konfigurace DSC ve službě Azure Automation, můžete odkazovat pomocí prostředků přihlašovacích údajů **Get-AutomationPSCredential**, prostředků přihlašovacích údajů můžete také být předán prostřednictvím parametrů, v případě potřeby. Pokud konfigurace přebírá parametr **PSCredential** typ, je třeba předat název řetězce objektu prostředek přihlašovacích údajů Azure Automation jako hodnota tohoto parametru, a nikoli objekt PSCredential. Na pozadí je prostředek přihlašovacích údajů Azure Automation s tímto názvem načíst a předána do konfigurace.
 
 Zachování pověření zabezpečení v uzlu Konfigurace (configuration dokumenty MOF) vyžaduje šifrování přihlašovacích údajů v souboru MOF konfigurace uzlu. Služby Azure Automation trvá tento krok jeden další a šifruje celý soubor MOF. Ale právě se musí zjistit DSC Powershellu, že je to v pořádku pro přihlašovací údaje k výstupu v prostém textu v průběhu generování MOF konfigurace uzlu, protože prostředí PowerShell DSC neví, že Azure Automation bude možné šifrování celý soubor MOF po jeho generaci prostřednictvím úlohu kompilace.
 
@@ -249,7 +249,7 @@ Následující příklad ukazuje konfigurace DSC, který používá prostředek 
 ```powershell
 Configuration CredentialSample
 {
-    $Cred = Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAcct" -Name "SomeCredentialAsset"
+    $Cred = Get-AutomationPSCredential "SomeCredentialAsset"
 
     Node $AllNodes.NodeName
     {

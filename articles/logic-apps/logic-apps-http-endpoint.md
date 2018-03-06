@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: dab336da4e010d0a78de9a2bdd62536d8fdd9bf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: klam; LADocs
+ms.openlocfilehash: de4f4ee086fbf3799fcac1f1b008d9237b5e7a09
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Volání, aktivaci nebo vnořit pracovních s koncovými body HTTP v aplikacích logiky
 
@@ -30,12 +30,12 @@ Pokud chcete vytvořit koncových bodů protokolu HTTP, můžete přidat tyto tr
 
 * [Požadavek](../connectors/connectors-native-reqres.md)
 
-* [Rozhraní API připojení Webhooku](logic-apps-workflow-actions-triggers.md#api-connection-trigger)
+* [Rozhraní API připojení Webhooku](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnection-trigger)
 
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
-   > I když pomocí našich ukázkách **požadavku** aktivační událost, můžete používat kterýkoli z uvedených aktivačních událostí protokolu HTTP, a všechny zásady stejně jako se vztahují na jiné typy aktivační událost.
+   > I když tyto příklady používají **požadavku** aktivační událost, můžete použít některou z uvedených aktivačních událostí protokolu HTTP, a všechny zásady stejně jako se vztahují na jiné typy aktivační události.
 
 ## <a name="set-up-an-http-endpoint-for-your-logic-app"></a>Nastavit koncový bod HTTP pro svou aplikaci logiky
 
@@ -157,7 +157,7 @@ Pokud chcete, aby vaše adresa URL koncového bodu protokolu HTTP tak, aby přij
 
     Vaše adresa URL koncového bodu protokolu HTTP nyní zahrnuje relativní cesta, například: 
 
-    https & # 58;//prod-00.southcentralus.logic.azure.com/workflows/f90cb66c52ea4e9cabe0abf4e197deff/triggers/manual/paths/invoke/customers/{customerID}...
+    https&#58;//prod-00.southcentralus.logic.azure.com/workflows/f90cb66c52ea4e9cabe0abf4e197deff/triggers/manual/paths/invoke/customers/{customerID}...
 
 7. Pokud chcete otestovat váš koncový bod protokolu HTTP, zkopírujte a vložte adresu URL aktualizované do jiného okna prohlížeče, ale nahraďte `{customerID}` s `123456`, a stiskněte klávesu Enter.
 
@@ -166,6 +166,7 @@ Pokud chcete, aby vaše adresa URL koncového bodu protokolu HTTP tak, aby přij
     `Hello 123456`
 
 <a name="generated-tokens"></a>
+
 ### <a name="tokens-generated-from-json-schemas-for-your-logic-app"></a>Tokeny vygenerovat z JSON schémata pro svou aplikaci logiky
 
 Když zadáte schématu JSON ve vaší **požadavku** aktivační událost, návrháře logiku aplikace generuje tokeny pro vlastnosti v tomto schématu. Pak můžete tyto tokeny pro předávání dat prostřednictvím pracovní postup aplikace logiky.
@@ -206,6 +207,9 @@ Pracovní postupy lze vnořit ve vaší aplikaci logiky můžete přidat další
 
 Jakmile vytvoříte koncový bod protokolu HTTP, můžete aktivovat svou aplikaci logiky prostřednictvím `POST` metodu pro úplnou adresu URL. Logiku aplikace mají integrovanou podporu pro koncové body přímý přístup.
 
+> [!NOTE] 
+> Chcete-li ručně spustit kdykoli na panelu nástrojů Návrhář aplikace na základě logiky nebo zobrazení kódu aplikace logiky aplikace logiky zvolte **spustit**.
+
 ## <a name="reference-content-from-an-incoming-request"></a>Odkaz na obsah z příchozího požadavku
 
 Pokud je typ obsahu je `application/json`, vlastnosti, můžete odkazovat z příchozího požadavku. Obsah, jinak je považována za binární jedné jednotky, které můžete předat pro jiná rozhraní API. Chcete-li tento obsah uvnitř pracovního postupu, je nutné převést obsah. Například pokud předáte `application/xml` obsahu, můžete použít `@xpath()` pro extrakci XPath nebo `@json()` pro převod XML do formátu JSON. Další informace o [práce s typy obsahu](../logic-apps/logic-apps-content-type.md).
@@ -234,7 +238,7 @@ Můžete chtít reagovat na určité požadavky, které začínají aplikace log
 
 ### <a name="construct-the-response"></a>Vytvoření odpovědi
 
-V textu odpovědi může obsahovat více než jedno záhlaví a libovolný typ obsahu. V našem příkladu odpovědi hlavičku Určuje, že odpověď má typ obsahu `application/json`. a text obsahuje `title` a `name`, podle schématu JSON aktualizované dříve **požadavku** aktivační události.
+V textu odpovědi může obsahovat více než jedno záhlaví a libovolný typ obsahu. V odpovědi příklad hlavičku Určuje, že odpověď má typ obsahu `application/json`. a text obsahuje `title` a `name`, podle schématu JSON aktualizované dříve **požadavku** aktivační události.
 
 ![Akce odpovědi HTTP][3]
 
@@ -243,8 +247,8 @@ Odpovědi mít tyto vlastnosti:
 | Vlastnost | Popis |
 | --- | --- |
 | statusCode |Určuje kód stavu HTTP pro reagovat na příchozí požadavek. Tento kód může být jakýkoli platný stavový kód, který začíná 2xx, 4xx nebo 5xx. Stavové kódy 3xx však nejsou povoleny. |
-| Záhlaví |Definuje libovolný počet hlaviček, které chcete zahrnout do odpovědi. |
-| Text |Určuje objekt textu, který může být řetězec, objekt JSON nebo i binární obsah na něj odkazovat z předchozího kroku. |
+| hlavičky |Definuje libovolný počet hlaviček, které chcete zahrnout do odpovědi. |
+| hlavní část |Určuje objekt textu, který může být řetězec, objekt JSON nebo i binární obsah na něj odkazovat z předchozího kroku. |
 
 Tady je co schématu JSON teď pro vypadá **odpovědi** akce:
 
@@ -300,7 +304,7 @@ Odpověď: Zde je souhrn o tyto změny:
 | Konfigurace ověřování Basic nebo OAuth |přes správu rozhraní API |
 | Konfigurace metody HTTP |V části **zobrazit rozšířené možnosti**, zvolte metodu HTTP |
 | Nakonfigurujte relativní cestu |V části **zobrazit rozšířené možnosti**, přidejte relativní cestu |
-| Referenční příchozí textu prostřednictvím`@triggerOutputs().body.Content` |Referenční dokumentace prostřednictvím`@triggerOutputs().body` |
+| Referenční příchozí textu prostřednictvím `@triggerOutputs().body.Content` |Referenční dokumentace prostřednictvím `@triggerOutputs().body` |
 | **Odeslání odpovědi HTTP** akce naslouchací proces protokolu HTTP |Klikněte na tlačítko **odpovědět na požadavek HTTP** (žádná aplikace API povinné) |
 
 ## <a name="get-help"></a>Podpora
@@ -309,7 +313,7 @@ Klást otázky, odpovídat na ně a poučit se ze zkušeností jiných uživatel
 
 Pokud chcete pomoci při vylepšování Azure Logic Apps a konektorů, hlasujte nebo zanechte své nápady na [webu zpětné vazby uživatelů Azure Logic Apps](http://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Vytváření definic aplikací logiky](./logic-apps-author-definitions.md)
 * [Zpracování chyb a výjimek](./logic-apps-exception-handling.md)

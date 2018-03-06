@@ -13,26 +13,24 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/21/2017
+ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 568509eba47facfc5966d06dff5a1b32dce1008f
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 62e047d706bdc42abbe44340c87267e59eb84369
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
 
-Tento článek obsahuje kroky pro přípravu prostředí pro zálohování Azure Resource Manager nasadit virtuální počítač (VM). Postupy v postupech pomocí portálu Azure.  
-
-Služba Azure Backup má dva typy trezorů pro ochranu virtuálních počítačů: záloh a trezory služeb zotavení. Trezor záloh pomáhá chránit virtuální počítače nasazené prostřednictvím modelu nasazení classic. Trezor služeb zotavení pomáhá chránit *nasazení classic i Resource Manager nasazené virtuální počítače*. Pokud chcete chránit virtuálních počítačů nasazených Resource Managerem, musíte používat Trezor služeb zotavení.
+Tento článek obsahuje kroky pro přípravu prostředí pro zálohování Azure Resource Manager nasadit virtuální počítač (VM). Postupy v postupech pomocí portálu Azure. Ukládání dat záloh virtuálního počítače v trezoru služeb zotavení. Trezor obsahuje záložní data pro classic a Resource Manager nasazené virtuální počítače.
 
 > [!NOTE]
 > Azure má dva modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../azure-resource-manager/resource-manager-deployment-model.md).
 
-Než můžete chránit nebo zálohovat virtuální počítač nasazených Resource Managerem, zkontrolujte, zda že existují tyto požadavky:
+Před chránit (nebo zálohování) virtuálních počítačů nasazených Resource Managerem zkontrolujte existují tyto požadavky:
 
-* Vytvoření trezoru služeb zotavení (nebo identifikovat existující trezor služeb zotavení) *ve stejném umístění jako virtuální počítač*.
+* Vytvoření trezoru služeb zotavení (nebo identifikovat existující trezor služeb zotavení) *ve stejné oblasti jako virtuální počítač*.
 * Vyberte scénář, definování zásad zálohování a určení položek k ochraně.
 * Kontrola instalace agenta virtuálního počítače na virtuálním počítači.
 * Zkontrolujte síťové připojení.
@@ -44,7 +42,7 @@ Pokud tyto podmínky se již existují ve vašem prostředí, pokračujte [zálo
  * **Linux**: Azure Backup podporuje [seznam distribuce, které Azure nezodpovídá](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), s výjimkou jádro operačního systému Linux. 
  
     > [!NOTE] 
-    > Další přineste vaše – vlastní Linuxových distribucích může fungovat, dokud agent virtuálního počítače je k dispozici na virtuálním počítači a podpora pro Python existuje. Jsme však není neschvaluje těchto distribuce pro zálohování.
+    > Další přineste vaše – vlastní Linuxových distribucích může fungovat, dokud agent virtuálního počítače je k dispozici na virtuálním počítači a podpora pro Python existuje. Tyto distribuce ale podporované nejsou.
  * **Windows Server**: Verze starší než Windows Server 2008 R2 nejsou podporovány.
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Omezení při zálohování a obnovení virtuálních počítačů
@@ -54,16 +52,17 @@ Než se připravíte prostředí, ujistěte se, že jste pochopili tato omezení
 * Zálohování virtuálních počítačů s daty velikosti disku je větší než 1,023 GB není podporována.
 
   > [!NOTE]
-  > Máme privátní Preview verzi pro podporu zálohování pro virtuální počítače s disky > 1TB. Podrobnosti najdete v části [privátní Preview verzi pro podporu zálohování virtuálních počítačů velké diskové](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
+  > Máme privátní Preview verzi pro podporu zálohování pro virtuální počítače s víc než jeden disky TB. Podrobnosti najdete v části [privátní Preview verzi pro podporu zálohování virtuálních počítačů velké diskové](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
   >
 
 * Zálohování virtuálních počítačů s vyhrazenou IP adresu a žádný definovaný koncový bod není podporována.
-* Zálohování virtuálních počítačů šifrované prostřednictvím právě klíčem šifrování nástroje BitLocker (BEK) není podporována. Zálohování virtuálních počítačů Linux zašifrovaná pomocí šifrování Linux Unified klíč instalační program (LUKS) není podporována.
+* Zálohování virtuálních počítačů Linux zašifrovaná pomocí šifrování Linux Unified klíč instalační program (LUKS) není podporována.
 * Není doporučeno, zálohování virtuálních počítačů, které obsahují sdílené svazky clusteru (CSV) nebo souborový Server škálovaný na konfiguraci. Vyžadují zahrnující všechny virtuální počítače, které jsou součástí konfigurace clusteru během úlohu snímku. Zálohování Azure nepodporuje konzistence více virtuálních počítačů. 
 * Zálohovaná data neobsahuje sítě připojené jednotky připojené k virtuálnímu počítači.
 * Nahrazení existujícího virtuálního počítače během obnovení se nepodporuje. Pokud se pokusíte obnovit virtuální počítač, když virtuální počítač existuje, operaci obnovení se nezdaří.
 * Mezi oblastmi zálohování a obnovení nejsou podporovány.
-* Zálohování a obnovení virtuálních počítačů pomocí nespravované disků v účtech úložiště s pravidly sítě, použije se aktuálně nepodporuje. Při konfiguraci zálohování, ujistěte se, že "Brány firewall a virtuální sítě" nastavení pro účet úložiště umožňuje přístup z "Všechny sítě."
+* Zálohování a obnovení virtuálních počítačů pomocí nespravované disky v účtech úložiště, sítě pravidla použít, není podporována. 
+* Při konfiguraci back up, zajistěte, aby **brány firewall a virtuální sítě** nastavení účtu úložiště povolit přístup ze všech sítí.
 * Můžete zálohovat virtuální počítače ve všech veřejných oblastech Azure. (Viz [kontrolní seznam](https://azure.microsoft.com/regions/#services) z podporovaných oblastí.) Pokud oblast, kterou hledáte, není podporován dnes, nezobrazí se v rozevíracím seznamu při vytváření trezoru.
 * Obnovení řadiče domény (DC) virtuálního počítače, který je součástí konfigurace více – řadič domény je možné pouze pomocí prostředí PowerShell. Další informace najdete v tématu [obnovení řadiče domény, řadiče domény služby více](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 * Obnovení virtuálních počítačů, které mají následující zvláštní síťové konfigurace je podporována pouze pomocí prostředí PowerShell. Po dokončení operace obnovení, nebude mít virtuální počítače vytvořené pomocí obnovení pracovního postupu v uživatelském rozhraní tyto konfigurace sítě. Další informace najdete v tématu [obnovení virtuálních počítačů s konfigurací speciální síťových](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
@@ -106,7 +105,7 @@ Chcete-li vytvořit trezor Služeb zotavení:
 Teď, když jste vytvořili trezor, se naučte, jak nastavit replikaci úložiště.
 
 ## <a name="set-storage-replication"></a>Nastavit replikaci úložiště
-Možnost replikace úložiště umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantního úložiště. Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Ponechte možnost geograficky redundantní úložiště, pokud se jedná o vaši primární zálohu. Pokud chcete levnější možnost, která není tak trvanlivá, vyberte místně redundantní úložiště.
+Možnost replikace úložiště umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantního úložiště. Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Ponechejte možnost nastavení jako geograficky redundantní úložiště pro vaši primární zálohu. Pokud chcete levnější možnost, která není jako trvalé, zvolte místně redundantní úložiště.
 
 Chcete-li upravit nastavení replikace úložiště:
 
@@ -126,9 +125,7 @@ Chcete-li upravit nastavení replikace úložiště:
 Po výběru možnosti úložiště pro svůj trezor, budete připraveni k přidružení virtuálního počítače s úložištěm. Chcete-li začít přidružení, měli byste vyhledat a zaregistrovat virtuální počítače Azure.
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Výběr cíle zálohování, nastavení zásad a určení položek k ochraně
-Jsou identifikovány předtím, než zaregistrujete virtuálního počítače k trezoru spusťte proces vyhledávání zajistit, aby všechny nové virtuální počítače, které byly přidány k předplatnému. Proces se dotáže Azure na seznam virtuálních počítačů v rámci předplatného společně s informacemi, jako název cloudové služby a oblast. 
-
-Na portálu Azure *scénář* odkazuje na budou umístěny v trezoru služeb zotavení. *Zásady* je plán, jak často a kdy jsou pořizovány body obnovení. Zásada také obsahuje rozsah uchování bodů obnovení.
+Předtím, než zaregistrujete virtuálního počítače k trezoru služeb zotavení, spusťte proces vyhledávání pro identifikaci všechny nové virtuální počítače přidat do odběru. Proces zjišťování dotazuje na seznam virtuálních počítačů v rámci předplatného Azure. Pokud se najde nové virtuální počítače, na portálu zobrazí název cloudové služby a přidružené oblasti. Na portálu Azure *scénář* je zadejte v trezoru služeb zotavení. *Zásady* je plán, jak často a kdy jsou pořizovány body obnovení. Zásada také obsahuje rozsah uchování bodů obnovení.
 
 1. Pokud již máte otevřený trezor Služeb zotavení, pokračujte ke kroku 2. Pokud nemáte trezoru služeb zotavení otevřít, otevřete [portál Azure](https://portal.azure.com/). Na **rozbočovače** nabídce vyberte možnost **další služby**.
 
@@ -151,7 +148,7 @@ Na portálu Azure *scénář* odkazuje na budou umístěny v trezoru služeb zot
 
    **Zálohování** a **cíl zálohování** otevřete podokna.
 
-3. Na **cíle zálohování** podokně nastavit **kde běží vaše úloha?** k **Azure** a **co chcete zálohovat?** k  **Virtuální počítač**. Potom vyberte **OK**.
+3. Na **cíle zálohování** podokně nastavit **kde běží vaše úloha?** jako **Azure** a **co chcete zálohovat?** jako  **Virtuální počítač**. Pak vyberte **OK**.
 
    ![Zálohování a cíl zálohování podokna](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
@@ -170,7 +167,7 @@ Na portálu Azure *scénář* odkazuje na budou umístěny v trezoru služeb zot
 
    !["Vyberte virtuální počítače" podokno](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-   Vybraný virtuální počítač se ověří. Pokud nevidíte virtuální počítače, které byste měli vidět, zkontrolujte, zda budou existovat ve stejné oblasti Azure jako trezor služeb zotavení a už nejsou chráněné v jiné trezoru. Řídícím panelu trezoru ukazuje umístění trezor služeb zotavení.
+   Vybraný virtuální počítač se ověří. Pokud nevidíte očekávaných virtuálních počítačů, zkontrolujte, že virtuální počítače jsou ve stejné oblasti Azure jako trezor služeb zotavení. Pokud virtuální počítače stále nezobrazí, zkontrolujte, nejsou již chráněny pomocí jiné trezoru. Řídícím panelu trezoru ukazuje oblasti, kde existuje trezor služeb zotavení.
 
 6. Teď, když jste definovali všechna nastavení trezoru, na **zálohování** podokně, vyberte **povolit zálohování**. Tento krok nasadí zásadu pro trezor a virtuální počítače. Tento krok nevytváří vytvoření počátečního bodu obnovení pro virtuální počítač.
 

@@ -11,11 +11,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: aab397e6e8006cd0a3464ed7b022327fd6f821ac
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 03fdd1265464355a2787eff897eb4f70faa095b0
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Pomocí Azure Machine Learning Workbench klasifikace bitové kopie
 
@@ -44,7 +44,7 @@ V tomto kurzu je rozdělená do tří částí:
 Při předchozí zkušenosti s machine learning a CNTK není vyžadováno, je užitečné pro pochopení základních zásad. Přesnost čísla, školení čas atd hlášené v tomto kurzu jsou jenom pro referenci a skutečnými hodnotami při spuštění kódu skoro určitě liší.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Požadavky na spuštění v tomto příkladu jsou následující:
 
@@ -59,6 +59,7 @@ Požadavky na spuštění v tomto příkladu jsou následující:
     - `pip install -U numpy`
     - `pip install bqplot`
     - `jupyter nbextension enable --py --sys-prefix bqplot`
+    - `jupyter nbextension enable --py widgetsnbextension`
 
 ### <a name="troubleshooting--known-bugs"></a>Řešení potíží / známé chyby
 - Grafického procesoru je potřeba pro část 2 a v opačném případě "Batch normalizaci školení na procesoru není dosud implementována" je vyvolána chyba při pokusu o Upřesnit DNN.

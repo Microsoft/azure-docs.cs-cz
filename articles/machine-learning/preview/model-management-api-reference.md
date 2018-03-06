@@ -4,19 +4,19 @@ description: "Tento článek popisuje kroky pro vytvoření image Docker pro web
 services: machine-learning
 author: chhavib
 ms.author: chhavib
-manager: neerajkh
+manager: hjerez
 editor: jasonwhowell
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 134971e4a663baefa4e1051f087038d3debcb969
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: f7f9cbd34d84f89d6ce193daf79531617c97ddd3
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure Machine Learning Model správy účtu API – referenční informace
 
@@ -69,9 +69,9 @@ Krok registrace modelu zaregistruje váš model Machine Learning s Azure Model s
 
 ### <a name="request"></a>Žádost
 
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| POST |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / modelů 
+| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models 
  |
 ### <a name="description"></a>Popis
 Zaregistruje modelu.
@@ -80,11 +80,11 @@ Zaregistruje modelu.
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
-| model | Text | Datové části, která se používá k registraci modelu. | Ano | [Model](#model) |
+| model | hlavní část | Datové části, která se používá k registraci modelu. | Ano | [Model](#model) |
 
 
 ### <a name="responses"></a>Odezvy
@@ -95,9 +95,9 @@ Zaregistruje modelu.
 
 ## <a name="query-the-list-of-models-in-an-account"></a>Dotaz na seznam modelů v účtu
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| GET |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / modelů 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models 
  |
 ### <a name="description"></a>Popis
 Dotazuje seznam modelů v účtu. Můžete filtrovat seznam výsledků podle značky a názvu. Pokud není předán žádný filtr dotaz uvádí všechny modely v účtu. Vráceném seznamu jsou čísla stránek vložena a počet položek v každé stránce je volitelný parametr.
@@ -106,13 +106,13 @@ Dotazuje seznam modelů v účtu. Můžete filtrovat seznam výsledků podle zna
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
 | jméno | query | Název objektu. | Ne | řetězec |
-| Značka | query | Značka modelu. | Ne | řetězec |
-| Počet | query | Počet položek načíst na stránce. | Ne | řetězec |
+| značka | query | Značka modelu. | Ne | řetězec |
+| počet | query | Počet položek načíst na stránce. | Ne | řetězec |
 | $skipToken | query | Token pro pokračování pro načtení další stránky. | Ne | řetězec |
 
 ### <a name="responses"></a>Odezvy
@@ -123,9 +123,9 @@ Dotazuje seznam modelů v účtu. Můžete filtrovat seznam výsledků podle zna
 
 ## <a name="get-model-details"></a>Získat podrobné informace o modelu
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| GET |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /models/ {id}  
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models/{id}  
  |
 
 ### <a name="description"></a>Popis
@@ -135,8 +135,8 @@ Získá model podle ID.
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | id | Cesta | ID objektu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
@@ -150,9 +150,9 @@ Získá model podle ID.
 ## <a name="register-a-manifest-with-the-registered-model-and-all-dependencies"></a>Zaregistrovat manifestu registrované modelu a všechny závislosti
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| POST |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / manifesty | 
+| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests | 
 
 ### <a name="description"></a>Popis
 Zaregistruje manifestu se registrované modelu a všechny jeho závislé součásti.
@@ -161,11 +161,11 @@ Zaregistruje manifestu se registrované modelu a všechny jeho závislé součá
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
-| manifestRequest | Text | Datová část, která slouží k registraci manifestu. | Ano | [Manifest](#manifest) |
+| manifestRequest | hlavní část | Datová část, která slouží k registraci manifestu. | Ano | [Manifest](#manifest) |
 
 ### <a name="responses"></a>Odezvy
 | Kód | Popis | Schéma |
@@ -176,9 +176,9 @@ Zaregistruje manifestu se registrované modelu a všechny jeho závislé součá
 ## <a name="query-the-list-of-manifests-in-an-account"></a>Dotaz na seznam manifesty na účtu
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| GET |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / manifesty | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests | 
 
 ### <a name="description"></a>Popis
 Dotazuje seznam manifesty v účtu. Můžete filtrovat seznam výsledků podle modelu ID a název manifestu. Pokud není předán žádný filtr dotaz uvádí všechny manifesty v účtu. Vráceném seznamu jsou čísla stránek vložena a počet položek v každé stránce je volitelný parametr.
@@ -187,13 +187,13 @@ Dotazuje seznam manifesty v účtu. Můžete filtrovat seznam výsledků podle m
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
-| %{ModelID/ | query | ID modelu. | Ne | řetězec |
-| ManifestName | query | Název souboru manifestu. | Ne | řetězec |
-| Počet | query | Počet položek načíst na stránce. | Ne | řetězec |
+| modelId | query | ID modelu. | Ne | řetězec |
+| manifestName | query | Název souboru manifestu. | Ne | řetězec |
+| počet | query | Počet položek načíst na stránce. | Ne | řetězec |
 | $skipToken | query | Token pro pokračování pro načtení další stránky. | Ne | řetězec |
 
 ### <a name="responses"></a>Odezvy
@@ -205,9 +205,9 @@ Dotazuje seznam manifesty v účtu. Můžete filtrovat seznam výsledků podle m
 ## <a name="get-manifest-details"></a>Získat podrobnosti o manifestu
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| GET |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /manifests/ {id} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests/{id} | 
 
 ### <a name="description"></a>Popis
 Získá manifest podle ID.
@@ -216,8 +216,8 @@ Získá manifest podle ID.
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | id | Cesta | ID objektu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
@@ -231,9 +231,9 @@ Získá manifest podle ID.
 ## <a name="create-an-image"></a>Vytvoření image
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| POST |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / bitové kopie | 
+| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images | 
 
 ### <a name="description"></a>Popis
 Vytvoří bitovou kopii jako obrázek na Docker v registru kontejner Azure.
@@ -242,11 +242,11 @@ Vytvoří bitovou kopii jako obrázek na Docker v registru kontejner Azure.
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
-| imageRequest | Text | Datová část, která se používá k vytvoření image. | Ano | [ImageRequest](#imagerequest) |
+| imageRequest | hlavní část | Datová část, která se používá k vytvoření image. | Ano | [ImageRequest](#imagerequest) |
 
 ### <a name="responses"></a>Odezvy
 | Kód | Popis | Záhlaví | Schéma |
@@ -257,9 +257,9 @@ Vytvoří bitovou kopii jako obrázek na Docker v registru kontejner Azure.
 ## <a name="query-the-list-of-images-in-an-account"></a>Dotaz na seznam obrázků v účtu
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| GET |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / bitové kopie | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images | 
 
 ### <a name="description"></a>Popis
 Dotazy v seznamu bitových kopií v účtu. Můžete filtrovat seznam výsledků manifestu ID a název. Pokud není předán žádný filtr dotaz uvádí všechny bitové kopie v účtu. Vráceném seznamu jsou čísla stránek vložena a počet položek v každé stránce je volitelný parametr.
@@ -268,13 +268,13 @@ Dotazy v seznamu bitových kopií v účtu. Můžete filtrovat seznam výsledků
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
-| ID manifestu | query | ID manifestu. | Ne | řetězec |
-| ManifestName | query | Název souboru manifestu. | Ne | řetězec |
-| Počet | query | Počet položek načíst na stránce. | Ne | řetězec |
+| manifestId | query | ID manifestu. | Ne | řetězec |
+| manifestName | query | Název souboru manifestu. | Ne | řetězec |
+| počet | query | Počet položek načíst na stránce. | Ne | řetězec |
 | $skipToken | query | Token pro pokračování pro načtení další stránky. | Ne | řetězec |
 
 ### <a name="responses"></a>Odezvy
@@ -286,9 +286,9 @@ Dotazy v seznamu bitových kopií v účtu. Můžete filtrovat seznam výsledků
 ## <a name="get-image-details"></a>Načíst podrobnosti image.
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| GET |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /images/ {id} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images/{id} | 
 
 ### <a name="description"></a>Popis
 Získá bitovou kopii podle ID.
@@ -297,8 +297,8 @@ Získá bitovou kopii podle ID.
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | id | Cesta | ID obrázku. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
@@ -313,9 +313,9 @@ Získá bitovou kopii podle ID.
 ## <a name="create-a-service"></a>Vytvoření služby
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| POST |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / služby | 
+| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services | 
 
 ### <a name="description"></a>Popis
 Vytvoří službu z bitové kopie.
@@ -324,11 +324,11 @@ Vytvoří službu z bitové kopie.
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
-| elementu serviceRequest | Text | Datová část, která se používá k vytvoření služby. | Ano | [ServiceCreateRequest](#servicecreaterequest) |
+| serviceRequest | hlavní část | Datová část, která se používá k vytvoření služby. | Ano | [ServiceCreateRequest](#servicecreaterequest) |
 
 ### <a name="responses"></a>Odezvy
 | Kód | Popis | Záhlaví | Schéma |
@@ -340,9 +340,9 @@ Vytvoří službu z bitové kopie.
 ## <a name="query-the-list-of-services-in-an-account"></a>Dotaz na seznam služeb v účtu
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| GET |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / služby | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services | 
 
 ### <a name="description"></a>Popis
 Dotazuje seznam služeb v účtu. Můžete filtrovat seznam výsledků podle názvu nebo ID modelu, manifestu název nebo ID, ID bitové kopie, název služby nebo ID Machine Learning výpočetních prostředků. Pokud není předán žádný filtr dotaz uvádí všechny služby v účtu. Vráceném seznamu jsou čísla stránek vložena a počet položek v každé stránce je volitelný parametr.
@@ -351,18 +351,18 @@ Dotazuje seznam služeb v účtu. Můžete filtrovat seznam výsledků podle ná
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
-| ServiceName | query | Název služby. | Ne | řetězec |
-| %{ModelID/ | query | Název modelu. | Ne | řetězec |
-| %{ModelName/ | query | ID modelu. | Ne | řetězec |
-| ID manifestu | query | ID manifestu. | Ne | řetězec |
-| ManifestName | query | Název souboru manifestu. | Ne | řetězec |
-| ID obrázku | query | ID obrázku. | Ne | řetězec |
+| serviceName | query | Název služby. | Ne | řetězec |
+| modelId | query | Název modelu. | Ne | řetězec |
+| modelName | query | ID modelu. | Ne | řetězec |
+| manifestId | query | ID manifestu. | Ne | řetězec |
+| manifestName | query | Název souboru manifestu. | Ne | řetězec |
+| imageId | query | ID obrázku. | Ne | řetězec |
 | computeResourceId | query | ID počítače Learning výpočetních prostředků. | Ne | řetězec |
-| Počet | query | Počet položek načíst na stránce. | Ne | řetězec |
+| počet | query | Počet položek načíst na stránce. | Ne | řetězec |
 | $skipToken | query | Token pro pokračování pro načtení další stránky. | Ne | řetězec |
 
 ### <a name="responses"></a>Odezvy
@@ -374,9 +374,9 @@ Dotazuje seznam služeb v účtu. Můžete filtrovat seznam výsledků podle ná
 ## <a name="get-service-details"></a>Získat podrobnosti služby
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| GET |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /services/ {id} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
 ### <a name="description"></a>Popis
 Získá službu podle ID.
@@ -385,8 +385,8 @@ Získá službu podle ID.
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | id | Cesta | ID objektu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
@@ -400,9 +400,9 @@ Získá službu podle ID.
 ## <a name="update-a-service"></a>Aktualizace služby
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| PUT |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /services/ {id} | 
+| PUT |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
 ### <a name="description"></a>Popis
 Aktualizuje existující službu.
@@ -411,12 +411,12 @@ Aktualizuje existující službu.
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | id | Cesta | ID objektu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
-| serviceUpdateRequest | Text | Datová část, která se používá k aktualizaci existující službu. | Ano |  [ServiceUpdateRequest](#serviceupdaterequest) |
+| serviceUpdateRequest | hlavní část | Datová část, která se používá k aktualizaci existující službu. | Ano |  [ServiceUpdateRequest](#serviceupdaterequest) |
 
 ### <a name="responses"></a>Odezvy
 | Kód | Popis | Záhlaví | Schéma |
@@ -428,9 +428,9 @@ Aktualizuje existující službu.
 ## <a name="delete-a-service"></a>Odstranění služby
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| ODSTRANIT |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /services/ {id} | 
+| DELETE |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
 ### <a name="description"></a>Popis
 Odstraní služby.
@@ -439,8 +439,8 @@ Odstraní služby.
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | id | Cesta | ID objektu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
@@ -455,9 +455,9 @@ Odstraní služby.
 ## <a name="get-service-keys"></a>Získat klíče služby
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| GET |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /services/ {id} / klíče | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/keys | 
 
 ### <a name="description"></a>Popis
 Získá klíče služby.
@@ -466,8 +466,8 @@ Získá klíče služby.
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | id | Cesta | ID služby. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
@@ -481,9 +481,9 @@ Získá klíče služby.
 ## <a name="regenerate-service-keys"></a>Obnovit klíče služby
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| POST |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /services/ {id} / klíče | 
+| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/keys | 
 
 ### <a name="description"></a>Popis
 Regeneruje klíče služby a vrátí tyto adresy.
@@ -492,12 +492,12 @@ Regeneruje klíče služby a vrátí tyto adresy.
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| resourceGroupName | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
 | id | Cesta | ID služby. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
-| regenerateKeyRequest | Text | Datová část, která se používá k aktualizaci existující službu. | Ano | [ServiceRegenerateKeyRequest](#serviceregeneratekeyrequest) |
+| regenerateKeyRequest | hlavní část | Datová část, která se používá k aktualizaci existující službu. | Ano | [ServiceRegenerateKeyRequest](#serviceregeneratekeyrequest) |
 
 ### <a name="responses"></a>Odezvy
 | Kód | Popis | Schéma |
@@ -508,9 +508,9 @@ Regeneruje klíče služby a vrátí tyto adresy.
 ## <a name="query-the-list-of-deployments-in-an-account"></a>Dotaz na seznam nasazení v účtu
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| GET |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / nasazení | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/deployments | 
 
 ### <a name="description"></a>Popis
 Dotazuje seznamu nasazení v účtu. Můžete filtrovat seznam výsledků podle ID služby, které se vrátí jenom nasazení, které jsou vytvořené pro konkrétní službu. Pokud není předán žádný filtr dotaz uvádí všechna nasazení v účtu.
@@ -518,9 +518,9 @@ Dotazuje seznamu nasazení v účtu. Můžete filtrovat seznam výsledků podle 
 ### <a name="parameters"></a>Parametry
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
+| subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
+| resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | path | Název účtu pro správu modelu. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
 | serviceId | query | ID služby. | Ne | řetězec |
@@ -534,9 +534,9 @@ Dotazuje seznamu nasazení v účtu. Můžete filtrovat seznam výsledků podle 
 ## <a name="get-deployment-details"></a>Získat podrobnosti o nasazení
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| GET |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /deployments/ {id} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/deployments/{id} | 
 
 ### <a name="description"></a>Popis
 Získá nasazení podle ID.
@@ -544,10 +544,10 @@ Získá nasazení podle ID.
 ### <a name="parameters"></a>Parametry
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
-| id | Cesta | ID nasazení. | Ano | řetězec |
+| subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
+| resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | path | Název účtu pro správu modelu. | Ano | řetězec |
+| id | path | ID nasazení. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
 
@@ -560,9 +560,9 @@ Získá nasazení podle ID.
 ## <a name="get-operation-details"></a>Získat podrobnosti o operaci
 
 ### <a name="request"></a>Žádost
-| Metoda | Identifikátor URI požadavku |
+| Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| GET |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /operations/ {id} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/operations/{id} | 
 
 ### <a name="description"></a>Popis
 Získá stav asynchronní operace podle ID operace.
@@ -570,10 +570,10 @@ Získá stav asynchronní operace podle ID operace.
 ### <a name="parameters"></a>Parametry
 | Název | Umístěný v | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | Cesta | ID předplatného Azure. | Ano | řetězec |
-| Název skupiny prostředků | Cesta | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
-| název účtu | Cesta | Název účtu pro správu modelu. | Ano | řetězec |
-| id | Cesta | ID operace. | Ano | řetězec |
+| subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
+| resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
+| accountName | path | Název účtu pro správu modelu. | Ano | řetězec |
+| id | path | ID operace. | Ano | řetězec |
 | verze rozhraní API. | query | Verze zprostředkovatele prostředků Microsoft.Machine.Learning rozhraní API používat. | Ano | řetězec |
 | Autorizace | záhlaví | Autorizační token. Měla by vypadat jako "Nosiče XXXXXX." | Ano | řetězec |
 
@@ -595,10 +595,10 @@ Objekt asset, který bude potřeba při vytváření Docker obrázku.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**ID**  <br>*volitelné*|ID prostředku.|řetězec|
-|**mimeType**  <br>*volitelné*|Typ MIME modelu obsahu. Další informace o typu MIME najdete v tématu [seznam typů médií IANA](https://www.iana.org/assignments/media-types/media-types.xhtml).|řetězec|
-|**Rozbalte**  <br>*volitelné*|Určuje, které je třeba rozbalit obsah během vytváření bitové kopie Docker.|Logická hodnota|
-|**Adresa URL**  <br>*volitelné*|Adresa URL umístění Asset.|řetězec|
+|**id**  <br>*Volitelné*|ID prostředku.|řetězec|
+|**mimeType**  <br>*Volitelné*|Typ MIME modelu obsahu. Další informace o typu MIME najdete v tématu [seznam typů médií IANA](https://www.iana.org/assignments/media-types/media-types.xhtml).|řetězec|
+|**Rozbalte**  <br>*Volitelné*|Určuje, které je třeba rozbalit obsah během vytváření bitové kopie Docker.|Boolean|
+|**url**  <br>*Volitelné*|Adresa URL umístění Asset.|řetězec|
 
 
 <a name="asyncoperationstate"></a>
@@ -615,13 +615,13 @@ Stav operace.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**createdTime**  <br>*volitelné*  <br>*jen pro čtení*|Asynchronní operace vytvoření čas (UTC).|řetězec (datum a čas)|
-|**čas ukončení**  <br>*volitelné*  <br>*jen pro čtení*|Asynchronní operace koncový čas (UTC).|řetězec (datum a čas)|
-|**Chyba**  <br>*volitelné*||[ErrorResponse](#errorresponse)|
-|**ID**  <br>*volitelné*|ID asynchronní operace.|řetězec|
-|**Typ operace**  <br>*volitelné*|Typ asynchronní operace.|výčet (bitové kopie, služba)|
-|**resourceLocation**  <br>*volitelné*|Prostředek vytvořit nebo aktualizovat asynchronní operace.|řetězec|
-|**Stav**  <br>*volitelné*||[AsyncOperationState](#asyncoperationstate)|
+|**createdTime**  <br>*Volitelné*  <br>*read-only*|Asynchronní operace vytvoření čas (UTC).|řetězec (datum a čas)|
+|**endTime**  <br>*Volitelné*  <br>*read-only*|Asynchronní operace koncový čas (UTC).|řetězec (datum a čas)|
+|**error**  <br>*Volitelné*||[ErrorResponse](#errorresponse)|
+|**id**  <br>*Volitelné*|ID asynchronní operace.|řetězec|
+|**Typ operace**  <br>*Volitelné*|Typ asynchronní operace.|výčet (bitové kopie, služba)|
+|**resourceLocation**  <br>*Volitelné*|Prostředek vytvořit nebo aktualizovat asynchronní operace.|řetězec|
+|**Stav**  <br>*Volitelné*||[AsyncOperationState](#asyncoperationstate)|
 
 
 <a name="authkeys"></a>
@@ -631,8 +631,8 @@ Ověřovací klíče pro službu.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**primaryKey**  <br>*volitelné*|Primární klíč.|řetězec|
-|**sekundární klíč**  <br>*volitelné*|Sekundární klíč.|řetězec|
+|**primaryKey**  <br>*Volitelné*|Primární klíč.|řetězec|
+|**secondaryKey**  <br>*Volitelné*|Sekundární klíč.|řetězec|
 
 
 <a name="autoscaler"></a>
@@ -642,11 +642,11 @@ Nastavení autoscaler.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**autoscaleEnabled**  <br>*volitelné*|Povolit nebo zakázat autoscaler.|Logická hodnota|
-|**maxReplicas**  <br>*volitelné*|Maximální počet replik pod až škálování.  <br>**Minimální hodnota**:`1`|celé číslo|
-|**minReplicas**  <br>*volitelné*|Minimální počet replik pod škálování dolů na.  <br>**Minimální hodnota**:`0`|celé číslo|
-|**refreshPeriodInSeconds**  <br>*volitelné*|Aktualizace času automatického škálování aktivační událost.  <br>**Minimální hodnota**:`1`|celé číslo|
-|**targetUtilization**  <br>*volitelné*|Procento využití, která aktivuje automatické škálování.  <br>**Minimální hodnota**:`0`  <br>**Maximální hodnota**:`100`|celé číslo|
+|**autoscaleEnabled**  <br>*Volitelné*|Povolit nebo zakázat autoscaler.|Boolean|
+|**maxReplicas**  <br>*Volitelné*|Maximální počet replik pod až škálování.  <br>**Minimální hodnota**: `1`|celé číslo|
+|**minReplicas**  <br>*Volitelné*|Minimální počet replik pod škálování dolů na.  <br>**Minimální hodnota**: `0`|celé číslo|
+|**refreshPeriodInSeconds**  <br>*Volitelné*|Aktualizace času automatického škálování aktivační událost.  <br>**Minimální hodnota**: `1`|celé číslo|
+|**targetUtilization**  <br>*Volitelné*|Procento využití, která aktivuje automatické škálování.  <br>**Minimální hodnota**: `0`  <br>**Maximální hodnota**: `100`|celé číslo|
 
 
 <a name="computeresource"></a>
@@ -656,8 +656,8 @@ Machine Learning výpočetní prostředky.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**ID**  <br>*volitelné*|ID prostředku.|řetězec|
-|**Typ**  <br>*volitelné*|Typ prostředku.|výčet (Cluster)|
+|**id**  <br>*Volitelné*|ID prostředku.|řetězec|
+|**Typ**  <br>*Volitelné*|Typ prostředku.|výčet (Cluster)|
 
 
 <a name="containerresourcereservation"></a>
@@ -667,8 +667,8 @@ Konfigurace tak, aby vyhradil prostředky pro kontejner v clusteru.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**využití procesoru**  <br>*volitelné*|Určuje rezervace procesoru. Formát pro Kubernetes: najdete v části [význam procesoru](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu).|řetězec|
-|**paměť**  <br>*volitelné*|Určuje paměť rezervace. Formát pro Kubernetes: najdete v části [význam paměti](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory).|řetězec|
+|**cpu**  <br>*Volitelné*|Určuje rezervace procesoru. Formát pro Kubernetes: najdete v části [význam procesoru](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu).|řetězec|
+|**Paměť**  <br>*Volitelné*|Určuje paměť rezervace. Formát pro Kubernetes: najdete v části [význam paměti](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory).|řetězec|
 
 
 <a name="deployment"></a>
@@ -678,12 +678,12 @@ Instance nasazení služby Azure Machine Learning.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**createdAt**  <br>*volitelné*  <br>*jen pro čtení*|Čas vytvoření nasazení (UTC).|řetězec (datum a čas)|
-|**expiredAt**  <br>*volitelné*  <br>*jen pro čtení*|Platnost nasazení čas (UTC).|řetězec (datum a čas)|
-|**ID**  <br>*volitelné*|ID nasazení.|řetězec|
-|**ID obrázku**  <br>*volitelné*|ID obrázku přidružený toto nasazení.|řetězec|
-|**serviceName**  <br>*volitelné*|Název služby.|řetězec|
-|**Stav**  <br>*volitelné*|Aktuální stav nasazení.|řetězec|
+|**createdAt**  <br>*Volitelné*  <br>*read-only*|Čas vytvoření nasazení (UTC).|řetězec (datum a čas)|
+|**expiredAt**  <br>*Volitelné*  <br>*read-only*|Platnost nasazení čas (UTC).|řetězec (datum a čas)|
+|**id**  <br>*Volitelné*|ID nasazení.|řetězec|
+|**imageId**  <br>*Volitelné*|ID obrázku přidružený toto nasazení.|řetězec|
+|**serviceName**  <br>*Volitelné*|Název služby.|řetězec|
+|**Stav**  <br>*Volitelné*|Aktuální stav nasazení.|řetězec|
 
 
 <a name="deploymentlist"></a>
@@ -700,8 +700,8 @@ Model správy podrobnosti o chybě služby.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**kód**  <br>*požadované*|Kód chyby.|řetězec|
-|**zpráva**  <br>*požadované*|Chybová zpráva.|řetězec|
+|**Kód**  <br>*Požadované*|Kód chyby.|řetězec|
+|**Zpráva**  <br>*Požadované*|Chybová zpráva.|řetězec|
 
 
 <a name="errorresponse"></a>
@@ -711,10 +711,10 @@ Objekt modelu správy služby chyby.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**kód**  <br>*požadované*|Kód chyby.|řetězec|
-|**Podrobnosti**  <br>*volitelné*|Pole objektů podrobnosti o chybě.|<[ErrorDetail](#errordetail)> pole|
-|**zpráva**  <br>*požadované*|Chybová zpráva.|řetězec|
-|**statusCode**  <br>*volitelné*|Stavový kód HTTP.|celé číslo|
+|**Kód**  <br>*Požadované*|Kód chyby.|řetězec|
+|**Podrobnosti**  <br>*Volitelné*|Pole objektů podrobnosti o chybě.|<[ErrorDetail](#errordetail)> pole|
+|**Zpráva**  <br>*Požadované*|Chybová zpráva.|řetězec|
+|**statusCode**  <br>*Volitelné*|Stavový kód HTTP.|celé číslo|
 
 
 <a name="image"></a>
@@ -724,18 +724,18 @@ Obrázek Azure Machine Learning.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**computeResourceId**  <br>*volitelné*|ID prostředí vytvořené v Machine Learning výpočetní prostředek.|řetězec|
-|**createdTime**  <br>*volitelné*|Čas vytvoření bitové kopie (UTC).|řetězec (datum a čas)|
-|**creationState**  <br>*volitelné*||[AsyncOperationState](#asyncoperationstate)|
-|**Popis**  <br>*volitelné*|Text popisu Image.|řetězec|
-|**Chyba**  <br>*volitelné*||[ErrorResponse](#errorresponse)|
-|**ID**  <br>*volitelné*|ID obrázku.|řetězec|
-|**imageBuildLogUri**  <br>*volitelné*|Identifikátor URI nahrané protokoly ze sestavení bitové kopie.|řetězec|
-|**Vlastnost imageLocation**  <br>*volitelné*|Azure řetězec umístění kontejneru registru pro vytvoření bitové kopie.|řetězec|
-|**imageType**  <br>*volitelné*||[ImageType](#imagetype)|
-|**manifest**  <br>*volitelné*||[Manifest](#manifest)|
-|**Jméno**  <br>*volitelné*|Název bitové kopie.|řetězec|
-|**verze**  <br>*volitelné*|Verze bitové kopie nastavit službou Management modelu.|celé číslo|
+|**computeResourceId**  <br>*Volitelné*|ID prostředí vytvořené v Machine Learning výpočetní prostředek.|řetězec|
+|**createdTime**  <br>*Volitelné*|Čas vytvoření bitové kopie (UTC).|řetězec (datum a čas)|
+|**creationState**  <br>*Volitelné*||[AsyncOperationState](#asyncoperationstate)|
+|**Popis**  <br>*Volitelné*|Text popisu Image.|řetězec|
+|**error**  <br>*Volitelné*||[ErrorResponse](#errorresponse)|
+|**id**  <br>*Volitelné*|ID obrázku.|řetězec|
+|**imageBuildLogUri**  <br>*Volitelné*|Identifikátor URI nahrané protokoly ze sestavení bitové kopie.|řetězec|
+|**imageLocation**  <br>*Volitelné*|Azure řetězec umístění kontejneru registru pro vytvoření bitové kopie.|řetězec|
+|**imageType**  <br>*Volitelné*||[ImageType](#imagetype)|
+|**manifest**  <br>*Volitelné*||[Manifest](#manifest)|
+|**name**  <br>*Volitelné*|Název bitové kopie.|řetězec|
+|**Verze**  <br>*Volitelné*|Verze bitové kopie nastavit službou Management modelu.|celé číslo|
 
 
 <a name="imagerequest"></a>
@@ -745,11 +745,11 @@ Požadavek na vytvoření image Azure Machine Learning.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**computeResourceId**  <br>*požadované*|ID prostředí vytvořené v Machine Learning výpočetní prostředek.|řetězec|
-|**Popis**  <br>*volitelné*|Text popisu Image.|řetězec|
-|**imageType**  <br>*požadované*||[ImageType](#imagetype)|
-|**ID manifestu**  <br>*požadované*|ID manifestu, ze kterého se vytvoří bitovou kopii.|řetězec|
-|**Jméno**  <br>*požadované*|Název bitové kopie.|řetězec|
+|**computeResourceId**  <br>*Požadované*|ID prostředí vytvořené v Machine Learning výpočetní prostředek.|řetězec|
+|**Popis**  <br>*Volitelné*|Text popisu Image.|řetězec|
+|**imageType**  <br>*Požadované*||[ImageType](#imagetype)|
+|**manifestId**  <br>*Požadované*|ID manifestu, ze kterého se vytvoří bitovou kopii.|řetězec|
+|**name**  <br>*Požadované*|Název bitové kopie.|řetězec|
 
 
 <a name="imagetype"></a>
@@ -766,17 +766,17 @@ Azure Machine Learning manifest.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**prostředky**  <br>*požadované*|Seznam prostředků.|<[Asset](#asset)> pole|
-|**createdTime**  <br>*volitelné*  <br>*jen pro čtení*|Vytvoření manifestu čas (UTC).|řetězec (datum a čas)|
-|**Popis**  <br>*volitelné*|Manifest text popisu.|řetězec|
-|**driverProgram**  <br>*požadované*|Ovladač program manifestu.|řetězec|
-|**ID**  <br>*volitelné*|ID manifestu.|řetězec|
-|**modelIds**  <br>*volitelné*|Seznam ID modelu registrované modelů. Žádost se nezdaří, pokud nejsou registrované žádné zahrnuté modelů.|<string>pole|
-|**modelType**  <br>*volitelné*|Určuje, že modely jsou již registrovaný ve službě správy modelu.|výčet (registrovaná)|
-|**Jméno**  <br>*požadované*|Název souboru manifestu.|řetězec|
-|**targetRuntime**  <br>*požadované*||[TargetRuntime](#targetruntime)|
-|**verze**  <br>*volitelné*  <br>*jen pro čtení*|Verze manifestu přiřazené službou modelu správy.|celé číslo|
-|**webserviceType**  <br>*volitelné*|Určuje požadovaný typ webové služby, která bude vytvořena z manifestu.|výčet (v reálném čase)|
+|**Prostředky**  <br>*Požadované*|Seznam prostředků.|<[Asset](#asset)> pole|
+|**createdTime**  <br>*Volitelné*  <br>*read-only*|Vytvoření manifestu čas (UTC).|řetězec (datum a čas)|
+|**Popis**  <br>*Volitelné*|Manifest text popisu.|řetězec|
+|**driverProgram**  <br>*Požadované*|Ovladač program manifestu.|řetězec|
+|**id**  <br>*Volitelné*|ID manifestu.|řetězec|
+|**modelIds**  <br>*Volitelné*|Seznam ID modelu registrované modelů. Žádost se nezdaří, pokud nejsou registrované žádné zahrnuté modelů.|<string> Pole|
+|**modelType**  <br>*Volitelné*|Určuje, že modely jsou již registrovaný ve službě správy modelu.|výčet (registrovaná)|
+|**name**  <br>*Požadované*|Název souboru manifestu.|řetězec|
+|**targetRuntime**  <br>*Požadované*||[TargetRuntime](#targetruntime)|
+|**Verze**  <br>*Volitelné*  <br>*read-only*|Verze manifestu přiřazené službou modelu správy.|celé číslo|
+|**webserviceType**  <br>*Volitelné*|Určuje požadovaný typ webové služby, která bude vytvořena z manifestu.|výčet (v reálném čase)|
 
 
 <a name="model"></a>
@@ -786,15 +786,15 @@ Instance model Azure Machine Learning.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**createdAt**  <br>*volitelné*  <br>*jen pro čtení*|Model vytváření čas (UTC).|řetězec (datum a čas)|
-|**Popis**  <br>*volitelné*|Textový popis modelu.|řetězec|
-|**ID**  <br>*volitelné*  <br>*jen pro čtení*|ID modelu.|řetězec|
-|**mimeType**  <br>*požadované*|Typ MIME obsah modelu. Další informace o typu MIME najdete v tématu [seznam typů médií IANA](https://www.iana.org/assignments/media-types/media-types.xhtml).|řetězec|
-|**Jméno**  <br>*požadované*|Název modelu.|řetězec|
-|**značek**  <br>*volitelné*|Seznam značek modelu.|<string>pole|
-|**Rozbalte**  <br>*volitelné*|Určuje, jestli je potřeba rozbalte modelu během vytváření bitové kopie Docker.|Logická hodnota|
-|**Adresa URL**  <br>*požadované*|Adresa URL modelu. Obvykle jsme uvést adresu URL sdílený přístupový podpis sem.|řetězec|
-|**verze**  <br>*volitelné*  <br>*jen pro čtení*|Verze modelu přiřazené službou modelu správy.|celé číslo|
+|**createdAt**  <br>*Volitelné*  <br>*read-only*|Model vytváření čas (UTC).|řetězec (datum a čas)|
+|**Popis**  <br>*Volitelné*|Textový popis modelu.|řetězec|
+|**id**  <br>*Volitelné*  <br>*read-only*|ID modelu.|řetězec|
+|**mimeType**  <br>*Požadované*|Typ MIME obsah modelu. Další informace o typu MIME najdete v tématu [seznam typů médií IANA](https://www.iana.org/assignments/media-types/media-types.xhtml).|řetězec|
+|**name**  <br>*Požadované*|Název modelu.|řetězec|
+|**značek**  <br>*Volitelné*|Seznam značek modelu.|<string> Pole|
+|**Rozbalte**  <br>*Volitelné*|Určuje, jestli je potřeba rozbalte modelu během vytváření bitové kopie Docker.|Boolean|
+|**url**  <br>*Požadované*|Adresa URL modelu. Obvykle jsme uvést adresu URL sdílený přístupový podpis sem.|řetězec|
+|**Verze**  <br>*Volitelné*  <br>*read-only*|Verze modelu přiřazené službou modelu správy.|celé číslo|
 
 
 <a name="modeldatacollection"></a>
@@ -804,8 +804,8 @@ Informace o modelu dat kolekce.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**eventHubEnabled**  <br>*volitelné*|Povolte Centru událostí pro službu.|Logická hodnota|
-|**storageEnabled**  <br>*volitelné*|Povolte úložiště pro službu.|Logická hodnota|
+|**eventHubEnabled**  <br>*Volitelné*|Povolte Centru událostí pro službu.|Boolean|
+|**storageEnabled**  <br>*Volitelné*|Povolte úložiště pro službu.|Boolean|
 
 
 <a name="paginatedimagelist"></a>
@@ -815,8 +815,8 @@ Seznam stránkované bitové kopie.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**odkaz nextLink**  <br>*volitelné*|Pokračování odkaz na další stránku výsledků v seznamu (absolutní identifikátor URI).|řetězec|
-|**Hodnota**  <br>*volitelné*|Pole objektů modelu.|<[Obrázek](#image)> pole|
+|**nextLink**  <br>*Volitelné*|Pokračování odkaz na další stránku výsledků v seznamu (absolutní identifikátor URI).|řetězec|
+|**Hodnota**  <br>*Volitelné*|Pole objektů modelu.|<[Obrázek](#image)> pole|
 
 
 <a name="paginatedmanifestlist"></a>
@@ -826,8 +826,8 @@ Seznam stránkované manifesty.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**odkaz nextLink**  <br>*volitelné*|Pokračování odkaz na další stránku výsledků v seznamu (absolutní identifikátor URI).|řetězec|
-|**Hodnota**  <br>*volitelné*|Pole objektů manifestu.|<[Manifest](#manifest)> pole|
+|**nextLink**  <br>*Volitelné*|Pokračování odkaz na další stránku výsledků v seznamu (absolutní identifikátor URI).|řetězec|
+|**Hodnota**  <br>*Volitelné*|Pole objektů manifestu.|<[Manifest](#manifest)> pole|
 
 
 <a name="paginatedmodellist"></a>
@@ -837,8 +837,8 @@ Stránkované seznam modelů.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**odkaz nextLink**  <br>*volitelné*|Pokračování odkaz na další stránku výsledků v seznamu (absolutní identifikátor URI).|řetězec|
-|**Hodnota**  <br>*volitelné*|Pole objektů modelu.|<[Model](#model)> pole|
+|**nextLink**  <br>*Volitelné*|Pokračování odkaz na další stránku výsledků v seznamu (absolutní identifikátor URI).|řetězec|
+|**Hodnota**  <br>*Volitelné*|Pole objektů modelu.|<[Model](#model)> pole|
 
 
 <a name="paginatedservicelist"></a>
@@ -848,8 +848,8 @@ Stránkované seznam služeb.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**odkaz nextLink**  <br>*volitelné*|Pokračování odkaz na další stránku výsledků v seznamu (absolutní identifikátor URI).|řetězec|
-|**Hodnota**  <br>*volitelné*|Pole objektů služby.|<[ServiceResponse](#serviceresponse)> pole|
+|**nextLink**  <br>*Volitelné*|Pokračování odkaz na další stránku výsledků v seznamu (absolutní identifikátor URI).|řetězec|
+|**Hodnota**  <br>*Volitelné*|Pole objektů služby.|<[ServiceResponse](#serviceresponse)> pole|
 
 
 <a name="servicecreaterequest"></a>
@@ -859,15 +859,15 @@ Požadavek na vytvoření služby.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**appInsightsEnabled**  <br>*volitelné*|Povolte application insights pro služby.|Logická hodnota|
-|**autoScaler**  <br>*volitelné*||[AutoScaler](#autoscaler)|
-|**computeResource**  <br>*požadované*||[ComputeResource](#computeresource)|
-|**containerResourceReservation**  <br>*volitelné*||[ContainerResourceReservation](#containerresourcereservation)|
-|**Element dataCollection**  <br>*volitelné*||[ModelDataCollection](#modeldatacollection)|
-|**ID obrázku**  <br>*požadované*|Obrázek se vytvořit službu.|řetězec|
-|**maxConcurrentRequestsPerContainer**  <br>*volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**:`1`|celé číslo|
-|**Jméno**  <br>*požadované*|Název služby.|řetězec|
-|**numReplicas**  <br>*volitelné*|Počet replik pod systémem kdykoli. Nelze zadat, zda je povoleno Autoscaler.  <br>**Minimální hodnota**:`0`|celé číslo|
+|**appInsightsEnabled**  <br>*Volitelné*|Povolte application insights pro služby.|Boolean|
+|**autoScaler**  <br>*Volitelné*||[AutoScaler](#autoscaler)|
+|**computeResource**  <br>*Požadované*||[ComputeResource](#computeresource)|
+|**containerResourceReservation**  <br>*Volitelné*||[ContainerResourceReservation](#containerresourcereservation)|
+|**Element DataCollection**  <br>*Volitelné*||[ModelDataCollection](#modeldatacollection)|
+|**imageId**  <br>*Požadované*|Obrázek se vytvořit službu.|řetězec|
+|**maxConcurrentRequestsPerContainer**  <br>*Volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**: `1`|celé číslo|
+|**name**  <br>*Požadované*|Název služby.|řetězec|
+|**numReplicas**  <br>*Volitelné*|Počet replik pod systémem kdykoli. Nelze zadat, zda je povoleno Autoscaler.  <br>**Minimální hodnota**: `0`|celé číslo|
 
 
 <a name="serviceregeneratekeyrequest"></a>
@@ -877,7 +877,7 @@ Požadavek na znovu vygenerovat klíč pro službu.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**Typ_klíče.**  <br>*volitelné*|Určuje, který klíč znovu vygenerovat.|výčet (primární, sekundární)|
+|**keyType**  <br>*Volitelné*|Určuje, který klíč znovu vygenerovat.|výčet (primární, sekundární)|
 
 
 <a name="serviceresponse"></a>
@@ -887,39 +887,39 @@ Podrobný stav služby.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**createdAt**  <br>*volitelné*|Vytvoření služby čas (UTC).|řetězec (datum a čas)|
-|**ID**  <br>*volitelné*|ID služby.|řetězec|
-|**bitové kopie**  <br>*volitelné*||[Bitové kopie](#image)|
-|**manifest**  <br>*volitelné*||[Manifest](#manifest)|
-|**modely**  <br>*volitelné*|Seznam modelů.|<[Model](#model)> pole|
-|**Jméno**  <br>*volitelné*|Název služby.|řetězec|
-|**scoringUri**  <br>*volitelné*|Identifikátor URI pro vyhodnocování službu.|řetězec|
-|**Stav**  <br>*volitelné*||[AsyncOperationState](#asyncoperationstate)|
-|**updatedAt**  <br>*volitelné*|Poslední aktualizace čas (UTC).|řetězec (datum a čas)|
-|**appInsightsEnabled**  <br>*volitelné*|Povolte application insights pro služby.|Logická hodnota|
-|**autoScaler**  <br>*volitelné*||[AutoScaler](#autoscaler)|
-|**computeResource**  <br>*požadované*||[ComputeResource](#computeresource)|
-|**containerResourceReservation**  <br>*volitelné*||[ContainerResourceReservation](#containerresourcereservation)|
-|**Element dataCollection**  <br>*volitelné*||[ModelDataCollection](#modeldatacollection)|
-|**maxConcurrentRequestsPerContainer**  <br>*volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**:`1`|celé číslo|
-|**numReplicas**  <br>*volitelné*|Počet replik pod systémem kdykoli. Nelze zadat, zda je povoleno Autoscaler.  <br>**Minimální hodnota**:`0`|celé číslo|
-|**Chyba**  <br>*volitelné*||[ErrorResponse](#errorresponse)|
+|**createdAt**  <br>*Volitelné*|Vytvoření služby čas (UTC).|řetězec (datum a čas)|
+|**ID**  <br>*Volitelné*|ID služby.|řetězec|
+|**image**  <br>*Volitelné*||[Bitové kopie](#image)|
+|**manifest**  <br>*Volitelné*||[Manifest](#manifest)|
+|**Modely**  <br>*Volitelné*|Seznam modelů.|<[Model](#model)> pole|
+|**name**  <br>*Volitelné*|Název služby.|řetězec|
+|**scoringUri**  <br>*Volitelné*|Identifikátor URI pro vyhodnocování službu.|řetězec|
+|**Stav**  <br>*Volitelné*||[AsyncOperationState](#asyncoperationstate)|
+|**updatedAt**  <br>*Volitelné*|Poslední aktualizace čas (UTC).|řetězec (datum a čas)|
+|**appInsightsEnabled**  <br>*Volitelné*|Povolte application insights pro služby.|Boolean|
+|**autoScaler**  <br>*Volitelné*||[AutoScaler](#autoscaler)|
+|**computeResource**  <br>*Požadované*||[ComputeResource](#computeresource)|
+|**containerResourceReservation**  <br>*Volitelné*||[ContainerResourceReservation](#containerresourcereservation)|
+|**Element DataCollection**  <br>*Volitelné*||[ModelDataCollection](#modeldatacollection)|
+|**maxConcurrentRequestsPerContainer**  <br>*Volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**: `1`|celé číslo|
+|**numReplicas**  <br>*Volitelné*|Počet replik pod systémem kdykoli. Nelze zadat, zda je povoleno Autoscaler.  <br>**Minimální hodnota**: `0`|celé číslo|
+|**error**  <br>*Volitelné*||[ErrorResponse](#errorresponse)|
 
 
 <a name="serviceupdaterequest"></a>
-### <a name="serviceupdaterequest"></a>serviceUpdateRequest
+### <a name="serviceupdaterequest"></a>ServiceUpdateRequest
 Žádost o aktualizaci služby.
 
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**appInsightsEnabled**  <br>*volitelné*|Povolte application insights pro služby.|Logická hodnota|
-|**autoScaler**  <br>*volitelné*||[AutoScaler](#autoscaler)|
-|**containerResourceReservation**  <br>*volitelné*||[ContainerResourceReservation](#containerresourcereservation)|
-|**Element dataCollection**  <br>*volitelné*||[ModelDataCollection](#modeldatacollection)|
-|**ID obrázku**  <br>*volitelné*|Obrázek se vytvořit službu.|řetězec|
-|**maxConcurrentRequestsPerContainer**  <br>*volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**:`1`|celé číslo|
-|**numReplicas**  <br>*volitelné*|Počet replik pod systémem kdykoli. Nelze zadat, zda je povoleno Autoscaler.  <br>**Minimální hodnota**:`0`|celé číslo|
+|**appInsightsEnabled**  <br>*Volitelné*|Povolte application insights pro služby.|Boolean|
+|**autoScaler**  <br>*Volitelné*||[AutoScaler](#autoscaler)|
+|**containerResourceReservation**  <br>*Volitelné*||[ContainerResourceReservation](#containerresourcereservation)|
+|**Element DataCollection**  <br>*Volitelné*||[ModelDataCollection](#modeldatacollection)|
+|**imageId**  <br>*Volitelné*|Obrázek se vytvořit službu.|řetězec|
+|**maxConcurrentRequestsPerContainer**  <br>*Volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**: `1`|celé číslo|
+|**numReplicas**  <br>*Volitelné*|Počet replik pod systémem kdykoli. Nelze zadat, zda je povoleno Autoscaler.  <br>**Minimální hodnota**: `0`|celé číslo|
 
 
 <a name="targetruntime"></a>
@@ -929,6 +929,6 @@ Typ cílový modul runtime.
 
 |Název|Popis|Schéma|
 |---|---|---|
-|**Vlastnosti**  <br>*požadované*||< řetězec, řetězec > mapy|
-|**runtimeType**  <br>*požadované*|Určuje modulu runtime.|výčet (SparkPython, Python)|
+|**Vlastnosti**  <br>*Požadované*||< řetězec, řetězec > mapy|
+|**runtimeType**  <br>*Požadované*|Určuje modulu runtime.|výčet (SparkPython, Python)|
 
