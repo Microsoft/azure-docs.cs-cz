@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
 ms.openlocfilehash: 1eae6d302827c977b9258174dec68fd8f3009a11
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití rozšíření diagnostiky Linux ke sledování metrik a protokoly
 
@@ -189,8 +189,8 @@ Verze 3.0 rozšíření diagnostiky Linux podporuje dva typy podřízený: Event
 
 Položka "sasURL" obsahuje úplnou adresu URL, včetně tokenu SAS pro centra událostí, ke které je nutné ji publikovat data. LAD vyžaduje SAS pojmenování zásadu, která umožňuje odesílání deklarace identity. Příklad:
 
-* Vytvořit obor názvů Event Hubs s názvem`contosohub`
-* Vytvoření centra událostí v oboru názvů názvem`syslogmsgs`
+* Vytvořit obor názvů Event Hubs s názvem `contosohub`
+* Vytvoření centra událostí v oboru názvů názvem `syslogmsgs`
 * Vytvoření zásady sdíleného přístupu v Centru událostí s názvem `writer` umožňující odesílat deklarace identity
 
 Pokud jste vytvořili SAS funkční až půlnoci času UTC na 1. ledna 2018, hodnota sasURL může být:
@@ -323,9 +323,9 @@ displayName | Popisek (v jazyce určeném nastavením přidružené národní pr
 
 CounterSpecifier je libovolný identifikátor. Příjemci metrik, Azure portálu grafů, jako a výstrahy funkce, použijte counterSpecifier jako "klíč", který identifikuje metriky nebo instanci metriky. Pro `builtin` metriky, doporučujeme použít counterSpecifier hodnoty, které začínají `/builtin/`. Pokud shromažďujete konkrétní instanci metriky, doporučujeme, abyste že na hodnotu counterSpecifier připojíte identifikátor instance. Několik příkladů:
 
-* `/builtin/Processor/PercentIdleTime`-Doba nečinnosti, po průměrem všech Vcpu
-* `/builtin/Disk/FreeSpace(/mnt)`-Volného místa pro systém souborů /mnt
-* `/builtin/Disk/FreeSpace`-Volného místa průměrem všech připojené systémy
+* `/builtin/Processor/PercentIdleTime` -Doba nečinnosti, po průměrem všech Vcpu
+* `/builtin/Disk/FreeSpace(/mnt)` -Volného místa pro systém souborů /mnt
+* `/builtin/Disk/FreeSpace` -Volného místa průměrem všech připojené systémy
 
 LAD ani portálu Azure očekává, že hodnota counterSpecifier odpovídat žádnému vzoru. Být konzistentní v tom, jak vytvořit counterSpecifier hodnoty.
 
@@ -433,7 +433,7 @@ Třída procesoru metrik poskytuje informace o využití procesoru ve virtuáln�
 Čítač | Význam
 ------- | -------
 PercentIdleTime | Procento času během časového období agregace, procesory byly provádění jádra nečinné smyčky
-percentProcessorTime | Procento doby provádění jiných než nečinných vláken
+PercentProcessorTime | Procento doby provádění jiných než nečinných vláken
 PercentIOWaitTime | Procento doby čekání na dokončení operací vstupně-výstupní operace
 PercentInterruptTime | Procento doby provádění hardware a software přerušení a DPC (odložených volání procedur)
 PercentUserTime | Jiných než nečinných dobu, během časového období agregace procento času stráveného v uživatele více se střední důležitostí
@@ -694,7 +694,7 @@ Data odeslaná jímky JsonBlob se ukládají do objektů BLOB v účtu úložiš
 
 Kromě toho můžete tyto nástroje uživatelského rozhraní pro přístup k datům ve službě Azure Storage:
 
-* Průzkumníka serveru Visual Studio.
+* Visual Studio Server Explorer.
 * [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
 
 Tento snímek relaci Microsoft Azure Storage Explorer zobrazuje generovaného tabulky služby Azure Storage a kontejnery z správně nakonfigurována rozšíření LAD 3.0 na testovací virtuální počítač. Obrázek neodpovídá přesně [Ukázková konfigurace LAD 3.0](#an-example-lad-30-configuration).

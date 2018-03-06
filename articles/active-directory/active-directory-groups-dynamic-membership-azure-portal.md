@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
 ms.openlocfilehash: 3ece2326a19e32666f46e8b737d15a48e335de6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Vytvořit pravidla založená na atributu pro dynamické členství ve skupině v Azure Active Directory
 V Azure Active Directory (Azure AD) můžete vytvořit rozšířených pravidel povolit komplexní založená na atributu dynamické členství skupiny. Tento článek podrobně atributy a syntaxe k vytvoření pravidla dynamické členství pro uživatele nebo zařízení.
@@ -45,7 +45,7 @@ Pokud žádné atributy uživatele nebo zařízení změnit, systém vyhodnotí 
 
 4. Na **skupiny** okno, zadejte název a popis nové skupiny. Vyberte **typ členství** buď **dynamické uživatele** nebo **dynamické zařízení**, v závislosti na tom, jestli chcete vytvořit pravidlo pro uživatele nebo zařízení a potom vyberte **Přidat dynamické dotazu**. Můžete použít k vytvoření jednoduché pravidlo Tvůrce pravidlo, nebo můžete zapsat rozšířené pravidlo sami. Tento článek obsahuje další informace o dostupné atributy uživatele a zařízení, jakož i Příklady rozšířených pravidel.
 
-   ![Přidat pravidlo dynamické členství](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
+   ![Přidat dynamické pravidlo členství](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
 
 5. Po vytvoření pravidla, vyberte **přidat dotazu** v dolní části okna.
 6. Vyberte **vytvořit** na **skupiny** okno vytvořit skupinu.
@@ -81,7 +81,7 @@ V následující tabulce jsou uvedeny všechny operátory pravidlo podporované 
 | Operátor | Syntaxe |
 | --- | --- |
 | Nerovná se |-ne |
-| Rovná se |-eq |
+| Je rovno |-eq |
 | Není začíná |-notStartsWith |
 | Začíná |-startsWith |
 | Neobsahuje |-notContains |
@@ -102,7 +102,7 @@ Níže jsou uvedeny všechny operátory za prioritu z nižší na vyšší. Oper
 -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
 ````
 Všechny operátory lze použít s nebo bez předpony pomlčkou. Závorky jsou potřeba jenom v případě, že přednost nesplňuje vaše požadavky.
-Například:
+Příklad:
 ```
    user.department –eq "Marketing" –and user.country –eq "US"
 ```
@@ -124,9 +124,9 @@ Následující tabulka uvádí běžných chyb a opravte je
 
 | Chyba analýzy dotazu | Chyba použití | Opravené využití |
 | --- | --- | --- |
-| Chyba: Atribut není podporován. |(user.invalidProperty - eq "Value") |(user.department - eq "value")<br/><br/>Ujistěte se, že atribut je na [podporované seznam vlastností](#supported-properties). |
-| Chyba: Operátor není podporován pro atribut. |(user.accountEnabled – obsahuje hodnotu PRAVDA) |(user.accountEnabled - eq true)<br/><br/>Operátor použitý nepodporuje pro typ vlastnosti (v tomto příkladu – obsahuje nelze použít v typu logická hodnota). Použijte správný operátory pro vlastnosti typu. |
-| Chyba: Chyba při kompilaci dotazu. |1. (user.department - eq "Prodej") (user.department - eq "Marketing")<br/><br/>2. (user.userPrincipalName-shodovat s "*@domain.ext") |1. Operátor nebyl nalezen. Pomocí - nebo - nebo dvě připojení predikáty<br/><br/>(user.department - eq "Prodej")- nebo (user.department - eq "Marketing")<br/><br/>2. Chyba v regulárním výrazu použít s - odpovídat<br/><br/>(user.userPrincipalName-shodovat s ". *@domain.ext"), případně: (user.userPrincipalName-shodovat s "@domain.ext$")|
+| Chyba: Atribut není podporován. |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/><br/>Ujistěte se, že atribut je na [podporované seznam vlastností](#supported-properties). |
+| Chyba: Operátor není podporován pro atribut. |(user.accountEnabled – obsahuje hodnotu PRAVDA) |(user.accountEnabled -eq true)<br/><br/>Operátor použitý nepodporuje pro typ vlastnosti (v tomto příkladu – obsahuje nelze použít v typu logická hodnota). Použijte správný operátory pro vlastnosti typu. |
+| Chyba: Chyba při kompilaci dotazu. |1. (user.department - eq "Prodej") (user.department - eq "Marketing")<br/><br/>2. (user.userPrincipalName -match "*@domain.ext") |1. Operátor nebyl nalezen. Pomocí - nebo - nebo dvě připojení predikáty<br/><br/>(user.department - eq "Prodej")- nebo (user.department - eq "Marketing")<br/><br/>2. Chyba v regulárním výrazu použít s - odpovídat<br/><br/>(user.userPrincipalName-shodovat s ". *@domain.ext"), případně: (user.userPrincipalName-shodovat s "@domain.ext$")|
 
 ## <a name="supported-properties"></a>Podporovaných vlastností
 Tady jsou všechny vlastnosti uživatele, které můžete použít v pokročilé pravidla:
@@ -139,8 +139,8 @@ Povolené operátory
 
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
-| accountEnabled |Hodnota TRUE, false |user.accountEnabled - eq true |
-| dirSyncEnabled |Hodnota TRUE, false |user.dirSyncEnabled - eq true |
+| accountEnabled |Hodnota TRUE, false |user.accountEnabled -eq true |
+| dirSyncEnabled |Hodnota TRUE, false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>Vlastnosti typu řetězec
 Povolené operátory
@@ -160,30 +160,30 @@ Povolené operátory
 | --- | --- | --- |
 | city |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.city - eq "value") |
 | Země |Žádné hodnota typu řetězec nebo *hodnotu null.* |(User.Country. - eq "value") |
-| NázevSpolečnosti | Žádné hodnota typu řetězec nebo *hodnotu null.* | (user.companyName - eq "value") |
-| Oddělení |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.department - eq "value") |
-| displayName |Libovolnou hodnotu řetězce |(user.displayName - eq "value") |
+| companyName | Žádné hodnota typu řetězec nebo *hodnotu null.* | (user.companyName -eq "value") |
+| Oddělení |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.department -eq "value") |
+| displayName |Libovolnou hodnotu řetězce |(user.displayName -eq "value") |
 | číslo zaměstnance |Libovolnou hodnotu řetězce |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
-| facsimileTelephoneNumber |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.facsimileTelephoneNumber - eq "value") |
-| givenName |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.givenName - eq "value") |
-| pracovní funkce |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.jobTitle - eq "value") |
-| E-mailu |Žádné hodnota typu řetězec nebo *null* (adresa SMTP uživatele) |(user.mail - eq "value") |
-| mailNickName |Libovolnou hodnotu řetězce (e-mailu alias uživatele) |(user.mailNickName - eq "value") |
+| facsimileTelephoneNumber |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.facsimileTelephoneNumber -eq "value") |
+| givenName |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.givenName -eq "value") |
+| pracovní funkce |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.jobTitle -eq "value") |
+| mail |Žádné hodnota typu řetězec nebo *null* (adresa SMTP uživatele) |(user.mail - eq "value") |
+| mailNickName |Libovolnou hodnotu řetězce (e-mailu alias uživatele) |(user.mailNickName -eq "value") |
 | mobilní |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.mobile - eq "value") |
-| objectId |GUID objektu uživatele |(user.objectId - eq "1111111-1111-1111-1111-111111111111") |
-| onPremisesSecurityIdentifier | Místní identifikátor zabezpečení (SID) pro uživatele, kteří se synchronizovaly z místní do cloudu. |(user.onPremisesSecurityIdentifier - eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
+| objectId |GUID objektu uživatele |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
+| onPremisesSecurityIdentifier | Místní identifikátor zabezpečení (SID) pro uživatele, kteří se synchronizovaly z místní do cloudu. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Žádný DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.physicalDeliveryOfficeName - eq "value") |
 | PSČ |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.postalCode - eq "value") |
-| preferredLanguage |Kód ISO 639-1 |(user.preferredLanguage - eq "en US") |
-| sipProxyAddress |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.sipProxyAddress - eq "value") |
+| preferredLanguage |Kód ISO 639-1 |(user.preferredLanguage -eq "en-US") |
+| sipProxyAddress |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.sipProxyAddress -eq "value") |
 | state |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.state - eq "value") |
 | StreetAddress |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.streetAddress - eq "value") |
-| Příjmení |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.surname - eq "value") |
+| surname |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.surname -eq "value") |
 | telephoneNumber |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.telephoneNumber - eq "value") |
 | usageLocation |Dva písmeny směrové číslo země |(user.usageLocation - eq "US") |
-| UserPrincipalName |Libovolnou hodnotu řetězce |(user.userPrincipalName - eq "alias@domain") |
-| UserType |člen hosta *hodnotu null.* |(user.userType - eq "Člen") |
+| userPrincipalName |Libovolnou hodnotu řetězce |(user.userPrincipalName -eq "alias@domain") |
+| userType |člen hosta *hodnotu null.* |(user.userType - eq "Člen") |
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti typu řetězec kolekce
 Povolené operátory
@@ -194,7 +194,7 @@ Povolené operátory
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
 | otherMails |Libovolnou hodnotu řetězce |(user.otherMails – obsahuje "alias@domain") |
-| proxyAddresses |SMTP: alias@domain smtp:alias@domain |(user.proxyAddresses – obsahuje "SMTP: alias@domain") |
+| proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses – obsahuje "SMTP: alias@domain") |
 
 ## <a name="multi-value-properties"></a>Vícehodnotový vlastnosti
 Povolené operátory
@@ -206,7 +206,7 @@ Povolené operátory
 | --- | --- | --- |
 | assignedPlans |Každý objekt v kolekci zpřístupní následující vlastnosti řetězce: capabilityStatus, služby, servicePlanId |user.assignedPlans-všechny (assignedPlan.servicePlanId - eq "efb87545-963c-4e0d-99df-69c6916d9eb0"- a assignedPlan.capabilityStatus - eq "Povoleno") |
 
-Vícehodnotový vlastnosti jsou kolekce objektů stejného typu. Můžete použít – všechny a - všechny operátory použít podmínku, na jeden nebo všechny položky v kolekci, v uvedeném pořadí. Například:
+Vícehodnotový vlastnosti jsou kolekce objektů stejného typu. Můžete použít – všechny a - všechny operátory použít podmínku, na jeden nebo všechny položky v kolekci, v uvedeném pořadí. Příklad:
 
 assignedPlans je vícehodnotový vlastnost, která uvádí všechny plány služby, které jsou přiřazeny uživateli. Níže výraz bude vyberte uživatele, kteří mají Exchange Online (plán 2) plán služeb, který je sám ve stavu povoleno:
 
@@ -270,23 +270,23 @@ Můžete vytvořit skupina obsahující všechny přímé podřízené manažera
 ## <a name="using-attributes-to-create-rules-for-device-objects"></a>Vytváření pravidel pro objekty zařízení pomocí atributů
 Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členství ve skupině. Můžete použít následující atributy zařízení.
 
- Atribut zařízení  | Hodnoty | Příklad
+ Atribut zařízení  | Hodnoty | Příklad:
  ----- | ----- | ----------------
  accountEnabled | Hodnota TRUE, false | (device.accountEnabled - eq true)
- displayName | Libovolnou hodnotu řetězce |(device.displayName - eq "Rob Iphone")
+ displayName | Libovolnou hodnotu řetězce |(device.displayName -eq "Rob Iphone”)
  deviceOSType | Libovolnou hodnotu řetězce | (device.deviceOSType - eq "iPad")- nebo (device.deviceOSType - eq "iPhone")
- DeviceOSVersion | Libovolnou hodnotu řetězce | (zařízení. OSVersion - eq "9.1")
+ deviceOSVersion | Libovolnou hodnotu řetězce | (device.OSVersion -eq "9.1")
  deviceCategory | Název kategorie platný zařízení | (device.deviceCategory - eq "BYOD")
- DeviceManufacturer | Libovolnou hodnotu řetězce | (device.deviceManufacturer - eq "Samsung")
- DeviceModel | Libovolnou hodnotu řetězce | (device.deviceModel - eq "iPad vzduchem")
+ DeviceManufacturer | Libovolnou hodnotu řetězce | (device.deviceManufacturer -eq "Samsung")
+ deviceModel | Libovolnou hodnotu řetězce | (device.deviceModel - eq "iPad vzduchem")
  deviceOwnership | Osobní společnosti, neznámý | (device.deviceOwnership - eq "Společnost")
  domainName | Libovolnou hodnotu řetězce | (device.domainName - eq "contoso.com")
  enrollmentProfileName | Název profilu registrace zařízení Apple | (device.enrollmentProfileName - eq "DEP Iphony")
  isRooted | Hodnota TRUE, false | (device.isRooted - eq true)
  managementType | MDM (pro mobilní zařízení)<br>PC (pro počítače spravované agentem počítačů s Intune) | (device.managementType - eq "MDM")
  OrganizationalUnit | libovolnou hodnotu řetězce odpovídající názvu organizační jednotky ve služby Active Directory místní nastavení | (device.organizationalUnit - eq "Počítačů USA")
- deviceId | platné ID zařízení služby Azure AD | (device.deviceId - eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- objectId | ID objektu platný Azure AD |  (76ad43c9-32c5-45e8-a272-7b58b58f596d device.objectId - eq")
+ deviceId | platné ID zařízení služby Azure AD | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
+ objectId | ID objektu platný Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
 
 
 
@@ -357,7 +357,7 @@ Chcete-li skupinu dynamické:
 ```
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
 ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Tyto články poskytují další informace o skupin v Azure Active Directory.
 
 * [Zobrazení existujících skupin](active-directory-groups-view-azure-portal.md)

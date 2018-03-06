@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.author: juliako
 ms.openlocfilehash: ab66994b0212593aff1384b0801f3359eb0a3751
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
 ms.openlocfilehash: f15875610e2035c6f4c10c36e19c02f3e045b3ea
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="how-to-use-perfinsights"></a>Jak používat PerfInsights 
 
@@ -92,7 +92,7 @@ Tento scénář se spustí zachycení čítače výkonu speciální společně s
 | Velikost vstupně-výstupní operace      | Střední Požadavek na bajtů nebo dat       |
 |              | Střední Bajty/čtení               |
 |              | Střední Bajty a zápis              |
-| Propustnost   | Data bajty/s                |
+| Propustnost   | Data Bytes/sec                |
 |              | Číst bajty/s                |
 |              | Zápis bajtů za sekundu               |
 | Délka fronty | Střední Délka fronty pro čtení        |
@@ -118,7 +118,7 @@ Zaznamená informace o virtuální počítač s Windows, disky nebo konfigurace 
 | Informace o systému               | Ano                        | Ano                                | Ano                      | Ano                            | Ano                  | Ano                  |
 | Svazek mapy                       | Ano                        | Ano                                | Ano                      | Ano                            | Ano                  | Ano                  |
 | Mapa disku                         | Ano                        | Ano                                | Ano                      | Ano                            | Ano                  | Ano                  |
-| Spuštěné úlohy                    | Ano                        | Ano                                | Ano                      | Ano                            | Ano                  | Ano                  |
+| Spuštěné úkoly                    | Ano                        | Ano                                | Ano                      | Ano                            | Ano                  | Ano                  |
 | Čítače spolehlivost úložiště     | Ano                        | Ano                                | Ano                      | Ano                            | Ano                  | Ano                  |
 | Informace o úložiště              | Ano                        | Ano                                | Ano                      | Ano                            | Ano                  | Ano                  |
 | Výstup fsutil                    | Ano                        | Ano                                | Ano                      | Ano                            | Ano                  | Ano                  |
@@ -222,7 +222,7 @@ Pokud chcete spustit skript PerfInsights, postupujte takto:
 
     ![Dialogové okno snímek obrazovky upozornění a souhlasu](media/how-to-use-perfInsights/disclaimer.png)
 
-5.  Pokud je dostupná, když spustíte skript pro odeslání číslo případu. Potom vyberte **OK**.
+5.  Pokud je dostupná, když spustíte skript pro odeslání číslo případu. Pak vyberte **OK**.
     
     ![Snímek obrazovky dialogového okna ID podpory](media/how-to-use-perfInsights/enter-support-number.png)
 
@@ -328,15 +328,15 @@ Karty pro určité instance systému SQL Server, obsahují obecné oddíl, kter�
 
 ## <a name="references-to-the-external-tools-used"></a>Odkazy na externí nástroje použít
 
-### <a name="diskspd"></a>Nástroje Diskspd
+### <a name="diskspd"></a>Diskspd
 
 Diskspd je úložiště zatížení generátor a výkon testu nástroj od společnosti Microsoft. Další informace najdete v tématu [Diskspd](https://github.com/Microsoft/diskspd).
 
-### <a name="xperf"></a>XPerf
+### <a name="xperf"></a>Xperf
 
 XPerf je nástroj příkazového řádku pro zachycení trasování z nástrojů výkonu systému Windows. Další informace najdete v tématu [nástrojů výkonu systému Windows – Xperf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Diagnostické protokoly a sestavy můžete uložit do Microsoft Support pro další kontrolu. Podpora si mohou vyžádat přenosu výstupu, který je generován PerfInsights vám pomůže při proces řešení potíží.
 
