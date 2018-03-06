@@ -174,7 +174,7 @@ To, že se data vyexportovala správně, můžete ověřit tak, že nový soubor
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Pokud chcete navrhnout vlastní proces načítání, najdete informace v článku [Přehled načítání] (sql-data-warehouse-design-elt-data-loading).  
+Pokud chcete navrhnout vlastní proces načítání, najdete informace v článku [Přehled načítání](sql-data-warehouse-design-elt-data-loading.md).  
 
 
 
