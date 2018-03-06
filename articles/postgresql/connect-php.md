@@ -1,21 +1,21 @@
 ---
-title: "Připojení k Azure Database for PostgreSQL pomocí PHP | Dokumentace Microsoftu"
+title: "Připojení k Azure Database for PostgreSQL pomocí PHP"
 description: "V tomto rychlém startu najdete vzorový kód PHP, který můžete použít k připojení a dotazování dat ze služby Azure Database for PostgreSQL."
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
-ms.date: 11/03/2017
-ms.openlocfilehash: dec02baf0ae9df4860a3f67e67b0f62e356658ff
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 02/28/2018
+ms.openlocfilehash: dfdfb9b7d275843312dcf955f79b978d411c197e
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-postgresql-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Použití PHP k připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace v [PHP](http://php.net/manual/intro-whatis.php). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí PHP a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
@@ -48,11 +48,10 @@ Nainstalujte PHP na vlastní server nebo vytvořte [webovou aplikaci](../app-ser
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server, například **mypgserver-20170401**.
-3. Klikněte na název serveru **mypgserver-20170401**.
-4. Vyberte stránku **Přehled** serveru. Poznamenejte si **Název serveru** a **Přihlašovací jméno správce serveru**.
- ![Azure Database for PostgreSQL – přihlašovací jméno správce serveru](./media/connect-php/1-connection-string.png)
-5. Pokud zapomenete přihlašovací údaje pro váš server, přejděte na stránku **Přehled**, kde můžete zobrazit přihlašovací jméno správce serveru a v případě potřeby obnovit heslo.
+2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
+3. Klikněte na název serveru.
+4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
+ ![Název serveru Azure Database for PostgreSQL](./media/connect-php/1-connection-string.png)
 
 ## <a name="connect-and-create-a-table"></a>Připojení a vytvoření tabulky
 Pomocí následujícího kódu se připojte a vytvořte tabulku s využitím příkazu **CREATE TABLE** jazyka SQL, po kterém následují příkazy **INSERT INTO** jazyka SQL, které do tabulky přidají řádky.
@@ -64,9 +63,9 @@ Nahraďte parametry `$host`, `$database`, `$user` a `$password` vlastními hodno
 ```php
 <?php
     // Initialize connection variables.
-    $host = "mypgserver-20170401.postgres.database.azure.com";
+    $host = "mydemoserver.postgres.database.azure.com";
     $database = "mypgsqldb";
-    $user = "mylogin@mypgserver-20170401";
+    $user = "mylogin@mydemoserver";
     $password = "<server_admin_password>";
 
     // Initialize connection object.
@@ -122,9 +121,9 @@ Nahraďte parametry `$host`, `$database`, `$user` a `$password` vlastními hodno
 ```php
 <?php
     // Initialize connection variables.
-    $host = "mypgserver-20170401.postgres.database.azure.com";
+    $host = "mydemoserver.postgres.database.azure.com";
     $database = "mypgsqldb";
-    $user = "mylogin@mypgserver-20170401";
+    $user = "mylogin@mydemoserver";
     $password = "<server_admin_password>";
     
     // Initialize connection object.
@@ -160,9 +159,9 @@ Nahraďte parametry `$host`, `$database`, `$user` a `$password` vlastními hodno
 ```php
 <?php
     // Initialize connection variables.
-    $host = "mypgserver-20170401.postgres.database.azure.com";
+    $host = "mydemoserver.postgres.database.azure.com";
     $database = "mypgsqldb";
-    $user = "mylogin@mypgserver-20170401";
+    $user = "mylogin@mydemoserver";
     $password = "<server_admin_password>";
 
     // Initialize connection object.
@@ -195,9 +194,9 @@ Nahraďte parametry `$host`, `$database`, `$user` a `$password` vlastními hodno
 ```php
 <?php
     // Initialize connection variables.
-    $host = "mypgserver-20170401.postgres.database.azure.com";
+    $host = "mydemoserver.postgres.database.azure.com";
     $database = "mypgsqldb";
-    $user = "mylogin@mypgserver-20170401";
+    $user = "mylogin@mydemoserver";
     $password = "<server_admin_password>";
 
     // Initialize connection object.

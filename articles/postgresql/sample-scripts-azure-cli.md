@@ -1,36 +1,36 @@
 ---
-title: "Ukázek Azure CLI pro databázi Azure pro PostgreSQL"
-description: "Tento článek obsahuje seznam několik rozhraní příkazového řádku Azure ukázky kódu k dispozici pro interakci s databází Azure pro servery PostgreSQL."
+title: "Ukázky v Azure CLI pro službu Azure Database for PostgreSQL"
+description: "Tento článek uvádí několik dostupných vzorových kódů Azure CLI pro práci se servery Azure Database for PostgreSQL."
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: sample, mvc
-ms.date: 01/12/2018
-ms.openlocfilehash: d9b7b0cba46d16d0fae08c8f445044776cf75c10
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
-ms.translationtype: MT
+ms.date: 02/28/2018
+ms.openlocfilehash: b44f23adfb69c250757248a3462317eabaf5f111
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="azure-cli-samples-for-azure-database-for-postgresql"></a>Ukázek Azure CLI pro databázi Azure pro PostgreSQL 
-Následující tabulka obsahuje odkazy na ukázkové skripty rozhraní příkazového řádku Azure pro databázi Azure pro PostgreSQL.
+# <a name="azure-cli-samples-for-azure-database-for-postgresql"></a>Ukázky v Azure CLI pro službu Azure Database for PostgreSQL 
+Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro službu Azure Database for PostgreSQL.
 
 | |  |
 |---|---|
 |**Vytvoření serveru**||
-| [Vytvoření pravidla serveru a brány firewall](scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Azure CLI skript, který vytvoří databázi Azure pro PostgreSQL server a nakonfiguruje pravidla brány firewall na úrovni serveru. |
+| [Vytvoření serveru a pravidla brány firewall](scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Skript Azure CLI, který vytvoří server Azure Database for PostgreSQL a nakonfiguruje pravidlo brány firewall na úrovni serveru. |
 |**Škálování serveru**||
-| [Škálování serveru](scripts/sample-scale-server-up-or-down.md?toc=%2fcli%2fazure%2ftoc.json) | Azure CLI skript, který přizpůsobí databázi Azure pro PostgreSQL server nahoru nebo dolů umožňující změna požadavkům na výkon. |
+| [Škálování serveru](scripts/sample-scale-server-up-or-down.md?toc=%2fcli%2fazure%2ftoc.json) | Skript Azure CLI, který vertikálně navyšuje nebo snižuje kapacitu serveru Azure Database for PostgreSQL s ohledem na měnící se požadavky na výkon. |
 |**Změna konfigurace serveru**||
-| [Změna konfigurace serveru](./scripts/sample-change-server-configuration.md?toc=%2fcli%2fazure%2ftoc.json) | Azure CLI skript, který umožňuje změnit možnosti konfigurace Azure databáze pro PostgreSQL server. |
+| [Změna konfigurace serveru](./scripts/sample-change-server-configuration.md?toc=%2fcli%2fazure%2ftoc.json) | Skript Azure CLI, který změní možnosti konfigurace serveru Azure Database for PostgreSQL. |
 |**Obnovení serveru**||
-| [Obnovení serveru](./scripts/sample-point-in-time-restore.md?toc=%2fcli%2fazure%2ftoc.json) | Azure CLI skript, který obnoví databázi Azure pro PostgreSQL server do předchozího bodu v čase. |
+| [Obnovení serveru](./scripts/sample-point-in-time-restore.md?toc=%2fcli%2fazure%2ftoc.json) | Skript Azure CLI, který obnoví server Azure Database for PostgreSQL k dřívějšímu bodu v čase. |
 |**Stažení protokolů serveru**||
-| [Povolení a stažení protokolů serveru](./scripts/sample-server-logs.md?toc=%2fcli%2fazure%2ftoc.json) | Azure CLI skript, který umožňuje a soubory ke stažení protokolů serveru Azure databáze pro PostgreSQL server. |
+| [Povolení a stažení protokolů serveru](./scripts/sample-server-logs.md?toc=%2fcli%2fazure%2ftoc.json) | Skript Azure CLI, který povolí a stáhne protokoly serveru Azure Database for PostgreSQL. |
 |||
 
