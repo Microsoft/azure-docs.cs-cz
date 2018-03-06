@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/22/2018
+ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 7c5aeca5afe8921ab39040e9afc2921b1711c447
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: ae91ad29b867ad4ab00831ee40102bcec2fc890c
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupiny pro správu pro organizaci poskytující prostředky a Správa
 Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů v rámci více předplatných. Vytvoření těchto kontejnerů k vytvoření hierarchie efektivní a efektivní, který lze použít s [zásad Azure](../azure-policy/azure-policy-introduction.md) a [řízení přístupu na základě Role Azure](../active-directory/role-based-access-control-what-is.md). Další informace o skupinách pro správu najdete v tématu [uspořádání prostředků se skupinami pro správu Azure ](management-groups-overview.md). 
@@ -47,14 +47,14 @@ Skupina pro správu můžete vytvořit pomocí portálu, prostředí PowerShell 
 Prostředí PowerShell pomocí rutiny Add-AzureRmManagementGroups.   
 
 ```azurepowershell-interactive
-C:\> Add-AzureRmManagementGroup -GroupName Contoso 
+C:\> New-AzureRmManagementGroup -GroupName Contoso 
 ```
 **GroupName** je jedinečný identifikátor vytváří. Toto ID používá jiné příkazy k odkazovat na tuto skupinu a není možné později změnit.
 
 Pokud jste chtěli skupině pro správu zobrazíte jiný název na portálu Azure, měli byste přidat **DisplayName** parametr s řetězcem. Například pokud jste chtěli vytvořit skupinu pro správu s GroupName Contoso a zobrazovaný název "Skupina společnosti Contoso", by použijte následující rutinu: 
 
 ```azurepowershell-interactive
-C:\> Add-AzureRmManagementGroup -GroupName Contoso -DisplayName "Contoso Group" -ParentId ContosoTenant
+C:\> New-AzureRmManagementGroup -GroupName Contoso -DisplayName "Contoso Group" -ParentId ContosoTenant
 ``` 
 Použití **ParentId** vytvořit parametr tak, aby měl této skupiny pro správu v rámci různých pro správu.  
 

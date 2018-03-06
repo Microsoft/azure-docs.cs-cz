@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 440b70f4d04728973d77e54e7f6303e1ad7fcd89
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 827fe91c14a44cbaf8a9bb5921e5c9962d984414
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>Rychlý úvod: Nasazení první modul IoT hraniční zařízení Linux nebo Mac. – náhled
 
@@ -27,7 +27,7 @@ Tento rychlý start používá svůj počítač nebo virtuální počítač jako
 
 * Python pip nainstalovat modul runtime IoT okraj.
    * Linux: `sudo apt-get install python-pip`.
-   * Systému MacOS: `sudo easy_install pip`.
+   * MacOS: `sudo easy_install pip`.
 * Docker spouštět hraniční IoT moduly
    * [Instalace Docker pro Linux] [ lnk-docker-ubuntu] a ujistěte se, zda je spuštěna. 
    * [Nainstalovat pro systém Mac Docker] [ lnk-docker-mac] a ujistěte se, zda je spuštěna. 
@@ -70,22 +70,22 @@ Vytvoření identity zařízení pro simulované zařízení, takže může komu
 Modul runtime IoT okraj je nasadit na všechna zařízení IoT okraj. Obsahuje dva moduly. Nejprve agenta IoT Edge usnadňuje nasazení a monitorování modulů na IoT hraniční zařízení. Druhý centra IoT Edge spravuje komunikaci mezi modulů na IoT hraniční zařízení a mezi zařízením a IoT Hub. 
 
 Na počítači, kde je potřeba spustit IoT hraniční zařízení Stáhněte skript řízení hraniční IoT:
-```cmd
+```bash
 sudo pip install -U azure-iot-edge-runtime-ctl
 ```
 
 Konfigurace modulu runtime připojovacím řetězcem IoT hraniční zařízení z předchozí části:
-```cmd
+```bash
 sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
 ```
 
 Spusťte modul runtime:
-```cmd
+```bash
 sudo iotedgectl start
 ```
 
 Zkontrolujte Docker, zda je jako modul spuštěn agent IoT Edge:
-```cmd
+```bash
 sudo docker ps
 ```
 
@@ -101,7 +101,7 @@ V tento rychlý start vytvořit nové zařízení IoT okraj a na něm nainstalov
 
 Otevřete příkazový řádek v počítači se systémem simulovaného zařízení znovu. Ověřte, že modul nasazení z cloudu běží na IoT hraniční zařízení:
 
-```cmd
+```bash
 sudo docker ps
 ```
 
@@ -109,7 +109,7 @@ sudo docker ps
 
 Zobrazení zpráv odesílány z modulu tempSensor do cloudu:
 
-```cmd
+```bash
 sudo docker logs -f tempSensor
 ```
 
@@ -118,6 +118,12 @@ sudo docker logs -f tempSensor
 Můžete také zobrazit telemetrii zařízení odesílá pomocí [nástroji Průzkumník služby IoT Hub][lnk-iothub-explorer]. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete odebrat simulovaného zařízení, kterou jste vytvořili, společně s Docker kontejnerů, které byly spuštěny pro každý modul, použijte následující příkaz: 
+
+```bash
+sudo iotedgectl uninstall
+```
 
 Pokud již nepotřebujete službu IoT Hub, který jste vytvořili, můžete použít [az iot hub odstranění] [ lnk-delete] příkaz k odebrání prostředek a veškerá zařízení s ním spojená:
 

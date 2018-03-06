@@ -5,17 +5,17 @@ services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 7ee5a720b12152c27a96ee18f1b11e5fc03a531a
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 3eaf42f8d0bdad274ec92f5790fe79878500a1b2
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="derive-column-by-example-transformation"></a>Odvození sloupec podle příkladu transformace
 
@@ -115,9 +115,9 @@ Počet příklady, které byly požadované pro tento případ: 3
 |PRŮMĚR VAVŘÍN & OAKDALE průměr;  HORSHAM; Stanice 352; 2015-12-10 @ 16:46:48;|Horsham|
 |COLLEGEVILLE VP & LYWISKI VP;  SKIPPACK; Stanice 336; 2015-12-10 @ 16:17:05;|Skippack|
 |HLAVNÍ ST & PIKE SUMNEYTOWN STARÝ;  NIŽŠÍ SALFORD; Stanice 344; 2015-12-10 @ 16:51:42;|Nižší Salford|
-|BLUEROUTE & DOBĚHU I476 NB K CHEMICKÉ VP; PLYMOUTH; 2015-12-10 @ 17:35:41;|Plymouth|
-|RT202 PKWY & KNAPP VP; MONTGOMERY; 2015-12-10 @ 17:33:50;|Montgomery|
-|HUSTOTA VÝSKYTU DRUHU VP & COLWELL LN; PLYMOUTH; 2015-12-10 @ 16:32:10;|Plymouth|
+|BLUEROUTE &AMP; DOBĚHU I476 NB K CHEMICKÉ VP; PLYMOUTH; 2015-12-10 @ 17:35:41;|Plymouth|
+|RT202 PKWY &AMP; KNAPP VP; MONTGOMERY; 2015-12-10 @ 17:33:50;|Montgomery|
+|HUSTOTA VÝSKYTU DRUHU VP &AMP; COLWELL LN; PLYMOUTH; 2015-12-10 @ 16:32:10;|Plymouth|
 
 ### <a name="s3-date-format-manipulation-during-string-extraction"></a>S3. Formát data manipulace při extrakci řetězec
 
@@ -127,10 +127,10 @@ Počet příklady, které byly požadované pro tento případ: 1
 |:-----|:-----|
 |PRŮMĚR MONTGOMERY & WOODSIDE VP;  NIŽŠÍ MERION; Stanice 313; 2015-12-11 @ 04:11:35;|**12 listopadu 2015 4: 00**|
 |DREYCOTT LN & volit LANCASTERSKÉHO průměr;  NIŽŠÍ MERION; Stanice 313; 2015-12-11 @ 01:29:52;|12 listopadu 2015 1: 00|
-|VP MILL LEVERING E & CONSHOHOCKEN STAVU VP; NIŽŠÍ MERION; 2015-12-11 @ 07:29:58;|12 listopadu 2015 7: 00|
+|VP MILL LEVERING E &AMP; CONSHOHOCKEN STAVU VP; NIŽŠÍ MERION; 2015-12-11 @ 07:29:58;|12 listopadu 2015 7: 00|
 |Členem této VALLEY VP & MANOR VP;  NIŽŠÍ MERION; Stanice 313; 2015-12-10 @ 20:53:30;|12 října 2015 20: 00|
-|PRŮMĚR BELMONT & OVERHILL VP; NIŽŠÍ MERION; 2015-12-10 @ 23:02:27;|12 října 2015 23: 00|
-|PRŮMĚR MONTGOMERY W & PENNSWOOD VP; NIŽŠÍ MERION; 2015-12-10 @ 19:25:22;|12 října 2015 19: 00|
+|PRŮMĚR BELMONT &AMP; OVERHILL VP; NIŽŠÍ MERION; 2015-12-10 @ 23:02:27;|12 října 2015 23: 00|
+|PRŮMĚR MONTGOMERY W &AMP; PENNSWOOD VP; NIŽŠÍ MERION; 2015-12-10 @ 19:25:22;|12 října 2015 19: 00|
 |PRŮMĚR ROSEMONT & NEZDAŘENÁ akce;  NIŽŠÍ MERION; Stanice 313; 2015-12-10 @ 18:43:07;|12 října 2015 18: 00|
 |Zotavení po Havárii AVIGNON & NEZDAŘENÁ akce; NIŽŠÍ MERION; 2015-12-10 @ 20:01:29-stanice: STA24;|12 října 2015 20: 00|
 
@@ -290,7 +290,7 @@ Počet příklady, které byly požadované pro tento případ: 1
 
 Tyto části datum byly extrahovat pomocí různých podle příkladu transformace na stejné datové sady. Tučné řetězce představují příklady, které byly zadány v jejich odpovídajících transformaci.
 
-|Datum a čas|den v týdnu|Datum|Měsíc|Rok|Hodina|Minuta|Sekunda|
+|DateTime|den v týdnu|Datum|Měsíc|Rok|Hodina|Minuta|1 sekunda|
 |-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
 |31-Jan-2031 05:54:18|**Fri**|**31**|**Jan**|**2031**|**5**|**54**|**18**|
 |17. ledna 1990 13:32:01|St|17|Led|1990|13|32|01|
@@ -317,7 +317,7 @@ Tyto části datum byly extrahovat pomocí různých podle příkladu transforma
 
 Tato data formattings měla provést pomocí různých podle příkladu transformace na stejné datové sady. Tučné řetězce představují příklady, které byly zadány v jejich odpovídajících transformaci.
 
-|Datum a čas|Format1|Format2|Format3|Format4|Format5|
+|DateTime|Format1|Format2|Format3|Format4|Format5|
 |-----:|-----:|-----:|-----:|-----:|-----:|
 |31-Jan-2031 05:54:18|**1/31/2031**|**Pátek 31. ledna 2031**|**01312031 5:54**|**31/1/2031 5:54:00**|**Q1 2031**|
 |17. ledna 1990 13:32:01|1/17/1990|Středa 17. ledna 1990|01171990 13:32|17 1 1990:32 13: 00|OTÁZKA Č. 1 1990|
@@ -345,7 +345,7 @@ Tato data formattings měla provést pomocí různých podle příkladu transfor
 
 Tato data a času na období mapování se provádí pomocí různých podle příkladu transformace na stejné datové sady. Tučné řetězce představují příklady, které byly zadány v jejich odpovídajících transformaci.
 
-|Datum a čas|Period(seconds)|Period(minutes)|Období (dvě hodiny)|Období (30 minut)|
+|DateTime|Period(seconds)|Period(minutes)|Období (dvě hodiny)|Období (30 minut)|
 |-----:|-----:|-----:|-----:|-----:|
 |31-Jan-2031 05:54:18|**0-20**|**45-60**|**5AM-7AM**|**5:30-6:00**|
 |17. ledna 1990 13:32:01|**0-20**|30-45|1PM-3PM|13:30-14:00|

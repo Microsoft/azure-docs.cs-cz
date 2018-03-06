@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 5c1d4eb0825d132037cc3a20a17c1f417578d35d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: fbb6fc15663570d9b9470fc7d4de3c8eb30de9d9
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora init cloudu pro virtuální počítače v Azure
 Tento článek vysvětluje, zda existuje pro podporu [cloudu init](https://cloudinit.readthedocs.io) ke konfiguraci virtuálního počítače (VM) nebo virtuální počítač sadách škálování (VMSS) na zřizování čas v Azure. Tyto skripty cloudu init spustit při prvním spuštění počítače po prostředky se zřizují Azure.  
@@ -64,7 +64,7 @@ Dalším krokem je vytvoření souboru ve své aktuální prostředí s názvem 
 #cloud-config
 package_upgrade: true
 packages:
-  -httpd
+  - httpd
 ```
 Stiskněte klávesu `ctrl-X` ukončíte souboru zadejte `y` uložit soubor a stiskněte klávesu `enter` potvrďte název souboru na ukončení.
 

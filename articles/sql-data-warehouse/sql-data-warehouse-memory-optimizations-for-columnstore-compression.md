@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/23/2017
 ms.author: barbkess
-ms.openlocfilehash: 0476afb875616ed0758835aa52fb2334b63959a9
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 6640ed8958f6b05c015fb6c61d07aeea95b18022
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Tím se maximalizuje quality rowgroup pro columnstore
 
@@ -139,7 +139,7 @@ OPTION (MAXDOP 1);
 
 Velikost DWU a třída prostředků uživatele, společně určují, kolik paměti je k dispozici pro dotaz uživatele. Ke zvýšení přidělení paměti pro dotaz zatížení, můžete zvýšit počet Dwu nebo zvýšit Třída prostředků.
 
-- Pokud chcete zvýšit jednotkami Dwu, najdete v části [jak škálování výkonu?](sql-data-warehouse-manage-compute-overview.md#scale-compute)
+- Pokud chcete zvýšit jednotkami Dwu, najdete v části [jak škálování výkonu?](quickstart-scale-compute-portal.md)
 - Chcete-li změnit třídy prostředků pro dotaz, [změnit v příkladu třída prostředků uživatele](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example).
 
 Například na DWU 100 může uživatel ve třídě prostředků smallrc používat 100 MB paměti pro každý distribuci. Podrobnosti najdete v tématu [souběžnost v SQL Data Warehouse](sql-data-warehouse-develop-concurrency.md).
@@ -150,7 +150,7 @@ Předpokládejme, že zjistíte, je nutné, aby 700 MB paměti pro získání vy
 - Pomocí DWU 600 a largerc, vaše přidělení paměti je 800 MB.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další způsoby, jak zlepšit výkon v SQL Data Warehouse, najdete v tématu [přehled výkonnostní](sql-data-warehouse-overview-manage-user-queries.md).
 

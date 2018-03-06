@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: d91985849bd2483e8a28a01d63d253960190829d
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9cd6e6cdf8d8dc2b1872d6f7b76821122fd427fa
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-data-transforms-for-data-preparation-in-azure-machine-learning"></a>Použití transformací dat pro přípravu dat v Azure Machine Learning
 
@@ -48,7 +48,7 @@ Před vyvoláním transformovat můžete vybrat sloupce. Po transformaci editoru
 Podrobnější vysvětlení **sloupců odvozenou příklad** transformace, společně s další ukázky, najdete v části [odvozena sloupec odkazem příklad](data-prep-derive-column-by-example.md).  
 
 ## <a name="split-column-by-example"></a>Rozdělit sloupec podle příkladu
-Tato transformace trvá existující sloupec a pomocí "Příklad" modul se pokusí k rozdělení sloupce do  *n*  ostatních sloupců. Auto rozdělení můžete spustit na následné generovaného sloupce.
+Tato transformace trvá existující sloupec a pomocí "Příklad" modul se pokusí k rozdělení sloupce do *n* ostatních sloupců. Auto rozdělení můžete spustit na následné generovaného sloupce.
 
 Podrobnější vysvětlení **rozdělit sloupec podle příkladu** transformace, společně s další ukázky, najdete v části [rozdělit sloupec podle příkladu reference](data-prep-split-column-by-example.md).
 

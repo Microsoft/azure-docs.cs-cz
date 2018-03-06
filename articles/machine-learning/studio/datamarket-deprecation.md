@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 03/01/2018
 ms.author: LuisCa
-ms.openlocfilehash: e40b69f97878a6072a64912f017f8e5621ba6e71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cec301869b08f9f3811c0536c85366619738945a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="datamarket-is-now-deprecated"></a>DataMarket je nyní zastaralý.
 
@@ -32,9 +32,3 @@ Předchozí DataMarket Text Analytics API Zákazníci by se měl spustit pomocí
 Kognitivní rozhraní API služby Text Analytics podporuje všechny scénáře, které se starší verze DataMarket, a také další scénáře, jako je rozpoznávání jazyka a téma detekce.
 
 
-## <a name="recommendations-api"></a>Rozhraní Recommendations API 
-
-Předchozí zákazníkům rozhraní API DataMarket doporučení by se měl spustit pomocí [kognitivní rozhraní API služby doporučení](https://www.microsoft.com/cognitive-services/recommendations-api).
-Rozhraní API služby kognitivní doporučení služby podporuje všechny na scénáře, které se starší verze DataMarket, a také další scénáře, jako je podpora batch a lépe offline metriky vyhodnotit kvalitu modely. 
-
-Další informace o tom, jak začít používat rozhraní API služby kognitivní doporučení služby najdete v tématu [migrace na Azure kognitivní Services doporučení API](http://aka.ms/recomigrate).

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f550af298b37afa388b6fd860578863738510a5e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 1453dca453aa045752ea2300b9d7039c1bdd6542
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets-using-powershell"></a>Vytvoření virtuální sítě s několika podsítěmi pomocí prostředí PowerShell
 
@@ -119,6 +119,8 @@ New-AzureRmVm `
 Virtuální počítač trvá několik minut pro vytvoření. I když není ve vrácené výstupu Azure přiřazen 10.0.1.4 jako privátní IP adresu virtuálního počítače, protože 10.0.1.4 je první dostupná IP adresa v *privátní* podsíť *myVirtualNetwork*. 
 
 Zbývající kroky nepokračujte, dokud je virtuální počítač vytvořený a vrátí výstup prostředí PowerShell.
+
+Virtuální počítače vytvořené v tomto článku mít jeden [síťové rozhraní](virtual-network-network-interface.md) s jednu IP adresu, která se dynamicky přiřadit síťové rozhraní. Poté, co nasadíte virtuální počítač, můžete [přidat víc veřejných a privátních IP adres, nebo změnit způsob přiřazení IP adresy statické](virtual-network-network-interface-addresses.md#add-ip-addresses). Můžete [přidat síťových rozhraní](virtual-network-network-interface-vm.md#vm-add-nic), až do limitu nepodporuje [velikost virtuálního počítače](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vyberete při vytváření virtuálního počítače. Můžete také [povolit single-root I/O virtualization (SR-IOV)](create-vm-accelerated-networking-powershell.md) virtuálních počítačů, ale pouze tehdy, když vytvoření virtuálního počítače s velikostí virtuálních počítačů, která podporuje možnost.
 
 ### <a name="communicate-between-virtual-machines-and-with-the-internet"></a>Komunikace mezi virtuálními počítači a s Internetem
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: pajosh
-ms.openlocfilehash: 8ef9ddc345fb553b93815022dc3e6a796cae8b3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f856303d4abf05178eb11a242b87390ff1484e1b
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení k ochraně hybridní zálohování, které používají Azure Backup
 Pochybnostmi problémy se zabezpečením, jako je malware, Ransomware, který a narušení, se zvyšuje. Tyto problémy se zabezpečením může být drahé z hlediska peníze a data. Ochrana před těmito útoky, Azure Backup teď poskytuje funkce zabezpečení k ochraně hybridní zálohy. Tento článek obsahuje informace o povolení a používání těchto funkcí pomocí agenta služeb zotavení Azure a serveru Azure Backup. Tyto funkce patří:
@@ -107,13 +107,13 @@ Obvykle když kritické operace, správce předplatného je odeslat e-mail s ozn
 Funkce zabezpečení, které jsou uvedené v tomto článku poskytují mechanismy obrana proti cílenými útoky. Je důležité Pokud se stane útoku, tyto funkce získáte možnost obnovit data.
 
 ## <a name="troubleshooting-errors"></a>Řešení potíží s chybami
-| Operace | Podrobnosti o chybě | Řešení |
+| Operace | Detaily chyby | Řešení |
 | --- | --- | --- |
-| Změny zásad |Zásady zálohování se nepodařilo upravit. Chyba: Aktuální operace selhala kvůli vnitřní chybě služby [0x29834]. Zkuste operaci po nějaké době zopakovat. Pokud se problém opakuje, obraťte se prosím na podporu Microsoftu. |**Příčina:**<br/>Tato chyba pochází, když je nastavení zabezpečení povoleno, pokusíte snížit rozsah uchování nižší než minimální výše uvedené hodnoty a na nepodporovanou verzi (podporované verze jsou určené v první poznamenejte si tento článek). <br/>**Doporučená akce:**<br/> V takovém případě by měl nastavit dobu uchování výše zadaná minimální doba uchovávání období (sedm dní denně, čtyři týdny týdně, tři týdny, měsíčně nebo jeden rok pro roční) Chcete-li pokračovat pomocí zásad související s aktualizací. Volitelně žádoucí bude aktualizovat agenta zálohování, Azure Backup Server nebo UR aplikace DPM, můžete využít všech aktualizací zabezpečení. |
+| Změny zásad |Zásady zálohování se nepodařilo upravit. Chyba: Aktuální operace selhala kvůli vnitřní chybě služby [0x29834]. Zkuste operaci po nějaké době zopakovat. Pokud se problém opakuje, obraťte se prosím na podporu Microsoftu. |**Příčina:**<br/>Tato chyba pochází, když je nastavení zabezpečení povoleno, pokusíte snížit rozsah uchování nižší než minimální výše uvedené hodnoty a na nepodporovanou verzi (podporované verze jsou určené v první poznamenejte si tento článek). <br/>**Doporučená akce:**<br/> V takovém případě by měl nastavit dobu uchování výše zadaná minimální doba uchovávání období (sedm dní denně, čtyři týdny týdně, tři týdny, měsíčně nebo jeden rok pro roční) Chcete-li pokračovat pomocí zásad související aktualizace. Volitelně žádoucí bude aktualizovat agenta zálohování, Azure Backup Server nebo UR aplikace DPM, můžete využít všech aktualizací zabezpečení. |
 | Změnit heslo |Zabezpečení zadán kód PIN není správný. (ID: 100130) Zadejte správný kód zabezpečení PIN k dokončení této operace. |**Příčina:**<br/> Tato chyba se dodává při zadání kódu PIN zabezpečení neplatná nebo vypršela její platnost při provádění kritické operace (jako jsou změnit heslo). <br/>**Doporučená akce:**<br/> K dokončení operace, je nutné zadat platný kód PIN zabezpečení. Pokud chcete získat kód PIN, přihlaste se k portálu Azure a přejděte do trezoru služeb zotavení > Nastavení > Vlastnosti > generování kódu PIN zabezpečení. Chcete-li změnit heslo, použijte tento PIN kód. |
 | Změnit heslo |Operace se nezdařila. ID: 120002 |**Příčina:**<br/>Tato chyba se dodává při nastavení zabezpečení povoleno, pokusíte změnit heslo a na nepodporovanou verzi (platná verze zadané v první poznamenejte si tento článek).<br/>**Doporučená akce:**<br/> Chcete-li změnit heslo, musíte nejdřív aktualizovat agenta zálohování na minimální verzi minimální 2.0.9052, server Azure Backup ke minimální update 1, nebo aby minimální DPM 2012 R2 UR12 aplikace DPM nebo DPM 2016 UR2 (stažení odkazy níže), zadejte platný kód PIN zabezpečení. Pokud chcete získat kód PIN, přihlaste se k portálu Azure a přejděte do trezoru služeb zotavení > Nastavení > Vlastnosti > generování kódu PIN zabezpečení. Chcete-li změnit heslo, použijte tento PIN kód. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Začínáme s trezor služeb zotavení Azure](backup-azure-vms-first-look-arm.md) pro povolení těchto funkcí.
 * [Stáhněte si nejnovější verzi agenta služeb zotavení Azure](http://aka.ms/azurebackup_agent) k ochraně počítače se systémem Windows a ochrana zálohovaných dat před útoky.
 * [Stáhněte si nejnovější Server Azure Backup](https://aka.ms/latest_azurebackupserver) k ochraně úloh a ochrana zálohovaných dat před útoky.

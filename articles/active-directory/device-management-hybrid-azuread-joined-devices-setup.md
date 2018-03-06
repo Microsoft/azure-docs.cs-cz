@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5eb53d13ed85093616f43b79b58d43ba62ffbd67
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 203e36b198186db63b7e902db296adeaa9ffb4ee
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Postup konfigurace hybridní Azure Active Directory připojené zařízení
 
@@ -33,6 +33,8 @@ Pokud máte prostředí místní služby Active Directory a chcete pro připojen
 Před zahájením konfigurace zařízení služby Azure AD, které jsou připojené k hybridní ve vašem prostředí, by měl Seznamte se s Podporované scénáře a omezení.  
 
 Pokud se spoléhat na [nástroj pro přípravu systému (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)), Zkontrolujte prosím, že vytvoření bitové kopie z instalace systému Windows, který nebyl dosud zaregistrován v Azure AD.
+
+Všechna zařízení připojená k doméně spuštěný Windows 10 Anniversary Update a Windows Server 2016 automatickou registraci v rámci Azure AD při restartování zařízení nebo uživatele přihlásit až po dokončení konfiguračních kroků uvedených níže. Pokud není upřednostňovaný toto chování automatické registrace nebo pokud se požaduje řízené zavedení, postupujte podle pokynů v následující části řízení nasazení a zavedení nejprve selektivně povolit nebo zakázat automatické zavedení před provedením dalších kroky konfigurace.  
 
 Toto téma ke zlepšení čitelnosti popisy, používá následující období: 
 
@@ -204,7 +206,7 @@ Definice pomáhá ověřte, zda jsou hodnoty přítomen nebo pokud potřebujete 
 
 ### <a name="issue-account-type-claim"></a>Deklarace typu účtu problém
 
-**`http://schemas.microsoft.com/ws/2012/01/accounttype`**– Tato deklarace identity musí obsahovat hodnotu **DJ**, které identifikují zařízení jako počítač připojený k doméně. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá takto:
+**`http://schemas.microsoft.com/ws/2012/01/accounttype`** – Tato deklarace identity musí obsahovat hodnotu **DJ**, které identifikují zařízení jako počítač připojený k doméně. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá takto:
 
     @RuleName = "Issue account type for domain-joined computers"
     c:[
@@ -219,7 +221,7 @@ Definice pomáhá ověřte, zda jsou hodnoty přítomen nebo pokud potřebujete 
 
 ### <a name="issue-objectguid-of-the-computer-account-on-premises"></a>Problém objectGUID na počítači účet místního
 
-**`http://schemas.microsoft.com/identity/claims/onpremobjectguid`**– Tato deklarace identity musí obsahovat **objectGUID** hodnota účtu místního počítače. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá takto:
+**`http://schemas.microsoft.com/identity/claims/onpremobjectguid`** – Tato deklarace identity musí obsahovat **objectGUID** hodnota účtu místního počítače. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá takto:
 
     @RuleName = "Issue object GUID for domain-joined computers"
     c1:[
@@ -241,7 +243,7 @@ Definice pomáhá ověřte, zda jsou hodnoty přítomen nebo pokud potřebujete 
  
 ### <a name="issue-objectsid-of-the-computer-account-on-premises"></a>Problém objectSID na počítači účet místního
 
-**`http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid`**– Tato deklarace identity musí obsahovat **objectSid** hodnota účtu místního počítače. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá takto:
+**`http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid`** – Tato deklarace identity musí obsahovat **objectSid** hodnota účtu místního počítače. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá takto:
 
     @RuleName = "Issue objectSID for domain-joined computers"
     c1:[
@@ -258,7 +260,7 @@ Definice pomáhá ověřte, zda jsou hodnoty přítomen nebo pokud potřebujete 
 
 ### <a name="issue-issuerid-for-computer-when-multiple-verified-domain-names-in-azure-ad"></a>Vystavovat issuerID pro počítač, pokud ověření více názvů domén ve službě Azure AD
 
-**`http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`**– Tato deklarace identity musí obsahovat identifikátor URI (Uniform Resource) všech názvy ověřené domény, které se připojují pomocí místní služby federation service (AD FS nebo 3. stran) vydání tokenu. Ve službě AD FS můžete přidat pravidla transformace vystavení, které vypadají jako jsou níže v tomto konkrétní pořadí po ty výše. Upozorňujeme, že je nutné tento jedno pravidlo explicitně vystavit pravidlo pro uživatele. V pravidlech níže se přidá první pravidlo identifikace uživatele nebo ověřování počítače.
+**`http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`** – Tato deklarace identity musí obsahovat identifikátor URI (Uniform Resource) všech názvy ověřené domény, které se připojují pomocí místní služby federation service (AD FS nebo 3. stran) vydání tokenu. Ve službě AD FS můžete přidat pravidla transformace vystavení, které vypadají jako jsou níže v tomto konkrétní pořadí po ty výše. Upozorňujeme, že je nutné tento jedno pravidlo explicitně vystavit pravidlo pro uživatele. V pravidlech níže se přidá první pravidlo identifikace uživatele nebo ověřování počítače.
 
     @RuleName = "Issue account type with the value User when its not a computer"
     NOT EXISTS(
@@ -304,7 +306,7 @@ Definice pomáhá ověřte, zda jsou hodnoty přítomen nebo pokud potřebujete 
 
 Ve výše uvedené, deklarace identity
 
-- `<verified-domain-name>`je zástupný symbol, který potřebujete nahradit s jedním názvů ověřené domény ve službě Azure AD. Například hodnota = "http://contoso.com/adfs/services/trust/"
+- `<verified-domain-name>` je zástupný symbol, který potřebujete nahradit s jedním názvů ověřené domény ve službě Azure AD. Například hodnota = "http://contoso.com/adfs/services/trust/"
 
 
 
@@ -315,7 +317,7 @@ Chcete-li získat seznam ověřených společnosti domény, můžete použít [G
 
 ### <a name="issue-immutableid-for-computer-when-one-for-users-exist-eg-alternate-login-id-is-set"></a>Vystavovat ImmutableID pro počítač, pokud pro uživatele k dispozici jeden (například alternativního přihlašovacího ID, je nastavena)
 
-**`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`**– Tato deklarace identity musí obsahovat platnou hodnotu pro počítače. Ve službě AD FS můžete vytvořit pravidlo pro vystavování transformace následujícím způsobem:
+**`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`** – Tato deklarace identity musí obsahovat platnou hodnotu pro počítače. Ve službě AD FS můžete vytvořit pravidlo pro vystavování transformace následujícím způsobem:
 
     @RuleName = "Issue ImmutableID for computers"
     c1:[
@@ -512,7 +514,7 @@ Ve službě AD FS musíte přidat pravidel transformace vystavení, který před
 2. Klikněte pravým tlačítkem na objekt pro vztah důvěryhodnosti předávající strany ze serveru Microsoft Office 365 Identity Platform a vyberte **upravit pravidla deklarací identity**.
 3. Na **pravidlech transformace vystavení** vyberte **přidat pravidlo**.
 4. V **pravidlo deklarace identity** seznam šablon, vyberte **odesílat deklarace pomocí vlastního pravidla**.
-5. Vyberte **Další**.
+5. Vyberte **Next** (Další).
 6. V **název pravidla deklarací** zadejte **pravidlo deklarace identity metoda ověřování**.
 7. V **pravidlo deklarace identity** zadejte následující pravidlo:
 
@@ -566,7 +568,8 @@ Ovládejte aktuální počítačů se systémem Windows, měli byste nasadit **r
    > [!NOTE]
    > Tato šablona zásad skupiny byla přejmenována z dřívějších verzí konzoly pro správu zásad skupiny. Pokud používáte starší verzi konzoly, přejděte na `Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers`. 
 
-7. Vyberte **povoleno**a potom klikněte na **použít**.
+7. Vyberte **povoleno**a potom klikněte na **použít**. Je nutné vybrat **zakázané** Pokud chcete, aby zásady pro blokování zařízení ovládaná zásadami této skupiny automaticky registraci v Azure AD.
+
 8. Klikněte na **OK**.
 9. Propojte objekt zásad skupiny k umístění podle vaší volby. Například můžete propojit k určité organizační jednotce. Můžete také může ho propojit s konkrétní skupiny zabezpečení počítačů, které automaticky připojit k službě Azure AD. Nastavení této zásady pro všechny připojené k doméně Windows 10 a Windows Server 2016 počítače ve vaší organizaci, propojte objekt zásad skupiny do domény.
 

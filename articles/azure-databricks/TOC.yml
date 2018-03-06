@@ -9,6 +9,12 @@
   items:
     - name: Vytvoření pracovního prostoru Databricks
       href: quickstart-create-databricks-workspace-portal.md
+- name: Návody
+  items:
+    - name: 'Propojení s využitím Excelu, R a Pythonu'
+      href: connect-databricks-excel-python-r.md
+    - name: Použití rozhraní příkazového řádku Databricks z Azure Cloud Shellu
+      href: databricks-cli-from-azure-cloud-shell.md
 - name: Zdroje a prostředky
   items:
     - name: Časté dotazy

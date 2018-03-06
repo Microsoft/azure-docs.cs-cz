@@ -2,8 +2,8 @@
 documentType: LandingData
 title: Dokumentace k Azure Databricks ve verzi Preview
 metadata:
-  title: Dokumentace k Azure Databricks – Kurzy | Dokumentace Microsoftu
-  description: 'Zjistěte, jak používat Azure Databricks, pomocí zde uvedeného Rychlého startu a dalších odkazů. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure.'
+  title: "Dokumentace k Azure Databricks – Kurzy | Dokumentace Microsoftu"
+  description: "Zjistěte, jak používat Azure Databricks, pomocí zde uvedeného Rychlého startu a dalších odkazů. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure."
   services: azure-databricks
   author: nitinme
   manager: cgronlun
@@ -13,30 +13,44 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/15/2017
   ms.author: nitinme
+  ms.openlocfilehash: cc51070b4ff41107700585160cff8bbe41cc5d7d
+  ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/05/2018
 abstract:
-  description: 'Zjistěte, jak používat Azure Databricks, pomocí zde uvedeného Rychlého startu a dalších odkazů. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure. Platforma Databricks je navržená ve spolupráci se zakladateli Apache Spark a díky integraci s Azure poskytuje nastavení jedním kliknutím, zjednodušené pracovní postupy a interaktivní pracovní prostor, který umožňuje spolupráci mezi datovými vědci, odborníky přes data a obchodními analytiky.'
+  description: "Zjistěte, jak používat Azure Databricks, pomocí zde uvedeného Rychlého startu a dalších odkazů. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure. Platforma Databricks je navržená ve spolupráci se zakladateli Apache Spark a díky integraci s Azure poskytuje nastavení jedním kliknutím, zjednodušené pracovní postupy a interaktivní pracovní prostor, který umožňuje spolupráci mezi datovými vědci, odborníky přes data a obchodními analytiky."
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/index/video.png
+      width: 250
+    title: "Seznámení s Azure Databricks (3:38)"
+    href: https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/
+    width: 250
 sections:
-  - title: Zprovoznění během 5 minut
+- title: "Zprovoznění během 5 minut"
+  items:
+  - type: paragraph
+    text: "Zjistěte, jak vytvořit pracovní prostor Azure Databricks a cluster Spark a jak následně spouštět úlohy s použitím:"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Zjistěte, jak vytvořit pracovní prostor Azure Databricks a cluster Spark a jak následně spouštět úlohy s použitím:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/azure-databricks/media/index/portal.svg
-            text: portál Azure
-            href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
-  - title: Podrobné kurzy
+    - image:
+        src: /azure/azure-databricks/media/index/portal.svg
+      text: Azure Portal
+      href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
+- title: "Podrobné kurzy"
+  items:
+  - type: paragraph
+    text: "Informace o práci s Azure Databricks:"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 'Informace o práci s Azure Databricks:'
-      - type: list
-        style: ordered
-        items:
-          - html: '<a href="https://docs.azuredatabricks.net/user-guide/getting-started.html" target="_blank">Začínáme s Azure Databricks</a>'
-          - html: '<a href="https://go.microsoft.com/fwlink/?linkid=864083" target="_blank">Import dat ze služby Azure Storage</a>'
-          - hmtl: '<a href="https://go.microsoft.com/fwlink/?linkid=864084" target="_blank">Import data from Azure Data Lake Store</a>'
-          - html: '<a href="https://docs.azuredatabricks.net/user-guide/notebooks/index.html" target="_blank">Práce s poznámkovými bloky</a>'
-          - html: '<a href="https://docs.azuredatabricks.net/user-guide/jobs.html" target="_blank">Spouštění úloh Spark</a>'
-          - html: '<a href="https://docs.azuredatabricks.net/spark/latest/data-sources/index.html" target="_blank">Použití zdrojů dat Spark</a>'
+    - html: "<a href=\"https://docs.azuredatabricks.net/user-guide/getting-started.html\" target=\"_blank\">Začínáme s Azure Databricks</a>"
+    - html: "<a href=\"https://go.microsoft.com/fwlink/?linkid=864083\" target=\"_blank\">Import dat ze služby Azure Storage</a>"
+    - hmtl: <a href="https://go.microsoft.com/fwlink/?linkid=864084" target="_blank">Import data from Azure Data Lake Store</a>
+    - html: "<a href=\"https://docs.azuredatabricks.net/user-guide/notebooks/index.html\" target=\"_blank\">Práce s poznámkovými bloky</a>"
+    - html: "<a href=\"https://docs.azuredatabricks.net/user-guide/jobs.html\" target=\"_blank\">Spouštění úloh Spark</a>"
+    - html: "<a href=\"https://docs.azuredatabricks.net/spark/latest/data-sources/index.html\" target=\"_blank\">Použití zdrojů dat Spark</a>"

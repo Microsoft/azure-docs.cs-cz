@@ -4,7 +4,7 @@ description: "Naučte se síťová rozhraní pro přidání nebo odebrání sí�
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: jdial
-ms.openlocfilehash: 30e6950a976307023bd5232fa1c1f1342c1d012b
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: bb21690865cd9384fe3d3c82e60f11e0fc64114c
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Síťová rozhraní pro přidání nebo odebrání síťová rozhraní z virtuálních počítačů
 
@@ -29,12 +29,12 @@ Pokud třeba chcete přidat, změnit nebo odebírat IP adresy pro síťové rozh
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Před provedením kroků v žádné části tohoto článku, proveďte následující úlohy:
+Před dokončením kroků v žádné části tohoto článku dokončete následující úlohy:
 
-- Přihlaste se k Azure [portál](https://portal.azure.com), rozhraní příkazového řádku Azure nebo Azure PowerShell s účet Azure. Pokud nemáte účet Azure, si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free).
-- Je-li použít příkazy prostředí PowerShell k dokončení úloh v tomto článku [instalace a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Ujistěte se, že máte nejnovější verzi rutin prostředí Azure PowerShell nainstalovaný. Chcete-li získat nápovědu pro příkazy prostředí PowerShell s příklady, zadejte `get-help <command> -full`. 
-- Alternativně můžete vytvořit prostředí cloudové služby Azure. Prostředí cloudové služby Azure je bezplatná prostředí PowerShell, který můžete spustit přímo v portálu Azure. Obsahuje prostředí PowerShell předem nainstalován a nakonfigurován pro použití s vaším účtem. Chcete-li použít tuto možnost, vyberte prostředí cloudu **> _** tlačítka v horní části [portál](https://portal.azure.com) a v levém horním rohu vyberte prostředí PowerShell.
-- Pokud používáte rozhraní příkazového řádku Azure k dokončení úloh v tomto článku [instalace a konfigurace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Ujistěte se, že máte nejnovější verzi rozhraní příkazového řádku Azure, který je nainstalovaný. Chcete-li získat nápovědu pro příkazy rozhraní příkazového řádku, zadejte `az <command> --help`. 
+- Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
+- Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí účtu Azure.
+- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` najít nainstalovanou verzi. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.26 nebo novější. Spustit `az --version` najít nainstalovanou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
 
 ## <a name="add-existing-network-interfaces-to-a-new-vm"></a>Přidat existující rozhraní sítě na nový virtuální počítač
 

@@ -1,7 +1,7 @@
 ---
-title: "Definovat pracovní postupy s JSON - Azure Logic Apps | Microsoft Docs"
-description: "Jak napsat definice pracovního postupu ve formátu JSON pro logic apps"
-author: jeffhollan
+title: "Sestavení v definicích aplikaci logiky s JSON - Azure Logic Apps | Microsoft Docs"
+description: "Přidání parametrů, zpracování řetězců, vytvořit parametr maps a získat data pomocí funkce datum"
+author: ecfan
 manager: anneta
 editor: 
 services: logic-apps
@@ -13,197 +13,202 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
-ms.date: 03/29/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 7dde5bc4733af1aba34199f332379d2faf566725
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.date: 01/31/2018
+ms.author: LADocs; estfan
+ms.openlocfilehash: d05f7e34cbe670db6733c199e3420c810c304a84
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="create-workflow-definitions-for-logic-apps-using-json"></a>Vytvoření definice pracovního postupu pro logic apps pomocí JSON
+# <a name="build-on-your-logic-app-definition-with-json"></a>Sestavení na svou definici. aplikaci logiky s JSON
 
-Vytvořením definice pracovního postupu pro [Azure Logic Apps](logic-apps-overview.md) jednoduchý a deklarativní jazyce JSON. Pokud jste to ještě neudělali, přečtěte si nejprve [postup vytvoření první aplikace logiky pomocí návrháře aplikace logiky](quickstart-create-first-logic-app-workflow.md). Další informace naleznete [úplné referenční dokumentace pro jazyk definic workflowů](http://aka.ms/logicappsdocs).
+Chcete-li provést další pokročilé úlohy s [Azure Logic Apps](../logic-apps/logic-apps-overview.md), zobrazení kódu můžete upravit aplikace definice logiku, která používá jednoduchý a deklarativní jazyk JSON. Pokud jste to ještě neudělali, přečtěte si nejprve [postup vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Další informace naleznete [úplné referenční dokumentace pro jazyk definic workflowů](http://aka.ms/logicappsdocs).
 
-## <a name="repeat-steps-over-a-list"></a>Opakujte kroky pro seznam
+> [!NOTE]
+> Některé funkce Azure Logic Apps, jako jsou parametry, jsou k dispozici pouze v případě, že pracujete v zobrazení kódu pro definici aplikace logiky. Parametry umožňují znovu použít hodnoty v celé aplikaci logiky. Pokud chcete použít stejné e-mailovou adresu ve několik akcí, například definujte této e-mailovou adresu jako parametr.
 
-K iteraci v rámci pole, které má až 10 000 položek a provedení akce pro každou položku, použijte [typu foreach](logic-apps-loops-and-scopes.md).
+## <a name="view-and-edit-your-logic-app-definitions-in-json"></a>Zobrazit a upravit vaše logiku aplikace definice ve formátu JSON
 
-## <a name="handle-failures-if-something-goes-wrong"></a>Zpracování chyb, pokud dojde k chybě
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com "Azure Portal").
 
-Obvykle, které chcete zahrnout *nápravy krok* – některé logiky, která provede *jenom v případě* jeden nebo více voláními nezdaří. Tento příklad načte data z různých míst, ale pokud volání selže, chceme, takže jsme můžete sledovat tohoto selhání později někde odeslat zprávu:  
+2. V levé nabídce zvolte **další služby**. V části **Podniková integrace** zvolte **Logic Apps**. Vyberte svou aplikaci logiky.
 
+3. Z nabídky aplikace logiky v části **nástroje pro vývoj**, zvolte **zobrazení kódu aplikace logiky**.
+
+   Otevře okno zobrazení kódu a zobrazuje svou definici. aplikaci logiky.
+
+## <a name="parameters"></a>Parametry
+
+Parametry umožňují znovu použít hodnoty v celé aplikaci logiky a jsou vhodné pro nahrazení hodnot, které mohou změnit často. Například pokud máte e-mailovou adresu, kterou chcete použít na více místech, měli byste tuto e-mailovou adresu jako parametr. 
+
+Parametry jsou užitečné, i když je nutné přepsat parametry v různých prostředích, další informace o [parametry pro nasazení](#deployment-parameters) a [REST API pro Azure Logic Apps dokumentaci](https://docs.microsoft.com/rest/api/logic).
+
+> [!NOTE]
+> Parametry jsou dostupné jenom v zobrazení kódu.
+
+V [první aplikaci logiky příklad](../logic-apps/quickstart-create-first-logic-app-workflow.md), jste vytvořili pracovní postup, který odešle e-mailů, jakmile se zobrazí nové příspěvky v informačního kanálu RSS na web. Adresa URL informačního kanálu je pevně zakódované, takže tento příklad ukazuje, jak nahradit hodnotu dotazu s parametrem, abyste snadněji změnit adresu URL informačního kanálu.
+
+1. V zobrazení kódu najdete `parameters : {}` objektu a přidejte `currentFeedUrl` objektu:
+
+   ``` json
+     "currentFeedUrl" : {
+      "type" : "string",
+            "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
+   }
+   ```
+
+2. V `When_a_feed-item_is_published` akci najít `queries` části a nahraďte hodnotu dotazu s `"feedUrl": "#@{parameters('currentFeedUrl')}"`. 
+
+   **Před**
+   ``` json
+   }
+      "queries": {
+          "feedUrl": "https://s.ch9.ms/Feeds/RSS"
+       }
+   },   
+   ```
+
+   **Po**
+   ``` json
+   }
+      "queries": {
+          "feedUrl": "#@{parameters('currentFeedUrl')}"
+       }
+   },   
+   ```
+
+   Pro připojení dvě nebo více řetězce, můžete také použít `concat` funkce. 
+   Například `"@concat('#',parameters('currentFeedUrl'))"` funguje stejně jako v předchozím příkladu.
+
+3.  Jakmile budete hotoví, vyberte **Uložit**. 
+
+Teď můžete změnit předáním jinou adresu URL prostřednictvím informačního kanálu RSS webu `currentFeedURL` objektu.
+
+<a name="deployment-parameters"></a>
+
+## <a name="deployment-parameters-for-different-environments"></a>Parametry nasazení pro různá prostředí
+
+Nasazení životních mají obvykle, prostředí pro vývoj, pracovní a provozní. Například můžete použít stejné definici aplikace logiky v těchto prostředích ale použití různých databází. Podobně můžete chtít použít stejné definice v různých oblastech pro vysokou dostupnost, ale má každá instance aplikace logiky k použití databáze této oblasti. 
+
+> [!NOTE] 
+> Tento scénář se liší od trvá parametry v *runtime* kde byste měli používat `trigger()` funkce místo.
+
+Zde je základní definice:
+
+``` json
+{
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "uri": {
+            "type": "string"
+        }
+    },
+    "triggers": {
+        "request": {
+          "type": "request",
+          "kind": "http"
+        }
+    },
+    "actions": {
+        "readData": {
+            "type": "Http",
+            "inputs": {
+                "method": "GET",
+                "uri": "@parameters('uri')"
+            }
+        }
+    },
+    "outputs": {}
+}
 ```
+V skutečnou `PUT` požadavku pro logic apps, můžete zadat parametr `uri`. V každém prostředí, můžete zadat jinou hodnotu pro `connection` parametr. Protože výchozí hodnota už existuje, datové části aplikace logiky vyžaduje tento parametr:
+
+``` json
+{
+    "properties": {},
+        "definition": {
+          /// Use the definition from above here
+        },
+        "parameters": {
+            "connection": {
+                "value": "https://my.connection.that.is.per.enviornment"
+            }
+        }
+    },
+    "location": "westus"
+}
+``` 
+
+Další informace najdete v tématu [REST API pro Azure Logic Apps dokumentaci](https://docs.microsoft.com/rest/api/logic/).
+
+## <a name="process-strings-with-functions"></a>Proces řetězce s funkcí
+
+Služba Logic Apps obsahuje různé funkce pro práci s řetězci. Předpokládejme například, že chcete předat název společnosti z pořadí do jiného systému. Ale nevíte jistě o správné zpracování pro kódování znaků. Může provádět na tento řetězec kódování base64, ale abyste se vyhnuli řídicí sekvence v adrese URL, můžete nahradit několik znaků místo. Navíc stačí pouze dílčí řetězec pro název společnosti vzhledem k tomu, že se nepoužívají prvních 5 znaků. 
+
+``` json
 {
   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {},
+  "parameters": {
+    "order": {
+      "defaultValue": {
+        "quantity": 10,
+        "id": "myorder1",
+        "companyName": "NAME=Contoso"
+      },
+      "type": "Object"
+    }
+  },
   "triggers": {
-    "Request": {
-      "type": "request",
-      "kind": "http"
-    }
-  },
-  "actions": {
-    "readData": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      }
-    },
-    "postToErrorMessageQueue": {
-      "type": "ApiConnection",
-      "inputs": "...",
-      "runAfter": {
-        "readData": [
-          "Failed"
-        ]
-      }
-    }
-  },
-  "outputs": {}
-}
-```
-
-Chcete-li určit, že `postToErrorMessageQueue` spouští pouze `readData` má `Failed`, použít `runAfter` vlastnosti, například pro zadání seznamu možných hodnot, tak, aby `runAfter` může být `["Succeeded", "Failed"]`.
-
-Nakonec, protože v tomto příkladu teď zpracovává chyby, jsme už označit spustit jako `Failed`. Vzhledem k tomu, že jsme přidali v kroku pro zpracování této chyby v tomto příkladu, má spustit `Succeeded` i když jeden krok `Failed`.
-
-## <a name="execute-two-or-more-steps-in-parallel"></a>Paralelní spuštění dvou nebo více kroků
-
-Ke spouštění více akcí paralelně, `runAfter` vlastnost musí být shodná za běhu. 
-
-```
-{
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "triggers": {
-    "Request": {
-      "kind": "http",
-      "type": "Request"
-    }
-  },
-  "actions": {
-    "readData": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      }
-    },
-    "branch1": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    },
-    "branch2": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    }
-  },
-  "outputs": {}
-}
-```
-
-V tomto příkladu obě `branch1` a `branch2` jsou nastaveny na spouštění `readData`. V důsledku toho obou poboček spustit souběžně. Časové razítko pro obě pobočky se shoduje.
-
-![Paralelní](media/logic-apps-author-definitions/parallel.png)
-
-## <a name="join-two-parallel-branches"></a>Připojení dvě paralelních větvích
-
-Toho se můžete zapojit dvě akce, které jsou nastaveny na spouštění paralelní přidáním položky `runAfter` vlastnost jako v předchozím příkladu.
-
-```
-{
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-04-01-preview/workflowdefinition.json#",
-  "actions": {
-    "readData": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {}
-    },
-    "branch1": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    },
-    "branch2": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    },
-    "join": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "branch1": [
-          "Succeeded"
-        ],
-        "branch2": [
-          "Succeeded"
-        ]
-      }
-    }
-  },
-  "parameters": {},
-  "triggers": {
-    "Request": {
+    "request": {
       "type": "Request",
-      "kind": "Http",
+      "kind": "Http"
+    }
+  },
+  "actions": {
+    "order": {
+      "type": "Http",
       "inputs": {
-        "schema": {}
+        "method": "GET",
+        "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
       }
     }
   },
-  "contentVersion": "1.0.0.0",
   "outputs": {}
 }
 ```
 
-![Paralelní](media/logic-apps-author-definitions/join.png)
+Tyto kroky popisují, jak tento příklad zpracovává tento řetězec z uvnitř funguje na vnější:
 
-## <a name="map-list-items-to-a-different-configuration"></a>Položky seznamu mapy do jiné konfigurace
-
-Dále Řekněme, že má získat jiný obsah na základě hodnoty vlastnosti. Jako parametr jsme vytvořit mapování hodnot na cíle:  
-
+``` 
+"uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
+
+1. Získat [ `length()` ](../logic-apps/logic-apps-workflow-definition-language.md) pro název společnosti, takže získáte celkový počet znaků.
+
+2. Kratší řetězec získáte odečtena `5`.
+
+3. Teď se [ `substring()` ](../logic-apps/logic-apps-workflow-definition-language.md). Spustit v indexu `5`a přejděte na zbytek řetězce.
+
+4. Převést tento dílčí [ `base64()` ](../logic-apps/logic-apps-workflow-definition-language.md) řetězec.
+
+5. Nyní [ `replace()` ](../logic-apps/logic-apps-workflow-definition-language.md) všechny `+` znaků a obsahující `-` znaků.
+
+6. Nakonec [ `replace()` ](../logic-apps/logic-apps-workflow-definition-language.md) všechny `/` znaků a obsahující `_` znaků.
+
+## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>Mapování položky seznamu hodnot vlastností, potom použijte mapy jako parametry
+
+Chcete-li získat odlišné výsledky na základě vlastnosti na hodnotu, můžete vytvořit mapu, která odpovídá všechny hodnoty vlastností na výsledek a pak použít tento mapování jako parametr. 
+
+Tento pracovní postup například definuje některé kategorie jako parametry a mapu, která odpovídá těchto kategorií s konkrétní adresy URL. Pracovní postup nejdřív získá seznam článků. Potom pracovní postup používá mapy Pokud chcete vyhledat adresu URL odpovídající kategorii jednotlivých článků.
+
+*   [ `intersection()` ](../logic-apps/logic-apps-workflow-definition-language.md) Funkce kontroluje, zda kategorii odpovídá známé definované kategorie.
+
+*   Po získání odpovídající kategorii, vrátí příklad položky od mapy pomocí hranatými závorkami: `parameters[...]`
+
+``` json
 {
   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
   "contentVersion": "1.0.0.0",
@@ -271,21 +276,29 @@ Dále Řekněme, že má získat jiný obsah na základě hodnoty vlastnosti. Ja
 }
 ```
 
-V takovém případě nám nejdřív získat seznam článků. Podle kategorie, která byla definována jako parametr, druhý krok používá mapu vyhledat adresu URL pro získání obsahu.
+## <a name="get-data-with-date-functions"></a>Získání dat pomocí funkce datum
 
-Některé časy si zde: 
+Chcete-li získat data ze zdroje dat, která nenabízí nativní podporu *aktivační události*, můžete použít datum funkce pro práci s časy a místo toho data. Například tento výraz najde, jak dlouho kroky tento pracovní postup trvá, z uvnitř funguje na vnější:
 
-*   [ `intersection()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) Funkce kontroluje, zda kategorii odpovídá jedné ze známé definovaných kategorií.
-
-*   Po kategorie se nám získat, jsme načítat položky od mapy pomocí hranatými závorkami:`parameters[...]`
-
-## <a name="process-strings"></a>Proces řetězce
-
-Různé funkce můžete použít k manipulaci s řetězci. Předpokládejme například, máme řetězec, který chcete předat do systému, ale nemůžeme nejsou jisti, o správné zpracování pro kódování znaků. Jednou z možností je ve formátu Base64 kódování tento řetězec. Ale abyste se vyhnuli uvozovací znaky v adrese URL, přidáme nahrazení pár znaků. 
-
-Chceme také dílčí řetězec názvu pořadí, protože se nepoužívají prvních 5 znaků.
-
+``` json
+"expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
+
+1. Z `order` akce, extrakce `startTime`. 
+2. Získat aktuální čas s `utcNow()`.
+3. Odečtena sekundu:
+
+   [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md) 
+
+   Můžete použít jiné jednotky doby, jako je třeba `minutes` nebo `hours`. 
+
+3. Teď můžete porovnat tyto dvě hodnoty. 
+
+   Pokud první hodnota je menší než druhá hodnota, která pak více než jedna sekunda byla úspěšná, protože byl nejprve umístit pořadí.
+
+K formátování kalendářních dat, můžete použít formátování řetězce. Například RFC1123 získáte pomocí [ `utcnow('r')` ](../logic-apps/logic-apps-workflow-definition-language.md). Další informace o [datum formátování](../logic-apps/logic-apps-workflow-definition-language.md).
+
+``` json
 {
   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
   "contentVersion": "1.0.0.0",
@@ -293,58 +306,7 @@ Chceme také dílčí řetězec názvu pořadí, protože se nepoužívají prvn
     "order": {
       "defaultValue": {
         "quantity": 10,
-        "id": "myorder1",
-        "orderer": "NAME=Contoso"
-      },
-      "type": "Object"
-    }
-  },
-  "triggers": {
-    "request": {
-      "type": "request",
-      "kind": "http"
-    }
-  },
-  "actions": {
-    "order": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').orderer,5,sub(length(parameters('order').orderer), 5) )),'+','-') ,'/' ,'_' )}"
-      }
-    }
-  },
-  "outputs": {}
-}
-```
-
-Pracovní z uvnitř k mimo:
-
-1. Získat [ `length()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#length) pro název orderer, takže se nám získat zpět celkový počet znaků.
-
-2. Odečtena 5, protože chceme kratší řetězec.
-
-3. Ve skutečnosti, proveďte [ `substring()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring). Začneme v indexu `5` a přejděte zbytek řetězce.
-
-4. Převést tento dílčí [ `base64()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) řetězec.
-
-5. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace)všechny `+` znaků a obsahující `-` znaků.
-
-6. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace)všechny `/` znaků a obsahující `_` znaků.
-
-## <a name="work-with-date-times"></a>Práce s data a času
-
-Hodnoty data a času může být užitečná, zejména v případě, že se pokoušíte vyžádá data ze zdroje dat, která nepodporuje přirozeně *aktivační události*. Můžete taky data a času pro hledání, jak dlouho jednotlivých kroků trvá.
-
-```
-{
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "order": {
-      "defaultValue": {
-        "quantity": 10,
-        "id": "myorder1"
+        "id": "myorder-id"
       },
       "type": "Object"
     }
@@ -386,67 +348,13 @@ Hodnoty data a času může být užitečná, zejména v případě, že se poko
 }
 ```
 
-V tomto příkladu jsme extrahujte `startTime` z předchozího kroku. Potom jsme získat aktuální čas a odečítání sekundu:
 
-[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) 
+## <a name="next-steps"></a>Další postup
 
-Můžete použít jiné jednotky doby, jako je třeba `minutes` nebo `hours`. Nakonec jsme můžete porovnat tyto dvě hodnoty. Pokud první hodnota je menší než druhá hodnota, která pak více než jedna sekunda byla úspěšná, protože byl nejprve umístit pořadí.
-
-K formátování kalendářních dat, můžeme použít formátování řetězce. Například RFC1123 získáte používáme [ `utcnow('r')` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow). Další informace o formátování data, najdete v části [jazyk definic workflowů](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow).
-
-## <a name="deployment-parameters-for-different-environments"></a>Parametry nasazení pro různá prostředí
-
-Běžně mají životní cykly nasazení prostředí pro vývoj, pracovní prostředí a provozním prostředí. Například můžete použít stejné definice v těchto prostředích ale použití různých databází. Podobně můžete chtít použít stejné definice v různých oblastech pro vysokou dostupnost, ale má každá instance aplikace logiky ke komunikaci s danou oblast databáze.
-Tento scénář se liší od trvá parametry v *runtime* kde místo toho by měla použít `trigger()` fungovat jako v předchozím příkladu.
-
-Můžete začít s základní definice následujícím způsobem:
-
-```
-{
-    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "uri": {
-            "type": "string"
-        }
-    },
-    "triggers": {
-        "request": {
-          "type": "request",
-          "kind": "http"
-        }
-    },
-    "actions": {
-        "readData": {
-            "type": "Http",
-            "inputs": {
-                "method": "GET",
-                "uri": "@parameters('uri')"
-            }
-        }
-    },
-    "outputs": {}
-}
-```
-
-V skutečnou `PUT` požadavku pro logic apps, můžete zadat parametr `uri`. Protože výchozí hodnota už existuje, datové části aplikace logiky vyžaduje tento parametr:
-
-```
-{
-    "properties": {},
-        "definition": {
-          // Use the definition from above here
-        },
-        "parameters": {
-            "connection": {
-                "value": "https://my.connection.that.is.per.enviornment"
-            }
-        }
-    },
-    "location": "westus"
-}
-``` 
-
-V každém prostředí, můžete zadat jinou hodnotu pro `connection` parametr. 
-
-Všechny možnosti, které máte k vytváření a správě aplikací logiky najdete v tématu [dokumentace k REST API](https://msdn.microsoft.com/library/azure/mt643787.aspx). 
+* [Spustit kroky na základě podmínky (podmíněné příkazy)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [Spustit kroky na základě různých hodnot (příkazech switch)](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Spuštění a opakujte kroky (smyčky)](../logic-apps/logic-apps-control-flow-loops.md)
+* [Spuštění nebo sloučení paralelní kroky (větve)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Spustit kroky na základě stavu seskupené akce (oborům)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* Další informace o [jazyk definic workflowů schéma pro Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md)
+* Další informace o [akce pracovního postupu a aktivačních událostí pro Azure Logic Apps](../logic-apps/logic-apps-workflow-actions-triggers.md)

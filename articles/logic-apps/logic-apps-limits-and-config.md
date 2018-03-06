@@ -2,7 +2,7 @@
 title: "Omezení a konfigurace – Azure Logic Apps | Microsoft Docs"
 description: "Služba omezení a hodnoty konfigurace pro Azure Logic Apps"
 services: logic-apps
-documentationcenter: .net,nodejs,java
+documentationcenter: 
 author: jeffhollan
 manager: anneta
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5c4597ede16f01c36e147dc0d70acf4b4f5635e8
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 54a35607e107a09188373cc5f71bb3068b4c6bab
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Omezení aplikace logiky a konfigurace
 
@@ -28,13 +28,13 @@ Tento článek popisuje aktuální omezení a podrobnosti o konfiguraci pro Azur
 
 ### <a name="http-request-limits"></a>Omezení požadavků HTTP
 
-Tato omezení platí pro jeden požadavek HTTP nebo volání konektor.
+Zde jsou limity pro jeden požadavek HTTP nebo volání konektor:
 
 #### <a name="timeout"></a>Vypršení časového limitu
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
-| Časový limit žádosti | 120 sekund | [Asynchronní vzor](../logic-apps/logic-apps-create-api-app.md) nebo [dokud smyčky](logic-apps-loops-and-scopes.md) můžete odpovídajícím způsobem podle potřeby |
+| Časový limit žádosti | 120 sekund | [Asynchronní vzor](../logic-apps/logic-apps-create-api-app.md) nebo [dokud smyčky](logic-apps-control-flow-loops.md) můžete odpovídajícím způsobem podle potřeby | 
 |||| 
 
 #### <a name="message-size"></a>Velikost zpráv
@@ -56,28 +56,21 @@ Tato omezení platí pro jeden požadavek HTTP nebo volání konektor.
 
 ### <a name="run-duration-and-retention"></a>Doba trvání spuštění a jejich uchovávání
 
-Tyto limity platí do jednoho logiku aplikace spustit.
+Zde jsou limity pro spuštění aplikace logiky jeden:
 
-| Název | Výchozí | Omezení |
-| ---- | ------- | ----- |
-| Doba trvání spuštění   | 90 dnů | 7 až 90 dny |
-| Uchování úložiště | čas zahájení 90 dnů od spuštění |  7 až 90 dní od počáteční runtime |
-||||
+| Název | Omezení | 
+| ---- | ----- | 
+| Doba trvání spuštění | 90 dnů | 
+| Uchování úložiště | čas zahájení 90 dnů od spuštění | 
+| Interval opakování min. | 1 sekunda </br>Pro s plán služby App Service logic apps: 15 sekund | 
+| Maximální interval opakování | 500 dnů | 
+||| 
 
-Překročení omezení pro spuštění doba trvání nebo uchovávání úložiště v toku vaší normálním zpracování [obraťte se na tým produktu](mailto://logicappsemail@microsoft.com) získat pomoc s vašim požadavkům.
-
-
-### <a name="recurrence-interval"></a>Interval opakování
-
-| Název | Omezení |
-| ---- | ------- |
-| Interval opakování min. | 1 sekunda </br>Pro s plán služby App Service logic apps: 15 sekund |
-| Maximální interval opakování | 500 dnů |
-|||
+Překročení omezení pro spuštění doba trvání nebo uchovávání úložiště v toku vaší normálním zpracování [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
 
 ### <a name="looping-and-debatching-limits"></a>Ve smyčce a debatching omezení
 
-Tyto limity platí do jednoho logiku aplikace spustit.
+Zde jsou limity pro spuštění aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
@@ -89,22 +82,22 @@ Tyto limity platí do jednoho logiku aplikace spustit.
 
 ### <a name="throughput-limits"></a>Omezení propustnosti
 
-Tato omezení platí pro prostředek jeden logiku aplikace.
+Zde jsou limity pro instanci aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 | ----- | ----- | ----- | 
-| Akce spuštěních za 5 minut | 100,000 |<p>Limit můžete zvýšit než 300 000 spuštěním aplikace logiky v `High Througput` režimu. Režim vysoké propustnosti se dá nakonfigurovat nastavení `operationOptions` vlastnost pod`runtimeConfiguration` prostředku pracovního postupu k `OptimizedForHighThroughput`. <p>Všimněte si, že tento režim vysoké propustnosti je ve verzi preview. Zatížení můžete také distribuována mezi více aplikacemi, podle potřeby. | 
+| Akce spuštěních za 5 minut | 100,000 | Pokud chcete zvýšit limit než 300 000, můžete spustit aplikace logiky `High Througput` režimu. Ke konfiguraci režimu vysoké propustnosti, v části `runtimeConfiguration` prostředku pracovního postupu, nastavte `operationOptions` vlastnost `OptimizedForHighThroughput`. <p>**Poznámka:**: režimu vysoké propustnosti je ve verzi preview. Navíc můžete distribuovat zatížení mezi více aplikacemi v případě potřeby. | 
 | Souběžných volání odchozí akce | ~2,500 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
 | Koncový bod modulu runtime: souběžných příchozí volání |~1,000 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
 | Modul runtime koncový bod: počet volání za 5 minut pro čtení  | 60,000 | Můžete rozdělit zatížení mezi více aplikacemi podle potřeby. | 
 | Koncový bod modulu runtime: vyvolat volání za 5 minut| 45,000 |Můžete rozdělit zatížení mezi více aplikacemi podle potřeby. | 
 |||| 
 
-Překročení těchto mezních hodnot v normálním zpracování nebo spuštění zátěžové testování, které může tato omezení překročí [obraťte se na tým produktu](mailto://logicappsemail@microsoft.com) získat pomoc s vašim požadavkům.
+Překročení těchto mezních hodnot v normálním zpracování nebo spuštění zátěžové testování, které může tato omezení překročí [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
 
 ### <a name="logic-app-definition-limits"></a>Omezení definici aplikace logiky
 
-Tato omezení platí pro definici jeden logiku aplikace.
+Zde jsou limity pro definici aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
@@ -136,7 +129,7 @@ Tato omezení platí pro vlastní konektory, které můžete vytvořit z webový
 
 ### <a name="integration-account-limits"></a>Limity účtu integrace
 
-Tyto limity platí artefakty, pomocí kterých můžete přidat k účtu integrace.
+Tady jsou limity pro artefakty, které můžete přidat k účtu integrace.
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
@@ -155,7 +148,7 @@ Tyto limity platí počtu artefaktů, které můžete přidat k účtu integrace
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
 | Smlouvy | 10 | | 
-| Jiné typy artefaktů | 25 |Typy artefaktů obsahují partnery, schémata, certifikáty a mapy. Každý typ může obsahovat až do maximálního počtu artefaktů. | 
+| Jiné typy artefaktů | 25 | Typy artefaktů obsahují partnery, schémata, certifikáty a mapy. Každý typ může obsahovat až do maximálního počtu artefaktů. | 
 |||| 
 
 #### <a name="standard-pricing-tier"></a>Standardní cenovou úroveň.
@@ -167,7 +160,7 @@ Tyto limity platí počtu artefaktů, které můžete přidat k účtu integrace
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>Velikost zprávy protokoly B2B (AS2, X12, EDIFACT)
 
-Tyto limity platí B2B protokoly.
+Zde jsou omezení, která se týkají B2B protokoly:
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 

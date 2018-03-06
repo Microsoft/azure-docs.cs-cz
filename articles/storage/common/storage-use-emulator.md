@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: tamram
-ms.openlocfilehash: 7d86d5e8547d977c07cfbb0597b74382172a8472
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13aee7bbbe58c0a4183eddc0881aaed8cbebd956
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -43,6 +43,14 @@ Emulátor úložiště se připojí k serveru SQL Server nebo LocalDB pomocí ov
 Existují některé rozdíly ve funkcích mezi emulátor úložiště a služby úložiště Azure. Další informace o tyto rozdíly, najdete v článku [rozdíly mezi emulátor úložiště a Azure Storage](#differences-between-the-storage-emulator-and-azure-storage) později v tomto článku.
 
 ## <a name="start-and-initialize-the-storage-emulator"></a>Spuštění a inicializaci emulátor úložiště
+
+### <a name="run-the-azure-storage-emulator-in-dockerhttpshubdockercomrmicrosoftazure-storage-emulator"></a>[Spusťte emulátor úložiště Azure v Docker](https://hub.docker.com/r/microsoft/azure-storage-emulator/)
+```
+docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 microsoft/azure-storage-emulator
+```
+
+### <a name="using-sdk"></a>Pomocí sady SDK
+
 Spusťte emulátor úložiště Azure:
 1. Vyberte **spustit** tlačítko nebo klikněte na tlačítko **Windows** klíč.
 1. Začněte psát `Azure Storage Emulator`.
@@ -140,9 +148,9 @@ Například následující adresy se dají používat pro přístup k objektu bl
 
 Koncové body služby pro emulátor úložiště jsou:
 
-* Služba objektů blob:`http://127.0.0.1:10000/<account-name>/<resource-path>`
-* Služba front:`http://127.0.0.1:10001/<account-name>/<resource-path>`
-* Služba Table:`http://127.0.0.1:10002/<account-name>/<resource-path>`
+* Služba objektů blob: `http://127.0.0.1:10000/<account-name>/<resource-path>`
+* Služba front: `http://127.0.0.1:10001/<account-name>/<resource-path>`
+* Služba Table: `http://127.0.0.1:10002/<account-name>/<resource-path>`
 
 ### <a name="addressing-the-account-secondary-with-ra-grs"></a>Adresování sekundární s RA-GRS účtu
 Od verze 3.1, emulátor úložiště podporuje geo redundantní replikaci přístup pro čtení (RA-GRS). Pro prostředky úložiště v cloudu a v místní emulátoru, můžete přístup k sekundární umístění pomocí připojování - sekundární k názvu účtu. Například následující adresy se dají používat pro přístup k objektu blob pomocí sekundární jen pro čtení v emulátoru úložiště:
@@ -260,7 +268,7 @@ Konkrétní Queue Storage v emulátoru nejsou žádné rozdíly.
 * Grafické uživatelské rozhraní pro emulátor úložiště je zastaralý považuje Skriptovatelná rozhraní příkazového řádku. Podrobnosti na rozhraní příkazového řádku najdete v tématu odkaz nástroj příkazového řádku emulátoru úložiště. Grafické rozhraní bude i nadále existovat ve verzi 3.0, ale jenom k němu po nainstalování emulátoru výpočetní kliknutím pravým tlačítkem myši na ikonu hlavním panelu a výběrem možnosti zobrazit uživatelské prostředí emulátoru úložiště.
 * Teď je plně podporuje verze 2013-08-15 služeb úložiště Azure. (Dřív byla tato verze pouze podporované v emulátoru úložiště verze 2.2.1 Preview.)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Vyhodnocení emulátor úložiště napříč platformami, udržuje komunitní s otevřeným zdrojem [Azurite](https://github.com/arafato/azurite). 
 * [Ukázek Azure Storage pomocí rozhraní .NET](../storage-samples-dotnet.md) obsahuje odkazy na několik ukázky kódu, můžete použít při vývoji aplikace.

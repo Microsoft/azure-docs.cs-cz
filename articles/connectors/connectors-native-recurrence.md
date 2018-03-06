@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 9384752c7f12074aae6ff165241e954eb2a4a01e
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 0dead955f9eb723dfa232d3ce751498a09ce1b29
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="schedule-tasks-and-workflows-that-run-regularly-with-logic-apps"></a>Plánování úloh a pracovní postupy, které pravidelně spustit s logic apps
+# <a name="create-and-schedule-regularly-running-tasks-with-azure-logic-apps"></a>Vytvoření a naplánovat pravidelné spuštěné úlohy službou Azure Logic Apps
 
 Při plánování úloh, akce, úlohy a procesy, které pravidelně spouštět, můžete vytvořit aplikaci logiky pracovního postupu, který začíná **plán - opakování** [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts). Pomocí této aktivační události můžete nastavit datum a čas pro spuštění opakování a plán opakování pro provádění úloh, jako jsou tyto příklady a další:
 
@@ -34,8 +34,8 @@ Při plánování úloh, akce, úlohy a procesy, které pravidelně spouštět, 
 
 Této aktivační události podporuje mnoho vzory, třeba:
 
-* Spustit okamžitě a opakovat každých  *n*  počet sekund, minut, hodiny, dny, týdny nebo měsíce.
-* Spuštění na určitý čas, pak spusťte a opakovat každých  *n*  počet sekund, minut, hodiny, dny, týdny nebo měsíce.
+* Spustit okamžitě a opakovat každých *n* počet sekund, minut, hodiny, dny, týdny nebo měsíce.
+* Spuštění na určitý čas, pak spusťte a opakovat každých *n* počet sekund, minut, hodiny, dny, týdny nebo měsíce.
 * Spusťte a opakujte na jeden nebo více časy denně, například v 8:00:00 a 17:00:00.
 * Spusťte a opakovat každý týden, ale jenom pro konkrétní dny, jako je například sobota a neděle.
 * Spusťte a opakovat každý týden, ale jenom pro konkrétní dny a časy, jako je například od pondělí do pátku v 8:00:00 a 17:00:00.
@@ -102,14 +102,14 @@ Můžete nakonfigurovat tyto vlastnosti pro aktivační událost opakování.
 | **Interval** | Ano | interval | Integer | Kladné celé číslo, které popisuje, jak často pracovní postup bude spuštěn na základě četnosti. <p>Výchozí interval je 1. Toto jsou minimální a maximální hodnotou: <p>-Měsíc: 1-16 měsíců </br>-Den: 1-500 dnů </br>-Hodina: 1-12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Druhý: 1-9,999,999 sekund<p>Například pokud je interval 6 a frekvenci "Měsíc", pak opakování je každých 6 měsíců. | 
 | **Časové pásmo** | Ne | timeZone | Řetězec | Platí, pouze pokud zadáte počáteční čas protože této aktivační události není přijmout [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. | 
 | **Čas spuštění** | Ne | startTime | Řetězec | Zadejte čas spuštění v tomto formátu: <p>RRRR-MM-ddTHH Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-ddTHH Pokud nevyberete časové pásmo <p>Tak například, pokud chcete 18 září 2017 na 2:00 PM, zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, jako je například Tichomoří (čas). Nebo zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** tento čas zahájení musí následovat [ISO 8601 datum čas specifikace](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) v [formát času UTC datum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, musíte přidat písmeno "Z" bez žádné mezery na konci. Tento "Z" odkazuje na ekvivalent [námořních čas](https://en.wikipedia.org/wiki/Nautical_time). <p>Pro jednoduché plány, čas spuštění je první výskyt, zatímco pro komplexní plány, aktivační událost není fire všechny dřív, než čas spuštění. [*Jaké jsou způsoby, které lze použít počáteční datum a čas?*](#start-time) | 
-| **V těchto dnech** | Ne | weekDays | Řetězec nebo pole řetězců | Pokud zvolíte možnost "Týden", můžete vybrat jeden nebo více dní, kdy chcete spustit pracovní postup: **pondělí**, **úterý**, **středa**, **čtvrtek** , **Pátek**, **sobota**, a **neděle** | 
+| **V tyto dny** | Ne | weekDays | Řetězec nebo pole řetězců | Pokud zvolíte možnost "Týden", můžete vybrat jeden nebo více dní, kdy chcete spustit pracovní postup: **pondělí**, **úterý**, **středa**, **čtvrtek** , **Pátek**, **sobota**, a **neděle** | 
 | **V těchto hodinách** | Ne | hours | Celé číslo nebo číslo pole | Pokud vyberete "Dne" nebo "Týden", můžete vybrat jeden nebo více celých čísel od 0 do 23 jako hodin dne, kdy chcete spustit pracovní postup. <p>Například pokud zadáte "10", "12" a "14", získáte 10 AM, 12 PM a 14: 00 jako značky hodinu. | 
-| **V těchto minut** | Ne | minutes | Celé číslo nebo číslo pole | Pokud vyberete "Dne" nebo "Týden", můžete vybrat jeden nebo více celých čísel od 0 do 59 minut hodina, kdy chcete spustit pracovní postup. <p>Například můžete zadat "30" jako minutu značky a použijeme předchozí příklad hodin dne, získáte 10:30 AM, 12:30:00 a 14:30:00. | 
+| **V těchto minutách** | Ne | minutes | Celé číslo nebo číslo pole | Pokud vyberete "Dne" nebo "Týden", můžete vybrat jeden nebo více celých čísel od 0 do 59 minut hodina, kdy chcete spustit pracovní postup. <p>Například můžete zadat "30" jako minutu značky a použijeme předchozí příklad hodin dne, získáte 10:30 AM, 12:30:00 a 14:30:00. | 
 ||||| 
 
 ## <a name="json-example"></a>Příklad JSON
 
-Tady je definici příklad opakování aktivační události:
+Tady je příklad [definici aktivace opakování](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger):
 
 ``` json
 {

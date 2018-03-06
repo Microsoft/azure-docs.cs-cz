@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: d7b81c12c31fe7de40acca6baa8972e65c306ee0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: acf521bdc15dfab4c7e43081159bc1385768838e
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="manage-databases-in-azure-sql-data-warehouse"></a>Spravovat databáze v Azure SQL Data Warehouse
 SQL Data Warehouse automatizuje mnoho aspektů správy vašich databází. Například škálování výkonu stačí upravit platit pro správnou úroveň výpočetní prostředky a potom umožní provádět všechny operace škálování a škálování zpět SQL Data Warehouse.
@@ -39,8 +39,8 @@ Tento přehled popisuje tyto aspekty správy SQL Data Warehouse.
 ## <a name="management-tools"></a>Nástroje pro správu
 Můžete použít celou řadu nástrojů pro správu databází v SQL Data Warehouse. Jak budete spravovat databáze, budete vyvíjet předvoleb nástroje pro každý typ úlohy, kterou je třeba provést.
 
-### <a name="azure-portal"></a>portál Azure
-[Portál Azure] [ Azure portal] je webový portál, kde můžete vytvářet, aktualizovat a odstranit databáze a monitorovat prostředky v databázi. Tento nástroj je skvělým je, pokud jste právě Začínáme s Azure, Správa malý počet databází datového skladu, nebo třeba rychle něco udělat.
+### <a name="azure-portal"></a>Azure Portal
+[Portál Azure] [ Azure portal] je webový portál, kde můžete vytvářet, aktualizovat a odstranit databáze a monitorovat prostředky v databázi. Tento nástroj je skvělé, pokud jste se právě Začínáme s Azure, Správa malý počet datového skladu databáze, nebo musí rychle něco udělat.
 
 Chcete-li začít používat portál Azure, přečtěte si téma [vytvoření SQL Data Warehouse (portál Azure)][Create a SQL Data Warehouse (Azure portal)].
 
@@ -59,7 +59,7 @@ Zobrazení dynamické správy jsou másla a chléb správy SQL Data Warehouse. T
 
 Abyste mohli začít, najdete v části [připojit a zadávat dotazy pomocí sqlcmd][Connect and query with sqlcmd], a [vytvoření databáze (PowerShell)][Create a database (PowerShell)].
 
-## <a name="scale-compute"></a>Škálování výpočetní kapacity
+## <a name="scale-compute"></a>Škálování výpočetního výkonu
 V SQL Data Warehouse můžete rychle škálovat výkonu out nebo zpět zvýšením nebo snížením výpočetní prostředky procesoru, paměti a šířky pásma vstupně-výstupní operace. Škálování výkonu, všechny, které je potřeba je upravit počet jednotky datového skladu (Dwu) které SQL Data Warehouse přiděluje k vaší databázi. SQL Data Warehouse rychle provede změnu a zpracovává všechny základní změny hardwaru nebo softwaru.
 
 Další informace o škálování Dwu najdete v tématu [škálování výkonu].
@@ -84,10 +84,10 @@ K zachování zabezpečení systému, musí být na výstrahu a chránit proti l
 
 Další informace o správě zabezpečení, přejděte na [Přehled zabezpečení][Security overview].
 
-## <a name="backup-and-restore"></a>Zálohování a obnovení
-Spolehlivé backps vašich dat je nedílnou součást vámi vyžádaných žádné produkční databázi. SQL Data Warehouse zajišťuje dat bezpečné zálohováním automaticky aktivní databáze v pravidelných intervalech. Tyto zálohy umožňují obnovit z scénáře, kde jste poškozená data nebo neúmyslně vyřazen data nebo databáze.  Plán zálohování dat, zásady uchovávání informací a jak obnovit databázi, najdete v části [obnovení ze snímku][Restore from snapshot].
+## <a name="back-up-and-restore"></a>Zálohování a obnovení
+Spolehlivé zálohování dat je nedílnou součást vámi vyžádaných žádné produkční databázi. SQL Data Warehouse zajišťuje dat bezpečné zálohováním automaticky aktivní databáze v pravidelných intervalech. Tyto zálohy umožňují obnovit z scénáře, kde jste poškozená data nebo neúmyslně vyřazen data nebo databáze.  Plán zálohování dat, zásady uchovávání informací a jak obnovit databázi, najdete v části [obnovení ze snímku][Restore from snapshot].
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pomocí funkční databáze návrhu zásad bude bylo snazší spravovat databáze v SQL Data Warehouse. Další informace, přejděte na [přehled vývoje][Development overview].
 
 <!--Image references-->
@@ -100,10 +100,10 @@ Pomocí funkční databáze návrhu zásad bude bylo snazší spravovat databáz
 [Connect and query with sqlcmd]: sql-data-warehouse-get-started-connect-sqlcmd.md
 [Development overview]: sql-data-warehouse-overview-develop.md
 [Monitor your workload using DMVs]: sql-data-warehouse-manage-monitor.md
-[Pause compute]: sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
+[Pause compute]: pause-and-resume-compute-portal.md#pause-compute
 [Restore from snapshot]: sql-data-warehouse-restore-database-overview.md
-[Resume compute]: sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
-[škálování výkonu]: sql-data-warehouse-manage-compute-overview.md#scale-compute
+[Resume compute]: pause-and-resume-compute-portal.md#resume-compute
+[škálování výkonu]: quickstart-scale-compute-portal.md#scale-compute
 [Security overview]: sql-data-warehouse-overview-manage-security.md
 [SQL Data Warehouse Best Practices]: sql-data-warehouse-best-practices.md
 [SQL Data Warehouse system views]: sql-data-warehouse-reference-tsql-system-views.md

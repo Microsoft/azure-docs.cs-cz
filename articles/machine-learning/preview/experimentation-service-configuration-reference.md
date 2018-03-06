@@ -5,16 +5,16 @@ services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
 manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: aaa9705aed59b5cf78100eda9997bb1ca74845b9
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 00e98ff07d144db791fcf074699614f1e664634b
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning experimentování služby konfigurační soubory
 
@@ -29,12 +29,12 @@ Toto jsou příslušné soubory v této složce:
     - \<Spustit název konfigurace > .runconfig
 
 >[!NOTE]
->Obvykle výpočetní cílový soubor a spusťte konfigurační soubor pro každou výpočetní cíl, který vytvoříte. Můžete však vytvářet tyto soubory nezávisle a přejděte na stejný cíl výpočetní více spuštění konfigurační soubory.
+>Obvykle výpočetní cílový soubor a spusťte konfigurační soubor pro každou výpočetní cíl, který vytvoříte. Můžete však tyto soubory vytvořit nezávisle a mít odkazující na stejný cíl výpočetní více spuštění konfigurační soubory.
 
 ## <a name="condadependenciesyml"></a>conda_dependencies.yml
-Tento soubor je [conda prostředí soubor](https://conda.io/docs/using/envs.html#create-environment-file-by-hand) který určuje verzi modulu runtime jazyka Python a balíčky, které váš kód závisí na. Když Azure ML Workbench spustí skript v kontejner Docker nebo clusteru HDInsight, vytvoří [conda prostředí](https://conda.io/docs/using/envs.html) pro spuštění skriptu. 
+Tento soubor je [conda prostředí soubor](https://conda.io/docs/using/envs.html#create-environment-file-by-hand) který určuje verzi modulu runtime jazyka Python a balíčky, které váš kód závisí na. Když Azure ML Workbench spustí skript v kontejner Docker nebo clusteru HDInsight, vytvoří [conda prostředí](https://conda.io/docs/using/envs.html) vašeho skriptu ke spuštění na. 
 
-V tomto souboru zadejte balíčky Python, které potřebuje váš skript pro spuštění. Služba Azure ML experimentování vytvoří conda prostředí v bitové kopii Docker podle seznamu závislosti. Seznamu balíčky musí být dostupný modul provádění. Z tohoto důvodu balíčky muset být uvedené v kanálů, jako například:
+V tomto souboru zadejte balíčky Python, které potřebuje váš skript pro spuštění. Služba Azure ML experimentování vytvoří prostředí conda podle vašeho seznamu závislostí. Balíčky uvedené v tomto poli musí být dostupný modul provádění prostřednictvím kanálů, jako:
 
 * [continuum.io](https://anaconda.org/conda-forge/repo)
 * [PyPI](https://pypi.python.org/pypi)
@@ -43,7 +43,7 @@ V tomto souboru zadejte balíčky Python, které potřebuje váš skript pro spu
 * Další dostupný modul provádění
 
 >[!NOTE]
->Při spuštění v clusteru HDInsight, vytvoří Azure ML Workbench prostředí conda jenom pro vaše práce. To umožňuje různým uživatelům spustit v prostředí různých python ve stejném clusteru.  
+>Při spuštění v clusteru HDInsight, vytvoří Azure ML Workbench conda prostředí pro vaše konkrétní spustit. To umožňuje různým uživatelům spustit v prostředí různých python ve stejném clusteru.  
 
 Tady je příklad typické **conda_dependencies.yml** souboru.
 ```yaml
@@ -68,13 +68,13 @@ dependencies:
      - C:\temp\my_private_python_pkg.whl
 ```
 
-Azure ML Workbench používá stejné conda prostředí bez nutnosti opětovného sestavení tak dlouho, dokud **conda_dependencies.yml** zůstává beze změn. Ale pokud se změní něco v tomto souboru, výsledkem je to opětovné sestavení Docker bitové kopie.
+Azure ML Workbench používá stejné prostředí conda bez opětovného stejně dlouho jako **conda_dependencies.yml** zůstává stejná. Pokud změníte svoje závislosti ho bude znovu sestavit prostředí.
 
 >[!NOTE]
 >Pokud cílíte vůči _místní_ výpočetní kontextu, **conda_dependencies.yml** soubor **není** použít. Závislosti balíčků pro místní prostředí Azure ML Workbench Python je potřeba nainstalovat ručně.
 
 ## <a name="sparkdependenciesyml"></a>spark_dependencies.yml
-Tento soubor Určuje název aplikace Spark při odesílání skript PySpark a Spark balíčky, které musí být nainstalovaný. Můžete také zadat všechny veřejného úložiště Maven, jakož i Spark balíček, který najdete v těchto Maven úložiště.
+Tento soubor Určuje název aplikace Spark při odesílání skript PySpark a Spark balíčky, které je potřeba nainstalovat. Můžete také zadat veřejného úložiště Maven, jakož i Spark balíčky, které najdete v těchto Maven úložiště.
 
 Zde naleznete příklad:
 
@@ -103,13 +103,13 @@ packages:
 ```
 
 >[!NOTE]
->Cluster vyladění parametry, jako je například velikost pracovního procesu, jádra by měli přejít do části "konfigurace" v souboru spark_dependecies.yml 
+>Ladění parametry, jako je například velikost pracovního procesu a jader clusteru by měli přejít do části "konfigurace" v souboru spark_dependecies.yml 
 
 >[!NOTE]
->Pokud jsou spouštění skriptu v prostředí Python, *spark_dependencies.yml* soubor je ignorován. Pouze nemá vliv, pokud používáte systém proti Spark (buď na Docker nebo clusteru HDInsight).
+>Pokud jsou spouštění skriptu v prostředí Python, *spark_dependencies.yml* soubor je ignorován. Používá se pouze v případě, že používáte proti Spark (buď na Docker nebo clusteru HDInsight).
 
 ## <a name="run-configuration"></a>Spuštění nástroje Konfigurace
-Můžete zadat konkrétní konfiguraci spuštění, je potřeba pár souborů. Obvykle se generují pomocí rozhraní příkazového řádku příkaz. Ale můžete také klonovat těch, které jsou ukončení, je přejmenujte a upravovat.
+Můžete zadat konkrétní konfiguraci spuštění, budete potřebovat soubor .compute a soubor .runconfig. Tyto jsou obvykle generovány pomocí rozhraní příkazového řádku příkaz. Můžete také klonovat těch, které jsou ukončení, je přejmenujte a upravit je.
 
 ```azurecli
 # create a compute target pointing to a VM via SSH
@@ -125,10 +125,11 @@ Tento příkaz vytvoří dvojici soubory podle zadaným cílem výpočetní. Ře
 > _místní_ nebo _docker_ názvy pro spuštění konfigurační soubory, které jsou libovolný. Azure ML Workbench přidá že tyto dva spustit konfigurace při vytváření prázdného projektu pro usnadnění vaší práce. Můžete přejmenovat "<run configuration name>.runconfig" soubory, které jsou součástí šablony projektu, nebo vytvořit nové s libovolný název.
 
 ### <a name="compute-target-namecompute"></a>\<výpočetní cílová > .compute
-_\<výpočetní cílová > .compute_ soubor Určuje připojení a informace o konfiguraci pro výpočetní cíl. Je to seznam dvojic název hodnota. Toto jsou podporovaná nastavení.
+_\<výpočetní cílová > .compute_ soubor Určuje připojení a informace o konfiguraci pro výpočetní cíl. Je to seznam dvojic název hodnota. Podporovaná nastavení jsou následující:
 
 **typ**: typ výpočetním prostředí. Podporované hodnoty jsou:
   - místní
+  - Vzdálené
   - Docker
   - remotedocker
   - Cluster
@@ -147,8 +148,10 @@ _\<výpočetní cílová > .compute_ soubor Určuje připojení a informace o ko
 
 **nativeSharedDirectory**: Tato vlastnost určuje základní adresář (třeba: _~/.azureml/share/_) uložení souborů Chcete-li sdílet běží na stejný cíl výpočty. Pokud toto nastavení se používá při spuštění na kontejner Docker _sharedVolumes_ musí být nastavena na hodnotu true. Provádění, jinak selže.
 
+**userManagedEnvironment**: Tato vlastnost určuje, zda je tento cíl výpočetní přímo spravuje uživatele nebo spravovat pomocí služby experimenty.  
+
 ### <a name="run-configuration-namerunconfig"></a>\<Spustit název konfigurace > .runconfig
-_\<Spustit název konfigurace > .runconfig_ určuje Azure ML experimentovat chování při spuštění. Můžete nakonfigurovat chování provádění například sledování historie spouštění nebo co výpočetní cíle použít společně s mnohé další. Názvy spuštění konfigurační soubory, které slouží k naplnění rozevíracího seznamu kontext spuštění v Azure ML Workbench desktopová aplikace.
+_\<Spustit název konfigurace > .runconfig_ určuje Azure ML experimentovat chování při spuštění. Můžete nakonfigurovat chování při spuštění například sledování historie spouštění nebo co výpočetní cíle použít společně s mnohé další. Názvy spuštění konfigurační soubory, které slouží k naplnění rozevíracího seznamu kontext spuštění v Azure ML Workbench desktopová aplikace.
 
 **ArgumentVector**: v této části Určuje skript, který chcete spustit v rámci provedení tohoto a parametry pro skript. Například pokud máte následující fragment kódu ve vašem "<run configuration name>.runconfig" soubor 
 
@@ -170,7 +173,7 @@ EnvironmentVariables:
   "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
-Tyto proměnné prostředí jsou přístupné v kódu uživatele. Například tento kód phyton vytiskne proměnnou prostředí s názvem "EXAMPLE_ENV_VAR"
+Tyto proměnné prostředí jsou přístupné v kódu uživatele. Například tento kód Python vytiskne proměnnou prostředí s názvem "EXAMPLE_ENV_VAR"
 ```
 print(os.environ.get("EXAMPLE_ENV_VAR1"))
 ```

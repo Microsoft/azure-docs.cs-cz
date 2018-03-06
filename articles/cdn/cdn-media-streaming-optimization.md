@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 3c42f54a99a85377ebe4df6959237f906d37591b
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c953baad9ca5def916800e6abe7032b4572def5a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="media-streaming-optimization-via-azure-cdn"></a>Optimalizace prostřednictvím Azure CDN streamování médií 
  
@@ -28,13 +28,13 @@ Použití vysokým rozlišením video roste na Internetu, které vytvoří probl
 
 Vzory požadavku streamování také poskytují další výzvy. Po vydání oblíbených živý datový proud nebo nové řady pro video na vyžádání, tisíc na miliony prohlížeče si mohou vyžádat datového proudu ve stejnou dobu. V takovém případě je důležité při prostředky neukládají do mezipaměti ještě není zahlcovat servery počátek konsolidace inteligentní žádostí.
  
-Azure Content Delivery Network společnosti Akamai teď nabízí funkce, která poskytuje prostředky ke streamování médií efektivně uživatelům po celém světě ve velkém měřítku. Funkci snižuje latenci, protože snižuje zatížení serverů původu. Tato funkce je k dispozici s Akamai Standard cenová úroveň. 
+**Azure CDN společnosti Akamai** nabízí funkce, která poskytuje prostředky ke streamování médií efektivně uživatelům po celém světě ve velkém měřítku. Funkci snižuje latenci, protože snižuje zatížení serverů původu. Tato funkce je k dispozici s Akamai standard cenová úroveň. 
 
-Azure Content Delivery Network od společnosti Verizon dodává přímo v daný typ doručení optimalizace obecné webové mediálních datových proudů.
+**Azure CDN společnosti Verizon** doručí streamování médií přímo v daný typ doručení optimalizace obecné web.
  
-## <a name="configure-an-endpoint-to-optimize-media-streaming-in-the-azure-content-delivery-network-from-akamai"></a>Konfigurace koncového bodu za účelem optimalizace streamování v Azure Content Delivery Network společnosti Akamai médií
+## <a name="configure-an-endpoint-to-optimize-media-streaming"></a>Konfigurace koncového bodu za účelem optimalizace streamování médií
  
-Můžete nakonfigurovat váš koncový bod sítě (CDN) doručování obsahu za účelem optimalizace doručování velkých souborů prostřednictvím portálu Azure. K tomu můžete také použít rozhraní API REST nebo některého z klienta sady SDK. Následující kroky ukazují proces prostřednictvím portálu Azure:
+Můžete nakonfigurovat váš koncový bod sítě (CDN) doručování obsahu za účelem optimalizace doručování velkých souborů prostřednictvím portálu Azure. K tomu můžete také použít rozhraní REST API nebo některou z klienta sady SDK. Následující kroky ukazují proces prostřednictvím portálu Azure **Azure CDN společnosti Akamai** profil:
 
 1. Chcete-li přidat nový koncový bod na **profil CDN** vyberte **koncový bod**.
   
@@ -46,16 +46,15 @@ Můžete nakonfigurovat váš koncový bod sítě (CDN) doručování obsahu za 
  
 Po vytvoření koncového bodu, bude se vztahovat optimalizace pro všechny soubory, které splňují určitá kritéria. Následující část popisuje tento proces. 
  
-## <a name="media-streaming-optimizations-for-the-azure-content-delivery-network-from-akamai"></a>Optimalizace pro Azure Content Delivery Network společnosti Akamai streamování médií
+## <a name="media-streaming-optimizations-for-azure-cdn-from-akamai"></a>Optimalizace pro Azure CDN společnosti Akamai streamování médií
  
-Médium, které za provozu je platná pro streamování optimalizace společnosti Akamai nebo na vyžádání video-on-demand streamování média, které používá jednotlivých média fragmenty pro doručení. Tento proces se liší od jednoho velkého asset přenést přes progresivní stahování nebo pomocí žádosti o rozsah bajtů. Informace v tomto styl doručování médií najdete v tématu [velkých souborů optimalizace](cdn-large-file-optimization.md).
-
+Optimalizace pro streamování médií **Azure CDN společnosti Akamai** je platná pro živé streamování na vyžádání video-on-demand média, které používá fragmenty jednotlivých média pro doručení nebo. Tento proces se liší od jednoho velkého asset přenést přes progresivní stahování nebo pomocí žádosti o rozsah bajtů. Informace v tomto styl doručování médií najdete v tématu [velkých souborů optimalizace](cdn-large-file-optimization.md).
 
 Obecné doručení nebo na vyžádání video-on-demand média doručení optimalizace typy médií používají název CDN s back-end optimalizace pro doručování média prostředky rychlejší. Také používají konfigurace pro média prostředky na základě osvědčených postupů se naučili v čase.
 
-### <a name="caching"></a>Mezipaměť
+### <a name="caching"></a>Ukládání do mezipaměti
 
-Pokud Azure Content Delivery Network společnosti Akamai zjistí, že je asset streamování manifest nebo fragment, používá ukládání do mezipaměti vypršení platnosti odděleně od obecné webové doručení. (Viz úplný seznam v následující tabulce.) Jako vždy jsou dodržení cache-control nebo Expires hlavičky odeslaných z tohoto počátku. Pokud prostředku není asset média, se ukládá do mezipaměti pomocí dobu vypršení platnosti pro obecné webové přenosy.
+Pokud **Azure CDN společnosti Akamai** zjistí, že je asset streamování manifest nebo fragment, používá ukládání do mezipaměti vypršení platnosti odděleně od obecné webové doručení. (Viz úplný seznam v následující tabulce.) Jako vždy jsou dodržení cache-control nebo Expires hlavičky odeslaných z tohoto počátku. Pokud prostředku není asset média, se ukládá do mezipaměti pomocí dobu vypršení platnosti pro obecné webové přenosy.
 
 Krátký záporný čas ukládání do mezipaměti je užitečné pro přesměrování zpracování počátku, když mnoho uživatelů požaduje fragment, která ještě neexistuje. Příkladem je živý datový proud, kde pakety nejsou k dispozici z tohoto počátku této sekundu. Již ukládání do mezipaměti interval také pomáhá přesměrovat zpracování požadavky z tohoto počátku, protože obsahu videa se obvykle nemění.
  
@@ -63,11 +62,11 @@ Krátký záporný čas ukládání do mezipaměti je užitečné pro přesměro
 |   | Obecné doručování webu | Streamování obecných médií | Streamování videa na přání médií  
 --- | --- | --- | ---
 Ukládání do mezipaměti: kladné <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |365 dnů | 365 dnů   
-Ukládání do mezipaměti: záporná <br> HTTP 204, 305, 404, <br> a 405 | Žádná | 1 sekunda | 1 sekunda
+Ukládání do mezipaměti: záporná <br> HTTP 204, 305, 404, <br> a 405 | Žádné | 1 sekunda | 1 sekunda
  
 ### <a name="deal-with-origin-failure"></a>Řešení s chybou počátek  
 
-Obecné média doručení a doručování média na vyžádání video-on-demand také mají původ časový limit a protokolu opakování podle osvědčené postupy pro vzory typické požadavku. Protože je doručení obecné média pro za provozu a doručování média na vyžádání video-on-demand, používá kratší časový limit připojení vzhledem k povaze dobou živé například streamování.
+Obecné média doručení a doručování média na vyžádání video-on-demand také mají původ vypršení časových limitů a protokolu opakování podle osvědčené postupy pro vzory typické požadavku. Protože je doručení obecné média pro za provozu a doručování média na vyžádání video-on-demand, používá kratší časový limit připojení vzhledem k povaze dobou živé například streamování.
 
 Pokud vyprší časový limit připojení, CDN opakuje několikrát, než odešle "504 – časový limit brány" Chyba do klienta. 
 
@@ -82,13 +81,13 @@ Podporované typy datových proudů | Přípony souborů
 Apple HLS | m3u8, m3u, m3ub, klíč, ts, aac
 Adobe HDS | f4m, f4x, drmmeta, bootstrap, f4f,<br>Adresa URL KŘEH seg – struktura <br> (odpovídající regulární výraz: ^(/.*)Seq(\d+)-Frag(\d+)
 POMLČKA | MPD, dash, divx, ismv, m4s, m4v, mp4, mp4v, <br> sidx, WBEM, mp4a, m4a, isma
-Technologie Smooth streaming | / manifest /, fragmenty/QualityLevels / /
+Technologie Smooth streaming | / manifest /, /QualityLevels/fragmenty /
   
 
  
-## <a name="media-streaming-optimizations-for-the-azure-content-delivery-network-from-verizon"></a>Optimalizace pro Azure Content Delivery Network od společnosti Verizon streamování médií
+## <a name="media-streaming-optimizations-for-azure-cdn-from-verizon"></a>Optimalizace pro Azure CDN společnosti Verizon streamování médií
 
-Azure Content Delivery Network od společnosti Verizon přináší přímo pomocí daný typ doručení optimalizace obecné webové prostředky streamování médií. Několik funkcí v CDN přímo pomáhají doručovat média prostředky ve výchozím nastavení.
+**Azure CDN společnosti Verizon** doručí streamování médií prostředky přímo pomocí typu obecné webové doručení optimalizace. Několik funkcí v CDN přímo pomáhají doručovat média prostředky ve výchozím nastavení.
 
 ### <a name="partial-cache-sharing"></a>Sdílení částečné mezipaměti
 

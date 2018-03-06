@@ -12,17 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 03/01/2018
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: 793f35bfd2e5e6b22e0804f01a69c0c20990d211
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: edc9a870257536235c2bef139dc4d1ead7dd7a8f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Nastavení kompletní obměny klíčů a auditování ve službě Azure Key Vault
 ## <a name="introduction"></a>Úvod
 Po vytvoření trezoru klíčů, budete moct začít používat tento trezor k ukládání klíčů a tajných klíčů. Aplikace už nutné k uchování klíčů nebo tajných klíčů, ale spíše bude o ně požádat z trezoru klíčů podle potřeby. To umožňuje aktualizovat klíče a tajné klíče, aniž by to ovlivnilo chování vaší aplikace, což otevře a široké možnosti kolem vašeho klíče a tajné správy.
+
+>[!IMPORTANT]
+> V příkladech v tomto článku jsou uvedené pro pouze pro účely obrázku. Nejsou určeny pro použití v provozním prostředí. 
 
 Tento článek vás provede příklad použití Azure Key Vault pro uložení tajný klíč, v tomto případě klíčem účtu úložiště Azure, který přistupuje aplikaci. Také ukazuje implementaci naplánované oběh tento klíč účtu úložiště. Nakonec provede procesem ukázka sledování protokolů auditu trezoru klíčů a vyvolat výstrahy, když jsou vytvářeny neočekávané požadavky.
 

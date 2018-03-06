@@ -5,6 +5,7 @@
 ## [Porovnání Azure Data Lake Store se službou Azure Storage](data-lake-store-comparison-with-blob-storage.md)
 ## [Azure Data Lake Store pro zpracování velkého objemu dat](data-lake-store-data-scenarios.md)
 ## [Open source aplikace využívající Azure Data Lake Store](data-lake-store-compatible-oss-other-applications.md)
+## [Osvědčené postupy při používání Data Lake Store](data-lake-store-best-practices.md)
 
 # Začínáme
 ## [Pomocí portálu](data-lake-store-get-started-portal.md)

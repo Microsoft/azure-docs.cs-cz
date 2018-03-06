@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: e6eacdb437d28eb733da522280cb2c7d8c24d9ba
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8efc0bff4764a7265a5f1bcdd995979af0b22234
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Vytvoření, změnit nebo odstranit veřejnou IP adresu
 
@@ -29,21 +29,20 @@ Další informace o veřejné IP adresy a jak vytvářet, měnit a odstraňovat 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Před dokončením všech kroků v žádné části tohoto článku dokončete následující úlohy:
+Před dokončením kroků v žádné části tohoto článku dokončete následující úlohy:
 
-- Zkontrolujte [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) článku se dozvíte o omezeních pro veřejné IP adresy.
-- Přihlaste se k Azure [portál](https://portal.azure.com), rozhraní příkazového řádku Azure (CLI) nebo Azure PowerShell s účet Azure. Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku [instalace a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Ujistěte se, že máte nejnovější verzi rutin prostředí Azure PowerShell nainstalovaný. Chcete-li získat nápovědu pro příkazy prostředí PowerShell s příklady, zadejte `get-help <command> -full`.
-- Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku [instalace a konfigurace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Zajistěte, že abyste měli nejnovější verzi rozhraní příkazového řádku Azure, který je nainstalovaný. Chcete-li získat nápovědu pro příkazy rozhraní příkazového řádku, zadejte `az <command> --help`. Místo instalace rozhraní příkazového řádku a jeho požadavky, můžete použít prostředí cloudové služby Azure. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. Chcete-li použít cloudové prostředí, klikněte na tlačítko prostředí cloudu **> _** tlačítka v horní části [portál](https://portal.azure.com).
+- Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
+- Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí účtu Azure.
+- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` najít nainstalovanou verzi. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.26 nebo novější. Spustit `az --version` najít nainstalovanou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
 
 Veřejné IP adresy mají nominální poplatků. Zobrazit cenách, přečtěte si téma [IP adresu ceny](https://azure.microsoft.com/pricing/details/ip-addresses) stránky. 
 
 ## <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je přiřazený (minimálně) oprávnění pro roli Přispěvatel sítě pro vaše předplatné. Pro čtení [předdefinované role pro řízení přístupu Azure na základě rolí](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) článku Další informace o přiřazování rolí a oprávnění k účtům.
-2. Do pole, která obsahuje text *vyhledávání prostředků* v horní části portálu Azure, zadejte *veřejnou ip adresu*. Když **veřejné IP adresy** se zobrazí ve výsledcích hledání klikněte na něj.
-3. Klikněte na tlačítko **+ přidat** v **veřejnou IP adresu** okno, které se zobrazí.
-4. Zadejte nebo vyberte hodnoty pro následující nastavení v **vytvoření veřejné IP adresy** okno, které se zobrazí, pak klikněte na tlačítko **vytvořit**:
+1. Do pole, která obsahuje text *vyhledávání prostředků* v horní části portálu Azure, zadejte *veřejnou ip adresu*. Když **veřejné IP adresy** se zobrazí ve výsledcích hledání klikněte na něj.
+2. Klikněte na tlačítko **+ přidat** v **veřejnou IP adresu** okno, které se zobrazí.
+3. Zadejte nebo vyberte hodnoty pro následující nastavení v **vytvoření veřejné IP adresy** okno, které se zobrazí, pak klikněte na tlačítko **vytvořit**:
 
     |Nastavení|Povinné?|Podrobnosti|
     |---|---|---|
@@ -73,10 +72,9 @@ Když na portál poskytuje možnost vytvořit dva veřejné IP adresy prostředk
 
 ## <a name="view-change-settings-for-or-delete-a-public-ip-address"></a>Zobrazení, změňte nastavení pro nebo odstranit veřejnou IP adresu
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je přiřazený (minimálně) oprávnění pro roli Přispěvatel sítě pro vaše předplatné. Pro čtení [předdefinované role pro řízení přístupu Azure na základě rolí](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) článku Další informace o přiřazování rolí a oprávnění k účtům.
-2. Do pole, která obsahuje text *vyhledávání prostředků* v horní části portálu Azure, zadejte *veřejnou ip adresu*. Když **veřejné IP adresy** se zobrazí ve výsledcích hledání klikněte na něj.
-3. V **veřejné IP adresy** okno, které se zobrazí, klikněte na název veřejné IP adresy, které chcete zobrazit, změnit nastavení nebo odstranit.
-4. V zobrazeném okně pro veřejnou IP adresu dokončete jeden z následujících možností podle toho, jestli chcete zobrazit, odstranit nebo změnit veřejnou IP adresu.
+1. Do pole, která obsahuje text *vyhledávání prostředků* v horní části portálu Azure, zadejte *veřejnou ip adresu*. Když **veřejné IP adresy** se zobrazí ve výsledcích hledání klikněte na něj.
+2. V **veřejné IP adresy** okno, které se zobrazí, klikněte na název veřejné IP adresy, které chcete zobrazit, změnit nastavení nebo odstranit.
+3. V zobrazeném okně pro veřejnou IP adresu dokončete jeden z následujících možností podle toho, jestli chcete zobrazit, odstranit nebo změnit veřejnou IP adresu.
     - **Zobrazení**: **přehled** části okna se zobrazí nastavení klíče pro veřejnou IP adresu, například síťové rozhraní je přidružená (Pokud je adresa přidružená k síťovému rozhraní). Na portálu nezobrazí verze adresy (IPv4 nebo IPv6). Chcete-li zobrazit informace o verzi, použijte příkaz prostředí PowerShell nebo rozhraní příkazového řádku zobrazíte veřejnou IP adresu. Pokud verze IP adresy IPv6, se nezobrazí přiřazenou adresu, na portálu, prostředí PowerShell nebo rozhraní příkazového řádku. 
     - **Odstranit**: Chcete-li odstranit veřejnou IP adresu, klikněte na tlačítko **odstranit** v **přehled** části okna. Pokud je aktuálně přidružené ke konfiguraci IP adresa, nelze jej odstranit. Pokud je adresa aktuálně přidružen ke konfiguraci, klikněte na tlačítko **zrušte aktuální přidružení** zrušení přidružení z konfigurace IP adresu.
     - **Změna**: klikněte na tlačítko **konfigurace**. Změňte nastavení pomocí informací v kroku 4 [vytvoření veřejné IP adresy](#create-a-public-ip-address) tohoto článku. Pokud chcete změnit přiřazení pro adresu IPv4 ze statické na dynamickou, musíte nejprve zrušit přidružení na veřejnou IPv4 adresu z konfigurace protokolu IP, které je přidružené k. Potom můžete změnit metodu přiřazení pro dynamické a klikněte na tlačítko **přidružit** přidružit IP adresu, na stejnou konfiguraci IP, jinou konfiguraci nebo můžete nechat ji zrušit její přidružení. Chcete-li oddělit veřejnou IP adresu, v **přehled** klikněte na tlačítko **zrušte aktuální přidružení**.
@@ -98,16 +96,12 @@ Když na portál poskytuje možnost vytvořit dva veřejné IP adresy prostředk
 
 Před vytvořením standardní SKU veřejné IP adresy, nejprve je nutné zaregistrovat verzi Preview. Pomocí následujících kroků k registraci ve verzi Preview:
 
-1. Instalace a konfigurace Azure [prostředí PowerShell](/powershell/azure/install-azurerm-ps).
-2. Spustit `Get-Module -ListAvailable AzureRM` příkazu zobrazte, jaká verze modulu AzureRM jste nainstalovali. Musí mít verzi 4.4.0 nebo vyšší. Pokud ho použít nechcete, můžete nainstalovat nejnovější verzi [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureRM).
-3. Přihlaste se k Azure pomocí `login-azurermaccount` příkaz.
-4. Zadejte následující příkaz pro registraci ve verzi Preview:
+1. Z prostředí PowerShell zadejte následující příkaz pro registraci ve verzi Preview:
    
     ```powershell
     Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
     ```
-
-5. Potvrďte, že jste zaregistrováni ve verzi preview tak, že zadáte následující příkaz:
+2. Potvrďte, že jste zaregistrováni ve verzi preview tak, že zadáte následující příkaz:
 
     ```powershell
     Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
