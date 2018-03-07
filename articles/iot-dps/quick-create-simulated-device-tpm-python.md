@@ -12,13 +12,13 @@ documentationcenter:
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: df23b97b736a1d8e471fc8d32d056b9d80ad245a
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 9a370e12bb948a184149dd3f398ed8d1f5b9ab11
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/23/2018
 ---
-# <a name="create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady Java SDK pro zařízení pro službu IoT Hub Device Provisioning
+# <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady Python SDK pro zařízení pro službu IoT Hub Device Provisioning
 > [!div class="op_single_selector"]
 > * [C](quick-create-simulated-device.md)
 > * [Java](quick-create-simulated-device-tpm-java.md)

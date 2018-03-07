@@ -1,27 +1,34 @@
 ---
-title: "Odhad útraty pomocí služby Azure Cost Management | Microsoft Docs"
-description: "Odhad útraty na základě historických dat o využití a výdajích"
+title: "Kurz – Odhad útraty pomocí služby Azure Cost Management | Microsoft Docs"
+description: "V tomto kurzu zjistíte, jak odhadnout útratu na základě historických dat o využití a výdajích."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 03624efc419efe46aef472007b438442ce22eb9c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 35142cb40560db848c71da266bbaa1881f12e15d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="forecast-future-spending"></a>Odhad budoucí útraty
+# <a name="tutorial-forecast-future-spending"></a>Kurz: Odhad budoucí útraty
 
 Azure Cost Management od Cloudynu pomáhá odhadovat budoucí útratu na základě historických údajů o využití a nákladech. Sestavy Cloudynu můžete využít k zobrazení všech dat odhadu nákladů. Příklady v tomto kurzu vás provedou kontrolou odhadu nákladů s využitím sestav. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Odhad budoucí útraty
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+## <a name="prerequisites"></a>Požadavky
+
+- Musíte mít účet Azure.
+- Musíte mít zaregistrovanou zkušební verzi nebo placené předplatné služby Azure Cost Management.
 
 ## <a name="forecast-future-spending"></a>Odhad budoucí útraty
 

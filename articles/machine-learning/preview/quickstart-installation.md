@@ -1,176 +1,211 @@
 ---
 title: "Stručný průvodce instalací služeb Azure Machine Learning | Dokumentace Microsoftu"
-description: "V tomto stručném průvodci se dozvíte, jak vytvořit prostředky služby Azure Machine Learning a nainstalovat aplikaci Azure Machine Learning Workbench."
+description: "V tomto rychlém startu se dozvíte, jak vytvořit prostředky služby Azure Machine Learning a jak nainstalovat aplikaci Azure Machine Learning Workbench a začít s ní pracovat."
 services: machine-learning
 author: hning86
-ms.author: haining, raymondl, chhavib
+ms.author: haining, raymondl, chhavib, j-martens
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/13/2017
-ms.openlocfilehash: 1f25e6daa7378be4463bb0322cd702163dff5c3f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 2/22/2018
+ms.openlocfilehash: 186a7b5632c1680e80e087e8f855eaacf3448207
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>Vytvoření účtů služby Azure Machine Learning verze Preview a instalace aplikace Azure Machine Learning Workbench
+# <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>Rychlý start: Instalace služeb Azure Machine Learning a začátek práce s nimi
 Služby Azure Machine Learning (Preview) představují komplexní integrované řešení pro datové vědy a pokročilé analýzy. Pomáhá profesionálním datovým vědcům připravovat data, vyvíjet experimenty a nasazovat modely na úrovni cloudu.
 
-V tomto kurzu Rychlý start se dozvíte, jak ve službě Azure Machine Learning verze Preview vytvořit účty služeb Experimentování a Správa modelů. Také se dozvíte, jak nainstalovat desktopovou aplikaci Azure Machine Learning Workbench a nástroje příkazového řádku. Potom přejdete na stručný přehled funkcí služby Azure Machine Learning verze Preview, ve kterém pomocí nadčasové [datové sady Iris](https://en.wikipedia.org/wiki/iris_flower_data_set) vytvoříte model pro předpověď typu dat Iris na základě některých fyzických charakteristik.  
+V tomto rychlém startu se naučíte:
+
+* Vytvoření účtů služeb pro služby Azure Machine Learning
+* Instalace a přihlášení do aplikace Azure Machine Learning Workbench
+* Vytvoření projektu v aplikaci Workbench
+* Spuštění skriptu v tomto projektu  
+* Přístup k rozhraní příkazového řádku
+
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+<a name="prerequisites"></a>Aplikaci Azure Machine Learning Workbench můžete nainstalovat v následujících operačních systémech:
+- Windows 10 nebo Windows Server 2016
+- macOS Sierra nebo High Sierra
 
-V současné době můžete desktopovou aplikaci Azure Machine Learning Workbench nainstalovat jenom v následujících operačních systémech: 
-- Windows 10
-- Windows Server 2016
-- macOS Sierra
-- macOS High Sierra
+## <a name="create-azure-machine-learning-services-accounts"></a>Vytvoření účtů služeb Azure Machine Learning
+Ke zřízení účtů služeb Azure Machine Learning použijte web Azure Portal: 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů předplatného Azure, které budete používat. Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+   ![Azure Portal](media/quickstart-installation/portal-dashboard.png)
 
-## <a name="create-azure-machine-learning-accounts"></a>Vytvoření účtů služby Azure Machine Learning
-Ke zřízení účtů služby Azure Machine Learning použijte web Azure Portal: 
 1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
 
-2. Do panelu vyhledávání zadejte **Machine Learning**. Vyberte výsledek hledání s názvem **Experimentování ve službě Machine Learning (Preview)**.  Kliknutím na ikonu hvězdičky zařaďte tuto volbu mezi oblíbené položky na webu Azure Portal.
+   ![Vytvořit prostředek na webu Azure Portal](media/quickstart-installation/portal-create-a-resource.png)
+
+1. Do panelu vyhledávání zadejte **Machine Learning**. Vyberte výsledek hledání s názvem **Experimentování ve službě Machine Learning**. 
 
    ![Vyhledání služby Azure Machine Learning](media/quickstart-installation/portal-more-services.png)
 
-3. Vyberte **+ Přidat** a nakonfigurujte nový účet služby Experimentování ve službě Machine Learning. Otevře se podrobný formulář.
+1. V podokně **Experimentování ve službě Machine Learning** se posuňte dolů, vyberte **Vytvořit** a začněte definovat svůj účet Experimentování.  
 
-   ![Účet služby Experimentování ve službě Machine Learning](media/quickstart-installation/portal-create-experimentation.png)
+   ![Azure Machine Learning – vytvoření účtu Experimentování](media/quickstart-installation/portal-create-account.png)
 
-4. Do formuláře služby Experimentování ve službě Azure Machine Learning zadejte následující informace:
+1. V podokně **Experimentování v ML** nakonfigurujte svůj účet Experimentování ve službě Machine Learning. 
 
-   Nastavení|Navrhovaná hodnota|Popis
+   Nastavení|Navrhovaná hodnota pro tento kurz|Popis
    ---|---|---
-   Název účtu služby Experimentování | _Jedinečný název_ |Vyberte jedinečný název, který identifikuje váš účet. Můžete použít své jméno nebo třeba název oddělení nebo projektu, který experiment nejlépe identifikuje. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). 
+   Název účtu služby Experimentování | _Jedinečný název_ |Zadejte jedinečný název, který identifikuje váš účet. Můžete použít své jméno nebo třeba název oddělení nebo projektu, který experiment nejlépe identifikuje. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). 
    Předplatné | _Vaše předplatné_ |Zvolte předplatné Azure, které chcete pro experiment použít. Pokud máte více předplatných, zvolte odpovídající předplatné, ve kterém se prostředek účtuje.
-   Skupina prostředků | _Vaše skupina prostředků_ | Můžete vytvořit nový název skupiny prostředků nebo použít název některé ze stávajících skupin prostředků ve vašem předplatném.
+   Skupina prostředků | _Vaše skupina prostředků_ | Použijte existující skupinu prostředků ve vašem předplatném nebo zadejte název a vytvořte pro tento účet Experimentování novou skupinu prostředků. 
    Umístění | _Oblast nejbližší vašim uživatelům_ | Zvolte umístění co nejblíže vašim uživatelům a datovým prostředkům.
-   Počet licencí | 2 | Zadejte počet licencí. Tato volba ovlivňuje [ceny](https://azure.microsoft.com/pricing/details/machine-learning/). První dvě licence jsou zdarma. Pro účely tohoto stručného průvodce jsou potřebné dvě licence. Počet licencí můžete později podle potřeby aktualizovat na portálu Azure.
-   Účet úložiště | _Jedinečný název_ | Vyberte **Vytvořit nový** a zadejte název pro vytvoření účtu úložiště Azure. Nebo vyberte **Použít existující** a z rozevíracího seznamu vyberte existující účet úložiště. Účet úložiště je povinný a slouží k ukládání artefaktů projektu a dat historie spuštění. 
-   Účet aplikace Workspace pro experimentování | _Jedinečný název_ | Zadejte název nového pracovního prostoru. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-).
+   Počet licencí | 2 | Zadejte počet licencí. Informace o tom, jak [licence ovlivňují ceny](https://azure.microsoft.com/pricing/details/machine-learning/).<br/><br/>Pro účely tohoto rychlého startu potřebujete jenom dvě licence. Licence je možné podle potřeby přidávat nebo odebírat na webu Azure Portal.
+   Účet úložiště | _Jedinečný název_ | Vyberte **Vytvořit nový** a zadejte název pro vytvoření [účtu úložiště Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal). Nebo vyberte **Použít existující** a z rozevíracího seznamu vyberte existující účet úložiště. Účet úložiště je povinný a slouží k ukládání artefaktů projektu a dat historie spuštění. 
+   Účet aplikace Workspace pro experimentování | IrisGarden | Zadejte název pracovního prostoru pro tento účet. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
    Přiřazení vlastníka pracovního prostoru | _Váš účet_ | Jako vlastníka pracovního prostoru vyberte svůj vlastní účet.
-   Vytvoření účtu služby Správa modelů | *zaškrtnutí* | V rámci uživatelského prostředí při vytváření účtu služby Experimentování máte možnost vytvořit také účet služby Správa modelů ve službě Machine Learning. Tento prostředek využijete, až budete připraveni nasadit a spravovat své modely jako webové služby v reálném čase. Doporučujeme vytvořit služby Správa modelů zároveň s účtem služby Experimentování.
+   Vytvoření účtu služby Správa modelů | **zaškrtnutí** |Vytvořte účet služby Správa modelů už teď, aby byl tento prostředek k dispozici, až budete chtít nasadit a spravovat své modely jako webové služby fungující v reálném čase. <br/><br/>I když je to volitelné, doporučujeme vytvořit účet služby Správa modelů zároveň s účtem Experimentování.
    Název účtu | _Jedinečný název_ | Vyberte jedinečný název, který identifikuje váš účet služby Správa modelů. Můžete použít své jméno nebo třeba název oddělení nebo projektu, který experiment nejlépe identifikuje. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). 
    Cenová úroveň služby Správa modelů | **DEVTEST** | Vyberte **Není vybraná žádná cenová úroveň** a určete cenovou úroveň svého nového účtu služby Správa modelů. Z důvodu úspory nákladů vyberte cenovou úroveň **DEVTEST**, pokud je ve vašem předplatném dostupná (omezená dostupnost). Jinak kvůli úspoře nákladů vyberte cenovou úroveň S1. Kliknutím na možnost **Vybrat** uložte volbu cenové úrovně. 
    Připnutí na řídicí panel | _zaškrtnutí_ | Výběrem možnosti **Připnout na řídicí panel** povolíte snadné sledování vašeho účtu služby Experimentování ve službě Machine Learning na úvodní stránce řídicího panelu na webu Azure Portal.
 
-5. Vyberte **Vytvořit** a spusťte proces vytváření.
+   ![Konfigurace účtu Experimentování ve službě Machine Learning](media/quickstart-installation/portal-create-experimentation.png)
 
-6. Pokud chcete monitorovat proces nasazení, klikněte na panelu nástrojů webu Azure Portal na **Oznámení** (ikona zvonku). 
+5. Vyberte **Vytvořit** a zahajte proces vytváření účtu Experimentování společně s účtem služby Správa modelů.
 
-   Zobrazí se oznámení **Probíhá nasazení**. Po dokončení se stav změní na **Nasazení bylo úspěšné**. Po úspěšném nasazení se otevře stránka účtu služby Experimentování ve službě Machine Learning.
+   ![Konfigurace účtu Experimentování ve službě Machine Learning](media/quickstart-installation/portal-create-experimentation-button.png)
+
+   Vytvoření účtu může chvíli trvat. Stav procesu nasazení můžete zkontrolovat kliknutím na zvonek na panelu nástrojů webu Azure Portal.
    
    ![Oznámení portálu Azure Portal](media/quickstart-installation/portal-notification.png)
 
-Teď přejděte do jedné ze dvou částí v závislosti na tom, jaký operační systém používáte v místním počítači, a nainstalujte aplikaci Azure Machine Learning Workbench. 
 
-## <a name="install-azure-machine-learning-workbench-on-windows"></a>Instalace aplikace Azure Machine Learning Workbench ve Windows
-Aplikaci Azure Machine Learning Workbench můžete nainstalovat do počítače se systémem Windows 10, Windows Server 2016 nebo novějším.
+## <a name="install-and-log-in-to-workbench"></a>Instalace a přihlášení do aplikace Workbench
 
-1. Stáhněte si nejnovější verzi instalačního programu aplikace Azure Machine Learning Workbench [AmlWorkbenchSetup.msi](https://aka.ms/azureml-wb-msi).
+Aplikace Azure Machine Learning Workbench je dostupná pro Windows nebo macOS. Viz seznam [podporovaných platforem](#prerequisites).
 
-2. V Průzkumníku souborů dvakrát klikněte na stažený instalační program **AmlWorkbenchSetup.msi**.
+>[!WARNING]
+>Dokončení instalace může trvat přibližně 30 minut. 
 
+1. Stáhněte a spusťte nejnovější instalační program aplikace Workbench. 
    >[!IMPORTANT]
    >Stáhněte celý instalační program na disk a spusťte jej. Nespouštějte jej přímo z widgetu stahování v prohlížeči.
 
-3. Dokončete instalaci podle pokynů na obrazovce.
+   **Ve Windows:** 
 
-   Instalační program stáhne všechny potřebné závislé komponenty, jako je Python, Miniconda a další související knihovny. Instalace všech komponent může trvat přibližně půl hodiny. 
+   &nbsp;&nbsp;&nbsp;&nbsp;A. Stáhněte soubor [AmlWorkbenchSetup.msi](https://aka.ms/azureml-wb-msi).  <br/>
+   &nbsp;&nbsp;&nbsp;&nbsp;B. Dvakrát klikněte na stažený instalační program v Průzkumníku souborů.
 
-4. Aplikace Azure Machine Learning Workbench je teď nainstalovaná v tomto adresáři:
+   **V systému macOS:** 
+
+   &nbsp;&nbsp;&nbsp;&nbsp;A. Stáhněte soubor [AmlWorkbench.dmg](https://aka.ms/azureml-wb-dmg). <br/>
+   &nbsp;&nbsp;&nbsp;&nbsp;B. Dvakrát klikněte na stažený instalační program ve Finderu.<br/><br/>
+
+1. Až do konce postupujte podle pokynů na obrazovce instalačního programu. 
+
+   **Dokončení instalace může trvat přibližně 30 minut.**  
    
-   `C:\Users\<user>\AppData\Local\AmlWorkbench`
+   | |Cesta k instalaci aplikaci Azure Machine Learning Workbench|
+   |--------|------------------------------------------------|
+   |Windows|C:\Users\<uživatel>\AppData\Local\AmlWorkbench|
+   |macOS|/Applications/Azure ML Workbench.app|
 
-## <a name="install-azure-machine-learning-workbench-on-macos"></a>Instalace aplikace Azure Machine Learning Workbench v systému macOS
-Nainstalujte aplikaci Azure Machine Learning Workbench na svém počítači se systémem macOS Sierra nebo novějším.
+   Instalační program stáhne a nastaví všechny potřebné závislosti, jako je Python, Miniconda a další související knihovny.    Tato instalace zahrnuje také nástroj příkazového řádku pro více platforem neboli Azure CLI.
 
-1. Stáhněte si nejnovější verzi instalačního programu aplikace Azure Machine Learning Workbench [AmlWorkbench.dmg](https://aka.ms/azureml-wb-dmg).
+  
+1. Spusťte aplikaci Workbench výběrem tlačítka **Spustit aplikaci Workbench** na poslední obrazovce instalačního programu. 
 
-   >[!IMPORTANT]
-   >Stáhněte celý instalační program na disk a spusťte jej. Nespouštějte jej přímo z widgetu stahování v prohlížeči.
+   Pokud jste instalační program zavřeli, buďte bez obav. 
+   + Ve Windows ji spustíte pomocí zástupce **Machine Learning Workbench** na ploše. 
+   + V systému macOS vyberte **Azure ML Workbench** na hlavním panelu.
 
-2. V aplikaci Finder dvakrát klikněte na stažený instalační program **AmlWorkbench.dmg**.
+1. Na první obrazovce vyberte **Přihlásit se** a proveďte ověření v aplikaci Azure Machine Learning Workbench. Použijte stejné přihlašovací údaje, jako jste použili na webu Azure Portal k vytvoření účtů Experimentování a služby Správa modelů. 
 
-3. Dokončete instalaci podle pokynů na obrazovce.
-
-   Instalační program stáhne všechny potřebné závislé komponenty, jako je Python, Miniconda a další související knihovny. Instalace všech komponent může trvat přibližně půl hodiny. 
-
-4. Aplikace Azure Machine Learning Workbench je teď nainstalovaná v tomto adresáři: 
-
-   `/Applications/Azure ML Workbench.app`
-
-## <a name="run-azure-machine-learning-workbench-to-sign-in-for-the-first-time"></a>Spuštění aplikace Azure Machine Learning Workbench a první přihlášení
-1. Po dokončení procesu instalace vyberte na poslední obrazovce instalačního programu tlačítko pro **spuštění aplikace Workbench**. Pokud jste instalační program zavřeli, na ploše nebo v nabídce **Start** najdete zástupce aplikace Machine Learning Workbench s názvem **Azure Machine Learning Workbench**, pomocí kterého můžete aplikaci spustit.
-
-2. Přihlaste se do aplikace Workbench pomocí stejného účtu, který jste předtím použili ke zřízení prostředků Azure. 
-
-3. Po úspěšném procesu přihlášení se aplikace Workbench pokusí najít účty služby Experimentování ve službě Machine Learning, které jste vytvořili dříve. Prohledá všechna předplatná Azure, ke kterým mají vaše přihlašovací údaje přístup. Po nalezení alespoň jednoho účtu služby Experimentování se aplikace Workbench otevře s tímto účtem. Pak zobrazí seznam pracovních prostorů a projektů, které v tomto účtu našla. 
+   Jakmile budete přihlášeni, aplikace Workbench použije první účet Experimentování, který najde ve vašich předplatných Azure.  Aplikace Workbench použije první účet Experimentování, který najde, a zobrazí všechny pracovní prostory a projekty přidružené k tomuto účtu. 
 
    >[!TIP]
-   > Pokud máte přístup k více účtům služby Experimentování, můžete výběrem ikony avataru v levém spodním rohu aplikace Workbench přepnout na jiný účet.
+   > Pomocí ikony v levém dolním rohu okna aplikace Workbench můžete přepnout na jiný účet Experimentování.
 
-Informace o vytvoření prostředí pro nasazení vašich webových služeb najdete v tématu [Nastavení prostředí nasazení](deployment-setup-configuration.md).
+## <a name="create-a-project-in-workbench"></a>Vytvoření projektu v aplikaci Workbench
 
-## <a name="create-a-new-project"></a>Vytvoření nového projektu
-1. Spusťte aplikaci Azure Machine Learning Workbench a přihlaste se. 
+Ve službě Azure Machine Learning je projekt logickým kontejnerem pro veškerou práci prováděnou za účelem vyřešení problému. Mapuje se na jedinou složku souborů na místním disku, do které můžete přidat jakékoli soubory nebo podsložky. 
 
-2. Vyberte **Soubor** > **Nový projekt** (nebo vyberte znaménko **+** v podokně **PROJEKTY**). 
+Tady vytváříme nový projekt aplikace Workbench pomocí šablony, která zahrnuje [datovou sadu Iris](https://en.wikipedia.org/wiki/iris_flower_data_set). V kurzech, které následují po tomto rychlém startu, na těchto datech závisí sestavení modelu pro předpověď typu dat Iris na základě některých fyzických charakteristik.  
 
-3. Vyplňte pole **Název projektu** a **Adresář projektu**. Pole **Popis projektu** je volitelné, ale užitečné. Pole **adresy URL úložiště GIT Visualstudio.com** nechte zatím prázdné. Vyberte si pracovní prostor a vyberte šablonu projektu **Klasifikace Iris**.
+1. V otevřené aplikaci Azure Machine Learning Workbench vyberte symbol plus (+) v podokně **PROJEKTY** a zvolte **Nový projekt**.  
 
-   >[!TIP]
-   >Volitelně můžete do pole úložiště Git zadat adresu URL úložiště Git hostovaného v projektu [Visual Studio Team Services](https://www.visualstudio.com). Toto úložiště Git už musí existovat, musí být prázdné a nesmí obsahovat žádnou hlavní větev. Také pro něj musíte mít oprávnění k zápisu. Pokud teď přidáte úložiště Git, můžete později povolit scénáře roamingu a sdílení. [Přečtěte si další informace](using-git-ml-project.md).
+   ![Nový pracovní prostor](media/tutorial-classifying-iris/new_ws.png)
 
-4. Vyberte tlačítko **Vytvořit** a vytvořte nový projekt. Vytvoří se nový projekt a otevře se. Teď můžete prozkoumat domovskou stránku projektu, zdroje dat, poznámkové bloky a soubory zdrojového kódu. 
+1. Vyplňte pole formuláře a výběrem tlačítka **Vytvořit** v aplikaci Workbench vytvořte nový projekt.
 
-    >[!TIP]
-    >Také můžete projekt otevřít v nástroji Visual Studio Code nebo jiném editoru, a to jednoduše tak, že nakonfigurujete odkaz na integrované vývojové prostředí (IDE) a potom v něm otevřete adresář projektu. [Přečtěte si další informace](how-to-configure-your-IDE.md). 
+   Pole|Navrhovaná hodnota pro tento kurz|Popis
+   ---|---|---
+   Název projektu | myIris |Zadejte jedinečný název, který identifikuje váš účet. Můžete použít své jméno nebo třeba název oddělení nebo projektu, který experiment nejlépe identifikuje. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). 
+   Adresář projektu | c:\Temp\ | Zadejte adresář, ve kterém se projekt vytvoří.
+   Popis projektu | _ponechte prázdné_ | Volitelné pole, které je užitečné pro popis projektů.
+   Visualstudio.com |_ponechte prázdné_ | Volitelné pole. Projekt je volitelně možné přidružit k úložišti Git ve Visual Studio Team Services, které umožňuje správu zdrojového kódu a spolupráci. [Tady najdete potřebné informace.](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo) 
+   Pracovní prostor | IrisGarden (pokud existuje) | Zvolte pracovní prostor, který jste vytvořili pro svůj účet Experimentování na webu Azure Portal. <br/>Pokud jste postupovali podle tohoto rychlého startu, měli byste mít pracovní prostor IrisGarden. Pokud ne, vyberte pracovní prostor, který jste vytvořili při vytváření účtu Experimentování, nebo jakýkoli jiný, který chcete použít.
+   Šablona projektu | Klasifikace Iris | Šablony obsahují skripty a data, pomocí kterých můžete produkt zkoumat. Tato šablona obsahuje skripty a data, které potřebujete pro tento rychlý start a další kurzy na tomto webu dokumentace. 
+
+   ![Nový projekt](media/tutorial-classifying-iris/new_project.png)
+ 
+ Vytvoří se nový projekt a otevře se řídicí panel projektu s tímto projektem. Teď můžete prozkoumat domovskou stránku projektu, zdroje dat, poznámkové bloky a soubory zdrojového kódu. 
+
+>[!TIP]
+>Aplikaci Workbench můžete nakonfigurovat pro práci s integrovaným vývojovým prostředím (IDE) pro Python a získat tak pohodlné vývojové prostředí pro datové vědy. Pak můžete se svým projektem pracovat v integrovaném vývojovém prostředí. [Zjistěte jak](how-to-configure-your-IDE.md). 
 
 ## <a name="run-a-python-script"></a>Spuštění skriptu v jazyce Python
-Teď spustíme skript na vašem místním počítači. 
 
-1. Každý projekt se otevře na vlastní stránce **Řídicí panel Projekt**. Na příkazovém řádku v horní části aplikace vyberte cíl spuštění **local** (místní) a skript ke spuštění **iris_sklearn.py**. Ukázka obsahuje další soubory, které si můžete prohlédnout později. 
+Teď můžete na svém počítači spustit skript **iris_sklearn.py**. Tento skript je standardní součástí šablony projektu **Klasifikace Iris**. Skript sestaví model s využitím algoritmu [logistické regrese](https://en.wikipedia.org/wiki/logistic_regression) z oblíbené knihovny [scikit-learn](http://scikit-learn.org/stable/index.html) jazyka Python.
+
+1. Na příkazovém řádku v horní části stránky **Řídicí panel projektu** vyberte cíl spuštění **local** (místní) a skript ke spuštění **iris_sklearn.py**. Ve výchozím nastavení jsou tyto hodnoty předem vybrané. 
+
+   Součástí ukázky jsou i další soubory, které si můžete prohlédnout později, v tomto rychlém startu nás však zajímá pouze soubor **iris_sklearn.py**. 
 
    ![Panel příkazů](media/quickstart-installation/run_control.png)
 
-2. Do textového pole **Argumenty** zadejte **0.01**. Toto číslo se používá v kódu k nastavení míry regularizace. Tato hodnota se používá ke konfiguraci způsobu trénování modelu lineární regrese. 
+1. Do textového pole **Argumenty** zadejte **0.01**. Toto číslo se používá v kódu skriptu k nastavení míry regularizace. Tato hodnota se používá ke konfiguraci způsobu trénování modelu lineární regrese. 
 
-3. Vyberte tlačítko **Spustit** a zahajte spouštění souboru **iris_sklearn.py** na vašem počítači. 
+1. Vyberte **Spustit** a spusťte provádění skriptu na svém počítači. Úloha **iris_sklearn.py** se okamžitě zobrazí na panelu **Úlohy** na pravé straně, takže můžete monitorovat provádění skriptu.
 
-   Tento kód používá k sestavení modelu algoritmus [logistické regrese](https://en.wikipedia.org/wiki/logistic_regression) z oblíbené knihovny [scikit-learn](http://scikit-learn.org/stable/index.html) jazyka Python.
+   Blahopřejeme! Úspěšně jste spustili skript Pythonu v aplikaci Azure Machine Learning Workbench.
 
-4. Zprava se vysune panel **Úlohy**, pokud ještě nebyl viditelný, a přidá se na něj úloha **iris_sklearn**. Jakmile se úloha spustí, její stav se během několika sekund změní z hodnoty **Odesílání** na **Spuštěno** a potom na **Dokončeno**. 
+1. Několikrát zopakujte kroky 2 až 3 s použitím jiných hodnot argumentů v rozsahu **0.001** až **10**. Každá úloha spuštění se zobrazí v podokně **Úlohy**.
 
-   Blahopřejeme. Úspěšně jste spustili skript Pythonu v aplikaci Azure Machine Learning Workbench.
-
-6. Kroky 2–4 několikrát zopakujte. Pokaždé při tom použijte jiné hodnoty argumentu v rozsahu od **10** do **0.001**.
-
-## <a name="view-run-history"></a>Zobrazení historie spuštění
-1. Přejděte do zobrazení **Spuštění** a v seznamu spuštění vyberte **iris_sklearn.py**. Otevře se řídicí panel historie spuštění souboru **iris_sklearn.py**. Ten obsahuje každé spuštění souboru **iris_sklearn.py**. 
+1. Prozkoumejte historii spuštění výběrem zobrazení **Spuštění** a pak v seznamu Spuštění vyberte **iris_sklearn.py** a zobrazte historii spuštění tohoto skriptu. 
 
    ![Řídicí panel historie spuštění skriptu](media/quickstart-installation/run_view.png)
 
-2. Řídicí panel historie spuštění také obsahuje hlavní metriky, sadu výchozích grafů a seznam metrik pro každé spuštění. Toto zobrazení si můžete přizpůsobit řazením, filtrováním a úpravou konfigurací. Stačí vybrat ikonu konfigurace nebo filtru.
+   Ten obsahuje každé spuštění souboru **iris_sklearn.py**. Řídicí panel historie spuštění také obsahuje hlavní metriky, sadu výchozích grafů a seznam metrik pro každé spuštění. 
+
+1. Pomocí ikon ozubeného kola nebo filtru si toto zobrazení můžete přizpůsobit řazením, filtrováním a úpravou konfigurací.
 
    ![Metriky a grafy](media/quickstart-installation/run_dashboard.png)
 
-3. Výběrem dokončeného spuštění můžete zobrazit podrobný přehled tohoto konkrétního spuštění. Podrobnosti zahrnují další metriky, vytvořené soubory a další potenciálně užitečné protokoly.
+3. Výběrem dokončeného spuštění v podokně Úlohy můžete zobrazit podrobný přehled tohoto konkrétního spuštění. Podrobnosti zahrnují další metriky, vytvořené soubory a další potenciálně užitečné protokoly.
+
+## <a name="start-the-cli"></a>Spuštění rozhraní příkazového řádku
+
+Nainstalované je také rozhraní příkazového řádku služby Azure Machine Learning. Toto rozhraní příkazového řádku umožňuje přístup ke službám Azure Machine Learning a práci s nimi pomocí příkazů `az` a provádění veškerých úloh nezbytných pro komplexní pracovní postup datových věd. [Další informace](tutorial-iris-azure-cli.md)
+
+Rozhraní příkazového řádku azure-cli-ml můžete spustit z panelu nástrojů aplikace Workbench přes **Soubor –> Otevřít příkazový řádek**.
+
+Nápovědu k příkazům v rozhraní příkazového řádku azure-cli-ml získáte pomocí argumentu --help.
+
+```az ml --help```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Teď jste úspěšně vytvořili účet služby Experimentování ve službě Azure Machine Learning a účet služby Správa modelů ve službě Azure Machine Learning. Nainstalovali jste desktopovou aplikaci Azure Machine Learning Workbench a rozhraní příkazového řádku. Vytvořili jste nový projekt, vytvořili model spuštěním skriptu a prozkoumali historii spuštění tohoto skriptu.
+Právě jste vytvořili potřebné účty služeb Azure Machine Learning a nainstalovali jste aplikaci Azure Machine Learning Workbench. V této aplikaci jste vytvořili projekt, spustili skript a prozkoumali historii spuštění tohoto skriptu.
 
 Podrobnější poznatky o tomto pracovním postupu, včetně postupu nasazení modelu Iris jako webové služby, najdete v kurzu *Klasifikace Iris* na pokračování. Tento kurz obsahuje podrobné postupy pro [přípravu dat](tutorial-classifying-iris-part-1.md), [experimentování](tutorial-classifying-iris-part-2.md) a [správu modelů](tutorial-classifying-iris-part-3.md). 
 
 > [!div class="nextstepaction"]
-> [Kurz Klasifikace Iris](tutorial-classifying-iris-part-1.md)
+> [Kurz: Klasifikace Iris (Část 1)](tutorial-classifying-iris-part-1.md)
+
+>[!NOTE]
+> Přestože máte účet služby Správa modelů, vaše prostředí ještě není nastavené pro nasazování webových služeb.  Zjistěte, jak nastavit [prostředí pro nasazení](deployment-setup-configuration.md).

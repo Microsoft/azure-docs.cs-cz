@@ -1,36 +1,36 @@
 ---
-title: "Kurz pro Azure Container Service – Příprava aplikace"
-description: "Kurz pro Azure Container Service – Příprava aplikace"
+title: "Kurz Azure Container Service – Příprava aplikace"
+description: "Kurz Azure Container Service – Příprava aplikace"
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 09/14/2017
+ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 3dcfc0d454926d6040692b0e8a9d44b13e7603c5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
-ms.translationtype: MT
+ms.openlocfilehash: 696ba0d19aef0c550b00616d00438d081081027c
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="create-container-images-to-be-used-with-azure-container-service"></a>Vytvoření bitové kopie kontejneru, který se má použít s Azure Container Service
+# <a name="create-container-images-to-be-used-with-azure-container-service"></a>Vytváření imagí kontejneru pro použití se službou Azure Container Service
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
-V tomto kurzu, 7, první část je více kontejnerové aplikace připravené pro použití v Kubernetes. Dokončit krokům patří:  
+V tomto kurzu, který je první částí sedmidílné série, se připraví vícekontejnerová aplikace pro použití v Kubernetes. Mezi dokončené kroky patří:  
 
 > [!div class="checklist"]
 > * Klonování zdroje aplikace z GitHubu  
-> * Vytvoření kontejneru image ze zdroje aplikace
-> * Testování aplikace v místním prostředí Docker
+> * Vytvoření image kontejneru ze zdroje aplikace
+> * Test aplikace v místním prostředí Dockeru
 
-Po dokončení následující aplikace je dostupné ve vašem místním vývojovém prostředí.
+Po dokončení bude ve vašem místním vývojovém prostředí dostupná následující aplikace.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-V následujících kurzech bitovou kopii kontejneru se nahraje registru kontejneru služby Azure a pak spustit v Azure hostovaná Kubernetes clusteru.
+V následujících kurzech se image kontejneru nahraje do služby Azure Container Registry a pak se spustí v clusteru Kubernetes hostovaném v Azure.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -38,43 +38,43 @@ V tomto kurzu se předpokládá základní znalost klíčových konceptů Docker
 
 K dokončení tohoto kurzu potřebujete vývojové prostředí pro Docker. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakémkoli systému [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) nebo [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
 
-Prostředí Azure Cloud neobsahuje součásti Docker nutné pro dokončení každý krok v tomto kurzu. Proto doporučujeme používat úplnou Docker vývojovém prostředí.
+Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kroků v tomto kurzu. Proto doporučujeme použít úplné vývojové prostředí pro Docker.
 
 ## <a name="get-application-code"></a>Získání kódu aplikace
 
-Ukázková aplikace používá v tomto kurzu je základní hlasovací aplikaci. Aplikace se skládá z front-endové webové součásti a instanci Redis back-end. Součást webové je zabalené do bitové kopie vlastní kontejner. Redis instance používá image beze změny z úložiště Docker Hub.  
+Ukázkovou aplikací používanou v tomto kurzu je základní hlasovací aplikace. Aplikace se skládá z front-end webové součásti a back-end instance Redis. Webová součást je zabalená do vlastní image kontejneru. Instance Redis využívá nezměněnou image z Docker Hubu.  
 
-Pomocí git stáhnout kopii aplikace na svoje vývojové prostředí.
+Pomocí gitu si stáhněte kopii aplikace do vývojového prostředí.
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Změňte adresáře tak, aby při práci z klonovaného adresáře.
+Změňte adresáře tak, abyste pracovali v naklonovaném adresáři.
 
 ```
 cd azure-voting-app-redis
 ```
 
-V adresáři je zdrojový kód aplikace, předem vytvořené Docker compose soubor a soubor manifestu Kubernetes. Tyto soubory se používají v celé sadě kurzu. 
+Tento adresář obsahuje zdrojový kód aplikace, předem vytvořený soubor Docker Compose a soubor manifestu Kubernetes. Tyto soubory se používají v celé této sérii kurzů. 
 
-## <a name="create-container-images"></a>Vytvořit kontejner bitové kopie
+## <a name="create-container-images"></a>Vytváření imagí kontejneru
 
-[Docker Compose](https://docs.docker.com/compose/) můžete použít k automatizaci sestavení mimo kontejner bitové kopie a nasazení aplikací s více kontejneru.
+[Docker Compose](https://docs.docker.com/compose/) je možné použít k automatizaci sestavení z imagí kontejnerů a nasazení vícekontejnerových aplikací.
 
-Spustit `docker-compose.yml` soubor pro vytvoření bitové kopie kontejneru, stáhněte bitovou kopii Redis a spusťte aplikaci.
+Spuštěním souboru `docker-compose.yml` vytvořte image kontejneru, stáhněte image Redis a spusťte aplikaci.
 
 ```bash
 docker-compose up -d
 ```
 
-Po dokončení použít [imagí dockeru](https://docs.docker.com/engine/reference/commandline/images/) příkazu zobrazte vytvořené bitové kopie.
+Po dokončení můžete vytvořené image zobrazit pomocí příkazu [docker images](https://docs.docker.com/engine/reference/commandline/images/).
 
 ```bash
 docker images
 ```
 
-Všimněte si, že tři bitové kopie byly staženy nebo vytvořeny. `azure-vote-front` Image obsahuje aplikace a používá `nginx-flask` bitovou kopii jako základ. `redis` Image se použije ke spuštění Redis instance.
+Všimněte si, že se stáhly nebo vytvořily tři image. Image `azure-vote-front` obsahuje aplikaci a jako základ využívá image `nginx-flask`. Image `redis` slouží ke spuštění instance Redis.
 
 ```bash
 REPOSITORY                   TAG        IMAGE ID            CREATED             SIZE
@@ -83,7 +83,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Spustit [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) příkazu zobrazte spuštěných kontejnerů.
+Spuštěním příkazu [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) zobrazte spuštěné kontejnery.
 
 ```bash
 docker ps
@@ -97,38 +97,38 @@ CONTAINER ID        IMAGE             COMMAND                  CREATED          
 b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
 ```
 
-## <a name="test-application-locally"></a>Testovací aplikace místně
+## <a name="test-application-locally"></a>Testování aplikace v místním prostředí
 
-Přejděte na adrese http://localhost: 8080 zobrazíte běžící aplikaci.
+Přejděte na http://localhost:8080 a prohlédněte si spuštěnou aplikaci.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Teď, když funkce aplikace byl ověřen, může spuštěných kontejnerů zastavena a odebrat. Neodstraňujte kontejneru bitové kopie. `azure-vote-front` Bitové kopie se nahraje instanci Azure Container registru v dalším kurzu.
+Teď, když jste ověřili funkčnost aplikace, můžete zastavit a odebrat spuštěné kontejnery. Neodstraňujte image kontejnerů. Image `azure-vote-front` se do instance služby Azure Container Registry nahraje v dalším kurzu.
 
-Spusťte následující příkaz k zastavení spuštěných kontejnerů.
+Spuštěním následujícího příkazu zastavte spuštěné kontejnery.
 
 ```bash
 docker-compose stop
 ```
 
-Odstraňte zastaven kontejnery a prostředky pomocí následujícího příkazu.
+Pomocí následujícího příkazu odstraňte zastavené kontejnery a prostředky.
 
 ```bash
 docker-compose down
 ```
 
-Při dokončení máte kontejneru bitovou kopii, která obsahuje aplikaci Azure hlas.
+Po dokončení budete mít image kontejneru obsahující aplikaci Azure Vote.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu aplikace byla testována a vytvořit kontejner bitových kopií pro aplikaci. Dokončili jste následující kroky:
+V tomto kurzu se otestovala aplikace a vytvořily se pro ni image kontejnerů. Dokončili jste následující kroky:
 
 > [!div class="checklist"]
 > * Klonování zdroje aplikace z GitHubu  
-> * Vytvořené bitové kopie kontejneru z zdroj aplikace
-> * Testování aplikace v místním prostředí Docker
+> * Vytvoření image kontejneru ze zdroje aplikace
+> * Test aplikace v místním prostředí Dockeru
 
 Přejděte k dalšímu kurzu, ve kterém se seznámíte s ukládáním imagí kontejnerů ve službě Azure Container Registry.
 

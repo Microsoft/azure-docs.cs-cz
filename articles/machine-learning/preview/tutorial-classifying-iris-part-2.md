@@ -1,23 +1,23 @@
 ---
-title: "Sestavení modelu pro služby Azure Machine Learning (Preview) | Dokumentace Microsoftu"
+title: "Kurz sestavení modelu pro služby Azure Machine Learning (Preview) | Microsoft Docs"
 description: "V tomto kurzu na pokračování se dozvíte, jak komplexně používat služby Azure Machine Learning (Preview). Toto je druhá část, ve které se probírá experimentování."
 services: machine-learning
 author: hning86
-ms.author: haining
+ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/06/2017
-ms.openlocfilehash: 3337ba9fa6845deb98813259821f77ff713f9eb1
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 02/28/2018
+ms.openlocfilehash: f52d4268c3983b419a6393bbd651301022688029
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="classify-iris-part-2-build-a-model"></a>Klasifikace Iris – část 2: Sestavení modelu
+# <a name="tutorial-classify-iris-part-2---build-a-model"></a>Kurz: Klasifikace Iris, část 2 – Sestavení modelu
 Služby Azure Machine Learning (Preview) představují integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
 
 Tento kurz je druhou částí z třídílné série. V této části kurzu provedete pomocí služeb Azure Machine Learning (Preview) následující úlohy:
@@ -33,6 +33,8 @@ Tento kurz je druhou částí z třídílné série. V této části kurzu prove
 > * Spouštění skriptů v cloudovém prostředí Azure HDInsight
 
 Tento kurz používá nadčasovou [datovou sadu Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set). Snímky obrazovky jsou specifické pro systém Windows, ale prostředí v systému Mac OS je téměř shodné.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 Dokončete první část této série kurzů. Před zahájením kroků v tomto kurzu vytvořte na základě [kurzu přípravy dat](tutorial-classifying-iris-part-1.md) prostředky služby Azure Machine Learning a nainstalujte aplikaci Azure Machine Learning Workbench.
@@ -374,6 +376,10 @@ Tento skript můžete také spustit v clusteru HDInsight Spark. Seznamte se s [p
    >Při spouštění ve vzdáleném clusteru HDInsight můžete také pomocí uživatelského účtu `admin` zobrazit na adrese `https://<cluster_name>.azurehdinsight.net/yarnui` podrobnosti provádění úlohy YARN (Yet Another Resource Negotiator).
 
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
+
 ## <a name="next-steps"></a>Další kroky
 V této druhé části třídílné série kurzů jste se naučili, jak pomocí služeb Azure Machine Learning provádět tyto úlohy:
 > [!div class="checklist"]
@@ -389,4 +395,4 @@ V této druhé části třídílné série kurzů jste se naučili, jak pomocí 
 Teď můžete přejít ke třetí části série kurzů. Vytvořili jste model logistické regrese, takže ho teď můžete nasadit jako webovou službu v reálném čase.
 
 > [!div class="nextstepaction"]
-> [Nasazení modelu](tutorial-classifying-iris-part-3.md)
+> [Kurz 3 – Klasifikace Iris: Nasazení modelů](tutorial-classifying-iris-part-3.md)

@@ -1,6 +1,6 @@
 ---
 title: "Vytvoření aplikace Azure Service Fabric typu kontejner pro Windows | Dokumentace Microsoftu"
-description: "Vytvoříte svou první aplikaci typu kontejner pro Windows na platformě Azure Service Fabric."
+description: "V tomto rychlém startu vytvoříte svou první aplikaci typu kontejner pro Windows na platformě Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,16 +12,16 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/25/18
+ms.date: 02/27/18
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4043c600dcc79cc85b66d66051416218507432af
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 7a8d28ef842ba77355628c79c20fa7fd3c693380
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="deploy-a-service-fabric-windows-container-application-on-azure"></a>Nasazení aplikace Service Fabric typu kontejner pro Windows v Azure
+# <a name="quickstart-deploy-a-service-fabric-windows-container-application-on-azure"></a>Rychlý start: Nasazení aplikace Service Fabric typu kontejner pro Windows v Azure
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů. 
 
 Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento rychlý start ukazuje, jak nasadit předem připravenou image kontejneru Dockeru v aplikaci Service Fabric. Až budete hotovi, budete mít funkční kontejner Windows Server 2016 Nano Serveru a služby IIS. Tento rychlý start popisuje nasazení kontejneru Windows. Pokud chcete nasadit kontejner Linuxu, přečtěte si [tento rychlý start](service-fabric-quickstart-containers-linux.md).
@@ -48,21 +48,25 @@ Spusťte sadu Visual Studio jako správce.  Vyberte **Soubor** > **Nový** > **P
 
 Vyberte **Aplikace Service Fabric**, pojmenujte ji MyFirstContainer a klikněte na **OK**.
 
-Ze seznamu **šablon služeb** vyberte **Kontejner**.
+Z šablon **Hostované kontejnery a aplikace** vyberte **Kontejner**.
 
 Do pole **Název image** zadejte microsoft/iis:nanoserver, což je [základní image Windows Server Nano Serveru a služby IIS](https://hub.docker.com/r/microsoft/iis/). 
 
 Pojmenujte službu MyContainerService a klikněte na **OK**.
 
 ## <a name="configure-communication-and-container-port-to-host-port-mapping"></a>Konfigurace komunikace a mapování portu kontejneru na port hostitele
-Služba potřebuje koncový bod pro komunikaci.  Nyní můžete přidat protokol, port a typ do části `Endpoint` v souboru ServiceManifest.xml. Pro účely tohoto rychlého startu kontejnerizovaná služba naslouchá na portu 80: 
+Služba potřebuje koncový bod pro komunikaci.  Pro účely tohoto rychlého startu kontejnerizovaná služba naslouchá na portu 80.  V Průzkumníku řešení otevřete soubor *MyFirstContainer/ApplicationPackageRoot/MyContainerServicePkg/ServiceManifest.xml*.  V souboru ServiceManifest.xml aktualizujte stávající `Endpoint` a přidejte protokol, port a schéma identifikátoru URI: 
 
 ```xml
-<Endpoint Name="MyContainerServiceTypeEndpoint" UriScheme="http" Port="80" Protocol="http"/>
+<Resources>
+    <Endpoints>
+        <Endpoint Name="MyContainerServiceTypeEndpoint" UriScheme="http" Port="80" Protocol="http"/>
+   </Endpoints>
+</Resources>
 ```
 Pokud zadáte `UriScheme`, koncový bod kontejneru se automaticky zaregistruje ve Službě pojmenování Service Fabric, aby byl zjistitelný. Úplný ukázkový soubor ServiceManifest.xml najdete na konci tohoto článku. 
 
-Nakonfigurujte v kontejneru mapování portů na hostitele určením zásady `PortBinding` v části `ContainerHostPolicies` souboru APplicationManifest.xml.  Pro účely tohoto rychlého startu má `ContainerPort` hodnotu 80 a `EndpointRef` je MyContainerServiceTypeEndpoint (koncový bod definovaný v manifestu služby).  Příchozí požadavky na službu na portu 80 se mapují na port 80 v kontejneru.  
+Nakonfigurujte mapování portů kontejneru na porty hostitele tak, aby se příchozí požadavky na službu na portu 80 mapovaly na port 80 v kontejneru.  V Průzkumníku řešení otevřete soubor *MyFirstContainer/ApplicationPackageRoot/ApplicationManifest.xml* a v části `ContainerHostPolicies` zadejte zásadu `PortBinding`.  Pro účely tohoto rychlého startu má `ContainerPort` hodnotu 80 a `EndpointRef` je MyContainerServiceTypeEndpoint (koncový bod definovaný v manifestu služby).    
 
 ```xml
 <ServiceManifestImport>
@@ -79,9 +83,7 @@ Nakonfigurujte v kontejneru mapování portů na hostitele určením zásady `Po
 Úplný ukázkový soubor ApplicationManifest.xml najdete na konci tohoto článku.
 
 ## <a name="create-a-cluster"></a>Vytvoření clusteru
-Pokud chcete nasadit aplikaci do clusteru v Azure, můžete se připojit k party clusteru nebo [vytvořit vlastní cluster v Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-
-Party clustery jsou bezplatné, časově omezené clustery Service Fabric hostované v Azure a provozované týmem Service Fabric, na kterých může kdokoli nasazovat aplikace a seznamovat se s platformou. Cluster používá jediný certifikát podepsaný svým držitelem (self-signed certificate) pro zabezpečení mezi uzly i mezi klientem a uzlem. 
+Pokud chcete nasadit aplikaci do clusteru v Azure, můžete se připojit k Party Clusteru. Party clustery jsou bezplatné, časově omezené clustery Service Fabric hostované v Azure a provozované týmem Service Fabric, na kterých může kdokoli nasazovat aplikace a seznamovat se s platformou. Cluster používá jediný certifikát podepsaný svým držitelem (self-signed certificate) pro zabezpečení mezi uzly i mezi klientem a uzlem. 
 
 Přihlaste se a [připojte se ke clusteru Windows](http://aka.ms/tryservicefabric). Stáhněte si certifikát PFX do počítače kliknutím na odkaz **PFX**. Certifikát a hodnota **Koncový bod připojení** použijete v následujících krocích.
 
@@ -108,7 +110,7 @@ Aplikace je teď připravená a přímo ze sady Visual Studio ji můžete nasadi
 
 V Průzkumníku řešení klikněte pravým tlačítkem na **MyFirstContainer** a zvolte **Publikovat**. Zobrazí se dialogové okno Publikovat.
 
-Do pole **Koncový bod připojení** zkopírujte **Koncový bod připojení** ze stránky Party clusteru. Například, `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klikněte na **Rozšířené parametry připojení** a vyplňte následující informace.  Hodnoty *FindValue* and *ServerCertThumbprint* musí odpovídat kryptografickému otisku certifikátu nainstalovanému v předchozím kroku. 
+Do pole **Koncový bod připojení** zkopírujte **Koncový bod připojení** ze stránky Party clusteru. Například, `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klikněte na **Rozšířené parametry připojení** a ověřte informace o parametrech připojení.  Hodnoty *FindValue* and *ServerCertThumbprint* musí odpovídat kryptografickému otisku certifikátu nainstalovanému v předchozím kroku. 
 
 ![Dialogové okno Publikovat](./media/service-fabric-quickstart-containers/publish-app.png)
 
@@ -187,7 +189,6 @@ Tady jsou kompletní manifesty aplikace a služby použité v tomto rychlém sta
         <PortBinding ContainerPort="80" EndpointRef="MyContainerServiceTypeEndpoint"/>
       </ContainerHostPolicies>
     </Policies>
-
   </ServiceManifestImport>
   <DefaultServices>
     <!-- The section below creates instances of service types, when an instance of this 

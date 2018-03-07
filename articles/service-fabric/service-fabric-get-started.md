@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2018
 ms.author: ryanwi, mikhegn
-ms.openlocfilehash: a24ca874abd29816a67f3bb7c83fb8b389d8435f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 18578f87ec6b58d72da7a7a81cbdc3d2c98ffaf6
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 > [!div class="op_single_selector"]
@@ -63,10 +63,10 @@ Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
 * [Instalace sady Microsoft Azure Service Fabric SDK][core-sdk]
 
 Aktuální verze jsou:
-* Sada Service Fabric SDK a Service Fabric Tools 3.0.456
-* Modul runtime Service Fabric 6.1.456
+* Sada Service Fabric SDK a Service Fabric Tools 3.0.467
+* Modul runtime Service Fabric 6.1.467
 * Service Fabric Tools for Visual Studio 2015 2.0.10124.2
-* Visual Studio 2017 15.5.6 obsahuje Service Fabric Tools for Visual Studio 2.0.20180124.2 
+* Visual Studio 2017 15.5.6 obsahuje Service Fabric Tools for Visual Studio 2.0.20180124.2  
 
 Seznam podporovaných verzí najdete v tématu [Podpora pro Service Fabric](service-fabric-support.md)
 

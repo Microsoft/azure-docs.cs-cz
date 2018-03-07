@@ -1,6 +1,6 @@
 ---
 title: "Integrace Azure Service Fabric se službou API Management | Microsoft Docs"
-description: "Zjistěte, jak rychle začít se službou Azure API Management a Service Fabric."
+description: "V tomto kurzu se dozvíte, jak rychle začít se službou Azure API Management a Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 01/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7265af62adf8f380a3a5bd5d9950fb70e9ad6172
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9277f2c8a4ff595e639f6332d61b936ce44aeb13
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="deploy-api-management-with-service-fabric"></a>Nasazení služby API Management s využitím Service Fabric
+# <a name="tutorial-deploy-api-management-with-service-fabric"></a>Kurz: Nasazení služby API Management s využitím Service Fabric
 Tento kurz je čtvrtou částí série.  Nasazení služby Azure API Management s využitím Service Fabric je pokročilý scénář.  Služba API Management je užitečná v případě, že potřebujete publikovat rozhraní API s bohatou sadou pravidel směrování pro vaše back-end služby Service Fabric. Cloudové aplikace obvykle potřebují front-end bránu, která poskytuje jediný bod příjmu příchozího přenosu od uživatelů, zařízení nebo dalších aplikací. V Service Fabric může být brána bezstavová služba navržená pro příjem provozu, například aplikace ASP.NET Core, služba Event Hubs, služba IoT Hub nebo služba Azure API Management. 
 
 V tomto kurzu se dozvíte, jak s využitím Service Fabric nastavit službu [Azure API Management](../api-management/api-management-key-concepts.md) pro směrování provozu do back-end služby v Service Fabric.  Po dokončení budete mít nasazenou službu API Management ve virtuální síti a nakonfigurovanou operaci rozhraní API pro odesílání provozu do back-end bezstavové služby. Další informace o scénářích služby Azure API Management s využitím Service Fabric najdete v článku [Přehled](service-fabric-api-management-overview.md).

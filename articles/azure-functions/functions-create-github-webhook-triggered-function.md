@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: cdfb5db7b304a18d6945328abc0ca7ebf2f9ec6a
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 98632c3276e7d9cccf29d05b903c2fac62a7d68e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>Vytvoření funkce aktivované webhookem GitHubu
 
@@ -67,7 +67,7 @@ Dále vytvoříte webhook ve vašem úložišti GitHub.
 
 ## <a name="configure-the-webhook"></a>Konfigurace webhooku
 
-1. V GitHubu přejděte do úložiště, které vlastníte. Můžete také použít libovolné úložiště, které máte rozvětvené. Pokud potřebujete úložiště rozvětvit, použijte stránku <https://github.com/Azure-Samples/functions-quickstart>.
+1. V GitHubu přejděte do úložiště, které vlastníte. Můžete také použít libovolné úložiště, které máte rozvětvené. Pokud potřebujete vytvořit fork úložiště, použijte <https://github.com/Azure-Samples/functions-quickstart>.
 
 1. Klikněte na **Settings** (Nastavení), pak na **Webhooks** (Webhooky) a **Add webhook** (Přidat webhook).
 
@@ -80,8 +80,8 @@ Dále vytvoříte webhook ve vašem úložišti GitHub.
 | Nastavení | Navrhovaná hodnota | Popis |
 |---|---|---|
 | **Datová část adresy URL** | Zkopírovaná hodnota | Použijte hodnotu vrácenou příkazem **</> Získat adresu URL funkce**. |
-| **Tajný kód**   | Zkopírovaná hodnota | Použijte hodnotu vrácenou příkazem **</> Získat tajný kód GitHubu**. |
 | **Typ obsahu** | application/json | Funkce očekává datovou část JSON. |
+| **Tajný kód**   | Zkopírovaná hodnota | Použijte hodnotu vrácenou příkazem **</> Získat tajný kód GitHubu**. |
 | Aktivační události | Nechat mě vybrat jednotlivé události | Chceme provést aktivaci jenom při událostech komentářů k problémům.  |
 | | Komentář k problému |  |
 
@@ -107,7 +107,7 @@ Teď je webhook nakonfigurován tak, aby aktivoval vaši funkci v případě, ž
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořili jste funkci, která se spustí při přijetí požadavku z webhooku Githubu.
+Vytvořili jste funkci, která se aktivuje při přijetí požadavku z webhooku GitHubu.
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

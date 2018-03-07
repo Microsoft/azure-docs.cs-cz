@@ -1,128 +1,129 @@
 ---
-title: "Test jednotky webové aplikace Azure AD B2C povoleno | Microsoft Docs"
-description: "Test jednotky přihlášení, registrace, upravit profil a resetovat heslo uživatele cesty pomocí prostředí testovací Azure AD B2C"
+title: "Testovací verze webové aplikace s povolenou službou Azure AD B2C"
+description: "Rychlý start pro vyzkoušení ukázkové webové aplikace ASP.NET využívající Azure Active Directory B2C k zajištění přihlašování uživatelů."
 services: active-directory-b2c
-documentationcenter: .net
-author: saraford
+author: PatAltimore
 manager: mtillman
-editor: PatAltimore
-ms.assetid: 2ffb780d-2c51-4c2e-b8d6-39c40a81a77e
+ms.reviewer: saraford
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 10/31/2017
+ms.topic: quickstart
+ms.custom: mvc
+ms.date: 2/13/2018
 ms.author: patricka
-ms.openlocfilehash: bc56da695145f396a2899fb9dc7add3af9a549e8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: MT
+ms.openlocfilehash: 87c180445038b1205e2f6aab1ce721765ecb35c9
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="test-drive-an-azure-ad-b2c-enabled-web-app"></a>Webové aplikace s povoleným test jednotky Azure AD B2C
+# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-web-app"></a>Rychlý start: Testovací verze webové aplikace s povolenou službou Azure AD B2C
 
-Azure Active Directory B2C nabízí cloudové správy identit a udržovat vaše aplikace, obchodní a zákazníky chráněné. Tento rychlý start používá ukázkovou aplikaci seznamu úkolů k předvedení:
+Azure Active Directory (Azure AD) B2C poskytuje správu cloudových identit pro zajištění ochrany vašich aplikací, firmy a zákazníků. Azure AD B2C umožňuje aplikacím provádět ověřování účtů na sociálních sítích a podnikových účtů s využitím protokolů s otevřenými standardy.
 
-> [!div class="checklist"]
-> * Přihlaste se pomocí vlastní přihlašovací stránku.
-> * Přihlášení pomocí zprostředkovatele identity sociálních.
-> * Vytváření a správě vašeho profilu účtu a uživatele Azure AD B2C.
-> * Volání webového rozhraní API, které jsou zabezpečené službou Azure AD B2C.
-
-## <a name="prerequisites"></a>Požadavky
-
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) s **ASP.NET a webové vývoj** zatížení. 
-* Sociální účet ze sítě Facebook, Google, Microsoft nebo Twitteru.
+V tomto rychlém startu použijete ukázkovou aplikaci ASP.NET s povolenou službou Azure AD B2C k přihlášení pomocí zprostředkovatele sociální identity a zavolání webového rozhraní API chráněného službou Azure AD B2C.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+## <a name="prerequisites"></a>Požadavky
+
+* Sada [Visual Studio 2017](https://www.visualstudio.com/downloads/) se sadou funkcí **Vývoj pro ASP.NET a web**. 
+* Účet na sociální síti Facebook, Google, Microsoft nebo Twitter.
+
 ## <a name="download-the-sample"></a>Stažení ukázky
 
-[Stáhnout nebo naklonovat ukázkovou aplikaci](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) z Githubu.
+[Stáhněte soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip) nebo naklonujte ukázkovou webovou aplikaci z GitHubu.
 
-## <a name="run-the-app-in-visual-studio"></a>Spusťte aplikaci v sadě Visual Studio
+```
+git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
+```
 
-Ve složce projektu ukázkové aplikace otevřete `B2C-WebAPI-DotNet.sln` řešení v sadě Visual Studio. 
+## <a name="run-the-app-in-visual-studio"></a>Spuštění aplikace v sadě Visual Studio
 
-Řešení je ukázková aplikace seznamu úkolů skládající se ze dvou projektů:
+V sadě Visual Studio otevřete řešení `B2C-WebAPI-DotNet.sln` ze složky projektu ukázkové aplikace.
 
-* **TaskWebApp** – ASP.NET MVC webové aplikace, kde uživatel může spravovat jejich položky seznamu úkolů.  
-* **TaskService** – rozhraní ASP.NET Web API back-end, který spravuje operace provést na položky seznamu úkolů uživatele. Webová aplikace volání této webové rozhraní API a zobrazí výsledky.
+Ukázkové řešení obsahuje dva projekty:
 
-Pro tento rychlý start, budete muset spustit i `TaskWebApp` a `TaskService` projekty ve stejnou dobu. 
+**Ukázková webová aplikace (TaskWebApp):** Webová aplikace umožňující vytvoření a úpravy seznamu úkolů. Tato webová aplikace používá k registraci nebo přihlašování uživatelů zásady **registrace nebo přihlašování**.
 
-1. V nabídce sady Visual Studio, vyberte **projekty > nastavit projekty po spuštění...** . 
-2. Vyberte **více projektů po spuštění** přepínač.
-3. Změna **akce** pro oba projekty tak, aby **spustit**. Klikněte na **OK**.
+**Ukázková aplikace webového rozhraní API (TaskService):** Webové rozhraní API, které podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Toto webové rozhraní API je chráněné službou Azure AD B2C a volané webovou aplikací.
 
-![Nastavit spouštěcí stránku v sadě Visual Studio](media/active-directory-b2c-quickstarts-web-app/setup-startup-projects.png)
+Pro účely tohoto rychlého startu spustíte oba projekty `TaskWebApp` a `TaskService` najednou. 
 
-Vyberte **ladění > Spustit ladění** sestavení a spuštění aplikace. Každá aplikace se otevře v jeho vlastní kartu prohlížeče:
+1. V Průzkumníku řešení vyberte řešení `B2C-WebAPI-DotNet`.
+2. V nabídce sady Visual Studio vyberte **Projekt > Nastavit projekty po spuštění**. 
+3. Vyberte přepínač **Více projektů po spuštění**.
+4. U obou projektů změňte hodnotu **Akce** na **Spustit**. Klikněte na **OK**.
 
-`https://localhost:44316/`– Tato stránka je webová aplikace ASP.NET. Můžete pracovat přímo pomocí této aplikace v rychlý start.
-`https://localhost:44332/`– Tato stránka je webové rozhraní API, která volá webové aplikace ASP.NET.
+Stisknutím klávesy **F5** spusťte ladění obou aplikací. Obě aplikace se otevřou na samostatné kartě prohlížeče:
+
+`https://localhost:44316/` – Tato stránka je webová aplikace ASP.NET. V tomto rychlém startu pracujete přímo s touto aplikací.
+`https://localhost:44332/` – Tato stránka je webové rozhraní API volané webovou aplikací ASP.NET.
 
 ## <a name="create-an-account"></a>Vytvoření účtu
 
-Klikněte na tlačítko **zaregistrovat / přihlásit** odkaz ve webové aplikaci ASP.NET spustit **zaregistrovat nebo přihlásit** pracovního postupu. Když vytváříte účet, můžete použít existující účet zprostředkovatele sociální identity nebo e-mailový účet. Pro tento rychlý start používejte účet sociálních identity zprostředkovatele ze sítě Facebook, Google, Microsoft nebo Twitteru.
+Kliknutím na odkaz **Sign up / Sign in** (Registrace / Přihlášení) ve webové aplikaci ASP.NET spusťte pracovní postup **Registrace nebo přihlášení** na základě zásady Azure AD B2C.
 
-![Ukázka ASP.NET webové aplikace](media/active-directory-b2c-quickstarts-web-app/web-app-sign-in.png)
+![Ukázková webová aplikace ASP.NET](media/active-directory-b2c-quickstarts-web-app/web-app-sign-in.png)
 
-### <a name="sign-up-using-a-social-identity-provider"></a>Zaregistrujte si pomocí zprostředkovatele identity sociálních
+Ukázka podporuje několik možností registrace, včetně použití zprostředkovatele sociální identity nebo vytvoření místního účtu pomocí e-mailové adresy. Pro účely tohoto rychlého startu použijte účet zprostředkovatele sociální identity Facebook, Google, Microsoft nebo Twitter. 
 
-Postup registrace pomocí zprostředkovatele identity sociálních klikněte na tlačítko zprostředkovatele identity, kterou chcete použít. 
+### <a name="sign-up-using-a-social-identity-provider"></a>Registrace pomocí zprostředkovatele sociální identity
 
-![Přihlásit nebo zaregistrovat zprostředkovatele](media/active-directory-b2c-quickstarts-web-app/sign-in-or-sign-up-web.png)
+Azure AD B2C zobrazí v ukázkové webové aplikaci vlastní přihlašovací stránku pro fiktivní značku Wingtip Toys. 
 
-Budete muset ověřit pomocí účtu sociálních přihlašovací údaje a aplikaci autorizovat pro čtení informací z účtu sociálních (přihlásit). Poskytnutím přístupu aplikace může načíst informace o profilu z účtu sociálních třeba název a města. 
+1. Pokud se chcete přihlásit pomocí zprostředkovatele sociální identity, klikněte na tlačítko zprostředkovatele sociální identity, kterého chcete použít.
 
-Dokončete proces přihlášení pro zprostředkovatele identity. Například pokud jste zvolili Twitter, zadejte své přihlašovací údaje služby Twitter a klikněte na tlačítko **přihlášení**.
+    ![Zprostředkovatel registrace nebo přihlašování](media/active-directory-b2c-quickstarts-web-app/sign-in-or-sign-up-web.png)
 
-![Ověřování a autorizaci pomocí sociálních účtu](media/active-directory-b2c-quickstarts-web-app/twitter-authenticate-authorize-web.png)
+    Ověříte (přihlásíte) se pomocí přihlašovacích údajů ke svému účtu na sociální síti a autorizujete aplikaci ke čtení informací z tohoto účtu. Díky udělení přístupu může aplikace z účtu na sociální síti načíst informace o profilu, jako je vaše jméno a město. 
 
-Jsou předem vyplněny informace z vašeho účtu sociálních nové Podrobnosti profilu účtu Azure AD B2C.
+2. Dokončete proces přihlašování příslušného zprostředkovatele identity. Pokud jste například zvolili Twitter, zadejte své přihlašovací údaje k Twitteru a klikněte na **Přihlásit se**.
 
-Aktualizujte pole Zobrazovaný název, funkce a města a klikněte na tlačítko **pokračovat**.  Hodnoty, které zadáte, se používají pro svůj profil účtu uživatele Azure AD B2C.
+    ![Ověřování a autorizace pomocí účtu na sociální síti](media/active-directory-b2c-quickstarts-web-app/twitter-authenticate-authorize-web.png)
 
-![Nové podrobnosti účtu registrační profil](media/active-directory-b2c-quickstarts-web-app/new-account-sign-up-profile-details-web.png)
+    Podrobnosti o vašem novém profilu účtu Azure AD B2C se předvyplní informacemi z vašeho účtu na sociální síti.
 
-Máte úspěšně:
+3. Aktualizujte pole Zobrazované jméno, Pozice a Město a klikněte na **Pokračovat**.  Hodnoty, které zadáte, se použijí pro váš profil uživatelského účtu Azure AD B2C.
 
-> [!div class="checklist"]
-> * Ověřit pomocí zprostředkovatele identity.
-> * Vytvořit uživatelský účet Azure AD B2C. 
+    ![Registrace nového účtu – podrobnosti o profilu](media/active-directory-b2c-quickstarts-web-app/new-account-sign-up-profile-details-web.png)
 
-## <a name="edit-your-profile"></a>Úpravy profilu
+    Úspěšně jste použili ukázkovou webovou aplikaci, která využívá zásadu Azure AD B2C, k ověření pomocí zprostředkovatele identity a vytvoření uživatelského účtu Azure AD B2C. 
 
-Azure Active Directory B2C poskytuje funkce, aby uživatelé mohli aktualizaci jejich profilů. V panelu nabídek webové aplikace klikněte na název profilu a vyberte **upravit profil** upravit profil, který jste vytvořili.
+## <a name="edit-your-profile"></a>Úprava profilu
 
-![Úprava profilu](media/active-directory-b2c-quickstarts-web-app/edit-profile-web.png)
+Azure Active Directory B2C poskytuje funkci, která uživatelům umožňuje aktualizovat své profily. Ukázková webová aplikace pro tento pracovní postup využívá zásady úprav profilu Azure AD B2C. 
 
-Změna vaše **zobrazovaný název** a **města**.  Klikněte na tlačítko **pokračovat** pro váš profil aktualizovat.
+1. Na řádku nabídek webové aplikace klikněte na název vašeho profilu a vyberte **Edit profile** (Upravit profil), abyste mohli upravit svůj vytvořený profil.
 
-![Aktualizovat profil](media/active-directory-b2c-quickstarts-web-app/update-profile-web.png)
+    ![Úprava profilu](media/active-directory-b2c-quickstarts-web-app/edit-profile-web.png)
 
-Všimněte si, že název zobrazovaný v pravé horní části stránky se zobrazí aktualizovaná název. 
+2. Změňte své **Zobrazované jméno** a **Město**.  
+3. Kliknutím na **Pokračovat** aktualizujte svůj profil. Nové zobrazované jméno se zobrazí v pravé horní části domovské stránky webové aplikace.
 
-## <a name="access-a-secured-web-api-resource"></a>Přístup k zabezpečeným webové rozhraní API prostředků
+## <a name="access-a-protected-web-api-resource"></a>Přístup k chráněnému prostředku webového rozhraní API
 
-Klikněte na tlačítko **seznam úkolů** zadat a upravit položky seznamu úkolů. Webové aplikace ASP.NET obsahuje přístupový token v požadavku na webové rozhraní API prostředků požadavku na oprávnění k provádění operací na položky seznamu úkolů uživatele. 
+1. Klikněte na **To-Do List** (Seznam úkolů), abyste mohli zadat a upravit položky vašeho seznamu úkolů. 
 
-Zadejte text v **nová položka** textové pole. Klikněte na tlačítko **přidat** volat Azure AD B2C zabezpečené webového rozhraní API, která přidá položku seznamu úkolů.
+2. Zadejte text do textového pole **New Item** (Nová položka). Klikněte na **Add** (Přidat). Zavolá se webové rozhraní API chráněné službou Azure AD B2C, které přidá položku seznamu úkolů.
 
-![Přidat položku seznamu úkolů](media/active-directory-b2c-quickstarts-web-app/add-todo-item-web.png)
+    ![Přidání položky seznamu úkolů](media/active-directory-b2c-quickstarts-web-app/add-todo-item-web.png)
 
-Úspěšně jste použili účtu uživatele Azure AD B2C Chcete-li provést autorizovaným volání webového rozhraní API Azure AD B2C zabezpečené.
+    Webová aplikace ASP.NET do požadavku na chráněný prostředek webového rozhraní API, aby provedl operace s položkami seznamu úkolů uživatele, zahrne přístupový token Azure AD.
+
+Úspěšně jste pomocí svého uživatelského účtu Azure AD B2C provedli autorizované zavolání webového rozhraní API chráněného službou Azure AD B2C.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Svého tenanta Azure AD B2C můžete použít i k vyzkoušení dalších kurzů nebo rychlých startů pro Azure AD B2C. Jakmile už ho nebudete potřebovat, můžete [svého tenanta Azure AD B2C odstranit](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
 ## <a name="next-steps"></a>Další kroky
 
-Ukázka používá v tento rychlý start slouží k akci scénáře Azure AD B2C, včetně:
+V tomto rychlém startu jste použili ukázkovou aplikaci ASP.NET s povolenou službou Azure AD B2C k přihlášení pomocí vlastní přihlašovací stránky, přihlášení pomocí zprostředkovatele sociální identity, vytvoření účtu Azure AD B2C a zavolání webového rozhraní API chráněného službou Azure AD B2C. 
 
-* Vytvoření nové místní účet pomocí e-mailovou adresu.
-* Resetování hesla místní účet.
-
-Pokud jste připraveni pustíte do vytvoření vlastního klienta Azure AD B2C a nakonfigurovat vzorku, který se spustí pomocí vlastního klienta, vyzkoušejte následující kurzu.
+Pokračujte k dalšímu kurzu, kde se dozvíte, jak ukázku v ASP.NET nakonfigurovat tak, aby používala vašeho vlastního tenanta Azure AD B2C.
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace ASP.NET s Azure Active Directory B2C profil registrace, přihlášení, úpravy a resetování hesla](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+> [Kurz: Ověřování uživatelů pomocí Azure Active Directory B2C ve webové aplikaci ASP.NET](active-directory-b2c-tutorials-web-app.md)

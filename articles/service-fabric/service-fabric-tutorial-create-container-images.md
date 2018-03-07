@@ -1,6 +1,6 @@
 ---
 title: "Vytváření imagí kontejneru pro Azure Service Fabric | Dokumentace Microsoftu"
-description: "Naučte se vytvářet image kontejneru pro vícekontejnerovou aplikaci Service Fabric."
+description: "V tomto kurzu se naučíte vytvářet image kontejneru pro vícekontejnerovou aplikaci Service Fabric."
 services: service-fabric
 documentationcenter: 
 author: suhuruli
@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: eb7a357369b605464b9986123f3c026fd1595a6f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 13cf13ce4a1456731d08f356ca405119ce1a6480
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="create-container-images-for-service-fabric"></a>Vytváření imagí kontejneru pro Service Fabric
+# <a name="tutorial-create-container-images-for-service-fabric"></a>Kurz: Vytváření imagí kontejneru pro Service Fabric
 
 Tento kurz je součástí série kurzů, která demonstruje používání kontejnerů v clusteru Service Fabric s Linuxem. V tomto kurzu je pro použití s prostředkem Service Fabric připravena vícekontejnerová aplikace. V následujících kurzech jsou tyto image použity jako součást aplikace Service Fabric. V tomto kurzu se naučíte: 
 

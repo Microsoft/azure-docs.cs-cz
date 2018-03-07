@@ -1,22 +1,22 @@
 ---
-title: "Přiřazení přístupu do služby Azure Cost Management | Microsoft Docs"
-description: "Přiřaďte přístup k datům služby Cost Management pomocí uživatelských účtů, které určují úroveň přístupu k entitám."
+title: "Kurz – Přiřazení přístupu do služby Azure Cost Management | Microsoft Docs"
+description: "V tomto kurzu zjistíte, jak přiřadit přístup k datům služby Cost Management pomocí uživatelských účtů, které určují úroveň přístupu k entitám."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 89639e6d9c06edf110dc8432fbefe1fbfd1298c9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0e2edc946c5d6ada1049fbd6a960ec138f7088f2
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům služby Cost Management
+# <a name="tutorial-assign-access-to-cost-management-data"></a>Kurz: Přiřazení přístupu k datům služby Cost Management
 
 Přístup k datům služby Cost Management zajišťuje správa uživatelů nebo entit. Přístup k *entitám* a funkcím správy určují uživatelské účty Cloudyn. Existují dva typy přístupu: přístup správce a uživatelský přístup. Pokud není přístup správce pro daného uživatele upravený, umožňuje uživateli neomezený přístup ke všem funkcím portálu Cloudyn, včetně správy uživatelů, správy seznamů příjemců a přístupu ke kořenové entitě všech dat entit. Uživatelský přístup je určený koncovým uživatelům, aby mohli zobrazovat sestavy a vytvářet je pomocí přístupu, který mají k datům entit.
 
@@ -29,7 +29,12 @@ Při registraci vaší smlouvy nebo účtu Azure se ve službě Cloudyn vytvoři
 > * Vytvoření uživatele s uživatelským přístupem
 > * Vytváření entit
 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
+## <a name="prerequisites"></a>Požadavky
+
+- Musíte mít účet Azure.
+- Musíte mít zaregistrovanou zkušební verzi nebo placené předplatné služby Azure Cost Management.
 
 ## <a name="create-a-user-with-admin-access"></a>Vytvoření uživatele s přístupem správce
 
@@ -83,7 +88,7 @@ V tomto kurzu jste se naučili:
 > * Vytvoření uživatele s uživatelským přístupem
 > * Vytváření entit
 
-V následujícím kurzu se dozvíte, jak na základě historických dat předpovědět budoucí výdaje.
+Pokud jste pro své účty ještě nepovolili přístup k rozhraní API Azure Resource Manageru, pokračujte k následujícímu článku.
 
 > [!div class="nextstepaction"]
-> [Odhad budoucích výdajů](tutorial-forecast-spending.md)
+> [Aktivace účtů a předplatných Azure](activate-subs-accounts.md)

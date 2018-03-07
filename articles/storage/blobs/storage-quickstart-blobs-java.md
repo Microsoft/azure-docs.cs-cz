@@ -1,21 +1,21 @@
 ---
-title: "Rychlý start Azure – Přenos objektů do a z úložiště objektů blob v Azure pomocí Javy | Dokumentace Microsoftu"
-description: "Rychle se naučíte, jak přenášet objekty do a z úložiště objektů blob v Azure pomocí Javy."
+title: "Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Javy | Microsoft Docs"
+description: "V tomto rychlém startu vytvoříte účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Javu k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru."
+services: storage
 author: roygara
 manager: jeconnoc
-services: storage
+ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/01/2017
+ms.date: 02/22/2018
 ms.author: rogarana
-ms.custom: mvc
-ms.openlocfilehash: 12e234b483ca7e3b030256bf1cedaed2bcc120d3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: cde366e75e4111a911be67795a2ad4dfa73778ea
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="transfer-objects-tofrom-azure-blob-storage-using-java"></a>Přenos objektů do a z úložiště objektů blob v Azure pomocí Javy
+# <a name="quickstart-upload-download-and-list-blobs-using-java"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Javy
 
 V tomto rychlém startu zjistíte, jak pomocí Javy nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure.
 

@@ -1,6 +1,6 @@
 ---
-title: "Nasazení aplikace Azure Service Fabric do Party Clusteru | Microsoft Docs"
-description: "Zjistěte, jak nasadit aplikaci do Party Clusteru."
+title: "Nasazení aplikace Azure Service Fabric do clusteru | Microsoft Docs"
+description: "V tomto kurzu se dozvíte, jak nasadit aplikaci do clusteru Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 91d4398589707e8007c4b93639ddb568e39f51a7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 35ddf77b1e9a9b355ed2cee4731e3c5d87c4a701
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>Nasazení aplikace do Party Clusteru v Azure
-Tento kurz představuje druhý díl série kurzů a ukáže vám, jak nasadit aplikaci Azure Service Fabric do Party Clusteru v Azure.
+# <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>Kurz: Nasazení aplikace do clusteru Service Fabric v Azure
+V tomto kurzu, který je druhou částí série, se dozvíte, jak nasadit aplikaci Azure Service Fabric do clusteru běžícího v Azure.
 
 Ve druhé části této série kurzů se naučíte:
 > [!div class="checklist"]

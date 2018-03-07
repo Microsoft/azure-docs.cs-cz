@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/14/2017
 ms.author: bradsev
-ms.openlocfilehash: e688068efb41cdccbeb23de3c8ad7a09021e5b3f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: aa7f2e6f44036738756391ecaa265c57c093c42c
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="get-started-with-r-server-on-hdinsight"></a>Začínáme s R Serverem ve službě HDInsight
 
@@ -61,7 +61,7 @@ Vytváření instancí HDInsight R Serverů můžete automatizovat pomocí šabl
 4. Vyberte **Typ clusteru**. Otevře se podokno **Konfigurace clusteru**. V podokně **Konfigurace clusteru** vyberte následující možnosti:
 
     * **Typ clusteru:** Vyberte **R Server**.
-    * **Verze:** Vyberte verzi R Serveru, která se má v clusteru nainstalovat. Aktuálně dostupná verze je **R Server 9.1 (HDI 3.6)**. Poznámky k dostupným verzím R Serveru jsou k dispozici na webu [MSDN](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes).
+    * **Verze:** Vyberte verzi R Serveru, která se má v clusteru nainstalovat. Aktuálně dostupná verze je **R Server 9.1 (HDI 3.6)**. Poznámky k dostupným verzím R Serveru jsou k dispozici na webu [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-r-server#r-server-91).
     * **Komunitní verze RStudia pro R Server:** Toto integrované vývojové prostředí (IDE) v prohlížeči se ve výchozím nastavení nainstaluje na hraniční uzel. Pokud si jeho instalaci nepřejete, zrušte zaškrtnutí tohoto políčka. Pokud zvolíte jeho instalaci, adresu URL pro přístup k přihlašovací stránce RStudio Serveru najdete po vytvoření clusteru na portálu v podokně aplikace pro váš cluster.
     * Pro další možnosti ponechte výchozí hodnoty a pomocí tlačítka **Vybrat** uložte typ clusteru.
 
@@ -102,7 +102,7 @@ Vytváření instancí HDInsight R Serverů můžete automatizovat pomocí šabl
 
         ssh –i <private-key-filename> remoteuser@<hostname public ip>
 
-      Nebo použijte privátní klíč jako součást definice výpočetního kontextu Hadoop Spark pro R Server na klientovi. Další informace najdete v článku [Vytvoření výpočetního kontextu pro Spark](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started).
+      Nebo použijte privátní klíč jako součást definice výpočetního kontextu Hadoop Spark pro R Server na klientovi. Další informace najdete v článku [Vytvoření výpočetního kontextu pro Spark](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark).
 
 8. Funkce rychlého vytvoření vás navede do podokna **Úložiště**. Tady můžete vybrat účet úložiště, který se má použít pro primární umístění systému souborů HDFS používaného clusterem. Vyberte nový nebo existující účet služby Azure Storage nebo existující účet Data Lake Store.
 
@@ -379,7 +379,7 @@ Všimněte si také, že nově přidaní uživatelé nemají v Linuxu oprávněn
 
 ## <a name="use-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>Použití R Serveru ve službě HDInsight ze vzdálené instance Microsoft R Serveru nebo klienta Microsoft R Client
 
-Můžete nastavit přístup k výpočetnímu kontextu HDInsight Hadoop Spark ze vzdálené instance Microsoft R Serveru nebo klienta Microsoft R Client spuštěné na počítači nebo přenosném počítači. Další informace viz část „Použití Microsoft R Serveru jako klienta Hadoop“ v článku [Vytvoření výpočetního kontextu pro Spark](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started.md). Abyste to mohli provést, při definování výpočetního kontextu RxSpark na svém přenosném počítači zadejte následující možnosti: hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches a sshProfileScript. Tady je příklad:
+Můžete nastavit přístup k výpočetnímu kontextu HDInsight Hadoop Spark ze vzdálené instance Microsoft R Serveru nebo klienta Microsoft R Client spuštěné na počítači nebo přenosném počítači. Další informace viz část „Použití Microsoft R Serveru jako klienta Hadoop“ v článku [Vytvoření výpočetního kontextu pro Spark](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios). Abyste to mohli provést, při definování výpočetního kontextu RxSpark na svém přenosném počítači zadejte následující možnosti: hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches a sshProfileScript. Tady je příklad:
 
 
     myNameNode <- "default"
@@ -705,7 +705,7 @@ Po dokončení modelování vašich dat můžete model operacionalizovat za úč
     rxSparkConnect(reset = TRUE)
 
 
-V této fázi je konfigurace operacionalizace dokončena. Nyní můžete použít balíček mrsdeploy na klientovi RClient pro připojení k operacionalizaci na hraničním uzlu. Pak můžete začít používat jeho funkce, jako je třeba [vzdálené spuštění](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution) a [webové služby](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette). V závislosti na tom, jestli je váš cluster nastavený ve virtuální síti, může být potřeba nastavit přesměrování portu tunelovým propojením přes přihlášení SSH.
+V této fázi je konfigurace operacionalizace dokončena. Nyní můžete použít balíček mrsdeploy na klientovi RClient pro připojení k operacionalizaci na hraničním uzlu. Pak můžete začít používat jeho funkce, jako je třeba [vzdálené spuštění](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) a [webové služby](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services). V závislosti na tom, jestli je váš cluster nastavený ve virtuální síti, může být potřeba nastavit přesměrování portu tunelovým propojením přes přihlášení SSH.
 
 ### <a name="r-server-cluster-on-a-virtual-network"></a>Cluster R Serveru ve virtuální síti
 

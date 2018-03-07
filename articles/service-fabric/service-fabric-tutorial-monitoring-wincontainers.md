@@ -1,6 +1,6 @@
 ---
-title: "Monitorovací a diagnostické Windows kontejnerů v Azure Service Fabric | Microsoft Docs"
-description: "Nastavení monitorování a Diagnostika pro kontejner Windows orchestrovat na Azure Service Fabric."
+title: "Monitorování a diagnostika kontejnerů Windows v Azure Service Fabric | Microsoft Docs"
+description: "V tomto kurzu nastavíte monitorování a diagnostiku pro kontejner Windows orchestrovaný na platformě Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,39 +15,39 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8fe3266cfcb7141684f9e1b5dfa74d6569c23b24
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.openlocfilehash: de77d10e4875173c7a067e945e473887d3cc7422
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="monitor-windows-containers-on-service-fabric-using-oms"></a>Monitorování Windows kontejnerů v Service Fabric pomocí OMS
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-oms"></a>Kurz: Monitorování kontejnerů Windows na platformě Service Fabric pomocí OMS
 
-Toto je část tři kurzu a vás provede procesem nastavení OMS monitorování Windows kontejnerů orchestrovat v Service Fabric.
+Toto je třetí část kurzu, která vás provede nastavením OMS pro monitorování kontejnerů Windows orchestrovaných na platformě Service Fabric.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Konfigurace OMS pro váš cluster Service Fabric
-> * K zobrazení a dotaz protokoly z kontejnerů a uzly použít k pracovnímu prostoru OMS
-> * Konfigurace agenta OMS na vyzvednutí kontejneru a metriky uzlu
+> * Konfigurace OMS pro cluster Service Fabric
+> * Použití pracovního prostoru OMS k zobrazení a dotazování protokolů z kontejnerů a uzlů
+> * Konfigurace agenta OMS ke sbírání metrik kontejnerů a uzlů
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete tento kurz, proveďte následující kroky:
-- Máte cluster v Azure, nebo [vytvořit v tomto kurzu](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-- [Nasazení do něj kontejnerizované aplikaci](service-fabric-host-app-in-a-container.md)
+Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
+- Máte cluster v Azure. Případně ho můžete [vytvořit pomocí tohoto kurzu](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+- [Nasadili jste do něj kontejnerizovanou aplikaci](service-fabric-host-app-in-a-container.md).
 
-## <a name="setting-up-oms-with-your-cluster-in-the-resource-manager-template"></a>Nastavení OMS k vašemu clusteru v šabloně Resource Manager
+## <a name="setting-up-oms-with-your-cluster-in-the-resource-manager-template"></a>Nastavení OMS pro cluster v šabloně Resource Manageru
 
-V případě, že jste použili [šablony poskytuje](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) v první části tohoto kurzu, měl by obsahovat těmito přídavky na Obecné šablony služby infrastruktury Azure Resource Manager. V případě tento případ, že máte cluster vlastní, který hledáte pro nastavení pro monitorování kontejnery s OMS:
-* Proveďte následující změny do šablony Resource Manageru.
-* Nasazení pomocí prostředí PowerShell pro upgrade tohoto clusteru [nasazení šablony](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm). Azure Resource Manager rozpoznává, aby existoval, takže bude zavádět ho jako upgrade.
+V případě, že jste použili [šablonu poskytnutou](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) v první části tohoto kurzu, měla by v obecné šabloně Azure Resource Manageru pro Service Fabric už zahrnovat následující položky. V případě, že máte vlastní cluster, který chcete nastavit pro monitorování kontejnerů pomocí OMS:
+* Proveďte následující změny šablony Resource Manageru.
+* Nasaďte ji pomocí PowerShellu a upgradujte tak svůj cluster prostřednictvím [nasazení šablony](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm). Azure Resource Manager rozpozná, že prostředky existují, takže ji zavede jako upgrade.
 
-### <a name="adding-oms-to-your-cluster-template"></a>Přidávání do šablony clusteru OMS
+### <a name="adding-oms-to-your-cluster-template"></a>Přidání OMS do šablony clusteru
 
-Proveďte následující změny v vaše *template.json*:
+Proveďte následující změny v souboru *template.json*.
 
-1. Přidat pracovní prostor OMS umístění a název pro vaše *parametry* části:
+1. Do části *parameters* (parametry) přidejte umístění a název pracovního prostoru OMS:
     
     ```json
     "omsWorkspacename": {
@@ -71,16 +71,16 @@ Proveďte následující změny v vaše *template.json*:
     }
     ```
 
-    Chcete-li změnit hodnotu použitou pro buď přidejte stejné parametry, které vaše *template.parameters.json* a změňte hodnoty používané existuje.
+    Pokud chcete některou z těchto hodnot změnit, přidejte stejné parametry do souboru *template.parameters.json* a změňte použité hodnoty tam.
 
-2. Přidejte název řešení a řešení, aby vaše *proměnné*: 
+2. Do části *variables* (proměnné) přidejte název řešení a řešení: 
     
     ```json
     "omsSolutionName": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
     "omsSolution": "ServiceFabric"
     ```
 
-3. Přidáte agenta Microsoft Monitoring Agent OMS jako rozšíření virtuálního počítače. Vyhledání prostředků sadách škálování virtuálních počítačů: *prostředky* > *"apiVersion": "[variables('vmssApiVersion')]"*. V části *vlastnosti* > *virtualMachineProfile* > *extensionProfile* > *rozšíření*, přidejte následující popis rozšíření pod *ServiceFabricNode* rozšíření: 
+3. Přidejte agenta Microsoft Monitoring Agent pro OMS jako rozšíření virtuálního počítače. Vyhledejte prostředek škálovací sady virtuálních počítačů: *resources* > *"apiVersion": "[variables('vmssApiVersion')]"*. V části *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* přidejte následující popis rozšíření za rozšíření *ServiceFabricNode*: 
     
     ```json
     {
@@ -100,7 +100,7 @@ Proveďte následující změny v vaše *template.json*:
     },
     ```
 
-4. Přidáte pracovní prostor OMS jako jednotlivé zdroje. V *prostředky*po sadách škálování virtuálních počítačů prostředků, přidejte následující:
+4. Přidejte pracovní prostor OMS jako samostatný prostředek. V části *resources* (prostředky) za prostředek škálovacích sad virtuálních počítačů přidejte následující:
     
     ```json
     {
@@ -180,52 +180,52 @@ Proveďte následující změny v vaše *template.json*:
     },
     ```
 
-[Zde](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) je ukázka šablonu (použité v část, jeden v tomto kurzu), která obsahuje všechny tyto změny, které můžete použít podle potřeby. Tyto změny přidá k pracovnímu prostoru analýzy protokolů OMS do vaší skupiny prostředků. V pracovním prostoru bude nakonfigurovat tak, aby odráželo události platformy Service Fabric z úložiště tabulek nakonfigurované [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) agenta. Agent OMS (Microsoft Monitoring Agent) také byla přidána do každého uzlu v clusteru jako rozšíření virtuálního počítače – to znamená, že při změně velikosti vašeho clusteru, agent je automaticky nakonfigurované na každém počítači a připojených k ve stejném pracovním prostoru.
+[Tady](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) je ukázková šablona (použitá v první části tohoto kurzu) obsahující všechny tyto změny, kterou podle potřeby můžete použít jako vodítko. Těmito změnami se přidá pracovní prostor OMS Log Analytics do vaší skupiny prostředků. Pracovní prostor se nakonfiguruje tak, aby sbíral události platformy Service Fabric z tabulek úložiště nakonfigurovaných pomocí agenta [Azure Diagnostics pro Windows](service-fabric-diagnostics-event-aggregation-wad.md). Do každého uzlu v clusteru se také přidal agent OMS (Microsoft Monitoring Agent) jako rozšíření virtuálního počítače – to znamená, že při škálování clusteru se agent automaticky nakonfiguruje na každém počítači a připojí se ke stejnému pracovnímu prostoru.
 
-Nasazení šablony s nové změny k upgradu aktuální cluster. Po dokončení byste měli vidět OMS prostředky ve vaší skupině prostředků. Až bude cluster připravený, nasaďte kontejnerizované aplikace k němu. V dalším kroku nastavíme monitorování kontejnerů.
+Nasazením šablony s provedenými změnami upgradujte svůj aktuální cluster. Po dokončení by se ve vaší skupině prostředků měly zobrazit prostředky OMS. Až bude cluster připravený, nasaďte do něj svou kontejnerizovanou aplikaci. V dalším kroku nastavíme monitorování kontejnerů.
 
-## <a name="add-the-container-monitoring-solution-to-your-oms-workspace"></a>Přidat do pracovního prostoru OMS řešením pro monitorování kontejneru
+## <a name="add-the-container-monitoring-solution-to-your-oms-workspace"></a>Přidání řešení pro monitorování kontejnerů do pracovního prostoru OMS
 
-Chcete-li nastavit řešení kontejneru v pracovním prostoru, vyhledejte *řešení monitorování kontejneru* a vytvořte prostředek kontejnery (v oddíle monitorování a správu kategorie).
+Pokud chcete ve svém pracovním prostoru nastavit řešení kontejnerů, vyhledejte *řešení pro monitorování kontejnerů* a vytvořte prostředek kontejnerů (v kategorii Monitorování a správa).
 
-![Přidání kontejnery řešení](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
+![Přidání řešení kontejnerů](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-Po zobrazení výzvy k *pracovním prostorem OMS*, vyberte pracovní prostor, který byl vytvořen ve vaší skupině prostředků a klikněte na **vytvořit**. Tím se přidá *řešení monitorování kontejneru* do pracovního prostoru, automaticky způsobí, že agent OMS nasazené šablonou spustit shromažďování protokolů docker a statistiky. 
+Po zobrazení výzvy k zadání *pracovního prostoru OMS* vyberte pracovní prostor, který se vytvořil ve vaší skupině prostředků, a klikněte na **Vytvořit**. Tím se do vašeho pracovního prostoru přidá *řešení pro monitorování kontejnerů* a agent OMS nasazený šablonou začne automaticky shromažďovat protokoly a statistiky Dockeru. 
 
-Vraťte se na vaše *skupiny prostředků*, kde byste teď měli vidět nově přidané řešení monitorování. Pokud kliknete na tlačítko do ní, cílová stránka by měla ukazují počet bitových kopií kontejneru máte systémem. 
+Vraťte se do své *skupiny prostředků*, kde by se teď mělo zobrazit nově přidané řešení pro monitorování. Když na něj kliknete, na cílové stránce by se měl zobrazit počet spuštěných imagí kontejnerů. 
 
-*Všimněte si, že byl spuštěn 5 instance Moje společnost fabrikam kontejneru z [součástí dva](service-fabric-host-app-in-a-container.md) kurzu*
+*Všimněte si, že mám spuštěných 5 instancí kontejneru fabrikam z [druhé části](service-fabric-host-app-in-a-container.md) kurzu.*
 
-![Kontejner řešení cílová stránka](./media/service-fabric-tutorial-monitoring-wincontainers/solution-landing.png)
+![Cílová stránka řešení kontejnerů](./media/service-fabric-tutorial-monitoring-wincontainers/solution-landing.png)
 
-Kliknutím na tlačítko do **řešení monitorování kontejneru** přejdete na podrobnější řídicí panel, který umožňuje procházet více panelů a také spouštět dotazy v analýzy protokolů. 
+Kliknutím na **Řešení pro monitorování kontejnerů** přejdete na podrobnější řídicí panel, kde můžete procházet několika panely a také spouštět dotazy v Log Analytics. 
 
-*Všimněte si, že se od září 2017 řešení prochází přes některé aktualizace - ignorovat všechny chyby, které se můžou zobrazit o událostech Kubernetes jako pracujeme na integraci několika orchestrators do stejného řešení.*
+*Poznámka: Od září 2017 prochází řešení určitými aktualizacemi – protože pracujeme na integraci více orchestrátorů do stejného řešení, ignorujte případné chyby týkající se událostí Kubernetes.*
 
-Vzhledem k tomu, že agent je výběr docker protokoly, výchozí hodnota pro zobrazení *stdout* a *stderr*. Pokud jste se posuňte doprava, zobrazí se kontejner image inventáře, stavu, metriky a ukázkové dotazy, které můžete spustit získat další užitečné data. 
+Vzhledem k tomu, že agent sbírá protokoly Dockeru, ve výchozím nastavení zobrazí výstupy *stdout* a *stderr*. Když se posunete doprava, zobrazí se inventář imagí kontejnerů, jejich stav, metriky a ukázkové dotazy, jejichž spuštěním můžete získat užitečnější data. 
 
-![Řídicí panel řešení kontejneru](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
+![Řídicí panel řešení kontejnerů](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
-Kliknutím na do některé z těchto panelů se dostanete k analýze protokolů dotaz, který generuje zobrazená hodnota. Změňte dotaz pro  *\**  zobrazíte všechny různé druhy protokoly, které jsou právě zachyceny. Tady můžete dotazovat nebo filtru pro kontejner výkonu, protokoly, nebo podívejte se na události platformy Service Fabric. Agenty nástroje jsou také neustále emitování prezenční signál z každého uzlu, který můžete prohlížet a ujistěte se, že stále probíhá shromáždění dat z vašich počítačů Pokud se změní konfiguraci clusteru.   
+Kliknutím na jakýkoli z těchto panelů přejdete k dotazu Log Analytics, který generuje zobrazenou hodnotu. Změňte dotaz na *\**, aby se zobrazily všechny různé druhy shromažďovaných protokolů. Tady můžete dotazovat nebo filtrovat výkon kontejnerů, protokoly nebo zobrazit události platformy Service Fabric. Vaši agenti také neustále vysílají z každého uzlu prezenční signál, jehož kontrolou se můžete ujistit, že se stále shromažďují data ze všech počítačů, pokud se konfigurace clusteru změní.   
 
-![Kontejner dotazu](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
+![Dotaz na kontejner](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 
-## <a name="configure-oms-agent-to-pick-up-performance-counters"></a>Konfigurace agenta OMS na vyzvednutí čítače výkonu
+## <a name="configure-oms-agent-to-pick-up-performance-counters"></a>Konfigurace agenta OMS ke sbírání čítačů výkonu
 
-Další výhodou používání agenta OMS je možné změnit čítače výkonu, které chcete vyzvednutí prostřednictvím OMS uživatelské rozhraní, namísto nutnosti konfigurovat Azure diagnostics agenta a provádět Resource Manager upgrade pokaždé, když na základě šablony. Chcete-li to provést, klikněte na **portálu OMS** na cílovou stránku vašeho řešení monitorování kontejneru (nebo Service Fabric).
+Další výhodou používání agenta OMS je možnost změnit čítače výkonu, které chcete sbírat, přes uživatelské rozhraní OMS – nemusíte tak pokaždé konfigurovat agenta diagnostiky Azure ani provádět upgrade na základě šablony Resource Manageru. Provedete to tak, že kliknete na **Portál OMS** na cílové stránce vašeho řešení pro monitorování kontejnerů (nebo Service Fabric).
 
 ![Portál OMS](./media/service-fabric-tutorial-monitoring-wincontainers/oms-portal.png)
 
-To bude trvat můžete do pracovního prostoru na portálu OMS, kde můžete zobrazit vaše řešení, vytvořit vlastní řídicí panely, jakož i Konfigurace agenta OMS. 
-* Klikněte na **ozubené kolo wheel** v pravém horním rohu obrazovky a otevře *nastavení* nabídky.
-* Klikněte na **připojené zdroje** > **servery Windows** a ověřte, že máte *připojené 5 počítače se systémem Windows*.
-* Klikněte na **Data** > **čítačů výkonu systému Windows** vyhledat a přidat nové čítače výkonu. Zde se zobrazí seznam doporučení od OMS pro čítače výkonu, že můžete shromažďovat a také možnost vyhledat další čítače. Klikněte na tlačítko **přidat vybrané čítače výkonu** spustit shromažďování navrhované metriky.
+Tím přejdete do svého pracovního prostoru na portálu OMS, kde můžete zobrazit svá řešení, vytvářet vlastní řídicí panely a také konfigurovat agenta OMS. 
+* Kliknutím na **ozubené kolečko** v pravém horním rohu obrazovky otevřete nabídku *Nastavení*.
+* Klikněte na **Připojené zdroje** > **Servery Windows** a ověřte, že máte *připojených 5 počítačů s Windows*.
+* Klikněte na **Data** > **Čítače výkonu Windows**, abyste mohli vyhledat a přidat nové čítače výkonu. Tady se zobrazí seznam doporučení z OMS týkajících se čítačů výkonů, které můžete shromažďovat, a také možnost vyhledat jiné čítače. Kliknutím na **Přidat vybrané čítače výkonu** spustíte shromažďování navrhovaných metrik.
 
     ![Čítače výkonu](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters.png)
 
-Zpět na portálu Azure **aktualizovat** řešení monitorování kontejneru v pár minut a by se měl spustit zobrazíte *výkon počítače* příchozí data. To vám pomůže pochopit, jak jsou používány vašich prostředků. Tyto metriky můžete použít také k příslušné rozhodnutí o škálování clusteru nebo k potvrzení, pokud je cluster vyrovnávání zatížení, podle očekávání.
+Vraťte se na web Azure Portal a po několika minutách **aktualizujte** své řešení pro monitorování kontejnerů. Měla by se zobrazit přicházející data o *výkonu počítačů*. Ta vám pomůžou porozumět využití vašich prostředků. Tyto metriky můžete využít také k přijímání patřičných rozhodnutí o škálování clusteru nebo k potvrzení, jestli cluster vyrovnává zatížení podle očekávání.
 
-*Poznámka: Ujistěte se, že čas filtry jsou správně nastavené pro vás využívat tyto metriky.* 
+*Poznámka: Abyste mohli využívat tyto metriky, ujistěte se, že máte správně nastavené filtry času.* 
 
 ![Čítače výkonu 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
 
@@ -235,13 +235,13 @@ Zpět na portálu Azure **aktualizovat** řešení monitorování kontejneru v p
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Konfigurace OMS pro váš cluster Service Fabric
-> * K zobrazení a dotaz protokoly z kontejnerů a uzly použít k pracovnímu prostoru OMS
-> * Konfigurace agenta OMS na vyzvednutí kontejneru a metriky uzlu
+> * Konfigurace OMS pro cluster Service Fabric
+> * Použití pracovního prostoru OMS k zobrazení a dotazování protokolů z kontejnerů a uzlů
+> * Konfigurace agenta OMS ke sbírání metrik kontejnerů a uzlů
 
-Teď, když jste nastavili monitorování pro aplikaci kontejnerizované, zkuste následující postup:
+Teď, když jste nastavili monitorování své kontejnerizované aplikace, vyzkoušejte následující:
 
-* Nastavte OMS pro cluster s podporou Linux následující podobným způsobem, jak je uvedeno výše. Referenční dokumentace [této šablony](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) provést změny v šabloně Resource Manager.
-* Konfigurace OMS nastavit [automatizované výstrahy](../log-analytics/log-analytics-alerts.md) které pomáhají při zjišťování a diagnostiky.
-* Prozkoumejte Service Fabric seznam [doporučená čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) konfigurace pro clusterů.
-* Získat familiarized s [vyhledávání a dotazování protokolu](../log-analytics/log-analytics-log-searches.md) funkcím poskytovaným jako součást analýzy protokolů.
+* Podle podobných kroků jako výše nastavte OMS pro cluster s Linuxem. Při provádění změn šablony Resource Manageru můžete jako vodítko použít [tuto šablonu](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
+* Nakonfigurujte OMS a nastavte [automatické upozorňování](../log-analytics/log-analytics-alerts.md), které vám pomůže se zjišťováním a diagnostikou.
+* Prozkoumejte seznam [doporučených čítačů výkonů](service-fabric-diagnostics-event-generation-perf.md) Service Fabric, které můžete nakonfigurovat pro svůj cluster.
+* Seznamte se s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) nabízenými jako součást Log Analytics.

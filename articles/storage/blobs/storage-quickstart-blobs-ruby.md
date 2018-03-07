@@ -1,22 +1,22 @@
 ---
-title: "Rychlý start Azure – Přenos objektů do a z úložiště objektů blob v Azure pomocí Ruby | Dokumentace Microsoftu"
-description: "Rychle se naučíte, jak přenášet objekty do a z úložiště objektů blob v Azure pomocí Ruby."
+title: "Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Ruby | Microsoft Docs"
+description: "V tomto rychlém startu vytvoříte účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Ruby k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru."
 services: storage
-author: ruthogunnnaike
+author: tamram
 manager: jeconnoc
+ms.custom: mvc
 ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 01/18/2018
+ms.date: 02/22/2018
 ms.author: seguler
-ms.openlocfilehash: 649099f045639c8c506fb4a4be65736626044fe6
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: df885849e879317be6379767a09dd30a93687902
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/24/2018
 ---
-#  <a name="transfer-objects-tofrom-azure-blob-storage-using-ruby"></a>Přenos objektů do a z úložiště objektů blob v Azure pomocí Ruby
+# <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Ruby
+
 V tomto rychlém startu zjistíte, jak pomocí Ruby nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
 
 ## <a name="prerequisites"></a>Požadavky

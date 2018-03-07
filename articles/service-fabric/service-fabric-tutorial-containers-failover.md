@@ -1,13 +1,13 @@
 ---
-title: "Převzetí služeb při selhání a škálování aplikace Azure Service Fabric kontejnery | Microsoft Docs"
-description: "Zjistěte, jak se v aplikaci Azure Service Fabric kontejnery zpracovává převzetí služeb při selhání.  Také informace o škálování kontejnerů a služeb spuštěných v clusteru."
+title: "Převzetí služeb při selhání a škálování aplikace Azure Service Fabric typu kontejner | Microsoft Docs"
+description: "V tomto kurzu se dozvíte, jak se v aplikaci Azure Service Fabric typu kontejner zpracovává převzetí služeb při selhání.  Také se naučíte škálovat kontejnery a služby spuštěné v clusteru."
 services: service-fabric
 documentationcenter: 
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker kontejnery, Mikroslužeb, Service Fabric, Azure"
+keywords: "Docker, kontejnery, mikroslužby, Service Fabric, Azure"
 ms.assetid: 
 ms.service: service-fabric
 ms.topic: tutorial
@@ -16,73 +16,73 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 21dd9dfbc90c26236c43e2c334305ca97f63d361
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 27d1918125b8c2f79f6506470ae43354e402f9af
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Předvedení selhání více a škálování služby kontejneru s Service Fabric
+# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Kurz: Ukázka převzetí služeb při selhání a škálování služeb kontejneru pomocí Service Fabric
 
-V tomto kurzu je součástí série, tři. V tomto kurzu zjistíte, jak zpracovává převzetí služeb při selhání v Service Fabric – aplikace typu kontejner. Kromě toho zjistíte, jak škálování kontejnerů. V tomto kurzu jste:
+Tento kurz je třetí částí série. V tomto kurzu se dozvíte, jak se v aplikacích Service Fabric typu kontejner zpracovává převzetí služeb při selhání. Kromě toho se naučíte škálovat kontejnery. V tomto kurzu jste:
 
 > [!div class="checklist"]
-> * Další informace o kontejneru převzetí služeb při selhání v clusteru Service Fabric  
-> * Škálování front-endu webové kontejnery v aplikace provádáte
+> * Seznámili jste se s převzetím služeb při selhání kontejneru v clusteru Service Fabric.  
+> * Škálovali jste v aplikaci kontejnery webového front-endu.
 
 ## <a name="prerequisites"></a>Požadavky
-Aplikace z [část 2](service-fabric-tutorial-package-containers.md) běží v clusteru Service Fabric active.
+Aplikace z [části 2](service-fabric-tutorial-package-containers.md) je spuštěná na aktivním clusteru Service Fabric.
 
 ## <a name="fail-over-a-container-in-a-cluster"></a>Převzetí služeb při selhání kontejneru v clusteru
-Service Fabric zajišťuje vaše instance kontejneru automaticky přesune na jiné uzly v clusteru, musí dojít k chybě. Můžete také ručně uzel kontejnerů vyprázdnit a řádně přesunout do jiných uzlů v clusteru. Služby můžete škálovat několika způsoby, v tomto příkladu používáme Service Fabric Explorer.
+Service Fabric zajišťuje v případě selhání automatický přesun instancí kontejneru do jiných uzlů clusteru. Kontejnery můžete z uzlu také ručně vyprázdnit a řádně je přesunout do jiných uzlů v clusteru. Služby můžete škálovat několika způsoby, v tomto příkladu používáme Service Fabric Explorer.
 
 Pokud chcete převzít služby při selhání front-end kontejneru, proveďte následující kroky:
 
 1. Otevřete ve vašem clusteru Service Fabric Explorer – například `http://lin4hjim3l4.westus.cloudapp.azure.com:19080`.
-2. Klikněte na **fabric: / TestContainer/azurevotefront** uzlu ve stromovém zobrazení a rozbalte uzel oddílu (představované identifikátor GUID). Všimněte si název uzlu ve stromovém zobrazení, se zobrazí uzly kontejneru aktuálně běží – například`_nodetype_1`
-3. Rozbalte **uzly** uzlu ve stromovém zobrazení. Klikněte na znak výpustky (tři tečky) vedle uzlu, který je spuštěn kontejneru.
+2. Ve stromovém zobrazení klikněte na uzel **fabric:/TestContainer/azurevotefront** a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID). Všimněte si názvu uzlu ve stromovém zobrazení, které zobrazuje uzly, na kterých je kontejner právě spuštěný – například `_nodetype_1`.
+3. Ve stromovém zobrazení rozbalte uzel **Uzly**. Klikněte na tři tečky vedle uzlu, na kterém je kontejner spuštěný.
 1. Pokud chcete tento uzel restartovat, zvolte **Restartovat** a potvrďte akci restartování. Restartování způsobí převzetí služeb při selhání kontejneru do jiného uzlu v clusteru.
 
 ![noderestart][noderestart]
 
-Všimněte si, jak označující název uzlu tam, kde běží front-endu kontejnery, nyní se změní na jiný uzel v clusteru. Po chvíli se nyní byste měli mít vyhledejte aplikaci znovu a zobrazit aplikace teď běžící na jiný uzel.
+Všimněte si, jak se název uzlu (který značí, kde jsou spuštěné kontejnery front-endu) změní na jiný uzel v clusteru. Po chvíli byste opět měli mít k aplikaci přístup. Uvidíte, že je teď spuštěná na jiném uzlu.
 
-## <a name="scale-containers-and-services-in-a-cluster"></a>Škálování kontejnerů a služby v clusteru
-Kontejnery Service Fabric je možné rozšířit mezi clustery pro přizpůsobení pro zatížení v rámci služeb. Kontejner je škálovat tak, že změníte počet instancí spuštěných v clusteru.
+## <a name="scale-containers-and-services-in-a-cluster"></a>Škálování kontejnerů a služeb v clusteru
+Kontejnery Service Fabric je možné škálovat napříč clusterem a vyřešit tak zatížení služeb. Kontejnery se škálují změnou počtu instancí spuštěných v clusteru.
 
-Škálování webového front-endu, proveďte následující kroky:
+Pokud chcete škálovat webový front-end, proveďte následující kroky:
 
 1. Otevřete ve vašem clusteru Service Fabric Explorer – například `http://lin4hjim3l4.westus.cloudapp.azure.com:19080`.
-2. Klikněte na znak výpustky (tři tečky) vedle položky **fabric: / TestContainer/azurevotefront** uzel ve stromu zobrazit a vybrat **škálování služby**.
+2. Ve stromovém zobrazení klikněte na tři tečky vedle uzlu **fabric:/TestContainer/azurevotefront** a zvolte **Škálovat službu**.
 
 ![sfxscale][sfxscale]
 
 Nyní můžete škálovat počet instancí webového front-endu.
 
 3. Změňte počet na **2** a klikněte na **Škálovat službu**.
-4. Klikněte na **fabric: / TestContainer/azurevotefront** uzel ve stromu zobrazení a rozbalte uzel oddílu (představované identifikátor GUID).
+4. Ve stromovém zobrazení klikněte na uzel **fabric:/TestContainer/azurevotefront** a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID).
 
 ![sfxscaledone][sfxscaledone]
 
-Nyní je vidět, že má služba dvě instance. Ve stromovém zobrazení můžete zjistit, které uzly spustili instance.
+Nyní je vidět, že má služba dvě instance. Ve stromovém zobrazení vidíte, na kterých uzlech jsou instance spuštěné.
 
 Touto jednoduchou úlohou správy jsme zdvojnásobili prostředky, které má naše front-end služba k dispozici pro zpracování uživatelské zátěže. Je důležité si uvědomit, že pro spolehlivý provoz služby nepotřebujete více jejích instancí. Pokud služba selže, Service Fabric zajistí v clusteru spuštění nové instance služby.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se ukázán kontejneru převzetí služeb při selhání a také škálování aplikace. Dokončili jste následující kroky:
+V tomto kurzu jsme předvedli převzetí služeb při selhání kontejneru a také škálování aplikace. Dokončili jste následující kroky:
 
 > [!div class="checklist"]
-> * Další informace o kontejneru převzetí služeb při selhání v clusteru Service Fabric  
-> * Škálování front-endu webové kontejnery v aplikace provádáte
+> * Seznámili jste se s převzetím služeb při selhání kontejneru v clusteru Service Fabric.  
+> * Škálovali jste v aplikaci kontejnery webového front-endu.
 
-V této série kurzu jste zjistili, jak: 
+V této sérii kurzů jste se naučili: 
 > [!div class="checklist"]
-> * Vytvořit kontejner bitové kopie
-> * Push kontejneru bitové kopie do registru kontejner Azure
-> * Kontejnery balíčku pro Service Fabric pomocí Yeoman
-> * Sestavení a spuštění aplikace služby infrastruktury s kontejnery
-> * Zpracování převzetí služeb při selhání a škálování v Service Fabric
+> * Vytváření imagí kontejneru
+> * Nahrávání imagí kontejneru do služby Azure Container Registry
+> * Balení kontejnerů pro Service Fabric pomocí Yeomanu
+> * Sestavení a spuštění aplikace Service Fabric s kontejnery
+> * Jak se zpracovává převzetí služeb při selhání a škálování v Service Fabric
 
 [noderestart]: ./media/service-fabric-tutorial-containers-failover/containersfailovertutorialnoderestart.png
 [sfxscale]: ./media/service-fabric-tutorial-containers-failover/containersfailovertutorialscale.png

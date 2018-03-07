@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/23/2017
 ms.author: saveenr
-ms.openlocfilehash: 8817b511d779029421491194b50120d51ec9dbad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d327a3c28e928550b361c07569df74060cfcac0d
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="overview-of-microsoft-azure-data-lake-analytics"></a>Přehled Microsoft Azure Data Lake Analytics
 ## <a name="what-is-azure-data-lake-analytics"></a>Co je Azure Data Lake Analytics?
-Azure Data Lake Analytics je služba analytických úloh na vyžádání pro zjednodušení analýz velkých objemů dat. Můžete se soustředit na psaní, spouštění a správu úloh, a nikoli na provoz distribuované infrastruktury. Namísto nasazení, konfigurace a ladění hardwaru můžete psát dotazy, transformovat data a extrahovat cenné informace. Analytická služba dokáže okamžitě zpracovávat úlohy libovolného rozsahu – stačí nastavit, jaký výkon potřebujete. Za úlohu platíte jenom tehdy, když je spuštěná, což je nákladově efektivní. Analytická služba podporuje Azure Active Directory, takže můžete jednoduše spravovat přístup a role integrované do vašeho místního systému identit. Zahrnuje také jazyk U-SQL, který kombinuje výhody jazyka SQL a výrazovou sílu uživatelského kódu. Škálovatelný distribuovaný modul runtime jazyka U-SQL umožňuje efektivně analyzovat data v úložišti a na SQL Serverech v Azure, ve službě Azure SQL Database a Azure SQL Data Warehouse.
+Azure Data Lake Analytics je služba analytických úloh na vyžádání, která zjednodušuje práci s velkými objemy dat. Namísto nasazení, konfigurace a ladění hardwaru můžete psát dotazy, transformovat data a extrahovat cenné informace. Analytická služba dokáže okamžitě zpracovávat úlohy libovolného rozsahu – stačí nastavit, jaký výkon potřebujete. Za úlohu platíte jenom tehdy, když je spuštěná, což je nákladově efektivní. Analytická služba podporuje také jazyk U-SQL, který kombinuje výhody jazyka SQL a sílu imperativního kódu. Jazyk U-SQL umožňuje analyzovat data napříč SQL Serverem v Azure a službami Data Lake Store, Azure SQL Database a Azure SQL Data Warehouse.
 
 ## <a name="key-capabilities"></a>Klíčové funkce
 * **Dynamické škálování**
@@ -37,9 +37,11 @@ Azure Data Lake Analytics je služba analytických úloh na vyžádání pro zje
 * **Hladká integrace s vašimi investicemi do IT**
   
     Služba Data Lake Analytics může využívat vaše stávající investice do IT pro účely identity, správy, zabezpečení a datových skladů. Tento přístup usnadňuje řízení dat a umožňuje snadné rozšíření stávajících datových aplikací. Služba Data Lake Analytics je integrovaná se službou Active Directory pro účely oprávnění a správy uživatelů a obsahuje integrované monitorování a auditování.
+
 * **Cenová dostupnost a nákladová efektivita**
   
-    Služba Data Lake Analytics je nákladově efektivní řešení pro spouštění úloh s velkým objemem dat. Platíte za jednotlivé úlohy, kdy se zpracovávají data. Není potřeba žádný hardware, licence ani smlouvy o podpoře pro konkrétní službu. Při spuštění a dokončení úlohy systém automaticky vertikálně navyšuje a snižuje kapacitu, takže nikdy neplatíte za víc, než potřebujete.
+    Služba Data Lake Analytics je nákladově efektivní řešení pro spouštění úloh s velkým objemem dat. Platíte za jednotlivé úlohy, kdy se zpracovávají data. Není potřeba žádný hardware, licence ani smlouvy o podpoře pro konkrétní službu. Při spuštění a dokončení úlohy systém automaticky vertikálně navyšuje a snižuje kapacitu, takže nikdy neplatíte za víc, než potřebujete. [Další informace o kontrole nákladů a úsporách](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c).
+    
 * **Možnost práce se všemi daty Azure**
   
     Služba Data Lake Analytics je optimalizovaná pro práci se službou Azure Data Lake – nabízí tak nejvyšší úroveň výkonu, propustnosti a paralelizace vašich úloh s velkými objemy dat.  Data Lake Analytics může spolupracovat také se službami Azure Blob Storage a Azure SQL Database.
@@ -48,4 +50,4 @@ Azure Data Lake Analytics je služba analytických úloh na vyžádání pro zje
  
   * Začínáme se službou Data Lake Analytics pomocí webu [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI](data-lake-analytics-get-started-cli2.md)
   * Správa služby Azure Data Lake Analytics pomocí webu [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node.js](data-lake-analytics-manage-use-nodejs.md)
-  * [Monitorování úloh Azure Data Lake Analytics a odstraňování potíží pomocí webu Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md) 
+  * [Kontrola nákladů a úspory s využitím služby Data Lake Analytics](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)

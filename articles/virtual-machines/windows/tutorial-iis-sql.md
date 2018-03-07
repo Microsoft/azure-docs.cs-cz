@@ -1,59 +1,66 @@
 ---
-title: "Vytvořte virtuální počítače se systémem SQL &#92; IIS &#92;. NET zásobníku v Azure | Microsoft Docs"
-description: "Kurz – instalace Azure SQL, služby IIS, .NET zásobníku na virtuální počítače Windows."
+title: "Vytváření virtuálních počítačů se stackem SQL&#92;IIS&#92;.NET v Azure| Microsoft Docs"
+description: "Kurz – Instalace stacku Azure SQL, služby IIS a .NET na virtuálních počítačích s Windows"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/24/2017
+ms.date: 02/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6533ab205e07243e2f757ea0a66028e1d140c52b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: MT
+ms.openlocfilehash: ad84d6e8f74fa184ac2359ff7f08e6c8143d419a
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="install-a-sql92iis92net-stack-in-azure"></a>Nainstalujte SQL &#92; IIS &#92;. NET zásobníku v Azure
+# <a name="install-a-sql92iis92net-stack-in-azure"></a>Instalace stacku SQL&#92;IIS&#92;.NET v Azure
 
-V tomto kurzu jsme nainstalovat SQL &#92; IIS &#92;. NET zásobníku pomocí Azure PowerShell. Tato zásobníku se skládá z dva virtuální počítače se systémem Windows Server 2016 s služby IIS a rozhraní .NET a dalších s SQL serverem.
+V tomto kurzu nainstalujeme stack SQL&#92;IIS&#92;.NET pomocí Azure PowerShellu. Tento stack se skládá ze dvou virtuálních počítačů s Windows Serverem 2016. Na jednom je služba IIS a .NET a na druhém SQL Server.
 
 > [!div class="checklist"]
-> * Vytvoření virtuálního počítače pomocí New-AzVM
-> * Do virtuálního počítače nainstalujte službu IIS a .NET Core SDK
-> * Vytvoření virtuálního počítače s SQL serverem
-> * Nainstalujte rozšíření systému SQL Server
+> * Vytvoření virtuálního počítače 
+> * Instalace služby IIS a sady .NET Core SDK na virtuální počítač
+> * Vytvoření virtuálního počítače s SQL Serverem
+> * Instalace rozšíření SQL Serveru
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.1.1 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+Tento kurz vyžaduje modul AzureRM.Compute verze 4.3.1 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM.Compute`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
-## <a name="create-a-iis-vm"></a>Vytvoření virtuálního počítače služby IIS 
+## <a name="create-a-iis-vm"></a>Vytvoření virtuálního počítače se službou IIS 
 
-V tomto příkladu používáme [New-AzVM](https://www.powershellgallery.com/packages/AzureRM.Compute.Experiments) rutiny v prostředí PowerShell cloudu se rychle vytvořit virtuální počítač s Windows Server 2016 a potom nainstalovat službu IIS a rozhraní .NET Framework. Službu IIS a virtuálním počítačům systému SQL sdílet skupinu prostředků a virtuální síti, proto jsme vytvořit proměnných pro tyto názvy.
+V tomto příkladu pomocí rutiny [New-AzureRMVM](/powershell/module/azurerm.compute/new-azurermvm) v PowerShellu nebo službě Cloud Shell rychle vytvoříme virtuální počítač s Windows Serverem 2016 a pak nainstalujeme službu IIS a rozhraní .NET Framework. Virtuální počítače se službou IIS a s SQL sdílí skupinu prostředků a virtuální síť, takže pro jejich názvy vytvoříme proměnné.
 
-Klikněte na **zkuste ho** tlačítko pravém horním rohu stránky blok kódu spusťte cloudové prostředí v tomto okně. Zobrazí se výzva k zadání přihlašovacích údajů pro virtuální počítač na příkazový řádek.
 
 ```azurepowershell-interactive
-$vmName = "IISVM$(Get-Random)"
+$vmName = "IISVM"
 $vNetName = "myIISSQLvNet"
 $resourceGroup = "myIISSQLGroup"
-New-AzureRMVm -Name $vmName -ResourceGroupName $resourceGroup -VirtualNetworkName $vNetName 
+New-AzureRmVm `
+    -ResourceGroupName $resourceGroup `
+    -Name $vmName `
+    -Location "East US" `
+    -VirtualNetworkName $vNetName `
+    -SubnetName "myIISSubnet" `
+    -SecurityGroupName "myNetworkSecurityGroup" `
+    -AddressPrefix 192.168.0.0/16 `
+    -PublicIpAddressName "myIISPublicIpAddress" `
+    -OpenPorts 80,3389 
 ```
 
-Instalace IIS a rozhraní .NET framework pomocí rozšíření vlastních skriptů.
+Nainstalujte službu IIS a rozhraní .NET Framework pomocí rozšíření vlastních skriptů.
 
 ```azurepowershell-interactive
-
-Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
+Set-AzureRmVMExtension `
+    -ResourceGroupName $resourceGroup `
     -ExtensionName IIS `
     -VMName $vmName `
     -Publisher Microsoft.Compute `
@@ -63,67 +70,73 @@ Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
     -Location EastUS
 ```
 
+## <a name="create-another-subnet"></a>Vytvoření další podsítě
+
+Vytvořte druhou podsíť pro virtuální počítač SQL. Virtuální síť získáte pomocí rutiny [Get-AzureRmVirtualNetwork]{/powershell/module/azurerm.network/get-azurermvirtualnetwork}.
+
+```azurepowershell-interactive
+$vNet = Get-AzureRmVirtualNetwork `
+   -Name $vNetName `
+   -ResourceGroupName $resourceGroup
+```
+
+Vytvořte konfiguraci podsítě pomocí rutiny [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig).
+
+
+```azurepowershell-interactive
+Add-AzureRmVirtualNetworkSubnetConfig `
+   -AddressPrefix 192.168.0.0/24 `
+   -Name mySQLSubnet `
+   -VirtualNetwork $vNet `
+   -ServiceEndpoint Microsoft.Sql
+```
+
+Aktualizujte virtuální síť s použitím informací o nové podsíti pomocí rutiny [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork).
+   
+```azurepowershell-interactive   
+$vNet | Set-AzureRmVirtualNetwork
+```
+
 ## <a name="azure-sql-vm"></a>Virtuální počítač Azure SQL
 
-Chcete-li vytvořit virtuální počítač SQL používáme předem nakonfigurovaná Azure marketplace bitovou kopii systému SQL server. Nejdříve vytvoříme virtuální počítač a potom jsme do virtuálního počítače nainstalujte rozšíření serveru SQL. 
+K vytvoření virtuálního počítače SQL použijte předkonfigurovanou image serveru SQL z Azure Marketplace. Nejprve vytvoříme virtuální počítač a pak na něj nainstalujeme rozšíření SQL Serveru. 
 
 
 ```azurepowershell-interactive
-# Create user object. You get a pop-up prompting you to enter the credentials for the VM.
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
-
-# Create a subnet configuration
-$vNet = Get-AzureRmVirtualNetwork -Name $vNetName -ResourceGroupName $resourceGroup
-Add-AzureRmVirtualNetworkSubnetConfig -Name mySQLSubnet -VirtualNetwork $vNet -AddressPrefix "192.168.2.0/24"
-Set-AzureRmVirtualNetwork -VirtualNetwork $vNet
-
-
-# Create a public IP address and specify a DNS name
-$pip = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Location eastus `
-  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
-
-# Create an inbound network security group rule for port 3389
-$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
-  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
-  -DestinationPortRange 3389 -Access Allow
-
-
-# Create a network security group
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location eastus `
-  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
-
-# Create a virtual network card and associate with public IP address and NSG
-$nic = New-AzureRmNetworkInterface -Name mySQLNic -ResourceGroupName $resourceGroup -Location eastus `
-  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
-
-# Create a virtual machine configuration
-$vmConfig = New-AzureRmVMConfig -VMName mySQLVM -VMSize Standard_D1 | `
-Set-AzureRmVMOperatingSystem -Windows -ComputerName mySQLVM -Credential $cred | `
-Set-AzureRmVMSourceImage -PublisherName MicrosoftSQLServer -Offer SQL2014SP2-WS2012R2 -Skus Enterprise -Version latest | `
-Add-AzureRmVMNetworkInterface -Id $nic.Id
-
-# Create the VM
-New-AzureRmVM -ResourceGroupName $resourceGroup -Location eastus -VM $vmConfig
+New-AzureRmVm `
+    -ResourceGroupName $resourceGroup `
+    -Name "mySQLVM" `
+    -ImageName "MicrosoftSQLServer:SQL2016SP1-WS2016:Enterprise:latest" `
+    -Location eastus `
+    -VirtualNetworkName $vNetName `
+    -SubnetName "mySQLSubnet" `
+    -SecurityGroupName "myNetworkSecurityGroup" `
+    -PublicIpAddressName "mySQLPublicIpAddress" `
+    -OpenPorts 3389,1401 
 ```
 
-Použití [Set-AzureRmVMSqlServerExtension](/powershell/module/azurerm.compute/set-azurermvmsqlserverextension) přidat [rozšíření systému SQL Server](/sql/virtual-machines-windows-sql-server-agent-extension.md) do virtuálního počítače SQL.
+Pomocí rutiny [Set-AzureRmVMSqlServerExtension](/powershell/module/azurerm.compute/set-azurermvmsqlserverextension) přidejte na virtuální počítač SQL [rozšíření SQL Serveru](/sql/virtual-machines-windows-sql-server-agent-extension.md).
 
 ```azurepowershell-interactive
-Set-AzureRmVMSqlServerExtension -ResourceGroupName $resourceGroup -VMName mySQLVM -name "SQLExtension"
+Set-AzureRmVMSqlServerExtension `
+   -ResourceGroupName $resourceGroup  `
+   -VMName mySQLVM `
+   -Name "SQLExtension" `
+   -Location "EastUS"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nainstalovali SQL &#92; IIS &#92;. NET zásobníku pomocí Azure PowerShell. Naučili jste se tyto postupy:
+V tomto kurzu jste nainstalovali stack SQL&#92;IIS&#92;.NET pomocí Azure PowerShellu. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Vytvoření virtuálního počítače pomocí New-AzVM
-> * Do virtuálního počítače nainstalujte službu IIS a .NET Core SDK
-> * Vytvoření virtuálního počítače s SQL serverem
-> * Nainstalujte rozšíření systému SQL Server
+> * Vytvoření virtuálního počítače 
+> * Instalace služby IIS a sady .NET Core SDK na virtuální počítač
+> * Vytvoření virtuálního počítače s SQL Serverem
+> * Instalace rozšíření SQL Serveru
 
-Přechodu na v dalším kurzu se dozvíte, jak zabezpečit webového serveru IIS s certifikáty protokolu SSL.
+V dalším kurzu se dozvíte, jak zabezpečit webový server služby IIS pomocí certifikátů SSL.
 
 > [!div class="nextstepaction"]
-> [Zabezpečení webového serveru IIS s certifikáty protokolu SSL](tutorial-secure-web-server.md)
+> [Zabezpečení webového serveru služby IIS pomocí certifikátů SSL](tutorial-secure-web-server.md)
 

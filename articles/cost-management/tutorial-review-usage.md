@@ -1,31 +1,39 @@
 ---
-title: "Kontrola využití a nákladů ve službě Azure Cost Management | Microsoft Docs"
-description: "Zkontrolujte si využití a náklady, abyste mohli sledovat trendy, zjišťovat nedostatečnou efektivitu a vytvářet výstrahy."
+title: "Kurz – Kontrola využití a nákladů ve službě Azure Cost Management | Microsoft Docs"
+description: "V tomto kurzu zkontrolujete využití a náklady, abyste mohli sledovat trendy, zjišťovat nedostatečnou efektivitu a vytvářet výstrahy."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 72c5c9ff13577e7b4008c42133742d8de4904ae0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e8f09a90ae9a4dd54d81335de2494f0dcbe09485
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="review-usage-and-costs"></a>Kontrola využití a nákladů
+<!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
+-->
+
+# <a name="tutorial-review-usage-and-costs"></a>Kurz: Kontrola využití a nákladů
 
 Azure Cost Management od Cloudyn zobrazuje využití a náklady, abyste mohli sledovat trendy, zjišťovat nedostatečnou efektivitu a vytvářet upozornění. Všechna data o využití a nákladech se zobrazí na řídicích panelech a v sestavách Cloudyn. Příklady v tomto kurzu vás provedou kontrolou využití a nákladů prostřednictvím řídicích panelů a sestav. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Sledovat trendy využití a nákladů
+> * Sledování trendů využití a nákladů
 > * Zjišťovat nedostatečnou efektivitu využití
 > * Vytvářet upozornění na nedostatečné nebo nadměrné výdaje
 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
+## <a name="prerequisites"></a>Požadavky
+
+- Musíte mít účet Azure.
+- Musíte mít zaregistrovanou zkušební verzi nebo placené předplatné služby Azure Cost Management.
 
 ## <a name="open-the-cloudyn-portal"></a>Otevření portálu Cloudyn
 
@@ -93,12 +101,12 @@ K vytváření výstrah můžete také vybrat metriku Cost Percentage vs. Budget
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Sledovat trendy využití a nákladů
+> * Sledování trendů využití a nákladů
 > * Zjišťovat nedostatečnou efektivitu využití
 > * Vytvářet upozornění na nedostatečné nebo nadměrné výdaje
 
 
-V dalším kurzu se dozvíte, jak řídit přístup k datům.
+V následujícím kurzu se dozvíte, jak na základě historických dat předpovědět budoucí výdaje.
 
 > [!div class="nextstepaction"]
-> [Řízení přístupu k datům](tutorial-user-access.md)
+> [Odhad budoucích výdajů](tutorial-forecast-spending.md)

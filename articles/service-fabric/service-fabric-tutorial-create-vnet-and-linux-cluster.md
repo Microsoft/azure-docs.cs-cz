@@ -1,6 +1,6 @@
 ---
 title: "Vytvoření clusteru Service Fabric s Linuxem v Azure | Dokumentace Microsoftu"
-description: "Naučte se nasadit cluster Service Fabric s Linuxem do existující virtuální sítě Azure s použitím rozhraní příkazového řádku Azure."
+description: "V tomto kurzu se naučíte nasadit cluster Service Fabric s Linuxem do existující virtuální sítě Azure s použitím Azure CLI."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 3b09e676a26336d1ef1e744f9e45066c4815fe21
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e6cbc8c3c7e1a9ebe9684efb0fa6ffa0717240ea
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Nasazení clusteru Service Fabric s Linuxem do virtuální sítě Azure
+# <a name="tutorial-deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric s Linuxem do virtuální sítě Azure
 Tento kurz je první částí série. Naučíte se nasadit cluster Service Fabric s Linuxem do [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md) a [skupiny zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) s použitím rozhraní příkazového řádku Azure a šablony. Po dokončení budete mít v cloudu spuštěný cluster, do kterého budete moct nasazovat aplikace. Pokud chcete pomocí PowerShellu vytvořit cluster s Windows, přečtěte si článek [Vytvoření zabezpečeného clusteru s Windows v Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
 V tomto kurzu se naučíte:
@@ -35,10 +35,10 @@ V tomto kurzu se naučíte:
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * Vytvořit zabezpečený cluster v Azure
-> * [Horizontálně snížit nebo navýšit kapacitu clusteru](service-fabric-tutorial-scale-cluster.md)
-> * [Upgradovat modul runtime clusteru](service-fabric-tutorial-upgrade-cluster.md)
-> * [Nasadit API Management v kombinaci s prostředkem Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+> * Vytvoření zabezpečeného clusteru v Azure
+> * [Horizontální snížení nebo navýšení kapacity clusteru](service-fabric-tutorial-scale-cluster.md)
+> * [Upgrade modulu runtime clusteru](service-fabric-tutorial-upgrade-cluster.md)
+> * [Nasazení API Managementu se Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Požadavky
 Než začnete s tímto kurzem:
@@ -103,7 +103,7 @@ Názvy virtuální sítě, podsítě a skupiny zabezpečení sítě jsou deklaro
 Následující pravidla pro příchozí provoz jsou ve skupině zabezpečení sítě povolená. Hodnoty portů můžete změnit změnou proměnných šablony.
 - ClientConnectionEndpoint (TCP): 19000
 - HttpGatewayEndpoint (HTTP/TCP): 19080
-- SMB: 445
+- SMB : 445
 - Internodecommunication – 1025, 1026, 1027
 - Rozsah dočasných portů – 49152 až 65534 (potřebných je alespoň 256 portů)
 - Porty pro použití aplikací: 80 a 443
@@ -118,12 +118,12 @@ Soubor s parametry [vnet-cluster.parameters.json][parameters] deklaruje mnoho ho
 |Parametr|Příklad hodnoty|Poznámky|
 |---|---||
 |adminUserName|vmadmin| Uživatelské jméno správce pro virtuální počítače clusteru. |
-|AdminPassword|Password#1234| Heslo správce pro virtuální počítače clusteru.|
+|adminPassword|Password#1234| Heslo správce pro virtuální počítače clusteru.|
 |clusterName|mysfcluster123| Název clusteru. |
 |location|southcentralus| Umístění clusteru. |
-|CertificateThumbprint|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte hodnotu kryptografického otisku certifikátu. Příklad: „6190390162C988701DB5676EB81083EA608DCCF3“. </p>| 
-|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Příklad: „https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346“.</p>|
-|sourceVaultValue||<p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte hodnotu zdrojového trezoru. Příklad: „/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT“.</p>|
+|certificateThumbprint|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte hodnotu kryptografického otisku certifikátu. Příklad: „6190390162C988701DB5676EB81083EA608DCCF3“. </p>| 
+|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například: https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346</p>|
+|sourceVaultValue||<p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte hodnotu zdrojového trezoru. Například: /subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT</p>|
 
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>

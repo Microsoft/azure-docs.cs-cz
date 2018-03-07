@@ -1,23 +1,21 @@
 ---
-title: "Rychlý start Azure – Přenos objektů do a z úložiště objektů blob v Azure pomocí webu Azure Portal | Dokumentace Microsoftu"
-description: "Naučte se používat web Azure Portal k odesílání, stahování a vypisování objektů blob ve službě Azure Blob Storage."
+title: "Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí webu Azure Portal | Microsoft Docs"
+description: "V tomto rychlém startu pomocí webu Azure Portal vytvoříte účet úložiště a kontejner. Pak použijete Azure Portal k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru."
 services: storage
-documentationcenter: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
 ms.topic: quickstart
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.author: tamram
-ms.openlocfilehash: f647a5b78ee2fa362c4dea6ee9003ac56e0f7f7d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: b03c3a26a6218bea8317749f43b4f74f6b3b4101
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="transfer-objects-tofrom-azure-blob-storage-using-the-azure-portal"></a>Přenos objektů do a z úložiště objektů blob v Azure pomocí webu Azure Portal
+# <a name="quickstart-upload-download-and-list-blobs-using-the-azure-portal"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí webu Azure Portal
 
 V tomto rychlém startu se naučíte použít web [Azure Portal](https://portal.azure.com/) k vytvoření kontejneru ve službě Azure Storage a k odeslání a stažení objektů blob bloku v tomto kontejneru.
 

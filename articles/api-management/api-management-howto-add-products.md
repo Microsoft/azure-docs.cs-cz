@@ -1,6 +1,6 @@
 ---
-title: "Postup vytvoření a publikování produktu v Azure API Management"
-description: "Naučte se vytvářet a publikovat produkty ve službě Azure API Management."
+title: "Vytvoření a publikování produktu ve službě Azure API Management"
+description: "Zjistěte, jak vytvářet a publikovat produkty ve službě Azure API Management."
 services: api-management
 documentationcenter: 
 author: juliako
@@ -14,15 +14,15 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: e6b11145506780f9a08799c4c9daf55ba17b366d
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
-ms.translationtype: MT
+ms.openlocfilehash: b9e3127a6b055a1fe013fa91714676a7c56686c5
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-and-publish-a-product"></a>Vytvoření a publikování produktu  
 
-Ve službě Azure API Management produkt obsahuje jeden nebo více rozhraní API a také kvóty využití a podmínky použití. Po publikování produktu vývojáři můžou přihlásit k produktu a začít používat rozhraní API produktu.  
+Ve službě Azure API Management obsahuje produkt jedno nebo více rozhraní API a také kvótu využití a podmínky použití. Jakmile je projekt publikovaný, vývojáři se můžou přihlásit k jeho odběru a začít používat jeho rozhraní API.  
 
 V tomto kurzu se naučíte:
 
@@ -30,65 +30,59 @@ V tomto kurzu se naučíte:
 > * Vytvoření a publikování produktu
 > * Přidání rozhraní API do produktu
 
-![Přidání produktu](media/api-management-howto-add-products/added-product.png)
+![přidaný produkt](media/api-management-howto-add-products/added-product.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Dokončete následující rychlý start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
-+ Navíc kurzu: [importu a publikování vašeho prvního rozhraní API](import-and-publish.md).
++ Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
++ Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-and-publish-a-product"></a>Vytvoření a publikování produktu
 
-1. Klikněte na **produkty** v nabídce na levé straně zobrazíte **produkty** stránky.
-2. Klikněte na tlačítko **+ produktu**.
+1. Kliknutím na **Produkty** v nabídce na levé straně zobrazte stránku **Produkty**.
+2. Klikněte na **+ Produkt**.
 
-    ![Přidání produktu](media/api-management-howto-add-products/add-product.png)
+    ![přidaný produkt](media/api-management-howto-add-products/add-product.png)
 
-    Když přidáte produktu, budete muset zadat následující informace: 
+    Při přidávání produktu je potřeba zadat následující informace: 
 
     |Název|Popis|
     |---|---|
-    |Zobrazované jméno|Název, jako je má být zobrazen v **portál pro vývojáře**.|
+    |Zobrazované jméno|Název, který se má zobrazit na **portálu pro vývojáře**.|
     |Název|Popisný název produktu.|
-    |Popis|**Popis** pole umožňuje poskytují podrobné informace o produktu, například jeho účel, poskytuje přístup k rozhraní API a další užitečné informace.|
-    |Stav|Stiskněte klávesu **publikováno** Pokud chcete publikovat produktu. Předtím, než je možné volat rozhraní API v produktu, musí být publikován produktu. Ve výchozím nastavení jsou nové produkty jsou publikování a jsou viditelné pouze pro **správci** skupiny.|
-    |Vyžaduje schválení|Zkontrolujte **vyžadovat schválení předplatného** Pokud chcete, aby správci zkontrolovat a následně přijímal nebo odmítal předplatné pokusy o tohoto produktu. Pokud pole není zaškrtnuto, pokusy o odběru jsou schvalovat automaticky. |
-    |Omezení počtu předplatných|Chcete-li omezit počet více souběžných předplatných, zadejte limitu předplatného. |
-    |Právní podmínky|Můžete zahrnout podmínky použití pro produkt, které odběratele musí přijmout, abyste mohli používat produkt.|
-    |Rozhraní API|Produkty jsou přidružení jeden nebo více rozhraní API. Může obsahovat několik rozhraní API a poskytněte jim pro vývojáře prostřednictvím portálu pro vývojáře. <br/> Během vytváření produktů můžete přidat existujícího rozhraní API. Můžete přidat rozhraní API do produktu později, buď z produktů **nastavení** stránky nebo při vytváření rozhraní API.|<br/>Vývojáři musí nejdřív přihlásit k odběru produktu získat přístup k rozhraní API. Pokud se přihlášení k odběru získají předplatné klíč, který je vhodný pro jakéhokoli rozhraní API v produktu.<br/> Pokud jste vytvořili instanci APIM, jste správcem již, takže jsou přihlášení k odběru každého produktu ve výchozím nastavení.|
+    |Popis|Do pole **Popis** můžete zadat podrobné informace o produktu, například jeho účel, rozhraní API, ke kterým poskytuje přístup, a další užitečné informace.|
+    |Stav|Pokud chcete produkt publikovat, stiskněte **Publikováno**. Předtím, než bude možné volat rozhraní API v produktu, je nutné produkt publikovat. Ve výchozím nastavení jsou nové produkty nepublikované a viditelné pouze pro skupinu **Správci**.|
+    |Vyžaduje schválení|Zaškrtněte políčko **Vyžadovat schválení předplatného**, pokud chcete, aby pokusy o přihlášení k odběru produktu kontroloval a následně přijímal nebo odmítal správce. Pokud toto políčko není zaškrtnuté, pokusy o přihlášení k odběru se automaticky schvalují. |
+    |Omezení počtu předplatných|Pokud chcete omezit počet více souběžných předplatných, zadejte omezení předplatných. |
+    |Právní podmínky|Pro produkt můžete zahrnout podmínky použití, které musí předplatitelé přijmout, aby mohli produkt využívat.|
+    |Rozhraní API|Produkty jsou sdruženími jednoho nebo více rozhraní API. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. <br/> Při vytváření produktu můžete přidat existující rozhraní API. Rozhraní API můžete do produktu přidat i později, a to na stránce **Nastavení** produktu nebo při vytváření rozhraní API.|<br/>Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získají přístup k rozhraní API. Po přihlášení k odběru získají klíč předplatného, který je možné použít pro jakékoli rozhraní API v příslušném produktu.<br/> Pokud jste vytvořili instanci služby APIM, již jste správcem, takže jste ve výchozím nastavení přihlášeni k odběru všech produktů.|
 
-3. Klikněte na tlačítko **vytvořit** k vytvoření nového produktu.
+3. Kliknutím na **Vytvořit** vytvořte nový produkt.
 
-### <a name="add-more-configurations"></a>Přidat další konfigurace
+### <a name="add-more-configurations"></a>Přidání více konfigurací
 
-Můžete pokračovat v konfiguraci produktu po uložení výběrem **nastavení** kartě. 
+Po uložení produktu můžete pokračovat v jeho konfiguraci zvolením karty **Nastavení**. 
 
-Zobrazit nebo přidat odběratele z produktu **odběry** kartě.
+Na kartě **Předplatná** můžete zobrazit předplatitele produktu nebo je přidat.
 
-Nastavit viditelnost produktu pro vývojáře nebo hosta z **řízení přístupu** kartě.
+Na kartě **Řízení přístupu** můžete nastavit viditelnost produktu pro vývojáře nebo hosty.
 
-## <a name="add-apis"></a>Přidat rozhraní API pro určitý produkt
+## <a name="add-apis"> </a>Přidání rozhraní API do produktu
 
-Produkty jsou přidružení jeden nebo více rozhraní API. Může obsahovat několik rozhraní API a poskytněte jim pro vývojáře prostřednictvím portálu pro vývojáře. Během vytváření produktů můžete přidat existujícího rozhraní API. Můžete přidat rozhraní API do produktu později, buď z produktů **nastavení** stránky nebo při vytváření rozhraní API.
+Produkty jsou sdruženími jednoho nebo více rozhraní API. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. Při vytváření produktu můžete přidat existující rozhraní API. Rozhraní API můžete do produktu přidat i později, a to na stránce **Nastavení** produktu nebo při vytváření rozhraní API.
 
-Vývojáři musí nejdřív přihlásit k odběru produktu získat přístup k rozhraní API. Pokud se přihlášení k odběru získají předplatné klíč, který je vhodný pro jakéhokoli rozhraní API v produktu. Pokud jste vytvořili instanci APIM, jste správcem již, takže jsou přihlášení k odběru každého produktu ve výchozím nastavení.
+Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získají přístup k rozhraní API. Po přihlášení k odběru získají klíč předplatného, který je možné použít pro jakékoli rozhraní API v příslušném produktu. Pokud jste vytvořili instanci služby APIM, již jste správcem, takže jste ve výchozím nastavení přihlášeni k odběru všech produktů.
 
-### <a name="add-an-api-to-an-existing-product"></a>Přidání rozhraní API pro stávající produkt
+### <a name="add-an-api-to-an-existing-product"></a>Přidání rozhraní API do existujícího produktu
 
 1. Vyberte produkt.
-2. Vyberte kartu rozhraní API.
-3. Klikněte na tlačítko **+ API**.
-4. Zvolte rozhraní API a klikněte na **vytvořit**.
+2. Vyberte kartu Rozhraní API.
+3. Klikněte na **+ Rozhraní API**.
+4. Zvolte rozhraní API a klikněte na **Vytvořit**.
 
-## <a name="video"></a>Video
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Using-Products/player]
-> 
-> 
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
@@ -96,7 +90,7 @@ V tomto kurzu jste se naučili:
 > * Vytvoření a publikování produktu
 > * Přidání rozhraní API do produktu
 
-Přechodu na další kurz:
+Přejděte k dalšímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Vytvoření prázdné rozhraní API a model odpovědi rozhraní API](mock-api-responses.md)
+> [Vytvoření prázdného rozhraní API a napodobení odpovědí rozhraní API](mock-api-responses.md)
