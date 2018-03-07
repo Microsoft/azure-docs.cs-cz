@@ -12,7 +12,7 @@ Správce balíčků Carthage se používá během období preview MSAL – integ
 
 ## <a name="creating-your-application"></a>Vytvoření vaší aplikace
 
-1.  Otevřete Xcode a vyberte`Create a new Xcode project`
+1.  Otevřete Xcode a vyberte `Create a new Xcode project`
 2.  Vyberte `iOS`  >  `Single view Application` a klikněte na tlačítko *další*
 3.  Zadejte název produktu a klikněte na *další*
 4.  Vyberte složku pro vytvoření aplikace a klikněte na tlačítko *vytvořit*
@@ -42,10 +42,10 @@ carthage update
 
 ## <a name="add-the-msal-framework-to-your-application"></a>Přidání rozhraní MSAL do aplikace
 1.  V Xcode otevřete `General` karta
-2.  Přejděte na `Linked Frameworks and Libraries` a klikněte na`+`
+2.  Přejděte na `Linked Frameworks and Libraries` a klikněte na `+`
 3.  Vyberte `Add other…`
 4.  Vyberte: `Carthage`  >  `Build`  >  `iOS`  >  `MSAL.framework` a klikněte na tlačítko *otevřete*. Měli byste vidět `MSAL.framework` přidán do seznamu.
-5.  Přejděte na `Build Phases` a klikněte na `+` ikonu, zvolte`New Run Script Phase`
+5.  Přejděte na `Build Phases` a klikněte na `+` ikonu, zvolte `New Run Script Phase`
 6.  Přidejte následující obsah *skript oblasti*:
 
 ```text
@@ -66,7 +66,7 @@ $(SRCROOT)/Carthage/Build/iOS/MSAL.framework
 ## <a name="creating-your-applications-ui"></a>Vytvoření uživatelského rozhraní aplikace
 Soubor Main.storyboard by měl automaticky vytvoří jako součást vaše šablona projektu. Postupujte podle pokynů k vytvoření aplikace uživatelského rozhraní:
 
-1.  CTRL + klikněte na tlačítko `Main.storyboard` zprovoznit v kontextové nabídce a potom klikněte na:`Open As` > `Source Code`
+1.  CTRL + klikněte na tlačítko `Main.storyboard` zprovoznit v kontextové nabídce a potom klikněte na: `Open As` > `Source Code`
 2.  Nahraďte `<scenes>` uzel s následující kód:
 
 ```xml

@@ -15,10 +15,10 @@ ms.workload: data-services
 ms.date: 02/19/2018
 ms.author: sngun
 ms.openlocfilehash: 2b4f82bae20c3cb398848a89715bfdc1316e1ba1
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="troubleshoot-for-malformed-input-events"></a>Řešení potíží s chybná vstupní události
 

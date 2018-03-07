@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/14/2017
 ms.author: dobett
 ms.openlocfilehash: 934f4deb3139c136c871ab0125ba45267e1d1b05
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="opc-publisher-for-azure-iot-edge"></a>OPC vydavatele pro Azure IoT Edge
 
@@ -131,9 +131,9 @@ Pokud chcete zobrazit úplný využití aplikace, použijte `--help` možnost p�
 OpcPublisher.exe <applicationname> [<IoT Hubconnectionstring>] [<options>]
 ```
 
-`applicationname`je název aplikace OPC UA používat. Tento parametr je povinný. Název aplikace se také používá k registraci vydavatele v registru zařízení služby IoT Hub.
+`applicationname` je název aplikace OPC UA používat. Tento parametr je povinný. Název aplikace se také používá k registraci vydavatele v registru zařízení služby IoT Hub.
 
-`IoT Hubconnectionstring`je připojovací řetězec služby IoT Hub vlastníka. Tento parametr je volitelný.
+`IoT Hubconnectionstring` je připojovací řetězec služby IoT Hub vlastníka. Tento parametr je volitelný.
 
 Podporovány jsou následující možnosti:
 
@@ -382,7 +382,7 @@ docker run -h publisher microsoft/iot-edge-opc-publisher <applicationname> [<IoT
 
 #### <a name="using-bind-mounts-shared-filesystem"></a>Pomocí vazby připojí (sdílené systému souborů)
 
-V některých scénářích budete chtít přečíst informace o konfiguraci z nebo na hostiteli místo použití systému souborů kontejner zápisu souborů protokolu do umístění. Pro konfiguraci tohoto chování, použijte `-v` možnost `docker run` v režimu připojení vazby. Například:
+V některých scénářích budete chtít přečíst informace o konfiguraci z nebo na hostiteli místo použití systému souborů kontejner zápisu souborů protokolu do umístění. Pro konfiguraci tohoto chování, použijte `-v` možnost `docker run` v režimu připojení vazby. Příklad:
 
 ```cmd/sh
 -v //D/docker:/build/out/Logs
@@ -468,6 +468,6 @@ Nyní můžete začít ladění pomocí následujícího příkazu v příkazov�
 DebugAdapterHost.Launch /LaunchJson:"<path-to-the-launch.json-file-you-saved>"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Navrhované A dalším krokem je další postup [nasazení brány v systému Windows nebo Linux připojené objekt pro vytváření předkonfigurovaného řešení](iot-suite-connected-factory-gateway-deployment.md).
