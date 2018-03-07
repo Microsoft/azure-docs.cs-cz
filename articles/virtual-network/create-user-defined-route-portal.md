@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: jdial
 ms.openlocfilehash: 0319029277091611673f15c94604604850cbfcbe
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="create-a-user-defined-route---azure-portal"></a>Vytvoření trasy definované uživatelem – portál Azure
 
@@ -32,7 +32,7 @@ V tomto kurzu vytvoříte virtuální síť s veřejné, privátní a podsítě 
 
 ![Trasy definované uživatelem](./media/create-user-defined-route/user-defined-routes.png)
 
-Tento článek obsahuje kroky k vytvoření trasy definované uživatelem prostřednictvím modelu nasazení Resource Manager, který je model nasazení, které vám doporučujeme používat při vytváření trasy definované uživatelem. Pokud potřebujete vytvořit trasy definované uživatelem (klasické), přečtěte si téma [vytvořit trasy definované uživatelem (klasické)](virtual-network-create-udr-classic-ps.md). Pokud si nejste obeznámeni s modelech nasazení Azure, najdete v části [modelech nasazení Azure pochopit](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Další informace o trasy definované uživatelem, najdete v části [trasy definované uživatelem přehled](virtual-networks-udr-overview.md#user-defined).
+Tento článek obsahuje kroky k vytvoření trasy definované uživatelem prostřednictvím modelu nasazení Resource Manager, který je model nasazení, které vám doporučujeme používat při vytváření trasy definované uživatelem. Pokud potřebujete vytvořit trasy definované uživatelem (klasické), přečtěte si téma [vytvořit trasy definované uživatelem (klasické)](virtual-network-create-udr-classic-ps.md). Pokud si nejste obeznámeni s modelech nasazení Azure, najdete v části [modelech nasazení Azure pochopit](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Další informace o uživatelsky definovaných trasách najdete v [přehledu uživatelsky definovaných tras](virtual-networks-udr-overview.md#user-defined).
 
 ## <a name="create-routes-and-network-virtual-appliance"></a>Vytvoření trasy a virtuální síťové zařízení
 
@@ -53,7 +53,7 @@ Tento článek obsahuje kroky k vytvoření trasy definované uživatelem prost�
 
         |Nastavení|Hodnota|
         |-----|-----|
-        |Name (Název)|DMZ|
+        |Název|DMZ|
         |Rozsah adres (blok CIDR)|10.0.2.0/24|
 
 6. Vytvoření virtuálního počítače virtuální zařízení sítě:
@@ -63,7 +63,7 @@ Tento článek obsahuje kroky k vytvoření trasy definované uživatelem prost�
 
         |Nastavení|Hodnota|
         |---|---|
-        |Name (Název)|Můjvp hodnocení chyb zabezpečení|
+        |Název|myVm-Nva|
         |Uživatelské jméno|azureuser|
         |Heslo a potvrzení hesla|Heslo dle vlastního výběru|
         |Předplatné|Vyberte předplatné|
@@ -82,7 +82,7 @@ Tento článek obsahuje kroky k vytvoření trasy definované uživatelem prost�
     - Na **vyhledávání prostředků** pole v horní části stránky, zadejte *Můjvp hodnocení chyb zabezpečení*.
     - Klikněte na tlačítko **Můjvp hodnocení chyb zabezpečení** při zobrazí ve výsledcích hledání.
     - Klikněte na tlačítko **sítě** pod **nastavení** na levé straně.
-    - Klikněte na název síťového rozhraní v části **Můjvp hodnocení chyb zabezpečení – síťová rozhraní**. Název je **můjvp hodnocení chyb zabezpečení***X*, kde *X* je číslo přiřazené portálem.
+    - Klikněte na název síťového rozhraní v části **Můjvp hodnocení chyb zabezpečení – síťová rozhraní**. Název je **můjvp hodnocení chyb zabezpečení *** X*, kde *X* je číslo přiřazené portálem.
     - Klikněte na tlačítko **konfigurace protokolu IP** pod **nastavení** pro síťové rozhraní, jak je znázorněno na následujícím obrázku:
 
         ![Nastavení síťového rozhraní](./media/create-user-defined-route/network-interface-settings.png)
@@ -102,7 +102,7 @@ Tento článek obsahuje kroky k vytvoření trasy definované uživatelem prost�
 
         |Nastavení|Hodnota|
         |---|---|
-        |Name (Název)|Veřejné myRouteTable|
+        |Název|myRouteTable-Public|
         |Předplatné|Vyberte předplatné|
         |Skupina prostředků|Vyberte **použít existující**, pak vyberte **myResourceGroup**|
         |Umístění|Východ USA|
@@ -327,7 +327,7 @@ Po dokončení tohoto kurzu můžete chtít odstranit prostředky, které jste v
 2. Na **myResourceGroup** okně klikněte **odstranit** ikonu.
 3. Potvrďte odstranění, v **název skupiny prostředků typu** zadejte **myResourceGroup**a potom klikněte na **odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Vytvoření [vysoce dostupném síťovém virtuální zařízení](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Virtuální síťová zařízení mají často víc síťových rozhraní a IP adresy, které jsou jim přiřazeny. Zjistěte, jak [síťových rozhraní přidat do existujícího virtuálního počítače](virtual-network-network-interface-vm.md#vm-add-nic) a [přidání IP adres do existujícího síťového rozhraní](virtual-network-network-interface-addresses.md#add-ip-addresses). Ačkoli všechny velikosti virtuálních počítačů může mít aspoň dvě rozhraní sítě připojené k nim, každý velikost virtuálního počítače podporuje maximální počet síťových rozhraní. Informace o tom, kolik síťových rozhraní se každý virtuální počítač velikost podporuje, najdete v části [Windows](../virtual-machines/windows/sizes.md?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) a [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) velikostí virtuálních počítačů. 

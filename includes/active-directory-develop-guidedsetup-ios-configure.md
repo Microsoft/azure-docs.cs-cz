@@ -11,7 +11,7 @@ Nyní je nutné zaregistrovat aplikaci v *portálu pro registraci aplikace Micro
 1.  Přejděte na [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app)
 2.  Zadejte název vaší aplikace a e-mailu
 3.  Ujistěte se, že není zaškrtnuto políčko pro instalaci na základě
-4.  Klikněte na tlačítko `Add Platform`, zvolte položku `Native Application` a klikněte na tlačítko`Save`
+4.  Klikněte na tlačítko `Add Platform`, zvolte položku `Native Application` a klikněte na tlačítko `Save`
 5.  Přejděte zpět na Xcode. V `ViewController.swift`, nahraďte řádek "`let kClientID`" s ID aplikace, který jste právě zaregistrovali:
 
 ```swift
@@ -21,7 +21,7 @@ let kClientID = "Your_Application_Id_Here"
 <!-- Workaround for Docs conversion bug -->
 <ol start="6">
 <li>
-CTRL + klikněte na tlačítko <code>Info.plist</code> zprovoznit v kontextové nabídce a potom klikněte na: <code>Open As</code>> <code>Source Code</code>
+CTRL + klikněte na tlačítko <code>Info.plist</code> zprovoznit v kontextové nabídce a potom klikněte na: <code>Open As</code> > <code>Source Code</code>
 </li>
 <li>
 V části <code>dict</code> kořenový uzel, přidejte následující:
