@@ -1,6 +1,6 @@
 ---
-title: "Kurz pro Azure Security Center – chránit prostředky s Azure Security Center | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak nakonfigurovat jenom v čase virtuální počítač přístup k zásady a zásady řízení aplikací."
+title: "Kurz pro Azure Security Center – Ochrana prostředků pomocí Azure Security Center | Microsoft Docs"
+description: "V tomto kurzu se dozvíte, jak nakonfigurovat zásadu přístupu k virtuálním počítačům podle potřeby a zásadu řízení aplikací."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,126 +9,127 @@ editor:
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/08/2018
+ms.date: 02/22/2018
 ms.author: terrylan
-ms.openlocfilehash: f0a32f90e68101f805a52427fab2d5bb29b94939
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
-ms.translationtype: MT
+ms.openlocfilehash: cda204f5b54aef239cc0795b62c6fa484a27ebb5
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
-# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Kurz: Chránit prostředky s Azure Security Center
-Security Center omezuje vaše ohrožení pomocí ovládacích prvků přístupu a aplikace pro blokování podezřelé aktivity. Právě v čas virtuální počítač (VM) omezuje přístup ohrožení útokem tím, že vám tak, aby odepřel trvalý přístup k virtuálním počítačům. Místo toho zadejte řízené a auditování přístupu k virtuálním počítačům pouze v případě potřeby. Ovládací prvky adaptivní aplikace pomůže posílení virtuálních počítačů před malwarem kontrolou, které aplikace můžete spustit na virtuální počítače. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
+# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Kurz: Ochrana prostředků pomocí Azure Security Center
+Security Center omezuje vaše vystavení hrozbám díky tomu, že pomocí řízení přístupu a aplikací blokuje škodlivé aktivity. Přístup k virtuálním počítačům podle potřeby omezuje vaše vystavení útokům díky tomu, že umožňuje odepření trvalého přístupu k virtuálním počítačům. Místo toho můžete poskytovat řízený a auditovaný přístup k virtuálním počítačům pouze v případě potřeby. Adaptivní řízení aplikací pomáhá posílit ochranu virtuálních počítačů před malwarem díky tomu, že řídí, které aplikace se na virtuálních počítačích můžou spouštět. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Konfigurovat jenom v čase virtuálních počítačů zásada přístupu
-> * Nakonfigurujte zásady řízení aplikace
+> * Konfigurace zásady přístupu k virtuálním počítačům podle potřeby
+> * Konfigurace zásady řízení aplikací
 
-Pokud nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před zahájením.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-Chcete-li krok prostřednictvím funkcí zahrnuté v tomto kurzu, musí být na standardní cenovou úroveň Security Center. Můžete zkusit Security Center standardní zdarma pro prvních 60 dní. Rychlý Start [Onboard předplatného Azure Security Center standardní](security-center-get-started.md) vás provede postup upgradu na Standard.
+Chcete-li si vyzkoušet postupy popsané v tomto kurzu, budete potřebovat službu Security Center v cenové úrovni Standard. Službu Security Center v cenové úrovni Standard si můžete zdarma vyzkoušet na 60 dní. Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede postupem upgradu na úroveň Standard.
 
-## <a name="manage-vm-access"></a>Spravovat přístup virtuálních počítačů
-Právě v čase přístup virtuálních počítačů lze zamknout příchozí přenosy na virtuální počítače Azure, snižuje riziko napadení a snadného přístupu pro připojení k virtuálním počítačům v případě potřeby.
+## <a name="manage-vm-access"></a>Správa přístupu k virtuálním počítačům
+Pomocí přístupu k virtuálním počítačům podle potřeby je možné zamezit příchozímu provozu do virtuálních počítačů Azure a tím omezit vystavení útokům při stálém poskytování snadného přístupu pro připojení k virtuálním počítačům v případě potřeby.
 
-Právě v čase přístup virtuální počítač je ve verzi preview.
+Přístup k virtuálním počítačům podle potřeby je ve verzi Preview.
 
-Porty pro správu se nemusíte být otevřený za všech okolností. Pouze musí být otevřený, pokud jsou připojeny k virtuálnímu počítači, například k provádění úkolů údržby nebo správy. Pokud právě v čase je povoleno, Security Center používá skupina zabezpečení sítě (NSG) pravidla, která omezit přístup k portům správy, takže nemůžou být cílem útočníků.
+Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené pouze během připojení k virtuálnímu počítači, například kvůli provádění úloh správy nebo údržby. Když je povolený přístup podle potřeby, Security Center využívá pravidla skupin zabezpečení sítě (NSG) omezující přístup k portům pro správu, aby na ně nemohli cílit útočníci.
 
-1. Vyberte z hlavní nabídky Security Center **těsně v čas virtuálních počítačů přístup** v části **ADVANCED OBRANY cloudu**.
+1. V hlavní nabídce Security Center v části **POKROČILÁ OBRANA CLOUDU** vyberte **Přístup k virtuálním počítačům podle potřeby**.
 
-  ![Přístup k virtuálnímu počítači podle potřeby][1]
+  ![Přístup k virtuálním počítačům podle potřeby][1]
 
-  **Právě v čas virtuálních počítačů přístup** poskytuje informace o stavu virtuálních počítačů:
+  V části **Přístup k virtuálním počítačům podle potřeby** se zobrazí informace o stavu vašich virtuálních počítačů:
 
-  - **Nakonfigurované** -virtuálních počítačů, které jsou nakonfigurované pro podporu právě v přístup k časovému virtuálních počítačů.
-  - **Doporučená** -virtuálních počítačů, které může podporovat jenom v přístup k časovému virtuálních počítačů, ale nebyly nakonfigurovány na.
-  - **Žádná doporučení** -důvody, které můžou způsobit, že virtuální počítač tak, aby se doporučuje jsou:
+  - **Nakonfigurované** – Virtuální počítače s nakonfigurovanou podporou přístupu podle potřeby.
+  - **Doporučené** – Virtuální počítače, které můžou podporovat přístup podle potřeby, ale ještě tak nebyly nakonfigurované.
+  - **Žádné doporučení** – Mezi důvody, proč virtuální počítač nemusí být doporučený, patří:
 
-    - Chybí NSG - právě v čase řešení vyžaduje skupinu NSG se.
-    - Classic virtuálního počítače – Security Center, které jsou právě čas virtuálních počítačů přístup aktuálně podporuje pouze virtuální počítače nasazené prostřednictvím Správce Azure Resource Manager.
-    - Druhá - virtuální počítač je v této kategorii Pokud právě v čase řešení vypnutý v zásadách zabezpečení předplatné nebo skupinu prostředků nebo že virtuálního počítače chybí veřejnou IP adresu a nemá skupinu NSG na místě.
+    - Chybějící NSG – Řešení přístupu podle potřeby vyžaduje existenci NSG.
+    - Klasický virtuální počítač – Přístup k virtuálním počítačům podle potřeby v Security Center aktuálně podporuje pouze virtuální počítače nasazené prostřednictvím Azure Resource Manageru.
+    - Jiné – Virtuální počítač je v této kategorii, pokud je řešení přístupu podle potřeby vypnuté v zásadách zabezpečení předplatného nebo skupiny prostředků nebo pokud virtuální počítač nemá veřejnou IP adresu a NSG.
 
-2. Vyberte doporučené virtuální počítač a klikněte na tlačítko **povolení JIT na 1 virtuální počítač** nakonfigurovat jenom v zásadách čas pro tento virtuální počítač:
+2. Vyberte doporučený virtuální počítač a kliknutím na **Povolit přístup podle potřeby na 1 virtuálním počítači** nakonfigurujte pro tento virtuální počítač zásadu přístupu podle potřeby:
 
-  Můžete uložit výchozí porty, které doporučuje Security Center nebo můžete přidávat a konfigurovat nový port, na kterém chcete povolit právě v době řešení. V tomto kurzu budeme přidat na port výběrem **přidat**.
+  Můžete uložit výchozí porty, které Security Center doporučuje, nebo přidat a nakonfigurovat nový port, na kterém chcete řešení přístupu podle potřeby povolit. V tomto kurzu přidáme port výběrem možnosti **Přidat**.
 
-  ![Přidat konfiguraci portů][2]
+  ![Přidání konfigurace portu][2]
 
-3. V části **konfiguraci portů přidat**, můžete identifikovat:
+3. V části **Přidání konfigurace portu** určíte:
 
   - Port
   - Typ protokolu
-  - Povolené zdrojové IP adresy - rozsahy IP adres povolené získat přístup na schválené žádost
-  - Doba požadavku maximální - maximální časový interval, může být otevřena specifického portu
+  - Povolené zdrojové IP adresy – Rozsahy IP adres s povolením získat přístup po schválení žádosti
+  - Maximální doba žádosti – Maximální časový interval otevření konkrétního portu
 
-4. Vyberte **OK** uložit.
+4. Výběrem **OK** konfiguraci uložte.
 
-## <a name="harden-vms-against-malware"></a>Posílení zabezpečení virtuálních počítačů před malwarem
-Ovládací prvky adaptivní aplikace můžete definovat sadu aplikací, které je povoleno spustit na skupiny nakonfigurované prostředků, která mezi další výhody pomáhá posílení virtuální počítače před malwarem. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
+## <a name="harden-vms-against-malware"></a>Posílení ochrany virtuálních počítačů před malwarem
+Adaptivní řízení aplikací pomáhá definovat sadu aplikací, které mají povoleno spouštění v nakonfigurovaných skupinách prostředků. To kromě jiných výhod pomáhá posílit ochranu virtuálních počítačů před malwarem. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
 
-Ovládací prvky adaptivní aplikace je ve verzi preview. Tato funkce je jenom pro počítače s Windows k dispozici.
+Adaptivní řízení aplikací je ve verzi Preview. Tato funkce je dostupná pouze pro počítače s Windows.
 
-1. Vrátit do hlavní nabídky Security Center. V části **ADVANCED OBRANY cloudu**, vyberte **ovládací prvky adaptivní aplikace**.
+1. Vraťte se do hlavní nabídky Security Center. V části **POKROČILÁ OBRANA CLOUDU** vyberte **Adaptivní řízení aplikací**.
 
    ![Adaptivní řízení aplikací][3]
 
-  **Skupiny prostředků** část obsahuje tři karty:
+  Část **Skupiny prostředků** obsahuje tři karty:
 
-  - **Nakonfigurované**: seznam prostředků skupiny obsahující virtuální počítače, které byly nakonfigurovány s řízení aplikace.
-  - **Doporučená**: seznam skupin zdrojů pro aplikaci, pro kterou se doporučuje ovládacího prvku.
-  - **Žádná doporučení**: seznam prostředků skupiny obsahující virtuální počítače bez žádná doporučení řízení aplikací. Například virtuální počítače, na kterých se neustále mění aplikace a které se ještě nedostaly do stabilního stavu.
+  - **Nakonfigurované:** Seznam skupin prostředků obsahujících virtuální počítače s nakonfigurovaným řízením aplikací.
+  - **Doporučené:** Seznam skupin prostředků, pro které se doporučuje řízení aplikací.
+  - **Žádné doporučení:** Seznam skupin prostředků obsahujících virtuální počítače bez jakýchkoli doporučení pro řízení aplikací. Například virtuální počítače, na kterých se neustále mění aplikace a které se ještě nedostaly do stabilního stavu.
 
-2. Vyberte **doporučeno** kartě seznam skupiny prostředků s doporučeními řízení aplikací.
+2. Výběrem karty **Doporučené** zobrazte seznam skupin prostředků s doporučeními pro řízení aplikací.
 
-  ![Doporučení řízení aplikace][4]
+  ![Doporučení pro řízení aplikací][4]
 
-3. Vyberte skupinu prostředků, otevřete **vytvoření pravidel aplikace řízení** možnost. V části **Vybrat virtuální počítače** zkontrolujte seznam doporučených virtuálních počítačů a zrušte zaškrtnutí těch, na které nechcete použít řízení aplikací. V části **Vybrat procesy pro pravidla přidávání na seznam povolených** zkontrolujte seznam doporučených aplikací a zrušte zaškrtnutí těch, které nechcete použít. Seznam obsahuje:
+3. Výběrem skupiny prostředků otevřete možnost **Vytvořit pravidla řízení aplikací**. V části **Vybrat virtuální počítače** zkontrolujte seznam doporučených virtuálních počítačů a zrušte zaškrtnutí těch, na které nechcete použít řízení aplikací. V části **Vybrat procesy pro pravidla přidávání na seznam povolených** zkontrolujte seznam doporučených aplikací a zrušte zaškrtnutí těch, které nechcete použít. Seznam obsahuje:
 
-  - **NÁZEV**: úplná cesta k aplikaci
-  - **PROCESY**: kolik aplikací jsou umístěny v rámci každé cesty
-  - **BĚŽNÉ**: "Ano" označuje, že tyto procesy byly provedeny na nejvíc virtuálních počítačů v této skupině prostředků
-  - **VYUŽITELNÝCH**: označuje ikona upozornění, pokud aplikace může útočník zneužít vynechat vytvoření seznamu povolených aplikací. Tyto aplikace doporučujeme před schválením zkontrolovat.
+  - **NÁZEV:** Úplná cesta k aplikaci.
+  - **PROCESY:** Počet aplikací, které se nacházejí v jednotlivých cestách.
+  - **BĚŽNÉ:** Hodnota Ano značí, že se tyto procesy spustily na většině virtuálních počítačů v této skupině prostředků.
+  - **ZNEUŽITELNÉ:** Ikona upozornění značí, jestli by útočník mohl aplikace využít k obejití seznamu povolených aplikací. Tyto aplikace doporučujeme před schválením zkontrolovat.
 
-4. Jakmile dokončíte váš výběr, vyberte **vytvořit**.
+4. Jakmile budete s výběry hotovi, vyberte **Vytvořit**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Další kurzy v této kolekci a – elementy QuickStart stavět na tento rychlý start. Pokud budete chtít pokračovat v práci s kurzy a následné – elementy QuickStart, pokračovat v provozu na plán úrovně Standard a udržovat povoleno automatické zřizování. Pokud neplánujete pokračujte nebo chcete vrátit do úroveň Free:
+Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud budete chtít pokračovat v práci s následnými kurzy a rychlými starty, ponechte v provozu úroveň Standard a nechte zapnuté automatické zřizování. Pokud neplánujete pokračovat nebo se chcete vrátit na úroveň Free:
 
-1. Vrátit do hlavní nabídky Security Center a vyberte **zásady zabezpečení**.
-2. Vyberte předplatné nebo zásad, který chcete vrátit do volné. **Zásady zabezpečení** otevře.
-3. V části **součásti zásad**, vyberte **cenová úroveň**.
-4. Vyberte **volné** změna odběru z Standard úroveň na úroveň Free.
+1. Vraťte se do hlavní nabídky služby Security Center a vyberte **Zásady zabezpečení**.
+2. Vyberte předplatné nebo zásady, které chcete vrátit na úroveň Free. Otevře se okno **Zásady zabezpečení**.
+3. V části **SOUČÁSTI ZÁSAD** vyberte **Cenová úroveň**.
+4. Výběrem **Free** změníte předplatné z úrovně Standard na úroveň Free.
 5. Vyberte **Uložit**.
 
 Pokud chcete vypnout automatické zřizování:
 
-1. Vrátit do hlavní nabídky Security Center a vyberte **zásady zabezpečení**.
-2. Vyberte předplatné, které chcete vypnout automatické zřizování.
-3. V části **zásady zabezpečení – shromažďování dat**, vyberte **vypnout** pod **registrace** zakázat automatické zřizování.
+1. Vraťte se do hlavní nabídky služby Security Center a vyberte **Zásady zabezpečení**.
+2. Vyberte předplatné, pro které chcete vypnout automatické zřizování.
+3. V části **Zásady zabezpečení – shromažďování dat** výběrem možnosti **Vypnuto** u volby **Onboarding** vypnete automatické zřizování.
 4. Vyberte **Uložit**.
 
 >[!NOTE]
-> Zakázání automatické zřizování neodebere agenta Microsoft Monitoring Agent z virtuálních počítačů Azure, kde byla vytvořena na agenta. Zakázání automatické zřizování omezení sledování zabezpečení pro vaše prostředky.
+> Vypnutím automatického zřizování neodeberete agenta Microsoft Monitoring Agent z virtuálních počítačů Azure, na kterých byl agent zřízen. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
 >
 
-## <a name="next-steps"></a>Další postup
-V tomto kurzu jste zjistili, jak omezit vaše ohrožení podle:
+## <a name="next-steps"></a>Další kroky
+V tomto kurzu jste zjistili, jak omezit své vystavení hrozbám prostřednictvím:
 
 > [!div class="checklist"]
-> * Konfigurace jenom v čas virtuálních počítačů přístup zásady zajistit řídit a auditovat přístup k virtuálním počítačům pouze v případě potřeby
-> * Konfigurace zásady adaptivní použití ovládacích prvků řídit, která aplikace můžete spustit na virtuální počítače
+> * Konfigurace zásady přístupu k virtuálním počítačům podle potřeby, která poskytuje řízený a auditovaný přístup k virtuálním počítačům pouze v případě potřeby.
+> * Konfigurace zásady adaptivního řízení aplikací, která řídí, které aplikace se na virtuálních počítačích můžou spouštět.
 
-Přechodu na další informace o reakce na bezpečnostní incidenty v dalším kurzu.
+V dalším kurzu najdete informace o reakci na incidenty zabezpečení.
 
 > [!div class="nextstepaction"]
-> [Kurz: Reakce na bezpečnostní incidenty v oblasti](tutorial-security-incident.md)
+> [Kurz: Reakce na incidenty zabezpečení](tutorial-security-incident.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-protect-resources/just-in-time-vm-access.png

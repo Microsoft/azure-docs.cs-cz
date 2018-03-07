@@ -4,14 +4,14 @@ description: "Obsahuje přehled služby Azure Migrate."
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 01/08/2018
+ms.date: 02/26/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a9e04c7fa2a32ab7be8844b962f4bccdf260af23
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 45eac1d1ecb173ba0a62ab13f47b7ee6e12f7af3
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -48,7 +48,7 @@ Posouzení pomáhá identifikovat vhodnost Azure pro místní virtuální počí
 
 **Vlastnost** | **Podrobnosti**
 --- | ---
-**Cílové umístění** | Umístění Azure, do kterého chcete migrovat. Cílové umístění je standardně nastavené na Západní USA 2. 
+**Cílové umístění** | Umístění Azure, do kterého chcete migrovat.<br/><br/>Azure Migrate v současné době podporuje 30 oblastí, včetně oblastí Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Indie – střed, USA – střed, Čína – východ, Čína – sever, Východní Asie, USA – východ, Německo – střed, Německo – severovýchod, USA – východ 2, Japonsko – východ, Japonsko – západ, Korea – střed, Korea – jih, Střed USA – sever, Severní Evropa, Střed USA – jih, Jihovýchodní Asie, Indie – jih, Velká Británie – jih, Velká Británie – západ, Střed USA – západ, Západní Evropa, Indie – západ, USA – západ a USA – západ 2. Cílové umístění je standardně nastavené na Západní USA 2. 
 **Redundance úložiště** | Typ [redundance úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy), který budou po migraci využívat virtuální počítače Azure. Výchozí je místně redundantní úložiště (LRS). Poznámka: Azure Migrate podporuje pouze posouzení založená na spravovaných discích a spravované disky podporují pouze LRS, proto má vlastnost v současné době pouze možnost LRS. 
 **Kritérium určení velikosti** | Kritérium, podle kterého Azure Migrate určí správnou velikost virtuálních počítačů pro Azure. Velikost virtuálních počítačů pro Azure můžete určit na základě *historie výkonu* místních virtuálních počítačů nebo stejnou *jako u místních* virtuálních počítačů bez zohlednění historie výkonu. Výchozí hodnota je určení velikosti na základě výkonu.
 **Cenové plány** | Pro účely výpočtů nákladů posouzení zohledňuje, jestli máte program Software Assurance a jestli máte nárok na [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Zohledňuje také [Nabídky Azure](https://azure.microsoft.com/support/legal/offer-details/), které máte případně zaregistrované, a umožňuje zadat jakékoli slevy (%) specifické pro předplatné, na které máte nárok nad rámec nabídky. 

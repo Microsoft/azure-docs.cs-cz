@@ -5,16 +5,16 @@ services: automation
 keywords: inventory, automation, change, tracking
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.topic: tutorial
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: bdd638d0612a8ddee1a0ddb4fd4579f8da14b887
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
-ms.translationtype: MT
+ms.openlocfilehash: 97cd2c91ca2c70b044518c43d49356918202d5ff
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Zjišťování, jaký software je nainstalovaný na počítačích Azure a jiných počítačích než Azure
 
@@ -41,35 +41,17 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 
-Pro účely tohoto kurzu je nejprve potřeba povolit pro váš virtuální počítač řešení Change Tracking a Inventory. Pokud jste už dříve pro virtuální počítač povolili jiné řešení automatizace, tento krok není nezbytný.
+Pro účely tohoto kurzu je nejprve potřeba povolit pro váš virtuální počítač řešení Change Tracking a Inventory. Pokud jste už dříve pro virtuální počítač povolili řešení **Change Tracking**, tento krok není nezbytný.
 
 1. V nabídce vlevo vyberte **Virtuální počítače** a ze seznamu vyberte virtuální počítač.
 2. V nabídce vlevo v části **Operace** klikněte na **Inventory**. Otevře se stránka **Povolit řešení Change Tracking a Inventory**.
 
-Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Inventory.
-Toto ověření zahrnuje kontroly pracovního prostoru Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení nachází v tomto pracovním prostoru.
+![Banner konfigurace připojení k řešení Inventory](./media/automation-tutorial-installed-software/enableinventory.png)
+
+Pokud chcete řešení povolit, nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
 
 Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Inventory.
 Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
-
-Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agentem Microsoft Monitoring Agent (MMA) a procesem hybrid worker.
-Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru.
-Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agentem Microsoft Monitoring Agent (MMA) a hybridním pracovním procesem runbooku Automation.
-
-Pokud se nesplní tyto požadavky, zobrazí se banner nabízející možnost povolit řešení.
-
-![Banner konfigurace připojení k řešení Inventory](./media/automation-tutorial-installed-software/enableinventory.png)
-
-Pokud chcete řešení povolit, klikněte na banner.
-Pokud po ověření chyběla některá z následujících požadovaných součástí, automaticky se přidá:
-
-* Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)
-* [Automation](./automation-offering-get-started.md)
-* Povolený [hybridní pracovní proces runbooku](./automation-hybrid-runbook-worker.md) na virtuálním počítači
-
-Otevře se obrazovka řešení **Change Tracking a Inventory**. Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
-
-![Okno pro povolení řešení Change Tracking](./media/automation-tutorial-installed-software/installed-software-enable.png)
 
 Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče.
 Po povolení řešení začnou do Log Analytics proudit informace o nainstalovaném softwaru a změnách na virtuálních počítačích.
@@ -125,7 +107,7 @@ ConfigurationData
 | render table
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak zobrazovat inventář softwaru, a například jste se naučili:
 
@@ -137,4 +119,4 @@ V tomto kurzu jste zjistili, jak zobrazovat inventář softwaru, a například j
 Další informace najdete v přehledu řešení Change Tracking a Inventory.
 
 > [!div class="nextstepaction"]
-> [Řešení Change Tracking a Inventory](../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json)
+> [Řešení Change Tracking a Inventory](automation-change-tracking.md)

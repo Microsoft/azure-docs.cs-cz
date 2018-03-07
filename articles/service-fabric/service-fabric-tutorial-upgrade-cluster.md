@@ -1,6 +1,6 @@
 ---
 title: Upgrade modulu runtime Azure Service Fabric | Microsoft Docs
-description: "Zjistěte, jak pomocí prostředí PowerShell k upgradu runtime clusteru hostovaných v Azure Service Fabric."
+description: "V tomto kurzu se dozvíte, jak pomocí PowerShellu upgradovat modul runtime clusteru Service Fabric hostovaného v Azure."
 services: service-fabric
 documentationcenter: .net
 author: Thraka
@@ -15,44 +15,44 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: faf134bc0952da913e90a93bc872a53f5f2369ff
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
-ms.translationtype: MT
+ms.openlocfilehash: 49211a88e004bbcbcc41b6674a34934db39513c7
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="upgrade-the-runtime-of-a-service-fabric-cluster"></a>Upgrade modul runtime cluster Service Fabric
+# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster"></a>Kurz: Upgrade modulu runtime clusteru Service Fabric
 
-V tomto kurzu je součástí tři řady a ukazuje, jak upgradovat modulu runtime Service Fabric v clusteru Azure Service Fabric. Tato část kurz je napsán pro clustery infrastruktury služby spuštěné v Azure a nevztahuje na samostatné Service Fabric clustery.
+V tomto kurzu, který je třetí částí série, se dozvíte, jak upgradovat modul runtime Service Fabric v clusteru Azure Service Fabric. Tato část kurzu je určená pro clustery Service Fabric běžící v Azure, a nevztahuje se na samostatné clustery Service Fabric.
 
 > [!WARNING]
-> Tato část kurzu vyžaduje rozhraní PowerShell. Pomocí nástrojů příkazového řádku Azure ještě není dostupná podpora pro upgrade clusteru runtime. Alternativně lze cluster upgradovat na portálu. Další informace najdete v tématu [Upgrade clusteru služby Azure Service Fabric](service-fabric-cluster-upgrade.md).
+> Tato část kurzu vyžaduje PowerShell. Nástroje Azure CLI ještě upgradování modulu runtime clusteru nepodporují. Alternativně je možné cluster upgradovat na portálu. Další informace najdete v tématu [Upgrade clusteru Azure Service Fabric](service-fabric-cluster-upgrade.md).
 
-Pokud váš cluster je již spuštěna nejnovější modulu runtime Service Fabric, není potřeba tento krok. Však tento článek slouží k instalaci žádné podporované runtime v clusteru Azure Service Fabric.
+Pokud váš cluster již využívá nejnovější modul runtime Service Fabric, nemusíte tento krok provádět. Tento článek však můžete použít k instalaci jakéhokoli podporovaného modulu runtime v clusteru Azure Service Fabric.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Přečtěte si verze clusteru
-> * Nastavit verzi clusteru
+> * Načtení verze clusteru
+> * Nastavení verze clusteru
 
-V této série kurzu zjistíte, jak:
+V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * Vytvoření zabezpečeného [clusteru se systémem Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) nebo [Linux clusteru](service-fabric-tutorial-create-vnet-and-linux-cluster.md) v Azure pomocí šablony
-> * [Škálování clusteru příchozí nebo odchozí](service-fabric-tutorial-scale-cluster.md)
-> * Upgrade clusteru modul runtime
-> * [Nasazení správy rozhraní API pomocí Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+> * Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) nebo [clusteru s Linuxem](service-fabric-tutorial-create-vnet-and-linux-cluster.md) v Azure pomocí šablony
+> * [Horizontální snížení nebo navýšení kapacity clusteru](service-fabric-tutorial-scale-cluster.md)
+> * Upgrade modulu runtime clusteru
+> * [Nasazení API Managementu se Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Požadavky
-Před zahájením tohoto kurzu:
-- Pokud nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Nainstalujte [prostředí Azure Powershell verze modulu 4.1 nebo vyšší](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) nebo [Azure CLI 2.0](/cli/azure/install-azure-cli).
-- Vytvoření zabezpečeného [clusteru se systémem Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) nebo [Linux clusteru](service-fabric-tutorial-create-vnet-and-linux-cluster.md) v Azure
-- Pokud nasadíte clusteru se systémem Windows, nastavení vývojového prostředí systému Windows. Nainstalujte [Visual Studio 2017](http://www.visualstudio.com) a **Azure development**, **ASP.NET a webové vývoj**, a **vývoj pro různé platformy .NET Core**úlohy.  Potom nastavit [vývojové prostředí .NET](service-fabric-get-started.md).
-- Pokud nasadíte Linux cluster, nastavit vývojové prostředí Java na [Linux](service-fabric-get-started-linux.md) nebo [systému MacOS](service-fabric-get-started-mac.md).  Nainstalujte [služby Fabric rozhraní příkazového řádku](service-fabric-cli.md). 
+Než začnete s tímto kurzem:
+- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Nainstalujte [modul Azure PowerShellu verze 4.1 nebo vyšší](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) nebo [Azure CLI 2.0](/cli/azure/install-azure-cli).
+- Vytvořte zabezpečený [cluster s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) nebo [cluster s Linuxem](service-fabric-tutorial-create-vnet-and-linux-cluster.md) v Azure.
+- Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte sadu [Visual Studio 2017](http://www.visualstudio.com) a sady funkcí **Vývoj pro Azure**, **Vývoj pro ASP.NET a web** a **Vývoj multiplatformních aplikací pomocí rozhraní .NET Core**.  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
+- Pokud nasadíte cluster s Linuxem, nastavte vývojové prostředí Java v [Linuxu](service-fabric-get-started-linux.md) nebo [MacOS](service-fabric-get-started-mac.md).  Nainstalujte [Service Fabric CLI](service-fabric-cli.md). 
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se ke svému účtu Azure vyberte předplatné, před spuštěním příkazů Azure.
+Před spouštěním příkazů Azure se přihlaste ke svému účtu Azure a vyberte své předplatné.
 
 ```powershell
 Login-AzureRmAccount
@@ -60,32 +60,32 @@ Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <guid>
 ```
 
-## <a name="get-the-runtime-version"></a>Získat verzi modulu runtime
+## <a name="get-the-runtime-version"></a>Získání verze modulu runtime
 
-Po připojení k Azure, vybrané předplatné obsahující cluster Service Fabric, můžete získat verzi modulu runtime clusteru.
+Po připojení k Azure a výběru předplatného, které obsahuje cluster Service Fabric, můžete získat verzi modulu runtime clusteru.
 
 ```powershell
 Get-AzureRmServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztestcluster `
     | Select-Object ClusterCodeVersion
 ```
 
-Nebo právě získat seznam všech clusterech ve vašem předplatném s následujícími službami:
+Případně stačí získat seznam všech clusterů ve vašem předplatném pomocí následujícího příkazu:
 
 ```powershell
 Get-AzureRmServiceFabricCluster | Select-Object Name, ClusterCodeVersion
 ```
 
-Poznámka: **ClusterCodeVersion** hodnotu. Tato hodnota se použije v další části.
+Poznamenejte si hodnotu **ClusterCodeVersion**. Tuto hodnotu použijete v další části.
 
 ## <a name="upgrade-the-runtime"></a>Upgrade modulu runtime
 
-Použijte hodnotu **ClusterCodeVersion** z předchozí části s `Get-ServiceFabricRuntimeUpgradeVersion` rutiny zjistit, jaké verze jsou k dispozici upgrade. Tato rutina může spustit pouze z počítače připojeného k Internetu. Například, pokud jste chtěli najdete v části jaké verze modulu runtime, může k upgradu z verze `5.7.198.9494`, použijte následující příkaz:
+Pomocí hodnoty **ClusterCodeVersion** z předchozí části a rutiny `Get-ServiceFabricRuntimeUpgradeVersion` zjistěte, jaké verze jsou pro upgrade k dispozici. Tuto rutinu je možné spustit pouze z počítače připojeného k internetu. Pokud například chcete zobrazit, na jaké verze modulu runtime můžete upgradovat z verze `5.7.198.9494`, použijte následující příkaz:
 
 ```powershell
 Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion "5.7.198.9494"
 ```
 
-Seznam verzí můžete zjistit, Azure Service Fabric clusteru pro upgrade na novější modulu runtime. Například pokud verze `6.0.219.9494` je k dispozici k upgradu, použijte následující příkaz pro upgrade clusteru.
+Když máte seznam verzí, můžete clusteru Azure Service Fabric sdělit, aby provedl upgrade na novější modul runtime. Pokud je například pro upgrade k dispozici verze `6.0.219.9494`, můžete cluster upgradovat pomocí následujícího příkazu.
 
 ```powershell
 Set-AzureRmServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
@@ -95,11 +95,11 @@ Set-AzureRmServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 ```
 
 > [!IMPORTANT]
-> Modul runtime upgrade clusteru může trvat dlouhou dobu pro dokončení. Prostředí PowerShell je blokována při upgradu. Chcete-li zkontrolovat stav upgradu můžete použít jiná relace prostředí PowerShell.
+> Dokončení upgradu modulu runtime může trvat delší dobu. PowerShell je v průběhu upgradu blokovaný. Ke kontrole stavu upgradu můžete použít jinou relaci PowerShellu.
 
-Stav upgradu můžete sledovat pomocí buď prostředí PowerShell nebo `sfctl` rozhraní příkazového řádku.
+Stav upgradu můžete monitorovat pomocí PowerShellu nebo rozhraní příkazového řádku `sfctl`.
 
-Nejprve připojte ke clusteru s certifikátem SSL vytvořené v první části tohoto kurzu. Použití `Connect-ServiceFabricCluster` rutiny nebo `sfctl cluster upgrade-status`.
+Nejprve se ke clusteru připojte pomocí certifikátu SSL vytvořeného v první části kurzu. Použijte k tomu rutinu `Connect-ServiceFabricCluster` nebo `sfctl cluster upgrade-status`.
 
 ```powershell
 $endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"
@@ -117,7 +117,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-Pak pomocí `Get-ServiceFabricClusterUpgrade` nebo `sfctl cluster upgrade-status` k zobrazení stavu. Zobrazí se něco podobného jako následující výsledek.
+Pak pomocí rutiny `Get-ServiceFabricClusterUpgrade` nebo `sfctl cluster upgrade-status` zobrazte stav. Zobrazí se výsledek podobný následujícímu příkladu.
 
 ```powershell
 Get-ServiceFabricClusterUpgrade
@@ -195,10 +195,10 @@ sfctl cluster upgrade-status
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Získá verzi modulu runtime clusteru
-> * Upgrade clusteru runtime
+> * Získání verze modulu runtime clusteru
+> * Upgrade modulu runtime clusteru
 > * Monitorování upgradu
 
-V dalším kroku přechodu na následující kurzu se dozvíte, jak nasadit API Management se cluster Service Fabric.
+Teď přejděte k následujícímu kurzu, kde se dozvíte, jak nasadit službu API Management s využitím clusteru Service Fabric.
 > [!div class="nextstepaction"]
-> [Nasazení správy rozhraní API pomocí Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+> [Nasazení API Managementu se Service Fabric](service-fabric-tutorial-deploy-api-management.md)

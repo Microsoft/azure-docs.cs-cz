@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: 131a1f77fa9c8d8e7b9ac5b01dee655b1aa1c3df
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: aa4df1854b15198ede1ee143afeff47b24dc567f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal: Použití editoru dotazů SQL k připojení a dotazování dat
 
@@ -33,18 +33,19 @@ Tento rychlý start používá jako výchozí bod prostředky vytvořené v něk
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
+> [!NOTE]
+> Ověřte, že v nastavení brány firewall SQL Serveru je zapnutá možnost Povolit přístup ke službám Azure. Tato možnost poskytuje editoru dotazů SQL přístup k databázím a datovým skladům.
+
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
 Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 
 ## <a name="connect-using-sql-authentication"></a>Připojení s využitím ověřování SQL
-> [!NOTE]
-> Ověřte, že v nastavení brány firewall SQL Serveru je zapnutá možnost Povolit přístup ke službám Azure. Tato možnost poskytuje editoru dotazů SQL přístup k databázi a datovým skladům.
 
 1. V nabídce nalevo klikněte na **Databáze SQL** a potom klikněte na databázi, pro kterou chcete zadat dotaz.
 
-2. Na stránce databáze SQL pro vaši databázi klikněte v levé nabídce na **Průzkumník dat (Preview)**.
+2. Na stránce databáze SQL pro vaši databázi klikněte v levé nabídce na **Editor dotazů (Preview)**.
 
     ![vyhledání editoru dotazů](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 

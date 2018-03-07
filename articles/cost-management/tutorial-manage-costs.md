@@ -1,22 +1,22 @@
 ---
-title: "Správa nákladů pomocí služby Azure Cost Management | Microsoft Docs"
-description: "Spravujte náklady s využitím přidělování nákladů a sestav metod showback a chargeback."
+title: "Kurz – Správa nákladů pomocí služby Azure Cost Management | Microsoft Docs"
+description: "V tomto kurzu zjistíte, jak spravovat náklady s využitím přidělování nákladů a sestav metod showback a chargeback."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 804b50d6ba054bbb0eb60b659c98f161ea5272ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7e9f11e702dbbe8864f8a0c307777c922e5f028d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="manage-costs-by-using-azure-cost-management"></a>Správa nákladů pomocí služby Azure Cost Management
+# <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>Kurz: Správa nákladů pomocí služby Azure Cost Management
 
 Ve službě Azure Cost Management od Cloudyn spravujete náklady a vytváříte sestavy metody showback přidělováním nákladů na základě značek. Proces přidělování nákladů přiřazuje náklady ke spotřebovaným cloudovým prostředkům. K úplnému přidělení nákladů dojde, když jsou všechny prostředky uspořádané do kategorií pomocí značek. Po přidělení nákladů můžete svým uživatelům prostřednictvím řídicích panelů a sestav poskytnout metodu showback nebo chargeback. Když však začnete používat službu Cost Management, řada prostředků nemusí být označených nebo označení nemusí podporovat.
 
@@ -27,6 +27,13 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Používat vlastní značky k přidělování nákladů.
 > * Vytvářet sestavy metod showback a chargeback.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+## <a name="prerequisites"></a>Požadavky
+
+- Musíte mít účet Azure.
+- Musíte mít zaregistrovanou zkušební verzi nebo placené předplatné služby Azure Cost Management.
 
 ## <a name="use-custom-tags-to-allocate-costs"></a>Použití vlastních značek k přidělování nákladů
 
@@ -122,7 +129,7 @@ V tomto kurzu jste se naučili:
 
 
 
-Další informace o začátcích práce s Cloudyn a používání jeho funkcí najdete v dokumentaci pro Cloudyn.
+V dalším kurzu se dozvíte, jak řídit přístup k datům.
 
 > [!div class="nextstepaction"]
-> [Dokumentace pro Cloudyn](https://support.cloudyn.com/hc/)
+> [Řízení přístupu k datům](tutorial-user-access.md)

@@ -1,6 +1,6 @@
 ---
-title: "Nasazení aplikace Azure Service Fabric pomocí průběžnou integraci (Team Services) | Microsoft Docs"
-description: "Zjistěte, jak nastavit průběžnou integraci a nasazení pro aplikace Service Fabric pomocí Visual Studio Team Services.  Nasazení aplikace do clusteru Service Fabric v Azure."
+title: "Nasazení aplikace Azure Service Fabric s využitím průběžné integrace (Team Services) | Microsoft Docs"
+description: "V tomto kurzu se dozvíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Service Fabric pomocí Visual Studio Team Services.  Nasazení aplikace do clusteru Service Fabric v Azure"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,146 +15,146 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 2fb7ab906208a58c0b5cd3af8b53188fbab94029
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
-ms.translationtype: MT
+ms.openlocfilehash: 3f5ccd40e2b46cc68b4f7aeb67577fb66dbd5355
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Nasazení aplikace s CI nebo CD pro cluster Service Fabric
-V tomto kurzu je součástí tři řady a popisuje, jak nastavit průběžnou integraci a nasazení pro aplikaci Azure Service Fabric pomocí Visual Studio Team Services.  Je potřeba stávající aplikace Service Fabric, aplikace vytvořené v [sestavení aplikace .NET](service-fabric-tutorial-create-dotnet-app.md) slouží jako příklad.
+# <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace s CI/CD do clusteru Service Fabric
+V tomto kurzu, který je třetí částí série, se dozvíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Azure Service Fabric pomocí Visual Studio Team Services.  Potřebujete existující aplikaci Service Fabric. Jako příklad se používá aplikace vytvořená v tématu [Sestavení aplikace .NET](service-fabric-tutorial-create-dotnet-app.md).
 
-V rámci tři řady, zjistíte, jak:
+Ve třetí části této série se naučíte:
 
 > [!div class="checklist"]
-> * Do projektu přidejte zdrojového kódu
-> * Vytvořit definici sestavení v Team Services
+> * Přidání správy zdrojového kódu do projektu
+> * Vytvoření definice sestavení v Team Services
 > * Vytvoření definice verze v Team Services
 > * Automatické nasazení a upgrade aplikace
 
-V této série kurzu zjistíte, jak:
+V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * [Sestavení aplikace .NET Service Fabric](service-fabric-tutorial-create-dotnet-app.md)
-> * [Nasazení aplikace na vzdálený cluster](service-fabric-tutorial-deploy-app-to-party-cluster.md)
-> * Konfigurace CI/CD pomocí Visual Studio Team Services
-> * [Nastavení monitorování a diagnostiky pro aplikaci](service-fabric-tutorial-monitoring-aspnet.md)
+> * [Sestavit aplikaci .NET pro Service Fabric](service-fabric-tutorial-create-dotnet-app.md)
+> * [Nasadit aplikaci do vzdáleného clusteru](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * Nakonfigurovat CI/CD pomocí Visual Studio Team Services
+> * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Požadavky
-Před zahájením tohoto kurzu:
-- Pokud nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- [Nainstalovat Visual Studio 2017](https://www.visualstudio.com/) a nainstalujte **Azure development** a **ASP.NET a webové vývoj** úlohy.
-- [Instalace Service Fabric SDK](service-fabric-get-started.md)
-- Vytvoření clusteru s podporou Windows Service Fabric v Azure, například pomocí [projdete tímto kurzem](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-- Vytvoření [účtu Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
+Než začnete s tímto kurzem:
+- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Nainstalujte sadu Visual Studio 2017](https://www.visualstudio.com/) se sadami funkcí **Vývoj pro Azure** a **Vývoj pro ASP.NET a web**.
+- [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
+- Vytvořte v Azure cluster Service Fabric s Windows, například [podle tohoto kurzu](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+- Vytvořte [účet Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
 
 ## <a name="download-the-voting-sample-application"></a>Stažení ukázkové aplikace Voting
-Pokud není sestavení Voting ukázkovou aplikaci [součástí jeden z této série kurz](service-fabric-tutorial-create-dotnet-app.md), můžete ho stáhnout. V příkazovém okně spusťte následující příkaz, který klonovat úložiště ukázkové aplikace do místního počítače.
+Pokud jste nesestavili ukázkovou aplikaci Voting v [první části této série kurzů](service-fabric-tutorial-create-dotnet-app.md), můžete si ji stáhnout. V příkazovém okně naklonujte spuštěním následujícího příkazu úložiště ukázkové aplikace do místního počítače.
 
 ```
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ```
 
 ## <a name="prepare-a-publish-profile"></a>Příprava profilu publikování
-Teď, když jste [vytvořili aplikaci](service-fabric-tutorial-create-dotnet-app.md) a mít [nasadit aplikaci do Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md), jste připraveni nastavte průběžnou integraci.  Nejdřív připravte profil publikování v rámci vaší aplikace pro použití procesu nasazení, který spouští v rámci Team Services.  Profil publikování, musí být nakonfigurovaný pro cluster, který jste předtím vytvořili.  Spuštění sady Visual Studio a otevřít existující projekt aplikace Service Fabric.  V **Průzkumníku řešení**, klikněte pravým tlačítkem na aplikaci a vyberte **publikování...** .
+Teď, když jste [vytvořili aplikaci](service-fabric-tutorial-create-dotnet-app.md) a [nasadili jste tuto aplikaci do Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md), jste připraveni nastavit průběžnou integraci.  Nejprve v rámci své aplikace připravte profil publikování, který použije proces nasazení, který se provádí v rámci Team Services.  Profil publikování by měl být nakonfigurovaný tak, aby cílil na cluster, který jste předtím vytvořili.  Spusťte sadu Visual Studio a otevřete existující projekt aplikace Service Fabric.  V **Průzkumníku řešení** klikněte pravým tlačítkem na aplikaci a vyberte **Publikovat...**
 
-Zvolte profil cíl v rámci projektu aplikace použít pro pracovní postup průběžnou integraci, například v cloudu.  Zadejte koncový bod připojení clusteru.  Zkontrolujte **upgradu aplikace** políčko tak, aby vaše aplikace upgrady pro každé nasazení v Team Services.  Klikněte **Uložit** hypertextový odkaz na Uložit nastavení do profil publikování a pak klikněte na **zrušit** zavřete dialogové okno.  
+Zvolte v rámci projektu aplikace cílový profil, který se použije pro pracovní postup průběžné integrace, například Cloud.  Zadejte koncový bod připojení clusteru.  Zaškrtněte políčko **Upgradovat aplikaci**, aby se vaše aplikace upgradovala pro každé nasazení v Team Services.  Kliknutím na hypertextový odkaz **Uložit** uložte nastavení do profilu publikování a pak kliknutím na **Zrušit** zavřete dialogové okno.  
 
-![Push profilu][publish-app-profile]
+![Nasdílení profilu][publish-app-profile]
 
-## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>Sdílet řešení sady Visual Studio do nového úložiště Team Services Git
-Sdílejte vaše zdrojové soubory aplikací do týmového projektu v Team Services, můžete vygenerovat sestavení.  
+## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>Sdílení řešení sady Visual Studio do nového úložiště Team Services Git
+Zdrojové soubory své aplikace můžete sdílet do týmového projektu v Team Services, abyste mohli generovat sestavení.  
 
-Vytvoření nové místní úložiště Git pro svůj projekt tak, že vyberete **přidat do správy zdrojového kódu** -> **Git** na stavovém řádku v pravém dolním rohu Visual Studio. 
+Vytvořte pro svůj projekt nové místní úložiště Git tím, že na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete **Přidat do správy zdrojového kódu** -> **Git**. 
 
-V **Push** zobrazit v **Team Explorer**, vyberte **publikování úložiště Git** tlačítko pod **nabízená Visual Studio Team Services**.
+V zobrazení **Nasdílení změn** v **Team Exploreru** vyberte v části **Nasdílet do Visual Studio Team Services** tlačítko **Publikovat úložiště Git**.
 
-![Úložiště Git push][push-git-repo]
+![Nasdílení úložiště Git][push-git-repo]
 
-Ověřit e-mailu a vyberte svůj účet za **Team Services domény** rozevíracího seznamu. Zadejte název úložiště a vyberte **publikovat úložiště**.
+Ověřte svůj e-mail a v rozevíracím seznamu **Doména Team Services** vyberte svůj účet. Zadejte název svého úložiště a vyberte **Publikovat úložiště**.
 
-![Úložiště Git push][publish-code]
+![Nasdílení úložiště Git][publish-code]
 
-Publikování úložišti vytvoří nového týmového projektu v účtu se stejným názvem jako místní úložiště. Chcete-li vytvořit úložišti v existující týmového projektu, klikněte na tlačítko **Upřesnit** vedle **úložiště** název a vyberte týmového projektu. Váš kód na webu můžete zobrazit výběrem **najdete v článku na webu**.
+Publikováním úložiště se ve vašem účtu vytvoří nový týmový projekt se stejným názvem jako místní úložiště. Pokud chcete úložiště vytvořit v existujícím týmovém projektu, klikněte na **Upřesnit** vedle názvu **úložiště** a vyberte týmový projekt. Svůj kód můžete zobrazit na webu výběrem možnosti **Podívejte se na webu**.
 
-## <a name="configure-continuous-delivery-with-vsts"></a>Služby VSTS nakonfigurovat nastavené průběžné doručování
-Definice sestavení Team Services popisuje pracovní postup, který se skládá ze sady kroky sestavení, které jsou prováděny postupně. Vytvoření definice sestavení, která vytvoří balíček aplikace Service Fabric a artefaktů, k nasazení na cluster Service Fabric. Další informace o [definice sestavení Team Services](https://www.visualstudio.com/docs/build/define/create). 
+## <a name="configure-continuous-delivery-with-vsts"></a>Konfigurace průběžného doručování s VSTS
+Definice sestavení Team Services popisuje pracovní postup, který se skládá z řady postupně prováděných kroků sestavení. Vytvořte definici sestavení, která vytvoří balíček aplikace Service Fabric a další artefakty pro nasazení do clusteru Service Fabric. Další informace o [definicích sestavení Team Services](https://www.visualstudio.com/docs/build/define/create). 
 
-Verze definice Team Services popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při použití společně, definici sestavení a verze definice spustit celý pracovní postup od zdrojové soubory k konče spuštěné aplikace v clusteru. Další informace o Team Services [verze definice](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
+Definice verze Team Services popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití definice sestavení a definice verze provedou celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Další informace o [definicích verzí](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition) Team Services.
 
-### <a name="create-a-build-definition"></a>Vytvořit definici sestavení
-Otevřete webový prohlížeč a přejděte do nového týmového projektu v: [https://&lt;stránku Můj účet&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting). 
+### <a name="create-a-build-definition"></a>Vytvoření definice sestavení
+Otevřete webový prohlížeč a přejděte do nového týmového projektu na adrese: [https://&lt;váš_účet&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting). 
 
-Vyberte **sestavení a verze** kartě pak **sestavení**, pak **+ novou definici**.  V **vyberte šablonu**, vyberte **aplikace Azure Service Fabric** šablonu a klikněte na tlačítko **použít**. 
+Vyberte kartu **Sestavení a vydání**, pak **Sestavení** a nakonec **+ Nová definice**.  V části **Vybrat šablonu** vyberte šablonu **Aplikace Azure Service Fabric** a klikněte na **Použít**. 
 
 ![Výběr šablony sestavení][select-build-template] 
 
-V **úlohy**, zadejte "Hostované VS2017" jako **fronty agenta**. 
+V části **Úlohy** zadejte do pole **Fronta agenta** Hosted VS2017. 
 
-![Vyberte úlohy][save-and-queue]
+![Výběr úloh][save-and-queue]
 
-V části **aktivační události**, povolit průběžnou integraci nastavením **aktivovat stav**.  Vyberte **uložte a fronty** ruční spuštění sestavení.  
+V části **Triggery** nastavte **Stav triggeru** a povolte tak průběžnou integraci.  Pokud chcete ručně spustit sestavení, vyberte **Uložit a zařadit do fronty**.  
 
-![Vyberte aktivační události][save-and-queue2]
+![Výběr triggerů][save-and-queue2]
 
-Také vytvoří aktivační událost nabízené nebo vrácení se změnami. Chcete-li zkontrolovat průběh sestavení, přepněte na **sestavení** kartě.  Jakmile ověříte úspěšně spustí sestavení, definujte definici verze, která nasadí aplikaci do clusteru. 
+Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. Pokud chcete zkontrolovat průběh sestavení, přepněte na kartu **Sestavení**.  Jakmile ověříte, že se sestavení úspěšně provádí, nadefinujte definici verze, která nasadí vaši aplikaci do clusteru. 
 
 ### <a name="create-a-release-definition"></a>Vytvoření definice verze  
 
-Vyberte **sestavení a verze** kartě pak **verze**, pak **+ novou definici**.  V **vyberte šablonu**, vyberte **Azure Service Fabric nasazení** šablonu ze seznamu a potom **použít**.  
+Vyberte kartu **Sestavení a vydání**, pak **Vydání** a nakonec **+ Nová definice**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.  
 
-![Výběr šablony verze][select-release-template]
+![Výběr šablony vydání][select-release-template]
 
-Vyberte **úlohy**->**prostředí 1** a potom **+ nový** přidat nové připojení clusteru.
+Vyberte **Úlohy**->**Prostředí 1** a pak kliknutím na **+ Nové** přidejte nové připojení clusteru.
 
-![Přidat připojení clusteru][add-cluster-connection]
+![Přidání připojení clusteru][add-cluster-connection]
 
-V **přidat nové připojení prostředků infrastruktury služby** zobrazení vyberte **na základě certifikátů** nebo **Azure Active Directory** ověřování.  Zadejte název připojení "mysftestcluster" a koncový bod clusteru z "tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000" (nebo koncový bod clusteru, který nasazujete). 
+V zobrazení **Přidat nové připojení Service Fabric** vyberte ověřování **Na základě certifikátů** nebo **Azure Active Directory**.  Zadejte název připojení mysftestcluster a koncový bod clusteru tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000 (nebo koncový bod clusteru, do kterého nasazujete). 
 
-Pro ověřování na základě certifikátů, přidejte **kryptografický otisk certifikátu serveru** certifikátu serveru se používá k vytvoření clusteru.  V **klientský certifikát**, přidejte kódování base-64 souboru certifikátu klienta. Na toto pole informace o tom, jak získat této kódování base-64 reprezentace kódovaného certifikátu zobrazit automaticky otevírané okno nápovědy. Také přidat **heslo** pro certifikát.  Certifikát serveru nebo clusteru můžete použít, pokud nemáte samostatný klientský certifikát. 
+Pokud použijete ověřování na základě certifikátů, přidejte **Kryptografický otisk certifikátu serveru** použitého k vytvoření clusteru.  V části **Klientský certifikát** přidejte kódování Base64 souboru klientského certifikátu. V místním okně nápovědy pro toto pole najdete informace o postupu pro získání reprezentace certifikátu v kódování Base64. Přidejte také **Heslo** pro certifikát.  Pokud nemáte samostatný klientský certifikát, můžete použít certifikát clusteru nebo serveru. 
 
-Pro přihlašovací údaje služby Azure Active Directory, přidejte **kryptografický otisk certifikátu serveru** certifikátu serveru použít k vytvoření clusteru a přihlašovací údaje chcete použít pro připojení k clusteru, **uživatelské jméno** a **heslo** pole. 
+Pokud použijete přihlašovací údaje Azure Active Directory, přidejte **Kryptografický otisk certifikátu serveru** použitého k vytvoření clusteru a do polí **Uživatelské jméno** a **Heslo** zadejte přihlašovací údaje, pomocí kterých se chcete připojovat ke clusteru. 
 
-Klikněte na tlačítko **přidat** pro uložení připojení clusteru.
+Kliknutím na **Přidat** uložte připojení clusteru.
 
-V dalším kroku přidáte artefaktů sestavení do kanálu, aby definice vydání, můžete najít výstup ze sestavení. Vyberte **kanálu** a **artefakty**->**+ přidat**.  V **zdroj (definice sestavení)**, vyberte definici sestavení, který jste předtím vytvořili.  Klikněte na tlačítko **přidat** pro uložení artefaktů sestavení.
+Dále do kanálu přidejte artefakt sestavení, aby definice verze dokázala najít výstup sestavení. Vyberte **Kanál** a pak **Artefakty**->**+ Přidat**.  V části **Zdroj (definice sestavení)** vyberte definici sestavení, kterou jste předtím vytvořili.  Kliknutím na **Přidat** uložte artefakt sestavení.
 
-![Přidat artefaktů][add-artifact]
+![Přidání artefaktu][add-artifact]
 
-Povolte aktivační událost průběžné nasazování tak, aby verze se automaticky vytvoří při sestavení se dokončí. Klikněte na ikonu v artefaktu, povolit aktivační událost a klikněte na **Uložit** se uložit definici verze.
+Povolte trigger průběžného nasazování, aby se po dokončení sestavení automaticky vytvořila vydaná verze. Klikněte na ikonu blesku v artefaktu, povolte trigger a kliknutím na **Uložit** uložte definici verze.
 
-![Povolit aktivační události][enable-trigger]
+![Povolení triggeru][enable-trigger]
 
-Vyberte **+ verze** -> **vytvořit verzi** -> **vytvořit** ručně vytvořit verze.  Ověřte, zda nasazení bylo úspěšné a aplikace běží v clusteru.  Otevřete webový prohlížeč a přejděte do [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Poznámka: verze aplikace, v tomto příkladu je "1.0.0.20170616.3". 
+Výběrem **+ Vydání** -> **Vytvořit vydání** -> **Vytvořit** ručně vytvořte vydání.  Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3. 
 
-## <a name="commit-and-push-changes-trigger-a-release"></a>Potvrzení a doručte změny, aktivace vydání verze
-K ověření, že kanál průběžnou integraci funguje kontrolou v některé změny kódu Team Services.    
+## <a name="commit-and-push-changes-trigger-a-release"></a>Potvrzení a nasdílení změn, aktivace vydání
+Ověřte fungování kanálu průběžné integrace tím, že do Team Services vrátíte se změnami nějaký kód.    
 
-Při psaní kódu, změny jsou sledovány automaticky Visual Studio. Potvrzení změn místní úložiště Git tak, že vyberete ikonu (čekajících změn![Čekající na vyřízení][pending]) ze stavového řádku v vpravo dole.
+Při psaní kódu sada Visual Studio automaticky sleduje provedené změny. Potvrďte změny do svého místního úložiště Git tím, že vyberete ikonu probíhajících změn (![Čekající na vyřízení][pending]) na stavovém řádku v pravém dolním rohu.
 
-Na **změny** zobrazení v Team Exploreru, přidat zprávu s popisem aktualizace a provést změny.
+V zobrazení **Změny** v Team Exploreru přidejte zprávu s popisem vaší aktualizace a potvrďte provedené změny.
 
-![Potvrdit všechny][changes]
+![Potvrdit vše][changes]
 
-Vyberte ikonu nepublikované změny stavu panelu (![Nepublikováno změny][unpublished-changes]) nebo synchronizace zobrazení v Team Exploreru. Vyberte **Push** aktualizovat kódu v produktu Team Services nebo TFS.
+Vyberte ikonu nepublikovaných změn (![Nepublikované změny][unpublished-changes]) na stavovém řádku nebo zobrazení Synchronizace v Team Exploreru. Vyberte **Nasdílet změny** a aktualizujte svůj kód v Team Services nebo v sadě TFS.
 
-![Doručte změny][push]
+![Nasdílení změn][push]
 
-Když zavedete změny Team Services automaticky aktivuje build.  Pokud definici sestavení úspěšně dokončí, verze se automaticky vytvoří a spustí upgrade aplikace v clusteru.
+Nasdílením změn do Team Services se automaticky aktivuje sestavení.  Po úspěšném dokončení definice sestavení se automaticky vytvoří vydaná verze a začne se upgradovat aplikace v clusteru.
 
-Chcete-li zkontrolovat průběh sestavení, přepněte na **sestavení** kartě v **Team Explorer** v sadě Visual Studio.  Jakmile ověříte úspěšně spustí sestavení, definujte definici verze, která nasadí aplikaci do clusteru.
+Pokud chcete zkontrolovat průběh sestavení, přepněte v **Team Exploreru** v sadě Visual Studio na kartu **Sestavení**.  Jakmile ověříte, že se sestavení úspěšně provádí, nadefinujte definici verze, která nasadí vaši aplikaci do clusteru.
 
-Ověřte, zda nasazení bylo úspěšné a aplikace běží v clusteru.  Otevřete webový prohlížeč a přejděte do [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Poznámka: verze aplikace, v tomto příkladu je "1.0.0.20170815.3".
+Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170815.3.
 
 ![Service Fabric Explorer][sfx1]
 
 ## <a name="update-the-application"></a>Aktualizace aplikace
-Proveďte změny kódu v aplikaci.  Uložte a provedení změn, podle předchozích kroků.
+Proveďte v aplikaci změny kódu.  Podle předchozích kroků změny uložte a potvrďte.
 
-Po upgradu aplikace, můžete sledovat průběh upgradu v Service Fabric Exploreru:
+Jakmile začne upgrade aplikace, můžete průběh upgradu sledovat v Service Fabric Exploreru:
 
 ![Service Fabric Explorer][sfx2]
 
-Upgrade aplikace může trvat několik minut. Po dokončení upgradu bude aplikace spuštěna další verze.  V tomto příkladu "1.0.0.20170815.4".
+Upgrade aplikace může trvat několik minut. Po dokončení upgradu bude aplikace používat další verzi.  V tomto příkladu verzi 1.0.0.20170815.4.
 
 ![Service Fabric Explorer][sfx3]
 
@@ -162,14 +162,14 @@ Upgrade aplikace může trvat několik minut. Po dokončení upgradu bude aplika
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Do projektu přidejte zdrojového kódu
-> * Vytvořit definici sestavení
+> * Přidání správy zdrojového kódu do projektu
+> * Vytvoření definice sestavení
 > * Vytvoření definice verze
 > * Automatické nasazení a upgrade aplikace
 
-Přechodu na další kurz:
+Přejděte k dalšímu kurzu:
 > [!div class="nextstepaction"]
-> [Nastavení monitorování a diagnostiky pro aplikaci](service-fabric-tutorial-monitoring-aspnet.md) 
+> [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-monitoring-aspnet.md) 
 
 
 <!-- Image References -->

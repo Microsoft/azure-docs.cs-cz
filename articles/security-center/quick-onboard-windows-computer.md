@@ -1,6 +1,6 @@
 ---
-title: "Azure Security Center rychlý start - zaváděním vašeho počítače se systémem Windows do Security Center | Microsoft Docs"
-description: "Tento rychlý start se dozvíte, jak zřídit agenta Microsoft Monitoring Agent na počítači se systémem Windows."
+title: "Rychlý start Azure Security Center – Připojení počítačů s Windows ke službě Security Center | Microsoft Docs"
+description: "V tomto rychlém startu se dozvíte, jak zřídit agenta Microsoft Monitoring Agent na počítači s Windows."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,93 +9,94 @@ editor:
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2018
+ms.date: 02/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 50cbbca9181d67bc41632a4650c76b9636a72356
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
-ms.translationtype: MT
+ms.openlocfilehash: 8d9b0fcc8b72f947cbc64c6ac9a428ac29f8dfd2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rychlý úvod: Počítače se systémem Windows registrovat do Azure Security Center
-Po můžete zaváděním předplatné Azure, můžete povolit Security Center pro prostředky, které jsou spuštěné mimo Azure, pro příklad místní nebo v ostatních cloudů, služba Microsoft Monitoring Agent.
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Windows ke službě Azure Security Center
+Po připojení předplatných Azure můžete zřízením agenta Microsoft Monitoring Agent povolit službu Security Center pro prostředky spuštěné mimo Azure, například v místním prostředí nebo jiných cloudech.
 
-Tento rychlý start se dozvíte, jak nainstalovat službu Microsoft Monitoring Agent na počítači se systémem Windows.
+V tomto rychlém startu se dozvíte, jak nainstalovat agenta Microsoft Monitoring Agent na počítač s Windows.
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-Před zahájením tento rychlý start, musí být na standardní cenovou úroveň Security Center. V tématu [Onboard předplatného Azure Security Center standardní](security-center-get-started.md) pro pokyny k upgradu. Můžete zkusit Security Center Standard bez nákladů pro prvních 60 dní.
+Než začnete s tímto rychlým startem, musíte mít službu Security Center na cenové úrovni Standard. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Službu Security Center úrovně Standard si můžete zdarma vyzkoušet na 60 dní.
 
-## <a name="add-new-windows-computer"></a>Přidat nový počítač se systémem Windows
+## <a name="add-new-windows-computer"></a>Přidání nového počítače s Windows
 
 1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. V nabídce **Microsoft Azure** vyberte **Security Center**. **Security Center – přehled** otevře.
+2. V nabídce **Microsoft Azure** vyberte **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
 
- ![Security Center – přehled][2]
+ ![Přehled služby Security Center][2]
 
-3. V části v hlavní nabídce Security Center, vyberte **registrace k pokročilým zabezpečením**.
-4. Vyberte **chcete přidat počítače mimo Azure**.
+3. V hlavní nabídce služby Security Center vyberte **Připojení k rozšířenému zabezpečení**.
+4. Vyberte možnost **Chcete přidat počítače umístěné mimo Azure**.
 
-   ![Připojit k rozšířené zabezpečení][3]
+   ![Připojení k rozšířenému zabezpečení][3]
 
-5. Na **přidat nové počítače mimo Azure**, se zobrazí seznam vašich pracovních prostorů analýzy protokolů. Seznam obsahuje výchozí pracovní prostor pomocí služby Security Center při vytvořena automatické zřizování byl povolen, pokud tyto produkty. Vyberte tento pracovní prostor nebo jiné pracovní prostor, který chcete použít.
+5. V části **Přidat počítače umístěné mimo Azure** se zobrazí seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento pracovní prostor nebo jiný pracovní prostor, který chcete použít.
 
-    ![Přidat počítač mimo Azure][4]
+    ![Přidání počítače umístěného mimo Azure][4]
 
-  **Přímé agenta** okno otevře s odkazem pro stažení agenta Windows a klíčů pro ID vašeho pracovního prostoru pro použití v konfiguraci agenta.
+  Otevře se okno **Přímý agent** s odkazem na stažení agenta pro Windows a klíči pro ID vašeho pracovního prostoru, které použijete při konfiguraci agenta.
 
-6.  Vyberte **stáhnout agenta Windows** odkaz pro typ procesoru počítače stáhnout instalační soubor.
+6.  Vyberte odkaz **Stáhnout agenta pro Windows** odpovídající typu procesoru vašeho počítače a stáhněte instalační soubor.
 
-7.  Na pravé straně **ID pracovního prostoru**, vyberte ikonu kopírování a vložení ID do poznámkového bloku.
+7.  Napravo od **ID pracovního prostoru** vyberte ikonu kopírování a vložte ID do Poznámkového bloku.
 
-8.  Na pravé straně **primární klíč**, vyberte ikonu kopírování a vložení klíč do poznámkového bloku.
+8.  Napravo od **Primárního klíče** vyberte ikonu kopírování a vložte klíč do Poznámkového bloku.
 
 ## <a name="install-the-agent"></a>Instalace agenta
-Nyní je nutné nainstalovat stažený soubor v cílovém počítači.
+Teď je potřeba stažený soubor nainstalovat na cílový počítač.
 
-1. Zkopírujte soubor do cílového počítače a spusťte instalační program.
-2. Na **úvodní** vyberte **Další**.
-3. Na **licenční podmínky** , přečtěte si licenční a pak vyberte **souhlasím**.
-4. Na **cílovou složku** stránky, změnit nebo ponechat výchozí instalační složku a potom vyberte **Další**.
-5. Na **možnosti instalace agenta** vyberte připojit agenta k Azure Log Analytics (OMS) a potom vyberte **Další**.
-6. Na **Azure Log Analytics** stránky, vložte **ID pracovního prostoru** a **klíč pracovního prostoru (primární klíč)** kterou jste zkopírovali do poznámkového bloku v předchozím postupu.
-7. Pokud počítač by měl nahlásit pracovní prostor analýzy protokolů v cloudu Azure Government, vyberte **Azure US Government** formuláře **cloudu Azure** rozevíracího seznamu.  Pokud počítač musí komunikovat přes proxy server ke službě Analýza protokolů, vyberte **Upřesnit** a zadejte adresu URL a číslo portu proxy serveru.
-8. Vyberte **Další** po dokončení poskytuje nezbytné nastavení konfigurace.
+1. Zkopírujte soubor do cílového počítače a spusťte instalaci.
+2. Na **úvodní** stránce vyberte **Další**.
+3. Na stránce **Licenční podmínky** si přečtěte licenční podmínky a pak vyberte **Souhlasím**.
+4. Na stránce **Cílová složka** změňte nebo ponechte výchozí instalační složku a pak vyberte **Další**.
+5. Na stránce **Možnosti instalace agenta** zvolte připojení agenta k Azure Log Analytics (OMS) a pak vyberte **Další**.
+6. Na stránce **Azure Log Analytics** vložte **ID pracovního prostoru** a **Klíč pracovního prostoru (Primární klíč)**, které jste zkopírovali do Poznámkového bloku v rámci předchozího postupu.
+7. Pokud se má počítač hlásit do pracovního prostoru Log Analytics v cloudu Azure Government, vyberte z rozevíracího seznamu **Cloud Azure** možnost **Azure US Government**.  Pokud počítač potřebuje komunikovat se službou Log Analytics přes proxy server, vyberte **Upřesnit** a zadejte adresu URL a číslo portu proxy serveru.
+8. Jakmile dokončíte zadávání nezbytných nastavení konfigurace, vyberte **Další**.
 
   ![Instalace agenta][5]
 
-9. Na **připraveno k instalaci** stránka, zkontrolujte vybrané možnosti a pak vyberte **nainstalovat**.
-10. Na **konfigurace byla úspěšně dokončena** vyberte **dokončit**
+9. Na stránce **Připraveno k instalaci** zkontrolujte zvolené volby a pak vyberte **Nainstalovat**.
+10. Na stránce **Konfigurace byla úspěšně dokončena** vyberte **Dokončit**.
 
-Po dokončení se **Microsoft Monitoring Agent** zobrazí v **Ovládacích panelech**. Můžete zkontrolovat konfiguraci existuje a ověřte, zda je agent připojen.
+Po dokončení se **Microsoft Monitoring Agent** zobrazí v **Ovládacích panelech**. Tam můžete zkontrolovat svou konfiguraci a ověřit připojení agenta.
 
-Další informace o instalaci a konfiguraci agenta najdete v tématu [počítače se systémem Windows připojit](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup).
+Další informace o instalaci a konfiguraci agenta najdete v tématu popisujícím [připojení počítačů s Windows](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup-wizard).
 
-Teď můžete monitorovat počítače mimo Azure na jednom místě a virtuální počítače Azure. V části **výpočetní**, budete mít přehled o všech virtuálních počítačů a počítačů spolu s doporučení. Každý sloupec představuje jednu sadu doporučení. Barva představuje Virtuálního počítače nebo počítače aktuální stav zabezpečení pro tohoto doporučení. Security Center navíc zobrazí všechny detekce pro tyto počítače v výstrahy zabezpečení.
+Teď můžete na jednom místě monitorovat své virtuální počítače Azure i počítače umístěné mimo Azure. V části **Compute** najdete přehled všech virtuálních počítačů a počítačů i s doporučeními. Každý sloupec představuje jednu sadu doporučení. Barva doporučení představuje aktuální stav zabezpečení virtuálního počítače nebo počítače. Security Center navíc zobrazí všechny detekce pro tyto počítače ve výstrahách upozornění.
 
-  ![Výpočetní okno][6]
+  ![Okno Compute][6]
 
-Existují dva typy ikon reprezentované na **výpočetní** okno:
+V okně **Compute** se zobrazují dva typy ikon:
 
-![icon1](./media/quick-onboard-windows-computer/security-center-monitoring-icon1.png) Počítače bez Azure
+![icon1](./media/quick-onboard-windows-computer/security-center-monitoring-icon1.png) Počítač umístěný mimo Azure
 
 ![icon2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Virtuální počítač Azure
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud již nepotřebujete, můžete odebrat agenta z počítače se systémem Windows.
+Pokud už ho nepotřebujete, můžete agenta z počítače s Windows odebrat.
 
-Postup odebrání agenta:
+Odebrání agenta:
 
 1. Otevřete **Ovládací panely**.
 2. Otevřete **Programy a funkce**.
 3. V části **Programy a funkce** vyberte **Microsoft Monitoring Agent** a klikněte na **Odinstalovat**.
 
-## <a name="next-steps"></a>Další postup
-V tento rychlý start zřídí agenta Microsoft Monitoring Agent na počítači se systémem Windows. Další informace o tom, jak používat Security Center, i nadále kurz pro konfiguraci zásad zabezpečení a vyhodnocení zabezpečení vašich prostředků.
+## <a name="next-steps"></a>Další kroky
+V tomto rychlém startu jste zřídili agenta Microsoft Monitoring Agent na počítači s Windows. Další informace o tom, jak používat Security Center, najdete v následném kurzu o konfiguraci zásad zabezpečení a o vyhodnocení zabezpečení vašich prostředků.
 
 > [!div class="nextstepaction"]
 > [Kurz: Definování a vyhodnocení zásad zabezpečení](tutorial-security-policy.md)

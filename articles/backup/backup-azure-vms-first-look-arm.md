@@ -16,11 +16,11 @@ ms.topic: hero-article
 ms.date: 01/05/2018
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b91da3e3c99cec3a63d747062d4ae9f62720a872
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fdaf1349ddf623e2634360e891d959105c504093
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Zálohování virtuálních počítačů Azure do trezorů služby Recovery Services
 
@@ -239,7 +239,7 @@ Před registrací virtuálních počítačů k trezoru spusťte proces vyhledáv
 
     ![Výběr úlohy](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-    Vybraný virtuální počítač se ověří. Pokud se nezobrazí virtuální počítače, které jste očekávali, zkontrolujte, že existují ve stejném umístění Azure jako trezor služby Recovery Services. Umístění trezoru služby Recovery Services je uvedené na řídicím panelu trezoru.
+    Vybraný virtuální počítač se ověří. Pokud se nezobrazí virtuální počítače, které jste očekávali, zkontrolujte, že existují ve stejném umístění Azure jako trezor služby Recovery Services a že ještě nejsou chráněné. Umístění trezoru služby Recovery Services je uvedené na řídicím panelu trezoru.
 
 6. Teď, když jste definovali všechna nastavení trezoru, klikněte v okně Zálohování na **Povolit zálohování** a nasaďte zásadu do trezoru a virtuálních počítačů. Nasazením zásady zálohování se nevytvoří prvotní bod obnovení pro virtuální počítač.
 

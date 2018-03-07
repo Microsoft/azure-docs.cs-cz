@@ -5,15 +5,15 @@ services: automation
 keywords: change, tracking, automation
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0aefa175d676bd7e98841d3a1e9ff5a8c90b7deb
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
-ms.translationtype: MT
+ms.openlocfilehash: f0af493036740b854609cea07e01136aac808579
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
 
@@ -47,37 +47,19 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 Pro účely tohoto kurzu je nejprve potřeba povolit pro váš virtuální počítač řešení Change Tracking a Inventory. Pokud jste už dříve pro virtuální počítač povolili jiné řešení automatizace, tento krok není nezbytný.
 
 1. V nabídce vlevo vyberte **Virtuální počítače** a ze seznamu vyberte virtuální počítač.
-1. V nabídce vlevo v části **Operace** klikněte na **Inventory**. Otevře se stránka **Povolit řešení Change Tracking a Inventory**.
+1. V nabídce vlevo v části **OPERACE** klikněte na **Inventory**. Otevře se stránka řešení **Change Tracking**.
 
-Provede se ověření, pomocí kterého se určí, jestli jsou pro tento virtuální počítač povolená řešení Change Tracking a Inventory.
-Toto ověření zahrnuje kontroly pracovního prostoru Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení nachází v tomto pracovním prostoru.
+![Povolení změny](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) Otevře se obrazovka řešení **Change Tracking**. Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
 
 Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Inventory.
 Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
 
-Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agentem Microsoft Monitoring Agent (MMA) a procesem hybrid worker.
+Během připojování se virtuální počítač zřídí s agentem Microsoft Monitoring Agent (MMA) a procesem hybrid worker.
 Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru.
-Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agentem Microsoft Monitoring Agent (MMA) a hybridním pracovním procesem runbooku Automation.
-
-Pokud se nesplní tyto požadavky, zobrazí se banner nabízející možnost povolit řešení.
-
-![Banner konfigurace připojení k řešení Change Tracking a Inventory](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
-
-Pokud chcete řešení povolit, klikněte na banner.
-Pokud po ověření chyběla některá z následujících požadovaných součástí, automaticky se přidá:
-
-* Pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)
-* [Automation](./automation-offering-get-started.md)
-* Povolený [hybridní pracovní proces runbooku](./automation-hybrid-runbook-worker.md) na virtuálním počítači
-
-Otevře se obrazovka řešení **Change Tracking a Inventory**. Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
-
-![Okno pro povolení řešení Change Tracking](./media/automation-tutorial-troubleshoot-changes/installed-software-enable.png)
 
 Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče.
 Po povolení řešení začnou do Log Analytics proudit informace o nainstalovaném softwaru a změnách na virtuálních počítačích.
 Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
-
 
 ## <a name="using-change-tracking-in-log-analytics"></a>Použití řešení Change Tracking v Log Analytics
 
@@ -107,40 +89,47 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 1. Na kartě **Registr systému Windows** vyberte **Přidat**.
     Otevře se okno **Přidat registr systému Windows pro řešení Change Tracking**.
 
-   ![Přidání registru pro řešení Change Tracking](./media/automation-vm-change-tracking/change-add-registry.png)
+3. V okně **Přidat registr systému Windows pro řešení Change Tracking** zadejte informace o klíči, který se má sledovat, a klikněte na **Uložit**.
 
-2. V části **Povoleno** vyberte **Ano**.
-3. Do pole **Název položky** zadejte popisný název.
-4. (Volitelné) Do pole **Skupina** zadejte název skupiny.
-5. Do pole **Klíč registru systému Windows** zadejte název klíče registru, který chcete sledovat.
-6. Vyberte **Uložit**.
+|Vlastnost  |Popis  |
+|---------|---------|
+|Povoleno     | Určuje, jestli se nastavení používá.        |
+|Název položky     | Popisný název souboru, který se má sledovat        |
+|Skupina     | Název skupiny pro logické seskupení souborů        |
+|Klíč registru systému Windows   | Cesta, ve které se má soubor hledat. Například: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup      |
 
 ### <a name="add-a-windows-file"></a>Přidání souboru Windows
 
 1. Na kartě **Soubory Windows** vyberte **Přidat**. Otevře se okno **Přidat soubor Windows pro řešení Change Tracking**.
 
-   ![Change Tracking a soubor Windows](./media/automation-vm-change-tracking/change-add-win-file.png)
+1. V okně **Přidat soubor Windows pro řešení Change Tracking** zadejte informace o souboru nebo adresáři, který se má sledovat, a klikněte na **Uložit**.
 
-2. V části **Povoleno** vyberte **Ano**.
-3. Do pole **Název položky** zadejte popisný název.
-4. (Volitelné) Do pole **Skupina** zadejte název skupiny.
-5. Do pole **Vstupní cesta** zadejte úplnou cestu a název soubor, který chcete sledovat.
-6. Vyberte **Uložit**.
+|Vlastnost  |Popis  |
+|---------|---------|
+|Povoleno     | Určuje, jestli se nastavení používá.        |
+|Název položky     | Popisný název souboru, který se má sledovat        |
+|Skupina     | Název skupiny pro logické seskupení souborů        |
+|Zadat cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt       |
 
 ### <a name="add-a-linux-file"></a>Přidání souboru Linuxu
 
 1. Na kartě **Soubory Linuxu** vyberte **Přidat**. Otevře se okno **Přidat soubor Linuxu pro řešení Change Tracking**.
 
-   ![Přidání souboru Linuxu pro řešení Change Tracking](./media/automation-vm-change-tracking/change-add-linux-file.png)
+1. V okně **Přidat soubor Linuxu pro řešení Change Tracking** zadejte informace o souboru nebo adresáři, který se má sledovat, a klikněte na **Uložit**.
 
-2. V části **Povoleno** vyberte **Ano**.
-3. Do pole **Název položky** zadejte popisný název.
-4. (Volitelné) Do pole **Skupina** zadejte název skupiny.
-5. Do pole **Vstupní cesta** zadejte úplnou cestu a název soubor, který chcete sledovat.
-6. V poli **Typ cesty** vyberte **Soubor** nebo **Adresář**.
-7. V části **Rekurze** vyberte **Zapnuto**, pokud chcete sledovat změny pro zadanou cestu a všechny její vedlejší cesty. Pokud chcete sledovat pouze vybranou cestu nebo soubor, vyberte **Vypnuto**.
-8. V části **Použít Sudo** vyberte **Zapnuto**, pokud chcete sledovat soubory, které pro přístup vyžadují příkaz `sudo`. Jinak vyberte **Vypnuto**.
-9. Vyberte **Uložit**.
+|Vlastnost  |Popis  |
+|---------|---------|
+|Povoleno     | Určuje, jestli se nastavení používá.        |
+|Název položky     | Popisný název souboru, který se má sledovat        |
+|Skupina     | Název skupiny pro logické seskupení souborů        |
+|Zadat cestu     | Cesta, ve které se má soubor hledat. Například: /etc/*.conf       |
+|Typ cesty     | Typ položky, která se má sledovat. Možné hodnoty jsou Soubor a Adresář.        |
+|Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
+|Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
+|Odkazy     | Toto nastavení určuje, jak se při procházení adresářů zpracovávají symbolické odkazy.<br> **Ignorovat** – Ignoruje symbolické odkazy a nezahrnuje odkazované soubory ani adresáře.<br>**Sledovat** – Během rekurze sleduje symbolické odkazy a zahrnuje i odkazované soubory a adresáře.<br>**Spravovat** – Sleduje symbolické odkazy a umožňuje zpracování vráceného obsahu.      |
+
+   > [!NOTE]   
+   > Možnost Spravovat se nedoporučuje. Načítání obsahu souborů se nepodporuje.
 
 ## <a name="enable-activity-log-connection"></a>Povolení připojení protokolu aktivit
 
@@ -158,7 +147,7 @@ Jakmile budou řešení Change Tracking a Inventory povolená, můžete zobrazit
 
 Ve vašem virtuálním počítači v části **OPERACE** vyberte **Change Tracking**.
 
-![Snímek obrazovky, který obsahuje seznam změn do virtuálního počítače](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
+![Snímek obrazovky se seznamem změn virtuálního počítače](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
 
 Tento graf ukazuje změny, ke kterým došlo v průběhu času.
 Po přidání připojení protokolu aktivit zobrazuje čára grafu úplně nahoře události protokolu aktivit Azure.
@@ -188,4 +177,4 @@ V tomto kurzu jste se naučili:
 Další informace najdete v přehledu řešení Change Tracking a Inventory.
 
 > [!div class="nextstepaction"]
-> [Řešení Change Tracking a Inventory](../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json)
+> [Řešení Change Tracking a Inventory](automation-change-tracking.md)

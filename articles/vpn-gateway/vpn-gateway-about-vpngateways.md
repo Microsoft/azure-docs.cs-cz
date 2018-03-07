@@ -1,10 +1,10 @@
 ---
 title: "Přehled o branách VPN: Vytváření připojení VPN mezi místy a virtuálními sítěmi Azure | Dokumentace Microsoftu"
-description: "Tento přehled o branách VPN vysvětluje způsoby připojení k virtuálním sítím Azure pomocí připojení VPN přes internet. Součástí článku jsou diagramy základní konfigurace připojení."
+description: "Tento článek vysvětluje, co je brána VPN, a ukazuje způsoby připojení k virtuálním sítím Azure pomocí připojení VPN přes internet. Součástí článku jsou diagramy základní konfigurace připojení."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2017
+ms.date: 02/16/2018
 ms.author: cherylmc
-ms.openlocfilehash: ae8de17c6b2ca8e1b9888612221c7f39b629c1b1
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: dadddeaac2a7856f8e249db981b018de070e1f3f
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="about-vpn-gateway"></a>Informace o službě VPN Gateway
 
@@ -27,15 +27,11 @@ Služba VPN Gateway je typem brány virtuální sítě, která odesílá šifrov
 
 Každá virtuální síť může mít pouze jednu bránu VPN. Můžete ale vytvořit více připojení ke stejné bráně VPN. Příkladem je konfigurace připojení typu Multi-Site. Když vytvoříte několik připojení ke stejné bráně VPN, všechny tunely VPN, včetně sítí VPN typu Point-to-Site, sdílejí šířku pásma, která je pro tuto bránu dostupná.
 
-### <a name="whatis"></a>Co je brána virtuální sítě?
+## <a name="whatis"></a>Co je brána virtuální sítě?
 
 Bránu virtuální sítě tvoří dva nebo více virtuálních počítačů nasazených v konkrétní podsíti, která se nazývá GatewaySubnet. Virtuální počítače, které se nachází v podsíti GatewaySubnet, se vytvoří při vytvoření brány virtuální sítě. Virtuální počítače brány virtuální sítě jsou nakonfigurovány tak, aby obsahovaly tabulky směrování a služby brány, které jsou pro bránu specifické. Virtuální počítače, které jsou součástí brány virtuální sítě, není možné konfigurovat přímo a do podsítě GatewaySubnet byste nikdy neměli nasazovat další prostředky.
 
 Při vytvoření brány virtuální sítě pomocí brány typu VPN se vytvoří konkrétní typ brány virtuální sítě, která šifruje provoz – brána VPN. Vytvoření brány VPN může trvat až 45 minut. Důvodem je to, že virtuální počítače pro bránu VPN se nasazují do podsítě GatewaySubnet a konfigurují pomocí zadaného nastavení. SKU brány, kterou vyberete, určuje výkonnost virtuálních počítačů.
-
-## <a name="gwsku"></a>SKU brány
-
-[!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
 ## <a name="configuring"></a>Konfigurace služby VPN Gateway
 
@@ -53,6 +49,17 @@ Prostředky můžete začít vytvářet a konfigurovat pomocí konfiguračního 
 
 Kroky při konfiguraci brány VPN se budou lišit v závislosti na modelu nasazení, který jste použili k vytvoření virtuální sítě. Například pokud jste virtuální síť vytvořili pomocí modelu nasazení Classic, budete při vytváření a konfiguraci brány VPN postupovat podle pokynů pro model nasazení Classic. Další informace o modelech nasazení najdete v tématu [Pochopení modelů nasazení Resource Manager a Classic](../azure-resource-manager/resource-manager-deployment-model.md).
 
+### <a name="planningtable"></a>Plánovací tabulka
+
+Následující tabulka vám může pomoci se zvolením nejlepší možnosti připojení pro vaše řešení.
+
+[!INCLUDE [vpn-gateway-cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
+
+
+## <a name="gwsku"></a>SKU brány
+
+[!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
+
 ## <a name="diagrams"></a>Diagramy topologie připojení
 
 Je důležité vědět, že pro připojení brány VPN jsou dostupné různé konfigurace. Musíte určit, která konfigurace bude nejlépe vyhovovat vašim potřebám. V následujících oddílech si můžete prohlédnout diagramy topologie a informace o následujících připojení brány sítě VPN. Následující oddíly obsahují tabulky, které uvádějí:
@@ -67,7 +74,7 @@ Diagramy a popisy vám pomohou s výběrem topologie připojení, která bude od
 
 ### <a name="S2S"></a>Site-to-Site
 
-Připojení brány VPN typu Site-to-Site (S2S) je připojení přes tunel VPN prostřednictvím protokolu IPsec/IKE (IKEv1 nebo IKEv2). Připojení typu Site-to-Site vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu a není umístěné za překladem adres (NAT). Připojení S2S můžete použít pro konfigurace mezi různými místy a pro hybridní konfigurace.   
+Připojení brány VPN typu Site-to-Site (S2S) je připojení přes tunel VPN prostřednictvím protokolu IPsec/IKE (IKEv1 nebo IKEv2). Připojení S2S můžete použít pro konfigurace mezi různými místy a pro hybridní konfigurace. Připojení typu Site-to-Site vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu a není umístěné za překladem adres (NAT). Informace o výběru zařízení VPN najdete v tématu [Nejčastější dotazy k branám VPN – Zařízení VPN](/vpn-gateway-vpn-faq.md#s2s).
 
 ![Příklad propojení Site-to-Site pomocí Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/vpngateway-site-to-site-connection-diagram.png)
 

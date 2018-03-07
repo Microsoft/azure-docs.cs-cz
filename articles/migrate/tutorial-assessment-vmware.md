@@ -4,14 +4,14 @@ description: "Toto téma popisuje, jak zjistit místní virtuální počítače 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 06/02/2018
+ms.date: 02/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0c82eeaeb17fb670b6d277d1b703b44b84343877
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3c8d345d8846994ac1e286d977b62d9ae2b7d660
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 
@@ -20,6 +20,7 @@ Služba [Azure Migrate](migrate-overview.md) posuzuje místní úlohy pro migrac
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
+> * Jak vytvořit účet, který Azure Migrate použije ke zjištění místních virtuálních počítačů.
 > * Jak vytvořit projekt Azure Migrate.
 > * Jak nastavit místní virtuální počítač kolektoru ke zjištění a posouzení místních virtuálních počítačů VMware.
 > * Jak seskupit virtuální počítače a posoudit, jestli jsou vhodné pro migraci.
@@ -39,16 +40,26 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 - **Oprávnění**: Na vCenter Serveru potřebujete oprávnění k vytvoření virtuálního počítače pomocí importu souboru ve formátu .OVA. 
 - **Nastavení statistiky**: Než začnete s nasazením, statistika pro vCenter Server by byla být nastavená na úrovni 3. Pokud bude nižší než na úrovni 3, posouzení bude fungovat, ale neshromáždí se údaje o výkonu úložišť a sítí. Kapacitní doporučení budou v tomto případě vycházet z údajů o výkonu procesoru a paměti a z údajů o konfiguraci disku a síťových adaptérů. 
 
+## <a name="create-an-account-for-vm-discovery"></a>Vytvoření účtu pro účely zjišťování virtuálních počítačů
+
+Azure Migrate k automatickému zjišťování virtuálních počítačů pro účely posouzení potřebuje přístup k serverům VMware. Vytvořte účet VMware s následujícími vlastnostmi. Tento účet zadáte při nastavování služby Azure Migrate.
+
+- Typ uživatele: Alespoň uživatel jen pro čtení
+- Oprávnění: Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only
+- Podrobnosti: Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v tomto datacentru.
+- Pokud chcete omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli Žádný přístup s objektem Rozšířit na podřízený objekt.
+
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+
 Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
 1. Na portálu Azure Portal klikněte na **Vytvořit prostředek**.
-2. Vyhledejte **Azure Migrate** a ve výsledcích hledání vyberte službu **Azure Migrate (Preview)**. Poté klikněte na **Vytvořit**.
+2. Vyhledejte **Azure Migrate** a ve výsledcích hledání vyberte službu **Azure Migrate**. Poté klikněte na **Vytvořit**.
 3. Zadejte název projektu a předplatné Azure, do kterého spadá.
 4. Vytvořte novou skupinu prostředků.
-5. Zadejte umístění, ve kterém chcete projekt vytvořit, a pak klikněte na **Vytvořit**. Projekt Azure Migrate můžete ve službě verze Preview vytvořit pouze v oblasti Středozápad USA. Přesto ale můžete naplánovat migraci do libovolného cílového umístění Azure. Umístění vybrané pro tento projekt slouží jen k uložení metadat získaných z místních virtuálních počítačů. 
+5. Zadejte umístění, ve kterém chcete projekt vytvořit, a pak klikněte na **Vytvořit**. Projekt Azure Migrate můžete vytvořit pouze v oblasti Střed USA – západ nebo USA – východ. Přesto ale můžete naplánovat migraci do libovolného cílového umístění Azure. Umístění vybrané pro tento projekt slouží jen k uložení metadat získaných z místních virtuálních počítačů. 
 
     ![Azure Migrate](./media/tutorial-assessment-vmware/project-1.png)
     
@@ -73,6 +84,14 @@ Než nasadíte soubor .OVA, zkontrolujte, jestli je bezpečný.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Vygenerovaná hodnota hash by měla odpovídat následujícímu nastavení.
+    
+    Pro soubory OVA verze 1.0.9.2:
+
+    **Algoritmus** | **Hodnota hash**
+    --- | ---
+    MD5 | 7326020e3b83f225b794920b7cb421fc
+    SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
+    SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
     
     Pro soubory OVA verze 1.0.8.59:
 
@@ -181,13 +200,13 @@ U virtuálních počítačů, které pro Azure nejsou připravené nebo jsou př
 
 Virtuální počítače, u kterých Azure Migrate nemůže určit připravenost pro Azure (kvůli nedostatku dat), se označí značkou Připravenost neznámá.
 
-Azure Migrate kromě určování připravenosti pro Azure a velikosti také navrhuje nástroje, které můžete použít k migraci virtuálních počítačů. Pokud je daný počítač vhodný pro migraci typu „lift and shift“, doporučuje se služba [Azure Site Recovery]. Pokud daný počítač hostuje databázi, doporučuje se služba Azure Database Migration Service.
+Azure Migrate kromě určování připravenosti pro Azure a velikosti také navrhuje nástroje, které můžete použít k migraci virtuálních počítačů. To vyžaduje hlubší zkoumání místního prostředí. [Další informace](how-to-get-migration-tool.md) o provádění hlubšího zjišťování prostřednictvím instalace agentů v místních počítačích. Pokud na místních počítačích nejsou nainstalovaní agenti, navrhne se migrace metodou „lift and shift“ pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Pokud jsou na místních počítačích nainstalovaní agenti, Azure Migrate prozkoumá spuštěné procesy v rámci počítače a určí, jestli daný počítač hostuje databázi, nebo ne. Pokud počítač hostuje databázi, navrhne se služba [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview), jinak se jako nástroj pro migraci navrhne Azure Site Recovery.
 
   ![Posouzení připravenosti](./media/tutorial-assessment-vmware/assessment-suitability.png)  
 
 #### <a name="monthly-cost-estimate"></a>Odhad měsíčních nákladů
 
-Toto zobrazení informuje o celkových nákladech na výpočetní kapacitu a úložiště, které s sebou nese provoz virtuálních počítačů v Azure. Také nabízí podrobné údaje o jednotlivých počítačích. Odhadované náklady se počítají na základě doporučené výpočetní kapacity jednotlivých počítačů a jejich disků a také zohledňují vlastnosti posouzení. 
+Toto zobrazení informuje o celkových nákladech na výpočetní kapacitu a úložiště, které s sebou nese provoz virtuálních počítačů v Azure. Také nabízí podrobné údaje o jednotlivých počítačích. Odhadované náklady se počítají s ohledem na službou Azure Migrate doporučené velikosti jednotlivých počítačů a jejich disků a také zohledňují vlastnosti posouzení. 
 
 > [!NOTE]
 > Služba Azure Migrate odhaduje náklady, které by s sebou přinesla migrace místních virtuálních počítačů na virtuální počítače zajišťované službou Azure v modelu IaaS (infrastruktura jako služba). Azure Migrate se nezabývá náklady modelů PaaS (platforma jako služba) ani SaaS (software jako služba). 
@@ -198,11 +217,11 @@ Odhadované měsíční náklady na výpočetní kapacitu a úložiště jsou ag
 
 #### <a name="confidence-rating"></a>Hodnocení spolehlivosti
 
-Ke každému posouzení ve službě Azure Migrate se přidruží hodnocení spolehlivosti v rozsahu od 1 do 5 hvězdiček (1 hvězdička znamená nejnižší a 5 hvězdiček nejvyšší spolehlivost). Hodnocení spolehlivosti se k posouzení přiřadí na základě dostupnosti datových bodů potřebných pro výpočet posouzení. Pomáhá odhadnout spolehlivost doporučení velikostí poskytovaných službou Azure Migrate. 
+Ke každému posouzení ve službě Azure Migrate se přidruží hodnocení spolehlivosti v rozsahu od 1 do 5 hvězdiček (1 hvězdička znamená nejnižší a 5 hvězdiček nejvyšší spolehlivost). Hodnocení spolehlivosti se k posouzení přiřadí na základě dostupnosti datových bodů potřebných pro výpočet posouzení. Hodnocení spolehlivosti posouzení pomáhá odhadnout spolehlivost doporučení velikostí poskytovaných službou Azure Migrate. 
 
-Hodnocení spolehlivosti je užitečné v případě, že provádíte *určování velikosti na základě výkonu*, kdy nemusí být k dispozici všechny datové body. V případě *určování stejné velikosti jako v místním prostředí* je hodnocení spolehlivosti vždy 5 hvězdiček, protože Azure Migrate má k dispozici veškerá data, která k určení velikosti virtuálního počítače potřebuje. 
+Hodnocení spolehlivosti je užitečné v případě, že provádíte *určování velikosti na základě výkonu*, protože Azure Migrate k určení velikosti na základě výkonu nemusí mít k dispozici dostatek datových bodů. V případě *určování stejné velikosti jako v místním prostředí* je hodnocení spolehlivosti vždy 5 hvězdiček, protože Azure Migrate má k dispozici všechny datové body, které k určení velikosti virtuálního počítače potřebuje. 
 
-K určení velikosti na základě výkonu potřebuje Azure Migrate data o využití procesoru a paměti. U každého disku připojeného k virtuálnímu počítači potřebuje k určení velikosti na základě výkonu informace o vstupně-výstupních operacích čtení a zápisu za sekundu a propustnosti. Podobně u každého síťového adaptéru připojeného k virtuálnímu počítači potřebuje Azure Migrate k určení velikosti na základě výkonu informace o síťových vstupech a výstupech. Pokud některá z výše uvedených čísel o využití nejsou v systému vCenter Server k dispozici, doporučení velikosti provedené službou Azure Migrate nemusí být spolehlivé. Tady je poskytnuté hodnocení spolehlivosti posouzení v závislosti na procentu dostupných datových bodů:
+K určení velikosti virtuálního počítače na základě výkonu potřebuje Azure Migrate data o využití procesoru a paměti. Zároveň u každého disku připojeného k virtuálnímu počítači potřebuje informace o vstupně-výstupních operacích čtení a zápisu za sekundu a propustnosti. Podobně u každého síťového adaptéru připojeného k virtuálnímu počítači potřebuje Azure Migrate k určení velikosti na základě výkonu informace o síťových vstupech a výstupech. Pokud některá z výše uvedených čísel o využití nejsou v systému vCenter Server k dispozici, doporučení velikosti provedené službou Azure Migrate nemusí být spolehlivé. Tady je poskytnuté hodnocení spolehlivosti posouzení v závislosti na procentu dostupných datových bodů:
 
    **Dostupnost datových bodů** | **Hodnocení spolehlivosti**
    --- | ---
@@ -213,13 +232,13 @@ K určení velikosti na základě výkonu potřebuje Azure Migrate data o využi
    81 až 100 % | 5 hvězdiček
 
 Posouzení nemusí mít k dispozici všechny datové body z některého z následujících důvodů:
-- Nastavení statistiky v systému vCenter Server není nastavené na úroveň 3 a posouzení má kritérium určení velikosti na základě výkonu. Pokud je nastavení statistiky v systému vCenter Server nižší než úroveň 3, data o výkonu disku a sítě se ze systému vCenter Server neshromažďují. V takovém případě vychází doporučení služby Azure Migrate týkající se disku a sítě pouze z přidělených velikostí v místním prostředí. Pro úložiště Azure Migrate doporučí disky úrovně Standard, protože neexistuje způsob, jak zjistit, jestli má disk vysoký počet vstupně-výstupních operací za sekundu nebo vysokou propustnost a potřebuje tedy disk úrovně Premium.
-- Nastavení statistiky v systému vCenter Server bylo před zahájením zjišťování nastavené na úroveň 3 po krátkou dobu. Pokud například dnes změníte nastavení statistiky na úroveň 3 a zítra (za 24 hodin) zahájíte zjišťování pomocí zařízení kolektoru, pak v případě, že vytváříte posouzení za jeden den, máte všechny datové body. Pokud však změníte dobu trvání výkonu ve vlastnostech posouzení na jeden měsíc, hodnocení spolehlivosti se sníží, protože data o výkonu disku a sítě za poslední měsíc nejsou k dispozici. Pokud chcete zohlednit data o výkonu za poslední měsíc, doporučujeme ponechat nastavení statistiky systému vCenter Server na úrovni 3 po dobu jednoho měsíce před zahájením zjišťování. 
+- Nastavení statistiky v systému vCenter Server není nastavené na úroveň 3 a posouzení má kritérium určení velikosti na základě výkonu. Pokud je nastavení statistiky v systému vCenter Server nižší než úroveň 3, data o výkonu disku a sítě se ze systému vCenter Server neshromažďují. V takovém případě není doporučení služby Azure Migrate týkající se disku a sítě založené na využití. Pro úložiště doporučí Azure Migrate disky Standard, protože bez zohlednění IOPS a propustnosti disku nemůže Azure Migrate určit, jestli disk bude v Azure potřebovat disk Premium.
+- Nastavení statistiky v systému vCenter Server bylo před zahájením zjišťování nastavené na úroveň 3 po kratší dobu. Zvažme například scénář, kdy dnes změníte nastavení statistiky na úroveň 3 a zítra (za 24 hodin) zahájíte zjišťování pomocí zařízení kolektoru. Pokud vytváříte posouzení za jeden den, máte všechny datové body a hodnocení spolehlivosti posouzení bude 5 hvězdiček. Pokud však změníte dobu trvání výkonu ve vlastnostech posouzení na jeden měsíc, hodnocení spolehlivosti se sníží, protože data o výkonu disku a sítě za poslední měsíc nebudou k dispozici. Pokud chcete zohlednit data o výkonu za poslední měsíc, doporučujeme ponechat nastavení statistiky systému vCenter Server na úrovni 3 po dobu jednoho měsíce před zahájením zjišťování. 
 - Během období, pro které se posouzení počítá, se několik virtuálních počítačů vypnulo. Pokud po nějakou dobu byly některé virtuální počítače vypnuté, vCenter Server nebude mít za toto období data o výkonu. 
 - Během období, pro které se posouzení počítá, se vytvořilo několik virtuálních počítačů. Například pokud vytváříte posouzení historie výkonu za poslední měsíc, ale před týdnem se v prostředí vytvořilo několik virtuálních počítačů. V takových případech nebude k dispozici historie výkonu nových virtuálních počítačů za celé období.
 
 > [!NOTE]
-> Pokud je hodnocení spolehlivosti nějakého posouzení nižší než 3 hvězdičky, doporučujeme změnit nastavení statistiky systému vCenter Server na úroveň 3, počkat po dobu, kterou chcete v posouzení zohlednit (1 den, 1 týden, 1 měsíc), a pak provést zjišťování a posouzení. Pokud to není možné, určení velikosti na základě výkonu nemusí být spolehlivé a doporučuje se změnou vlastností posouzení přepnout na *určování stejné velikosti jako v místním prostředí*.
+> Pokud je hodnocení spolehlivosti nějakého posouzení nižší než 4 hvězdičky, doporučujeme změnit nastavení statistiky systému vCenter Server na úroveň 3, počkat po dobu, kterou chcete v posouzení zohlednit (1 den, 1 týden, 1 měsíc), a pak provést zjišťování a posouzení. Pokud to není možné, určení velikosti na základě výkonu nemusí být spolehlivé a doporučuje se změnou vlastností posouzení přepnout na *určování stejné velikosti jako v místním prostředí*.
  
 ## <a name="next-steps"></a>Další kroky
 

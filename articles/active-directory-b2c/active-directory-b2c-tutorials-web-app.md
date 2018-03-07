@@ -1,6 +1,6 @@
 ---
 title: "Kurz použití Azure Active Directory B2C k ověřování uživatelů ve webové aplikaci ASP.NET"
-description: "Kurz týkající se použití Azure Active Directory B2C k registraci a přihlašování uživatelů ve webové aplikaci ASP.NET."
+description: "Kurz týkající se použití Azure Active Directory B2C k zajištění přihlašování uživatelů ve webové aplikaci ASP.NET."
 services: active-directory-b2c
 author: PatAltimore
 ms.author: patricka
@@ -9,11 +9,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: ee006476f9e40e9d1a6e7213cb1881ca46ea75c2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1d1e0ce51d86ebcdbf0a2a423ff64b3814413d86
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>Kurz: Ověřování uživatelů pomocí Azure Active Directory B2C ve webové aplikaci ASP.NET
 
@@ -45,7 +45,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální s
 
 2. V nastavení B2C klikněte na **Aplikace** a pak klikněte na **Přidat**.
 
-    K registraci ukázkové webové aplikace ve vašem tenantovi použijte následující nastavení.
+    K registraci ukázkové webové aplikace ve vašem tenantovi použijte následující nastavení:
 
     ![Přidání nové aplikace](media/active-directory-b2c-tutorials-web-app/web-app-registration.png)
 
@@ -147,9 +147,9 @@ Ukázková webová aplikace ASP.NET je jednoduchá aplikace seznamu úkolů umo�
 
 Ukázkové řešení obsahuje dva projekty:
 
-**Ukázková webová aplikace (TaskWebApp):** Webová aplikace umožňující vytvoření a úpravy seznamu úkolů. Tato webová aplikace používá k registraci nebo přihlašování uživatelů pomocí e-mailové adresy zásady **registrace nebo přihlašování**.
+**Ukázková webová aplikace (TaskWebApp):** Webová aplikace umožňující vytvoření a úpravy seznamu úkolů. Tato webová aplikace používá k registraci nebo přihlašování uživatelů zásady **registrace nebo přihlašování**.
 
-**Ukázková aplikace webového rozhraní API (TaskService):** Webové rozhraní API, které podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Toto webové rozhraní API je zabezpečené službou Azure AD B2C a volané webovou aplikací.
+**Ukázková aplikace webového rozhraní API (TaskService):** Webové rozhraní API, které podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Toto webové rozhraní API je chráněné službou Azure AD B2C a volané webovou aplikací.
 
 Aplikaci musíte změnit tak, aby používala registraci aplikace ve vašem tenantovi. Musíte také nakonfigurovat zásady, které jste vytvořili. Ukázková webová aplikace definuje hodnoty konfigurace jako nastavení aplikace v souboru Web.config. Nastavení aplikace můžete změnit následujícím způsobem:
 
@@ -178,7 +178,7 @@ V Průzkumníku řešení klikněte pravým tlačítkem na projekt **TaskWebApp*
 
 Stisknutím klávesy **F5** spusťte webovou aplikaci. Spustí se výchozí prohlížeč a otevře se adresa místního webu `https://localhost:44316/`. 
 
-Ukázková aplikace podporuje registraci, přihlašování, úpravy profilu a resetování hesla. Následuje příklad registrace uživatele k používání aplikace pomocí e-mailové adresy. Jiné scénáře si můžete zkusit sami.
+Ukázková aplikace podporuje registraci, přihlašování, úpravy profilu a resetování hesla. Tento kurz ukazuje registraci uživatele k používání aplikace pomocí e-mailové adresy. Další scénáře můžete prozkoumat sami.
 
 ### <a name="sign-up-using-an-email-address"></a>Registrace pomocí e-mailové adresy
 
@@ -205,4 +205,4 @@ Svého tenanta Azure AD B2C můžete použít i k vyzkoušení dalších kurzů 
 V tomto kurzu jste zjistili, jak vytvořit tenanta Azure AD B2C, vytvořit zásady a aktualizovat ukázkovou webovou aplikaci tak, aby používala vašeho tenanta Azure AD B2C. V dalším kurzu zjistíte, jak zaregistrovat, nakonfigurovat a volat webové rozhraní API ASP.NET chráněné vaším tenantem Azure AD B2C.
 
 > [!div class="nextstepaction"]
-> [Použití Azure Active Directory B2C k ochraně webového rozhraní API ASP.NET](active-directory-b2c-tutorials-web-api.md)
+> [Kurz: Použití Azure Active Directory B2C k ochraně webového rozhraní API ASP.NET](active-directory-b2c-tutorials-web-api.md)
