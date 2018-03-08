@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 10/26/2017
 ms.author: juliako
-ms.openlocfilehash: bbfe7fedb1d5216b8a159faa9543ade74176181f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: cba1e58478f4bbdffb61566e53aa0b86138b7fc6
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Začínáme s klientskou sadou Java SDK pro Azure Media Services
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -66,6 +66,7 @@ Můžete vytvořit aplikaci Azure AD a získat předchozí hodnoty konfigurace z
 
 Kód také pracuje s místně uloženým videosouborem. Pokud chcete poskytnout vlastní místní soubor k odeslání, musíte tento kód upravit.
 
+```java
     import java.io.*;
     import java.net.URI;
     import java.security.NoSuchAlgorithmException;
@@ -298,7 +299,7 @@ Kód také pracuje s místně uloženým videosouborem. Pokud chcete poskytnout 
             }
         }
     }
-
+```
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -306,7 +307,7 @@ Kód také pracuje s místně uloženým videosouborem. Pokud chcete poskytnout 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další prostředky
 Další informace týkající se vývoje aplikací v jazyce Java v Azure najdete v tématech [Azure středisko pro vývojáře Java][Azure Java Developer Center] a [Azure pro vývojáře v Javě][Azure for Java developers].
 
 

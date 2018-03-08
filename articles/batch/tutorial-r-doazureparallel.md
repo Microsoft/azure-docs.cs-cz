@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: jiata
 ms.custom: mvc
-ms.openlocfilehash: 83b4c18959cd18d920fcb9822b933dbea9f1b936
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6aa12e38c1f2c86c44c00eb87906a7f0fe93cdca
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Kurz: Spuštění paralelní simulace jazyka R ve službě Azure Batch 
 
@@ -49,7 +49,10 @@ V konzole RStudio nainstalujte [balíček doAzureParallel z GitHubu](http://www.
 ```R
 # Install the devtools package  
 install.packages("devtools") 
-  
+
+# Install rAzureBatch package
+devtools::install_github("Azure/rAzureBatch") 
+
 # Install the doAzureParallel package 
 devtools::install_github("Azure/doAzureParallel") 
  
@@ -253,7 +256,7 @@ stopCluster(cluster)
 ```
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste se naučili těmto úkonům:
+V tomto kurzu jste se naučili tyto postupy:
 
 > [!div class="checklist"]
 Instalace balíčku doAzureParallel a jeho konfigurace pro přístup k účtům Batch a úložiště
