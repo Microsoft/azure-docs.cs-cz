@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: bb8ad6d9defcbaef255065b20a9a9b542e74d73d
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 975069dbe9283c98482d7d0d5741a595ef323b35
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Nasazení clusteru Azure Container Service (AKS)
 
@@ -49,59 +49,6 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 ```
 
 Po několika minutách se nasazení dokončí a vrátí informace o nasazení služby AKS ve formátu JSON.
-
-```azurecli
-{
-  "additionalProperties": {},
-  "agentPoolProfiles": [
-    {
-      "additionalProperties": {},
-      "count": 1,
-      "dnsPrefix": null,
-      "fqdn": null,
-      "name": "nodepool1",
-      "osDiskSizeGb": null,
-      "osType": "Linux",
-      "ports": null,
-      "storageProfile": "ManagedDisks",
-      "vmSize": "Standard_DS1_v2",
-      "vnetSubnetId": null
-    }
-    ...
-```
-
-## <a name="getting-information-about-your-cluster"></a>Získání informací o clusteru
-
-Po nasazení clusteru můžete pomocí příkazu `az aks show` cluster dotazovat a získat důležité informace. Tato data je možné použít jako parametry při provádění složitějších operací na clusteru. Pokud například chcete získat informace o profilu Linuxu spuštěném v clusteru, můžete spustit následující příkaz.
-
-```azurecli
-az aks show --name myAKSCluster --resource-group myResourceGroup --query "linuxProfile"
-
-{
-  "additionalProperties": {},
-  "adminUsername": "azureuser",
-  "ssh": {
-    "additionalProperties": {},
-    "publicKeys": [
-      {
-        "additionalProperties": {},
-        "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADA...
-      }
-    ]
-  }
-}
-```
-
-Tento příkaz zobrazí informace o uživateli s rolí správce a vaše veřejné klíče SSH. Můžete spouštět i podrobnější dotazy, když k řetězci dotazu připojíte vlastnosti JSON, jako v příkladu níže.
-
-```azurecli
-az aks show -n myakscluster  -g my-group --query "{name:agentPoolProfiles[0].name, nodeCount:agentPoolProfiles[0].count}"
-{
-  "name": "nodepool1",
-  "nodeCount": 1
-}
-```
-To může být užitečné pro rychlý přístup k datům o nasazeném clusteru. Další informace o dotazech JMESPath najdete [tady](http://jmespath.org/tutorial.html).
 
 ## <a name="install-the-kubectl-cli"></a>Instalace rozhraní příkazového řádku kubectl
 
@@ -143,19 +90,19 @@ Mezi clusterem AKS a registrem ACR je potřeba nakonfigurovat ověřování. To 
 Nejprve získejte ID instančního objektu nakonfigurovaného pro službu AKS. Aktualizujte název skupiny prostředků a název clusteru AKS tak, aby odpovídaly vašemu prostředí.
 
 ```azurecli
-$CLIENT_ID = $(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
+CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
 ```
 
 Získejte ID prostředku registru ACR. Aktualizujte název registru na název vašeho registru ACR a skupinu prostředků na skupinu prostředků, ve které se registr ACR nachází.
 
 ```azurecli
-$ACR_ID = $(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
+ACR_ID=$(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
 ```
 
 Vytvořte přiřazení role udělující řádný přístup.
 
 ```azurecli
-az role assignment create --assignee $CLIENT_ID --role Contributor --scope $ACR_ID
+az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 ```
 
 ## <a name="next-steps"></a>Další kroky
