@@ -3,22 +3,22 @@ title: "Nástroje pro úložiště Azure zásobníku"
 description: "Další informace o Azure zásobníku úložiště dat nástroje pro přenos"
 services: azure-stack
 documentationcenter: 
-author: xiaofmao
-manager: 
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
-ms.author: xiaofmao
-ms.openlocfilehash: 9799498a11449a9ed496d0fdb40312603eda064e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/21/2018
+ms.author: mabrigg
+ms.reviewer: xiaofmao
+ms.openlocfilehash: 9318b7af3c3dd545207f1896c9008207f562b735
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="tools-for-azure-stack-storage"></a>Nástroje pro úložiště Azure zásobníku
 
@@ -50,7 +50,11 @@ Z důvodu úložiště služby rozdíly mezi Azure a Azure zásobníku může b�
 AzCopy je nástroj příkazového řádku určený ke zkopírování dat do a z Microsoft Azure Blob a Table storage pomocí jednoduchých příkazů s optimální výkon. Data můžete zkopírovat z jednoho objektu do druhého v rámci účtu úložiště nebo mezi účty úložiště. Existují dvě verze AzCopy: AzCopy ve Windows a AzCopy v systému Linux. Azure zásobníku podporuje jenom verze systému Windows. 
  
 ### <a name="download-and-install-azcopy"></a>Stáhněte a nainstalujte AzCopy 
-[Stáhněte si](https://aka.ms/azcopyforazurestack) podporovanou verzi systému Windows nástroje AzCopy pro Azure zásobníku. Můžete nainstalovat a použít AzCopy v zásobníku Azure stejně jako s Azure. Další informace najdete v tématu [přenos dat pomocí nástroje příkazového řádku Azcopy](../../storage/common/storage-use-azcopy.md). 
+
+[Stáhněte si](https://aka.ms/azcopyforazurestack) podporovanou verzi systému Windows zásobníku Azure AzCopy. Můžete nainstalovat a použít AzCopy v zásobníku Azure stejně jako s Azure. Další informace najdete v tématu [přenos dat pomocí nástroje příkazového řádku Azcopy](../../storage/common/storage-use-azcopy.md). 
+
+ - Pro 1802 na aktualizaci nebo novější verze [stáhnout AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
+ - Pro předchozí verze [stáhnout AzCopy 5.0.0](https://aka.ms/azcopyforazurestack20150405).
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>AzCopy příkladech pro přenos dat
 Následující příklady ukazují několik typické scénáře pro kopírování dat do a z Azure zásobník objektů BLOB. Další informace najdete v tématu [přenos dat pomocí nástroje příkazového řádku Azcopy](../../storage/storage-use-azcopy.md). 
@@ -63,14 +67,14 @@ AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer 
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
 #### <a name="move-data-between-azure-and-azure-stack-storage"></a>Přesun dat mezi Azure a Azure zásobník úložiště 
-Asynchronní data přenos mezi Azure Storage a Azure zásobníku není podporován. je třeba zadat o přenos pomocí `/SyncCopy` možnost. 
+Asynchronní data přenos mezi Azure Storage a Azure zásobníku není podporován. je třeba zadat o přenos pomocí **/SyncCopy** možnost. 
 ```azcopy 
 Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
 ```
 
 ### <a name="azcopy-known-issues"></a>Azcopy – známé problémy
 * Všechny operace AzCopy úložiště souborů není k dispozici, protože soubor úložiště ještě není k dispozici v zásobníku Azure.
-* Asynchronní data přenos mezi Azure Storage a Azure zásobníku není podporován. Můžete zadat o přenos pomocí `/SyncCopy` možnost Kopírovat data.
+* Asynchronní data přenos mezi Azure Storage a Azure zásobníku není podporován. Můžete zadat o přenos pomocí **/SyncCopy** možnost Kopírovat data.
 * Zásobník úložiště Azure nepodporuje Linux verzi Azcopy. 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
@@ -80,7 +84,7 @@ Prostředí Azure PowerShell je modul, který obsahuje rutiny pro správu služe
 Azure zásobníku kompatibilní prostředí Azure PowerShell moduly jsou nutné k práci s Azure zásobníku. Další informace najdete v tématu [instalaci prostředí PowerShell pro Azure zásobníku](azure-stack-powershell-install.md) a [nakonfigurovat prostředí PowerShell Azure zásobník uživatele](azure-stack-powershell-configure-user.md) Další informace.
 
 ### <a name="powershell-sample-script-for-azure-stack"></a>Skript prostředí PowerShell pro Azure zásobníku 
-Tato ukázka předpokládá, že máte úspěšně [instalaci prostředí PowerShell pro Azure zásobníku](azure-stack-powershell-install.md). Tento skript bude pomáhají conplete konfigurace a požádat vašeho klienta Azure zásobníku pověření pro přidání účtu do místní environemnt prostředí PowerShell. Potom skript bude nastavit výchozí předplatné Azure, vytvořte nový účet úložiště v Azure, vytvořte nový kontejner v rámci tohoto nového účtu úložiště a nahrajte existující soubor bitové kopie (binární rozsáhlý objekt) kontejneru. Po skript obsahuje seznam všech objektů BLOB v kontejneru, vytvoří nový cílový adresář v místním počítači a stáhnout soubor bitové kopie.
+Tato ukázka předpokládá, že máte úspěšně [instalaci prostředí PowerShell pro Azure zásobníku](azure-stack-powershell-install.md). Tento skript vám pomůže dokončit konfiguraci a požádat vašeho klienta Azure zásobníku pověření pro přidání účtu do místního prostředí PowerShell. Potom skript bude nastavit výchozí předplatné Azure, vytvořte nový účet úložiště v Azure, vytvořte nový kontejner v rámci tohoto nového účtu úložiště a nahrajte existující soubor bitové kopie (binární rozsáhlý objekt) kontejneru. Po skript obsahuje seznam všech objektů BLOB v kontejneru, vytvoří nový cílový adresář v místním počítači a stáhnout soubor bitové kopie.
 
 1. Nainstalujte [modulů prostředí Azure PowerShell kompatibilní s Azure zásobníku](azure-stack-powershell-install.md).  
 2. Stažení [nástroje potřebné pro práci s Azure zásobníku](azure-stack-powershell-download.md).  
@@ -184,8 +188,8 @@ Po dokončení instalace rozhraní příkazového řádku a konfigurace, zkuste 
 1. Otevřete svém oblíbeném textovém editoru, pak zkopírujte a vložte uvedený skript do editoru.
 2. Aktualizujte tento skript proměnné tak, aby odrážela nastavení konfigurace. 
 3. Po aktualizaci nezbytné proměnné, uložte skript a ukončete editor. Další kroky předpokládají, že jste s názvem vaší my_storage_sample.sh skriptu.
-4. Označte do skriptu jako spustitelný soubor, v případě potřeby:`chmod +x my_storage_sample.sh`
-5. Spusťte skript. Například v Bash:`./my_storage_sample.sh`
+4. Označte do skriptu jako spustitelný soubor, v případě potřeby: `chmod +x my_storage_sample.sh`
+5. Spusťte skript. Například v Bash: `./my_storage_sample.sh`
 
 ```bash
 #!/bin/bash
@@ -224,11 +228,10 @@ echo "Done"
 
 Microsoft Azure Storage Explorer je samostatná aplikace od společnosti Microsoft. Umožňuje snadno pracovat s Azure Storage a Azure zásobníku úložiště dat v systému Windows, systému macOS a Linux. Pokud chcete snadný způsob, jak spravovat data zásobník úložiště Azure, můžete použít Microsoft Azure Storage Explorer.
 
-Další informace o konfiguraci Azure Storage Explorer pro práci s Azure zásobníku najdete v tématu [Storage Explorer připojit k předplatnému Azure zásobníku](azure-stack-storage-connect-se.md).
+ - Další informace o konfiguraci Azure Storage Explorer pro práci s zásobník Azure najdete v tématu [Storage Explorer připojit k předplatnému Azure zásobníku](azure-stack-storage-connect-se.md).
+ - Další informace o Microsoft Azure Storage Explorer najdete v tématu [Začínáme se Storage Explorerem (Preview)](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 
-Další informace o Microsoft Azure Storage Explorer najdete v tématu [Začínáme se Storage Explorerem (Preview)](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Storage Explorer připojení k předplatnému Azure zásobníku](azure-stack-storage-connect-se.md)
 * [Začínáme se Storage Explorerem (Preview)](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Konzistentní s Azure storage: rozdíly a důležité informace](azure-stack-acs-differences.md)

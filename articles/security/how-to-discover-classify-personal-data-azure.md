@@ -1,6 +1,6 @@
 ---
 title: "Zjistit, identifikovat a klasifikovat osobních údajů v Microsoft Azure | Microsoft Docs"
-description: "Další informace o vyhledávání, klasifikace, zjišťování a identifikaci dat"
+description: "vyhledávání, klasifikace, zjišťování a identifikaci dat v Azure mohou pomoci v souladu s obecné Data Protection nařízení (GDPR)"
 services: security
 documentationcenter: na
 author: barclayn
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 011fe26c297ff991af1282c1ff3914031a99f1e4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 21308faf5d3efd3908eccab4f37acb0cfccdcb8e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Zjistit, identifikovat a klasifikovat osobních údajů v Microsoft Azure
 
-Tento článek obsahuje pokyny o tom, jak zjistit, identifikovat a klasifikovat osobních údajů v několik nástrojů Azure a službami, včetně pomocí Azure Data Catalog, Azure Active Directory, SQL Database, Power Query pro clustery systému Hadoop v Azure HDInsight, Azure Information Protection, Azure Search a SQL dotazy pro Azure Cosmos DB.
+Tento článek obsahuje pokyny o tom, jak zjistit, identifikovat a klasifikovat osobních údajů v několik nástrojů Azure a službami, včetně pomocí Azure Data Catalog, Azure Active Directory, SQL Database, Power Query pro clustery systému Hadoop v Azure HDInsight, Azure Information Protection, Azure Search a SQL dotazy pro Azure Cosmos DB. Tyto procesy a nástroje lze použít k zajištění souladu s obecné Data Protection nařízení (GDPR)
 
 ## <a name="scenario-problem-statement-and-goal"></a>Scénář, formulace problému a cíle
 
@@ -114,7 +114,7 @@ Naučte se vytvořit databázi tímto způsobem, najdete [vytvářet izolované 
 >[!Note]
 Windows správci mohou pomocí prostředí PowerShell, ale některé z nich raději rozhraní příkazového řádku Azure.
 
-### <a name="how-do-i-search-for-personal-data-in-sql-database-in-the-azure-portal"></a>Jak je vyhledávání pro osobní data v databázi SQL na webu Azure portal? **
+### <a name="how-do-i-search-for-personal-data-in-sql-database-in-the-azure-portal"></a>Jak najít pro osobní data v databázi SQL na portálu Azure?
 
 Nástroj editor integrovaného dotazu v portálu Azure slouží k vyhledání osobní data. Budete přihlášení k nástroji vaše přihlašovací jméno správce serveru SQL a heslo a potom zadejte dotaz.
 

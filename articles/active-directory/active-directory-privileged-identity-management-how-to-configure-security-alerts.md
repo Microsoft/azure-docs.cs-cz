@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 52a03624b8e3841f559caef564712ff74a614365
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8037942cb3700f8e46d3be24b5fed04004333335
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Jak konfigurovat výstrahy zabezpečení v Azure AD Privileged Identity Management
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
@@ -27,13 +27,18 @@ Azure Správa privilegovaných identit (PIM) generuje výstrahy, když je aktivi
 
 ![Výstrahy zabezpečení PIM řídicí panel – snímek obrazovky][1]
 
-| Výstrahy | Trigger | Doporučení |
-| --- | --- | --- |
-| **Role se přiřazují mimo PIM** |Správce byl trvale přiřazen k roli mimo PIM rozhraní. |Zkontrolujte nové přiřazení role. Vzhledem k tomu, že jiné služby lze přiřadit pouze trvalých správců, k oprávněné přiřazení podle potřeby změňte. |
-| **Role jsou příliš často aktivován** |V rámci časový limit v nastavení nebyly příliš mnoho opětovných aktivací stejné role. |Kontaktujte uživatele, který chcete zobrazit, proč se aktivaci role mnoho časy. Možná je příliš krátká pro je k dokončení úkolů, nebo možná používáte skripty mohl automaticky aktivovat roli, časový limit. |
-| **Role nevyžadují službu Multi-Factor authentication pro aktivaci** |Existuje rolí bez vícefaktorového ověřování povoleno v nastavení. |Jsme vícefaktorové ověřování vyžadovat pro nejvíce vysoce privilegované role, ale důrazně vyzývá povolit MFA pro aktivaci všech rolí. |
-| **Nepoužívají správci svoje privilegované role** |Existují oprávněné správce, kteří nedávno neaktivovali jejich rolí. |Spusťte kontrola přístupu k určení uživatelů, kteří již nepotřebují přístup. |
-| **Existuje příliš mnoho globální správci** |Existuje více globálních správců, než se nedoporučuje. |Pokud máte velký počet globálních správců, je pravděpodobné, že uživatelé jsou stále větší oprávnění než potřebují. Přesunout uživatelé méně privilegované role, nebo vytvořit některé z nich vhodné pro roli místo trvale přiřazená. |
+| Výstrahy | Závažnost | Trigger | Doporučení |
+| --- | --- | --- | --- |
+| **Role se přiřazují mimo PIM** |Vysoký |Uživatel byl trvale přiřadit privilegované role, mimo PIM rozhraní. |Zkontrolujte uživatele v seznamu a zrušte přiřazení, je z privilegované role přiřazené mimo PIM. |
+| **Role jsou příliš často aktivován** |Střednědobé používání |V rámci časový limit v nastavení nebyly příliš mnoho opětovných aktivací stejné role. |Kontaktujte uživatele, který chcete zobrazit, proč se aktivaci role mnoho časy. Možná je příliš krátká pro je k dokončení úkolů, nebo možná používáte skripty mohl automaticky aktivovat roli, časový limit. Ujistěte se, že doba trvání aktivace pro jejich roli je nastaven dostatečně dlouhé, aby se pro ně umožňují vykonávat úkoly. |
+| **Role nevyžadují službu Multi-Factor authentication pro aktivaci** |Střednědobé používání |Existuje rolí bez vícefaktorového ověřování povoleno v nastavení. |Jsme vícefaktorové ověřování vyžadovat pro nejvíce vysoce privilegované role, ale důrazně vyzývá povolit MFA pro aktivaci všech rolí. |
+| **Uživatelé nejsou pomocí jejich privilegované role** |Nízká |Existují oprávněné správce, kteří nedávno neaktivovali jejich rolí. |Spusťte kontrola přístupu k určení uživatelů, kteří již nepotřebují přístup. |
+| **Existuje příliš mnoho globální správci** |Nízká |Existuje více globálních správců, než se nedoporučuje. |Pokud máte velký počet globálních správců, je pravděpodobné, že uživatelé jsou stále větší oprávnění než potřebují. Přesunout uživatelé méně privilegované role, nebo vytvořit některé z nich vhodné pro roli místo trvale přiřazená. |
+
+### <a name="severity"></a>Závažnost
+* **Vysoká**: vyžaduje okamžitý zásah kvůli porušení zásad. 
+* **Střední**: nevyžaduje okamžitý zásah, ale signály potenciálních porušení zásad.
+* **Nízká**: nevyžaduje okamžitý zásah, ale doporučuje změny preferrable zásad.
 
 ## <a name="configure-security-alert-settings"></a>Konfigurace nastavení výstrah zabezpečení
 Můžete přizpůsobit některé z výstrah zabezpečení v PIM pro práci s prostředím a cíle zabezpečení. Postupujte podle těchto kroků k dosažení okně nastavení:
@@ -60,7 +65,7 @@ Tato výstraha aktivuje, pokud uživatel přejde určitou dobu bez aktivace role
 
 * **Počet dnů**: Zadejte počet dnů od 0 do 100, který uživatel může přejít bez aktivace role.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
 <!--Image references-->

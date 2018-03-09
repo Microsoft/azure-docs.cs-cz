@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/20/2017
+ms.date: 3/5/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: addb4312ce1eb57ce86afae449eb3d31d0037418
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: c33cea62dac1c06dd1cb4031897af8c822e61661
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Příprava zálohování úloh pomocí Azure Backup Serveru
 > [!div class="op_single_selector"]
@@ -44,11 +44,11 @@ Můžete taky chránit infrastruktury jako služby (IaaS) zatížení jako virtu
 
 Azure Backup Server většinu funkcí zálohování zatížení dědí z Data Protection Manager (DPM). Tento článek obsahuje odkazy na dokumentace k aplikaci DPM vysvětlit některé ze sdílených funkcí. Když Azure Backup Server sdílí většinu stejné funkce jako aplikace DPM. Azure Backup Server není zálohování na pásku, ani umožňuje integraci s nástrojem System Center.
 
-## <a name="1-choose-an-installation-platform"></a>1. Zvolte instalační platformy
+## <a name="choose-an-installation-platform"></a>Zvolte instalační platformy
 Prvním krokem k serveru Azure Backup zprovoznění je nastavit systém Windows Server. Váš server může být v Azure nebo místně.
 
 ### <a name="using-a-server-in-azure"></a>Pomocí serveru v Azure
-Při výběru serveru ke spuštění serveru Azure Backup, doporučuje se, že začínáte s Galerie bitové kopie systému Windows Server 2012 R2 Datacenter. V článku [vytvořit svůj první virtuální počítač Windows v portálu Azure](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), obsahuje návod pro zahájení práce s doporučenou virtuálního počítače v Azure, i když jste Azure před nepoužívali. Doporučená minimální požadavky na virtuální počítač (VM) serveru by měl být: A2 standardní dvě jádra a 3.5 GB paměti RAM.
+Při výběru serveru ke spuštění serveru Azure Backup, doporučuje se, že začínáte s Galerie bitové kopie systému Windows Server 2012 R2 Datacenter nebo Windows Server 2016 Datacenter. V článku [vytvořit svůj první virtuální počítač Windows v portálu Azure](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), obsahuje návod pro zahájení práce s doporučenou virtuálního počítače v Azure, i když jste Azure před nepoužívali. Doporučená minimální požadavky na virtuální počítač (VM) serveru by měl být: A2 standardní dvě jádra a 3.5 GB paměti RAM.
 
 Ochrana zatížení pomocí serveru Azure Backup má mnoho drobné odlišnosti. V článku [instalaci aplikace DPM jako virtuální počítač Azure](https://technet.microsoft.com/library/jj852163.aspx), pomáhá popisují tyto drobné odlišnosti. Před nasazením počítače, přečtěte si tento článek úplně.
 
@@ -75,7 +75,7 @@ Pokud nechcete spustit základní server v Azure, můžete spustit server na vir
 
 Vždycky připojení k serveru Azure Backup k doméně. Pokud budete chtít přesunout server do jiné domény, doporučujeme připojení serveru k nové doméně před instalací serveru pro zálohování Azure. Přesunutí existující počítač serveru Azure Backup do nové domény po nasazení *nepodporuje*.
 
-## <a name="2-recovery-services-vault"></a>2. Trezor služby Recovery Services
+## <a name="recovery-services-vault"></a>Trezor služby Recovery Services
 Ať už odesílání zálohovaných dat do Azure nebo udržovat místně, softwaru musí být připojen k Azure. Jako další konkrétní, počítač serveru Azure Backup musí zaregistrovat u trezoru služeb zotavení.
 
 Vytvoření trezoru Recovery Services:
@@ -112,7 +112,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
     Po výběru možnosti úložiště pro svůj trezor jste připraveni k přidružení virtuálního počítače k trezoru. Chcete-li začít přidružení, měli byste vyhledat a zaregistrovat virtuální počítače Azure.
 
-## <a name="3-software-package"></a>3. Balíček softwaru
+## <a name="software-package"></a>Balíček softwaru
 ### <a name="downloading-the-software-package"></a>Stažení balíčku softwaru
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Pokud již máte otevřený trezor služeb zotavení, pokračujte krokem 3. Pokud nemáte otevřený trezor Služeb zotavení, ale jste na portálu Azure, klikněte na **Procházet** v Nabídce centra.
@@ -137,7 +137,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
     V **Začínáme se zálohováním** okno, které se otevře, **zálohování cíle** bude automaticky vybrána.
 
-    ![Zálohování cíle – výchozí – otevřít](./media/backup-azure-microsoft-azure-backup/getting-started.png)
+    ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
 5. V **cíl zálohování** okně z **kde běží vaše úlohy** nabídce vyberte možnost **místní**.
 
@@ -195,12 +195,12 @@ Po dokončení procesu extrahování políčko Spustit čerstvě extrahované *s
    >
 4. Zadejte umístění pro instalaci souborů serveru Microsoft Azure Backup a klikněte na **Další**.
 
-    ![PreReq2 zálohování Microsoft Azure](./media/backup-azure-microsoft-azure-backup/space-screen.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     Pomocné umístění je požadavek pro zálohování na Azure. Zkontrolujte, zda pomocné umístění nejméně 5 % dat plánované zálohování do cloudu. U ochrany disku samostatné disky potřeba nakonfigurovat po dokončení instalace. Další informace týkající se fondů úložiště najdete v tématu [nakonfigurujte fondy úložiště a disk úložiště](https://technet.microsoft.com/library/hh758075.aspx).
 5. Zadejte silné heslo pro omezené místní uživatelské účty a klikněte na **Další**.
 
-    ![PreReq2 zálohování Microsoft Azure](./media/backup-azure-microsoft-azure-backup/security-screen.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
 6. Vyberte, zda chcete použít *Microsoft Update* vyhledávat aktualizace, a klikněte na tlačítko **Další**.
 
    > [!NOTE]
@@ -208,10 +208,10 @@ Po dokončení procesu extrahování políčko Spustit čerstvě extrahované *s
    >
    >
 
-    ![PreReq2 zálohování Microsoft Azure](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 7. Zkontrolujte *souhrn nastavení* a klikněte na tlačítko **nainstalovat**.
 
-    ![PreReq2 zálohování Microsoft Azure](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
 8. Instalace probíhá fáze. V první fázi agenta služeb zotavení Microsoft Azure je nainstalován na serveru. Průvodce také zkontroluje připojení k Internetu. Pokud je k dispozici připojení k Internetu může pokračovat v instalaci, pokud ne, budete muset zadat podrobnosti o proxy serveru pro připojení k Internetu.
 
     Dalším krokem je konfigurace agenta služeb zotavení Microsoft Azure. Jako součást konfigurace budete muset zadávat svoje přihlašovací údaje trezoru, registraci počítače do trezoru služeb zotavení. Bude také zadat přístupové heslo k šifrování a dešifrování dat posílaných mezi Azure a vaše místní. Může automaticky generovat přístupové heslo nebo zadejte minimální heslo 16 znaků. Pokračujte v průvodci, dokud agent nebyl nakonfigurován.
@@ -231,7 +231,7 @@ První záložní kopie se ukládají na úložiště připojená k počítači 
 >
 >
 
-## <a name="4-network-connectivity"></a>4. Připojení k síti
+## <a name="network-connectivity"></a>Připojení k síti
 Azure Backup Server vyžaduje připojení ke službě Azure Backup pro produkt, nemusí fungovat správně. Chcete-li ověřit, zda je počítač připojen k Azure, použijte ```Get-DPMCloudConnection``` rutiny v konzole prostředí PowerShell pro Server Azure Backup. Pokud výstup rutiny je TRUE připojení existuje, jinak je k dispozici žádné připojení.
 
 Předplatné Azure ve stejnou dobu, musí být v dobrém stavu. Chcete-li zjistit stav předplatného a k její správě, přihlaste se k [předplatné portál](https://account.windowsazure.com/Subscriptions).

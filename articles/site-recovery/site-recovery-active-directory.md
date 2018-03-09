@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: e07b868883b0154ad38ba2f7f51dd2db663525a0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: df5f40a49aa7359c082b0feb9e047818a642a871
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Pomocí Azure Site Recovery k ochraně služby Active Directory a DNS
 
@@ -73,7 +73,7 @@ Abyste se vyhnuli vlivu na úlohy v produkčním prostředí, dojde k převzetí
 
 Většina aplikací vyžaduje přítomnost řadiči domény nebo serveru DNS. Proto před převezme aplikace, musíte vytvořit řadič domény v izolované sítě, který se má použít pro testovací převzetí služeb při selhání. Nejjednodušší způsob je pomocí Site Recovery můžete replikovat virtuální počítač, který je hostitelem řadiče domény nebo DNS. Potom spusťte testovací převzetí služeb virtuálního počítače pro řadič domény před spuštěním testovací převzetí služeb při selhání plánu obnovení pro aplikaci. Zde je, jak můžete udělat:
 
-1. Pomocí Site Recovery můžete [replikovat](site-recovery-replicate-vmware-to-azure.md) virtuální počítač, který je hostitelem řadiče domény nebo DNS.
+1. Pomocí Site Recovery můžete [replikovat](vmware-azure-tutorial.md) virtuální počítač, který je hostitelem řadiče domény nebo DNS.
 2. Vytvořte izolovanou síť. Všechny virtuální sítě, který vytvoříte v Azure je izolovaná od jiné sítě ve výchozím nastavení. Doporučujeme vám, že používáte stejného rozsahu IP adres pro tuto síť, které budete používat v produkční sítě. Nepovolíte připojení site-to-site v této síti.
 3. Zadejte adresu IP serveru DNS v izolované sítě. Použijte IP adresu, která očekáváte, že virtuální počítač DNS získat. Pokud replikujete do Azure, zadejte IP adresu pro virtuální počítač, který se používá na převzetí služeb při selhání. Zadat IP adresu, v replikované virtuální počítač, v **výpočty a síť** nastavení, vyberte **cílová IP adresa** nastavení.
 

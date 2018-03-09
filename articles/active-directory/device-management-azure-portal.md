@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1e0d40b996e181a606d16d26633f890b9169ecbb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 85447809cbc803c13ad731b5328e94a1b03abba8
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Správa zařízení pomocí portálu Azure
 
@@ -112,6 +112,7 @@ Obě možnosti můžete získat zobrazení který:
 
 ![Všechna zařízení](./media/device-management-azure-portal/51.png)
 
+Pro některá zařízení s iOS můžete použít názvy zařízení obsahující uvozovky potenciálně různých znaků, které vypadají podobně jako apostrofy. Hledání takovým zařízením je trochu složité – Pokud nevidíte výsledky hledání správně, zkontrolujte, že hledaný řetězec obsahuje apostrof odpovídající.
 
 ## <a name="device-management-tasks"></a>Úlohy správy zařízení
 
@@ -229,14 +230,14 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 - Typ prostředku aktivity
 - Aktivita
 - Rozsah dat
-- cíl
-- Zahájit (objektu Actor)
+- Cíl
+- Iniciátor (actor)
 
 Kromě filtry můžete vyhledat konkrétní položky.
 
 ![Protokoly auditu](./media/device-management-azure-portal/65.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Úvod do správy zařízení v Azure Active Directory](device-management-introduction.md)
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 6daf69574d45eeb1c91508d082bd7294b6e40f70
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 6829ca9ad5ef76b6a96eed1f2cc461d32c0e51cf
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změnit nebo odstranit virtuální síť
 
@@ -41,7 +41,7 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-1. Vyberte **+ nový** > **sítě** > **virtuální síť**.
+1. Vyberte **+ vytvořit prostředek** > **sítě** > **virtuální síť**.
 2. Zadejte nebo vyberte hodnoty pro následující nastavení a potom vyberte **vytvořit**:
     - **Název**: název musí být jedinečný v [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) vyberte možnost pro vytvoření virtuální sítě. Název nelze změnit po vytvoření virtuální sítě. Můžete vytvořit několik virtuálních sítí v čase. Pojmenování návrhy, najdete v části [konvence vytváření názvů](/azure/architecture/best-practices/naming-conventions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions). Tyto zásady vytváření názvů vám pomohou lépe spravovat více virtuálních sítí.
     - **Adresní prostor**: adresní prostor virtuální sítě se skládá z jedné nebo více nepřekrývají rozsahy adres, které jsou určené v notaci CIDR. Rozsah adres, které definujete může být veřejné nebo privátní (RFC 1918). Zda je jako veřejné nebo soukromé definovat rozsah adres, rozsah adres je dostupný jenom z v rámci virtuální sítě od vzájemně propojena virtuální sítě a od všech sítích na pracovišti, které jste se připojili k virtuální síti. Nelze přidat následující rozsahy adres:
@@ -179,5 +179,5 @@ K provádění úloh na virtuální sítě, musí mít váš účet přiřazenou
 
 - Vytvoření virtuálního počítače a připojte ho k virtuální síti najdete v tématu [vytvoření virtuální sítě a připojení virtuálních počítačů](quick-create-portal.md#create-virtual-machines).
 - Pro filtrování síťového provozu mezi podsítěmi v rámci virtuální sítě, najdete v části [vytvoření skupin zabezpečení sítě](virtual-networks-create-nsg-arm-pportal.md).
-- Chcete-li peer virtuální sítě s jinou virtuální sítí, přečtěte si téma [vytvoření virtuální sítě partnerského vztahu](virtual-network-create-peering.md#portal).
+- Chcete-li peer virtuální sítě s jinou virtuální sítí, přečtěte si téma [vytvoření virtuální sítě partnerského vztahu](tutorial-connect-virtual-networks-portal.md).
 - Další informace o možnosti připojení virtuální sítě k místní síti najdete v tématu [o službě VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams).

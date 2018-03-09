@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: 69431979769a03b62a7f9fd7760e6eb614e37cd6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3f605645e7a53f285cb7e508034ebab0daa0d335
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Rychlý start pro Bash v prostředí cloudu Azure
 
@@ -37,7 +37,7 @@ Tento dokument podrobně popisuje postup použití Bash v prostředí cloudu Azu
 > Pro Azure CLI 2.0 se automaticky ověřeni v každé relaci.
 
 ### <a name="select-the-bash-environment"></a>Vyberte prostředí Bash
-1. Vyberte z rozevíracího prostředí levé straně okna prostředí <br>
+1. Vyberte prostředí rozevíracího seznamu na levé straně okna prostředí <br>
 ![](media/quickstart/env-selector.png)
 2. Vyberte Bash
 
@@ -65,7 +65,7 @@ Vaše uživatelské jméno pro tento virtuální počítač bude vaše uživatel
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH do virtuálním počítačům s Linuxem
 1. Vyhledejte název virtuálního počítače v panelu vyhledávání v portálu Azure
-2. Klikněte na tlačítko "Připojit" a spusťte:`ssh username@ipaddress`
+2. Klikněte na tlačítko "Připojit" a spusťte: `ssh username@ipaddress`
 
 ![](media/quickstart/sshcmd-copy.png)
 

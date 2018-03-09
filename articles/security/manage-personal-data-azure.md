@@ -1,6 +1,6 @@
 ---
 title: "Správa osobních údajů v Microsoft Azure | Microsoft Docs"
-description: "Pokyny o tom, jak opravit, aktualizovat, odstranit a exportujte osobních údajů v Azure Active Directory a Azure SQL Database"
+description: "Opravte, aktualizaci, odstranění a exportovat osobní údaje, můžete v souladu s obecné Data Protection nařízení (GDPR) v Azure Active Directory a Azure SQL Database"
 services: security
 documentationcenter: na
 author: barclayn
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 51dca8955745b40a9126b142ea15e707fe58bc72
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 41c0cc4eb3697aa79abeabddc98a84598ce4ea50
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-personal-data-in-microsoft-azure"></a>Správa osobních údajů v Microsoft Azure
 
-Tento článek obsahuje pokyny o tom, jak opravit, aktualizovat, odstranit a exportujte osobních údajů v Azure Active Directory a Azure SQL Database.
+Tento článek obsahuje pokyny o tom, jak opravit, aktualizovat, odstranit a exportujte osobních údajů pro dosažení souladu s obecné Data Protection nařízení (GDPR) v Azure Active Directory a Azure SQL Database.
 
 ## <a name="scenario"></a>Scénář
 

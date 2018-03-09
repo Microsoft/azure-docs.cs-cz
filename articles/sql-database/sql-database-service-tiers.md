@@ -14,17 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 02/26/2018
+ms.date: 02/28/2018
 ms.author: carlrab
-ms.openlocfilehash: b36af32d900f9426424dd08c43946e7dcb5b39b9
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: ebfd44098a81b4a9d8863623458460ceb25f0d5d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Co je Azure SQL Database úrovně služeb?
 
-[Azure SQL Database](sql-database-technical-overview.md) nabízí **základní**, **standardní**, a **Premium** úrovních služeb pro obě [jedna databáze](sql-database-single-database-resources.md) a [elastické fondy](sql-database-elastic-pool.md). Úrovně služeb jsou primárně rozlišené pomocí celou řadu úroveň výkonu a možnosti velikosti úložiště a ceny.  Všechny úrovně služeb poskytují flexibilitu při změně velikosti výkonu úroveň a úložiště.  Izolované databáze i elastické fondy se fakturuje po hodinách podle úrovně služby, úroveň výkonu a velikost úložiště.   
+[Azure SQL Database](sql-database-technical-overview.md) nabízí **základní**, **standardní**, a **Premium** úrovních služeb pro obě [jedna databáze](sql-database-single-database-resources.md) a [elastické fondy](sql-database-elastic-pool.md). SQL Database nabízí vrstvy služeb pro obecné účely [Azure SQL Database spravované Instance](sql-database-managed-instance.md#managed-instance-service-tier). Úrovně služeb jsou primárně rozlišené pomocí celou řadu úroveň výkonu a možnosti velikosti úložiště a ceny.  Všechny úrovně služeb poskytují flexibilitu při změně velikosti výkonu úroveň a úložiště.  Izolované databáze i elastické fondy se fakturuje po hodinách podle úrovně služby, úroveň výkonu a velikost úložiště.   
+
+> [!IMPORTANT]
+> Instance databáze serveru SQL spravované, aktuálně ve verzi public preview, nabízí vrstvu služby jednotného pro obecné účely. Další informace najdete v tématu [Azure SQL Database spravované Instance](sql-database-managed-instance.md). Zbývající část tohoto článku se nevztahuje na spravované Instance.
 
 ## <a name="choosing-a-service-tier"></a>Výběr úrovně služeb
 
@@ -42,7 +45,7 @@ Volba úrovně služby závisí hlavně na kontinuity podnikových procesů, úl
 
 ## <a name="performance-level-and-storage-size-limits"></a>Omezení velikosti úroveň výkonu a úložiště
 
-Úrovně výkonu jsou vyjádřeny z hlediska jednotky transakcí databáze (Dtu) pro izolované databáze a transakčních jednotkách elastické databáze (Edtu) pro elastické fondy. Další informace o Dtu a Edtu najdete v tématu [co jsou Dtu a Edtu?](sql-database-what-is-a-dtu.md)
+Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o Dtu a Edtu najdete v tématu [co jsou Dtu a Edtu?](sql-database-what-is-a-dtu.md)
 
 ### <a name="single-databases"></a>Izolované databáze
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 8f20e8d4329d815351147f90b598180839ce917a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 341ace1d9792aba3d6d525a2cde0d9b74367d214
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Plánování nasazení synchronizace souboru Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -92,7 +92,7 @@ Budoucí verze systému Windows Server bude přidán jako jejich vydání. Star�
 | Body rozboru | Vynecháno | |
 | Komprese NTFS | Plně podporovány. | |
 | Zhuštěných souborů | Plně podporovány. | Synchronizace zhuštěných souborů (nejsou blokována), ale jejich synchronizaci do cloudu jako celého souboru. Pokud se obsah souboru se změní v cloudu (nebo na jiném serveru), soubor je již zhuštěných po stažení změn. |
-| Alternativní datové proudy (reklamy) | Zachovají, ale nejsou synchronizované | |
+| Alternativní datové proudy (reklamy) | Zachovají, ale nejsou synchronizované | Například není synchronizovaná značky klasifikace, které jsou vytvořené pomocí infrastruktury klasifikace souborů. Existující klasifikace značky na soubory na každém serveru koncových bodů nedotčené. |
 
 > [!Note]  
 > Jsou podporovány pouze svazky systému souborů NTFS. Odolný systém souborů FAT, FAT32 a jiných systémů souborů nejsou podporovány.
@@ -142,7 +142,7 @@ Třeba antivirový řešení může dojít k řešení zálohování odvolání 
 Podpora pro šifrování řešení závisí na tom, jak jsou implementované. Synchronizace služby Azure souboru je znám pracovat:
 
 - Šifrování nástrojem BitLocker
-- Azure Rights Management Services (Azure RMS) (a starší verze Active Directory RMS)
+- Azure Information Protection, Azure Rights Management Services (Azure RMS) a služby Active Directory RMS
 
 Synchronizace služby Azure souboru není znám pracovat:
 

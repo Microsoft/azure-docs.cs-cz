@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jodebrui
-ms.openlocfilehash: 23b313a473b93ba0eab7fc4cf97a5d26bfa31505
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 98b4a0b4bcb271a68880359b1bb04655cae8d003
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizace výkonu pomocí technologie v paměti v databázi SQL
 
@@ -30,7 +30,7 @@ Zde jsou dva příklady, jak článek OLTP v paměti pomůže výrazně zlepšit
 - Pomocí OLTP v paměti, [kvora obchodními řešeními bylo možné dvakrát jejich zatížení při současném zvyšování Dtu 70 %](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
     - DTU znamená *jednotek propustnosti databáze*, a obsahuje měření spotřeby prostředků.
 - Toto video ukazuje výrazné zlepšení spotřeby prostředků s ukázky pracovního vytížení: [OLTP v paměti v Azure SQL Database Video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
-    - Další podrobnosti naleznete v příspěvku blogu: [OLTP v paměti v příspěvku blogu databáze SQL Azure](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
+    - Další informace naleznete v příspěvku blogu: [OLTP v paměti v příspěvku blogu databáze SQL Azure](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
 Technologie v paměti jsou k dispozici v všechny databáze v úrovni Premium, včetně databází v elastické fondy Premium.
 
@@ -44,7 +44,7 @@ Azure SQL Database má následující technologie v paměti:
 
 - *OLTP v paměti* zvyšuje propustnost a snižuje latence pro zpracování transakcí. Scénáře využívající OLTP v paměti jsou: transakce vysokou propustností zpracování například obchodní a hraní, přijímání dat ze zařízení IoT, ukládání do mezipaměti, načtení dat a dočasné tabulky a scénáře proměnné tabulky nebo události.
 - *Clusterované indexy columnstore* redukuje vašeho úložiště (až 10 x) a zlepšení výkonu pro dotazy analýz a generování sestav. Můžete ji pomocí tabulky faktů v datová Tržiště nevejde se do databáze více dat a zlepšíte výkon. Navíc můžete ho s historických dat v provozní databázi nástroje k archivaci a moct dotaz až 10 x další data.
-- *Neclusterovaných indexů columnstore* pro HTAP umožňují v reálném čase proniknout do vaší firmy prostřednictvím dotazování provozní databáze přímo, aniž by bylo nutné spustit nákladné extrakce, transformace a načítání (ETL) proces a vyčkejte pro datový sklad vyplnit. Neclusterovaných indexů columnstore povolí velmi rychlé spuštění analytické dotazy na databáze OLTP navíc snižuje dopad na provozní úlohy.
+- *Neclusterovaných indexů columnstore* pro HTAP umožňují v reálném čase proniknout do vaší firmy prostřednictvím dotazování provozní databáze přímo, aniž by bylo nutné spustit nákladné extrakce, transformace a načítání (ETL) proces a počkejte datový sklad vyplnit. Neclusterovaných indexů columnstore povolí velmi rychlé spuštění analytické dotazy na databáze OLTP navíc snižuje dopad na provozní úlohy.
 - Můžete taky nechat kombinace paměťově optimalizované tabulky s indexem columnstore. Tato kombinace umožňuje provádět zpracování velmi rychlé transakcí a *souběžně* velmi rychle spustit analytické dotazy na stejná data.
 
 Indexy columnstore a OLTP v paměti se součástí produktu SQL Server od 2012 a 2014, v uvedeném pořadí. Azure SQL Database a SQL Server sdílet stejné implementaci technologií v paměti. Do budoucna, nové funkce pro tyto technologie jsou vydávány v Azure SQL Database nejprve před jejich vydání v systému SQL Server.
@@ -164,7 +164,7 @@ Více zneužívající vlastností prohlížeče, ale vizuálně výkonu ukázku
 
 3. Kopírování [OLTP v paměti jazyka Transact-SQL skriptu](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) do schránky. Skriptu T-SQL vytváří objekty nezbytné v paměti ukázkové databáze AdventureWorksLT, kterou jste vytvořili v kroku 1.
 
-4. Vložit do aplikace SSMS skriptu T-SQL a poté spusťte tento skript. `MEMORY_OPTIMIZED = ON` Příkazy CREATE TABLE klauzule jsou zásadní. Například:
+4. Vložit do aplikace SSMS skriptu T-SQL a poté spusťte tento skript. `MEMORY_OPTIMIZED = ON` Příkazy CREATE TABLE klauzule jsou zásadní. Příklad:
 
 
 ```
@@ -229,8 +229,8 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 Jediným rozdílem mezi následující dva *uložené procedury* je, že první postup používá verzích paměťově optimalizované tabulky, zatímco druhý postup používá regulární tabulky na disku:
 
-- SalesLT**.** usp_InsertSalesOrder**_inmem**
-- SalesLT**.** usp_InsertSalesOrder**_ondisk**
+- SalesLT**.**usp_InsertSalesOrder**_inmem**
+- SalesLT**.**usp_InsertSalesOrder**_ondisk**
 
 
 V této části najdete postup používání užitečný v **ostress.exe** nástroj provést dvě uložené procedury na stressful úrovních. Jak dlouho trvá pro spustí dvě přízvuk dokončíte, můžete porovnat.
@@ -493,7 +493,7 @@ V databázi s P2 cenovou úroveň bude pravděpodobně přibližně devětkrát 
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Rychlý Start 1: Technologie OLTP v paměti pro dosažení vyššího výkonu T-SQL](http://msdn.microsoft.com/library/mt694156.aspx)
 
@@ -502,7 +502,7 @@ V databázi s P2 cenovou úroveň bude pravděpodobně přibližně devětkrát 
 - [Monitorování OLTP v paměti úložiště](sql-database-in-memory-oltp-monitoring.md) pro OLTP v paměti
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 #### <a name="deeper-information"></a>Podrobnější informace.
 

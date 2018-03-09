@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: ec9258a123774607ffee8705a1bc5391525567f5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 26df11bb010414ba979077c45d01e66f17f6b12e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions Tools pro Visual Studio  
 
@@ -46,20 +46,21 @@ Pokud chcete vytvořit a nasadit funkce, budete potřebovat:
 
 * Aktivní předplatné Azure. Pokud nemáte předplatné Azure, [volné účty](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) jsou k dispozici.
 
-* Účet úložiště Azure. Pokud chcete vytvořit účet úložiště, najdete v části [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+* Účet služby Azure Storage. Pokud chcete vytvořit účet úložiště, najdete v části [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).
 
 ## <a name="create-an-azure-functions-project"></a>Vytvoření projektu Azure Functions 
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
-
-## <a name="configure-the-project-for-local-development"></a>Konfigurace projektu pro místní vývoj
-
-Když vytvoříte nový projekt pomocí šablony Azure Functions, zobrazí prázdné C# projekt, který obsahuje následující soubory:
+Šablona projektu vytvoří projekt C#, nainstaluje `Microsoft.NET.Sdk.Functions` balíček NuGet a nastaví cílové rozhraní. Funkce 1.x cíle rozhraní .NET Framework a funkce 2.x cíle .NET Standard. Nový projekt obsahuje následující soubory:
 
 * **Host.JSON**: vám umožní nakonfigurovat funkce hostitele. Toto nastavení se týká i při spuštění místně a v Azure. Další informace najdete v tématu [host.json odkaz](functions-host-json.md).
     
 * **Local.Settings.JSON**: udržuje nastavení používané při místním spuštění funkce. Tato nastavení nejsou používány nástrojem Azure, jsou používány [nástroje základní funkce Azure](functions-run-local.md). Tento soubor lze použijte k určení nastavení, jako jsou třeba řetězce připojení k jiným službám Azure. Přidejte nový klíč k **hodnoty** pole pro každé připojení vyžaduje funkce ve vašem projektu. Další informace najdete v tématu [nastavení místního souboru](functions-run-local.md#local-settings-file) v tématu nástroje základní funkce Azure.
+
+Další informace najdete v tématu [projektu knihovny tříd funkce](functions-dotnet-class-library.md#functions-class-library-project).
+
+## <a name="configure-the-project-for-local-development"></a>Konfigurace projektu pro místní vývoj
 
 Modul runtime funkce interně používá účet úložiště Azure. Pro všechny aktivovat jiného typu než HTTP a pomocí webhooků, musíte nastavit **Values.AzureWebJobsStorage** klíče na platný připojovací řetězec účet úložiště Azure. 
 
@@ -147,5 +148,6 @@ Můžete také spravovat nastavení aplikace v jednom z těchto dalších způso
 
 Další informace o nástrojích funkce Azure, najdete v části Nejčastější dotazy [2017 nástroje sady Visual Studio pro Azure Functions](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) příspěvku na blogu.
 
-Další informace o nástrojích základní funkce Azure najdete v tématu [kód a testovat místně na Azure functions](functions-run-local.md).  
+Další informace o nástrojích základní funkce Azure najdete v tématu [kód a testovat místně na Azure functions](functions-run-local.md).
+
 Další informace o vývoji funkce jako knihovny tříd rozhraní .NET najdete v tématu [Azure funkcí jazyka C# referenční informace pro vývojáře](functions-dotnet-class-library.md). Toto téma obsahuje také odkazy na příklady, jak použít atributy deklarovat různé typy vazeb Azure Functions podporuje.    

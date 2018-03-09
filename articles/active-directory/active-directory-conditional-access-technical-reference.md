@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: fd82d77e79f05a67f8e818095753b8dc22ccf314
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 66e3207898d6ad8ca9af2b969942e38321c191a5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -137,8 +137,11 @@ Toto nastavení funguje u všech prohlížečů. Splňovat zásady pro zařízen
 
 
 > [!NOTE]
-> Pro podporu Chrome, musíte použít Windows 10 Creators Update (verze 1703) nebo novější.<br>
-> Můžete nainstalovat [toto rozšíření](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
+> Pro podporu Chrome ve Windows 10 Creators Update (verze 1703) nebo novější, nainstalovat [toto rozšíření](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).<br>
+> Pro podporu Chrome ve Windows 8.1 a 7, vytvořte následující klíč registru v **HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls** <br>
+> Název: 1<br>
+> Typ: REG_SZ (String)<br>
+> Data: {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
 
 Ověřování zařízení umožňuje zařízení identifikovat a ověřovat s zásadu podporují tyto prohlížeče. Kontrola zařízení selže, pokud je v prohlížeči spuštění v privátním režimu. 
 

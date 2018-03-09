@@ -1,25 +1,21 @@
 ---
 title: "Konfigurace ověřování Azure Active Directory - SQL | Microsoft Docs"
-description: "Zjistěte, jak se připojit k SQL Database a SQL Data Warehouse pomocí Azure Active Directory Authentication – po dokončení konfigurace Azure AD."
+description: "Zjistěte, jak se připojit k databázi SQL, spravované Instance a SQL Data Warehouse pomocí Azure Active Directory Authentication – po dokončení konfigurace Azure AD."
 services: sql-database
 author: GithubMirek
 manager: johammer
-ms.assetid: 7e2508a1-347e-4f15-b060-d46602c5ce7e
 ms.service: sql-database
 ms.custom: security
-ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: 
-ms.workload: Active
-ms.date: 01/09/2018
+ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: 93fb39770a0b0c63011c05505be411c7470fea0a
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 00b5be9863e2bff9e5b82845f99d6829e1bcdf13
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-or-sql-data-warehouse"></a>Konfigurovat a spravovat ověřování Azure Active Directory s SQL Database nebo SQL Data Warehouse
+# <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurovat a spravovat ověřování Azure Active Directory s databází SQL, spravované Instance nebo SQL Data Warehouse
 
 Tento článek ukazuje, jak vytvořit a naplnit Azure AD a pak použít Azure AD s Azure SQL Database a SQL Data Warehouse. Přehled najdete v tématu [ověřování Azure Active Directory](sql-database-aad-authentication.md).
 
@@ -47,22 +43,74 @@ Při použití služby Azure Active Directory s geografickou replikací, správc
 > Uživatelé, které nejsou založené na účet služby Azure AD (včetně správce serveru SQL Azure), Azure AD na základě uživatele, nelze vytvořit, protože nemají oprávnění k ověření uživatelů navrhované databáze s Azure AD.
 > 
 
-## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-server"></a>Zřízení správcem služby Azure Active Directory pro server Azure SQL
+## <a name="provision-an-azure-active-directory-administrator-for-your-managed-instance"></a>Zřízení správcem služby Azure Active Directory vaší spravované Instance
+
+> [!IMPORTANT]
+> Pokud zřizujete instanci a spravovat pouze podle těchto kroků. Tuto operaci může provést pouze správce globální/společnosti ve službě Azure AD. Následující kroky popisují proces udělení oprávnění pro uživatele s jinou oprávnění v adresáři.
+
+Vaše spravované Instance potřebuje oprávnění ke čtení úspěšně provést úkoly, jako je například ověřování uživatelů pomocí členství ve skupině zabezpečení nebo vytváření nových uživatelů Azure AD. Tento postup budete muset udělení oprávnění pro spravované Instance číst Azure AD. Chcete-li to provést dvěma způsoby: z portálu a prostředí PowerShell. Následující kroky obě metody.
+
+1. Na portálu Azure v pravém horním rohu klikněte na připojení k rozevírací seznam možných Active Directory. 
+2. Vyberte správný služby Active Directory jako výchozí Azure AD. 
+
+   Tento krok odkazy předplatné spojené se službou Active Directory s instancí spravované a ujistěte se, že stejného předplatného. používá se pro Azure AD a spravované Instance.
+3. Přejděte do spravované Instance a vyberte ten, který chcete použít pro integraci služby Azure AD.
+
+   ![aad](./media/sql-database-aad-authentication/aad.png)
+
+4.  Klikněte na hlavičku v horní části stránky pro správu služby Active Directory. Pokud jste přihlášeni jako správce globální/společnosti ve službě Azure AD, můžete provést z portálu Azure nebo pomocí prostředí PowerShell.
+
+    ![udělení oprávnění portálu](./media/sql-database-aad-authentication/grant-permissions.png)
+
+    ![udělení oprávnění powershell](./media/sql-database-aad-authentication/grant-permissions-powershell.png)
+    
+    Pokud jste přihlášeni jako správce globální/společnosti ve službě Azure AD, můžete provést z portálu Azure nebo spustit skript prostředí PowerShell.
+
+5. Po úspěšném dokončení operace následující oznámení se zobrazí v pravém horním rohu:
+
+    ![úspěch](./media/sql-database-aad-authentication/success.png)
+
+6.  Nyní můžete správce Azure AD vaší spravované Instance. K tomu, na stránky pro správu služby Active Directory, klikněte na **nastavit správce** příkaz.
+
+    ![set-admin](./media/sql-database-aad-authentication/set-admin.png)
+
+7. Na stránce přidat správce, vyhledejte uživatele, vyberte uživatele nebo skupinu, správce a pak klikněte na tlačítko **vyberte**. 
+
+   Stránky pro správu služby Active Directory zobrazuje všechny členy a skupin služby Active Directory. Uživatelé nebo skupiny, které jsou zobrazena šedě nelze vybrat, protože nejsou podporovány jako správci služby Azure AD. Zobrazit seznam podporovaných admins v [funkce Azure AD a omezení](sql-database-aad-authentication.md#azure-ad-features-and-limitations). Řízení přístupu na základě role (RBAC) se vztahuje pouze na portálu Azure a není rozšíří do systému SQL Server.
+
+    ![přidat správce.](./media/sql-database-aad-authentication/add-admin.png)
+
+8. V horní části stránky pro správu služby Active Directory, klikněte na tlačítko **Uložit**.
+
+    ![Uložit](./media/sql-database-aad-authentication/save.png)
+
+    Proces změny správce může trvat několik minut. Nový správce se pak objeví v poli Správce služby Active Directory.
+
+> [!IMPORTANT]
+> Při nastavování správce Azure AD, nový název správce (uživatele či skupinu) nemůže být již přítomny v hlavní databázi virtuální jako uživatel ověřování systému SQL Server. Pokud je k dispozici, se nezdaří instalace správce Azure AD a vrácení zpět jeho vytváření, což indikuje, že takový správce (název) již existuje. Vzhledem k tomu, že takové systému SQL Server ověřování uživatele není součástí Azure AD, všechny úsilí pro připojení k serveru pomocí ověřování Azure AD se nezdaří.
+
+> [!TIP]
+> Chcete-li později odebrat správce, v horní části stránky pro správu služby Active Directory, klikněte na tlačítko **odebrat správce**a potom klikněte na **Uložit**.
+ 
+## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Zřízení správcem služby Azure Active Directory pro server Azure SQL Database
+
+> [!IMPORTANT]
+> Podle těchto kroků, pouze pokud zřizujete na serveru Azure SQL Database nebo datového skladu.
 
 Tyto dva postupy ukazují, jak zřídit správce Azure Active Directory pro server Azure SQL na portálu Azure a pomocí prostředí PowerShell.
 
 ### <a name="azure-portal"></a>Azure Portal
 1. V [portál Azure](https://portal.azure.com/), v pravém horním rohu klikněte na připojení k rozevírací seznam možných Active Directory. Vyberte správný služby Active Directory jako výchozí Azure AD. Tento krok odkazy přidružení předplatné služby Active Directory s Azure SQL serveru a ujistěte se, že stejného předplatného. používá se pro Azure AD a SQL Server. (Server Azure SQL můžete hostování, Azure SQL Database nebo Azure SQL Data Warehouse.)   
-    ![Zvolte ad][8]   
+    ![choose-ad][8]   
     
-2. V levém banner vyberte **servery SQL**, vyberte vaše **systému SQL server**a potom v **systému SQL Server** okně klikněte na tlačítko **správce Active Directory** .   
-3. V **správce Active Directory** okně klikněte na tlačítko **nastavit správce**.   
+2. V levém banner vyberte **servery SQL**, vyberte vaše **systému SQL server**a potom v **systému SQL Server** klikněte na tlačítko **správce Active Directory**.   
+3. V **správce Active Directory** klikněte na tlačítko **nastavit správce**.   
     ![Vyberte možnost active directory](./media/sql-database-aad-authentication/select-active-directory.png)  
     
-4. V **přidat správce** okně vyhledávání pro uživatele, vyberte uživatele nebo skupiny pro správce a pak klikněte na **vyberte**. (V okně Správce služby Active Directory zobrazí všechny členy a skupin služby Active Directory. Uživatelé nebo skupiny, které jsou zobrazena šedě nelze vybrat, protože nejsou podporovány jako správci služby Azure AD. (Zobrazit seznam podporovaných admins v **funkce Azure AD a omezení** části [použití Azure ověřování služby Active Directory k ověřování připojení k SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication.md).) Řízení přístupu na základě role (RBAC) se vztahuje pouze na portálu a není rozšíří do systému SQL Server.   
+4. V **přidat správce** stránky, vyhledejte uživatele, vyberte uživatele nebo skupiny se správce a klikněte **vyberte**. (Stránky pro správu služby Active Directory zobrazí všechny členy a skupin služby Active Directory. Uživatelé nebo skupiny, které jsou zobrazena šedě nelze vybrat, protože nejsou podporovány jako správci služby Azure AD. (Zobrazit seznam podporovaných admins v **funkce Azure AD a omezení** části [použití Azure ověřování služby Active Directory k ověřování připojení k SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication.md).) Řízení přístupu na základě role (RBAC) se vztahuje pouze na portálu a není rozšíří do systému SQL Server.   
     ![Vyberte správce](./media/sql-database-aad-authentication/select-admin.png)  
     
-5. V horní části **správce Active Directory** okně klikněte na tlačítko **Uložit**.   
+5. V horní části **správce Active Directory** klikněte na tlačítko **Uložit**.   
     ![Uložit správce](./media/sql-database-aad-authentication/save-admin.png)   
 
 Proces změny správce může trvat několik minut. Potom nový správce se zobrazí v **správce Active Directory** pole.
@@ -72,7 +120,7 @@ Proces změny správce může trvat několik minut. Potom nový správce se zobr
    > 
 
 
-Později odebrat správce, v horní části **správce Active Directory** okně klikněte na tlačítko **odebrat správce**a potom klikněte na **Uložit**.
+Později odebrat správce, v horní části **správce Active Directory** klikněte na tlačítko **odebrat správce**a potom klikněte na **Uložit**.
 
 ### <a name="powershell"></a>PowerShell
 Pokud chcete spustit rutiny prostředí PowerShell, musíte mít prostředí Azure PowerShell nainstalovaná a spuštěná. Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
@@ -87,10 +135,10 @@ Rutiny používají k zřizovat a spravovat správce Azure AD:
 | Název rutiny | Popis |
 | --- | --- |
 | [Set-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/set-azurermsqlserveractivedirectoryadministrator) |Zřídí správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. (Musí být z aktuálního předplatného.) |
-| [Odebrat AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/remove-azurermsqlserveractivedirectoryadministrator) |Odebere správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. |
+| [Remove-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/remove-azurermsqlserveractivedirectoryadministrator) |Odebere správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. |
 | [Get-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/get-azurermsqlserveractivedirectoryadministrator) |Vrací informace o aktuálně nakonfigurován pro server Azure SQL nebo Azure SQL Data Warehouse správce Azure Active Directory. |
 
-Použijte příkaz prostředí PowerShell get-help zobrazíte další podrobnosti pro každou z těchto příkazů, například ``get-help Set-AzureRmSqlServerActiveDirectoryAdministrator``.
+Použijte příkaz prostředí PowerShell get-help zobrazíte další informace pro každý z těchto příkazů, například ``get-help Set-AzureRmSqlServerActiveDirectoryAdministrator``.
 
 Tento skript je zřizuje skupině Správce služby Azure AD s názvem **DBA_Group** (id objektu `40b79501-b343-44ed-9ce7-da4c8cc7353f`) pro **demo_server** serveru ve skupině prostředků s názvem **skupiny – 23**:
 
@@ -135,7 +183,7 @@ Správce služby Azure AD můžete také vytvářet voláním rozhraní příkaz
 | Příkaz | Popis |
 | --- | --- |
 |[vytvoření ad správce az sql serveru](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) |Zřídí správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. (Musí být z aktuálního předplatného.) |
-|[AZ sql server ad správce odstranit](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) |Odebere správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. |
+|[az sql server ad-admin delete](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) |Odebere správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. |
 |[AZ sql server ad správce seznamu](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) |Vrací informace o aktuálně nakonfigurován pro server Azure SQL nebo Azure SQL Data Warehouse správce Azure Active Directory. |
 |[aktualizace ad správce az sql server](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_update) |Aktualizace správce Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. |
 

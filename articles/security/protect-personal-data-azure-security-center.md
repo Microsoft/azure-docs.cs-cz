@@ -1,6 +1,6 @@
 ---
 title: "Ochrana osobních dat pomocí Azure Security Center | Microsoft Docs"
-description: "Ochrana osobních dat pomocí Azure security center"
+description: "Použijte Centrum zabezpečení k ochraně osobních údajů. To je možné použít úsilí k zajištění souladu s obecné Data Protection nařízení (GDPR)"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 3a941389713a4d3dbffbbfe8a717409927d85c6d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 118752a030a1c300306aa3e05571bb9b624a2c20
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-from-breaches-and-attacks-azure-security-center"></a>Ochrana osobních údajů z narušení a útoky: Azure Security Center
 
-Tento článek vám pomůže pochopit, jak používat Azure Security Center k ochraně osobních údajů z narušení a útoky.
+Tento článek vám pomůže pochopit, jak používat Azure Security Center k ochraně osobních údajů z narušení a útoky. Informace uvedené v tomto vám pomůže v vaše snaze v souladu s obecné Data Protection nařízení (GDPR).
 
 ## <a name="scenario"></a>Scénář 
 
@@ -173,7 +173,7 @@ Tento typ informací je velmi užitečná během reakce na incidenty, kde je pro
 
 Další informace o sestavě ASC threat intelligence najdete v tématu [Azure Security Center Threat Intelligence sestavy.](https://docs.microsoft.com/azure/security-center/security-center-threat-report)
 
-### <a name="assessment"></a>Hodnocení
+### <a name="assessment"></a>Posouzení
 
 Usnadní testování, hodnocení a vyhodnocení lepšímu zabezpečení, ASC poskytuje pro vyhodnocení integrované ohrožení zabezpečení s Qualys cloudu agentů, jako součást své doporučení součásti virtuálního počítače.
 
@@ -197,7 +197,7 @@ Pokud virtuální počítač nemá řešení pro vyhodnocení integrované ohro�
 
 Další pokyny o tom, jak implementovat řešení pro vyhodnocení ohrožení zabezpečení najdete v tématu [vyhodnocení ohrožení zabezpečení v Azure Security Center.](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Úvodní příručka Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 

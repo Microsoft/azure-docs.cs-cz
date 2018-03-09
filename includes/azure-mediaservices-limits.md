@@ -4,7 +4,7 @@
 | Prostředek | Výchozí omezení | 
 | --- | --- | 
 | Účty Azure Media Services (AMS) v rámci jednoho předplatného | 25 (pevné) |
-| Rezervované jednotky médií (RU) na jeden účet AMS |25 (S1, S2)<br/>10 (S3) <sup>(1)</sup> | 
+| Rezervované jednotky médií (RU) na jeden účet AMS |25 (S1)<br/>10 (S2, S3) <sup>(1)</sup> | 
 | Úlohy na jeden účet AMS | 50 000<sup>(2)</sup> |
 | Zřetězené úkoly na jednu úlohu | 30 (pevné) |
 | Prostředky na jeden účet AMS | 1 000 000|
@@ -20,7 +20,7 @@
 | Zásady | 1 000 000<sup>(6)</sup> |
 | Velikost souboru| V některých případech je limit na maximální velikost souboru pro zpracování ve službě Media Services podporována. <sup>7</sup> |
   
-<sup>1</sup> Jednotky RU S3 nejsou dostupné v oblasti Indie – západ. Pokud změníte typ (například z S2 k S1), se obnoví maximální RU omezení.
+<sup>1</sup> Pokud změníte typ (například z S2 k S1), se obnoví maximální RU omezení.
 
 <sup>2</sup> Tato hodnota zahrnuje úlohy zařazené do fronty a dokončené, aktivní a zrušené úlohy. Nezahrnuje odstraněné úlohy. K odstranění starých úloh můžete použít **IJob.Delete** nebo požadavek HTTP **DELETE**.
 

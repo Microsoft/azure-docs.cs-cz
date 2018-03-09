@@ -2,18 +2,18 @@
 title: "Jak spravovat váš účet služeb na základě umístění Azure a klíče | Microsoft Docs"
 description: "Můžete spravovat váš účet služeb na základě umístění Azure a spravovat klíče pro přístup k portálu Azure."
 services: location-based-services
-keywords: "Nemáte přidat nebo upravit klíčová slova bez konzultace ohledně specialistou na SEO."
-author: philmea
-ms.author: philmea
+keywords: "Nepřidávejte ani neupravujte klíčová slova, aniž byste se poradili se svým odborníkem na SEO."
+author: kgremban
+ms.author: kgremban
 ms.date: 11/14/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: b82ff3edc3515d9dce465c7a7ed6084a2bfe25c2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8ea7beae054157800ee404cf237772d0677574ca
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-manage-your-azure-location-based-services-account-and-keys"></a>Jak spravovat váš účet služeb na základě umístění Azure a klíče
 
@@ -27,7 +27,7 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 ## <a name="create-a-new-account"></a>Vytvoření nového účtu
 
-1. Klikněte na tlačítko **vytvořit prostředek** v levém horním rohu portálu Azure.
+1. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
 2. Vyhledejte a vyberte **na základě polohy**, pak klikněte na tlačítko **vytvořit**.
 

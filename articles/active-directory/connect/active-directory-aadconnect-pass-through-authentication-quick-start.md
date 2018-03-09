@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: 1da7c064030501b5c6547b65c091b1a50da93899
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b592eb8ca43e5bf3eebe2b0c47d8f17dbec7b238
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure předávací ověřování služby Active Directory: Rychlý start
 
@@ -116,22 +116,40 @@ V této fázi můžete uživatele ze všech spravovaných domén ve vašem klien
 
 ## <a name="step-5-ensure-high-availability"></a>Krok 5: Zajištění vysoké dostupnosti
 
-Pokud plánujete nasadit předávací ověřování v produkčním prostředí, musíte nainstalovat samostatnou Agent ověřování. Tento druhý ověřování agenta nainstalujte na server _jiných_ než jedna spuštěná Azure AD Connect a první ověření agenta. Tato instalace vám poskytuje vysokou dostupnost pro požadavky na přihlášení. Postupujte podle těchto pokynů můžete nasadit samostatnou Agent ověřování:
+Pokud plánujete nasadit předávací ověřování v produkčním prostředí, musíte nainstalovat alespoň jeden další samostatné Agent ověřování. Instalace těchto agentů ověřování na servery _jiných_ než jedna spuštěná Azure AD Connect. Tato instalace vám poskytuje vysokou dostupnost pro požadavky přihlášení uživatele.
 
-1. Stáhněte si nejnovější verzi agenta ověřování (verze 1.5.193.0 nebo novější). Přihlaste se k [centra pro správu Azure Active Directory](https://aad.portal.azure.com) pomocí přihlašovacích údajů globálního správce vašeho klienta.
+Postupujte podle těchto pokynů ke stažení softwaru agenta ověřování:
+
+1. Chcete-li stáhnout nejnovější verzi agenta ověřování (verze 1.5.193.0 nebo novější), přihlaste se k [centra pro správu Azure Active Directory](https://aad.portal.azure.com) pomocí přihlašovacích údajů globálního správce vašeho klienta.
 2. Vyberte **Azure Active Directory** v levém podokně.
 3. Vyberte **Azure AD Connect**, vyberte **předávací ověřování**a potom vyberte **stáhnout agenta**.
 4. Vyberte **přijmout podmínky a stahovat** tlačítko.
-5. Nainstalujte nejnovější verzi agenta ověřování spuštěním spustitelného souboru, kterou jste si stáhli v předchozím kroku. Zadejte pověření pro globálního správce vašeho klienta po zobrazení výzvy.
 
 ![Centrum pro správu Azure Active Directory: tlačítko Stáhnout agenta ověřování](./media/active-directory-aadconnect-pass-through-authentication/pta9.png)
 
 ![Centrum pro správu Azure Active Directory: podokně stáhnout agenta](./media/active-directory-aadconnect-pass-through-authentication/pta10.png)
 
 >[!NOTE]
->Můžete také stáhnout [Agent služby Azure Active Directory Authentication](https://aka.ms/getauthagent). Zajistěte, aby zkontrolujte a přijměte Agent ověřování [podmínkami služby](https://aka.ms/authagenteula) _před_ jeho instalaci.
+>Můžete také přímo stáhnout software agenta ověřování [zde](https://aka.ms/getauthagent). Přečtěte si a přijměte Agent ověřování [podmínkami služby](https://aka.ms/authagenteula) _před_ jeho instalaci.
 
-## <a name="next-steps"></a>Další kroky
+Existují dva způsoby, jak nasadit samostatnou Agent ověřování:
+
+První můžete provést interaktivně právě spuštěním spustitelný soubor stažený ověřování agenta a poskytnout pověření pro globálního správce vašeho klienta po zobrazení výzvy.
+
+Druhý můžete vytvořit a spustit skript bezobslužné nasazení. To je užitečné, pokud chcete nasadit více ověřování agentů najednou, nebo nainstalovat agenty ověřování na serverech Windows, který není k dispozici uživatelské rozhraní, které jsou povolené nebo, ke kterému nelze přistupovat pomocí vzdálené plochy. Zde jsou pokyny pro tento postup:
+
+1. Spusťte následující příkaz pro instalaci agenta ověřování: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
+2. Agent ověřování můžete zaregistrovat v naší službě pomocí prostředí Windows PowerShell. Vytvořit objekt pověření prostředí PowerShell `$cred` obsahující heslo a uživatelské jméno globálního správce pro vašeho klienta. Spusťte následující příkaz, nahraďte  *\<uživatelské jméno\>*  a  *\<heslo\>*:
+   
+        $User = "<username>"
+        $PlainPassword = '<password>'
+        $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
+3. Přejděte na **Agent C:\Program Files\Microsoft Azure AD Connect ověřování** a spusťte následující skript pomocí `$cred` objekt, který jste vytvořili:
+   
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+
+## <a name="next-steps"></a>Další postup
 - [Inteligentní uzamčení](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Zjistěte, jak nakonfigurovat možnosti inteligentního uzamčení na vašeho klienta k ochraně uživatelské účty.
 - [Aktuální omezení](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Zjistěte, jaké scénáře jsou podporovány pomocí předávacího ověřování a ty, které nejsou.
 - [Podrobné technické informace](active-directory-aadconnect-pass-through-authentication-how-it-works.md): pochopit, jak funguje funkci předávací ověřování.

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 203e36b198186db63b7e902db296adeaa9ffb4ee
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 188f02aa69d7b39bc5bc4873b437825107a7ae4e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Postup konfigurace hybridní Azure Active Directory připojené zařízení
 
@@ -34,7 +34,7 @@ Před zahájením konfigurace zařízení služby Azure AD, které jsou připoje
 
 Pokud se spoléhat na [nástroj pro přípravu systému (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)), Zkontrolujte prosím, že vytvoření bitové kopie z instalace systému Windows, který nebyl dosud zaregistrován v Azure AD.
 
-Všechna zařízení připojená k doméně spuštěný Windows 10 Anniversary Update a Windows Server 2016 automatickou registraci v rámci Azure AD při restartování zařízení nebo uživatele přihlásit až po dokončení konfiguračních kroků uvedených níže. Pokud není upřednostňovaný toto chování automatické registrace nebo pokud se požaduje řízené zavedení, postupujte podle pokynů v následující části řízení nasazení a zavedení nejprve selektivně povolit nebo zakázat automatické zavedení před provedením dalších kroky konfigurace.  
+Všechna zařízení připojená k doméně spuštěný Windows 10 Anniversary Update a Windows Server 2016 automatickou registraci v rámci Azure AD při restartování zařízení nebo uživatele přihlásit až po dokončení konfiguračních kroků uvedených níže. **Pokud toto chování automatické registrace není upřednostňovaný nebo pokud se požaduje řízené zavedení**, postupujte podle pokynů v části "Krok 4: řízení nasazení a zavedení" níže nejprve selektivně povolit nebo zakázat automatické zavedení před následující další kroky konfigurace.  
 
 Toto téma ke zlepšení čitelnosti popisy, používá následující období: 
 
@@ -542,7 +542,7 @@ Po dokončení požadovaných kroků připojená k doméně jsou připravené k 
 
 ### <a name="remarks"></a>Poznámky
 
-- Můžete objekt zásad skupiny a ovládejte automatické registrace Windows 10 a Windows Server 2016 počítačů připojených k doméně.
+- Můžete objekt zásad skupiny a ovládejte automatické registrace Windows 10 a Windows Server 2016 počítačů připojených k doméně. **Pokud nechcete, aby tato zařízení na automatickou registraci s Azure AD nebo pokud chcete řídit registrace**, pak musí zavádět první, zakázání automatické registrace do těchto zařízení před zahájením s konfigurací zásad skupiny kroky. Po dokončení konfigurace, jakmile budete připraveni k testování, musí zavedení zásad skupiny povolíte automatické registrace pouze pro testovací zařízení a potom zvolte na všechna zařízení, jako je.
 
 - Windows 10. listopadu 2015 aktualizace automaticky spojí se službou Azure AD **pouze** nastaveného zavedení objekt zásad skupiny.
 

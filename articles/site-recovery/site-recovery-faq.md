@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 03/05/2018
 ms.author: raynew
-ms.openlocfilehash: 1a7d57c1f1f84e7ce3b931c2911ae7394b066f8d
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8c6f577560442f28204b633d5f45f6d4c46ea4b8
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: Časté otázky (FAQ)
 Tento článek obsahuje nejčastější dotazy týkající se Azure Site Recovery. Pokud po přečtení tohoto článku máte dotazy, odešlete je na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -106,8 +106,9 @@ Během běžné replikace se data replikují do geograficky redundantního úlo�
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Můžete automatizovat scénáře obnovení lokality pomocí sady SDK?
 Ano. Postupy workflow Site Recovery je možné automatizovat pomocí rozhraní REST API, PowerShellu a sady Azure SDK. Aktuálně podporované scénáře pro nasazení Site Recovery pomocí prostředí PowerShell:
 
-* [Replikace virtuálních počítačů technologie Hyper-V v cloudech VMMs pro správce prostředků Azure PowerShell](site-recovery-vmm-to-azure-powershell-resource-manager.md)
-* [Replikace virtuálních počítačů technologie Hyper-V bez VMM pro správce prostředků Azure PowerShell](site-recovery-deploy-with-powershell-resource-manager.md)
+* [Replikace virtuálních počítačů technologie Hyper-V v cloudech VMMs pro správce prostředků Azure PowerShell](hyper-v-vmm-powershell-resource-manager.md)
+* [Replikace virtuálních počítačů technologie Hyper-V bez VMM pro správce prostředků Azure PowerShell](hyper-v-azure-powershell-resource-manager.md)
+* [Replikace VMware do Azure pomocí Správce prostředků PowerShell](vmware-azure-disaster-recovery-powershell.md)
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-do-i-need"></a>Pokud replikuji do Azure, jaký typ účtu úložiště potřebuji?
 Budete potřebovat účet úložiště LRS nebo GRS. Doporučujeme účet úložiště GRS, aby byla zajištěna odolnost dat v případě oblastního výpadku nebo pokud není možné obnovit primární oblast. Účet musí být ve stejné oblasti jako trezor Služeb zotavení. Storage úrovně Premium je podporována pro virtuální počítač VMware, virtuální počítač Hyper-V a replikaci fyzický server, při nasazování Site Recovery na portálu Azure.
@@ -123,7 +124,7 @@ Rozšířená nebo zřetězená replikace není podporována. Tato funkce v žá
 Toto není podporováno. Tato funkce v žádosti [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-specific-disks-from-replication"></a>Mohu z replikace vyloučit konkrétní disky?
-To je podporováno, když jste [replikovat virtuální počítače VMware a virtuálních počítačů Hyper-V](site-recovery-exclude-disk.md) do Azure pomocí portálu Azure.
+Toto je podporováno, když replikujete virtuální počítače VMware a virtuálních počítačů Hyper-V do Azure pomocí portálu Azure.
 
 ### <a name="can-i-replicate-virtual-machines-with-dynamic-disks"></a>Můžete replikovat virtuální počítače s dynamickými disky?
 Dynamické disky jsou podporovány, pokud se provádí replikace virtuálních počítačů Hyper-V. Podporovány jsou i při replikaci virtuálních počítačů VMware a fyzické počítače do Azure. Disk operačního systému musí být základní disk.

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 03/05/2018
 ms.author: yurid
-ms.openlocfilehash: e1b9e598af3b55c1d9591e5c1e529a80ae3319ca
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 02e14315018f6586644eb560894785e6b6eb022e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Připojování Microsoft Advanced Threat Analytics k Azure Security Center
 Tento dokument vám pomůže nakonfigurovat integraci mezi službou Microsoft Advanced Threat Analytics a Azure Security Center.
@@ -52,7 +52,7 @@ Za předpokladu, že už máte instalace ATA, a funguje správně místně, post
 
 10. V **přidat nový počítač mimo Azure** vyberte pracovní prostor.
 
-    ![Mimo Azure](./media/security-center-ata-integration/security-center-ata-integration-fig5.png)
+    ![Mimo službu Azure](./media/security-center-ata-integration/security-center-ata-integration-fig5.png)
 
 11. V **přímé agenta** stránky, stáhněte si příslušnou agenta Windows a poznamenejte **ID pracovního prostoru** a **primární klíč**.
 
@@ -61,9 +61,9 @@ Za předpokladu, že už máte instalace ATA, a funguje správně místně, post
 12. Nainstalujte tohoto agenta v ATA Center. Během instalace, je nutné vybrat možnost **připojit agenta k Azure Log Analytics (OMS)**a zadejte *ID pracovního prostoru*, a *primární klíč* vyžádání .
 
 
-Jakmile dokončíte instalaci, dokončení integrace a bude moci zobrazit nové výstrahy Security Center v odeslaných z ATA **výstrahy zabezpečení** a **vyhledávání**. Řešení se zobrazí v **řešení zabezpečení** v části **připojené řešení**. 
+Jakmile dokončíte instalaci, dokončení integrace a bude moci zobrazit nové výstrahy Security Center v odeslaných z ATA **vyhledávání** výsledek. Řešení se zobrazí v **řešení zabezpečení** v části **připojené řešení**. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto dokumentu jste zjistili, jak připojit Microsoft ATA k Security Center. Další informace o službě Security Center najdete v následujících článcích:
 
 * [Propojení Azure Active Directory Identity Protection a Azure Security Center](security-center-aadip-integration.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 10e82c13dc2bb8461fb628435484a3a6e1877aa8
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0f23216c6aced60dc651a0f10179281bc9a29c2c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="apply-updates-in-azure-stack"></a>Aktualizace v Azure zásobníku
 
@@ -67,14 +67,14 @@ Následující postup ukazuje, jak importovat a nainstalovat balíčky aktualiza
  
     ![Ukazuje, kde kvůli nahrání každého souboru balíčku](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
-8. Opakujte kroky 6 a 7 pro *PackageName*.bin a Metadata.xml soubory. 
+8. Opakujte kroky 6 a 7 pro *PackageName*.bin a Metadata.xml soubory. Neimportujte dodatečné Notice.txt soubor, pokud zahrnuty.
 9. Až budete hotoví, můžete zkontrolovat oznámení (ikonu zvonku v pravém horním rohu portálu). Oznámení by měl znamenat, že dokončení nahrávání. 
 10. Přejděte zpět na aktualizace dlaždice na řídicím panelu. Na dlaždici by měl znamenat, že aktualizace k dispozici. Kliknutím na dlaždici Zkontrolujte nově přidané aktualizace balíčku.
 11. K instalaci aktualizace, vyberte balíček, který je označen jako **připraven** a buď klikněte pravým tlačítkem na balíček a vyberte **nyní aktualizovat**, nebo klikněte na tlačítko **nyní aktualizovat** akce v horní .
 12. Když kliknete na instalaci balíčku aktualizace, můžete zobrazit stav na **podrobnosti o spuštění aktualizace** oblasti. Tady můžete také kliknout na **stažení protokolů o úplné** ke stažení souborů protokolu.
 13. Po dokončení aktualizace dlaždici aktualizace zobrazí aktualizovaná verze zásobník Azure.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Správa aktualizací v přehledu Azure zásobníku](azure-stack-updates.md)
 - [Údržba zásad Azure zásobníku](azure-stack-servicing-policy.md)

@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/16/2018
+ms.date: 3/07/2018
 ms.author: nachandr
-ms.openlocfilehash: bb3afdd3afa81664589f738945a63d20013d5291
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 43a0675b1613e7bcf338537c1203de7df9a02fc4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
 
@@ -136,7 +136,9 @@ Automatické aktualizace systému Windows můžou způsobit ztrátu dostupnosti,
 
 ## <a name="download-the-app-package"></a>Stáhněte si balíček aplikace
 
-Stažení aplikace z [stáhnout odkaz](https://go.microsoft.com/fwlink/P/?linkid=849590).
+Aplikaci společně s skripty instalace si můžete stáhnout z [archivu odkaz](https://go.microsoft.com/fwlink/?linkid=869566).
+
+Aplikace ve formátu sfpkg si můžete stáhnout z [sfpkg odkaz](https://go.microsoft.com/fwlink/?linkid=869567). To je užitečné, [Azure Resource Manager na základě nasazení aplikace](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurace aplikace
 
@@ -361,8 +363,12 @@ Správce musí zasáhnout a zjistit, proč k problému z důvodu Windows Update 
 ### <a name="version-111"></a>Verze 1.1.1
 - Pevná chyby ve SetupEntryPoint z NodeAgentService, která zabránila instalace NodeAgentNTService.
 
-### <a name="version-120-latest"></a>Verze 1.2.0 (nejnovější)
+### <a name="version-120"></a>Verze 1.2.0
 
 - Opravy chyb kolem systém restartovat pracovního postupu.
 - Oprava chyby při vytváření úlohy RM kvůli které stavu nebyl kontrola během přípravy úlohy oprava děje podle očekávání.
 - Změnit režim spuštění pro služby systému windows POANodeSvc z automatické na odložené automaticky.
+
+### <a name="version-121-latest"></a>Verze 1.2.1 (nejnovější)
+
+- Oprava chyby v pracovním postupu clusteru vertikální snížení kapacity. Zavedly logiku kolekce uvolňování paměti pro úlohy oprava druhů patřící do neexistující uzly.

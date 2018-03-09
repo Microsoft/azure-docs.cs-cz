@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: aee90f278476a899e0d47fc572c4f375bf926de2
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: ac085bf972885819f7c79996b0f6638fc01fc00d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure předávací ověřování služby Active Directory: Aktuální omezení
 
@@ -31,18 +31,18 @@ Plně podporuje následující scénáře:
 
 - Přihlášení uživatele na všechny webové aplikace založené na prohlížeči
 - Uživatelská přihlášení do aplikace Office, které podporují [moderní ověřování](https://aka.ms/modernauthga): Office 2016 a Office 2013 _s_ moderní ověřování
+- Přihlášení uživatele pro klienty Outlook, kteří používají starší verze protokoly, například Exchange ActiveSync, SMTP, POP a IMAP.
 - Přihlášení uživatele ke Skypu pro firmy moderní ověřování této podpory, včetně Online a hybridní topologie. Další informace o podporovaných topologiích [zde](https://technet.microsoft.com/library/mt803262.aspx).
 - Azure AD domain spojení pro zařízení s Windows 10
-- Podporu protokolu Exchange ActiveSync
+- Hesla aplikací pro službu Multi-Factor Authentication.
 
 ## <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
 Následující scénáře jsou _není_ podporovány:
 
-- Přihlášení uživatele pro starší klientské aplikace Office: Office 2010 a Office 2013 _bez_ moderní ověřování. Organizace doporučujeme přepnout na moderní ověřování, pokud je to možné. Moderní ověřování umožňuje podporu předávací ověřování. Také pomáhá vám zabezpečit vaše uživatelské účty pomocí [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) funkce, jako je Azure Multi-Factor Authentication.
+- Přihlášení uživatele pro starší klientské aplikace Office, s výjimkou aplikace Outlook: Office 2010 a Office 2013 _bez_ moderní ověřování. Organizace doporučujeme přepnout na moderní ověřování, pokud je to možné. Moderní ověřování umožňuje podporu předávací ověřování. Také pomáhá vám zabezpečit vaše uživatelské účty pomocí [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) funkce, jako je Azure Multi-Factor Authentication.
 - Uživatelská přihlášení ke Skypu pro firmy klientské aplikace _bez_ moderní ověřování.
 - Přihlášení uživatele k prostředí PowerShell, verze 1.0. Doporučujeme použít PowerShell verze 2.0.
-- Hesla aplikací pro službu Multi-Factor Authentication.
 - Zjišťování uživatelů s [úniku přihlašovacích údajů](../active-directory-reporting-risk-events.md#leaked-credentials).
 - Azure AD Domain Services vyžaduje synchronizaci hodnoty Hash hesla, aby byl povolen u klienta. Proto klientů, které používají předávací ověřování _pouze_ nefungují pro scénáře, které je třeba Azure AD Domain Services.
 - Předávací ověřování není integrovaná s [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md).
@@ -63,4 +63,3 @@ Povolení synchronizaci hodnoty hash hesla nabízí možnost převzetí služeb 
 - [Podrobné informace zabezpečení](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md): podrobný technický informace o funkci předávací ověřování.
 - [Azure AD bezproblémové SSO](active-directory-aadconnect-sso.md): Další informace o této funkci vzájemně doplňují.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): použijte fóru Azure Active Directory do souboru žádosti o nové funkce.
-

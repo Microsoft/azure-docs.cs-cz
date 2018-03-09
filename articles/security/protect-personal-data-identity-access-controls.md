@@ -1,6 +1,6 @@
 ---
 title: "Ochrana osobních údajů s ovládacími prvky Azure identit a přístupu | Microsoft Docs"
-description: "Pomocí Azure identit a přístupu k ochraně vašich osobních údajů ovládací prvky"
+description: "Azure identit a přístupu řídí pomáhají chránit osobní údaje a může být užitečné, které jsou v souladu s obecné Data Protection nařízení (GDPR)"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/13/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: e6de9526a1a72cfc81caca51207e000f8b3673cc
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: fd3beb57cda4993f922fb935263b0e962b38da6a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory a služby Multi-Factor Authentication: ochrana osobních dat s ovládacími prvky identit a přístupu
 
-Tento článek obsahuje informace a postupy, které můžete použít k ochraně osobní data pomocí Azure Active Directory a službou Multi-Factor authentication zabezpečení funkcích a službách.
+Tento článek obsahuje informace a postupy, které můžete použít k ochraně osobní data pomocí Azure Active Directory a službou Multi-Factor authentication zabezpečení funkcích a službách. Informace obsažené v tomto článku může být užitečné ve snaze o souladu s obecné Data Protection nařízení (GDPR).
 
 ## <a name="scenario"></a>Scénář
 
@@ -176,9 +176,9 @@ Pokud chcete povolit Azure MFA se zásadami podmíněného přístupu, postupujt
 6.  V části **přístup k ovládacím prvkům**, vyberte **Grant**. Zvolte **vyžadovat vícefaktorové ověřování**.
 7.  Zapnout **povolit zásady** k **na** a pak vyberte **Uložit**.
 
-Informace o tom, jak nakonfigurovat nastavení Azure MFA k nastavení upozornění na podvod, vytvořit jednorázové přihlášení, použijte vlastní hlasové zprávy, konfigurovat ukládání do mezipaměti, zadejte důvěryhodné IP adresy, vytvoření hesel aplikací, povolte zapamatování vícefaktorového ověřování pro zařízení tématu uživatelé důvěryhodnosti a vyberte možnost ověření metody [konfigurace nastavení Azure Multi-Factor Authentication.](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next)
+Informace o tom, jak nakonfigurovat nastavení Azure MFA k nastavení upozornění na podvod, vytvořit jednorázové přihlášení, použijte vlastní hlasové zprávy, konfiguraci ukládání do mezipaměti, zadejte důvěryhodné IP adresy, vytvoření hesel aplikací povolení zapamatování vícefaktorového ověřování pro zařízení, které důvěřují uživatele, vyberte metody ověřování, najdete v části [konfigurace nastavení Azure Multi-Factor Authentication.](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Zabezpečení privilegovaného přístupu ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access)
 

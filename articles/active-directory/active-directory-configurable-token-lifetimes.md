@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: eaf9e7088c8c88140ea690c13ff7e0c7026b8f86
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 568bf5f0a4cf3eb77b528af2550d9729dcc59878
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurovat životnosti tokenu v Azure Active Directory (Public Preview)
 Můžete zadat dobu životnosti tokenem vydaným službou Azure Active Directory (Azure AD). Můžete nastavit životnosti tokenu pro všechny aplikace ve vaší organizaci, pro aplikaci víceklientské (více organizace) nebo pro objekt určité služby ve vaší organizaci.
@@ -34,6 +34,11 @@ Objekt zásady ve službě Azure AD, představuje sadu pravidel, které vynucuje
 
 Zásady můžete určit jako výchozí zásady pro vaši organizaci. Zásady se použijí pro všechny aplikace v organizaci, tak dlouho, dokud není přepsána zásady s vyšší prioritou. Také můžete přiřadit zásady pro konkrétní aplikace. Pořadí podle priority se liší podle typu zásady.
 
+> [!NOTE]
+> Zásada Konfigurovat životnost tokenu není podporována pro SharePoint Online.  I když můžete mít možnost vytvářet tuto zásadu pomocí prostředí PowerShell, nebudou SharePoint Online vědomí tuto zásadu. Odkazovat [SharePoint Online blog](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) Další informace o konfiguraci časové limity nečinnosti relace.
+>* Výchozí doba života pro SharePoint Online přístupový token je 1 hodina. 
+>* Výchozí maximální neaktivní doba SharePoint Online aktualizace tokenu je 90 dnů.
+>
 
 ## <a name="token-types"></a>Typy tokenů
 

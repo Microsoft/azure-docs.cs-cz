@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2018
+ms.date: 03/06/2018
 ms.author: terrylan
-ms.openlocfilehash: a15857f0df5c967031aed00d89e71b3199eed0c4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f1ea31d1081bc263cf85cf4dcc3d73d4cc0b842d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="manage-virtual-machine-access-using-just-in-time-preview"></a>Spravovat přístup k virtuálním počítačům pomocí jenom na dobu (Preview)
+# <a name="manage-virtual-machine-access-using-just-in-time"></a>Spravovat přístup k virtuálním počítačům pomocí právě v čase
 
 Právě v čas virtuální počítač (VM) přístupu slouží zamknout příchozí přenosy na virtuální počítače Azure, snižuje riziko napadení a snadného přístupu pro připojení k virtuálním počítačům v případě potřeby.
 
 > [!NOTE]
-> Právě v čase je funkce ve verzi preview a je k dispozici ve standardní vrstvě služby Security Center.  V tématu [cenová](security-center-pricing.md) Další informace o službě Security Center je cenové úrovně.
+> Právě v čase funkce je dostupná na úrovni Standard služby Security Center.  V tématu [cenová](security-center-pricing.md) Další informace o službě Security Center je cenové úrovně.
 >
 >
 
@@ -33,7 +33,7 @@ Právě v čas virtuální počítač (VM) přístupu slouží zamknout přícho
 
 Útok hrubou silou útokům běžně cílové porty správy jako prostředek k získání přístupu k virtuálnímu počítači. V případě úspěšného útočník může převzít kontrolu nad virtuálního počítače a vytvořit dostane do vašeho prostředí.
 
-Chcete-li omezit množství času, který je otevřený port je jedním ze způsobů, aby se snížila zranitelnost vůči útoku hrubou silou. Porty pro správu se nemusíte být otevřený za všech okolností. Pouze musí být otevřený, pokud jsou připojeny k virtuálnímu počítači, například k provádění úkolů údržby nebo správy. Pokud právě v čase je povoleno, Security Center používá [skupinu zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) (NSG) pravidla, která omezit přístup k portům správy, takže nemůžou být cílem útočníků.
+Chcete-li omezit množství času, který je otevřený port je jedním ze způsobů, aby se snížila zranitelnost vůči útoku hrubou silou. Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené pouze během připojení k virtuálnímu počítači, například kvůli provádění úloh správy nebo údržby. Pokud právě v čase je povoleno, Security Center používá [skupinu zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) (NSG) pravidla, která omezit přístup k portům správy, takže nemůžou být cílem útočníků.
 
 ![Jenom v případě čas][1]
 
@@ -60,14 +60,14 @@ Když uživatel požaduje přístup k virtuálnímu počítači, Security Center
 
 ![Právě v čase virtuální počítač přístup k dlaždici][10]
 
-**Právě v čas virtuálních počítačů přístup** poskytuje informace o stavu virtuálních počítačů:
+V části **Přístup k virtuálním počítačům podle potřeby** se zobrazí informace o stavu vašich virtuálních počítačů:
 
-- **Nakonfigurované** -virtuálních počítačů, které jsou nakonfigurované pro podporu právě v přístup k časovému virtuálních počítačů. Data uvedená za poslední týden a zahrnuje počet schválené žádosti, datum posledního přístupu a čas a naposledy uživatele pro každý virtuální počítač.
-- **Doporučená** -virtuálních počítačů, které může podporovat jenom v přístup k časovému virtuálních počítačů, ale nebyly nakonfigurovány na. Doporučujeme povolit jenom při řízení přístupu čas virtuálních počítačů pro tyto virtuální počítače. V tématu [konfigurace jenom v zásadách přístupu čas](#configuring-a-just-in-time-access-policy).
-- **Žádná doporučení** -důvody, které můžou způsobit, že virtuální počítač tak, aby se doporučuje jsou:
-  - Chybí NSG - právě v čase řešení vyžaduje skupinu NSG se.
-  - Classic virtuálního počítače – Security Center, které jsou právě čas virtuálních počítačů přístup aktuálně podporuje pouze virtuální počítače nasazené prostřednictvím Správce Azure Resource Manager. Nasazení classic není podporována pouze v době řešení.
-  - Druhá - virtuální počítač je v této kategorii Pokud právě v čase řešení vypnutý v zásadách zabezpečení předplatné nebo skupinu prostředků nebo že virtuálního počítače chybí veřejnou IP adresu a nemá skupinu NSG na místě.
+- **Nakonfigurované** – Virtuální počítače s nakonfigurovanou podporou přístupu podle potřeby. Data uvedená za poslední týden a zahrnuje počet schválené žádosti, datum posledního přístupu a čas a naposledy uživatele pro každý virtuální počítač.
+- **Doporučené** – Virtuální počítače, které můžou podporovat přístup podle potřeby, ale ještě tak nebyly nakonfigurované. Doporučujeme povolit jenom při řízení přístupu čas virtuálních počítačů pro tyto virtuální počítače. V tématu [konfigurace jenom v zásadách přístupu čas](#configuring-a-just-in-time-access-policy).
+- **Žádné doporučení** – Mezi důvody, proč virtuální počítač nemusí být doporučený, patří:
+  - Chybějící NSG – Řešení přístupu podle potřeby vyžaduje existenci NSG.
+  - Klasický virtuální počítač – Přístup k virtuálním počítačům podle potřeby v Security Center aktuálně podporuje pouze virtuální počítače nasazené prostřednictvím Azure Resource Manageru. Nasazení classic není podporována pouze v době řešení.
+  - Jiné – Virtuální počítač je v této kategorii, pokud je řešení přístupu podle potřeby vypnuté v zásadách zabezpečení předplatného nebo skupiny prostředků nebo pokud virtuální počítač nemá veřejnou IP adresu a NSG.
 
 ## <a name="configuring-a-just-in-time-access-policy"></a>Konfigurace jenom v zásadách přístupu čas
 

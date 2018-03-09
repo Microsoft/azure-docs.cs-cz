@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: xshi
-ms.openlocfilehash: 6a450579c848fe6030a328ddf410f139baae2324
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e8f0397797d8f4c3349afcdfb02de071a6593c72
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit prolnutí HUZZAH ESP8266 připojit ke službě Azure IoT Hub v cloudu
 
@@ -60,7 +60,10 @@ Vývojové prostředí musíte taky následujících akcí:
 * Mac nebo počítači se systémem Windows nebo Ubuntu.
 * Bezdrátové sítě pro prolnutí HUZZAH ESP8266 pro připojení k.
 * Připojení k Internetu stahovat nástroj konfigurace.
-* [Arduino IDE](https://www.arduino.cc/en/main/software) verze 1.6.8 nebo novější. Starší verze nepodporují s knihovnou AzureIoT.
+* [Rozšíření sady Visual Studio Code pro Arduino](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino).
+
+> [!Note]
+> Verze Arduino IDE pro Arduino musí být verze 1.6.8 používá rozšíření Visual Studio Code nebo novější. Starší verze nepodporují s knihovnou AzureIoT.
 
 Následující položky jsou volitelné, v případě, že nemáte senzoru. Máte také možnost používat data snímačů simulované.
 
@@ -77,7 +80,7 @@ V této části se připojíte k vaší karty snímače. Potom můžete připoje
 
 Pomocí vedení breadboard a můstek k připojení následujícím způsobem. Pokud nemáte senzoru, tuto část přeskočte, protože data snímačů simulované můžete použít místo.
 
-![odkaz na připojení](media/iot-hub-arduino-huzzah-esp8266-get-started/15_connections_on_breadboard.png)
+![odkaz na připojení](media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
 
 
 Senzor kód PIN použijte následující kabeláž:
@@ -87,7 +90,7 @@ Senzor kód PIN použijte následující kabeláž:
 | -----------------------  | ---------------------- | ------------: |
 | VDD (Pin 31F)            | 3v (připnout 58H)           | Red kabel     |
 | DATA (Pin 32F)           | GPIO 2 (Pin 46A)       | Modrý kabel    |
-| ZEM (Pin 34F)            | ZEM (PIn 56I)          | Začernit kabel   |
+| GND (Pin 34F)            | GND (PIn 56I)          | Začernit kabel   |
 
 Další informace najdete v tématu [Adafruit DHT22 senzor instalace](https://learn.adafruit.com/dht/connecting-to-a-dhtxx-sensor) a [uspořádání Adafruit prolnutí HUZZAH Esp8266 kolíků](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide?view=all#pinouts).
 
@@ -129,7 +132,7 @@ Pokud používáte Ubuntu, zkontrolujte, zda že máte oprávnění k provozu na
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>`je název vlastníka skupiny, kterou jste získali v předchozím kroku. `<username>`je Ubuntu uživatelské jméno.
+   `<group-owner-name>` je název vlastníka skupiny, kterou jste získali v předchozím kroku. `<username>` je Ubuntu uživatelské jméno.
 
 1. Odhlaste se od Ubuntu a znovu se přihlaste změna zobrazí.
 
@@ -149,33 +152,41 @@ Ukázkové aplikace jsou hostované na Githubu. Naklonujte úložiště ukázka,
    git clone https://github.com/Azure-Samples/iot-hub-feather-huzzah-client-app.git
    ```
 
-Instalace balíčku pro prolnutí HUZZAH ESP8266 v prostředí IDE Arduino:
+Instalace balíčku pro prolnutí HUZZAH ESP8266 ve Visual Studio Code:
 
 1. Otevřete složku, kde je uložen ukázkovou aplikaci.
-1. Otevřete soubor app.ino ve složce aplikace v prostředí IDE Arduino.
+1. Otevřete soubor app.ino ve složce aplikace ve Visual Studio Code.
 
-   ![Otevřete ukázkovou aplikaci v Arduino IDE](media/iot-hub-arduino-huzzah-esp8266-get-started/10_arduino-ide-open-sample-app.png)
+   ![Otevřete ukázkovou aplikaci v kódu Visual Studio](media/iot-hub-arduino-huzzah-esp8266-get-started/10_vscode-open-sample-app.png)
 
-1. V prostředí IDE Arduino, klikněte na tlačítko **soubor** > **Předvolby**.
-1. V **Předvolby** dialogové okno pole, klikněte na ikonu vedle **další adresy URL Manager panely** pole.
-1. V místním okně, zadejte následující adresu URL a pak klikněte na tlačítko **OK**.
+1. Visual Studio Code, zadejte `F1`.
+1. Typ **Arduino** a vyberte **Arduino: Tabule Manager**.
+1. V **Arduino Tabule Manager** , klikněte na **další adresy URL**.
 
-   `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
+   ![VS Code Arduino panelu Správce](media/iot-hub-arduino-huzzah-esp8266-get-started/11_vscode-arduino-board-manager.png)
 
-   ![Přejděte na adresu url balíčku v Arduino IDE](media/iot-hub-arduino-huzzah-esp8266-get-started/11_arduino-ide-package-url.png)
+1. V **uživatelská nastavení** okno, zkopírujte a vložte následující na konci souboru
 
-1. V **předvoleb** dialogové okno, klikněte na tlačítko **OK**.
-1. Klikněte na tlačítko **nástroje** > **Tabule** > **Manager panely**a poté vyhledejte esp8266.
+   `"arduino.additionalUrls": "http://arduino.esp8266.com/stable/package_esp8266com_index.json"`
+
+   ![Konfigurovat adresu URL balíčku Arduino v produktu VS Code](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)
+
+1. Soubor uložte a zavřete **uživatelská nastavení** kartě.
+1. Klikněte na tlačítko **aktualizovat balíček indexy**. Po dokončení aktualizace vyhledejte **esp8266**.
+1. Klikněte na tlačítko **nainstalovat** tlačítko esp8266.
 
    Panely Manager znamená, že je nainstalována ESP8266 verzí 2.2.0 nebo novější.
 
-   ![instalaci balíčku esp8266](media/iot-hub-arduino-huzzah-esp8266-get-started/12_arduino-ide-esp8266-installed.png)
+   ![instalaci balíčku esp8266](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
 
-1. Klikněte na tlačítko **nástroje** > **Tabule** > **Adafruit HUZZAH ESP8266**.
+1. Zadejte `F1`, pak zadejte **Arduino** a vyberte **Arduino: Konfigurace Tabule**.
+1. Klikněte na pole pro **vybrané Tabule:** a typ **esp8266**, pak vyberte **Adafruit HUZZAH ESP8266 (esp8266)**.
+
+   ![Vyberte esp8266 panelu](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
 
 ### <a name="install-necessary-libraries"></a>Instalace nezbytné knihovny
 
-1. V prostředí IDE Arduino, klikněte na tlačítko **nákresu** > **zahrnují knihovny** > **spravovat knihovny**.
+1. Visual Studio Code, zadejte `F1`, pak zadejte **Arduino** a vyberte **Arduino: Správce knihovny**.
 1. Vyhledejte následující knihovny názvy po jednom. Pro každou knihovnu, která zjistíte, klikněte na tlačítko **nainstalovat**.
    * `AzureIoTHub`
    * `AzureIoTUtility`
@@ -193,20 +204,20 @@ Ukázkové aplikace můžete simulovat teploty a vlhkosti dat v případě, že 
    ```c
    define SIMULATED_DATA true
    ```
-   ![Nakonfigurujte ukázkovou aplikaci používat simulované dat](media/iot-hub-arduino-huzzah-esp8266-get-started/13_arduino-ide-configure-app-use-simulated-data.png)
+   ![Nakonfigurujte ukázkovou aplikaci používat simulované dat](media/iot-hub-arduino-huzzah-esp8266-get-started/15_vscode-configure-app-use-simulated-data.png)
 
-1. Uložte soubor s `Control-s`.
+1. Uložte soubor.
 
 ### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>Nasadit ukázkovou aplikaci pro prolnutí HUZZAH ESP8266
 
-1. V prostředí IDE Arduino, klikněte na tlačítko **nástroj** > **Port**a potom klikněte na sériového portu pro prolnutí HUZZAH ESP8266.
-1. Klikněte na tlačítko **nákresu** > **nahrát** k vytváření a nasazování ukázkovou aplikaci pro prolnutí HUZZAH ESP8266.
+1. V kódu Visual Studio, klikněte na tlačítko  **<Select Serial Port>**  stav panel a potom klikněte na sériového portu pro prolnutí HUZZAH ESP8266.
+1. Zadejte `F1`, pak zadejte **Arduino** a vyberte **Arduino: nahrát** k vytváření a nasazování ukázkovou aplikaci pro prolnutí HUZZAH ESP8266.
 
 ### <a name="enter-your-credentials"></a>Zadejte přihlašovací údaje.
 
 Po úspěšném dokončení nahrávání, zadejte své přihlašovací údaje takto:
 
-1. V prostředí IDE Arduino, klikněte na tlačítko **nástroje** > **sériové monitorování**.
+1. Otevřete Arduino IDE, klikněte na **nástroje** > **sériové monitorování**.
 1. V okně serial sledování Všimněte si dvě rozevíracích seznamů v pravém dolním rohu.
 1. Vyberte **žádný řádek ukončování** pro levý rozevíracího seznamu.
 1. Vyberte **115200 přenosová** pro právo rozevíracího seznamu.
@@ -222,9 +233,9 @@ Po úspěšném dokončení nahrávání, zadejte své přihlašovací údaje ta
 
 Pokud se zobrazí následující výstup z okna sériové monitorování a blikající LED na prolnutí HUZZAH ESP8266, ukázkové aplikace je úspěšně spuštěna.
 
-![Závěrečný výstup v integrovaném vývojovém prostředí Arduino](media/iot-hub-arduino-huzzah-esp8266-get-started/14_arduino-ide-final-output.png)
+![Závěrečný výstup v integrovaném vývojovém prostředí Arduino](media/iot-hub-arduino-huzzah-esp8266-get-started/16_arduino-ide-final-output.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Máte úspěšně připojen ESP8266 HUZZAH prolnutí do služby IoT hub a data zaznamenaná senzor odeslané do služby IoT hub. 
 

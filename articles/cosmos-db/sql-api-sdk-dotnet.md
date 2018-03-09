@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 03/05/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc82b41554eff4e9cdefa1a3848a4a11c954d33c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 24873c685ee16520e6a8b8af9abeab84639613d7
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro rozhraní API pro SQL: stažení a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/02/2018
 > * [Informační kanál změnu rozhraní .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Asynchronní Java](sql-api-sdk-async-java.md)
+> * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/documentdb/)
@@ -53,7 +53,13 @@ ms.lasthandoff: 03/02/2018
 <tr><td>**Aktuální podporovaných prostředí**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
 </table></br>
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Poznámky k verzi
+### <a name="a-name12101210"></a><a name="1.21.0"/>1.21.0
+
+* Jeden balíček NuGet pro rozhraní .NET Framework a .NET Standard. [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) balíčku je zastaralá. 
+* Mezi oddílu pořadí opraven KeyNotFoundException pro dotazy v nestandardních případech.
+* Opravené chyby, kde nebyl se dodržení JsonPropery atribut v klauzuli select pro dotazy LINQ.
+
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
 * Opravené chybu, která je přístupů za určitých podmínek soupeření, jejímž výsledkem přerušované "Microsoft.Azure.Documents.NotFoundException: čtení relace není k dispozici pro vstupní relace token" chyby při použití úrovně konzistence relace.
@@ -290,7 +296,7 @@ Služba odmítne všechny požadavky pro Azure DB Cosmos pomocí vyřazeno sady 
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
-| [1.20.2](#1.20.2) |21. února 2018 |--- |
+| [1.21.0](#1.21.0) |05 března 2018 |--- |
 | [1.20.1](#1.20.1) |05 února 2018 |--- |
 | [1.19.1](#1.19.1) |16. listopadu 2017 |--- |
 | [1.19.0](#1.19.0) |10 listopadu 2017 |--- |

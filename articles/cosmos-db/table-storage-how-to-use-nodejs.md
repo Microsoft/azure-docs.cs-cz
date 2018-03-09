@@ -1,6 +1,6 @@
 ---
-title: "Používání úložiště Azure Table z Node.js | Microsoft Docs"
-description: "Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL."
+title: "Jak používat Azure Table storage nebo Azure DB Cosmos z Node.js | Microsoft Docs"
+description: "Ukládejte si strukturovaná data v cloudu pomocí Azure Table storage nebo Azure Cosmos DB."
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -12,32 +12,27 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/06/2018
 ms.author: mimig
-ms.openlocfilehash: 0b412be8b93e1f871c09b7a4452141ac334d53ae
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: dcd729da0b9e913046da1ad5619594f5ce485bdb
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>Používání úložiště Azure Table z Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>Přehled
-Toto téma ukazuje, jak provádět běžné scénáře s využitím služby Azure Table v aplikaci Node.js.
-
-Příklady kódu v tomto tématu se předpokládá, že již máte aplikace Node.js. Informace o tom, jak vytvořit aplikaci Node.js v Azure najdete v tématu některé z těchto témat:
-
-* [Vytvoření webové aplikace Node.js ve službě Azure App Service](../app-service/app-service-web-get-started-nodejs.md)
-* [Sestavení a nasazení aplikace Node.js ve službě Azure Cloud Service](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (pomocí prostředí Windows PowerShell)
+Tento článek ukazuje, jak provádět běžné scénáře s využitím služby Azure Storage Table nebo Azure Comsos DB v aplikaci Node.js.
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="configure-your-application-to-access-azure-storage"></a>Konfigurace aplikace pro přístup k úložišti Azure
-Používání Azure Storage, musíte sadu Azure SDK úložiště pro Node.js, která obsahuje sadu knihoven pohodlí, které komunikují s služby REST úložiště.
+Používání Azure Storage, musíte sadu Azure SDK úložiště pro Node.js, která obsahuje sadu knihoven pohodlí, které komunikují se službami REST úložiště.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Uzel balíčku správce (NPM) použijte k instalaci balíčku
 1. Pomocí rozhraní příkazového řádku, jako například **prostředí PowerShell** (Windows), **Terminálové** (Mac), nebo **Bash** (Unix) a přejděte do složky, které jste vytvořili vaší aplikace.
@@ -53,7 +48,7 @@ Používání Azure Storage, musíte sadu Azure SDK úložiště pro Node.js, kt
        +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
        +-- xml2js@0.2.7 (sax@0.5.2)
        +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
-3. Můžete ručně spustit **ls** příkazu ověřte, že **uzlu\_moduly** složka byla vytvořena. Uvnitř této složky najdete **azure-storage** balíček, který obsahuje knihovny, je třeba získat přístup k úložišti.
+3. Můžete ručně spustit **ls** příkazu ověřte, že **node_modules** složka byla vytvořena. Uvnitř této složky najdete **azure-storage** balíček, který obsahuje knihovny, je třeba získat přístup k úložišti.
 
 ### <a name="import-the-package"></a>Import balíčku
 Přidejte následující kód do horní části **server.js** souborů ve vaší aplikaci:
@@ -62,11 +57,22 @@ Přidejte následující kód do horní části **server.js** souborů ve vaší
 var azure = require('azure-storage');
 ```
 
-## <a name="set-up-an-azure-storage-connection"></a>Nastavit připojení k Azure Storage
-Modul azure, bude číst proměnné prostředí AZURE\_úložiště\_účet a AZURE\_úložiště\_přístup\_klíč nebo AZURE\_úložiště\_připojení\_řetězec informace požadované pro připojení k účtu úložiště Azure. Pokud nejsou nastavené těchto proměnných prostředí, musíte zadat informace o účtu při volání metody **TableService**.
+## <a name="add-an-azure-storage-connection"></a>Přidat připojení k Azure Storage
+Modul Azure přečte proměnné prostředí AZURE_STORAGE_ACCOUNT a AZURE_STORAGE_ACCESS_KEY nebo AZURE_STORAGE_CONNECTION_STRING informace požadované pro připojení k účtu úložiště Azure. Pokud nejsou nastavené těchto proměnných prostředí, musíte zadat informace o účtu při volání metody **TableService**. Například následující kód vytvoří **TableService** objektu:
+
+```nodejs
+var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
+```
+
+## <a name="add-an-azure-comsos-db-connection"></a>Přidat připojení k databázi Comsos Azure
+Chcete-li přidat připojení k databázi Cosmos Azure, vytvořte **TableService** objektu a zadejte název účtu, primární klíč a koncový bod. Můžete zkopírovat tyto hodnoty z **nastavení** > **připojovací řetězec** na portálu Azure pro váš účet Cosmos DB. Příklad:
+
+```nodejs
+var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
+```  
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
-Následující kód vytvoří **TableService** objektu a pomocí něj vytvořit novou tabulku. Přidejte následující v horní části **server.js**.
+Následující kód vytvoří **TableService** objektu a pomocí něj vytvořit novou tabulku. 
 
 ```nodejs
 var tableSvc = azure.createTableService();
@@ -82,22 +88,22 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 });
 ```
 
-`result.created` Bude `true` Pokud se vytvoří nové tabulky, a `false` Pokud tabulka již existuje. `response` Bude obsahovat informace o požadavku.
+`result.created` Je `true` Pokud se vytvoří nové tabulky, a `false` Pokud tabulka již existuje. `response` Obsahuje informace o požadavku.
 
 ### <a name="filters"></a>Filtry
-Volitelné filtrování operace lze použít pro operace provedené pomocí **TableService**. Filtrování operací může zahrnovat protokolování, automatickým opakovaným pokusem o atd. Filtry jsou objekty, které implementovat metodu s podpisem:
+Můžete použít volitelný filtrování se provádí pomocí operací **TableService**. Filtrování operací mohou obsahovat protokolování, automatické opakování pokusů, atd. Filtry jsou objekty, které implementovat metodu s podpisem:
 
 ```nodejs
 function handle (requestOptions, next)
 ```
 
-Až to předzpracování na žádost o možnostech, metoda potřebuje volat tlačítko Další"předání zpětné volání podpisem následující:
+Až to předzpracování na možnosti žádost, musí volat metodu **Další**, předání zpětné volání podpisem následující:
 
 ```nodejs
 function (returnObject, finalCallback, next)
 ```
 
-V této zpětného volání a po zpracování returnObject (odpovědi požadavek na server) zpětné volání je potřeba buď vyvolat další, pokud existuje pokračovat ve zpracovávání ostatní filtry nebo jednoduše vyvolat finalCallback jinak k ukončení volání služby.
+V této zpětného volání a po zpracování **returnObject** (odpověď z požadavku na serveru), musíte buď vyvolání zpětné volání **Další** pokud existuje pokračovat ve zpracovávání ostatní filtry nebo jednoduše vyvolání **finalCallback** jinak k ukončení volání služby.
 
 Dva filtry, které implementují logiku opakovaných pokusů, které jsou součástí sady Azure SDK pro Node.js, **ExponentialRetryPolicyFilter** a **LinearRetryPolicyFilter**. Vytvoří následující **TableService** objekt, který používá **ExponentialRetryPolicyFilter**:
 
@@ -109,12 +115,12 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 Chcete-li přidat entitu, nejprve vytvořte objekt, který definuje vlastnosti vaší entity. Musí obsahovat všechny entity **PartitionKey** a **RowKey**, které jsou jedinečné identifikátory pro entitu.
 
-* **PartitionKey** -určuje uložených entity v oddílu
-* **RowKey** – jednoznačně identifikuje entity v oddílu
+* **PartitionKey** -určuje oddílu, ve kterém je uložený entity.
+* **RowKey** – jednoznačně identifikuje entity v oddílu.
 
 Obě **PartitionKey** a **RowKey** musí být řetězcové hodnoty. Další informace najdete v tématu [Principy datového modelu služby Table](http://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-Následuje příklad definování entity. Všimněte si, že **dueDate** je definována jako typ **Edm.DateTime**. Určení typu je volitelný a typy bude možné odvodit, pokud není zadán.
+Následuje příklad definování entity. Všimněte si, že **dueDate** je definována jako typ **Edm.DateTime**. Určení typu je volitelný a typy jsou odvodit, pokud není zadán.
 
 ```nodejs
 var task = {
@@ -152,7 +158,7 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 });
 ```
 
-Pokud byla operace úspěšná, `result` bude obsahovat [značka ETag](http://en.wikipedia.org/wiki/HTTP_ETag) vložené záznamu a `response` bude obsahovat informace o operaci.
+Pokud byla operace úspěšná, `result` obsahuje [značka ETag](http://en.wikipedia.org/wiki/HTTP_ETag) vložené záznamu a `response` obsahuje informace o operaci.
 
 Příklad odpovědi:
 
@@ -161,7 +167,7 @@ Příklad odpovědi:
 ```
 
 > [!NOTE]
-> Ve výchozím nastavení **insertEntity** nevrací vložené entity jako součást `response` informace. Pokud plánujete provádí jiné operace na tuto entitu, nebo chcete pro ukládání do mezipaměti informace, může být užitečné jej vraceny jako součást `result`. Můžete k tomu povolením **echoContent** následujícím způsobem:
+> Ve výchozím nastavení **insertEntity** nevrací vložené entity jako součást `response` informace. Pokud plánujete provádí jiné operace v této entitě nebo chcete informace do mezipaměti, může být užitečné jej vraceny jako součást `result`. Můžete k tomu povolením **echoContent** následujícím způsobem:
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
 >
@@ -170,10 +176,10 @@ Příklad odpovědi:
 ## <a name="update-an-entity"></a>Aktualizace entity
 Existuje několik metod, které jsou k dispozici pro aktualizace stávající entity:
 
-* **replaceEntity** -aktualizace stávající entity podle jeho nahrazení
-* **mergeEntity** -aktualizace stávající entity sloučením nové hodnoty vlastností do stávající entity
-* **insertOrReplaceEntity** -aktualizace stávající entity podle jeho nahrazení. Pokud žádná entita existuje, bude možné vložit nový
-* **insertOrMergeEntity** -aktualizace stávající entity sloučením nové hodnoty vlastností do stávající. Pokud žádná entita existuje, bude možné vložit nový
+* **replaceEntity** -aktualizace stávající entity podle jeho nahrazení.
+* **mergeEntity** -aktualizace stávající entity sloučením nové hodnoty vlastností do stávající entity.
+* **insertOrReplaceEntity** -aktualizace stávající entity podle jeho nahrazení. Pokud existuje žádné entity, se vloží novou.
+* **insertOrMergeEntity** -aktualizace stávající entity sloučením nové hodnoty vlastností do stávající. Pokud existuje žádné entity, se vloží novou.
 
 Následující příklad ukazuje, aktualizuje entitu s využitím **replaceEntity**:
 
@@ -192,13 +198,13 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > 2. Při provádění operace aktualizace na entitu, přidání značka ETag informace dříve načtené do nové entity. Příklad:
 >
 >       entity2 [.metadata] .etag = currentEtag;
-> 3. Proveďte operaci aktualizace. Pokud byla entita od načíst hodnotu značka ETag, jako je například jiná instance aplikace, změněna `error` bude vrácen s informacemi o tom, zda je aktualizace podmínka uvedená v žádosti nebyla splněná.
+> 3. Proveďte operaci aktualizace. Pokud byla entita od načíst hodnotu značka ETag, jako je například jiná instance aplikace, změněna `error` je vrácen s informacemi o tom, zda je aktualizace podmínka uvedená v žádosti nebyla splněná.
 >
 >
 
-S **replaceEntity** a **mergeEntity**, pokud typ entity, která se právě aktualizuje neexistuje, pak operace aktualizace se nezdaří. Proto pokud chcete uložit entity bez ohledu na tom, zda již existuje, použijte **insertOrReplaceEntity** nebo **insertOrMergeEntity**.
+S **replaceEntity** a **mergeEntity**, pokud neexistuje typ entity, která se právě aktualizuje, selže operace aktualizace; proto, pokud chcete uložit entity bez ohledu na to, zda již existuje, použijte **insertOrReplaceEntity** nebo **insertOrMergeEntity**.
 
-`result` Operace úspěšná aktualizace bude obsahovat **Značka Etag** aktualizované entity.
+`result` Operace úspěšná aktualizace obsahuje **Značka Etag** aktualizované entity.
 
 ## <a name="work-with-groups-of-entities"></a>Práce se skupinami entit
 Někdy má smysl odeslat více operací společně v dávce zajistit atomic zpracování serverem. Chcete-li provést tuto akci, použijte **TableBatch** třídy pro vytvoření dávky a pak použijte **executeBatch** metodu **TableService** provádět dávkové operace.
@@ -231,16 +237,16 @@ tableSvc.executeBatch('mytable', batch, function (error, result, response) {
 });
 ```
 
-Pro úspěšné dávkových operací `result` bude obsahovat informace o každé operace v dávce.
+Pro úspěšné dávkových operací `result` obsahuje informace o každé operace v dávce.
 
 ### <a name="work-with-batched-operations"></a>Práce s dávkové operace
-Přidat do dávky operace může být prověřovány zobrazením `operations` vlastnost. Můžete taky následující metody pro práci s operací:
+Operace přidali do služby batch a zobrazení si můžete prohlédnout `operations` vlastnost. Můžete taky následující metody pro práci s operací:
 
-* **Vymazat** -vymaže všechny operace z dávky
-* **getOperations** -získá operace z dávky
-* **hasOperations** -vrátí hodnotu true, pokud dávka obsahuje operace
-* **removeOperations** – odebere operace
-* **velikost** -vrátí počet operací v dávce
+* **Vymazat** -vymaže všechny operace z dávky.
+* **getOperations** -získá operace z dávky.
+* **hasOperations** -vrátí hodnotu true, pokud dávka obsahuje operace.
+* **removeOperations** – odebere operace.
+* **velikost** -vrátí počet operací v dávce.
 
 ## <a name="retrieve-an-entity-by-key"></a>Načtení entity pomocí klíče
 Vrátit konkrétní entitu na základě **PartitionKey** a **RowKey**, použijte **retrieveEntity** metoda.
@@ -253,17 +259,17 @@ tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, res
 });
 ```
 
-Po dokončení této operace `result` bude obsahovat entity.
+Po dokončení této operace `result` obsahuje entity.
 
 ## <a name="query-a-set-of-entities"></a>Dotaz na sadu entit
 Dotaz na tabulku, použijte **TableQuery** objekt vybudovat výrazu dotazu pomocí klauzule následující:
 
-* **Vyberte** -polí, která mají být vráceny z dotazu
-* **kde** -where – klauzule
+* **Vyberte** -polí, která mají být vráceny z dotazu.
+* **kde** -where klauzule.
 
-  * **a** – `and` kde podmínky
-  * **nebo** – `or` kde podmínky
-* **horní** -počet položek k načtení
+  * **a** – `and` kde podmínky.
+  * **nebo** – `or` kde podmínky.
+* **horní** -počet položek načíst.
 
 Následující příklad vytvoří dotaz, který vrátí nejvyšší pět položek s PartitionKey 'hometasks'.
 
@@ -273,7 +279,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-Vzhledem k tomu **vyberte** se nepoužívá, bude vrácen všechna pole. Pokud chcete provést dotaz na tabulku, použijte **queryEntities**. Následující příklad používá tento dotaz se vrátí entity ze "mytable".
+Protože **vyberte** se nepoužívá, jsou vráceny všechna pole. Pokud chcete provést dotaz na tabulku, použijte **queryEntities**. Následující příklad používá tento dotaz se vrátí entity ze "mytable".
 
 ```nodejs
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
@@ -283,11 +289,11 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 });
 ```
 
-V případě úspěšného `result.entries` bude obsahovat pole entit, které odpovídají dotazu. Pokud dotaz se nepodařilo vrátit všechny entity `result.continuationToken` bude jinou hodnotu než*null* a mohou být použity jako třetí parametr funkce **queryEntities** k načtení více výsledků. Pro počáteční dotaz, použít *null* pro třetí parametr.
+V případě úspěšného `result.entries` obsahuje pole entit, které odpovídají dotazu. Pokud dotaz se nepodařilo vrátit všechny entity `result.continuationToken` jinou hodnotu než*null* a mohou být použity jako třetí parametr funkce **queryEntities** k načtení více výsledků. Pro počáteční dotaz, použít *null* pro třetí parametr.
 
 ### <a name="query-a-subset-of-entity-properties"></a>Dotaz na podmnožinu vlastností entity
 Dotaz na tabulku může načíst několika pole z entity.
-To zmenšuje šířku pásma a může zlepšit výkon dotazů, hlavně pro velké entity. Použití **vyberte** klauzule a předejte názvy polí, která má být vrácen. Například následující dotaz vrátí jenom **popis** a **dueDate** pole.
+To zmenšuje šířku pásma a může zlepšit výkon dotazů, hlavně pro velké entity. Použití **vyberte** klauzule a předejte názvy polí vrátit. Například následující dotaz vrátí jenom **popis** a **dueDate** pole.
 
 ```nodejs
 var query = new azure.TableQuery()
@@ -297,7 +303,7 @@ var query = new azure.TableQuery()
 ```
 
 ## <a name="delete-an-entity"></a>Odstranění entity
-Můžete odstranit pomocí jeho klíče oddílu a řádku entity. V tomto příkladu **task1** objekt obsahuje **RowKey** a **PartitionKey** hodnoty entity, která má být odstraněna. Pak je objekt předaný **deleteEntity** metoda.
+Můžete odstranit pomocí jeho klíče oddílu a řádku entity. V tomto příkladu **task1** objekt obsahuje **RowKey** a **PartitionKey** hodnoty entity k odstranění. Pak je objekt předaný **deleteEntity** metoda.
 
 ```nodejs
 var task = {
@@ -333,9 +339,9 @@ Pokud si nejste jisti, zda tabulka existuje, použijte **deleteTableIfExists**.
 ## <a name="use-continuation-tokens"></a>Použít pokračování tokeny
 Když dotazujete tabulky pro velké objemy výsledky, vyhledejte pokračování tokeny. K dispozici pro svůj dotaz, který je nemusíte být vědomi toho, pokud není sestavení poznáte při token pokračování je k dispozici může být velké objemy dat.
 
-Výsledky objektu vrátil během dotazování sady entit `continuationToken` vlastnost, pokud takový token je k dispozici. Pak můžete toto při provádění dotazu nadále přesouvat mezi oddílů a tabulka entity.
+**Výsledky** objekt byl vrácen při dotazování sady entit `continuationToken` vlastnost, pokud takový token je k dispozici. Pak můžete toto při provádění dotazu nadále přesouvat mezi oddílů a tabulka entity.
 
-Při dotazování, může být zadán parametr continuationToken mezi instance objektu dotazu a funkce zpětného volání:
+Při dotazování, můžete zadat `continuationToken` parametr mezi instance objektu dotazu a funkce zpětného volání:
 
 ```nodejs
 var nextContinuationToken = null;
@@ -356,7 +362,7 @@ dc.table.queryEntities(tableName,
 
 Je-li si prohlédnout `continuationToken` objekt, zjistíte, vlastnosti, jako `nextPartitionKey`, `nextRowKey` a `targetLocation`, které lze použít k iteraci v rámci všechny výsledky.
 
-Je také ukázku pokračování v úložišti Azure Storage Node.js na Githubu. Vyhledejte `examples/samples/continuationsample.js`.
+Je zde i ukázku pokračování (continuationsample.js) [uzlu úložiště azure úložiště](https://github.com/Azure/azure-storage-node/tree/master/examples/samples) na Githubu. 
 
 ## <a name="work-with-shared-access-signatures"></a>Práce s podpisy sdíleného přístupu
 Sdílené přístupové podpisy (SAS) jsou zabezpečené způsob, jak poskytnout podrobné přístup k tabulkám bez zadání názvu účtu úložiště nebo klíče. SAS se často používá k poskytování omezený přístup k datům, například povolení mobilní aplikace vyhledejte záznamy.
@@ -383,7 +389,7 @@ var tableSAS = tableSvc.generateSharedAccessSignature('mytable', sharedAccessPol
 var host = tableSvc.host;
 ```
 
-Všimněte si, že informace o hostiteli je třeba zadat také, jako je povinný, když se držitele SAS pokusí o přístup k tabulce.
+Všimněte si, že je nutné také zadat informace o hostiteli, jako je povinný, když se držitele SAS pokusí o přístup k tabulce.
 
 Klientská aplikace pak používá SAS s **TableServiceWithSAS** k provádění operací s tabulkou. Následující příklad se připojí k tabulce a provádí dotazu.
 
@@ -399,7 +405,7 @@ sharedTableService.queryEntities(query, null, function(error, result, response) 
 });
 ```
 
-Vzhledem k tomu, že SAS se vygeneroval s dotazu přístup jenom, pokud byly proveden pokus o vložení, aktualizaci nebo odstranění entity, bude vrácena chyba.
+Protože SAS se vygeneroval s přístup jenom dotaz, je vrácena chyba, pokud se pokusíte vložit, aktualizovat nebo odstranit entity.
 
 ### <a name="access-control-lists"></a>Seznamy řízení přístupu
 Seznam řízení přístupu (ACL) můžete také nastavit zásady přístupu pro SAS. To je užitečné, pokud chcete povolit více klientům přístup k tabulce, ale poskytnutí zásad, jiný přístup pro každého klienta.
@@ -437,7 +443,7 @@ if(!error){
 });
 ```
 
-Jakmile je nastavená seznamu ACL, potom můžete vytvořit SAS na základě ID pro zásadu. Následující příklad vytvoří nový SAS pro, uživatel2":
+Po nastavení seznamu řízení přístupu, potom můžete vytvořit na základě ID pro zásadu SAS. Následující příklad vytvoří nový SAS pro, uživatel2":
 
 ```nodejs
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
@@ -447,6 +453,7 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 Další informace najdete v následujících zdrojích informací.
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
-* [Azure SDK úložiště pro uzel](https://github.com/Azure/azure-storage-node) úložišti na Githubu.
-* [Středisko pro vývojáře Node.js](/develop/nodejs/)
-* [Vytvoření a nasazení aplikace Node.js ve službě Azure Web](../app-service/app-service-web-get-started-nodejs.md)
+* [Azure SDK úložiště pro Node.js](https://github.com/Azure/azure-storage-node) úložišti na Githubu.
+* [Azure pro vývojáře v Node.js](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)
+* [Vytvoření webové aplikace Node.js v Azure](../app-service/app-service-web-get-started-nodejs.md)
+* [Sestavení a nasazení aplikace Node.js ve službě Azure Cloud Service](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (pomocí prostředí Windows PowerShell)

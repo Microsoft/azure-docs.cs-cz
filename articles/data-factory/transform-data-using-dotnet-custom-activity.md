@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 4b9714bc456ad28d9dd46742ca16f52e68c61399
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6aaeaaacdc9ee67ebbed3ea3090455dde2357c3d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -298,40 +298,40 @@ Pokud chcete pracovat s obsahem stdout.txt v podřízené aktivity, můžete zí
   > - Activity.json, linkedServices.json a datasets.json jsou uloženy ve složce modulu runtime úlohy Batch. V tomto příkladu activity.json, linkedServices.json a datasets.json jsou uloženy v "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" cesta. V případě potřeby, musíte je vyčistit samostatně. 
   > - Pro účely propojené služby, Self-Hosted integrace Runtime, citlivé informace, jako jsou klíče nebo hesla zašifrován modulem Runtime integrace Self-Hosted zajistit přihlašovací údaje definované zůstane u zákazníka prostředí privátní sítě. Když odkazuje kód vlastní aplikace tímto způsobem, může být chybějící některých polí. Použijte SecureString v extendedProperties místo použití odkaz na propojenou službu, v případě potřeby. 
 
-## <a name="difference-between-custom-activity-in-azure-data-factory-version-2-and-custom-dotnet-activity-in-azure-data-factory-version-1"></a>Rozdíl mezi vlastní aktivity v Azure Data Factory verze 2 a aktivity DotNet (vlastní) v Azure Data Factory verze 1
+## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a>Porovnání v2 vlastní aktivity a verze 1 (vlastní) aktivity DotNet.
 
-  V Azure Data Factory verze 1, implementovat kód aktivity DotNet (vlastní) tak, že vytvoříte .net projektu knihovny tříd s třídou, která implementuje rozhraní IDotNetActivity Metoda Execute. Propojené služby, datové sady a rozšířené vlastnosti v datové části JSON aktivity DotNet (vlastní) jsou předaný metodě provádění jako objektů se silným typem. Podrobnosti najdete v části [DotNet (vlastní) ve verzi 1](v1/data-factory-use-custom-activities.md). Z důvodu tato implementace vlastní kód musí být napsané v rozhraní .net Framework 4.5.2 a provést na uzlech fondu Batch systému Windows Azure. 
+  V Azure Data Factory verze 1, implementovat aktivitu DotNet (vlastní) tak, že vytvoříte .net projektu knihovny tříd s třídou, která implementuje `Execute` metodu `IDotNetActivity` rozhraní. Propojené služby, datové sady a rozšířené vlastnosti v datové části JSON aktivity DotNet (vlastní) jsou předaný metodě provádění jako objekty silného typu. Podrobnosti o chování verze 1 najdete v tématu [DotNet (vlastní) ve verzi 1](v1/data-factory-use-custom-activities.md). Z důvodu tato implementace má váš kód DotNet aktivity verze 1 pro rozhraní .net Framework 4.5.2. Verze 1 DotNet aktivity také musí být spuštěn v systému Windows fondu Azure Batch uzlech. 
 
-  V Azure Data Factory V2 vlastní aktivity není nutné k implementaci rozhraní .net. Můžete nyní přímo spustit příkazy, skripty a spustit vlastní vlastní kód vyhovuje podmínkám spustitelný soubor. Zadáním příkazu vlastností a folderPath dosáhnout tak. Vlastní aktivity odešle spustitelný soubor a závislosti v folderpath a spustí příkaz pro vás. 
+  V rámci Azure Data Factory V2 vlastní aktivity není nutné k implementaci rozhraní .net. Můžete nyní přímo spustit příkazy, skripty a vlastní kód, zkompilovat jako spustitelný soubor. Chcete-li nakonfigurovat tato implementace, zadáte `Command` vlastnost společně s `folderPath` vlastnost. Vlastní aktivity odešle spustitelného souboru a jeho závislé součásti na `folderpath` a spustí příkaz pro vás. 
 
-  Propojené služby, datové sady (definovanou v referenceObjects) a rozšířené vlastnosti definované v datové části JSON vlastní aktivity lze přistupovat pomocí vašeho spustitelného souboru jako soubory JSON. Můžete přistupovat pomocí serializátor JSON, jak je znázorněno v předchozí ukázce kódu SampleApp.exe požadované vlastnosti. 
+  Propojené služby, datové sady (definovanou v referenceObjects) a rozšířené vlastnosti definované v datové části JSON v2 pro vytváření dat, které vlastní aktivity je přístupná pomocí vašeho spustitelného souboru jako soubory JSON. Můžete přistupovat pomocí serializátor JSON, jak je znázorněno v předchozí ukázce kódu SampleApp.exe požadované vlastnosti. 
 
-  S změny uváděné ve vlastní aktivita služby Azure Data Factory V2 jsou volně zapisovat logiku vlastního kódu ve vašem preferovaném jazyce a spouštět je v systému Windows a operační systémy Linux podporované nástrojem Azure Batch. 
+  S změny uváděné ve vlastní aktivity V2 objekt pro vytváření dat můžete zapisovat logiku vlastního kódu ve vašem preferovaném jazyce a provést ve Windows a operační systémy Linux podporované nástrojem Azure Batch. 
 
-  Následující tabulka popisuje rozdíly mezi Data Factory V2 vlastní aktivity a Data Factory verze 1 (vlastní) DotNet aktivity: 
+  Následující tabulka popisuje rozdíly mezi aktivitou V2 vlastní objekt pro vytváření dat a objektu pro vytváření dat verze 1 (vlastní) DotNet aktivity: 
 
 
 |Rozdíly      |verze 2 vlastní aktivity      | verze 1 (vlastní) aktivity DotNet.      |
 | ---- | ---- | ---- |
-|Jak je definovaný vlastní logiky      |Spuštěním jakéhokoliv spustitelného souboru (stávající nebo implementace vlastní spustitelný soubor)      |Implementací .net knihovny DLL      |
+|Jak je definovaný vlastní logiky      |Tím, že poskytuje spustitelný soubor      |Implementací .net knihovny DLL      |
 |Prostředí pro spuštění vlastní logiky      |Windows nebo Linux      |Windows (rozhraní .net Framework 4.5.2)      |
-|Provádění skriptů      |Podpora spuštění skriptů přímo (například "cmd /c echo hello world" na virtuální počítač s Windows)      |Vyžaduje implementaci v rozhraní .net knihovny DLL      |
+|Provádění skriptů      |Podporuje spuštění skriptů přímo (například "cmd /c echo hello world" na virtuální počítač s Windows)      |Vyžaduje implementaci v rozhraní .net knihovny DLL      |
 |Datová sada vyžaduje      |Nepovinné      |Potřeba řetězu aktivit a předání informací      |
 |Předávání informací z aktivity do vlastní logiky      |Prostřednictvím ReferenceObjects (LinkedServices a datové sady) a ExtendedProperties (vlastní vlastnosti)      |Prostřednictvím ExtendedProperties (vlastní vlastnosti), vstupní a výstupní datové sady      |
-|Načtení informací v vlastní logiky      |Analyzovat activity.json, linkedServices.json a datasets.json uložené ve složce ke spustitelnému souboru      |Pomocí .net SDK (.Net rámce 4.5.2)      |
+|Načtení informací v vlastní logiky      |Analyzuje activity.json, linkedServices.json a datasets.json uložené ve složce ke spustitelnému souboru      |Pomocí .net SDK (.Net rámce 4.5.2)      |
 |Protokolování      |Zapíše přímo do STDOUT      |Implementace protokolovacího nástroje v rozhraní .net knihovny DLL      |
 
 
-  Pokud máte existující kód .net vytvořené pro verzi aktivity DotNet 1 (vlastní), je třeba upravit kód pro ně pro práci s verze 2 vlastní aktivitu se podle následujících pokynů vysoké úrovně:  
+  Pokud máte existující .net kódu napsaného pro verzi aktivity DotNet 1 (vlastní), budete muset upravit kód pro ho na spolupráci s verzí 2 vlastní aktivity. Aktualizace kódu podle těchto pokynů vysoké úrovně:  
 
    - Změnit projekt z .net knihovny tříd do konzoly aplikace. 
-   - Spustit aplikaci s metodu Main, metoda spouštění rozhraní IDotNetActivity se už nevyžaduje. 
-   - Číst a analyzovat propojené služby, datové sady a aktivity s serializátor JSON místo jako objektů se silným typem a předat hodnoty požadované vlastnosti logika hlavní vlastní kód. Naleznete v předchozích SampleApp.exe kód jako ukázka. 
-   - Protokolovač objekt již není podporována, spustitelný soubor výstupy může být tisk do konzoly a je uložen do stdout.txt. 
+   - Spuštění vaší aplikace pomocí `Main` metoda. `Execute` Metodu `IDotNetActivity` rozhraní se už nevyžaduje. 
+   - Číst a analyzovat propojené služby, datové sady a aktivity s serializátor JSON a ne jako objekty silného typu. Předejte hodnoty požadované vlastnosti logika hlavní vlastní kód. Viz předchozí kód SampleApp.exe jako příklad. 
+   - Objekt protokolovacího nástroje již není podporována. Ke konzole lze vytisknout výstup z vaší spustitelný soubor a je uložen do stdout.txt. 
    - Balíček Microsoft.Azure.Management.DataFactories NuGet se už nevyžaduje. 
-   - Kompilace kódu, nahrát spustitelný soubor a závislosti do služby Azure Storage a zadejte cestu ve vlastnosti folderPath. 
+   - Kompilace kódu, nahrát spustitelného souboru a jeho závislosti do služby Azure Storage a zadejte cestu, do `folderPath` vlastnost. 
 
-Kompletní příklad, koncová DLL a kanál ukázku popisu v objektu pro vytváření dat verze 1 dokumentu [použít vlastní aktivity v kanálu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) do styl vlastní aktivity verze 2 objekt pro vytváření dat může být přepsán. Odkazovat [ukázkové aktivity vlastní objekt pro vytváření dat verze 2](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample). 
+Kompletní příklad začátku do konce DLL a kanál ukázku popisu v objektu pro vytváření dat verze 1 článku [použít vlastní aktivity v kanálu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) může být přepsán jako vlastní aktivity v2 Data Factory najdete v tématu [ Data Factory verze 2 vlastní aktivity ukázka](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample). 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatické škálování služby Azure Batch
 Můžete také vytvořit fond Azure Batch s **škálování** funkce. Můžete například vytvořit fondu azure batch s 0 vyhrazených virtuálních počítačích a vzorec škálování na základě počtu úkolů čekajících na zpracování. 

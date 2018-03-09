@@ -11,13 +11,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/26/2018
 ms.author: mabrigg
-ms.openlocfilehash: 53ef19628b40c4a008143c867c9e7867ac91854d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 4f86397d4db5a0e67b294befd92087166d6b8109
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Spustit test pro ověření pro Azure zásobníku
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/12/2018
  
 Můžete ověřit stav zásobník Azure. Pokud máte potíže, obraťte se na zákaznickou podporu služeb společnosti Microsoft. Podpory se žádostí o spustit Test AzureStack z vaší správy uzlu. Ověřovací test izoluje selhání. Podporu můžete analyzovat podrobné protokoly, soustředit na oblasti, kde došlo k chybě a pracovat s vámi při řešení problému.
 
-## <a name="run-test-azurestack"></a>Spustit Test AzureStack
+## <a name="run-test-azurestack"></a>Run Test-AzureStack
 
 Pokud máte potíže, obraťte se na zákaznickou podporu služeb společnosti Microsoft a pak spusťte **spustit Test-AzureStack**.
 
@@ -35,8 +35,8 @@ Pokud máte potíže, obraťte se na zákaznickou podporu služeb společnosti M
     1. Přístup k privilegované koncový bod. Pokyny najdete v tématu [pomocí privilegované koncový bod v zásobníku Azure](azure-stack-privileged-endpoint.md). 
     2. Přihlaste se jako **AzureStack\CloudAdmin** na hostiteli správy.
     3. Spusťte PowerShell jako správce.
-    4. Spusťte:`Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint`
-    5. Spusťte:`Test-AzureStack`
+    4. Spusťte: `Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint`
+    5. Spusťte: `Test-AzureStack`
 4. Pokud všechny testy sestavy služeb při selhání, spusťte: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` rutinu shromažďuje protokoly z AzureStack testu. Další informace o diagnostických protokolů najdete v tématu [zásobník Azure diagnostické nástroje](azure-stack-diagnostics.md).
 5. Odeslat **SeedRing** protokoly na zákaznickou podporu služeb společnosti Microsoft. Služby podpory zákazníků společnosti Microsoft funguje s vámi k vyřešení problému.
 
@@ -44,7 +44,7 @@ Pokud máte potíže, obraťte se na zákaznickou podporu služeb společnosti M
 
 Tato část obsahuje přehled pro rutinu Test-AzureStack a souhrn ověření sestavy.
 
-### <a name="test-azurestack"></a>Test AzureStack
+### <a name="test-azurestack"></a>Test-AzureStack
 
 Ověří stav zásobník Azure. Rutina hlásí stav zásobník Azure hardware a software. Tato sestava pracovníky technické podpory slouží ke zkrácení doby řešení případů podpory Azure zásobníku.
 
@@ -64,7 +64,7 @@ Ověří stav zásobník Azure. Rutina hlásí stav zásobník Azure hardware a 
 | ServiceAdminCredentials | Přihlašovací údaje    | Ne       | FALSE   |
 | DoNotDeployTenantVm     | Přepínací parametr | Ne       | FALSE   |
 | AdminCredential         | Přihlašovací údaje    | Ne       | Není k dispozici      |
-| StorageConnectionString | Řetězec          | Ne       | Není k dispozici      |
+<!-- | StorageConnectionString | Řetězec          | Ne       | Není k dispozici      | není podporována v 1802-->
 | Seznam                    | Přepínací parametr | Ne       | FALSE   |
 | Ignorovat                  | Řetězec          | Ne       | Není k dispozici      |
 | Zahrnout                 | Řetězec          | Ne       | Není k dispozici      |

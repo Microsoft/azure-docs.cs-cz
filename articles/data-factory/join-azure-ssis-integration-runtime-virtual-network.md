@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 3a5b68729d587e1365c42125108e610705965c86
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4f1100b7e4fa2250baf282b53ef83c5f1aaa1c0e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení modulu runtime integrace Azure SSIS k virtuální síti.
 Vaše Azure SSIS integrace modulu runtime (IR) připojení k virtuální síť Azure v následujících scénářích: 
@@ -176,7 +176,9 @@ Musíte nakonfigurovat virtuální síť, než bude možné připojit Azure SSIS
 # Register to the Azure Batch resource provider
 if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
-    $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName "MicrosoftAzureBatch").Id
+    $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
+    $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
+
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
     while(!(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
     {
@@ -211,6 +213,11 @@ $AzureSSISName = "<Specify Azure-SSIS IR name>"
 $VnetId = "<Name of your Azure virtual network>"
 $SubnetName = "<Name of the subnet in the virtual network>"
 ```
+
+#### <a name="guidelines-for-selecting-a-subnet"></a>Pokyny pro výběr podsíť
+-   Nevybírejte GatewaySubnet pro nasazení modulu Runtime integrace Azure SSIS, protože je vyhrazen pro brány virtuální sítě.
+-   Zajistěte, aby podsíť, kterou vyberete dostatek prostoru adres k dispozici pro Azure SSIS IR používat. Nechte aspoň 2 * číslo uzlu reakcí na Incidenty v dostupných IP adres. Azure si vyhrazuje některé IP adresy v rámci každé podsítě a tyto adresy nelze použít. První a poslední IP adresy podsítě jsou vyhrazené pro protokol shoda, společně s tři další adresy používané pro služby Azure. Další informace najdete v tématu [existují nějaká omezení na pomocí IP adresy v rámci těchto podsítí?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets).
+
 
 ### <a name="stop-the-azure-ssis-ir"></a>Zastavit IR Azure SSIS
 Modul runtime integrace Azure SSIS zastavte, než bude možné připojit k virtuální síti. Tento příkaz uvolní všechny jeho uzly a zastaví fakturace:
@@ -264,6 +271,22 @@ Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupNa
 
 ```
 Tento příkaz má 20 až 30 minut na dokončení.
+
+## <a name="use-azure-expressroute-with-the-azure-ssis-ir"></a>Použití Azure ExpressRoute s Reakcí Azure SSIS
+
+Můžete připojit [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) okruhu vaší infrastruktury virtuální sítě k rozšíření místní sítě do Azure. 
+
+Obvyklé konfigurace se má používat vynucené tunelování (Inzerovat trasy protokolu BGP, 0.0.0.0/0 do virtuální sítě) který vynutí odchozí internetové přenosy z toku virtuální sítě do místní síťové zařízení pro kontrolu a protokolování. Tento tok provozu dělí připojení mezi Azure SSIS IR ve virtuální síti s závislé služby Azure Data Factory. Řešení je definovat jeden (nebo více) [trasy definované uživatelem (udr)](../virtual-network/virtual-networks-udr-overview.md) na podsíť, která obsahuje infračerveného signálu Azure SSIS. UDR definuje tras konkrétní podsítě, které jsou dodržení místo trasy protokolu BGP.
+
+Pokud je to možné použijte následující konfiguraci:
+-   Konfigurace ExpressRoute inzeruje 0.0.0.0/0 a pomocí výchozí force tunely všechny odchozí přenosy na místě.
+-   UDR použije na podsíť obsahující IR Azure SSIS definuje 0.0.0.0/0 trasa se typ dalšího přechodu "Internet".
+- 
+Celkové požadavky tyto kroky je, že UDR úrovni podsítě má přednost před ExpressRoute vynucené tunelování, čímž zajišťuje odchozí přístup k Internetu z infračerveného signálu Azure SSIS.
+
+Pokud máte obavy o ztráty možnosti Zkontrolujte odchozí internetové přenosy od této podsíti, můžete také přidat pravidlo NSG na podsítě, který omezit odchozí cíle k [Azure datového centra IP adresy](https://www.microsoft.com/download/details.aspx?id=41653).
+
+V tématu [tento skript prostředí PowerShell](https://gallery.technet.microsoft.com/scriptcenter/Adds-Azure-Datacenter-IP-dbeebe0c) příklad. Budete muset spustit skript každý týden k zachování aktualizovaného stavu seznamu IP adres center dat Azure.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o běhu Azure SSIS najdete v následujících tématech: 

@@ -2,23 +2,17 @@
 title: "Převzetí služeb při selhání ve službě Site Recovery | Microsoft Docs"
 description: "Azure Site Recovery koordinuje replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů a fyzických serverů. Další informace o převzetí služeb při selhání do Azure nebo do sekundárního datacentra."
 services: site-recovery
-documentationcenter: 
-author: prateek9us
-manager: gauravd
-editor: 
-ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 09/25/2017
+ms.date: 03/05/2018
 ms.author: pratshar
-ms.openlocfilehash: afdab6e5ee5ae3bb8bc553afd93ff8f1ee18147f
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9b662099a75bf2eaebda388a6e675e70cf0b9cdc
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="failover-in-site-recovery"></a>Převzetí služeb při selhání v Site Recovery
 Tento článek popisuje, jak k převzetí služeb při selhání virtuálního počítače a fyzické servery, které se chránit pomocí Site Recovery.
@@ -65,9 +59,9 @@ Tento postup popisuje, jak spustit převzetí služeb při selhání pro [plán 
     >
     >
 
-1. Můžete sledovat průběh převzetí služeb při selhání **úlohy** stránky. I v případě, že během neplánované převzetí služeb při selhání dojít k chybám, plán obnovení běží, dokud se nedokončí.
+1. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**. I v případě, že během neplánované převzetí služeb při selhání dojít k chybám, plán obnovení běží, dokud se nedokončí.
 1. Po převzetí služeb při selhání ověřte tak, že protokolování in k ní virtuální počítač. Pokud chcete přepnout do jiného bodu obnovení virtuálního počítače, pak můžete použít **změnit bod obnovení** možnost.
-1. Jakmile budete spokojeni s neúspěšný přes virtuální počítač, můžete **potvrdit** převzetí služeb při selhání. **Potvrzení odstraní všechny body obnovení k dispozici ve službě** a **změnit bod obnovení** možnost již není k dispozici.
+1. Jakmile budete spokojeni s virtuálním počítačem, u kterého došlo k převzetí služeb při selhání, můžete převzetí služeb při selhání **Potvrdit**. **Potvrzení odstraní všechny body obnovení k dispozici ve službě** a **změnit bod obnovení** možnost již není k dispozici.
 
 ## <a name="planned-failover"></a>Plánované převzetí služeb při selhání
 Virtuální počítače/fyzické servery, které jsou chráněné pomocí Site Recovery také podpora **plánované převzetí služeb při selhání**. Plánované převzetí služeb při selhání je nulové data ztrátě převzetí služeb při selhání možnost. Když se aktivuje plánované převzetí služeb při selhání, nejprve zdrojové virtuální počítače jsou vypnutí, nejnovější data synchronizována a pak se aktivuje převzetí služeb při selhání.
@@ -126,8 +120,8 @@ Chcete-li zachovat písmeno na virtuální počítače po převzetí služeb př
 ## <a name="next-steps"></a>Další postup
 
 > [!WARNING]
-> Jakmile budete mít převzetí služeb při selhání virtuálního počítače a místního datového centra je k dispozici, měli byste [ **znovu nastavte ochranu** ](site-recovery-how-to-reprotect.md) virtuálních počítačů VMware zpět do místního datového centra.
+> Jakmile budete mít převzetí služeb při selhání virtuálního počítače a místního datového centra je k dispozici, měli byste [ **znovu nastavte ochranu** ](vmware-azure-reprotect.md) virtuálních počítačů VMware zpět do místního datového centra.
 
-Použití [ **plánované převzetí služeb při selhání** ](site-recovery-failback-from-azure-to-hyper-v.md) možnost k **navrácení služeb po obnovení** technologie Hyper-v virtuální počítače zpět do místní z Azure.
+Použití [ **plánované převzetí služeb při selhání** ](hyper-v-azure-failback.md) možnost k **navrácení služeb po obnovení** technologie Hyper-v virtuální počítače zpět do místní z Azure.
 
 Pokud se nezdařilo přes Hyper-v virtuální počítač do jiného místního datového centra spravované serverem VMM a je k dispozici primární datové centrum, potom použijte **zpětná replikace** možnost spustit replikaci zpět na primární datové centrum.

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/15/2017
+ms.date: 02/27/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 470a45aea253e1e238983527427b600117e413fe
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 6a5912117a475c7af028f01ea47a7042677992ca
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Nasazení Azure zásobníku Development Kit
 
@@ -70,6 +70,7 @@ Před instalací ASDK na hostitelském počítači, musí být připraveny ASDK 
 3. Spusťte následující skript pro stažení instalačního souboru development kit (asdk-installer.ps1) z [nástroje úložiště GitHub zásobník Azure](https://github.com/Azure/AzureStack-Tools) k **C:\AzureStack_Installer** složky na vaše hostitelský počítač Development kit:
 
   ```powershell
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
   # Variables
   $Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/Deployment/asdk-installer.ps1'
   $LocalPath = 'C:\AzureStack_Installer'
@@ -146,8 +147,8 @@ Tyto příkazy bude konfiguraci počítače ASDK hostitel pro spouštění z sta
 2. Spusťte `bcdedit /copy {current} /d "Azure Stack"`.
 3. Kopírování (CTRL + C) hodnotu CLSID vrátí, včetně požadované {} "s. Tato hodnota se označuje jako {CLSID} a bude nutné vložit (CTRL + V nebo klikněte pravým tlačítkem) v zbývající kroky.
 4. Spusťte `bcdedit /set {CLSID} device vhd=[C:]\CloudBuilder.vhdx`. 
-5. Spusťte `bcdedit /set {CLSID} osdevice vhd=[C:]\CloudBuilder.vhdx`. 
-6. Spusťte `bcdedit /set {CLSID} detecthal on`. 
+5. Spustit `bcdedit /set {CLSID} osdevice vhd=[C:]\CloudBuilder.vhdx` 
+6. Spustit `bcdedit /set {CLSID} detecthal on` 
 7. Spusťte `bcdedit /default {CLSID}`.
 8. Pokud chcete ověřit nastavení spouštění, spusťte `bcdedit`. 
 9. Zajistěte, aby CloudBuilder.vhdx soubor byl přesunut do kořenové jednotky C:\ (C:\CloudBuilder.vhdx) a restartujte počítač development kit hostitele. Při restartu ASDK hostitele by měl nyní výchozí pro spouštění z virtuálního počítače CloudBuilder.vhdx. 
@@ -227,7 +228,7 @@ Pokud vaše prostředí **nemá** mít DHCP povoleno, musí zahrnovat následuj�
 |NatIPv4Address|Podpora překladu síťových adres DHCP vyžaduje|Nastaví statickou IP adresu pro MAS BGPNAT01. Tento parametr použijte jenom v případě, že protokol DHCP nemůže přiřadit platnou IP adresu pro přístup k internetu.|
 |NatIPv4Subnet|Podpora překladu síťových adres DHCP vyžaduje|Předpona podsítě IP používají protokolu DHCP pro podporu NAT. Tento parametr použijte jenom v případě, že protokol DHCP nemůže přiřadit platnou IP adresu pro přístup k internetu.|
 |PublicVlanId|Nepovinné|Nastaví ID sítě VLAN. Tento parametr použijte pouze na hostitele a MAS BGPNAT01 musíte nakonfigurovat ID sítě VLAN pro přístup k fyzické síti (a Internetu). Například.\InstallAzureStackPOC.ps1-Verbose - PublicVLan 305|
-|Znovu spustit|Nepovinné|Pomocí tohoto příznaku znovu spustit nasazení. Všechny předchozí vstup se používá. Znovu zadávat data, dříve poskytnuté není podporována, protože několik jedinečné hodnoty jsou generovat a používat pro nasazení.|
+|Spustit znovu|Nepovinné|Pomocí tohoto příznaku znovu spustit nasazení. Všechny předchozí vstup se používá. Znovu zadávat data, dříve poskytnuté není podporována, protože několik jedinečné hodnoty jsou generovat a používat pro nasazení.|
 
 ## <a name="activate-the-administrator-and-tenant-portals"></a>Aktivovat správce a klienta portálech
 Po nasazení, které používají Azure AD je nutné aktivovat obou zásobník Azure správce a klienta portálů. Tato aktivace souhlasí s uvedením zásobník Azure portal a Azure Resource Manager správná oprávnění (uvedené na stránce souhlas) pro všechny uživatele adresáři.
@@ -257,7 +258,7 @@ Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurest
 5. V **maximální stáří hesla vlastnosti** dialogové okno, změny **heslo vyprší za** hodnoty na 180 a pak klikněte na **OK**.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Připojení ke službě Azure Stack](azure-stack-connect-azure-stack.md)
 

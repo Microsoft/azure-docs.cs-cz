@@ -5,16 +5,16 @@ services: machine-learning
 author: totekp
 ms.author: kefzhou
 manager: akannava
-ms.reviewer: akannava, haining, mldocs, garyericson, jasonwhowell
+ms.reviewer: akannava, haining, mldocs, jmartens, jasonwhowell
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
-ms.openlocfilehash: 40e066fe602e8c4680043158f1d401a884e07c19
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: bd8888d911730831435b87d3a60b48a7797eea98
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>Najít spustí s nejlepší přesnost a nejnižší doba trvání
 Zadány více běží, je nalezení spustí s nejlepší přesnost jeden případ použití. Jeden ze způsobů je použití rozhraní příkazového řádku (CLI) s [JMESPath](http://jmespath.org/) dotazu. Další informace o tom, jak používat JMESPath v rozhraní příkazového řádku Azure najdete v tématu [JMESPath používat dotazy pomocí Azure CLI 2.0](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). V následujícím příkladu jsou vytvořeny čtyři spustí s přesnost hodnoty 0, 0,98, 1 a 1. Spustí se filtrují, pokud jsou v rozsahu `[MaxAccuracy-Threshold, MaxAccuracy]` kde `Threshold = .03`.
@@ -58,7 +58,7 @@ Hodnota Maximální přesnost pomocí `1` a prahovou hodnotu `0.03`, druhý př�
 az ml history list --query '@[?Accuracy >= sum(`[1, -0.03]`)] | sort_by(@, &duration)'
 ```
 > [!NOTE]
-> Pokud chcete kontrolu striktní horní mez, není ve formátu dotazu``@[?Accuracy >= sum(`[$max_accuracy_value, -$threshold]`) && Accuracy <= `$max_accuracy_value`]``
+> Pokud chcete kontrolu striktní horní mez, není ve formátu dotazu ``@[?Accuracy >= sum(`[$max_accuracy_value, -$threshold]`) && Accuracy <= `$max_accuracy_value`]``
 
 Pokud používáte prostředí PowerShell, následující kód používá k uložení prahovou hodnotu a maximální přesnost lokální proměnné:
 ```powershell
@@ -68,5 +68,5 @@ $find_runs_query = '@[?Accuracy >= sum(`[{0}, -{1}]`)] | sort_by(@, &duration)' 
 az ml history list --query $find_runs_query
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o protokolování naleznete v tématu [použití historie spouštění a metriky modelu v Azure Machine Learning Workbench](how-to-use-run-history-model-metrics.md).    

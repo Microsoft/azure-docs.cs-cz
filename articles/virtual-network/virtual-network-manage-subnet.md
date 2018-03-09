@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: f8b60a27e760ae74c7f068844fad1ae0d4324366
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 27918e1d0b335613ea578a815fb3ae00df73ebaa
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Přidat, změnit nebo odstranit podsíť virtuální sítě
 
@@ -44,7 +44,7 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
     - **Název**: název musí být jedinečný v rámci virtuální sítě.
     - **Rozsah adres**: rozsahu musí být jedinečný v rámci adresního prostoru virtuální sítě. Rozsah se nesmí překrývat s rozsahy adres jiné podsítě v rámci virtuální sítě. Adresní prostor musí být určena pomocí notace CIDR (Classless Inter-Domain směrování) zápisu. Ve virtuální síti s 10.0.0.0/16 prostoru adres, můžete třeba definovat adresního prostoru podsítě 10.0.0.0/24. Nejmenší oblast, kterou můžete zadat je /29, který poskytuje osm IP adresy podsítě. Azure si vyhrazuje adresu první a poslední v každé podsíti pro protokol shoda. Tři další adresy jsou vyhrazené pro použití služby Azure. V důsledku toho definování podsíť s/29 adres rozsah výsledků v tři použitelných IP adresách v podsíti. Pokud máte v plánu pro připojení virtuální sítě k bráně VPN, musíte vytvořit podsíť brány. Další informace o [aspekty rozsah konkrétní adresu podsítě brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Po přidání podsítě pro určité podmínky, můžete změnit rozsah adres. Zjistěte, jak změnit rozsah adres podsítě, najdete v tématu [změnit nastavení podsítě](#change-subnet-settings).
     - **Skupina zabezpečení sítě**: můžete přidružit nula nebo jeden existující skupinu zabezpečení sítě k podsíti pro filtrování příchozích a odchozích přenosů sítě pro podsíť. Skupina zabezpečení sítě, musí existovat ve stejném předplatném a umístění jako virtuální síť. Další informace o [skupin zabezpečení sítě](security-overview.md) a [jak vytvořit skupinu zabezpečení sítě](virtual-networks-create-nsg-arm-pportal.md).
-    - **Směrovací tabulka**: můžete přidružit žádnou nebo jednu stávající tabulka směrování pro podsíť řídit směrování provozu sítě k jiným sítím. Směrovací tabulka musí existovat ve stejném předplatném a umístění jako virtuální síť. Další informace o [Azure směrování](virtual-networks-udr-overview.md) a [postup vytvořit směrovací tabulku](create-user-defined-route-portal.md)
+    - **Směrovací tabulka**: můžete přidružit žádnou nebo jednu stávající tabulka směrování pro podsíť řídit směrování provozu sítě k jiným sítím. Směrovací tabulka musí existovat ve stejném předplatném a umístění jako virtuální síť. Další informace o [Azure směrování](virtual-networks-udr-overview.md) a [postup vytvořit směrovací tabulku](tutorial-create-route-table-portal.md)
     - **Koncové body služby:** podsíť může mít žádnou položku nebo více koncových bodů služby pro ni povolit. Chcete-li povolit koncový bod služby pro službu, vyberte služby nebo služby, které chcete povolit koncové body služby pro z **služby** seznamu. Chcete-li odebrat koncového bodu služby, zrušte výběr službu, kterou chcete odebrat koncový bod služby pro. Další informace o koncových bodů služby najdete v tématu [přehled koncové body služby virtuálních sítí](virtual-network-service-endpoints-overview.md). Jakmile povolíte koncového bodu služby pro službu, musíte zároveň povolit přístup k síti pro podsíť pro prostředek vytvořené pomocí služby. Například, pokud povolíte koncový bod služby pro *Microsoft.Storage*, musíte zároveň povolit přístup k síti pro všechny účty Azure Storage, které chcete udělit přístup k síti na. Podrobnosti o tom, jak povolit přístup k síti na podsítě, které je k dispozici koncového bodu služby najdete v dokumentaci pro jednotlivé služby, kterou jste povolili pro koncový bod služby.
 6. Chcete-li přidat podsíť virtuální sítě, kterou jste vybrali, vyberte **OK**.
 

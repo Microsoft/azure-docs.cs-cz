@@ -24,13 +24,12 @@ Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-267
 | Standard_E8s_v3  | 8      | 64          | 128            | 16             | 16 000 / 128 (200)                                                    | 12 800 / 192                              | 4 / 4,000                                       |
 | Standard_E16s_v3 | 16     | 128         | 256            | 32             | 32 000 / 256 (400)                                                    | 25 600 / 384                              | 8 / 8,000                                       |
 | Standard_E32s_v3 <sup>2</sup> | 32     | 256         | 512            | 32             | 64 000 / 512 (800)                                                    | 51 200 / 768                              | 8 / 16,000                             |
-| Standard_E64s_v3 <sup>2,3</sup> | 64     | 432         | 864            | 32             | 128 000 / 1 024 (1 600)                                                   | 80 000 / 1 200                             | 8 / 30,000                             |
+| Standard_E64s_v3 | 64     | 432         | 864            | 32             | 128 000 / 1 024 (1 600)                                                   | 80 000 / 1 200                             | 8 / 30,000                             |
 
 <sup>1</sup> Esv3-series Virtuálního počítače funkci technologii Intel® Hyper-Threading
 
 <sup>2</sup> omezené základní velikostí, které jsou k dispozici 
 
-<sup>3</sup> instance je izolovaný hardware vyhrazený pro jednoho zákazníka.
 ## <a name="ev3-series-sup1sup"></a>Ev3-series <sup>1</sup>
 
 ACU: 160–190 
@@ -47,11 +46,11 @@ Instance Ev3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673
 | Standard_E8_v3  | 8         | 64          | 200            | 16             | 12 000 / 187 / 93                                             | 4 / 4,000                     |
 | Standard_E16_v3 | 16        | 128         | 400            | 32             | 24 000 / 375 / 187                                            | 8 / 8,000                     |
 | Standard_E32_v3 | 32        | 256         | 800            | 32             | 48 000 / 750 / 375                                            | 8 / 16,000                 |
-| Standard_E64_v3<sup>2</sup> | 64        | 432         | 1600           | 32             | 96 000 / 1 000 / 500                                           | 8 / 30,000           |
+| Standard_E64_v3 | 64        | 432         | 1600           | 32             | 96 000 / 1 000 / 500                                           | 8 / 30,000           |
 
 <sup>1</sup> Ev3-series Virtuálního počítače funkci technologii Intel® Hyper-Threading
 
-<sup>2</sup> instance je izolovaný hardware vyhrazený pro jednoho zákazníka.
+
 
 ## <a name="m-series-sup1sup"></a>M-series <sup>1</sup>
 

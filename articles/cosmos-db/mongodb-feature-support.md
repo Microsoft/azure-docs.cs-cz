@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: e955aa1c3985e540246d964b4dce88d15fb85949
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9f1b6359d9fb58ad66b4d314f2bb14da34b98613
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Podpora rozhraní API MongoDB pro MongoDB funkce a syntaxe
 
@@ -235,7 +235,7 @@ $regex | ``` { "Volcano Name": { $regex: "^Rain"} } ```|  | -
 
 V dotazech $regex povolit ukotvené vlevo výrazy indexu vyhledávání. Však pomocí 'i' – modifikátor (velkých a malých) a 'm ' – modifikátor (multiline) způsobí, že kontrola kolekce v všechny výrazy.
 Pokud je potřeba zahrnout '$' nebo ' |', je vhodné vytvořit dotazy, regex dva (nebo více). Například uděleno následující původní dotaz: ```find({x:{$regex: /^abc$/})```, musí být upraven následujícím způsobem: ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
-První část použije index omezit výsledky vyhledávání na tyto dokumenty počínaje ^ abc a druhá část bude odpovídat přesně položky. Na panelu operátor ' |' funguje jako funkce "nebo" - dotaz ```find({x:{$regex: /^abc|^def/})``` odpovídá whin dokumenty, které pole 'x' má hodnotu, která začíná "abc" nebo "def". Abyste mohli využívat indexu, se doporučuje rozdělit na dvě různé dotazy, které jsou připojené k $ nebo – operátor dotazu: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
+První část použije index omezit výsledky vyhledávání na tyto dokumenty počínaje ^ abc a druhá část bude odpovídat přesně položky. Na panelu operátor ' |' funguje jako funkce "nebo" - dotaz ```find({x:{$regex: /^abc|^def/})``` odpovídá dokumenty, ve kterém poli 'x' má hodnoty, které začínají řetězcem "abc" nebo "def". Abyste mohli využívat indexu, se doporučuje rozdělit na dvě různé dotazy, které jsou připojené k $ nebo – operátor dotazu: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
 
 ### <a name="update-operators"></a>Aktualizace operátory
 

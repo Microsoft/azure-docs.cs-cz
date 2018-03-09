@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2017
+ms.date: 03/05/2018
 ms.author: markgal
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: a0e654637bc4aca4230c56cc7c1706f5cd73622e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: db4801d105a6ca7382756224aa84c9e7b305194f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="overview-of-availability-zones-in-azure-preview"></a>Přehled dostupnosti zón v Azure (Preview)
 
@@ -45,7 +45,7 @@ Služby Azure, které podporují dostupnost zóny jsou:
 - Managed Disks
 - Load Balancer
 - Veřejná IP adresa
-- Zónově redundantní úložiště
+- Databáze SQL
 
 ## <a name="get-started-with-the-availability-zones-preview"></a>Začínáme s preview dostupnost zóny
 
@@ -56,7 +56,7 @@ Dostupnost zóny náhled je dostupný v východní USA 2, nám centrální, záp
 3. Vyberte oblast, která podporuje dostupnost zóny.
 4. Ke spuštění pomocí služby dostupnost zóny, použijte jednu z následujících odkazů. 
     - [Vytvoření virtuálního počítače](../virtual-machines/windows/create-portal-availability-zone.md)
-    - [Vytvoření sady škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
+    - [Vytvoření škálovací sady virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
     - [Přidejte Disk spravované pomocí prostředí PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
     - [Load Balancer](../load-balancer/load-balancer-standard-overview.md)
 

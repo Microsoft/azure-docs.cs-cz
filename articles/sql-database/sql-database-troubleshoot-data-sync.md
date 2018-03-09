@@ -8,11 +8,11 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 50cabbaa584671e52c1ea7efbd2ad990b8438272
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: c174f5120ba2e5bf8018cce0f0e34c1fc3f8eb3f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Řešení problémů s synchronizaci dat SQL (Preview)
 
@@ -124,8 +124,8 @@ Mnoho scénářů může dojít k této chybě. Pokud chcete určit konkrétní 
 
 Pokud chcete vyhledat konkrétní příčinu selhání, generovat a v protokolech Instalační služby systému Windows. Můžete zapnout protokolování na příkazovém řádku. Například pokud stažený soubor AgentServiceSetup.msi LocalAgentHost.msi, generovat a zkontrolujte soubory protokolů pomocí následujících příkazových řádků:
 
--   Pro instalaci:`msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
--   Pro odinstaluje:`msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
+-   Pro instalaci: `msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
+-   Pro odinstaluje: `msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
 
 Můžete také zapnout protokolování pro všechny instalace, které se provádí pomocí Instalační služby systému Windows. Článek znalostní báze Microsoft Knowledge Base [povolení protokolování Instalační služby systému Windows](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) poskytuje řešení jedním kliknutím zapnout protokolování pro Instalační služby systému Windows. Nabízí taky umístění protokolů.
 
@@ -135,7 +135,7 @@ Můžete také zapnout protokolování pro všechny instalace, které se provád
 
 Při pokusu o použití agenta klienta získáte následujících zpráv:
 
-"Synchronizace se nezdařila s výjimkou, ke které došlo k chybě při pokusu o deserializaci www.microsoft.com/.../05:GetBatchInfoResult parametr. Podrobnosti najdete v InnerException Další."
+"Synchronizace se nezdařila s výjimkou, ke které došlo k chybě při pokusu o deserializaci www.microsoft.com/.../05:GetBatchInfoResult parametr. Informace naleznete v části ve vlastnosti InnerException."
 
 "Zpráva o vnitřní výjimce: typ 'Microsoft.Synchronization.ChangeBatch' je neplatný typ kolekce, protože nemá výchozí konstruktor."
 
@@ -240,8 +240,8 @@ Než budete pokračovat, zkontrolujte následující podmínky:
 -   Je spuštěna služba systému Windows pro synchronizaci dat SQL (Preview).  
 -   Účet služby pro službu systému Windows verze Preview synchronizaci dat SQL (Preview) má přístup k síti.    
 -   Klientský agent můžete kontaktovat službu lokátoru. Zkontrolujte, zda následující klíč registru https://locator.sync.azure.com/LocatorServiceApi.svc hodnotu:  
-    -   Na x86 počítače:`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
-    -   Na x64 počítače:`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
+    -   Na x86 počítače: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
+    -   Na x64 počítače: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
 
 #### <a name="cause"></a>Příčina
 
@@ -435,7 +435,7 @@ Nelze odstranit skupinu synchronizace do tří minut po odinstalaci nebo zastave
 
 Pokud ke ztrátě nebo poškozená databáze obnovit ze zálohy, může být nonconvergence dat ve skupině synchronizace, ke které databáze patří.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o synchronizaci dat SQL (Preview) najdete v tématu:
 
 -   [Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure (Preview)](sql-database-sync-data.md)  

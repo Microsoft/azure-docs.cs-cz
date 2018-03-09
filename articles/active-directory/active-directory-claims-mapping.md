@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 1bc669dfa5a41e38b35751af62560ff650575a08
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b0dae074734b13046fb0d90e178e05f81399b5c6
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Deklarace identity mapování v Azure Active Directory (verze public preview)
 
@@ -30,7 +30,7 @@ Tato funkce slouží k přizpůsobení deklarace identity vygenerované v tokeny
 - Zvolte nebo změnit zdroj dat vygenerované v konkrétní deklarací identity.
 
 >[!NOTE]
->Tato funkce je aktuálně ve verzi public preview. Připravte se na obnovit nebo odeberte všechny změny. Tato funkce je k dispozici v libovolné předplatné služby Azure Active Directory (Azure AD) verzi public Preview. Když je tato funkce obecně dostupná, může vyžadovat některé aspekty funkce však předplatné služby Azure Active Directory premium.
+>Tato funkce je aktuálně ve verzi public preview. Připravte se na obnovit nebo odeberte všechny změny. Tato funkce je k dispozici v libovolné předplatné služby Azure Active Directory (Azure AD) verzi public Preview. Když je tato funkce obecně dostupná, může vyžadovat některé aspekty funkce však předplatné služby Azure Active Directory premium. Tato funkce podporuje konfiguraci zásad mapování deklarace identity pro protokoly WS-Fed, SAML, OAuth a OpenID Connect.
 
 ## <a name="claims-mapping-policy-type"></a>Mapování typu zásady deklarace identity
 Ve službě Azure AD **zásad** objekt představuje sadu pravidel vynucené u jednotlivých aplikací, nebo na všechny aplikace v organizaci. Každý typ zásad se strukturou jedinečnou sadu vlastností, které se pak použijí pro objekty, na které jsou přiřazeny.
@@ -67,7 +67,7 @@ Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem.
 |app_res|
 |appctx|
 |appctxsender|
-|AppID|
+|appid|
 |appidacr|
 |Kontrolní výraz|
 |at_hash|
@@ -79,16 +79,16 @@ Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem.
 |azpacr|
 |c_hash|
 |ca_enf|
-|Kopie|
+|cc|
 |cert_token_use|
 |client_id|
 |cloud_graph_host_name|
 |cloud_instance_name|
 |možností cnf|
-|Kód|
+|kód|
 |ovládací prvky|
 |credential_keys|
-|oddělení služeb zákazníkům|
+|csr|
 |csr_type|
 |ID zařízení|
 |dns_names|
@@ -107,24 +107,24 @@ Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem.
 |hasgroups|
 |hash_alg|
 |home_oid|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/AuthenticationInstant|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/AuthenticationMethod|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/Expiration|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/Expired|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/Claims/EmailAddress|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/Claims/Name|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/Claims/NameIdentifier|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/expired|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier|
 |IAT|
 |identityprovider|
-|deklarací identity|
+|idp|
 |in_corp|
 |instance|
-|IPADDR|
+|ipaddr|
 |isbrowserhostedapp|
 |iss|
 |jwk|
 |key_id|
-|key_type –|
+|key_type|
 |mam_compliance_url|
 |mam_enrollment_url|
 |mam_terms_of_use_url|
@@ -132,7 +132,7 @@ Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem.
 |mdm_enrollment_url|
 |mdm_terms_of_use_url|
 |nameid|
-|NBF|
+|nbf|
 |netbios_name|
 |hodnotu Nonce|
 |OID|
@@ -158,7 +158,7 @@ Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem.
 |role|
 |role|
 |Obor|
-|spojovací bod služby|
+|scp|
 |identifikátor SID|
 |Podpis|
 |signin_state|
@@ -186,52 +186,52 @@ Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem.
 #### <a name="table-2-security-assertion-markup-language-saml-restricted-claim-set"></a>Tabulka 2: Security (Assertion Markup Language SAML) omezené sady deklarací.
 |Typ deklarace identity (URI)|
 | ----- |
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/Expiration|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/Expired|
-|http://schemas.microsoft.com/identity/Claims/accesstoken|
-|http://schemas.microsoft.com/identity/Claims/openid2_id|
-|http://schemas.microsoft.com/identity/Claims/identityprovider|
-|http://schemas.microsoft.com/identity/Claims/objectidentifier|
-|http://schemas.microsoft.com/identity/Claims/PUID|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/Claims/NameIdentifier [MR1] |
-|http://schemas.microsoft.com/identity/Claims/tenantid|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/AuthenticationInstant|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/AuthenticationMethod|
-|http://schemas.microsoft.com/accesscontrolservice/2010/07/Claims/identityprovider|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/groups|
-|http://schemas.microsoft.com/Claims/groups.Link|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/role|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/wids|
-|http://schemas.microsoft.com/2014/09/devicecontext/Claims/iscompliant|
-|http://schemas.microsoft.com/2014/02/devicecontext/Claims/isknown|
-|http://schemas.microsoft.com/2012/01/devicecontext/Claims/ismanaged|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/expired|
+|http://schemas.microsoft.com/identity/claims/accesstoken|
+|http://schemas.microsoft.com/identity/claims/openid2_id|
+|http://schemas.microsoft.com/identity/claims/identityprovider|
+|http://schemas.microsoft.com/identity/claims/objectidentifier|
+|http://schemas.microsoft.com/identity/claims/puid|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier[MR1] |
+|http://schemas.microsoft.com/identity/claims/tenantid|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod|
+|http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/groups|
+|http://schemas.microsoft.com/claims/groups.link|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/role|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/wids|
+|http://schemas.microsoft.com/2014/09/devicecontext/claims/iscompliant|
+|http://schemas.microsoft.com/2014/02/devicecontext/claims/isknown|
+|http://schemas.microsoft.com/2012/01/devicecontext/claims/ismanaged|
 |http://schemas.microsoft.com/2014/03/psso|
-|http://schemas.microsoft.com/Claims/authnmethodsreferences|
-|http://schemas.xmlsoap.org/ws/2009/09/identity/Claims/actor|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/samlissuername|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/confirmationkey|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/windowsaccountname|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/primarygroupsid|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/primarysid|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/Claims/authorizationdecision|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/Claims/Authentication|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/Claims/SID|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/denyonlyprimarygroupsid|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/denyonlyprimarysid|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/Claims/denyonlysid|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/denyonlywindowsdevicegroup|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/windowsdeviceclaim|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/windowsdevicegroup|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/windowsfqbnversion|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/windowssubauthority|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/windowsuserclaim|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/Claims/x500distinguishedname|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/Claims/UPN|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/GroupSID|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/Claims/SPN|
-|http://schemas.microsoft.com/ws/2008/06/identity/Claims/ispersistent|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/Claims/privatepersonalidentifier|
-|http://schemas.microsoft.com/identity/Claims/scope|
+|http://schemas.microsoft.com/claims/authnmethodsreferences|
+|http://schemas.xmlsoap.org/ws/2009/09/identity/claims/actor|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/samlissuername|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/confirmationkey|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/primarygroupsid|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/authorizationdecision|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/authentication|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarygroupsid|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarysid|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/denyonlysid|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlywindowsdevicegroup|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdeviceclaim|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdevicegroup|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsfqbnversion|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/windowssubauthority|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsuserclaim|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/x500distinguishedname|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/ispersistent|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier|
+|http://schemas.microsoft.com/identity/claims/scope|
 
 ## <a name="claims-mapping-policy-properties"></a>Deklarace identity mapování vlastnosti zásad
 Pomocí vlastnosti deklarací, mapování na ovládací prvek deklarace, které jsou vygenerované zásad a kde jsou data pochází z. Pokud je nastavené žádné zásady, systém vydá obsahující základní sady deklarací identity, sadě základní deklarací identity a volitelné deklarace identity, které aplikace se rozhodli přijímat tokeny.
@@ -282,16 +282,16 @@ ID elementu identifikuje, jehož vlastnost ve zdroji poskytuje hodnotu pro dekla
 #### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: Hodnoty platné ID na zdroj
 |Zdroj|ID|Popis|
 |-----|-----|-----|
-|Uživatel|Příjmení|Příjmení|
-|Uživatel|givenName|Křestní jméno|
-|Uživatel|DisplayName|Zobrazovaný název|
+|Uživatel|surname|Příjmení|
+|Uživatel|givenName|jméno|
+|Uživatel|displayname|Zobrazovaný název|
 |Uživatel|objectid|ObjectID|
-|Uživatel|E-mailu|E-mailová adresa|
-|Uživatel|userPrincipalName|Hlavní název uživatele (UPN)|
+|Uživatel|mail|E-mailová adresa|
+|Uživatel|userprincipalname|Hlavní název uživatele (UPN)|
 |Uživatel|Oddělení|Oddělení|
 |Uživatel|onpremisessamaccountname|Na místní název účtu Sam|
 |Uživatel|název pro rozhraní NetBIOS|Název pro rozhraní NetBios|
-|Uživatel|název_domény_DNS|Název domény DNS|
+|Uživatel|dnsdomainname|Dns Domain Name|
 |Uživatel|onpremisesecurityidentifier|Identifikátor zabezpečení na místě|
 |Uživatel|NázevSpolečnosti|Název organizace|
 |Uživatel|streetAddress|Ulice|
@@ -321,7 +321,7 @@ ID elementu identifikuje, jehož vlastnost ve zdroji poskytuje hodnotu pro dekla
 |Uživatel|pracovní funkce|Funkce|
 |Uživatel|Číslo zaměstnance|ID zaměstnance|
 |Uživatel|facsimiletelephonenumber|Faxem telefonní číslo|
-|aplikace, prostředků, cílová skupina|DisplayName|Zobrazovaný název|
+|aplikace, prostředků, cílová skupina|displayname|Zobrazovaný název|
 |aplikace, prostředků, cílová skupina|proti|ObjectID|
 |aplikace, prostředků, cílová skupina|tags|Značka instančního objektu|
 |Společnost|tenantcountry|Země klienta|
@@ -356,7 +356,7 @@ Založené na metodě vybrali, se očekává sadu vstupy a výstupy. Tyto jsou d
 |TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
 |Spojit|řetězec1, řetězec2, oddělovače|outputClaim|Spojení vstup řetězce s použitím oddělovače v rozmezí. Příklad: řetězec1: "foo@bar.com", řetězec2: "izolovaného prostoru", oddělovač: "." výsledkem outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|E-mailu|outputClaim|Extrahuje místní část e-mailovou adresu. Příklad: e-mailu: "foo@bar.com" výsledkem outputClaim: "foo". Pokud ne @ přihlašovací je nainstalován, pak bude vrácen orignal vstupní řetězec, jako je.|
+|ExtractMailPrefix|mail|outputClaim|Extrahuje místní část e-mailovou adresu. Příklad: e-mailu: "foo@bar.com" výsledkem outputClaim: "foo". Pokud ne @ přihlašovací je nainstalován, pak bude vrácen orignal vstupní řetězec, jako je.|
 
 **InputClaims:** použít InputClaims element k předání dat z položky schématu deklarace identity transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
@@ -380,8 +380,8 @@ Založené na metodě vybrali, se očekává sadu vstupy a výstupy. Tyto jsou d
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabulka 5: Atributy povolena jako zdroj dat pro SAML NameID
 |Zdroj|ID|Popis|
 |-----|-----|-----|
-|Uživatel|E-mailu|E-mailová adresa|
-|Uživatel|userPrincipalName|Hlavní název uživatele (UPN)|
+|Uživatel|mail|E-mailová adresa|
+|Uživatel|userprincipalname|Hlavní název uživatele (UPN)|
 |Uživatel|onpremisessamaccountname|Na místní název účtu Sam|
 |Uživatel|Číslo zaměstnance|ID zaměstnance|
 |Uživatel|extensionattribute1|Atribut rozšíření 1|

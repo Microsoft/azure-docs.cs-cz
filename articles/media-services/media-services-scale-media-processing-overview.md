@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: juliako
-ms.openlocfilehash: a82481c4995bfb078e88d7096dff37b52312a296
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c80bddfe1896b0b99319ef007c25718b5a754005
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="scaling-media-processing-overview"></a>Škálování zpracování média – přehled
 Tato stránka poskytuje přehled toho, jak a proč škálování zpracování média. 
@@ -34,7 +34,7 @@ V následující tabulce pomáhá zajistit rozhodnutí při výběru mezi různ�
 | Scénáře | **S1** | **S2** | **S3** |
 | --- | --- | --- | --- |
 | Zamýšlený případ použití |Kódování jednou přenosovou rychlostí. <br/>Soubory SD nebo pod řešení, není čas citlivé, nízkými náklady. |Jednou přenosovou rychlostí a více kódování přenosovou rychlostí.<br/>Normálního využití pro SD i HD kódování. |Jednou přenosovou rychlostí a více kódování přenosovou rychlostí.<br/>Úplné HD a ovladači 4K videa řešení. Čas, citlivé a rychlejší vyřízení kódování. |
-| Srovnávacího testu |[Vstupní soubor: 5 minut dlouhé 640x360p v 29,97 snímků za sekundu](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_360p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D).<br/><br/>Kódování určené k s jednou přenosovou rychlostí souboru MP4, ve stejném rozlišení, trvá přibližně 11 minut. |[Vstupní soubor: 5 minut dlouhé 1280x720p v 29,97 snímků za sekundu](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_720p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)<br/><br/>S "H264 jednou přenosovou rychlostí 720p" přednastavení kódování trvá přibližně 5 minut.<br/><br/>Kódování s "H264 Multiple Bitrate 720p" přednastavených trvá přibližně 11.5 minut. |[Vstupní soubor: 5 minut dlouhé 1920x1080p v 29,97 snímků za sekundu](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_1080p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D). <br/><br/>S "H264 jeden Bitrate 1080p" přednastavení kódování trvá přibližně 2.7 minut.<br/><br/>Kódování s "H264 Multiple Bitrate 1080p" přednastavených trvá přibližně 5.7 minut. |
+| Benchmark |[Vstupní soubor: 5 minut dlouhé 640x360p v 29,97 snímků za sekundu](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_360p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D).<br/><br/>Kódování určené k s jednou přenosovou rychlostí souboru MP4, ve stejném rozlišení, trvá přibližně 11 minut. |[Vstupní soubor: 5 minut dlouhé 1280x720p v 29,97 snímků za sekundu](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_720p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)<br/><br/>S "H264 jednou přenosovou rychlostí 720p" přednastavení kódování trvá přibližně 5 minut.<br/><br/>Kódování s "H264 Multiple Bitrate 720p" přednastavených trvá přibližně 11.5 minut. |[Vstupní soubor: 5 minut dlouhé 1920x1080p v 29,97 snímků za sekundu](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_1080p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D). <br/><br/>S "H264 jeden Bitrate 1080p" přednastavení kódování trvá přibližně 2.7 minut.<br/><br/>Kódování s "H264 Multiple Bitrate 1080p" přednastavených trvá přibližně 5.7 minut. |
 
 ## <a name="considerations"></a>Požadavky
 > [!IMPORTANT]
@@ -44,8 +44,6 @@ V následující tabulce pomáhá zajistit rozhodnutí při výběru mezi různ�
 
 * Jednotky rezervované pro fungovat pro paralelním prováděním veškeré zpracování médií, včetně indexování úloh pomocí Azure Media Indexer.  Ale na rozdíl od kódování se úlohy indexování s rychlejšími rezervovanými jednotkami nezpracovávají rychleji.
 * Pokud používáte sdílený fond, to znamená, bez jakékoli jednotky rezervované pak úlohami kódovat mít stejného výkonu stejně jako u S1 RUs. Však neexistuje žádná horní mez do doby, kdy můžete tráví vaše úkoly ve stavu zařazených do fronty, a v každém okamžiku, bude spuštěna maximálně pouze jednu úlohu.
-* Následujících datových centrech nenabízejí **S2** vyhrazený typ jednotky: Brazílie – jih a Indie – západ.
-* Následující datové centrum nenabízí **S3** vyhrazený typ jednotky: Indie – západ.
 
 ## <a name="billing"></a>Fakturace
 

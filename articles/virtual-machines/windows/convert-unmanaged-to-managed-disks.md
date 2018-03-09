@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: cynthn
-ms.openlocfilehash: dd9ebaf9a1c8b3112623af4228efa0d9063c1e52
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 92168ba5605e119d42ba40ee694cebb3ad116041
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows nespravovaných disky na spravované disky
 
@@ -50,17 +50,12 @@ Tato část popisuje jak převést virtuální počítače Azure jednou instanc�
   Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
   ```
 
-2. Převeďte virtuální počítač na disky spravované pomocí [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) rutiny. Následující proces převede předchozí virtuálních počítačů, včetně disku operačního systému a všechny datové disky:
+2. Převeďte virtuální počítač na disky spravované pomocí [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) rutiny. Následující proces převede předchozí virtuálních počítačů, včetně disku operačního systému a všechny datové disky a spustí virtuální počítač:
 
   ```azurepowershell-interactive
   ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
   ```
 
-3. Spusťte virtuální počítač po převodu na spravované disky pomocí [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm). Následující příklad restartuje předchozí virtuální počítač:
-
-  ```azurepowershell-interactive
-  Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-  ```
 
 
 ## <a name="convert-vms-in-an-availability-set"></a>Převést virtuální počítače v nastavení dostupnosti
@@ -84,7 +79,7 @@ Pokud virtuální počítače, které chcete převést na spravované disky jsou
   Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
   ```
 
-2. Deallocate a převést virtuální počítače v sadě dostupnosti. Následující skript zruší přidělení každý virtuální počítač pomocí [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) rutiny, převede ji na základě [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk)a restartuje s použitím [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm):
+2. Deallocate a převést virtuální počítače v sadě dostupnosti. Následující skript zruší přidělení každý virtuální počítač pomocí [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) rutiny, převede ji na základě [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk)a restartuje automaticky výjimkou procesu převodu :
 
   ```azurepowershell-interactive
   $avSet = Get-AzureRmAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -94,7 +89,6 @@ Pokud virtuální počítače, které chcete převést na spravované disky jsou
      $vm = Get-AzureRmVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
      Stop-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name -Force
      ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
-     Start-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name
   }
   ```
 

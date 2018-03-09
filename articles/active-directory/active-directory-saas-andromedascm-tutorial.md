@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s nástrojem SCM Andromeda | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Andromeda SCM."
+title: 'Kurz: Azure Active Directory integrace s Andromeda | Microsoft Docs'
+description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Andromeda."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,32 +12,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 72b66eec34995c334c6d65a1d03637fe21b9dc80
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7e2a140ba6dc4825283801ed4f3435136b307153
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-andromeda-scm"></a>Kurz: Azure Active Directory integrace s nástrojem SCM Andromeda
+# <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Kurz: Azure Active Directory integrace s Andromeda
 
-V tomto kurzu zjistěte, jak integrovat Andromeda SCM s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat Andromeda s Azure Active Directory (Azure AD).
 
-Integrace Andromeda SCM s Azure AD poskytuje následující výhody:
+Integrace Andromeda s Azure AD poskytuje následující výhody:
 
-- Ve službě Azure AD, který má přístup k Andromeda SCM můžete řídit.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Andromeda SCM (jednotné přihlášení) s jejich účty Azure AD.
+- Můžete ovládat ve službě Azure AD, který má přístup k Andromeda.
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Andromeda (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
 Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s nástrojem SCM Andromeda, potřebujete následující položky:
+Konfigurace integrace Azure AD s Andromeda, potřebujete následující položky:
 
 - Předplatné služby Azure AD
-- Andromeda SCM jednotné přihlašování povolené předplatné
+- Andromeda jednotné přihlašování povolené předplatné
 
 > [!NOTE]
 > K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
@@ -50,13 +50,13 @@ Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 ## <a name="scenario-description"></a>Popis scénáře
 V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Andromeda SCM z Galerie
+1. Přidání Andromeda z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-andromeda-scm-from-the-gallery"></a>Přidání Andromeda SCM z Galerie
-Při konfiguraci integrace Andromeda SCM do služby Azure AD potřebujete přidat Andromeda SCM z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-andromeda-from-the-gallery"></a>Přidání Andromeda z Galerie
+Při konfiguraci integrace Andromeda do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Andromeda z galerie.
 
-**Pokud chcete přidat Andromeda SCM z galerie, proveďte následující kroky:**
+**Pokud chcete přidat Andromeda z galerie, proveďte následující kroky:**
 
 1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
@@ -70,31 +70,31 @@ Při konfiguraci integrace Andromeda SCM do služby Azure AD potřebujete přida
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Andromeda SCM**, vyberte **Andromeda SCM** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **Andromeda**, vyberte **Andromeda** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
 
-    ![Andromeda SCM v seznamu výsledků](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_addfromgallery.png)
+    ![Andromeda v seznamu výsledků](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s nástrojem SCM Andromeda podle testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Andromeda podle testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Andromeda SCM je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Andromeda SCM musí navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Andromeda je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Andromeda musí navázat.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s nástrojem SCM Andromeda, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Andromeda, je třeba dokončit následující stavební bloky:
 
 1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
 2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvořit testovací uživatele s Andromeda SCM](#create-an-andromeda-scm-test-user)**  – Pokud chcete mít protějšek Britta Simon v Andromeda SCM propojeném s Azure AD reprezentace daného uživatele.
+3. **[Vytvořit testovací uživatele s Andromeda](#create-an-andromeda-test-user)**  – Pokud chcete mít protějšek Britta Simon v Andromeda propojeném s Azure AD reprezentace daného uživatele.
 4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
 5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Andromeda SCM.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Andromeda.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s nástrojem SCM Andromeda, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Andromeda, proveďte následující kroky:**
 
-1. Na portálu Azure na **Andromeda SCM** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **Andromeda** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurace propojení přihlášení][4]
 
@@ -102,24 +102,24 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_samlbase.png)
 
-3. Na **Andromeda SCM domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
+3. Na **Andromeda domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
 
-    ![Andromeda SCM domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url.png)
+    ![Andromeda domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenantURL>`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenantURL>.ngcxpress.com/`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenantURL>`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
-    ![Andromeda SCM domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url1.png)
+    ![Andromeda domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url1.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenantURL>/SAMLLogon.aspx`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
      
     > [!NOTE] 
     > Předchozí hodnota není skutečné hodnoty. Aktualizujte hodnotu s skutečné identifikátor, adresa URL odpovědi a přihlašování adresy URL, která se vysvětluje dále v tomto kurzu.
 
-5. Aplikace Andromeda SCM očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z **uživatelské atributy** části na stránce integrace aplikace. Následující snímek obrazovky ukazuje příklad pro tento.
+5. Aplikace Andromeda očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z **uživatelské atributy** části na stránce integrace aplikace. Následující snímek obrazovky ukazuje příklad pro tento.
     
     ![Konfigurovat jednotné přihlašování attb](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attribute.png)
 
@@ -129,10 +129,10 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 6. V **uživatelské atributy** části na **jednotného přihlašování** dialogové okno, nakonfigurujte atribut tokenu SAML, jak je znázorněno na obrázku a proveďte následující kroky:
     
     | Název atributu | Hodnota atributu |
-    | ------------------- | -------------------- |    
-    | role        | DEMO |
-    | type        | VÝCHOZÍ |
-    | Společnosti       | COMP02    |
+    | -------------- | -------------------- |    
+    | role        | Role pro konkrétní aplikace |
+    | type        | Typ aplikace |
+    | Společnosti       | CompanyName    |
 
     > [!NOTE]
     > Nejsou k dispozici skutečné hodnoty. Tyto hodnoty jsou pouze pro ukázku účel, použijte prosím vaše organizace role.
@@ -159,31 +159,31 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-andromedascm-tutorial/tutorial_general_400.png)
     
-9. Na **Andromeda SCM konfigurace** klikněte na tlačítko **konfigurace SCM Andromeda** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+9. Na **Andromeda konfigurace** klikněte na tlačítko **konfigurace Andromeda** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
-    ![Konfigurace SCM Andromeda](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_configure.png)
+    ![Konfigurace Andromeda](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_configure.png)
 
-10. Přihlašování k webu společnosti Andromeda SCM jako správce.
+10. Přihlašování k webu společnosti Andromeda jako správce.
 
 11. Nahoře řádek nabídek klikněte na **správce** a přejděte do **správy**.
 
-    ![Správce Andromeda SCM](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_admin.png)
+    ![Správce Andromeda](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_admin.png)
 
 12. Na levé straně panelu nástrojů v části **rozhraní** klikněte na tlačítko **konfigurace SAML**.
 
-    ![Andromeda SCM saml](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_saml.png)
+    ![Andromeda saml](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_saml.png)
 
 13. Na **konfigurace SAML** části stránky, proveďte následující kroky:
 
-    ![Konfigurace Andromeda SCM](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_config.png)
+    ![Konfigurace Andromeda](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_config.png)
 
     a. Zkontrolujte **povolení přihlášení SSO s SAML**.
 
-    b. V části **Andromeda informace** část, zkopírujte **SP Identity** a vložte ji do **identifikátor** textbox z **Andromeda SCM domény a adresy URL** části.
+    b. V části **Andromeda informace** část, zkopírujte **SP Identity** a vložte ji do **identifikátor** textbox z **Andromeda domény a adresy URL** části.
 
-    c. Kopírování **příjemce URL** a vložte ji do **adresa URL odpovědi** textbox z **Andromeda SCM domény a adresy URL** části.
+    c. Kopírování **příjemce URL** a vložte ji do **adresa URL odpovědi** textbox z **Andromeda domény a adresy URL** části.
 
-    d. Kopírování **přihlašovací adresa URL** a vložte ji do **přihlašovací adresa URL** textbox z **Andromeda SCM domény a adresy URL** části.
+    d. Kopírování **přihlašovací adresa URL** a vložte ji do **přihlašovací adresa URL** textbox z **Andromeda domény a adresy URL** části.
 
     e. V části **poskytovatele Identity SAML** zadejte název vaší deklarací identity.
 
@@ -191,9 +191,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     g. Otevřete stažené **certifikát kódovaný v Base64** z portálu Azure v programu Poznámkový blok, vložte jej do **certifikátu X 509** textové pole.
     
-    h. Namapujte tyto atributy s odpovídající hodnotou usnadňuje jednotného přihlášení z Azure AD. **ID uživatele** atribut je požadován pro přihlášení. Pro zřizování, **e-mailu**, **společnosti**, **UserType** a **Role** jsou povinné. V této části jsme definovali atributy mapování (názvu a hodnot) které korelovat těm, které jsou definované v rámci portálu Azure
+    h. Namapujte tyto atributy s odpovídající hodnotou usnadňuje jednotného přihlášení z Azure AD. **ID uživatele** atribut je požadován pro přihlášení. Pro zřizování, **e-mailu**, **společnosti**, **UserType**, a **Role** jsou povinné. V této části jsme definovali atributy mapování (názvu a hodnot) které korelovat těm, které jsou definované v rámci portálu Azure
 
-    ![Attbmap Andromeda SCM](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    ![Andromeda attbmap](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
 
     i. Klikněte na **Uložit**.
 
@@ -232,28 +232,28 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="create-an-andromeda-scm-test-user"></a>Vytvořit uživatele s Andromeda SCM testu
+### <a name="create-an-andromeda-test-user"></a>Vytvořit uživatele s Andromeda testu
 
-Cílem této části je vytvoření uživatele v Andromeda SCM nazývá Britta Simon. Andromeda SCM podporuje za běhu zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Andromeda SCM, pokud ještě neexistuje.
+Cílem této části je vytvoření uživatele v Andromeda nazývá Britta Simon. Andromeda podporuje za běhu zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Andromeda, pokud ještě neexistuje.
 
 >[!Note]
->Pokud je potřeba ručně vytvořit uživateli, obraťte se na [tým podpory Andromeda SCM klienta](https://www.ngcsoftware.com/support/).
+>Pokud je potřeba ručně vytvořit uživateli, obraťte se na [tým podpory Andromeda klienta](https://www.ngcsoftware.com/support/).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Andromeda SCM.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Andromeda.
 
 ![Přiřadit role uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Andromeda SCM, proveďte následující kroky:**
+**Pokud chcete přiřadit Britta Simon Andromeda, proveďte následující kroky:**
 
 1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Andromeda SCM**.
+2. V seznamu aplikací vyberte **Andromeda**.
 
-    ![V seznamu aplikací na Andromeda SCM odkaz](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_app.png)  
+    ![V seznamu aplikací na Andromeda odkaz](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_app.png)  
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
@@ -273,7 +273,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici Andromeda SCM na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Andromeda SCM.
+Když kliknete na dlaždici Andromeda na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Andromeda.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
@@ -296,4 +296,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-andromedascm-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-andromedascm-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-andromedascm-tutorial/tutorial_general_203.png
-

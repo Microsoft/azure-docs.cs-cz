@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/06/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9069cb0b46ddc1155c64bd63a7fcd8a685abbad
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c9b647e8f731995537a8797ab28248a1c42b6460
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-the-access-panel"></a>Co je na přístupovém panelu?
 
@@ -67,6 +67,9 @@ Pokud jste se ověřili, můžete pracovat s aplikacemi, které správce má int
 ## <a name="web-browser-requirements"></a>Požadavky na webový prohlížeč
 
 Minimálně na přístupovém panelu vyžaduje prohlížeč, který podporuje jazyk JavaScript a aktivoval šablon stylů CSS. Být přihlášeni k aplikacím prostřednictvím založené na heslech jednotné přihlašování (SSO), musí mít příponu panel přístupu nainstalovaný v prohlížeči. Rozšíření se stáhne automaticky, když vyberete aplikaci, která je nakonfigurována pro jednotné přihlašování založené na heslech.
+
+Instalační program je specifický pro architekturu. Pokud kliknete odkaz ke stažení, zobrazí pouze instalační program pro architektury operačního systému, které jsou aktuálně spuštěné na. Pokud jste správce nasazení aplikací, ujistěte se, že navštívíte odkaz ke stažení z 64bitové a 32bitové zařízení a získat i instalační programy.
+
 
 Rozšíření přístup k panelu je aktuálně dostupné pro:
 - **Hraniční**: v systému Windows 10 Anniversary Edition nebo novějším. 

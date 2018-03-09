@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: cynthn
 ms.openlocfilehash: ecc13ca614002effb1975b7575215b458981a5e6
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="accelerated-maintenance-frequently-asked-questions-faqs"></a>Zrychlený údržby Nejčastější dotazy (FAQ)
 

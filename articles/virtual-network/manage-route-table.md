@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 7edc73f337a72c24fd24d94468ee590b75dfa7df
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: f976832a857a35e9e0cea7a0eb731cb00492023f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změnit nebo odstranit tabulku směrování
 
-Azure automaticky směruje provoz mezi Azure podsítě virtuální sítě a místní sítě. Pokud chcete změnit výchozí Azure a směrování, uděláte tak, že vytvoříte směrovací tabulku. Pokud si nejste obeznámeni s Azure směrování, doporučujeme, abyste čtení [Přehled směrování](virtual-networks-udr-overview.md) a dokončení [směrovat síťový provoz s směrovací tabulku](create-user-defined-route-portal.md) kurz, před dokončením úlohy v tomto článku.
+Azure automaticky směruje provoz mezi Azure podsítě virtuální sítě a místní sítě. Pokud chcete změnit výchozí Azure a směrování, uděláte tak, že vytvoříte směrovací tabulku. Pokud si nejste obeznámeni s Azure směrování, doporučujeme, abyste čtení [Přehled směrování](virtual-networks-udr-overview.md) a dokončení [směrovat síťový provoz s směrovací tabulku](tutorial-create-route-table-portal.md) kurz, před dokončením úlohy v tomto článku.
 
 ## <a name="before-you-begin"></a>Než začnete
 

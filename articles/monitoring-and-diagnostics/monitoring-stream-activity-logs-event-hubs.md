@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/02/2018
 ms.author: johnkem
-ms.openlocfilehash: c3c7ffe00263b8f76d89aa8d15fe2d502538527d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2cd3e2e471135242b52459abc231a0f3545e05e1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Datový proud protokolu Azure činnosti do centra událostí
-[ **Protokol činnosti Azure** ](monitoring-overview-activity-logs.md) Streamovat skoro v reálném čase pro všechny aplikace pomocí předdefinované možnosti "Export" na portálu nebo povolením Id pravidla Service Bus v profilu protokolu prostřednictvím rutin prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
+[ **Protokol činnosti Azure** ](monitoring-overview-activity-logs.md) Streamovat skoro v reálném čase pro všechny aplikace pomocí předdefinované možnosti "Export" na portálu nebo povolením ID pravidla Service Bus v profilu protokolu pomocí prostředí Azure PowerShell Rutiny nebo Azure CLI.
 
 ## <a name="what-you-can-do-with-the-activity-log-and-event-hubs"></a>Co můžete dělat s protokol aktivit a Event Hubs
 Můžete použít možnost streamování pro protokol činnosti několika způsoby:
@@ -30,20 +30,26 @@ Můžete použít možnost streamování pro protokol činnosti několika způso
 * **Vytvoření vlastní telemetrii a protokolování platformy** – Pokud už máte uživatelské telemetrie platformy nebo jsou jenom přemýšlíte o vytváření jeden vysoce škálovatelné, publikování a odběru na povaze služby Event Hubs umožňuje flexibilně ingestování protokolu aktivit. [V příručce Dana Rosanova pomocí služby Event Hubs telemetrie platformy globálním měřítku sem.](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)
 
 ## <a name="enable-streaming-of-the-activity-log"></a>Povolit vysílání datového proudu protokolu aktivit
-Můžete povolit vysílání datového proudu protokolu aktivit buď programově, nebo prostřednictvím portálu. V obou případech můžete vybrat Namespace sběrnice služby a zásady sdíleného přístupu pro tento obor názvů a centra událostí je v daném oboru názvů vytvořena, když dojde k první nové aktivity protokolu události. Pokud nemáte Namespace Service Bus, musíte nejprve vytvořit. Pokud jste dříve streamování aktivity protokolu události tento Namespace Service Bus, bude znovu použita centra událostí, která byla dříve vytvořena. Zásada sdíleného přístupu definuje oprávnění, která má streamování mechanismus. V současné době vyžadují streamování Event Hubs **spravovat**, **odeslat**, a **naslouchání** oprávnění. Můžete vytvořit nebo upravit pro vaše Namespace sběrnice služby Service Bus Namespace sdílené zásady přístupu na portálu Azure na kartě "Konfigurace". Aktualizovat profil protokolu protokol aktivit zahrnout streamování, uživatele, provedení změny, musí mít oprávnění ListKey na tomto Service Bus autorizační pravidlo.
+Můžete povolit vysílání datového proudu protokolu aktivit buď programově, nebo prostřednictvím portálu. V obou případech můžete vybrat na obor názvů služby Event Hubs a zásady sdíleného přístupu pro tento obor názvů a centra událostí s název "insights protokoly operationallogs' je vytvořen v daném oboru názvů dojde k první nové aktivity protokolu události. Pokud jste na obor názvů služby Event Hubs, musíte nejprve vytvořit. Pokud jste dříve streamování aktivity protokolu události na tento obor názvů služby Event Hubs, bude znovu použita centra událostí, která byla dříve vytvořena. Zásada sdíleného přístupu definuje oprávnění, která má streamování mechanismus. V současné době vyžadují streamování do centra událostí **spravovat**, **odeslat**, a **naslouchání** oprávnění. Můžete vytvářet nebo upravovat Event Hubs obor názvů sdílených zásad přístupu na portálu Azure na kartě "Konfigurace" pro obor názvů. Aktualizovat profil protokolu protokol aktivit zahrnout streamování, uživatele, provedení změny, musí mít oprávnění ListKey na tuto událost rozbočovače autorizační pravidlo.
 
-Oboru názvů služby bus nebo event hub nemusí být ve stejném předplatném jako předplatné emitování protokoly tak dlouho, dokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC do oba odběry.
+Obor názvů služby Event Hubs nemusí být ve stejném předplatném jako předplatné emitování protokoly tak dlouho, dokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC do oba odběry.
 
 ### <a name="via-azure-portal"></a>Prostřednictvím portálu Azure
-1. Přejděte na **protokol aktivit** okno pomocí všechny služby vyhledávání na levé straně na portálu.
+1. Přejděte na **protokol aktivit** části Použití všechny služby search na levé straně na portálu.
    
     ![Přejděte na protokol aktivit v portálu](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
-2. Klikněte **exportovat** tlačítka v horní části okna protokolu aktivit.
+2. Klikněte **exportovat** tlačítka v horní části protokolu aktivit. Všimněte si, že nastavení filtru, který měl použité při zobrazování protokol aktivit v předchozí zobrazení nemají žádný vliv na nastavení exportu – těch, které jsou určeny pouze pro filtrování, co se zobrazí při prohlížení protokolu aktivit na portálu.
    
     ![Tlačítko Exportovat portálu](./media/monitoring-stream-activity-logs-event-hubs/export.png)
-3. V okně, který se zobrazí můžete vybrat oblasti, pro které chcete datového proudu událostí a Namespace Service Bus, ve kterém chcete vytvořit pro streamování tyto události centra událostí. Vyberte **všech oblastech**.
+3. V oddílu, který se zobrazí, vyberte **všech oblastech**. Nevybírejte konkrétní oblasti.
    
-    ![Export protokolu aktivit okno](./media/monitoring-stream-activity-logs-event-hubs/export-audit.png)
+    ![Exportovat protokol aktivit](./media/monitoring-stream-activity-logs-event-hubs/export-audit.png)
+    
+    > [!WARNING]
+    > Vybrat pouze všech oblastech. V opačném případě bude neproběhly klíče události, které obsahují by jinak očekávané přijímat. Toto je skutečnost, že protokol aktivit je globální protokolu (není místní), takže většina události nemají oblasti s nimi spojených.
+    >
+    >
+    
 4. Klikněte na tlačítko **Uložit** uložit tato nastavení. Nastavení se použije okamžitě do vašeho předplatného.
 5. Pokud máte několik předplatných, by měl opakujte tuto akci a odeslat veškerá data do stejné centra událostí.
 

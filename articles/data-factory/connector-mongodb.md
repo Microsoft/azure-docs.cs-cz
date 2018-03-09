@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/07/2018
 ms.author: jingwang
-ms.openlocfilehash: c924640feffea4cbe0372cabc937656d2ec41c7d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: b12477b855dad28976989e694888667fd0cb6b20
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,9 +39,9 @@ Konkrétně tento konektor MongoDB podporuje:
 - MongoDB **verze 2.4, 2.6, 3.0 a 3.2**.
 - Kopírování dat pomocí **základní** nebo **anonymní** ověřování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Ke zkopírování dat z databáze MongoDB, která není veřejně přístupný, musíte nastavit Self-hosted integrace Runtime. V tématu [Self-hosted integrace Runtime](create-self-hosted-integration-runtime.md) článku se dozvíte podrobnosti. Modul Runtime integrace poskytuje integrované ovladače MongoDB, proto nemusíte ručně nainstalovat všechny ovladače při kopírování dat z/do MongoDB.
+Ke zkopírování dat z databáze MongoDB, která není veřejně přístupný, musíte nastavit Self-hosted integrace Runtime. V tématu [Self-hosted integrace Runtime](create-self-hosted-integration-runtime.md) článku se dozvíte podrobnosti. Modul Runtime integrace poskytuje integrované ovladače MongoDB, proto nemusíte ručně nainstalovat všechny ovladače při kopírování dat z MongoDB.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -53,9 +53,9 @@ Následující části obsahují podrobnosti o vlastnosti, které slouží k ur�
 
 Pro MongoDB propojené služby jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ |Vlastnost typu musí být nastavena na: **MongoDb** |Ano |
+| type |Vlastnost typu musí být nastavena na: **MongoDb** |Ano |
 | server |IP adresa nebo název hostitele serveru MongoDB. |Ano |
 | port |Port TCP, který používá MongoDB server naslouchat pro připojení klientů. |Ne (výchozí hodnota je 27017) |
 | databaseName |Název databáze MongoDB, kterou chcete získat přístup. |Ano |
@@ -96,9 +96,9 @@ Pro MongoDB propojené služby jsou podporovány následující vlastnosti:
 
 Ke zkopírování dat z MongoDB, nastavte vlastnost typu datové sady, která **MongoDbCollection**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typu datové sady musí být nastavena na: **MongoDbCollection** | Ano |
+| type | Vlastnost typu datové sady musí být nastavena na: **MongoDbCollection** | Ano |
 | Název_kolekce |Název kolekce v databázi MongoDB. |Ano |
 
 **Příklad:**
@@ -127,9 +127,9 @@ Ke zkopírování dat z MongoDB, nastavte vlastnost typu datové sady, která **
 
 Ke zkopírování dat z MongoDB, nastavte typ zdroje v aktivitě kopírování do **MongoDbSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **MongoDbSource** | Ano |
+| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **MongoDbSource** | Ano |
 | query |Použijte vlastní dotaz SQL 92 číst data. Příklad: vybrat * z MyTable. |Ne (když je určena "Název_kolekce" v datové sadě) |
 
 **Příklad:**
@@ -202,21 +202,21 @@ Azure Data Factory používá integrované ovladače ODBC pro připojení k a ko
 
 Virtuální tabulky odkazovat na data v tabulce skutečné povolení ovladače pro přístup k datům nenormalizované. Dotazování a připojení virtuální tabulky, můžete přístup k obsahu polí MongoDB.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Například je zde ExampleTable MongoDB tabulku, která má jeden sloupec s pole objektů v každé buňce – faktury a jeden sloupec s pole Skalární typy – hodnocení.
 
 | _id | Jméno zákazníka | Faktury | Úroveň služby | Hodnocení |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", položka: "Toaster byl", cena: "456", slevu: "0,2"}, {invoice_id: "124", položka: "sušárny", ceny: slevách "1235": "0,2"}] |Stříbrný |[5,6] |
-| 2222 |XYZ |[{invoice_id: "135", položka: "ledničky", cena: "12543", slevu: "0,0"}] |Zlatý |[1,2] |
+| 2222 |XYZ |[{invoice_id: "135", položka: "ledničky", cena: "12543", slevu: "0,0"}] |Zlatá |[1,2] |
 
 Ovladač by vygeneroval více virtuální tabulky k reprezentaci této jednu tabulku. První virtuální tabulky je základní tabulka s názvem "ExampleTable" v příkladu. Základní tabulka obsahuje všechna data z původní tabulky, ale data z pole byla vynechána a je v tabulkách virtuální rozbalena.
 
 | _id | Jméno zákazníka | Úroveň služby |
 | --- | --- | --- |
 | 1111 |ABC |Stříbrný |
-| 2222 |XYZ |Zlatý |
+| 2222 |XYZ |Zlatá |
 
 Virtuální tabulky, které představují původní pole v příkladu v následujících tabulkách. Tyto tabulky obsahují následující:
 
@@ -226,7 +226,7 @@ Virtuální tabulky, které představují původní pole v příkladu v následu
 
 **Tabulka "ExampleTable_Invoices":**
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | Položka | cena | Sleva |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | Položka | price | Sleva |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |Toaster byl |456 |0.2 |
 | 1111 |1 |124 |sušárny |1235 |0.2 |

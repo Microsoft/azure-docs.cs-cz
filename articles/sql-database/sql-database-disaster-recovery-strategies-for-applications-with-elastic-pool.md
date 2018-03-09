@@ -12,15 +12,15 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.date: 12/13/2017
+ms.workload: Inactive
+ms.date: 03/05/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.workload: Inactive
-ms.openlocfilehash: 9d12fb8a7dbd3bb763e42fd0981d7ef18b57248b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: b2a8f897130c2bf21321366a727ce2e2ae9d1d99
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategie zotavení po havárii pro aplikace pomocí fondů elastické databáze SQL
 V průběhu let, které jsme se dozvěděli cloudové služby nejsou spolehlivá a závažné incidenty dojít. Databáze SQL obsahuje několik funkcí, které poskytují pro kontinuitu podnikových procesů vaší aplikace, když dojde k tyto incidenty. [Elastické fondy](sql-database-elastic-pool.md) a jedné databáze podporují stejný druh možnosti obnovení po havárii. Tento článek popisuje několik strategie zotavení po Havárii pro elastických fondů, které využívají tyto funkce kontinuity obchodních databáze SQL.
@@ -30,6 +30,9 @@ Tento článek používá následující kanonický vzor aplikací SaaS ISV:
 <i>Moderní cloudové webovou aplikaci zřídí jedna databáze SQL pro každý koncový uživatel. ISV má mnoho zákazníků a proto používá mnoho databází, označuje jako databáze klienta. Vzhledem k tomu, že databáze klienta obvykle mají vzorce nepředvídatelné aktivity, ISV pomocí fondu elastické databáze po dlouhou dobu učinit velmi předvídatelný databázi náklady. Elastický fond také zjednodušuje správu výkonu, pokud aktivita uživatele špičky. Kromě databáze klienta aplikace také používá několik databází k spravovat profily uživatelů, zabezpečení, shromažďování vzorce používání atd. Dostupnost jednotlivé klienty, které nemá negativní vliv na dostupnost aplikace jako celek. Ale dostupnost a výkon databáze správy je velmi důležitá pro funkce aplikace a pokud jsou databáze správy offline bude celá aplikace je offline.</i>  
 
 Tento článek popisuje zahrnující celou řadu scénářů z aplikací citlivé spuštění náklady na těch, které jsou s požadavky na přísné dostupnosti strategie zotavení po Havárii.
+
+> [!NOTE]
+> Pokud používáte Premium databáze a fondy, můžete provést je odolný regionální výpadkům převede konfigurace redundantní nasazení zóny (momentálně ve verzi preview). V tématu [Zónově redundantní databáze](sql-database-high-availability.md).
 
 ## <a name="scenario-1-cost-sensitive-startup"></a>Scénář 1. Náklady citlivé spuštění
 <i>Jsem obchodní spuštění a mě náklady velmi citlivé.  Chcete zjednodušit nasazení a správu aplikace a mám omezené SLA pro jednotlivé zákazníky. Ale chceme se ujistit aplikaci jako celek se nikdy offline.</i>
@@ -109,7 +112,7 @@ Když je obnovit primární oblasti Azure *po* jste obnovili aplikaci v oblasti 
 Klíč **těžit** této strategie je, že poskytuje nejvyšší smlouvě SLA pro platící zákazníky. Také zaručuje, že nový zkušební verze jsou odblokuje, jakmile je vytvořen fond zkušební zotavení po Havárii. **Kompromis** je, že tato instalace zvyšuje celkové náklady na klienta databází náklady na sekundární fond zotavení po Havárii pro placené zákazníků. Kromě toho Pokud sekundární fondu má různou velikost, platící zákazníky zaznamenat snížení výkonu po převzetí služeb při selhání až do dokončení upgradu fondu v oblasti zotavení po Havárii. 
 
 ## <a name="scenario-3-geographically-distributed-application-with-tiered-service"></a>Scénář 3. Geograficky distribuovaná aplikace s vrstvami služby
-<i>Je nutné vyspělá aplikace SaaS s nabídkami vrstvené služby. Chcete nabízet velmi agresivní SLA Moje placené zákazníkům a minimalizovat riziko dopad, když dojde k výpadku, protože i stručný přerušení může způsobit nespokojenosti zákazníka. Je důležité, aby platící zákazníky můžete vždy přístup k datům. Zkušební verze jsou zdarma a SLA není nabídnuta během zkušebního období.</i> 
+<i>Je nutné vyspělá aplikace SaaS s nabídkami vrstvené služby. Chcete nabízet velmi agresivní SLA Moje placené zákazníkům a minimalizovat riziko dopad, když dojde k výpadku, protože i stručný přerušení může způsobit nespokojenosti zákazníka. Je důležité, aby platící zákazníky můžete vždy přístup k datům. Zkušební verze jsou zdarma a SLA není nabídnuta během zkušebního období. </i> 
 
 Pro podporu tohoto scénáře, použijte tři samostatné elastické fondy. Zřídit dvě stejná velikost fondy s vysokou Edtu na databázi ve dvou různých oblastech tak, aby obsahovala databáze klienta placené zákazníků. Třetí fondu obsahujícího zkušební klienty může mít nižší počet jednotek Edtu na databázi a zřídit v jednom ze dvou oblastí.
 
@@ -166,7 +169,7 @@ Hlavní **kompromis** jsou:
 ## <a name="summary"></a>Souhrn
 Tento článek se zaměřuje na strategie zotavení po havárii pro databázové vrstvy používá víceklientské aplikace SaaS ISV. Strategie, kterou zvolíte podle potřeby aplikaci, například obchodní model SLA, kterou chcete nabídnout zákazníkům, rozpočet omezení atd. Každý popisuje strategii popisuje výhody a kompromis tak může provést informované rozhodnutí. Konkrétní aplikace pravděpodobně také dalšími součástmi Azure. Proto zkontrolujte své firmy kontinuity pokyny a orchestraci obnovení databázové vrstvy s nimi. Další informace o správě obnovení databáze aplikace v Azure, najdete v tématu [návrhu cloudové řešení pro zotavení po havárii](sql-database-designing-cloud-solutions-for-disaster-recovery.md).  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o Azure SQL Database automatizované zálohování najdete v tématu [automatizované zálohování SQL Database](sql-database-automated-backups.md).
 * Přehled kontinuity obchodních a scénářů najdete v tématu [obchodní kontinuity přehled](sql-database-business-continuity.md).
 * Další informace o použití automatizované zálohování pro obnovení, najdete v části [obnovit databázi ze zálohy spouštěná služba](sql-database-recovery-using-backups.md).

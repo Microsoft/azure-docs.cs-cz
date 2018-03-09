@@ -4,7 +4,7 @@ description: "Jak uložit Cvičná data v Azure Machine Learning Studio a použ�
 keywords: "Importujte dat, data, zdroje dat, Cvičná data"
 services: machine-learning
 documentationcenter: 
-author: garyericson
+author: bradsev
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 7da9dcec-5693-4bb6-8166-15904e7f75c3
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: garye;bradsev
-ms.openlocfilehash: cac35aa26fcdb7f2fb0db3b895d3c99d77f3b4ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: bradsev
+ms.openlocfilehash: 411cf5960381873d5b348bd35f51b8190900d842
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="import-your-data-into-azure-machine-learning-studio-from-another-experiment"></a>Import dat do nástroje Azure Machine Learning Studio z jiného experimentu
 [!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]

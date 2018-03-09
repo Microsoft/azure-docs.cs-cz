@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/06/2018
+ms.date: 03/07/2018
 ms.author: rajanaki
-ms.openlocfilehash: a17d0918ea5938daf81c469fd6402a7dc9764831
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9c52ef47992474465111f106fc15779cadd825be
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>Azure Site Recovery matici podpory pro replikaci z místního do Azure
 
@@ -82,7 +82,7 @@ Následující tabulka shrnuje podporu pro replikované operačního systému v 
 
 ### <a name="supported-ubuntu-kernel-versions-for-vmwarephysical-servers"></a>Podporované verze Ubuntu jádra pro VMware nebo fyzické servery
 
-**Verze** | **Verze služby mobility** | Verze jádra |
+**Verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 14.04 LTS | 9.10 | 3.13.0-24-Generic k 3.13.0-121-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-81-generic |
 14.04 LTS | 9.11 | 3.13.0-24-Generic k 3.13.0-128-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-91-generic |
@@ -96,9 +96,8 @@ Následující tabulka shrnuje podporu pro replikované operačního systému v 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Podporované souborové systémy a konfigurace úložiště hostovaný v systému Linux (VMware nebo fyzické servery)
 
 Následující systémy souborů a úložiště konfigurace softwaru jsou podporovány pro servery Linux spuštěné v VMware nebo fyzických serverů:
-* Systémy souborů: ext3, ext4, ReiserFS (Suse Linux Enterprise Server pouze), XFS
+* Systémy souborů: ext3, ext40, XFS
 * Správce svazků: LVM2
-* Software s funkcí Multipath: Mapovač zařízení
 
 Zařízení úložiště Paravirtualized (exportovat paravirtualized ovladače zařízení) nejsou podporovány.<br/>
 Blokovat více fronty vstupně-výstupní operace zařízení nejsou podporovány.<br/>
@@ -134,7 +133,7 @@ Multi-NIC | Ano | Ano
 
 ### <a name="failed-over-azure-vm-network-configuration"></a>Konfigurace sítě virtuálních počítačů Azure při selhání
 
-Síť Azure | **VMware nebo fyzický server** | **Technologie Hyper-V (s/bez nástroje Virtual Machine Manager)**
+**Síť Azure** | **VMware nebo fyzický server** | **Technologie Hyper-V (s/bez nástroje Virtual Machine Manager)**
 --- | --- | ---
 ExpressRoute | Ano | Ano
 Interní nástroj pro vyrovnávání zatížení | Ano | Ano
@@ -215,7 +214,7 @@ Managed Disks | Ano | Ano<br/><br/>Navrácení služeb po obnovení místně z v
 
 Site Recovery můžete nasadit za účelem replikace virtuálních počítačů a fyzických serverů s jakýmkoli operačním systémem podporovaným v Azure. To zahrnuje většinu verzí systému Windows a Linux. Místní, že virtuální počítače, které chcete replikovat, musí odpovídat následující požadavky pro Azure při replikaci do Azure.
 
-**Entity** | Požadavky | **Podrobnosti**
+**Entity** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
 **Hostovaný operační systém** | Technologie Hyper-V na Azure replikaci: Site Recovery podporuje všechny operační systémy, které jsou [nepodporuje v Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx). <br/><br/> Pro fyzický server replikace a VMware: Zkontrolujte Windows a Linux [požadavky](site-recovery-vmware-to-azure-classic.md) | Kontrola předpokladů se nezdaří, pokud není podporován.
 **Architektura operačního systému hosta** | 64 bitů | Kontrola předpokladů se nezdaří, pokud není podporován

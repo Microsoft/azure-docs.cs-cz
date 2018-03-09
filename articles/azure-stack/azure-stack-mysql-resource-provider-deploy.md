@@ -4,20 +4,21 @@ description: "Zjistěte, jak můžete nasadit MySQL zprostředkovatel prostředk
 services: azure-stack
 documentationCenter: 
 author: mattbriggs
-manager: bradleyb
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3273f435cb65411c85e3a22369682d51e7a12baf
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.reviewer: jeffgo
+ms.openlocfilehash: 067e478548ba840ece14737cdf3e6d5d4da28be0
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Používání databází MySQL v zásobníku Microsoft Azure
 
@@ -45,7 +46,7 @@ Tato verze již vytváří instance databáze MySQL. To znamená, že je potřeb
 - Stáhnout a nasadit MySQL Server z Azure Marketplace.
 
 > [!NOTE]
-> Hostitelské servery, které jsou nainstalovány na implementaci více uzly zásobník Azure musí být vytvořeny z předplatného klienta. Nemohou být vytvářeny z předplatného výchozího zprostředkovatele. Musí být vytvořený z portálu klienta nebo z relace prostředí PowerShell příslušné přihlášení. Všechny hostitelské servery jsou fakturovatelné virtuální počítače a musí mít příslušnou licenci. Správce služby můžete být vlastníkem předplatného klienta.
+> Hostitelské servery, které jsou nainstalovány v Azure zásobníku integrované systémy musí být vytvořeny z předplatného klienta. Nemohou být vytvářeny z předplatného výchozího zprostředkovatele. Musí být vytvořený z portálu klienta nebo z relace prostředí PowerShell příslušné přihlášení. Všechny hostitelské servery jsou fakturovatelné virtuální počítače a musí mít příslušnou licenci. Správce služby můžete být vlastníkem předplatného klienta.
 
 ### <a name="required-privileges"></a>Požadovaná oprávnění
 Systémový účet musí mít následující oprávnění:
@@ -55,7 +56,7 @@ Systémový účet musí mít následující oprávnění:
 
 ## <a name="deploy-the-resource-provider"></a>Nasazení poskytovatele prostředků
 
-1. Pokud jste tak již neučinili, zaregistrujte vaší development kit a stáhnout bitovou kopii jádro systému Windows Server 2016 Datacenter ke stažení přes správu Marketplace. Je nutné použít bitovou kopii jádro systému Windows Server 2016. Skript můžete také použít k vytvoření [bitové kopie systému Windows Server 2016](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image). (Nezapomeňte vybrat možnost jádra.) Modul runtime rozhraní .NET 3.5 už nepotřebujete.
+1. Pokud jste tak již neučinili, zaregistrujte vaší development kit a stáhnout bitovou kopii jádro systému Windows Server 2016 Datacenter ke stažení přes správu Marketplace. Je nutné použít bitovou kopii jádro systému Windows Server 2016. Skript můžete také použít k vytvoření [bitové kopie systému Windows Server 2016](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image). (Nezapomeňte vybrat možnost jádra.)
 
 
 2. Přihlaste se k hostiteli, který přístup privilegované koncový bod virtuálního počítače.
@@ -64,19 +65,20 @@ Systémový účet musí mít následující oprávnění:
     - V systémech s více uzly hostitele musí být systém, kterým může přistupovat privilegované koncový bod.
     
     >[!NOTE]
-    > Systém, na kterém je spuštěn skript *musí* být systém Windows 10 nebo Windows Server 2016 na nejnovější verzi modulu runtime rozhraní .NET nainstalované. Instalace selže. Azure SDK hostitele splňuje tato kritéria.
+    > Systém, na kterém je spuštěn skript *musí* být systém Windows 10 nebo Windows Server 2016 na nejnovější verzi modulu runtime rozhraní .NET nainstalované. Instalace selže. Azure SDK zásobníku hostitele splňuje tato kritéria.
     
 
 3. Stáhněte poskytovatele prostředků MySQL binární. Pak spusťte Self-Extractor extrahujte obsah do dočasného adresáře.
 
     >[!NOTE] 
-    > Sestavení zprostředkovatele prostředků odpovídá sestavení Azure zásobníku. Ujistěte se, že jste stáhnout správné binární verze zásobník Azure, který běží.
+    > Poskytovatel prostředků má minimální odpovídající Azure zásobníku sestavení. Ujistěte se, že jste stáhnout správné binární verze zásobník Azure, který běží.
 
     | Azure sestavení zásobníku | Instalační program MySQL RP |
     | --- | --- |
-    | 1.0.180102.3 nebo 1.0.180106.1 (více uzly) | [MySQL RP version 1.1.14.0](https://aka.ms/azurestackmysqlrp1712) |
-    | 1.0.171122.1 | [MySQL RP version 1.1.12.0](https://aka.ms/azurestackmysqlrp1711) |
-    | 1.0.171028.1 | [MySQL RP version 1.1.8.0](https://aka.ms/azurestackmysqlrp1710) |
+    | 1802: 1.0.180302.1 | [MySQL RP verze 1.1.18.0](https://aka.ms/azurestackmysqlrp1802) |
+    | 1712: 1.0.180102.3 nebo 1.0.180106.1 (více uzly) | [MySQL RP version 1.1.14.0](https://aka.ms/azurestackmysqlrp1712) |
+    | 1711: 1.0.171122.1 | [MySQL RP version 1.1.12.0](https://aka.ms/azurestackmysqlrp1711) |
+    | 1710: 1.0.171028.1 | [MySQL RP version 1.1.8.0](https://aka.ms/azurestackmysqlrp1710) |
 
 4.  Kořenový certifikát zásobník Azure se načtou z privilegovaných koncový bod. Pro sadu SDK Azure se vytvoří certifikát podepsaný svým držitelem v rámci tohoto procesu. Pro více uzly je nutné zadat příslušný certifikát.
 
@@ -121,11 +123,11 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure SDK, the default is AzureStack, and the default prefix is AzS.
-# For integrated systems, the domain and the prefix are the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
-$prefix = "AzS"
-$privilegedEndpoint = "$prefix-ERCS01"
+
+# For integrated systems, use the IP address of one of the ERCS virtual machines
+$privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\MYSQLRP'
@@ -135,7 +137,7 @@ $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set the credentials for the new resource provider VM.
+# Set the credentials for the new resource provider VM local administrator account
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("mysqlrpadmin", $vmLocalAdminPass)
 
@@ -165,7 +167,7 @@ Tyto parametry můžete zadat na příkazovém řádku. Pokud ho použít nechce
 
 | Název parametru | Popis | Komentář nebo výchozí hodnotu |
 | --- | --- | --- |
-| CloudAdminCredential | Přihlašovací údaje pro správce cloudu potřebné pro přístup k privilegované koncový bod. | _Požadované_ |
+| **CloudAdminCredential** | Přihlašovací údaje pro správce cloudu potřebné pro přístup k privilegované koncový bod. | _Požadované_ |
 | **AzCredential** | Přihlašovací údaje pro účet správce služby Azure zásobníku. Pomocí stejných přihlašovacích údajů, které jste použili pro nasazení Azure zásobníku. | _Požadované_ |
 | **VMLocalCredential** | Přihlašovací údaje pro účet místního správce MySQL zprostředkovatele prostředků virtuálních počítačů. | _Požadované_ |
 | **PrivilegedEndpoint** | IP adresa nebo název DNS privilegované koncového bodu. |  _Požadované_ |
@@ -174,16 +176,8 @@ Tyto parametry můžete zadat na příkazovém řádku. Pokud ho použít nechce
 | **MaxRetryCount** | Počet přístupů, které chcete opakovat každé operace, pokud dojde k selhání.| 2 |
 | **RetryDuration** | Interval časového limitu mezi opakovanými pokusy, v sekundách. | 120 |
 | **Odinstalace** | Odebere poskytovatele prostředků a všechny přidružené prostředky (viz následující poznámky k). | Ne |
-| Režim DebugMode | Brání automatické čištění při selhání. | Ne |
+| **Režim DebugMode** | Brání automatické čištění při selhání. | Ne |
 | **AcceptLicense** | Přeskočí řádku tak, aby přijímal GPL licence.  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
-
-
-
-V závislosti na výkonu a stahování rychlosti systému instalace může trvat jako málo jako 20 minut, nebo jako dlouho jako několik hodin. Pokud **MySQLAdapter** okno není k dispozici, aktualizujte portál pro správu.
-
-> [!NOTE]
-> Pokud instalace používá víc než 90 minut, může selhat. Pokud ano, zobrazí se na obrazovce a v souboru protokolu zprávu selhání. Z selhávající krok tím se pokus o nasazení. Systémy, které nesplňuje doporučené specifikace paměti a základní nemusí být možné instalovat MySQL RP.
-
 
 
 ## <a name="verify-the-deployment-by-using-the-azure-stack-portal"></a>Ověření nasazení pomocí portálu Azure zásobníku
@@ -272,14 +266,14 @@ Heslo můžete upravit tak, že první změníte na instanci serveru MySQL. Vybe
 ![Aktualizovat heslo správce](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
 
 ## <a name="update-the-mysql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>Aktualizace adaptéru pro zprostředkovatele prostředků MySQL (více uzly jen sestavení 1710 a novější)
-Při každé aktualizaci sestavení Azure zásobníku nový adaptér zprostředkovatele prostředků MySQL vydání. Existující adaptér může pokračovat v práci. Doporučujeme však aktualizaci na nejnovější verzi co nejdříve po aktualizaci zásobník Azure. 
+Když jsou aktualizovány sestavení Azure zásobníku se může uvolnit nový adaptér zprostředkovatele prostředků SQL. Zatímco existující adaptér fungovat, doporučujeme aktualizovat na nejnovější verzi co nejdříve. 
 
 Proces aktualizace je podobný procesu instalace, která byla popsána dříve. Vytvoříte nový virtuální počítač s nejnovější kód zprostředkovatele prostředků. Potom migraci nastavení do této nové instance, včetně databáze a hostování informace o serveru. Můžete také migrovat nezbytné záznam DNS.
 
 Pomocí skriptu UpdateMySQLProvider.ps1 s stejné argumenty popsané výše. Zadejte certifikát zde také.
 
 > [!NOTE]
-> Aktualizace je podporována pouze v systémech s více uzly.
+> Proces aktualizace se vztahuje pouze na integrované systémy.
 
 ```
 # Install the AzureRM.Bootstrapper module, set the profile, and install AzureRM and AzureStack modules.
@@ -287,14 +281,14 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure SDK, the default is AzureStack and the default prefix is AzS.
-# For integrated systems, the domain and the prefix are the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
-$prefix = "AzS"
-$privilegedEndpoint = "$prefix-ERCS01"
+
+# For integrated systems, use the IP address of one of the ERCS virtual machines
+$privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
-$tempDir = 'C:\TEMP\SQLRP'
+$tempDir = 'C:\TEMP\MYSQLRP'
 
 # The service admin account (can be Azure Active Directory or Active Directory Federation Services).
 $serviceAdmin = "admin@mydomain.onmicrosoft.com"
@@ -328,7 +322,7 @@ Tyto parametry můžete zadat na příkazovém řádku. Pokud to neuděláte, ne
 
 | Název parametru | Popis | Komentář nebo výchozí hodnotu |
 | --- | --- | --- |
-| CloudAdminCredential | Přihlašovací údaje pro správce cloudu potřebné pro přístup k privilegované koncový bod. | _Požadované_ |
+| **CloudAdminCredential** | Přihlašovací údaje pro správce cloudu potřebné pro přístup k privilegované koncový bod. | _Požadované_ |
 | **AzCredential** | Přihlašovací údaje pro účet správce služby Azure zásobníku. Pomocí stejných přihlašovacích údajů jako používat pro nasazování Azure zásobníku. | _Požadované_ |
 | **VMLocalCredential** |Přihlašovací údaje pro účet místního správce zprostředkovatele prostředků SQL virtuálních počítačů. | _Požadované_ |
 | **PrivilegedEndpoint** | IP adresa nebo název DNS privilegované koncového bodu. |  _Požadované_ |
@@ -337,8 +331,109 @@ Tyto parametry můžete zadat na příkazovém řádku. Pokud to neuděláte, ne
 | **MaxRetryCount** | Počet přístupů, které chcete opakovat každé operace, pokud dojde k selhání.| 2 |
 | **RetryDuration** | Interval časového limitu mezi opakovanými pokusy, v sekundách. | 120 |
 | **Odinstalace** | Odeberte zprostředkovatele prostředků a všechny přidružené prostředky (viz následující poznámky k). | Ne |
-| Režim DebugMode | Brání automatické čištění při selhání. | Ne |
+| **Režim DebugMode** | Brání automatické čištění při selhání. | Ne |
 | **AcceptLicense** | Přeskočí řádku tak, aby přijímal GPL licence.  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
+
+
+## <a name="collect-diagnostic-logs"></a>Shromažďování diagnostických protokolů
+Poskytovatel prostředků MySQL je uzamčeném dolů virtuálního počítače. Pokud bude nutné shromáždit protokoly z virtuálního počítače, koncový bod prostředí PowerShell právě dostatečně správy (JEA) _DBAdapterDiagnostics_ slouží pouze k tomuto účelu. Nejsou k dispozici prostřednictvím tento koncový bod dva příkazy:
+
+* Get-AzsDBAdapterLog - připraví balíček zip obsahující RP diagnostické protokoly a vloží ho na jednotce uživatelské relace. Příkaz nelze volat bez parametrů a bude shromažďovat poslední čtyři hodiny protokolů.
+* Remove-AzsDBAdapterLog - vyčistí existující balíčky protokolu na poskytovateli prostředků virtuálních počítačů
+
+Volá se uživatelský účet _dbadapterdiag_ se vytvoří během nasazení RP nebo aktualizace pro připojení ke koncovému bodu diagnostiky pro extrahování RP protokoly. Heslo tohoto účtu je stejné jako heslo zadané pro účet místního správce během nasazení nebo aktualizovat.
+
+Používat tyto příkazy, musíte vytvořit vzdálené relace prostředí PowerShell k virtuálnímu počítači zprostředkovatele prostředků a vyvolání příkazu. Volitelně můžete zadat parametry FromDate a do data. Pokud nezadáte alespoň jedna z obou z nich, datum FromDate bude čtyři hodiny před aktuálním časem. a ToDate bude aktuální čas.
+
+Tento ukázkový skript demonstruje použití těchto příkazů:
+
+```
+# Create a new diagnostics endpoint session.
+$databaseRPMachineIP = '<RP VM IP>'
+$diagnosticsUserName = 'dbadapterdiag'
+$diagnosticsUserPassword = '<see above>'
+
+$diagCreds = New-Object System.Management.Automation.PSCredential `
+        ($diagnosticsUserName, $diagnosticsUserPassword)
+$session = New-PSSession -ComputerName $databaseRPMachineIP -Credential $diagCreds `
+        -ConfigurationName DBAdapterDiagnostics
+
+# Sample captures logs from the previous one hour
+$fromDate = (Get-Date).AddHours(-1)
+$dateNow = Get-Date
+$sb = {param($d1,$d2) Get-AzSDBAdapterLog -FromDate $d1 -ToDate $d2}
+$logs = Invoke-Command -Session $session -ScriptBlock $sb -ArgumentList $fromDate,$dateNow
+
+# Copy the logs
+$sourcePath = "User:\{0}" -f $logs
+$destinationPackage = Join-Path -Path (Convert-Path '.') -ChildPath $logs
+Copy-Item -FromSession $session -Path $sourcePath -Destination $destinationPackage
+
+# Cleanup logs
+$cleanup = Invoke-Command -Session $session -ScriptBlock {Remove- AzsDBAdapterLog }
+# Close the session
+$session | Remove-PSSession
+```
+
+## <a name="maintenance-operations-integrated-systems"></a>Operace údržby (integrované systémy)
+Poskytovatel prostředků MySQL je uzamčeném dolů virtuálního počítače. Aktualizace zabezpečení prostředků zprostředkovatele virtuálního počítače lze provést prostřednictvím koncového bodu prostředí PowerShell právě dostatečně správy (JEA) _DBAdapterMaintenance_.
+
+Skript se poskytuje s instalační balíček RP usnadňuje těchto operací.
+
+
+### <a name="update-the-virtual-machine-operating-system"></a>Aktualizujte operační systém virtuálního počítače
+Aktualizovat virtuální počítač Windows serveru několika způsoby:
+* Instalovat nejnovější balíček zprostředkovatele prostředků pomocí bitové kopie aktuálně nainstalovanou opravou jádro systému Windows Server 2016
+* Instalovat balíček služby Windows Update během instalace nebo aktualizace RP
+
+
+### <a name="update-the-virtual-machine-windows-defender-definitions"></a>Aktualizace definic program Windows Defender virtuálního počítače
+
+Postupujte podle těchto kroků provedete aktualizaci definice Defender:
+
+1. Stažení aktualizace definic program Windows Defender z [definic programu Windows Defender](https://www.microsoft.com/en-us/wdsi/definitions)
+
+    Na této stránce, v části "Ruční stažení a instalace definice" stáhnout "antivirové Windows Defender pro Windows 10 a Windows 8.1" 64bitový soubor. 
+    
+    Přímý odkaz: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+
+2. Vytvoření relace prostředí PowerShell ke koncovému bodu údržby MySQL RP adaptér virtuálního počítače
+3. Zkopírujte soubor aktualizace definice k počítači adaptér DB přes koncový bod relace údržby
+4. V prostředí PowerShell údržby relace vyvolání _aktualizace DBAdapterWindowsDefenderDefinitions_ příkaz
+5. Po instalaci se doporučuje odebrat soubor aktualizace použité definice. Může být odebrán na pomocí relace údržby _Remove-ItemOnUserDrive)_ příkaz.
+
+
+Tady je ukázkový skript k aktualizaci definic Defender (nahraďte adresu nebo název virtuálního počítače s skutečná hodnota):
+
+```
+# Set credentials for the diagnostic user
+$diagPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$diagCreds = New-Object System.Management.Automation.PSCredential `
+    ("dbadapterdiag", $vmLocalAdminPass)$diagCreds = Get-Credential
+
+# Public IP Address of the DB adapter machine
+$databaseRPMachine  = "XX.XX.XX.XX"
+$localPathToDefenderUpdate = "C:\DefenderUpdates\mpam-fe.exe"
+ 
+# Download Windows Defender update definitions file from https://www.microsoft.com/en-us/wdsi/definitions. 
+Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64 `
+    -Outfile $localPathToDefenderUpdate 
+
+# Create session to the maintenance endpoint
+$session = New-PSSession -ComputerName $databaseRPMachine `
+    -Credential $diagCreds -ConfigurationName DBAdapterMaintenance
+# Copy defender update file to the db adapter machine
+Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
+     -Destination "User:\mpam-fe.exe"
+# Install the update file
+Invoke-Command -Session $session -ScriptBlock `
+    {Update-AzSDBAdapterWindowsDefenderDefinitions -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
+# Cleanup the definitions package file and session
+Invoke-Command -Session $session -ScriptBlock `
+    {Remove-AzSItemOnUserDrive -ItemPath "User:\mpam-fe.exe"}
+$session | Remove-PSSession
+```
+
 
 ## <a name="remove-the-mysql-resource-provider-adapter"></a>Odeberte adaptér zprostředkovatele prostředků MySQL
 

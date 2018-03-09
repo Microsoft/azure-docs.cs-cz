@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: genemi
-ms.openlocfilehash: ebf1c4948816746fa02b867d1ea66afc64b882b0
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 13ac12377887684143d32d08e4bd5de107183105
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Obecné pokyny pro práci s Wingtip lístky ukázkové aplikace SaaS
 
@@ -28,9 +28,9 @@ Tento článek obsahuje obecné pokyny pro spouštění aplikací SaaS ukázkov�
 Spustitelný soubor obsah (skripty, knihovny DLL) mohou být blokovány Windows, když jsou soubory zip stažené z externího zdroje a rozbalené. Při extrahování skripty ze souboru zip, **použijte následující postup, chcete-li odblokovat soubor .zip před extrahování**. Tím se zajistí, že je povoleno spustit skripty.
 
 1. Přejděte do úložiště SaaS GitHub Wingtip lístky pro databáze klientů vzor, který chcete prozkoumat: 
-    - [WingtipTicketsSaaS StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
-    - [WingtipTicketsSaaS DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
-    - [WingtipTicketsSaaS MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
+    - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
+    - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
+    - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. Klikněte na tlačítko **klonovat nebo stáhnout**.
 3. Klikněte na tlačítko **stáhnout zip** a soubor uložte.
 4. Klikněte pravým tlačítkem na soubor zip a vyberte **vlastnosti**. Název úložiště bude odpovídat názvu souboru zip. (např. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
@@ -86,10 +86,10 @@ Nasazení má původně klienty a servery SQL Database katalogu pro připojení 
 Aby se zajistilo úspěšné ukázku připojení, všechny servery mají [pravidlo brány firewall](sql-database-firewall-configure.md) povolení všechny IP adresy prostřednictvím.
 
 
-1. Otevřete *SSMS* a připojte se k klienty. Název serveru, závisí na vzoru databáze klientů, jste vybrali (dole najdete podrobnosti):
-    - **Samostatné aplikace:** servery jednotlivých klientů (např. *contosoconcerthall -&lt;uživatele&gt;. database.windows.net*) 
+1. Otevřete *SSMS* a připojte se ke klientům. Název serveru, závisí na vzoru databáze klientů, jste vybrali (dole najdete podrobnosti):
+    - **Samostatné aplikace:** servery jednotlivých klientů (např. *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
     - **Databáze za klienta:** *tenants1-dpt -&lt;uživatele&gt;. database.windows.net*
-    - **Databáze víceklientské:** *tenants1-mt -&lt;uživatele&gt;. database.windows.net* 
+    - **Multi-tenant database:** *tenants1-mt-&lt;User&gt;.database.windows.net* 
 2. Klikněte na **Připojit** > **Databázový stroj...**:
 
    ![katalogový server](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
@@ -97,14 +97,14 @@ Aby se zajistilo úspěšné ukázku připojení, všechny servery mají [pravid
 3. Přihlašovací údaje pro ukázku jsou: Přihlašovací jméno = *developer*, Heslo = *P@ssword1*
 
     Následující obrázek ukazuje přihlášení pro *databáze za klienta* vzor. 
-    ![připojení](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
+    ![Připojení](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
     
    
 
 4. Opakujte kroky 2 až 3 a připojte se k serveru katalogu (dole najdete názvy konkrétních serverů na základě vzoru pro databáze klientů vybrané)
     - **Samostatné aplikace:** *katalogu-sa -&lt;uživatele&gt;. database.windows.net*
     - **Databáze za klienta:** *katalogu-dpt -&lt;uživatele&gt;. database.windows.net*
-    - **Databáze víceklientské:** *katalogu-mt -&lt;uživatele&gt;. database.windows.net*
+    - **Multi-tenant database:** *catalog-mt-&lt;User&gt;.database.windows.net*
 
 
 Po úspěšném připojení by se zobrazit všechny servery. Seznam databází se může lišit v závislosti na klienty, kterou jste zřídili.
@@ -115,7 +115,7 @@ Následující obrázek ukazuje přihlášení pro *databáze za klienta* vzor.
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Nasazení aplikace SaaS samostatné Wingtip lístky](saas-standaloneapp-get-started-deploy.md)
 - [Nasazení databáze SaaS lístky Wingtip na aplikaci klienta](saas-dbpertenant-get-started-deploy.md)
 - [Nasazení aplikace Wingtip lístky SaaS víceklientské databáze](saas-multitenantdb-get-started-deploy.md)

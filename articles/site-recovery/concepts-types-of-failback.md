@@ -2,25 +2,20 @@
 title: "Navrácení služeb po obnovení ve službě Azure Site Recovery | Microsoft Docs"
 description: "Tento článek obsahuje přehled různých typů navrácení služeb po obnovení a upozornění, aby byla považována za při selhání zpátky do místního se službou Azure Site Recovery."
 services: site-recovery
-documentationcenter: 
 author: rajani-janaki-ram
 manager: guaravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 03/05/2018
 ms.author: rajanki
-ms.openlocfilehash: 07dc05c0bd89e69b6bfcff7577919494647efed0
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 372a7867b47960338d7a1bf7e646fb9fffbe72e1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="overview-of-failback"></a>Přehled o navrácení služeb po obnovení
+
 Až budete mít převzetí služeb při selhání do Azure, může selhat zpět do místního webu. Existují dva různé typy navrácení služeb po obnovení, které je možné s Azure Site Recovery: 
 
 - Navrácení služeb po obnovení do původního umístění 
@@ -55,5 +50,5 @@ Pokud virtuální počítač na místě před opětovnou ochranu virtuálního p
 
 ## <a name="next-steps"></a>Další postup
 
-Postupujte podle kroků provést [operace navrácení služeb po obnovení](site-recovery-how-to-failback-azure-to-vmware.md).
+Postupujte podle kroků provést [operace navrácení služeb po obnovení](vmware-azure-failback.md).
 

@@ -18,7 +18,7 @@
     - name: Vytvoření aplikace v Node.js
       href: quickstart-nodejs.md
     - name: Vytvoření aplikace v Javě
-      href: ../../azure-toolkit-for-intellij-hello-world-web-app-linux.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: quickstart-java.md
     - name: Vytvoření aplikace v Ruby
       href: quickstart-ruby.md
     - name: Vytvoření aplikace v Dockeru/Go

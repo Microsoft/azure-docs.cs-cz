@@ -1,6 +1,6 @@
 ---
 title: "Azure ochrana osobních dat v klidovém stavu s šifrováním | Microsoft Docs"
-description: "Tento článek je součástí série, umožňují použít Azure k ochraně osobních údajů"
+description: "Tento článek slouží v effforts pro dosažení souladu s požadavky na odvětvím nebo státní například obecné Data Protection nařízení (GDPR)."
 services: security
 documentationcenter: na
 author: Barclayn
@@ -12,21 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 31e41f9befd9319115e5d147b473756486100c6e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 37da3d91df4be871d6647b6290768ea4999a5010
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-at-rest-with-encryption"></a>Azure šifrovací technologie: ochrana osobních údajů v klidovém stavu se šifrováním
 
 Tento článek vám pomůže pochopit a použít technologie šifrování Azure k zabezpečení dat v klidovém stavu.
 
-Šifrování dat v klidovém stavu je nezbytné jako osvědčený postup chránit důvěrné nebo osobní data a, aby splňoval požadavky na dodržování předpisů a data o ochraně osobních údajů.
-Šifrování v klidovém stavu slouží k útočník zabránit v přístupu k nešifrovaná data zajištěním data se šifrují, pokud na disku.
+Šifrování dat v klidovém stavu je nezbytné jako osvědčený postup chránit důvěrné nebo osobní data a, aby splňoval požadavky na dodržování předpisů a data o ochraně osobních údajů. Šifrování v klidovém stavu slouží k útočník zabránit v přístupu k nešifrovaná data zajištěním data se šifrují, pokud na disku. Informace obsažené v tomto článku slouží k zajištění souladu s obecné Data Protection nařízení (GDPR).
 
 ## <a name="scenario"></a>Scénář 
 
@@ -167,7 +166,7 @@ Společnost můžete provést jeho cílem šifrování osobních dat uložených
 
 K ochraně klíčů, které se používají k šifrování dat v Azure, může společnost použít Azure Key Vault. To zjednodušuje proces správy klíčů a umožňuje společnosti umožní zachovat kontrolu nad klíče, které k přístupu a šifrování osobní data.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Průvodce odstraňováním potíží Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg)
 

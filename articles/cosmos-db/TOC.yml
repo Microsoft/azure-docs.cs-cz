@@ -260,6 +260,8 @@
               href: mongodb-mongoose.md
             - name: Použití předvoleb pro čtení
               href: mongodb-readpreference.md
+            - name: Indexování
+              href: mongodb-indexing.md
             - name: Podpora funkce MongoDB
               href: mongodb-feature-support.md
             - name: Série kurzů Angular

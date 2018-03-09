@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/31/2017
+ms.date: 03/04/2018
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: bba26a947607a3679d191a2cd8164d27f61e2ba1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 500fb11627fa0ce7ac838c650a582dd9d49b598c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Různé role pro správu v Azure Active Directory PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -50,7 +50,7 @@ Privileged Identity Management umožňuje přiřadit uživatele k běžné role 
   > 
 * **Správce správy uživatelů** může resetovat hesla, sledovat stav služeb a spravovat uživatelské účty, skupiny uživatelů a žádosti o služby. Správce správy uživatelů nelze odstranit globální správce, vytvořit další role správce nebo resetování hesla pro fakturace, globálních a Správce služby.
 * **Správce serveru Exchange** má přístup správce k systému Exchange Online pomocí centra pro správu Exchange (e) a můžete provádět skoro všechny úlohy v systému Exchange Online.
-* **Správce služby SharePoint** má přístup správce ke službě SharePoint Online přes do centra pro správu služby SharePoint Online a můžete provádět skoro všechny úlohy ve službě SharePoint Online.
+* **Správce služby SharePoint (Preview)** má přístup správce ke službě SharePoint Online přes do centra pro správu služby SharePoint Online a můžete provádět skoro všechny úlohy ve službě SharePoint Online. Tato role je aktuálně ve verzi preview. Oprávněných uživatelů může zaznamenat zpoždění pomocí této role v rámci služby SharePoint po aktivaci v PIM.
 * **Skype pro firmy správce** má přístup správce ke Skypu pro firmy prostřednictvím Skype pro firmy centra pro správu a můžete provádět skoro všechny úlohy v Skype for Business Online.
 
 Přečtěte si tyto články další podrobnosti o [přiřazení rolí správce ve službě Azure AD](active-directory-assign-admin-roles-azure-portal.md) a [přiřazení rolí správců v Office 365](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504).
@@ -89,6 +89,6 @@ Přístup ke službám Microsoft Online Services může vyžadovat uživatel tak
 8. klikněte **přiřadit** tlačítko.  Uživatel teď může přihlásit k Azure.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

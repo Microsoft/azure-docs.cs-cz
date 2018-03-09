@@ -1,6 +1,6 @@
 ---
 title: "Ochrana osobních údajů v Microsoft Azure | Microsoft Docs"
-description: "První článek v řadě článků vám pomohou používat Azure k ochraně osobních údajů"
+description: "Tento článek by vám pomohou při použití Azure k ochraně osobních údajů a v souladu s obecné Data Protection nařízení (GDPR)"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 4dbdb2dc11bdc515fb3856dd45203868122c7726
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 741fb17be315faacef6483cbaaa565136622cb45
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-in-microsoft-azure"></a>Ochrana osobních údajů v Microsoft Azure
 
-Tento článek představuje řadu články, které vám pomohou používat Azure bezpečnostních technologií a služeb na ochranu osobních údajů. Toto je klíčovým požadavkem pro mnoho společností a dodržování předpisů a zásad správného řízení iniciativy odvětví. Scénář, problém prohlášení a společnosti cíle jsou zahrnuté v tomto poli.
+Tento článek představuje řadu články, které vám pomohou používat Azure bezpečnostních technologií a služeb na ochranu osobních údajů. Toto je klíčovým požadavkem pro mnoho společností a dodržování předpisů a zásad správného řízení iniciativy odvětví. Například můžete informací uvedených v této série článků pro dosažení souladu s obecné Data Protection nařízení (GDPR). Scénář, problém prohlášení a společnosti cíle jsou zahrnuté v tomto poli.
 
 ## <a name="scenario-and-problem-statement"></a>Scénáře a problému
 
@@ -66,7 +66,7 @@ V následujících článcích obsahovat technické postupy pokyny, které vám 
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Server s informacemi o zabezpečení Azure](https://aka.ms/AzureSecInfo)
 

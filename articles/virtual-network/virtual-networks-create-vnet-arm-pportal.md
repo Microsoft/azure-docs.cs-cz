@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: c89b455212ad428dbe67d7f1d95517072c220d8e
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: d317d35e2b4e1a0cebb354e3b2b2e75fd9ca6976
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets-using-the-azure-portal"></a>Vytvoření virtuální sítě s několika podsítěmi pomocí portálu Azure
 
@@ -41,7 +41,7 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 1. Vyberte **+ vytvořit prostředek** na horní, levého horního rohu portálu Azure.
 2. Vyberte **sítě**a potom vyberte **virtuální síť**.
-3. Jak je znázorněno na následujícím obrázku, zadejte *myVirtualNetwork* pro **název**, **myResourceGroup** pro **skupiny prostředků**, *Veřejné* pro podsíť **název**, 10.0.0.0/24 pro podsíť **rozsahu adres**, vyberte **umístění** a  **Předplatné**, přijměte zbývající výchozí hodnoty a pak vyberte **vytvořit**:
+3. Jak je znázorněno na následujícím obrázku, zadejte *myVirtualNetwork* pro **název**, *10.0.0.0/16* pro **adresní prostor**,  **myResourceGroup** pro **skupiny prostředků**, *veřejné* pro podsíť **název**, 10.0.0.0/24 pro podsíť **rozsahadres**, vyberte **umístění** a **předplatné**, přijměte zbývající výchozí hodnoty a pak vyberte **vytvořit**:
 
     ![Vytvoření virtuální sítě](./media/virtual-networks-create-vnet-arm-pportal/create-virtual-network.png)
 
@@ -146,7 +146,7 @@ Virtuální počítače vytvořené v tomto článku mít jeden [síťové rozhr
     Když virtuální počítač není potřeba mít přiřazené veřejnou IP adresu, Azure přiřadí veřejnou IP adresu pro každý virtuální počítač, který vytvoříte, ve výchozím nastavení. K virtuálnímu počítači komunikovat z Internetu, musí mít veřejnou IP adresu přiřazenou k virtuálnímu počítači. Všechny virtuální počítače mohou komunikovat odchozí přes Internet, zda je k virtuálnímu počítači přiřazena veřejnou IP adresu. Další informace o odchozí připojení k Internetu v Azure najdete v tématu [odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 13. Ve vašem počítači, přejděte na veřejnou IP adresu *myVmWeb* virtuálního počítače. Pokus o zobrazení úvodní stránka IIS ze svého počítače selže. Pokus selže, protože když byly nasazené virtuální počítače, Azure vytvoří skupinu zabezpečení sítě pro každý virtuální počítač, ve výchozím nastavení. 
 
-     Skupina zabezpečení sítě obsahuje pravidla zabezpečení, která povolují nebo odepírají příchozí a odchozí síťový provoz pomocí portu a IP adresy. Výchozí skupina zabezpečení sítě, který vytvořili Azure umožňuje komunikaci přes všechny porty mezi prostředky ve stejné virtuální síti. Pro virtuální počítače s Windows skupinu zabezpečení sítě výchozí odmítne veškerý příchozí provoz z Internetu přes všechny porty, potvrďte TCP port 3389 (RDP). V důsledku toho ve výchozím nastavení, můžete také RDP přímo na *myVmWeb* virtuálního počítače z Internetu, i když není vhodné portu 3389 otevřete na webový server. Vzhledem k tomu, že procházení webu komunikuje přes port 80, komunikaci z Internetu se nezdaří, protože není pravidlo ve skupině zabezpečení výchozí sítě umožňuje provoz přes port 80.
+     Skupina zabezpečení sítě obsahuje pravidla zabezpečení, která povolují nebo odepírají příchozí a odchozí síťový provoz pomocí portu a IP adresy. Výchozí skupina zabezpečení sítě, který vytvořili Azure umožňuje komunikaci přes všechny porty mezi prostředky ve stejné virtuální síti. Výchozí skupina zabezpečení sítě pro virtuální počítače s Windows, odmítne veškerý příchozí provoz z Internetu přes všechny porty, s výjimkou TCP port 3389 (RDP). V důsledku toho ve výchozím nastavení, můžete také RDP přímo na *myVmWeb* virtuálního počítače z Internetu, i když není vhodné portu 3389 otevřete na webový server. Vzhledem k tomu, že procházení webu komunikuje přes port 80, komunikaci z Internetu se nezdaří, protože není pravidlo ve skupině zabezpečení výchozí sítě umožňuje provoz přes port 80.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

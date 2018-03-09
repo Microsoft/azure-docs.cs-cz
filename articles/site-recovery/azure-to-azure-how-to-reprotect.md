@@ -6,30 +6,30 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: d24376c57c468a562fc6d6dd52b4e9b01b53c3da
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 47056c85c6cb66a7fa28d623a4472b827d970dab
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Opětovné ochrany převzal virtuálních počítačích Azure primární oblasti
 
 
 >[!NOTE]
 >
-> Replikace obnovení lokality pro virtuální počítače Azure je aktuálně ve verzi preview.
+> Replikace služby Site Recovery pro virtuální počítače Azure je momentálně dostupná ve verzi Preview.
 
 
 
 Pokud jste [převzetí služeb při selhání](site-recovery-failover.md) virtuálních počítačích Azure z jedné oblasti na jiný pomocí [Azure Site Recovery](site-recovery-overview.md), spouštění virtuálních počítačů se v oblasti sekundární v nechráněném stavu. Pokud selhání zpět na primární oblasti virtuálních počítačů, je třeba provést následující akce:
 
-- Znovu nastavte ochranu virtuálních počítačů v sekundární oblasti, tak, aby se spustit replikaci na primární oblasti. 
+- Znovu nastavte ochranu virtuálních počítačů v sekundární oblasti, tak, aby spuštění při replikaci na primární oblasti. 
 - Po dokončení vytvoření a jsou replikaci virtuálních počítačů, které můžete převzetí služeb při selhání je ze sekundární primární oblasti.
 
 > [!WARNING]
-> Pokud jste [migrovat](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration) počítačů z primárního na sekundární oblasti přesunout virtuální počítač do jiné skupiny prostředků, nebo odstranit virtuální počítač Azure, nelze znovu nastavte ochranu virtuálního počítače, nebo ji návratu.
+> Pokud jste [migrovat](migrate-overview.md#what-do-we-mean-by-migration) počítačů z primárního na sekundární oblasti přesunout virtuální počítač do jiné skupiny prostředků, nebo odstranit virtuální počítač Azure, nelze znovu nastavte ochranu virtuálního počítače, nebo ji návratu.
 
 
 ## <a name="prerequisites"></a>Požadavky

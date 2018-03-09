@@ -1,128 +1,164 @@
 ---
-title: "Azure šifrování služby úložiště pomocí zákazníka spravované klíče v Azure Key Vault | Microsoft Docs"
-description: "Použít funkci šifrování služby úložiště Azure pro šifrování Azure Blob Storage na straně služby při ukládání dat a data dešifrovat při načítání dat pomocí zákazníka spravovaných klíčů."
+title: "Azure šifrování služby úložiště v Azure Key Vault klíče spravovaného zákazníkem | Microsoft Docs"
+description: "Pomocí funkce šifrování služby úložiště Azure pro šifrování Azure Blob Storage na straně služby při ukládání dat a při získávání data pomocí klíče spravovaného zákazníkem ho dešifrovat."
 services: storage
-documentationcenter: .net
 author: lakasa
-manager: jahogg
-editor: tysonn
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 03/07/2018
 ms.author: lakasa
-ms.openlocfilehash: 0a05a0d28899cc3db11f8fda8aec5bd6ed9bd5f8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b40858640d10e5661be420976520774bd50837cb
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování služby úložiště pomocí klíčů zákazníků spravované v Azure Key Vault
+# <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování služby úložiště v Azure Key Vault klíče spravovaného zákazníkem
 
-Microsoft Azure se zaměřuje na pomáhá chránit a ochranu dat, aby splňovaly vaše organizace zabezpečení a dodržování předpisů závazky.  Jedním ze způsobů, budete moci chránit vaše data v klidovém stavu je použití šifrování služby úložiště (SSE), který automaticky při zápisu do úložiště data šifruje a dešifruje data při jeho načítání. Šifrování a dešifrování je automatická, naprosto transparentní a používá 256 bitů [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jednu z nejsilnějších bloku šifer k dispozici.
+Microsoft Azure se zaměřuje na pomáhá chránit a ochranu dat, aby splňovaly vaše organizace zabezpečení a dodržování předpisů závazky. Jedním ze způsobů, že Azure Storage chrání vaše data je prostřednictvím úložiště služby šifrování (SSE), která data šifruje při zápisu do úložiště a při získávání ji dešifruje data. Šifrování a dešifrování je automatická, transparentní a používá 256 bitů [šifrování AES](https://wikipedia.org/wiki/Advanced_Encryption_Standard), jednu z nejsilnějších bloku šifer k dispozici.
 
-Spravované společností Microsoft šifrovací klíče můžete použít s SSE nebo můžete použít vlastní šifrovací klíče. Tento článek popisuje ty druhé. Další informace o používání klíčů spravovaný společností Microsoft nebo o SSE v obecné najdete v tématu [šifrování služby úložiště pro Data v klidovém stavu](../storage-service-encryption.md).
+Spravované společností Microsoft šifrovací klíče můžete použít s SSE nebo můžete použít vlastní šifrovací klíče. Tento článek popisuje postup použití vlastních šifrovacích klíčů. Další informace o používání klíčů spravovaný společností Microsoft nebo o SSE v obecné najdete v tématu [šifrování služby úložiště pro Data v klidovém stavu](storage-service-encryption.md).
 
-Pokud chcete zadat možnost používat vlastní šifrovací klíče, je integrovaná SSE pro úložiště objektů Blob trezoru službou klíč s Azure (AZURE). Můžete vytvořit vlastní šifrovací klíče a uložit je do službou AZURE nebo rozhraní API je službou AZURE můžete použít ke generování šifrovacích klíčů. Nejen službou AZURE umožňuje spravovat a řídit klíče, taky umožňuje auditovat vaše použití klíče. 
+SSE pro úložiště objektů Blob a soubor je integrovaná s Azure Key Vault, tak, aby trezoru klíčů můžete použít ke správě šifrovacích klíčů. Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API pro Azure Key Vault generovat šifrovací klíče. S Azure Key Vault můžete spravovat a řídit klíče a také auditovat vaše použití klíče.
 
-Proč byste se měli k vytvoření vlastních klíčů? Nabízí větší flexibilitu, což umožňuje vytvářet, otáčení, zakázat a definovat řízení přístupu. Také umožňuje audit šifrovací klíče umožňuje chránit vaše data.
+Proč vytvořit vlastní klíče? Vlastní klíče poskytují větší flexibilitu, takže můžete vytvářet, otáčení, zakázat a definovat řízení přístupu. Vlastní klíče také umožňují audit šifrovací klíče umožňuje chránit vaše data.
 
-## <a name="sse-with-customer-managed-keys-preview"></a>SSE se customer preview spravovaných klíčů
+## <a name="get-started-with-customer-managed-keys"></a>Začínáme s klíče spravovaného zákazníkem
 
-Tato funkce je aktuálně ve verzi Preview. Chcete-li tuto funkci používat, vytvořte nový účet úložiště. Můžete buď vytvořit nový trezor klíčů a klíč nebo můžete použít existující trezor klíčů a klíč. Účet úložiště a trezoru klíčů musí být ve stejné oblasti, ale mohou být v různých předplatných.
+Používat spravované zákazníkem klíče SSE, můžete buď vytvořit nový trezor klíčů a klíč nebo můžete použít existující trezor klíčů a klíč. Účet úložiště a trezoru klíčů musí být ve stejné oblasti, ale mohou být v různých předplatných. 
 
-Obraťte se na k účasti ve verzi preview, [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com). Poskytujeme speciálního odkazu k účasti ve verzi preview.
+### <a name="step-1-create-a-storage-account"></a>Krok 1: Vytvoření účtu úložiště
 
-Další informace naleznete [– nejčastější dotazy](#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest).
+Nejprve vytvořte účet úložiště, pokud již nemáte. Další informace najdete v tématu [vytvořit nový účet úložiště](storage-quickstart-create-account.md).
 
-> [!IMPORTANT]
-> Ve verzi Preview před podle kroků v tomto článku, musíte se přihlásit. Bez přístup s náhledem nebudete moci povolit tuto funkci na portálu.
+### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>Krok 2: Povolení SSE pro úložiště Blob a souborů
 
-## <a name="getting-started"></a>Začínáme
-## <a name="step-1-create-a-new-storage-accountstorage-create-storage-accountmd"></a>Krok 1: [vytvořit nový účet úložiště](../storage-create-storage-account.md)
+Použitím klíče spravovaného zákazníkem SSE vyžaduje, aby byla povolena dvě funkce ochrany klíčů logicky odstranit a provést není mazání. Tato nastavení Ujistěte se, že klíče nelze omylem nebo záměrně odstraněn. Maximální doba uchování období klíčů je nastaveno na 90 dnů, ochrana uživatele na základě nebezpečného actors nebo Ransomware, který útokům.
 
-## <a name="step-2-enable-encryption"></a>Krok 2: Povolení šifrování
-Můžete povolit SSE pro účet úložiště pomocí [portál Azure](https://portal.azure.com). V okně nastavení pro účet úložiště vyhledejte v části služby objektů Blob, jak je znázorněno na následujícím obrázku a klikněte na šifrování.
+Pokud chcete prostřednictvím kódu programu povolit spravované zákazníkem klíče pro SSE, můžete použít [REST API služby Azure Storage prostředků zprostředkovatele](https://docs.microsoft.com/rest/api/storagerp), [prostředků zprostředkovatele Klientská knihovna pro úložiště pro .NET](https://docs.microsoft.com/dotnet/api), [ Prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/storage/storage-azure-cli).
+
+Používat spravované zákazníkem klíče SSE, je nutné přiřadit identitu účtu úložiště k účtu úložiště. Identita můžete nastavit tak, že spustíte následující příkaz Powershellu:
+
+```powershell
+Set-AzureRmStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
+```
+
+Můžete povolit logicky odstranit a provést není vyprázdnit spuštěním následujících příkazů prostředí PowerShell:
+
+```powershell
+($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+$vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
+enableSoftDelete -Value 'True'
+
+Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+$resource.Properties
+
+($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+$vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
+enablePurgeProtection -Value 'True'
+
+Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+$resource.Properties
+```
+
+### <a name="step-3-enable-encryption-with-customer-managed-keys"></a>Krok 3: Povolit šifrování pomocí klíče spravovaného zákazníkem
+
+Ve výchozím nastavení používá SSE klíče spravované Microsoftem. Můžete povolit SSE spravované zákazníkem klíče pro účet úložiště pomocí [portál Azure](https://portal.azure.com/). Na **nastavení** pro účet úložiště, klikněte na **šifrování**. Vyberte **použít vlastní klíč** možnost, jak je znázorněno na následujícím obrázku.
 
 ![Možnost šifrování portálu snímek obrazovky zobrazující](./media/storage-service-encryption-customer-managed-keys/ssecmk1.png)
-<br/>*Povolit SSE pro služby objektů Blob*
 
-Pokud chcete prostřednictvím kódu programu povolit nebo zakázat šifrování služby úložiště na účet úložiště, můžete použít [REST API služby Azure Storage prostředků zprostředkovatele](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN), [prostředků zprostředkovatele Klientská knihovna pro úložiště pro .NET ](https://docs.microsoft.com/dotnet/api/?redirectedfrom=MSDN), [Prostředí azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.0.0), nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/storage/storage-azure-cli).
+### <a name="step-4-select-your-key"></a>Krok 4: Vyberte klíč
 
-Na této obrazovce Pokud nevidíte zaškrtávací políčko "použití vlastní klíč", můžete nebylo schváleno ve verzi preview. Odeslat e-mail, který [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) a požádat o schválení.
+Klíč můžete zadat buď jako identifikátor URI, nebo výběrem klíče z trezoru klíčů.
 
-![Portál snímek obrazovky zobrazující šifrování Preview](./media/storage-service-encryption-customer-managed-keys/ssecmk1.png)
+#### <a name="specify-a-key-as-a-uri"></a>Zadejte klíč jako identifikátor URI
 
-Ve výchozím nastavení používá SSE spravovaný Microsoftem klíče. Pokud chcete používat vlastní klíče, zaškrtněte políčko. Potom můžete buď zadat klíč identifikátor URI, nebo vybrat klíč a Key Vault z nástroje pro výběr.
+Pokud chcete zadat klíč z identifikátoru URI, postupujte takto:
 
-## <a name="step-3-select-your-key"></a>Krok 3: Vyberte klíč
+1. Vyberte **klávesy Enter URI** možnost.  
+2. V **identifikátor URI klíčů** pole, zadejte identifikátor URI.
 
-![Portálu snímek obrazovky zobrazující šifrování použijte možnost vlastní klíče](./media/storage-service-encryption-customer-managed-keys/ssecmk2.png)
+    ![Portál snímek obrazovky s šifrování s, zadejte možnost klíče uri](./media/storage-service-encryption-customer-managed-keys/ssecmk2.png)
 
-![Portál snímek obrazovky s šifrování s, zadejte možnost klíče uri](./media/storage-service-encryption-customer-managed-keys/ssecmk3.png)
+#### <a name="specify-a-key-from-a-key-vault"></a>Zadejte klíč z trezoru klíčů 
 
-Pokud účet úložiště nemá přístup do služby Key Vault, můžete spustit následující příkaz pomocí Azure Powershell k udělení přístupu k účtům úložiště do požadované trezoru klíčů.
+Pokud chcete zadat klíče z trezoru klíčů, postupujte takto:
+
+1. Vyberte **vyberte Key Vault** možnost.  
+2. Vyberte trezor klíčů, který obsahuje klíč, který chcete použít.
+3. Vyberte klíč z trezoru klíčů.
+
+    ![Portálu snímek obrazovky zobrazující šifrování použijte možnost vlastní klíče](./media/storage-service-encryption-customer-managed-keys/ssecmk3.png)
+
+Pokud účet úložiště nemá přístup k trezoru klíčů, můžete spustit příkaz prostředí Azure PowerShell, který je znázorněno na následujícím obrázku k udělení přístupu.
 
 ![Portál snímek obrazovky ukazující, přístup k trezoru klíčů odepřen](./media/storage-service-encryption-customer-managed-keys/ssecmk4.png)
 
 Můžete také udělit přístup prostřednictvím portálu Azure tak, že přejdete do Azure Key Vault na portálu Azure a udělení přístupu k účtu úložiště.
 
-## <a name="step-4-copy-data-to-storage-account"></a>Krok 4: Kopírování dat do účtu úložiště
-Pokud chcete k přenosu dat do nového účtu úložiště tak, aby se šifrují, podívejte se na [krok 3 z Začínáme v šifrování služby úložiště pro Data v klidovém stavu](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account).
+### <a name="step-5-copy-data-to-storage-account"></a>Krok 5: Kopírování dat do účtu úložiště
 
-## <a name="step-5-query-the-status-of-the-encrypted-data"></a>Krok 5: Dotaz na stav šifrovaná data
-Dotaz na stav šifrovaná data, najdete v tématu [krok 4 z Začínáme v šifrování služby úložiště pro Data v klidovém stavu](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data).
+Přenos dat do nového účtu úložiště tak, aby se šifrují, naleznete v kroku 3 [Začínáme v šifrování služby úložiště pro Data v klidovém stavu](storage-service-encryption.md#step-3-copy-data-to-storage-account).
 
-## <a name="frequently-asked-questions-about-storage-service-encryption-for-data-at-rest"></a>Nejčastější dotazy o šifrování služby úložiště pro Data v klidovém stavu
-**Otázka: používám storage úrovně Premium; můžete použít SSE pomocí klíčů zákazníků spravovat?**
+### <a name="step-6-query-the-status-of-the-encrypted-data"></a>Krok 6: Dotaz na stav šifrovaná data
 
-Odpověď: Ano SSE s spravovaný společností Microsoft a k zákaznickým spravované klíče je podporována v úložiště úrovně Standard a Premium storage. 
+Dotaz na stav šifrovaná data, naleznete v kroku 4 v [Začínáme v šifrování služby úložiště pro Data v klidovém stavu](storage-service-encryption.md#step-4-query-the-status-of-the-encrypted-data).
 
-**Otázka: je možné vytvořit nové účty úložiště s SSE pomocí klíčů zákazníků spravované povolit pomocí Azure PowerShell a rozhraní příkazového řádku Azure?**
+## <a name="faq-for-sse-with-customer-managed-keys"></a>Nejčastější dotazy týkající se SSE zákazníka spravované klíče
+
+**Otázka: používám storage úrovně Premium; můžete použít spravovaný zákazníkem klíče s SSE?**
+
+Odpověď: Ano SSE spravovaný společností Microsoft a spravované zákazníkem klíče je podporována na úložiště úrovně Standard a Premium storage.
+
+**Otázka: je možné vytvořit nové účty úložiště s SSE klíče spravovaného zákazníkem povolit pomocí Azure PowerShell a rozhraní příkazového řádku Azure?**
 
 Odpověď: Ano.
 
-**Otázka: jak mnohem víc náklady na úložiště Azure nepodporuje když SSE s zákazníka spravované klíče je povolen?**
+**Otázka: jak mnohem víc Azure Storage náklady Pokud se používá klíče spravovaného zákazníkem s SSE?**
 
-Odpověď: je s náklady související pro použití Azure Key Vault. Další podrobnosti najdete [klíč trezoru ceny](https://azure.microsoft.com/en-us/pricing/details/key-vault/). Není k dispozici pro použití SSE bez dalších nákladů.
+Odpověď: je s náklady související pro použití Azure Key Vault. Další podrobnosti najdete na adrese [klíč trezoru ceny](https://azure.microsoft.com/pricing/details/key-vault/). Není k dispozici bez dalších nákladů pro SSE, která je povolena pro všechny účty úložiště.
 
 **Otázka: je možné odvolat přístup k šifrovacím klíčům?**
 
-A: Ano, můžete kdykoli odvolat přístup. Existuje několik způsobů odvolat přístup k klíče. Odkazovat na [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) a [příkazového řádku Azure Key Vault](https://docs.microsoft.com/cli/azure/keyvault) další podrobnosti. Odvolání přístupu bude efektivně blokovat přístup k všech objektů BLOB v účtu úložiště, protože účet šifrovací klíč je pravděpodobně nepřístupný úložiště Azure.
+A: Ano, můžete kdykoli odvolat přístup. Existuje několik způsobů odvolat přístup k klíče. Odkazovat na [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) a [příkazového řádku Azure Key Vault](https://docs.microsoft.com/cli/azure/keyvault) další podrobnosti. Odvolání přístupu bude efektivně blokovat přístup k všech objektů BLOB v účtu úložiště, protože účet šifrovací klíč je pravděpodobně nepřístupný úložiště Azure.
 
 **Otázka: je možné vytvořit účet úložiště a klíč v jiné oblasti?**
 
-A: účet úložiště a klíč nebo klíč trezoru Ne, musí být ve stejné oblasti. 
+A: účet úložiště a Azure Key Vault a klíč ne, musí být ve stejné oblasti.
 
-**Otázka: je možné povolit SSE pomocí klíčů zákazníků spravované při vytváření účtu úložiště?**
+**Otázka: lze povolit spravované zákazníkem klíče pro SSE při vytváření účtu úložiště?**
 
-Odpověď: Ne. Když povolíte SSE při vytváření účtu úložiště, můžete použít pouze spravovaný Microsoftem klíče. Pokud chcete používat klíče zákazníků spravovat, je nutné aktualizovat vlastnosti účtu úložiště. Můžete použít REST nebo jeden z knihovny klienta úložiště prostřednictvím kódu programu aktualizace účtu úložiště nebo aktualizovat vlastnosti účtu úložiště pomocí portálu Azure po vytvoření účtu.
+Odpověď: Ne. Při prvním vytvoření účtu úložiště, jsou k dispozici pro SSE pouze klíče spravované Microsoftem. Pokud chcete používat klíče spravovaného zákazníkem, je nutné aktualizovat vlastnosti účtu úložiště. Můžete použít REST nebo jeden z knihovny klienta úložiště prostřednictvím kódu programu aktualizace účtu úložiště nebo aktualizovat vlastnosti účtu úložiště pomocí portálu Azure po vytvoření účtu.
 
-**Otázka: je možné zakázat šifrování, zatímco SSE pomocí zákazníka spravované klíče?**
+**Otázka: je možné zakázat šifrování při použití spravovaného zákazníkem klíče s SSE?**
 
-A: šifrování nelze zakázat Ne, zatímco SSE pomocí zákazníka spravované klíče. Můžete zakázat šifrování, je nutné přepnout pomocí klíče spravovaný Microsoftem. To provedete pomocí portálu Azure nebo Powershellu.
+A: šifrování Ne, nelze zakázat. Ve výchozím nastavení pro všechny služby – objekt Blob, soubor, tabulky a fronty úložiště je povolené šifrování. Volitelně můžete přepínat pomocí spravovaných společností Microsoft klíče pomocí klíče spravovaného zákazníkem a naopak.
 
 **Otázka: je SSE ve výchozím nastavení povolené, po vytvoření nového účtu úložiště?**
 
-Odpověď: SSE není povoleno ve výchozím nastavení; na portálu Azure můžete ji povolit. Můžete také prostřednictvím kódu programu povolit tuto funkci pomocí rozhraní REST API poskytovatele prostředků úložiště. 
+Odpověď: SSE je povoleno ve výchozím nastavení pro všechny účty úložiště a pro všechny služby – objekt Blob, soubor, Table a Queue storage.
 
-**Otázka: I nelze povolit šifrování na svůj účet úložiště.**
+**Otázka: I nelze povolit SSE pomocí klíče spravovaného zákazníkem na svůj účet úložiště.**
 
-Odpověď: je účet správce prostředků úložiště? Klasické účty úložiště nejsou podporovány. SSE pomocí klíčů zákazníků spravovat lze také povolit pouze na nově vytvořené účty úložiště Resource Manager.
+Odpověď: je účet úložiště Azure Resource Manager? Spravované zákazníkem klíče nepodporuje klasické účty úložiště. SSE klíče spravovaného zákazníkem lze povolit pouze na účty úložiště Resource Manager.
 
-**Otázka: je SSE s zákazníka spravované klíče je povolena pouze v určitých oblastí?**
+**Otázka: co je logicky odstranit a provést není vymazat? Je potřeba povolit toto nastavení použít SSE klíče spravovaného zákazníkem?**
 
-Odpověď: SSE je k dispozici v pouze určité oblasti pro úložiště objektů Blob pro tuto verzi Preview. E-mailu [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) ke kontrole dostupnosti a podrobnosti o verzi preview. 
+Odpověď: soft odstraňte a provést není vyprázdnění musí být povoleno používat SSE klíče spravovaného zákazníkem. Tato nastavení zajistěte, aby byl váš klíč není omylem nebo záměrně odstraněn. Maximální doba uchování období klíčů je nastaveno na 90 dnů, ochrana uživatele na základě nebezpečného actors a Ransomware, který útokům. Toto nastavení nelze zakázat.
+
+**Otázka: je povolena pouze v určitých oblastí klíče spravovaného zákazníkem SSE?**
+
+Odpověď: SSE spravované zákazníkem klíče je k dispozici ve všech oblastech pro úložiště Blob a souboru.
 
 **Otázka: jak I contact někdo po jakýchkoli problémů nebo chcete poskytnout zpětnou vazbu?**
 
-Odpověď: kontaktní [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) pro veškeré problémy související s šifrování služby úložiště. 
+Odpověď: kontaktní [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) pro veškeré problémy související s šifrování služby úložiště.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-*   Další informace o komplexní sadu zabezpečení možnosti, které pomáhají vývojářům vytvářet aplikace, zabezpečení naleznete v tématu [Průvodce zabezpečením úložiště](https://docs.microsoft.com/azure/storage/storage-security-guide).
-*   Souhrnné informace o Azure Key Vault naleznete v tématu [co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
-*   Začínáme v Azure Key Vault, najdete v části [Začínáme s Azure Key Vault](../../key-vault/key-vault-get-started.md).
+-   Další informace o komplexní sadu zabezpečení možnosti, které pomáhají vývojářům vytvářet aplikace, zabezpečení naleznete v tématu [Průvodce zabezpečením úložiště](storage-security-guide.md).
+
+-   Souhrnné informace o Azure Key Vault naleznete v tématu [co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
+
+-   Začínáme v Azure Key Vault, najdete v části [Začínáme s Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started).

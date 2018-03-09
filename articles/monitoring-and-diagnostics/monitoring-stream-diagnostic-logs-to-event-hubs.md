@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2017
+ms.date: 03/06/2018
 ms.author: johnkem
-ms.openlocfilehash: bcb9fcb2371217e7082d96ddbba4a095e6d9a00f
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 72876e38f77aa7a13c0dd9a8cdf9479e058f4a0d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Datový proud Azure diagnostických protokolů do centra událostí
 **[Azure diagnostické protokoly](monitoring-overview-of-diagnostic-logs.md)**  Streamovat skoro v reálném čase pro žádnou aplikaci pomocí předdefinované možnosti "Export do služby Event Hubs" na portálu nebo povolením ID události rozbočovače autorizační pravidla v nastavení diagnostiky prostřednictvím Azure Rutiny prostředí PowerShell nebo Azure CLI.
@@ -79,23 +79,23 @@ Obor názvů služby Event Hubs nemusí být ve stejném předplatném jako pros
 
 Po chvíli se nové nastavení se zobrazí v seznamu nastavení pro tento prostředek a diagnostické protokoly jsou datového proudu do tohoto centra událostí, také se vygeneruje nová data událostí.
 
-### <a name="via-powershell-cmdlets"></a>Pomocí rutin prostředí PowerShell
+### <a name="via-powershell-cmdlets"></a>Via PowerShell Cmdlets
 Povolit vysílání datového proudu prostřednictvím [rutin prostředí Azure PowerShell](insights-powershell-samples.md), můžete použít `Set-AzureRmDiagnosticSetting` rutiny s těmito parametry:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -ServiceBusRuleId [your Service Bus rule ID] -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
 ```
 
-ID pravidla Service Bus je řetězec s Tento formát: `{Service Bus resource ID}/authorizationrules/{key name}`, například `/subscriptions/{subscription ID}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/{Service Bus namespace}/authorizationrules/RootManageSharedAccessKey`. Nelze vybrat aktuálně název rozbočovače určitá událost pomocí prostředí PowerShell.
+ID události rozbočovače autorizační pravidlo je řetězec s Tento formát: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, například `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Nelze vybrat aktuálně název rozbočovače určitá událost pomocí prostředí PowerShell.
 
-### <a name="via-azure-cli"></a>Prostřednictvím rozhraní příkazového řádku Azure
+### <a name="via-azure-cli"></a>Via Azure CLI
 Povolit vysílání datového proudu prostřednictvím [rozhraní příkazového řádku Azure](insights-cli-samples.md), můžete použít `insights diagnostic set` příkaz takto:
 
 ```azurecli
 azure insights diagnostic set --resourceId <resourceID> --serviceBusRuleId <serviceBusRuleID> --enabled true
 ```
 
-Jak je popsáno pro rutinu prostředí PowerShell, použijte stejný formát pro ID pravidla Service Bus. Nelze vybrat aktuálně název rozbočovače určitá událost pomocí Azure CLI.
+Použijte stejný formát pro ID události rozbočovače autorizační pravidlo, jak je popsáno pro rutinu prostředí PowerShell. Nelze vybrat aktuálně název rozbočovače určitá událost pomocí Azure CLI.
 
 ## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Způsob, jakým využívají data protokolu ze služby Event Hubs?
 Zde je ukázka výstupní data ze služby Event Hubs:

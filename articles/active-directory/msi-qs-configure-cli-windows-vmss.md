@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
 ms.openlocfilehash: c58ad9cc8bfa16b11201735bcc513e6dd692a2a9
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurace virtuálního počítače sady škálování spravované služby Identity (MSI) pomocí rozhraní příkazového řádku Azure
 
@@ -27,7 +27,7 @@ Identita spravované služby poskytuje Azure služby automaticky spravované ide
 
 V tomto článku se dozvíte, jak povolit a odebrat MSI horizontálního virtuální počítač Azure nastavit pomocí rozhraní příkazového řádku Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
 

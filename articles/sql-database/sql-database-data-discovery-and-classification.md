@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: 1ff7f3509ccdaa6911cee0487d5a6d90b11eb79f
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: da4f72e61607dcad7314a2fe65324da4635752c5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Data v databázi Azure SQL zjišťování a klasifikace
 Data zjišťování a klasifikace (momentálně ve verzi preview) a poskytuje pokročilé možnosti integrovaný do databáze SQL Azure pro **zjišťování**, **klasifikace**, **označování**  &  **ochranu** citlivá data v databázích máte.
@@ -95,12 +95,12 @@ Klasifikace obsahuje dva atributy metadat:
 
 Důležitým aspektem zlepší ochrany informací je schopnost sledovat přístup k citlivým datům.
 
-[Auditování databáze SQL Azure](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) je vylepšená tak, aby zahrnout nové pole do protokolu auditování názvem *data_sensitivity_information*, které protokoly klasifikace citlivosti (popisky) vlastní data, která vrátila dotaz.
+[Auditování databáze SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) je vylepšená tak, aby zahrnout nové pole do protokolu auditování názvem *data_sensitivity_information*, které protokoly klasifikace citlivosti (popisky) vlastní data, která vrátila dotaz.
 
 ![Navigační podokno][11]
 
 ## <a id="subheading-4"></a>Další kroky
-Zvažte nakonfigurování [auditování databáze SQL Azure](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) pro sledování a auditování přístupu k vaší klasifikovaný citlivá data.
+Zvažte nakonfigurování [auditování databáze SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) pro sledování a auditování přístupu k vaší klasifikovaný citlivá data.
 
 <!--Anchors-->
 [SQL Data Discovery & Classification overview]: #subheading-1

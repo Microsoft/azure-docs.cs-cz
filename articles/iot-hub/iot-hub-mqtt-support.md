@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2018
+ms.date: 03/05/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a22c20a26ee4750c79c23fbba69de72a0084dfe7
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 9acda980583319414cc9e8668424907947a257db
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikovat se službou IoT hub pomocí protokolu MQTT
 
@@ -100,6 +100,8 @@ Pokud zařízení nelze použít sady SDK pro zařízení, můžete pořád při
 
 MQTT připojit a odpojit paketů, IoT Hub vydá událost na **monitorování Operations** kanál. Tato událost má další informace, které vám může pomoct vyřešit problémy s připojením.
 
+Aplikace zařízení můžete určit **bude** zprávy v **CONNECT** paketů. Aplikace zařízení musí používat `devices/{device_id}/messages/events/{property_bag}` nebo `devices/{device_id}/messages/events/{property_bag}` jako **bude** název tématu k definování **bude** zprávy a pokuste se předají jako zprávu telemetrie. V takovém případě pokud síťové připojení je ukončeno, ale **odpojení** nebyla dříve přijat paket ze zařízení a pak odešle IoT Hub **bude** dodána zpráva v **připojit** paketů do kanálu telemetrie. Kanál telemetrie může být buď výchozí **události** koncového bodu nebo koncový bod vlastní definované směrování služby IoT Hub. Zpráva má **iothub-typ zprávy** vlastnosti s hodnotou **bude** přiřazen.
+
 ### <a name="tlsssl-configuration"></a>Konfigurace protokolu TLS/SSL
 
 Použít MQTT protokolu přímo, vašeho klienta *musí* připojují přes TLS/SSL. Pokusy o Přeskočit tento krok nezdaří s chyb připojení.
@@ -165,7 +167,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 > [!NOTE]
 > To `{property_bag}` element používá stejné kódování jako řetězce dotazů v protokolu HTTPS.
 
-Aplikace zařízení můžete také použít `devices/{device_id}/messages/events/{property_bag}` jako **název tématu bude** k definování *bude zprávy* k přeposlání jako zprávu telemetrie.
+Následuje seznam chování specifické pro implementaci služby IoT Hub:
 
 * IoT Hub nepodporuje QoS 2 zprávy. Pokud aplikace na zařízení publikuje zprávu s **QoS 2**, IoT Hub ukončí síťové připojení.
 * IoT Hub není zachována zachovat zprávy. Pokud zařízení odesílá zprávy s **zachovat** příznak nastaven na hodnotu 1, přidá IoT Hub **x-opt zachovat** vlastnosti aplikace ke zprávě. V takovém případě místo uchování zpráv zachovat, IoT Hub předává je na back-end aplikace.

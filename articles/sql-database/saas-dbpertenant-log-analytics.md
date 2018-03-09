@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: 90510520e5f6bbfa8aea4026d7437a4a4881984f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 7747092d5613a40fa0aff09cfbdfb9b786b37954
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="set-up-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>Nastavení a použití analýzy protokolů (OMS) víceklientské aplikace SaaS databáze SQL Azure
 
@@ -132,7 +132,7 @@ Na portálu OMS můžete data protokolu a metriku, v pracovním prostoru dále p
 
 Monitorování a generování výstrah v analýzy protokolů a OMS je založená na dotazech přes data v pracovním prostoru, na rozdíl od výstrahy definované na každého prostředku na portálu Azure. Po vytvoření výstrahy na základě dotazů, lze definovat jedna výstraha, která vypadá přes všechny databáze, místo definující jeden do každého databáze. Dotazy jsou omezené jenom daty dostupnými v pracovním prostoru.
 
-Další informace o používání OMS pro dotazování a nastavit výstrahy najdete [práce s pravidla výstrah v analýzy protokolů](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-alerts-creating).
+Další informace o používání OMS pro dotazování a nastavit výstrahy najdete [práce s pravidla výstrah v analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
 
 Log Analytics pro SQL Database se účtuje podle objemu dat v pracovním prostoru. V tomto kurzu jste vytvořili volného prostoru, který je omezen na 500 MB za den. Po dosažení tohoto limitu data je již přidána do pracovního prostoru.
 

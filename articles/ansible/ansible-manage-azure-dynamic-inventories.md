@@ -8,14 +8,14 @@ manager: routlaw
 ms.author: tarcher
 ms.date: 01/14/2018
 ms.topic: article
-ms.openlocfilehash: 8753d039582abdf22f105bf7f139a35c224e7c59
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 799be6d2bb521de38af952376bf8ee14a18846de
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Použít Ansible ke správě vašeho Azure dynamické inventáře
-Ansible lze načítat informace o inventáři z různých zdrojů (včetně cloudové zdroje, jako je Azure) do *dynamické inventáře*. V tomto článku, můžete použít [prostředí cloudu Azure](./ansible-run-playbook-in-cloudshell.md) konfigurace dynamické inventáře Ansible Azure, ve kterém vytvoříte dva virtuální počítače, jednu značku tyto virtuální počítače a nainstalujte Nginx s příznakem virtuálního počítače.
+Ansible lze načítat informace o inventáři z různých zdrojů (včetně cloudové zdroje, jako je Azure) do *dynamické inventáře*. V tomto článku, můžete použít [prostředí cloudu Azure](./ansible-run-playbook-in-cloudshell.md) konfigurace dynamické inventáře Ansible Azure, ve kterém vytvoříte dva virtuální počítače, označit jeden z těchto virtuálních počítačů a nainstalujte Nginx s příznakem virtuálního počítače.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -59,11 +59,11 @@ Můžete [použití značek k uspořádání prostředků Azure](https://docs.mi
 Zadejte následující [značky prostředku az](/cli/azure/resource?view=azure-cli-latest.md#az_resource_tag) příkaz k označení virtuální počítač `ansible-inventory-test-vm1` klíčem `nginx`:
 
 ```azurecli-interactive
-az resource tag --tags nginx --id /subscriptions/&lt;YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
+az resource tag --tags nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
 ```
 
 ## <a name="generate-a-dynamic-inventory"></a>Generování dynamických inventáře
-Jakmile máte virtuální počítače určené (a s příznakem), je čas ke generování dynamické inventáře. Ansible poskytuje skript v jazyce Python názvem [azure_rm.py](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) který generuje dynamické inventáře vašich prostředků Azure tak, že žádostí o rozhraní API pro Azure Resource Manager. Následující kroky vás provedou pomocí `azure_rm.py` skript pro připojení k vaší dva testovací virtuální počítač Azure:
+Jakmile máte virtuální počítače určené (a s příznakem), je čas ke generování dynamické inventáře. Ansible poskytuje skript v jazyce Python názvem [azure_rm.py](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) který generuje dynamické inventáře vašich prostředků Azure tak, že žádostí o rozhraní API pro Azure Resource Manager. Následující kroky vás provedou pomocí `azure_rm.py` skript pro připojení k vaší dva testovací virtuální počítače Azure:
 
 1. Použít GNU `wget` příkaz k načtení `azure_rm.py` skriptu:
 

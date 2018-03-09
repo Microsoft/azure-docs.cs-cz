@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: fcf6d2bf13af785eae26ff60035a4754f6ec702e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 49f3d5ba55a9c1abfcd6dcb50058ed7a001a2eec
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="collector-appliance"></a>Kolekce zařízení
 
@@ -23,9 +23,23 @@ ms.lasthandoff: 03/02/2018
 
 Migrace kolekce služby Azure je lighweight zařízení, který slouží ke zjištění prostředí místní vCenter. Toto zařízení zjistí počítače VMware na místě a metadata o nich se odešle do služby Azure migrovat.
 
-Kolekce zařízení je OVF, které si můžete stáhnout z projektu Azure migrovat. Vytvoření instance virtuálního počítače VMware s 4 jádra, 8 GB paměti RAM a jeden disk 80 GB. Operační systém zařízení je Windows Server 2012 R2 (64 bitů)
+Kolekce zařízení je OVF, které si můžete stáhnout z projektu Azure migrovat. Vytvoření instance virtuálního počítače VMware s 4 jádra, 8 GB paměti RAM a jeden disk 80 GB. Operační systém zařízení je Windows Server 2012 R2 (64bitová verze).
 
 Pomocí následujícího postupu můžete vytvořit kolekce zde - [postup vytvoření virtuálního počítače kolekce](tutorial-assessment-vmware.md#create-the-collector-vm).
+
+## <a name="collector-communication-diagram"></a>Diagram komunikace kolekce
+
+![Diagram komunikace kolekce](./media/tutorial-assessment-vmware/portdiagram.PNG)
+
+
+| Komponenta      | Komunikace s   | Požadovaný port                            | Důvod                                   |
+| -------------- | --------------------- | ---------------------------------------- | ---------------------------------------- |
+| Kolektor      | Služba Azure Migrate | TCP 443                                  | Kolekce musí být schopen komunikovat se službou v portu SSL 443 |
+| Kolektor      | vCenter Server        | Výchozí 443                             | Kolekce by mohli ke komunikaci se serverem vCenter. Ve výchozím nastavení připojí k vCenter na 443. Pokud vCenter naslouchá na jiný port, že port by měl být k dispozici jako odchozí port v kolekci |
+| Kolektor      | Protokol RDP|   | TCP 3389 | Abyste mohli pro připojení RDP do počítače kolekce |
+
+
+
 
 
 ## <a name="collector-pre-requisites"></a>Požadavky kolekce
@@ -141,8 +155,8 @@ Následující tabulka uvádí čítače výkonu, které se shromažďují a tak
 
 |Čítač                                  |Úroveň    |Úroveň za zařízení  |Dopad hodnocení                               |
 |-----------------------------------------|---------|------------------|------------------------------------------------|
-|cpu.usage.average                        | 1       |není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
-|mem.usage.average                        | 1       |není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
+|cpu.usage.average                        | 1       |Není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
+|mem.usage.average                        | 1       |Není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
 |virtualDisk.read.average                 | 2       |2                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
 |virtualDisk.write.average                | 2       |2                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
 |virtualDisk.numberReadAveraged.average   | 1       |3                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
@@ -158,6 +172,32 @@ Následující tabulka uvádí čítače výkonu, které se shromažďují a tak
 Kolekce pouze zjistí počítač data a odešle ji do projektu. Projektu může trvat déle než zjištěná data se zobrazí na portálu a můžete začít s vytvářením posouzení.
 
 Podle počtu virtuálních počítačů v oboru vybrané, trvá až 15 minut odeslat statické metadata do projektu. Jakmile statické metadata jsou dostupné na portálu, můžete zobrazit seznam počítačů v portálu a začít vytvářet skupiny. Posouzení nelze vytvořit, až do dokončení úlohy kolekce a projekt má zpracovat data. Jednou kolekce úloha nebyla dokončena v kolekci, může trvat až jednu hodinu, než výkonu data, která mají být k dispozici na portálu, podle počtu virtuálních počítačů v oboru vybrané.
+
+## <a name="how-to-upgrade-collector"></a>Postup upgradu kolekce
+
+Kolekce můžete upgradovat na nejnovější verzi bez stahování vajíčka ještě jednou.
+
+1. Stáhněte si nejnovější [balíček s upgradem](https://aka.ms/migrate/col/latestupgrade).
+2. Pro zajištění zabezpečené stažené opravy hotfix, otevřete příkazové okno správce a spusťte následující příkaz pro vytvoření hodnotu hash pro souboru ZIP. Generované hodnoty hash shodovat se symbolem hash uvedených na konkrétní verzi:
+
+    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    
+    (příklad použití C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256)
+3. Soubor zip zkopírujte do Azure migraci kolekce virtuální počítač (kolekce zařízení).
+4. Klikněte pravým tlačítkem na soubor zip a vyberte možnost Extrahovat vše.
+5. Klikněte pravým tlačítkem na Setup.ps1 a vyberte spustit v prostředí PowerShell a postupujte podle pokynů na obrazovce instalace aktualizace.
+
+### <a name="list-of-updates"></a>Seznam aktualizací
+
+#### <a name="upgrade-to-version-1095"></a>Upgrade na verzi 1.0.9.5
+
+Pro Upgrade na verzi 1.0.9.5 stažení [balíčku](https://aka.ms/migrate/col/upgrade_9_5)
+
+**Algoritmus** | **Hodnota hash**
+--- | ---
+MD5 | d969ebf3bdacc3952df0310d8891ffdf
+SHA1 | f96cc428eaa49d597eb77e51721dec600af19d53
+SHA256 | 07c03abaac686faca1e82aef8b80e8ad8eca39067f1f80b4038967be1dc86fa1
 
 ## <a name="next-steps"></a>Další postup
 

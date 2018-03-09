@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 66023a501360a8d73f88e2fe9682c1bf8f207a07
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 2a5e6367cef02b53cb0e24d644b7e3e8025e19ab
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace mapy služeb v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ji zobrazit vaše servery co možná z nich – jako vzájemně propojena systémy, které doručují důležité služby. Mapy služeb zobrazí připojení mezi servery, procesy a porty mezi všechny architektura připojení TCP se žádná konfigurace vyžaduje, než instalace agenta.
@@ -26,7 +26,7 @@ Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Lin
 Tento článek popisuje podrobnosti konfigurace agentů mapy služeb a registrace. Informace o používání mapy služeb najdete v tématu [pomocí mapy služeb řešení v Azure](operations-management-suite-service-map.md).
 
 ## <a name="dependency-agent-downloads"></a>Agent služby Dependency soubory ke stažení
-| Soubor | Operační systém | Verze | SHA-256 |
+| File | Operační systém | Verze | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.4.1 | 0DCCE16495E7A3254A5FE1B5EADE66110984C3BE799A1FAAD7D119F23614592E |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.4.2 | E0888727125FA4E4ECACFB4B2633284C014933EE0CC2F7A9F93F36AEDBD6C2C4  |
@@ -114,7 +114,7 @@ Chcete-li zobrazit seznam instalace příznaky, spustit instalaci programu-pomoc
 
 Soubory pro agenta závislosti jsou umístěny v adresáři pro následující:
 
-| Soubory | Místo |
+| Soubory | Umístění |
 |:--|:--|
 | Soubory jádra | /OPT/Microsoft/Dependency-Agent |
 | Soubory protokolu | /var/OPT/Microsoft/Dependency-Agent/log |
@@ -147,7 +147,7 @@ Pokud chcete nasadit rozšíření virtuálního počítače Azure pomocí prost
 # Deploy the Dependency Agent to every VM in a Resource Group
 #
 
-$version = "9.3"
+$version = "9.4"
 $ExtPublisher = "Microsoft.Azure.Monitoring.DependencyAgent"
 $OsExtensionMap = @{ "Windows" = "DependencyAgentWindows"; "Linux" = "DependencyAgentLinux" }
 $rmgroup = "<Your Resource Group Here>"
@@ -180,7 +180,7 @@ To bylo ještě jednodušší způsob, jak zajistit závislost agenta je na těc
 "properties": {
     "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
     "type": "DependencyAgentWindows",
-    "typeHandlerVersion": "9.3",
+    "typeHandlerVersion": "9.4",
     "autoUpgradeMinorVersion": true
 }
 
@@ -237,7 +237,7 @@ Ubuntu:
 ```
 sudo apt -y purge dependency-agent
 ```
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Pokud máte potíže s instalaci nebo spuštění mapy služeb, v této části vám může pomoct. Pokud stále nemůžete vyřešit problém, kontaktujte prosím Microsoft Support.
 
 ### <a name="dependency-agent-installation-problems"></a>Problémy instalace agenta závislostí
@@ -254,7 +254,7 @@ Může být užitečné k instalaci [nejnovější modulu runtime knihoven](http
 
 Následující tabulka uvádí čísla kódu a návrhy řešení.
 
-| Kód | Popis | Rozlišení |
+| Kód | Popis | Řešení |
 |:--|:--|:--|
 | 0x17 | Instalační program knihovny vyžaduje služby Windows update, který nebyl nainstalován. | Vyhledejte v protokolu nejnovější instalační program knihovny.<br><br>Pokud je odkaz na "Windows8.1-KB2999226-x64.msu" následovaný řádek "Chyba 0x80240017: spuštění MSU balíčku se nezdařilo" nemáte o požadavcích na instalaci KB2999226. Postupujte podle pokynů v části s předpoklady v [Universal C Runtime v systému Windows](https://support.microsoft.com/kb/2999226). Může být nutné spuštěním služby Windows Update a restartovat více než jednou. aby bylo možné nainstalovat požadované součásti.<br><br>Agent služby Microsoft Dependency instalační program spusťte znovu. |
 
@@ -285,9 +285,9 @@ Agent závislostí obvykle spotřebuje 0,1 systémové paměti a procentem 0,1 s
 
 ## <a name="supported-azure-regions"></a>Podporované oblasti Azure
 Mapa služeb je nyní k dispozici v následujících oblastech Azure:
-- USA – východ
-- Evropa – západ
-- Středozápad USA
+- Východ USA
+- Západní Evropa
+- Západní střed USA
 - Jihovýchodní Asie
 
 
@@ -315,7 +315,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
-| Verze OS | Verze jádra |
+| Verze operačního systému | Verze jádra |
 |:--|:--|
 | 7.0 | 3.10.0-123 |
 | 7.1 | 3.10.0-229 |
@@ -324,7 +324,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 | 7.4 | 3.10.0-693 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
-| Verze OS | Verze jádra |
+| Verze operačního systému | Verze jádra |
 |:--|:--|
 | 6.0 | 2.6.32-71 |
 | 6.1 | 2.6.32-131 |
@@ -338,7 +338,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 | 6.9 | 2.6.32-696 |
 
 #### <a name="red-hat-linux-5"></a>Red Hat Linux 5
-| Verze OS | Verze jádra |
+| Verze operačního systému | Verze jádra |
 |:--|:--|
 | 5.8 | 2.6.18-308 |
 | 5.9 | 2.6.18-348 |
@@ -348,14 +348,14 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 ### <a name="ubuntu-server"></a>Ubuntu Server
 - Vlastní jádra, včetně opakovaných kompilací standardní jádra, nejsou podporovány.
 
-| Verze OS | Verze jádra |
+| Verze operačního systému | Verze jádra |
 |:--|:--|
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
 ### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Linux Enterprise s nedělitelné Enterprise jádra
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
-| Verze OS | Verze jádra
+| Verze operačního systému | Verze jádra
 |:--|:--|
 | 6.2 | Oracle 2.6.32-300 (UEK R1) |
 | 6.3 | Oracle 2.6.39-200 (UEK R2) |
@@ -365,7 +365,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 
 #### <a name="oracle-linux-5"></a>Oracle Linux 5
 
-| Verze OS | Verze jádra
+| Verze operačního systému | Verze jádra
 |:--|:--|
 | 5.10 | Oracle 2.6.39-400 (UEK R2) |
 | 5.11 | Oracle 2.6.39-400 (UEK R2) |
@@ -373,7 +373,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 #### <a name="suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server
 
 #### <a name="suse-linux-11"></a>SUSE Linux 11
-| Verze OS | Verze jádra
+| Verze operačního systému | Verze jádra
 |:--|:--|
 | 11 SP2 | 3.0.101-0.7 |
 | 11 SP3 | 3.0.101-0.47 |

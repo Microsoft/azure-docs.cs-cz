@@ -1,5 +1,5 @@
 ---
-title: "Splňují podmínky pro modul Azure CDN pravidla | Microsoft Docs"
+title: "Azure CDN pravidla podmínky shody modul | Microsoft Docs"
 description: "Referenční dokumentace pro Azure Content Delivery Network pravidla shody stav motoru."
 services: cdn
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 08845355be0bfb7e7dde52d19949fee4a68ed54b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: e4b7113f27e5e15d69dfdd1efd13e255ef4a8ab7
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="match-conditions-for-the-azure-cdn-rules-engine"></a>Podmínky shody pro stroj pravidel Azure CDN
+# <a name="azure-cdn-rules-engine-match-conditions"></a>Stroj pravidel Azure CDN splňují podmínky 
 Tento článek obsahuje seznam podrobný popis dostupných porovnání podmínky pro Content Delivery Network (CDN) Azure [stroj pravidel](cdn-rules-engine.md).
 
 Druhá část pravidla je podmínka shodu. Stav shody identifikuje konkrétní typy žádostí, pro které se provede sadu funkcí.
@@ -321,26 +321,26 @@ Následující tabulka uvádí možnosti WURFL a jejich proměnné pro stroj pra
 
 Schopnost | Proměnná | Popis | Ukázkové hodnoty
 -----------|----------|-------------|----------------
-Název značky | % {wurfl_cap_brand_name} | Řetězec, který označuje brand název zařízení. | Samsung
-Operačního systému zařízení | % {wurfl_cap_device_os} | Řetězec, který označuje operační systém nainstalovaný na zařízení. | iOS
-Verze operačního systému zařízení | % {wurfl_cap_device_os_version} | Řetězec, který označuje číslo verze operačního systému na zařízení nainstalovaná. | 1.0.1
-Duální orientace | % {wurfl_cap_dual_orientation} | Logická hodnota, která určuje, zda je zařízení podporuje dva orientace. | true (pravda)
-Upřednostňovaný souboru DTD protokolu HTML | % {wurfl_cap_html_preferred_dtd} | Řetězec, který označuje definice typu upřednostňované dokumentu (DTD) mobilních zařízení pro obsah HTML. | Žádné<br/>xhtml_basic<br/>HTML5
-Vložené bitové kopie | % {wurfl_cap_image_inlining} | Logická hodnota, která určuje, zda je zařízení podporuje Base64 kódovaný bitové kopie. | nepravda
-Se systémem Android | % {wurfl_vcap_is_android} | Logická hodnota, která označuje, zda zařízení používá operační systém Android. | true (pravda)
-IOS | % {wurfl_vcap_is_ios} | Logická hodnota, která označuje, zda zařízení používá iOS. | nepravda
-Je inteligentní TV | % {wurfl_cap_is_smarttv} | Logická hodnota, která určuje, zda zařízení je inteligentní televize. | nepravda
-Je Smartphone | % {wurfl_vcap_is_smartphone} | Logická hodnota, která určuje, zda je zařízení smartphone. | true (pravda)
-Je Tablet | % {wurfl_cap_is_tablet} | Logická hodnota, která určuje, zda je zařízení tablet. Tento popis je nezávislý na operačního systému. | true (pravda)
-Je bezdrátových zařízení | % {wurfl_cap_is_wireless_device} | Logická hodnota, která určuje, jestli zařízení je považováno za bezdrátových zařízení. | true (pravda)
-Název marketing | % {wurfl_cap_marketing_name} | Řetězec, který označuje marketing název zařízení. | BlackBerry 8100 Pearl
-Prohlížeč pro mobilní zařízení | % {wurfl_cap_mobile_browser} | Řetězec, který označuje prohlížeče, který slouží k vyžádání obsahu ze zařízení. | Chrome
-Verze mobilní prohlížeče | % {wurfl_cap_mobile_browser_version} | Řetězec, který určuje verzi prohlížeče, který slouží k vyžádání obsahu ze zařízení. | 31
-Název modelu | % {wurfl_cap_model_name} | Řetězec určující název modelu zařízení. | S3
-Progresivní stahování | % {wurfl_cap_progressive_download} | Logická hodnota, která určuje, zda zařízení podporuje přehrávání zvuku a videa, zatímco stále probíhá stahování. | true (pravda)
-Datum vydání | % {wurfl_cap_release_date} | Řetězec, který označuje za rok a měsíc přidání zařízení WURFL databáze.<br/><br/>Formát:`yyyy_mm` | 2013_december
-Výška řešení | % {wurfl_cap_resolution_height} | Celé číslo, které určuje výšku zařízení v pixelech. | 768
-Šířka řešení | % {wurfl_cap_resolution_width} | Celé číslo, které označuje zařízení šířku v pixelech. | 1024
+Název značky | %{wurfl_cap_brand_name} | Řetězec, který označuje brand název zařízení. | Samsung
+Operačního systému zařízení | %{wurfl_cap_device_os} | Řetězec, který označuje operační systém nainstalovaný na zařízení. | iOS
+Verze operačního systému zařízení | %{wurfl_cap_device_os_version} | Řetězec, který označuje číslo verze operačního systému na zařízení nainstalovaná. | 1.0.1
+Duální orientace | %{wurfl_cap_dual_orientation} | Logická hodnota, která určuje, zda je zařízení podporuje dva orientace. | true (pravda)
+Upřednostňovaný souboru DTD protokolu HTML | %{wurfl_cap_html_preferred_dtd} | Řetězec, který označuje definice typu upřednostňované dokumentu (DTD) mobilních zařízení pro obsah HTML. | Žádné<br/>xhtml_basic<br/>html5
+Vložené bitové kopie | %{wurfl_cap_image_inlining} | Logická hodnota, která určuje, zda je zařízení podporuje Base64 kódovaný bitové kopie. | false (nepravda)
+Is Android | %{wurfl_vcap_is_android} | Logická hodnota, která označuje, zda zařízení používá operační systém Android. | true (pravda)
+IOS | %{wurfl_vcap_is_ios} | Logická hodnota, která označuje, zda zařízení používá iOS. | false (nepravda)
+Is Smart TV | %{wurfl_cap_is_smarttv} | Logická hodnota, která určuje, zda zařízení je inteligentní televize. | false (nepravda)
+Je Smartphone | %{wurfl_vcap_is_smartphone} | Logická hodnota, která určuje, zda je zařízení smartphone. | true (pravda)
+Je Tablet | %{wurfl_cap_is_tablet} | Logická hodnota, která určuje, zda je zařízení tablet. Tento popis je nezávislý na operačního systému. | true (pravda)
+Je bezdrátových zařízení | %{wurfl_cap_is_wireless_device} | Logická hodnota, která určuje, jestli zařízení je považováno za bezdrátových zařízení. | true (pravda)
+Název marketing | %{wurfl_cap_marketing_name} | Řetězec, který označuje marketing název zařízení. | BlackBerry 8100 Pearl
+Prohlížeč pro mobilní zařízení | %{wurfl_cap_mobile_browser} | Řetězec, který označuje prohlížeče, který slouží k vyžádání obsahu ze zařízení. | Chrome
+Verze mobilní prohlížeče | %{wurfl_cap_mobile_browser_version} | Řetězec, který určuje verzi prohlížeče, který slouží k vyžádání obsahu ze zařízení. | 31
+Název modelu | %{wurfl_cap_model_name} | Řetězec určující název modelu zařízení. | s3
+Progresivní stahování | %{wurfl_cap_progressive_download} | Logická hodnota, která určuje, zda zařízení podporuje přehrávání zvuku a videa, zatímco stále probíhá stahování. | true (pravda)
+Datum vydání | %{wurfl_cap_release_date} | Řetězec, který označuje za rok a měsíc přidání zařízení WURFL databáze.<br/><br/>Formát: `yyyy_mm` | 2013_december
+Výška řešení | %{wurfl_cap_resolution_height} | Celé číslo, které určuje výšku zařízení v pixelech. | 768
+Šířka řešení | %{wurfl_cap_resolution_width} | Celé číslo, které označuje zařízení šířku v pixelech. | 1024
 
 [Zpět na začátek](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -531,12 +531,12 @@ Informace o klíči:
 - Okraj CNAME adresa URL je přepsaná na adresu URL CDN před porovnání adresy URL.
 
     Například obě následující adresy URL bodu pro stejný prostředek a proto mít stejnou cestu adresy URL.
-    - Adresa URL CDN: http:\//wpc.0001.&lt; Domény&gt;/800001/CustomerOrigin/path/asset.htm
+    - CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
     
-    - Adresa URL CNAME Edge: http:\//&lt;koncový bod&gt;.azureedge.net/path/asset.htm
+    - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
 
     Další informace:
-    - Vlastní domény: https:\//my.domain.com/path/asset.htm
+    - Custom domain: https:\//my.domain.com/path/asset.htm
     
     - Cestu adresy URL (relativní vůči kořenovému adresáři): / 800001/CustomerOrigin/cesta /
     
@@ -590,10 +590,10 @@ Následující ukázková konfigurace předpokládá, pokud požadavek odpovíd�
 Hodnota specifikace: asp aspx php html
 
 Splnění této podmínky shody při nalezení adresy URL, které končí s těmito příponami:
-- ASP
+- .asp
 - .aspx
 - .php
-- .HTML
+- .html
 
 [Zpět na začátek](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -651,8 +651,8 @@ Informace o klíči:
 - Okraj CNAME adresa URL je přepsaná na adresu URL CDN před porovnání adresy URL.
 
    Například obě následující adresy URL bodu pro stejný prostředek a proto mají stejnou cestu adresy URL:
-    - Adresa URL CDN: http:\//wpc.0001.&lt; Domény&gt;/800001/CustomerOrigin/path/asset.htm
-    - Adresa URL CNAME Edge: http:\//&lt;koncový bod&gt;.azureedge.net/path/asset.htm
+    - CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+    - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
 
    Další informace:
     
@@ -683,9 +683,9 @@ Informace o klíči:
  
    Například obě adresy URL bodu pro stejný prostředek a proto mít stejnou cestu adresy URL.
 
-     - Adresa URL CDN: http:\//wpc.0001.&lt; Domény&gt;/800001/CustomerOrigin/path/asset.htm
+     - CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
 
-     - Adresa URL CNAME Edge: http:\//my.domain.com/path/asset.htm
+     - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
 
    Další informace:
     
@@ -726,8 +726,8 @@ Informace o klíči:
 - Okraj CNAME adresa URL je přepsaná na adresu URL CDN před porovnání adresy URL.
 
    Například obě následující adresy URL bodu pro stejný prostředek a proto mají stejnou cestu adresy URL:
-     - Adresa URL CDN: http://wpc.0001. &lt;Domény&gt;/800001/CustomerOrigin/path/asset.htm
-     - Adresa URL CNAME Edge: http:\//&lt;koncový bod&gt;.azureedge.net/path/asset.htm
+     - CDN URL: http://wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+     - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
 
    Další informace:
     
@@ -753,11 +753,11 @@ Ukázka konfigurace v následující tabulce předpokládá se, pokud požadavek
 
 Hodnota                   | Vzhledem k    | Výsledek 
 ------------------------|----------------|-------
-*/test.HTML */test.php  | Kořenový server WSUS nebo počátek | Tento vzor je nalezena shoda s žádostmi o u prostředků s názvem "test.html" nebo "test.php" v libovolné složky.
+*/test.html */test.php  | Kořenový server WSUS nebo počátek | Tento vzor je nalezena shoda s žádostmi o u prostředků s názvem "test.html" nebo "test.php" v libovolné složky.
 / 80ABCD/původ nebo text / *   | Kořen           | Tento vzor je nalezena shoda, pokud požadovaný prostředek splňuje následující kritéria: <br />– Musí být umístěn na zákazníka původu, nazývá "původ." <br />– Relativní cesta musí začínat složku s názvem "text". To znamená, že požadovaný prostředek se může nacházet ve složce "text" nebo jeden z jejích podsložkách rekurzivní.
-*/CSS/* */js/*          | Kořenový server WSUS nebo počátek | Tento vzor má odpovídající všechny CDN nebo Microsoft edge CNAME adresy URL, které obsahují složku šablon stylů css nebo js.
+*/css/* */js/*          | Kořenový server WSUS nebo počátek | Tento vzor má odpovídající všechny CDN nebo Microsoft edge CNAME adresy URL, které obsahují složku šablon stylů css nebo js.
 *.jpg *.gif *.png       | Kořenový server WSUS nebo počátek | Tento vzor má odpovídající všechny CDN nebo Microsoft edge CNAME adresy URL konče JPG, GIF nebo PNG. Zadejte tento vzor alternativní způsob je pomocí [rozšíření cesty adresy URL vyhovují podmínce](#url-path-extension).
-/ Image / * / media / *      | Zdroj         | Tento vzor má odpovídající CDN nebo Microsoft edge CNAME adresy URL, jehož relativní cesta začíná na "kopie" nebo "média" složku. <br />-Adresa URL CDN: http:\//wpc.0001.&lt; Domény&gt;/800001/myorigin/images/sales/event1.png<br />-Ukázkové edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
+/ Image / * / media / *      | Zdroj         | Tento vzor má odpovídající CDN nebo Microsoft edge CNAME adresy URL, jehož relativní cesta začíná na "kopie" nebo "média" složku. <br />- CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
 
 [Zpět na začátek](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -783,8 +783,8 @@ Informace o klíči:
 
    Znak | Kódování URL
    ----------|---------
-   Mezera     | % 20
-   &         | % 25
+   Mezera     | %20
+   &         | %25
 
 - Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení tato podmínka shoda není kompatibilní s následující funkce:
    - Dokončení výplně mezipaměti
@@ -819,8 +819,8 @@ Informace o klíči:
 
        Znak | Kódování URL
        ----------|---------
-       Mezera     | % 20
-       &         | % 25
+       Mezera     | %20
+       &         | %25
 
 - Zadejte více hodnot parametrů řetězce dotazu omezující každé z nich mezerou. Pokud požadavek obsahuje jeden z kombinace zadaný název hodnota splnění této podmínky shody.
 
@@ -832,7 +832,7 @@ Informace o klíči:
 
      - Tato konfigurace se shoduje s následující parametrů řetězce dotazu:
 
-       Parameter1 = dat
+       Parameter1=ValueA
     
        Parameter1 = hodnotu b
 
@@ -896,8 +896,8 @@ Informace o klíči:
 
    Znak | Kódování URL | Hodnota
    ----------|--------------|------
-   Mezera     | % 20          | \%20
-   &         | % 25          | \%25
+   Mezera     | %20          | \%20
+   &         | %25          | \%25
 
    Všimněte si, že procento symboly, je nutné uvést.
 
@@ -938,8 +938,8 @@ Informace o klíči:
 
      Znak | Kódování URL
      ----------|---------
-     Mezera     | % 20
-     &         | % 25
+     Mezera     | %20
+     &         | %25
 
 - Zadejte více hodnot omezující každé z nich mezerou.
 
@@ -961,7 +961,7 @@ Následující příklad ukazuje, jak se tato možnost funguje v konkrétních s
 
  Název                 | Popis
  ---------------------|------------
-uživatel = Jan              | Tento vzor je nalezena shoda, pokud je řetězec dotazu pro požadovanou adresu URL "? uživatele = Jan."
+user=joe              | Tento vzor je nalezena shoda, pokud je řetězec dotazu pro požadovanou adresu URL "? uživatele = Jan."
 \*Uživatel =\* \*optout =\* | Tento vzor je nalezena shoda, pokud dotaz adresy URL CDN obsahuje uživatele nebo optout parametr.
 
 [Zpět na začátek](#match-conditions-for-the-azure-cdn-rules-engine)

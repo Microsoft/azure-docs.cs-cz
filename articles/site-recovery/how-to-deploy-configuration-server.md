@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/25/2018
 ms.author: anoopkv
 ms.openlocfilehash: f7ec02cb4723d8a4ea0847810b1a1822cf20e957
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -47,7 +47,7 @@ Pokud replikujete virtuální počítače VMware, další informace o [informace
 Site Recovery poskytuje ke stažení šablony k nastavení konfigurace serveru jako vysoce dostupný virtuální počítač VMware. 
 
 1. V daném trezoru klikněte na **Připravit infrastrukturu** > **Zdroj**.
-2. V **připravit zdroj**, vyberte **+ konfigurační server**.
+2. V části **Připravit zdroj** vyberte **+ Konfigurační server**.
 3. V části **Přidat server** zkontrolujte, jestli se v části **Typ serveru** zobrazí **Konfigurační server pro VMware**.
 4. Stáhněte šablonu OVF pro konfigurační server.
 
@@ -58,8 +58,8 @@ Site Recovery poskytuje ke stažení šablony k nastavení konfigurace serveru j
 ## <a name="import-the-template-in-vmware"></a>Import šablony do VMware
 
 
-1. Přihlaste se k serveru VMware vCenter nebo hostitelů vSphere ESXi pomocí klientem VMWare vSphere.
-2. Na **soubor** nabídce vyberte možnost **nasazení šablony OVF** spusťte Průvodce šablonou nasazení OVF.
+1. Pomocí klientské konzoly VMware vSphere Client se přihlaste k VMware vCenter Serveru nebo hostiteli vSphere ESXi.
+2. V nabídce **File** (Soubor) vyberte **Deploy OVF Template** (Nasadit šablonu OVF). Tím spustíte průvodce nasazením šablony OVF.
 
      ![Šablona OVF](./media/tutorial-vmware-to-azure/vcenter-wizard.png)
 
@@ -72,7 +72,7 @@ Site Recovery poskytuje ke stažení šablony k nastavení konfigurace serveru j
 
     * Pokud chcete vytvořit virtuální počítač s výchozím nastavením, vyberte **Power on after deployment** (Spustit po nasazení) > **Finish** (Dokončit).
 
-    * Chcete-li přidat další síťové rozhraní, zrušte **zapnout po nasazení**a potom vyberte **Dokončit**. Ve výchozím nastavení je nasazena šablony konfigurace serveru s jeden síťový adaptér. Po nasazení můžete přidat další síťové adaptéry.
+    * Chcete-li přidat další síťové rozhraní, zrušte **zapnout po nasazení**a potom vyberte **Dokončit**. Ve výchozím nastavení se šablona konfiguračního serveru nasadí s jedním síťovým adaptérem. Po nasazení můžete přidat další síťové adaptéry.
 
 
 ## <a name="add-an-additional-adapter"></a>Přidání dalšího adaptéru
@@ -80,7 +80,7 @@ Site Recovery poskytuje ke stažení šablony k nastavení konfigurace serveru j
 Pokud chcete přidat další síťový adaptér na konfiguračním serveru, přidejte ji předtím, než zaregistrujete server v trezoru. Jakmile ho zaregistrujete, další adaptéry nebudete moct přidat.
 
 1. V inventáři konzole vSphere Client klikněte pravým tlačítkem na virtuální počítač a vyberte **Edit Settings** (Upravit nastavení).
-2. V **hardwaru**, vyberte **přidat** > **adaptér Ethernet**. Pak vyberte **Další**.
+2. V části **Hardware** vyberte **Add** (Přidat) > **Ethernet Adapter** (Adaptér sítě Ethernet). Pak vyberte **Další**.
 3. Vyberte typ adaptéru a síť. 
 4. Vyberte **Connect at power on** (Připojit při spuštění), aby se po spuštění virtuálního počítače připojila virtuální síťová karta. Potom vyberte **Další** > **Dokončit** > **OK**.
  
@@ -89,25 +89,25 @@ Pokud chcete přidat další síťový adaptér na konfiguračním serveru, při
 
 1. Z klientské konzole VMware vSphere Client zapněte požadovaný virtuální počítač.
 2. Virtuální počítač se spustí do instalačního prostředí Windows Serveru 2016. Přijměte licenční smlouvu a zadejte heslo správce.
-3. Po dokončení instalace, přihlaste se k virtuálnímu počítači jako správce.
-4. Při prvním přihlášení, spustí se nástroje Konfigurace obnovení lokality Azure.
-5. Zadejte název, který se použije k registraci konfigurační server pomocí Site Recovery. Pak vyberte **Další**.
-6. Nástroj zkontroluje, jestli se virtuální počítač může připojit k Azure. Po připojení, vyberte **přihlášení** k přihlášení k předplatnému Azure. Přihlašovací údaje musí zajišťovat přístup k trezoru, do kterého chcete konfigurační server zaregistrovat.
+3. Po dokončení instalace se přihlaste k virtuálnímu počítači jako správce.
+4. Při prvním přihlášení se spustí nástroj pro konfiguraci služby Azure Site Recovery.
+5. Zadejte název, pod kterým se konfigurační server zaregistruje do služby Site Recovery. Pak vyberte **Další**.
+6. Nástroj zkontroluje, jestli se virtuální počítač může připojit k Azure. Po navázání spojení vyberte **Přihlásit se**, abyste se mohli přihlásit ke svému předplatnému Azure. Přihlašovací údaje musí zajišťovat přístup k trezoru, do kterého chcete konfigurační server zaregistrovat.
 7. Nástroj provede několik konfiguračních úloh a pak restartuje počítač.
-8. Přihlaste se k počítači znovu. Automaticky se spustí Průvodce konfigurací serveru správy.
+8. Znovu se přihlaste k počítači. Automaticky se spustí průvodce správou konfiguračního serveru.
 
 ### <a name="configure-settings"></a>Konfigurace nastavení
 
 1. V Průvodci konfigurací serveru správy vyberte **nastavení připojení**. Vyberte síťový adaptér a příjem přenosů replikace a pak vyberte **Uložit**. Po dokončení konfigurace není možné toto nastavení změnit.
-2. V **trezor služeb zotavení vyberte**, vyberte předplatné Azure a příslušnou skupinu zdrojů a trezoru.
-3. V **nainstalovat software třetích stran**, přijměte licenční smlouvu. Vyberte **stáhněte a nainstalujte** instalace serveru MySQL.
-4. Vyberte **nainstalovat VMware PowerLCI**. Ujistěte se, že všechna okna prohlížeče jsou uzavřeny před provedením tohoto kroku. Potom vyberte **pokračovat**.
-5. V **ověřením konfigurace zařízení**, než budete pokračovat ověření předpokladů.
-6. V **konfigurovat vCenter Server vSphere ESXi server**, zadejte plně kvalifikovaný název domény nebo IP adresa serveru vCenter nebo hostitelů vSphere, kde se nachází virtuální počítače, které chcete replikovat. Zadejte port, kterém naslouchá server a popisný název serveru VMware server v trezoru.
-7. Zadejte pověření pro použití konfigurační server pro připojení k serveru VMware. Služba Site Recovery je použije k automatickému zjištění virtuálních počítačů VMware, které jsou dostupné pro replikaci. Vyberte **přidat**a potom vyberte **pokračovat**.
+2. V části **Vyberte trezor služby Recovery Services** vyberte své předplatné Azure a příslušnou skupinu prostředků a trezor.
+3. V části **Nainstalovat software třetí strany** přijměte licenční smlouvu. Vyberte **Stáhnout a nainstalovat** a nainstalujte MySQL Server.
+4. Vyberte **nainstalovat VMware PowerLCI**. Ujistěte se, že všechna okna prohlížeče jsou uzavřeny před provedením tohoto kroku. Potom vyberte **Pokračovat**.
+5. Než budete pokračovat, v části **Ověřit konfiguraci zařízení** se ověří požadavky.
+6. V části **Konfigurovat vCenter Server nebo server vSphere ESXi** zadejte plně kvalifikovaný název domény nebo IP adresu vCenter Serveru nebo hostitele vSphere, na kterém jsou umístěné virtuální počítače, které chcete replikovat. Zadejte port, kterém naslouchá server a popisný název serveru VMware server v trezoru.
+7. Zadejte přihlašovací údaje, které bude konfigurační server používat pro připojení k serveru VMware. Služba Site Recovery je použije k automatickému zjištění virtuálních počítačů VMware, které jsou dostupné pro replikaci. Vyberte **Přidat** a pak **Pokračovat**.
 8. V **konfigurace virtuálního počítače pověření**, zadejte uživatelské jméno a heslo používané můžete automaticky nainstalovat službu Azure Site Recovery Mobility na počítačích, pokud je zapnutá replikace. Když chcete replikovat počítače s Windows, je nutné, aby na nich měl tento účet oprávnění místního správce. U počítačů s Linuxem zadejte údaje superuživatele.
 9. Vyberte **dokončení konfigurace** k dokončení registrace. 
-10. Jakmile bude registrace dokončená, zkontrolujte Azure Portal, jestli je ve vybraném trezoru na stránce **Zdroj** uvedený konfigurační server a VMware server. Potom vyberte **OK** ke konfiguraci nastavení cíle.
+10. Jakmile bude registrace dokončená, zkontrolujte Azure Portal, jestli je ve vybraném trezoru na stránce **Zdroj** uvedený konfigurační server a VMware server. Pak vyberte **OK** a nakonfigurujte nastavení cíle.
 
 
 ## <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
