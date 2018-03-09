@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: pullabhk;markgal
-ms.openlocfilehash: d1ebda145b7e355bd9763025dece742d2a23239b
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0fce38db010a77ac61145ef63f616e0e466c95e2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovit soubory ze zálohy virtuálního počítače Azure
 
 Azure Backup poskytuje možnosti obnovení [Azure virtuální počítače (VM) a disky](./backup-azure-arm-restore-vms.md) ze záloh virtuálních počítačů Azure, také známé jako obnovit body. Tento článek vysvětluje, jak obnovit soubory a složky ze zálohy virtuálního počítače Azure. Obnovení souborů a složek je k dispozici pouze pro virtuální počítače Azure nasazení pomocí modelu Resource Manager a chránit do trezoru služeb zotavení.
 
 > [!Note]
+> Tato funkce je k dispozici pro virtuální počítače Azure nasazení pomocí modelu Resource Manager a chránit do trezoru služeb zotavení.
 > Obnovení souborů ze šifrovaných zálohy virtuálního počítače není podporováno.
 >
 
@@ -154,7 +155,7 @@ Následující příkaz zobrazí podrobnosti o všech disků raid.
 ```
 $ mdadm –detail –scan
 ```
- Relevantní RAID disku se zobrazí jako`/dev/mdm/<RAID array name in the protected VM>`
+ Relevantní RAID disku se zobrazí jako `/dev/mdm/<RAID array name in the protected VM>`
 
 Pokud RAID disk fyzických svazků, použijte příkaz připojení.
 ```

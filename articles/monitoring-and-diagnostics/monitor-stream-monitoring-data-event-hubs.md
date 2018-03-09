@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/13/2018
+ms.date: 3/05/2018
 ms.author: johnkem
-ms.openlocfilehash: d449be98cd59756e2bafc584e0501b8c83c594eb
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 1b1c50f106be8848fb1f32deefa6cb9acb7a298a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Monitorování data do centra událostí pro používání pomocí externího nástroje Azure datového proudu
 
@@ -36,7 +36,18 @@ V prostředí Azure existuje několik "vrstvy" monitorování dat a způsob př�
 
 Data z libovolné úrovně můžete odeslat do centra událostí, kde mohou být vyžádány do nástroje a partnera. Další části popisují, jak můžete nakonfigurovat dat z jednotlivých úrovní tok dat do centra událostí. Postup předpokládá, že už máte prostředky v této vrstvě ke sledování.
 
-Než začnete, budete muset [vytvoření služby Event Hubs obor názvů a event hub](../event-hubs/event-hubs-create.md). Toto centrum obor názvů a událostí je cílem pro všechna vaše data monitorování.
+## <a name="set-up-an-event-hubs-namespace"></a>Nastavit na obor názvů služby Event Hubs
+
+Než začnete, budete muset [vytvoření služby Event Hubs obor názvů a event hub](../event-hubs/event-hubs-create.md). Toto centrum obor názvů a událostí je cílem pro všechna vaše data monitorování. Obor názvů Event Hubs je logické seskupení centra událostí, které sdílejí stejné zásady přístupu, podobně jako úložiště účet má jednotlivé objekty BLOB v rámci tohoto účtu úložiště. Je třeba počítat několik podrobnosti o události rozbočovače obor názvů a centra událostí, které vytvoříte:
+* Doporučujeme používat standardní Event Hubs obor názvů.
+* Obvykle je nutné pouze jednu jednotku propustnosti. Pokud potřebujete škálování jako vaše zvýšení využití protokolu, můžete vždy ručně zvýšit počet jednotek propustnosti pro obor názvů později nebo povolit inflace automaticky.
+* Počet jednotek propustnosti umožňuje zvýšit propustnost škálování pro event hubs. Počet oddílů umožňuje paralelní spotřeba napříč mnoha příjemci. Jeden oddíl můžete udělat, až 20MBps nebo přibližně 20 000 zpráv za sekundu. V závislosti na nástroj využívají data může nebo nemusí podporovat použití z více oddílů. Pokud si nejste jisti o počet oddílů nastavit, doporučujeme začít s čtyřmi oddíly.
+* Doporučujeme nastavit zprávu uchování u vašeho centra událostí do 7 dnů. Pokud vaše náročné nástroje přestane fungovat pro více než jedním dnem, zajistíte tak, že tento nástroj můžete vyzvednutí kde bylo přerušeno (pro události až 7 dní).
+* Doporučujeme používat výchozí skupina příjemců pro vaše Centrum událostí. Není nutné vytvořit další skupiny uživatelů nebo použijte samostatné příjemce skupinu, pokud chcete mít dva různé nástroje, které využívají stejný data ze stejné centra událostí.
+* Pro protokol činnosti Azure vyberte na obor názvů služby Event Hubs a monitorování Azure vytvoří Centrum událostí v daném oboru názvů volat "insights protokoly operationallogs." Pro ostatní typy protokolu, můžete buď zvolit existující centra událostí (abyste mohli znovu použít stejné centra událostí insights-logs-operationallogs) nebo mají Azure monitorování, vytváření centra událostí podle kategorie protokolu.
+* Obvykle je nutné otevřít port 5671 a 5672 na počítači použití dat z centra událostí.
+
+Podrobnosti najdete také [Azure Event Hubs – nejčastější dotazy](../event-hubs/event-hubs-faq.md).
 
 ## <a name="how-do-i-set-up-azure-platform-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak nastavit platformy Azure dat monitorování tok dat do centra událostí?
 

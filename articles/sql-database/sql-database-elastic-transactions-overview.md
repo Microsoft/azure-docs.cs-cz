@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.openlocfilehash: 012fc38075285b898599517f3e6ed5a3c9eb854d
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 4441cdef3bc97aab35451720753e437e24702fd9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Distribuované transakce v cloudových databázích
 Transakcí elastické databáze pro Azure SQL Database (databáze SQL) umožňují spustit transakce, které jsou rozmístěny v několika databází v databázi SQL. Jsou k dispozici pro aplikace .NET pomocí rozhraní ADO .NET transakcí elastické databáze pro databázi SQL a integrovat známé programování pomocí prostředí [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) třídy. Pokud chcete získat knihovny, přečtěte si téma [rozhraní .NET Framework 4.6.1 (Webová instalační služba)](https://www.microsoft.com/download/details.aspx?id=49981).
@@ -133,9 +133,9 @@ Monitorování stavu a průběhu transakcí probíhající elastické databáze 
 
 Tato zobrazení dynamické správy jsou obzvláště užitečná:
 
-* **Sys.DM\_tran\_active\_transakce**: uvádí aktuálně aktivních transakcí a jejich stav. Sloupec UOW (jednotka práce) můžete určit jiné podřízené transakcí, které patří do stejné distribuované transakce. Všechny transakce v rámci stejné distribuované transakce provádění stejnou hodnotu parametru UOW. Najdete v článku [DMV dokumentaci](https://msdn.microsoft.com/library/ms174302.aspx) další podrobnosti.
-* **Sys.DM\_tran\_databáze\_transakce**: poskytuje další informace o transakcích, jako je například umístění transakce v protokolu. Najdete v článku [DMV dokumentaci](https://msdn.microsoft.com/library/ms186957.aspx) další podrobnosti.
-* **Sys.DM\_tran\_zámky**: poskytuje informace o zámky, které jsou aktuálně uložené probíhající transakce. Najdete v článku [DMV dokumentaci](https://msdn.microsoft.com/library/ms190345.aspx) další podrobnosti.
+* **Sys.DM\_tran\_active\_transakce**: uvádí aktuálně aktivních transakcí a jejich stav. Sloupec UOW (jednotka práce) můžete určit jiné podřízené transakcí, které patří do stejné distribuované transakce. Všechny transakce v rámci stejné distribuované transakce provádění stejnou hodnotu parametru UOW. Najdete v článku [DMV dokumentaci](https://msdn.microsoft.com/library/ms174302.aspx) Další informace.
+* **Sys.DM\_tran\_databáze\_transakce**: poskytuje další informace o transakcích, jako je například umístění transakce v protokolu. Najdete v článku [DMV dokumentaci](https://msdn.microsoft.com/library/ms186957.aspx) Další informace.
+* **Sys.DM\_tran\_zámky**: poskytuje informace o zámky, které jsou aktuálně uložené probíhající transakce. Najdete v článku [DMV dokumentaci](https://msdn.microsoft.com/library/ms190345.aspx) Další informace.
 
 ## <a name="limitations"></a>Omezení
 Pro elastické databáze transakce v databázi SQL aktuálně platí následující omezení:
@@ -144,7 +144,7 @@ Pro elastické databáze transakce v databázi SQL aktuálně platí následují
 * Jsou podporovány pouze klienta koordinované transakce z aplikace .NET. Podpora serverové T-SQL, jako je například začít DISTRIBUOVANÝCH transakcí je plánované, ale ještě není k dispozici. 
 * Transakce ve službách WCF nejsou podporovány. Například máte metodu služby WCF, které provádí transakce. Jako zachytávají v oboru transakce se nezdaří [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Máte dotazy, kontaktujte nás na [fórum SQL Database](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) a pro žádosti o funkce, přidejte je do [fóru pro zpětnou vazbu SQL Database](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->

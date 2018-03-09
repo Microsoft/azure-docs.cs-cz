@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja
-ms.openlocfilehash: 0d4ee064c15c914eea7353900c6bb5a77b3e3b3b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 33c9e4322444895a3affc16e11af5443f2db6b6d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Vytváření a používání vlastních atributů v vlastního profilu upravit zásady
 
@@ -31,7 +31,7 @@ V tomto článku můžete vytvořit vlastní atribut v adresáři Azure AD B2C a
 Proveďte kroky v následujícím článku [Začínáme se zásadami vlastní](active-directory-b2c-get-started-custom.md).
 
 ## <a name="use-custom-attributes-to-collect-information-about-your-customers-in-azure-active-directory-b2c-using-custom-policies"></a>Použití vlastních atributů ke shromažďování informací o zákazníky v Azure Active Directory B2C pomocí vlastních zásad
-Adresáře Azure Active Directory (Azure AD) B2C se dodává s integrovanou sadu atributů: zadané jméno, příjmení, Město, PSČ, userPrincipalName, atd.  Často je potřeba vytvořit vlastní atributy.  Například:
+Adresáře Azure Active Directory (Azure AD) B2C se dodává s integrovanou sadu atributů: zadané jméno, příjmení, Město, PSČ, userPrincipalName, atd.  Často je potřeba vytvořit vlastní atributy.  Příklad:
 * Zákazník směřujících aplikací musí zachovat atribut jako je například "LoyaltyNumber."
 * Zprostředkovatele identity má jedinečný identifikátor uživatele, musí být uložena jako je například "uniqueUserGUID"."
 * Vlastní uživatelské cesty musí zachovat stav uživatele, jako je například "migrationStatus."
@@ -65,8 +65,8 @@ Vlastnosti rozšíření existují pouze v kontextu registrovaný aplikace v kli
 1. Oprávnění aplikací, zaškrtněte: **pro čtení a zápis dat adresáře**, a **uložit**
 1. Zvolte **udělit oprávnění** a potvrďte **Ano**.
 1. Zkopírujte do schránky a uložte následující identifikátory z webové aplikace. GraphAPI DirectoryExtensions > Nastavení > Vlastnosti >
-*  **ID aplikace** . Příklad:`103ee0e6-f92d-4183-b576-8c3739027780`
-* **ID objektu**. Příklad:`80d8296a-da0a-49ee-b6ab-fd232aa45201`
+*  **ID aplikace** . Příklad: `103ee0e6-f92d-4183-b576-8c3739027780`
+* **ID objektu**. Příklad: `80d8296a-da0a-49ee-b6ab-fd232aa45201`
 
 
 
@@ -96,7 +96,7 @@ Vlastnosti rozšíření existují pouze v kontextu registrovaný aplikace v kli
 ```
 
 >[!NOTE]
-><TechnicalProfile Id="AAD-Common"> Se označuje jako "běžné", protože jeho prvky jsou součástí a opakovaně používat ve všech Azure Active Directory TechnicalProfiles pomocí prvku:`<IncludeTechnicalProfile ReferenceId="AAD-Common" />`
+><TechnicalProfile Id="AAD-Common"> Se označuje jako "běžné", protože jeho prvky jsou součástí a opakovaně používat ve všech Azure Active Directory TechnicalProfiles pomocí prvku: `<IncludeTechnicalProfile ReferenceId="AAD-Common" />`
 
 >[!NOTE]
 >Když TechnicalProfile zapíše první vlastnost nově vytvořený rozšíření, může docházet k chybě jednorázové.  Vlastnost rozšíření se vytvoří při prvním se používá.  
@@ -152,7 +152,7 @@ Vlastnosti rozšíření existují pouze v kontextu registrovaný aplikace v kli
             <InputClaim ClaimTypeReferenceId="userPrincipalName" />
 
             <!-- Optional claims. These claims are collected from the user and can be modified. Any claim added here should be updated in the
-                 ValidationTechnicalProfile referenced below so it can be written to directory after being updateed by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
+                 ValidationTechnicalProfile referenced below so it can be written to directory after being updated by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
             <InputClaim ClaimTypeReferenceId="givenName" />
             <InputClaim ClaimTypeReferenceId="surname" />
             <InputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
@@ -162,7 +162,7 @@ Vlastnosti rozšíření existují pouze v kontextu registrovaný aplikace v kli
             <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
 
             <!-- Optional claims. These claims are collected from the user and can be modified. Any claim added here should be updated in the
-                 ValidationTechnicalProfile referenced below so it can be written to directory after being updateed by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
+                 ValidationTechnicalProfile referenced below so it can be written to directory after being updated by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
             <OutputClaim ClaimTypeReferenceId="givenName" />
             <OutputClaim ClaimTypeReferenceId="surname" />
             <OutputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
@@ -251,7 +251,7 @@ Id token odeslána zpět do vaší aplikace obsahuje nové vlastnosti rozšíře
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 ### <a name="add-the-new-claim-to-the-flows-for-social-account-logins-by-changing-the-technicalprofiles-listed-below-these-two-technicalprofiles-are-used-by-socialfederated-account-logins-to-write-and-read-the-user-data-using-the-alternativesecurityid-as-the-locator-of-the-user-object"></a>Přidejte novou deklaraci na toky pro sociálních účet přihlášení změnou TechnicalProfiles uvedené níže. Tyto dvě TechnicalProfiles jsou používány sociálního/federovaný účet přihlášení k zápisu a čtení dat uživatele pomocí alternativeSecurityId jako Lokátor objektu uživatele.
 ```xml

@@ -3,8 +3,8 @@ title: "Pokrytí provoz v umístění Azure na základě služby | Microsoft Doc
 description: "Další informace o provozu služby založené na pokrytí v umístění Azure"
 services: location-based-services
 keywords: 
-author: dsk-2015
-ms.author: dkshir
+author: kgremban
+ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: location-based-services
@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 5bfda1cd211eb08f80527aa0116815023ff93931
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 251c736e0f607ffeea144639f437900eb337b6ea
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-location-based-services---traffic-coverage"></a>Umístění Azure na základě služby - pokrytí provoz
 
@@ -45,20 +45,20 @@ Azure umístění na základě služby (od kg) poskytuje bohaté provoz informac
 |+ Monaco     |✓         |✓         |
 |Německo     |✓         |✓         |
 |Řecko     |✓         |✓         |
-|Hongkong – zvláštní správní oblast     |✓         |✓         |
+|Hongkong – zvláštní administrativní oblast     |✓         |✓         |
 |Maďarsko     |✓         |✓         |
 |Island     |         |✓         |
 |Indonésie     |✓         |✓         |
 |Irsku (republika)     |✓         |✓         |
 |Izrael     |         |✓         |
 |Itálie     |✓         |✓        |
-|+ Sv     |✓         |✓         |
+|+San Marino     |✓         |✓         |
 |Kuvajt     |✓         |✓         |
 |Lotyšsko     |         |✓         |
 |Lesotho     |✓         |✓         |
 |Litva     |         |✓         |
 |Lucembursko     |✓         |✓         |
-|Zboží zvláštní správní oblast     |         |✓         |
+|Macao – zvláštní administrativní oblast     |         |✓         |
 |Malajsie     |✓         |✓         |
 |Malta     |✓         |✓         |
 |Mexiko     |✓         |✓         |
@@ -79,13 +79,13 @@ Azure umístění na základě služby (od kg) poskytuje bohaté provoz informac
 |Slovinsko     |✓         |✓         |
 |Jihoafrická republika     |✓         |✓         |
 |Španělsko     |✓         |✓         |
-|+ Andorry     |✓         |✓         |
+|+Andorra     |✓         |✓         |
 |+ Baleárské ostrovy     |✓         |✓         |
 |+ Nevztahují     |✓         |✓         |
-|+ Gibraltar     |✓         |✓         |
+|+Gibraltar     |✓         |✓         |
 |Švédsko     |✓         |✓         |
 |Švýcarsko     |✓         |✓        |
-|+ Lichtenštejnsko      |✓         |✓         |
+|+Liechtenstein      |✓         |✓         |
 |Tchaj-wan     |✓         |✓        |
 |Thajsko     |✓         |✓        |
 |Turecko     |✓         |✓         |

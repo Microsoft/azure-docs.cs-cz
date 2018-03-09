@@ -7,13 +7,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 03/07/2018
 ms.author: jingwang
-ms.openlocfilehash: e583c6952e02c4a93f56594f6392f1d9a260dce0
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 26f29355f53a586ea21551831f48ddf8898d3c9f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky v Azure Data Factory
 
@@ -307,7 +307,7 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
 - Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování zdrojové sloupce datové sady na cílový datovou sadu sloupců](copy-activity-schema-and-type-mapping.md).
-- `jsonNodeReference`označuje k iteraci a extrahovat data z objektů se stejným vzorkem pod **pole** `orderlines`.
+- `jsonNodeReference` označuje k iteraci a extrahovat data z objektů se stejným vzorkem pod **pole** `orderlines`.
 - `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. V tomto příkladu `ordernumber`, `orderdate`, a `city` pod kořenový objekt s JSON cesta začínat `$.`, zatímco `order_pd` a `order_price` jsou definovány s cestou odvozen z elementu pole bez `$.` .
 
 ```json
@@ -436,7 +436,7 @@ Pokud chcete analyzovat soubory ORC nebo zapisovat data ve formátu ORC, nastavt
 ```
 
 > [!IMPORTANT]
-> Pokud soubory ORC mezi místním prostředím a cloudovým úložištěm dat nekopírujete **tak, jak jsou**, musíte si na počítači brány nainstalovat prostředí JRE 8 (Java Runtime Environment). 64bitová verze brány vyžaduje 64bitové prostředí JRE a 32bitová verze brány vyžaduje 32bitové prostředí JRE. Obě verze najdete [tady](http://go.microsoft.com/fwlink/?LinkId=808605). Vyberte z nich tu vhodnou.
+> Pro kopírování oprávněné modulem Runtime integrace Self-hosted například mezi místními a cloudovými ukládá data, pokud nejsou kopírování souborů ORC **jako-je**, musíte nainstalovat prostředí JRE 8 (prostředí Java Runtime) v počítači reakcí na Incidenty. 64bitová verze IR vyžaduje prostředí JRE 64-bit. Obě verze najdete [tady](http://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Je třeba počítat s následujícím:
@@ -456,7 +456,7 @@ Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet,
 ```
 
 > [!IMPORTANT]
-> Pokud soubory Parquet mezi místním prostředím a cloudovým úložištěm dat nekopírujete **tak, jak jsou**, musíte si na počítači brány nainstalovat prostředí JRE 8 (Java Runtime Environment). 64bitová verze brány vyžaduje 64bitové prostředí JRE a 32bitová verze brány vyžaduje 32bitové prostředí JRE. Obě verze najdete [tady](http://go.microsoft.com/fwlink/?LinkId=808605). Vyberte z nich tu vhodnou.
+> Pro kopírování oprávněné modulem Runtime integrace Self-hosted například mezi místními a cloudovými ukládá data, pokud nejsou kopírování souborů Parquet **jako-je**, musíte nainstalovat prostředí JRE 8 (prostředí Java Runtime) v počítači reakcí na Incidenty. 64bitová verze IR vyžaduje prostředí JRE 64-bit. Obě verze najdete [tady](http://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Je třeba počítat s následujícím:
@@ -512,7 +512,7 @@ Pokud chcete zadat komprese datové sady, použijte **komprese** vlastnost v dat
 > [!NOTE]
 > Nastavení komprese nejsou podporovány pro data v **AvroFormat**, **OrcFormat**, nebo **ParquetFormat**. Při čtení souborů v těchto formátů, Data Factory zjišťuje a používá kompresní kodek v metadatech. Při zápisu do souborů v těchto formátů, Data Factory zvolí kodek komprese výchozí pro tento formát. Například ZLIB OrcFormat a SNAPPY pro ParquetFormat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Najdete v následujících článcích pro úložiště dat na základě souborů podporovaných službou Azure Data Factory:
 

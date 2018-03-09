@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: vinagara
-ms.openlocfilehash: 438776e7f0885dbdb0d66ccdd18d854e14beb299
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0cee8bf77e0facc12159b823152b8859ce5cedd8
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Protokol výstrah v monitorování Azure – výstrahy (Preview)
-Tento článek poskytuje podrobné informace o tom, jak výstrahy pravidla v pracovní dotazy Analytics ve výstrahách Azure (Preview) a popisuje rozdíly mezi různé typy protokolu pravidla výstrah.
+Tento článek poskytuje podrobné informace o tom, jak výstrahy pravidla v pracovní dotazy Analytics ve výstrahách Azure (Preview) a popisuje rozdíly mezi různé typy protokolu pravidla výstrah. Podrobnosti o výstrahách metrika pomocí protokolů [téměř upozornění v reálném čase metrika](monitoring-near-real-time-metric-alerts.md)
 
 Aktuálně výstrahy Azure (Preview), podporuje protokolu výstrahy na dotazy z [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) a [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events).
 
@@ -40,12 +40,12 @@ Pak když [vytváření výstrahu protokolu ve výstrahách (Preview)](monitor-a
 
 ## <a name="log-alert-rules"></a>Pravidla výstrah protokolu
 
-Výstrahy jsou vytvářeny automaticky v pravidelných intervalech spouštět dotazy protokolu výstrahy Azure (Preview).  Pokud výsledky dotazu protokolu konkrétním kritériím, se vytvoří záznam výstrahy. Pravidlo může automaticky spusťte jednu nebo více akcí proaktivně oznámíme vám výstrahy nebo vyvolání jiným procesem jako externí aplikace pomocí odesílání dat [json na základě webhooku](monitor-alerts-unified-log-webhook.md)pomocí [akce skupiny](monitoring-action-groups.md). Různé typy pravidla výstrah pomocí různých logiku k provedení této analýze.
+Výstrahy jsou vytvářeny pomocí výstrah Azure (Preview) pro automatické spouštění dotazů protokolu v pravidelných intervalech.  Pokud výsledky dotazu protokolu konkrétním kritériím, se vytvoří záznam výstrahy. Pravidlo může automaticky spusťte jednu nebo více akcí proaktivně oznámíme vám výstrahy nebo vyvolání jiným procesem jako externí aplikace pomocí odesílání dat [json na základě webhooku](monitor-alerts-unified-log-webhook.md)pomocí [akce skupiny](monitoring-action-groups.md). Různé typy pravidla výstrah pomocí různých logiku k provedení této analýze.
 
 Pravidla výstrah jsou definovány následující podrobnosti:
 
 - **Protokolu dotazu**.  Dotaz, který se spustí pokaždé, když se aktivuje pravidlo výstrahy.  Vrácené tímto dotazem záznamy se používají k určení, jestli se má vytvořit výstrahu.
-- **Časový interval**.  Určuje časový rozsah pro dotaz.  Dotaz vrátí pouze záznamy, které byly vytvořeny v tomto rozsahu aktuální čas.  Časový interval může být libovolná hodnota mezi 5 minut a 1 440 minut nebo 24 hodin. Například pokud časový interval je nastavena na 60 minut a spuštění dotazu: 15: 00, je vrácena pouze záznamy vytvořené 12:15:00 až 1:15 hodin.
+- **Časový interval**.  Určuje časový rozsah pro dotaz.  Dotaz vrátí pouze záznamy vytvořené v tomto rozsahu před aktuálním časem.  Časový interval může být libovolná hodnota mezi 5 minut a 1 440 minut nebo 24 hodin. Například pokud časový interval je nastavena na 60 minut a spuštění dotazu: 15: 00, je vrácena pouze záznamy vytvořené 12:15:00 až 1:15 hodin.
 - **Frekvence**.  Určuje, jak často se má spustit dotaz. Může být libovolná hodnota 5 minut až 24 hodin. Musí být rovna nebo menší než časový interval.  Pokud hodnota je větší než časový interval, riskujete záznamů je vynechán.<br>Představte si třeba časové okno 30 minut a četnost 60 minut.  Pokud je v 1:00 spustit dotaz, vrátí záznamy 12:30 až 1:00 PM.  Při příštím spuštění dotazu by je 2:00, když měla by vrátit záznamy 1:30 až 2:00.  Všechny záznamy vytvořené 1:00 až 1:30 by nikdy vyhodnotí.
 - **Prahová hodnota**.  Výsledky hledání protokolů se vyhodnocují k určení, zda má být vytvořena výstraha.  Prahová hodnota se liší pro různé typy pravidla výstrah.
 
@@ -75,7 +75,7 @@ Představte si třeba situaci, kdy budete chtít vědět, když aplikace založe
 **Frekvence výstrah:** pět minut<br>
 **Prahová hodnota:** skvělé než 0.<br>
 
-Výstraha by spusťte dotaz každých 5 minut, 30 minut dat – má být vyhledán všech záznamů, kde je kód výsledku 500. Pokud se nenajde i jeden takový záznam, aktivuje se výstraha a aktivační události akci nakonfigurovanou.
+Výstraha by spusťte dotaz každých 5 minut, 30 minut dat – má být vyhledán všech záznamů, kde je kód výsledku 500. Pokud se nenajde i jeden takový záznam, aktivuje se výstraha a aktivuje akci nakonfigurovanou.
 
 ## <a name="metric-measurement-alert-rules"></a>Pravidla výstrah metriky měření
 
@@ -96,7 +96,7 @@ Výstraha by spusťte dotaz každých 5 minut, 30 minut dat – má být vyhled�
 
 **Interval**: definuje časový interval, za které agregovaná data.  Například pokud jste zadali **pět minut**, by se vytvoří záznam pro každou instanci pole skupiny v okně čas zadaný pro výstrahu agregován v intervalech 5 minut.
 > [!NOTE]
-> Funkce Koš služby musí být použít v dotazu. Také pokud vytváří nerovné časové intervaly pro časový interval pomocí funkce Koš – výstraha místo toho použije bin_at funkce místo toho k zajištění, že je dlouhodobý bod
+> Funkce Koš služby musí být použít v dotazu. Jako bin() může mít za následek nerovné časové intervaly – výstraha místo toho použije bin_at funkce příslušnou dobu za běhu, zajistit výsledků s pevnou bodu
 
 **Prahová hodnota**: prahová hodnota pro pravidla výstrah metriky měření je definována agregovaná hodnota a celou řadu.  Pokud žádné datového bodu v hledání protokolů překročí tuto hodnotu, považuje za porušení.  Pokud počet porušení v u všech objektů ve výsledcích překročí zadanou hodnotu, se vytvoří výstraha pro tento objekt.
 

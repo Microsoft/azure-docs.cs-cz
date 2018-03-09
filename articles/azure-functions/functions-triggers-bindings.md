@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/07/2018
 ms.author: glenga
-ms.openlocfilehash: f43132beb0abae3d4bdf0f538de1b437e6099822
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 559cfee1a8116703371a5641cf4534b7ad6f7578
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure funkce triggerů a vazeb koncepty
 
@@ -53,7 +53,7 @@ Rozšíření se dodávají jako balíčky NuGet, kde název balíčku obvykle z
 + [Místně pomocí nástroje základní funkce Azure](#local-development-azure-functions-core-tools)
 + [Na portálu Azure](#azure-portal-development) 
 
-Existují základní sady vazeb v verze 2.x, která nejsou k dispozici jako rozšíření. Není potřeba zaregistrovat rozšíření pro následující triggerů a vazeb: HTTP, časovače a Azure Storage. 
+Je základní sady vazeb v verze 2.x, která nejsou k dispozici jako rozšíření. Není potřeba zaregistrovat rozšíření pro následující triggerů a vazeb: HTTP, časovače a Azure Storage. 
 
 Informace o tom, jak nastavit aplikaci funkce na použití verze 2.x Functions runtime najdete v části [jak mít verze modulu runtime Azure Functions](set-runtime-version.md). Verze 2.x Functions runtime je aktuálně ve verzi preview. 
 

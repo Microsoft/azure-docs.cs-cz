@@ -13,19 +13,22 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.date: 12/13/2017
 ms.workload: On Demand
+ms.date: 03/07/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 3d6ad95c1ca316b2e7c3f722315d2ddec03a3716
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: aa6a032a9d42038502cf074ef8aeff8e2e8b0b31
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Navrhování služeb s vysokou dostupností pomocí Azure SQL Database
 
 Při vytváření a nasazování služeb s vysokou dostupností v databázi SQL Azure, je použít [převzetí služeb při selhání skupiny a aktivní geografickou replikací](sql-database-geo-replication-overview.md) zajistit odolnost proti místní výpadky a závažné selhání. Taky umožňuje rychlé obnovení do sekundární databáze. Tento článek se zaměřuje na běžných vzorů aplikace a popisuje výhody a kompromis jednotlivých možností. Informace o aktivní geografickou replikaci s elastické fondy najdete v tématu [strategie zotavení po havárii elastický fond](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+
+> [!NOTE]
+> Pokud používáte Premium databáze a fondy, můžete provést je odolný regionální výpadkům převede konfigurace redundantní nasazení zóny (momentálně ve verzi preview). V tématu [Zónově redundantní databáze](sql-database-high-availability.md).  
 
 ## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Scénář 1: Použití dvou oblastí Azure pro kontinuitu podnikových procesů s minimálními výpadky
 V tomto scénáři aplikací mít následující vlastnosti: 
@@ -47,8 +50,7 @@ Následující diagram znázorňuje tuto konfiguraci před výpadek:
 Po výpadku v primární oblasti služba SQL Database zjistí, že není dostupný primární databázi a aktivuje převzetí služeb při selhání pro sekundární oblast na základě parametrů zásady automatické převzetí služeb při selhání (1). V závislosti na vaší smlouvě SLA aplikace můžete nakonfigurovat období odkladu, které řídí čas mezi detekce se výpadek a převzetí služeb při selhání, sám sebe. Je možné, že traffic Manageru zahájí převzetí služeb při selhání koncový bod před převzetí služeb při selhání skupina aktivuje převzetí služeb při selhání databáze. V takovém případě webová aplikace nemůže znovu okamžitě databáze. Ale opětovná připojení bude úspěšné automaticky po dokončení převzetí služeb při selhání databázi. Při selhání oblast je obnovena a zpět do režimu online, z původního primárního automaticky znovu připojí jako nové sekundární. Následující obrázek znázorňuje konfiguraci po převzetí služeb při selhání.
  
 > [!NOTE]
-> Během obnovení připojení se ke ztrátě všech transakcí potvrzených po převzetí. Po dokončení převzetí aplikace v oblasti B je moci znovu připojit a znovu spusťte zpracování žádostí uživatele. Webové aplikace a primární databáze jsou nyní v oblasti B a zůstanou společně umístěné. 
-n>
+> Během obnovení připojení se ke ztrátě všech transakcí potvrzených po převzetí. Po dokončení převzetí aplikace v oblasti B je moci znovu připojit a znovu spusťte zpracování žádostí uživatele. Webové aplikace a primární databáze jsou nyní v oblasti B a zůstanou společně umístěné. n>
 
 ![Scénář 1. Konfigurace po převzetí služeb při selhání](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
 
@@ -152,7 +154,7 @@ Ale některé **kompromisy**:
 ## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Plánování kontinuity obchodních: Zvolte návrh aplikace pro zotavení po havárii cloudu
 Strategie zotavení po havárii konkrétní cloudové můžete kombinovat nebo rozšířit tyto vzory návrhu na nejlépe vyhovovat potřebám vaší aplikace.  Jak už bylo zmíněno dříve, strategie, kterou zvolíte je založena na smlouvě SLA můžete chtít nabízet zákazníkům a topologii nasazení aplikace. Chcete-li Průvodce vaše rozhodnutí, následující tabulka porovnává voleb na základě plánovaného bodu obnovení (RPO) a obnovení odhadovanou dobu (Vložit).
 
-| Vzor | PLÁNOVANÝ BOD OBNOVENÍ | VLOŽIT |
+| Vzor | RPO | ERT |
 |:--- |:--- |:--- |
 | Aktivní – pasivní nasazení pro zotavení po havárii s přístupem společně umístěné databáze |Přístup pro čtení a zápis < 5 s |Čas detekce selhání + TTL pro DNS |
 | Aktivní aktivní nasazení pro aplikaci služby Vyrovnávání zatížení |Přístup pro čtení a zápis < 5 s |Čas detekce selhání + TTL pro DNS |
@@ -160,7 +162,7 @@ Strategie zotavení po havárii konkrétní cloudové můžete kombinovat nebo r
 ||Přístup pro čtení a zápis = nula. | Přístup pro čtení a zápis = čas detekce selhání + období odkladu ztráty dat. |
 |||
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Přehled kontinuity obchodních a scénářů najdete v tématu [obchodní kontinuity přehled](sql-database-business-continuity.md)
 * Další informace o skupinách geografická replikace a převzetí služeb při selhání najdete v tématu [aktivní geografickou replikaci](sql-database-geo-replication-overview.md)  
 * Informace o aktivní geografickou replikaci s elastické fondy najdete v tématu [strategie zotavení po havárii elastický fond](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

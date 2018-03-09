@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Inactive
 ms.date: 03/03/2017
 ms.author: carlrab
-ms.openlocfilehash: b22307ee0cade40370b096ee49bb15dcfd2f0071
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 3da41adfa0865c0741c61b5d15c3ef1741eb6118
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-customer-implementation-technical-studies"></a>Azure SQL Database zákazníka implementace technické studie
 
@@ -33,8 +33,8 @@ ms.lasthandoff: 10/31/2017
 
 - [Kvora](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database): kvora zdvojnásobí klíče databáze zatížení při snížení DTU 70 % s databází SQL.
 
-- [Požadavek na](https://customers.microsoft.com/en-US/story/quest): požadavek na nabízí jeho hlavní odkazy na službu SQL Server Enterprise s jeden cíl v paměti: poskytovat databáze odborníkům nejlepší nástroje dostupné pro zabezpečení dat, přesun dat kolem a monitorování databázových operací. S Spotlight, pomocí Microsoft Azure a Azure SQL Database správce databáze systému SQL Server můžete sledovat, zjišťovat, diagnostikovat a poskytnout způsob, jak vyřešit problémy s výkonem v systému SQL Server, ať už jste pracoval na své pracovní místo nebo pracují z domova.
+- [Požadavek na](https://customers.microsoft.com/story/quest): požadavek na nabízí jeho hlavní odkazy na službu SQL Server Enterprise s jeden cíl v paměti: poskytovat databáze odborníkům nejlepší nástroje dostupné pro zabezpečení dat, přesun dat kolem a monitorování databázových operací. S Spotlight, pomocí Microsoft Azure a Azure SQL Database správce databáze systému SQL Server můžete sledovat, zjišťovat, diagnostikovat a poskytnout způsob, jak vyřešit problémy s výkonem v systému SQL Server, ať už jste pracoval na své pracovní místo nebo pracují z domova.
 
-- [Aplikace Microsoft Dynamics](https://customers.microsoft.com/story/dynamics365operationsproductteam): Tento stručný Případová studie označuje osvědčené postupy a poznatky získané za 365 Dynamics pro prostředí produktového týmu operace migrace do Azure SQL Database, aby zákazníkům poskytl plně spravovaného softwaru jako Služba (SaaS) nabídky. Používání Azure SQL Database, Dynamics 365 pro jeho provozní tým bylo možné spravovat a provoz služby s výrazně méně pracovníky a snadno škálovat s funkcemi správy se na pole, jako je automatické zálohování databází, uchovávání záloh databáze , funkce vysoké dostupnosti a po havárii pro obnovení. To spolu se schopností k databázím zřizování s trivial automatizace Azure SQL Database poskytnuta stal vynikající platformu pro stojící až rozsáhlých služeb.
+- [Aplikace Microsoft Dynamics](https://customers.microsoft.com/story/dynamics365operationsproductteam): Tento stručný Případová studie označuje osvědčené postupy a poznatky získané za Dynamics 365 prostředí produktového týmu operace migrace do Azure SQL Database, aby zákazníkům poskytl plně spravovaného softwaru jako Služba (SaaS) nabídky. Používání Azure SQL Database, Dynamics 365 pro jeho provozní tým bylo možné spravovat a provoz služby s výrazně méně pracovníky a snadno škálovat s funkcemi správy se na pole, jako je automatické zálohování databází, uchovávání záloh databáze , funkce vysoké dostupnosti a po havárii pro obnovení. To spolu se schopností k databázím zřizování s trivial automatizace Azure SQL Database poskytnuta stal vynikající platformu pro stojící až rozsáhlých služeb.
 
 - [Microsoft OneDrive a SharePoint Online](https://customers.microsoft.com/story/microsoft-azure-sql-database-dicrete-manufacturing-united-states): Tento stručný Případová studie informuje scénáře za Microsoft OneDrive a SharePoint Online přesunout do Azure SQL Database a popisuje, jak tato migrace povolené řízení téměř neomezená elastické kapacity Navíc se také významně snižuje provozní náklady a infrastruktury režie.

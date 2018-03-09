@@ -18,11 +18,11 @@ ms.author: Joe.Sack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: b65236fb2d11473d626ee2602237ed4a49380702
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ee1d847e04e1f1fa0472d8702c7022d622b9fe0f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – správu databáze v databázi SQL Azure
 
@@ -44,7 +44,7 @@ Obchodní kontinuitu a po havárii obnovení dalo umožňují pokračovat vaší
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Jak vytvořit a spravovat zálohy pro službu SQL Database?
 Nemusíte vytvářet zálohy na databázi SQL Azure a je to způsobeno nemusíte. Databáze SQL automaticky vytvoří zálohu databáze, takže už se musí starat o plánování, přičemž a správu zálohování. Platforma trvá úplné zálohování každý týden, rozdílové že zálohování každých několik hodin a protokolu zálohování každých 5 minut, aby zajistil zotavení po havárii efektivní a ztrátě dat, která je minimální. Při vytváření databáze se stane první úplné zálohování. Tyto zálohy jsou k dispozici po určitou dobu názvem "Doba uchování" a se liší podle úroveň výkonu, které zvolíte.  SQL Database nabízí možnost obnovit do libovolného bodu v čase v rámci doby uchování pomocí [bodu v možnosti doba obnovení (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Úroveň výkonu|Doba uchování ve dnech|
+|Konfigurovat výkon|Doba uchování ve dnech|
 |---|:---:|
 |Basic|7|
 |Standard|35|
@@ -135,7 +135,7 @@ V databázi SQL, ve výchozím nastavení, jsou data v klidovém stavu uložený
 |**Šifrování rozpětí**|Klient server|Data na rest|
 |**Databázový server, můžete přístup k citlivým datům**|Ne|Ano, protože šifrování je pro data v klidovém stavu|
 |**Povolených operací T-SQL**|Porovnání rovnosti|Je k dispozici všechny útoku T-SQL|
-|**Změny aplikace vyžaduje použití funkce**|minimální|Minimálními|
+|**Změny aplikace vyžaduje použití funkce**|Minimální|Minimálními|
 |**Členitost šifrování**|Na úrovni sloupce|Úroveň databáze|
 ||||
 
@@ -168,7 +168,7 @@ Následující diagram znázorňuje možnosti úložiště klíčů pro hlavníh
 Síťový provoz mezi vaší organizací a SQL Database by získat obecně směrován přes veřejnou síť. Ale pokud zvolíte možnost Optimalizovat tuto cestu a zvyšuje zabezpečení, můžete zobrazit do Express Route. Expresní trasy v podstatě umožňuje rozšířit vaší podnikové síti do platformy Azure přes privátní připojení. Díky tomu můžete se nepřenášejí prostřednictvím veřejného Internetu. Můžete také získat vyšší zabezpečení, spolehlivost a optimalizace směrování, která znamená, že je na nižší latenci sítě a mnohem vyšší rychlost, než jste by normálně zaznamenat budete prostřednictvím veřejného Internetu. Pokud plánujete přenosu významné bloku dat mezi vaší organizace a Azure, pomocí Express Route přispět nákladů. Do Azure můžete vybírat tři modely jiné připojení pro připojení z vaší organizace: 
 - [Společné umístění Exchange cloudu](../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [Any-to-any](../expressroute/expressroute-connectivity-models.md#IPVPN)
-- [Typu point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
+- [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 Express Route také umožňuje burst až 2 x limit šířky pásma, kterou jste si koupili pro bez dalších poplatků. Je také možné nakonfigurovat pro různé oblasti připojení pomocí Express route. Seznam zprostředkovatelů ER připojení najdete v tématu: [Express partnery trasy a umístění partnerského vztahu](../expressroute/expressroute-locations.md). Následující články popisují Express Route podrobněji:
 - [Úvod na Express Route](../expressroute/expressroute-introduction.md)
@@ -210,7 +210,7 @@ V databázi SQL můžete využít inteligentního Statistika platformy při sled
 
 Z tohoto grafu můžete také nakonfigurovat výstrahy prostředkem. Tyto výstrahy umožní reagovat na prostředek podmínky s e-mailu, zapisovat do koncový bod HTTPS nebo HTTP nebo provedení akce. Najdete v článku [monitorování výkonu databáze v databázi SQL](sql-database-single-database-monitor.md) podrobné pokyny.
 
-- **Zobrazení dynamické správy**: můžete zadat dotaz [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) zobrazení dynamické správy vrácení historie statistiky spotřeby prostředků z za poslední hodinu a [sys.resource_stats ](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) zobrazení katalogu systému vrátit historie za posledních 14 dní.
+- **Zobrazení dynamické správy**: můžete zadat dotaz [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) zobrazení dynamické správy vrácení historie statistiky spotřeby prostředků z za poslední hodinu a [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) zobrazení katalogu systému vrátit historie za posledních 14 dní.
 - **Dotaz na informace o výkonu**: [Query Performance Insight](sql-database-query-performance.md) vám umožní zobrazit historii nejčastějších dotazů využívání prostředků a dlouho běžící dotazy pro konkrétní databázi. Můžete rychle identifikovat využití prostředků, doba trvání a četnosti provádění NEJČASTĚJŠÍCH dotazů. Můžete sledovat dotazy a zjišťovat regrese. Tato funkce vyžaduje [úložiště dotazů](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) být povoleno a aktivní databáze.
 
    ![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
@@ -260,8 +260,8 @@ Databáze SQL používá některé inteligentní technik, které mohla zpracová
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Jak synchronizaci dat mezi SQL Database a SQL Server?
 Existuje několik způsobů jak toho docílit: 
 - **[Synchronizaci dat](sql-database-sync-data.md)**  – tato funkce umožňuje synchronizaci dat obousměrně mezi více místní databáze systému SQL Server a databáze SQL. K synchronizaci s místní databází systému SQL Server, musíte nainstalovat a nakonfigurovat synchronizaci agenta v místním počítači a otevřete odchozí port TCP 1433.
-- **[Transakce replikace](https://azure.microsoft.com/en-us/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – s transakce replikace můžete synchronizaci dat z místního k databázi SQL Azure s místní se vydavatele a odběratele se databáze SQL Azure. Prozatím se jenom tato instalace je podporována. Další informace o tom, jak migrovat data z místního do Azure SQL s minimálními výpadky najdete v tématu: [použití transakcí replikace](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
+- **[Transakce replikace](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – s transakce replikace můžete synchronizaci dat z místního k databázi SQL Azure s místní se vydavatele a odběratele se databáze SQL Azure. Prozatím se jenom tato instalace je podporována. Další informace o tom, jak migrovat data z místního do Azure SQL s minimálními výpadky najdete v tématu: [použití transakcí replikace](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o [databáze SQL](sql-database-technical-overview.md).
 

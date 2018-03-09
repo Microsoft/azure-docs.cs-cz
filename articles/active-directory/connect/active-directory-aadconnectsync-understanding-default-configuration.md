@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 87f513ffd2e8854085d9dfcd399148082de37698
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: dba7a6fcf936e9610a5f1f04e367d32e9aae6643
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizace služby Azure AD Connect: Principy výchozí konfigurace
 Tento článek vysvětluje out-of-box konfigurační pravidla. Ho dokumentů, pravidla a jak tato pravidla vliv na konfiguraci. Je také vás provede výchozí konfigurace synchronizace služby Azure AD Connect. Cílem je, že čtečka plně chápe, jak funguje konfigurační model s názvem deklarativní zřizování v příkladu reálného. Tento článek předpokládá, že jste již nainstalovali a konfigurace synchronizace služby Azure AD Connect pomocí Průvodce instalací.
@@ -50,7 +50,7 @@ Následující objekty uživatele jsou **není** synchronizovat se službou Azur
 * Nesynchronizovat objekty, které nebude fungovat v systému Exchange Online.
   `CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))`  
   Tato bitová maska (& H21C07000) bude filtrovat následující objekty:
-  * Poštovní veřejné složky
+  * Poštovní veřejné složce (v Preview od verze 1.1.524.0)
   * Odpovídající poštovní schránky systému
   * Poštovní schránky databáze poštovní schránky (poštovní schránka systému)
   * Univerzální skupina zabezpečení (nemohli použít pro uživatele, ale je k dispozici z důvodu starší verze)

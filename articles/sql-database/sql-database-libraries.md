@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: genemi
-ms.openlocfilehash: a45393804aa5398bc0c40ca3f3cb6c97b106b81c
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: a01ccd8b0e7c4759b3731adba9d37b7ce5afd764
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>Připojení knihoven a architektur pro SQL Server
 
@@ -29,24 +29,24 @@ Následující tabulka uvádí připojení knihovny nebo *ovladače* používan�
 
 | Jazyk | Platforma | Další zdroje informací: | Ke stažení | Začínáme |
 | :-- | :-- | :-- | :-- | :-- |
-| C# | Systému Windows, Linux, macOS | [Microsoft ADO.NET pro SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [Stáhnout](https://www.microsoft.com/net/download/) | [Začínáme](https://www.microsoft.com/en-us/sql-server/developer-get-started/csharp/ubuntu)
-| Java | Systému Windows, Linux, macOS | [Ovladač Microsoft JDBC pro systém SQL Server](http://msdn.microsoft.com/library/mt484311.aspx) | [Stáhnout](https://go.microsoft.com/fwlink/?linkid=852460) |  [Začínáme](https://www.microsoft.com/en-us/sql-server/developer-get-started/java/ubuntu)
-| PHP | Systému Windows, Linux, macOS| [Ovladač systému PHP SQL pro SQL Server](http://msdn.microsoft.com/library/dn865013.aspx) | Operační systém: <br/> \*[Windows](https://www.microsoft.com/download/details.aspx?id=55642) <br/> \*[Linux](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) <br/> \*[systému macOS](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) |  [Začínáme](https://www.microsoft.com/en-us/sql-server/developer-get-started/php/ubuntu)
-| Node.js | Systému Windows, Linux, macOS | [Node.js ovladač pro systém SQL Server](http://msdn.microsoft.com/library/mt652093.aspx) | [Instalace](https://msdn.microsoft.com/library/mt652094.aspx) |  [Začínáme](https://www.microsoft.com/en-us/sql-server/developer-get-started/node/ubuntu)
-| Python | Systému Windows, Linux, macOS | [Ovladač systému Python SQL](http://msdn.microsoft.com/library/mt652092.aspx) | Instalace volby: <br/> \*[pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \*[pyodbc](http://msdn.microsoft.com/library/mt763257.aspx) |  [Začínáme](https://www.microsoft.com/en-us/sql-server/developer-get-started/python/ubuntu)
-| Ruby | Systému Windows, Linux, macOS | [Poznámky Ruby ovladač pro systém SQL Server](http://msdn.microsoft.com/library/mt691981.aspx) | [Instalace](https://msdn.microsoft.com/library/mt711041.aspx) | [Začínáme](https://www.microsoft.com/en-us/sql-server/developer-get-started/ruby/ubuntu)
-| C++ | Systému Windows, Linux, macOS | [Ovladač Microsoft ODBC pro SQL Server](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) | [Stáhnout](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) |  
+| C# | Windows, Linux, macOS | [Microsoft ADO.NET pro SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [Stáhnout](https://www.microsoft.com/net/download/) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| Java | Windows, Linux, macOS | [Ovladač Microsoft JDBC pro systém SQL Server](http://msdn.microsoft.com/library/mt484311.aspx) | [Stáhnout](https://go.microsoft.com/fwlink/?linkid=852460) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
+| PHP | Windows, Linux, macOS| [Ovladač systému PHP SQL pro SQL Server](http://msdn.microsoft.com/library/dn865013.aspx) | Operační systém: <br/> \* [Windows](https://www.microsoft.com/download/details.aspx?id=55642) <br/> \* [Linux](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) <br/> \* [macOS](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu)
+| Node.js | Windows, Linux, macOS | [Node.js ovladač pro systém SQL Server](http://msdn.microsoft.com/library/mt652093.aspx) | [Instalace](https://msdn.microsoft.com/library/mt652094.aspx) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
+| Python | Windows, Linux, macOS | [Ovladač systému Python SQL](http://msdn.microsoft.com/library/mt652092.aspx) | Instalace volby: <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](http://msdn.microsoft.com/library/mt763257.aspx) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
+| Ruby | Windows, Linux, macOS | [Poznámky Ruby ovladač pro systém SQL Server](http://msdn.microsoft.com/library/mt691981.aspx) | [Instalace](https://msdn.microsoft.com/library/mt711041.aspx) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
+| C++ | Windows, Linux, macOS | [Ovladač Microsoft ODBC pro SQL Server](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) | [Stáhnout](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) |  
 
 V následující tabulce jsou uvedeny příklady architektury relační objekt mapování (ORM) a webové rozhraní, které klientské aplikace můžete použít s místní aplikace SQL Server nebo v cloudu. Můžete použít rozhraní v systému Linux, Windows nebo Docker a použít je pro připojení k SQL Database a SQL Data Warehouse. 
 
 | Jazyk | Platforma | ORM(s) |
 | :-- | :-- | :-- |
-| C# | Systému Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Základní Entity Framework](https://docs.microsoft.com/ef/core/index) |
-| Java | Systému Windows, Linux, macOS |[Hibernace ORM](http://hibernate.org/orm)|
+| C# | Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Základní Entity Framework](https://docs.microsoft.com/ef/core/index) |
+| Java | Windows, Linux, macOS |[Hibernace ORM](http://hibernate.org/orm)|
 | PHP | Windows, Linux | [Laravel (Eloquent)](https://laravel.com/docs/5.0/eloquent) |
-| Node.js | Systému Windows, Linux, macOS | [Sequelize ORM](http://docs.sequelizejs.com) |
-| Python | Systému Windows, Linux, macOS |[Django](https://www.djangoproject.com/) |
-| Ruby | Systému Windows, Linux, macOS | [Ruby, na které](http://rubyonrails.org/) |
+| Node.js | Windows, Linux, macOS | [Sequelize ORM](http://docs.sequelizejs.com) |
+| Python | Windows, Linux, macOS |[Django](https://www.djangoproject.com/) |
+| Ruby | Windows, Linux, macOS | [Ruby, na které](http://rubyonrails.org/) |
 ||||
 
 ## <a name="related-links"></a>Související odkazy

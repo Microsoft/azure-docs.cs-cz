@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/11/2018
+ms.date: 03/07/2018
 ms.author: raynew
-ms.openlocfilehash: 31754cd765c90b9e36d16dc766b0a3546e6fd93e
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 10d7db60ef584632a45fd7cdc5877461fa45af03
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Podporu pro VMware a fyzické serveru replikaci do Azure.
 
@@ -22,14 +22,14 @@ Tento článek obsahuje souhrn podporovaných součásti a nastavení pro zotave
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-Scénář | **Podrobnosti**
+**Scénář** | **Podrobnosti**
 --- | ---
 **Virtuální počítače VMware** | Pro virtuální počítače VMware na místě, můžete provést zotavení po havárii do Azure. Můžete nasadit tento scénář na portálu Azure nebo pomocí prostředí PowerShell.
 **Fyzické servery** | Můžete provést zotavení po havárii do Azure pro místní Windows nebo Linuxem fyzických serverů. Můžete nasadit tento scénář v portálu Azure.
 
 ## <a name="on-premises-virtualization-servers"></a>Místní virtualizace serverů
 
-**Server** | Požadavky | **Podrobnosti**
+**Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
 **VMware** | vCenter Server verze 6.5, 6.0, nebo 5.5 nebo vSphere verze 6.5, 6.0 nebo 5,5 | Doporučujeme vám, že používáte vCenter server.
 **Fyzické servery** | neuvedeno
@@ -70,13 +70,13 @@ Operačního systému počítače (Linux) | Red Hat Enterprise Linux: 5.2 k 5,11
 
 **Komponenta** | **Podporuje se**
 --- | ---
-systémy souborů | ext3, ext4 ReiserFS (Suse Linux Enterprise Server pouze), XFS
+systémy souborů | ext3, ext4, XFS
 Správce svazků | LVM2
-Vícenásobný software | Mapovač zařízení
-Zařízení úložiště Paravirtualized | Exportované sadou paravirtualized ovladače zařízení nejsou podporovány.
+Zařízení úložiště Paravirtualized | Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
 Blokovat více fronty vstupně-výstupní operace zařízení | Nepodporuje se.
 Fyzické servery se řadič úložiště HP CCISS | Nepodporuje se.
 Adresáře | Tyto adresáře (Pokud nastavený jako samostatné oddíly/souboru systems) musí být na stejném disku operačního systému na zdrojovém serveru: / (kořenová), / Boot, USR, /usr/local, /var, etc. </br></br> Pokud / (uživatel root) svazek je svazek LVM, pak/Boot musí nacházet na samostatném oddílu na stejném disku a nesmí být svazek LVM.<br/><br/>
+|Požadavky na volné místo| 2 GB v oddílu/root <br/>250 MB v instalační složce
 XFSv5 | Funkce XFSv5 v systémech souborů s XFS, jako je například metadata kontrolního součtu, jsou podporovány z verze 9.10 služby Mobility a novější. Nástroje xfs_info zkontrolujte tzv XFS pro oddíl. Pokud ftype nastavena na hodnotu 1, funkce XFSv5 jsou používány.
 
 
@@ -169,9 +169,9 @@ Managed Disks | Ano
 
 Místní virtuální počítače, které se replikují do Azure, musí splňovat požadavky na virtuální počítač Azure souhrnu v této tabulce.
 
-**Komponenta** | Požadavky | **Podrobnosti**
+**Komponenta** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-Hostovaný operační systém | Ověřte [podporované operační systémy](#replicated machines). | Pokud nepodporované Kontrola předpokladů selže.
+**Hostovaný operační systém** | Ověřte [podporované operační systémy](#replicated machines). | Pokud nepodporované Kontrola předpokladů selže.
 **Architektura operačního systému hosta** | 64 bitů | Pokud nepodporované Kontrola předpokladů selže.
 **Velikost disku s operačním systémem** | Až 2 048 GB | Pokud nepodporované Kontrola předpokladů selže.
 **Počet disků s operačním systémem** | 1 | Pokud nepodporované Kontrola předpokladů selže.
@@ -198,7 +198,7 @@ Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami pr
 **Název** | **Popis** | **nejnovější verzi** | **Podrobnosti**
 --- | --- | --- | --- | ---
 **Azure Site Recovery sjednocený instalační program** | Koordinuje komunikaci mezi místními servery VMware a Azure <br/><br/> Nainstalovat na místní servery VMware | 9.12.4653.1 (k dispozici z portálu) | [Nejnovější funkce a opravy](https://aka.ms/latest_asr_updates)
-Služba mobility | Koordinuje replikaci mezi místními VMware servery/fyzické servery a Azure nebo sekundární lokality<br/><br/> Nainstalovat na virtuální počítač VMware nebo fyzických serverů, které chcete replikovat | 9.12.4653.1 (k dispozici z portálu) | [Nejnovější funkce a opravy](https://aka.ms/latest_asr_updates)
+**Služba mobility** | Koordinuje replikaci mezi místními VMware servery/fyzické servery a Azure nebo sekundární lokality<br/><br/> Nainstalovat na virtuální počítač VMware nebo fyzických serverů, které chcete replikovat | 9.12.4653.1 (k dispozici z portálu) | [Nejnovější funkce a opravy](https://aka.ms/latest_asr_updates)
 
 
 ## <a name="next-steps"></a>Další postup

@@ -2,21 +2,22 @@
 title: "Začínáme s Azure Storage zásobníku nástroje pro vývoj"
 description: "Pokyny, jak začít s pomocí nástrojů pro vývoj Azure zásobník úložiště"
 services: azure-stack
-author: xiaofmao
-ms.author: xiaofmao
-ms.date: 9/25/2017
+author: mabriggs
+ms.author: mabrigg
+ms.date: 02/21/2018
 ms.topic: get-started-article
 ms.service: azure-stack
-ms.openlocfilehash: 5b2898c64c0f1b5d804e63fa4e4e1218fa7a672c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: femila
+ms.reviewer: xiaofmao
+ms.openlocfilehash: 81c62fc569e9f758d08bfca0bdfc5bcc9ed5860f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Začínáme s Azure Storage zásobníku nástroje pro vývoj
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
-
 
 Zásobník Microsoft Azure poskytuje sadu služeb úložiště, včetně úložiště objektů Azure Blob, Table a Queue.
 
@@ -25,38 +26,65 @@ Tento článek obsahuje rychlý pokyny o tom, jak začít používat nástroje p
 Existují známé rozdíly mezi Azure Storage a zásobník úložiště Azure, včetně některé specifické požadavky na každou platformu. Například existují určité klientské knihovny a konkrétní koncový bod příponu požadavky pro Azure zásobníku. Další informace najdete v tématu [zásobník úložiště Azure: rozdíly a aspekty](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Knihovny klienta Azure
-Podporované verze rozhraní REST API pro Azure zásobníku úložiště je 2015-04-05. Nemá úplné parita s nejnovější verzi rozhraní API REST úložiště Azure. Proto pro knihovny klienta úložiště, musíte znát verze, která je kompatibilní s REST API 2015-04-05.
 
+Podporované verze rozhraní REST API pro Azure Storage zásobníku jsou 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08, 2015-04-05 1802 aktualizace nebo novější verze a 2015-04-05 pro předchozí verze. Koncové body Azure zásobníku nemají úplná parita s nejnovější verzi rozhraní API REST úložiště Azure. Pro knihovny klienta úložiště musíte znát verze, která je kompatibilní s rozhraním REST API.
+
+### <a name="1802-update-or-newer-versions"></a>1802 aktualizace nebo novější verze
+
+| Klientská knihovna | Azure zásobníku podporovaná verze | Odkaz | Koncový bod specifikace |
+|----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
+| .NET | 8.7.0 | Balíček Nuget:<br>https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0 | soubor App.config |
+| Java | 6.1.0 | Balíček maven:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0 | Nastavení připojení řetězce |
+| Node.js | 2.7.0 | NPM odkaz:<br>https://www.npmjs.com/package/azure-storage<br>(Spustit: `npm install azure-storage@2.7.0`)<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0 | Deklarace instance služby |
+| C++ | 3.1.0 | Balíček Nuget:<br>https://www.nuget.org/packages/wastorage.v140/3.1.0<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0 | Nastavení připojení řetězce |
+| PHP | 1.0.0 | Verze Githubu:<br>Common: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common<br>Blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob<br>Fronty:<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-queue<br>Tabulka: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-table<br> <br>Nainstalovat prostřednictvím autora (Další informace, [najdete v níže uvedené podrobnosti](#install-php-client-via-composer---current).) | Nastavení připojení řetězce |
+| Python | 1.0.0 | Verze Githubu:<br>Běžné:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common<br>Objekt BLOB:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-blob<br>Fronty:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-queue | Deklarace instance služby |
+| Ruby | 1.0.1 | Balíček RubyGems:<br>Běžné:<br>https://rubygems.org/gems/azure-storage-common/versions/1.0.1<br>Blob: https://rubygems.org/gems/azure-storage-blob/versions/1.0.1<br>Queue: https://rubygems.org/gems/azure-storage-queue/versions/1.0.1<br>Table: https://rubygems.org/gems/azure-storage-table/versions/1.0.1<br> <br>Verze Githubu:<br>Common: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common<br>Blob: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob<br>Queue: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue<br>Tabulka: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table | Nastavení připojení řetězce |
+
+#### <a name="install-php-client-via-composer---current"></a>Instalace klienta PHP prostřednictvím autora - aktuální
+
+Chcete-li nainstalovat prostřednictvím autora: (blob proveďte jako příklad).
+
+1. Vytvořte soubor s názvem **composer.json** v kořenu projektu s následujícím kódem:
+  ```php
+    {
+      "require": {
+      "Microsoft/azure-storage-blob":"1.0.0"
+      }
+    }
+  ```
+2. Stáhněte si [composer.phar](http://getcomposer.org/composer.phar) do kořenového adresáře projektu.
+3. Spustit: `php composer.phar install`.
+
+### <a name="previous-versions"></a>Předchozí verze
 
 |Klientská knihovna|Azure zásobníku podporovaná verze|Odkaz|Koncový bod specifikace|
 |---------|---------|---------|---------|
-|.NET     |6.2.0|Balíček Nuget:<br>[https://www.nuget.org/Packages/WindowsAzure.Storage/6.2.0](https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0)<br><br>Verze Githubu:<br>[https://github.com/Azure/Azure-Storage-NET/releases/tag/v6.2.1](https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1)|soubor App.config|
-|Java|4.1.0|Balíček maven:<br>[http://mvnrepository.com/Artifact/com.microsoft.Azure/Azure-Storage/4.1.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0)<br><br>Verze Githubu:<br> [https://github.com/Azure/Azure-Storage-Java/releases/tag/v4.1.0](https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0)|Nastavení připojení řetězce|
-|Node.js     |1.1.0|NPM odkaz:<br>[https://www.npmjs.com/Package/Azure-Storage](https://www.npmjs.com/package/azure-storage)<br>(spustit:`npm install azure-storage@1.1.0)`<br><br>Verze Githubu:<br>[https://github.com/Azure/Azure-Storage-node/releases/tag/1.1.0](https://github.com/Azure/azure-storage-node/releases/tag/1.1.0)|Deklarace instance služby||C++|2.4.0|Balíček Nuget:<br>[https://www.nuget.org/Packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>Verze Githubu:<br>[https://github.com/Azure/Azure-Storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|Nastavení připojení řetězce|
-|C++|2.4.0|Balíček Nuget:<br>[https://www.nuget.org/Packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>Verze Githubu:<br>[https://github.com/Azure/Azure-Storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|Nastavení připojení řetězce|
-|PHP|0.15.0|Verze Githubu:<br>[https://github.com/Azure/Azure-Storage-PHP/releases/tag/V0.15.0](https://github.com/Azure/azure-storage-php/releases/tag/v0.15.0)<br><br>Nainstalovat prostřednictvím autora (viz níže podrobnosti)|Nastavení připojení řetězce|
-|Python     |0.30.0|Balíček PIP:<br> [https://pypi.Python.org/pypi/Azure-Storage/0.30.0](https://pypi.python.org/pypi/azure-storage/0.30.0)<br>(Spustit:`pip install -v azure-storage==0.30.0)`<br><br>Verze Githubu:<br> [https://github.com/Azure/Azure-Storage-Python/releases/tag/V0.30.0](https://github.com/Azure/azure-storage-python/releases/tag/v0.30.0)|Deklarace instance služby|
-|Ruby|0.12.1<br>Preview|Balíček RubyGems:<br> [https://rubygems.org/GEMS/Azure-Storage/versions/0.12.1.Preview](https://rubygems.org/gems/azure-storage/versions/0.12.1.preview)<br><br>Verze Githubu:<br> [https://github.com/Azure/Azure-Storage-Ruby/releases/tag/V0.12.1](https://github.com/Azure/azure-storage-ruby/releases/tag/v0.12.1)|Nastavení připojení řetězce|
+|.NET     |6.2.0|Balíček Nuget:<br>[https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0](https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0)<br><br>Verze Githubu:<br>[https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1](https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1)|soubor App.config|
+|Java|4.1.0|Balíček maven:<br>[http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0)<br><br>Verze Githubu:<br> [https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0](https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0)|Nastavení připojení řetězce|
+|Node.js     |1.1.0|NPM odkaz:<br>[https://www.npmjs.com/package/azure-storage](https://www.npmjs.com/package/azure-storage)<br>(spustit: `npm install azure-storage@1.1.0)`<br><br>Verze Githubu:<br>[https://github.com/Azure/azure-storage-node/releases/tag/1.1.0](https://github.com/Azure/azure-storage-node/releases/tag/1.1.0)|Deklarace instance služby||C++|2.4.0|Balíček Nuget:<br>[https://www.nuget.org/packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>Verze Githubu:<br>[https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|Nastavení připojení řetězce|
+|C++|2.4.0|Balíček Nuget:<br>[https://www.nuget.org/packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>Verze Githubu:<br>[https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|Nastavení připojení řetězce|
+|PHP|0.15.0|Verze Githubu:<br>[https://github.com/Azure/azure-storage-php/releases/tag/v0.15.0](https://github.com/Azure/azure-storage-php/releases/tag/v0.15.0)<br><br>Nainstalovat prostřednictvím autora (viz níže podrobnosti)|Nastavení připojení řetězce|
+|Python     |0.30.0|Balíček PIP:<br> [https://pypi.python.org/pypi/azure-storage/0.30.0](https://pypi.python.org/pypi/azure-storage/0.30.0)<br>(Spustit: `pip install -v azure-storage==0.30.0)`<br><br>Verze Githubu:<br> [https://github.com/Azure/azure-storage-python/releases/tag/v0.30.0](https://github.com/Azure/azure-storage-python/releases/tag/v0.30.0)|Deklarace instance služby|
+|Ruby|0.12.1<br>Preview|Balíček RubyGems:<br> [https://rubygems.org/gems/azure-storage/versions/0.12.1.preview](https://rubygems.org/gems/azure-storage/versions/0.12.1.preview)<br><br>Verze Githubu:<br> [https://github.com/Azure/azure-storage-ruby/releases/tag/v0.12.1](https://github.com/Azure/azure-storage-ruby/releases/tag/v0.12.1)|Nastavení připojení řetězce|
 
-> [!NOTE]
-> Podrobnosti o PHP<br><br>
->Chcete-li nainstalovat prostřednictvím autora:
->1. Vytvořte soubor s názvem `composer.json` v kořenu projektu s následujícím kódem:<br>
->
->   ```
->   {
->       "require":{
->           "Microsoft/azure-storage":"0.15.0"
->        }
->    }
->   ```
->
->2. Stáhněte si [composer.phar](http://getcomposer.org/composer.phar) do kořenu projektu.
->3. Spustit: `php composer.phar install`.
->
+#### <a name="install-php-client-via-composer---previous"></a>Instalace klienta PHP prostřednictvím autora - předchozí
 
+Chcete-li nainstalovat prostřednictvím autora:
+
+1. Vytvořte soubor s názvem **composer.json** v kořenu projektu s následujícím kódem:
+  ```php
+    {
+          "require":{
+          "Microsoft/azure-storage":"0.15.0"
+          }
+    }
+  ```
+2. Stáhněte si [composer.phar](http://getcomposer.org/composer.phar) do kořenu projektu.
+3. Spustit: `php composer.phar install`.
 
 ## <a name="endpoint-declaration"></a>Koncový bod deklarace
+
 Koncový bod Azure Stack zahrnuje dvě části: název, oblast a doména Azure zásobníku.
 V sadě Azure zásobníku Development Kit je výchozí koncový bod **local.azurestack.external**.
 Pokud si nejste jistí o váš koncový bod, obraťte se na správce cloudu.
@@ -142,7 +170,7 @@ Následující kurzy úložiště objektů Blob v Azure se vztahují na Azure z�
 
 * [Začínáme s úložištěm Azure Blob pomocí rozhraní .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Používání úložiště Blob z Javy](../../storage/blobs/storage-java-how-to-use-blob-storage.md)
-* [Jak používat úložiště objektů Blob z Node.js]... /.. / storage/blobs/storage-nodejs-how-to-use-blob-storage.md)
+* [Používání úložiště Blob z Node.js](../../storage/blobs/storage-nodejs-how-to-use-blob-storage.md)
 * [Používání úložiště Blob z jazyka C++](../../storage/blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Používání úložiště Blob z PHP](../../storage/blobs/storage-php-how-to-use-blobs.md)
 * [Jak používat Azure Blob storage z Pythonu](../../storage/blobs/storage-python-how-to-use-blob-storage.md)
@@ -167,12 +195,12 @@ Následující kurzy úložiště Azure Table se vztahují na Azure zásobníku.
 
 * [Začínáme s úložištěm Azure Table pomocí rozhraní .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [Používání úložiště Table z Javy](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Používání úložiště Azure Table z Node.js](../../cosmos-db/table-storage-how-to-use-nodejs.md)
+* [Používání tabulkového úložiště Azure z Node.js](../../cosmos-db/table-storage-how-to-use-nodejs.md)
 * [Postup používání úložiště Table z jazyka C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Používání úložiště Table z PHP](../../cosmos-db/table-storage-how-to-use-php.md)
 * [Postup používání úložiště Table v Pythonu](../../cosmos-db/table-storage-how-to-use-python.md)
 * [Používání úložiště Table z Ruby](../../cosmos-db/table-storage-how-to-use-ruby.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Úvod do Microsoft Azure Storage](../../storage/common/storage-introduction.md)

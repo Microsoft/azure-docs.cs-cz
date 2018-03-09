@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2017
 ms.author: billmath
-ms.openlocfilehash: 66e3559c244a76101be7b7d944a48cd6dd99bd4c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 5ac8aff7e302a255efb86606416131ecf8088137
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Technické informace o obecné konektor SQL
 Tento článek popisuje obecný konektor SQL. Se článek vztahuje následující produkty:
@@ -152,7 +152,7 @@ Počínaje března 2017 aktualizace je nyní k dispozici možnost pro "*" Pokud 
 ![globalparameters3](./media/active-directory-aadconnectsync-connector-genericsql/any-option.png)
 
 >[!IMPORTANT]
- Od verze 2017 může "*" neboli **jakákoliv možnost** byl změněn na podporu import a export toku. Pokud chcete použít tuto možnost měli více hodnot tabulky či zobrazení atribut, který obsahuje typ objektu.
+ Od verze 2017 může "\*" neboli **jakákoliv možnost** byl změněn na podporu import a export toku. Pokud chcete použít tuto možnost měli více hodnot tabulky či zobrazení atribut, který obsahuje typ objektu.
 
 ![](./media/active-directory-aadconnectsync-connector-genericsql/any-02.png)
 

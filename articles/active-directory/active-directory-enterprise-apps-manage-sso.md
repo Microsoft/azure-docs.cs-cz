@@ -3,7 +3,7 @@ title: "Jednotné přihlašování správy firemních aplikací ve službě Azur
 description: "Spravovat nastavení jednotného přihlašování pro podnikové aplikace v rámci vaší organizace z galerii aplikací Azure Active Directory"
 services: active-directory
 documentationcenter: 
-author: curtand
+author: MarkusVi
 manager: mtillman
 editor: 
 ms.assetid: bcc954d3-ddbe-4ec2-96cc-3df996cbc899
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
-ms.author: curtand
+ms.author: markvi
 ms.reviewer: asmalser
-ms.openlocfilehash: dd251ca4696101911293caa59c54c3354a1627a5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bb9c2e1fdf392e234e6c72e0728ab04d2fd88a81
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Správa jednotného přihlašování pro podnikové aplikace
 

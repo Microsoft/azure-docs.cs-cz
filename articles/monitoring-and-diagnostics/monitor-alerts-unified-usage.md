@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: b537bb42d43c4232c100061322e09bf492f2a20f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 60f6c45b7dacd26e0dea7b8b69c52534dcb5fec9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Vytvoření, zobrazení a Správa výstrah pomocí Azure monitorování – výstrahy (Preview)
 
@@ -71,7 +71,7 @@ Další podrobné je podrobný návod k používání výstrah Azure (Preview).
 
     > [!NOTE]
 
-    > Nové metriky funkce zavedená pro rychlé výstrahy, jsou součástí signál typy jako metriky ze služby platformy
+    >  Všechny [v blízkosti upozornění v reálném čase](monitoring-near-real-time-metric-alerts.md) podporující prostředky jsou uvedené službou monitorování **platformy** a signálu typu jako **metrika**
 
 6. *Metriky výstrahy*: po signál zaškrtnuto, lze stanovit, logiku pro výstrahy. Pro odkaz, se zobrazí historických dat signálem s možností pro upravit současně pomocí okna **zobrazit historii**, různých z posledních šest hodin k minulého týdne. S vizualizaci na místě **výstrahy logiku** je možné vybrat z zobrazené možnosti podmínku, agregace a nakonec prahovou hodnotu. Jako verze preview poskytuje logiku podmínku se zobrazí v vizualizaci společně s historie signál, o tom, kdy by mít výstraha. Nakonec zadejte pro jaké doby trvání, by měla vypadat výstrahy pro zadanou podmínku tak, že zvolíte **období** možnost společně s jak často se má spouštět výstraha výběrem **frekvence**.
 

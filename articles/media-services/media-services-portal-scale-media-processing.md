@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: juliako
-ms.openlocfilehash: d2312803a4471e207d3696ca8350a86e3c4761e6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f65ba489d70a3844169780c4680fcc43b3064b54
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="change-the-reserved-unit-type"></a>Změna typu rezervované jednotky
 > [!div class="op_single_selector"]
@@ -54,16 +54,15 @@ Chcete-li změnit typ jednotku rezervovanou a počet jednotek rezervovaných, po
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
 2. V **nastavení** vyberte **jednotky rezervované pro média**.
    
-    Chcete-li změnit počet jednotek rezervovaných pro vybranou jednotku rezervovanou typ, použijte **obsluhovat jednotky média** posuvníku.
+    Chcete-li změnit počet jednotek rezervovaných pro vybranou jednotku rezervovanou typ, použijte **obsluhovat jednotky média** posuvníku v horní části obrazovky.
    
-    Chcete-li změnit **vyhrazený typ jednotky**, stiskněte klávesu S1, S2 nebo S3.
+    Chcete-li změnit **vyhrazený typ jednotky**, klikněte na **rychlost zpracování vyhrazené jednotky** panelu. Zvolte cenovou úroveň, je nutné: S1, S2 nebo S3.
    
-    ![Stránka procesorů](./media/media-services-portal-scale-media-processing/media-services-scale-media-processing.png)
 3. Stisknutím tlačítka ULOŽIT uložte provedené změny.
    
     Nové vyhrazené jednotky jsou přiděleny po stisknutí klávesy uložit.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Prohlédněte si mapy kurzů k Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

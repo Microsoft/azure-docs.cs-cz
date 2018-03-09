@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 6447ef13061a2369fc952d0d30634419a31c5a17
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: dbda2448c5bf2b6998d120a082e036d7e0125a1f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Vytvořit skript bezobslužné instalace pro konektor proxy aplikace služby Azure AD
 
@@ -59,7 +59,7 @@ Existují dvě metody, které můžete použít k registraci konektoru:
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
 2. Přejděte na **konektoru Proxy C:\Program Files\Microsoft AAD aplikace** a spusťte následující skript pomocí `$cred` objekt, který jste vytvořili:
    
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
+        .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
 ### <a name="register-the-connector-using-a-token-created-offline"></a>Registrace konektoru pomocí token vytvořený v režimu offline
 1. Vytvořte token offline pomocí třídy kontextu AuthenticationContext pomocí hodnot v tento fragment kódu:
@@ -124,7 +124,7 @@ Existují dvě metody, které můžete použít k registraci konektoru:
 
 3. Spusťte následující příkaz prostředí Windows PowerShell, nahraďte \<klienta GUID\> s ID vašeho adresáře:
 
-   `RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID>`
+   `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 
 ## <a name="next-steps"></a>Další postup 
 * [Publikování aplikací s použitím vlastního názvu domény](active-directory-application-proxy-custom-domains.md)

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: b71a2f19fee370ab1d732becd1c3b644505e2233
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 14018db3cbe34c9eca9048ceaf376ff3a06a4353
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -51,6 +51,8 @@ Bezproblémové jednotného přihlašování je možné kombinovat s buď [synch
 - Přihlašovací uživatelské jméno může být buď místní výchozí uživatelské jméno (`userPrincipalName`) nebo jiný atribut, které jsou nakonfigurované v Azure AD Connect (`Alternate ID`). Pracovní případech i použít, protože používá bezproblémové jednotného přihlašování `securityIdentifier` deklarací identity v lístku protokolu Kerberos k vyhledání odpovídající objekt uživatele ve službě Azure AD.
 - Bezproblémové jednotného přihlašování je oportunistické funkce. Pokud z nějakého důvodu selže, přihlašování uživatel přejde zpět regulární chování – tj, uživatel musí zadat svoje heslo na přihlašovací stránce.
 - Pokud aplikace předává `domain_hint` (OpenID Connect) nebo `whr` (SAML) parametr - identifikaci vašeho klienta nebo `login_hint` parametr - identifikace uživatele, v Azure AD přihlášení požadavku, uživatelé se automaticky přihlásíte bez nich zadávat uživatelská jména a hesla.
+- Odhlásit se podporuje. To umožňuje uživatelům si vybrat jiný účet služby Azure AD přihlásit, místo se automaticky přihlásíte pomocí jednotného přihlašování bezproblémové automaticky.
+- Klienti Office 365 (16.0.8730.xxxx a vyšší) jsou podporované pomocí neinteraktivní toku.
 - Může být povoleno přes Azure AD Connect.
 - Je bezplatné funkce a nepotřebujete žádné placené edice Azure AD pro použití.
 - Je podporováno v webovými klienty založené na prohlížeči a klienti Office, které podporují [moderní ověřování](https://aka.ms/modernauthga) na platformách a prohlížeče podporující ověřování protokolu Kerberos:

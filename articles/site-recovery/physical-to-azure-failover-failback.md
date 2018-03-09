@@ -5,13 +5,13 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/05/2018
 ms.author: raynew
-ms.openlocfilehash: bbad2a0ea1a58834eaf32e0d3286f6e8a794d364
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 8a3328e8aa42876f48960f7ccd32a5c819435019
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a selhání zpět fyzických serverů replikovat do Azure
 
@@ -41,7 +41,7 @@ Ověřte vlastnosti serveru a ujistěte se, zda je v souladu s [požadavky pro A
 
 ## <a name="run-a-failover-to-azure"></a>Spuštění převzetí služeb při selhání do Azure
 
-1. V **nastavení** > **replikované položky** klikněte na počítač > **převzetí služeb při selhání**.
+1. V části **Nastavení** > **Replikované položky** klikněte na počítač a pak na **Převzetí služeb při selhání**.
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Můžete použít jednu z následujících možností:
    - **Nejnovější (výchozí):** Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší cíl bodu obnovení (RPO), protože se virtuální počítač Azure vytvoří teprve tehdy, až převzetí služeb při selhání bude mít veškerá data, která se do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
    - **Nejnovější zpracované**: tuto možnost převezme počítače do nejnovějšího bodu obnovení, které jsou zpracovávány Site Recovery. Tato možnost poskytuje nízkou plánovanou dobu obnovení (RTO), protože se neztrácí žádný čas zpracováním nezpracovaných dat.
@@ -62,7 +62,7 @@ Procesový server přijímá data z virtuálního počítače Azure a odesílá 
 
 - Pokud používáte připojení Azure ExpressRoute, můžete pro účely testování použít místní procesový server, který je automaticky nainstalovaný na konfiguračním serveru.
 - Pokud používáte připojení VPN nebo pokud spouštíte navrácení služeb po obnovení v produkčním prostředí, musíte nastavit virtuální počítač Azure jako procesový server založený na Azure pro navrácení služeb po obnovení.
-- Postupujte podle pokynů v [v tomto článku](site-recovery-vmware-setup-azure-ps-resource-manager.md) nastavit procesní server v Azure.
+- Postupujte podle pokynů v [v tomto článku](vmware-azure-set-up-process-server-azure.md) nastavit procesní server v Azure.
 
 ## <a name="configure-the-master-target-server"></a>Konfigurace hlavního cílového serveru
 

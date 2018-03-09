@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 03/05/2018
 ms.author: sethm
-ms.openlocfilehash: e037d0e291384849739825ae7ad59064a135db95
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: a581b7039a3631b7f1dc35816175242f892bd7dd
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="event-hubs-samples"></a>Ukázky centra událostí 
 
@@ -61,10 +61,6 @@ Tyto ukázky demonstrují různým funkcím služby Azure Event Hubs, cílení [
 
 [Horizontální navýšení kapacity zpracování událostí](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) příklad ukazuje způsob použití [Event Processor Host](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) distribuovat zatížení spotřeby Event Hubs datového proudu. Ukazuje, jak implementovat **EventProcessor** a **EventProcessorFactory** objektů ke správě datového proudu událostí. 
 
-### <a name="pull-web-data-into-an-event-hub"></a>Získání dat webové do centra událostí 
-
-[Importovat data z webu](https://github.com/Azure-Samples/event-hubs-dotnet-importfromweb) příklad ukazuje, jak načítat data z veřejné informační kanály (například ministerstva dopravy na provoz informace informační kanál) a poslat ho do centra událostí.
-
 ## <a name="next-steps"></a>Další postup
 
 Další informace o rozhraní .NET Framework verze když přejdete na následujících odkazech:
@@ -75,5 +71,5 @@ Další informace o rozhraní .NET Framework verze když přejdete na následuj�
 Se více o službě Event Hubs v těchto článcích:
 
 - [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Vytvoření centra událostí](event-hubs-create.md)
+- [Funkce Event Hubs](event-hubs-features.md)
 - [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

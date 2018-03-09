@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: cce112929ff2f4fb48c2c6e2ddc2d4eee743b790
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 0efb8b80bc98931f33991dc67f8f4aa1953bb491
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení potíží s výkonem databáze SQL Azure s inteligentního statistiky
 
@@ -129,7 +129,7 @@ Protokol diagnostiky výstupy uzamčení podrobnosti, které můžete použít j
 
 A co možná nejbezpečnějším způsobem zmírnit problém je potřeba uchovat transakce krátký a redukuje zámku nejnákladnější dotazů. Můžete rozdělit dávce velkých operací do menší operací. Dobrým postupem je redukuje zámku dotaz tak, že dotaz co nejúčinnější. Velké kontroly snížit, protože zvýšit pravděpodobnost, blokování a nepříznivě ovlivnit celkový výkon databáze. Pro zjištěné dotazy, které způsobí zamykání můžete vytvořit nové indexy nebo přidat sloupce do stávajícího indexu, aby se zabránilo prohledávání tabulky. 
 
-Další návrhy, najdete v části [řešení blokující problémy, které jsou způsobeny eskalace zámku v systému SQL Server](https://support.microsoft.com/en-us/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
+Další návrhy, najdete v části [řešení blokující problémy, které jsou způsobeny eskalace zámku v systému SQL Server](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
 
 ## <a name="increased-maxdop"></a>Zvýšená MAXDOP
 
@@ -289,7 +289,7 @@ Změny konfigurace databáze obor lze nastavit pro každé jednotlivé databáze
 
 Diagnostika protokolu výstupy obor databáze konfigurace provedené změny nedávno které způsobit snížení výkonu ve srovnání s předchozí chování zatížení 7 dnů. Můžete se vrátit na předchozí hodnoty změny konfigurace. Také můžete vyladit hodnoty hodnotou dokud nebude dosaženo úroveň požadovaný výkon. Hodnoty konfigurace oboru databáze můžete zkopírovat z podobně jako databáze s dostatečný výkon. Pokud nemůžete řešení výkon, vrátit zpět na výchozí databázi SQL výchozí hodnoty a pokus a systém doladit od tohoto směrného plánu.
 
-Další informace o optimalizaci obor databáze konfigurace a syntaxe T-SQL na změnu konfigurace najdete v tématu [Alter database obor konfigurace (Transact-SQL)](https://msdn.microsoft.com/en-us/library/mt629158.aspx).
+Další informace o optimalizaci obor databáze konfigurace a syntaxe T-SQL na změnu konfigurace najdete v tématu [Alter database obor konfigurace (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 
 ## <a name="slow-client"></a>Pomalé klienta
 
@@ -330,7 +330,7 @@ Statistika inteligentního přístup prostřednictvím portálu Azure tak, že p
 
 Inteligentní Insights je obvykle nutné jednu hodinu čas k provedení analýza hlavní příčiny problémy s výkonem. Pokud problém nelze najít v inteligentního přehledy a je pro vás velmi důležité, použijte k identifikaci ručně hlavní příčinu problémy s výkonem úložiště dotazů. (Tyto problémy jsou obvykle méně než hodinu stará.) Další informace najdete v tématu [monitorování výkonu pomocí úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace [inteligentního Statistika](sql-database-intelligent-insights.md) koncepty.
 - Použití [protokolu diagnostiky výkonu inteligentního Statistika Azure SQL Database](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Monitorování [Azure SQL Database pomocí Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).

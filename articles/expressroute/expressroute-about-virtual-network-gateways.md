@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/05/2017
+ms.date: 03/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: a6363fa380d0bab05d7500141cc6019d1d3f68b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0517caed3a7d6632c1a5650147f4db240dbe0a17
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>O branách virtuálních sítí pro ExpressRoute
 Brána virtuální sítě se používá k posílání síťového provozu mezi virtuálními sítěmi Azure a místními umístěními. Při konfiguraci připojení ExpressRoute, musíte vytvořit a konfigurovat bránu virtuální sítě a připojení brány virtuální sítě.
@@ -41,7 +41,7 @@ Následující tabulka ukazuje typy brány a odhadovanou agregovanou propustnost
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
 > [!IMPORTANT]
-> Propustnost aplikace závisí na několika faktorech, například na začátku do konce latenci a počet tok přenosů dat, které se aplikace spustí. Čísla v tabulce představují horní limit theorectically může aplikace dosáhnout v prostředí ideální. 
+> Propustnost aplikace závisí na několika faktorech, například na začátku do konce latenci a počet tok přenosů dat, které se aplikace spustí. Čísla v tabulce představují horní limit aplikace může teoreticky dosáhnout v prostředí ideální. 
 > 
 >
 
@@ -53,6 +53,7 @@ Další zdroje technických informací a specifickou syntaxi požadavky při pou
 | [PowerShell](https://msdn.microsoft.com/library/mt270335.aspx) |[PowerShell](https://msdn.microsoft.com/library/mt163510.aspx) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
-## <a name="next-steps"></a>Další kroky
-V tématu [přehled ExpressRoute](expressroute-introduction.md) pro další informace o konfiguracích dostupné připojení. 
+## <a name="next-steps"></a>Další postup
+V tématu [přehled ExpressRoute](expressroute-introduction.md) pro další informace o konfiguracích dostupné připojení.
 
+V tématu [vytvořit bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md) pro další informace o vytvoření brány ExpressRoute.

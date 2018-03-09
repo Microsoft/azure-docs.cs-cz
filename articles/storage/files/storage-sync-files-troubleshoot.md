@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 5558a69756075dd83f890d5e9e00c9944d841591
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4f022bf227c8d460d014ea9bbc5dc426f0ada511
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Řešení potíží s synchronizace souboru Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -51,7 +51,7 @@ Zkontrolujte installer.log a zjistěte příčinu selhání instalace.
 Chcete-li vyřešit, přeneste roli primárního řadiče domény do jiné domény Řadič spuštěný Windows serveru 2012 R2 nebo novější a pak instalaci synchronizace.
 
 <a id="agent-installation-websitename-failure"></a>**Instalace agenta selže s touto chybou: "Úložiště synchronizace Agent byl předčasně ukončen"**  
-Tento problém může dojít, pokud se změnil název výchozí web služby IIS. Chcete-li tento problém obejít, přejmenujte na výchozí web služby IIS jako "výchozí webový server" a opakujte instalaci. Tento problém bude opraven v budoucí aktualizaci agenta. 
+Tento problém může dojít, s agentem 1.x verze a jestli název výchozí web služby IIS se změnil. Chcete-li tento problém obejít, použijte naše 2.0.11+ agenta.
 
 <a id="server-registration-missing"></a>**Server není uveden v části registrované servery na portálu Azure**  
 Pokud server není uveden v seznamu **registrované servery** pro synchronizační služba úložiště:

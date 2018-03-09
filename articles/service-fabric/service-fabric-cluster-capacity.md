@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: 8e2fceaf7e8a0d6c177d3122bd07de5b8c11f295
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: ad5f396cd71eb0136fe683bbccb9360291be2d59
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Aspekty plánování kapacity služby cluster Service Fabric
 Pro všechna produkční nasazení plánování kapacity je důležitý krok. Zde jsou některé položky, které je nutné zvážit jako součást tohoto procesu.
 
 * Počet typů uzlů, které cluster potřebuje začít s
 * Vlastnosti každého typu uzlu (velikost, primární, internetový bod, počet virtuálních počítačů, atd.)
-* Spolehlivost a odolnost vlastnosti clusteru
+* Spolehlivost a odolnost clusteru
 
 Stručně dejte nám zkontrolujte, každá z těchto položek.
 
 ## <a name="the-number-of-node-types-your-cluster-needs-to-start-out-with"></a>Počet typů uzlů, které cluster potřebuje začít s
 Je třeba nejprve, zjistěte, co se děje clusteru, který vytváříte má být použit pro a toho, jaké typy aplikací se chystáte nasadit do tohoto clusteru. Pokud si nejste vymazat na účel clusteru, se pravděpodobně ještě připravené k zadání proces plánování kapacity.
 
-Určete počet typy uzlů, které cluster potřebuje začít s.  Každý typ uzlu je namapována na sadu škálování virtuálního počítače. Každý typ uzlu je možné škálovat pak nebo dolů nezávisle, mají různé sady otevřené porty a může mít různé kapacity metriky. Proto rozhodnutí počtu typy uzlů v podstatě dodává na následující aspekty:
+Určete počet typy uzlů, které cluster potřebuje začít s.  Každý typ uzlu je namapována na sadu škálování virtuálního počítače. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. Proto rozhodnutí počtu typy uzlů v podstatě dodává na následující aspekty:
 
 * Má vaše aplikace více služeb, a některý z nich musí být veřejné nebo internetové? Typická aplikace obsahují služby front-endu brány, která přijímá vstup z klienta a jeden nebo více back-end služby, které komunikují s front-endové služby. Proto v tomto případě se vám stát tím, že mají alespoň dva typy uzlů.
 * Mají vašim službám (které tvoří vaši aplikaci) musí jiné infrastruktuře například větší paměti RAM nebo vyšší cyklů procesoru? Předpokládejme třeba, dejte nám, obsahuje aplikaci, kterou chcete nasadit služby front-end a back endové službě. Front-endu služba může běžet na menší virtuálních (velikosti virtuálních počítačů jako D2), které mají porty, otevřete k Internetu.  Back endové služby, ale je náročné na výpočetní prostředky a je spustit na větší VMs (s velikostí virtuálního počítače jako D4 D6, D15), které nejsou internet setkávají.
@@ -88,10 +88,11 @@ Získáte zvolte si úroveň odolnost pro každou z vaší typy uzlů. Můžete 
  
 1. Nasazení pro sadu škálování virtuálního počítače a dalších souvisejících prostředků Azure) může být zpoždění, můžete vypršení časového limitu nebo může být blokovány zcela problémy v clusteru nebo na úrovni infrastruktury. 
 2. Zvyšuje počet [události životního cyklu repliky](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle ) (například primární záměna) z důvodu automatizované deaktivací uzlu během operací infrastruktury Azure.
+3. Trvá uzly mimo provoz za období při platformy Azure aktualizace softwaru nebo hardwaru údržby, které se vyskytnou aktivity. Během tyto aktivity se může zobrazit uzly se stavem zakážete/zakázáno. To zmenšuje kapacitu vašeho clusteru dočasně, ale nesmí mít dopad na dostupnost aplikace nebo clusteru.
 
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>Doporučení týkající se použití úrovně Silver nebo zlatý odolnost
 
-Použít Silver nebo zlatý odolnost pro všechny typy uzlů, které jsou hostiteli stavové služby, které byste měli škálování v (snížit počet instancí virtuálního počítače) často, a si přejete, operace nasazení se odloží považuje zjednodušit tyto operace škálování v. Scénáře Škálováním na více systémů (Přidání instance virtuálních počítačů) do zvoleného vrstvy odolnost nejsou dostupné, jenom škálování v nepodporuje.
+Použít Silver nebo zlatý odolnost pro všechny typy uzlů, které jsou hostiteli stavové služby, které byste měli škálování v (snížit počet instancí virtuálního počítače) často, a si přejete, že operace nasazení se odloží a kapacity snížení považuje zjednodušit tyto škálování v operace. Scénáře Škálováním na více systémů (Přidání instance virtuálních počítačů) do zvoleného vrstvy odolnost nejsou dostupné, jenom škálování v nepodporuje.
 
 ### <a name="changing-durability-levels"></a>Změna úrovně odolnosti
 - Typy uzlů s odolnost úrovně Silver nebo zlatý nelze převést na bronzová nižší.

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
+ms.date: 02/27/2017
 ms.custom: 
-ms.openlocfilehash: 275ab65569a1861f046c8ee77914e0859d41d5f7
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 082953eb860197d2188851f6c8be260797d6ce6d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Chyba při zpracování osvědčené postupy pro klienty Azure Active Directory Authentication Library (ADAL)
 
@@ -479,6 +479,9 @@ Využili jsme [ucelenou ukázku](https://github.com/Azure-Samples/active-directo
 
 ## <a name="error-and-logging-reference"></a>Protokolování chyb a referenční dokumentace
 
+### <a name="logging-personal-identifiable-information-pii--organizational-identifiable-information-oii"></a>Protokolování osobní identifikovatelné údaje (PII) & organizační osobní údaje (OII)
+Ve výchozím nastavení ADAL protokolování nemá zachycení nebo protokolu žádné identifikovatelné osobní údaje nebo OII. Knihovny umožňuje vývojářům aplikací tuto možnost zapnout pomocí nastavení ve třídě protokolovacího nástroje. Když zapnete identifikovatelné osobní údaje nebo OII, trvá aplikace odpovědnost za bezpečně zpracování vysoce citlivá data, které splňují všechny zákonné požadavky.
+
 ### <a name="net"></a>.NET
 
 #### <a name="adal-library-errors"></a>Chyby knihovny ADAL
@@ -487,7 +490,7 @@ Prozkoumat konkrétní chyby ADAL, zdrojový kód v [úložiště azure-Active D
 
 #### <a name="guidance-for-error-logging-code"></a>Pokyny pro protokolování kód chyby
 
-Protokolování ADAL .NET změny v závislosti na platformě pracuje. Odkazovat [dokumentace protokolování](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet#diagnostics) pro kód na tom, jak povolit protokolování.
+Protokolování ADAL .NET změny v závislosti na platformě pracuje. Odkazovat [protokolování wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Logging-in-ADAL.Net) pro kód na tom, jak povolit protokolování.
 
 ### <a name="android"></a>Android
 
@@ -497,14 +500,9 @@ Prozkoumat konkrétní chyby ADAL, zdrojový kód v [úložiště azure-Active D
 
 #### <a name="operating-system-errors"></a>Chyby operačního systému
 
-Android chyby operačního systému jsou k dispozici prostřednictvím authenticationexception – v ADAL, lze identifikovat jako "SERVER_INVALID_REQUEST" a může být další podrobné prostřednictvím popisy chyb. Jsou dvě hlavní zprávy, které aplikace se rozhodnout zobrazit uživatelské rozhraní:
+Android chyby operačního systému jsou k dispozici prostřednictvím authenticationexception – v ADAL, lze identifikovat jako "SERVER_INVALID_REQUEST" a může být další podrobné prostřednictvím popisy chyb. 
 
-- Chyby protokolu SSL 
-  - [Koncový uživatel používá Chrome 53](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/SSL-Certificate-Validation-Issue)
-  - [Řetěz certifikátů je označena jako další certifikát stáhnout (musí uživatel obraťte se na správce IT)](https://vkbexternal.partners.extranet.microsoft.com/VKBWebService/ViewContent.aspx?scid=KB;EN-US;3203929)
-  - Zařízení není důvěryhodné kořenové certifikační Autority. Obraťte se na správce IT. 
-- Související chyby sítě 
-  - [Sítě problém potenciálně související s ověřením certifikátu SSL](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/SSL-Certificate-Validation-Issue), můžete zkusit jeden opakování
+Úplný seznam běžných chyb a kroky při aplikace nebo koncoví uživatelé dojde k jejich, najdete v části [ADAL Android Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki). 
 
 #### <a name="guidance-for-error-logging-code"></a>Pokyny pro protokolování kód chyby
 
@@ -522,6 +520,15 @@ Logger.getInstance().setExternalLogger(new ILogger() {
 // 2. Set the log level
 Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
 
+// By default, the `Logger` does not capture any PII or OII
+
+// PII or OII will be logged
+Logger.getInstance().setEnablePII(true);
+
+// PII or OII will NOT be logged
+Logger.getInstance().setEnablePII(false);
+
+
 // 3. Send logs to logcat.
 adb logcat > "C:\logmsg\logfile.txt";
 ```
@@ -536,7 +543,7 @@ Prozkoumat konkrétní chyby ADAL, zdrojový kód v [úložiště azure-Active D
 
 iOS chyby mohou vzniknout při přihlášení, uživatelům při používání webové zobrazení a povaha ověřování. Může to být způsobeno podmínky například chyby SSL, překročení časového limitu nebo chyby sítě:
 
-- Pro nárok sdílení přihlášení nejsou trvalé a mezipaměti se zobrazí prázdné. Můžete vyřešit přidáním následující řádek kódu do řetězce klíčů:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
+- Pro nárok sdílení přihlášení nejsou trvalé a mezipaměti se zobrazí prázdné. Můžete vyřešit přidáním následující řádek kódu do řetězce klíčů: `[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
 - Pro sadu NsUrlDomain chyby změní akce v závislosti na logice aplikace. Najdete v článku [NSURLErrorDomain referenční dokumentaci k nástroji](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) pro určité instance, které mohou být zpracovány.
 - V tématu [běžných problémů s ADAL Obj-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc#adauthenticationerror) seznam běžných chyb udržované týmem ADAL Objective-C.
 

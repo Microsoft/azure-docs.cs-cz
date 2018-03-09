@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 03214f25858ae340908a1d1b7f3ff7f62d545dc9
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9470e052b4f57e52fa140b53fa7c32d199c58e1e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>Připojit k místní síti HDInsight
 
@@ -273,13 +273,13 @@ Skupiny zabezpečení sítě (NSG) nebo trasy definované uživatelem (UDR) mů�
 
 > [!WARNING]
 > HDInsight vyžaduje příchozí přístup z konkrétní IP adresy v cloudu Azure a neomezený přístup pro odchozí připojení. Pokud používáte skupiny Nsg nebo udr k řízení provozu, je třeba provést následující kroky:
->
-> 1. Najít IP adresy pro umístění, které obsahuje virtuální síť. Seznam požadované IP adresy podle umístění najdete v tématu [požadované IP adresy](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip).
->
-> 2. Povolí příchozí provoz z IP adresy.
->
->    * __Skupina NSG__: Povolit __příchozí__ přenosy na portu __443__ z __Internet__.
->    * __UDR__: nastavte __další směrování__ typ trasy k __Internet__.
+
+1. Najít IP adresy pro umístění, které obsahuje virtuální síť. Seznam požadované IP adresy podle umístění najdete v tématu [požadované IP adresy](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip).
+
+2. Pro IP adresy identifikovaného v kroku 1, povolí příchozí komunikaci z této IP adresy.
+
+   * Pokud používáte __NSG__: Povolit __příchozí__ přenosy na portu __443__ IP adresy.
+   * Pokud používáte __UDR__: nastavte __další směrování__ typ trasy k __Internet__ IP adresy.
 
 Příklad použití Azure PowerShell nebo rozhraní příkazového řádku Azure k vytvoření skupin Nsg, naleznete v části [rozšířit HDInsight s virtuálními sítěmi Azure](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg) dokumentu.
 

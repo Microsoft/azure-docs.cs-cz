@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: d49afd9e5cfe80ddc2d919c76eaa0cb168280c15
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: dd45acd75e1cf263029c869d88c87b28f56d50cc
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Životní cyklus objektu actor, automatické uvolňování paměti a ruční delete
 Objekt actor se aktivuje při prvním volání Přišla žádost o jeho metod. Objekt actor je deaktivované (paměti shromážděných modulem runtime aktéři), pokud se nepoužívá pro nastaveném časovém intervalu. Objekt actor a její stav lze také odstranit ručně kdykoli.
@@ -48,7 +48,7 @@ Po deaktivaci objektu actor odkazy na objekt actor vydání a může být shroma
 Co se počítá jako "se používá" pro účely deaktivace a systém kolekce paměti?
 
 * Přijímá volání
-* `IRemindable.ReceiveReminderAsync`metody volané (platí jenom v případě objektu actor používá připomenutí)
+* `IRemindable.ReceiveReminderAsync` metody volané (platí jenom v případě objektu actor používá připomenutí)
 
 > [!NOTE]
 > Pokud objektu actor používá časovače a jeho zpětné volání časovače je volána, nemá **není** , se počítají jako "se používá".
@@ -144,13 +144,13 @@ Odstranění objektu actor má následující důsledky v závislosti na tom, je
 
 Všimněte si, že objekt actor nelze volat odstranit sám na sobě z jednoho z jeho metody objektu actor, protože objekt actor nelze odstranit, při provádění v rámci kontextu volání objektu actor, ve kterém má modul runtime získat zámek kolem volání objektu actor pro vynucení jednovláknové přístupu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Časovače objektu actor a upomínek](service-fabric-reliable-actors-timers-reminders.md)
 * [Události objektu actor](service-fabric-reliable-actors-events.md)
 * [Vícenásobný přístup objektu actor](service-fabric-reliable-actors-reentrancy.md)
 * [Objektu actor Diagnostika a sledování výkonu](service-fabric-reliable-actors-diagnostics.md)
 * [Referenční dokumentace rozhraní API objektu actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# ukázkový kód](https://github.com/Azure/servicefabric-samples)
+* [C# ukázkový kód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java ukázkový kód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

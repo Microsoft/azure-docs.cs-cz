@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: f0a706a5a7724788d62479d1570fffac07ce6d54
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8b9e79a2be26cf279abe0d29db1738b695622e9f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Služba Azure Instance metadat
 
@@ -32,14 +32,14 @@ Služba Metadata Instance Azure a je přístupný pro všechny virtuální poč�
 > Tato služba je **všeobecně dostupná** ve všech oblastech Azure.  Pravidelně obdrží aktualizace ke zveřejnění nové informace o instancí virtuálního počítače. Tato stránka zobrazuje aktuální [kategorie dat](#instance-metadata-data-categories) k dispozici.
 
 ## <a name="service-availability"></a>Dostupnost služeb
-Služba je k dispozici ve všech obecně k dispozici všechny oblasti Azure. Ne všechny verze rozhraní API může být k dispozici ve všech oblastech Azure.
+Služba je k dispozici v všeobecně dostupná oblastech Azure. Ne všechny verze rozhraní API může být k dispozici ve všech oblastech Azure.
 
 Oblasti                                        | Dostupnost?                                 | Podporované verze
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Všechny všeobecně dostupná globální oblasti Azure](https://azure.microsoft.com/regions/)     | Obecně k dispozici   | 2017-04-02, 2017-08-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecně k dispozici | 2017-04-02
-[Azure China](https://www.azure.cn/)                                                           | Obecně k dispozici | 2017-04-02
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecně k dispozici | 2017-04-02
+[Všechny všeobecně dostupná globální oblasti Azure](https://azure.microsoft.com/regions/)     | Obecně k dispozici   | 2017-04-02 2017-12-01(This version is not available in UK regions) 2017-08-01
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecně k dispozici | 2017-04-02,2017-08-01
+[Azure China](https://www.azure.cn/)                                                           | Obecně k dispozici | 2017-04-02,2017-08-01
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecně k dispozici | 2017-04-02,2017-08-01
 
 Tato tabulka je aktualizován, jakmile jsou aktualizace služby a nebo nové podporované verze jsou k dispozici
 
@@ -48,7 +48,7 @@ Můžete vyzkoušet na služby metadat Instance, vytvoření virtuálního poč�
 ## <a name="usage"></a>Využití
 
 ### <a name="versioning"></a>Správa verzí
-Služba Instance metadat je verzí. Verze jsou povinné a je aktuální verze na globální Azure `2017-08-01`. Aktuální podporované verze jsou (2017-04-02, 2017-08-01)
+Služba Instance metadat je verzí. Verze jsou povinné a je aktuální verze na globální Azure `2017-12-01`. Aktuální podporované verze jsou (2017-04-02, 2017-08-01,2017-12-01)
 
 > [!NOTE] 
 > Předchozí verze preview naplánované událostí podporovaných {nejnovější} jako verze rozhraní api. Tento formát se už nepodporuje a bude v budoucnu zastaralá.
@@ -157,7 +157,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 **Požadavek**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-12-01"
 ```
 
 **Odpověď**
@@ -182,7 +182,9 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
     "tags": "",
     "version": "16.04.201708030",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
-    "vmSize": "Standard_D1"
+    "vmScaleSetName": "",
+    "vmSize": "Standard_D1",
+    "zone": "1"
   },
   "network": {
     "interface": [
@@ -296,13 +298,15 @@ subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
 tags | [Značky](../../azure-resource-manager/resource-group-using-tags.md) pro virtuální počítač  | 2017-08-01
 resourceGroupName | [Skupina prostředků](../../azure-resource-manager/resource-group-overview.md) pro virtuální počítač | 2017-08-01
 placementGroupId | [Umístění skupiny](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) váš virtuální počítač měřítka nastavit | 2017-08-01
+vmScaleSetName | [Název virtuálního počítače ScaleSet] (.. /.. / virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) váš virtuální počítač měřítka nastavit | 2017-12-01
+zóna | [Dostupnost zóny](../../availability-zones/az-overview.md) virtuálního počítače | 2017-12-01 
 ipv4/privateIpAddress | Místní adresu IPv4 virtuálního počítače | 2017-04-02
 ipv4/publicIpAddress | Veřejnou IPv4 adresu virtuálního počítače | 2017-04-02
 Adresa podsítě / | Adresa podsítě virtuálního počítače | 2017-04-02 
 Předpona podsítě / | Předpona podsítě, například 24 | 2017-04-02 
 ipv6/ipAddress | Místní adresu IPv6 virtuálního počítače | 2017-04-02 
 MacAddress | Adresa mac virtuálního počítače | 2017-04-02 
-scheduledevents | V tématu [naplánované události](scheduled-events.md) | 2017-03-01
+scheduledevents | V tématu [naplánované události](scheduled-events.md) | 2017-08-01
 
 ## <a name="example-scenarios-for-usage"></a>Příklad scénáře použití  
 
@@ -325,6 +329,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 ### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Umístění kontejnery, oddíly dat na základě domény selhání nebo aktualizovat 
 
 Pro určité scénáře, umístění repliky různých datových je důležité. Například [umístění repliky HDFS](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) nebo umístění kontejneru prostřednictvím [orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) může vyžadovat vědět `platformFaultDomain` a `platformUpdateDomain` virtuální počítač běží na.
+Můžete také využít [dostupnost zóny](../../availability-zones/az-overview.md) pro instance do těchto rozhodnutí.
 Tato data přímo přes službu Metadata Instance se můžete dotazovat.
 
 **Požadavek**

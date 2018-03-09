@@ -4,20 +4,20 @@ description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azur
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 7c9b6202-11dd-4bb6-a679-8fb0a7a0ef4e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 03/06/2017
 ms.author: jeedes
-ms.openlocfilehash: cf3c633aec5fd55d3525c0e010e1aca68407ef33
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a76701e23771efa79ef39ebd6deb29cec8acaa8a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-people"></a>Kurz: Azure Active Directory integrace s uživateli
 
@@ -110,14 +110,14 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-people-tutorial/tutorial_people_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<company name>.peoplehr.com/`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:  `https://<company name>.peoplehr.net`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://www.peoplehr.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL: `https://www.peoplehr.com`
 
-    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<company name>.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx`
-
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory osoby klienta](mailto:customerservices@peoplehr.com) k získání těchto hodnot.
+    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:  `https://<company name>.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx`
+    
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečná adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory osoby klienta](mailto:customerservices@peoplehr.com) k získání těchto hodnot. 
 
 5. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
@@ -216,7 +216,7 @@ Cílem této části je testování konfigurace Azure AD jednotného přihlašov
 
 Když kliknete na dlaždici osoby na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci osoby.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

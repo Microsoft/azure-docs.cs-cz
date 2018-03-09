@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-ms.openlocfilehash: b2c962d5449d18b51cfd84b0e1992695b54d1c48
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a00b908f9811822f262d2c6113e3ff5fc364b1b4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>Vytvoření trasy definované uživatelem (UDR) pomocí šablony
 
 > [!div class="op_single_selector"]
-> * [PowerShell](virtual-network-create-udr-arm-ps.md)
-> * [Azure CLI](virtual-network-create-udr-arm-cli.md)
+> * [PowerShell](tutorial-create-route-table-powershell.md)
+> * [Azure CLI](tutorial-create-route-table-cli.md)
 > * [Šablona](virtual-network-create-udr-arm-template.md)
 > * [PowerShell (Classic)](virtual-network-create-udr-classic-ps.md)
 > * [Rozhraní příkazového řádku (Classic)](virtual-network-create-udr-classic-cli.md)
@@ -75,7 +75,7 @@ Chcete-li přidružit UDR ke klientské podsíti, musíte změnit definici pods�
 
 Všimněte si stejné prováděná pro NSG back-end a back-end podsíť v šabloně.
 
-Musíte také zkontrolujte, zda **FW1** virtuálních počítačů má předávání vlastnost povoleno na síťový adaptér, který se použije pro příjem a předávání paketů IP adresu. Následující části zobrazuje definici síťový adaptér pro FW1 v souboru azuredeploy-nsg-udr.json závislosti na scénáři výše.
+Musíte také zkontrolujte, zda **FW1** virtuálních počítačů má předávání vlastnost povoleno na síťový adaptér, který se použije pro příjem a předávání paketů IP adresu. Následující část popisuje definice síťový adaptér pro FW1 v souboru azuredeploy-nsg-udr.json závislosti na scénáři.
 
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/networkInterfaces",
@@ -112,7 +112,7 @@ Musíte také zkontrolujte, zda **FW1** virtuálních počítačů má předáv�
     }
 
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>Nasazení šablony pomocí metody Click to Deploy
-Ukázková šablona, která je k dispozici ve veřejném úložišti, používá soubor parametrů obsahující výchozí hodnoty, které se použijí k vygenerování výše popsaného scénáře. Pokud chcete nasadit tuto šablonu pomocí metody Click to Deploy, pokračujte na [tento odkaz](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR), klikněte na **Nasadit do Azure**, v případě potřeby nahraďte výchozí hodnoty parametrů, a pokračujte podle pokynů na portálu.
+Ukázka šablony, který je k dispozici v úložišti veřejné používá parametr souboru, který obsahuje výchozí hodnoty sloužící ke generování podle scénáře popsaného dříve. Pokud chcete nasadit tuto šablonu pomocí metody Click to Deploy, pokračujte na [tento odkaz](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR), klikněte na **Nasadit do Azure**, v případě potřeby nahraďte výchozí hodnoty parametrů, a pokračujte podle pokynů na portálu.
 
 1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, přejděte na téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) a proveďte všechny pokyny, abyste se mohli přihlásit k Azure a vybrat své předplatné.
 2. Spuštěním následujícího příkazu vytvoříte skupinu prostředků:
@@ -173,7 +173,7 @@ Ukázková šablona, která je k dispozici ve veřejném úložišti, používá
 
 ## <a name="deploy-the-template-by-using-the-azure-cli"></a>Nasazení šablony pomocí rozhraní příkazového řádku Azure
 
-Nasazení šablony ARM pomocí rozhraní příkazového řádku Azure, proveďte následující kroky:
+Pokud chcete nasadit šablonu Azure Resource Manager pomocí rozhraní příkazového řádku Azure, proveďte následující kroky:
 
 1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md) a postupujte podle pokynů až do chvíle, kdy můžete vybrat svůj účet a předplatné Azure.
 2. Spusťte následující příkaz Přepnout do režimu Resource Manager:
@@ -182,11 +182,11 @@ Nasazení šablony ARM pomocí rozhraní příkazového řádku Azure, proveďte
     azure config mode arm
     ```
 
-    Toto je očekávaný výstup výše uvedeného příkazu:
+    Tady je očekávaný výstup předchozí příkaz:
 
         info:    New mode is arm
 
-3. V prohlížeči přejděte na **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, zkopírujte obsah souboru json a vložit do nového souboru ve vaší počítač. V tomto scénáři můžete by být kopírování hodnoty menší než do souboru s názvem **c:\udr\azuredeploy.parameters.json**.
+3. V prohlížeči přejděte na **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, zkopírujte obsah souboru json a vložit do nového souboru ve vaší počítač. Pro tento scénář, zkopírujte následující hodnoty do souboru s názvem **c:\udr\azuredeploy.parameters.json**.
 
     ```json
         {
@@ -206,7 +206,7 @@ Nasazení šablony ARM pomocí rozhraní příkazového řádku Azure, proveďte
         }
     ```
 
-4. Spusťte následující příkaz, který nasadíte novou síť VNet pomocí šablony a parametr soubory stáhli a upravili v předchozích krocích:
+4. Spusťte následující příkaz, který nasadíte novou síť VNet pomocí šablony a parametr soubory stáhli a upravili dříve:
 
     ```azurecli
     azure group create -n TestRG -l westus --template-uri 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json' -e 'c:\udr\azuredeploy.parameters.json'
@@ -404,5 +404,5 @@ Nasazení šablony ARM pomocí rozhraní příkazového řádku Azure, proveďte
             info:    group show command OK
 
 > [!TIP]
-> Pokud nevidíte všechny prostředky, spusťte `azure group deployment show` příkaz zajistit Stav zřizování nasazení je *Succeded*.
+> Pokud nevidíte všechny prostředky, spusťte `azure group deployment show` příkaz zajistit Stav zřizování nasazení je *úspěšné*.
 > 

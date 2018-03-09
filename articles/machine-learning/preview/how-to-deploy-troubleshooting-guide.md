@@ -5,17 +5,17 @@ services: machine-learning
 author: raymondl
 ms.author: raymondl
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 8eafb16abeb939a16b1ddb024853300c453bcd9a
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 4cf372f17c3ded5c25a6ebde70b17b2c095a7169
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>Nasazení služby a nastavení prostředí pro řešení potíží
 Následující informace vám mohou pomoci určit příčinu chyby při nastavování prostředí správy modelu.
@@ -87,7 +87,7 @@ Příklad Python:
 ```
 
 ## <a name="other-common-problems"></a>Další běžné problémy
-- Pokud pip instalace rozhraní příkazového řádku. azure ml selže s chybou `cannot find the path specified` na počítači s Windows, musíte povolit podporu dlouhé cesty. Viz https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/. 
+- Pokud pip instalace rozhraní příkazového řádku. azure ml selže s chybou `cannot find the path specified` na počítači s Windows, musíte povolit podporu dlouhé cesty. See https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/. 
 - Pokud `env setup` příkaz selže s `LocationNotAvailableForResourceType`, pravděpodobně používáte nesprávný umístěním (oblastí) strojového učení prostředky. Zajistěte, aby vaše umístění určeném pomocí `-l` parametr `eastus2`, `westcentralus`, nebo `australiaeast`.
 - Pokud `env setup` příkaz selže s `Resource quota limit exceeded`, ujistěte se, máte dostatek jader ve vašem předplatném dostupná a že vaše prostředky nejsou používány až v jiné procesy.
 - Pokud `env setup` příkaz selže s `Invalid environment name. Name must only contain lowercase alphanumeric characters`, ujistěte se, velká písmena, symboly nebo podtržítko (_) neobsahuje název služby (jako v *my_environment*).

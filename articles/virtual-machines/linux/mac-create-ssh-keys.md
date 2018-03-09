@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: a37bfa01343527a60193d893c7913e4e9c50d210
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ecd3a01ee5591cb09140edb1b1290ff2d4510200
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Vytvoření a použití páru veřejného a privátního klíče SSH pro virtuální počítače s Linuxem v Azure
 Pomocí páru klíčů SSH (Secure Shell) můžete v Azure vytvořit virtuální počítače, které k ověřování používají klíče SSH. Není potom potřeba používat k přihlašování hesla. Tento článek ukazuje, jak rychle vygenerovat a použít pár souborů veřejného a privátního klíče protokolu SSH verze 2 RSA pro virtuální počítače s Linuxem. Tento postup můžete dokončit pomocí služby Azure Cloud Shell, hostitele s macOS nebo Linuxem nebo subsystému Windows pro Linux. Podrobný postup a další příklady najdete v tématu, které se věnuje [podrobným postupům vytvoření párů klíčů SSH a certifikátů](create-ssh-keys-detailed.md).
 
 ## <a name="create-an-ssh-key-pair"></a>Vytvoření páru klíčů SSH
-Pomocí příkazu `ssh-keygen` vytvořte soubory veřejného a privátního klíče SSH, které se automaticky vytvoří v adresáři `~/.ssh`, ale na vyzvání můžete zadat jiné umístění a dodatečné přístupové heslo (heslo pro přístup k souboru privátního klíče). Spusťte následující příkaz z prostředí Bash a na vyžádání zadejte vlastní údaje.
+Použití `ssh-keygen` příkaz pro vytvoření SSH veřejné a soukromé klíče soubory, které jsou ve výchozím nastavení, které jsou vytvořené v `~/.ssh` adresáře. Můžete zadat jiné umístění a další přístupové heslo (heslo pro přístup k souboru privátního klíče) při zobrazení výzvy. V aktuální umístění existuje SSH dvojici klíčů, se přepíší.
 
 ```bash
 ssh-keygen -t rsa -b 2048

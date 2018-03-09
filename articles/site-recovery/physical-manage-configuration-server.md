@@ -5,13 +5,13 @@ services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 7fe68f072ef438e21f3e6d3d52aee9e86e537687
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 2fdccade577788d3fc5bc076604547b2ab6690d9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfigurace serveru pro zotavení po havárii fyzického serveru
 
@@ -36,7 +36,7 @@ Tabulka shrnuje předpoklady pro nasazení na místním počítači konfigurace 
 | IIS | -Žádné existující výchozí web <br> -Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení  <br> -Žádná existující web nebo aplikace naslouchá na portu 443<br>|
 | Typ síťový adaptér | VMXNET3 (Pokud je nasazený jako virtuální počítač VMware) |
 | Typ IP adresy | Statická |
-| Přístup k internetu | Server potřebuje přístup k tyto adresy URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (nevyžaduje se pro procesový server pro horizontální navýšení kapacity) <br> - time.nist.gov <br> - time.windows.com |
+| Přístup k internetu | Server potřebuje přístup k tyto adresy URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (nevyžaduje se pro procesový server pro horizontální navýšení kapacity) <br> - time.nist.gov <br> - time.windows.com |
 | Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)|
 
 ## <a name="download-the-latest-installation-file"></a>Stažení nejnovějšího instalačního souboru
@@ -164,7 +164,7 @@ Nastavení proxy pro počítače konfigurace serveru můžete upravit takto:
   ```
 
   >[!WARNING]
-  Pokud máte další proces servery připojené k konfigurační server, budete muset [opravte nastavení proxy serveru na všech serverech Škálováním na více systémů proces](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#modifying-proxy-settings-for-scale-out-process-server) ve vašem nasazení.
+  Pokud máte další proces servery připojené k konfigurační server, budete muset [opravte nastavení proxy serveru na všech serverech Škálováním na více systémů proces](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) ve vašem nasazení.
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Znovu zaregistrujte konfigurační server s ke stejnému trezoru
   1. Přihlaste se k konfigurační Server.
@@ -184,7 +184,7 @@ Nastavení proxy pro počítače konfigurace serveru můžete upravit takto:
       ```
 
   >[!WARNING]
-  Pokud máte více procesový server, budete muset [zaregistrovat znovu](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#re-registering-a-scale-out-process-server).
+  Pokud máte více procesový server, budete muset [zaregistrovat znovu](vmware-azure-manage-process-server.md#reregister-a-process-server).
 
 ## <a name="register-a-configuration-server-with-a-different-vault"></a>Zaregistrujte konfigurační server s jiným trezorem
 
@@ -233,8 +233,8 @@ Upgrade serveru následujícím způsobem:
 > [!WARNING]
 > Zkontrolujte následující před zahájením vyřazení z provozu konfigurační Server.
 > 1. [Zakažte ochranu](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) pro všechny virtuální počítače v rámci této konfigurace serveru.
-> 2. [Zrušit přidružení](site-recovery-setup-replication-settings-vmware.md#dissociate-a-configuration-server-from-a-replication-policy) a [odstranit](site-recovery-setup-replication-settings-vmware.md#delete-a-replication-policy) všechny zásady replikace z konfiguračního serveru.
-> 3. [Odstranit](site-recovery-vmware-to-azure-manage-vCenter.md#delete-a-vcenter-in-azure-site-recovery) všichni hostitelé Vcenter vSphere servery, které jsou přidružené k konfigurační Server.
+> 2. [Zrušit přidružení](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) a [odstranit](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) všechny zásady replikace z konfiguračního serveru.
+> 3. [Odstranit](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) všichni hostitelé Vcenter vSphere servery, které jsou přidružené k konfigurační Server.
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>Odstraňte konfigurační Server z portálu Azure

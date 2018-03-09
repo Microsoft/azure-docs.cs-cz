@@ -14,17 +14,20 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 23a1f008e2c51325b7e9c7676847d55d7ccb7d44
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e55227773820af26435100b11dfefce058e7e78
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Postup zřízení virtuálního počítače s Windows SQL Server na portálu Azure
 
 Tato příručka obsahuje podrobnosti o různých možnostech, které jsou k dispozici při vytváření virtuálního počítače s SQL serverem Windows na portálu Azure. Tento článek popisuje další možnosti konfigurace, než [rychlý start virtuální počítač s SQL serverem](quickstart-sql-vm-create-portal.md), které jde další přes jeden možné zřizování úloh. 
 
 Tuto příručku použijte k vytvoření vlastní virtuální počítač SQL Server. Nebo použijte jako pomůcku možnosti dostupné na portálu Azure.
+
+> [!TIP]
+> Pokud máte dotazy týkající se virtuální počítače systému SQL Server, najdete v článku [– nejčastější dotazy](virtual-machines-windows-sql-server-iaas-faq.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -34,7 +37,7 @@ Při vytváření virtuálního počítače s SQL serverem, vyberete jednu z ně
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého účtu.
 
-1. Na portálu Azure klikněte na tlačítko **vytvořit prostředek**. Na Portálu se otevře okno **Nový**.
+1. Na webu Azure Portal klikněte na **Vytvořit prostředek**. Na Portálu se otevře okno **Nový**.
 
 1. V okně **Nový** klikněte na **Compute** a pak klikněte na **Zobrazit všechno**.
 

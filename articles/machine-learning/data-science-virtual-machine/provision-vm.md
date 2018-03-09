@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 6f933c75d4829e3b2c5198aeee324f15490d8a93
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9f01ba69f6511a3f9a7f99e379522be3c00554f5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Zřízení virtuálního počítače Windows datové vědy v Azure
 Virtuální počítač Microsoft Data vědecké účely je předem nainstalovaná a nakonfigurovaná s několik oblíbených nástrojů, které se běžně používají k analýze dat a strojové učení image virtuálního počítače (VM) systému Windows Azure. Nástroje sady jsou:
@@ -39,8 +39,7 @@ Virtuální počítač Microsoft Data vědecké účely je předem nainstalovan�
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/) : dolování visual dat a strojové učení softwaru v jazyce Java.
   * [Rozbalení Apache](https://drill.apache.org/): bez schémat modul dotazů SQL pro Hadoop, NoSQL a úložiště v cloudu.  Podporuje rozhraní ODBC a JDBC umožňující dotazování NoSQL a soubory ze standardních nástrojů BI Power BI, Excel, Tableau.
 * Knihovny v R a Python pro použití v Azure Machine Learning a jinými službami Azure
-* Git, včetně Git Bash pro práci s včetně GitHub, Visual Studio Team Services úložišť zdrojového kódu
-* Porty systému Windows nástroje pro několik oblíbených Linux příkazového řádku (včetně awk menšit, perl, grep, najít, wget, curl, atd.) přístupné prostřednictvím příkazového řádku. 
+* Git, včetně Git Bash pro práci s úložišť zdrojového kódu, včetně GitHub, Visual Studio Team Services a poskytuje několik oblíbených Linux nástroje příkazového řádku (včetně awk menšit, perl, grep, najít, wget, curl, atd.) dostupný git bash a příkaz výzvu. 
 
 Provádění vědecké zpracování dat zahrnuje iterace v pořadí úloh:
 
@@ -73,7 +72,7 @@ K vytvoření instance systému Microsoft Data vědecké účely virtuální po�
    1. **Základy**
       
       1. **Název**: název vašeho serveru vědecké účely data vytváříte.
-      2. **Typ disku virtuálního počítače**: výběr mezi SSD a HDD. Grafický procesor (NC-Series), zvolte **HDD** jako typ disku. 
+      2. **Typ disku virtuálního počítače**: výběr mezi SSD a HDD. Pro NC_v1 GPU instance (NVidia tesla – měrná K80 na základě), zvolte **HDD** jako typ disku. 
       3. **Uživatelské jméno**: id přihlášení účtu správce.
       4. **Heslo**: heslo účtu správce.
       5. **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se tento počítač je vytvořen a účtují.
@@ -99,35 +98,28 @@ Jakmile virtuálního počítače se vytvoří a zřizovat, jste připraveni za�
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Nástroje nainstalované na Microsoft Data vědecké účely virtuálního počítače
 
-### <a name="azure-machine-learning-workbench"></a>Aplikace Azure Machine Learning Workbench
 
-Azure Machine Learning Workbench je desktopová aplikace a rozhraní příkazového řádku. Nástroje Workbench má příprava předdefinované dat, který zjišťuje přípravné kroky jako jejich provedení. Umožňuje taky správu projektu, spusťte historie a integrace poznámkového bloku účinnějšími produktivitu. Můžete využít osvědčené rozhraní open source, včetně TensorFlow, kognitivní Toolkit, Spark ML a scikit – Naučte se vyvíjet modely. Na DSVM poskytujeme ikony na ploše (InstallAMLFromLocal) místně do každého uživatele % LOCALAPPDATA % adresáře extrahovat workbench Azure Machine Learning. Každý uživatel, který potřebuje používat nástroje Workbench je potřeba udělat nějaké doby akce dvakrát klikněte na ikonu na pracovní ploše InstallAMLFromLocal nainstalovat instanci nástroje Workbench. Azure Machine Learning také vytvoří a použije uživatelské prostředí Python, které je extrahován v % LOCALAPPDATA%\amlworkbench\python.
 
 ### <a name="microsoft-ml-server-developer-edition"></a>Microsoft ML Server Developer Edition
 Pokud chcete používat knihovny Microsoft enterprise pro škálovatelnou R nebo Python pro analytické údaje, virtuální počítač má Microsoft ML Server Developer (dříve označované jako Microsoft R Server) nainstalované verze. Microsoft ML Server je platforma pro analýzu široce nasadit podnikové třídy k dispozici pro R a Python a škálovatelnou, vyvineme z hlediska podporované a zabezpečený. Podpora různých statistiky velkých objemů dat, prediktivního modelování a strojového učení možnosti, ML Server podporuje celou řadu analytics – zkoumání, analýzu, vizualizace a modelování. Pomocí a rozšíření s otevřeným zdrojem R a Python, Microsoft ML Server je plně kompatibilní s R nebo Python skripty, funkce a CRAN / nástrojem pip / škálování Conda balíčky k analýze dat v podniku. Přidáním bloku a paralelní zpracování dat řeší také omezení v paměti R otevřete zdroje. To umožňuje spustit analýzy dat mnohem větší, než co nejlépe odpovídá v hlavní paměti.  Visual Studio Community Edition zahrnuté do virtuálního počítače obsahuje R nástrojů pro Visual Studio a Python tools for rozšíření sady Visual Studio, který obsahuje úplnou IDE pro práci s R nebo Python. Poskytujeme také jiné integrovaného vývojového prostředí, stejně jako [Rstudia](http://www.rstudio.com) a [PyCharm Community edition](https://www.jetbrains.com/pycharm/) ve virtuálním počítači. 
 
 ### <a name="python"></a>Python
-Pro vývoj pomocí Python byl nainstalován distribuce Anaconda Python 2.7 a 3.5. Toto rozdělení obsahuje základní Python společně s přibližně 300 nejoblíbenější balíčků analytics matematické, technici a data. Můžete použít nástroje Python Tools pro Visual Studio (PTVS) nainstalované v rámci edice Visual Studio 2015 Community nebo jeden z integrovaného vývojového prostředí dodávat s Anaconda jako nečinnosti nebo Spyder. Můžete spustit jeden z těchto oblastí vyhledávání v panelu vyhledávání (**Win** + **S** klíč).
+Pro vývoj pomocí Python byl nainstalován distribuce Anaconda Python 2.7 a 3.6. Toto rozdělení obsahuje základní Python společně s přibližně 300 nejoblíbenější balíčků analytics matematické, technici a data. Můžete použít nástroje Python Tools pro Visual Studio (PTVS) nainstalované v rámci edice Visual Studio 2017 Community nebo jeden z integrovaného vývojového prostředí dodávat s Anaconda jako nečinnosti nebo Spyder. Můžete spustit jeden z těchto oblastí vyhledávání v panelu vyhledávání (**Win** + **S** klíč).
 
 > [!NOTE]
-> Chcete-li bod nástroje Python Tools pro sadu Visual Studio v Anaconda Python 2.7 a 3.5, vytvořte vlastní prostředí pro každou verzi. Chcete-li nastavit tyto cesty prostředí Visual Studio 2015 Community Edition, přejděte na **nástroje** -> **Python Tools** -> **prostředí Python** a pak klikněte na **+ vlastní**. 
+> Chcete-li bod nástroje Python Tools pro sadu Visual Studio v Anaconda Python 2.7, vytvořte vlastní prostředí pro každou verzi. Chcete-li nastavit tyto cesty prostředí Visual Studio 2017 Community Edition, přejděte na **nástroje** -> **Python Tools** -> **prostředí Python**a pak klikněte na **+ vlastní**. 
 > 
 > 
 
-Anaconda Python 2.7 je nainstalován v části C:\Anaconda a Anaconda Python 3.5 je nainstalována v části c:\Anaconda\envs\py35. V tématu [dokumentaci k těmto nástrojům](/visualstudio/python/python-environments.md#selecting-and-installing-python-interpreters) podrobné pokyny. 
+Anaconda Python 3.6 je nainstalován v části C:\Anaconda a Anaconda Python 2.7 je nainstalován v části c:\Anaconda\envs\python2. V tématu [dokumentaci k těmto nástrojům](/visualstudio/python/python-environments.md#selecting-and-installing-python-interpreters) podrobné pokyny. 
 
 ### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
-Anaconda distribuční také obsahuje poznámkového bloku Jupyter, prostředí sdílení kódu a analýzy. Server poznámkového bloku Jupyter byl předem nakonfigurovaným rozhraním Python 2.7, Python 3.5, PySpark, Dita a R jádra. Není ikony na ploše s názvem "Poznámkový blok Jupyter" start pro server Jupyter a spusťte prohlížeč pro přístup k serveru poznámkového bloku. 
-
-> [!NOTE]
-> Pokračujte, pokud chcete získat všechna upozornění certifikátu. 
-> 
-> 
+Anaconda distribuční také obsahuje poznámkového bloku Jupyter, prostředí sdílení kódu a analýzy. Server poznámkového bloku Jupyter byl předem nakonfigurovaným rozhraním Python 2.7, Python 3.x, jádra PySpark, Dita a R. Není ikony na ploše s názvem "Poznámkový blok Jupyter" start pro server Jupyter a spusťte prohlížeč pro přístup k serveru poznámkového bloku. 
 
 Budeme mít zabalené několik poznámkových bloků ukázka v Pythonu a v jazyce R. Jupyter notebooks ukazují, jak pracovat s Microsoft ML Server, ML služby SQL Server (v databázi analytics), Python, Microsoft kognitivní ToolKit, Tensorflow a další technologie Azure po přístup Jupyter. Zobrazí se odkaz na ukázky na domovské stránce poznámkového bloku po ověření do poznámkového bloku Jupyter s heslem, kterou jste vytvořili v předchozím kroku. 
 
 ### <a name="visual-studio-2017-community-edition"></a>Visual Studio 2017 Community edition
-Visual Studio Community edition nainstalovaný na Virtuálním počítači. Je bezplatnou verzi oblíbených IDE od společnosti Microsoft, který můžete použít pro účely hodnocení a pro malé týmy. Můžete zkontrolovat si licenční podmínky [zde](https://www.visualstudio.com/support/legal/mt171547).  Dvojitým kliknutím na ikony ploše otevřete Visual Studio nebo **spustit** nabídky. Můžete také vyhledat programy s **Win** + **S** a zadání "Visual Studio". Jakmile se tam můžete vytvořit projektů v jazyce jazycích C#, Python, R, node.js. Moduly plug-in jsou nainstalovány také zajišťujících pohodlné pro práci se službami Azure, jako je Azure Data Catalog, Azure HDInsight (Hadoop, Spark) a Azure Data Lake. 
+Visual Studio Community edition nainstalovaný na Virtuálním počítači. Je bezplatnou verzi oblíbených IDE od společnosti Microsoft, který můžete použít pro účely hodnocení a pro malé týmy. Můžete zkontrolovat si licenční podmínky [zde](https://www.visualstudio.com/support/legal/mt171547).  Dvojitým kliknutím na ikony ploše otevřete Visual Studio nebo **spustit** nabídky. Můžete také vyhledat programy s **Win** + **S** a zadání "Visual Studio". Jakmile se tam můžete vytvořit projektů v jazyce jazycích C#, Python, R, node.js. Moduly plug-in jsou nainstalovány také zajišťujících pohodlné pro práci se službami Azure, jako je Azure Data Catalog, Azure HDInsight (Hadoop, Spark) a Azure Data Lake. Nyní k dispozici je také o modul plug-in názvem ```Visual Studio Tools for AI``` která bezproblémově integruje do Azure Machine Learning a vám pomůže rychle sestavení AI aplikace. 
 
 > [!NOTE]
 > Může se zobrazit zpráva, že se vaše zkušební období vypršelo. Zadejte přihlašovací údaje účtu Microsoft nebo vytvořit nový bezplatný účet získat přístup k Visual Studio Community Edition. 
@@ -170,6 +162,10 @@ Pomoc při vytváření řídicích panelů a vizualizací skvělé, **Power BI 
 > 
 > 
 
+### <a name="azure-machine-learning-workbench"></a>Aplikace Azure Machine Learning Workbench
+
+Azure Machine Learning Workbench je desktopová aplikace a rozhraní příkazového řádku. Nástroje Workbench má příprava předdefinované dat, který zjišťuje přípravné kroky jako jejich provedení. Umožňuje taky správu projektu, spusťte historie a integrace poznámkového bloku účinnějšími produktivitu. Můžete využít osvědčené rozhraní open source, včetně TensorFlow, kognitivní Toolkit, Spark ML a scikit – Naučte se vyvíjet modely. Na DSVM poskytujeme ikony na ploše se nainstalovat nástroje workbench Azure Machine Learning do složky % LOCALAPPDATA % jednotlivé uživatele. Každý uživatel, který potřebuje používat nástroje Workbench je potřeba udělat nějaké doby akce dvojitým kliknutím ```AzureML Workbench Setup``` ploše ikona nainstalovat instanci nástroje Workbench. Azure Machine Learning také vytvoří a použije uživatelské prostředí Python, které je extrahován v % LOCALAPPDATA%\amlworkbench\python.
+
 ## <a name="additional-microsoft-development-tools"></a>Další vývojové nástroje společnosti Microsoft
 [ **Instalačního programu webové platformy Microsoft** ](https://www.microsoft.com/web/downloads/platform.aspx) lze použít ke zjištění a stáhnout jiné vývojové nástroje společnosti Microsoft. Je také zástupce nástroj, který poskytuje na ploše Microsoft Data vědecké účely virtuálního počítače.  
 
@@ -177,10 +173,10 @@ Pomoc při vytváření řídicích panelů a vizualizací skvělé, **Power BI 
 | Položka | Adresář |
 | --- | --- |
 | Konfigurace serveru poznámkového bloku Jupyter |C:\ProgramData\jupyter |
-| Domovský adresář ukázky poznámkového bloku Jupyter |c:\dsvm\notebooks |
+| Domovský adresář ukázky poznámkového bloku Jupyter |c:\dsvm\notebooks a c:\users\<uživatelské jméno > \notebooks|
 | Další ukázky |c:\dsvm\samples |
-| Anaconda (výchozí: Python 2.7) |c:\Anaconda |
-| Prostředí Python 3.5 anaconda |c:\Anaconda\envs\py35 |
+| Anaconda (výchozí: Python 3.6) |c:\Anaconda |
+| Prostředí Python 2.7 anaconda |c:\Anaconda\envs\python2 |
 | Microsoft ML Server samostatné Python  | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
 | Výchozí R instance (ML Server samostatně) |C:\Program Files\Microsoft\ML Server\R_SERVER |
 | Adresář instance v databázi SQL ML Services |C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
@@ -188,7 +184,7 @@ Pomoc při vytváření řídicích panelů a vizualizací skvělé, **Power BI 
 | Různé nástroje |c:\dsvm\tools |
 
 > [!NOTE]
-> Instance systému Microsoft Data vědecké účely virtuální počítač před 1.5.0 (před 3. září 2016) vytvořit použít mírně odlišné adresářovou strukturu, než je zadáno v předchozí tabulce. 
+> V edici Windows Server 2012 DSVM a Windows Server 2016 edice před březnem 2018 je výchozím Anaconda prostředí Python 2.7. Sekundární prostředí je umístěný v c:\Anaconda\envs\py35 3.5 Python. 
 > 
 > 
 

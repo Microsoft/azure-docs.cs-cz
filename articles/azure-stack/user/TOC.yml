@@ -47,6 +47,8 @@
               href: azure-stack-vm-sizes.md
             - name: Správa disků virtuálních počítačů
               href: azure-stack-manage-vm-disks.md
+            - name: Ochrana virtuálních počítačů
+              href: azure-stack-manage-vm-backup.md
         - name: Úložiště
           items:
             - name: Přehled

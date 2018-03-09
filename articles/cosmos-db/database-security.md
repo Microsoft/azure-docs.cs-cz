@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 2f0f6578b14b2fdd3807303eb94df077df92ba77
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f6e05d410a8018f0a88a378e767f7a7e6fde6f0c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpečení databáze Azure Cosmos DB
 
@@ -69,7 +69,7 @@ Pojďme proniknout do každé z nich podrobně.
 |Autorizace|Azure Cosmos DB používá na základě hodnoty hash message authentication code (HMAC) pro ověřování. <br><br>Každý požadavek je zakódována pomocí účtu tajný klíč a následné kódování base-64 kódovaného hash je odeslána s každé volání Azure Cosmos DB. Pro ověření žádosti, služba Azure Cosmos DB používá správný tajný klíč a vlastnosti ke generování hodnoty hash a potom porovná hodnotu s v požadavku. Pokud tyto dvě hodnoty odpovídají operaci oprávněný úspěšně a zpracování žádosti, jinak dojde selhání autorizace a zamítnutí žádosti.<br><br>Můžete použít buď [hlavní klíč](secure-access-to-data.md#master-keys), nebo [token prostředku](secure-access-to-data.md#resource-tokens) podrobných při přístupu k prostředku, jako je například dokument.<br><br>Další informace v [zabezpečení přístupu k prostředkům Azure Cosmos DB](secure-access-to-data.md).|
 |Uživatele a oprávnění|Pomocí [hlavní klíč](#master-key) pro účet, můžete vytvořit uživatele a oprávnění prostředků na databázi. A [token prostředku](#resource-token) souvisí s oprávnění v databázi a určuje, zda má uživatel přístup (pro čtení a zápis, jen pro čtení, nebo žádný přístup) na prostředek aplikace v databázi. Prostředky aplikace obsahují kolekcí, dokumentů, přílohy, uložené procedury, triggery a UDF. Token prostředku se pak používá při ověřování k poskytování nebo odepřít přístup k prostředku.<br><br>Další informace v [zabezpečení přístupu k prostředkům Azure Cosmos DB](secure-access-to-data.md).|
 |Integrace služby Active directory (RBAC)| Může také poskytnout přístup k účtu databáze pomocí řízení přístupu (IAM) na portálu Azure, jak je znázorněno na snímku obrazovky pod touto tabulkou. IAM poskytuje řízení přístupu na základě rolí a integruje se službou Active Directory. Můžete použít integrované role nebo vlastní role pro jednotlivce a skupiny, jak je znázorněno na následujícím obrázku.|
-|Globální replikace|Azure Cosmos DB nabízí to globální distribuce, které umožňuje provádět replikaci dat do některého datových center Azure na celém světě s klepnutím na tlačítko. Globální replikace umožňuje globálně škálovat a poskytovat přístup s nízkou latencí k datům po celém světě.<br><br>V kontextu zabezpečení globální replikace tomu se budou data ochrany proti selhání místní.<br><br>Další informace v [distribuci dat globálně](distribute-data-globally.md).|
+|Globální replikace|Azure Cosmos DB nabízí to globální distribuce, které umožňuje provádět replikaci dat do některého datových center Azure na celém světě s klepnutím na tlačítko. Globální replikace umožňuje globálně škálovat a poskytovat přístup s nízkou latencí k datům po celém světě.<br><br>V kontextu zabezpečení globální replikace zajišťuje ochranu dat před selháním místní.<br><br>Další informace v [distribuci dat globálně](distribute-data-globally.md).|
 |Místní převzetí služeb při selhání|Pokud mají replikovat data do více než jednoho datového centra, Azure Cosmos DB automatické navyšování vaše operace by měla místního datového centra přechodu do offline režimu. Můžete vytvořit seznam oblastí převzetí služeb při selhání pomocí oblasti, ve kterých vaše data se replikují seřazený podle priority. <br><br>Další informace v [regionální převzetí služeb při selhání v Azure Cosmos DB](regional-failover.md).|
 |Místní replikaci|I v rámci jednoho datového centra Azure Cosmos DB automaticky replikuje data pro zajištění vysoké dostupnosti, která poskytuje možnost [úrovně konzistence](consistency-levels.md). Zaručí se tím 99,99 % [smlouva SLA o dostupnosti](https://azure.microsoft.com/support/legal/sla/cosmos-db) pro všechny účty jedné oblasti a všechny oblasti s více účty s zmírnit konzistence a 99.999 % čtení dostupnosti pro všechny účty databáze více oblast.|
 |Automatizované zálohování online|Azure Cosmos DB databáze jsou pravidelně zálohovány a uloženy v úložišti georedundant. <br><br>Další informace v [automatické online zálohování a obnovení Azure Cosmos DB](online-backup-and-restore.md).|
@@ -89,7 +89,7 @@ Následující snímek obrazovky ukazuje integrace služby Active directory (RBA
 
 Následující snímek obrazovky ukazuje, jak můžete pomocí protokolů auditu protokolování a aktivity pro monitorování vašeho účtu: ![aktivity protokoly pro Azure Cosmos DB](./media/database-security/nosql-database-security-application-logging.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další podrobnosti o hlavních klíčů a tokeny prostředků najdete v tématu [zabezpečení přístupu k datům v Azure Cosmos DB](secure-access-to-data.md).
 

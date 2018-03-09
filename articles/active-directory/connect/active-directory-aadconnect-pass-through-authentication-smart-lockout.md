@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: fc46fe1d68538757ba5a8c5aa1acb4b51f8a171b
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 9477d47824213d7ea15bcf6c6b615a220bae2e48
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Předávací ověřování Azure Active Directory: Inteligentní uzamčení
 
 ## <a name="overview"></a>Přehled
 
-Azure Active Directory (Azure AD) chrání před útoky hrubou silou heslo a zabrání uživatelům originálního zamykají mimo jejich aplikace Office 365 a SaaS. Tato funkce volána *inteligentní uzamčení*, je podporováno, pokud používáte ověřování průchozí jako způsob přihlášení. Inteligentní uzamčení povoleno ve výchozím nastavení pro všechny klienty a trvale chrání vaše uživatelské účty.
+Azure Active Directory (Azure AD) chrání před útoky hrubou silou heslo a zabrání uživatelům originálního zamykají mimo jejich aplikace Office 365 a SaaS. Tato funkce volána *inteligentní uzamčení*, je podporováno, pokud používáte ověřování průchozí jako způsob přihlášení. Inteligentní uzamčení povoleno ve výchozím nastavení pro všechny klienty, ne jenom klienty pomocí předávacího ověřování, a trvale chrání vaše uživatelské účty.
 
 Inteligentní uzamčení uchovává informace o neúspěšných pokusů o přihlášení. Po určitou *prahové hodnoty počtu uzamčení*, spuštění *doba trvání uzamčení*. Inteligentní uzamčení odmítne všechny pokusy o přihlášení z útočník během doby trvání uzamčení. Pokud pokračuje útoku, následných neúspěšné pokusy o přihlášení po dobu trvání uzamčení končí výsledek v delší doby uzamčení.
 

@@ -14,13 +14,13 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: f613e480f6699b323c18402f01873e565768f10f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 0a436a929696f759cdbe9807faa2a15902b7ce6d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka vývojáře Azure funkce JavaScript
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -119,7 +119,7 @@ Umožňuje zapisovat do protokolů streamování konzoly na výchozí úrovni tr
 | Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
 | **Chyba (_zpráva_)**   | Zapíše chyba úroveň protokolování nebo nižší.   |
-| **warn (_zpráva_)**    | Zapíše do varovná úroveň protokolování nebo nižší. |
+| **warn(_message_)**    | Zapíše do varovná úroveň protokolování nebo nižší. |
 | **informace o (_zpráva_)**    | Zapíše informace o úroveň protokolování nebo nižší.    |
 | **verbose (_zpráva_)** | Zapíše na podrobné úrovni protokolování.           |
 
@@ -208,12 +208,12 @@ HTTP a aktivační události webhooku a HTTP výstupu vazby používají žádos
 
 | Vlastnost      | Popis                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _text_        | Objekt, který obsahuje text žádosti.               |
-| _záhlaví_     | Objekt, který obsahuje hlavičky žádosti.                   |
+| _Text_        | Objekt, který obsahuje text žádosti.               |
+| _Záhlaví_     | Objekt, který obsahuje hlavičky žádosti.                   |
 | _– Metoda_      | Metoda HTTP požadavku.                                |
-| _PůvodníAdresaURL_ | Adresa URL požadavku.                                        |
-| _Parametry_      | Objekt, který obsahuje parametry směrování žádosti. |
-| _dotaz_       | Objekt, který obsahuje parametry dotazu.                  |
+| _originalUrl_ | Adresa URL požadavku.                                        |
+| _params_      | Objekt, který obsahuje parametry směrování žádosti. |
+| _Dotaz_       | Objekt, který obsahuje parametry dotazu.                  |
 | _rawBody_     | Tělo zprávy jako řetězec.                           |
 
 
@@ -223,8 +223,8 @@ HTTP a aktivační události webhooku a HTTP výstupu vazby používají žádos
 
 | Vlastnost  | Popis                                               |
 | --------- | --------------------------------------------------------- |
-| _text_    | Objekt, který obsahuje text odpovědi.         |
-| _záhlaví_ | Objekt, který obsahuje hlavičky odpovědi.             |
+| _Text_    | Objekt, který obsahuje text odpovědi.         |
+| _Záhlaví_ | Objekt, který obsahuje hlavičky odpovědi.             |
 | _isRaw_   | Označuje, že formátování bylo přeskočeno pro odpověď.    |
 | _Stav_  | Stavový kód HTTP odpovědi.                     |
 
@@ -265,7 +265,15 @@ Při práci s aktivace protokolu HTTP, se můžete dostat objekty žádosti a od
     ```  
 
 ## <a name="node-version-and-package-management"></a>Správa verzí a balíček uzlu
-Verze uzlu je aktuálně uzamčena v `6.5.0`. Jsme se na odstranění příčin přidání podpory pro další verze a jejich zpřístupnění konfigurovat.
+
+Následující tabulka uvádí verze Node.js používané každou hlavní verzi modulu runtime funkce:
+
+| Verze funkcí | Verze Node.js | 
+|---|---|
+| 1.x | 6.11.2 (uzamčený modulu runtime) |
+| 2.x  |> = 8.4.0 s aktuální LTS 8.9.4 nedoporučuje. Nastavit verzi pomocí WEBSITE_DEFAULT_NODE_VERSION [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings).|
+
+Zobrazí aktuální verzi, která používá modul runtime tisk `process.version` z žádné funkce.
 
 Následující kroky umožňují mezi ně patřit balíčky v aplikaci funkce: 
 
@@ -324,7 +332,7 @@ Když vytvoříte aplikaci funkce, která používá plán služby App Service, 
 ### <a name="typescript-and-coffeescript-support"></a>Podpora typeScript a CoffeeScript
 Protože přímé podpory ještě neexistuje pro automatické kompilaci TypeScript nebo CoffeeScript prostřednictvím modulu runtime, tato podpora se musí zpracovávat mimo modulu runtime v době nasazení. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace najdete v následujících materiálech:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)

@@ -5,16 +5,16 @@ services: machine-learning
 author: hning86
 ms.author: haining
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: f5c75b95d9019c15bb402313ce7407fa9abb81d4
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 099ff69b396c35730471d684b59115f03ccf67d9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Uložením změn a práce s velkými soubory
 Ve službě Azure Machine Learning experimentování můžete nakonfigurovat různé provádění cílů. Některé cíle jsou místní, například v místním počítači nebo kontejner Docker v místním počítači. Ostatní jsou vzdálené, jako je například kontejner Docker na vzdáleném počítači nebo clusteru služby HDInsight. Další informace najdete v tématu [přehled Azure Machine Learning experimentovat služba provedení](experimentation-service-configuration.md). 
@@ -75,7 +75,7 @@ Je důležité si uvědomit, místně žije sdílenou složku na cílovém zvole
 
 Využitím funkce sdílené složky, může číst nebo zapisovat do speciální složky, která je identifikovaná proměnná prostředí `AZUREML_NATIVE_SHARE_DIRECTORY`. 
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 Tady je ukázkový kód Python pro čtení a zápis do textového souboru pomocí tuto sdílenou složku:
 ```python
 import os
@@ -194,6 +194,6 @@ attach_storage_container(spark, "<storage account name>", "<storage key>”)
 ## <a name="conclusion"></a>Závěr
 Vzhledem k tomu, že Azure Machine Learning spustí skripty tak, že zkopírujete složku celý projekt k cíli výpočetní kontextu, věnujte zvláštní pozornost s velké vstupní, výstupní a zprostředkující soubory. Pro transakce velkých souborů, můžete použít složku speciální výstupy, sdílené složky, která je přístupná prostřednictvím `AZUREML_NATIVE_SHARE_DIRECTORY` proměnné prostředí, nebo externí odolné úložiště. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Zkontrolujte [Azure Machine Learning Workbench provádění konfigurační soubory](experimentation-service-configuration-reference.md) článku.
 - V tématu Jak [klasifikace Iris](tutorial-classifying-iris-part-1.md) kurz projektu používá složce výstupy k zachování modulu trained model.

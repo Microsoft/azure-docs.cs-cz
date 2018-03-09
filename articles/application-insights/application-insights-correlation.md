@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: e821a640d3d75e712c022bd681eb07b83da91911
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 5d4abbf8194d633305877275e3dd273352906ad3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrii ve službě Application Insights
 
@@ -39,7 +39,7 @@ V prostředí malých služeb může trasování ze součásti přejděte do rů
 Application Insights datový model definuje dvě pole chcete tento problém vyřešit: `request.source` a `dependency.target`. První pole identifikuje komponentu závislostí žádost iniciovala a druhý identifikuje, která komponenta vrátila odpověď volání závislostí.
 
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 
 Podívejme se na příklad ceny STOCK aplikace zobrazuje aktuální cena trhu populace pomocí externí rozhraní API volat rozhraní API akcií. CENY STOCK aplikace má na stránce `Stock page` otevřít s použitím klienta webové prohlížeče `GET /Home/Stock`. Aplikace dotazuje rozhraní API STOCK pomocí volání protokolu HTTP `GET /api/stock/value`.
 
@@ -53,12 +53,12 @@ Můžete analyzovat výsledné telemetrie spuštění dotazu:
 
 V poznámce zobrazení výsledek, že všechny položky telemetrie sdílet kořenu `operation_Id`. Při volání ajax provedené na stránce – nové jedinečné id `qJSXU` je přiřazena k telemetrických závislostí a stránkové zobrazení na id slouží jako `operation_ParentId`. Dále požadavek serveru používá rozhraní ajax na id jako `operation_ParentId`atd.
 
-| Typ položky   | jméno                      | id           | operation_ParentId | operation_Id |
+| itemType   | jméno                      | id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
-| Stránkové zobrazení   | Uložené stránky                |              | STYz               | STYz         |
+| pageView   | Uložené stránky                |              | STYz               | STYz         |
 | závislosti | / Home GET/Stock           | qJSXU        | STYz               | STYz         |
-| Požadavek    | Domovské GET/Stock            | KqKwlrSt9PA = | qJSXU              | STYz         |
-| závislosti | ZÍSKAT /api/stock/value      | bBrf2L7mm2g = | KqKwlrSt9PA =       | STYz         |
+| Požadavek    | Domovské GET/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| závislosti | ZÍSKAT /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 Nyní když volání `GET /api/stock/value` provedené na externí službu chcete znát identitu tohoto serveru. Abyste mohli nastavit `dependency.target` pole správně. Když externí služba nepodporuje monitorování - `target` nastavena na název hostitele služby jako `stock-prices-api.com`. Ale pokud služby identifikuje vrácením i předdefinovanou hlavičky protokolu HTTP - `target` obsahuje identitu služby, která umožňuje vytvářet distribuované trasování dotazováním telemetrie z dané služby Application Insights. 
 
@@ -66,8 +66,8 @@ Nyní když volání `GET /api/stock/value` provedené na externí službu chcet
 
 Pracujeme na návrh RFC [korelace protokolu HTTP](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md). Tento návrh definuje dvě hlavičky:
 
-- `Request-Id`provádění globálně jedinečné id volání
-- `Correlation-Context`-provádění kolekce párů hodnot názvu vlastnosti distribuované trasování
+- `Request-Id` provádění globálně jedinečné id volání
+- `Correlation-Context` -provádění kolekce párů hodnot názvu vlastnosti distribuované trasování
 
 Standardní také definuje dvě schémata `Request-Id` generování - centralizovaného a hierarchického. S plochým schématu, je dobře známé `Id` definovaný pro klíč `Correlation-Context` kolekce.
 
@@ -77,11 +77,11 @@ Definuje Application Insights [rozšíření](https://github.com/lmolkova/correl
 
 [Otevřete trasování](http://opentracing.io/) a data modelů vypadá Application Insights 
 
-- `request`, `pageView` mapuje **rozpětí** s`span.kind = server`
-- `dependency`se mapuje na **rozpětí** s`span.kind = client`
-- `id`nástroje `request` a `dependency` mapuje **Span.Id**
-- `operation_Id`se mapuje na **TraceId**
-- `operation_ParentId`se mapuje na **odkaz** typu`ChildOf`
+- `request`, `pageView` mapuje **rozpětí** s `span.kind = server`
+- `dependency` se mapuje na **rozpětí** s `span.kind = client`
+- `id` nástroje `request` a `dependency` mapuje **Span.Id**
+- `operation_Id` se mapuje na **TraceId**
+- `operation_ParentId` se mapuje na **odkaz** typu `ChildOf`
 
 V tématu [datový model](application-insights-data-model.md) Application Insights typy a data modelu.
 
@@ -90,21 +90,21 @@ V tématu [specifikace](https://github.com/opentracing/specification/blob/master
 
 ## <a name="telemetry-correlation-in-net"></a>Korelace telemetrie v rozhraní .NET
 
-V čase rozhraní .NET definovány různými způsoby korelovat telemetrii a diagnostické protokoly. Je `System.Diagnostics.CorrelationManager` umožní sledovat [LogicalOperationStack a aktivity](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). `System.Diagnostics.Tracing.EventSource`a Windows ETW definovat metodu [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx). `ILogger`používá [protokolu obory](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). WCF a Http přenosová nahoru "aktuální" šíření kontextu.
+V čase rozhraní .NET definovány různými způsoby korelovat telemetrii a diagnostické protokoly. Je `System.Diagnostics.CorrelationManager` umožní sledovat [LogicalOperationStack a aktivity](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). `System.Diagnostics.Tracing.EventSource` a Windows ETW definovat metodu [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx). `ILogger` používá [protokolu obory](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). WCF a Http přenosová nahoru "aktuální" šíření kontextu.
 
-Ale tyto metody nepomohly podporu automatického distribuované trasování. `DiagnosticsSource`je způsob, jak podporují automatické mezi počítači korelace. Knihovny .NET podporuje diagnostiky zdrojů a povolit automatické mezi počítači šíření kontextu korelace prostřednictvím přenosu jako http.
+Ale tyto metody nepomohly podporu automatického distribuované trasování. `DiagnosticsSource` je způsob, jak podporují automatické mezi počítači korelace. Knihovny .NET podporuje diagnostiky zdrojů a povolit automatické mezi počítači šíření kontextu korelace prostřednictvím přenosu jako http.
 
 [Průvodce aktivity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) ve zdroji diagnostiky vysvětluje základy sledování aktivit. 
 
 Jádro ASP.NET 2.0 podporuje extrakce hlavičky protokolu Http a spuštění nové aktivity. 
 
-`System.Net.HttpClient`Počáteční verze `<fill in>` podporuje automatické vkládání korelace hlavičky protokolu Http a sledování volání protokolu http jako aktivita.
+`System.Net.HttpClient` Počáteční verze `4.1.0` podporuje automatické vkládání korelace hlavičky protokolu Http a sledování volání protokolu http jako aktivita.
 
 Je-li nový modul Http [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) pro ASP.NET Classic. Tento modul implementuje pomocí DiagnosticsSource korelace telemetrie. Spustí aktivita podle příchozí hlavičky žádosti. Korelaci také telemetrie z různých fází zpracování žádosti. I pro případy, spuštění každé fáze zpracování služby IIS na jiný spravovat vláken.
 
 Application Insights SDK počáteční verze `2.4.0-beta1` používá k shromažďování telemetrických dat a přidružte ji k aktuální aktivita DiagnosticsSource a aktivity. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Psát vlastní telemetrii](app-insights-api-custom-events-metrics.md)
 - Zařadit všechny součásti služby malých v Application Insights. Podívejte se na [podporované platformy](app-insights-platforms.md).

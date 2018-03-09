@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/13/2017
+ms.date: 03/06/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a0131fdbbf926d59eae06089cde109649a1433b8
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: e2314f589456f604c8c008e10fb8084e0524575d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Nasazení Azure Machine Learning jako modul IoT Edge – náhled
 
@@ -27,14 +27,13 @@ V tomto kurzu se naučíte:
 > * Modul služby Azure Machine Learning nasadit do zařízení IoT Edge
 > * Vygeneruje zobrazení dat
 
-Modul Azure Machine Learning, který vytvoříte v tomto kurzu čte data teploty generované zařízení a pouze pošle proti proudu zpráv do služby Azure IoT Hub, když ho předpovídá selhání (nazývané anomálií). 
-
+Modul Azure Machine Learning, který vytvoříte v tomto kurzu přečte prostředí data generována zařízení a popisků zprávy jako neobvyklé, nebo ne. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Azure IoT hraniční zařízení, který jste vytvořili v prvním kurzu nebo rychlý start.
 * Připojovací řetězec služby IoT Hub pro službu IoT hub, která zařízení IoT Edge připojí k.
-* Účet Azure Machine Learning. Chcete-li vytvořit účet, postupujte podle pokynů v [vytvořit Azure Machine Learning účtů a nainstalujte Azure Machine Learning Workbench](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-accounts). Není nutné k instalaci aplikace workbench pro účely tohoto kurzu. 
+* Účet Azure Machine Learning. Chcete-li vytvořit účet, postupujte podle pokynů v [vytvořit Azure Machine Learning účtů a nainstalujte Azure Machine Learning Workbench](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-services-accounts). Není nutné k instalaci aplikace workbench pro účely tohoto kurzu. 
 * Modul správy Azure ML na váš počítač. Nastavení prostředí a vytvoření účtu, postupujte podle pokynů v [nastavení modelu správce](https://docs.microsoft.com/azure/machine-learning/preview/deployment-setup-configuration).
 
 ## <a name="create-the-azure-ml-container"></a>Vytvoření kontejneru Azure ML
@@ -78,8 +77,8 @@ Windows:
 ## <a name="run-the-solution"></a>Spuštění řešení
 
 1. Na [portál Azure](https://portal.azure.com), přejděte do služby IoT hub.
-1. Přejděte na **IoT okraj (preview)** a vyberte zařízení IoT okraj.
-1. Vyberte **nastavit moduly**.
+1. Přejděte na **IoT Edge (preview)** a vyberte zařízení IoT Edge.
+1. Vyberte **Set modules** (Nastavit moduly).
 1. Pokud modul tempSensor jste předtím nasadili do zařízení IoT Edge, může autopopulate. Pokud již není v seznamu modulů, přidejte ji.
     1. Vyberte **přidání okraj IoT modulu**.
     2. V **název** zadejte `tempSensor`.
@@ -87,10 +86,10 @@ Windows:
     4. Vyberte **Uložit**.
 1. Přidejte strojového učení modul, který jste vytvořili.
     1. Vyberte **přidání okraj IoT modulu**.
-    1. V **název** pole, zadejte`machinelearningmodule`
+    1. V **název** pole, zadejte `machinelearningmodule`
     1. V **Image** pole, zadejte adresu bitové kopie, třeba `<registry_name>.azurecr.io/machinelearningmodule:1`.
     1. Vyberte **Uložit**.
-1. Zpět v **přidat moduly** krok, vyberte **Další**.
+1. Zpět v kroku **přidání modulů** vyberte **Další**.
 1. V **zadejte trasy** kroku, zkopírujte do textového pole JSON níže. První trasa je určena k přenosu zprávy teplotní snímač machine learning module prostřednictvím koncového bodu "amlInput", což je koncový bod, který použít všechny moduly Azure Machine Learning. Druhá trasa je určena k přenosu zpráv z modulu learning počítač do služby IoT Hub. V této trase '' amlOutput'' je koncový bod, který všechny moduly Azure Machine Learning pomocí výstupní data a '' proti proudu$ "označuje IoT Hub. 
 
     ```json
@@ -102,13 +101,13 @@ Windows:
     }
     ``` 
 
-1. Vyberte **Další**. 
-1. V **šablona kontrolní** krok, vyberte **odeslání**. 
-1. Vraťte se na stránce s podrobnostmi o zařízení a vyberte **aktualizovat**.  Byste měli vidět, že se vám nové **machinelearningmodule** společně s **tempSensor** modulu a moduly runtime IoT okraj.
+1. Vyberte **Next** (Další). 
+1. V kroku **kontroly šablony** vyberte **Submit** (Odeslat). 
+1. Vraťte se na obrazovku podrobností o zařízení a zvolte **Refresh** (Obnovit).  Byste měli vidět, že se vám nové **machinelearningmodule** společně s **tempSensor** modulu a moduly runtime IoT okraj.
 
 ## <a name="view-generated-data"></a>Vygeneruje zobrazení dat
 
-Můžete zobrazit zprávy typu zařízení cloud, které zařízení IoT Edge odešle pomocí rozšíření Azure IoT nástrojů pro Visual Studio Code. 
+Můžete zobrazit zprávy typu zařízení cloud, které zařízení IoT Edge odešle pomocí [IoT Hub explorer](https://github.com/azure/iothub-explorer) nebo rozšíření Azure IoT nástrojů pro Visual Studio Code. 
 
 1. V sadě Visual Studio Code vyberte **zařízení IoT Hub**. 
 2. Vyberte **...**  vyberte **nastavit připojovací řetězec centra IoT** z nabídky. 
@@ -117,7 +116,7 @@ Můžete zobrazit zprávy typu zařízení cloud, které zařízení IoT Edge od
 
 3. Do textového pole, které se otevře v horní části stránky zadejte iothubowner připojovací řetězec služby IoT hub. Zařízení IoT okraj by měl zobrazit v seznamu zařízení IoT Hub.
 4. Vyberte **...**  znovu vyberte **začít monitorovat D2C zpráva**.
-5. Podívejte se na zprávy přicházející z tempSensor každých pět sekund, které machinelearningmodule připojí s jeho hodnocení stavu zařízení. 
+5. Podívejte se na zprávy přicházející z tempSensor každých pět sekund. Tělo zprávy obsahuje vlastnost s názvem **anomálií** které machinelearningmodule poskytuje hodnotu true nebo false. **AzureMLResponse** vlastnost obsahuje hodnotu "OK", pokud model proběhla úspěšně. 
 
    ![Azure ML odpovědi do těla zprávy](./media/tutorial-deploy-machine-learning/ml-output.png)
 

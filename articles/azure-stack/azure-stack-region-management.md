@@ -3,8 +3,8 @@ title: "Oblast správy v zásobníku Azure | Microsoft Docs"
 description: "Přehled správy oblast v zásobníku Azure."
 services: azure-stack
 documentationcenter: 
-author: efemmano
-manager: dsavage
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: e94775d5-d473-4c03-9f4e-ae2eada67c6c
 ms.service: azure-stack
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: efemmano
-ms.openlocfilehash: d1310f0cb9a820366ab8712a782785e955a24134
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/27/2018
+ms.author: brenduns
+ms.reviewer: efemmano
+ms.openlocfilehash: 0a19490ce276eec9a46bc0ea4343e3449a9dc93c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="region-management-in-azure-stack"></a>Oblast správy v Azure zásobníku
 
@@ -41,19 +42,13 @@ Obsahuje sadu oblast možnosti správy, které jsou dostupné v Azure zásobník
 
 2. **Výstrahy**. Tuto dlaždici uvádí systémové výstrahy a poskytuje podrobné informace o každé z těchto výstrah.
 
-3. **Aktualizace**. Na této dlaždici můžete zobrazit aktuální verzi vaší infrastruktury Azure zásobníku.
+3. **Aktualizace**. Na této dlaždici můžete zobrazit aktuální verzi vaší infrastruktury Azure zásobníku, dostupné aktualizace a aktualizace historie. Můžete také aktualizovat integrovaný systém.
 
-4. **Zprostředkovatelé prostředků**. Zprostředkovatelé prostředků je místo pro správu klienta funkce nabízené komponenty potřebné ke spuštění zásobník Azure. Každý poskytovatel prostředků se dodává s správu prostředí. Toto prostředí může zahrnovat výstrahy pro konkrétního poskytovatele, metriky a dalším funkcím správy specifické pro poskytovatele prostředků.
- 
-5. **Role infrastruktury**. Role infrastruktury jsou komponenty potřebné ke spuštění zásobník Azure. Jsou uvedeny pouze role infrastruktury, které sestavy výstrahy. Kliknutím na roli, můžete zobrazit výstrahy spojené s konkrétní roli a instance rolí, kde je spuštěna tato role. I když je možnost spustit, restartovat, nebo vypnout instanci role infrastruktury, proveďte **není** to provést ve vývojovém prostředí sady. Tyto možnosti jsou určeny pouze pro prostředí s několika uzly, kde existuje více než jedna instance role na role infrastruktury. Restartování instance role (zejména AzS-Xrp01) v sadě pro vývoj způsobí, že nestabilitě systému.
+4. **Zprostředkovatelé prostředků**. Zprostředkovatelé prostředků je místo, ke správě uživatele funkce nabízené komponenty potřebné ke spuštění zásobník Azure. Každý poskytovatel prostředků se dodává s správu prostředí. Toto prostředí může zahrnovat výstrahy pro konkrétního poskytovatele, metriky a dalším funkcím správy specifické pro poskytovatele prostředků.
 
-## <a name="next-steps"></a>Další kroky
+5. **Role infrastruktury**. Role infrastruktury jsou komponenty potřebné ke spuštění zásobník Azure. Jsou uvedeny pouze role infrastruktury, které sestavy výstrahy. Kliknutím na roli, můžete zobrazit výstrahy spojené s konkrétní roli a instance rolí, kde je spuštěna tato role.
+
+## <a name="next-steps"></a>Další postup
 [Sledování stavu a výstrahy v Azure zásobníku](azure-stack-monitor-health.md)
 
 [Správa aktualizací v Azure zásobníku](azure-stack-updates.md)
-
-
-
-
-
-

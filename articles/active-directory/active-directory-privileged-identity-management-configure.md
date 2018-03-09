@@ -3,7 +3,7 @@ title: Konfigurovat Azure AD Privileged Identity Management | Microsoft Docs
 description: "Téma, které vysvětluje, co je Azure AD Privileged Identity managementu a jak používat PIM k zlepšují zabezpečení vašeho cloudu."
 services: active-directory
 documentationcenter: 
-author: barclayn
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: c548ed2e-06e3-4eaf-a63d-0f02ee72da25
@@ -12,21 +12,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
-ms.author: barclayn
+ms.date: 03/07/2018
+ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 94855cf102764532fa0a6718541beffe93230fd1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 827e3521be8918f4de00113fd9eaf4e01679cac5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
 Pomocí aplikace Azure Active Directory (AD) Privileged Identity Management můžete spravovat, řídit a sledovat přístup v rámci organizace. Sem patří přístup k prostředkům ve službě Azure AD, prostředky Azure (Preview), a dalších služeb Microsoft Online Services, jako jsou Office 365 nebo Microsoft Intune.
 
 > [!NOTE]
-> Správa privilegovaných identit je dostupná pro celou organizaci, když licence správce s na edici Premium P2 služby Azure Active Directory. Další informace najdete v článku [Edice služby Azure Active Directory](active-directory-editions.md).
+> Když povolíte Privileged Identity Management pro tenanta, platný P2 Azure AD Premium nebo Enterprise Mobility + Security E5 placené nebo zkušební licence se vyžaduje pro každého uživatele, který komunikuje se službou nebo dávku obdrží od služby. Mezi příklady patří uživatelé/v > skupinu, která jsou:
+>
+>- Přiřazeny k roli správce privilegovaných rolí 
+>- Přiřadit jako vhodné pro jiné role directory spravovat pomocí PIM 
+>- Možnost schválit nebo zamítnout požadavky v PIM 
+>- Přiřazení k roli prostředků Azure s pouze v čas nebo přímé přiřazení (na základě čas)  
+>- Přiřazené kontrola přístupu
+>
+>Další informace najdete v článku [Edice služby Azure Active Directory](active-directory-editions.md).
 
 Organizace chcete minimalizovat počet lidí, kteří mají přístup zabezpečit informace nebo prostředky, protože, sníží se tím možnost uživatel se zlými úmysly získávání tento přístup nebo oprávněný uživatel nechtěně, které mají vliv citlivých prostředků.  Ale uživatelé stále muset provádět privilegované operace ve službě Azure AD, Azure, Office 365 nebo SaaS aplikace. Organizace může poskytnout privilegovaného přístupu uživatelů k prostředků Azure stejně jako odběry a Azure AD. Je třeba pro dohledu pro tyto činnosti uživatelů s jejich oprávněními správce. Azure AD Privileged Identity Management pomáhá zmírnit riziko nadměrné, nepotřebné nebo došlo ke zneužití přístupová práva.
 
@@ -54,7 +62,7 @@ Můžete začít používat Azure AD Privileged Identity Management [portál Azu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce adresáře.
 2. Pokud má vaše organizace víc než jeden adresář, vyberte své uživatelské jméno v pravém horním rohu webu Azure Portal. Vyberte adresář, kde budete používat Azure AD Privileged Identity Management.
-3. Vyberte **všechny služby** a pomocí textového pole filtru k vyhledání **Azure AD Privileged Identity Management**.
+3. Vyberte **Všechny služby** a pomocí textového pole Filtr najděte **Azure AD Privileged Identity Management**.
 4. Zaškrtněte **Připnout na řídicí panel** a potom klikněte na **Vytvořit**. Aplikace Privileged Identity Management se otevře.
 
 Pokud jste první, kdo použít Azure AD Privileged Identity Management ve vašem adresáři a přejděte do role adresář Azure AD a přejděte do role adresář Azure AD, [Průvodce zabezpečení](active-directory-privileged-identity-management-security-wizard.md) vás provede počáteční přiřazení prostředí. Následně se automaticky stane první **správce zabezpečení** a **správce privilegovaných rolí** adresáře.

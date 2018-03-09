@@ -3,7 +3,7 @@ title: "Správa účtů úložiště Azure zásobníku | Microsoft Docs"
 description: "Zjistěte, jak hledat, spravovat, obnovit a získat účty úložiště Azure zásobníku"
 services: azure-stack
 documentationcenter: 
-author: brenduns
+author: mattbriggs
 manager: femila
 editor: 
 ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 4/6/2017
-ms.author: brenduns
+ms.date: 02/22/2018
+ms.author: mabrigg
 ms.reviewer: anirudha
-ms.openlocfilehash: 3ef9a66095d0ed5fc865dc3c22961f9f7bdcedd9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 395cd113e21bf747c796ff28026f552f30656b47
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Správa účtů úložiště v Azure zásobníku
 Zjistěte, jak chcete spravovat účty úložiště v Azure zásobníku najít, obnovit a opětovné využití kapacity úložiště na základě obchodních potřeb.
@@ -29,13 +29,13 @@ Seznam účtů úložiště v oblasti lze zobrazit v zásobníku Azure podle:
 
 1. V internetovém prohlížeči přejděte do https://adminportal.local.azurestack.external.
 2. Přihlaste se k portálu pro správu Azure zásobníku jako operátor cloudu (pomocí přihlašovacích údajů, které jste zadali při nasazení)
-3. Na řídicím panelu Výchozí – najít **oblast správy** seznamu a klikněte na tlačítko oblasti, které chcete prozkoumat. Například **(místní**).
+3. Na řídicím panelu Výchozí – najít **oblast správy** seznamu a klikněte na tlačítko oblasti, které chcete prozkoumat, například **(místní**).
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
 4. Vyberte **úložiště** z **zprostředkovatelé prostředků** seznamu.
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. Nyní, v okně Správce poskytovatele prostředků úložiště – přejděte dolů na **účty úložiště** kartě a klikněte na něj.
+5. Nyní, v podokně Správce poskytovatele prostředků úložiště – přejděte dolů na **účty úložiště** kartě a klikněte na něj.
    
    ![](media/azure-stack-manage-storage-accounts/image3.png)
    
@@ -52,34 +52,34 @@ Pokud vás zajímají konkrétní účet úložiště – můžete **filtrovat a
 
 **Chcete-li filtrovat účty:**
 
-1. Klikněte na tlačítko **filtru** v horní části okna.
-2. V okně filtru umožňuje, abyste zadali **název účtu**, **ID předplatného** nebo **stav** a systém doladit seznam účtů úložiště, který se má zobrazit. Použijte je podle potřeby.
+1. Klikněte na tlačítko **filtru** v horní části podokna.
+2. V podokně filtru umožňuje, abyste zadali **název účtu**, ** ID předplatného, nebo **stav** a systém doladit seznam účtů úložiště, který se má zobrazit. Použijte je podle potřeby.
 3. Klikněte na tlačítko **aktualizace**. V seznamu by měl aktualizovat odpovídajícím způsobem.
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
 4. Chcete-li obnovit filtr: klikněte na tlačítko **filtru**, vymažte výběr a aktualizovat.
 
-Do vyhledávacího pole text (nahoře v okně seznam účtů úložiště) umožňuje zvýrazněte v seznamu účtů vybraný text. To je opravdu užitečné v případě, když úplný název nebo id není snadno dostupné.
+Do vyhledávacího pole text (horní podokno seznam účtů úložiště) umožňuje zvýrazněte v seznamu účtů vybraný text. To můžete použít, pokud úplný název nebo ID není snadno dostupné.
 
 Můžete zde volné vám pomohou najít účet, který vás zajímá.
 
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>Podívejte se na podrobnosti o účtu
-Po vyhledání účty, že máte zájem zobrazení, klikněte na tlačítko konkrétní účet, který chcete zobrazit některé podrobnosti. Otevře se nové okno s podrobnostmi o účtu, jako: typ účtu, čas vytvoření, umístění atd.
+Po vyhledání účty, že máte zájem zobrazení, klikněte na tlačítko konkrétní účet, který chcete zobrazit některé podrobnosti. Nové podokno otevře s podrobnostmi o účtu, jako: typ účtu, čas vytvoření, umístění atd.
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
 ## <a name="recover-a-deleted-account"></a>Obnovení odstraněného účtu
 Může být v situaci, kdy potřebujete obnovit odstraněného účtu.
 
-V zásobníku Azure je velmi jednoduchý způsob, jak to udělat:
+V zásobníku Azure je jednoduchý způsob, jak to udělat:
 
 1. Přejděte do seznamu účtů úložiště. V tématu [Najít účet úložiště](#find) v tomto tématu pro další informace.
 2. V seznamu vyhledejte konkrétního účtu. Můžete filtrovat.
 3. Zkontrolujte *stavu* účtu. By mělo být uvedeno **odstraněné**.
-4. Klikněte na účet, který se otevře okno Podrobnosti účtu.
-5. V tomto okně vyhledejte **obnovit** tlačítko a klikněte na něj.
+4. Klikněte na účet, který se otevře v podokně podrobností účtu.
+5. V tomto podokně vyhledejte **obnovit** tlačítko a klikněte na něj.
 6. Pro potvrzení klikněte na tlačítko **Ano**.
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
@@ -93,10 +93,10 @@ V zásobníku Azure je velmi jednoduchý způsob, jak to udělat:
 ### <a name="some-gotchas"></a>Některé Gotchas
 * Odstraněného účtu ukazuje stav jako **mimo uchování**.
   
-  To znamená, že byla překročena doba uchování odstraněného účtu a pravděpodobně nebude použitelná pro obnovení.
+  Mimo znamená uchování, odstraněného účtu byla překročena doba uchování a nemusí být použitelná pro obnovení.
 * Odstraněného účtu se nezobrazuje v seznamu účtů.
   
-  To může znamenat, že odstraněného účtu je již uvolnění z paměti. V tomto případě nelze obnovit. V tématu [opětovné využití kapacity](#reclaim) v tomto tématu.
+  Účet je nemusí zobrazit v seznamu účet při odstraněného účtu již bylo uvolnění z paměti. V takovém případě nelze obnovit. V tématu [opětovné využití kapacity](#reclaim) v tomto tématu.
 
 ## <a name="set-the-retention-period"></a>Nastavit dobu uchování.
 Nastavení doby uchování umožňuje operátor cloudu k zadejte časové období ve dnech (0 až 9 999 dnů), během které potenciálně lze obnovit všechny odstraněné účtu. Výchozí dobu uchování nastavena do 15 dnů. Nastavení hodnoty "0" znamená, že všechny odstraněné účet je okamžitě mimo uchovávání a označen pro pravidelné uvolňování paměti.
@@ -107,7 +107,7 @@ Nastavení doby uchování umožňuje operátor cloudu k zadejte časové obdob�
 2. Přihlaste se k portálu pro správu Azure zásobníku jako operátor cloudu (pomocí přihlašovacích údajů, které jste zadali při nasazení)
 3. Na řídicím panelu Výchozí – najít **oblast správy** seznamu a klikněte na tlačítko oblasti, které chcete prozkoumat – například **(místní**).
 4. Vyberte **úložiště** z **zprostředkovatelé prostředků** seznamu.
-5. Klikněte na tlačítko **nastavení** v horní části otevřete okno nastavení.
+5. Klikněte na tlačítko **nastavení** v horní části a otevřete podokno nastavení.
 6. Klikněte na tlačítko **konfigurace** pak upravte hodnotu doby uchování.
 
    Nastavte počet dní a pak ho uložte.
@@ -122,8 +122,8 @@ Jedním z důsledky straně s dobou uchování je, že odstraněného účtu nad
 Můžete získat kapacity buď pomocí portálu nebo pomocí prostředí PowerShell.
 
 **Pro opětovné využití kapacity pomocí portálu:**
-1. Přejděte do okna účty úložiště. V tématu [Najít účet úložiště](#find).
-2. Klikněte na tlačítko **uvolnění místa** v horní části okna.
+1. Přejděte do podokna účty úložiště. V tématu [Najít účet úložiště](#find).
+2. Klikněte na tlačítko **uvolnění místa** v horní části podokna.
 3. Tuto zprávu přečíst a pak klikněte na **OK**.
 
     ![](media/azure-stack-manage-storage-accounts/image11.png)
@@ -142,13 +142,13 @@ Můžete také pomocí prostředí PowerShell explicitně přepsat dobu uchován
 2. Spusťte následující rutinu:
 
 > [!NOTE]
-> Pokud spustíte tuto rutinu je trvale odstranit účet a její obsah. Není použitelná pro obnovení. Použijte dát pozor.
+> Pokud tuto rutinu spustit, trvale odstraníte účet a její obsah. Není použitelná pro obnovení. Použijte dát pozor.
 
 
         Clear-ACSStorageAccount -ResourceGroupName system.local -FarmName <farm ID>
 
 
-Další podrobnosti najdete v části [zásobník Azure powershell dokumentaci.](https://msdn.microsoft.com/library/mt637964.aspx)
+Další informace najdete v tématu [zásobník Azure powershell dokumentaci.](https://msdn.microsoft.com/library/mt637964.aspx)
  
 
 ## <a name="migrate-a-container"></a>Migrace kontejner
@@ -187,7 +187,7 @@ Musíte použít PowerShell k migraci kontejnery.
     `$destinationshares`
 
     ![](media/azure-stack-manage-storage-accounts/image14.png)
-6. Ji migrace pro kontejner, Všimněte si, že toto je implementaci asynchronní, takže jeden cykly všechny kontejnery ve sdílené složce a sledovat stav pomocí id vrácený úlohy.
+6. Ji migrace pro kontejner, Všimněte si, že toto je implementaci asynchronní, takže jeden cykly všechny kontejnery ve sdílené složce a sledovat stav pomocí ID vrácený úlohy.
 
     `$jobId = Start-ACSContainerMigration -ResourceGroupName system.local -FarmName $farm.farmname -ContainerToMigrate $containers[1] -DestinationShareUncPath $destinationshares.UncPath`
 
@@ -197,7 +197,7 @@ Musíte použít PowerShell k migraci kontejnery.
    $jobId
    d1d5277f-6b8d-4923-9db3-8bb00fa61b65
    ```
-7. Zkontrolujte stav úlohy migrace pomocí jejího id úlohy. Po dokončení migrace kontejneru MigrationStatus nastavena na "Dokončeno".
+7. Zkontrolujte stav úlohy migrace podle jeho ID úlohy. Po dokončení migrace kontejneru MigrationStatus je nastaven na "Dokončeno".
 
     `Get-ACSContainerMigrationStatus -ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
 
@@ -209,7 +209,7 @@ Musíte použít PowerShell k migraci kontejnery.
 
     ![](media/azure-stack-manage-storage-accounts/image16.png)
 
-    Můžete znovu zkontrolujte stav Storno migrace:
+    Můžete zkontrolovat, že se stavy migrace zrušit znovu:
 
     `Get-ACSContainerMigrationStatus-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
 

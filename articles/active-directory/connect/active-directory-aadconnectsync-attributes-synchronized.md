@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 03/05/2018
 ms.author: billmath
-ms.openlocfilehash: 1d935b73e1087d5ad858bdbee9af68dd1cf5cd1e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d3c1c080c1198fd75916a119d4bb08c8db50a05d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace Azure AD Connect: atributy se synchronizují do Azure Active Directory
 Toto téma obsahuje seznam atributy, které jsou synchronizovány pomocí synchronizace Azure AD Connect.  
@@ -83,11 +83,11 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | givenName |X |X | | |
 | Telefon domů |X |X | | |
 | Informace o |X |X |X |Tento atribut není aktuálně využité pro skupiny. |
-| Iniciály |X |X | | |
+| iniciály |X |X | | |
 | l |X |X | | |
 | legacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
-| Spravované | | |X | |
+| managedBy | | |X | |
 | Správce |X |X | | |
 | Člen | | |X | |
 | mobilní |X |X | | |
@@ -211,7 +211,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | l |X |X | | |
 | mail |X |X |X | |
 | mailnickname |X |X |X | |
-| Spravované | | |X | |
+| managedBy | | |X | |
 | Správce |X |X | | |
 | Člen | | |X | |
 | middleName |X |X | | |
@@ -271,7 +271,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | l |X |X | | |
 | mail |X |X |X | |
 | mailNickname |X |X |X | |
-| Spravované | | |X | |
+| managedBy | | |X | |
 | Správce |X |X | | |
 | Člen | | |X | |
 | mobilní |X |X | | |
@@ -351,7 +351,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | l |X |X | | |
-| Spravované | | |X | |
+| managedBy | | |X | |
 | Správce |X |X | | |
 | Člen | | |X | |
 | mobilní |X |X | | |
@@ -385,7 +385,7 @@ Tato skupina je sada atributů, které lze použít, pokud adresář Azure AD se
 | displayName |X |X |X | |
 | givenName |X |X | | |
 | mail |X | |X | |
-| Spravované | | |X | |
+| managedBy | | |X | |
 | mailNickName |X |X |X | |
 | Člen | | |X | |
 | objectSID |X | | |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
@@ -421,17 +421,17 @@ Tyto atributy pro **uživatele** jsou kromě dalších aplikací, které jste vy
 ## <a name="exchange-hybrid-writeback"></a>Zpětný zápis hybridní Exchange
 Tyto atributy se zapisují zpět z Azure AD do místní služby Active Directory při výběru povolit **Exchange hybridní**. V závislosti na vaší verzi Exchange méně atributy synchronizováni.
 
-| Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
-| --- |:---:|:---:|:---:| --- |
-| msDS-ExternalDirectoryObjectID |X | | |Odvozená od cloudAnchor ve službě Azure AD. Tento atribut je nového v Exchange 2016 a Windows Server 2016 AD. |
-| msExchArchiveStatus |X | | |Online archivu: Umožňuje zákazníkům k archivaci e-mailu. |
-| msExchBlockedSendersHash |X | | |Filtrování: Zapíše místní filtrování a online bezpečné a blokovaných odesílatele data od klientů. |
-| msExchSafeRecipientsHash |X | | |Filtrování: Zapíše místní filtrování a online bezpečné a blokovaných odesílatele data od klientů. |
-| msExchSafeSendersHash |X | | |Filtrování: Zapíše místní filtrování a online bezpečné a blokovaných odesílatele data od klientů. |
-| msExchUCVoiceMailSettings |X | | |Povolit Unified Messaging (UM) – Online hlasová pošta: Microsoft Lync Server používá integrace a informuje Lync serveru místní, že má uživatel hlasová pošta v online službách. |
-| msExchUserHoldPolicies |X | | |Uchování soudního sporu: Umožňuje cloudové služby k určení uživatelů, kteří jsou pod uložení soudního sporu. |
-| proxyAddresses |X |X |X |Pouze x500 vloží adresu z Exchange Online. |
-| publicDelegates |X | | |Umožňuje poštovní schránku systému Exchange Online k udělení oprávnění SendOnBehalfTo uživatelům s místní poštovní schránka systému Exchange. Vyžaduje Azure AD Connect sestavení 1.1.552.0 nebo po. |
+| Atribut Name (připojit uživatelského rozhraní) |Atribut Name (místní AD) | Uživatel | Kontakt | Skupina | Poznámka |
+| --- |:---:|:---:|:---:| --- |---|
+| msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Odvozená od cloudAnchor ve službě Azure AD. Tento atribut je nového v Exchange 2016 a Windows Server 2016 AD. |
+| msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Online archivu: Umožňuje zákazníkům k archivaci e-mailu. |
+| msExchBlockedSendersHash| ms-Exch-BlockedSendersHash |X | | |Filtrování: Zapíše místní filtrování a online bezpečné a blokovaných odesílatele data od klientů. |
+| msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |Filtrování: Zapíše místní filtrování a online bezpečné a blokovaných odesílatele data od klientů. |
+| msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |Filtrování: Zapíše místní filtrování a online bezpečné a blokovaných odesílatele data od klientů. |
+| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Povolit Unified Messaging (UM) – Online hlasová pošta: Microsoft Lync Server používá integrace a informuje Lync serveru místní, že má uživatel hlasová pošta v online službách. |
+| msExchUserHoldPolicies| ms-Exc-hUserHoldPolicies |X | | |Uchování soudního sporu: Umožňuje cloudové služby k určení uživatelů, kteří jsou pod uložení soudního sporu. |
+| proxyAddresses| proxyAddresses |X |X |X |Pouze x500 vloží adresu z Exchange Online. |
+| publicDelegates| ms-Exch-Public-Delegates  |X | | |Umožňuje poštovní schránku systému Exchange Online k udělení oprávnění SendOnBehalfTo uživatelům s místní poštovní schránka systému Exchange. Vyžaduje Azure AD Connect sestavení 1.1.552.0 nebo po. |
 
 ## <a name="exchange-mail-public-folder"></a>Veřejné složky e-mailu Exchange
 Tyto atributy se synchronizují z místní služby Active Directory do Azure AD, když vyberete volbu Povolit **veřejné složky e-mailu Exchange**.

@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 02/22/2018
 ms.author: anoopkv
 ms.openlocfilehash: 6c29ac32cb868cfdd72479add551cece266a5f9d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>Nastavení prostředí pro zdroj (fyzického serveru do Azure)
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Následující tabulka uvádí minimální hardwaru, softwaru a požadavky sít�
   ![Nastavení zdroje](./media/site-recovery-set-up-physical-to-azure/plus-config-srv.png)
 2. V **přidat Server** okno, zkontrolujte, zda **konfigurační Server** se zobrazí v **typ serveru**.
 4. Stáhněte instalační soubor nástroje Unified instalace nástroje Site Recovery.
-5. Stáhnout registrační klíč trezoru Když spustíte instalační program Unified musíte registrační klíč. Klíč je platný pět dní od jeho vygenerování.
+5. Stáhněte registrační klíč trezoru. Když spustíte instalační program Unified musíte registrační klíč. Klíč je platný pět dní od jeho vygenerování.
 
     ![Nastavení zdroje](./media/site-recovery-set-up-physical-to-azure/set-source2.png)
 6. Na počítači, který používáte jako konfigurační server, spusťte **Unified instalace nástroje Azure Site Recovery** instalace konfigurační server, procesový server a hlavní cílový server.

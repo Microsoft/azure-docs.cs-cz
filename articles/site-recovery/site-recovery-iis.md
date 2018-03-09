@@ -2,25 +2,19 @@
 title: "Replikovat vícevrstvé založené na službě IIS webové aplikace pomocí Azure Site Recovery | Microsoft Docs"
 description: "Zjistěte, jak k replikaci adresáře služby IIS webové farmy virtuálních počítačů pomocí Azure Site Recovery."
 services: site-recovery
-documentationcenter: 
 author: nsoneji
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/05/2018
 ms.author: nisoneji
-ms.openlocfilehash: a4a8ea14fecac73b187c9c7d3f9ca318bb2671c5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1ed0184ac76b5fb3e607458559327da5e8fe90c5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="replicate-a-multi-tier-iis-based-web-application-by-using-site-recovery"></a>Pomocí Site Recovery replikovat na bázi služby IIS, vícevrstvé webové aplikace
+# <a name="replicate-a-multi-tier-iis-based-web-application"></a>Replikovat vícevrstvé webové aplikace využívající službu IIS
 
 Software, aplikace je modul produktivitu v organizaci. Různé webových aplikací můžete v organizaci slouží k jiným účelům. Některé aplikace, jako je aplikací používaných pro zpracování mzdy, finanční aplikace a weby zákazníkem, může být důležité pro organizaci. Chcete-li zabránit ke snížení produktivity, je důležité pro organizaci tyto aplikace nepřetržitě nahoru a spuštěná. Je důležité nutnosti tyto aplikace konzistentní dostupnost můžete zabránit poškození brand nebo bitové kopie organizace.
 
@@ -36,7 +30,7 @@ Tento článek popisuje, jak chránit webové aplikace, která je založena na I
 
 Než začnete, ujistěte se, že budete vědět, jak provést tyto úlohy:
 
-* [Replikace virtuálního počítače do Azure](site-recovery-vmware-to-azure.md)
+* [Replikace virtuálního počítače do Azure](vmware-azure-tutorial.md)
 * [Návrh k síti pro obnovení](site-recovery-network-design.md)
 * [Provést testovací převzetí služeb Azure](site-recovery-test-failover-to-azure.md)
 * [Proveďte převzetí služeb při selhání do Azure](site-recovery-failover.md)
@@ -75,7 +69,7 @@ Azure|Není k dispozici|Ano
 
 Pokud chcete spustit všechny služby IIS webové farmy virtuální počítače replikující se do Azure, postupujte podle pokynů v [testovací převzetí služeb při selhání do Azure ve službě Site Recovery](site-recovery-test-failover-to-azure.md).
 
-Pokud používáte statickou IP adresu, můžete zadat IP adresu, kterou chcete virtuální počítač tak, aby. Chcete-li nastavit adresu IP, přejděte na **výpočty a síť nastavení** > [**CÍLOVÁ IP adresa**](./site-recovery-replicate-vmware-to-azure.md#view-and-manage-vm-properties).
+Pokud používáte statickou IP adresu, můžete zadat IP adresu, kterou chcete virtuální počítač tak, aby. Chcete-li nastavit adresu IP, přejděte na **výpočty a síť nastavení** > **CÍLOVÁ IP adresa**.
 
 ![Snímek obrazovky, který ukazuje, jak nastavit cílová IP adresa v podokně výpočetní obnovení lokality a sítě](./media/site-recovery-active-directory/dns-target-ip.png)
 

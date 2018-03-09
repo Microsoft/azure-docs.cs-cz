@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 2a6fe85c2c3d6d4f44dc197db6c28ebbc2b1d431
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a1ffd9311f6ff171502efe64557463abc49ad636
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Aktivační událost mřížky pro Azure Functions
 
@@ -33,7 +33,17 @@ Pokud dáváte přednost, můžete použít aktivační událost INSTEAD HTTP ke
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="example"></a>Příklad
+## <a name="packages"></a>Balíčky
+
+Je součástí aktivační událost mřížky [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) balíček NuGet. Zdrojový kód pro balíček je v [azure funkce eventgrid rozšíření](https://github.com/Azure/azure-functions-eventgrid-extension) úložiště GitHub.
+
+Balíček se používá pro [vývoj knihovny tříd jazyka C#](functions-triggers-bindings.md#local-c-development-using-visual-studio-or-vs-code) a [funkce registrace rozšíření vazby v2](functions-triggers-bindings.md#local-development-azure-functions-core-tools).
+
+<!--
+If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` type instead of `JObject`, install the [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) package.
+-->
+
+## <a name="example"></a>Příklad:
 
 Podívejte se na příklad konkrétní jazyk pro aktivační procedury mřížky událostí:
 
@@ -45,24 +55,58 @@ Příklad aktivace protokolu HTTP, naleznete v části [použití triggeru proto
 
 ### <a name="c-example"></a>Příklad jazyka C#
 
-Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , některá pole, které jsou společné pro všechny události a všechna data událostí specifické protokoly.
+Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) která sváže `JObject`:
 
 ```cs
-[FunctionName("EventGridTest")]
-public static void EventGridTest([EventGridTrigger] EventGridEvent eventGridEvent, TraceWriter log)
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace Company.Function
 {
-    log.Info("C# Event Grid function processed a request.");
-    log.Info($"Subject: {eventGridEvent.Subject}");
-    log.Info($"Time: {eventGridEvent.EventTime}");
-    log.Info($"Data: {eventGridEvent.Data.ToString()}");
+    public static class EventGridTriggerCSharp
+    {
+        [FunctionName("EventGridTriggerCSharp")]
+        public static void Run([EventGridTrigger]JObject eventGridEvent, TraceWriter log)
+        {
+            log.Info(eventGridEvent.ToString(Formatting.Indented));
+        }
+    }
 }
 ```
 
-`EventGridTrigger` Atributu je definována v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid).
+<!--
+The following example shows a [C# function](functions-dotnet-class-library.md) that binds to `EventGridEvent`:
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+
+namespace Company.Function
+{
+    public static class EventGridTriggerCSharp
+    {
+        [FunctionName("EventGridTest")]
+            public static void EventGridTest([EventGridTrigger] Microsoft.Azure.EventGrid.Models.EventGridEvent eventGridEvent, TraceWriter log)
+        {
+            log.Info("C# Event Grid function processed a request.");
+            log.Info($"Subject: {eventGridEvent.Subject}");
+            log.Info($"Time: {eventGridEvent.EventTime}");
+            log.Info($"Data: {eventGridEvent.Data.ToString()}");
+        }
+    }
+}
+```
+-->
+
+Další informace najdete v tématu [balíčky](#packages), [atributy](#attributes), [konfigurace](#configuration), a [využití](#usage).
 
 ### <a name="c-script-example"></a>Příklad skriptu jazyka C#
 
-Následující příklad ukazuje, aktivační události vazby v *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce zaznamená některá pole, které jsou společné pro všechny události a všechna data událostí specifické.
+Následující příklad ukazuje, aktivační události vazby v *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -79,12 +123,30 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-Tady je kód skriptu jazyka C#:
+Zde je kód C# skript s vazbou na `JObject`:
+
+```cs
+#r "Newtonsoft.Json"
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject eventGridEvent, TraceWriter log)
+{
+    log.Info(eventGridEvent.ToString(Formatting.Indented));
+}
+```
+
+<!--
+Here's C# script code that binds to `EventGridEvent`:
 
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.Azure.WebJobs.Extensions.EventGrid"
+#r "Microsoft.Azure.EventGrid"
+
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+Using Microsoft.Azure.EventGrid.Models;
 
 public static void Run(EventGridEvent eventGridEvent, TraceWriter log)
 {
@@ -94,10 +156,13 @@ public static void Run(EventGridEvent eventGridEvent, TraceWriter log)
     log.Info($"Data: {eventGridEvent.Data.ToString()}");
 }
 ```
+-->
+
+Další informace najdete v tématu [balíčky](#packages), [atributy](#attributes), [konfigurace](#configuration), a [využití](#usage).
 
 ### <a name="javascript-example"></a>Příklad v jazyce JavaScript
 
-Následující příklad ukazuje, aktivační události vazby v *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce zaznamená některá pole, které jsou společné pro všechny události a všechna data událostí specifické.
+Následující příklad ukazuje, aktivační události vazby v *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -128,13 +193,13 @@ module.exports = function (context, eventGridEvent) {
      
 ## <a name="attributes"></a>Atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/EventGridTriggerAttribute.cs) definován v balíčku NuGet atribut [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/EventGridTriggerAttribute.cs) atribut.
 
 Tady je `EventGridTrigger` atribut v podpis metody:
 
 ```csharp
 [FunctionName("EventGridTest")]
-public static void EventGridTest([EventGridTrigger] EventGridEvent eventGridEvent, TraceWriter log)
+public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, TraceWriter log)
 {
     ...
 }
@@ -154,7 +219,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="usage"></a>Využití
 
-Pro funkce C# a F # deklarovat typ aktivační událost vstupu jako `EventGridEvent` nebo vlastního typu. Pro vlastní typ Functions runtime pokusí analyzovat události JSON a nastavte vlastnosti objektu.
+Pro C# a F # funkce můžete použít následující typy parametrů pro aktivační událost mřížky událostí:
+
+* `JObject`
+* `string`
+* `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`-Definuje vlastnosti pro pole, které jsou společné pro všechny typy událostí. **Tento typ je zastaralý**, ale jeho náhrada není dosud publikován na NuGet.
 
 Pro funkce jazyka JavaScript, parametr s názvem podle *function.json* `name` vlastnost obsahuje odkaz na objekt události.
 
@@ -315,7 +384,7 @@ Pomocí některého nástroje, jako například [Postman](https://www.getpostman
 * POST na adresu URL funkce aktivační událost mřížky, pomocí následujícího vzorce:
 
 ```
-http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={methodname}
+http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
 
 `functionName` Parametr musí být název zadaný v `FunctionName` atribut.
@@ -376,7 +445,7 @@ Adresa URL ngrok není získat zvláštní zpracování podle událostí mříž
 Vytvoření předplatné mřížky události typu, který chcete testovat a pojmenujte ho váš koncový bod ngrok, pomocí následujícího vzorce:
 
 ```
-https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={methodname}
+https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
 
 `functionName` Parametr musí být název zadaný v `FunctionName` atribut.

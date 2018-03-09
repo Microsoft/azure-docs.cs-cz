@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2018
+ms.date: 02/27/2018
 ms.author: mabrigg
-ms.openlocfilehash: ca61562607da274f0e0c7f504d1a24723210f2f7
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: cba6f8295e5d4b75192e566d4931cbd617e7dc8d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>A její spuštění pomocí prostředí PowerShell v Azure zásobníku
 
@@ -68,7 +68,7 @@ Install-Module `
 
 # Download Azure Stack tools from GitHub and import the connect module.
 cd \
-
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/master.zip `
   -OutFile master.zip
@@ -138,6 +138,7 @@ Install-Module `
 
 # Download Azure Stack tools from GitHub and import the connect module.
 cd \
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/master.zip `
   -OutFile master.zip

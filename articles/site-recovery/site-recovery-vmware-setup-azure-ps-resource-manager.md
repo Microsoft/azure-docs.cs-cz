@@ -15,15 +15,15 @@ ms.workload: storage-backup-recovery
 ms.date: 12/19/2017
 ms.author: anoopkv
 ms.openlocfilehash: 1b75acb13ac4c8990f99f7454a6de5483f6ca2f1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="manage-a-process-server-running-in-azure-resource-manager"></a>Správa procesu serveru běží v Azure (Resource Manager)
 > [!div class="op_single_selector"]
 > * [Resource Manager](./site-recovery-vmware-setup-azure-ps-resource-manager.md)
-> * [Classic](./site-recovery-vmware-setup-azure-ps-classic.md)
+> * [Classic ](./site-recovery-vmware-setup-azure-ps-classic.md)
 
 Během navrácení služeb po obnovení doporučujeme nasadit procesový server v Azure, když je vysoké latenci mezi virtuální síť Azure a v místní síti. Tento článek popisuje, jak můžete nastavit, konfigurovat a spravovat servery proces běží v Azure.
 

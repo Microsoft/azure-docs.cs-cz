@@ -1,6 +1,6 @@
 ---
-title: "Jak používat poznámkové bloky Jupyter v Azure Machine Learning Workbench | Microsoft Docs"
-description: "Příručka pro poznámkové bloky Jupyter funkci Azure Machine Learning Workbench pomocí"
+title: "Jak používat Jupyter Notebooks v nástroji Azure Machine Learning Workbench | Microsoft Docs"
+description: "Příručka pro pomocí poznámkového bloku Jupyter funkci Azure Machine Learning Workbench"
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -10,79 +10,79 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/09/2017
-ms.openlocfilehash: 4a8681bfdfe6b387d5790446d8b6dce04aaec580
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c21b7096f689efedacd6e7d55d83912d35dff803
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>Jak používat Poznámkový blok Jupyter v Azure Machine Learning Workbench
+# <a name="use-jupyter-notebooks-in-azure-machine-learning-workbench"></a>Použít Jupyter Notebooks v nástroji Azure Machine Learning Workbench
 
-Azure Machine Learning Workbench podporuje interaktivní data vědecké účely experimentování prostřednictvím její integrace poznámkového bloku Jupyter. Tento článek popisuje, jak provádět efektivní použití této funkce lze zvýšit rychlost a kvalitu vaší vědecké účely experimentování interaktivní data.
+Azure Machine Learning Workbench podporuje interaktivní data vědecké účely experimentování díky své integraci s poznámkovými bloky Jupyter. Tento článek popisuje, jak provádět efektivní použití této funkce lze zvýšit rychlost a kvalitu vaší vědecké účely experimentování interaktivní data.
 
 ## <a name="prerequisites"></a>Požadavky
-- [Instalace a vytvoření Azure Machine Learning](quickstart-installation.md).
-- Se seznamte s [Poznámkový blok Jupyter](http://jupyter.org/), protože není v tomto článku o výukových použití Jupyter.
+- [Vytvoření účtů Azure Machine Learning a nainstalujte Azure Machine Learning Workbench](quickstart-installation.md).
+- Se seznamte s [Poznámkový blok Jupyter](http://jupyter.org/). V tomto článku není o naučit se používat Jupyter.
 
 ## <a name="jupyter-notebook-architecture"></a>Architektura poznámkového bloku Jupyter
-Na vysoké úrovni architektura poznámkového bloku Jupyter obsahuje tři součásti, každý můžou běžet v různých výpočetních prostředí:
+Architektura Poznámkový blok Jupyter na vysoké úrovni obsahuje tři součásti. Každý můžete spustit v různých výpočetních prostředí:
 
-- **Klient**: vstup uživatele a zobrazí výstup se vykresluje obdrží
-- **Server**: webovém serveru hostícím poznámkového bloku soubory (.ipynb soubory)
-- **Jádra**: běhové prostředí, kde se stane vlastního výkonu Poznámkový blok buněk
+- **Klient**: vstup uživatele a zobrazí výstup se vykresluje obdrží.
+- **Server**: webový server, který hostuje soubory poznámkového bloku (.ipynb soubory).
+- **Jádra**: běhového prostředí, ve které provádění poznámkového bloku se stane buněk.
 
-Další podrobnosti najdete v oficiální prosím odkazovat [Jupyter dokumentaci](http://jupyter.readthedocs.io/en/latest/architecture/how_jupyter_ipython_work.html). Toto je diagram znázorňující, jak mapovány tohoto klienta, serveru a architektura jádra součásti v Azure ML.
+Další informace najdete v oficiální [Jupyter dokumentaci](http://jupyter.readthedocs.io/en/latest/architecture/how_jupyter_ipython_work.html). Následující diagram znázorňuje, jak tato architektura klienta, serveru a jádra mapuje komponenty v Azure Machine Learning:
 
-![Architektura poznámkového bloku](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-architecture.png)
+![Architektura poznámkového bloku Jupyter](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-architecture.png)
 
-## <a name="kernels-in-azure-ml-workbench-notebook"></a>V poznámkovém bloku Azure ML Workbench jádra
-Můžete používat mnoho různých jádra v Azure ML Workbench nakonfigurováním spuštění konfigurace a výpočetní cílů v `aml_config` složku ve vašem projektu. Přidání nového cíle výpočetní vydáním `az ml computetarget attach` příkaz je ekvivalentem přidání nové jádra.
+## <a name="kernels-in-azure-machine-learning-workbench-notebooks"></a>Jádra v Azure Machine Learning Workbench poznámkových bloků
+Můžete používat různé jádra v nástroji Azure Machine Learning Workbench definováním spuštění konfigurace a výpočetní cílů v `aml_config` složku ve vašem projektu. Přidání nového cíle výpočetní vydáním `az ml computetarget attach` příkaz je ekvivalentem přidání nové jádra.
 
 >[!NOTE]
->Zkontrolujte [nakonfigurovat spuštění](experimentation-service-configuration.md) další podrobnosti o spuštění konfigurace a výpočetní cíle.
+>Zkontrolujte [konfigurace služby Azure Machine Learning experimentování](experimentation-service-configuration.md) další podrobnosti o spuštění konfigurace a výpočetní cíle.
 
 ### <a name="kernel-naming-convention"></a>Zásady vytváření názvů jádra
-Azure ML Workbench generuje vlastní Jupyter jádra.  Tyto s názvem "\<název projektu > \<spustit název konfigurace >". Například, pokud máte spuštění konfigurace s názvem _docker python_ v projektu s názvem _myIris_, Azure ML zpřístupní jádra, s názvem "myIris docker-python".  Nastavit spuštěné jádra v poznámkového bloku Jupyter "Jádra" nabídky, v nabídce dílčí "Změna jádra". Název spuštěné jádra se zobrazí na panelu nabídek úplně vpravo.
+Azure Machine Learning Workbench generuje vlastní Jupyter jádra. Tyto jádra jsou pojmenované  *\<název projektu > \<spustit název konfigurace >*. Například, pokud máte spuštění konfigurace s názvem _docker python_ v projektu s názvem _myIris_, Azure Machine Learning s názvem jádro zpřístupňují *myIris docker-python.* Nastavit spuštěné jádra v poznámkovém bloku Jupyter **jádra** nabídky v **změnu jádra** podnabídky. Název spuštěné jádra se zobrazí na pravé straně řádku nabídek.
  
-V současné době nástroje Workbench podporuje následující typy jádra.
+Azure Machine Learning Workbench v současné době podporuje následující typy jádra.
 
 ### <a name="local-python-kernel"></a>Místní jádra Python
-Tato Python jádra podporuje spuštění na místním počítači. Je integrován s podporou historii běhů Azure Machine Learning. Název jádra je obvykle "my_project_name místní".
+Tato Python jádra podporuje spuštění na místních počítačích. Je integrován s podporou Azure Machine Learning spustit historie. Název jádra je obvykle *my_project_name místní.*
 
 >[!NOTE]
->Nepoužívejte jádra "Python 3". Je samostatný jádra, poskytované Jupyter ve výchozím nastavení. Není integrována s funkcemi Azure Machine Learning. Například _% azureml_ Jupyter magic funkcí vracet "nebyl nalezen" chyby. 
+>Nepoužívejte Python 3 jádra. Je samostatný jádra, poskytované Jupyter ve výchozím nastavení a není propojit s funkcemi Azure Machine Learning. Například `%azureml` Jupyter magic funkcí vracet "nebyl nalezen" chyby. 
 
 ### <a name="python-kernel-in-docker-local-or-remote"></a>Python jádra v Docker (místní nebo vzdálené)
-Tato Python jádra běží v kontejner Docker na místním počítači nebo ve vzdáleném virtuálního počítače s Linuxem. Název jádra je obvykle "my_project docker". Přidruženého `docker.runconfig` soubor má `Framework` pole nastavené na `Python`.
+Tato Python jádra běží v kontejner Docker na místním počítači nebo ve vzdáleném Linux virtuálního počítače (VM). Název jádra je obvykle *my_project docker.* Přidruženého `docker.runconfig` soubor má `Framework` pole nastavené na `Python`.
 
 ### <a name="pyspark-kernel-in-docker-local-or-remote"></a>Jádra PySpark v Docker (místní nebo vzdálené)
-Tato jádra PySpark spustí skripty v kontextu Spark systémem uvnitř kontejner Docker, na místním počítači nebo na vzdálený virtuální počítač s Linuxem. Název jádra je obvykle "my_project docker". Přidruženého `docker.runconfig` soubor má `Framework` pole nastavené na `PySpark`.
+Tato jádra PySpark spustí skripty v kontextu Spark běžících v rámci kontejner Docker na místním počítači nebo na vzdálený virtuální počítač s Linuxem. Název jádra je obvykle *my_project docker.* Přidruženého `docker.runconfig` soubor má `Framework` pole nastavené na `PySpark`.
 
-### <a name="pyspark-kernel-on-hdinsight-cluster"></a>Jádra PySpark na clusteru HDInsight
-Tato jádra běží v vzdáleného clusteru HDInsight, který jste připojili jako cíl výpočetní pro váš projekt. Název jádra je obvykle "my_project my_hdi". 
+### <a name="pyspark-kernel-in-an-azure-hdinsight-cluster"></a>Jádra PySpark v clusteru Azure HDInsight
+Tato jádra běží v vzdálený cluster Azure HDInsight, který jste připojili jako cíl výpočetní pro váš projekt. Název jádra je obvykle *my_project my_hdi.* 
 
 >[!IMPORTANT]
->V `.compute` souboru HDI výpočetní cíl, musíte změnit `yarnDeployMode` do `client` (výchozí hodnota je `cluster`) Chcete-li použít tento jádra. 
+>V `.compute` souboru HDI výpočetní cíl, musíte změnit `yarnDeployMode` do `client` (výchozí hodnota je `cluster`) používat tento jádra. 
 
-## <a name="start-jupyter-server-from-the-workbench"></a>Spuštění nástroje Workbench Jupyter serveru
-Z Azure Machine Learning Workbench, poznámkových bloků je přístupná prostřednictvím nástroje Workbench **poznámkových bloků** kartě. _Klasifikace Iris_ obsahuje ukázkový projekt `iris.ipynb` ukázkový poznámkový blok.
+## <a name="start-a-jupyter-server-from-azure-machine-learning-workbench"></a>Spusťte Jupyter server z Azure Machine Learning Workbench
+Z Azure Machine Learning Workbench, máte přístup k poznámkových bloků prostřednictvím **poznámkových bloků** kartě. _Klasifikace Iris_ obsahuje ukázkový projekt `iris.ipynb` ukázkový poznámkový blok.
 
 ![Karta poznámkových bloků](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-01.png)
 
-Po otevření Poznámkový blok v nástroji Azure Machine Learning Workbench se zobrazí na kartě svůj vlastní dokument v **režim náhledu**. Toto je jen pro čtení zobrazení, která nevyžaduje používají server Jupyter a jádra.
+Když v nástroji Azure Machine Learning Workbench otevřete Poznámkový blok, se zobrazí na vlastní kartě dokumentu v **režim náhledu**. Toto je jen pro čtení zobrazení, která nevyžaduje používají server Jupyter a jádra.
 
 ![Poznámkový blok preview](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-02.png)
 
-Kliknutím na tlačítko **spuštění serveru poznámkového bloku** tlačítko spustí Jupyter serveru a přepínače do poznámkového bloku **režimu úprav**. Známé uživatelské rozhraní poznámkového bloku Jupyter se zobrazí vložený v nástroje Workbench. Teď můžete nastavit jádra z **jádra** nabídky a spustit relaci interaktivní poznámkového bloku. 
+Výběr **spuštění serveru poznámkového bloku** tlačítko spustí Jupyter serveru a přepínače do poznámkového bloku **režimu úprav**. Vložený v Workbench se zobrazí uživatelské rozhraní známé poznámkového bloku Jupyter. Teď můžete nastavit jádra z **jádra** nabídky a spustit relaci interaktivní poznámkového bloku. 
 
 >[!NOTE]
->Poznámka: pro jiné než místní jádra, může trvat minutu nebo dvě spustit, pokud ji používáte poprvé. Můžete provést `az ml experiment prepare` příkazu z okna příkazového řádku k přípravě cílového výpočetní tak jádra můžete spustit mnohem rychlejší, až se připraví cílový výpočetní.
+>S jádra není místní může trvat minutu nebo dvě spustit, pokud používáte poprvé. Můžete provést `az ml experiment prepare` v okně příkazového řádku připravit cílový výpočetní tak jádra se mnohem rychleji spustí po výpočetní cíl je připravený příkaz.
 
 ![Režim úprav](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-04.png)
 
-Toto je plně interaktivní možnosti poznámkového bloku Jupyter. Všechny operace regulární Poznámkový blok a klávesové zkratky jsou podporovány v tomto okně s výjimkou některých operací se soubory, vzhledem k tomu, že lze provést pomocí nástroje Workbench **poznámkových bloků** kartě a **souboru** kartě.
+Toto je plně interaktivní možnosti poznámkového bloku Jupyter. Jsou podporovány všechny operace regulární Poznámkový blok a klávesové zkratky z tohoto okna, s výjimkou některé operace souborů, které se dají provádět prostřednictvím nástroje Workbench **poznámkových bloků** kartě a **souboru** kartě.
 
-## <a name="start-jupyter-server-from-command-line"></a>Spuštění Jupyter serveru z příkazového řádku
+## <a name="start-a-jupyter-server-from-the-command-line"></a>Spustí Jupyter server z příkazového řádku
 Můžete také spustit relaci poznámkového bloku vydáním `az ml notebook start` z okna příkazového řádku:
 ```
 $ az ml notebook start
@@ -93,18 +93,16 @@ $ az ml notebook start
 [I 10:14:25.465 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
 [C 10:14:25.466 NotebookApp] 
     
-    Copy/paste this URL into your browser when you connect for the first time,
-    to login with a token:
-        http://localhost:8889/?token=1f0161ab88b22fc83f2083a93879ec5e8d0ec18490f0b953
+Copy and paste this URL into your browser when you connect for the first time, to login with a token: http://localhost:8889/?token=1f0161ab88b22fc83f2083a93879ec5e8d0ec18490f0b953
 [I 10:14:25.759 NotebookApp] Accepting one-time-token-authenticated connection from ::1
 [I 10:16:52.970 NotebookApp] Kernel started: 7f8932e0-89b9-48b4-b5d0-e8f48d1da159
 [I 10:16:53.854 NotebookApp] Adapting to protocol v5.1 for kernel 7f8932e0-89b9-48b4-b5d0-e8f48d1da159
 ```
-Výchozí prohlížeč se automaticky spustí s Jupyter serveru odkazující na domovský adresář projektu. Také můžete adresu URL a tokenu zobrazí v okně příkazového řádku spouštět místně ostatní okna prohlížeče. 
+Se serverem Jupyter odkazující na domovský adresář projektu automaticky otevře výchozí prohlížeč. Můžete také použít adresu URL a tokenu zobrazí v okně příkazového řádku otevřít další okna prohlížeče místně. 
 
 ![řídicího panelu Projekt](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-07.png)
 
-Nyní můžete kliknutím na `.ipynb` soubor poznámkového bloku, otevřete a nastavte jádra (pokud nebylo nastaveno) a spusťte interaktivní relace.
+Teď si můžete vybrat `.ipynb` soubor poznámkového bloku, otevřete ho, nastavte jádra (pokud nebylo nastaveno) a spusťte interaktivní relace.
 
 ![řídicího panelu Projekt](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-08.png)
 
@@ -112,7 +110,7 @@ Nyní můžete kliknutím na `.ipynb` soubor poznámkového bloku, otevřete a n
 
 Můžete použít [kouzelná příkazy](http://ipython.readthedocs.io/en/stable/interactive/magics.html) v rámci vaší Poznámkový blok buněk sledování vaší historie spouštění a ukládání výstupů, jako je například modely ani datové sady.
 
-Buňky spustí, magic příkaz "% azureml historie v" použití položek ke sledování jednotlivých poznámkového bloku. Po zapnutí historie každé spuštění buňky objeví jako položka v historie spouštění.
+Chcete-li sledovat spustí jednotlivé Poznámkový blok buněk, použijte `%azureml history on` kouzelná příkaz. Po zapnutí historie se zobrazí jako položku v historii spouštění jednotlivých buněk spustit:
 
 ```
 %azureml history on
@@ -121,9 +119,9 @@ logger = get_azureml_logger()
 logger.log("Cell","Load Data")
 ```
 
-Chcete-li buňky spustit sledování, použijte příkaz "% azureml historie vypnout" magic.
+Chcete-li vypnout sledování buňky spustit, použijte `%azureml history off` kouzelná příkaz.
 
-Příkaz "% azureml nahrávání" magic můžete uložit model a datových souborů z vaší spustit. Objekty uložené zobrazí jako výstup v zobrazení historie spouštění pro danou spustit.
+Můžete použít `%azureml upload` kouzelná příkazu Uložit model a datových souborů z vaší spustit. Objekty uložené objeví jako výstup v zobrazení historie spouštění:
 
 ```
 modelpath = os.path.join("outputs","model.pkl")
@@ -133,9 +131,9 @@ with open(modelpath,"wb") as f:
 ```
 
 >[!NOTE]
->Výstupy musí být uložena do složky s názvem "výstupy"
+>Výstupy musí být uložena do složky s názvem *výstupy.*
 
-## <a name="next-steps"></a>Další kroky
-- Naučte se používat Poznámkový blok Jupyter, najdete [Jupyter oficiální dokumentaci](http://jupyter-notebook.readthedocs.io/en/latest/).    
-- Abyste získali lepší představu o prostředí pro spuštění experimenty Azure ML, zkontrolujte [službu experimentování Přehled služby Azure Machine Learning](experimentation-service-configuration.md)
+## <a name="next-steps"></a>Další postup
+- Naučte se používat Poznámkový blok Jupyter, najdete v článku [Jupyter oficiální dokumentaci](http://jupyter-notebook.readthedocs.io/en/latest/).    
+- Chcete-li získat lepší představu o prostředí pro spuštění experimenty Azure Machine Learning, přečtěte si téma [konfigurace služby Azure Machine Learning experimentování](experimentation-service-configuration.md).
 

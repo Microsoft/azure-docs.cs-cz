@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 02/27/2018
 ms.author: jeffgilb
-ms.reviewer: unknown
-ms.openlocfilehash: 6c02ec42874e4e3221c53e6d6e85378bbe2e414a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.reviewer: 
+ms.openlocfilehash: b773ddc5da12f92960ef3378decac8569dac9ab9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Klíčové funkce a koncepty v Azure zásobníku
 
@@ -91,6 +91,7 @@ Odběry pomáhají poskytovatelů uspořádání a přístup k službám a prost
 
 Pro správce vytvoří se během nasazení odběru výchozí zprostředkovatel. Toto předplatné slouží ke správě Azure zásobníku, nasadit další zprostředkovatelé prostředků a vytvořte plány a nabízí pro klienty. Není vhodné používat ke spuštění úloh zákazníka a aplikací. 
 
+
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 Pomocí Azure Resource Manager můžete pracovat s vaše prostředky infrastruktury v modelu na základě šablon, deklarativní.   Poskytuje jednotné rozhraní, které můžete použít k nasazení a správě součástí vašeho řešení. Úplné informace a pokyny najdete v tématu [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
 
@@ -127,6 +128,25 @@ Každý objekt blob se organizuje v kontejneru. Kontejnery také nabízejí prak
 
 ### <a name="keyvault"></a>KeyVault
 KeyVault RP poskytuje správu a auditování tajné údaje, jako jsou hesla a certifikáty. Jako příklad klienta zajistit hesla správce nebo klíče při nasazení virtuálního počítače použít KeyVault RP.
+
+## <a name="high-availability-for-azure-stack"></a>Vysoká dostupnost pro Azure zásobníku
+*Platí pro: Azure 1802 zásobníku nebo vyšší verze.*
+
+K dosažení vysoké dostupnosti systémů produkční více virtuálních počítačů v Azure, jsou virtuální počítače umístěny v nastavení dostupnosti, který se šíří je napříč více domén selhání a aktualizace domény. Tímto způsobem [virtuálních počítačích nasazených v nastavení dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) jsou fyzicky izolované od sebe navzájem na samostatný server stojany umožňující selhání odolnost, jak je znázorněno v následujícím diagramu:
+
+  ![Azure zásobníku vysokou dostupnost](media/azure-stack-key-features/high-availability.png)
+
+### <a name="availablity-sets-in-azure-stack"></a>Nastaví dostupnosti probíhá v Azure zásobníku
+Při infrastruktury Azure zásobníku již odolné vůči selhání, základní technologii (clustering převzetí služeb při selhání) stále způsobuje výpadky pro virtuální počítače na ovlivněné fyzickém serveru v případě selhání hardwaru. Azure zásobníku podporuje, že sada dostupnosti s maximálně tři domén selhání kvůli souladu s Azure.
+
+- **Poruch domény**. Virtuální počítače umístěny v nastavení dostupnosti bude fyzicky izolované od sebe navzájem jako rovnoměrně rozloží přes více domén selhání (zásobník Azure uzlů). V případě selhání hardwaru virtuálních počítačů z domény se nezdařilo selhání budou restartování v jiných doménách selhání, ale, pokud je to možné, zachovány v domén selhání samostatné z jiných virtuálních počítačů ve stejné sadě dostupnosti. Když hardware přejde do režimu online, virtuálních počítačů bude možné znovu vyrovnána kvůli udržení vysoké dostupnosti. 
+ 
+- **Aktualizovat domény**. Aktualizace domény jsou jiné Azure konceptu, které poskytuje vysokou dostupnost v nastavení dostupnosti. Doména aktualizace je logické skupiny základní hardware, který můžete projít údržby ve stejnou dobu. Virtuální počítače umístěné ve stejné doméně, aktualizace se restartuje společně během plánované údržby. Jako klienty, vytvořte virtuální počítače v rámci skupiny dostupnosti, platformu Azure automaticky rozděluje virtuálních počítačů na těchto aktualizaci domény. V zásobníku Azure jsou virtuální počítače za provozu proběhne migrace na jiné online hostitele v clusteru, než jejich základní hostitel je aktualizovat. Vzhledem k tomu, že neexistuje žádné výpadky klienta během hostitele aktualizace, aktualizace domény funkce v zásobníku Azure existuje pouze pro Kompatibilita šablon s Azure. 
+
+### <a name="upgrade-scenarios"></a>Scénářích upgradu 
+Virtuální počítače ve skupinách dostupnosti vytvořili předtím, než verze zásobník Azure 1802 mají výchozí počet selhání a aktualizace domény (1 a 1 v uvedeném pořadí). Chcete-li dosáhnout vysoké dostupnosti pro virtuální počítače v těchto existující skupiny dostupnosti, musíte nejprve odstranit stávající virtuální počítače a potom je znovu nasaďte do nové dostupnosti nastavit s správný počet selhání a aktualizace domény, jak je popsáno v [změn sadu dostupnosti pro virtuální počítač s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set). 
+
+Pro škálovatelné sady virtuálních počítačů, se interně vytvoří skupinu dostupnosti s výchozí doménu a aktualizace počet domén selhání (3 a 5 v uvedeném pořadí). Žádné virtuální počítače škálování sady vytvořené před 1802 aktualizací budou umístěny do sada dostupnosti s počty výchozí selhání a aktualizace domény (1 a 1 v uvedeném pořadí). K aktualizaci těchto instancí sady škálování virtuálních počítačů v zajistit novější šíření, škálovat podle počtu instancí, které existovaly před aktualizací 1802 a pak odstraňte starší instance škálovací sady virtuálních počítačů sady škálování virtuálních počítačů. 
 
 ## <a name="role-based-access-control-rbac"></a>Řízení přístupu (RBAC) na základě role
 RBAC můžete udělit přístup k systému oprávněným uživatelům, skupinám a službám pomocí jejich přiřazení role v předplatné, skupinu prostředků nebo úrovni jednotlivých prostředků. Každá role určuje úroveň přístupu, které uživatele, skupiny nebo službu má prostředky Microsoft Azure zásobníku.

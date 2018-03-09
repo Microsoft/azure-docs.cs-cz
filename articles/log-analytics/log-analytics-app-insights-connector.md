@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: magoedte
-ms.openlocfilehash: bf3259909a84e1e1f5325ff4e39d5c10f1abc831
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 1556e91710990351d6723325789201afa99b1943
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Řešení správy konektor služby Statistika aplikací (Preview)
 
@@ -64,7 +64,7 @@ V přibližně 30 minut bude k dispozici data a dlaždici Application Insights s
 Ostatní body mějte na paměti:
 
 - Aplikace služby Application Insights můžete propojit jenom jeden pracovní prostor analýzy protokolů.
-- Můžete propojit pouze [Standard nebo Premium Application Insights prostředky](https://azure.microsoft.com/pricing/details/application-insights) k analýze protokolů. Můžete však použít úroveň Free Log Analytics.
+- Můžete propojit pouze [Basic nebo Enterprise Application Insights prostředků](https://azure.microsoft.com/pricing/details/application-insights) k analýze protokolů. Můžete však použít úroveň Free Log Analytics.
 
 ## <a name="management-packs"></a>Sady Management Pack
 
@@ -86,7 +86,7 @@ Klikněte **Application Insights** dlaždici otevřete **Application Insights** 
 
 [!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-| Sloupec | **Popis** |
+| **Sloupec** | **Popis** |
 | --- | --- |
 | Aplikace – počet aplikací | Zobrazuje počet aplikací v prostředky aplikace. Také uvádí názvy aplikací a pro každou počet záznamů aplikace. Klikněte na číslo ke spuštění vyhledávání protokolu pro <code>Type=ApplicationInsights &#124; measure sum(SampledCount) by ApplicationName</code> <br><br>  Klikněte na název aplikace ke spuštění vyhledávání protokolu pro aplikaci, která zobrazuje aplikace záznamů na hostitele, záznamy podle typu telemetrie a všechna data podle typu (na základě poslední den). |
 | Datový svazek – hostitelů odeslání dat | Zobrazuje počet počítač hostitele, kteří odesílají data. Také uvádí hostitele počítače a počet záznamů pro každého hostitele. Klikněte na číslo ke spuštění vyhledávání protokolu pro <code>Type=ApplicationInsights &#124; measure sum(SampledCount) by Host</code> <br><br> Klikněte na název počítače, spusťte hledání protokolů pro hostitele, který zobrazuje aplikace záznamů na hostitele, záznamy podle typu telemetrie a všechna data podle typu (na základě poslední den). |
@@ -117,7 +117,7 @@ Když kliknete na libovolné místo v **výjimky** okně uvidíte vizualizace, p
 
 ![Okna Statistika výjimky aplikací](./media/log-analytics-app-insights-connector/exceptions-blade-drill-search.png)
 
-Bez ohledu na to, jestli klepnutí na něco **konektor služby Statistika aplikace** řídicího panelu, v **vyhledávání** samostatně, stránka jakýkoli dotaz vrací Application Insights data zobrazují perspektivy Application Insights. Pokud se nacházíte Application Insights data, například **&#42;** dotaz také zobrazí na kartě perspektivy jako na následujícím obrázku:
+Bez ohledu na to, jestli klepnutí na něco **konektor služby Statistika aplikace** řídicího panelu, v **vyhledávání** samostatně, stránka jakýkoli dotaz vrací Application Insights data zobrazují perspektivy Application Insights. Pokud se nacházíte Application Insights data, například  **&#42;**  dotaz také zobrazí na kartě perspektivy jako na následujícím obrázku:
 
 ![Application Insights ](./media/log-analytics-app-insights-connector/app-insights-search.png)
 

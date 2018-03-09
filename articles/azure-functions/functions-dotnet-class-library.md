@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 9e9aa8a36d363ce28d61c5ba3cfe758520a626cf
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 70c4d6276970a781517fe49ec47e9b2ddb884c78
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure funkcí jazyka C# referenční informace pro vývojáře
 
@@ -134,7 +134,50 @@ Generovaný objekt *function.json* soubor obsahuje `configurationSource` vlastno
 }
 ```
 
-*Function.json* generování souboru se provádí pomocí balíčku NuGet [Microsoft\.NET\.Sdk\.funkce](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). Zdrojový kód je k dispozici v úložišti GitHub [azure\-funkce\-vs\-sestavení\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
+### <a name="microsoftnetsdkfunctions-nuget-package"></a>Balíček Microsoft.NET.Sdk.Functions NuGet
+
+*Function.json* generování souboru se provádí pomocí balíčku NuGet [Microsoft\.NET\.Sdk\.funkce](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
+
+Stejného balíčku se používá pro obě verze 1.x a 2.x funkce modulu runtime. Cílovém Frameworku, který je co odlišuje 1.x projekt z projektu 2.x. Tady jsou v příslušných částech *.csproj* soubory, zobrazuje různé cílové architektury a stejné `Sdk` balíčku:
+
+**Funkce 1.x**
+
+```xml
+<PropertyGroup>
+  <TargetFramework>net461</TargetFramework>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+
+**Funkce 2.x**
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netstandard2.0</TargetFramework>
+  <AzureFunctionsVersion>v2</AzureFunctionsVersion>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+
+Mezi `Sdk` závislosti balíčků jsou triggerů a vazeb. 1.x projekt odkazuje na 1.x triggerů a vazeb, protože ty cílové rozhraní .NET Framework, zatímco 2.x triggerů a vazeb cílí na .NET Core.
+
+`Sdk` Balíček závisí také na [Newtonsoft.Json](http://www.nuget.org/packages/Newtonsoft.Json)a nepřímo na [WindowsAzure.Storage](http://www.nuget.org/packages/WindowsAzure.Storage). Ujistěte se, že projektu používá verzích tyto balíčky, které pracují s verzi modulu runtime funkce tyto závislosti, cíle projektu. Například `Newtonsoft.Json` má verze 11 pro rozhraní .NET Framework 4.6.1, ale funkce runtime, která cílí na rozhraní .NET Framework 4.6.1 je kompatibilní jen s `Newtonsoft.Json` 9.0.1. Aby funkce kódu v tomto projektu má také používat `Newtonsoft.Json` 9.0.1.
+
+Zdrojový kód pro `Microsoft.NET.Sdk.Functions` je k dispozici v úložišti GitHub [azure\-funkce\-vs\-sestavení\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
+
+### <a name="runtime-version"></a>Verze modulu runtime
+
+Visual Studio použije [nástroje základní funkce Azure](functions-run-local.md#install-the-azure-functions-core-tools) pro spouštění projektů funkce. Základní nástroje je rozhraní příkazového řádku pro modul runtime funkce.
+
+Pokud nainstalujete nástroje základní pomocí npm, který nemá vliv nástroje základní verzi, kterou Visual Studio. Verze runtime funkce 1.x, Visual Studio ukládá základní nástroje verze v *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* a používá nejnovější verze uložená existuje. Pro funkce 2.x, základní nástroje jsou součástí **Azure Functions a webové úlohy nástroje** rozšíření. Pro 1.x a 2.x můžete zjistit, jaká verze se používá v výstup konzoly, při spuštění projektu funkce:
+
+```terminal
+[3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
+```
 
 ## <a name="supported-types-for-bindings"></a>Podporované typy u vazeb
 

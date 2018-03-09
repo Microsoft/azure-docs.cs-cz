@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.author: garye;haining
-ms.openlocfilehash: 44551908c31151e7d8945a3c7c03303b17d8f059
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.author: haining
+ms.openlocfilehash: 4a4c1c417dabf32aa3a23fef22078ada0d01d9fa
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Vytvoření mnoha modelů Machine Learning a koncových bodů webové služby z jednoho experimentu pomocí prostředí PowerShell
 Zde problém je běžný, machine learning: Chcete vytvořit mnoho modely, které mají stejný pracovní postup školení a použít stejný algoritmus. Ale chcete, aby mají různé školení datové sady jako vstup. Tento článek ukazuje, jak to udělat ve velkém měřítku v Azure Machine Learning Studio pomocí právě jeden experimentu.

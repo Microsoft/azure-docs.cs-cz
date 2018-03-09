@@ -13,15 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 02/27/2018
+ms.date: 02/28/2018
 ms.author: carlrab
-ms.openlocfilehash: 839705b902b8e1343c1e0bda97a2ec1dc6b47042
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: eea4362e33ff2587758601758db463ffa82382b3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Omezení prostředků Azure SQL Database
+
+> [!IMPORTANT]
+> Omezení prostředků s Azure spravované Instance databáze SQL, najdete v části [spravované Instance databáze SQL](sql-database-managed-instance.md#managed-instance-service-tier).
 
 ## <a name="single-database-storage-sizes-and-performance-levels"></a>Izolované databáze: velikosti úložiště a úrovně výkonu
 
@@ -79,7 +82,6 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 
 > [!NOTE]
 > Omezení prostředků jednotlivých databází v elastické fondy jsou obvykle stejné jako u izolovaných databází mimo fondů na základě Dtu a vrstvy služeb. Maximální počet souběžných pracovních procesů pro databázi S2 je například 120 pracovních procesů. Ano maximální počet souběžných pracovních procesů pro databázi v standardní fond je také 120 pracovníci Pokud 50 Dtu (což odpovídá S2) je maximální počet jednotek DTU na databázi ve fondu.
->
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 

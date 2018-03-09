@@ -10,6 +10,8 @@
           href: azure-stack-asdk-release-notes.md
         - name: Poznámky k verzi integrované systémy
           items:
+            - name: 1802 aktualizace
+              href: azure-stack-update-1802.md
             - name: aktualizace 1712
               href: azure-stack-update-1712.md
             - name: aktualizace 1711
@@ -133,14 +135,18 @@
           href: azure-stack-monitor-health.md
         - name: Správa síťových prostředků
           href: azure-stack-viewing-public-ip-address-consumption.md
-        - name: Správa prostředků úložiště
-          href: azure-stack-manage-storage-accounts.md
-        - name: Spravovat kapacita úložiště
-          href: azure-stack-manage-storage-shares.md
         - name: Správa virtuálních počítačů se sadou Windows Azure Pack
           href: azure-stack-manage-windows-azure-pack.md
         - name: Spuštění a zastavení Azure zásobníku
           href: azure-stack-start-and-stop.md
+        - name: Správa kapacity
+          items:
+            - name: Správa prostředků úložiště
+              href: azure-stack-manage-storage-accounts.md
+            - name: Spravovat kapacita úložiště
+              href: azure-stack-manage-storage-shares.md
+            - name: Spravovat kapacita fyzické úložiště Azure zásobníku
+              href: azure-stack-manage-storage-physical-capacity.md
         - name: Výměna hardwaru
           items:
             - name: Uzel akce
@@ -230,6 +236,10 @@
               href: azure-stack-app-service-deploy.md
             - name: Nasazení App Service offline
               href: azure-stack-app-service-deploy-offline.md
+            - name: Aktualizujte zprostředkovatele prostředků služby App Service
+              href: azure-stack-app-service-update.md
+            - name: Aktualizace offline zprostředkovatele prostředků služby App Service
+              href: azure-stack-app-service-update-offline.md
             - name: Přidání dalších webových rolí pracovního procesu
               href: azure-stack-app-service-add-worker-roles.md
             - name: Konfigurace zdrojů nasazení

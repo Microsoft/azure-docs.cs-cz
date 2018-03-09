@@ -13,17 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/17/2017
+ms.date: 02/20/2018
 ms.author: jroth
-ms.openlocfilehash: fe04aa382a3e829b201dbe92442f841fb29fff15
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3103ca2c659e40fd945b597ed4671fe96daf1905
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Pokyny pro virtuální počítače SQL serveru Azure – ceny
 
-Tento článek obsahuje cenovou pokyny pro virtuální počítače systému SQL Server v Azure. Existuje několik možností, které ovlivňují náklady a je důležité vybrat správné bitové kopie, který vyrovnává náklady obchodním požadavkům.
+Tento článek obsahuje pokyny, cenovou [virtuální počítače systému SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) v Azure. Existuje několik možností, které ovlivňují náklady a je důležité vybrat správné bitové kopie, který vyrovnává náklady obchodním požadavkům.
+
+> [!TIP]
+> Pokud potřebujete zjistit odhad náklady pro konkrétní kombinaci edici systému SQL Server a velikost virtuálního počítače, přečtěte si téma [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-machines/windows). Vyberte operační systém a edice systému SQL Server z **operační systém a Software** seznamu.
+>
+> ![Uživatelské rozhraní na stránce ceny virtuálních počítačů](./media/virtual-machines-windows-sql-server-pricing-guidance/virtual-machines-pricing-ui.png)
+>
+> Nebo použijte [cenové kalkulačky](https://azure.microsoft.com/pricing/#explore-cost) k přidání a konfigurace virtuálního počítače. 
 
 ## <a name="free-licensed-sql-server-editions"></a>Uvolněte licenci edicích systému SQL Server
 
@@ -56,7 +63,7 @@ Máte dvě možnosti platit za licencování SQL serveru pro tyto edice: *platí
 
 ### <a name="pay-per-usage"></a>Platba za použití
 
-**Licenci systému SQL Server za použití platícího** znamená, že za minutu náklady na provozování virtuálního počítače Azure obsahuje náklady na licence pro SQL Server. Zobrazí cenách pro různých edicích systému SQL Server (Web, Standard, Enterprise) v [virtuálního počítače Azure stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-standard). Náklady na je stejný pro všechny verze systému SQL Server (2012 SP3 na 2017). Stejně jako u obecně licencování SQL serveru, náklady na licencování za minutu závisí na počtu jader virtuálního počítače.
+**Licenci systému SQL Server za použití platícího** znamená, že za minutu náklady na provozování virtuálního počítače Azure obsahuje náklady na licence pro SQL Server. Zobrazí cenách pro různých edicích systému SQL Server (Web, Standard, Enterprise) v [virtuálního počítače Azure stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Náklady na je stejný pro všechny verze systému SQL Server (2012 SP3 na 2017). Stejně jako u obecně licencování SQL serveru, náklady na licencování za minutu závisí na počtu jader virtuálního počítače.
 
 Platícího systému SQL Server licencování za použití se doporučuje pro:
 
@@ -147,6 +154,6 @@ Pro jiné pracovní postupy, zvažte automaticky vypínání a restartování vi
 
 Obecné Azure ceny pokyny najdete v tématu [zabránit neočekávané náklady s Azure fakturace a náklady na správu](../../../billing/billing-getting-started.md).
 
-Pro virtuální počítače, který nejnovější ceny, včetně systému SQL Server, najdete v článku [virtuálního počítače Azure stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-standard).
+Pro virtuální počítače, který nejnovější ceny, včetně systému SQL Server, najdete v článku [virtuálního počítače Azure stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
 Další informace o virtuálních počítačích systému SQL Server pro obě [virtuálních počítačů Windows serveru SQL](virtual-machines-windows-sql-server-iaas-overview.md) a [virtuálním počítačům systému SQL Server Linux](../../linux/sql/sql-server-linux-virtual-machines-overview.md).

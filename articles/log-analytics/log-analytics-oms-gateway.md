@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: magoedte
-ms.openlocfilehash: daf3cc236ef04ae27731e023d35cfe2aa82fc70a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 10422af5a57fc4da77958f15af5b2db61c023e40
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Připojte počítače bez přístupu k Internetu pomocí brány OMS
 Tento dokument popisuje, jak nakonfigurovat komunikaci s Azure Automation a analýzy protokolů pomocí brány OMS při přímé připojení nebo Operations Manager monitorované počítače nemají přístup k Internetu.  Bránu OMS, což je předat dál proxy protokolu HTTP, podporující tunelování HTTP pomocí příkazu HTTP připojení, můžete shromažďovat data a odeslat do Azure Automation a analýzy protokolů jejich jménem.  
@@ -82,7 +82,7 @@ Bránu OMS je k dispozici v těchto jazycích:
 Bránu OMS podporuje pouze zabezpečení TLS (Transport Layer) 1.0, 1.1 a 1.2.  Nepodporuje Secure Sockets Layer (SSL).
 
 ### <a name="supported-number-of-agent-connections"></a>Podporované počet připojení agenta
-V následující tabulce označuje podporovaný počet agentů komunikaci se serverem brány.  Tato podpora je založena na agentech odesílání ~ 200KB dat každých 6 sekund. Datový svazek na jednoho agenta testována je přibližně 2.7GB za den.
+Následující tabulka obsahuje podporované počtu agentů, komunikaci se serverem brány.  Tato podpora je založena na agentech odesílání ~ 200KB dat každých 6 sekund. Datový svazek na jednoho agenta testována je přibližně 2.7GB za den.
 
 |brána |Asi počet agentů podporováno|  
 |--------|----------------------------------|  
@@ -289,7 +289,7 @@ V následující tabulce jsou uvedeny ID událostí a popisy pro OMS brány prot
 | 103 |Příkaz připojení protokolu HTTP přijatých od klienta |
 | 104 |Není připojení protokolu HTTP příkaz |
 | 105 |Cílový server se nenachází v seznamu povolených nebo cílový port není zabezpečený port (443) <br> <br> Zkontrolujte, že agenta MMA na serveru brány a agenty komunikaci s bránou připojeni k ve stejném pracovním prostoru analýzy protokolů. |
-| 105 |Chyba TcpConnection – neplatný klientský certifikát: CN = brány <br><br> Zajistěte, aby: <br>    <br> &#149; Používáte bránu s číslem verze 1.0.395.0 nebo vyšší. <br> &#149; Agent MMA na serveru brány a agenty komunikaci s bránou jsou připojené k ve stejném pracovním prostoru analýzy protokolů. |
+| 105 |Chyba TcpConnection – neplatný klientský certifikát: CN = brány <br><br> Zajistěte, aby: <br>    <br> &#149;Používáte bránu s číslem verze 1.0.395.0 nebo vyšší. <br> &#149;Agent MMA na serveru brány a agenty komunikaci s bránou jsou připojené k ve stejném pracovním prostoru analýzy protokolů. |
 | 106 |Bránu OMS podporuje jenom TLS 1.0, TLS 1.1 a 1.2.  Nepodporuje SSL. OMS brány pro všechny nepodporovanou verzi protokolu TLS/SSL, vygeneruje událost ID 106.|
 | 107 |Relace protokolu TLS byla ověřena. |
 

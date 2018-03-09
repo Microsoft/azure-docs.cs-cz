@@ -1,0 +1,73 @@
+- name: Managed Service Identity
+  href: overview.md
+  items:
+    - name: Konfigurace MSI pro virtuální počítač Azure
+      items:
+        - name: Pomocí webu Azure Portal
+          href: qs-configure-portal-windows-vm.md
+        - name: Pomocí prostředí PowerShell
+          href: qs-configure-powershell-windows-vm.md
+        - name: Použití Azure CLI
+          href: qs-configure-cli-windows-vm.md
+        - name: Pomocí šablony Azure Resource Manageru
+          href: qs-configure-template-windows-vm.md
+        - name: Pomocí sady Azure SDK
+          href: qs-configure-sdk-windows-vm.md
+    - name: Konfigurace MSI pro Azure VMSS
+      items:
+        - name: Použití Portálu Azure
+          href: qs-configure-portal-windows-vmss.md
+        - name: Použití Azure CLI
+          href: qs-configure-cli-windows-vmss.md
+        - name: Pomocí šablony Azure Resource Manageru
+          href: qs-configure-template-windows-vmss.md
+    - name: Udělení přístupu MSI virtuálního počítače nebo škálovací sady virtuálních počítačů k Resource Manageru
+      items:
+        - name: Pomocí webu Azure Portal
+          href: howto-assign-access-portal.md
+        - name: Pomocí prostředí PowerShell
+          href: howto-assign-access-powershell.md
+        - name: Použití Azure CLI
+          href: howto-assign-access-cli.md
+    - name: Jak používat MSI virtuálních počítačů
+      items:
+        - name: Získání přístupového tokenu
+          href: how-to-use-vm-token.md
+        - name: 'Přihlášení do PowerShellu, rozhraní příkazového řádku Azure'
+          href: how-to-use-vm-sign-in.md
+        - name: Použití se sadami Azure SDK
+          href: how-to-use-vm-sdk.md
+    - name: Použití MSI virtuálního počítače pro přístup ke službě Azure Data Lake Store
+      items:
+        - name: Z virtuálního počítače s Windows
+          href: tutorial-windows-vm-access-datalake.md
+        - name: Z virtuálního počítače s Linuxem
+          href: tutorial-linux-vm-access-datalake.md
+    - name: Použití MSI virtuálního počítače pro přístup k Azure Resource Manageru
+      items:
+        - name: Z virtuálního počítače s Windows
+          href: tutorial-windows-vm-access-arm.md
+        - name: Z virtuálního počítače s Linuxem
+          href: tutorial-linux-vm-access-arm.md
+    - name: Použití MSI virtuálního počítače pro přístup k Azure SQL
+      items:
+        - name: Z virtuálního počítače s Windows
+          href: tutorial-windows-vm-access-sql.md
+    - name: Použití MSI virtuálního počítače pro přístup k úložišti Azure
+      items:
+        - name: Z virtuálního počítače s Windows pomocí přístupového klíče
+          href: tutorial-windows-vm-access-storage.md
+        - name: Z virtuálního počítače s Windows pomocí SAS
+          href: tutorial-windows-vm-access-storage-sas.md
+        - name: Z virtuálního počítače s Linuxem pomocí přístupového klíče
+          href: tutorial-linux-vm-access-storage.md
+        - name: Z virtuálního počítače s Linuxem pomocí SAS
+          href: tutorial-linux-vm-access-storage-sas.md
+    - name: Použití MSI virtuálního počítače pro přístup ke službě Azure Key Vault
+      items:
+        - name: Z virtuálního počítače s Windows
+          href: tutorial-windows-vm-access-nonaad.md
+        - name: Z virtuálního počítače s Linuxem
+          href: tutorial-linux-vm-access-nonaad.md
+    - name: Nejčastější dotazy a známé problémy
+      href: known-issues.md

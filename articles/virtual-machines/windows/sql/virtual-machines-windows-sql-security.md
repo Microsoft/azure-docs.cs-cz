@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2017
 ms.author: jroth
-ms.openlocfilehash: fa6568d33e86c055c12eb748eb67c8a2e7cc0f93
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 609e18cf2bdfdd84c71b67e31b66cd0ca7d47577
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Informace o zabezpečení pro SQL Server v Azure Virtual Machines
 
@@ -98,5 +98,5 @@ Kromě postupů popsaných v tomto tématu doporučujeme zkontrolovat a implemen
 
 Pokud vás zajímá také osvědčené postupy týkající se výkonu, najdete v části [osvědčené postupy z hlediska výkonu pro SQL Server v Azure Virtual Machines](virtual-machines-windows-sql-performance.md).
 
-Další témata související se systémem SQL Server ve virtuálních počítačích Azure, najdete v části [SQL Server na virtuálních počítačích Azure přehled](virtual-machines-windows-sql-server-iaas-overview.md).
+Další témata související se systémem SQL Server ve virtuálních počítačích Azure, najdete v části [SQL Server na virtuálních počítačích Azure přehled](virtual-machines-windows-sql-server-iaas-overview.md). Pokud máte dotazy týkající se virtuální počítače systému SQL Server, najdete v článku [– nejčastější dotazy](virtual-machines-windows-sql-server-iaas-faq.md).
 

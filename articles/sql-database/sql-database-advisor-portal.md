@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: fe76be59d6ee09049ed8c1343d1a91e42646c262
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 32071522bbe069e68bdaed181f64b814eb70b84c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení výkonu
 
@@ -52,7 +52,7 @@ Doporučení jsou seřazené podle jejich potenciální dopad na výkon do násl
 > Databáze SQL Azure je potřeba sledovat aktivity alespoň za den za účelem zjištění několik doporučení. Databáze SQL Azure můžete snadněji optimalizovat konzistentní dotazu v případě vzorů, než je to možné na náhodných problematického shluky aktivity. Pokud nejsou momentálně k dispozici, doporučení **výkonu doporučení** stránka obsahuje zprávu s vysvětlením, proč.
 > 
 
-Můžete také zobrazit stav přehled činností. Vyberte doporučení nebo stav zobrazíte další podrobnosti.
+Můžete také zobrazit stav přehled činností. Vyberte doporučení nebo stav zobrazíte další informace.
 
 Tady je příklad "Vytvořit index" doporučení na portálu Azure.
 
@@ -130,7 +130,7 @@ Použití doporučeným nemusí dojít okamžitě. Portál obsahuje podrobné in
 | Probíhá vrácení |Doporučení bylo použito, ale je považována za nenáročných a automaticky zrušeny. |
 | Vráceno |Doporučuje se vrátila. |
 
-Kliknutím na doporučení v procesu v seznamu zobrazíte další podrobnosti:
+Kliknutím na doporučení v procesu v seznamu zobrazíte další informace:
 
 ![Doporučené indexy](./media/sql-database-advisor-portal/operations.png)
 

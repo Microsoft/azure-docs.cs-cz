@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
+ms.date: 03/05/2018
 ms.author: sujie
-ms.openlocfilehash: b06eae6b85f2ca41390955cde2499af2531e2e12
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 71e7247226f9432b3f9590ca87ac33883ea576ce
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>Použití Azure Stream Analytics tools pro sadu Visual Studio
 Azure Stream Analytics tools pro Visual Studio jsou obecně dostupné. Tyto nástroje povolte bohatší možnosti pro uživatele Stream Analytics k řešení potíží a také zápisu složitých dotazů a i psát dotazy místně. Úloha Stream Analytics také můžete exportovat do projektu sady Visual Studio.
 
 ## <a name="introduction"></a>Úvod
-V tomto kurzu můžete další informace o použití Stream Analytics tools pro Visual Studio k vytvoření, vytváření, testování místně, spravovat a ladit vaše úlohy Stream Analytics. 
+V tomto kurzu můžete další informace o použití Stream Analytics tools pro Visual Studio k vytvoření, vytváření, testování místně, spravovat a ladit vaše úlohy Stream Analytics. Po vytvoření úlohy, můžete nastavit nepřetržitý proces integraci a nasazení do Azure pomocí balíčku Nuget CI/CD, další informace najdete v tématu [Stream Analytics VS nástroje nastavit kanál CI/CD](stream-analytics-tools-for-visual-studio-cicd.md) článku.
 
 Po dokončení tohoto kurzu, budete moci:
 
@@ -58,7 +58,7 @@ Projekt **Projedou** se generuje ve **Průzkumníku řešení**.
 2. Přihlaste se pomocí účtu Azure. 
 
 ## <a name="define-input-sources"></a>Definování vstupních zdrojů
-1. V **Průzkumníku řešení**, rozbalte **vstupy** uzlu a přejmenujte **Input.json** k **EntryStream.json**. Klikněte dvakrát na **EntryStream.json**.
+1. V **Průzkumníku řešení**, rozbalte **vstupy** uzlu a přejmenujte **Input.json** k **EntryStream.json**. Double-click **EntryStream.json**.
 
 2. Pro **vstupní Alias**, zadejte **EntryStream**. Všimněte si, že vstupní alias se používá ve skriptu dotazu.
 
@@ -137,13 +137,13 @@ Další podrobnosti najdete v tématu o [čas management](https://msdn.microsoft
 
 Teď, když jste napsali svůj první dotaz služby Stream Analytics, otestujte ji pomocí ukázkových datových souborů umístěné ve složce TollApp v následující cestě:
 
-**.. \TollApp\TollApp\Data**
+**..\TollApp\TollApp\Data**
 
 Tato složka obsahuje následující soubory:
 
-* Entry.JSON
-* Exit.JSON
-* Registration.JSON
+* Entry.json
+* Exit.json
+* Registration.json
 
 ## <a name="question-number-of-vehicles-entering-a-toll-booth"></a>Otázka: Počet vozidel zadávání stánek projedou
 V projektu, klikněte dvakrát na **Script.asaql** otevřete skript v editoru. Vložte skript v předchozí části do editoru. Editor dotazů podporuje technologii IntelliSense, barevné zvýrazňování syntaxe a značky k chybě.
@@ -167,7 +167,7 @@ Můžete napřed zkompilovat dotaz, jestli jsou všechny chyby syntaxe.
    
 3. Vyberte **spustit místně** v editoru dotazů. Nebo můžete stisknutím klávesy F5.
    
-   ![Spusťte místně](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-01.png)
+   ![Spustit místně](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-local-run-01.png)
    
    Můžete získat z výstupu konzoly výstupní cesta. Stisknutím libovolné klávesy otevření složky výsledek.
    
@@ -198,7 +198,7 @@ Můžete sledovat průběh v **výstup** okno.
  
 2. Vyberte **vytvoření nové úlohy Azure Stream Analytics**. Pro **název úlohy**, zadejte **TollApp**. Vyberte správný **předplatné** v rozevíracím seznamu. Vyberte **odeslání**.
 
-   ![Odeslání úlohy](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-submit-job-02.png)
+   ![Spustit úlohu](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-submit-job-02.png)
 
  
 ### <a name="start-the-job"></a>Spustit úlohu
@@ -238,7 +238,7 @@ V **Průzkumníka serveru**, vyberte **úlohy Stream Analytics** a pak vyberte *
 ## <a name="open-the-job-view"></a>Otevřete zobrazení úloh
 Rozbalte uzel vaší úlohy a dvakrát klikněte na **zobrazení úloh** uzlu otevřete zobrazení úloh.
 
-![Zobrazení úloh](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-job-view-01.png)
+![Zobrazení úlohy](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-job-view-01.png)
 
 
 ## <a name="export-an-existing-job-to-a-project"></a>Exportovat stávající úloze do projektu
@@ -253,7 +253,7 @@ Existují dva způsoby stávající úloze můžete exportovat do projektu.
    
 * V zobrazení úloh, vyberte **generovat projektu**.
    
-   ![Generování projektu](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-03.png)
+   ![Vytvořit projekt](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-export-job-03.png)
    
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
  
@@ -264,7 +264,7 @@ Existují dva způsoby stávající úloze můžete exportovat do projektu.
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme s použitím Azure Stream Analytics](stream-analytics-get-started.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)

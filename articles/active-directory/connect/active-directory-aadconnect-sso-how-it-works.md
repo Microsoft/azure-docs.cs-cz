@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 02/15/2018
 ms.author: billmath
-ms.openlocfilehash: 0a28cd9016588d266670aa5a7fcbdd854d7ebce0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9d17a4038f2171b74c8ba1dbc21e8335e6893691
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: podrobné technické informace
 
@@ -26,9 +26,10 @@ Tento článek poskytuje podrobné technické informace do Princip funkce Azure 
 
 ## <a name="how-does-seamless-sso-work"></a>Jak funguje bezproblémové jednotné přihlašování?
 
-Tato část obsahuje dvě části:
+Tato část obsahuje tři části:
 1. Instalace funkce bezproblémové jednotné přihlašování.
-2. Jak funguje jednoho uživatele přihlásit transakce pomocí bezproblémové jednotného přihlašování.
+2. Jak funguje jednoho uživatele přihlásit transakce ve webovém prohlížeči pomocí bezproblémové jednotného přihlašování.
+3. Jak funguje jednoho uživatele přihlásit transakce na nativního klienta pomocí bezproblémové jednotného přihlašování.
 
 ### <a name="how-does-set-up-work"></a>Jak nastavit pracovní?
 
@@ -43,32 +44,54 @@ Bezproblémové jednotného přihlašování je povoleno pomocí Azure AD Connec
 >[!IMPORTANT]
 >Důrazně doporučujeme, aby vám [mění dešifrovací klíč protokolu Kerberos](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) z `AZUREADSSOACC` účet počítače minimálně každých 30 dnů.
 
-### <a name="how-does-sign-in-with-seamless-sso-work"></a>Jak Přihlaste se pomocí pracovních bezproblémové jednotné přihlašování?
+Po dokončení instalace bezproblémové jednotné přihlašování funguje stejně jako všechny ostatní přihlášení používající integrované ověřování systému Windows (IWA).
 
-Po dokončení instalace bezproblémové jednotné přihlašování funguje stejně jako všechny ostatní přihlášení používající integrované ověřování systému Windows (IWA). Postup je následující:
+### <a name="how-does-sign-in-on-a-web-browser-with-seamless-sso-work"></a>Jak přihlášení ve webovém prohlížeči s pracovní bezproblémové jednotné přihlašování?
 
-1. Uživatel se pokusí o přístup k aplikaci (například aplikaci Outlook Web App - https://outlook.office365.com/owa/) z připojených k doméně podnikové zařízení uvnitř firemní sítě.
+Tok přihlášení ve webovém prohlížeči vypadá takto:
+
+1. Uživatel se pokusí o přístup k webové aplikaci (například aplikaci Outlook Web App - https://outlook.office365.com/owa/) z připojených k doméně podnikové zařízení uvnitř firemní sítě.
 2. Pokud již není přihlášený uživatel, se uživatel přesměruje na přihlašovací stránku služby Azure AD.
+3. Typy uživatelů ve své uživatelské jméno na přihlašovací stránku služby Azure AD.
 
   >[!NOTE]
-  >Pokud Azure AD přihlášení požadavek obsahuje `domain_hint` (například identifikaci klienta -, contoso.onmicrosoft.com) nebo `login_hint` (Identifikace uživatel – třeba user@contoso.onmicrosoft.com nebo user@contoso.com) parametr a potom krok 2 bude přeskočena.
+  >Pro [některých aplikací](./active-directory-aadconnect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso), jsou kroky 2 a 3 přeskočeny.
 
-3. Typy uživatelů ve své uživatelské jméno na přihlašovací stránku služby Azure AD.
 4. Azure AD pomocí jazyka JavaScript na pozadí, vyzve prohlížeče, prostřednictvím 401 neoprávněný odpověď, k poskytování lístek protokolu Kerberos.
 5. Prohlížeč, pak vyžádá lístek ze služby Active Directory pro `AZUREADSSOACC` účet počítače (což představuje Azure AD).
 6. Služby Active Directory vyhledá účet počítače a vrátí lístek protokolu Kerberos v prohlížeči šifrován tajný klíč pro účet počítače.
-7. V prohlížeči předává lístek protokolu Kerberos je získat ze služby Active Directory do Azure AD (v jednom z [Azure AD adresy URL, dříve přidány do nastavení zóny intranetu prohlížeče](active-directory-aadconnect-sso-quick-start.md#step-3-roll-out-the-feature)).
+7. V prohlížeči předává lístek protokolu Kerberos, který ho získat ze služby Active Directory do Azure AD.
 8. Azure AD dešifruje lístek protokolu Kerberos, která zahrnuje identitu uživatele přihlášeni firemních zařízení pomocí dříve sdílený klíč.
 9. Po vyhodnocení, Azure AD buď vrátí token zpět do aplikace nebo vyzývá uživatel k provedení dodatečné důkazy, jako je Vícefaktorové ověřování.
 10. Pokud přihlášení uživatele je úspěšné, uživatel je možné získat přístup k aplikaci.
 
 Následující diagram znázorňuje všechny součásti a kroky.
 
-![Bezproblémové jednotného přihlašování](./media/active-directory-aadconnect-sso/sso2.png)
+![Bezproblémové jednotného přihlašování na - webové aplikace toku](./media/active-directory-aadconnect-sso/sso2.png)
 
 Bezproblémové jednotného přihlašování je oportunistické, což znamená, že pokud se nezdaří, přihlašování uživatelů spadne zpět na regulární chování – tj, uživatel musí zadat svoje heslo k přihlášení.
 
-## <a name="next-steps"></a>Další kroky
+### <a name="how-does-sign-in-on-a-native-client-with-seamless-sso-work"></a>Jak přihlášení na nativní klient s pracovní bezproblémové jednotné přihlašování?
+
+Tok přihlášení na nativního klienta vypadá takto:
+
+1. Uživatel se pokusí získat přístup k nativní aplikaci (například klient Outlooku) z připojených k doméně podnikové zařízení uvnitř firemní sítě.
+2. Pokud již není přihlášený uživatel, nativní aplikace načte uživatelské jméno uživatele z relace systému Windows v zařízení.
+3. Aplikace odešle uživatelské jméno do služby Azure AD a načte koncový bod MEX WS-Trust vašeho klienta.
+4. Aplikace pak dotazuje koncový bod MEX WS-Trust pro případ, integrované ověřování koncový bod je k dispozici.
+5. Pokud krok 4 úspěšné, je vydána výzvy protokolu Kerberos.
+6. Pokud aplikace je možné načíst lístek protokolu Kerberos, předá ji až koncový bod integrované ověřování služby Azure AD.
+7. Azure AD dešifruje lístek protokolu Kerberos a ověří jeho platnost.
+8. Azure AD přihlášení uživatele v a vydá SAML token do aplikace.
+9. Aplikace pak odešle token SAML, který má koncový bod tokenu OAuth2 Azure AD.
+10. Azure AD ověří SAML token a problémy v aplikaci přístupový token a obnovovací token pro zadaný prostředek a id token.
+11. Uživatel získá přístup k prostředku aplikace.
+
+Následující diagram znázorňuje všechny součásti a kroky.
+
+![Bezproblémové jedním přihlásit - tok nativní aplikace](./media/active-directory-aadconnect-sso/sso14.png)
+
+## <a name="next-steps"></a>Další postup
 
 - [**Rychlý Start** ](active-directory-aadconnect-sso-quick-start.md) – zprovoznění a systémem Azure bezproblémové jednotného přihlašování k AD.
 - [**Nejčastější dotazy** ](active-directory-aadconnect-sso-faq.md) -odpovědi na nejčastější dotazy.

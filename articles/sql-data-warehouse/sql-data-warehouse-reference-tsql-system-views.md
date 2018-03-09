@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 01/22/2018
 ms.author: barbkess
-ms.openlocfilehash: 9c686c9cd4f9baf4f2c13194e58aadc9ebec0a24
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 83b951ff64577eec92b1144b842f5f90190fda56
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="system-views"></a>Systémová zobrazení
 ## <a name="sql-data-warehouse-catalog-views"></a>Zobrazení katalogu SQL Data Warehouse
@@ -209,6 +209,8 @@ SQL Data Warehouse a Analytics Platform System Parallel Data Warehouse (PDW) pou
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](http://msdn.microsoft.com/library/ms188778.aspx) |
 
 ## <a name="sql-server-2016-polybase-dmvs-available-in-sql-data-warehouse"></a>SQL Server 2016 PolyBase zobrazení dynamické správy k dispozici v SQL Data Warehouse
+Následující zobrazení dynamické správy se dají použít pro SQL Data Warehouse, ale je třeba spustit prostřednictvím připojení ke **hlavní** databáze.
+
 * [sys.dm_exec_compute_node_errors](http://msdn.microsoft.com/library/mt146380.aspx)
 * [sys.dm_exec_compute_node_status](http://msdn.microsoft.com/library/mt146382.aspx)
 * [sys.dm_exec_compute_nodes](https://msdn.microsoft.com/library/mt130700.aspx)

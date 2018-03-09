@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 11/06/2017
 ms.author: barbkess
-ms.openlocfilehash: b007e1894f163d50dbf31e3c09b4b5ff329adb59
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 5e7fd3c8790bb9a1a7ae8662f9a7047ae54892d2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>Správa statistiky u tabulek v SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -223,6 +223,11 @@ CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
 )
 AS
 
+IF @create_type IS NULL
+BEGIN
+    SET @create_type = 1;
+END;
+
 IF @create_type NOT IN (1,2,3)
 BEGIN
     THROW 151000,'Invalid value for @stats_type parameter. Valid range 1 (default), 2 (fullscan) or 3 (sample).',1;
@@ -275,7 +280,7 @@ SELECT  [table_schema_name]
         WHEN 2
         THEN    CAST('CREATE STATISTICS '+QUOTENAME('stat_'+table_schema_name+ '_' + table_name + '_'+column_name)+' ON '+QUOTENAME(table_schema_name)+'.'+QUOTENAME(table_name)+'('+QUOTENAME(column_name)+') WITH FULLSCAN' AS VARCHAR(8000))
         WHEN 3
-        THEN    CAST('CREATE STATISTICS '+QUOTENAME('stat_'+table_schema_name+ '_' + table_name + '_'+column_name)+' ON '+QUOTENAME(table_schema_name)+'.'+QUOTENAME(table_name)+'('+QUOTENAME(column_name)+') WITH SAMPLE '+@sample_pct+'PERCENT' AS VARCHAR(8000))
+        THEN    CAST('CREATE STATISTICS '+QUOTENAME('stat_'+table_schema_name+ '_' + table_name + '_'+column_name)+' ON '+QUOTENAME(table_schema_name)+'.'+QUOTENAME(table_name)+'('+QUOTENAME(column_name)+') WITH SAMPLE '+CONVERT(varchar(4),@sample_pct)+' PERCENT' AS VARCHAR(8000))
         END AS create_stat_ddl
 FROM T
 ;
@@ -297,11 +302,24 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-Vytvoření statistiky pro všechny sloupce v tabulce s tímto postupem, jednoduše voláním procedury.
+Vytvoření statistiky pro všechny sloupce v tabulce s využitím výchozí hodnoty, jednoduše voláním procedury.
 
 ```sql
-prc_sqldw_create_stats;
+EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
 ```
+Chcete-li vytvoření statistiky pro všechny sloupce v tabulce s využitím fullscan, volejte tento postup:
+
+```sql
+EXEC [dbo].[prc_sqldw_create_stats] 2, NULL;
+```
+Vytvořte vzorky statistiku pro všechny sloupce v tabulce, zadejte 3 a ukázkové procent.  Této procedury používá vzorkovací frekvence 20 procent.
+
+```sql
+EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
+```
+
+
+Chcete-li vytvořit vzorkovat statistiky pro všechny sloupce 
 
 ## <a name="examples-update-statistics"></a>Příklady: Aktualizovat statistiky
 Chcete-li aktualizovat statistiku, můžete:

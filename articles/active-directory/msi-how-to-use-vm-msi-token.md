@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
 ms.openlocfilehash: 3d9d4d682a25d11129e81855a6bf149ac1d5cff0
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Jak používat Azure virtuálního počítače spravované služby Identity (MSI) pro získání tokenu 
 

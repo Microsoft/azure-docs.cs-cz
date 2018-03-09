@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c3f47739f28e0b0b2a24fcea61b055071cba7d5
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: c532657951d6d0241a5d8d25a56bb237ad481567
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Příklad infrastruktury Azure návod pro virtuální počítače Windows
 Tento článek vás provede vytváření infrastruktury příklad aplikace. Jsme podrobnosti navrhování infrastruktury pro jednoduché online obchodu, která spojuje všechny pokyny a rozhodnutí, která kolem názvů, skupiny dostupnosti, virtuální sítě a nástroje pro vyrovnávání zatížení a ve skutečnosti nasazení virtuálních počítačů (VM).
@@ -61,7 +61,7 @@ Všechny výše použijte tyto zásady vytváření názvů:
 Společnosti Adventure Works Cycles je pomocí své podnikové předplatné s názvem společnosti Adventure Works podnikové předplatné, zajistit fakturace pro tuto úlohu IT.
 
 ## <a name="storage"></a>Úložiště
-Společnosti Adventure Works Cycles určit, že by měli používat Azure spravované disky. Při vytváření virtuálních počítačů, se používají i vrstvy úložiště k dispozici úložiště:
+Společnosti Adventure Works Cycles určit, že by měli používat Azure spravované disky. Při vytváření virtuálních počítačů, se používají oba vrstev úložiště k dispozici:
 
 * **Standardní úložiště** pro webové servery, aplikační servery a řadiče domény a jejich datových disků.
 * **Storage úrovně Premium** pro virtuální počítače serveru SQL a jejich datových disků.
@@ -78,7 +78,7 @@ Vytvářely jenom pro cloud virtuální síť s následujícím nastavením pomo
   * Název: front-endu
   * Adresní prostor: 10.0.1.0/24
 * Druhou podsíť:
-  * Název: back-end
+  * Name: BackEnd
   * Adresní prostor: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti

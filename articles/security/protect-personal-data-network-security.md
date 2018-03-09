@@ -1,6 +1,6 @@
 ---
 title: "Ochrana osobních dat pomocí funkce zabezpečení sítě Azure | Microsoft Docs"
-description: "Ochrana osobních dat pomocí funkce zabezpečení sítě Azure"
+description: "Ochrana osobních dat pomocí funkce zabezpečení sítě Azure. To může sloužit k dosažení souladu s obecné Data Protection nařízení (GDPR)"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 2510a4aed34b6a156cc9a9da6215de5956aac023
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 54aeb22a501e248105931df341d23e524448155a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-with-network-security-features-azure-application-gateway-and-network-security-groups"></a>Ochrana osobních dat pomocí funkce zabezpečení sítě: Azure Application Gateway a skupiny zabezpečení sítě
 
-Tento článek obsahuje informace a postupy, které vám pomohou používat Azure Application Gateway a skupiny zabezpečení sítě na ochranu osobních údajů.
+Tento článek obsahuje informace a postupy, které vám pomohou používat Azure Application Gateway a skupiny zabezpečení sítě na ochranu osobních údajů. Tyto informace mohou být užitečné v vaše snaze v souladu s obecné Data Protection nařízení (GDPR).
 
 Důležitým prvkem v strategie víceúrovňová zabezpečení k ochraně osobních údajů osobních údajů je obrana proti běžné zneužití ohrožení zabezpečení, například Injektáž SQL nebo skriptování mezi servery. Zachování nežádoucí síťový provoz z vaší Azure virtuální sítě přispívá k ochraně proti potenciální ohrožení citlivých dat a Microsoft Azure nabízí nástroje, které pomáhají chránit vaše data proti útočníkům.
 

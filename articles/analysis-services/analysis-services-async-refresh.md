@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 03/05/2018
 ms.author: owend
-ms.openlocfilehash: 1f31c05554db16d604a9825ef9b1317a0f281456
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4c317736af30b4181fa975713258a41b42ed0da3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace pomocí rozhraní REST API
 Pomocí žádný programovací jazyk, který podporuje volání REST, můžete provádět operace asynchronní aktualizace dat na vaše tabulkové modely služby Azure Analysis Services. To zahrnuje synchronizace repliky jen pro čtení pro dotaz Škálováním na více systémů. 
@@ -67,8 +67,11 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 Všechna volání musí být ověřeny pomocí platný token v hlavičce autorizace Azure Active Directory (OAuth 2) a musí splňovat následující požadavky:
 
 - Token musí být token uživatele nebo aplikaci instanční objekt.
-- Uživatel nebo aplikace musí mít dostatečná oprávnění na serveru nebo model pro požadovaný volání. Úroveň oprávnění je určen podle rolí v rámci modelu nebo skupiny správce na serveru.
 - Token musí mít na správnou cílovou skupinu nastavena na `https://*.asazure.windows.net`.
+- Uživatel nebo aplikace musí mít dostatečná oprávnění na serveru nebo model pro požadovaný volání. Úroveň oprávnění je určen podle rolí v rámci modelu nebo skupiny správce na serveru.
+
+    > [!IMPORTANT]
+    > V současné době **správce serveru** jsou požadována oprávnění role.
 
 ## <a name="post-refreshes"></a>POST /refreshes
 

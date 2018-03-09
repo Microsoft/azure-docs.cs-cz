@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 92f773d3bbabe763d342366f0d56a77621829487
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e9c6b85a439ba880c15ae16ab1cac093020430ba
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak vytvořit a nakonfigurovat Self-hosted integrace Runtime
 Integrační modul Runtime (IR) je na výpočetní infrastruktuře používá k zajištění funkce integrace dat různých prostředích sítě Azure Data Factory. Podrobnosti o IR najdete v tématu [Přehled integrace modulu Runtime](concepts-integration-runtime.md).
@@ -65,6 +65,7 @@ Zde je podrobný datový tok pro souhrn kroky pro kopírování s vlastním host
 - Integrace s vlastním hostováním runtime musí použít pro podporu integrace dat v rámci virtuální sítě Azure.
 - Váš zdroj dat považovat za zdroj dat na místě, (který je za bránou firewall) i při použití **ExpressRoute**. Navázat připojení mezi službou a zdroji dat pomocí modulu runtime vlastním hostováním integrace.
 - I v případě, že je úložiště dat v cloudu, je nutné použít modul runtime vlastním hostováním integrace **virtuálního počítače Azure IaaS**.
+- Úlohy mohou selhat v modulu Runtime integrace Self-hosted nainstalovaná v systému Windows Server, na které se standardem FIPS je povolené šifrování. Chcete-li tento problém obejít, zakažte kompatibilní se standardem FIPS šifrování na serveru.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -182,7 +183,7 @@ Modul runtime integrace hostitelská služba se automaticky restartuje, po ulož
 Po integraci s vlastním hostováním runtime byl úspěšně zaregistrován, pokud chcete zobrazit nebo aktualizovat nastavení proxy serveru, použijte integrace modulu Runtime Configuration Manager.
 
 1.  Spusťte **nástroje Configuration Manager Microsoft integrace modulu Runtime**.
-2.  Přepnout **nastavení** kartě.
+2.  Přepněte na kartu **Nastavení**.
 3.  Klikněte na tlačítko **změnu** na odkaz v **server Proxy protokolu HTTP** části spustíte **nastavení proxy serveru HTTP** dialogové okno.
 4.  Po kliknutí **Další** tlačítko se zobrazí dialog s upozorněním žádostí o oprávnění k uložení nastavení proxy serveru a restartujte službu hostitel běhu integrace.
 

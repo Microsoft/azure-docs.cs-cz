@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 28d772df384e620c7e82812adfa2bfa148401132
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 15f87ba87d90cee765f52d3188796bc1ff7b8a35
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Uchování IP adresu pro převzetí služeb při selhání virtuálního počítače Azure
 
@@ -88,7 +88,7 @@ Brány sítě VPN využívat veřejné IP adresy a segmentů směrování brány
 
 Tato funkce je aktuálně ve verzi public preview a je rozbalována pro podporu více oblastí – povolení přímé připojení virtuálních počítačů do virtuálního počítače bez zapojení žádné veřejný internet nebo žádné další segmenty směrování.
 
-Další informace najdete v části [partnerského vztahu dokumentaci](../virtual-network/virtual-network-create-peering.md#register) a [ceny](https://azure.microsoft.com/en-us/pricing/details/virtual-network/).
+Další informace najdete v části [partnerského vztahu dokumentaci](../virtual-network/tutorial-connect-virtual-networks-portal.md#register) a [ceny](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ## <a name="on-premises-to-azure-connectivity"></a>Připojení na místní do Azure
 

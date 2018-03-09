@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 0319a7b9248dec9d7cdabba9c18a25463d94284b
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 47cca0c3b6b7010323dd816cdb863c652516bfe5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>Předávání zpráv o stavu úlohy a datové proudy úlohy z Automatizace analýzy protokolů (OMS)
 Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pracovního prostoru analýzy protokolů Microsoft Operations Management Suite (OMS). Protokoly úlohy a datové proudy úlohy jsou viditelné na portálu Azure nebo v prostředí PowerShell pro jednotlivé úlohy a to umožňuje provádět jednoduché šetření. Pomocí analýzy protokolů můžete nyní:
@@ -69,7 +69,7 @@ Pokud potřebujete najít *název* účtu Automation na portálu Azure vyberte s
 
 Po spuštění tohoto skriptu, zobrazí se záznamy v analýzy protokolů během deseti minut nové JobLogs nebo JobStreams zapisovaný.
 
-Pokud chcete zobrazit protokoly, spusťte následující dotaz ve vyhledávání protokolu analýzy protokolů:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION""`
+Pokud chcete zobrazit protokoly, spusťte následující dotaz ve vyhledávání protokolu analýzy protokolů: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Ověření konfigurace
 Pokud chcete potvrdit, že váš účet Automation odesílá protokoly do pracovního prostoru analýzy protokolů, zkontrolujte, zda diagnostiky jsou správně nakonfigurovány na účtu Automation pomocí prostředí PowerShell následující:
@@ -104,11 +104,11 @@ Diagnostika z Azure Automation vytvoří dva typy záznamů v analýzy protokol�
 | ID prostředku |Určuje id prostředku účet Azure Automation runbook. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet služby Automation. |
 | ResourceGroup | Název skupiny prostředků pro účet služby Automation. |
-| ResourceProvider | SPOLEČNOSTI MICROSOFT. AUTOMATIZACE |
+| ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
 
-### <a name="job-streams"></a>Datové proudy úlohy
+### <a name="job-streams"></a>Job Streams
 | Vlastnost | Popis |
 | --- | --- |
 | TimeGenerated |Datum a čas provedení úlohy runbooku. |
@@ -127,13 +127,13 @@ Diagnostika z Azure Automation vytvoří dva typy záznamů v analýzy protokol�
 | ID prostředku |Určuje id prostředku účet Azure Automation runbook. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet služby Automation. |
 | ResourceGroup | Název skupiny prostředků pro účet služby Automation. |
-| ResourceProvider | SPOLEČNOSTI MICROSOFT. AUTOMATIZACE |
+| ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-log-analytics"></a>Zobrazení automatizace přihlásí analýzy protokolů
 Teď, když jste spustili, odesílání protokolů úlohy služby Automation k analýze protokolů, podíváme se, co můžete dělat s tyto protokoly uvnitř analýzy protokolů.
 
-Pokud chcete zobrazit protokoly, spusťte následující dotaz:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+Pokud chcete zobrazit protokoly, spusťte následující dotaz: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>Odeslat e-mail, dojde k selhání úlohy runbooku nebo pozastaví
 Jeden z horní zákazník požádá, je pro možnost odesílat e-mailem nebo jako text v případě problémů s úlohy runbooku.   
@@ -141,7 +141,7 @@ Jeden z horní zákazník požádá, je pro možnost odesílat e-mailem nebo jak
 Pokud chcete vytvořit pravidlo výstrahy, začněte vytvořením hledání protokolů pro záznamy úlohy sady runbook, které by měla vyvolat výstrahu. Klikněte **výstraha** tlačítko Vytvořit a nakonfigurovat pravidlo výstrahy.
 
 1. Na stránce Přehled protokolu Analytics klikněte na tlačítko **hledání protokolů**.
-2. Vytvoření vyhledávací dotaz protokolu pro upozornění zadáním následujících hledání do pole dotazu: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")` můžete taky Seskupit podle RunbookName pomocí:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
+2. Vytvoření vyhledávací dotaz protokolu pro upozornění zadáním následujících hledání do pole dotazu: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")` můžete taky Seskupit podle RunbookName pomocí: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    Pokud jste nastavili protokolů z více než jeden účet Automation nebo odběr do pracovního prostoru, můžete je seskupovat vaše předplatné a účet Automation. Název účtu Automation naleznete v poli prostředků v hledání JobLogs.
 1. Chcete-li otevřít **přidat pravidlo výstrahy** obrazovky, klikněte na tlačítko **výstrah** v horní části stránky. Další informace o možnostech konfigurace upozornění najdete v tématu [výstrahy v analýzy protokolů](../log-analytics/log-analytics-alerts.md#alert-rules).
@@ -170,7 +170,7 @@ Odeslání dat datového proudu a stav úlohy automatizace k analýze protokolů
 
 Log Analytics poskytuje větší provozní viditelnost do automatizace úloh a může pomoct adresu incidenty rychlejší.  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o tom, jak vytvořit různé vyhledávací dotazy a kontrolujte protokoly úlohy automatizace s analýzy protokolů najdete v tématu [přihlásit analýzy protokolů hledání](../log-analytics/log-analytics-log-searches.md).
 * Chcete-li pochopit, jak vytvořit a ze sady runbook načíst výstupní a chybové zprávy, přečtěte si téma [Runbook výstup a zprávy](automation-runbook-output-and-messages.md).
 * Další informace o spouštění runbooků, postupy při monitorování úloh runbooků a další technické podrobnosti najdete v článku [Sledování úlohy runbooku](automation-runbook-execution.md).

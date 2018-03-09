@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/16/2018
 ms.author: 
-ms.openlocfilehash: 5176f679971d542e67dfc6ff04a729fa52bc3f6e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 6713580325450d7548e63c78af4d44c65653f884
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Osvědčené postupy zabezpečení Azure a vzory
 
@@ -28,11 +28,12 @@ ms.lasthandoff: 02/22/2018
 * [Osvědčené postupy zabezpečení řízení správy identit Azure a přístup](azure-security-identity-management-best-practices.md)
 * [Osvědčené postupy zabezpečení sítě Azure](azure-security-network-security-best-practices.md)
 * [Osvědčené postupy zabezpečení provozu Azure](azure-operational-security-best-practices.md)
-* [Azure PaaS osvědčených postupů](https://docs.microsoft.com/azure/security/security-paas-deployments) 
-* [Azure Service Fabric osvědčené postupy zabezpečení](security-best-practices-and-patterns.md)
-* [Doporučené postupy pro zabezpečení virtuálního počítače Azure](azure-service-fabric-security-best-practices.md)
+* [Azure PaaS osvědčených postupů](security-paas-deployments.md) 
+* [Azure Service Fabric osvědčené postupy zabezpečení](azure-service-fabric-security-best-practices.md)
+* [Doporučené postupy pro zabezpečení virtuálního počítače Azure](azure-security-best-practices-vms.md)
 * [Implementace zabezpečené hybridní síťové architektury v Azure](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
-* [Osvědčené postupy pro zabezpečení Internetu věcí](azure-security-iot-best-practices.md)* [databáze PaaS zabezpečení v Azure](security-paas-applications-using-sql.md)
+* [Osvědčené postupy pro zabezpečení Internetu věcí](azure-security-iot-best-practices.md)
+* [Zabezpečení databáze PaaS v Azure](security-paas-applications-using-sql.md)
 * [Zabezpečení PaaS webové a mobilní aplikace pomocí služby Azure App Service](security-paas-applications-using-app-services.md)
 * [Zabezpečení webových a mobilních aplikací PaaS pomocí Azure Storage](security-paas-applications-using-storage.md)
 * [Osvědčené postupy zabezpečení pro úlohy IaaS v Azure](azure-security-iaas.md)

@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: troubleshooting
 ms.date: 02/21/2018
 ms.author: raynew
-ms.openlocfilehash: 249de45dbd9bedf1b3c2d2a5957acf31d6c0d243
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: e1e7a1a57f780ef477379dfb1ceaead0c8654970
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 02/23/2018
 To může dojít, pokud je počítač, který používáte za proxy server. Zkontrolujte, zda že je zadat přihlašovací údaje pro autorizaci, pokud potřebovat proxy server.
 Pokud používáte žádné brány firewall založená na adresu URL proxy serveru k řízení odchozí připojení, nezapomeňte seznamu povolených IP adres, že následující požadované adresy URL:
 
-**Adresa URL** | Účel  
+**Adresa URL** | **Účel**  
 --- | ---
 *.portal.azure.com | Vyžaduje se zkontrolovat připojení ke službě Azure a ověřit synchronizaci času problémy.
 *.oneget.org | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu.
@@ -126,5 +126,23 @@ Chcete-li shromažďovat trasování událostí pro Windows, postupujte takto:
 7. Zavřete nástroje pro vývojáře.
  
 
+## <a name="vcenter-errors"></a>vCenter chyby
 
+### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Došlo k chybě UnhandledException vnitřní chyba: System.IO.FileNotFoundException
+
+Jedná se o problém jsme si ukazovali tady kolekce verze nižší než 1.0.9.5. Pokud jste na verzi kolekce 1.0.9.2 nebo verze pre-GA jako 1.0.8.59, budete mít potíže. Postupujte podle [propojit danou zde ve fórech pro podrobné odpovědí](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate).
+
+[Upgradu vaší kolekce vyřešit problém,](https://aka.ms/migrate/col/checkforupdates).
+
+### <a name="error-unabletoconnecttoserver"></a>Error UnableToConnectToServer
+
+Nelze se připojit k systému vCenter Server "Servername.com:9443" kvůli chybě: koncový bod, naslouchá na https://Servername.com:9443 nebo sdk, který může přijmout zprávu.
+
+To se stane, když kolekce počítače se nepodařilo vyřešit zadaný název serveru vCenter nebo speficified portu je nesprávný. Ve výchozím nastavení Pokud není port určen, kolekce se pokusí připojit k číslo portu 443.
+
+1. Zkuste příkaz ping Servername.com z počítače kolekce.
+2. Pokud krok 1 nezdaří, zkuste se připojit k serveru vCenter přes IP adresu.
+3. Určete číslo správný port pro připojení k systému vCenter.
+4. Nakonec zkontrolujte, jestli je vCenter server spuštěná.
+ 
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: c0686e3fe129abcdcecc5870f7384dd68271e7b3
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 51ca159945098c2467124db07f68caf06794b9e3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Vytvoření virtuální sítě partnerský vztah – Resource Manager, různých předplatných 
 
@@ -29,7 +29,7 @@ Postup vytvoření virtuální sítě partnerského vztahu se liší v závislos
 
 |Model nasazení Azure  | Předplatné Azure  |
 |--------- |---------|
-|[I Resource Manager](virtual-network-create-peering.md) |stejné|
+|[I Resource Manager](tutorial-connect-virtual-networks-portal.md) |stejné|
 |[Jeden Resource Manager, jeden classic](create-peering-different-deployment-models.md) |stejné|
 |[Jeden Resource Manager, jeden classic](create-peering-different-deployment-models-subscriptions.md) |Odlišné|
 

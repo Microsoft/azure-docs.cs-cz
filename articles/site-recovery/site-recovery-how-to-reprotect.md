@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2018
 ms.author: rajanaki
 ms.openlocfilehash: c336966f9a785707e76bc6a10c4a9283d797d064
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Znovu nastavte ochranu z Azure do místního serveru
 
@@ -203,8 +203,8 @@ To replicate back to on-premises, you will need a failback policy. This policy g
 3. V **hlavní cílový Server** a **procesový Server**, vyberte místní hlavní cílový server a procesový server.
 4. Pro **úložiště**, vyberte úložiště dat, ke které chcete obnovit disky na místě. Tato možnost se používá při odstranění virtuálního počítače na místě, a budete muset vytvořit nové disky. Tato možnost je ignorována, pokud disky již existují, ale stále je třeba zadat hodnotu.
 5. Vyberte jednotky pro uchovávání dat.
-6. Zásady navrácení služeb po obnovení je automaticky vybrán.
-7. Klikněte na tlačítko **OK** zahájíte nové provedení ochrany. Úlohu začne replikovat virtuální počítač z Azure do místní lokality. Průběh můžete sledovat na **úlohy** kartě.
+6. Automaticky se vyberou zásady navrácení služeb po obnovení.
+7. Kliknutím na **OK** zahajte opětovné nastavování ochrany. Úloha začne replikovat virtuální počítač z Azure do místní lokality. Průběh můžete sledovat na kartě **Úlohy**.
 
 Pokud chcete obnovit do alternativního umístění (při odstranění virtuálního počítače místní), vyberte jednotka pro uchování a úložiště dat, které jsou nakonfigurované pro hlavní cílový server. Pokud žádnou zpět na místní lokalitu, virtuální počítače VMware v plánu ochrany navrácení služeb po obnovení použití stejné úložiště jako hlavní cílový server. Nový virtuální počítač se pak vytvoří v vCenter.
 
@@ -214,7 +214,7 @@ Pokud chcete obnovit virtuální počítač na platformě Azure k existující m
 Znovu nastavte ochranu můžete také na úrovni plánu obnovení. Replikační skupiny můžete reprotected pouze prostřednictvím plán obnovení. Pokud jste znovu nastavte ochranu pomocí plán obnovení, budete muset zadat hodnoty pro každý chráněný počítač.
 
 > [!NOTE]
-> Použijte stejný hlavní cílový server k nastavení opětné replikační skupiny. Pokud používáte jiný hlavní cílový server k nastavení opětné skupiny replikace, nemůže server poskytovat společný bod v čase.
+> K znovunastavení ochrany replikační skupiny použijte stejný hlavní cílový server. Pokud k znovunastavení ochrany replikační skupiny použijete jiný hlavní cílový server, nemůže server zajistit společný bod v čase.
 
 > [!NOTE]
 > Místní virtuální počítač je vypnutý během vytvoření. To pomáhá zajistit konzistenci dat během replikace. Nezapínejte virtuálního počítače, po dokončení vytvoření.

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: jimdial
-ms.openlocfilehash: f4908963e0650be9b12b745f6868a1ba6ad933e4
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: c0017b8759a1f01b010172be562ed869d1d51a25
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Vytvoření virtuálního počítače s Windows pomocí Accelerated sítě
 
 > [!IMPORTANT] 
-> Virtuální počítače musí být vytvořeny pomocí Accelerated sítě povolené. Tato funkce nelze povolit na existujících virtuálních počítačů. Provedením následujících kroků a umožňují Zrychlený sítí
+> Virtuální počítače musí být vytvořeny pomocí Accelerated sítě povolené. Tato funkce nelze povolit na existujících virtuálních počítačů. Proveďte následující kroky k povolení Zrychlený sítě:
 >   1. Odstranění virtuálního počítače
 >   2. Znovu vytvořte virtuální počítač s Zrychlený sítě povolené
 >
@@ -60,6 +60,8 @@ Při použití této funkce, existují tato omezení:
 * **Vytvoření rozhraní sítě:** Accelerated sítě lze povolit pouze pro nový síťový adaptér. Nelze nastavit pro existující síťovou.
 * **Vytvoření virtuálního počítače:** A síťovým Adaptérem s Zrychlený sítě povolené lze připojit pouze k virtuálnímu počítači, když je vytvořen virtuální počítač. Síťový adaptér nelze připojit k existující virtuální počítač. Pokud Přidání virtuálního počítače do existující dostupnosti nastavena, všechny virtuální počítače v sadě dostupnosti musí také mít accelerated sítě povolené.
 * **Nasazení prostřednictvím Správce Azure Resource Manager pouze:** virtuálních počítačů (klasické) nelze nasadit pomocí Accelerated sítě.
+
+I když tento článek obsahuje kroky k vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí prostředí Azure PowerShell, můžete také [vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí portálu Azure](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při vytváření virtuálního počítače s podporovaným operačním systémem a velikost virtuálního počítače na portálu, v části **nastavení**, vyberte **povoleno** pod **Accelerated sítě**. Po vytvoření virtuálního počítače, které potřebujete k dokončení podle pokynů v [Přesvědčte se ovladače je nainstalována v operačním systému](#confirm-the-driver-is-installed-in-the-operating-system).
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -130,7 +132,7 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 ```
 
 ## <a name="create-a-network-interface-with-accelerated-networking"></a>Vytvořte síťové rozhraní s Zrychlený sítě
-Vytvoření veřejné IP adresy s [New-AzureRmPublicIpAddress](/powershell/module/AzureRM.Network/New-AzureRmPublicIpAddress). Veřejná IP adresa není povinné, pokud neplánujete pro přístup k virtuálnímu počítači z Internetu, ale pokud chcete provést kroky v tomto článku, je potřeba.
+Vytvořte veřejnou IP adresu pomocí rutiny [New-AzureRmPublicIpAddress](/powershell/module/AzureRM.Network/New-AzureRmPublicIpAddress). Veřejná IP adresa není povinné, pokud neplánujete pro přístup k virtuálnímu počítači z Internetu, ale pokud chcete provést kroky v tomto článku, je potřeba.
 
 ```powershell
 $publicIp = New-AzureRmPublicIpAddress `

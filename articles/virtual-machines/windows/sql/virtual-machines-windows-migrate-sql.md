@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jroth
-ms.openlocfilehash: 23538e933c8d1c2165cec1bdf1e9db28e0065801
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 64245a968eca94518d2e4238b4bc5c93c952563a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Migrovat databázi SQL Serveru na SQL Server na virtuálním počítači Azure
 
@@ -96,6 +96,9 @@ Použití [metoda importu/exportu služby systému Windows](../../../storage/com
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o spuštění systému SQL Server na virtuálních počítačích Azure najdete v tématu [SQL Server na virtuálních počítačích Azure přehled](virtual-machines-windows-sql-server-iaas-overview.md).
+
+> [!TIP]
+> Pokud máte dotazy týkající se virtuální počítače systému SQL Server, najdete v článku [– nejčastější dotazy](virtual-machines-windows-sql-server-iaas-faq.md).
 
 Pokyny pro vytvoření virtuálního počítače serveru SQL Azure ze zaznamenané bitové kopie, naleznete v části [tipy a triky na klonování virtuálních počítačích Azure SQL ze zaznamenané bitové kopie](https://blogs.msdn.microsoft.com/psssql/2016/07/06/tips-tricks-on-cloning-azure-sql-virtual-machines-from-captured-images/) na blogu technici serveru SQL šablon stylů CSS.
 

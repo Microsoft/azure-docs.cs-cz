@@ -5,14 +5,14 @@ services: virtual-machines-windows, virtual-machines-linux
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 03/01/2018
+ms.date: 03/05/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 34b38ff02d401e87be10f1f72cb2025b66317c9e
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 8614fa7a52c91419c66782f7434692228e6b18d2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 Grafický procesor optimalizované virtuálních počítačů velikosti jsou k dispozici jeden nebo více grafickými procesory NVIDIA specializované virtuálních počítačů. Tyto velikosti jsou navrženy pro úlohy náročné na výkon, velmi náročná na výkon grafiky a vizualizace. Tento článek obsahuje informace o počet a typ grafickými procesory, Vcpu, datové disky a síťové adaptéry a také úložiště propustnost a šířku pásma sítě pro každou velikost v této skupině. 
 
@@ -95,14 +95,16 @@ Grafický procesor 1 = P40 karet.
 
 ## <a name="nv-series"></a>NV-Series
 
-VS series jsou zapnuté podle [NVIDIA tesla – měrná M60 ](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) grafickými procesory a mřížky NVIDIA technologie pro plochu accelerated aplikace a virtuální plochy kde Zákazníci mohou vizualizovat svoje data nebo simulace. Uživatelé mohou k vizualizaci své grafiky náročné pracovní postupy v rámci instancí vs získat nadřízená grafiky schopnosti a navíc spouštět úlohy a jednoduchou přesností například kódování a vykreslování. 
+VS series virtuální počítače jsou zapnuté podle [NVIDIA tesla – měrná M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) grafickými procesory a mřížky NVIDIA technologie pro plochu accelerated aplikace a virtuální plochy kde Zákazníci mohou vizualizovat svoje data nebo simulace. Uživatelé mohou k vizualizaci své grafiky náročné pracovní postupy v rámci instancí vs získat nadřízená grafiky schopnosti a navíc spouštět úlohy a jednoduchou přesností například kódování a vykreslování. 
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV6 |6 |56 |380 | 1 | 24 | 1 |
-| Standard_NV12 |12 |112 |680 | 2 | 48 | 2 |
-| Standard_NV24 |24 |224 |1440 | 4 | 64 | 4 |
+Každý GPU vs instancí se dodává s licenci mřížky. Tuto licenci vám umožní používat instanci vs jako virtuální pracovní stanice pro jednoho uživatele nebo 25 souběžných uživatelů můžete připojit k virtuálnímu počítači pro scénář virtuální aplikace.
+
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet | Virtuální pracovní stanice | Virtuální aplikace | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_NV6 |6 |56 |380 | 1 | 24 | 1 | 1 | 25 |
+| Standard_NV12 |12 |112 |680 | 2 | 48 | 2 | 2 | 50 |
+| Standard_NV24 |24 |224 |1440 | 4 | 64 | 4 | 4 | 100 |
 
 1 GPU = polovina karty M60.
 
-
+ 

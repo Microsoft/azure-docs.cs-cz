@@ -1,6 +1,6 @@
 ---
 title: "Ochrana osobních údajů v přenosu pomocí šifrování v Azure | Microsoft Docs"
-description: "Použití šifrování v Azure k ochraně osobních údajů"
+description: "informace o Azure šifrování na ochranu osobních údajů může být užitečné ve snaze o souladu s obecné Data Protection nařízení (GDPR)."
 services: security
 documentationcenter: na
 author: Barclayn
@@ -12,20 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 461ddfda796bfe6639e27f6c4cd53e82b4e397d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6975358d40206a497a53de16731d16ef374db905
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-in-transit-with-encryption"></a>Azure šifrovací technologie: ochrana osobních údajů v přenosu s šifrováním
 
-Tento článek vám pomůže pochopit a používat technologie Azure šifrování k zabezpečení dat při přenosu. 
-
-Ochrana osobních údajů osobních údajů při přenosu v síti je důležitou součástí strategie zabezpečení víceúrovňová obrany zabezpečení. Šifrování během přenosu je navržená tak, aby útočník, který zabrání přenosů nebudou moci zobrazit nebo použít data.
+Tento článek vám pomůže pochopit a používat technologie Azure šifrování k zabezpečení dat při přenosu. Ochrana osobních údajů osobních údajů při přenosu v síti je důležitou součástí strategie zabezpečení víceúrovňová obrany zabezpečení. Šifrování během přenosu je navržená tak, aby útočník, který zabrání přenosů nebudou moci zobrazit nebo použít data. Informace obsažené v tomto článku může být užitečné při organizaci ve snaze o souladu s obecné Data Protection nařízení (GDPR).
 
 ## <a name="scenario"></a>Scénář
 
@@ -167,7 +165,7 @@ Síť VPN Point-to-Site vytvoří zabezpečené připojení z jednotlivých klie
 
 Další podrobné pokyny naleznete v tématu [konfigurace připojení typu Point-to-Site k virtuální síti ověřování pomocí certifikátů: portál Azure.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
 
-### <a name="ssltls"></a>SSL/TLS.
+### <a name="ssltls"></a>SSL/TLS
 
 Společnost Microsoft doporučuje vždy používat protokoly SSL/TLS pro výměnu dat v různých umístěních. Organizace, které se rozhodnete použít [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) přesunout velké sady dat přes síť WAN vyhrazené vysokorychlostní můžete odkaz taky šifrování dat na úrovni aplikace pomocí protokolu SSL/TLS nebo jiné protokoly pro přidání ochrany.
 
@@ -185,7 +183,7 @@ Přenášená data zašifrována vždy v [Data Lake Store] (https://docs.microso
 
 Společnost můžete provést jeho cílem ochrany osobních údajů a ochrana osobních údajů těchto údajů vynucování připojení prostřednictvím protokolu HTTPS do služby Azure Storage, pomocí sdílené přístupové podpisy a povolení zabezpečení přenosu vyžaduje na účty úložiště. Pomocí připojení protokolu SMB 3.0 a implementaci šifrování na straně klienta taky chránit osobní údaje. Připojení Site-to-site VPN z podnikové sítě pro virtuální síť Azure a připojení VPN typu point-to-site z jednotlivých uživatelů vytvoří zabezpečené tunelové propojení, pomocí kterého můžete bezpečně cestují osobní data. Postupy šifrování výchozí společnosti Microsoft bude další ochrany osobních údajů osobních údajů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Doporučené postupy zabezpečení služby Azure Data a šifrování](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices)
 

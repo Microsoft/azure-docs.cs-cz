@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 03/05/2018
 ms.author: richrund
-ms.openlocfilehash: cea25429dc6e5f9f12f472d17e8743d272135257
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: db9b941e84c018a3a56dd683c118e47ee808259d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Spravovat pomocí šablony Azure Resource Manager analýzy protokolů
 Můžete použít [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) vytvořit a nakonfigurovat pracovní prostory analýzy protokolů. Mezi příklady úloh, které můžete provádět s šablonami patří:
@@ -31,7 +31,6 @@ Můžete použít [šablon Azure Resource Manageru](../azure-resource-manager/re
 * Shromáždit čítače výkonu z počítačů se systémy Linux a Windows
 * Shromažďování událostí z syslog počítačů se systémem Linux 
 * Shromažďování událostí z protokolů událostí systému Windows
-* Shromažďovat vlastní protokoly událostí
 * Přidat agenta analýzy protokolů pro virtuální počítač Azure
 * Konfigurace analýzy protokolů pro data indexu shromažďována pomocí Azure diagnostics
 
@@ -60,7 +59,6 @@ Znázorňuje následující ukázka šablony postup:
 7. Shromažďovat události procesu syslog z počítače se systémem Linux
 8. Shromažďování událostí chyb a upozornění z protokolu událostí aplikace z počítače se systémem Windows
 9. Shromažďovat čítač výkonu paměť v MB k dispozici z počítače se systémem Windows
-10. Shromažďovat vlastní protokol 
 11. Shromažďovat protokoly služby IIS a protokoly událostí systému Windows zapsaných správcem Azure diagnostiky do účtu úložiště
 
 ```json
@@ -295,61 +293,6 @@ Znázorňuje následující ukázka šablony postup:
         },
         {
           "apiVersion": "2015-11-01-preview",
-          "type": "datasources",
-          "name": "sampleCustomLog1",
-          "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
-          ],
-          "kind": "CustomLog",
-          "properties": {
-            "customLogName": "sampleCustomLog1",
-            "description": "test custom log datasources",
-            "inputs": [
-              {
-                "location": {
-                  "fileSystemLocations": {
-                    "windowsFileTypeLogPaths": [ "e:\\iis5\\*.log" ],
-                    "linuxFileTypeLogPaths": [ "/var/logs" ]
-                  }
-                },
-                "recordDelimiter": {
-                  "regexDelimiter": {
-                    "pattern": "\\n",
-                    "matchIndex": 0,
-                    "matchIndexSpecified": true,
-                    "numberedGroup": null
-                  }
-                }
-              }
-            ],
-            "extractions": [
-              {
-                "extractionName": "TimeGenerated",
-                "extractionType": "DateTime",
-                "extractionProperties": {
-                  "dateTimeExtraction": {
-                    "regex": null,
-                    "joinStringRegex": null
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "apiVersion": "2015-11-01-preview",
-          "type": "datasources",
-          "name": "sampleCustomLogCollection1",
-          "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
-          ],
-          "kind": "CustomLogCollection",
-          "properties": {
-            "state": "LinuxLogsEnabled"
-          }
-        },
-        {
-          "apiVersion": "2015-11-01-preview",
           "name": "[concat(parameters('applicationDiagnosticsStorageAccountName'),parameters('workspaceName'))]",
           "type": "storageinsightconfigs",
           "dependsOn": [
@@ -464,7 +407,7 @@ Znázorňuje následující ukázka šablony postup:
 ### <a name="deploying-the-sample-template"></a>Nasazení ukázkové šablony
 Pokud chcete nasadit šablonu ukázka:
 
-1. Například uložit do souboru připojené vzorku`azuredeploy.json` 
+1. Například uložit do souboru připojené vzorku `azuredeploy.json` 
 2. Upravit šablonu, kterou chcete mít požadovaná konfigurace
 3. Nasazení šablony pomocí Powershellu nebo příkazového řádku
 

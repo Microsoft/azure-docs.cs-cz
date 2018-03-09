@@ -1,10 +1,10 @@
-Aktualizace agenta synchronizace souboru Azure budou vydány v pravidelných intervalech přidat další nové funkce a chcete-li vyřešit potíže, které byly zjištěny. Doporučujeme nakonfigurovat Microsoft Update a načíst všechny aktualizace agenta synchronizace souboru Azure jako vydáváme nich. Chápeme, že některé organizace jako výhradně řídit a otestovat aktualizace. 
+Agent synchronizace souboru Azure se aktualizuje pravidelně přidat další nové funkce a řešit problémy. Doporučujeme, aby že konfigurace webu Microsoft Update a získat aktualizace pro agenta synchronizace souboru Azure, jako jsou k dispozici. Chápeme, že některé organizace mají výhradně řídit a otestovat aktualizace.
 
 Pro nasazení, které používají starší verze agenta synchronizace souboru Azure:
 
-- Synchronizační služba úložiště ctí předchozí hlavní verzi dobu tří měsíců po počáteční vydání nové hlavní verze. Synchronizační služba úložiště by například podporovat verze 1. \* až tři měsíců po vydání verze 2. \*.
-- Až po uplynutí tří měsíců, služby Sync úložiště začne blokovat registrované servery, které používají vypršela platnost verze ze synchronizace s jejich synchronizace skupiny.
-- V rámci tři měsíce pro předchozí hlavní verzi přejděte všechny opravy chyb jenom na aktuální hlavní verze.
+- Po počáteční vydání nové verze hlavní služby Sync úložiště ctí předchozí hlavní verzi na tři měsíce. Například služby Sync úložiště podporuje verze 1. \* po dobu tří měsíců po vydání verze 2. \*.
+- Po uplynutí tři měsíce, synchronizační služby úložiště bloků registrované servery s vypršenou platností verzí ze synchronizace s jejich synchronizace skupiny.
+- Během tři měsíce, které je dodržení předchozí hlavní verzi přejděte všechny opravy chyb jenom na aktuální hlavní verzi (Nový).
 
 > [!Note]  
-> Pokud budete používat verzi služby Azure File Sync, jejíž platnost během následujících tří měsíců vyprší, upozorníme vás na to informační zprávou na webu Azure Portal.
+> Pokud vyprší platnost vaší verze synchronizace souborů Azure do tří měsíců, zobrazení upozornění prostřednictvím informační zpráva v portálu Azure.

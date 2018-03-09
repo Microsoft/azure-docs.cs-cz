@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: c132baad4d26fe481fa022329da32815b6994ad7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7f82083cd18f762d1037da2ccf43e9d0c220fe09
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table úložiště vazby pro Azure Functions
 
@@ -89,7 +89,7 @@ public class TableStorage
     {
         foreach (MyPoco poco in pocos)
         {
-            log.Info($"PK={poco.PartitionKey}, RK={poco.RowKey}, Text={poco.Text}";
+            log.Info($"PK={poco.PartitionKey}, RK={poco.RowKey}, Text={poco.Text}");
         }
     }
 }
@@ -349,14 +349,14 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Typ** | neuvedeno | musí být nastavena na `table`. Tato vlastnost nastavena automaticky při vytvoření vazby na portálu Azure.|
-|**směr** | neuvedeno | musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytvoření vazby na portálu Azure. |
+|**Směr** | neuvedeno | musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytvoření vazby na portálu Azure. |
 |**name** | neuvedeno | Název proměnné, která představuje tabulky nebo entity v kód funkce. | 
 |**tableName** | **TableName** | Název tabulky.| 
 |**partitionKey** | **Klíč oddílu** |Volitelné. Klíč oddílu tabulka entity ke čtení. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak tuto vlastnost použít.| 
-|**rowKey** |**RowKey** | Volitelné. Klíč řádku entity tabulky ke čtení. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak tuto vlastnost použít.| 
+|**RowKey** |**RowKey** | Volitelné. Klíč řádku entity tabulky ke čtení. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak tuto vlastnost použít.| 
 |**proveďte** |**Take** | Volitelné. Maximální počet entit ke čtení v jazyce JavaScript. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak tuto vlastnost použít.| 
 |**Filtr** |**Filtr** | Volitelné. Výraz filtru OData pro tabulku, vstupní v jazyce JavaScript. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak tuto vlastnost použít.| 
-|**připojení** |**Připojení** | Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
+|**Připojení** |**Připojení** | Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -366,16 +366,14 @@ Vstupní vazbu tabulky úložiště podporuje následující scénáře:
 
 * **Přečtěte si jeden řádek v C# nebo skriptu jazyka C#**
 
-  Nastavit `partitionKey` a `rowKey`. Přístup k datům tabulky pomocí parametru metody `T <paramName>`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. `T`Obvykle se jedná o typ, který implementuje `ITableEntity` nebo odvozuje od `TableEntity`. `filter` a `take` vlastnosti nejsou v tomto scénáři používají. 
+  Nastavit `partitionKey` a `rowKey`. Přístup k datům tabulky pomocí parametru metody `T <paramName>`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. `T` Obvykle se jedná o typ, který implementuje `ITableEntity` nebo odvozuje od `TableEntity`. `filter` a `take` vlastnosti nejsou v tomto scénáři používají. 
 
 * **Přečtěte si jeden nebo více řádků v C# nebo skriptu jazyka C#**
 
-  Přístup k datům tabulky pomocí parametru metody `IQueryable<T> <paramName>`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. `T`musí být typ, který implementuje `ITableEntity` nebo odvozuje od `TableEntity`. Můžete použít `IQueryable` metod jakéhokoli filtrování vyžaduje. `partitionKey`, `rowKey`, `filter`, A `take` vlastnosti nejsou v tomto scénáři používají.  
+  Přístup k datům tabulky pomocí parametru metody `IQueryable<T> <paramName>`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. `T` musí být typ, který implementuje `ITableEntity` nebo odvozuje od `TableEntity`. Můžete použít `IQueryable` metod jakéhokoli filtrování vyžaduje. `partitionKey`, `rowKey`, `filter`, A `take` vlastnosti nejsou v tomto scénáři používají.  
 
 > [!NOTE]
-> `IQueryable`nelze použít v .NET Core, takže ho nebude fungovat [Functions v2 runtime](functions-versions.md).
-
-  Další možností je použít `CloudTable paramName` parametru metody ke čtení tabulky pomocí sady SDK úložiště Azure.
+> `IQueryable` není podporována v [Functions v2 runtime](functions-versions.md). Alternativou je [pomocí parametru metody paramName CloudTable](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) ke čtení tabulky pomocí sady SDK úložiště Azure.
 
 * **Přečtěte si jeden nebo více řádků v jazyce JavaScript**
 
@@ -608,12 +606,12 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Typ** | neuvedeno | musí být nastavena na `table`. Tato vlastnost nastavena automaticky při vytvoření vazby na portálu Azure.|
-|**směr** | neuvedeno | musí být nastavena na `out`. Tato vlastnost nastavena automaticky při vytvoření vazby na portálu Azure. |
+|**Směr** | neuvedeno | musí být nastavena na `out`. Tato vlastnost nastavena automaticky při vytvoření vazby na portálu Azure. |
 |**name** | neuvedeno | Název proměnné používá v kódu funkce, který představuje tabulky nebo entity. Nastavte na `$return` Chcete-li funkce návratovou hodnotu.| 
 |**tableName** |**TableName** | Název tabulky.| 
 |**partitionKey** |**Klíč oddílu** | Klíč oddílu tabulka entity k zápisu. Najdete v článku [oddíl využití](#output---usage) pokyny o tom, jak tuto vlastnost použít.| 
-|**rowKey** |**RowKey** | Klíč řádku entity tabulky pro zápis. Najdete v článku [oddíl využití](#output---usage) pokyny o tom, jak tuto vlastnost použít.| 
-|**připojení** |**Připojení** | Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
+|**RowKey** |**RowKey** | Klíč řádku entity tabulky pro zápis. Najdete v článku [oddíl využití](#output---usage) pokyny o tom, jak tuto vlastnost použít.| 
+|**Připojení** |**Připojení** | Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -623,11 +621,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 * **Zápis jeden řádek v libovolném jazyce**
 
-  V jazyce C# a C# skript, přístup k entitu výstupní tabulky pomocí parametru metody `out T paramName` nebo funkce vrátí hodnotu. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. `T`mohou být jakéhokoli typu serializable, pokud klíč oddílu a klíč řádku jsou poskytovány *function.json* souboru nebo `Table` atribut. V opačném `T` musí být typu, který zahrnuje `PartitionKey` a `RowKey` vlastnosti. V tomto scénáři `T` obvykle implementuje `ITableEntity` nebo odvozuje od `TableEntity`, ale nemusí to.
+  V jazyce C# a C# skript, přístup k entitu výstupní tabulky pomocí parametru metody `out T paramName` nebo funkce vrátí hodnotu. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. `T` mohou být jakéhokoli typu serializable, pokud klíč oddílu a klíč řádku jsou poskytovány *function.json* souboru nebo `Table` atribut. V opačném `T` musí být typu, který zahrnuje `PartitionKey` a `RowKey` vlastnosti. V tomto scénáři `T` obvykle implementuje `ITableEntity` nebo odvozuje od `TableEntity`, ale nemusí to.
 
 * **Vytvořit jeden nebo více řádků v C# nebo C#**
 
-  V jazyce C# a C# skript, přístup k entitu výstupní tabulky pomocí parametru metody `ICollector<T> paramName` nebo `ICollectorAsync<T> paramName`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. `T`Určuje schéma entity, které chcete přidat. Obvykle `T` je odvozena z `TableEntity` nebo implementuje `ITableEntity`, ale nemusí to. Klíč oddílu a řádku klíče hodnoty v *function.json* nebo `Table` nejsou v tomto scénáři používají konstruktoru atributu.
+  V jazyce C# a C# skript, přístup k entitu výstupní tabulky pomocí parametru metody `ICollector<T> paramName` nebo `ICollectorAsync<T> paramName`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. `T` Určuje schéma entity, které chcete přidat. Obvykle `T` je odvozena z `TableEntity` nebo implementuje `ITableEntity`, ale nemusí to. Klíč oddílu a řádku klíče hodnoty v *function.json* nebo `Table` nejsou v tomto scénáři používají konstruktoru atributu.
 
   Další možností je použít `CloudTable paramName` parametru metody k zápisu do tabulky pomocí sady SDK úložiště Azure.
 

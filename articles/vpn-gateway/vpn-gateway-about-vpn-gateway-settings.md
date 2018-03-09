@@ -13,19 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/12/2017
+ms.date: 03/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: d265c72cfc02710afb630f3b8258602c936d1ebc
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: e4f02e2b001b6821e732cead660aa0b758f1133e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>O nastavení konfigurace brány sítě VPN
 
 Brána sítě VPN je typ brány virtuální sítě, které odesílá šifrovaný provoz mezi virtuální sítí a vaše místní umístění přes připojení veřejné. Brána sítě VPN můžete použít také k posílání provozu mezi virtuálními sítěmi přes páteřní strukturu Azure.
 
 Připojení k bráně VPN závisí na konfiguraci více prostředků, z nichž každý obsahuje konfigurovat nastavení. Části v tomto článku popisují prostředky a nastavení, které se týkají brány VPN pro virtuální síti vytvořené v modelu nasazení Resource Manager. Můžete najít popisy a diagramy topologie pro každé připojení řešení v [o službě VPN Gateway](vpn-gateway-about-vpngateways.md) článku.
+
+>[!NOTE]
+> Hodnoty v tomto článku se týkají brány virtuální sítě, které použijte parametr-GatewayType 'Vpn'. To je důvod, proč jsou označovány jako brány sítě VPN. Hodnoty, které platí pro - GatewayType 'ExpressRoute, naleznete v části [brány virtuální sítě pro ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md). Hodnoty pro brány ExpressRoute nejsou stejné hodnoty, které používáte pro brány VPN.
+>
+>
 
 ## <a name="gwtype"></a>Typy brány
 
@@ -52,7 +57,7 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-the-gateway-sku"></a>Konfigurace skladová položka brány
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Pokud používáte portál Azure k vytvoření brány virtuální sítě Resource Manager, můžete vybrat SKU brány pomocí rozevíracího seznamu. Možnosti, které se zobrazí s odpovídají typ brány a typ sítě VPN, který jste vybrali.
 
@@ -120,7 +125,7 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 Před vytvořením brány VPN, musíte vytvořit podsíť brány. Podsíť brány obsahuje IP adresy, které používají bránu virtuální sítě virtuálních počítačů a služeb. Když vytvoříte bránu virtuální sítě, virtuální počítače brány jsou nasazené na podsíť brány a nakonfigurovaný pomocí požadovaného nastavení brány sítě VPN. Nikdy jakékoli jiné (například další virtuální počítače) musíte nasadit na podsíť brány. Podsíť brány musí mít název "GatewaySubnet" správně fungovat. Pojmenování podsíť brány "GatewaySubnet" umožňuje vědět, že se jedná o podsítě k nasazení brány virtuální sítě virtuálních počítačů a služeb do Azure.
 
-Při vytváření podsítě brány zadáte počet IP adres, které podsíť obsahuje. IP adresy v podsíti brány mají při přidělování brány virtuální počítače a služby brány. Některé konfigurace vyžadují více IP adres než jiné. Podívejte se na pokyny pro konfiguraci, kterou chcete vytvořit a ověřit, jestli podsíť brány, kterou chcete vytvořit splňuje tyto požadavky. Kromě toho můžete ujistěte, že podsítě brány obsahuje dost IP adres, aby dokázala pojmout možné budoucí další konfigurace. Můžete si sice vytvořit podsíť brány jako malé/29, doporučujeme vytvořit podsíť brány/28 nebo větší (/ 28, / 27, /26 atd.). Tímto způsobem, pokud přidáte funkci v budoucnu nebudete mít k oddělení bránu, pak odstraňte a vytvořte znovu podsíť brány, aby bylo možné víc IP adres.
+Při vytváření podsítě brány zadáte počet IP adres, které podsíť obsahuje. IP adresy v podsíti brány mají při přidělování brány virtuální počítače a služby brány. Některé konfigurace vyžadují víc IP adres než jiné. Podívejte se na pokyny pro konfiguraci, kterou chcete vytvořit a ověřit, jestli podsíť brány, kterou chcete vytvořit splňuje tyto požadavky. Kromě toho můžete ujistěte, že podsítě brány obsahuje dost IP adres, aby dokázala pojmout možné budoucí další konfigurace. Můžete si sice vytvořit podsíť brány jako malé/29, doporučujeme vytvořit podsíť brány/28 nebo větší (/ 28, / 27, /26 atd.). Tímto způsobem, pokud přidáte funkci v budoucnu nebudete mít k oddělení bránu, pak odstraňte a vytvořte znovu podsíť brány, aby bylo možné víc IP adres.
 
 Následující příklad správce prostředků PowerShell ukazuje podsíť brány s názvem GatewaySubnet. Uvidíte, že zápis CIDR Určuje velikost/27, která umožňuje dost IP adres pro většinu konfigurace, které aktuálně neexistuje.
 
@@ -155,6 +160,6 @@ Další zdroje technických informací a specifickou syntaxi požadavky při pou
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | Nepodporuje se | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o konfiguracích dostupné připojení najdete v tématu [o službě VPN Gateway](vpn-gateway-about-vpngateways.md).

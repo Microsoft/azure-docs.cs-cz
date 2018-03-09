@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 01/08/2018
+ms.date: 03/06/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 21511b37eba2cd2e87d8720f3e9cfe453b50d88c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 409bb14635afbfc6d31efd853837677c74851b41
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Spolupráce Azure Active Directory s B2B nejčastější dotazy
 
@@ -84,8 +84,8 @@ Ano. Tady jsou důležité podrobnosti o samoobslužné resetování hesla (SSPR
 ### <a name="is-password-reset-available-for-guest-users-in-a-just-in-time-jit-or-viral-tenant-who-accepted-invitations-with-a-work-or-school-email-address-but-who-didnt-have-a-pre-existing-azure-ad-account"></a>Je resetování hesla k dispozici pro uživatele typu Host v v běhu (JIT) nebo "virální" klientů, kteří přijali pozvánek s pracovním nebo školním e-mailovou adresu, ale který neměly existující účet Azure AD?
 Ano. A heslo resetovat poštu lze odeslat buď, která umožňuje uživatelům resetovat heslo v JIT klientů.
 
-### <a name="does-microsoft-dynamics-crm-provide-online-support-for-azure-ad-b2b-collaboration"></a>Poskytuje Microsoft Dynamics CRM online podpory společnosti Microsoft pro spolupráci Azure AD B2B?
-V současné době Microsoft Dynamics CRM neposkytuje online podporu pro spolupráci Azure AD B2B. Plánujeme však nepodporují v budoucnu.
+### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Poskytuje Microsoft Dynamics 365 online podpory společnosti Microsoft pro spolupráci Azure AD B2B?
+Ano, Dynamics 365 (online) poskytuje podporu pro spolupráci Azure AD B2B. Další informace najdete v článku Dynamics 365 [pozvat uživatele s spolupráce Azure AD B2B](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Co je životnost počátečního hesla pro nově vytvořeného uživatele spolupráce B2B?
 Azure AD má pevnou sadu znaků, síly hesla a účet, který uzamčení požadavky, které se rovněž vztahují na všechny Azure AD cloud uživatelské účty. Cloud uživatelské účty jsou účty, které nejsou Federovaná pomocí jiného poskytovatele identity, jako například 

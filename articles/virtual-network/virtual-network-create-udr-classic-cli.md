@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: 8fcb98723e7e872c932908e3456dc8680deb0901
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6bfdfcdde39d64d662bb6d2ea55fadca24d49091
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Řídit směrování a použití virtuálních zařízení (klasické) pomocí rozhraní příkazového řádku Azure
 
 > [!div class="op_single_selector"]
-> * [PowerShell](virtual-network-create-udr-arm-ps.md)
-> * [Azure CLI](virtual-network-create-udr-arm-cli.md)
+> * [PowerShell](tutorial-create-route-table-powershell.md)
+> * [Azure CLI](tutorial-create-route-table-cli.md)
 > * [Šablona](virtual-network-create-udr-arm-template.md)
 > * [PowerShell (Classic)](virtual-network-create-udr-classic-ps.md)
 > * [Rozhraní příkazového řádku (Classic)](virtual-network-create-udr-classic-cli.md)
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/21/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Tento článek se týká modelu nasazení Classic. Můžete také [řídit směrování a použití virtuálních zařízení v modelu nasazení Resource Manager](virtual-network-create-udr-arm-cli.md).
+Tento článek se týká modelu nasazení Classic. Můžete také [řídit směrování a použití virtuálních zařízení v modelu nasazení Resource Manager](tutorial-create-route-table-cli.md).
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 

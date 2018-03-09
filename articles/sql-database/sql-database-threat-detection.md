@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 06/19/2017
 ms.author: ronmat
-ms.openlocfilehash: 889f65a796aee20d7902964b8c47af46dd9149cb
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: a01721b10305ac45082943fbe4fb7fb199a0e49f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="sql-database-threat-detection"></a>Detekce hrozeb databáze SQL
 
@@ -30,7 +30,7 @@ Detekce hrozeb SQL poskytuje novou vrstvu zabezpečení, která uživatelům umo
 
 Například Injektáž SQL je jedním z běžné problémy zabezpečení webových aplikací na Internetu, slouží k útokům na základě dat aplikace. Útočníci využít výhod ohrožení zabezpečení aplikace se zlými úmysly příkazy SQL, do pole pro zadání aplikací, vložit před nedodržením nebo upravovat data v databázi.
 
-Detekce hrozeb SQL integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/), a každé chráněné databáze SQL serveru se fakturuje za stejnou cenu jako Azure Security Center standardní vrstvy v $15 uzlu/měsíc, kde každé chráněné databáze SQL Server se počítá jako jeden uzel.  
+Detekce hrozeb SQL integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/), a každé chráněné databáze SQL serveru se fakturuje za stejnou cenu jako Azure Security Center standardní vrstvy v $15 uzlu/měsíc, kde každé chráněné databáze SQL Server se počítá jako jeden uzel.  
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Nastavení detekce hrozeb pro vaši databázi na portálu Azure
 1. Spuštění portálu Azure v [https://portal.azure.com](https://portal.azure.com).
@@ -54,13 +54,13 @@ Příklad skriptu najdete v tématu [konfigurace auditování a zjišťování h
    E-mailu obsahuje informace o události podezřelé zabezpečení, včetně povahu neobvyklé aktivity, název databáze, název serveru, název aplikace a čas události. Kromě toho e-mailu obsahuje informace o možné příčiny a doporučené akce ke zkoumání a zmírnit potenciální hrozbu do databáze.<br/>
      
     ![Navigační podokno][4]
-2. E-mailové upozornění obsahuje přímý odkaz na protokol auditování SQL. Kliknutím na tento odkaz spuštění portálu Azure a otevře se záznamy auditu SQL v době podezřelé události. Klikněte na záznam auditu zobrazíte další podrobnosti o činnostech podezřelé databáze, bylo snazší najít příkazy SQL, které byly provedeny (který přístup, co se a kdy) a zjistěte, zda událost legitimní nebo škodlivý (například byl zneužití ohrožení zabezpečení aplikace k Injektáž SQL, někdo nedodržení citlivá data, atd.).<br/>
+2. E-mailové upozornění obsahuje přímý odkaz na protokol auditování SQL. Kliknutím na tento odkaz spuštění portálu Azure a otevře se záznamy auditu SQL v době podezřelé události. Klikněte na záznam auditu zobrazíte další informace o činnosti podezřelé databáze, bylo snazší najít příkazy SQL, které byly provedeny (který přístup, co se a kdy) a zjistěte, zda událost legitimní nebo škodlivý (například aplikace chyby na Injektáž SQL, někdo nedodržení citlivá data, atd.).<br/>
    ![Navigační podokno][5]
 
 
 ## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Seznamte se výstrah o zjištěných hrozbách pro vaši databázi na portálu Azure
 
-Detekce hrozeb databáze SQL se integruje se jeho výstrahy s [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/). Živé dlaždice zabezpečení SQL v rámci stránky databáze na portálu Azure sleduje stav active hrozeb. 
+Detekce hrozeb databáze SQL se integruje se jeho výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/). Živé dlaždice zabezpečení SQL v rámci stránky databáze na portálu Azure sleduje stav active hrozeb. 
 
    ![Navigační podokno][6]
    
@@ -75,10 +75,10 @@ Detekce hrozeb databáze SQL se integruje se jeho výstrahy s [Azure Security Ce
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o detekce hrozeb najdete [Azure blog](https://azure.microsoft.com/en-us/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/) 
+* Další informace o detekce hrozeb najdete [Azure blog](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/) 
 * Další informace o [auditování databáze SQL Azure](sql-database-auditing.md)
 * Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Další podrobnosti o cenách najdete v tématu [stránky SQL Database – ceny](https://azure.microsoft.com/en-us/pricing/details/sql-database/)  
+* Další informace o cenách najdete v tématu [stránky SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database/)  
 * Příklad skriptu prostředí PowerShell, najdete v části [konfigurace auditování a zjišťování hrozeb pomocí prostředí PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md)
 
 

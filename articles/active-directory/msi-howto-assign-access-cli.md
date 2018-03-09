@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 09/25/2017
 ms.author: daveba
 ms.openlocfilehash: 90a7ec3059b6905e4aa660f538c299f3e8dedaae
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>Přiřadit identita spravované služby (MSI) přístup k prostředku pomocí rozhraní příkazového řádku Azure
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/02/2018
 
 Po konfiguraci prostředek služby Azure s MSI, můžete zajistit přístup MSI pro jiný prostředek, stejně jako libovolný zaregistrovaný objekt zabezpečení. Tento příklad ukazuje, jak poskytnout přístup MSI sadě škálování virtuálního počítače nebo virtuální počítač Azure na účet úložiště Azure, pomocí rozhraní příkazového řádku Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -64,7 +64,7 @@ Můžete po povolení MSI na prostředek služby Azure, například [virtuální
    az role assignment create --assignee $spID --role 'Reader' --scope /subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/myStorageAcct
    ```
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud soubor MSI pro prostředek nezobrazuje v seznamu dostupných identit, ověřte, aby byla správně povolená soubor MSI. V našem případě jsme se vrátit k virtuální počítač Azure nebo sad škálování virtuálního počítače [portál Azure](https://portal.azure.com) a:
 
