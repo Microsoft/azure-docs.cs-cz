@@ -27,7 +27,8 @@
 ### [Skupiny zabezpečení sítě](virtual-networks-nsg.md)
 
 ## Nasazení
-### [Virtuální sítě](virtual-networks-create-vnet-arm-pportal.md)
+### Virtuální sítě
+#### [portál Azure Portal](virtual-networks-create-vnet-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
 #### [Azure CLI](virtual-networks-create-vnet-arm-cli.md)
 #### [Šablona](virtual-networks-create-vnet-arm-template-click.md)
@@ -42,17 +43,20 @@
 ##### [Azure PowerShell](virtual-networks-create-nsg-classic-ps.md)
 ##### [Azure CLI 1.0](virtual-networks-create-nsg-classic-cli.md)
 
-### Trasy definované uživatelem
-#### [portál Azure Portal](create-user-defined-route-portal.md)
-#### [Azure PowerShell](virtual-network-create-udr-arm-ps.md)
-#### [Azure CLI](virtual-network-create-udr-arm-cli.md)
+### Směrovací tabulky
+#### [portál Azure Portal](tutorial-create-route-table-portal.md)
+#### [Azure PowerShell](tutorial-create-route-table-powershell.md)
+#### [Azure CLI](tutorial-create-route-table-cli.md)
 #### [Šablona](virtual-network-create-udr-arm-template.md)
 #### Classic
 ##### [Azure PowerShell](virtual-network-create-udr-classic-ps.md)
 ##### [Azure CLI](virtual-network-create-udr-classic-cli.md)
 
 ### Partnerské vztahy virtuálních sítí
-#### [Stejný model nasazení, stejné předplatné](virtual-network-create-peering.md)
+#### Stejný model nasazení, stejné předplatné
+##### [portál Azure Portal](tutorial-connect-virtual-networks-portal.md)
+##### [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md)
+##### [Azure CLI](tutorial-connect-virtual-networks-cli.md)
 #### [Stejný model nasazení, různá předplatná](create-peering-different-subscriptions.md)
 #### [Různé modely nasazení, stejné předplatné](create-peering-different-deployment-models.md)
 #### [Různé modely nasazení, různá předplatná](create-peering-different-deployment-models-subscriptions.md)

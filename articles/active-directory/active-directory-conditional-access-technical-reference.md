@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2018
+ms.date: 03/07/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 66e3207898d6ad8ca9af2b969942e38321c191a5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ba93e1b597bb6bdb752563f2873b8e0c5f7a8181
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -136,12 +136,19 @@ Toto nastavení funguje u všech prohlížečů. Splňovat zásady pro zařízen
 | macOS                  | Chrome, Safari                      | ![Zaškrtnout][1] |
 
 
-> [!NOTE]
-> Pro podporu Chrome ve Windows 10 Creators Update (verze 1703) nebo novější, nainstalovat [toto rozšíření](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).<br>
-> Pro podporu Chrome ve Windows 8.1 a 7, vytvořte následující klíč registru v **HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls** <br>
-> Název: 1<br>
-> Typ: REG_SZ (String)<br>
-> Data: {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
+
+#### <a name="chrome-support"></a>Podpora Chrome
+
+Pro Chrome podporovat v **Windows 10 Creators Update (verze 1703)** nebo novější, nainstalujte [toto rozšíření](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
+
+Pro Chrome podporovat v **Windows 8.1 a 7**, vytvořte následující klíč registru:
+
+|    |    |
+|--- | ---|
+|Cesta | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+|Název | 1 |
+|Typ | REG_SZ (String) |
+|Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 Ověřování zařízení umožňuje zařízení identifikovat a ověřovat s zásadu podporují tyto prohlížeče. Kontrola zařízení selže, pokud je v prohlížeči spuštění v privátním režimu. 
 
@@ -186,6 +193,10 @@ V zásadách podmíněného přístupu můžete vyžadovat, aby přístup pokus�
 Toto nastavení platí pro následující aplikace klienta:
 
 
+- Microsoft Intune Managed Browser
+- Microsoft PowerBI
+- Microsoft fakturace
+- Microsoft Launcher
 - Microsoft Azure Information Protection
 - Microsoft Excel
 - Microsoft Kaizala 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 0a4f6a5940ccffe897a5609b837ddaeea98d87aa
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8078591b1e2ad120190a23dd29800bd0f1ae33ea
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-cost-management-reports"></a>Použití sestav Cost Managementu
 
@@ -103,7 +103,7 @@ Předchozí obrázek znázorňuje amortized náklady na nákladů na rezervace A
 
 Sestavy analýzy přidělení náklady jsou k dispozici po vytvoření náklady model pomocí 360 přidělení náklady. Cloudyn zpracovává náklady nebo fakturační údaje a odpovídá data se využití a značky data vaše cloudové účty. Cloudyn tak, aby odpovídaly data, vyžaduje přístup k data o využití. Účty, kterým chybí přihlašovací údaje jsou označeny jako Nezařazeno do kategorie prostředky.
 
-### <a name="cost-analysis-report"></a>Sestava analýzy náklady
+### <a name="cost-analysis-report"></a>Sestava analýzy nákladů
 
 Sestava analýzy náklady poskytuje náhled do vaší spotřeby cloudu a výdaje během vybraný časový rámec. Zásady nastavené v správce přidělení náklady se používají v sestavě analýzy náklady.
 
@@ -152,7 +152,7 @@ Pomocí sestavy náklady v čase do:
 3. Přidejte skupiny.
 4. Vyberte náklady na model, který jste vytvořili dříve.
 5. Vyberte skutečné náklady a náklady na amortizovaný.
-6. Vyberte, zda chcete použít pravidla přidělení pro zobrazení nezpracovaná fakturace zobrazení dat nebo k přepočítat náklady Cloudyn zobrazení.
+6. Vyberte, zda chcete použít pravidla přidělení pro zobrazení nezpracovaná fakturace zobrazení dat nebo k přepočítat náklady na zobrazení.
 
 Tady je příklad sestavy.
 

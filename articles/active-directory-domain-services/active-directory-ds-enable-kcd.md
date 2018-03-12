@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/07/2018
 ms.author: maheshu
-ms.openlocfilehash: cd730d2224babe0c44d4c1d90106d44994536d29
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6ed797ca25161919ccf5e69be0073a67bfcef6d6
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Nakonfigurujte omezené delegování protokolu Kerberos (použitím KCD) na spravované doméně
 Mnoho aplikací potřebovat přístup k prostředkům v kontextu uživatele. Služba Active Directory podporuje mechanismus delegování protokolu Kerberos, která umožňuje tento případ použití volat. Navíc můžete omezit delegování tak, aby se dalo přistupovat pouze konkrétní prostředky v kontextu uživatele. Spravované domény služby Azure AD Domain Services se liší od tradiční domén služby Active Directory, vzhledem k tomu, že jsou zamčené bezpečněji dolů.
@@ -28,7 +28,7 @@ Tento článek ukazuje, jak nakonfigurovat omezené delegování protokolu Kerbe
 ## <a name="kerberos-constrained-delegation-kcd"></a>Omezené delegování protokolu Kerberos (použitím KCD)
 Delegování protokolu Kerberos umožňuje účet zosobnění jiný objekt zabezpečení (například uživatel) pro přístup k prostředkům. Vezměte v úvahu webové aplikace, který přistupuje k back endové webové rozhraní API v kontextu uživatele. V tomto příkladu webové aplikace (spuštěn v kontextu účtu služby nebo účet počítače) zosobňuje uživatele při přístupu k prostředku (back endové webové rozhraní API). Delegování protokolu Kerberos je nezabezpečené, protože se neomezuje z prostředků, které vydává za jiný účet přístup v kontextu uživatele.
 
-sKerberos omezeného delegování (použitím KCD) omezuje služby nebo prostředky, ke kterým může zadaný server fungovat jménem uživatele. Tradiční použitím KCD vyžaduje oprávnění správce domény nakonfigurovat účet domény pro službu a omezuje účet na jedinou doménu.
+Omezené delegování protokolu Kerberos (použitím KCD) omezuje služby nebo prostředky, ke kterým může zadaný server fungovat jménem uživatele. Tradiční použitím KCD vyžaduje oprávnění správce domény nakonfigurovat účet domény pro službu a omezuje účet na jedinou doménu.
 
 Tradiční použitím KCD má také několik problémů, které jsou s ním spojená. V dřívějších operačních systémech Pokud správce domény konfiguroval účet na základě použitím KCD pro službu, neměl Správce služeb nijak užitečné vědět, které front-endové služby delegované na služby prostředků vlastnil. A všechny front-endová služba, která mohla delegovat na službu prostředků reprezentována potenciální místo pro útok. Pokud serveru, který hostoval front-endové služby došlo k ohrožení, a že byl nakonfigurován pro delegoval na služby, služby prostředků může také dojít k ohrožení.
 

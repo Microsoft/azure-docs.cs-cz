@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/07/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 805e39dfdee3a23d4ddc196085be59788cee912a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4d2a00f04e5b07aeb3585fb3ab6c8966e0de7e19
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Databáze SQL pro použití v zásobníku Microsoft Azure
 
@@ -175,14 +175,17 @@ Tyto parametry můžete zadat na příkazovém řádku. Pokud ho použít nechce
 
 
 ## <a name="update-the-sql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>Aktualizace adaptéru pro zprostředkovatele prostředků SQL (více uzly jen sestavení 1710 a novější)
-Když jsou aktualizovány sestavení Azure zásobníku se může uvolnit nový adaptér zprostředkovatele prostředků SQL. Zatímco existující adaptér budou nadále fungovat, doporučujeme aktualizovat na nejnovější verzi co nejdříve. Aktualizace musí být nainstalované v pořadí: nedá přeskočit verze (viz výše uvedené tabulce).
+Nový adaptér zprostředkovatele prostředků SQL může vydala, když jsou aktualizovány sestavení Azure zásobníku. Zatímco existující adaptér fungovat, doporučujeme aktualizovat na nejnovější verzi co nejdříve. Aktualizace musí být nainstalované v pořadí: nedá přeskočit verze (najdete v tabulce v kroku 3 tohoto [nasazení poskytovatele prostředků](#deploy-the-resource-provider)).
 
-Proces aktualizace je podobný procesu instalace, který je popsán výše. Vytvoříte nový virtuální počítač s nejnovější kód zprostředkovatele prostředků. Kromě toho můžete migrovat nastavení do této nové instance, včetně databáze a hostování informace o serveru. Můžete také migrovat nezbytné záznam DNS.
+Aktualizovat zprostředkovatele prostředků použijete *UpdateSQLProvider.ps1* skriptu. Proces je podobný procesu použitý k instalaci zprostředkovatele prostředků, jak je popsáno v [nasazení poskytovatele prostředků](#deploy-the-resource-provider) tohoto článku. Skript je součástí stahování poskytovatele prostředků.
 
-Pomocí skriptu UpdateSQLProvider.ps1 s stejné argumenty, které jsme popsané výše. Také je nutné zadat certifikát zde.
+*UpdateSQLProvider.ps1* skript vytvoří nový virtuální počítač s nejnovější kód zprostředkovatele prostředků a migraci nastavení z původního virtuálního počítače do nového virtuálního počítače. Zahrnout nastavení, které provádějí migraci databáze a hostování informace o serveru, a potřebné DNS záznam.
+
+Skript vyžaduje použití stejné argumenty, které jsou popsány DeploySqlProvider.ps1 skriptu. Zadejte certifikát zde také. 
 
 Doporučujeme si stáhnout nejnovější jádro systému Windows Server 2016 image z Marketplace správy. Pokud potřebujete nainstalovat aktualizace, můžete umístit jedné. Balíček MSU v cestě místní závislostí. Pokud je více než jeden. MSU nalezeno, skript selže.
 
+Následuje příklad *UpdateSQLProvider.ps1* skript, který můžete spustit z příkazového řádku prostředí PowerShell. Nezapomeňte změnit informace o účtu a hesla podle potřeby: 
 
 > [!NOTE]
 > Proces aktualizace se vztahuje pouze na integrované systémy.

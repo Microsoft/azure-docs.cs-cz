@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: brenduns
 ms.reviewer: 
-ms.openlocfilehash: 8ec733c01b19f01951d0b53265daaef32c3afe73
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 544fc1bcc9212fd38938d58447f5050df2a08796
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connect-azure-stack-to-azure-using-expressroute"></a>Připojit zásobník Azure do Azure pomocí služby ExpressRoute
 
@@ -273,7 +273,7 @@ Příklad Azure síťové infrastruktury je nakonfigurovat následujícím způs
 3. Vytvořte ramenem virtuální síť a podsíť pomocí zápisu 10.100.0.0/16 rozsahu adres.
 
 
-Další informace o vytváření virtuálních sítí v Azure najdete v tématu [vytvořit virtuální síť s více podsítěmi](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Další informace o vytváření virtuálních sítí v Azure najdete v tématu [vytvořit virtuální síť](../virtual-network/manage-virtual-network.md#create-a-virtual-network).
 
 ### <a name="configure-an-expressroute-circuit"></a>Nakonfigurujte okruh ExpressRoute
 
@@ -531,7 +531,7 @@ route-map VNET-ONLY permit 10
 !
 ```
 
-## <a name="test-the-connection"></a>Otestovat připojení
+## <a name="test-the-connection"></a>Otestování připojení
 
 Vyzkoušejte připojení po navázání připojení Site-to-Site a ExpressRoute s okruhem expressroute. Tato úloha je jednoduché.  Přihlaste se do jednoho z virtuálních počítačů, které jste vytvořili ve vaší virtuální síti Azure a pomocí příkazu ping virtuálnímu počítači, který jste vytvořili v prostředí Azure zásobníku nebo naopak. 
 

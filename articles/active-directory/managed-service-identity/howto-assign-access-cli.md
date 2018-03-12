@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: daveba
-ms.openlocfilehash: 9e5a10531ac919fd54785666e9a66fb4b4431f42
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ca228a99eec1d376e456f5730aaaf8c569620f43
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>Přiřadit identita spravované služby (MSI) přístup k prostředku pomocí rozhraní příkazového řádku Azure
 
@@ -41,7 +41,7 @@ Pokud chcete spustit skript příklady rozhraní příkazového řádku, máte t
 
 Můžete po povolení MSI na prostředek služby Azure, například [virtuální počítač Azure](qs-configure-cli-windows-vm.md) nebo [škálovací sadu virtuálních počítačů Azure](qs-configure-cli-windows-vmss.md): 
 
-1. Pokud používáte Azure CLI v místní konzole, nejdřív přihlásit k Azure pomocí [az přihlášení](/cli/azure/#az_login). Používáte účet, který je přidružen k předplatnému Azure, pod kterou chcete nasadit škálovací sadu virtuálních počítačů nebo virtuální počítač:
+1. Pokud používáte Azure CLI v místní konzole, nejdřív přihlásit k Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login). Používáte účet, který je přidružen k předplatnému Azure, pod kterou chcete nasadit škálovací sadu virtuálních počítačů nebo virtuální počítač:
 
    ```azurecli-interactive
    az login

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 510efc4ae6674a3987c2bb5d7cd155ea8c710c83
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 179a669e4c9567950d22ed76a693ec6ab7a2db8d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Koncepty návrhu
 Účelem tohoto tématu je k popisu oblastí, které musí považovat při návrhu implementace služby Azure AD Connect. Toto téma se podrobné informace o určité oblasti a tyto koncepty stručně jsou popsány v i další témata.
@@ -42,7 +42,7 @@ Hodnota atributu musí postupujte podle následujících pravidel:
 
 * Být menší než 60 znaků.
   * Kódování a počítají jako znaky 3 znaky nebude a – z, A-Z nebo 0-9
-* Neobsahuje zvláštní znak: &#92;! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
+* Neobsahuje zvláštní znak: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
 * Musí být globálně jedinečný
 * Musí být řetězec, celé číslo nebo binárního souboru
 * By neměl být založené na jméno uživatele, tyto změny
@@ -172,13 +172,13 @@ Předpokládejme, že jste nasadili Azure AD Connect s povolenou funkcí Consist
 
 ![Přidávání nových adresářů do stávajícího nasazení](./media/active-directory-aadconnect-design-concepts/consistencyGuid-04.png)
 
-## <a name="azure-ad-sign-in"></a>Azure AD přihlášení
+## <a name="azure-ad-sign-in"></a>Přihlášení k Azure AD
 Při integraci místního adresáře do Azure AD, je důležité pochopit, jak nastavení synchronizace může ovlivnit způsob uživatel se ověřuje. Azure AD userPrincipalName (UPN) používá k ověření uživatele. Při synchronizaci vaši uživatelé však musíte zvolit atribut, který se použije pro hodnotu userPrincipalName pečlivě.
 
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>Výběr atribut userPrincipalName
 Při výběru atribut pro zajištění hodnotu UPN, které mají být použity v Azure jeden zajistil
 
-* Hodnoty atributu odpovídat UPN syntaxi (RFC 822), který je, že by mělo být ve formátuusername@domain
+* Hodnoty atributu odpovídat UPN syntaxi (RFC 822), který je, že by mělo být ve formátu username@domain
 * Přípona v hodnoty odpovídá jednomu z ověřené vlastní domény ve službě Azure AD
 
 V nastavení express je předpokládané volba pro atribut userPrincipalName. Pokud atribut userPrincipalName neobsahuje hodnotu mají vaši uživatelé přihlásit k platformě Azure, pak je nutné vybrat **vlastní instalace**.
@@ -195,5 +195,5 @@ Některé organizace mají směrovat domény, jako je contoso.local nebo jednodu
 
 Azure AD Connect zjistí, pokud běží v prostředí domény směrovat a bude odpovídajícím způsobem upozornit z pokračovat Expresní nastavení. Pokud pracujete v směrovat doméně, je pravděpodobné, že jména UPN uživatelů mít příliš směrovat přípony. Například pokud používáte v contoso.local, Azure AD Connect navrhuje vám umožní používat vlastní nastavení místo použitím expresního nastavení. Pomocí vlastních nastavení, budete moci zadat atribut, který má být použit jako hlavní název uživatele pro přihlášení k Azure po uživatelů se synchronizují do Azure AD.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).

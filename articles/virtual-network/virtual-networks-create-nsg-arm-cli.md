@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb99f121a1ddf079008ed97edde71b067d6b5edb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4827fabf1d8cde366dda8b3a782a2fefe01db8d5
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-network-security-groups-using-the-azure-cli"></a>Vytvořit síť pomocí rozhraní příkazového řádku Azure skupin zabezpečení
 
@@ -36,7 +36,7 @@ Následující vzorové příkazy příkazového řádku Azure CLI očekávají,
 
 Chcete-li vytvořit skupinu NSG s názvem *NSG front-endu* založená na předchozím scénáři, postupujte podle následujících kroků.
 
-1. Pokud nebyly dosud, nainstalovat a nakonfigurovat nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure účet pomocí [az přihlášení](/cli/azure/#az_login). 
+1. Pokud nebyly dosud, nainstalovat a nakonfigurovat nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure účet pomocí [az přihlášení](/cli/azure/reference-index#az_login). 
 
 2. Vytvoření pomocí NSG [vytvořit az sítě nsg](/cli/azure/network/nsg#az_network_nsg_create) příkaz. 
 

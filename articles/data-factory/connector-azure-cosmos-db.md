@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: c791f335bfa9ec6073eb83149068571ceb253f82
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b54aba19ecb92867bc817cbbb921f4e6537ef70c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopírovat data z databáze Cosmos Azure pomocí Azure Data Factory
 
@@ -125,7 +125,7 @@ Ke zkopírování dat z Azure Cosmos DB, nastavte typ zdroje v aktivitě kopíro
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **DocumentDbCollectionSource** |Ano |
-| query |Zadejte dotaz Cosmos DB číst data.<br/><br/>Příklad:`SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Ne <br/><br/>Pokud není zadaný příkaz jazyka SQL, který se spustí:`select <columns defined in structure> from mycollection` |
+| query |Zadejte dotaz Cosmos DB číst data.<br/><br/>Příklad: `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Ne <br/><br/>Pokud není zadaný příkaz jazyka SQL, který se spustí: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |Speciální znak indikující, že dokument je vnořený a jak chcete flattern nastavte výsledek.<br/><br/>Například, pokud Cosmos DB dotaz vrací vnořené výsledek `"Name": {"First": "John"}`, aktivity kopírování bude určovat název sloupce jako "Name.First" s hodnotou "Jan" při nestedSeparator je tečkou. |Ne (výchozí hodnota je tečkou `.`) |
 
 **Příklad:**
@@ -162,7 +162,7 @@ Ke zkopírování dat z Azure Cosmos DB, nastavte typ zdroje v aktivitě kopíro
 
 ### <a name="azure-cosmos-db-as-sink"></a>Azure DB Cosmos jako jímku
 
-Ke zkopírování dat z Azure Cosmos DB, nastavte typ jímky v aktivitě kopírování do **DocumentDbCollectionSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Ke zkopírování dat do Azure Cosmos DB, nastavte typ jímky v aktivitě kopírování do **DocumentDbCollectionSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |

@@ -40,6 +40,9 @@
 ### [Správa zařízení s využitím rozšíření IoT pro Azure CLI 2.0](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
 ### [Vzdálené monitorování a oznámení s využitím Logic Apps](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
+## Použití MXChip IoT DevKit
+### [Překlad hlasové zprávy pomocí Azure Cognitive Services](iot-hub-arduino-iot-devkit-az3166-translator.md)
+
 # Návody
 ## Plánování
 ### [Porovnání služeb IoT Hub a Event Hubs](iot-hub-compare-event-hubs.md)

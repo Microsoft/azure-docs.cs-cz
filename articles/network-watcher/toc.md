@@ -73,6 +73,7 @@
 ### [Vizualizace provozu sítě s využitím opensourcových nástrojů](network-watcher-using-open-source-tools.md)
 ## Analýza protokolů toku NSG
 ### [Čtení protokolů toku NSG](network-watcher-read-nsg-flow-logs.md)
+### [Použití analýzy provozu](traffic-analytics.md)
 ### [Použití Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 ### [Použití Elastic Stack](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ### [Použití Grafana](network-watcher-nsg-grafana.md)

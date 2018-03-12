@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f7cbdae0a9b66bbc7f22030ad5aaadfc40cc7777
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1def417f97a94fa0770b99606cd3a68189d1d51b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="volumes-with-azure-files"></a>Svazky s soubory Azure
 
@@ -75,7 +75,7 @@ metadata:
  name: azure-files-pod
 spec:
  containers:
-  - image: neilpeterson/aks-helloworld
+  - image: microsoft/sample-aks-helloworld
     name: azure
     volumeMounts:
       - name: azure

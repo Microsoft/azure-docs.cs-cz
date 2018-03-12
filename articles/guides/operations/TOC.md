@@ -70,7 +70,7 @@
 ### [IP adresy v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Otevření portů k virtuálnímu počítači v Azure pomocí webu Azure Portal](../../virtual-machines/windows/nsg-quickstart-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
-## [Storage](azure-operations-guide.md#azure-storage)
+## [Úložiště](azure-operations-guide.md#azure-storage)
 
 ### [Azure Blob Storage](../../storage/blobs/storage-blob-storage-tiers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Začínáme s úložištěm Azure Blob pomocí rozhraní .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -78,7 +78,7 @@
 ### [Jak používat Azure File Storage s Linuxem](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Začínáme se službou Azure Table Storage](../../cosmos-db/table-storage-how-to-use-dotnet.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Začínáme se službou Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
+### [vytvořit účet úložiště](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
 ### [Použití Azure Powershell s Azure Storage](../../storage/common/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Použití Azure CLI s Azure Storage](../../storage/common/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Klientské nástroje pro Azure Storage](../../storage/common/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -88,9 +88,9 @@
 
 
 ## [Virtuální sítě](azure-operations-guide.md#azure-virtual-network)
-### [Vytvoření virtuální sítě pomocí webu Azure Portal](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Vytvoření virtuální sítě pomocí Azure PowerShellu](../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Vytvoření virtuální sítě pomocí Azure CLI](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Vytvoření virtuální sítě pomocí webu Azure Portal](../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Vytvoření virtuální sítě pomocí Azure PowerShellu](../../virtual-network/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Vytvoření virtuální sítě pomocí Azure CLI](../../virtual-network/quick-create-cli.md#create-a-virtual-network?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Filtrování provozu sítě s použitím skupin zabezpečení sítě](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Kurzy k virtuálním sítím
 #### [Vyrovnávání zatížení virtuálních počítačů](../../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)

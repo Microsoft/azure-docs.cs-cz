@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: c205023b025a477ee05ddcbfc536573f31426167
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: a18718aba3ef7f70caa541c6eb56311082d02bed
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: problémy s agenta nebo rozšíření
 
@@ -30,9 +30,6 @@ Tento článek obsahuje kroky řešení potíží, které vám mohou pomoci vyř
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Agent virtuálního počítače nemůže komunikovat s Azure Backup
 
 Chybová zpráva: "Nelze navázat komunikaci s Azure Backup Agent virtuálního počítače"
-
-> [!NOTE]
-> Pokud váš virtuální počítač Azure s Linuxem zálohování se nezdaří s touto chybou od 4 ledna 2018, spusťte následující příkaz ve virtuálním počítači a poté opakujte zálohování:`sudo rm -f /var/lib/waagent/*.[0-9]*.xml`
 
 Po registraci a naplánovat virtuálního počítače pro službu zálohování, zálohování spustí úlohu komunikaci s agentem virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Při aktivaci snímku není zálohování může selhat. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:
 
@@ -58,9 +55,8 @@ Chybová zpráva: "VMSnapshot rozšíření operace se nezdařilo"
 Po registraci a naplánovat virtuálního počítače pro službu Azure zálohování, zálohování spustí úlohu komunikaci s rozšíření zálohování virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud není aktivované snímku, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:  
 **Příčina 1: [nelze načíst stav snímku ani snímku nelze provést.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **Příčina 2: [rozšíření zálohování se nezdaří aktualizace nebo zatížení](#the-backup-extension-fails-to-update-or-load)**  
-**Příčina 3: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**  
-**Příčina 4: [je agent nainstalován ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Příčina 5: [agent nainstalovaný ve virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**Příčina 3: [je agent nainstalován ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**Příčina 4: [agent nainstalovaný ve virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Zálohování se nezdaří, protože agent virtuálního počítače je reagovat
 
@@ -151,12 +147,12 @@ Většina související s agenta nebo rozšíření selhání pro virtuální po
  > [!NOTE]
  > Jsme *důrazně doporučujeme* aktualizovat agenta pouze prostřednictvím distribuční úložiště. Nedoporučujeme stáhne kód agenta přímo z Githubu a jeho aktualizaci. Pokud nejnovější verzi agenta pro distribuční není k dispozici, obraťte distribuční podporu pokyny o tom, jak ji nainstalovat. Chcete-li vyhledat nejnovější agenta, přejděte na [Windows Azure Linux agent](https://github.com/Azure/WALinuxAgent/releases) stránky v úložišti GitHub.
 
-2. Ujistěte se, že Azure agent běží ve virtuálním počítači tak, že spustíte následující příkaz:`ps -e`
+2. Ujistěte se, že Azure agent běží ve virtuálním počítači tak, že spustíte následující příkaz: `ps -e`
 
  Pokud proces není spuštěná, restartujte ji pomocí následujících příkazů:
 
- * Pro Ubuntu:`service walinuxagent start`
- * Pro ostatní distribuce:`service waagent start`
+ * Pro Ubuntu: `service walinuxagent start`
+ * Pro ostatní distribuce: `service waagent start`
 
 3. [Konfigurace automatického restartování agenta](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Spusťte nové zálohování testu. Je-li chyba přetrvávat, shromážděte tyto protokoly z virtuálního počítače:
@@ -168,7 +164,7 @@ Většina související s agenta nebo rozšíření selhání pro virtuální po
 Pokud jsme vyžadovat podrobné protokolování pro příkaz waagent, postupujte podle těchto kroků:
 
 1. V souboru /etc/waagent.conf vyhledejte následující řádek: **zapnout podrobné protokolování (y | n)**
-2. Změna **Logs.Verbose** z hodnoty  *n*  k *y*.
+2. Změna **Logs.Verbose** z hodnoty *n* k *y*.
 3. Změnu uložíte a znovu spusťte příkaz waagent pomocí kroků popsaných výše v této části.
 
 ###  <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Nelze načíst stav snímku ani snímku nelze provést.
@@ -179,7 +175,6 @@ Zálohování virtuálních počítačů spoléhá na vydání snímku příkazu
 
 | Příčina | Řešení |
 | --- | --- |
-| Virtuální počítač má nakonfigurované zálohování serveru SQL Server. | Ve výchozím nastavení zálohování virtuálních počítačů běží na svazku stínové kopie Service (VSS) úplného zálohování na virtuální počítače Windows. Na virtuální počítače, které jsou spuštěné na serveru SQL servery a na které systém SQL Server zálohování je nakonfigurované, může docházet k prodlevám provádění snímku.<br><br>Pokud dojde k selhání zálohování kvůli potížím snímek, nastavte následující klíč registru:<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
 | Stav virtuálního počítače je nesprávně uvést, protože virtuální počítač je vypnutý v protokolu RDP (Remote Desktop). | Pokud se vypnout virtuální počítač v protokolu RDP, zkontrolujte portálu k určení, zda je správný stav virtuálního počítače. Pokud není správný, vypněte virtuální počítač na portálu pomocí **vypnutí** možnost na řídicím panelu virtuálních počítačů. |
 | Virtuální počítač nemůže získat adresu hostitele nebo z prostředků infrastruktury z DHCP. | DHCP musí být povolen v hosta pro zálohování virtuálních počítačů IaaS pracovat. Pokud virtuální počítač nemůže získat adresu hostitele nebo z prostředků infrastruktury z odpovědi DHCP 245, nemůže stáhnout nebo spustit libovolné rozšíření. Pokud potřebujete statickou privátní IP adresu, můžete ho nakonfigurujte prostřednictvím platformy. Možnost DHCP ve virtuálním počítači by měly být vlevo povoleny. Další informace najdete v tématu [nastavit statickou privátní IP interní](../virtual-network/virtual-networks-reserved-private-ip.md). |
 
@@ -188,12 +183,7 @@ Pokud rozšíření nelze načíst, zálohování se nezdaří, protože snímek
 
 #### <a name="solution"></a>Řešení
 
-**Pro hosty Windows:** ověřte, zda je povoleno iaasvmprovider služby a má typ spuštění *automatické*. Pokud služba není nakonfigurována tímto způsobem, povolte službu, kterou chcete zjistit, zda je úspěšné další zálohování.
-
-**Pro hosty Linux:** ověřte, zda 1.0.91.0 nejnovější verzi VMSnapshot pro Linux (rozšíření používané zálohování).<br>
-
-
-Pokud se aktualizace nebo zatížení stále rozšíření zálohování nezdaří, odinstalujte rozšíření vynutit rozšíření VMSnapshot znovu načíst. Další zálohování pokus znovu načte rozšíření.
+Odinstalujte rozšíření vynutit rozšíření VMSnapshot znovu načíst. Další zálohování pokus znovu načte rozšíření.
 
 Chcete-li odinstalovat rozšíření:
 
@@ -220,7 +210,7 @@ Chcete-li vyřešit tento problém, proveďte následující kroky k odebrání 
 4. Získání kolekce bodu obnovení, která odpovídá virtuální počítač: <br>
     `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
 
-    Příklad:`.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
+    Příklad: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
 5. Odstraňte kolekci bodu obnovení: <br>
     `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
 6. Další naplánované zálohování automaticky vytvoří kolekci bod obnovení a nové body obnovení.

@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 03/01/2018
+ms.date: 03/07/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 4effd63fbd9cb972a0d130826a7347dd34561792
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: bc2c696dceb3ed4741c10a5c611bd2d438b71bd5
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="understanding-cost-management-reports"></a>Principy náklady na správu sestav
 
@@ -77,6 +77,49 @@ Každou číslem oblast na předchozím obrázku je podrobně popsaná v násled
      - Prostředí
      - Náklady kódu
 
+    Tady je seznam předdefinovaných skupin v sestavách dostupná:
+
+    - **Typ nákladů**
+      - Vyberte typ nákladů nebo více typů nákladů, nebo zvolit vše. Cenově typy patří:
+        - Jednorázový poplatek
+        - Podpora
+        - Náklady na využití
+    - **Zákazníka**
+        - Vyberte konkrétního zákazníka, více zákazníků, nebo všechny zákazníky.
+    - **Název účtu**
+        - Název účtu nebo předplatné. V Azure je název předplatného Azure.
+    - **Žádný účet**
+        - Vyberte účet, několik účtů nebo všechny účty. V Azure je identifikátor GUID předplatného Azure.
+    - **Účet nadřazené**
+        - Vyberte účet nadřazené, několik účtů nebo vyberte.
+    - **Služba**
+        - Vyberte služby, více služeb, nebo všechny služby.
+    - **Poskytovatel**
+        - Zprostředkovatel cloudu, kde jsou přidružené prostředky a výdaje.
+    - **Oblast**
+        - Oblast je hostitelem prostředku.
+    - **Dostupnost zóny**
+        - AWS izolované umístění v rámci oblasti.
+    - **Typ prostředku**
+        - Typ prostředku v použití.
+    - **Dílčí typ**
+        - Vyberte dílčí typ.
+    - **Operace**
+        - Vyberte operaci, nebo **Zobrazit vše**.
+    - **Cenový Model**
+        - Všechny předem
+        - Ne předem
+        - Partial předem
+        - Na vyžádání
+        - Rezervace
+        - Místo
+    - **Typ zdarma**
+        - Vyberte typ poplatků záporný nebo kladnou nebo obojí.
+    - **Tenancy**
+        - Jestli je počítač běží jako vyhrazený počítač.
+    -   **Typ použití**
+          - Typ použití může být poplatků jednorázové nebo opakované poplatky.
+
 5. **filtry**
 
     Pomocí jednoho nebo více vyberte filtry nastavte rozsahy na vybraných hodnot. Pokud chcete nastavit filtr, klikněte na tlačítko **přidat** a potom vyberte filtr kategorií a hodnoty.
@@ -102,7 +145,7 @@ Každou číslem oblast na předchozím obrázku je podrobně popsaná v násled
     Vyberte dobu řešení v rámci vybraného rozsahu dat pomocí řešení. Rozlišení vašeho doba určuje, jak se zobrazují v sestavě jednotky a může být:
     - Denně
     - Týdně
-    - Měsíčně
+    - Měsíční
     - Čtvrtletně
     - Roční
 

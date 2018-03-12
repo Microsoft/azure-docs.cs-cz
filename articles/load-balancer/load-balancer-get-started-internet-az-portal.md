@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/20/2017
 ms.author: kumud
-ms.openlocfilehash: b9b4275497798db5310f2a28aeb6c582b1a7429c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d09115d7b01b72476ebc9eb883a43aa4c59d2e3b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-azure-portal"></a>Vytvořte standardní veřejné zatížení na vyrovnávání s zónově redundantní veřejná IP adresa front-endu pomocí portálu Azure
 
@@ -55,7 +55,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 
 ## <a name="next-steps"></a>Další postup
-- Zjistěte, jak [vytvořit veřejnou IP adresu v zóně dostupnosti](../virtual-network/create-public-ip-availability-zone-portal.md)
+- Zjistěte, jak [vytvořit veřejnou IP adresu v zóně dostupnosti](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 
 

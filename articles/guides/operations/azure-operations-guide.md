@@ -1,6 +1,6 @@
 ---
 title: "Příručka pro operátory Azure IT Začínáme | Microsoft Docs"
-description: "Získávání Příručka Začínáme pro operátory Azure IT"
+description: "Úvodní příručka pro operátory IT Azure"
 services: 
 documentationcenter: 
 author: neilpeterson
@@ -15,11 +15,11 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 4a913e188dd40b0306be375b016b9e8a3739ed72
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8d7cbe27e5acfe741aeb5ed85756bf3c7ce2160b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Úvod k řešení cloud computing a Microsoft Azure
 
@@ -132,7 +132,7 @@ Služba pro sítě v rámci Azure i mezi datovými centry Azure a místními:
 
 -   Azure Traffic Manager
 
--   Síť pro doručování obsahu Azure
+-   Azure Content Delivery Network
 
 Podrobnou dokumentaci ke službám Azure, najdete v části [dokumentaci služby Azure](https://docs.microsoft.com/azure).
 
@@ -145,12 +145,12 @@ Azure je globální Cloudová platforma, která je obecně k dispozici v mnoha o
 
 Jedním z beneﬁts používání Azure je, že můžete nasadit aplikace do různých datových centrech po celém světě. Oblast, kterou zvolíte můžete aﬀect výkon vaší aplikace. Je optimální vyberte oblast, která bude co nejblíže ke nejvíce zákazníkům, snížit latenci v síťové požadavky. Může také vyberte oblast pro splnění zákonných požadavků na distribuci aplikace v některých zemích.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 
 Portál Azure je webové aplikace, která slouží k vytváření, správu a odebrat prostředky Azure a služby. Portál Azure je umístěn v https://portal.azure.com. Zahrnuje přizpůsobitelný řídicí panel a nástrojů pro správu prostředků Azure. Nabízí taky informace fakturace a předplatného. Další informace najdete v tématu [přehled portálu Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Azure spravovat prostředky prostřednictvím portálu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
-### <a name="resources"></a>Zdroje
+### <a name="resources"></a>Zdroje a prostředky
 
 Prostředky Azure jsou jednotlivé výpočetní, sítě, data nebo aplikace hostitelských služeb, které jsou nasazené do předplatného Azure. Některé běžné prostředky jsou virtuální počítače, účty úložiště nebo databází SQL. Služby Azure se často skládat z několika souvisejících prostředků Azure. Virtuální počítač Azure může zahrnovat virtuální počítač, účet úložiště, síťový adaptér a veřejnou IP adresu. Tyto prostředkům můžete vytvořit, spravovat a odstranit samostatně nebo jako skupinu. Prostředky Azure jsou podrobněji popsány dále v této příručce.
 
@@ -491,19 +491,19 @@ Existuje několik možností pro nasazení virtuální sítě.
 
 **Azure Portal**
 
-Nasazení virtuální sítě Azure pomocí portálu Azure vyžaduje pouze aktivní předplatné Azure a přístup k webovým prohlížečem. Můžete nasadit nové virtuální sítě do skupiny nové nebo existující prostředek. Při vytváření nového virtuálního počítače z portálu, můžete vybrat existující virtuální síť nebo vytvořte novou. Další informace najdete v tématu [vytvoření virtuální sítě pomocí portálu Azure](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Nasazení virtuální sítě Azure pomocí portálu Azure vyžaduje pouze aktivní předplatné Azure a přístup k webovým prohlížečem. Můžete nasadit nové virtuální sítě do skupiny nové nebo existující prostředek. Při vytváření nového virtuálního počítače z portálu, můžete vybrat existující virtuální síť nebo vytvořte novou. Další informace najdete v tématu [vytvoření virtuální sítě pomocí portálu Azure](../../virtual-network/quick-create-portal.md).
 
 Kromě nasazení virtuální sítě Azure z portálu Azure, můžete nasadit šablonu Azure Resource Manageru z portálu. To nasadí a nakonfiguruje všechny prostředky, jak jsou definovány v šabloně, včetně všechny prostředky, virtuální sítě. Další informace najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a portálu Azure](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 **PowerShell**
 
-Nasazení virtuální sítě Azure pomocí prostředí PowerShell umožňuje automatizace dokončení nasazení účtu úložiště. Další informace najdete v tématu [vytvoření virtuální sítě pomocí prostředí PowerShell](../../virtual-network/virtual-networks-create-vnet-arm-ps.md).
+Nasazení virtuální sítě Azure pomocí prostředí PowerShell umožňuje automatizace dokončení nasazení účtu úložiště. Další informace najdete v tématu [vytvoření virtuální sítě pomocí prostředí PowerShell](../../virtual-network/quick-create-powershell.md).
 
 Kromě nasazení prostředků Azure jednotlivě, můžete použít modul Azure PowerShell nasadit šablonu Azure Resource Manager. Další informace najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a prostředí Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
 
 **Rozhraní příkazového řádku (CLI)**
 
-Stejně jako u modulu prostředí PowerShell, rozhraní příkazového řádku Azure poskytuje automatizaci nasazení a dá se v systémech Windows, OS X nebo Linux. Můžete použít rozhraní příkazového řádku Azure **vytvoření sítě vnet** příkaz pro vytvoření virtuální sítě. Další informace najdete v tématu [vytvoření virtuální sítě pomocí rozhraní příkazového řádku Azure](../../virtual-network/virtual-networks-create-vnet-arm-cli.md).
+Stejně jako u modulu prostředí PowerShell, rozhraní příkazového řádku Azure poskytuje automatizaci nasazení a dá se v systémech Windows, OS X nebo Linux. Můžete použít rozhraní příkazového řádku Azure **vytvoření sítě vnet** příkaz pro vytvoření virtuální sítě. Další informace najdete v tématu [vytvoření virtuální sítě pomocí rozhraní příkazového řádku Azure](../../virtual-network/quick-create-cli.md).
 
 Podobně můžete rozhraní příkazového řádku Azure Pokud chcete nasadit šablonu Azure Resource Manager. Další informace najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a rozhraní příkazového řádku Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md).
 
@@ -511,7 +511,7 @@ Podobně můžete rozhraní příkazového řádku Azure Pokud chcete nasadit š
 
 Zabezpečený virtuální sítě Azure může pomoct pomocí skupiny zabezpečení sítě. Skupiny Nsg obsahují seznam pravidel seznamu ACL řízení přístupu, která povolí nebo zakážou provoz sítě instancím virtuálních počítačů ve virtuální síti. Skupiny Nsg můžete přidružit podsítě nebo jednotlivým instancím virtuálních počítačů v této podsíti. Pokud přidružíte skupinu NSG podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti. Kromě toho lze dále omezit provoz do konkrétního virtuálního počítače tím, že přidružíte skupinu NSG přímo s tohoto virtuálního počítače. Další informace najdete v tématu [filtrování provozu sítě přenosů se skupinami zabezpečení sítě](../../virtual-network/virtual-networks-nsg.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Vytvoření virtuálního počítače Windows](/virtual-machines/windows/quick-create-portal.md)
 - [Vytvoření virtuálního počítače s Linuxem](../../virtual-machines/linux/quick-create-portal.md)

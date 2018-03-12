@@ -20,6 +20,10 @@
 ## [Zálohování a obnovení](analysis-services-backup.md)
 ## [Aktualizace pomocí REST API](analysis-services-async-refresh.md)
 ## [Konfigurace škálování na více instancí](analysis-services-scale-out.md)
+## Automatizace úloh správy
+### [Vytvoření instančního objektu – Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+### [Vytvoření instančního objektu – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md)
 ## Správa serverů
 ### [Konfigurace aliasu názvu souboru](analysis-services-server-alias.md)
 ### [Správa serveru](analysis-services-manage.md)

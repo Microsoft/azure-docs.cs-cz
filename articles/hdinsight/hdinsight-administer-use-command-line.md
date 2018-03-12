@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: 491dbd157255dc4fa7f77178f9486959ba4847a1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: a6103c85747b2e76db7253de59b20f8b5d5a9433
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Správa clusterů systému Hadoop v HDInsight pomocí rozhraní příkazového řádku Azure
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Další informace o použití [rozhraní příkazového řádku Azure](../cli-install-nodejs.md) ke správě clusterů systému Hadoop v prostředí Azure HDInsight. Rozhraní příkazového řádku Azure je implementované v Node.js. Dá se použít na jakékoli platformě, která podporuje Node.js, včetně systému Windows, Mac a Linux. V současné době HDInsight nepodporuje [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview).
+Další informace o použití [rozhraní příkazového řádku Azure](../cli-install-nodejs.md) ke správě clusterů systému Hadoop v prostředí Azure HDInsight. Rozhraní příkazového řádku Azure je implementované v Node.js. Dá se použít na jakékoli platformě, která podporuje Node.js, včetně systému Windows, Mac a Linux. V současné době HDInsight nepodporuje [Azure CLI 2.0](https://docs.microsoft.com/cli/azure).
 
 Tento článek se týká jenom používání rozhraní příkazového řádku Azure s HDInsight. Obecné informace o tom, jak používat rozhraní příkazového řádku Azure najdete v tématu [instalace a konfigurace rozhraní příkazového řádku Azure][azure-command-line-tools].
 
@@ -101,7 +101,7 @@ azure hdinsight cluster enable-rdp-access [options] <Cluster Name> <rdpUserName>
 azure hdinsight cluster disable-rdp-access [options] <Cluster Name>
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jste se naučili, jak provádět různé úlohy správy clusteru HDInsight. Další informace naleznete v následujících článcích:
 
 * [Spravovat HDInsight pomocí portálu Azure][hdinsight-admin-portal]

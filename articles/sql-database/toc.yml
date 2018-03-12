@@ -45,12 +45,14 @@
       href: sql-database-design-first-database.md
     - name: 1. Návrh databáze pomocí .NET
       href: sql-database-design-first-database-csharp.md
-    - name: 2. Migrace databáze SQL Serveru
+    - name: 2. Migrace do databáze SQL Serveru
       href: sql-database-migrate-your-sql-server-database.md
     - name: 3. Zabezpečení databáze SQL
       href: sql-database-security-tutorial.md
     - name: 4. Implementace geograficky distribuované databáze
       href: sql-database-implement-geo-distributed-database.md
+    - name: 5. Vytvoření spravované Instance
+      href: sql-database-managed-instance-tutorial-portal.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
@@ -61,26 +63,26 @@
       href: sql-database-powershell-samples.md
 - name: Koncepty
   items:
-    - name: Databázová služba
-      items:
-        - name: Servery a databáze
-          href: sql-database-servers-databases.md
-        - name: Úrovně služby
-          href: sql-database-service-tiers.md
-        - name: Omezení prostředků
-          href: sql-database-resource-limits.md
-        - name: Izolované databáze
-          href: sql-database-single-database-resources.md
-        - name: Elastické fondy
-          href: sql-database-elastic-pool.md
-        - name: Architektura připojení
-          href: sql-database-connectivity-architecture.md
-        - name: Jednotky DTU a eDTU
-          href: sql-database-what-is-a-dtu.md
-        - name: Srovnávací test DTU
-          href: sql-database-benchmark-overview.md
-        - name: Běžné funkce SQL Serveru
-          href: sql-database-features.md
+    - name: Servery a databáze
+      href: sql-database-servers-databases.md
+    - name: Spravovaná instance
+      href: sql-database-managed-instance.md
+    - name: Úrovně služby
+      href: sql-database-service-tiers.md
+    - name: Omezení prostředků
+      href: sql-database-resource-limits.md
+    - name: Izolované databáze
+      href: sql-database-single-database-resources.md
+    - name: Elastické fondy
+      href: sql-database-elastic-pool.md
+    - name: Architektura připojení
+      href: sql-database-connectivity-architecture.md
+    - name: Jednotky DTU a eDTU
+      href: sql-database-what-is-a-dtu.md
+    - name: Srovnávací test DTU
+      href: sql-database-benchmark-overview.md
+    - name: Běžné funkce SQL Serveru
+      href: sql-database-features.md
     - name: Vysoká dostupnost
       href: sql-database-high-availability.md
     - name: Zabezpečení
@@ -101,8 +103,10 @@
           href: sql-database-ssms-mfa-authentication.md
         - name: Auditování
           href: sql-database-auditing.md
-        - name: Detekce hrozeb
+        - name: Detekce hrozeb – SQL Database
           href: sql-database-threat-detection.md
+        - name: Detekce hrozeb – MI
+          href: sql-database-managed-instance-threat-detection.md
         - name: TDS a auditování tabulek
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: Dynamické maskování dat
@@ -137,11 +141,15 @@
           href: sql-database-disaster-recovery-drills.md
     - name: Migrace do služby SQL Database
       items:
-        - name: Přehled
+        - name: Migrace do služby SQL Database
           href: sql-database-cloud-migrate.md
-        - name: Změny T-SQL
+        - name: Migrace do MI
+          href: sql-database-managed-instance-migrate.md
+        - name: Podrobnosti k SQL Database T-SQL
           href: sql-database-transact-sql-information.md
-        - name: Správa databáze po migraci
+        - name: Podrobnosti k MI T-SQL
+          href: sql-database-managed-instance-transact-sql-information.md
+        - name: Správa SQL Database po migraci
           href: sql-database-manage-after-migration.md
     - name: Načítání a přesun dat
       items:
@@ -265,6 +273,16 @@
           href: sql-database-elastic-query-horizontal-partitioning.md
         - name: Dotazování přes tabulky s různými schématy
           href: sql-database-elastic-query-vertical-partitioning.md
+    - name: MI
+      items:
+        - name: Konfigurace virtuální sítě
+          href: sql-database-managed-instance-vnet-configuration.md
+        - name: Vlastní DNS
+          href: sql-database-managed-instance-custom-dns.md
+        - name: Připojení aplikací
+          href: sql-database-managed-instance-connect-app.md
+        - name: Synchronizace konfigurace sítě
+          href: sql-database-managed-instance-sync-network-configuration.md
     - name: Zabezpečení
       items:
         - name: Konfigurace ověřování Azure AD
@@ -472,4 +490,4 @@
     - name: Centrum architektury
       href: /azure/architecture/
     - name: Příběhy zákazníků
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'
+      href: 'https://customers.microsoft.com/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'

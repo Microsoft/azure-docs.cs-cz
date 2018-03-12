@@ -16,11 +16,11 @@ ms.date: 11/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 3f7624d588e958985a73c5b40e8010e18e8879cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f4e64fbc6c2fda026297b69bd54471d49b6785a1
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="install-a-replica-active-directory-domain-controller-in-an-azure-virtual-network"></a>Instalace repliky řadiče domény služby Active Directory v virtuální sítě Azure
 Tento článek popisuje postup instalace dalších řadičů domény (řadiče domény), který se má použít jako repliku řadiče domény pro doménu služby Active Directory v místě na virtuálních počítačích Azure (VM) ve virtuální sítě Azure. Můžete také [nainstalovat doménovou strukturu Windows Server Active Directory na virtuální síť Azure](active-directory-new-forest-virtual-machine.md). Jak nainstalovat na virtuální síť Azure Active Directory Domain Services (AD DS), najdete v článku [pokyny pro nasazení systému Windows Server Active Directory ve virtuálních počítačích Azure](https://msdn.microsoft.com/library/azure/jj156090.aspx).
@@ -50,7 +50,7 @@ Chcete-li vytvořit virtuální počítače na hostiteli role řadiče domény, 
 
 K vytvoření virtuálních počítačů pomocí prostředí Windows PowerShell místo portálu Azure, najdete v části [použití Azure PowerShell k vytvoření a nastavení virtuálních počítačích se systémem Windows](../virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Vyhradit statickou IP adresu pro virtuální počítače, které budou spouštět roli řadiče domény. Můžete vyhradit statickou IP adresu, stažení služby instalace webové platformy společnosti Microsoft a [nainstalovat Azure PowerShell](/powershell/azure/overview) a spusťte rutinu Set-AzureStaticVNetIP. Například:
+Vyhradit statickou IP adresu pro virtuální počítače, které budou spouštět roli řadiče domény. Můžete vyhradit statickou IP adresu, stažení služby instalace webové platformy společnosti Microsoft a [nainstalovat Azure PowerShell](/powershell/azure/overview) a spusťte rutinu Set-AzureStaticVNetIP. Příklad:
 
 ````
 Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM
@@ -62,7 +62,7 @@ Přihlaste se k virtuálnímu počítači a ověřte, že máte připojení site
 
 ## <a name="reconfigure-dns-server-for-the-virtual-network"></a>Znovu nakonfigurujte server DNS pro virtuální síť
 1. Získat seznam názvů virtuálních sítí v [portál Azure](https://portal.azure.com), vyhledejte *virtuální sítě*, pak vyberte **virtuální sítě** pro zobrazení seznamu. 
-2. Otevřete virtuální síť, kterou chcete spravovat, a potom [změnit konfiguraci IP adresy serverů DNS pro vaši virtuální síť](../virtual-network/virtual-network-manage-network.md#dns-servers) pro používání statických IP adres přiřazené repliky řadiče domény místo IP adresy pro místní servery DNS.
+2. Otevřete virtuální síť, kterou chcete spravovat, a potom [změnit konfiguraci IP adresy serverů DNS pro vaši virtuální síť](../virtual-network/manage-virtual-network.md#change-dns-servers) pro používání statických IP adres přiřazené repliky řadiče domény místo IP adresy pro místní servery DNS.
 3. Zajistit, aby všechny řadiče domény virtuální počítače replik na virtuální síť nakonfigurované pro použití serverů DNS ve virtuální síti:
   1. Vyberte **virtuální počítače**.
   2. Vyberte virtuální počítače a pak vyberte **restartujte**. 
@@ -85,7 +85,7 @@ Po zřízení každý virtuální počítač, přihlaste se a připojení k dom�
 3. Zadejte přihlašovací údaje uživatele domény.
 4. Restartujte virtuální počítač.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * Další informace o používání prostředí Windows PowerShell najdete v tématu [Začínáme s Azure rutiny](/powershell/azure/overview) a [Reference k rutině Azure](/powershell/azure/get-started-azureps).
 * [Pokyny pro nasazení systému Windows Server Active Directory na virtuálních počítačích Azure](https://msdn.microsoft.com/library/azure/jj156090.aspx)

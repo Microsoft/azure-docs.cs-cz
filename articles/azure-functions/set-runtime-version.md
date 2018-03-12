@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: glenga
-ms.openlocfilehash: c87455f43c6e580c52b3f772a1cbe0c1ac9c9f5b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6fc84642050f4b7acfa2e3c5b4518135d6a97171
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak mít verze modulu runtime Azure Functions
 
@@ -74,7 +74,7 @@ az functionapp config appsettings set --name <function_app> \
 ```
 V tomto kódu nahraďte `<function_app>` s názvem aplikace funkce. Také nahraďte `<my_resource_group>` s názvem skupiny prostředků pro funkce aplikace. Nahraďte `<version>` s platnou verzi modulu runtime 1.x nebo `beta` pro verze 2.0. 
 
-Můžete spustit tento příkaz z [prostředí cloudu Azure](../cloud-shell/overview.md) výběrem **vyzkoušet** v předchozí ukázce kódu. Můžete také [rozhraní příkazového řádku Azure místně](/cli/azure/install-azure-cli) k provedení tohoto příkazu po provedení [az přihlášení](/cli/azure#az_login) k přihlášení.
+Můžete spustit tento příkaz z [prostředí cloudu Azure](../cloud-shell/overview.md) výběrem **vyzkoušet** v předchozí ukázce kódu. Můžete také [rozhraní příkazového řádku Azure místně](/cli/azure/install-azure-cli) k provedení tohoto příkazu po provedení [az přihlášení](/cli/azure/reference-index#az_login) k přihlášení.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 3cedc16e3a420fd846b7860b69f4b19591ad1777
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: b50e98fa7bfff75efe8c9b926838ea847f640651
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Úvod do služby Azure Data vědecké účely virtuálního počítače pro systémy Linux a Windows
 
@@ -89,7 +89,7 @@ Virtuální počítač vědecké účely dat má mnoho oblíbených datové věd
 | Sady SDK pro přístup k Azure a Cortana Intelligence Suite služeb | Ano | Ano |
 | **Přesun dat a nástroje pro správu** | | |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Azure Storage Explorer | Ano | Ano |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Azure CLI](https://docs.microsoft.com/cli/azure/overview) | Ano | Ano |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Azure CLI](https://docs.microsoft.com/cli/azure) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Azure Powershell | Ano | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Azcopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy) | Ano | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Objekt BLOB POJISTKA ovladačů](https://github.com/Azure/azure-storage-fuse) | N | Ano |

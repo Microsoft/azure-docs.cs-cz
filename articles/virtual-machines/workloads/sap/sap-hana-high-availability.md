@@ -1,5 +1,5 @@
 ---
-title: "Vysoká dostupnost SAP HANA na virtuálních počítačích Azure (VM) | Microsoft Docs"
+title: "Nastavení replikace systému SAP HANA na virtuálních počítačích Azure (VM) | Microsoft Docs"
 description: "Vytvořte vysokou dostupnost SAP HANA na virtuálních počítačích Azure (VM)."
 services: virtual-machines-linux
 documentationcenter: 
@@ -11,13 +11,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2017
+ms.date: 12/12/2017
 ms.author: sedusch
-ms.openlocfilehash: 5f6ef18e93b8f77162b3524f31cb632e1db38f80
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 2bf9ed176f37c315aa4496894315f2318370ce7f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure (VM)
 
@@ -44,9 +44,9 @@ ms.lasthandoff: 12/08/2017
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged%2Fazuredeploy.json
 
 Na místě, můžete použít buď replikaci HANA systému nebo používat sdílené úložiště, k vytvoření vysoké dostupnosti pro SAP HANA.
-Momentálně podporujeme jenom nastavení replikace systému HANA v Azure. SAP HANA replikace se skládá z jednoho hlavní uzel a alespoň jeden podřízený uzel. Změny dat na hlavní uzel se replikují na podřízené uzly synchronně nebo asynchronně.
+Na replikaci systému HANA Azure virtuální počítače v Azure je že jediný podporovaný funkce vysoké dostupnosti dosavadní práce. SAP HANA replikace se skládá z jedné primární uzel a alespoň jeden sekundární uzel. Změny dat na primárním uzlu, který se replikují na sekundární uzel synchronně nebo asynchronně.
 
-Tento článek popisuje postup nasazení virtuálních počítačů, konfiguraci virtuálních počítačů, nainstalujte rozhraní framework clusteru, nainstalovat a nakonfigurovat replikaci systému SAP HANA.
+Tento článek popisuje, jak k nasazení virtuálních počítačů, konfiguraci virtuálních počítačů, nainstalujte rozhraní framework clusteru, instalaci a konfiguraci replikace systému SAP HANA.
 V konfiguraci příklad instalace příkazy čísla instance atd 03 a HDB ID HANA systému se používá.
 
 Přečtěte si tyto poznámky k SAP a dokumenty Paper nejprve
@@ -83,16 +83,16 @@ Azure Marketplace obsahuje bitovou kopii pro SUSE Linux Enterprise Server pro SA
 1. Vytvořit skupinu dostupnosti  
    Sada maximální aktualizace domény
 1. Vytvořit nástroj pro vyrovnávání zatížení (interní)  
-   Vyberte virtuální síť kroku výše
-1. Vytvoření virtuálního počítače 1  
-   Použijte alespoň SLES4SAP 12 SP1 v tomto příkladu použijeme https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1 image SLES4SAP 12 SP1 BYOS  
-   SLES pro SAP aplikace 12 SP1 (BYOS)  
-   Vyberte účet úložiště 1  
+   Vyberte virtuální síť vytvořili v druhém kroku
+1. Vytvoření virtuálního počítače 1   
+   Použijte alespoň SLES4SAP 12 SP1 v tomto příkladu https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1 image SLES4SAP 12 SP1 BYOS  
+   SLES pro SAP aplikace 12 SP1 (BYOS) se používá.  
+   Vyberte účet úložiště 1   
    Vyberte sady dostupnosti.  
-1. Vytvoření virtuálního počítače 2  
-   Použijte alespoň SLES4SAP 12 SP1 v tomto příkladu použijeme https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1 image SLES4SAP 12 SP1 BYOS  
-   SLES pro SAP aplikace 12 SP1 (BYOS)  
-   Vyberte účet úložiště 2   
+1. Vytvoření virtuálního počítače 2   
+   Použijte alespoň SLES4SAP 12 SP1 v tomto příkladu https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1 image SLES4SAP 12 SP1 BYOS  
+   SLES pro SAP aplikace 12 SP1 (BYOS) se používá.  
+   Vyberte účet úložiště 2    
    Vyberte sady dostupnosti.  
 1. Přidat datových disků
 1. Konfigurace pro vyrovnávání zatížení
@@ -108,7 +108,7 @@ Azure Marketplace obsahuje bitovou kopii pro SUSE Linux Enterprise Server pro SA
         1. Vyberte jste dříve vytvořili sadu dostupnosti
         1. Vyberte virtuální počítače clusteru SAP HANA
         1. Klikněte na tlačítko OK
-    1. Vytvoření test stavu
+    1. Vytvoření sondy stavu
         1. Otevřete nástroj pro vyrovnávání zatížení, zvolte sondy stavu služby a klikněte na tlačítko Přidat
         1. Zadejte název nové kontroly stavu (například hana-hp)
         1. Vyberte TCP jako protokol, port 625**03**, zachovat Interval 5 a prahová hodnota špatného stavu 2
@@ -116,7 +116,7 @@ Azure Marketplace obsahuje bitovou kopii pro SUSE Linux Enterprise Server pro SA
     1. Vytvoření pravidel vyrovnávání zatížení
         1. Otevřete nástroj pro vyrovnávání zatížení, zvolte pravidla Vyrovnávání zatížení a klikněte na tlačítko Přidat
         1. Zadejte název nové pravidlo Vyrovnávání zatížení (například hana-lb-3**03**15)
-        1. Vyberte IP adresu front-endu a back-endový fond a stav testu jste vytvořili dříve (například hana-front-endu)
+        1. Vyberte front-endovou IP adresu, fond back-end a test stavu, který jste vytvořili dříve (pro front-endu – příklad hana)
         1. Zachovat protokol TCP, zadejte port 3**03**15
         1. Časový limit nečinnosti zvýšení do 30 minut
         1. **Nezapomeňte povolit plovoucí IP adresa**
@@ -124,20 +124,21 @@ Azure Marketplace obsahuje bitovou kopii pro SUSE Linux Enterprise Server pro SA
         1. Opakujte předchozí kroky pro port 3**03**17
 
 ### <a name="deploy-with-template"></a>Nasazení pomocí šablony
-Můžete jeden z šablony rychlý start na githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, dostupnosti apod. Postupujte podle těchto kroků nasadíte šablony:
+Můžete jeden z šablony rychlý start na githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, dostupnosti apod. Pokud chcete nasadit šablonu, postupujte takto:
 
-1. Otevřete [databáze šablony] [ template-multisid-db] nebo [konvergované šablony] [ template-converged] na portálu Azure, pouze vytvoří šablona databáze Vyrovnávání zatížení pravidel pro databáze, zatímco sblížené Šablona také vytváří pravidla Vyrovnávání zatížení ASC nebo SCS a instance YBRAT (pouze Linux). Pokud máte v plánu pro instalaci systému SAP NetWeaver na základě a také chcete nainstalovat instanci ASC nebo SCS stejné počítače, použijte [konvergované šablony][template-converged].
+1. Otevřete [databáze šablony] [ template-multisid-db] nebo [konvergované šablony] [ template-converged] na portálu Azure. 
+   Zatímco sblížené Šablona také vytváří pravidla Vyrovnávání zatížení ASC nebo SCS a instance YBRAT (pouze Linux), vytvoří šablona databáze pouze pravidla Vyrovnávání zatížení pro databázi. Pokud máte v plánu pro instalaci systému SAP NetWeaver na základě a také chcete nainstalovat instanci ASC nebo SCS stejné počítače, použijte [konvergované šablony][template-converged].
 1. Zadejte následující parametry
     1. ID systému SAP  
-       Zadejte ID systému SAP systému SAP, který chcete nainstalovat. Identifikátor se použije jako předpona pro prostředky, které jsou nasazeny.
-    1. Typ zásobníku (platí pouze pokud použijete šablonu sblížené)  
+       Zadejte ID systému SAP systému SAP, který chcete nainstalovat. ID se bude používat jako předpona pro prostředky, které jsou nasazeny.
+    1. Typ zásobníku (platí pouze pokud použijete šablonu sblížené)   
        Vyberte typ SAP NetWeaver zásobníku
     1. Typ operačního systému  
        Vyberte jednu z distribucích systému Linux. V tomto příkladu vyberte SLES 12 BYOS
-    1. Typ databázového  
+    1. Typ databáze  
        Vyberte HANA
     1. Velikost systému SAP  
-       Množství protokoly SAP bude poskytovat nový systém. Pokud si nejste jisti kolik protokoly SAP, systém bude vyžadovat, požádejte SAP technologie partnera nebo systémový integrátor
+       Množství nový systém bude poskytovat protokoly SAP. Pokud si nejste jisti kolik protokoly SAP vyžaduje systém, obraťte se na partnera technologie SAP nebo systémový integrátor
     1. Dostupnost systému  
        Vyberte HA
     1. Uživatelské jméno správce a heslo správce  
@@ -145,7 +146,7 @@ Můžete jeden z šablony rychlý start na githubu nasadit všechny požadované
     1. Nový nebo existující podsíť  
        Určuje, zda mají být vytvořeny nové virtuální sítě a podsítě nebo by měl použít existující podsítí. Pokud již máte virtuální síť, která je připojen k síti na pracovišti, vyberte existující.
     1. ID podsítě  
-    ID podsítě, ke které by měl být připojený virtuální počítače. Vyberte podsíť virtuální sítě VPN nebo Expressroute připojit virtuální počítač k síti na pracovišti. ID obvykle vypadá /subscriptions/`<subscription ID`> /resourceGroups/`<resource group name`> /providers/Microsoft.Network/virtualNetworks/`<virtual network name`> /subnets/`<subnet name`>
+    ID podsítě, ke které by měl být připojený virtuální počítače. Chcete-li připojit virtuální počítač k síti na pracovišti, vyberte podsíť virtuální sítě VPN nebo Express Route. ID obvykle vypadá /subscriptions/`<subscription ID`> /resourceGroups/`<resource group name`> /providers/Microsoft.Network/virtualNetworks/`<virtual network name`> /subnets/`<subnet name`>
 
 ## <a name="setting-up-linux-ha"></a>Nastavení Linux HA
 
@@ -310,7 +311,7 @@ Následující položky jsou s předponou buď [A] - platí pro všechny uzly [1
     
     ```
 
-1. [A] nakonfigurujte corosync používají jiné přenos a přidání seznamu. V opačném případě nebude fungovat clusteru.
+1. [A] nakonfigurujte corosync používají jiné přenos a přidání seznamu. V opačném případě clusteru není budete pracovat. 
     ```bash
     sudo vi /etc/corosync/corosync.conf    
     
@@ -352,23 +353,23 @@ Následující položky jsou s předponou buď [A] - platí pro všechny uzly [1
 
 ## <a name="installing-sap-hana"></a>Instalace SAP HANA
 
-Postupujte podle kapitoly 4 z [SAP HANA SR výkonu optimalizované scénář průvodce] [ suse-hana-ha-guide] nainstalovat replikaci systému SAP HANA.
+K instalaci replikaci systému SAP HANA, postupujte podle kapitoly 4 z [SAP HANA SR výkonu optimalizované scénář průvodce][suse-hana-ha-guide].
 
 1. [A] spusťte hdblcm z disku DVD HANA
     * Zvolte instalace-1 >
     * Vyberte další součásti k instalaci -> 1
     * Zadejte instalační cestu [/ hana/sdílené]: -> zadejte
     * Zadejte název místního hostitele [.]: -> zadejte
-    * Opravdu chcete přidat další hostitele do systému? (Ano/Ne) [n]: -> zadejte
-    * Zadejte ID systému SAP HANA:<SID of HANA e.g. HDB>
+    * Opravdu chcete přidat další hostitele do systému? (y/n) [n]: -> ENTER
+    * Zadejte ID systému SAP HANA: <SID of HANA e.g. HDB>
     * Zadejte čísla Instance [00]:   
-  Čísla HANA Instance. Použít 03, když se používá šablony Azure nebo udělali v předchozím příkladu
+  Čísla HANA Instance. Pokud používá šablony Azure nebo Ruční nasazení a potom použít 03
     * Vyberte režim databáze / zadejte Index [1]: -> zadejte
     * Vyberte použití systému / zadejte Index [4]:  
   Vyberte systém využití
     * Zadejte umístění datových svazků [/ hana/data/HDB]: -> zadejte
     * Zadejte umístění protokolu svazků [/ hana/log/HDB]: -> zadejte
-    * Omezení přidělení paměti maximální? [n]: -> zadejte
+    * Omezení přidělení paměti maximální? [n]: -> ENTER
     * Zadejte název hostitele certifikát pro hostitele,..." [...]: -> Zadejte
     * Zadejte SAP hostitele agenta uživatele (sapadm) heslo:
     * Potvrďte SAP hostitele agenta uživatele (sapadm) heslo:
@@ -380,8 +381,8 @@ Postupujte podle kapitoly 4 z [SAP HANA SR výkonu optimalizované scénář pr�
     * Zadejte ID ze skupiny uživatelů (sapsys) [79]: -> zadejte
     * Zadejte heslo k databázi uživatelů (systém):
     * Potvrďte heslo k databázi uživatelů (systém):
-    * Restartování systému po restartování počítače? [n]: -> zadejte
-    * Opravdu chcete pokračovat? (Ano/Ne):  
+    * Restartování systému po restartování počítače? [n]: -> ENTER
+    * Chcete pokračovat? (Ano/Ne):   
   Ověřit, souhrn a zadejte y můžete pokračovat
 1. [A] Agent hostitele upgradu SAP  
   Stáhněte si nejnovější archivu SAP Agent hostitele z [SAP Softwarecenter] [ sap-swcenter] a spusťte následující příkaz k aktualizaci agenta. Nahraďte cestu do archivu tak, aby odkazoval na soubor, který jste stáhli.
@@ -446,11 +447,11 @@ sudo crm nakonfigurovat aktualizace zatížení crm-defaults.txt
 
 ### <a name="create-stonith-device"></a>Vytvoření STONITH zařízení
 
-STONITH zařízení používá objekt služby k autorizaci s Microsoft Azure. Postupujte podle těchto kroků můžete vytvořit objekt služby.
+STONITH zařízení používá objekt služby k autorizaci s Microsoft Azure. Pokud chcete vytvořit objekt služby, postupujte podle těchto kroků.
 
-1. Přejděte na <https://portal.azure.com>
+1. Přejděte na <https://portal.azure.com>.
 1. Otevřete okno Azure Active Directory  
-   Přejděte k vlastnostem a poznamenejte si ID adresáře. Toto je **ID klienta**.
+   Přejděte k vlastnostem a poznamenejte si ID adresáře. Toto ID je **ID klienta**.
 1. Klikněte na možnost registrace aplikace
 1. Klikněte na tlačítko Přidat.
 1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (například http://localhost) a klikněte na možnost vytvořit
@@ -460,15 +461,15 @@ STONITH zařízení používá objekt služby k autorizaci s Microsoft Azure. Po
 1. Poznamenejte si hodnotu. Použije se jako **heslo** pro objekt služby
 1. Poznamenejte si ID aplikace. Se používá jako uživatelské jméno (**přihlašovacího ID** v následujících krocích) instančního objektu
 
-Objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Musíte poskytnout oprávnění objektu služby spuštění a zastavení (zrušit přidělení) všechny virtuální počítače v clusteru.
+Objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Přidělení oprávnění objektu služby ke spuštění a zastavení (zrušit přidělení) všechny virtuální počítače v clusteru.
 
-1. Přejděte na https://portal.azure.com
+1. Go to https://portal.azure.com
 1. Otevře se okno všechny prostředky
 1. Vyberte virtuální počítač
 1. Klikněte na řízení přístupu (IAM)
 1. Klikněte na tlačítko Přidat.
 1. Vyberte roli vlastníka
-1. Zadejte název aplikace, kterou jste vytvořili výše
+1. Zadejte název aplikace, kterou jste vytvořili v dřívějších krocích
 1. Klikněte na tlačítko OK
 
 Poté, co jste upravili oprávnění pro virtuální počítače, můžete nakonfigurovat zařízení STONITH v clusteru.
@@ -553,7 +554,7 @@ sudo crm nakonfigurovat aktualizace zatížení crm-saphana.txt
 </pre>
 
 ### <a name="test-cluster-setup"></a>Nastavení clusteru s podporou testu
-V následující kapitole popisují, jak můžete otestovat vašeho nastavení. Každý test předpokládá, že jsou kořenové a hlavním serveru SAP HANA běží na saphanavm1 virtuálního počítače.
+Tato kapitola popisuje, jak můžete otestovat vašeho nastavení. Každý test předpokládá, že jsou kořenové a hlavním serveru SAP HANA běží na saphanavm1 virtuálního počítače.
 
 #### <a name="fencing-test"></a>Vymezení testu
 
@@ -564,9 +565,9 @@ sudo ifdown eth0
 </code></pre>
 
 Virtuální počítač by měl nyní restartovat, nebo byla zastavena v závislosti na konfiguraci clusteru.
-Pokud jste nastavili stonith akce, která bude vypnuto, bude nutné zastavit virtuální počítač a prostředky se migrují do spuštěného virtuálního počítače.
+Pokud jste nastavili stonith akce, která bude vypnuto, virtuální počítač bude zastavena a prostředky se migrují do spuštěného virtuálního počítače.
 
-Po spuštění virtuálního počítače, SAP HANA prostředků se nepodaří spustit jako sekundární Pokud nastavíte AUTOMATED_REGISTER = "false". V takovém případě musíte nakonfigurovat instanci HANA jako sekundární spuštěním následujícího příkazu:
+Po spuštění virtuálního počítače, prostředků SAP HANA nepodaří spustit jako sekundární Pokud nastavíte AUTOMATED_REGISTER = "false". V takovém případě nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
 
 <pre><code>
 su - <b>hdb</b>adm
@@ -587,7 +588,7 @@ Zastavování služby kardiostimulátor na uzlu saphanavm1, můžete otestovat r
 service pacemaker stop
 </code></pre>
 
-Po převzetí služeb při selhání můžete spustit službu znovu. SAP HANA prostředku saphanavm1 nebude možné spustit jako sekundární Pokud nastavíte AUTOMATED_REGISTER = "false". V takovém případě musíte nakonfigurovat instanci HANA jako sekundární spuštěním následujícího příkazu:
+Po převzetí služeb při selhání můžete spustit službu znovu. Pokud nastavíte AUTOMATED_REGISTER = "false", SAP HANA prostředku saphanavm1 nepodaří spustit jako sekundární. V takovém případě nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
 
 <pre><code>
 service pacemaker start
@@ -598,7 +599,7 @@ sapcontrol -nr <b>03</b> -function StopWait 600 10
 hdbnsutil -sr_register --remoteHost=<b>saphanavm2</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE1</b> 
 
 
-# switch back to root and cleanup the failed state
+# Switch back to root and cleanup the failed state
 exit
 crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 </code></pre>
@@ -611,8 +612,8 @@ crm resource migrate msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm2</b>
 crm resource migrate g_ip_<b>HDB</b>_HDB<b>03</b> <b>saphanavm2</b>
 </code></pre>
 
-To je potřeba migrovat SAP HANA hlavní uzel a skupiny, která obsahuje virtuální IP adresu, kterou saphanavm2.
-SAP HANA prostředku saphanavm1 nebude možné spustit jako sekundární Pokud nastavíte AUTOMATED_REGISTER = "false". V takovém případě musíte nakonfigurovat instanci HANA jako sekundární spuštěním následujícího příkazu:
+Pokud nastavíte AUTOMATED_REGISTER = "false", tato sekvence příkazů by migrovat SAP HANA hlavní uzel a skupiny, která obsahuje virtuální IP adresu, kterou saphanavm2.
+SAP HANA prostředku saphanavm1 se nepodaří spustit jako sekundární. V takovém případě nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
 
 <pre><code>
 su - <b>hdb</b>adm
@@ -627,19 +628,19 @@ Migrace vytvoří omezení umístění, které je potřeba znovu odstranit.
 <pre><code>
 crm configure edited
 
-# delete location constraints that are named like the following contraint. You should have two constraints, one for the SAP HANA resource and one for the IP address group.
+# Delete location constraints that are named like the following contraint. You should have two constraints, one for the SAP HANA resource and one for the IP address group.
 location cli-prefer-g_ip_<b>HDB</b>_HDB<b>03</b> g_ip_<b>HDB</b>_HDB<b>03</b> role=Started inf: <b>saphanavm2</b>
 </code></pre>
 
 Musíte také vyčištění stav prostředku sekundárního uzlu
 
 <pre><code>
-# switch back to root and cleanup the failed state
+# Switch back to root and cleanup the failed state
 exit
 crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 </code></pre>
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Azure virtuálních počítačů, plánování a implementace pro SAP][planning-guide]
 * [Nasazení virtuálních počítačů Azure pro SAP][deployment-guide]
 * [Nasazení virtuálních počítačů databázového systému Azure pro SAP][dbms-guide]

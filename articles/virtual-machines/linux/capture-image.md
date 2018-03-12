@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 3cbc25099b99499a6186e57c155d195e75bd61bf
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 15ad240ea9b635cd7995bfae403a93e0b392850a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Postup vytvoření bitové kopie virtuálního počítače nebo virtuální pevný disk
 
@@ -37,7 +37,7 @@ Ujistěte se, že splňujete následující požadavky:
 
 * Je nutné virtuální počítač Azure vytvořené v modelu nasazení Resource Manager pomocí spravovaných disků. Pokud jste nevytvořili virtuální počítač s Linuxem, můžete použít [portál](quick-create-portal.md), [rozhraní příkazového řádku Azure](quick-create-cli.md), nebo [šablony Resource Manageru](create-ssh-secured-vm-from-template.md). Podle potřeby nakonfigurujte virtuální počítač. Například [přidat datových disků](add-disk.md), aktualizace a instalovat aplikace. 
 
-* Také je potřeba mít nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a být přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/#az_login).
+* Také je potřeba mít nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a být přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login).
 
 ## <a name="quick-commands"></a>Rychlé příkazy
 
@@ -45,7 +45,7 @@ Zjednodušené verzi tohoto tématu pro testování, vyhodnocení nebo získáv�
 
 
 ## <a name="step-1-deprovision-the-vm"></a>Krok 1: Zrušení zřízení virtuálního počítače
-Můžete zrušit jejich zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure se odstranit počítače konkrétní soubory a data. Použití `waagent` s *-deprovision + uživatele* parametr na svůj zdroj virtuálního počítače s Linuxem. Další informace najdete v tématu [Azure Linux Agent uživatelská příručka](../windows/agent-user-guide.md).
+Můžete zrušit jejich zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure se odstranit počítače konkrétní soubory a data. Použití `waagent` s *-deprovision + uživatele* parametr na svůj zdroj virtuálního počítače s Linuxem. Další informace najdete v [uživatelské příručce agenta Azure Linux](../windows/agent-user-guide.md).
 
 1. Připojte k virtuálním počítačům s Linuxem pomocí klienta SSH.
 2. V okně SSH zadejte následující příkaz:
@@ -143,4 +143,4 @@ Můžete vytvořit víc virtuálních počítačů z vaší zdrojové bitové ko
 - Postup opakujte zrušení zřízení, navrácení, generalize a vytvořte bitovou kopii.
 - Použijte tuto novou bitovou kopii pro budoucí nasazení. V případě potřeby odstraňte původní bitové kopie.
 
-Další informace týkající se správy virtuálních počítačů pomocí rozhraní příkazového řádku najdete v tématu [Azure CLI 2.0](/cli/azure/overview).
+Další informace týkající se správy virtuálních počítačů pomocí rozhraní příkazového řádku najdete v tématu [Azure CLI 2.0](/cli/azure).

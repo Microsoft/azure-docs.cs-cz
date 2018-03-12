@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: e2aadf6a103e92a4fbb11223a449280a36dea6b4
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 4a50ae5e19ff9bf79b7f5361e5a274a2aba350f5
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Připojení k řadiči domény AD hostované v Azure vlastní role služeb v cloudu Azure
 Nejprve nastavíme virtuální síť (VNet) v Azure. Potom přidáme Active Directory řadiče domény (hostované na virtuální počítač Azure) k virtuální síti. V dalším kroku jsme se přidat existující role cloudové služby na předem vytvořené virtuální síť a potom jejich připojení k řadiči domény.
@@ -33,7 +33,7 @@ Postupujte podle podrobných pokynů a pokud narazíte na potíže, nechte nás 
 Musí být sítě, který je odkazován cloudové služby **klasickou virtuální síť**.
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-Můžete vytvořit virtuální síť v Azure pomocí portálu Azure nebo prostředí PowerShell. V tomto kurzu budeme používat prostředí PowerShell. Vytvoření virtuální sítě pomocí portálu Azure, naleznete v části [vytvořit virtuální síť](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Můžete vytvořit virtuální síť v Azure pomocí portálu Azure nebo prostředí PowerShell. V tomto kurzu se používá prostředí PowerShell. Vytvoření virtuální sítě pomocí portálu Azure, naleznete v části [vytvořit virtuální síť](../virtual-network/quick-create-portal.md). Článek popisuje vytvoření virtuální sítě (Resource Manager), ale musíte vytvořit virtuální sítě (klasické) pro cloudové služby. Uděláte to tak, že na portálu vyberte **vytvořit prostředek**, typ *virtuální sítě* v **vyhledávání** pole a stiskněte klávesu **Enter**. Ve výsledcích hledání v části **všechno, co**, vyberte **virtuální síť**. V části **vybrat model nasazení**, vyberte **Classic**, pak vyberte **vytvořit**. Pak můžete podle kroků v článku.
 
 ```powershell
 #Create Virtual Network

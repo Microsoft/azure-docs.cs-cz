@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 522e9b6831c31a90337126380ccc9f2cb6d8713b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 69eae46dc554911e0caadcf0aafbaec9e39f727d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Naplánování spuštění a zastavení z modulu runtime integrace Azure SSIS 
 Spuštění modulu runtime integrace Azure služby SSIS (SQL Server Integration Services) (IR) má poplatků, s ním spojená. Tedy chcete spustit IR pouze v případě potřeby pro spouštění balíčků SSIS v Azure a zastavte ji, pokud tomu tak není. Můžete použít uživatelské rozhraní objektu pro vytváření dat nebo prostředí Azure PowerShell [ruční spuštění nebo zastavení služby SSIS IR Azure](manage-azure-ssis-integration-runtime.md)). Tento článek popisuje, jak naplánovat spuštění a zastavení z modulu runtime integrace Azure služby SSIS (IR) pomocí Azure Automation a Azure Data Factory. Zde jsou základní kroky popsané v tomto článku:
@@ -279,11 +279,6 @@ Po vytvoření a testování kanálu, můžete vytvořit aktivační událost pl
     3. Pro **textu**, zadejte `{"message":"hello world"}`. 
    
         ![První aktivita webové – karta nastavení](./media/how-to-schedule-azure-ssis-integration-runtime/first-web-activity-settnigs-tab.png)
-4. V **aktivity** sada nástrojů, rozbalte položku **iterace & Podmíněné příkazy**a přetáhněte jej **počkejte** aktivity na plochu návrháře kanálu. V **Obecné** změňte název aktivity na **WaitFor30Minutes**. 
-5. Přepnout **nastavení** ve **vlastnosti** okno. Pro **čekací doby v sekundách**, zadejte **1 800**. 
-6. Připojení **webové** aktivity a **počkejte** aktivity. Připojte je, spusťte přetahování na zelené odmocnina pole připojit k webové aktivity pro aktivitu čekání. 
-
-    ![Připojení k webu a počkejte, než](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-wait.png)
 5. Přetáhněte aktivity uložené procedury z **Obecné** části **aktivity** sady nástrojů. Název aktivity do sady **RunSSISPackage**. 
 6. Přepnout **účet SQL** ve **vlastnosti** okno. 
 7. Pro **propojená služba**, klikněte na tlačítko **+ nový**.
@@ -296,7 +291,7 @@ Po vytvoření a testování kanálu, můžete vytvořit aktivační událost pl
     5. Pro **heslo**, zadejte heslo uživatele. 
     6. Otestujte připojení k databázi kliknutím **testovací připojení** tlačítko.
     7. Kliknutím na Uložit propojené služby **Uložit** tlačítko.
-1. V **vlastnosti** okně přepínač tak, aby **uloženou proceduru** kartě z **účet SQL** kartě a proveďte následující kroky: 
+9. V **vlastnosti** okně přepínač tak, aby **uloženou proceduru** kartě z **účet SQL** kartě a proveďte následující kroky: 
 
     1. Pro **název uložené procedury**, vyberte **upravit** možnost a zadejte **sp_executesql**. 
     2. Vyberte **+ nový** v **uložené procedury parametry** části. 
@@ -307,12 +302,37 @@ Po vytvoření a testování kanálu, můžete vytvořit aktivační událost pl
         V příkazu jazyka SQL, zadejte správné hodnoty pro **název_složky**, **název_projektu**, a **název_balíčku** parametry. 
 
         ```sql
-        DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END   
-        ```
-10. Připojení **počkejte** aktivitu **uloženou proceduru** aktivity. 
+        DECLARE       @return_value int, @exe_id bigint, @err_msg nvarchar(150)
 
-    ![Připojit počkejte a uloženou proceduru aktivity](./media/how-to-schedule-azure-ssis-integration-runtime/connect-wait-sproc.png)
-11. Přetáhněte **webové** napravo od aktivity **uloženou proceduru** aktivity. Název aktivity do sady **StopIR**. 
+        -- Wait until Azure-SSIS IR is started
+        WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
+        BEGIN
+            WAITFOR DELAY '00:00:01';
+        END
+
+        EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
+            @project_name=N'YourProject', @package_name=N'YourPackage',
+            @use32bitruntime=0, @runincluster=1, @useanyworker=1,
+            @execution_id=@exe_id OUTPUT 
+
+        EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
+
+        EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
+
+        -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/failed (4)/
+        -- pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
+        IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
+        BEGIN
+            SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
+            RAISERROR(@err_msg, 15, 1)
+        END
+
+        ```
+10. Připojení **webové** aktivitu **uloženou proceduru** aktivity. 
+
+    ![Připojení webové a uloženou proceduru aktivity](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-sproc.png)
+
+11. Přetáhněte jej jiné **webové** napravo od aktivity **uloženou proceduru** aktivity. Název aktivity do sady **StopIR**. 
 12. Přepnout **nastavení** ve **vlastnosti** okno, a proveďte následující akce: 
 
     1. Pro **URL**, vložte adresu URL webhooku, která ukončí SSIS Azure, infračerveného signálu. 

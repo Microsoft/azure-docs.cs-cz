@@ -14,14 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: b43eb5e78b70f38226e3e8cb53d1530d348c7c20
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: edc1771153581e73398e8df25e70660f9f85ceba
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
 Tým služby Azure Active Directory pravidelně aktualizuje Azure AD Connect Health se nové funkce a funkce. V tomto článku jsou uvedené verze a funkce, které byly vydány.
+
+## <a name="march-2018"></a>2018 března
+**Aktualizace agenta:**
+
+*   Agent Azure AD Connect Health pro službu AD DS (verze 3.0.176.0)
+  1. Vylepšení dostupnost agenta 
+  2. Obecné vylepšení a opravy chyb
+*   Agent Azure AD Connect Health pro službu AD FS (verze 3.0.176.0)
+  1. Vylepšení dostupnost agenta 
+  2. Obecné vylepšení a opravy chyb
+* Agent Azure AD Connect Health pro synchronizaci (verze 3.0.176.0)
+  1. Vylepšení dostupnost agenta 
+  2. Obecné vylepšení a opravy chyb
 
 ## <a name="december-2017"></a>2017 prosinec
 **Aktualizace agenta:**

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f1e3ae26b6525f2235a6b0d53546b334dc027b94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1bb75b8bd1d525f3104fb517cb4a09b2e33caaca
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Konfigurace virtuální sítě (klasické) pomocí konfiguračního souboru sítě
 > [!IMPORTANT]
@@ -56,7 +56,7 @@ Prostředí PowerShell nebo rozhraní příkazového řádku Azure slouží k ex
 
 ## <a name="create-or-modify-a-network-configuration-file"></a>Vytvářet nebo upravovat soubor konfigurace sítě
 
-Soubor konfigurace sítě je soubor XML (při použití prostředí PowerShell) nebo soubor json (při použití Azure CLI). Můžete upravit soubor v textu nebo editoru XML nebo json. [Síťová nastavení schéma konfiguračního souboru](https://msdn.microsoft.com/library/azure/jj157100.aspx) článek obsahuje podrobnosti pro všechna nastavení. Další vysvětlení nastavení najdete v tématu [zobrazit virtuální sítě a nastavení](virtual-network-manage-network.md#view-vnet). Změny provedené u souboru:
+Soubor konfigurace sítě je soubor XML (při použití prostředí PowerShell) nebo soubor json (při použití Azure CLI). Můžete upravit soubor v textu nebo editoru XML nebo json. [Síťová nastavení schéma konfiguračního souboru](https://msdn.microsoft.com/library/azure/jj157100.aspx) článek obsahuje podrobnosti pro všechna nastavení. Další vysvětlení nastavení najdete v tématu [zobrazit virtuální sítě a nastavení](manage-virtual-network.md#view-virtual-networks-and-settings). Změny provedené u souboru:
 
 - Musíte dodržovat schéma nebo Import konfiguračního souboru sítě selžou.
 - Přepsat všechny existující nastavení sítě pro vaše předplatné, proto buďte velmi opatrní při provádění změn. Například referenční příklad sítě konfigurační soubory, které podle. Řekněme, původní soubor obsahoval dvě **VirtualNetworkSite** instance a změnil, jak je znázorněno v příkladech. Při importu souboru Azure odstraní virtuální sítě **VirtualNetworkSite** instance, které jste odebrali v souboru. Tento zjednodušený scénář předpokládá, že nebyly žádné prostředky ve virtuální síti, jako kdyby existovalo, virtuální síť se nepodařilo odstranit, a dojde k selhání importu.

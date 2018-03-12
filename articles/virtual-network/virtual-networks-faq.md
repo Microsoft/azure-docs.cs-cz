@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jdial
-ms.openlocfilehash: 8800dc59306c349daba8f4d9703e0c713eed06ec
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: a5b4bac9e0d8bc10defaff251557129a70d8a022
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure nejčastější dotazy (FAQ)
 
@@ -57,7 +57,7 @@ K vytvoření nebo konfiguraci virtuální sítě můžete použít následujíc
 Všechny rozsah IP adres definované v [RFC 1918](http://tools.ietf.org/html/rfc1918). Například 10.0.0.0/16.
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Může mít veřejné IP adresy v mé virtuální sítě?
-Ano. Další informace o rozsahů veřejných IP adres najdete v tématu [vytvořit virtuální síť](virtual-network-manage-network.md#create-a-virtual-network). Veřejné IP adresy nejsou přímo přístupné z Internetu.
+Ano. Další informace o rozsahů veřejných IP adres najdete v tématu [vytvořit virtuální síť](manage-virtual-network.md#create-a-virtual-network). Veřejné IP adresy nejsou přímo přístupné z Internetu.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Existuje limit pro počet podsítí ve virtuální síti?
 Ano. V tématu [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) podrobnosti. Adresní prostory podsítě se nesmí překrývat jednu na druhou.
@@ -151,7 +151,7 @@ Ano. Všech síťových rozhraní (NIC) připojené k virtuálnímu počítači 
 Ne. Nelze rezervovat privátní IP adresy. Pokud je dostupný privátní IP adresy, je přiřazen k instanci virtuálního počítače nebo role Server DHCP. Virtuální počítač může nebo nemusí být ten, který budete chtít že přidělit privátní IP adresu. Privátní IP adresa již vytvořené virtuální počítač, můžete však změnit na libovolné dostupné privátní IP adresy.
 
 ### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>Proveďte privátní měnit IP adresy pro virtuální počítače ve virtuální síti?
-To záleží na okolnostech. Pokud virtuální počítač byl nasazen prostřednictvím Správce prostředků, ne, bez ohledu na tom, jestli byl přiřazen IP adresu s metodou statické nebo dynamické přidělení. Pokud virtuální počítač byl nasazen pomocí modelu nasazení classic, dynamické IP adresy můžou změnit při spuštění virtuálního počítače poté, co bylo v zastaveném stavu (deallocated). Adresa vydání z virtuálního počítače nasazené prostřednictvím buď model nasazení, při odstranění virtuálního počítače.
+To záleží na okolnostech. Pokud virtuální počítač byl nasazen prostřednictvím Resource Manager, ne, bez ohledu na tom, jestli byl přiřazen IP adresu s metodou statické nebo dynamické přidělení. Pokud virtuální počítač byl nasazen pomocí modelu nasazení classic, dynamické IP adresy můžou změnit při spuštění virtuálního počítače poté, co bylo v zastaveném stavu (deallocated). Adresa vydání z virtuálního počítače nasazené prostřednictvím buď model nasazení, při odstranění virtuálního počítače.
 
 ### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>Může I ručně přiřadit IP adresy síťové adaptéry v rámci operačního systému virtuálního počítače?
 Ano, ale nedoporučuje, pokud není nezbytné, například při přiřazení více IP adres k virtuálnímu počítači. Podrobnosti najdete v tématu [přidání více IP adres k virtuálnímu počítači](virtual-network-multiple-ip-addresses-portal.md#os-config). Pokud IP adresu přiřadit na Azure síťový adaptér připojený k virtuálnímu počítači je jiné změny a IP adresu v operačním systému virtuálního počítače, ztratíte připojení k virtuálnímu počítači.
@@ -218,6 +218,6 @@ Ano. Můžete použít rozhraní REST API pro virtuální sítě v [Azure Resour
 
 ### <a name="is-there-tooling-support-for-vnets"></a>Je k dispozici podpora nástrojů pro virtuální sítě?
 Ano. Další informace o používání:
-- Portál Azure k nasazení virtuálních sítí pomocí [Azure Resource Manager](virtual-networks-create-vnet-arm-pportal.md) a [classic](virtual-networks-create-vnet-classic-pportal.md) modely nasazení.
+- Portál Azure k nasazení virtuálních sítí pomocí [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) a [classic](virtual-networks-create-vnet-classic-pportal.md) modely nasazení.
 - Prostředí PowerShell pro správu virtuálních sítí nasazené prostřednictvím [Resource Manager](/powershell/module/azurerm.network) a [classic](/powershell/module/azure/?view=azuresmps-3.7.0) modely nasazení.
 - Rozhraní příkazového řádku Azure (CLI) k nasazení a správě nasazení prostřednictvím sítě Vnet [Resource Manager](/cli/azure/network/vnet) a [classic](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) modely nasazení.  

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: e8a6722c74f044b5310ce0fcb937002f5a1e8fa2
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6c3fb08a43bce6193aa0094992616a290129bac8
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změnit nebo odstranit síťové rozhraní
 
@@ -39,7 +39,7 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 
 ## <a name="create-a-network-interface"></a>Vytvořit rozhraní sítě
 
-Při vytváření virtuálního počítače pomocí portálu Azure, portál vytvoří rozhraní sítě s výchozím nastavením pro vás. Pokud byste místo zadat všechna nastavení síťového rozhraní, můžete vytvořit síťové rozhraní s vlastním nastavením a k virtuálnímu počítači připojit síťové rozhraní, při vytváření virtuálního počítače (pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure). Můžete také vytvořit rozhraní sítě a přidat jej do existujícího virtuálního počítače (pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure CLI). Zjistěte, jak vytvořit virtuální počítač s existující rozhraní sítě nebo přidejte nebo odeberte síťová rozhraní z existujících virtuálních počítačů, přečtěte si téma [přidat nebo odebrat síťových rozhraní](virtual-network-network-interface-vm.md) článku. Před vytvořením síťové rozhraní, musíte mít existující [virtuální sítě](virtual-networks-create-vnet-arm-pportal.md) ve stejném umístění a předplatné vytvoříte síťové rozhraní na.
+Při vytváření virtuálního počítače pomocí portálu Azure, portál vytvoří rozhraní sítě s výchozím nastavením pro vás. Pokud byste místo zadat všechna nastavení síťového rozhraní, můžete vytvořit síťové rozhraní s vlastním nastavením a k virtuálnímu počítači připojit síťové rozhraní, při vytváření virtuálního počítače (pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure). Můžete také vytvořit rozhraní sítě a přidat jej do existujícího virtuálního počítače (pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure CLI). Zjistěte, jak vytvořit virtuální počítač s existující rozhraní sítě nebo přidejte nebo odeberte síťová rozhraní z existujících virtuálních počítačů, přečtěte si téma [přidat nebo odebrat síťových rozhraní](virtual-network-network-interface-vm.md) článku. Před vytvořením síťové rozhraní, musíte mít existující [virtuální sítě](manage-virtual-network.md#create-a-virtual-network) ve stejném umístění a předplatné vytvoříte síťové rozhraní na.
 
 1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je přiřazený (minimálně) oprávnění pro roli Přispěvatel sítě pro vaše předplatné. Pro čtení [předdefinované role pro řízení přístupu Azure na základě rolí](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) článku Další informace o přiřazování rolí a oprávnění k účtům.
 2. Do pole, která obsahuje text *vyhledávání prostředků* v horní části portálu Azure, zadejte *síťových rozhraní*. Když **síťových rozhraní** se zobrazí ve výsledcích hledání klikněte na něj.

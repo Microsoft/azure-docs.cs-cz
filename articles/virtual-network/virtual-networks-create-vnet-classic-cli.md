@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: 457b5a39e3b23497b59558659d7098481aca1e6b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c2f0fd8bb41661be5eba8cc4ad2dd30d3b6f8b0
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-virtual-network-classic-by-using-the-azure-cli"></a>Vytvoření virtuální sítě (klasické) pomocí rozhraní příkazového řádku Azure
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Tento dokument popisuje vytvoření virtuální sítě pomocí modelu nasazení classic. Můžete také [vytvořit virtuální síť v modelu nasazení Resource Manager pomocí rozhraní příkazového řádku Azure](virtual-networks-create-vnet-arm-cli.md).
+Tento dokument popisuje vytvoření virtuální sítě pomocí modelu nasazení classic. Můžete také [vytvořit virtuální síť v modelu nasazení Resource Manager pomocí rozhraní příkazového řádku Azure](quick-create-cli.md).
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 

@@ -58,13 +58,14 @@
 
 ## Řešení potíží
 ### [Průvodce řešením problémů](stream-analytics-troubleshooting-guide.md)
+### [Řešení běžných problémů](stream-analytics-common-troubleshooting-issues.md)
 ### [Okno Resource Health](stream-analytics-resource-health.md)
 ### [Metriky a diagram úloh](stream-analytics-job-diagram-with-metrics.md)
 ### [Ladění SELECT INTO](stream-analytics-select-into.md)
 ### [Důležité informace o řazení událostí](stream-analytics-out-of-order-and-late-events.md)
 ### [Omezení čtečky centra událostí](stream-analytics-event-hub-consumer-groups.md)
 ### [Protokoly diagnostiky](stream-analytics-job-diagnostic-logs.md)
-### [Získání poškozených událostí](stream-analytics-malformed-events.md)
+
 
 ## Automatizace
 ### [Použití Management .NET SDK](stream-analytics-dotnet-management-sdk.md)

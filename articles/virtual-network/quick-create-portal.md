@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 01/25/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 3c040f677aa25656148081d533e87cc55f1e22e7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8b6a4abdb7677417462392feade0c7cfdf99246f
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-portal"></a>Vytvoření virtuální sítě pomocí Portálu Azure
 
-V tomto článku zjistěte, jak vytvořit virtuální síť. Po vytvoření virtuální sítě, nasadíte dva virtuální počítače do virtuální sítě k otestování privátní síti komunikace mezi nimi.
+V tomto článku zjistěte, jak vytvořit virtuální síť. Po vytvoření virtuální sítě, můžete nasadit dva virtuální počítače do virtuální sítě a soukromě komunikaci mezi nimi a s Internetem.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -36,77 +36,83 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 1. Vyberte **+ vytvořit prostředek** na horní, levého horního rohu portálu Azure.
 2. Vyberte **sítě**a potom vyberte **virtuální síť**.
-3. Jak je znázorněno na následujícím obrázku, zadejte *myVirtualNetwork* pro **název**, *myResourceGroup* pro **skupiny prostředků**, vyberte  **Umístění** a **předplatné**, přijměte zbývající výchozí hodnoty a pak vyberte **vytvořit**. 
+3. Zadejte, nebo vyberte následující informace a potom vyberte **vytvořit**:
+    - **Name**: *myVirtualNetwork*
+    - **Adresní prostor**: přijměte výchozí. Adresní prostor je zadat v notaci CIDR.
+    - **Předplatné**: vyberte své předplatné.
+    - **Skupina prostředků**: vyberte **vytvořit nový** a zadejte *myResourceGroup*.
+    - **Umístění**: Vyberte * východní USA **.
+    - **Podsíť, název**: přijměte výchozí nastavení.
+    - **Podsíť, rozsah adres**: přijměte výchozí nastavení.
+    - **Koncové body služby**: přijměte výchozí nastavení.
 
     ![Zadejte základní informace o vaší virtuální sítě](./media/quick-create-portal/virtual-network.png)
 
-    **Adresní prostor** je zadat v notaci CIDR. 10.0.0.0/16 prostoru adres zahrnuje 10.0.0.0-10.0.255.254. Virtuální síť obsahuje nula nebo více podsítí. Zadaná podsíť **rozsahu adres** zahrnuje 10.0.0.0-10.0.0.255 adresy IP. Pouze 10.0.0.4-10.0.0.254 jsou však k dispozici, protože první čtyři adresy (0-3) a poslední adresa v jednotlivých podsítích si vyhrazuje Azure. Jsou dostupné IP adresy přiřazené k prostředky nasazené v rámci virtuální sítě.
+## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-## <a name="test-network-communication"></a>Test síťové komunikace
-
-Virtuální síť umožňuje několik typů prostředků Azure, aby soukromě vzájemně komunikovat. Virtuální počítač je jeden typ prostředku, který můžete nasadit do virtuální sítě. Vytvořte dva virtuální počítače ve virtuální síti, abyste mohli ověřit privátní komunikaci mezi nimi později.
-
-### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
+Virtuální síť umožňuje několik typů prostředků Azure pro soukromě komunikaci mezi sebou a s Internetem. Virtuální počítač je jeden typ prostředku, který můžete nasadit do virtuální sítě.
 
 1. Vyberte **+ vytvořit prostředek** najít v levém dolním rohu portálu Azure.
 2. Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**.
-3. Zadejte informace o virtuálním počítači znázorněno na obrázku, který následuje dále. **Uživatelské jméno** a **heslo** zadáte se používají k přihlášení k virtuálnímu počítači v pozdější fázi. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm). Vyberte vaše **předplatné**, rozhodnete použít existující *myResourceGroup* prostředků skupiny a ujistěte se, že **umístění** vybrané je stejné umístění, které jste vytvořili virtuální síť v. Po dokončení vyberte **OK**.
+3. Zadejte, nebo vyberte následující informace a potom vyberte **OK**:
+    - **Název**: *myVm1*
+    - **Uživatelské jméno**: Zadejte uživatelské jméno dle vlastního výběru.
+    - **Heslo**: Zadejte heslo dle vlastního výběru. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+    - **Předplatné**: vyberte své předplatné.
+    - **Skupina prostředků**: vyberte **použít existující** a vyberte **myResourceGroup**.
+    - **Umístění**: vyberte *východní USA*.
 
     ![Zadejte základní informace o virtuálním počítači](./media/quick-create-portal/virtual-machine-basics.png)
-4. Vyberte velikost virtuálního počítače a pak vyberte **vyberte**. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. Velikostí, které se zobrazují pro vás může být jiný než v následujícím příkladu: 
-
-    ![Vyberte velikost virtuálního počítače](./media/quick-create-portal/virtual-machine-size.png)
+4. Vyberte velikost virtuálního počítače a pak vyberte **vyberte**.
 5. V části **nastavení**, *myVirtualNetwork* by měla být vybrána pro **virtuální síť**, ale pokud není, vyberte **virtuální síť** , pak vyberte *myVirtualNetwork*. Nechte *výchozí* vybrané pro **podsíť**a potom vyberte **OK**.
 
     ![Vyberte virtuální síť.](./media/quick-create-portal/virtual-machine-network-settings.png)
-6. Na **Souhrn** vyberte **vytvořit** ke spuštění nasazení virtuálního počítače. 
-7. Virtuální počítač trvá několik minut pro vytvoření. Po vytvoření virtuální počítač je připojený k řídicímu panelu portálu Azure a souhrn virtuální počítač se automaticky otevře. Vyberte **sítě**.
+6. Na **Souhrn** vyberte **vytvořit** ke spuštění nasazení virtuálního počítače. Virtuální počítač trvá několik minut pro nasazení. 
+7. Úplné kroky 1 – 6 znovu, ale v kroku 3, název virtuálního počítače *Můjvp2*.
 
-    ![Informace o síti virtuálního počítače](./media/quick-create-portal/virtual-machine-networking.png)
+## <a name="connect-to-a-virtual-machine"></a>Připojit k virtuálnímu počítači
 
-    Uvidíte, že **privátní IP** adresa je *10.0.0.4*. V kroku 5, v části **nastavení**, jste vybrali *myVirtualNetwork* virtuální sítě a akceptovány podsíť s názvem *výchozí* pro **podsíť**. Pokud jste [vytvořili virtuální síť](#create-a-virtual-network), jste přijali výchozí hodnotu 10.0.0.0/24 pro podsíť **rozsahu adres**. Azure DHCP server přiřadí první dostupnou adresu podsítě, které vyberete k virtuálnímu počítači. Vzhledem k tomu, že Azure si vyhrazuje první čtyři adresy (0-3) každou podsíť, 10.0.0.4 je první dostupná IP adresa pro podsíť k dispozici.
-
-    **Veřejnou IP adresu** adresu přiřazenou se liší od adresy přiřazené k virtuálnímu počítači. Azure přiřadí veřejné, Internet směrovatelné IP adresy pro každý virtuální počítač, ve výchozím nastavení. Veřejná IP adresa je přiřazena k virtuálnímu počítači z [fondu adres přiřazených každé oblasti Azure](https://www.microsoft.com/download/details.aspx?id=41653). Sice Azure nezná, která veřejná IP adresa je přiřazena k virtuálnímu počítači, ale operační systém spuštěný ve virtuálním počítači nemá žádné informace o tom všechny veřejné IP adresy přiřazené.
-8. Úplné kroky 1-7 znovu, ale v kroku 3, název virtuálního počítače *Můjvp2*. 
-9. Po vytvoření virtuálního počítače, vyberte **sítě**, jak jste v kroku 7. Zobrazí **privátní IP** adresa je *10.0.0.5*. Vzhledem k tomu, že Azure dřív přiřazené první použitelné adresu *10.0.0.4* v podsíti *myVm1* virtuální počítač přiřazen *10.0.0.5* k  *Můjvp2* virtuální počítač, protože se jedná o další dostupnou adresu v podsíti.
-
-### <a name="connect-to-a-virtual-machine"></a>Připojit k virtuálnímu počítači
-
-1. Vzdáleně se připojovat k *myVm1* virtuálního počítače. V horní části portálu Azure, zadejte *myVm1*. Když **myVm1** se zobrazí ve výsledcích hledání, vyberte ho. Vyberte **Connect** tlačítko.
+1. Po *myVm1* je vytvořen, vzdáleně připojit k němu. V horní části portálu Azure, zadejte *myVm1*. Když **myVm1** se zobrazí ve výsledcích hledání, vyberte ho. Vyberte **Connect** tlačítko.
 
     ![Přehled virtuálních počítačů](./media/quick-create-portal/virtual-machine-overview.png)
+
 2. Po výběru **Connect** tlačítko soubor Remote Desktop Protocol (.rdp) je vytvořen a stažena do počítače.  
-3. Otevřete soubor stažený rdp. Po zobrazení výzvy vyberte **Connect**. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače a potom vyberte **OK**. Během procesu přihlášení se může zobrazit upozornění certifikátu. Vyberte **Ano** nebo **pokračovat** pokračovat v připojení.
+3. Otevřete soubor stažený rdp. Po zobrazení výzvy vyberte **Connect**. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače (budete muset vybrat možnost **další možnosti**, pak **použít jiný účet**, zadat přihlašovací údaje, které jste zadali při zpracování je Vytvoření virtuálního počítače), zvolte OK. Během procesu přihlášení se může zobrazit upozornění certifikátu. Vyberte **Ano** nebo **pokračovat** pokračovat v připojení.
 
-### <a name="validate-communication"></a>Ověření komunikace
+## <a name="communicate-between-vms"></a>Komunikace mezi virtuálními počítači
 
-Probíhá pokus o příkaz ping systému Windows virtuálního počítače selže, protože ping není přes bránu Windows firewall povolena ve výchozím nastavení. Chcete-li povolit příkaz ping na *myVm1*, zadejte následující příkaz z příkazového řádku:
+1. Z příkazového řádku, zadejte `ping myvm2`. Příkaz ping nezdaří, protože používá příkazu ping ICMP a ICMP není dovoleno prostřednictvím Windows firewall ve výchozím nastavení. Chcete-li povolit *Můjvp2* na příkaz ping *myVm1* v pozdější fázi, zadejte následující příkaz z příkazového řádku:
 
-```
-netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
-```
+    ```
+    netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
+    ```
 
-K ověření komunikace s *Můjvp2*, zadejte následující příkaz z příkazového řádku *myVm1* virtuálního počítače. Zadejte přihlašovací údaje, které jste použili při vytvoření virtuálního počítače a pak dokončete připojení:
+2. Zavřete připojení ke vzdálené ploše *myVm1*. 
 
-```
-mstsc /v:myVm2
-```
+3. Proveďte kroky v [připojit k virtuálnímu počítači](#connect-to-a-virtual-machine), ale připojení k *Můjvp2*. Z příkazového řádku, zadejte `ping myvm1`.
 
-Připojení ke vzdálené ploše je úspěšné, protože oba virtuální počítače mají privátní IP adresy přiřazené z *výchozí* podsítě a protože je otevřeno přes bránu Windows firewall ve výchozím nastavení vzdálené plochy. Budete moci připojit k *Můjvp2* podle názvu hostitele protože Azure automaticky poskytuje překlad názvů DNS pro všechny hostitele v rámci virtuální sítě. Z příkazového řádku příkaz ping *myVm1*, z *Můjvp2*.
+    Budete moci úspěšně odeslat příkaz ping *myVm1* virtuální počítač z *Můjvp2* virtuální počítač protože:
 
-```
-ping myvm1
-```
+    - povolené ICMP přes bránu Windows firewall na *myVm1* virtuálního počítače v předchozím kroku.
+    - ve výchozím nastavení Azure umožňuje veškerý síťový provoz mezi prostředky ve stejné virtuální síti.
 
-Příkaz ping je úspěšné, protože je povolené prostřednictvím brány Windows firewall na *myVm1* virtuálního počítače v předchozím kroku. Pokud chcete potvrdit odchozí komunikaci k Internetu, zadejte následující příkaz:
+## <a name="communicate-to-the-internet"></a>Komunikoval s Internetem
 
-```
-ping bing.com
-```
+1. Při připojení k stále *Můjvp2* virtuálního počítače z příkazového řádku, zadejte `ping bing.com`.
 
-Obdržíte čtyři odpovědi od vyhledávače bing.com. Ve výchozím nastavení může komunikovat jakéhokoli virtuálního počítače ve virtuální síti odchozí k Internetu. 
+    Obdržíte čtyři odpovědi od vyhledávače bing.com. 
 
-Ukončete relaci vzdálené plochy.
+    Budete moci úspěšně odeslat příkaz ping internetových prostředků z *Můjvp2* virtuální počítač, protože žádný virtuální počítač může komunikovat odchozí k Internetu, ve výchozím nastavení.
+
+2. Ukončete relaci vzdálené plochy.
+
+## <a name="communicate-from-the-internet"></a>Komunikaci z Internetu
+
+1. Získat veřejnou IP adresu *myVm1* virtuálního počítače. Na obrázku, v části Krok 1 [připojit k virtuálnímu počítači](#connect-to-a-virtual-machine), najdete v části veřejnou IP adresu. Na obrázku je adresu *13.90.241.247*. Adresu pro virtuální počítač se liší. 
+
+2. Z vašeho počítače příkazem ping otestovat veřejnou IP adresu vašeho *myVm1* virtuálního počítače. Selhání příkazu ping, i když je otevřený přes bránu Windows firewall ICMP.
+
+    Příkaz ping nezdaří, protože všechny přenosy na virtuálních počítačích s Windows, s výjimkou připojení ke vzdálené ploše přes port 3389, byl odepřen v Azure, ve výchozím nastavení. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

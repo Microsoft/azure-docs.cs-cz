@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a44fdbfb973d75c21aa87e9b9d0eea8fb2b3392
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: d94e491d12ac43a4d85a638c79bcd3b24a4bc0ef
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Infrastruktura SAP HANA (velké instance) a připojení v Azure 
 
@@ -75,7 +75,7 @@ Ano Podíváme se poněkud blíže do vytvoření virtuální sítě Azure pro v
 >[!Note]
 >Virtuální síť Azure pro velké instanci HANA musí být vytvořen pomocí modelu nasazení Azure Resource Manager. Řešení HANA velké Instance nepodporuje starší model nasazení Azure, obvykle označuje jako model nasazení classic.
 
-Virtuální sítě můžete vytvořit pomocí portálu Azure, PowerShell, šablony Azure nebo rozhraní příkazového řádku Azure (viz [vytvoření virtuální sítě pomocí portálu Azure](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). V následujícím příkladu se podíváme do virtuální sítě vytvořené pomocí portálu Azure.
+Virtuální sítě můžete vytvořit pomocí portálu Azure, PowerShell, šablony Azure nebo rozhraní příkazového řádku Azure (viz [vytvoření virtuální sítě pomocí portálu Azure](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). V následujícím příkladu se podíváme do virtuální sítě vytvořené pomocí portálu Azure.
 
 Pokud jsme viděl definice o virtuální síť Azure prostřednictvím portálu Azure, podíváme se na některé z definice a jak těch, které se týkají jsme seznam rozsahů adres různých IP. Jak jsme mluvíme o **adresní prostor**, jsme znamenat adresního prostoru, který může použít virtuální síť Azure. Tento adresní prostor je také rozsah adres, virtuální sítě používá pro šíření trasy protokolu BGP. To **adresní prostor** můžete zobrazit tady:
 
@@ -250,7 +250,7 @@ Použijte portál Azure, prostředí PowerShell nebo rozhraní příkazového ř
 
 Doporučuje se v takovém případě se k přidání nového rozsahu IP adres jako nový rozsah adresní prostor sítě VNet, místo aby generovala nový agregované rozsah. V obou případech budete muset odeslat tuto změnu společnosti Microsoft, které umožňují připojení z tohoto nového rozsahu IP adres s jednotkami HANA velké Instance v vašeho klienta. Můžete otevřít žádost podporu Azure získat novou virtuální síť adresní prostor přidat. Jakmile se zobrazí potvrzení, proveďte další kroky.
 
-Chcete-li vytvořit další podsítě na portálu Azure, najdete v článku [vytvoření virtuální sítě pomocí portálu Azure](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)a pokud chcete vytvořit z prostředí PowerShell, najdete v části [vytvoření virtuální sítě pomocí prostředí PowerShell](../../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Chcete-li vytvořit další podsítě na portálu Azure, najdete v článku [vytvoření virtuální sítě pomocí portálu Azure](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)a pokud chcete vytvořit z prostředí PowerShell, najdete v části [vytvoření virtuální sítě pomocí prostředí PowerShell](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
 
 ## <a name="adding-vnets"></a>Přidávání virtuálních sítí
 
@@ -277,15 +277,13 @@ Jakmile se vytvoří nový okruhu a SAP HANA na Azure Service Management configu
 
 Odebrat podsíť virtuální sítě, můžete použít portál Azure, PowerShell nebo rozhraní příkazového řádku. V případě, že vaše Azure VNet IP adresa rozsahu nebo Azure adresní prostor sítě VNet byla agregované rozsahu, neexistuje žádný postupujte podle službu jste se společností Microsoft. Kromě toho, že virtuální sítě je stále šíření BGP trasy adresní prostor, který zahrnuje odstraněné podsítě. Pokud jste definovali Azure VNet IP adresa rozsahu nebo Azure adresní prostor sítě VNet jako více rozsahů IP adres, z nichž jeden byl přiřazen odstraněné podsíť, by měl odstranit, mimo váš adresní prostor sítě VNet a následně informujte SAP HANA na Azure Service Management jeho odebrání z rozsahů, které může komunikovat s SAP HANA v Azure (velké instance).
 
-Když není k dispozici dosud konkrétní, vyhrazené Azure.com pokyny k odebrání podsítí, je proces pro odebrání podsítě zpětného procesu přidáním. Najdete v článku [vytvoření virtuální sítě pomocí portálu Azure](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace o vytvoření podsítě.
+Chcete-li odstranit podsíť, přečtěte si téma [odstranit podsíť](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet) Další informace o vytvoření podsítě.
 
 ## <a name="deleting-a-vnet"></a>Odstranění virtuální sítě
 
-Při odstraňování virtuální sítě pomocí portálu Azure, PowerShell nebo rozhraní příkazového řádku. SAP HANA na Azure Service Management Odebere existující autorizací na SAP HANA na okruh Azure ExpressRoute (velké instance) a odeberte Azure VNet IP adresa rozsahu nebo Azure adresní prostor sítě VNet pro komunikaci s instancí velké HANA.
+Chcete-li odstranit virtuální síť, přečtěte si téma [odstranit virtuální síť](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network). SAP HANA na Azure Service Management Odebere existující autorizací na SAP HANA na okruh Azure ExpressRoute (velké instance) a odeberte Azure VNet IP adresa rozsahu nebo Azure adresní prostor sítě VNet pro komunikaci s instancí velké HANA.
 
 Po odebrání sítě VNet, otevřete žádost podporu Azure k poskytování rozsahy IP adres místo odeberou.
-
-Když není k dispozici dosud konkrétní, vyhrazené Azure.com pokyny k odebrání virtuálních sítí, proces pro odebrání virtuální sítě je zpětného procesu pro přidání, který je popsaný výše. Najdete v článcích [vytvoření virtuální sítě pomocí portálu Azure](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [vytvoření virtuální sítě pomocí prostředí PowerShell](../../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace o vytváření virtuální sítě.
 
 K zajištění, že všechno, co je odebrat, odstraňte následující položky:
 

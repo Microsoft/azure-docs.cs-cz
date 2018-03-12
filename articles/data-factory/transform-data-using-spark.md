@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 4aed91696b5853b56ab17d69753d20081c79cdf7
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e4cc412f9c6e37d6e6c3b030a934d572a7319011
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Spark v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +71,7 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON:
 | description           | Popisuje, jakým způsobem aktivita naloží text.  | Ne       |
 | type                  | Typ aktivity pro aktivitu Spark je HDInsightSpark. | Ano      |
 | linkedServiceName     | Název propojené služby HDInsight Spark, který je spuštěn Spark program. Další informace o této propojené služby najdete v tématu [výpočetní propojené služby](compute-linked-services.md) článku. | Ano      |
-| SparkJobLinkedService | Azure Storage propojená služba, která obsahuje Spark soubor úlohy, závislosti a protokoly.  Pokud hodnotu pro tuto vlastnost nezadáte, použije se úložiště přidružený k clusteru HDInsight. | Ne       |
+| SparkJobLinkedService | Azure Storage propojená služba, která obsahuje Spark soubor úlohy, závislosti a protokoly.  Pokud hodnotu pro tuto vlastnost nezadáte, použije se úložiště přidružený k clusteru HDInsight. Hodnota této vlastnosti lze pouze propojenou službu úložiště Azure. | Ne       |
 | rootPath              | Kontejner objektů Blob v Azure a složky, která obsahuje soubor Spark. Název souboru je malá a velká písmena. Struktura složek najdete části (další části) Další informace o struktuře této složky. | Ano      |
 | entryFilePath         | Relativní cesta ke kořenové složce Spark kódu nebo balíčku. | Ano      |
 | className             | Hlavní třídy aplikace Java/Spark      | Ne       |
@@ -87,8 +87,8 @@ Vytvořte následující strukturu složek ve službě Azure Blob storage, na kt
 
 | Cesta                  | Popis                              | Požaduje se | Typ   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
-| `.`(uživatel root)            | Kořenová cesta úlohy Spark v úložišti propojená služba | Ano      | Složka |
-| &lt;uživatelem definované&gt; | Cesta k souboru položka úlohy Spark | Ano      | File   |
+| `.` (uživatel root)            | Kořenová cesta úlohy Spark v úložišti propojená služba | Ano      | Složka |
+| &lt;Uživatelem definované &gt; | Cesta k souboru položka úlohy Spark | Ano      | File   |
 | ./jars                | Všechny soubory v této složce se nahrála a umístit na cestě třídy java clusteru | Ne       | Složka |
 | . / pyFiles             | Všechny soubory v této složce se nahrála a umístit do PYTHONPATH clusteru | Ne       | Složka |
 | . / soubory               | Všechny soubory v této složce se nahrála a umístit na vykonavatele pracovní adresář | Ne       | Složka |

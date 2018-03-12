@@ -16,11 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: cf105dbc366b96dbb49484bffce9b81960cf41f4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 41051944af863c4c50595ea843e2adf3513b3a12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="securing-your-sql-database"></a>Zabezpečení SQL Database
 
@@ -31,7 +31,7 @@ V tomto článku najdete základní informace o zabezpečení datové vrstvy apl
 ## <a name="protect-data"></a>Ochrana dat
 
 ### <a name="encryption"></a>Šifrování
-Databáze SQL zabezpečuje můžete data tím, že poskytuje šifrování dat v provozu s [Transport Layer Security](https://support.microsoft.com/kb/3135244), pro data v klidovém stavu s [transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)a pro data v použití s [ Funkce Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx). 
+Databáze SQL zabezpečuje vašich dat tím, že poskytuje šifrování dat v provozu s [Transport Layer Security](https://support.microsoft.com/kb/3135244), pro data v klidovém stavu s [transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)a pro data v použití s [ Funkce Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx). 
 
 > [!IMPORTANT]
 >Všechna připojení ke službě Azure SQL Database vyžadují nepřetržité šifrování (SSL/TLS) příchozích a odchozích databázových dat. V připojovacím řetězci vaší aplikace, musíte zadat parametry k šifrování připojení a *není* důvěřovat certifikátu serveru (Pokud udělá se to pro vás zkopírujte připojovací řetězec mimo portál Azure), jinak hodnota připojení není ověřit identitu serveru a je náchylný na útoky "man-in-the-middle". Například u ovladače ADO.NET mají parametry připojovacího řetězce hodnoty **Encrypt=True** a **TrustServerCertificate=False**. 

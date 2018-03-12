@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 322514debd42714142434106748e4acac220ebee
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e86c323ac97ccc0d2a3da47fe1b1a9b3e9d16d0a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Vytvořit a odeslat bitovou kopii disku OpenBSD do Azure
 Tento článek ukazuje, jak vytvořit a odeslat virtuální pevný disk (VHD), který obsahuje OpenBSD operační systém. Po odeslání, můžete ho použít jako vlastní image pro vytvoření virtuálního počítače (VM) v Azure pomocí rozhraní příkazového řádku Azure.
@@ -29,7 +29,7 @@ Tento článek ukazuje, jak vytvořit a odeslat virtuální pevný disk (VHD), k
 Tento článek předpokládá, že máte následující položky:
 
 * **Předplatné Azure** – Pokud nemáte účet, můžete vytvořit jeden si během několika minut. Pokud máte předplatné MSDN, najdete v části [platební měsíční Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Jinak, zjistěte, jak [vytvořit Bezplatný zkušební účet](https://azure.microsoft.com/pricing/free-trial/).  
-* **Azure CLI 2.0** – Ujistěte se, že máte nejnovější [Azure CLI 2.0](/cli/azure/install-azure-cli) nainstalován a přihlášení k účtu Azure s [az přihlášení](/cli/azure/#az_login).
+* **Azure CLI 2.0** – Ujistěte se, že máte nejnovější [Azure CLI 2.0](/cli/azure/install-azure-cli) nainstalován a přihlášení k účtu Azure s [az přihlášení](/cli/azure/reference-index#az_login).
 * **OpenBSD operační systém nainstalovaný v souboru VHD** -podporovaný operační systém OpenBSD (verze 6.1) musí být nainstalována na virtuální pevný disk. Postup vytvoření souborů VHD existovat několik nástrojů. Řešení virtualizace, jako je například technologie Hyper-V můžete například použít k vytvoření souboru VHD a instalace operačního systému. Pokyny o tom, jak nainstalovat a používat technologie Hyper-V najdete v tématu [instalaci technologie Hyper-V a vytvoření virtuálního počítače](http://technet.microsoft.com/library/hh846766.aspx).
 
 
@@ -102,7 +102,7 @@ Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
 ```
 
 ## <a name="create-storage-resources-and-upload"></a>Vytvořit prostředky úložiště a odeslat
-Nejprve vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

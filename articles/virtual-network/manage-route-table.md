@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: f976832a857a35e9e0cea7a0eb731cb00492023f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7630fd82cf62f1fcb0df80cec5b5e0030da81a85
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změnit nebo odstranit tabulku směrování
 
@@ -38,7 +38,7 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 
 Je omezena na tom, kolik směrovací tabulky, můžete vytvořit na umístění Azure a předplatné. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. V levém horním rohu portálu, vyberte **+ nový**.
+1. V levém horním rohu portálu, vyberte **+ vytvořit prostředek**.
 2. Vyberte **sítě**, pak vyberte **směrovací tabulku**.
 3. Zadejte **název** směrovací tabulka, vyberte vaše **předplatné**, vytvořte novou **skupiny prostředků**, nebo vyberte existující skupinu prostředků, vyberte **umístění** , pak vyberte **vytvořit**. **Šíření trasy protokolu BGP zakázat** možnost brání místní trasy z nebyl rozšířen do virtuální sítě Azure přes protokol BGP. Pokud virtuální sítě není připojený k bránu Azure sítě (VPN nebo ExpressRoute), ponechte možnost *zakázané*. 
 

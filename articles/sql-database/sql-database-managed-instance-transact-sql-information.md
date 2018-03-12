@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: jovanpop
 manager: cguyer
-ms.openlocfilehash: 6ecb6600e5e1462cce9d49ecd9a4ed2e43e2c455
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 699ac303c553e1f3b78f13fc12163f47a1e77941
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database spravované Instance T-SQL rozdíly v systému SQL Server 
 
@@ -57,7 +57,7 @@ Další informace naleznete v tématu:
 ### <a name="backup"></a>Backup 
 
 Spravované Instance má automatické zálohování a umožňuje uživatelům vytvářet úplné databáze `COPY_ONLY` zálohy. Rozdíl, log a zálohy snímků souborů nejsou podporovány.  
-- Spravované Instance můžete zálohovat databázi jenom na účtu úložiště objektů Blob Azure: 
+- Spravované Instance můžete zálohovat databázi pouze k účtu Azure Blob Storage: 
  - Pouze `BACKUP TO URL` je podporováno 
  - `FILE`, `TAPE`, a nejsou podporovány zálohovací zařízení  
 - Většina Obecné `WITH` možnosti jsou podporovány. 
@@ -67,11 +67,11 @@ Spravované Instance má automatické zálohování a umožňuje uživatelům vy
  - Možnosti specifické pro protokol: `NORECOVERY`, `STANDBY`, a `NO_TRUNCATE` nejsou podporovány 
  
 Omezení:  
-- Spravované Instance může zálohovat databázi zálohy s až 32 rozděluje, která je dost pro databáze až 4 TB.
-- Maximální velikost zálohování stripe je 195 GB (velikost objektu blob stránky). Zvyšte počet rozděluje v zálohování příkazu k distribuci stripe velikosti. 
+- Spravované Instance může zálohovat databázi zálohy s až 32 rozděluje, která je dost pro databáze až 4 TB, pokud se používá kompresi zálohy.
+- Maximální velikost zálohování stripe je 195 GB (maximální velikost objektu blob). Zvyšte počet rozděluje v zálohování příkazu ke snížení velikosti jednotlivých stripe zůstat v rámci tohoto limitu. 
 
 > [!TIP]
-> Chcete-li vyřešit tento omezení na místních počítačích zálohování na `DISK` místo zálohování na `URL`, nahrát záložní soubor do objektu blob a potom obnovit. Podpora větší soubory obnovte, protože typ jiný objektu blob se používá.  
+> Chcete-li vyřešit tento omezení na místních počítačích zálohování na `DISK` místo zálohování na `URL`, nahrát záložní soubor do objektu blob a potom obnovit. Podporuje větší soubory obnovte, protože typ jiný objektu blob se používá.  
 
 ### <a name="buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti 
  
@@ -136,9 +136,9 @@ Kolace serveru `SQL_Latin1_General_CP1_CI_AS` a nelze je změnit. V tématu [kol
  
 - Více souborů protokolu není podporováno. 
 - Objekty v paměti nejsou podporovány ve vrstvě služeb obecné účely.  
-- Existuje omezení 280 souborů na jednu instanci zdání maximální 280 souborů v databázi. Soubory protokolu a data jsou vypočtena podle tohoto limitu.  
-- Databáze nesmí obsahovat skupiny soubor obsahující data datového proudu souboru.  Obnovení se nezdaří, pokud obsahuje .bak `FILESTREAM` data.  
-- Každý soubor je umístěn na samostatném disku Azure Premium. Vstupně-výstupních operací a propustnosti závisí na velikosti každého jednotlivého souboru. V tématu [výkon disku Azure Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)  
+- Existuje omezení 280 souborů na jednu instanci zdání maximální 280 souborů v databázi. Soubory protokolu a data, se počítají do tohoto limitu.  
+- Databáze nesmí obsahovat skupiny souborů, který obsahuje filestream data.  Obnovení se nezdaří, pokud obsahuje .bak `FILESTREAM` data.  
+- Každý soubor je umístěn v Azure Premium storage. Vstupně-výstupních operací a propustnosti na soubor závisí na velikost každého jednotlivého souboru stejným způsobem jako u disků Azure Premium Storage. V tématu [výkon disku Azure Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)  
  
 #### <a name="create-database-statement"></a>Příkaz CREATE DATABASE
 
@@ -217,7 +217,7 @@ V databázi R a Python externí knihovny se ještě nepodporují. V tématu [SQL
 
 ### <a name="filestream-and-filetable"></a>FileStream a objektu Filetable
 
-- Data datového proudu souboru není podporován. 
+- FileStream data není podporována. 
 - Databáze nesmí obsahovat skupiny souborů s `FILESTREAM` dat
 - `FILETABLE` není podporováno
 - Tabulky nemůže mít `FILESTREAM` typy
@@ -237,7 +237,7 @@ Další informace najdete v tématu [FILESTREAM](https://docs.microsoft.com/sql/
 ### <a name="linked-servers"></a>Propojené servery
  
 Odkazované servery ve spravované Instance podporují omezený počet cíle: 
-- Podporované cíle: SQL Server, spravované Instance databáze SQL a SQL Server na virtuálním počítači.
+- Podporované cíle: SQL Server, SQL Database, spravované Instance a SQL Server na virtuálním počítači.
 - Není podporováno cíle: soubory, služby Analysis Services a dalších relační.
 
 Operace
@@ -277,23 +277,23 @@ Replikace se ještě nepodporuje. Informace o replikaci najdete v tématu [repli
  - `FROM URL` (Úložiště objektů blob v azure) je pouze podporované možnosti.
  - `FROM DISK`/`TAPE`/ zálohovací zařízení není podporován.
  - Zálohovací sklady nejsou podporovány. 
-- `WITH` možnosti nejsou podporovány (žádný rozdíl `STATS`atd.)     
-- `ASYNC RESTORE` -Obnovení pokračovat i v případě, že dělí připojení klienta. Pokud ztratíte připojení, můžete zkontrolovat `sys.dm_operation_status` zobrazení stavu operace obnovení (a také vytvořit a vyřazení databáze). See [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database).  
+- `WITH` možnosti nejsou podporovány (ne `DIFFERENTIAL`, `STATS`atd.)     
+- `ASYNC RESTORE` -Obnovení pokračovat i v případě, že dělí připojení klienta. Pokud vaše připojení se ukončí, můžete zkontrolovat `sys.dm_operation_status` zobrazení stavu operace obnovení (a také vytvořit a vyřazení databáze). See [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database).  
  
-Následující možnosti databáze, které jsou sady nebo přepsat a není možné později změnit:  
+Následující možnosti databáze jsou sady nebo přepsat a není možné později změnit:  
 - `NEW_BROKER` (Pokud broker není povolena v souboru .bak)  
 - `ENABLE_BROKER` (Pokud broker není povolena v souboru .bak)  
 - `AUTO_CLOSE=OFF` (Pokud je databáze v souboru .bak `AUTO_CLOSE=ON`)  
 - `RECOVERY FULL` (Pokud je databáze v souboru .bak `SIMPLE` nebo `BULK_LOGGED` režimu obnovení)
-- Skupina paměťově optimalizovaných souborů a je volána XTP, pokud nebyla zdrojový soubor .bak  
-- Všechny existující skupina souborů paměťově optimalizované je přejmenován na XTP  
+- Paměťově optimalizovaných souborů a je volána XTP, pokud nebyla zdrojový soubor .bak  
+- Všechny existující paměťově optimalizovaných souborů je přejmenován na XTP  
 - `SINGLE_USER` a `RESTRICTED_USER` možnosti jsou převedeny na `MULTI_USER`   
 Omezení:  
 - `.BAK` nelze obnovit soubory obsahující více zálohovací sklady. 
 - `.BAK` nelze obnovit soubory obsahující více souborů protokolu. 
 - Obnovení se nezdaří, pokud obsahuje .bak `FILESTREAM` data.
-- Zálohy obsahující databáze, které mají aktivní v paměti OLTP objekty nelze nyní obnovit.  
-- Zálohy databáze obsahující tam, kde v určitém okamžiku, že existovaly objektům v paměti nelze nyní obnovit.   
+- Zálohy obsahující databáze, které mají aktivní v paměti objekty nelze nyní obnovit.  
+- Zálohování obsahující databáze, kde v určitém okamžiku existovaly objektům v paměti nelze nyní obnovit.   
 - Zálohování obsahující databáze v režimu jen pro čtení nelze nyní obnovit. Toto omezení se odeberou brzy k dispozici.   
  
 Informace o příkazech obnovení najdete v tématu [obnovit příkazy](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
@@ -381,21 +381,21 @@ Následující proměnné, funkce a zobrazení vrátí odlišné výsledky:
 - `@@SERVICENAME` Vrátí hodnotu NULL, protože nemá smysl v prostředí spravované Instance. V tématu [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).   
 - `SUSER_ID` je podporováno. Vrátí hodnotu NULL, pokud není v sys.syslogins AAD přihlášení. V tématu [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
 - `SUSER_SID` není podporována. Vrátí chybná data (dočasný známý problém). V tématu [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
-- `GETDATE()` vždy vrátí hodnotu datum v časovém pásmu UTC. V tématu [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).
+- `GETDATE()` a další funkce integrované datum a čas vždy vrátí čas v časovém pásmu UTC. V tématu [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).
 
 ## <a name="Issues"></a> Známé problémy a omezení
 
 ### <a name="tempdb-size"></a>Velikost databáze TEMPDB
 
-`tempdb` je rozdělená do 12 soubory s maximální velikost 14 GB na soubor. Nelze změnit této maximální velikosti na soubor a nové soubory nelze přidat do `tempdb`. Toto omezení se odeberou brzy k dispozici. Některé dotazy může způsobit chybu, pokud `tempdb` potřebuje víc než 168 GB.
+`tempdb` je rozdělená do 12 soubory s maximální velikost 14 GB na soubor. Nelze změnit této maximální velikosti na soubor a nové soubory nelze přidat do `tempdb`. Toto omezení se odeberou brzy k dispozici. Některé dotazy může způsobit chybu, pokud potřebují více než 168 GB `tempdb`.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Překročení prostoru úložiště s malou databází soubory
 
-Každá Instance spravované až 35 TB zarezervovala prostor úložiště, a každý databázový soubor je umístěn na 128 GB úložiště alokační jednotky. Databáze s mnoho malých souborů může být umístěny na 128 GB jednotkách, které celkem překročila omezení 35 TB. V takovém případě nové databáze nelze vytvořit nebo obnovit, i pokud celková velikost všech databází nedojde k dosažení limit velikosti instance. Chyba, která je vrácena nemusí být zrušte.
+Každá Instance spravované až 35 TB zarezervovala prostor úložiště, a všechny soubory databáze je původně umístěn na 128 GB úložiště alokační jednotky. Databáze s mnoho malých souborů může být umístěny na 128 GB jednotkách, které celkem překročila omezení 35 TB. V takovém případě nové databáze nelze vytvořit nebo obnovit, i když celková velikost všech databází nebylo dosaženo limitu velikosti instance. Chyba, která je vrácena v takovém případě nemusí být zrušte.
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Nesprávná konfigurace klíče SAS během databáze obnovení
 
-`RESTORE DATABASE` aby čtení soubor .bak může být neustále opakujte číst soubor .bak a chybovému po dlouhou dobu, pokud sdíleného přístupového podpisu v `CREDENTIAL` je nesprávný. Spusťte obnovení HEADERONLY před obnovením databáze do Ujistěte se, zda je správný klíč SAS.
+`RESTORE DATABASE` který čte soubor .bak může být neustále pokus o čtení soubor .bak a chybovému po dlouhou dobu, pokud sdíleného přístupového podpisu v `CREDENTIAL` je nesprávný. Spusťte obnovení HEADERONLY před obnovením databáze do Ujistěte se, zda je správný klíč SAS.
 Ujistěte se, že odeberete úvodní `?` z SAS klíč, který generuje pomocí portálu Azure.
 
 ### <a name="tooling"></a>Nástrojů

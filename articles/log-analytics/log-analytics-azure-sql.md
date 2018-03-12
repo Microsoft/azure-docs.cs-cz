@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte
-ms.openlocfilehash: 624c861db9bb318c368cef04965da0a73dd028d8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5fb7fd0be8b131ee098689b06c34c4e7c333801e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Monitorování databáze Azure SQL pomocí analýzy SQL Azure (Preview) v analýzy protokolů
 
@@ -103,7 +103,7 @@ Klikněte na **analýzy SQL Azure** dlaždici otevřete řídicí panel Azure SQ
 
 Výběrem libovolné dlaždice, otevře se podrobná sestava do konkrétní perspektivy. Když je vybraný perspektivy, je otevřené podrobná sestava.
 
-![Časové limity analýzy Azure SQL](./media/log-analytics-azure-sql/azure-sql-sol-timeouts.png)
+![Časové limity analýzy Azure SQL](./media/log-analytics-azure-sql/azure-sql-sol-metrics.png)
 
 Každý perspektivy obsahuje souhrny předplatné, server, elastický fond a úroveň databáze. Kromě toho každá perspektiva zobrazuje hlediska specifické pro sestavy na pravé straně. Výběr předplatného, server, fondu nebo databáze ze seznamu bude pokračovat procházení.
 
@@ -148,13 +148,19 @@ Výstrahy můžete snadno vytvořit s dat pocházejících z prostředků Azure 
 *Vysoký počet jednotek DTU na databázi Azure SQL*
 
 ```
-AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" | summarize avg(Maximum) by ResourceId
+AzureMetrics 
+| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" 
+| summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
+| render timechart
 ```
 
 *Vysoký počet jednotek DTU na fond elastické databáze Azure SQL*
 
 ```
-AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" | summarize avg(Maximum) by ResourceId
+AzureMetrics 
+| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" 
+| summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
+| render timechart
 ```
 
 Tyto dotazy na základě výstrahy můžete výstrahy na specifické prahové hodnoty pro Azure SQL Database a elastické fondy. Konfigurace oznámení pro pracovní prostor analýzy protokolů:
@@ -167,7 +173,7 @@ Tyto dotazy na základě výstrahy můžete výstrahy na specifické prahové ho
 4. Spusťte jeden z příkladů dotazů.
 5. V protokolu hledání, klikněte na **výstrahy**.  
 ![Vytvořit výstrahu pro vyhledávání](./media/log-analytics-azure-sql/create-alert01.png)
-6. Na **přidat pravidlo výstrahy** nakonfigurujte příslušné vlastnosti a specifické prahové hodnoty, které chcete a pak klikněte na tlačítko **Uložit**.  
+6. Na **přidat pravidlo výstrahy** nakonfigurujte příslušné vlastnosti a specifické prahové hodnoty, které chcete a pak klikněte na tlačítko **Uložit**. 
 ![Přidání pravidla výstrahy](./media/log-analytics-azure-sql/create-alert02.png)
 
 ## <a name="next-steps"></a>Další postup

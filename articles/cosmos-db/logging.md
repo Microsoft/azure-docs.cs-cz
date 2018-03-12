@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
+ms.date: 03/07/2018
 ms.author: mimig
-ms.openlocfilehash: 0d76e3bea8b3d24c4232c699354320f6b873722e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f647387b4e80c36339a456b8e9a2cfade7ac8102
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Protokolování diagnostiky Azure Cosmos DB
 
@@ -31,6 +31,13 @@ Předtím, než se nám získat do monitorování účtu Azure Cosmos DB, umož�
 Následující obrázek ukazuje různé druhy Azure k dispozici protokoly.
 
 ![Různé druhy Azure protokoly](./media/logging/azurelogging.png)
+
+Na obrázku výše **výpočetní prostředky** představují prostředky Azure, pro které je přístupné hostovaného operačního systému. Například sadách škálování virtuálních počítačů k virtuální počítače Azure, Azure Container Service atd se považuje za výpočetní prostředky. Výpočetní prostředky generovat protokoly aktivity, diagnostické protokoly a protokoly aplikací. Další informace naleznete [Azure Monitoring – výpočetní prostředky](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---compute-subset) článku.
+
+**Bez výpočetní prostředky** jsou prostředky, kde nelze získat přístup k podkladové operačního systému a pracovat přímo s prostředků. Například skupiny zabezpečení sítě, logiku aplikace atd. **Cosmos DB** je jiný výpočtový prostředek. Protokoly pro jiný výpočetní prostředky můžete zobrazit v protokolu aktivit nebo když zapnete možnost diagnostické protokoly na portálu. Další informace naleznete [Azure Monitoring – bez výpočetní prostředky](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---everything-else) článku.
+
+Protokol aktivit zaznamenává operace na úrovni předplatného pro Cosmos databáze, operace, jako jsou protokolovány ListKeys, zápis DatabaseAccounts atd. Zadejte podrobnější protokolování diagnostických protokolů a umožňuje protokolu DataPlaneRequests (vytvořit, číst, dotazu... ) a MongoRequests.
+
 
 Tato diskuse umožňuje zaměřit se na aktivita služby Azure, Azure Diagnotic a metriky. Jaký je rozdíl mezi tyto tři protokoly? 
 

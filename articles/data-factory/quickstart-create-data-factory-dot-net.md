@@ -105,7 +105,7 @@ Stáhněte sadu [Azure .NET SDK](http://azure.microsoft.com/downloads/) a nainst
 Postupujte podle pokynů v [tomto článku](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) a proveďte následující úlohy: 
 
 1. **Vytvořte aplikaci Azure Active Directory**. V Azure Active Directory vytvořte aplikaci reprezentující aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).
-2. Pomocí pokynů v části tohoto článku věnované **získání ID aplikace a ověřovacího klíče** získejte **ID aplikace** a **ověřovací klíč****. Poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
+2. Pomocí pokynů v části tohoto článku věnované **získání ID aplikace a ověřovacího klíče** získejte **ID aplikace** a **ověřovací klíč**\*\*. Poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
 3. Pomocí pokynů v části tohoto článku věnované **získání ID tenanta** získejte **ID tenanta**. Poznamenejte si tuto hodnotu. 
 4. Přiřaďte aplikaci k roli **Přispěvatel** na úrovni předplatného, aby aplikace mohla v předplatném vytvářet datové továrny. Pomocí pokynů v části tohoto článku věnované **přiřazení aplikace k roli**. 
 

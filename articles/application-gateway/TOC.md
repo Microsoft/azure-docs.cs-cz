@@ -62,6 +62,7 @@
 ### [Azure PowerShell](application-gateway-create-probe-ps.md)
 ## [Integrace služby Azure Security Center](application-gateway-integration-security-center.md)
 ## [Kombinace služeb pro vyrovnávání zatížení](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
+## [Konfigurace kompletního SSL](application-gateway-end-to-end-ssl-powershell.md)
 ## Řešení potíží
 ### [Řešení chyb ve službě Application Gateway](application-gateway-troubleshooting-502.md)
 ### [Metriky a protokolování diagnostiky](application-gateway-diagnostics.md)

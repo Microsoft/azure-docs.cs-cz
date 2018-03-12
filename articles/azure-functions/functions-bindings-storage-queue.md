@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: e2f9c75ba6e43f93aeb742b9eceebf846ec85cbf
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b139fbadb03ae2893331e763bc49b249c0dd05d7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure vazby fronty úložiště pro Azure Functions
 
@@ -58,7 +58,7 @@ public static class QueueFunctions
 
 ### <a name="trigger---c-script-example"></a>Aktivační událost – příklad skriptu jazyka C#
 
-Následující příklad ukazuje vazby v aktivační události objektu blob *function.json* souboru a [C# skript (.csx)](functions-reference-csharp.md) kód, který používá vazby. Funkce dotazování `myqueue-items` zařadit do fronty a zapíše do protokolu pokaždé, když položka fronty je zpracovat.
+Následující příklad ukazuje vazby ve frontě aktivační události *function.json* souboru a [C# skript (.csx)](functions-reference-csharp.md) kód, který používá vazby. Funkce dotazování `myqueue-items` zařadit do fronty a zapíše do protokolu pokaždé, když položka fronty je zpracovat.
 
 Tady je *function.json* souboru:
 
@@ -112,7 +112,7 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 ### <a name="trigger---javascript-example"></a>Aktivační událost – příklad v jazyce JavaScript
 
-Následující příklad ukazuje vazby v aktivační události objektu blob *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce dotazování `myqueue-items` zařadit do fronty a zapíše do protokolu pokaždé, když položka fronty je zpracovat.
+Následující příklad ukazuje vazby ve frontě aktivační události *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce dotazování `myqueue-items` zařadit do fronty a zapíše do protokolu pokaždé, když položka fronty je zpracovat.
 
 Tady je *function.json* souboru:
 
@@ -213,19 +213,19 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|Typ | neuvedeno| musí být nastavena na `queueTrigger`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
+|**Typ** | neuvedeno| musí být nastavena na `queueTrigger`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
 |**Směr**| neuvedeno | V *function.json* pouze souboru. musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
 |**name** | neuvedeno |Název proměnné, která představuje ve frontě v kód funkce.  | 
 |**queueName** | **QueueName**| Název fronty pro cyklické dotazování. | 
-|**Připojení** | Připojení |Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
+|**Připojení** | **Připojení** |Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>Aktivační událost - využití
  
-V jazyce C# a C# skript, přístup k datům objektu blob pomocí parametru metody `Stream paramName`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. Můžete vázat na některý z následujících typů:
+V jazyce C# a C# skript, přístup k datům zprávu pomocí parametru metody `string paramName`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. Můžete vázat na některý z následujících typů:
 
-* Objekt – modul runtime Functions objektů POCO deserializuje datovou část JSON do objektů POCO objektu. 
+* Objekt – modul runtime funkce deserializuje datovou část JSON do instance libovolné třídy definované v kódu. 
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
@@ -302,7 +302,7 @@ public static class QueueFunctions
 
 ### <a name="output---c-script-example"></a>Výstup – příklad skriptu jazyka C#
 
-Následující příklad ukazuje vazby v aktivační události objektu blob *function.json* souboru a [C# skript (.csx)](functions-reference-csharp.md) kód, který používá vazby. Funkce vytvoří položka fronty s datovou objektů POCO pro každý požadavek HTTP přijatých.
+Následující příklad ukazuje aktivační procedury HTTP vazby ve *function.json* souboru a [C# skript (.csx)](functions-reference-csharp.md) kód, který používá vazby. Funkce vytvoří položku fronty s **CustomQueueMessage** objektu datové části pro každý požadavek HTTP přijatých.
 
 Tady je *function.json* souboru:
 
@@ -353,17 +353,17 @@ Můžete odeslat více zpráv najednou pomocí `ICollector` nebo `IAsyncCollecto
 ```cs
 public static void Run(
     CustomQueueMessage input, 
-    ICollector<CustomQueueMessage> myQueueItem, 
+    ICollector<CustomQueueMessage> myQueueItems, 
     TraceWriter log)
 {
-    myQueueItem.Add(input);
-    myQueueItem.Add(new CustomQueueMessage { PersonName = "You", Title = "None" });
+    myQueueItems.Add(input);
+    myQueueItems.Add(new CustomQueueMessage { PersonName = "You", Title = "None" });
 }
 ```
 
 ### <a name="output---javascript-example"></a>Výstup – příklad v jazyce JavaScript
 
-Následující příklad ukazuje vazby v aktivační události objektu blob *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce vytvoří položka fronty pro každý požadavek HTTP přijatých.
+Následující příklad ukazuje aktivační procedury HTTP vazby ve *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce vytvoří položka fronty pro každý požadavek HTTP přijatých.
 
 Tady je *function.json* souboru:
 
@@ -447,11 +447,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|Typ | neuvedeno | musí být nastavena na `queue`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
+|**Typ** | neuvedeno | musí být nastavena na `queue`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
 |**Směr** | neuvedeno | musí být nastavena na `out`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
 |**name** | neuvedeno | Název proměnné, která představuje ve frontě v kód funkce. Nastavte na `$return` Chcete-li funkce návratovou hodnotu.| 
 |**queueName** |**QueueName** | Název fronty. | 
-|**Připojení** | Připojení |Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
+|**Připojení** | **Připojení** |Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -459,7 +459,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
  
 V jazyce C# a C# skript, zápis zpráva s jednou frontou pomocí parametru metody `out T paramName`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. Návratový typ metody místo můžete použít `out` parametr, a `T` může být libovolná z následujících typů:
 
-* Serializovatelné jako JSON objektů POCO
+* Objekt serializovatelný jako JSON
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 

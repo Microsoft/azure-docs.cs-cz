@@ -63,6 +63,10 @@
 ### [Komprese](cdn-troubleshoot-compression.md)
 
 # Referenční informace
+##  [Referenční informace ke stroji pravidel](cdn-rules-engine-reference.md)
+### [Podmíněné výrazy stroje pravidel](cdn-rules-engine-reference-conditional-expressions.md)
+### [Podmínky shody stroje pravidel](cdn-rules-engine-reference-match-conditions.md)
+### [Funkce stroje pravidel](cdn-rules-engine-reference-features.md)
 ## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
 ## [Azure PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
@@ -70,10 +74,6 @@
 ## [REST](/rest/api/cdn/)
 
 # Zdroje a prostředky
-##  [Referenční informace ke stroji pravidel](cdn-rules-engine-reference.md)
-### [Podmíněné výrazy stroje pravidel](cdn-rules-engine-reference-conditional-expressions.md)
-### [Funkce stroje pravidel](cdn-rules-engine-reference-features.md)
-### [Podmínky shody stroje pravidel](cdn-rules-engine-reference-match-conditions.md)
 ## [Lokality POP v Azure CDN](cdn-pop-locations.md)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
 ## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)

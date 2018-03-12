@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/20/2017
 ms.author: kumud
-ms.openlocfilehash: 9987fe1273dc05a2ad10c65325ad1d487d38247e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: abe970eb72be5ea6944acc253c2c3d9008b20c56
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/09/2018
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-powershell"></a>Vytvořte standardní veřejné zatížení na vyrovnávání s zónově redundantní veřejná IP adresa front-endu pomocí prostředí PowerShell
 
@@ -39,7 +39,7 @@ Tento článek vyžaduje, že máte verzi 4.4.0 nebo vyšší modulu AzureRM nai
 
 Před výběrem zóny nebo zónově redundantní možnost pro veřejnou IP adresu front-endu nástroje pro vyrovnávání zatížení, musíte nejdřív dokončit kroky v [zaregistrovat verzi Preview zón dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview).
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k předplatnému Azure pomocí příkazu `Login-AzureRmAccount` a postupujte podle pokynů na obrazovce.
 
@@ -88,7 +88,7 @@ $probe = New-AzureRmLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http
   -RequestPath / -IntervalInSeconds 360 -ProbeCount 5
 ```
 
-## <a name="create-a-load-balancer-rule"></a>Vytvořit pravidlo Vyrovnávání zatížení.
+## <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
  Vytvořte pravidlo služby load balancer pomocí následujícího příkazu:
 
 ```powershell
@@ -104,8 +104,8 @@ $lb = New-AzureRmLoadBalancer -ResourceGroupName myResourceGroup -Name 'MyLoadBa
   -Probe $probe -LoadBalancingRule $rule -Sku Standard
 ```
 
-## <a name="next-steps"></a>Další kroky
-- Zjistěte, jak [vytvořit veřejnou IP adresu v zóně dostupnosti](../virtual-network/create-public-ip-availability-zone-portal.md)
+## <a name="next-steps"></a>Další postup
+- Zjistěte, jak [vytvořit veřejnou IP adresu v zóně dostupnosti](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 
 

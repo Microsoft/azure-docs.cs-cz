@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: cynthn
-ms.openlocfilehash: 26e09f4e408b92034594215f602d5ca0ff259c5a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 511a3f1b1bc29514baaa3198125d7d236a6101ab
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-20-and-managed-disks"></a>Vytvoří kopii virtuálního počítače s Linuxem pomocí Azure CLI 2.0 a spravované disky
 
@@ -32,7 +32,7 @@ Můžete také [odesílání a vytvoření virtuálního počítače z disku VHD
 
 -   Nainstalujte [rozhraní příkazového řádku Azure 2.0](/cli/azure/install-az-cli2)
 
--   Přihlaste se k účtu Azure s [az přihlášení](/cli/azure/#az_login).
+-   Přihlaste se k účtu Azure s [az přihlášení](/cli/azure/reference-index#az_login).
 
 -   Máte virtuální počítač Azure má použít jako zdroj pro vaší kopie.
 

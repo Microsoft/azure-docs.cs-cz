@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2018
 ms.author: nitinme
-ms.openlocfilehash: 212789e8189abf362bb8eaf12e4c551b113b7adb
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 8e4213813ff23586ac683556d4a3c0c587edea58
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="use-databricks-cli-from-azure-cloud-shell"></a>Pomocí rozhraní příkazového řádku Databricks z prostředí cloudu Azure
+# <a name="use-databricks-cli-from-azure-cloud-shell"></a>Použití rozhraní příkazového řádku Databricks z Azure Cloud Shellu
 
 Naučte se používat rozhraní příkazového řádku Databricks z prostředí cloudu Azure k provádění operací na Databricks.
 
@@ -84,7 +84,7 @@ Můžete také následující příkaz pro přístup k systému souborů Databri
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o rozhraní příkazového řádku Azure najdete v tématu [přehled rozhraní příkazového řádku Azure](../cloud-shell/overview.md)
-* Pokud chcete zobrazit seznam příkazů pro Azure CLI, najdete v části [referenční dokumentace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
+* Pokud chcete zobrazit seznam příkazů pro Azure CLI, najdete v části [referenční dokumentace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)
 * Pokud chcete zobrazit seznam příkazů Databricks CLI, najdete v části [Databricks rozhraní příkazového řádku](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
 
 

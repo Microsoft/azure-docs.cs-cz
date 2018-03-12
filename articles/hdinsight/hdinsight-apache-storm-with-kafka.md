@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/26/2018
+ms.date: 03/08/2018
 ms.author: larryfr
-ms.openlocfilehash: eca3f95b672a7334d77ac027b4774addf4efed2c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 0c74e46f37319a9d1eb0ea1587087e24312de451
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-apache-kafka-with-storm-on-hdinsight"></a>Pomocí Apache Kafka Storm v HDInsight
 
@@ -66,9 +66,9 @@ Když vytvoříte virtuální síť Azure, Kafka, a clusterů Storm se ručně, 
 
 1. Na následující tlačítko použijte pro přihlášení do Azure a otevřete šablonu na portálu Azure.
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Šablona Azure Resource Manager je umístěna ve **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v2.json**. Vytvoří v následujících zdrojích informací:
+    Šablona Azure Resource Manager je umístěna ve **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**. Vytvoří v následujících zdrojích informací:
     
     * Skupina prostředků Azure
     * Azure Virtual Network
@@ -155,7 +155,7 @@ Další informace o topologiích tok najdete v tématu [https://storm.apache.org
 
 ## <a name="configure-the-topology"></a>Konfigurace topologie
 
-1. Použijte jednu z následujících metod zjišťování hostitelů Kafka zprostředkovatele:
+1. Použijte jednu z následujících metod ke zjišťování hostitelů Kafka zprostředkovatele pro **Kafka** na clusteru HDInsight:
 
     ```powershell
     $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -167,12 +167,12 @@ Další informace o topologiích tok najdete v tématu [https://storm.apache.org
     ($brokerHosts -join ":9092,") + ":9092"
     ```
 
+    > [!IMPORTANT]
+    > Následující příklad Bash předpokládá, že `$CLUSTERNAME` obsahuje název __Kafka__ název clusteru. Dále předpokládá, že [jq](https://stedolan.github.io/jq/) je nainstalována verze 1.5 nebo větší. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru.
+
     ```bash
     curl -su admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
     ```
-
-    > [!IMPORTANT]
-    > Bash příklad předpokládá, že `$CLUSTERNAME` obsahuje název clusteru HDInsight. Dále předpokládá, že [jq](https://stedolan.github.io/jq/) je nainstalována verze 1.5 nebo větší. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru.
 
     Hodnota vrácená je podobná následující text:
 
@@ -181,7 +181,7 @@ Další informace o topologiích tok najdete v tématu [https://storm.apache.org
     > [!IMPORTANT]
     > Ačkoli může existovat více než dva hostitele zprostředkovatele pro váš cluster, není potřeba poskytnout úplný seznam všech hostitelů na klienty. Jeden nebo dva kusy je dost.
 
-2. Ke zjištění hostitelů Kafka Zookeeper, použijte jednu z následujících metod:
+2. Použijte jednu z následujících metod zjišťování Zookeeper hostuje pro __Kafka__ na clusteru HDInsight:
 
     ```powershell
     $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -193,12 +193,12 @@ Další informace o topologiích tok najdete v tématu [https://storm.apache.org
     ($zookeeperHosts -join ":2181,") + ":2181"
     ```
 
+    > [!IMPORTANT]
+    > Následující příklad Bash předpokládá, že `$CLUSTERNAME` obsahuje název __Kafka__ clusteru. Dále předpokládá, že [jq](https://stedolan.github.io/jq/) je nainstalovaná. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru.
+
     ```bash
     curl -su admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2
     ```
-
-    > [!IMPORTANT]
-    > Bash příklad předpokládá, že `$CLUSTERNAME` obsahuje název clusteru HDInsight. Dále předpokládá, že [jq](https://stedolan.github.io/jq/) je nainstalovaná. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru.
 
     Hodnota vrácená je podobná následující text:
 
@@ -209,13 +209,13 @@ Další informace o topologiích tok najdete v tématu [https://storm.apache.org
 
     Tato hodnota, uložte, protože se později používá.
 
-3. Upravit `dev.properties` souboru v kořenovém adresáři projektu. Přidáte hostitele informace, zprostředkovatele a Zookeeper odpovídající řádky v tomto souboru. V následujícím příkladu je nakonfigurované použití ukázkové hodnoty z předchozích kroků:
+3. Upravit `dev.properties` souboru v kořenovém adresáři projektu. Přidejte zprostředkovatele a Zookeeper informace hostitele pro __Kafka__ clusteru odpovídající řádky v tomto souboru. V následujícím příkladu je nakonfigurované použití ukázkové hodnoty z předchozích kroků:
 
         kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
         kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
         kafka.topic: stormtopic
 
-4. Uložit `dev.properties` souboru a pak ji nahrát do clusteru Storm použijte následující příkaz:
+4. Uložit `dev.properties` souboru a potom pomocí následujícího příkazu nahrajte ho do **Storm** clusteru:
 
      ```bash
     scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:dev.properties
@@ -225,7 +225,12 @@ Další informace o topologiích tok najdete v tématu [https://storm.apache.org
 
 ## <a name="start-the-writer"></a>Spusťte modul pro zápis
 
-1. Použijte následující se připojit ke clusteru Storm pomocí protokolu SSH. Nahraďte **uživatelské jméno** s uživatelským jménem SSH použít při vytváření clusteru. Nahraďte **BASENAME** s základní název použít při vytváření clusteru.
+> [!IMPORTANT]
+> Postup v této části se předpokládá, k vytvoření clusterů Storm a Kafka použít odkaz šablony Azure Resource Manager v tomto dokumentu. Tato šablona umožňuje automatické vytvoření témat pro Kafka cluster.
+>
+> Ve výchozím nastavení, Kafka v HDInsight nepovoluje automatické vytváření témat, takže pokud jste použili jinou metodu pro vytvoření clusteru Kafka, musíte ručně vytvořit téma. Informace o ruční vytváření tématu najdete v tématu [začínat Kafka v HDInsight](./kafka/apache-kafka-get-started.md) dokumentu.
+
+1. Následující informace vám pomůžou připojit k **Storm** clusteru pomocí protokolu SSH. Nahraďte **uživatelské jméno** s uživatelským jménem SSH použít při vytváření clusteru. Nahraďte **BASENAME** s základní název použít při vytváření clusteru.
 
   ```bash
   ssh USERNAME@storm-BASENAME-ssh.azurehdinsight.net
@@ -234,14 +239,6 @@ Další informace o topologiích tok najdete v tématu [https://storm.apache.org
     Po zobrazení výzvy zadejte heslo, které jste použili při vytváření clusterů.
    
     Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
-
-2. Připojení SSH můžete vytvořit téma Kafka používané topologii následující příkaz:
-
-    ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic stormtopic --zookeeper $KAFKAZKHOSTS
-    ```
-
-    Nahraďte `$KAFKAZKHOSTS` s Zookeeper hostitele informace, které jste získali v předchozí části.
 
 2. Připojení SSH do clusteru Storm můžete spustit topologie zapisovače následující příkaz:
 
@@ -261,11 +258,12 @@ Další informace o topologiích tok najdete v tématu [https://storm.apache.org
 
 5. Po zahájení topologii, použijte následující příkaz k ověření, že je zápis dat do tématu Kafka:
 
+    > [!IMPORTANT]
+    > Nahraďte `$KAFKAZKHOSTS` s Zookeeper hostitele informace __Kafka__ clusteru.
+
   ```bash
   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --from-beginning --topic stormtopic
   ```
-
-    Nahraďte `$KAFKAZKHOSTS` s Zookeeper hostitele informace, které jste získali v předchozí části.
 
     Tento příkaz skriptu součástí Kafka používá k monitorování tématu. Po chvíli by se měl spustit vrací náhodné věty, které byly zapsány do tématu. Výstup se podobá následujícímu příkladu:
 

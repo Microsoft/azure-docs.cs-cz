@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 5ed5af627fa8ec8007f095face2cbf115ead4b27
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ba3a7ccc059dd5036753f471b762e27f22a179af
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Postup konfigurace podpory služby Virtual Network pro mezipaměť Azure Redis Cache Premium
 Azure Redis Cache má jiný mezipaměti nabídky, které poskytují flexibilitu při výběru velikost mezipaměti a funkce, včetně funkce úrovně Premium, jako je clustering, trvalosti a podpory služby virtual network. Virtuální síť je privátní síť v cloudu. Pokud instanci služby Azure Redis Cache je konfigurován s virtuální síť, není veřejně adresovatelné a můžete přistupovat pouze z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje postup konfigurace podpory služby virtual network pro instanci služby Azure Redis Cache premium.
@@ -38,7 +38,7 @@ Podpora služby Virtual Network (VNet) je nakonfigurovaná na **nová mezipamě�
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Jakmile vyberete cenová úroveň premium, můžete nakonfigurovat integraci Redis virtuální sítě tak, že vyberete virtuální síť, která je ve stejném předplatném a umístění jako mezipaměť. Pokud chcete použít novou virtuální síť, je nejprve vytvořte podle kroků v [vytvoření virtuální sítě pomocí portálu Azure](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) nebo [vytvoření virtuální sítě (klasické) pomocí portálu Azure](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a pak se vraťte **Nová mezipaměť Redis** okno vytvořit a nakonfigurovat mezipaměť premium.
+Jakmile vyberete cenová úroveň premium, můžete nakonfigurovat integraci Redis virtuální sítě tak, že vyberete virtuální síť, která je ve stejném předplatném a umístění jako mezipaměť. Pokud chcete použít novou virtuální síť, je nejprve vytvořte podle kroků v [vytvoření virtuální sítě pomocí portálu Azure](../virtual-network/manage-virtual-network.md#create-a-virtual-network) nebo [vytvoření virtuální sítě (klasické) pomocí portálu Azure](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a pak se vraťte **Nová mezipaměť Redis** okno vytvořit a nakonfigurovat mezipaměť premium.
 
 Chcete-li nakonfigurovat virtuální síť pro nové mezipaměti, klikněte na tlačítko **virtuální sítě** na **nová mezipaměť Redis** a vyberte požadované virtuální sítě z rozevíracího seznamu.
 

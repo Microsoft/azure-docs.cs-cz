@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f4a1562983ffa68dbd6586a2ae3a569f766387b5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ec6d8d5327ec6d5ebb92e125cb4c52a7a929c0e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Vytvoření virtuální sítě (klasické) s několika podsítěmi
 
 > [!IMPORTANT]
-> Azure má dva [různé modely nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytváření a práci s prostředky: Resource Manager a Klasický model. Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje vytvoření většina nové virtuální sítě prostřednictvím [Resource Manager](virtual-networks-create-vnet-arm-pportal.md) modelu nasazení.
+> Azure má dva [různé modely nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytváření a práci s prostředky: Resource Manager a Klasický model. Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje vytvoření většina nové virtuální sítě prostřednictvím [Resource Manager](quick-create-portal.md) modelu nasazení.
 
 V tomto kurzu zjistěte, jak vytvořit základní virtuální síť Azure (klasické) s oddělené veřejné a privátní podsítě. Můžete vytvořit prostředky Azure, jako jsou virtuální počítače a cloudové služby v podsíti. Prostředky vytvořené ve virtuální sítě (klasické) mohou komunikovat navzájem a s prostředky v jiných sítích připojené k virtuální síti.
 
-Další informace o všech [virtuální sítě](virtual-network-manage-network.md) a [podsíť](virtual-network-manage-subnet.md) nastavení.
+Další informace o všech [virtuální sítě](manage-virtual-network.md) a [podsíť](virtual-network-manage-subnet.md) nastavení.
 
 > [!WARNING]
 > Virtuální sítě (klasické) se okamžitě odstraní Azure při [předplatné je zakázané](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). Bez ohledu na to, jestli existují prostředky ve virtuální síti, se odstraní virtuální sítě (klasické). Pokud později znovu povolíte předplatné, je nutné znovu vytvořit prostředky, které existovaly ve virtuální síti.
@@ -161,7 +161,7 @@ Vytvoříte virtuální sítě (klasické) pomocí [portál Azure](#portal), [ro
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o všech virtuální síť a podsíť nastavení najdete v tématu [spravovat virtuální sítě](virtual-network-manage-network.md) a [spravovat podsítě virtuální sítě](virtual-network-manage-subnet.md). Máte různé možnosti pro splňují odlišné požadavky pomocí virtuální sítě a podsítě v produkčním prostředí.
+- Další informace o všech virtuální síť a podsíť nastavení najdete v tématu [spravovat virtuální sítě](manage-virtual-network.md) a [spravovat podsítě virtuální sítě](virtual-network-manage-subnet.md). Máte různé možnosti pro splňují odlišné požadavky pomocí virtuální sítě a podsítě v produkčním prostředí.
 - Filtrovat podsíť příchozí a odchozí provoz, vytvoření a použití [skupin zabezpečení sítě](virtual-networks-nsg.md) k podsítím.
 - Vytvoření [Windows](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálního počítače a připojte ho k existující virtuální síť.
 - Pro připojení dvou virtuálních sítí ve stejné oblasti Azure, vytvořte [partnerský vztah virtuální sítě](create-peering-different-deployment-models.md) mezi virtuálními sítěmi. Virtuální síť (Resource Manager) může rovnocenných počítačů k virtuální síti (klasické), ale nemůžete vytvořit partnerský vztah mezi dvěma virtuálními sítěmi (klasické).

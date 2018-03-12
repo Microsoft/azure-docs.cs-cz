@@ -15,11 +15,11 @@ ms.date: 03/02/2018
 ms.author: carlrab
 ms.workload: Active
 ms.topic: article
-ms.openlocfilehash: 917b5cdd82b44c1993eebd16634257d5a6518c96
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: e89d348c4b21a249401254c64e3887ec36283022
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastických fondů pomáhají spravovat a škálování více databází Azure SQL
 
@@ -314,7 +314,7 @@ Pokud chcete vytvořit a spravovat fondy elastické databáze SQL Azure PowerShe
 
 ## <a name="manage-elastic-pools-and-databases-using-the-azure-cli"></a>Správa elastické fondy a databází pomocí rozhraní příkazového řádku Azure
 
-K vytváření a správě fondů elastické databáze SQL se [rozhraní příkazového řádku Azure](/cli/azure/overview), použijte následující [databáze SQL Azure CLI](/cli/azure/sql/db) příkazy. Rozhraní příkazového řádku můžete spustit v prohlížeči pomocí [Cloud Shellu](/azure/cloud-shell/overview) nebo [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows. 
+K vytváření a správě fondů elastické databáze SQL se [rozhraní příkazového řádku Azure](/cli/azure), použijte následující [databáze SQL Azure CLI](/cli/azure/sql/db) příkazy. Rozhraní příkazového řádku můžete spustit v prohlížeči pomocí [Cloud Shellu](/azure/cloud-shell/overview) nebo [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows. 
 
 > [!TIP]
 > Příklad skriptů příkazového řádku Azure CLI, najdete v části [použití rozhraní příkazového řádku přesouvat Azure SQL database v elastický fond SQL](scripts/sql-database-move-database-between-pools-cli.md) a [použití Azure CLI škálování elastický fond SQL v Azure SQL Database](scripts/sql-database-scale-pool-cli.md).

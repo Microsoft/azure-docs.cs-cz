@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 341ace1d9792aba3d6d525a2cde0d9b74367d214
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5f42bee31e3bc1a23c9b0c6de9d6748e23c94713
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Plánování nasazení synchronizace souboru Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -49,7 +49,7 @@ Agent Azure souboru Sync je ke stažení balíčku, který umožňuje systému W
 Koncový bod serveru představuje určitého umístění na serveru pro registrované, například do složky na serveru svazku. Víc koncových bodů serveru může existovat na stejném svazku, pokud se nepřekrývají jejich obory názvů (například `F:\sync1` a `F:\sync2`). Můžete nakonfigurovat zásady vrstvení cloud jednotlivě pro každý koncový bod serveru. V současné době není možné vytvořit koncový bod serveru pro kořenový adresář svazku (například `F:\` nebo `C:\myvolume`, pokud je svazek připojen jako přípojný bod).
 
 > [!Note]  
-> Koncový bod serveru může být umístěna na svazku systému Windows. Cloud vrstvení není podporována na systémovém svazku.
+> Jsou podporovány pouze nevyměnitelné svazky.  Jednotky namapované ze vzdálené sdílené složky se nepodporují pro koncový bod cestu k serveru.  Kromě toho může být umístěna koncový bod serveru v systému Windows, ale cloudu systémový svazek vrstvení není podporována na systémovém svazku.
 
 Pokud přidáte umístění serveru, která má existující sadu souborů jako koncový bod serveru do skupiny synchronizace, tyto soubory jsou sloučeny s ostatními soubory, které již jsou v dalších koncových bodů v synchronizace skupiny.
 

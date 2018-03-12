@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: ee418537fb52dbfb3eacca6e99d8572152a60910
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 6a5ab1ba44197c0103e1e7d353a116dc01dfc163
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS ochrany standardní pomocí portálu Azure
 
@@ -31,9 +31,9 @@ Zjistěte, jak povolit a zakázat distribuovaná útok na dostupnost služby (De
 ## <a name="enable-ddos-protection-standard---new-virtual-network"></a>Povolit DDoS ochrany Standard - nové virtuální sítě
 
 1. Přihlaste se k webu Azure Portal na adrese http://portal.azure.com. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-2. Klikněte na tlačítko **vytvořit prostředek** v levém horním rohu portálu Azure.
+2. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 3. Vyberte **sítě**a potom vyberte **virtuální sítě**.
-4. Vytvoření virtuální sítě s zvolené nastavení. Další informace o vytváření virtuální sítě najdete v tématu [vytvořit virtuální síť](virtual-networks-create-vnet-arm-pportal.md). V části **ochrana proti útoku DDoS**, klikněte na tlačítko **povoleno**a potom klikněte na **vytvořit**. Pokud nevidíte **ochrana proti útoku DDoS**, pravděpodobnou příčinou je, že vaše předplatné není zaregistrované pro funkci. Je třeba provést [registrace](http://aka.ms/ddosprotection)a přijímat oznámení, že vaše předplatné bylo povoleno pro funkci, před **ochrana proti útoku DDoS** se zobrazí.
+4. Vytvoření virtuální sítě s zvolené nastavení. Další informace o vytváření virtuální sítě najdete v tématu [vytvořit virtuální síť](manage-virtual-network.md#create-a-virtual-network). V části **ochrana proti útoku DDoS**, klikněte na tlačítko **povoleno**a potom klikněte na **vytvořit**. Pokud nevidíte **ochrana proti útoku DDoS**, pravděpodobnou příčinou je, že vaše předplatné není zaregistrované pro funkci. Je třeba provést [registrace](http://aka.ms/ddosprotection)a přijímat oznámení, že vaše předplatné bylo povoleno pro funkci, před **ochrana proti útoku DDoS** se zobrazí.
 
     ![Vytvoření virtuální sítě](./media/ddos-protection-manage-portal/ddos-create-vnet.png)   
 
@@ -66,7 +66,7 @@ Můžete vybrat všechny dostupné metriky ochrana proti útoku DDoS pro upozorn
 3. Chcete-li nakonfigurovat e-mailové upozornění pro metriku, klikněte na tlačítko **přidat metriky upozornění**. Na všechny metriky lze vytvořit e-mailové výstrahy, ale nejobvyklejší metrika **útoku DDoS pod nebo není**. Toto je logická hodnota, 1 nebo 0. A **1** znamená, můžete v útoku. A **0** znamená nejsou napadené.
 4. Se má v případě útoku, nastavte metriku pro **útoku DDoS pod nebo není** a **podmínku, která má větší než nula (0) za posledních 5 minut**. Podobné výstrahy můžete nastavit pro jiné metriky.
 
-    ![Konfigurace metriky](./media/ddos-protection-manage-portal/ddos-metrics.png)
+    ![Konfigurace metrik](./media/ddos-protection-manage-portal/ddos-metrics.png)
 
     Během několika minut detekce útoku budete upozorněni, používání Azure monitorování metriky.
 

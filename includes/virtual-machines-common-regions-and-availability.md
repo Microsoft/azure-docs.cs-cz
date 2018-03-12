@@ -75,7 +75,7 @@ Ceny se liší v závislosti na zvolené dostupnosti a typu úložiště.
 Informace o cenách pro různé typy úložišť a možnosti dostupnosti najdete v tématu [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti
-Skupina dostupnosti je logické seskupení virtuálních počítačů v datovém centru, které umožňují na platformě Azure, abyste pochopili, jak vaše aplikace sestavena k poskytování redundance a dostupnosti. Doporučujeme, že dvě nebo více virtuálních počítačů jsou vytvořeny v rámci sadu k poskytování vysoce dostupné aplikace a podle dostupnosti [99,95 % smlouva Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Pokud [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) využívá jeden virtuální počítač, Azure SLA se vztahuje na neplánovanou údržbu. 
+Skupina dostupnosti je logické seskupení virtuálních počítačů v datovém centru, které umožňují na platformě Azure, abyste pochopili, jak vaše aplikace sestavena k poskytování redundance a dostupnosti. Doporučujeme, že dvě nebo více virtuálních počítačů jsou vytvořeny v rámci sadu k poskytování vysoce dostupné aplikace a podle dostupnosti [99,95 % smlouva Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Neexistuje žádné náklady pro sadu dostupnosti sám sebe, platíte jenom pro každou instanci virtuálního počítače, který vytvoříte. Pokud [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) využívá jeden virtuální počítač, Azure SLA se vztahuje na neplánovanou údržbu. 
 
 Skupina dostupnosti se skládá ze dvou další seskupení, které ochranu proti selhání hardwaru a povolit aktualizace bezpečně použít-poruch domén (FDs) a aktualizace domény (UDs). O správě dostupnosti [virtuálních počítačů s Linuxem](../articles/virtual-machines/linux/manage-availability.md) nebo [Windows](../articles/virtual-machines/windows/manage-availability.md) si můžete přečíst víc.
 
@@ -90,7 +90,7 @@ Virtuální počítače, které používají [Azure Managed Disks](../articles/v
 
 ## <a name="availability-zones"></a>Dostupnost zóny
 
-[Dostupnost zóny](../articles/availability-zones/az-overview.md) (preview), nastaví alternativu k dostupnosti, rozbalte položku úroveň řízení, budete muset zachovat dostupnost aplikace a data na virtuální počítače. Dostupnosti zóna je fyzicky oddělená zóny v rámci oblasti Azure. Existují tři zóny dostupnosti za podporovanou oblast Azure. Každou zónu dostupnosti má samostatnou spotřeby zdroje, sítě a chlazení a logicky oddělené od dalších dostupnost zóny v rámci oblasti Azure. Pomocí architektury řešení pro použití replikované virtuální počítače v zóny, můžete chránit vaše aplikace a data před ztrátou datacentru. Pokud dojde k narušení jednu zónu, pak replikované aplikace a data jsou okamžitě dostupné v jiné zóně. 
+[Dostupnost zóny](../articles/availability-zones/az-overview.md) (preview), nastaví alternativu k dostupnosti, rozbalte položku úroveň řízení, budete muset zachovat dostupnost aplikace a data na virtuální počítače. Zóna dostupnosti je fyzicky oddělená zóna v oblasti Azure. Existují tři zóny dostupnosti za podporovanou oblast Azure. Každou zónu dostupnosti má samostatnou spotřeby zdroje, sítě a chlazení a logicky oddělené od dalších dostupnost zóny v rámci oblasti Azure. Pomocí architektury řešení pro použití replikované virtuální počítače v zóny, můžete chránit vaše aplikace a data před ztrátou datacentru. Pokud dojde k narušení jednu zónu, pak replikované aplikace a data jsou okamžitě dostupné v jiné zóně. 
 
 ![Dostupnost zóny](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 
@@ -98,6 +98,6 @@ Virtuální počítače, které používají [Azure Managed Disks](../articles/v
 
 Další informace o nasazení [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) nebo [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) virtuálního počítače v zóně dostupnosti.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď můžete tyto funkce pro zajištění redundance a dostupnosti začít používat a vytvořit prostředí Azure. Informace o doporučených postupech najdete v tématu věnovaném [osvědčeným postupům pro zajištění dostupnosti v Azure](../articles/best-practices-availability-checklist.md).
 

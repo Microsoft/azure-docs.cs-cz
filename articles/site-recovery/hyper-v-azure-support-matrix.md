@@ -3,15 +3,16 @@ title: Matici podpory pro replikaci technologie Hyper-V Azure | Microsoft Docs
 description: "Poskytuje souhrn podporovaných součásti a požadavky pro replikaci technologie Hyper-V do Azure s Azure Site Recovery"
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: 58d54c1e0e6aa88878b45400b9211396f5d1b9d5
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 81983b9287a6b8073724f0cd973929f4b4677d4a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Podporu pro replikaci technologie Hyper-V do Azure.
 
@@ -29,7 +30,7 @@ Tento článek obsahuje souhrn podporovaných součásti a nastavení pro zotave
 
 ## <a name="on-premises-servers"></a>Místní servery
 
-**Server** | Požadavky | **Podrobnosti**
+**Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
 **Technologie Hyper-V (spouštění bez VMM)** | Windows Server 2016, Windows Server 2012 R2 s nejnovějšími aktualizacemi. | Při konfiguraci lokality Hyper-V v Site Recovery, kombinování hostitele se systémem Windows Server 2016 a 2012 R2 se nepodporuje.<br/><br/> Pro virtuální počítače na hostitele se systémem Windows Server 2016 není podporováno obnovení do alternativního umístění.
 **Technologie Hyper-V (s VMM)** | VMM 2016, VMM 2012 R2 | Pokud se používá VMM, by měl spravovat Windows Server 2016 hostitele VMM 2016.<br/><br/> Cloudy VMM, které zkombinuje hostitelů Hyper-V se spuštěným operačním systémem Windows Server 2016 a 2012 R2 není aktuálně podporován.<br/><br/> Prostředí, které zahrnují upgrade existujícího serveru VMM 2012 R2 na 2016 nejsou podporovány.
@@ -139,9 +140,9 @@ Managed Disks | Ano, pro převzetí služeb při selhání<br/><br/> Navrácení
 
 Místní virtuální počítače, které se replikují do Azure, musí splňovat požadavky na virtuální počítač Azure souhrnu v této tabulce.
 
-**Komponenta** | Požadavky | **Podrobnosti**
+**Komponenta** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-Hostovaný operační systém | Site Recovery podporuje všechny operační systémy, které jsou [nepodporuje v Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Kontrola předpokladů se nezdaří, pokud není podporován.
+**Hostovaný operační systém** | Site Recovery podporuje všechny operační systémy, které jsou [nepodporuje v Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Kontrola předpokladů se nezdaří, pokud není podporován.
 **Architektura operačního systému hosta** | 64 bitů | Kontrola předpokladů se nezdaří, pokud není podporován.
 **Velikost disku s operačním systémem** | Až 2048 GB pro virtuální počítače generace 1.<br/><br/> Až 300 GB pro virtuální počítače generace 2.  | Kontrola předpokladů se nezdaří, pokud není podporován.
 **Počet disků s operačním systémem** | 1 | Kontrola předpokladů se nezdaří, pokud není podporován.
