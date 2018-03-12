@@ -3,22 +3,22 @@ title: "Využití prostředků poskytovatele rozhraní API | Microsoft Docs"
 description: "Odkaz pro rozhraní API, využití prostředků, který načte informace o využití Azure zásobníku"
 services: azure-stack
 documentationcenter: 
-author: AlfredoPizzirani
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: b6055923-b6a6-45f0-8979-225b713150ae
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
-ms.author: alfredop
-ms.openlocfilehash: 0c45ce3bc93945ed8700464beebabcda07e8d77c
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.date: 02/22/2018
+ms.author: mabrigg
+ms.reviewer: alfredop
+ms.openlocfilehash: 763b0af9c258a70392e8c7ebbb4c107e94fce5b2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="provider-resource-usage-api"></a>Rozhraní API využití prostředků poskytovatele
 Termín *zprostředkovatele* platí pro správce služeb a zprostředkovatelů delegovaní. Operátory Azure zásobníku a delegované zprostředkovatelé můžete použít rozhraní API pro využití zprostředkovatele a zobrazte tak použití jejich přímé klientů. Například jak je vidět v diagramu, P0 můžete volat zprostředkovatele rozhraní API se získat informace o využití na na P1 a P2 společnosti přímý využití a P1 můžete volat pro informace o využití na P3 a P4.
@@ -33,7 +33,7 @@ Toto použití rozhraní API je poskytovatel rozhraní API, takže volající mu
 
 | **– Metoda** | **Identifikátor URI požadavku** |
 | --- | --- |
-| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}& subscriberId = {sub1.1} & verze api-version = 2015-06-01-preview & continuationToken = {{hodnota tokenu} |
+| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&subscriberId={sub1.1}&api-version=2015-06-01-preview&continuationToken={token-value} |
 
 ### <a name="arguments"></a>Argumenty
 | **Argument** | **Popis** |
@@ -44,11 +44,11 @@ Toto použití rozhraní API je poskytovatel rozhraní API, takže volající mu
 | *reportedEndTime* |Koncový čas dotazu. Omezení, která se týkají *reportedStartTime* platí také pro tento argument. Hodnota *reportedEndTime* nemůže být v budoucnu nebo aktuální datum. Pokud se jedná, výsledek je nastaven "zpracování není úplný." |
 | *aggregationGranularity* |Volitelný parametr, který má dvě hodnoty diskrétní potenciální: dnů a hodin. Jako hodnoty naznačují, jeden vrátí data ve dnech, a druhá je hodinové řešení. Denní možnost je výchozí. |
 | *subscriberId* |ID předplatného. Chcete-li získat filtrovaných dat, je požadováno ID předplatného přímé klienta zprostředkovatele. Pokud není zadán žádný parametr ID předplatného, volání vrátí data o využití pro všechny poskytovatele přímé klienty. |
-| *verze rozhraní API.* |Verze protokolu, který slouží k vytvoření této žádosti. Tato hodnota nastavena na *2015-06-01-preview*. |
+| *api-version* |Verze protokolu, který slouží k vytvoření této žádosti. Tato hodnota nastavena na *2015-06-01-preview*. |
 | *continuationToken* |Token načíst z posledního volání poskytovatele rozhraní API pro využití. Tento token je potřeba, když je větší než 1 000 řádků odpověď a funguje jako záložku v průběhu. Pokud token není k dispozici, od začátku den jsou načtena data nebo předaná hodinu, podle členitost. |
 
 ### <a name="response"></a>Odpověď
-ZÍSKAT /subscriptions/sub1/providers/Microsoft.Commerce/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00 & reportedEndTime = 2015-06-01T00 % 3a00 % 3a00 % 2b00 % 3a00 & aggregationGranularity = denně & subscriberId = sub1.1 & verze api-version = 1.0
+GET /subscriptions/sub1/providers/Microsoft.Commerce/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&subscriberId=sub1.1&api-version=1.0
 
 ```json
 {
@@ -79,17 +79,29 @@ meterID1",
 ### <a name="response-details"></a>Podrobnosti o odpovědi
 | **Argument** | **Popis** |
 | --- | --- |
-| *ID* |Jedinečné ID využití agregace. |
-| *Jméno* |Název využití agregace. |
+| *id* |Jedinečné ID využití agregace. |
+| *name* |Název využití agregace. |
 | *Typ* |Definice prostředků. |
-| *ID předplatného* |Identifikátor předplatného Azure zásobník uživatele. |
+| *subscriptionId* |Identifikátor předplatného Azure zásobník uživatele. |
 | *usageStartTime* |UTC počáteční čas využití sady, do které patří tato využití agregace.|
 | *usageEndTime* |Koncový čas UTC využití sady, do které patří tato využití agregace. |
 | *instanceData* |Páry klíč hodnota podrobností instance (v novém formátu):<br> *resourceUri*: plně kvalifikovaný ID prostředku, který zahrnuje skupiny prostředků a název instance. <br> *umístění*: oblast, ve které byla tato služba spuštěna. <br> *značky*: značky prostředku, které jsou určené uživatele. <br> *additionalInfo*: Další podrobnosti o prostředek, který byl zpracován, například typ verzí nebo bitovou kopii operačního systému. |
-| *množství* |Množství spotřeby prostředků, které došlo v této časového rámce. |
+| *Množství* |Množství spotřeby prostředků, které došlo v této časového rámce. |
 | *meterId* |Jedinečné ID pro prostředek, která se spotřebovala (také nazývané *ResourceID*). |
 
-## <a name="next-steps"></a>Další kroky
+
+## <a name="retrieve-usage-information"></a>Načíst informace o využití
+
+Ke generování dat o využití, měli byste mít prostředky, které jsou spuštěné a aktivně pomocí systému, například, aktivnímu virtuálnímu počítači nebo účet úložiště obsahující některá data atd. Pokud nejste jistí, jestli nějaké prostředky spuštěné v Azure Marketplace zásobníku, nasazení virtuálního počítače (VM) a ověřte virtuální počítač monitorování okno a ujistěte se, běží. Pro zobrazení dat o využití, použijte následující rutiny prostředí PowerShell:
+
+1. [Instalace prostředí PowerShell pro Azure zásobníku.](azure-stack-powershell-install.md)
+2. [Nakonfigurujte uživatele Azure zásobníku](user/azure-stack-powershell-configure-user.md) nebo [zásobník Azure operátor](azure-stack-powershell-configure-admin.md) prostředí PowerShell 
+3. Pro načtení dat o využití, použijte [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) rutiny prostředí PowerShell:
+```powershell
+Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
+```
+
+## <a name="next-steps"></a>Další postup
 [Využití prostředků klienta referenční dokumentace rozhraní API](azure-stack-tenant-resource-usage-api.md)
 
 [Nejčastější dotazy souvisí s využitím](azure-stack-usage-related-faq.md)

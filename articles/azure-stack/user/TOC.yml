@@ -119,6 +119,8 @@
               href: azure-stack-deploy-template-powershell.md
             - name: Nasazení s využitím sady Visual Studio
               href: azure-stack-deploy-template-visual-studio.md
+    - name: Povolit poskytovatele cloudové služby
+      href: azure-stack-csp-enable-billing-usage-tracking.md
 - name: Referenční informace
   items:
     - name: Azure Stack PowerShell

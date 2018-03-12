@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 03/07/2018
 ms.author: bonova
-ms.openlocfilehash: 721e94f2848a219c999c6bc6e5bba1fc49afa799
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
-ms.translationtype: HT
+ms.openlocfilehash: dc3c93a1a13f3e10f9159d26411d6337c0269722
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Instance spravované (preview)?
 
@@ -41,7 +41,7 @@ Následující tabulka jsou podrobněji popsány dále klíčové rozdíly a př
 
 | | Scénáře použití | 
 | --- | --- | 
-|Managed Instance |Pro zákazníky chtějí migrovat velký počet aplikací z místní nebo IaaS, samoobslužné vytvořen nebo ISV, které jsou k dispozici s navrhnout jako nízkou migrace úsilí co možná, spravované Instance. Pomocí plně automatického [služby migrace dat (DMS)](/sql/dma/dma-overview) v Azure, zákazníků navýšení a posunutí jejich místní SQL Server na spravované Instance, která nabízí kompatibilitu s místním SQL serverem a dokončení izolace instance zákazníků s nativní podporou virtuální sítě.  Pomocí programu Software Assurance, můžete vyměňovat své stávající licence pro zvýhodněné sazby na spravované Instance databáze SQL pomocí [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Spravované Instance databáze SQL je nejlepší cíl migrace v cloudu pro instance systému SQL Server, které vyžadují vysoké zabezpečení a bohaté programovatelnosti prostor. |
+|MI |Pro zákazníky chtějí migrovat velký počet aplikací z místní nebo IaaS, samoobslužné vytvořen nebo ISV, které jsou k dispozici s navrhnout jako nízkou migrace úsilí co možná, spravované Instance. Pomocí plně automatického [služby migrace dat (DMS)](/sql/dma/dma-overview) v Azure, zákazníků navýšení a posunutí jejich místní SQL Server na spravované Instance, která nabízí kompatibilitu s místním SQL serverem a dokončení izolace instance zákazníků s nativní podporou virtuální sítě.  Pomocí programu Software Assurance, můžete vyměňovat své stávající licence pro zvýhodněné sazby na spravované Instance databáze SQL pomocí [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Spravované Instance databáze SQL je nejlepší cíl migrace v cloudu pro instance systému SQL Server, které vyžadují vysoké zabezpečení a bohaté programovatelnosti prostor. |
 |Azure SQL Database |Pro zákazníky vývoj nové víceklientské aplikace SaaS nebo záměrně transformace svoje existující místní aplikace do víceklientské aplikace SaaS, návrh elastické fondy. Výhody tohoto modelu: <br><ul><li>Převod modelu obchodní prodávané licencí, které chcete prodávané odběry služby (pro ISV)</li></ul><ul><li>Izolace snadný a odrážka ověření klienta</li></ul><ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul><ul><li>Mohlo škálování bez stiskne pevný mezní hodnoty</li></ul>Pro zákazníky vývoji nových aplikací než SaaS více klientů, jejichž zatížení je stabilní a předvídatelné, navrhnout izolované databáze. Výhody tohoto modelu:<ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul>  <ul><li>Předvídatelný výkon pro každou databázi</li></ul>|
 |SQL IaaS |Pro zákazníky museli přizpůsobení operačního systému nebo na serveru databáze, a také zákazníků, kterým se specifické požadavky z hlediska spouštění aplikací třetích stran stranou s SQL serverem (ve stejném virtuálním počítači), navrhnout virtuálním počítačům systému SQL nebo IaaS jako optimální řešení|
 |||
@@ -200,4 +200,4 @@ Spravované Instance povolení správce systému a zaměřit se na čem nejvíc 
 
 - Pro funkce a porovnání seznamu, najdete v části [společné funkce SQL](sql-database-features.md).
 - Kurz, který vytvoří instanci spravované a obnoví databázi ze záložního souboru, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md).
-- Kurz pomocí služby pro migraci databáze Azure (DMS) pro migraci najdete v části [spravované Instance migrace pomocí DMS](../ dms/tutorial-sql-server-to-managed-instance.md).
+- Kurz pomocí služby pro migraci databáze Azure (DMS) pro migraci, najdete v části [spravované Instance migraci pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).
