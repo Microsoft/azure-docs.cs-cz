@@ -12,17 +12,22 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: b053d515949e71fcb5f1e520f6d3d5375cc27dcb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2d26aedf37727a4e3d687cdc6c748268d546f60f
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků služby App Service se zásobníkem Azure
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+
+> [!IMPORTANT]
+> Použitím 1802 aktualizace v zásobníku Azure integrované systému nebo nasadit nejnovější development kit zásobník Azure před nasazením služby Azure App Service.
+>
+>
 
 Jako operátor cloudu Azure zásobníku můžete dát uživatelům možnost vytvořit web a aplikacích API. To pokud chcete udělat, je nejprve nutno přidat [zprostředkovatele prostředků služby App Service](azure-stack-app-service-overview.md) do vašeho nasazení zásobník Azure, jak je popsáno v tomto článku. Po instalaci poskytovatele prostředků služby App Service, můžete jej zahrnout do nabídky a plány. Uživatelé se mohou potom přihlásit a získat službu začít vytvářet aplikace.
 

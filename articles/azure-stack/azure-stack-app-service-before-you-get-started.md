@@ -12,17 +12,22 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: f400180bc71efc6766b73b098c1f82542eec86f7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3261a312cde9ebdf41f6dadb82c14d108715f8f7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service v Azure zásobníku
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+
+> [!IMPORTANT]
+> Použitím 1802 aktualizace v zásobníku Azure integrované systému nebo nasadit nejnovější development kit zásobník Azure před nasazením služby Azure App Service.
+>
+>
 
 Před nasazením služby Azure App Service v zásobníku Azure, musíte splnit požadavky v tomto článku.
 
@@ -40,11 +45,11 @@ Před nasazením služby Azure App Service v zásobníku Azure, musíte splnit p
    - Moduly
      - GraphAPI.psm1
 
-## <a name="prepare-for-high-availability"></a>Příprava pro zajištění vysoké dostupnosti
+## <a name="high-availability"></a>Vysoká dostupnost
 
-Azure App Service v Azure zásobníku nelze nabízejí aktuálně vysokou dostupnost, protože zásobník Azure nasadí úloh pouze jednu doménu selhání.
+Z důvodu 1802 verzi zásobník Azure, která přidala se podpora pro domén selhání, nové nasazení služby Azure App Service v Azure zásobníku distribuovány v domén selhání a zajistit odolnost proti chybám.  Pro existující nasazení služby Azure App Service v zásobníku Azure, které byly nasazeny před vydáním 1802 aktualizace, najdete v dokumentaci pro postup znovu vyvážit nasazení (azure-stack-app-service-fault-domain-update.md).
 
-Příprava Azure App Service v zásobníku Azure pro vysokou dostupnost, nasaďte požadované souborového serveru a instance systému SQL Server v konfiguraci s vysokou dostupností. Pokud Azure zásobníku podporuje více domén selhání, budou příručka neobsahuje pokyny k povolení služby Azure App Service v Azure zásobníku v konfiguraci s vysokou dostupností.
+Kromě toho Azure App Service v zásobníku Azure pro vysokou dostupnost, nasaďte požadované souborového serveru a instance systému SQL Server v konfiguraci s vysokou dostupností. 
 
 ## <a name="get-certificates"></a>Získání certifikátů
 
@@ -127,13 +132,17 @@ Certifikát pro identitu musí obsahovat subjektem, který odpovídá následuj�
 
 ## <a name="virtual-network"></a>Virtual Network
 
-Aplikační služba Azure v zásobníku Azure umožňuje nasadit poskytovatele prostředků do existující virtuální síť.  To umožňuje použití interní IP adresy pro připojení k souborovému serveru a vyžaduje službou Azure App Service v Azure zásobníku serveru SQL server.  Virtuální síť musí být nakonfigurované následující rozsah adres a podsítí před instalací služby Azure App Service v zásobníku Azure:
+Aplikační služba Azure v zásobníku Azure umožňuje nasadit poskytovatele prostředků do buď existující virtuální síť nebo službu App Service bude vytvořena jako součást nasazení.  Použití existující virtuální síť umožňuje použití interní IP adresy pro připojení k souborovému serveru a vyžaduje službou Azure App Service v Azure zásobníku serveru SQL server.  Virtuální síť musí být nakonfigurované následující rozsah adres a podsítí před instalací služby Azure App Service v zásobníku Azure:
 
 Virtuální síť – /16
 
 Podsítě
 
-ControllersSubnet /24 ManagementServersSubnet /24 FrontEndsSubnet /24 PublishersSubnet /24 WorkersSubnet /21
+* ControllersSubnet /24
+* ManagementServersSubnet /24
+* FrontEndsSubnet /24
+* PublishersSubnet /24
+* WorkersSubnet /21
 
 ## <a name="prepare-the-file-server"></a>Příprava souborového serveru
 

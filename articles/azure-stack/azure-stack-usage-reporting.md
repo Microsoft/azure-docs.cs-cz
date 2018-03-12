@@ -6,19 +6,19 @@ documentationcenter:
 author: mattbriggs
 manager: femila
 editor: 
-ms.assetid: 2A397C83-1A6C-4290-B0EF-FDC34EE290CD
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
-ms.author: mabrigg;AlfredoPizzirani
-ms.openlocfilehash: 451e8c604e48d9cfc42284f2413fa5ed4fea03bc
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 02/22/2018
+ms.author: mabrigg
+ms.reviewer: alfredop
+ms.openlocfilehash: 29d53f63bf3d551823ca27df04f0e385a92cdec7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Generování sestav Azure zásobníku využití dat do Azure 
 
@@ -103,8 +103,9 @@ Uživatelé mohou vidět data o využití Azure zásobníku v souboru podrobnost
 
 Je vždy delaybetween, dat o využití hlášené data o využití hlášené centra účtů Azure a použití Azure zásobníku rozhraní API... Toto opoždění je čas potřebný k odeslat data o využití ze zásobníku Azure do Azure commerce. Z důvodu tato prodleva využití, který se nachází krátce před půlnoc může zobrazí v Azure následující den. Pokud použijete [rozhraní API Správce Azure zásobníku využití](azure-stack-provider-resource-api.md)a porovnejte výsledky využití v portálu Azure fakturace, uvidíte rozdíl.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Rozhraní API využití zprostředkovatele](azure-stack-provider-resource-api.md)  
 * [Rozhraní API využití tenanta](azure-stack-tenant-resource-usage-api.md)
 * [Nejčastější dotazy k využití](azure-stack-usage-related-faq.md)
+* [Spravovat využití a fakturace jako poskytovatele cloudových služeb](azure-stack-add-manage-billing-as-a-csp.md)

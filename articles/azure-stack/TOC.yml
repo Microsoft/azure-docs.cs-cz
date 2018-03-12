@@ -264,14 +264,24 @@
           items:
             - name: Přehled
               href: azure-stack-billing-and-chargeback.md
-            - name: Generování sestav dat využití
-              href: azure-stack-usage-reporting.md
-            - name: Rozhraní API využití zprostředkovatele
-              href: azure-stack-provider-resource-api.md
-            - name: Rozhraní API využití tenanta
-              href: azure-stack-tenant-resource-usage-api.md
-            - name: Nejčastější dotazy k využití
-              href: azure-stack-usage-related-faq.md
+            - name: Spravovat využití a fakturace jako zprostředkovatel kryptografických služeb
+              href: azure-stack-add-manage-billing-as-a-csp.md
+            - name: Přidat klienty pro využití a fakturace
+              href: azure-stack-csp-howto-register-tenants.md
+            - name: Spravovat registraci klientů
+              href: azure-stack-csp-ref-operations.md
+            - name: Využití a fakturace odkaz
+              items:
+                - name: Generování sestav dat využití
+                  href: azure-stack-usage-reporting.md
+                - name: Využití sestav infrastruktury pro poskytovatele cloudových služeb
+                  href: azure-stack-csp-ref-infrastructure.md
+                - name: Rozhraní API využití zprostředkovatele
+                  href: azure-stack-provider-resource-api.md
+                - name: Rozhraní API využití tenanta
+                  href: azure-stack-tenant-resource-usage-api.md
+                - name: Nejčastější dotazy k využití
+                  href: azure-stack-usage-related-faq.md
         - name: Připojení k Azure
           items:
             - name: Připojení pomocí VPN

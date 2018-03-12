@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: d6471796863a80e69fdaf740b68fb27d59503453
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 680cb70777574d0ed88c5f83fb0a6fa20263b951
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>V zásobníku Azure App Service: přidání další infrastrukturu nebo pracovních rolí
 
@@ -44,6 +44,7 @@ Aplikační služba Azure v zásobníku Azure nasadí všech rolí pomocí sady 
 ## <a name="add-additional-workers-with-powershell"></a>Přidat další pracovní procesy pomocí prostředí PowerShell
 
 1. [Nastavení prostředí správce Azure zásobníku v prostředí PowerShell](azure-stack-powershell-configure-admin.md)
+
 2. Použijte tento příklad pro rozšíření Škálováním škálovací sadu:
    ```powershell
    
@@ -59,7 +60,7 @@ Aplikační služba Azure v zásobníku Azure nasadí všech rolí pomocí sady 
     $ScaleSetName = "SharedWorkerTierScaleSet"
 
     ## TotalCapacity is sum of the instances needed at the end of operation. 
-    ## e.g. if you VMSS has 1 instance(s) currently and you need 1 more the TotalCapacity should be set to 2
+    ## e.g. if your VMSS has 1 instance(s) currently and you need 1 more the TotalCapacity should be set to 2
     $TotalCapacity = 2  
 
     # Get current scale set
@@ -68,51 +69,50 @@ Aplikační služba Azure v zásobníku Azure nasadí všech rolí pomocí sady 
     # Set and update the capacity
     $vmss.sku.capacity = $TotalCapacity
     Update-AzureRmVmss -ResourceGroupName $AppServiceResourceGroupName -Name $ScaleSetName -VirtualMachineScaleSet $vmss 
-  
-    '''
+   ```    
 
-> [!NOTE]
-> This step can take a number of hours to complete depending on the type of role and the number of instances.
->
->
+   > [!NOTE]
+   > Tento krok může trvat několik hodin, v závislosti na typu role a počet instancí.
+   >
+   >
 
-3. Monitor the status of the new role instances in the App Service Administration, to check the status of an individual role instance click the role type in the list.
+3. Monitorování stavu nové instance role v aplikaci služby správy, chcete-li zkontrolovat stav instance jednotlivých rolí, klikněte na typ role v seznamu.
 
-## Add additional workers directly within the App Service Resource Provider Admin.
+## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>Přidat další pracovníků přímo v rámci správce aplikace služby prostředků zprostředkovatele.
 
-1. Log in to the Azure Stack administration portal as the service administrator.
+1. Přihlaste se k portálu pro správu zásobník Azure jako správce služeb.
 
-2. Browse to **App Services**.
+2. Přejděte do **aplikační služby**.
 
     ![](media/azure-stack-app-service-add-worker-roles/image01.png)
 
-3. Click **Roles**. Here you see the breakdown of all App Service roles deployed.
+3. Klikněte na tlačítko **role**. Tady vidíte rozpis všech rolí služby App Service nasadit.
 
-4. Right click on the row of the type you want to scale and then click **ScaleSet**.
+4. Klikněte pravým tlačítkem na řádek škálování a potom klikněte na požadovaný typ **ScaleSet**.
 
     ![](media/azure-stack-app-service-add-worker-roles/image02.png)
 
-5. Click **Scaling**, select the number of instances you want to scale to, and then click **Save**.
+5. Klikněte na tlačítko **škálování**, vyberte počet instancí, kterou chcete škálovat a potom klikněte na **Uložit**.
 
     ![](media/azure-stack-app-service-add-worker-roles/image03.png)
 
-6. App Service on Azure Stack will now add the additional VMs, configure them, install all the required software, and mark them as ready when this process is complete. This process can take approximately 80 minutes.
+6. V zásobníku Azure App Service bude nyní přidávání dalších virtuálních počítačů, je nakonfigurovat, nainstalovat požadovaný software a označit je jako připravené po dokončení tohoto procesu. Tento proces může trvat přibližně 80 minut.
 
-7. You can monitor the progress of the readiness of the new roles by viewing the workers in the **Roles** blade.
+7. Můžete sledovat průběh připravenosti na nové role zobrazením zaměstnanci z **role** okno.
 
-## Result
+## <a name="result"></a>Výsledek
 
-After they are fully deployed and ready, the workers become available for users to deploy their workload onto them. The following shows an example of the multiple pricing tiers available by default. If there are no available workers for a particular worker tier, the option to choose the corresponding pricing tier is unavailable.
+Jakmile jsou plně nasazen a připraven, zaměstnanců k dispozici pro uživatele k nasazení své úlohy do nich. Následující ukazuje příklad několika cenové úrovně dostupná ve výchozím nastavení. Pokud nejsou žádné dostupné pracovní procesy pro konkrétní pracovní vrstvy, není k dispozici možnost vybrat odpovídající cenovou úroveň.
 
 ![](media/azure-stack-app-service-add-worker-roles/image04.png)
 
 >[!NOTE]
-> To scale out Management, Front End or Publisher roles add you must scale out the corresponding role type. 
+> Chcete-li škálovat správy, role Front-endu nebo vydavatele přidat že musí škálovat odpovídající typ role. 
 >
 >
 
-To scale out Management, Front End, or Publisher roles, follow the same steps selecting the appropriate role type. Controllers are not deployed as Scale Sets and therefore two should be deployed at Installation time for all production deployments.
+Pro rozšíření Škálováním správy, Front-endu nebo role vydavatele, postupujte stejným způsobem výběr typu příslušnou roli. Řadiče se nenasadí jako sady škálování a proto dva musí být nasazené v průběhu instalace pro všechny nasazení v produkčním prostředí.
 
-### Next steps
+### <a name="next-steps"></a>Další postup
 
-[Configure deployment sources](azure-stack-app-service-configure-deployment-sources.md)
+[Konfigurace zdrojů nasazení](azure-stack-app-service-configure-deployment-sources.md)
