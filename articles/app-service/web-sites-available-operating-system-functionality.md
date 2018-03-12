@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 ms.openlocfilehash: 6b5939341ad05fb8f80415c5335c24d216fc2555
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému v Azure App Service
 Tento článek popisuje běžné funkce operačního systému standardních hodnot, které jsou k dispozici pro všechny aplikace běžící na [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje soubor, sítě a přístup k registru a diagnostické protokoly a události. 
@@ -79,7 +79,7 @@ Domovský adresář je obsah aplikace a kód aplikace může do něj zapisovat. 
 <a id="NetworkAccess"></a>
 
 ## <a name="network-access"></a>Síťový přístup
-Kód aplikace můžete použít protokol TCP/IP a UDP, na základě protokolů, aby odchozí síťová připojení přístupné koncových bodů Internet, které zveřejňují externích služeb. Aplikace můžete použít tyto stejné protokoly pro připojení ke službám v rámci Azure &#151; například při navazování připojení prostřednictvím protokolu HTTPS k databázi SQL.
+Kód aplikace můžete použít protokol TCP/IP a UDP, na základě protokolů, aby odchozí síťová připojení přístupné koncových bodů Internet, které zveřejňují externích služeb. Aplikace můžete použít tyto stejné protokoly pro připojení ke službám v rámci Azure&#151;například vytvořením připojení pomocí protokolu HTTPS k databázi SQL.
 
 Je také omezené funkce pro aplikace k připojení jeden místní smyčky a aplikace naslouchání že soketem místní smyčky. Tato funkce existuje především k aplikacím, které čekají na místní smyčky sockets jako součást jejich funkce. Všimněte si, že každá aplikace uvidí připojení "privátní" zpětné smyčky; aplikace "A" nemůže naslouchat na soket místní smyčky navázat aplikací "B".
 

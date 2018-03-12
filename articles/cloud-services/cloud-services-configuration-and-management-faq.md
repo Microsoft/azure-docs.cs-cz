@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: genli
 ms.openlocfilehash: 916fbb436806c64ded9ebf9fdd9c57c42d0809f0
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy se správou a konfigurace pro Azure Cloud Services: Časté otázky (FAQ)
 
@@ -298,7 +298,7 @@ Jak je popsáno [zde](https://technet.microsoft.com/library/ee790567.aspx), $ssl
 |Hodnota|Význam|
 ------|------
 |0|Žádné SNI|
-|1|SNI povoleno |
+|1|SNI Enabled |
 |2 |Bez SNI vazby, který používá centrálního úložiště certifikátů|
 |3|Uložení SNI vazby, které používá Centrální certifikátu |
  
