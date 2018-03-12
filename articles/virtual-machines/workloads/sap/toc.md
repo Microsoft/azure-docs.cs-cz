@@ -14,7 +14,11 @@
 ## [Instalace jedné instance SAP HANA](hana-get-started.md)
 ## [Průvodce nasazením S/4 HANA nebo BW/4 HANA SAP CAL](cal-s4h.md)
 ## [Průvodce provozem SAP HANA v Azure](hana-vm-operations.md)
-## [Vysoká dostupnost SAP HANA ve virtuálních počítačích Azure](sap-hana-high-availability.md)
+## Dostupnost SAP HANA ve službě Azure Virtual Machines
+### [Přehled dostupnosti SAP HANA v Azure](sap-hana-availability-overview.md)
+### [Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure](sap-hana-availability-one-region.md)
+### [Dostupnost SAP HANA v Azure napříč oblastmi Azure](sap-hana-availability-across-regions.md)
+## [Nastavení systémové replikace SAP HANA ve virtuálních počítačích Azure](sap-hana-high-availability.md)
 ## [Přehled zálohování SAP HANA](sap-hana-backup-guide.md)
 ## [Zálohování SAP HANA na úrovni souborů](sap-hana-backup-file-level.md)
 ## [Zálohy snímků úložiště SAP HANA](sap-hana-backup-storage-snapshots.md)
@@ -52,5 +56,5 @@
 ## [Integrace AAD se SAP Business ByDesign](../../../active-directory/active-directory-saas-sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [Integrace AAD se SAP HANA DBMS](../../../active-directory/active-directory-saas-saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ##[Jednotné přihlašování pomocí SAP Fiori Launchpad SAML s Azure AD](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad)
-# Zdroje
+# Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)

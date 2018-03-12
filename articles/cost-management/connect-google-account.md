@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 81a38f471ee1f2f8064a956eca121fd0e6feb235
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8f8c157be0a369817099afa211015ba7587017e3
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Připojit k účtu Google Cloud Platform
 
@@ -73,4 +73,4 @@ V rámci několik hodin náklady na správu sestavy zobrazit informace náklady 
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o Azure náklady na správu Cloudyn, pokračujte [zkontrolujte využití a náklady](./tutorial-review-usage.md) kurzu náklady na správu.
+- Další informace o Azure náklady na správu, pokračujte [zkontrolujte využití a náklady](./tutorial-review-usage.md) kurzu náklady na správu.

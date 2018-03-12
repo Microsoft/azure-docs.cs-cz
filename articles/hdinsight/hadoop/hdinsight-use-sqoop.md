@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: e2f4601daf9aa3537f9170c3516d62ab1bd602e5
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: e96003de4a0dd4a5d8b060bb5883e51291827316
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Použití nástroje Sqoop se systémem Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -55,7 +55,7 @@ HDInsight cluster se dodává s ukázková data. Můžete použít následujíc�
   | devicemodel |řetězec |
   | state |řetězec |
   | Země |řetězec |
-  | querydwelltime |double |
+  | querydwelltime |Double |
   | ID relace |bigint |
   | sessionpagevieworder |bigint |
 
@@ -97,8 +97,8 @@ Pokud chcete používat prostředí Azure PowerShell k vytvoření clusteru a da
         |Název|Hodnota|
         |----|-----|
         | Výchozí název účtu úložiště | &lt;CluterName > Uložit |
-        | Název serveru databáze SQL Azure | &lt;Název clusteru > dbserver |
-        | Název databáze SQL Azure | &lt;Název clusteru > db |
+        | Název serveru databáze SQL Azure | &lt;ClusterName>dbserver |
+        | Název databáze SQL Azure | &lt;ClusterName>db |
      
 3. Vyberte **souhlasím s podmínkami a ujednáními výše uvedených**.
 4. Klikněte na **Koupit**. Zobrazí se nová dlaždice s názvem odeslání nasazení pro šablonu nasazení. Vytvoření clusteru a databáze SQL trvá přibližně 20 minut.
@@ -118,7 +118,7 @@ Pokud chcete použít existující databázi Azure SQL nebo Microsoft SQL Server
   > 
   > 
   
-  * Vytvoření a konfigurace virtuální sítě najdete v tématu [vytvoření virtuální sítě pomocí portálu Azure](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+  * Vytvoření a konfigurace virtuální sítě najdete v tématu [vytvoření virtuální sítě pomocí portálu Azure](../../virtual-network/quick-create-portal.md).
     
     * Pokud používáte systém SQL Server ve vašem datovém centru, je nutné nakonfigurovat virtuální síti jako *site-to-site* nebo *point-to-site*.
       

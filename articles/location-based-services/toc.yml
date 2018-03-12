@@ -19,10 +19,16 @@
       href: tutorial-prioritized-routes.md
 - name: Koncepty
   items:
+    - name: Úrovně přiblížení a mřížka dlaždic
+      href: zoom-levels-and-tile-grid.md
     - name: Zajištění geokódování
       href: geocoding-coverage.md
     - name: Zajištění provozu
       href: traffic-coverage.md
+    - name: Zajištění pokrytí
+      href: render-coverage.md
+    - name: Zajištění směrování
+      href: routing-coverage.md
 - name: Návody
   items:
     - name: Správa účtu a klíčů

@@ -7,11 +7,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: raynew
-ms.openlocfilehash: 8a3328e8aa42876f48960f7ccd32a5c819435019
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6334bdef73ea55ba0a0e15c5880daf03264e5c60
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a selhání zpět fyzických serverů replikovat do Azure
 
@@ -30,7 +30,7 @@ Převzetí služeb při selhání a navrácení služeb po obnovení probíhá v
 
 ## <a name="verify-server-properties"></a>Ověřte vlastnosti serveru
 
-Ověřte vlastnosti serveru a ujistěte se, zda je v souladu s [požadavky pro Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) pro virtuální počítače Azure.
+Ověřte vlastnosti serveru a ujistěte se, zda je v souladu s [požadavky pro Azure](vmware-physical-azure-support-matrix.md#replicated-machines) pro virtuální počítače Azure.
 
 1. V **chráněné položky**, klikněte na tlačítko **replikované položky**a vyberte počítač.
 

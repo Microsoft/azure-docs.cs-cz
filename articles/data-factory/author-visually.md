@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/9/2018
 ms.author: shlo
-ms.openlocfilehash: 81b97bb6b6abb5431bedd4efec5f807fa577c4e4
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 209afba99ac2b43c252d93c32930908ec1f957f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visual vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní prostředí (UX) umožňuje vizuálně vytvořit a nasadit prostředky pro vytváření dat bez nutnosti psaní jakéhokoli kódu. Můžete přetáhněte na plátno kanálu aktivity, proveďte test spustí, interaktivně, ladění a nasadit a monitorovat běží vaše kanálu. Pro použití uživatelského k provedení visual vytváření dvěma způsoby:
@@ -39,6 +39,9 @@ Při použití uživatelského **vytváření plátno** k vytváření přímo s
 
 ## <a name="author-with-vsts-git-integration"></a>Autor s integrací služby VSTS Git
 Vytváření Visual s integrací služby VSTS Git podporuje zdrojového kódu a spolupráce for work v objektu pro vytváření datových kanálů. Objekt pro vytváření dat můžete přidružit účet úložiště služby VSTS Git pro řízení zdrojů, spolupráce, Správa verzí a tak dále. Jeden účet služby VSTS Git může mít několik úložiště, ale úložiště Git služby VSTS může být přidružen pouze jeden datový objekt pro vytváření. Pokud nemáte účet služby VSTS nebo úložiště, postupujte podle [tyto pokyny](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) k vytvoření vašich prostředků.
+
+> [!NOTE]
+> Objekt pro vytváření dat kanál nelze přístup k souborům uloženým v úložišti služby VSTS Git. V důsledku toho nelze ukládat soubory, které jsou používány pro vytváření dat kanál aktivity – například, datové soubory a soubory skriptu – v úložišti služby VSTS Git.
 
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurace úložiště Git služby VSTS s Azure Data Factory
 Úložiště GIT služby VSTS můžete nakonfigurovat pomocí služby data factory pomocí dvou metod.

@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: nepeters
-ms.openlocfilehash: 11d30931bd549f7e877264b4a33f8e06c6b1c802
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e54ea62b7b7a7adb4874866a540ed9a6a097fc42
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="using-the-azure-cli-on-windows"></a>Použití Azure CLI v systému Windows
 
 Rozhraní příkazového řádku Azure (CLI) poskytuje příkazového řádku a skriptovací prostředí pro vytváření a správě prostředků Azure. Rozhraní příkazového řádku Azure je k dispozici pro systému macOS, Linux a operačních systémů Windows. Mezi tyto operační systémy, rozhraní příkazového řádku jsou stejné, ale specifickou syntaxi skriptování operačního systému se může lišit.
 
-Tento dokument podrobně popisuje způsoby, rozhraní příkazového řádku Azure můžete nainstalovat a spustit v systému Windows a podrobnosti syntaktické důležité informace pro každý. Pro podrobné naleznete v dokumentaci rozhraní příkazového řádku Azure [dokumentaci k rozhraní příkazového řádku Azure]( https://docs.microsoft.com/cli/azure/overview).
+Tento dokument podrobně popisuje způsoby, rozhraní příkazového řádku Azure můžete nainstalovat a spustit v systému Windows a podrobnosti syntaktické důležité informace pro každý. Pro podrobné naleznete v dokumentaci rozhraní příkazového řádku Azure [dokumentaci k rozhraní příkazového řádku Azure]( https://docs.microsoft.com/cli/azure).
 
 ## <a name="windows-subsystem-for-linux"></a>Subsystém Windows pro Linux
 
@@ -35,7 +35,7 @@ Pokud chcete používat rozhraní příkazového řádku Azure v WSL, proveďte 
 
 |Úkol | Pokyny |
 |---|---|
-| Povolit WSL | [Nainstalujte WSL dokumentace](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) |
+| Povolit WSL | [Nainstalujte WSL dokumentace ](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) |
 | Instalace rozhraní příkazového řádku Azure CLI |[Nainstalovat rozhraní příkazového řádku na WSL/Ubuntu 14.04](https://docs.microsoft.com/cli/azure/install-az-cli2#ubuntu)|
 
 ## <a name="powershell"></a>PowerShell

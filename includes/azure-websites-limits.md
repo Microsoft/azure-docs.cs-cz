@@ -1,6 +1,6 @@
-| Prostředek | Free | Sdílené (Preview) | Basic | Standard | Premium (Preview)</th> |
+| Prostředek | Free | Sdílené (Preview) | Basic | Standard | Premium </th> |
 | --- | --- | --- | --- | --- | --- |
-| [Webové, mobilní nebo rozhraní API aplikace](https://azure.microsoft.com/services/app-service/) za [plán služby App Service](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |Neomezená<sup>2</sup> |Neomezená<sup>2</sup> |Neomezená<sup>2</sup> |
+| [Webové, mobilní nebo rozhraní API aplikace](https://azure.microsoft.com/services/app-service/) za [plán služby App Service](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |Unlimited<sup>2</sup> |Unlimited<sup>2</sup> |Unlimited<sup>2</sup> |
 | [Aplikace logiky](https://azure.microsoft.com/services/app-service/logic/) za [plán služby App Service](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)</a><sup>1</sup> |10 |10 |10 |20 za jádra |20 za jádra |
 | [Plán služby App Service](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |1 podle oblastí |10 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků |
 | Výpočetní typ instance |Shared |Shared |Vyhrazené<sup>3</sup> |Vyhrazené<sup>3</sup> |Vyhrazené<sup>3</sup></p> |
@@ -8,12 +8,12 @@
 | Úložiště<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |500 GB<sup>4,5</sup></p> |
 | Doba využití procesoru (5 minut)<sup>6</sup> |3 minuty |3 minuty |Neomezená, platíte na standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezený, platím na sazby úrovně standard |Neomezený, platím na sazby úrovně standard |
 | Doba využití procesoru (den)<sup>6</sup> |60 minut |240 minut |Neomezená, platíte na standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/)</a> |Neomezený, platím na sazby úrovně standard |Neomezený, platím na sazby úrovně standard |
-| Paměť (1 hodina) |1 024 MB za plán služby App Service |1 024 MB za aplikace |Není k dispozici |Není dostupné. |Není k dispozici |
+| Paměť (1 hodina) |1 024 MB za plán služby App Service |1 024 MB za aplikace |neuvedeno |neuvedeno |neuvedeno |
 | Šířka pásma |165 MB |Neomezená, [rychlosti přenosu dat](https://azure.microsoft.com/pricing/details/data-transfers/) použít |Neomezený přenos dat, které platí sazby |Neomezený přenos dat, které platí sazby |Neomezený přenos dat, které platí sazby |
-| Architektura aplikace |32-bit |32-bit |32-bit nebo 64bitová verze |32-bit nebo 64bitová verze |32-bit nebo 64bitová verze |
+| Architektura aplikace |32 bitů |32 bitů |32-bit nebo 64bitová verze |32-bit nebo 64bitová verze |32-bit nebo 64bitová verze |
 | Webové sokety na instanci<sup>7</sup> |5 |35 |350 |Unlimited |Unlimited |
 | Souběžné [ladicího programu připojení](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) na aplikaci. |1 |1 |1 |5 |5 |
-| [subdomény azurewebsites.NET s FTP/S a SSL](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |X |X |X |X |X |
+| [azurewebsites.net subdomain with FTP/S and SSL](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |X |X |X |X |X |
 | [Vlastní domény](../articles/app-service/app-service-web-tutorial-custom-domain.md) podporu | |X |X |X |X |
 | Vlastní domény [podpora protokolu SSL](../articles/app-service/app-service-web-tutorial-custom-ssl.md) | | |Neomezený počet připojení SNI SSL |Neomezená SNI SSL a 1 připojení IP SSL zahrnuté |Neomezená SNI SSL a 1 připojení IP SSL zahrnuté |
 | Integrovaný nástroj Load Balancer | |X |X |X |X |

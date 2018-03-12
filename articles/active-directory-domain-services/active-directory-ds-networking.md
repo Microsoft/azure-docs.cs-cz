@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: a6f0089f13de10ba8bc1f9a656a2d21f9c559047
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: eee7905db4faedef3217118e8d491e2cb019fa30
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Požadavky sítě pro Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Jak vybrat virtuální síť Azure
@@ -53,6 +53,7 @@ Následující pokyny vám pomohou vybrat virtuální sítě pro použití se sl
 * Neplatí skupiny Nsg k podsíti vyhrazené vaší spravované domény. Pokud musíte použít skupiny Nsg na vyhrazené podsíť, ujistěte se, můžete **nezadávejte blokovat porty vyžadované pro služby a spravovat vaše doména**.
 * Neomezují zbytečně počet IP adres, které jsou k dispozici v rámci podsítě vyhrazené vaší spravované domény. Toto omezení zabrání službu zpřístupnění dva řadiče domény vaší spravované domény.
 * **Nepovolujte Azure AD Domain Services v podsíti brány** virtuální sítě.
+* Neblokují odchozí přístup z podsítě, ve kterém je povolená vaší spravované domény.
 
 > [!WARNING]
 > Pokud přidružíte skupinu NSG s podsítí, ve kterém služba Azure AD Domain Services je povoleno, mohou narušit možnost služeb a spravovat doménu společnosti Microsoft. Kromě toho synchronizace mezi vašeho klienta Azure AD a vaší spravované domény dojde k narušení. **Smlouva SLA se nevztahuje na nasazení, kde skupinu NSG použil blokující Azure AD Domain Services z aktualizace a Správa domény.**
@@ -89,6 +90,8 @@ Následující porty jsou povinné pro Azure AD Domain Services do služby a úd
 * Slouží k povolení zabezpečeného přístupu LDAP k vaší spravované domény přes internet.
 * Otevírání tohoto portu prostřednictvím vaší NSG je volitelný. Otevřete port pouze v případě, že máte zabezpečený LDAP přístup přes internet povoleno.
 * Příchozí přístup můžete omezit na tento port na zdrojové IP adresy, ze kterých plánujete připojit přes zabezpečený LDAP.
+
+**Odchozí přístup** služby AAD Domain Services potřebuje odchozí přístup k různým jiných služeb systému Azure, aby bylo možné spravovat, zálohování a monitorování vaší spravované domény. Neblokují odchozí přístup z vyhrazených podsítě, ve kterém je povolená vaší spravované domény.
 
 
 ## <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě)

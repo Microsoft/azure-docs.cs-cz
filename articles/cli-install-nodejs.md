@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
-ms.openlocfilehash: 67aa5bb122b277e998119506bb2a574d6b4fde5e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a1ca71a81f4fa6dd36b9ed3a2b16fcca0e29601c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="install-the-azure-cli-10"></a>Nainstalovat Azure CLI 1.0
 > [!div class="op_single_selector"]
@@ -29,9 +29,9 @@ ms.lasthandoff: 12/21/2017
 
 > [!IMPORTANT]
 > Toto téma popisuje, jak nainstalovat Azure CLI 1.0. Toto rozhraní příkazového řádku je zastaralá a musí být použit pouze pro podporu s modelem Azure Service Management (ASM) s "classic" prostředky.
-> Pro nasazení Azure Resource Manager (ARM), použijte [Azure CLI 2.0](/cli/azure/overview).
+> Pro nasazení Azure Resource Manager, použijte [Azure CLI 2.0](/cli/azure).
 
-Rychle nainstalujte rozhraní příkazového řádku Azure (Azure CLI 1.0) používat sadu příkazů open source založený na prostředí pro vytváření a správu prostředků v Microsoft Azure. Máte několik možností instalace těchto nástrojů pro různé platformy ve vašem počítači:
+Rychle nainstalujte rozhraní příkazového řádku Azure (Azure CLI 1.0), abyste mohli použít sadu opensourcových příkazů prostředí pro vytváření a správu prostředků v Microsoft Azure. Máte několik možností instalace těchto nástrojů pro různé platformy ve vašem počítači:
 
 * **balíčku npm** -spustit npm (Správce balíčků pro JavaScript) nainstalovat nejnovější balíček Azure CLI 1.0 na operačního systému nebo distribuce systému Linux. Vyžaduje node.js a npm ve vašem počítači.
 * **Instalační program** -stáhnout instalační program pro instalaci snadno na Mac nebo Windows.
@@ -128,7 +128,7 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Připojení k předplatnému Azure z rozhraní příkazového řádku](/cli/azure/authenticate-azure-cli) k vytváření a správě prostředků Azure.
 * Další informace o Azure CLI, stažení zdrojový kód, problémy sestavy, nebo můžete přispět k projektu, najdete [úložiště GitHub pro rozhraní příkazového řádku Azure](https://github.com/azure/azure-xplat-cli).
 * Pokud máte dotazy týkající se používání rozhraní příkazového řádku Azure nebo Azure, přejděte [fóra Azure](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting).

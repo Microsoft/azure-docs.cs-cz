@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 03/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: b5e52e30b99e1d59c2f8bde17b31b0f1cb3d6d70
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 247f13717971d3660b3ec0ee94821bd593c5fed0
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure aktualizace 1802 zásobníku
 
@@ -37,10 +37,6 @@ Tento článek popisuje vylepšení a opravy v balíčku aktualizace 1802, znám
 ## <a name="before-you-begin"></a>Než začnete    
 > [!IMPORTANT]    
 > Nepokoušejte se vytvořit virtuální počítače při instalaci této aktualizace. Další informace o správě aktualizací najdete v tématu [správě aktualizací v přehledu Azure zásobníku](/azure-stack-updates#plan-for-updates).
-
-> [!IMPORTANT]    
-> Při použití [SQL](/azure-stack-sql-resource-provider-deploy) nebo [MySQL](/azure-stack-mysql-resource-provider-deploy) poskytovatele prostředků se musí používat verzi 1712 před zahájením instalace Azure zásobníku verze 1802. Pokud zprostředkovatele jsou verze 1711 nebo starší a máte nainstalovanou verzi Azure zásobníku 1802, můžete těchto poskytovatelů prostředků už aktualizovat na novější verzi.
-
 
 
 ### <a name="prerequisites"></a>Požadavky

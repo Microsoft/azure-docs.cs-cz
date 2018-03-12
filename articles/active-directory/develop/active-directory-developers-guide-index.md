@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 03/08/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: d3b22927017e445ee3b6cea3e92edc0fb786cd8c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ccad1f12e4f99074763f116596b4467e822d9f35
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="articles-in-the-azure-ad-developer-guide"></a>Články v příručce pro vývojáře Azure AD
 Následuje seznam všech témat zahrnutých v příručce pro vývojáře Azure Active Directory.
@@ -43,7 +43,7 @@ Tyto články popisují konkrétní koncepty a funkce služby Azure Active Direc
 | [Řídicí panel pro prodejce Office 365](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)               | Jak publikovat aplikace na řídicí panel prodejce O365 |
 | [Visual Studio připojené služby](vs-active-directory-dotnet-getting-started.md)                                               | Jak používat Azure AD integrace s projekty MVC v sadě Visual Studio |
 | [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers) | Postup při integraci s místní službě Active Directory pomocí služby AD FS |
-| [Osvědčené postupy zpracování chyb pro ADAL](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | Postup při integraci s místní službě Active Directory pomocí služby AD FS |
+| [Osvědčené postupy zpracování chyb pro ADAL](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | Postup povolení protokolování a zpracování odolné chyb sestavení |
 
 ## <a name="reference"></a>Referenční informace
 Tyto články poskytují základ pro REST a knihovny pro ověřování rozhraní API, protokoly, chyb, ukázky kódu a koncové body.

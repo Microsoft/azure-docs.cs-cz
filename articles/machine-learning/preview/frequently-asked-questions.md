@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 46d026802668fd77ae184b374439ca78cf51393d
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 86ef8acf46cef2b057596d8224c6c29f3a0f534d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Nejčastější dotazy k Azure Machine Learning
 
@@ -127,7 +127,7 @@ Ne. Azure Machine Learning Workbench je bezplatná aplikace. Můžete ji stáhno
 
 **Podporuje možnosti příkazového řádku?**
 
-Ano, Azure Machine Learning nabízí úplné rozhraní CLI. Rozhraní příkazového řádku Machine Learning je nainstalována ve výchozím nastavení s Azure Machine Learning Workbench. To je k dispozici jako součást vědecké zpracování dat Linux virtuálního počítače na Azure a budete integrovat do [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)
+Ano, Azure Machine Learning nabízí úplné rozhraní CLI. Rozhraní příkazového řádku Machine Learning je nainstalována ve výchozím nastavení s Azure Machine Learning Workbench. To je k dispozici jako součást vědecké zpracování dat Linux virtuálního počítače na Azure a budete integrovat do [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
 
 
 **Můžete použít Jupyter Notebooks s Workbench?**

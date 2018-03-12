@@ -6,6 +6,7 @@
 
 # Kurzy
 ## [Migrace SQL Serveru do Azure SQL DB](tutorial-sql-server-to-azure-sql.md)
+## [Migrace SQL Serveru do Azure SQL DB MI](tutorial-sql-server-to-managed-instance.md)
 
 # Návody
 ## [Použití PowerShellu k migraci SQL Serveru](howto-sql-server-to-azure-sql-powershell.md)
@@ -19,4 +20,4 @@
 ## [Přehled požadavků](pre-reqs.md)
 ## [Nejčastější dotazy](faq.md)
 ## [Aktualizace služeb](https://azure.microsoft.com/en-us/updates/?product=database-migration)
-
+## [Síťové topologie pro migrace Azure SQL DB MI](resource-network-topologies.md)

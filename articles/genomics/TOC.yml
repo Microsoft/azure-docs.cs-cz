@@ -17,6 +17,8 @@
           href: quickstart-input-bam.md
         - name: Několik souborů FASTQ nebo BAM
           href: quickstart-input-multiple.md
+    - name: Zadání tokenu SAS místo klíče účtu
+      href: quickstart-input-sas.md
 - name: Zdroje a prostředky
   items:
     - name: Časté dotazy

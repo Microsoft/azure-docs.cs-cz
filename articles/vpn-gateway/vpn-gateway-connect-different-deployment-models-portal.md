@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: 40a380a04088e948a7e81625963a5915980764c3
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 90a3c51fa9acbcd9701d4c2b135688ef5148bbf8
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Připojit virtuální sítě z různé modely nasazení pomocí portálu
 
@@ -149,7 +149,7 @@ V této části vytvoříte bránu virtuální sítě a brány místní sítě p
 * Rozsah adres = 192.168.1.0/24 <br>
 
 
-Pokud nemáte virtuální sítě Resource Manageru a běží tyto kroky jako cvičení, můžete vytvořit virtuální síť pomocí [v tomto článku](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) a ukázkové hodnoty.
+Pokud nemáte virtuální sítě Resource Manageru a běží tyto kroky jako cvičení, vytvořte virtuální síť s kroky v [vytvořit virtuální síť](../virtual-network/quick-create-portal.md), pomocí ukázkové hodnoty.
 
 ### <a name="2-create-a-gateway-subnet"></a>2. Vytvoření podsítě brány
 

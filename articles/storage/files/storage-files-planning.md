@@ -2,23 +2,17 @@
 title: "Plánování nasazení Azure Files | Microsoft Docs"
 description: "Zjistěte, co je potřeba zvážit při plánování nasazení služby Azure Files."
 services: storage
-documentationcenter: 
 author: wmgries
-manager: klaasl
-editor: jgerend
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 03/06/2018
 ms.author: wgries
-ms.openlocfilehash: 590bc459a71b8691741f7f33d2d70b0ba4474591
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 017dd79e2d15fdd98ea020c686857d282bad244e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes průmyslový standard protokolu SMB. Protože soubory Azure je plně spravovaná, nasazení se v produkčních scénářích je mnohem jednodušší než v nasazení a Správa souborového serveru nebo zařízení NAS. Tento článek se zaměřuje na témata, které je třeba zvážit při nasazení služby Azure sdílenou složku pro použití v provozním prostředí v rámci vaší organizace.
@@ -45,7 +39,7 @@ ms.lasthandoff: 01/29/2018
 ## <a name="data-access-method"></a>Metoda přístupu pomocí dat
 Azure nabízí soubory dvě předdefinované a pohodlný přístup k datům přistupovat k datům můžete použít samostatně nebo v kombinaci s sebou metod:
 
-1. **Přímý přístup do cloudu**: Libovolná Azure sdílené složce může být připojen pomocí [Windows](storage-how-to-use-files-windows.md), [systému macOS](storage-how-to-use-files-mac.md), nebo [Linux](storage-how-to-use-files-linux.md) s Server Message Block (standardní odvětví Protokol SMB) nebo prostřednictvím rozhraní API REST souboru. S protokolem SMB čtení a zápis do souborů ve sdílené složce se provádějí přímo na sdílené složce v Azure. Chcete-li připojit virtuální počítač v Azure, SMB klienta do operačního systému musí podporovat alespoň SMB 2.1. Připojit místní, například na pracovní stanici uživatele, musí klient SMB podporuje pracovní stanice alespoň podporovat SMB 3.0 (pomocí šifrování). Kromě SMB může nové aplikace nebo služby přímo přístup ke sdílené složce přes REST souboru, který poskytuje snadný a škálovatelné aplikační programovací rozhraní pro vývoj softwaru.
+1. **Přímý přístup do cloudu**: Libovolná Azure sdílené složce může být připojen pomocí [Windows](storage-how-to-use-files-windows.md), [systému macOS](storage-how-to-use-files-mac.md), nebo [Linux](storage-how-to-use-files-linux.md) s odvětví standardní bloku SMB (Server Message) protokol nebo přes rozhraní API REST souboru. S protokolem SMB čtení a zápis do souborů ve sdílené složce se provádějí přímo na sdílené složce v Azure. Chcete-li připojit virtuální počítač v Azure, SMB klienta do operačního systému musí podporovat alespoň SMB 2.1. Připojit místní, například na pracovní stanici uživatele, musí klient SMB podporuje pracovní stanice alespoň podporovat SMB 3.0 (pomocí šifrování). Kromě SMB může nové aplikace nebo služby přímo přístup ke sdílené složce přes REST souboru, který poskytuje snadný a škálovatelné aplikační programovací rozhraní pro vývoj softwaru.
 2. **Synchronizace služby Azure souboru** (preview): pomocí souboru synchronizace služby Azure, lze replikovat sdílených složek na servery Windows místně nebo v Azure. Uživatelé by přístup ke sdílené složce pomocí Windows serveru, například prostřednictvím protokolu SMB nebo NFS sdílené složky. To je užitečné pro scénáře, ve kterých dat bude přistupovat a měnit je daleko z datového centra Azure, například ve scénáři firemní pobočky office. Může být replikována data mezi několik koncových bodů systému Windows Server, jako mezi několik poboček. Nakonec dat může být rozvrstvena k Azure Files tak, že všechna data se stále dostupné prostřednictvím serveru, ale Server nemá úplnou kopii data. Místo toho je bezproblémově navrátit data při otevření vaší uživatelem.
 
 Následující tabulka vysvětluje, jak můžete Azure sdílené složce přístup uživatelů a aplikací:
@@ -63,7 +57,7 @@ Soubory Azure nabízí několik předdefinovaných možností pro zajištění z
     * Klienti, kteří podporují šifrování SMB 3.0 odesílat a přijímat data přes šifrovaný kanál.
     * Klienti, které nepodporují protokolu SMB 3.0, komunikovat intra-datacenter přes SMB 2.1 nebo SMB 3.0 bez šifrování. Všimněte si, že klienti nejsou povoleny pro komunikaci mezi datacenter pomocí protokolu SMB 2.1 nebo SMB 3.0 bez šifrování.
     * Klienti mohou komunikovat přes REST souborů pomocí protokolu HTTP nebo HTTPS.
-* Šifrování na rest ([šifrování služby úložiště Azure](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Probíhá povolení šifrování služby úložiště (SSE) na základní platformě Azure Storage. To znamená, že šifrování bude povoleno ve výchozím nastavení pro všechny účty úložiště. Pokud vytváříte nový účet úložiště v oblasti s šifrování klidové na výchozí, nemusíte dělat nic povolit. Data na rest je šifrován plně spravovaná klíče. Šifrování na rest nemá zvýšit náklady na úložiště nebo snížit výkon. 
+* Šifrování na rest ([šifrování služby úložiště Azure](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): ve výchozím nastavení pro všechny účty úložiště je povolené šifrování služby úložiště (SSE). Data na rest je šifrován plně spravovaná klíče. Šifrování na rest nemá zvýšit náklady na úložiště nebo snížit výkon. 
 * Volitelné požadavek šifrovaná data na cestě: při výběru Azure Files odmítne přístup data přes nezašifrované kanály. Konkrétně jsou povoleny pouze HTTPS a protokolu SMB 3.0 s šifrování připojení. 
 
     > [!Important]  

@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b28870938667076280d6e4b08ee84870296d133
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a8c49f06719b68c2b3ca6aee4dfb0b90bdbf0afc
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Vytvoření konfigurace aplikace SAP NetWeaver více SID
 
@@ -425,7 +425,7 @@ ms.lasthandoff: 11/02/2017
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
-[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md
+[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
 [virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
 [virtual-networks-nsg]:../../../virtual-network/virtual-networks-nsg.md
@@ -490,7 +490,7 @@ Příprava infrastruktury, můžete nainstalovat další instance SAP ASC nebo S
 | --- | --- |
 | SAP ASC NEBO SCS SID |PR1-lb ASC |
 | Databázového systému SAP interní nástroj pro vyrovnávání zatížení | PR5 |
-| Název virtuálního hostitele SAP | pr5. sap cl |
+| Název virtuálního hostitele SAP | pr5-sap-cl |
 | SAP ASC nebo SCS virtuální hostitele IP adresu (IP adresa služby Vyrovnávání zatížení Další Azure) | 10.0.0.50 |
 | Čísla instance SAP ASC nebo SCS | 50 |
 | Port testu ILB pro další instance SAP ASC nebo SCS | 62350 |
@@ -504,8 +504,8 @@ V existujícím clusteru služby WSFC s dvěma uzly můžete nainstalovat dalš�
 
 | Role virtuálního počítače | Název hostitele virtuálního počítače | Statická IP adresa |
 | --- | --- | --- |
-| 1. uzel clusteru pro instanci ASC nebo SCS |PR1-ASC-0 |10.0.0.10 |
-| 2. uzel clusteru pro instanci ASC nebo SCS |PR1-ASC-1 |10.0.0.9 |
+| 1. uzel clusteru pro instanci ASC nebo SCS |pr1-ascs-0 |10.0.0.10 |
+| 2. uzel clusteru pro instanci ASC nebo SCS |pr1-ascs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Vytvořte název virtuálního hostitele pro skupinu prostředků clusteru SAP ASC nebo SCS na serveru DNS
 
@@ -513,7 +513,7 @@ Položku DNS pro název virtuálního hostitele instance ASC nebo SCS můžete v
 
 | Nový název virtuálního hostitele SAP ASC nebo SCS | Přidružené IP adresu |
 | --- | --- | --- |
-|pr5. sap cl |10.0.0.50 |
+|pr5-sap-cl |10.0.0.50 |
 
 Novým názvem hostitele a IP adresa se zobrazí ve Správci DNS, jak je znázorněno na následujícím snímku obrazovky:
 
@@ -665,7 +665,7 @@ Podrobný postup je následující:
 
 10. [Testovací převzetí služeb při selhání SAP ASC nebo SCS instance a replikace SIOS][sap-ha-guide-10].
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Nástroj pro vyrovnávání zatížení několika virtuálními IP adresami pro Azure.][load-balancer-multivip-overview]

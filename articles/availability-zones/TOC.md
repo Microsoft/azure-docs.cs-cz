@@ -28,10 +28,10 @@
 #### [Vytvoření zónově redundantní služby Load Balancer Standard s využitím PowerShellu](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
 #### [Vytvoření zónově redundantní veřejné služby Load Balancer Standard s využitím rozhraní příkazového řádku](../load-balancer/load-balancer-get-started-internet-az-cli.md)
 
-### Veřejná IP adresa
-#### [Vytvoření veřejné IP adresy v zóně dostupnosti s využitím webu Azure Portal](../virtual-network/create-public-ip-availability-zone-portal.md)
-#### [Vytvoření veřejné IP adresy v zóně dostupnosti s využitím PowerShellu](../virtual-network/create-public-ip-availability-zone-powershell.md)
-#### [Vytvoření veřejné IP adresy v zóně dostupnosti s využitím rozhraní příkazového řádku](../virtual-network/create-public-ip-availability-zone-cli.md)
+### [Veřejná IP adresa](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
+
+### Databáze SQL
+#### [Zóny dostupnosti pro SQL Database](../sql-database/sql-database-high-availability.md#availability-zones)
 
 ### Úložiště
 #### [Zónově redundantní úložiště](../storage/common/storage-redundancy.md#zone-redundant-storage)

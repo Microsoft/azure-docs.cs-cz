@@ -1,23 +1,10 @@
 ---
-title: "Virtuální datového centra Microsoft Azure | Microsoft Docs"
-description: "Naučte se vytvářet virtuální datové centrum v Azure"
-services: networking
-author: tracsman
-manager: rossort
-tags: azure-resource-manager
-ms.service: virtual-network
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/26/2017
-ms.author: jonor
-ms.openlocfilehash: 7dcc6b77bde8b8a7b485525105c1a07c53301f8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+Title: "Microsoft Azure virtuální Datacenter: A sítě perspektivy" | Popis Microsoft Docs: Naučte se vytvářet virtuální datové centrum v služeb Azure: sítě Autor: tracsman manager: rossort značky: Správce prostředků azure
+
+ms.service: virtual-network ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 05/26/2017 ms.author: jonor
 ---
-# <a name="microsoft-azure-virtual-data-center"></a>Microsoft Azure virtuální datového centra
+
+# <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure virtuální Datacenter: Hlediska sítě
 **Microsoft Azure**: rychlejší, šetřit peníze, integraci místní aplikace a data
 
 ## <a name="overview"></a>Přehled
@@ -101,7 +88,7 @@ Nasazení připojení ExpressRoute zahrnuje zapojení u poskytovatele služeb Ex
 
 ## <a name="virtual-data-center-overview"></a>Přehled virtuální datového centra
 
-### <a name="topology"></a>topologie
+### <a name="topology"></a>Topologie
 Model rozbočovače a koncových rozšířené virtuální datového centra v rámci jedné oblasti Azure
 
 [![1]][1]
@@ -190,7 +177,7 @@ Součásti infrastruktury obsahují následující funkce:
 -   [**Identitu a adresářové služby**][AAD]. Přístup pro každý typ prostředku v Azure je řízen pomocí identity uložené v adresářové službě. Adresářová služba ukládá pouze seznam uživatelů, ale také přístupová práva k prostředkům v rámci konkrétní předplatného Azure. Tyto služby může existovat jenom pro cloud nebo mohou být synchronizovány s identitou místně uložené ve službě Active Directory.
 -   [**Virtuální síť**][VPN]. Virtuální sítě jsou jedním z hlavních komponent vDC a umožňují vytvořit hranici izolace přenosů na platformě Azure. Virtuální síť se skládá z jedné nebo více segmentech virtuální sítě, každý s konkrétní IP předpony sítě (podsítě). Virtuální síť definuje oblast interní hraniční kde virtuální počítače IaaS a PaaS služby můžete vytvořit privátní komunikaci. Virtuální počítače (a služby PaaS) v jedné virtuální sítě nemůže komunikovat přímo na virtuální počítače (a PaaS services) v jinou virtuální síť, i když jsou obě virtuální sítě vytvořené pomocí stejné zákazníka, v rámci stejného předplatného. Izolace je kritické vlastnosti, které zajišťuje, aby virtuální počítače zákazníka a komunikace zůstane privátní virtuální sítě.
 -   [**UDR**][UDR]. Ve výchozím nastavení založené na systémovou tabulku směrování se směruje provoz ve virtuální síti. Trasy se definují uživatele je vlastní směrovací tabulku, která správci sítě můžete přidružit k jedné nebo několika podsítích přepsat chování systémovou tabulku směrování a zadejte cestu k komunikace v rámci virtuální sítě. Přítomnost udr zaručuje, aby odchozí provoz z přenosu ramenem prostřednictvím konkrétní vlastní virtuální počítače nebo virtuální zařízení sítě a nástroje pro vyrovnávání zatížení nachází v centru a větve.
--   [**SKUPINA NSG**][NSG]. Skupina zabezpečení sítě je seznam pravidel zabezpečení, které fungují jako provoz filtrování zdrojů IP, cílové IP, protokoly, porty zdrojové IP a cílové IP porty. NSG můžete použít k podsíti, karty virtuální síťovou kartu spojené s virtuální počítač Azure, nebo obojí. Skupin Nsg je nezbytné k implementaci správné toku řízení v centru a větve. Úroveň zabezpečení poskytované NSG je funkce, které porty, otevřete a pro jaké účely. Zákazníci by se měly používat filtry další jednotlivé virtuální počítače s založené na hostiteli brány firewall například IPtables nebo brány Windows Firewall.
+-   [**NSG**][NSG]. Skupina zabezpečení sítě je seznam pravidel zabezpečení, které fungují jako provoz filtrování zdrojů IP, cílové IP, protokoly, porty zdrojové IP a cílové IP porty. NSG můžete použít k podsíti, karty virtuální síťovou kartu spojené s virtuální počítač Azure, nebo obojí. Skupin Nsg je nezbytné k implementaci správné toku řízení v centru a větve. Úroveň zabezpečení poskytované NSG je funkce, které porty, otevřete a pro jaké účely. Zákazníci by se měly používat filtry další jednotlivé virtuální počítače s založené na hostiteli brány firewall například IPtables nebo brány Windows Firewall.
 -   **DNS**. Překlad prostředků do virtuální sítě vDC je zajišťováno prostřednictvím DNS. Rozsah překlad názvu DNS výchozí hodnota je omezený na síť VNet. Obvykle vlastní služba DNS musí být nasazen v centru jako součást společných služeb, ale hlavní spotřebitelé služeb DNS jsou umístěny ve ramenem. V případě potřeby zákazníci vytvářet hierarchická struktura DNS s delegování zón DNS větve.
 -   [** Předplatné] [ SubMgmt] a [správu skupiny prostředků][RGMgmt]**. Předplatné definuje hranici přirozené vytvořit více skupin prostředků v Azure. Prostředky v předplatném se sestaví společně v logické kontejnery s názvem skupiny prostředků. Skupina prostředků představuje logické skupiny pro uspořádání prostředků virtuálních řadičů domény.
 -   [**RBAC**][RBAC]. Prostřednictvím RBAC je možné mapy organizační roli společně s práva pro přístup k určité prostředky Azure, což umožňuje omezit přístup jenom určité podmnožiny akce uživatele. S RBAC můžete udělit přístup přiřazením příslušné role uživatele, skupiny a aplikace v rámci oboru relevantní. Předplatné Azure, skupinu prostředků nebo jediný zdroj, může být oboru přiřazení role. RBAC umožňuje dědičnosti oprávnění. Role přiřazené v nadřazeném oboru podřízené objekty jsou v něm obsažena také uděluje přístup. RBAC můžete oddělit povinností a poskytnout pouze takovou úroveň přístupu pro uživatele, kteří potřebují k provádění svých úloh. Například použijte funkci RBAC umožníte jednoho zaměstnance spravovat virtuální počítače v předplatném, zatímco jiné můžete spravovat databáze SQL v rámci stejného předplatného.
@@ -203,7 +190,7 @@ Příchozí pakety musí procházet skrz zabezpečovací zařízení v rozbočov
 
 Komponenty hraniční sítě poskytují následující funkce:
 
--   [Virtuální sítě][VNet], [UDR][UDR], [NSG][NSG]
+-   [Virtual Networks][VNet], [UDR][UDR], [NSG][NSG]
 -   [Virtuální síťové zařízení][NVA]
 -   [Nástroj pro vyrovnávání zatížení][ALB]
 -   [Aplikační brána][AppGW] / [firewall webových aplikací][WAF]
@@ -235,7 +222,7 @@ Většina velké podniky spravovat víc domén. Azure DNS můžete použít k ho
 
 Azure Vyrovnávání zatížení můžete testovat stav také různé instance serveru a když sondu přestane reagovat nástroje pro vyrovnávání zatížení zastaví odesílání provozu do instance není v pořádku. V vDC máme přítomnost externím vyrovnáváním zatížení v centru (například vyrovnávat přenosy do NVAs) a v koncových (k provedení úlohy, jako je vyrovnávání přenosů mezi různé virtuální počítače vícevrstvé aplikace).
 
-[**Aplikační brána** ] [ AppGW] Microsoft Azure Application Gateway je vyhrazené virtuální zařízení poskytuje aplikace doručení řadiče (ADC) jako služba nabízí různé vrstvy 7 možnosti vyrovnávání zatížení pro vaši aplikaci. Umožňuje optimalizovat webové farmy produktivitu přesměrováním zátěže procesoru náročné ukončení protokolu SSL pro službu application gateway. Nabízí také další možnosti přesměrování vrstvy 7, jako je kruhové dotazování na distribuci příchozích přenosů, spřažení relací na základě souborů cookie, přesměrování založené na cestách URL a možnost hostování několika webů za jedinou službou Application Gateway. Firewall webových aplikací (WAF) je také součástí skladové položky WAF služby Application Gateway. Tato SKU poskytuje ochranu k webovým aplikacím z běžných chyb zabezpečení webové a zneužití. Application Gateway je možné nakonfigurovat jako internetovou bránu nebo jen jako interní bránu, případně jako kombinaci obojího. 
+[**Aplikační brána** ] [ AppGW] Microsoft Azure Application Gateway je vyhrazené virtuální zařízení poskytuje aplikace doručení řadiče (ADC) jako služba nabízí různé vrstvy 7 Vyrovnávání zatížení možnosti pro vaši aplikaci. Umožňuje optimalizovat webové farmy produktivitu přesměrováním zátěže procesoru náročné ukončení protokolu SSL pro službu application gateway. Nabízí také další možnosti přesměrování vrstvy 7, jako je kruhové dotazování na distribuci příchozích přenosů, spřažení relací na základě souborů cookie, přesměrování založené na cestách URL a možnost hostování několika webů za jedinou službou Application Gateway. Firewall webových aplikací (WAF) je také součástí skladové položky WAF služby Application Gateway. Tato SKU poskytuje ochranu k webovým aplikacím z běžných chyb zabezpečení webové a zneužití. Application Gateway je možné nakonfigurovat jako internetovou bránu nebo jen jako interní bránu, případně jako kombinaci obojího. 
 
 [**Veřejné IP adresy** ] [ PIP] funkce některá Azure umožňují přidružení koncové body služby veřejné IP adresy umožňuje k prostředku získat přístup z Internetu. Tento koncový bod používá překládání adres (NAT) pro směrování provozu na interní adresu a port na virtuální síť Azure. Tato cesta je primární způsob pro externí přenos dat do virtuální sítě. Veřejné IP adresy se dá nakonfigurovat určit, jaký provoz, je předaná a jak a kde je přeložená k virtuální síti.
 
@@ -330,11 +317,11 @@ Následující funkce byly popsané v tomto dokumentu. Kliknutím na odkazy na d
 | | | |
 |-|-|-|
 |Funkce sítě|Vyrovnávání zatížení|Připojení|
-|[Virtuální sítě Azure][VNet]</br>[Skupiny zabezpečení sítě][NSG]</br>[Protokolů NSG][NSGLog]</br>[Směrování definované uživatelem][UDR]</br>[Virtuální síťová zařízení][NVA]</br>[Veřejné IP adresy][PIP]|[Pro vyrovnávání zatížení Azure (L3)][ALB]</br>[Aplikační brána (L7)][AppGW]</br>[Brány Firewall webových aplikací][WAF]</br>[Azure Traffic Manager][TM] |[Partnerský vztah virtuální sítě][VNetPeering]</br>[Virtuální privátní síť][VPN]</br>[ExpressRoute][ExR]
+|[Azure Virtual Networks][VNet]</br>[Skupiny zabezpečení sítě][NSG]</br>[Protokolů NSG][NSGLog]</br>[Směrování definované uživatelem][UDR]</br>[Virtuální síťová zařízení][NVA]</br>[Veřejné IP adresy][PIP]|[Pro vyrovnávání zatížení Azure (L3) ][ALB]</br>[Aplikační brána (L7) ][AppGW]</br>[Brány Firewall webových aplikací][WAF]</br>[Azure Traffic Manager][TM] |[Partnerský vztah virtuální sítě][VNetPeering]</br>[Virtuální privátní síť][VPN]</br>[ExpressRoute][ExR]
 |Identita</br>|Monitorování</br>|Osvědčené postupy</br>|
 |[Azure Active Directory][AAD]</br>[Vícefaktorové ověřování][MFA]</br>[Ovládací prvky přístupu na základě role][RBAC]</br>[Výchozí role AAD][Roles] |[Protokoly aktivity][ActLog]</br>[Diagnostické protokoly][DiagLog]</br>[Microsoft Operations Management Suite][OMS]</br> |[Hraniční sítě osvědčené postupy][DMZ]</br>[Správa předplatného][SubMgmt]</br>[Správa skupin prostředků][RGMgmt]</br>[Limity předplatného Azure][Limits] |
 |Jinými službami Azure|
-|[Webové aplikace Azure][WebApps]</br>[HDInsights (Hadoop)][HDI]</br>[Event Hubs][EventHubs]</br>[Service Bus][ServiceBus]|
+|[Azure Web Apps][WebApps]</br>[HDInsights (Hadoop) ][HDI]</br>[Event Hubs][EventHubs]</br>[Service Bus][ServiceBus]|
 
 
 
@@ -347,7 +334,7 @@ Následující funkce byly popsané v tomto dokumentu. Kliknutím na odkazy na d
 [0]: ./media/networking-virtual-datacenter/redundant-equipment.png "příklady překrývají součásti" 
 [1]: ./media/networking-virtual-datacenter/vdc-high-level.png "podrobný příklad hvězdicové vDC"
 [2]: ./media/networking-virtual-datacenter/hub-spokes-cluster.png "clusteru rozbočovače a koncových"
-[3]: ./media/networking-virtual-datacenter/spoke-to-spoke.png "ramenem ramenem"
+[3]: ./media/networking-virtual-datacenter/spoke-to-spoke.png "Spoke-to-spoke"
 [4]: ./media/networking-virtual-datacenter/vdc-block-level-diagram.png "úrovně Blokový diagram serveru virtuálních řadičů domény"
 [5]: ./media/networking-virtual-datacenter/users-groups-subsciptions.png "uživatelů, skupin, odběry a projektů"
 [6]: ./media/networking-virtual-datacenter/infrastructure-high-level.png "diagram základní infrastruktury"

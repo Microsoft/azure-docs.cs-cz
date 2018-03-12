@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: 8c6f577560442f28204b633d5f45f6d4c46ea4b8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5d1010a65a112b97124a8d7d46caceb3d61e2cac
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: Časté otázky (FAQ)
 Tento článek obsahuje nejčastější dotazy týkající se Azure Site Recovery. Pokud po přečtení tohoto článku máte dotazy, odešlete je na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -55,14 +55,14 @@ Pokud chcete replikovat do sekundárního datacentra, musí být virtuální po�
 Ano. Můžete buď replikovat virtuální počítače na serverech Hyper-V v cloudu VMM do Azure, nebo můžete replikovat mezi cloudy VMM na stejném serveru. Pro místní na místní replikaci doporučujeme mít VMM server v primárních a sekundárních lokalit.  
 
 ### <a name="what-physical-servers-can-i-protect"></a>Jaké fyzické servery mohu ochránit?
-Můžete replikovat fyzické servery se systémem Windows a Linux, do Azure nebo do sekundární lokality. [Další informace o](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) požadavky na operační systém.  Stejné požadavky platí zda fyzické servery replikujete do Azure nebo do sekundární lokality.
+Můžete replikovat fyzické servery se systémem Windows a Linux, do Azure nebo do sekundární lokality. Další informace o požadavcích pro [replikaci do Azure](vmware-physical-azure-support-matrix.md#replicated-machines), a [replikace do sekundární lokality](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 
 
 Všimněte si, že fyzické servery se spustí jako virtuální počítače v Azure případě výpadku na místním serveru. Navrácení služeb po obnovení na místní fyzický server není aktuálně podporován. Pro chráněný jako fyzický počítač můžete pouze navrácení služeb po obnovení k virtuálnímu počítači VMware.
 
 ### <a name="what-vmware-vms-can-i-protect"></a>Jaké virtuální počítače VMware mohu ochránit?
 
-Pokud chcete ochránit virtuální počítače VMware, potřebujete hypervisor vSphere a virtuální počítače, ve kterých běží nástroje VMware. Pro správu hypervisorů také doporučujeme mít server VMware vCenter. [Další informace](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) o přesných požadavcích na replikaci serverů VMware a virtuálních počítačů do Azure nebo do sekundární lokality.
+Pokud chcete ochránit virtuální počítače VMware, potřebujete hypervisor vSphere a virtuální počítače, ve kterých běží nástroje VMware. Pro správu hypervisorů také doporučujeme mít server VMware vCenter. Další informace o požadavcích pro [replikaci do Azure](vmware-physical-azure-support-matrix.md#replicated-machines), nebo [replikace do sekundární lokality](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 
 
 ### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>Mohu pomocí Site Recovery spravovat zotavení po havárii pro pobočky?
@@ -93,7 +93,7 @@ Azure Site Recovery replikuje data do účtu úložiště Azure přes veřejný 
 Ano, ExpressRoute slouží k replikaci virtuálních počítačů do Azure. Azure Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod. Budete muset nastavit [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) chcete použít ExpressRoute pro replikaci Site Recovery. Po virtuální počítače mají byla při selhání pro virtuální síť Azure se dostanete pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#azure-private-peering) nastavení s virtuální síť Azure.
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>Vztahují se na replikaci virtuálních počítačů do Azure nějaké požadavky?
-Virtuální počítače, které chcete replikovat do Azure, by měly splňovat [požadavky pro Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
+[Virtuální počítače VMware](vmware-physical-azure-support-matrix.md#replicated-machines) a [virtuálních počítačů Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms) chcete replikovat do Azure, by měly splňovat požadavky pro Azure.
 
 Azure uživatelský účet musí mít určité [oprávnění](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) k povolení replikace nového virtuálního počítače do Azure.
 

@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: bf6d7c8b831e670db9fff28218c8f36391a73c9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 13dcc0794c1d89bd27c79cbe6636397da4f008f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii pro virtuální počítače Hyper-V do sekundárního místního lokality
 
@@ -33,9 +33,8 @@ Tento článek ukazuje, jak nastavit zotavení po havárii pro sekundární loka
 K dokončení tohoto scénáře:
 
 - Zkontrolujte [scénář architektura a komponenty](hyper-v-vmm-architecture.md).
-- Zkontrolujte [požadavky na podporu](site-recovery-support-matrix-to-sec-site.md) pro všechny komponenty.
-- Ujistěte se, že servery VMM a hostitelé Hyper-V souladu s [podporu požadavků](site-recovery-support-matrix-to-sec-site.md).
-- Zkontrolujte, zda chcete replikovat virtuální počítače v souladu s [replikovat podpora počítačů](site-recovery-support-matrix-to-sec-site.md#support-for-replicated-machine-os-versions).
+- Ujistěte se, že servery VMM a hostitelé Hyper-V souladu s [podporu požadavků](hyper-v-vmm-secondary-support-matrix.md).
+- Zkontrolujte, zda chcete replikovat virtuální počítače v souladu s [replikovat podpora počítačů](hyper-v-vmm-secondary-support-matrix.md#replicated-vm-support).
 - Připravte servery VMM mapování sítě.
 
 ### <a name="prepare-for-network-mapping"></a>Příprava mapování sítě
@@ -118,7 +117,7 @@ Vyberte cílový server VMM a cloud:
    ![Cíl](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
-## <a name="set-up-a-replication-policy"></a>Nastavení zásad replikace
+## <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace
 
 Než začnete, ujistěte se, že všichni hostitelé pomocí zásad, mají stejný operační systém. Pokud hostitelé používají různé verze systému Windows Server, je třeba víc zásad replikace.
 
@@ -151,7 +150,7 @@ Než začnete, ujistěte se, že všichni hostitelé pomocí zásad, mají stejn
 4. V **virtuální počítače**, vyberte virtuální počítače, které chcete chránit ze seznamu.
 
 
-Můžete sledovat průběh **povolení ochrany** akce v **úlohy** > **úlohy Site Recovery**. Po **dokončení ochrany** dokončení úlohy, je dokončena počáteční replikace a je připravený pro převzetí služeb při selhání virtuálního počítače.
+Průběh akce **Povolení ochrany** můžete sledovat v části **Úlohy** > **Úlohy Site Recovery**. Po **dokončení ochrany** dokončení úlohy, je dokončena počáteční replikace a je připravený pro převzetí služeb při selhání virtuálního počítače.
 
 ## <a name="next-steps"></a>Další postup
 

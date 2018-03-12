@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/06/2018
 ms.author: brenduns
 ms.reviewer: chjoy
-ms.openlocfilehash: ccde5186d45700eb328ad7be27d330afc184918b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: deef5d5383fcfd8e13c8088cb7901b07621f53a7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Poznámky k verzi Azure zásobníku Development Kit
 
@@ -342,68 +342,3 @@ V Azure Active Directory Federation Services (ADFS) nasazené prostředí, **azu
 > [!IMPORTANT]
 > I v **azurestack\cloudadmin** účet je vlastníkem předplatného poskytovatele výchozí v prostředí služby AD FS nasadit, nemá oprávnění pro připojení RDP na hostiteli. Nadále používat **azurestack\azurestackadmin** účet nebo účet místního správce pro přihlášení, přístup a spravovat hostitele, podle potřeby.
 
-
-## <a name="build-201710201"></a>Sestavení 20171020.1
-
-### <a name="improvements-and-fixes"></a>Vylepšení a opravy
-
-Seznam vylepšení a opravy 20171020.1 sestavení najdete v sekci [vylepšení a opravy](azure-stack-update-1710.md#improvements-and-fixes) část v poznámkách k verzi 1710 zásobník Azure integrované systémy. Některé položky uvedené v části "Další kvalitou vylepšení a opravy" souvisí pouze s integrované systémy.
-
-Navíc byly provedeny následující opravy:
-- Opravit problém, kde poskytovatele výpočetních prostředků zobrazí neznámého stavu.
-- Opravit problém, kde kvóty pravděpodobně nezobrazí na portálu správce po jejich vytvoření a později se pokusíte zobrazit podrobnosti o plánu.
-
-### <a name="known-issues"></a>Známé problémy
-
-#### <a name="powershell"></a>PowerShell
-- Verze modulu PowerShell AzureRM 1.2.11 obsahuje seznam nejnovější změny. Informace o upgradu z 1.2.10 verze, najdete v článku [příručka k migraci](https://aka.ms/azspowershellmigration).
- 
-#### <a name="deployment"></a>Nasazení
-- Čas serveru podle IP adresy musí zadat během nasazování.
-
-#### <a name="infrastructure-management"></a>Správu infrastruktury
-- Nepovolujte infrastruktura zálohování na **infrastruktura zálohování** okno.
-- Baseboard management controller, (BMC) IP adresu a model se nezobrazí v uzlu jednotky škálování základní informace. Toto chování se očekává v Azure zásobníku Development Kit.
-
-#### <a name="portal"></a>Portál
-- Může se zobrazit prázdný řídicí panel portálu. Chcete-li obnovit řídicí panel, vyberte ikonu ozubené kolečko v pravém horním rohu portálu a pak vyberte **obnovit výchozí nastavení**.
-- Když máte zobrazeny vlastnosti skupiny prostředků, **přesunout** tlačítko k dispozici. Toto chování je očekávané. Přesunutí skupin prostředků mezi předplatnými není aktuálně podporován.
--  Pro jakýkoli pracovní postup, kde v rozevíracím seznamu vyberte předplatné, skupinu prostředků nebo umístění může zaznamenat jeden nebo více z následujících důvodů:
-
-   - Může se zobrazit prázdný řádek v horní části seznamu. By měl mít pořád povolený výběr položky podle očekávání.
-   - Pokud je seznam položek v rozevíracím seznamu krátký, asi nebudete moci zobrazit některé názvy položek.
-   - Pokud máte více předplatných uživatele, rozevíracího seznamu skupiny prostředků může být prázdná. 
-
-   Obejít poslední dva problémy, můžete zadat název předplatné nebo skupinu prostředků (pokud ho znáte), nebo můžete místo toho použít PowerShell.
-
-- Zobrazí se **je vyžadována aktivace** upozornění s výzvou k registraci vaší Azure zásobníku Development Kit. Toto chování je očekávané.
-- V **je vyžadována aktivace** upozornění podrobností o výstrahách, neklikejte na tento odkaz **AzureBridge** součásti. V takovém případě **přehled** okno se neúspěšně pokusí načíst, a nebude vypršení časového limitu.
-- V portálu správce se může zobrazit **Chyba načítání klienty** došlo k chybě v **oznámení** oblasti. Tuto chybu můžete bezpečně ignorovat.
-- Odstranění odběrů uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstraňte prostředky uživatele nebo skupinu celý prostředků a potom odstraňte odběry uživatele.
-- Nemůžete se moci zobrazit oprávnění k předplatnému pomocí portálů zásobník Azure. Jako alternativní řešení můžete ověřit oprávnění pomocí prostředí PowerShell.
- 
-#### <a name="marketplace"></a>Marketplace
-- Při pokusu o přidání položky do zásobníku Azure marketplace s použitím **přidat z Azure** možnost, všechny položky můžou být vidět ke stažení.
-- Uživatelé mohou procházet na kompletní nabídku marketplace bez předplatného a uvidí položky pro správu jako plány a nabízí. Tyto položky jsou pro uživatele funkční.
- 
-#### <a name="compute"></a>Compute
-- Uživatelé mají možnost vytvoření virtuálního počítače pomocí geograficky redundantní úložiště. Tato konfigurace způsobuje, že vytvoření virtuálního počítače k selhání. 
-- Můžete nakonfigurovat dostupnost virtuálního počítače nastavit pouze u domény selhání jednoho a doméně aktualizace jednoho.
-- Neexistuje žádné zkušenosti marketplace pro vytvoření sady škálování virtuálního počítače. Můžete vytvořit škálování nastavit pomocí šablony.
-- Nastavení škálování pro sady škálování virtuálního počítače nejsou k dispozici na portálu. Jako alternativní řešení, můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z důvodu rozdílů verze prostředí PowerShell, je nutné použít `-Name` parametr místo `-VMScaleSetName`.
-
-#### <a name="networking"></a>Sítě
-- Nástroj pro vyrovnávání zatížení s veřejnou IP adresu nelze vytvořit pomocí portálu. Jako alternativní řešení můžete použít PowerShell k vytvoření nástroje pro vyrovnávání zatížení.
-- Když vytvoříte Vyrovnávání zatížení sítě, musíte vytvořit pravidlo překladu adres sítě. Pokud to neuděláte, obdržíte chybu při pokusu přidat pravidlo NAT po vytvoření nástroje pro vyrovnávání zatížení.
-- V části **sítě**, pokud kliknete na tlačítko **připojení** nastavit připojení k síti VPN **VNet-to-VNet** je uveden jako typ možné připojení. Nevybírejte tuto možnost. V současné době pouze **Site-to-site (IPsec)** možnost je podporována.
-- Veřejnou IP adresu z virtuálního počítače (VM) nelze zrušit přidružení, po virtuálního počítače byla vytvořena a související s touto adresou IP. Zrušení přidružení se zobrazí postup, ale pořád přidruženy původní virtuální počítač dříve přiřazenou veřejnou IP adresu. K tomuto chování dochází i v případě, že je přiřadit IP adresu na nový virtuální počítač (obvykle označuje jako *prohození*). Všechny budoucí pokusy o připojení přes tuto IP adresu povede připojení do původně přidružený virtuální počítač a ne do nového. V současné době je nutné pouze použít nové veřejné IP adresy pro vytvoření nového virtuálního počítače.
- 
-#### <a name="sqlmysql"></a>SQL/MySQL 
-- To může trvat až jednu hodinu, než klienti databáze můžete vytvářet v nové SQL nebo MySQL SKU. 
-- Vytvoření položky přímo na SQL a MySQL hostitelské servery, které nejsou prováděné poskytovatelem prostředků není podporována a může mít za následek neodpovídající stavu.
-
-#### <a name="app-service"></a>App Service
-- Uživatel musí zaregistrovat zprostředkovatele prostředku úložiště dřív, než vytvoří jejich první funkce Azure v rámci předplatného.
- 
-#### <a name="usage-and-billing"></a>Využití a fakturace
-- Veřejná data měření využití IP adres zobrazuje stejné *EventDateTime* hodnotu pro každý záznam místo *TimeDate* razítka, který ukazuje vytvoření záznamu. Tato data v současné době nelze použít pro monitorování přesné veřejnou IP adresu využití.

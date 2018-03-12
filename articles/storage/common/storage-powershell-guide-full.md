@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: robinsh
-ms.openlocfilehash: f94febfa1610795cd46b4315bbbbe56aa2bca861
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 7bd8d17d5a2c918f2bef770c224398e7332785f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Použití Azure Powershell s Azure Storage
 
@@ -136,8 +136,6 @@ Chcete-li změnit nastavení pro účet úložiště, použijte [Set AzureRmStor
 * **SKU** je nastavení replikace pro účet úložiště, jako je například LRS pro místně redundantní úložiště. Například můžete změnit z Standard\_LRS standardního\_GRS nebo Standard\_RAGRS. Všimněte si, že nemůžete změnit Standard\_ZRS nebo Premium\_LRS do jiných SKU, nebo změňte tyto další jednotky SKU.
 
 * **Úroveň přístupu** pro účty úložiště Blob. Hodnota pro úroveň přístupu je nastavena na **aktivní** nebo **nástrojů**, a umožňuje vaše náklady minimalizovat tak, že vyberete úroveň přístupu, která zarovnaná s jak používat účet úložiště. Další informace najdete v tématu [za provozu, ochladí a archivaci vrstvy úložiště](../blobs/storage-blob-storage-tiers.md).
-
-* Nastavení šifrování služby úložiště pro úložiště objektů blob nebo úložiště file Další informace o SSE najdete v tématu [šifrování služby úložiště](storage-service-encryption.md).
 
 * Povolte jenom přenos HTTPS. 
 

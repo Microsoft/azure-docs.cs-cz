@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: babanisa
-ms.openlocfilehash: 1025fd10b00bc07872e23cb10da2682fa8cca394
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9d2b32df6e4b931539eac34d09135ea33069b936
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Události zabezpečení mřížky a ověřování 
 
@@ -63,7 +63,7 @@ Aby bylo možné prokázat vlastnictví koncový bod, vracení ověřovacího k�
 
 Váš koncový bod webhooku můžete zabezpečit přidáním parametry dotazu na adresu URL webhooku při vytváření předplatného služby událostí. Nastavte jednu z těchto parametrů dotazu jako tajný klíč [přístupový token](https://en.wikipedia.org/wiki/Access_token) webhooku můžete rozpoznat událost pochází z událostí mřížky s platné oprávnění. Mřížky události bude obsahovat tyto parametry dotazu v každé události doručení do webhooku.
 
-Při úpravě předplatného události, parametry dotazu se nezobrazí nebo vrácena, pokud [– zahrnout full--adresu url koncového bodu](https://docs.microsoft.com/en-us/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) parametr se používá v Azure [rozhraní příkazového řádku](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest).
+Při úpravě předplatného události, parametry dotazu se nezobrazí nebo vrácena, pokud [– zahrnout full--adresu url koncového bodu](https://docs.microsoft.com/en-us/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) parametr se používá v Azure [rozhraní příkazového řádku](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest).
 
 Nakonec je důležité si uvědomit, mřížky událostí Azure podporuje pouze HTTPS webhooku koncové body.
 

@@ -236,10 +236,6 @@
               href: azure-stack-app-service-deploy.md
             - name: Nasazení App Service offline
               href: azure-stack-app-service-deploy-offline.md
-            - name: Aktualizujte zprostředkovatele prostředků služby App Service
-              href: azure-stack-app-service-update.md
-            - name: Aktualizace offline zprostředkovatele prostředků služby App Service
-              href: azure-stack-app-service-update-offline.md
             - name: Přidání dalších webových rolí pracovního procesu
               href: azure-stack-app-service-add-worker-roles.md
             - name: Konfigurace zdrojů nasazení

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 661bfadfe1094271ad2ab672ad3f755c0fd24f02
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 91839d8f547340d55f6badb3350a393a48a13c7d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spuštění úlohy na pozadí s webové úlohy v Azure App Service
 
@@ -213,4 +213,4 @@ Můžete zadat výraz CRON na portálu nebo zahrnout `settings.job` soubor v ko�
    
 ## <a name="NextSteps"></a> Další kroky
 
-Sada Azure WebJobs SDK umožňuje s webové úlohy zjednodušují mnoho úloh programování. Další informace najdete v tématu [co je sada WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) a [WebJobs SDK Stručná referenční příručka](./media/web-sites-create-web-jobs/webjobs-sdk-quick-reference.png).
+Sada Azure WebJobs SDK umožňuje s webové úlohy zjednodušují mnoho úloh programování. Další informace najdete v tématu [co je sada WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).

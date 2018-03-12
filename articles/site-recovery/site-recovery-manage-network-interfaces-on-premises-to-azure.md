@@ -1,26 +1,20 @@
 ---
-title: "Správa síťových rozhraní v Azure Site Recovery pro místním nasazením a Azure scénáře | Microsoft Docs"
-description: "Popisuje, jak spravovat síťová rozhraní pro místním nasazením a Azure scénáře s Azure Site Recovery"
+title: "Správa síťových rozhraní v Azure Site Recovery pro místním nasazením a Azure replikace | Microsoft Docs"
+description: "Popisuje, jak spravovat síťová rozhraní pro místním nasazením a Azure replikace s Azure Site Recovery"
 services: site-recovery
-documentationcenter: 
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: ab8582d9c32cf13bd7b21a59031af8fde58effbf
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: a0d42608dc689e5f084f4ec91858531feeac8033
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-scenarios"></a>Spravovat síťová rozhraní virtuálních počítačů pro místním nasazením a Azure scénáře
+# <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-replication"></a>Spravovat síťová rozhraní virtuálních počítačů pro místním nasazením a Azure replikace
 
 Virtuální počítač (VM) v Azure, musí mít aspoň jedno síťové rozhraní, které jsou k němu připojen. Může mít jako mnoho síťových rozhraní, které jsou k němu připojen jako podporuje velikost virtuálního počítače.
 

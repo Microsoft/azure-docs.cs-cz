@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 1963931f30808e861445c9555a04f933514239c3
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 1cfd0570315d5a1c6587ade164edf0a837453406
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Časté otázky (FAQ)
 Tato stránka odpovědi časté otázky o Azure Active Directory Domain Services. Kontrolovat zpět aktualizací.
@@ -39,7 +39,7 @@ Aktuálně nepodporuje. Microsoft bude poskytovat mechanismus k migraci stávaj�
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Můžete povolit Azure AD Domain Services v předplatné Azure CSP (Cloud Solution Provider)?
 Ano. V tématu jak můžete povolit [Azure AD Domain Services v rámci předplatných Azure CSP](active-directory-ds-csp.md).
 
-### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-and-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Můžete povolit funkci Azure AD Domain Services ve federované Azure AD adresáře? I pomocí služby AD FS k ověřování uživatelů pro přístup k Office 365 a nesynchronizovat hodnot hash hesel do služby Azure AD. Můžete povolit pro tento adresář Azure AD Domain Services?
+### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Můžete povolit funkci Azure AD Domain Services ve federované Azure AD adresáře? I nesynchronizovat hodnot hash hesel do služby Azure AD. Můžete povolit pro tento adresář Azure AD Domain Services?
 Ne. Azure AD Domain Services, potřebuje přístup k hodnoty hash hesla uživatelských účtů, ověřuje uživatele pomocí protokolu NTLM nebo Kerberos. Federované adresáře hodnot hash hesel nejsou uložené v adresáři služby Azure AD. Azure AD Domain Services se proto nefunguje s takové adresáře Azure AD.
 
 ### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Můžete vytvořit Azure AD Domain Services k dispozici v několika virtuálními sítěmi v rámci Moje předplatné?
@@ -53,6 +53,9 @@ Ano. V tématu [jak povolit Azure AD Domain Services pomocí prostředí PowerSh
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Můžete přidávat řadiče domény k spravované doméně služby Azure AD Domain Services?
 Ne. Domény, které poskytuje Azure AD Domain Services je spravovaná doména. Není potřeba zřizovat, konfigurovat nebo jinak spravovat řadiče domény pro tuto doménu - tyto aktivity správy jsou poskytovány jako služba společnosti Microsoft. Proto nelze přidat další řadiče domény (pro čtení a zápis nebo jen pro čtení) pro spravovanou doménu.
+
+### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Můžete použít uživatele typu Host pozvánku, abyste složku adresář Azure AD Domain Services?
+Ne. Uživatele typu Host pozvánku, abyste pomocí adresář Azure AD [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) pozvání procesu jsou sycned do vaší spravované domény služby Azure AD Domain Services. Hesla pro tyto uživatele však nejsou uložené v adresáři služby Azure AD. Proto služba Azure AD Domain Services má žádný způsob, jak synchronizovat NTLM a Kerberos vytvoří hodnotu hash pro tyto uživatele do vaší spravované domény. V důsledku toho nelze takové uživatelé přihlášení k spravované doméně nebo připojení počítače k spravované doméně.
 
 ## <a name="administration-and-operations"></a>Operace a Správa
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Možné připojit k řadiči domény pro moje spravované doméně pomocí vzdálené plochy?
@@ -75,6 +78,9 @@ Ne. Schéma je spravovaný společností Microsoft pro spravovanou doménu. Roz�
 
 ### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>Můžete změnit nebo přidat záznamy DNS v mé spravované domény?
 Ano. Členy skupiny "Správci AAD řadič domény, jsou udělena oprávnění Správce DNS, k úpravě záznamů DNS v spravované domény. Konzolu Správce DNS na počítači se systémem Windows Server připojený k spravované doméně, se můžete použít ke správě DNS. Chcete-li použít konzolu Správce DNS, nainstalujte 'Nástroje serveru DNS', která je součástí volitelné funkce, nástroje pro správu vzdáleného serveru, na serveru. Další informace o [nástroje pro správu, monitorování a řešení potíží s DNS](https://technet.microsoft.com/library/cc753579.aspx) je k dispozici na webu TechNet.
+
+### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Co je doba platnosti zásady hesel ve spravované doméně?
+Výchozí doba života heslo na Azure AD Domain Services spravované domény je 90 dnů. Tato doba platnosti hesla není synchronizován s životnost heslo nakonfigurovat ve službě Azure AD. Proto může dojít k situaci, kdy vyprší platnost ve vaší spravované domény hesla uživatelů, ale musí být stále platné ve službě Azure AD. V takových scénářů uživatelé musí změnit své heslo ve službě Azure AD a nové heslo bude synchronizovat s vaší spravované domény. Kromě toho '-nepodporuje není – konec platnosti hesla' a 'user-must-change-password-at-next-logon' atributy pro uživatelské účty nejsou synchronizovány do vaší spravované domény.
 
 ## <a name="billing-and-availability"></a>Fakturace a dostupnost
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Je, že služba Azure AD Domain Services placené služby?

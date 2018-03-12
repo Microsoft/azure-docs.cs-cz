@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 5a7dc313f1d6453562e4d5a11ceca03e4459b043
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 8f6f3fc8325fb2587dc09b982efa52fbe663e2a9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálního počítače Azure výkon diagnostiky pro Windows
 
@@ -29,7 +29,7 @@ Rozšíření virtuálního počítače Azure výkon diagnostiky pomáhá shroma
 Toto rozšíření můžete nainstalovat na Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016. Lze ji také nainstalovat na Windows 8.1 a Windows 10.
 
 ## <a name="extension-schema"></a>Rozšíření schématu
-Následujícím kódu JSON znázorňuje schéma pro rozšíření virtuálního počítače diagnostiky výkonu Azure. Toto rozšíření vyžaduje název a klíč pro účet úložiště pro uložení výstup diagnostiky a sestavy. Tyto hodnoty jsou citlivé a by měly být uložené v chráněném nastavení konfigurace. Azure nastavení rozšíření chráněná data virtuálního počítače je šifrovaný a dešifruje se pouze na cílový virtuální počítač. Všimněte si, že **storageAccountName** a **storageAccountKey** malých a velkých písmen. V následující části jsou uvedeny další požadované parametry.
+Následujícím kódu JSON znázorňuje schéma pro rozšíření virtuálního počítače diagnostiky výkonu Azure. Toto rozšíření vyžaduje název a klíč pro účet úložiště pro uložení výstup diagnostiky a sestavy. Tyto hodnoty jsou citlivé. Klíč účtu úložiště by měl být uložený v chráněných nastavení konfigurace. Azure nastavení rozšíření chráněná data virtuálního počítače je šifrovaný a dešifruje se pouze na cílový virtuální počítač. Všimněte si, že **storageAccountName** a **storageAccountKey** malých a velkých písmen. V následující části jsou uvedeny další požadované parametry.
 
 ```JSON
     {
@@ -43,19 +43,19 @@ Následujícím kódu JSON znázorňuje schéma pro rozšíření virtuálního 
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
+            "storageAccountName": "[parameters('storageAccountName')]",
             "performanceScenario": "[parameters('performanceScenario')]",
-                  "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "perfCounterTrace": "[parameters('perfCounterTrace')]",
-                  "networkTrace": "[parameters('networkTrace')]",
-                  "xperfTrace": "[parameters('xperfTrace')]",
-                  "storPortTrace": "[parameters('storPortTrace')]",
+            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+            "perfCounterTrace": "[parameters('perfCounterTrace')]",
+            "networkTrace": "[parameters('networkTrace')]",
+            "xperfTrace": "[parameters('xperfTrace')]",
+            "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
             "requestTimeUtc":  "[parameters('requestTimeUtc')]"
         },
-          "protectedSettings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
+        "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"        
-            }
+        }
       }
     }
 ```
@@ -68,21 +68,22 @@ Následujícím kódu JSON znázorňuje schéma pro rozšíření virtuálního 
 |Vydavatele|Microsoft.Azure.Performance.Diagnostics|Obor názvů vydavatele pro rozšíření.
 |type|AzurePerformanceDiagnostics|Typ rozšíření virtuálního počítače.
 |typeHandlerVersion|1.0|Verze rozšíření obslužné rutiny.
-|performanceScenario|Základní|Výkon scénář, pro které chcete zaznamenat data. Platné hodnoty jsou: **základní**, **vmslow**, **azurefiles**, a **vlastní**.
+|performanceScenario|Basic|Výkon scénář, pro které chcete zaznamenat data. Platné hodnoty jsou: **základní**, **vmslow**, **azurefiles**, a **vlastní**.
 |traceDurationInSeconds|300|Platnost trasování, pokud nejsou vybrány žádné možnosti trasování.
-|perfCounterTrace|P|Možnost povolit trasování čítače výkonu. Platné hodnoty jsou **p** nebo prázdnou hodnotu. Pokud nechcete zaznamenat trasování, ponechte hodnotu jako prázdný.
-|networkTrace|n|Možnost povolit trasování sítě. Platné hodnoty jsou  **n**  nebo prázdnou hodnotu. Pokud nechcete zaznamenat trasování, ponechte hodnotu jako prázdný.
+|perfCounterTrace|p|Možnost povolit trasování čítače výkonu. Platné hodnoty jsou **p** nebo prázdnou hodnotu. Pokud nechcete zaznamenat trasování, ponechte hodnotu jako prázdný.
+|networkTrace|n|Možnost povolit trasování sítě. Platné hodnoty jsou **n** nebo prázdnou hodnotu. Pokud nechcete zaznamenat trasování, ponechte hodnotu jako prázdný.
 |xperfTrace|x|Možnost povolit XPerf trasování. Platné hodnoty jsou **x** nebo prázdnou hodnotu. Pokud nechcete zaznamenat trasování, ponechte hodnotu jako prázdný.
 |storPortTrace|s|Možnost povolit StorPort trasování. Platné hodnoty jsou **s** nebo prázdnou hodnotu. Pokud nechcete zaznamenat trasování, ponechte hodnotu jako prázdný.
 |srNumber|123452016365929|Podpora číslo lístku, pokud je k dispozici. Ponechte hodnotu jako prázdné, pokud ji nemáte.
-|storageAccountName|můj_účet_úložiště|Název účtu úložiště k ukládání protokolů diagnostiky a výsledky.
-|storageAccountKey|lDuVvxuZB28NNP... hAiRF3voADxLBTcc ==|Klíč pro účet úložiště.
+|requestTimeUtc|2017-09-28T22:08:53.736Z|Aktuální datum čas v Utc. Pokud používáte portál toto rozšíření nainstalovat, není potřeba zadat tuto hodnotu.
+|storageAccountName|mystorageaccount|Název účtu úložiště k ukládání protokolů diagnostiky a výsledky.
+|storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|Klíč pro účet úložiště.
 
 ## <a name="install-the-extension"></a>Instalace rozšíření
 
-Postupujte podle těchto kroků nainstalujte rozšíření na virtuálních počítačích Windows:
+Postupujte podle těchto pokynů k instalaci rozšíření na virtuálních počítačích s Windows:
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k [portálu Azure](http://portal.azure.com).
 2. Vyberte virtuální počítač, ve které chcete nainstalovat tato rozšíření.
 
     ![Snímek obrazovky Azure portal se zvýrazněnou virtuální počítače](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -182,19 +183,19 @@ Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azu
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
+            "storageAccountName": "[parameters('storageAccountName')]",
             "performanceScenario": "[parameters('performanceScenario')]",
-                  "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "perfCounterTrace": "[parameters('perfCounterTrace')]",
-                  "networkTrace": "[parameters('networkTrace')]",
-                  "xperfTrace": "[parameters('xperfTrace')]",
-                  "storPortTrace": "[parameters('storPortTrace')]",
+            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+            "perfCounterTrace": "[parameters('perfCounterTrace')]",
+            "networkTrace": "[parameters('networkTrace')]",
+            "xperfTrace": "[parameters('xperfTrace')]",
+            "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
             "requestTimeUtc":  "[parameters('requestTimeUtc')]"
         },
-          "protectedSettings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
+        "protectedSettings": {            
             "storageAccountKey": "[parameters('storageAccountKey')]"        
-            }
+        }
       }
     }
   ]
@@ -202,13 +203,13 @@ Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azu
 ````
 
 ## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
-`Set-AzureRmVMExtension` Příkaz lze použít k nasazení rozšíření Azure výkon diagnostiky virtuálního počítače do existujícího virtuálního počítače. Před spuštěním příkazu, uložte konfiguraci veřejné a privátní zatřiďovací tabulku prostředí PowerShell.
+`Set-AzureRmVMExtension` Příkaz lze použít k nasazení rozšíření Azure výkon diagnostiky virtuálního počítače do existujícího virtuálního počítače.
 
 PowerShell
 
 ````
-$PublicSettings = @{ "performanceScenario":"basic","traceDurationInSeconds":300,"perfCounterTrace":"p","networkTrace":"","xperfTrace":"","storPortTrace":"","srNumber":"","requestTimeUtc":"2017-09-28T22:08:53.736Z" }
-$ProtectedSettings = @{"storageAccountName":"mystorageaccount","storageAccountKey":"mystoragekey"}
+$PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z" }
+$ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
 Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `
@@ -218,7 +219,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -TypeHandlerVersion 1.0 `
     -Settings $PublicSettings `
     -ProtectedSettings $ProtectedSettings `
-    -Location WestUS `
+    -Location WestUS
 ````
 
 ## <a name="information-on-the-data-captured"></a>Informace o data zaznamenaná
@@ -234,7 +235,7 @@ Jako pomoc pracovníka podpory práce v lístku podpory, může společnost Micr
 
 Chcete-li zobrazit sestavu, extrahujte soubor zip a otevřete **PerfInsights Report.html** souboru.
 
-Také je možné stáhnout soubor zip přímo z portálu výběrem rozšíření.
+Nyní byste měli také mít ke stažení souboru zip přímo z portálu výběrem rozšíření.
 
 ![Snímek obrazovky výkon diagnostiky podrobný stav](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 

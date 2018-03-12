@@ -11,11 +11,11 @@ ms.custom: managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: bonova
-ms.openlocfilehash: 44a02ac20a9e9e5fb7171d28e4852ab1a6e63881
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 87efa41ce74a0d571c8fd5f7a0ebfbd7bc6b626e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance systému SQL Server na instanci spravované databáze Azure SQL
 
@@ -75,7 +75,7 @@ Přesunutí instance SQL, je třeba pečlivě naplánovat:
 
 Spravované Instance je plně spravovaná služba, která umožňuje delegovat některé regulární DBA aktivit pro platformu, jako jsou součástí. Některé dat na úrovni instance proto není nutné migrovat, jako je například úlohy údržby pro pravidelné zálohování nebo Always On konfigurace jako [vysokou dostupnost](sql-database-high-availability.md) je součástí.
 
-Spravované Instance podporuje následující několik databáze možnosti migrace:
+Spravované Instance podporuje následující možnosti migrace databáze (aktuálně to jsou pouze podporovaných migračních metody):
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 

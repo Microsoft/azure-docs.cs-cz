@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: a2422d8a79d102accb72476f6934bae38603973a
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8526e949aee2935824a03a0972d9e45c71d6601b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Data nástroje pro přijímání dat vědecké účely virtuálního počítače
 
@@ -35,7 +35,7 @@ Tady jsou některé nástroje přesun dat, které uvádíme v DSVM.
 | Podporované DSVM verze      | Windows      |
 | Typické použití      | Import více objektů blob z úložiště Azure do Azure Data Lake Store.      |
 |  Jak se použít nebo ji spustit?    |   Otevřete příkazový řádek, zadejte `adlcopy` jak získat nápovědu.    |
-| Odkazy na ukázky      | [Using AdlCopy]https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| Odkazy na ukázky      | [Pomocí AdlCopy](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | Na DSVM souvisejících nástrojích      | AzCopy, Azure příkazového řádku     |
 
 ## <a name="azure-command-line"></a>Azure příkazového řádku
@@ -46,7 +46,7 @@ Tady jsou některé nástroje přesun dat, které uvádíme v DSVM.
 | Podporované DSVM verze      | Windows, Linux     |
 | Typické použití      | Import, export dat do a z Azure storage, Azure Data Lake Store      |
 |  Jak se použít nebo ji spustit?    |   Otevřete příkazový řádek, zadejte `az` jak získat nápovědu.    |
-| Odkazy na ukázky      | [Použití Azure CLI](https://docs.microsoft.com/cli/azure/?viee-cli-latest)     |
+| Odkazy na ukázky      | [Použití Azure CLI](https://docs.microsoft.com/cli/azure)     |
 | Na DSVM souvisejících nástrojích      | AzCopy, AdlCopy      |
 
 
@@ -93,7 +93,7 @@ Tady jsou některé nástroje přesun dat, které uvádíme v DSVM.
 | Podporované DSVM verze      | Linux      |
 | Typické použití      | Čtení a zápis do objektů BLOB v kontejneru      |
 |  Jak se použít nebo ji spustit?    |   Spustit _blobfuse_ v terminálu.    |
-| Odkazy na ukázky      | [blobfuse na Githubu) [https://github.com/Azure/azure-storage-fuse]      |
+| Odkazy na ukázky      | [blobfuse na Githubu](https://github.com/Azure/azure-storage-fuse)      |
 | Na DSVM souvisejících nástrojích      | Azure příkazového řádku      |
 
 

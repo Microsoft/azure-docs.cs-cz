@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: maheshu
-ms.openlocfilehash: 7c84ac3318bbd63129b04711c62dc441b9d35285
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 858adf2b0a0431078561a6f0edf80860927f8233
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí portálu Azure
 
@@ -49,7 +49,7 @@ Další úlohou konfigurace je vytvoření virtuální sítě Azure a vyhrazené
   > [!WARNING]
   > Je nutné vybrat adresní prostor, který je v rámci prostor privátní IP adresy. IP adresy, které nevlastníte, které jsou v veřejný adresní prostor způsobovat chyby v rámci Azure AD Domain Services.
 
-5. **Existující virtuální síť:** Pokud budete chtít vyberte stávající virtuální síť, [vytvořit vyhrazený podsíť pomocí virtuální sítě rozšíření](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)a pak vyberte této podsíti. Klikněte na tlačítko **virtuální sítě** vyberte stávající virtuální síť. Klikněte na tlačítko **podsíť** vybrat vyhrazené podsíť ve stávající virtuální síť, ve které chcete povolit vaší nové spravované domény. Klikněte na tlačítko **OK** po dokončení.
+5. **Existující virtuální síť:** Pokud budete chtít vyberte stávající virtuální síť, [vytvořit vyhrazený podsíť pomocí virtuální sítě rozšíření](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)a pak vyberte této podsíti. Klikněte na tlačítko **virtuální sítě** vyberte stávající virtuální síť. Klikněte na tlačítko **podsíť** vybrat vyhrazené podsíť ve stávající virtuální síť, ve které chcete povolit vaší nové spravované domény. Klikněte na tlačítko **OK** po dokončení.
 
     ![Vyberte podsítí v rámci virtuální sítě](./media/getting-started/domain-services-blade-network-pick-subnet.png)
 

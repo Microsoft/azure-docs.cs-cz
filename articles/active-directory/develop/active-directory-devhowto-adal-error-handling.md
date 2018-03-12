@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.custom: 
-ms.openlocfilehash: 082953eb860197d2188851f6c8be260797d6ce6d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2b4c945f5707c158c76c8edbd233d1a8b034111f
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Chyba při zpracování osvědčené postupy pro klienty Azure Active Directory Authentication Library (ADAL)
 
@@ -525,7 +525,7 @@ Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
 // PII or OII will be logged
 Logger.getInstance().setEnablePII(true);
 
-// PII or OII will NOT be logged
+// To STOP logging PII or OII, use the following setter
 Logger.getInstance().setEnablePII(false);
 
 

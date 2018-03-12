@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: 278d8241ddd67b6df64b7280d4a17c6d3152f223
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: a24695f7bbb5fb0546e27c934319a60a3418b9e1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Povolit pro virtuální počítače Azure Service Fabric a cloudové služby Azure Application Insights profileru
 
@@ -46,8 +46,7 @@ Chcete-li plně profileru, musíte změnit konfiguraci ve třech umístěních:
 
    ![Umístění klíč instrumentace](./media/enable-profiler-compute/CopyAIKey.png)
 
-3. Chcete-li dokončit nastavení instance služby Application Insights pro profileru, proveďte postup popsané v [povolit profileru](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler).  
-    Nemusíte odkaz webové aplikace, protože kroky jsou specifické pro prostředek aplikace služby. Ujistěte se, že je profileru povolené **konfigurace profileru** podokně.
+3. Chcete-li dokončit nastavení instance služby Application Insights pro profileru, proveďte postup popsané v [Povolit profileru. Nemusíte odkaz webové aplikace, protože kroky jsou specifické pro prostředek aplikace služby. Ujistěte se, že je profileru povolené **konfigurace profileru** podokně.
 
 
 ## <a name="set-up-the-application-source-code"></a>Nastavit zdrojovému kódu aplikace
@@ -157,6 +156,8 @@ Nastavení vašeho prostředí, postupujte takto:
 
       Informace o přidání rozšíření diagnostiky do šablony nasazení najdete v tématu [použití monitorování a Diagnostika pomocí šablony virtuálního počítače s Windows a Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
+> [!TIP]
+> Pro virtuální počítače je alternativa k výše uvedených kroků json na základě přejděte na portálu Azure **virtuální počítače** > **nastavení pro diagnostiku**  >   **Jímky** > Set posílat diagnostická data do služby Application Insights do **povoleno** a vyberte buď účet Application Insights, nebo konkrétní ikey.
 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 
@@ -196,7 +197,7 @@ Nastavení vašeho prostředí, postupujte takto:
 
 1. Definice nasazení upravené prostředí nasaďte.  
 
-   Chcete-li použít změny, obvykle zahrnují kompletní šablonou nasazení nebo cloudové služby publikovat prostřednictvím rutin prostředí PowerShell nebo sady Visual Studio.  
+   Použití změn, obvykle zahrnuje kompletní šablonou nasazení nebo cloud services na základě publikovat prostřednictvím rutin prostředí PowerShell nebo sady Visual Studio.  
 
    Toto je alternativní postup pro existující virtuální počítače, který dotykem pouze rozšíření Azure Diagnostics:  
 

@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 11/29/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 751f553c277cec579327771beb2f3256664452b1
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 1e216da55a4c425fe112215464cdedb59c8db585
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Migrace na storage úrovně premium datového skladu
 Azure SQL Data Warehouse nedávno zaveden [storage úrovně premium pro vyšší výkon, předvídatelnost][premium storage for greater performance predictability]. Existující datových skladů aktuálně na standardní úložiště lze nyní přenést do úložiště úrovně premium. Můžete využít výhod Automatická migrace, nebo pokud chcete řídit, kdy k migraci (které zahrnují výpadky), můžete provést migraci sami.
@@ -31,13 +31,13 @@ Pokud jste vytvořili datový sklad před následující daty, jsou právě pou�
 
 | **Oblast** | **Vytvořené před tímto datem datového skladu** |
 |:--- |:--- |
-| Austrálie – východ |Storage úrovně Premium zatím není k dispozici |
+| Austrálie – východ |1. ledna 2018 |
 | Čína – východ |1. listopadu 2016 |
 | Čína – sever |1. listopadu 2016 |
 | Německo – střed |1. listopadu 2016 |
 | Německo – severovýchod |1. listopadu 2016 |
-| Indie – západ |Storage úrovně Premium zatím není k dispozici |
-| Japonsko – západ |Storage úrovně Premium zatím není k dispozici |
+| Indie – západ |1. února 2018 |
+| Japonsko – západ |1. února 2018 |
 | Střed USA – sever |10 od listopadu 2016 |
 
 ## <a name="automatic-migration-details"></a>Automatická migrace podrobnosti
@@ -69,14 +69,14 @@ Automatické migrace dojít od 18:00:00 do 6:00:00 (místní čas na oblast) bě
 
 | **Oblast** | **Odhadované datum** | **Odhadované datum ukončení** |
 |:--- |:--- |:--- |
-| Austrálie – východ |Není-li určit ještě |Není-li určit ještě |
-| Čína – východ |9. ledna 2017 |13. ledna 2017 |
-| Čína – sever |9. ledna 2017 |13. ledna 2017 |
-| Německo – střed |9. ledna 2017 |13. ledna 2017 |
-| Německo – severovýchod |9. ledna 2017 |13. ledna 2017 |
-| Indie – západ |Není-li určit ještě |Není-li určit ještě |
-| Japonsko – západ |Není-li určit ještě |Není-li určit ještě |
-| Střed USA – sever |9. ledna 2017 |13. ledna 2017 |
+| Austrálie – východ |19. března 2018 |20 března 2018 |
+| Čína – východ |Již migrovali |Již migrovali |
+| Čína – sever |Již migrovali |Již migrovali |
+| Německo – střed |Již migrovali |Již migrovali |
+| Německo – severovýchod |Již migrovali |Již migrovali |
+| Indie – západ |19. března 2018 |20 března 2018 |
+| Japonsko – západ |19. března 2018 |20 března 2018 |
+| Střed USA – sever |Již migrovali |Již migrovali |
 
 ## <a name="self-migration-to-premium-storage"></a>Vlastní migrace na storage úrovně premium
 Pokud chcete řídit, když dojde k odstávka, můžete použít následující kroky k migraci existující datový sklad na standardní úložiště do úložiště úrovně premium. Pokud zvolíte tuto možnost, musíte vlastní migrace dokončit před zahájením Automatická migrace v této oblasti. To zajistí, že zabránění nebezpečí automatickou migraci způsobuje konflikt (odkazovat [automatickou migraci plánu][automatic migration schedule]).
@@ -84,11 +84,14 @@ Pokud chcete řídit, když dojde k odstávka, můžete použít následující 
 ### <a name="self-migration-instructions"></a>Pokyny k migraci vlastní
 Pro migraci datového skladu, použijte zálohování a obnovení funkce. Očekává se, že část obnovení migrace trvat přibližně jednu hodinu za terabajt úložiště za datového skladu. Pokud chcete použít stejný název po dokončení migrace, postupujte [kroky pro přejmenování během migrace][steps to rename during migration].
 
-1. [Pozastavení] [ Pause] datového skladu. Tato akce trvá automatické zálohování.
+1. [Pozastavení] [ Pause] datového skladu. 
 2. [Obnovit] [ Restore] z vaší poslední snímek.
 3. Odstraňte existující datový sklad na standardní úložiště. **Pokud tento krok, vám bude účtována pro obě datových skladů.**
 
 > [!NOTE]
+>
+> Při obnovování datového skladu, ověřte, že dojde k nejnovější bod obnovení, která je k dispozici po datového skladu byla pozastavena.
+>
 > Jako součást migrace se nepřenesou následující nastavení:
 >
 > * Auditování na úrovni databáze musí být znovu zapnout.
@@ -105,60 +108,13 @@ V tomto příkladu Představte si, že vaše existující datový sklad na stand
    ```
    ALTER DATABASE CurrentDatabasename MODIFY NAME = NewDatabaseName;
    ```
-2. [Pozastavení] [ Pause] "MyDW_BeforeMigration." Tato akce trvá automatické zálohování.
+2. [Pozastavení] [ Pause] "MyDW_BeforeMigration." 
 3. [Obnovit] [ Restore] z vaší poslední snímek novou databázi s názvem dříve (například "MyDW").
 4. Odstranit "MyDW_BeforeMigration." **Pokud tento krok, vám bude účtována pro obě datových skladů.**
 
 
 ## <a name="next-steps"></a>Další postup
 Změny do úložiště úrovně premium máte také zvýšením počtu objektů blob soubory databáze v základní Architektura datového skladu. Pokud chcete maximalizovat výkon výhody této změny, znovu sestavte vaše Clusterované indexy columnstore pomocí následujícího skriptu. Skript funguje tak, že některé z vašich existujících dat vynucení na další objekty BLOB. Pokud nepodniknete žádnou akci, data se přirozeně znovu distribuovat časem jako načtení více dat do tabulek.
-
-**Požadavky:**
-
-- Datový sklad měly být spuštěny s jednotky 1000 datového skladu nebo vyšší (viz [škálování výpočetního výkonu][scale compute power]).
-- Uživatel spouštění skriptu by měl být v [mediumrc role] [ mediumrc role] nebo vyšší. Chcete-li přidat uživatele do této role, spusťte následující: ````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
-
-````sql
--------------------------------------------------------------------------------
--- Step 1: Create table to control index rebuild
--- Run as user in mediumrc or higher
---------------------------------------------------------------------------------
-create table sql_statements
-WITH (distribution = round_robin)
-as select
-    'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement,
-    row_number() over (order by s.name, t.name) as sequence
-from
-    sys.schemas s
-    inner join sys.tables t
-        on s.schema_id = t.schema_id
-where
-    is_external = 0
-;
-go
-
---------------------------------------------------------------------------------
--- Step 2: Execute index rebuilds. If script fails, the below can be re-run to restart where last left off.
--- Run as user in mediumrc or higher
---------------------------------------------------------------------------------
-
-declare @nbr_statements int = (select count(*) from sql_statements)
-declare @i int = 1
-while(@i <= @nbr_statements)
-begin
-      declare @statement nvarchar(1000)= (select statement from sql_statements where sequence = @i)
-      print cast(getdate() as nvarchar(1000)) + ' Executing... ' + @statement
-      exec (@statement)
-      delete from sql_statements where sequence = @i
-      set @i += 1
-end;
-go
--------------------------------------------------------------------------------
--- Step 3: Clean up table created in Step 1
---------------------------------------------------------------------------------
-drop table sql_statements;
-go
-````
 
 Pokud narazíte na potíže s datovým skladem, [vytvořit lístek podpory] [ create a support ticket] a referenční dokumentace "migrace na storage úrovně premium" jako možnou příčinu.
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: e9c6b85a439ba880c15ae16ab1cac093020430ba
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3f1b55f2752821de447e6c03bcbf79f01d9f8264
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak vytvořit a nakonfigurovat Self-hosted integrace Runtime
 Integrační modul Runtime (IR) je na výpočetní infrastruktuře používá k zajištění funkce integrace dat různých prostředích sítě Azure Data Factory. Podrobnosti o IR najdete v tématu [Přehled integrace modulu Runtime](concepts-integration-runtime.md).
@@ -65,7 +65,7 @@ Zde je podrobný datový tok pro souhrn kroky pro kopírování s vlastním host
 - Integrace s vlastním hostováním runtime musí použít pro podporu integrace dat v rámci virtuální sítě Azure.
 - Váš zdroj dat považovat za zdroj dat na místě, (který je za bránou firewall) i při použití **ExpressRoute**. Navázat připojení mezi službou a zdroji dat pomocí modulu runtime vlastním hostováním integrace.
 - I v případě, že je úložiště dat v cloudu, je nutné použít modul runtime vlastním hostováním integrace **virtuálního počítače Azure IaaS**.
-- Úlohy mohou selhat v modulu Runtime integrace Self-hosted nainstalovaná v systému Windows Server, na které se standardem FIPS je povolené šifrování. Chcete-li tento problém obejít, zakažte kompatibilní se standardem FIPS šifrování na serveru.
+- Úlohy mohou selhat v modulu Runtime integrace Self-hosted nainstalovaná v systému Windows Server, na které se standardem FIPS je povolené šifrování. Chcete-li tento problém obejít, zakažte kompatibilní se standardem FIPS šifrování na serveru. Chcete-li zakázat kompatibilní se standardem FIPS šifrování, změňte následující hodnotu registru od 1 (povoleno) na hodnotu 0 (zakázáno): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`.
 
 ## <a name="prerequisites"></a>Požadavky
 

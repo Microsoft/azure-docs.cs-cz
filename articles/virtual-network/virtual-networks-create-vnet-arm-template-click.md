@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a59ea7c9e111f8ae5b0d9bd620faa5495c3924b7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bb096f64a6bc41ad2e75c058c7a9f00bbe480207
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>Vytvoření virtuální sítě pomocí šablony Azure Resource Manager
 
@@ -31,9 +31,9 @@ Azure nabízí dva modely nasazení: Azure Resource Manager a Classic. Microsoft
 Tento článek vysvětluje, jak vytvořit virtuální síť pomocí modelu nasazení Resource Manager pomocí šablony Azure Resource Manager. Virtuální síť můžete vytvořit také prostřednictvím modelu nasazení Resource Manager pomocí jiných nástrojů nebo prostřednictvím modelu nasazení Classic. Pokud to chcete provést, vyberte odpovídající možnost z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-- [Azure Portal](virtual-networks-create-vnet-arm-pportal.md)
-- [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-- [Rozhraní příkazového řádku](virtual-networks-create-vnet-arm-cli.md)
+- [Azure Portal](quick-create-portal.md)
+- [PowerShell](quick-create-powershell.md)
+- [Rozhraní příkazového řádku](quick-create-cli.md)
 - [Šablona](virtual-networks-create-vnet-arm-template-click.md)
 - [Portál (Classic)](virtual-networks-create-vnet-classic-pportal.md)
 - [PowerShell (Classic)](virtual-networks-create-vnet-classic-netcfg-ps.md)
@@ -56,7 +56,6 @@ Můžete stáhnout existující šablonu pro vytvoření virtuální sítě a dv
    
    | Parametr | Popis |
    | --- | --- |
-   | **location** |Oblast Azure, kde je síť VNet vytvořena |
    | **vnetName** |Název nové sítě VNet |
    | **addressPrefix** |Adresní prostor sítě VNet ve formátu CIDR |
    | **subnet1Name** |Název první sítě VNet |
@@ -80,9 +79,6 @@ Můžete stáhnout existující šablonu pro vytvoření virtuální sítě a dv
 
     ```json
         {
-          "location": {
-            "value": "Central US"
-          },
           "vnetName": {
               "value": "TestVNet"
           },

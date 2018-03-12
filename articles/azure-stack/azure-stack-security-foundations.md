@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: fa0800f03d823769dcd9f01601689122b0d09ec5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c1d92f8f2ed9e8ab504afc65bab861e1f7bb3689
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure postavení zabezpečení infrastruktury zásobníku
 
@@ -31,8 +31,12 @@ V zásobníku Azure existují dvě vrstvy postavení zabezpečení, které spole
 ## <a name="security-approach"></a>Zabezpečení přístupu
 Azure zásobníku byl vytvořen s postavení zabezpečení bránit zranitelná moderními hrozbami a byl vytvořen, aby splňoval požadavky z standardů hlavní dodržování předpisů. V důsledku toho postavení zabezpečení infrastruktury Azure zásobníku je založený na dva pilíře:
 
- - **Předpokládejme, porušení zabezpečení.** Od se předpokládá, že v systému již došlo k nedodržení, soustředit na *detekovat a omezení dopad narušení* versus pouze pokusu zabránit útokům. 
- - **Posílené zabezpečení, ve výchozím nastavení.**  Vzhledem k tomu, že infrastruktura běží na dobře definovaný hardwaru a softwaru, *povolení, konfiguraci a ověření funkcí zabezpečení* , jsou ponechána zákazníkům k implementaci.
+ - **Předpokládejme, porušení zabezpečení.**  
+Od se předpokládá, že v systému již došlo k nedodržení, soustředit na *detekovat a omezení dopad narušení* versus pouze pokusu zabránit útokům. 
+ - **Posílené zabezpečení, ve výchozím nastavení.**  
+Vzhledem k tomu, že infrastruktura běží na dobře definovaný hardwaru a softwaru, jsme *povolení, konfiguraci a ověření všech funkcí zabezpečení* ve výchozím nastavení.
+
+
 
 Protože zásobník Azure je dodávána jako integrovaný systém, je definována postavení zabezpečení infrastruktury Azure zásobníku společností Microsoft. Stejně jako v Azure, klienti jsou zodpovědní za definování postavení zabezpečení zatížení klienta. Tento dokument obsahuje základní znalosti postavení zabezpečení infrastruktury Azure zásobníku.
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 4f3edb6879ff256b1b50a1437fe349084fe7de41
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 36cd2f106c39f1a6bdcb6ee33b96209974a06336
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace programu Sledování výkonu sítě pro ExpressRoute
 
@@ -102,10 +102,7 @@ Vytvořte pracovní prostor v odběru, který má propojení virtuálních sít�
 
 1. Přejděte na **společná nastavení** kartě **konfigurace monitorování výkonu sítě** stránky prostředku. Klikněte na možnost agent, který odpovídá procesor váš server od **instalovat agenty OMS** části a stáhněte si instalační soubor.
 
-  >[!NOTE]
-  >Agent musí být nainstalován na serveru systému Windows (2008 SP1 nebo novější). Monitorování okruhy ExpressRoute pomocí operačního systému Windows Desktop a operační systém Linux není podporováno. 
-  >
-  >
+ 
 2. Zkopírujte **ID pracovního prostoru** a **primární klíč** do poznámkového bloku.
 3. Z **konfigurace OMS agentů pro monitorování pomocí protokolu TCP** část, stáhněte skript prostředí Powershell. Skript prostředí PowerShell můžete otevřít port brány firewall pro transakce TCP.
 
@@ -114,6 +111,16 @@ Vytvořte pracovní prostor v odběru, který má propojení virtuálních sít�
 ### <a name="installagent"></a>2.2: nainstalujte agenta monitorování na každém serveru monitorování (na každý virtuální sítě, který chcete monitorovat)
 
 Doporučujeme nainstalovat aspoň dva agenty na každé straně připojení ExpressRoute (tj, místní, virtuálních sítí Azure) pro redundanci. Použijte následující postup k instalaci agentů:
+  
+  >[!NOTE]
+  >Agent musí být nainstalován na serveru systému Windows (2008 SP1 nebo novější). Monitorování okruhy ExpressRoute pomocí operačního systému Windows Desktop a operační systém Linux není podporováno. 
+  >
+  >
+  
+  >[!NOTE]
+  >SCOM agentů nemusí být schopna zjistit konzistentně, pokud jsou hostované v Azure.  Doporučujeme vám, že nepoužijete SCOM agentů ve virtuálních sítí Azure monitorovat ExpressRoute.
+  >
+  >
 
 1. Spustit **instalace** instalace agenta na každém serveru, který chcete použít pro sledování ExpressRoute. Server, který použijete pro monitorování může být virtuální počítač nebo místní a musí mít přístup k Internetu. Musíte nainstalovat alespoň jeden místního agenta a jednoho agenta v každém segmentu sítě, který chcete monitorovat v Azure.
 2. Na **úvodní** stránce klikněte na **Další**.

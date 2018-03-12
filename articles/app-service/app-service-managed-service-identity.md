@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 45fcbc3af02dd8afbd9581e8bc38ad10369a2747
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 736a82d282e5769fb403c66ffd5d44107c6d3218
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Jak používat Azure spravované služby Identity (verze public preview) ve službě App Service a Azure Functions
 
@@ -56,7 +56,7 @@ Pokud chcete nastavit identitu spravované služby pomocí rozhraní příkazov�
 
 Následující postup vás provede vytvořením webové aplikace a jeho přiřazení identity pomocí rozhraní příkazového řádku:
 
-1. Pokud používáte Azure CLI v místní konzole, nejdřív přihlásit k Azure pomocí [az přihlášení](/cli/azure/#az_login). Používáte účet, který je přidružen k předplatnému Azure, pod kterou chcete nasadit aplikaci:
+1. Pokud používáte Azure CLI v místní konzole, nejdřív přihlásit k Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login). Používáte účet, který je přidružen k předplatnému Azure, pod kterou chcete nasadit aplikaci:
 
     ```azurecli-interactive
     az login
@@ -126,13 +126,13 @@ Kde `<TENANTID>` a `<PRINCIPALID>` jsou nahrazeny identifikátory GUID. Vlastnos
 Aplikace můžete použít svou identitu získat tokeny k jiným prostředkům chráněn AAD, například Azure Key Vault. Tyto tokeny představují aplikace přístup k prostředku a ne všechny konkrétního uživatele aplikace. 
 
 > [!IMPORTANT]
-> Musíte nakonfigurovat cílový prostředek pro povolení přístupu z vaší aplikace. Například pokud požádáte o token pro Key Vault, budete muset Ujistěte se, že jste přidali zásadu přístupu, která zahrnuje identitu vaší aplikace. Jinak vaše volání Key Vault budou odmítnuty, i v případě, že obsahují token. Další více o prostředky, ke kterým podporují tokeny identita spravované služby najdete v tématu [služeb Azure, podpora Azure AD ověření](../active-directory/msi-overview.md#which-azure-services-support-managed-service-identity).
+> Musíte nakonfigurovat cílový prostředek pro povolení přístupu z vaší aplikace. Například pokud požádáte o token pro Key Vault, budete muset Ujistěte se, že jste přidali zásadu přístupu, která zahrnuje identitu vaší aplikace. Jinak vaše volání Key Vault budou odmítnuty, i v případě, že obsahují token. Další více o prostředky, ke kterým podporují tokeny identita spravované služby najdete v tématu [služeb Azure, podpora Azure AD ověření](../active-directory/pp/msi-overview.md#which-azure-services-support-managed-service-identity).
 
 Není protokolu REST pro získání tokenu v App Service a Azure Functions. Pro aplikace .NET knihovně Microsoft.Azure.Services.AppAuthentication poskytuje abstrakci přes tento protokol a podporuje místní vývojové prostředí.
 
 ### <a name="asal"></a>Pomocí Microsoft.Azure.Services.AppAuthentication knihovna pro .NET
 
-Pro aplikace .NET a funkcí je nejjednodušší způsob, jak pracovat s identitou spravované služby prostřednictvím Microsoft.Azure.Services.AppAuthentication balíčku. Tato knihovna vám také umožní Otestujte svůj kód místně na vývojovém počítači, pomocí účtu uživatele ze sady Visual Studio [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest), nebo integrované ověřování Active Directory. Další informace o možnostech lokální vývoj s této knihovny najdete v tématu [Microsoft.Azure.Services.AppAuthentication odkaz]. V této části se dozvíte, jak začít pracovat s knihovnou ve vašem kódu.
+Pro aplikace .NET a funkcí je nejjednodušší způsob, jak pracovat s identitou spravované služby prostřednictvím Microsoft.Azure.Services.AppAuthentication balíčku. Tato knihovna vám také umožní Otestujte svůj kód místně na vývojovém počítači, pomocí účtu uživatele ze sady Visual Studio [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), nebo integrované ověřování Active Directory. Další informace o možnostech lokální vývoj s této knihovny najdete v tématu [Microsoft.Azure.Services.AppAuthentication odkaz]. V této části se dozvíte, jak začít pracovat s knihovnou ve vašem kódu.
 
 1. Přidejte odkazy na [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) balíčků NuGet do vaší aplikace.
 

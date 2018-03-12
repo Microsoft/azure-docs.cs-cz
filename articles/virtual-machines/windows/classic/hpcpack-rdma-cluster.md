@@ -4,7 +4,7 @@ description: "Zjistěte, jak vytvořit cluster Windows HPC Pack s velikostí H16
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-service-management,hpc-pack
 ms.assetid: 7d9f5bc8-012f-48dd-b290-db81c7592215
@@ -13,28 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 06/01/2017
+ms.date: 03/06/2018
 ms.author: danlep
-ms.openlocfilehash: 19be1d693fe13af0f6c1ab0cb6f7bc829b9fad5a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 437c475735ec3823de51c5f9e996a5303fe9cfa7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Nastavení clusteru s podporou Windows RDMA pomocí sady HPC Pack ke spouštění aplikací MPI
-Nastavení clusteru s podporou Windows RDMA v Azure pomocí [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) a [vysokovýkonné výpočetní velikosti virtuálních počítačů](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ke spouštění paralelních aplikací Message Passing Interface (MPI). Při nastavování podporu rdma, systémem Windows Server uzly v clusteru služby HPC Pack aplikací MPI efektivně komunikují přes nízkou latencí a vysokou propustnost sítě v Azure, která je založena na technologii do paměti vzdáleného přímý přístup do (počítače RDMA).
+Nastavení clusteru s podporou Windows RDMA v Azure pomocí [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) a [velikosti virtuálních počítačů podporující RDMA HPC](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances) ke spouštění paralelních aplikací Message Passing Interface (MPI). Při nastavování podporu rdma, systémem Windows Server uzly v clusteru služby HPC Pack aplikací MPI efektivně komunikují přes nízkou latencí a vysokou propustnost sítě v Azure, která je založena na technologii do paměti vzdáleného přímý přístup do (počítače RDMA).
 
 Pokud chcete spustit úlohy MPI na virtuální počítače s Linuxem, přístup k síti Azure RDMA najdete v tématu [nastavení clusteru s podporou Linux RDMA ke spuštění aplikací MPI](../../linux/classic/rdma-cluster.md).
 
 ## <a name="hpc-pack-cluster-deployment-options"></a>Možnosti nasazení clusteru HPC Pack
 Microsoft HPC Pack je nástroj zadaný bez dalších poplatků k vytvoření clusterů HPC místně nebo v Azure ke spouštění aplikací systému Windows nebo Linux HPC. HPC Pack zahrnuje běhového prostředí pro implementaci společnosti Microsoft zprávu předávání rozhraní pro Windows (MS-MPI). Při použití s podporou RDMA instancí podporovaným operačním systémem Windows Server, HPC Pack nabízí efektivní možnost ke spouštění aplikací Windows MPI, které přístup k síti Azure RDMA. 
 
-Tento článek představuje dva scénáře a odkazy na podrobné pokyny k nastavení clusteru s podporou Windows RDMA pomocí sady Microsoft HPC Pack. 
+Tento článek představuje dva scénáře a odkazy na podrobné pokyny k nastavení clusteru s podporou Windows RDMA s Microsoft HPC Pack 2012 R2. 
 
 * Scénář 1. Nasazení instance rolí pracovního procesu náročné (PaaS)
 * Scénář 2. Nasaďte výpočetní uzly ve virtuálních počítačích náročné (IaaS)
-
-Obecné požadavky pro používání náročné instancí se systémem Windows, najdete v části [vysokovýkonné výpočetní velikosti virtuálních počítačů](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="scenario-1-deploy-compute-intensive-worker-role-instances-paas"></a>Scénář 1: Nasazení instance rolí pracovního procesu náročné (PaaS)
 Z existujícího clusteru HPC Pack přidejte další výpočetní prostředky v instance rolí pracovního procesu systému Azure (Azure uzlů) spuštěna v rámci cloudové služby (PaaS). Tato funkce, také nazývaná "rozšíření do služby Azure" ze sady HPC Pack podporuje celou řadu velikosti pro instance rolí pracovního procesu. Při přidávání uzlů Azure, zadejte jednu velikostí RDMA podporovat.
@@ -51,13 +49,14 @@ Následují požadavky a kroky k rozšíření do RDMA podporovat instancemi Azu
 ### <a name="steps"></a>Kroky
 1. **Nasaďte a nakonfigurujte hlavnímu uzlu HPC Pack 2012 R2**
    
-    Stáhněte si nejnovější balíček instalace sady HPC Pack z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922). Požadavky a pokyny k přípravě nasazení Azure shluků najdete v tématu [rozšíření do instancí pracovního procesu Azure pomocí sady Microsoft HPC Pack](https://technet.microsoft.com/library/gg481749.aspx).
+    Stáhněte balíček instalace sady HPC Pack [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922). Požadavky a pokyny k přípravě nasazení Azure shluků najdete v tématu [rozšíření do instancí pracovního procesu Azure pomocí sady Microsoft HPC Pack](https://technet.microsoft.com/library/gg481749.aspx).
 2. **Konfigurovat certifikát pro správu v rámci předplatného Azure**
    
     Konfigurujte certifikát k zabezpečení připojení mezi Azure a hlavního uzlu. Možnosti a postupy najdete v tématu [scénáře konfigurace certifikátu pro správu Azure pro HPC Pack](http://technet.microsoft.com/library/gg481759.aspx). Pro testovací nasazení nainstaluje HPC Pack výchozí Microsoft HPC Azure certifikát pro správu můžete rychle nahrát do vašeho předplatného Azure.
 3. **Vytvořte novou cloudovou službu a účet úložiště**
    
-    Použití portálu Azure k vytvoření cloudové služby a účet úložiště pro nasazení v oblasti, kde jsou k dispozici podporu rdma instance.
+    Vytvoření cloudové služby (klasické) a účet úložiště (klasické) pro nasazení pomocí portálu Azure. Vytvořte tyto prostředky v oblasti, kde H-series, A8 a A9 velikost, kterou chcete použít je k dispozici. V tématu [produkty Azure podle oblasti](https://azure.microsoft.com/regions/services/).
+
 4. **Vytvořit šablonu Azure uzlu**
    
     Použití v uzlu Průvodce vytvořením šablony ve Správci clusteru HPC. Pokyny najdete v tématu [vytvořit šablonu Azure uzlu](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) v "Kroky k nasazení Azure uzly s Microsoft HPC Pack".
@@ -91,19 +90,20 @@ V tomto scénáři nasazení hlavního uzlu HPC Pack a výpočetní uzly cluster
 ### <a name="steps"></a>Kroky
 1. **Vytvoření hlavního uzlu clusteru a výpočetní uzel virtuální počítače tak, že spustíte skript nasazení HPC Pack IaaS na klientském počítači**
    
-    Stáhněte balíček HPC Pack IaaS nasazení skriptu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922).
+    Stáhněte balíček HPC Pack IaaS nasazení skriptu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949).
    
     Příprava klientského počítače, vytvořte konfigurační soubor skriptu a spusťte skript, viz [vytvoření clusteru prostředí HPC pomocí skriptu pro nasazení HPC Pack IaaS](hpcpack-cluster-powershell-script.md). 
    
-    Nasazení podporující RDMA výpočetní uzly, pozorně si projděte následující další informace:
+    Důležité informace k nasazení podporující RDMA výpočetních uzlů najdete v tématu [vysokovýkonné výpočetní velikosti virtuálních počítačů](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances) a Všimněte si následujícího:
    
-   * **Virtuální síť**: Zadejte novou virtuální síť v oblasti, ve kterém je k dispozici podporu rdma velikost instance, kterou chcete použít.
-   * **Operační systém Windows Server**: pro podporu připojení RDMA, zadejte operační systém Windows Server 2012 R2 nebo Windows Server 2012 pro výpočetní uzel virtuálních počítačů.
-   * **Cloudové služby**: doporučujeme, abyste nasazení vaší hlavního uzlu v rámci jednoho cloudové služby a výpočetní uzly v rámci různých cloudové služby.
+   * **Virtuální síť**: Zadejte novou virtuální síť v oblasti, ve kterém je k dispozici velikost H-series, A8 a A9, kterou chcete použít. V tématu [produkty Azure podle oblasti](https://azure.microsoft.com/regions/services/).
+
+   * **Operační systém Windows Server**: pro podporu připojení RDMA, zadejte kompatibilní operační systém Windows Server například Windows Server 2012 R2 pro výpočetní uzel virtuálních počítačů.
+   * **Cloudové služby**: protože skript používá model nasazení classic, virtuální počítače clusteru jsou nasazeny pomocí cloudových služeb Azure (`ServiceName` nastavení v konfiguračním souboru). Doporučujeme, abyste nasazení vaší hlavního uzlu v rámci jednoho cloudové služby a výpočetní uzly v rámci různých cloudové služby. 
    * **HEAD velikost uzlu**: pro tento scénář, zvažte velikost alespoň A4 (Extra velký) pro hlavní uzel.
    * **Rozšíření HpcVmDrivers**: skript nasazení nainstaluje agenta virtuálního počítače Azure a rozšíření HpcVmDrivers automaticky při nasazení velikosti A8 a A9 výpočetní uzly s operačním systémem Windows Server. HpcVmDrivers nainstaluje ovladače na výpočetním uzlu virtuální počítače, aby se mohli připojit k síti RDMA. Na virtuálních počítačích podporující RDMA H-series musíte ručně nainstalovat rozšíření HpcVmDrivers. V tématu [vysokovýkonné výpočetní velikosti virtuálních počítačů](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
    * **Konfiguraci sítě s clustery**: skript nasazení automaticky nastaví clusteru HPC Pack topologie 5 (do všech uzlů v podnikové síti). Tato topologie je vyžadována pro všechna nasazení clusteru HPC Pack ve virtuálních počítačích. Později neměňte topologie sítě clusteru.
-2. **Aby výpočetní uzly online ke spuštění úloh**
+1. **Aby výpočetní uzly online ke spuštění úloh**
    
     Vyberte je a používat **přepnout do režimu Online** akce ve Správci clusteru HPC. Uzly jsou připravené ke spuštění úloh.
 3. **Odesílání úloh do clusteru**
@@ -182,7 +182,7 @@ Tady jsou důležité informace týkající se s aplikací MPI HPC Pack v Azure.
 * Úloh MPI nelze spustit napříč instancemi Azure, které jsou nasazeny v různých cloudové služby (například v shluků na jiný uzel šablony nebo virtuálního počítače Azure výpočetní uzly nasazené v několika cloudových služeb Azure nasazení). Pokud máte více nasazení Azure uzlu zahájených šablonami jiného uzlu, úlohy MPI musíte spustit na jen jednu sadu uzlů Azure.
 * Při přidání uzlů Azure do clusteru a jejich převedení do online režimu, služba Plánovač úloh HPC okamžitě se pokusí spustit úlohy na uzlech. Pokud jenom část úlohu můžete spustit v Azure, ujistěte se, aktualizovat nebo vytvoření šablony úloh můžete definovat, jaké typy úloh můžete spustit v Azure. Aby se zajistilo, že úlohy, odeslané s šablonu úlohy spustit jen u uzlů Azure, například přidání vlastnost uzlu skupiny do šablony úlohy a vyberte AzureNodes jako požadovaná hodnota. Pokud chcete vytvořit vlastní skupiny pro Azure uzly, použijte rutinu Add-HpcGroup prostředí HPC PowerShell.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Jako alternativu k použití HPC Pack vývoj pomocí služby Azure Batch ke spouštění aplikací MPI na spravovaný fond výpočetních uzlů v Azure. V tématu [pomocí úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing) ve službě Azure Batch](../../../batch/batch-mpi.md).
 * Pokud chcete spouštět aplikace, které přístup k síti Azure RDMA najdete v tématu Linux MPI [nastavení clusteru s podporou Linux RDMA ke spuštění aplikací MPI](../../linux/classic/rdma-cluster.md).
 

@@ -9,15 +9,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 21e1a7bee7bba2f410a2841505cb6a6f8673bac3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: be415340da09043eccd361b0168bb304d8904bef
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="manage-vmware-vcenter-servers"></a>Spravovat servery VMware vCenter server 
 
-Tento článek popisuje různé operace obnovení lokality, které lze provést na VMware vCenter. Ověřte [požadavky](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)s před zahájením.
+Tento článek popisuje různé operace obnovení lokality, které lze provést na VMware vCenter. Ověřte [požadavky](vmware-physical-azure-support-matrix.md#replicated-machines) před zahájením.
 
 
 ## <a name="set-up-an-account-for-automatic-discovery"></a>Nastavit účet pro automatické zjišťování

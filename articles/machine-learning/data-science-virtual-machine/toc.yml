@@ -8,6 +8,8 @@
       href: overview.md
     - name: Co je virtuální počítač pro hloubkové učení?
       href: deep-learning-dsvm-overview.md
+    - name: Co je virtuální počítač s geografickou umělou inteligencí pro datové vědy?
+      href: geo-ai-dsvm-overview.md
 - name: Začínáme
   items:
     - name: Vytvoření virtuálního počítače s Windows pro datové vědy
@@ -18,6 +20,8 @@
       href: linux-dsvm-intro.md
     - name: Vytvoření virtuálního počítače pro hloubkové učení
       href: provision-deep-learning-dsvm.md
+    - name: Vytvoření virtuálního počítače s geografickou umělou inteligencí pro datové vědy
+      href: provision-geo-ai-dsvm.md
 - name: Postup
   items:
     - name: Použití virtuálního počítače s Windows pro datové vědy
@@ -26,6 +30,8 @@
       href: linux-dsvm-walkthrough.md
     - name: Použití virtuálního počítače pro hloubkové učení
       href: use-deep-learning-dsvm.md
+    - name: Použití virtuálního počítače s geografickou umělou inteligencí pro datové vědy
+      href: use-geo-ai-dsvm.md
 - name: Referenční informace
   expanded: true
   items:

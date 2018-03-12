@@ -11,11 +11,11 @@ ms.workload: web
 ms.date: 08/02/2017
 ms.author: routlaw
 ms.custom: Jenkins, devcenter
-ms.openlocfilehash: 40d7e822b586e6f6b4addcd7d4e107eda9f4ab11
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b2606acba341d4cfbc16314048e134fa30ff8606
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Nastavte průběžnou integraci a nasazení do Azure App Service pomocí volaných
 
@@ -36,8 +36,8 @@ V tomto kurzu budete provádět následující úlohy:
 Pro absolvování tohoto kurzu potřebujete:
 
 * [Volaných](https://jenkins.io/) nástroje JDK a Maven nakonfigurované. Pokud nemáte volaných systém, vytvořte ho nyní v Azure z [šablona řešení volaných](/azure/jenkins/install-jenkins-solution-template).
-* A [Githubu](https://github.com) účtu.
-* [Azure CLI 2.0](/cli/azure/overview), z vaší místní příkazového řádku nebo v [prostředí cloudu Azure](/azure/cloud-shell/overview)
+* Účet [GitHub](https://github.com).
+* [Azure CLI 2.0](/cli/azure), z vaší místní příkazového řádku nebo v [prostředí cloudu Azure](/azure/cloud-shell/overview)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -75,7 +75,7 @@ Nastavení volaných pro příjem [Githubu webhooky](https://developer.github.co
     ![Nový projekt volný volaných styl](media/jenkins-java-quickstart/jenkins_freestyle.png)
 2. V části **Obecné** vyberte **Githubu** projektu a zadejte URL forked úložišti například https://github.com/raisa/gs-spring-boot-docker
 3. V části **zdrojového kódu správu** vyberte **Git**, zadejte vaše forked úložišti `.git` adresy URL, například https://github.com/raisa/gs-spring-boot-docker.git
-4. V části **sestavení aktivační události** vyberte **Githubu háku aktivační událost pro dotazování GITscm**.
+4. V části **Build Triggers** (Triggery sestavení) vyberte **GitHub hook trigger for GITscm polling** (Trigger webhooku GitHubu pro dotazování GITscm).
 5. V části **sestavení** vyberte **přidat krok sestavení** a zvolte **vyvolání nejvyšší úrovně cíle Maven**. Zadejte `package` v **cíle** pole.
 6. Vyberte **Uložit**. Úlohu můžete otestovat výběrem **sestavení teď** ze stránky projektu.
 
@@ -180,7 +180,7 @@ Nastavení volaných pro příjem [Githubu webhooky](https://developer.github.co
 3. Nové sestavení se spustí v volaných, aktivovány nové potvrzení na `master` větve úložišti. Po jeho dokončení znovu načtete aplikaci v Azure.     
       ![Zobrazení nasazené aplikace v Azure](media/jenkins-java-quickstart/hello_docker_world.png)
   
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Použijte virtuální počítače Azure jako agentů sestavení](/azure/jenkins/jenkins-azure-vm-agents)
 - [Spravovat prostředky v úlohy a kanály pomocí Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline)
