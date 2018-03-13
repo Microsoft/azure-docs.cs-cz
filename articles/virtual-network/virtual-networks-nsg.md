@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 726799e5d885f144d6e24ab88aaa022f95f0bdd8
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 5eca18ca2f34097d98ce947c61c635abc6ab27b8
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Filtrování provozu sítě s použitím skupin zabezpečení sítě
 
@@ -32,7 +32,7 @@ Skupiny zabezpečení sítě obsahují následující vlastnosti:
 
 | Vlastnost | Popis | Omezení | Požadavky |
 | --- | --- | --- | --- |
-| Name (Název) |Název skupiny NSG |Musí být v rámci oblasti jedinečný.<br/>Může obsahovat písmena, číslice, podtržítka, tečky a pomlčky.<br/>Musí začínat písmenem nebo číslicí.<br/>Musí končit písmenem, číslicí nebo podtržítkem.<br/>Nesmí být delší než 80 znaků. |Pravděpodobně budete vytvářet víc skupin zabezpečení sítě, a proto je vhodné používat takové názvy, které umožní snadno rozpoznat funkci jednotlivých skupin. |
+| Název |Název skupiny NSG |Musí být v rámci oblasti jedinečný.<br/>Může obsahovat písmena, číslice, podtržítka, tečky a pomlčky.<br/>Musí začínat písmenem nebo číslicí.<br/>Musí končit písmenem, číslicí nebo podtržítkem.<br/>Nesmí být delší než 80 znaků. |Pravděpodobně budete vytvářet víc skupin zabezpečení sítě, a proto je vhodné používat takové názvy, které umožní snadno rozpoznat funkci jednotlivých skupin. |
 | Oblast |[Oblast](https://azure.microsoft.com/regions) Azure, ve které je skupina zabezpečení sítě hostovaná. |Skupiny zabezpečení sítě lze přidružit pouze k prostředkům v rámci stejné oblasti jako příslušná skupina zabezpečení sítě. |Další informace o tom, kolik skupin zabezpečení sítě můžete mít na každou oblast, najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md#virtual-networking-limits-classic).|
 | Skupina prostředků |[Skupina prostředků](../azure-resource-manager/resource-group-overview.md#resource-groups), ve které existuje příslušná skupina zabezpečení sítě. |Ačkoli skupina zabezpečení sítě existuje ve skupině prostředků, dá se přidružit k prostředkům v libovolné skupině prostředků, pokud příslušný prostředek patří do stejné oblasti Azure jako příslušná skupina zabezpečení sítě. |Skupiny prostředků slouží ke společné správě více prostředků jako jednotky nasazení.<br/>Může být vhodné seskupit skupinu zabezpečení sítě s prostředky, ke kterým je přidružená. |
 | Pravidla |Pravidla pro příchozí a odchozí provoz, která definují, jaký provoz je povolený nebo odepřený. | |Přečtěte si část [Pravidla NSG](#Nsg-rules) tohoto článku. |
@@ -66,7 +66,7 @@ Na obrázku je znázorněno, jak se zpracovávají pravidla skupiny zabezpečen�
 Výchozí značky jsou identifikátory poskytnuté systémem, které slouží k adresování určité kategorie IP adres. Výchozí značky můžete použít u libovolného pravidla ve vlastnostech **předpona zdrojové adresy** a **předpona cílové adresy**. Existují tři výchozí značky, které můžete použít:
 
 * **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** v případě klasického modelu): Tato značka zahrnuje adresní prostor virtuální sítě (rozsahy CIDR definované v Azure) a všechny připojené místní adresní prostory a připojené virtuální sítě Azure (místní sítě).
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** v případě klasického modelu): Tato značka označuje nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na IP adresu datacentra Azure, kde mají původ testy stavu Azure.
+* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** v případě klasického modelu): Tato značka označuje nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na IP adresu datacentra Azure, kde mají původ sondy stavu služby Azure Load Balancer.
 * **Internet** (Resource Manager) (**INTERNET** v případě klasického modelu): Tato značka označuje adresní prostor IP adres, který se nachází mimo virtuální síť a je dostupný prostřednictvím veřejného internetu. Rozsah zahrnuje [veřejný prostor IP adres vlastněný Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
 ### <a name="default-rules"></a>Výchozí pravidla
@@ -75,11 +75,11 @@ Všechny skupiny NSG obsahují sadu výchozích pravidel. Výchozí pravidla se 
 Výchozí pravidla povolují a zakazují provoz následujícím způsobem:
 - **Virtuální síť:** Provoz směřující z virtuální sítě a do ní je povolený v příchozím i odchozím směru.
 - **Internet:** Je povolen odchozí provoz, ale příchozí provoz je blokován.
-- **Nástroj pro vyrovnávání zatížení:** Povoluje nástroji pro vyrovnávání zatížení Azure testovat stav virtuálních počítačů a instancí rolí. Pokud nepoužíváte sadu s vyrovnáváním zatížení, můžete toto pravidlo přepsat.
+- **Nástroj pro vyrovnávání zatížení:** Umožňuje službě Azure Load Balancer testovat stav virtuálních počítačů a instancí rolí. Pokud toto pravidlo přepíšete, sondy stavu služby Azure Load Balancer selžou, což může mít vliv na vaši službu.
 
 **Příchozí výchozí pravidla**
 
-| Name (Název) | Priorita | Zdrojová IP adresa | Zdrojový port | Cílová IP adresa | Cílový port | Protocol (Protokol) | Access |
+| Název | Priorita | Zdrojová IP adresa | Zdrojový port | Cílová IP adresa | Cílový port | Protocol (Protokol) | Access |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | AllowVNetInBound |65000 | VirtualNetwork | * | VirtualNetwork | * | * | Povolit |
 | AllowAzureLoadBalancerInBound | 65001 | AzureLoadBalancer | * | * | * | * | Povolit |
@@ -87,7 +87,7 @@ Výchozí pravidla povolují a zakazují provoz následujícím způsobem:
 
 **Odchozí výchozí pravidla**
 
-| Name (Název) | Priorita | Zdrojová IP adresa | Zdrojový port | Cílová IP adresa | Cílový port | Protocol (Protokol) | Access |
+| Název | Priorita | Zdrojová IP adresa | Zdrojový port | Cílová IP adresa | Cílový port | Protocol (Protokol) | Access |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | AllowVnetOutBound | 65000 | VirtualNetwork | * | VirtualNetwork | * | * | Povolit |
 | AllowVnetOutBound | 65001 | * | * | Internet | * | * | Povolit |
@@ -123,7 +123,7 @@ Skupiny zabezpečení sítě můžete implementovat v modelu nasazení Resource 
 
 | Nástroj pro nasazení | Classic | Resource Manager |
 | --- | --- | --- |
-| portál Azure   | Ne | [Ano](virtual-networks-create-nsg-arm-pportal.md) |
+| Azure Portal   | Ne | [Ano](virtual-networks-create-nsg-arm-pportal.md) |
 | PowerShell     | [Ano](virtual-networks-create-nsg-classic-ps.md) | [Ano](virtual-networks-create-nsg-arm-ps.md) |
 | Rozhraní příkazového řádku Azure CLI **V1**   | [Ano](virtual-networks-create-nsg-classic-cli.md) | [Ano](virtual-networks-create-nsg-arm-cli.md) |
 | Rozhraní příkazového řádku Azure CLI **V2**   | Ne | [Ano](virtual-networks-create-nsg-arm-cli.md) |
@@ -132,7 +132,7 @@ Skupiny zabezpečení sítě můžete implementovat v modelu nasazení Resource 
 ## <a name="planning"></a>Plánování
 Před implementací skupin NSG je nutné odpovědět na tyto otázky:
 
-1. Pro jaké typy prostředků chcete filtrovat příchozí nebo odchozí provoz? Můžete připojovat prostředky, jako jsou síťové karty (Resource Manager), virtuální počítače (klasický model), cloudové služby, prostředí aplikačních služeb a škálovací sady virtuálních počítačů. 
+1. Pro jaké typy prostředků chcete filtrovat příchozí nebo odchozí provoz? Můžete připojovat prostředky, jako jsou síťové karty (Resource Manager), virtuální počítače (klasický model), cloudové služby, prostředí aplikačních služeb a služba VM Scale Sets. 
 2. Jsou prostředky, u kterých chcete filtrovat příchozí/odchozí provoz, připojené k podsítím v existujících virtuálních sítích?
 
 Další informace o plánování zabezpečení sítě v Azure najdete v článku [Zabezpečení sítí a cloudových služeb](../best-practices-network-security.md). 
@@ -163,7 +163,8 @@ Aktuální pravidla NSG povolují pouze protokoly *TCP* nebo *UDP*. Pro *ICMP* n
 ### <a name="load-balancers"></a>Nástroje pro vyrovnávání zatížení
 * Zvažte pravidla pro vyrovnávání zatížení a překlad síťových adres (NAT) pro každý nástroj pro vyrovnávání zatížení používaný jednotlivými úlohami. Pravidla pro překlad síťových adres jsou vázána na fond back-end, který obsahuje síťové karty (Resource Manager) nebo instance rolí virtuálních počítačů či cloudových služeb (klasický model). Zvažte, jestli není vhodné vytvořit skupinu zabezpečení sítě pro každý fond back-end a povolit pouze provoz mapovaný prostřednictvím pravidel implementovaných v nástrojích pro vyrovnávání zatížení. Vytvoření skupiny zabezpečení sítě pro každý fond back-end zaručuje, že se bude filtrovat i provoz, který přichází do fondu back-end přímo (nikoli přes nástroj pro vyrovnávání zatížení).
 * V nasazení Classic vytvoříte koncové body, které mapují porty nástroje pro vyrovnávání zatížení do portů virtuálních počítačů nebo instancí rolí. Můžete taky vytvořit vlastní jednotlivý veřejně přístupný nástroj pro vyrovnávání zatížení prostřednictvím Resource Manageru. Cílový port pro příchozí provoz je skutečný port ve virtuálním počítači nebo instanci role, a nikoli port zpřístupněný nástrojem pro vyrovnávání zatížení. Zdrojovým portem a adresou pro připojení k virtuálnímu počítači jsou port a adresa ve vzdáleném počítači v internetu, a nikoli port a adresa zpřístupněné nástrojem pro vyrovnávání zatížení.
-* Když vytváříte skupiny zabezpečení sítě pro filtrování provozu procházejícího interním nástrojem pro vyrovnávání zatížení (ILB), použitý zdrojový port a rozsah adres odpovídá zdrojovému počítači, a nikoli nástroji pro vyrovnávání zatížení. Cílový port a rozsah adres odpovídá cílovému počítači, a nikoli nástroji pro vyrovnávání zatížení.
+* Když vytváříte skupiny zabezpečení sítě pro filtrování provozu procházejícího službou Azure Load Balancer, použitý zdrojový port a rozsah adres odpovídá zdrojovému počítači, a nikoli front-endu nástroje pro vyrovnávání zatížení. Cílový port a rozsah adres odpovídá cílovému počítači, a nikoli front-endu nástroje pro vyrovnávání zatížení.
+* Pokud zablokujete značku AzureLoadBalancer, sondy stavu ze služby Azure Load Balancer selžou, což může mít vliv na vaši službu.
 
 ### <a name="other"></a>Ostatní
 * Seznamy řízení přístupu (ACL) a skupiny zabezpečení sítě založené na koncových bodech nejsou podporované ve stejné instanci virtuálního počítače. Pokud chcete použít skupinu NSG a už máte seznam ACL pro koncové body, nejdřív tento seznam odeberte. Informace o tom, jak odebrat seznam řízení přístupu (ACL) koncového bodu, najdete v článku [Správa seznamů ACL pro koncové body](virtual-networks-acl-powershell.md).
@@ -229,7 +230,7 @@ Následující skupiny zabezpečení sítě jsou vytvořeny a přidruženy k sí
 | Allow-Inbound-HTTP-Internet | Povolit | 200 | Internet | * | * | 80 | TCP |
 
 > [!NOTE]
-> Zdrojový rozsah adres pro předchozí pravidla je **Internet**, a nikoli virtuální IP adresa nástroje pro vyrovnávání zatížení. Zdrojový port je *, a nikoli 500001. Pravidla pro překlad síťových adres nástroje pro vyrovnávání zatížení nejsou stejná jako pravidla zabezpečení pro skupinu zabezpečení sítě. Pravidla zabezpečení pro skupinu zabezpečení sítě se vždy vztahují na původní zdroj a konečný cíl provozu, a **nikoli** na nástroj pro vyrovnávání zatížení mezi nimi. 
+> Zdrojový rozsah adres pro předchozí pravidla je **Internet**, a nikoli virtuální IP adresa nástroje pro vyrovnávání zatížení. Zdrojový port je *, a nikoli 500001. Pravidla pro překlad síťových adres nástroje pro vyrovnávání zatížení nejsou stejná jako pravidla zabezpečení pro skupinu zabezpečení sítě. Pravidla zabezpečení pro skupinu zabezpečení sítě se vždy vztahují na původní zdroj a konečný cíl provozu, a **nikoli** na nástroj pro vyrovnávání zatížení mezi nimi. Azure Load Balancer vždy zachovává zdrojovou IP adresu a zdrojový port.
 > 
 > 
 

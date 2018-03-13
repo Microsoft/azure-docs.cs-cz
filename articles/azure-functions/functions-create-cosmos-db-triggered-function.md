@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 12/07/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: ff0c468179ef7b71151b64426bf2e6701d5032fe
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 9ee3eddda53052c47f2cecff80f971f5eadac414
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Vytvoření funkce aktivované službou Azure Cosmos DB
 
@@ -75,7 +75,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | Název databáze | Jedinečné ID databáze Azure Cosmos DB  |
     | **Rozhraní API** | SQL (DocumentDB) | Toto téma používá rozhraní API databáze dokumentů.  |
-    | **Předplatné** | předplatné Azure | předplatné Azure  |
+    | **Předplatné** | předplatné Azure | Předplatné, ve kterém se tento nový účet služby Cosmos DB vytvoří.  |
     | **Skupina prostředků** | myResourceGroup |  Použijte existující skupinu prostředků, která obsahuje vaši aplikací funkcí. |
     | **Umístění**  | WestEurope | Vyberte umístění blízko vaší aplikaci funkcí nebo jiným aplikacím, které používají uložené dokumenty.  |
 

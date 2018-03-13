@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: d966a1ce5f30531668c05e68bfe709057c6dee35
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7e4ad361df8a37d4a82c1bc50c6fb134a1ad5159
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Java SDK pro zařízení pro službu IoT Hub Device Provisioning
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -76,6 +76,9 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
 
         1. Po zobrazení textu _Do you want to input Verification Code_ (Chcete zadat ověřovací kód) zadejte **Y** a nechte program otevřený pro pozdější použití v rámci tohoto rychlého startu. Poznamenejte si hodnoty _Client Cert_ (Klientský certifikát), _Client Cert Private Key_ (Privátní klíč klientského certifikátu), _Signer Cert_ (Certifikát podpisovatele) a _Root Cert_ (Kořenový certifikát).
 
+        > [!NOTE]
+        > Výše uvedená hodnota `Root Cert` se týká pouze certifikátů vytvořených ve výstupu konzoly a není možné ji použít k podepisování dalších klientských certifikátů. Pokud potřebujete robustnější sadu testovacích certifikátů, podívejte se na [ukázku správy certifikátů webu](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
+        >
 
 ## <a name="create-a-device-enrollment-entry"></a>Vytvoření položky registrace zařízení
 
@@ -189,7 +192,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
             String rootPem = "<Your Root Certificate here>";
                 
             signerCertificates.add(intermediatePem);
-            signerCertificates.add(root);
+            signerCertificates.add(rootPem);
             ```
     
             - Pro vložení certifikátů použijte následující formát:

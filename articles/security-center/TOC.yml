@@ -114,6 +114,12 @@
       items:
         - name: Připojená řešení
           href: security-center-partner-solutions.md
+        - name: Zjištěná řešení
+          href: 'security-center-partner-integration.md#discovered-solutions'
+        - name: Připojení externích řešení
+          href: quick-security-solutions.md
+        - name: Připojení Application Gateway
+          href: security-center-connect-application-gateway.md
         - name: Připojení Microsoft ATA
           href: security-center-ata-integration.md
         - name: Připojení Azure AD Identity Protection

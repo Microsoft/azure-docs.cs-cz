@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ac57996e7dced5ef0f0a993889bfc13b1d064167
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9501f3c8fa1abb6bcbfee086c542139596ab5504
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>S použitím Azure Location Based Services můžete hledat trasy pro různé režimy dopravy.
 
@@ -209,9 +209,10 @@ Tato část ilustruje způsob použití rozhraní API Route Service služeb Azur
     ```
     Tento fragment kódu vytvoří požadavek [XMLHttpRequest](https://xhr.spec.whatwg.org/) a přidá obslužnou rutinu události pro parsování příchozí odpovědi. V případě úspěšné odpovědi vytvoří pole souřadnic pro vrácenou trasu a přidá ji do vrstvy `truckRouteLayerName` na mapě. 
     
-    Tento fragment kódu rovněž odešle dotaz na rozhraní API Route Service s cílem zjistit trasu pro zadaný počáteční a koncový bod pro příslušný klíč účtu. Jako indikace trasy pro těžké nákladní vozidlo jsou použité následující volitelné parametry: – Parametr `travelMode=truck` určuje režim dopravy *truck* (nákladní vozidlo). Další podporované režimy dopravy jsou *taxi*, *bus* (autobus), *van* (dodávka), *motorcycle* (motorka) a výchozí *car* (osobní auto).
-        – Parametry `vehicleWidth`, `vehicleHeight` a `vehicleLength` určují rozměry vozidla v metrech a přihlíží se k nim jen v případě, že je nastaven režim dopravy *truck*.
-        – Parametr `vehicleLoadType` určuje, že se jedná o nebezpečný náklad, jehož doprava je na některých silnicích zakázána. Aktuálně se k němu přihlíží jen v případě režimu *truck*.
+    Tento fragment kódu rovněž odešle dotaz na rozhraní API Route Service s cílem zjistit trasu pro zadaný počáteční a koncový bod pro příslušný klíč účtu. Jako indikace trasy pro těžké nákladní vozidlo jsou použité následující volitelné parametry:
+   - Parametr `travelMode=truck` určuje režim dopravy *truck* (nákladní vozidlo). Další podporované režimy dopravy jsou *taxi*, *bus* (autobus), *van* (dodávka), *motorcycle* (motorka) a výchozí *car* (osobní auto).
+   - Parametry `vehicleWidth`, `vehicleHeight` a `vehicleLength` určují rozměry vozidla v metrech a přihlíží se k nim jen v případě, že je nastaven režim dopravy *truck*.
+   - Parametr `vehicleLoadType` určuje, že se jedná o nebezpečný náklad, jehož doprava je na některých silnicích zakázána. Aktuálně se k němu přihlíží jen v případě režimu *truck*.
 
 2. Přidáním následujícího kódu jazyka JavaScript zjistěte trasu pro osobní auto s použitím rozhraní API Route Service:
 

@@ -1,11 +1,27 @@
-– Název: vytvoření aplikace .NET pro Service Fabric | Popis Microsoft Docs: V tomto kurzu zjistíte, jak vytvořit aplikaci s front-endové ASP.NET Core a spolehlivá služba stavová back-end a nasazení aplikací do clusteru.
-služby: documentationcenter service fabric: .net Autor: rwike77 manager: timlt editor: "
-
-ms.assetid: ms.service: service-fabric ms.devlang: dotNet ms.topic: tutorial ms.tgt_pltfrm: NA ms.workload: NA ms.date: 01/29/2018 ms.author: ryanwi ms.custom: mvc
-
 ---
-
-# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: vytvoření a nasazení aplikace pomocí služby front-endové webové rozhraní API ASP.NET Core a stavové služby back-end
+title: "Vytvoření aplikace .NET pro Service Fabric | Microsoft Docs"
+description: "V tomto kurzu se dozvíte, jak vytvořit aplikaci s front-endem v ASP.NET Core a stavovým back-endem spolehlivé služby a jak tuto aplikaci nasadit do clusteru."
+services: service-fabric
+documentationcenter: .net
+author: rwike77
+manager: timlt
+editor: 
+ms.assetid: 
+ms.service: service-fabric
+ms.devlang: dotNet
+ms.topic: tutorial
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 01/29/2018
+ms.author: ryanwi
+ms.custom: mvc
+ms.openlocfilehash: f8d9733b7dad4c6beeed9bcc950910ed6b426585
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/02/2018
+---
+# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 Tento kurz je první částí série.  Dozvíte se, jak vytvořit aplikaci Azure Service Fabric s front-endem webového rozhraní API pro ASP.NET Core a stavovou back-end službou pro ukládání dat. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v ASP.NET Core, která ukládá výsledky hlasování do stavové back-end služby v clusteru. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) dokončené aplikace a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](#walkthrough_anchor).
 
 ![Diagram aplikace](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
@@ -27,7 +43,7 @@ V této sérii kurzů se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 Než začnete s tímto kurzem:
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Nainstalovat Visual Studio 2017](https://www.visualstudio.com/) verze 15,5 nebo novější s **Azure development** a **ASP.NET a webové vývoj** úlohy.
+- [Nainstalujte sadu Visual Studio 2017](https://www.visualstudio.com/) verze 15.5 nebo novější se sadami funkcí **Vývoj pro Azure** a **Vývoj pro ASP.NET a web**.
 - [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>Vytvoření služby webového rozhraní API pro ASP.NET jako spolehlivé služby
@@ -613,7 +629,7 @@ Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
 Pokud chcete zastavit ladicí relaci, stiskněte **Shift + F5**.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V této části kurzu jste se naučili:
 
 > [!div class="checklist"]

@@ -15,19 +15,19 @@
 # Začínáme
 ## [Konfigurace Network Watcheru](network-watcher-create.md)
 ## Správa zachytávání paketů
-### [portál Azure Portal](network-watcher-packet-capture-manage-portal.md)
+### [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 ### [Azure PowerShell](network-watcher-packet-capture-manage-powershell.md)
 ### [Azure CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
 ### [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 ### [REST](network-watcher-packet-capture-manage-rest.md)
 ## Ověření IP toků z a do virtuálního počítače
-### [portál Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
+### [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
 ### [Azure PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 ### [Azure CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
 ### [Azure CLI](network-watcher-check-ip-flow-verify-cli.md)
 ### [REST](network-watcher-check-ip-flow-verify-rest.md)
 ## Analýza dalšího směrování
-### [portál Azure Portal](network-watcher-check-next-hop-portal.md)
+### [Azure Portal](network-watcher-check-next-hop-portal.md)
 ### [Azure PowerShell](network-watcher-check-next-hop-powershell.md)
 ### [Azure CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
 ### [Azure CLI](network-watcher-check-next-hop-cli.md)
@@ -38,7 +38,7 @@
 ### [Azure CLI](network-watcher-topology-cli.md)
 ### [REST](network-watcher-topology-rest.md)
 ## Řešení potíží s připojeními a VPN Gateway
-### [portál Azure Portal](network-watcher-troubleshoot-manage-portal.md)
+### [Azure Portal](network-watcher-troubleshoot-manage-portal.md)
 ### [Azure PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 ### [Azure CLI 1.0](network-watcher-troubleshoot-manage-cli-nodejs.md)
 ### [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
@@ -49,12 +49,12 @@
 ### [Azure CLI](network-watcher-security-group-view-cli.md)
 ### [REST](network-watcher-security-group-view-rest.md)
 ## Řešení potíží s připojeními
-### [portál Azure Portal](network-watcher-connectivity-portal.md)
+### [Azure Portal](network-watcher-connectivity-portal.md)
 ### [Azure PowerShell](network-watcher-connectivity-powershell.md)
 ### [Azure CLI](network-watcher-connectivity-cli.md)
 ### [REST](network-watcher-connectivity-rest.md)
 ## Konfigurace protokolů toku NSG
-### [portál Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+### [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 ### [Azure PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 ### [Azure CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
 ### [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
@@ -73,7 +73,9 @@
 ### [Vizualizace provozu sítě s využitím opensourcových nástrojů](network-watcher-using-open-source-tools.md)
 ## Analýza protokolů toku NSG
 ### [Čtení protokolů toku NSG](network-watcher-read-nsg-flow-logs.md)
-### [Použití analýzy provozu](traffic-analytics.md)
+### Analýza provozu
+#### [Použití analýzy provozu](traffic-analytics.md)
+#### [Nejčastější dotazy](traffic-analytics-faq.md)
 ### [Použití Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 ### [Použití Elastic Stack](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ### [Použití Grafana](network-watcher-nsg-grafana.md)

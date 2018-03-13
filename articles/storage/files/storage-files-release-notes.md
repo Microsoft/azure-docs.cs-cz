@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 9b6dfec6465482efcbf55d0441e44a0278f44a22
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5f57edb33770acd7a97287d5cfd650b7fe8366f4
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-file-sync-agent-release-notes"></a>Poznámky k verzi agenta Azure File Sync
 Azure File Sync (Preview) umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
@@ -30,11 +30,25 @@ Azure File Sync podporuje následující verze:
 
 | Číslo verze agenta | Datum vydání | Platnost do |
 |----------------------|--------------|------------------|
+| 2.1.0.0 | 28. 2. 2018 | Aktuální verze |
 | 2.0.11.0 | 2018-02-08 | Aktuální verze |
 | 1.1.0.0 | 26. 9. 2017 | 2018-07-30 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-2100"></a>Agent verze 2.1.0.0
+Následující poznámky k verzi platí pro agenta verze 2.1.0 vydaného 28. února 2018. Tyto poznámky doplňují níže uvedené poznámky k verzi 2.0.11.0.
+
+Mezi jedinečné změny v této měsíční aktualizaci patří:
+- Zlepšení zpracování převzetí služeb při selhání clusteru.
+- Zlepšení zpracování vrstvených souborů, které je teď spolehlivější.
+- Možnost instalace agenta na počítačích řadiče domény přidaných do doménového prostředí 2008R2.
+- Oprava nadměrného generování diagnostiky na serverech s velkým množstvím souborů.
+- Zlepšení zpracování chyb v případě selhání relace.
+- Zlepšení zpracování chyb v případě problémů s přenosem souborů.
+- Změna výchozího intervalu spouštění vrstvení cloudu po povolení na koncovém bodu serveru na jednu hodinu. 
+- Dočasné blokování přesunu prostředků Azure File Sync (služba synchronizace úložiště) do nového předplatného Azure.
 
 ## <a name="agent-version-20110"></a>Agent verze 2.0.11.0
 Následující poznámky k verzi platí pro agenta verze 2.0.11.0 vydaného 9. února 2018. 

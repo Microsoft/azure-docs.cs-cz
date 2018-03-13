@@ -1,305 +1,210 @@
 ---
-title: Aplikace Node.js API v Azure App Service | Dokumentace Microsoftu
-description: "Podívejte se, jak vytvořit rozhraní Node.js RESTful API a nasadit ho do aplikace API v Azure App Service."
+title: "Rozhraní RESTful API s CORS v Azure App Service | Microsoft Docs"
+description: "Zjistěte, jak Azure App Service pomáhá hostovat rozhraní RESTful API s podporou CORS."
 services: app-service\api
-documentationcenter: node
-author: bradygaster
-manager: erikre
+documentationcenter: dotnet
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
-ms.service: app-service-api
+ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: nodejs
+ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 06/13/2017
-ms.author: rachelap
+ms.date: 02/28/2018
+ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 81d08e047a3689d110195f2325b52c6c0457e644
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: MT
+ms.openlocfilehash: 7420e92bc929808f074e9be00dfbcb7d8476654a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>Sestavení rozhraní Node.js RESTful API a jeho nasazení do aplikace API v Azure
+# <a name="host-a-restful-api-with-cors-in-azure-app-service"></a>Hostování rozhraní RESTful API s CORS v Azure App Service
 
-V rámci tohoto rychlého startu se dozvíte, jak vytvořit rozhraní REST API napsané v Node.js [Express](http://expressjs.com/) s použitím definice [Swaggeru](http://swagger.io/) a nasadit ho do Azure. Vytvoříte aplikaci pomocí nástrojů pro příkazový řádek, nakonfigurujete prostředky pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) a pomocí Gitu aplikaci nasadíte.  Po dokončení budete mít funkční ukázkové rozhraní REST API, které běží na Azure.
+[Azure App Service ](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Kromě toho zahrnuje App Service integrovanou podporu [Sdílení prostředků různého původu (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) pro rozhraní RESTful API. V tomto kurzu se dozvíte, jak do App Service nasadit aplikaci ASP.NET Core API s podporou CORS. Aplikaci nakonfigurujete pomocí nástrojů příkazového řádku a nasadíte pomocí Gitu. 
 
-## <a name="prerequisites"></a>Požadavky
+V tomto kurzu se naučíte:
 
-* [Git](https://git-scm.com/)
-* [Node.js a NPM](https://nodejs.org/)
+> [!div class="checklist"]
+> * Vytvoření prostředků App Service pomocí Azure CLI
+> * Nasazení rozhraní RESTful API do Azure pomocí Gitu
+> * Povolení podpory CORS v App Service
+
+Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windows.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Požadavky
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pro absolvování tohoto kurzu potřebujete:
 
-## <a name="prepare-your-environment"></a>Příprava prostředí
+* [Nainstalovat Git](https://git-scm.com/).
+* [Nainstalovat .NET Core](https://www.microsoft.com/net/core/).
 
-1. V okně terminálu naklonujte spuštěním následujícího příkazu úložiště ukázku do místního počítače.
+## <a name="create-local-aspnet-core-app"></a>Vytvoření místní aplikace ASP.NET Core
 
-    ```bash
-    git clone https://github.com/Azure-Samples/app-service-api-node-contact-list
-    ```
+V tomto kroku nastavíte místní projekt ASP.NET Core. App Service podporuje stejný pracovní postup i pro rozhraní API napsaná v jiných jazycích.
 
-2. Přejděte do adresáře, který obsahuje vzorový kód.
+### <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-    ```bash
-    cd app-service-api-node-contact-list
-    ```
+V okně terminálu přejděte pomocí příkazu `cd` do pracovního adresáře.  
 
-3. Na místní počítač nainstalujte [Swaggerize](https://www.npmjs.com/package/swaggerize-express). Swaggerize je nástroj, který generuje kód Node.js pro REST API z definice Swaggeru.
-
-    ```bash
-    npm install -g yo
-    npm install -g generator-swaggerize
-    ```
-
-## <a name="generate-nodejs-code"></a>Generování kódu Node.js 
-
-V této části kurzu modelujeme pracovní postup vývoje rozhraní API, při kterém nejprve vytvoříte metadata Swagger a pak pomocí nich automaticky vygenerujete (scaffold) serverový kód pro rozhraní API. 
-
-Změňte adresář na *spouštěcí* složku a potom spusťte `yo swaggerize`. Swaggerize vytvoří projekt Node.js pro vaše rozhraní API z definice Swaggeru v *api.json*.
+Ukázkové úložiště naklonujete spuštěním následujícího příkazu. 
 
 ```bash
-cd start
-yo swaggerize --apiPath api.json --framework express
+git clone https://github.com/Azure-Samples/dotnet-core-api
 ```
 
-Pokud se Swaggerize zeptá na název projektu, použijte *ContactList*.
-   
-   ```bash
-   Swaggerize Generator
-   Tell us a bit about your application
-   ? What would you like to call this project: ContactList
-   ? Your name: Francis Totten
-   ? Your github user name: fabfrank
-   ? Your email: frank@fabrikam.net
-   ```
-   
-## <a name="customize-the-project-code"></a>Přizpůsobení kódu projektu
+Toto úložiště obsahuje aplikaci vytvořenou podle následujícího kurzu: [Generování stránek nápovědy webového rozhraní ASP.NET Core API pomocí Swaggeru](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Aplikace s využitím generátoru Swagger poskytuje [uživatelské rozhraní Swagger](https://swagger.io/swagger-ui/) a koncový bod JSON pro Swagger.
 
-1. Zkopírujte složku *lib* do složky *ContactList*, kterou vytvořil příkaz `yo swaggerize`, a potom změňte adresář na *ContactList*.
+### <a name="run-the-application"></a>Spuštění aplikace
 
-    ```bash
-    cp -r lib ContactList/
-    cd ContactList
-    ```
+Spuštěním následujících příkazů nainstalujte požadované balíčky, spusťte operace migrace databáze a spusťte aplikaci.
 
-2. Nainstalujte moduly NPM `jsonpath` a `swaggerize-ui`. 
+```bash
+cd dotnet-core-api
+dotnet restore
+dotnet run
+```
 
-    ```bash
-    npm install --save jsonpath swaggerize-ui
-    ```
+V prohlížeči přejděte na adresu `http://localhost:5000/swagger` a vyzkoušejte si uživatelské rozhraní Swagger.
 
-3. Nahraďte kód v souboru *handlers/contacts.js* následujícím kódem: 
-    ```javascript
-    'use strict';
+![Místně spuštěné rozhraní ASP.NET Core API](./media/app-service-web-tutorial-rest-api/local-run.png)
 
-    var repository = require('../lib/contactRepository');
+Přejděte na adresu `http://localhost:5000/api/todo`, kde se zobrazí seznam položek úkolů ve formátu JSON.
 
-    module.exports = {
-        get: function contacts_get(req, res) {
-            res.json(repository.all())
-        }
-    };
-    ```
-    Tento kód používá data JSON uložená v souboru *lib/contacts.json*, který poskytuje *lib/contactRepository.js*. Nový kód *contacts.js* vrátí všechny kontakty v úložišti jako datovou část JSON. 
+Přejděte na adresu `http://localhost:5000` a vyzkoušejte si aplikaci v prohlížeči. Později otestujete funkce CORS nastavením aplikace v prohlížeči tak, aby odkazovala na vzdálené rozhraní API v App Service. Kód aplikace v prohlížeči najdete v adresáři _wwwroot_ úložiště.
 
-4. Nahraďte kód v souboru **handlers/contacts/{id}.js** následujícím kódem:
+ASP.NET Core můžete kdykoli zastavit stisknutím `Ctrl+C` v terminálu.
 
-    ```javascript
-    'use strict';
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-    var repository = require('../../lib/contactRepository');
+## <a name="deploy-app-to-azure"></a>Nasazení aplikace do Azure
 
-    module.exports = {
-        get: function contacts_get(req, res) {
-            res.json(repository.get(req.params['id']));
-        }    
-    };
-    ```
+V tomto kroku nasadíte aplikaci .NET Core připojenou k databázi SQL do služby App Service.
 
-    Díky tomuto kódu si můžete pomocí proměnné cesty nechat vrátit pouze kontakt s daným ID.
+### <a name="configure-local-git-deployment"></a>Konfigurace nasazení místního gitu
 
-5. Nahraďte kód v souboru **server.js** tímto kódem:
+[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-    ```javascript
-    'use strict';
+### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-    var port = process.env.PORT || 8000; 
+[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
-    var http = require('http');
-    var express = require('express');
-    var bodyParser = require('body-parser');
-    var swaggerize = require('swaggerize-express');
-    var swaggerUi = require('swaggerize-ui'); 
-    var path = require('path');
-    var fs = require("fs");
-    
-    fs.existsSync = fs.existsSync || require('path').existsSync;
+### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
-    var app = express();
+[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
-    var server = http.createServer(app);
+### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-    app.use(bodyParser.json());
+[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 
-    app.use(swaggerize({
-        api: path.resolve('./config/swagger.json'),
-        handlers: path.resolve('./handlers'),
-        docspath: '/swagger' 
-    }));
+### <a name="push-to-azure-from-git"></a>Přenos z Gitu do Azure
 
-    // change four
-    app.use('/docs', swaggerUi({
-        docs: '/swagger'  
-    }));
+[!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-    server.listen(port, function () { 
-    });
-    ```   
+```bash
+Counting objects: 98, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (92/92), done.
+Writing objects: 100% (98/98), 524.98 KiB | 5.58 MiB/s, done.
+Total 98 (delta 8), reused 0 (delta 0)
+remote: Updating branch 'master'.
+remote: .
+remote: Updating submodules.
+remote: Preparing deployment for commit id '0c497633b8'.
+remote: Generating deployment script.
+remote: Project file path: ./DotNetCoreSqlDb.csproj
+remote: Generated deployment script files
+remote: Running deployment command...
+remote: Handling ASP.NET Core Web Application deployment.
+remote: .
+remote: .
+remote: .
+remote: Finished successfully.
+remote: Running post deployment command(s)...
+remote: Deployment successful.
+remote: App container will begin restart within 10 seconds.
+To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+ * [new branch]      master -> master
+```
 
-    Tento kód provede několik malých změn, aby bylo možné pracovat se službou Azure App Service, a publikuje interaktivní webové rozhraní pro vaše rozhraní API.
+### <a name="browse-to-the-azure-web-app"></a>Přechod do webové aplikace Azure
 
-### <a name="test-the-api-locally"></a>Místní otestování rozhraní API
+V prohlížeči přejděte na adresu `http://<app_name>.azurewebsites.net/swagger` a vyzkoušejte si uživatelské rozhraní Swagger.
 
-1. Spusťte aplikaci Node.js.
-    ```bash
-    npm start
-    ```
-    
-2. Přejděte na http://localhost:8000/contacts a zobrazte JSON pro celý seznam kontaktů.
-   
-   ```json
-    {
-        "id": 1,
-        "name": "Barney Poland",
-        "email": "barney@contoso.com"
-    },
-    {
-        "id": 2,
-        "name": "Lacy Barrera",
-        "email": "lacy@contoso.com"
-    },
-    {
-        "id": 3,
-        "name": "Lora Riggs",
-        "email": "lora@contoso.com"
-    }
-   ```
+![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/app-service-web-tutorial-rest-api/azure-run.png)
 
-3. Přejděte na http://localhost:8000/contacts/2 a zobrazte kontakt s `id` dvě.
-   
-    ```json
-    { 
-        "id": 2,
-        "name": "Lacy Barrera",
-        "email": "lacy@contoso.com"
-    }
-    ```
+Přejděte na adresu `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json`, kde se zobrazí soubor _swagger.json_ pro vaše nasazené rozhraní API.
 
-4. Otestujte rozhraní API pomocí webového rozhraní Swaggeru na http://localhost:8000/docs.
-   
-    ![Webové rozhraní Swaggeru](media/app-service-web-tutorial-rest-api/swagger-ui.png)
+Přejděte na adresu `http://<app_name>.azurewebsites.net/api/todo`, kde se zobrazí funkční nasazené rozhraní API.
 
-## <a id="createapiapp"></a> Vytvoření aplikace API
+## <a name="add-cors-functionality"></a>Přidání funkcí CORS
 
-V této části pomocí Azure CLI 2.0 vytvoříte prostředky, které budou hostovat rozhraní API ve službě Azure App Service. 
+Dále pro své rozhraní API povolíte integrovanou podporu CORS v App Service.
 
-1.  Přihlaste se k předplatnému Azure pomocí příkazu [az login](/cli/azure/?view=azure-cli-latest#az_login) a postupujte podle pokynů na obrazovce.
+### <a name="test-cors-in-sample-app"></a>Test CORS v ukázkové aplikaci
 
-    ```azurecli-interactive
-    az login
-    ```
+V místním úložišti otevřete soubor _wwwroot/index.html_.
 
-2. Pokud máte více předplatných Azure, změňte výchozí předplatné na to, které chcete použít.
+Na řádku 51 nastavte proměnnou `apiEndpoint` na adresu URL vašeho nasazeného rozhraní API (`http://<app_name>.azurewebsites.net`). Nahraďte _\<appname>_ názvem vaší aplikace v App Service.
 
-    ````azurecli-interactive
-    az account set --subscription <name or id>
-    ````
+V místním okně terminálu znovu spusťte ukázkovou aplikaci.
 
-3. [!INCLUDE [Create resource group](../../includes/app-service-api-create-resource-group.md)] 
+```bash
+dotnet run
+```
 
-4. [!INCLUDE [Create app service plan](../../includes/app-service-api-create-app-service-plan.md)]
+Přejděte do aplikace v prohlížeči na adrese `http://localhost:5000`. V prohlížeči otevřete okno vývojářských nástrojů (`Ctrl`+`Shift`+`i` v Chrome pro Windows) a prozkoumejte kartu **Console** (Konzola). Nyní by se měla zobrazit chybová zpráva `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
 
-5. [!INCLUDE [Create API app](../../includes/app-service-api-create-api-app.md)] 
+![Chyba CORS v prohlížeči](./media/app-service-web-tutorial-rest-api/cors-error.png)
 
+Kvůli neshodě domén aplikace v prohlížeči (`http://localhost:5000`) a vzdáleného prostředku (`http://<app_name>.azurewebsites.net`) a skutečnosti, že vaše rozhraní API v App Service neodesílá hlavičku `Access-Control-Allow-Origin`, zabránil váš prohlížeč aplikaci v načtení obsahu z jiné domény.
 
-## <a name="deploy-the-api-with-git"></a>Nasazení rozhraní API pomocí Gitu
+V produkčním prostředí by vaše aplikace v prohlížeči měla místo adresy URL místního hostitele veřejnou adresu URL, ale postup pro povolení CORS pro adresu URL místního hostitele je stejný jako u veřejné adresy URL.
 
-Nasaďte kód do aplikace API vynuceným doručením (push) potvrzených změn z místního úložiště Git do služby Azure App Service.
+### <a name="enable-cors"></a>Povolení CORS 
 
-1. [!INCLUDE [Configure your deployment credentials](../../includes/configure-deployment-user-no-h.md)] 
-
-2. Inicializujte nové úložiště v adresáři *ContactList*. 
-
-    ```bash
-    git init .
-    ```
-
-3. Vylučte z Gitu adresář *node_modules*, který vytvořil nástroj npm v dřívějším kroku v tomto kurzu. V aktuálním adresáři vytvořte nový soubor `.gitignore` a kdekoli v souboru přidejte nový řádek s následujícím textem.
-
-    ```
-    node_modules/
-    ```
-    Potvrďte, že `git status` ignoruje složku `node_modules`.
-    
-4. Přidejte následující řádky do `package.json`. Kód, který je generován nástroje Swaggerize není zadejte verzi pro modul Node.js. Bez specifikace verze Azure používá výchozí verze `0.10.18`, který není kompatibilní s generovaného kódu.
-
-    ```javascript
-    "engines": {
-        "node": "~0.10.22"
-    },
-    ```
-
-5. Potvrďte změny do úložiště.
-    ```bash
-    git add .
-    git commit -m "initial version"
-    ```
-
-6. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
- 
-## <a name="test-the-api--in-azure"></a>Otestování rozhraní API v Azure
-
-1. V prohlížeči otevřete http://app_name.azurewebsites.net/contacts. Uvidíte, že se vrátil stejný JSON, jako když jste poslali žádost místně dříve v tomto kurzu.
-
-   ```json
-   {
-       "id": 1,
-       "name": "Barney Poland",
-       "email": "barney@contoso.com"
-   },
-   {
-       "id": 2,
-       "name": "Lacy Barrera",
-       "email": "lacy@contoso.com"
-   },
-   {
-       "id": 3,
-       "name": "Lora Riggs",
-       "email": "lora@contoso.com"
-   }
-   ```
-
-2. V prohlížeči přejděte na koncový bod `http://app_name.azurewebsites.net/docs` a vyzkoušejte spuštění uživatelského rozhraní Swaggeru v Azure.
-
-    ![Uživatelské rozhraní Swaggeru](media/app-service-web-tutorial-rest-api/swagger-azure-ui.png)
-
-    Teď můžete nasadit aktualizace ukázkového rozhraní API do Azure jednoduše tak, že vynuceně doručíte (push) potvrzené změny do úložiště Azure Git.
-
-## <a name="clean-up"></a>Vyčištění
-
-Pokud chcete vyčistit prostředky vytvořené v rámci tohoto rychlého startu, spusťte následující příkaz rozhraní příkazového řádku Azure:
+Ve službě Cloud Shell povolte CORS pro adresu URL vašeho klienta pomocí příkazu [`az resource update`](/cli/azure/resource#az_resource_update). Nahraďte zástupný symbol _&lt;appname>_.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01
 ```
 
-## <a name="next-step"></a>Další krok 
+Ve vlastnosti `properties.cors.allowedOrigins` můžete nastavit více než jednu adresu URL klienta (`"['URL1','URL2',...]"`). Můžete také povolit všechny adresy URL klientů pomocí `"['*']"`.
+
+### <a name="test-cors-again"></a>Opětovný test CORS
+
+Aktualizujte aplikaci v prohlížeči na adrese `http://localhost:5000`. Chybová zpráva v okně **Console** (Konzola) už je pryč a zobrazí se data z nasazeného rozhraní API, se kterými můžete pracovat. Vaše vzdálené rozhraní API nyní podporuje CORS pro vaši místně spuštěnou aplikaci v prohlížeči. 
+
+![Úspěch CORS v prohlížeči](./media/app-service-web-tutorial-rest-api/cors-success.png)
+
+Blahopřejeme! Teď máte v Azure App Service spuštěné rozhraní API s podporou CORS.
+
+## <a name="app-service-cors-vs-your-cors"></a>CORS v App Service vs. vlastní CORS
+
+Místo CORS v App Service můžete použít vlastní CORS poskytující větší flexibilitu. Například můžete chtít určit různé povolené zdroje pro různé trasy a metody. Vzhledem k tomu že CORS v App Service umožňuje zadat jednu sadu povolených zdrojů pro všechny trasy a metody rozhraní API, chtěli byste použít vlastní kód CORS. Informace o tom, jak se to dělá v ASP.NET Core, najdete tématu o [povolení prostředků různého původů (CORS)](/aspnet/core/security/cors).
+
+> [!NOTE]
+> Nedoporučujeme používat společně CORS v App Service a vlastní kód CORS. Při společném použití bude mít přednost CORS v App Service a váš vlastní kód CORS nebude mít žádný vliv.
+>
+>
+
+[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
+<a name="next"></a>
+## <a name="next-steps"></a>Další kroky
+
+Naučili jste se:
+
+> [!div class="checklist"]
+> * Vytvoření prostředků App Service pomocí Azure CLI
+> * Nasazení rozhraní RESTful API do Azure pomocí Gitu
+> * Povolení podpory CORS v App Service
+
+V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na webovou aplikaci.
+
 > [!div class="nextstepaction"]
 > [Mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md)
-

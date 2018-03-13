@@ -11,24 +11,24 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: 0bef557ee1394e3c786fd2c54e821b5dea28fabf
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 12cba3d4acf0e6018cea6e76df9208bcf380d976
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-classify-iris-part-1---preparing-the-data"></a>Kurz: Klasifikace Iris, část 1 – Příprava dat
 
-Služby Azure Machine Learning (Preview) představují integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
+Služba Azure Machine Learning (verze Preview) představuje integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
 
-Tento kurz je první částí z třídílné série. V tomto kurzu vás provedeme základy služeb Azure Machine Learning (Preview). Získáte informace o těchto tématech:
+Tento kurz je **první částí z třídílné série**. V tomto kurzu se názorně seznámíte se základy služeb Azure Machine Learning (Preview) a naučíte se následující postupy:
 
 > [!div class="checklist"]
 > * Vytvoření projektu v aplikaci Azure Machine Learning Workbench
 > * Vytvoření balíčku pro přípravu dat
 > * Vygenerování kódu Pythonu/PySpark k vyvolání balíčku pro přípravu dat
 
-Tento kurz používá nadčasovou [datovou sadu Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set). Snímky obrazovky jsou specifické pro systém Windows, ale prostředí v systému macOS je téměř shodné.
+Tento kurz používá nadčasovou [datovou sadu Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,7 +38,7 @@ K dokončení tohoto kurzu potřebujete:
 - Účet Experimentování ve službě Azure Machine Learning
 - Nainstalovanou aplikaci Azure Machine Learning Workbench
 
-Pokud je ještě nemáte, postupujte podle kroků v článku [Rychlý start: Instalace a spuštění](quickstart-installation.md) a nastavte tento účet a nainstalujte aplikaci Azure Machine Learning Workbench. 
+Pokud tyto požadavky ještě nemáte, postupujte podle kroků v článku [Rychlý start: Instalace a spuštění](quickstart-installation.md) a nastavte své účty a nainstalujte aplikaci Azure Machine Learning Workbench. 
 
 ## <a name="create-a-new-project-in-workbench"></a>Vytvoření nového projektu v aplikaci Workbench
 
@@ -60,7 +60,7 @@ Pokud jste postupovali podle kroků v článku [Rychlý start: Instalace a spuš
    Název projektu | myIris |Zadejte jedinečný název, který identifikuje váš účet. Můžete použít své jméno nebo třeba název oddělení nebo projektu, který experiment nejlépe identifikuje. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). 
    Adresář projektu | c:\Temp\ | Zadejte adresář, ve kterém se projekt vytvoří.
    Popis projektu | _ponechte prázdné_ | Volitelné pole, které je užitečné pro popis projektů.
-   Visualstudio.com |_ponechte prázdné_ | Volitelné pole. Projekt je volitelně možné přidružit k úložišti Git ve Visual Studio Team Services, které umožňuje správu zdrojového kódu a spolupráci. [Tady najdete potřebné informace.](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo) 
+   Visualstudio.com |_ponechte prázdné_ | Volitelné pole. Projekt můžete přidružit k úložišti Git ve Visual Studio Team Services, které umožňuje správu zdrojového kódu a spolupráci. [Tady najdete potřebné informace](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
    Pracovní prostor | IrisGarden (pokud existuje) | Zvolte pracovní prostor, který jste vytvořili pro svůj účet Experimentování na webu Azure Portal. <br/>Pokud jste postupovali podle tohoto rychlého startu, měli byste mít pracovní prostor IrisGarden. Pokud ne, vyberte pracovní prostor, který jste vytvořili při vytváření účtu Experimentování, nebo jakýkoli jiný, který chcete použít.
    Šablona projektu | Klasifikace Iris | Šablony obsahují skripty a data, pomocí kterých můžete produkt zkoumat. Tato šablona obsahuje skripty a data, které potřebujete pro tento rychlý start a další kurzy na tomto webu dokumentace. 
 
@@ -68,35 +68,38 @@ Pokud jste postupovali podle kroků v článku [Rychlý start: Instalace a spuš
  
  Vytvoří se nový projekt a otevře se řídicí panel projektu s tímto projektem. Teď můžete prozkoumat domovskou stránku projektu, zdroje dat, poznámkové bloky a soubory zdrojového kódu. 
 
+   ![Otevřený projekt](media/tutorial-classifying-iris/project-open.png)
+ 
+
 ## <a name="create-a-data-preparation-package"></a>Vytvoření balíčku pro přípravu dat
 
-V této části kurzu prozkoumáte data a zahájíte proces přípravy dat. Při přípravě dat v aplikaci Azure Machine Learning Workbench se JSON s reprezentací provedených transformací v aplikaci Workbench uloží v místním balíčku pro přípravu dat (soubor *.dprep). Tento balíček pro přípravu dat je primárním kontejnerem pro práci na přípravě dat v aplikaci Workbench.
+Dále můžete prozkoumat data a začít s přípravou dat v aplikaci Azure Machine Learning Workbench. Každá transformace, kterou provedete v aplikaci Workbench, se uloží ve formátu JSON do místního balíčku pro přípravu dat (soubor *.dprep). Tento balíček pro přípravu dat je primárním kontejnerem pro práci na přípravě dat v aplikaci Workbench.
 
-Tento balíček pro přípravu dat je možné předat ke zpracování do modulu runtime, jako je místní C#/CoreCLR, Scala/Spark, nebo Scala/HDI. kde se vygeneruje kód ke spuštění pro odpovídající modul runtime. 
+Tento balíček pro přípravu dat je možné později předat do modulu runtime, jako je místní C#/CoreCLR, Scala/Spark, nebo Scala/HDI. 
 
 1. Výběrem ikony složky otevřete zobrazení souborů a pak výběrem otevřete soubor **iris.csv**.  
 
-   Tento soubor představuje tabulku s 5 sloupci a 150 řádky. Obsahuje čtyři sloupce s čísly a cílový sloupec řetězcového typu. Neobsahuje záhlaví sloupců.
+   Tento soubor obsahuje tabulku s 5 sloupci a 50 řádky. Čtyři sloupce obsahují čísla. Pátý sloupec je cílový sloupec řetězcového typu. Žádný sloupec neobsahuje název záhlaví.
 
    ![iris.csv](media/tutorial-classifying-iris/show_iris_csv.png)
 
    >[!NOTE]
-   > Nezahrnujte datové soubory do složky projektu, zejména pokud jsou soubory velké. Do této šablony jsme pro demonstrační účely soubor **iris.csv** zahrnuli, protože je malý. Další informace najdete v tématu [Čtení a zápis velkých datových souborů](how-to-read-write-files.md).
+   > Nezahrnujte datové soubory do složky projektu, zejména pokud jsou soubory velké. Protože je datový soubor **iris.csv** malý, zahrnuli jsme ho do této šablony pro demonstrační účely. Další informace najdete v tématu [Čtení a zápis velkých datových souborů](how-to-read-write-files.md).
 
 2. V **Zobrazení dat** vyberte symbol plus (**+**) a přidejte nový zdroj dat. Otevře se stránka **Přidat zdroj dat**. 
 
-   ![Zobrazení dat](media/tutorial-classifying-iris/data_view.png)
+   ![Zobrazení dat v aplikaci Azure Machine Learning Workbench](media/tutorial-classifying-iris/data_view.png)
 
 3. Vyberte **Textové soubory (*.csv, .json, .txt.,... )** a klikněte na **Další**.
-   ![Zdroj dat](media/tutorial-classifying-iris/data-source.png)
+   ![Zdroj dat v aplikaci Azure Machine Learning Workbench](media/tutorial-classifying-iris/data-source.png)
    
 
 4. Přejděte k souboru **iris.csv** a klikněte na **Další**.  
- 
-   ![Výběr iris](media/tutorial-classifying-iris/select_iris_csv.png)
 
    >[!IMPORTANT]
    >Zkontrolujte, že jste pro účely tohoto cvičení vybrali soubor **iris.csv** z aktuálního adresáře projektu. Jinak se pozdější kroky nemusí podařit.
+ 
+   ![Výběr iris](media/tutorial-classifying-iris/select_iris_csv.png)
    
 5. Ponechte výchozí hodnoty a klikněte na **Dokončit**.
 
@@ -106,45 +109,68 @@ Tento balíček pro přípravu dat je možné předat ke zpracování do modulu 
 
    ![Zobrazení dat iris](media/tutorial-classifying-iris/iris_data_view.png)
 
-7. Vyberte tlačítko **Metriky**. Podívejte se na histogramy. Pro každý sloupec se vypočítala úplná sada statistik. Můžete také vybrat tlačítko **Data** a znovu zobrazit data. 
+1. Vyberte tlačítko **Metriky**. Vygenerují se histogramy a zobrazí se na obrazovce.
+
+   Zpět na zobrazení dat můžete přepnout výběrem tlačítka **Data**. 
+   
+   ![Zobrazení dat iris](media/tutorial-classifying-iris/iris_data_view_metrics.png)
+
+1. Podívejte se na histogramy. Pro každý sloupec se vypočítala úplná sada statistik. 
 
    ![Zobrazení dat iris](media/tutorial-classifying-iris/iris_metrics_view.png)
 
-8. Vyberte tlačítko **Připravit**. Otevře se dialogové okno **Připravit**. 
+8. Začněte vytvářet balíček pro přípravu dat výběrem tlačítka **Připravit**. Otevře se dialogové okno **Připravit**. 
 
-   Ukázkový projekt již obsahuje soubor **iris.dprep**. Ve výchozím nastavení se zobrazí výzva k vytvoření nového toku dat v již existujícím balíčku pro přípravu dat **iris.dprep**. 
+   Ukázkový projekt ve výchozím nastavení obsahuje balíček pro přípravu dat **iris.dprep**. 
 
-   Z rozevírací nabídky vyberte **+ Nový balíček pro přípravu dat**, jako název balíčku zadejte novou hodnotu **iris-1** a pak vyberte **OK**.
+   ![Zobrazení dat iris](media/tutorial-classifying-iris/prepare.png)
 
-   ![Zobrazení dat iris](media/tutorial-classifying-iris/new_dprep.png)
+1. Vytvořte nový balíček pro přípravu dat tak, že v rozevírací nabídce vyberete **+ Nový balíček pro přípravu dat**.
+
+   ![Zobrazení dat iris](media/tutorial-classifying-iris/prepare_new.png)
+
+1. Zadejte novou hodnotu názvu balíčku (použijte **iris-1**) a pak vyberte **OK**.
 
    Vytvoří se nový balíček pro přípravu dat s názvem **iris-1.dprep** a otevře se v editoru přípravy dat.
 
-9. Teď provedeme základní přípravu dat. Výběrem záhlaví jednotlivých sloupců umožníte úpravu jejich textu. Přejmenujte jednotlivé sloupce následujícím způsobem: 
+   ![Zobrazení dat iris](media/tutorial-classifying-iris/prepare_iris-1.png)
+
+   Teď provedeme základní přípravu dat. 
+
+1. Výběrem záhlaví jednotlivých sloupců umožníte úpravu jejich textu. Pak jednotlivé sloupce přejmenujte následujícím způsobem: 
 
    V uvedeném pořadí zadejte pro jednotlivé sloupce názvy **Sepal Length**, **Sepal Width**, **Petal Length**, **Petal Width** a **Species**.
 
    ![Přejmenování sloupců](media/tutorial-classifying-iris/rename_column.png)
 
-10. Pokud chcete zjistit počet jedinečných hodnot, vyberte sloupec **Species** a kliknutím pravým tlačítkem jej vyberte. Z rozevírací nabídky vyberte **Četnost hodnot**. 
+1. Počet jedinečných hodnot:
+   1. Vyberte sloupec **Species**.
+   1. Kliknutím pravým tlačítkem ho vyberte. 
+   1. Z rozevírací nabídky vyberte **Četnost hodnot**. 
 
-   Tato akce otevře pod daty podokno **Kontroly**. Zobrazí se histogram se čtyřmi pruhy. Cílový sloupec obsahuje tři různé hodnoty **Iris_virginica**, **Iris_versicolor**, **Iris-setosa** a hodnotu **(null)**.
+   Pod daty se otevře podokno **Kontroly**. Zobrazí se histogram se čtyřmi pruhy. Cílový sloupec obsahuje tři různé hodnoty **Iris_virginica**, **Iris_versicolor**, **Iris-setosa** a hodnotu **(null)**.
 
    ![Výběr možnosti Četnost hodnot](media/tutorial-classifying-iris/value_count.png)
 
-11. Pokud chcete vyfiltrovat hodnoty null, vyberte štítek Null a pak symbol minus (**-**). Záznam s hodnotou Null pak zešedne, což značí, že je vyfiltrovaný. 
-
    ![Histogram počtu hodnot](media/tutorial-classifying-iris/filter_out.png)
 
-12. Všimněte si jednotlivých kroků uvedených v podokně **KROKY**. Při přejmenování sloupců a vyfiltrování řádků s hodnotou null se každá akce zaznamenala jako krok přípravy dat. Jednotlivé kroky můžete upravit a tím upravit nastavení, změnit pořadí kroků a odebrat jednotlivé kroky.
+1. Pokud chcete vyfiltrovat hodnoty null, vyberte pruh (null) a pak symbol minus (**-**). 
+
+   Záznam (null) pak zešedne, což značí, že je vyfiltrovaný. 
+
+   ![Vyfiltrování hodnot null](media/tutorial-classifying-iris/filter_out2.png)
+
+1. Všimněte si jednotlivých kroků přípravy dat, které jsou podrobně popsané v podokně **KROKY**. Při přejmenování sloupců a vyfiltrování řádků s hodnotou null se každá akce zaznamenala jako krok přípravy dat. Jednotlivé kroky můžete upravit a tím upravit nastavení, změnit pořadí kroků a odebrat jednotlivé kroky.
 
    ![Kroky](media/tutorial-classifying-iris/steps.png)
 
-13. Zavřete editor přípravy dat. Vyberte **Zavřít** (x) na kartě **iris-1** s ikonou grafu. Vaše práce se automaticky uloží do souboru **iris-1.dprep** zobrazeného pod nadpisem **Příprava dat**.
+1. Zavřete editor přípravy dat. Výběrem ikony x na kartě **iris-1** s ikonou grafu kartu zavřete. Vaše práce se automaticky uloží do souboru **iris-1.dprep** zobrazeného pod nadpisem **Příprava dat**.
+
+   ![Zavřít](media/tutorial-classifying-iris/close.png)
 
 ## <a name="generate-pythonpyspark-code-to-invoke-a-data-preparation-package"></a>Vygenerování kódu Pythonu/PySpark k vyvolání balíčku pro přípravu dat
 
-<!-- The output/results of a Package can be explored in Python or via a Jupyter Notebook. A Package can be executed across multiple runtimes including local Python, Spark (including in Docker), and HDInsight. A Package contains one or more Dataflows that are the steps and transforms applied to the data. A Package may use another Package as a Data Source (referred to as a Reference Data Flow). -->
+ Výstup balíčku pro přípravu dat můžete prozkoumat přímo v Pythonu nebo v poznámkovém bloku Jupyter. Balíčky je možné spouštět napříč různými moduly runtime, včetně místního Pythonu, Spark (i v Dockeru) a HDInsight. 
 
 1. Na kartě Příprava dat vyhledejte soubor **iris-1.dprep**.
 
@@ -171,7 +197,9 @@ Tento balíček pro přípravu dat je možné předat ke zpracování do modulu 
    df.head(10)
    ```
 
-   V závislosti na kontextu, ve kterém je tento kód spuštěný, může `df` představovat různé druhy datových rámců. [pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html) se používá při spuštění v modulu runtime Pythonu a [Spark DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html) se používá při spuštění v kontextu Sparku. 
+   V závislosti na kontextu, ve kterém je tento kód spuštěný, představuje `df` druh datového rámce. 
+   + Při spuštění v modulu runtime Pythonu se použije [pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html).
+   + Při spuštění v kontextu Spark se použije [Spark DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html). 
    
    Další informace o přípravě dat v aplikaci Azure Machine Learning Workbench najdete v příručce [Začínáme s přípravou dat](data-prep-getting-started.md).
 

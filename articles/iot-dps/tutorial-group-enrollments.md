@@ -1,6 +1,6 @@
 ---
-title: "Zřídit simulované zařízení X.509 a používání skupin Java a registrace ve službě Azure IoT Hub | Microsoft Docs"
-description: "Kurz pro Azure – vytvořit a zřídit simulované zařízení X.509 Java skupiny zařízení a služby sady SDK a registrace pomocí služby IoT Hub zařízení zřizování"
+title: "Zřízení simulovaného zařízení X.509 pro službu Azure IoT Hub pomocí Javy a skupin registrací | Microsoft Docs"
+description: "Kurz Azure – Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Java SDK pro zařízení pro službu a skupin registrací pro službu IoT Hub Device Provisioning"
 services: iot-dps
 keywords: 
 author: msebolt
@@ -12,15 +12,15 @@ documentationcenter:
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 14e5e7613fd5df650625cf8997d569b754ceb689
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
-ms.translationtype: MT
+ms.openlocfilehash: 2f1ae92c05e02dffa22fb2c64c6c076a0adfc176
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Vytvořit a zřídit simulované zařízení X.509 pomocí sady SDK služby a Java zařízení a registrace skupiny pro službu zřizování zařízení IoT Hub
+# <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Java SDK pro zařízení pro službu a skupinových registrací pro službu IoT Hub Device Provisioning
 
-Tyto kroky ukazují, jak k simulaci zařízení s X.509 na vývojovém počítači s operačním systémem Windows a připojit toto simulované zařízení s službu zřizování zařízení a služby IoT hub pomocí registrace skupiny pomocí ukázku kódu. 
+Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Windows simulovat zařízení X.509 a pomocí vzorového kódu propojit toto simulované zařízení se službou Device Provisioning a centrem IoT s využitím skupin registrací. 
 
 Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení služby IoT Hub Device Provisioning pomocí webu Azure Portal](./quick-setup-auto-provision.md).
 
@@ -33,15 +33,13 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
 
 1. Ujistěte se, že je na vašem počítači nainstalovaný `git` a že je přidaný do proměnných prostředí, ke kterým má příkazové okno přístup. Na stránce [klientských nástrojů Git organizace Software Freedom Conservancy](https://git-scm.com/download/) najdete nejnovější verzi nástrojů `git` k instalaci. Jejich součástí je i **Git Bash**, aplikace příkazového řádku, pomocí které můžete pracovat se svým místním úložištěm Git. 
 
-1. Použijte následující [k certifikátu přehled](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) vytvořit testovací certifikáty. Podrobnější podívejte se na vytváření certifikátů, najdete v tématu [skriptů prostředí PowerShell ke správě certifikátů certifikační Autority podepsané X.509](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-create-certificates).
+1. Pomocí následujícího [přehledu certifikátů](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) vytvořte vlastní testovací certifikáty. Podrobnější informace o vytváření certifikátů najdete v tématu [Skripty PowerShellu pro správu certifikátů X.509 podepsaných certifikační autoritou](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-create-certificates).
 
     > [!NOTE]
-    > Tento krok vyžaduje [OpenSSL](https://www.openssl.org/), který je buď možné vytvořené a nainstalovat ze zdroje nebo stáhnout a nainstalovat z [3. stran](https://wiki.openssl.org/index.php/Binaries) například [to](https://sourceforge.net/projects/openssl/). Pokud jste již vytvořili vaší _kořenové_, _zprostředkující_ a _zařízení_ certifikáty, které může přeskočit tento krok.
+    > Tento krok vyžaduje sadu nástrojů [OpenSSL](https://www.openssl.org/), kterou je možné sestavit a nainstalovat ze zdroje nebo stáhnout a nainstalovat od [třetí strany](https://wiki.openssl.org/index.php/Binaries), jako je [tato](https://sourceforge.net/projects/openssl/). Pokud jste už vytvořili _kořenový_ a _zprostředkující_ certifikát a certifikát _zařízení_, můžete tento krok přeskočit.
     >
 
-1. Vytvořte informace o skupinách registrace:
-
-    1. Spuštění prostřednictvím **kroku 1** a **kroku 2** k vytvoření vašeho _kořenové_ a _zprostředkující_ certifikáty.
+    1. Postupujte podle prvních dvou kroků a vytvořte _kořenový_ a _zprostředkující_ certifikát.
 
     1. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu zřizování.
 
@@ -49,28 +47,28 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
 
         1. V části **Přidat certifikát** zadejte následující informace:
             - Zadejte jedinečný název certifikátu.
-            - Vyberte  **_RootCA.pem_**  souboru, kterou jste právě vytvořili.
+            - Vyberte soubor **_RootCA.pem_**, který jste právě vytvořili.
             - Jakmile budete hotovi, klikněte na tlačítko **Uložit**.
 
         ![Přidání certifikátu](./media/tutorial-group-enrollments/add-certificate.png)
 
         1. Vyberte nově vytvořený certifikát:
             - Klikněte na **Vygenerovat ověřovací kód**. Zkopírujte vygenerovaný kód.
-            - Spuštění prostřednictvím **krok 3**. Zadejte _ověřovací kód_ nebo klikněte pravým tlačítkem se vložit v okně aplikace spuštěné prostředí PowerShell.  Stiskněte **Enter**.
-            - Vyberte nově vytvořenou  **_verifyCert4.pem_**  souboru na portálu Azure. Klikněte na tlačítko **ověřte**.
+            - Proveďte krok ověření. Zadejte nebo klikněte pravým tlačítkem a vložte _ověřovací kód_ do spuštěného okna PowerShellu.  Stiskněte **Enter**.
+            - Na webu Azure Portal vyberte nově vytvořený soubor **_verifyCert4.pem_**. Klikněte na **Ověřit**.
 
             ![Ověření certifikátu](./media/tutorial-group-enrollments/validate-certificate.png)
 
-1. Dokončit spuštěním **krok 4** a **krok 5** vytvářet certifikáty zařízení a vyčištění prostředků.
+    1. Nakonec proveďte kroky pro vytvoření certifikátů zařízení a vyčištění prostředků.
 
-> [!NOTE]
-> Při vytváření certifikáty zařízení Ujistěte se, zda je v zařízení používat jenom malé alfanumerické znaky a spojovníky.
->
+    > [!NOTE]
+    > Při vytváření certifikátů zařízení se ujistěte, že v názvu zařízení používáte pouze malé alfanumerické znaky a pomlčky.
+    >
 
 
 ## <a name="create-a-device-enrollment-entry"></a>Vytvoření položky registrace zařízení
 
-1. Otevřete příkazový řádek. Naklonujte úložiště GitHub pro ukázky kódu Java SDK:
+1. Otevřete příkazový řádek. Naklonujte úložiště GitHub se vzorovými kódy pro sadu Java SDK:
     
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -94,7 +92,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
             ```
 
-    1. Otevřete  **_RootCA.pem_**  soubor v textovém editoru. Přiřaďte hodnotu **kořenového certifikátu** k parametru **PUBLIC_KEY_CERTIFICATE_STRING**, jak je znázorněno níže:
+    1. V textovém editoru otevřete soubor **_RootCA.pem_**. Přiřaďte hodnotu **kořenového certifikátu** k parametru **PUBLIC_KEY_CERTIFICATE_STRING**, jak je znázorněno níže:
 
         ```java
         private static final String PUBLIC_KEY_CERTIFICATE_STRING =
@@ -145,7 +143,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
 
 1. Sledujte v okně výstupu úspěšnou registraci.
 
-    ![úspěšné registrace](./media/tutorial-group-enrollments/enrollment.png) 
+    ![Úspěšná registrace](./media/tutorial-group-enrollments/enrollment.png) 
 
 1. Přejděte k vaší službě zřizování na webu Azure Portal. Klikněte na **Správa registrací**. Všimněte si, že se na kartě **Skupiny registrací** zobrazí vaše skupina zařízení X.509 s automaticky vygenerovaným *NÁZVEM SKUPINY*. 
 
@@ -162,9 +160,9 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
     cd azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-X509-sample
     ```
 
-1. Zadejte informace o skupinách registrace následujícím způsobem:
+1. Následujícím způsobem zadejte informace o skupině registrací:
 
-    - Upravte soubor `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` tak, aby zahrnoval váš _Rozsah ID_ a _Globální koncový bod služby zřizování_, které jste si poznamenali dříve. Otevřete váš  **_{zařízení deviceName}-public.pem_**  souborů a zahrnout tuto hodnotu jako vaše _klientského certifikátu_. Otevřete váš  **_{zařízení deviceName}-all.pem_**  soubor a zkopírujte text z _---BEGIN PRIVÁTNÍ klíč,_ k _---END PRIVÁTNÍ klíč,_.  Použijte ji jako vaše _klientského certifikátu. privátní klíč_.
+    - Upravte soubor `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` tak, aby zahrnoval váš _Rozsah ID_ a _Globální koncový bod služby zřizování_, které jste si poznamenali dříve. Otevřete soubor **_{název_zařízení}-public.pem_** a vložte tuto hodnotu jako váš _Klientský certifikát_. Otevřete soubor **_{název_zařízení}-all.pem_** a zkopírujte text mezi _-----BEGIN PRIVATE KEY-----_ a _-----END PRIVATE KEY-----_.  Tento text použijte jako váš _Privátní klíč klientského certifikátu_.
 
         ```java
         private static final String idScope = "[Your ID scope here]";
@@ -215,9 +213,9 @@ Pokud chcete pokračovat v práci s touto ukázkou klienta zařízení a jejím 
 1. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. Otevřete okno **Zařízení IoT** pro vaše centrum, vyberte *ID ZAŘÍZENÍ*, které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili simulované zařízení X.509 na počítač se systémem Windows a zřídit jej do služby IoT hub pomocí Azure IoT Hub zařízení zřízení služby a registraci skupiny. Další informace o zařízení X.509, i nadále koncepty zařízení. 
+V tomto kurzu jste na svém počítači s Windows vytvořili simulované zařízení X.509 a pomocí služby Azure IoT Hub Device Provisioning a skupin registrací jste ho zřídili pro své centrum IoT. Další informace o vašem zařízení X.509 najdete v konceptech zařízení. 
 
 > [!div class="nextstepaction"]
-> [Koncepty služby zřizování zařízení IoT Hub zařízení](concepts-device.md)
+> [Koncepty zařízení pro službu Azure IoT Hub Device Provisioning](concepts-device.md)
