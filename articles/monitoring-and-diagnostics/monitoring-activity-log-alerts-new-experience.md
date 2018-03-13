@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
 ms.custom: 
-ms.openlocfilehash: 44e1a7fe17515e23fcfd32c37c1ef4837ea8140c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a7553e4155df0d4ee49b798f44ca636dc7ecdcd2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>Vytvoření protokol aktivit, které prostředí výstrah pomocí nové výstrahy (Preview)
 
@@ -111,7 +111,7 @@ Použijte následující postup:
 
         ![ criteria selected](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
 
-4. V části **definovat pravidla výstrah,** zadejte následující podrobnosti:
+4. V části **definujte pravidla výstrah podrobnosti**, zadejte následující podrobnosti:
 
     - **Název pravidla výstrahy** – název pro nové pravidlo výstrahy
     - **Popis** – popis nové pravidlo výstrahy

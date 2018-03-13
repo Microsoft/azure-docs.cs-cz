@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: d6a99917e732a3439a31cafa5608348694014054
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 303b3ae0ee7b4baeda974d2b3c62fefa0a68796f
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Vyřešte chyby pro registrace zprostředkovatele prostředků
 
@@ -40,6 +40,8 @@ Code: MissingSubscriptionRegistration
 Message: The subscription is not registered to use namespace {resource-provider-namespace}
 ```
 
+Chybová zpráva by měla dát návrhy na podporovaném umístění a verze rozhraní API. Šablony můžete změnit na jednu z Tyhle navrhované hodnoty. Většina poskytovatelé jsou registrované automaticky pomocí portálu Azure nebo rozhraní příkazového řádku, který používáte, ale ne všechny. Pokud jste nepoužili poskytovatele určitému prostředku před, musíte k registraci tohoto zprostředkovatele.
+
 ## <a name="cause"></a>Příčina
 
 Zobrazí tyto chyby pro jednu ze tří důvodů:
@@ -48,11 +50,7 @@ Zobrazí tyto chyby pro jednu ze tří důvodů:
 1. Verze rozhraní API není podporována pro typ prostředku
 1. Umístění není podporováno pro typ prostředku
 
-## <a name="solution"></a>Řešení
-
-Chybová zpráva by měla dát návrhy na podporovaném umístění a verze rozhraní API. Šablony můžete změnit na jednu z Tyhle navrhované hodnoty. Většina poskytovatelé jsou registrované automaticky pomocí portálu Azure nebo rozhraní příkazového řádku, který používáte, ale ne všechny. Pokud jste nepoužili poskytovatele určitému prostředku před, musíte k registraci tohoto zprostředkovatele. Může zjišťovat informace o poskytovatelích prostředků prostřednictvím PowerShell nebo rozhraní příkazového řádku Azure.
-
-### <a name="solution-1"></a>Řešení 1
+## <a name="solution-1---powershell"></a>Řešení 1 – prostředí PowerShell
 
 Pro prostředí PowerShell, použijte **Get-AzureRmResourceProvider** zobrazíte stav registrace.
 
@@ -78,9 +76,7 @@ Podporované verze rozhraní API pro konkrétní typ prostředku, použijte:
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
-### <a name="solution-2"></a>Řešení 2
-
-**Azure CLI**
+## <a name="solution-2---azure-cli"></a>Řešení 2 – rozhraní příkazového řádku Azure
 
 Chcete-li zjistit, zda zprostředkovatel registroval, použijte `az provider list` příkaz.
 
@@ -100,7 +96,7 @@ Pokud chcete zobrazit podporovaná umístění a verze rozhraní API pro typ pro
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
-### <a name="solution-3"></a>Řešení 3
+## <a name="solution-3---azure-portal"></a>Řešení 3 – portál Azure
 
 Můžete zobrazit stav registrace a zaregistrovat obor názvů zprostředkovatele prostředků prostřednictvím portálu.
 

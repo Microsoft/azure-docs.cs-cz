@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2017
+ms.date: 03/09/2017
 ms.author: billmath
-ms.openlocfilehash: 13f12f39fb72bd7d4e32056753a012c38034f807
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 07b0209ef94f91c00b98b8801323a58cd9d14494
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Nejčastější dotazy pro Azure Active Directory Connect
 
@@ -57,7 +57,7 @@ Ne, Azure AD Connect nepodporuje místními doménovými strukturami nebo domén
 **Otázka: je čistě IPv6 prostředí podporovaná?**  
 Ne, Azure AD Connect nepodporuje čistý prostředí IPv6.
 
-## <a name="federation"></a>Federace
+## <a name="federation"></a>metadata
 **Otázka: Co mám dělat, když se zobrazí e-mailu, zpráva se žádostí o obnovení certifikátu Moje Office 365**  
 Použijte pokyny, které je uvedené v [obnovení certifikátů](active-directory-aadconnect-o365-certs.md) téma o tom, jak obnovit certifikát.
 
@@ -78,7 +78,7 @@ Najdete v těchto článcích:
 Můžete také konfigurovat Azure AD umožňuje synchronizační modul aktualizovat userPrincipalName, jak je popsáno v [funkce služby Azure AD Connect sync](active-directory-aadconnectsyncservice-features.md).
 
 **Otázka: je to, že nepodporuje logicky shodu místní AD skupiny nebo kontaktu objekty s existující objekty Azure AD skupiny nebo kontaktu?**  
-Ne, to není aktuálně podporováno.
+Ano, to budou založeny na proxyAddress.  Logicky odpovídající není podporována pro skupiny, které nejsou povoleným e-mailem.
 
 **Otázka: je to, že nepodporuje ručně nastavit atribut ImmutableId u stávajících objektů Azure AD skupiny nebo kontaktu pevného odpovídat jej do místní AD skupiny nebo kontaktu objekty?**  
 Ne, to není aktuálně podporováno.

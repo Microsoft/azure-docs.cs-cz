@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 2db9e60fe2807b1aa8ed7cab7eed6f7db8059a89
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 825bf3f6a3ea07cb229f00c81ad699d792ac53f9
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro zřizování automatické uživatelů
 
@@ -768,12 +768,27 @@ Chcete-li to provést, musíte použít [Workday Studio](https://community.workd
 
 * Předchozí problém s protokoly auditu nejsou uvedena v klienty Azure AD, které jsou umístěné v Evropské unie byl vyřešen. Konfigurace dalších agenta je však nutná pro klienty Azure AD v EU. Podrobnosti najdete v tématu [část 3: Konfigurace agenta synchronizace na místě](#Part 3: Configure the on-premises synchronization agent)
 
+## <a name="gdpr-compliance"></a>GDPR dodržování předpisů
 
-## <a name="additional-resources"></a>Další zdroje informací:
-* [Kurz: Konfigurace jednotného přihlašování mezi Workday a Azure Active Directory](active-directory-saas-workday-tutorial.md)
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+[Obecné Data Protection nařízení (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) je data protection a o ochraně osobních údajů zákon Evropské unie (EU). GDPR systému vynucuje pravidla pro společnosti, organizace státní správy, bez zisku a jinými organizacemi, které nabízejí zboží a služeb na osoby ve EU, nebo že shromažďovat a analyzovat data svázané s obyvatele Evropské unie. 
+
+Zřizování služby Azure AD je GDPR kompatibilní spolu s ostatními služby společnosti Microsoft a funkce. Další informace o scénáře GDPR společnosti Microsoft, najdete v článku [podmínky služby](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
+
+Ale protože Workday zřizování řešení pro službu Active Directory vyžaduje, aby byl nainstalován na serveru připojeném k doméně agent synchronizace, nejsou některé události, které je potřeba monitorovat také zůstane GDPR kompatibilní.
+ 
+Agent vytvoří protokoly v **protokolu událostí systému Windows**, která může obsahovat identifikovatelné osobní údaje.
+
+Abyste mohli zůstat GDPR kompatibilní s dvěma způsoby:
+
+1. Na žádost extrahovat data pro osoby a odstranění dat z této osoby z protokolů událostí systému Windows. 
+2. Zachovat uchování protokolů událostí systému Windows jako zdroj proces AADSyncAgent v části 48 hodin
+
+Informace o tom, jak nakonfigurovat uchovávání dat pro protokol událostí systému Windows najdete v tématu [nastavení protokolu událostí](https://technet.microsoft.com/en-us/library/cc952132.aspx). Obecné informace o protokolu událostí systému Windows najdete v tématu [v tomto článku](https://msdn.microsoft.com/en-us/library/windows/desktop/aa385772.aspx).
+
 
 ## <a name="next-steps"></a>Další postup
 
 * [Zjistěte, jak získat sestavy o zřizování aktivity a zkontrolujte protokoly](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
+* [Naučte se konfigurovat jednotné přihlašování mezi Workday a Azure Active Directory](active-directory-saas-workday-tutorial.md)
+* [Zjistěte, jak integrovat dalších aplikací SaaS Azure Active Directory](active-directory-saas-tutorial-list.md)
+

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/28/2017
+ms.date: 03/08/2018
 ms.author: ganesr
-ms.openlocfilehash: 8df8a4c6ff0897c821e13248e0494b17e1a4992d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 2f0fed77a676bc46e8daa9c41efd533dffe72d8b
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Připojit virtuální sítě k okruhu ExpressRoute pomocí prostředí PowerShell (klasické)
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video – portál Azure](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -48,6 +48,8 @@ Tento článek vám pomůže propojení virtuální sítě (virtuální sítě) 
    * Musí mít virtuální sítě a brány virtuální sítě vytvoří a plně zřízený. Postupujte podle pokynů a [konfigurace virtuální sítě pro ExpressRoute](expressroute-howto-vnet-portal-classic.md).
 
 Můžete se propojit až 10 virtuální sítě k okruhu ExpressRoute. Všechny virtuální sítě musí být ve stejné geopolitické oblasti. Můžete propojit větší počet virtuální sítě k okruhu ExpressRoute nebo propojení virtuálních sítí, které jsou v dalších geopolitických oblastí, pokud jste povolili doplněk ExpressRoute premium. Zkontrolujte [– nejčastější dotazy](expressroute-faqs.md) další podrobnosti o doplněk premium.
+
+Jeden virtuální sítě může být propojený až čtyři okruhy ExpressRoute. Chcete-li vytvořit nové propojení na každý okruh ExpressRoute, ke kterému se připojujete pomocí procesu níže. Okruhy ExpressRoute může být v rámci stejného předplatného, různých předplatných nebo kombinaci obou.
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Připojit k okruhu virtuální sítě v rámci stejného předplatného
 Pomocí následující rutiny můžete propojit virtuální sítě k okruhu ExpressRoute. Ujistěte se, že bránu virtuální sítě se vytvoří a je připravený pro propojování předtím, než spustíte rutinu.
@@ -163,6 +165,6 @@ Spusťte tento příkaz v nově propojené předplatné virtuální sítě:
 
     New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 

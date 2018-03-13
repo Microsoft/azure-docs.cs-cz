@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: e9fce2530bc4e654304b946cea1715ac8e2ce6fa
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7eaf4c3c9b390e87dd8494cd6bfb2ea155451608
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Použít službu Microsoft Azure Import/Export k přenosu dat do úložiště Azure.
 V tomto článku jsme poskytují podrobné pokyny k používání služby Azure Import/Export bezpečně přenést velké objemy dat do úložiště objektů Blob v Azure a Azure Files jednotkami přenosů disku pro datové centrum Azure. Tato služba slouží také k přenosu dat ze služby Azure storage na jednotky pevného disku a dodávat místní servery. Buď do úložiště objektů Blob v Azure nebo Azure Files můžete importovat data z jednoho disku interní disků SATA. 
@@ -86,10 +86,10 @@ Tuto službu můžete použít ve scénářích, jako:
 * Zálohování: Trvat záloh vaše místní data ukládat do úložiště Azure.
 * Obnovení dat: obnovení velké množství dat uložených v úložišti a nastavit doručení vaše místní umístění.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V této části jsme seznam požadovaných součástí pro tuto službu využívat. Přečtěte si je pečlivě před přesouvání jednotky.
 
-### <a name="storage-account"></a>Účet Storage
+### <a name="storage-account"></a>Účet úložiště
 Musí mít stávající předplatné Azure a jeden nebo více účtů úložiště používat službu Import/Export. Azure Import/Export podporuje pouze classic, účty úložiště objektů Blob a účty úložiště v1 obecné účely. Každá úloha může použít k přenosu dat do nebo z jenom jeden účet úložiště. Jinými slovy úlohu jeden importu a exportu nelze rozmístěny napříč více účtů úložiště. Informace o vytvoření nového účtu úložiště najdete v tématu [postup vytvoření účtu úložiště](storage-create-storage-account.md#create-a-storage-account).
 
 > [!IMPORTANT] 
@@ -158,38 +158,38 @@ Služba Azure Import/Export podporuje kopírování dat do a ze všech účtů �
 
 Podporované přenosů umístění:
 
-* USA – východ
-* USA – západ
-* USA – východ 2
-* Západ USA 2
-* Centrální Spojené státy
-* Střed USA (sever)
-* Střed USA (jih)
-* Středozápad USA
-* Evropa – sever
-* Evropa – západ
+* Východ USA
+* Západní USA
+* Východní USA 2
+* Západní USA 2
+* Střed USA
+* Střed USA – sever
+* Střed USA – jih
+* Západní střed USA
+* Severní Evropa
+* Západní Evropa
 * Východní Asie
 * Jihovýchodní Asie
-* Východní Austrálie
-* Jihovýchodní Austrálie
-* Západní Japonsko
-* Východní Japonsko
-* Indie – střed
-* Jižní Indie
+* Austrálie – východ
+* Austrálie – jihovýchod
+* Japonsko – západ
+* Japonsko – východ
+* Střed Indie
+* Indie – jih
 * Indie – západ
-* Kanada – střed
-* Kanada – východ
-* Jižní Brazílie
+* Střední Kanada
+* Východní Kanada
+* Brazílie – jih
 * Korea – střed
 * USA (Gov) – Virginia
 * USA (Gov) – Iowa
 * US DoD – východ
 * US DoD – střed
-* Východní Čína
-* Severní Čína
+* Čína – východ
+* Čína – sever
 * Spojené království – jih
 * Německo – střed
-* Severovýchodní Německo
+* Německo – severovýchod
 
 ### <a name="shipping"></a>Expedice
 **Přesouvání jednotky k datovému centru:**
@@ -261,13 +261,13 @@ Najdete v jednom z následujících stavů úlohy v závislosti na tom, kde je v
 
 | Stav úlohy | Popis |
 |:--- |:--- |
-| Vytvoření | Po vytvoření úlohy, je její stav nastavit na vytváření. Když úloha je ve stavu vytvoření, službu Import/Export předpokládá, že jednotky nebyly byla odeslaná do datového centra. Úlohy mohou zůstat ve stavu vytvoření až dvou týdnů, po které se automaticky odstraní službou. |
+| Vytváření | Po vytvoření úlohy, je její stav nastavit na vytváření. Když úloha je ve stavu vytvoření, službu Import/Export předpokládá, že jednotky nebyly byla odeslaná do datového centra. Úlohy mohou zůstat ve stavu vytvoření až dvou týdnů, po které se automaticky odstraní službou. |
 | Expedice | Po dodáte vašeho balíčku, by měl aktualizovat informace o sledování na portálu Azure.  Tato úloha zapnout do "Přesouvání". Úloha zůstane ve stavu přesouvání dobu až dvou týdnů. 
 | Přijato | Po přijetí všech jednotkách v datovém centru, nastaví se na přijaté stav úlohy. |
 | Probíhá přesun | Alespoň jedna jednotka zahájení zpracování, bude stav úlohy na přenos nastavovat. Najdete v části stavy jednotky pod podrobné informace. |
 | Balení | Po dokončení zpracování všech jednotkách, úlohy budou umístěny ve stavu balení dokud jednotky jsou sice vám. |
-| Dokončeno | Po všechny jednotky byly dodány zpět na zákazníka, pokud úloha byla dokončena bez chyb, bude úloha nastavit stav dokončeno. Úloha se automaticky odstraní po 90 dnech ve stavu dokončeno. |
-| Zavřeno | Po všechny jednotky byly dodány zpět na zákazníka, pokud zde nejsou žádné chyby během zpracování úlohy, bude úloha nastavit na zavřeném stavu. Úlohy budou automaticky odstraněny po 90 dnech v uzavřeném stavu. |
+| Dokončené | Po všechny jednotky byly dodány zpět na zákazníka, pokud úloha byla dokončena bez chyb, bude úloha nastavit stav dokončeno. Úloha se automaticky odstraní po 90 dnech ve stavu dokončeno. |
+| Uzavřeno | Po všechny jednotky byly dodány zpět na zákazníka, pokud zde nejsou žádné chyby během zpracování úlohy, bude úloha nastavit na zavřeném stavu. Úlohy budou automaticky odstraněny po 90 dnech v uzavřeném stavu. |
 
 Následující tabulka popisuje životní cyklus jednotlivé jednotky jako přechází prostřednictvím úlohu import nebo export. Aktuální stav každé jednotky, v rámci úlohy je nyní viditelné z portálu Azure.
 Následující tabulka popisuje všechny stavy, které může předávat každé jednotky, v rámci úlohy.
@@ -278,7 +278,7 @@ Následující tabulka popisuje všechny stavy, které může předávat každé
 | Přijato | Jednotka přechody stavu přijaté při importu a exportu služby operátor má zpracování jednotek, které byly přijaty z společnosti přesouvání úlohy importu. Stav počáteční jednotky pro úlohy exportu, je stav přijaté. |
 | NeverReceived | Jednotka se přesune do stavu NeverReceived při přijetí balíčku pro úlohu, ale balíček neobsahuje jednotku. Jednotku také můžete přesunout do tohoto stavu, pokud to bylo dva týdny, protože služba přijala přesouvání informace, ale balíček nebyl ještě přijaty v datovém centru. |
 | Probíhá přesun | Na jednotku se přesune do stavu přenos zahájení službu k přenosu dat z jednotky do služby Windows Azure Storage. |
-| Dokončeno | Jednotku přesune do stav dokončeno, když služba má úspěšně přenesla všechna data bez chyb.
+| Dokončené | Jednotku přesune do stav dokončeno, když služba má úspěšně přenesla všechna data bez chyb.
 | CompletedMoreInfo | Jednotku přesune do stavu CompletedMoreInfo, když služba zjistila některé problémy při kopírování dat z nebo na jednotku. Informace může obsahovat chyby, upozornění a informativní zprávy o přepsání objektů BLOB.
 | ShippedBack | Jednotka přesune do stavu ShippedBack má byla zakoupení z center zálohování dat na návratovou adresu. |
 
@@ -291,12 +291,12 @@ Následující tabulka popisuje stavy selhání jednotky a akcí provedených pr
 | Stav disku | Událost | Řešení / další krok |
 |:--- |:--- |:--- |
 | NeverReceived | Jednotka, která je označena jako NeverReceived (protože nebyla přijata jako součást úlohy dodávky) dorazí v jiné dodávky. | Provozní tým přesune do stavu přijaté jednotku. |
-| Nevztahuje se. | Jednotku, která není součástí všechny úlohy dorazí v datovém centru jako součást jiná úloha. | Jednotka budou označeny jako další jednotky a obnoví se zákazník při dokončení úlohy spojené s původní balíčku. |
+| neuvedeno | Jednotku, která není součástí všechny úlohy dorazí v datovém centru jako součást jiná úloha. | Jednotka budou označeny jako další jednotky a obnoví se zákazník při dokončení úlohy spojené s původní balíčku. |
 
 ### <a name="time-to-process-job"></a>Čas do procesu úlohy
-Množství času úlohu importu a exportu se liší v závislosti na různých faktorech, například přesouvání čas zpracování úlohy typu, typ a velikost dat kopírovány a velikosti disků zadat. Službu Import/Export nemá SLA, ale po disky jsou přijaty službu snaží dokončení kopírování v 7 až 10 dní. Přesněji sledovat průběh úlohy můžete použít rozhraní REST API. V seznamu úloh operaci, která poskytuje údaje o průběhu kopie není parametr procenta dokončení. Pokud potřebujete odhad k dokončení úlohy importu a exportu kritické čas oslovení do us
+Dobu potřebnou ke zpracování úlohu importu a exportu se liší v závislosti na počtu faktorů, jako jsou například dobu dodání, zatížení v datovém centru, typ úlohy a velikosti dat kopírovány a počet disků v rámci úlohy. Import a Export služba nemá SLA ale službu snaží dokončení kopírování v 7 až 10 dnů po disky jsou přijaty. Kromě stavu odeslány na portálu Azure rozhraní REST API umožňuje sledovat průběh úlohy. Parametr procenta dokončení v seznamu úloh operaci volání rozhraní API poskytuje průběh kopírování procento.
 
-### <a name="pricing"></a>Cena
+### <a name="pricing"></a>Ceny
 **Jednotka poplatek za zpracování**
 
 Je poplatek za zpracování jednotky pro každou jednotku zpracovat jako součást import nebo export úlohy. Zobrazit podrobnosti na [Azure Import/Export ceny](https://azure.microsoft.com/pricing/details/storage-import-export/).

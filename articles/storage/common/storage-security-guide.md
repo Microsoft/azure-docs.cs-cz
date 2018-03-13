@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: e365c1c8abb3799805e715945e8b74292995c5ec
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d1a81a9029f2e9b8a36ecebdcc4be44984e82515
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-storage-security-guide"></a>Průvodce zabezpečením služby Azure Storage
 
@@ -214,7 +214,7 @@ Například s naše uvedenou adresu URL, pokud adresa URL byla odkazující na s
 * SAS úrovni služby slouží k přístupu konkrétním prostředkům v účtu úložiště. Příkladem takových načítají seznam objektů BLOB v kontejneru, stahování objekt blob, aktualizuje entitu v tabulce, přidání zprávy do fronty nebo nahrání souboru do sdílené složky.
 * Úrovni účtu SAS slouží pro všechno, co SAS úrovně služby lze použít pro přístup. Kromě toho se může poskytnout možnosti na prostředky, které se nedá vymezit přes SAS úrovně služeb, jako je například schopnost vytvářet kontejnery, tabulky, fronty a sdílené složky. Přístup k více službám můžete také zadat současně. Například někdo může poskytnout přístup k objektům BLOB a soubory ve vašem účtu úložiště.
 
-#### <a name="creating-an-sas-uri"></a>Vytváření identifikátor URI SAS
+#### <a name="creating-a-sas-uri"></a>Vytváření identifikátor URI SAS
 1. Identifikátor URI můžete vytvořit na vyžádání, definovat všechny parametry dotazu pokaždé, když.
 
    Tento přístup je flexibilní, ale pokud máte logickou sadu parametrů, které jsou podobné pokaždé, když, pomocí zásad přístupu uložené je lepší představu.
@@ -376,7 +376,7 @@ Pomocí šifrování na straně klienta můžete šifrovat entity tabulky, front
 
 #### <a name="storage-service-encryption-sse"></a>Šifrování služby úložiště (SSE)
 
-SSE spravuje Azure Storage. SSE neposkytuje pro zabezpečení přenášených dat, ale šifrování dat, jako je zapsán do úložiště Azure. Neexistuje žádný vliv na výkon z SSE.
+SSE spravuje Azure Storage. SSE neposkytuje pro zabezpečení přenášených dat, ale šifrování dat, jako je zapsán do úložiště Azure. SSE nemá vliv na výkon úložiště Azure.
 
 Můžete šifrovat jakýkoli druh data účtu úložiště pomocí SSE (bloku, doplňovací objekty BLOB, objekty BLOB stránky, data tabulky, fronty data a soubory).
 

@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/25/2017
+ms.date: 03/08/2018
 ms.author: anzaman,cherylmc
-ms.openlocfilehash: fa55cbad9fca799faff4e4cef87f9eedb8d2023f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5e8d1739aa3d7f5be6c6450edcad43bc83db71fb
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Připojit virtuální sítě k okruhu ExpressRoute pomocí rozhraní příkazového řádku
 
 Tento článek pomáhá propojení virtuálních sítí (virtuální sítě) pro okruhy Azure ExpressRoute pomocí rozhraní příkazového řádku. Odkaz, pomocí rozhraní příkazového řádku Azure, musí být virtuální sítě vytvořené pomocí modelu nasazení Resource Manager. Může být buď ve stejném předplatném nebo součástí jiné předplatné. Pokud chcete použít jinou metodu pro připojení virtuální sítě k okruhu ExpressRoute, můžete vybrat článek z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video – portál Azure](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -36,7 +36,9 @@ Tento článek pomáhá propojení virtuálních sítí (virtuální sítě) pro
 ## <a name="configuration-prerequisites"></a>Předpoklady konfigurace
 
 * Je třeba nejnovější verzi rozhraní příkazového řádku (CLI). Další informace najdete v tématu [nainstalovat Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
 * Je potřeba posoudit [požadavky](expressroute-prerequisites.md), [požadavky na směrování](expressroute-routing.md), a [pracovních](expressroute-workflows.md) před zahájením konfigurace.
+
 * Musí mít aktivní okruh ExpressRoute. 
   * Postupujte podle pokynů a [vytvoření okruhu ExpressRoute](howto-circuit-cli.md) a mějte ho povolený vaším poskytovatelem připojení. 
   * Ujistěte se, abyste měli soukromého partnerského vztahu Azure nakonfigurovaný pro váš okruh. Najdete v článku [konfigurace směrování](howto-routing-cli.md) směrování pokyny najdete v článku. 
@@ -44,6 +46,8 @@ Tento článek pomáhá propojení virtuálních sítí (virtuální sítě) pro
   * Ujistěte se, že máte virtuální sítě a brány virtuální sítě vytvoří a plně zřízený. Postupujte podle pokynů a [nakonfigurovat bránu virtuální sítě pro ExpressRoute](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli). Nezapomeňte použít `--gateway-type ExpressRoute`.
 
 * Až 10 virtuálních sítí můžete propojit standardní okruh ExpressRoute. Všechny virtuální sítě musí být ve stejné geopolitické oblasti, při použití standardní okruh ExpressRoute. 
+
+* Jeden virtuální sítě může být propojený až čtyři okruhy ExpressRoute. Můžete vytvořit nový objekt připojení pro každý okruh ExpressRoute, ke kterému se připojujete pomocí procesu níže. Okruhy ExpressRoute může být v rámci stejného předplatného, různých předplatných nebo kombinaci obou.
 
 * Pokud povolíte doplněk ExpressRoute premium, můžete propojit virtuální sítě mimo geopolitické oblasti okruhu ExpressRoute nebo připojení je větší počet virtuální sítě k okruhu ExpressRoute. Další informace o doplňku premium najdete v tématu [– nejčastější dotazy](expressroute-faqs.md).
 
@@ -142,6 +146,6 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 
 Povolení můžete vydat odstraněním připojení, který odkazuje okruhu ExpressRoute do virtuální sítě.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: b7210c944e2f99aacdc2f554409552007286c5da
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 0589f2efeaaafc35bcb9d869c391a0533fe6e502
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co je Cloudová služba modelu a jak ho balíček?
 Cloudová služba je vytvořená z tří součástí definice služby *(.csdef)*, konfigurace služby *(.cscfg)*a balíček služby *(.cspkg)*. Obě **ServiceDefinition.csdef** a **ServiceConfig.cscfg** soubory formátu XML a popisují strukturu cloudové služby a jak jsou nakonfigurované; se nazývají modelu. **ServicePackage.cspkg** je soubor zip, který se generují z **ServiceDefinition.csdef** a mimo jiné obsahuje všechny požadované závislosti na základě binární. Azure vytvoří cloudové služby i **ServicePackage.cspkg** a **ServiceConfig.cscfg**.
@@ -91,7 +91,7 @@ Jakmile Cloudová služba běží v Azure, můžete ji prostřednictvím překon
 
 Můžete se podívat do [služby definice schématu](https://msdn.microsoft.com/library/azure/ee758711.aspx) lépe porozumět schématu XML použít se zde, ale tady je rychlý vysvětlení některých prvků:
 
-**Weby**  
+**weby**  
 Obsahuje definice pro weby nebo webové aplikace, které jsou hostované ve službě IIS7.
 
 **InputEndpoints**  
@@ -117,7 +117,7 @@ Obsahuje úlohy, které se spustí při spuštění role. Úkoly jsou definován
 
 <a name="cscfg"></a>
 
-## <a name="serviceconfigurationcscfg"></a>Souboru ServiceConfiguration.cscfg
+## <a name="serviceconfigurationcscfg"></a>ServiceConfiguration.cscfg
 Konfigurace nastavení pro cloudové služby je určen podle hodnot v **souboru ServiceConfiguration.cscfg** souboru. Můžete zadat počet instancí, které chcete nasadit pro každou roli v tomto souboru. Hodnoty pro nastavení konfigurace, která jste zadali v souboru definice služby se přidají do konfiguračního souboru služby. Kryptografické otisky pro všechny certifikáty pro správu, které jsou spojeny s cloudovou službou jsou rovněž přidány do souboru. [Schéma konfigurace služby Azure (.cscfg souboru)](https://msdn.microsoft.com/library/azure/ee758710.aspx) poskytuje povolený formát pro konfigurační soubor služby.
 
 Konfigurační soubor služby není spojených s aplikací, ale nahraje do Azure jako samostatný soubor a slouží ke konfiguraci cloudové služby. Můžete nahrát nový soubor konfigurace služby bez opětovného nasazení cloudové služby. Hodnoty konfigurace pro cloudové služby lze změnit, když běží v cloudové službě. Následující příklad ukazuje nastavení konfigurace, které lze definovat pro webové a pracovní role:
@@ -269,14 +269,14 @@ Kde proměnné jsou definovány takto:
 | --- | --- |
 | \[DirectoryName\] |Podadresáři v kořenovém adresáři projektu, který obsahuje soubor .csdef Azure projektu. |
 | \[ServiceDefinition\] |Název souboru definice služby. Ve výchozím nastavení je tento soubor s názvem ServiceDefinition.csdef. |
-| \[Název_výstupního_souboru\] |Název souboru vygenerovaný balíček. Obvykle je nastavena na název aplikace. Pokud není zadán žádný název souboru, balíček aplikace je vytvořen jako \[ApplicationName\].cspkg. |
+| \[OutputFileName\] |Název souboru vygenerovaný balíček. Obvykle je nastavena na název aplikace. Pokud není zadán žádný název souboru, balíček aplikace je vytvořen jako \[ApplicationName\].cspkg. |
 | \[RoleName\] |Název role, jak jsou definovány v souboru definice služby. |
 | \[RoleBinariesDirectory] |Umístění binární soubory pro roli. |
 | \[VirtualPath\] |Fyzické adresáře pro každý virtuální cestu definovaný v oddílu lokality definice služby. |
 | \[PhysicalPath\] |Fyzické adresáře obsah pro každý virtuální cestu definovanou v uzlu lokality definice služby. |
 | \[RoleAssemblyName\] |Název binární soubor pro roli. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Vytváření balíčku cloudové služby a chcete...
 
 * [Instalační program vzdálené plochy pro instanci cloudové služby][remotedesktop]
@@ -291,7 +291,7 @@ Používám Visual Studio a chcete...
 
 [deploy]: cloud-services-how-to-create-deploy-portal.md
 [remotedesktop]: cloud-services-role-enable-remote-desktop-new-portal.md
-[vs_remote]: ../vs-azure-tools-remote-desktop-roles.md
+[vs_remote]: cloud-services-role-enable-remote-desktop-visual-studio.md
 [vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md

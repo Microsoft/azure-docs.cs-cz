@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.date: 03/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: c17b4ff35a69cd27c397d7f012d4093176c66fed
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: d0f7fdc7943fb2c92a87a7be510ff1d90145eeb5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Paměťově optimalizované velikosti virtuálních počítačů
 
@@ -35,5 +35,5 @@ ms.lasthandoff: 11/17/2017
 - [Optimalizované z hlediska GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o [Azure výpočetní jednotky (ACU)](acu.md) můžete porovnat výpočetní výkon v Azure SKU.

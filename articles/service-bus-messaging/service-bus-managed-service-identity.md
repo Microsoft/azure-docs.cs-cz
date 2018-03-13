@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 6965e80cf10b732d4d0a8fb78447f188c133979d
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 7b9901ee3478cb193c808b65d2dbbcf8b596a3c1
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="managed-service-identity-preview"></a>Identita spravované služby (preview)
 
@@ -62,21 +62,21 @@ Identita spravované služby webové aplikace teď má přístup k oboru názvů
 
 ### <a name="run-the-app"></a>Spuštění aplikace
 
-Nyní upravte výchozí stránku aplikace ASP.NET, kterou jste vytvořili. Můžete taky kódu webové aplikace z [toto úložiště GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity). 
+Nyní upravte výchozí stránku aplikace ASP.NET, kterou jste vytvořili. Můžete taky kódu webové aplikace z [toto úložiště GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity).
 
 Stránka Default.aspx je cílová stránka. Kód naleznete v souboru Default.aspx.cs. Výsledkem je minimální webové aplikace s několika vstupní pole a se **odeslat** a **přijímat** tlačítka, která připojení k Service Bus odesílat nebo přijímat zprávy.
 
-Poznámka: Jak [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objekt je inicializován. Místo použití zprostředkovatele tokenu sdíleného přístupového tokenu (SAS), kód vytvoří zprostředkovatele tokenu pro identitu spravované služby pomocí `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` volání. Jako takový neexistují žádné tajné klíče uchovat a použít. Tok kontext identity spravované služby Service Bus a autorizace metody handshake se automaticky požádat o token poskytovatele, který je model jednodušší než pomocí SAS.
+Poznámka: Jak [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objekt je inicializován. Místo použití zprostředkovatele tokenu sdíleného přístupového tokenu (SAS), kód vytvoří zprostředkovatele tokenu pro identitu spravované služby pomocí `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.ServiceBusAudience)` volání. Jako takový neexistují žádné tajné klíče uchovat a použít. Tok kontext identity spravované služby Service Bus a autorizace metody handshake se automaticky požádat o token poskytovatele, který je model jednodušší než pomocí SAS.
 
 Po provedení těchto změn, publikování a spuštění aplikace. Snadný způsob, jak získat správné publikování dat je ke stažení a pak import profilu publikování v sadě Visual Studio:
 
 ![](./media/service-bus-managed-service-identity/msi3.png)
  
-Pokud chcete odesílat nebo přijímat zprávy, zadejte název oboru názvů a název entity, která jste vytvořili a pak klikněte buď na **odeslat** nebo **přijímat**. 
+Pokud chcete odesílat nebo přijímat zprávy, zadejte název oboru názvů a název entity, která jste vytvořili a pak klikněte buď na **odeslat** nebo **přijímat**.
  
 Všimněte si, že identita spravované služby je funkční pouze v prostředí Azure a pouze v nasazení služby App Service, do které jste nakonfigurovali. Všimněte si také, že identita spravované služby nebudou fungovat s slotů nasazení služby App Service v tuto chvíli.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud se o přenosu zpráv přes Service Bus chcete dozvědět víc, pročtěte si následující témata.
 

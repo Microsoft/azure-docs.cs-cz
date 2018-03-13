@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 17732ae616339020f11bc8973dc57b6d0fff4884
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 3b7f2f104046313e7d60cea4ef296f265d204aec
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Pomocí systému pro správu identit napříč doménami pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím
 
@@ -685,7 +685,7 @@ Následující obrázek znázorňuje zprávy, že Azure Active Directory odešle
 ## <a name="group-provisioning-and-de-provisioning"></a>Zřizování skupiny a jeho rušení
 Následující obrázek znázorňuje zprávy, že Azure AcD odešle SCIM službě pro správu životního cyklu skupiny v jiné úložiště identit.  Tyto zprávy se liší od zprávy týkající se uživatelů třemi způsoby: 
 
-* Schéma skupiny prostředků je označený jako http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  
+* Schéma skupiny prostředků je označený jako `http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group`.  
 * Požadavky k načtení skupin stanovení, že je atribut členů mají být vyloučeny z jakéhokoliv prostředku v odpovědi na požadavek.  
 * Požadavky na určit, zda atribut typu odkaz má určitou hodnotu jsou žádosti o atribut členy.  
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: 60f6c45b7dacd26e0dea7b8b69c52534dcb5fec9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b6b6bfee5b9e9036a6d7ff17ff1a8d4de542bbd3
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Vytvoření, zobrazení a Správa výstrah pomocí Azure monitorování – výstrahy (Preview)
 
@@ -65,7 +65,7 @@ Další podrobné je podrobný návod k používání výstrah Azure (Preview).
 
     > Jednotná výstrahy (Preview) také podporuje protokol aktivit výstrahy. [Další informace](monitoring-activity-log-alerts-new-experience.md).
 
-5. *Metriky výstrahy*: Zkontrolujte **typ prostředku** je vybraná služba platformy nebo monitorování (jiné než *analýzy protokolů*), pak jednou odpovídající **prostředků** je Klikněte na tlačítko Vybrat *provádí* tlačítko se vrátíte k vytvoření výstrahy. Potom použít **přidat kritéria** tlačítko můžete vybrat ze seznamu možnosti signál, jejich monitorování služby a typ seznamu - určitý signál, které jsou k dispozici pro prostředek vybrali dříve.
+5. *Metriky výstrahy*: Zkontrolujte **typ prostředku** je vybrána s typem signál jako **metrika**, pak jednou odpovídající **prostředků** je zvolen klikněte na tlačítko  *Provádí* tlačítko se vrátíte k vytvoření výstrahy. Potom použít **přidat kritéria** tlačítko můžete vybrat ze seznamu možnosti signál, jejich monitorování služby a typ seznamu - určitý signál, které jsou k dispozici pro prostředek vybrali dříve.
 
     ![Vybrat prostředek](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
@@ -81,7 +81,7 @@ Další podrobné je podrobný návod k používání výstrah Azure (Preview).
 
     ![Konfigurovat logiku signál pro multidimenzionální metrika](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
-8. *Protokolování výstrahy*: Zkontrolujte **typ prostředku** je zdrojem analytics jako *analýzy protokolů* nebo *Application Insights*, pak jednou odpovídající  **prostředek** je vybraná, klikněte na tlačítko *provádí*. Dále používat **přidat kritéria** tlačítko Zobrazit seznam možností signál k dispozici pro daný prostředek a ze seznamu signál **hledání protokolů vlastní** možnost pro zvolený protokolu monitorování služby jako *protokolu Analýza* nebo *Application Insights*.
+8. *Protokolování výstrahy*: Zkontrolujte **typ prostředku** je zdrojem analytics jako *analýzy protokolů* nebo *Application Insights* a signálu typu jako **protokolu** , pak jednou odpovídající **prostředků** je vybraná, klikněte na tlačítko *provádí*. Dále používat **přidat kritéria** tlačítko Zobrazit seznam možností signál k dispozici pro daný prostředek a ze seznamu signál **hledání protokolů vlastní** možnost pro zvolený protokolu monitorování služby jako *protokolu Analýza* nebo *Application Insights*.
 
    ![Vyberte prostředek – vlastní protokol hledání](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
 
@@ -121,8 +121,8 @@ Pro **protokolu výstrahy** výstrahy může být založené na:
 
     Pro **protokolu výstrahy** některé další funkce, je možné přepsat výchozí akce:
 
-    - **Oznámení e-mailem**: přepsání předmět e-mailem, odeslána prostřednictvím akce skupiny. Tělo e-mailu se nedá změnit.
-    - **Zahrnout vlastní datovou část Json**: přepsání webhooku Json používané skupiny akcí a místo toho datové části výchozí nahraďte vlastní datovou část. Další informace o formátech webhooku najdete v tématu [akce webhooku protokolu výstrahy](monitor-alerts-unified-log-webhook.md)
+    - **Oznámení e-mailem**: přepsání *předmět e-mailu* v e-mailu, odeslána prostřednictvím akce skupiny; Pokud jeden nebo více e-mailu akce neexistuje ve skupině dané akce. Nelze upravit text e-mailu a toto pole je **není** pro e-mailovou adresu.
+    - **Zahrnout vlastní datovou část Json**: přepsání webhooku JSON používané skupiny akcí; Pokud jeden nebo více akce webhooku neexistuje ve skupině dané akce. Uživatel může určením formát JSON, který se má použít pro všechny webhooků, které jsou nakonfigurované ve skupině přidružené akce; Další informace o formátech webhooku najdete v tématu [akce webhooku pro výstrahy protokolu](monitor-alerts-unified-log-webhook.md). Test Webhooku možnost je k dispozici Zkontrolujte formát a zpracování cílová pomocí ukázkových JSON a tuto možnost, jak je označené jako určená pouze pro **testování** účely.
 
         ![Akce přepsání pro výstrahy protokolu](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
 

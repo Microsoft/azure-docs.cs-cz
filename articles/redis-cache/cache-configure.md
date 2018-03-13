@@ -14,14 +14,14 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: a65832a30a570944ff30d02c2f173df345bde32c
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: fa78c42ce93729379d3c532f94bc67bb8c069d53
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Postup konfigurace Azure Redis Cache
-Toto téma popisuje, jak zkontrolovat a aktualizovat konfiguraci pro vaše instance služby Azure Redis Cache a obsahuje výchozí konfiguraci serveru Redis pro instance služby Azure Redis Cache.
+Toto téma popisuje konfigurace, které jsou k dispozici pro vaše instance služby Azure Redis Cache. Toto téma obsahuje také výchozí konfigurace serveru Redis pro instance služby Azure Redis Cache.
 
 > [!NOTE]
 > Další informace o konfiguraci a použití prémiových funkcí mezipaměti najdete v tématu [postup konfigurace trvalosti](cache-how-to-premium-persistence.md), [postup konfigurace clusterů](cache-how-to-premium-clustering.md), a [postup konfigurace podpory služby Virtual Network ](cache-how-to-premium-vnet.md).
@@ -79,7 +79,7 @@ Klikněte na tlačítko **protokol aktivit** zobrazíte akcích provedených v m
 
 ### <a name="access-control-iam"></a>Řízení přístupu (IAM)
 
-**Přístup k ovládacímu prvku (IAM)** části poskytuje podporu pro řízení přístupu na základě role (RBAC) na portálu Azure, které pomůžou organizacím, které splňují požadavky na správu jejich přístup, jednoduše a přesně. Další informace najdete v tématu [řízení přístupu na základě rolí na portálu Azure](../active-directory/role-based-access-control-configure.md).
+**Přístup k ovládacímu prvku (IAM)** části poskytuje podporu pro řízení přístupu na základě role (RBAC) na portálu Azure. Tato konfigurace pomáhá organizacím, které splňují požadavky na správu jejich přístup, jednoduše a přesně. Další informace najdete v tématu [řízení přístupu na základě rolí na portálu Azure](../active-directory/role-based-access-control-configure.md).
 
 ### <a name="tags"></a>Značky
 
@@ -136,7 +136,7 @@ Přístup bez SSL je ve výchozím nastavení pro nové mezipaměti zakázaný. 
 
 **Zásady Maxmemory** nakonfiguruje zásady vyřazení mezipaměti a umožňuje zvolit z následujících zásad vyřazení:
 
-* `volatile-lru`-Toto je výchozí.
+* `volatile-lru` -Toto je výchozí zásady vyřazení.
 * `allkeys-lru`
 * `volatile-random`
 * `allkeys-random`
@@ -145,11 +145,11 @@ Přístup bez SSL je ve výchozím nastavení pro nové mezipaměti zakázaný. 
 
 Další informace o `maxmemory` zásady, najdete v části [zásady vyřazení](http://redis.io/topics/lru-cache#eviction-policies).
 
-**Maxmemory vyhrazené** nastavení konfiguruje množství paměti v MB, která je vyhrazena pro operace bez mezipaměti, jako je například replikace během převzetí služeb při selhání. Nastavení této hodnoty můžete mít více konzistentního prostředí serveru Redis, pokud se liší podle zatížení. Tato hodnota je třeba nastavit vyšší pro úlohy, které jsou zapsat náročné. Když paměti je vyhrazena pro takové operace, není k dispozici pro úložiště dat uložených v mezipaměti.
+**Maxmemory vyhrazené** nastavení konfiguruje množství paměti, v MB, která je vyhrazena pro operace bez mezipaměti, jako je například replikace během převzetí služeb při selhání. Nastavení této hodnoty můžete mít více konzistentního prostředí serveru Redis, pokud se liší podle zatížení. Tato hodnota je třeba nastavit vyšší pro úlohy, které jsou zapsat náročné. Když paměti je vyhrazena pro takové operace, není k dispozici pro úložiště dat uložených v mezipaměti.
 
-**Maxfragmentationmemory vyhrazené** nastavení konfiguruje množství paměti v MB, která je vyhrazena pro přizpůsobení pro fragmentace paměti. Nastavení této hodnoty můžete mít více konzistentní serveru Redis dojít, pokud je mezipaměť plná nebo blízko úplné a fragmentaci poměr je také vysoká. Když paměti je vyhrazena pro takové operace, není k dispozici pro úložiště dat uložených v mezipaměti.
+**Maxfragmentationmemory vyhrazené** nastavení konfiguruje množství paměti v MB, která je vyhrazena pro přizpůsobení pro fragmentace paměti. Nastavení této hodnoty můžete mít více konzistentního prostředí serveru Redis, pokud je mezipaměť plná nebo blízko úplné a fragmentaci poměr je vysoká. Když paměti je vyhrazena pro takové operace, není k dispozici pro úložiště dat uložených v mezipaměti.
 
-Jednou z věcí vzít v úvahu při výběru novou hodnotu rezervace paměti (**vyhrazené maxmemory** nebo **vyhrazené maxfragmentationmemory**) je, jak tato změna může ovlivnit mezipaměti, která je již spuštěn s velké objemy dat v něm. Například pokud jste 53 GB mezipaměti s 49 GB dat, pak změňte hodnotu rezervace na 8 GB, bude vyřadit maximální dostupná paměť systému dolů 45 GB. Pokud buď vaše aktuální `used_memory` , vaše `used_memory_rss` hodnoty jsou vyšší, než nový limit 45 GB a pak systému bude mít vyřazení dat dokud `used_memory` a `used_memory_rss` jsou pod 45 GB. Vyřazení může zvýšit fragmentace zatížení a paměti serveru. Další informace o metrikách mezipaměti jako `used_memory` a `used_memory_rss`, najdete v části [k dostupným metrikám a vytváření sestav intervaly](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+Jednou z věcí vzít v úvahu při výběru novou hodnotu rezervace paměti (**vyhrazené maxmemory** nebo **vyhrazené maxfragmentationmemory**) je, jak tato změna může ovlivnit mezipaměti, která je již spuštěn s velké objemy dat v něm. Například pokud jste 53 GB mezipaměti s 49 GB dat, pak změňte hodnotu rezervace na 8 GB, tato změna bude vyřadit maximální dostupná paměť systému dolů 45 GB. Pokud buď vaše aktuální `used_memory` , vaše `used_memory_rss` hodnoty jsou vyšší, než nový limit 45 GB a pak systému bude mít vyřazení dat dokud `used_memory` a `used_memory_rss` jsou pod 45 GB. Vyřazení může zvýšit fragmentace zatížení a paměti serveru. Další informace o metrikách mezipaměti jako `used_memory` a `used_memory_rss`, najdete v části [k dostupným metrikám a vytváření sestav intervaly](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
 > **Vyhrazené maxmemory** a **maxfragmentationmemory vyhrazené** nastavení jsou dostupná jenom pro Standard a Premium ukládá do mezipaměti.
@@ -269,7 +269,9 @@ Zadejte časové období údržby, zkontrolujte požadované dny a zadejte hodin
 
 ### <a name="firewall"></a>Brána firewall
 
-Klikněte na tlačítko **brány Firewall** k zobrazení a konfigurace pravidel brány firewall pro vaše mezipaměť Azure Redis Cache Premium.
+Konfigurace pravidel brány firewall je k dispozici pro všechny úrovně Azure Redis Cache.
+
+Klikněte na tlačítko **brány Firewall** k zobrazení a konfigurace pravidel brány firewall pro mezipaměť.
 
 ![Brána firewall](./media/cache-configure/redis-firewall-rules.png)
 
@@ -383,10 +385,10 @@ Klikněte na tlačítko **nová žádost o podporu** otevřete žádost o podpor
 
 
 ## <a name="default-redis-server-configuration"></a>Výchozí konfigurace serveru Redis
-Nové instance služby Azure Redis Cache jsou nakonfigurovány s následující výchozí hodnoty konfigurace Redis.
+Nové instance služby Azure Redis Cache jsou nakonfigurované s následující výchozí hodnoty Redis konfigurace:
 
 > [!NOTE]
-> Nastavení v této části nelze změnit pomocí `StackExchange.Redis.IServer.ConfigSet` metoda. Pokud tato metoda je volána s příkazy v této části, je vyvolána výjimka podobný následujícímu:  
+> Nastavení v této části nelze změnit pomocí `StackExchange.Redis.IServer.ConfigSet` metoda. Pokud tato metoda je volána s příkazy v této části, je vyvolána výjimka podobně jako v následujícím příkladu:  
 > 
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 > 
@@ -397,10 +399,10 @@ Nové instance služby Azure Redis Cache jsou nakonfigurovány s následující 
 | Nastavení | Výchozí hodnota | Popis |
 | --- | --- | --- |
 | `databases` |16 |Výchozí počet databází je 16, ale můžete nakonfigurovat různé počty podle cenové úrovně. <sup>1</sup> výchozí databáze je databáze 0, můžete vybrat jinou na základě jednotlivých připojení pomocí `connection.GetDatabase(dbid)` kde `dbid` je číslo v rozsahu od `0` a `databases - 1`. |
-| `maxclients` |Závisí na cenovou úroveň<sup>2</sup> |Toto je maximální počet připojených klientů, které jsou povoleny ve stejnou dobu. Po dosažení limitu Redis zavře všechna nová připojení, a vrátí chybu bylo dosaženo maximální počet klientů. |
+| `maxclients` |Závisí na cenovou úroveň<sup>2</sup> |Tato hodnota je maximální počet připojených klientů, které jsou povoleny ve stejnou dobu. Po dosažení limitu Redis zavře všechna nová připojení, a vrátí chybu bylo dosaženo maximální počet klientů. |
 | `maxmemory-policy` |`volatile-lru` |Maxmemory zásady je nastavení pro jak Redis vybere co při odebrání `maxmemory` je dosaženo (velikost mezipaměti nabídky, jste vybrali při vytvoření mezipaměti). S Azure Redis Cache ve výchozím nastavení je `volatile-lru`, které odebere klíče s vypršení platnosti nastavit pomocí algoritmu hodnoty nejdelšího Nepoužití. Toto nastavení můžete nakonfigurovat na portálu Azure. Další informace najdete v tématu [paměti zásady](#memory-policies). |
 | `maxmemory-samples` |3 |Uložit paměti, jsou přibližně algoritmy místo přesné algoritmy LRU a minimální hodnota TTL algoritmy. Ve výchozím nastavení Redis tři klíče kontroly a vyskladnění ten, který byl použit méně nedávno. |
-| `lua-time-limit` |5,000 |Maximální doba provádění skriptu Lua v milisekundách. Pokud je dosaženo maximální dobu spuštění, zaprotokoluje Redis, je stále v provádění po maximální povolenou dobu skript a spustí odpoví na dotazy s chybou. |
+| `lua-time-limit` |5 000 |Maximální doba provádění skriptu Lua v milisekundách. Pokud je dosaženo maximální dobu spuštění, zaprotokoluje Redis, je stále v provádění po maximální povolenou dobu skript a spustí odpoví na dotazy s chybou. |
 | `lua-event-limit` |500 |Maximální velikost fronty událostí skriptu. |
 | `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Omezení vyrovnávací paměti výstupní klienta lze vynutit odpojení klienti, kteří nejsou čtení dat ze serveru dostatečně rychle z nějakého důvodu (obvyklým důvodem je, že klient Pub nebo Sub nemůže využívat zprávy rychle, jak můžete vytvořit vydavatele, je). Další informace najdete v tématu [http://redis.io/topics/clients](http://redis.io/topics/clients). |
 
@@ -495,7 +497,7 @@ Když mezipaměť Redis konzoly pomocí prémiový clusteru, můžete vydávat p
 
 ![Konzola redis](./media/cache-configure/redis-console-premium-cluster.png)
 
-Pokud budete chtít získat přístup ke klíči, který je uložen v různých horizontálního oddílu než připojené horizontálního oddílu, zobrazí chybová zpráva, která je podobná následující zpráva.
+Pokud budete chtít získat přístup ke klíči, který je uložen v různých horizontálního oddílu než připojené horizontálního oddílu, zobrazí se chybová zpráva podobná následující zpráva:
 
 ```
 shard1>get myKey

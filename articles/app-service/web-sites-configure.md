@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 3f735b8742f22110b4de264bfb5661651a899afb
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 58c27c0872978c3a6a4c47be37e6fa6078309286
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurace webových aplikací v prostředí Azure App Service
 
@@ -75,9 +75,9 @@ Pro aplikace .NET, tyto připojovací řetězce jsou vloženy do konfiguraci .NE
 Pro aplikace PHP, Python, Java a uzel budou tato nastavení k dispozici jako proměnné prostředí v době běhu předponu typ připojení. Předpony proměnné prostředí jsou následující: 
 
 * SQL Server: `SQLCONNSTR_`
-* MySQL:`MYSQLCONNSTR_`
-* Databáze SQL:`SQLAZURECONNSTR_`
-* Vlastní:`CUSTOMCONNSTR_`
+* MySQL: `MYSQLCONNSTR_`
+* Databáze SQL: `SQLAZURECONNSTR_`
+* Vlastní: `CUSTOMCONNSTR_`
 
 Například, pokud byly s názvem připojovací řetězec databáze MySql `connectionstring1`, by přístupná prostřednictvím proměnné prostředí `MYSQLCONNSTR_connectionString1`.
 
@@ -129,12 +129,12 @@ Chcete-li zobrazit soubory protokolů, musíte vytvořit přihlašovací údaje 
 
 ## <a name="other-configuration-tasks"></a>Další konfigurační úlohy
 ### <a name="ssl"></a>SSL
-V režimu Basic nebo Standard můžete nahrát certifikáty SSL pro vlastní doménu. Další informace najdete v tématu [Povolit HTTPS pro webovou aplikaci]. 
+V režimu Basic nebo Standard můžete nahrát certifikáty SSL pro vlastní doménu. Další informace najdete v tématu [povolit HTTPS pro webovou aplikaci](app-service-web-tutorial-custom-ssl.md). 
 
 Chcete-li zobrazit nahrané certifikáty, klikněte na tlačítko **všechna nastavení** > **vlastní domény a SSL**.
 
 ### <a name="domain-names"></a>Názvy domén
-Přidáte vlastní názvy domén pro vaši webovou aplikaci. Další informace najdete v tématu [Konfigurace vlastního názvu domény pro webovou aplikaci v Azure App Service].
+Přidáte vlastní názvy domén pro vaši webovou aplikaci. Další informace najdete v tématu [konfigurace vlastního názvu domény pro webovou aplikaci v Azure App Service](app-service-web-tutorial-custom-domain.md).
 
 Chcete-li zobrazit názvy domén, klikněte na tlačítko **všechna nastavení** > **vlastní domény a SSL**.
 

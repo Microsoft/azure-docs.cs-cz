@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc045827fbd38054a334ff22eb30e0db6a31bac8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c266e1073722733ec8b7353c6fdddc3ae341ab20
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>Vyřešte chyby pro názvy účtů úložiště
 
@@ -48,16 +48,12 @@ Názvy účtů úložiště musí být v rozmezí 3 až 24 znaků a používat j
 
 ## <a name="solution"></a>Řešení
 
-### <a name="solution-1"></a>Řešení 1
-
 Ujistěte se, že název účtu úložiště je jedinečný. Můžete vytvořit jedinečný název zřetězení vaše zásady vytváření názvů s výsledkem [uniqueString](resource-group-template-functions-string.md#uniquestring) funkce.
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 "type": "Microsoft.Storage/storageAccounts",
 ```
-
-### <a name="solution-2"></a>Řešení 2
 
 Ujistěte se, že váš název účtu úložiště není delší než 24 znaků. [UniqueString](resource-group-template-functions-string.md#uniquestring) funkce vrátí 13 znaků. Pokud řetězení předpony nebo přípony k **uniqueString** vést, zadejte hodnotu, která je 11 znaků nebo méně.
 
@@ -73,7 +69,5 @@ Ujistěte se, že váš název účtu úložiště není delší než 24 znaků.
     }
 }
 ```
-
-### <a name="solution-3"></a>Řešení 3
 
 Ujistěte se, že váš název účtu úložiště nezahrnuje všechny elká písmena nebo speciální znaky.

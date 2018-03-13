@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/26/2018
 ms.author: snmuvva, vinagara
 ms.custom: 
-ms.openlocfilehash: 3ffc96b19d4601756530d7f9dd959d05ef5fa000
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 88995b1f3350fe485e28efccc93779ae0a42eb97
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="near-real-time-metric-alerts-preview"></a>Téměř v reálném čase metriky výstrahy (preview)
 Azure monitorování podporuje nové výstrahy typu s názvem téměř v reálném čase metriky výstrahy (preview). Tato funkce je aktuálně ve verzi public preview.
@@ -37,7 +37,7 @@ Téměř v reálném čase metrika výstrahy se liší od regulární metriky v�
 >
 
 ## <a name="metrics-and-dimensions-supported"></a>Metriky a dimenze podporována
-Téměř v reálném čase metriky výstrahy podporují generování výstrah pro metriky, které používají dimenze. Dimenze můžete použít k filtrování vaší metrika se používá k správnou úroveň. Všechny podporované metriky společně s příslušné dimenze můžete prozkoumali a vizualizována z [ *monitorování Azure – **metriky (Preview)***](monitoring-metric-charts.md).
+Téměř v reálném čase metriky výstrahy podporují generování výstrah pro metriky, které používají dimenze. Dimenze můžete použít k filtrování vaší metrika se používá k správnou úroveň. Všechny podporované metriky společně s příslušné dimenze můžete prozkoumali a vizualizována z [monitorování Azure – metriky Explorer (Preview)](monitoring-metric-charts.md).
 
 Tady je úplný seznam Azure monitorování na základě metriky zdroje, které jsou podporovány pro téměř v reálném čase metriky výstrahy:
 
@@ -65,7 +65,7 @@ Tady je úplný seznam Azure monitorování na základě metriky zdroje, které 
 
 
 Metriky z protokolů, v současné době podporuje následující protokoly OMS oblíbených:
-- [Čítače výkonu](../log-analytics/https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-data-sources-performance-counters.md) pro počítače s Windows a Linux
+- [Čítače výkonu](../log-analytics/log-analytics-data-sources-performance-counters.md) pro počítače s Windows a Linux
 - Záznamy prezenčního signálu pro počítače
 - [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md) záznamů
 

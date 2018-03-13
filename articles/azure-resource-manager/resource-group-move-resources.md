@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6a1d56a270ae0c44db18f26091cc3c550a37e420
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c4bf3871b4636ce769dd8d84a637b88d4a00db97
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutím prostředků do nové skupiny prostředků nebo předplatného
 
@@ -99,7 +99,7 @@ Obraťte se na [podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support
 * Přesuňte vašich prostředků na nový účet Azure (a klienta Azure Active Directory) a potřebujete pomoc s podle pokynů v předchozí části.
 * Přesunout klasické prostředky ale dochází k potížím s omezeními.
 
-## <a name="services-that-enable-move"></a>Služby, které umožňují přesunout
+## <a name="services-that-can-be-moved"></a>Služby, které lze přesunout
 
 Služby, které umožňují přesun na novou skupinu prostředků a předplatného jsou:
 
@@ -149,7 +149,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Najdete v části virtuální sítě - [omezení virtuální sítě](#virtual-networks-limitations)
 * VPN Gateway
 
-## <a name="services-that-do-not-enable-move"></a>Služby, které nepovolujte přesunutí
+## <a name="services-that-cannot-be-moved"></a>Služby, které nelze přesunout.
 
 Služby, které aktuálně nepovolujte přesunutí prostředku jsou:
 
@@ -307,7 +307,7 @@ Předpokládejme například, jste nastavili replikaci počítačů na místě n
 Chcete-li přesunout virtuální počítač zaregistrovaný v **zálohování Azure** mezi skupinami prostředků:
  1. Dočasně zastavení zálohování a zachovat zálohovaná data
  2. Přesuňte virtuální počítač cílová skupina prostředků
- 3. Znovu proveďte její ochranu pod stejnou nebo nové úložiště, které uživatelé mohou obnovit z bodů obnovení k dispozici vytvořil před operaci přesunutí.
+ 3. Nastavte ji znovu v rámci stejné nebo nové úložiště, které uživatelé mohou obnovit z bodů obnovení k dispozici vytvořil před operaci přesunutí.
 Pokud se uživatel přesune virtuální počítač zálohovaná ve předplatných, kroky 1 a 2 zůstávají stejné. V kroku 3 musí uživatel ochranu virtuálního počítače v části nový trezor přítomen / vytvořené v cílové předplatné. Trezor služeb zotavení nepodporuje zálohování křížové předplatného.
 
 ## <a name="hdinsight-limitations"></a>Omezení HDInsight

@@ -11,11 +11,11 @@ ms.custom: managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: bonova
-ms.openlocfilehash: 87efa41ce74a0d571c8fd5f7a0ebfbd7bc6b626e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2ff8c6cad7f9c63fe6403fbf292fa3eab3373aed
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance systému SQL Server na instanci spravované databáze Azure SQL
 
@@ -83,7 +83,7 @@ Spravované Instance podporuje následující možnosti migrace databáze (aktu�
 
 ![DMS](./media/sql-database-managed-instance-migration/dms.png)
 
-Další informace o krocích, tento scénář a konfiguraci pro DMS najdete v tématu [migrací místní databázi k instanci spravované pomocí DMS](../dms/tutorial-sql-server-to-azure-sql.md).  
+Další informace o krocích, tento scénář a konfiguraci pro DMS najdete v tématu [migrací místní databázi k instanci spravované pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).  
 
 ### <a name="native-restore-from-url"></a>Nativní obnovení z adresy URL
 
@@ -129,4 +129,4 @@ K posílení zabezpečení, zvažte použití některých funkcí, které jsou k
 
 - Informace o instanci spravované najdete v tématu [co je spravované Instance?](sql-database-managed-instance.md)
 - Kurz, který zahrnuje obnovení ze zálohy, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md).
-- Kurz zobrazující migraci pomocí DMS, najdete v části [migrací místní databázi k instanci spravované pomocí DMS](../dms/tutorial-sql-server-to-azure-sql.md).  
+- Kurz zobrazující migraci pomocí DMS, najdete v části [migrací místní databázi k instanci spravované pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).  
