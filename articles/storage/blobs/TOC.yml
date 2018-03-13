@@ -12,6 +12,8 @@
       href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Práce s objekty blob – - Azure Portal
       href: storage-quickstart-blobs-portal.md
+    - name: Práce s objekty blob – Průzkumník služby Storage
+      href: storage-quickstart-blobs-storage-explorer.md
     - name: Práce s objekty blob – PowerShell
       href: storage-quickstart-blobs-powershell.md
     - name: Práce s objekty blob – rozhraní příkazového řádku
@@ -28,8 +30,8 @@
       href: storage-quickstart-blobs-ruby.md
     - name: Práce s objekty blob – Node.js
       href: storage-quickstart-blobs-nodejs.md
-    - name: Práce s objekty blob – Průzkumník služby Storage
-      href: storage-quickstart-blobs-storage-explorer.md
+    - name: Práce s objekty blob – PHP
+      href: storage-quickstart-blobs-php.md
 - name: Kurzy
   items:
     - name: Nahrání a zpracování obrázku
