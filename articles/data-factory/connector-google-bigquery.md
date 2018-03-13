@@ -1,5 +1,5 @@
 ---
-title: "Kopírování dat z Google BigQuery pomocí Azure Data Factory (beta) | Microsoft Docs"
+title: "Kopírování dat z Google BigQuery pomocí Azure Data Factory | Microsoft Docs"
 description: "Postup kopírování dat z Google BigQuery do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanálu data factory."
 services: data-factory
 documentationcenter: 
@@ -13,21 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 35f61f6bd38b59a2df0613ba2506d047c1daeaaa
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 955de6cf4b17f1df1e545ccc196856c7c898edfe
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/12/2018
 ---
-# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory-beta"></a>Kopírování dat z Google BigQuery pomocí Azure Data Factory (beta)
+# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopírování dat z Google BigQuery pomocí Azure Data Factory
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Google BigQuery. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který představuje obecný přehled o aktivitě kopírování.
 
 > [!NOTE]
 > Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, která je obecně k dispozici, najdete v části [aktivity kopírování v verze 1](v1/data-factory-data-movement-activities.md).
-
-> [!IMPORTANT]
-> Tento konektor je aktuálně ve verzi beta. Můžete si vyzkoušet a sdělte nám svůj názor. Nepoužívejte ji v produkčním prostředí.
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 

@@ -12,13 +12,13 @@ ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 11/28/2017
+ms.date: 03/09/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 986c3b62426949f1e4c2009aabbfec2f1130f821
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 4802215f903eb196afbf05637ad5e38dbbbc09a3
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání sad Azure Automation runbook do plánů obnovení
 V tomto článku jsme popisují, jak Azure Site Recovery integruje se službou Azure Automation můžete rozšířit plánu obnovení. Plány obnovení můžete orchestraci obnovení virtuálních počítačů, které jsou chráněné službou Site Recovery. Plány obnovení fungovat pro replikaci do sekundární cloudu i pro replikaci do Azure. Plány obnovení také pomoci zajistit, aby obnovení **přesné**, **repeatable**, a **automatizované**. Pokud jste převzetí služeb při selhání virtuálních počítačů do Azure, integraci s Azure Automation rozšiřuje plánu obnovení. Můžete ho spuštění sady runbook, které nabízí výkonné automatizace úloh.
@@ -193,7 +193,7 @@ Pro každý plán obnovení vytvořte nezávislých proměnných, takže můžet
 
 ### <a name="use-a-complex-variable-to-store-more-information"></a>Použití proměnné komplexní ukládat další informace
 
-Vezměte v úvahu scénář, ve kterém chcete jednoho skriptu zapnout veřejnou IP adresu pro konkrétní virtuální počítače. V jiné scénáři můžete chtít použít odlišné skupiny Nsg na různé virtuální počítače (ne na všech virtuálních počítačích). Můžete použít skript, který je opakovaně použitelné pro každého plánu obnovení. Proměnný počet virtuálních počítačů může mít každý plán obnovení. Například obnovení služby SharePoint má dva elementy front end. Základní-obchodní (LOB) aplikace má pouze jeden front-endu. Nelze vytvořit samostatné proměnných pro každý plán obnovení. 
+Vezměte v úvahu scénář, ve kterém chcete jednoho skriptu zapnout veřejnou IP adresu pro konkrétní virtuální počítače. V jiné scénáři můžete chtít použít odlišné skupiny Nsg na různé virtuální počítače (ne na všech virtuálních počítačích). Můžete použít skript, který je opakovaně použitelné pro každého plánu obnovení. Proměnný počet virtuálních počítačů může mít každý plán obnovení. Například obnovení služby SharePoint má dva elementy front end. Základní-obchodní (LOB) aplikace má pouze jeden front-endu. Nelze vytvořit samostatné proměnných pro každý plán obnovení.
 
 V následujícím příkladu jsme nové způsobem a vytvořte [komplexní proměnná](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) v prostředky účet Azure Automation. To uděláte tak, že zadáte více hodnot. Pokud chcete provést následující kroky je nutné použít prostředí Azure PowerShell:
 

@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 11/27/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3ed3da2d9730d8c30d8170ddf40fe4895dfa5dec
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: d2cc760bf516e8ee96629886120a1bb092932a82
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Vyřešte chyby pro kvótou prostředků
 
@@ -47,9 +47,9 @@ please delete some resources of this type before creating a new one.
 Kvóty se použijí na skupinu prostředků, odběry, účty a další obory. Omezit počet jader pro oblast lze nakonfigurovat například vaše předplatné. Pokud se pokusíte nasazení virtuálního počítače s více jader, než povolené množství, obdržíte chybu oznamující, že byla překročena kvóta.
 Dokončení kvóty informace najdete v tématu [předplatného Azure a omezení služby, kvóty a omezení](../azure-subscription-service-limits.md).
 
-## <a name="solution"></a>Řešení
+## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="solution-1"></a>Řešení 1
+### <a name="azure-cli"></a>Azure CLI
 
 Pokud používáte Azure CLI, použijte `az vm list-usage` příkazu najděte kvóty virtuálního počítače.
 
@@ -73,7 +73,7 @@ Která vrací:
 ]
 ```
 
-### <a name="solution-2"></a>Řešení 2
+### <a name="powershell"></a>PowerShell
 
 Pro prostředí PowerShell, použijte **Get-AzureRmVMUsage** příkazu najděte kvóty virtuálního počítače.
 
@@ -91,7 +91,7 @@ Total Regional Cores                         0   100 Count
 Virtual Machines                             0 10000 Count
 ```
 
-### <a name="solution-3"></a>Řešení 3
+## <a name="solution"></a>Řešení
 
 Požádat o zvýšení kvóty, přejděte na portál a souborů podpory problém. V problém podporu požádejte o zvýšení v rámci svojí kvóty pro oblast, do které chcete nasadit.
 

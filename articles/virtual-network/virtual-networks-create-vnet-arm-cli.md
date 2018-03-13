@@ -17,10 +17,10 @@ ms.date: 03/01/2018
 ms.author: jdial
 ms.custom: 
 ms.openlocfilehash: 0b0bfae02147910d98231d7c93f5ab260f26364f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets-using-the-azure-cli"></a>Vytvoření virtuální sítě s několika podsítěmi pomocí rozhraní příkazového řádku Azure
 

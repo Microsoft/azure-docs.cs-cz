@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 03/08/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 888740b434292c2ccc36fc90e0a9baaec96e2033
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 55946915573f53bb7e1917d4705e6d8e74abf448
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní API pro SQL: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -37,8 +37,6 @@ ms.lasthandoff: 03/08/2018
 > 
 
 [!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
-
-Tento balíček je zastaralý a nahrazuje Microsoft.Azure.DocumentDB https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/
 
 <table>
 
@@ -61,12 +59,6 @@ Cosmos DB .NET SDK služby Azure základní má parity funkcí s nejnovější v
 
 > [!NOTE] 
 > Cosmos DB .NET SDK služby Azure jádra není kompatibilní s aplikací pro univerzální platformu Windows (UWP). Pokud vás zajímá .NET Core SDK, který podporuje aplikace UWP odeslat e-mailu [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com).
-
-### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-
-* Tento balíček je zastaralý a nahrazuje Microsoft.Azure.DocumentDB https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/
-* Mezi oddílu pořadí opraven KeyNotFoundException pro dotazy v nestandardních případech.
-* Opravené chyby, kde nebyl se dodržení JsonPropery atribut v klauzuli select pro dotazy LINQ.
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
@@ -178,7 +170,6 @@ Pokud máte otázky související s touto sadou SDK, odeslání na [StackOverflo
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
-| [1.9.0](#1.9.0) |05 března 2018 |--- |
 | [1.8.2](#1.8.2) |21. února 2018 |--- |
 | [1.8.1](#1.8.1) |05 února 2018 |--- |
 | [1.7.1](#1.7.1) |16. listopadu 2017 |--- |

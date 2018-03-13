@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 209e657678b7f300f13fc16181a14d8ef422466d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 204280c8b81e5f751f3f0b609e04aba0a1cec381
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Jak používat rozhraní API komunikaci spolehlivé služby
 Azure Service Fabric jako platformu je zcela lhostejné o komunikaci mezi službami. Všechny protokoly a zásobníky jsou přijatelné, z UDP do HTTP. Je to na vývojáře služby zvolit komunikace služby. Rozhraní spolehlivé služby poskytuje zásobníky předdefinované komunikaci, jakož i rozhraní API, které můžete použít k vytvoření vlastních komunikační součásti.
@@ -76,10 +76,13 @@ public class MyStatelessService extends StatelessService {
 
 Pro stavové služby:
 
-> [!NOTE]
-> Stavová spolehlivé služby ještě nepodporuje v jazyce Java.
->
->
+```java
+    @Override
+    protected List<ServiceReplicaListener> createServiceReplicaListeners() {
+        ...
+    }
+    ...
+```
 
 ```csharp
 class MyStatefulService : StatefulService
@@ -212,7 +215,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-Pro připojení ke službám v jiném clusteru, lze vytvořit ServicePartitionResolver sadu koncovým bodům clusteru brány. Upozorňujeme, že jsou koncové body brány právě různými koncovými body pro připojení do stejného clusteru. Například:
+Pro připojení ke službám v jiném clusteru, lze vytvořit ServicePartitionResolver sadu koncovým bodům clusteru brány. Upozorňujeme, že jsou koncové body brány právě různými koncovými body pro připojení do stejného clusteru. Příklad:
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
@@ -236,7 +239,7 @@ public interface CreateFabricClient {
 }
 ```
 
-`FabricClient`je objekt, který se používá ke komunikaci se cluster Service Fabric pro různé operace správy v clusteru. To je užitečné, pokud chcete mít větší kontrolu nad interakci překladač oddílu služby se váš cluster. `FabricClient`provede ukládání do mezipaměti interně a je obecně nákladné vytvořit, takže je potřeba znovu použít `FabricClient` instance co nejvíc.
+`FabricClient` je objekt, který se používá ke komunikaci se cluster Service Fabric pro různé operace správy v clusteru. To je užitečné, pokud chcete mít větší kontrolu nad interakci překladač oddílu služby se váš cluster. `FabricClient` provede ukládání do mezipaměti interně a je obecně nákladné vytvořit, takže je potřeba znovu použít `FabricClient` instance co nejvíc.
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMyFabricClient());
@@ -267,7 +270,7 @@ Obvykle kód klienta nemusí pracovat ServicePartitionResolver přímo. Je vytvo
 ### <a name="communication-clients-and-factories"></a>Komunikace klientů a objekty pro vytváření
 Knihovna vytváření komunikace implementuje typický vzor opakování selhání zpracování, který usnadňuje Probíhá opakování připojení ke koncovým bodům služby vyřešený. Objekt pro vytváření knihovny poskytuje mechanismus opakování, zatímco poskytují chyba obslužné rutiny.
 
-`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`definuje základní rozhraní implementované objekt factory komunikaci klienta, který vytváří klientů, které může kontaktovat službě Service Fabric. Implementace CommunicationClientFactory závisí na komunikačního balíku používá služba Service Fabric, kde se chce, aby klient komunikovat. Poskytuje spolehlivé rozhraní API služby `CommunicationClientFactoryBase<TCommunicationClient>`. To poskytuje základní implementaci rozhraní CommunicationClientFactory a provádí úlohy, které jsou společné pro všechny balíčky komunikace. (Tyto úlohy patří, použití ServicePartitionResolver k určení, koncový bod služby). Klienti obvykle implementovat abstraktní třídy CommunicationClientFactoryBase pro zpracování logiky, která je specifická pro komunikačního balíku.
+`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)` definuje základní rozhraní implementované objekt factory komunikaci klienta, který vytváří klientů, které může kontaktovat službě Service Fabric. Implementace CommunicationClientFactory závisí na komunikačního balíku používá služba Service Fabric, kde se chce, aby klient komunikovat. Poskytuje spolehlivé rozhraní API služby `CommunicationClientFactoryBase<TCommunicationClient>`. To poskytuje základní implementaci rozhraní CommunicationClientFactory a provádí úlohy, které jsou společné pro všechny balíčky komunikace. (Tyto úlohy patří, použití ServicePartitionResolver k určení, koncový bod služby). Klienti obvykle implementovat abstraktní třídy CommunicationClientFactoryBase pro zpracování logiky, která je specifická pro komunikačního balíku.
 
 Komunikace klienta pouze přijímá adresu a použije k připojení ke službě. Klienta můžete použít libovolnou protokol ho chce.
 
@@ -426,7 +429,7 @@ CompletableFuture<?> result = myServicePartitionClient.invokeWithRetryAsync(clie
 
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Jádro ASP.NET se službami Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md)
 * [Volání vzdálených procedur s vzdálenou komunikaci spolehlivé služby](service-fabric-reliable-services-communication-remoting.md)
 * [Komunikace WCF pomocí spolehlivé služby](service-fabric-reliable-services-communication-wcf.md)

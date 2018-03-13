@@ -1,5 +1,5 @@
 ---
-title: "Kopírování dat z ServiceNow pomocí Azure Data Factory (Beta) | Microsoft Docs"
+title: "Kopírování dat z ServiceNow pomocí Azure Data Factory | Microsoft Docs"
 description: "Zjistěte, jak zkopírovat data z ServiceNow k úložištím dat. podporované podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory."
 services: data-factory
 documentationcenter: 
@@ -13,21 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 64b0982ab1d0b212120d962d4c47a1b8db8ca025
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 4d05d816b43e04c2c2e88cab33b8e4c623ab9185
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/12/2018
 ---
-# <a name="copy-data-from-servicenow-using-azure-data-factory-beta"></a>Kopírování dat z ServiceNow pomocí Azure Data Factory (Beta)
+# <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopírování dat z ServiceNow pomocí Azure Data Factory
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z ServiceNow. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
 
 > [!NOTE]
 > Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivitu kopírování v V1](v1/data-factory-data-movement-activities.md).
-
-> [!IMPORTANT]
-> Tento konektor je aktuálně ve verzi Beta. Můžete si vyzkoušet a sdělte nám svůj názor. Nepoužívejte ji v produkčním prostředí.
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 

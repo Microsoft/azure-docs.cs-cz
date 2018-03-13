@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: pratshar
-ms.openlocfilehash: 9b662099a75bf2eaebda388a6e675e70cf0b9cdc
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 03/09/2018
+ms.author: ponatara
+ms.openlocfilehash: f7a60cd82508629ad3cf46882564aa68995ba3e6
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="failover-in-site-recovery"></a>Převzetí služeb při selhání v Site Recovery
 Tento článek popisuje, jak k převzetí služeb při selhání virtuálního počítače a fyzické servery, které se chránit pomocí Site Recovery.
@@ -90,18 +90,18 @@ Když se aktivuje převzetí služeb při selhání, zahrnuje následující kro
 Převzetí služeb při selhání virtuálních počítačů v určitých případech vyžaduje velmi přechodný krok, který obvykle trvá přibližně 8 až 10 minut na dokončení. Čas potřebný k převzetí služeb při selhání bude vyšší než obvykle v následujících případech:
 
 * Virtuální počítače VMware pomocí služby mobility verze starší než 9.8
-* Fyzické servery 
+* Fyzické servery
 * Virtuální počítače s Linuxem VMware
 * Technologie Hyper-V virtuální počítače chráněné jako fyzických serverů
-* Virtuální počítače VMware, kde nejsou zadány jako spouštěcí ovladače následující ovladače 
-    * storvsc 
-    * VMBus 
-    * storflt 
-    * Intelide 
+* Virtuální počítače VMware, kde nejsou zadány jako spouštěcí ovladače následující ovladače
+    * storvsc
+    * VMBus
+    * storflt
+    * Intelide
     * atapi
 * Virtuální počítače VMware, které nemají služba DHCP povolena bez ohledu na to, jestli jsou pomocí protokolu DHCP nebo statické IP adresy
 
-Ve všech ostatních případech tento zprostředkující krok není povinný a čas potřebný převzetí služeb při selhání je nižší. 
+Ve všech ostatních případech tento zprostředkující krok není povinný a čas potřebný převzetí služeb při selhání je nižší.
 
 
 
@@ -112,7 +112,7 @@ Můžete automatizovat některé akce přitom převzetí služeb při selhání.
 
 ## <a name="post-failover-considerations"></a>Aspekty POST převzetí služeb při selhání
 POST převzetí služeb při selhání, můžete chtít zvažte následující doporučení:
-### <a name="retaining-drive-letter-after-failover"></a>Zachování písmeno jednotky po převzetí služeb při selhání 
+### <a name="retaining-drive-letter-after-failover"></a>Zachování písmeno jednotky po převzetí služeb při selhání
 Chcete-li zachovat písmeno na virtuální počítače po převzetí služeb při selhání, můžete nastavit **zásada SAN** pro virtuální počítač **OnlineAll**. [Přečtěte si další informace](https://support.microsoft.com/en-us/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
 
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.date: 03/07/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: a7771eebc8359a5de1c79328014f5ecc06c9673b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 86a839102e98a1b8e7cd9927c697cacf1f41a1a6
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 Od zahájení nabídky PaaS databáze SQL Azure společnost Microsoft vyvinula potenciálu svým zákazníkům, které vysoké dostupnosti (HA) je součástí služby a zákazníků nemusejí fungovat, přidejte speciální logiku pro nebo rozhodnutí ohledně HA. Společnost Microsoft udržuje plnou kontrolu nad konfigurace systému HA a operace, zákazníkům nabídnout SLA. HA SLA platí pro databáze SQL v oblasti a neposkytuje ochranu v případě selhání celkový oblasti, které je faktory, které mimo Microsoft nemohla ovlivnit (například přírodní katastrofě, war, jednání teroristický útok, povstáním, government akci, nebo síťové zařízení selhání nebo externí vzhledem k datových centrech společnosti Microsoft, včetně v lokalitách zákazníka nebo mezi lokalitami zákazníka a datového centra společnosti Microsoft).
@@ -56,7 +56,7 @@ Klíčové výhody:
 
 V této konfiguraci každou databázi do režimu online pomocí služby správy (MS) v rámci prstenec ovládacího prvku. Jedna primární replika a alespoň dvě sekundární repliky (kvora set) jsou umístěné v rámci prstenec klienta, která zahrnuje tři nezávislých fyzických subsystémů v rámci stejného datového centra. Všechny čtení a zápisy se odesílají bránou (GW) na primární repliku a zápisů asynchronně replikovány na sekundárních replikách. Databáze SQL používá schéma na základě kvora potvrzení, kde data se zapisují do primárním serverem a nejméně jedna sekundární replika před potvrzení transakce.
 
-[Service Fabric](/azure/service-fabric/service-fabric-overview.md) převzetí služeb při selhání systému automaticky znovu vytvoří repliky jako uzly selžou a udržuje sadu kvora členství jako uzly odchylují a připojení k systému. Plánované údržby je pečlivě koordinována, aby se zabránilo kvora set směrem dolů nižší než počet minimální repliky (obvykle 2). Tento model funguje dobře u prémiových databází, ale vyžaduje redundance součástí výpočetních operací a úložiště a má za následek vyšší náklady.
+[Service Fabric](/service-fabric/service-fabric-overview.md) převzetí služeb při selhání systému automaticky znovu vytvoří repliky jako uzly selžou a udržuje sadu kvora členství jako uzly odchylují a připojení k systému. Plánované údržby je pečlivě koordinována, aby se zabránilo kvora set směrem dolů nižší než počet minimální repliky (obvykle 2). Tento model funguje dobře u prémiových databází, ale vyžaduje redundance součástí výpočetních operací a úložiště a má za následek vyšší náklady.
 
 ## <a name="remote-storage-configuration"></a>Konfigurace vzdáleného úložiště
 
@@ -77,7 +77,7 @@ Pro vzdálené úložiště konfigurace SQL databáze používá funkce Always O
 
 ## <a name="zone-redundant-configuration-preview"></a>Konfigurace redundantního zóny (preview)
 
-Ve výchozím nastavení jsou kvora sady replik pro místní úložiště konfigurace vytváří ve stejném datovém centru. Se zavedením [Azure dostupnost zóny](/azure/availability-zones/az-overview.md), máte možnost umístit jiné repliky sady kvora do zóny různých dostupnosti ve stejné oblasti. K vyloučení jediný bod selhání, je ovládací prvek prstenec duplicitní napříč několika zón jako tři prstence brány (GW) také. Směrování do konkrétní gateway prstenec řídí [Azure Traffic Manager](/traffic-manager/traffic-manager-overview.md) (ATM). Vzhledem k tomu, že konfigurace redundantního zóny nevytvoří redundance další databáze, použijte zón dostupnosti ve vrstvě služeb Premium je k dispozici bez jakýchkoli nákladů. Tak, že vyberete databázi redundantní zóny, můžete provést prémiových databází, které jsou odolné mnohem větší sadu chyb, včetně výpadků závažné datového centra bez uložení změn logiku aplikace. Všechny existující databáze Premium nebo fond můžete také převést konfigurace redundantního zóny.
+Ve výchozím nastavení jsou kvora sady replik pro místní úložiště konfigurace vytváří ve stejném datovém centru. Se zavedením [Azure dostupnost zóny](../availability-zones/az-overview.md), máte možnost umístit jiné repliky sady kvora do zóny různých dostupnosti ve stejné oblasti. K vyloučení jediný bod selhání, je ovládací prvek prstenec duplicitní napříč několika zón jako tři prstence brány (GW) také. Směrování do konkrétní gateway prstenec řídí [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Vzhledem k tomu, že konfigurace redundantního zóny nevytvoří redundance další databáze, použijte zón dostupnosti ve vrstvě služeb Premium je k dispozici bez jakýchkoli nákladů. Tak, že vyberete databázi redundantní zóny, můžete provést prémiových databází, které jsou odolné mnohem větší sadu chyb, včetně výpadků závažné datového centra bez uložení změn logiku aplikace. Všechny existující databáze Premium nebo fond můžete také převést konfigurace redundantního zóny.
 
 Protože zóny redundantní kvora set má repliky v různých datových centrech s některé vzdálenost mezi nimi, latence sítě vyšší může prodloužit doba potvrzení a proto mít dopad na výkon některé úlohy OLTP. Ke konfiguraci zóny jedním může vždy vrátit zakázáním nastavení redundance zóny. Tento proces je velikost operace dat a je podobná aktualizace cíle na úrovni (SLO) regulární služby. Na konci procesu je databáze nebo fondu migrovat z prstenec redundantní zóny v jedné oblasti prstenec nebo naopak.
 
@@ -93,6 +93,6 @@ Databáze SQL Azure je úzce integrovaná s platformou Azure a vysoce závisí n
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [Azure dostupnost zóny](/azure/availability-zones/az-overview.md)
-- Další informace o [Service Fabric](/azure/service-fabric/service-fabric-overview.md)
-- Další informace o [Azure Traffic Manager](/traffic-manager/traffic-manager-overview.md) 
+- Další informace o [Azure dostupnost zóny](../availability-zones/az-overview.md)
+- Další informace o [Service Fabric](../service-fabric/service-fabric-overview.md)
+- Další informace o [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) 

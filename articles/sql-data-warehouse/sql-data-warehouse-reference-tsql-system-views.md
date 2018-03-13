@@ -15,16 +15,15 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 01/22/2018
 ms.author: barbkess
-ms.openlocfilehash: 83b951ff64577eec92b1144b842f5f90190fda56
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 51e2bf8e9e0bbd6b2e61d37b438bf51325192058
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="system-views"></a>Systémová zobrazení
 ## <a name="sql-data-warehouse-catalog-views"></a>Zobrazení katalogu SQL Data Warehouse
 * [sys.pdw_column_distribution_properties](http://msdn.microsoft.com/library/mt204022.aspx)
-* [sys.pdw_database_mappings](http://msdn.microsoft.com/library/mt203891.aspx)
 * [sys.pdw_distributions](http://msdn.microsoft.com/library/mt203892.aspx)
 * [sys.pdw_index_mappings](http://msdn.microsoft.com/library/mt203912.aspx)
 * [sys.pdw_loader_backup_run_details](https://msdn.microsoft.com/library/mt203877.aspx)

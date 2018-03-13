@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: mimig
-ms.openlocfilehash: d263c4f5ad14f6692a7c8f6e66429b439a52a84a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3679aa76d4a6b9fd6335371e1639f1f246867fa5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Požadované jednotky v Azure Cosmos DB
 Nyní k dispozici: Azure Cosmos DB [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner). Další informace v [odhadnout, musí vaše propustnost](request-units.md#estimating-throughput-needs).
@@ -35,9 +35,9 @@ Zajistit předvídatelný výkon, budete muset rezervovat propustnost v jednotk�
 Po přečtení tohoto článku, budete moct odpovězte si na následující otázky:  
 
 * Jaké jsou požadované jednotky a požádat o poplatky?
-* Jak určit kapacitu jednotky žádosti pro kolekci?
+* Jak určit kapacitu jednotky žádosti pro kontejner?
 * Jak odhadnout, že je jednotka žádosti Moje aplikace?
-* Co se stane, když I překročit kapacitu jednotky žádosti pro kolekci?
+* Co se stane, když I překročit kapacitu jednotky žádosti pro kontejner?
 
 Jak Azure Cosmos DB je více modelu databáze, je důležité si uvědomit, že v tomto článku odkazuje na kolekci či dokumentu pro dokument rozhraní API, grafu nebo uzel pro graf rozhraní API a tabulka/entity pro rozhraní API tabulky. Tento článek se týká konceptu kolekce, grafu nebo tabulky jako kontejner a dokument, uzel nebo entity jako položku.
 
@@ -53,14 +53,14 @@ Doporučujeme začít následujícím videem, kde vysvětluje Aravind Ramachandr
 > 
 
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Určení požadavku jednotka kapacity v Azure Cosmos DB
-Při spouštění novou kolekci, tabulka nebo graf, je třeba zadat počet jednotek žádosti za sekundu (RU za sekundu), kterou chcete vyhrazené. Na základě zřízené propustnosti, Azure Cosmos DB přiděluje fyzické oddíly pro hostování vaší kolekce a rozdělení/rebalances dat napříč oddíly ho s růstem.
+Při spouštění nový kontejner je zadat počet jednotek žádosti za sekundu (RU za sekundu), kterou chcete vyhrazené. Na základě zřízené propustnosti, Azure Cosmos DB přiděluje fyzické oddíly pro hostování vašeho kontejneru a rozdělení/rebalances dat napříč oddíly ho s růstem.
 
-Kontejnery Azure Cosmos DB lze vytvořit jako pevný nebo neomezená. Kontejnery pevné velikosti mají maximální limit 10 GB a propustnost 10 000 RU/s. Chcete-li vytvořit kontejner neomezená musíte zadat minimální propustnost 1000 RU/s a [klíč oddílu](partition-data.md). Vzhledem k tomu, aby se daly rozdělit mezi více oddílů mohou mít vaše data, je nutné vybrat klíč oddílu, který má vysokou kardinalitou (100 na miliony odlišné hodnoty). Výběrem klíč oddílu s mnoha jedinečných hodnot je zajistit, že kolekce, tabulka nebo graf a žádostí je možné rozšířit jednotně pomocí Azure Cosmos DB. 
+Kontejnery Azure Cosmos DB lze vytvořit jako pevný nebo neomezená. Kontejnery s pevnou velikostí mají omezení maximální velikosti 10 GB a propustnosti 10 000 RU/s. Chcete-li vytvořit kontejner neomezená musíte zadat minimální propustnost 1000 RU/s a [klíč oddílu](partition-data.md). Vzhledem k tomu, aby se daly rozdělit mezi více oddílů mohou mít vaše data, je nutné vybrat klíč oddílu, který má vysokou kardinalitou (100 na miliony odlišné hodnoty). Výběrem klíč oddílu s mnoha jedinečných hodnot je zajistit, že kontejner a tabulka/grafika a žádosti o je možné rozšířit jednotně pomocí Azure Cosmos DB. 
 
 > [!NOTE]
 > Klíč oddílu je logické hranice a není fyzický jeden. Proto není potřeba omezit počet hodnoty klíče jedinečné oddílu. Ve skutečnosti je lepší má více jedinečných hodnot klíče oddílu menší, než databázi Cosmos Azure má další možnosti vyrovnávání zatížení.
 
-Zde je fragment kódu pro vytvoření kolekce s 3 000 jednotek žádosti za druhé pomocí sady .NET SDK:
+Zde je fragment kódu pro vytvoření kontejneru s 3 000 jednotek žádosti za druhé pomocí sady .NET SDK:
 
 ```csharp
 DocumentCollection myCollection = new DocumentCollection();
@@ -75,7 +75,7 @@ await client.CreateDocumentCollectionAsync(
 
 Azure Cosmos DB funguje na rezervace modelu na propustnost. To znamená, že se účtují pro množství propustnost *vyhrazené*, bez ohledu na to, kolik z této propustnost je aktivně *používá*. Jako vaše aplikace je zatížení, data a využití vzory změnu, je možné snadno škálovat nahoru a dolů množství vyhrazené RUs prostřednictvím sady SDK nebo pomocí [portálu Azure](https://portal.azure.com).
 
-Každý kolekce a tabulka/grafika jsou namapované na `Offer` prostředků v Azure DB Cosmos, který má metadata o zřízené propustnosti. Vyhledávání odpovídající prostředek nabídka pro kontejner a poté aktualizace pomocí novou hodnotu propustnosti, můžete změnit přidělené propustnost. Zde je fragment kódu pro změnu propustnost kolekce do 5 000 jednotek žádosti za druhé pomocí sady .NET SDK:
+Každý kontejner je namapována na `Offer` prostředků v Azure DB Cosmos, který má metadata o zřízené propustnosti. Vyhledávání odpovídající prostředek nabídka pro kontejner a poté aktualizace pomocí novou hodnotu propustnosti, můžete změnit přidělené propustnost. Zde je fragment kódu pro změnu propustnost kontejner do 5 000 jednotek žádosti za druhé pomocí sady .NET SDK:
 
 ```csharp
 // Fetch the resource to be updated
@@ -334,10 +334,10 @@ Pomocí těchto informací můžete odhadnout požadavky pro tuto aplikaci zadan
 | Vyberte jídlo skupinou |10 |700 |
 | Vyberte nejvyšší 10 |15 |Celkem 150 |
 
-V takovém případě byste měli průměrnou propustností požadavek 1,275 RU/s.  Zaokrouhlení až nejbližší 100 by zřídit 1 300 RU/s pro kolekci této aplikace.
+V takovém případě byste měli průměrnou propustností požadavek 1,275 RU/s.  Zaokrouhlení až nejbližší 100 by zřídit 1 300 RU/s pro tuto aplikaci kontejneru.
 
 ## <a id="RequestRateTooLarge"></a> Překročení omezení vyhrazenou propustností v Azure Cosmos DB
-Odvolat, že spotřeba jednotek žádosti budou vyhodnocené jako za sekundu Pokud rozpočtu je prázdný. Pro aplikace, které překračují rychlost jednotky zřízené požadavků pro kontejner jsou požadavky na tuto kolekci omezena dokud rychlost klesne pod úroveň vyhrazené. Když dojde omezení, server ho preventivně končí požadavek s RequestRateTooLargeException (kód stavu HTTP 429) a vrátí hlavičku x-ms opakování za ms určující dobu v milisekundách, která uživatel musí počkat před provedením nového pokusu požadavek.
+Odvolat, že spotřeba jednotek žádosti budou vyhodnocené jako za sekundu Pokud rozpočtu je prázdný. Pro aplikace, které překračují rychlost jednotky zřízené požadavků pro kontejner jsou omezené požadavky do tohoto kontejneru, dokud rychlost klesne pod úroveň vyhrazené. Když dojde omezení, server ho preventivně končí požadavek s RequestRateTooLargeException (kód stavu HTTP 429) a vrátí hlavičku x-ms opakování za ms určující dobu v milisekundách, která uživatel musí počkat před provedením nového pokusu požadavek.
 
     HTTP Status 429
     Status Line: RequestRateTooLarge
@@ -348,7 +348,7 @@ Pokud používáte klienta SDK rozhraní .NET a LINQ dotazů a potom ve většin
 Pokud máte více než jednoho klienta kumulativně operační vyšší rychlost požadavků nemusí stačit výchozí chování opakování a klient vyvolá výjimku DocumentClientException se stavovým kódem 429 k aplikaci. V případech, jako je tato zvažte zpracování logiky aplikace chyba zpracování rutiny nebo zvýšení vyhrazenou propustností kontejneru a postup pro opakované.
 
 ## <a id="RequestRateTooLargeAPIforMongoDB"></a> Překročení omezení vyhrazenou propustností v rozhraní API MongoDB
-Aplikace, které překračují jednotek zřízené žádosti pro kolekci budou omezeny, dokud rychlost klesne pod úroveň vyhrazené. Když dojde omezení, back-end se ukončí ho preventivně požadavek s *16500* kód chyby - *příliš mnoho požadavků*. Ve výchozím nastavení, rozhraní API MongoDB automaticky opakovat až 10krát před vrácením *příliš mnoho požadavků* kód chyby. Pokud se zobrazuje řada *příliš mnoho požadavků* kódy chyb, můžete zvážit buď přidání opakování chování vaší aplikace chyba zpracování rutiny nebo [zvýšení vyhrazenou propustností pro kolekci](set-throughput.md).
+Aplikace, které překračují jednotek zřízené žádosti pro kontejner budou omezeny, dokud rychlost klesne pod úroveň vyhrazené. Když dojde omezení, back-end se ukončí ho preventivně požadavek s *16500* kód chyby - *příliš mnoho požadavků*. Ve výchozím nastavení, rozhraní API MongoDB automaticky opakovat až 10krát před vrácením *příliš mnoho požadavků* kód chyby. Pokud se zobrazuje řada *příliš mnoho požadavků* kódy chyb, můžete zvážit buď přidání opakování chování vaší aplikace chyba zpracování rutiny nebo [zvýšení vyhrazenou propustností kontejneru](set-throughput.md).
 
 ## <a name="next-steps"></a>Další postup
 Další informace o vyhrazenou propustností s databázemi Azure Cosmos DB najdete v těchto zdrojích:

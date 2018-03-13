@@ -8,20 +8,20 @@ ms.author: dastanfo
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 329a79511b810159244b5530a49a5916440d2046
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 374a24448eb1bf366e26bb55fdf09e470b030c89
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Události úložiště objektů Blob trasy pro koncový bod vlastní webové pomocí prostředí PowerShell
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku pomocí prostředí Azure PowerShell přihlásit k odběru událostí úložiště objektů Blob, aktivační události a zobrazit výsledek. 
 
-Obvykle odesíláte události do koncového bodu, který na událost reaguje například webhookem nebo funkcí Azure Functions. Pro zjednodušení z příkladu v tomto článku, jsou události odeslané na adresu URL, jenom shromažďující zprávy. Vytvořit tuto adresu URL pomocí nástroje třetích stran buď z [RequestBin](https://requestb.in/) nebo [Hookbin](https://hookbin.com/).
+Obvykle odesíláte události do koncového bodu, který na událost reaguje například webhookem nebo funkcí Azure Functions. Pro zjednodušení z příkladu v tomto článku, jsou události odeslané na adresu URL, jenom shromažďující zprávy. Tuto adresu URL vytvoříte pomocí nástrojů třetích stran [RequestBin](https://requestb.in/) nebo [Hookbin](https://hookbin.com/).
 
 > [!NOTE]
-> **RequestBin** a **Hookbin** nejsou určeny pro použití vysoké propustnosti. Používání těchto nástrojů je čistě demonstrative. Pokud najednou nabídnete více než jednu událost, možná se v nástroji nezobrazí všechny.
+> **RequestBin** a **Hookbin** nejsou určené pro použití s vysokou propustností. Použití těchto nástrojů je čistě demonstrativní. Pokud najednou nabídnete více než jednu událost, možná se v nástroji nezobrazí všechny.
 
 Po dokončení kroků popsaných v tomto článku uvidíte, že se data událostí odeslala do koncového bodu.
 
@@ -65,7 +65,7 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 Pokud chcete použít události úložiště objektů Blob, je nutné buď [účtem služby Blob storage](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) nebo [účtem úložiště pro obecné účely v2](../common/storage-account-options.md#general-purpose-v2). **Obecné účely v2 (GPv2)** jsou účty úložiště, které podporují všechny funkce pro všechny služby úložiště, včetně objektů BLOB, soubory, fronty a tabulky. A **účtem služby Blob storage** je specializovaný účet úložiště pro ukládání nestrukturovaných dat jako blobů (objektů) ve službě Azure Storage. Účty úložiště BLOB jsou podobné účtům úložiště pro obecné účely a sdílejí všechny skvělé odolnost, dostupnost, škálovatelnost a výkon funkce používají. jednotlivá včetně 100 % konzistentnost rozhraní API pro objekty BLOB bloku a doplňovací objekty BLOB. V případě aplikací, které vyžadují jenom úložiště objektů blob bloku nebo objektů blob doporučujeme používat účty úložiště objektů blob.  
 
-Vytvoření účtu úložiště Blob pomocí replikace LRS [AzureRmStorageAccount nový](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), následně načíst kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když funguje na účet úložiště, můžete odkazovat na kontext místo opakovaně přihlašovací údaje. Tento příklad vytvoří účet úložiště s názvem **gridstorage** šifrováním místně redundantní storage(LRS) a objektů blob (povolené ve výchozím nastavení). 
+Vytvoření účtu úložiště Blob pomocí replikace LRS [AzureRmStorageAccount nový](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), následně načíst kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když funguje na účet úložiště, můžete odkazovat na kontext místo opakovaně přihlašovací údaje. Tento příklad vytvoří účet úložiště s názvem **gridstorage** s místně redundantní úložiště (LRS). 
 
 > [!NOTE]
 > Názvy účtů úložiště jsou v oboru globální názvů, takže budete muset připojit k názvu zadanému v tento skript některé náhodných znaků.
@@ -84,7 +84,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
-Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy události. Místo psaní kódu, který by na událost reagoval, vytvoříme koncový bod, který bude shromažďovat zprávy, abyste je mohli zobrazit. RequestBin a Hookbin jsou nástroje třetích stran, které vám umožní vytvořit koncový bod a zobrazit požadavků, které jsou do ní poslané. Přejděte na [RequestBin](https://requestb.in/)a klikněte na tlačítko **vytvořit RequestBin**, nebo přejděte na [Hookbin](https://hookbin.com/) a klikněte na tlačítko **vytvořit nový koncový bod**. Zkopírujte adresu URL Koš a nahraďte `<bin URL>` v následující skript.
+Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy události. Místo psaní kódu, který by na událost reagoval, vytvoříme koncový bod, který bude shromažďovat zprávy, abyste je mohli zobrazit. RequestBin a Hookbin jsou nástroje třetích stran, které umožňují vytvořit koncový bod a zobrazit požadavky, které se do nich odesílají. Přejděte na nástroj [RequestBin](https://requestb.in/) a klikněte na **Create a RequestBin** (Vytvořit RequestBin) nebo přejděte na nástroj [Hookbin](https://hookbin.com/) a klikněte na **Create New Endpoint** (Vytvořit nový koncový bod). Zkopírujte adresu URL Koš a nahraďte `<bin URL>` v následující skript.
 
 ```powershell
 $binEndPoint = "<bin URL>"
@@ -115,7 +115,7 @@ echo $null >> gridTestFile.txt
 Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Context $ctx -Blob gridTestFile.txt
 ```
 
-Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Přejděte na adresu URL koncového bodu, který jste vytvořili dříve. Nebo klikněte na tlačítko Aktualizovat v prohlížeči otevřít. Zobrazí se událost, kterou jste právě odeslali. 
+Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Přejděte na adresu URL koncového bodu, kterou jste vytvořili dříve. Nebo v otevřeném prohlížeči klikněte na tlačítko pro obnovení. Zobrazí se událost, kterou jste právě odeslali. 
 
 ```json
 [{

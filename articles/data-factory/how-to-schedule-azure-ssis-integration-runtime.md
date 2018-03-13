@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 69eae46dc554911e0caadcf0aafbaec9e39f727d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 5a9d1ba4d72bc6d4b297695c478438079d34c6e7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Naplánování spuštění a zastavení z modulu runtime integrace Azure SSIS 
 Spuštění modulu runtime integrace Azure služby SSIS (SQL Server Integration Services) (IR) má poplatků, s ním spojená. Tedy chcete spustit IR pouze v případě potřeby pro spouštění balíčků SSIS v Azure a zastavte ji, pokud tomu tak není. Můžete použít uživatelské rozhraní objektu pro vytváření dat nebo prostředí Azure PowerShell [ruční spuštění nebo zastavení služby SSIS IR Azure](manage-azure-ssis-integration-runtime.md)). Tento článek popisuje, jak naplánovat spuštění a zastavení z modulu runtime integrace Azure služby SSIS (IR) pomocí Azure Automation a Azure Data Factory. Zde jsou základní kroky popsané v tomto článku:
@@ -25,7 +25,7 @@ Spuštění modulu runtime integrace Azure služby SSIS (SQL Server Integration 
 1. **Vytvoření a testování runbooku automatizace Azure.** V tomto kroku vytvoříte runbook Powershellu s skript, který spuštění nebo zastavení služby Azure SSIS infračerveného signálu. Pak test runbooku se ve scénářích spouštění a ZASTAVOVÁNÍ a potvrďte, že IR spuštění nebo zastavení. 
 2. **Vytvořte dva plány pro sadu runbook.** Pro první plán nakonfigurujete sady runbook s počáteční jako operaci. Pro druhý plán nakonfigurujte sadu runbook s zastavení jako operaci. U obou plány zadáte cadence spuštění sady runbook. Například můžete naplánovat první z nich pro spuštění v 8: 00 každý den a druhý pro spuštění ve 23: 00 každý den. Když první sada runbook běžet, začne SSIS Azure, infračerveného signálu. Pokud bude druhá sada runbook spuštěna, zastaví se SSIS Azure, infračerveného signálu. 
 3. **Vytvořte dva webhooky pro sadu runbook**, jeden pro počáteční operaci a druhou pro operaci UKONČETE. Adresy URL tyto webhooky použijete při konfiguraci webové aktivity v kanálu Data Factory. 
-4. **Vytvoření kanálu pro vytváření dat**. Kanál, který vytvoříte, se skládá z čtyři aktivity. První **webové** aktivity vyvolá webhook první spuštění služby SSIS Azure, infračerveného signálu. **Počkejte** aktivity počká 30 minut (1 800 sekund) pro IR SSIS Azure spustit. **Uloženou proceduru** aktivita se spustí skript SQL, který spouští balíčku služby SSIS. Druhý **webové** aktivity zastaví SSIS Azure, infračerveného signálu. Další informace o vyvolání balíčku služby SSIS z objektu pro vytváření dat kanál pomocí aktivity uložené procedury najdete v tématu [vyvolání balíčku služby SSIS](how-to-invoke-ssis-package-stored-procedure-activity.md). Pak vytvořte plán aktivační událost při plánování kanál ke spuštění s frekvencí, které zadáte.
+4. **Vytvoření kanálu pro vytváření dat**. Kanál, který vytvoříte, se skládá z tři aktivity. První **webové** aktivity vyvolá webhook první spuštění služby SSIS Azure, infračerveného signálu. **Uloženou proceduru** aktivita se spustí skript SQL, který spouští balíčku služby SSIS. Druhý **webové** aktivity zastaví SSIS Azure, infračerveného signálu. Další informace o vyvolání balíčku služby SSIS z objektu pro vytváření dat kanál pomocí aktivity uložené procedury najdete v tématu [vyvolání balíčku služby SSIS](how-to-invoke-ssis-package-stored-procedure-activity.md). Pak vytvořte plán aktivační událost při plánování kanál ke spuštění s frekvencí, které zadáte.
 
 > [!NOTE]
 > Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [balíčky SSIS vyvolání pomocí aktivity uložené procedury v verze 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
@@ -223,12 +223,11 @@ Měli byste mít dvou adres URL, jeden pro **StartAzureSsisIR** webhooku a druho
 ## <a name="create-and-schedule-a-data-factory-pipeline-that-startsstops-the-ir"></a>Vytvoření a plánování pro vytváření dat kanál, který spustí nebo zastaví reakcí na Incidenty
 V této části ukazuje, jak pomocí webové aktivity pro vyvolání webhooků, které jste vytvořili v předchozí části.
 
-Kanál, který vytvoříte, se skládá z čtyři aktivity. 
+Kanál, který vytvoříte, se skládá z tři aktivity. 
 
 1. První **webové** aktivity vyvolá webhook první spuštění služby SSIS Azure, infračerveného signálu. 
-2. **Počkejte** aktivity počká 30 minut (1 800 sekund) pro IR SSIS Azure spustit. 
-3. **Uloženou proceduru** aktivita se spustí skript SQL, který spouští balíčku služby SSIS. Druhý **webové** aktivity zastaví SSIS Azure, infračerveného signálu. Další informace o vyvolání balíčku služby SSIS z objektu pro vytváření dat kanál pomocí aktivity uložené procedury najdete v tématu [vyvolání balíčku služby SSIS](how-to-invoke-ssis-package-stored-procedure-activity.md). 
-4. Druhý **webové** aktivity vyvolá webhook k zastavení služby SSIS Azure, infračerveného signálu. 
+2. **Uloženou proceduru** aktivita se spustí skript SQL, který spouští balíčku služby SSIS. Druhý **webové** aktivity zastaví SSIS Azure, infračerveného signálu. Další informace o vyvolání balíčku služby SSIS z objektu pro vytváření dat kanál pomocí aktivity uložené procedury najdete v tématu [vyvolání balíčku služby SSIS](how-to-invoke-ssis-package-stored-procedure-activity.md). 
+3. Druhý **webové** aktivity vyvolá webhook k zastavení služby SSIS Azure, infračerveného signálu. 
 
 Po vytvoření a testování kanálu, můžete vytvořit aktivační událost plán a přidružit kanálu. Aktivační událost plán definuje plán pro kanál. Předpokládejme, že můžete vytvořit aktivační událost, která je naplánováno spuštění každý den ve 23: 00. Aktivační událost se spustí kanálu ve 23: 00 každý den. Kanál spustí Azure SSIS IR, provede balíčku služby SSIS a poté se zastaví SSIS Azure, infračerveného signálu. 
 
@@ -392,7 +391,7 @@ Teď, když kanál funguje podle očekávání, můžete vytvořit aktivační u
 6. Ke sledování aktivační události spuštění a spuštění kanálu, použijte **monitorování** karty na levé straně. Podrobné pokyny najdete v tématu [kanál monitorovat](quickstart-create-data-factory-portal.md#monitor-the-pipeline).
 
     ![Spuštění kanálu](./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png)
-7. Pokud chcete zobrazit běh aktivit, které jsou přidružené k kanálu spustit, vyberte první odkaz (**zobrazení aktivity spouští**) v **akce** sloupce. Zobrazí spustí čtyři aktivity spojené s každou aktivitu v kanálu (první webové aktivity, aktivity čekat, aktivity uložené procedury a druhá aktivita Web). Chcete-li přepnout zpět na zobrazení je spuštěn kanálu, vyberte **kanály** odkaz v horní části.
+7. Pokud chcete zobrazit běh aktivit, které jsou přidružené k kanálu spustit, vyberte první odkaz (**zobrazení aktivity spouští**) v **akce** sloupce. Zobrazí spustí tři aktivity spojené s každou aktivitu v kanálu (první webové aktivity, aktivity uložené procedury a druhá aktivita Web). Chcete-li přepnout zpět na zobrazení je spuštěn kanálu, vyberte **kanály** odkaz v horní části.
 
     ![Spuštění aktivit](./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png)
 8. Spustí aktivační událost můžete také zobrazit výběrem **aktivovat spustí** z rozevíracího seznamu, který má vedle **kanál spustí** v horní části. 

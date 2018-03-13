@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2017
+ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 43b3f758fe7017c0ec949ba6e28b76438cf1bc13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee248cb656eeb54e259ff1adf45080a207b5a866
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak objekty Reliable Actors využívají platformu Service Fabric
 Tento článek vysvětluje, jak fungují Reliable Actors na platformě Azure Service Fabric. Spustit v rozhraní, které je hostován v implementaci stavové spolehlivé služby Reliable Actors názvem *služby objektu actor*. Služby objektu actor obsahuje všechny komponenty potřebné ke správě životního cyklu a odeslání pro vaše aktéři zpráva:
@@ -41,9 +41,6 @@ V spolehlivé služby, služby dědí `StatefulService` třídy. Tato třída je
 * Služba zálohování a obnovení.
 * Sdílené funkce pro všechny účastníky, například jistič.
 * Vzdálená volání procedur v samotné služby objektu actor a v každé jednotlivé objektu actor.
-
-> [!NOTE]
-> Stavové služby nejsou aktuálně podporované v jazyce Java nebo Linux.
 
 ### <a name="using-the-actor-service"></a>Pomocí služby objektu actor
 Instance objektu actor mít přístup ke službě objektu actor, ve kterém běží. Prostřednictvím služby objektu actor instancí objektu actor prostřednictvím kódu programu získat kontext služby. Kontext služby má ID oddílu, název služby, název aplikace a další informace specifické pro platformu Service Fabric:
@@ -347,7 +344,7 @@ Služby objektu actor jsou oddílů stavové služby. Každý oddíl služby obj
 Spolehlivé služby můžete vytvořit s schémata jiný oddíl a oddíl rozsahy klíčů. Služby objektu actor používá schéma rozdělení oddílů Int64 s plný rozsah klíče Int64 k mapování aktéři na oddíly.
 
 ### <a name="actor-id"></a>ID objektu actor
-Každý objekt actor, který se vytvoří ve službě má jedinečné ID přidružený reprezentována `ActorId` třídy. `ActorId`je neprůhledné hodnoty ID, které je možné pro rovnoměrné aktéři mezi oddílů služby tak, že generuje náhodné ID:
+Každý objekt actor, který se vytvoří ve službě má jedinečné ID přidružený reprezentována `ActorId` třídy. `ActorId` je neprůhledné hodnoty ID, které je možné pro rovnoměrné aktéři mezi oddílů služby tak, že generuje náhodné ID:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
@@ -401,7 +398,7 @@ Tento krok zajistí, že Proxy objektu Actor používá zásobník V2 vzdálenou
     [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Řízení stavu objektu actor](service-fabric-reliable-actors-state-management.md)
 * [Kolekce paměti a životního cyklu objektu actor](service-fabric-reliable-actors-lifecycle.md)
 * [Referenční dokumentace rozhraní API actors](https://msdn.microsoft.com/library/azure/dn971626.aspx)

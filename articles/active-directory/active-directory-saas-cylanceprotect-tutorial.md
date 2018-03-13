@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 312e8ee3b924fe76e770d8e24e4fc8221e31bffb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3b0afd52ccfa3aa637a64e57601cd5f43fe8df10
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cylanceprotect"></a>Kurz: Azure Active Directory integrace s CylancePROTECT
 
@@ -110,11 +110,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     | Oblast | Hodnota adresy URL |
     |----------|---------|
-    | Asie a Tichomoří – severovýchod (APNE1)| ` https://login-apne1.cylance.com`|
-    | Asie a Tichomoří – jihovýchod (AU) | `https://login-au.cylance.com` |
-    | Střední Evropa (EUC1)|`https://login-euc1.cylance.com`|
-    | Severní Amerika|`https://login.cylance.com`|
-    | Jižní Amerika (SAE1)|`https://login-sae1.cylance.com`|
+    | Asie a Tichomoří – severovýchod (APNE1)| ` https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Asie a Tichomoří – jihovýchod (AU) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
+    | Střední Evropa (EUC1)|`https://login-euc1.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Severní Amerika|`https://login.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Jižní Amerika (SAE1)|`https://login-sae1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     
     b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL:
     

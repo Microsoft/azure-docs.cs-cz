@@ -4,7 +4,7 @@ description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azur
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 5ef34f58-863a-4b37-875c-e8efa3e18bb3
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 03/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 10798152d5ab31b845499f69be61ac2916cde640
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d228ebff245cf5e94bb17c8fb3a506824ff7f4c0
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuse"></a>Kurz: Azure Active Directory integrace s pojistka
 
@@ -108,7 +108,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Pojistka adresy URL jeden přihlašování informace o doméně a](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_url.png)
     
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenant name>.fusion-universal.com/`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenant name>.fusionuniversal.com/`
 
     > [!NOTE] 
     > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory pojistka klienta](mailto:support@fusion-universal.com) získat tuto hodnotu. 
@@ -210,7 +210,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici pojistka na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci pojistka.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

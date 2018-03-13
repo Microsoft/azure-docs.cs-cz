@@ -1,9 +1,22 @@
 ---
-Title: "Microsoft Azure virtuální Datacenter: A sítě perspektivy" | Popis Microsoft Docs: Naučte se vytvářet virtuální datové centrum v služeb Azure: sítě Autor: tracsman manager: rossort značky: Správce prostředků azure
-
-ms.service: virtual-network ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 05/26/2017 ms.author: jonor
+title: "Microsoft Azure virtuální Datacenter: Sítě perspektivy | Microsoft Docs"
+description: "Naučte se vytvářet virtuální datové centrum v Azure"
+services: networking
+author: tracsman
+manager: rossort
+tags: azure-resource-manager
+ms.service: virtual-network
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 05/26/2017
+ms.author: jonor
+ms.openlocfilehash: c4693d91fe81ce55c6faa6610ea19219ac5cfcb5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/12/2018
 ---
-
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure virtuální Datacenter: Hlediska sítě
 **Microsoft Azure**: rychlejší, šetřit peníze, integraci místní aplikace a data
 

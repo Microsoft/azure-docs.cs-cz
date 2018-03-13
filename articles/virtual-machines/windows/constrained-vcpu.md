@@ -4,7 +4,7 @@ description: "Uvádí velikosti virtuálních počítačů, které podporují to
 services: virtual-machines-windows
 documentationcenter: 
 author: jonbeck7
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/07/2017
+ms.date: 03/09/2018
 ms.author: jonbeck
-ms.openlocfilehash: c0f2d4797b2f9a3854c1a59a8f6cf3410e6c8b05
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 0ed14cc0978baaea5e334eef14d0354d8d6edcfb
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Omezené virtuálních procesorů podporující velikosti virtuálních počítačů
 
@@ -33,6 +33,6 @@ ms.lasthandoff: 12/08/2017
 - [GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o [Azure výpočetní jednotky (ACU)](acu.md) můžete porovnat výpočetní výkon v Azure SKU.
 

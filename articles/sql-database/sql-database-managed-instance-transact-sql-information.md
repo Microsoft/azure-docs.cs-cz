@@ -7,14 +7,14 @@ ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/09/2018
 ms.author: jovanpop
 manager: cguyer
-ms.openlocfilehash: 699ac303c553e1f3b78f13fc12163f47a1e77941
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 27be2b9a5f2b9aaf2d4464a6c927ec2a1694131a
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database spravované Instance T-SQL rozdíly v systému SQL Server 
 
@@ -34,7 +34,7 @@ Tento oddíl shrnuje hlavní rozdíly v syntaxi T-SQL a chování mezi spravovan
  - [VYTVOŘENÍ SKUPINY DOSTUPNOSTI](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql.md)
  - [PŘÍKAZ ALTER AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-availability-group-transact-sql.md)
  - [VYŘAZENÍ SKUPINY DOSTUPNOSTI](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql.md)
- - [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr.md) klauzule příkaz ALTER DATABASE
+ - [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr.md) klauzuli [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) – příkaz
 
 ### <a name="auditing"></a>Auditování 
  
@@ -72,6 +72,8 @@ Omezení:
 
 > [!TIP]
 > Chcete-li vyřešit tento omezení na místních počítačích zálohování na `DISK` místo zálohování na `URL`, nahrát záložní soubor do objektu blob a potom obnovit. Podporuje větší soubory obnovte, protože typ jiný objektu blob se používá.  
+
+Informace o zálohování pomocí T-SQL najdete v tématu [zálohování](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
 
 ### <a name="buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti 
  
@@ -367,7 +369,7 @@ Nejsou podporovány následující:
 - `EXTERNAL TABLE` 
 - `MEMORY_OPTIMIZED`  
 
-Informace o vytváření tabulek najdete v tématu [příkazu CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql).
+Informace o vytváření a změny tabulek najdete v tématu [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) a [příkaz ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
  
 ## <a name="Changes"></a> Změny chování 
  

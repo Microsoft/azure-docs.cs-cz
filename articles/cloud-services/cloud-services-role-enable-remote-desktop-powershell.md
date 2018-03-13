@@ -14,23 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: ab99eaa10d232e244b17325188e83128c651caf6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 84fe7ba418399562b6e36ed009c5e6e47fbe24da
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Povolit připojení ke vzdálené ploše pro roli ve službě Azure Cloud Services pomocí prostředí PowerShell
+
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
-> * [Visual Studio](../vs-azure-tools-remote-desktop-roles.md)
+> * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 Vzdálená plocha umožňuje přístup k ploše role, která běží v Azure. Připojení ke vzdálené ploše můžete odstraňovat a diagnostikovat problémy s aplikací, když je spuštěná.
 
 Tento článek popisuje povolení vzdálené plochy na role cloudové služby pomocí prostředí PowerShell. V tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) pro součásti potřebné k tomuto článku. Prostředí PowerShell využívá příponou vzdálené plochy, Vzdálená plocha můžete povolit, jakmile je aplikace nasazená.
 
 ## <a name="configure-remote-desktop-from-powershell"></a>Konfigurace vzdálené plochy z prostředí PowerShell
+
 [Set-AzureServiceRemoteDesktopExtension](/powershell/module/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) rutina umožňuje povolit vzdálené plochy na určené role nebo všechny role nasazení cloudové služby. Rutina umožňuje zadat uživatelské jméno a heslo pro uživatele vzdálené plochy prostřednictvím *pověření* parametr, který přijímá objekt PSCredential.
 
 Pokud používáte prostředí PowerShell interaktivně, můžete snadno nastavit objekt PSCredential voláním [Get-pověření](https://technet.microsoft.com/library/hh849815.aspx) rutiny.
@@ -51,8 +53,6 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 
 > [!IMPORTANT]
 > Při nastavování hesla, ujistěte se, že splňujete [požadavky na složitost](https://technet.microsoft.com/library/cc786468.aspx).
->
->
 
 K vytvoření objektu pověření ze zabezpečeného heslo souboru, musí přečíst obsah souboru a je převést zpět na zabezpečený řetězec pomocí [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx).
 
@@ -73,14 +73,15 @@ Můžete volitelně specifikovat slot nasazení a role, které chcete povolit vz
 Rozšíření vzdálené plochy je přidruženým k nasazení. Pokud vytvoříte nové nasazení pro službu, budete muset povolit vzdálené plochy na toto nasazení. Pokud chcete vždy mít povolena Vzdálená plocha, měli zvážit, integraci skriptů prostředí PowerShell do pracovního postupu nasazení.
 
 ## <a name="remote-desktop-into-a-role-instance"></a>Vzdálená plocha do role instance
+
 [Get-AzureRemoteDesktopFile](/powershell/module/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) rutina se používá ke vzdálené ploše do instance určité role cloudové služby. Můžete použít *Místnícesta* parametr ke stažení protokol RDP soubor místně. Nebo můžete použít *spusťte* parametr přímo spustit dialogové okno připojení ke vzdálené ploše pro přístup k instanci role cloudové služby.
 
 ```
 Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
 ```
 
-
 ## <a name="check-if-remote-desktop-extension-is-enabled-on-a-service"></a>Zkontrolujte, zda rozšíření vzdálené plochy je povolena ve službě
+
 [Get-AzureServiceRemoteDesktopExtension](/powershell/module/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) zobrazuje rutina, která povolená nebo zakázaná na nasazení služby Vzdálená plocha. Rutina vrátí uživatelské jméno pro uživatele vzdálené plochy a rolí, ve kterých je povolené vzdálené plochy rozšíření pro. Ve výchozím nastavení k tomu dochází slotu nasazení a můžete místo toho použít přípravný slot.
 
 ```
@@ -88,6 +89,7 @@ Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 ```
 
 ## <a name="remove-remote-desktop-extension-from-a-service"></a>Odebrání služby Vzdálená plocha rozšíření
+
 Pokud jste povolili vzdálené plochy rozšíření na nasazení a potřeba aktualizovat nastavení vzdálené plochy, nejprve odeberte rozšíření. A znovu ji povolte s novým nastavením. Například pokud chcete nastavit nové heslo pro účet vzdáleného uživatele nebo platnost účtu. To je potřeba na existující nasazení, které mají vzdálené plochy rozšíření povolené. Pro nová nasazení můžete jednoduše provést rozšíření přímo.
 
 Chcete-li odebrat z nasazení vzdálené plochy rozšíření, můžete použít [odebrat AzureServiceRemoteDesktopExtension](/powershell/module/azure/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) rutiny. Můžete volitelně specifikovat slot nasazení a role, ze kterého chcete odebrat příponou vzdálené plochy.
@@ -100,10 +102,7 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 > K úplnému odebrání konfigurace rozšíření, by měly volat *odebrat* rutiny s **UninstallConfiguration** parametr.
 >
 > **UninstallConfiguration** parametr odinstaluje jakoukoli konfiguraci rozšíření, která se použije ke službě. Všechny konfigurace rozšíření je přidružen konfiguraci služby. Volání *odebrat* rutiny bez **UninstallConfiguration** zrušíte <mark>nasazení</mark> z konfigurace rozšíření, proto efektivně odebírání rozšíření. Konfigurace rozšíření však zůstane službě přidružen.
->
->
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-[Postup konfigurace cloudové služby](cloud-services-how-to-configure-portal.md)
-[cloudových služeb časté otázky – vzdálené plochy](cloud-services-faq.md)
+[Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)

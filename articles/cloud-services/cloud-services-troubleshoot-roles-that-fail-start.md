@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: d24a55fd3b93760035f852a24537c1cec9e4bab2
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 36966151b616a14e429807feb63df93503e7b249
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Řešení potíží s cloudové služby role, které se nepodařilo spustit
 Tady jsou některé běžné problémy a řešení souvisejících s Azure Cloud Services rolí, které se nepodařilo spustit.
@@ -62,13 +62,13 @@ Jakmile služba je znovu nasazena, zobrazí se chybová zpráva s názvem chybí
 Vzdálená plocha můžete použít pro přístup k roli a vzdáleně zobrazit podrobnější informace o chybě. Chcete-li zobrazit chyby pomocí vzdálené plochy pomocí následujících kroků:
 
 1. Zkontrolujte, zda je nainstalovaný Azure SDK 1.3 nebo novější.
-2. Při nasazení řešení pomocí sady Visual Studio vyberte "Konfigurace připojení ke vzdálené ploše". Další informace o konfiguraci připojení vzdálené plochy najdete v tématu [pomocí vzdálené plochy s rolemi Azure](../vs-azure-tools-remote-desktop-roles.md).
+2. Při nasazení řešení pomocí sady Visual Studio povolení vzdálené plochy. Další informace najdete v tématu [povolit připojení ke vzdálené ploše pro roli ve službě Azure Cloud Services pomocí sady Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md).
 3. Na portálu Microsoft Azure, jakmile se zobrazí stav instance **připraven**vzdálený do instance. Další informace o používání vzdálené plochy s cloudovými službami najdete v tématu [vzdáleného do instance rolí](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které se zadaly během konfigurace vzdálené plochy.
 6. Otevřete okno příkazového řádku.
 7. Zadejte `IPconfig`.
 8. Poznamenejte si hodnotu adresu IPV4.
-9. Otevřete Internet Explorer.
+9. Open Internet Explorer.
 10. Zadejte adresu a název webové aplikace. Například, `http://<IPV4 Address>/default.aspx`.
 
 Přejdete na web se teď vrátit podrobnější chybové zprávy:
@@ -77,7 +77,7 @@ Přejdete na web se teď vrátit podrobnější chybové zprávy:
 * Popis: Při provádění aktuální webové žádosti došlo k neošetřené výjimce. Přečtěte si další informace o této chybě, a místo původu v kódu trasování zásobníku.
 * Podrobnosti o výjimce: System.IO.FIleNotFoundException: Nelze načíst soubor nebo sestavení ' Microsoft.WindowsAzure.StorageClient, verze = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35, nebo jeden z jeho závislých. Systém nemůže najít zadaný soubor.
 
-Například:
+Příklad:
 
 ![Chyba explicitní serveru v aplikaci '/'](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
@@ -121,7 +121,7 @@ Chcete-li vyřešit chybějící DLL a chyby sestavení, postupujte takto:
 
 Jakmile si ověříte, že byly odstraněny všechny chyby, můžete nasadit službu bez kontroly, zda **povolit IntelliTrace pro role rozhraní .NET 4** zaškrtávací políčko.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Zobrazení [řešení potíží s články](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) pro cloudové služby.
 
 Informace o řešení problémů role služby cloudu pomocí Azure PaaS dat diagnostiky počítače, v tématu [řady blogu kevina Williamson](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

@@ -4,13 +4,13 @@ description: "Tento článek obsahuje přehled součásti a architektura použí
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/09/2018
 ms.author: raynew
-ms.openlocfilehash: e8a5f4fad75ea6211e96ba216c8b506306dcfa34
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: a8af2ee4a32925603d24aee2403ab504a0ca05a8
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>Fyzický server do architektury Azure replikace
 
@@ -27,7 +27,7 @@ Následující obrázek a tabulka poskytují souhrnné zobrazení komponenty pou
 **Konfigurační server** | Jeden místní fyzický počítač nebo virtuální počítač VMware je nasazen na všechny místní spuštění součásti Site Recovery. Virtuální počítač se spustí konfigurační server, procesový server a hlavní cílový server. | Konfigurační server koordinuje komunikaci mezi místním prostředím a Azure a spravuje replikaci dat.
  **Procesový server:**  | Ve výchozím nastavení společně s konfiguračním serveru nainstalovaná. | Funguje jako replikační brána. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do úložiště Azure.<br/><br/> Procesový server také nainstaluje služba Mobility na serverech, které chcete replikovat.<br/><br/> S růstem nasazení můžete přidat další, samostatný proces serverů, aby zvládla větší objemy přenosů replikace.
  **Hlavní cílový server** | Ve výchozím nastavení společně s konfiguračním serveru nainstalovaná. | Zpracovává replikační data během navracení služeb z Azure po obnovení.<br/><br/> Nasazení ve velkých organizacích můžete přidat další, samostatné hlavní cílový server navrácení služeb po obnovení.
-**Replikované servery** | Služba Mobility je nainstalovaná na každém serveru, který můžete replikovat. | Doporučujeme že povolit automatické instalace z procesového serveru. Případně můžete ručně nainstalovat službu, nebo použijte metodu automatického nasazení, jako je například System Center Configuration Manager. 
+**Replikované servery** | Služba Mobility je nainstalovaná na každém serveru, který můžete replikovat. | Doporučujeme že povolit automatické instalace z procesového serveru. Případně můžete ručně nainstalovat službu, nebo použijte metodu automatického nasazení, jako je například System Center Configuration Manager.
 
 **Fyzické Azure architektury**
 

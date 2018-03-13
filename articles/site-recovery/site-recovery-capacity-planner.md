@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/28/2017
+ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: bfeefde53aa2b3645934f068d580c0714714dd69
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d9c2645be73c4b6e34d194d6b2444a700e3900d2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>Plánování kapacity pro ochranu virtuálních počítačů Hyper-V pomocí Site Recovery
 
-Nové vylepšené verze [Azure Site Recovery nasazení Planner pro technologii Hyper-V nasazení Azure](site-recovery-hyper-v-deployment-planner.md) je nyní k dispozici. Nahradí původní nástroj. Nový nástroj pro plánování nasazení. Tento nástroj nabízí následující pokyny:
+Nové vylepšené verze [Azure Site Recovery nasazení Planner pro technologii Hyper-V nasazení Azure](site-recovery-hyper-v-deployment-planner.md) je nyní k dispozici. Nahradí původní nástroj. Nový nástroj pro plánování nasazení.
+Tento nástroj nabízí následující pokyny:
 
 * Vyhodnocení podmínky virtuálních počítačů, na základě počtu disky, velikost disku, IOPS, změn a několik vlastností virtuálního počítače
 * Šířka pásma sítě musí versus assessment plánovaný bod obnovení
@@ -45,7 +46,7 @@ Nástroj můžete spustit ve dvou režimech:
 
 * Shromážděte informace o prostředí, včetně virtuálních počítačů, disků na virtuální počítač, úložišti na disk.
 * Určete vaše denní míry změn s ohledem pro replikovaná data. Stažení [nástroj plánování kapacity služby technologie Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) získat míru změn. [Další informace](site-recovery-capacity-planning-for-hyper-v-replication.md) o tomto nástroji. Doporučujeme, abyste tento nástroj spustit přes týden k zachycení průměry.
-   
+
 
 ## <a name="run-the-quick-planner"></a>Spustit Rychlé plánovače
 1. Stáhněte si a nainstalujte [lokality obnovení Capacity Planner](http://aka.ms/asr-capacity-planner-excel). Budete muset spustit makra. Když se zobrazí výzva, proveďte výběr povolit úpravy a obsahu.
@@ -58,7 +59,7 @@ Nástroj můžete spustit ve dvou režimech:
 
    a. V **vyberte váš scénář**, zvolte **technologie Hyper-V do Azure** nebo **VMware nebo fyzický do Azure**.
 
-   b. V **průměrný denní data změnit rychlost (%)**, zadejte informace shromáždit pomocí [nástroj plánování kapacity služby technologie Hyper-V](site-recovery-capacity-planning-for-hyper-v-replication.md) nebo [Planner nasazení Site Recovery](./site-recovery-deployment-planner.md). 
+   b. V **průměrný denní data změnit rychlost (%)**, zadejte informace shromáždit pomocí [nástroj plánování kapacity služby technologie Hyper-V](site-recovery-capacity-planning-for-hyper-v-replication.md) nebo [Planner nasazení Site Recovery](./site-recovery-deployment-planner.md).
 
    c. **Komprese** nastavení se nepoužívá při replikaci virtuálních počítačů Hyper-V do Azure. Pro kompresi použijte o zařízení třetích stran, jako je například Riverbed.
 
@@ -147,7 +148,7 @@ Po zadání všech informací, vyberte **odesílání dat do nástroje planner**
 ### <a name="submit-data-in-capacity-planner"></a>Odesílání dat v Capacity Planner
 1. Když otevřete **Capacity Planner** listu, naplní jej na základě nastavení, které jste zadali. Slovo "Zatížení" se zobrazí v **Infra vstupy zdroj** buňky do ukazují, že vstup je **zatížení kvalifikace** listu.
 
-2. Pokud chcete změnit, budete muset upravit **zatížení kvalifikace** listu. Potom vyberte **odesílání dat do nástroje planner** znovu. 
+2. Pokud chcete změnit, budete muset upravit **zatížení kvalifikace** listu. Potom vyberte **odesílání dat do nástroje planner** znovu.
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 

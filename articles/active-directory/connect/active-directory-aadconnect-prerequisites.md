@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 03/09/2018
 ms.author: billmath
-ms.openlocfilehash: d82a91aa51b6684e6bf88de142d00705a0ceddba
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: d6d6eadf0ae8996b019a0564715f843913101944
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -31,6 +31,7 @@ Před instalací Azure AD Connect, existuje pár věcí, které potřebujete.
   * Můžete také [portál Azure](https://portal.azure.com). Tento portál nevyžaduje licenci Azure AD.
 * [Přidání a ověření domény](../active-directory-domains-add-azure-portal.md) budete používat ve službě Azure AD. Například pokud máte v úmyslu použít pro vaše uživatele contoso.com, zkontrolujte tato doména byla ověřena a pouze nepoužíváte výchozí doménu contoso.onmicrosoft.com.
 * Klient služby Azure AD umožňuje výchozích 50 tisíc objektů. Když je ověřit doménu, limit je zvýšena na 300 tisíc objektů. Pokud potřebujete ještě další objekty ve službě Azure AD, budete muset otevřít případ podpory tak, aby měl tento limit zvýšit ještě víc. Pokud potřebujete více než 500 tisíc objektů, potřebujete licenci, jako je například Office 365, Azure AD Basic, Azure AD Premium nebo Enterprise Mobility a zabezpečení.
+* ADSyncPrep je modul skriptu prostředí PowerShell, který poskytuje funkce, které se používají při přípravě svého prostředí služby Active Directory pro Azure AD Connect.  Vyžaduje ADSyncPrep [Azure AD Microsoft Online v1.1 modulu PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).  Verze 2 nebude fungovat.  Bude můžete nainstalovat pomocí modulu `Install-Module` rutiny.  Další informace najdete v části uvedeného odkazu.
 
 ### <a name="prepare-your-on-premises-data"></a>Příprava vaše místní data
 * Použití [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) k identifikaci chyby jako např. duplicitní položky a formátování problémy ve vašem adresáři před synchronizovat do Azure AD a Office 365.

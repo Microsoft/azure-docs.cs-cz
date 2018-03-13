@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
-ms.author: barlan
+ms.date: 03/08/2018
+ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user
-ms.openlocfilehash: 2c109a53866f9fff8c61a157cf1194fe4dd6e1ac
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: aa3c6bb9196a17ae41c05458533f73f3ec315bd8
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Aplikace Microsoft Authenticator – nejčastější dotazy
 
@@ -28,6 +28,14 @@ Tento článek obsahuje odpovědi na běžné otázky, které obdržíme o aplik
 Aplikace Microsoft Authenticator nahradit aplikaci Azure Authenticator a je doporučenou aplikaci, když používáte Azure Multi-Factor Authentication. Je k dispozici pro aplikaci Microsoft Authenticator [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594), a [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+### <a name="what-data-does-the-authenticator-store-on-my-behalf-and-how-can-i-delete-it"></a>Jaká data ověřovacích ukládá v mém zastoupení a jak ji můžete odstranit?
+
+Microsoft Authenticator ukládá informace o účtu, který vytvoříte, když přidáte účet. Pokud používáte ověřovací, protokolů diagnostiky se vytvoří pro účely ladění a ukládá užitečné data v pomáhá společnosti Microsoft diagnostikovat problémy s nepředpokládaného. Měli přístup k datům protokolu otevřením **pomoci** > **odeslat protokoly** > **zobrazit protokoly**.
+
+Data můžete odstranit odstraněním účtu dlaždice. Tato akce odstraní všechny informace o účtu používá aplikace, včetně protokolů. 
+
+Další informace o tom, jak společnost Microsoft používá vaše data, navštivte: https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted
 
 ### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>Jaké jsou kódy v aplikaci pro? Proč čísla zachovat počítání?
 

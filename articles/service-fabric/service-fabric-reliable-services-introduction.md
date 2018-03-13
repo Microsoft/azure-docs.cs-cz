@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/23/2018
+ms.date: 3/9/2018
 ms.author: masnider;
-ms.openlocfilehash: 3c583d99a63c13a0a2ab351f82a4f5ff6840788a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: cf647c078728c9fbe357fea5bef4aa6dfb86c975
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="reliable-services-overview"></a>Přehled Reliable Services
 Azure Service Fabric zjednodušuje zápis a správu bezstavové a stavové spolehlivé služby. Toto téma obsahuje:
@@ -87,10 +87,6 @@ Běžným příkladem jak bezstavové služby se používají v Service Fabric j
 Stavové služby je ten, který musí mít některé část stavu zachovány konzistentní a v pořadí pro službu funkce. Zvažte službu, která neustále vypočítá kumulativní průměr některá z hodnot na základě aktualizací, které obdrží. Chcete-li to provést, musí mít aktuální sadu příchozích požadavků, které potřebuje pro proces a aktuální průměr. Jakoukoli službu, která načte, procesy a ukládá informace v externím obchodu (například Azure blob nebo table úložišti dnes) je stavový. V úložišti externí stavu právě udržuje její stav.
 
 Většina služeb dnes uložit jejich stavu externě, vzhledem k tomu, že externí úložiště je pro tento stav co nabízí spolehlivost, dostupnost, škálovatelnost a konzistence. V Service Fabric nejsou potřeba služby k uložení jejich stavu externě. Service Fabric má na starosti tyto požadavky pro kódu služby a stav služby.
-
-> [!NOTE]
-> Podpora pro stavové služby Reliable Services není k dispozici v systému Linux ještě (pro C# nebo Java).
->
 
 Řekněme, že chceme zápisu služba, která zpracovává bitové kopie. K tomuto účelu službu přebírá bitovou kopii a řadu převody k plnění této bitové kopie. Tato služba vrátí naslouchací proces komunikace (umožňuje Předpokládejme, že je WebAPI), jako například zpřístupňuje rozhraní API `ConvertImage(Image i, IList<Conversion> conversions)`. Pokud obdrží požadavek, služba uloží jej do `IReliableQueue`a vrátí některé id do klienta, takže ho můžete sledovat žádosti.
 

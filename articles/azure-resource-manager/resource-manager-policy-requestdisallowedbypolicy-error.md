@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 11/03/2017
+ms.date: 03/09/2018
 ms.author: genli
-ms.openlocfilehash: 2e821c0369c6f01a7f09361c1093259429a79fa6
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 5a9efa6b807e933726104e7af315589ede5d9b74
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Chyba RequestDisallowedByPolicy zásadám prostředků Azure.
 
@@ -25,7 +25,7 @@ Tento článek popisuje příčinou chyby RequestDisallowedByPolicy, poskytuje t
 
 ## <a name="symptom"></a>Příznaky
 
-Když se pokusíte provést akci při nasazení, může dojít **RequestDisallowedByPolicy** chybu, která brání v dokončení akce. Následující příklad ukazuje, chyba:
+Během nasazení, může dojít **RequestDisallowedByPolicy** chybu, která brání ve vytvoření prostředky. Následující příklad ukazuje, chyba:
 
 ```json
 {
@@ -40,7 +40,7 @@ Když se pokusíte provést akci při nasazení, může dojít **RequestDisallow
 
 Načíst podrobnosti o zásady, které blokované vaše nasazení, použijte následující metody:
 
-### <a name="method-1"></a>Metoda 1
+### <a name="powershell"></a>PowerShell
 
 V prostředí PowerShell, zadejte tento identifikátor zásady, jako `Id` parametr načíst podrobnosti o zásady, které blokované vaše nasazení.
 
@@ -48,9 +48,9 @@ V prostředí PowerShell, zadejte tento identifikátor zásady, jako `Id` parame
 (Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
-### <a name="method-2"></a>Metoda 2 
+### <a name="azure-cli"></a>Azure CLI
 
-V Azure CLI 2.0 zadejte název definice zásady: 
+V Azure CLI 2.0 zadejte název definice zásady:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -58,10 +58,10 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Řešení
 
-Pro zabezpečení nebo dodržování předpisů může oddělení IT vynutit zásady prostředků, které brání vytvoření veřejné IP adresy, skupiny zabezpečení sítě, trasy definované uživatelem nebo směrovací tabulky. Chybovou zprávu ve **příznaky** části se dozvíte, zásady s názvem **regionPolicyDefinition**. Vaše zásada může mít jiný název.
-Chcete-li vyřešit tento problém, pracovat vaše IT oddělení zkontrolovat zásady prostředků a určit, jak se provést požadovanou akci souladu s těmito zásadami.
+Pro zabezpečení nebo dodržování předpisů může správce předplatného přiřadit zásady, které omezují, jak se prostředky nasadí. Například vaše předplatné může mít zásadu, která zabraňuje vytváření trasy definované uživatelem veřejných IP adres, skupiny zabezpečení sítě, nebo směrovacích tabulek. Chybovou zprávu ve **příznaky** část zobrazuje název zásad.
+Chcete-li vyřešit tento problém, zkontrolujte zásady prostředků a určit, jak nasadit prostředky, které jsou v souladu s těmito zásadami.
 
 Další informace najdete v následujících článcích:
 
-- [Přehled zásad prostředků](resource-manager-policy.md)
-- [Zobrazení přiřazení zásad prostřednictvím portálu](resource-manager-policy-portal.md)
+- [Co je Azure zásad?](../azure-policy/azure-policy-introduction.md)
+- [Vytvořit a spravovat zásady na vynucování dodržování shody](../azure-policy/create-manage-policy.md)
