@@ -35,6 +35,7 @@
 ### Konfigurace vzdálené plochy
 #### [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 #### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+#### [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 ## Nasazení
 ### [Vytvoření a nasazení cloudové služby na portálu](cloud-services-how-to-create-deploy-portal.md)
