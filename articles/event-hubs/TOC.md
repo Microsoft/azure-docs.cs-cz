@@ -27,6 +27,7 @@
 ### [Přehled ověřování a modelu zabezpečení](event-hubs-authentication-and-security-model-overview.md)
 ### [Dostupnost a konzistence](event-hubs-availability-and-consistency.md)
 ### [Automatické škálování jednotek propustnosti](event-hubs-auto-inflate.md)
+### [Integrace Apache Sparku s Event Hubs](event-hubs-spark-connector.md)
 ## Vývoj
 ### [Odesílání událostí pomocí rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
 ### [Příjem událostí pomocí rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md)

@@ -15,6 +15,8 @@ Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit 
     Kapacita úložiště| Pevná (10 GB)|Změňte hodnotu na **Pevná (10 GB)**. Tato hodnota je kapacita úložiště databáze.
     Propustnost|400 RU|Změňte propustnost na 400 jednotek žádostí za sekundu (RU/s). Abyste mohli propustnost nastavit na 400 RU/s, kapacita úložiště musí být nastavená na **Pevná (10 GB)**. Pokud budete chtít snížit latenci, můžete propustnost později navýšit. 
     
+    Kromě předchozích nastavení můžete pro kolekci volitelně přidat **Jedinečné klíče**. V tomto příkladu ponecháme toto pole prázdné. Jedinečné klíče umožňují vývojářům přidat do databáze vrstvu integrity dat. Vytvořením zásady jedinečného klíče při vytváření kolekce zajistíte jedinečnost jedné nebo více hodnot pro každý klíč oddílu. Další informace najdete v článku [Jedinečné klíče ve službě Azure Cosmos DB](../articles/cosmos-db/unique-keys.md).
+    
     Klikněte na **OK**.
 
     Průzkumník dat zobrazí novou databázi a kolekci.

@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 02/28/2018
 ms.custom: mvc
-ms.openlocfilehash: 779e6b48a20dd49967a189293ed37b07bc5e1cda
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: a609bbdf70599d0cceaf988a9a0bef51bc28716d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="design-your-first-azure-database-for-mysql-database"></a>Návrh první databáze Azure Database for MySQL
 
@@ -54,6 +54,26 @@ Přidejte aktualizované rozšíření pro správu služby Azure Database for My
 ```azurecli-interactive
 az extension add --name rdbms
 ``` 
+
+Zkontrolujte, že máte nainstalovanou správnou verzi rozšíření. 
+```azurecli-interactive
+az extension list
+```
+
+Vrácený kód JSON by měl obsahovat následující: 
+```json
+{
+    "extensionType": "whl",
+    "name": "rdbms",
+    "version": "0.0.3"
+}
+```
+
+Pokud se nevrátí verze 0.0.3, spuštěním následujícího příkazu rozšíření aktualizujte: 
+```azurecli-interactive
+az extension update --name rdbms
+```
+
 ## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
 Vytvořte server Azure Database for MySQL pomocí příkazu az mysql server create. Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
 

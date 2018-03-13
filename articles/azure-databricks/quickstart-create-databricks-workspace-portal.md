@@ -11,18 +11,20 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 03/01/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: f7ec8872849ad7881fb46bca5831c2985d003c13
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0112e5bf53f24150708b9c03440cd6183601f069
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí portálu Azure
 
 Tento rychlý start ukazuje, jak vytvořit pracovní prostor služby Azure Databricks a v něm cluster Apache Spark. Nakonec se v clusteru služby Databricks naučíte spustit úlohu Spark. Další informace o službě Azure Databricks najdete v tématu [Co je Azure Databricks?](what-is-azure-databricks.md)
+
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
@@ -62,7 +64,8 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     ![Vytvoření clusteru Databricks Spark v Azure](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Vytvoření clusteru Databricks Spark v Azure")
 
     * Zadejte název clusteru.
-    * Ujistěte se, že zaškrtnete políčko **Terminate after ___ minutes of activity** (Ukončit po ___ minutách aktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
+    * Pro účely tohoto článku vytvořte cluster s modulem runtime verze **4.0 (beta)**. 
+    * Nezapomeňte zaškrtnout políčko **Terminate after ____ minutes of inactivity** (Ukončit po ____ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
     * Přijměte všechny ostatní výchozí hodnoty. 
     * Klikněte na **Create cluster** (Vytvořit cluster). Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
@@ -70,7 +73,7 @@ Další informace o vytváření clusterů najdete v tématu [Vytvoření cluste
 
 ## <a name="run-a-spark-sql-job"></a>Spuštění úlohy Spark SQL
 
-Než se pustíte do této části, je potřeba provést tyto kroky:
+Než se pustíte do této části, je potřeba nejprve splnit následující požadavky:
 
 * [Vytvořte si účet Azure Storage](../storage/common/storage-create-storage-account.md#create-a-storage-account). 
 * Stáhněte si [z GitHubu](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) ukázkový soubor JSON. 
@@ -88,11 +91,27 @@ Pomocí následujících kroků vytvořte ve službě Databricks poznámkový bl
 
     Klikněte na možnost **Vytvořit**.
 
-3. V následujícím fragmentu kódu nahraďte část `{YOUR STORAGE ACCOUNT NAME}` názvem účtu služby Azure Storage, který jste vytvořili, a část `{YOUR STORAGE ACCOUNT ACCESS KEY}` přístupovým klíčem účtu úložiště. Vložte fragment kódu do prázdné buňky v poznámkovém bloku a stisknutím kláves SHIFT + ENTER buňku kódu spusťte. Tento fragment kódu nakonfiguruje poznámkový blok na čtení dat ze služby Azure Blob Storage.
+3. V tomto kroku přidružte účet Azure Storage ke clusteru Databricks Spark. Můžete to provést dvěma způsoby – připojením účtu Azure Storage k systému souborů Databricks (DBFS) nebo přímým přístupem k účtu Azure Storage z vytvářené aplikace.  
 
-       spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
-    
-    Pokyny pro načtení přístupového klíče účtu úložiště najdete v článku [Správa přístupových klíčů úložiště](../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+    > [!IMPORTANT]
+    >V tomto článku se používá **přístup využívající připojení úložiště k systému souborů DBFS**. Tento přístup zajistí, že se připojené úložiště přidruží k samotnému systému souborů clusteru. Přidružené úložiště tak budou moci využívat i všechny aplikace přistupující ke clusteru. Přístup využívající přímý přístup je omezený na aplikaci, ze které přístup nakonfigurujete.
+    >
+    > Pokud chcete použít přístup využívající připojení, musíte vytvořit cluster Spark s modulem runtime Databricks verze **4.0 (beta)**, který jste zvolili v tomto článku.
+
+    V následujícím fragmentu kódu nahraďte `{YOUR CONTAINER NAME}` (Název vašeho kontejneru), `{YOUR STORAGE ACCOUNT NAME}` (Název vašeho účtu úložiště) a `{YOUR STORAGE ACCOUNT ACCESS KEY}` (Přístupový klíč vašeho účtu úložiště) odpovídajícími hodnotami pro váš účet Azure Storage. Vložte fragment kódu do prázdné buňky v poznámkovém bloku a stisknutím kláves SHIFT + ENTER buňku kódu spusťte.
+
+    * **Připojení účtu úložiště k systému souborů DBFS (doporučeno)**. V tomto fragmentu kódu se cesta k účtu Azure Storage připojí k cestě `/mnt/mypath`. Proto ve všech budoucích výskytech při přistupování k účtu Azure Storage už nemusíte zadávat úplnou cestu. Můžete použít jenom `/mnt/mypath`.
+
+          dbutils.fs.mount(
+            source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
+            mountPoint = "/mnt/mypath",
+            extraConfigs = Map("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net" -> "{YOUR STORAGE ACCOUNT ACCESS KEY}"))
+
+    * **Přímý přístup k účtu úložišti**
+
+          spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
+
+    Pokyny pro načtení přístupového klíče účtu úložiště najdete v tématu věnovaném [správě přístupových klíčů úložiště](../storage/common/storage-create-storage-account.md#manage-your-storage-account).
 
     > [!NOTE]
     > V Azure Databricks můžete také použít službu Azure Data Lake Store s clusterem Spark. Pokyny najdete v článku [Použití služby Data Lake Store ve službě Azure Databricks](https://go.microsoft.com/fwlink/?linkid=864084).
@@ -101,10 +120,11 @@ Pomocí následujících kroků vytvořte ve službě Databricks poznámkový bl
 
     ```sql
     %sql 
-    CREATE TEMPORARY TABLE radio_sample_data
+    DROP TABLE IF EXISTS radio_sample_data
+    CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/small_radio_json.json"
+     path "/mnt/mypath/small_radio_json.json"
     )
     ```
 

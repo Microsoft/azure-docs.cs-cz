@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 7308c8754198ea3e7533b8a9c378cfaac1b5bbd2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 18792d8dc8b232ad048db2440c5b52428c50f92e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory
 Prostředí Integration Runtime (IR) je výpočetní infrastruktura, kterou Azure Data Factory používá k poskytování následujících funkcí integrace dat v různých síťových prostředích:
@@ -123,7 +123,7 @@ Následující diagram znázorňuje dvě ukázkové aktivity kopírování:
 ![Které prostředí IR použít](media/concepts-integration-runtime/which-integration-runtime-to-use.png)
 
 ## <a name="integration-runtime-location"></a>Umístění prostředí Integration Runtime
-Do umístění služby Data Factory se ukládají metadata datové továrny a inicializují se z něj spouštění kanálu. V současné době je dostupná podpora těchto umístění služby Data Factory: Východní USA, Východní USA 2 a Západní Evropa. Objekt služby Data Factory nicméně může přistupovat k úložištím dat a výpočetním službám v jiných oblastech Azure za účelem přesouvání dat mezi úložišti dat nebo zpracování dat pomocí výpočetních služeb. Toto chování probíhá prostřednictvím prostředí IR dostupného globálně ve více regionech, aby se zajistilo dodržování předpisů pro data, efektivita a nižší náklady na odchozí přenosy v síti.
+Do umístění služby Data Factory se ukládají metadata datové továrny a inicializují se z něj spouštění kanálu. V současné době je dostupná podpora těchto umístění služby Data Factory: Východní USA, Východní USA 2, Jihovýchodní Asie a Západní Evropa. Objekt služby Data Factory nicméně může přistupovat k úložištím dat a výpočetním službám v jiných oblastech Azure za účelem přesouvání dat mezi úložišti dat nebo zpracování dat pomocí výpočetních služeb. Toto chování probíhá prostřednictvím prostředí IR dostupného globálně ve více regionech, aby se zajistilo dodržování předpisů pro data, efektivita a nižší náklady na odchozí přenosy v síti.
 
 Umístění prostředí IR určuje umístění výpočetního prostředí back-end, tedy v podstatě umístění, kde se provádí přesun dat, odesílání aktivit a spouštění balíčku služby SSIS. Umístění prostředí IR se může lišit od umístění, do kterého patří datová továrna. Následující diagram znázorňuje nastavení umístění služby Data Factory a jejích prostředí Integration Runtime:
 
@@ -176,7 +176,7 @@ Prostředí IR v místním prostředí má logickou registraci ve službě Data 
 Pokud se prostředí IR v místním prostředí používá k provádění přesunu dat, extrahuje data ze zdroje a zapisuje je do cíle.
 
 ### <a name="azure-ssis-ir"></a>Prostředí Azure-SSIS IR
-Pro vysoký výkon pracovních postupů extrakce, transformace a načítání (ETL) je velmi důležitý výběr správného umístění prostředí Azure-SSIS IR.  Pro verzi Preview jsou na úvod dostupná dvě umístění (USA – východ a Severní Evropa).
+Pro vysoký výkon pracovních postupů extrakce, transformace a načítání (ETL) je velmi důležitý výběr správného umístění prostředí Azure-SSIS IR.  Momentálně je pro verzi Preview dostupných šest umístění (Východní USA, Východní USA 2, Střed USA, Austrálie – východ, Severní Evropa a Západní Evropa).
 
 - Umístění vaší služby SSIS-Azure IR nemusí být stejné jako umístění datové továrny, ale mělo by odpovídat umístění vašeho vlastního serveru Azure SQL Database / spravované instance (privátní verze Preview), na kterém chcete hostovat službu SSISDB. Díky tomu může prostředí Azure-SSIS Integration Runtime snadno získat přístup ke službě SSISDB bez nadměrných přenosů dat mezi různými umístěními.
 - Pokud nemáte stávající server Azure SQL Database / spravované instance (privátní verze Preview) pro hostování služby SSISDB, ale máte místní zdroje/cíle dat, měli byste vytvořit nový server Azure SQL Database / spravované instance (privátní verze Preview) ve stejném umístění jako virtuální síť připojená k vaší místní síti.  Můžete tak vytvořit prostředí Azure-SSIS IR pomocí nového serveru Azure SQL Database / spravované instance (privátní verze Preview) a připojit se k této virtuální síti ve stejném umístění, čímž účinně omezíte přesuny dat mezi různými umístěními.

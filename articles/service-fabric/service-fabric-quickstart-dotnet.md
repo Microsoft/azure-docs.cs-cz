@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/25/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ea0d32674aa770b5f25b0b62eb69007f3fd6bf5c
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5187aadf686a49f6d78fc4f5c2b2c42487e56c13
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Rychlý start: Vytvoření aplikace Service Fabric v .NET v Azure
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů. 
@@ -94,9 +94,9 @@ Při hlasování v aplikaci dojde k následujícím událostem:
 Při ladění aplikace v sadě Visual Studio používáte místní vývojový cluster Service Fabric. Možnosti ladění si můžete upravit tak, aby vyhovovaly vašemu scénáři. V této aplikaci se data ukládají v back-end službě s použitím spolehlivého slovníku. Sada Visual Studio ve výchozím nastavení odebere aplikaci při zastavení ladicího programu. Odebrání aplikace způsobí i odebrání dat v back-end službě. Pokud chcete zachovat data mezi ladicími relacemi, můžete změnit **Režim ladění aplikace** ve vlastnosti projektu **Voting** v sadě Visual Studio.
 
 Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
-1. Otevřete soubor **/VotingWeb/Controllers/VotesController.cs** a nastavte zarážku v metodě **Put** webového rozhraní API (řádek 47) – Soubor můžete vyhledat v Průzkumníku řešení v sadě Visual Studio.
+1. Otevřete soubor **/VotingWeb/Controllers/VotesController.cs** a nastavte zarážku v metodě **Put** webového rozhraní API (řádek 69) – Soubor můžete vyhledat v Průzkumníku řešení v sadě Visual Studio.
 
-2. Otevřete soubor **/VotingData/Controllers/VoteDataController.cs** a nastavte zarážku v metodě **Put** tohoto webového rozhraní API (řádek 50).
+2. Otevřete soubor **/VotingData/Controllers/VoteDataController.cs** a nastavte zarážku v metodě **Put** tohoto webového rozhraní API (řádek 54).
 
 3. Vraťte se do prohlížeče a klikněte na některou možnost hlasování nebo přidejte novou. Dostanete se k první zarážce v kontroleru rozhraní API webového front-endu.
     - Tady JavaScript v prohlížeči odesílá požadavek do kontroleru webového rozhraní API ve front-end službě.

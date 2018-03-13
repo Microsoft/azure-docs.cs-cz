@@ -6,13 +6,13 @@ author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: overview
-ms.date: 01/11/2018
+ms.date: 02/27/2018
 ms.author: marsma
-ms.openlocfilehash: baf93d4a2a4ba1e05bbf558d0c056fa3aa833fef
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 008b07402cb0b937174488982cac64811baa5d5d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Kvóty a dostupnost oblastí pro Azure Container Instances
 
@@ -28,10 +28,14 @@ Služba Azure Container Instances je dostupná v následujících oblastech s uv
 
 | Umístění | Operační systém | Procesor | Paměť (GB) |
 | -------- | -- | :---: | :-----------: |
-| Západní Evropa, Západní USA, Východní USA, Jihovýchodní Asie | Linux | 4 | 14 |
-| Západní Evropa, Západní USA, Východní USA, Jihovýchodní Asie  | Windows | 4 | 14 |
+| Západní Evropa, Západní USA, Východní USA | Linux | 4 | 14 |
+| Jihovýchodní Asie  | Linux | 1 | 1,5 |
+| Západní Evropa, Západní USA, Východní USA | Windows | 4 | 14 |
+| Jihovýchodní Asie  | Windows | 2 | 3,5 |
 
 Pro instance kontejnerů vytvořené v mezích těchto omezení prostředků platí určitá omezení z hlediska dostupnosti v rámci oblasti nasazení. V případě velkého zatížení oblasti může při nasazování instancí docházet k selhání. Pokud chcete selhání nasazení zmírnit, zkuste nasazení instancí s nižšími nastaveními procesoru a paměti nebo zkuste nasazení později.
+
+Sdělte týmu, ve kterých dalších oblastech je potřeba zvýšit omezení procesoru nebo paměti, na stránce [aka.ms/aci/feedback](https://aka.ms/aci/feedback).
 
 Další informace o řešení potíží s nasazením instance kontejneru najdete v tématu [Řešení potíží s nasazením pomocí Azure Container Instances](container-instances-troubleshooting.md).
 

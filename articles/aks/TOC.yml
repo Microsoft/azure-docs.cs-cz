@@ -87,6 +87,8 @@
       items:
         - name: Přístup k uzlu SSH
           href: aks-ssh.md
+        - name: Získání protokolů kubelet
+          href: kubelet-logs.md
 - name: Referenční informace
   items:
     - name: Azure CLI

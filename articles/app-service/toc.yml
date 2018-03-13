@@ -97,7 +97,7 @@
       items:
         - name: Nasazení aplikace
           items:
-            - name: Nasazení souboru ZIP
+            - name: Nasazení souboru ZIP nebo WAR
               href: app-service-deploy-zip.md
             - name: Nasazení prostřednictvím FTP
               href: app-service-deploy-ftp.md

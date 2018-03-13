@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: 7e5e33ee2a7b53f3ffbd27992f6b604358db49bb
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 7eeb3b01ddaea56b1e11fc37bbeba7d3f328772d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-design-your-first-azure-database-for-postgresql-using-azure-cli"></a>Kurz: Návrh první databáze Azure Database for PostgreSQL pomocí Azure CLI 
 V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další nástroje k získání informací o těchto tématech:
@@ -50,6 +50,25 @@ Přidejte aktualizované rozšíření pro správu služby Azure Database for Po
 ```azurecli-interactive
 az extension add --name rdbms
 ``` 
+
+Zkontrolujte, že máte nainstalovanou správnou verzi rozšíření. 
+```azurecli-interactive
+az extension list
+```
+
+Vrácený kód JSON by měl obsahovat následující: 
+```json
+{
+    "extensionType": "whl",
+    "name": "rdbms",
+    "version": "0.0.3"
+}
+```
+
+Pokud se nevrátí verze 0.0.3, spuštěním následujícího příkazu rozšíření aktualizujte: 
+```azurecli-interactive
+az extension update --name rdbms
+```
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Vytvoření serveru Azure Database for PostgreSQL
 Vytvořte [server Azure Database for PostgreSQL](overview.md) pomocí příkazu [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create). Server obsahuje soubor databází spravovaných jako skupina. 

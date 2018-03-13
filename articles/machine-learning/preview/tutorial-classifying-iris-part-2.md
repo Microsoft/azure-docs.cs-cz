@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: f52d4268c3983b419a6393bbd651301022688029
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9a1613e2137e178d00a24f9f5b3c802f8a894b15
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-classify-iris-part-2---build-a-model"></a>Kurz: Klasifikace Iris, část 2 – Sestavení modelu
 Služby Azure Machine Learning (Preview) představují integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
 
-Tento kurz je druhou částí z třídílné série. V této části kurzu provedete pomocí služeb Azure Machine Learning (Preview) následující úlohy:
+Tento kurz je **druhou částí z třídílné série**. V této části kurzu provedete pomocí služeb Azure Machine Learning (Preview) následující úlohy:
 
 > [!div class="checklist"]
 > * Použití aplikace Azure Machine Learning Workbench

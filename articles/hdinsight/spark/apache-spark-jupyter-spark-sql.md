@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/18/2018
+ms.date: 03/01/2018
 ms.author: jgao
-ms.openlocfilehash: 1dbad36b7420791e70066263a566f1820823ad27
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: baad137a6f982df987faf95d7c7c595698e8e399
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>Vytvoření clusteru Apache Spark ve službě Azure HDInsight
 
@@ -47,8 +47,8 @@ Vytvořte cluster HDInsight Spark pomocí [šablony Azure Resource Manageru](../
     * **Skupina prostředků:** Vytvořte skupinu prostředků nebo vyberte stávající. Skupina prostředků slouží ke správě prostředků Azure pro vaše projekty.
     * **Umístění:** Vyberte umístění pro skupinu prostředků. Šablona toto umístění používá k vytvoření clusteru i jako výchozí úložiště clusteru.
     * **Název clusteru:** Zadejte název pro cluster HDInsight, který chcete vytvořit.
-    * **Přihlašovací jméno a heslo clusteru**: výchozí přihlašovací jméno je admin.
-    * **Uživatelské jméno a heslo SSH**.
+    * **Přihlašovací jméno a heslo clusteru**: výchozí přihlašovací jméno je admin. Zvolte heslo pro přihlášení ke clusteru.
+    * **Uživatelské jméno a heslo SSH**. Zvolte heslo pro uživatele SSH.
 
 3. Vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře**, vyberte **Připnout na řídicí panel** a potom klikněte na **Koupit**. Zobrazí se nová dlaždice s názvem **Nasazení šablony**. Vytvoření clusteru trvá přibližně 20 minut.
 
@@ -103,16 +103,17 @@ Příklad čtení dat ze souboru CSV místo tabulky Hive najdete v části [Spou
 
     ![Dotaz Hive v HDInsight Spark](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Dotaz Hive v HDInsight Spark")
 
-2. Když je jádro připraveno, vložte do prázdné buňky následující kód a stisknutím **SHIFT + ENTER** kód spusťte. Výstup by měl standardně vypsat tabulku `hivesampletable`, která je dostupná v clusteru.
+2. Když je jádro připraveno, vložte do prázdné buňky následující kód a stisknutím **SHIFT + ENTER** kód spusťte. Příkaz vypíše tabulky Hive v clusteru:
 
     ```PySpark
     %%sql
     SHOW TABLES
     ```
+    Pokud používáte poznámkový blok Jupyter s clusterem HDInsight Spark, získáte přednastavený kontext `sqlContext`, který můžete použít ke spouštění dotazů Hive pomocí Spark SQL. `%%sql` říká poznámkovému bloku Jupyter, aby ke spuštění dotazu Hive použil přednastavený kontext `sqlContext`. Dotaz načte prvních 10 řádků z tabulky Hive (**hivesampletable**), která je ve výchozím nastavení k dispozici na všech clusterech HDInsight. Získání výsledků trvá přibližně 30 sekund. Výstup bude vypadat následovně: 
 
     ![Dotaz Hive v HDInsight Spark](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "Dotaz Hive v HDInsight Spark")
 
-    Pokud používáte poznámkový blok Jupyter s clusterem HDInsight Spark, získáte přednastavený kontext `sqlContext`, který můžete použít ke spouštění dotazů Hive pomocí Spark SQL. `%%sql` říká poznámkovému bloku Jupyter, aby ke spuštění dotazu Hive použil přednastavený kontext `sqlContext`. Dotaz načte prvních 10 řádků z tabulky Hive (**hivesampletable**), která je ve výchozím nastavení k dispozici na všech clusterech HDInsight. Další informace o magickém příkazu `%%sql` a přednastavených kontextech najdete v tématu [Dostupná jádra Jupyter pro cluster HDInsight](apache-spark-jupyter-notebook-kernels.md).
+    Další informace o magickém příkazu `%%sql` a přednastavených kontextech najdete v tématu [Dostupná jádra Jupyter pro cluster HDInsight](apache-spark-jupyter-notebook-kernels.md).
 
     Při každém spuštění dotazu v Jupyter se v názvu okna webového prohlížeče zobrazí stav **(Busy)** (Zaneprázdněn) společně s názvem poznámkového bloku. Zobrazí se také plný kroužek vedle textu **PySpark** v pravém horním rohu.
     

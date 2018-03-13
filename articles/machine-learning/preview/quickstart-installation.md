@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 2/22/2018
-ms.openlocfilehash: 186a7b5632c1680e80e087e8f855eaacf3448207
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 33ced510dc9579248b75fb21520d55bd747a6a5c
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>Rychlý start: Instalace služeb Azure Machine Learning a začátek práce s nimi
 Služby Azure Machine Learning (Preview) představují komplexní integrované řešení pro datové vědy a pokročilé analýzy. Pomáhá profesionálním datovým vědcům připravovat data, vyvíjet experimenty a nasazovat modely na úrovni cloudu.
@@ -29,7 +29,9 @@ V tomto rychlém startu se naučíte:
 * Přístup k rozhraní příkazového řádku
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Jako součást portfolia Microsoft Azure vyžadují služby Azure Machine Learning předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+Kromě toho musíte mít odpovídající oprávnění k vytváření prostředků, jako jsou skupiny prostředků, virtuální počítače atd. 
 
 <a name="prerequisites"></a>Aplikaci Azure Machine Learning Workbench můžete nainstalovat v následujících operačních systémech:
 - Windows 10 nebo Windows Server 2016
@@ -63,7 +65,7 @@ Ke zřízení účtů služeb Azure Machine Learning použijte web Azure Portal:
    Umístění | _Oblast nejbližší vašim uživatelům_ | Zvolte umístění co nejblíže vašim uživatelům a datovým prostředkům.
    Počet licencí | 2 | Zadejte počet licencí. Informace o tom, jak [licence ovlivňují ceny](https://azure.microsoft.com/pricing/details/machine-learning/).<br/><br/>Pro účely tohoto rychlého startu potřebujete jenom dvě licence. Licence je možné podle potřeby přidávat nebo odebírat na webu Azure Portal.
    Účet úložiště | _Jedinečný název_ | Vyberte **Vytvořit nový** a zadejte název pro vytvoření [účtu úložiště Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal). Nebo vyberte **Použít existující** a z rozevíracího seznamu vyberte existující účet úložiště. Účet úložiště je povinný a slouží k ukládání artefaktů projektu a dat historie spuštění. 
-   Účet aplikace Workspace pro experimentování | IrisGarden | Zadejte název pracovního prostoru pro tento účet. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
+   Účet aplikace Workspace pro experimentování | IrisGarden<br/>(název používaný v kurzech) | Zadejte název pracovního prostoru pro tento účet. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
    Přiřazení vlastníka pracovního prostoru | _Váš účet_ | Jako vlastníka pracovního prostoru vyberte svůj vlastní účet.
    Vytvoření účtu služby Správa modelů | **zaškrtnutí** |Vytvořte účet služby Správa modelů už teď, aby byl tento prostředek k dispozici, až budete chtít nasadit a spravovat své modely jako webové služby fungující v reálném čase. <br/><br/>I když je to volitelné, doporučujeme vytvořit účet služby Správa modelů zároveň s účtem Experimentování.
    Název účtu | _Jedinečný název_ | Vyberte jedinečný název, který identifikuje váš účet služby Správa modelů. Můžete použít své jméno nebo třeba název oddělení nebo projektu, který experiment nejlépe identifikuje. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). 

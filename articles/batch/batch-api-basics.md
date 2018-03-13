@@ -1,5 +1,5 @@
 ---
-title: "Přehled služby Azure Batch pro vývojáře | Microsoft Docs"
+title: "Přehled služby Azure Batch pro vývojáře | Dokumentace Microsoftu"
 description: "Informace o funkcích služby Batch a jejích rozhraní API z hlediska vývoje."
 services: batch
 documentationcenter: .net
@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 11/16/2017
+ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c8bbb06fd511321a67e01772caeaa316ddb6e2a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: c53007530fe80f03cefbf138193cfad4b0e8292a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -68,7 +68,7 @@ Některé z následujících prostředků – účty, výpočetní uzly, fondy, 
 ## <a name="account"></a>Účet
 Účet Batch je jednoznačně identifikovaná entita v rámci služby Batch. Veškeré zpracování je přidruženo k účtu Batch.
 
-Účet Batch můžete vytvořit prostřednictvím portálu [Azure Portal](batch-account-create-portal.md) nebo prostřednictvím programu, například s použitím [knihovny Batch Management .NET](batch-management-dotnet.md). Při vytváření účtu můžete přidružit účet úložiště Azure pro ukládání aplikací nebo vstupních a výstupních dat souvisejících s úlohami.
+Účet Batch můžete vytvořit prostřednictvím webu [Azure Portal](batch-account-create-portal.md) nebo prostřednictvím programu, například s použitím [knihovny Batch Management .NET](batch-management-dotnet.md). Při vytváření účtu můžete přidružit účet úložiště Azure pro ukládání aplikací nebo vstupních a výstupních dat souvisejících s úlohami.
 
 Můžete spustit několik dávkových úloh služby Batch v jednom účtu Batch najednou, nebo můžete úlohy rozložit mezi více účtů Batch, které jsou v jednom předplatném, ale v různých oblastech Azure.
 
@@ -171,13 +171,9 @@ Informace o cenách výpočetních uzlů s nízkou prioritou a vyhrazených uzl�
 
 ### <a name="size-of-the-compute-nodes"></a>Velikost výpočetních uzlů
 
-Velikosti výpočetních uzlů z **konfigurace služby Cloud Services** jsou uvedeny v seznamu [Velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Služba Batch podporuje všechny velikosti pro Cloud Services kromě `ExtraSmall`, `STANDARD_A1_V2` a `STANDARD_A2_V2`.
+Při vytváření fondu Azure Batch máte na výběr téměř ze všech řad a velikostí virtuálních počítačů, které jsou v Azure k dispozici. Azure nabízí řadu velikostí virtuálních počítačů pro různé úlohy, včetně specializovaných velikostí s podporou [prostředí HPC](../virtual-machines/linux/sizes-hpc.md) nebo [grafického procesoru](../virtual-machines/linux/sizes-gpu.md). 
 
-Velikosti výpočetních uzlů z **konfigurace virtuálního počítače** jsou uvedeny v seznamech [Velikosti pro virtuální počítače v Azure](../virtual-machines/linux/sizes.md) (Linux) a [Velikosti pro virtuální počítače v Azure](../virtual-machines/windows/sizes.md) (Windows). Služba Batch podporuje všechny velikosti VM Azure kromě `STANDARD_A0` a těch, které mají úložiště Premium (série `STANDARD_GS`, `STANDARD_DS` a `STANDARD_DSV2`).
-
-Při výběru velikosti výpočetního uzlu zvažte charakteristiku a požadavky aplikací, které budete v uzlech spouštět. To, jestli je aplikace vícevláknová, kolik paměti používá, a další aspekty vám mohou pomoci při určování nejvhodnější a cenově nejefektivnější velikosti uzlu. Velikost uzlu se obvykle volí s předpokladem, že na uzlu poběží současně pouze jeden úkol. Ve výpočetních uzlech je však možné mít během zpracování úkolu [paralelně spuštěno](batch-parallel-node-tasks.md) několik úkolů (a tudíž i několik instancí aplikace). V takovém případě je běžné zvolit větší velikost uzlu, aby dostačovala i v případě zvýšené poptávky na paralelní zpracování úkolů. Další informace najdete v části [Zásady plánování úkolů](#task-scheduling-policy).
-
-Všechny uzly ve fondu mají stejnou velikost. Pokud máte v úmyslu spouštět aplikace s různými požadavky na systém nebo úrovně zatížení, doporučujeme vám používat oddělené fondy.
+Další informace najdete v tématu [Výběr velikosti virtuálních počítačů pro výpočetní uzly ve fondu Azure Batch](batch-pool-vm-sizes.md).
 
 ### <a name="scaling-policy"></a>Zásady škálování
 
@@ -461,7 +457,7 @@ Selhání úkolů spadá do následujících kategorií:
 ### <a name="debugging-application-failures"></a>Ladění chyb aplikace
 * `stderr` a `stdout`
 
-    Během provádění může aplikace generovat diagnostický výstup, který lze použít k řešení potíží. Jak je uvedeno v části [Soubory a adresáře](#files-and-directories) výše, zapíše služba Batch standardní výstup a standardní chybový výstup do souborů `stdout.txt` a `stderr.txt` v adresáři úkolů na výpočetním uzlu. Tyto soubory můžete stáhnout pomocí portálu Azure Portal nebo jedné ze sad SDK služby Batch. Tyto a další soubory můžete pro účely odstraňování potíží načíst například v knihovně Batch .NET pomocí metod [ComputeNode.GetNodeFile][net_getfile_node] a [CloudTask.GetNodeFile][net_getfile_task].
+    Během provádění může aplikace generovat diagnostický výstup, který lze použít k řešení potíží. Jak je uvedeno v části [Soubory a adresáře](#files-and-directories) výše, zapíše služba Batch standardní výstup a standardní chybový výstup do souborů `stdout.txt` a `stderr.txt` v adresáři úkolů na výpočetním uzlu. Tyto soubory můžete stáhnout pomocí webu Azure Portal nebo jedné ze sad SDK služby Batch. Tyto a další soubory můžete pro účely odstraňování potíží načíst například v knihovně Batch .NET pomocí metod [ComputeNode.GetNodeFile][net_getfile_node] a [CloudTask.GetNodeFile][net_getfile_task].
 
 * **Ukončovací kódy úkolů**
 
@@ -473,10 +469,10 @@ Selhání úkolů spadá do následujících kategorií:
 Je také možné, že občasný problém způsobí, že se úkol zablokuje nebo že jeho spuštění trvá příliš dlouho. Pro úkol můžete nastavit maximální interval provádění. Pokud dojde k překročení maximálního intervalu provádění, služba Batch přeruší aplikaci úkolu.
 
 ### <a name="connecting-to-compute-nodes"></a>Připojení k výpočetním uzlům
-Další ladění a řešení potíží můžete provádět při vzdáleném přihlášení k výpočetnímu uzlu. Pro uzly Windows si můžete na portálu Azure Portal stáhnout soubor protokolu RDP (Remote Desktop) a pro uzly Linux získat informace o připojení Secure Shell (SSH). Můžete to také provést pomocí rozhraní API služby Batch – například s [Batch .NET][net_rdpfile] nebo [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
+Další ladění a řešení potíží můžete provádět při vzdáleném přihlášení k výpočetnímu uzlu. Pro uzly Windows si můžete na portálu Azure stáhnout soubor protokolu RDP (Remote Desktop) a pro uzly Linux získat informace o připojení Secure Shell (SSH). Můžete to také provést pomocí rozhraní API služby Batch – například s [Batch .NET][net_rdpfile] nebo [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
 
 > [!IMPORTANT]
-> Pokud se chcete připojit k uzlu prostřednictvím protokolu RDP nebo SSH, musíte na uzlu nejprve vytvořit uživatele. Můžete to provést takto: na portálu Azure Portal [přidáte uživatelský účet do uzlu][rest_create_user] pomocí rozhraní Batch REST API a zavoláte metodu [ComputeNode.CreateComputeNodeUser][net_create_user] v Batch .NET nebo zavoláte metodu [add_user][py_add_user] v modulu Batch Python.
+> Pokud se chcete připojit k uzlu prostřednictvím protokolu RDP nebo SSH, musíte na uzlu nejprve vytvořit uživatele. Můžete to provést takto: na webu Azure Portal [přidáte uživatelský účet do uzlu][rest_create_user] pomocí rozhraní Batch REST API a zavoláte metodu [ComputeNode.CreateComputeNodeUser][net_create_user] v Batch .NET nebo zavoláte metodu [add_user][py_add_user] v modulu Batch Python.
 >
 >
 

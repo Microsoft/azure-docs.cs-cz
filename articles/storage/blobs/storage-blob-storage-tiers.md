@@ -1,5 +1,5 @@
 ---
-title: "Horké, studené a archivní úložiště Azure pro objekty blob | Microsoft Docs"
+title: "Horké, studené a archivní úložiště Azure pro objekty blob | Dokumentace Microsoftu"
 description: "Horké, studené a archivní úložiště pro účty úložiště Azure."
 services: storage
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: a4dc2ba7a356c26b75f5c9b519940b32f6763fa4
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2adb301f1d047c7762a35880da6e6094a5afbd75
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň úložiště
 
@@ -32,7 +32,7 @@ Pro každý z těchto scénářů přístupu k datům je vhodná jiná vrstva ú
 
 ## <a name="storage-accounts-that-support-tiering"></a>Účty úložiště, které podporují vrstvení
 
-Data v úložišti objektů je možné vrstvit na horkou, studenou nebo archivní úroveň pouze v účtech Blob Storage nebo účtech pro obecné účely v2 (GPv2). Účty pro obecné účely v1 (GPv1) vrstvení nepodporují. Zákazníci však můžou snadno převést své stávající účty GPv1 nebo Blob Storage na účty GPv2 prostřednictvím prostého kliknutí na portálu Azure Portal. Účty GPv2 poskytují novou cenovou strukturu pro objekty blob, soubory a fronty a také přístup k různým dalším novým funkcím úložiště. Kromě toho se postupně budou některé nové funkce a snížení cen nabízet pouze v účtech GPv2. Zákazníci by proto měli vyhodnotit používání účtů GPv2, ale začít je používat až po kontrole cen za všechny služby, protože některé úlohy můžou být v účtech GPv2 dražší než v účtech GPv1. Další informace najdete v tématu [Možnosti účtu úložiště Azure](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Data v úložišti objektů je možné vrstvit na horkou, studenou nebo archivní úroveň pouze v účtech Blob Storage nebo účtech pro obecné účely v2 (GPv2). Účty pro obecné účely v1 (GPv1) vrstvení nepodporují. Zákazníci však můžou snadno převést své stávající účty GPv1 nebo Blob Storage na účty GPv2 prostřednictvím prostého kliknutí na webu Azure Portal. Účty GPv2 poskytují novou cenovou strukturu pro objekty blob, soubory a fronty a také přístup k různým dalším novým funkcím úložiště. Kromě toho se postupně budou některé nové funkce a snížení cen nabízet pouze v účtech GPv2. Zákazníci by proto měli vyhodnotit používání účtů GPv2, ale začít je používat až po kontrole cen za všechny služby, protože některé úlohy můžou být v účtech GPv2 dražší než v účtech GPv1. Další informace najdete v tématu [Možnosti účtu úložiště Azure](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Účty Blob Storage a GPv2 zpřístupňují atribut **Access Tier** na úrovni účtu, který vám umožňuje určit výchozí úroveň úložiště jako horkou nebo studenou pro všechny objekty blob v účtu úložiště, které nemají nastavenou úroveň na úrovni objektu. Na objekty s nastavenou úrovní na úrovni objektu se úroveň účtu nebude vztahovat. Archivní úroveň je možné použít pouze na úrovni objektu. Mezi těmito úrovněmi úložiště můžete kdykoli přepínat.
 
@@ -72,7 +72,7 @@ Během dosazování můžete zkontrolovat vlastnost **Stav archivu** objektu blo
 
 Ovládání datových vrstev na úrovni objektů blob umožňuje změnit vrstvu dat na úrovni objektu pomocí jediné operace s názvem [Set Blob Tier](/rest/api/storageservices/set-blob-tier). Současně se změnou vzorů využití můžete pro objekt blob snadno změnit vrstvu přístupu (studená, horká nebo archivní) a nemusíte přitom přesouvat data mezi účty. Všechny změny úrovně se provádějí okamžitě, s výjimkou dosazování objektu blob z archivu, což může trvat několik hodin. Čas poslední změny úrovně objektu blob je zveřejněný prostřednictvím vlastnosti **Access Tier Change Time** objektu blob. Pokud je objekt blob v archivní úrovni, nesmí se přepsat. Proto v tomto scénáři není možné znovu uložit stejný objekt blob. Objekt blob v horké nebo studené úrovni přepsat jde a v takovém případě nový objekt blob zdědí úroveň starého objektu blob, který se přepsal.
 
-V rámci jednoho účtu mohou současně existovat objekty blob ve všech třech vrstvách úložiště. Každý objekt blob, který nemá explicitně přiřazenou vrstvu, odvozuje nastavení vrstvy přístupu z účtu. Pokud se úroveň přístupu odvozuje z účtu, je vlastnost **Access Tier Inferred** objektu blob nastavená na true a vlastnost **Access Tier** objektu blob odpovídá úrovni účtu. Na portálu Azure Portal se vlastnost odvození úrovně přístupu zobrazuje společně s úrovní přístupu objektu blob (například Horká (odvozeno) nebo Studená (odvozeno)).
+V rámci jednoho účtu mohou současně existovat objekty blob ve všech třech vrstvách úložiště. Každý objekt blob, který nemá explicitně přiřazenou vrstvu, odvozuje nastavení vrstvy přístupu z účtu. Pokud se úroveň přístupu odvozuje z účtu, je vlastnost **Access Tier Inferred** objektu blob nastavená na true a vlastnost **Access Tier** objektu blob odpovídá úrovni účtu. Na webu Azure Portal se vlastnost odvození úrovně přístupu zobrazuje společně s úrovní přístupu objektu blob (například Horká (odvozeno) nebo Studená (odvozeno)).
 
 > [!NOTE]
 > Úložiště archivu a ovládání datových vrstev na úrovni objektů blob podporují jenom objekty blob bloku. Nejde také změnit úroveň objektu blob bloku, který má snímky.
@@ -83,7 +83,7 @@ Když se objekt blob přesune do chladnější úrovně (horká -> studená, hor
 
 Pokud přepnete úroveň účtu z horké na studenou, budou se vám účtovat operace zápisu (za 10 000) za všechny objekty blob bez nastavené úrovně pouze v účtech GPv2. V účtech Blob Storage to není nijak zpoplatněno. Pokud přepnete svůj účet Blob Storage nebo GPv2 z horké na studenou úroveň, budou se vám účtovat operace čtení (za 10 000) i načítání dat (za GB). Můžou se účtovat také poplatky za předčasné odstranění objektů blob přesunutých ze studené nebo archivní úrovně.
 
-### <a name="cool-and-archive-early-deletion-effective-march-1-2018"></a>Předčasné odstranění ze studené a archivní úrovně (platí od 1. března 2018)
+### <a name="cool-and-archive-early-deletion"></a>Předčasné odstranění ze studené a archivní úrovně
 
 Kromě měsíčních poplatků za GB se na všechny objekty blob přesunuté do studené úrovně (pouze účty GPv2) vztahuje období předčasného odstranění ze studené úrovně v délce 30 dnů, a na všechny objekty blob přesunuté do archivní úrovně se vztahuje období předčasného odstranění z archivní úrovně v délce 180 dnů. Tento poplatek se účtuje poměrnou částí. Pokud se například objekt blob přesune do archivní úrovně a po 45 dnech pak odstraní nebo přesune do horké úrovně, bude se vám účtovat poplatek za předčasné odstranění, který odpovídá 135 (180 − 45) dnům uložení tohoto objektu blob v archivní úrovni.
 
@@ -106,14 +106,14 @@ V následující tabulce najdete porovnání studené, horké a archivní úrovn
 
 ## <a name="quickstart-scenarios"></a>Scénáře Rychlý start
 
-V tomto oddílu jsou předvedené následující scénáře s využitím portálu Azure Portal:
+V tomto oddílu jsou předvedené následující scénáře s využitím webu Azure Portal:
 
 * Změna výchozí úrovně přístupu u účtu GPv2 nebo Blob Storage.
 * Změna úrovně objektu blob v účtu GPv2 nebo Blob Storage.
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Změna výchozí úrovně přístupu u účtu GPv2 nebo Blob Storage
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Klikněte na možnost Všechny prostředky a kliknutím na účet úložiště do účtu přejděte.
 
@@ -125,7 +125,7 @@ V tomto oddílu jsou předvedené následující scénáře s využitím portál
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Změna úrovně objektu blob v účtu GPv2 nebo Blob Storage
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Pokud chcete přejít na objekt blob ve vašem účtu úložiště, vyberte Všechny prostředky, vyberte účet úložiště a potom vyberte objekt blob.
 
@@ -177,7 +177,7 @@ Každý objekt blob se vždy účtuje podle úrovně, kterou indikuje vlastnost 
 
 **Jak zjistím, jestli se mi bude účtovat poplatek za předčasné odstranění, když odstraním nebo přesunu objekt blob ze studené nebo archivní úrovně?**
 
-Poplatek za předčasné odstranění se bude účtovat za každý objekt blob, který se odstraní nebo přesune ze studené (pouze účty GPv2) úrovně před uplynutím 30 dnů nebo z archivní úrovně před uplynutím 180 dnů (platí od 1. března 2018). Jak dlouho je objekt blob ve studené nebo archivní úrovni můžete zjistit kontrolou vlastnosti **Access Tier Time Change** objektu blob, kde najdete časové razítko poslední změny úrovně. Další podrobnosti najdete v části [Předčasné odstranění ve studené a archivní úrovni](#cool-and-archive-early-deletion).
+Poplatek za předčasné odstranění se bude účtovat za každý objekt blob, který se odstraní nebo přesune ze studené (pouze účty GPv2) úrovně před uplynutím 30 dnů nebo z archivní úrovně před uplynutím 180 dnů. Jak dlouho je objekt blob ve studené nebo archivní úrovni můžete zjistit kontrolou vlastnosti **Access Tier Time Change** objektu blob, kde najdete časové razítko poslední změny úrovně. Další podrobnosti najdete v části [Předčasné odstranění ve studené a archivní úrovni](#cool-and-archive-early-deletion).
 
 **Které nástroje a sady SDK Azure podporují ovládání datových vrstev na úrovni objektů blob a úložiště archivu?**
 

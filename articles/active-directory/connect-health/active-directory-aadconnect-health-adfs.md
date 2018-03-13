@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 834dbbd0be30181de1a71df05d2867be0e1c59b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4928364ffd732f587e41a788c4d834e91339a7fc
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health pro synchronizaci](active-directory-aadconnect-health-sync.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](active-directory-aadconnect-health-adds.md).
@@ -86,7 +86,7 @@ Jednou z běžných příčin neúspěšného požadavku na ověření na server
 
 Existují však i další důvody, které mohou mít za následek neočekávaný počet požadavků zpracovávaných vašimi servery služby AD FS. Příklady: Aplikace, která ukládá do mezipaměti přihlašovací údaje uživatelů a vypršení jejich platnosti nebo pokus uživatele se zlými úmysly o přihlášení k účtu s použitím řady známých hesel. Tyto dva příklady jsou legitimními důvody, které by mohly vést k prudkému nárůstu množství požadavků.
 
-Azure AD Connect Health pro ADFS poskytuje sestavy s nejčastějšími 50 uživateli, kteří se neúspěšně přihlašovali pomocí neplatného uživatelského jména nebo hesla. Tuto sestavu můžete vytvořit zpracováním událostí auditu, které jsou vygenerované všemi servery AD FS ve farmách.
+Azure AD Connect Health pro ADFS poskytuje sestavy s nejčastějšími 50 uživateli, kteří se neúspěšně přihlašovali pomocí neplatného uživatelského jména nebo hesla. Tuto sestavu můžete vytvořit zpracováním událostí auditu, které generují všechny servery AD FS ve farmách.
 
 ![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health-adfs/report1a.png)
 
@@ -95,7 +95,7 @@ V rámci této sestavy máte snadný přístup k následujícím informacím:
 * Celkový počet neúspěšných požadavků s nesprávným uživatelským jménem nebo heslem za posledních 30 dní.
 * Průměrný počet uživatelů, kteří mají problém s přihlašováním kvůli chybnému uživatelskému jménu nebo heslu, za jeden den.
 
-Kliknutím na tuto část přejdete do hlavního okna sestavy, které vám nabídne další podrobnosti. Toto okno obsahuje graf informace o trendech, které vám usnadní vytváření směrného plánu pro požadavky s nesprávným uživatelským jménem nebo heslem. Kromě toho obsahuje seznam 50 uživatelů s nejvyšším počtem neúspěšných pokusů.
+Kliknutím na tuto část přejdete do hlavního okna sestavy, které vám nabídne další podrobnosti. Toto okno obsahuje graf informace o trendech, které vám usnadní vytváření směrného plánu pro požadavky s nesprávným uživatelským jménem nebo heslem. Kromě toho obsahuje seznam 50 uživatelů s nejvyšším počtem neúspěšných pokusů za poslední týden.
 
 Graf obsahuje následující informace:
 
@@ -115,7 +115,7 @@ Sestava obsahuje následující informace:
 | IP adresa poslední chyby |Zobrazuje IP adresu klienta z posledního neúspěšného požadavku. |
 
 > [!NOTE]
-> Sestava se každé dvě hodiny automaticky aktualizuje novými informacemi, které byly za tu dobu shromážděné. V důsledku tohoto postupu nemusí být v sestavě zahrnuté přihlašovací pokusy za poslední dvě hodiny.
+> Sestava se každých 12 hodin automaticky aktualizuje novými informacemi, které se za tu dobu shromáždily. V důsledku tohoto postupu nemusí být v sestavě zahrnuté přihlašovací pokusy za poslední dvě hodiny.
 >
 >
 

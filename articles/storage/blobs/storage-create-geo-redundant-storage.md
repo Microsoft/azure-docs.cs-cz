@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 7b7625b3250d7e5b4cdb4090f34072eb58dda07c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5b1c443cae8481d98c32a3f4d9e3899621d1dd89
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Zajištění vysoké dostupnosti dat aplikací pomocí úložiště Azure
 
@@ -69,7 +69,7 @@ Podle těchto kroků můžete vytvořit účet geograficky redundantního úlož
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Název** | mystorageaccount | Jedinečná hodnota pro váš účet úložiště |
    | **Model nasazení** | Resource Manager  | Resource Manager obsahuje nejnovější funkce.|
-   | **Druh účtu** | Obecné účely | Podrobnosti o typech účtů najdete v tématu [Typy účtů úložiště](../common/storage-introduction.md#types-of-storage-accounts). |
+   | **Druh účtu** | StorageV2 | Podrobnosti o typech účtů najdete v tématu [Typy účtů úložiště](../common/storage-introduction.md#types-of-storage-accounts). |
    | **Výkon** | Standard | Pro ukázkový scénář stačí Standard. |
    | **Replikace**| Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) | To je nezbytné, aby ukázka fungovala. |
    |**Vyžádání bezpečného přenosu** | Zakázáno| Zabezpečený přenos se pro tento scénář nevyžaduje. |
@@ -77,7 +77,7 @@ Podle těchto kroků můžete vytvořit účet geograficky redundantního úlož
    |**ResourceGroup** | myResourceGroup |Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
    |**Umístění** | Východ USA | Zvolte umístění. |
 
-![Vytvoření účtu úložiště](media/storage-create-geo-redundant-storage/figure1.png)
+![Vytvoření účtu úložiště](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
