@@ -290,9 +290,10 @@
 ### [Role správce](active-directory-assign-admin-roles-azure-portal.md)
 #### [Přiřazení role správce uživateli](active-directory-users-assign-role-azure-portal.md)
 #### [Porovnání oprávnění pro členy a uživatele typu host](users-default-permissions.md)
+### [Zabezpečení privilegovaného přístupu](admin-roles-best-practices.md) 
+### [Vytvoření účtů pro správu pro nouzový přístup](active-directory-admin-manage-emergency-access-accounts.md)
 ### [Jednotky pro správu](active-directory-administrative-units-management.md)
 ### [Konfigurace životnosti tokenů](active-directory-configurable-token-lifetimes.md)
-### [Správa účtů pro správu pro nouzový přístup](active-directory-admin-manage-emergency-access-accounts.md)
 
 ## Kontroly přístupu
 ### [Přehled kontrol přístupu](active-directory-azure-ad-controls-access-reviews-overview.md)

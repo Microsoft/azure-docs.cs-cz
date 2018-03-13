@@ -44,7 +44,7 @@
 ## Spravovat
 ### [Azure PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
-### [portál Azure Portal](resource-group-portal.md)
+### [Azure Portal](resource-group-portal.md)
 ### [Použití značek k uspořádání prostředků](resource-group-using-tags.md)
 ### [Přesunutí prostředků do nové skupiny nebo předplatného](resource-group-move-resources.md)
 ### [Vytvoření skupin pro správu](management-groups-create.md)
@@ -55,7 +55,7 @@
 ### Vytvoření instančního objektu
 #### [Azure PowerShell](resource-group-authenticate-service-principal.md)
 #### [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-#### [portál Azure Portal](resource-group-create-service-principal-portal.md)
+#### [Azure Portal](resource-group-create-service-principal-portal.md)
 ### [Ověřovací rozhraní API pro přístup k předplatným](resource-manager-api-authentication.md)
 ### [Uzamčení prostředků](resource-group-lock-resources.md)
 
@@ -64,21 +64,20 @@
 ### [Zobrazení operací nasazení](resource-manager-deployment-operations.md)
 
 ## Řešení potíží
-### [Běžné chyby nasazení](resource-manager-common-deployment-errors.md)
-#### [AccountNameInvalid](resource-manager-storage-account-name-errors.md)
-#### [InvalidTemplate](resource-manager-invalid-template-errors.md)
-#### [Potíže s linuxovým nasazením](../virtual-machines/linux/troubleshoot-deploy-vm.md)
-#### [NoRegisteredProviderFound](resource-manager-register-provider-errors.md)
-#### [NotFound](resource-manager-not-found-errors.md)
-#### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
-#### [Potíže se zřizováním a přidělením pro Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
-#### [Potíže se zřizováním a přidělením pro Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
-#### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
-#### [ReservedResourceName](resource-manager-reserved-resource-name.md)
-#### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
-#### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
-#### [Potíže s nasazením Windows](../virtual-machines/windows/troubleshoot-deploy-vm.md)
-### [Vysvětlení chyb nasazení](resource-manager-troubleshoot-tips.md)
+### [Řešení potíží s chybami nasazení](resource-manager-common-deployment-errors.md)
+### [AccountNameInvalid](resource-manager-storage-account-name-errors.md)
+### [InvalidTemplate](resource-manager-invalid-template-errors.md)
+### [Potíže s linuxovým nasazením](../virtual-machines/linux/troubleshoot-deploy-vm.md)
+### [NoRegisteredProviderFound](resource-manager-register-provider-errors.md)
+### [NotFound](resource-manager-not-found-errors.md)
+### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
+### [Potíže se zřizováním a přidělením pro Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
+### [Potíže se zřizováním a přidělením pro Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
+### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
+### [ReservedResourceName](resource-manager-reserved-resource-name.md)
+### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
+### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
+### [Potíže s nasazením Windows](../virtual-machines/windows/troubleshoot-deploy-vm.md)
 
 # Referenční informace
 ## [Formát šablon](/azure/templates/)

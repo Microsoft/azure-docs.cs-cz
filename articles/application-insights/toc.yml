@@ -121,6 +121,10 @@
               href: app-insights-configuration-with-applicationinsights-config.md
             - name: Ladicí program snímků
               href: app-insights-snapshot-debugger.md
+        - name: Jádro ASP.NET
+          items:
+            - name: Profiler pro linuxové aplikační služby
+              href: app-insights-profiler-aspnetcore-linux.md
         - name: J2EE
           items:
             - name: Trasování protokolů

@@ -66,6 +66,7 @@
 ### [Vytvoření nového simulovaného zařízení](iot-suite-remote-monitoring-test.md)
 ### [Přizpůsobení řešení](iot-suite-remote-monitoring-customize.md)
 ### [Nasazení pomocí rozhraní příkazového řádku](iot-suite-remote-monitoring-deploy-cli.md)
+### [Místní nasazení](iot-suite-remote-monitoring-deploy-local.md)
 ### Připojení fyzického zařízení
 #### [C ve Windows](iot-suite-connecting-devices.md)
 #### [C v Linuxu](iot-suite-connecting-devices-linux.md)

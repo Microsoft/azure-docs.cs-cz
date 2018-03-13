@@ -290,6 +290,8 @@
           href: transform-data-using-stored-procedure.md
         - name: Aktivita Data Lake U-SQL
           href: transform-data-using-data-lake-analytics.md
+        - name: Aktivita poznámkového bloku Databricks
+          href: transform-data-using-databricks-notebook.md
         - name: Vlastní aktivita
           href: transform-data-using-dotnet-custom-activity.md
         - name: Propojené služby Compute
