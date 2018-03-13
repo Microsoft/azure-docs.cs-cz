@@ -154,7 +154,7 @@ Ve službě Media Services můžete digitální soubory nahrát (nebo ingestovat
 
 Metoda **UploadFile** definovaná níže volá metodu **CreateFromFile** (definovanou v rozšíření sady SDK pro .NET). **CreateFromFile** vytvoří nový prostředek, do kterého se zadaný zdrojový soubor odešle.
 
-Metoda **CreateFromFile** přijímá parametr AssetCreationOptions, který vám umožňuje určit jednu z následujících možností vytvoření prostředku:
+Metoda **CreateFromFile** přijímá parametr \*\*AssetCreationOptions, který vám umožňuje určit jednu z následujících možností vytvoření prostředku:
 
 * **Žádné** – nepoužívá se žádné šifrování. Toto je výchozí hodnota. Pamatujte, že při použití této možnosti není váš obsah chráněný během přenosu ani při umístění v úložišti.
   Pokud chcete pomocí progresivního stahování dodávat obsah ve formátu MP4, použijte tuto možnost.
