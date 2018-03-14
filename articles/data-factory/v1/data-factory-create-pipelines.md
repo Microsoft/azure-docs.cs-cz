@@ -16,10 +16,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: c8ddd2b49ca48f3bf232a8650d870a8b7159f66a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -102,7 +102,7 @@ Teď se blíže podíváme na to, jak se kanál definuje ve formátu JSON. Obecn
 | konec | Koncové datum a čas pro kanál. Pokud zadaný, musí být ve formátu ISO. Příklad: `2016-10-14T17:32:41Z` <br/><br/>Je možné zadat místní čas, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00-05:00`, což je odhadované AM 6<br/><br/>Chcete-li kanál spouštět bez omezení, zadejte jako hodnotu pro vlastnost end 9999-09-09. <br/><br/> Kanál je aktivní jenom mezi její počáteční čas a koncový čas. Nebude provedena před časem zahájení nebo po koncovém čase. Když je pozastavená kanálu, se nebudou provedeny bez ohledu na jeho počáteční a koncový čas. Pro kanál ke spuštění by neměl být pozastavena. V tématu [plánování a provádění](data-factory-scheduling-and-execution.md) pochopit, jak funguje plánování a provádění v Azure Data Factory. |Ne <br/><br/>Pokud zadáte hodnotu pro vlastnost spustit, musíte zadat hodnotu pro vlastnost end.<br/><br/>Naleznete v poznámkách k **spustit** vlastnost. |
 | isPaused | Pokud je nastaven na hodnotu true, kanál nejde spustit. Je v pozastaveném stavu. Výchozí hodnota = false. Tato vlastnost slouží k povolení nebo zakázání kanálu. |Ne |
 | pipelineMode | Metoda pro naplánování spuštění pro kanál. Povolené hodnoty jsou: naplánované (výchozí), jednorázově.<br/><br/>"Pravidelnou" udává, že kanál spouští v zadaném časovém intervalu podle jeho aktivní období (počáteční a koncový čas). 'Jednorázově' udává, že kanál spouští jenom jednou. Po vytvoření jednorázově kanály nelze aktuálně upravit nebo aktualizovat. V tématu [Onetime kanálu](#onetime-pipeline) podrobnosti o jednorázově nastavení. |Ne |
-| ExpirationTime | Doba, po vytvoření, pro kterou [jednorázového kanálu](#onetime-pipeline) je platná a by měla zůstat zřízené. Pokud nemá žádné aktivní, se nezdařilo, nebo až spuštění kanálu je automaticky odstraněna po dorazí čas vypršení platnosti. Výchozí hodnota:`"expirationTime": "3.00:00:00"`|Ne |
+| ExpirationTime | Doba, po vytvoření, pro kterou [jednorázového kanálu](#onetime-pipeline) je platná a by měla zůstat zřízené. Pokud nemá žádné aktivní, se nezdařilo, nebo až spuštění kanálu je automaticky odstraněna po dorazí čas vypršení platnosti. Výchozí hodnota: `"expirationTime": "3.00:00:00"`|Ne |
 | Datové sady |Seznam datových sad má být používána aktivity definované v kanálu. Tuto vlastnost lze použít k definování datových sad, které jsou specifické pro tento kanál a není definován v rámci služby data factory. Datové sady definované v rámci tohoto kanálu lze použít pouze tento kanál a nesmí se sdílet. V tématu [obor datové sady](data-factory-create-datasets.md#scoped-datasets) podrobnosti. |Ne |
 
 ## <a name="activity-json"></a>Zápis JSON aktivity

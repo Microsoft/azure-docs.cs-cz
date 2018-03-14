@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.openlocfilehash: 46c65e0efdc91b70c5d0d2afdf83d7205efc8057
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2018
+ms.lasthandoff: 03/13/2018
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Použít poskytovatele 2.0 Identity SAML (IdP) pro jednotné přihlašování na
 
@@ -45,8 +45,8 @@ Toto téma obsahuje podrobné požadavky na protokol a zpráva formátování, �
 
 Je doporučeno, ujistěte se svého poskytovatele identity SAML 2.0 výstup zprávy byl podobná trasování zadaný vzorek nejvíc. Také použít konkrétní atribut hodnoty ze zadaných metadat Azure AD kde je to možné. Jakmile vyhovují zprávy si výstup, můžete otestovat připojení analyzátorem Microsoft jak je popsáno níže.
 
-Azure AD metadata si můžete stáhnout z této adresy URL: [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
-Pro zákazníkům v Číně pomocí Číně konkrétní instanci Office 365, je třeba použít následující koncový bod federation: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
+Azure AD metadata si můžete stáhnout z této adresy URL: [ https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml ](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
+Pro zákazníkům v Číně pomocí Číně konkrétní instanci Office 365, je třeba použít následující koncový bod federation: [ https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml ](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
 
 ## <a name="saml-protocol-requirements"></a>Požadavky protokolu SAML
 Tato část Podrobnosti o způsobu páry zprávu žádosti a odpovědi jsou společně umístit pořadí můžete k formátování zprávy si správně.
@@ -182,12 +182,12 @@ Následující postup vás provede převod existující standardní domény na f
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-Další informace o "Set-MsolDomainAuthentication" v tématu: [http://technet.microsoft.com/library/dn194112.aspx](http://technet.microsoft.com/library/dn194112.aspx).
+Další informace o "Set-MsolDomainAuthentication" v tématu: [ http://technet.microsoft.com/library/dn194112.aspx ](http://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
 >Je nutné spustit pomocí "$ecpUrl ="https://WS2012R2-0.contoso.com/PAOS"" pouze v případě, že nastavíte ECP rozšíření pro zprostředkovatele identity. Klienti Exchange Online, s výjimkou Outlook webové aplikace (OWA), závisí na příspěvku na základě active koncového bodu. Pokud vaše SAML 2.0 služby tokenů zabezpečení implementuje aktivní koncový bod podobné implementace ECP Shibboleth na aktivní koncový bod je možné, že pro tyto bohatých klientů pro interakci s službě Exchange Online.
 
-Jakmile byl nakonfigurován federační můžete přepnout zpět na "nefederovaných" (nebo "spravovaný"), ale této změny trvá až dvě hodiny a vyžaduje přiřazení nové náhodné hesla pro cloudové přihlásit k každého uživatele. Přepnout zpět na "spravovaný" může být nutné v některých scénářích resetovat Chyba v nastavení. Další informace o převodu domény najdete v tématu: [http://msdn.microsoft.com/library/windowsazure/dn194122.aspx](http://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
+Jakmile byl nakonfigurován federační můžete přepnout zpět na "nefederovaných" (nebo "spravovaný"), ale této změny trvá až dvě hodiny a vyžaduje přiřazení nové náhodné hesla pro cloudové přihlásit k každého uživatele. Přepnout zpět na "spravovaný" může být nutné v některých scénářích resetovat Chyba v nastavení. Další informace o převodu domény najdete v tématu: [ http://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](http://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>Zřídit uživatelské objekty do služby Azure AD nebo Office 365
 Než uživatelům služeb Office 365 pomocí objektů uživatele, které odpovídají kontrolního výrazu SAML 2.0 deklarací, je třeba zřídit služby Azure AD, můžete ověřovat. Pokud nejsou tyto objekty uživatele známá, mají předem Azure AD nelze použít pro federované přihlašování. Azure AD Connect nebo prostředí Windows PowerShell může být použito k přidělení identity uživatelů.
@@ -210,7 +210,7 @@ Tento postup ukazuje, jak přidat jednoho uživatele do Azure AD.
         -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
         -UsageLocation "US" ` 
 
-Další informace o "New-MsolUser" rezervaci [http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx)
+Další informace o "New-MsolUser" rezervaci, [http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx)
 
 >[!NOTE]
 >Hodnota "UserPrinciplName" musí odpovídat hodnotě, kterou odešlete "IDPEmail" vaší deklarace SAML 2.0 a hodnota "ImmutableID" musí odpovídat hodnotě odeslány ve vašem kontrolní výraz "NameID".
@@ -242,7 +242,7 @@ Společnost Microsoft poskytuje nástroj, který můžete použít k testování
 
 
 
-1. Stáhnout analyzátor připojení, [https://testconnectivity.microsoft.com/?tabid=Client](https://testconnectivity.microsoft.com/?tabid=Client).
+1. Stáhnout analyzátor připojení, [ https://testconnectivity.microsoft.com/?tabid=Client ](https://testconnectivity.microsoft.com/?tabid=Client).
 2.  Začněte kliknutím na tlačítko nainstalovat stahování a instalace nástroje.
 3.  Vyberte "I nemůže vytvořit federaci se Office 365, Azure nebo jiné služby, které používají Azure Active Directory".
 4.  Jakmile nástroj stažené a spuštěná, zobrazí se okno diagnostiky připojení. Testování připojení federační bude projděte nástroj.

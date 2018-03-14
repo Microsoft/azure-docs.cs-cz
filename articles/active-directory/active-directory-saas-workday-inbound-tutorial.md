@@ -17,7 +17,7 @@ ms.openlocfilehash: 825bf3f6a3ea07cb229f00c81ad699d792ac53f9
 ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro zřizování automatické uživatelů
 
@@ -249,7 +249,7 @@ Postupujte podle těchto pokynů ke konfiguraci zřizování z Workday pro každ
 
    * **Heslo správce –** zadejte heslo účtu Workday integrace systému
 
-   * **URL – klienta** zadejte adresu URL pro koncový bod webové služby Workday pro vašeho klienta. To by měl vypadat jako: https://wd3-impl-services1.workday.com/ccx/service/contoso4, kde contoso4 se nahradí název vašeho klienta správné a wd3 impl nahrazena řetězce správné prostředí.
+   * **URL – klienta** zadejte adresu URL pro koncový bod webové služby Workday pro vašeho klienta. To by měl vypadat jako: https://wd3-impl-services1.workday.com/ccx/service/contoso4, kde contoso4 se nahradí název vašeho klienta správné a wd3 impl se nahradí řetězce správné prostředí.
 
    * **Doménové struktury služby Active Directory -** "Název" služby Active Directory doménové struktury, jak ho vrátila prostředí PowerShell Get-ADForest. Toto je obvykle řetězec jako: *contoso.com*
 
@@ -504,7 +504,7 @@ Následující části popisují nastavení připojení mezi Workday a Azure AD 
 
    * **Heslo správce –** zadejte heslo účtu Workday integrace systému
 
-   * **URL – klienta** zadejte adresu URL pro koncový bod webové služby Workday pro vašeho klienta. To by měl vypadat jako: https://wd3-impl-services1.workday.com/ccx/service/contoso4, kde contoso4 se nahradí název vašeho klienta správné a wd3 impl nahrazena řetězce správné prostředí. Pokud je tato adresa URL není znám, spojte se s vaším Workday integrace partnera nebo podporu zástupcem určit správnou adresu URL používat.
+   * **URL – klienta** zadejte adresu URL pro koncový bod webové služby Workday pro vašeho klienta. To by měl vypadat jako: https://wd3-impl-services1.workday.com/ccx/service/contoso4, kde contoso4 se nahradí název vašeho klienta správné a wd3 impl se nahradí řetězce správné prostředí. Pokud je tato adresa URL není znám, spojte se s vaším Workday integrace partnera nebo podporu zástupcem určit správnou adresu URL používat.
 
    * **E-mailové oznámení –** zadejte e-mailovou adresu a zaškrtněte políčko "odeslání e-mailu, pokud dojde k selhání".
 
