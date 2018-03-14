@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: mbullwin
 ms.openlocfilehash: 95c5195ac2ea832586211cce37eb2094e06eaf03
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Správa svazku ceny a data ve službě Application Insights
 
@@ -171,7 +171,7 @@ V každé uchovávají záznam, `itemCount` označuje počet původní záznamy,
 
 ## <a name="automation"></a>Automation
 
-Můžete napsat skript, nastavit plán cena pomocí Správa prostředků Azure. [Zjistěte, jak](app-insights-powershell.md#price).
+Můžete napsat skript, nastavit plán cena pomocí Správa prostředků Azure. [Zjistěte jak](app-insights-powershell.md#price).
 
 ## <a name="limits-summary"></a>Souhrn omezení
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]

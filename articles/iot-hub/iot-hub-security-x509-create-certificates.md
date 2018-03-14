@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 12/10/2017
 ms.author: dkshir
 ms.openlocfilehash: b2f78e8debd367f86ee9bb06bf7de50590c61ad7
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>Skripty prostředí PowerShell ke správě certifikační Autority podepsané X.509 – certifikáty
 
@@ -279,7 +279,7 @@ Spusťte `New-CADevice "<yourTestDevice>"` v okně prostředí PowerShell, pomoc
 
 ## <a name="clean-up-certificates"></a>Vyčištění certifikáty
 
-V řádku start nebo **nastavení** aplikace, vyhledejte a vyberte **spravovat certifikáty počítače**. Odeberte všechny certifikáty vydané **Azure IoT certifikační Autority TestOnly***. Tyto certifikáty by měly existovat v následujících třech umístěních: 
+V řádku start nebo **nastavení** aplikace, vyhledejte a vyberte **spravovat certifikáty počítače**. Odeberte všechny certifikáty vydané ** Azure IoT certifikační Autority TestOnly ***. Tyto certifikáty by měly existovat v následujících třech umístěních: 
 
 * Certifikáty - místní počítač > osobní > certifikáty
 * Certifikáty - místní počítač > Důvěryhodné kořenové certifikační autority > certifikáty

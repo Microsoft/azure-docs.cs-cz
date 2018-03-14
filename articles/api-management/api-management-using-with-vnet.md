@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
 ms.openlocfilehash: fe5e26a957d18f1f7f5ed360a27bb1f9c9826718
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (virtuální sítě) umožňují některé z vašich prostředků Azure umístění v síti routeable Internetu jiných výrobců, která můžete řídit přístup ke. Tyto sítě můžete pak připojené k vaší místní sítě pomocí různých technologií sítě VPN. Další informace o virtuálních sítí Azure začínat zde uvedené informace: [Přehled virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md).
@@ -39,7 +39,7 @@ K provedení kroků popsaných v tomto článku, musíte mít:
 + APIM instance. Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 + Připojení k virtuální síti je dostupná pouze úrovně Premium a vývojáře. Přepnout na jednu z těchto úrovní podle pokynů v [upgrade a škálování](upgrade-and-scale.md#upgrade-and-scale) tématu.
 
-## <a name="enable-vpn"></a>Připojení povolte virtuální sítě
+## <a name="enable-vpn"> </a>Povolit připojení virtuální sítě
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>Povolit připojení virtuální sítě pomocí portálu Azure
 
@@ -81,19 +81,19 @@ K provedení kroků popsaných v tomto článku, musíte mít:
 > [!IMPORTANT]
 > Když odeberete API Management z virtuální sítě nebo změnit, které je nasazena v, může zůstat použitých virtuální síť uzamčení po dobu až dvou hodin. Během této doby nebude možné odstranit virtuální sítě nebo nasazení nového prostředku do ní.
 
-## <a name="enable-vnet-powershell"></a>Připojení VNET povolit pomocí rutin prostředí PowerShell
+## <a name="enable-vnet-powershell"> </a>Povolit připojení virtuální sítě pomocí rutin prostředí PowerShell
 Můžete také povolit připojení virtuální sítě pomocí rutin prostředí PowerShell
 
 * **Vytvoření služby API Management uvnitř virtuální sítě**: použijte rutinu [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) k vytvoření služby Azure API Management uvnitř virtuální sítě.
 
 * **Nasazení služby API Management existující uvnitř virtuální sítě**: použijte rutinu [aktualizace AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) přesunout existující službu Azure API Management uvnitř virtuální sítě.
 
-## <a name="connect-vnet"></a>Připojení k webové službě hostované v rámci virtuální sítě
+## <a name="connect-vnet"> </a>Připojení k webové službě hostované v rámci virtuální sítě
 Po služby API Management je připojen k virtuální síti, je přístup ke službám back-end v něm nejsou jiné než přístup ke službám veřejné. Jednoduše zadejte místní IP adresu nebo název hostitele (Pokud je nakonfigurovaný DNS server pro virtuální sítě) do webové služby **adresu URL webové služby** pole při vytváření nové rozhraní API nebo úpravou existující.
 
 ![Přidání rozhraní API z sítě VPN][api-management-setup-vpn-add-api]
 
-## <a name="network-configuration-issues"></a>Běžné problémy s konfigurací sítě
+## <a name="network-configuration-issues"> </a>Běžné problémy s konfigurací sítě
 Následuje seznam běžných problémů chybné konfigurace, které se mohou vyskytnout při nasazení služby API Management do virtuální sítě.
 
 * **Vlastní instalace serveru DNS**: rozhraní API správy služby závisí na několik služeb Azure. Při API Management je umístěn ve virtuální síti s vlastního serveru DNS, je nutné přeložit názvy hostitelů těchto služeb Azure. Postupujte podle [to](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) pokyny na vlastní instalační program DNS. Zobrazit následující porty tabulce a další požadavky sítě pro referenci.
@@ -139,7 +139,7 @@ Pokud je instance služby API Management je hostováno ve virtuální síti, se 
 >Azure API Management není podporovaný s konfigurací ExpressRoute, **nesprávně Inzerovat trasy z cesty veřejného partnerského vztahu k cestou soukromého partnerského vztahu mezi**. Konfigurace ExpressRoute, které mají veřejné partnerské vztahy nakonfigurované, obdrží inzerování trasy od společnosti Microsoft pro velké sady rozsahů adres Microsoft Azure IP. Pokud tyto rozsahy adres nesprávně ohlášené mezi na cestou soukromého partnerského vztahu, konečným výsledkem je, že všechny odchozí síťových paketů z podsítě instance Azure API Management jsou nesprávně force tunelovým propojením zákazníka místní síťové infrastruktuře. Tento tok sítě dělí Azure API Management. Řešení tohoto problému je zastavit směrování mezi – reklamu z cesty veřejného partnerského vztahu cestou soukromého partnerského vztahu.
 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"> </a>Řešení potíží
 * **Počáteční instalace**: při počátečním nasazení služby API Management do podsítě neproběhne úspěšně, doporučujeme nejprve nasazení virtuálního počítače do stejné podsíti. Další vzdálené plochy do virtuálního počítače a ověřte, zda existuje připojení k jednomu každého prostředku níže ve vašem předplatném azure 
     * Azure Storage blob
     * Azure SQL Database
@@ -151,26 +151,26 @@ Pokud je instance služby API Management je hostováno ve virtuální síti, se 
 
 * **Odkazy na zdroje navigace**: Při nasazování do podsítě virtuální sítě Resource Manager styl, API Management rezerv podsíť, vytvořením prostředku navigační odkaz. Pokud podsíť již obsahuje prostředek od jiného výrobce, nasazení se **nezdaří**. Podobně když přesunout do jiné podsítě služby API Management nebo odstranit, jsme odebere tento prostředek navigačního odkazu. 
 
-## <a name="subnet-size"></a> Požadavek na velikost podsítě
+## <a name="subnet-size"> </a> Požadavek na velikost podsítě
 Azure si vyhrazuje některé IP adresy v rámci každé podsítě a tyto adresy nelze použít. První a poslední IP adresy podsítě jsou vyhrazené pro protokol shoda, společně s tři další adresy používané pro služby Azure. Další informace najdete v tématu [existují nějaká omezení na pomocí IP adresy v rámci těchto podsítí?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
 Kromě IP adresy používané při infrastruktury virtuální sítě Azure každá instance Api Management v podsíti používá dvě IP adresy na jednotku skladová položka Premium nebo jednu IP adresu pro vývojáře SKU. Každá instance si vyhrazuje další IP adresu pro externím vyrovnáváním zatížení. Při nasazování do interní sítě vnet, vyžaduje další IP adresu pro nástroj pro vyrovnávání zatížení interní.
 
 Zadaný výpočet vyšší než minimální velikost podsítě, ve kterém se dá nasadit API Management je /29, která umožňuje 3 IP adresy.
 
-## <a name="routing"></a> Směrování
+## <a name="routing"> </a> Směrování
 + Skupinu s vyrovnáváním zatížení veřejnou IP adresu (VIP) budou rezervovány pro poskytování přístupu k všechny koncové body služby.
 + IP adresu z rozsahu podsítě IP (DIP) se použije pro přístup k prostředkům v rámci virtuální sítě a veřejnou IP adresu (VIP) se použije pro přístup k prostředkům mimo síť vnet.
 + S vyrovnáváním zatížení se veřejná IP adresa naleznete v okně Přehled/Essentials na webu Azure portal.
 
-## <a name="limitations"></a>Omezení
+## <a name="limitations"> </a>Omezení
 * Podsíť obsahující instance API Management nemůže obsahovat u jiných typů prostředků Azure.
 * Podsíť a služba API Management musí být ve stejném předplatném.
 * Nelze přesunout podsíť obsahující instance API Management napříč odběry.
 * Pro nasazení v API Management více oblast nakonfigurován v režimu interní virtuální síť jsou zodpovědní za správu Vyrovnávání zatížení napříč více oblastech, jako vlastní směrování uživatelů.
 
 
-## <a name="related-content"></a>Související obsah
+## <a name="related-content"> </a>Související obsah
 * [Propojení virtuální sítě s back-end pomocí brány sítě Vpn](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
 * [Propojení virtuální sítě z různé modely nasazení](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Jak používat nástroj Inspector rozhraní API pro trasování volání v Azure API Management](api-management-howto-api-inspector.md)
