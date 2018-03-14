@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 695824ef2537a97ea0530f2c33ad24d5cd9e20f8
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Klíčové aspekty: pomocí služby nebo vytváření aplikací pro Azure zásobníku
 
@@ -43,13 +43,13 @@ Azure technického obsahu předpokládá, že jsou aplikací vyvíjených pro sl
 
 Následující tabulka popisuje nejvýraznějších rozdílů mezi zásobník Azure a Azure. Při vývoji pro zásobník Azure nebo pomocí služby Azure zásobníku, ponechat v paměti.
 
-| Oblast | Azure (globální) | Azure Stack |
+| Oblast | Azure (global) | Azure Stack |
 | -------- | ------------- | ----------|
 | Kdo funguje? | Microsoft | Vaše organizace nebo služba Zprostředkovatel.|
 | Kdo můžete požádat o podporu? | Microsoft | Integrovaný systém kontaktujte operátor Azure zásobníku (u vaší organizace nebo služba poskytovatele) pro podporu.<br><br>Pro podporu Azure zásobníku Development Kit, přejděte [fóra Microsoft](https://social.msdn.microsoft.com/Forums/home?forum=azurestack). Development kit je zkušební prostředí, a proto není žádná oficiální podporu nabízených prostřednictvím Microsoft podporu služby zákazníkům (CSS).
 | Služby k dispozici | Zobrazit seznam [Azure produkty](https://azure.microsoft.com/services/?b=17.04b). K dispozici služby se liší podle oblasti Azure. | Azure zásobníku podporuje podmnožinu služeb Azure. Skutečné služby budou lišit v závislosti na vaší organizace nebo služba Zprostředkovatel rozhodne na nabídku.
-| Azure Resource Manager. koncový bod * | https://management.azure.com | Pro systém Azure zásobníku integrované pomocí koncového bodu, který poskytuje vaší operátor zásobník Azure.<br><br>Pro development kit, použijte: https://management.local.azurestack.external
-| Portál URL * | [https://Portal.Azure.com](https://portal.azure.com) | Pro systém Azure zásobníku integrované přejděte na adresu URL, kterou vaše operátor zásobník Azure poskytuje.<br><br>Pro development kit, použijte: https://portal.local.azurestack.external
+| Azure Resource Manager. koncový bod * | https://management.azure.com | Pro systém Azure zásobníku integrované pomocí koncového bodu, který poskytuje vaší operátor zásobník Azure.<br><br>Pro development kit použijte: https://management.local.azurestack.external
+| Portál URL * | [https://portal.azure.com](https://portal.azure.com) | Pro systém Azure zásobníku integrované přejděte na adresu URL, kterou vaše operátor zásobník Azure poskytuje.<br><br>Pro development kit použijte: https://portal.local.azurestack.external
 | Oblast | Můžete vybrat oblasti, které chcete nasadit. | Pro systém Azure zásobníku integrované použijte oblast, která je k dispozici v systému.<br><br>Pro development kit oblasti bude vždy **místní**.
 | Skupiny prostředků | Skupiny prostředků může mít rozsah oblasti. | Pro integrované systémy a sadě pro vývoj existuje pouze jedna oblast.
 |Podporované obory názvů, typy prostředků a verze rozhraní API | Nejnovější (nebo starší verze, které ještě nejsou zastaralé). | Azure zásobníku podporuje konkrétní verze. Najdete v části "Požadavky na verzi" v tomto článku.
@@ -86,7 +86,7 @@ Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}
 
 Příklad výstupu (zkrácený): ![příklad výstupu příkazu Get-AzureRmResourceProvider](media/azure-stack-considerations/image1.png)
  
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Podrobnější informace o rozdílech na úrovni služby najdete v části:
 
