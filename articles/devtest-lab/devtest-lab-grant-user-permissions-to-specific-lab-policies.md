@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: v-craic
 ms.openlocfilehash: f92ad5e991bdb066bb9680b4865501076d43f450
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Udělení uživatelských oprávnění zásad konkrétní testovacího prostředí
 ## <a name="overview"></a>Přehled
@@ -34,7 +34,7 @@ Třeba, aby bylo možné udělit oprávnění pro čtení a zápis uživatele **
 Další informace o vlastních rolích v RBAC najdete v tématu [vlastní role řízení přístupu](../active-directory/role-based-access-control-custom-roles.md).
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>Vytvoření testovacího prostředí vlastní role pomocí prostředí PowerShell
-Chcete-li začít, budete muset v následujícím článku se dozvíte, jak nainstalovat a nakonfigurovat rutin prostředí Azure PowerShell: [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre).
+Chcete-li začít, budete muset v následujícím článku se dozvíte, jak nainstalovat a nakonfigurovat rutin prostředí Azure PowerShell: [ https://azure.microsoft.com/blog/azps-1-0-pre ](https://azure.microsoft.com/blog/azps-1-0-pre).
 
 Jakmile jste nastavili rutin prostředí Azure PowerShell, můžete provádět následující úlohy:
 

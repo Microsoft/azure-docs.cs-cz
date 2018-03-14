@@ -4,7 +4,7 @@
 Můžete vytvořit kanál s aktivitou kopírování pomocí jedné z následujících nástrojů nebo sady SDK. Vyberte odkaz přejděte na kurz s podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 - [Nástroj pro kopírování dat](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
-- [portál Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
+- [Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
 - [.NET SDK](../articles/data-factory/quickstart-create-data-factory-dot-net.md)
 - [Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
 - [Azure PowerShell](../articles/data-factory/quickstart-create-data-factory-powershell.md)
