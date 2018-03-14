@@ -20,7 +20,7 @@ Tyto kroky můžete vyřešit velký počet chyb alokace ve virtuálních počí
 
 ## <a name="background-information"></a>Základní informace
 ### <a name="how-allocation-works"></a>Jak funguje přidělení
-Servery v datových centrech Azure jsou rozděleny do clusterů. Za normálních okolností požadavku na přidělení dojde k pokusu o několik clustery, ale je možné, že určitá omezení z požadavek na přidělení vynutit platformy Azure k pokusu o žádost v pouze jeden cluster. V tomto článku budeme označovat to jako "připnuli do clusteru s podporou." Obrázek 1 níže znázorňuje malá normální přidělení, které dojde k pokusu o několik clusterů. Obrázek 2 znázorňuje malá přidělení, má připnuli k clusteru 2, protože se jedná, je hostitelem existující sady CS_1 cloudové služby nebo dostupnost.
+Servery v datových centrech Azure jsou rozdělené do clusterů. Za normálních okolností se požadavek na přidělení zkouší v několika clusterech, ale je možné, že určitá omezení požadavku na přidělení donutí platformu Azure, aby tento požadavek vyzkoušela jenom v jednom clusteru. V tomto článku budeme označovat to jako "připnuli do clusteru s podporou." Obrázek 1 níže znázorňuje malá normální přidělení, které dojde k pokusu o několik clusterů. Obrázek 2 znázorňuje malá přidělení, má připnuli k clusteru 2, protože se jedná, je hostitelem existující sady CS_1 cloudové služby nebo dostupnost.
 ![Diagram přidělení](./media/virtual-machines-common-allocation-failure/Allocation1.png)
 
 ### <a name="why-allocation-failures-happen"></a>Proč nastat chyby v přidělení
@@ -53,7 +53,7 @@ Diagram 5 níže obsahuje řadu scénářů (připojené) přidělení.
 > 
 
 ## <a name="allocation-scenario-resize-a-vm-or-add-vms-or-role-instances-to-an-existing-cloud-service"></a>Přidělení scénář: Změna velikosti virtuálního počítače nebo přidat virtuální počítače nebo instance rolí do existující cloudové služby
-Chyba
+**Chyba**
 
 Upgrade_VMSizeNotSupported nebo GeneralError
 
@@ -68,7 +68,7 @@ Pokud je chyba Upgrade_VMSizeNotSupported *, zkuste jinou velikost virtuálního
 Pokud je chyba GeneralError *, je pravděpodobné, že typ prostředku (například konkrétní velikost virtuálního počítače) se podporuje v clusteru, ale clusteru nemá volné prostředky v tuto chvíli. Podobá se výše uvedené scénáře, přidejte požadované výpočetních prostředků procesem vytvoření nové cloudové služby (Všimněte si, že má novou cloudovou službu používat jiný virtuální IP adresy) a připojení ke cloudovým službám pomocí regionální virtuální síť.
 
 ## <a name="allocation-scenario-restart-partially-stopped-deallocated-vms"></a>Scénář přidělení: restartování částečně zastavena (deallocated) virtuálních počítačů
-Chyba
+**Chyba**
 
 GeneralError *
 
@@ -84,7 +84,7 @@ Pokud se dá použít jiný virtuální IP adresy, odstranit zastaveném (deallo
 * Pokud vaše stávající cloudovou službu nepoužívá regionální virtuální síť, vytvořit novou virtuální síť pro novou cloudovou službu a potom [připojit existující virtuální síť k nové virtuální sítě](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Další informace [regionálních virtuálních sítí](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
 ## <a name="allocation-scenario-restart-fully-stopped-deallocated-vms"></a>Scénář přidělení: restartování plně zastavena (deallocated) virtuálních počítačů
-Chyba
+**Chyba**
 
 GeneralError *
 
@@ -97,7 +97,7 @@ GeneralError *
 Pokud se dá použít jiný virtuální IP adresy, odstranit původní zastaveném (deallocated) virtuálních počítačů (ale zachovat přidružené disky) a odstranit odpovídající cloudové služby (přidružené výpočetní prostředky uvolnila již při jeho zastavení (deallocated) virtuálních počítačů). Vytvořte novou cloudovou službu, chcete-li přidat virtuální počítače zpět.
 
 ## <a name="allocation-scenario-stagingproduction-deployments-platform-as-a-service-only"></a>Scénář přidělení: pracovní nebo produkční nasazení (platforma jako služba pouze)
-Chyba
+**Chyba**
 
 New_General * nebo New_VMSizeNotSupported *
 
@@ -110,7 +110,7 @@ Nasazení pracovní a provozní nasazení cloudové služby jsou hostované ve s
 Odstraňte prvním nasazení a původní Cloudová služba a znovu nasaďte cloudové služby. Tato akce může být umístěn prvním nasazení v clusteru, který má dostatek volných prostředků, aby vyhovovaly obou nasazení nebo v clusteru, který podporuje velikosti virtuálních počítačů, které jste požádali.
 
 ## <a name="allocation-scenario-affinity-group-vmservice-proximity"></a>Scénář přidělení: Skupina vztahů (blízkosti virtuálního počítače nebo služby)
-Chyba
+**Chyba**
 
 New_General * nebo New_VMSizeNotSupported *
 
@@ -123,7 +123,7 @@ Všechny výpočetní zdroj přiřazený do skupiny vztahů je vázaný na jedno
 Pokud skupiny vztahů je nezbytné, není pomocí skupiny vztahů nebo seskupení výpočetní prostředky do více skupin vztahů.
 
 ## <a name="allocation-scenario-affinity-group-based-virtual-network"></a>Scénář přidělení: na základě vztahů skupiny virtuální sítě
-Chyba
+**Chyba**
 
 New_General * nebo New_VMSizeNotSupported *
 
@@ -149,7 +149,7 @@ Jakmile se zobrazí chyba přidělení, najdete v části Pokud některé popsan
 Obecně platí tak dlouho, dokud chyba neindikuje "požadovaná velikost virtuálního počítače není podporováno", můžete vždy opakovat později, protože dostatek prostředků, může být uvolněna v clusteru, aby dokázala pojmout vaši žádost. Pokud problém je, že požadovaná velikost virtuálního počítače není podporovaná, najdete dále alternativní řešení.
 
 ## <a name="allocation-scenario-resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>Přidělení scénář: Změna velikosti virtuálního počítače nebo virtuální počítače přidat do stávající sadu dostupnosti
-Chyba
+**Chyba**
 
 Upgrade_VMSizeNotSupported * nebo GeneralError *
 
@@ -164,7 +164,7 @@ Pokud je chyba Upgrade_VMSizeNotSupported *, zkuste jinou velikost virtuálního
 Pokud je chyba GeneralError *, je pravděpodobné, že typ prostředku (například konkrétní velikost virtuálního počítače) se podporuje v clusteru, ale clusteru nemá volné prostředky v tuto chvíli. Pokud virtuální počítač může být součástí jiné skupině dostupnosti, vytvořte nový virtuální počítač ve skupině (ve stejné oblasti) různé dostupnosti. Tento nový virtuální počítač můžete pak přidá do stejné virtuální síti.  
 
 ## <a name="allocation-scenario-restart-partially-stopped-deallocated-vms"></a>Scénář přidělení: restartování částečně zastavena (deallocated) virtuálních počítačů
-Chyba
+**Chyba**
 
 GeneralError *
 
@@ -177,7 +177,7 @@ GeneralError *
 Zastavte všechny virtuální počítače ve skupině před restartováním první dostupnosti. Tím bude zajištěno, že se nový pokus o přidělení spustit a, do nového clusteru lze vybrat s dostupné kapacity.
 
 ## <a name="allocation-scenario-restart-fully-stopped-deallocated"></a>Scénář přidělení: restartování plně zastavena (deallocated)
-Chyba
+**Chyba**
 
 GeneralError *
 

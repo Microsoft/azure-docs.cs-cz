@@ -7,7 +7,7 @@ Existují některá omezení počtu metrik a událostí na aplikaci (tj. na inst
 | Omezování | 32 000 událostí za sekundu | Omezení se měří se po minutách.
 | Uchovávání dat | 90 dnů | Tento prostředek je pro funkce [Vyhledávání](../articles/application-insights/app-insights-diagnostic-search.md), [Analýza](../articles/application-insights/app-insights-analytics.md) a [Průzkumník metrik](../articles/application-insights/app-insights-metrics-explorer.md).
 | [Vícekrokový test dostupnosti](../articles/application-insights/app-insights-monitor-web-app-availability.md#multi-step-web-tests) – uchování podrobných výsledků | 90 dnů | Tento prostředek poskytuje podrobné výsledky každého kroku.
-| Maximální velikost události | 64 KB | 
+| Maximální velikost události | 64 K | 
 | Délka názvu vlastnosti a metriky | 150 | V tématu [zadejte schémat.](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)
 | Délka řetězce hodnoty vlastnosti | 8 192 | V tématu [zadejte schémat.](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)
 | Délka zprávy trasování a výjimky | 10 000 | V tématu [zadejte schémat.](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)

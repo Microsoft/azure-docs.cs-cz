@@ -9,10 +9,10 @@ ms.date: 03/01/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 22d37ca30f1319f46a52b96be1c527f6f56719ab
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/13/2018
 ---
 ## <a name="supported-distributions-and-drivers"></a>Podporované distribuce a ovladače
 
