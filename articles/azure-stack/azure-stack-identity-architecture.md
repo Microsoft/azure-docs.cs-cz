@@ -1,6 +1,6 @@
 ---
 title: "Architektura identity pro Azure zásobníku | Microsoft Docs"
-description: "Další informace o architektuře Identity, které můžete použít s Azure zásobníku."
+description: "Další informace o architektuře identity, které můžete použít s Azure zásobníku."
 services: azure-stack
 documentationcenter: 
 author: brenduns
@@ -15,17 +15,17 @@ ms.topic: get-started-article
 ms.date: 2/28/2018
 ms.author: brenduns
 ms.reviewer: 
-ms.openlocfilehash: 7f2ec78da38f3c97fde810fb8fc965cfbb6fda08
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 899e0fc0c1eb93d68c79c92c9cc042462ebc2fef
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Architektura identity pro Azure zásobníku
-Než si zvolíte zprostředkovatele identity pro použití s Azure zásobníku, pochopit důležité rozdíly mezi možnosti služby Azure Active Directory (Azure AD) a Active Directory Federated Services (AD FS). 
+Než si zvolíte zprostředkovatele identity pro použití s Azure zásobníku, pochopit důležité rozdíly mezi možnosti služby Azure Active Directory (Azure AD) a služby Active Directory Federation Services (AD FS). 
 
 ## <a name="capabilities-and-limitations"></a>Možnosti a omezení 
-Možnosti, včetně podpory pro více klientů můžete omezit zprostředkovatele identity, které zvolíte. 
+Zprostředkovatele identity, který zvolíte, můžete omezit možnosti, včetně podpory pro víceklientská architektura. 
 
   
 
@@ -33,45 +33,45 @@ Možnosti, včetně podpory pro více klientů můžete omezit zprostředkovatel
 |------------------------------|----------|-------|
 |Připojení k Internetu     |Ano       |Nepovinné|
 |Podpora pro více klientů     |Ano       |Ne      |
-|Syndikace Marketplace.       |Ano       |Ano – vyžaduje použití [offline syndikace Marketplace](azure-stack-download-azure-marketplace-item.md#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) nástroj.|
+|Syndikace Marketplace.       |Ano       |Ano. Vyžaduje použití [offline syndikace Marketplace](azure-stack-download-azure-marketplace-item.md#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) nástroj.|
 |Podpora služby Active Directory Authentication Library (ADAL) |Ano |Ano|
-|Podpora pro nástroje, jako je rozhraní příkazového řádku Azure (CLI), Visual Studio (VS) a prostředí PowerShell  |Ano |Ano|
-|Vytvořit objekty služby prostřednictvím portálu     |Ano |Ne|
+|Podpora nástrojů, jako je Azure CLI, Visual Studio a prostředí PowerShell  |Ano |Ano|
+|Vytvořit objekty služby prostřednictvím portálu Azure     |Ano |Ne|
 |Vytvořit objekty služby s certifikáty      |Ano |Ano|
 |Vytvořit objekty služby s tajné klíče (klíče)    |Ano |Ne|
 |Aplikace můžete použít službu grafu           |Ano |Ne|
-|Aplikace můžete použít zprostředkovatele identity pro přihlášení |Ano |Ano – vyžaduje aplikace vytvořit federaci s místní služby AD FS. |
+|Aplikace můžete použít zprostředkovatele identity pro přihlášení |Ano |Ano. Vyžaduje aplikace vytvořit federaci s místní instance služby AD FS. |
 
 ## <a name="topologies"></a>Topologie
-Následující části obsahují informace o topologiích identity, které můžete použít.
+V následujících částech discus různé topologie identity, které můžete použít.
 
-### <a name="azure-ad--single-tenant"></a>Azure AD – jednoho klienta 
+### <a name="azure-ad-single-tenant-topology"></a>Azure AD: Topologie jednoho klienta 
 Když nainstalujete zásobník Azure a Azure AD, Azure zásobníku ve výchozím nastavení používá topologii jednoho klienta. 
 
 Topologie jednoho klienta je užitečné, když:
 - Všichni uživatelé jsou součástí stejné klienta.
-- Poskytovatel služeb hostitelem instance Azure zásobníku v organizaci.  
+- Poskytovatel služeb hostitelem instance Azure zásobníku v organizaci. 
 
-![Azure zásobníku topologie pomocí topologii jednoho klienta Azure AD](media/azure-stack-identity-architecture/single-tenant.png)
+![Azure zásobníku jednoho klienta topologie s Azure AD](media/azure-stack-identity-architecture/single-tenant.png)
 
-S touto topologií:
+Tato topologie funkce následující vlastnosti:
 - Azure zásobníku zaregistruje všechny aplikace a služby pro stejnou službou Azure AD klienta adresáře. 
 - Azure zásobníku ověřuje uživatele a aplikací z adresáře, včetně tokeny. 
 - Identity pro správce (operátorům cloudu) a uživatelů klienta jsou ve stejném adresáři klientovi. 
-- Chcete-li uživatel z jiného adresáře pro přístup k tomuto prostředí zásobníku Azure, musíte [pozvat uživatele jako Host](azure-stack-identity-overview.md#guest-users) k adresáři klienta.  
+- Chcete-li uživatel z jiného adresáře pro přístup k tomuto prostředí zásobníku Azure, musíte [pozvat uživatele jako Host](azure-stack-identity-overview.md#guest-users) k adresáři klienta. 
 
-### <a name="azure-ad--multi-tenant"></a>Azure AD – více klientů
+### <a name="azure-ad-multi-tenant-topology"></a>Azure AD: topologie pro více klientů
 Operátoři cloudu můžete nakonfigurovat zásobník Azure pro povolení přístupu k aplikacím klienty z jednoho nebo více organizací. Uživatelé přístup k aplikacím prostřednictvím portálu user portal. V této konfiguraci portálu pro správu (používá operátor cloudu) je omezená na uživatele z jednoho adresáře. 
 
 Topologie s více klienty je užitečné, když:
 - Poskytovatel služeb chce uživatelům z několik organizací, které umožní přístup k Azure zásobníku.
 
-![Azure zásobníku topologie, topologie s více klienty pomocí Azure AD](media/azure-stack-identity-architecture/multi-tenant.png)
+![Azure zásobníku víceklientské topologie s Azure AD](media/azure-stack-identity-architecture/multi-tenant.png)
 
-S touto topologií:
+Tato topologie funkce následující vlastnosti:
 - Přístup k prostředkům by měla být na základě za organizace. 
-- K udělení přístupu k prostředkům pro uživatele, kteří jsou mimo jejich organizace by neměla mít uživatelé z jedné organizace.  
-- Identity pro správce (operátorům cloudu) může být v samostatné directory klienta než identity pro uživatele. Toto oddělení zajišťuje izolaci účet na úrovni zprostředkovatele identity. 
+- Uživatelé z jedné organizace by měli nelze udělit přístup k prostředkům pro uživatele, kteří jsou mimo organizaci. 
+- Identity pro správce (operátorům cloudu) může být v samostatné directory klienta z identity pro uživatele. Toto oddělení zajišťuje izolaci účet na úrovni zprostředkovatele identity. 
  
 ### <a name="ad-fs"></a>AD FS  
 Topologie služby AD FS je nutné, když je splněna jedna z následujících podmínek:
@@ -80,20 +80,20 @@ Topologie služby AD FS je nutné, když je splněna jedna z následujících po
   
 ![Azure zásobníku topologie pomocí služby AD FS](media/azure-stack-identity-architecture/adfs.png)
 
-S touto topologií:
-- Pro podporu použití v produkčním prostředí, je potřeba integrovat předdefinované instanci služby Azure zásobníku AD FS s existující instancí služby AD FS zálohovaný ve službě Active Directory (AD) přes důvěryhodnost federace. 
-- Službu grafu v zásobníku Azure můžete integrovat s vaší stávající AD.  Můžete také použít protokol OData na základě rozhraní Graph API služby, který podporuje rozhraní API, které jsou konzistentní s Azure AD Graph API.  
+Tato topologie funkce následující vlastnosti:
+- Pro zajištění podpory této topologie v produkčním prostředí, musíte integrovat předdefinované instanci služby Azure zásobníku AD FS s existující instancí služby AD FS, který je zálohovaný službou Active Directory, prostřednictvím vztahu důvěryhodnosti federace. 
+- Službu grafu v zásobníku Azure můžete integrovat s vaší stávající instancí služby Active Directory. Můžete taky služby založené na protokolu OData rozhraní Graph API, která podporuje rozhraní API, které jsou konzistentní s Azure AD Graph API. 
 
-  Pro interakci s služby AD, rozhraní Graph API vyžaduje pověření uživatele ze služby AD, které mají oprávnění jen pro čtení služby AD. 
-  - Integrované služby AD FS je založena na Server 2016. 
-  - Vaše AD FS a musí být založený na Server 2012 nebo novější.  
+  Rozhraní Graph API k interakci s vaší instancí služby Active Directory, vyžaduje pověření uživatele z vaší instance služby Active Directory, které mají oprávnění jen pro čtení. 
+  - Předdefinované instanci služby AD FS je založena na systému Windows Server 2016. 
+  - Vaše instance služby AD FS a služby Active Directory musí být založený na Windows Server 2012 nebo novější. 
   
-  Mezi služby AD a integrované služby AD FS interakce nejsou omezena na OpenID Connect a můžete použít libovolný protokol pro vzájemně podporované.  
-  - Uživatelské účty se vytváří a spravují v místní AD.
-  - Objekty služby a registrace pro aplikace se spravují v předdefinované AD.
+  Mezi vaší instance služby Active Directory a integrované instanci služby AD FS interakce nejsou omezeny na OpenID Connect a mohou použít libovolný protokol pro vzájemně podporované. 
+  - Uživatelské účty se vytváří a spravují v místní instanci služby Active Directory.
+  - Objekty služby a registrace pro aplikace se spravují v předdefinované instanci Active Directory.
 
 
 
 ## <a name="next-steps"></a>Další postup
 - [Identity – přehled](azure-stack-identity-overview.md)   
-- [Integrace Datacenter - Identity](azure-stack-integrate-identity.md)
+- [Integrace Datacenter - identity](azure-stack-integrate-identity.md)
