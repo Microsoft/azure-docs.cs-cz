@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 7de3a30e477fcec66ce703b6c3fec7d17d79d3ab
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4e8450cc20718185a3cea02bf8fbb6b97dd91ddb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Rozpoznávání biolékařského entity pomocí šablony tým datové vědy procesu (TDSP)
 
-Extrakce entity je dílčí úlohy extrakce informace (také označované jako [rozpoznávání pojmenované entity (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition), rozdělování entity a identifikaci entity). Cílem této scénářem z reálného prostředí je zvýrazněte jak pomocí Azure Machine Learning Workbench řešit složité úlohy zpracování přirozeného jazyka (NLP) jako je extrakce entity z nestrukturovaných textu:
+Extrakce entity je dílčí úlohy extrakce informace (také označované jako [rozpoznávání pojmenované entity (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition), entita, rozdělování a identifikaci entity). Cílem této scénářem z reálného prostředí je zvýrazněte jak pomocí Azure Machine Learning Workbench řešit složité úlohy zpracování přirozeného jazyka (NLP) jako je extrakce entity z nestrukturovaných textu:
 
 1. Jak ke cvičení neuronové slovo vložené části model, na souhrnu text z přehledů o 18 milionů PubMed pomocí [Spark Word2Vec implementace](https://spark.apache.org/docs/latest/mllib-feature-extraction.html#word2vec).
 2. Jak vytvořit model hloubkové opakující neuronové sítě dlouho krátkodobé paměti (LSTM) pro extrakci entity na grafický procesor s podporou Azure dat vědecké účely virtuálního počítače (GPU DS VM) v Azure.
@@ -32,13 +32,13 @@ Extrakce entity je dílčí úlohy extrakce informace (také označované jako [
 
 4. Ukazují následující možnosti v rámci Azure Machine Learning Workbench:
 
-    * Vytváření instancí [struktura tým datové vědy procesu (TDSP) a šablony](how-to-use-tdsp-in-azure-ml.md).
+    * Vytváření instancí [struktura tým datové vědy procesu (TDSP) a šablony](how-to-use-tdsp-in-azure-ml.md)
     * Automatizovanou správu vaší závislosti projektu včetně stažení a instalace
-    * Spouštění skriptů Python na differetn výpočetní prostředí.
-    * Spusťte sledování skriptů Python historie.
-    * Provádění úloh na vzdálené Spark výpočetní kontext pomocí clusterů HDInsight Spark 2.1.
-    * Provádění úloh v vzdálené GPU virtuální počítače na platformě Azure.
-    * Snadno operationalization hloubkové learning modely jako webové služby na kontejneru služby Azure (ACS).
+    * Spouštění skriptů Python na různých výpočetních prostředí
+    * Spustit sledování skriptů Python historie
+    * Provádění úloh na vzdálené Spark výpočetní kontexty pomocí clusterů HDInsight Spark 2.1
+    * Provádění úloh v vzdálené GPU virtuální počítače v Azure
+    * Snadno operationalization hloubkové learning modely jako webové služby na kontejneru služby Azure (ACS)
 
 ## <a name="use-case-overview"></a>Přehled případu použití
 Rozpoznávání biolékařského pojmenované entity, jako je důležitý krok pro komplexní biolékařského NLP úlohy: 
@@ -79,7 +79,7 @@ První, stáhli jsme nezpracovaná data MEDLINE abstraktní z [MEDLINE](https://
 
 ### <a name="2-lstm-model-training-data"></a>2. LSTM modelu Cvičná data
 
-Extrakce modelu neuronové entity má byla vycvičena a vyhodnocené na publiclly dostupné datové sady. Pokud chcete získat podrobný popis o tyto datové sady, může najdete následující zdroje:
+Extrakce modelu neuronové entity má byla vycvičena a vyhodnocené na veřejně dostupné datové sady. Pokud chcete získat podrobný popis o tyto datové sady, může najdete následující zdroje:
  * [Úloha rozpoznávání bio Entity v BioNLP/NLPBA 2004](http://www.nactem.ac.uk/tsujii/GENIA/ERtask/report.html)
  * [Úloha souhrnu BioCreative V CDR](http://www.biocreative.org/tasks/biocreative-v/track-3-cdr/)
  * [Semeval 2013 – úloha 9.1 (nedovolenému rozpoznávání)](https://www.cs.york.ac.uk/semeval-2013/task9/)
@@ -95,7 +95,7 @@ Toto je odkaz na veřejné úložiště GitHub reálného scénáře, který obs
 * Azure [předplatného](https://azure.microsoft.com/free/)
 * Azure Machine Learning Workbench. V tématu [Průvodce instalací](quickstart-installation.md). Aktuálně Azure Machine Learning Workbench lze nainstalovat do jenom následující operační systémy: 
     * Windows 10 nebo Windows Server 2016
-    * systému macOS Sierra (nebo novější)
+    * macOS Sierra (or newer)
 
 
 ### <a name="azure-services"></a>Služby Azure
@@ -106,7 +106,7 @@ Toto je odkaz na veřejné úložiště GitHub reálného scénáře, který obs
 
 ### <a name="python-packages"></a>Balíčky Python
 
-Všechny požadované závislosti jsou definovány v souboru aml_config/conda_dependencies.yml ve složce projektu scénář. Závislosti definované v tomto souboru se automaticky zřídí pro spuštění před docker a virtuálních počítačů a HDI clusteru cíle. Podrobnosti o formátu souborů prostředí Conda [zde](https://conda.io/docs/using/envs.html#create-environment-file-by-hand).
+Všechny požadované závislosti jsou definovány v souboru aml_config/conda_dependencies.yml ve složce projektu scénář. Závislosti definované v tomto souboru jsou automaticky zřízené pro spuštění před docker a virtuálních počítačů a HDI clusteru cíle. Podrobnosti o formátu souborů prostředí Conda [zde](https://conda.io/docs/using/envs.html#create-environment-file-by-hand).
 
 * [TensorFlow](https://www.tensorflow.org/install/)
 * [CNTK 2.0](https://docs.microsoft.com/cognitive-toolkit/using-cntk-with-keras)
@@ -139,14 +139,14 @@ Nezpracovaná svátek MEDLINE má celkem 27 milionů přehledů, kde přibližn�
 * předběžné zpracování abstraktní text včetně rozdělení věty, Tokenizace a případu normalizace.
 * Vylučte články, kde abstraktní pole je prázdné nebo má krátký textový 
 * Vytvoření aplikace word termínů z přehledu školení
-* cvičení slovo vložení neuronové modelu. Další podrobnosti najdete v části [Githubu kód odkaz](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/code/01_data_acquisition_and_understanding/ReadMe.md) začít pracovat.
+* cvičení slovo vložení neuronové modelu. Další informace najdete v tématu [Githubu kód odkaz](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/code/01_data_acquisition_and_understanding/ReadMe.md) začít pracovat.
 
 
 Po analýze soubory XML, dat má následující formát: 
 
 ![Vzorek dat](./media/scenario-tdsp-biomedical-recognition/datasample.png)
 
-Extrakce modelu neuronové entity má byla vycvičena a vyhodnocené na publiclly dostupné datové sady. Pokud chcete získat podrobný popis o tyto datové sady, může najdete následující zdroje:
+Extrakce modelu neuronové entity má byla vycvičena a vyhodnocené na veřejně dostupné datové sady. Pokud chcete získat podrobný popis o tyto datové sady, může najdete následující zdroje:
  * [Úloha rozpoznávání bio Entity v BioNLP/NLPBA 2004](http://www.nactem.ac.uk/tsujii/GENIA/ERtask/report.html)
  * [Úloha souhrnu BioCreative V CDR](http://www.biocreative.org/tasks/biocreative-v/track-3-cdr/)
  * [Semeval 2013 – úloha 9.1 (nedovolenému rozpoznávání)](https://www.cs.york.ac.uk/semeval-2013/task9/)
@@ -167,7 +167,7 @@ Word2Vec je slovo vložení algoritmus učení bez dohledu, která provede model
 
 ![Přeskočit Gram modelu](./media/scenario-tdsp-biomedical-recognition/skip-gram.png)
 
-K optimalizaci výkonu používá model hierarchické Softmax a záporná vzorkování. Hierarchická SoftMax (H-SoftMax) je přibližný vycházející binárním stromům. H SoftMax v podstatě nahradí vrstvě ploché SoftMax hierarchické vrstva, která obsahuje slova, jako je opustí. To umožňuje nám rozložit výpočet pravděpodobnost jednoho slova do sekvenci výpočty pravděpodobnosti, která nám ušetří s vypočítat nákladné normalizaci přes všechna slova. Vzhledem k tomu, že má vyrovnáváním binárního stromu hloubku log2 (| V |) (V je slovníku), musíme vyhodnotit maximálně log2 (| V |) uzly k získání konečné pravděpodobnost slova. Pravděpodobnost word w, danou jeho kontextu c je pak jednoduše produkt pravděpodobností trvá vpravo a vlevo se změní v uvedeném pořadí které vedou k jeho uzel typu list. Můžeme sestavit Huffmanova stromu na základě četnosti slova v datové sadě Ujistěte se, že častější slova získat reprezentace kratší. Další informace najdete v části [tento odkaz](http://sebastianruder.com/word-embeddings-softmax/).
+K optimalizaci výkonu používá model hierarchické Softmax a záporná vzorkování. Hierarchická SoftMax (H-SoftMax) je přibližný vycházející binárním stromům. H SoftMax v podstatě nahradí vrstvě ploché SoftMax hierarchické vrstva, která obsahuje slova, jako je opustí. To umožňuje nám rozložit výpočet pravděpodobnost jednoho slova do sekvenci výpočty pravděpodobnosti, která nám ušetří s vypočítat nákladné normalizaci přes všechna slova. Vzhledem k tomu, že má vyrovnáváním binárního stromu hloubku log2 (| V |) (V je slovníku), musíme vyhodnotit maximálně log2 (| V |) uzly k získání konečné pravděpodobnost slova. Pravděpodobnost word w, danou jeho kontextu c je pak jednoduše produkt pravděpodobností trvá vpravo a vlevo se změní v uvedeném pořadí které vedou k jeho uzel typu list. Můžeme sestavit Huffmanova stromu na základě četnosti slova v datové sadě Ujistěte se, že častější slova získat reprezentace kratší. Další informace najdete v tématu [tento odkaz](http://sebastianruder.com/word-embeddings-softmax/).
 Bitové kopie, které jsou převzaty z [zde](https://ahmedhanibrahim.wordpress.com/2017/04/25/thesis-tutorials-i-understanding-word2vec-for-word-embedding-i/).
 
 ##### <a name="visualization"></a>Vizualizace
@@ -188,7 +188,7 @@ Jak je znázorněno na následujícím obrázku, vizualizace t Odborníka poskyt
 
 * Vizualizace se Odborníka t
 
-![t Odborníka](./media/scenario-tdsp-biomedical-recognition/tsne.png)
+![t-SNE](./media/scenario-tdsp-biomedical-recognition/tsne.png)
 
 * Body nejblíže k "Rakoviny" (jsou všechny podtypů rakoviny)
 
@@ -198,19 +198,19 @@ Jak je znázorněno na následujícím obrázku, vizualizace t Odborníka poskyt
 
 V tématu [cvičení neuronové entity Extraktor](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/02_model_creation/ReadMe.md).
 
-Architektura informačního kanálu dopředného neuronové sítě trpí problém, že považovat každý vstup a výstup jako nezávislé na dalších vstupy a výstupy. Tato architektura nelze model pořadí pořadí označování úloh strojový překlad a extrakce entity. Modely opakující neuronové sítě tento problém vyřešit, protože výměnu informací počítaný dokud nyní na další uzel. Tato vlastnost je volána s paměti v síti, protože je možné použít dříve počítaný informace, jak je znázorněno na následujícím obrázku:
+Architektura informačního kanálu dopředného neuronové sítě vykazuje problém, že považovat každý vstup a výstup jako nezávislé na dalších vstupy a výstupy. Tato architektura nelze model pořadí pořadí označování úloh strojový překlad a extrakce entity. Modely opakující neuronové sítě tento problém vyřešit, protože výměnu informací počítaný dokud nyní na další uzel. Tato vlastnost je volána s paměti v síti, protože je možné použít dříve počítaný informace, jak je znázorněno na následujícím obrázku:
 
 ![RNN](./media/scenario-tdsp-biomedical-recognition/rnn-expanded.png)
 
 Ve skutečnosti trpí Vanilla RNNs [ú přechodu problém](https://en.wikipedia.org/wiki/Vanishing_gradient_problem) z důvodu, které nejsou umožňují využívat všechny informace, které jste viděli. Jasně problém se jenom v případě, že velké množství kontextu je nutná ke správnému předpovědi. Ale žádné modely jako LSTM tento problém, ve skutečnosti jsou navrženy mějte na paměti, dlouhodobé závislosti. Na rozdíl od vanilla RNNs, které mají jedné neuronové sítě, aby LSTMs interakce mezi čtyři neuronové sítě pro každou buňku. Podrobné vysvětlení, jak LSTM fungují, najdete v části [tento příspěvek](http://colah.github.io/posts/2015-08-Understanding-LSTMs/).
 
-![LSTM buňky](./media/scenario-tdsp-biomedical-recognition/lstm-cell.png)
+![LSTM Cell](./media/scenario-tdsp-biomedical-recognition/lstm-cell.png)
 
 Pojďme zkuste sestavit vlastní na základě LSTM opakující neuronové sítě a zkuste to k extrakci typy entit jako obchodu, z dat PubMed uvádí nákazy a příznakem. Prvním krokem je použít k získání velké množství s popisky dat a jak můžete by mít uhádnout, který není snadno! Většina lékařské dat obsahuje spoustu citlivé informace o osobě a proto nejsou veřejně dostupné. Spoléháme na kombinaci dvou různých datových sad, které jsou veřejně dostupné. První datovou sadu je z Semeval 2013 – úloha 9.1 (nedovolenému rozpoznávání) a druhá je z BioCreative V CDR úlohy. Jsme společném používání a automaticky tak, aby jsme zjistit drogy a nákaz z lékařské texty a vyhodnotit naše aplikace word vkládaných označování tyto dvě datové sady. Podrobnosti implementace, [Githubu kód odkaz](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/02_model_creation).
 
 Architektura modelu, který jsme použili napříč všechny kódy a pro porovnání je uveden níže. Parametr, který změní pro různé datové sady je pořadí maximální délka (zde 613).
 
-![LSTM modelu](./media/scenario-tdsp-biomedical-recognition/d-a-d-model.png)
+![LSTM model](./media/scenario-tdsp-biomedical-recognition/d-a-d-model.png)
 
 #### <a name="23-model-evaluation"></a>2.3. Vyhodnocení modelu
 V tématu [modelu vyhodnocení](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/03_model_evaluation/ReadMe.md).
@@ -229,7 +229,7 @@ Jsme provést vyhodnocení vkládaných word na ostatní datové sady v podobně
 
 * Úloha #2: Bílkoviny, buňky řádku, typ buňky, DNA a RNA detekce
 
-![Porovnání modelů 2](./media/scenario-tdsp-biomedical-recognition/mc2.png)
+![Model Comparison 2](./media/scenario-tdsp-biomedical-recognition/mc2.png)
 
 * Úloha #3: Chemikálie a nákaz detekce
 
@@ -244,7 +244,7 @@ Jsme provést vyhodnocení vkládaných word na ostatní datové sady v podobně
 ![Porovnání modelů 5](./media/scenario-tdsp-biomedical-recognition/mc5.png)
 
 #### <a name="tensorflow-versus-cntk"></a>TensorFlow versus CNTK
-Všechny hlášené modelu probíhá Trénink pomocí Keras TensorFlow jako back-end. Keras s back-end CNTK nepodporuje "reverse" v době, kdy bylo provedeno činnost. Z důvodu porovnání, jsme proto natrénovali model jednosměrný LSTM s back-end CNTK a porovnání s jednosměrný model LSTM s TensorFlow back-end. Nainstalujte CNTK 2.0 pro Keras z [zde](https://docs.microsoft.com/cognitive-toolkit/using-cntk-with-keras). 
+Všechny hlášené modely probíhá Trénink pomocí Keras TensorFlow jako back-end. Keras s back-end CNTK nepodporuje "reverse" v době, kdy bylo provedeno činnost. Z důvodu porovnání, jsme proto natrénovali model jednosměrný LSTM s back-end CNTK a porovnání s jednosměrný model LSTM s TensorFlow back-end. Nainstalujte CNTK 2.0 pro Keras z [zde](https://docs.microsoft.com/cognitive-toolkit/using-cntk-with-keras). 
 
 ![Porovnání modelů 6](./media/scenario-tdsp-biomedical-recognition/mc6.png)
 
@@ -266,7 +266,7 @@ Potřebujeme přes podrobnosti o tom, jak může trénování modelu vnoření w
 
 * Tomáši Mikolov, Kai Svoboda, Gregu Corrado a Jana Dean. 2013a. Efektivní odhad reprezentace aplikace word v prostoru vektoru. V řízení ICLR.
 * Tomáši Mikolov, Ilya Sutskever, Kai Svoboda, Gregu S Corrado a Jeff Dean. 2013b. Distribuované reprezentace slova a slovní spojení a jejich compositionality. V řízení NIPS stránky 3111 – 3119.
-* Jirka Chiu, Gamal Crichton, Anna Korhonen a Sampo Pyysalo. 2016. [Postup dobrý slovo vložené Train části pro biolékařského NLP](http://aclweb.org/anthology/W/W16/W16-2922.pdf), řízení v 15 pracoviště na biolékařského přirozeného jazyka zpracování stránky 166 – 174.
+* Jirka Chiu, Gamal Crichton, Anna Korhonen a Sampo Pyysalo. 2016. [Postup dobrý slovo vložené Train části pro biolékařského NLP](http://aclweb.org/anthology/W/W16/W16-2922.pdf), řízení v patnáctého pracoviště na biolékařského přirozeného jazyka zpracování stránky 166 – 174.
 * [Vektor reprezentace slova](https://www.tensorflow.org/tutorials/word2vec)
 * [Opakující Neuronové sítě](https://www.tensorflow.org/tutorials/recurrent)
 * [Problémy s Spark ml Word2Vec](https://intothedepthsofdataengineering.wordpress.com/2017/06/26/problems-encountered-with-spark-ml-word2vec/)

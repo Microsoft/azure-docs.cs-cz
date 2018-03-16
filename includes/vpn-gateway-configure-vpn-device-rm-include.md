@@ -1,10 +1,14 @@
-**V následujících tématech pro informace o konfiguraci:**
+**Chcete-li stáhnout konfiguraci zařízení VPN skriptů:**
+
+V závislosti na zařízení VPN, ke které máte nebudete moct stáhnout konfigurační skript zařízení VPN. Další informace najdete v tématu [skripty konfigurace zařízení VPN Stáhnout](../articles/vpn-gateway/vpn-gateway-download-vpndevicescript.md).
+
+**V následujících tématech pro další informace o konfiguraci:**
 
 - Další informace o kompatibilních zařízeních VPN najdete v tématu s popisem [zařízení VPN](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md).
 
 - Před konfigurací zařízení VPN zkontrolujte [známé problémy s kompatibilitou zařízení](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#known) pro zařízení VPN, které chcete použít.
 
-- Odkazy na nastavení konfigurace zařízení najdete v popisu [ověřených zařízení VPN](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable). Při poskytování odkazů na konfigurace zařízení se snažíme maximálně vyhovět. Vždycky je nejlepší obrátit se na výrobce zařízení a vyžádat si nejnovější informace o konfiguraci. Seznamu, které poskytujeme zobrazuje verze jsme testovali. Pokud váš operační systém není v tomto seznamu, je stále možné, že je kompatibilní verze. Obraťte se na výrobce zařízení k ověření, že je kompatibilní verze operačního systému pro vaše zařízení VPN.
+- Odkazy na nastavení konfigurace zařízení najdete v popisu [ověřených zařízení VPN](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable). Při poskytování odkazů na konfigurace zařízení se snažíme maximálně vyhovět. Vždycky je nejlepší obrátit se na výrobce zařízení a vyžádat si nejnovější informace o konfiguraci. V seznamu uvedena verze, které jsme testovali. Pokud váš operační systém není v tomto seznamu, je stále možné, že je kompatibilní verze. Obraťte se na výrobce zařízení k ověření, že je kompatibilní verze operačního systému pro vaše zařízení VPN.
 
 - Přehled konfigurace zařízení VPN najdete v tématu [Přehled konfigurací zařízení VPN třetích stran](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md).
 

@@ -58,7 +58,7 @@ Tento příkaz dává výsledky podobně jako v následující tabulce:
 
 | ID uživatele | uživatelské jméno | Oddíl | rowkey |
 |----|---------|---------------|----|
-| 1 | Jan | Oddíl1 | CERTIFIKAČNÍ AUTORITY |
+| 1 | Jan | Oddíl1 | CA |
 | 3 | Jana | Oddíl1 | WA |
 | 2 | Klára | Oddíl2 | NM |
 | 4 | Steven | Oddíl2 | TX |
@@ -74,7 +74,7 @@ Výsledky vypadat podobně jako v následující tabulce:
 
 | ID uživatele | uživatelské jméno | Oddíl | rowkey |
 |----|---------|---------------|----|
-| 1 | Jan | Oddíl1 | CERTIFIKAČNÍ AUTORITY |
+| 1 | Jan | Oddíl1 | CA |
 | 3 | Jana | Oddíl1 | WA |
 
 #### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Načtení entit pro konkrétní hodnoty v určitém sloupci
@@ -94,8 +94,8 @@ Tento dotaz načte jeden záznam.
 |----|----|
 | ID uživatele | 1 |
 | uživatelské jméno | Jan |
-| Klíč oddílu | Oddíl1 |
-| RowKey      | CERTIFIKAČNÍ AUTORITY |
+| PartitionKey | Oddíl1 |
+| RowKey      | CA |
 
 #### <a name="retrieve-entities-using-a-custom-filter"></a>Načtení entit pomocí vlastního filtru 
 
@@ -104,7 +104,7 @@ Pro načtení entit pomocí vlastního filtru, použijte **Get-AzureStorageTable
 ```powershell
 Get-AzureStorageTableRowByCustomFilter `
     -table $storageTable `
-    -customFilter "(userid eq '1')"
+    -customFilter "(userid eq 1)"
 ```
 
 Tento dotaz načte jeden záznam.
@@ -113,12 +113,12 @@ Tento dotaz načte jeden záznam.
 |----|----|
 | ID uživatele | 1 |
 | uživatelské jméno | Jan |
-| Klíč oddílu | Oddíl1 |
-| RowKey      | CERTIFIKAČNÍ AUTORITY |
+| PartitionKey | Oddíl1 |
+| RowKey      | CA |
 
 ### <a name="updating-entities"></a>Aktualizace entit 
 
-Existují tři kroky pro aktualizaci entity. Nejdřív načtěte entity, která má být změněn. Za druhé proveďte požadovanou změnu. Třetí, potvrzení změn pomocí **aktualizace AzureStorageTableRow**.
+Existují tři kroky pro aktualizaci entity. Nejdřív načtěte entity, která má změnit. Za druhé proveďte požadovanou změnu. Třetí, potvrzení změn pomocí **aktualizace AzureStorageTableRow**.
 
 Aktualizace entity s uživatelským jménem = 'Klára' mít uživatelské jméno = 'Jessie2'. Tento příklad také ukazuje další způsob, jak vytvořit vlastní filtr pomocí typy .NET. 
 
@@ -148,7 +148,7 @@ Výsledky zobrazit Jessie2 záznamu.
 |----|----|
 | ID uživatele | 2 |
 | uživatelské jméno | Jessie2 |
-| Klíč oddílu | Oddíl2 |
+| PartitionKey | Oddíl2 |
 | RowKey      | NM |
 
 ### <a name="deleting-table-entities"></a>Odstranění entity tabulky
@@ -177,10 +177,10 @@ Get-AzureStorageTableRowAll -table $storageTable | ft
 
 #### <a name="delete-all-entities-in-the-table"></a>Odstranit všechny entity v tabulce 
 
-Pokud chcete odstranit všechny entity v tabulce, můžete je načíst prostřednictvím kanálu výsledky do rutiny odebrat. 
+Pokud chcete odstranit všechny entity v tabulce, je znovu načíst a přesměrováním výsledky do rutiny odebrat. 
 
 ```powershell
-# Get all rows and pipe it into the remove cmdlet.
+# Get all rows and pipe the result into the remove cmdlet.
 Get-AzureStorageTableRowAll `
     -table $storageTable | Remove-AzureStorageTableRow -table $storageTable 
 

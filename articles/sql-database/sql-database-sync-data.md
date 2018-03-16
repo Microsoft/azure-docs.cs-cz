@@ -2,25 +2,19 @@
 title: Synchronizaci dat Azure SQL (Preview) | Microsoft Docs
 description: "Tento přehled zavádí synchronizaci dat SQL Azure (Preview)"
 services: sql-database
-documentationcenter: 
 author: douglaslms
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
-ms.custom: load & move data
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.custom: data-sync
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 5cf74140969fb354e426c41552d4d73a06c76890
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 5abe3e5a56dfca263f109b86f473ac490da3eac7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL (Preview)
 
@@ -78,11 +72,11 @@ Synchronizaci dat není vhodná pro následující scénáře:
     -   Pokud vyberete *rozbočovače wins*, změny v centru vždy přepsat změny v člena.
     -   Pokud vyberete *člen wins*, změny v změn přepsání člena v centru. Pokud existuje více než jednoho člena, konečná hodnota závisí na člena, který synchronizuje nejdřív.
 
-## <a name="sync-req-lim"></a>Požadavky a omezení
+## <a name="sync-req-lim"></a> Požadavky a omezení
 
 ### <a name="general-considerations"></a>Obecné aspekty
 
-#### <a name="eventual-consistency"></a>Konzistence typu případné
+#### <a name="eventual-consistency"></a>Konečná konzistence
 Vzhledem k tomu, že synchronizace dat je na základě aktivační události, není zaručena konzistence transakcí. Microsoft zaručuje, že jsou všechny změny provedené nakonec a synchronizaci dat není způsobit ztrátu dat.
 
 #### <a name="performance-impact"></a>Vliv na výkon
@@ -106,7 +100,7 @@ Synchronizace dat se používají vložit, aktualizovat a odstranit aktivačníc
 
 -   FileStream
 
--   UDT SQL/CLR
+-   SQL/CLR UDT
 
 -   Kolekci XMLSchemaCollection (XML podporována)
 
@@ -122,7 +116,7 @@ Synchronizace dat se používají vložit, aktualizovat a odstranit aktivačníc
 | Databáze, tabulky, schémat a sloupce                       | 50 znaků na název |                             |
 | Tabulky ve skupině pro synchronizaci                                          | 500                    | Vytvoření více skupin synchronizace |
 | Sloupce v tabulce v skupiny synchronizace                              | 1000                   |                             |
-| Velikost řádek dat v tabulce                                        | 24 mb                  |                             |
+| Velikost řádek dat v tabulce                                        | 24 Mb                  |                             |
 | Interval minimální synchronizace                                           | 5 minut              |                             |
 |||
 

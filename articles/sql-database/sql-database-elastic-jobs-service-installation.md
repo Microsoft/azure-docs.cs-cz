@@ -2,24 +2,18 @@
 title: "Instalace úlohy elastické databáze | Microsoft Docs"
 description: "Provede procesem instalace funkce elastické úlohy."
 services: sql-database
-documentationcenter: 
-manager: jhubbard
+manager: craigg
 author: ddove
-editor: 
-ms.assetid: cbe0aa2b-17e3-4b6f-a16f-6ebc1f5a66af
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: ef5a8931eeda0f7ddc485632acaf2d76b71dccde
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.author: sstein
+ms.openlocfilehash: 7e5258e0ccb88c8e2f3fe3277f69444ae5424cd0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Instalace úlohy elastické databáze – přehled
 [**Elastické databáze úlohy** ](sql-database-elastic-jobs-overview.md) lze nainstalovat pomocí prostředí PowerShell nebo prostřednictvím portálu Azure. Můžete získat přístup k vytvářet a spravovat úlohy pomocí rozhraní API prostředí PowerShell, pouze v případě, že budete instalovat balíček prostředí PowerShell. Kromě toho rozhraní API prostředí PowerShell poskytuje výrazně víc funkcí než portálu v daném okamžiku.
@@ -68,7 +62,7 @@ Parametry zadané na toto ukázkové volání lze upravit pro požadovaná nasta
   </tr>
 
 <tr>
-    <td>Název skupiny prostředků</td>
+    <td>ResourceGroupName</td>
     <td>Poskytuje název skupiny prostředků Azure k vytvoření, která obsahují nově vytvořený Azure komponenty. Tento parametr výchozí "__ElasticDatabaseJob". Není doporučeno tuto hodnotu změnit.</td>
     </tr>
 
@@ -129,7 +123,7 @@ Pokud chcete aktualizovat velikost virtuálního počítače instalace, spusťte
 </tr>
 
   <tr>
-    <td>Název skupiny prostředků</td>
+    <td>ResourceGroupName</td>
     <td>Určuje název skupiny prostředků Azure používá při byly původně nainstalované komponenty úlohy elastické databáze. Tento parametr výchozí "__ElasticDatabaseJob". Vzhledem k tomu, že není doporučeno tuto hodnotu změnit, není nutné, zadejte tento parametr.</td>
     </tr>
 </tr>

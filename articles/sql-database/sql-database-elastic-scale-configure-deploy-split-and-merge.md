@@ -2,24 +2,18 @@
 title: "Nasazení služby rozdělení sloučení | Microsoft Docs"
 description: "Pomocí rozdělení sloučení příliš pro přesun dat mezi horizontálně dělené databázemi."
 services: sql-database
-documentationcenter: 
-author: ddove
-manager: jhubbard
-editor: 
-ms.assetid: 9a993c0f-7052-46cd-aa59-073bea8d535a
+author: stevestein
+manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: 4505aebc8919a5d7b8f3debe0db9f49b465176bf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: sstein
+ms.openlocfilehash: ed5545df8d09192eeed21dd2ac379e255b049e30
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-a-split-merge-service"></a>Nasazení služby dělení a slučování
 Nástroj pro rozdělení sloučení umožňuje přesun dat mezi horizontálně dělené databáze. V tématu [přesouvání dat mezi instancemi cloudu databáze](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -149,7 +143,7 @@ Pokud své role pracovního procesu selže do režimu online, ale vaši webovou 
    ```
 
 * Ujistěte se, že název serveru nemá na začátku **https://**.
-* Zajistěte, aby váš server Azure SQL DB povolovalo Azure Services pro připojení k němu. K tomuto účelu otevřete https://manage.windowsazure.com, na levé straně klikněte na tlačítko "Databází SQL", klikněte na tlačítko "Servery" v horní části a vyberte svůj server. Klikněte na tlačítko **konfigurace** v horní části a ujistěte se, že **služeb Azure** nastavení je "Ano". (Viz část požadavky v horní části v tomto článku).
+* Zajistěte, aby váš server Azure SQL DB povolovalo Azure Services pro připojení k němu. Chcete-li to provést, otevřete https://manage.windowsazure.comna levé straně klikněte na tlačítko "Databází SQL", klikněte na tlačítko "Servery" v horní části a vyberte svůj server. Klikněte na tlačítko **konfigurace** v horní části a ujistěte se, že **služeb Azure** nastavení je "Ano". (Viz část požadavky v horní části v tomto článku).
 
 ## <a name="test-the-service-deployment"></a>Testovací nasazení služby
 ### <a name="connect-with-a-web-browser"></a>Připojení s webovým prohlížečem

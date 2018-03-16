@@ -2,25 +2,19 @@
 title: "Rozšířené události do databáze SQL | Microsoft Docs"
 description: "Popisuje rozšířené události (XEvents) ve službě Azure SQL Database a jak relace události mírně lišit od relace události v systému Microsoft SQL Server."
 services: sql-database
-documentationcenter: 
 author: MightyPen
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 3b28cf15-f820-4b3c-8310-908d6d5b9d0c
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
-ms.openlocfilehash: f4e41d340b38a5f29387d75b8f65b68c5fb31eb9
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: dc4660b33d8df28fd59929838e054f6703c48107
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="extended-events-in-sql-database"></a>Rozšířené události v databázi SQL
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -87,11 +81,11 @@ Funkce Rozšířené události podporuje několik [katalogu zobrazení](http://m
 
 | Název<br/>zobrazení katalogu | Popis |
 |:--- |:--- |
-| **Sys.database_event_session_actions** |Vrátí řádek pro každou akci v každé události relace události. |
-| **Sys.database_event_session_events** |Vrátí řádek pro každou jednotlivou událost v relaci události. |
-| **Sys.database_event_session_fields** |Vrátí řádek pro každý možné přizpůsobit sloupec, který byl explicitně nastavit na události a cíle. |
-| **Sys.database_event_session_targets** |Vrátí řádek pro každý cíl události pro relace události. |
-| **Sys.database_event_sessions** |Vrátí řádek pro každou relaci události v databázi SQL Database. |
+| **sys.database_event_session_actions** |Vrátí řádek pro každou akci v každé události relace události. |
+| **sys.database_event_session_events** |Vrátí řádek pro každou jednotlivou událost v relaci události. |
+| **sys.database_event_session_fields** |Vrátí řádek pro každý možné přizpůsobit sloupec, který byl explicitně nastavit na události a cíle. |
+| **sys.database_event_session_targets** |Vrátí řádek pro každý cíl události pro relace události. |
+| **sys.database_event_sessions** |Vrátí řádek pro každou relaci události v databázi SQL Database. |
 
 V systému Microsoft SQL Server, podobně jako zobrazení katalogu mít názvy, které zahrnují *server\_*  místo *.database\_*. Vzor názvů je jako **sys.server_event_%**.
 
@@ -101,23 +95,23 @@ Azure SQL Database má [zobrazení dynamické správy (zobrazení dynamické spr
 
 | Název DMV | Popis |
 |:--- |:--- |
-| **Sys.dm_xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
-| **Sys.dm_xe_database_session_events** |Vrací informace o události relací. |
-| **Sys.dm_xe_database_session_object_columns** |Zobrazuje hodnoty konfigurace pro objekty, které jsou vázány na relaci. |
-| **Sys.dm_xe_database_session_targets** |Vrací informace o relaci cíle. |
-| **jestli v Sys.dm_xe_database_sessions nejsou** |Vrátí řádek pro každou relaci události, které budou platit na aktuální databázi. |
+| **sys.dm_xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
+| **sys.dm_xe_database_session_events** |Vrací informace o události relací. |
+| **sys.dm_xe_database_session_object_columns** |Zobrazuje hodnoty konfigurace pro objekty, které jsou vázány na relaci. |
+| **sys.dm_xe_database_session_targets** |Vrací informace o relaci cíle. |
+| **sys.dm_xe_database_sessions** |Vrátí řádek pro každou relaci události, které budou platit na aktuální databázi. |
 
 V systému Microsoft SQL Server, jsou podobné zobrazení katalogu pojmenované bez  *\_databáze* část názvu, jako například:
 
-- **Sys.dm_xe_sessions**, místo názvu<br/>**jestli v Sys.dm_xe_database_sessions nejsou**.
+- **Sys.dm_xe_sessions**, místo názvu<br/>**sys.dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Zobrazení dynamické správy společné pro objekty
 Rozšířené události existují další zobrazení dynamické správy, které jsou společné pro Azure SQL Database a serveru Microsoft SQL Server:
 
-- **Sys.dm_xe_map_values**
-- **Sys.dm_xe_object_columns**
-- **Sys.dm_xe_objects**
-- **Sys.dm_xe_packages**
+- **sys.dm_xe_map_values**
+- **sys.dm_xe_object_columns**
+- **sys.dm_xe_objects**
+- **sys.dm_xe_packages**
 
  <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
@@ -199,12 +193,12 @@ Pokud se zobrazí chybová zpráva s upozorněním, že byla vynucená maximáln
 - [Použití Azure PowerShell s Azure Storage](../storage/common/storage-powershell-guide-full.md) – poskytuje podrobné informace o prostředí PowerShell a službu úložiště Azure.
 - [Používání úložiště Blob z rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
-- [Vytvoření relace události (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
 - [Jonathan Kehayias příspěvky o rozšířených událostí v systému Microsoft SQL Server](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
 - Azure *aktualizace služby* webovou stránku, co nejlépe určen parametrem do Azure SQL Database:
-    - [https://Azure.microsoft.com/Updates/?Service=SQL-Database](https://azure.microsoft.com/updates/?service=sql-database)
+    - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
 
 
 Další témata ukázkový kód pro rozšířené události jsou dostupné prostřednictvím následujících odkazů. Ale je nutné pravidelně zkontrolovat všechny ukázkové zobrazíte zda ukázku cílem Microsoft SQL Server a databáze SQL Azure. Potom můžete rozhodnout, zda jsou mírně potřebné ke spuštění ukázky.

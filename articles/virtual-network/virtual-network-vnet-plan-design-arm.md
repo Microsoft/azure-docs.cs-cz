@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: ecdc3a847821fd83718f9cfc42308667460feabc
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f11b2d1b4061b395918a274c4c53688bf34fbae1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Naplánujte a navrhněte Azure Virtual Network
 Vytvoření virtuální sítě a experimentovat s je dostatečně snadno, ale pravděpodobné, budete nasazovat více virtuálních sítí v čase pro podporu provozním potřebám vaší organizace. S některými plánování a návrhu bude možné nasadit virtuální sítě a připojení prostředků, které potřebujete efektivněji. Pokud nejste obeznámeni s virtuální sítě, se doporučuje, můžete [Další informace o virtuálních sítí](virtual-networks-overview.md) a [nasazení](quick-create-portal.md) jeden než budete pokračovat.
@@ -112,10 +112,10 @@ Následující tabulka uvádí některé běžné vzory návrhu pro použití od
 
 | Scénář | Diagram | Odborníci na | Nevýhody |
 | --- | --- | --- | --- |
-| Jednomu předplatnému, dvě virtuální sítě na aplikace |![Jedno předplatné](./media/virtual-network-vnet-plan-design-arm/figure1.png) |Jenom jedno předplatné pro správu. |Maximální počet virtuálních sítí na oblast Azure. Potom musíte více odběrů. Zkontrolujte [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článku. |
-| S jedním odběrem na aplikaci, dvě virtuální sítě na aplikace |![Jedno předplatné](./media/virtual-network-vnet-plan-design-arm/figure2.png) |Využívá jenom dva virtuální sítě na jedno předplatné. |Těžší ke správě, pokud jsou moc velký počet aplikací. |
-| S jedním odběrem na organizační jednotku, dvě virtuální sítě, jednu aplikaci. |![Jedno předplatné](./media/virtual-network-vnet-plan-design-arm/figure3.png) |Vyrovnávat mezi počet odběrů a virtuální sítě. |Maximální počet virtuálních sítí na organizační jednotku (předplatné). Zkontrolujte [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článku. |
-| S jedním odběrem na organizační jednotku, dvě virtuální sítě na skupinu aplikací. |![Jedno předplatné](./media/virtual-network-vnet-plan-design-arm/figure4.png) |Vyrovnávat mezi počet odběrů a virtuální sítě. |Aplikace musí být izolovat pomocí podsítě a skupin Nsg. |
+| Jednomu předplatnému, dvě virtuální sítě na aplikace |![Jednoho předplatného](./media/virtual-network-vnet-plan-design-arm/figure1.png) |Jenom jedno předplatné pro správu. |Maximální počet virtuálních sítí na oblast Azure. Potom musíte více odběrů. Zkontrolujte [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článku. |
+| S jedním odběrem na aplikaci, dvě virtuální sítě na aplikace |![Jednoho předplatného](./media/virtual-network-vnet-plan-design-arm/figure2.png) |Využívá jenom dva virtuální sítě na jedno předplatné. |Těžší ke správě, pokud jsou moc velký počet aplikací. |
+| S jedním odběrem na organizační jednotku, dvě virtuální sítě, jednu aplikaci. |![Jednoho předplatného](./media/virtual-network-vnet-plan-design-arm/figure3.png) |Vyrovnávat mezi počet odběrů a virtuální sítě. |Maximální počet virtuálních sítí na organizační jednotku (předplatné). Zkontrolujte [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článku. |
+| S jedním odběrem na organizační jednotku, dvě virtuální sítě na skupinu aplikací. |![Jednoho předplatného](./media/virtual-network-vnet-plan-design-arm/figure4.png) |Vyrovnávat mezi počet odběrů a virtuální sítě. |Aplikace musí být izolovat pomocí podsítě a skupin Nsg. |
 
 ### <a name="number-of-subnets"></a>Počet podsítí
 Je třeba zvážit několik podsítí ve virtuální síti v následujících scénářích:
@@ -202,7 +202,7 @@ Odběry a virtuální sítě se vztahují následující požadavky:
 
 Na základě těchto požadavků, potřebujete předplatné pro jednotlivé obchodní jednotky. Tímto způsobem, spotřebu prostředků z organizační jednotky nebude započítávat limity pro jiné organizační jednotky. A vzhledem k tomu, že chcete minimalizovat počet virtuálních sítí, měli byste zvážit použití **s jedním odběrem na organizační jednotku, dvě virtuální sítě na skupinu aplikací** vzor, jak vidíte níže.
 
-![Jedno předplatné](./media/virtual-network-vnet-plan-design-arm/figure9.png)
+![Jednoho předplatného](./media/virtual-network-vnet-plan-design-arm/figure9.png)
 
 Budete taky muset zadat adresní prostor pro každý virtuální síť. Vzhledem k tomu, že potřebujete centra pro připojení mezi místní data a oblasti, adresní prostor, použít pro virtuální sítě Azure nelze kolidovat s místní sítí a adresní prostor používá každý virtuální sítě nesmí kolidovat s jiné existující virtuální sítě. Splňovat tyto požadavky můžete použít adresní prostory v následující tabulce.  
 
@@ -247,8 +247,8 @@ K řízení přístupu se vztahují následující požadavky:
 
 Na základě těchto požadavků, můžete přidat uživatele od týmu pro sítě do vestavěné **Přispěvatel sítě** role v každém předplatném; a vytvořit vlastní roli pro vývojáře aplikací v každém předplatném, bude mít práva k přidání virtuálních počítačů do existující podsítí.
 
-## <a name="next-steps"></a>Další postup
-* [Nasadit virtuální síť](virtual-networks-create-vnet-arm-template-click.md) závislosti na scénáři.
+## <a name="next-steps"></a>Další kroky
+* [Nasazení virtuální sítě](quick-create-portal.md).
 * Pochopit, jak [vyrovnávat zatížení](../load-balancer/load-balancer-overview.md) virtuální počítače IaaS a [spravovat směrování nad několika oblastmi Azure](../traffic-manager/traffic-manager-overview.md).
-* Další informace o [skupiny Nsg a jak naplánovat a navrhnout](virtual-networks-nsg.md) řešení s NSG.
+* Další informace o [skupin zabezpečení sítě](security-overview.md) řešení s NSG.
 * Další informace o vaší [mezi různými místy a možnosti připojení virtuální sítě](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti).

@@ -87,6 +87,6 @@ sql-database-elastic-pool.md
 > [!IMPORTANT]
 > \* Velikosti úložiště větší než velikost zahrnutého úložiště jsou ve verzi Preview a účtují se za ně další poplatky. Podrobnosti najdete v tématu [SQL Database stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/). Úložiště velikosti větší než velikost zahrnuté úložiště jsou ve verzi preview a poplatkům použít. Podrobnosti najdete v tématu [SQL Database stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/).
 >
-> \* Na úrovni Premium je úložiště větší než 1 TB aktuálně dostupné v následujících oblastech: Austrálie – východ, Austrálie – jihovýchod, Kanada – střed, Kanada – východ, Francie – střed, Německo – střed, Japonsko – východ, Korea – střed, Střed USA – jih, Jihovýchodní Asie, USA – východ 2, USA – západ, USA (Gov) – Virginia a Západní Evropa. 
+> \* Ve vrstvě | Premium je více než 1 TB úložiště aktuálně k dispozici v následujících oblastech: centrální Kanada, Východní Kanada, Francie centrální, Německo centrální, Japonsko – východ, Korejská centrální, Jižní střední USA, East2 – jih východní Asie, nám, západní USA, Virginia nám verze pro státní správu a – západ Evropa. 
 >
 

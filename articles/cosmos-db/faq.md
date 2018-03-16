@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2018
+ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: ac0088478701a1796380daa74602569800c1522e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 466abbffd250685baf886b7fc7cc772ee9e327f2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy Azure Cosmos DB
@@ -211,6 +211,7 @@ Existují určité rozdíly chování, které uživatelé pocházejících z Azu
 * CORS není aktuálně podporováno.
 * Názvy tabulek ve službě Azure Table storage nejsou malá a velká písmena, ale jsou v rozhraní API služby Azure Cosmos DB tabulky
 * Některé z Azure Cosmos DB interní formátů kódování informace, například binární pole nejsou aktuálně efektivní, jako jeden mohly líbit. Proto to může způsobit neočekávané omezení na velikost dat. Například jeden nelze používají úplné 1 MB tabulka entity k uložení binární data, protože kódování zvyšuje velikost data.
+* Název vlastnosti entity "Id" aktuálně není podporována
 
 Z hlediska rozhraní REST API existuje několik možností koncových bodů nebo dotazu, které nepodporuje rozhraní API služby Azure Cosmos DB tabulky:
 | Metodu nebo metody REST | Možnost koncový bod/dotazu REST | Adresy URL dokumentu | Vysvětlení |
@@ -282,7 +283,7 @@ Ano, můžete připojit pomocí dvou samostatných instancí CloudTableClient, k
 ### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-offering"></a>Jak mohu migrovat existující aplikaci Azure Table storage s touto nabídkou?
 [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) a [nástroj pro migraci dat Azure Cosmos DB](import-data.md) jsou obě podporována.
 
-### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>Jak je rozšíření velikost úložiště, provádí pro tuto službu, je-li například spustit s  *n*  GB dat a data se v průběhu času rozšiřovat 1 TB? 
+### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>Jak je rozšíření velikost úložiště, provádí pro tuto službu, je-li například spustit s *n* GB dat a data se v průběhu času rozšiřovat 1 TB? 
 Azure Cosmos DB určená k poskytování neomezené úložiště prostřednictvím použití vodorovné škálování. Službu můžete sledovat a efektivně zvýšit úložiště. 
 
 ### <a name="how-do-i-monitor-the-table-api-offering"></a>Jak se monitorování nabídku tabulky API?
@@ -377,7 +378,7 @@ Ze sady SDK rozhraní .NET můžete odeslat v souboru app.config:
 ```
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Azure DB Cosmos jako platformu zdá se, že máte spoustu možností, jako je například řazení, agregace, hierarchie a další funkce. Můžete přidávat tyto funkce rozhraní API tabulky? 
-Rozhraní API tabulka poskytuje stejné funkce dotazu jako Azure Table storage. Azure Cosmos DB také podporuje řazení, agregace, geoprostorové dotazu, hierarchie a širokou škálu integrované funkce. Poskytujeme další funkce v rozhraní API tabulky v aktualizaci budoucí služby. Další informace najdete v tématu [dotazy SQL](sql-api-sql-query.md).
+Rozhraní API tabulka poskytuje stejné funkce dotazu jako Azure Table storage. Azure Cosmos DB podporuje také řazení, agregace, geoprostorové dotazy, hierarchie a širokou škálu integrovaných funkcí. Poskytujeme další funkce v rozhraní API tabulky v aktualizaci budoucí služby. Další informace najdete v tématu [dotazy SQL](sql-api-sql-query.md).
  
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Kdy je třeba změnit TableThroughput pro rozhraní API tabulky?
 Měli byste změnit TableThroughput, pokud platí některá z následujících podmínek:

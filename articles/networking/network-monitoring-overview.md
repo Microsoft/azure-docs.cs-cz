@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 6d93821b59e1f69a48c3d5eeda96dad2edddb188
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 66e6b49dd3e3c7d0f2cbd7547b68733e1d4959ce
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="network-monitoring-solutions"></a>Řešení pro monitorování sítě 
 
@@ -83,7 +83,37 @@ Další informace najdete v následujících článcích:
 * [Konfigurace sítě monitorování výkonu pro monitorování koncových bodů služby](https://aka.ms/applicationconnectivitymonitorguide)
 * [příspěvek blogu](https://aka.ms/svcendptmonitor)
 
-## <a name="next-steps"></a>Další postup
+## <a name="traffic-analytics"></a>Analýza provozu
+Analýza provozu je cloudové řešení, která poskytuje přehled o činnosti uživatelů a aplikací na vaše cloudové sítě. Skupina NSG toku protokoly se analyzují zajistit přehledy:
+
+* Přenosy dat mezi vaší sítí mezi Azure a Internet, oblastí veřejného cloudu, virtuálních sítí a podsítí
+* Aplikace a protokoly v síti, aniž by bylo nutné pro zjištění je snazší, nebo vyhrazený tok kolekce zařízení
+* Provoz TOP talkers, chatty aplikace konverzace virtuálních počítačů v cloudu, aktivní body
+* Zdroje a cíle provozu mezi virtuálními sítěmi, vzájemných vztahů mezi nejdůležitější obchodní služby a aplikace
+* Zabezpečení – škodlivý přenos, porty, otevřete na Internetu, aplikace nebo virtuální počítače pokusu o přístup k Internetu...
+
+Analýza provozu poskytuje jim s řešitelné informace, které pomáhá audit aktivitu sítě vaší organizace, zabezpečené aplikacím a datům, optimalizace výkonu zatížení a zůstat kompatibilní.
+
+![Geografické mapy znázorňující provoz v oblastech](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+
+Související odkazy:
+* [Příspěvek blogu](https://aka.ms/trafficanalytics), [dokumentace](https://aka.ms/trafficanalyticsdocs), [– nejčastější dotazy](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+
+## <a name="dns-analytics"></a>DNS Analytics
+Vytvořené pro Správce DNS, toto řešení shromažďuje, analyzuje a korelaci protokolů DNS zajistit bezpečnost, operace a výkonu související s statistiky.  Některé možnosti jsou:
+
+* Identifikace klientů, které se pokusí přeložit na škodlivý domén
+* Identifikace záznamů o prostředcích
+* Přehled často dotazovaných doménách a klienty DNS, talkative
+* Přehled požadavek zatížení serverů DNS
+* Monitorování selhání dynamické registrace DNS
+
+![Řídicí panel Analytics DNS](./media/network-monitoring-overview/dns-analytics-overview.png) 
+
+Související odkazy:
+* [Příspěvek blogu](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentace](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
+
+## <a name="next-steps"></a>Další kroky
 
 * [Konfigurace programu Sledování výkonu sítě](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor)
 * [Konfigurace Network Performance Monitor pro ExpressRoute](../expressroute/how-to-npm.md)

@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 86ef8acf46cef2b057596d8224c6c29f3a0f534d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6146e1ce98144a05bef2ca29705f451aa3f5fb50
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Nejčastější dotazy k Azure Machine Learning
 
@@ -32,7 +32,7 @@ Další oblastí se přidá, jako produkt.  Pomůžete nám nastavit priority kt
 
 **Jaké jinými službami Azure jsou potřeba?**
 
-Na plně zaznamenat všechny funkce Azure Machine Learning, Learnign počítače Azure použije účet služby VSTS Visual Studio, Azure Blob Storage, Azure kontejneru registru, vědecké účely Data virtuálního počítače nebo HDInsight výpočty a Azure Container Service.
+Azure Blob Storage a kontejner registru Azure používají Azure Machine Learning. Kromě toho bude muset zřídit výpočetní prostředky, jako je například cluster virtuálních počítačů vědecké účely dat nebo HDInsight. Výpočty a hostování vyžadují se i při nasazování webových služeb, jako například [Azure Container Service](https://docs.microsoft.com/azure/aks).
 
 **Jak Azure Machine Learning vztahují k Microsoft Machine Learning Services v SQL serveru 2017?**   
 
@@ -46,7 +46,7 @@ Momentálně podporujeme aplikace Python jenom. Jsme práce na integraci R a oč
 
 MMLSpark poskytuje přímý učení a datové vědy nástroje pro Apache Spark, s důrazem na produktivitu, usnadňují experimentování a stavu techniky algoritmů. MMLSpark nabízí integraci kanály Spark Machine Learning s Microsoft kognitivní Toolkit a OpenCV. Můžete vytvořit výkonné a vysoce škálovatelného modely prediktivní a analytické pro data bitové kopie a text. MMLSpark je k dispozici v části licenci open source a je součástí AML Workbench jako sada použití modelů a algoritmy. Další informace o MMLSpark najdete na naší dokumentaci produktu. 
 
-**Jaké verze Spark podporuje nové nástroje a služby? Horní části**
+**Jaké verze Spark podporuje nové nástroje a služby?**
 
 Workbench aktuálně obsahuje a podporuje MMLSpark verze 0,8, který je kompatibilní s Apache Spark 2.1. Máte také možnost použít bitovou kopii Docker grafický procesor s podporou systému MMLSpark 0,8 na virtuální počítače s Linuxem.
 
@@ -119,7 +119,7 @@ Azure Machine Learning Workbench je doprovodné aplikace vytvořené pro odborn�
 
 **Je Workbench IDE?**
 
-Ne. Nástroje Machine Learning Workbench jsou určeny jako doprovodné do oblíbených integrovaného vývojového prostředí, například Jupyter Notebooks, Visual Studio Code a PyCharm, ale není plně funkční IDE. Nástroje Workbench Machine Learning nabízí některé základní text možností pro úpravy, ale ladění, intellisense a dalších nejčastěji používaných možností IDE nejsou podporovány. Doporučujeme používat vaše oblíbená rozhraní IDE pro vývoj kódu, úprav a ladění. 
+Ne. Nástroje Machine Learning Workbench jsou určeny jako doprovodné do oblíbených integrovaného vývojového prostředí, například Jupyter Notebooks, Visual Studio Code a PyCharm, ale není plně funkční IDE. Nástroje Workbench Machine Learning nabízí některé základní text možností pro úpravy, ale ladění, intellisense a dalších nejčastěji používaných možností IDE nejsou podporovány. Doporučujeme používat vaše oblíbená rozhraní IDE pro vývoj kódu, úprav a ladění. Také je možné pokusit [kódu nástroje sady Visual Studio pro AI](https://www.visualstudio.com/downloads/ai-tools-vscode).
 
 **Je k dispozici zdarma pro použití nástroje Workbench Azure Machine Learning?**
 

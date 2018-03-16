@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/17/2017
+ms.date: 03/13/2017
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d6991d40b9bb8543898bbbdc9d7c905dfe11536
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 0cb715960a516c6b2ca16376c12cb6f796e0b395
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sap-hana-on-azure-operations-guide"></a>SAP HANA na Azure provozní příručky
 Tento dokument obsahuje pokyny pro operační systémy SAP HANA, které jsou nasazeny na Azure nativní virtuální počítače (VM). Tento dokument není určen k nahrazení standardní SAP dokumentace, která zahrnuje následující obsah:
@@ -56,7 +56,7 @@ Připojení Site-to-site prostřednictvím sítě VPN nebo ExpressRoute je potř
 Virtuální počítač Azure typy, které lze použít pro produkčních scénářích jsou uvedeny v [SAP dokumentaci IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). Pro scénáře nevýrobní prostředí je k dispozici širší rozsah nativní typy virtuálního počítače Azure.
 
 >[!NOTE]
->Mimo produkční scénářů použití typy virtuálních počítačů, které jsou uvedeny v [Poznámka SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533).
+> Mimo produkční scénářů použití typy virtuálních počítačů, které jsou uvedeny v [Poznámka SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533). Pro použití virtuálních počítačů Azure produkčních scénářích, zkontrolujte SAP HANA certifikované virtuálních počítačů v SAP publikovaná [certifikované platformy IaaS seznamu](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
 
 Nasazení virtuálních počítačů v Azure pomocí:
 
@@ -64,7 +64,7 @@ Nasazení virtuálních počítačů v Azure pomocí:
 - Rutiny Azure PowerShell.
 - Azure CLI.
 
-Také můžete nasadit kompletní nainstalované SAP HANA platformy v rámci služeb virtuálního počítače Azure pomocí [SAP Cloudová platforma](https://cal.sap.com/). Proces instalace je popsán v [nasazení SAP S nebo 4HANA nebo BW/4HANA v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h).
+Také můžete nasadit kompletní nainstalované SAP HANA platformy v rámci služeb virtuálního počítače Azure pomocí [SAP Cloudová platforma](https://cal.sap.com/). Proces instalace je popsán v [nasazení SAP S nebo 4HANA nebo BW/4HANA v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) nebo s automatizace vydané [zde](https://github.com/AzureCAT-GSI/SAP-HANA-ARM).
 
 ### <a name="choose-azure-storage-type"></a>Zvolte typ úložiště Azure
 Azure nabízí dva typy úložiště, které jsou vhodné pro virtuální počítače Azure, který běží SAP HANA:
@@ -74,29 +74,112 @@ Azure nabízí dva typy úložiště, které jsou vhodné pro virtuální počí
 
 Azure nabízí dvě metody nasazení pro virtuální pevné disky na Azure Standard a Premium Storage. Pokud to umožňují celkové scénář, využít výhod [Azure spravované disku](https://azure.microsoft.com/services/managed-disks/) nasazení.
 
-Seznam typů úložišť a jejich SLA, zkontrolujte [dokumentace k Azure pro spravované disky](https://azure.microsoft.com/pricing/details/managed-disks/).
+Seznam typů úložišť a jejich SLA IOPS a úložiště propustnost, zkontrolujte [dokumentace k Azure pro spravované disky](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-Azure prémiové disky se doporučuje pro /hana/data a /hana/log svazky. Můžete sestavit LVM RAID přes víc disků úložiště Premium a použijte svazky RAID jako /hana/data a /hana/log svazky.
+### <a name="configuring-the-storage-for-azure-virtual-machines"></a>Konfigurace úložiště pro virtuální počítače Azure
 
-Následující tabulka uvádí konfigurací typy virtuálních počítačů, které zákazníci běžně používají k hostiteli SAP HANA na virtuálních počítačích Azure:
+Pokud to i pokud jste si zakoupili SAP HANA zařízení pro místní, jste museli nikdy zajímají subsystémy vstupně-výstupních operací a jeho funkce, protože dodavatele zařízení musí být jistý, že jsou splněny požadavky na minimální úložiště pro SAP HANA. Jak infrastrukturu Azure vytvoříte sami, můžete také měli vědět některé z těchto požadavků také pochopit požadavky na konfiguraci, které doporučujeme v následujících částech. Nebo pro případy, kde konfigurujete virtuální počítače chcete spustili SAP HANA. Některé vlastnosti, které se zobrazí výzva jsou výsledkem je potřeba:
 
-| VIRTUÁLNÍ POČÍTAČ SKU | Paměť RAM | Max. VIRTUÁLNÍ POČÍTAČ VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br /> Propustnost | / hana/protokolu a/hana/data<br /> rozdělená s LVM nebo MDADM | / hana/sdílené | / root svazku | / usr/sap | Hana/zálohování |
+- Povolit čtení a zápis svazek na /hana/log 250 MB za sekundu minimálně s velikostí vstupně-výstupních operací 1 MB
+- Povolit čtení aktivitu alespoň 400MB/s pro /hana/data 16 MB a 64 MB velikostí vstupně-výstupních operací
+- Povolit zápis aktivitu alespoň 250MB/s pro /hana/data s 16 MB a 64 MB velikostí vstupně-výstupních operací
+
+Zadaný této nízkou úložiště latence je velmi důležitá pro systémy databázového systému i jako ty, jako je SAP HANA ponechat data v paměti. Kritické cestu, do úložiště je většinou kolem zápisů protokolu transakcí systémů databázového systému. Ale také jako operace zápisu úložných bodů nebo po obnovení při havárii může být rozhodující načítání dat v paměti. Proto je nutné k /hana/data a /hana/log svazky využít Azure prémiové disky. Pro dosažení minimální propustnost/hana/protokolů a datových/hana/požadovanou SAP, které potřebujete k vytvoření RAID 0 pomocí MDADM nebo LVM přes víc disků Storage úrovně Premium a používat jako/hana/data a svazky protokolu/hana/svazky RAID. Stripe velikostí pro RAID 0 doporučení je použít:
+
+- 64 tisíc nebo 128 kB pro/hana/data
+- 32 kB pro/hana/protokolu
+
+> [!NOTE]
+> Nemusíte konfigurovat žádné úrovně redundance pomocí svazky RAID, protože Azure Premium a Standard storage zachovat tři bitové kopie virtuálního pevného disku. Použití svazek RAID je čistě konfigurace svazky, které poskytují dostatečná propustnost vstupu/výstupu.
+
+Shromažďování počet virtuálních pevných disků Azure pod RAID, je kumulativní ze strany propustnost IOPS a úložiště. Ano když vložíte přes 3 x P30 Azure Premium Storage disky RAID 0, ho měl dát třikrát IOPS a třikrát propustnost úložiště jednoho disku Azure Premium Storage P30.
+
+Nemusíte konfigurovat ukládání do mezipaměti na discích používaných pro /hana/data a /hana/log Storage úrovně Premium. Všechny disky vytváření těchto svazků by měl mít ukládání do mezipaměti těchto disků, nastavte hodnotu 'None'.
+
+Mějte celkovou propustnost vstupně-výstupních operací na virtuální počítač při změně velikosti nebo rozhodování pro virtuální počítač. Celková propustnost úložiště virtuálního počítače je popsána v článku [paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory).
+
+#### <a name="cost-conscious-azure-storage-configuration"></a>Cenově vědomá toho konfigurace úložiště Azure
+Následující tabulka znázorňuje konfiguraci typů virtuálních počítačů, které zákazníci běžně používají k hostiteli SAP HANA na virtuálních počítačích Azure. Může být některé typy virtuálních počítačů, které nemusí splňovat všechna minimální kritéria pro SAP HANA. Ale dosavadní vynechali těchto virtuálních počítačů bez problémů provést pro scénáře nevýrobní prostředí. 
+
+> [!NOTE]
+> Pro produkční scénáře, zkontrolujte, zda určitý typ virtuálního počítače je podporován pro SAP HANA SAP v [SAP dokumentaci IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
+
+
+
+| VIRTUÁLNÍ POČÍTAČ SKU | Paměť RAM | Max. VIRTUÁLNÍ POČÍTAČ VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br /> Propustnost | / hana/protokolu a/hana/data<br /> rozdělená s LVM nebo MDADM | / hana/sdílené | / root svazku | / usr/sap | hana/backup |
 | --- | --- | --- | --- | --- | --- | --- | -- |
-| E16v3 | 128 GiB | 384 MB | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
-| E32v3 | 256 giB | 768 MB | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
-| E64v3 | 443 giB | 1 200 GB | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
-| GS5 | 448 giB | 2 000 GB | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
-| M64s | 1000 giB | 1000 GB | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
-| M64ms | 1 750 giB | 1000 GB | 3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 3 x S30 |
-| M128s | 2000 giB | 2 000 GB |3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S40 |
-| M128ms | 3800 giB | 2 000 GB | 5 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S50 |
+| DS14v2 | 128 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
+| E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
+| E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
+| E64v3 | 443 GiB | 1200 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
+| GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
+| M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
+| M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 3 x S30 |
+| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S40 |
+| M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S50 |
 
+
+Disky doporučeno pro typy menší virtuální počítač s 3 x P20 oversize svazky týkající se podle doporučení místa [SAP TDI úložiště dokument White Paper](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). Ale volba, zobrazovat v tabulce byl proveden zajistit dostatek propustnost disku pro SAP HANA. Pokud budete potřebovat změny /hana/backup svazek, který byl dimenzované pro zálohování, které představují dvakrát svazku paměti, nebojte se, zda je upravit.   
+Zjistil, zda bude propustnost úložiště pro jiné navrhované svazky se zatížením, které chcete spustit. Pokud zatížení vyžaduje vyšší svazky pro /hana/data a /hana/log, je potřeba zvýšit počet Azure Premium Storage virtuální pevné disky. Změna velikosti svazku s více virtuálních pevných disků než uvedené zvýší propustnost IOPS a vstupně-výstupní operace v rámci typ virtuálního počítače Azure. 
 
 > [!NOTE]
-> Disky doporučeno pro typy menší virtuální počítač s 3 x P20 oversize svazky týkající se podle doporučení místa [SAP TDI úložiště dokument White Paper](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). Ale volba, zobrazovat v tabulce byl proveden zajistit dostatek propustnost disku pro SAP HANA. Pokud budete potřebovat méně propustnost vstupu/výstupu, můžete upravit volba disky úložiště Premium pro /hana/data a /hana/log. Totéž platí pro nastavení velikosti /hana/backup svazku, který byl dimenzované pro zálohování, které představují dvakrát svazku paměti. Pokud budete potřebovat méně místa, potom můžete upravit. Mějte celkovou propustnost vstupně-výstupních operací na virtuální počítač při změně velikosti nebo rozhodování pro virtuální počítač. Celkové propustnost virtuálního počítače je popsána v článku [paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)  
+> Konfigurace výše by nijak přínosné [jeden virtuální počítač Azure SLA k Virtuálním počítačům](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) vzhledem k tomu, že používá kombinaci Storage úrovně Premium a Azure Standard Storage. Výběr však jste vybrali k optimalizaci nákladů.
+
+
+#### <a name="azure-storage-configuration-to-benefit-for-meeting-single-vm-sla"></a>Konfigurace Azure úložiště, abyste mohli využívat pro splnění jedné SLA k Virtuálním počítačům
+Pokud chcete využívat [jeden virtuální počítač Azure SLA k Virtuálním počítačům](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/), budete muset použít výhradně Azure Premium Storage virtuální pevné disky.
 
 > [!NOTE]
-> Pokud chcete využívat [jeden virtuální počítač Azure SLA k Virtuálním počítačům](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) budete muset změnit všechny virtuální pevné disky, které jsou uvedeny jako standardní úložiště (Sxx) do úložiště úrovně Premium (Pxx). 
+> Pro produkční scénáře, zkontrolujte, zda určitý typ virtuálního počítače je podporován pro SAP HANA SAP v [SAP dokumentaci IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
+
+| VIRTUÁLNÍ POČÍTAČ SKU | Paměť RAM | Max. VIRTUÁLNÍ POČÍTAČ VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br /> Propustnost | / hana/protokolu a/hana/data<br /> rozdělená s LVM nebo MDADM | / hana/sdílené | / root svazku | / usr/sap | hana/backup |
+| --- | --- | --- | --- | --- | --- | --- | -- |
+| DS14v2 | 128 GiB | 768 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P15 |
+| E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P15 |
+| E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P20 |
+| E64v3 | 443 GiB | 1200 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
+| GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
+| M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
+| M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
+| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
+| M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P50 |
+
+
+Disky doporučeno pro typy menší virtuální počítač s 3 x P20 oversize svazky týkající se podle doporučení místa [SAP TDI úložiště dokument White Paper](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). Ale volba, zobrazovat v tabulce byl proveden zajistit dostatek propustnost disku pro SAP HANA. Pokud budete potřebovat změny /hana/backup svazek, který byl dimenzované pro zálohování, které představují dvakrát svazku paměti, nebojte se, zda je upravit.  
+Zjistil, zda bude propustnost úložiště pro jiné navrhované svazky se zatížením, které chcete spustit. Pokud zatížení vyžaduje vyšší svazky pro /hana/data a /hana/log, je potřeba zvýšit počet Azure Premium Storage virtuální pevné disky. Změna velikosti svazku s více virtuálních pevných disků než uvedené zvýší propustnost IOPS a vstupně-výstupní operace v rámci typ virtuálního počítače Azure. 
+
+
+
+#### <a name="storage-solution-with-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Řešení úložiště s Azure zápisu akcelerátoru pro virtuální počítače Azure M-Series
+Azure akcelerátoru zápisu je funkce, které je získávání vrácena výhradně pro virtuální počítače M-Series. Jako název stavy, je účelem funkce vstupně-výstupních operací latenci zápisů Azure Premium Storage. Pro SAP HANA zápisu akcelerátoru by měl použít u pouze /hana/log svazku. Konfigurace zobrazí, pokud je proto nutné změnit. Hlavní změna rozpadu mezi /hana/data a /hana/log je-li používat Azure zápisu akcelerátoru pouze /hana/log svazek. 
+
+> [!IMPORTANT]
+> SAP HANA certifikační pro virtuální počítače Azure M-Series je výhradně s Azure zápisu akcelerátoru /hana/log svazku. V důsledku toho se očekává nasazení SAP HANA scénář v produkčním prostředí na virtuálních počítačích Azure M-Series konfigurovat pomocí Azure zápisu akcelerátoru /hana/log svazku.  
+
+> [!NOTE]
+> Pro produkční scénáře, zkontrolujte, zda určitý typ virtuálního počítače je podporován pro SAP HANA SAP v [SAP dokumentaci IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
+
+Doporučené konfigurace vypadat podobně jako:
+
+| VIRTUÁLNÍ POČÍTAČ SKU | Paměť RAM | Max. VIRTUÁLNÍ POČÍTAČ VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br /> Propustnost | / hana/dat | /hana/log | / hana/sdílené | / root svazku | / usr/sap | hana/backup |
+| --- | --- | --- | --- | --- | --- | --- | --- | -- |
+| M64s | 1000 GiB | 1000 MB/s | 4 x P20 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
+| M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
+| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
+| M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P50 |
+
+Zjistil, zda bude propustnost úložiště pro jiné navrhované svazky se zatížením, které chcete spustit. Pokud zatížení vyžaduje vyšší svazky pro /hana/data a /hana/log, je potřeba zvýšit počet Azure Premium Storage virtuální pevné disky. Změna velikosti svazku s více virtuálních pevných disků než uvedené zvýší propustnost IOPS a vstupně-výstupní operace v rámci typ virtuálního počítače Azure.
+
+Azure akcelerátoru zapisovat pouze funguje ve spojení s [discích spravovaných pomocí Azure](https://azure.microsoft.com/services/managed-disks/). Proto alespoň Azure Premium Storage disky tvořící /hana/log svazek je nutné nasadit jako spravované disky.
+
+Existují omezení Azure Premium Storage VHD na virtuální počítač, který může podporovat Azure zápisu akcelerátoru. Aktuální omezení jsou:
+
+- 16 virtuálních pevných disků pro M128xx virtuálních počítačů
+- 8 virtuální pevné disky pro M64xx virtuálních počítačů
+
+Podrobnější pokyny o tom, jak povolit zápis akcelerátoru Azure najdete v článku [Azure zápisu akcelerátoru pro nasazení SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator).
+
+Podrobnosti a omezení pro zápis akcelerátoru Azure naleznete v dokumentaci stejné.
 
 
 ### <a name="set-up-azure-virtual-networks"></a>Nastavení virtuální sítě Azure
@@ -108,6 +191,8 @@ Když instalujete virtuální počítače spustit SAP HANA, třeba virtuální p
 - Statickou privátní IP adresy, které jsou nasazeny pro obě virtuálních síťových karet.
 
 Přehled různých metod pro přiřazení IP adres najdete v tématu [IP adres, typy a metody přidělování v Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm). 
+
+Pro virtuální počítače spuštěné SAP HANA by měla fungovat s přiřadit statické IP adresy. Důvodem je, že některé konfigurační atributy pro HANA odkazují IP adresy.
 
 [Azure skupiny zabezpečení sítě (Nsg)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) jsou používána ke směrování provozu, který se směruje na instanci SAP HANA nebo Jumpbox. Jsou přidružené k SAP HANA podsíť a podsíť správy skupin Nsg.
 
@@ -143,7 +228,7 @@ Pokud máte připojení site-to-site mezi vaší místní umístění a Azure, a
 - Udržujte privátní a statickou IP adresu virtuálního počítače, který je hostitelem SAP HANA v konfiguraci SAProuter.
 - Nakonfigurujte podsítě, který je hostitelem virtuálního počítače HANA umožňující přenos prostřednictvím portu TCP/IP 3299 NSG.
 
-Pokud se připojujete k Azure přes internet a nemáte SAP směrovače pro virtuální počítač s SAP HANA, budete muset nainstalovat součást. Nainstalujte SAProuter v samostatných virtuálních počítačů v podsíti správy. Následující obrázek znázorňuje hrubé schématu pro nasazení SAP HANA bez připojení site-to-site a s SAProuter:
+Pokud se připojujete k Azure přes internet, a pro virtuální počítač s SAP HANA nemáte směrovač SAP, budete muset nainstalovat součást. Nainstalujte SAProuter v samostatných virtuálních počítačů v podsíti správy. Následující obrázek znázorňuje hrubé schématu pro nasazení SAP HANA bez připojení site-to-site a s SAProuter:
 
 ![Bez připojení site-to-site a SAProuter extenzivních nasazení schématu pro SAP HANA](media/hana-vm-operations/hana-simple-networking3.PNG)
 
@@ -152,4 +237,4 @@ Ujistěte se, že nainstalujete SAProuter v samostatných virtuálních počíta
 Další informace o tom, jak nastavit a spravovat podporu vzdáleného připojení prostřednictvím SAProuter najdete v tématu [SAP dokumentaci](https://support.sap.com/en/tools/connectivity-tools/remote-support.html).
 
 ### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>Vysoká dostupnost s SAP HANA na virtuálních počítačích Azure nativní
-Pokud používáte systém SUSE Linux 12 SP1 nebo novější, můžete vytvořit cluster kardiostimulátor s STONITH zařízení. Zařízení můžete použít k nastavení konfigurace SAP HANA, který používá synchronní replikaci s HANA systému replikace a automatické převzetí služeb při selhání. Další informace o postupu instalace najdete v tématu [vysokou dostupnost SAP HANA na virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability).
+Pokud používáte systém SUSE Linux 12 SP1 nebo novější, můžete vytvořit cluster kardiostimulátor s STONITH zařízení. Zařízení můžete použít k nastavení konfigurace SAP HANA, který používá synchronní replikaci s HANA systému replikace a automatické převzetí služeb při selhání. Další informace o postupu instalace najdete v tématu [Průvodce SAP HANA vysoké dostupnosti pro virtuální počítače Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).

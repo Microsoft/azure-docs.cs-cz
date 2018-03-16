@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: seguler
-ms.openlocfilehash: 7d875a1e43908f49424f4e40fe923639cfa02385
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 13e09a3081c9dfa2d88625489a82c687d6722f20
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Přenos dat pomocí AzCopy v systému Windows
 AzCopy je nástroj příkazového řádku pro kopírování dat z úložiště Microsoft Azure Blob, soubor a tabulky, jednoduché příkazy určené pro optimální výkon. Může kopírovat data mezi systém souborů a účet úložiště nebo mezi účty úložiště.  
@@ -56,7 +56,7 @@ Všimněte si, že pokud složce `C:\myfolder` neexistuje, vytvoří AzCopy a st
 ### <a name="download-a-single-blob-from-the-secondary-region"></a>Stáhnout jediného objektu blob ze sekundární oblasti
 
 ```azcopy
-AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
+AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
 ```
 
 Všimněte si, že musí mít přístup pro čtení geograficky redundantní úložiště s povoleným pro přístup k sekundární oblast.
@@ -106,7 +106,7 @@ Po stažení operaci složce `C:\myfolder` zahrnuje následující soubory:
     C:\myfolder\abc1.txt
     C:\myfolder\abc2.txt
 
-Předpona, která se vztahuje na virtuální adresář, který tvoří první část názvu objektu blob. Ve výše uvedeném příkladu virtuální adresář neodpovídá zadané předpony, takže nebude stažen. Kromě toho pokud možnost `\S` není zadán, AzCopy nestáhne žádné objekty BLOB.
+Předpona, která se vztahuje na virtuální adresář, který tvoří první část názvu objektu blob. Ve výše uvedeném příkladu virtuální adresář neodpovídá zadané předpony, takže nebude stažen. Kromě toho pokud možnost `/S` není zadán, AzCopy nestáhne žádné objekty BLOB.
 
 ### <a name="set-the-last-modified-time-of-exported-files-to-be-same-as-the-source-blobs"></a>Nastavte čas poslední úpravy exportované soubory na stejnou hodnotu jako zdroj objektů BLOB
 
@@ -276,7 +276,7 @@ AzCopy ve výchozím nastavení zkopíruje data mezi dva koncové body úložiš
 AzCopy /Source:https://myaccount1.blob.core.windows.net/myContainer/ /Dest:https://myaccount2.blob.core.windows.net/myContainer/ /SourceKey:key1 /DestKey:key2 /Pattern:ab /SyncCopy
 ```
 
-`/SyncCopy`může vygenerovat další odchozí nákladů ve srovnání s asynchronní kopírování, doporučuje se tuto možnost použít ve virtuálním počítači Azure, který je ve stejné oblasti jako váš účet úložiště zdroj předejdete odchozí náklady.
+`/SyncCopy` může vygenerovat další odchozí nákladů ve srovnání s asynchronní kopírování, doporučuje se tuto možnost použít ve virtuálním počítači Azure, který je ve stejné oblasti jako váš účet úložiště zdroj předejdete odchozí náklady.
 
 ## <a name="download-files-from-file-storage"></a>Stahování souborů z úložiště File
 
@@ -614,9 +614,9 @@ AzCopy /Source:https://127.0.0.1:10002/myaccount/mytable/ /Dest:C:\myfolder /Sou
 
 Parametry pro AzCopy jsou popsané níže. Můžete také zadat jednu z následujících příkazů z příkazového řádku nápovědu pomocí nástroje AzCopy:
 
-* Podrobnou nápovědu příkazového řádku pro AzCopy:`AzCopy /?`
-* Další informace o všech AzCopy parametr:`AzCopy /?:SourceKey`
-* Příklady příkazového řádku:`AzCopy /?:Samples`
+* Podrobnou nápovědu příkazového řádku pro AzCopy: `AzCopy /?`
+* Další informace o všech AzCopy parametr: `AzCopy /?:SourceKey`
+* Příklady příkazového řádku: `AzCopy /?:Sample`
 
 ### <a name="sourcesource"></a>/ Zdroj: "zdroj"
 
@@ -967,7 +967,7 @@ Pro vlastnost "AzureStorageUseV1MD5":
 
 Kompatibilní se standardem FIPS algoritmy jsou zakázané ve výchozím nastavení v systému Windows. Nastavení této zásady můžete změnit na váš počítač. V okně Spustit (Windows + R) zadejte secpol.msc otevřete **místní zásady zabezpečení** okno. V **nastavení zabezpečení** okno, přejděte na **nastavení zabezpečení** > **místní zásady** > **možnosti zabezpečení**. Vyhledejte **kryptografie systému: použití kompatibilní se standardem FIPS algoritmy pro šifrování, hašování a podpisování** zásad. Dvakrát klikněte na zásadu zobrazíte hodnota zobrazená v **nastavení zabezpečení** sloupce.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Storage a AzCopy najdete v následujících zdrojích informací:
 

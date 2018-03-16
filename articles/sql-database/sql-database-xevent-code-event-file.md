@@ -2,25 +2,18 @@
 title: "Kód soubor události XEvent pro SQL Database | Microsoft Docs"
 description: "Příklad dvoufázového kód, který ukazuje soubor událostí cíl v rozšířené události v databázi SQL Azure poskytuje prostředí PowerShell a Transact-SQL. Azure Storage je požadovaných součástí tohoto scénáře."
 services: sql-database
-documentationcenter: 
 author: MightyPen
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: bbb10ecc-739f-4159-b844-12b4be161231
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2017
 ms.author: genemi
-ms.openlocfilehash: abf660e3fafd1a5020cdf9a6beb5b73252b72cfc
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 630e0ca84479757d3bb4397aa63ee8a440e69427
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Kód cílový soubor události pro rozšířené události v databázi SQL
 
@@ -33,7 +26,7 @@ V systému Microsoft SQL Server [cílový soubor událostí](http://msdn.microso
 Toto téma představuje ukázka dvoufázového kódu:
 
 * Prostředí PowerShell, chcete-li vytvořit kontejner Azure Storage v cloudu.
-* Příkaz Transact-SQL:
+* Transact-SQL:
   
   * Kontejner úložiště Azure přiřadit cíl soubor událostí.
   * Chcete-li vytvořit a zahájit relaci události a tak dále.
@@ -509,7 +502,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Uvedený skript Transact-SQL použít následující funkce systému ke čtení event_file:
 
-* [Sys.fn_xe_file_target_read_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
+* [sys.fn_xe_file_target_read_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
 
 Vysvětlení rozšířené možnosti pro zobrazení dat z rozšířených událostí je k dispozici na:
 
@@ -531,7 +524,7 @@ Předpokládejme, že chcete spustit v předchozím příkladu Transact-SQL na s
 Další informace o účtech a kontejnerů ve službě Azure Storage najdete v tématu:
 
 * [Používání úložiště Blob z rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-* [Pojmenování a odkazování na kontejnerů, objektů BLOB a metadat](http://msdn.microsoft.com/library/azure/dd135715.aspx)
+* [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](http://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [Práce s Kořenový kontejner](http://msdn.microsoft.com/library/azure/ee395424.aspx)
 * [Lekce 1: Vytvoření zásady uložené přístup a sdílený přístupový podpis na kontejner Azure](http://msdn.microsoft.com/library/dn466430.aspx)
   * [Lekce 2: Vytvoření přihlašovacích údajů systému SQL Server pomocí sdíleného přístupového podpisu](http://msdn.microsoft.com/library/dn466435.aspx)

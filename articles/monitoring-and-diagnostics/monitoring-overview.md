@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: d8da175a551f7c589c313b2289b2a0209dbd2b56
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a6a15c1b6a017839eb072ba72b48b714c50fd6c0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Monitorování aplikací Azure a prostředky
 
@@ -28,67 +28,17 @@ Azure obsahuje více služeb, které jednotlivě provádět určité role nebo �
 
 Následující diagram znázorňuje koncepční zobrazení součásti, které společně poskytují monitorování prostředků Azure. Následující části popisují tyto součásti a obsahují odkazy na podrobné technické informace.
 
-![Přehled monitorování](media/monitoring-overview/overview.png)
-
-## <a name="basic-monitoring"></a>Základní monitorování
-Základní monitorování poskytuje základní, vyžaduje monitorování napříč prostředků Azure. Tyto služby vyžadují minimální konfigurace a shromažďovat základní telemetrii, kterou monitorování služby premium používají.    
-
-### <a name="azure-monitor"></a>Azure Monitor
-[Azure monitorování](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) umožňuje základní monitorování pro služby Azure tím, že kolekce [metriky](../monitoring-and-diagnostics/monitoring-overview-metrics.md), [protokoly aktivity](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), a [diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). Například protokol aktivit zjistíte při vytvoření nebo úpravě nové prostředky. 
-
-Metriky, které jsou k dispozici, zadejte statistiku výkonu pro různé prostředky a i operační systém uvnitř virtuálního počítače. Můžete zobrazit tato data s jedním z průzkumníci na portálu Azure, odešle Azure Log Analytics k analýze trendů a podrobné nebo vytvořit pravidla výstrah proaktivně upozornění kritických problémů.
-
-### <a name="service-health"></a>Stav služby
-Stav aplikace spoléhá na služby Azure, které závisí na. [Azure stavu služby](../service-health/service-health-overview.md) identifikuje všechny problémy se službami Azure, které mohou ovlivnit vaše aplikace. Stav služby také vám pomůže naplánovat plánované údržby.
-
-### <a name="azure-advisor"></a>Azure Advisor
-[Azure Advisor](../advisor/advisor-overview.md) neustále monitoruje telemetrie konfiguraci a využití prostředků. Potom nabízí přizpůsobené doporučení na základě osvědčených postupů. Těmito doporučeními pomáhá zvýšit výkon, zabezpečení a dostupnost prostředků, které podporují vaší aplikace.
+![Přehled monitorování](media/monitoring-overview/monitoring-products-overview.png)
 
 
-## <a name="premium-monitoring-services"></a>Monitorování služby Premium
-Následující služby Azure nabízí bohaté možnosti pro shromažďování a analýzy dat monitorování. Tyto služby stavět na základní monitorování a využít výhod běžné funkce v Azure. Poskytují výkonný analytics s shromážděná data tak, abyste získali jedinečný insights do své aplikace a infrastrukturu. Jejich prezentují data v rámci scénáře, které jsou cíleny na různé cílové skupiny.
-
-### <a name="application-insights"></a>Application Insights
-Můžete použít [Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights) ke sledování dostupnosti a výkonu a využití vaší aplikace, zda je hostovaná v cloudu nebo místně. 
-
-Instrumentaci vaší aplikace pro práci s Application Insights, můžete dosáhnout informace hluboko skryté. Můžete rychle identifikovat a diagnostikovat chyby bez čekání na uživatele a jejich sestavy. S informacemi, které shromáždíte můžete provést informované volby na údržbu a vylepšení vaší aplikace. 
-
-Application Insights obsahuje rozsáhlé nástroje pro interakci s daty, která shromažďuje. Application Insights ukládá data do úložiště v běžné. Může trvat využívat sdílené funkce jako je například výstrahy, řídicí panely a hloubkovou analýzu pomocí dotazovacího jazyka pro analýzy protokolů.
-
-### <a name="log-analytics"></a>Log Analytics
-[Analýza protokolu](http://azure.microsoft.com/documentation/services/log-analytics) hraje centrální role v Azure monitorování tím, že shromažďování dat z různých zdrojů do jednoho úložiště. Zde můžete analyzovat data pomocí účinný dotazovací jazyk. 
-
-Application Insights a Azure Security Center ukládají data v analýzy protokolů data uložit a použít jeho analytics motoru. Data jsou data shromážděná z Azure monitorování, řešení pro správu a agentů nainstalovaných na virtuálních počítačů v cloudu nebo místně. Tato funkce sdílené umožňuje formuláři úplný přehled o svém prostředí. 
-
-
-### <a name="service-map"></a>Mapa služeb
-[Mapa služeb](../operations-management-suite/operations-management-suite-service-map.md) poskytuje vhled do prostředí IaaS analýzou virtuálních počítačů s jejich různé procesy a závislosti na jiných počítačích a externí procesy. Integruje se službou události, údaje o výkonu a řešení pro správu v analýzy protokolů. Potom můžete zobrazit tato data v rámci každého počítače a jejich vztah se zbytkem prostředí. 
-
-Mapa služeb je podobný [mapy aplikací ve službě Application Insights](../application-insights/app-insights-app-map.md). Zaměřuje se na součásti infrastruktury, které podporují vaší aplikace.
-
-### <a name="network-watcher"></a>Network Watcher
-[Sledovací proces sítě](../network-watcher/network-watcher-monitoring-overview.md) poskytuje na základě scénáře monitorování a Diagnostika pro jinou síť scénáře v Azure. Ukládá data do Azure metriky a diagnostiky k další analýze. Funguje s následující řešení pro monitorování různých aspektů vaší síti:
-* [Sítě monitorování výkonu (NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/): síť cloudové řešení monitorování, které monitoruje připojení mezi veřejných cloudů, datovými centry a místními prostředími.
-* [Monitorování ExpressRoute](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/): NPM funkci, která monitoruje připojení klient server a výkonu u okruhu Azure ExpressRoute.
-* Analýza provozu: Cloudového řešení, které umožní získat přehled o činnosti uživatelů a aplikací ve vaší síti cloudu.
-* [Analýza DNS](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-dns): řešení, které poskytuje zabezpečení, výkon a operace související přehledy založené na vaše servery DNS.
-
-### <a name="management-solutions"></a>Řešení pro správu
-[Řešení pro správu](../log-analytics/log-analytics-add-solutions.md) jsou zabalené sady logiky, které nabízejí přehled pro konkrétní aplikaci nebo službě. Spoléhají na analýzy protokolů ukládat a analyzovat data monitorování, který budou shromažďovat. 
-
-Řešení pro správu jsou k dispozici od společnosti Microsoft a partneři poskytovat monitorování pro různé Azure a služby třetích stran. Příklady monitorování řešení:
-* [Kontejner monitorování](../log-analytics/log-analytics-containers.md), který umožňuje zobrazit a spravovat hostitele kontejneru.
-* [Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md), který shromažďuje a vizualizuje metriky výkonu u databází Azure SQL.
-
-
-## <a name="shared-functionality"></a>Sdílené funkce
-Následující nástroje Azure poskytují důležité funkce Premium monitorování služeb. Více služeb sdílet, tak můžete využít výhod společných funkcí a konfigurace ve více službách.
+## <a name="shared-capabilities"></a>Sdílené možnosti
+Základní a hloubkového monitorování služby sdílet funkci, která poskytuje následující možnosti. 
 
 ### <a name="alerts"></a>Výstrahy
 [Azure výstrahy](../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktivně oznámíme vám kritického stavu a potenciálně proveďte opravné akce. Pravidla výstrah, můžete použít data z více zdrojů, včetně metrik a protokoly. Používají [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md), které obsahují jedinečnou sadu akcí v reakci na oznámení a příjemce. Podle potřeb, může mít výstrahy spusťte externí akce pomocí webhooků a integrovat pomocí nástrojů pro ITSM.
 
 ### <a name="dashboards"></a>Řídicí panely
-Můžete použít [Azure řídicí panely](../azure-portal/azure-portal-dashboards.md) kombinovat různé druhy dat do jednoho podokně na portálu Azure. Řídicí panel pak můžete sdílet s jinými uživateli Azure. 
+Můžete použít [Azure řídicí panely](../azure-portal/azure-portal-dashboards.md) kombinovat různé druhy dat do jednoho podokno v [portál Azure](https://portal.azure.com). Řídicí panel pak můžete sdílet s jinými uživateli Azure. 
 
 Můžete například vytvořit řídicí panel, který kombinuje:
 - Dlaždice, které se zobrazí graf metrik
@@ -102,6 +52,21 @@ Můžete také exportovat data Log Analytics [Power BI](https://docs.microsoft.c
 [Metriky](../monitoring-and-diagnostics/monitoring-overview-metrics.md) jsou číselné hodnoty generované prostředek služby Azure, které vám pomohou pochopit provoz a výkonu prostředku. Pomocí Průzkumníku metrik, můžete odeslat metriky k analýze protokolů pro analýzu s daty z jiných zdrojů.
 
 
+## <a name="core-monitoring"></a>Základní monitorování
+Základní monitorování poskytuje základní, vyžaduje monitorování napříč prostředků Azure. Tyto služby vyžadují minimální konfigurace a shromažďovat základní telemetrii, kterou monitorování služby premium používají.    
+
+### <a name="azure-monitor"></a>Azure Monitor
+[Azure monitorování](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) umožňuje základní monitorování pro služby Azure tím, že kolekce [metriky](../monitoring-and-diagnostics/monitoring-overview-metrics.md), [protokoly aktivity](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), a [diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). Například protokol aktivit zjistíte při vytvoření nebo úpravě nové prostředky. 
+
+Metriky, které jsou k dispozici, zadejte statistiku výkonu pro různé prostředky a i operační systém uvnitř virtuálního počítače. Můžete zobrazit tato data s jedním z průzkumníci na portálu Azure a vytvářet výstrahy založené na tyto metriky. Monitorování Azure poskytuje že nejrychlejší metriky kanálu (5 minut na 1 minutu), takže byste měli používat pro čas kritické výstrahy a oznámení. 
+
+Můžete také odeslat tyto metriky a trendů a podrobné analýzy protokolů Azure Log Analytics nebo vytvořit další pravidla výstrah jako proaktivně upozornění na důležité problémy v důsledku této analýzy.  
+
+### <a name="azure-advisor"></a>Azure Advisor
+[Azure Advisor](../advisor/advisor-overview.md) neustále monitoruje telemetrie konfiguraci a využití prostředků. Potom nabízí přizpůsobené doporučení na základě osvědčených postupů. Těmito doporučeními pomáhá zvýšit výkon, zabezpečení a dostupnost prostředků, které podporují vaší aplikace.
+
+### <a name="service-health"></a>Service Health
+Stav aplikace spoléhá na služby Azure, které závisí na. [Azure stavu služby](../service-health/service-health-overview.md) identifikuje všechny problémy se službami Azure, které mohou ovlivnit vaše aplikace. Stav služby také vám pomůže naplánovat plánované údržby.
 
 ### <a name="activity-log"></a>Protokol aktivit
 [Protokol aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) poskytuje data o operaci prostředek služby Azure. Tyto informace zahrnují:
@@ -112,7 +77,52 @@ Můžete také exportovat data Log Analytics [Power BI](https://docs.microsoft.c
 
 Protokoly pro určitý prostředek můžete zobrazit na stránce s jejím na portálu Azure. Nebo protokoly z více prostředků můžete zobrazit v Průzkumníku protokolu aktivit. 
 
-Můžete také odeslat protokoly aktivity k analýze protokolů. Zde můžete analyzovat protokolů pomocí data shromažďovaná společností řešení pro správu, agenty na virtuální počítače a další zdroje.
+Můžete také odeslat položky protokolu aktivit k analýze protokolů. Zde můžete analyzovat protokolů pomocí data shromažďovaná společností řešení pro správu, agenty na virtuální počítače a další zdroje.
+
+## <a name="deep-monitoring-services"></a>Hloubkové monitorování služby
+Následující služby Azure nabízí bohaté možnosti pro shromažďování a analýzy dat monitorování na podrobnější úrovni. Tyto služby stavět na základní monitorování a využít výhod běžné funkce v Azure. Poskytují výkonný analytics s shromážděná data tak, abyste získali jedinečný insights do své aplikace a infrastrukturu. Jejich prezentují data v rámci scénáře, které jsou cíleny na různé cílové skupiny.
+
+## <a name="deep-application-monitoring"></a>Monitorování hloubkové aplikací
+### <a name="application-insights"></a>Application Insights
+Můžete použít [Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights) ke sledování dostupnosti a výkonu a využití vaší aplikace, zda je hostovaná v cloudu nebo místně. 
+
+Podle instrumentaci vaší aplikace pro práci s Application Insights, můžete dosáhnout hlubšímu porozumění a implementovat DevOps scénáře. Můžete rychle identifikovat a diagnostikovat chyby bez čekání na uživatele a jejich sestavy. S informacemi, které shromáždíte můžete provést informované volby na údržbu a vylepšení vaší aplikace. 
+
+Application Insights obsahuje rozsáhlé nástroje pro interakci s daty, která shromažďuje. Application Insights ukládá data do úložiště v běžné. Může trvat využívat sdílené funkce jako je například výstrahy, řídicí panely a hloubkovou analýzu pomocí dotazovacího jazyka pro analýzy protokolů.
+
+## <a name="deep-infrastructure-monitoring"></a>Infrastruktura hloubkové monitorování
+### <a name="log-analytics"></a>Log Analytics
+[Analýza protokolu](http://azure.microsoft.com/documentation/services/log-analytics) hraje centrální role v Azure monitorování tím, že shromažďování dat z různých zdrojů (včetně nástroje jiných společností než Microsoft) do jednoho úložiště. Zde můžete analyzovat data pomocí účinný dotazovací jazyk. 
+
+Application Insights a Azure Security Center ukládají data v analýzy protokolů data uložit a použít jeho analytics motoru. Také shromáždění dat z Azure monitorování, řešení pro správu a agentů nainstalovaných na virtuálních počítačů v cloudu nebo místně. Tato funkce sdílené umožňuje formuláři úplný přehled o svém prostředí.
+
+### <a name="management-solutions"></a>Řešení pro správu
+[Řešení pro správu](../log-analytics/log-analytics-add-solutions.md) jsou zabalené sady logiky, které nabízejí přehled pro konkrétní aplikaci nebo službě. Spoléhají na analýzy protokolů ukládat a analyzovat data monitorování, který budou shromažďovat. 
+
+Řešení pro správu jsou k dispozici od společnosti Microsoft a partneři poskytovat monitorování pro různé Azure a služby třetích stran. Příklady monitorování řešení:
+* [Kontejner monitorování](../log-analytics/log-analytics-containers.md), který umožňuje zobrazit a spravovat hostitele kontejneru.
+* [Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md), který shromažďuje a vizualizuje metriky výkonu u databází Azure SQL.
+
+Můžete zobrazit všechna řešení pro správu k dispozici na portálu Azure v části *monitorování* obrazovky. 
+
+### <a name="network-monitoring"></a>Monitorování sítě
+Existuje několik nástrojů, které vzájemně spolupracují a sledování různých aspektů vaší sítě v Azure nebo místně.  
+
+[Sledovací proces sítě](../network-watcher/network-watcher-monitoring-overview.md) poskytuje na základě scénáře monitorování a Diagnostika pro jinou síť scénáře v Azure. Ukládá data do Azure metriky a diagnostiky k další analýze. Funguje s následující řešení pro monitorování různých aspektů vaší sítě. 
+
+[Sítě monitorování výkonu (NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/) je to síť cloudové řešení monitorování, které monitoruje připojení mezi veřejných cloudů, datovými centry a místními prostředími.
+
+[Monitorování ExpressRoute](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) je NPM funkci, která monitoruje připojení klient server a výkonu u okruhu Azure ExpressRoute.
+
+[Analýza DNS](../log-analytics/log-analytics-dns.md) je řešení, které poskytuje zabezpečení, výkonu a operací souvisejících přehledy založené na vaše servery DNS.
+
+[Monitorování koncového bodu služby](../networking/network-monitoring-overview.md) testy dostupnosti aplikací a zjistí kritické body mezi místní, poskytovatel sítě a cloud a privátního datových centrech.
+
+
+### <a name="service-map"></a>Mapa služeb
+[Mapa služeb](../operations-management-suite/operations-management-suite-service-map.md) poskytuje vhled do prostředí IaaS analýzou virtuálních počítačů s jejich různé procesy a závislosti na jiných počítačích a externí procesy. Integruje se službou události, údaje o výkonu a řešení pro správu v analýzy protokolů. Potom můžete zobrazit tato data v rámci každého počítače a jejich vztah se zbytkem prostředí. 
+
+Mapa služeb je podobný [mapy aplikací ve službě Application Insights](../application-insights/app-insights-app-map.md). Zaměřuje se na součásti infrastruktury, které podporují vaší aplikace.
 
 
 ## <a name="example-scenarios"></a>Ukázkové scénáře
@@ -141,11 +151,9 @@ Po výpadku hlášené pomocí mapy služeb provádět forenzní můžete identi
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o:
 
-* [Azure monitorování v videa z Ignite 2016](https://myignite.microsoft.com/videos/4977).
-* [Začínáme s Azure monitorování](monitoring-get-started.md).
-* [Azure Diagnostics](../azure-diagnostics.md) Pokud se pokoušíte diagnostikovat problémy s cloudovou službu, virtuální počítač, škálovací sadu virtuálních počítačů nebo aplikace Azure Service Fabric.
+* [Azure monitorování](https://azure.microsoft.com/en-us/services/monitor/) začít pracovat s základní metriky a výstrahy monitorování.
 * [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) Pokud se snažíte diagnostikovat problémy ve vaší webové aplikaci služby App Service.
-* [Analýza protokolu](https://azure.microsoft.com/documentation/services/log-analytics/) pro analýzu shromážděná data monitorování.
+* [Analýza protokolu](https://azure.microsoft.com/documentation/services/log-analytics/) pro analýzu shromážděná data monitorování a protokoly.
