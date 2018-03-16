@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: fc8c5774eb616c33c00ecebeacd31e2a07b36e0c
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Pro delegování uživatele registrace a produktu předplatného
 Delegování umožňuje použít existující web pro zpracování vývojáře sign v nebo registrace-množství a předplatné produkty oproti pomocí integrované funkce v portálu pro vývojáře. To umožňuje webu do vlastní data uživatele a provést ověření z těchto kroků vlastní způsobem.
@@ -44,7 +44,7 @@ Teď je potřeba vytvořit **koncový bod delegování**. Je třeba provést ně
 
 1. Zobrazit žádost o následující tvar:
    
-   > *http://www.yourwebsite.com/apimdelegation?Operation=SignIn&returnUrl= {URL zdrojové stránky} & salt = {řetězec} & sig = {řetězec}*
+   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL zdroj stránky} & řetězce salt = {řetězec} & sig = {řetězec}*
    > 
    > 
    
@@ -70,7 +70,7 @@ Teď je potřeba vytvořit **koncový bod delegování**. Je třeba provést ně
    * [žádosti o token jednotného přihlašování (SSO)] prostřednictvím rozhraní API REST API pro správu
    * parametr dotazu returnUrl připojte k adrese URL jednotné přihlašování jste dostali od volání rozhraní API výše:
      
-     > for example, https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > Například https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
      > 
      > 
    * přesměruje uživatele na výše uvedenou adresu URL vytvořené
@@ -101,7 +101,7 @@ Potom zkontrolujte, že koncový bod delegování provede následující akce:
 
 1. Zobrazit žádost o následující tvar:
    
-   > *{operaci} http://www.yourwebsite.com/apimdelegation?Operation= & productId = {produktu pro přihlášení k odběru} & userId = {uživatele, který vytvořil požadavek} & řetězce salt = {řetězec} & sig = {řetězec}*
+   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product Přihlaste se k odběru} & userId = {uživatele, který vytvořil požadavek} & řetězce salt = {řetězec} & sig = {řetězec}*
    > 
    > 
    

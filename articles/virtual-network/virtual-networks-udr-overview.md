@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: d05492425381649a7893b872c4b1c49e9f241b50
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4f4c4e9749eb5f0f6ba1950521f459f140cb5221
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -45,7 +45,7 @@ Každá trasa obsahuje předponu adresy a typ dalšího segmentu směrování. P
 
 Typy dalších segmentů směrování uvedené v předchozí tabulce představují způsob, jakým Azure směruje provoz určený pro uvedenou předponu adresy. Následuje vysvětlení jednotlivých typů dalších segmentů směrování:
 
-- **Virtuální síť:** Směruje provoz v mezích rozsahů adres v rámci [adresního prostoru](virtual-network-manage-network.md#add-address-spaces) virtuální sítě. Azure vytvoří trasy s předponami adres, které odpovídají jednotlivým rozsahům adres definovaným v rámci adresního prostoru virtuální sítě. Pokud je v adresním prostoru virtuální sítě definováno více rozsahů adres, Azure pro každý z nich vytvoří samostatnou trasu. Azure automaticky směruje provoz mezi podsítěmi pomocí tras vytvořených pro jednotlivé rozsahy adres. Azure pro směrování provozu mezi podsítěmi nevyžaduje definování bran. Přestože virtuální síť obsahuje podsítě a každá podsíť má definovaný rozsah adres, Azure *nevytvoří* výchozí trasy pro rozsahy adres podsítě, protože každý rozsah adres podsítě je v rámci rozsahu adres adresního prostoru virtuální sítě.
+- **Virtuální síť:** Směruje provoz v mezích rozsahů adres v rámci [adresního prostoru](manage-virtual-network.md#add-or-remove-an-address-range) virtuální sítě. Azure vytvoří trasy s předponami adres, které odpovídají jednotlivým rozsahům adres definovaným v rámci adresního prostoru virtuální sítě. Pokud je v adresním prostoru virtuální sítě definováno více rozsahů adres, Azure pro každý z nich vytvoří samostatnou trasu. Azure automaticky směruje provoz mezi podsítěmi pomocí tras vytvořených pro jednotlivé rozsahy adres. Azure pro směrování provozu mezi podsítěmi nevyžaduje definování bran. Přestože virtuální síť obsahuje podsítě a každá podsíť má definovaný rozsah adres, Azure *nevytvoří* výchozí trasy pro rozsahy adres podsítě, protože každý rozsah adres podsítě je v rámci rozsahu adres adresního prostoru virtuální sítě.
 
 - **Internet:** Směruje provoz určený předponou adresy do internetu. Výchozí systémová trasa určuje předponu adresy 0.0.0.0/0. Pokud nepřepíšete výchozí trasy Azure, až na jednu výjimku směruje Azure provoz pro všechny adresy, které nejsou určené rozsahem adres v rámci nějaké virtuální sítě, do internetu. Pokud je cílová adresa adresou některé ze služeb Azure, místo směrování provozu do internetu směruje Azure provoz přes páteřní síť Azure přímo do služby. Provoz mezi službami Azure neprochází přes internet, a to bez ohledu na to, ve které oblasti Azure existuje virtuální síť nebo ve které oblasti Azure je nasazená instance služby Azure. Výchozí systémovou trasu Azure pro předponu adresy 0.0.0.0/0 není možné přepsat [vlastní trasou](#custom-routes).
 
@@ -250,7 +250,7 @@ Směrovací tabulka pro podsíť *Subnet2* obsahuje všechny výchozí trasy a v
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření směrovací tabulky definované uživatelem s trasami a virtuálními síťovými zařízeními](create-user-defined-route-portal.md)
+- [Vytvoření směrovací tabulky definované uživatelem s trasami a virtuálními síťovými zařízeními](tutorial-create-route-table-portal.md)
 - [Konfigurace protokolu BGP pro Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Použití protokolu BGP s ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
 - [Zobrazení všech tras pro podsíť](virtual-network-routes-troubleshoot-portal.md). Směrovací tabulka definovaná uživatelem zobrazuje pouze trasy definované uživatelem, a ne výchozí trasy ani trasy protokolu BGP pro podsíť. Při zobrazení všech tras se zobrazí výchozí trasy, trasy protokolu BGP a trasy definované uživatelem pro podsíť, ve které je síťové rozhraní.

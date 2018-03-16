@@ -9,17 +9,17 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: 2043f635e30de208a29a3da2fcde6bf2a1223fc8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 600689dfe2d572a83382522f6bea1ec5bf0f3883
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Účet úložiště Azure Storage poskytuje jedinečný obor názvů v cloudu pro ukládání datových objektů ve službě Azure Storage a přístup k nim. Účet úložiště obsahuje všechny objekty blob, soubory, fronty, tabulky a disky, které pod tímto účtem vytvoříte. 
 
-Pokud chcete začít pracovat se službou Azure Storage, musíte nejdřív vytvořit účet úložiště. Účet Azure Storage si můžete vytvořit pomocí [webu Azure Portal](https://portal.azure.com/), [Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Tento rychlý start ukazuje, jak tyto jednotlivé možnosti využít k vytvoření nového účtu úložiště. 
+Pokud chcete začít pracovat se službou Azure Storage, musíte nejdřív vytvořit účet úložiště. Účet Azure Storage si můžete vytvořit pomocí [webu Azure Portal](https://portal.azure.com/), [Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Tento rychlý start ukazuje, jak tyto jednotlivé možnosti využít k vytvoření nového účtu úložiště. 
 
 
 ## <a name="prerequisites"></a>Požadavky

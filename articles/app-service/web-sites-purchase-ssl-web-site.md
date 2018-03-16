@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
 ms.openlocfilehash: 6c0125bf0bd22912a21372b5a7da6846e924e6cd
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Koupě a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak zabezpečit webové aplikace prostřednictvím za
 
 ## <a name="step-1---log-in-to-azure"></a>Krok 1 – přihlášení do Azure
 
-Přihlaste se k portálu Azure na http://portal.azure.com
+Přihlaste se k portálu Azure v http://portal.azure.com
 
 ## <a name="step-2---place-an-ssl-certificate-order"></a>Krok 2 – umístit pořadí certifikát SSL
 
@@ -99,7 +99,7 @@ Po kliknutí na **ověřte**, použijte **aktualizovat** tlačítko až **ověř
 
 V  **[portál Azure](https://portal.azure.com/)**, klikněte **služby App Service** možnost na levé straně stránky.
 
-Klikněte na název vaší aplikace, ke kterému chcete přiřadit tento certifikát.
+Klikněte na název aplikace, ke které chcete přiřadit certifikát.
 
 V **nastavení**, klikněte na tlačítko **certifikáty SSL**.
 
@@ -136,7 +136,7 @@ V tomto okamžiku nyní byste měli mít k navštívení vaší aplikace pomocí
 
 Existují dva další typy ověření domény nepodporuje App service Certificate: e-mailu a ruční ověření.
 
-#### <a name="mail-verification"></a>Ověření e-mailu
+#### <a name="mail-verification"></a>Ověření poštou
 
 Již byl odeslán ověřovací e-mail do e-mailové adresy, přidružené k této vlastní doménu.
 K dokončení kroku ověření e-mailu, otevřete e-mailu a klikněte na odkaz ověření.
@@ -145,7 +145,7 @@ K dokončení kroku ověření e-mailu, otevřete e-mailu a klikněte na odkaz o
 
 Pokud potřebujete znovu odeslat ověřovací e-mail, klikněte **znovu odeslat e-mailu** tlačítko.
 
-#### <a name="domain-verification"></a>Ověření domény
+#### <a name="domain-verification"></a>Ověřování domény
 
 Tuto volbu vyberte pouze pro [domény služby App Service, které jste zakoupili z Azure.](custom-dns-web-site-buydomains-web-app.md). Azure automaticky přidá ověření záznam TXT pro vás a dokončí proces.
 
@@ -159,14 +159,14 @@ Tuto volbu vyberte pouze pro [domény služby App Service, které jste zakoupili
 
 1. Obsah tohoto souboru musí být přesný název tokenu ověření domény. (Můžete zkopírovat token na stránce Stav ověření domény)
 
-1. Odeslat tento soubor v kořenovém adresáři webového serveru, který je hostitelem vaší domény`/.well-known/pki-validation/starfield.html`
+1. Odeslat tento soubor v kořenovém adresáři webového serveru, který je hostitelem vaší domény `/.well-known/pki-validation/starfield.html`
 
 1. Klikněte na tlačítko **aktualizovat** aktualizovat stav certifikátu po dokončení ověření. Může trvat několik minut na dokončení ověření.
 
 > [!TIP]
 > Ověřte v terminálu pomocí `curl -G http://<domain>/.well-known/pki-validation/starfield.html` by měl obsahovat odpověď `<verification-token>`.
 
-#### <a name="dns-txt-record-verification"></a>Záznam ověření DNS TXT
+#### <a name="dns-txt-record-verification"></a>DNS TXT Record Verification
 
 1. Pomocí Správce DNS vytvořit záznam TXT na `@` subdomény se hodnota rovná tokenu ověření domény.
 1. Klikněte na tlačítko **"Aktualizovat"** aktualizovat stav certifikátu po dokončení ověření.

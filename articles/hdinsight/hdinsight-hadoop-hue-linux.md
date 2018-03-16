@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: nitinme
 ms.openlocfilehash: 5cef5e72af8a8b7c007b688b029f875e89d163ae
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Na nainstalovat a používat Hue clusterů systému HDInsight Hadoop
 
@@ -37,18 +37,18 @@ HUE je sada webových aplikací používaných pro interakci s clusterem Hadoop.
 * Správce Metaúložiště.
 * Oozie
 * FileBrowser (který komunikuje se výchozí kontejner WASB)
-* Úloha prohlížeče
+* Prohlížeč úloh
 
 > [!WARNING]
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporované a Microsoft Support pomůže k izolování a vyřešení problémů týkajících se těchto součástí.
 >
-> Vlastní komponenty získat vyvineme podporu k pomoci při další řešení problému. To může způsobit řešení problému nebo s žádostí o zapojení dostupné kanály pro technologie s otevřeným zdrojem, kterých se nachází hluboké znalosti pro tuto technologii. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [http://apache.org](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
+> Vlastní komponenty získat vyvineme podporu k pomoci při další řešení problému. To může způsobit řešení problému nebo s žádostí o zapojení dostupné kanály pro technologie s otevřeným zdrojem, kterých se nachází hluboké znalosti pro tuto technologii. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
 >
 >
 
 ## <a name="install-hue-using-script-actions"></a>Instalace aplikace Hue pomocí akcí skriptů
 
-Je k dispozici v https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh skript postup instalace aplikace Hue na clusteru HDInsight se systémem Linux. Postup instalace aplikace Hue v clusterech s Azure Storage objekty BLOB (WASB) nebo Azure Data Lake Store jako výchozí úložiště můžete použít tento skript.
+Skript tak, aby instalace aplikace Hue na clusteru HDInsight se systémem Linux je k dispozici na https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Postup instalace aplikace Hue v clusterech s Azure Storage objekty BLOB (WASB) nebo Azure Data Lake Store jako výchozí úložiště můžete použít tento skript.
 
 Tato část obsahuje informace o tom, jak pomocí skriptu při zřizování clusteru pomocí portálu Azure.
 
@@ -68,7 +68,7 @@ Tato část obsahuje informace o tom, jak pomocí skriptu při zřizování clus
     ![Zadejte parametry akce skriptu pro Hue](./media/hdinsight-hadoop-hue-linux/hue-script-action.png "poskytnout skripty parametry akcí pro Hue")
 
    * **NÁZEV**: Zadejte popisný název akce skriptu.
-   * **Identifikátor URI skriptu**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
+   * **IDENTIFIKÁTOR URI SKRIPTU**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
    * **HEAD**: zaškrtnete tuto možnost,
    * **PRACOVNÍ**: nechat prázdné.
    * **ZOOKEEPER**: nechat prázdné.
@@ -146,7 +146,7 @@ Tunelové připojení SSH je jedinou možností k přístupu ke Hue na clusteru,
    To je kvůli známému problému. Jako alternativní řešení upravte, aby byl aktivní Resource Manager je spuštěna také na primární headnode Ambari.
 5. HUE rozumí WebHDFS i clusterů HDInsight pomocí Azure Storage pomocí `wasb://`. Vlastní skript použít s akce skriptu tedy nainstaluje WebWasb, který je kompatibilní s webhdfs, které služba pro rozhovoru s WASB. Ano, i když portál Hue uvádí HDFS místech (například když přesunutím ukazatele myši nad **prohlížeč souborů**), by měl být interpretován jako WASB.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Nainstalujte Giraph clustery HDInsight](hdinsight-hadoop-giraph-install-linux.md). Přizpůsobení clusteru použijte k instalaci Giraph clusterů systému HDInsight Hadoop. Giraph umožňuje provádět zpracování grafu pomocí Hadoop a dá použít s Azure HDInsight.
 * [Nainstalujte Solr clustery HDInsight](hdinsight-hadoop-solr-install-linux.md). Přizpůsobení clusteru použijte k instalaci Solr clusterů systému HDInsight Hadoop. Solr umožňuje provádět operace výkonné hledání na uložená data.
 * [Nainstalujte jazyk R v clusterech HDInsight](hdinsight-hadoop-r-scripts-linux.md). Přizpůsobení clusteru použijte k instalaci R clusterů systému HDInsight Hadoop. R je open-source jazyk a prostředí pro statistické výpočty. Poskytuje stovky statistické funkce předdefinované a vlastní programovací jazyk, který kombinuje aspektů funkčnosti a objektově orientované programování. Také poskytuje rozsáhlé možnosti grafického rozhraní.

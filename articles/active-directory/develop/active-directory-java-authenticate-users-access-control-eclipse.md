@@ -16,10 +16,10 @@ ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
 ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Jak ověřovat uživatele webové službě Řízení přístupu Azure pomocí prostředí Eclipse
 Tento průvodce vám ukáže, jak používat řízení přístupu Azure Service (ACS) v rámci sady nástrojů Azure pro Eclipse. Další informace o služby ACS, najdete v článku [další kroky](#next_steps) části.
@@ -205,7 +205,7 @@ V **přihlašovací stránky integrace: webové aplikace Azure** adresy URL uved
 4. Klikněte na **Dokončit**.
 5. Klikněte **spustit v emulátoru Azure** tlačítko.
 6. Po spuštění webové aplikace v jazyce Java v emulátoru služby výpočty v, zavřete všechny instance prohlížeče (tak, aby všechny aktuální relace prohlížeče nezpůsobují konflikt s testováním přihlášení služby ACS).
-7. Spusťte aplikaci otevřením <adrese http://localhost: 8080/MyACSHelloWorld/> v prohlížeči (nebo <https://localhost:8080/MyACSHelloWorld/> v případě, že je zaškrtnuté **připojení vyžadují protokol HTTPS** ). Jste vyzváni k přihlášení Windows Live ID a potom je třeba vzít na návratovou adresu URL zadanou pro aplikace předávající strany.
+7. Spusťte aplikaci otevřením <http://localhost:8080/MyACSHelloWorld/> v prohlížeči (nebo <https://localhost:8080/MyACSHelloWorld/> v případě, že je zaškrtnuté **připojení vyžadují HTTPS**). Jste vyzváni k přihlášení Windows Live ID a potom je třeba vzít na návratovou adresu URL zadanou pro aplikace předávající strany.
 8. Klepněte na tlačítko zobrazení vaší aplikace **resetovat emulátoru Azure** tlačítko.
 
 ## <a name="deploy-to-azure"></a>Nasazení do Azure
@@ -244,7 +244,7 @@ Navíc tento příklad používá **vložení certifikát do souboru WAR** možn
 
 1. V rámci **zabezpečení** části **filtru služeb řízení přístupu Azure** dialogové okno, typ **${env. JAVA_HOME}/mycert.cer** a zrušte zaškrtnutí políčka **vložení certifikát do souboru WAR**. (Pokud název souboru certifikátu se liší, upravte Můj_certifikát.cer.) Klikněte na tlačítko **Dokončit** zavřete dialogové okno.
 2. Zkopírujte certifikát jako součást ve vašem nasazení: V prohlížeči na Eclipse projektu, rozbalte položku **MyAzureACSProject**, klikněte pravým tlačítkem na **WorkerRole1**, klikněte na tlačítko **vlastnosti**, Rozbalte položku **Role v Azure**a klikněte na tlačítko **součásti**.
-3. Klikněte na tlačítko **Přidat**.
+3. Klikněte na tlačítko **Add** (Přidat).
 4. V rámci **přidat součást** dialogové okno:
    
    1. V **Import** části:

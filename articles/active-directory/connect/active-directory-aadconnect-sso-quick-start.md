@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: billmath
 ms.openlocfilehash: 58ca992f9fcf9a03d917f0dc250a292c4d5f49e5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý start
 
@@ -87,7 +87,7 @@ Kromě toho je nutné povolit zásadu zóny intranetu názvem **povolit aktualiz
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Proč je třeba změnit nastavení zóny intranetu uživatelů?
 
-Ve výchozím prohlížeči automaticky vypočítá správné zóně, Internetu nebo intranetu, z konkrétní adresy URL. Například "http://contoso/" mapuje do zóny intranetu, zatímco "http://intranet.contoso.com/" se mapuje na zónu Internetu (protože adresa URL obsahuje tečku). Prohlížeče nebude odesílají lístky protokolu Kerberos koncového bodu cloudu, jako je Azure AD adresu URL, pokud explicitně přidat adresu URL do zóny intranetu prohlížeče.
+Ve výchozím prohlížeči automaticky vypočítá správné zóně, Internetu nebo intranetu, z konkrétní adresy URL. Například "http://contoso/" mapuje do zóny intranetu, zatímco "http://intranet.contoso.com/" mapuje zóně Internet (protože adresa URL obsahuje tečku). Prohlížeče nebude odesílají lístky protokolu Kerberos koncového bodu cloudu, jako je Azure AD adresu URL, pokud explicitně přidat adresu URL do zóny intranetu prohlížeče.
 
 ### <a name="detailed-steps"></a>Podrobné kroky
 
@@ -101,7 +101,7 @@ Ve výchozím prohlížeči automaticky vypočítá správné zóně, Internetu 
 
     Výsledek vypadá takto:
 
-    Value: https://autologon.microsoftazuread-sso.com
+    Hodnota: https://autologon.microsoftazuread-sso.com
   
     Data: 1
 
@@ -129,7 +129,7 @@ Mozilla Firefox nebude automaticky používat ověřování protokolu Kerberos. 
 1. Spustit Firefox a zadejte `about:config` na panelu Adresa. Zavřete všechny oznámení, které vidíte.
 2. Vyhledejte **identifikátory URI network.negotiate auth.trusted** předvoleb. Tato předvolba obsahuje seznam důvěryhodných serverů na Firefox ověřování protokolem Kerberos.
 3. Klikněte pravým tlačítkem a vyberte **upravit**.
-4. Do pole zadejte https://autologon.microsoftazuread-sso.com.
+4. Zadejte https://autologon.microsoftazuread-sso.com v poli.
 5. Vyberte **OK** a znovu otevřete v prohlížeči.
 
 #### <a name="safari-mac-os"></a>Safari (Mac OS)
@@ -138,7 +138,7 @@ Ujistěte se, že počítač se systémem Mac OS je připojený k Azure AD. Poky
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (všechny platformy)
 
-Pokud máte elementem [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) nebo [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) nastavení zásad ve vašem prostředí, ujistěte se také přidat adresu URL pro Azure AD (https://autologon.microsoftazuread-sso.com) k nim.
+Pokud máte elementem [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) nebo [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) nastavení zásad ve vašem prostředí, ujistěte se, že přidáte adresu URL pro Azure AD (https://autologon.microsoftazuread-sso.com) k nim také.
 
 #### <a name="google-chrome-mac-os-only"></a>Google Chrome (pouze Mac OS)
 

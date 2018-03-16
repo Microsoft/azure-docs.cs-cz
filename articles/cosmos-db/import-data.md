@@ -17,10 +17,10 @@ ms.date: 02/27/2018
 ms.author: anhoh
 ms.custom: mvc
 ms.openlocfilehash: cf8b0e6a06f787c5b38622e9343e893d5d7daa12
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Nástroj pro migraci dat
 
@@ -196,7 +196,7 @@ Podobně jako u zdroje SQL, vlastnost vnoření oddělovače lze vytvořit hiera
 
 Poznámka: aliasy například DomainInfo.Domain_Name a RedirectInfo.Redirecting. Zadáním oddělovač vnoření z '.', nástroj pro import vytvoří během importu DomainInfo a RedirectInfo vnořených dokumentů. Tady je příklad výsledné dokumentu v Azure Cosmos DB:
 
-*{"DomainInfo": {"Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV"}, "Federal agenturou": "správu konferenční z USA", "RedirectInfo": {"Přesměrování": "0", "Redirect_Destination": ""}, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
+*{"DomainInfo": {"Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV"}, "Federal agenturou": "správu konferenční z USA", "RedirectInfo": {"Přesměrování": "0", "Redirect_Destination": ""}, "id": " 9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
 
 Nástroj pro import se pokusí odvození informací o typu nekotovaných hodnoty v souborů CSV (hodnoty v uvozovkách se vždy pracuje jako řetězce).  Typy jsou označeny v následujícím pořadí: číslo, datum a čas, logická hodnota.  
 

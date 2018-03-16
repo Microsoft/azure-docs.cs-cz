@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
 ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Používat pro přístup k rozhraní API Azure Media Services se zbytkem ověřování Azure AD
 
@@ -59,10 +59,10 @@ Pro přístup k rozhraní API Media Services, která potřebujete shromáždit t
 
 |Nastavení|Příklad:|Popis|
 |---|-------|-----|
-|Doména tenanta služby Azure Active Directory|Microsoft.onmicrosoft.com|Azure AD jako koncový bod zabezpečení tokenu služby (STS) je vytvořen v následujícím formátu: https://login.microsoftonline.com/ {your-aad-tenant-name.onmicrosoft.com}/oauth2/token. Azure AD vydá token JWT pro zpřístupnění prostředků (přístupový token).|
-|Koncový bod rozhraní REST API|https://amshelloworld.restv2.westus.Media.Azure.NET/API/|Toto je koncový bod, na které všechny Media Services REST API v aplikaci volání.|
+|Doména tenanta služby Azure Active Directory|microsoft.onmicrosoft.com|Azure AD jako koncový bod zabezpečení tokenu služby (STS) je vytvořen v následujícím formátu: https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token. Azure AD vydá token JWT pro zpřístupnění prostředků (přístupový token).|
+|Koncový bod rozhraní REST API|https://amshelloworld.restv2.westus.media.azure.net/api/|Toto je koncový bod, na které všechny Media Services REST API v aplikaci volání.|
 |ID klienta (ID aplikace)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD ID aplikace (klient). ID klienta se používá k získání tokenu přístupu. |
-|Tajný klíč klienta|+ mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq + Dbim0 =|Azure AD klíče aplikace (tajný klíč klienta). Tajný klíč klienta se používá k získání tokenu přístupu.|
+|Tajný klíč klienta|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD klíče aplikace (tajný klíč klienta). Tajný klíč klienta se používá k získání tokenu přístupu.|
 
 ### <a name="get-aad-auth-info-from-the-azure-portal"></a>Získání informací o ověřování AAD na portálu Azure
 
@@ -123,7 +123,7 @@ Tato část ukazuje způsob použití **Postman** provést REST API, která vrac
 2. Vyberte **POST**.
 3. Zadejte adresu URL, která zahrnuje název vašeho klienta v následujícím formátu: název klienta musí končit **. onmicrosoft.com** a adresa URL musí končit **tokenuoauth2/**: 
 
-    https://Login.microsoftonline.com/ {your-aad-tenant-name.onmicrosoft.com}/oauth2/token
+    https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token
 
 4. Vyberte **hlavičky** kartě.
 5. Zadejte **hlavičky** informací pomocí datové mřížce "Klíč/hodnota". 
@@ -159,7 +159,7 @@ V této části ukazuje, jak získat přístup **prostředky** rozhraní API pom
 
 1. Otevřete **Postman**.
 2. Vyberte **GET**.
-3. Vložte koncový bod REST API (například https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
+3. Koncový bod REST API vložit (například) https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. Vyberte **autorizace** kartě. 
 5. Vyberte **tokenu nosiče**.
 6. Vložte token, který byl vytvořen v předchozí části.

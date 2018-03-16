@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
 ms.openlocfilehash: 40245c25a7f80db27a25a0d34eb20f1057fc5e02
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad
 
@@ -72,10 +72,10 @@ Chcete-li zajistit, že vše funguje podle očekávání, postupujte takto:
 - Používejte absolutní adresy URL, například https://yourdomain/content pro všechny odkazy a obsah šablon stylů CSS.
 
 > [!TIP]
-> Ověřte, zda má lokality, které jsou hostiteli obsahu na povolení CORS a testování požadavků CORS, můžete použít http://test-cors.org/ lokality. Díky této lokalitě můžete odeslat požadavek CORS na vzdálený server (abyste zjistili, zda je podporován CORS) nebo odeslat požadavek CORS na testovací server (Chcete-li prozkoumat určité funkce CORS).
+> Ověřte, zda jsou hostování obsahu na lokalitu má povolení CORS a testování požadavků CORS, můžete použít webu http://test-cors.org/. Díky této lokalitě můžete odeslat požadavek CORS na vzdálený server (abyste zjistili, zda je podporován CORS) nebo odeslat požadavek CORS na testovací server (Chcete-li prozkoumat určité funkce CORS).
 
 > [!TIP]
-> Http://enable-cors.org/ lokality představuje také více než užitečné zdroje na CORS.
+> Lokality http://enable-cors.org/ také se považuje za více než užitečné zdroje na CORS.
 
 Díky tohoto přístupu na základě CORS koncoví uživatelé měli konzistentního prostředí mezi vaší aplikace a stránky obsluhuje Azure AD B2C.
 
@@ -122,8 +122,8 @@ CORS (sdílení prostředků různého původu) musí být povolené na váš ko
 
 Ověřte, že úložiště, které jsou hostiteli obsahu na má povolení CORS, pokračujte následující kroky:
 
-1. Spustí relaci prohlížeče a přejděte na stránku *unified.html* pomocí úplnou adresu URL jeho umístění ve vašem účtu úložiště `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. For example, https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
-2. Přejděte do http://test-cors.org. Tento web můžete ověřit, zda stránka, kterou používáte má povolení CORS.  
+1. Spustí relaci prohlížeče a přejděte na stránku *unified.html* pomocí úplnou adresu URL jeho umístění ve vašem účtu úložiště `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Například, https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
+2. Přejděte na adresu http://test-cors.org. Tento web můžete ověřit, zda stránka, kterou používáte má povolení CORS.  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
 -->

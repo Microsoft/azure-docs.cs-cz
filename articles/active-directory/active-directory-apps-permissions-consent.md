@@ -18,10 +18,10 @@ ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
 ms.openlocfilehash: d3e14c18d5e4cd77f4c68d8a5d9d0b915e896695
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Aplikace, oprávnění a vyjádření souhlasu v Azure Active Directory
 V rámci Azure Active Directory můžete do svého adresáře přidávat aplikace.  Aplikace se mohou lišit v závislosti na typu aplikace.  Pokud chcete zobrazit aplikace na portálu, vyberte adresář a zvolte požadované aplikace.

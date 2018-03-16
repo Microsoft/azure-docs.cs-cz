@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 34d9d207225327758d535a11c870019f3db31cb0
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Pomocí portálu správce v Azure zásobníku
 
@@ -34,7 +34,7 @@ Pro přístup k portálu správce, přejděte na adresu URL portálu a přihlá�
 
 | Prostředí | Adresa URL portálu správce |   
 | -- | -- | 
-| Development kit| https://adminportal.Local.azurestack.external  |
+| Development kit| https://adminportal.local.azurestack.external  |
 | Integrované systémy | https://adminportal. &lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt; | 
 | | |
 
@@ -79,6 +79,6 @@ Klikněte na ikonu nápovědy a podpory (otazník) v pravém horním rohu portá
 - Pokud používáte integrovaný systém, otevře tato akce lokality, kde můžete přímo otevřít lístek podpory s Microsoft podporu služby zákazníkům (CSS). Informace naleznete v sekci "Kde získat podporu" z [základy správy Azure zásobníku](azure-stack-manage-basics.md) pochopit, kdy by měli přejít prostřednictvím podpory společnosti Microsoft nebo podporu dodavatele hardwaru výrobce (OEM).
 - Pokud používáte sadě pro vývoj, otevře tato akce webu fóra Azure zásobníku přímo. Tato fóra jsou pravidelně sledovat. Protože development kit je prostředí pro testování, neexistuje oficiální podpora nabízeným přes Microsoft CSS.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Oblast správy v Azure zásobníku](azure-stack-region-management.md)

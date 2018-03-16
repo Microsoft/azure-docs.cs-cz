@@ -13,13 +13,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/22/2017
+ms.date: 03/06/2018
 ms.author: jawh
-ms.openlocfilehash: 7d44d0a0f8683ad6ad55136ad17879e98e26498b
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 38d60001293a3bae6eb9f90179abb8af7815fbe7
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="get-started-with-azure-notification-hubs-for-windows-phone-apps"></a>Začínáme se službou Azure Notification Hubs pro aplikace pro Windows Phone
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -67,7 +67,7 @@ Centrum se teď vytvoří a nakonfiguruje pro odeslání neověřeného oznámen
 ## <a name="connecting-your-app-to-the-notification-hub"></a>Připojování aplikace k centru oznámení
 1. V sadě Visual Studio vytvořte novou aplikaci pro Windows Phone 8.
    
-       ![Visual Studio - New Project - Windows Phone App][13]
+    ![Visual Studio – Nový projekt – aplikace Windows Phone][13]
    
     Ve Visual Studio 2013 Update 2 nebo novější verzi místo toho vytvořte aplikaci Windows Phone Silverlight.
    
@@ -119,9 +119,9 @@ Centrum se teď vytvoří a nakonfiguruje pro odeslání neověřeného oznámen
    > 
 6. V Průzkumníku řešení rozbalte **Vlastnosti**, otevřete soubor `WMAppManifest.xml`, klikněte na kartu **Možnosti** a ujistěte se, že je zaškrtnuta schopnost **ID_CAP_PUSH_NOTIFICATION**.
    
-       ![Visual Studio - Windows Phone App Capabilities][14]
+    ![Visual Studio – možnosti aplikace pro Windows Phone][14]
    
-       This ensures that your app can receive push notifications. Without it, any attempt to send a push notification to the app will fail.
+    Tato možnost zajistí, že vaše aplikace může přijímat nabízená oznámení Bez toho se nezdaří jakýkoliv pokus o odeslání nabízených oznámení do aplikace.
 7. Stiskněte klávesu `F5` a spusťte aplikaci.
    
     V aplikaci se zobrazí zpráva registrace.

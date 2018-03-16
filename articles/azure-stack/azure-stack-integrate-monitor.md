@@ -16,10 +16,10 @@ ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.openlocfilehash: 3435ada40afb9f1c6e57be64d1b9086d0cdaefd9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Externí řešení monitorování integrovat Azure zásobníku
 
@@ -145,7 +145,7 @@ Požadavek získá všechny aktivní a uzavřené výstrahy pro výchozí zprost
 
 |Argument  |Popis  |
 |---------|---------|
-|armendpoint     |  Koncový bod Azure Resource Manager prostředí Azure zásobníku v https://adminmanagement formátu. {RegionName}. {Externí plně kvalifikovaný název domény}. Například, pokud je externí plně kvalifikovaný název domény *azurestack.external* a název oblasti je *místní*, pak https://adminmanagement.local.azurestack.external je koncový bod Resource Manager.       |
+|armendpoint     |  Koncový bod Azure Resource Manager prostředí Azure zásobníku v https://adminmanagement formátu. {RegionName}. {Externí plně kvalifikovaný název domény}. Například, pokud je externí plně kvalifikovaný název domény *azurestack.external* a název oblasti je *místní*, pak je koncový bod správce prostředků https://adminmanagement.local.azurestack.external.       |
 |subid     |   ID předplatného uživatele, který je uskutečněním hovoru. Toto rozhraní API pro dotaz můžete použít pouze s uživatelem, který má oprávnění k předplatnému výchozího zprostředkovatele.      |
 |RegionName     |    Název oblasti Azure zásobníku nasazení.     |
 |verze rozhraní API.     |  Verze protokolu, který slouží k vytvoření této žádosti. Je nutné použít 2016-05-01.      |
@@ -221,12 +221,12 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*fabricname*     |    Název registrované prostředků infrastruktury vadný součásti.   |
 |*Popis*     |  Popis součásti registrované prostředků infrastruktury.   |
 |*ServiceType*     |   Typ služby registrované prostředků infrastruktury.   |
-|*nápravy*     |   Doporučené nápravy kroky.    |
+|*Nápravy*     |   Doporučené nápravy kroky.    |
 |*Typ*     |   Typ výstrahy.    |
 |*resourceRegistrationid*    |     ID zdroje registrované.    |
 |*resourceProviderRegistrationID*   |    ID zaregistrovaný zprostředkovatel prostředku ohrožené součásti.  |
 |*serviceregistrationid*     |    ID registrované služby.   |
-|*závažnost*     |     Závažnost výstrahy.  |
+|*Závažnost*     |     Závažnost výstrahy.  |
 |*Stav*     |    Stav výstrahy.   |
 |*title*     |    Název výstrahy.   |
 |*impactedresourceid*     |     ID prostředku dopad.    |
@@ -248,7 +248,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 
 |Argument  |Popis  |
 |---------|---------|
-|*armendpoint*     |   Koncový bod správce prostředků Azure zásobníku prostředí, ve formátu https://adminmanagement. {RegionName}. {Externí plně kvalifikovaný název domény}. Například, pokud je externí plně kvalifikovaný název domény *azurestack.external* a název oblasti je *místní*, pak https://adminmanagement.local.azurestack.external je koncový bod Resource Manager.      |
+|*armendpoint*     |   Koncový bod správce prostředků Azure zásobníku prostředí, ve formátu https://adminmanagement. {RegionName}. {Externí plně kvalifikovaný název domény}. Například, pokud je externí plně kvalifikovaný název domény *azurestack.external* a název oblasti je *místní*, pak je koncový bod správce prostředků https://adminmanagement.local.azurestack.external.      |
 |*subid*     |    ID předplatného uživatele, který je uskutečněním hovoru. Toto rozhraní API pro dotaz můžete použít pouze s uživatelem, který má oprávnění k předplatnému výchozího zprostředkovatele.     |
 |*RegionName*     |   Název oblasti Azure zásobníku nasazení.      |
 |*api-version*     |    Verze protokolu, který slouží k vytvoření této žádosti. Je nutné použít 2016-05-01.     |
@@ -364,12 +364,12 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 |*fabricname*     |    Název registrované prostředků infrastruktury vadný součásti.   |
 |*Popis*     |  Popis součásti registrované prostředků infrastruktury.   |
 |*ServiceType*     |   Typ služby registrované prostředků infrastruktury.   |
-|*nápravy*     |   Doporučené nápravy kroky.    |
+|*Nápravy*     |   Doporučené nápravy kroky.    |
 |*Typ*     |   Typ výstrahy.    |
 |*resourceRegistrationid*    |     ID zdroje registrované.    |
 |*resourceProviderRegistrationID*   |    ID zaregistrovaný zprostředkovatel prostředku ohrožené součásti.  |
 |*serviceregistrationid*     |    ID registrované služby.   |
-|*závažnost*     |     Závažnost výstrahy.  |
+|*Závažnost*     |     Závažnost výstrahy.  |
 |*Stav*     |    Stav výstrahy.   |
 |*title*     |    Název výstrahy.   |
 |*impactedresourceid*     |     ID prostředku dopad.    |
@@ -393,7 +393,7 @@ Požadavek získá stav pro všechny poskytovatele prostředků registrované.
 
 |Argumenty  |Popis  |
 |---------|---------|
-|*armendpoint*     |    Koncový bod správce prostředků prostředí Azure zásobníku v https://adminmanagement formátu. {RegionName}. {Externí plně kvalifikovaný název domény}. Například pokud je azurestack.external externí plně kvalifikovaný název domény a název oblasti je místní, koncový bod Resource Manager je https://adminmanagement.local.azurestack.external.     |
+|*armendpoint*     |    Koncový bod správce prostředků prostředí Azure zásobníku v https://adminmanagement formátu. {RegionName}. {Externí plně kvalifikovaný název domény}. Například pokud je azurestack.external externí plně kvalifikovaný název domény a název oblasti je místní, pak koncového bodu správce prostředků je https://adminmanagement.local.azurestack.external.     |
 |*subid*     |     ID předplatného uživatele, který je uskutečněním hovoru. Toto rozhraní API pro dotaz můžete použít pouze s uživatelem, který má oprávnění k předplatnému výchozího zprostředkovatele.    |
 |*RegionName*     |     Název oblasti Azure zásobníku nasazení.    |
 |*api-version*     |   Verze protokolu, který slouží k vytvoření této žádosti. Je nutné použít 2016-05-01.      |
@@ -438,7 +438,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*Typ*     |  Definice prostředků.       |
 |*location*     |  Název oblasti.       |
 |*značek*     |     Značky prostředku.    |
-|*registrationId*     |   Jedinečné registrace pro poskytovatele prostředků.      |
+|*RegistrationId*     |   Jedinečné registrace pro poskytovatele prostředků.      |
 |*displayName*     |Zobrazovaný název zprostředkovatele prostředků.        |
 |*namespace*     |   Implementuje rozhraní API obor názvů zprostředkovatele prostředků.       |
 |*routePrefix*     |    Identifikátor URI pro interakci s poskytovatelem prostředků.     |
@@ -462,7 +462,7 @@ Požadavek získá stav pro konkrétní registrované prostředek zprostředkova
 
 |Argumenty  |Popis  |
 |---------|---------|
-|*armendpoint*     |    Koncový bod správce prostředků prostředí Azure zásobníku v https://adminmanagement formátu. {RegionName}. {Externí plně kvalifikovaný název domény}. Například pokud je azurestack.external externí plně kvalifikovaný název domény a název oblasti je místní, koncový bod Resource Manager je https://adminmanagement.local.azurestack.external.     |
+|*armendpoint*     |    Koncový bod správce prostředků prostředí Azure zásobníku v https://adminmanagement formátu. {RegionName}. {Externí plně kvalifikovaný název domény}. Například pokud je azurestack.external externí plně kvalifikovaný název domény a název oblasti je místní, pak koncového bodu správce prostředků je https://adminmanagement.local.azurestack.external.     |
 |*subid*     |ID předplatného uživatele, který je uskutečněním hovoru. Toto rozhraní API pro dotaz můžete použít pouze s uživatelem, který má oprávnění k předplatnému výchozího zprostředkovatele.         |
 |*RegionName*     |  Název oblasti Azure zásobníku nasazení.       |
 |*api-version*     |  Verze protokolu, který slouží k vytvoření této žádosti. Je nutné použít 2016-05-01.       |
@@ -506,7 +506,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*Typ*     |  Definice prostředků.       |
 |*location*     |  Název oblasti.       |
 |*značek*     |     Značky prostředku.    |
-|*registrationId*     |   Jedinečné registrace pro poskytovatele prostředků.      |
+|*RegistrationId*     |   Jedinečné registrace pro poskytovatele prostředků.      |
 |*Typ prostředku*     |Typ prostředku.        |
 |*resourceName*     |   Název prostředku.   |
 |*usageMetrics*     |    Využití metriky pro prostředek.     |

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: cfd4e478850783983caa3042cbbb2b096a576292
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování do aplikace bez Galerie nakonfigurovaný pro federované jednotné přihlašování
 
@@ -63,7 +63,7 @@ Jakmile jste aktualizovali hodnota identifikátoru ve službě Azure AD a odešl
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adresa pro odeslání odpovědi neodpovídá adresy odpovědět, nakonfigurované pro aplikaci. 
 
-*Chyba AADSTS50011: Adresa odpovědi 'https://contoso.com' neodpovídá adresy odpovědět, nakonfigurované pro aplikaci* 
+*Chyba AADSTS50011: Adresa pro odeslání odpovědi sehttps://contoso.com' neodpovídá adresy odpovědět, nakonfigurované pro aplikaci* 
 
 **Možná příčina** 
 
