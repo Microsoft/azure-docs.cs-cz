@@ -14,7 +14,7 @@ Chcete-li vytvořit a spravovat virtuální počítače Azure (VM) konzistentní
 
 
 ## <a name="ansible"></a>Ansible
-[Ansible](https://www.ansible.com/) je modul automatizace pro správu konfigurace, vytvoření virtuálního počítače nebo nasazení aplikace. Ansible používá model bez agenta, obvykle pomocí klíče SSH k ověření a správu cílových počítačů. Úlohy konfigurace jsou definovány v sadách runbook s počtem Ansible moduly k provádění specifických úloh k dispozici. Další informace najdete v tématu [funguje jak Ansible](https://www.ansible.com/how-ansible-works).
+[Ansible](https://www.ansible.com/) je modul automatizace pro správu konfigurace, vytvoření virtuálního počítače nebo nasazení aplikace. Ansible používá model bez agenta, obvykle pomocí klíče SSH k ověření a správu cílových počítačů. Úlohy konfigurace jsou definovány v playbooks s počtem Ansible moduly k provádění specifických úloh k dispozici. Další informace najdete v tématu [funguje jak Ansible](https://www.ansible.com/how-ansible-works).
 
 Naučte se:
 
@@ -41,19 +41,19 @@ Naučte se:
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Init cloudu](https://cloudinit.readthedocs.io) je často používaný přístup k přizpůsobení virtuálního počítače s Linuxem, jako při prvním spuštění. Init cloudu můžete použít k instalaci balíčků a zapisovat soubory nebo konfigurace zabezpečení a uživatelů. Protože init cloudu je volána v průběhu procesu počáteční spouštění, nejsou žádné další kroky nebo požadované agenty použít konfiguraci.  Další informace o tom, jak správně formátu vaše `#cloud-config` soubory, najdete v článku [web dokumentace cloudu init](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`soubory jsou textové soubory kódovaný jako base64.
+[Cloud-init](https://cloudinit.readthedocs.io) je široce využívaným přístupem k přizpůsobení virtuálního počítače s Linuxem při jeho prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Protože init cloudu je volána v průběhu procesu počáteční spouštění, nejsou žádné další kroky nebo požadované agenty použít konfiguraci.  Další informace o tom, jak správně formátu vaše `#cloud-config` soubory, najdete v článku [web dokumentace cloudu init](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` soubory jsou textové soubory kódovaný jako base64.
 
-Init cloudu také funguje v různých distribucí. Například nepoužívejte **výstižný get instalace** nebo **yum nainstalovat** nainstalovat balíček. Místo toho můžete definovat seznam balíčků pro instalaci. Init cloudu automaticky používá nástroj pro správu nativní balíčku pro distro, kterou vyberete.
+Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak například nepoužijete **apt-get install** ani **yum install**. Místo toho můžete definovat seznam balíčků pro instalaci. Cloud-init automaticky použije nativní nástroj pro správu balíčků pro zvolenou distribuci.
 
  Aktivně Pracujeme s našimi potvrzená distro partnery Linux aby bylo možné používat cloudové inicializací povoleno imagím v Azure marketplace. Tyto Image proveďte init cloudové nasazení a konfigurace bezproblémově pracovat s virtuálními počítači a sady škálování virtuálního počítače. Následující tabulka popisuje aktuální dostupnosti cloudu inicializací povoleno bitové kopie na platformě Azure:
 
 | Vydavatel | Nabídka | Skladová jednotka (SKU) | Verze | init cloudu připravené
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |16.04 LTS |nejnovější |ano | 
+|Canonical |UbuntuServer |16.04-LTS |nejnovější |ano | 
 |Canonical |UbuntuServer |14.04.5-LTS |nejnovější |ano |
 |CoreOS |CoreOS |Stable |nejnovější |ano |
-|OpenLogic |CentOS |7 CI |nejnovější |verze Preview |
-|RedHat |RHEL |7 NEZPRACOVANÁ POLOŽEK KONFIGURACE |nejnovější |verze Preview |
+|OpenLogic |CentOS |7-CI |nejnovější |náhled |
+|RedHat |RHEL |7-RAW-CI |nejnovější |náhled |
 
 Další podrobnosti o cloudu init v Azure:
 
@@ -61,7 +61,7 @@ Další podrobnosti o cloudu init v Azure:
 - [Vyzkoušejte si kurz na automatické konfigurace virtuálního počítače pomocí cloudu init](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
 
 
-## <a name="powershell-dsc"></a>Prostředí PowerShell DSC
+## <a name="powershell-dsc"></a>PowerShell DSC
 [Prostředí PowerShell požadovaného stavu konfigurace (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) je platforma pro správu k definování konfigurace cílových počítačů. DSC lze také v systému Linux pomocí [serveru infrastruktury OMI (Open Management Infrastructure)](https://collaboration.opengroup.org/omi/).
 
 Konfigurace DSC definovat, co je potřeba nainstalovat na počítači a postup konfigurace hostitele. Modul Místní Configuration Manager (LCM) běží na každý cílový uzel, který zpracovává požadovaná akce na základě stisknutí konfigurací. Server vyžádání obsahu je webová služba, která běží na hostiteli centrální k uložení konfigurace DSC a přidružených prostředků. Načítacího serveru komunikuje s modulem LCM na každém cílovém hostiteli a zadejte požadované konfigurace a tvorba sestav o dodržování předpisů.
@@ -110,7 +110,7 @@ Azure Automation nabízí taky služba Konfigurace požadovaného stavu (DSC), k
 Naučte se:
 
 - [Vytvoření sady runbook PowerShell](../articles/automation/automation-first-runbook-textual-powershell.md).
-- [Hybridní pracovní proces Runbooku použít ke správě prostředků místní](../articles/automation/automation-hybrid-runbook-worker.md).
+- [Hybridní pracovní proces Runbooku použít ke správě místních prostředků](../articles/automation/automation-hybrid-runbook-worker.md).
 - [Pomocí služby Azure Automation DSC](../articles/automation/automation-dsc-getting-started.md).
 
 

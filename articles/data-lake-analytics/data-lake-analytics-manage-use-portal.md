@@ -4,7 +4,7 @@ description: "Naučte se spravovat počtech, zdroje dat, uživatele a úlohy Dat
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
-manager: jhubbard
+manager: kfile
 editor: cgronlun
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.service: data-lake-analytics
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
-ms.author: edmaca
-ms.openlocfilehash: 15b3b44e45a59f44bd9bbd96dce867cc87fa410c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: saveenr
+ms.openlocfilehash: 93815904e7e21e1ba8283d7a522297c7e3466702
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>Správa Azure Data Lake Analytics pomocí portálu Azure
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -30,7 +30,7 @@ Naučte se spravovat účty, účet zdroje dat, uživatele a úlohy Azure Data L
 
 ## <a name="manage-data-lake-analytics-accounts"></a>Správa účtů Data Lake Analytics
 
-### <a name="create-an-account"></a>Vytvořit účet
+### <a name="create-an-account"></a>Vytvoření účtu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Klikněte na tlačítko **vytvořit prostředek** > **Intelligence + analýzy** > **Data Lake Analytics**.

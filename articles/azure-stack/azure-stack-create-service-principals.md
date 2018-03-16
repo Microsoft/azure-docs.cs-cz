@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2018
+ms.date: 03/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: 64c424ee7045ae20b3fba6433166039580387d76
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7b7028a92b93f29af10c5e4bc9ab4f671ca23961
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Uveďte přístup aplikace k Azure zásobníku
 
@@ -51,14 +51,14 @@ V této části vytvoříte aplikaci (instanční objekt) ve službě Azure AD, 
 Vytvořili jste objekt služby pro vaši aplikaci.
 
 ### <a name="get-credentials"></a>Získání přihlašovacích údajů
-Při prostřednictvím kódu programu přihlášení, použijete Identifikátor vaší aplikace a ověřovací klíč. Tyto hodnoty, použijte následující kroky:
+Při prostřednictvím kódu programu přihlášení, abyste používali ID pro vaši aplikaci a pro webovou aplikaci nebo rozhraní API, ověřovací klíč. Tyto hodnoty, použijte následující kroky:
 
 1. Z **registrace aplikace** ve službě Active Directory, vyberte svou aplikaci.
 
 2. Kopírování **ID aplikace** a ukládá je v kódu aplikace. Aplikace v [ukázkové aplikace](#sample-applications) části odkazují na tuto hodnotu jako ID klienta.
 
      ![ID klienta](./media/azure-stack-create-service-principal/image12.png)
-3. Generovat ověřovací klíč, vyberte **klíče**.
+3. Generovat ověřovací klíč pro webovou aplikaci nebo rozhraní API, vyberte **nastavení** > **klíče**. 
 
 4. Zadejte popis klíč a dobu trvání pro klíč. Až budete hotoví, vyberte **Uložit**.
 

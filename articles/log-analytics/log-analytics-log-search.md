@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.author: bwren
 ms.openlocfilehash: 5f040d1480433ccf4c0b2b22c0cf1e25a7151d74
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>Principy protokolu hledání v analýzy protokolů
 
@@ -29,9 +29,9 @@ Různé způsoby, že použijete protokolu hledání v analýzy protokolů zahrn
 
 - **Portálů.** Interaktivní analýzu dat můžete provádět v úložišti na portálu Azure nebo [Advanced Analytics portál](https://go.microsoft.com/fwlink/?linkid=856587).  To umožňuje upravit dotaz a analyzujte výsledky v různých formátech a vizualizací.  Většinu dotazů, které vytvoříte, se spustí v jednom z portálů a pak zkopíruje Jakmile ověříte, že funguje podle očekávání.
 - **Pravidla výstrah.** [Pravidla výstrah](log-analytics-alerts.md) aktivně identifikovat problémy z dat v pracovním prostoru.  Každé pravidlo výstrahy je založen na protokolu vyhledávání, který se automaticky spouští v pravidelných intervalech.  Výsledky jsou prozkoumá a určí, jestliže se vytvoří výstraha.
-- **Zobrazení.**  Můžete vytvořit vizualizaci dat, které mají být zahrnuty v řídicích panelech uživatele s [Návrhář zobrazení](log-analytics-view-designer.md).  Protokol hledání poskytují data používá [dlaždice](log-analytics-view-designer-tiles.md) a [vizualizace částí](log-analytics-view-designer-parts.md) v každém zobrazení.  Podrobnostem z vizualizace části na stránku hledání protokolů k další analýze na data.
+- **Views.**  Můžete vytvořit vizualizaci dat, které mají být zahrnuty v řídicích panelech uživatele s [Návrhář zobrazení](log-analytics-view-designer.md).  Protokol hledání poskytují data používá [dlaždice](log-analytics-view-designer-tiles.md) a [vizualizace částí](log-analytics-view-designer-parts.md) v každém zobrazení.  Podrobnostem z vizualizace části na stránku hledání protokolů k další analýze na data.
 - **Export.**  Při exportu dat z pracovního prostoru analýzy protokolů do aplikace Excel nebo [Power BI](log-analytics-powerbi.md), vytvořte protokol hledání, zadejte data pro export.
-- **Prostředí PowerShell.** Skript prostředí PowerShell můžete spustit z příkazového řádku nebo runbooku automatizace Azure, který používá [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) k načtení dat z analýzy protokolů.  Tento příkaz cmdlet vyžaduje dotazu určit data pro získání.
+- **PowerShell.** Skript prostředí PowerShell můžete spustit z příkazového řádku nebo runbooku automatizace Azure, který používá [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) k načtení dat z analýzy protokolů.  Tento příkaz cmdlet vyžaduje dotazu určit data pro získání.
 - **Log Analytics API.**  [Analýzy protokolů protokolu rozhraní API služby search](log-analytics-log-search-api.md) umožňuje libovolného klienta REST API k načtení dat z pracovního prostoru.  Rozhraní API požadavek obsahuje dotaz, který spustí pro analýzy protokolů k určení dat pro načtení.
 
 ![Protokol hledání](media/log-analytics-log-search-new/log-search-overview.png)

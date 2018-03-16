@@ -2,23 +2,18 @@
 title: "Začínáme s dotazy mezidatabázové (vertikální dělení) | Microsoft Docs"
 description: "pomocí dotazu elastické databáze s svisle na oddíly databáze"
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: torsteng
-ms.assetid: e5b44b10-c432-4f96-b20e-08615ff4d5dd
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
-ms.author: torsteng
-ms.openlocfilehash: ca715c0ef41ccb4aed2924898d7729bed659b0ca
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 0731ddfea83d287c88118cf4b48e86427d8f520f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Začínáme s dotazy mezidatabázové (vertikální dělení) (preview)
 Dotaz elastické databáze (preview) pro databázi SQL Azure umožňuje spouštět dotazy T-SQL, které jsou rozmístěny v několika databází pomocí jednoho připojení bodu. Toto téma se týká [svisle na oddíly databáze](sql-database-elastic-query-vertical-partitioning.md).  
@@ -71,7 +66,7 @@ Nyní, spustit následující dotaz na **zákazníci** databáze slouží k vytv
     "Username" a "password" by měl být uživatelské jméno a heslo použité k přihlášení do databáze zákazníků.
     Ověřování pomocí služby Azure Active Directory s elastické dotazy není aktuálně podporován.
 
-### <a name="external-data-sources"></a>Externích zdrojů dat.
+### <a name="external-data-sources"></a>Externí zdroje dat
 Pokud chcete vytvořit externího zdroje dat, spusťte následující příkaz v databázi objednávky: 
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH 
@@ -104,7 +99,7 @@ V současné době funkce dotazu elastické databáze je zahrnut do náklady na 
 
 Informace o cenách najdete v části [SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database). 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Přehled elastické dotazů najdete v tématu [elastické dotazu přehled](sql-database-elastic-query-overview.md).
 * Syntaxe a ukázkové dotazy pro svisle oddílů data, najdete v části [dotazování svisle na oddíly dat)](sql-database-elastic-query-vertical-partitioning.md)

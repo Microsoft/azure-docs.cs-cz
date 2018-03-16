@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b00c594f87a3126bd3f1548cd904adffcb214031
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: dc0b01e23ebb2695fd0365f054b3cacd2573f3c6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 nebo Dynamics CRM pomocí Azure Data Factory
 
@@ -185,7 +185,7 @@ Ke zkopírování dat z a do Dynamics, nastavte vlastnost typu datové sady, kte
                 "type": "Datetime"
             }
         ],
-        "typePoperties": {
+        "typeProperties": {
             "entityName": "account"
         },
         "linkedServiceName": {
@@ -339,5 +339,5 @@ Nakonfigurujte odpovídající datový typ objektu pro vytváření dat ve struk
 > [!NOTE]
 > Datové typy Dynamics AttributeType.CalendarRules a AttributeType.PartyList nejsou podporovány.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v objektu pro vytváření dat najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

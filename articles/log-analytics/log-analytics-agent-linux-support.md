@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 03/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 895a77a66f50b4c5217ec7d672f6441b85bf1856
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 80d7e39b284554ebfa8cac4488e1663b3e3648e8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-troubleshoot-issues-with-the-linux-agent-for-log-analytics"></a>Řešení potíží s agentem systému Linux pro analýzy protokolů
 
@@ -37,12 +37,12 @@ Tento článek obsahuje nápovědu k odstraňování potíží chyby setkat s ag
 2. Projděte si část [aktualizovat nastavení proxy serveru](log-analytics-agent-manage.md#update-proxy-settings) ověření jste správně nakonfigurovali agenta pro komunikaci přes proxy server.    
 * Double zkontrolujte, jestli jsou následující koncové body služby analýzy protokolů seznam povolených adres:
 
-    |Prostředek agenta| Porty |  
-    |------|---------|  
-    |*.ods.opinsights.azure.com | Port 443|   
-    |*.oms.opinsights.azure.com | Port 443|   
-    |ods.systemcenteradvisor.com | Port 443|   
-    |*.blob.core.windows.net/ | Port 443|   
+    |Prostředek agenta| Porty | Směr |
+    |------|---------|----------|  
+    |*.ods.opinsights.azure.com | Port 443| Příchozí a odchozí |  
+    |*.oms.opinsights.azure.com | Port 443| Příchozí a odchozí |  
+    |*.blob.core.windows.net | Port 443| Příchozí a odchozí |  
+    |*.azure-automation.net | Port 443| Příchozí a odchozí | 
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Problém: Obdržíte 403 chybu při pokusu o zařadit do provozu
 
@@ -68,7 +68,7 @@ Jde o známý problém, který se nachází na první nahrávání dat Linux do 
 - Vytvoření zálohy OMS agenta pro Linux data
 
 ### <a name="resolutions"></a>Řešení
-1. Zkontrolujte, pokud registrace služby analýzy protokolů po úspěšné kontrole, jestli existuje následující soubor:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+1. Zkontrolujte, pokud registrace služby analýzy protokolů po úspěšné kontrole, jestli existuje následující soubor: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. Pomocí Reonboard `omsadmin.sh` příkazového řádku pokyny
 3. Pokud používáte proxy server, podívejte se na proxy řešení kroků uvedených výše.
 4. V některých případech pokud Agent OMS pro Linux nemůže komunikovat se službou, data na agenta je zařazených do fronty pro velikost vyrovnávací paměti úplná, což je 50 MB. Spuštěním následujícího příkazu by měla být restartována OMS agenta pro Linux: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 

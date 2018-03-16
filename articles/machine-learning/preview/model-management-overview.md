@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 931dfae740996325cc62071a861e81ef5f67548b
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 89f95753248f74c7f6cb9ca1f680a01b07dd43d1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-model-management"></a>Správa modelů ve službě Azure Machine Learning
 
@@ -99,27 +99,27 @@ Na následujícím obrázku je zachytit popisující tyto koncepty dokončení p
 ![](media/model-management-overview/modelmanagementworkflow.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy 
-- Jaké datové typy jsou podporovány? Můžete předat pole NumPy přímo jako vstup pro webovou službu?
+- **Jaké datové typy jsou podporovány? Můžete předat pole NumPy přímo jako vstup pro webovou službu?**
 
    Pokud zadáte soubor schématu, která byla vytvořena pomocí generate_schema SDK, pak můžete předat NumPy nebo Pandas DF. Také můžete předat všechny vstupy serializovatelný JSON. Bitové kopie můžete předat jako binární řetězec s kódováním také.
 
-- Podporuje webovou službu více vstupů nebo analyzovat různé vstupy? 
+- **Podporuje webovou službu více vstupů nebo analyzovat různé vstupy?**
 
    Ano, může trvat více vstupů zabalené v jedné žádosti JSON jako slovník. Každý vstup by odpovídat jedné slovník jedinečný klíč.
 
-- Je volání aktivuje požadavkem na web služby blokování volání nebo asynchronní volání?
+- **Je volání aktivuje požadavkem na web služby blokování volání nebo asynchronní volání?**
 
    Pokud služba byla vytvořena pomocí možnosti v reálném čase v rámci rozhraní CLI nebo API, je blokování synchronní volání. Očekává se jako rychlou v reálném čase. I když na straně klienta, můžete ji pomocí knihovny asynchronní HTTP, aby se zabránilo volat blokování vláken klienta.
 
-- Počet požadavků může webová služba současně zpracovávat?
+- **Počet požadavků může webová služba současně zpracovávat?**
 
    To závisí na škálování clusteru a webové služby. Můžete škálovat služby do 100 x repliky a pak ji může zpracovat mnoho požadavků současně. Můžete taky nakonfigurovat maximální počtu souběžných požadavků na repliku, pokud chcete zvýšit propustnost služby.
 
-- Počet požadavků můžete webovou službu fronty?
+- **Počet požadavků můžete webovou službu fronty?**
 
    Je konfigurovatelné. Ve výchozím nastavení je nastaven na hodnotu 10 ~ za jednu repliku, ale můžete můžete zvětšit nebo zmenšit jeho vašim požadavkům aplikace. Obvykle zvyšuje počet požadavků ve frontě zvyšuje propustnost služby ale dává nejhorší latence na vyšší percentily. Aby latence konzistentní, můžete chtít nastavit řazení do fronty na nízkou hodnotu (1-5) a zvýšit počet replik pro zpracování propustnost. Můžete také zapnout automatické škálování, chcete-li počet replik úpravě automaticky v závislosti na zatížení. 
 
-- Lze do počítače nebo clusteru použít pro více koncových bodů webové služby?
+- **Lze do počítače nebo clusteru použít pro více koncových bodů webové služby?**
 
    Jistě. 100 x služby nebo koncových bodů můžete spustit ve stejném clusteru. 
 

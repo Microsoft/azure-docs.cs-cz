@@ -3,7 +3,7 @@ title: Konektor Trello v Azure Logic Apps | Microsoft Docs
 description: "Vytvoření aplikace logiky službou Azure App service. Trello poskytuje perspektivy nad všechny projekty, v práci a doma.  Jedná se o snadný, volné, flexibilní a visual způsob organizace čehokoliv a řízení projektů.  Připojení k Trello ke správě panely, seznamy a karty"
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: fedf0ffe11763dcfccadf78c0b258c8bce773376
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 6773ddd1da5c013b7a0ca7d2855806d606720469
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-trello-connector"></a>Začínáme s konektorem Trello
 Trello poskytuje perspektivy nad všechny projekty, v práci a doma.  Jedná se o snadný, volné, flexibilní a visual způsob organizace čehokoliv a řízení projektů.  Připojte k Trello ke správě panely, seznamy a karty.
@@ -31,7 +31,7 @@ Chcete-li vytvořit Logic apps s Trello, nejprve vytvořit **připojení**a zade
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
-| Token |Ano |Zadat přihlašovací údaje k Trellu |
+| Podpisový |Ano |Zadat přihlašovací údaje k Trellu |
 
 Po vytvoření připojení, můžete ke spouštění akcí a naslouchat aktivačních událostí.
 

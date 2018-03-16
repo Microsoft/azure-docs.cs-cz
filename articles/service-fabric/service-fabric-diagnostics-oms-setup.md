@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2017
 ms.author: dekapur
-ms.openlocfilehash: 288c7482058cd9f824b6001bb9ad36d1a5e0f8bf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 98ac32b011744ce388762322edd538b467f93494
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>Nastavení pro cluster s podporou Operations Management Suite Log Analytics
 
@@ -48,7 +48,7 @@ Pokud používáte systém Windows, pokračujte následujícími kroky pro přip
 >[!NOTE]
 >Povolení této funkce pro Linux clusterů ještě není k dispozici. 
 
-### <a name="add-the-oms-agent-to-your-cluster"></a>Přidat agenta OMS do clusteru 
+### <a name="connect-the-oms-workspace-to-your-cluster"></a>Pracovní prostor OMS připojit ke clusteru 
 
 1. V pracovním prostoru musí být připojen k diagnostiky dat pocházejících z clusteru. Přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy. Vyberte **ServiceFabric\<nameOfOMSWorkspace\>**  a přejděte na stránku s jeho Přehled. Odtud můžete změnit nastavení řešení, nastavení pracovního prostoru a přístup k portálu OMS.
 
@@ -219,7 +219,7 @@ Když jste hotovi, postupujte podle kroků v předchozím oddílu pro připojen�
 
 Můžete také přidat další řešení nebo provádět další úpravy vaším pracovním prostorem OMS pomocí prostředí PowerShell. Další informace najdete v tématu [Spravovat analýzy protokolů pomocí prostředí PowerShell](../log-analytics/log-analytics-powershell-workspace-configuration.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nasazení agenta OMS](service-fabric-diagnostics-oms-agent.md) na uzly shromáždit čítače výkonu a shromažďovat protokoly pro vaše kontejnery a statistiky docker
 * Získat familiarized s [vyhledávání a dotazování protokolu](../log-analytics/log-analytics-log-searches.md) funkcím poskytovaným jako součást analýzy protokolů
 * [Pomocí zobrazení návrhu můžete vytvořit vlastní zobrazení v analýzy protokolů](../log-analytics/log-analytics-view-designer.md)

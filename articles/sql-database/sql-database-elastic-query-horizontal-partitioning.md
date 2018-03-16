@@ -3,22 +3,18 @@ title: "Vytváření sestav napříč instancemi cloudu databáze | Microsoft Do
 description: "jak nastavit elastické dotazy přes vodorovné oddíly"
 services: sql-database
 documentationcenter: 
-manager: jhubbard
+manager: craigg
 author: MladjoA
-ms.assetid: f86eccb8-6323-4ba7-8559-8a7c039049f3
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: mlandzic
-ms.openlocfilehash: 41accea2e94fc763d0dcbba709829ec07453da78
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: ec47a10fcfcb3ef52810ba2b3da9599b65db375a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Vytváření sestav napříč instancemi cloudu databází (preview)
 ![Dotazování mezi horizontálních oddílů][1]
@@ -68,7 +64,7 @@ Syntaxe:
             SHARD_MAP_NAME = ‘<shardmapname>’ 
                    ) [;] 
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
     CREATE EXTERNAL DATA SOURCE MyExtSrc 
     WITH 
     ( 

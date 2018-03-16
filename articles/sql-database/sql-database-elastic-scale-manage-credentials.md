@@ -2,24 +2,18 @@
 title: "Správa přihlašovacích údajů v knihovně klienta elastické databáze | Microsoft Docs"
 description: "Jak nastavit správnou úroveň přihlašovací údaje správce jen pro čtení, pro elastické databáze aplikace"
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: 72e0edaf-795e-4856-84a5-6594f735fb7e
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: ddove
-ms.openlocfilehash: 0f266f3be8bf8c1699b3b19bea96c83d32f1bd69
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.author: sstein
+ms.openlocfilehash: 26d83779b218f8c936c020d63651861f45bafa2f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Pověření použitá pro přístup k klientské knihovny pro elastické databáze
 [Klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md) používá tři různé druhy přihlašovací údaje pro přístup [správce mapy horizontálního oddílu](sql-database-elastic-scale-shard-map-management.md). Podle potřeb s nejnižší úroveň přístupu je možné použijte přihlašovací údaje.
@@ -46,7 +40,7 @@ Proměnná **smmAdminConnectionString** je připojovací řetězec, který obsah
 
 Nepoužívejte hodnoty ve formátu "username@server" – místo toho použijte jen hodnotu "username".  Je to proto, že přihlašovací údaje musí pracovat v databázi manager mapy horizontálního oddílu i jednotlivé horizontálních oddílů, které mohou být na různých serverech.
 
-## <a name="access-credentials"></a>Přihlašovací údaje
+## <a name="access-credentials"></a>Přihlašovací údaje pro přístup
 Při vytváření horizontálního oddílu správce mapy v aplikaci, která není spravovat horizontálního oddílu mapy, použijte přihlašovací údaje, které mají oprávnění jen pro čtení na mapě globální horizontálního oddílu. Informace získané z globální horizontálních mapy pod tyto přihlašovací údaje se používá pro [závislé na data směrování](sql-database-elastic-scale-data-dependent-routing.md) a k naplnění mezipaměti mapování horizontálních na straně klienta. Přihlašovací údaje je zajišťována prostřednictvím stejného vzoru volání do **GetSqlShardMapManager**: 
 
 ```
@@ -71,7 +65,7 @@ V tomto příkladu **smmUserConnectionString** obsahuje připojovací řetězec 
 
 Jak se pomocí přihlašovacích údajů správce, nepoužívejte hodnoty ve formátu "username@server". Místo toho použijte "username".  Všimněte si také, že připojovací řetězec neobsahuje název serveru a název databáze. Důvodem je, že **OpenConnectionForKey** volání automaticky přesměruje připojení k správné horizontálního oddílu na základě klíče. Proto nejsou zadány název databáze a název serveru. 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 [Správa databází a přihlášení ve službě Azure SQL Database](sql-database-manage-logins.md)
 
 [Zabezpečení služby SQL Database](sql-database-security-overview.md)

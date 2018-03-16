@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de585e123555188055b6bd63ab0a6cc68313311f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: e21115915808899e8455dc6d4f1f4cf8a100f483
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>Nastavení GPU ovladače pro N-series virtuální počítače se systémem Windows Server
 Abyste mohli využívat možnosti GPU Azure N-series virtuální počítače se systémem Windows Server 2016 nebo Windows Server 2012 R2, nainstalujte podporované NVIDIA grafické ovladače. Tento článek obsahuje kroky instalace ovladačů po nasadit virtuální počítač s N-series. Informace o instalaci ovladačů je také k dispozici pro [virtuální počítače s Linuxem](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -53,7 +53,7 @@ K dotazování na stav zařízení GPU, spusťte [nvidia smi](https://developer.
 
 ## <a name="rdma-network-connectivity"></a>Připojení k síti RDMA
 
-Připojení k síti RDMA můžete povolit pro přístup RDMA povolený N-series virtuálních počítačů, jako je NC24r nasazené ve stejné sadě dostupnosti. Rozšíření HpcVmDrivers musí být přidaný do nainstalovat ovladače zařízení sítě systému Windows, které umožňují připojení RDMA. Chcete-li přidat rozšíření virtuálního počítače na virtuální počítač N-series podporou RDMA, použijte [prostředí Azure PowerShell](/powershell/azure/overview) rutiny pro Azure Resource Manager.
+Síťové připojení RDMA se dá nastavit na virtuálních počítačích podporující RDMA N-series, jako je NC24r nasazené ve stejné skupině dostupnosti nebo sadu škálování virtuálního počítače. Rozšíření HpcVmDrivers musí být přidaný do nainstalovat ovladače zařízení sítě systému Windows, které umožňují připojení RDMA. Chcete-li přidat rozšíření virtuálního počítače na virtuální počítač N-series podporou RDMA, použijte [prostředí Azure PowerShell](/powershell/azure/overview) rutiny pro Azure Resource Manager.
 
 Chcete-li nainstalovat nejnovější verze 1.1 HpcVMDrivers rozšíření na existující virtuální počítač podporuje RDMA s názvem Můjvp v oblasti západní USA:
   ```PowerShell
@@ -64,7 +64,7 @@ Chcete-li nainstalovat nejnovější verze 1.1 HpcVMDrivers rozšíření na exi
 Síť RDMA podporuje rozhraní MPI (Message Passing) provozu pro aplikace spuštěné s [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) nebo Intel MPI 5.x. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vývojářům tvorbu GPU accelerated aplikací pro grafickými procesory tesla – měrná NVIDIA můžete také stáhnout a nainstalovat [CUDA Toolkit 9.1](https://developer.nvidia.com/cuda-downloads). Další informace najdete v tématu [Průvodce instalací CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
 

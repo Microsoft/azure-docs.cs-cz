@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/12/2018
 ms.author: billmath
-ms.openlocfilehash: 6e81ea9f98733b1b7e0c9bf7466ac844a37b6046
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b383a081141d2fde90cfc574ec4b9ffb16940158
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -34,6 +34,7 @@ Tento článek vám pomůže najít informace o běžné problémy týkající s
 - Bezproblémové SSO nefunguje v privátním režimu procházení na Firefox.
 - Po zapnutí rozšířeného chráněný režim bezproblémové jednotného přihlašování k nefunguje v aplikaci Internet Explorer.
 - Bezproblémové SSO nefunguje v mobilních prohlížečích na iOS a Android.
+- Pokud uživatel je součástí příliš mnoho skupin ve službě Active Directory, lístek protokolu Kerberos uživatele budou pravděpodobně příliš velký pro zpracování, a to způsobí, že bezproblémové jednotného přihlašování k selhání. Požadavky služby Azure AD HTTPS může mít záhlaví s maximální velikost souboru 16 KB; Lístky protokolu Kerberos musí být mnohem menší než počet zohlednit další služby Azure AD artefaktů, jako jsou soubory cookie. Naše doporučení je snížit členství uživatele ve skupině a zkuste to znovu.
 - Pokud se synchronizace 30 nebo více doménových struktur služby Active Directory, nelze povolit bezproblémové jednotné přihlašování přes Azure AD Connect. Jako alternativní řešení můžete [ručně povolit](#manual-reset-of-azure-ad-seamless-sso) funkci na klientovi.
 - Přidat adresu URL služby Azure AD (https://autologon.microsoftazuread-sso.com) do zóny důvěryhodných serverů místo zóny místního intranetu *blokuje uživatelům v přihlašování*.
 - Zákaz použití **RC4_HMAC_MD5** typ šifrování pro protokol Kerberos v nastaveních služby Active Directory poruší bezproblémové jednotné přihlašování. V nástroji vaší Editor správy zásad skupiny zkontrolujte, zda hodnota zásady pro **RC4_HMAC_MD5** pod **konfigurace počítače -> Nastavení systému Windows -> Nastavení zabezpečení -> Místní zásady -> Možnosti zabezpečení - > "Zabezpečení sítě: Konfigurace povolená pro protokol Kerberos šifrování typu"** "Povolen".
@@ -75,7 +76,7 @@ Následující kontrolní seznam využít k řešení problémů bezproblémové
 
 - Ujistěte se, povolení funkce bezproblémové jednotné přihlašování v Azure AD Connect. Nelze-li povolit funkci (například z důvodu blokované port), ujistěte se, že budete mít vše [požadavky](active-directory-aadconnect-sso-quick-start.md#step-1-check-the-prerequisites) na místě.
 - Pokud jste povolili obě [Azure AD Join](../active-directory-azureadjoin-overview.md) a bezproblémové jednotného přihlašování na váš klient, ujistěte se, že problém není s Azure AD Join. Jednotné přihlašování z Azure AD Join má přednost před bezproblémové jednotné přihlašování, pokud zařízení není registrované s Azure AD i připojený k doméně. Pomocí jednotného přihlašování z Azure AD Join uživateli se zobrazí na dlaždici přihlášení, která říká "Připojení k Windows".
-- Zajistěte, aby byla adresa URL Azure AD (https://autologon.microsoftazuread-sso.com) součástí nastavení zóny intranetu uživatele.
+- Ujistěte se, že adresa URL služby Azure AD (https://autologon.microsoftazuread-sso.com) je součástí nastavení zóny intranetu uživatele.
 - Ujistěte se, že o firemní zařízení je připojený k doméně služby Active Directory.
 - Ujistěte se, že je uživatel přihlášen do zařízení přes účet domény služby Active Directory.
 - Ujistěte se, že účet uživatele z doménové struktury služby Active Directory, kde byl bezproblémové jednotného přihlašování k nastavení.

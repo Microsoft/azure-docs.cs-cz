@@ -8,7 +8,7 @@
 | Servery SQL Database na předplatné |6 |150 |
 | Servery DNS na předplatné |9 |100 |
 | Vyhrazené IP adresy na předplatné |20 |100 |
-| Hostovaná služba certifikáty na předplatné |400 |400 |
+| Hostovaná služba certifikáty na předplatné |199 |199 |
 | [Skupiny vztahů](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na předplatné |256 |256 |
 
 

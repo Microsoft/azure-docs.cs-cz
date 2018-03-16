@@ -3,8 +3,8 @@ title: "Technické požadavky pro vytvoření bitové kopie virtuálního počí
 description: "Pochopili požadavky na vytvoření a nasazení bitové kopie virtuálního počítače v Azure Marketplace pro ostatní k nákupu."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 63c16966-0304-4b17-a715-368a0a5ccb2c
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: af3e2ad623d8d7bfafe676411f9ae3fbee78aab8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: cf1f061c28dd0c106823d34ad39aac5e577c8b41
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Technické požadavky pro vytvoření bitové kopie virtuálního počítače pro Azure Marketplace
 Přečtěte si důkladně před zahájením procesu a pochopit, kde a proč se provádí každý krok. Co nejvíce, měli byste Příprava informací o společnosti a další data, stáhněte potřebné nástroje, a vytvořit technické součásti před zahájením procesu vytvoření nabídky. Tyto položky musí být vymazat z kontrola v tomto článku.  
@@ -29,7 +29,7 @@ Musí mít připravené před zahájením procesu následující položky:
 * V závislosti na tom, jaký operační systém cílení, nainstalujte [rutin prostředí Azure PowerShell](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids) nebo [Linux rozhraní příkazového řádku nástroje](https://go.microsoft.com/fwlink/?LinkId=253472&clcid=0x409) z [Azure stáhne](https://azure.microsoft.com/downloads/) stránky.
 * Nainstalujte Azure Storage Explorer na webu CodePlex.
 * Stáhněte a nainstalujte nástroj pro testování certifikační pro certifikaci Azure:
-  * [http://go.microsoft.com/fwlink/?LinkId=526913](http://go.microsoft.com/fwlink/?LinkID=526913). Je nutné počítače se systémem Windows spusťte nástroj certifikace. Pokud jste počítači se systémem Windows k dispozici, můžete spustit nástroj pomocí systému Windows virtuálního počítače v Azure.
+  * [http://go.microsoft.com/fwlink/?LinkID=526913](http://go.microsoft.com/fwlink/?LinkID=526913). Je nutné počítače se systémem Windows spusťte nástroj certifikace. Pokud jste počítači se systémem Windows k dispozici, můžete spustit nástroj pomocí systému Windows virtuálního počítače v Azure.
 
 ## <a name="platforms-supported"></a>Podporované platformy
 Můžete vyvíjet založené na Azure virtuální počítače v systému Windows nebo Linux. Některé prvky proces publikování – například vytváření služby Azure kompatibilní virtuální pevný disk (VHD) – pomocí různých nástrojů a kroky v závislosti na tom, jaký operační systém, kterou používáte:  

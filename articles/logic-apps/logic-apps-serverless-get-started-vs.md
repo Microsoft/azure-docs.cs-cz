@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 3672beda8a502e5fe2c8182076a8edef7ee9ebf6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3cd509a0073e45bf910e9a74a279d678ff03b63
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="build-a-serverless-app-in-visual-studio-with-logic-apps-and-functions"></a>Sestavení bez serveru aplikace v sadě Visual Studio s Logic Apps a funkce
 
@@ -83,10 +83,10 @@ Všechny funkce Azure, které jsou obsaženy v řešení pro úložiště git, z
 
 Pokud pomocí jazyka JavaScript, Python, F #, Bash, Batch nebo prostředí PowerShell, postupujte podle kroků [kroky v rozhraní příkazového řádku funkce](../azure-functions/functions-run-local.md) k vytvoření projektu.  Pokud vývoj funkce v jazyce C#, můžete použít [knihovny tříd jazyka C#](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/) v aktuálním řešení pro funkci Azure.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Naučte se vytvářet bez serveru sociálních řídicí panel](logic-apps-scenario-social-serverless.md)
-* [Správa aplikace logiky z cloudu Průzkumníka Visual Studio](logic-apps-manage-from-vs.md)
+* [Správa aplikace logiky z cloudu Průzkumníka Visual Studio](manage-logic-apps-with-visual-studio.md)
 * [Jazyk definic workflowů funkce Logic aplikace](logic-apps-workflow-definition-language.md)
 
 <!-- Image references -->

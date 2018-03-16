@@ -14,11 +14,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: d02d6e942dfc503dd87a8ebcb6e2ddcf6b6065c5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7faa34b5528c53c06aeda25be17cbc5f3db2acdf
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Průvodce AppSource vydavatele a Azure Marketplace
 
@@ -51,7 +51,7 @@ Využijte možnosti marketplace pro růst společnosti:
 
 ## <a name="what-are-azure-marketplace-and-appsource"></a>Co jsou Azure Marketplace a AppSource?
 
-Společnost Microsoft poskytuje dvě obchodní poutače odlišné marketplace, umožňujících partnery seznamu nabídky, povolte zkušební verze a transact přímo s zákazníků společnosti Microsoft a ekosystém: – Azure Marketplace (https://azuremarketplace.microsoft.com) a ([AppSource] https://appsource.microsoft.com). Tyto obchodní poutače povolit zákazníkům najít, zkuste a zakoupit aplikace a služby, které urychlit jejich digitální transformace a pomůže vydavatelů rozvoji svého podnikání zvýšením přístup k zákazníků a ekosystém partnerů společnosti Microsoft.
+Společnost Microsoft poskytuje dvě obchodní poutače odlišné marketplace, umožňujících partnery seznamu nabídky, povolte zkušební verze a transact přímo s zákazníků společnosti Microsoft a ekosystém: [Azure Marketplace] (https://azuremarketplace.microsoft.com) a [AppSource] (https://appsource.microsoft.com). Tyto obchodní poutače povolit zákazníkům najít, zkuste a zakoupit aplikace a služby, které urychlit jejich digitální transformace a pomůže vydavatelů rozvoji svého podnikání zvýšením přístup k zákazníků a ekosystém partnerů společnosti Microsoft.
  
 Obchodní poutače marketplace je zarovnán cílové skupiny a cloudu produkty společnosti Microsoft, které pomáhají uživatelům najít požadované. Každý výkladní skříň nabízí specializované možnosti publikování, můžete maximalizovat publikování investic shrnuté v následující tabulce:
 
@@ -112,7 +112,7 @@ Tato část vás provede možnosti dostupné pro vás v obou obchodní poutače.
 
 |**Možnost publikování**  | **Typ nabídky** | **Výkladní skříň**  |
 |---------|---------|---------|
-|seznam    |    Obraťte se na mě konzultace ohledně služby     |  Azure Marketplace, AppSource       |
+|**seznam**    |    Obraťte se na mě konzultace ohledně služby     |  Azure Marketplace, AppSource       |
 |**Zkušební verze**   |     Uvolněte zkušební verze, zkušební verze SaaS, interaktivní ukázku, Test jednotky    |  Azure Marketplace, AppSource       |
 |**Příkaz Transact**     |   Virtuální počítač, šablona řešení spravované aplikace      |    Azure Marketplace     |
 
@@ -172,7 +172,7 @@ Použijte **šablona řešení Azure** při řešení vyžaduje další automati
 Použijte **spravované aplikace Azure** při nasazení virtuálního počítače nebo celé řešení založené na IaaS předplatné zákazníka při vydavatele nebo zákazníka, které řešení pro správu pomocí 3. stran, například na serveru nebo MSP. Další informace o [vytváření aplikace spravované podle zde](https://docs.microsoft.com/azure/managed-applications/overview). Seznam častých dotazů najdete v tématu [Azure Marketplace – nejčastější dotazy](https://azure.microsoft.com/marketplace/faq/).
 
 >[!NOTE]
-> Spravované aplikace musí být nasadit přes marketplace. Pokud vám záleží hlavně webovými servery zákazníka, Všimněte si, že budou moci oslovení zákazníkům také zajímat, pokud máte realizace povolili sdílení.
+> Spravované aplikace musí být nasadit přes marketplace. Pokud vám záleží hlavně komunikaci zákazníků, Všimněte si, že budou moci oslovení zákazníkům také zajímat, pokud máte realizace povolili sdílení.
 
 ### <a name="azure-certified"></a>Azure Certified
 
@@ -210,11 +210,11 @@ Naopak pokud povolíte Bring Your Own License jako možnost:
 |Vaše náklady na licence     | Licence poplatek vyjednal a účtují podle vydavatele        |
 |---------|---------|
 |Náklady na používání Azure (D1 nebo 1jader)    | 0.14 za hodinu         |
-|**Společnost Microsoft se fakturuje zákazníka**     | 0.14 za hodinu        |
+|**Společnost Microsoft se fakturuje zákazníka**     | **0.14 za hodinu**        |
 
 V tomto scénáři bills Microsoft 0.14 za hodinu pro použití publikované bitovou kopii virtuálního počítače. 
 
-|**Účty Microsoft**    |   0.14 za hodinu      |
+|**Účty Microsoft**    |   **0.14 za hodinu**      |
 |---------|---------|
 |Microsoft udržuje náklady na používání Azure     |    0.14 za hodinu     |
 |Microsoft udržuje 0 % vaše náklady na licence     |  0,00 Kč za hodinu       |
@@ -240,7 +240,7 @@ Každý zákazník se smlouvou Enterprise může přidat Azure do své smlouvy p
 |---------|---------|---------|
 |**Zásady zapojení**    | Zkontrolujte Azure Marketplace zapojení zásady [sem] (https://azure.microsoft.com/support/legal/marketplace/participation-policies/).       | Seznam, zkušební verze, Transact        |
 |**Integrace s Microsoft**    | Azure Marketplace nabízí by měl využít nebo rozšíření služby Microsoft Azure, jako jsou výpočty, sítě nebo úložiště a zarovnat do existující kategorie Azure Marketplace například databáze, zabezpečení, sítě, atd. Úplný seznam [zde](https://azuremarketplace.microsoft.com/marketplace/apps).        | Seznam, zkušební verze, Transact        |
-|Cílová skupina    | Azure Marketplace nabízí musí být pro IT profesionály, vývojáři cloudu nebo jiné role technické zákazníka.       |  Seznam, zkušební verze, Transact 
+|**Cílová skupina**    | Azure Marketplace nabízí musí být pro IT profesionály, vývojáři cloudu nebo jiné role technické zákazníka.       |  Seznam, zkušební verze, Transact 
 |**Vést správy**    | Přijímat zájemců z Marketplace, je nutné povolit aplikaci CRM (Marketo, Microsoft Dynamics nebo Salesforce) tak, aby přijímal realizace data.        |   Seznam, zkušební verze, Transact      |
 |**Zásady ochrany osobních údajů a podmínky použití**     |   Musí být dostupný přes veřejnou adresu URL vaší zásady ochrany osobních údajů a podmínky použití je nutné zadat jako text během publikování.      |   Seznam, zkušební verze, Transact      |
 |**Podpora**     |  Vaši nabídku musí obsahovat adresu URL veřejně dostupné podpory, kde pomoc zákazníkům. Zkušební verze musí být zadána v bez dalších nákladů podpory pro zkušební období.       |  Zkušební verze, Transact       |
@@ -260,20 +260,20 @@ Každý zákazník se smlouvou Enterprise může přidat Azure do své smlouvy p
 |**Požadavek**  |**Podrobnosti** |**Možnost publikování**  |
 |---------|---------|---------|
 |**Fakturace a měření**    |  Virtuální počítač musí podporovat buď model použití vlastní licence nebo na základě využití, měsíční fakturace.       |    Příkaz Transact    |
-|**Azure kompatibilní virtuální pevný disk (VHD)**     |   Virtuální počítače musí být založený na [Windows] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) nebo [Linux] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)    |   Příkaz Transact      |
+|**Azure kompatibilní virtuální pevný disk (VHD)**     |   Virtuální počítače musí být založený na [Windows] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) nebo ([Linux]https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)    |   Příkaz Transact      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Konkrétní požadavky na konzultace ohledně publikování služby
 
 
-|Požadavky |**Podrobnosti**  |**Možnost publikování**  |
+|**Požadavky** |**Podrobnosti**  |**Možnost publikování**  |
 |---------|---------|---------|
 |**Vlastnosti nabídky služeb**     | Konzultace ohledně služby musí být doručené jako pevné oboru, pevné doby trvání, pevné ceny (nebo volné) zapojení, především předprodejní zaměřené na konkrétní, omezené na jednoho zákazníka a prováděné na místě        |    Seznam     |
-|**Požadavky na partnera pro konzultační služby**    |   **Pouze AppSource.**  Dynamics 365 pro zákaznické Engagement [stříbrným nebo Gold cloudu zákazníka relace správy Competency](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency). Dynamics 365 pro finanční a operace Enterprise edition: Silver nebo [Enterprise prostředek plánování] (https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) Gold competency a minimální výnosy od $25K v cloudu Operace v koncové dobu 12 měsíců. Dynamics 365 Finance a operace, Business edition: sloužit jako [poskytovatele cloudové služby (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) nebo [digitální partnera z záznamu (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) pro alespoň jednoho odběratele. Power BI: Splňují kritéria [partnerských řešení] (20Incentives.pdf file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20 & %). PowerApps: K dispozici řešení – partnera představením (https://powerapps.microsoft.com/en-us/partner-showcase/) |    Seznam     |
+|**Požadavky na partnera pro konzultační služby**    |   **Pouze AppSource.**  Dynamics 365 pro zákaznické Engagement [stříbrným nebo Gold cloudu zákazníka relace správy Competency](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency). Dynamics 365 pro finanční a operace Enterprise edition: Silver nebo zlatý [plánování podnikových zdrojů] (https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) competency a minimální výnosy od $25 K v operace cloudu v koncové dobu 12 měsíců. Dynamics 365 Finance a operace, Business edition: sloužit jako [poskytovatele cloudové služby (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) nebo [digitální partnera z záznamu (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) pro alespoň jednoho odběratele. Power BI: Splňují kritéria [partnerských řešení] (20Incentives.pdf file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20 & %). PowerApps: Mít [partnera představením] (https://powerapps.microsoft.com/en-us/partner-showcase/) řešení |    Seznam     |
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Pomocí služby Azure Active Directory povolit zkušební verze
 Azure Active Directory (AAD) je Cloudová služba identity, která umožňuje ověřování s Microsoft pracovního nebo školního účtu pomocí standardních oborových protokolech: OAuth a OpenID Connect. Další informace o AAD [zde](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features). 
 
-Microsoft ověří všechny Marketplace uživatele v AAD, proto pokud ověřený uživatel klikne na tlačítko prostřednictvím vaše zkušební verze výpis v Marketplace a je znovu nasměruje na prostředí zkušební verze bez nutnosti můžete zřídit uživatele přímo do bezplatnou zkušební verzí Krok další přihlášení. [Token, který vaše aplikace obdrží z AAD během ověřování] (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens) zahrnuje cenné uživatelské informace, které můžete použít k vytvoření uživatelský účet v aplikaci, umožňuje automatizovat zřizování prostředí a zvýšit pravděpodobnost převod. 
+Microsoft ověří všechny Marketplace uživatele v AAD, proto pokud ověřený uživatel klikne na tlačítko prostřednictvím vaše zkušební verze výpis v Marketplace a je znovu nasměruje na prostředí zkušební verze bez nutnosti můžete zřídit uživatele přímo do bezplatnou zkušební verzí Krok další přihlášení. [Token, který vaše aplikace obdrží z AAD během ověřování] (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens) zahrnuje cenné uživatelské informace, které můžete použít k vytvoření uživatelského účtu v aplikaci, umožňuje automatizovat zřizování prostředí a zvýšit pravděpodobnost převod. 
 
 Pomocí AAD povolení 1 kliknutím ověřování do aplikace nebo zkušební verze:
 
@@ -303,7 +303,7 @@ Pro jednoho klienta aplikace:
 
 Pro jednoho klienta aplikace několika způsoby:
 
-- Přidání uživatelů do vašeho adresáře jako uživatele typu Host pomocí [Azure B2B] (https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+- Přidání uživatelů do vašeho adresáře jako pomocí [Azure B2B] (uživatele typu Hosthttps://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
 - Ručně zřídit zkušební verze pro zákazníky prostřednictvím, obraťte se na mě.
 - Vývoj každého zákazníka, Test jednotky.
 - Vytvoření ukázkové víceklientské ukázkovou aplikaci pomocí jednotného přihlašování
@@ -392,7 +392,7 @@ Před zahájením procesu publikování, je vhodné se seznámit s součásti po
 
 |Budete potřebovat publikování artefaktů  |Pro tento typ nabídky  |
 |---------|---------|
-|Číslo verze     |    Příkaz Transact ' aplikace Azure (šablony řešení a spravované aplikace)     |
+|**Číslo verze**     |    Příkaz Transact ' aplikace Azure (šablony řešení a spravované aplikace)     |
 |**Soubor balíčku, která obsahuje všechny soubory šablony a createUIDefinitionFile**   |Příkaz Transact ' aplikace Azure (šablony řešení a spravované aplikace)         |
 |**Podrobnosti operačního systému**    |   Příkaz Transact se virtuální počítače      |
 |**Porty a protokoly v použití**    |  Příkaz Transact se virtuální počítače       |
@@ -510,7 +510,7 @@ Při vytváření účtu společnosti, postupujte podle následujících pokynů
 - Přidejte telefonní číslo společnosti, který nevyžaduje rozšíření a je přístupný pro členy týmu klíče.
 - Obecně platí mají vývojáři použít důvěryhodné zařízení k přihlášení k účtu vývojáře vaší společnosti. Všichni členové týmu klíče mají mít přístup k těchto důvěryhodných zařízení. Tím se sníží potřebu zabezpečovací kódy při přístupu k účtu odeslat.
 - Pokud potřebujete povolit přístup k účtu z počítače se nedůvěryhodné, omezte této přístup k maximálně pět vývojáři. V ideálním případě tyto vývojáři měli přístup k účtu z počítače, které sdílejí stejné zeměpisné a síťové umístění.
-- Často zkontrolovat bezpečnostní údaje vaší společnosti na [https://account.live.com/proofs/Manage](https://account.live.com/proofs/Manage) k zkontrolujte, zda je všechny aktuální.
+- Často zkontrolovat bezpečnostní údaje vaší společnosti na [ https://account.live.com/proofs/Manage ](https://account.live.com/proofs/Manage) k zkontrolujte, zda je všechny aktuální.
 
 Vývojářského účtu by měly být dostupné především z důvěryhodných počítačů. To je zásadní, protože existuje omezení počtu kódů generovaných každý účet za týden. Umožňuje také bezproblémové přihlašování uživatelů.
 Další informace o zabezpečení a další vývojáře účet pokyny, klikněte na tlačítko [zde](https://docs.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account).
@@ -521,7 +521,7 @@ Podnikový účet může být federované pomocí [Azure Active Directory](https
 
 Doporučujeme vytvořit novou e-mailovou adresu v  **@outlook.com**  domény. Postupujte následovně:
 
-1. Přejděte na [https://signup.live.com/signup](https://signup.live.com/signup) a vyberte **získat novou e-mailovou adresu**
+1. Přejděte na [ https://signup.live.com/signup ](https://signup.live.com/signup) a vyberte **získat novou e-mailovou adresu**
 
 
 2. Vytvořte novou e-mailovou adresu a zadejte heslo. Tím se vytvoří nové ID společnosti Microsoft a e-mailové schránky v rámci služby outlook.com. Proces registrace pokračujte, dokud je účet vytvořený.
@@ -538,7 +538,7 @@ Po dokončení tento poslední krok, budete mít všechny e-mailů a komunikaci 
 ### <a name="instructions-on-how-to-register-in-the-development-center"></a>Pokyny k registraci v Centru pro vývoj
 
 1. Otevřete na nové Internet Explorer InPrivate nebo Incognito Chrome procházení relace a ujistěte se, že nejste přihlášení do osobního účtu.
-2. Přejděte na [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) sami zaregistrovat jako prodejce na webu Dev Center. Než budete pokračovat, přečtěte si následující důležité upozornění.
+2. Přejděte na [ http://dev.windows.com/registration?accountprogram=azure ](http://dev.windows.com/registration?accountprogram=azure) sami zaregistrovat jako prodejce na webu Dev Center. Než budete pokračovat, přečtěte si následující důležité upozornění.
 
    ![Centrum vývojářů pro e-mailu](./media/marketplace-publishers-guide/registerdevcenteremail.png)
 
@@ -548,7 +548,7 @@ Po dokončení tento poslední krok, budete mít všechny e-mailů a komunikaci 
    ![Informace o účtu](./media/marketplace-publishers-guide/devcenterregistrationaccountinfo.png)
    
    >[!WARNING]
-   >"Zákazník – od" zemích: prodávat vaší služby v Azure Marketplace, musí být z jednoho z schválené 'prodává z, zemí výše vaší registrované entity. Toto omezení je výběr a zdanění z důvodů. Další informace najdete v tématu [zásady zapojení Marketplace] https://azure.microsoft.com/support/legal/marketplace/participation-policies/.
+   >"Zákazník – od" zemích: prodávat vaší služby v Azure Marketplace, musí být z jednoho z schválené 'prodává z, zemí výše vaší registrované entity. Toto omezení je výběr a zdanění z důvodů. Další informace najdete v tématu [zapojení zásady Marketplace]https://azure.microsoft.com/support/legal/marketplace/participation-policies/.
 
 5. Vyberte typ účtu"" jako **společnosti** a klikněte **Další** tlačítko.
 
@@ -614,7 +614,7 @@ Pokud chcete publikovat obchodní nabídky k nákupu, musíte taky přidat výb�
 
 Pokud máte problémy s registrací středisku pro vývojáře, prosím protokolu lístek podpory jak je uvedeno níže:
 
-1. Přejděte na https://developer.microsoft.com/windows/support odkaz podpory
+1. Přejděte na odkaz na podporu https://developer.microsoft.com/windows/support
 2. V části **kontaktujte nás** části, klikněte na tlačítko **odeslání incidentu** jak je znázorněno v následující kopie obrazovky.
 3. Vyberte "Help s Dev Center" jako **typ problému** a "publikování a Správa aplikací" jako **kategorie**. Potom klikněte na tlačítko "Start e-mailu."
 

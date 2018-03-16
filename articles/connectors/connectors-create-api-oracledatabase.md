@@ -3,7 +3,7 @@ title: "Přidejte konektor databáze Oracle do Azure Logic Apps | Microsoft Docs
 description: "Použití konektoru databáze Oracle v aplikaci logiky"
 services: 
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
-ms.author: mandia; ladocs
-ms.openlocfilehash: 4119e72abd568c9b53245a872691f06329b040de
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 57931b6c2f96debeb9ab7f1a3b6700f23e7d2a7e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Začínáme s konektorem databáze Oracle
 
@@ -28,7 +28,7 @@ Pomocí konektoru databáze Oracle, vytvoření organizační pracovní postupy,
 * Vytvořte pracovní postup přidáním nového zákazníka k databázi zákazníků nebo aktualizaci pořadí, v databázi objednávky.
 * Pomocí akcí pro získání řádku dat, vložit nový řádek a i odstranění. Například v aplikaci Dynamics CRM Online (aktivační událost) je vytvořen záznam, pak vložte řádek v databázi Oracle (akce). 
 
-Toto téma ukazuje, jak používat konektor databáze Oracle v aplikaci logiky.
+Tento článek ukazuje, jak používat konektor databáze Oracle v aplikaci logiky.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,7 +46,7 @@ Toto téma ukazuje, jak používat konektor databáze Oracle v aplikaci logiky.
   [64-bit ODAC 12c verze 4 (12.1.0.2.4) pro Windows x64](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
-    > Pokud není nainstalován Klient Oracle, dojde k chybě při pokusu o vytvoření nebo použití připojení. Najdete běžné chyby v tomto tématu.
+    > Pokud není nainstalován Klient Oracle, dojde k chybě při pokusu o vytvoření nebo použití připojení. Najdete běžné chyby v tomto článku.
 
 
 ## <a name="add-the-connector"></a>Přidejte konektor
@@ -104,7 +104,7 @@ Toto téma ukazuje, jak používat konektor databáze Oracle v aplikaci logiky.
 
 **Zmírnění dopadů**: Zkontrolujte, že vaše brána je spuštěný na místním počítači, kde jste ho nainstalovali, a který se může připojit k Internetu.  Doporučujeme není bránu nainstalovat na počítač, který může být vypnutý nebo v režimu spánku. Můžete také restartovat službu brány dat místní (PBIEgwService).
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-please-visit-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Chyba**: použitý zprostředkovatel je zastaralý: ' System.Data.OracleClient vyžaduje Oracle verze klientského softwaru 8.1.7 nebo vyšší. ". Navštivte [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) a nainstalujte si oficiálního zprostředkovatele.
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Chyba**: použitý zprostředkovatel je zastaralý: ' System.Data.OracleClient vyžaduje Oracle verze klientského softwaru 8.1.7 nebo vyšší. ". V tématu [ https://go.microsoft.com/fwlink/p/?LinkID=272376 ](https://go.microsoft.com/fwlink/p/?LinkID=272376) a nainstalujte si oficiálního zprostředkovatele.
 
 **Příčina**: Sada SDK není nainstalovaná na počítači, kde je spuštěna místní brána dat klienta Oracle.  
 
@@ -130,8 +130,8 @@ Zobrazit všechny aktivační události a akce definované v swagger a také zob
 
 [Fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) je skvělým místem klást otázky, odpovědi na otázky a zjistit, co dělají jiní uživatelé Logic Apps. 
 
-Vám může pomoct zlepšit konektory a aplikace logiky hlasování a odesílání vašich nápadů v [http://aka.ms/logicapps-wish](http://aka.ms/logicapps-wish). 
+Vám může pomoct zlepšit konektory a aplikace logiky hlasování a odesílání vašich nápadů v [ http://aka.ms/logicapps-wish ](http://aka.ms/logicapps-wish). 
 
 
 ## <a name="next-steps"></a>Další postup
-[Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)a seznamte se s dostupných konektorů v logiku aplikace na náš [rozhraní API seznamu](apis-list.md).
+[Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)a seznamte se s dostupných konektorů v Logic Apps v [rozhraní API seznamu](apis-list.md).

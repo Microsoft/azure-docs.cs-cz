@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/06/2018
+ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e2314f589456f604c8c008e10fb8084e0524575d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4201395085dd72eb92b774eaed5980737b2e5de0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Nasazení Azure Machine Learning jako modul IoT Edge – náhled
 
@@ -41,12 +41,16 @@ V této části se stáhnout soubory trained model a převést je na kontejner A
 
 Na počítači spuštění modulu správy pro Azure ML, stáhněte a uložte [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) a [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) ze sady IoT Azure ML na Githubu. Tyto soubory definovat vyškolení strojového učení model, který nasadíte do zařízení Iot okraj. 
 
-Použijte pro cvičný model vytvořit kontejner, který se dá nasadit na IoT hraniční zařízení.
+Použijte pro cvičný model vytvořit kontejner, který se dá nasadit na IoT hraniční zařízení. Pomocí následujícího příkazu:
+
+   * Zaregistrujte modelu.
+   * Vytvořte manafest.
+   * Vytvořit kontejner Docker image s názvem *machinelearningmodule*.
+   * Nasazení bitové kopie do clusteru Azure Container Service (AKS).
 
 ```cmd
 az ml service create realtime --model-file model.pkl -f iot_score.py -n machinelearningmodule -r python
 ```
-Název služby *machinelearningmodule* v tomto příkladu se změní na název obrázku kontejner docker.
 
 ### <a name="view-the-container-repository"></a>Zobrazení kontejneru úložiště
 

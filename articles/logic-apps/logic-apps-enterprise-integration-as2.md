@@ -3,7 +3,7 @@ title: "AS2 zpráv B2B enterprise integrace - Azure Logic Apps | Microsoft Docs"
 description: "Výměna AS2 zpráv B2B enterprise integraci s Azure Logic Apps"
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: divyaswarnkar
 manager: anneta
 editor: 
 ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
-ms.author: LADocs; mandia
-ms.openlocfilehash: 8c6dbc507cd1b79fe9424071bc3eb8bf24331a16
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.author: LADocs; divswa
+ms.openlocfilehash: acc66f2cc88734b5c15fb9f4ace8339908418463
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Výměna zpráv AS2 pro podnikové integrace s logic apps
 

@@ -3,7 +3,7 @@ title: "Přidejte konektor Office 365 uživatelé v Logic Apps | Microsoft Docs"
 description: "Přehled konektoru uživatelé služeb Office 365 s parametry rozhraní REST API"
 services: 
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 2e7827e32a03b6f6af46f5bc65f0ed74f3065f86
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 3d281bcb8e1d0ba4d1eb0b636bdd618340399898
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-office-365-users-connector"></a>Začínáme s konektorem uživatelé Office 365.
 Připojte k Office 365 uživatelům profily, uživatelé vyhledávající a další. Uživatelé služeb Office 365 můžete:
@@ -36,7 +36,7 @@ Když přidáte tento konektor aplikace logiky, musíte přihlásit ke svému ú
 > 
 > 
 
-Po vytvoření připojení, zadáte vlastnosti uživatelé služeb Office 365, jako je ID uživatele. **Odkazu k REST API** v tomto tématu popisuje tyto vlastnosti.
+Po vytvoření připojení, zadáte vlastnosti uživatelé služeb Office 365, jako je ID uživatele. **Odkazu k REST API** v tomto článku popisuje tyto vlastnosti.
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 

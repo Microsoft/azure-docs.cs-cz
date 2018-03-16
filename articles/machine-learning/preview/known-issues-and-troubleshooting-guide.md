@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: d1e3a4fd4415afb995f614ac687096f6fb8ece95
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 62207fa20c4660d1e828053ee73953cb68af1b9d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench – známé problémy a Průvodce odstraňováním potíží s 
 Tento článek vám pomůže najít a opravy chyb nebo selhání došlo jako součást pomocí aplikace Azure Machine Learning Workbench. 
@@ -23,7 +23,7 @@ Tento článek vám pomůže najít a opravy chyb nebo selhání došlo jako sou
 Při komunikaci s tým podpory, je důležité zahrnout číslo sestavení aplikace Workbench. V systému Windows, můžete zjistit číslo sestavení kliknutím na **pomoci** nabídky a zvolte **o Azure ML Workbench**. V systému macOS, můžete kliknutím na **Azure ML Workbench** nabídky a zvolte **o Azure ML Workbench**.
 
 ## <a name="machine-learning-msdn-forum"></a>Strojového učení fórum MSDN
-Máme fóru MSDN, že můžete účtovat otázky. Produktový tým aktivně sleduje na fóru. Fórum je adresa URL [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum). 
+Máme fóru MSDN, že můžete účtovat otázky. Produktový tým aktivně sleduje na fóru. Fórum je adresa URL [ https://aka.ms/azureml-forum ](https://aka.ms/azureml-forum). 
 
 ## <a name="gather-diagnostics-information"></a>Shromážděte diagnostické informace
 V některých případech může být užitečné, pokud zajistíte diagnostické informace, žádostí o pomoc. Tady je bydlišti soubory protokolů:
@@ -99,10 +99,10 @@ Možná jste již nainstalovali aktualizace. Ale vaše připnuté zástupce stá
 
 ### <a name="you-installed-workbench-using-the-install-azure-ml-workbench-link-on-a-windows-dsvm"></a>Jste nainstalovali pomocí odkazu "instalace Azure ML Workbench" v systému Windows DSVM Workbench
 Bohužel neexistuje žádný snadný opravy na tomto. Je nutné provést následující kroky k odebrání nainstalovaná služba bits a stáhnout nejnovější verzi instalačního programu nástroje Workbench čerstvou – instalace: 
-   - Odeberte tuto složku`C:\Users\<Username>\AppData\Local\amlworkbench`
-   - odebrat skriptu`C:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
+   - Odeberte tuto složku `C:\Users\<Username>\AppData\Local\amlworkbench`
+   - odebrat skriptu `C:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
    - odebrat zástupce na ploše, který spouští skript výše
-   - stáhnout instalační program https://aka.ms/azureml-wb-msi a znovu nainstalujte.
+   - stáhnout instalační program https://aka.ms/azureml-wb-msi a znovu nainstalovat.
 
 ## <a name="stuck-at-checking-experimentation-account-screen-after-logging-in"></a>Zablokované ve "Kontrola experimentování účet" obrazovky po přihlášení
 Po přihlášení může získat na prázdnou obrazovku zprávou zobrazující "Kontroluje experimentování účet" s roztočený kolem zablokované aplikace Workbench. Chcete-li vyřešit tento problém, proveďte následující kroky:
@@ -203,11 +203,14 @@ Můžete také přidat datový disk a nakonfigurovat modul Docker použít datov
 Případně můžete rozšířit disk operačního systému a nemáte přístup ke konfiguraci modulu Docker. Tady je [jak můžete rozšířit disk operačního systému](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks).
 
 ```azure-cli
-#Deallocate VM (stopping will not work)
+# Deallocate VM (stopping will not work)
 $ az vm deallocate --resource-group myResourceGroup  --name myVM
 
-# Update Disc Size
-$ az disk update --resource-group myResourceGroup --name myVM --size-gb 250
+# Get VM's Disc Name
+az disk list --resource-group myResourceGroup --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
+
+# Update Disc Size using above name
+$ az disk update --resource-group myResourceGroup --name myVMdisc --size-gb 250
     
 # Start VM    
 $ az vm start --resource-group myResourceGroup  --name myVM
@@ -228,12 +231,12 @@ Také se můžete vyhnout sdílení problém, na malé výkonu náklady, nastave
 ## <a name="wipe-clean-workbench-installation"></a>Vymazání čistou instalaci Workbench
 Obecně nemusíte to udělat. Ale v případě, že je zapotřebí vymazat čisté instalace, tady jsou kroky:
 
-- V systému Windows:
+- On Windows:
   - Nejdříve se ujistěte, používáte _přidat nebo odebrat programy_ aplet v _ovládací panely_ odebrat _Azure Machine Learning Workbench_ aplikaci.  
   - Potom můžete stáhnout a spustit některý z následujících skriptů:
     - [Skript příkazového řádku Windows](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.cmd).
     - [Skript prostředí Windows PowerShell](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1). (Možná budete muset spustit `Set-ExecutionPolicy Unrestricted` v okně prostředí PowerShell oprávněními zvýšenými na úroveň oprávnění před spuštěním skriptu.)
-- V systému macOS:
+- On macOS:
   - Právě stažení a spuštění [skript prostředí bash systému macOS](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_mac.sh).
 
 

@@ -3,24 +3,19 @@ title: "Prostředí PowerShell pro službu DNS alias Azure SQL | Microsoft Docs"
 description: "Rutiny prostředí PowerShell, jako je například nový AzureRMSqlServerDNSAlias umožňují přesměrování nová připojení klienta k jinému serveru Azure SQL Database, aniž by museli touch žádnou konfiguraci klienta."
 keywords: "databáze sql služby DNS"
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: 
 ms.service: sql-database
-ms.custom: 
-ms.workload: 
-ms.tgt_pltfrm: 
 ms.devlang: PowerShell
 ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi;amagarwa;maboja
 ms.author: dmalik
-ms.openlocfilehash: ec638d7b48b443cda5755e3077c6304b0c5ad78e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2aae669364c3de2e9b00ffe8e28b1521d3a781e8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Prostředí PowerShell pro Alias DNS do Azure SQL Database
 
@@ -50,7 +45,7 @@ Připojit určitý server Azure SQL Database, můžete klienta jako je napříkl
 
 Pokud chcete spustit ukázkový skript prostředí PowerShell uvedených v tomto článku, platí následující požadavky:
 
-- Předplatné Azure a účet. Bezplatnou zkušební verzi, klikněte na tlačítko [https://azure.microsoft.com/free/][https://azure.microsoft.com/free/].
+- Předplatné Azure a účet. Bezplatnou zkušební verzi, klikněte na tlačítko [ https://azure.microsoft.com/free/ ] [ https://azure.microsoft.com/free/].
 
 - Modulu Azure PowerShell, pomocí rutiny **New-AzureRMSqlServerDNSAlias**.
     - K instalaci nebo upgradu, najdete v části [modul nainstalovat Azure PowerShell][install-azurerm-ps-84p].

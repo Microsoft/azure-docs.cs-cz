@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/12/2018
 ms.author: magoedte
-ms.openlocfilehash: 3bb023cfd94c7b87550d692101d30f922de80bf9
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 778810001952daf9ac63a7f1f880b05234549965
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Připojení počítače se systémem Windows do služby analýzy protokolů Azure
 
@@ -38,7 +38,7 @@ Pochopit požadavky na sítě a systému nasazení agenta systému Windows, pře
 ## <a name="obtain-workspace-id-and-key"></a>Získání ID a klíče pracovního prostoru
 Před instalací agenta Microsoft Monitoring Agent pro Windows potřebujete ID a klíč vašeho pracovního prostoru Log Analytics.  Tyto informace jsou nezbytné při instalaci z každé metody instalace správně nakonfigurovat agenta a zajistěte, aby že mohla úspěšně komunikovat s analýzy protokolů v komerčních Azure a cloudu US Government.  
 
-1. Na portálu Azure klikněte na tlačítko **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
+1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 2. V seznamu analýzy protokolů pracovních prostorů vyberte pracovní prostor, který máte v úmyslu týkající se konfigurace agenta nahlásit.
 3. Vyberte **Upřesňující nastavení**.<br><br> ![Upřesňující nastavení Log Analytics](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
 4. Vyberte **Připojené zdroje** a pak **Servery Windows**.   
@@ -63,7 +63,7 @@ Následující kroky instalace a konfigurace agenta pro analýzy protokolů v cl
 Po dokončení se **Microsoft Monitoring Agent** zobrazí v **Ovládacích panelech**. Pokud chcete potvrdit, je generování sestav k analýze protokolů, zkontrolujte [ověřte připojení agenta k analýze protokolů](#verify-agent-connectivity-to-log-analytics). 
 
 ## <a name="install-the-agent-using-the-command-line"></a>Instalace agenta pomocí příkazového řádku
-Stažený soubor pro agenta je samostatný instalační balíček vytvořen s IExpress.  Instalační program pro agenta a podpůrné soubory jsou obsažené v balíčku a potřeba extrahovat aby bylo možné správně nainstalovat pomocí příkazového řádku uvedené v následujících příkladech.    
+Stažený soubor pro agenta je samostatný instalační balíček.  Instalační program pro agenta a podpůrné soubory jsou obsažené v balíčku a potřeba extrahovat aby bylo možné správně nainstalovat pomocí příkazového řádku uvedené v následujících příkladech.    
 
 >[!NOTE]
 >Pokud chcete provést upgrade agenta, budete muset použít analýzy protokolů skriptování rozhraní API. Podívejte se na téma [správu a údržbu agenta analýzy protokolů pro systém Windows a Linux](log-analytics-agent-manage.md) Další informace.
@@ -72,6 +72,7 @@ Následující tabulka obsahuje konkrétní parametry analýzy protokolů nepodp
 
 |MMA specifické možnosti                   |Poznámky         |
 |---------------------------------------|--------------|
+| NOAPM=1                               | Volitelný parametr. Nainstaluje agenta bez monitorování výkonu aplikací .NET.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = konfigurace agenta tak, aby odesílaly pracovního prostoru                |
 |OPINSIGHTS_WORKSPACE_ID                | Id pracovního prostoru (guid) pro pracovní prostor pro přidání                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Klíč pracovního prostoru se používá k ověření původně s pracovním prostoru |
@@ -80,7 +81,7 @@ Následující tabulka obsahuje konkrétní parametry analýzy protokolů nepodp
 |OPINSIGHTS_PROXY_USERNAME               | Uživatelské jméno pro přístup k ověřený server proxy |
 |OPINSIGHTS_PROXY_PASSWORD               | Heslo pro přístup ověřený server proxy |
 
-1. K extrakci instalačních souborů agenta z příkazového řádku se zvýšenými spustit `extract MMASetup-<platform>.exe` a zobrazí výzvu pro cestu k extrakci souborů.  Alternativně můžete zadat cestu předání argumentů `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`.  Další informace o příkazového řádku swtiches nepodporuje IExpress najdete v tématu [přepínače příkazového řádku pro IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) a aktualizujte příklad podle svých potřeb.
+1. K extrakci instalačních souborů agenta z příkazového řádku se zvýšenými spustit `MMASetup-<platform>.exe /c` a zobrazí výzvu pro cestu k extrakci souborů.  Alternativně můžete zadat cestu předání argumentů `MMASetup-<platform>.exe /c /t:<Path>`.  
 2. Bezobslužná instalace agenta a nakonfigurovat ji tak, aby odesílaly pracovního prostoru v cloudu Azure komerční ze složky jste extrahovali instalační soubory na typ: 
    
      ```dos
@@ -99,8 +100,8 @@ Následující ukázkový skript můžete použít k instalaci agenta pomocí Az
 
 Následující příklad nainstaluje agenta nástroje 64-bit, identifikovaný `URI` hodnotu. Můžete taky 32bitová verze nahrazením hodnota identifikátoru URI. Identifikátory URI pro obě verze jsou:
 
-- 64bitový agent Windows - https://go.microsoft.com/fwlink/?LinkId=828603
-- Windows 32-bit agent - https://go.microsoft.com/fwlink/?LinkId=828604
+- 64bitový agent Windows- https://go.microsoft.com/fwlink/?LinkId=828603
+- 32bitový agent Windows- https://go.microsoft.com/fwlink/?LinkId=828604
 
 
 >[!NOTE]
@@ -108,9 +109,9 @@ Následující příklad nainstaluje agenta nástroje 64-bit, identifikovaný `U
 
 32bitové a 64bitové verze balíčku agenta mají jiným produktem kódy a vydání nové verze také mít jedinečnou hodnotu.  Kód produktu je identifikátor GUID, který slouží jako základní identifikátor aplikace nebo produktu a je reprezentována Instalační služby systému Windows **ProductCode** vlastnost.  `ProductId value` v **MMAgent.ps1** skriptu musí odpovídat kód produktu z instalačního balíčku 32bitové nebo 64bitové verze agenta.
 
-Chcete-li načíst kód produktu z balíčku instalace agenta přímo, můžete použít Orca.exe z [Windows vývojáři sady SDK součásti pro Windows Installer](https://msdn.microsoft.com/library/windows/desktop/aa370834%27v=vs.85%28.aspx) který je součástí systému Windows Software Development Kit nebo pomocí Prostředí PowerShell následující [ukázkový skript](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) napsané pomocí Microsoft cenné Professional (MVP).
+Chcete-li načíst kód produktu z balíčku instalace agenta přímo, můžete použít Orca.exe z [Windows vývojáři sady SDK součásti pro Windows Installer](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) který je součástí systému Windows Software Development Kit nebo pomocí Prostředí PowerShell následující [ukázkový skript](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) napsané pomocí Microsoft cenné Professional (MVP).  Buď způsob, musíte nejdřív pro extrahování **MOMagent.msi** souboru z MMASetup instalačního balíčku.  To je zobrazen výše v prvním kroku v části [instalace agenta pomocí příkazového řádku](#install-the-agent-using-the-command-line).  
 
-1. Import xPSDesiredStateConfiguration DSC modulu z [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) do Azure Automation.  
+1. Import xPSDesiredStateConfiguration DSC modulu z [ http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration ](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) do Azure Automation.  
 2.  Vytvoření proměnných assetů Azure Automation pro *OPSINSIGHTS_WS_ID* a *OPSINSIGHTS_WS_KEY*. Nastavit *OPSINSIGHTS_WS_ID* ID pracovního prostoru analýzy protokolů a sadu *OPSINSIGHTS_WS_KEY* na primární klíč pracovního prostoru.
 3.  Zkopírujte skript a uložte ho jako MMAgent.ps1
 
@@ -161,7 +162,7 @@ Z počítače v **ovládací panely**, vyhledá položku **agenta Microsoft Moni
 
 Hledání jednoduchého protokolů můžete také provést na portálu Azure.  
 
-1. Na portálu Azure klikněte na tlačítko **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.  
+1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.  
 2. Na stránce pracovní prostor analýzy protokolů vyberte cílový pracovní prostor a pak vyberte **hledání protokolů** dlaždici. 
 2. V podokně hledání protokolů v poli typu dotazu:  
 
@@ -174,6 +175,6 @@ Hledání jednoduchého protokolů můžete také provést na portálu Azure.
 
 Ve výsledcích vyhledávání vrátí měli byste vidět záznamy prezenčního signálu pro počítač, což značí, že je připojený a vytváření sestav ke službě.   
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Zkontrolujte [správu a údržbu agenta analýzy protokolů pro systém Windows a Linux](log-analytics-agent-manage.md) Další informace o tom, jak Správa agenta během životního cyklu nasazení na vašich počítačích.  

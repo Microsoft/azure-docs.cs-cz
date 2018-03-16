@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/09/2017
+ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4fd0f1cbba36957ae5ecc1b7436d1f1734a3ef79
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 02d7c3f587a4cbfb11fc3b6863f75ca30b4d6c51
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Přesunout veřejný partnerský vztah na partnerský vztah Microsoftu
 
@@ -73,7 +73,11 @@ Po ověření, že partnerského vztahu Microsoftu je nakonfigurována a předpo
   * [Odstranění veřejného partnerského vztahu Azure pomocí portálu Azure](expressroute-howto-routing-portal-resource-manager.md#deletepublic)
   * [Odstranění veřejného partnerského vztahu Azure pomocí Azure PowerShell](expressroute-howto-routing-arm.md#deletepublic)
   * [Odstranění veřejného partnerského vztahu Azure pomocí rozhraní příkazového řádku](howto-routing-cli.md#deletepublic)
+  
+## <a name="view"></a>5. Zobrazení partnerských vztahů
+  
+Zobrazí seznam všech okruhy ExpressRoute a partnerských vztahů na portálu Azure. Další informace najdete v tématu [podrobností partnerského vztahu Microsoftu zobrazení](expressroute-howto-routing-portal-resource-manager.md#getmsft).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

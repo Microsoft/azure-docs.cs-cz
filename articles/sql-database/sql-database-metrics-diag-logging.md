@@ -4,22 +4,17 @@ description: "Další informace o tom, jak nakonfigurovat databázi SQL Azure pr
 services: sql-database
 documentationcenter: 
 author: veljko-msft
-manager: jhubbard
-editor: 
-ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2017
+ms.date: 03/13/2018
 ms.author: vvasic
-ms.openlocfilehash: 2d0a2d5966c8c99e7d71d97d4819d58a1474c2fe
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3ac0c87ca41315eb3b63ddfab2736f68bac8dbee
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky 
 Databáze SQL Azure můžete emitování metriky a diagnostické protokoly pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
@@ -257,7 +252,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="download-metrics-and-logs-from-storage"></a>Stažení metriky a protokoly ze služby Storage
 
-Zjistěte, jak [stáhnout metriky a diagnostické protokoly z úložiště](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs).
+Zjistěte, jak [stáhnout metriky a diagnostické protokoly z úložiště](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).
 
 ## <a name="metrics-and-logs-available"></a>Metriky a k dispozici protokoly.
 
@@ -466,7 +461,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 ### <a name="intelligent-insights-dataset"></a>Inteligentní datovou sadu statistiky
 Další informace o [formát protokolu inteligentního Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Zjistěte, jak povolit protokolování a pochopit metriky a protokolu kategorií podporuje různé služby Azure, přečtěte si téma:
 
@@ -478,4 +473,4 @@ Další informace o službě Event Hubs, přečtěte si:
 * [Co je Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 * [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-Další informace o ukládání najdete v tématu Jak [stáhnout metriky a diagnostické protokoly z úložiště](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs).
+Další informace o ukládání najdete v tématu Jak [stáhnout metriky a diagnostické protokoly z úložiště](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).

@@ -3,7 +3,7 @@ title: "Naučte se používat konektor služby Salesforce ve vašich logic apps 
 description: "Vytvoření aplikace logiky službou Azure App service. Konektor Salesforce poskytuje rozhraní API pro práci s objekty Salesforce."
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/05/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 2bb865924191418c12b9fea37edfbfb282f334eb
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 6ab7c6cf9a0ef86956e3b3d58c5da96c38deaa49
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-salesforce-connector"></a>Začínáme s konektor služby Salesforce
 Konektor Salesforce poskytuje rozhraní API pro práci s objekty Salesforce.

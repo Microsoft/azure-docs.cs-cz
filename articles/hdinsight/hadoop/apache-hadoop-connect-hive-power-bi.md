@@ -14,21 +14,28 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 03/14/2018
 ms.author: jgao
-ms.openlocfilehash: 8b4347fde274d0d7520ef3acbd081fdb83d7dc7d
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: e543fba4c382501024bd33bed3853e7806d081ae
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="visualize-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Vizualizovat Hive data s Microsoft Power BI pomocí rozhraní ODBC v Azure HDInsight
 
-Zjistěte, jak se připojit k Azure HDInsight pomocí ovladače ODBC Microsoft Power BI a vizualizovat Hive data. V tomto kurzu můžete načíst data z tabulky Hive hivesampletable do Power BI. Tabulka Hive obsahuje některé údaje o používání mobilního telefonu. Potom vykreslení dat o využití na mapě world:
+Zjistěte, jak se připojit k Azure HDInsight pomocí ovladače ODBC Microsoft Power BI a vizualizovat Hive data. 
+
+>[!IMPORTANT]
+> Můžete využít ovladače Hive ODBC pro import prostřednictvím konektoru obecné ODBC v Power BI Desktop. Nedoporučuje se ale pro úlohy BI zadané neinteraktivní povaha modul dotazů Hive. [Konektor interaktivní dotazu HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) a [HDInsight Spark konektor](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) jsou lepší možnosti výkonu.
+
+V tomto kurzu můžete načíst data z tabulky Hive hivesampletable do Power BI. Tabulka Hive obsahuje některé údaje o používání mobilního telefonu. Potom vykreslení dat o využití na mapě world:
 
 ![HDInsight Power BI sestavy mapy](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
 
 Informace se vztahují taky na nové [interaktivní dotazu](../interactive-query/apache-interactive-query-get-started.md) clusteru typu. Pro připojení k HDInsight interaktivní dotazu pomocí přímých dotazů najdete v tématu [vizualizovat interaktivní Hive dotaz data s Microsoft Power BI pomocí přímých dotazů v Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
+
+
 
 ## <a name="prerequisites"></a>Požadavky
 Před zahájením tohoto článku, musíte mít následující položky:

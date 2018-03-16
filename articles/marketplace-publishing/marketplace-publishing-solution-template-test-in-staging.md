@@ -3,8 +3,8 @@ title: "Testování vaši nabídku šablony řešení pro Marketplace | Microsof
 description: "Pochopit, jak otestovat vaši nabídku řešení šablony pro Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: ef8f9b5e-b98c-49f3-913f-cdf772c14c12
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2015
-ms.author: hascipio; v-divte
-ms.openlocfilehash: da1fc4713fd1d832c7ba91226f72cbef63b241bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: e789d0996e72c935ed9d5f456f9868b73d5ef4ee
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="test-your-solution-template-offer-in-staging"></a>Otestovat vaši nabídku šablony řešení v pracovní
 Pracovní znamená nasazení vaši nabídku v soukromé "izolovaného", kde můžete otestovat a ověřit jeho funkčnost před odesláním do produkčního prostředí. Nabídka se zobrazí v pracovním stejně, jako by zákazníkovi, který je nasazena. Chcete-li být vložena do přípravy, musí mít certifikovanou vaši nabídku.
@@ -36,7 +36,7 @@ Použijte následující postup push vaši nabídku pro pracovní a otestovat ho
    * Proveďte test výkonnosti a zátěžové testování.
    * Ujistěte se, že vaše topologie dodržuje osvědčené postupy.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud jste s výsledky spokojeni, pak můžete přejít k publikování fázi konečné nabídka **krok 4**: [nasazení vaši nabídku Marketplace](marketplace-publishing-push-to-production.md). Jinak proveďte změny v vaši nabídku a požádat o certifikaci znovu.
 
 > [!NOTE]

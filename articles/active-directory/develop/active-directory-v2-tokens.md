@@ -3,7 +3,7 @@ title: Azure Active Directory v2.0 tokeny odkaz | Microsoft Docs
 description: "Typy tokenů a deklaracích identity vysílaných koncového bodu Azure AD v2.0"
 services: active-directory
 documentationcenter: 
-author: dstrockis
+author: hpsin
 manager: mtillman
 editor: 
 ms.assetid: dc58c282-9684-4b38-b151-f3e079f034fd
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 01994e067bd7ce0343f12ec3334a91bd062251a8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4479b3d34824b88f0a666b6185a6bc89337358a9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Přehled v2.0 tokeny služby Azure Active Directory
 Koncový bod v2.0 Azure Active Directory (Azure AD) vysílá několik typů tokeny zabezpečení v každé [tok ověřování](active-directory-v2-flows.md). Tento odkaz popisuje formát, zabezpečení vlastnosti a obsah každého typu token.
@@ -54,7 +54,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 >
 
 #### <a name="claims-in-id-tokens"></a>Deklarace identity v tokenech ID
-| Name (Název) | Deklarovat | Příklad hodnoty | Popis |
+| Název | Deklarovat | Příklad hodnoty | Popis |
 | --- | --- | --- | --- |
 | Cílová skupina |`aud` |`6731de76-14a6-49ae-97bc-6eba6914391e` |Identifikuje zamýšlený příjemce tokenu. V ID tokeny cílová skupina je ID aplikace vaší aplikace, které jsou přiřazené vaší aplikaci v portálu pro registraci aplikace Microsoft. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud hodnota neodpovídá. |
 | Vystavitel |`iss` |`https://login.microsoftonline.com/b9419818-09af-49c2-b0c3-653adc1f376e/v2.0 ` |Identifikuje služby tokenů na zabezpečení (STS), která vytvoří a vrátí token a klient Azure AD, ve kterém byl uživatel ověřený. Aplikace by měl ověřit vystavitele deklarace zajistit, že token pochází od koncového bodu v2.0. Také se by měl používat příslušné část GUID deklarace identity pro omezit počet klientů, které se můžete přihlásit k aplikaci. Identifikátor GUID, který označuje, že uživatel je uživatelem příjemce z účtu Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad`. |
@@ -86,7 +86,7 @@ Tokeny obnovení jsou více prostředků. Token obnovení obdržel během žádo
 
 Pokud chcete získat aktualizace v odpovědi tokenu, vaše aplikace musí požádat a udělit `offline_acesss` oboru. Další informace o `offline_access` obor, najdete v článku [souhlasu a obory](active-directory-v2-scopes.md) článku.
 
-Obnovovacích tokenů jsou a vždy budou, zcela neprůhledný do vaší aplikace. Se vydávají koncového bodu v2.0 Azure AD a můžete být prověřovány a interpretovat koncového bodu v2.0. Jsou dlohotrvající, ale aplikace nemá zapisovat očekávat, že token obnovení vydrží období. V každém okamžiku z různých důvodů může být zneplatněné obnovovacích tokenů. Jediný způsob, jakým aplikace potřebujete vědět, jestli je platný token obnovení je pokus o uplatněte ho tak, že žádosti o token koncový bod v2.0.
+Obnovovacích tokenů jsou a vždy budou, zcela neprůhledný do vaší aplikace. Se vydávají koncového bodu v2.0 Azure AD a můžete být prověřovány a interpretovat koncového bodu v2.0. Jsou dlohotrvající, ale aplikace nemá zapisovat očekávat, že token obnovení vydrží období. Tokeny obnovení může být zneplatněné v každém okamžiku z různých důvodů – podrobnosti najdete v tématu [token odvolání](active-directory-token-and-claims.md#token-revocation). Jediný způsob, jakým aplikace potřebujete vědět, jestli je platný token obnovení je pokus o uplatněte ho tak, že žádosti o token koncový bod v2.0.
 
 Když uplatnit obnovovací token pro nový přístupový token (a pokud byl udělen vaší aplikace `offline_access` oboru), se zobrazí nový token aktualizace v odpovědi tokenu. Uložte nově vydané aktualizace tokenu, nahradit, které jste použili v požadavku. To zaručuje, že jsou dál platné pro stejně dlouho obnovovacích tokenů.
 
@@ -99,7 +99,7 @@ Společnost Microsoft poskytuje knihovny a ukázky kódu, které ukazují, jak s
 ### <a name="validate-the-signature"></a>Ověření podpisu
 Token JWT obsahuje tři segmenty, které jsou odděleny `.` znak. První segment se označuje jako *záhlaví*, druhý segment *textu*, a třetí segment *podpis*. Segment podpis slouží k ověření pravosti tokenu ID tak, aby důvěryhodné aplikace.
 
-ID tokeny jsou podepsány pomocí standardní asymetrických šifrovacích algoritmů, například RSA 256. Hlavička ID token obsahuje informace o metodě klíč a šifrování používaný k podepisování token. Například:
+ID tokeny jsou podepsány pomocí standardní asymetrických šifrovacích algoritmů, například RSA 256. Hlavička ID token obsahuje informace o metodě klíč a šifrování používaný k podepisování token. Příklad:
 
 ```
 {
@@ -140,10 +140,10 @@ Pokud vaše aplikace obdrží token ID při přihlášení uživatele, má také
 
 Podrobnosti o očekávaných hodnot pro tyto deklarace identity jsou součástí [tokeny typu ID](# ID tokens) části.
 
-## <a name="token-lifetimes"></a>Token životnosti
+## <a name="token-lifetimes"></a>Doby života tokenů
 Poskytujeme následující životnosti tokenu pro vás pouze informační charakter. Informace vám můžou pomoct při vývoji a ladění aplikací. Aplikace nemá zapisovat očekávat některé z těchto životnosti nezměnila. Token může životnosti a bude kdykoli změnit.
 
-| Token | Doba platnosti | Popis |
+| Podpisový | Doba platnosti | Popis |
 | --- | --- | --- |
 | ID tokeny (pracovní nebo školní účty) |1 hodina |Tokeny typu ID obvykle jsou platné po dobu 1 hodina. Webové aplikace můžete použít tento stejný životnost k udržování své vlastní relaci s uživatele (doporučeno) nebo můžete vybrat dobu platnosti úplně jiné relace. Pokud aplikace potřebuje k získání tokenu nové ID, musí se na nové přihlášení požádat o v2.0 zajistí autorizaci koncového bodu. Pokud má uživatel relace platná prohlížeče s koncovým bodem v2.0, uživatel pravděpodobně nutné znovu zadat své přihlašovací údaje. |
 | ID tokeny (osobní účty) |24 hodin |ID tokeny pro osobní účty obvykle jsou platné po dobu 24 hodin. Webové aplikace můžete použít tento stejný životnost k udržování své vlastní relaci s uživatele (doporučeno) nebo můžete vybrat dobu platnosti úplně jiné relace. Pokud aplikace potřebuje k získání tokenu nové ID, musí se na nové přihlášení požádat o v2.0 zajistí autorizaci koncového bodu. Pokud má uživatel relace platná prohlížeče s koncovým bodem v2.0, uživatel pravděpodobně nutné znovu zadat své přihlašovací údaje. |

@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: a592dfbc6f19afe255cee1a8dfb48e3c96d7baf8
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 52771c8cf401bb60339182644cd8755637650140
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Oracle Linuxem pro Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -35,7 +35,7 @@ Tento článek předpokládá, že jste již nainstalovali Oracle Linux operačn
 * Při instalaci systému Linux se doporučuje použít standardní oddíly spíše než LVM (často výchozí pro mnoho instalace). Tím se vyhnete LVM název je v konfliktu s klonovaný virtuální počítače, zvlášť pokud někdy musí být připojené k jiným virtuálním Počítačem pro řešení potíží s disk s operačním systémem. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lze použít v datových disků, pokud upřednostňovaný.
 * Pro větší velikosti virtuálních počítačů z důvodu chyby ve verzích systému Linux jádra níže 2.6.37 nepodporuje NUMA. Tento problém ovlivňuje především distribuce pomocí nadřazený Red Hat 2.6.32 jádra. Ruční instalace agenta Azure Linux (příkaz waagent) automaticky zakáže NUMA v konfiguraci GRUB jádra systému Linux. Další informace o této naleznete v následujících krocích.
 * Nekonfigurujte přepnutí oddílu na disku operačního systému. Chcete-li vytvořit odkládací soubor na disku dočasných prostředků lze nakonfigurovat agenta systému Linux.  Další informace o této naleznete v následujících krocích.
-* Všechny virtuální pevné disky musí mít velikostí, které jsou násobky 1 MB.
+* Všechny virtuální pevné disky na platformě Azure, musí mít virtuální velikost zarovnán 1MB. Při převodu z nezpracovaná disku na virtuální pevný disk je nutné zajistit, aby velikost disku nezpracovaná není násobkem 1MB před převodem. V tématu [poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes) Další informace.
 * Ujistěte se, že `Addons` je povoleno úložiště. Upravte soubor `/etc/yum.repo.d/public-yum-ol6.repo`(Oracle Linux 6) nebo `/etc/yum.repo.d/public-yum-ol7.repo`(Oracle Linux) a změňte řádek `enabled=0` k `enabled=1` pod **[ol6_addons]** nebo **[ol7_addons]** v tomto souboru.
 
 ## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
@@ -182,6 +182,6 @@ Připravuje se virtuální počítač Oracle Linux 7 pro Azure je velmi podobné
         # logout
 15. Klikněte na tlačítko **akce -> vypnutí dolů** ve Správci technologie Hyper-V. Svůj disk VHD Linux je nyní připravena k odeslání do Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Nyní jste připraveni používat vaše VHD Oracle Linux k vytvoření nové virtuální počítače v Azure. Pokud je poprvé, že jste nahrávání souboru VHD do Azure, najdete v části [vytvořit virtuální počítač s Linuxem z vlastní disku](upload-vhd.md#option-1-upload-a-vhd).
 

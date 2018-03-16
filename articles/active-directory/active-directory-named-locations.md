@@ -1,6 +1,6 @@
 ---
-title: "Umístění ve službě Azure Active Directory s názvem | Microsoft Docs"
-description: "Zjistěte, co s názvem umístění jsou a způsob jejich konfigurace."
+title: "Konfigurace s názvem umístění v Azure Active Directory | Microsoft Docs"
+description: "Zjistěte, jak nakonfigurovat s názvem umístění."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 03/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b6f80cde24edcbec68309ba033d4da16ee97b731
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3b7bd6f4bea111815f647af09ebaa868696b25bc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="named-locations-in-azure-active-directory"></a>Pojmenované umístění v Azure Active Directory
+# <a name="configure-named-locations-in-azure-active-directory"></a>Konfigurace s názvem umístění v Azure Active Directory
 
 Pomocí pojmenovaného umístění můžete označit důvěryhodné rozsahy IP adres ve vaší organizaci. S názvem umístění v rámci Azure Active Directory používá:
 
@@ -89,22 +89,14 @@ Dostanete na stránku konfigurace s názvem umístění **zabezpečení** část
 
 
 
-## <a name="what-you-should-know"></a>Důležité informace
-
-**Hromadné aktualizace**: při vytváření nebo aktualizaci s názvem umístění pro hromadné aktualizace, můžete nahrát nebo stáhnout soubor CSV s rozsahy IP. Nahrávaný přidá rozsahy IP v souboru do seznamu místo přepsání seznamu.
-
-![Nahrávání a stahování odkazy](./media/active-directory-named-locations/09.png)
-
-
-**Omezení**: nesmí být delší než 60 s názvem umístění, můžete definovat s jeden rozsah IP adres přiřazené ke každému z nich. Pokud máte pouze jednu s názvem umístění nakonfigurovaný, můžete definovat maximálně 500 rozsahy IP adres pro ni.
-
-
 ## <a name="next-steps"></a>Další postup
 
-Další informace o:
+Další informace naleznete v tématu:
 
-- **Riziko události**, najdete v části [Azure Active Directory rizikových událostech](active-directory-reporting-risk-events.md).
+- [Podmíněný přístup v Azure Active Directory](active-directory-conditional-access-azure-portal.md).
 
-- **Podmíněný přístup**, najdete v části [podmíněný přístup v Azure Active Directory](active-directory-conditional-access-azure-portal.md).
+- [Podmínky umístění v Azure Active Directory podmíněného přístupu](active-directory-conditional-access-locations.md)
 
-- **Sestavy rizikové přihlášení**, najdete v části [rizikové přihlášení sestav na portálu Azure Active Directory](active-directory-reporting-security-risky-sign-ins.md).  
+- [Azure Active Directory rizikových událostech](active-directory-reporting-risk-events.md).
+
+- [Sestava rizikové přihlášení na portálu Azure Active Directory](active-directory-reporting-security-risky-sign-ins.md).  

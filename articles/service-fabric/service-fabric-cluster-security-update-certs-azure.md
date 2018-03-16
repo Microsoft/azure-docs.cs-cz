@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: chackdan
-ms.openlocfilehash: 68654bd9b14857661b627bf6d6b1dfe2483019a4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 65ade0f2526bf444c2205c74cce0e20be540998d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidat nebo odebrat certifikáty pro cluster Service Fabric v Azure
 Doporučujeme Seznamte se s jak Service Fabric používá certifikáty X.509 a znát [clusteru scénáře zabezpečení](service-fabric-cluster-security.md). Je potřeba pochopit, jaké certifikát clusteru je a co se používá, před pokračováním.
@@ -26,31 +26,28 @@ Doporučujeme Seznamte se s jak Service Fabric používá certifikáty X.509 a z
 Service fabric umožňuje zadat dva certifikáty clusteru, primárního a sekundárního, když konfigurujete certifikát zabezpečení při vytváření clusteru, kromě klientských certifikátů. Odkazovat na [vytváření clusteru služby azure přes portál](service-fabric-cluster-creation-via-portal.md) nebo [vytváření clusteru služby azure pomocí Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) pro podrobnosti o jejich nastavení na vytvořit čas. Pokud zadáte jenom jeden certifikát clusteru na doba pro vytvoření, pak, který se používá jako primární certifikát. Po vytvoření clusteru můžete přidat nového certifikátu jako sekundární.
 
 > [!NOTE]
-> Pro cluster s podporou zabezpečení je vždy nutné alespoň jeden platný clusteru (není odvolaný a ne jeho platnost) certifikátu (primární nebo sekundární) nasazeného (Pokud ne, přestane cluster fungovat). 90 dní před všechny platné certifikáty dosáhnout vypršení platnosti, systém vygeneruje upozornění trasování a také událost stavu upozornění na uzlu. Není aktuálně žádné e-mailu nebo všechna oznámení, která odesílá service fabric, v tomto tématu. 
+> Pro cluster s podporou zabezpečení je vždy nutné alespoň jeden platný clusteru (není odvolaný a ne jeho platnost) certifikátu (primární nebo sekundární) nasazeného (Pokud ne, přestane cluster fungovat). 90 dní před všechny platné certifikáty dosáhnout vypršení platnosti, systém vygeneruje upozornění trasování a také událost stavu upozornění na uzlu. Není aktuálně žádné e-mailu nebo všechna oznámení, která odesílá Service Fabric, v tomto článku. 
 > 
 > 
 
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>Přidat certifikát sekundární clusteru pomocí portálu
-
-Nelze přidat certifikát sekundární clusteru prostřednictvím portálu Azure. Budete muset použít Azure powershell pro tento. Proces popsané dál v tomto dokumentu.
+Nelze přidat certifikát sekundární clusteru prostřednictvím portálu Azure, použijte prostředí Azure powershell. Proces popsané dál v tomto dokumentu.
 
 ## <a name="swap-the-cluster-certificates-using-the-portal"></a>Vyměnit certifikáty clusteru pomocí portálu
-
-Po úspěšně jste nasadili certifikát sekundární clusteru, pokud chcete Prohodit primární a sekundární, přejděte do okna zabezpečení a vyberte možnost 'Prohození s primární' v místní nabídce se Prohodit sekundární certifikátu s primární certifikátu.
+Po úspěšně jste nasadili certifikát sekundární clusteru, pokud chcete Prohodit primární a sekundární, pak přejděte do části zabezpečení a vyberte možnost 'Prohození s primární' v místní nabídce se Prohodit sekundární certifikátu s primární certifikát.
 
 ![Swap certifikátu][Delete_Swap_Cert]
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>Odebrat certifikát clusteru pomocí portálu
-
 Pro cluster s podporou zabezpečení budete vždy potřebovat alespoň jeden platný (není odvolaný a ne jeho platnost) certifikát (primární nebo sekundární) nasazené Pokud ne, přestane cluster fungovat.
 
-K odebrání sekundární certifikátu používá pro zabezpečení clusteru, přejděte do okna zabezpečení a vyberte možnost 'Delete' z kontextové nabídky na sekundární certifikátu.
+K odebrání sekundární certifikátu používá pro zabezpečení clusteru, přejděte do části zabezpečení a vyberte možnost 'Delete' z kontextové nabídky na sekundární certifikátu.
 
 Pokud vaše záměrem odebrat certifikát, který je označen jako primární, pak budete muset Prohodit s sekundární a potom odstraňte sekundární po dokončení upgradu.
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Přidat sekundární certifikát pomocí Správce prostředků Powershell
-> [! AKTUALIZACE] nyní je k dispozici lepší a jednodušší způsob, jak přidat sekundární certifikát pomocí [přidat AzureRmServiceFabricClusterCertificate](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate?view=azurermps-5.3.0). Nepotřebujete provést další kroky v této části, používáte-li přidat AzureRmServiceFabricClusterCertificate.
-
+> [!TIP]
+> Teď je lepší a jednodušší způsob, jak přidat sekundární certifikátu pomocí [přidat AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny. Nemusíte postupujte podle zbývajících kroků v této části.  Navíc není nutné použili k vytvoření nasazení clusteru při použití šablony [přidat AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny.
 
 Tento postup předpokládá se seznámíte s fungování Resource Manager a nasadili alespoň jeden pomocí šablony Resource Manageru cluster Service Fabric a mít šablony, která jste použili k nastavení užitečné clusteru. Taky se předpokládá, že umíte pomocí JSON.
 
@@ -65,126 +62,119 @@ Pro usnadnění následující společně obsahuje ukázkové 5-VM-1-NodeTypes-S
 
 **Zajistěte, aby k provedení všech kroků**
 
-**Krok 1:** otevřete šablony Resource Manageru můžete použít k nasazení můžete clusteru. (Pokud jste si stáhli ukázky z výše uvedených úložiště, pak 5-VM-1-NodeTypes-Secure_Step1.JSON použijte k nasazení clusteru s podporou zabezpečení a potom otevře tato šablona).
+1. Otevřete šablony Resource Manageru, můžete použít k nasazení můžete clusteru. (Pokud jste si stáhli ukázky z předchozí úložiště, pak 5-VM-1-NodeTypes-Secure_Step1.JSON použijte k nasazení clusteru s podporou zabezpečení a potom otevře tato šablona).
 
-**Krok 2:** přidat **dva nové parametry** "secCertificateThumbprint" a "secCertificateUrlValue" z typu "řetězec" do části parametr šablony. Můžete zkopírovat následující fragment kódu a přidání do šablony. V závislosti na zdroji šablony už můžete mít tyto definována, pokud tak přesunout k dalšímu kroku. 
+2. Přidat **dva nové parametry** "secCertificateThumbprint" a "secCertificateUrlValue" z typu "řetězec" do části parametr šablony. Můžete zkopírovat následující fragment kódu a přidání do šablony. V závislosti na zdroji šablony už můžete mít tyto definována, pokud tak přesunout k dalšímu kroku. 
  
-```JSON
-   "secCertificateThumbprint": {
-      "type": "string",
-      "metadata": {
-        "description": "Certificate Thumbprint"
-      }
-    },
-    "secCertificateUrlValue": {
-      "type": "string",
-      "metadata": {
-        "description": "Refers to the location URL in your key vault where the certificate was uploaded, it is should be in the format of https://<name of the vault>.vault.azure.net:443/secrets/<exact location>"
-      }
-    },
+    ```json
+       "secCertificateThumbprint": {
+          "type": "string",
+          "metadata": {
+            "description": "Certificate Thumbprint"
+          }
+        },
+        "secCertificateUrlValue": {
+          "type": "string",
+          "metadata": {
+            "description": "Refers to the location URL in your key vault where the certificate was uploaded, it is should be in the format of https://<name of the vault>.vault.azure.net:443/secrets/<exact location>"
+          }
+        },
+    
+    ```
 
-```
-
-**Krok 3:** provádět změny **Microsoft.ServiceFabric/clusters** prostředku, vyhledejte "Microsoft.ServiceFabric/clusters" definice prostředků ve vaší šabloně. V části Vlastnosti definice zjistíte "Certifikát" JSON značku, která by měla vypadat podobně jako následujícím fragmentu kódu JSON:
-
+3. Proveďte změny **Microsoft.ServiceFabric/clusters** prostředku, vyhledejte "Microsoft.ServiceFabric/clusters" definice prostředků ve vaší šabloně. V části Vlastnosti definice zjistíte "Certifikát" JSON značku, která by měla vypadat podobně jako následujícím fragmentu kódu JSON:
    
-```JSON
-      "properties": {
-        "certificate": {
-          "thumbprint": "[parameters('certificateThumbprint')]",
-          "x509StoreName": "[parameters('certificateStoreValue')]"
-     }
-``` 
+    ```JSON
+          "properties": {
+            "certificate": {
+              "thumbprint": "[parameters('certificateThumbprint')]",
+              "x509StoreName": "[parameters('certificateStoreValue')]"
+         }
+    ``` 
 
-Přidat novou značku "thumbprintSecondary" a dejte mu hodnotu "[parameters('secCertificateThumbprint')]".  
+    Přidat novou značku "thumbprintSecondary" a dejte mu hodnotu "[parameters('secCertificateThumbprint')]".  
 
-Ano, teď by měl vypadat jako následující definici prostředků (v závislosti na vaší zdrojové šablony, nemusí být úplně stejně jako na následujícím fragmentu). 
+    Ano, teď by měl vypadat jako následující definici prostředků (v závislosti na vaší zdrojové šablony, nemusí být úplně stejně jako na následujícím fragmentu). 
 
-```JSON
-      "properties": {
-        "certificate": {
-          "thumbprint": "[parameters('certificateThumbprint')]",
-          "thumbprintSecondary": "[parameters('secCertificateThumbprint')]",
-          "x509StoreName": "[parameters('certificateStoreValue')]"
-     }
-``` 
+    ```JSON
+          "properties": {
+            "certificate": {
+              "thumbprint": "[parameters('certificateThumbprint')]",
+              "thumbprintSecondary": "[parameters('secCertificateThumbprint')]",
+              "x509StoreName": "[parameters('certificateStoreValue')]"
+         }
+    ``` 
 
-Pokud chcete **výměny certifikát**, zadejte nový certifikát jako primární a přesunutí aktuální primární jako sekundární. Výsledkem výměny aktuální primární certifikátu na nový certifikát v jednom kroku nasazení.
+    Pokud chcete **mění certifikát**, zadejte nový certifikát jako primární a přesunutí aktuální primární jako sekundární. Výsledkem výměny aktuální primární certifikátu na nový certifikát v jednom kroku nasazení.
+    
+    ```JSON
+          "properties": {
+            "certificate": {
+              "thumbprint": "[parameters('secCertificateThumbprint')]",
+              "thumbprintSecondary": "[parameters('certificateThumbprint')]",
+              "x509StoreName": "[parameters('certificateStoreValue')]"
+         }
+    ``` 
 
-```JSON
-      "properties": {
-        "certificate": {
-          "thumbprint": "[parameters('secCertificateThumbprint')]",
-          "thumbprintSecondary": "[parameters('certificateThumbprint')]",
-          "x509StoreName": "[parameters('certificateStoreValue')]"
-     }
-``` 
+4. Proveďte změny **všechny** **Microsoft.Compute/virtualMachineScaleSets** definice prostředků - vyhledání Microsoft.Compute/virtualMachineScaleSets definici prostředků. Posuňte se "vydavatel": "Microsoft.Azure.ServiceFabric" v části "virtualMachineProfile".
 
+    V nastavení vydavatele Service Fabric měli byste vidět zhruba takhle.
+    
+    ![Json_Pub_Setting1][Json_Pub_Setting1]
+    
+    Do ní přidejte nové položky certifikátu.
+    
+    ```json
+                   "certificateSecondary": {
+                        "thumbprint": "[parameters('secCertificateThumbprint')]",
+                        "x509StoreName": "[parameters('certificateStoreValue')]"
+                        }
+                      },
+    
+    ```
 
-**Krok 4:** provádět změny **všechny** **Microsoft.Compute/virtualMachineScaleSets** definice prostředků - vyhledání Microsoft.Compute/virtualMachineScaleSets definici prostředků. Posuňte se "vydavatel": "Microsoft.Azure.ServiceFabric" v části "virtualMachineProfile".
+    Vlastnosti by teď měl vypadat takto
+    
+    ![Json_Pub_Setting2][Json_Pub_Setting2]
+    
+    Pokud chcete **mění certifikát**, zadejte nový certifikát jako primární a přesunutí aktuální primární jako sekundární. Výsledkem výměny aktuální certifikát na nový certifikát v jednom kroku nasazení.     
 
-V nastavení vydavatele služby infrastruktury by měl zobrazit něco podobného.
+    ```json
+                   "certificate": {
+                       "thumbprint": "[parameters('secCertificateThumbprint')]",
+                       "x509StoreName": "[parameters('certificateStoreValue')]"
+                         },
+                   "certificateSecondary": {
+                        "thumbprint": "[parameters('certificateThumbprint')]",
+                        "x509StoreName": "[parameters('certificateStoreValue')]"
+                        }
+                      },
+    ```
 
-![Json_Pub_Setting1][Json_Pub_Setting1]
+    Vlastnosti by teď měl vypadat takto    
+    ![Json_Pub_Setting3][Json_Pub_Setting3]
 
-Do ní přidejte nové položky certifikátu.
+5. Proveďte změny **všechny** **Microsoft.Compute/virtualMachineScaleSets** definice prostředků - vyhledání Microsoft.Compute/virtualMachineScaleSets definici prostředků. Posuňte se "vaultCertificates":, v části "OSProfile". by měla vypadat přibližně takto.
 
-```JSON
-               "certificateSecondary": {
-                    "thumbprint": "[parameters('secCertificateThumbprint')]",
-                    "x509StoreName": "[parameters('certificateStoreValue')]"
-                    }
-                  },
-
-```
-
-Vlastnosti by teď měl vypadat takto
-
-![Json_Pub_Setting2][Json_Pub_Setting2]
-
-Pokud chcete **výměny certifikát**, zadejte nový certifikát jako primární a přesunutí aktuální primární jako sekundární. Výsledkem výměny aktuální certifikát na nový certifikát v jednom kroku nasazení. 
-
-
-```JSON
-               "certificate": {
-                   "thumbprint": "[parameters('secCertificateThumbprint')]",
-                   "x509StoreName": "[parameters('certificateStoreValue')]"
-                     },
-               "certificateSecondary": {
-                    "thumbprint": "[parameters('certificateThumbprint')]",
-                    "x509StoreName": "[parameters('certificateStoreValue')]"
-                    }
-                  },
-
-```
-Vlastnosti by teď měl vypadat takto
-
-![Json_Pub_Setting3][Json_Pub_Setting3]
-
-
-**Krok 5:** provádět změny **všechny** **Microsoft.Compute/virtualMachineScaleSets** definice prostředků - vyhledání Microsoft.Compute/virtualMachineScaleSets definici prostředků. Posuňte se "vaultCertificates":, v části "OSProfile". by měla vypadat přibližně takto.
-
-
-![Json_Pub_Setting4][Json_Pub_Setting4]
-
-SecCertificateUrlValue přidejte do ní. použijte následující fragment kódu:
-
-```Json
-                  {
-                    "certificateStore": "[parameters('certificateStoreValue')]",
-                    "certificateUrl": "[parameters('secCertificateUrlValue')]"
-                  }
-
-```
-Výsledný formát Json by měl nyní vypadat přibližně takto.
-![Json_Pub_Setting5][Json_Pub_Setting5]
+    ![Json_Pub_Setting4][Json_Pub_Setting4]
+    
+    SecCertificateUrlValue přidejte do ní. použijte následující fragment kódu:
+    
+    ```json
+                      {
+                        "certificateStore": "[parameters('certificateStoreValue')]",
+                        "certificateUrl": "[parameters('secCertificateUrlValue')]"
+                      }
+    
+    ```
+    Výsledný formát Json by měl nyní vypadat přibližně takto.
+    ![Json_Pub_Setting5][Json_Pub_Setting5]
 
 
 > [!NOTE]
-> Ujistěte se, že obsahovat opakované kroky 4 a 5 pro všechny Nodetypes/Microsoft.Compute/virtualMachineScaleSets definice prostředků ve vaší šabloně. Pokud jeden z nich přeskočíte, certifikát získat nenainstalují VMSS a že vést k neočekávaným výsledkům v clusteru, včetně clusteru směrem dolů (Pokud skončili žádné platné certifikáty, které může cluster používat pro zabezpečení. Proto prosím Překontrolujte, než budete pokračovat.
+> Ujistěte se, že obsahovat opakované kroky 4 a 5 pro všechny Nodetypes/Microsoft.Compute/virtualMachineScaleSets definice prostředků ve vaší šabloně. Pokud jeden z nich přeskočíte, certifikát získat nenainstalují, škálovací sady virtuálních počítačů a máte vést k neočekávaným výsledkům v clusteru, včetně clusteru směrem dolů (Pokud skončili žádné platné certifikáty, které může cluster používat pro zabezpečení. Ano Překontrolujte, než budete pokračovat.
 > 
 > 
-
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Upravte svůj soubor šablony tak, aby odrážely novou parametry, které jste přidali výše
 Pokud používáte ukázku z [úložiště git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) se podle nich zorientujete, můžete začít proveďte změny v ukázkové 5-VM-1-NodeTypes-Secure.paramters_Step2.JSON 
@@ -273,33 +263,31 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="deploying-application-certificates-to-the-cluster"></a>Nasazení certifikátů aplikací do clusteru.
 
-Jak je uvedeno v kroky 5 výše můžete použít stejný postup certifikátů z keyvault nasazena do uzlů. Stačí nutné definovat a použít jiné parametry.
+Jak je uvedeno v předchozí kroky 5 můžete pomocí stejných kroků certifikátů z keyvault nasazena do uzlů. Stačí nutné definovat a použít jiné parametry.
 
 
 ## <a name="adding-or-removing-client-certificates"></a>Přidání nebo odebrání klientských certifikátů
 
-Kromě certifikátů clusteru můžete přidat klientských certifikátů mohli provádět operace správy na service fabric cluster.
+Kromě certifikátů clusteru můžete přidat klientských certifikátů mohli provádět operace správy na cluster Service Fabric.
 
 Můžete přidat dva druhy klientské certifikáty - správce nebo jen pro čtení. Tyto pak můžete použít k řízení přístupu k dotazu operace na clusteru a operace správce. Ve výchozím nastavení jsou certifikáty clusteru přidat do seznamu povolených certifikáty správce.
 
-můžete zadat libovolný počet klientských certifikátů. Každý přidávání a odstraňování výsledků v aktualizaci konfigurace service fabric cluster
+můžete zadat libovolný počet klientských certifikátů. Každý přidávání a odstraňování výsledků v aktualizaci konfigurace clusteru Service Fabric
 
 
 ### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Přidání klientské certifikáty - správce nebo jen pro čtení přes portál
 
-1. Přejděte do okna zabezpečení a vyberte '+ ověřování' tlačítka v okně zabezpečení.
-2. V okně "přidat ověření vyberte"Ověřování typu"- 'jen pro čtení klienta' nebo 'správce klienta.
+1. Přejděte do části zabezpečení a vyberte '+ ověřování' tlačítko nad části zabezpečení.
+2. V části "přidat ověření vyberte"Ověřování typu"- 'jen pro čtení klienta' nebo 'správce klienta.
 3. Teď zvolte metoda autorizace. To znamená do Service Fabric, zda by měla vypadat tohoto certifikátu pomocí názvu subjektu nebo kryptografický otisk. Obecně platí není dobrým zvykem lze pomocí této metody ověřování názvu subjektu. 
 
 ![Přidání certifikátu klienta][Add_Client_Cert]
 
 ### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Odstranění klientské certifikáty - správce nebo jen pro čtení pomocí portálu
 
-K odebrání sekundární certifikátu používá pro zabezpečení clusteru, přejděte do okna zabezpečení a vyberte možnost 'Delete' z kontextové nabídky na konkrétní certifikátu.
+K odebrání sekundární certifikátu používá pro zabezpečení clusteru, přejděte do části zabezpečení a vyberte možnost 'Delete' z kontextové nabídky na konkrétní certifikátu.
 
-
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si tyto články pro další informace o správě clusteru:
 
 * [Proces upgradu Service Fabric Cluster a očekávání od vás](service-fabric-cluster-upgrade.md)

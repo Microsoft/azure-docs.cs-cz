@@ -1,5 +1,19 @@
-
-
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines
+author: jonbeck7
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: azcspmt;jonbeck;cynthn
+ms.custom: include file
+ms.openlocfilehash: 0b6846a68806354a58516fcbc87913815af87343
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/16/2018
+---
 Některé databáze úlohy, jako je SQL Server nebo Oracle vyžadují velkého množství paměti, úložiště a vstupně-výstupní šířky pásma, ale není počet vysoké jader. Řadu úloh databáze nejsou náročná na prostředky procesoru. Azure nabízí určité velikosti virtuálních počítačů, kde můžete omezit počet virtuálních procesorů virtuálních počítačů k snížit náklady na licencování softwaru při zachování stejné paměť, úložiště a vstupně-výstupní šířky pásma.
 
 Může být omezen počet virtuálních procesorů na polovina nebo jeden čtvrtletí původní velikost virtuálního počítače. Tyto nové velikosti virtuálních počítačů mají příponu, která určuje počet active Vcpu snadnější identifikaci.

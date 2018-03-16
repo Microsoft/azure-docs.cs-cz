@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 25b9d1c7debe0d98a87b7d0b47dea6ab6f36c8af
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 2a9a6f3387b7f9fb4e3896fc55a06ac4a902ad24
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="device-simulation-walkthrough"></a>Návod simulace zařízení
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 K dokončení tohoto kurzu potřebujete nasazené instanci simulace zařízení Azure IoT ve vašem předplatném Azure.
 
-Pokud jste nenasadili simulace zařízení ještě by se měla Dokončit [nasazení simulace zařízení Azure IoT](iot-suite-device-simulation-explore.md) kurzu.
+Pokud jste nenasadili simulace zařízení ještě by se měla Dokončit [nasazení simulace zařízení Azure IoT](iot-suite-device-simulation-deploy.md) kurzu.
 
 ## <a name="configuring-device-simulation"></a>Konfigurace simulace zařízení
 
@@ -80,9 +80,9 @@ Následující tabulka uvádí seznam konfigurace pro každý model předem nako
 | | Teplotní | F | 5 sekund |
 | Hodnocení | Floor | | 5 sekund |
 | | vibrace | mm | 5 sekund |
-| | Teplotní | F | 5 sekund |
-| Vůz | Zeměpisná šířka | | 3 sekund |
-| | Zeměpisná délka | | 3 sekund |
+| | Teplota | F | 5 sekund |
+| Vůz | Zeměpisná šířka | | 3 sekundy |
+| | Zeměpisná délka | | 3 sekundy |
 | | Rychlost | mph | 5 sekund |
 | | cargotemperature | F | 5 sekund |
 
@@ -135,7 +135,7 @@ Pokud jste zadali určitou dobu pro simulaci, pak je automaticky zastavena po do
 
 Pokud jste zvolili pro simulaci běžela bez omezení, pak se spustí, dokud nekliknete na tlačítko **zastavení simulace**. Okno můžete zavřít prohlížeč a vraťte se na stránku simulace zařízení k zastavení simulace kdykoli.
 
-![Zastavení simulace](media/iot-suite-device-simulation-explore/stop.png)
+![Zastavit simulaci](media/iot-suite-device-simulation-explore/stop.png)
 
 > [!NOTE]
 > Současně lze spustit pouze jeden simulace. Před zahájením nové simulace, je potřeba zastavit aktuálně spuštěné simulace.

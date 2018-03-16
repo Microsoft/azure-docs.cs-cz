@@ -1,4 +1,19 @@
-
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines
+author: jonbeck7
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: azcspmt;jonbeck;cynthn
+ms.custom: include file
+ms.openlocfilehash: 95a78df20f5bed07213dfa3cc2c9b35e283f54e7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/16/2018
+---
 Počítač B-series rodiny umožňuje zvolit, které velikost virtuálního počítače poskytuje nezbytné základní úroveň výkonu pro úlohy, možnost burst výkonu procesoru až o 100 % Intel® Broadwell E5-2673 v4 2.3 GHz nebo procesor Intel® Haswell 2.4 GHz E5-2673 v3 virtuální procesory.
 
 Virtuální počítače B-series jsou ideální pro úlohy, které nemají potřebovat úplný výkon procesoru nepřetržitě, jako jsou webové servery, malé databáze a vývoj a testovací prostředí. Tyto úlohy mají obvykle burstable výkonu požadavky. B-series poskytuje možnost zakoupit velikost virtuálního počítače se základní výkon a instance virtuálního počítače vytvoří kredity při je nižší než jeho základní použití. Když virtuální počítač nahromadění platební, můžete virtuální počítač burst nad účaří použití až o 100 % virtuální procesor, když vaše aplikace vyžaduje vyšší výkon procesoru.
@@ -20,11 +35,11 @@ B-series se dodává v následujících šesti velikosti virtuálních počíta�
 ## <a name="q--a"></a>Dotazy a odpovědi 
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>Otázka: Jak získat 135 % standardních hodnot výkonu z virtuálního počítače?
-**A**: 135 % je sdílená mezi 8 virtuálních procesorů na který tvoří velikost virtuálního počítače. Například pokud aplikace využívá 4 s 8 jádry pracující na dávkové zpracování a každý z těchto 4 virtuální procesory jsou spuštěné v 30 % využití celkový objem výkonu procesoru virtuálního počítače by roven 120 %.  Znamená, že virtuální počítač by vytváření platební čas podle rozdílů 15 % z základní výkon.  Můžete ale také znamená, že pokud máte kredity, které jsou k dispozici, stejného virtuálního počítače můžete použít 100 % všechny 8 virtuálních procesorů je udělení tohoto virtuálního počítače výkonu procesoru maximální 800 %.
+**A**: 135 % je sdílená mezi 8 virtuálních procesorů na který tvoří velikost virtuálního počítače. Například pokud vaše aplikace používá 4 s 8 jádry pracující na dávkové zpracování a každý z těchto 4 virtuální procesory jsou spuštěné v 30 % využití celkový objem výkonu procesoru virtuálního počítače by roven 120 %.  Znamená, že virtuální počítač by vytváření platební čas podle rozdílů 15 % z základní výkon.  Můžete ale také znamená, že pokud máte kredity, které jsou k dispozici, stejného virtuálního počítače můžete použít 100 % všechny 8 virtuálních procesorů je udělení tohoto virtuálního počítače výkonu procesoru maximální 800 %.
 
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>Otázka: jak můžete monitorovat Moje kredit a spotřeba
-**A**: jsme představení 2 nové metriky v následujících týdnech **platební** metrika vám umožní zobrazit kolik kredity má bankovních virtuálního počítače a **ConsumedCredit** metrika se zobrazí kolik Virtuální počítač spotřebovala z banky kredity procesoru.    Bude moct zobrazit tyto metriky z podokna metriky na portálu nebo programově pomocí rozhraní API Azure monitorování.
+**A**: jsme představení 2 nové metriky v následujících týdnech **platební** metrika vám umožní zobrazit kolik kredity má bankovních virtuálního počítače a **ConsumedCredit** metrika se zobrazí kolik procesoru kredity z banky spotřebovala virtuálního počítače.    Bude moct zobrazit tyto metriky z podokna metriky na portálu nebo programově pomocí rozhraní API Azure monitorování.
 
 Další informace o tom, jak získat přístup k datům metriky pro Azure najdete v tématu [přehled metriky v Microsoft Azure](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md).
 

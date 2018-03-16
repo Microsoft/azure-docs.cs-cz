@@ -8,15 +8,15 @@ editor:
 ms.assetid: 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/13/2018
 ms.author: brenduns
 ms.reviewer: anajod
 keywords: 
-ms.openlocfilehash: cb8ac5435b7a5c6deb9d4571696c79b2ed15c93a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a4c854bdd659a05f032f5ee232074bc38ff677ef
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Zpřístupnit sady škálování virtuálního počítače v Azure zásobníku
 
@@ -67,7 +67,6 @@ $Creds =  New-Object System.Management.Automation.PSCredential $User, $Password
 
 $AzsEnv = Get-AzureRmEnvironment AzureStackAdmin
 $AzsEnvContext = Add-AzureRmAccount -Environment $AzsEnv -Credential $Creds
-Select-AzureRmProfile -Profile $AzsEnvContext
 
 Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
 

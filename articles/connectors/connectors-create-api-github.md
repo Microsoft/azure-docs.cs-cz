@@ -3,7 +3,7 @@ title: "Připojení ke Githubu službou Azure Logic Apps | Microsoft Docs"
 description: "Automatizovat pracovní postupy pro GitHub službou Azure Logic Apps"
 services: logic-apps
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 03/02/2018
-ms.author: mandia; ladocs
-ms.openlocfilehash: cd7cd3babbfb7efc5917d3a7ec5b9d10112ba791
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.author: estfan; ladocs
+ms.openlocfilehash: 830c3e6b5462c5d2d917388c0d0924e444342f93
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-to-github"></a>Připojení ke Githubu
 

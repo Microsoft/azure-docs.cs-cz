@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 3261a312cde9ebdf41f6dadb82c14d108715f8f7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 5323fe505adfd9b3495dd85ce41d6f141125184b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service v Azure zásobníku
 
@@ -47,7 +47,7 @@ Před nasazením služby Azure App Service v zásobníku Azure, musíte splnit p
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 
-Z důvodu 1802 verzi zásobník Azure, která přidala se podpora pro domén selhání, nové nasazení služby Azure App Service v Azure zásobníku distribuovány v domén selhání a zajistit odolnost proti chybám.  Pro existující nasazení služby Azure App Service v zásobníku Azure, které byly nasazeny před vydáním 1802 aktualizace, najdete v dokumentaci pro postup znovu vyvážit nasazení (azure-stack-app-service-fault-domain-update.md).
+Z důvodu 1802 verzi zásobník Azure, která přidala se podpora pro domén selhání, nové nasazení služby Azure App Service v Azure zásobníku distribuovány v domén selhání a zajistit odolnost proti chybám.  Pro existující nasazení služby Azure App Service v zásobníku Azure, které byly nasazeny před vydáním 1802 aktualizace, najdete v tématu [dokumentace](azure-stack-app-service-fault-domain-update.md) postup znovu vyvážit nasazení.
 
 Kromě toho Azure App Service v zásobníku Azure pro vysokou dostupnost, nasaďte požadované souborového serveru a instance systému SQL Server v konfiguraci s vysokou dostupností. 
 
@@ -82,7 +82,7 @@ Spuštění skriptu na hostiteli Azure zásobníku Development Kit a ujistěte s
 
 | Parametr | Požadované nebo volitelné | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| PfxPassword | Požaduje se | Null | Heslo, který pomáhá chránit privátní klíč certifikátu |
+| PfxPassword | Požaduje se | Hodnotu Null | Heslo, který pomáhá chránit privátní klíč certifikátu |
 | DomainName | Požaduje se | local.azurestack.external | Azure příponu zásobníku oblast a domény |
 
 ### <a name="certificates-required-for-a-production-deployment-of-azure-app-service-on-azure-stack"></a>Certifikáty požadované pro produkční nasazení služby Azure App Service v Azure zásobníku
@@ -225,7 +225,7 @@ set DOMAIN=<DOMAIN>
 net localgroup Administrators %DOMAIN%\FileShareOwners /add
 ```
 
-#### <a name="workgroup"></a>Pracovní skupina
+#### <a name="workgroup"></a>Pracovní skupiny
 
 Na souborovém serveru spusťte následující příkaz na příkazovém řádku se zvýšenými oprávněními:
 
@@ -250,7 +250,7 @@ icacls %WEBSITES_FOLDER% /grant %DOMAIN%\FileShareUsers:(CI)(S,X,RA)
 icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 ```
 
-#### <a name="workgroup"></a>Pracovní skupina
+#### <a name="workgroup"></a>Pracovní skupiny
 
 ```DOS
 set WEBSITES_FOLDER=C:\WebSites
@@ -311,12 +311,12 @@ Postupujte následovně:
 
 | Vytvoření AADIdentityApp.ps1 parametr | Požadované nebo volitelné | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| DirectoryTenantName | Požaduje se | Null | Azure AD ID klienta. Zadejte identifikátor GUID nebo řetězec. Příkladem je myazureaaddirectory.onmicrosoft.com. |
-| AdminArmEndpoint | Požaduje se | Null | Koncový bod správce Azure Resource Manager. Příkladem je adminmanagement.local.azurestack.external. |
-| TenantARMEndpoint | Požaduje se | Null | Koncový bod tenant Azure Resource Manager. Příkladem je management.local.azurestack.external. |
-| AzureStackAdminCredential | Požaduje se | Null | Pověření správce služby Azure AD. |
-| CertificateFilePath | Požaduje se | Null | Cesta k souboru certifikátu aplikace identity generované dříve. |
-| CertificatePassword | Požaduje se | Null | Heslo, který pomáhá chránit privátní klíč certifikátu. |
+| DirectoryTenantName | Požaduje se | Hodnotu Null | Azure AD ID klienta. Zadejte identifikátor GUID nebo řetězec. Příkladem je myazureaaddirectory.onmicrosoft.com. |
+| AdminArmEndpoint | Požaduje se | Hodnotu Null | Koncový bod správce Azure Resource Manager. Příkladem je adminmanagement.local.azurestack.external. |
+| TenantARMEndpoint | Požaduje se | Hodnotu Null | Koncový bod tenant Azure Resource Manager. Příkladem je management.local.azurestack.external. |
+| AzureStackAdminCredential | Požaduje se | Hodnotu Null | Pověření správce služby Azure AD. |
+| CertificateFilePath | Požaduje se | Hodnotu Null | Cesta k souboru certifikátu aplikace identity generované dříve. |
+| CertificatePassword | Požaduje se | Hodnotu Null | Heslo, který pomáhá chránit privátní klíč certifikátu. |
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Vytvoření aplikace Active Directory Federation Services
 
@@ -342,12 +342,12 @@ Postupujte následovně:
 
 | Create-ADFSIdentityApp.ps1  parameter | Požadované nebo volitelné | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| AdminArmEndpoint | Požaduje se | Null | Koncový bod správce Azure Resource Manager. Příkladem je adminmanagement.local.azurestack.external. |
-| PrivilegedEndpoint | Požaduje se | Null | Privilegované koncový bod. Příkladem je AzS ERCS01. |
-| CloudAdminCredential | Požaduje se | Null | Přihlašovací údaje účtu domény pro správce cloudu Azure zásobníku. Příkladem je Azurestack\CloudAdmin. |
-| CertificateFilePath | Požaduje se | Null | Cesta k souboru certifikátu PFX identity aplikace. |
-| CertificatePassword | Požaduje se | Null | Heslo, který pomáhá chránit privátní klíč certifikátu. |
+| AdminArmEndpoint | Požaduje se | Hodnotu Null | Koncový bod správce Azure Resource Manager. Příkladem je adminmanagement.local.azurestack.external. |
+| PrivilegedEndpoint | Požaduje se | Hodnotu Null | Privilegované koncový bod. Příkladem je AzS ERCS01. |
+| CloudAdminCredential | Požaduje se | Hodnotu Null | Přihlašovací údaje účtu domény pro správce cloudu Azure zásobníku. Příkladem je Azurestack\CloudAdmin. |
+| CertificateFilePath | Požaduje se | Hodnotu Null | Cesta k souboru certifikátu PFX identity aplikace. |
+| CertificatePassword | Požaduje se | Hodnotu Null | Heslo, který pomáhá chránit privátní klíč certifikátu. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Nainstalujte zprostředkovatele prostředků služby App Service](azure-stack-app-service-deploy.md)

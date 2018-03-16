@@ -1,4 +1,19 @@
-
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines
+author: jonbeck7
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: azcspmt;jonbeck;cynthn
+ms.custom: include file
+ms.openlocfilehash: 3652e26bb775ae6ac1897bea529e7ae69d77cdbd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/16/2018
+---
 Paměťově optimalizovaná nabídka velikosti virtuálních počítačů vysoký poměr paměti procesor, který se výborně hodí pro servery relační databáze, středních a velkých mezipaměti a analýzy v paměti. Tento článek obsahuje informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro každou velikost v této skupině. 
 
 * M-Series nabízí nejvyšší počet virtuálních procesorů (Vcpu až 128) a největší paměti (až 3.8 TiB) ve všech virtuálních počítačů v cloudu.  Je ideální pro extrémně velké databáze nebo další aplikace, kterým přináší výhody vysoký počet virtuálních procesorů a velké množství paměti.

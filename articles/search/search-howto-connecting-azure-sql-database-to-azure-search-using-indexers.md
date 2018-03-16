@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/13/2017
+ms.date: 08/12/2018
 ms.author: eugenesh
-ms.openlocfilehash: 2ec1e02ccc8d8916f6d9d50ce787f2562f33fd7d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 5f85b81e894cba7354fb146d6e9a1aa987be7dc5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Připojení k Azure Search pomocí indexerů Azure SQL Database
 
@@ -57,6 +57,9 @@ V závislosti na několika různými faktory týkající se dat používání Az
 | Datové typy jsou kompatibilní | Většina, ale ne všechny typy SQL jsou podporovány v indexu Azure Search. Seznam najdete v tématu [mapování datové typy](#TypeMapping). |
 | Synchronizace dat v reálném čase není vyžadováno | Indexer znovu mohou indexu tabulku maximálně každých pět minut. Pokud potřebujete projeví v indexu během několika sekund nebo minut jeden data často mění a změny, doporučujeme používat [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) nebo [.NET SDK](search-import-data-dotnet.md) tak, aby nabízel aktualizované řádky přímo. |
 | Přírůstkové indexování je možné | Pokud máte velké sady dat a plán spuštění indexeru podle plánu, musí být schopni efektivně identifikovat nové, změněné nebo odstraněné řádky Azure Search. Bez přírůstkové indexování je povoleno pouze pokud jste indexu na vyžádání (ne podle plánu), nebo indexování méně než 100 000 řádků. Další informace najdete v tématu [zaznamenávání změnit a odstranit řádky](#CaptureChangedRows) níže. |
+
+> [!NOTE] 
+> Vyhledávání systému Azure se podporuje jenom ověřování systému SQL Server. Pokud budete potřebovat podporu pro ověřování Azure Active Directory hesla, hlasovat prosím pro tento [UserVoice návrhu](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica).
 
 ## <a name="create-an-azure-sql-indexer"></a>Vytvořením indexeru. Azure SQL
 
@@ -168,7 +171,7 @@ Zvažte příklad udělat konkrétnější. Předpokládejme, že jsme následuj
 
 Stane se toto:
 
-1. První spuštění indexeru spustí na nebo přibližně 1. března 2015 12:00 v noci ČAS UTC.
+1. První spuštění indexeru spustí na nebo přibližně 1. března 2015 12:00 v noci UTC.
 2. Předpokládejme, že spuštění tohoto trvá 20 minut (nebo kdykoli menší než 1 hodina).
 3. Druhý provádění spustí na nebo přibližně 1. března 2015 1:00 ráno
 4. Nyní předpokládejme, že spuštění tohoto trvá víc než jednu hodinu – například 70 minut – tak, aby jeho dokončení přibližně 2:10:00
@@ -221,7 +224,7 @@ Tyto zásady detekce změn spoléhá na sloupec "horní mez" zaznamenávání ve
 * Vloží všechny zadejte hodnotu pro sloupec.
 * Všechny aktualizace k položce také změnit hodnotu pro sloupec.
 * Hodnota v tomto sloupci se zvyšuje s každou insert nebo update.
-* Dotazy s následující kde a klauzule ORDER BY se dají efektivně provádět:`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
+* Dotazy s následující kde a klauzule ORDER BY se dají efektivně provádět: `WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
 
 > [!IMPORTANT] 
 > Důrazně doporučujeme pomocí [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) datový typ sloupce horní mez. Pokud se používá jiný typ dat sledování změn není zaručeno zaznamenat všechny změny případě transakce provádění souběžně dotaz indexer. Při použití **rowversion** v konfiguraci s replikami jen pro čtení, musí odkazovat na primární replice indexeru. Scénáře synchronizace dat lze použít pouze primární repliku.
@@ -285,13 +288,13 @@ Při použití konfigurace soft odstranění techniku, můžete určit zásadu o
 ## <a name="mapping-between-sql-and-azure-search-data-types"></a>Mapování mezi datové typy SQL a Azure Search
 | Datový typ SQL. | Cílový index povolené typy polí | Poznámky |
 | --- | --- | --- |
-| Bit |Edm.Boolean Edm.String | |
-| int, smallint, tinyint |Edm.String Edm.Int32, Edm.Int64, | |
-| bigint |Edm.Int64 Edm.String | |
-| skutečné, float |Edm.Double Edm.String | |
+| Bit |Edm.Boolean, Edm.String | |
+| int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
+| bigint |Edm.Int64, Edm.String | |
+| skutečné, float |Edm.Double, Edm.String | |
 | Smallmoney peníze desítková číslice |Edm.String |Vyhledávání systému Azure nepodporuje převod decimal typy do Edm.Double, protože by to ztratit přesnost |
-| Char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Řetězec SQL lze použít k naplnění Collection(Edm.String) pole, pokud řetězec představuje pole JSON řetězců:`["red", "white", "blue"]` |
-| smalldatetime, datetime, datetime2, date, datetimeoffset |Edm.DateTimeOffset Edm.String | |
+| Char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Řetězec SQL lze použít k naplnění Collection(Edm.String) pole, pokud řetězec představuje pole JSON řetězců: `["red", "white", "blue"]` |
+| smalldatetime, datetime, datetime2, date, datetimeoffset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
 | Geography |Edm.GeographyPoint |Jsou podporovány pouze geography instance typu bodu s SRID 4326 (což je výchozí hodnota) |
 | ROWVERSION |neuvedeno |Verze řádku sloupce nelze uložit do indexu vyhledávání, ale mohou být použity pro sledování změn |

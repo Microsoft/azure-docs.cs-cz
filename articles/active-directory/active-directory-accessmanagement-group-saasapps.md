@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2017
+ms.date: 03/14/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: it-pro
-ms.openlocfilehash: 49a2c86516f0882f341597876d2a44ea3a312ea8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4aee5b28fd42be98fac8f9c7d61538319e3efd9a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>Použití skupiny ke správě přístupu k aplikacím SaaS
 Pomocí Azure Active Directory (Azure AD) s licencí Azure AD Premium nebo Azure AD Basic, můžete použít skupiny přiřazení přístupu k aplikaci SaaS, která je integrovaná s Azure AD. Například pokud chcete přiřadit přístup pro marketingové oddělení používat pět různých aplikace SaaS, je můžete vytvořit skupinu, která obsahuje uživatelé v marketingovém oddělení a potom přidělit této skupině pro těchto pět aplikace SaaS, které jsou vyžadovány z marketingového oddělení. Tímto způsobem můžete ušetřit čas tím Správa členství z marketingového oddělení na jednom místě. Uživatelé pak přiřazené k aplikaci při jsou přidány jako členové skupiny marketing a jejich přiřazení odebrali z aplikace, když jsou odebrány ze skupiny marketing. Tato funkce slouží se stovkami aplikací, které můžete přidat z v galerii aplikací Azure AD.
 
 > [!IMPORTANT]
-> Tato funkce slouží pouze po spuštění zkušební verzi Azure AD Premium nebo zakoupení licence Azure AD Premium nebo Azure AD Basic.
-> Vnořené členství ve skupinách momentálně není podporované v případě přiřazování k aplikacím podle skupiny.
+> Tato funkce slouží pouze po spuštění zkušební verzi Azure AD Premium nebo zakoupení licence Azure AD Premium nebo Azure AD Basic. Přiřazení na základě skupiny je podporována pouze pro skupiny zabezpečení. Vnořené členství ve skupinách momentálně není podporované v případě přiřazování k aplikacím podle skupiny.
 
 **Přiřadit přístup pro uživatele nebo skupinu k aplikaci SaaS**
 
@@ -38,7 +37,7 @@ Pomocí Azure Active Directory (Azure AD) s licencí Azure AD Premium nebo Azure
 6. Vyberte počet skupin nebo uživatelů tak, jak chcete, pak klikněte nebo klepněte na **vyberte** je přidejte do **přidat přiřazení** seznamu. Můžete také přiřadit role pro uživatele v této fázi.
 7. Vyberte **přiřadit** přiřadit uživatele nebo skupiny do aplikace vybrané rozlehlé sítě.
 
-### <a name="next-steps"></a>Další kroky
+### <a name="next-steps"></a>Další postup
 Následující články poskytují další informace o službě Azure Active Directory.
 
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](active-directory-manage-groups.md)

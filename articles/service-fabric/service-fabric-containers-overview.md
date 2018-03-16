@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/20/2017
 ms.author: msfussell
-ms.openlocfilehash: 412107db2dc446eb5a6a433bfb7fc3bc5e760c27
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: f12dc08953372b2dfae773df11cf1f47b42a1b89
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric a kontejnery
 > [!NOTE]
@@ -26,11 +26,11 @@ ms.lasthandoff: 01/13/2018
 >   
 
 > [!NOTE]
-> Service Fabric verze 6.1 má preview podporu pro systém Windows Server verze. 1709. Otevřete sítě a služba DNS prostředků infrastruktury se systémem Windows Server verze. 1709 nefungují. 
+> Service Fabric verze 6.1 nabízí podporu verze Preview pro Windows Server verze 1709. Otevřené sítě a služba DNS Service Fabricu s Windows Serverem verze 1709 nefungují. 
 > 
 
 ## <a name="introduction"></a>Úvod
-Azure Service Fabric je [orchestrator](service-fabric-cluster-resource-manager-introduction.md) služeb mezi clustery počítačů za několik let využití a optimalizace v masivním měřítku služeb společnosti Microsoft. Služby mohou být vytvořeny v mnoha směrech pomocí [Service Fabric programovací modely](service-fabric-choose-framework.md) nasazení [spustitelné soubory hosta](service-fabric-deploy-existing-app.md). Ve výchozím nastavení Service Fabric nasadí a aktivuje tyto služby jako procesy. Procesy poskytují nejrychlejší aktivace a nejvyšší hustotu využití prostředků v clusteru. Service Fabric lze také nasadit services v kontejneru bitové kopie. Je důležité je možné kombinovat služby v procesy a služby v kontejnerech ve stejné aplikaci.   
+Azure Service Fabric je [orchestrator](service-fabric-cluster-resource-manager-introduction.md) služeb mezi clustery počítačů za několik let využití a optimalizace v masivním měřítku služeb společnosti Microsoft. Služby mohou být vytvořeny v mnoha směrech pomocí [Service Fabric programovací modely](service-fabric-choose-framework.md) nasazení [spustitelné soubory hosta](service-fabric-guest-executables-introduction.md). Ve výchozím nastavení Service Fabric nasadí a aktivuje tyto služby jako procesy. Procesy poskytují nejrychlejší aktivace a nejvyšší hustotu využití prostředků v clusteru. Service Fabric lze také nasadit services v kontejneru bitové kopie. Je důležité je možné kombinovat služby v procesy a služby v kontejnerech ve stejné aplikaci.   
 
 ## <a name="what-are-containers"></a>Co jsou kontejnery?
 Kontejnery jsou zapouzdřené, jednotlivě nasadit součásti, které běží jako izolovaných instancí na stejné jádra využívat výhody virtualizace, které poskytuje operační systém. Proto každou aplikaci a její runtime, závislosti a systémové knihovny spusťte uvnitř kontejneru s úplnou, soukromý přístup do kontejneru vlastní izolované zobrazení konstrukce operačního systému. Společně s přenositelnost je tato úroveň zabezpečení a prostředků izolace hlavní výhody pro kontejnery pomocí Service Fabric, který jinak běží služby v procesech.
@@ -72,7 +72,7 @@ Zde jsou příklady typických kde kontejner je vhodné použít:
 ## <a name="service-fabric-support-for-containers"></a>Podpora Service Fabric pro kontejnery
 Service Fabric podporuje nasazení kontejnerů Docker na Linux a Windows Server kontejnery v systému Windows Server 2016, společně s podporou pro technologii Hyper-V izolovaném režimu. 
 
-V Service Fabric [aplikačního modelu](service-fabric-application-model.md), kontejner představuje hostitele aplikace ve více služby, která jsou umístěna repliky. Service Fabric můžete spustit všechny kontejnery a tento scénář je podobná [spustitelné scénář hostovaného](service-fabric-deploy-existing-app.md), kde balíček existující aplikaci uvnitř kontejneru. Tento scénář je běžný případ použití pro kontejnery a příklady spuštění aplikace napsané v libovolném jazyce nebo rozhraní, ale ne pomocí předdefinovaných programovací modely Service Fabric.
+V Service Fabric [aplikačního modelu](service-fabric-application-model.md), kontejner představuje hostitele aplikace ve více služby, která jsou umístěna repliky. Service Fabric můžete spustit všechny kontejnery a tento scénář je podobná [spustitelné scénář hostovaného](service-fabric-guest-executables-introduction.md), kde balíček existující aplikaci uvnitř kontejneru. Tento scénář je běžný případ použití pro kontejnery a příklady spuštění aplikace napsané v libovolném jazyce nebo rozhraní, ale ne pomocí předdefinovaných programovací modely Service Fabric.
 
 Kromě toho můžete spustit [služby Service Fabric uvnitř kontejnery](service-fabric-services-inside-containers.md) také. Podpora pro spuštěné služby Service Fabric uvnitř kontejnery je aktuálně omezená a bude lepší v budoucích verzích.
 

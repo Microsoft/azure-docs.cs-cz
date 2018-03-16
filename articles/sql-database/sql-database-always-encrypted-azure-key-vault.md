@@ -3,23 +3,18 @@ title: "Funkce Always Encrypted: SQL Database – Azure Key Vault | Microsoft Do
 description: "Tento článek ukazuje, jak zajistit citlivá data v databázi SQL s šifrování dat pomocí Průvodce vždycky šifrovaná v aplikaci SQL Server Management Studio."
 keywords: "šifrování dat, šifrovací klíč, šifrování cloudu"
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-ms.assetid: 6ca16644-5969-497b-a413-d28c3b835c9b
 ms.service: sql-database
 ms.custom: security
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.openlocfilehash: ca4566ced525f0cb732afc15d96d9ef73fd8cff5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3525355a7f997a5dcc54d14f216d0d647aef8407
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Funkce Always Encrypted: Chrání citlivá data v databázi SQL a ukládat šifrovací klíče v Azure Key Vault
 
@@ -615,7 +610,7 @@ Pomocí aplikace SSMS přístup k datům ve formátu prostého textu, můžete p
     ![Novou konzolovou aplikaci](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Po vytvoření databáze, která používá vždycky šifrovaná, můžete provést následující akce:
 
 * [Otočit a vyčištění klíče](https://msdn.microsoft.com/library/mt607048.aspx).

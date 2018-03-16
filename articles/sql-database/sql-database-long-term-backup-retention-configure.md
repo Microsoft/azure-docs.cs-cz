@@ -2,24 +2,18 @@
 title: "Konfigurace dlouhodobé uchovávání záloh – Azure SQL database | Microsoft Docs"
 description: "Zjistěte, jak uložit automatizované zálohování do trezoru služeb zotavení Azure a obnovit z trezoru služeb zotavení Azure"
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: aeb8c4c3-6ae2-45f7-b2c3-fa13e3752eed
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
-ms.openlocfilehash: e75facfd77fc1cb3c23aa4e1f6f7f799620fef39
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: f6d32976cc4b9d669e629005be4d7aacebd62f9e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention"></a>Konfigurace a obnovení z Azure SQL Database dlouhodobé uchovávání záloh
 
@@ -266,7 +260,7 @@ $restoredDb
 > [!NOTE]
 > Tady můžete připojit k obnovené databázi pomocí SQL Server Management Studio potřebné úkoly, například za účelem extrahování bit dat z obnovené databáze chcete zkopírovat do existující databáze nebo odstranit existující databázi a přejmenujte obnovenou databáze na název existující databáze. V tématu [bodu v době obnovení](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o automatických zálohách generovaných službou najdete u popisu [automatických záloh](sql-database-automated-backups.md).
 - Další informace o dlouhodobém uchovávání záloh najdete v části [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md)

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2017
+ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: c8f3c0e87a052b327e9949acd3e7db1d28c1eb46
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 943305c78a17031d647bf2fa0977d10c51213ef5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>Okruhy ExpressRoute a domény směrování
  Musíte uspořádat *okruh ExpressRoute* pro připojení k místní infrastruktuře společnosti Microsoft prostřednictvím poskytovatele připojení. Následující obrázek ukazuje vytvoření logického vyjádření připojení mezi vaší sítě WAN a společnosti Microsoft.
@@ -60,12 +60,12 @@ Připojení je vždycky iniciováno z vaší sítě WAN do služby Microsoft Azu
 
 V rámci vaší sítě využívat jenom trasy, které potřebujete, můžete definovat vlastní trasy filtry. Odkazovat [směrování](expressroute-routing.md) podrobné informace o konfiguraci směrování. 
 
-Najdete v článku [stránka s nejčastějšími dotazy](expressroute-faqs.md) Další informace o služeb podporovaných prostřednictvím veřejného partnerského vztahu doménu směrování. 
+Další informace o službách, které jsou podporovány prostřednictvím veřejného partnerského vztahu doménu směrování, najdete v článku [– nejčastější dotazy](expressroute-faqs.md).
 
 ### <a name="microsoft-peering"></a>Partnerský vztah Microsoftu
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-Připojení k všech jiných služeb Microsoft online services (služby Office 365, Dynamics 365 a Azure PaaS) je prostřednictvím partnerského vztahu Microsoftu. Můžeme povolit obousměrné připojení mezi vaší sítě WAN a cloudové služby Microsoft prostřednictvím partnerského vztahu směrování domény Microsoft. Je nutné se připojit ke cloudovým službám Microsoftu jenom přes veřejné IP adresy, které jsou vlastněny vy nebo váš poskytovatel připojení a musí dodržovat veškerá definovaná pravidla. Najdete v článku [požadavky služby ExpressRoute](expressroute-prerequisites.md) stránka Další informace.
+Připojení ke službám Microsoft online services (služby Office 365, Dynamics 365 a Azure PaaS) je prostřednictvím partnerského vztahu Microsoftu. Můžeme povolit obousměrné připojení mezi vaší sítě WAN a cloudové služby Microsoft prostřednictvím partnerského vztahu směrování domény Microsoft. Je nutné se připojit ke cloudovým službám Microsoftu jenom přes veřejné IP adresy, které jsou vlastněny vy nebo váš poskytovatel připojení a musí dodržovat veškerá definovaná pravidla. Další informace najdete v tématu [požadavky služby ExpressRoute](expressroute-prerequisites.md) stránky.
 
 Najdete v článku [stránka s nejčastějšími dotazy](expressroute-faqs.md) Další informace o služeb podporovaných, náklady a podrobnosti o konfiguraci. Najdete v článku [umístění ExpressRoute](expressroute-locations.md) informace o seznamu poskytovatelů připojení nabízí podporu partnerského vztahu Microsoftu.
 
@@ -87,7 +87,7 @@ Můžete povolit jeden nebo více domén směrování v rámci okruhu ExpressRou
 
 Pokud je se rozhodli pro všechny tři relace partnerského vztahu, musí obsahovat tři dvojici relací protokolu BGP (jednu dvojici pro každý typ partnerského vztahu). Páry relace protokolu BGP poskytovat vysoce dostupné odkaz. Pokud se připojujete pomocí poskytovatelů vrstvy 2 připojení, jste zodpovědní za konfiguraci a správu směrování. Další informace najdete [pracovních](expressroute-workflows.md) pro nastavení ExpressRoute.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Vyhledejte poskytovatele služeb. V tématu [ExpressRoute služby poskytovatelé a umístění](expressroute-locations.md).
 * Zkontrolujte, že jsou splněné všechny požadavky. Viz [Požadavky služby ExpressRoute](expressroute-prerequisites.md).
 * Nakonfigurujte připojení ExpressRoute.

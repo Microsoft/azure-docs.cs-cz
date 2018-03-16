@@ -3,8 +3,8 @@ title: "Nasadit vaši nabídku do Azure Marketplace | Microsoft Docs"
 description: "Další informace o a provede pokyny k nasazení vaši nabídku – bitovou kopii virtuálního počítače, služby pro vývojáře, data služby atd. – v Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 8f79b891-84e2-4f41-ba0d-66420e2c6b2e
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2016
-ms.author: hascipio
-ms.openlocfilehash: 12dc81642905cd9449a1032c7ab57298e6b69ba8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 8df7b0e49e17612743b02596e99f7d1fbe8c6803
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-your-offer-to-the-azure-marketplace"></a>Nasadit vaši nabídku do Azure Marketplace
 Až budete spokojeni s vaši nabídku (tedy testování zákazníka scénáře marketingové obsah, atd.) a budete chtít spustit, žádosti o **Push do produkčního prostředí** na **publikovat** kartě.  
@@ -76,10 +76,10 @@ Až budete spokojeni s vaši nabídku (tedy testování zákazníka scénáře m
 * Datový disk neměli měnit mezi dvěma verzemi stejné verze SKU.
 * Azure Marketplace nepodporuje cenovou změnu uvedené SKU, jak se má dopad na fakturaci stávající zákazníky. Ujistěte se, že neměnit ceny uvedené SKU v oblastech, kde je k dispozici verze SKU. Můžete ale přidat nové SKU nebo přidání nových oblastí do existující SKU.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Jakmile nabídku přejde za provozu, testovací scénáře zákazníka k ověření všechny smlouvy a funkce fungovat správně v provozním prostředí jako otestovat a ověřit v testovacím prostředí.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Začínáme: postup publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-pubportal-walkthru-checked]:media/marketplace-publishing-push-to-production/pubportal-walkthru-checked.png

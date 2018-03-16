@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: bwren
-ms.openlocfilehash: 08d0e557f03f771901c9ac92fb080e74e5966452
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d63d47c39054230307416e24ed1c8295fbf68d93
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Vytváření vlastních pohledů pomocí návrháře zobrazení v analýzy protokolů
 Pomocí zobrazení návrhu v [Azure Log Analytics](log-analytics-overview.md), různých vlastních zobrazení můžete vytvořit na portálu Azure, který můžete vizualizovat data v pracovním prostoru analýzy protokolů. Tento článek obsahuje přehled Návrhář zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.
@@ -28,8 +28,6 @@ Další informace o návrháři zobrazení najdete v tématu:
 * [Odkaz na dlaždici](log-analytics-view-designer-tiles.md): poskytuje referenční příručka k nastavení pro jednotlivé dostupné dlaždice do vlastních zobrazení.
 * [Odkaz na část vizualizace](log-analytics-view-designer-parts.md): poskytuje referenční příručka k nastavení pro vizualizaci částí, které jsou k dispozici do vlastních zobrazení.
 
->[!NOTE]
-> Pokud pracovní prostor byl upgradován na verzi [nové protokolu Analytics query language](log-analytics-log-search-upgrade.md), dotazů ve všech zobrazeních, musí být napsaná [nové dotazovací jazyk](https://go.microsoft.com/fwlink/?linkid=856078). Automaticky se převedou všechny zobrazení, které byly vytvořeny před pracovním prostoru byl upgradován.
 
 ## <a name="concepts"></a>Koncepty
 Zobrazení se zobrazují na **přehled** stránka pracovní prostor analýzy protokolů na portálu Azure. Dlaždice v každém vlastní zobrazení se zobrazí abecedně, a dlaždice pro řešení jsou nainstalované ve stejném pracovním prostoru.

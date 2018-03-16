@@ -15,17 +15,23 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 7f82083cd18f762d1037da2ccf43e9d0c220fe09
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8c028bd20518a07a5fb35e36d0819c001eb2a7d5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table úložiště vazby pro Azure Functions
 
 Tento článek vysvětluje, jak pracovat s Azure Table storage vazeb v Azure Functions. Azure Functions podporuje vstup a výstup vazby pro Azure Table storage.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="packages"></a>Balíčky
+
+Vazby tabulky úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/) úložiště GitHub.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="input"></a>Vstup
 
@@ -288,7 +294,7 @@ module.exports = function (context, myQueueItem) {
  
 V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte následující atributy ke konfiguraci vazbu vstupní tabulky:
 
-* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), která je definována v balíčku NuGet [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
+* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)
 
   Konstruktoru atributu přebírá název tabulky, klíč oddílu a klíč řádku. Může sloužit na parametr typu out nebo návratovou hodnotu funkce, jak je znázorněno v následujícím příkladu:
 
@@ -318,7 +324,7 @@ V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte nás
 
   Úplný příklad najdete v tématu [(vstup) – příklad jazyka C#](#input---c-example).
 
-* [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs), definované v balíčku NuGet [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs)
+* [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
   Poskytuje další možnost zadejte účet úložiště, který chcete použít. Konstruktor přebírá název nastavení aplikace, který obsahuje připojovací řetězec úložiště. Atribut lze použít na parametr, metoda nebo na úrovni třídy. Následující příklad ukazuje úroveň třídy a metody:
 
@@ -567,7 +573,7 @@ module.exports = function (context) {
 
 ## <a name="output---attributes"></a>Výstup – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), která je definována v balíčku NuGet [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs).
 
 Konstruktoru atributu přebírá název tabulky. Je možné použít s `out` parametr nebo na základě návratové hodnoty funkce, jak je znázorněno v následujícím příkladu:
 
@@ -625,7 +631,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 * **Vytvořit jeden nebo více řádků v C# nebo C#**
 
-  V jazyce C# a C# skript, přístup k entitu výstupní tabulky pomocí parametru metody `ICollector<T> paramName` nebo `ICollectorAsync<T> paramName`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. `T` Určuje schéma entity, které chcete přidat. Obvykle `T` je odvozena z `TableEntity` nebo implementuje `ITableEntity`, ale nemusí to. Klíč oddílu a řádku klíče hodnoty v *function.json* nebo `Table` nejsou v tomto scénáři používají konstruktoru atributu.
+  V jazyce C# a C# skript, přístup k entitu výstupní tabulky pomocí parametru metody `ICollector<T> paramName` nebo `IAsyncCollector<T> paramName`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. `T` Určuje schéma entity, které chcete přidat. Obvykle `T` je odvozena z `TableEntity` nebo implementuje `ITableEntity`, ale nemusí to. Klíč oddílu a řádku klíče hodnoty v *function.json* nebo `Table` nejsou v tomto scénáři používají konstruktoru atributu.
 
   Další možností je použít `CloudTable paramName` parametru metody k zápisu do tabulky pomocí sady SDK úložiště Azure.
 

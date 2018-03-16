@@ -2,24 +2,18 @@
 title: "Tabulky auditování, přesměrování TDS IP koncové body pro databázi SQL Azure a | Microsoft Docs"
 description: "Další informace o auditování, TDS přesměrování a IP koncový bod změny při implementaci tabulky auditování ve službě Azure SQL Database."
 services: sql-database
-documentationcenter: 
 author: giladm
-manager: jhubbard
-editor: 
-ms.assetid: 4ef19ed1-e798-43a2-ad99-0e563f93ab53
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: giladm
-ms.openlocfilehash: 42c89f09eee4394fec7d2f33f51ddc5875587530
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 1053869ed26739463ab6035692052d7b6b34bff0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database – podpora klientů nižší úrovně a změní koncový bod IP adresy pro auditování tabulka
 
@@ -60,11 +54,11 @@ Nový koncový bod IP databáze bude záviset na oblasti databáze:
 | Austrálie – jihovýchod |191.239.184.223, 40.127.85.81, 191.239.161.83, 40.127.81.130 |
 | Brazílie – jih |104.41.44.161, 104.41.62.230, 23.97.99.54, 104.41.59.191 |
 | Střed USA |104.43.255.70, 40.83.14.7, 23.99.128.244, 40.83.15.176 |
-| Střed USA EUAP |52.180.178.16, 52.180.176.190 |
+| Střed USA – EUAP |52.180.178.16, 52.180.176.190 |
 | Východní Asie |23.99.125.133, 13.75.40.42, 23.97.71.138, 13.94.43.245 |
 | Východní USA 2 |104.209.141.31, 104.208.238.177, 191.237.131.51, 104.208.235.50 |
 | Východ USA |23.96.107.223, 104.41.150.122, 23.96.38.170, 104.41.146.44 |
-| EUAP východní USA |52.225.190.86, 52.225.191.187 |
+| Východ USA – EUAP |52.225.190.86, 52.225.191.187 |
 | Střed Indie |104.211.98.219, 104.211.103.71 |
 | Indie – jih |104.211.227.102, 104.211.225.157 |
 | Indie – západ |104.211.161.152, 104.211.162.21 |

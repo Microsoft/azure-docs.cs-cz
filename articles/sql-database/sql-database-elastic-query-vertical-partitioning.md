@@ -2,23 +2,18 @@
 title: "Dotaz mezi databázemi cloudu s jinou schématu | Microsoft Docs"
 description: "jak nastavit mezidatabázové dotazy přes svislé oddíly"
 services: sql-database
-documentationcenter: 
-manager: jhubbard
+manager: craigg
 author: MladjoA
-ms.assetid: 84c261f2-9edc-42f4-988c-cf2f251f5eff
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mlandzic
-ms.openlocfilehash: f3bf919aa4aab8d37a5a97b90138b1f5434eb6ea
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 2ded9ee4938e02715b1149ce5375e855519cea9f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Dotazování mezi databází cloudu s různými schématy (preview)
 ![Dotazování mezi tabulkami v různých databází][1]
@@ -67,7 +62,7 @@ Syntaxe:
 > Parametr typu musí být nastaven na **RDBMS**. 
 >
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 Následující příklad ukazuje použití příkazu vytvořit pro externí zdroje dat. 
 
     CREATE EXTERNAL DATA SOURCE RemoteReferenceData 
@@ -96,7 +91,7 @@ Syntaxe:
       [ SCHEMA_NAME = N'nonescaped_schema_name',] 
       [ OBJECT_NAME = N'nonescaped_object_name',] 
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
     CREATE EXTERNAL TABLE [dbo].[customer]( 
         [c_id] int NOT NULL, 
         [c_firstname] nvarchar(256) NULL, 
@@ -179,7 +174,7 @@ Regulární připojovací řetězce SQL Server můžete použít pro připojení
 * Ujistěte se, že koncový bod databáze elastické dotazu udělen přístup ke vzdálené databázi povolením přístupu pro služby Azure v konfiguraci brány firewall SQL DB. Zkontrolujte také, že zadané v definici zdrojové externích dat přihlašovací údaje může úspěšně přihlásit do vzdálené databáze a má oprávnění pro přístup k vzdálené tabulce.  
 * Elastické dotazu je nejvhodnější pro dotazy kde lze provést většinu výpočet na vzdálené databáze. Obvykle získáte nejlepší výkon dotazů s predikáty selektivní filtru, které lze vyhodnotit na vzdálené databáze nebo spojení, které lze provést zcela na vzdálené databáze. Ostatní typy dotazů možná muset načíst velké objemy dat od vzdálené databáze a může být špatná. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Přehled elastické dotazů najdete v tématu [elastické dotazu přehled](sql-database-elastic-query-overview.md).
 * Vertikální dělení kurzu, najdete v části [Začínáme s mezidatabázové dotazu (vertikální dělení)](sql-database-elastic-query-getting-started-vertical.md).

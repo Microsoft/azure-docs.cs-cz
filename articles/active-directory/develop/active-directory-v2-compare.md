@@ -1,5 +1,5 @@
 ---
-title: "Co je nového v koncového bodu v2.0 Azure AD? | Dokumentace Microsoftu"
+title: "Co je nového v koncového bodu v2.0 Azure AD? | Dokumenty Microsoft"
 description: "Porovnání mezi původní Azure AD v2.0 koncové body a."
 services: active-directory
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4216c2215f494a81935cd4cdca52427b0cbac143
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 502bfa128422a029878513d6aa4533718bdddbb5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>Co se liší o koncový bod v2.0?
 Pokud jste se seznámili s Azure Active Directory nebo aplikací mít integrované s Azure AD v minulosti, může být určité rozdíly v koncový bod v2.0, které by uživatel očekával.  Tento dokument se volá na těchto rozdílů za pochopení.
@@ -56,7 +56,7 @@ Naše cílem je, že to vést k více zjednodušené správy aplikací a vývojo
 ## <a name="scopes-not-resources"></a>Obory, ne prostředky
 V Azure Active Directory, můžete aplikaci chovat jako **prostředků**, nebo příjemce tokenů.  Prostředek můžete definovat několika **obory** nebo **oAuth2Permissions** , že rozumí, umožňuje tak klientským aplikace k žádosti o tokeny pro tento prostředek pro určitou oborů.  Vezměte v úvahu Azure AD Graph API jako příklad prostředku:
 
-* Identifikátor prostředku nebo `AppID URI`:`https://graph.windows.net/`
+* Identifikátor prostředku nebo `AppID URI`: `https://graph.windows.net/`
 * Obory, nebo `OAuth2Permissions`: `Directory.Read`, `Directory.Write`atd.  
 
 Všechny tyto platí pro koncový bod v2.0.  Aplikace může stále chovat jako prostředek, definovat obory a identifikovat podle identifikátoru URI.  Klientské aplikace může stále požádat o přístup k tyto obory.  Ale způsob, ve kterém klient požaduje tato oprávnění se změnila.  V minulosti autorizace OAuth 2.0 požadavek do služby Azure AD může mít hledá jako:

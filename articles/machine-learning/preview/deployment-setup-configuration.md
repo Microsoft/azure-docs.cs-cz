@@ -2,19 +2,19 @@
 title: "Azure Machine Learning Model správy nastavení a konfigurace | Microsoft Docs"
 description: "Tento dokument popisuje kroky a koncepty součástí nastavení a konfiguraci modelu správy v Azure Machine Learning."
 services: machine-learning
-author: raymondlaghaeian
-ms.author: raymondl
+author: AashishB
+ms.author: AashishB
 manager: hjerez
-ms.reviewer: jmartens,jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/6/2017
-ms.openlocfilehash: 4e2ac548ee08f1a20cf2c1744242ee13535e55cc
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c3efc7373e8825115af9b08f3f46e55e8490758a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="model-management-setup"></a>Nastavení modelu správce
 
@@ -70,7 +70,7 @@ Spustit s místní nasazení, ověřte, že model a kód fungovat, potom nasadit
 Pokud chcete spustit, musíte nastavit prostředí pro nasazení. Nastavení prostředí je čas úlohy. Po dokončení instalace můžete opakovaně použít prostředí pro následné nasazení. Následující části Další podrobnosti.
 
 Po dokončení instalace prostředí:
-- Zobrazí se výzva k přihlášení k Azure. K přihlášení použijte webový prohlížeč a otevřete stránku https://aka.ms/devicelogin zadejte poskytnutý kód pro ověření.
+- Zobrazí se výzva k přihlášení k Azure. K přihlášení, použijte webový prohlížeč otevře se stránka https://aka.ms/devicelogin a zadejte poskytnutý kód pro ověření.
 - Během procesu ověřování budete vyzváni k účtu k ověření. Důležité: Vyberte účet, který má platné předplatné Azure a dostatečná oprávnění k vytváření prostředků v účtu. Po protokolu v dokončení se zobrazí informace o vašem předplatném a zobrazí se výzva, jestli chcete pokračovat s vybraný účet.
 
 ### <a name="environment-setup"></a>Nastavení prostředí

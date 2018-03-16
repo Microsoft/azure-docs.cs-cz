@@ -3,8 +3,8 @@ title: "Testovací virtuální počítač nabídku pro Marketplace | Microsoft D
 description: "Pochopit, jak chcete otestovat bitové kopie virtuálních počítačů v Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 7a41c3c6-625c-4478-b804-e124dee89040
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
-ms.author: hascipio
-ms.openlocfilehash: 26f856059b381be91b9cdd1f98a11dc90813c0c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 7f225f113dd465f79d5d195b59a809fe3be6a1f8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>Při přípravě otestovat vaši nabídku virtuálních počítačů pro Azure Marketplace
 Pracovní znamená nasazení vaší SKU privátního "izolovaného", kde můžete testovat a před nasazením na Marketplace s cílem ověřit její funkce. Verze SKU se zobrazí v pracovním stejně, jako by zákazníkovi, který je nasazena. Chcete-li být vložena do přípravy musí mít certifikovanou bitové kopie virtuálního počítače.
@@ -47,7 +47,7 @@ Pracovní znamená nasazení vaší SKU privátního "izolovaného", kde můžet
    * Ujistěte se, že marketingové obsah se zobrazí správně v Marketplace.
    * Koncové nasazení bitové kopie virtuálního počítače.
      
-      ![IMG. Mapa portálu](media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg)
+      ![img-map-portal](media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg)
 
 > [!IMPORTANT]
 > Vaši nabídku zůstane v pracovním dokud oznámit Microsoftu prostřednictvím portálu publikování [**publikovat** kartě > klikněte na tlačítko **"Žádosti o schválení pro nabízené do výroby"**] je vše připraveno k produkční. To je ideální třeba mít všechny členy vašeho týmu kontroly nad vše v rámci přípravy vaši nabídku budete uvedené.
@@ -56,9 +56,9 @@ Pracovní znamená nasazení vaší SKU privátního "izolovaného", kde můžet
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když vaši nabídku je "připravený" a testování její funkce a uvádění na trh obsah, můžete přejít k publikování závěrečné **krok 4**: [nasazení vaši nabídku Marketplace](marketplace-publishing-push-to-production.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Začínáme: postup publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md)
 

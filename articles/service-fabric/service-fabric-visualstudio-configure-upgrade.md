@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 314b29a56e4651222822f40a116af97a7372ff2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ff85991e87a4996890520a566b3909d331ed27f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurace upgradu aplikace Service Fabric v sadě Visual Studio
 Nástroje sady Visual Studio pro Azure Service Fabric zajištění upgradu podpory pro publikování do místního nebo vzdáleného clusterů. Existují tři scénáře, ve kterých chcete upgradovat aplikaci na novější verzi místo nahrazení aplikace v průběhu testování a ladění:
@@ -85,5 +85,5 @@ Následující příklad ukazuje, jak použít zásady kontrola jedinečný stav
     </HealthPolicy>
 </Policies>
 ```
-## <a name="next-steps"></a>Další kroky
-Další informace o nasazení aplikace naleznete v tématu [nasadit existující aplikaci v Azure Service Fabric](service-fabric-deploy-existing-app.md).
+## <a name="next-steps"></a>Další postup
+Další informace o upgradu aplikace najdete v tématu [Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md).

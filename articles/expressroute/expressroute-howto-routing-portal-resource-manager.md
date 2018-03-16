@@ -13,17 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2017
+ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: be25e9ffab4fee79b8d9cc6c88c6ffb3e852af0d
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 1ad6c62c3c5828143cb78f464fc1181bdf3b19f7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Vytvářet a upravovat partnerský vztah pro okruh ExpressRoute
 
 Tento článek pomůže při vytváření a správě konfigurace směrování pro okruh ExpressRoute v modelu nasazení Resource Manager pomocí portálu Azure. Můžete také zkontrolovat stav, aktualizace nebo odstranění a zrušení zřízení partnerských vztahů pro okruh ExpressRoute. Pokud chcete použít jinou metodu pro práci se váš okruh, vyberte článek z následujícího seznamu:
+
+> [!div class="op_single_selector"]
+> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-routing-arm.md)
+> * [Azure CLI](howto-routing-cli.md)
+> * [Video - soukromého partnerského vztahu](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Video - veřejného partnerského vztahu](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Video - partnerského vztahu Microsoftu](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
+> * [PowerShell (Classic)](expressroute-howto-routing-classic.md)
+> 
 
 
 ## <a name="configuration-prerequisites"></a>Předpoklady konfigurace
@@ -114,7 +124,7 @@ Tato část vám umožňuje vytvořit, získat, aktualizovat a odstranit Azure k
 
 1. Nakonfigurujte okruh ExpressRoute. Než budete pokračovat, ujistěte se, že je okruh poskytovatelem připojení plně zřízený. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, požádejte svého poskytovatele připojení povolte soukromý partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Ale pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, pokračujte v konfiguraci pomocí následující kroky.
 
-  ![seznam](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+  ![Seznam](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. Nakonfigurujte soukromý partnerský vztah Azure pro okruh. Před zahájením dalších kroků se ujistěte, že máte k dispozici následující položky:
 
   * Podsíť /30 pro primární propojení. Podsítě nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě.

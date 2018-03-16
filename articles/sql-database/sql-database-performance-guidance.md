@@ -2,24 +2,18 @@
 title: "Ladění pokyny Azure SQL Database výkonu | Microsoft Docs"
 description: "Další informace o použití doporučení pro zlepšení výkonu dotazů Azure SQL Database."
 services: sql-database
-documentationcenter: na
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: dd8d95fa-24b2-4233-b3f1-8e8952a7a22b
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 0a7bce49a73d60785f09f270894afc4037661e10
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 63a8b9f8c81ad3dc122bf25d8a06cdf242a0f35b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Ladění výkonu v Azure SQL Database
 
@@ -262,7 +256,7 @@ Například pokud databáze obsahuje jméno zákazníka, pořadím a podrobnosti
 
 I když horizontálního dělení databáze není snížit kapacitu agregační prostředků pro řešení, je vysoce efektivní v podpora velmi velké řešení, která jsou rozloženy více databází. Každou databázi můžete spustit na úrovni různých výkonu pro podporu velký, "efektivní" databáze s vysokými požadavky na prostředky.
 
-### <a name="functional-partitioning"></a>Funkční oddíly
+### <a name="functional-partitioning"></a>Funkční dělení
 Uživatelům systému SQL Server často kombinovat mnoho funkcí v jedné databáze. Například pokud má aplikace logiky ke správě inventáře pro úložiště, že databáze může být logiku související s inventářem, sledování nákupních objednávek, uložené procedury a indexované nebo Vyhodnocená zobrazení, které Správa vytváření sestav koncový měsíc. Tento postup je snazší spravovat databáze pro operace, jako je zálohování, ale také vyžaduje, abyste velikost hardwarem pro zpracování zátěž ve špičce mezi všechny funkce aplikace.
 
 Pokud používáte architekturu škálování ve službě Azure SQL Database, je vhodné k rozdělení různé funkce aplikace do různých databází. Pomocí tohoto postupu nezávisle škáluje každou aplikaci. Když aplikace bude Vytíženější (a zvyšuje zatížení databáze), Správce může rozhodnout úrovně nezávislé výkonu pro každou funkci v aplikaci. V omezení, tato architektura aplikace může být větší než jeden komoditním počítač dokáže zpracovat, protože zatížení je rozdělena mezi více počítačů.
@@ -275,7 +269,7 @@ Některé aplikace jsou náročné na zápis. V některých případech můžete
 ### <a name="application-tier-caching"></a>Ukládání do mezipaměti aplikační vrstvy
 Některé databázových aplikací mít úlohy náročné na čtení. Ukládání do mezipaměti vrstvy může vést ke snížení zatížení databáze a může potenciálně snížit úroveň výkonu, které jsou potřebné k podpoře databáze pomocí Azure SQL Database. S [Azure Redis Cache](https://azure.microsoft.com/services/cache/), pokud máte úlohy náročné na čtení, můžete číst data jednou (nebo případně jednou za aplikační vrstvy počítače, v závislosti na tom, jak je nakonfigurovaná) a potom tato data mimo vaší databázi SQL. Toto je způsob, jak snížit zatížení databáze (procesoru a čtení vstupně-výstupních operací), ale není vliv na transakční konzistence, protože data se načten z mezipaměti může být synchronizována s daty v databázi. V mnoha aplikacích určité úrovně, ke kterému je přijatelné, není, platí pro všechny úlohy. Všechny požadavky aplikace byste měli plně rozumět před implementací strategie pro ukládání do mezipaměti aplikační vrstvy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o úrovních služeb najdete v tématu [výkon a možnosti databáze SQL](sql-database-service-tiers.md)
 * Další informace o elastické fondy najdete v tématu [co je Azure elastickém fondu?](sql-database-elastic-pool.md)
 * Informace o výkonu a Elastická fondy najdete v tématu [při vzít v úvahu fondu elastické databáze](sql-database-elastic-pool-guidance.md)

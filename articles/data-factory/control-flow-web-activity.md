@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 04b542bf1f77b75c1c92b147b578df630b86d0ac
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 510f9ac95245580cb7f2f51487b5aeacc2a4825c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Aktivity webového v Azure Data Factory
 Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup. 
@@ -69,7 +69,7 @@ Vlastnost | Popis | Povolené hodnoty | Požaduje se
 jméno | Název webové aktivity | Řetězec | Ano
 type | Musí být nastavena na **WebActivity**. | Řetězec | Ano
 metoda | Metoda REST API pro koncový bod cíl. | Řetězec. <br/><br/>Podporované typy: "GET", "POST", "PUT" | Ano
-Adresa URL | Koncový bod cíl a cesty | Řetězec (nebo výraz s hodnotou resultType řetězec) | Ano
+Adresa URL | Koncový bod cíl a cesty | Řetězec (nebo výraz s hodnotou resultType řetězec). Aktivity bude časový limit na 1 minutu, zobrazí se chyba, pokud neobdrží odpověď z koncového bodu. | Ano
 hlavičky | Hlavičky, které se odesílají na požadavek. Chcete-li například nastavit jazyk a typ na vyžádání: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Řetězec (nebo výraz s hodnotou resultType řetězec) | Ano, je požadovaná hlavička Content-type. `"headers":{ "Content-Type":"application/json"}`
 hlavní část | Představuje datovou část, která je odeslána koncovému bodu. Vyžaduje se pro metody POST nebo PUT.  | Řetězec (nebo výraz s hodnotou resultType řetězec). <br/><br/>Najdete v části schéma datová část požadavku v [schématu datová část požadavku](#request-payload-schema) části. | Ne
 Ověřování | Metodu ověřování pro volání koncový bod. Podporované typy jsou "Basic nebo ClientCertificate." Další informace najdete v tématu [ověřování](#authentication) části. Pokud ověření není vyžadováno, vyloučíte tuto vlastnost. | Řetězec (nebo výraz s hodnotou resultType řetězec) | Ne
@@ -77,11 +77,11 @@ Datové sady | Seznam datových sad předaná koncovému bodu. | Pole odkazuje n
 linkedServices | Seznam propojené služby předaná koncovému bodu. | Pole Propojená služba odkazuje. Může být prázdné pole. | Ano
 
 > [!NOTE]
-> Koncové body REST, která volá webové aktivity musí vracet odpověď typu JSON.
+> Koncové body REST, která volá webové aktivity musí vracet odpověď typu JSON. Aktivity bude časový limit na 1 minutu, zobrazí se chyba, pokud neobdrží odpověď z koncového bodu.
 
 ## <a name="authentication"></a>Authentication
 
-### <a name="none"></a>Žádné
+### <a name="none"></a>Žádný
 Pokud ověření není potřeba, nezahrnujte vlastnosti "ověřování".
 
 ### <a name="basic"></a>Basic

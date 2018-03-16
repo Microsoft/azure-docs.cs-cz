@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 2a5be24aba8a675290045b282cc64dda4b7c594e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: b7fc48412799aea0c4bba971102b4912dbb18e05
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Jak chránit, back-endu webového rozhraní API pomocí Azure Active Directory a API Management
 
@@ -59,7 +59,7 @@ Konfigurace tohoto projektu jako webového rozhraní API Azure, zaškrtněte pol
 
 Můžete být vyzváni k přihlášení do Azure a pak můžete nakonfigurovat webové aplikace.
 
-![Konfigurovat][api-management-configure-web-app]
+![Konfigurace][api-management-configure-web-app]
 
 V tomto příkladu novou **plán služby App Service** s názvem **APIMAADDemo** je zadán.
 
@@ -177,9 +177,9 @@ Poznamenejte si **identifikátor Id URI aplikace** pro použití v následném k
 ## <a name="import-the-web-api-into-api-management"></a>Importovat webové rozhraní API do rozhraní API Management
 Rozhraní API se konfigurují na rozhraní API portálu vydavatele, který je přístupný prostřednictvím portálu Azure. K dosažení ho, klikněte na tlačítko **portál vydavatele** na panelu nástrojů služby API Management. Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management] [ Create an API Management service instance] v [Správa vašeho prvního rozhraní API] [ Manage your first API] kurzu.
 
-![Portál pro vydavatele][api-management-management-console]
+![Portál vydavatele][api-management-management-console]
 
-Operace jde [ručně přidat do rozhraní API](api-management-howto-add-operations.md), nebo může být importován. V tomto videu se operace importují ve formátu Swagger od 6:40.
+Operace jde [ručně přidat do rozhraní API](api-management-howto-add-operations.md), nebo může být importován.
 
 Vytvořte soubor s názvem `calcapi.json` s následující obsah a uložte ho do počítače. Ujistěte se, že `host` atribut body back-end vašeho webového rozhraní API. V tomto příkladu `"host": "apimaaddemo.azurewebsites.net"` se používá.
 
@@ -357,7 +357,7 @@ Klikněte na tlačítko **vyzkoušet**.
 
 Klikněte na tlačítko **odeslat** a poznamenejte si stav odpovědi **401 – Neověřeno**.
 
-![Poslat][api-management-dev-portal-send-401]
+![Odeslat][api-management-dev-portal-send-401]
 
 Požadavek není autorizovaný, protože rozhraní API back-end je chráněn službou Azure Active Directory. Před úspěšně voláním rozhraní API vývojář portál musí být nakonfigurované k autorizaci vývojáře, kteří používají OAuth 2.0. Tento proces je popsán v následujících částech.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 8f6f3fc8325fb2587dc09b982efa52fbe663e2a9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3e2f8be0f77e220da483dcfb18d6b324d3f203ed
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálního počítače Azure výkon diagnostiky pro Windows
 
@@ -227,9 +227,7 @@ Nástroj PerfInsights shromažďuje různé protokoly, konfiguraci a diagnostick
 
 ## <a name="view-and-share-the-results"></a>Zobrazovat a sdílet výsledky
 
-Výstup z rozšíření je uložena ve složce. Složka jmenuje log_collection a najdete v části dočasné jednotce (obvykle D:\log_collection) ve výchozím nastavení. V této složce uvidíte soubory zip obsahující diagnostické protokoly a sestavy s výsledky a doporučení.
-
-Můžete také získat soubor zip v účet úložiště zadaný během instalace. Je sdílen po dobu 30 dnů pomocí [podpisy sdíleného přístupu (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Textový soubor s názvem *zipfilename*_saslink.txt se také vytvoří ve složce log_collection. Tento soubor obsahuje odkaz SAS vytvořili ke stažení souboru zip. Každý, kdo má tento odkaz je možné stáhnout soubor zip.
+Výstup z rozšíření naleznete v souboru zip, nahrán do úložiště účet zadaný při instalaci a sdílenou po dobu 30 dnů pomocí [podpisy sdíleného přístupu (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Tento soubor zip obsahuje diagnostické protokoly a sestavy s výsledky a doporučení. Odkaz SAS k výstupnímu souboru zip najdete uvnitř textový soubor s názvem *zipfilename*_saslink.txt ve složce **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<verze >**. Každý, kdo má tento odkaz je možné stáhnout soubor zip.
 
 Jako pomoc pracovníka podpory práce v lístku podpory, může společnost Microsoft používat tento odkaz SAS ke stahování dat diagnostiky.
 
@@ -240,7 +238,7 @@ Nyní byste měli také mít ke stažení souboru zip přímo z portálu výběr
 ![Snímek obrazovky výkon diagnostiky podrobný stav](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 
 > [!NOTE]
-> Odkaz SAS, které se zobrazí na portálu nemusí fungovat. To může být způsobeno poškozená adresa URL během operace kódování a dekódování. Místo toho můžete získat na odkaz přímo ze souboru *_saslink.txt z virtuálního počítače.
+> V některých případech nemusí fungovat odkaz SAS, které se zobrazí na portálu. To může být způsobeno poškozená adresa URL během operace kódování a dekódování. Místo toho můžete získat na odkaz přímo ze souboru *_saslink.txt z virtuálního počítače.
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
@@ -249,6 +247,6 @@ Nyní byste měli také mít ke stažení souboru zip přímo z portálu výběr
     Tento problém můžete ignorovat, tak dlouho, dokud rozšíření stav označuje, že je rozšíření úspěšně zřízený.
 - Některé problémy můžete vyřešit během instalace pomocí protokolů rozšíření. Výstupu spuštění rozšíření se zaznamenává soubory, které jsou v následujícím adresáři:
 
-        C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics
+        C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
 Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na Azure odborníky na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**. Informace o používání podpory Azure najdete v tématu [podporu Microsoft Azure – nejčastější dotazy](https://azure.microsoft.com/support/faq/).

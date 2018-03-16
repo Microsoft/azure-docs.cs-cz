@@ -3,8 +3,8 @@ title: "Technické požadavky pro vytvoření šablony řešení pro Marketplace
 description: "Pochopit požadavky pro vytvoření šablony řešení pro nasazení a prodeje na Azure Marketplace"
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: bbcc12dd-1c2f-4ce6-830c-f0e06524aa38
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/28/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: 0aa9ab99aea08f5e368efbb97d8a1be7fbb79552
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.author: mbaldwin
+ms.openlocfilehash: 4de9f66b4632f2573299757b2e40fae65f86f7d6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="technical-prerequisites-for-creating-a-solution-template-for-the-azure-marketplace"></a>Technické požadavky pro vytvoření šablony řešení pro Azure Marketplace
 Přečtěte si důkladně před zahájením procesu a pochopit, kde a proč se provádí každý krok. Co nejvíce, měli byste Příprava informací o společnosti a další data, stáhněte potřebné nástroje, a vytvořit technické součásti před zahájením procesu vytvoření nabídky.  

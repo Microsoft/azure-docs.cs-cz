@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: c4bf3871b4636ce769dd8d84a637b88d4a00db97
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4709ee707aa67c8de531b2b3e0b58dbed5c2667b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutím prostředků do nové skupiny prostředků nebo předplatného
 
@@ -123,7 +123,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Clustery HDInsight - najdete v části [omezení HDInsight](#hdinsight-limitations)
 * IoT Huby
 * Key Vault
-* Služby vyrovnávání zatížení
+* Nástroje pro vyrovnávání zatížení – viz [omezení pro vyrovnávání zatížení](#lb-limitations)
 * Logic Apps
 * Machine Learning
 * Media Services
@@ -132,6 +132,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Operational Insights
 * Správa operací
 * Power BI
+* Veřejná IP adresa - najdete v části [omezení veřejnou IP adresu](#pip-limitations)
 * Redis Cache
 * Scheduler
 * Search
@@ -161,8 +162,10 @@ Služby, které aktuálně nepovolujte přesunutí prostředku jsou:
 * ExpressRoute
 * DevTest Labs – přesunout do nové skupiny prostředků v rámci stejného předplatného je povoleno, ale přesunutí křížové předplatného není povolená.
 * Dynamics LCS
+* Nástroje pro vyrovnávání zatížení – viz [omezení pro vyrovnávání zatížení](#lb-limitations)
 * Spravované aplikace
 * Najdete v části spravované disky - [omezení virtuální počítače](#virtual-machines-limitations)
+* Veřejná IP adresa - najdete v části [omezení veřejnou IP adresu](#pip-limitations)
 * Trezor služeb zotavení – také proveďte není přesunout prostředky výpočty, síť a úložiště přidružený k trezoru služeb zotavení, najdete v části [služeb zotavení omezení](#recovery-services-limitations).
 * Zabezpečení
 * Správce zařízení StorSimple
@@ -320,6 +323,16 @@ Při přesunu clusteru HDInsight na nové předplatné, nejprve přesunete jiné
 
 Nelze přesunout více hledat prostředky, které jsou umístěny v různých oblastech všechny najednou.
 V takovém případě budete muset přesuňte je samostatně.
+
+## <a name="lb-limitations"></a> Omezení nástroje pro vyrovnávání zatížení
+
+Základní SKU pro vyrovnávání zatížení se dají přesunout.
+Nástroj pro vyrovnávání zatížení standardní SKU nelze přesunout.
+
+## <a name="pip-limitations"></a> Veřejné IP omezení
+
+Základní SKU veřejné IP se dají přesunout.
+Standardní SKU veřejné IP nelze přesunout.
 
 ## <a name="use-portal"></a>Použít portál
 

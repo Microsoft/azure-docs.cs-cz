@@ -1,23 +1,19 @@
 ---
 title: "Vysoká dostupnost – služba Azure SQL Database | Microsoft Docs"
 description: "Další informace o možnosti vysokou dostupnost služby Azure SQL Database a funkcí"
-keywords: 
 services: sql-database
 author: anosov1960
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
-ms.custom: 
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.date: 03/07/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 86a839102e98a1b8e7cd9927c697cacf1f41a1a6
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 5e0d0166377f80c1f43782156fa735915cbc31f1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 Od zahájení nabídky PaaS databáze SQL Azure společnost Microsoft vyvinula potenciálu svým zákazníkům, které vysoké dostupnosti (HA) je součástí služby a zákazníků nemusejí fungovat, přidejte speciální logiku pro nebo rozhodnutí ohledně HA. Společnost Microsoft udržuje plnou kontrolu nad konfigurace systému HA a operace, zákazníkům nabídnout SLA. HA SLA platí pro databáze SQL v oblasti a neposkytuje ochranu v případě selhání celkový oblasti, které je faktory, které mimo Microsoft nemohla ovlivnit (například přírodní katastrofě, war, jednání teroristický útok, povstáním, government akci, nebo síťové zařízení selhání nebo externí vzhledem k datových centrech společnosti Microsoft, včetně v lokalitách zákazníka nebo mezi lokalitami zákazníka a datového centra společnosti Microsoft).
@@ -91,7 +87,7 @@ Zóny redundantní verzi Architektura vysoké dostupnosti je zobrazená ve násl
 ## <a name="conclusion"></a>Závěr
 Databáze SQL Azure je úzce integrovaná s platformou Azure a vysoce závisí na Service Fabric pro zjištění selhání a obnovení, objektů BLOB služby Azure Storage pro ochranu dat a dostupnost zóny pro vyšší odolnosti proti chybám. Ve stejnou dobu Azure SQL database plně využívá technologie Always On z pole produktu SQL Server pro replikaci a převzetí služeb při selhání. Kombinace těchto technologií umožňuje aplikacím plně výhody modelu smíšený úložiště a podporu nejnáročnější SLA. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [Azure dostupnost zóny](../availability-zones/az-overview.md)
 - Další informace o [Service Fabric](../service-fabric/service-fabric-overview.md)

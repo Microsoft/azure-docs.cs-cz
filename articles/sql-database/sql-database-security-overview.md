@@ -2,25 +2,19 @@
 title: "Přehled zabezpečení služby Azure SQL Database | Dokumentace Microsoftu"
 description: "Další informace o zabezpečení Azure SQL Database a SQL Server, včetně rozdíly mezi cloudové a místní SQL Server."
 services: sql-database
-documentationcenter: 
 author: giladm
-manager: shaik
+manager: craigg
 ms.reviewer: carlrab
-editor: 
-ms.assetid: a012bb85-7fb4-4fde-a2fc-cf426c0a56bb
 ms.service: sql-database
 ms.custom: security
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
-ms.date: 01/29/2018
+ms.date: 03/12/2018
 ms.author: giladm
-ms.openlocfilehash: 41051944af863c4c50595ea843e2adf3513b3a12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1dc34f021fa6482c65cce0e922951ae329987c43
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="securing-your-sql-database"></a>Zabezpečení SQL Database
 
@@ -62,7 +56,6 @@ Brána firewall pomáhá chránit vaše data tím, že brání veškerému pří
 
 ### <a name="authentication"></a>Authentication
 Ověřování ve službě SQL Database určuje, jakým způsobem prokážete svou identitu při připojování k databázi. SQL Database podporuje dva typy ověřování:
-
 * **Ověřování SQL,** které používá uživatelské jméno a heslo. Když jste vytvářeli logický server databáze, zadali jste uživatelské jméno a heslo účtu „server admin“. Tyto přihlašovací údaje můžete použít k ověření a přihlášení k libovolné databázi na daném serveru jako vlastník databáze neboli „dbo“. 
 * **Ověřování pomocí Azure Active Directory,** které používá identity spravované v Azure Active Directory a je podporované u spravovaných a integrovaných domén. [Kdykoliv to půjde](https://msdn.microsoft.com/library/ms144284.aspx), použijte ověřování pomocí Active Directory (integrované zabezpečení). Pokud chcete k ověřování použít Azure Active Directory, musíte vytvořit jiného správce serveru, který se jmenuje „Azure AD admin“ a který smí spravovat uživatele a skupiny služby Azure AD. Tento správce také smí provádět všechny operace jako běžný správce serveru. Postup vytvoření účtu správce služby Azure AD, který umožňuje ověřování Azure Active Directory, najdete v tématu [Připojení ke službě SQL Database s ověřením přes Azure Active Directory](sql-database-aad-authentication.md).
 
@@ -86,6 +79,21 @@ Detekce hrozeb doplňuje auditování, tím, že poskytuje další vrstvu zabezp
  
 ## <a name="compliance"></a>Dodržování předpisů
 Kromě výše uvedeného funkce a funkce, které mohou pomoci aplikace splňovat různé požadavky na zabezpečení, Azure SQL Database také účastní pravidelné audity a certifikovala proti počet standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/), kde také najdete nejnovější seznam [certifikátů služby SQL Database v oblasti dodržování předpisů](https://azure.microsoft.com/support/trust-center/services/).
+
+
+## <a name="security-management"></a>Správa zabezpečení
+
+Databáze SQL slouží ke správě zabezpečení vašich dat. Díky pomocí řídicího panelu centralizované zabezpečení a kontroly databáze [vyhodnocení ohrožení zabezpečení SQL](sql-vulnerability-assessment.md).
+
+**Vyhodnocení ohrožení zabezpečení**: [vyhodnocení ohrožení zabezpečení SQL](sql-vulnerability-assessment.md) (aktuálně ve verzi preview) je snadno konfigurovat nástroj integrovaný do Azure SQL Database, která vám může pomoct zjistit, sledovat a napravovat potenciální databáze chyby zabezpečení. Hodnocení provede kontrolu ohrožení zabezpečení ve vaší databázi a vygeneruje sestavu, která poskytuje přehled vaší stavu zabezpečení, včetně řešitelné kroků vyřešit problémy se zabezpečením a zvýšit zabezpečení vaší databáze. Zprávy o hodnocení můžete přizpůsobit pro vaše prostředí nastavení přijatelné směrný konfigurace oprávnění, konfigurace funkce a nastavení databáze. To vám může pomoci:
+
+- Splňovat požadavky předpisů vyžadujících sestavy kontroly databáze. 
+
+- Splnění standardů data o ochraně osobních údajů. 
+
+- Monitorování dynamické databáze prostředí, kde je obtížné sledovat změny.
+
+Další informace najdete v tématu [vyhodnocení ohrožení zabezpečení SQL](sql-vulnerability-assessment.md).
 
 ## <a name="next-steps"></a>Další postup
 

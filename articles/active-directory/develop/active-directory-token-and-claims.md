@@ -2,7 +2,7 @@
 title: "Další informace o různých token a deklarace identity typy podporované službou Azure AD | Microsoft Docs"
 description: "Příručka pro pochopení a zhodnocení deklarace identity v tokenech SAML 2.0 a webové tokeny JSON (JWT), vystavené pomocí Azure Active Directory (AAD)"
 documentationcenter: na
-author: dstrockis
+author: hpsin
 services: active-directory
 manager: mtillman
 editor: 
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/07/2017
-ms.author: dastrock
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3104b47d7ff8585142674b0ee545012f1e291ddd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ca8a34c0a29ffad21e6384feac055d7a292311a5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-ad-token-reference"></a>Odkaz tokenu Azure AD
 Azure Active Directory (Azure AD) vysílá několik typů tokenů zabezpečení ve zpracování každý tok ověřování. Tento dokument popisuje formát, zabezpečení vlastnosti a obsah každého typu token.
@@ -50,25 +50,25 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 #### <a name="claims-in-idtokens"></a>Deklarace identity v id_tokens
 > [!div class="mx-codeBreakAll"]
-| Deklarace identity JWT | Name (Název) | Popis |
+| Deklarace identity JWT | Název | Popis |
 | --- | --- | --- |
 | `appid` |ID aplikace |Určuje aplikace, která je pomocí tokenu pro přístup k prostředkům. Aplikace může fungovat jako sám sebe nebo jménem uživatele. ID aplikace obvykle představuje objekt, aplikace, ale může také představovat objekt zabezpečení služby ve službě Azure AD. <br><br> **Příklad JWT hodnoty**: <br> `"appid":"15CB020F-3984-482A-864D-1D92265E8268"` |
 | `aud` |Cílová skupina |Zamýšlený příjemce tokenu. Aplikace, která přijme token musí ověřte, zda hodnota cílové skupiny je správný a odmítnout všechny tokeny, určený pro jinou cílovou skupinu. <br><br> **Příklad SAML hodnoty**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **Příklad JWT hodnoty**: <br> `"aud":"https://contoso.com"` |
 | `appidacr` |Application Authentication Context Class Reference |Určuje, jak došlo k ověření klienta. Pro veřejné klienta hodnota je 0. Pokud používáte ID klienta a tajný klíč klienta, hodnota je 1. <br><br> **Příklad JWT hodnoty**: <br> `"appidacr": "0"` |
 | `acr` |Authentication Context Class Reference |Určuje, jak byla ověřena předmět, na rozdíl od klienta do Application Authentication Context Class Reference deklarace identity. Hodnota 0, označuje, že ověřování koncového uživatele nesplňuje požadavky ISO/IEC 29115. <br><br> **Příklad JWT hodnoty**: <br> `"acr": "0"` |
 | Ověřování prostřednictvím rychlých |Zaznamenává datum a čas, kdy došlo k chybě ověřování. <br><br> **Příklad SAML hodnoty**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | |
-| `amr` |Metoda ověřování |Určuje, jak byla ověřena předmět tokenu. <br><br> **Příklad SAML hodnoty**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **Příklad JWT hodnoty**:`“amr”: ["pwd"]` |
+| `amr` |Metoda ověřování |Určuje, jak byla ověřena předmět tokenu. <br><br> **Příklad SAML hodnoty**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **Příklad JWT hodnoty**: `“amr”: ["pwd"]` |
 | `given_name` |Jméno |Poskytuje první nebo "zadány" jméno uživatele, nastavené na objekt uživatele Azure AD. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”>`<br>`<AttributeValue>Frank<AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `"given_name": "Frank"` |
 | `groups` |Skupiny |Poskytuje ID objektů, které představují členství ve skupinách daného subjektu. Tyto hodnoty jsou jedinečné (viz ID objektu) a bezpečně slouží ke správě přístupu, jako je například vynucování autorizace pro přístup k prostředkům. Skupiny součástí skupiny deklarace identity jsou nakonfigurované na základě jednotlivých aplikací prostřednictvím vlastnosti "groupMembershipClaims" manifestu aplikace. Hodnotu null vyloučí všechny skupiny, hodnotu "Objektu SecurityGroup" bude obsahovat pouze členství ve skupinách zabezpečení Active Directory a hodnotu "Vše" bude zahrnovat skupin zabezpečení a Office 365 distribučním seznamům. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `“groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]` |
 | `idp` |Zprostředkovatel identity |Zaznamenává poskytovatele identit, předmět token k ověření. Tato hodnota je shodné s hodnotou vystavitele deklarace identity, pokud není uživatelský účet v jiné klienta než vystavitele. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name=” http://schemas.microsoft.com/identity/claims/identityprovider”>`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `"idp":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
 | `iat` |IssuedAt |Ukládá čas, kdy byl token vydán. Se často používá k měření aktuálnosti tokenu. <br><br> **Příklad SAML hodnoty**: <br> `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` <br><br> **Příklad JWT hodnoty**: <br> `"iat": 1390234181` |
 | `iss` |Vystavitel |Identifikuje služby tokenů na zabezpečení (STS), která vytvoří a vrátí token. V tokeny, které vrací Azure AD je vystavitele sts.windows.net. Identifikátor GUID v hodnotě vystavitele deklarace je ID klienta adresáře Azure AD. ID klienta je identifikátor neměnné a spolehlivé adresáře. <br><br> **Příklad SAML hodnoty**: <br> `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` <br><br> **Příklad JWT hodnoty**: <br>  `"iss":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
 | `family_name` |Příjmení |Jak jsou definovány v objektu uživatele Azure AD, poskytuje poslední jméno, příjmení nebo příjmení uživatele. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name=” http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”>`<br>`<AttributeValue>Miller<AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `"family_name": "Miller"` |
-| `unique_name` |Name (Název) |Poskytuje lidského čitelný hodnotu, která identifikuje předmět tokenu. Tato hodnota není musí být jedinečný v rámci klienta a je určen k použití pouze pro účely zobrazení. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `"unique_name": "frankm@contoso.com"` |
+| `unique_name` |Název |Poskytuje lidského čitelný hodnotu, která identifikuje předmět tokenu. Tato hodnota není musí být jedinečný v rámci klienta a je určen k použití pouze pro účely zobrazení. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `"unique_name": "frankm@contoso.com"` |
 | `oid` |ID objektu |Obsahuje jedinečný identifikátor objektu ve službě Azure AD. Tato hodnota se nedá změnit a nemůže být přiřazeny nebo znovu použít. ID objektu slouží k identifikaci objektu v dotazech ke službě Azure AD. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `"oid":"528b2ac2-aa9c-45e1-88d4-959b53bc7dd0"` |
 | `roles` |Role |Představuje všechny role aplikace, které předmět byla udělena přímo i nepřímo prostřednictvím členství ve skupinách a slouží k vynucení řízení přístupu na základě rolí. Aplikační role jsou definovány na základě jednotlivých aplikací pomocí `appRoles` vlastnost manifestu aplikace. `value` Vlastnost každý aplikační role je hodnota, která se zobrazí v deklarace role. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`<br>`<AttributeValue>Admin</AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `“roles”: ["Admin", … ]` |
 | `scp` |Rozsah |Označuje zosobnění oprávnění udělená aplikaci klienta. Výchozí oprávnění je `user_impersonation`. Vlastníkem prostředku zabezpečené můžete zaregistrovat další hodnoty ve službě Azure AD. <br><br> **Příklad JWT hodnoty**: <br> `"scp": "user_impersonation"` |
-| `sub` |Předmět |Identifikuje objekt o tom, které vyhodnotí token informace, například uživatele aplikace. Tato hodnota se nedá změnit a nelze přiřadit nebo opakovaně, takže může sloužit ke kontrole autorizace bezpečně. Protože subjekt se vždy nachází v tokenech problémy Azure AD, je doporučeno použití této hodnoty autorizace systému obecné účely. <br> `SubjectConfirmation`není deklarace identity. Popisuje, jak ověřit předmět tokenu. `Bearer`Označuje, předmět byl potvrzen mít k dispozici tokenu. <br><br> **Příklad SAML hodnoty**: <br> `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>` <br><br> **Příklad JWT hodnoty**: <br> `"sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"` |
+| `sub` |Předmět |Identifikuje objekt o tom, které vyhodnotí token informace, například uživatele aplikace. Tato hodnota se nedá změnit a nelze přiřadit nebo opakovaně, takže může sloužit ke kontrole autorizace bezpečně. Protože subjekt se vždy nachází v tokenech problémy Azure AD, je doporučeno použití této hodnoty autorizace systému obecné účely. <br> `SubjectConfirmation` není deklarace identity. Popisuje, jak ověřit předmět tokenu. `Bearer` Označuje, předmět byl potvrzen mít k dispozici tokenu. <br><br> **Příklad SAML hodnoty**: <br> `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>` <br><br> **Příklad JWT hodnoty**: <br> `"sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"` |
 | `tid` |ID tenanta |Neměnné, jednorázovým identifikátor, který identifikuje klienta directory, která vydala token. Tuto hodnotu můžete použít pro přístup k prostředkům directory konkrétního klienta v aplikaci na více klientů. Tuto hodnotu můžete například použít k identifikaci klienta v volání rozhraní Graph API. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name=”http://schemas.microsoft.com/identity/claims/tenantid”>`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `"tid":"cbb1a5ac-f33b-45fa-9bf5-f37db0fed422"` |
 | `nbf`, `exp` |Životnost tokenu |Definuje časový interval, ve kterém je token platný. Služba, která ověří token měli ověřit, že je aktuální datum v rámci dobu životnosti tokenu, else ho měli odmítnout token. Služba může povolit pro až pět minut mimo rozsah dobu životnosti tokenu aby se zohlednily případné rozdíly v času hodin ("čas zkosení") mezi službami Azure AD a služby. <br><br> **Příklad SAML hodnoty**: <br> `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br><br> **Příklad JWT hodnoty**: <br> `"nbf":1363289634, "exp":1363293234` |
 | `upn` |Hlavní název uživatele |Ukládá uživatelské jméno hlavní název uživatele.<br><br> **Příklad JWT hodnoty**: <br> `"upn": frankm@contoso.com` |
@@ -90,13 +90,13 @@ Aktualizujte tokeny jsou tokeny zabezpečení, které aplikace můžete použít
 
 Tokeny obnovení jsou více prostředků.  To znamená, že obnovovací token obdržel během žádosti o token pro jeden prostředek lze uplatnit přístup tokenů úplně jiných prostředků. Chcete-li to provést, nastavte `resource` parametr v požadavku na cílový prostředek.
 
-Tokeny obnovení jsou zcela neprůhledné do vaší aplikace. Jsou dlohotrvající, ale aplikace nemá zapisovat očekávat, že token obnovení vydrží období.  V každém okamžiku v čase pro celou řadu důvodů může být zneplatněné obnovovacích tokenů.  Jediný způsob, jakým aplikace potřebujete vědět, jestli je platný token obnovení je pokus o uplatněte ho pomocí tokenu požadavku na koncový bod tokenu Azure AD.
+Tokeny obnovení jsou zcela neprůhledné do vaší aplikace. Jsou dlohotrvající, ale aplikace nemá zapisovat očekávat, že token obnovení vydrží období.  Tokeny obnovení může být zneplatněné v každém okamžiku v čase pro celou řadu důvodů - najdete v části [tokenu odvolání](#token-revocation) z těchto důvodů.  Jediný způsob, jakým aplikace potřebujete vědět, jestli je platný token obnovení je pokus o uplatněte ho pomocí tokenu požadavku na koncový bod tokenu Azure AD.
 
 Pokud uplatníte obnovovací token pro nový přístupový token, zobrazí se nové obnovovací token v odpovědi tokenu.  Byste měli uložit nově vydané aktualizace tokenu nahrazení, které jste použili v požadavku.  Tím se zaručí, že jsou dál platné pro stejně dlouho obnovovacích tokenů.
 
 ## <a name="validating-tokens"></a>Ověřování tokenů
 
-K ověřování požadavku id_token nebo access_token, aplikace by měl ověřit podpis tokenu a deklarace identity. Chcete-li ověřit přístupové tokeny, by mělo aplikace také ověřit vystavitele, cílovou skupinu a podepisování tokenů. Tyto muset ověřit pomocí hodnoty v dokumentu zjišťování OpenID. Například se nachází na klienta nezávislé verzi dokumentu [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration). Azure AD middleware obsahuje integrované funkce pro ověření přístupové tokeny, a můžete procházet naše [ukázky](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) vyhledat některé v jazyce podle svého výběru. Další informace o tom, jak explicitně ověřit JWT token, najdete v tématu [ruční Ukázka ověřování tokenů JWT](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation).  
+K ověřování požadavku id_token nebo access_token, aplikace by měl ověřit podpis tokenu a deklarace identity. Chcete-li ověřit přístupové tokeny, by mělo aplikace také ověřit vystavitele, cílovou skupinu a podepisování tokenů. Tyto muset ověřit pomocí hodnoty v dokumentu zjišťování OpenID. Například se nachází na klienta nezávislé verzi dokumentu [ https://login.microsoftonline.com/common/.well-known/openid-configuration ](https://login.microsoftonline.com/common/.well-known/openid-configuration). Azure AD middleware obsahuje integrované funkce pro ověření přístupové tokeny, a můžete procházet naše [ukázky](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) vyhledat některé v jazyce podle svého výběru. Další informace o tom, jak explicitně ověřit JWT token, najdete v tématu [ruční Ukázka ověřování tokenů JWT](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation).  
 
 Poskytujeme knihovny a ukázky kódu, které ukazují, jak snadno zpracovat ověření tokenu - níže uvedené informace se jednoduše poskytuje pro ty, kteří chtějí porozumět v podkladovém procesu.  Existují také několik třetích stran opensourcové knihovny k dispozici pro ověřování JWT – je alespoň jednu možnost pro téměř každé platformě a jazyk odhlašování došlo. Další informace o Azure AD authentication knihovny a ukázky kódu, najdete v tématu [knihovny ověřování služby Azure AD](active-directory-authentication-libraries.md).
 
@@ -146,6 +146,24 @@ Pokud vaše aplikace získá token zabezpečení (požadavku id_token při přih
 * a další...
 
 Úplný seznam ověření deklarace identity aplikace měli provést pro tokeny typu ID, najdete v části [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation). Podrobnosti o očekávaných hodnot pro tyto deklarace identity jsou zahrnuty v předchozím [část požadavku id_token](#id-tokens) části.
+
+## <a name="token-revocation"></a>Token zrušení
+
+Aktualizujte tokeny můžete zrušena nebo odvolat kdykoli z různých důvodů.  Ty lze rozdělit do dvou hlavních kategorií: vypršení časových limitů a odvolání. 
+* Token vypršení časových limitů
+  * MaxInactiveTime: Pokud token obnovení nebyl použit v čase, závisí na MaxInactiveTime, aktualizovat Token se již nebude platný. 
+  * MaxSessionAge: Pokud MaxAgeSessionMultiFactor nebo MaxAgeSessionSingleFactor byla nastavena na jinou hodnotu než výchozí (dokud odvolat), pak opětovné ověření se bude vyžadovat po uplynutí doby nastavení v MaxAgeSession *.  
+  * Příklady:
+    * Klient má MaxInactiveTime 5 dní a uživatel přešel na dovolenou týden a proto nebylo AAD nikdy nové žádosti o token od uživatele za 7 dnů.  Při příštím uživatel požádá o nový token se najdou jejich aktualizace tokenu je odvolaný a musí znovu zadat své přihlašovací údaje. 
+    * K citlivé aplikaci má MaxAgeSessionSingleFactor 1 den.  Pokud se uživatel přihlásí v pondělí a úterý (po 25 hodin uplynuly), bude vyžadovat opakované ověření.  
+* Odvolání
+  * Změna hesla dobrovolná: Pokud uživatel změní heslo, pravděpodobně znovu provést ověření v některé z jejich vlastních aplikací, v závislosti na způsob, jakým bylo dosaženo tokenu.  Viz poznámky níže výjimky. 
+  * Pohybem Změna hesla: Pokud správce určuje, že uživatel, chcete-li změnit své heslo nebo obnoví jeho, pak tokeny uživatele se zruší, pokud jejich bylo dosaženo pomocí hesla.  Viz poznámky níže výjimky. 
+  * Porušení zabezpečení: V případě porušení zabezpečení (například místní úložiště hesel nedodržení) správce můžete odvolat všechny aktuálně vystavené tokeny obnovení.  Tato akce vynutí všem uživatelům znovu provést ověření. 
+
+Poznámka: 
+
+Pokud byl jiný heslo metoda ověřování (pro Windows Hello, ověřovací aplikaci, biometrika jako vzhled nebo otisků prstů) k dosažení použity token, změna hesla nebude Vynutit opakované ověření uživatele (ale vynutí jejich ověřovací aplikaci opakované ověření).  Důvodem je, že jejich zvolené ověřování vstupu (a vzhled, například) se nezměnila a proto lze znovu znovu provést ověření.
 
 ## <a name="sample-tokens"></a>Ukázka tokeny
 

@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines-windows
+author: cynthn
+ms.service: virtual-machines-windows
+ms.topic: include
+ms.date: 03/11/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: 6729c4281f4aa10b653d1c4f29104fd10a08a96e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/16/2018
+---
 Když vytváříte virtuální počítač Azure, musíte vytvořit [virtuální síť](../articles/virtual-network/virtual-networks-overview.md) (VNet), nebo použít existující VNet. Také musíte rozhodnout, jak budou vaše virtuální počítače v síti VNet dostupné. Je důležité [plánovat před vytvořením prostředků](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) a dobře porozumět [omezením síťových prostředků](../articles/azure-subscription-service-limits.md#networking-limits).
 
 Na následujícím obrázku jsou virtuální počítače vyobrazené jako webové a databázové servery. Každá sada virtuálních počítačů je zařazena do oddělené podsítě VNet.
@@ -75,7 +91,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření virtuální 
 | [Azure Portal](../articles/virtual-network/quick-create-portal.md) | Pokud při vytváření virtuálního počítače necháte Azure vytvořit virtuální síť, bude její název kombinací názvu skupiny prostředků, která tuto virtuální síť obsahuje, a řetězce **-vnet**. Adresní prostor je 10.0.0.0/24, název požadované podsítě je **default** a rozsah adres podsítě je 10.0.0.0/24. |
 | [Azure PowerShell](../articles/virtual-network/quick-create-powershell.md) | K vytvoření podsítě a virtuální sítě použijete [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmVirtualNetworkSubnetConfig) a [New-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmVirtualNetwork). Pro přidání podsítě do už existující virtuální sítě můžete také použít [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig). |
 | [Azure CLI](../articles/virtual-network/quick-create-cli.md) | Podsíť a virtuální síť se vytvoří ve stejnou dobu. Pro [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) zadejte parametr **--subnet-name** s názvem podsítě. |
-| [Šablona](../articles/virtual-network/virtual-networks-create-vnet-arm-template-click.md) | Nejjednodušší způsob, jak vytvořit virtuální síť a podsítě, je stáhnout existující šablonu, jako je třeba [virtuální sítě se dvěma podsítěmi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets), a upravit ji pro vaše potřeby. |
+| Šablona | Nejjednodušší způsob, jak vytvořit síť VNet a podsítě je stáhnout existující šablonu, jako například [virtuální sítě se dvěma podsítěmi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)a upravit pro vaše potřeby. |
 
 ## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 
@@ -147,7 +163,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření virtuálníh
 | [Azure CLI](../articles/virtual-machines/linux/create-cli-complete.md) | Vytvořit a připojit virtuální počítač do virtuální sítě, podsítě a síťový adaptér, který vytvořit jako jednotlivé kroky. |
 | [Šablona](../articles/virtual-machines/windows/ps-template.md) | Jako vodítko při nasazování virtuálního počítače pomocí šablony použijte článek věnovaný [velmi jednoduchému nasazení virtuálního počítače s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows). |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Specifické pro virtuální počítač pokyny o tom, jak spravovat virtuální sítě Azure pro virtuální počítače najdete v tématu [Windows](../articles/virtual-machines/windows/tutorial-virtual-network.md) nebo [Linux](../articles/virtual-machines/linux/tutorial-virtual-network.md) kurzy.
 
 Existují také kurzy o tom, jak virtuální počítače Vyrovnávání zatížení a vytvořit vysoce dostupné aplikace pro [Windows](../articles/virtual-machines/windows/tutorial-load-balancer.md) nebo [Linux](../articles/virtual-machines/linux/tutorial-load-balancer.md).

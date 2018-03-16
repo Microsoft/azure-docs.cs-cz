@@ -3,17 +3,17 @@ title: "Konfigurace ověřování Azure Active Directory - SQL | Microsoft Docs"
 description: "Zjistěte, jak se připojit k databázi SQL, spravované Instance a SQL Data Warehouse pomocí Azure Active Directory Authentication – po dokončení konfigurace Azure AD."
 services: sql-database
 author: GithubMirek
-manager: johammer
+manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: 00b5be9863e2bff9e5b82845f99d6829e1bcdf13
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e8decbe2c8ed4bed6cfb71308510d031fc242faa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurovat a spravovat ověřování Azure Active Directory s databází SQL, spravované Instance nebo SQL Data Warehouse
 
@@ -193,7 +193,7 @@ Další informace o rozhraní příkazového řádku najdete v tématu [SQL - az
 ## <a name="configure-your-client-computers"></a>Konfigurace klientských počítačů
 Na všechny klientské počítače, ze kterých vaše aplikace nebo uživatele připojit k databázi SQL Azure nebo Azure SQL Data Warehouse pomocí Azure AD identity, musíte nainstalovat následující software:
 
-* Rozhraní .NET framework 4.6 nebo novější z [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).
+* Rozhraní .NET framework 4.6 nebo novější z [ https://msdn.microsoft.com/library/5a4x27ek.aspx ](https://msdn.microsoft.com/library/5a4x27ek.aspx).
 * Knihovna ověřování Azure Active Directory pro SQL Server (**ADALSQL. Knihovny DLL**) je k dispozici v několika jazycích (x86 a amd64) z webu Stažení softwaru [Microsoft Active Directory Authentication Library pro Microsoft SQL Server](http://www.microsoft.com/download/details.aspx?id=48742).
 
 Můžete splňovat tyto požadavky podle:
@@ -277,7 +277,7 @@ Tuto metodu použijte, pokud jsou přihlášení k systému Windows pomocí při
 
     ![Vyberte název databáze][13]
 
-## <a name="active-directory-password-authentication"></a>Ověřování hesla služby Active Directory
+## <a name="active-directory-password-authentication"></a>Ověřování hesla Active Directory
 
 Tuto metodu použijte, pokud připojíte přes hlavní název služby Azure AD pomocí služby Azure AD spravované domény. Můžete ji použít i pro federované účet bez přístupu k doméně, například při práci se vzdáleně.
 
@@ -309,7 +309,7 @@ conn.Open();
 
 Klíčové slovo připojovacího řetězce ``Integrated Security=True`` není podporována pro připojení k databázi SQL Azure. Při vytváření připojení ODBC, musíte se k odebrání mezer a nastavení ověřování pro 'ActiveDirectoryIntegrated'.
 
-### <a name="active-directory-password-authentication"></a>Ověřování hesla služby Active Directory
+### <a name="active-directory-password-authentication"></a>Ověřování hesla Active Directory
 
 Chcete-li připojit k databázi pomocí integrované ověřování a identita Azure AD, musí být nastavena – klíčové slovo ověřování Active Directory heslo. Připojovací řetězec musí obsahovat identifikátor ID uživatele nebo uživatele a heslo/PWD klíčová slova a hodnoty. Následující ukázka kódu C# používá rozhraní ADO .NET.
 
@@ -350,7 +350,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přehled řízení a přístupu pro SQL Database najdete v tématu věnovaném [řízení a přístupu k SQL Database](sql-database-control-access.md).
 - Přehled přihlášení, uživatelů a databázových rolí ve službě SQL Database najdete v tématu věnovaném [přihlášením, uživatelům a databázovým rolím](sql-database-manage-logins.md).
 - Další informace o objektech zabezpečení databáze najdete v tématu [Objekty zabezpečení](https://msdn.microsoft.com/library/ms181127.aspx).

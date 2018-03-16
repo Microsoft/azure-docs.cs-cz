@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7f3a0a1a22e14f12b86474dd5b1985029074444e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2d7405baee84b53311f01e748ca7975147c107d8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core Linux webové aplikace Azure s Application Insights profileru
 
@@ -144,5 +144,7 @@ Zobrazí se výstup podobný následujícímu:
 
     ![Zobrazení trasování](./media/app-insights-profiler-aspnetcore-linux/view-traces.png)
 
-## <a name="report-issues-to-project-github-repository"></a>Sestava problémy k úložišti Github projektu
+## <a name="next-steps"></a>Další kroky
+Pokud používáte vlastní kontejnery hostitelem aplikační služby, postupujte podle pokynů v [ povolit služby profileru kontejnerové aplikace ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) povolit App Insights profileru
+
 Pokud máte jakékoli problémy nebo návrhy, nahlaste na našem úložišti github: [ApplicationInsights. profileru AspNetCore: problémy](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)

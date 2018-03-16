@@ -2,23 +2,18 @@
 title: "Detekce – Azure SQL Database hrozby | Microsoft Docs"
 description: "Detekce hrozeb zjistila nezvyklé databázové aktivity, které indikují potenciální ohrožení databáze."
 services: sql-database
-documentationcenter: 
 author: rmatchoro
-manager: shaik
-editor: v-romcal
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 06/19/2017
 ms.author: ronmat
-ms.openlocfilehash: a01721b10305ac45082943fbe4fb7fb199a0e49f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4cb31eef4ba4b85ea28a58bb9b947b4e07cb0b58
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-database-threat-detection"></a>Detekce hrozeb databáze SQL
 
@@ -33,7 +28,7 @@ Například Injektáž SQL je jedním z běžné problémy zabezpečení webový
 Detekce hrozeb SQL integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/), a každé chráněné databáze SQL serveru se fakturuje za stejnou cenu jako Azure Security Center standardní vrstvy v $15 uzlu/měsíc, kde každé chráněné databáze SQL Server se počítá jako jeden uzel.  
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Nastavení detekce hrozeb pro vaši databázi na portálu Azure
-1. Spuštění portálu Azure v [https://portal.azure.com](https://portal.azure.com).
+1. Spuštění portálu Azure v [ https://portal.azure.com ](https://portal.azure.com).
 2. Přejděte na stránku konfigurace databáze SQL, kterou chcete sledovat. Na stránce Nastavení vyberte **auditování a detekce hrozeb**. 
     ![Navigační podokno][1]
 3. V **auditování a detekce hrozeb** stránku konfigurace, zapnout **ON** auditování, které se zobrazí nastavení detekce hrozby.

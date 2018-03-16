@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 346fd26696480b6226c5e836e9876685fb408f96
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: d774f0ca644793235a8c423b052b559d26e289c4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph vazby pro Azure Functions
 
@@ -33,7 +33,13 @@ Rozšíření Microsoft Graph poskytuje následující vazby:
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!Note]
-> Microsoft Graph vazby jsou aktuálně ve verzi preview.
+> Microsoft Graph vazby jsou aktuálně ve verzi preview pro Azure Functions verze 2.x. Některé funkce nejsou podporovány ve verzi funkce 1.x.
+
+## <a name="packages"></a>Balíčky
+
+Ověření tokenu Vstupní vazba je součástí [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) balíček NuGet. Jiné Microsoft Graph vazby jsou součástí [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) balíčku. Zdrojový kód pro balíčky je v [azure funkce microsoftgraph rozšíření](https://github.com/Azure/azure-functions-microsoftgraph-extension/) úložiště GitHub.
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="setting-up-the-extensions"></a>Nastavení rozšíření
 
@@ -54,9 +60,7 @@ V obou případech se zobrazí upozornění, která určuje příponu k instalac
 > [!Note] 
 > Proces instalace v portálu může trvat až 10 minut na plánu spotřeby.
 
-Pokud používáte Visual Studio, můžete získat rozšíření nainstalováním těchto balíčků NuGet:
-- [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/)
-- [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/)
+Pokud používáte Visual Studio, můžete získat rozšíření nainstalováním [balíčky NuGet, které jsou uvedeny výše v tomto článku](#packages).
 
 ### <a name="configuring-authentication--authorization"></a>Konfigurace ověřování / autorizace
 
@@ -199,7 +203,7 @@ module.exports = function (context, req) {
 
 ### <a name="auth-token---attributes"></a>Token auth – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [tokenu](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [tokenu](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) atribut.
 
 ### <a name="auth-token---configuration"></a>Token auth – konfigurace
 
@@ -332,7 +336,7 @@ module.exports = function (context, req) {
 
 ### <a name="excel-input---attributes"></a>Excel vstup – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) atribut.
 
 ### <a name="excel-input---configuration"></a>V aplikaci Excel (vstup) – konfigurace
 
@@ -356,7 +360,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tuto vazbu, musí mít následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Umožňuje získat oprávnění ke čtení souborů uživatelů.|
+|Microsoft Graph|Čtení souborů uživatele|
 
 Vazba zveřejňuje následující typy, které mají funkce .NET:
 - řetězec [] –]
@@ -492,7 +496,7 @@ module.exports = function (context, req) {
 
 ### <a name="excel-output---attributes"></a>Excel výstupní – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) atribut.
 
 ### <a name="excel-output---configuration"></a>V aplikaci Excel výstup - konfigurace
 
@@ -517,7 +521,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tuto vazbu, musí mít následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Úplný přístup k souborům uživatele|
+|Microsoft Graph|Mají úplný přístup k souborům uživatele|
 
 Vazba zveřejňuje následující typy, které mají funkce .NET:
 - řetězec [] –]
@@ -636,7 +640,7 @@ module.exports = function (context, req) {
 
 ### <a name="file-input---attributes"></a>Soubor vstup – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) atribut.
 
 ### <a name="file-input---configuration"></a>Soubor (vstup) – konfigurace
 
@@ -658,7 +662,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tuto vazbu, musí mít následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Umožňuje získat oprávnění ke čtení souborů uživatelů.|
+|Microsoft Graph|Čtení souborů uživatele|
 
 Vazba zveřejňuje následující typy, které mají funkce .NET:
 - Byte
@@ -781,7 +785,7 @@ module.exports = function (context, req) {
 
 ### <a name="file-output---attributes"></a>Obsah souboru – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) atribut.
 
 ### <a name="file-output---configuration"></a>Soubor výstupu - konfigurace
 
@@ -803,7 +807,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tuto vazbu, musí mít následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Úplný přístup k souborům uživatele|
+|Microsoft Graph|Mají úplný přístup k souborům uživatele|
 
 Vazba zveřejňuje následující typy, které mají funkce .NET:
 - Byte
@@ -930,7 +934,7 @@ module.exports = function (context, req) {
 
 ### <a name="outlook-output---attributes"></a>Outlook výstupní – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) atribut.
 
 ### <a name="outlook-output---configuration"></a>Výstup aplikace Outlook - konfigurace
 
@@ -1071,7 +1075,7 @@ module.exports = function (context) {
 
 ### <a name="webhook-trigger---attributes"></a>Aktivační události Webhooku – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [GraphWebHookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [GraphWebHookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) atribut.
 
 ### <a name="webhook-trigger---configuration"></a>Aktivační události Webhooku - konfigurace
 
@@ -1222,7 +1226,7 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-input---attributes"></a>Webhooku vstup – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) atribut.
 
 ### <a name="webhook-input---configuration"></a>Webhooku (vstup) – konfigurace
 
@@ -1362,7 +1366,7 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-output---attributes"></a>Webhooku výstup – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) atribut.
 
 ### <a name="webhook-output---configuration"></a>Výstup Webhooku – konfigurace
 

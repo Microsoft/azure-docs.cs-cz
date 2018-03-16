@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: 193003cef0aed464596e913c0df86e6123292b9f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/16/2018
+---
 Azure pravidelně provádí aktualizace ke zlepšení spolehlivosti, výkonu a zabezpečení infrastruktury hostitele pro virtuální počítače. Tyto aktualizace rozsahu od opravy softwarové součásti v hostitelské prostředí (např. operační systém, hypervisor a různé agenty nasazené na hostiteli), upgrade síťových součástí, na vyřazení z provozu hardwaru. Většina tyto aktualizace se provádějí bez žádný vliv na hostované virtuální počítače. Ale existují případy, kdy aktualizace mít vliv:
 
 - Pokud údržby nevyžaduje restartování, Azure používá místní migrace pro pozastavení virtuálního počítače během hostitele je aktualizována.

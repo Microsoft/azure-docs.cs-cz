@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
-ms.author: terrylan
-ms.openlocfilehash: d13e5b87c446e587091551b22d80fe568d5d8093
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 03/13/2018
+ms.author: barclayn
+ms.openlocfilehash: 229f83d4d74837e506c30a0fd8c704da2b7dc12a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="integrating-azure-security-center-alerts-with-azure-log-integration"></a>Integrace Azure Security Center výstrahy s integrací protokolů Azure
 Mnoho operace zabezpečení a reakce na incidenty týmy závisí na informace o zabezpečení a událostí správy (SIEM) řešení jako výchozí bod pro triaging a prošetřování výstrah zabezpečení. Díky integraci protokolu Azure můžete integrovat Azure Security Center výstrahy s vaším řešením SIEM.
@@ -79,7 +79,7 @@ Služba integrace Azure protokolu shromažďuje telemetrická data z počítače
    * **c:\Users\azlog\AzureSecurityCenterJsonLD**
 6. Nakonfigurujte konektor systému SIEM souboru předávání do příslušné složky. Postup se liší podle SIEM, kterou používáte.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o Azure protokoly aktivity a definice vlastností najdete v tématu:
 
 * [Audit operací pomocí Resource Manageru](../azure-resource-manager/resource-group-audit.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider;
-ms.openlocfilehash: cf647c078728c9fbe357fea5bef4aa6dfb86c975
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1cbc116a8d595cfea0e87cd17b556e005f276774
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="reliable-services-overview"></a>Přehled Reliable Services
 Azure Service Fabric zjednodušuje zápis a správu bezstavové a stavové spolehlivé služby. Toto téma obsahuje:
@@ -34,7 +34,7 @@ Service Fabric spravuje životnost služeb od zřízení a nasazení prostředni
 ## <a name="what-are-reliable-services"></a>Jaké jsou spolehlivé služby?
 Spolehlivé služby poskytuje jednoduché, výkonné a nejvyšší úrovně programovací model můžete express, co je důležité k vaší aplikaci. Spolehlivé služby programovací model získáte:
 
-* Přístup k zbytek Service Fabric programovací rozhraní API. Na rozdíl od služby Service Fabric modelován jako [spustitelné soubory hosta](service-fabric-deploy-existing-app.md), spolehlivé služby získat zbytek rozhraní API služby prostředků infrastruktury používat přímo. To umožňuje službám:
+* Přístup k zbytek Service Fabric programovací rozhraní API. Na rozdíl od služby Service Fabric modelován jako [spustitelné soubory hosta](service-fabric-guest-executables-introduction.md), spolehlivé služby získat zbytek rozhraní API služby prostředků infrastruktury používat přímo. To umožňuje službám:
   * dotaz na systém
   * Sestava stavu o entitách v clusteru
   * přijímání oznámení o změnách konfigurace a kódu
@@ -109,7 +109,7 @@ Pokud některé z následujících charakterizovat služby potřebám vaší apl
 * Aplikace musí udržovat historii změn pro jeho jednotky stavu.
 * Chcete vyvíjet nebo využívat zprostředkovatelé třetí strany vyvinuté, vlastní stavu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Spolehlivé služby rychlý start](service-fabric-reliable-services-quick-start.md)
 * [Spolehlivé služby advanced využití](service-fabric-reliable-services-advanced-usage.md)
 * [Programovacího modelu Reliable Actors](service-fabric-reliable-actors-introduction.md)

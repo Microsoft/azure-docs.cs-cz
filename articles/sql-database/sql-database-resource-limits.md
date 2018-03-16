@@ -2,24 +2,18 @@
 title: "Omezení prostředků Azure SQL Database | Microsoft Docs"
 description: "Tato stránka popisuje některé běžné limitů prostředků pro databázi SQL Azure."
 services: sql-database
-documentationcenter: na
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 884e519f-23bb-4b73-a718-00658629646a
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 02/28/2018
+ms.date: 03/15/2018
 ms.author: carlrab
-ms.openlocfilehash: eea4362e33ff2587758601758db463ffa82382b3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6e6aaeea0375e92d7913e47c6b929a469ceb5c94
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Omezení prostředků Azure SQL Database
 
@@ -64,7 +58,7 @@ Délka trvání celého procesu vertikálního navyšování kapacity závisí n
 
 ## <a name="single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>Izolované databáze: omezení P11 a P15 při maximální velikosti větší než 1 TB
 
-Maximální velikost větší než 1 TB P11 a P15 databáze je podporováno v následujících oblastech: nám East2, západní USA, nám verze pro státní správu Virginia, západní Evropa, Německo centrální, Jižní východní Asie, Japonsko – východ, Austrálie – východ, Kanada centrální a Východní Kanada. Následující požadavky a omezení platí pro databáze P11 a P15 s maximální velikostí větší než 1 TB:
+Maximální velikost větší než 1 TB P11 a P15 databáze je podporováno v následujících oblastech: nám East2, západní USA, nám verze pro státní správu Virginia, západní Evropa, Německo centrální, Jižní východní Asie, Japonsko – východ, Kanada centrální a Východní Kanada. Následující požadavky a omezení platí pro databáze P11 a P15 s maximální velikostí větší než 1 TB:
 
 - Pokud si zvolíte maximální velikost větší než 1 TB, když se vytváří databáze (pomocí hodnotu 4 TB nebo 4096 GB), provedení příkazu pro vytvoření selže s chybou, pokud databáze je zajištěna v nepodporované oblast.
 - Pro existující P11 a P15 databáze nachází v jedné z podporovaných oblastí, můžete zvýšit maximální velikost úložiště na nad rámec 1 TB v přírůstcích po 256 GB až 4 TB. Pokud chcete zobrazit, pokud větší velikost je podporován ve vašem regionu, použijte [DATABASEPROPERTYEX](/sql/t-sql/functions/databasepropertyex-transact-sql) funkce nebo zkontrolujte velikost databáze na portálu Azure. Upgrade na existující P11 nebo P15 databáze lze provést pouze pomocí hlavního přihlášení na úrovni serveru nebo pomocí členové databázové role dbmanager. 
@@ -154,7 +148,7 @@ Při zjištění vysoké využití relace nebo pracovního procesu, možnosti om
 - Zvýšení úrovně služby vrstvě nebo výkonu databáze nebo elastického fondu. V tématu [jedné databáze: změnit velikost úložiště](#single-database-change-storage-size), [jedné databáze: změnit počet jednotek Dtu](#single-database-change-dtus), [elastického fondu: změnit velikost úložiště](#elastic-pool-change-storage-size), a [elastického fondu: změnit počet jednotek Edtu ](#elastic-pool-change-edtus).
 - Optimalizace dotazy ke snížení využití prostředků každý dotaz, je-li příčinou využití vyšší pracovníka způsobeno kolizí pro výpočetní prostředky. Další informace najdete v tématu [dotaz optimalizace/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o úrovních služeb najdete v tématu [úrovních služeb](sql-database-service-tiers.md).
 - Informace o izolovaných databází najdete v tématu [jedna databáze prostředků](sql-database-resource-limits.md).

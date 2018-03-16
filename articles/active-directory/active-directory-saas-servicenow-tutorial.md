@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 03/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 8b21c7b18c31f3111caa13d08efb5aa42ecc0e49
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d893b55e2e771035bbd1097da678830fafb24e7a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Kurz: Azure Active Directory integrace s ServiceNow
 
@@ -40,6 +40,7 @@ Konfigurace integrace Azure AD s ServiceNow, potřebujete následující položk
 - Pro ServiceNow, instanci nebo klienta ServiceNow Calgary verze nebo vyšší
 - Pro instance ServiceNow Express, Helsinkách verze ServiceNow Express nebo vyšší
 - Musí mít klienta ServiceNow [více jeden znak na modul Plugin poskytovatele](http://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0) povolena. To lze provést [odesílá se žádost o službu](https://hi.service-now.com).
+- Pro automatickou konfiguraci povolení modulu plug-in více zprostředkovatele pro ServiceNow.
 
 > [!NOTE]
 > K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
@@ -111,9 +112,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![ServiceNow domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<instance-name>.service-now.com/navpage.do`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<instance-name>.service-now.com/navpage.do`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<instance-name>.service-now.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<instance-name>.service-now.com`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Budete muset aktualizovat tyto hodnoty z skutečné přihlašovací adresa URL a identifikátor, který je vysvětlen později v tomto kurzu.
@@ -146,17 +147,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`.  Kopírování generované hodnoty v poznámkovém bloku jako tato metadata, adresa URL se použije později v tomto kurzu.
 
-7. Jedním kliknutím konfigurace služby je zadaný pro ServiceNow tedy mít Azure AD automaticky nakonfigurovat ServiceNow pro ověřování pomocí SAML. Chcete-li povolit tuto službu, přejděte na **ServiceNow konfigurace** klikněte na tlačítko **konfigurace ServiceNow** otevřete konfigurovat přihlašování okno.
+7. Přihlásit se k vaší aplikaci ServiceNow jako správce.
 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_configure.png)
-
-8. Zadejte název instance ServiceNow, uživatelské jméno správce a heslo správce v **konfigurovat přihlášení** formuláři a klikněte na tlačítko **konfigurovat**. Všimněte si, že zadané uživatelské jméno správce musí mít **security_admin** role přiřazené v ServiceNow pro tento postup. Jinak, jak ručně nakonfigurovat ServiceNow používat Azure AD jako poskytovatele identity SAML, klikněte na tlačítko **ručně nakonfigurovat jednotné přihlašování** a zkopírujte **Sign-Out URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z části Stručná referenční příručka.
-
-    ![Konfigurovat adresu URL aplikace](./media/active-directory-saas-servicenow-tutorial/configure.png "konfigurovat adresu URL aplikace")
-
-9. Přihlásit se k vaší aplikaci ServiceNow jako správce.
-
-10. Aktivovat **integrace - více jeden přihlašování instalační program zprostředkovatele** modulu plug-in podle následující další kroky:
+8. Aktivovat **integrace - více jeden přihlašování instalační program zprostředkovatele** modulu plug-in podle následující další kroky:
 
     a. V navigačním podokně na levé straně, hledání **definice systému** z panelu Hledat a pak klikněte na **modulů plug-in**.
 
@@ -170,11 +163,53 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     d. Klikněte **aktivovat** tlačítko.
 
-11. V navigačním podokně na levé straně, hledání **jednotného přihlašování k více zprostředkovatele** z panelu Hledat a pak klikněte na **vlastnosti**.
+9. Existují dva způsoby, ve kterém **ServiceNow** může být nakonfigurovaná automaticky a ručně.
+
+10. Pro konfiguraci **ServiceNow** automaticky podle níže uvedených pokynů
+
+    a. Vraťte se na **ServiceNow** Signle přihlášení na stránce na portálu Azure.
+
+    b. Jedním kliknutím konfigurace služby je zadaný pro ServiceNow tedy mít Azure AD automaticky nakonfigurovat ServiceNow pro ověřování pomocí SAML. Chcete-li povolit tuto službu, přejděte na **ServiceNow konfigurace** klikněte na tlačítko **konfigurace ServiceNow** otevřete konfigurovat přihlašování okno.
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_configure.png)
+
+    c. Zadejte název instance ServiceNow, uživatelské jméno správce a heslo správce v **konfigurovat přihlášení** formuláři a klikněte na tlačítko **konfigurovat**. Všimněte si, že zadané uživatelské jméno správce musí mít **security_admin** role přiřazené v ServiceNow pro tento postup. Jinak, jak ručně nakonfigurovat ServiceNow používat Azure AD jako poskytovatele identity SAML, klikněte na tlačítko **ručně nakonfigurovat jednotné přihlašování** a zkopírujte **Sign-Out URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z části Stručná referenční příručka.
+
+    ![Konfigurovat adresu URL aplikace](./media/active-directory-saas-servicenow-tutorial/configure.png "konfigurovat adresu URL aplikace")
+
+    d. Přihlásit se k vaší aplikaci ServiceNow jako správce.
+
+    e. V automatickou konfiguraci se konfigurují potřebná nastavení na **ServiceNow** straně ale **certifikát X.509** není ve výchozím nastavení povolené. Budete muset ručně mapování na zprostředkovatele identity v ServiceNow. postupujte podle níže uvedených pokynů pro stejný:
+    
+    * V navigačním podokně na levé straně klikněte na **zprostředkovatelů Identity** pod **jednotného přihlašování k více zprostředkovatele**.
+
+      ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_07.png "nakonfigurovat jednotné přihlašování")
+
+    * Klikněte na zprostředkovatele automaticky generované identity
+
+      ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_08.png "nakonfigurovat jednotné přihlašování")
+
+    * Přejděte dolů k položce **certifikát X.509** části. Vyberte **Upravit**.
+
+      ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_09.png "nakonfigurovat jednotné přihlašování")
+    
+    * Vyberte na certifikátu a klikněte na šipku vpravo přidání certifikátu
+
+      ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_11.png "nakonfigurovat jednotné přihlašování")
+
+    * Klikněte na **Uložit**.
+
+    * Klikněte na **aktivovat** v pravém horním rohu stránky.
+
+11. Pro konfiguraci **ServiceNow** ručně postupujte níže uvedených pokynů
+
+12. Přihlásit se k vaší aplikaci ServiceNow jako správce.
+
+13. V navigačním podokně na levé straně, hledání **jednotného přihlašování k více zprostředkovatele** z panelu Hledat a pak klikněte na **vlastnosti**.
 
     ![Konfigurovat adresu URL aplikace](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_06.png "konfigurovat adresu URL aplikace")
 
-12. Na **více jednotného přihlašování k vlastnosti zprostředkovatele** dialogové okno, proveďte následující kroky:
+14. Na **více jednotného přihlašování k vlastnosti zprostředkovatele** dialogové okno, proveďte následující kroky:
 
     ![Konfigurovat adresu URL aplikace](./media/active-directory-saas-servicenow-tutorial/ic7694981.png "konfigurovat adresu URL aplikace")
 
@@ -188,15 +223,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     e. Klikněte na **Uložit**.
 
-13. V navigačním podokně na levé straně, hledání **jednotného přihlašování k více zprostředkovatele** z panelu Hledat a pak klikněte na **x509 certifikáty**.
+14. V navigačním podokně na levé straně, hledání **jednotného přihlašování k více zprostředkovatele** z panelu Hledat a pak klikněte na **x509 certifikáty**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_05.png "nakonfigurovat jednotné přihlašování")
 
-14. Na **certifikáty X.509** dialogové okno, klikněte na tlačítko **nový**.
+15. Na **certifikáty X.509** dialogové okno, klikněte na tlačítko **nový**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/ic7694974.png "nakonfigurovat jednotné přihlašování")
 
-15. Na **certifikáty X.509** dialogové okno, proveďte následující kroky:
+16. Na **certifikáty X.509** dialogové okno, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/ic7694975.png "nakonfigurovat jednotné přihlašování")
 
@@ -212,19 +247,19 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
      f. Klikněte na tlačítko **odeslání**.
 
-16. V navigačním podokně na levé straně klikněte na **zprostředkovatelů Identity**.
+17. V navigačním podokně na levé straně klikněte na **zprostředkovatelů Identity**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_07.png "nakonfigurovat jednotné přihlašování")
 
-17. Na **zprostředkovatelů Identity** dialogové okno, klikněte na tlačítko **nový**.
+18. Na **zprostředkovatelů Identity** dialogové okno, klikněte na tlačítko **nový**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/ic7694977.png "nakonfigurovat jednotné přihlašování")
 
-18. Na **zprostředkovatelů Identity** dialogové okno, klikněte na tlačítko **aktualizaci1 typu SAML2?**.
+19. Na **zprostředkovatelů Identity** dialogové okno, klikněte na tlačítko **aktualizaci1 typu SAML2?**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/ic7694978.png "nakonfigurovat jednotné přihlašování")
 
-19. V dialogovém okně Vlastnosti typu SAML2 aktualizaci1 proveďte následující kroky:
+20. V dialogovém okně Vlastnosti typu SAML2 aktualizaci1 proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/idp.png "nakonfigurovat jednotné přihlašování")
 
@@ -234,25 +269,71 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     c. Klikněte na **Importovat**.
 
-20. Přečte adresu URL metadat IdP a naplní všechny informace o pole.
+21. Přečte adresu URL metadat IdP a naplní všechny informace o pole.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/ic7694982.png "nakonfigurovat jednotné přihlašování")
 
     a. V **název** textovému poli, zadejte název pro svou konfiguraci (například **SAML 2.0**).
-
-    b. V **pole uživatelského** textovému poli, typ **e-mailu** nebo **uživatelské_jméno**, v závislosti na pole, které slouží k jednoznačné identifikaci uživatele ve vašem nasazení ServiceNow.
-
-    > [!NOTE]
-    > Můžete konfigurovat Azure AD pro vydávání ID uživatele Azure AD (hlavní název uživatele) nebo e-mailovou adresu jako jedinečný identifikátor v tokenu SAML přechodem na **ServiceNow > atributy > jednotné přihlašování** části portálu Azure a mapování pro požadované pole **nameidentifier** atribut. Hodnota uložená vybraného atributu ve službě Azure AD (například hlavní název uživatele) se musí shodovat s hodnotou uloženou v ServiceNow pro zadané pole (například uživatelské_jméno)
-
-    c. Kopírování **domovské stránky ServiceNow** hodnotu, vložte jej do **přihlašovací adresa URL** textového pole v **ServiceNow domény a adresy URL** části na portálu Azure.
+    
+    b. Kopírování **domovské stránky ServiceNow** hodnotu, vložte jej do **přihlašovací adresa URL** textového pole v **ServiceNow domény a adresy URL** části na portálu Azure.
 
     > [!NOTE]
     > Na domovské stránce instance ServiceNow je tvořen vaše **URL klienta ServieNow** a **/navpage.do** (například:`https://fabrikam.service-now.com/navpage.do`).
 
-    d. Kopírování **Entity ID / vystavitele** hodnotu, vložte jej do **identifikátor** textového pole v **ServiceNow domény a adresy URL** části na portálu Azure.
+    c. Kopírování **Entity ID / vystavitele** hodnotu, vložte jej do **identifikátor** textového pole v **ServiceNow domény a adresy URL** části na portálu Azure.
+
+    d. Klikněte na tlačítko **rozšířené**. V **pole uživatelského** textovému poli, typ **e-mailu** nebo **uživatelské_jméno**, v závislosti na pole, které slouží k jednoznačné identifikaci uživatele ve vašem nasazení ServiceNow.
+
+    > [!NOTE]
+    > Můžete konfigurovat Azure AD pro vydávání ID uživatele Azure AD (hlavní název uživatele) nebo e-mailovou adresu jako jedinečný identifikátor v tokenu SAML přechodem na **ServiceNow > atributy > jednotné přihlašování** části portálu Azure a mapování pro požadované pole **nameidentifier** atribut. Hodnota uložená vybraného atributu ve službě Azure AD (například hlavní název uživatele) se musí shodovat s hodnotou uloženou v ServiceNow pro zadané pole (například uživatelské_jméno)
 
      e. V části **x509 certifikát**, obsahuje seznam certifikátů, které jste vytvořili v předchozím kroku.
+
+     > [!NOTE]
+     > ServiceNow neumožňuje aktivace rozšíření Idp bez kliknutím na tlačítko Testovat připojení, k přepsání stejné, postupujte níže uvedených pokynů.
+
+22. Klikněte na ikonu nabídky z nového poskytovatele identity, kterou jste vytvořili jako součást konfigurace a ze seznamu vyberte **zkopírujte sys_id**
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/ic7694992.png "nakonfigurovat jednotné přihlašování")
+
+23. V levém horním vyhledávacího pole Hledat **sys_properties.list** a stiskněte klávesu enter.
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/ic7694993.png "nakonfigurovat jednotné přihlašování")
+
+24. Klikněte na možnost **Nové**.
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/ic7694994.png "nakonfigurovat jednotné přihlašování")
+
+25. V **vlastnost systému** část, proveďte následující kroky:
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/ic7694995.png "nakonfigurovat jednotné přihlašování")
+
+    a. Zadejte `glide.authenticate.sso.redirect.idp` hodnotu do textového pole název.
+
+    b. V **hodnotu** textovému poli, vložte sys_id kopírování hodnoty, které jste zkopírovali v předchozím postupu.
+
+    c. Vyberte **privátní**.
+
+    d. Klikněte na tlačítko **odeslání**.
+
+26. Klikněte na možnost **Nové**.
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/ic7694994.png "nakonfigurovat jednotné přihlašování")
+
+27. V **vlastnost systému** část, proveďte následující kroky:
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/ic7694996.png "nakonfigurovat jednotné přihlašování")
+
+    a. Zadejte `glide.authenticate.multisso.test.connection.mandatory` hodnotu do textového pole název.
+
+    b. V **hodnotu** textovému poli, zadejte **false**.
+
+    c. Klikněte na tlačítko **odeslání**.
+
+28. Po to výše krok, teď bude moci uživatel aktivovat nové zprostředkovatele identity a vaše jednotné přihlašování, by měly fungovat
+
+> [!NOTE]
+> Také Upozorňujeme, že máte testování konfigurace nové Idp v novém okně incognito
 
 ### <a name="configure-azure-ad-single-sign-on-for-servicenow-express"></a>Konfigurace Azure AD jednotné přihlášení pro ServiceNow Express
 
@@ -268,9 +349,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte hodnotu pomocí následujícího vzorce:`https://<instance-name>.service-now.com/navpage.do`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte hodnotu pomocí následujícího vzorce: `https://<instance-name>.service-now.com/navpage.do`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<instance-name>.service-now.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<instance-name>.service-now.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory ServiceNow klienta](https://www.servicenow.com/support/contact-support.html) k získání těchto hodnot.
@@ -337,11 +418,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. V **název** textovému poli, zadejte název pro svou konfiguraci (například: **SAML 2.0**).
 
-    b. V **adresa URL poskytovatele Identity** pole, vložte hodnotu **ID zprostředkovatele Identity** který jste zkopírovali z portálu Azure.
+    b. V **adresa URL poskytovatele Identity** pole, vložte hodnotu **ID zprostředkovatele Identity**, který jste zkopírovali z portálu Azure.
     
-    c. V **zprostředkovatele Identity AuthnRequest** pole, vložte hodnotu **adresa URL žádosti o ověření** který jste zkopírovali z portálu Azure.
+    c. V **zprostředkovatele Identity AuthnRequest** pole, vložte hodnotu **adresa URL žádosti o ověření**, který jste zkopírovali z portálu Azure.
 
-    d. V **zprostředkovatele Identity SingleLogoutRequest** pole, vložte hodnotu **jednu adresu URL služby Sign-Out** který jste zkopírovali z portálu Azure
+    d. V **zprostředkovatele Identity SingleLogoutRequest** pole, vložte hodnotu **jednu adresu URL služby Sign-Out**, který jste zkopírovali z portálu Azure
 
     e. Jako **certifikát zprostředkovatele Identity**, vyberte certifikát, který jste vytvořili v předchozím kroku.
 
@@ -380,7 +461,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     f. Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace! Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
@@ -456,7 +537,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici ServiceNow na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci ServiceNow.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

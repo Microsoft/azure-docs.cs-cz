@@ -1,6 +1,19 @@
-
-
-
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: bf4adf075842effeb26aa5a600c09f7bd1866264
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/16/2018
+---
 **Poslední aktualizace dokumentů**: 6 března 10:00 AM PST.
 
 Poslední zveřejnění [nová třída ohrožení zabezpečení procesoru](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) se označuje jako spekulativní provádění straně kanál útoky má za následek otázky z zákazníky, kteří potřebují další přehlednost.  
@@ -57,6 +70,6 @@ Pokud používáte Linux a hostování nedůvěryhodnými, měli byste také akt
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v tématu [zákazníky, kteří zabezpečení Azure z procesoru ohrožení zabezpečení](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/).

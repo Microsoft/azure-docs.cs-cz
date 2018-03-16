@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: a5ac6c02e28c19346abae9e5ea3dba9af4022dde
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: e82bbff908ea5499765edc71e52caa573c816a62
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro webové aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -38,8 +38,8 @@ Můžete povolit nebo zakázat následující typy protokolů:
 * **Se nezdařilo, trasování požadavku** -podrobné informace o chybných žádostech, včetně trasování pro součásti služby IIS používá ke zpracování žádostí a doba trvání v jednotlivých součástí. Je užitečné, pokud se pokoušíte zvýšit výkon webu nebo izolovat, co ho způsobuje. konkrétní chyba protokolu HTTP, který se má vrátit.
 * **Webový Server protokolování** -informace o transakcích HTTP pomocí [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Je vhodné při určování metriky celkového lokality, jako je počet požadavků zpracovaných nebo je počet požadavků z konkrétní IP adresu.
 
-### <a name="application-diagnostics"></a>Rozhraní Application diagnostics
-Rozhraní Application diagnostics umožňuje zaznamenat informace o vytvořil webovou aplikací. Aplikace ASP.NET můžete použít [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) třída do protokolu informace o protokolu diagnostiky aplikace. Například:
+### <a name="application-diagnostics"></a>Diagnostika aplikace
+Rozhraní Application diagnostics umožňuje zaznamenat informace o vytvořil webovou aplikací. Aplikace ASP.NET můžete použít [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) třída do protokolu informace o protokolu diagnostiky aplikace. Příklad:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -88,7 +88,7 @@ Zatímco všech tří umístění úložiště poskytují stejnou základní inf
 >
 >
 
-## <a name="download"></a>Postupy: stažení protokolů
+## <a name="download"></a> Postupy: stažení protokolů
 Diagnostické informace uložené na systém souborů webové aplikace lze přistupovat přímo pomocí protokolu FTP. Lze ji také stáhnout jako archivu Zip pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
 Strukturu adresáře, které protokoly jsou uložené v vypadá takto:
@@ -96,8 +96,8 @@ Strukturu adresáře, které protokoly jsou uložené v vypadá takto:
 * **Protokoly aplikací** -/LogFiles/aplikace /. Tato složka obsahuje jeden nebo více souborů textu obsahujícího informace o vyprodukované protokolování aplikací.
 * **Trasování požadavku se nezdařilo** -/ LogFiles/W3SVC ### /. Tato složka obsahuje soubor XSL a jeden nebo více souborů XML. Ujistěte se, stáhněte soubor XSL do stejného adresáře jako soubor XML souborům, protože soubor XSL poskytuje funkce pro formátování a filtrování obsah soubory XML, pokud v prohlížeči Internet Explorer.
 * **Podrobné protokoly chyb** -/LogFiles/DetailedErrors /. Tato složka obsahuje jeden nebo více souborů HTM, které poskytují podrobné informace pro chyby protokolu HTTP, ke kterým došlo.
-* **Webový Server protokoly** -/LogFiles/http/RawLogs. Tato složka obsahuje jeden nebo více textových souborů formátován pomocí [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
-* **Protokoly nasazení** -/ LogFiles/Git. Tato složka obsahuje protokoly interní nasazení procesy používané modulem webové aplikace Azure, jakož i protokoly pro nasazení Git.
+* **Web Server Logs** - /LogFiles/http/RawLogs. Tato složka obsahuje jeden nebo více textových souborů formátován pomocí [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
+* **Protokoly nasazení** -/ LogFiles/Git. Tato složka obsahuje protokoly interní nasazení procesy používané modulem webové aplikace Azure, jakož i protokoly pro nasazení Git. Můžete také získat protokoly nasazení v části D:\home\site\deployments.
 
 ### <a name="ftp"></a>FTP
 
@@ -141,7 +141,7 @@ Visual Studio Application Insights poskytuje nástroje pro filtrování a vyhled
 
 [Další informace o s Application Insights pro sledování výkonu](../application-insights/app-insights-azure-web-apps.md)
 
-## <a name="streamlogs"></a>Postupy: Stream protokoly
+## <a name="streamlogs"></a> Postupy: Stream protokoly
 Při vývoji aplikace, je často užitečné informace protokolování v skoro v reálném čase. Informace o protokolování dá Streamovat do vývojového prostředí pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
 > [!NOTE]
@@ -159,11 +159,11 @@ Informace o protokolování datového proudu, spustit novou instanci třídy Azu
 
 Tento příkaz připojí do webové aplikace určeného **-název** parametr a začít streamování informace do okna prostředí PowerShell jako protokolu událostí, ke kterým došlo u webové aplikace. Žádné informace, zapisovat do souborů končící na .txt, .log nebo htm, které jsou uložené v adresáři /LogFiles (d: nebo Domovská nebo soubory protokolů) je streamování na místní konzoly.
 
-Chcete-li filtrovat konkrétní události, jako je například chyby, použijte **– zpráva** parametr. Například:
+Chcete-li filtrovat konkrétní události, jako je například chyby, použijte **– zpráva** parametr. Příklad:
 
     Get-AzureWebSiteLog -Name webappname -Tail -Message Error
 
-Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **-cesta** parametr. Například:
+Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **-cesta** parametr. Příklad:
 
     Get-AzureWebSiteLog -Name webappname -Tail -Path http
 
@@ -181,11 +181,11 @@ Stream informace o protokolování, otevřete nový příkazový řádek, prost�
 
 Tento příkaz připojí do webové aplikace s názvem 'webappname' a začít streamování informace do okna události protokolu jsou prováděny ve webové aplikaci. Žádné informace, zapisovat do souborů končící na .txt, .log nebo htm, které jsou uložené v adresáři /LogFiles (d: nebo Domovská nebo soubory protokolů) je streamování na místní konzoly.
 
-Chcete-li filtrovat konkrétní události, jako je například chyby, použijte **– filtru** parametr. Například:
+Chcete-li filtrovat konkrétní události, jako je například chyby, použijte **– filtru** parametr. Příklad:
 
     az webapp log tail --name webappname --resource-group myResourceGroup --filter Error
 
-Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **– cesta** parametr. Například:
+Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **– cesta** parametr. Příklad:
 
     az webapp log tail --name webappname --resource-group myResourceGroup --path http
 
@@ -194,7 +194,7 @@ Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **– 
 >
 >
 
-## <a name="understandlogs"></a>Postupy: pochopení protokolů diagnostiky
+## <a name="understandlogs"></a> Postupy: pochopení protokolů diagnostiky
 ### <a name="application-diagnostics-logs"></a>Diagnostické protokoly aplikací
 Rozhraní Application diagnostics ukládá informace v konkrétním formátu pro aplikace .NET, v závislosti na tom, jestli ukládání protokolů systému souborů, úložiště table nebo úložiště objektů blob. Základní sada dat uložených je stejná napříč všechny tři typy úložiště - datum a čas výskytu události, ID procesu, který vytváří událost, typu události (informace, upozornění, chyby) a zprávy událostí.
 
@@ -216,9 +216,9 @@ Při přihlašování do úložiště table, další vlastnosti se používají 
 
 | Název vlastnosti | Hodnota nebo formátu |
 | --- | --- |
-| Klíč oddílu |Datum a čas ve formátu yyyyMMddHH události |
+| PartitionKey |Datum a čas ve formátu yyyyMMddHH události |
 | RowKey |Hodnota identifikátoru GUID, který jedinečně identifikuje tuto entitu |
-| časové razítko |Datum a čas, kdy došlo k události |
+| Časové razítko |Datum a čas, kdy došlo k události |
 | EventTickCount |Datum a čas, kdy došlo k události, ve formátu značky (větší přesnost) |
 | ApplicationName |Název webové aplikace |
 | Úroveň |Úroveň události (například Chyba, upozornění, informace) |
@@ -276,6 +276,6 @@ Protokoly webového serveru jsou formátovány pomocí [rozšířený formát pr
 * [Analýza protokolů webové aplikace v prostředí HDInsight](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 > [!NOTE]
-> Pokud chcete začít používat Azure App Service před registrací účtu Azure, přejděte k [možnosti vyzkoušet si App Service](https://azure.microsoft.com/try/app-service/), kde si můžete hned vytvořit krátkodobou úvodní webovou aplikaci. Nevyžaduje se žádná platební karta a nevzniká žádný závazek.
+> Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.
 >
 >

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: owend
-ms.openlocfilehash: 4c317736af30b4181fa975713258a41b42ed0da3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: bb3e50c3e481bcedc436b8382fb55d6402d058b2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace pomocí rozhraní REST API
 Pomocí žádný programovací jazyk, který podporuje volání REST, můžete provádět operace asynchronní aktualizace dat na vaše tabulkové modely služby Azure Analysis Services. To zahrnuje synchronizace repliky jen pro čtení pro dotaz Škálováním na více systémů. 
@@ -36,7 +36,7 @@ Základní adresu URL následující formát:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Představte si třeba model s názvem AdventureWorks, na serveru s názvem myserver, nachází v oblasti Azure USA – Západ, je název serveru:
+Představte si třeba model s názvem AdventureWorks na serveru s názvem myserver, umístěný v oblasti Azure USA – západ. Název serveru je:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -48,7 +48,7 @@ Základní adresa URL pro tento název serveru je:
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/ 
 ```
 
-S použitím základní adresu URL, prostředky a operace by se daly připojit podle těchto kritérií: 
+S použitím základní adresu URL, prostředky a operace by se daly připojit na základě následujících parametrů: 
 
 ![Asynchronní aktualizace](./media/analysis-services-async-refresh/aas-async-refresh-flow.png)
 
@@ -56,7 +56,7 @@ S použitím základní adresu URL, prostředky a operace by se daly připojit p
 - Všechny položky, které končí **()** je funkce.
 - Cokoliv jiného je prostředek nebo objekt.
 
-Například můžete použít příkaz POST na aktualizace kolekce k provedení operace aktualizace, jako je tento:
+Například můžete použít příkaz POST na aktualizace kolekce k provedení operace aktualizace:
 
 ```
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
@@ -71,7 +71,7 @@ Všechna volání musí být ověřeny pomocí platný token v hlavičce autoriz
 - Uživatel nebo aplikace musí mít dostatečná oprávnění na serveru nebo model pro požadovaný volání. Úroveň oprávnění je určen podle rolí v rámci modelu nebo skupiny správce na serveru.
 
     > [!IMPORTANT]
-    > V současné době **správce serveru** jsou požadována oprávnění role.
+    > V současné době **správce serveru** nutných oprávnění role.
 
 ## <a name="post-refreshes"></a>POST /refreshes
 
@@ -106,7 +106,7 @@ Zadání parametrů se nevyžaduje. Je použita výchozí hodnota.
 |---------|---------|---------|---------|
 |Typ     |  výčet       |  Typ zpracování k provedení. Typy jsou v souladu s TMSL [aktualizovat příkaz](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) typy: full, clearValues, vypočítat, dataOnly, automatické a přidejte defragmentaci.       |   Automatické      |
 |CommitMode     |  výčet       |  Určuje, pokud objekty budou potvrzeny v dávkách nebo jenom v případě, že je kompletní. Režimy: výchozí, transakcí, partialBatch.  |  transakcí       |
-|MaxParallelism     |   Int      |  Tato hodnota určuje maximální počet vláken, na který se má spustit zpracování příkazů paralelně. To v souladu s MaxParallelism vlastnost, která může být nastavena v TMSL [pořadí příkaz](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) nebo použití jiných metod.       | 10        |
+|MaxParallelism     |   Int      |  Tato hodnota určuje maximální počet vláken, na který se má spustit zpracování příkazů paralelně. Tato hodnota v souladu s MaxParallelism vlastnost, která může být nastavena v TMSL [pořadí příkaz](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) nebo použití jiných metod.       | 10        |
 |retryCount    |    Int     |   Označuje číslo, kolikrát bude operaci opakovat než selže.      |     0    |
 |Objekty     |   Pole      |   Pole objektů, které mají být zpracovány. Každý objekt zahrnuje: "tabulky" při zpracování celou tabulku nebo "tabulky" a "oddíl" při zpracování oddílu. Pokud nejsou zadány žádné objekty, se aktualizují celý model. |   Proces celý model      |
 
@@ -188,7 +188,7 @@ Pokud chcete zkontrolovat stav synchronizace operace, použijte příkaz GET př
 }
 ```
 
-Hodnoty pro stav synchronizace:
+Hodnoty pro `syncstate`:
 
 - 0: replikace. Soubory databáze jsou replikovány do cílové složky.
 - 1: rehydratace. Databáze je právě rehydrated na instance serveru jen pro čtení.
@@ -228,7 +228,7 @@ Tato forma ověřování vyžaduje aplikaci Azure vytvořit s potřebnými oprá
 
     ![Přidat přístup přes rozhraní API](./media/analysis-services-async-refresh/aas-async-add.png)
 
-5.  V **vybrat rozhraní API**, typ **SQL Server Analysis Services** do vyhledávacího pole a pak vyberte **Azure Analysis Services (SQL Server Analysis Services Azure)**.
+5.  V **vybrat rozhraní API**, typ **Azure Analysis Services** do hledání pole a pak ho vyberte.
 
     ![Vybrat rozhraní API](./media/analysis-services-async-refresh/aas-async-select-api.png)
 
@@ -242,7 +242,7 @@ Tato forma ověřování vyžaduje aplikaci Azure vytvořit s potřebnými oprá
 
 #### <a name="service-principal"></a>Instanční objekt
 
-Najdete v článku [Automation z Azure Analysis Services s objekty služby a prostředí PowerShell](https://azure.microsoft.com/blog/automation-of-azure-analysis-services-with-service-principals-and-powershell/) příspěvku na blogu k nastavení hlavní název služby a přiřaďte potřebná oprávnění ve službě Azure Analysis Services. Po dokončení kroky popsané v příspěvku na blogu, proveďte následující kroky:
+V tématu [vytvořit zásadu služby - portál Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md) a [přidat zásadu služby do role správce serveru](analysis-services-addservprinc-admins.md) Další informace o tom, jak vytvořit objekt služby a přiřazovat potřebná oprávnění v Azure AS . Po dokončení kroků, proveďte následující kroky:
 
 1.  V ukázce kódu, Najít **řetězec autority =...** , nahraďte **běžné** ve vaší organizaci klienta ID.
 2.  Komentář nebo zrušte komentář u tak ClientCredential třída slouží k vytvoření instance objektu pověření. Ujistěte se, \<ID aplikace > a \<klíč aplikace > hodnot, ke kterým se přistupuje bezpečným způsobem nebo použít ověřování pomocí certifikátů pro objekty služby.

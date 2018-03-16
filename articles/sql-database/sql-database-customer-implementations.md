@@ -2,24 +2,18 @@
 title: "Azure SQL Database zákazníků implementace technical | Microsoft Docs"
 description: "Další technické podrobnosti o zákazníka implementatons databáze SQL Azure k řešení obchodních problémů"
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 00c8a713-f20c-4d6b-b8b7-0c1b9ba5f05b
+manager: craigg
 ms.service: sql-database
 ms.custom: reference
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 03/03/2017
 ms.author: carlrab
-ms.openlocfilehash: 3da41adfa0865c0741c61b5d15c3ef1741eb6118
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 22f462010f636731cdceed5105e6057d2d45f005
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-customer-implementation-technical-studies"></a>Azure SQL Database zákazníka implementace technické studie
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 710aa59fb3cc69cb1f5a20389eca13b1be93d223
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: ceb36b78b72c45e9af59724d1f1c79789ef24b24
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-microsoft-azure-active-directory-single-sign-on-for-jira"></a>Kurz: Azure Active Directory integrace s Microsoft Azure Active Directory jednotné přihlašování pro JIRA
 
@@ -61,6 +61,7 @@ Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 *   Základní JIRA a Software: 6.0 na 7.2.0
 *   Služby podpory JIRA 3.0 k 3.2
+*   JIRA také podporuje 5.2. Další podrobnosti získáte kliknutím na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5.2](./active-directory-saas-jira52microsoft-tutorial.md)
 
 ## <a name="scenario-description"></a>Popis scénáře
 V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
@@ -121,11 +122,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Microsoft Azure Active Directory jednotné přihlašování JIRA domény a adresy URL jeden přihlašování informace](.\media\active-directory-saas-msaadssojira-tutorial\tutorial_singlesign-onforjira_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<domain:port>/plugins/servlet/saml/auth`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<domain:port>/plugins/servlet/saml/auth`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<domain:port>/`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<domain:port>/`
 
-    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<domain:port>/plugins/servlet/saml/auth`
+    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Port je volitelný, v případě, že je adresa URL s názvem. Tyto hodnoty jsou přijímány během konfigurace modulu plug-in Jira, který je vysvětlen později v tomto kurzu.
@@ -160,7 +161,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     ![Konfigurovat jednotné přihlašování](.\media\active-directory-saas-msaadssojira-tutorial\addon1.png)
 
-8. Stáhnout modul plug-in z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=56506). Ručně odeslat modulu plug-in poskytnout pomocí Microsoft **nahrát rozšíření** nabídky.
+8. Stáhnout modul plug-in z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=56506). Ručně odeslat modulu plug-in poskytnout pomocí Microsoft **nahrát rozšíření** nabídky. Stahování modul plug-in je popsaná v části [servisní smlouvou aplikace Microsoft](https://www.microsoft.com/en-us/servicesagreement/).
 
     ![Konfigurovat jednotné přihlašování](.\media\active-directory-saas-msaadssojira-tutorial\addon12.png)
 
@@ -195,6 +196,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     h. Zkontrolujte **povolit jednotné přihlašování se** Pokud se chcete odhlásit z Azure AD, když se uživatel neodhlásí z JIRA. 
 
     i. Klikněte na tlačítko **Uložit** tlačítko pro uložení nastavení.
+
+    > [!NOTE]
+    > Další informace o instalaci a řešení potíží najdete v článku [MS JIRA jednotné přihlašování konektor správce průvodce](ms-confluence-jira-plugin-adminguide.md) a také [– nejčastější dotazy](ms-confluence-jira-plugin-faq.md) pro vaše pomoc
 
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)

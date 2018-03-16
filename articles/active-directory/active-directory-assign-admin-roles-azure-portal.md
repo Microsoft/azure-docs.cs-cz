@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 1fed14fc117c7652e677a245625502c1810068ff
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 8ba4787852902f194deb3eee27ff9f0fc28fa5aa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -61,9 +61,9 @@ Následující role správce jsou k dispozici:
   >
   >
 
-* **Pozvání hosta odeslal**: uživatelům v této roli můžete spravovat pozvánek uživatele Azure Active Directory s B2B hosta uživatelské nastavení "Členy můžete pozvat" je nastavena na Ne. Další informace o spolupráci B2B v [spolupráce o Azure AD s B2B ve verzi preview](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Neobsahuje žádné další oprávnění.
+* **Pozvání hosta odeslal**: uživatelům v této roli můžete spravovat pozvánek uživatele Azure Active Directory s B2B hosta uživatelské nastavení "Členy můžete pozvat" je nastavena na Ne. Další informace o spolupráci B2B v [spolupráce o B2B Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Neobsahuje žádné další oprávnění.
 
-* **Správce informačních Protection (preview)**: uživatelé s touto rolí mají uživatelská práva pouze ve službě Azure Information Protection. Jejich nejsou udělena práva uživatele v Centru pro ochranu Identity, Privileged Identity Management, stavu služby Office 365 monitorování, nebo zabezpečení Office 365 a centru dodržování předpisů. Můžete nakonfigurovat popisky zásad Azure Information Protection, správě ochrany šablon a aktivujte ochranu.
+* **Správce informačních ochrany**: uživatelé s touto rolí mají uživatelská práva pouze ve službě Azure Information Protection. Jejich nejsou udělena práva uživatele v Centru pro ochranu Identity, Privileged Identity Management, stavu služby Office 365 monitorování, nebo zabezpečení Office 365 a centru dodržování předpisů. Můžete nakonfigurovat popisky zásad Azure Information Protection, správě ochrany šablon a aktivujte ochranu.
 
 * **Správce služby Intune**: uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Intune Online, když se služba nachází. Kromě toho tato role zahrnuje schopnost spravovat uživatele a zařízení, aby bylo možné přidružit zásady, a také vytvářet a spravovat skupiny.
 
@@ -127,7 +127,7 @@ Následující role správce jsou k dispozici:
 | --- | --- |
 | <p>Zobrazení informací o společnosti a uživatele</p><p>Spravovat lístky žádostí o podporu Office</p><p>Změna hesla pro uživatele a další technickou podporu správci</p>|<p>Provádět operace fakturace a nákupu produktů Office</p><p>Vytvoření a Správa zobrazení uživatele</p><p>Vytvářet, upravovat a odstraňovat uživatele a skupiny a spravovat uživatelské licence</p><p>Spravovat domény</p><p>Spravovat informace o společnosti</p><p>Delegovat role správců jiným uživatelům</p><p>Používat synchronizaci adresářů</p><p>Zobrazení sestav</p>|
 
-### <a name="information-protection-administrator-preview"></a>Správce informačních Protection (preview)
+### <a name="information-protection-administrator"></a>Správce informačních ochrany
 V | Můžete provést
 -------- | ---------
 Azure Information Protection | <li>Konfigurace nastavení a popisky v zásadách globální a oboru<li>Konfigurovat a spravovat šablony ochrany<li>Aktivace nebo deaktivace ochrany--
@@ -137,14 +137,14 @@ Můžete provést | Nelze provést
 ------ | ----------
 Zobrazení Azure AD přihlášení sestavy a protokoly auditu<br>Zobrazení informací o společnosti a uživatele<br>Přístup k Office 365 použití řídicího panelu | Vytvoření a Správa zobrazení uživatele<br>Vytvářet, upravovat a odstraňovat uživatele a skupiny a spravovat uživatelské licence<br>Delegovat role správců jiným uživatelům<br>Spravovat informace o společnosti
 
-### <a name="security-reader"></a>Čtecí zařízení pro zabezpečení
+### <a name="security-reader"></a>Čtečka zabezpečení
 | V | Můžete provést |
 | --- | --- |
 | Centrum Identity Protection |Číst všechny sestavy zabezpečení a informace o nastavení pro funkce zabezpečení<ul><li>Anti-spam<li>Šifrování<li>Zabránění ztrátě dat<li>Anti-malware<li>Pokročilé threat protection<li>Ochrana proti podvodným<li>Mailflow pravidla |
 | Privileged Identity Management |<p>Má přístup jen pro čtení ke všem informacím prezentované v Azure AD PIM: zásady a sestav pro Azure AD přiřazení rolí zabezpečení zkontroluje a v budoucnu přístup pro čtení k zásad datům a sestavám pro scénáře kromě přiřazení role Azure AD.<p>**Nelze** registrace pro Azure AD PIM nebo proveďte změny. PIM na portálu nebo pomocí prostředí PowerShell někdo v této roli můžete aktivovat další role (například globální správce nebo správce privilegovaných rolí), pokud je uživatel kandidátem pro ně. |
 | <p>Monitorování stavu služby Office 365</p><p>Centru dodržování předpisů a zabezpečení Office 365</p> |<ul><li>Číst a spravovat výstrahy<li>Zásady zabezpečení pro čtení<li>Číst analýzou hrozeb, Cloud App Discovery a karantény v hledání a prošetřit<li>Číst všechny sestavy |
 
-### <a name="security-administrator"></a>Správce zabezpečení
+### <a name="security-administrator"></a>Správce zabezpečení.
 | V | Můžete provést |
 | --- | --- |
 | Centrum Identity Protection |<ul><li>Všechna oprávnění role zabezpečení čtečky.<li>Kromě toho možnost provádět všechny operace IPC s výjimkou resetování hesla. |
@@ -180,11 +180,11 @@ Zobrazení Azure AD přihlášení sestavy a protokoly auditu<br>Zobrazení info
 Následující role není vhodné používat. Budou se nepoužívá a bude odebrána z Azure AD v budoucnu.
 
 * Správce ad hoc licencí
-* Tvůrce uživatelů ověřovaných na základě e-mailu
+* Tvůrce uživatele ověřený e-mailem
 * Připojení zařízení k
-* Správci zařízení
+* Správce zařízení.
 * Uživatelé zařízení
-* Připojení pracovních zařízení
+* Připojení zařízení k síti na pracovišti
 
 ## <a name="next-steps"></a>Další postup
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/2018
 ms.author: deli; LADocs
-ms.openlocfilehash: 91819d0fba30dd2ada981435fa13b8ae0a7fcc45
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 2ae4f0ae9782ada23089d364e8a1700144ef5ff7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="handle-errors-and-exceptions-in-logic-apps"></a>Zpracování chyb a výjimek v Logic Apps
 
@@ -64,7 +64,7 @@ Pokud nemáte definovat zásady opakování v **retryPolicy** části svou aplik
 }
 ```
 
-### <a name="none"></a>Žádný
+### <a name="none"></a>Žádné
 
 Pokud nastavíte **retryPolicy** k **žádné**, tato zásada neopakuje neúspěšných požadavků.
 
@@ -280,8 +280,6 @@ Pokud chcete vyhodnotit spuštění stavy, můžete sledování metrik a protoko
 
 * [V tématu Jak zákazník sestavení službou Azure Logic Apps zpracování chyb](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Najít další aplikace logiky příkladů a scénářů](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Naučte se vytvořit automatické nasazení pro logic apps](../logic-apps/logic-apps-create-deploy-template.md)
-* [Vytvoření a nasazení aplikací logiky s využitím sady Visual Studio](logic-apps-deploy-from-vs.md)
 
 <!-- References -->
 [retryPolicyMSDN]: https://docs.microsoft.com/rest/api/logic/actions-and-triggers#Anchor_9

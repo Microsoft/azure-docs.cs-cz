@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/09/2017
-ms.author: edmaca
-ms.openlocfilehash: 08364c6c7bea53807844e3b1cc327dc3742e0487
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: saveenr
+ms.openlocfilehash: b39b5250cc042c393216784128ffc4e2f1288f04
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-u-sql-catalog"></a>Začínáme s katalogem U-SQL
 
@@ -112,7 +112,7 @@ OUTPUT @res
     USING Outputters.Csv();
 ```
 
-## <a name="create-tables"></a>Vytváření tabulek
+## <a name="create-tables"></a>Vytvoření tabulek
 Jako s tabulkami relační databáze pomocí U-SQL můžete vytvořit tabulku s předdefinovaným schématem nebo vytvořit tabulku, která odvodí, že schéma z dotazu, který naplní tabulky (také označované jako CREATE TABLE AS SELECT nebo funkce CTAS).
 
 Vytvořte databázi a dvě tabulky pomocí následující skript:

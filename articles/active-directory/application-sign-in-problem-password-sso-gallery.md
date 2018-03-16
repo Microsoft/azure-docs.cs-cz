@@ -1,5 +1,5 @@
 ---
-title: "Potíže při přihlašování k aplikaci Azure AD Galerie konfigurován pro federované jednotné přihlašování | Microsoft Docs"
+title: "Potíže při přihlašování k aplikaci Azure AD Galerie nakonfigurovaný pro heslo jednotného přihlašování | Microsoft Docs"
 description: "Řešení potíží s aplikací Azure AD Galerie nakonfigurovaný pro heslo jednotné přihlašování"
 documentationcenter: 
 author: ajamess
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: de6c876c7583da0b00ae2365646b1d381fda2b1e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b6de9d066f861d300bbe3601701e846410e93773
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování k aplikaci Azure AD Galerie nakonfigurovaný pro federované jednotné přihlašování
+# <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Potíže při přihlašování k aplikaci Azure AD Galerie nakonfigurovaný pro heslo jednotné přihlašování
 
 Přístupový Panel je webový portál, který uživatel, který má pracovní nebo školní účet ve službě Azure Active Directory (Azure AD) umožňuje zobrazovat a spouštět cloudové aplikace, které je správce Azure AD udělil přístup. Uživatel, který má edice Azure AD můžete také skupiny samoobslužné služby a možnosti správy aplikace prostřednictvím na přístupovém panelu. Přístupový Panel je nezávislý na portálu Azure a nevyžaduje, aby uživatelé měli předplatné Azure.
 

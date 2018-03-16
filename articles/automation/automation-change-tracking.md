@@ -2,32 +2,28 @@
 title: "Sledování změn s Azure Automation | Microsoft Docs"
 description: "Sledování změn řešení pomáhá identifikovat software a služby systému Windows změny ve vašem prostředí."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: f8040d5d-3c89-4f0c-8520-751c00251cb7
 ms.service: automation
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/28/2018
+author: georgewallace
 ms.author: gwallace
+ms.date: 03/15/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79c5f354c3e63856474e46e2b6928af829604e15
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: fcee2956d2d33133c5d1a5bf367643a2095cad71
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn softwaru ve vašem prostředí do řešení pro sledování změn
+# <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledovat změny v prostředí s řešením sledování změn
 
 Tento článek vám pomůže používat řešení sledování změn snadno identifikovat změny ve vašem prostředí. Řešení sleduje změny softwaru Windows a Linux, Windows a Linux soubory, klíčů registru Windows, služby systému Windows a Linux démoni. Identifikace změny konfigurace vám mohou pomoci přesně určit provozní problémy.
 
 Změny nainstalovaného softwaru, služby systému Windows, registru systému Windows a soubory a démoni Linux na monitorované servery jsou odesílány ke službě Analýza protokolů v cloudu pro zpracování. Logika se použije pro přijatá data a cloudové služby zaznamenává data. Podle informací uvedených na řídicím panelu sledování změn, uvidíte snadno změny, které byly provedeny v serverové infrastruktuře.
 
-## <a name="enable-change-tracking-and-inventory"></a>Povolit sledování změn a inventáře
+## <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 
 
 Chcete-li zahájit sledování změn, povolit řešení inventáře a sledování změn pro svůj účet Automation.
@@ -55,14 +51,14 @@ Použijte následující postup ke konfiguraci souboru sledování počítačů 
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který se mají sledovat.        |
 |Skupina     | Název skupiny pro logicky seskupování soubory.        |
-|Zadejte cestu     | Cesta ke kontrole souboru. Například: "/etc/*.conf"       |
+|Zadat cestu     | Cesta ke kontrole souboru. Například: "/etc/*.conf"       |
 |Typ cesty     | Typ položky být sledovaných, možné hodnoty jsou souborů a adresářů.        |
-|Rekurze     | Určuje, pokud rekurze používá při vyhledávání pro položku být sledován.        |
-|Pomocí příkazu "sudo"     | Toto nastavení určuje, pokud je sudo používané při kontrole pro položku.         |
-|Odkazy     | Toto nastavení určuje, jak symbolické odkazy vyřešit při procházení adresářů.<br> **Ignorovat** – ignoruje symbolické odkazy a nezahrnuje soubory nebo adresáře odkazuje.<br>**Postupujte podle** – během rekurze postupuje podle symbolické odkazy a také zahrnuje soubory nebo adresáře odkazuje.<br>**Správa** – postupuje podle symbolické odkazy a umožňuje změnu vrácený obsahu.     |
+|Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
+|Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
+|Odkazy     | Toto nastavení určuje, jak se při procházení adresářů zpracovávají symbolické odkazy.<br> **Ignorovat** – ignoruje symbolické odkazy a nezahrnuje soubory nebo adresáře odkazuje.<br>**Postupujte podle** – během rekurze postupuje podle symbolické odkazy a také zahrnuje soubory nebo adresáře odkazuje.<br>**Správa** – postupuje podle symbolické odkazy a umožňuje změnu vrácený obsahu.     |
 
 > [!NOTE]
-> Možnost "Manage" odkazy se nedoporučuje. Načtení souboru obsahu není podporováno.
+> Možnost Spravovat se nedoporučuje. Načítání obsahu souborů se nepodporuje.
 
 ### <a name="configure-windows-files-to-track"></a>Konfigurovat soubory systému Windows ke sledování
 
@@ -77,7 +73,7 @@ Pomocí následujících kroků nakonfigurujte soubory sledování v počítač�
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který se mají sledovat.        |
 |Skupina     | Název skupiny pro logicky seskupování soubory.        |
-|Zadejte cestu     | Cesta ke kontrole souboru, například: "c:\temp\myfile.txt"       |
+|Zadat cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt       |
 
 ### <a name="configure-windows-registry-keys-to-track"></a>Nakonfigurovat klíče registru Windows ke sledování
 
@@ -92,7 +88,7 @@ Použijte následující postup ke konfiguraci sledování klíče registru na p
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který se mají sledovat.        |
 |Skupina     | Název skupiny pro logicky seskupování soubory.        |
-|Klíč registru Windows   | Cesta ke kontrole souboru. Například: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User prostředí Folders\Common spuštění"      |
+|Klíč registru systému Windows   | Cesta ke kontrole souboru. Například: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User prostředí Folders\Common spuštění"      |
 
 ## <a name="limitations"></a>Omezení
 
@@ -195,8 +191,8 @@ Následující tabulka obsahuje ukázkový protokol hledání pro měnit záznam
 
 |Dotaz  |Popis  |
 |---------|---------|
-|ConfigurationData<br>&#124; kde ConfigDataType == "WindowsServices" a SvcStartupType == "Automatické"<br>&#124; kde SvcState == "Stopped"<br>&#124; shrnout arg_max(TimeGenerated, *) podle SoftwareName počítače         | Zobrazuje nejnovější záznamů inventáře pro služby systému Windows, které byly nastavené na hodnotu Auto, ale ohlášeny jako zastavenou<br>Výsledky jsou omezeny na poslední záznam pro tento SoftwareName a počítač      |
-|Změnakonfigurace<br>&#124; kde ConfigChangeType == "Software" a ChangeCategory == "Odebrat"<br>&#124; Řadit podle TimeGenerated desc|Ukazuje změnu záznamy pro odebrané softwaru|
+|ConfigurationData<br>&#124;kde ConfigDataType == "WindowsServices" a SvcStartupType == "Automatické"<br>&#124;kde SvcState == "Stopped"<br>&#124;shrnout arg_max(TimeGenerated, *) podle SoftwareName počítače         | Zobrazuje nejnovější záznamů inventáře pro služby systému Windows, které byly nastavené na hodnotu Auto, ale ohlášeny jako zastavenou<br>Výsledky jsou omezeny na poslední záznam pro tento SoftwareName a počítač      |
+|Změnakonfigurace<br>&#124;kde ConfigChangeType == "Software" a ChangeCategory == "Odebrat"<br>&#124;Řadit podle TimeGenerated desc|Ukazuje změnu záznamy pro odebrané softwaru|
 
 ## <a name="next-steps"></a>Další postup
 

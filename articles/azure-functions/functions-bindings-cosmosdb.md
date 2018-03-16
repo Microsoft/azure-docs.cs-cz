@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 5d90b2cd977522eab267c8c86a35e47bc61248a8
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: eb6008b73bfd15ec193e728fc9007af5c2d25c67
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Azure Cosmos DB vazby pro Azure Functions
 
@@ -29,6 +29,12 @@ Tento článek vysvětluje, jak pracovat s [Azure Cosmos DB](..\cosmos-db\server
 > Tato vazba byl původně pojmenován DocumentDB. Ve verzi funkce 1.x, pouze aktivační událost byla přejmenována Cosmos DB; Vstupní vazby, výstup vazby a balíček NuGet zachovat název DocumentDB. V [funkce verze 2.x](functions-versions.md), vazby a balíčku byly také přejmenovat DB Cosmos. Tento článek používá 1.x názvy.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="packages"></a>Balíčky
+
+Vazby Cosmos DB verze funkcí jsou součástí 1.x [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) balíček NuGet. Pro funkce 2.x, je balíček [Microsoft.Azure.WebJobs.Extensions.CosmosDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB). Zdrojový kód pro vazby je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/) úložiště GitHub.
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="trigger"></a>Trigger
 
@@ -130,7 +136,7 @@ Tady je kód jazyka JavaScript:
 
 ## <a name="trigger---attributes"></a>Aktivační událost – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/Trigger/CosmosDBTriggerAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) atribut.
 
 Konstruktoru atributu přebírá název databáze a název kolekce. Informace o těchto nastaveních a další vlastnosti, které můžete konfigurovat, najdete v článku [aktivační událost - konfigurace](#trigger---configuration). Tady je `CosmosDBTrigger` atribut příkladu podpis metody:
 
@@ -458,7 +464,7 @@ Tady je kód jazyka JavaScript:
 
 ## <a name="input---attributes"></a>(Vstup) – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) atribut.
 
 Konstruktoru atributu přebírá název databáze a název kolekce. Informace o těchto nastaveních a další vlastnosti, které můžete konfigurovat, najdete v článku [následující konfigurační oddíl](#input---configuration). 
 
@@ -718,9 +724,9 @@ Tady je kód jazyka JavaScript:
 
 ## <a name="output---attributes"></a>Výstup – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) atribut.
 
-Konstruktoru atributu přebírá název databáze a název kolekce. Informace o těchto nastaveních a další vlastnosti, které můžete konfigurovat, najdete v článku [výstup - konfigurace](#output---configuration). Tady je `CosmosDB` atribut příkladu podpis metody:
+Konstruktoru atributu přebírá název databáze a název kolekce. Informace o těchto nastaveních a další vlastnosti, které můžete konfigurovat, najdete v článku [výstup - konfigurace](#output---configuration). Tady je `DocumentDB` atribut příkladu podpis metody:
 
 ```csharp
     [FunctionName("QueueToDocDB")]        
@@ -736,7 +742,7 @@ Konstruktoru atributu přebírá název databáze a název kolekce. Informace o 
 
 ## <a name="output---configuration"></a>Výstup – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `CosmosDB` atribut.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `DocumentDB` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|

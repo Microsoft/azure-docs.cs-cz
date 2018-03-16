@@ -1,26 +1,19 @@
 ---
 title: "Uložte zálohy databáze SQL Azure pro až 10 let | Microsoft Docs"
 description: "Zjistěte, jak Azure SQL Database podporuje ukládání záloh až 10 let."
-keywords: 
 services: sql-database
-documentationcenter: 
 author: anosov1960
-manager: jhubbard
-editor: 
-ms.assetid: 66fdb8b8-5903-4d3a-802e-af08d204566e
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 12/22/2016
 ms.author: sashan
-ms.openlocfilehash: e44c92c3f37b3f1e3397d1c8cdb8c8f6d0f9942e
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 2f31e89fce2746e57d6a670aef949d0d534af4c1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Uložte zálohy databáze SQL Azure až 10 let.
 Mnoho aplikací mít regulačních, dodržování předpisů nebo jiné obchodní účely, které vyžadují, abyste uchování záloh databáze nad rámec 7-35 dní, poskytuje Azure SQL Database [automatické zálohování](sql-database-automated-backups.md). Pomocí funkce dlouhodobé uchovávání záloh, můžete uložit zálohování databáze SQL v trezoru služeb zotavení Azure až 10 let. Můžete uložit až 1 000 databází na jeden trezor. Pak můžete vybrat jakékoli zálohy v trezoru obnovit jako novou databázi.
@@ -164,5 +157,5 @@ Protože jsme nemáte trvat zálohy na replikách, je aktuálně žádná možno
 * Pokud dojde převzetí služeb při selhání a databáze se stane primární databázi, jsme trvat úplné zálohování, což je nahrán do trezoru.
 * Existuje nejsou zpoplatněné zákazník pro nastavení dlouhodobé uchovávání záloh na sekundární databáze.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Protože zálohy databáze chránit data před náhodným poškození nebo odstranění, jsou nedílnou součást vámi vyžádaných žádné kontinuity podnikových procesů a strategie zotavení po havárii. Další informace o jiných řešení kontinuity podnikových procesů databáze SQL najdete v tématu [obchodní kontinuity přehled](sql-database-business-continuity.md).

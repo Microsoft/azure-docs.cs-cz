@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: a1ffd9311f6ff171502efe64557463abc49ad636
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5039798d76017d93b77d724b2e6bca6712af0370
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Aktivační událost mřížky pro Azure Functions
 
@@ -37,11 +37,11 @@ Pokud dáváte přednost, můžete použít aktivační událost INSTEAD HTTP ke
 
 Je součástí aktivační událost mřížky [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) balíček NuGet. Zdrojový kód pro balíček je v [azure funkce eventgrid rozšíření](https://github.com/Azure/azure-functions-eventgrid-extension) úložiště GitHub.
 
-Balíček se používá pro [vývoj knihovny tříd jazyka C#](functions-triggers-bindings.md#local-c-development-using-visual-studio-or-vs-code) a [funkce registrace rozšíření vazby v2](functions-triggers-bindings.md#local-development-azure-functions-core-tools).
-
 <!--
 If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` type instead of `JObject`, install the [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) package.
 -->
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="example"></a>Příklad:
 
@@ -348,7 +348,7 @@ Po dokončení testování, můžete použít stejné předplatné pro produkčn
 
 ### <a name="create-a-requestbin-endpoint"></a>Vytvoření koncového bodu RequestBin
 
-RequestBin je otevřený nástroj, který přijímá požadavky protokolu HTTP a textu žádosti se dozvíte. Získá adresu URL http://requestb.in zvláštní zacházení podle mřížky událostí Azure. Usnadňuje testování mřížky událostí odesílá události na adresu URL RequestBin bez nutnosti správné odpovědí na požadavky na ověření předplatného. Dva testovací nástroje mají stejné zacházení: http://webhookinbox.com a http://hookbin.com.
+RequestBin je otevřený nástroj, který přijímá požadavky protokolu HTTP a textu žádosti se dozvíte. http://requestb.in Zvláštní zacházení podle mřížky událostí Azure získá adresu URL. Usnadňuje testování mřížky událostí odesílá události na adresu URL RequestBin bez nutnosti správné odpovědí na požadavky na ověření předplatného. Dva testovací nástroje mají stejné zacházení: http://webhookinbox.com a http://hookbin.com.
 
 RequestBin není určen pro použití vysoké propustnosti. Pokud najednou nabídnete více než jednu událost, možná se v nástroji nezobrazí všechny.
 

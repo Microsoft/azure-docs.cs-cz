@@ -3,18 +3,18 @@ title: "Detekce - hrozby spravované Instance Azure SQL Database | Microsoft Doc
 description: "Detekce hrozeb zjistila nezvyklé databázové aktivity, které indikují potenciální ohrožení databáze."
 services: sql-database
 author: rmatchoro
-manager: cguyer
+manager: craigg
 ms.service: sql-database
 ms.custom: security, managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: ronmat
 ms.reviewer: carlrab
-ms.openlocfilehash: f8c08bc16d622516958b8bd182179d07edfa4891
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2112a0a3997af478de6b8c80abcf7924a66302f0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-managed-instance-threat-detection"></a>Databáze Azure SQL spravované Instance detekce hrozeb.
 
@@ -29,7 +29,7 @@ Detekce hrozeb poskytuje novou vrstvu zabezpečení, která uživatelům umožň
 Detekce hrozeb SQL integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/), a každá chráněné spravované Instance se fakturuje za stejnou cenu jako Azure Security Center standardní vrstvy v $15 uzlu/měsíc, kde každé chráněné spravované Instance se počítá jako jeden uzel.  
 
 ## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Nastavení detekce hrozeb pro vaše Instance spravované na portálu Azure
-1. Spuštění portálu Azure v [https://portal.azure.com](https://portal.azure.com).
+1. Spuštění portálu Azure v [ https://portal.azure.com ](https://portal.azure.com).
 2. Přejděte na stránku konfigurace spravované instance, které chcete chránit. V **nastavení** vyberte **detekce hrozeb**. 
 3. Na stránce konfigurace detekce hrozeb. 
    - Zapnout **ON** detekce hrozby.

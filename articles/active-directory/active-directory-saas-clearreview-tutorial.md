@@ -4,7 +4,7 @@ description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azur
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 8264159a-11a2-4a8c-8285-4efea0adac8c
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 03/12/2018
 ms.author: jeedes
-ms.openlocfilehash: e999e375d11f5d2a4657b360cf774ae10c28b0e0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1e7bd01c9c0f79a2cf96d7fd38dba57c4a407960
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Kurz: Azure Active Directory integrace s zrušte revize
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Vymazat zkontrolujte domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<customer name>.clearreview.com/sso/metadata`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<customer name>.clearreview.com/sso/metadata/`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<customer>.clearreview.com/sso/acs/`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<customer name>.clearreview.com/sso/acs/`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
@@ -119,31 +119,36 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<customer name>.clearreview.com`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory zrušte zkontrolujte](https://clearreview.com/contact/) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte s skutečná adresa URL přihlašování, identifikátor a adresa URL odpovědi. Obraťte se na [tým podpory zrušte zkontrolujte](https://clearreview.com/contact/) k získání těchto hodnot.
 
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+5. Vymazat revize aplikace očekávají, že hodnota identifikátoru jedinečná uživatelská v názvu identifikátor deklarace identity. Hodnota identifikátoru uživatele pro by měla být mapována **user.mail**.
+
+    ![V části atribut](./media/active-directory-saas-clearreview-tutorial/attribute.png)
+
+
+6. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_certificate.png)
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+7. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-clearreview-tutorial/tutorial_general_400.png)
 
-7. Na **vymaže konfiguraci zkontrolujte** klikněte na tlačítko **konfigurace zrušte zkontrolujte** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+8. Na **vymaže konfiguraci zkontrolujte** klikněte na tlačítko **konfigurace zrušte zkontrolujte** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování služby URL** z **Stručná referenční příručka části.**
 
     ![Vymažte Zkontrolujte konfiguraci](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_configure.png) 
 
-8. Konfigurace jednotného přihlašování na **zrušte zkontrolujte** straně, otevřete **zrušte zkontrolujte** portálu pomocí přihlašovacích údajů správce.
+9. Konfigurace jednotného přihlašování na **zrušte zkontrolujte** straně, otevřete **zrušte zkontrolujte** portálu pomocí přihlašovacích údajů správce.
 
-9. Vyberte **správce** z levé navigaci.
+10. Vyberte **správce** z levé navigaci.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-10. Vyberte **změnu** v dolní části stránky.
+11. Vyberte **změnu** v dolní části stránky.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
-11. Proveďte následující kroky **nastavení jednotného přihlašování** stránky
+12. Proveďte následující kroky **nastavení jednotného přihlašování** stránky
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
@@ -155,7 +160,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     d. V poznámkovém bloku otevřete stažený certifikát a vložte obsah **certifikát X.509** textové pole.   
 
-12. Klikněte na **Uložit**.
+13. Klikněte na **Uložit**.
 
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -233,7 +238,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici zrušte zkontrolujte na přístupovém panelu, jste měli získat automaticky přihlášení k zrušte revize aplikace.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
@@ -253,4 +258,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-clearreview-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-clearreview-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-clearreview-tutorial/tutorial_general_203.png
-

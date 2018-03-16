@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: ee8334cbe9256b7a5ecd5e96afa2f15d6389afa8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 06b3b246d5c350f0982faa9b1d5f5692cd0c428e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-use-perfinsights"></a>Jak používat PerfInsights 
 
@@ -108,7 +108,7 @@ Zaznamená informace o virtuální počítač s Windows, disky nebo konfigurace 
 | Informace o systému                | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Svazek mapy                        | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Mapa disku                          | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Spuštěné úkoly                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
+| Spuštěné úlohy                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Čítače spolehlivost úložiště      | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Informace o úložiště               | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Výstup fsutil                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
@@ -238,11 +238,11 @@ Chcete-li spustit nástroj PerfInsights, postupujte takto:
     >
     >Pokud doba trvání přepínač **/d** není zadán, PerfInsights vás vyzve nepodařilo potíže při spouštění vmslow, azurefiles a vlastní scénáře. 
 
-Po dokončení trasování nebo operations nový soubor se zobrazí v D:\\protokolu\_kolekce (nebo dočasné jednotce). Název souboru je **CollectedData\_rrrr MM-dd\_hh\_mm\_ss.zip.** Můžete odeslat tento soubor do agenta podporu pro analýzu nebo otevřete sestavu v souboru zip ke kontrole zjištění a doporučení.
+Po dokončení trasování nebo operace se zobrazí ve stejné složce jako PerfInsights nový soubor. Název souboru je **CollectedData\_rrrr MM-dd\_hh-mm-ss-fff.zip.** Můžete odeslat tento soubor do agenta podporu pro analýzu nebo otevřete sestavu v souboru zip ke kontrole zjištění a doporučení.
 
 ## <a name="review-the-diagnostics-report"></a>Zkontrolujte výsledky diagnostiky
 
-V rámci **CollectedData\_rrrr MM-dd\_hh\_mm\_ss.zip** soubor můžete najít s podrobnými informacemi o zjištění PerfInsights sestavu ve formátu HTML. Zkontrolujte sestavu, rozbalte **CollectedData\_rrrr MM-dd\_hh\_mm\_ss.zip** souboru a pak otevřete **PerfInsights Report.html** souboru.
+V rámci **CollectedData\_rrrr MM-dd\_hh-mm-ss-fff.zip** soubor můžete najít s podrobnými informacemi o zjištění PerfInsights sestavu ve formátu HTML. Zkontrolujte sestavu, rozbalte **CollectedData\_rrrr MM-dd\_hh-mm-ss-fff.zip** souboru a pak otevřete **PerfInsights Report.html** souboru.
 
 Vyberte **zjištění** kartě.
 
@@ -297,7 +297,7 @@ Diskspd je úložiště zatížení generátor a výkon testu nástroj od spole�
 
 XPerf je nástroj příkazového řádku pro zachycení trasování z nástrojů výkonu systému Windows. Další informace najdete v tématu [nástrojů výkonu systému Windows – Xperf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Diagnostické protokoly a sestavy můžete uložit do Microsoft Support pro další kontrolu. Podpora si mohou vyžádat přenosu výstupu, který je generován PerfInsights vám pomůže při proces řešení potíží.
 
@@ -307,4 +307,4 @@ Následující snímek obrazovky ukazuje podobná co může se zobrazit zpráva:
 
 Postupujte podle pokynů ve zprávě pro přístup k pracovním prostoru pro přenos souborů. Pro dodatečné zabezpečení budete muset změnit heslo při prvním použití.
 
-Po přihlášení, zjistíte, dialogové okno pro odeslání **CollectedData\_rrrr MM-dd\_hh\_mm\_ss.zip** soubor, který byl shromážděný nástrojem PerfInsights.
+Po přihlášení, zjistíte, dialogové okno pro odeslání **CollectedData\_rrrr MM-dd\_hh-mm-ss-fff.zip** soubor, který byl shromážděný nástrojem PerfInsights.

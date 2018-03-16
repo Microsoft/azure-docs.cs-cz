@@ -11,24 +11,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2018
+ms.date: 03/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 40b2d04fe829c51a58fb3bec1519a590a12cfdb8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 90cb87b3fe94b7b3b0eba1b261d29a1c8f4348d6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Nasazení prostředků Azure k více než jedno předplatné nebo skupinu prostředků
 
 Obvykle se nasazení všechny prostředky v šabloně na jednu [skupiny prostředků](resource-group-overview.md). Existují však scénáře, ve které chcete nasadit sadu prostředků společně ale umístěte je v různých skupinách prostředků nebo předplatných. Můžete například nasazení zálohování virtuálního počítače pro Azure Site Recovery na skupinu samostatné prostředků a umístění. Resource Manager umožňuje použití vnořených šablon cíl různých předplatných a skupin prostředků než předplatného a použití v šabloně nadřazené skupiny prostředků.
 
 > [!NOTE]
-> Můžete nasadit do pouze pět skupin prostředků v jednom nasazení.
+> Můžete nasadit do pouze pět skupin prostředků v jednom nasazení. Toto omezení obvykle znamená, že můžete nasadit do jedné skupiny prostředků zadané nadřazené šablony a až čtyři skupiny prostředků v vnořené nebo propojené nasazení. Ale pokud šablona nadřazené obsahuje pouze vnořené nebo propojených šablon a nemá sám nasadit všechny prostředky, můžete zahrnout až pět skupin prostředků v vnořené nebo propojené nasazení.
 
 ## <a name="specify-a-subscription-and-resource-group"></a>Zadejte skupinu předplatného a prostředků
 
 Pokud chcete zacílit na různé prostředků, použijte šablonu vnořené nebo propojené. `Microsoft.Resources/deployments` Typ prostředku poskytuje parametry pro `subscriptionId` a `resourceGroup`. Tyto vlastnosti umožňují zadat jiné předplatné a prostředek skupiny pro vnořené nasazení. Všechny skupiny prostředků musí existovat před spuštěním nasazení. Pokud nezadáte skupině ID nebo prostředků předplatného, předplatné a skupina prostředků z nadřazené šablony se používá.
+
+Účet, který použijete k nasazení šablony musí mít oprávnění k nasazování ID předplatného. Pokud zadaný odběr existuje v jiné klienta Azure Active Directory, musíte [přidat uživatele typu Host z jiného adresáře](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
 Pokud chcete zadat jiné skupině prostředků a předplatné, použijte:
 
@@ -175,7 +177,7 @@ Následující šablony ukazují více nasazení skupiny prostředků. Skripty p
 
 Pro nasazení dva účty úložiště do dvou skupin prostředků v prostředí PowerShell **stejného předplatného**, použijte:
 
-```powershell
+```azurepowershell-interactive
 $firstRG = "primarygroup"
 $secondRG = "secondarygroup"
 
@@ -192,7 +194,7 @@ New-AzureRmResourceGroupDeployment `
 
 Pro prostředí PowerShell, chcete-li nasadit dva účty úložiště pro **obě předplatná**, použijte:
 
-```powershell
+```azurepowershell-interactive
 $firstRG = "primarygroup"
 $secondRG = "secondarygroup"
 
@@ -216,7 +218,7 @@ New-AzureRmResourceGroupDeployment `
 
 Pro prostředí PowerShell k testování jak **objektu skupiny prostředků** přeloží pro použití nadřazené šablony, šablony vložené a propojené šablony:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroup -Name parentGroup -Location southcentralus
 New-AzureRmResourceGroup -Name inlineGroup -Location southcentralus
 New-AzureRmResourceGroup -Name linkedGroup -Location southcentralus
@@ -224,6 +226,37 @@ New-AzureRmResourceGroup -Name linkedGroup -Location southcentralus
 New-AzureRmResourceGroupDeployment `
   -ResourceGroupName parentGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
+```
+
+V předchozím příkladu obě **parentRG** a **inlineRG** odkazující na **parentGroup**. **linkedRG** přeloží na **linkedGroup**. Výstup z předchozího příkladu je:
+
+```powershell
+ Name             Type                       Value
+ ===============  =========================  ==========
+ parentRG         Object                     {
+                                               "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
+                                               "name": "parentGroup",
+                                               "location": "southcentralus",
+                                               "properties": {
+                                                 "provisioningState": "Succeeded"
+                                               }
+                                             }
+ inlineRG         Object                     {
+                                               "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
+                                               "name": "parentGroup",
+                                               "location": "southcentralus",
+                                               "properties": {
+                                                 "provisioningState": "Succeeded"
+                                               }
+                                             }
+ linkedRG         Object                     {
+                                               "id": "/subscriptions/<subscription-id>/resourceGroups/linkedGroup",
+                                               "name": "linkedGroup",
+                                               "location": "southcentralus",
+                                               "properties": {
+                                                 "provisioningState": "Succeeded"
+                                               }
+                                             }
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -276,6 +309,48 @@ az group deployment create \
   --name ExampleDeployment \
   --resource-group parentGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
+```
+
+V předchozím příkladu obě **parentRG** a **inlineRG** odkazující na **parentGroup**. **linkedRG** přeloží na **linkedGroup**. Výstup z předchozího příkladu je:
+
+```azurecli
+...
+"outputs": {
+  "inlineRG": {
+    "type": "Object",
+    "value": {
+      "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
+      "location": "southcentralus",
+      "name": "parentGroup",
+      "properties": {
+        "provisioningState": "Succeeded"
+      }
+    }
+  },
+  "linkedRG": {
+    "type": "Object",
+    "value": {
+      "id": "/subscriptions/<subscription-id>/resourceGroups/linkedGroup",
+      "location": "southcentralus",
+      "name": "linkedGroup",
+      "properties": {
+        "provisioningState": "Succeeded"
+      }
+    }
+  },
+  "parentRG": {
+    "type": "Object",
+    "value": {
+      "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
+      "location": "southcentralus",
+      "name": "parentGroup",
+      "properties": {
+        "provisioningState": "Succeeded"
+      }
+    }
+  }
+},
+...
 ```
 
 ## <a name="next-steps"></a>Další postup

@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 7802ac701dfb865186beac3889ea2a5b4d0c4770
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 9b32b298f141e9ee54b4c42d3ee9c15174daf8b7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Příprava virtuálního pevného disku Debian pro Azure
 ## <a name="prerequisites"></a>Požadavky
@@ -30,7 +30,7 @@ Této části se předpokládá, že po instalaci operačního systému Debian L
 * Novější formát VHDX není podporovaný v Azure. Disk můžete převést do formátu virtuálního pevného disku pomocí Správce technologie Hyper-V nebo **convert-VHD prostředí** rutiny.
 * Při instalaci systému Linux se doporučuje použít standardní oddíly spíše než LVM (často výchozí pro mnoho instalace). Tím se vyhnete LVM název je v konfliktu s klonovaný virtuální počítače, zvlášť pokud někdy musí být připojené k jiným virtuálním Počítačem pro řešení potíží s disk s operačním systémem. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lze použít v datových disků, pokud upřednostňovaný.
 * Nekonfigurujte přepnutí oddílu na disku operačního systému. Chcete-li vytvořit odkládací soubor na disku dočasných prostředků lze nakonfigurovat Azure Linux agent. Další informace o této naleznete v následujících krocích.
-* Všechny virtuální pevné disky musí mít velikostí, které jsou násobky 1 MB.
+* Všechny virtuální pevné disky na platformě Azure, musí mít virtuální velikost zarovnán 1MB. Při převodu z nezpracovaná disku na virtuální pevný disk je nutné zajistit, aby velikost disku nezpracovaná není násobkem 1MB před převodem. V tématu [poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes) Další informace.
 
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>Použít správu Azure k vytvoření Debian virtuálních pevných disků
 Nejsou k dispozici pro generování Debian virtuální pevné disky pro Azure, jako například nástroje [azure-spravovat](https://github.com/credativ/azure-manage) skriptů z [credativ](http://www.credativ.com/). Toto je doporučený postup a vytvoření bitové kopie od začátku. Můžete například vytvořit Debian virtuální pevný disk 8 spusťte následující příkazy ke stažení azure a spravovat (a závislosti) a spusťte skript azure_build_image:
@@ -92,6 +92,6 @@ Nejsou k dispozici pro generování Debian virtuální pevné disky pro Azure, j
         # logout
 4. Klikněte na tlačítko **akce** -> vypnutí dolů ve Správci technologie Hyper-V. Svůj disk VHD Linux je nyní připravena k odeslání do Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Nyní jste připraveni použít Debian virtuální pevný disk k vytvoření nové virtuální počítače v Azure. Pokud je poprvé, že jste nahrávání souboru VHD do Azure, najdete v části [vytvořit virtuální počítač s Linuxem z vlastní disku](upload-vhd.md#option-1-upload-a-vhd).
 

@@ -2,24 +2,18 @@
 title: "Zkopírujte Azure SQL database | Microsoft Docs"
 description: "Vytvořte stavu transakční konzistence kopii existující databázi Azure SQL na stejný server nebo jiný server."
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 5aaf6bcd-3839-49b5-8c77-cbdf786e359b
+manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.devlang: NA
 ms.date: 06/15/2017
 ms.author: carlrab
-ms.workload: On Demand
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.openlocfilehash: 7999c52a81165a9f8efb2f1302d04c9cb851faca
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: c4a3836cfd0bbbb8d26a42af2980deab5f9d7681
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="copy-an-azure-sql-database"></a>Kopírování databáze Azure SQL
 
@@ -105,7 +99,7 @@ Všichni uživatelé v nové databáze zachovat oprávnění, která měla ve zd
 
 Další informace o správě uživatelů a přihlášení při kopírování databáze do různých logického serveru najdete v tématu [jak spravovat zabezpečení databáze Azure SQL po obnovení po havárii](sql-database-geo-replication-security-config.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Informace o přihlášení, naleznete v části [spravovat přihlášení](sql-database-manage-logins.md) a [jak spravovat zabezpečení databáze Azure SQL po obnovení po havárii](sql-database-geo-replication-security-config.md).
 * Exportu databáze, najdete v článku [databázi exportovat do souboru BACPAC](sql-database-export.md).

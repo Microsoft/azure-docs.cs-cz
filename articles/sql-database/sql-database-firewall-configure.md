@@ -3,25 +3,18 @@ title: "Pravidla brány firewall ve službě Azure SQL Database | Microsoft Docs
 description: "Zjistěte, jak nakonfigurovat bránu firewall databáze SQL s pravidly brány firewall na úrovni serveru a databáze pro správu přístupu."
 keywords: "brána firewall databáze"
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: cgronlun
-tags: 
-ms.assetid: ac57f84c-35c3-4975-9903-241c8059011e
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: 1988bc7ab5b498db32d7bb40623f1194d7290b94
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: cde076dfdcc2f3aea69081def7ea86be2744ccc7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Azure pravidla brány firewall serveru úroveň a databáze SQL Database 
 
@@ -221,7 +214,7 @@ Pokud se přístup ke službě Microsoft Azure SQL Database nechová podle oček
   * Požádejte svého poskytovatele internetových služeb (ISP) o rozsah IP adres přidělený vašim klientským počítačům, které přistupují k serveru služby Azure SQL Database, a následně přidejte tento rozsah IP adres jako pravidlo brány firewall.
   * Získejte pro své klientské počítače statické přidělování IP adres a následně přidejte tyto IP adresy jako pravidla brány firewall.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Rychlý start na vytváření databáze a pravidlo brány firewall na úrovni serveru, najdete v části [vytvoření Azure SQL database](sql-database-get-started-portal.md).
 - S připojováním k databázi SQL Azure z open source aplikací nebo aplikací třetích stran vám pomůžou [Ukázky kódu pro rychlý start klientů se službou SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).

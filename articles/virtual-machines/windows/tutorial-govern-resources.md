@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9952660dc177b542d8477dc85c62d76d16e8c54e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9fbe9318e52f8299c3ef46f73c3be177de6d4a0c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="virtual-machine-governance-with-azure-powershell"></a>Zásady správného řízení virtuální počítač s prostředím Azure PowerShell
 
-[!include[Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
+[!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
@@ -29,7 +29,7 @@ Pokud si zvolíte instalaci a místně pomocí prostředí PowerShell najdete [m
 
 ## <a name="understand-scope"></a>Pochopení oboru
 
-[!include[Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
+[!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
 V tomto kurzu použít, můžete snadno odebrat tato nastavení po dokončení všech nastavení pro správu do skupiny prostředků.
 
@@ -76,7 +76,7 @@ Obvykle, opakujte tento postup pro *Přispěvatel sítě* a *Přispěvatel úče
 
 ## <a name="azure-policies"></a>Azure zásady
 
-[!include[Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
+[!INCLUDE [Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
 
 ### <a name="apply-policies"></a>Pomocí zásad
 
@@ -176,7 +176,7 @@ Zobrazí chyba s oznámením, že operaci odstranění nelze provést z důvodu 
 
 Použijete [značky](../../azure-resource-manager/resource-group-using-tags.md) vaše prostředky Azure logicky uspořádat podle kategorií. Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
 
-[!include[Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
+[!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
 Pro použití značek k virtuálnímu počítači, použijte [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) příkaz:
 
@@ -206,7 +206,7 @@ Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.Reso
 
 ### <a name="view-costs-by-tag-values"></a>Zobrazení nákladů podle hodnoty značky
 
-[!include[Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
+[!INCLUDE [Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -229,7 +229,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuá
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili jste se tyto postupy:
 

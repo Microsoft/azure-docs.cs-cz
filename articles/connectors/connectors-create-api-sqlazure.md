@@ -3,7 +3,7 @@ title: "Přidejte konektor Azure SQL Database ve vašich Logic Apps | Microsoft 
 description: "Přehled konektoru Azure SQL Database s parametry rozhraní REST API"
 services: 
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: def2b65f009c377233c45356f8fa661b86d73f51
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 4313ead0c31ab2e72238701d58dc2f321f116fa6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-azure-sql-database-connector"></a>Začínáme s Azure SQL Database konektoru
 Pomocí konektoru Azure SQL Database, vytvořte pracovní postupy pro vaši organizaci, které spravovat data v tabulkách. 
@@ -29,7 +29,7 @@ S databází SQL můžete:
 * Vytvořte pracovní postup přidáním nového zákazníka k databázi zákazníků nebo aktualizaci pořadí, v databázi objednávky.
 * Pomocí akcí pro získání řádku dat, vložit nový řádek a i odstranění. Například v aplikaci Dynamics CRM Online (aktivační událost) je vytvořen záznam, pak vložte řádek v Azure SQL Database (akce). 
 
-Toto téma ukazuje, jak k používání konektoru databáze SQL v aplikaci logiky a také uvádí seznam akcí.
+Tento článek ukazuje, jak k používání konektoru databáze SQL v aplikaci logiky a také uvádí seznam akcí.
 
 Další informace o Logic Apps najdete v tématu [co jsou logic apps](../logic-apps/logic-apps-overview.md) a [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -54,11 +54,11 @@ Akce je operace prováděné definované v aplikaci logiky pracovního postupu. 
 3. Do textového pole zadejte "sql" získat seznam všechny dostupné akce.
    
     ![](./media/connectors-create-api-sqlazure/sql-1.png) 
-4. V našem příkladu zvolte **systému SQL Server - Get řádek**. Pokud připojení již existuje, pak vyberte **název tabulky** z rozevíracího seznamu a zadejte **ID řádku** chcete vrátit.
+4. V tomto příkladu vyberte **systému SQL Server - Get řádek**. Pokud připojení již existuje, pak vyberte **název tabulky** z rozevíracího seznamu a zadejte **ID řádku** chcete vrátit.
    
     ![](./media/connectors-create-api-sqlazure/sample-table.png)
    
-    Pokud se zobrazí výzva pro informace o připojení, zadejte podrobnosti k vytvoření připojení. [Vytvoření připojení](connectors-create-api-sqlazure.md#create-the-connection) v tomto tématu popisuje tyto vlastnosti. 
+    Pokud se zobrazí výzva pro informace o připojení, zadejte podrobnosti k vytvoření připojení. [Vytvoření připojení](connectors-create-api-sqlazure.md#create-the-connection) v tomto článku popisuje tyto vlastnosti. 
    
    > [!NOTE]
    > V tomto příkladu jsme vrátí řádek z tabulky. Chcete-li zobrazit data na tomto řádku, přidejte další akci, která vytvoří soubor pomocí pole z tabulky. Například přidejte OneDrive akci, která používá pole FirstName a LastName k vytvoření nového souboru v účtu úložiště cloudu. 
@@ -71,5 +71,5 @@ Akce je operace prováděné definované v aplikaci logiky pracovního postupu. 
 Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/sql/). 
 
 ## <a name="next-steps"></a>Další postup
-[Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Prozkoumejte dalších dostupných konektorů v Logic Apps v našem [rozhraní API seznamu](apis-list.md).
+[Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Prozkoumejte dalších dostupných konektorů v Logic Apps v [rozhraní API seznamu](apis-list.md).
 

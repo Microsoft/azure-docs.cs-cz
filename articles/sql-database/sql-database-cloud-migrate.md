@@ -4,17 +4,17 @@ description: "V této části se dozvíte, jak migrovat místní databázi SQL S
 keywords: "migrace databáze, migrace databáze systému sql server, nástroje pro migraci databáze, migrace databáze, migrace sql database"
 services: sql-database
 author: CarlRabeler
-manager: Craig.Guyer
+manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 32377b4a80fcafd1d997daa11a90699b581093a6
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7892c74f03647e289ed96055fb9db5c2f08f0234
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrace databáze SQL serveru do Azure SQL Database
 
@@ -116,7 +116,7 @@ Kromě hledání na internetu a využití těchto prostředků použijte [fóra 
 > Spravované Instance databáze SQL umožňuje migrovat existující instanci systému SQL Server a její databáze s minimálním k žádné problémy s kompatibilitou. V tématu [co je Instance spravované](sql-database-managed-instance.md).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Pomocí skriptu na blogu inženýrů Azure SQL EMEA můžete [monitorovat využití databáze tempdb během migrace](https://blogs.msdn.microsoft.com/azuresqlemea/2016/12/28/lesson-learned-10-monitoring-tempdb-usage/).
 * Pomocí skriptu na blogu inženýrů Azure SQL EMEA můžete [monitorovat volné místo pro protokoly transakcí ve vaší databázi, zatímco probíhá migrace](https://blogs.msdn.microsoft.com/azuresqlemea/2016/10/31/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database/0).
 * Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/07/2018
+ms.date: 03/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: ba93e1b597bb6bdb752563f2873b8e0c5f7a8181
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3e65371396b91c1dc97f504bac8b969093f5c518
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -148,7 +148,7 @@ Pro Chrome podporovat v **Windows 8.1 a 7**, vytvořte následující klíč reg
 |Cesta | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 |Název | 1 |
 |Typ | REG_SZ (String) |
-|Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
+|Data | {"vzor": "https://device.login.microsoftonline.com","filtr": {"VYSTAVITELE": {"CN": "MS-organizace-Access"}}}|
 
 Ověřování zařízení umožňuje zařízení identifikovat a ověřovat s zásadu podporují tyto prohlížeče. Kontrola zařízení selže, pokud je v prohlížeči spuštění v privátním režimu. 
 
@@ -164,24 +164,25 @@ V zásadách podmíněného přístupu můžete vybrat **mobilní aplikace a kli
 Toto nastavení má vliv na pokusů o přístup provedených z následující mobilní aplikace a klienti vzdálené plochy: 
 
 
-|Klientské aplikace|Cílová služba|Platforma|
-|---|---|---|
-|Vzdálené aplikace Azure|Služba vzdálené aplikace Azure|Windows 10, Windows 8.1, Windows 7, iOS, Android a Mac OS X|
-|Dynamics CRM app|Dynamics CRM|Windows 10, Windows 8.1, Windows 7, iOS a Android|
-|E-mailu, kalendáři nebo osoby aplikace Outlook 2016, aplikace Outlook 2013 (s moderní ověřování)|Office 365 Exchange Online|Windows 10|
-|MFA a umístění zásady pro aplikace. Zásady zařízení na základě nejsou podporovány. |Všechny služby app service pro Moje aplikace|Android a iOS|
-|Microsoft týmy služby – tato volba určuje všechny služby, které podporují Teams společnosti Microsoft a všechny jeho klientských aplikací – Windows Desktop, iOS, Android, webové části a webového klienta|Microsoft Teams|Windows 7, Windows 10, Windows 8.1, iOS, Android a systému macOS |
-|Aplikace Office 2016, Office 2013 (s moderní ověřování), Onedrivu synchronizovat klienta (viz [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Office 365 Sharepointu Online|Windows 8.1, Windows 7|
-|Aplikace Office 2016, Office univerzální aplikace, Office 2013 (s moderní ověřování), OneDrive synchronizace klienta (v tématu [poznámky k](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), podporu skupiny Office je plánované v budoucnosti, podpora aplikací služby SharePoint je plánované v budoucnosti|Office 365 Sharepointu Online|Windows 10|
-|Office 2016 pro systému macOS (Word, Excel, PowerPoint, OneNote pouze). OneDrive pro firmy podporu plánované v budoucnosti|Office 365 Sharepointu Online|Mac OS X|
-|Mobilní aplikace Office|Office 365 Sharepointu Online|Android, iOS|
-|Aplikace Yammer Office|Office 365 Yammer|Windows 10, iOS, Android|
-|Outlook 2016 (Office pro systému macOS)|Office 365 Exchange Online|Mac OS X|
-|Outlook 2016, aplikace Outlook 2013 (s moderní ověřování), Skype pro firmy (s moderní ověřování)|Office 365 Exchange Online|Windows 8.1, Windows 7|
-|Mobilní aplikace Outlook|Office 365 Exchange Online|Android, iOS|
-|Aplikaci PowerBI|Služba PowerBI|Windows 10, Windows 8.1, Windows 7 a iOS|
-|Skype pro firmy|Office 365 Exchange Online|Android, IOS |
-|Visual Studio Team Services aplikace|Visual Studio Team Services|Windows 10, Windows 8.1, Windows 7, iOS a Android|
+| Klientské aplikace| Cílová služba| Platforma |
+| --- | --- | --- |
+| Vzdálené aplikace Azure| Služba vzdálené aplikace Azure| Windows 10, Windows 8.1, Windows 7, iOS, Android a Mac OS X|
+| Dynamics CRM app| Dynamics CRM| Windows 10, Windows 8.1, Windows 7, iOS a Android|
+| E-mailu, kalendáři nebo osoby aplikace Outlook 2016, aplikace Outlook 2013 (s moderní ověřování)| Office 365 Exchange Online| Windows 10|
+| MFA a umístění zásady pro aplikace. Zásady zařízení na základě nejsou podporovány.| Všechny služby app service pro Moje aplikace| Android a iOS|
+| Microsoft týmy služby – tato volba určuje všechny služby, které podporují Teams společnosti Microsoft a všechny jeho klientských aplikací – Windows Desktop, iOS, Android, webové části a webového klienta| Microsoft Teams| Windows 7, Windows 10, Windows 8.1, iOS, Android a systému macOS|
+| Aplikace Office 2016, Office 2013 (s moderní ověřování), Onedrivu synchronizovat klienta (viz [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))| Office 365 Sharepointu Online| Windows 8.1, Windows 7|
+| Aplikace Office 2016, Office univerzální aplikace, Office 2013 (s moderní ověřování), OneDrive synchronizace klienta (v tématu [poznámky k](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), podporu skupiny Office je plánované v budoucnosti, podpora aplikací služby SharePoint je plánované v budoucnosti| Office 365 Sharepointu Online| Windows 10|
+| Office 2016 pro systému macOS (Word, Excel, PowerPoint, OneNote pouze). OneDrive pro firmy podporu plánované v budoucnosti| Office 365 Sharepointu Online| Mac OS X|
+| Mobilní aplikace Office| Office 365 Sharepointu Online| Android, iOS|
+| Aplikace Yammer Office| Office 365 Yammer| Windows 10, iOS, Android|
+| Outlook 2016 (Office pro systému macOS)| Office 365 Exchange Online| Mac OS X|
+| Outlook 2016, aplikace Outlook 2013 (s moderní ověřování), Skype pro firmy (s moderní ověřování)| Office 365 Exchange Online| Windows 8.1, Windows 7|
+| Mobilní aplikace Outlook| Office 365 Exchange Online| Android, iOS|
+| Aplikaci PowerBI| Služba PowerBI| Windows 10, Windows 8.1, Windows 7, Android a iOS|
+| Skype pro firmy| Office 365 Exchange Online| Android, IOS|
+| Visual Studio Team Services aplikace| Visual Studio Team Services| Windows 10, Windows 8.1, Windows 7, iOS a Android|
+
 
 
 ## <a name="approved-client-app-requirement"></a>Požadavek schválené klientské aplikace 
@@ -221,10 +222,6 @@ Toto nastavení platí pro následující aplikace klienta:
 - **Vyžadují schválené klientskou aplikaci** požadavek:
 
     - Podporuje jenom iOS a Android pro [podmínku platformy zařízení](#device-platforms-condition).
-
-    - Nepodporuje **prohlížeče** možnost [klienta aplikace podmínku](#supported-browsers).
-    
-    - Nahrazuje **mobilní aplikace a klienti vzdálené plochy** možnost [klienta aplikace podmínku](#supported-mobile-apps-and-desktop-clients) když je tato možnost vybraná.
 
 
 ## <a name="next-steps"></a>Další postup

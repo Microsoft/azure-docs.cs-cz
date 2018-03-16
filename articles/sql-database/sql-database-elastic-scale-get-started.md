@@ -2,24 +2,18 @@
 title: "Začínáme s nástroji elastické databáze – Azure | Microsoft Docs"
 description: "Základní vysvětlení funkce nástroje pro elastické databáze Azure SQL Database, včetně Snadné spuštění ukázkové aplikace."
 services: sql-database
-documentationcenter: 
-manager: jstrauss
+manager: craigg
 author: anumjs
-editor: CarlRabeler
-ms.assetid: b6911f8d-2bae-4d04-9fa8-f79a3db7129d
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: anjangsh
-ms.openlocfilehash: 615e5b0bf299a844ea2d37476fc704c48e17b363
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 28ff3f6eee2316a078badcf29e6780f3844f3a54
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Začínáme s nástroji elastické databáze
 Tento dokument vás seznámí s možnosti pro vývojáře [klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md) tím, že pomáhá spustíte ukázkovou aplikaci. Ukázková aplikace vytvoří jednoduchou aplikaci horizontálně dělené a jsou zde popsány klíčové funkce funkce nástroje pro elastické databáze Azure SQL Database. Zaměřuje se na případy použití pro [horizontálního oddílu mapy správu](sql-database-elastic-scale-shard-map-management.md), [závislé na data směrování](sql-database-elastic-scale-data-dependent-routing.md), a [víc horizontálních dotazování](sql-database-elastic-scale-multishard-querying.md). Klientská knihovna je k dispozici pro rozhraní .NET, jakož i Java. 
@@ -53,7 +47,7 @@ Sestavení souborů JAR a začít pracovat s ukázkovým projektem, postupujte t
     
 5. Další informace o možnostech knihovny klienta Experimentujte s různými možnostmi. Nebojte se, že prozkoumat kód Další informace o implementaci ukázkové aplikace.
 
-    ![Průběh java][5]
+    ![Progress-java][5]
     
 Blahopřejeme! Úspěšně jste vytvořené a spuštění vaší první horizontálně dělené aplikace pomocí nástrojů pro elastické databáze v databázi SQL Azure. Pomocí sady Visual Studio nebo SQL Server Management Studio k připojení k vaší databázi SQL a rychle zobrazit v horizontálních oddílů, vytvořené v ukázce. Všimnete nové ukázkové databáze horizontálního oddílu a databázi správce mapy horizontálního oddílu, které vytvořil vzorku. 
 
@@ -117,7 +111,7 @@ Ukázkové aplikace například vytvoří nové databáze. Náklady na tuto funk
 
 Informace o cenách najdete v části [podrobnosti o cenách SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o nástrojích elastické databáze najdete v následujících článcích:
 
 * Ukázky kódu: 

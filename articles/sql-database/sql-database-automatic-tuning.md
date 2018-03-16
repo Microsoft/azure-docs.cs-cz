@@ -2,24 +2,18 @@
 title: "Azure SQL Database – automatické ladění | Microsoft Docs"
 description: "Azure SQL Database analyzuje dotazu SQL a automaticky přizpůsobí zatížení uživatele."
 services: sql-database
-documentationcenter: 
 author: jovanpop-msft
-manager: drasumic
-editor: danimir
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 11/09/2017
 ms.author: jovanpop
-ms.openlocfilehash: dcea2c34ab26349c6f937c582bfe35d7a42f24a6
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 917dd48d57b70b328f40f518d3fb472badfda08a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatické ladění ve službě Azure SQL Database
 
@@ -75,7 +69,7 @@ Azure SQL Database identifikuje **CREATE INDEX**, **DROP INDEX**, a **FORCE posl
 
 Automatické ladění možnosti může být nezávisle zapnout nebo vypnout na databázi, nebo můžou být nakonfigurované na logickém serveru a použít na každou databázi, která dědí nastavení ze serveru. Konfigurace automatické ladění možnosti na serveru a dědí nastavení u databází na serveru, doporučuje se metoda pro konfiguraci automatické ladění, protože se zjednodušuje Správa automatické možnosti ladění na velký počet databází.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete povolit automatické ladění v databázi SQL Azure ke správě velikosti pracovní zátěže, najdete v části [povolit automatické ladění](sql-database-automatic-tuning-enable.md).
 - Chcete-li ručně zkontrolovat a použít automatické ladění doporučení, přečtěte si téma [najít a použít výkonu doporučení](sql-database-advisor-portal.md).

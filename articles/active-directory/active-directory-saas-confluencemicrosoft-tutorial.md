@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 4151811a74fc0e58f6171e11d77e070f3cb40f95
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5b81ca4f5a9f30b2882d86639ca9386e7bbc09e8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Kurz: Integrace Azure Active Directory pomocí jednotného přihlašování SAML soutoku společností Microsoft
 
@@ -125,11 +125,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<domain:port>/plugins/servlet/saml/auth`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<domain:port>/plugins/servlet/saml/auth`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<domain:port>/`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<domain:port>/`
 
-    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<domain:port>/plugins/servlet/saml/auth`
+    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Port je volitelný, v případě, že je adresa URL s názvem. Tyto hodnoty jsou přijímány během konfigurace modulu plug-in soutoku, který je vysvětlen později v tomto kurzu.
@@ -200,6 +200,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     i. Klikněte na tlačítko **Uložit** tlačítko pro uložení nastavení.
 
+    > [!NOTE]
+    > Další informace o instalaci a řešení potíží najdete v článku [MS soutoku jednotné přihlašování konektor správce průvodce](ms-confluence-jira-plugin-adminguide.md) a také [– nejčastější dotazy](ms-confluence-jira-plugin-faq.md) pro vaše pomoc
 
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)

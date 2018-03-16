@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: damaerte
-ms.openlocfilehash: 03706914db2b6b09ff31d5ed4b25871e7a53298a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: db16fe765a078e430c88d720e447a118b9cad0c8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Funkce a nástroje pro prostředí PowerShell v prostředí cloudu Azure (Preview)
 
@@ -103,7 +103,7 @@ Tyto příkazy jsou postavená na vzdálenou komunikaci prostředí PowerShell a
 |------------|-----------|
 |.NET        |4.6        |
 |Node.js     |6.10       |
-|PowerShell  |5.1 a [6.0.0](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell  |5.1 a [6.0.1](https://github.com/PowerShell/powershell/releases)       |
 |Python      |2.7        |
 
 ## <a name="next-steps"></a>Další postup

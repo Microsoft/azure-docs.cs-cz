@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: rwike77
-ms.openlocfilehash: 17eb1e7c2184fe9cae19685a47ea80716292b754
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 1e5b8523422aae00655b003bf15103d5467b4177
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Vaše aplikace Service Fabric a další kroky
 Vaše aplikace Azure Service Fabric byla vytvořena. Tento článek popisuje některé kurzy k vyzkoušení, způsob vytvoření projektu, některé další informace, které je zajímají a potenciální další kroky.
@@ -32,7 +32,7 @@ Vyzkoušejte jeden z následujících návodů a vytvořit první...
 - [Služba jazyka C# spolehlivé služby v systému Windows](service-fabric-reliable-services-quick-start.md) 
 - [C# Reliable Actors služby v systému Windows](service-fabric-reliable-actors-get-started.md) 
 - [Spustitelný soubor služby hostované v systému Windows](quickstart-guest-app.md) 
-- [Aplikace kontejnerů pro Windows](service-fabric-get-started-containers.md) 
+- [Aplikace typu kontejner pro Windows](service-fabric-get-started-containers.md) 
 
 Také může být zájem o vyzkoušení naše [ukázkové aplikace](http://aka.ms/servicefabricsamples).
 
@@ -55,7 +55,7 @@ Projekt aplikace se skládá z:
 
 
 ## <a name="learn-more-about-the-programming-models"></a>Další informace o programovací modely
-Service Fabric nabízí několik způsobů, jak zapsat a spravovat vaše služby.  Tady je přehled a koncepční informace [bezzstavovými i stavovými službami spolehlivé](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [kontejnery](service-fabric-containers-overview.md), [hosta spustitelné soubory ](service-fabric-deploy-existing-app.md), a [bezzstavovými i stavovými službami ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md).
+Service Fabric nabízí několik způsobů, jak zapsat a spravovat vaše služby.  Tady je přehled a koncepční informace [bezzstavovými i stavovými službami spolehlivé](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [kontejnery](service-fabric-containers-overview.md), [hosta spustitelné soubory ](service-fabric-guest-executables-introduction.md), a [bezzstavovými i stavovými službami ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md).
 
 ## <a name="learn-about-service-communication"></a>Další informace o komunikace služby
 Aplikace Service Fabric se skládá z různých služeb, kde každá služba provede specializované úlohu. Tyto služby mohou komunikovat navzájem a mohou být klientské aplikace mimo cluster, které se připojují k a komunikovat se službami. Zjistěte, jak [nastavení komunikace s a mezi vaší služby](service-fabric-connect-and-communicate-with-services.md) v Service Fabric. 
@@ -68,7 +68,7 @@ Aplikace může obsahovat citlivé informace, jako je například úložiště p
 ## <a name="learn-about-the-application-lifecycle"></a>Další informace o životním cyklu aplikací
 Jako s jinými platformami, aplikace Service Fabric obvykle projde má tyto fáze: návrh, vývoj, testování, nasazení, upgrade, údržbu a odebírání. [Tento článek](service-fabric-application-lifecycle.md) poskytuje přehled o rozhraní API a jak se používají různé role v průběhu fáze životního cyklu aplikace Service Fabric.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Vytvoření clusteru se systémem Windows v Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 - Vizualizace clusteru, včetně nasazené aplikace a fyzické rozložení s [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 - [Verze a upgradujte vašim službám](service-fabric-application-upgrade-tutorial.md)
