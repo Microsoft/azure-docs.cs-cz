@@ -3,24 +3,18 @@ title: "Opravte chyby připojení SQL, přechodné chybě. | Microsoft Docs"
 description: "Informace o odstraňování potíží, diagnostikovat a zabránit chyba připojení SQL nebo přechodné chybě ve službě Azure SQL Database."
 keywords: "připojení SQL, připojovací řetězec, problémy s připojením, přechodná chyba, došlo k chybě připojení"
 services: sql-database
-documentationcenter: 
 author: dalechen
-manager: cshepard
-editor: 
-ms.assetid: efb35451-3fed-4264-bf86-72b350f67d50
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 11/29/2017
 ms.author: daleche
-ms.openlocfilehash: 7d393cd08ef5c20ef680e4e1ab3aded191abe932
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f6b5f825d7f8111075fe37b5dc29d174928d913e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>Oprava a diagnostika chyb připojení SQL a přechodných chyb služby SQL Database a jejich předcházení
 Tento článek popisuje, jak zabránit, odstraňování, diagnostikovat a opravit chyby připojení a přechodné chyby, které klientské aplikace, zaznamená při komunikuje se službou Azure SQL Database. Zjistěte, jak nakonfigurovat logika opakovaných pokusů, sestavení připojovacího řetězce a další nastavení připojení.
@@ -131,7 +125,7 @@ Při vytváření [připojovací řetězec](http://msdn.microsoft.com/library/Sy
 
 Konkrétně vybrané hodnoty měli následující true rovnosti:
 
-Časový limit připojení = ConnectRetryCount * ConnectionRetryInterval
+Connection Timeout = ConnectRetryCount * ConnectionRetryInterval
 
 Například pokud je počet rovná 3 a interval rovná 10 sekund, vypršení časového limitu jenom 29 sekund nedává systému dostatek času pro jeho třetí a finální opakovat, pokud chcete připojit: 29 < 3 * 10.
 
@@ -327,14 +321,14 @@ V oboru názvů **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**
   
   * **ExecuteAction** – metoda
 * **ExponentialBackoff** – třída
-* **SqlDatabaseTransientErrorDetectionStrategy** – třída
+* **SqlDatabaseTransientErrorDetectionStrategy** class
 * **ReliableSqlConnection** – třída
   
   * **Parametr ExecuteCommand** – metoda
 
 V oboru názvů **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport**:
 
-* **AlwaysTransientErrorDetectionStrategy** – třída
+* **AlwaysTransientErrorDetectionStrategy** class
 * **NeverTransientErrorDetectionStrategy** – třída
 
 Zde jsou některé odkazy na informace o EntLib60:

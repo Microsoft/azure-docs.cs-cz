@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte
-ms.openlocfilehash: b3f78f6cc89a3d4bf8712c339f66b5d50f373919
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 0ad267b9694c2f9cdb574b6b6008d4f6fa027fce
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení monitorování kontejneru v analýzy protokolů
 
@@ -51,7 +51,7 @@ Následující tabulka popisuje Docker orchestration a monitorování podporu ko
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
-| Služba<br>Prostředky infrastruktury | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Služba<br>Prostředky infrastruktury | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Otevřete Red Hat<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
 | Windows Server<br>(standalone) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Linux Server<br>(standalone) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
@@ -103,7 +103,7 @@ Použijte následující informace k instalaci a konfiguraci řešení.
     - Pokud máte Kubernetes clusteru Azure Container Service pomocí, přečtěte si [konfigurace agenta OMS pro Kubernetes](#configure-an-oms-agent-for-kubernetes).
     - Pokud máte cluster Azure Container Service DC/OS, přečtěte si informace v [monitorování clusteru Azure Container Service DC/OS s Operations Management Suite](../container-service/dcos-swarm/container-service-monitoring-oms.md).
     - Pokud máte prostředí režimu Docker Swarm, další informace v [konfigurace agenta OMS pro Docker Swarm](#configure-an-oms-agent-for-docker-swarm).
-    - Pokud používáte kontejnery s Service Fabric, další informace v [přehled Azure Service Fabric](../service-fabric/service-fabric-overview.md).
+    - Pokud máte cluster Service Fabric, další informace v [monitorování kontejnery s analýzy protokolů OMS](../service-fabric/service-fabric-diagnostics-oms-containers.md).
 
 Zkontrolujte [modulu Docker v systému Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) článek Další informace o tom, jak nainstalovat a nakonfigurovat vaše Docker moduly v počítačích se systémem Windows.
 
@@ -544,7 +544,7 @@ V následující tabulce jsou uvedeny příklady záznamů shromážděných ře
 
 | Typ dat | Datový typ v hledání protokolů | Pole |
 | --- | --- | --- |
-| Výkon pro hostitele a kontejnery | `Type=Perf` | Počítač, ObjectName, název_čítače &#40; % času procesoru, Disk načte MB, zapíše MB, MB využití paměti, disku sítě přijatých bajtů, síti odesílat bajtů, procesor doba využití sítě &#41; přepočtené, TimeGenerated, Cesta_k_čítači, SourceSystem |
+| Výkon pro hostitele a kontejnery | `Type=Perf` | Počítač, ObjectName, název_čítače &#40;% času procesoru, disku čte MB, zapíše MB, MB využití paměti, disku sítě přijatých bajtů, sítě odesílat bajtů, procesor doba využití, sítě&#41;, přepočtené, TimeGenerated, Cesta_k_čítači, SourceSystem |
 | Kontejner inventáře | `Type=ContainerInventory` | TimeGenerated, počítače a název kontejneru, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, příkazu, CreatedTime, StartedTime, FinishedTime, SourceSystem, identifikátor ContainerID, ID obrázku |
 | Kontejner image inventáře | `Type=ContainerImageInventory` | TimeGenerated, počítače, Image, ImageTag, ImageSize, VirtualSize, spuštění, pozastavena, zastavit, se nezdařilo, SourceSystem, ID obrázku, TotalContainer |
 | Kontejner protokolu | `Type=ContainerLog` | TimeGenerated, počítač, ID bitové kopie, název kontejneru, LogEntrySource, LogEntry, SourceSystem, identifikátor ContainerID |

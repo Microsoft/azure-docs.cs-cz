@@ -3,23 +3,18 @@ title: "Víceklientské aplikace s RLS a nástroje elastické databáze | Micros
 description: "Používejte nástroje elastické databáze pomocí zabezpečení na úrovni řádků pro vytvoření aplikace s vysoce škálovatelné datové vrstvy."
 metakeywords: azure sql database elastic tools multi tenant row level security rls
 services: sql-database
-documentationcenter: 
-manager: jhubbard
+manager: craigg
 author: tmullaney
-ms.assetid: e72d3cfe-e9be-4326-b776-9c6d96c0a18e
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
-ms.author: thmullan;torsteng
-ms.openlocfilehash: f874800e8647eac6ed94945d79e904df86207b0f
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.author: thmullan
+ms.openlocfilehash: 62213eeeee0b1d93cabc32101ad6fe51bf394080
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Víceklientské aplikací pomocí nástroje elastické databáze a zabezpečení na úrovni řádků
 
@@ -341,7 +336,7 @@ GO
 ```
 
 
-### <a name="maintenance"></a>Údržby
+### <a name="maintenance"></a>Údržba
 
 - **Přidání nové horizontálních oddílů**: spuštění skriptu T-SQL povolit RLS na všechny nové horizontálních oddílů, jinak nejsou filtrovány dotazy na tyto horizontálních oddílů.
 - **Přidání nové tabulky**: Přidání predikát filtru a blokování do nastavení zásad zabezpečení na všechny horizontálních oddílů vždy, když je vytvořena nová tabulka. V opačném případě nefiltrují dotazy na novou tabulku. Přidání je možné automatizovat pomocí aktivační událost jazyka DDL, jak je popsáno v [použití zabezpečení na úrovni řádků automaticky do nově vytvořené tabulky (blog)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
@@ -350,7 +345,7 @@ GO
 
 Nástroje elastické databáze a zabezpečení na úrovni řádků může být společně slouží jako škálování aplikace datové vrstvy s podporou pro oba více klientů a jednoho klienta horizontálních oddílů. Víceklientské horizontálních oddílů lze použít k ukládání dat efektivněji. Této efektivity je výraznější, kde velký počet klientů, které mají jenom pár řádků data. Horizontálních oddílů jednoho klienta může podporovat klienty premium, které mají přísnější výkon a požadavky na izolaci.  Další informace najdete v tématu [zabezpečení na úrovni řádků odkaz][rls].
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Co je Azure elastickém fondu?](sql-database-elastic-pool.md)
 - [Horizontální navýšení kapacity s Azure SQL Database](sql-database-elastic-scale-introduction.md)

@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: f649067590dc990c962aa0c9df8c76080fc2a0b8
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 11876b1d178eceb209a36fcc0eeae5779b90a4e8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na CentOS pro Azure
 * [Příprava virtuálního počítače, CentOS 6.x pro Azure.](#centos-6x)
@@ -38,7 +38,7 @@ Tento článek předpokládá, že jste již nainstalovali CentOS (nebo podobné
 * Vyžaduje se podpora jádra pro připojení systémy souborů UDF. Při prvním spuštění v Azure je předána zřizování konfigurace do virtuálního počítače s Linuxem pomocí formátu UDF média, který je připojen k Host. Azure Linux agent musí být schopný se připojit a načíst jeho konfiguraci a zřídit virtuální počítač v systému souborů UDF.
 * Verze jádra Linux pod 2.6.37 nepodporují NUMA v technologii Hyper-V s větší velikostí virtuálních počítačů. -Li tento problém ovlivňuje především starší distribuce pomocí nadřazený Red Hat 2.6.32 jádra která byla opravena v RHEL 6.6 (jádra 2.6.32 504). Systémy s operačním systémem vlastní jádra starší než 2.6.37 nebo na základě RHEL jádra starší než 2.6.32-504 musíte nastavit parametr spouštěcího `numa=off` na příkazového řádku v grub.conf jádra. Další informace najdete v části Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 * Nekonfigurujte přepnutí oddílu na disku operačního systému. Chcete-li vytvořit odkládací soubor na disku dočasných prostředků lze nakonfigurovat agenta systému Linux.  Další informace o této naleznete v následujících krocích.
-* Všechny virtuální pevné disky musí mít velikostí, které jsou násobky 1 MB.
+* Všechny virtuální pevné disky na platformě Azure, musí mít virtuální velikost zarovnán 1MB. Při převodu z nezpracovaná disku na virtuální pevný disk je nutné zajistit, aby velikost disku nezpracovaná není násobkem 1MB před převodem. V tématu [poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes) Další informace.
 
 ## <a name="centos-6x"></a>CentOS 6.x
 

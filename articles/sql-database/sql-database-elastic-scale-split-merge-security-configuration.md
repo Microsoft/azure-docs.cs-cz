@@ -3,23 +3,18 @@ title: "Konfigurace zabezpečení rozdělení sloučení | Microsoft Docs"
 description: "Nastavit x409 certifikáty pro šifrování se službou rozdělení či sloučení pro elastické škálování."
 metakeywords: Elastic Database certificates security
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: torsteng
-ms.assetid: f9e89c57-61a0-484f-b787-82dae2349cb6
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
-ms.author: torsteng
-ms.openlocfilehash: 98f046a943c1fe33b421b3ab6830d78e6c4304a0
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.author: sstein
+ms.openlocfilehash: c07ba1e74daace546bae4f4209842312136914a3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení rozdělení sloučení
 Pokud chcete používat službu rozdělení či sloučení, musíte nakonfigurovat správně zabezpečení. Služba je součástí funkce elastické škálování sady Microsoft Azure SQL Database. Další informace najdete v tématu [elastické škálování rozdělení a sloučení kurz služby](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -36,8 +31,8 @@ Certifikáty nelze získat z veřejné certifikační autority (CA) nebo [certif
 Pokud nejsou k dispozici tyto možnosti, můžete vygenerovat **certifikáty podepsané svým držitelem**.
 
 ## <a name="tools-to-generate-certificates"></a>Nástroje pro generování certifikátů
-* [MakeCert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
-* [Pvk2pfx.exe](http://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
+* [pvk2pfx.exe](http://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Ke spuštění nástroje
 * Z příkazového řádku pro vývojáře Visual Studia, najdete v části [Visual Studio – příkazový řádek](http://msdn.microsoft.com/library/ms229859.aspx) 
@@ -327,7 +322,7 @@ Každého uživatele, pro kterého klientský certifikát vystavil naimportovat 
 ## <a name="copy-client-certificate-thumbprints"></a>Zkopírujte kryptografické otisky certifikátu klienta
 Každého uživatele, pro kterého klientský certifikát vystavil nutné provést následující kroky, aby bylo možné získat kryptografický otisk his/hers certifikát, který přidá do konfiguračního souboru služby:
 
-* Spustit certmgr.exe
+* Run certmgr.exe
 * Vyberte kartu Osobní
 * Dvakrát klikněte na certifikát klienta, který se má použít pro ověřování
 * V dialogovém okně certifikátů, které se otevře vyberte kartu s podrobnostmi
@@ -385,10 +380,10 @@ Aktualizujte hodnotu kryptografického otisku následující nastavení v konfig
 ## <a name="find-certificate"></a>Najít certifikát
 Postupujte následovně:
 
-1. Spusťte mmc.exe.
+1. Run mmc.exe.
 2. Soubor -> Přidat nebo odebrat modul Snap-in...
 3. Vyberte **certifikáty**.
-4. Klikněte na tlačítko **Přidat**.
+4. Klikněte na tlačítko **Add** (Přidat).
 5. Vyberte umístění úložiště certifikátů.
 6. Klikněte na **Dokončit**.
 7. Klikněte na **OK**.

@@ -2,25 +2,19 @@
 title: "Automatické ladění e-mailem oznámení s postupy Průvodce – Azure SQL Database | Microsoft Docs"
 description: "Azure SQL Database analyzuje dotazu SQL a automaticky přizpůsobí zatížení uživatele."
 services: sql-database
-documentationcenter: 
 author: danimir
-manager: drasumic
+manager: craigg
 ms.reviewer: carlrab
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
 ms.date: 02/05/2018
 ms.author: v-daljep
-ms.openlocfilehash: 611c30639b5fb36bb08ebd3e73c90f8aa2bd09d4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a2799e45fbb54531289a89082f13e5ce0856c376
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailová oznámení pro automatické ladění
 
@@ -85,7 +79,7 @@ Postupujte podle těchto kroků můžete vytvořit novou sadu runbook automatiza
 
 Použijte následující postup načtení skriptu prostředí PowerShell v runbooku vytvořit:
 
-- Uvnitř "**upravit Runbook Powershellu**"podokně, vyberte možnost"**RUNBOOKY**" v nabídce stromu a rozbalte zobrazení, dokud neuvidíte název sady runbook (v tomto příkladu "** AutomaticTuningEmailAutomation**"). Vyberte tuto sadu runbook.
+- Uvnitř "**upravit Runbook Powershellu**"podokně, vyberte možnost"**RUNBOOKY**" v nabídce stromu a rozbalte zobrazení, dokud neuvidíte název sady runbook (v tomto příkladu " **AutomaticTuningEmailAutomation**"). Vyberte tuto sadu runbook.
 - Na první řádek "Upravit prostředí PowerShell sady runbook" (počínaje číslem 1) zkopírujte vložte následující kód skriptu prostředí PowerShell. Tento skript prostředí PowerShell je k dispozici jako-se, abyste mohli začít. Upravte skript tak, aby sada vašim potřebám.
 
 V hlavičce poskytnutého skriptu prostředí PowerShell, je třeba nahradit `<SUBSCRIPTION_ID_WITH_DATABASES>` s vaším ID předplatného Azure. Zjistěte, jak zjistit ID předplatného Azure, najdete v tématu [získávání vaší GUID předplatného Azure](https://blogs.msdn.microsoft.com/mschray/2016/03/18/getting-your-azure-subscription-guid-new-portal/).
@@ -252,7 +246,7 @@ Finální výstup automatizovaných e-mailu, vypadá podobně jako následujíc�
 
 K vytvoření e-mailových oznámení založené na konkrétní události ladění a několika příjemcům, pro víc předplatných nebo databáze, v závislosti na vlastní scénáře řešení může přizpůsobit. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Zjistěte více v tom, jak automatické ladění můžete zvýšit výkon databáze, najdete v části [automatické ladění ve službě Azure SQL Database](sql-database-automatic-tuning.md).
 - Pokud chcete povolit automatické ladění v databázi SQL Azure ke správě velikosti pracovní zátěže, najdete v části [povolit automatické ladění](sql-database-automatic-tuning-enable.md).

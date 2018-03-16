@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/24/2017
+ms.date: 03/14/2018
 ms.author: bradsev
-ms.openlocfilehash: a21316ef6ab05918f07a09243b5ce04950ecd9dc
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 370ab807ef85240238c51d1693796c26981edb15
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Vehicle řešení analýzy Telemetrie playbook: přímý ponořte do řešení
 Této nabídky odkazy na části této playbook: 
@@ -58,7 +58,7 @@ Tato datová sada formátu JSON obsahuje následující schéma.
 | Ignition_status |Určuje, zda je spuštěná nebo zastavená nástroj |True nebo False |
 | Windshield_wiper_status |Určuje, zda stírání čelního skla je zapnutá nebo vypnutá |True nebo False |
 | ABS |Určuje, zda je nebo není zařazen ABS |True nebo False |
-| časové razítko |Časové razítko vytvoření datového bodu |Datum |
+| Časové razítko |Časové razítko vytvoření datového bodu |Datum |
 | Město |Umístění nástroj |Čtyři města v tomto řešení: Bellevue, Redmond, Sammamish, Praha |
 
 Vehicle modelu odkaz na datovou sadu mapuje VINs modelů. 

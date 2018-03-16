@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 631557e0ad712827bb3375c4f152c0e2185fda18
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b06144e6ad3df1626022edd856e14d6c47494336
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informace pro neschválené distribuce
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -50,7 +50,7 @@ Zbývající část tohoto článku se soustředí na obecných pokynů pro spu�
 * Vyžaduje se podpora jádra pro připojení systémy souborů UDF. Při prvním spuštění v Azure je předána zřizování konfigurace do virtuálního počítače s Linuxem pomocí formátu UDF média, který je připojen k Host. Azure Linux agent musí být schopný se připojit a načíst jeho konfiguraci a zřídit virtuální počítač v systému souborů UDF.
 * Verze jádra Linux pod 2.6.37 nepodporují NUMA v technologii Hyper-V s větší velikostí virtuálních počítačů. -Li tento problém ovlivňuje především starší distribuce pomocí nadřazený Red Hat 2.6.32 jádra která byla opravena v RHEL 6.6 (jádra 2.6.32 504). Systémy s operačním systémem vlastní jádra starší než 2.6.37 nebo na základě RHEL jádra starší než 2.6.32-504 musíte nastavit parametr spouštěcího `numa=off` na příkazového řádku v grub.conf jádra. Další informace najdete v části Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 * Nekonfigurujte přepnutí oddílu na disku operačního systému. Chcete-li vytvořit odkládací soubor na disku dočasných prostředků lze nakonfigurovat agenta systému Linux.  Další informace o této naleznete v následujících krocích.
-* Všechny virtuální pevné disky musí mít velikostí, které jsou násobky 1 MB.
+* Všechny virtuální pevné disky na platformě Azure, musí mít virtuální velikost zarovnán 1MB. Při převodu z nezpracovaná disku na virtuální pevný disk je nutné zajistit, aby velikost disku nezpracovaná není násobkem 1MB před převodem. Další informace naleznete v následujících krocích.
 
 ### <a name="installing-kernel-modules-without-hyper-v"></a>Instalace modulů jádra bez technologie Hyper-V
 Azure je spuštěná na hypervisoru technologie Hyper-V, takže Linux vyžaduje nainstalované moduly určité jádra pro spuštění v Azure. Pokud máte virtuální počítač, který se vytvořil mimo technologie Hyper-V, instalačních programů Linux nemusí zahrnovat ovladače pro Hyper-V v počáteční disku paměti RAM (initrd nebo initramfs) Pokud zjistí, zda je spuštěna prostředí Hyper-V. Při použití jiným virtualizačním systému (tj. Virtualbox, KVM atd.) Příprava bitové kopie systému Linux, budete muset znovu vytvořit initrd zajistit, aby alespoň `hv_vmbus` a `hv_storvsc` jádra moduly jsou k dispozici na počáteční disku paměti RAM.  Jedná se o známý problém alespoň na systémy založené na nadřazený distribuce Red Hat.
@@ -75,7 +75,7 @@ Image virtuálního pevného disku na Azure musí mít virtuální velikost zaro
 Chcete-li opravit to můžete změnit velikost virtuálního počítače pomocí konzoly Správce technologie Hyper-V nebo [změny velikosti virtuálního pevného disku](http://technet.microsoft.com/library/hh848535.aspx) rutiny prostředí Powershell.  Pokud používáte v prostředí systému Windows, se doporučuje použít qemu img převést (v případě potřeby) a změnit velikost virtuálního pevného disku.
 
 > [!NOTE]
-> Je známého problému v qemu img verze > = 2.2.1, jejímž výsledkem nesprávně naformátovaný VHD. Ve verzi 2.6 QEMU byl opraven problém. Doporučuje se používat qemu-img 2.2.0 nebo nižší, nebo aktualizace na 2.6 nebo novější. Reference: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Je známého problému v qemu img verze > = 2.2.1, jejímž výsledkem nesprávně naformátovaný VHD. Ve verzi 2.6 QEMU byl opraven problém. Doporučuje se používat qemu-img 2.2.0 nebo nižší, nebo aktualizace na 2.6 nebo novější. Referenční dokumentace: https://bugs.launchpad.net/qemu/+bug/1490611.
 > 
 > 
 

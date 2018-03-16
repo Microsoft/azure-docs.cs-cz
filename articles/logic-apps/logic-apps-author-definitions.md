@@ -1,42 +1,63 @@
 ---
-title: "Sestavení v definicích aplikaci logiky s JSON - Azure Logic Apps | Microsoft Docs"
-description: "Přidání parametrů, zpracování řetězců, vytvořit parametr maps a získat data pomocí funkce datum"
+title: "Vytvořit, upravit nebo rozšířit JSON pro logiku aplikace definice - Azure Logic Apps | Microsoft Docs"
+description: "Vytváření a přizpůsobení definice aplikace logiky ve formátu JSON"
 author: ecfan
-manager: anneta
+manager: SyntaxC4
 editor: 
 services: logic-apps
 documentationcenter: 
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: integration
+ms.workload: logic-apps
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.custom: H1Hack27Feb2017
-ms.date: 01/31/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: d05f7e34cbe670db6733c199e3420c810c304a84
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.date: 01/01/2018
+ms.author: estfan; LADocs
+ms.openlocfilehash: bde275eb75c97da2a99109484b46b599a5b2f871
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="build-on-your-logic-app-definition-with-json"></a>Sestavení na svou definici. aplikaci logiky s JSON
+# <a name="create-edit-or-customize-json-for-logic-app-definitions"></a>Vytvořit, upravit nebo přizpůsobit JSON definice aplikace logiky
 
-Chcete-li provést další pokročilé úlohy s [Azure Logic Apps](../logic-apps/logic-apps-overview.md), zobrazení kódu můžete upravit aplikace definice logiku, která používá jednoduchý a deklarativní jazyk JSON. Pokud jste to ještě neudělali, přečtěte si nejprve [postup vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Další informace naleznete [úplné referenční dokumentace pro jazyk definic workflowů](http://aka.ms/logicappsdocs).
+Při vytváření podnikové řešení integrace s automatizované pracovní postupy v [Azure Logic Apps](../logic-apps/logic-apps-overview.md), základní definice aplikace logiky použít jednoduchý a deklarativní JSON JavaScript Object Notation () spolu s [ Pracovní postup definice jazyka splní schématu](../logic-apps/logic-apps-workflow-definition-language.md) pro jejich popis a ověření. Tyto formáty usnadňují logiku aplikace definice ke čtení a pochopit, aniž by věděly mnohem o kódu. Pokud chcete automatizovat vytváření a nasazování aplikací logiky, můžete zahrnout definice logiku aplikace jako [prostředky Azure](../azure-resource-manager/resource-group-overview.md) uvnitř [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md#template-deployment). Vytvořit, spravovat a nasazovat aplikace logiky, pak můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp), [rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md), nebo [rozhraní API REST Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/).
+
+Pro práci s definice aplikace logiky ve formátu JSON, otevřete editor zobrazení kódu při práci na portálu Azure nebo v sadě Visual Studio, nebo zkopírujte do libovolného editoru, který chcete definici. Pokud jste nové aplikace logiky, přečtěte si [postup vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 > [!NOTE]
-> Některé funkce Azure Logic Apps, jako jsou parametry, jsou k dispozici pouze v případě, že pracujete v zobrazení kódu pro definici aplikace logiky. Parametry umožňují znovu použít hodnoty v celé aplikaci logiky. Pokud chcete použít stejné e-mailovou adresu ve několik akcí, například definujte této e-mailovou adresu jako parametr.
+> Některé funkce Azure Logic Apps, například definování parametry a více aktivačních událostí v definicích aplikace logiky, jsou k dispozici pouze ve formátu JSON, návrháře typu aplikace logiky. Takže k těmto úlohám je možné v zobrazení kódu nebo jiný editor.
 
-## <a name="view-and-edit-your-logic-app-definitions-in-json"></a>Zobrazit a upravit vaše logiku aplikace definice ve formátu JSON
+## <a name="edit-json---azure-portal"></a>Upravit JSON - portálu Azure
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com "Azure Portal").
+1. Přihlaste se k <a href="https://portal.azure.com" target="_blank">portálu Azure</a>.
 
-2. V levé nabídce zvolte **další služby**. V části **Podniková integrace** zvolte **Logic Apps**. Vyberte svou aplikaci logiky.
+2. V levé nabídce zvolte **všechny služby**. Do vyhledávacího pole Najít "aplikace logiky" a potom ve výsledcích vyberte svou aplikaci logiky.
 
-3. Z nabídky aplikace logiky v části **nástroje pro vývoj**, zvolte **zobrazení kódu aplikace logiky**.
+3. V nabídce aplikace logiky v části **nástroje pro vývoj**, vyberte **zobrazení kódu aplikace logiky**.
 
-   Otevře okno zobrazení kódu a zobrazuje svou definici. aplikaci logiky.
+   Editor kódu zobrazení otevře a zobrazuje svou definici. aplikaci logiky ve formátu JSON.
+
+## <a name="edit-json---visual-studio"></a>Edit JSON - Visual Studio
+
+Než začnete pracovat na svou definici. aplikaci logiky v sadě Visual Studio, ujistěte se, že jste [nainstalovány nástroje pro požadované](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites). K vytvoření aplikace logiky pomocí sady Visual Studio, zkontrolujte [rychlý start: automatizaci úloh a procesů službou Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+
+V sadě Visual Studio můžete otevřít logiku aplikace, které byly vytvořeny a nasadit buď přímo z portálu Azure, nebo jako projekty Azure Resource Manageru ze sady Visual Studio.
+
+1. Otevřete řešení sady Visual Studio nebo [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) projektu, který obsahuje aplikace logiky.
+
+2. Vyberte a otevřete definici aplikace logiky, která ve výchozím nastavení, zobrazí se v [šablony Resource Manageru](../azure-resource-manager/resource-group-overview.md#template-deployment)s názvem **LogicApp.json**. Můžete používat a přizpůsobit této šablony pro nasazení do různých prostředích.
+
+3. Otevřete místní nabídku pro definici aplikace logiky a šablonu. Vyberte **otevřete pomocí návrháře aplikace logiky**.
+
+   ![Otevřete logiku aplikace v řešení sady Visual Studio](./media/logic-apps-author-definitions/open-logic-app-designer.png)
+
+4. V dolní části návrháře, zvolte **zobrazení kódu**. 
+
+   Editor kódu zobrazení otevře a zobrazuje svou definici. aplikaci logiky ve formátu JSON.
+
+5. Se vrátíte do návrháře zobrazení, v dolní části editoru kódu zobrazení, zvolte **návrhu**.
 
 ## <a name="parameters"></a>Parametry
 
@@ -349,7 +370,7 @@ K formátování kalendářních dat, můžete použít formátování řetězce
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Spustit kroky na základě podmínky (podmíněné příkazy)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [Spustit kroky na základě různých hodnot (příkazech switch)](../logic-apps/logic-apps-control-flow-switch-statement.md)

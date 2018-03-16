@@ -3,25 +3,19 @@ title: "Zřídit v SaaS víceklientské Azure | Microsoft Docs"
 description: "Zjistěte, jak zřídit a nové klienty v aplikaci SaaS víceklientské Azure SQL Database v katalogu"
 keywords: kurz k sql database
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: MightyPen
 ms.reviewer: billgib;andrela;genemi
-ms.assetid: 
 ms.service: sql-database
 ms.custom: saas apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2017
 ms.author: billgib
-ms.openlocfilehash: 42bbb6131aa71520410b22af4d74e99a63fe81cf
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: fb2f2bcbbc8b7f0b0012c4e7baf4a274671d4af0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřizování a katalog novým tenantům v aplikaci SaaS pomocí horizontálně dělené víceklientské databázi Azure SQL
 
@@ -241,7 +235,7 @@ Otevřete Centrum událostí stránku v prohlížeči (http:events.wingtip-mt.\<
 - Název klienta je uložené v tabulce klientů.
 - Název databáze je ukládat do tabulek správy horizontálního oddílu.
 
-1. V SQL Server Management Studio (SSMS) připojit k serveru klienty na **katalogu strojový překladů.\<uživatele\>. database.windows.net**, s přihlášením = **vývojáře**a heslo =**P@ssword1**
+1. V SQL Server Management Studio (SSMS) připojit k serveru klienty na **katalogu strojový překladů.\<uživatele\>. database.windows.net**, s přihlášením = **vývojáře**a heslo = **P@ssword1**
 
     ![Dialogové okno připojení aplikace SSMS](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

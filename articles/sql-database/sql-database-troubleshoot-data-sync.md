@@ -8,11 +8,12 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: c174f5120ba2e5bf8018cce0f0e34c1fc3f8eb3f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.custom: data-sync
+ms.openlocfilehash: a24e16abd78a89d6143c00fc08a3ef91d7dd8202
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Řešení problémů s synchronizaci dat SQL (Preview)
 
@@ -239,7 +240,7 @@ Než budete pokračovat, zkontrolujte následující podmínky:
 
 -   Je spuštěna služba systému Windows pro synchronizaci dat SQL (Preview).  
 -   Účet služby pro službu systému Windows verze Preview synchronizaci dat SQL (Preview) má přístup k síti.    
--   Klientský agent můžete kontaktovat službu lokátoru. Zkontrolujte, zda následující klíč registru https://locator.sync.azure.com/LocatorServiceApi.svc hodnotu:  
+-   Klientský agent můžete kontaktovat službu lokátoru. Zkontrolujte, zda hodnota klíče registru https://locator.sync.azure.com/LocatorServiceApi.svc:  
     -   Na x86 počítače: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
     -   Na x64 počítače: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
 
@@ -435,7 +436,7 @@ Nelze odstranit skupinu synchronizace do tří minut po odinstalaci nebo zastave
 
 Pokud ke ztrátě nebo poškozená databáze obnovit ze zálohy, může být nonconvergence dat ve skupině synchronizace, ke které databáze patří.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o synchronizaci dat SQL (Preview) najdete v tématu:
 
 -   [Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure (Preview)](sql-database-sync-data.md)  

@@ -3,8 +3,8 @@ title: "Vytváření bitové kopie virtuálního počítače pro Azure Marketpla
 description: "Podrobné pokyny o tom, jak vytvořit bitovou kopii virtuálního počítače pro Azure Marketplace pro ostatní k nákupu."
 services: Azure Marketplace
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 5c937b8e-e28d-4007-9fef-624046bca2ae
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
-ms.author: hascipio; v-divte
-ms.openlocfilehash: 0379592f1c4f6e9d3f6fd2127b8e34e99a8b0176
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: mbaldwin
+ms.openlocfilehash: f7b19066ca3fa156456766ff82afeadadc6b1efa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Průvodce pro vytvoření bitové kopie virtuálního počítače pro Azure Marketplace
 Tento článek **kroku 2**, vás provede procesem přípravy virtuálních pevných disků (VHD), které nasadíte do Azure Marketplace. Virtuální pevné disky jsou základ pro vaše SKU. Proces se liší v závislosti na tom, jestli tím SKU systémem Linux nebo systému Windows. Tento článek se týká obou scénářů. Tento postup lze provést paralelně s [vytváření účtů a registrace][link-acct-creation].
@@ -29,7 +29,7 @@ V této části se dozvíte k definování nabídky a jejich přidružené SKU.
 Nabídka je „nadřazený objekt“ všech skladových jednotek příslušné nabídky. Nabídek může být víc. Je jenom na vás, jak se rozhodnete svoje nabídky strukturovat. Když se nabídka převede do přípravy, převede se se všemi příslušnými skladovými jednotkami. Pečlivě zvažte vaše identifikátory SKU, protože se budou viditelné v adrese URL:
 
 * Azure.com: http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
-* Portál Azure preview: https://portal.azure.com/#gallery/ {PublisherNamespace}. {OfferIdentifier} {SKUIDdentifier}  
+* Portál Azure preview: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
 
 SKU je komerční název image virtuálního počítače. Image virtuálního počítače obsahuje disk jeden operační systém a nula nebo více datových disků. Jde prakticky o kompletní profil úložiště pro virtuální počítač. Jeden virtuální pevný disk je potřeba na disk. Data i prázdné disky se vyžaduje virtuální pevný disk, který se má vytvořit.
 
@@ -372,7 +372,7 @@ Toto jsou kroky pro vytvoření adresy URL SAS pomocí Azure Storage Explorer
 
 Toto jsou kroky pro vytvoření adresy URL SAS pomocí Microsoft Azure Storage Explorer
 
-1.  Stáhněte si Microsoft Azure Storage Explorer formuláře [http://storageexplorer.com/](http://storageexplorer.com/) webu. Přejděte na [Microsoft Azure Storage Explorer](http://storageexplorer.com/releasenotes.html) a klikněte na tlačítko **"Stáhnout pro systém Windows"**.
+1.  Stáhněte si Microsoft Azure Storage Explorer formuláře [ http://storageexplorer.com/ ](http://storageexplorer.com/) webu. Přejděte na [Microsoft Azure Storage Explorer](http://storageexplorer.com/releasenotes.html) a klikněte na tlačítko **"Stáhnout pro systém Windows"**.
 
     ![Kreslení](media/marketplace-publishing-vm-image-creation/img5.2_10.png)
 
@@ -474,7 +474,7 @@ Toto jsou kroky pro vytvoření adresy URL SAS pomocí rozhraní příkazového 
 
     Příklad:
 
-    TestRGVM201631920152.vhd je název virtuálního pevného disku, pak bude mít adresu URL SAS virtuálního pevného disku 
+    TestRGVM201631920152.vhd je název virtuálního pevného disku, pak bude mít adresu URL SAS virtuálního pevného disku
 
     `https://st20151.blob.core.windows.net/vhds/ TestRGVM201631920152.vhd?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 

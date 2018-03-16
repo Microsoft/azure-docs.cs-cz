@@ -6,13 +6,13 @@ author: lakasa
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/14/2018
 ms.author: lakasa
-ms.openlocfilehash: 6b56cbb4220ce1c8767724938dd531b8ae5c3920
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d9df2218acc218a796e502fa4e3b94573af86ca8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 
@@ -62,17 +62,13 @@ Odpověď: šifrování služby úložiště ve výchozím nastavení zapnutá v
 
 Odpověď: není bez dalších nákladů.
 
-**Otázka: kdo spravuje šifrovacích klíčů?**
-
-Odpověď: Microsoft spravuje klíče.
-
 **Otázka: je možné použít vlastní šifrovací klíče?**
 
-Odpověď: není v tuto chvíli.
+Odpověď: Ano, můžete použít vlastní šifrovací klíče. Další informace najdete v tématu [šifrování služby úložiště v Azure Key Vault klíče spravovaného zákazníkem](storage-service-encryption-customer-managed-keys.md).
 
 **Otázka: je možné odvolat přístup k šifrovacím klíčům?**
 
-Odpověď: není v tuto chvíli. Microsoft plně spravuje klíče.
+Odpověď: Ano, pokud jste [pomocí vlastních šifrovacích klíčů](storage-service-encryption-customer-managed-keys.md) v Azure Key Vault.
 
 **Otázka: je ve výchozím nastavení povolené šifrování služby úložiště po vytvoření účtu úložiště?**
 

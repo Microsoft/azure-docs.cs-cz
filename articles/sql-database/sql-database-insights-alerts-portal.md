@@ -2,24 +2,18 @@
 title: "Vytvářet výstrahy, SQL Database pomocí portálu Azure | Microsoft Docs"
 description: "Použití portálu Azure k vytvoření databáze SQL výstrahy, které můžete aktivovat oznámení nebo automatizace při splnění zadané podmínky."
 author: aamalvea
-manager: jhubbard
-editor: 
+manager: craigg
 services: sql-database
-documentationcenter: 
-ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
 ms.service: sql-database
 ms.custom: monitor and tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: aamalvea
-ms.openlocfilehash: fd21c9b5e573ac6a47fef88c2a9d31c52618ecb8
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 611b88c540902bc7a72d53671dacd098d9798b48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Použijte portál Azure k vytvoření výstrahy pro Azure SQL Database a datového skladu
 
@@ -41,7 +35,7 @@ Můžete nakonfigurovat a získat informace o použití pravidla výstrah
 
 * [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [rozhraní příkazového řádku (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
+* [Rozhraní příkazového řádku (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
 * [Rozhraní API REST Azure monitorování](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Vytvořit pravidlo výstrahy na metrika pomocí portálu Azure
@@ -58,7 +52,7 @@ Můžete nakonfigurovat a získat informace o použití pravidla výstrah
 
 3. Vyberte **přidat upozornění** příkazů a vyplňte příslušná pole.
    
-    ![Přidání oznámení](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPage.png)
+    ![Přidat výstrahu](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPage.png)
 4. **Název** upozornění pravidlo a vyberte **popis**, který také zobrazuje v oznámení e-mailů.
 5. Vyberte **metrika** chcete monitorovat, a potom vyberte **podmínku** a **prahová hodnota** hodnoty pro metriku. Taky **období** času, který metriky pravidlo je nutné splnit před výstrahy aktivačních událostí. Tak například, pokud používáte období "PT5M" a upozornění hledá procesoru vyšší než 80 %, výstraha aktivuje při **průměrná** procesoru 80 % přesahoval 5 minut. Jakmile dojde k první aktivační událost, se znovu spustí, když průměrné využití procesoru je nižší než 80 % více než 5 minut. Procesor měření dochází každých 1 minuta. V následující tabulce najdete podporované časových oken a typ agregace, které každý výstrahy používá ne všechny výstrahy použít průměrnou hodnotu.   
 6. Zkontrolujte **e-mailu vlastníky...**  Pokud chcete, aby správci a spolusprávci se má při aktivuje výstrahu.
@@ -80,21 +74,21 @@ Po vytvoření výstrahy, můžete ji vybrat a:
 
 | Typ prostředku | Název metriky | Popisný název | Typ agregace | Minimální výstrahy časový interval|
 | --- | --- | --- | --- | --- |
-| Databáze SQL | cpu_percent | Procento CPU | Průměr | 5 minut |
-| Databáze SQL | physical_data_read_percent | Procento datových V/V | Průměr | 5 minut |
-| Databáze SQL | log_write_percent | Procento vstupně-výstupní operace protokolu | Průměr | 5 minut |
-| Databáze SQL | dtu_consumption_percent | Procento DTU | Průměr | 5 minut |
-| Databáze SQL | Úložiště | Velikost celkový databáze | Maximální počet | 30 minut |
-| Databáze SQL | connection_successful | Úspěšné připojení | Celkem | 10 minut |
-| Databáze SQL | connection_failed | Neúspěšné připojení | Celkem | 10 minut |
-| Databáze SQL | blocked_by_firewall | Blokováno bránou Firewall | Celkem | 10 minut |
-| Databáze SQL | zablokování | Zablokování | Celkem | 10 minut |
-| Databáze SQL | storage_percent | Procento velikosti databáze | Maximální počet | 30 minut |
-| Databáze SQL | xtp_storage_percent | Percent(Preview) úložiště OLTP v paměti | Průměr | 5 minut |
-| Databáze SQL | workers_percent | Procento pracovních procesů | Průměr | 5 minut |
-| Databáze SQL | sessions_percent | Procento relací | Průměr | 5 minut |
-| Databáze SQL | dtu_limit | Omezení jednotek DTU | Průměr | 5 minut |
-| Databáze SQL | dtu_used | Použít DTU | Průměr | 5 minut |
+| SQL database | cpu_percent | Procento CPU | Průměr | 5 minut |
+| SQL database | physical_data_read_percent | Procento datových V/V | Průměr | 5 minut |
+| SQL database | log_write_percent | Procento vstupně-výstupní operace protokolu | Průměr | 5 minut |
+| SQL database | dtu_consumption_percent | Procento DTU | Průměr | 5 minut |
+| SQL database | úložiště | Velikost celkový databáze | Maximum | 30 minut |
+| SQL database | connection_successful | Úspěšné připojení | Celkem | 10 minut |
+| SQL database | connection_failed | Neúspěšné připojení | Celkem | 10 minut |
+| SQL database | blocked_by_firewall | Blokováno bránou Firewall | Celkem | 10 minut |
+| SQL database | zablokování | Zablokování | Celkem | 10 minut |
+| SQL database | storage_percent | Procento velikosti databáze | Maximum | 30 minut |
+| SQL database | xtp_storage_percent | Percent(Preview) úložiště OLTP v paměti | Průměr | 5 minut |
+| SQL database | workers_percent | Procento pracovních procesů | Průměr | 5 minut |
+| SQL database | sessions_percent | Procento relací | Průměr | 5 minut |
+| SQL database | dtu_limit | Omezení jednotek DTU | Průměr | 5 minut |
+| SQL database | dtu_used | Použít DTU | Průměr | 5 minut |
 ||||||
 | Elastický fond | cpu_percent | Procento CPU | Průměr | 10 minut |
 | Elastický fond | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
@@ -107,20 +101,20 @@ Po vytvoření výstrahy, můžete ji vybrat a:
 | Elastický fond | eDTU_used | eDTU použít | Průměr | 10 minut |
 | Elastický fond | storage_used | Využité úložiště | Průměr | 10 minut |
 ||||||               
-| Datový sklad SQL | cpu_percent | Procento CPU | Průměr | 10 minut |
-| Datový sklad SQL | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
-| Datový sklad SQL | Úložiště | Velikost celkový databáze | Maximální počet | 10 minut |
-| Datový sklad SQL | connection_successful | Úspěšné připojení | Celkem | 10 minut |
-| Datový sklad SQL | connection_failed | Neúspěšné připojení | Celkem | 10 minut |
-| Datový sklad SQL | blocked_by_firewall | Blokováno bránou Firewall | Celkem | 10 minut |
-| Datový sklad SQL | service_level_objective | Cíl na úrovni služby databáze | Celkem | 10 minut |
-| Datový sklad SQL | dwu_limit | dwu limit | Maximální počet | 10 minut |
-| Datový sklad SQL | dwu_consumption_percent | Procento DWU | Průměr | 10 minut |
-| Datový sklad SQL | dwu_used | DWU použít | Průměr | 10 minut |
+| SQL Data Warehouse | cpu_percent | Procento CPU | Průměr | 10 minut |
+| SQL Data Warehouse | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
+| SQL Data Warehouse | úložiště | Velikost celkový databáze | Maximum | 10 minut |
+| SQL Data Warehouse | connection_successful | Úspěšné připojení | Celkem | 10 minut |
+| SQL Data Warehouse | connection_failed | Neúspěšné připojení | Celkem | 10 minut |
+| SQL Data Warehouse | blocked_by_firewall | Blokováno bránou Firewall | Celkem | 10 minut |
+| SQL Data Warehouse | service_level_objective | Cíl na úrovni služby databáze | Celkem | 10 minut |
+| SQL Data Warehouse | dwu_limit | dwu limit | Maximum | 10 minut |
+| SQL Data Warehouse | dwu_consumption_percent | Procento DWU | Průměr | 10 minut |
+| SQL Data Warehouse | dwu_used | DWU použít | Průměr | 10 minut |
 ||||||
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Získat přehled o Azure monitorování](../monitoring-and-diagnostics/monitoring-overview.md) včetně typy informací, můžete sledovat a shromažďovat.
 * Další informace o [konfigurace webhooky ve výstrahách](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 * Získat [přehled diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) a shromažďovat podrobné metriky vysoká frekvence vaší služby.

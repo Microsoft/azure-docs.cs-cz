@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: 59d926f54c8dfc2991929f2eb42b20056e3a09c3
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: b32838dfaf83ea3acfb7125322bb99124370bd8e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Graf podporu Azure Cosmos DB Gremlin
 Podporuje Azure Cosmos DB [Apache Tinkerpop](http://tinkerpop.apache.org) graf traversal jazyk [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), což je rozhraní Graph API pro vytváření entit grafu a provádění operace dotazů grafu. Jazyk Gremlin slouží k vytvoření grafu entit (vrcholy a okraje), změnit vlastnosti v rámci těchto entit, provádět dotazy a traversals a odstranit entity. 
@@ -84,7 +84,7 @@ Následující tabulka uvádí TinkerPop funkce, které jsou implementované Cos
 | Proměnné funkce | Podporuje logická hodnota, celé číslo, bajtů, dvakrát, Float, celé číslo, Long, řetězec | Podporuje primitivní typy, není kompatibilní s komplexní typy prostřednictvím datového modelu |
 | Vrchol funkce | Podporuje RemoveVertices, MetaProperties, AddVertices, MultiProperties, StringIds, UserSuppliedIds, AddProperty –, RemoveProperty  | Podporuje vytváření, úpravu a odstranění vrcholy |
 | Vrchol vlastnost funkce | StringIds, UserSuppliedIds, AddProperty –, RemoveProperty, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Podporuje vytváření, úpravy a odstraňování vrchol vlastnosti |
-| Funkce edge | AddEges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty –, RemoveProperty | Podporuje vytváření, úpravu a odstranění okrajů |
+| Funkce edge | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty –, RemoveProperty | Podporuje vytváření, úpravu a odstranění okrajů |
 | Funkce vlastnost Edge | Vlastnosti, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Podporuje vytváření, úpravy a odstraňování vlastnosti edge |
 
 ## <a name="gremlin-wire-format-graphson"></a>Gremlin přenosový formát: GraphSON
@@ -147,7 +147,7 @@ A hranici obsahuje následující informace, které pomůžou s odkazy na dalš�
 | --- | --- |
 | id | ID pro hranici. Musí být jedinečné (v kombinaci s hodnotou _partition, pokud je k dispozici) |
 | Popisek | Popisek okraj. Tato vlastnost je volitelná a slouží k popisu typu relace. |
-| inventáře | Tato položka obsahuje seznam v vrcholy pro okraj. Ukládání informací o sousedství s hranou umožňuje rychlé spuštění traversals. Vrcholy jsou seskupené podle jejich popisky. |
+| inV | Tato položka obsahuje seznam v vrcholy pro okraj. Ukládání informací o sousedství s hranou umožňuje rychlé spuštění traversals. Vrcholy jsou seskupené podle jejich popisky. |
 | properties | Kontejner uživatelem definované vlastnosti související s hranou. Každá vlastnost může mít více hodnot. |
 
 Každou vlastnost můžete ukládat víc hodnot v rámci pole. 
@@ -171,9 +171,9 @@ Nyní Podíváme se na postup Gremlin nepodporuje Azure Cosmos DB. Úplný odkaz
 | `addV` | Přidá vrchol grafu | [Krok addV](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) | |
 | `and` | Zajišťuje, že všechny traversals vrátit hodnotu | [a krok](http://tinkerpop.apache.org/docs/current/reference/#and-step) | |
 | `as` | Krok jedno přiřadit výstup krok proměnné | [jako krok](http://tinkerpop.apache.org/docs/current/reference/#as-step) | |
-| `by` | Jedno krok použít s `group` a`order` | [Tímto krokem](http://tinkerpop.apache.org/docs/current/reference/#by-step) | |
+| `by` | Jedno krok použít s `group` a `order` | [Tímto krokem](http://tinkerpop.apache.org/docs/current/reference/#by-step) | |
 | `coalesce` | Vrátí první traversal, který vrací výsledek | [sloučení krok](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) | |
-| `constant` | Vrátí konstantní hodnotu. Použít s`coalesce`| [konstantní krok](http://tinkerpop.apache.org/docs/current/reference/#constant-step) | |
+| `constant` | Vrátí konstantní hodnotu. Použít s `coalesce`| [konstantní krok](http://tinkerpop.apache.org/docs/current/reference/#constant-step) | |
 | `count` | Vrátí počet z průchodu | [počet krok](http://tinkerpop.apache.org/docs/current/reference/#count-step) | |
 | `dedup` | Vrátí hodnoty s odebranými duplikáty | [krok odstraňování duplicitních dat](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) | |
 | `drop` | Zahodí hodnoty (vrchol nebo edge) | [Přetáhněte krok.](http://tinkerpop.apache.org/docs/current/reference/#drop-step) | |

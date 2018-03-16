@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: nisoneji
-ms.openlocfilehash: b7292514e72476f38e9a0572b201be8468f0030a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4d54ecb3f92754fa6575ec17ec5572b6fb9abb88
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>Instalovat hlavní cílový server Linux
 Po selhání virtuálních počítačů do Azure, můžete můžete navrácení služeb po obnovení virtuálních počítačů k místní lokalitě. Chcete-li navrácení služeb po obnovení, je potřeba znovu nastavte ochranu virtuálního počítače z Azure do místní lokality. Pro tento proces budete potřebovat místní hlavní cílový server příjem provozu. 
@@ -41,7 +41,7 @@ POST dotazy nebo připomínky můžete na konci tohoto článku nebo na [fóru A
 
 Vytvoření hlavního cíle podle následujících pokynů pro změnu velikosti:
 - **Paměť RAM**: 6 GB nebo více
-- **Velikost disku operačního systému**: 100 GB nebo více (pro instalaci CentOS6.6)
+- **Velikost disku operačního systému**: 100 GB nebo více (pro instalaci operačního systému)
 - **Velikost disku Další jednotka pro uchování**: 1 TB
 - **Jader procesoru**: 4 jádra nebo více
 
@@ -112,24 +112,31 @@ Ponechte soubor ISO Ubuntu 16.04.2 minimální 64-bit do jednotky DVD a spuště
 
 1.  Vyberte **Ano** k zápisu změn na disk a potom vyberte **Enter**.
 
-1.  Ve výběru konfigurace proxy serveru, vyberte možnost výchozí, vyberte **pokračovat**a potom vyberte **Enter**.
+    ![Vyberte možnost výchozí](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-     ![Vyberte možnost výchozí](./media/vmware-azure-install-linux-master-target/image17.png)
+1.  Ve výběru konfigurace proxy serveru, vyberte možnost výchozí, vyberte **pokračovat**a potom vyberte **Enter**.
+     
+     ![Vyberte, jak spravovat upgrady](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
 1.  Vyberte **žádné automatické aktualizace** a pak vyberte možnost ve výběru pro správu upgrady systému **Enter**.
 
-     ![Vyberte, jak spravovat upgrady](./media/vmware-azure-install-linux-master-target/image18.png)
+     ![Vyberte, jak spravovat upgrady](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
 
     > [!WARNING]
     > Protože Azure Site Recovery hlavní cílový server vyžaduje velmi konkrétní verzi Ubuntu, musíte zajistit, aby jádra zakázali upgrady pro virtuální počítač. Pokud se povolí, nějaké regulární upgrady způsobit hlavní cílový server fungovat správně. Zkontrolujte, zda jste vybrali **žádné automatické aktualizace** možnost.
 
 1.  Vyberte výchozí možnosti. Pokud chcete openSSH pro připojení SSH, vyberte **OpenSSH server** a pak vyberte možnost **pokračovat**.
 
-    ![Vyberte software](./media/vmware-azure-install-linux-master-target/image19.png)
+    ![Vyberte software](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
 1. V selction pro instalaci GRUB spouštěcí zavaděč, vyberte **Ano**a potom vyberte **Enter**.
+     
+    ![KONTROLE spuštění instalačního programu](./media/vmware-azure-install-linux-master-target/image20.png)
+
 
 1. Vyberte odpovídající zařízení, pro instalaci spouštěcí zavaděč (pokud možno **/dev/sda**) a potom vyberte **Enter**.
+     
+    ![Vyberte příslušné zařízení](./media/vmware-azure-install-linux-master-target/image21.png)
 
 1. Vyberte **pokračovat**a potom vyberte **Enter** k dokončení instalace.
 
@@ -154,7 +161,7 @@ Chcete-li získat ID pro každý SCSI pevný disk ve virtuálním počítači Li
 
 4. V levém podokně vyberte **Upřesnit** > **Obecné**a pak vyberte **parametry konfigurace** tlačítko v pravé dolní části obrazovky.
 
-    ![Karta Možnosti](./media/vmware-azure-install-linux-master-target/image20.png)
+    ![Otevřete konfigurační parametr](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
     **Parametry konfigurace** možnost není k dispozici, když je počítač spuštěn. Chcete-li na této kartě aktivní, vypněte virtuální počítač.
 
@@ -168,7 +175,7 @@ Chcete-li získat ID pro každý SCSI pevný disk ve virtuálním počítači Li
 
     - Ve sloupci Název přidat **disku. EnableUUID**a pak nastavte hodnotu na **TRUE**.
 
-    ![Kontroluje, zda disk. EnableUUID již existuje.](./media/vmware-azure-install-linux-master-target/image21.png)
+    ![Kontroluje, zda disk. EnableUUID již existuje.](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>Zakázat upgrady jádra
 
@@ -244,7 +251,7 @@ Pomocí následujících kroků můžete vytvořit disku pro uchování:
     
     `mkfs.ext4 /dev/mapper/<Retention disk's multipath id>`
     
-    ![Vytvoření systému souborů na disku](./media/vmware-azure-install-linux-master-target/media/image23.png)
+    ![Vytvoření systému souborů na disku](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
 4. Po vytvoření systému souborů, připojte disk uchovávání informací.
 
@@ -252,7 +259,6 @@ Pomocí následujících kroků můžete vytvořit disku pro uchování:
     mkdir /mnt/retention
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
     ```
-    ![Připojení disku pro uchování](./media/vmware-azure-install-linux-master-target/image24.png)
 
 5. Vytvořte **fstab** položka připojit jednotka pro uchování pokaždé, když bude systém při spuštění.
     
@@ -353,7 +359,7 @@ Zobrazí se **verze** pole obsahuje číslo verze se hlavní cíl.
     * ONBOOT = Ano
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Po dokončení instalace a registrace hlavního cíle, zobrazí se hlavní cíl se zobrazují v **hlavní cíl** kapitoly **infrastruktura Site Recovery**, v části Konfigurace Přehled serveru.
 
 Teď můžete pokračovat s [vytvoření](vmware-azure-reprotect.md), za nímž následují navrácení služeb po obnovení.

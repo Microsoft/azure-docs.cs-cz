@@ -2,24 +2,19 @@
 title: "Připojení k databázi SQL pomocí C a C++ | Microsoft Docs"
 description: "Použijte ukázkový kód v této úvodní vytvářet moderní aplikace s C++ a zálohovány výkonné relační databáze v cloudu s Azure SQL Database."
 services: sql-database
-documentationcenter: 
 author: edmacauley
-manager: jhubbard
-editor: 
-ms.assetid: 07d9e0b1-3234-4f17-a252-a7559160a9db
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: edmacauley
-ms.openlocfilehash: 7c78f90c14c1915c760720948d6d7ae99ceb6f1d
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 659b413b2686a50a0681e7307b51188e6e6d0859
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Připojení k databázi SQL pomocí C a C++
 Tento příspěvek je zaměřen na vývojáře C a C++ pokusu o připojení k databázi SQL Azure. Ho je rozdělena na oddíly, můžete přejít na oddíl, který nejlépe zaznamená váš zájem. 
@@ -131,7 +126,7 @@ Můžete najít řešení GetStarted, které obsahuje všechny ukázky v tomto �
 * Zkontrolujte [přehled vývoje SQL databáze](sql-database-develop-overview.md)
 * Další informace o [referenční dokumentace rozhraní API ODBC](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 * [Vzory návrhu pro aplikace SaaS s více tenanty využívající Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * Prozkoumejte všechny [schopnosti služby SQL Database](https://azure.microsoft.com/services/sql-database/).
 

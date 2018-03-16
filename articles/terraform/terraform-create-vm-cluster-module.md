@@ -9,11 +9,11 @@ ms.workload: infrastructure
 ms.date: 10/19/2017
 ms.custom: devops
 ms.author: routlaw
-ms.openlocfilehash: 7b402ebfd6c8e1ef6b7d3969a05191467f5864f4
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: e33aef252413eeb243b03543f171d5f1e2385b48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Vytvoření clusteru s podporou virtuálních počítačů s Terraform pomocí klíče registru modulu
 
@@ -101,7 +101,7 @@ Spustit `terraform apply` ke zřízení virtuálních počítačů v Azure.
 
 ![Použít Terraform](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Procházet seznam [Azure Terraform moduly](https://registry.terraform.io/modules/Azure)
 - Vytvoření [škálovací sady virtuálních počítačů s Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)

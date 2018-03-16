@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: d3a0dd70a03f97a9b6bfb243eda7cbd470b0c239
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c394142ba40fc580bdcec11430dcae2816fa9760
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="overview-of-azure-data-lake-store"></a>Přehled Azure Data Lake Store
+# <a name="best-practices-for-using-azure-data-lake-store"></a>Doporučené postupy pro používání Azure Data Lake Store
 V tomto článku se dozvíte o osvědčených postupech a důležité informace týkající se práce s Azure Data Lake Store. Tento článek obsahuje informace o zabezpečení, výkonu, odolnost proti chybám a monitorování pro Data Lake Store. Před Data Lake Store práci s skutečně velkých objemů dat v služby, jako je Azure HDInsight byl složitý. Bylo sdílení dat mezi více účtů úložiště Blob tak, aby bylo možné dosáhnout petabajty úložiště a optimální výkon v tomto měřítku. S Data Lake Store jsou odstraněna většina pevných limitů pro velikost a výkon. Existují však stále některé aspekty, které tento článek se týká, abyste měli k dosažení nejlepšího výkonu s Data Lake Store. 
 
 ## <a name="security-considerations"></a>Aspekty zabezpečení
@@ -139,7 +139,7 @@ Pokud Data Lake Store přesouvání protokolu není zapnutý, Azure HDInsight ta
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG 
 
-Jakmile je nastavena a uzly se restartují, diagnostiky Data Lake Store je zapsán do protokolů YARN na uzlech (/tmp/<user>/yarn.log) a důležité podrobnosti jako chyby nebo omezení (kód chyby HTTP 429) lze sledovat. Stejné informace je možné monitorovat také v OMS nebo kdekoli jsou protokoly odeslaná do v [diagnostiky](data-lake-store-diagnostic-logs.md) okně účtu Data Lake Store. Doporučuje se alespoň zapnout protokolování na straně klienta nebo využívat možnost s Data Lake Store provozní viditelnost a snadnější ladění přesouvání protokolu.
+Jakmile je vlastnost nastavena a uzly se restartují, diagnostiky Data Lake Store je zapsán do protokolů YARN na uzlech (/tmp/<user>/yarn.log) a důležité podrobnosti jako chyby nebo omezení (kód chyby HTTP 429) lze sledovat. Stejné informace je možné monitorovat také v OMS nebo kdekoli jsou protokoly odeslaná do v [diagnostiky](data-lake-store-diagnostic-logs.md) okně účtu Data Lake Store. Doporučuje se alespoň zapnout protokolování na straně klienta nebo využívat možnost s Data Lake Store provozní viditelnost a snadnější ladění přesouvání protokolu.
 
 ### <a name="run-synthetic-transactions"></a>Spustit syntetické transakce 
 
@@ -155,7 +155,7 @@ V úlohách IoT může být značnou část dat se dostali v úložišti dat, kt
 
     {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/ 
 
-Například cílová stránka telemetrická data motoru letadle v rámci Spojené království může vypadat například takto: 
+Například cílová stránka telemetrická data motoru letadle v rámci Spojené království může vypadat podobně jako následující strukturou: 
 
     UK/Planes/BA1293/Engine1/2017/08/11/12/ 
 
@@ -163,7 +163,7 @@ Není k dispozici z důvodu důležité uvést datum na konci struktura složek.
 
 ### <a name="batch-jobs-structure"></a>Struktura úlohy batch 
 
-Z hlavní běžně používané přístupem v dávkové zpracování je zobrazovat data ve složce "v". Potom po zpracování dat uvést nová data do podřízené procesy využívají složky "na". To je vidět někdy pro úlohy, které vyžadují zpracování na jednotlivé soubory a nemusí vyžadují masivně paralelní zpracování rozsáhlých datových sad. Stejně jako strukturu IoT výše doporučených má dobrou adresářovou strukturu nadřazené složky pro akcí, například oblasti a záležitosti subjektu (například organizace, produktu nebo producent). To pomáhá s zabezpečení dat napříč vaší organizace a lepší správu data ve vašich úloh. Kromě toho zvažte datum a čas ve struktuře umožňující lepší uspořádání, filtrované hledání, zabezpečení a automatizace ve zpracování. Úrovně podrobností pro strukturu datum je určen podle interval, ve kterém se data nahrál nebo zpracována, například hodinový, denní nebo dokonce měsíční. 
+Z hlavní běžně používané přístupem v dávkové zpracování je zobrazovat data ve složce "v". Potom po zpracování dat uvést nová data do podřízené procesy využívají složky "na". Tato struktura adresáře je někdy vidět pro úlohy, které vyžadují zpracování na jednotlivé soubory a nemusí vyžadují masivně paralelní zpracování rozsáhlých datových sad. Stejně jako strukturu IoT výše doporučených má dobrou adresářovou strukturu nadřazené složky pro akcí, například oblasti a záležitosti subjektu (například organizace, produktu nebo producent). Tato struktura pomáhá s zabezpečení dat napříč vaší organizace a lepší správu data ve vašich úloh. Kromě toho zvažte datum a čas ve struktuře umožňující lepší uspořádání, filtrované hledání, zabezpečení a automatizace ve zpracování. Úrovně podrobností pro strukturu datum je určen podle interval, ve kterém se data nahrál nebo zpracována, například hodinový, denní nebo dokonce měsíční. 
 
 Někdy souboru neúspěšný kvůli poškození dat nebo neočekávané formáty zpracování. V takových případech může využívat adresářovou strukturu **/špatný** složku pro přesun souborů k další kontroly. Dávková úloha může také zpracovat vytváření sestav nebo oznámení o těchto *chybný* soubory pro ruční zásah. Vezměte v úvahu následující strukturu šablony: 
 
@@ -171,14 +171,14 @@ Někdy souboru neúspěšný kvůli poškození dat nebo neočekávané formáty
     {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/ 
     {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/ 
 
-Například marketing firma přijetí denní extrahuje data zákazníků aktualizací ze svých klientských v Severní Americe může vypadat například takto před a po zpracování dat: 
+Například marketing firma přijímá denní extrahuje data zákazníků aktualizací od jejich klientů v Severní Americe. Může vypadat například následující fragment kódu před a po zpracování dat: 
 
     NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv 
     NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv 
  
 V běžně dávky dat zpracovává přímo do databáze, například Hive nebo tradiční databází SQL, není potřeba **/in** nebo **/out** vzhledem k tomu, že výstup již přejde do složky samostatné složky pro tabulku Hive nebo externí databáze. Například by denní extrahuje od zákazníků zobrazovat do svých příslušných složek a orchestration podle něco podobného jako Azure Data Factory Apache Oozie nebo Apache vzduchu by aktivaci každodenní úlohy Hive nebo Spark ke zpracování a zápis dat do tabulky Hive.
 
-## <a name="next-steps"></a>Další postup     
+## <a name="next-steps"></a>Další kroky     
 
 * [Přehled Azure Data Lake Store](data-lake-store-overview.md) 
 * [Řízení přístupu v Azure Data Lake Store](data-lake-store-access-control.md) 

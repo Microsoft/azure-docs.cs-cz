@@ -3,23 +3,18 @@ title: "Správa více databází SQL s elastické fondy Azure | Microsoft Docs"
 description: "Spravovat a škálování více databází SQL - stovky a s tisíci - pomocí elastické fondy. Jeden ceny pro prostředky, které můžete distribuovat, kde je potřeba."
 keywords: "více databází, databáze prostředků, výkon databáze"
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: NA
 ms.date: 03/02/2018
 ms.author: carlrab
-ms.workload: Active
 ms.topic: article
-ms.openlocfilehash: e89d348c4b21a249401254c64e3887ec36283022
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 7e819e50db4c57b47f9aa7a2cff7a2d62be37f08
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastických fondů pomáhají spravovat a škálování více databází Azure SQL
 
@@ -196,7 +191,7 @@ Následující obrázek znázorňuje příklad elastickém fondu. Zobrazení zah
 
 Můžete přejít na konkrétní fond zobrazíte jeho využití prostředků. Ve výchozím nastavení je fond konfigurována pro zobrazení využití úložiště a eDTU za poslední hodinu. Graf lze konfigurovat zobrazíte jiné metriky v různých časových oken. Klikněte **využití prostředků** grafu v části **elastického fondu monitorování** zobrazíte podrobné zobrazení zadaný metrik přes zadané časové okno.
 
-![Sledování elastického fondu](./media/sql-database-elastic-pool-manage-portal/basic-2.png)
+![Monitorování elastického fondu](./media/sql-database-elastic-pool-manage-portal/basic-2.png)
 
 ![Metriky stránky](./media/sql-database-elastic-pool-manage-portal/metric.png)
 
@@ -218,7 +213,7 @@ Na **upravit graf** formuláře, můžete vybrat časové rozmezí (po hodině, 
 
 Jednotlivé databáze je možné monitorovat také pro potenciální problémy. V části **elastické databáze monitorování**, je graf, který zobrazí metriky pro pět databáze. Ve výchozím nastavení grafu zobrazí top 5 databáze ve fondu podle využití eDTU průměrná za poslední hodinu. 
 
-![Sledování elastického fondu](./media/sql-database-elastic-pool-manage-portal/basic-3.png)
+![Monitorování elastického fondu](./media/sql-database-elastic-pool-manage-portal/basic-3.png)
 
 Klikněte **využití eDTU pro databáze za poslední hodinu** pod **elastické databáze monitorování**. Tím se otevře **využití prostředků databáze** a poskytuje podrobný přehled o využití databáze ve fondu. Pomocí mřížky v dolní části stránky, můžete vybrat všechny databáze ve fondu se mají zobrazit jeho použití v grafu (až 5 databáze). Můžete taky přizpůsobit okno metriky a času zobrazené v grafu kliknutím **upravit graf**.
 
@@ -370,7 +365,7 @@ Vytvoření a správa Elastická databáze SQL pomocí fondy tyto požadavky RES
 |[Databáze - seznamu serverem](/rest/api/sql/databases/listbyserver)|Vrátí seznam databází na serveru.|
 |[Databáze - aktualizace](/rest/api/sql/databases/update)|Aktualizuje existující databázi.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Video najdete v tématu [Microsoft Virtual Academy video kurzu na možnostech elastické databáze SQL Azure](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 * Další informace o návrhových schématech aplikací SaaS využívajících elastické fondy najdete v tématu [Návrhová schémata pro víceklientské aplikace SaaS využívající službu Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).

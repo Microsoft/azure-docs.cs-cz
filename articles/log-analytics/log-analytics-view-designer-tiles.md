@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: a14a6bf196c165bdffa0a9d5d343c0430cff7f29
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f341cb9430c7750909c1fc1f50c15f0620e74366
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Referenční příručka k zobrazení návrhu dlaždice v analýzy protokolů
 Pomocí zobrazení návrhu v Azure Log Analytics můžete vytvořit vlastní zobrazení na portálu Azure k dispozici různé vizualizace dat v pracovním prostoru analýzy protokolů. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení.
@@ -28,8 +28,6 @@ Další informace o návrháři zobrazení najdete v tématu:
 * [Zobrazit návrháře](log-analytics-view-designer.md): poskytuje přehled Návrhář zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.
 * [Odkaz na část vizualizace](log-analytics-view-designer-parts.md): poskytuje referenční příručka k nastavení pro vizualizaci částí, které jsou k dispozici do vlastních zobrazení.
 
-> [!NOTE]
-> Pokud pracovní prostor byl upgradován na verzi [nové protokolu Analytics query language](log-analytics-log-search-upgrade.md), dotazy v všechna zobrazení, musí být napsaná [nové dotazovací jazyk](https://go.microsoft.com/fwlink/?linkid=856078). Automaticky se převedou všechny zobrazení, které byly vytvořeny před upgradem pracovního prostoru.
 
 K dispozici dlaždice Návrhář zobrazení jsou popsané v následující tabulce:  
 
@@ -178,6 +176,6 @@ Tato dlaždice je obou grafu této zobrazí více řad z protokolu dotazu přes 
 | Zpráva |Zpráva, která se zobrazí, pokud datový tok ověření dotazu nevrátí žádná data. Pokud zadáte žádná zpráva *provádění Assessment* se zobrazí stavová zpráva. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o [protokolu hledání](log-analytics-log-searches.md) pro podporu dotazů v dlaždice.
 * Přidat [vizualizace částí](log-analytics-view-designer-parts.md) do vlastních zobrazení.

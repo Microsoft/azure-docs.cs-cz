@@ -2,26 +2,18 @@
 title: "Koncové body služby virtuální sítě a pravidla pro Azure SQL Database | Microsoft Docs"
 description: "Podsíť označte jako koncový bod služby virtuální sítě. Potom koncový bod jako virtuální sítě se pravidlo seznamu řízení přístupu vaší databázi SQL Azure. Pak můžete SQL Database přijme komunikaci ze všech virtuálních počítačů a dalších uzlů v podsíti."
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: 
-tags: 
-ms.assetid: 
-ms.service: sql-database
 ms.custom: VNet Service endpoints
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 02/20/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: c1bb1698723af60544b89f4b3168c44a32d31afd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 61f3112d684e0b1ec1d331f063f7930b3dc64d0c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Použít koncové body služby virtuální sítě a pravidla pro databázi SQL Azure
 
@@ -293,7 +285,7 @@ Již musí mít podsíť, která je označené konkrétní koncový bod služby 
 
 Funkce pravidlo virtuální sítě pro databázi SQL Azure jsou k dispozici v pozdní září 2017.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření koncového bodu služby virtuální sítě a potom pravidlo virtuální sítě pro Azure SQL Database pomocí prostředí PowerShell.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 
