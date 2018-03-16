@@ -250,7 +250,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 <!--start-test-->
 ## <a name="test-your-code"></a>Otestujte svůj kód
 
-Stiskněte klávesu `F5` spustit projekt v sadě Visual Studio. Otevře se prohlížeč a přesměruje vám *http://localhost: {port}* kde uvidíte *přihlásit pomocí Microsoft* tlačítko. Pokračujte a klikněte na něj pro přihlášení.
+Stiskněte klávesu `F5` spustit projekt v sadě Visual Studio. Otevře se prohlížeč a přesměruje vám *http://localhost:{port}* kde uvidíte *přihlásit pomocí Microsoft* tlačítko. Pokračujte a klikněte na něj pro přihlášení.
 
 Jakmile budete připraveni k testování, přihlaste se pomocí pracovní účet (Azure Active Directory). 
 
@@ -280,7 +280,7 @@ Kromě toho zobrazí tabulku včetně všech deklarací identity uživatele zahr
 ### <a name="test-accessing-a-method-that-has-an-authorize-attribute-optional"></a>Test přístupu k metodě, která má *[Authorize]* atribut (volitelné)
 V tomto kroku byste otestovat přístup k řadiči deklarace identity jako anonymní uživatel:<br/>
 Vyberte propojení na odhlášení uživatele a dokončete proces přihlášení.<br/>
-Teď v prohlížeči zadejte http://localhost: {port} / deklarace identity pro přístup k řadiči, která je chráněná pomocí `[Authorize]` atribut
+Teď v prohlížeči zadejte http://localhost:{port}/deklarace identity pro přístup k řadiči, která je chráněná pomocí `[Authorize]` atribut
 
 #### <a name="expected-results"></a>Očekávané výsledky
 Měli byste obdržet řádku by bylo potřeba ověření zobrazíte zobrazení.
