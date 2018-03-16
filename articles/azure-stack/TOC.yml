@@ -232,14 +232,22 @@
               href: azure-stack-app-service-capacity-planning.md
             - name: Než začnete
               href: azure-stack-app-service-before-you-get-started.md
+            - name: Jak znovu distribuovat Azure App Service v zásobníku Azure napříč doménami selhání
+              href: azure-stack-app-service-fault-domain-update.md
             - name: Nasazení poskytovatele prostředků App Service
               href: azure-stack-app-service-deploy.md
             - name: Nasazení App Service offline
               href: azure-stack-app-service-deploy-offline.md
+            - name: Aktualizace služby App Service
+              href: azure-stack-app-service-update.md
+            - name: Aktualizace služby App Service do offline režimu
+              href: azure-stack-app-service-update-offline.md
             - name: Přidání dalších webových rolí pracovního procesu
               href: azure-stack-app-service-add-worker-roles.md
             - name: Konfigurace zdrojů nasazení
               href: azure-stack-app-service-configure-deployment-sources.md
+            - name: Služby App Service aktualizovat jeden poznámky k verzi
+              href: azure-stack-app-service-release-notes-update-one.md
         - name: Naplnění webu Marketplace
           items:
             - name: Přehled webu Marketplace

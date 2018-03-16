@@ -2,29 +2,26 @@
 title: "Databáze Azure SQL spravované Instance přehled | Microsoft Docs"
 description: "Toto téma popisuje spravované Instance databáze Azure SQL a vysvětluje, jak to funguje a jak se liší od jedné databáze ve službě Azure SQL Database."
 services: sql-database
-documentationcenter: na
 author: bonova
 ms.reviewer: carlrab
-manager: cguyer
-editor: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 03/07/2018
+ms.date: 03/14/2018
 ms.author: bonova
-ms.openlocfilehash: dc3c93a1a13f3e10f9159d26411d6337c0269722
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 77d421e9c97f3baa3541040494fb91e0297edb5a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Instance spravované (preview)?
 
 SQL databáze spravované Instance Azure (preview) je nová funkce Azure SQL Database, poskytuje téměř 100 % kompatibilitu s systému SQL Server – místní, poskytuje nativní [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md) implementace, které řeší běžné otázky zabezpečení a [modelu business](https://azure.microsoft.com/pricing/details/sql-database/) uspokojivým pro zákazníky, místní systém SQL Server. Spravované Instance umožňuje stávající zákazníky služby SQL Server a navýšení posunutí své místní aplikace do cloudu s minimálními změnami aplikace a databáze. Ve stejnou dobu spravované Instance uchovává všechny možnosti PaaS (Automatické aktualizace použití dílčích oprav a verze, zálohování, vysokou dostupnost), které výrazně snižuje správní režii a celkové náklady na vlastnictví.
+
+> [!IMPORTANT]
+> Seznam oblastí, ve kterých spravované Instance je aktuálně k dispozici, najdete v části [migrace databáze do plně spravovaná služba s Azure SQL Database spravované Instance](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
  
 Následující diagram popisuje klíčové funkce spravované instance:
 
@@ -196,7 +193,7 @@ Spravované Instance povolení správce systému a zaměřit se na čem nejvíc 
 > [!IMPORTANT]
 > Seznam podporovaných, částečně podporované a nepodporované funkce najdete v tématu [funkce SQL Database](sql-database-features.md). Seznam rozdíly T-SQL ve spravované instance oproti systému SQL Server najdete v tématu [spravované Instance T-SQL rozdíly v systému SQL Server](sql-database-managed-instance-transact-sql-information.md)
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Pro funkce a porovnání seznamu, najdete v části [společné funkce SQL](sql-database-features.md).
 - Kurz, který vytvoří instanci spravované a obnoví databázi ze záložního souboru, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md).

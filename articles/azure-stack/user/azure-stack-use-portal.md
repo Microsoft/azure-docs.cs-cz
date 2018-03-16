@@ -30,7 +30,7 @@ Jako příjemce služeb Azure zásobníku můžete pomocí portálu Azure zásob
 
 Vaše zásobník Azure – operátor (poskytovatele služeb nebo správce ve vaší organizaci), vám poradí správnou adresu URL pro přístup k portálu. 
 
-- Pro integrovaný systém adresa URL se liší v závislosti na vaší operátor oblast a název externí domény a bude v https://portal formátu. &lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
+- Pro integrovaný systém adresa URL se liší v závislosti na vaší operátor oblast a název externí domény a bude v formátu https://portal.&lt;*oblast*&gt;.&lt;*FQDN*&gt;.
 - Pokud používáte Development Kit Azure zásobníku, portál adresa je https://portal.local.azurestack.external.
 
 ![Snímek obrazovky portálu Azure zásobník uživatele](media/azure-stack-use-portal/UserPortal.png)
