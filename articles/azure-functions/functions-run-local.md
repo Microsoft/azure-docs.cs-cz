@@ -215,7 +215,7 @@ func host start
 | **`--nodeDebugPort -n`** | Port pro uzel ladicí program používat. Výchozí hodnota: Hodnota z launch.json nebo 5858. |
 | **`--debugLevel -d`** | Úroveň trasování konzoly (vypnuto, podrobné nastavení, informace, varování nebo chyba). Výchozí: informace.|
 | **`--timeout -t`** | Časový limit pro hostitele funkce spustit v sekundách. Výchozí hodnota: 20 sekund.|
-| **`--useHttps`** | Vytvořit vazbu na https://localhost: {port} místo na http://localhost: {port}. Ve výchozím nastavení tato možnost vytvoří důvěryhodný certifikát v počítači.|
+| **`--useHttps`** | Vytvořit vazbu na https://localhost:{port} místo na http://localhost:{port}. Ve výchozím nastavení tato možnost vytvoří důvěryhodný certifikát v počítači.|
 | **`--pause-on-error`** | Pozastavení další vstupní před ukončení procesu. Užitečné při spuštění nástroje základní funkce Azure z integrované vývojové prostředí (IDE).|
 
 Při spuštění funkce hostitele výstupy funkce aktivované protokolem URL HTTP:
