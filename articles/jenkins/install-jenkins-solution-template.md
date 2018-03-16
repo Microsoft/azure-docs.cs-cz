@@ -1,20 +1,20 @@
 ---
 title: "Vytvoření serveru Jenkins v Azure"
 description: "Instalace Jenkinse na virtuálním počítači Azure s Linuxem ze šablony řešení Jenkins a sestavení ukázkové aplikace v Javě."
-author: mlearned
-manager: douge
+author: tomarcher
+manager: rloutlaw
 ms.service: multiple
 ms.workload: web
-ms.devlang: java
+ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
-ms.author: mlearned
+ms.date: 03/12/2018
+ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: 422d133841a380b1ef02e95245207c464089138d
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: c9f86ab2536d3c598bb8c7084524395b41f18db0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Vytvoření serveru Jenkins na virtuálním počítači Azure s Linuxem pomocí webu Azure Portal
 
@@ -28,32 +28,13 @@ V tomto rychlém startu se dozvíte, jak na virtuálním počítači s Ubuntu Li
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-jenkins-vm-from-the-solution-template"></a>Vytvoření virtuálního počítače s Jenkinsem ze šablony řešení
+Volaných podporuje model kde volaných serveru delegáti spolupracovat na jeden nebo více agentů umožňuje jednotnou instalaci volaných hostovat velký počet projektů nebo poskytovat potřebné pro různá prostředí sestavení nebo testy. Postup v této části Průvodce vás provede instalací a konfigurací volaných server na platformě Azure.
 
-Ve webovém prohlížeči otevřete [image Jenkinse na webu Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview) a na levé straně stránky vyberte **ZÍSKAT**. Zkontrolujte podrobnosti o cenách a vyberte **Pokračovat**, pak vyberte **Vytvořit** a nakonfigurujte server Jenkins na webu Azure Portal. 
-   
-![Dialogové okno na webu Azure Portal](./media/install-jenkins-solution-template/ap-create.png)
-
-Na kartě **Konfigurace základního nastavení** vyplňte následující pole:
-
-![Konfigurace základního nastavení](./media/install-jenkins-solution-template/ap-basic.png)
-
-* Jako **Název** použijte **Jenkins**.
-* Zadejte **Uživatelské jméno**. Uživatelské jméno musí splňovat [určité požadavky](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
-* Jako **Typ ověřování** vyberte **Heslo** a zadejte heslo. Heslo musí obsahovat velké písmeno, číslici a jeden speciální znak.
-* Jako **Skupina prostředků** použijte **myJenkinsResourceGroup**.
-* Z rozevíracího seznamu **Umístění** zvolte [Oblast Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) **USA – východ**.
-
-Vyberte **OK** a pokračujte na kartu **Konfigurace dalších možností**. Zadejte jedinečný název domény pro identifikaci serveru Jenkins a vyberte **OK**.
-
-![Nastavení dalších možností](./media/install-jenkins-solution-template/ap-addtional.png)  
-
- Jakmile úspěšně proběhne ověření, znovu vyberte **OK** na kartě **Souhrn**. Nakonec vyberte **Koupit** a vytvoří se virtuální počítač s Jenkinsem. Jakmile bude váš server připravený, na webu Azure Portal se vám zobrazí oznámení:   
-
-![Oznámení o připravenosti Jenkinse](./media/install-jenkins-solution-template/jenkins-deploy-notification-ready.png)
+[!INCLUDE [jenkins-install-from-azure-marketplace-image](../../includes/jenkins-install-from-azure-marketplace-image.md)]
 
 ## <a name="connect-to-jenkins"></a>Připojení k Jenkinsu
 
-Ve webovém prohlížeči přejděte ke svému virtuálnímu počítači (například http://jenkins2517454.eastus.cloudapp.azure.com/). Konzola Jenkinse není přístupná přes nezabezpečený protokol HTTP, proto se na stránce zobrazí pokyny pro zabezpečený přístup ke konzole Jenkinse z vašeho počítače pomocí tunelu SSH.
+Přejděte do virtuálního počítače (například http://jenkins2517454.eastus.cloudapp.azure.com/) ve webovém prohlížeči. Konzola Jenkinse není přístupná přes nezabezpečený protokol HTTP, proto se na stránce zobrazí pokyny pro zabezpečený přístup ke konzole Jenkinse z vašeho počítače pomocí tunelu SSH.
 
 ![Odemknutí Jenkinse](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 

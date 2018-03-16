@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: lakasa
-ms.openlocfilehash: b40858640d10e5661be420976520774bd50837cb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1360d8bb0911c424747209c69b830fc1ee461798
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování služby úložiště v Azure Key Vault klíče spravovaného zákazníkem
 
@@ -81,6 +81,7 @@ Pokud chcete zadat klíč z identifikátoru URI, postupujte takto:
 
     ![Portál snímek obrazovky s šifrování s, zadejte možnost klíče uri](./media/storage-service-encryption-customer-managed-keys/ssecmk2.png)
 
+
 #### <a name="specify-a-key-from-a-key-vault"></a>Zadejte klíč z trezoru klíčů 
 
 Pokud chcete zadat klíče z trezoru klíčů, postupujte takto:
@@ -96,6 +97,17 @@ Pokud účet úložiště nemá přístup k trezoru klíčů, můžete spustit p
 ![Portál snímek obrazovky ukazující, přístup k trezoru klíčů odepřen](./media/storage-service-encryption-customer-managed-keys/ssecmk4.png)
 
 Můžete také udělit přístup prostřednictvím portálu Azure tak, že přejdete do Azure Key Vault na portálu Azure a udělení přístupu k účtu úložiště.
+
+
+Výše uvedený klíč můžete přidružit stávající účet úložiště pomocí následujících příkazů prostředí PowerShell:
+```powershell
+$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+$keyVault = Get-AzureRmKeyVault -VaultName "mykeyvault"
+$key = Get-AzureKeyVaultKey -VaultName $keyVault.VaultName -Name "keytoencrypt"
+Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -EnableEncryptionService "Blob" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+```
+
 
 ### <a name="step-5-copy-data-to-storage-account"></a>Krok 5: Kopírování dat do účtu úložiště
 
@@ -155,7 +167,7 @@ Odpověď: SSE spravované zákazníkem klíče je k dispozici ve všech oblaste
 
 Odpověď: kontaktní [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) pro veškeré problémy související s šifrování služby úložiště.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 -   Další informace o komplexní sadu zabezpečení možnosti, které pomáhají vývojářům vytvářet aplikace, zabezpečení naleznete v tématu [Průvodce zabezpečením úložiště](storage-security-guide.md).
 

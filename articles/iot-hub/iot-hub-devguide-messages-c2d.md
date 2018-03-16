@@ -11,13 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2017
+ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: 1b34e579f2ba40f4d77f7a3ba1841f59f795d292
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d265d35c7d5a394afa0e59f40ff1a5741e0ec35c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Odesílání zpráv typu cloud zařízení ze služby IoT Hub
 
@@ -75,17 +75,17 @@ Při odesílání zpráv typu cloud zařízení služby může požádat o doru�
 
 | Vlastnost objektu ACK. | Chování |
 | ------------ | -------- |
-| **kladné** | Pokud dosáhne zpráv typu cloud zařízení **dokončeno** stavu služby IoT Hub vytvoří zprávu zpětnou vazbu. |
+| **Kladné** | Pokud dosáhne zpráv typu cloud zařízení **dokončeno** stavu služby IoT Hub vytvoří zprávu zpětnou vazbu. |
 | **Záporná** | Pokud dosáhne zpráv typu cloud zařízení **mrtvých lettered** stavu služby IoT Hub vytvoří zprávu zpětnou vazbu. |
 | **Úplná**     | IoT Hub vytvoří zprávu zpětné vazby v obou případech. |
 
 Pokud **Ack** je **úplné**a jste neobdrželi zprávu zpětné vazby, což znamená, že vypršela platnost zprávy zpětnou vazbu. Službu nelze vědět, co se stalo s původní zprávy. V praxi služby zkontrolujte, že zvládne zpracovat zpětné vazby než vyprší její platnost. Čas vypršení platnosti maximální dva dny, které opustí čas získat službu běží znovu Pokud dojde k chybě.
 
-Jak je popsáno v [koncové body][lnk-endpoints], IoT Hub zajišťuje zpětnou vazbu prostřednictvím koncový bod služby přístupem (**/messages/servicebound/feedback**) jako zprávy. Sémantika pro příjem zpětná vazba je stejný jako u zprávy typu cloud zařízení a mít stejný [životní cyklus zpráv][lnk-lifecycle]. Kdykoli je to možné, je zpracovat v dávce zpětnou vazbu zprávy do jedné zprávy v následujícím formátu:
+Jak je popsáno v [koncové body][lnk-endpoints], IoT Hub zajišťuje zpětnou vazbu prostřednictvím koncový bod služby přístupem (**/messages/servicebound/feedback**) jako zprávy. Sémantika pro příjem zpětné vazby jsou stejné jako pro zprávy typu cloud zařízení. Kdykoli je to možné, je zpracovat v dávce zpětnou vazbu zprávy do jedné zprávy v následujícím formátu:
 
 | Vlastnost     | Popis |
 | ------------ | ----------- |
-| EnqueuedTime | Časové razítko označující, kdy byla zpráva vytvořena. |
+| EnqueuedTime | Časové razítko označující při byl zpětnou vazbu zprávy přijaté službou. |
 | ID uživatele       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
@@ -93,7 +93,7 @@ Text je serializací JSON pole záznamů, každý s následujícími vlastnostmi
 
 | Vlastnost           | Popis |
 | ------------------ | ----------- |
-| EnqueuedTimeUtc    | Časové razítko označující, když se stalo výsledek zprávy. Například zařízení byla dokončena nebo zprávy s vypršenou platností. |
+| EnqueuedTimeUtc    | Časové razítko označující, když se stalo výsledek zprávy. Například rozbočovače zobrazila zpráva zpětnou vazbu nebo vypršela její platnost původní zprávy. |
 | OriginalMessageId  | **MessageId** zprávy cloud zařízení, ke kterému má vztah tyto informace zpětnou vazbu. |
 | statusCode         | Požadovaný řetězec. Použít v zpětnou vazbu zprávy generované IoT Hub. <br/> 'Success' <br/> "Platnost vypršela. <br/> 'DeliveryCountExceeded' <br/> 'Odmítnut. <br/> 'Vyprázdní. |
 | Popis        | Řetězce hodnoty pro **StatusCode**. |

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 188f02aa69d7b39bc5bc4873b437825107a7ae4e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Postup konfigurace hybridní Azure Active Directory připojené zařízení
 
@@ -62,7 +62,13 @@ Toto téma ke zlepšení čitelnosti popisy, používá následující období:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, povolení hybridního Azure AD, které jsou připojené k zařízení ve vaší organizaci, musíte zajistit, že používáte aktuální verzi Azure AD connect.
+Než začnete, povolení hybridního Azure AD, které jsou připojené k zařízení ve vaší organizaci, je třeba Ujistěte se, že:
+
+- Používáte aktuální verzi Azure AD connect.
+
+- Azure AD connect synchronizoval objekty počítače zařízení mají být hybridní připojený k Azure AD do služby Azure AD. Pokud objekty počítače patří konkrétní organizační jednotky (OU), pak tyto organizační jednotky musí být nakonfigurovaná pro synchronizaci ve službě Azure AD connect také.
+
+  
 
 Azure AD Connect:
 
@@ -145,7 +151,7 @@ Tento skript je ukázkou příklad, pomocí rutiny. V tento skript `$aadAdminCre
 `Initialize-ADSyncDomainJoinedComputerSync` Rutiny:
 
 - Používá modul Active Directory PowerShell a nástroje služby AD DS, které jsou založeny na spuštěných na řadiči domény Active Directory Web Services. Služba Active Directory Web Services je podporována v řadičích domény se systémem Windows Server 2008 R2 nebo novější.
-- Je podporován pouze serverem **MSOnline PowerShell verze modulu 1.1.166.0**. Chcete-li stáhnout tento modul, použijte toto [odkaz](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185).   
+- Je podporován pouze serverem **MSOnline PowerShell verze modulu 1.1.166.0**. Chcete-li stáhnout tento modul, použijte toto [odkaz](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/).   
 - Pokud nejsou nainstalovány nástroje služby AD DS, `Initialize-ADSyncDomainJoinedComputerSync` se nezdaří.  Nástroje služby AD DS se dá nainstalovat pomocí Správce serveru v části funkce – nástrojů pro vzdálenou správu – nástroje pro správu rolí.
 
 Pro řadiče domény se systémem Windows Server 2008 nebo dřívějších verzí použijte níže uvedeném skriptu k vytvoření spojovací bod služby.
@@ -520,7 +526,7 @@ Ve službě AD FS musíte přidat pravidel transformace vystavení, který před
 
     `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-8. Na federačním serveru, zadejte příkaz prostředí PowerShell níže po nahrazení  **\<RPObjectName\>**  s předávající strany název objektu pro vztah důvěryhodnosti objektu předávající strany služby Azure AD. Tento objekt obvykle jmenuje **Microsoft Office 365 Identity Platform**.
+8. Na federačním serveru, zadejte příkaz prostředí PowerShell níže po nahrazení ** \<RPObjectName\> ** s předávající strany název objektu pro vztah důvěryhodnosti objektu předávající strany služby Azure AD. Tento objekt obvykle jmenuje **Microsoft Office 365 Identity Platform**.
    
     `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 

@@ -2,25 +2,19 @@
 title: Nastavit synchronizaci dat SQL Azure (Preview) | Microsoft Docs
 description: "V tomto kurzu se dozvíte, jak nastavit synchronizaci dat SQL Azure (Preview)"
 services: sql-database
-documentationcenter: 
 author: douglaslms
 manager: craigg
-editor: 
-ms.assetid: a295a768-7ff2-4a86-a253-0090281c8efa
 ms.service: sql-database
 ms.custom: load & move data
-ms.workload: Active
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: b356bc9db9e883c2514953b516d6dd51c1807610
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 237a34c955f8ef36e25c30a6b13787f6a9296612
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>Nastavit synchronizaci dat SQL (Preview)
 V tomto kurzu zjistěte, jak nastavit synchronizaci dat SQL Azure tak, že vytvoříte skupinu hybridních synchronizace, která obsahuje instance Azure SQL Database a SQL Server. Do nové skupiny synchronizace plně konfigurována a synchronizuje podle plánu, který nastavíte.
@@ -62,7 +56,7 @@ Pro dokončení příklady prostředí PowerShell, které ukazují, jak nakonfig
         > [!NOTE]
         > Společnost Microsoft doporučuje, že můžete vytvořit nový, prázdný databázi chcete použít jako databázi synchronizace metadat. Synchronizaci dat vytváří tabulky v této databázi a spustí Časté úlohy. Tato databáze je automaticky sdílen jako databázi Metadata synchronizace pro všechny skupiny synchronizace ve vybrané oblasti. Metadata databáze Sync nebo jeho název nelze změnit bez vyřadíte.
 
-        Pokud jste zvolili **novou databázi**, vyberte **vytvořit novou databázi.** **SQL Database** otevře se stránka. Na **SQL Database** stránky, název a nakonfigurujte novou databázi. Potom vyberte **OK**.
+        Pokud jste zvolili **novou databázi**, vyberte **vytvořit novou databázi.** **SQL Database** otevře se stránka. Na **SQL Database** stránky, název a nakonfigurujte novou databázi. Pak vyberte **OK**.
 
         Pokud jste zvolili **použít existující databázi**, vyberte databázi ze seznamu.
 
@@ -110,7 +104,7 @@ Na **konfigurace databáze Azure** proveďte následující akce:
 
     ![Byl přidán nový člen synchronizace databáze SQL](media/sql-database-get-started-sql-data-sync/datasync-preview-memberadded.png)
 
-### <a name="add-on-prem"></a>Přidat místní databázi systému SQL Server
+### <a name="add-on-prem"></a> Přidat místní databázi systému SQL Server
 
 V **databázi člena** část, volitelně přidat místní SQL Server do skupiny synchronizace výběrem **přidat místní databázi**. **Nakonfigurovat místní** otevře se stránka.
 

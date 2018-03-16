@@ -3,7 +3,7 @@ title: "Přidejte konektor OneDrive ve vašich Logic Apps | Microsoft Docs"
 description: "Přehled konektoru OneDrive s parametry rozhraní REST API"
 services: logic-apps
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: e988ae22a3d6e47591c37ad0b4c9f781d523bcc8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 15b88baf21ead5a6b9506c47ca9930d5088b8787
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>Začínáme s konektorem OneDrive
 Připojte se ke Onedrivu spravovat vaše soubory, včetně nahrávání, získat, odstraňte soubory a další. 
@@ -30,7 +30,7 @@ S OneDrive můžete:
 * Spustit pracovní postup v případě, že soubor se vytvoří nebo aktualizuje v rámci OneDrive pomocí aktivační události.
 * Použijte k vytvoření souboru, odstraňte soubor a další akce. Například pokud byl přijat nový Office 365 e-mail s přílohou (aktivační události) vytvořte nový soubor ve Onedrivu (akce).
 
-Toto téma ukazuje, jak k používání konektoru OneDrive v aplikaci logiky a taky seznam triggery a akce.
+Tento článek ukazuje, jak k používání konektoru OneDrive v aplikaci logiky a taky seznam triggery a akce.
 
 Další informace o Logic Apps najdete v tématu [co jsou logic apps](../logic-apps/logic-apps-overview.md) a [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -52,7 +52,7 @@ Aktivační událost je událost, která můžete použít ke spuštění pracov
    
     ![](./media/connectors-create-api-onedrive/sample-folder.png)
    
-    Pokud budete vyzváni k přihlášení, pak zadejte přihlašovací údaje pro vytvoření připojení. [Vytvoření připojení](connectors-create-api-onedrive.md#create-the-connection) v tomto tématu jsou uvedeny kroky. 
+    Pokud budete vyzváni k přihlášení, pak zadejte přihlašovací údaje pro vytvoření připojení. [Vytvoření připojení](connectors-create-api-onedrive.md#create-the-connection) v tomto článku jsou uvedené kroky. 
    
    > [!NOTE]
    > V tomto příkladu spustí aplikaci logiky při otevření souboru ve složce, kterou zvolíte, se aktualizuje. Pokud chcete zobrazit výsledky této aktivační události, přidejte další akci, která vám pošle e-mailu. Například přidejte Office 365 Outlook *e-mailovou zprávu* akci, která odešle e-mail, když se aktualizuje soubor. 
@@ -76,7 +76,7 @@ Akce je operace prováděné definované v aplikaci logiky pracovního postupu. 
    
     ![](./media/connectors-create-api-onedrive/sample-action.png)
    
-    Pokud se zobrazí výzva pro informace o připojení, zadejte podrobnosti k vytvoření připojení. [Vytvoření připojení](connectors-create-api-onedrive.md#create-the-connection) v tomto tématu popisuje tyto vlastnosti. 
+    Pokud se zobrazí výzva pro informace o připojení, zadejte podrobnosti k vytvoření připojení. [Vytvoření připojení](connectors-create-api-onedrive.md#create-the-connection) v tomto článku popisuje tyto vlastnosti. 
    
    > [!NOTE]
    > V tomto příkladu vytvoříme nový soubor ve složce OneDrive. Výstup z jiného aktivační událost můžete použít k vytvoření souboru OneDrive. Například přidejte Office 365 Outlook *při doručení nových e-mailů* aktivační události. Pak přidejte Onedrivu *vytvořit soubor* akci, která používá příloh a Content-Type pole v rámci příkazu ForEach k vytvoření nového souboru na Onedrivu. 

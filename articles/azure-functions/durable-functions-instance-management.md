@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a938e5949896ad3bfa91903106d56ccdf827c725
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9cea9b18cd7434a34138d5cecad8a8fd7f10d2e5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Správa instancí trvanlivý funkcí (Azure Functions)
 
@@ -26,12 +26,14 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="starting-instances"></a>Výchozí instance
 
-[StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) spustí novou instanci funkce produktu orchestrator. Instance této třídy lze získat pomocí `orchestrationClient` vazby. Interně tato to metoda enqueues zprávu do fronty ovládací prvek, který potom aktivuje spuštění funkce se zadaným názvem, který používá `orchestrationTrigger` aktivovat vazby.
+[StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) spustí novou instanci funkce produktu orchestrator. Instance této třídy lze získat pomocí `orchestrationClient` vazby. Interně tato to metoda enqueues zprávu do fronty ovládací prvek, který potom aktivuje spuštění funkce se zadaným názvem, který používá `orchestrationTrigger` aktivovat vazby. 
+
+Úloha dokončení při spuštění procesu orchestration. V rámci 30 sekund by se měl spustit proces orchestration. Pokud trvá déle, `TimeoutException` je vyvolána výjimka. 
 
 Parametry, které chcete [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) jsou následující:
 
 * **Název**: název funkce orchestrator při plánování.
-* **Vstupní**: žádné JSON serializovatelný data, která mají být předány jako vstup do funkce produktu orchestrator.
+* **Vstupní**: žádná JSON serializovatelný data, která mají být předány jako vstup do funkce produktu orchestrator.
 * **Identifikátor InstanceId**: (volitelné) Jedinečný ID instance. Pokud není zadaný, vygeneruje se ID náhodných instance.
 
 Zde je jednoduchý příklad C#:
@@ -48,7 +50,7 @@ public static async Task Run(
 }
 ```
 
-Pro jazyky rozhraní .NET, funkce výstup vazby lze spustit také nové instance. V takovém případě můžete použít jakýkoli JSON-serializovatelný objekt, který má tři výše uvedených parametrů jako pole. Zvažte například následující funkce Node.js:
+Pro jazyky rozhraní .NET, funkce výstup vazby lze spustit také nové instance. V takovém případě můžete použít všechny JSON serializovatelný objekt, který má výše tři parametry jako pole. Zvažte například následující funkce Node.js:
 
 ```js
 module.exports = function (context, input) {
@@ -68,7 +70,7 @@ module.exports = function (context, input) {
 
 ## <a name="querying-instances"></a>Dotazování instancí
 
-[GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) třída dotazuje se na stav instance orchestration. Jak dlouho trvá `instanceId` jako parametr a vrátí objekt s následujícími vlastnostmi:
+[GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) třída dotazuje se na stav instance orchestration. Jak dlouho trvá `instanceId` (povinné), `showHistory` (volitelné), a `showHistoryOutput` (volitelné) jako parametry. Pokud `showHistory` je nastaven na `true`, odpověď bude obsahovat historie provádění. Pokud `showHistoryOutput` je nastaven na `true` taky historie provádění bude obsahovat výstupů aktivity. Metoda vrátí objekt s následujícími vlastnostmi:
 
 * **Název**: název funkce produktu orchestrator.
 * **Identifikátor InstanceId**: instance ID orchestration (musí být stejná jako `instanceId` vstupní).
@@ -82,6 +84,7 @@ module.exports = function (context, input) {
     * **ContinuedAsNew**: instance samotného s novou historie restartování. Toto je přechodný stav.
     * **Se nezdařilo**: instance došlo k chybě.
     * **Byl ukončen**: instance náhle byl ukončen.
+* **Historie**: historie provádění orchestration. Toto pole je vyplněný, pouze když `showHistory` je nastaven na `true`.
     
 Tato metoda vrátí hodnotu `null` Pokud instance neexistuje nebo ještě nezačala systémem.
 
@@ -145,6 +148,60 @@ public static Task Run(
 
 > [!WARNING]
 > Pokud není žádná instance orchestration se zadaným *instance ID* nebo pokud není instance čekání na zadaný *název události*, zpráva o události se zahodí. Další informace o tomto chování najdete v tématu [potíže Githubu](https://github.com/Azure/azure-functions-durable-extension/issues/29).
+
+## <a name="wait-for-orchestration-completion"></a>Čekání na dokončení orchestration
+
+[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) třídy zpřístupňuje [WaitForCompletionOrCreateCheckStatusResponseAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_WaitForCompletionOrCreateCheckStatusResponseAsync_) rozhraní API, které můžete použít k získání synchronně skutečný výstup z orchestration instance. Metoda používá výchozí hodnotu 10 sekund, `timeout` a 1 sekunda pro `retryInterval` Pokud nejsou nastavené.  
+
+Tady je příklad funkce triggeru protokolu HTTP, které ukazuje, jak používat toto rozhraní API:
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpSyncStart.cs)]
+
+Funkci nelze volat pomocí 2 sekund časového limitu a interval opakování 0,5 sekundu tento řádek:
+
+```bash
+    http POST http://localhost:7071/orchestrators/E1_HelloSequence/wait?timeout=2&retryInterval=0.5
+```
+
+V závislosti na čas potřebný k získat odpověď z orchestration instance jsou dva případy:
+
+1. Instance orchestration dokončit v rámci definovaného časového limitu (v tomto případě 2 sekundy), odpověď je výstup instance skutečné orchestration doručit synchronně:
+
+    ```http
+        HTTP/1.1 200 OK
+        Content-Type: application/json; charset=utf-8
+        Date: Thu, 14 Dec 2017 06:14:29 GMT
+        Server: Microsoft-HTTPAPI/2.0
+        Transfer-Encoding: chunked
+
+        [
+            "Hello Tokyo!",
+            "Hello Seattle!",
+            "Hello London!"
+        ]
+    ```
+
+2. Instance orchestration nelze dokončit v rámci definovaného časového limitu (v tomto případě 2 sekundy), je odpověď na výchozí jeden popsané v **zjišťování adresy URL rozhraní API HTTP**:
+
+    ```http
+        HTTP/1.1 202 Accepted
+        Content-Type: application/json; charset=utf-8
+        Date: Thu, 14 Dec 2017 06:13:51 GMT
+        Location: http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}
+        Retry-After: 10
+        Server: Microsoft-HTTPAPI/2.0
+        Transfer-Encoding: chunked
+
+        {
+            "id": "d3b72dddefce4e758d92f4d411567177",
+            "sendEventPostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/raiseEvent/{eventName}?taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "statusQueryGetUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "terminatePostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
+        }
+    ```
+
+> [!NOTE]
+> Formát adresy URL webhooku se můžou lišit v závislosti na spuštěné verze hostitele Azure Functions. V předchozím příkladu je pro hostitele Azure funkce 2.0.
 
 ## <a name="next-steps"></a>Další postup
 

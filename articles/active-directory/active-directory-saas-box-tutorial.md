@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s pole | Microsoft Docs'
+title: "Kurz: Integraci služby Azure Active Directory s pole | Microsoft Docs"
 description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pole."
 services: active-directory
 documentationCenter: na
@@ -14,145 +14,138 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: af43f4b2a11f217853a9160f473dea8c488ea852
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 638ae63057df00375b05a58e3ceab510e2a608de
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-box"></a>Kurz: Azure Active Directory integrace s poli
+# <a name="integrate-azure-active-directory-with-box"></a>Pole integrovat Azure Active Directory
 
-V tomto kurzu zjistěte, jak integrovat pole s Azure Active Directory (Azure AD).
+V tomto kurzu jste zjistěte, jak integrovat Azure Active Directory (Azure AD) s pole.
 
-Integrace pole s Azure AD poskytuje následující výhody:
+Díky integraci služby Azure AD se pole, získáte následující výhody:
 
 - Můžete ovládat ve službě Azure AD, kdo má přístup k poli.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k pole (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete povolit uživatelům získat přihlášení automaticky pole (jednotné přihlašování a jednotné přihlašování) s jejich účty Azure AD.
+- Můžete spravovat vaše účty v jednom centrálním místě, portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s poli, potřebujete následující položky:
 
 - Předplatné služby Azure AD
-- Pole jednotné přihlašování povolené předplatné
+- Předplatné povolené jednotné přihlašování pole
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Při testování kroky v tomto kurzu, doporučujeme, abyste provedli *není* použít provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. 
+
+Scénář, který je popsané v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání pole z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-box-from-the-gallery"></a>Přidání pole z Galerie
-Při konfiguraci integrace pole do služby Azure AD, musíte přidat pole z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="add-box-from-the-gallery"></a>Přidat pole z Galerie
+Při konfiguraci integrace služby Azure AD s pole, přidejte pole z Galerie si na seznam spravovaných aplikací SaaS následujícím způsobem:
 
-**Chcete-li přidat pole z galerie, proveďte následující kroky:**
-
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V [portál Azure](https://portal.azure.com), v levém podokně vyberte **Azure Active Directory**. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Vyberte **podnikové aplikace, které** > **všechny aplikace**.
 
-    ![V části podnikových aplikací][2]
+    ![Okno "Podnikové aplikace"][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, vyberte **novou aplikaci** tlačítka v horní části okna.
 
-    ![Tlačítko nové aplikace][3]
+    !["Nová aplikace" tlačítko][3]
 
-4. Do vyhledávacího pole zadejte **pole**, vyberte **pole** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **pole**, vyberte **pole** v seznamu výsledků a potom vyberte **přidat**.
 
     ![Pole v seznamu výsledků](./media/active-directory-saas-box-tutorial/tutorial_box_search.png)
+### <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s pole, podle testovacího uživatele názvem "Britta Simon."
 
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s pole podle testovacího uživatele názvem "Britta Simon."
+Azure AD pro jednotné přihlašování pro práci, musí identifikovat pole uživatel a jeho protějšku ve službě Azure AD. Jinými slovy je nutné vytvořit vztah propojení mezi uživatele Azure AD a stejného uživatele v poli.
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v poli je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské pole musí navázat.
+K navázání vztahu odkaz, přiřadit jako pole *uživatelské jméno* hodnotu *uživatelské jméno* ve službě Azure AD.
 
-V poli přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
-
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s pole, je třeba dokončit následující stavební bloky:
-
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele pole](#create-a-box-test-user)**  – Pokud chcete mít protějšek Britta Simon pole, ve kterém je propojený s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s poli, dokončete stavebních bloků v následujících pět částech.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci pole.
+Povolení služby Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci pole následujícím způsobem:
 
-**Ke konfiguraci Azure AD jednotné přihlašování s poli, proveďte následující kroky:**
+1. Na portálu Azure v **pole** okno integrace aplikací, vyberte **jednotného přihlašování**.
 
-1. Na portálu Azure na **pole** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+    ![Na odkaz "Jednotného přihlašování"][4]
 
-    ![Konfigurace propojení přihlášení][4]
-
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. V **jednotného přihlašování** okno v **režimu přihlašování** vyberte **na základě SAML přihlašování**.
  
-    ![Jediné přihlášení dialogové okno](./media/active-directory-saas-box-tutorial/tutorial_box_samlbase.png)
+    ![Okno "Jednotného přihlašování"](./media/active-directory-saas-box-tutorial/tutorial_box_samlbase.png)
 
-3. Na **pole domény a adresy URL** část, proveďte následující kroky:
+3. V části **pole domény a adresy URL**, postupujte takto:
 
-    ![Pole domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-box-tutorial/url3.png)
+    !["Zadejte domény a adresy URL" jednotné přihlašování informace](./media/active-directory-saas-box-tutorial/url3.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.box.com`
+    a. V **přihlašovací adresa URL** pole, zadejte adresu URL v následujícím formátu: *https://\<subdoména >. box.com*.
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL: `box.net`
+    b. V **identifikátor** textovému poli, typ **box.net**.
      
     > [!NOTE] 
-    > Tato hodnota není skutečné. Aktualizujte hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory pole klienta](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) získat tuto hodnotu. 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+    > Předchozí hodnoty nejsou skutečné. Aktualizaci s skutečné přihlašovací adresa URL a identifikátor. Chcete-li získat hodnoty, obraťte se [tým podpory klienta pole](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire). 
+
+4. V části **SAML podpisový certifikát**, vyberte **soubor XML s metadaty**a potom uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/active-directory-saas-box-tutorial/tutorial_box_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+5. Vyberte **Uložit**.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-box-tutorial/tutorial_general_400.png)
     
-6. Chcete-li získat jednotné přihlašování, které jsou nakonfigurované pro vaši aplikaci, postupujte podle kroků v [nastavení nahoru jednotného přihlašování na vaše vlastní](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown)
+6. Chcete-li nakonfigurovat jednotné přihlašování pro aplikace, postupujte podle pokynů v [nastavit jednotné přihlašování na vlastní](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown).
 
 > [!NOTE] 
-> Pokud nelze povolit jednotné přihlašování v nastavení vašeho účtu pole, budete možná muset kontaktovat [tým podpory pole klienta](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) a poskytnout stažený soubor XML.
+> Pokud pro váš účet pole nelze povolit nastavení jednotného přihlašování, možná budete muset kontaktovat [tým podpory klienta pole](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) a zadejte stažený soubor XML.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Jak při instalaci aplikace, můžete si přečíst stručným verzi podle předchozích pokynů v [portál Azure](https://portal.azure.com). Po přidání aplikace v **služby Active Directory** > **podnikové aplikace, které** vyberte **jednotné přihlašování** kartě a potom přejdete vložené v dokumentaci **konfigurace** v dolní části. Další informace o funkci embedded dokumentaci najdete v tématu [Azure AD vložených dokumentaci]( https://go.microsoft.com/fwlink/?linkid=845985).
+>
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+V této části vytvoříte testovacího uživatele Britta Simon na portálu Azure, následujícím způsobem:
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+![Vytvořit testovací uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+1. Na portálu Azure, v levém podokně, vyberte **Azure Active Directory**.
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+    ![Odkaz Azure Active Directory](./media/active-directory-saas-box-tutorial/create_aaduser_01.png)
 
-    ![Tlačítko Azure Active Directory](./media/active-directory-saas-box-tutorial/create_aaduser_01.png)
-
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam aktuálního uživatele, vyberte **uživatelů a skupin** > **všichni uživatelé**.
 
     !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-box-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+3. V horní části **všichni uživatelé** vyberte **přidat**.
 
     ![Tlačítko Přidat](./media/active-directory-saas-box-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+    **Uživatele** otevře se okno.
 
-    ![Dialogové okno uživatele](./media/active-directory-saas-box-tutorial/create_aaduser_04.png)
+4. V **uživatele** okno, postupujte takto:
+
+    ![Okno uživatele](./media/active-directory-saas-box-tutorial/create_aaduser_04.png)
 
     a. V **název** zadejte **BrittaSimon**.
 
@@ -160,52 +153,49 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Vyberte **Vytvořit**.
  
 ### <a name="create-a-box-test-user"></a>Vytvoření zkušebního uživatele pole
 
-V této části se vytvoří uživatele volat Britta Simon pole. Pole podporuje za běhu zřizování, který je ve výchozím nastavení povolené.
-Neexistuje žádná položka akce pro vás v této části. Pokud uživatel v poli ještě neexistuje, vytvoří se nový při pokusu o přístup k poli.
+V této části vytvoříte testovacího uživatele Britta Simon pole. Pole podporuje za běhu zřizování, který je ve výchozím nastavení povolené. Pokud uživatel ještě neexistuje, vytvoří se nový při pokusu o přístup k poli. Není třeba z vám umožní vytvořit uživateli žádné akce.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování tak, že udělíte přístup k poli.
+V této části povolit uživatele Britta Simon používat Azure jednotné přihlašování tak, že udělíte přístup k poli. Chcete-li to provést, postupujte takto:
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele][200]
 
-**Přiřadit Britta Simon pole, proveďte následující kroky:**
+1. Na portálu Azure otevřete **aplikace** zobrazení, přejděte na **Directory** zobrazit a potom vyberte **podnikové aplikace, které** > **všechny aplikace**.
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+    !["Podnikové aplikace" a "Všechny aplikace" odkazy][201] 
 
-    ![Přiřadit uživatele][201] 
+2. V **aplikace** seznamu, vyberte **pole**.
 
-2. V seznamu aplikací vyberte **pole**.
+    ![Propojení pole](./media/active-directory-saas-box-tutorial/tutorial_box_app.png)  
 
-    ![Propojení pole v seznamu aplikací](./media/active-directory-saas-box-tutorial/tutorial_box_app.png)  
-
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V levém podokně vyberte **uživatelů a skupin**.
 
     ![Odkaz "Uživatelé a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Vyberte **přidat** a pak na **přidat přiřazení** podokně, vyberte **uživatelů a skupin**.
 
     ![V podokně Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. V **uživatelů a skupin** okno v **uživatelé** seznamu, vyberte **Britta Simon**.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Vyberte **vyberte** tlačítko.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. V **přidat přiřazení** vyberte **přiřadit**.
     
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
 
-Když kliknete na dlaždici pole na přístupovém panelu, měli byste obdržet přihlašovací stránku k získání přihlášení k aplikaci pole.
+Když vyberete **pole** dlaždici na přístupovém panelu, můžete otevřít stránku přihlášení pro přihlášení do aplikace pole.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS do Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 * [Konfiguraci zřizování uživatelů](active-directory-saas-box-userprovisioning-tutorial.md)
 

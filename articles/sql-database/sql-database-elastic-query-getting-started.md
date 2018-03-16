@@ -2,23 +2,18 @@
 title: "Sestava napříč instancemi cloudu databází (vodorovné rozdělení do oddílů) | Microsoft Docs"
 description: "Použijte dotazy na databázi křížové databáze do sestavy napříč více databází."
 services: sql-database
-documentationcenter: 
 manager: jhubbard
 author: MladjoA
-ms.assetid: c81ef5e3-41e9-4fd2-8631-868f2e168147
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: mlandzic
-ms.openlocfilehash: 996ad1d47ece592dcf03a6eb8ed1c1916ceba374
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 29f1291f5c5d6023ca7bcd47fc2c0d9b69fd39fa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestavy napříč instancemi cloudu databází (preview)
 Můžete vytvořit sestavy z několika databází Azure SQL z bodu pomocí jednoho připojení [elastické dotazu](sql-database-elastic-query-overview.md). Databáze musí mít oddíly vodorovně (také označované jako "horizontálně dělené").
@@ -70,7 +65,7 @@ Ty se používají k připojení k správce mapy horizontálního oddílu a hori
 
     "username" a "password" by měla být stejná jako informace o přihlášení se používají v kroku 6 v [stažení a spuštění ukázkové aplikace](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) v [Začínáme s nástroje elastické databáze](sql-database-elastic-scale-get-started.md).
 
-### <a name="external-data-sources"></a>Externích zdrojů dat.
+### <a name="external-data-sources"></a>Externí zdroje dat
 Pokud chcete vytvořit externího zdroje dat, spusťte následující příkaz v databázi ElasticDBQuery:
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
@@ -104,7 +99,7 @@ Spusťte tento dotaz na databázi ElasticDBQuery:
 
 Si všimnete, že dotaz agreguje výsledky ze všech horizontálních oddílů a poskytuje následující výstup:
 
-![Podrobnosti o výstupu][4]
+![Podrobnosti výstupu][4]
 
 ## <a name="import-elastic-database-query-results-to-excel"></a>Import výsledků dotazu elastické databáze do aplikace Excel
  Můžete importovat výsledky z dotazu do souboru aplikace Excel.
@@ -128,7 +123,7 @@ Není k dispozici pro použití funkce elastické databáze dotazu bez dalších
 
 Informace o cenách najdete v části [podrobnosti o cenách na SQL databázi](https://azure.microsoft.com/pricing/details/sql-database/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Přehled elastické dotazů najdete v tématu [elastické dotazu přehled](sql-database-elastic-query-overview.md).
 * Vertikální dělení kurzu, najdete v části [Začínáme s mezidatabázové dotazu (vertikální dělení)](sql-database-elastic-query-getting-started-vertical.md).

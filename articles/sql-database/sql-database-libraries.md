@@ -2,24 +2,18 @@
 title: "Knihovny připojení pro databázi SQL. | Microsoft Docs"
 description: "Obsahuje odkazy pro stahování modulů, které umožňují připojení k systému SQL Server a databáze SQL z mnoha rozličných programovacích jazyků klienta."
 services: sql-database
-documentationcenter: 
 author: MightyPen
-manager: jhubbard
-editor: genemi
-ms.assetid: 13d899d3-cf46-4e4d-8919-cf4b41ca836d
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: genemi
-ms.openlocfilehash: a01ccd8b0e7c4759b3731adba9d37b7ce5afd764
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f371afc89273af4ce1c6c55eccc99a6f8a6349d5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>Připojení knihoven a architektur pro SQL Server
 

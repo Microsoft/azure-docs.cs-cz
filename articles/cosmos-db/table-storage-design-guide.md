@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: a5511b8b2e76c6c651a8e05bda1322293601c92c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: fadb81e16a6c641ca15efb4f910a51de4fe7c997
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Průvodce návrhem tabulky úložiště Azure: Návrh škálovatelné a původce tabulky
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -52,7 +52,7 @@ Následující příklad ukazuje návrh jednoduché tabulky k ukládání entit 
 <table>
 <tr>
 <th>FirstName</th>
-<th>Příjmení</th>
+<th>LastName</th>
 <th>Věk</th>
 <th>E-mail</th>
 </tr>
@@ -72,12 +72,12 @@ Následující příklad ukazuje návrh jednoduché tabulky k ukládání entit 
 <table>
 <tr>
 <th>FirstName</th>
-<th>Příjmení</th>
+<th>LastName</th>
 <th>Věk</th>
 <th>E-mail</th>
 </tr>
 <tr>
-<td>Čer</td>
+<td>Června</td>
 <td>CaO</td>
 <td>47</td>
 <td>junc@contoso.com</td>
@@ -109,7 +109,7 @@ Následující příklad ukazuje návrh jednoduché tabulky k ukládání entit 
 <table>
 <tr>
 <th>FirstName</th>
-<th>Příjmení</th>
+<th>LastName</th>
 <th>Věk</th>
 <th>E-mail</th>
 </tr>
@@ -207,8 +207,8 @@ Následující příklady předpokládají služby table je ukládání entit za
 | **PartitionKey** (název oddělení) |Řetězec |
 | **RowKey** (Id zaměstnance) |Řetězec |
 | **FirstName** |Řetězec |
-| **Příjmení** |Řetězec |
-| **Stáří** |Integer |
+| **LastName** |Řetězec |
+| **stáří** |Integer |
 | **EmailAddress** |Řetězec |
 
 Ve výše uvedené části [Přehled služby Azure Table](#overview) popisuje některé klíčové funkce služby Azure Table, které mají přímý vliv na návrh pro dotaz. To mít za následek následující obecné pokyny pro návrh tabulky služby dotazy. Všimněte si, že syntaxe filtru použít v následujících příkladech je ze služby Table rozhraní REST API, další informace najdete v tématu [dotazu entity](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
@@ -232,7 +232,7 @@ Příklady kódu na straně klienta, který může zpracovat více typy entit, k
 * [Práce s typy heterogenní entit](#working-with-heterogeneous-entity-types)  
 
 ### <a name="choosing-an-appropriate-partitionkey"></a>Výběr vhodné PartitionKey
-Vaši volbu **PartitionKey** měli vyvážit potřeba umožňuje použití EGTs (k zajištění konzistence) proti požadavku, distribuovat vaší entity napříč více oddílů (aby škálovatelné řešení).  
+Vaši volbu **PartitionKey** měli vyvážit potřeba povolit používání EGTs (k zajištění konzistence) proti požadavku, distribuovat vaší entity napříč více oddílů (aby škálovatelné řešení).  
 
 V jedné extreme může ukládat všechny entity v jeden oddíl, ale to může omezit škálovatelnost řešení a by bránily schopnost Vyrovnávání zatížení požadavky služby table. V jiných extreme může ukládat jednu entitu na oddíl, který bude vysoce škálovatelné a která umožňuje služby table na Vyrovnávání zatížení požadavky, ale které by zabránit vám v použití transakcí skupiny entity.  
 
@@ -250,7 +250,7 @@ Služby Table automaticky indexuje entity produktu pomocí **PartitionKey** a **
 
 Řada návrhů musí splňovat požadavky na povolení vyhledávání entit na základě několika kritérií. Například hledání zaměstnanec entity podle e-mailu, identifikační číslo zaměstnance nebo příjmení. Tyto vzory v části [vzory návrhu tabulky](#table-design-patterns) adres tyto typy požadavek a popisují způsoby obcházet fakt, že služby Table nenabízí sekundární indexy:  
 
-* [Vzor sekundární index Intra-partition](#intra-partition-secondary-index-pattern) -uložit více kopií každou entitu s využitím různých **RowKey** hodnoty (ve stejném oddílu) k povolení rychlé a efektivní vyhledávání a alternativní pořadí řazení pomocí různých **RowKey** hodnoty.  
+* [Vzor sekundární index Intra-partition](#intra-partition-secondary-index-pattern) -uložit více kopií každou entitu s využitím různých **RowKey** hodnoty (ve stejném oddílu) Chcete-li povolit rychlé a efektivní vyhledávání a alternativní pořadí řazení pomocí různých **RowKey** hodnoty.  
 * [Vzor mezi oddíl sekundární index](#inter-partition-secondary-index-pattern) -uložit více kopií každou entitu s využitím různých **RowKey** hodnoty v samostatných oddílů nebo v samostatné tabulky, které chcete povolit rychlé a efektivní vyhledávání a alternativní řazení objednávky pomocí různých **RowKey** hodnoty.  
 * [Index entity vzor](#index-entities-pattern) -udržovat index entity umožňující efektivní hledání, které vrátí seznamy entit.  
 
@@ -260,8 +260,8 @@ Služba Table vrací entity ve vzestupném pořadí podle **PartitionKey** a pot
 Mnoho aplikací mít požadavky pro použití dat seřazeny v různém pořadí: například řazení zaměstnanci podle názvu nebo díky připojení ke službě data. Tyto vzory v části [vzory návrhu tabulky](#table-design-patterns) adres postup alternativní pořadí řazení pro vaše entity:  
 
 * [Vzor sekundární index Intra-partition](#intra-partition-secondary-index-pattern) – ukládání více kopií každé entity pomocí různých hodnot RowKey (ve stejném oddílu) umožňující rychlé a efektivní vyhledávání a řazení alternativní řadí za použití různých hodnot RowKey.  
-* [Vzor mezi oddíl sekundární index](#inter-partition-secondary-index-pattern) – ukládání více kopií každé entity pomocí různých hodnot RowKey v samostatné oddíly v samostatných tabulkách umožňující rychlé a efektivní vyhledávání a řazení alternativní řadí za použití různých hodnot RowKey.
-* [Vzor protokolu poškozené databáze](#log-tail-pattern) -načíst  *n*  entity naposledy přidané do oddílu pomocí **RowKey** hodnotu, která seřadí zpětné datum a čas pořadí.  
+* [Vzor mezi oddíl sekundární index](#inter-partition-secondary-index-pattern) – ukládání více kopií každé entity pomocí různých hodnot RowKey v samostatné oddíly v samostatných tabulkách umožňující rychlé a efektivní vyhledávání a řazení alternativní řadí za použití různých hodnot RowKey .
+* [Vzor protokolu poškozené databáze](#log-tail-pattern) -načíst *n* entity naposledy přidané do oddílu pomocí **RowKey** hodnotu, která seřadí zpětné datum a čas pořadí.  
 
 ## <a name="design-for-data-modification"></a>Návrh pro úpravu dat
 Tato část se zaměřuje na aspekty návrhu pro optimalizaci vložení, aktualizace a odstraní. V některých případech musíte vyhodnotit kompromis mezi návrhů, které je optimální pro dotazování na návrhů, které je optimální pro úpravu dat stejným způsobem jako v návrhy pro relační databáze (i když techniky pro správu kompromisy návrhu se liší v relační databázi). V části [vzory návrhu tabulky](#table-design-patterns) popisuje některé vzory podrobné návrhu pro službu tabulky a zvýrazňuje některé tyto kompromis. V praxi zjistíte, že řada návrhů optimalizované pro dotazování entity také fungovat i pro úpravy entity.  
@@ -281,7 +281,7 @@ Další klíčovým faktorem, který ovlivňuje vaši volbu klíče pro optimali
 
 Tyto vzory v části [vzory návrhu tabulky](#table-design-patterns) adresu Správa konzistence:  
 
-* [Vzor sekundární index Intra-partition](#intra-partition-secondary-index-pattern) -uložit více kopií každou entitu s využitím různých **RowKey** hodnoty (ve stejném oddílu) k povolení rychlé a efektivní vyhledávání a alternativní pořadí řazení pomocí různých **RowKey** hodnoty.  
+* [Vzor sekundární index Intra-partition](#intra-partition-secondary-index-pattern) -uložit více kopií každou entitu s využitím různých **RowKey** hodnoty (ve stejném oddílu) Chcete-li povolit rychlé a efektivní vyhledávání a alternativní pořadí řazení pomocí různých **RowKey** hodnoty.  
 * [Vzor mezi oddíl sekundární index](#inter-partition-secondary-index-pattern) – ukládání více kopií každé entity pomocí různých hodnot RowKey v samostatné oddíly nebo v samostatných tabulkách umožňující rychlé a efektivní vyhledávání a řazení alternativní řadí pomocí různých **RowKey** hodnoty.  
 * [Nakonec byl konzistentní transakce vzor](#eventually-consistent-transactions-pattern) -povolit nakonec byl konzistentní chování v rámci hranice oddílů nebo hranice systému úložiště pomocí front Azure.
 * [Index entity vzor](#index-entities-pattern) -udržovat index entity umožňující efektivní hledání, které vrátí seznamy entit.  
@@ -296,7 +296,7 @@ V mnoha případech by měl návrh pro efektivní dotazování výsledků v efek
 Tyto vzory v části [vzory návrhu tabulky](#table-design-patterns) adres kompromis mezi návrhu pro efektivní dotazy a návrhu pro úpravu efektivní dat:  
 
 * [Složené klíče vzor](#compound-key-pattern) -použití složené **RowKey** hodnoty, aby klient k vyhledání souvisejících dat pomocí dotazu jediný bod.  
-* [Vzor protokolu poškozené databáze](#log-tail-pattern) -načíst  *n*  entity naposledy přidané do oddílu pomocí **RowKey** hodnotu, která seřadí zpětné datum a čas pořadí.  
+* [Vzor protokolu poškozené databáze](#log-tail-pattern) -načíst *n* entity naposledy přidané do oddílu pomocí **RowKey** hodnotu, která seřadí zpětné datum a čas pořadí.  
 
 ## <a name="encrypting-table-data"></a>Šifrování dat v tabulce
 Klientská knihovna pro úložiště Azure .NET podporuje šifrování vlastnosti entity řetězce pro vložení a nahrazovat operace. Šifrované řetězce jsou uložené ve službě jako binární vlastnosti a převedené zpět do řetězce po dešifrování.    
@@ -443,7 +443,7 @@ Pokud vyhledat rozsahu entit zaměstnanců, můžete zadat rozsah id řazení za
   Všimněte si, že se používá ve výše uvedených příkladech syntaxe filtru je ze služby Table rozhraní REST API, další informace najdete v tématu [dotazu entity](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
-Při rozhodování o tom, jak implementovat tento vzor, zvažte následující body:  
+Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
 * Table storage je relativně levný abyste nároky na náklady na ukládání duplicitních dat nesmí být závažný problém. Však měli vždy vyhodnoceny náklady návrhu na základě požadavků vaší předpokládaného úložiště a přidat pouze duplicitní entity, které podporují dotazy, které budou spuštěny klientské aplikace.  
 * Proto sekundární index entity, které ukládají do stejného oddílu jako původní entity, musíte ověřit nepřekračují cíle škálovatelnosti pro jednotlivé oddíl.  
@@ -456,11 +456,11 @@ Při rozhodování o tom, jak implementovat tento vzor, zvažte následující b
 
 * Je obvykle lepší uložit duplicitní data a ujistěte se, že můžete načíst všechna data, je nutné se jeden dotaz, než chcete použijte jeden dotaz a vyhledejte entitu a druhý k vyhledání požadovaná data.  
 
-#### <a name="when-to-use-this-pattern"></a>Kdy použít tento vzor
+#### <a name="when-to-use-this-pattern"></a>Kdy se má tento model použít
 Tento vzor použijte, když klientské aplikace potřebuje k načtení entity pomocí různých odlišné klíče, když váš klient potřebuje k načtení entity v jiné pořadí řazení, a tam, kde můžete identifikovat každé entity pomocí různých jedinečné hodnoty. Nicméně byste měli jistotu, že nedošlo k překročení omezení škálovatelnosti oddíl při provádění entity vyhledávání pomocí různými **RowKey** hodnoty.  
 
-#### <a name="related-patterns-and-guidance"></a>Související vzory a pokyny
-Následující pokyny a vzory může být také relevantní při implementaci tohoto vzoru:  
+#### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
+Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Vzor sekundární index mezi oddílů](#inter-partition-secondary-index-pattern)
 * [Složené klíče vzor](#compound-key-pattern)
@@ -497,7 +497,7 @@ Pokud vyhledat rozsahu entit zaměstnanců, můžete zadat rozsah id řazení za
 Všimněte si, že se používá ve výše uvedených příkladech syntaxe filtru je ze služby Table rozhraní REST API, další informace najdete v tématu [dotazu entity](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
-Při rozhodování o tom, jak implementovat tento vzor, zvažte následující body:  
+Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
 * Můžete ponechat duplicitní položky nakonec byl konzistentní mezi sebou pomocí [nakonec byl konzistentní transakce vzor](#eventually-consistent-transactions-pattern) udržovat entity primární a sekundární index.  
 * Table storage je relativně levný abyste nároky na náklady na ukládání duplicitních dat nesmí být závažný problém. Však měli vždy vyhodnoceny náklady návrhu na základě požadavků vaší předpokládaného úložiště a přidat pouze duplicitní entity, které podporují dotazy, které budou spuštěny klientské aplikace.  
@@ -508,11 +508,11 @@ Při rozhodování o tom, jak implementovat tento vzor, zvažte následující b
   ![][11]
 * Je obvykle lepší uložit duplicitní data a ujistěte se, že můžete načíst všechna data, která je nutné se jeden dotaz než chcete použijte jeden dotaz a vyhledejte entitu v primární index sekundární index a druhou pro vyhledávání požadovaná data.  
 
-#### <a name="when-to-use-this-pattern"></a>Kdy použít tento vzor
+#### <a name="when-to-use-this-pattern"></a>Kdy se má tento model použít
 Tento vzor použijte, když klientské aplikace potřebuje k načtení entity pomocí různých odlišné klíče, když váš klient potřebuje k načtení entity v jiné pořadí řazení, a tam, kde můžete identifikovat každé entity pomocí různých jedinečné hodnoty. Použít tento vzor, pokud chcete, aby nedošlo k překročení omezení škálovatelnosti oddíl při provádění entity vyhledávání pomocí různými **RowKey** hodnoty.  
 
-#### <a name="related-patterns-and-guidance"></a>Související vzory a pokyny
-Následující pokyny a vzory může být také relevantní při implementaci tohoto vzoru:  
+#### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
+Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Nakonec byl konzistentní transakce vzor](#eventually-consistent-transactions-pattern)  
 * [Vzor Intra-partition sekundární index](#intra-partition-secondary-index-pattern)  
@@ -549,17 +549,17 @@ Pokud role pracovního procesu nedokončí krok **6**, pak po vypršení časov�
 Některé chyby ze služby Table a Queue jsou přechodné chyby a klientské aplikace by měla obsahovat logiku vhodný opakování a mohli je zpracovat.  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
-Při rozhodování o tom, jak implementovat tento vzor, zvažte následující body:  
+Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
 * Toto řešení neposkytuje pro izolace transakce. Například může číst klienta **aktuální** a **archivu** tabulky, pokud byl roli pracovního procesu mezi kroky **4** a **5**a zobrazit nekonzistentní zobrazení data. Všimněte si, že data bude konzistentní nakonec.  
 * Je nutné zajistit, že jsou kroky 4 a 5 idempotent pro zajištění konzistence typu případné.  
 * Řešení můžete škálovat pomocí více front a instance rolí pracovního procesu.  
 
-#### <a name="when-to-use-this-pattern"></a>Kdy použít tento vzor
+#### <a name="when-to-use-this-pattern"></a>Kdy se má tento model použít
 Tento vzor použijte, pokud chcete zaručit konzistence typu případné mezi entitami, které existují v různých oddílů nebo tabulky. Můžete rozšířit tento vzor pro zajištění konzistence typu případné pro operace napříč služby Table a služby objektů Blob a dalších Azure úložných zdroje dat jako databázi nebo systému souborů.  
 
-#### <a name="related-patterns-and-guidance"></a>Související vzory a pokyny
-Následující pokyny a vzory může být také relevantní při implementaci tohoto vzoru:  
+#### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
+Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Transakce skupiny entity](#entity-group-transactions)  
 * [Sloučení nebo nahradit](#merge-or-replace)  
@@ -623,7 +623,7 @@ Třetí možností použijte index entit, které obsahují následující údaje
 S parametrem třetí nelze použít EGTs můžete zachovat konzistenci, protože index entity, které jsou v samostatném oddílu z entit zaměstnanců. Měli byste zajistit, že index entity, které jsou nakonec byl konzistentní se entity, které zaměstnanec.  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
-Při rozhodování o tom, jak implementovat tento vzor, zvažte následující body:  
+Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
 * Toto řešení vyžaduje alespoň dva dotazy k načtení odpovídající entity: jeden k dotazování indexu entity k získání seznamu **RowKey** hodnoty a pak dotazy k načtení jednotlivých entit v seznamu.  
 * Vzhledem k tomu, že jednotlivé entity má maximální velikost 1 MB, možnost #2 a možnost #3 v řešení předpokládá, že seznam ID zaměstnance pro danou příjmení je nikdy větší než 1 MB. Pokud seznam ID zaměstnance je pravděpodobně být větší než velikost 1 MB, použijte možnost #1 a ukládat data indexu v úložišti objektů blob.  
@@ -631,11 +631,11 @@ Při rozhodování o tom, jak implementovat tento vzor, zvažte následující b
 * Možnost #2 v tomto řešení se předpokládá, že chcete vyhledávat podle příjmení v rámci oddělení: například chcete načíst seznam zaměstnancům příjmení Petr z oddělení prodeje. Pokud chcete být schopni vyhledat všechny zaměstnance se příjmení Petr napříč celou organizaci, použijte možnost #1 nebo možnost #3.
 * Můžete implementovat řešení na základě fronty, který doručí konzistence typu případné (najdete v článku [nakonec byl konzistentní transakce vzor](#eventually-consistent-transactions-pattern) podrobnosti).  
 
-#### <a name="when-to-use-this-pattern"></a>Kdy použít tento vzor
+#### <a name="when-to-use-this-pattern"></a>Kdy se má tento model použít
 Pokud chcete vyhledat sady entit pro všechny sdílené složky běžné hodnotu vlastnosti, například všechny zaměstnance se příjmení Petr, použijte tento vzor.  
 
-#### <a name="related-patterns-and-guidance"></a>Související vzory a pokyny
-Následující pokyny a vzory může být také relevantní při implementaci tohoto vzoru:  
+#### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
+Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Složené klíče vzor](#compound-key-pattern)  
 * [Nakonec byl konzistentní transakce vzor](#eventually-consistent-transactions-pattern)  
@@ -658,16 +658,16 @@ Místo ukládání dat do dvou samostatných entit, denormalize data a ponechat 
 S entitami oddělení uložené s těmito vlastnostmi můžete nyní načíst všechny podrobnosti, které je třeba o použití bodu dotazu oddělení.  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
-Při rozhodování o tom, jak implementovat tento vzor, zvažte následující body:  
+Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
 * Není náklady režie spojená s ukládáním některá data dvakrát. Výhody výkonu (vyplývající z méně požadavků na službu úložiště) většinou převáží okrajového vzrůst náklady na úložiště (a náklady na tento je částečně posunut snížení počtu transakcí, které budete potřebovat načíst podrobnosti o oddělení).  
 * Konzistence dvě entity, které obsahují informace o správcích musí zachovat. Problém konzistence můžete řešit pomocí EGTs aktualizace více entit v rámci jedné transakce atomic: v takovém případě entity oddělení a zaměstnanci entity pro správce oddělení ukládají do stejného oddílu.  
 
-#### <a name="when-to-use-this-pattern"></a>Kdy použít tento vzor
+#### <a name="when-to-use-this-pattern"></a>Kdy se má tento model použít
 Tento vzor použijte, pokud potřebujete často vyhledat související informace. Tento vzor snižuje počet dotazů, které musíte provést načíst data, která vyžaduje vašeho klienta.  
 
-#### <a name="related-patterns-and-guidance"></a>Související vzory a pokyny
-Následující pokyny a vzory může být také relevantní při implementaci tohoto vzoru:  
+#### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
+Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Složené klíče vzor](#compound-key-pattern)  
 * [Transakce skupiny entity](#entity-group-transactions)  
@@ -701,27 +701,27 @@ Následující příklad popisuje, jak můžete načíst všechna data revize pr
 $filter = (PartitionKey eq 'Prodej') a (RowKey ge 'empid_000123') a (RowKey lt 'empid_000124') & $select = RowKey, Manager hodnocení, sdílené hodnocení a komentáře  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
-Při rozhodování o tom, jak implementovat tento vzor, zvažte následující body:  
+Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
 * Měli byste použít vhodný oddělovací znak, který umožňuje snadno rozložit **RowKey** hodnota: například **000123_2012**.  
 * Tuto entitu se také ukládání do stejného oddílu jako jiné entity, které obsahují data v relaci pro stejné zaměstnance, což znamená, že EGTs můžete použít k udržování silnou konzistenci.
 * Měli byste zvážit, jak často bude dotaz na data k určení, zda je tento vzor vhodná.  Například pokud bude mít přístup zřídka zkontrolujte data a data hlavní zaměstnance často byste měli mít je jako samostatné entity.  
 
-#### <a name="when-to-use-this-pattern"></a>Kdy použít tento vzor
+#### <a name="when-to-use-this-pattern"></a>Kdy se má tento model použít
 Tento vzor použijte, pokud je třeba uložit jeden nebo více související entity dotazu často.  
 
-#### <a name="related-patterns-and-guidance"></a>Související vzory a pokyny
-Následující pokyny a vzory může být také relevantní při implementaci tohoto vzoru:  
+#### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
+Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Transakce skupiny entity](#entity-group-transactions)  
 * [Práce s typy heterogenní entit](#working-with-heterogeneous-entity-types)  
 * [Nakonec byl konzistentní transakce vzor](#eventually-consistent-transactions-pattern)  
 
 ### <a name="log-tail-pattern"></a>Vzor protokolu poškozené databáze
-Načtení  *n*  entity naposledy přidané do oddílu pomocí **RowKey** hodnotu, která seřadí zpětné datum a čas pořadí.  
+Načtení *n* entity naposledy přidané do oddílu pomocí **RowKey** hodnotu, která seřadí zpětné datum a čas pořadí.  
 
 #### <a name="context-and-problem"></a>Kontext a problém
-Běžným požadavkem je možné načíst nedávno vytvořených entity, například nejnovější deset výdaje odeslaný zaměstnanec deklarací identity. Tabulka dotazuje podporu **$top** dotaz operace vrátit první  *n*  entit ze sady: neprobíhá žádná operace ekvivalentní dotaz vrátit poslední n entity v sadě.  
+Běžným požadavkem je možné načíst nedávno vytvořených entity, například nejnovější deset výdaje odeslaný zaměstnanec deklarací identity. Tabulka dotazuje podporu **$top** dotaz operace vrátit první *n* entit ze sady: neprobíhá žádná operace ekvivalentní dotaz vrátit poslední n entity v sadě.  
 
 #### <a name="solution"></a>Řešení
 Ukládání entit, použití **RowKey** že přirozeně seřadí v pořadí zpětné datum a čas pomocí tak poslední položka je vždy první z nich v tabulce.  
@@ -739,16 +739,16 @@ Dotaz tabulky vypadá takto:
 `https://myaccount.table.core.windows.net/EmployeeExpense(PartitionKey='empid')?$top=10`  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
-Při rozhodování o tom, jak implementovat tento vzor, zvažte následující body:  
+Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
 * Musí odsadí zpětné značek hodnotu s úvodní nuly zajistit, že řetězcovou hodnotu seřadí podle očekávání.  
 * Musíte být vědomi škálovatelnost cílů na úrovni oddílu. Dávejte pozor, vytváření oddílů aktivního bodu.  
 
-#### <a name="when-to-use-this-pattern"></a>Kdy použít tento vzor
+#### <a name="when-to-use-this-pattern"></a>Kdy se má tento model použít
 Tento vzor použijte, pokud budete potřebovat pro přístup k entity v pořadí zpětné datum a čas nebo když potřebujete přístup k nedávno přidané entity.  
 
-#### <a name="related-patterns-and-guidance"></a>Související vzory a pokyny
-Následující pokyny a vzory může být také relevantní při implementaci tohoto vzoru:  
+#### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
+Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Předřadit / append proti vzor](#prepend-append-anti-pattern)  
 * [Načtení entit](#retrieving-entities)  
@@ -769,18 +769,18 @@ Tento přístup zabraňuje hotspotům oddílu, protože aplikace můžete vloži
 Do samostatné tabulky použijte pro každý den pokusů o přihlášení. Výše uvedený návrh entit můžete vyhnout hotspotům při vkládání entity a odstranění starší entity je nyní prostě odstranění jedna tabulka každý den (jedno úložiště operace) namísto hledání a odstraňování stovky a tisíce jednotlivých přihlášení entity každý den.  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
-Při rozhodování o tom, jak implementovat tento vzor, zvažte následující body:  
+Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
 * Podporuje váš návrh další způsoby, které vaše aplikace bude používat data, jako je například vyhledávání konkrétních entit, propojení s jinými data nebo informace o generování agregační?  
 * Návrhu vyhnout aktivní body při vkládání nové entity  
 * Pokud chcete po odstranění ho znovu použít stejný název tabulky očekávají, že ke zpoždění. Je lepší vždy nutné použít názvy jedinečné tabulky.  
 * Očekávají, že některé omezení při prvním použití nové tabulky při služby Table zjišťuje přístupové vzorce a distribuuje oddíly mezi uzly. Měli byste zvážit, jak často budete muset vytvořit nové tabulky.  
 
-#### <a name="when-to-use-this-pattern"></a>Kdy použít tento vzor
+#### <a name="when-to-use-this-pattern"></a>Kdy se má tento model použít
 Tento vzor použijte, když máte k velkému počtu entit, které je nutné odstranit ve stejnou dobu.  
 
-#### <a name="related-patterns-and-guidance"></a>Související vzory a pokyny
-Následující pokyny a vzory může být také relevantní při implementaci tohoto vzoru:  
+#### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
+Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Transakce skupiny entity](#entity-group-transactions)
 * [Úprava entity](#modifying-entities)  
@@ -803,16 +803,16 @@ Použijte následující návrh s samostatné vlastností pro uložení počet z
 V tomto návrhu můžete aktualizovat počet zpráv pro zaměstnance pro zadané hodiny operace sloučení. Teď můžete načíst všechny informace, které potřebujete k vykreslení grafu pomocí žádosti pro jednu entitu.  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
-Při rozhodování o tom, jak implementovat tento vzor, zvažte následující body:  
+Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
 * Pokud dokončení datové řady nevejde do jedné entity (entita může mít až 252 vlastností), použijte alternativní úložišti například objekt blob.  
 * Pokud máte víc klientů současně aktualizaci entity, budete muset použít **značka ETag** implementovat optimistickou metodu souběžného. Pokud máte mnoho klientů, můžete se setkat vysoké kolizí.  
 
-#### <a name="when-to-use-this-pattern"></a>Kdy použít tento vzor
+#### <a name="when-to-use-this-pattern"></a>Kdy se má tento model použít
 Tento vzor použijte, pokud je potřeba aktualizovat a načíst data řady přidružené jednotlivých entit.  
 
-#### <a name="related-patterns-and-guidance"></a>Související vzory a pokyny
-Následující pokyny a vzory může být také relevantní při implementaci tohoto vzoru:  
+#### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
+Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Vzor velkých entit](#large-entities-pattern)  
 * [Sloučení nebo nahradit](#merge-or-replace)  
@@ -832,15 +832,15 @@ Pomocí služby Table, můžete uložit více entit představují objekt jeden v
 Pokud potřebujete provést změnu, která vyžaduje aktualizaci obě entity k jejich synchronizovány mezi sebou můžete použít EGT. Jinak operace sloučení jednoho můžete aktualizovat počet zpráv pro určitý den. Načíst všechna data pro jednotlivé zaměstnance musí načíst obě entity, které můžete provést dva efektivní požadavky, které používají oba **PartitionKey** a **RowKey** hodnotu.  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
-Při rozhodování o tom, jak implementovat tento vzor, zvažte následující body:  
+Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
 * Načítání dokončení logická entita zahrnuje alespoň dva transakce úložiště: jeden pro načtení jednotlivých fyzická entita.  
 
-#### <a name="when-to-use-this-pattern"></a>Kdy použít tento vzor
+#### <a name="when-to-use-this-pattern"></a>Kdy se má tento model použít
 Použijte tento vzor, kdy je nutné uložit entity, jejichž velikost nebo počet vlastností přesahuje omezení pro jednotlivé entity ve službě Table.  
 
-#### <a name="related-patterns-and-guidance"></a>Související vzory a pokyny
-Následující pokyny a vzory může být také relevantní při implementaci tohoto vzoru:  
+#### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
+Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Transakce skupiny entity](#entity-group-transactions)
 * [Sloučení nebo nahradit](#merge-or-replace)
@@ -857,16 +857,16 @@ Pokud vaší entity překračuje 1 MB velikost, protože jeden nebo více vlastn
 ![][25]
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
-Při rozhodování o tom, jak implementovat tento vzor, zvažte následující body:  
+Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
 * K zajištění konzistence typu případné mezi entity ve službě Table a data ve službě Blob, použít [nakonec byl konzistentní transakce vzor](#eventually-consistent-transactions-pattern) zachování vaší entity.
 * Načítání úplnou entitu zahrnuje alespoň dva transakce úložiště: jeden pro načtení entity a jeden pro načtení dat objektů blob.  
 
-#### <a name="when-to-use-this-pattern"></a>Kdy použít tento vzor
+#### <a name="when-to-use-this-pattern"></a>Kdy se má tento model použít
 Pokud budete potřebovat k ukládání entit, jehož velikost překračuje omezení pro jednotlivé entity ve službě Table, použijte tento vzor.  
 
-#### <a name="related-patterns-and-guidance"></a>Související vzory a pokyny
-Následující pokyny a vzory může být také relevantní při implementaci tohoto vzoru:  
+#### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
+Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Nakonec byl konzistentní transakce vzor](#eventually-consistent-transactions-pattern)  
 * [Vzor široké entity](#wide-entities-pattern)
@@ -889,16 +889,16 @@ Následující strukturu alternativní entity zabraňuje v žádné konkrétní 
 Všimněte si tento příklad jak oba **PartitionKey** a **RowKey** jsou složeného klíče. **PartitionKey** využívá id oddělení i zaměstnanců k distribuci protokolování napříč více oddílů.  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
-Při rozhodování o tom, jak implementovat tento vzor, zvažte následující body:  
+Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
 * Podporuje alternativní klíče struktura, která zabraňuje vytváření aktivní oddíly na vložení efektivní dotazy, které provede klientské aplikace?  
 * Předpokládaného svazku transakcí znamená, že budete chtít nejspíš k dosažení cíle škálovatelnosti pro jednotlivé oddíl a omezeny službou úložiště?  
 
-#### <a name="when-to-use-this-pattern"></a>Kdy použít tento vzor
+#### <a name="when-to-use-this-pattern"></a>Kdy se má tento model použít
 Připojit/prepend proti vzor Vyhněte se při svazku transakcí je pravděpodobné, aby výsledkem omezení pomocí služby úložiště při přístupu k aktivní oddíl.  
 
-#### <a name="related-patterns-and-guidance"></a>Související vzory a pokyny
-Následující pokyny a vzory může být také relevantní při implementaci tohoto vzoru:  
+#### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
+Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Složené klíče vzor](#compound-key-pattern)  
 * [Vzor protokolu poškozené databáze](#log-tail-pattern)  
@@ -1118,7 +1118,7 @@ Služba Table je *bez schématu* tabulky úložiště, která znamená, že na j
 <table>
 <tr>
 <th>FirstName</th>
-<th>Příjmení</th>
+<th>LastName</th>
 <th>Věk</th>
 <th>E-mail</th>
 </tr>
@@ -1138,7 +1138,7 @@ Služba Table je *bez schématu* tabulky úložiště, která znamená, že na j
 <table>
 <tr>
 <th>FirstName</th>
-<th>Příjmení</th>
+<th>LastName</th>
 <th>Věk</th>
 <th>E-mail</th>
 </tr>
@@ -1175,7 +1175,7 @@ Služba Table je *bez schématu* tabulky úložiště, která znamená, že na j
 <table>
 <tr>
 <th>FirstName</th>
-<th>Příjmení</th>
+<th>LastName</th>
 <th>Věk</th>
 <th>E-mail</th>
 </tr>
@@ -1211,7 +1211,7 @@ Všimněte si, že každá entita musí mít dál **PartitionKey**, **RowKey**, 
 <tr>
 <th>EntityType</th>
 <th>FirstName</th>
-<th>Příjmení</th>
+<th>LastName</th>
 <th>Věk</th>
 <th>E-mail</th>
 </tr>
@@ -1233,7 +1233,7 @@ Všimněte si, že každá entita musí mít dál **PartitionKey**, **RowKey**, 
 <tr>
 <th>EntityType</th>
 <th>FirstName</th>
-<th>Příjmení</th>
+<th>LastName</th>
 <th>Věk</th>
 <th>E-mail</th>
 </tr>
@@ -1274,7 +1274,7 @@ Všimněte si, že každá entita musí mít dál **PartitionKey**, **RowKey**, 
 <tr>
 <th>EntityType</th>
 <th>FirstName</th>
-<th>Příjmení</th>
+<th>LastName</th>
 <th>Věk</th>
 <th>E-mail</th>
 </tr>

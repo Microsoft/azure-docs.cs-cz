@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1c6712eaf17cf55c1422baca355ce99ed319df28
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9626b3caaa7188a4e9a37f83d1fbf091951714f4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Řešení chyb neplatný šablony
 
@@ -38,6 +38,8 @@ Chybová zpráva, závisí na typu chyby.
 
 Tato chyba může způsobit z několika různých typů chyb. Obvykle zahrnují syntaxe nebo strukturální chyby v šabloně.
 
+<a id="syntax-error" />
+
 ## <a name="solution-1---syntax-error"></a>Řešení 1 - Chyba syntaxe
 
 Pokud se zobrazí chybovou zprávu, která určuje ověření šablony se nezdařilo, bude pravděpodobně problém syntaxe ve vaší šabloně.
@@ -56,6 +58,8 @@ Tato chyba je snadné provést, protože může být složité výrazy šablony.
 Pokud nezadáte syntaxe porovnávání, vytvoří šablona hodnotu, která se liší od svůj záměr.
 
 Po zobrazení tohoto typu chyby, pečlivě zkontrolujte syntaxi výrazu. Zvažte použití editor JSON jako [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) nebo [Visual Studio Code](resource-manager-vs-code.md), která vás upozorní chyby syntaxe.
+
+<a id="incorrect-segment-lengths" />
 
 ## <a name="solution-2---incorrect-segment-lengths"></a>Řešení 2 – nesprávný segment délky
 
@@ -116,6 +120,8 @@ Získávání segmentů správné může být složité s typy Resource Manager,
 }
 ```
 
+<a id="parameter-not-valid" />
+
 ## <a name="solution-3---parameter-is-not-valid"></a>Řešení 3 – parametr není platný
 
 Pokud zadáte hodnotu parametru, který není jedním z povolených hodnot, zobrazí se zpráva podobná následující chybě:
@@ -129,9 +135,13 @@ part of the allowed values
 
 Double zkontrolujte povolené hodnoty v šabloně a zadejte jeden během nasazení. Další informace o povolených parametr hodnoty, najdete v části [oddílu parametry šablon Azure Resource Manager](resource-manager-templates-parameters.md).
 
+<a id="too-many-resource-groups" />
+
 ## <a name="solution-4---too-many-target-resource-groups"></a>Řešení 4 - příliš mnoho skupin prostředků cíle
 
 Pokud zadáte více než pět skupin prostředků cíle v jednom nasazení, zobrazí tato chyba. Zvažte buď konsolidace počet skupin prostředků ve vašem nasazení nebo nasazení některé šablony jako samostatná nasazení. Další informace najdete v tématu [prostředky Azure nasazení na více než jedno předplatné nebo skupinu prostředků](resource-manager-cross-resource-group-deployment.md).
+
+<a id="circular-dependency" />
 
 ## <a name="solution-5---circular-dependency-detected"></a>Řešení 5 - cyklická závislost zjistil
 

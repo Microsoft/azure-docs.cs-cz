@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3ea1687e7fb6cc7af00e03b85fb48b0d7911275
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: e205352ebf4eaf89627c268d78b69bb2d49c3f3e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Monitorování a Diagnostika pomocí šablony virtuálního počítače s Windows a Azure Resource Manager
 Rozšíření diagnostiky Azure poskytuje monitorovací a diagnostické funkce v systému Windows Azure virtuálního počítače. Tyto funkce na virtuálním počítači můžete povolit v rámci šablony Azure Resource Manageru, přiložením rozšíření. V tématu [vytváření šablon Azure Resource Manager pomocí rozšíření virtuálního počítače](template-description.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#extensions) Další informace o včetně všechna rozšíření v rámci šablony virtuálního počítače. Tento článek popisuje, jak přidat rozšíření Azure Diagnostics do šablony virtuálního počítače windows.  
@@ -152,7 +152,7 @@ Pokud vytváříte více virtuálních počítačů ve smyčce, máte k naplněn
 "xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), concat(parameters('vmNamePrefix'), copyindex()), variables('wadcfgxend')))]", 
 ```
 
-Hodnota MetricAggregation *PT1H* a *PT1M* označily agregace za minutu a agregace přes hodinu.
+Hodnota MetricAggregation *PT1M* a *PT1H* označily agregace za minutu a agregace přes hodinu, v uvedeném pořadí.
 
 ## <a name="wadmetrics-tables-in-storage"></a>WADMetrics tabulek v úložišti
 Výše uvedené metriky konfigurace generuje tabulky ve vašem účtu úložiště diagnostiky s následující názvové konvence:
@@ -168,7 +168,7 @@ Příklad: *WADMetricsPT1HP10DV2S20151108* budou obsahovat data metriky agregova
 Každá tabulka WADMetrics bude obsahovat následující sloupce:
 
 * **PartitionKey**: klíč oddílu je sestavený na základě *resourceID* hodnotu k jednoznačné identifikaci prostředků virtuálního počítače. Příklad: 002Fsubscriptions:<subscriptionID>: 002FresourceGroups:002F<ResourceGroupName>: 002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>  
-* **RowKey**: strukturu `<Descending time tick>:<Performance Counter Name>`. Sestupné značek výpočet doby je maximální doba rysky minus čas začátku období agregace. Pokud například na 10. listopadu 2015 spustit ukázkový období a 00:00Hrs UTC pak výpočet by: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. Pro paměť bajty k dispozici čítače výkonu klíč řádku bude vypadat jako:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **RowKey**: strukturu `<Descending time tick>:<Performance Counter Name>`. Sestupné značek výpočet doby je maximální doba rysky minus čas začátku období agregace. Pokud například na 10. listopadu 2015 spustit ukázkový období a 00:00Hrs UTC pak výpočet by: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. Pro paměť bajty k dispozici čítače výkonu klíč řádku bude vypadat jako: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **Název_čítače**: název čítače výkonu. To odpovídá *counterSpecifier* definované v xml konfigurace.
 * **Maximální**: maximální hodnota čítače výkonu období agregace.
 * **Minimální**: minimální hodnota čítače výkonu období agregace.

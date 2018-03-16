@@ -2,23 +2,18 @@
 title: "Začínáme s úlohami elastické databáze | Microsoft Docs"
 description: "Spuštění skriptů T-SQL, které jsou rozmístěny v několika databází pomocí úlohy elastické databáze."
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-ms.assetid: 2540de0e-2235-4cdd-9b6a-b841adba00e5
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
-ms.author: ddove
-ms.openlocfilehash: c5fe5256d4a8b8479f5e4aff95ec03fc1ba1018a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: sstein
+ms.openlocfilehash: 5d55ae225ca1b550bbf70314e2f48fc0161ad107
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Začínáme s úlohami elastické databáze
 Elastické databáze úlohy (preview) pro databázi SQL Azure umožňuje spolehlivě spuštění skriptů T-SQL, které jsou rozmístěny v několika databází při automaticky opakování a poskytování případné dokončení záruky. Další informace o funkci úlohy elastické databáze najdete v tématu [elastické úlohy](sql-database-elastic-jobs-overview.md).
@@ -461,7 +456,7 @@ Odebrat aktivační události úlohy zastavení úlohy z se spouští podle plá
 
 Všechny řádky z **zákazníci** tabulky, uložené v různých horizontálních oddílů naplnit listu aplikace Excel.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď můžete použít funkce dat v aplikaci Excel. Použijte připojovací řetězec s názvem serveru, názvu databáze a pověření pro připojení k databázi elastické dotazu vaše integrace nástrojů BI a data. Ujistěte se, že systém SQL Server je podporovaný jako zdroj dat pro vaše nástroje. Viz elastické dotaz do databáze a externí tabulky stejně jako všechny ostatní databáze systému SQL Server a SQL Server tabulky, které by se připojit k vaší nástrojem.
 
 ### <a name="cost"></a>Náklady

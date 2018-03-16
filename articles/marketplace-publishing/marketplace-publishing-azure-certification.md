@@ -3,8 +3,8 @@ title: "Získat předem schválené prostřednictvím programu Microsoft Azure c
 description: "Další informace o programu partnera Microsoft Azure Certified a jak získat prodej bitovou kopii virtuálního počítače, šablony řešení, vývojáře služby nebo dat služby v Azure Marketplace"
 services: marketplace-publishing
 documentationcenter: na
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 tags: 
 ms.assetid: 7e9ebf17-07a1-4796-921f-d1d62046892d
@@ -14,15 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
-ms.author: hascipio
-ms.openlocfilehash: aadc695b1f07d04f1fcc7f2f2e3ff90fb7f54849
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 6db5c8dc6aba4246b3672cf7931a266b26ad11db
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>Získat předem schválené prostřednictvím programu Microsoft Azure Certified
-Tento článek obsahuje pokyny k certifikaci Microsoft Azure, aby mohli publikovat řešení do Azure Marketplace a kvalifikaci pro marketing výhody. Podrobný přehled o programu Microsoft Azure Certified a jeho výhody, najdete v článku [http://azure.com/certified](http://azure.com/certified).
+Tento článek obsahuje pokyny k certifikaci Microsoft Azure, aby mohli publikovat řešení do Azure Marketplace a kvalifikaci pro marketing výhody. Podrobný přehled o programu Microsoft Azure Certified a jeho výhody, najdete v článku [ http://azure.com/certified ](http://azure.com/certified).
 
 > [!IMPORTANT]
 > Azure certifikační lze použít pouze v případě, že se chystáte vytvořit virtuální počítač nebo šablonu řešení pro Azure Marketplace.
@@ -39,5 +39,5 @@ Tento článek obsahuje pokyny k certifikaci Microsoft Azure, aby mohli publikov
 ## <a name="next-step"></a>Další krok
 Po schválení před jste dostali od programu Microsoft Azure certifikaci, můžete přejít k [zaregistrovat svůj účet Microsoft jako prodejce Microsoft](marketplace-publishing-accounts-creation-registration.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Začínáme: postup publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md)

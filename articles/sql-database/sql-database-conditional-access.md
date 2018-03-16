@@ -9,12 +9,11 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: mireks
-ms.workload: Inactive
-ms.openlocfilehash: b1c569e414de292b59e0915483d45bf011edb1a6
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: f32928805275c9d797c8cb15bb731fe172d5903f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Podmíněný přístup (MFA) s Azure SQL Database a datového skladu  
 

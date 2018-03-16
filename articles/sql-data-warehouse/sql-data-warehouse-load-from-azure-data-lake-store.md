@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 12/14/2017
+ms.date: 3/14/2018
 ms.author: cakarst;barbkess
-ms.openlocfilehash: a2a7d15eb51374b828d1d641e0e6754115f7aaf6
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: f8cd293236255e227f80a42e78d25aebd8789bdd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Načtení dat z Azure Data Lake Store do SQL Data Warehouse
 Tento dokument poskytuje všechny kroky nutné k načtení dat z Azure Data Lake Store (ADLS) do SQL Data Warehouse pomocí PolyBase.
-Zatímco budete moci spouštět dotazy ad hoc přes data uložená v ADLS pomocí externí tabulky, jako osvědčený postup doporučujeme importu dat do SQL Data Warehouse.
+Zatímco budete moci spouštět dotazy ad hoc přes data uložená v ADLS pomocí externí tabulky, doporučujeme importu dat do SQL Data Warehouse pro nejlepší výkon.
 
 V tomto kurzu se dozvíte, jak:
 
-1. Vytváření objektů externí databáze načíst z Azure Data Lake Store.
+1. Vytvořte databázové objekty nezbytné načítat z Azure Data Lake Store.
 2. Připojení k adresáři Azure Data Lake Store.
 3. Načtení dat do Azure SQL Data Warehouse.
 
@@ -42,14 +42,14 @@ Chcete-li spustit tento kurz, je třeba:
 
 * SQL Server Management Studio nebo SQL Server Data Tools a stáhnout aplikaci SSMS připojení najdete v části [dotazu SSMS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)
 
-* Azure SQL Data Warehouse, chcete-li vytvořit jeden postupujte podle: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision _
+* Azure SQL Data Warehouse, chcete-li vytvořit jeden postupujte podle: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
 
-* Azure Data Lake Store, vytvoření jeden postupujte podle: https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
+* Azure Data Lake Store, vytvoření jeden postupujte podle kroků: https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
 
 
 ###  <a name="create-a-credential"></a>Vytvoření přihlašovacích údajů
 Pro přístup k Azure Data Lake Store, musíte vytvořit hlavní klíč databáze pro zašifrování váš tajný klíč pověření použít v dalším kroku.
-Pak vytvořte přihlašovací údaje databáze obor, který ukládá hlavní přihlašovací údaje služby nastavit v AAD. Pro ty z vás kdo PolyBase použili pro připojení k systému Windows Azure Storage Blobs syntaxe přihlašovacích údajů se liší.
+Pak vytvořte obor přihlašovací údaje databáze, která ukládá hlavní přihlašovací údaje služby nastavit v AAD. Pro ty z vás kdo PolyBase použili pro připojení k systému Windows Azure Storage Blobs syntaxe přihlašovacích údajů se liší.
 Abyste mohli připojit k Azure Data Lake Store, musíte **první** vytvoření aplikace Azure Active Directory, vytvořte přístupový klíč a udělit aplikaci přístup k prostředku Azure Data Lake. Pokyny k provedení těchto kroků jsou umístěné [zde](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory).
 
 ```sql
@@ -82,7 +82,7 @@ WITH
 
 
 ### <a name="create-the-external-data-source"></a>Vytvoření externího zdroje dat.
-Použít [vytvořit externí zdroj dat] [ CREATE EXTERNAL DATA SOURCE] příkazu umístění dat úložiště. Chcete-li najít identifikátor URI ADL na portálu Azure, přejděte do Azure Data Lake Store a podívejte se na panelu Essentials.
+Použít [vytvořit externí zdroj dat] [ CREATE EXTERNAL DATA SOURCE] příkazu umístění dat úložiště. 
 
 ```sql
 -- C: Create an external data source
@@ -99,8 +99,8 @@ WITH (
 ```
 
 ## <a name="configure-data-format"></a>Konfigurovat formát dat
-Pro import dat z ADLS, budete muset zadat External File Format. Tento příkaz má formát specifické možnosti popisují vaše data.
-Podívejte se na dokumentaci T-SQL pro úplný seznam [vytvořit EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT]
+Pro import dat z ADLS, budete muset zadat External File Format. Tento objekt definuje, jak tyto soubory jsou zapsány v ADLS.
+Úplný seznam najdete v dokumentaci T-SQL [vytvořit EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT]
 
 ```sql
 -- D: Create an external file format
@@ -157,7 +157,7 @@ Pokud řádek neodpovídá definici schématu, řádek byl odmítnut z zatížen
 
 Možnosti REJECT_TYPE a REJECT_VALUE umožňují definovat, kolik řádků nebo jaké procento dat musí být v posledním tabulce. Během procesu načítání Pokud je dosaženo hodnoty odmítněte, zatížení se nezdaří. Nejčastější příčinou odmítnutých řádků je neshody definice schématu. Například pokud sloupec je nesprávně zadána schéma int, když jsou data v souboru řetězec, každý řádek nebude možné načíst.
 
- Azure Data Lake store využívá k řízení přístupu k datům na základě řízení přístupu Role (RBAC). To znamená, že objekt služby musí mít oprávnění ke čtení adresáře definované v parametru umístění a podřízené objekty daného konečné adresář a soubory. To umožňuje PolyBase k ověřování a spouštění číst data. 
+ Azure Data Lake store využívá k řízení přístupu k datům na základě řízení přístupu Role (RBAC). To znamená, že objekt služby musí mít oprávnění ke čtení adresáře definované v parametru umístění a podřízené objekty daného konečné adresář a soubory. To umožňuje PolyBase k ověření a načíst data. 
 
 ## <a name="load-the-data"></a>Načtení dat
 Načtení dat z Azure Data Lake Store pomocí [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] příkaz. 
@@ -201,7 +201,7 @@ V následujícím příkladu je to dobrý výchozí bod pro vytvoření statisti
 Úspěšně jste načetli data do Azure SQL Data Warehouse. Skvělá práce!
 
 ## <a name="next-steps"></a>Další kroky
-Načítání dat je prvním krokem k vývoji řešení datového skladu pomocí SQL Data Warehouse. Podívejte se na naše vývoj prostředky na [tabulky](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview) a [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops.md).
+Načítání dat je prvním krokem k vývoji řešení datového skladu pomocí SQL Data Warehouse. Podívejte se na naše vývoj prostředky na [tabulky](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview) a [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops).
 
 
 <!--Image references-->

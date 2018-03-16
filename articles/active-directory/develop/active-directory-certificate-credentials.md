@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: d05456912324c06a0895cd4cf049b60c9d126904
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 68de6295b84385f54eaadd6d24e8309a32fae9ce
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Přihlašovací údaje certifikátu pro ověřování aplikace
 
@@ -32,7 +32,7 @@ Vypočítat kontrolní výraz, budete pravděpodobně chtít použít jednu z da
 #### <a name="header"></a>Záhlaví
 
 | Parametr |  Poznámka |
-| --- | --- | --- |
+| --- | --- |
 | `alg` | Musí být **RS256** |
 | `typ` | Musí být **JWT** |
 | `x5t` | Musí být kryptografický otisk certifikátu X.509 SHA-1 |
@@ -40,8 +40,8 @@ Vypočítat kontrolní výraz, budete pravděpodobně chtít použít jednu z da
 #### <a name="claims-payload"></a>Deklarace identity (datovou část)
 
 | Parametr |  Poznámka |
-| --- | --- | --- |
-| `aud` | Cílová skupina: By měla být **https://login.microsoftonline.com/*tenant_Id*  /oauth2/token** |
+| --- | --- |
+| `aud` | Cílová skupina: By měla být  **https://login.microsoftonline.com/ *tenant_Id*  /oauth2/token** |
 | `exp` | Datum vypršení platnosti: datum vypršení platnosti tokenu. Čas je reprezentován jako počet sekund od 1. ledna 1970 (pod hodnotou 1970-01-01T0:0:0Z) UTC až do okamžiku vypršení platnosti tokenu.|
 | `iss` | Vystavitel: by měla být client_id (Id aplikace služby klienta) |
 | `jti` | Identifikátor GUID: JWT ID |
@@ -49,9 +49,11 @@ Vypočítat kontrolní výraz, budete pravděpodobně chtít použít jednu z da
 | `sub` | Předmět: jako u `iss`, by měla být client_id (Id aplikace služby klienta) |
 
 #### <a name="signature"></a>Podpis
+
 Podpis je počítaný použití certifikátu, jak je popsáno v [JSON Web Token RFC7519 specifikace](https://tools.ietf.org/html/rfc7519)
 
 ### <a name="example-of-a-decoded-jwt-assertion"></a>Příklad dekódované assertion JWT
+
 ```
 {
   "alg": "RS256",
@@ -73,6 +75,7 @@ Podpis je počítaný použití certifikátu, jak je popsáno v [JSON Web Token 
 ```
 
 ### <a name="example-of-an-encoded-jwt-assertion"></a>Příklad kódovaného JWT kontrolní výrazy
+
 Následující řetězec je příkladem kódovaného kontrolní výraz. Pokud se podíváte pečlivě, jste si všimli tři části oddělený tečkami (.).
 V první části kóduje záhlaví, druhý datové části a poslední je podpis počítaný s certifikáty z obsahu první dva oddíly.
 ```
@@ -81,14 +84,17 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
 ### <a name="register-your-certificate-with-azure-ad"></a>Zaregistrujte svůj certifikát s Azure AD
+
 Pokud chcete přiřadit certifikát přihlašovacích údajů klientská aplikace ve službě Azure AD, budete muset upravit manifest aplikace.
 S podržení certifikát, je třeba k výpočtu:
+
 - `$base64Thumbprint`, což je Base64, pomocí kódování hodnota Hash certifikátu
 - `$base64Value`, což je Base64, pomocí kódování nezpracovaná data certifikátu
 
-také musíte zadat identifikátor GUID k identifikaci klíče v manifest aplikace (`$keyId`)
+Také musíte zadat identifikátor GUID k identifikaci klíče v manifest aplikace (`$keyId`).
 
 V registraci aplikace Azure pro klientskou aplikaci, otevřete manifest aplikace a nahradit *keyCredentials* vlastnost s vaší nové informace o certifikátu pomocí následující schématu:
+
 ```
 "keyCredentials": [
     {

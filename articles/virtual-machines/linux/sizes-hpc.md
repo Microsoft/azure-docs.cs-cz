@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.date: 03/15/2018
 ms.author: jonbeck
-ms.openlocfilehash: cdfd09d90be9696dacc151e138920944c8bbd2c9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5f867140981649b73bf6d0bc13eca539c7dc2209
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Vysoký výkon výpočetní velikostí virtuálních počítačů
 
@@ -29,12 +29,11 @@ ms.lasthandoff: 02/09/2018
 
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
-## <a name="rdma-capable-instances"></a>RDMA podporovat instancí
-Podmnožinu náročné instance (H16r, H16mr, NC24r, A8 a A9) funkce síťové rozhraní pro připojení do paměti vzdáleného přímý přístup do (počítače RDMA). Toto rozhraní je kromě standardní Azure síťové rozhraní, které jsou dostupné další velikosti virtuálních počítačů. 
-  
-Toto rozhraní umožňuje podporu rdma instance komunikovat přes síť InfiniBand, provoz se FDR sazby za H16r, H16mr a NC24r virtuální počítače a QDR sazby A8 a A9 virtuálních počítačů. Tyto funkce RDMA může zvýšit škálovatelnost a výkon aplikací rozhraní MPI (Message Passing) spuštěna pod Intel MPI pouze 5.x. Novější verze (2017, 2018) knihovny modulu runtime Intel MPI nejsou kompatibilní s ovladači Azure RDMA.
 
-Nasazení podporující RDMA virtuální počítače ve stejné skupině dostupnosti (při použití modelu nasazení Azure Resource Manager) nebo stejné cloudové služby (při použití modelu nasazení classic). Následují další požadavky na podporu rdma virtuální počítače s Linuxem pro přístup k síti Azure RDMA.
+### <a name="mpi"></a>MPI 
+
+Jsou podporovány pouze verze 5.x Intel MPI. Novější verze (2017, 2018) knihovny modulu runtime Intel MPI nejsou kompatibilní s ovladači Azure Linux RDMA.
+
 
 ### <a name="distributions"></a>Distribuce
  
@@ -50,7 +49,7 @@ Nasazení náročné na výkon virtuálního počítače z jedné bitové kopie 
   sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
   ```
     
-* **Na základě centOS HPC** – na základě CentOS 7.3 HPC, na základě CentOS 7.1 HPC, na základě CentOS 6.8 HPC nebo na základě CentOS verze 6.5 HPC (pro H-series, je doporučeno verze 7.1 nebo novější). RDMA ovladače a Intel MPI 5.1 jsou nainstalovány ve virtuálním počítači.  
+* **Na základě centOS HPC** – na základě CentOS verze 6.5 HPC nebo novější (pro H-series, je doporučeno verze 7.1 nebo novější). RDMA ovladače a Intel MPI 5.1 jsou nainstalovány ve virtuálním počítači.  
  
   > [!NOTE]
   > Na základě CentOS HPC Image, jsou zakázané jádra aktualizace v **yum** konfigurační soubor. Je to proto, že jsou ovladače Linux RDMA distribuován jako balíček RPM a aktualizací ovladače nemusí fungovat, pokud se aktualizuje jádra.
@@ -63,7 +62,8 @@ Konfigurace dalších systému je potřeba k spouštění úloh MPI na clusterov
 ### <a name="network-topology-considerations"></a>Aspekty topologie sítě
 * Na podporou RDMA virtuální počítače s Linuxem v Azure je Eth1 vyhrazený pro RDMA síťový provoz. Neměňte nastavení Eth1 nebo jakékoli informace v souboru konfigurace odkazující na tuto síť. Eth0 je vyhrazený pro regulární Azure síťový provoz.
 
-* V Azure není podporována IP přes InfiniBand (IB). Je podporován pouze RDMA přes IB.
+* RDMA sítě v Azure si vyhrazuje 172.16.0.0/16 prostor adres. 
+
 
 ## <a name="using-hpc-pack"></a>Pomocí sady HPC Pack
 [HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), volné HPC clusteru a úlohy řešení správy společnosti Microsoft, je jednou z možností budete moci použít náročné instancí operačního systému Linux. Nejnovější verze sady HPC Pack podporu několik distribucí Linux ke spuštění na výpočetních uzlech nasazené ve virtuálních počítačích Azure, spravuje hlavního uzlu systému Windows Server. S podporou RDMA Linux výpočetní uzly systémem Intel MPI HPC Pack můžete naplánovat a spustit Linux MPI aplikace, které přístup k síti RDMA. V tématu [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](classic/hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
@@ -76,7 +76,7 @@ Konfigurace dalších systému je potřeba k spouštění úloh MPI na clusterov
 - [GPU](../windows/sizes-gpu.md)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Abyste mohli začít, nasazení a používání náročné velikosti s RDMA v systému Linux, najdete v části [nastavení clusteru s podporou Linux RDMA ke spuštění aplikací MPI](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 

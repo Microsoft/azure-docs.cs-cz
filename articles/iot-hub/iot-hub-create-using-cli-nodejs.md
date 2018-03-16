@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: boltean
-ms.openlocfilehash: 5e37c6c5e8625ce446ab203f19f9a8b2f1cd5a46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ad0efeeacbdb5dd0185c6336e9bf0e4d7937c99
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Vytvoření služby IoT hub pomocí rozhraní příkazového řádku Azure
 
@@ -88,9 +88,9 @@ azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u
 ```
 
 * **Skupina prostředků**. Název skupiny prostředků. Formát je malá a velká písmena alfanumerické znaky, podtržítka a pomlčky, délka 1-64.
-* **name**. Název služby IoT hub, který se má vytvořit. Formát je malá a velká písmena alfanumerické znaky, podtržítka a pomlčky, délku 3 až 50.
-* **umístění**. Umístění (oblast/datové centrum azure) ke zřízení služby IoT hub.
-* **Název SKU**. Název sku, jeden z: [F1, S1, S2, S3]. Nejnovější úplný seznam naleznete na stránce s cenami pro IoT Hub.
+* **name**. Název služby IoT hub, který se má vytvořit. Formát je malá a velká písmena alfanumerické znaky a spojovníky, délku 3 až 50.
+* **Umístění**. Umístění (oblast/datové centrum azure) ke zřízení služby IoT hub.
+* **sku-name**. Název sku, jeden z: [F1, S1, S2, S3]. Nejnovější úplný seznam naleznete na stránce s cenami pro IoT Hub.
 * **jednotky**. Počet jednotek zřízené. Rozsah: F1 [1-1]: S1, S2 [1 – 200]: [1 – 10] S3. Jednotky služby IoT Hub jsou založené na celkovém počtu zpráv a počet zařízení, které se chcete připojit.
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
@@ -114,7 +114,7 @@ azure iothub create -g exampleResourceGroup -n exampleIoTHubName -l westus -k s1
 > azure iothub delete -g exampleResourceGroup -n exampleIoTHubName
 > ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o vývoji pro IoT Hub, najdete v následujícím článku:
 

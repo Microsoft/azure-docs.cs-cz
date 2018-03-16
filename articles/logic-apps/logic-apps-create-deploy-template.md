@@ -1,10 +1,10 @@
 ---
 title: "Vytvoření nasazení šablon pro Azure Logic Apps | Microsoft Docs"
-description: "Vytváření šablon Azure Resource Manageru pro logic apps nasazení a release management"
+description: "Vytváření šablon Azure Resource Manageru pro nasazování aplikací logiky"
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: jeffhollan
-manager: anneta
+author: ecfan
+manager: SyntaxC4
 editor: 
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.service: logic-apps
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 9cfbb294010d48deaf4b4c78c6a6bcd59a387d87
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: LADocs; estfan
+ms.openlocfilehash: 91d93a02bb9bf48c5bda0304c9d3d52c22e30209
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="create-templates-for-logic-apps-deployment-and-release-management"></a>Vytvoření šablon pro logic apps nasazení a release management
+# <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Vytváření šablon Azure Resource Manageru pro nasazování aplikací logiky
 
 Po vytvoření aplikace logiky můžete chtít vytvořit jako šablonu Azure Resource Manager.
 Tímto způsobem můžete snadno nasadit aplikaci logiky žádné prostředí nebo skupinu prostředků, kde je může být nutné.
@@ -46,7 +46,7 @@ Nebo můžete chtít nasadit v různých předplatných nebo skupiny prostředk�
 
 ## <a name="create-a-logic-app-deployment-template"></a>Vytvoření šablony nasazení aplikace logiky
 
-Nejjednodušší způsob, jak mají šablony nasazení platný logiku aplikace je použití [Visual Studio Tools for Logic Apps](logic-apps-deploy-from-vs.md).
+Nejjednodušší způsob, jak mají šablony nasazení platný logiku aplikace je použití [Visual Studio Tools for Logic Apps](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites).
 Nástroje sady Visual Studio generovat platné nasazení šablonu, která lze použít v rámci žádné předplatné nebo umístění.
 
 Několik dalších nástrojů vám může pomoci při vytváření šablony nasazení aplikace logiky.
@@ -74,10 +74,106 @@ Po instalaci prostředí PowerShell můžete vygenerovat šablonu pomocí násle
 
 `armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp MyApp -ResourceGroup MyRG -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json`
 
-`$SubscriptionId`je ID předplatného Azure. Tento řádek nejprve získá přístupový token prostřednictvím ARMClient, potom prostřednictvím kanálu předá přes do skriptu prostředí PowerShell a potom vytvoří šablonu v souboru JSON.
+`$SubscriptionId` je ID předplatného Azure. Tento řádek nejprve získá přístupový token prostřednictvím ARMClient, potom prostřednictvím kanálu předá přes do skriptu prostředí PowerShell a potom vytvoří šablonu v souboru JSON.
 
 ## <a name="add-parameters-to-a-logic-app-template"></a>Přidání parametrů do šablony aplikace logiky
 Po vytvoření šablony aplikace logiky, můžete přidat nebo upravit parametry, které může být nutné. Například pokud vaše definice obsahuje ID prostředku do Azure funkci nebo vnořený pracovní postup, který chcete nasadit v jednom nasazení, můžete do šablony přidat další zdroje informací a Parametrizace ID podle potřeby. Totéž platí i pro všechny odkazy na vlastní rozhraní API nebo Swagger koncové body, které chcete nasadit s každé skupině prostředků.
+
+### <a name="add-references-for-dependent-resources-to-visual-studio-deployment-templates"></a>Přidání odkazů pro závislé prostředky pro nasazení šablony sady Visual Studio
+
+Pokud chcete svou aplikaci logiky odkazovat na závislé prostředky, můžete použít [funkce šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions) v šabloně nasazení aplikace logiky. Například můžete svou aplikaci logiky, chcete-li funkce Azure nebo integrace účtu, který chcete nasadit souběžně s svou aplikaci logiky. Postupujte podle těchto pokynů o tom, jak používat parametry v šabloně nasazení tak, aby návrháře aplikace logiky vykreslí správně. 
+
+Používáte logiku aplikace parametry v těchto druhů triggery a akce:
+
+*   Podřízené pracovní postup
+*   Function app
+*   APIM volání
+*   Adresa URL rozhraní API připojení modulu runtime
+*   Cesta připojení rozhraní API
+
+A můžete použít šablonu funkce jako je například parametry, proměnné, resourceId, concat atd. Můžete zde je ukázka, jak můžete nahradit ID prostředku Azure funkce:
+
+```
+"parameters":{
+    "functionName": {
+        "type":"string",
+        "minLength":1,
+        "defaultValue":"<FunctionName>"
+    }
+},
+```
+
+A kde byste použili parametry:
+
+```
+"MyFunction": {
+    "type": "Function",
+    "inputs": {
+        "body":{},
+        "function":{
+            "id":"[resourceid('Microsoft.Web/sites/functions','functionApp',parameters('functionName'))]"
+        }
+    },
+    "runAfter":{}
+}
+```
+Další příklad můžete parametrizovat operaci odeslání zprávy služby Service Bus:
+
+```
+"Send_message": {
+    "type": "ApiConnection",
+        "inputs": {
+            "host": {
+                "connection": {
+                    "name": "@parameters('$connections')['servicebus']['connectionId']"
+                }
+            },
+            "method": "post",
+            "path": "[concat('/@{encodeURIComponent(''', parameters('queueuname'), ''')}/messages')]",
+            "body": {
+                "ContentData": "@{base64(triggerBody())}"
+            },
+            "queries": {
+                "systemProperties": "None"
+            }
+        },
+        "runAfter": {}
+    }
+```
+> [!NOTE] 
+> host.runtimeUrl je volitelné a lze odebrat ze šablony, pokud je k dispozici.
+> 
+
+
+> [!NOTE] 
+> Pro návrháře logiku aplikace pro práci při použití parametrů je nutné zadat výchozí hodnoty, například:
+> 
+> ```
+> "parameters": {
+>     "IntegrationAccount": {
+>     "type":"string",
+>     "minLength":1,
+>     "defaultValue":"/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Logic/integrationAccounts/<integrationAccountName>"
+>     }
+> },
+> ```
+
+## <a name="add-your-logic-app-to-an-existing-resource-group-project"></a>Přidat do existujícího projektu skupiny prostředků aplikace logiky
+
+Pokud máte stávající projekt skupiny prostředků, můžete přidat aplikaci logiky do tohoto projektu v okně osnovy JSON. Můžete také přidat další aplikace logiky spolu s aplikaci, kterou jste vytvořili.
+
+1. Otevřete soubor `<template>.json`.
+
+2. Chcete-li otevřít okno osnovou JSON, přejděte na **zobrazení** > **ostatní okna** > **osnovy JSON**.
+
+3. Chcete-li přidat prostředek k souboru šablony, klikněte na tlačítko **přidat prostředek** v horní části okna osnovy JSON. Nebo v okně osnovou JSON, klikněte pravým tlačítkem na **prostředky**a vyberte **přidat nový prostředek**.
+
+    ![Osnova JSON – okno](./media/logic-apps-create-deploy-template/jsonoutline.png)
+    
+4. V **přidat prostředek** dialogové okno, vyhledejte a vyberte **aplikace logiky**. Název aplikace logiky a vyberte **přidat**.
+
+    ![Přidat prostředek](./media/logic-apps-create-deploy-template/addresource.png)
+
 
 ## <a name="deploy-a-logic-app-template"></a>Nasazení šablony aplikace logiky
 

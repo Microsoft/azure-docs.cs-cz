@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
-ms.openlocfilehash: 407b62042d3f0d5c68234c4faeaa139c5e21b3a6
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: fa192ca1ee0dc5ee7190b6c63b64297c7406291d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurace protokolu SSL verze zásad a sady na aplikační brána šifer
 
@@ -75,7 +75,7 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-ssl-policies"></a>Seznam předdefinovaných zásad SSL
 
-Aplikační brána se dodává s 3 předem definované zásady, které lze použít. `Get-AzureRmApplicationGatewaySslPredefinedPolicy` Rutina načte tyto zásady. Každá zásada má jiný protokol verze a sady šifer, které jsou povolené. Tyto předem definované zásady lze rychle nakonfigurovat zásady protokolu SSL na aplikační brány. Ve výchozím nastavení **AppGwSslPolicy20170401** je vybraná, pokud je definována žádná konkrétní zásady protokolu SSL.
+Aplikační brána se dodává s 3 předem definované zásady, které lze použít. `Get-AzureRmApplicationGatewaySslPredefinedPolicy` Rutina načte tyto zásady. Každá zásada má jiný protokol verze a sady šifer, které jsou povolené. Tyto předem definované zásady lze rychle nakonfigurovat zásady protokolu SSL na aplikační brány. Ve výchozím nastavení **AppGwSslPolicy20150501** je vybraná, pokud je definována žádná konkrétní zásady protokolu SSL.
 
 Následuje příklad spuštění `Get-AzureRmApplicationGatewaySslPredefinedPolicy`.
 

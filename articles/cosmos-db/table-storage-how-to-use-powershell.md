@@ -12,21 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 03/14/2018
 ms.author: robinsh
-ms.openlocfilehash: 15a4ed2370598cb98565c48b4563bee3a4445827
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c09809e9cf513dbb9420f675bbf431c176f740bd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Provedení operace úložiště Azure Table pomocí prostředí Azure PowerShell 
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
->[!NOTE]
->Rozhraní API tabulky DB Cosmos Azure poskytuje prémiových funkcí pro úložiště table, jako jsou to globální distribuční, nízká latence čtení a zápisy, automatické sekundární indexování a vyhrazenou propustností. Ve většině případů je specifická pro Azure Table storage příkazy prostředí PowerShell v pracovním tohoto článku rozhraní API služby Azure Cosmos DB tabulky a Azure Table storage, ale v tomto článku. Pokud používáte rozhraní API služby Azure Cosmos DB tabulky, přečtěte si téma [operace rozhraní API služby Azure Cosmos DB tabulky s prostředím Azure PowerShell](table-powershell.md).
->
-
-Azure Table storage je úložištěm dat typu NoSQL, který můžete použít k ukládání a dotazování obrovských sad strukturovaných, nerelačních data. Hlavní komponenty služby jsou tabulky, entit a vlastnosti. Tabulka je kolekce entit. Entita je sada vlastností. Každá entita může mít až 252 vlastností, které jsou všechny páry název hodnota. Tento článek předpokládá, že jste již obeznámeni s koncepty služby úložiště Azure Table. Podrobné informace najdete v tématu [Principy datového modelu služby Table](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) a [Začínáme s Azure Table storage pomocí rozhraní .NET](table-storage-how-to-use-dotnet.md).
+Azure Table storage je úložiště dat typu NoSQL, které můžete použít k ukládání a dotazování obrovských sad strukturovaných, nerelačních data. Hlavní komponenty služby jsou tabulky, entit a vlastnosti. Tabulka je kolekce entit. Entita je sada vlastností. Každá entita může mít až 252 vlastností, které jsou všechny páry název hodnota. Tento článek předpokládá, že jste již obeznámeni s koncepty služby úložiště Azure Table. Podrobné informace najdete v tématu [Principy datového modelu služby Table](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) a [Začínáme s Azure Table storage pomocí rozhraní .NET](table-storage-how-to-use-dotnet.md).
 
 Tento článek popisuje běžné operace úložiště Azure Table. Získáte informace o těchto tématech: 
 
@@ -38,7 +35,7 @@ Tento článek popisuje běžné operace úložiště Azure Table. Získáte inf
 > * Odstranění entity tabulky
 > * Odstranění tabulky
 
-Tento článek ukazuje, jak vytvořit nový účet úložiště v novou skupinu prostředků, takže můžete snadno odebrat ji po dokončení. Pokud byste místo použít stávající účet úložiště, můžete to udělat místo.
+Tento článek ukazuje, jak vytvořit nový účet úložiště Azure v novou skupinu prostředků, takže můžete snadno odebrat ji po dokončení. Pokud byste místo použít stávající účet úložiště, můžete to udělat místo.
 
 Příklady vyžadují prostředí Azure PowerShell verze modulu 4.4.0 nebo novější. V okně prostředí PowerShell, spusťte `Get-Module -ListAvailable AzureRM` najít verzi. Pokud se nezobrazí nebo je nutné upgradovat, najdete v části [modul nainstalovat Azure PowerShell](/powershell/azure/install-azurerm-ps). 
 
@@ -105,7 +102,7 @@ New-AzureStorageTable –Name $tableName –Context $ctx
 Načíst seznam tabulek v účtu úložiště pomocí [Get-AzureStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable).
 
 ```powershell
-$storageTable = Get-AzureStorageTable –Context $ctx | select Name
+Get-AzureStorageTable –Context $ctx | select Name
 ```
 
 ## <a name="retrieve-a-reference-to-a-specific-table"></a>Načíst odkaz na konkrétní tabulky

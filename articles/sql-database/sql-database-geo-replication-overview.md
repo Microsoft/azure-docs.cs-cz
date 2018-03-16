@@ -2,24 +2,18 @@
 title: "Převzetí služeb při selhání skupiny a aktivní geografickou replikaci - Azure SQL Database | Microsoft Docs"
 description: "Použití skupin automatické převzetí služeb při selhání s aktivní geografickou replikací a povolte autoomatic převzetí služeb při selhání v případě výpadku."
 services: sql-database
-documentationcenter: na
 author: anosov1960
-manager: jhubbard
-editor: monicar
-ms.assetid: 2a29f657-82fb-4283-9a83-e14a144bfd93
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
 ms.date: 10/11/2017
 ms.author: sashan
-ms.openlocfilehash: 7d731865ae8da9e1ae9e9f11eef814b86fc10c64
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 45ddc4070e2162715eefab21841d75f1fa2a29e5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Přehled: Převzetí služeb při selhání skupiny a aktivní geografickou replikaci
 Aktivní geografickou replikaci můžete nakonfigurovat až čtyři čitelný sekundární databáze v umístění center stejný nebo jiný dat (oblastí). Sekundární databáze jsou k dispozici pro dotazování a převzetí služeb při selhání v případě výpadku datacentra nebo neschopnost se připojit k primární databázi. Převzetí služeb při selhání musí ručně zahájit aplikace uživatele. Po převzetí služeb při selhání má nový primární koncový bod jiné připojení. 
@@ -156,10 +150,10 @@ Jak je popsáno dříve, skupiny automatické převzetí služeb při selhání 
 | Rutina | Popis |
 | --- | --- |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |Získá jednu nebo více databází. |
-| [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary) |Sekundární databáze pro databázi vytvoří a spustí replikaci dat. |
-| [Set-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/set-azurermsqldatabasesecondary) |Přepne sekundární databáze, která bude primární k zahájení převzetí služeb při selhání. |
-| [Remove-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/remove-azurermsqldatabasesecondary) |Ukončí replikaci dat mezi SQL Database a zadaný sekundární databázi. |
-| [Get-AzureRmSqlDatabaseReplicationLink](/powershell/module/azurerm.sql/get-azurermsqldatabasereplicationlink) |Získá odkazy geografická replikace mezi Azure SQL Database a skupinu prostředků nebo SQL Server. |
+| [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary) |Vytvoří sekundární databázi pro existující databázi a spustí replikaci dat. |
+| [Set-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/set-azurermsqldatabasesecondary) |Přepne sekundární databázi na primární a zahájí tak převzetí služeb při selhání. |
+| [Remove-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/remove-azurermsqldatabasesecondary) |Ukončí replikaci dat mezi službou SQL Database a zadanou sekundární databází. |
+| [Get-AzureRmSqlDatabaseReplicationLink](/powershell/module/azurerm.sql/get-azurermsqldatabasereplicationlink) |Získá vazby geografické replikace mezi službou Azure SQL Database a skupinou prostředků nebo SQL Serverem. |
 | [New-AzureRmSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |   Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ho na primární a sekundární servery|
 | [Remove-AzureRmSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/remove-azurermsqldatabasefailovergroup) | Odebere skupinu převzetí služeb při selhání ze serveru a odstraní všechny sekundární databáze zahrnuté skupině |
 | [Get-AzureRmSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | Načte konfiguraci skupiny převzetí služeb při selhání |
@@ -190,7 +184,7 @@ Jak je popsáno dříve, skupiny automatické převzetí služeb při selhání 
 | [Převzetí služeb při selhání skupiny aktualizací](/rest/api/sql/failovergroups/update) | Aktualizuje skupinu převzetí služeb při selhání. |
 |  | |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Ukázkové skripty najdete v části:
    - [Konfigurace a převzetí služeb při selhání jedné databáze používá aktivní geografickou replikaci](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
    - [Konfigurace a převzetí služeb při selhání ve fondu databáze používá aktivní geografickou replikaci](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 03/14/2018
 ms.author: bradsev
-ms.openlocfilehash: 8584cade8e12b4f06ae455227e702844a06f512a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 02b3e0e0808cb9a1a8a2186b1abe6da7dd13e56e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook"></a>Vehicle řešení analýzy Telemetrie playbook
 Tato nabídka odkazy na kapitoly v této playbook: 
@@ -26,9 +26,9 @@ Tato nabídka odkazy na kapitoly v této playbook:
 [!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 ## <a name="overview"></a>Přehled
-Superpočítačů byl přesunut mimo testovací prostředí a jsou nyní parkujících v garáží. Tyto nejmodernější automobilů obsahovat řadu senzorů, které jim poskytnout možnost sledování a monitorování miliony událostí za sekundu. Do roku 2020 většinu těchto vozidel se připojí k Internetu. Klepnutím na do této zadávané dat nabízejí větší zabezpečení, spolehlivost a lepší řízení prostředí. Společnost Microsoft neposkytuje to sní realitou s Cortana Intelligence.
+Super počítače byl přesunut mimo testovací prostředí a jsou nyní parkujících v garáží. Tyto jsou právě teď umístěny v nejmodernější automobilů, které obsahují řadu senzorů. Podobných senzorů jim poskytnout možnost sledování a monitorování miliony událostí za sekundu. Do roku 2020 většinu těchto vozidel se připojí k Internetu. Klepnutím na do této zadávané dat poskytuje vyšší zabezpečení, spolehlivost, a proto lepší řízení prostředí. Společnost Microsoft neposkytuje to sní realitou s Cortana Intelligence.
 
-Cortana Intelligence je plně spravovaná velkých objemů dat a suite pokročilou analýzu, který můžete použít pro transformaci dat do inteligentního akce. Šablona Cortana Intelligence Vehicle Telemetrie Analytics řešení ukazuje, jak dealerům car, automobilů výrobců a pojištění společností můžete získat v reálném čase a zvyklosti prediktivní Statistika na vehicle stavu a řídí. 
+Cortana Intelligence je plně spravovaná velkých objemů dat a suite pokročilou analýzu, který můžete použít pro transformaci dat do inteligentního akce. Šablona Cortana Intelligence Vehicle Telemetrie Analytics řešení ukazuje, jak dealerům car, automobilů výrobců a pojištění společnosti, se můžou získat v reálném čase a zvyklosti prediktivní Statistika na vehicle stavu a řídí.
 
 Řešení je implementovaný jako [lambda architektura vzor](https://en.wikipedia.org/wiki/Lambda_architecture), který zobrazuje kompletní potenciální Cortana Intelligence platformy pro v reálném čase a dávkové zpracování.
 
@@ -38,7 +38,7 @@ Architektura řešení analýzy Telemetrie Vehicle je zobrazená v tomto diagram
 ![Diagram architektury řešení](./media/cortana-analytics-playbook-vehicle-telemetry/fig1-vehicle-telemetry-annalytics-solution-architecture.png)
 
 
-Toto řešení zahrnuje následující součásti Cortana Intelligence a umožňující prezentovat jejich integrace začátku do konce:
+Toto řešení zahrnuje následující součásti Cortana Intelligence a umožňující prezentovat jejich integrace:
 
 * **Azure Event Hubs** ingestuje miliony událostí vehicle telemetrická data do Azure.
 * **Azure Stream Analytics** poskytuje přehledy v reálném čase na vehicle stavu a přetrvává tato data do dlouhodobého úložiště pro širší batch analýzu.
@@ -50,5 +50,5 @@ Toto řešení zahrnuje následující součásti Cortana Intelligence a umožň
 Toto řešení používá dvou různých zdrojů dat.: 
 
 * **Simulated vehicle signály a Diagnostika**: simulátoru telematika vehicle vysílá diagnostické informace a signály, které odpovídají stavu nástroj a podporovat jeho vzor k danému bodu v čase. 
-* **Vehicle katalogu**: Tato referenční datová sada mapuje VINs modelů.
+* **Vehicle katalogu**: Tato referenční datová sada mapuje VIN čísla modelů.
 

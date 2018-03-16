@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 736a82d282e5769fb403c66ffd5d44107c6d3218
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 09e848abaf09811ff3f2b8ad009cd23dedb6645d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Jak používat Azure spravované služby Identity (verze public preview) ve službě App Service a Azure Functions
 
 > [!NOTE] 
 > Identita spravované služby pro služby App Service a Azure Functions je aktuálně ve verzi preview.
 
-Toto téma ukazuje, jak vytvořit identitu spravované aplikace pro aplikace služby App Service a Azure Functions a způsobu jeho použití přistupovat k dalším prostředkům. Identita spravované služby ze služby Azure Active Directory umožňuje aplikaci snadno přistupovat k dalším prostředkům chráněné AAD, například Azure Key Vault. Identita spravuje platformy Azure a zřizovat nebo otočit všech tajných klíčů nevyžaduje. Další informace o identitě spravované služby najdete v tématu [identita spravované služby přehled](../active-directory/msi-overview.md).
+Toto téma ukazuje, jak vytvořit identitu spravované aplikace pro aplikace služby App Service a Azure Functions a způsobu jeho použití přistupovat k dalším prostředkům. Identita spravované služby ze služby Azure Active Directory umožňuje aplikaci snadno přistupovat k dalším prostředkům chráněné AAD, například Azure Key Vault. Identita spravuje platformy Azure a zřizovat nebo otočit všech tajných klíčů nevyžaduje. Další informace o identitě spravované služby najdete v tématu [identita spravované služby přehled](../active-directory/managed-service-identity/overview.md).
 
 ## <a name="creating-an-app-with-an-identity"></a>Vytvoření aplikace pomocí identity
 
@@ -126,7 +126,7 @@ Kde `<TENANTID>` a `<PRINCIPALID>` jsou nahrazeny identifikátory GUID. Vlastnos
 Aplikace můžete použít svou identitu získat tokeny k jiným prostředkům chráněn AAD, například Azure Key Vault. Tyto tokeny představují aplikace přístup k prostředku a ne všechny konkrétního uživatele aplikace. 
 
 > [!IMPORTANT]
-> Musíte nakonfigurovat cílový prostředek pro povolení přístupu z vaší aplikace. Například pokud požádáte o token pro Key Vault, budete muset Ujistěte se, že jste přidali zásadu přístupu, která zahrnuje identitu vaší aplikace. Jinak vaše volání Key Vault budou odmítnuty, i v případě, že obsahují token. Další více o prostředky, ke kterým podporují tokeny identita spravované služby najdete v tématu [služeb Azure, podpora Azure AD ověření](../active-directory/pp/msi-overview.md#which-azure-services-support-managed-service-identity).
+> Musíte nakonfigurovat cílový prostředek pro povolení přístupu z vaší aplikace. Například pokud požádáte o token pro Key Vault, budete muset Ujistěte se, že jste přidali zásadu přístupu, která zahrnuje identitu vaší aplikace. Jinak vaše volání Key Vault budou odmítnuty, i v případě, že obsahují token. Další více o prostředky, ke kterým podporují tokeny identita spravované služby najdete v tématu [služeb Azure, podpora Azure AD ověření](../active-directory/managed-service-identity/overview.md#which-azure-services-support-managed-service-identity).
 
 Není protokolu REST pro získání tokenu v App Service a Azure Functions. Pro aplikace .NET knihovně Microsoft.Azure.Services.AppAuthentication poskytuje abstrakci přes tento protokol a podporuje místní vývojové prostředí.
 
@@ -161,7 +161,7 @@ Aplikace s identitou, spravované služby má dvě proměnné definované:
 > [!div class="mx-tdBreakAll"]
 > |Název parametru|V|Popis|
 > |-----|-----|-----|
-> |prostředek|Dotaz|AAD identifikátor URI prostředku, pro který by měl získat token.|
+> |Prostředek|Dotaz|AAD identifikátor URI prostředku, pro který by měl získat token.|
 > |verze rozhraní API.|Dotaz|Verze rozhraní API tokenů, který se má použít. "2017-09-01" je aktuálně podporovány pouze verze.|
 > |Tajný kód|Záhlaví|Hodnota proměnné prostředí MSI_SECRET.|
 
@@ -173,7 +173,7 @@ Aplikace s identitou, spravované služby má dvě proměnné definované:
 > |-------------|----------|
 > |access_token|Požadovaný přístupový token. Volání webové služby můžete použít tento token k ověření přijímající webové služby.|
 > |expires_on|Čas, kdy vyprší platnost přístupového tokenu. Datum je reprezentován jako počet sekund od pod hodnotou 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby platnosti tokenů v mezipaměti.|
-> |prostředek|Identifikátor ID URI aplikace přijímající webové služby.|
+> |Prostředek|Identifikátor ID URI aplikace přijímající webové služby.|
 > |token_type|Určuje hodnotu typ tokenu. Pouze typ, který podporuje Azure AD je nosiče. Další informace o nosné tokeny najdete v tématu [rámci autorizace OAuth 2.0: použití tokenů nosiče (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 

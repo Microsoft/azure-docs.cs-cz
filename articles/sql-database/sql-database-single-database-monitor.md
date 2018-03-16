@@ -3,24 +3,18 @@ title: "Monitorování výkonu databáze ve službě Azure SQL Database | Dokume
 description: "Seznamte se s možnostmi monitorování vaší databáze pomocí nástrojů Azure a zobrazení dynamické správy."
 keywords: "monitorování databáze, výkon cloudové databáze"
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: a2e47475-c955-4a8d-a65c-cbef9a6d9b9f
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 09/20/2017
 ms.author: carlrab
-ms.openlocfilehash: f6b370db3363180017c6561d7bd3a6d6b40d03ab
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ba2239b1a4cd14f7723e88ee83f7ad93da717e0a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Monitorování výkonu databáze ve službě Azure SQL Database
 Monitorování výkonu databáze SQL v Azure začíná sledováním využití prostředků relativně ke zvolené úrovni výkonu databáze. Monitorování vám pomůže určit, zda má databáze nadbytečnou kapacitu nebo zda má naopak potíže s vyčerpáním prostředků, a podle toho se můžete rozhodnout, zda je třeba změnit úroveň výkonu nebo [úroveň služeb](sql-database-service-tiers.md) vaší databáze. Databázi můžete monitorovat pomocí grafických nástrojů na [portálu Azure](https://portal.azure.com) nebo pomocí [zobrazení dynamické správy SQL](https://msdn.microsoft.com/library/ms188754.aspx).
@@ -212,7 +206,7 @@ Tyto dotazy znovu, vrátí počet bodu v čase. Pokud shromažďujete více uká
 
 Pro analýzu databáze SQL, můžete získat historická statistiky u relací pomocí dotazu [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazení a kontrola **active_session_count** sloupce. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Automaticky optimalizovat indexy databáze a spuštění plány pomocí dotazu [Azure SQL Database automatické ladění](sql-database-automatic-tuning.md).
 - Monitorování výkonu databáze automaticky pomocí [inteligentního Statistika SQL Azure](sql-database-intelligent-insights.md). Tato funkce poskytuje diagnostické informace a příčina analýzu problémy s výkonem.

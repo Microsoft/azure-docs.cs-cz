@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 01f845e0cb987eb4e4e9baa62478d3ff6991fb7e
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: a46177183035a53128c5341a3ce4c63dbc3a7497
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure funkce protokolu HTTP a webhooku vazby
 
@@ -30,6 +30,12 @@ Aktivační událost INSTEAD HTTP lze přizpůsobit reagovat na [webhooky](https
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+
+## <a name="packages"></a>Balíčky
+
+Vazby HTTP jsou součástí [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) úložiště GitHub.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="trigger"></a>Trigger
 
@@ -361,7 +367,7 @@ module.exports = function (context, data) {
 
 ## <a name="trigger---attributes"></a>Aktivační událost – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) definován v balíčku NuGet atribut [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) atribut.
 
 Můžete nastavit autorizaci úrovně a povolených metod HTTP v atributu konstruktoru parametry a nejsou k dispozici vlastnosti webhooku šablony typu a směrování. Další informace o těchto nastaveních najdete v tématu [aktivační událost - konfigurace](#trigger---configuration). Tady je `HttpTrigger` atribut v podpis metody:
 
@@ -386,7 +392,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 | **Typ** | neuvedeno| Vyžaduje - musí být nastavena na `httpTrigger`. |
 | **Směr** | neuvedeno| Vyžaduje - musí být nastavena na `in`. |
 | **name** | neuvedeno| Požadovaná proměnná používá v kódu funkce pro požadavek nebo textu požadavku. |
-| <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Určuje, co klíče, pokud existuje, musí být přítomen v požadavku k vyvolání funkce. Úroveň oprávnění může být jedna z následujících hodnot: <ul><li><code>anonymous</code>&mdash;Je vyžadován žádný klíč rozhraní API.</li><li><code>function</code>&mdash;Je požadován klíč rozhraní API specifických funkcí. Toto je výchozí hodnota, pokud žádný je k dispozici.</li><li><code>admin</code>&mdash;Je nezbytný hlavní klíč.</li></ul> Další informace najdete v části [autorizace klíče](#authorization-keys). |
+| <a name="http-auth"></a>**AuthLevel** |  **AuthLevel** |Určuje, co klíče, pokud existuje, musí být přítomen v požadavku k vyvolání funkce. Úroveň oprávnění může být jedna z následujících hodnot: <ul><li><code>anonymous</code>&mdash;Je vyžadován žádný klíč rozhraní API.</li><li><code>function</code>&mdash;Je požadován klíč rozhraní API specifických funkcí. Toto je výchozí hodnota, pokud žádný je k dispozici.</li><li><code>admin</code>&mdash;Je nezbytný hlavní klíč.</li></ul> Další informace najdete v části [autorizace klíče](#authorization-keys). |
 | **Metody** |**Metody** | Pole metody HTTP, na které funkce odpoví. Pokud není zadaný, funkce odpoví na všechny metody HTTP. V tématu [přizpůsobit koncový bod http](#trigger---customize-the-http-endpoint). |
 | **Trasy** | **Trasy** | Definuje šablonu trasy řízení, které žádosti o funkce odpoví adresy URL. Výchozí hodnota, pokud je zadaný žádný je `<functionname>`. Další informace najdete v tématu [přizpůsobit koncový bod http](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** |Nakonfiguruje tak, aby fungoval jako triggeru protokolu HTTP [webhooku](https://en.wikipedia.org/wiki/Webhook) příjemce pro zadaného zprostředkovatele. Není nastavený `methods` vlastnost při nastavení této vlastnosti. Typ webhooku může být jedna z následujících hodnot:<ul><li><code>genericJson</code>&mdash;Koncový bod pro obecné účely webhooku bez logiku pro konkrétního zprostředkovatele. Toto nastavení omezuje jenom na ty pomocí protokolu HTTP POST a s požadavky `application/json` typ obsahu.</li><li><code>github</code>&mdash;Funkce odpoví na [Githubu webhooky](https://developer.github.com/webhooks/). Nepoužívejte _authLevel_ vlastnost s webhooky Githubu. Další informace najdete v části GitHub webhooky později v tomto článku.</li><li><code>slack</code>&mdash;Funkce odpoví na [Slack webhooky](https://api.slack.com/outgoing-webhooks). Nepoužívejte _authLevel_ vlastnost s Slack webhooky. Další informace najdete v části Slack webhooky později v tomto článku.</li></ul>|

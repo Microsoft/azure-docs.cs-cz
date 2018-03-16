@@ -3,8 +3,8 @@ title: "Příprava a otestovat vaši nabídku pro nasazení do Azure Marketplace
 description: "Podrobné pokyny k poskytnete marketingové obsah, konfigurace cenovou plány a testování vaši nabídku před nasazením do Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 3ccd2448-895b-477e-adf6-ab655a21d2fa
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/17/2016
-ms.author: hascipio
-ms.openlocfilehash: 7db86716cdf8f9eb921c3c1813970acae7a3016b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 5bec9ac89487a824b9de9209547f0b96fa5fe678
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>Vytvoření nabídky s obsahem, marketing
 V tomto kroku procesu publikování musíte poskytnout určité marketing obsah a podrobnosti o nabídka nebo jednotky SKU v Azure Marketplace. Bude například zadat popis produkt společnosti, loga společnosti, cena plány, podrobnosti o plány a další informace, které jsou potřeba nabízená nabídka nebo SKU pracovní. Tyto informace slouží jako marketing obsah na webu Azure portal. Začnete tohoto procesu [publikování portál][link-pubportal].
@@ -26,7 +26,7 @@ V tomto kroku procesu publikování musíte poskytnout určité marketing obsah 
 ## <a name="step-1-provide-marketplace-marketing-content"></a>Krok 1: Zadejte Marketplace marketingové obsahu
 **Angličtina je výchozí a pouze podporovaný jazyk.** Ujistěte se, že všechny informace uvedené v pole jsou v angličtině. Než přejdete k přípravám, dají se všechny informace kdykoli upravit.
 
-1. Přejděte na portálu publikování [https://publish.windowsazure.com](https://publish.windowsazure.com).
+1. Přejděte na portálu publikování [ https://publish.windowsazure.com ](https://publish.windowsazure.com).
 2. V nabídce vlevo klikněte **Marketing** kartě.
 3. Na hlavním panelu klikněte **angličtinu (US)** tlačítko.
    
@@ -228,9 +228,9 @@ Plány může být libovolnou kombinací základní + využívání, kde základ
 | Bronzová |10 za měsíc |Základní funkce a kvótu 1000 funkce X. |Můžete migrovat do bronzová Plus, stříbrný a zlatý plánů |
 | Bronzovým Plus |Bezplatné zkušební období: $0/ měsíc + $0/meter01 |Základní funkce a kvótu 10 000 funkce X.  Jakmile funkci X kvóta se použije, může zákazník platba za použití prostřednictvím meter01. |Můžete migrovat do Silver Plus a zlatý plánů |
 | Bronzovým Plus |Placené období (také známa jako platnost bezplatné zkušební verze): $10/měsíc + $ hodnotu 0,05/meter01 |Základní funkce a kvótu 10 000 funkce X.  Jakmile funkci X kvóta se použije, může zákazník platba za použití prostřednictvím meter01. |Můžete migrovat do Silver Plus a zlatý plánů |
-| Stříbrná |$ 0,15/meter01 |Zákazník může platit za použití prostřednictvím meter01, což je pro funkci X. |Můžete migrovat do bronzová a zlatý plánů |
+| Stříbrný |$ 0,15/meter01 |Zákazník může platit za použití prostřednictvím meter01, což je pro funkci X. |Můžete migrovat do bronzová a zlatý plánů |
 | Stříbrná Plus |měsíc 20 + $ 0,15/meter01 + $ 0,01/meter02 |Základní funkce a kvótu 10 000 funkce X a 100 funkce Y.  Jakmile funkci X kvóta se použije, může zákazník platba za použití prostřednictvím meter01.  Jakmile funkci Y kvóta se použije, může zákazník platba za použití prostřednictvím meter02. |Můžete migrovat do bronzová Plus a zlatý plánů |
-| Zlatý |1 000 USD za měsíc |Kvóta 10 000 X 1 000 funkce Y, funkce a funkce Z neomezená. |Můžete migrovat všechny plány, s výjimkou volné |
+| Zlatá |1 000 USD za měsíc |Kvóta 10 000 X 1 000 funkce Y, funkce a funkce Z neomezená. |Můžete migrovat všechny plány, s výjimkou volné |
 
 ## <a name="step-3-provide-support-information"></a>Krok 3: Zadání podporu informace
 Kontaktní údaje se používají pro interní komunikaci mezi partnery a Microsoft jenom. Adresa URL podpory bude k dispozici koncovým zákazníkům.
@@ -276,7 +276,7 @@ Teď, když obsah Marketplace je načtena, umožňuje přesun při testování v
 * [Otestovat vaši nabídku virtuálních počítačů v pracovní](marketplace-publishing-vm-image-test-in-staging.md)
 * [Otestovat vaši nabídku šablony řešení v pracovní](marketplace-publishing-solution-template-test-in-staging.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Začínáme: postup publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-map-acom]:media/marketplace-publishing-push-to-staging/pubportal-mapping-acom.jpg

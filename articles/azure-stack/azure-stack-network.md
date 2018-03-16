@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 03/12/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: a198ff5fe7135e17301025d6a712236b76be0ede
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 04cfe3c4ac6011b9c3d31b7d4ac3c018c350d67b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="network-connectivity"></a>Připojení k síti
 Tento článek obsahuje informace o infrastruktuře síťový zásobník Azure vám pomohou rozhodnout, jak nejlépe zásobník Azure integrovat do stávajícího síťového prostředí. 
@@ -54,6 +54,8 @@ Síťové infrastruktury pro Azure zásobníku se skládá z několika logické 
 
 ### <a name="bmc-network"></a>BMC sítě
 Tato síť je vyhrazen až po připojení všech řadiči pro správu (také označované jako služby procesory, například iDRAC, iLO, iBMC, atd.) pro síť pro správu. Pokud je k dispozici, hostitele životního cyklu hardwaru (HLH) se nachází v této síti a může poskytnout určitým softwarem OEM pro údržbu hardwaru nebo monitorování. 
+
+HLH také hostitelem nasazení virtuálních počítačů (DVM). DVM se používá při nasazení Azure zásobníku a odebrání po dokončení nasazení. DVM vyžaduje přístup k Internetu ve scénářích připojené nasazení otestovat, ověřit a přístup k více součástí. Tyto součásti může být uvnitř i vně vaší podnikové sítě. například NTP, DNS a Azure. Další informace o požadavcích na připojení, najdete v článku [části NAT v zásobníku Azure integrace brány firewall](azure-stack-firewall.md#network-address-translation). 
 
 ### <a name="private-network"></a>Privátní síť
 Tato /24 254 hostitele sítě (IP na) je privátní oblast Azure zásobníku (nerozšiřuje nad rámec zařízení přepínač ohraničení oblasti Azure zásobníku) a je rozdělená do dvou podsítí:

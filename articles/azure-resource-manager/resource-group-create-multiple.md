@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: e19833cb58f37f5f8b83d5558d74255583137684
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 8dfb664c7041d70f3ece812edb76df38a35e41f1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Nasazení více instancí prostředek nebo vlastnost v šablonách Azure Resource Manager
 Tento článek ukazuje, jak podmíněně nasazení prostředku a jak k iteraci v šablony Azure Resource Manager vytvořit více instancí prostředku.
@@ -72,7 +72,7 @@ Prostředek pro vytvoření vícekrát má následující formát:
 }
 ```
 
-Všimněte si, že obsahuje název každého prostředku `copyIndex()` funkci, která vrátí na aktuální iteraci smyčky. `copyIndex()`je počítáno od nuly. To, v následujícím příkladu:
+Všimněte si, že obsahuje název každého prostředku `copyIndex()` funkci, která vrátí na aktuální iteraci smyčky. `copyIndex()` je počítáno od nuly. To, v následujícím příkladu:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -345,6 +345,8 @@ Určíte, že je prostředek nasazeno po jiný prostředek pomocí `dependsOn` e
 }
 ```
 
+<a id="looping-on-a-nested-resource" />
+
 ## <a name="iteration-for-a-child-resource"></a>Iterace pro podřízený prostředek
 Kopírovací smyčkou nelze použít pro podřízený prostředek. Pokud chcete vytvořit několik instancí na prostředek, který je obvykle definovat jako vnořené v rámci jiný prostředek, musíte místo toho vytvořit prostředku jako prostředek nejvyšší úrovně. Můžete definovat relaci s nadřazený prostředek prostřednictvím typ a název vlastnosti.
 
@@ -409,7 +411,7 @@ Následující příklady ukazují běžné scénáře pro vytvoření více pro
 |[Zkopírujte proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ukazuje různé způsoby iterace v proměnné. |
 |[Víc pravidel zabezpečení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Nasadí víc pravidel zabezpečení do skupiny zabezpečení sítě. Vytvoří z parametr pravidla zabezpečení. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Pokud chcete další informace o části šablony, najdete v části [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md).
 * Informace o nasazení šablony najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 

@@ -3,8 +3,8 @@ title: "Vytvoření a registrace účtu vydavatele | Microsoft Docs"
 description: "Pokyny pro vytvoření účtu Microsoft Developer, takže po schválení můžete prodeje různých nabízejí typy na webu Azure Marketplace."
 services: Azure Marketplace
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 5a2fe68d-2967-463f-8af6-42bed07e3eaa
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
-ms.author: hascipio
-ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: da805bead3f6af4ebd0b4b94b30a51ff2abc62dd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-microsoft-developer-account"></a>Vytvoření účtu Microsoft Developer
 Tento článek vás provede procesem vytvoření nezbytné účtu a procesu registrace se schválené Microsoft Developer pro Azure Marketplace.
@@ -45,7 +45,7 @@ Při vytváření účtu společnosti, postupujte podle následujících pokynů
 * Přidejte telefonní číslo společnosti, který nevyžaduje rozšíření a je přístupný pro členy týmu klíče.
 * Obecně platí mají vývojáři použít důvěryhodné zařízení k přihlášení k účtu vývojáře vaší společnosti. Všichni členové týmu klíče mají mít přístup k těchto důvěryhodných zařízení. Tím se sníží potřebu zabezpečovací kódy při přístupu k účtu odeslat.
 * Pokud potřebujete povolit přístup k účtu z počítače se nedůvěryhodné, omezte této přístup k maximálně pět vývojáři. V ideálním případě tyto vývojáři měli přístup k účtu z počítače, které sdílejí stejné zeměpisné a síťové umístění.
-* Často zkontrolovat bezpečnostní údaje vaší společnosti na [https://account.live.com/proofs/Manage](https://account.live.com/proofs/Manage) k zkontrolujte, zda je všechny aktuální.
+* Často zkontrolovat bezpečnostní údaje vaší společnosti na [ https://account.live.com/proofs/Manage ](https://account.live.com/proofs/Manage) k zkontrolujte, zda je všechny aktuální.
 
 Vývojářského účtu by měly být dostupné především z důvěryhodných počítačů. To je zásadní, protože existuje omezení počtu kódů generovaných každý účet za týden. Umožňuje také bezproblémové přihlašování uživatelů.
 
@@ -53,7 +53,7 @@ Další informace o zabezpečení a další vývojáře účet pokyny, klikněte
 
 ### <a name="instructions"></a>Pokyny
 1. Otevřete na nové Chrome Incognito nebo Internet Explorer InPrivate procházení relace a ujistěte se, že nejste přihlášení k existujícímu účtu.
-2. Zaregistrovat e-mailu (na výše uvedené pokyny například windowsapp@fabrikam.com) jako účet Microsoft pomocí odkazu [https://signup.live.com/signup.aspx](https://signup.live.com/signup.aspx). Postupujte podle pokynů níže.
+2. Zaregistrovat e-mailu (na výše uvedené pokyny například windowsapp@fabrikam.com) jako účet Microsoft pomocí odkazu [ https://signup.live.com/signup.aspx ](https://signup.live.com/signup.aspx). Postupujte podle pokynů níže.
 
    1. Při registraci účtu jako účet Microsoft, je třeba zadat platné telefonní číslo pro systém Odeslat ověřovací kód účtu jako textovou zprávu nebo automatické volání.
    2. Při registraci účtu jako účet Microsoft, je třeba zadat platnou e-mailovou id pro příjem automatizovaných e-mailu pro ověření účtu.
@@ -81,7 +81,7 @@ Microsoft Developer Center slouží k registraci jednou informace společnosti. 
 
 ### <a name="register-your-company-account"></a>Registrace účtu vaší společnosti
 1. Otevřete na nové Internet Explorer InPrivate nebo Incognito Chrome procházení relace a ujistěte se, že nejste přihlášení do osobního účtu.
-2. Přejděte na [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) sami zaregistrovat jako prodejce na webu Dev Center. Než budete pokračovat, přečtěte si následující důležité upozornění.
+2. Přejděte na [ http://dev.windows.com/registration?accountprogram=azure ](http://dev.windows.com/registration?accountprogram=azure) sami zaregistrovat jako prodejce na webu Dev Center. Než budete pokračovat, přečtěte si následující důležité upozornění.
 
    > [!IMPORTANT]
    > Zajistěte, aby byla na e-mailu id nebo distribuční seznam (distribuční seznam se doporučuje k odebrání závislostí jednotlivce), který budete používat pro registraci na webu Dev Center na první registrován jako účet Microsoft. Pokud ne, pak zaregistrujte pomocí této [odkaz](https://signup.live.com/signup?uaid=e479342fe2824efeb0c3d92c8f961fd3&lic=1). Navíc **všechny e-mailu id pod doménu společnosti Microsoft tj @microsoft.com nelze použít** pro registraci Dev Center.
@@ -191,7 +191,7 @@ Pokud máte problémy s registrací středisku pro vývojáře, jak je uvedeno n
 [Publikování portál](http://publish.windowsazure.com) se používá k publikování a správa tyto nabídky.
 
 1. Otevřete na nové Chrome Incognito nebo Internet Explorer InPrivate procházení relace a ujistěte se, že nejste přihlášení do osobního účtu.
-2. Přejděte na [http://publish.windowsazure.com](http://publish.windowsazure.com).
+2. Přejděte do [ (Nastavení)http://publish.windowsazure.com](http://publish.windowsazure.com) (Integrace a služby).
 3. Pokud jste nového uživatele a přihlášení k publikování portálu poprvé, pak musíte se přihlásit s stejným id e-mailu, se kterým je registrován účtu Dev Center. Tímto způsobem se vzájemně propojit účtu Dev Center a publikování portálu účtu. Ostatním členům společnosti, kteří pracují na aplikaci, můžete později přidat jako spolusprávce v publikační portálu podle následujících kroků.
 
 Pokud jsou přidány jako spolusprávce v publikační portálu, pak se můžete přihlásit pomocí účtu spolusprávce.
@@ -229,7 +229,7 @@ Pokud jsou přidány jako spolusprávce v publikační portálu, pak se můžete
 ## <a name="next-steps"></a>Další kroky
 Teď, když váš účet je vytvořená a zaregistrovaná, zajistěte splnění nebo splňovat všechny požadavky netechnické publikování vaši nabídku kontrolou [netechnické předpoklady](marketplace-publishing-pre-requisites.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Začínáme: postup publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-msalive]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-live.jpg

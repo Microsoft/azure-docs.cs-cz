@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: a6453c8d84b7025f1f510db5e675cde8685c23ed
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 83d0427a3ba8c634699608c38ab22efb1f275e52
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-windows"></a>Připojte zařízení k monitorování předkonfigurované řešení vzdáleného (Windows)
 
@@ -95,7 +95,7 @@ Přidat Parson JSON knihovnu, která má **RMDevice** projekt a přidejte požad
     #include "schemaserializer.h"
     #include "azure_c_shared_utility/threadapi.h"
     #include "azure_c_shared_utility/platform.h"
-    #include "parson.h"
+    #include <string.h>
     ```
 
     > [!NOTE]
@@ -103,7 +103,7 @@ Přidat Parson JSON knihovnu, která má **RMDevice** projekt a přidejte požad
 
 [!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
 
-## <a name="build-and-run-the-sample"></a>Sestavit a spustit ukázku
+## <a name="build-and-run-the-sample"></a>Sestavení a spuštění ukázky
 
 Přidejte kód, který má být vyvolán **vzdáleného\_monitorování\_spustit** fungovat, pak sestavit a spustit aplikaci zařízení:
 
@@ -117,7 +117,7 @@ Přidejte kód, který má být vyvolán **vzdáleného\_monitorování\_spustit
     }
     ```
 
-1. Zvolte **sestavení** a potom **sestavit řešení** sestavit aplikaci pro zařízení. Ignorovat upozornění o **gmtime –** funkce.
+1. Zvolte **sestavení** a potom **sestavit řešení** sestavit aplikaci pro zařízení.
 
 1. V **Průzkumníku řešení**, klikněte pravým tlačítkem myši **RMDevice** projektu, zvolte **ladění**a potom zvolte **spustit novou instanci** ke spuštění ukázky . Konzole zobrazí zprávy jako:
 

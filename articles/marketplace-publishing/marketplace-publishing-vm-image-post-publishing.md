@@ -3,8 +3,8 @@ title: "Správa vaší bitové kopie virtuálního počítače v Azure Marketpla
 description: "Podrobné informace týkající se po počáteční publikace spravovat vaše bitovou kopii virtuálního počítače v Azure Marketplace"
 services: Azure Marketplace
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: cc8648d4-59c2-4678-b47d-992300677537
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
-ms.author: hascipio;
-ms.openlocfilehash: e1f90650e71345957c2d353774cb8bef62c1868b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin;
+ms.openlocfilehash: 19f60de4a6c651885da7ff1fb7612a77f3d0c8f1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Po Provozní příručka pro virtuální počítač nabídky v Azure Marketplace
 Tento článek vysvětluje, jak můžete aktualizovat nabídka migraci virtuálního počítače v Azure Marketplace. Provede vás provede procesem přidání jeden nebo více nových SKU pro existující nabídku. Také provede vás provede procesem odebrání nabídka migraci virtuálního počítače nebo SKU z Marketplace.
@@ -27,13 +27,13 @@ Po nabídka nebo SKU je dvoufázové instalace v [portál Azure](http://portal.a
 
 * **Nabízejí identifikátor**: V publikování portálu, přejděte na **virtuální počítače** a vyberte vaši nabídku. Pak klikněte na tlačítko **Image virtuálních počítačů** > **nabízejí identifikátor**.
 * **Identifikátor SKU**: V publikování portálu, přejděte na **virtuální počítače** a vyberte vaši nabídku. Pak klikněte na tlačítko **SKU** > **přidat SKU**.
-* **Vydavatel Namespace**: V publikování portálu, přejděte na **virtuální počítače** > **návod** > **Řekněte nám o vaše společnost** (tuto možnost najdete v části "Krok 2 zaregistrovat vaše společnost") > **vydavatele Namespace** > **Namespace**.
+* **Vydavatel Namespace**: V publikování portálu, přejděte na **virtuální počítače** > **návod** > **Řekněte nám o vaše společnost**(tuto možnost najdete v části "Krok 2 zaregistrovat vaše společnost") > **vydavatele Namespace** > **Namespace**.
 
 Po nabídka skladová položka je uvedena ve [Marketplace](http://azure.microsoft.com/marketplace), nelze změnit následující textová pole:
 
 * **Nabízejí identifikátor**: V publikování portálu, přejděte na **virtuální počítače** a vyberte vaši nabídku. Pak klikněte na tlačítko **Image virtuálních počítačů** > **nabízejí identifikátor**.
 * **Identifikátor SKU**: V publikování portálu, přejděte na **virtuální počítače** a vyberte vaši nabídku. Pak klikněte na tlačítko **SKU** > **přidat SKU**.
-* **Vydavatel Namespace**: V publikování portálu, přejděte na **virtuální počítače** > **návod** > **Řekněte nám o vaše společnost** (tuto možnost najdete v části "Krok 2 Register") **vydavatele Namespace** > **Namespace**.
+* **Vydavatel Namespace**: V publikování portálu, přejděte na **virtuální počítače** > **návod** > **Řekněte nám o vaše společnost**(tuto možnost najdete v části "Krok 2 Register") **vydavatele Namespace** > **Namespace**.
 * **Porty**: V publikování portálu, přejděte na **virtuální počítače** a vyberte vaši nabídku. Pak klikněte na tlačítko **Image virtuálních počítačů** > **otevřete porty**.
 * **Změna seznamu SKU(s) – ceny**
 * **Změna modelu fakturace uvedené SKU(s)**
@@ -220,7 +220,7 @@ Pokud chcete přidat nový SKU do vaší nabídky za provozu, postupujte takto:
 8. Přejděte na **publikovat** a klikněte na **PUSH pracovní**. Podrobné pokyny na vaši nabídku testování v testovacím prostředí najdete v tématu [otestovat vaši nabídku virtuálních počítačů pro Marketplace](marketplace-publishing-vm-image-test-in-staging.md).
 9. Po otestování vaši nabídku při přípravě přejít na **publikovat** ve publikování portálu. Klikněte na tlačítko **požádat o schválení pro PUSH na produkční** se publikovat nabídku v Marketplace.
 
-    ![SKU](media/marketplace-publishing-vm-image-post-publishing/img03_09-01.png)
+    ![Skladové položky](media/marketplace-publishing-vm-image-post-publishing/img03_09-01.png)
 
     ![Přidat SKU](media/marketplace-publishing-vm-image-post-publishing/img03_09-02.png)
 
@@ -328,7 +328,7 @@ Můžete obnovit nastavení viditelnosti uvedené SKU pro hodnota produkce, post
     ![Viditelnost](media/marketplace-publishing-vm-image-post-publishing/img10-04.png)
 5. Jakmile jste hotovi s změny, klikněte na tlačítko **požádat o schválení pro PUSH na produkční** se publikovat nabídku v Marketplace.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Začínáme GET: Publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md)
 * [Pochopení výběr vytváření sestav](marketplace-publishing-report-payout.md)
 * [Změnit incentive prodejce, u vašeho poskytovatele Cloud Solution Provider](marketplace-publishing-csp-incentive.md)

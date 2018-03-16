@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 02/14/2018
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 2c0c3597999e80af86f079385653d94ddfcab245
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: dbb5e9e8f9accd618599010ab2bbb4a8760e534f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-cosmos-db"></a>Používat přiřazený uživatelem spravované služby Identity (MSI) na virtuální počítač s Linuxem pro přístup k databázi Azure Cosmos 
 
@@ -45,7 +45,7 @@ V tomto kurzu spustit příklady skriptu rozhraní příkazového řádku, máte
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k portálu Azure v [ https://portal.azure.com ](https://portal.azure.com).
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Vytvořit virtuální počítač s Linuxem do nové skupiny prostředků
 
@@ -158,10 +158,10 @@ K dokončení těchto kroků, potřebujete klientem SSH. Pokud používáte syst
 3. Potom zobrazí výzva k zadání ve vaší **heslo** jste přidali při vytváření **virtuálního počítače s Linuxem**. Můžete by pak se úspěšně přihlášeni.  
 4. Použijte CURL k získání přístupu tokenu pro Azure Resource Manager.  
 
-    CURL žádosti a odpovědi pro přístupový token je níže.  Nahraďte <CLIENT ID> s clientId přiřazena hodnota vaše uživatele MSI:
+    CURL žádosti a odpovědi pro přístupový token je níže.  Nahraďte <CLIENT ID> s clientId přiřazena hodnota vaše uživatele MSI: 
     
     ```bash
-    curl 'http://localhost:50342/oauth2/token?resource=https://management.azure.com/&client_id=<CLIENT ID>' -H "Metadata:true"
+    curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<MSI CLIENT ID>" 
     ```
     
     > [!NOTE]

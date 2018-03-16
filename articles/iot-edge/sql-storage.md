@@ -9,11 +9,11 @@ ms.author: kgremban, ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ce3c3abd00dba23887b5f811af6cab8d2c83323d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 792e754b84f1dc03a32780ed94d274c833be68f5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>Ukládání dat na hranici s databází serveru SQL Server
 
@@ -67,7 +67,7 @@ V kroku 3, přidáte vytvořit možnosti ke kontejneru systému SQL Server, kter
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "localhost:5000/filterfunction:latest",
+              "image": "<docker registry address>/filterfunction:latest",
               "createOptions": "{}"
             }
           },
@@ -94,7 +94,12 @@ V kroku 3, přidáte vytvořit možnosti ke kontejneru systému SQL Server, kter
         }
    ```
 
-3. V závislosti na operační systém, který používáte aktualizujte nastavení modulu jazyka SQL s následujícím kódem: 
+3. Nahraďte `<docker registry address>` s adresou vyplněno dokončené kurzu [nasazení funkce Azure jako modul IoT Edge – náhled](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-function)
+
+   >[!NOTE]
+   >Adresa registru kontejneru je stejný jako server přihlášení, který jste zkopírovali z registru. Musí být ve tvaru `<your container registry name>.azurecr.io`
+
+4. V závislosti na operační systém, který používáte aktualizujte nastavení modulu jazyka SQL s následujícím kódem: 
 
    * Windows:
 
@@ -110,11 +115,11 @@ V kroku 3, přidáte vytvořit možnosti ke kontejneru systému SQL Server, kter
       "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"/var/opt/mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
-4. Uložte soubor. 
-5. Příkaz palety VS kód, vyberte **Edge: vytvoření nasazení pro hraniční zařízení**. 
-6. Vyberte ID vašeho IoT hraniční zařízení.
-7. Vyberte `deployment.json` aktualizovaný soubor. V okně výstupu uvidíte odpovídající výstupy pro vaše nasazení. 
-8. Chcete-li spustit modul runtime vaší hraniční, vyberte **hraniční: spuštění hraniční** v příkazu palety.
+5. Uložte soubor. 
+6. Příkaz palety VS kód, vyberte **Edge: vytvoření nasazení pro hraniční zařízení**. 
+7. Vyberte ID vašeho IoT hraniční zařízení.
+8. Vyberte `deployment.json` aktualizovaný soubor. V okně výstupu uvidíte odpovídající výstupy pro vaše nasazení. 
+9. Chcete-li spustit modul runtime vaší hraniční, vyberte **hraniční: spuštění hraniční** v příkazu palety.
 
 >[!TIP]
 >Vždy, když vytvoříte kontejner systému SQL Server v provozním prostředí, měli byste [změnit heslo správce systému výchozí](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password).

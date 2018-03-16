@@ -3,24 +3,19 @@ title: "Správa schématu Azure SQL Database v aplikaci s více tenanty | Dokume
 description: "Správa schématu pro více tenantů v aplikaci s více tenanty využívající službu Azure SQL Database"
 keywords: kurz k sql database
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
-ms.author: billgib; sstein
-ms.openlocfilehash: ac60888d1464d3245bb35e2e3505b16ef4128d36
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.author: sstein
+ms.reviewer: billgib
+ms.openlocfilehash: a473e87934ba573cc22b2c248ea0398bc5a4c29b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Správa schématu v aplikaci SaaS vzoru databáze za klienta pomocí databáze SQL Azure
 

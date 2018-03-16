@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 5549fb8f20ac2eb07b52b3b8e1c418873e467c93
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: f1cf83044eb4f001ba341cabd0771b267c3f996d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zapisují se výrazy pro mapování atributů v Azure Active Directory
 Při konfiguraci zřizování k aplikaci SaaS, je jeden z typů mapování atributů, které můžete zadat mapování u výrazu. Pro tyto musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů do formátů, které jsou více přijatelné pro aplikace SaaS.
@@ -48,7 +48,7 @@ Syntaxe pro výrazy pro mapování atributů je připomínající jazyka Visual 
 
 | Název | Požadované / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **zdroj** |Požaduje se |Řetězec |Obvykle název atributu, ze zdrojového objektu |
+| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu, ze zdrojového objektu |
 | **suffix** |Požaduje se |Řetězec |Řetězec, který má být připojen na konec zdrojové hodnoty. |
 
 - - -
@@ -61,8 +61,8 @@ Syntaxe pro výrazy pro mapování atributů je připomínající jazyka Visual 
 
 | Název | Požadované / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **zdroj** |Požaduje se |Řetězec |Obvykle název atributu, ze zdrojového objektu. |
-| **inputFormat** |Požaduje se |Řetězec |Očekávaný formát zdrojové hodnoty. Podporovaných formátů naleznete v části [http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu, ze zdrojového objektu. |
+| **inputFormat** |Požaduje se |Řetězec |Očekávaný formát zdrojové hodnoty. Podporovaných formátů naleznete v části [ http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
 | **outputFormat** |Požaduje se |Řetězec |Formát výstupního data. |
 
 - - -
@@ -90,9 +90,9 @@ Pokud je jedna z hodnot zdroj vícehodnotový atribut, pak každá hodnota v ten
 
 | Název | Požadované / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **zdroj** |Požaduje se |Řetězec |Obvykle název atributu. |
-| **start** |Požaduje se |integer |V indexu **zdroj** řetězec, kde by se měl spustit dílčí řetězec. První znak v řetězci bude mít index 1, druhý znak bude mít index 2 a tak dále. |
-| **Délka** |Požaduje se |integer |Délka dílčí řetězec. Pokud délka skončí mimo **zdroj** řetězec, funkce vrátí dílčí řetězec z **spustit** indexu do konce **zdroj** řetězec. |
+| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu. |
+| **start** |Požaduje se |celé číslo |V indexu **zdroj** řetězec, kde by se měl spustit dílčí řetězec. První znak v řetězci bude mít index 1, druhý znak bude mít index 2 a tak dále. |
+| **Délka** |Požaduje se |celé číslo |Délka dílčí řetězec. Pokud délka skončí mimo **zdroj** řetězec, funkce vrátí dílčí řetězec z **spustit** indexu do konce **zdroj** řetězec. |
 
 - - -
 ### <a name="not"></a>není
@@ -104,11 +104,11 @@ Pokud je jedna z hodnot zdroj vícehodnotový atribut, pak každá hodnota v ten
 
 | Název | Požadované / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **zdroj** |Požaduje se |Logická hodnota řetězce |Očekávaný **zdroje** jsou hodnoty "True" nebo "Nepravda"... |
+| **Zdroj** |Požaduje se |Logická hodnota řetězce |Očekávaný **zdroje** jsou hodnoty "True" nebo "Nepravda"... |
 
 - - -
 ### <a name="replace"></a>Nahradit
-**Funkce:**<br> ObsoleteReplace (zdroj, oldValue, regexPattern, regexGroupName, zastaralá, replacementAttributeName, šablony)
+**Funkce:**<br> Nahraďte (zdroj, oldValue, regexPattern, regexGroupName, zastaralá, replacementAttributeName, šablony)
 
 **Popis:**<br>
 Nahradí hodnoty v řetězci. Funguje jinak v závislosti na parametry zadané:
@@ -119,19 +119,19 @@ Nahradí hodnoty v řetězci. Funguje jinak v závislosti na parametry zadané:
 * Když **oldValue** a **šablony** jsou k dispozici:
   
   * Nahradí všechny výskyty **oldValue** v **šablony** s **zdroj** hodnota
-* Když **oldValueRegexPattern**, **oldValueRegexGroupName**, **zastaralá** jsou k dispozici:
+* Když **regexPattern**, **regexGroupName**, **zastaralá** jsou k dispozici:
   
   * Nahradí všechny hodnoty odpovídající oldValueRegexPattern v zdrojový řetězec s zastaralá
-* Když **oldValueRegexPattern**, **oldValueRegexGroupName**, **replacementPropertyName** jsou k dispozici:
+* Když **regexPattern**, **regexGroupName**, **replacementPropertyName** jsou k dispozici:
   
-  * Pokud **zdroj** má hodnotu, **zdroj** je vrácen
-  * Pokud **zdroj** nemá žádnou hodnotu, používá **oldValueRegexPattern** a **oldValueRegexGroupName** extrahovat nahrazující hodnotou z vlastnost s  **replacementPropertyName**. Nahrazující hodnotou se vrátí jako výsledek
+  * Pokud **zdroj** nemá žádnou hodnotu **zdroj** je vrácen
+  * Pokud **zdroj** má hodnotu, používá **regexPattern** a **regexGroupName** extrahovat nahrazující hodnotou z vlastnost s **replacementPropertyName** . Nahrazující hodnotou se vrátí jako výsledek
 
 **Parametry:**<br> 
 
 | Název | Požadované / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **zdroj** |Požaduje se |Řetězec |Obvykle název atributu, ze zdrojového objektu. |
+| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu, ze zdrojového objektu. |
 | **oldValue** |Nepovinné |Řetězec |Hodnota, která má být nahrazen v **zdroj** nebo **šablony**. |
 | **regexPattern** |Nepovinné |Řetězec |Vzor regulárního výrazu pro hodnota, která má být nahrazen v **zdroj**. Nebo, pokud je použita replacementPropertyName, vzor se získat hodnoty z vlastnosti nahrazení. |
 | **regexGroupName** |Nepovinné |Řetězec |Název skupiny uvnitř **regexPattern**. Jenom v případě, že se používá replacementPropertyName, jsme jako zastaralá z vlastnosti nahrazení extrahuje hodnotu této skupiny. |
@@ -161,7 +161,7 @@ Nahradí hodnoty v řetězci. Funguje jinak v závislosti na parametry zadané:
 
 | Název | Požadované / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **zdroj** |Požaduje se |Řetězec |**Zdroj** hodnotu aktualizovat. |
+| **Zdroj** |Požaduje se |Řetězec |**Zdroj** hodnotu aktualizovat. |
 
 - - -
 ### <a name="switch"></a>Přepínač
@@ -173,9 +173,9 @@ Nahradí hodnoty v řetězci. Funguje jinak v závislosti na parametry zadané:
 
 | Název | Požadované / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **zdroj** |Požaduje se |Řetězec |**Zdroj** hodnotu aktualizovat. |
+| **Zdroj** |Požaduje se |Řetězec |**Zdroj** hodnotu aktualizovat. |
 | **Výchozí hodnota** |Nepovinné |Řetězec |Výchozí hodnota má být použit při zdroj neodpovídá žádné klíče. Může být prázdný řetězec (""). |
-| **klíč** |Požaduje se |Řetězec |**Klíč** k porovnání **zdroj** hodnotu s. |
+| **Klíč** |Požaduje se |Řetězec |**Klíč** k porovnání **zdroj** hodnotu s. |
 | **Hodnota** |Požaduje se |Řetězec |Nahrazující hodnotou pro **zdroj** odpovídající klíč. |
 
 ## <a name="examples"></a>Příklady
@@ -213,6 +213,17 @@ Budete muset vygenerovat uživatele alias provedením nejprve 3 písmena křestn
 * **VSTUP** (givenName): "Jan"
 * **VSTUP** (Přezdívka): "Doe"
 * **VÝSTUP**: "JohDoe"
+
+### <a name="remove-diacritics-from-a-string-and-convert-to-lowercase"></a>Odeberte z řetězce diakritiky a převeden na malá písmena
+Budete muset odeberte speciální znaky v řetězci a převést velká písmena na malá písmena.
+
+**Výraz:** <br>
+`Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace([givenName], , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , )`
+
+**Ukázka vstupu a výstupu:** <br>
+
+* **VSTUP** (givenName): "Zoë"
+* **VÝSTUP**: "zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Výstupní data jako řetězec v určitém formátu
 Chcete odesílat data do aplikace SaaS v určitém formátu. <br>

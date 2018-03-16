@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: 7eaf4c3c9b390e87dd8494cd6bfb2ea155451608
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2b53dc5eeb2e5f25a0714af778ef3db1d5a79dc1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Použít službu Microsoft Azure Import/Export k přenosu dat do úložiště Azure.
 V tomto článku jsme poskytují podrobné pokyny k používání služby Azure Import/Export bezpečně přenést velké objemy dat do úložiště objektů Blob v Azure a Azure Files jednotkami přenosů disku pro datové centrum Azure. Tato služba slouží také k přenosu dat ze služby Azure storage na jednotky pevného disku a dodávat místní servery. Buď do úložiště objektů Blob v Azure nebo Azure Files můžete importovat data z jednoho disku interní disků SATA. 
@@ -31,13 +31,13 @@ Postupujte podle níže uvedených pokynů, pokud data na disku má být importo
 1.  Vytvořte jeden svazek NTFS na každý pevný disk a přiřadit písmeno jednotky svazku. Žádné přípojné body.
 2.  Pokud chcete povolit šifrování na počítači systému windows, povolte šifrování schránku na svazku systému souborů NTFS. Postupujte podle pokynů na https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx.
 3.  Úplně zkopírujte data do těchto šifrované jednoho systému souborů NTFS svazků na discích pomocí kopírování a vkládání nebo přetažení & rozevírací nebo Robocopy nebo takový nástroj.
-7.  Stáhnout z https://www.microsoft.com/en-us/download/details.aspx?id=42659 WAImportExport V1
+7.  Stáhněte si WAImportExport V1 z https://www.microsoft.com/en-us/download/details.aspx?id=42659
 8.  Rozbalení souborů do waimportexportv1 složky výchozí. For example, C:\WaImportExportV1  
 9.  Spustit jako správce a otevřete příkazový řádek nebo prostředí PowerShell a změňte adresář na rozbalené složce. Například cd C:\WaImportExportV1
 10. Zkopírujte následující příkazový řádek do textového editoru a upravit ho vytvořit příkazového řádku:
 
     ```
-    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ 
+    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ /skipwrite 
     ```
     
     Tyto možnosti příkazového řádku jsou popsané v následující tabulce:
@@ -50,13 +50,13 @@ Postupujte podle níže uvedených pokynů, pokud data na disku má být importo
     |/BK:     |Klíč nástroje BitLocker pro jednotku.         |
     |/srcdir:     |Následuje písmeno disku budou zaslány `:\`. Například, `D:\`.         |
     |/dstdir:     |Název cílové kontejneru ve službě Azure Storage         |
-
+    |/skipwrite:     |Možnost, která určuje, že se žádná nová data potřeba kopírovat a existující data na disku je nutné připravit         |
 1. Krok 10 opakujte pro každý disk, který musí být součástí.
 2. Deník soubor s názvem zadaný pomocí parametru /j: se vytvoří pro každé spuštění příkazového řádku.
 
 ### <a name="step-2-create-an-import-job-on-azure-portal"></a>Krok 2: Vytvoření úlohy importu na portálu Azure.
 
-1. Protokol k https://portal.azure.com/ a v části Další služby -> úložiště -> "úlohy importu a exportu" klikněte na tlačítko **úlohy importu a exportu vytvořit**.
+1. Přihlaste se k https://portal.azure.com/ a v části Další služby -> úložiště -> "úlohy importu a exportu" klikněte na tlačítko **úlohy importu a exportu vytvořit**.
 
 2. V části základní informace vyberte "Importu do Azure", zadejte řetězec pro název úlohy, vyberte předplatné, zadejte nebo vyberte skupinu prostředků. Zadejte popisný název úlohy importu. Všimněte si, že, které zadáte název může obsahovat jenom malá písmena, číslice, pomlčky a podtržítka, musí začínat písmenem a nesmí obsahovat mezery. Můžete použít název, který jste se rozhodli sledovat vaše úlohy v době, kdy jsou v průběhu a po jejich dokončení.
 
@@ -191,7 +191,7 @@ Podporované přenosů umístění:
 * Německo – střed
 * Německo – severovýchod
 
-### <a name="shipping"></a>Expedice
+### <a name="shipping"></a>Přesouvání
 **Přesouvání jednotky k datovému centru:**
 
 Při vytváření úlohu import nebo export, bude třeba zadat adresu příjemce jednoho z podporovaných umístění pro odeslání jednotky. Je zadaná adresa přenosů závisí na umístění účtu úložiště, ale nemusí být stejné jako vaše umístění účtu úložiště.
@@ -262,9 +262,9 @@ Najdete v jednom z následujících stavů úlohy v závislosti na tom, kde je v
 | Stav úlohy | Popis |
 |:--- |:--- |
 | Vytváření | Po vytvoření úlohy, je její stav nastavit na vytváření. Když úloha je ve stavu vytvoření, službu Import/Export předpokládá, že jednotky nebyly byla odeslaná do datového centra. Úlohy mohou zůstat ve stavu vytvoření až dvou týdnů, po které se automaticky odstraní službou. |
-| Expedice | Po dodáte vašeho balíčku, by měl aktualizovat informace o sledování na portálu Azure.  Tato úloha zapnout do "Přesouvání". Úloha zůstane ve stavu přesouvání dobu až dvou týdnů. 
+| Přesouvání | Po dodáte vašeho balíčku, by měl aktualizovat informace o sledování na portálu Azure.  Tato úloha zapnout do "Přesouvání". Úloha zůstane ve stavu přesouvání dobu až dvou týdnů. 
 | Přijato | Po přijetí všech jednotkách v datovém centru, nastaví se na přijaté stav úlohy. |
-| Probíhá přesun | Alespoň jedna jednotka zahájení zpracování, bude stav úlohy na přenos nastavovat. Najdete v části stavy jednotky pod podrobné informace. |
+| Přenos | Alespoň jedna jednotka zahájení zpracování, bude stav úlohy na přenos nastavovat. Najdete v části stavy jednotky pod podrobné informace. |
 | Balení | Po dokončení zpracování všech jednotkách, úlohy budou umístěny ve stavu balení dokud jednotky jsou sice vám. |
 | Dokončené | Po všechny jednotky byly dodány zpět na zákazníka, pokud úloha byla dokončena bez chyb, bude úloha nastavit stav dokončeno. Úloha se automaticky odstraní po 90 dnech ve stavu dokončeno. |
 | Uzavřeno | Po všechny jednotky byly dodány zpět na zákazníka, pokud zde nejsou žádné chyby během zpracování úlohy, bude úloha nastavit na zavřeném stavu. Úlohy budou automaticky odstraněny po 90 dnech v uzavřeném stavu. |
@@ -277,7 +277,7 @@ Následující tabulka popisuje všechny stavy, které může předávat každé
 | Zadaný | Pro úlohu importu při vytvoření úlohy z portálu Azure počáteční stav pro jednotku je zadaná stavu. Pro úlohy exportu vzhledem k tomu, že není zadána žádná jednotka při vytvoření úlohy, stav počáteční jednotky je stav přijaté. |
 | Přijato | Jednotka přechody stavu přijaté při importu a exportu služby operátor má zpracování jednotek, které byly přijaty z společnosti přesouvání úlohy importu. Stav počáteční jednotky pro úlohy exportu, je stav přijaté. |
 | NeverReceived | Jednotka se přesune do stavu NeverReceived při přijetí balíčku pro úlohu, ale balíček neobsahuje jednotku. Jednotku také můžete přesunout do tohoto stavu, pokud to bylo dva týdny, protože služba přijala přesouvání informace, ale balíček nebyl ještě přijaty v datovém centru. |
-| Probíhá přesun | Na jednotku se přesune do stavu přenos zahájení službu k přenosu dat z jednotky do služby Windows Azure Storage. |
+| Přenos | Na jednotku se přesune do stavu přenos zahájení službu k přenosu dat z jednotky do služby Windows Azure Storage. |
 | Dokončené | Jednotku přesune do stav dokončeno, když služba má úspěšně přenesla všechna data bez chyb.
 | CompletedMoreInfo | Jednotku přesune do stavu CompletedMoreInfo, když služba zjistila některé problémy při kopírování dat z nebo na jednotku. Informace může obsahovat chyby, upozornění a informativní zprávy o přepsání objektů BLOB.
 | ShippedBack | Jednotka přesune do stavu ShippedBack má byla zakoupení z center zálohování dat na návratovou adresu. |
@@ -569,7 +569,7 @@ Pokud používáte [WAImportExport nástroj](http://download.microsoft.com/downl
 DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
 G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nastavení nástroje WAImportExport](storage-import-export-tool-how-to.md)
 * [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 62e047d706bdc42abbe44340c87267e59eb84369
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: cd8274ab6b50eee83bc3e41ea543930aa309e790
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
 
@@ -49,12 +49,6 @@ Pokud tyto podmínky se již existují ve vašem prostředí, pokračujte [zálo
 Než se připravíte prostředí, ujistěte se, že jste pochopili tato omezení:
 
 * Zálohování virtuálních počítačů s více než 16 datových disků není podporována.
-* Zálohování virtuálních počítačů s daty velikosti disku je větší než 1,023 GB není podporována.
-
-  > [!NOTE]
-  > Máme privátní Preview verzi pro podporu zálohování pro virtuální počítače s víc než jeden disky TB. Podrobnosti najdete v části [privátní Preview verzi pro podporu zálohování virtuálních počítačů velké diskové](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
-  >
-
 * Zálohování virtuálních počítačů s vyhrazenou IP adresu a žádný definovaný koncový bod není podporována.
 * Zálohování virtuálních počítačů Linux zašifrovaná pomocí šifrování Linux Unified klíč instalační program (LUKS) není podporována.
 * Není doporučeno, zálohování virtuálních počítačů, které obsahují sdílené svazky clusteru (CSV) nebo souborový Server škálovaný na konfiguraci. Vyžadují zahrnující všechny virtuální počítače, které jsou součástí konfigurace clusteru během úlohu snímku. Zálohování Azure nepodporuje konzistence více virtuálních počítačů. 
@@ -307,7 +301,7 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 ## <a name="questions"></a>Máte dotazy?
 Pokud máte dotazy nebo pokud je všechny funkce, kterou chcete uvítali, [pošlete nám svůj názor](http://aka.ms/azurebackup_feedback).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď, když připravíte prostředí pro zálohování virtuálního počítače, vaše další logické krokem je vytvoření zálohy. Plánování článek poskytuje podrobnější informace o zálohování virtuálních počítačů.
 
 * [Zálohování virtuálních počítačů](backup-azure-arm-vms.md)

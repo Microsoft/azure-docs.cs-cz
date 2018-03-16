@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: 
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: bfc95588378466fe1e83bcc4e899eca6b66b358a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 98d58b97457cc64954094d7e8d8b4defca7e05ff
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Datové sady a propojené služby v Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -184,31 +184,37 @@ V příkladu v předchozí části, typ datové sady je nastavený na **AzureSql
 }
 ```
 ## <a name="dataset-structure"></a>Struktura datové sady
-**Struktura** část je nepovinná. Definuje schéma datové sady ve obsahující kolekci názvů a typy dat sloupců. V části struktura použijete k poskytování informací o typu, který se používá k převést typy a mapování sloupců ze zdroje do cíle. V následujícím příkladu, datová sada má tři sloupce: časové razítko, název projektu a pageviews. Jsou typu řetězec, řetězec a Decimal, v uvedeném pořadí.
-
-```json
-[
-    { "name": "timestamp", "type": "String"},
-    { "name": "projectname", "type": "String"},
-    { "name": "pageviews", "type": "Decimal"}
-]
-```
+**Struktura** část je nepovinná. Definuje schéma datové sady ve obsahující kolekci názvů a typy dat sloupců. V části struktura použijete k poskytování informací o typu, který se používá k převést typy a mapování sloupců ze zdroje do cíle.
 
 Každý sloupec ve struktuře obsahuje následující vlastnosti:
 
 Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
 jméno | Název sloupce. | Ano
-type | Datový typ sloupce. | Ne
+type | Datový typ sloupce. Objekt pro vytváření dat podporuje následující typy průběžných dat jako Povolené hodnoty: **Int16, Int32, Int64, jedním, Double, Decimal, Byte [], logická hodnota, řetězec, Guid, Datetime, Datetimeoffset a časový interval** | Ne
 Jazyková verze | . Na základě NET jazykovou verzi, která se použije, když je typ typ formátu .NET: `Datetime` nebo `Datetimeoffset`. Výchozí hodnota je `en-us`. | Ne
-Formát | Řetězec, který se má použít, když je typ typ formátu .NET formátu: `Datetime` nebo `Datetimeoffset`. | Ne
+Formát | Řetězec, který se má použít, když je typ typ formátu .NET formátu: `Datetime` nebo `Datetimeoffset`. Odkazovat na [vlastní řetězců data a času formát](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings) k formátování data a času. | Ne
 
-Následující pokyny vám pomohou určit, kdy se mají zahrnout informace o struktuře a co mají být zahrnuty **struktura** části.
+### <a name="example"></a>Příklad:
+V následujícím příkladu předpokládejme, že zdroj dat objektů Blob je ve formátu CSV a obsahuje tři sloupce: ID uživatele, název a lastlogindate. Jsou typu Int64, String a datum a čas ve formátu data a času vlastní pomocí zkrácené francouzštině názvy den v týdnu.
 
-- **Pro strukturovaná data zdroje**, zadejte v části struktura pouze v případě, že chcete namapovat zdrojové sloupce na jímky sloupců a jejich názvy nejsou stejné. Tento druh zdroj strukturovaných dat ukládá informace schématu a typu dat společně s samotná data. Příklady strukturovaných dat zdroje: SQL Server, Oracle a Azure SQL Database.<br/><br/>Protože je již k dispozici pro strukturovaná data zdroje informací o typu, by neměla zahrnovat informace o typu, pokud obsahovat části struktura.
-- **Pro schéma pro zdroje dat pro čtení (konkrétně úložiště objektů Blob)**, můžete k ukládání dat bez ukládání žádné schéma nebo typ informace s daty. Pro tyto typy zdrojů dat zahrnovat chcete namapovat zdrojové sloupce na jímky sloupce struktury. Také zahrnovat struktura, když je datová sada vstupem pro aktivitu kopírování a datové typy sady zdroje dat mají být převedeny na nativní typy pro jímky.<br/><br/> Objekt pro vytváření dat podporuje následující hodnoty pro poskytnutí informací o typu ve struktuře: `Int16, Int32, Int64, Single, Double, Decimal, Byte[], Boolean, String, Guid, Datetime, Datetimeoffset, and Timespan`. 
+Definujte strukturu datové sady objektu Blob takto společně s definic typů pro sloupce:
 
-Další informace o způsobu, jakým objekt pro vytváření dat mapuje zdrojových dat za účelem jímky z [schéma a mapování typu]( copy-activity-schema-and-type-mapping.md) a kdy se mají zadat informace o struktuře.
+```json
+"structure":
+[
+    { "name": "userid", "type": "Int64"},
+    { "name": "name", "type": "String"},
+    { "name": "lastlogindate", "type": "Datetime", "culture": "fr-fr", "format": "ddd-MM-YYYY"}
+]
+```
+
+### <a name="guidance"></a>Doprovodné materiály
+
+Následující pokyny vám pomohou pochopit, kdy se mají zahrnout informace o struktuře a co mají být zahrnuty **struktura** části. Další informace o způsobu mapování objektu pro vytváření dat zdrojových dat za účelem jímky a kdy k zadání informací o struktuře z [schéma a mapování typu](copy-activity-schema-and-type-mapping.md).
+
+- **Zdroje dat silné schématu**, zadejte v části struktura pouze v případě, že chcete namapovat zdrojové sloupce na jímky sloupců a jejich názvy nejsou stejné. Tento druh zdroj strukturovaných dat ukládá informace schématu a typu dat společně s samotná data. Příklady strukturovaných dat zdroje: SQL Server, Oracle a Azure SQL Database.<br/><br/>Protože je již k dispozici pro strukturovaná data zdroje informací o typu, by neměla zahrnovat informace o typu, pokud obsahovat části struktura.
+- **Pro žádný/weak schématu zdroje dat například textového souboru v úložišti objektů blob**, zahrnout struktura je datová sada vstupem pro aktivitu kopírování a datové typy sady zdroje dat mají být převedeny na nativní typy pro jímky. A pokud chcete namapovat zdrojové sloupce na jímky sloupce zahrnovat struktura...
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
 Datové sady můžete vytvořit pomocí jedné z těchto nástrojů nebo sady SDK: [.NET API](quickstart-create-data-factory-dot-net.md), [prostředí PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), šablony Azure Resource Manageru a portálu Azure

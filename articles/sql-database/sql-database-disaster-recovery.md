@@ -2,25 +2,19 @@
 title: "Zotavení po havárii pro databáze SQL | Microsoft Docs"
 description: "Naučte se obnovit databázi z místního datového centra výpadku nebo chyby s Azure SQL Database aktivní geografickou replikaci a možnosti geografické obnovení."
 services: sql-database
-documentationcenter: 
 author: anosov1960
 manager: jhubbard
-editor: monicar
-ms.assetid: 4800960e-3f9d-40ce-9e55-fb7f2784c067
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 03/05/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: cc4f8e1566ede1d730b40c2e5ce6364786c102d4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e9ec0a0a602965561b77619123588db57c59993c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Obnova databáze SQL Azure nebo převzetí služeb při selhání na sekundární
 Azure SQL Database nabízí následující možnosti pro zotavení po výpadku:
@@ -101,7 +95,7 @@ Další informace o databázi pravidla výstrah najdete v tématu [přijímat oz
 ### <a name="enable-auditing"></a>Povolení auditování
 Pokud auditování je nutné pro přístup k databázi, budete muset povolit auditování po obnovení databáze. Další informace najdete v tématu [auditování databáze](sql-database-auditing.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o Azure SQL Database automatizované zálohování najdete v tématu [automatizované zálohování SQL Database](sql-database-automated-backups.md)
 * Další informace o obchodních scénářů návrhu a obnovení kontinuity najdete v tématu [kontinuity scénáře](sql-database-business-continuity.md)
 * Další informace o použití automatizované zálohování pro obnovení, najdete v části [obnovit databázi ze zálohy spouštěná služba](sql-database-recovery-using-backups.md)

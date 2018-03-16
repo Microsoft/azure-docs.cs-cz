@@ -2,7 +2,7 @@
 title: "Pracovní postup triggery a akce - Azure Logic Apps | Microsoft Docs"
 description: "Další informace o aktivační události a akce vytvoření automatizované pracovní postupy a procesy s logic apps"
 services: logic-apps
-author: MandiOhlinger
+author: divyaswarnkar
 manager: anneta
 editor: 
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: klam; LADocs
-ms.openlocfilehash: af30fd30f389cdc2070c45ae3b6e2cb1165239e7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 28d28888ce66c354da39dc636579655aadbb9e51
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="triggers-and-actions-for-logic-app-workflows"></a>Triggery a akce pro pracovní postupy aplikace logiky
 
@@ -193,10 +193,10 @@ Této aktivační události dotazuje zadaný koncový bod a zkontroluje odpově�
 | Název elementu | Požaduje se | Typ | Popis | 
 | ------------ | -------- | ---- | ----------- | 
 | metoda | Ano | Řetězec | Použije jeden z těchto metod HTTP: "GET", "POST", "PUT", "Odstranit", "OPRAVIT" nebo "HEAD" | 
-| identifikátor uri | Ano| Řetězec | Protokolu HTTP nebo HTTPs koncový bod, který kontroluje, aktivační události. Maximální velikost řetězce: 2 KB | 
+| uri | Ano| Řetězec | Protokolu HTTP nebo HTTPs koncový bod, který kontroluje, aktivační události. Maximální velikost řetězce: 2 KB | 
 | Dotazy | Ne | Objekt | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
-| hlavičky | Ne | Objekt | Představuje každá hlavička odeslaný v požadavku. <p>Chcete-li například nastavení jazyka a typu na vyžádání: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| hlavní část | Ne | Objekt | Představuje datovou část, která je odeslána koncovému bodu. | 
+| Záhlaví | Ne | Objekt | Představuje každá hlavička odeslaný v požadavku. <p>Chcete-li například nastavení jazyka a typu na vyžádání: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| Text | Ne | Objekt | Představuje datovou část, která je odeslána koncovému bodu. | 
 | retryPolicy | Ne | Objekt | Tento objekt použijte k přizpůsobení chování opakování 4xx nebo 5xx chyby. Další informace najdete v tématu [opakujte zásady](../logic-apps/logic-apps-exception-handling.md). | 
 | Ověřování | Ne | Objekt | Představuje metodu, která požadavek by měl používat pro ověřování. Další informace najdete v tématu [odchozí ověření Scheduleru](../scheduler/scheduler-outbound-authentication.md). <p>Nad Scheduler, existuje více podporované jednu vlastnost: `authority`. Ve výchozím nastavení, tato hodnota je `https://login.windows.net` není-li zadána, ale můžete použít jinou hodnotu, jako například`https://login.windows\-ppe.net`. | 
 ||||| 
@@ -235,8 +235,8 @@ Zde jsou výstupy aktivace protokolu HTTP:
   
 | Název elementu | Typ | Popis |
 | ------------ | ---- | ----------- |
-| hlavičky | Objekt | Hlavičky HTTP odpovědi | 
-| hlavní část | Objekt | Text odpovědi HTTP | 
+| Záhlaví | Objekt | Hlavičky HTTP odpovědi | 
+| Text | Objekt | Text odpovědi HTTP | 
 |||| 
 
 <a name="apiconnection-trigger"></a>
@@ -270,8 +270,8 @@ V základních funkcí této aktivační události funguje jako triggeru protoko
 | hostitel | Ano | Objekt | Hostované brány a ID pro aplikaci API | 
 | metoda | Ano | Řetězec | Použije jeden z těchto metod HTTP: "GET", "POST", "PUT", "Odstranit", "OPRAVIT" nebo "HEAD" | 
 | Dotazy | Ne | Objekt | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
-| hlavičky | Ne | Objekt | Představuje každá hlavička odeslaný v požadavku. <p>Chcete-li například nastavení jazyka a typu na vyžádání: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| hlavní část | Ne | Objekt | Představuje datovou část, která je odeslána koncovému bodu. | 
+| Záhlaví | Ne | Objekt | Představuje každá hlavička odeslaný v požadavku. <p>Chcete-li například nastavení jazyka a typu na vyžádání: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| Text | Ne | Objekt | Představuje datovou část, která je odeslána koncovému bodu. | 
 | retryPolicy | Ne | Objekt | Tento objekt použijte k přizpůsobení chování opakování 4xx nebo 5xx chyby. Další informace najdete v tématu [opakujte zásady](../logic-apps/logic-apps-exception-handling.md). | 
 | Ověřování | Ne | Objekt | Představuje metodu, která požadavek by měl používat pro ověřování. Další informace najdete v tématu [odchozí ověření Scheduleru](../scheduler/scheduler-outbound-authentication.md). | 
 ||||| 
@@ -298,8 +298,8 @@ Zde jsou výstupy pro aktivační procedury pro připojení k rozhraní API:
   
 | Název elementu | Typ | Popis |
 | ------------ | ---- | ----------- |
-| hlavičky | Objekt | Hlavičky HTTP odpovědi | 
-| hlavní část | Objekt | Text odpovědi HTTP | 
+| Záhlaví | Objekt | Hlavičky HTTP odpovědi | 
+| Text | Objekt | Text odpovědi HTTP | 
 |||| 
 
 Další informace o [jak ceny funguje pro připojení k rozhraní API aktivuje](../logic-apps/logic-apps-pricing.md#triggers).
@@ -365,8 +365,8 @@ Tady jsou výstupy z HTTPWebhook aktivovat a jsou příchozí žádost o:
   
 | Název elementu | Typ | Popis |
 | ------------ | ---- | ----------- |
-| hlavičky | Objekt | Hlavičky HTTP odpovědi | 
-| hlavní část | Objekt | Text odpovědi HTTP | 
+| Záhlaví | Objekt | Hlavičky HTTP odpovědi | 
+| Text | Objekt | Text odpovědi HTTP | 
 |||| 
 
 ## <a name="triggers-conditions"></a>Aktivační události: podmínky
@@ -547,7 +547,7 @@ Zde `inputs` objekt trvá těchto parametrů požadovaných pro tvorbu volání 
 | Název elementu | Požaduje se | Typ | Popis | 
 | ------------ | -------- | ---- | ----------- | 
 | metoda | Ano | Řetězec | Použije jeden z těchto metod HTTP: "GET", "POST", "PUT", "Odstranit", "OPRAVIT" nebo "HEAD" | 
-| identifikátor uri | Ano| Řetězec | Protokolu HTTP nebo HTTPs koncový bod, který kontroluje, aktivační události. Maximální velikost řetězce: 2 KB | 
+| uri | Ano| Řetězec | Protokolu HTTP nebo HTTPs koncový bod, který kontroluje, aktivační události. Maximální velikost řetězce: 2 KB | 
 | Dotazy | Ne | Objekt | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
 | hlavičky | Ne | Objekt | Představuje každá hlavička odeslaný v požadavku. <p>Chcete-li například nastavení jazyka a typu na vyžádání: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | hlavní část | Ne | Objekt | Představuje datovou část, která je odeslána koncovému bodu. | 
@@ -1335,7 +1335,7 @@ Tato akce umožňuje logicky akce skupiny v pracovním postupu. Oboru také zís
 | Akce | Ano | Objekt | Vnitřní akce, které jsou spouštěny v rámci oboru |
 ||||| 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o [jazyk definic workflowů funkce](../logic-apps/logic-apps-workflow-definition-language.md)
 * Další informace o [pracovního postupu REST API](https://docs.microsoft.com/rest/api/logic/workflows)

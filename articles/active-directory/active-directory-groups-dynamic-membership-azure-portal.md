@@ -16,11 +16,11 @@ ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 3ece2326a19e32666f46e8b737d15a48e335de6a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8a52d80f32f822691be862d566c17c84efc73c26
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Vytvořit pravidla založená na atributu pro dynamické členství ve skupině v Azure Active Directory
 V Azure Active Directory (Azure AD) můžete vytvořit rozšířených pravidel povolit komplexní založená na atributu dynamické členství skupiny. Tento článek podrobně atributy a syntaxe k vytvoření pravidla dynamické členství pro uživatele nebo zařízení.
@@ -35,6 +35,8 @@ Pokud žádné atributy uživatele nebo zařízení změnit, systém vyhodnotí 
 > Můžete vytvořit skupinu dynamické pro zařízení nebo uživatelů, ale nelze vytvořit pravidlo, které obsahuje uživatele a zařízení.
 > 
 > V tuto chvíli není možné vytvořit skupinu zařízení na základě atributů vlastnícím uživatele. Pravidla členství zařízení může odkazovat pouze na okamžitou atributy zařízení objektů v adresáři.
+> 
+> Microsoft Teams zatím nepodporuje dynamické členství ve skupině. Můžete ověřit chybu v protokolech přidružené "Nelze migrovat dynamické členství skupiny"
 
 ## <a name="to-create-an-advanced-rule"></a>Vytvoření pokročilé pravidla
 1. Přihlaste se k [centra pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globální správce nebo správce účtu uživatele.

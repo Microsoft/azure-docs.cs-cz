@@ -3,25 +3,19 @@ title: "Návrh službu s vysokou dostupností pomocí Azure SQL Database | Micro
 description: "Další informace o návrhu aplikace pro používání Azure SQL Database služeb s vysokou dostupností."
 keywords: "cloud zotavení po havárii, řešení zotavení po havárii, zálohování dat aplikace, geografická replikace, obchodní kontinuity plánování"
 services: sql-database
-documentationcenter: 
 author: anosov1960
-manager: jhubbard
-editor: monicar
-ms.assetid: e8a346ac-dd08-41e7-9685-46cebca04582
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 03/07/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: aa6a032a9d42038502cf074ef8aeff8e2e8b0b31
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c596006e33c2c4f0228c14a65f58e82bcf300727
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Navrhování služeb s vysokou dostupností pomocí Azure SQL Database
 
@@ -162,7 +156,7 @@ Strategie zotavení po havárii konkrétní cloudové můžete kombinovat nebo r
 ||Přístup pro čtení a zápis = nula. | Přístup pro čtení a zápis = čas detekce selhání + období odkladu ztráty dat. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Přehled kontinuity obchodních a scénářů najdete v tématu [obchodní kontinuity přehled](sql-database-business-continuity.md)
 * Další informace o skupinách geografická replikace a převzetí služeb při selhání najdete v tématu [aktivní geografickou replikaci](sql-database-geo-replication-overview.md)  
 * Informace o aktivní geografickou replikaci s elastické fondy najdete v tématu [strategie zotavení po havárii elastický fond](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

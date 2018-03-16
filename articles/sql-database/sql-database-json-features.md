@@ -2,24 +2,18 @@
 title: "Funkce Azure SQL databáze JSON | Microsoft Docs"
 description: "Databáze SQL Azure umožňuje analýzu, dotazů a formátování dat v notaci JavaScript Object Notation (JSON)."
 services: sql-database
-documentationcenter: 
 author: jovanpop-msft
-manager: jhubbard
-editor: 
-ms.assetid: 55860105-2f5f-4b10-87a0-99faa32b5653
+manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
-ms.devlang: NA
 ms.date: 11/15/2016
 ms.author: jovanpop
-ms.workload: On Demand
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.openlocfilehash: 8877b0bb779501df003ce11d66d9625c2f99e9ce
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 353a1cc99f122c773f0a005a20f04391236ad913
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Začínáme s funkcí JSON v Azure SQL Database
 Azure SQL Database umožňuje analyzovat a zadávat dotazy na data v JavaScript Object Notation [(JSON)](http://www.json.org/) formátu a exportovat relačních dat jako JSON text.
@@ -196,7 +190,7 @@ END
 ```
 Kolekce objednávek naformátovaný jako pole JSON a zadat jako parametr uložené procedury je možné analyzovat a vložit do tabulky objednávky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Informace o tom, jak integrovat JSON do vaší aplikace, podívejte se na tyto prostředky:
 
 * [Blog na TechNetu](https://blogs.technet.microsoft.com/dataplatforminsider/2016/01/05/json-in-sql-server-2016-part-1-of-4/)

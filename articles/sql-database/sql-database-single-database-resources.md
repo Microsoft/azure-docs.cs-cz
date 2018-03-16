@@ -2,24 +2,18 @@
 title: "Izolované databáze Azure SQL Database | Microsoft Docs"
 description: "Spravovat úrovně služby, úroveň výkonu a množství storagea pro jednu databázi Azure SQL."
 services: sql-database
-documentationcenter: na
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 2c179c3b0704a6e88d718ba9f102e71c0ee1d6ef
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 167a72ae55052b8ac1dfe8f032f136a9bf8bcedf
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Spravovat prostředky pro jednu databázi v databázi SQL Azure
 
@@ -113,7 +107,7 @@ Nastavit nebo změnit databáze Azure SQL úrovně služeb, úrovně výkonu a m
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o úrovních služeb, úrovně výkonu a objemy úložiště, najdete v tématu [úrovních služeb](sql-database-service-tiers.md).
 - Další informace o elastické fondy najdete v tématu [elastické fondy](sql-database-elastic-pool.md).

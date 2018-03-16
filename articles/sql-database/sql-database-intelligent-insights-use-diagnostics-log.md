@@ -2,24 +2,19 @@
 title: "Inteligentní diagnostiky výkonu Statistika-protokol – Azure SQL Database | Microsoft Docs"
 description: "Inteligentní statistika poskytuje protokolu diagnostiky problémů s výkonem databáze SQL Azure"
 services: sql-database
-documentationcenter: 
 author: danimir
-manager: drasumic
-editor: carlrab
-ms.assetid: 
+manager: craigg
+ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: e147ca57658c232580fd9867790e55c3454e7e05
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b380d3a8a35750602a4a0d20d595f71b125fc118
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Použití protokolu diagnostiky výkonu inteligentního Statistika Azure SQL Database
 
@@ -141,7 +136,7 @@ Poslední část protokol inteligentního Statistika výkonu se vztahují na Ana
 
 Můžete použít protokol inteligentního Statistika výkonu s [Azure Log Analytics]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) nebo řešení třetí strany pro vlastní DevOps výstrahy a vytváření sestav funkce.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace o [inteligentního Statistika](sql-database-intelligent-insights.md) koncepty.
 - Zjistěte, jak [řešení potíží s výkonem databáze SQL Azure s inteligentního Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Zjistěte, jak [monitorovat Azure SQL Database pomocí Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).

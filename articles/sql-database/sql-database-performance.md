@@ -2,24 +2,18 @@
 title: "Monitorování a zlepšit výkon - Azure SQL Database | Microsoft Docs"
 description: "Databáze SQL Azure poskytuje nástroje pro sledování výkonu, který vám pomůže identifikovat oblasti, které může zlepšit výkon aktuální dotaz."
 services: sql-database
-documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: monicar
-ms.assetid: a60b75ac-cf27-4d73-8322-ee4d4c448aa2
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
 ms.date: 07/19/2016
 ms.author: sstein
-ms.openlocfilehash: 49b24619372d41ff25f815ca493ca7e6ce69ef9c
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 1d327e33a84917688e70f234df311e7b7cf4b30b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-and-improve-performance"></a>Monitorování a zlepšení výkonu
 Azure SQL Database identifikuje potenciální problémy ve vaší databázi a doporučuje akce, které může zlepšit výkon vašich úloh zadáním inteligentního vyladění akce a doporučení.
@@ -46,7 +40,7 @@ Toto zobrazení obsahuje souhrn výkon databáze a pomůže vám s výkonem, lad
 * **Automatické ladění** dlaždici ukazuje [automatické ladění konfigurace](sql-database-automatic-tuning-enable.md) pro vaši databázi (optimalizace pro možnosti, které budou automaticky použita pro vaši databázi). Kliknutím na tuto dlaždici, otevře se dialogové okno Konfigurace automatizace.
 * **Dotazy na databázi** dlaždice zobrazuje souhrn výkon dotazů pro databázi (celkový počet jednotek DTU využití a horní na prostředky dotazy). Kliknutím na tuto dlaždici přejdete k  **[Query Performance Insight](#query-performance-insight)**.
 
-## <a name="performance-recommendations"></a>Doporučení výkonu
+## <a name="performance-recommendations"></a>Doporučení k výkonu
 Tato stránka obsahuje inteligentního [ladění doporučení](sql-database-advisor.md) , může zlepšit výkon vaší databáze. Na této stránce se zobrazují následující typy doporučení:
 
 * Doporučení pro indexy, které se vytvořit nebo vyřadit.
@@ -73,7 +67,7 @@ Databáze Azure SQL můžete vyladit výkon databáze automaticky použitím [v�
 
 Další informace o této stránce naleznete v článku  **[použití Query Performance Insight](sql-database-query-performance.md)**.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 * [Azure SQL Database – Průvodce výkonem pro izolované databáze](sql-database-performance-guidance.md)
 * [Pokud má být použita fondu elastické databáze?](sql-database-elastic-pool-guidance.md)
 

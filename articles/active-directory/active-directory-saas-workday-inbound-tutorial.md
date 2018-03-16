@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 825bf3f6a3ea07cb229f00c81ad699d792ac53f9
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 976d7e7cb304a24f235e51952ce04826776e2789
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro zřizování automatické uživatelů
 
@@ -35,7 +35,7 @@ Cílem tohoto kurzu je tak, aby zobrazovalo kroky, které je třeba provést imp
 
 * **Zpětný zápis e-mailových adres k Workday** -uživatele Azure AD zřizování služby můžete zápisu vybrané atributy uživatele Azure AD zpátky do Workday, jako je například e-mailovou adresu.
 
-### <a name="scenarios-covered"></a>Pokryté scénáře
+### <a name="what-human-resources-scenarios-does-it-cover"></a>Jaké scénáře lidských zdrojů netýká?
 
 Workday uživatele pracovní postupy zřizování podporována službou Azure AD uživatele zřizování Povolte následující lidské zdroje a scénářů správy životního cyklu identity:
 
@@ -46,6 +46,20 @@ Workday uživatele pracovní postupy zřizování podporována službou Azure AD
 * **Zaměstnanec ukončení** – Pokud zaměstnanec je ukončen v Workday, jejich uživatelský účet je automaticky zakázán v Active Directory, Azure Active Directory a volitelně Office 365 a [jiné aplikace SaaS nepodporuje v Azure AD](active-directory-saas-app-provisioning.md).
 
 * **Zaměstnanec znovu najímá** – Pokud zaměstnanec je rehired ve Workday, jejich starý účet můžete automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaši volbu) služby Active Directory, Azure Active Directory a volitelně Office 365 a [jiné aplikace SaaS podporovaný službou Azure AD](active-directory-saas-app-provisioning.md).
+
+### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Kdo je tento uživatel zřizování řešení nejlépe vhodné pro?
+
+Tento uživatel Workday zřizování řešení je v současné době ve verzi public preview a je ideální pro:
+
+* Organizace, které požadavky předem připravené, cloudové řešení pro zřizování uživatelů Workday
+
+* Organizace, které vyžadují zřizování přímé uživatelů z Workday do služby Active Directory nebo Azure Active Directory
+
+* Organizace, které vyžaduje, aby uživatel zřídí pomocí dat získaných z Workday HCM modulu (viz [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html)) 
+
+* Organizace, které vyžadují připojení, přesunutí, a ponechat uživatelům synchronizovat s nejméně jedné doménové struktury, domény a organizační jednotky pouze na základě změnit informace o uživateli v modulu Workday HCM (viz [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
+
+* Organizace v Office 365 e-mailu
 
 
 ## <a name="planning-your-solution"></a>Plánování řešení
@@ -62,10 +76,9 @@ Scénář uvedených v tomto kurzu se předpokládá, že už máte následujíc
 * Pro zřizování uživatelů do služby Active Directory, je potřeba hostitel připojený k doméně serveru spuštěna služba Windows 2012 nebo vyšší [místní agent synchronizace](https://go.microsoft.com/fwlink/?linkid=847801)
 * [Azure AD Connect](connect/active-directory-aadconnect.md) pro synchronizaci mezi službou Active Directory a Azure AD
 
-
 ### <a name="solution-architecture"></a>Architektura řešení
 
-Azure AD poskytuje bohatou sadu zřizování konektory, které vám pomůžou vyřešit, zřizování a životního cyklu správy identit z Workday do služby Active Directory, Azure AD, aplikace SaaS a nad rámec. Které funkce bude používat a jak nastavit řešení se budou lišit v závislosti na prostředí a požadavky vaší organizace. Jako první krok udělejte si inventuru kolik následující jsou přítomna a nasazené ve vaší organizaci:
+Azure AD poskytuje bohatou sadu zřizování konektory, které vám pomůžou vyřešit zřizování a identity životní cyklus správy z Workday do služby Active Directory, Azure AD, aplikace SaaS a nad rámec. Které funkce bude používat a jak nastavit řešení se budou lišit v závislosti na prostředí a požadavky vaší organizace. Jako první krok udělejte si inventuru kolik následující jsou přítomna a nasazené ve vaší organizaci:
 
 * Kolik doménových struktur Active Directory, jsou používány?
 * Kolik domény služby Active Directory, jsou používány?
@@ -74,6 +87,7 @@ Azure AD poskytuje bohatou sadu zřizování konektory, které vám pomůžou vy
 * Existují uživatelé, kteří musí být zřízená služby Active Directory a Azure Active Directory (např. "hybridní" uživatelů)?
 * Existují uživatelé, kteří musí být zřízená Azure Active Directory, ale není Active Directory (např. "jen cloudu" uživatelů)?
 * E-mailové adresy uživatele potřebujete možné zpětně zapsat do Workday?
+
 
 Až budete mít odpovědi na tyto otázky, můžete naplánovat vaší Workday zřizování nasazení podle pokynů níže.
 
@@ -144,7 +158,7 @@ Budete muset vytvořit skupinu zabezpečení systému integrace bez omezení a p
    
     ![Skupiny CreateSecurity](./media/active-directory-saas-workday-inbound-tutorial/IC750981.png "CreateSecurity skupiny")
 2. Dokončení **vytvořit skupinu zabezpečení** úloh.  
-3. Vyberte skupiny zabezpečení systému integrace – neomezeným z **typ z nevyužívá dělené tabulky skupiny zabezpečení** rozevíracího seznamu.
+3. Vyberte **skupina zabezpečení systému integrace (neomezená)** z **typ z nevyužívá dělené tabulky skupiny zabezpečení** rozevíracího seznamu.
 4. Vytvořte skupinu zabezpečení, do které budou členy explicitně přidány. 
    
     ![Skupiny CreateSecurity](./media/active-directory-saas-workday-inbound-tutorial/IC750982.png "CreateSecurity skupiny")
@@ -164,21 +178,11 @@ Budete muset vytvořit skupinu zabezpečení systému integrace bez omezení a p
     ![Skupina zabezpečení systému](./media/active-directory-saas-workday-inbound-tutorial/IC750985.png "skupina zabezpečení systému")  
 
 ### <a name="configure-security-group-options"></a>Konfigurovat možnosti pro skupiny zabezpečení
-V tomto kroku budete zabezpečení domény udělení oprávnění zásad pro dat pracovníků zabezpečeny následující zásady zabezpečení domény:
-
-
-| Operace | Zásady zabezpečení domény |
-| ---------- | ---------- | 
-| Operace GET a Put |  Zřizování externího účtu |
-| Operace GET a Put | Worker dat: Sestavy veřejné pracovního procesu |
-| Operace GET a Put | Dat pracovníků: Všechny pozice |
-| Operace GET a Put | Pracovní Data: Personální informace aktuální |
-| Operace GET a Put | Data pracovního procesu: Název firmy na profilu pracovní |
-| Zobrazovat a upravovat | Dat pracovníků: Pracovní e-mailu |
+V tomto kroku budete zabezpečení domény udělte oprávnění zásad pro pracovní data do skupiny zabezpečení.
 
 **Chcete-li nakonfigurovat možnosti pro skupiny zabezpečení:**
 
-1. Do vyhledávacího pole zadejte zásady zabezpečení domény a potom klikněte na odkaz **zásady zabezpečení domény pro funkční oblast**.  
+1. Zadejte **zásady zabezpečení domény** do pole hledání a klikněte na odkaz **zásady zabezpečení domény pro funkční oblast**.  
    
     ![Zásady zabezpečení domény](./media/active-directory-saas-workday-inbound-tutorial/IC750986.png "zásady zabezpečení domény")  
 2. Vyhledejte systému a vyberte **systému** funkční oblast.  Klikněte na **OK**.  
@@ -190,23 +194,17 @@ V tomto kroku budete zabezpečení domény udělení oprávnění zásad pro dat
 4. Klikněte na tlačítko **upravit oprávnění**a pak klikněte na **upravit oprávnění** stránky dialogové okno Přidat novou skupinu zabezpečení do seznamu skupin zabezpečení s **získat** a **Put**  integrace oprávnění. 
    
     ![Upravit oprávnění](./media/active-directory-saas-workday-inbound-tutorial/IC750989.png "upravit oprávnění")  
-5. Zopakujte krok 1 výše se vrátíte na obrazovku pro výběr funkčním oblastem a tentokrát, vyhledejte pracovníky, vyberte **personální funkční oblast** a klikněte na tlačítko **OK**.
+    
+5. Opakujte kroky 1 – 4 výše pro každou z těchto zbývající zásady zabezpečení:
+
+| Operace | Zásady zabezpečení domény |
+| ---------- | ---------- | 
+| Operace GET a Put | Worker dat: Sestavy veřejné pracovního procesu |
+| Operace GET a Put | Pracovní Data: Kontaktní informace o práci |
+| Získat | Dat pracovníků: Všechny pozice |
+| Získat | Pracovní Data: Personální informace aktuální |
+| Získat | Data pracovního procesu: Název firmy na profilu pracovní |
    
-    ![Zásady zabezpečení domény](./media/active-directory-saas-workday-inbound-tutorial/IC750990.png "zásady zabezpečení domény")  
-6. V seznamu zásad zabezpečení pro funkční oblast personální rozbalte **dat pracovníků: personální** a opakováním kroků 4 výše pro každou z nich zbývající zásady zabezpečení:
-
-   * Worker dat: Sestavy veřejné pracovního procesu
-   * Dat pracovníků: Všechny pozice
-   * Pracovní Data: Personální informace aktuální
-   * Data pracovního procesu: Název firmy na profilu pracovní
-   
-7. Zopakujte krok 1, výše, se vrátíte na obrazovku pro výběr funkční oblastí a tentokrát, vyhledejte **kontaktní údaje**vyberte funkční oblast správy zaměstnanců a klikněte na tlačítko **OK**.
-
-8.  V seznamu zásad zabezpečení pro funkční oblast personální rozbalte **dat pracovníků: pracovní kontaktní údaje**a opakováním kroků 4 výše pro zásady zabezpečení níže:
-
-    * Dat pracovníků: Pracovní e-mailu
-
-    ![Zásady zabezpečení domény](./media/active-directory-saas-workday-inbound-tutorial/IC750991.png "zásady zabezpečení domény")  
     
 ### <a name="activate-security-policy-changes"></a>Aktivovat změny zásad zabezpečení
 
@@ -225,6 +223,41 @@ V tomto kroku budete zabezpečení domény udělení oprávnění zásad pro dat
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Konfiguraci zřizování uživatelů z Workday do služby Active Directory
 Postupujte podle těchto pokynů ke konfiguraci zřizování z Workday pro každou doménovou strukturu služby Active Directory, které vyžadují zřizování pro uživatelský účet.
 
+### <a name="planning"></a>Plánování
+
+Před konfigurací zřizování uživatelů do doménové struktury služby Active Directory, zvažte následující otázky. Odpovědi na tyto otázky určí, jak oboru filtrů a mapování atributů je nutné nastavit. 
+
+* **Co uživatelé v Workday muset zřídit na těchto doménových strukturách služby Active Directory?**
+
+   * *Příklad: Uživatelé, kde atribut "Společnosti" Workday hodnotu "Contoso" a "Worker_Type" atribut obsahuje "Normální"*
+
+* **Jak se směrují uživatelů do jiné organizační jednotky (OU)?**
+
+   * *Příklad: Uživatelé jsou směrovány do organizační jednotky, které odpovídají pobočce, jak jsou definovány v Workday "Okres" a "Country_Region_Reference" atributy*
+
+* **Jak by měla být následující atributy vyplní ve službě Active Directory?**
+
+   * Běžný název (cn)
+      * *Příklad: Funkce User_ID Workday hodnotu, použijte jako sada podle lidských zdrojů*
+      
+   * ID zaměstnance (employeeId)
+      * *Příklad: Použijte hodnotu Workday Worker_ID*
+      
+   * Název účtu SAM (sAMAccountName)
+      * *Příklad: Použijte hodnotu funkce User_ID Workday, filtrovaný pomocí Azure AD zřizování výraz odebrat neplatné znaky*
+      
+   * Hlavní název uživatele (userPrincipalName)
+      * *Příklad: Použití funkce User_ID Workday hodnotu s Azure AD zřizování výraz k zadání názvu domény*
+
+* **Jak by uživatelé si měly odpovídat mezi Workday a služby Active Directory?**
+
+  * *Příklad: Uživatelé s konkrétní Workday "Worker_ID" hodnoty se shodují s uživateli služby Active Directory, kde "employeeID" mají stejnou hodnotu. Pokud hodnota Worker_ID nebyl nalezen ve službě Active Directory, vytvořte nového uživatele.*
+  
+* **Doménové struktury služby Active Directory již obsahuje ID požadované pro odpovídající logiku pro práci uživatelů?**
+
+  * *Příklad: Pokud je to nové nasazení Workday, důrazně doporučujeme, aby se předem vyplněny správné hodnoty Workday Worker_ID (nebo jedinečné ID hodnotu volby), aby odpovídající logiku co nejjednodušší služby Active Directory.*
+    
+    
 ### <a name="part-1-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>Část 1: Přidání zřizování konektor aplikace a vytvoření připojení k Workday
 
 **Postup konfigurace Workday zřízení služby Active Directory:**
@@ -320,39 +353,38 @@ V této části nakonfigurujete, jak jsou data uživatele z Workday do služby A
 
 **Tady jsou některé příklad mapování atributů mezi Workday a služby Active Directory s některé běžné výrazy**
 
--   Výraz, který se mapuje parentDistinguishedName atribut AD může být použito k přidělení uživatele a konkrétní organizační jednotku, na základě jednoho nebo více atributů zdroj Workday. Tento příklad umístí uživatelům v jiné organizační jednotky, v závislosti na jejich data města Workday.
+-   Výraz, který se mapuje na atribut parentDistinguishedName slouží ke zřízení uživatelů pro různé organizační jednotky, na základě jednoho nebo více atributů zdroj Workday. Tento příklad zde umístí uživatelům v jiné organizační jednotky, na základě v jakém městě se.
 
--   Výraz, který se mapuje na atribut userPrincipalName AD vytvořit název UPN firstName.LastName@contoso.com. Nahrazuje také neplatné speciální znaky.
+-   Atribut userPrincipalName ve službě Active Directory je generována zřetězením ID uživatele Workday s příponou domény
 
--   [Je dokumentaci na zapisují se výrazy sem](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+-   [Je dokumentaci na zapisují se výrazy zde](active-directory-saas-writing-expressions-for-attribute-mappings.md). To zahrnuje příklady, jak odebrat speciální znaky.
 
   
 | WORKDAY ATRIBUT | ATRIBUT SLUŽBY ACTIVE DIRECTORY |  ODPOVÍDAJÍCÍ ID? | VYTVOŘIT / AKTUALIZOVAT |
 | ---------- | ---------- | ---------- | ---------- |
-|  **WorkerID**  |  Číslo zaměstnance | **Ano** | Zapisovat pouze na vytvoření | 
-|  **Okres**   |   l   |     | Vytvoření + aktualizace |
-|  **Společnosti**         | Společnosti   |     |  Vytvoření + aktualizace |
-|  **CountryReferenceTwoLetter**      |   co |     |   Vytvoření + aktualizace |
-| **CountryReferenceTwoLetter**    |  c  |     |         Vytvoření + aktualizace |
-| **SupervisoryOrganization**  | Oddělení  |     |  Vytvoření + aktualizace |
-|  **PreferredNameData**  |  displayName |     |   Vytvoření + aktualizace |
-| **Číslo zaměstnance**    |  cn    |   |   Zapisovat pouze na vytvoření |
-| **Fax**      | facsimileTelephoneNumber     |     |    Vytvoření + aktualizace |
-| **FirstName**   | givenName       |     |    Vytvoření + aktualizace |
+| **WorkerID**  |  Číslo zaměstnance | **Ano** | Zapisovat pouze na vytvoření | 
+| **UserId**    |  cn    |   |   Zapisovat pouze na vytvoření |
+| **Připojení k ("@", [UserID] "contoso.com")**   | userPrincipalName     |     | Zapisovat pouze na vytvoření 
+| **Nahraďte (Mid (Nahraďte (\[UserID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[ \\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Zapisovat pouze na vytvoření |
 | **Přepínače (\[Active\],, "0", "True", "1")** |  AccountDisabled      |     | Vytvoření + aktualizace |
-| **mobilní**  |    mobilní       |     |       Vytvoření + aktualizace |
-| **EmailAddress**    | mail    |     |     Vytvoření + aktualizace |
+| **FirstName**   | givenName       |     |    Vytvoření + aktualizace |
+| **LastName**   |   sn   |     |  Vytvoření + aktualizace |
+| **PreferredNameData**  |  displayName |     |   Vytvoření + aktualizace |
+| **Společnosti**         | Společnosti   |     |  Vytvoření + aktualizace |
+| **SupervisoryOrganization**  | Oddělení  |     |  Vytvoření + aktualizace |
 | **ManagerReference**   | Správce  |     |  Vytvoření + aktualizace |
+| **BusinessTitle**   |  nadpis     |     |  Vytvoření + aktualizace | 
+| **AddressLineData**    |  StreetAddress  |     |   Vytvoření + aktualizace |
+| **Okres**   |   l   |     | Vytvoření + aktualizace |
+| **CountryReferenceTwoLetter**      |   co |     |   Vytvoření + aktualizace |
+| **CountryReferenceTwoLetter**    |  c  |     |         Vytvoření + aktualizace |
+| **CountryRegionReference** |  St     |     | Vytvoření + aktualizace |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Vytvoření + aktualizace |
 | **PSČ**  |   PSČ  |     | Vytvoření + aktualizace |
-| **LocalReference** |  preferredLanguage  |     |  Vytvoření + aktualizace |
-| **Nahraďte (Mid (Nahraďte (\[EmployeeID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[\\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Zapisovat pouze na vytvoření |
-| **LastName**   |   sn   |     |  Vytvoření + aktualizace |
-| **CountryRegionReference** |  St     |     | Vytvoření + aktualizace |
-| **AddressLineData**    |  StreetAddress  |     |   Vytvoření + aktualizace |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | Vytvoření + aktualizace |
-| **BusinessTitle**   |  název     |     |  Vytvoření + aktualizace |
-| **Připojení k ("@", nahraďte (nahradit (nahradit (nahradit (nahradit (Nahraďte (nahradit (Nahraďte (Nahraďte (položku (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte (Nahraďte ( Nahraďte (připojení (".", [jméno], [Příjmení]), "([Øø])", "oe",), "[Ææ]", "ae",), "([äãàâãåáąÄÃÀÂÃÅÁĄA])", "a",), "([B])", "b",), "([CçčćÇČĆ])", "c",), "([ďĎD])", "d",), "([ëèéêęěËÈÉÊĘĚE])", "e",), "([F])", "f",), "([G])" ,, "g",), "([H])", "h",), "([ïîìíÏÎÌÍI])", "i",), "([J])", "d",), "([K])", "k",), "([ľłŁĽL])", "l",), "([M])", "m",), "([ñńňÑŃŇN])", "n",), "([öòőõôóÖÒŐÕÔÓO])", "o",), "([P])", "p",), "([Q])", "d:",),  "([ŘŘR])", "r",), "([ßšśŠŚS])", "s",), "([TŤť])", "t",), "([üùûúůűÜÙÛÚŮŰU])", "u",), "([V])", "v",), "([W])", "w",), "([ýÿýŸÝY])", "y",), "([źžżŹŽŻZ])", "z",), "",,, "",), "contoso.com")**   | userPrincipalName     |     | Zapisovat pouze na vytvoření                                                   
+| **Fax**      | facsimileTelephoneNumber     |     |    Vytvoření + aktualizace |
+| **mobilní**  |    mobilní       |     |       Vytvoření + aktualizace |
+| **LocalReference** |  preferredLanguage  |     |  Vytvoření + aktualizace |                                               
 | **Přepínače (\[okres\], "organizační jednotky standardní uživatelé, OU = Uživatelé, OU = výchozí, OU = umístění, DC = = contoso, DC = com", "Dallas", "organizační jednotky standardní uživatelé, OU = Uživatelé, OU = Dallas, OU = umístění, DC = = contoso, DC = com", "Austinu", "organizační jednotky standardní uživatelé, OU = Uživatelé, OU = Austinu, OU = umístění, DC = = contoso, DC = com ","Seattle"," organizační jednotky standardní uživatelé, OU = Uživatelé, OU = Seattle, OU = umístění, DC = = contoso, DC = com ","Praha"," organizační jednotky standardní uživatelé, OU = = oj uživatelé Londýn, OU = umístění, DC = = contoso, DC = com ")**  | parentDistinguishedName     |     |  Vytvoření + aktualizace |
   
 ### <a name="part-3-configure-the-on-premises-synchronization-agent"></a>Část 3: Konfigurace agenta synchronizace na místě
@@ -696,6 +728,7 @@ Chcete-li to provést, musíte použít [Workday Studio](https://community.workd
             <wd:Include_Transaction_Log_Data>true</wd:Include_Transaction_Log_Data>
             <wd:Include_Photo>true</wd:Include_Photo>
             <wd:Include_User_Account>true</wd:Include_User_Account>
+            <wd:Include_Roles>true</wd:Include_Roles>
           </wd:Response_Group>
         </wd:Get_Workers_Request>
       </env:Body>

@@ -3,7 +3,7 @@ title: "Pomocí konektoru serveru SharePoint Server ve vašich Logic Apps | Micr
 description: "Začněte používat konektor Server služby SharePoint ve vašich Logic apps"
 services: logic-apps
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,15 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: da863e0249cb46e4e569812a851f3199d57b2107
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: d342b3c4f84c5dab212b9327d6a72759934d0ae5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-sharepoint-connector"></a>Začínáme s konektorem služby SharePoint
-Konektor služby SharePoint poskytuje způsob práce se seznamy na webu služby SharePoint.
+Konektor služby SharePoint poskytuje způsob, jak pracovat s seznamy služby SharePoint.
 
 Začněte vytvořením aplikace logiky; v tématu [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -31,11 +31,11 @@ K používání konektoru služby SharePoint, je třeba nejprve vytvořit **při
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
-| Token |Ano |Zadejte přihlašovací údaje k SharePointu |
+| Podpisový |Ano |Zadejte pověření serveru SharePoint |
 
-Pro připojení k **SharePoint**, zadejte svoji identitu (uživatelského jména a hesla, čipové karty přihlašovací údaje, atd.) do služby SharePoint. Jakmile jste jste ověřena, můžete přejít k používání konektoru služby SharePoint v aplikaci logiky. 
+Pro připojení k **SharePoint**, zadejte svoji identitu (uživatelské jméno a heslo, pověření čipové karty a tak dále). Jakmile došlo k ověření, můžete přejít k používání konektoru služby SharePoint v aplikaci logiky. 
 
-Při na návrháře aplikace logiky, postupujte podle těchto kroků pro přihlášení do služby SharePoint k vytvoření připojení **připojení** pro použití v aplikaci logiky:
+V návrháři aplikace logiky, použijte následující postup k přihlášení a vytvořte **připojení** pro použití v aplikaci logiky:
 
 1. Zadejte do pole vyhledávání služby SharePoint a počkat na výsledky vyhledávání na vrátí všechny položky se službou SharePoint v názvu:   
    ![Konfigurace služby SharePoint][1]  
@@ -47,7 +47,7 @@ Při na návrháře aplikace logiky, postupujte podle těchto kroků pro přihl�
 5. Po dokončení ověření budete přesměrováni na svou aplikaci logiky dokončit konfigurací služby SharePoint na **vytvoření souboru** dialogové okno.          
    ![Konfigurace služby SharePoint][4]  
 6. Poté můžete přidat další aktivační události a akce, které potřebujete k dokončení svou aplikaci logiky.   
-7. Uložte si práci, výběrem **Uložit** na panelu nabídek nahoře.  
+7. Uložte si práci, výběrem **Uložit** v nabídce (směrem nahoru).
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 

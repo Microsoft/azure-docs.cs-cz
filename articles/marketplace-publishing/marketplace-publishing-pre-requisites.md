@@ -3,8 +3,8 @@ title: "Netechnické požadavky pro vytváření nabídku pro Azure Marketplace 
 description: "Pochopili požadavky na vytvoření a nasazení nabídku pro Azure Marketplace pro ostatní k nákupu."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 3dae463b-8f48-4f52-8fa8-4e3975f09f43
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/18/2016
-ms.author: hascipio
-ms.openlocfilehash: 4f86d444a2f2b97fd8605d480db358813bc39fd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 5c30e62bf345843fe83b3f17b728e1a937d19ce3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Obecné požadavky pro vytváření nabídku pro Azure Marketplace
 Pochopte Obecné, proces zaměřené na obchodní požadavky, které jsou potřeba jak urychlit proces vytvoření nabídky.
@@ -73,12 +73,12 @@ Toto je odběr, který použijete k vytvoření bitové kopie virtuálních poč
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Jakmile jsou splněny netechnické požadavky, jsou vedle nabídku konkrétní technické požadavky. Kliknutím na odkaz na článek pro příslušné nabídka typ, který chcete vytvořit pro Azure Marketplace.
 
 * [Požadavky technické virtuálních počítačů](marketplace-publishing-vm-image-creation-prerequisites.md)
 * [Řešení šablony technické požadavky](marketplace-publishing-solution-template-creation-prerequisites.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Začínáme: postup publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md)
 

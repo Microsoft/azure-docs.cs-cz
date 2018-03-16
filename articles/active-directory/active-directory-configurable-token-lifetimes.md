@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 568bf5f0a4cf3eb77b528af2550d9729dcc59878
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 553283f246b701b5084f0a3a9914d7ceb8826fe4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurovat životnosti tokenu v Azure Active Directory (Public Preview)
 Můžete zadat dobu životnosti tokenem vydaným službou Azure Active Directory (Azure AD). Můžete nastavit životnosti tokenu pro všechny aplikace ve vaší organizaci, pro aplikaci víceklientské (více organizace) nebo pro objekt určité služby ve vaší organizaci.
@@ -276,7 +276,7 @@ V tomto příkladu vytvoříte zásadu, která vyžaduje, aby uživatelé ověř
 
 2.  Přiřaďte zásady instančního objektu. Je také nutné získat **ObjectId** z instanční objekt. 
 
-    1.  Pokud chcete zobrazit všechna firemní objekty služby, se můžete dotazovat [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Nebo v [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/), přihlaste se k účtu Azure AD.
+    1.  Pokud chcete zobrazit všechna firemní objekty služby, se můžete dotazovat buď [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) nebo [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Navíc můžete otestovat v [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/)a [program Průzkumník systému Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) pomocí účtu Azure AD.
 
     2.  Pokud máte **ObjectId** vaše služba objektu zabezpečení, spusťte následující příkaz:
 
@@ -332,7 +332,7 @@ V tomto příkladu můžete vytvořit několik zásady, se dozvíte, jak funguje
 
     Teď máte zásadu, která platí pro celou organizaci. Můžete chtít zachovat tuto zásadu 30denní pro objekt konkrétní služby, ale změnit výchozí zásady organizace na horní limit počtu "dokud odvolaný."
 
-    1.  Pokud chcete zobrazit všechna firemní objekty služby, se můžete dotazovat [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Nebo v [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/), přihlaste se pomocí účtu Azure AD.
+    1.  Pokud chcete zobrazit všechna firemní objekty služby, se můžete dotazovat buď [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) nebo [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Navíc můžete otestovat v [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/)a [program Průzkumník systému Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) pomocí účtu Azure AD.
 
     2.  Pokud máte **ObjectId** vaše služba objektu zabezpečení, spusťte následující příkaz:
 

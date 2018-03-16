@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 00e98ff07d144db791fcf074699614f1e664634b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 75b55b45c355f585fd73bdc1d97bc6adbbc4e9a0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning experimentování služby konfigurační soubory
 
@@ -206,12 +206,12 @@ Následující příklad nahradí "mylocal.datasource" odkazy v Azure ML zdroje 
  
 ```
 DataSourceSubstitutions:
-    myocal.dsource: myremote.dsource
+    mylocal.dsource: myremote.dsource
 ```
 
 Podle výše nahrazení, následující ukázka kódu nyní čte z "myremote.dsource" místo "mylocal.dsource" bez uživatelé změnit svůj kód.
 ```
 df = datasource.load_datasource('mylocal.dsource')
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o [konfigurace služby experimentování](experimentation-service-configuration.md).

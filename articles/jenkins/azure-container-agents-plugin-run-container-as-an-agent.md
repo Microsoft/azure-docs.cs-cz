@@ -1,24 +1,20 @@
 ---
 title: "Sestavení projektu v Azure pomocí volaných a instancí kontejnerů Azure"
 description: "Naučte se používat modul plug-in Azure kontejneru Agent pro volaných pro vytvoření projektu v Azure s instancemi Azure kontejneru"
-services: multiple
-documentationcenter: 
 author: tomarcher
 manager: rloutlaw
-editor: 
 ms.service: multiple
+ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
-ms.date: 02/28/2018
+ms.date: 03/12/2018
 ms.author: tarcher
-ms.custom: jenkins
-ms.openlocfilehash: 557b21340a0ba4e5381d7505b14a172aa3478b84
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: Jenkins
+ms.openlocfilehash: fc3ad4b68e29e9bd5666bb115306b452d074f682
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="build-a-project-in-azure-using-jenkins-and-azure-container-instances"></a>Sestavení projektu v Azure pomocí volaných a instancí kontejnerů Azure
 
@@ -30,7 +26,7 @@ Získáte informace o těchto tématech:
 > * Instalace a konfigurace modulu plug-in Azure Container agentů pro volaných
 > * Použít k vytvoření instancí kontejnerů Azure [pružiny PetClinic ukázkové aplikace](https://github.com/spring-projects/spring-petclinic)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure** – Pokud chcete další informace o možnostech nákupu Azure najdete v tématu [jak koupit Azure](https://azure.microsoft.com/pricing/purchase-options/) nebo [bezplatnou zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 

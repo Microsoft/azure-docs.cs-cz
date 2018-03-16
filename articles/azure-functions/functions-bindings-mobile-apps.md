@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: a1e4f15747031ba75ba5ae589557750919a71853
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: c5fb7bdd88691c9aeab6b348507901c34502b28b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Vazby Mobile Apps pro Azure Functions 
 
@@ -28,6 +28,12 @@ Tento článek vysvětluje, jak pracovat s [Azure Mobile Apps](../app-service-mo
 Vazby mobilní aplikace vám umožní číst a aktualizovat tabulky dat v mobilních aplikacích.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="packages"></a>Balíčky
+
+Vazby Mobile Apps jsou součástí [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/) úložiště GitHub.
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="input"></a>Vstup
 
@@ -128,7 +134,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---attributes"></a>(Vstup) – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) atribut.
 
 Informace o vlastnostech atributů, které můžete konfigurovat, najdete v tématu [následující konfigurační oddíl](#input---configuration).
 
@@ -139,11 +145,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 | **Typ**|| Musí být nastavena na "mobileTable"|
-| **směr**||Musí být nastavena na "v"|
-| **Jméno**|| Název vstupního parametru v podpis funkce.|
-|**Název tabulky** |**Název tabulky**|Název tabulky dat mobilní aplikace|
-| **ID**| **ID** | Identifikátor záznamu pro načtení. Můžou být statické nebo podle aktivační událost, která volá funkci. Pokud pak použít aktivační procedury fronty pro funkce, například `"id": "{queueTrigger}"` používá s řetězcovou hodnotou obsahující zprávy ve frontě jako ID záznamu pro načtení.|
-|**připojení**|**Připojení**|Název nastavení aplikace, který obsahuje adresu URL do mobilní aplikace. Funkce používá tuto adresu URL k vytvoření požadované operace REST pro mobilní aplikace. Vytvoření nastavení aplikace v aplikaci funkce, který obsahuje adresu URL do mobilní aplikace a potom zadejte název nastavení aplikace v `connection` vlastnost Vstupní vazba. Vypadá adresa URL `http://<appname>.azurewebsites.net`.
+| **Směr**||Musí být nastavena na "v"|
+| **name**|| Název vstupního parametru v podpis funkce.|
+|**tableName** |**TableName**|Název tabulky dat mobilní aplikace|
+| **id**| **ID** | Identifikátor záznamu pro načtení. Můžou být statické nebo podle aktivační událost, která volá funkci. Pokud pak použít aktivační procedury fronty pro funkce, například `"id": "{queueTrigger}"` používá s řetězcovou hodnotou obsahující zprávy ve frontě jako ID záznamu pro načtení.|
+|**Připojení**|**Připojení**|Název nastavení aplikace, který obsahuje adresu URL do mobilní aplikace. Funkce používá tuto adresu URL k vytvoření požadované operace REST pro mobilní aplikace. Vytvoření nastavení aplikace v aplikaci funkce, který obsahuje adresu URL do mobilní aplikace a potom zadejte název nastavení aplikace v `connection` vlastnost Vstupní vazba. Vypadá adresa URL `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKey**|Název nastavení aplikace, který má klíč rozhraní API mobilní aplikaci. Zadejte Pokud klíče rozhraní API můžete [implementovat klíč rozhraní API v mobilní aplikaci Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), nebo [implementovat klíč rozhraní API v mobilní aplikaci .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Chcete-li zadat klíč, vytvoření nastavení aplikace v aplikaci funkce, který obsahuje klíč rozhraní API a pak přidejte `apiKey` vlastnost vaše Vstupní vazba s názvem nastavení aplikace. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -274,7 +280,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="output---attributes"></a>Výstup – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) atribut.
 
 Informace o vlastnostech atributů, které můžete konfigurovat, najdete v tématu [výstup - konfigurace](#output---configuration). Tady je `MobileTable` atribut příkladu podpis metody:
 
@@ -298,10 +304,10 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 | **Typ**|| Musí být nastavena na "mobileTable"|
-| **směr**||Musí být nastavena na "out"|
-| **Jméno**|| Název výstupního parametru v podpis funkce.|
-|**Název tabulky** |**Název tabulky**|Název tabulky dat mobilní aplikace|
-|**připojení**|**MobileAppUriSetting**|Název nastavení aplikace, který obsahuje adresu URL do mobilní aplikace. Funkce používá tuto adresu URL k vytvoření požadované operace REST pro mobilní aplikace. Vytvoření nastavení aplikace v aplikaci funkce, který obsahuje adresu URL do mobilní aplikace a potom zadejte název nastavení aplikace v `connection` vlastnost Vstupní vazba. Vypadá adresa URL `http://<appname>.azurewebsites.net`.
+| **Směr**||Musí být nastavena na "out"|
+| **name**|| Název výstupního parametru v podpis funkce.|
+|**tableName** |**TableName**|Název tabulky dat mobilní aplikace|
+|**Připojení**|**MobileAppUriSetting**|Název nastavení aplikace, který obsahuje adresu URL do mobilní aplikace. Funkce používá tuto adresu URL k vytvoření požadované operace REST pro mobilní aplikace. Vytvoření nastavení aplikace v aplikaci funkce, který obsahuje adresu URL do mobilní aplikace a potom zadejte název nastavení aplikace v `connection` vlastnost Vstupní vazba. Vypadá adresa URL `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|Název nastavení aplikace, který má klíč rozhraní API mobilní aplikaci. Zadejte Pokud klíče rozhraní API můžete [implementovat klíč rozhraní API vašeho back-end mobilní aplikace Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), nebo [implementovat klíč rozhraní API vašeho back-end mobilní aplikace .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Chcete-li zadat klíč, vytvoření nastavení aplikace v aplikaci funkce, který obsahuje klíč rozhraní API a pak přidejte `apiKey` vlastnost vaše Vstupní vazba s názvem nastavení aplikace. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -313,9 +319,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 V C# skript funkce, použijte parametr s názvem výstup typu `out object` pro přístup k výstupu záznamu. V jazyce C# knihovny tříd `MobileTable` atribut lze použít s žádným z následujících typů:
 
-* `ICollector<T>`nebo `IAsyncCollector<T>`, kde `T` je buď `JObject` nebo jakýkoli typ s `public string Id` vlastnost.
+* `ICollector<T>` nebo `IAsyncCollector<T>`, kde `T` je buď `JObject` nebo jakýkoli typ s `public string Id` vlastnost.
 * `out JObject`
-* `out T`nebo `out T[]`, kde `T` je všech typů `public string Id` vlastnost.
+* `out T` nebo `out T[]`, kde `T` je všech typů `public string Id` vlastnost.
 
 Ve funkcích Node.js, použijte `context.bindings.<name>` pro přístup k výstupu záznamu.
 

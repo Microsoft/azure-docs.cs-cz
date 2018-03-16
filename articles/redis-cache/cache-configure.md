@@ -14,11 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: fa78c42ce93729379d3c532f94bc67bb8c069d53
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2e2e22c17bce4bdaf4988001db8de31b68f497fc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Postup konfigurace Azure Redis Cache
 Toto téma popisuje konfigurace, které jsou k dispozici pro vaše instance služby Azure Redis Cache. Toto téma obsahuje také výchozí konfigurace serveru Redis pro instance služby Azure Redis Cache.
@@ -170,7 +170,7 @@ Další informace najdete v tématu [Redis oznámení Keyspace](http://redis.io/
 
 
 <a name="recommendations"></a>
-## <a name="redis-cache-advisor"></a>Redis Cache Advisor
+## <a name="redis-cache-advisor"></a>Advisor mezipaměti redis
 **Redis Cache Advisor** zobrazuje doporučení pro mezipaměť. Během normálních operací zobrazí se žádná doporučení. 
 
 ![Doporučení](./media/cache-configure/redis-cache-no-recommendations.png)
@@ -280,8 +280,6 @@ Pravidla brány firewall můžete zadat s počáteční a koncové rozsah IP adr
 > [!IMPORTANT]
 > Připojení z Azure Redis Cache monitorování systémů jsou vždy povoleny, i když jsou nakonfigurovaná pravidla brány firewall.
 > 
-> Pravidla brány firewall jsou dostupná jenom pro prémiových mezipamětí vrstvy.
-> 
 > 
 
 ### <a name="properties"></a>Vlastnosti
@@ -292,7 +290,7 @@ Klikněte na tlačítko **vlastnosti** zobrazíte informace o mezipaměti, včet
 ### <a name="locks"></a>Zámky
 **Zamkne** části umožňuje zamknout předplatné, skupinu prostředků nebo prostředek zabránit ostatním uživatelům ve vaší organizaci neúmyslnému odstranění nebo úprava důležitých prostředků. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-lock-resources.md).
 
-### <a name="automation-script"></a>Automatizační skript
+### <a name="automation-script"></a>Skriptu pro automatizaci
 
 Klikněte na tlačítko **skriptu pro automatizaci** sestavení a exportovat šablonu vaše nasazené prostředky pro budoucí nasazení. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablony Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
 
@@ -345,7 +343,7 @@ Restartovat jeden nebo více uzlů svojí mezipaměti, vyberte požadovaný uzel
 * [Pravidla výstrah](#alert-rules)
 * [Diagnostika](#diagnostics)
 
-### <a name="redis-metrics"></a>Metrika mezipaměti Redis
+### <a name="redis-metrics"></a>Metriky pro redis
 Klikněte na tlačítko **Redis metriky** k [metriky zobrazit](cache-how-to-monitor.md#view-cache-metrics) ke svojí mezipaměti.
 
 ### <a name="alert-rules"></a>Pravidla výstrah
@@ -364,7 +362,7 @@ Ve výchozím nastavení, mezipaměti metriky v Azure monitorování jsou [uchov
 ## <a name="support--troubleshooting-settings"></a>Podporovat & řešení potíží s nastavení
 Nastavení v **podpory a řešení potíží s** části poskytují možnosti pro řešení problémů s mezipamětí.
 
-![Podpora a řešení potíží](./media/cache-configure/redis-cache-support-troubleshooting.png)
+![Podpora + řešení potíží](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
 * [Stav prostředků](#resource-health)
 * [Nová žádost o podporu](#new-support-request)
@@ -404,7 +402,7 @@ Nové instance služby Azure Redis Cache jsou nakonfigurované s následující 
 | `maxmemory-samples` |3 |Uložit paměti, jsou přibližně algoritmy místo přesné algoritmy LRU a minimální hodnota TTL algoritmy. Ve výchozím nastavení Redis tři klíče kontroly a vyskladnění ten, který byl použit méně nedávno. |
 | `lua-time-limit` |5 000 |Maximální doba provádění skriptu Lua v milisekundách. Pokud je dosaženo maximální dobu spuštění, zaprotokoluje Redis, je stále v provádění po maximální povolenou dobu skript a spustí odpoví na dotazy s chybou. |
 | `lua-event-limit` |500 |Maximální velikost fronty událostí skriptu. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Omezení vyrovnávací paměti výstupní klienta lze vynutit odpojení klienti, kteří nejsou čtení dat ze serveru dostatečně rychle z nějakého důvodu (obvyklým důvodem je, že klient Pub nebo Sub nemůže využívat zprávy rychle, jak můžete vytvořit vydavatele, je). Další informace najdete v tématu [http://redis.io/topics/clients](http://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Omezení vyrovnávací paměti výstupní klienta lze vynutit odpojení klienti, kteří nejsou čtení dat ze serveru dostatečně rychle z nějakého důvodu (obvyklým důvodem je, že klient Pub nebo Sub nemůže využívat zprávy rychle, jak můžete vytvořit vydavatele, je). Další informace najdete na adrese [http://redis.io/topics/clients](http://redis.io/topics/clients). |
 
 <a name="databases"></a>
 <sup>1</sup>tento limit pro `databases` se liší pro každý Azure Redis Cache cenová úroveň a můžete nastavit při vytváření mezipaměti. Pokud žádné `databases` nastavení zadat během vytváření mezipaměti, výchozí hodnota je 16.
@@ -471,14 +469,14 @@ Další informace o databáze najdete v tématu [co jsou databáze Redis?](cache
 > 
 > 
 
-Další informace o příkazech Redis najdete v tématu [http://redis.io/commands](http://redis.io/commands).
+Další informace o příkazech Redis najdete v tématu [ http://redis.io/commands ](http://redis.io/commands).
 
 ## <a name="redis-console"></a>Konzola redis
 Bezpečně vydávat příkazy vaší instancí Azure Redis Cache pomocí **konzola Redis**, která je k dispozici na webu Azure portal pro všechny úrovně mezipaměti.
 
 > [!IMPORTANT]
 > - Konzola Redis nefunguje s [VNET](cache-how-to-premium-vnet.md). Pokud vaše mezipaměť je součástí virtuální sítě, jenom pro klienty ve virtuální síti přístup do mezipaměti. Protože se spouští konzola Redis v prohlížeči místní, což je mimo síť VNET, se nemůže připojit ke své mezipaměti.
-> - Ne všechny příkazy Redis jsou podporovány ve službě Azure Redis Cache. Seznam Redis příkazy, které jsou pro Azure Redis Cache zakázán, najdete v předchozí [Redis příkazy nejsou podporované ve službě Azure Redis Cache](#redis-commands-not-supported-in-azure-redis-cache) části. Další informace o příkazech Redis najdete v tématu [http://redis.io/commands](http://redis.io/commands).
+> - Ne všechny příkazy Redis jsou podporovány ve službě Azure Redis Cache. Seznam Redis příkazy, které jsou pro Azure Redis Cache zakázán, najdete v předchozí [Redis příkazy nejsou podporované ve službě Azure Redis Cache](#redis-commands-not-supported-in-azure-redis-cache) části. Další informace o příkazech Redis najdete v tématu [ http://redis.io/commands ](http://redis.io/commands).
 > 
 > 
 
@@ -514,6 +512,6 @@ Mezipaměti můžete přesunout do nového předplatného kliknutím **přesunou
 
 Informace o přesun prostředků z jedné skupiny prostředků do jiné a z jedno předplatné do druhého, najdete v části [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o práci s příkazy Redis najdete v tématu [jak můžete spouštět příkazy Redis?](cache-faq.md#how-can-i-run-redis-commands)
 

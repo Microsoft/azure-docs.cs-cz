@@ -3,7 +3,7 @@ title: Konektor SMTP v Azure Logic Apps | Microsoft Docs
 description: "Vytvoření aplikace logiky službou Azure App service. Připojení k SMTP pro odeslání e-mailu."
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 6544a8e81a1c84fbd09e60b3f06c5fd308a18dcf
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 9bf7c9b7c3e775ab03b071d13d792f4b2d8fb3e3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-smtp-connector"></a>Začínáme s konektor SMTP
 Připojení k SMTP pro odeslání e-mailu.
@@ -37,13 +37,13 @@ Než se aplikace logiky k jakékoli služby, musíte nejprve vytvořit *připoje
 ## <a name="use-an-smtp-trigger"></a>Aktivační událost pomocí serveru SMTP
 Aktivační událost je událost, která můžete použít ke spuštění pracovního postupu definované v aplikaci logiky. [Další informace o aktivační události](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-V tomto příkladu, protože SMTP nemá aktivační událost své vlastní, použijeme **Salesforce – když je vytvořen objekt** aktivační události. Tento aktivační událost se aktivuje, když je vytvořen nový objekt v Salesforce. Pro náš příklad nastavíme ho tak, aby nové zájemce pokaždé, když je vytvořen v Salesforce, *odeslání e-mailu* akci dojde prostřednictvím konektor SMTP s upozornění při vytváření nové zájemce.
+V tomto příkladu SMTP nemá aktivační událost své vlastní. Ano, použít **Salesforce – když je vytvořen objekt** aktivační události. Tento aktivační událost se aktivuje, když je vytvořen nový objekt v Salesforce. V tomto příkladu se má nastavit tak, aby nové zájemce pokaždé, když je vytvořen v Salesforce, *odeslání e-mailu* akci dojde konektor SMTP pomocí upozornění při vytváření nové zájemce.
 
 1. Zadejte *salesforce* do vyhledávacího pole v designeru aplikace logiky zvolte **Salesforce – když je vytvořen objekt** aktivační události.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)  
 2. **Když je vytvořen objekt** ovládací prvek je zobrazen.
    ![](../../includes/media/connectors-create-api-salesforce/trigger-2.png)  
-3. Vyberte **typ objektu** vyberte *vést* ze seznamu objektů. V tomto kroku jsou indikující, že vytváříte aktivační událost, která vás upozorní aplikace logiky, vždy, když se vytvoří nové zájemce v Salesforce.  
+3. Vyberte **typ objektu** vyberte *vést* ze seznamu objektů. V tomto kroku vytvoříte aktivační událost, která upozorní svou aplikaci logiky vždy, když se vytvoří nové zájemce v Salesforce.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger3.png)  
 4. Aktivační událost byla vytvořena.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)  
@@ -51,7 +51,7 @@ V tomto příkladu, protože SMTP nemá aktivační událost své vlastní, pou�
 ## <a name="use-an-smtp-action"></a>Použít akci SMTP
 Akce je operace prováděné definované v aplikaci logiky pracovního postupu. [Další informace o akcích](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-Teď, když byla přidána aktivační událost, použijte následující postup přidání akce protokolu SMTP, která se stane, když se vytvoří nové zájemce v Salesforce.
+Teď, když byla přidána aktivační událost, pomocí následujících kroků přidáte SMTP akci, která nastane, když je v Salesforce vytvoří nové zájemce.
 
 1. Vyberte **+ nový krok** přidat akci chcete provést, když se vytvoří nové zájemce.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger4.png)  
@@ -62,7 +62,7 @@ Teď, když byla přidána aktivační událost, použijte následující postup
    ![](../../includes/media/connectors-create-api-smtp/smtp-2.png)    
 5. Zadejte příslušné informace požadované e-mailu na **SMTP - odeslat E-mail** bloku.  
    ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-4.PNG)  
-6. Uložte si práci, aby bylo možné aktivovat pracovní postup.  
+6. Uložte práci aktivovat pracovní postup.  
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 

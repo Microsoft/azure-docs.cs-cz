@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: d6a0b945bad36842142d16a4840c9c3d69e1564e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ee04fc3338dec7893f9f33322bd6b9af932199e7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostikovat výjimky ve webových aplikacích pomocí služby Application Insights
 Výjimky v svou živou webovou aplikaci oznamuje [Application Insights](app-insights-overview.md). Neúspěšných požadavků mohou korelovat s výjimky a dalších událostí na klienta a serveru, takže můžete rychle diagnostikovat příčin.
@@ -32,8 +32,8 @@ Výjimky v svou živou webovou aplikaci oznamuje [Application Insights](app-insi
 * Některé architektury aplikace nebo s některými nastaveními budete muset provést některé další kroky pro zachycení více výjimek:
   * [Webové formuláře](#web-forms)
   * [MVC](#mvc)
-  * [1.* webové rozhraní API](#web-api-1x)
-  * [2.* webové rozhraní API](#web-api-2x)
+  * [Web API 1.*](#web-api-1x)
+  * [Web API 2.*](#web-api-2x)
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Diagnostikování výjimky pomocí sady Visual Studio
@@ -102,7 +102,7 @@ Podrobnosti požadavku neobsahují data odeslaná do vaší aplikace v volání 
 
 ![Procházení](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
-## <a name="exceptions"></a>Zachytávání výjimek a související diagnostických dat
+## <a name="exceptions"></a> Zachytávání výjimek a související diagnostických dat
 Na první pohled neuvidíte na portálu všechny výjimky, které způsobí selhání ve vaší aplikaci. Zobrazí všechny výjimky prohlížeče (Pokud používáte [JavaScript SDK](app-insights-javascript.md) na webových stránkách). Ale většina serveru výjimky jsou zachyceny službou IIS a máte k zápisu verze kódu k jejich zobrazení.
 
 Můžete:
@@ -113,8 +113,7 @@ Můžete:
 ## <a name="reporting-exceptions-explicitly"></a>Explicitně Reporting výjimky
 Nejjednodušší způsob, jak se má vložit volání pro TrackException() do obslužné rutiny výjimek.
 
-JavaScript
-
+```javascript
     try
     { ...
     }
@@ -124,9 +123,9 @@ JavaScript
         {Game: currentGame.Name,
          State: currentGame.State.ToString()});
     }
+```
 
-C#
-
+```csharp
     var telemetry = new TelemetryClient();
     ...
     try
@@ -144,9 +143,9 @@ C#
        // Send the exception telemetry:
        telemetry.TrackException(ex, properties, measurements);
     }
+```
 
-JAZYKA VISUAL BASIC
-
+```VB
     Dim telemetry = New TelemetryClient
     ...
     Try
@@ -162,6 +161,7 @@ JAZYKA VISUAL BASIC
       ' Send the exception telemetry:
       telemetry.TrackException(ex, properties, measurements)
     End Try
+```
 
 Vlastnosti a měření parametry jsou volitelné, ale jsou užitečné pro [filtrování a přidání](app-insights-diagnostic-search.md) doplňující informace. Například pokud máte aplikaci, která můžete spustit několik hry, může najít všechny sestavy výjimky související s konkrétní hru. Můžete přidat libovolný počet položek, jako má každý slovníku.
 
@@ -175,8 +175,7 @@ U webových formulářů bude možné ke shromažďování výjimky, když nejso
 
 Ale pokud máte aktivní přesměrování, přidejte následující řádky do funkce Application_Error Global.asax.cs. (Pokud jste ještě nemáte, přidejte souboru Global.asax.)
 
-*C#*
-
+```csharp
     void Application_Error(object sender, EventArgs e)
     {
       if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError  () != null)
@@ -186,11 +185,28 @@ Ale pokud máte aktivní přesměrování, přidejte následující řádky do f
          ai.TrackException(Server.GetLastError());
       }
     }
-
+```
 
 ## <a name="mvc"></a>MVC
+Počínaje Application Insights Web SDK verzi 2.6 (beta3 a novější), Application Insights shromažďuje neošetřené výjimky vzniklé v metodách 5 + řadiče MVC automaticky. Pokud jste dříve přidali vlastní obslužnou rutinu pro sledování takové výjimky (jak je popsáno v následujících příkladech), může odebrat, abychom zabránili jeho dvojité sledování výjimek.
+
+Existuje několik případů, které nelze zpracovat filtry výjimek. Příklad:
+
+* Výjimky vydané z konstruktorů řadiče.
+* Výjimek vyvolaných z obslužné rutiny zpráv.
+* Výjimky vydané během trasování.
+* Výjimky vydané během serializace obsahu odpovědi.
+* Během spuštění aplikace došlo k výjimce.
+* V úlohy na pozadí došlo k výjimce.
+
+Všechny výjimky *zpracovává* aplikace stále je třeba sledovat ručně. Nezpracované výjimky pocházející z řadičů obvykle za následek odpovědi 500 "Vnitřní chyba serveru". Pokud tyto odpovědi je ručně vytvořený v důsledku zpracování výjimek (nebo žádná výjimka na všechny) je sledovány v odpovídající telemetrická žádost s `ResultCode` 500, Application Insights SDK je ale nemůže sledovat odpovídající výjimce.
+
+### <a name="prior-versions-support"></a>Podpora předchozí verze
+Pokud používáte MVC 4 (a před) aplikace Insights Web SDK 2.5 (a před), naleznete v následujících příkladech ke sledování výjimek.
+
 Pokud [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurace je `Off`, bude k dispozici pro výjimky [modulu HTTP](https://msdn.microsoft.com/library/ms178468.aspx) ke shromažďování. Ale pokud je `RemoteOnly` (výchozí), nebo `On`, bude výjimka nezaškrtnuté a nejsou k dispozici pro službu Application Insights automaticky shromažďovat. Můžete to opravíme přepsáním [System.Web.Mvc.HandleErrorAttribute – třída](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)a použití přepsaného třídu, jak je uvedeno pro různé verze MVC níže ([githubu zdroj](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
+```csharp
     using System;
     using System.Web.Mvc;
     using Microsoft.ApplicationInsights;
@@ -215,22 +231,26 @@ Pokud [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigura
         }
       }
     }
+```
 
 #### <a name="mvc-2"></a>MVC 2
 Atribut HandleError nahraďte váš nový atribut v řadičů.
 
+```csharp
     namespace MVC2App.Controllers
     {
        [AiHandleError]
        public class HomeController : Controller
        {
     ...
+```
 
 [Ukázka](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
 Zaregistrovat `AiHandleErrorAttribute` jako globální filtr ve funkci Global.asax.cs:
 
+```csharp
     public class MyMvcApplication : System.Web.HttpApplication
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -238,12 +258,14 @@ Zaregistrovat `AiHandleErrorAttribute` jako globální filtr ve funkci Global.as
          filters.Add(new AiHandleErrorAttribute());
       }
      ...
+```
 
 [Ukázka](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4, MVC5
 Zaregistrujte AiHandleErrorAttribute jako globální filtr ve funkci FilterConfig.cs:
 
+```csharp
     public class FilterConfig
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -252,12 +274,31 @@ Zaregistrujte AiHandleErrorAttribute jako globální filtr ve funkci FilterConfi
         filters.Add(new AiHandleErrorAttribute());
       }
     }
+```
 
 [Ukázka](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
-## <a name="web-api-1x"></a>Webové rozhraní API 1.x
-Přepište System.Web.Http.Filters.ExceptionFilterAttribute:
+## <a name="web-api"></a>Web API
+Počínaje Application Insights Web SDK verzi 2.6 (beta3 a novější), Application Insights shromažďuje neošetřené výjimky vzniklé v metodách řadiče automaticky pro WebAPI 2 +. Pokud jste dříve přidali vlastní obslužnou rutinu pro sledování takové výjimky (jak je popsáno v následujících příkladech), může odebrat, abychom zabránili jeho dvojité sledování výjimek.
 
+Existuje několik případů, které nelze zpracovat filtry výjimek. Příklad:
+
+* Výjimky vydané z konstruktorů řadiče.
+* Výjimek vyvolaných z obslužné rutiny zpráv.
+* Výjimky vydané během trasování.
+* Výjimky vydané během serializace obsahu odpovědi.
+* Během spuštění aplikace došlo k výjimce.
+* V úlohy na pozadí došlo k výjimce.
+
+Všechny výjimky *zpracovává* aplikace stále je třeba sledovat ručně. Nezpracované výjimky pocházející z řadičů obvykle za následek odpovědi 500 "Vnitřní chyba serveru". Pokud tyto odpovědi je ručně vytvořený v důsledku zpracování výjimek (nebo žádná výjimka na všechny) je sledovány v odpovídající telemetrická žádost s `ResultCode` 500, Application Insights SDK je ale nemůže sledovat odpovídající výjimce.
+
+### <a name="prior-versions-support"></a>Podpora předchozí verze
+Pokud používáte WebAPI 1 (a před) aplikace Insights Web SDK 2.5 (a před), naleznete v následujících příkladech ke sledování výjimek.
+
+#### <a name="web-api-1x"></a>Webové rozhraní API 1.x
+Override System.Web.Http.Filters.ExceptionFilterAttribute:
+
+```csharp
     using System.Web.Http.Filters;
     using Microsoft.ApplicationInsights;
 
@@ -276,9 +317,11 @@ Přepište System.Web.Http.Filters.ExceptionFilterAttribute:
         }
       }
     }
+```
 
 Můžete přidat tento atribut přepsaného na konkrétní řadiče, nebo ho přidat do konfigurace globálních filtrů v třídy WebApiConfig:
 
+```csharp
     using System.Web.Http;
     using WebApi1.x.App_Start;
 
@@ -298,19 +341,14 @@ Můžete přidat tento atribut přepsaného na konkrétní řadiče, nebo ho př
         }
       }
     }
+```
 
 [Ukázka](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-Existuje několik případů, které nelze zpracovat filtry výjimek. Příklad:
-
-* Výjimky vydané z konstruktorů řadiče.
-* Výjimek vyvolaných z obslužné rutiny zpráv.
-* Výjimky vydané během trasování.
-* Výjimky vydané během serializace obsahu odpovědi.
-
-## <a name="web-api-2x"></a>Webové rozhraní API 2.x
+#### <a name="web-api-2x"></a>Web API 2.x
 Přidání implementace IExceptionLogger:
 
+```csharp
     using System.Web.Http.ExceptionHandling;
     using Microsoft.ApplicationInsights;
 
@@ -329,9 +367,11 @@ Přidání implementace IExceptionLogger:
         }
       }
     }
+```
 
 Přidejte tuto pro služby WebApiConfig:
 
+```csharp
     using System.Web.Http;
     using System.Web.Http.ExceptionHandling;
     using ProductsAppPureWebAPI.App_Start;
@@ -355,7 +395,8 @@ Přidejte tuto pro služby WebApiConfig:
             config.Services.Add(typeof(IExceptionLogger), new AiExceptionLogger());
         }
       }
-  }
+     }
+```
 
 [Ukázka](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
@@ -367,6 +408,7 @@ Jako alternativy které může:
 ## <a name="wcf"></a>WCF
 Přidejte třídu, která rozšiřuje atribut a implementuje IErrorHandler a IServiceBehavior.
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -416,7 +458,7 @@ Přidejte třídu, která rozšiřuje atribut a implementuje IErrorHandler a ISe
       }
     }
 
-Přidejte atribut do implementace služby:
+Add the attribute to the service implementations:
 
     namespace WcfService4
     {
@@ -424,6 +466,7 @@ Přidejte atribut do implementace služby:
         public class Service1 : IService1
         {
          ...
+```
 
 [Ukázka](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 

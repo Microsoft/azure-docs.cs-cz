@@ -3,7 +3,7 @@ title: "Přidejte konektor Office 365 Outlook ve vašich Logic Apps | Microsoft 
 description: "Vytvoření aplikace logiky s konektor Office 365 Povolit interakci s Office 365. Příklad: vytváření, úpravy a aktualizaci kontakty a položky kalendáře."
 services: 
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 51b8e3de639b5cce954547adb77ff13b79ad6747
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: ea0b2f657f808bb6ba4bf427497955b9e520c669
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Začínáme s konektor Office 365 Outlook
 Konektor Office 365 Outlook umožňuje interakci s aplikací Outlook v Office 365. Pomocí tohoto konektoru můžete vytvořit, upravit a aktualizovat a položky kalendáře, kontaktů a také získat, odeslání a odpovědi k e-mailu.
@@ -30,7 +30,7 @@ S aplikací Outlook Office 365 můžete:
 * Pomocí aktivační události spustit pracovní postup v případě, že je nový e-mail, když je aktualizována položky kalendáře a další.
 * Pomocí akcí můžete odesílat e-mailu, vytvořte novou událost kalendáře a další. Například po vytvoření nového objektu v Salesforce (aktivační události) poslat e-mailu aplikace Outlook Office 365 (akce). 
 
-Toto téma ukazuje, jak používat konektor Office 365 Outlook v aplikaci logiky a taky seznam triggery a akce.
+Tento článek ukazuje, jak používat konektor Office 365 Outlook v aplikaci logiky a taky seznam triggery a akce.
 
 > [!NOTE]
 > Tato verze článku se vztahuje na Logic Apps obecné dostupnosti (GA).

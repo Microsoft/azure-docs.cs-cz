@@ -14,21 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/04/2017
 ms.author: anmola
-ms.openlocfilehash: 6f8ad0bad8d1ae861e6b72f7e1a32ab0675813c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e66e488d8e547e828c014b105a816a14726e5005
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-containerize-your-service-fabric-reliable-services-and-reliable-actors-preview"></a>Postup containerize vaší služby Fabric Reliable Services a Reliable Actors (Preview)
 
 Service Fabric podporuje containerizing mikroslužeb Service Fabric (spolehlivé služeb a služeb na základě spolehlivého Actor). Další informace najdete v tématu [služby fabric kontejnery](service-fabric-containers-overview.md).
 
-
- Tato funkce je ve verzi preview a tento článek obsahuje různé kroky k získání služby běží uvnitř kontejneru.  
+Tato funkce je ve verzi preview a tento článek obsahuje různé kroky k získání služby běží uvnitř kontejneru.  
 
 > [!NOTE]
-> Tato funkce je ve verzi preview a není podporována v produkčním prostředí. Tato funkce v současné době funkční pro systém Windows.
+> Tato funkce je ve verzi preview a není podporována v produkčním prostředí. Tato funkce v současné době funkční pro systém Windows. Pokud chcete spustit kontejnery, musí být na Windows Server 2016 s kontejnery spuštěna clusteru.
 
 ## <a name="steps-to-containerize-your-service-fabric-application"></a>Postup containerize aplikace Service Fabric
 
@@ -110,6 +109,6 @@ Service Fabric podporuje containerizing mikroslužeb Service Fabric (spolehlivé
 
 Teď byste měli mít kontejnerizované aplikace Service Fabric spuštění clusteru.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o spouštění [kontejnerů v Service Fabric](service-fabric-get-started-containers.md).
 * Informace o [životním cyklu aplikace](service-fabric-application-lifecycle.md) Service Fabric.

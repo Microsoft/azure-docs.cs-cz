@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 7630fd82cf62f1fcb0df80cec5b5e0030da81a85
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a7e45d6bccfd8113157eba63d311b6609bf35aaa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změnit nebo odstranit tabulku směrování
 
@@ -30,7 +30,7 @@ Azure automaticky směruje provoz mezi Azure podsítě virtuální sítě a mís
 Před dokončením kroků v žádné části tohoto článku dokončete následující úlohy:
 
 - Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí účtu Azure.
+- Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí účtu Azure.
 - Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` najít nainstalovanou verzi. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
 - Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.26 nebo novější. Spustit `az --version` najít nainstalovanou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
 
@@ -40,7 +40,7 @@ Je omezena na tom, kolik směrovací tabulky, můžete vytvořit na umístění 
 
 1. V levém horním rohu portálu, vyberte **+ vytvořit prostředek**.
 2. Vyberte **sítě**, pak vyberte **směrovací tabulku**.
-3. Zadejte **název** směrovací tabulka, vyberte vaše **předplatné**, vytvořte novou **skupiny prostředků**, nebo vyberte existující skupinu prostředků, vyberte **umístění** , pak vyberte **vytvořit**. **Šíření trasy protokolu BGP zakázat** možnost brání místní trasy z nebyl rozšířen do virtuální sítě Azure přes protokol BGP. Pokud virtuální sítě není připojený k bránu Azure sítě (VPN nebo ExpressRoute), ponechte možnost *zakázané*. 
+3. Zadejte **název** směrovací tabulka, vyberte vaše **předplatné**, vytvořte novou **skupiny prostředků**, nebo vyberte existující skupinu prostředků, vyberte **umístění** , pak vyberte **vytvořit**. **Šíření trasy protokolu BGP zakázat** možnost brání místní trasy z rozšířen přes protokol BGP pro rozhraní sítě v žádné podsítě, která směrovací tabulka je přidružené k. Pokud virtuální sítě není připojený k bránu Azure sítě (VPN nebo ExpressRoute), ponechte možnost *zakázané*.
 
 **Příkazy**
 

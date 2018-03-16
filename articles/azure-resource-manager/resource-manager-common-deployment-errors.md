@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2cf31b32e02923aa573d5586b8ca24bf30b7d97b
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f251fe11c43dc4b3f29c70f937f5bfcb6af6c44e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Odstraňování běžných chyb nasazení Azure pomocí Azure Resource Manageru
 
@@ -38,6 +38,7 @@ Tento článek popisuje některé běžné chyby nasazení Azure můžete setkat
 | Konflikt | Požadujete operace, který není povolen v aktuálním stavu prostředku. Například změna velikosti disku je povolená pouze při vytváření virtuálního počítače, nebo když je virtuální počítač navrácený. | |
 | DeploymentActive | Počkejte, než pro souběžné nasazení do této skupiny prostředků pro dokončení. | |
 | DeploymentFailed | Chyba DeploymentFailed je obecná chyba, která neobsahuje podrobnosti, budete muset vyřešit chyby. Vyhledejte v podrobnostech o chybě chybový kód, který poskytuje další informace. | [Najít kód chyby](#find-error-code) |
+| DeploymentQuotaExceeded | Pokud dosáhnete limitu 800 nasazení skupinu prostředků, odstraňte nasazení z historie, které už nejsou potřeba. Položky můžete odstranit z historie s [odstranit nasazení skupiny az](/cli/azure/group/deployment#az_group_deployment_delete) používáte Azure CLI, nebo [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) v prostředí PowerShell. Odstranění záznamu z historie nasazení nemá vliv na prostředky nasadit. | |
 | DnsRecordInUse | Název záznamu DNS musí být jedinečný. Buď zadejte jiný název, nebo upravte stávající záznamu. | |
 | ImageNotFound | Zkontrolujte nastavení bitové kopie virtuálního počítače. |  |
 | InUseSubnetCannotBeDeleted | Této chybě může dojít při pokusu o aktualizaci prostředek, ale je požadavek zpracován odstranit a vytvoření prostředku. Nezapomeňte zadat všechny hodnoty beze změny. | [Aktualizace prostředku](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -49,10 +50,13 @@ Tento článek popisuje některé běžné chyby nasazení Azure můžete setkat
 | InvalidResourceNamespace | Zkontrolujte obor názvů prostředků, které jste zadali v **typ** vlastnost. | [Odkaz na šablonu](/azure/templates/) |
 | InvalidResourceReference | Prostředek ještě neexistuje nebo je nesprávně odkazuje. Zkontrolujte, jestli je potřeba přidat závislost. Ověřte, že používání **odkaz** požadované parametry pro váš scénář zahrnuje funkce. | [Vyřešte závislosti](resource-manager-not-found-errors.md) |
 | InvalidResourceType | Zadejte kontrola prostředku, kterou jste zadali v **typ** vlastnost. | [Odkaz na šablonu](/azure/templates/) |
+| InvalidSubscriptionRegistrationState | Zaregistrujte své předplatné s poskytovatelem prostředků. | [Vyřešte registrace](resource-manager-register-provider-errors.md) |
 | InvalidTemplate | Zkontrolujte syntaxi šablony chyb. | [Neplatná šablona řešení](resource-manager-invalid-template-errors.md) |
+| InvalidTemplateCircularDependency | Odebrání nepotřebných závislostí. | [Vyřešte cyklické závislosti](resource-manager-invalid-template-errors.md#circular-dependency) |
 | LinkedAuthorizationFailed | Zkontrolujte, pokud váš účet patří do stejné klienta jako pro skupinu prostředků, které nasazujete. | |
 | LinkedInvalidPropertyId | ID prostředku pro prostředek není správně řešení. Zkontrolujte, že poskytujete všechny požadované hodnoty pro ID prostředku, včetně ID odběru, název skupiny prostředků, typ prostředku, název nadřazené prostředků (v případě potřeby) a název prostředku. | |
 | LocationRequired | Zadejte umístění prostředku. | [Nastavení umístění](resource-manager-templates-resources.md#location) |
+| MismatchingResourceSegments | Ujistěte se, zda vnořených prostředků má správný počet segmentů v názvu a typu. | [Vyřešte segmenty prostředků](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
 | MissingRegistrationForLocation | Zkontrolujte stav registrace poskytovatele prostředků a podporovaných umístění. | [Vyřešte registrace](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Zaregistrujte své předplatné s poskytovatelem prostředků. | [Vyřešte registrace](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Zkontrolujte stav registrace poskytovatele prostředků. | [Vyřešte registrace](resource-manager-register-provider-errors.md) |
@@ -73,6 +77,8 @@ Tento článek popisuje některé běžné chyby nasazení Azure můžete setkat
 | StorageAccountAlreadyTaken | Zadejte jedinečný název pro účet úložiště. | [Přeložit název účtu úložiště](resource-manager-storage-account-name-errors.md) |
 | StorageAccountNotFound | Zkontrolujte předplatné, skupinu prostředků a název účtu úložiště, ke které chcete použít. | |
 | SubnetsNotInSameVnet | Virtuální počítač může mít pouze jednu virtuální síť. Pokud nasazujete víc síťových karet, ujistěte se, že patří do stejné virtuální síti. | [Několik síťových adaptérů](../virtual-machines/windows/multiple-nics.md) |
+| TemplateResourceCircularDependency | Odebrání nepotřebných závislostí. | [Vyřešte cyklické závislosti](resource-manager-invalid-template-errors.md#circular-dependency) |
+| TooManyTargetResourceGroups | Snižte počet skupin prostředků pro jedno nasazení. | [Nasazení napříč skupinami prostředků](resource-manager-cross-resource-group-deployment.md) |
 
 ## <a name="find-error-code"></a>Najít kód chyby
 

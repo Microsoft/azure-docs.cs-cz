@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/08/2017
-ms.author: yurid
-ms.openlocfilehash: dd5c874406ec184a2526a9eb0843cd6f3b6b3aa1
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.date: 03/13/2018
+ms.author: barclayn
+ms.openlocfilehash: 5f2a72d133218e72d1db86b787c998cc50269d3a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="pen-testing"></a>Testování pera
 Jednou z výhod používání Azure pro testování aplikací a nasazení je, můžete rychle získat prostředí vytvořili.  Nemusíte si dělat starosti o žádanek, získávání a "stáčení a překrývání" vlastní místní hardware.
@@ -31,7 +31,7 @@ Jsme nemáte pera testování vaší aplikace pro vás, ale Chápeme, že se má
 
 Co dělat?
 
-Od 15. června 2017, Microsoft už vyžaduje schválení před vést průnikům testy s prostředky Azure. Doporučujeme, aby vyplnit se zákazníky, kteří chtějí oficiálně dokumentu nadcházející průnikům testování oznámeních podporujících zapojení uživatelů s Microsoft Azure [Azure Service průnikům testování oznámení formuláře](https://portal.msrc.microsoft.com/engage/pentest). Tento proces se vztahuje pouze k Microsoft Azure a nemusí platit pro všechny ostatní cloudové služby Microsoftu. 
+Od 15. června 2017, Microsoft už vyžaduje schválení před vést průnikům testy s prostředky Azure. Doporučujeme, aby vyplnit se zákazníky, kteří chtějí oficiálně dokumentu nadcházející průnikům testování oznámeních podporujících zapojení uživatelů s Microsoft Azure [Azure Service průnikům testování oznámení formuláře](https://portal.msrc.microsoft.com/en-us/engage/pentest). Tento proces se vztahuje pouze k Microsoft Azure a nemusí platit pro všechny ostatní cloudové služby Microsoftu. 
 
 >[!IMPORTANT] 
 >Při odesílání oznámení o chybách společnosti Microsoft pera testování aktivity se už nevyžaduje zákazníky stále splňovat [Microsoft Cloud Unified průnikům testování pravidla zapojení](https://technet.microsoft.com/en-us/mt784683). 
@@ -44,6 +44,6 @@ Standardní testy, které můžete provádět, zahrnují:
 
 Druh jeden typ testu, který nelze provést žádné je [útok na dostupnost služby (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) útoku. To zahrnuje inicializaci útoku DoS sám sebe nebo provádění souvisejících testy, které může určit, ukazují nebo simulovat jakýkoli typ útoku DoS.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Jste připravení začít s pera testování vaší aplikace hostované ve službě Microsoft Azure? Pokud ano, pak přejděte na přes [přehled testovací průnikům](https://technet.microsoft.com/library/mt784683.aspx) (a klikněte na tlačítko požádat o testování v dolní části stránky vytvořit. 

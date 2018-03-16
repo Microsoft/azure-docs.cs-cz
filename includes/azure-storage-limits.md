@@ -11,7 +11,7 @@
 
 <sup>1</sup>zahrnuje účty úložiště Standard a Premium. Pokud potřebujete více než 200 účtů úložiště, vytvořte žádost prostřednictvím [podpory Azure](https://azure.microsoft.com/support/faq/). Tým Azure Storage se na váš obchodní případ podívá a může schválit až 250 účtů úložiště. 
 
-<sup>2</sup> získat účty úložiště standard roste s tím, za inzerovaný omezení kapacity, vstupní/výstupní a žádost o rychlost do, Zkontrolujte prosím žádost o prostřednictvím [podporu Azure](https://azure.microsoft.com/support/faq/). Tým služby Azure Storage bude zkontrolujte požadavek a může schválit vyšší limity případ od případu.
+<sup>2</sup> Pokud potřebujete rozšířené limity pro váš účet úložiště, kontaktujte prosím [podporu Azure](https://azure.microsoft.com/support/faq/). Tým služby Azure Storage bude zkontrolujte požadavek a může schválit vyšší limity případ od případu. Obě pro obecné účely a účty úložiště Blob podporují zvýšené kapacity, vstupní/výstupní a rychlost požadavků požadavkem. Nové maximální hodnoty pro účty úložiště Blob, najdete v části [uvedení účty úložiště větší, vyšší škálování](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 <sup>3</sup> omezená jenom ve vstupní/výstupní omezení účtu. *Příjem příchozích dat* odkazuje na všech dat (počet požadavků) odesílány do účtu úložiště. *Odchozí přenos dat* odkazuje na všechna data (požadavky) přijímané z úložiště účtu.  
 

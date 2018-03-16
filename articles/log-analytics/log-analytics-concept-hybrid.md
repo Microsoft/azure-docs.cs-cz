@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 85fde471f0d99b976e319d552c6a031d63854cf4
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9346e9a9ad310a21c6d6ce388b76ce491041289c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Shromažďovat data z počítačů ve vašem prostředí s analýzy protokolů
 
@@ -77,14 +77,14 @@ Následující Linuxových distribucích jsou oficiálně podporované.  Agenta 
 * SUSE Linux Enterprise Server 11 a 12 (x86/x64)
 
 #### <a name="network-configuration"></a>Konfigurace sítě
-Informace o následující seznam konfigurace proxy a firewall informace požadované pro Linux agenta pro komunikaci s analýzy protokolů. Přenosy jsou odchozí z vaší sítě ke službě Analýza protokolů. 
+Informace o následující seznam konfigurace proxy a firewall informace požadované pro Linux agenta pro komunikaci s analýzy protokolů.  
 
-|Prostředek agenta| Porty |  
-|------|---------|  
-|*.ods.opinsights.azure.com | Port 443|   
-|*.oms.opinsights.azure.com | Port 443|   
-|*.blob.core.windows.net | Port 443|   
-|*.azure-automation.net | Port 443|  
+|Prostředek agenta| Porty | Směr |  
+|------|---------|--------|  
+|*.ods.opinsights.azure.com | Port 443 | Příchozí a odchozí|  
+|*.oms.opinsights.azure.com | Port 443 | Příchozí a odchozí|  
+|*.blob.core.windows.net | Port 443 | Příchozí a odchozí|  
+|*.azure-automation.net | Port 443 | Příchozí a odchozí|  
 
 Agenta systému Linux podporuje komunikaci prostřednictvím serveru proxy nebo brány OMS ke službě Analýza protokolů pomocí protokolu HTTPS.  Anonymní i základní ověřování (uživatelské jméno a heslo) jsou podporovány.  Proxy server lze zadat během instalace nebo úpravou konfiguračního souboru proxy.conf po instalaci.  
 

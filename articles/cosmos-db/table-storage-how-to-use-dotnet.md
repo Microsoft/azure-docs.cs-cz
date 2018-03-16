@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: 953ee3932ac1acad5cc41fba9bd5e168a94d7db7
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d31dd1c267bcc63106616b191b6b79d5800e31e9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>Začínáme s úložištěm Azure Table pomocí rozhraní .NET
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -83,10 +83,10 @@ Všechny příklady kódu v tomto kurzu můžete přidat do metody `Main()` v so
 Můžete v knihovně Azure CosmosDB tabulky v libovolného typu aplikace .NET, včetně Azure cloud service nebo webovou aplikaci a stolní počítače a mobilní aplikace. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>Použití balíčku NuGet k instalaci požadovaných balíčků
-Existují tři balíčky, které je třeba odkazovat ve vašem projektu k dokončení tohoto kurzu:
+Existují tři doporučené balíčky, které je třeba odkazovat ve vašem projektu k dokončení tohoto kurzu:
 
-* [Běžné knihovny pro úložiště Azure pro .NET (8.6.0-preview)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/8.6.0-preview). 
-* [Knihovna CosmosDB tabulky Microsoft Azure pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table). Tento balíček zajišťuje programový přístup k datovým prostředkům na účtu úložiště Azure Table nebo účet rozhraní API služby Azure Cosmos DB tabulky.
+* [Běžné knihovna Azure Storage pro .NET (preview)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common). 
+* [Microsoft Azure Cosmos DB tabulky knihovna pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table). Tento balíček zajišťuje programový přístup k datovým prostředkům na účtu úložiště Azure Table nebo účet rozhraní API služby Azure Cosmos DB tabulky.
 * [Microsoft Azure Configuration Manager library for .NET:](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
 
 K získání obou balíčků můžete použít balíček NuGet. Postupujte následovně:
@@ -100,6 +100,11 @@ K získání obou balíčků můžete použít balíček NuGet. Postupujte násl
 > Závislosti ODataLib v knihovně běžné úložiště pro .NET jsou k dispozici na NuGet, nikoli z datových služeb WCF balíčky ODataLib vyřešit. Knihovny ODataLib můžete stáhnout přímo nebo z odkazu ve vašem kódovém projektu prostřednictvím balíčku NuGet. Konkrétní balíčky ODataLib používané knihovnou klienta služby Storage jsou [OData](http://nuget.org/packages/Microsoft.Data.OData/), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/), a [Spatial](http://nuget.org/packages/System.Spatial/). Když tyto knihovny používají třídy Azure Table storage, představují požadované závislosti pro programování s knihovnou běžné úložiště.
 > 
 > 
+
+> [!TIP]
+> Vývojáři již obeznámeni s Azure Table storage, že jste použili [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) balíčku v minulosti. Je doporučeno, že všechny nové tabulky aplikace používat [běžné knihovny pro úložiště Azure](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) a [knihovny Azure Cosmos DB tabulky](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table), ale je stále podporováno WindowsAzure.Storage balíčku. Pokud chcete použít knihovnu WindowsAzure.Storage, zahrnují Microsoft.WindowsAzure.Storage.Table v pomocí příkazů.
+>
+>
 
 ### <a name="determine-your-target-environment"></a>Určení cílového prostředí
 Ke spuštění příkladů z této příručky máte dvě možnosti prostředí:
@@ -567,7 +572,7 @@ do
 } while(continuationToken != null);
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď, když jste se naučili základy používání služby Table Storage, podívejte se na následujících odkazech na další informace o složitějších úlohách úložiště:
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.

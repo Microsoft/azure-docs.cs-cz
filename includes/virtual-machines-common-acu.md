@@ -1,8 +1,20 @@
- 
-
-
-
-Pro účely porovnávání výpočetního síly (výkonu procesoru) jednotlivých SKU v Azure jsme vytvořili koncept výpočetní jednotky Azure – ACU. To vám umožní snadno zjistit, jaká jednotka SKU nejlépe vyhoví vašim požadavkům na výkon.  Jednotka ACU je aktuálně stanovená tak, že malý virtuální počítač (Standard_A1) má 100 ACU a ostatní jednotky SKU jsou pak ohodnoceny podle relativního výsledku standardního srovnávacího testu. 
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: cynthn;davberg
+ms.custom: include file
+ms.openlocfilehash: fde43e40a7a5bb87b9e63af47ae795616fac8b3f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/16/2018
+---
+Koncept z Azure výpočetní jednotky (ACU) poskytuje způsob porovnání výkonu výpočetní (CPU) napříč Azure SKU. To vám umožní snadno zjistit, jaká jednotka SKU nejlépe vyhoví vašim požadavkům na výkon.  Jednotka ACU je aktuálně stanovená tak, že malý virtuální počítač (Standard_A1) má 100 ACU a ostatní jednotky SKU jsou pak ohodnoceny podle relativního výsledku standardního srovnávacího testu. 
 
 > [!IMPORTANT]
 > ACU je jenom informativní údaj.  Výsledek v případě konkrétních úloh může být odlišný. 
@@ -11,7 +23,7 @@ Pro účely porovnávání výpočetního síly (výkonu procesoru) jednotlivýc
 
 <br>
 
-| Rodina SKU | ACU \ virtuální procesor | vCPU:Core |
+| Rodina SKU | ACU \ virtuální procesor | virtuální procesory: jádra |
 | --- | --- |---|
 | [A0](../articles/virtual-machines/windows/sizes-general.md) |50 | 1:1 |
 | [A1-A4](../articles/virtual-machines/windows/sizes-general.md) |100 | 1:1 |
@@ -27,7 +39,7 @@ Pro účely porovnávání výpočetního síly (výkonu procesoru) jednotlivýc
 | [Ds_v3](../articles/virtual-machines/virtual-machines-windows-sizes-general.md) |160-190* | 2:1** |
 | [E_v3](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) |160-190* | 2:1** |
 | [Es_v3](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) |160-190* | 2:1** |
-| [F2s_v2 F72s_v2](../articles/virtual-machines/windows/sizes-compute.md) |195-210* | 2:1** |
+| [F2s_v2-F72s_v2](../articles/virtual-machines/windows/sizes-compute.md) |195-210* | 2:1** |
 | [F1-F16](../articles/virtual-machines/windows/sizes-compute.md) |210-250* | 1:1 |
 | [F1s-F16s](../articles/virtual-machines/windows/sizes-compute.md) |210-250* | 1:1 |
 | [G1-G5](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) |180 - 240* | 1:1 |

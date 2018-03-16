@@ -12,17 +12,23 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/29/2017
 ms.author: tdykstra
-ms.openlocfilehash: aa64bbc764fe96d7c15d62660114222458e5acf4
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: bd4f36bb029f123b0fa41d6dcd57547413e015c0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure sendgrid vám umožňuje funkce vazby
 
 Tento článek vysvětluje postup odesílání e-mailu pomocí [sendgrid vám umožňuje](https://sendgrid.com/docs/User_Guide/index.html) vazeb v Azure Functions. Azure Functions podporuje vazbu výstup pro sendgrid vám umožňuje.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="packages"></a>Balíčky
+
+Vazby sendgrid vám umožňuje jsou součástí [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) úložiště GitHub.
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="example"></a>Příklad:
 
@@ -155,7 +161,7 @@ module.exports = function (context, input) {
 
 ## <a name="attributes"></a>Atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [sendgrid vám umožňuje](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) atribut, který je definován v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [sendgrid vám umožňuje](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) atribut.
 
 Informace o vlastnostech atributů, které můžete konfigurovat, najdete v tématu [konfigurace](#configuration). Tady je `SendGrid` atribut příkladu podpis metody:
 
@@ -178,12 +184,12 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Typ**|| Vyžaduje - musí být nastavena na `sendGrid`.|
-|**směr**|| Vyžaduje - musí být nastavena na `out`.|
-|**Jméno**|| Požadovaná proměnná používá v kódu funkce pro požadavek nebo textu požadavku. Tato hodnota je ```$return``` po pouze jeden návratovou hodnotu. |
+|**Směr**|| Vyžaduje - musí být nastavena na `out`.|
+|**name**|| Požadovaná proměnná používá v kódu funkce pro požadavek nebo textu požadavku. Tato hodnota je ```$return``` po pouze jeden návratovou hodnotu. |
 |**apiKey**|**ApiKey**| Název nastavení aplikace, který obsahuje klíč rozhraní API. Pokud není nastaven, aplikace výchozí nastavení je název "AzureWebJobsSendGridApiKey".|
-|**k**|**Komu**| příjemce e-mailovou adresu. |
-|**z**|**Z**| e-mailovou adresu odesílatele. |
-|**předmět**|**Předmět**| Předmět e-mailu. |
+|**K**|**Komu**| příjemce e-mailovou adresu. |
+|**Z**|**Z**| e-mailovou adresu odesílatele. |
+|**subject**|**Předmět**| Předmět e-mailu. |
 |**text**|**Text**| obsah e-mailu. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

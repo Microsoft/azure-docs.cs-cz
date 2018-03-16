@@ -3,7 +3,7 @@ title: "Postup řešení běžných problémů při vytváření virtuálního p
 description: "Odpovědi na časté otázky řešení potíží a problémů při vytváření virtuálního pevného disku."
 services: Azure Marketplace
 documentationcenter: 
-author: HannibalSII
+author: msmbaldwin
 manager: 
 editor: 
 ms.assetid: e39563d8-8646-4cb7-b078-8b10ac35b494
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 09/26/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: c4e88a9fbb15dd90d619b159ae1065dfacc1907f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 65361ad5bd7c3311c428b64b8476ec8f2ea2d17b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-troubleshoot-common-issues-encountered-during-vhd-creation"></a>Postup řešení běžných problémů s došlo při vytváření virtuálního pevného disku
 Tento článek je určena k Azure Marketplace vydavatele nebo spolusprávcem, který může zaznamenat problém nebo mít běžné otázky při publikování nebo správu jejich solution(s) virtuálního počítače.

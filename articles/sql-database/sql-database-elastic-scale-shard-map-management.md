@@ -2,24 +2,18 @@
 title: "Škálování Azure SQL database | Microsoft Docs"
 description: "Jak používat ShardMapManager, klientské knihovny pro elastické databáze"
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: 0e9d647a-9ba9-4875-aa22-662d01283439
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: ddove
-ms.openlocfilehash: fe4c8b7b2a9d199c85faf11fcd35382d586fc009
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: sstein
+ms.openlocfilehash: beddb3d9ac4a8c1ec5bd034c959c6b734c5b4403
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontální navýšení kapacity databáze pomocí Správce horizontálního oddílu mapy
 Chcete-li snadno škálovat databáze na SQL Azure, použijte správce mapy horizontálního oddílu. Mapa správce horizontálního oddílu je speciální databáze, která uchovává globální mapování informace o všech horizontálních oddílů (databáze) v sadě horizontálního oddílu. Metadata umožňuje aplikaci připojit ke správné databázi na základě hodnotu **horizontálního dělení klíč**. Kromě toho každých horizontálního oddílu v sadě obsahuje mapy, které sledují místní sdílení dat (označované jako **shardlets**). 
@@ -56,10 +50,10 @@ Elastické škálování podporují následující typy jako horizontálního d�
 | celé číslo |celé číslo |
 | dlouhá |dlouhá |
 | Identifikátor GUID |UUID |
-| Byte]  |Byte] |
-| Data a času | časové razítko |
+| Byte  |Byte |
+| datetime | časové razítko |
 | Časový interval | Doba trvání|
-| Datový typ DateTimeOffset |offsetdatetime |
+| datetimeoffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Seznam a rozsah horizontálního oddílu mapy
 Mapování horizontálních se dá vytvořit pomocí **seznam jednotlivých horizontálního dělení hodnoty klíče**, nebo se dá vytvořit pomocí **rozsahy horizontálního dělení hodnoty klíče**. 

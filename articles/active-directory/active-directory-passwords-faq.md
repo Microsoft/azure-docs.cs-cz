@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: 686cc2a94af729e6f872c334a6e5fda947d43725
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f5236b81c70caee4417777ffadcababebaa84620
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>Nejčastější dotazy se správou hesel
 
@@ -40,7 +40,7 @@ Tyto nejčastější dotazy je rozdělená do následujících částí:
 
 * **Otázka: je možné mé uživatelé registrovat svá vlastní data resetování hesla?**
 
-  > **Odpověď:** Ano. Jak dlouho, dokud je povoleno obnovení hesla a udělení licence, mohou uživatelé resetování portálu pro registraci hesel (https://aka.ms/ssprsetup) k registraci jejich informace o ověřování. Uživatelé mohou také registrovat prostřednictvím přístupový Panel (http://myapps.microsoft.com). Pokud chcete zaregistrovat prostřednictvím panelu přístup, potřebují k výběru jejich profilový obrázek, vyberte **profil**a pak vyberte **zaregistrovat pro resetování hesla** možnost.
+  > **Odpověď:** Ano. Jak dlouho, dokud je povoleno obnovení hesla a udělení licence, mohou uživatelé portálu pro registraci resetování hesel (https://aka.ms/ssprsetup) k registraci jejich informace o ověřování. Uživatelé mohou také registrovat prostřednictvím přístupový Panel (http://myapps.microsoft.com). Pokud chcete zaregistrovat prostřednictvím panelu přístup, potřebují k výběru jejich profilový obrázek, vyberte **profil**a pak vyberte **zaregistrovat pro resetování hesla** možnost.
   >
   >
 * **Otázka: Pokud lze povolit heslo resetovat pro skupinu a následně se rozhodnete ji zapnout pro každý jsou mé uživatelé požadované znovu zaregistrovat?**
@@ -269,7 +269,7 @@ Tyto nejčastější dotazy je rozdělená do následujících částí:
   >
 * **Otázka: jaký typy účtů zpětný zápis hesla funguje pro?**
 
-  > **Odpověď:** hesla se zpětným zápisem funguje pro federované a hodnoty hash hesla synchronizované uživatele.
+  > **Odpověď:** funguje zpětný zápis hesla pro uživatelské účty, které jsou synchronizované z místní služby Active Directory do Azure AD, včetně federovaný, hodnoty hash hesla synchronizovány a předávací Autentication uživatelů.
   >
   >
 * **Otázka: zpětný zápis hesla vynutit zásady hesel Moje doména?**

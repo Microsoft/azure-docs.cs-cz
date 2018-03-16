@@ -17,17 +17,23 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: 
-ms.openlocfilehash: eeb8833470b2ba003ba74b1db57bbd2bbbb7f65d
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: bd1a2643d9faf65d664c786169c38f01767fb7e5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
 Tento článek vysvětluje, jak pracovat s aktivační události časovače v Azure Functions. Aktivační událost časovače vám umožní spustit funkci podle plánu. 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="packages"></a>Balíčky
+
+Aktivační událost časovače je součástí [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) úložiště GitHub.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="example"></a>Příklad:
 
@@ -136,7 +142,7 @@ module.exports = function (context, myTimer) {
 
 ## <a name="attributes"></a>Atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs), definované v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions).
+V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
 Konstruktoru atributu trvá výraz CRON, jak je znázorněno v následujícím příkladu:
 
@@ -159,9 +165,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Typ** | neuvedeno | Musí být nastavena na "timerTrigger". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**směr** | neuvedeno | Musí být nastavena na "v". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**Jméno** | neuvedeno | Název proměnné, který představuje objekt časovače v kódu funkce. | 
-|**plán**|**ScheduleExpression**|Spotřeba plánu můžete definovat plány se výraz CRON. Pokud používáte plánu služby App Service, můžete také použít `TimeSpan` řetězec. Následující části popisují CRON výrazy. Můžete umístit výraz plán v nastavení aplikace a nastavte tuto vlastnost na hodnotu uzavřen do  **%**  znaky, jako v následujícím příkladě: "% NameOfAppSettingWithCRONExpression %". |
+|**Směr** | neuvedeno | Musí být nastavena na "v". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
+|**name** | neuvedeno | Název proměnné, který představuje objekt časovače v kódu funkce. | 
+|**schedule**|**ScheduleExpression**|Spotřeba plánu můžete definovat plány se výraz CRON. Pokud používáte plánu služby App Service, můžete také použít `TimeSpan` řetězec. Následující části popisují CRON výrazy. Můžete umístit výraz plán v nastavení aplikace a nastavte tuto vlastnost na hodnotu uzavřen do  **%**  znaky, jako v následujícím příkladě: "% NameOfAppSettingWithCRONExpression %". |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

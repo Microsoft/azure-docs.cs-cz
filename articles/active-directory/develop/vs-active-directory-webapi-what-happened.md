@@ -1,10 +1,10 @@
 ---
-title: "Změny provedené na projekt WebApi při připojení k Azure AD | Microsoft Docs"
-description: "Popisuje, co se stane do projektu WebApi při připojení k Azure AD pomocí sady Visual Studio"
+title: "Změny provedené na projekt WebAPI při připojení k Azure AD | Microsoft Docs"
+description: "Popisuje, co se stane do projektu WebAPI při připojení k Azure AD pomocí sady Visual Studio"
 services: active-directory
 documentationcenter: 
 author: kraigb
-manager: mtillman
+manager: ghogen
 editor: 
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
 ms.service: active-directory
@@ -12,102 +12,124 @@ ms.workload: web
 ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2017
+ms.date: 03/12/2018
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: 8a0f6e1838bcc550829c0da92dc224e1df859e9c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 140f555d28c4d5a923b9c255d8e61d7aea9bb23f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s WebApi projektu (Visual Studio Azure Active Directory připojení služby)
+# <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s WebAPI projektu (Visual Studio Azure Active Directory připojení služby)
+
 > [!div class="op_single_selector"]
-> * [Začínáme](vs-active-directory-webapi-getting-started.md)
-> * [Co se přihodilo](vs-active-directory-webapi-what-happened.md)
-> 
-> 
+> - [Začínáme](vs-active-directory-webapi-getting-started.md)
+> - [Co se přihodilo](vs-active-directory-webapi-what-happened.md)
 
-## <a name="references-have-been-added"></a>Byly přidány odkazy
-### <a name="nuget-package-references"></a>Odkazy na balíček NuGet
-* `Microsoft.Owin`
-* `Microsoft.Owin.Host.SystemWeb`
-* `Microsoft.Owin.Security`
-* `Microsoft.Owin.Security.ActiveDirectory`
-* `Microsoft.Owin.Security.Jwt`
-* `Microsoft.Owin.Security.OAuth`
-* `Owin`
-* `System.IdentityModel.Tokens.Jwt`
+Tento článek identifikuje přesný změny provedené projekty ASP.NET WebAPI, jednostránkové aplikace ASP.NET a rozhraní API ASP.NET Azure při přidávání [Azure Active Directory připojení služby pomocí sady Visual Studio](vs-active-directory-add-connected-service.md). Platí také pro projekty ASP.NET Azure Mobile Service ve Visual Studiu 2015.
 
-### <a name="net-references"></a>Odkazy na rozhraní .NET
-* `Microsoft.Owin`
-* `Microsoft.Owin.Host.SystemWeb`
-* `Microsoft.Owin.Security`
-* `Microsoft.Owin.Security.ActiveDirectory`
-* `Microsoft.Owin.Security.Jwt`
-* `Microsoft.Owin.Security.OAuth`
-* `Owin`
-* `System.IdentityModel.Tokens.Jwt`
+Informace o práci s připojené služby najdete v tématu [Začínáme](vs-active-directory-webapi-getting-started.md).
 
-## <a name="code-changes"></a>Změny kódu
-### <a name="code-files-were-added-to-your-project"></a>Soubory kódu byly přidány do projektu
-Spuštění třídu ověřování **App_Start/Startup.Auth.cs** byl přidán do projektu obsahující logika spuštění pro ověřování Azure AD.
+## <a name="added-references"></a>Přidání odkazů
 
-### <a name="startup-code-was-added-to-your-project"></a>Kód spuštění byl přidán do projektu
-Pokud jste již měli třída při spuštění ve vašem projektu **konfigurace** metoda byla aktualizována zahrnout volání `ConfigureAuth(app)`. Třída při spuštění, jinak hodnota byl přidán do projektu.
+Ovlivňuje odkazy na projekt souboru *.NET) a `packages.config` (odkazů NuGet).
 
-### <a name="your-appconfig-or-webconfig-file-has-new-configuration-values"></a>Váš soubor app.config nebo web.config obsahuje nové hodnoty konfigurace.
-Byly přidány následující položky konfigurace.
+| Typ | Referenční informace |
+| --- | --- |
+| .NET; NuGet | Microsoft.Owin |
+| .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
+| .NET; NuGet | Microsoft.Owin.Security |
+| .NET; NuGet | Microsoft.Owin.Security.ActiveDirectory |
+| .NET; NuGet | Microsoft.Owin.Security.Jwt |
+| .NET; NuGet | Microsoft.Owin.Security.OAuth |
+| .NET; NuGet | Owin |
+| .NET; NuGet | System.IdentityModel.Tokens.Jwt |
 
-```
+Další informace, pokud jste vybrali **čtení dat adresáře** možnost:
+
+| Typ | Referenční informace |
+| --- | --- |
+| .NET; NuGet | EntityFramework |
+| .NET        | EntityFramework.SqlServer (Visual Studio 2015 pouze) |
+| .NET; NuGet | Microsoft.Azure.ActiveDirectory.GraphClient |
+| .NET; NuGet | Microsoft.Data.Edm |
+| .NET; NuGet | Microsoft.Data.OData |
+| .NET; NuGet | Microsoft.Data.Services.Client |
+| .NET; NuGet | Microsoft.IdentityModel.Clients.ActiveDirectory |
+| .NET        | Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms<br>(Visual Studio 2015 pouze) |
+| .NET; NuGet | System.Spatial |
+
+Následující odkazy jsou odebrány (technologii ASP.NET 4 projekty pouze jako v sadě Visual Studio 2015):
+
+| Typ | Referenční informace |
+| --- | --- |
+| .NET; NuGet | Microsoft.AspNet.Identity.Core |
+| .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
+| .NET; NuGet | Microsoft.AspNet.Identity.Owin |
+
+## <a name="project-file-changes"></a>Změny souborů projektu
+
+- Nastavte vlastnost `IISExpressSSLPort` jedinečné číslo.
+- Nastavte vlastnost `WebProject_DirectoryAccessLevelKey` na hodnotu 0 nebo 1, pokud jste vybrali **čtení dat adresáře** možnost.
+- Nastavte vlastnost `IISUrl` k `https://localhost:<port>/` kde `<port>` odpovídá `IISExpressSSLPort` hodnotu.
+
+## <a name="webconfig-or-appconfig-changes"></a>soubor Web.config nebo app.config změny
+
+- Byla přidána následující položky konfigurace:
+
+    ```xml
     <appSettings>
-            <add key="ida:ClientId" value="ClientId from the new Azure AD App" />
-            <add key="ida:Tenant" value="Your selected Azure AD Tenant" />
-            <add key="ida:Audience" value="The App ID Uri from the wizard" />
-    </appSettings>`
-```
+        <add key="ida:ClientId" value="<ClientId from the new Azure AD app>" />
+        <add key="ida:Tenant" value="<your selected Azure domain>" />
+        <add key="ida:Audience" value="<your selected domain + / + project name>" />
+    </appSettings>
+    ```
 
-### <a name="an-azure-ad-app-was-created"></a>Byla vytvořena aplikace Azure AD
-Aplikaci Azure AD byl vytvořen v adresáři, který jste vybrali v průvodci.
+- Visual Studio 2017 pouze: také přidat následující položku v části `<appSettings>`"
 
-[Další informace o službě Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
+    ```xml
+    <add key="ida:MetadataAddress" value="<domain URL + /federationmetadata/2007-06/federationmetadata.xml>" />
+    ```
 
-## <a name="if-i-checked-disable-individual-user-accounts-authentication-what-additional-changes-were-made-to-my-project"></a>Pokud po kontrole *zakázat jednotlivé uživatelské účty ověřování*, jaké další změny byly provedeny na Můj projekt?
-Byly odebrány odkazy balíčku NuGet, a soubory byly odebrány a zálohovat. V závislosti na stavu projektu možná budete muset ručně odebrat další odkazy nebo soubory, nebo upravit kód podle potřeby.
+- Přidat `<dependentAssembly>` elementů v rámci `<runtime><assemblyBinding>` uzel pro `System.IdentityModel.Tokens.Jwt`.
 
-### <a name="nuget-package-references-removed-for-those-present"></a>Odkazy na balíček NuGet odebrat (pro ty existuje)
-* `Microsoft.AspNet.Identity.Core`
-* `Microsoft.AspNet.Identity.EntityFramework`
-* `Microsoft.AspNet.Identity.Owin`
+- Pokud jste vybrali **čtení dat adresáře** možnost, přidat následující položku konfigurace v rámci `<appSettings>`:
 
-### <a name="code-files-backed-up-and-removed-for-those-present"></a>Soubory kódu zálohovat a odebrat (pro ty existuje)
-Každý z následujících souborů byl zálohován a odebrat z projektu. Záložní soubory jsou umístěny ve složce 'Zálohování' v kořenovém adresáři projektu.
+    ```xml
+    <add key="ida:Password" value="<Your Azure AD app's new password>" />
+    ```
 
-* `App_Start\IdentityConfig.cs`
-* `Controllers\AccountController.cs`
-* `Controllers\ManageController.cs`
-* `Models\IdentityModels.cs`
-* `Providers\ApplicationOAuthProvider.cs`
+## <a name="code-changes-and-additions"></a>Změny kódu a přidání
 
-### <a name="code-files-backed-up-for-those-present"></a>Soubory kódu zálohovat (pro ty existuje)
-Každý z následujících souborů byla zálohována před nahrazují. Záložní soubory jsou umístěny ve složce 'Zálohování' v kořenovém adresáři projektu.
+- Přidat `[Authorize]` atribut `Controllers/ValueController.cs` a všechny ostatní existující řadiče.
 
-* `Startup.cs`
-* `App_Start\Startup.Auth.cs`
+- Přidat třídu spuštění ověřování `App_Start/Startup.Auth.cs`, obsahující logika spuštění pro ověřování Azure AD, nebo je změněn odpovídajícím způsobem. Pokud jste vybrali **čtení dat adresáře** možnost, tento soubor zároveň obsahuje kód pro příjem kódu OAuth a exchange pro přístupový token.
 
-## <a name="if-i-checked-read-directory-data-what-additional-changes-were-made-to-my-project"></a>Pokud po kontrole *čtení dat adresáře*, jaké další změny byly provedeny na Můj projekt?
-### <a name="additional-changes-were-made-to-your-appconfig-or-webconfig"></a>Byly provedeny další změny app.config nebo web.config
-Byly přidány následující položky další konfiguraci.
+- (Visual Studio 2015 s technologií ASP.NET 4 pouze aplikace) Odebrat `App_Start/IdentityConfig.cs` a přidat `Controllers/AccountController.cs`, `Models/IdentityModel.cs`, a `Providers/ApplicationAuthProvider.cs`.
 
-```
-    <appSettings>
-        <add key="ida:Password" value="Your Azure AD App's new password" />
-    </appSettings>`
-```
+- Přidat `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) nebo `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015), obsahující informace, které Visual Studio používá ke sledování přidání připojených služeb.
 
-### <a name="your-azure-active-directory-app-was-updated"></a>Aplikace Azure Active Directory byla aktualizována.
-Aplikace Azure Active Directory byla aktualizována zahrnout *čtení dat adresáře* oprávnění a další klíč byl vytvořen, které se pak použije jako *ida: heslo* v `web.config` souboru.
+### <a name="file-backup-visual-studio-2015"></a>Zálohování souborů (Visual Studio 2015)
 
-## <a name="next-steps"></a>Další kroky
-- [Další informace o službě Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
+Při přidání připojené služby, Visual Studio 2015 zálohuje změněné a odebrání souborů. Všechny zasažené soubory jsou uloženy ve složce `Backup/AzureAD`. Visual Studio 2017 nedojde k vytvoření zálohy.
 
+- `Startup.cs`
+- `App_Start\IdentityConfig.cs`
+- `App_Start\Startup.Auth.cs`
+- `Controllers\AccountController.cs`
+- `Controllers\ManageController.cs`
+- `Models\IdentityModels.cs`
+- `Models\ApplicationOAuthProvider.cs`
+
+## <a name="changes-on-azure"></a>Změny v Azure
+
+- Vytvořit aplikaci Azure AD v doméně, která jste vybrali při přidání připojené služby.
+- Aktualizovat aplikaci zahrnout **čtení dat adresáře** oprávnění, pokud byla tato možnost vybraná.
+
+[Další informace o službě Azure Active Directory](https://azure.microsoft.com/services/active-directory/).
+
+## <a name="next-steps"></a>Další postup
+
+- [Scénáře ověřování pro Azure Active Directory](active-directory-authentication-scenarios.md)
+- [Přidání přihlášení se společností Microsoft do webové aplikace ASP.NET](guidedsetups/active-directory-aspnetwebapp-v1.md)

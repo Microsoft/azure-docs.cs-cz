@@ -14,11 +14,11 @@ ms.tgt_pltfrm:
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: bd931b220c417f91b47278c82707d38de5c7f65e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 84390f73fdac6554699dd43a0a36d16eace9a2bb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Nejčastější dotazy a známé problémy s spravované služby Identity (MSI) pro Azure Active Directory
 
@@ -37,6 +37,10 @@ Ne, nejsou žádné plány pro podporu MSI v Azure Cloud Services.
 ### <a name="does-msi-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Funguje s Active Directory Authentication Library (ADAL) nebo knihovny ověřování společnosti Microsoft (MSAL) MSI?
 
 Ne, není s ADAL nebo MSAL ještě integrovaná MSI. Podrobnosti o získávání tokenu MSI používá koncový bod MSI REST najdete v tématu [jak používat Azure virtuálního počítače spravované služby Identity (MSI) pro získání tokenu](how-to-use-vm-token.md).
+
+### <a name="what-is-the-security-boundary-of-a-managed-service-identity"></a>Co je hranicí zabezpečení Identita spravované služby?
+
+Prostředek, ke kterému je připojen k je hranicí zabezpečení identity. Například hranice zabezpečení u MSI virtuální počítač je virtuální počítač. Všechny kód spuštěný na tento virtuální počítač, je možné volat koncový bod MSI a žádosti o tokeny. Je podobné prostředí s jiným prostředkům, které podporují MSI.
 
 ### <a name="what-are-the-supported-linux-distributions"></a>Jaké jsou podporované distribuce systému Linux?
 

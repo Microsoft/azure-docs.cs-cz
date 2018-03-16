@@ -2,24 +2,18 @@
 title: "Porty nad rámec 1433 pro databázi SQL. | Microsoft Docs"
 description: "Připojení klienta z ADO.NET do Azure SQL Database můžete používat proxy server a komunikovat přímo s databází pomocí jiné porty než 1433."
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: jhubbard
-editor: 
-ms.assetid: 3f17106a-92fd-4aa4-b6a9-1daa29421f64
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-ms.openlocfilehash: 3004edee0096d2e1594679371fb162b392e67f9a
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 2f80e95b6d3828bf8c63e2346b6ba4d14bde70bb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty nad rámec 1433 pro technologii ADO.NET 4.5
 Toto téma popisuje chování připojení databáze SQL Azure pro klienty, kteří používají ADO.NET 4.5 nebo novější. 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: 89e4b52e7d306bd495c426bcf775f59d0f30eb55
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: b5438080f71fa8f5c4f03006b75b826f1cfa576a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Oddílu prostředků šablon Azure Resource Manager
 
@@ -75,10 +75,10 @@ Můžete definovat prostředky s následující strukturou:
 | location |Je to různé. |Podporované geografické umístění zadaného prostředku. Můžete vybrat některý z dostupných umístění, ale obvykle má smysl vyberte ten, který je blízko vaši uživatelé. Obvykle také má smysl umístit prostředky, které vzájemně spolupracovat ve stejné oblasti. Většina typů prostředků vyžadují umístění, ale některé typy (například přiřazení role) nevyžadují umístění. |
 | tags |Ne |Značky, které jsou přidružené k prostředku. Použití značek k logicky uspořádání prostředků vašeho předplatného. |
 | Komentáře |Ne |Poznámky pro dokumentaci prostředky ve vaší šabloně |
-| Kopírování |Ne |V případě potřeby více než jednu instanci počet zdrojů pro vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky do nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md). |
+| Kopírovat |Ne |V případě potřeby více než jednu instanci počet zdrojů pro vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky do nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md). |
 | dependsOn |Ne |Prostředky, které musí být nasazené, než je nasazený tento prostředek. Správce prostředků vyhodnotí závislosti mezi prostředky a nasadí je ve správném pořadí. Pokud nejsou na sobě navzájem závislé prostředky, jsou nasazeny současně. Hodnota může být čárkami oddělený seznam prostředek názvy nebo jedinečné identifikátory prostředků. Zobrazit seznam pouze těch prostředků, které jsou nasazeny v této šabloně. Prostředky, které nejsou v této šabloně definovány již musí existovat. Vyhněte se přidání nepotřebné závislostí, jak mohou zpomalit nasazení a vytvoření cyklické závislosti. Pokyny v závislosti na nastavení najdete v tématu [definování závislostí v šablonách Azure Resource Manager](resource-group-define-dependencies.md). |
 | properties |Ne |Nastavení konfigurace specifických prostředků. Hodnoty pro vlastnosti jsou stejné jako hodnoty, které zadáte v textu požadavku REST API operaci (metoda PUT) k vytvoření prostředku. Můžete také zadat pole kopie vytvořit více instancí vlastnosti. |
-| Prostředky |Ne |Podřízené prostředky, které jsou závislé na prostředku definovaný. Zadejte pouze typy prostředků, které jsou povoleny schématem nadřazený prostředek. Plně kvalifikovaný typ prostředku podřízené obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazeném prostředku není implicitní. Je nutné explicitně zadat tuto závislost. |
+| prostředků |Ne |Podřízené prostředky, které jsou závislé na prostředku definovaný. Zadejte pouze typy prostředků, které jsou povoleny schématem nadřazený prostředek. Plně kvalifikovaný typ prostředku podřízené obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazeném prostředku není implicitní. Je nutné explicitně zadat tuto závislost. |
 
 ## <a name="resource-specific-values"></a>Hodnoty v závislosti na prostředek
 
@@ -213,7 +213,7 @@ Pokud potřebujete používat pevné kódování umístění v šabloně, zadejt
 ```
 
 ## <a name="tags"></a>Značky
-[!INCLUDE [resource-manager-tag-introduction](../../includes/resource-manager-tag-introduction.md)]
+[!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
 
 ### <a name="add-tags-to-your-template"></a>Do šablony přidat značky
 
@@ -242,9 +242,9 @@ V rámci některé typy prostředků můžete také definovat pole podřízené 
 
 Když vnořený, typ je nastavený na `databases` , ale jeho typ prostředku úplné `Microsoft.Sql/servers/databases`. Nezadáte `Microsoft.Sql/servers/` se předpokládá z nadřazeného typu prostředku. Název prostředku podřízené je nastaven `exampledatabase` ale úplný název obsahuje název nadřazené. Nezadáte `exampleserver` se předpokládá z nadřazené prostředku.
 
-Není ve formátu podřízený typ prostředku:`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
+Není ve formátu podřízený typ prostředku: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
-Formát názvu podřízené prostředků je:`{parent-resource-name}/{child-resource-name}`
+Formát názvu podřízené prostředků je: `{parent-resource-name}/{child-resource-name}`
 
 Ale není nutné definovat databázi v rámci serveru. Můžete definovat podřízených prostředků na nejvyšší úrovni. Tento postup můžete použít, pokud nadřazený prostředek není nasazený ve stejné šablony, nebo pokud chcete použít `copy` vytvořit více podřízené prostředky. S tímto přístupem musíte zadat typ prostředku úplné a zahrnout název nadřazené prostředku v názvu prostředku podřízené.
 
@@ -271,9 +271,9 @@ Při vytváření plně kvalifikovaný odkaz na prostředek, není jednoduše z�
 {resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
 ```
 
-Například:
+Příklad:
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`správnost `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` není správný
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` správnost `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` není správný
 
 ## <a name="recommendations"></a>Doporučení
 Při práci s prostředky, může být užitečné následující informace:

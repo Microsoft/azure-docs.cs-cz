@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 03/14/2018
 ms.author: jgao
-ms.openlocfilehash: 290e600b7be4a6f9fb57afa50bb771e42e6a0624
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: c74e02ea32a5aacf1a5208c0e194a25b0b6bcb48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="visualize-interactive-query-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>Vizualizovat data interaktivní Hive dotaz s Microsoft Power BI pomocí přímých dotazů v Azure HDInsight
 
@@ -28,7 +28,7 @@ Zjistěte, jak se připojit k Azure HDInsight interaktivní dotazu clustery Micr
 
 ![HDInsight Power BI sestavy mapy](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
-Pro připojení k použití rozhraní ODBC Hive naleznete v tématu [vizualizovat Hive data s Microsoft Power BI pomocí rozhraní ODBC v Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md). 
+Můžete využít [ovladače Hive ODBC](../hadoop/apache-hadoop-connect-hive-power-bi.md) pro import prostřednictvím konektoru obecné ODBC v Power BI Desktop. Nedoporučuje se ale pro úlohy BI zadané neinteraktivní povaha modul dotazů Hive. [Konektor interaktivní dotazu HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) a [HDInsight Spark konektor](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) jsou lepší možnosti výkonu.
 
 ## <a name="prerequisites"></a>Požadavky
 Před zahájením tohoto článku, musíte mít následující položky:

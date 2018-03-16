@@ -3,7 +3,7 @@ title: "Sendgrid vám umožňuje | Microsoft Docs"
 description: "Vytvoření aplikace logiky službou Azure App service. Poskytovatel připojení SendGrid umožňuje odesílání e-mailů a správu seznamů příjemců."
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: b0773750f24b18aa55874a215cac7ccdfc5c1182
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: e87173b4a31a721ca3cd5af41d4a6d725c46c972
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-sendgrid-connector"></a>Začínáme s konektor sendgrid vám umožňuje
 Poskytovatel připojení SendGrid umožňuje odesílání e-mailů a správu seznamů příjemců.

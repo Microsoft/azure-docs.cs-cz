@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/12/2018
 ms.author: billmath
-ms.openlocfilehash: ac085bf972885819f7c79996b0f6638fc01fc00d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3e533b8b23c095a3de845d9b26a96aea9d8ee086
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure předávací ověřování služby Active Directory: Aktuální omezení
 
@@ -29,24 +29,25 @@ ms.lasthandoff: 03/08/2018
 
 Plně podporuje následující scénáře:
 
-- Přihlášení uživatele na všechny webové aplikace založené na prohlížeči
-- Uživatelská přihlášení do aplikace Office, které podporují [moderní ověřování](https://aka.ms/modernauthga): Office 2016 a Office 2013 _s_ moderní ověřování
+- Přihlášení uživatele na všechny webové aplikace založené na prohlížeči.
+- Uživatelská přihlášení do aplikace Office, které podporují [moderní ověřování](https://aka.ms/modernauthga): Office 2016 a Office 2013 _s_ moderní ověřování.
 - Přihlášení uživatele pro klienty Outlook, kteří používají starší verze protokoly, například Exchange ActiveSync, SMTP, POP a IMAP.
-- Přihlášení uživatele ke Skypu pro firmy moderní ověřování této podpory, včetně Online a hybridní topologie. Další informace o podporovaných topologiích [zde](https://technet.microsoft.com/library/mt803262.aspx).
-- Azure AD domain spojení pro zařízení s Windows 10
+- Přihlášení uživatele ke Skypu pro firmy, které podporují moderní ověřování, včetně online a hybridní topologie. Další informace o podporovaných topologiích [zde](https://technet.microsoft.com/library/mt803262.aspx).
+- Azure AD domain spojí pro zařízení s Windows 10.
 - Hesla aplikací pro službu Multi-Factor Authentication.
 
 ## <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
 Následující scénáře jsou _není_ podporovány:
 
-- Přihlášení uživatele pro starší klientské aplikace Office, s výjimkou aplikace Outlook: Office 2010 a Office 2013 _bez_ moderní ověřování. Organizace doporučujeme přepnout na moderní ověřování, pokud je to možné. Moderní ověřování umožňuje podporu předávací ověřování. Také pomáhá vám zabezpečit vaše uživatelské účty pomocí [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) funkce, jako je Azure Multi-Factor Authentication.
+- Přihlášení uživatele pro starší klientské aplikace Office, s výjimkou aplikace Outlook (viz **Podporované scénáře** výše): Office 2010 a Office 2013 _bez_ moderní ověřování. Organizace doporučujeme přepnout na moderní ověřování, pokud je to možné. Moderní ověřování umožňuje podporu předávací ověřování. Také pomáhá vám zabezpečit vaše uživatelské účty pomocí [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) funkce, jako je Azure Multi-Factor Authentication.
+- Přístup ke sdílení kalendáře a volném čase v systému Exchange hybridní prostředí v Office 2010 pouze.
 - Uživatelská přihlášení ke Skypu pro firmy klientské aplikace _bez_ moderní ověřování.
 - Přihlášení uživatele k prostředí PowerShell, verze 1.0. Doporučujeme použít PowerShell verze 2.0.
 - Zjišťování uživatelů s [úniku přihlašovacích údajů](../active-directory-reporting-risk-events.md#leaked-credentials).
 - Azure AD Domain Services vyžaduje synchronizaci hodnoty Hash hesla, aby byl povolen u klienta. Proto klientů, které používají předávací ověřování _pouze_ nefungují pro scénáře, které je třeba Azure AD Domain Services.
 - Předávací ověřování není integrovaná s [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md).
-- Apple Device Enrollment Program (Apple DEP) nepodporuje moderní ověřování.  Zařízení Apple DEP se nepovede zaregistrovat do služby Intune pro domény pomocí předávacího ověřování.
+- Apple Device Enrollment Program (Apple DEP) pomocí Pomocníka s nastavením iOS nepodporuje moderní ověřování. To nebude možné registrovat zařízení Apple DEP do Intune pro spravované domény pomocí předávacího ověřování. Zvažte použití [aplikaci portál společnosti](https://blogs.technet.microsoft.com/intunesupport/2018/02/08/support-for-multi-token-dep-and-authentication-with-company-portal/) jako alternativu.
 
 >[!IMPORTANT]
 >Jako alternativní řešení pro nepodporované scénáře _pouze_, povolte synchronizaci hodnoty Hash hesla na [volitelné funkce](active-directory-aadconnect-get-started-custom.md#optional-features) stránku průvodce Azure AD Connect.

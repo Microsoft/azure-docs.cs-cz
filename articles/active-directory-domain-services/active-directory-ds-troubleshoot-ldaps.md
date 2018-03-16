@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: f80de47f8e9ba326fc224a8bc09f8029b5afd1ca
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 38885caacfb98f76627854a782aa56d8a609aad9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services – konfigurace řešení potíží s zabezpečení LDAP
 
@@ -58,7 +58,7 @@ Pokud je povoleno zabezpečené LDAP, doporučujeme vytvořit další pravidla p
 
 *Zabezpečený LDAP certifikát pro spravované doméně vyprší XX.*
 
-**Náprava:**
+**Řešení:**
 
 Vytvořit nový certifikát zabezpečený LDAP podle kroků uvedených v [konfigurace zabezpečeného LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md) článku.
 

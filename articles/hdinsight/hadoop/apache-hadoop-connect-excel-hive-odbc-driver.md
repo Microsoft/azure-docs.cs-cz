@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: b2b5427f037203e86f6b73610084993892ed4a37
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 2050741b46699043836cae1e6465e18dbae87d25
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení aplikace Excel k systému Hadoop v prostředí Azure HDInsight pomocí ovladače Microsoft Hive ODBC
 
@@ -31,10 +31,7 @@ ms.lasthandoff: 02/23/2018
 
 Také je možné připojit data související s clusteru služby HDInsight a dalších zdrojů dat, včetně jiných clusterů systému Hadoop (bez HDInsight), z aplikace Excel pomocí doplňku Microsoft Power Query pro Excel. Informace o instalaci a používání doplňku Power Query najdete v tématu [připojení aplikace Excel do prostředí HDInsight pomocí doplňku Power Query][hdinsight-power-query].
 
-> [!NOTE]
-> Zatímco kroky v tomto článku lze použít s clusterem Linux nebo HDInsight se systémem Windows, je vyžadována pro klientské pracovní stanice systému Windows.
-> 
-> 
+
 
 **Požadavky**:
 

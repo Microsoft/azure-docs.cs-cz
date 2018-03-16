@@ -3,8 +3,8 @@ title: "Vytvoření bitové kopie virtuálního počítače místní pro Azure M
 description: "Pochopení a provést kroky pro vytvoření image virtuálního počítače místní a nasadit do Azure Marketplace pro ostatní k nákupu."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 26dfbd5a-8685-4b19-987e-c20ca60540ec
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: 77771f1e690bdfb59d42989a34068634f35f845d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: mbaldwin
+ms.openlocfilehash: 6b927ce6032092ce258eeebca49da0571439dbfb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Vytvořte bitovou kopii virtuálního počítače místní pro Azure Marketplace
 Důrazně doporučujeme vývoji Azure virtuální pevné disky (VHD) přímo v cloudu pomocí protokolu RDP. Ale pokud je potřeba, je možné stáhnout virtuální pevný disk a vytvořte ho pomocí místní infrastruktury.  
@@ -92,7 +92,7 @@ Pokud chcete vytvořit účet úložiště, můžete použít [portálu Microsof
 
 **Vytvořit účet úložiště z portálu Microsoft Azure**
 
-1. Klikněte na tlačítko **vytvořit prostředek**.
+1. Klikněte na **Vytvořit prostředek**.
 2. Vyberte **úložiště**.
 3. Zadejte název účtu úložiště a pak vyberte umístění.
    

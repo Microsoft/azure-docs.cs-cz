@@ -5,15 +5,15 @@ services: iot-edge
 keywords: 
 author: kgremban
 manager: timlt
-ms.author: v-jamebr
-ms.date: 11/15/2017
+ms.author: kgremban
+ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fd46bb662af72ece799bb545d06d76f9e54ee62c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 605f0cfe34e4fda14030bb38686095882846c7c0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>Vývoj a nasazení modul IoT Edge C# na simulovaného zařízení – náhled
 
@@ -48,7 +48,7 @@ V tomto kurzu použijete modul sestavení a vytvoření rozšíření Azure IoT 
 3. Vyberte **Vytvořit**.
 4. Po vytvoření kontejneru registr, přejděte k němu a vyberte **přístupové klíče**. 
 5. Přepnutí **uživatel s oprávněními správce** k **povolit**.
-6. Zkopírujte hodnoty pro **přihlášení na server**, **uživatelské jméno**, a **heslo**. Tyto hodnoty budete používat později v tomto kurzu. 
+6. Zkopírujte hodnoty pro **přihlášení na server**, **uživatelské jméno**, a **heslo**. Tyto hodnoty později v tomto kurzu budete používat při publikování bitovou kopii Docker v registru a přidejte tato pověření registru do modulu runtime okraj. 
 
 ## <a name="create-an-iot-edge-module-project"></a>Vytvoření projektu modulu IoT Edge
 Následující kroky zobrazení můžete jak vytvořit modul IoT Edge založené na rozhraní .NET základní 2.0 pomocí kódu v jazyce Visual Studio a rozšíření Azure IoT okraj.
@@ -227,15 +227,14 @@ Následující kroky zobrazení můžete jak vytvořit modul IoT Edge založené
 2. Klikněte pravým tlačítkem myši **soubor Docker** souboru a klikněte na tlačítko **sestavení IoT Edge modulu Docker image**. 
 3. V **vyberte složku** okně vyhledejte nebo zadejte `./bin/Debug/netcoreapp2.0/publish`. Klikněte na tlačítko **vyberte složku EXE_DIR**.
 4. Automaticky otevírané okno textového pole v horní části okna VS Code zadejte název bitové kopie. Například: `<your container registry address>/filtermodule:latest`. Adresa registru kontejneru je stejný jako server přihlášení, který jste zkopírovali z registru. Musí být ve tvaru `<your container registry name>.azurecr.io`.
-5. Přihlaste se k Docker zadáním následujícího příkazu v terminálu integrované VS Code: 
+5. Přihlaste se k Docker pomocí uživatelského jména, hesla a přihlášení serveru, který jste zkopírovali z registru kontejner Azure, když jste ji vytvořili. V terminálu integrované VS Code, zadejte následující příkaz: 
      
    ```csh/sh
-   docker login -u <username> -p <password> <Login server>
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
-        
-   Použijte uživatelské jméno, heslo a přihlášení serveru, který jste zkopírovali z registru kontejner Azure, když jste ji vytvořili.
 
-3. Do úložiště Docker push bitovou kopii. Vyberte **zobrazení** > **příkaz palety** a vyhledejte **Edge: Push IoT Edge modulu Docker image** příkazu nabídky. Zadejte název bitové kopie do místní textového pole v horní části okna VS Code. Použijte stejný název bitové kopie, které jste použili v kroku 4.
+6. Push bitovou kopii do registru kontejneru. Vyberte **zobrazení** > **příkaz palety** a vyhledejte **Edge: Push IoT Edge modulu Docker image** příkazu nabídky. Zadejte název bitové kopie do místní textového pole v horní části okna VS Code. Použijte stejný název bitové kopie, které jste použili v kroku 4.
+7. Chcete-li zobrazit bitové kopie na portálu Azure, přejděte do kontejner Azure registr a vyberte **úložiště**. Měli byste vidět **filtermodule** uvedené.
 
 ## <a name="add-registry-credentials-to-edge-runtime"></a>Přidejte pověření registru do hraniční runtime
 Přidáte přihlašovací údaje pro vaše registru do hraniční runtime v počítači, na kterém je spuštěn hraniční zařízení. Tyto přihlašovací údaje poskytnout přístup runtime vyžádání kontejneru. 

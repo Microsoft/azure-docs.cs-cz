@@ -3,24 +3,18 @@ title: "Sledování výkonu mnoho databází Azure SQL v aplikaci SaaS víceklie
 description: "Sledování a správa výkonu databáze Azure SQL a fondy v aplikaci SaaS více klientů"
 keywords: kurz k sql database
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: sstein
-ms.openlocfilehash: 289f1f99b1661e499fa7132887e2f65e086ad689
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 352b0d48ab223a236b96c633526f792b6f8a703d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Sledování a správa výkonu databáze Azure SQL a fondy v aplikaci SaaS více klientů
 
@@ -28,7 +22,7 @@ V tomto kurzu jsou prozkoumali několik klíčových scénářů správy použí
 
 Adresář Wingtip lístky SaaS databáze za klienta aplikace používá klienta jeden datový model, kde každý místo (klient) má své vlastní databázi. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Abyste mohli využít výhod tohoto typického vzoru používání databáze, databáze tenantů se nasazují do elastických databázových fondů. Elastické fondy optimalizují náklady na řešení prostřednictvím sdílení prostředků mezi mnoha databázemi. S tímto typem vzorců je důležité monitorovat využití databáze a prostředků fondu k zajištění, že jsou přiměřeně vyvážená přetížení mezi jednotlivými fondy. Je také potřeba zajistit, že jednotlivé databáze mají adekvátní prostředky a že fondy nedosahují limitů [eDTU](sql-database-what-is-a-dtu.md). Tento kurz se věnuje způsobům monitorování a správy databází a fondů a uvádí, jak se provádějí nápravné akce v reakci na variace v úloze.
 
-Co se v tomto kurzu naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 
@@ -234,7 +228,7 @@ Tam, kde agregované využití tenanta probíhá podle předvídatelných vzorc�
 
 ## <a name="next-steps"></a>Další kroky
 
-Co se v tomto kurzu naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Simulace použití v databázích tenantů pomocí dodaného generátoru zatížení
@@ -245,7 +239,7 @@ Co se v tomto kurzu naučíte:
 [Kurz Obnovení jednoho tenanta](saas-dbpertenant-restore-single-tenant.md)
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * Další [návodů, které stavět na adresář Wingtip lístky SaaS databáze za klienta nasazení aplikace](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastické fondy SQL](sql-database-elastic-pool.md)

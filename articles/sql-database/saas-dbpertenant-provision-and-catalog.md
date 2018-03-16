@@ -3,24 +3,18 @@ title: "Zřídit nové klienty ve víceklientské aplikaci, která používá Az
 description: "Zjistěte, jak zřídit a nové klienty v aplikaci SaaS víceklientské Azure SQL Database v katalogu"
 keywords: kurz k sql database
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
-ms.openlocfilehash: 79b3743054f73914c6755a3c9b102b613b1944f2
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 21f0bca3a16164ead4e0990842a968fd9b95c33f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Zjistěte, jak zřídit nové klienty a zaregistrujte je v katalogu
 
@@ -99,8 +93,8 @@ Trasování spuštění skriptu na pomocí **ladění** možnosti nabídky - **F
 
 Následující nejsou explicitně provést kroky, ale vysvětlení, které jednotlivé kroky při ladění skriptu pracovního postupu:
 
-1. **Importuje modul SubscriptionManagement.psm1**, který obsahuje funkce pro přihlášení do Azure a výběr předplatného Azure, se kterým pracujete.
 1. **Importuje modul CatalogAndDatabaseManagement.psm1**, který nabízí obecný přehled funkcí pro [správu horizontálních oddílů (Shard Management)](sql-database-elastic-scale-shard-map-management.md) na úrovni katalogu a tenanta. Tento modul zapouzdří většinu vzoru katalogu a je vhodné využít.
+1. **Importuje modul SubscriptionManagement.psm1**, který obsahuje funkce pro přihlášení do Azure a výběr předplatného Azure, se kterým pracujete.
 1. **Získejte podrobnosti o konfiguraci**. Krok do Get-konfigurace (s F11), abyste viděli, jak je zadána konfigurace aplikace. Názvy prostředků a jiné hodnoty, konkrétní aplikace jsou zde definované, ale nebudou změněna tyto hodnoty, dokud se seznámíte s skripty.
 1. **Získejte katalog objektů**. Krok do Get-katalogu, která vytvoří a vrátí objekt katalog, který se používá ve skriptu vyšší úrovně.  Tato funkce využívá funkce správy horizontálního oddílu, které jsou importovány z **AzureShardManagement.psm1**. Objekt katalogu se skládá z následujících elementů:
    * $catalogServerFullyQualifiedName je vytvořený pomocí standardní stem a své uživatelské jméno: _katalogu -\<uživatele\>. database.windows .net_.
@@ -158,7 +152,7 @@ K dalším způsobům zřizování, které nejsou zahrnuty do tohoto kurzu, pat�
 **Automatické zřizování.** Ve vzoru automatické zřizování, zřizování serveru zřizuje služby, fondy a databáze automaticky potřeby – včetně předem zřizování databází v elastické fondy, v případě potřeby. A pokud jsou databáze zrušte uvedena do provozu a odstranit, mezery v elastické fondy může být vyplněny zřizování služby. Tato služba může být jednoduché nebo komplexní – například zpracování zřizování napříč několika zeměpisných oblastí a může nastavit geografická replikace pro zotavení po havárii. Pomocí vzoru automatické zřizování klientská aplikace nebo skriptu odešle žádost o zřizování do fronty ke zpracování pomocí služby zřizování a pak cyklicky dotazuje službu, kterou chcete určit dokončení. Pokud se používá předem zřizování, by požadavky zpracovávány rychle službou zřizování nahrazení databáze na pozadí.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

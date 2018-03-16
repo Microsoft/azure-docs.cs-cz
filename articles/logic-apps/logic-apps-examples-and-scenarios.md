@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/18
 ms.author: LADocs; jehollan
-ms.openlocfilehash: b979096731caa7513c02a9fb398c14da4d4819ae
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 02690284e5487dba8e5fb5d973958f944bfa339f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, příklady, kurzy a návody pro Azure Logic Apps
 
@@ -81,7 +81,7 @@ Aplikace logiky patří bohaté možnosti pro pokročilé řízení toku, jako j
 
 Můžete plně vývoj a nasazení aplikací logiky pomocí sady Visual Studio, Visual Studio Team Services, nebo jakékoli jiné zdrojového kódu a automatizované sestavovací nástroje. Pro podporu nasazení pro pracovní postupy a závislé připojení v šabloně prostředků, pomocí aplikací logiky šablony nasazení prostředků Azure. Nástroje sady Visual Studio automaticky generovat tyto šablony, které můžete vrátit se změnami do správy zdrojového kódu pro správu verzí.
 
-* [Vytváření a nasazování aplikací logiky ze sady Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)
+* [Vytvářet a nasazovat aplikace logiky pomocí sady Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Zapnout sledování, protokolování a výstrahy pro existující aplikace logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [Vytvořit šablonu automatického nasazení](../logic-apps/logic-apps-create-deploy-template.md)
 
@@ -91,7 +91,7 @@ Můžete používat, převod a transformace více typů obsahu pomocí mnoho fun
 
 * [Jak fungují výrazy pracovního postupu v aplikace logiky](../logic-apps/logic-apps-author-definitions.md)
 * [Zpracování typy obsahu bez JSON](../logic-apps/logic-apps-content-type.md), například `application/xml`, `application/octet-stream`, a `multipart/formdata`
-* [– Referenční informace: Jazyk definic workflowů funkce Azure Logic Apps](http://aka.ms/logicappsdocs)
+* [Schema Definition Language pracovního postupu pro Azure Logic Apps](http://aka.ms/logicappsdocs)
 
 ## <a name="other-integrations-and-capabilities"></a>Další integrace a funkce
 

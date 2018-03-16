@@ -3,7 +3,7 @@ title: "Přidejte konektor Facebook ve vašich Logic Apps | Microsoft Docs"
 description: "Přehled konektoru Facebook s parametry rozhraní REST API"
 services: 
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 27a9297c5d4cfb52f254ceb12e37423403e7f41b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: b0a1e2f04b6a4c7992db582f1238be4bcc3c6174
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-facebook-connector"></a>Začínáme s konektorem služby Facebook
 Připojení k síti Facebook a příspěvků na timeline, získat kanálů stránek a další. Facebook můžete:

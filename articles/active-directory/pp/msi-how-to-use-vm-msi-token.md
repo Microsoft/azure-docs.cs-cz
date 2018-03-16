@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a9513a59ec4540c6d63236519873c6e1e177b65a
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 68454d3f3880df82ca895d1c5f140ebdb6030e77
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="acquire-an-access-token-for-a-vm-user-assigned-managed-service-identity-msi"></a>Získání tokenu přístupu pro virtuální počítač přiřazený uživatelem identita spravované služby (MSI)
 
@@ -26,9 +26,7 @@ ms.lasthandoff: 02/03/2018
 Tento článek obsahuje příklady různých kód a skript pro získání tokenu, jakož i pokyny k důležité oblastech, jako je zpracování vypršení platnosti tokenu a chyb protokolu HTTP.
 
 ## <a name="prerequisites"></a>Požadavky
-
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
-
 Pokud budete chtít použít v prostředí Azure PowerShell příkladech v tomto článku, je nutné nainstalovat nejnovější verzi [prostředí Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM).
 
 > [!IMPORTANT]
@@ -48,21 +46,28 @@ Klientská aplikace může požádat o MSI [jen aplikace přístupový token](~/
 
 ## <a name="get-a-token-using-http"></a>Získat token pomocí protokolu HTTP 
 
-Základní rozhraní pro získání tokenu přístupu je založena na REST, zpřístupnění pro všechny klientské aplikace spuštěna na virtuálním počítači, který může provádět volání HTTP REST. Toto je podobná programovací model Azure AD, s výjimkou klient používá koncový bod localhost na virtuálním počítači (vs Azure AD koncového bodu).
+Základní rozhraní pro získání tokenu přístupu je založena na REST, zpřístupnění pro všechny klientské aplikace spuštěna na virtuálním počítači, který může provádět volání HTTP REST. Toto je podobná programovací model Azure AD, s výjimkou klient používá koncový bod virtuálního počítače (vs Azure AD koncového bodu).
 
-Ukázková žádost:
+Ukázková žádost používá koncový bod Instance Metadata služby (IMDS):
 
 ```
-GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1
-Metadata: true
+GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1 Metadata: true
+```
+
+Ukázková žádost používá koncový bod rozšíření virtuálního počítače MSI (nadcházející vyřazení):
+
+```
+GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1 Metadata: true
 ```
 
 | Element | Popis |
 | ------- | ----------- |
 | `GET` | Příkaz HTTP, která určuje, že chcete načíst data z koncového bodu. V takovém případě OAuth přístupový token. | 
-| `http://localhost:50342/oauth2/token` | MSI koncového bodu, kde 50342 je výchozím portem a je možné konfigurovat. |
-| `resource` | Parametr řetězce dotazu, která udává, identifikátor ID URI aplikace cílového prostředku. Zobrazuje se taky v `aud` vydaný token deklarace identity (cílové skupiny). Tento příklad požádá o token pro přístup k Azure Resource Manager, který má identifikátor ID URI aplikace z https://management.azure.com/. |
-| `client_id` | Parametr řetězce dotazu, označující ID klienta (také označované jako ID aplikace) z instanční objekt reprezentující MSI přiřazený uživatelem. Tato hodnota se vrátí v `clientId` vlastnost během vytváření MSI se přiřazený uživatelem. Tento příklad požadavků token pro ID klienta "712eac09-e943-418c-9be6-9fd5c91078bl". |
+| `http://169.254.169.254/metadata/identity/oauth2/token` | Koncový bod MSI pro Instance služby metadat. |
+| `http://localhost:50342/oauth2/token` | Koncový bod MSI pro rozšíření virtuálního počítače, kde 50342 je výchozím portem a je možné konfigurovat. |
+| `api-version`  | Parametr řetězce dotazu, která určuje verzi rozhraní API pro koncový bod IMDS.  |
+| `resource` | Parametr řetězce dotazu, která udává, identifikátor ID URI aplikace cílového prostředku. Zobrazuje se taky v `aud` vydaný token deklarace identity (cílové skupiny). Tento příklad požadavky token pro přístup k Azure Resource Manager, která obsahuje identifikátor ID URI aplikace z https://management.azure.com/. |
+| `client_id` |  *Volitelné* parametr řetězce, která udává, ID klienta (také označované jako ID aplikace) dotazu z instanční objekt reprezentující MSI se přiřazený uživatelem. Pokud používáte systém přiřazené MSI, není tento parametr povinný. Tato hodnota se vrátí v `clientId` vlastnost během vytváření MSI se přiřazený uživatelem. Tento příklad požadavků token pro ID klienta "712eac09-e943-418c-9be6-9fd5c91078bl". |
 | `Metadata` | Pole hlavičky požadavku HTTP, vyžadují MSI jako zmírnění proti útoku serveru straně požadavek padělání (SSRF). Tato hodnota musí být nastavena na hodnotu true, všechny malými písmeny.
 
 Ukázková odpověď:
@@ -94,6 +99,16 @@ Content-Type: application/json
 ## <a name="get-a-token-using-curl"></a>Získat token pomocí CURL
 
 Nezapomeňte nahradit ID klienta (také označované jako ID aplikace) objektu, pro vaše uživatele přiřazené MSI služby <MSI CLIENT ID> hodnotu `client_id` parametr. Tato hodnota se vrátí v `clientId` vlastnost během vytváření MSI se přiřazený uživatelem.
+  
+Ukázková žádost používá koncový bod Instance Metadata služby (IMDS):
+
+   ```bash
+   response=$(curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<MSI CLIENT ID>")
+   access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
+   echo The MSI access token is $access_token
+   ```
+   
+Ukázková žádost používá koncový bod rozšíření virtuálního počítače MSI (nadcházející vyřazení):
 
    ```bash
    response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/&client_id=<MSI CLIENT ID>" -H Metadata:true -s)
@@ -104,7 +119,7 @@ Nezapomeňte nahradit ID klienta (také označované jako ID aplikace) objektu, 
    Příklad odpovědí:
 
    ```bash
-   user@vmLinux:~$ response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/&client_id=9d484c98-b99d-420e-939c-z585174b63bl" -H Metadata:true -s)
+   user@vmLinux:~$ response=$(curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=9d484c98-b99d-420e-939c-z585174b63bl")
    user@vmLinux:~$ access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
    user@vmLinux:~$ echo The MSI access token is $access_token
    The MSI access token is eyJ0eXAiOiJKV1QiLCJhbGciO...
@@ -112,7 +127,7 @@ Nezapomeňte nahradit ID klienta (také označované jako ID aplikace) objektu, 
 
 ## <a name="handling-token-expiration"></a>Zpracování vypršení platnosti tokenu
 
-Subsystém místní MSI tokeny ukládá do mezipaměti. Proto můžete volat ho tak často, jak se vám líbí a volání na přenosu do služby Azure AD výsledků pouze, pokud:
+Subsystém MSI tokeny ukládá do mezipaměti. Proto můžete volat ho tak často, jak se vám líbí a volání na přenosu do služby Azure AD výsledků pouze, pokud:
 - dojde k neúspěšnému přístupu do mezipaměti z důvodu žádné token v mezipaměti
 - vypršela platnost tokenu
 
@@ -142,7 +157,7 @@ Tato část popisuje možné chybové odpovědi. A "200 OK" ve stavu úspěšné
 | ----------- | ----- | ----------------- | -------- |
 | 400 – Chybný požadavek | invalid_resource | AADSTS50001: Aplikaci s názvem  *\<URI\>*  nebyl nalezen v klientovi s názvem  *\<ID klienta\>*. To může nastat, když aplikace nebyla nainstalována správcem klienta nebo souhlas žádný uživatel v klientovi. Požadavek na ověření mohou mít odeslány nesprávný klienta. \ | (Pouze Linux) |
 | 400 – Chybný požadavek | bad_request_102 | Není zadána hlavička požadovaná metadata | Buď `Metadata` pole hlavičky požadavku ze svého požadavku chybí nebo je v nesprávném formátu. Hodnota musí být zadány jako `true`, všechny malými písmeny. V části "Ukázková žádost" v [získat token pomocí protokolu HTTP](#get-a-token-using-http) části příklad.|
-| 401 unauthorized | unknown_source | Neznámé zdroje  *\<identifikátor URI\>* | Ověřte, že žádost HTTP GET URI správně naformátován. `scheme:host/resource-path` Část musí být zadány jako `http://localhost:50342/oauth2/token`. V části "Ukázková žádost" v [získat token pomocí protokolu HTTP](#get-a-token-using-http) části příklad.|
+| 401 unauthorized | unknown_source | Neznámé zdroje  *\<identifikátor URI\>* | Ověřte, že žádost HTTP GET URI správně naformátován. `scheme:host/resource-path` Část musí být zadány jako `http://169.254.169.254/metadata/identity/oath2/token` nebo `http://localhost:50342/oauth2/token`. V části "Ukázková žádost" v [získat token pomocí protokolu HTTP](#get-a-token-using-http) části příklad.|
 |           | invalid_request | Žádosti chybí povinný parametr, obsahuje neplatnou hodnotu parametru, parametr obsahuje více než jednou nebo je jinak poškozený. |  |
 |           | unauthorized_client | Klient nemá oprávnění k žádosti o token přístupu pomocí této metody. | Způsobené požadavek, který nepoužili místní smyčky volání rozšíření, nebo na virtuální počítač, který nemá MSI správně nakonfigurován. V tématu [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí portálu Azure](msi-qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálních počítačů. |
 |           | access_denied | Vlastník prostředku nebo autorizace server odepřel žádost. |  |

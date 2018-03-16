@@ -12,22 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2018
+ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 7388bb291f665f195355a01d19a82cba9ed453eb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e1be075ba2d3e6ae7512ccc030073fd7f1862502
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>Řešení potíží s neplatná instanční objekt konfigurace pro spravované doméně
 
 Tento článek vám odstraňovat potíže a řešit chyby související objekt konfigurace služby, které mít za následek následující zpráva s výstrahou pomůže:
 
 ## <a name="alert-aadds102-service-principal-not-found"></a>Výstrahy AADDS102: Instanční objekt nebyl nalezen
+
 **Upozornění:** *požadované pro Azure AD Domain Services fungovat správně A instanční objekt se odstranil z adresáře služby Azure AD. Tato konfigurace ovlivní schopnost společnosti Microsoft monitorovat, spravovat, opravy a synchronizovat vaší spravované domény.*
 
-[Služba objektů](../active-directory/develop/active-directory-application-objects.md) jsou aplikace, které společnost Microsoft používá ke správě, aktualizovat a zachování vaší spravované domény. Pokud jsou odstraněny, dělí schopnost společnosti Microsoft služby vaší domény. 
+[Služba objektů](../active-directory/develop/active-directory-application-objects.md) jsou aplikace, které společnost Microsoft používá ke správě, aktualizovat a zachování vaší spravované domény. Pokud jsou odstraněny, dělí schopnost společnosti Microsoft služby vaší domény.
 
 
 ## <a name="check-for-missing-service-principals"></a>Zkontrolujte chybějící objekty služby
@@ -47,35 +48,35 @@ K určení služby, která objekty je nutné znovu vytvořit pomocí následují
 ## <a name="recreate-a-missing-service-principal-with-powershell"></a>Znovu vytvořte chybějící hlavní název služby pomocí prostředí PowerShell
 Postupujte podle těchto kroků, pokud objekt služby s ID ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` chybí z adresáře služby Azure AD.
 
-**Náprava:** potřebujete Azure AD PowerShell k provedení těchto kroků. Informace o instalaci Azure AD PowerShell najdete v tématu [v tomto článku](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).
+**Řešení:** potřebujete Azure AD PowerShell k provedení těchto kroků. Informace o instalaci Azure AD PowerShell najdete v tématu [v tomto článku](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).
 
 Chcete-li tento problém vyřešit, zadejte následující příkazy v okně prostředí PowerShell:
 1. Instalace modulu Azure AD PowerShell a naimportujte ho.
-    
-    ```powershell 
+
+    ```powershell
     Install-Module AzureAD
     Import-Module AzureAD
     ```
-    
+
 2. Zkontrolujte, zda je objekt služby pro Azure AD Domain Services vyžaduje chybí ve vašem adresáři spuštěním následujícího příkazu Powershellu:
-    
+
     ```powershell
     Get-AzureAdServicePrincipal -filter "AppId eq '2565bd9d-da50-47d4-8b85-4c97f669dc36'"
     ```
-    
+
 3. Vytvořte objekt služby zadáním následujícího příkazu Powershellu:
 
     ```powershell
     New-AzureAdServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     ```
-    
+
 4. Po vytvoření na chybějící službu objektu zabezpečení, dvě hodiny počkejte a zkontrolujte stav vaší spravované domény.
 
 
 ## <a name="re-register-to-the-microsoft-aad-namespace-using-the-azure-portal"></a>Znovu zaregistrovat do oboru názvů Microsoft AAD na portálu Azure
 Postupujte podle těchto kroků, pokud objekt služby s ID ```443155a6-77f3-45e3-882b-22b3a8d431fb``` nebo ```abba844e-bc0e-44b0-947a-dc74e5d09022``` chybí z adresáře služby Azure AD.
 
-**Náprava:** pomocí následujících kroků k obnovení Domain Services na adresáře:
+**Řešení:** pomocí následujících kroků k obnovení Domain Services na adresáře:
 
 1. Přejděte na [odběry](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na portálu Azure.
 2. Zvolte předplatné z tabulky, která souvisí s vaší spravované domény
@@ -87,7 +88,32 @@ Postupujte podle těchto kroků, pokud objekt služby s ID ```443155a6-77f3-45e3
 ## <a name="service-principals-that-self-correct"></a>Objekty služby, který vlastní opravte
 Postupujte podle těchto kroků, pokud objekt služby s ID ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` chybí z adresáře služby Azure AD.
 
-**Náprava:** Azure AD Domain Services může rozpoznat, kdy se tato konkrétní instanční objekt nebyl nalezen, chybně nakonfigurovaná nebo odstranit. Službu znovu vytvoří tuto instanční objekt. Zkontrolujte stav vaší spravované domény po dvou hodin k zajištění, že objekt služby byl vytvořen znovu.
+**Řešení:** Azure AD Domain Services může rozpoznat, kdy se tato konkrétní instanční objekt nebyl nalezen, chybně nakonfigurovaná nebo odstranit. Službu znovu vytvoří tuto instanční objekt. Ale budete muset odstranit aplikaci a objekt, který pracoval s odstraněné aplikace, jako při certifikační navyšování, aplikace a objekt již nebude moci upravit nový instanční objekt. To povede k nové chyby ve vaší doméně. Postupujte podle kroků uvedených v [části AADDS105](#alert-aadds105-password-synchronization-application-is-out-of-date) k tomuto problému zabránit. Po zkontrolujte stav vaší spravované domény po dvou hodin k zajištění, že se vytvořil znovu nového objektu služby.
+
+
+## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Výstrahy AADDS105: Heslo synchronizace aplikace je zastaralé.
+
+**Upozornění:** byl odstraněn objekt služby s ID aplikace "d87dcbc6-a371-462e-88e3-28ad15ec4e64" a Microsoft bylo možné ho znovu vytvořit. Tato služba hlavní spravuje jiného objektu služby a aplikace, která se používají pro synchronizaci hesel. Hlavní spravované služby a aplikace nemáte oprávnění v rámci objektu nově vytvořený služby a bude zastaralé, když vyprší platnost certifikátu synchronizace. To znamená, že bude nově vytvořený instanční objekt nelze aktualizovat staré spravovaných aplikací a synchronizace objektů z AAD bude mít vliv.
+
+
+**Řešení:** potřebujete Azure AD PowerShell k provedení těchto kroků. Informace o instalaci Azure AD PowerShell najdete v tématu [v tomto článku](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).
+
+Chcete-li tento problém vyřešit, zadejte následující příkazy v okně prostředí PowerShell:
+1. Instalace modulu Azure AD PowerShell a naimportujte ho.
+
+    ```powershell
+    Install-Module AzureAD
+    Import-Module AzureAD
+    ```
+2. Odstranit staré aplikace a objekt, který používá následující příkazy prostředí PowerShell
+
+    ```powershell
+    $app = Get-AzureADApplication -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
+    Remove-AzureADApplication -ObjectId $app.ObjectId
+    $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
+    Remove-AzureADServicePrincipal -ObjectId $app.ObjectId
+    ```
+3. Po odstranění obou, bude systém sám opravit a znovu vytvořit potřebná pro synchronizaci hesel aplikací. Zajistit, že byl opraven výstrahy dvě hodiny počkejte a zkontrolujte stav vaší doméně.
 
 
 ## <a name="contact-us"></a>Kontaktujte nás

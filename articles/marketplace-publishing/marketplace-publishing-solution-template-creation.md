@@ -3,8 +3,8 @@ title: "Průvodce vytvořením šablony řešení pro Marketplace | Microsoft Do
 description: "Podrobné pokyny o tom, jak vytvářet, certifikovat a nasadit šablonu více virtuálních počítačů bitové kopie řešení pro zakoupit na webu Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: e14e05f2-2385-4ce0-b351-0747cb74ba19
 ms.service: marketplace
@@ -13,18 +13,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: 675316b97e821a81ca4946d57a76d7bce978361b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.author: mbaldwin
+ms.openlocfilehash: 83e69701aa5e8c11354e7551d66f3fdd18289000
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Průvodce Vytvořit šablonu řešení pro Azure Marketplace
 Po dokončení kroku 1, [vytváření účtů a registrace][link-acct-creation], jsme vám na základě na vytvoření šablony řešení kompatibilní s Azure v [technické požadavky pro vytvoření šablony řešení](marketplace-publishing-solution-template-creation-prerequisites.md). Nyní jsme vás provede kroky pro vytvoření šablony řešení pro víc virtuálních počítačů na [publikování portál] [ link-pubportal] pro Azure Marketplace.
 
 ## <a name="create-your-solution-template-offer-in-the-publishing-portal"></a>Vytvořit nabídku šablony řešení na portálu publikování
-Přejděte na [https://publish.windowsazure.com](http://publish.windowsazure.com). Při prvním přihlášení k [publikování portál](https://publish.windowsazure.com/), použijte stejný účet, který byl zaregistrován profil prodejce vaší společnosti. Každý zaměstnanec vaší společnosti můžete později přidat jako spolusprávce na portálu pro publikování.
+Přejděte na [ https://publish.windowsazure.com ](http://publish.windowsazure.com). Při prvním přihlášení k [publikování portál](https://publish.windowsazure.com/), použijte stejný účet, který byl zaregistrován profil prodejce vaší společnosti. Každý zaměstnanec vaší společnosti můžete později přidat jako spolusprávce na portálu pro publikování.
 
 ### <a name="1-select-solution-templates"></a>1. Vyberte možnost "šablony řešení"
   ![Kreslení][img-pubportal-menu-sol-templ]
@@ -37,9 +37,9 @@ Přejděte na [https://publish.windowsazure.com](http://publish.windowsazure.com
 
 * Vytvořit topologii: "Identifikátor topologie" je obvykle název topologie pro šablonu řešení. Identifikátor topologie se používá v adrese URL, jak je uvedeno níže:
 
-  Azure Marketplace: http://azure.microsoft.com/marketplace/partners/ {PublisherNamespace} / {OfferIdentifier} {TopologyIdentifier}
+  Azure Marketplace: http://azure.microsoft.com/marketplace/partners/{PublisherNamespace}/{OfferIdentifier}{TopologyIdentifier}
 
-  Portál Azure: https://portal.azure.com/#gallery/ {PublisherNamespace}. {OfferIdentifier} {TopologyIdentifier}
+  Portál Azure: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{TopologyIdentifier}
 * Přidejte novou verzi.
 
 ### <a name="4-get-your-topology-versions-certified"></a>4. Získání verze vaší topologie certifikaci
@@ -53,7 +53,7 @@ Nahrajte soubor zip, který obsahuje všechny požadované soubory ke zřízení
   >
   >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste vytvořili šablony řešení a nahrát soubor zip, postupujte podle pokynů v [Marketplace marketing obsahu Průvodce](marketplace-publishing-push-to-staging.md) před odesláním nabídku na pracovní. Kompletní marketplace publikování článků naleznete [Začínáme: postup publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md).
 
 Může být také zájem o tyto související články:

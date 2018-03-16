@@ -2,24 +2,18 @@
 title: "Přehled služby Azure SQL Database srovnávacího testu"
 description: "Toto téma popisuje databáze Azure SQL, srovnávací test měření výkonu databáze SQL Azure."
 services: sql-database
-documentationcenter: na
 author: jan-eng
 manager: jhubbard
-editor: monicar
-ms.assetid: e26f8a66-2c12-49d7-8297-45b4d48a5c01
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 06/21/2016
 ms.author: janeng
-ms.openlocfilehash: fb8a5f205ddc143dc47349829048f46f88963d05
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 25685f663d976674ad877bcfa1409ef016dd02ae
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-benchmark-overview"></a>Přehled služby Azure SQL Database srovnávacího testu
 ## <a name="overview"></a>Přehled
@@ -57,7 +51,7 @@ Databáze je velikost podle "měřítko." Měřítko (zkratka jako SF) určuje m
 | Střední pro čtení |VYBRAT; většinou v paměti; jen pro čtení |
 | Těžký pro čtení |VYBRAT; většinou není v paměti; jen pro čtení |
 | Aktualizace Lite |AKTUALIZACE; v paměti; čtení a zápis |
-| Těžký aktualizace |AKTUALIZACE; většinou není v paměti; čtení a zápis |
+| Update Heavy |AKTUALIZACE; většinou není v paměti; čtení a zápis |
 | Vložení Lite |VLOŽIT; v paměti; čtení a zápis |
 | Vložit těžký |VLOŽIT; většinou není v paměti; čtení a zápis |
 | Odstranění |ODSTRANIT; směs v paměti a není v paměti; čtení a zápis |
@@ -72,7 +66,7 @@ Transakce jsou náhodně vybírány ze vyvážené distribuce s následující c
 | Střední pro čtení |20 |
 | Těžký pro čtení |5 |
 | Aktualizace Lite |20 |
-| Těžký aktualizace |3 |
+| Update Heavy |3 |
 | Vložení Lite |3 |
 | Vložit těžký |2 |
 | Odstranění |2 |
@@ -126,7 +120,7 @@ Klíčové metriky v testu výkonnosti jsou propustnost a dobu odezvy.
 ## <a name="conclusion"></a>Závěr
 Srovnávací test Azure SQL Database měří relativní výkon spuštění pro řadu úrovně dostupných služeb a úrovně výkonu databáze SQL Azure. Testu výkonnosti vykonává směs základní databázových operací, které se vyskytují nejčastěji v online transakcí (OLTP) úlohy zpracování. Podle měření skutečným výkonem, poskytuje testu výkonnosti smysluplnější posoudit dopad na propustnost Změna úrovně výkonu, než je možné pomocí právě výpis prostředky poskytované jednotlivé úrovně, jako je například rychlosti procesoru, velikosti paměti a IOPS. V budoucnu budeme nadále momentální srovnávacího testu rozbalte dostupných dat a rozšíří jeho oboru.
 
-## <a name="resources"></a>Zdroje
+## <a name="resources"></a>Zdroje a prostředky
 [Úvod do databáze SQL](sql-database-technical-overview.md)
 
 [Úrovně služeb a úrovně výkonu](sql-database-service-tiers.md)

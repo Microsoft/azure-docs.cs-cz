@@ -6,82 +6,121 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5de67b6f1ce79934a3a6aab623d2e77a56a8ce76
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4b59a715919e38e68c3b7518932617e9950940e3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Pochopení IoT Edge moduly použití, nakonfigurovaná a znovu použít – náhled
 
-Azure IoT okraj můžete vytvořit více modulů IoT Edge před jejich nasazením na IoT hraniční zařízení. Tento článek vysvětluje koncepty nejdůležitější kolem skládání více modulů IoT Edge před nasazením. 
+Každé zařízení IoT Edge spustí aspoň dva moduly: $edgeAgent a $edgeHub, které tvoří runtime IoT okraj. Kromě těchto dvou standardní žádné IoT hraniční zařízení můžete spustit více modulů provést libovolný počet procesů. Při nasazení těchto modulů zařízení najednou, je nutné způsob, jak deklarace, které moduly jsou zahrnuty jejich vzájemné interakce mezi sebou. 
 
-## <a name="the-deployment-manifest"></a>Manifest nasazení
 *– Manifest nasazení* je dokument JSON, který popisuje:
 
-* Které moduly IoT Edge mají být nasazeny, spolu s jejich vytvoření a možnosti správy;
-* Konfigurace Edge rozbočovače, které popisují, jak by měla zprávy toku mezi moduly a mezi moduly a IoT Hub;
+* Které moduly IoT Edge mají být nasazeny, spolu s jejich možnosti vytváření a správu.
+* Konfigurace centra Edge, která zahrnuje jak toku zpráv mezi moduly a nakonec do služby IoT Hub.
 * Hodnoty, Volitelně můžete nastavit v požadované vlastnosti dvojčata modulu, ke konfiguraci jednotlivých modulu aplikací.
+
+Všechny IoT hraniční zařízení musí být nakonfigurované manifest nasazení. Nově instalovaný modul runtime IoT okraj sestavy kód chyby, dokud nebude nakonfigurována s platný manifest. 
 
 V kurzů k Azure IoT Edge sestavení manifest nasazení tak, že přejdete v průvodci na portálu Azure IoT okraj. Můžete také použít nasazení manifestu programově pomocí REST nebo sady SDK služby IoT Hub. Odkazovat na [nasazení a monitorování] [ lnk-deploy] Další informace o nasazení IoT okraj.
 
+## <a name="create-a-deployment-manifest"></a>Vytvoření manifestu nasazení
+
 Na vysoké úrovni nakonfiguruje manifest nasazení modul twin požadované vlastnosti pro IoT Edge moduly nasazené na IoT hraniční zařízení. Dva z těchto modulů nejsou vždy: agent okraj a okraj rozbočovače.
+
+Manifest nasazení, který obsahuje pouze IoT Edge runtime (agenta a rozbočovače) je platná.
 
 Manifest dodržuje tuto strukturu:
 
-    {
-        "moduleContent": {
-            "$edgeAgent": {
-                "properties.desired": {
-                    // desired properties of the Edge agent
-                }
-            },
-            "$edgeHub": {
-                "properties.desired": {
-                    // desired properties of the Edge hub
-                }
-            },
-            "{module1}": {  // optional
-                "properties.desired": {
-                    // desired properties of module with id {module1}
-                }
-            },
-            "{module2}": {  // optional
-                ...
-            },
+```json
+{
+    "moduleContent": {
+        "$edgeAgent": {
+            "properties.desired": {
+                // desired properties of the Edge agent
+                // includes the image URIs of all modules
+            }
+        },
+        "$edgeHub": {
+            "properties.desired": {
+                // desired properties of the Edge hub
+                // includes the routing information between modules, and to IoT Hub
+            }
+        },
+        "{module1}": {  // optional
+            "properties.desired": {
+                // desired properties of module with id {module1}
+            }
+        },
+        "{module2}": {  // optional
             ...
+        },
+        ...
+    }
+}
+```
+
+## <a name="configure-modules"></a>Konfigurovat moduly
+
+Kromě vytvoření požadované vlastnosti všechny moduly, které chcete nasadit, budete muset informování IoT Edge runtime, jak je nainstalovat. Informace o konfiguraci a správu všechny moduly přejde uvnitř **$edgeAgent** požadovaných vlastností. Tyto informace zahrnují parametry konfigurace pro vlastní agent okraj. 
+
+Úplný seznam vlastností, které mohou nebo musí být zahrnut, najdete v části [vlastnosti agenta okraj a okraj rozbočovače](module-edgeagent-edgehub.md).
+
+Vlastnosti $edgeAgent následující strukturu:
+
+```json
+"$edgeAgent": {
+    "properties.desired": {
+        "schemaVersion": "1.0",
+        "runtime": {
+        },
+        "systemModules": {
+            "edgeAgent": {
+                // configuration and management details
+            },
+            "edgeHub": {
+                // configuration and management details
+            }
+        },
+        "modules": {
+            "{module1}": { //optional
+                // configuration and management details
+            },
+            "{module2}": { // optional
+                // configuration and management details
+            }
         }
     }
+},
+```
 
-Na konci této části je uveden příklad manifest nasazení.
+## <a name="declare-routes"></a>Deklarovat trasy
 
-> [!IMPORTANT]
-> Všechny IoT hraniční zařízení musí být nakonfigurované manifest nasazení. Nově instalovaný modul runtime IoT okraj sestavy kód chyby, dokud nebude nakonfigurována s platný manifest. 
+Hraniční rozbočovače poskytuje způsob, jak deklarativně směrování zpráv mezi moduly a mezi moduly a IoT Hub. Hraniční rozbočovače spravuje veškerou komunikaci, informace o postupu přejde uvnitř **$edgeHub** požadovaných vlastností. Můžete mít víc tras v rámci stejného nasazení.
 
-### <a name="specify-the-modules"></a>Zadejte moduly
-Požadované vlastnosti modulu twin agenta Edge obsahují: požadované moduly, konfiguraci a správě možnosti, spolu s parametry konfigurace pro agenta okraj.
+Trasy jsou deklarované v **$edgeHub** požadovaných vlastností s následující syntaxí:
 
-Tato část manifest na vysoké úrovni, obsahuje odkazy na modulu Image a možnosti správy pro IoT Edge moduly runtime (agent okraj a okraj centra) a moduly zadaného uživatelem.
+```json
+"$edgeHub": {
+    "properties.desired": {
+        "routes": {
+            "{route1}": "FROM <source> WHERE <condition> INTO <sink>",
+            "{route2}": "FROM <source> WHERE <condition> INTO <sink>"
+        },
+    }
+}
+```
 
-Odkazovat [potřeby vlastnosti agenta Edge] [ lnk-edgeagent-desired] podrobný popis tohoto oddílu manifest.
-
-> [!NOTE]
-> Manifest nasazení obsahující pouze IoT Edge runtime (agenta a rozbočovače) je neplatný.
+Všechny trasy musí mít zdroj a jímka, ale je podmínka vyhodnocena jako volitelnou informaci, můžete použít k filtrování zprávy. 
 
 
-### <a name="specify-the-routes"></a>Zadejte trasy
-Hraniční rozbočovače poskytuje způsob, jak deklarativně směrování zpráv mezi moduly a mezi moduly a IoT Hub.
-
-Trasy mají následující syntaxi:
-
-        FROM <source>
-        [WHERE <condition>]
-        INTO <sink>
-
-*Zdroj* může být jakákoli z následujících akcí:
+### <a name="source"></a>Zdroj
+Zdroj Určuje, odkud pocházejí zprávy. Může být libovolná z následujících hodnot:
 
 | Zdroj | Popis |
 | ------ | ----------- |
@@ -92,206 +131,138 @@ Trasy mají následující syntaxi:
 | `/messages/modules/{moduleId}/outputs/*` | Jakékoli zprávy typu zařízení cloud poslal {moduleId} některé výstup |
 | `/messages/modules/{moduleId}/outputs/{output}` | Žádné zařízení cloud zpráva byla odeslána pomocí {moduleId} {výstupní} |
 
-Podmínka může být jakékoli podmínky nepodporuje [IoT Hub dotazovací jazyk] [ lnk-iothub-query] pro pravidla směrování IoT Hub.
+### <a name="condition"></a>Podmínka
+Je podmínka vyhodnocena jako volitelný v deklaraci trasy. Pokud chcete předat všechny zprávy z jímky ke zdroji, nechte **kde** klauzule úplně. Nebo můžete použít [IoT Hub dotazovací jazyk] [ lnk-iothub-query] vyfiltrujete pro některé zprávy nebo typ zprávy, které splňují zadanou podmínku.
 
-Jímky může být jedna z následujících akcí:
+Azure IoT zprávy jsou formátovány jako JSON a mít vždy alespoň **textu** parametr. Příklad:
+
+```json
+"message": {
+    "body":{
+        "ambient":{
+            "temperature": 54.3421,
+            "humidity": 25
+        },
+        "machine":{
+            "status": "running",
+            "temperature": 62.2214
+        }
+    },
+    "appProperties":{
+        ...
+    }
+}
+```
+
+Zadané této vzorové zprávy, existují určité podmínky, které lze definovat, jako například:
+* `WHERE $body.machine.status != "running"`
+* `WHERE $body.ambient.temperature <= 60 AND $body.machine.temperature >= 60`
+
+Podmínky lze také seřaďte typy zpráv, například v bránu, která chce směrovat zprávy, které pocházejí z listu zařízení. Zprávy, které pocházejí z modulů obsahují konkrétní vlastnost s názvem **connectionModuleId**. Takže pokud chcete směrovat zprávy ze zařízení listu přímo do služby IoT Hub, použijte následující trasy pro vyloučení zprávy modulu:
+* `FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream`
+
+### <a name="sink"></a>Jímka
+Jímky definuje, které jsou odesílány zprávy. Může být libovolná z následujících hodnot:
 
 | Jímka | Popis |
 | ---- | ----------- |
 | `$upstream` | Odeslání zprávy do služby IoT Hub |
 | `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | Odeslat zprávu jako vstup `{input}` modulu `{moduleId}` |
 
-Je důležité si uvědomit, že Edge rozbočovače poskytuje jednou na nejmenší záruky, to znamená, že zprávy se uloží místně v případě trasu nelze doručení zprávy do jeho podřízený, např rozbočovače Edge se nemůže připojit ke službě IoT Hub nebo není připojený modul cíl.
+Je důležité si uvědomit, že hraniční hub zajišťuje záruky na aspoň jednou, to znamená, že zprávy ukládat místně v případě, že trasu nelze doručení zprávy do jeho podřízený, například hraniční centra se nemůže připojit ke službě IoT Hub, nebo není připojen cílový modul.
 
-Hraniční rozbočovače ukládá zprávy až za dobu určenou v `storeAndForwardConfiguration.timeToLiveSecs` vlastnost Edge rozbočovače požadovaných vlastností.
+Hraniční rozbočovače ukládá zprávy až za dobu určenou v `storeAndForwardConfiguration.timeToLiveSecs` vlastnost [Edge rozbočovače potřeby vlastnosti](module-edgeagent-edgehub.md).
 
-### <a name="specifying-the-desired-properties-of-the-module-twin"></a>Určení požadované vlastnosti modulu twin
+## <a name="define-or-update-desired-properties"></a>Definování nebo aktualizovat požadované vlastnosti 
 
-Manifest nasazení můžete zadat požadované vlastnosti modulu twin jednotlivých modulů uživatele zadané v části agent okraj.
-
-Pokud jsou požadované vlastnosti zadané v manifestu nasazení, jejich přepsat všechny požadované vlastnosti právě twin modulu.
+Manifest nasazení můžete zadat požadované vlastnosti pro dvojici modulu každého modulu nasazené na zařízení IoT okraj. Pokud jsou požadované vlastnosti zadané v manifestu nasazení, jejich přepsat všechny požadované vlastnosti právě twin modulu.
 
 Pokud nezadáte požadované vlastnosti modul twin v manifestu nasazení, IoT Hub nezmění twin modulu jakýmkoli způsobem a nebudete moci nastavit požadované vlastnosti prostřednictvím kódu programu.
 
-Stejné mechanismy, které vám umožní změnit dvojčata zařízení se používají k úpravě dvojčata modulu. Podrobnosti najdete [twin zařízení – Příručka vývojáře](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins) Další informace.   
+Stejné mechanismy, které vám umožní změnit dvojčata zařízení se používají k úpravě dvojčata modulu. Odkazovat [twin zařízení – Příručka vývojáře](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins) Další informace.   
 
-### <a name="deployment-manifest-example"></a>Příklad nasazení manifestu
+## <a name="deployment-manifest-example"></a>Příklad nasazení manifestu
 
 Tento příklad nasazení manifestu dokumentu JSON.
 
-    {
-    "moduleContent": {
-        "$edgeAgent": {
-            "properties.desired": {
-                "schemaVersion": "1.0",
-                "runtime": {
+```json
+{
+"moduleContent": {
+    "$edgeAgent": {
+        "properties.desired": {
+            "schemaVersion": "1.0",
+            "runtime": {
+                "type": "docker",
+                "settings": {
+                    "minDockerVersion": "v1.25",
+                    "loggingOptions": ""
+                }
+            },
+            "systemModules": {
+                "edgeAgent": {
                     "type": "docker",
                     "settings": {
-                        "minDockerVersion": "v1.25",
-                        "loggingOptions": ""
+                    "image": "microsoft/azureiotedge-agent:1.0-preview",
+                    "createOptions": ""
                     }
                 },
-                "systemModules": {
-                    "edgeAgent": {
-                        "type": "docker",
-                        "settings": {
-                        "image": "microsoft/azureiotedge-agent:1.0-preview",
-                        "createOptions": ""
-                        }
-                    },
-                    "edgeHub": {
-                        "type": "docker",
-                        "status": "running",
-                        "restartPolicy": "always",
-                        "settings": {
-                        "image": "microsoft/azureiotedge-hub:1.0-preview",
-                        "createOptions": ""
-                        }
-                    }
-                },
-                "modules": {
-                    "tempSensor": {
-                        "version": "1.0",
-                        "type": "docker",
-                        "status": "running",
-                        "restartPolicy": "always",
-                        "settings": {
-                        "image": "microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview",
-                        "createOptions": "{}"
-                        }
-                    },
-                    "filtermodule": {
-                        "version": "1.0",
-                        "type": "docker",
-                        "status": "running",
-                        "restartPolicy": "always",
-                        "settings": {
-                        "image": "myacr.azurecr.io/filtermodule:latest",
-                        "createOptions": "{}"
-                        }
+                "edgeHub": {
+                    "type": "docker",
+                    "status": "running",
+                    "restartPolicy": "always",
+                    "settings": {
+                    "image": "microsoft/azureiotedge-hub:1.0-preview",
+                    "createOptions": ""
                     }
                 }
-            }
-        },
-        "$edgeHub": {
-            "properties.desired": {
-                "schemaVersion": "1.0",
-                "routes": {
-                    "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-                    "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+            },
+            "modules": {
+                "tempSensor": {
+                    "version": "1.0",
+                    "type": "docker",
+                    "status": "running",
+                    "restartPolicy": "always",
+                    "settings": {
+                    "image": "microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview",
+                    "createOptions": "{}"
+                    }
                 },
-                "storeAndForwardConfiguration": {
-                    "timeToLiveSecs": 10
+                "filtermodule": {
+                    "version": "1.0",
+                    "type": "docker",
+                    "status": "running",
+                    "restartPolicy": "always",
+                    "settings": {
+                    "image": "myacr.azurecr.io/filtermodule:latest",
+                    "createOptions": "{}"
+                    }
                 }
             }
         }
+    },
+    "$edgeHub": {
+        "properties.desired": {
+            "schemaVersion": "1.0",
+            "routes": {
+                "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+                "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+            },
+            "storeAndForwardConfiguration": {
+                "timeToLiveSecs": 10
+            }
+        }
     }
-    }
-
-## <a name="reference-edge-agent-module-twin"></a>Referenční dokumentace: Edge agenta modulu twin
-
-Je volána twin modulu pro agenta hraniční `$edgeAgent` a koordinuje komunikaci mezi hraniční agenta spuštěného na zařízení a služby IoT Hub.
-Požadované vlastnosti se nastavují při použití manifest nasazení na určité zařízení v rámci jednoho zařízení nebo v odpovídajícím měřítku nasazení. V tématu [nasazení a monitorování] [ lnk-deploy] Další informace o tom, jak nasadit modulů na IoT hraniční zařízení.
-
-### <a name="edge-agent-twin-desired-properties"></a>Vlastnosti twin požadovaného agenta Edge
-
-| Vlastnost | Popis | Požaduje se |
-| -------- | ----------- | -------- |
-| schemaVersion | Musí být "1.0" | Ano |
-| runtime.type | Musí být "docker" | Ano |
-| runtime.settings.minDockerVersion | Nastavte na tento – manifest nasazení požadavek na minimální verzi Docker | Ano |
-| runtime.settings.loggingOptions | Stringified JSON obsahující možnosti protokolování pro kontejner agenta okraj. [Možnosti protokolování docker][lnk-docker-logging-options] | Ne |
-| systemModules.edgeAgent.type | Musí být "docker" | Ano |
-| systemModules.edgeAgent.settings.image | Identifikátor URI bitovou kopii agenta okraj. Edge agent v současné době není možné aktualizovat sám sebe. | Ano |
-| systemModules.edgeAgent.settings.createOptions | Stringified JSON obsahující možnosti pro vytvoření kontejneru agenta okraj. [Možnosti vytvoření docker][lnk-docker-create-options] | Ne |
-| systemModules.edgeAgent.configuration.id | ID nasazení, které tento modul pro nasazení. | Centrum IoT hub je nastavena v případě použije tento manifestu pomocí nasazení. Není součástí manifest nasazení. |
-| systemModules.edgeHub.type | Musí být "docker" | Ano |
-| systemModules.edgeHub.status | Musí být "spuštění" | Ano |
-| systemModules.edgeHub.restartPolicy | Musí být "vždy" | Ano |
-| systemModules.edgeHub.settings.image | Identifikátor URI bitovou kopii Edge rozbočovače. | Ano |
-| systemModules.edgeHub.settings.createOptions | Stringified JSON obsahující možnosti pro vytvoření kontejneru Edge rozbočovače. [Možnosti vytvoření docker][lnk-docker-create-options] | Ne |
-| systemModules.edgeHub.configuration.id | ID nasazení, které tento modul pro nasazení. | Centrum IoT hub je nastavena v případě použije tento manifestu pomocí nasazení. Není součástí manifest nasazení. |
-| modules.{moduleId}.version | Uživatelem definované řetězec představující verze tohoto modulu. | Ano |
-| modules.{moduleId}.type | Musí být "docker" | Ano |
-| modules.{moduleId}.restartPolicy | {"nikdy" \| "na-se nezdařilo" \| "na-není v pořádku" \| "vždy"} | Ano |
-| modules.{moduleId}.settings.image | Identifikátor URI pro image modulu. | Ano |
-| modules.{moduleId}.settings.createOptions | Stringified JSON obsahující možnosti pro vytvoření kontejneru modulu. [Možnosti vytvoření docker][lnk-docker-create-options] | Ne |
-| modules.{moduleId}.configuration.id | ID nasazení, které tento modul pro nasazení. | Centrum IoT hub je nastavena v případě použije tento manifestu pomocí nasazení. Není součástí manifest nasazení. |
-
-### <a name="edge-agent-twin-reported-properties"></a>Hraniční agenta twin hlášené vlastnosti
-
-Edge agent oznámil, že vlastnosti zahrnují tři hlavní údaje:
-
-1. Stav aplikace vidět poslední požadované vlastnosti;
-2. Stav modulů, které jsou aktuálně spuštěné na zařízení, vykazované Edge agenta; a
-3. Kopie požadované vlastnosti, které jsou aktuálně spuštěné na zařízení.
-
-Tento poslední část informace je užitečné v případě, že nejsou úspěšně použít nejnovější požadované vlastností modulem runtime a zařízení stále běží předchozí manifest nasazení.
-
-> [!NOTE]
-> Hlášené vlastnosti agenta hraniční jsou užitečné, protože může být dotazován s [IoT Hub dotazovací jazyk] [ lnk-iothub-query] prozkoumat stav nasazení ve velkém měřítku. Odkazovat na [nasazení] [ lnk-deploy] Další informace o tom, jak tuto funkci používat.
-
-V následující tabulce nezahrnuje informace, které budou zkopírována z požadované vlastnosti.
-
-| Vlastnost | Popis |
-| -------- | ----------- |
-| lastDesiredVersion | Tato int odkazuje na poslední verzi požadované vlastnosti zpracovat agentem okraj. |
-| lastDesiredStatus.code | Toto je kód stavu odkazující na poslední požadované vlastnosti kontaktu s agentem okraj. Povolené hodnoty: `200` úspěch, `400` neplatná konfigurace `412` neplatné schéma verze `417` požadované vlastnosti jsou prázdná, `500` se nezdařilo |
-| lastDesiredStatus.description | Textový popis stavu |
-| deviceHealth | `healthy` Pokud je stav modulu runtime všechny moduly, buď `running` nebo `stopped`, `unhealthy` jinak |
-| configurationHealth.{deploymentId}.health | `healthy` Pokud stav modulu runtime všechny moduly nastavit nasazení {deploymentId} je buď `running` nebo `stopped`, `unhealthy` jinak |
-| runtime.platform.OS | Vytváření sestav operačního systému spuštěné na zařízení |
-| runtime.platform.architecture | Vytváření sestav architekturu procesoru na zařízení |
-| systemModules.edgeAgent.runtimeStatus | Reportovaný stav agenta Edge: {"spuštění" \| "není v pořádku"} |
-| systemModules.edgeAgent.statusDescription | Textový popis reportovaný stav agenta okraj. |
-| systemModules.edgeHub.runtimeStatus | Aktuální stav rozbočovače Edge: {"spuštění" \| "stopped" \| "se nezdařilo" \| "omezení rychlosti" \| "není v pořádku"} |
-| systemModules.edgeHub.statusDescription | Textový popis aktuální stav Edge rozbočovače, pokud není v pořádku. |
-| systemModules.edgeHub.exitCode | Pokud byl ukončen, ukončovací kód hlášené kontejneru Edge rozbočovače |
-| systemModules.edgeHub.startTimeUtc | Čas posledního spuštění Edge rozbočovače |
-| systemModules.edgeHub.lastExitTimeUtc | Čas, kdy Edge rozbočovače poslední byl ukončen |
-| systemModules.edgeHub.lastRestartTimeUtc | Čas poslední restartováním Edge rozbočovače |
-| systemModules.edgeHub.restartCount | Počet pokusů, které byl tento modul restartován v rámci zásad restartování. |
-| modules.{moduleId}.runtimeStatus | Aktuální stav modulu: {"spuštění" \| "stopped" \| "se nezdařilo" \| "omezení rychlosti" \| "není v pořádku"} |
-| modules.{moduleId}.statusDescription | Textový popis aktuální stav modulu, pokud není v pořádku. |
-| modules.{moduleId}.exitCode | Pokud byl ukončen, ukončovací kód hlášené kontejner modulu |
-| modules.{moduleId}.startTimeUtc | Čas posledního spuštění modulu |
-| modules.{moduleId}.lastExitTimeUtc | Čas, kdy modul poslední byl ukončen |
-| modules.{moduleId}.lastRestartTimeUtc | Čas, kdy modul posledního restartování |
-| modules.{moduleId}.restartCount | Počet pokusů, které byl tento modul restartován v rámci zásad restartování. |
-
-## <a name="reference-edge-hub-module-twin"></a>Referenční dokumentace: Edge rozbočovače modul twin
-
-Je volána twin modulu pro rozbočovač na hraniční `$edgeHub` a koordinuje komunikaci mezi hraniční rozbočovače spuštěné v zařízení a služby IoT Hub.
-Požadované vlastnosti se nastavují při použití manifest nasazení na určité zařízení v rámci jednoho zařízení nebo v odpovídajícím měřítku nasazení. V tématu [nasazení] [ lnk-deploy] Další informace o tom, jak nasadit modulů na IoT hraniční zařízení.
-
-### <a name="edge-hub-twin-desired-properties"></a>Hraniční rozbočovače twin požadovaných vlastností
-
-| Vlastnost | Popis | Požadované v manifestu nasazení |
-| -------- | ----------- | -------- |
-| schemaVersion | Musí být "1.0" | Ano |
-| routes.{routeName} | Řetězec představující trasu rozbočovače okraj. | `routes` Prvek může být existuje, ale je prázdný. |
-| storeAndForwardConfiguration.timeToLiveSecs | Dobu v sekundách, které udržuje Edge rozbočovače zprávy v případě odpojené směrování koncových bodů, například odpojen od služby IoT Hub nebo místní modulu | Ano |
-
-### <a name="edge-hub-twin-reported-properties"></a>Hraniční rozbočovače twin hlášené vlastnosti
-
-| Vlastnost | Popis |
-| -------- | ----------- |
-| lastDesiredVersion | Tato int odkazuje na poslední verzi požadované vlastnosti zpracovává Edge rozbočovače. |
-| lastDesiredStatus.code | Toto je kód stavu odkazující na poslední požadované vlastnosti pohledu Edge rozbočovače. Povolené hodnoty: `200` úspěch, `400` neplatná konfigurace `500` se nezdařilo |
-| lastDesiredStatus.description | Textový popis stavu |
-| Klienti. {identity zařízení nebo modul} .status | Stav tohoto zařízení nebo modul. Možné hodnoty {"připojené" \| "odpojení"}. Pouze modul identit může být v odpojeném stavu. Podřízené zařízení připojující se k rozbočovači hraniční se zobrazí, jenom když připojení. |
-| Klienti. {identity zařízení nebo modul} .lastConnectTime | Poslední čas modulu připojení na zařízení |
-| Klienti. {identity zařízení nebo modul} .lastDisconnectTime | Čas poslední zařízení nebo modul odpojení |
+}
+}
+```
 
 ## <a name="next-steps"></a>Další postup
 
-Nyní když znáte použití modulů IoT Edge, [pochopení požadavků a nástrojů pro vývoj modulů IoT Edge][lnk-module-dev].
+* Úplný seznam vlastností, které mohou nebo musí být součástí $edgeAgent a $edgeHub najdete v tématu [vlastnosti agenta okraj a okraj rozbočovače](module-edgeagent-edgehub.md).
+
+* Nyní když znáte použití modulů IoT Edge, [pochopení požadavků a nástrojů pro vývoj modulů IoT Edge][lnk-module-dev].
 
 [lnk-deploy]: module-deployment-monitoring.md
-[lnk-edgeagent-desired]: #edge-agent-twin-desired-properties
-[lnk-edgeagent-reported]: #edge-agent-twin-reported-properties
-[lnk=edgehub-desired]: #edge-hub-twin-desired-properties
-[lnk-edgehub-reported]: #edge-hub-twin-reported-properties
 [lnk-iothub-query]: ../iot-hub/iot-hub-devguide-query-language.md
 [lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
 [lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/

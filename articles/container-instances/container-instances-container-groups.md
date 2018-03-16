@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 12/19/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a42c01917926a4297c97cf9c5dfd1333dbef6793
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 7e8a5014ce9168ba3d67d175935649bfd9fec511
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů v Azure kontejner instancí
 
@@ -35,7 +35,11 @@ Tato skupina kontejneru příklad:
 * Zahrnuje dvě Azure sdílené složky jako svazek připojení zařízení a každý kontejner připojí některé sdílené složky místně.
 
 > [!NOTE]
-> Více kontejner skupiny jsou aktuálně omezeno na kontejnery Linux. Při pracujeme, aby všechny funkce Windows kontejnery, můžete najít aktuální platformy rozdíly v [kvóty a dostupnost v oblastech Azure kontejner instancí](container-instances-quotas.md).
+> Více kontejner skupiny jsou aktuálně omezeno na kontejnery Linux. Pracujeme na tom, aby všechny funkce byly dostupné i pro kontejnery Windows. Aktuální rozdíly pro tyto platformy najdete v tématu věnovaném [kvótám a dostupnosti oblastí pro Azure Container Instances](container-instances-quotas.md).
+
+### <a name="deployment"></a>Nasazení
+
+**Skupiny kontejnerů** mít přidělení minimální prostředků 1 virtuálních procesorů a 1 GB paměti. Jednotlivé **kontejnery** může být zřízen pomocí menší než 1 virtuálních procesorů a 1 GB paměti. V rámci kontejneru skupiny lze přizpůsobit distribuci prostředky do více kontejnerů v rámci navázat na úrovni skupiny kontejneru. Například dva kontejnery každý s 0,5 virtuální procesory, které se nacházejí v rámci skupiny kontejneru přidělit 1 virtuální procesor.
 
 ### <a name="networking"></a>Sítě
 

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: 0a436a929696f759cdbe9807faa2a15902b7ce6d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9d63c95c849c8ef6011557c72240e56071ba614f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka vývojáře Azure funkce JavaScript
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -271,7 +271,7 @@ Následující tabulka uvádí verze Node.js používané každou hlavní verzi 
 | Verze funkcí | Verze Node.js | 
 |---|---|
 | 1.x | 6.11.2 (uzamčený modulu runtime) |
-| 2.x  |> = 8.4.0 s aktuální LTS 8.9.4 nedoporučuje. Nastavit verzi pomocí WEBSITE_DEFAULT_NODE_VERSION [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings).|
+| 2.x  |> = 8.4.0 s aktuální LTS 8.9.4 nedoporučuje. Nastavit verzi pomocí WEBSITE_NODE_DEFAULT_VERSION [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings).|
 
 Zobrazí aktuální verzi, která používá modul runtime tisk `process.version` z žádné funkce.
 

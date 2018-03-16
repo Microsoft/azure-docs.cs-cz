@@ -2,24 +2,18 @@
 title: "Vrácení upgradu aplikace – Azure SQL Database | Microsoft Docs"
 description: "Další informace o použití geografická replikace databáze SQL Azure pro podporu online upgrady cloudových aplikací."
 services: sql-database
-documentationcenter: 
 author: anosov1960
-manager: jhubbard
-editor: monicar
-ms.assetid: 58f42859-1e37-463c-a3d8-a3ca2e867148
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 07/16/2016
 ms.author: sashan
-ms.openlocfilehash: deb91d55e5b796f7b1b53a99866156fe492e0a24
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 6efc14e5f8fab5baafff50e8eb6844f8decca1c9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Správa postupné upgrady cloudových aplikací pomocí SQL Database aktivní geografickou replikaci
 > [!NOTE]

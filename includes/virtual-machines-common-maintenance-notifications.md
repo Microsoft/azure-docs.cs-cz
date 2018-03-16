@@ -1,4 +1,19 @@
-
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines
+author: zivraf
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: zivr
+ms.custom: include file
+ms.openlocfilehash: 9666a8fde808981dd798ff712b96a7c620c9003a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/16/2018
+---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Virtuální počítače zobrazení naplánována údržba na portálu
 
 Jakmile je naplánováno wave plánované údržby a oznámení se odesílají, můžete sledovat seznam virtuálních počítačů, které jsou ovlivněny wave nadcházející údržbě. 
@@ -17,10 +32,10 @@ Můžete použít portál Azure a vyhledejte naplánována údržba virtuálníc
       
       | Hodnota | Popis |
       |-------|-------------|
-      | Začít teď | Virtuální počítač je v okně údržby samoobslužné služby, který umožňuje zahájení údržby sami. Níže najdete postup při spuštění údržby na vašem virtuálním počítači | 
-      | Podle plánu | Virtuální počítač je naplánována údržba bez možnosti pro vás k zahájení údržby. Další nástroje pro správu a údržbu výběrem okna automaticky naplánované v tomto zobrazení, nebo kliknutím na virtuálním počítači | 
-      | Dokončeno | Máte úspěšně spustil a dokončení údržby na vašem virtuálním počítači. | 
-      | Vynecháno| Rozhodli jste se spustit údržby úspěšná. Nebudete moci používat možnost samoobslužné služby údržby. Virtuální počítač bude muset restartovat Azure během fáze plánované údržby. | 
+      | Začít teď | Virtuální počítač je v intervalu samoobslužné údržby, který umožňuje, abyste údržbu zahájili sami. Níže najdete postup při spuštění údržby na vašem virtuálním počítači | 
+      | Naplánované | Pro virtuální počítač je naplánovaná údržba, ale bez možnosti, abyste ji zahájili vy. Další nástroje pro správu a údržbu výběrem okna automaticky naplánované v tomto zobrazení, nebo kliknutím na virtuálním počítači | 
+      | Dokončené | Máte úspěšně spustil a dokončení údržby na vašem virtuálním počítači. | 
+      | Vynecháno| Rozhodli jste se spustit údržbu, ale bez úspěchu. Nebudete moci používat možnost samoobslužné služby údržby. Virtuální počítač bude muset restartovat Azure během fáze plánované údržby. | 
 
    **Údržby aktivní** -zobrazuje časový interval, když údržby můžete svým spustit virtuální počítače.
    

@@ -3,8 +3,8 @@ title: "Vývoj uživatelem definované operátory U-SQL (UDO) | Microsoft Docs"
 description: "Další informace jak vyvíjet uživatelem definované operátory k použití a znovu použít v úloh Data Lake Analytics. "
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: kfile
 editor: cgronlun
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.service: data-lake-analytics
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
-ms.author: edmaca
-ms.openlocfilehash: 5e534f96b908d2aa1f4d7c48655509ece8dcf43e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: saveenr
+ms.openlocfilehash: 7c0b9c193f8f1c3a3043824186e337f942ebfd56
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Vývoj uživatelem definované operátory U-SQL (UDO)
 Další informace jak vyvíjet uživatelem definované operátory při zpracování dat v rámci úlohy U-SQL.
@@ -129,6 +129,6 @@ Pokyny týkající se vývoje pro obecné účely sestavení pro U-SQL najdete v
 1. Z **Průzkumníka serveru**, rozbalte položku **Azure**, rozbalte položku **Data Lake Analytics**, rozbalte účet Data Lake Analytics, rozbalte položku **účty úložiště**, klikněte pravým tlačítkem na výchozí úložiště a pak klikněte na tlačítko **Explorer**.
 2. Rozbalte ukázky, rozbalte výstupy a potom dvakrát klikněte na **ovladače.csv**.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Rozšíření výrazy U-SQL pomocí uživatelského kódu](https://msdn.microsoft.com/en-us/library/azure/mt621316.aspx)
 * [Pomocí nástrojů Data Lake pro Visual Studio pro vývoj aplikací U-SQL](data-lake-analytics-data-lake-tools-get-started.md)

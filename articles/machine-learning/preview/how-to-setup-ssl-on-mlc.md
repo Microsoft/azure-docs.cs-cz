@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/24/2018
-ms.openlocfilehash: b76fe7c0caa4a9aca76a9a3f50d1fced0ab67cba
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 444803eeb77e79a8bfe3271ddf27bd428042c875
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>Povolit protokol SSL v clusteru Azure Machine Learning výpočetní (MLC) 
 
@@ -31,7 +31,7 @@ Tyto pokyny umožňují nastavení protokolu SSL pro vyhodnocování volání na
 
 Po dokončení požadavky, bude mít dva soubory:
 
-* Soubor certifikátu, například `cert.pem`
+* Soubor certifikátu, například `cert.pem`. Ujistěte se, že soubor má řetěz certifikátů úplné.
 * Soubor klíče, například `key.pem`
 
 
@@ -55,7 +55,7 @@ Set-AzureRmMlOpCluster -ResourceGroupName my-rg -Name my-cluster -SslStatus Enab
 
 ## <a name="map-the-cname-and-the-ip-address"></a>Mapování CNAME a IP adresu
 
-Vytvoření mapování mezi CNAME, který jste vybrali v požadavky a IP adresu reálném čase front-endu (FE). Pokud chcete zjistit, IP adresa FE, spusťte následující příkaz. Výstup zobrazuje pole s názvem "publicIpAddress", který obsahuje IP adresu front-endu v reálném čase clusteru. Postupujte podle pokynů svého poskytovatele DNS vytvořit záznam CNAME.
+Vytvoření mapování mezi CNAME, který jste vybrali v požadavky a IP adresu reálném čase front-endu (FE). Pokud chcete zjistit, IP adresa FE, spusťte následující příkaz. Výstup zobrazuje pole s názvem "publicIpAddress", který obsahuje IP adresu front-endu v reálném čase clusteru. Postupujte podle pokynů svého poskytovatele DNS nastavit záznam z plně kvalifikovaný název domény, používá v CNAME veřejné IP adresy.
 
 
 

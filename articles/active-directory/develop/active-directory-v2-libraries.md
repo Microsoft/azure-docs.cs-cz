@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 08/22/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a1e2c4db54ca81325751ed85b26b904174e94078
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 60abada0a6683ee5cc8118c37336fe67cd51b2f0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Knihovny ověřování Azure Active Directory v2.0
 [Koncového bodu v2.0 Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare) podporuje standardní protokoly OAuth 2.0 a OpenID Connect 1.0. Můžete použít různé knihovny od společnosti Microsoft a jiných organizací s koncovým bodem v2.0.
@@ -27,9 +27,9 @@ ms.lasthandoff: 12/11/2017
 Když vytvoříte aplikaci, která používá koncový bod v2.0, doporučujeme používat knihovny, které jsou zapsány odborníky protokolu domény, kteří podle metodika životního cyklu SDL (Security Development), jako je třeba [ten následuje Microsoft][Microsoft-SDL]. Pokud se rozhodnete k ruční kódu podporu pro protokoly, doporučujeme, postupujte podle SDL metodika a zaměřit na aspekty zabezpečení do specifikací standardy pro každý protokol.
 
 > [!NOTE]
-> Hledáte verze 1.0 knihovny Azure AD (ADAL)? Najdete v článku věnovaném [knihovna ADAL průvodce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries). 
-> 
-> 
+> Hledáte verze 1.0 knihovny Azure AD (ADAL)? Najdete v článku věnovaném [knihovna ADAL průvodce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries).
+>
+>
 
 ## <a name="types-of-libraries"></a>Knihovny typů
 Koncového bodu Azure AD v2.0 funguje s dva typy knihovny:
@@ -57,16 +57,16 @@ Seznam knihovny, které pracují s koncovým bodem v2.0 naleznete v dalších č
 | --- | --- | --- | --- | --- | --- |
 | Klient .NET, Windows Store, UWP Xamarin iOS a Android | MSAL .NET (Preview) |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Aplikace na ploše](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |  |
 | JavaScript | MSAL.js (Preview) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [Jedna stránka aplikace](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |  |
-| iOS, systému macOS | MSAL (Preview) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [Aplikace pro iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift) |  |
+| iOS, macOS | MSAL (Preview) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [Aplikace pro iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift) |  |
 | Android | MSAL (Preview) | [Centrální úložiště](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Aplikace pro Android](guidedsetups/active-directory-mobileanddesktopapp-android-intro.md) | [JavaDocs](http://javadoc.io/doc/com.microsoft.identity.client/msal) |
 
 ## <a name="microsoft-supported-server-middleware-libraries"></a>Knihovny Microsoft podporované server middleware
 
 | Platforma | Knihovna | Ke stažení | Zdrojový kód | Ukázka | Referenční informace
 | --- | --- | --- | --- | --- | --- |
-| Rozhraní .NET 4.x | Middleware OWIN OpenID Connect |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[Webu CodePlex](http://katanaproject.codeplex.com) |[Aplikace MVC](guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) | |
-| Rozhraní .NET 4.x | Middleware OWIN nosiče OAuth pro AzureAD |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[Webu CodePlex](http://katanaproject.codeplex.com) |  | |
-| Rozhraní .NET 4.x | Obslužná rutina JWT pro rozhraní .NET 4.5 | [NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/4.0.4.403061554) | [GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
+| .NET 4.x | Middleware OWIN OpenID Connect |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[CodePlex](http://katanaproject.codeplex.com) |[Aplikace MVC](guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) | |
+| .NET 4.x | Middleware OWIN nosiče OAuth pro AzureAD |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[CodePlex](http://katanaproject.codeplex.com) |  | |
+| .NET 4.x | Obslužná rutina JWT pro rozhraní .NET 4.5 | [NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/4.0.4.403061554) | [GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
 | .NET Core | Middleware OpenID Connect ASP.NET |[Microsoft.AspNetCore.Authentication.OpenIdConnect (NuGet)][ServerLib-NetCore-Owin-Oidc-Lib] |[Zabezpečení technologie ASP.NET (Githubu)][ServerLib-NetCore-Owin-Oidc-Repo] |[Aplikace MVC](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-v2) |
 | .NET Core | Middleware nosiče OAuth ASP.NET |[Microsoft.AspNetCore.Authentication.OAuth (NuGet)][ServerLib-NetCore-Owin-Oauth-Lib] |[Zabezpečení technologie ASP.NET (Githubu)][ServerLib-NetCore-Owin-Oauth-Repo] |  |
 | .NET Core | Obslužná rutina JWT pro .NET Core  |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
@@ -78,13 +78,8 @@ Seznam knihovny, které pracují s koncovým bodem v2.0 naleznete v dalších č
 | Android |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib/wiki) |0.2.1 |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib) |[Ukázka nativní aplikace](active-directory-v2-devquickstarts-android.md) |
 | iOS |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |1.2.8 |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |[Ukázka nativní aplikace](active-directory-v2-devquickstarts-ios.md) |
 | JavaScript |[Hello.js](https://adodson.com/hello.js/) |1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
-
-## <a name="compatible-server-middleware-libraries"></a>Server kompatibilní middleware knihovny
-| Platforma | Název knihovny | Otestované verze | Zdrojový kód | Ukázka |
-|:---:|:---:|:---:|:---:|:---:|
 | Java | [Scribejava Scribe Java](https://github.com/scribejava/scribejava) | [Verze 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/archive/scribejava-3.2.0.zip) | |
-| PHP | [PHP ligy oauth2 klienta](https://github.com/thephpleague/oauth2-client) | [Verze 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2 klienta](https://github.com/thephpleague/oauth2-client/archive/1.4.2.zip) | |
-| Python Flask |[Flask OAuthlib](https://github.com/lepture/flask-oauthlib) |0.9.3 |[Flask OAuthlib](https://github.com/lepture/flask-oauthlib) |[Webová aplikace](https://github.com/Azure-Samples/active-directory-python-flask-graphapi-web-v2) |
+| PHP | [PHP ligy oauth2 klienta](https://github.com/thephpleague/oauth2-client) | [Verze 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/archive/1.4.2.zip) | |
 | Ruby |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth:1.3.1</br>omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)</br>[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 
 ## <a name="related-content"></a>Související obsah

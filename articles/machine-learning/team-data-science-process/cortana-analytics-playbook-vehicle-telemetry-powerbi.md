@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 03/14/2018
 ms.author: bradsev
-ms.openlocfilehash: 626987ec0648f9e770499b4a48bc4ca2d175d2b4
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 6a46a05539a7211fbc2a3a9f6ec45a28f5c64039
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Pokyny k instalaci vehicle Telemetrie Analytics řešení šablony Power BI řídicí panel
 Tato nabídka odkazy na kapitoly v této playbook: 
 
 [!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
-Řešení Vehicle Telemetrie analýzy hodnotí, jak dealerům car, automobilů výrobců a pojištění společností můžete použít možnosti Cortana Intelligence. Je možné získat přehledy v reálném čase a prediktivní na vehicle stavu a přenášení zvyklosti k vylepšení zkušeností zákazníků, výzkum a vývoj a marketingové kampaně. Tyto podrobné pokyny ukazují, jak můžete nakonfigurovat Power BI sestavy a řídicí panel po nasazení řešení v rámci vašeho předplatného. 
+Server Showcase řešení analýzy Telemetrie Vehicle jak dealerům car, automobilů výrobců a pojištění společnosti, se můžou využívat možnosti Cortana Intelligence. Jej mohou získat přehledy v reálném čase a prediktivní na vehicle stavu a přenášení zvyklosti k vylepšení zkušeností zákazníků, výzkum a vývoj a marketingové kampaně. Tyto podrobné pokyny ukazují, jak nakonfigurovat Power BI sestavy a řídicí panel po nasazení řešení v rámci vašeho předplatného. 
 
 ## <a name="prerequisites"></a>Požadavky
 * Nasazení [Vehicle Telemetrie Analytics](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) řešení. 
@@ -42,7 +42,7 @@ Jako součást řešení šablony Vehicle Telemetrie analýzy jsou tyto služby 
 * **Azure HDInsight** transformuje data ve velkém měřítku.
 * **Azure Data Factory** zpracovává orchestration, plánování, správy prostředků a monitorování dávkové zpracování kanálu.
 
-**Power BI** toto řešení poskytuje bohaté řídicí panel pro data v reálném čase a vizualizací prediktivní analýzy. 
+**Power BI** toto řešení poskytuje bohaté řídicí panel pro data a vizualizace prediktivní analýzy. 
 
 Toto řešení využívá dva různé datové zdroje:
 
@@ -101,7 +101,7 @@ V tomto řešení jsou tři v reálném čase sestavy:
 * Vozidel údržby
 * Vehicle stavu statistiky
 
-Můžete nakonfigurovat všechny tři, z v reálném čase sestavy, nebo můžete zastavit po jakékoli fázi. Budete pak můžete pokračovat v další části o tom, jak nakonfigurovat batch sestavy. Doporučujeme vytvořit všechny tři sestav můžete znázorňovat úplné statistiky v reálném čase cesty řešení.  
+Můžete nakonfigurovat všechna tři sestavy, nebo můžete zastavit po jakékoli fázi. Budete pak můžete pokračovat v další části o tom, jak nakonfigurovat batch sestavy. Doporučujeme vytvořit všechny tři sestav můžete znázorňovat úplné statistiky v reálném čase cesty řešení.  
 
 ### <a name="vehicles-in-operation-report"></a>Vozidel v sestavě operaci
 1. Klikněte dvakrát na **stránka 1**a přejmenujte ji **vozidel v operaci**.
@@ -160,7 +160,7 @@ Můžete nakonfigurovat všechny tři, z v reálném čase sestavy, nebo můžet
 
     ![Řídicí panel s vizualizacemi](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4k.png)
 
-Úspěšně jste nakonfigurovali v reálném čase sestavy "Vozidel v operace". Můžete vytvořit další sestavu v reálném čase, nebo můžete zastavit sem a nakonfigurovat řídicího panelu. 
+Úspěšně jste nakonfigurovali sestavy "Vozidel v operace". Můžete vytvořit další sestavu v reálném čase, nebo můžete zastavit sem a nakonfigurovat řídicího panelu. 
 
 ### <a name="vehicles-requiring-maintenance-report"></a>Sestava vozidel nutnosti údržby
 
@@ -198,7 +198,7 @@ Můžete nakonfigurovat všechny tři, z v reálném čase sestavy, nebo můžet
 
 6. Na **pole** kartě, přetáhněte **modelu** k **osy** oblasti. Přetáhněte **vin** k **hodnotu** oblasti. Seřaďte vizualizaci pomocí **počet vin**. Změnit grafu **název** k **vozidel nutnosti údržby modelem**. 
 
-7. Na **pole** ![pole](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) části **vizualizace** kartě, přetáhněte **vin** k **sytost barev**.
+7. Na **pole** ![pole image](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) části **vizualizace** kartě, přetáhněte **vin** k **sytost barev**.
 
     ![Sytost barev](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4q.png)  
 
@@ -250,7 +250,7 @@ Můžete nakonfigurovat všechny tři, z v reálném čase sestavy, nebo můžet
 
 6. Přejmenujte **název měřidla** k **průměrná rychlost**.
 
-   ![Měřidla](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4y.png)  
+   ![Ukazatel](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4y.png)  
 
 7. Vyberte oblast, chcete-li přidat nové vizualizace na prázdné.  
 
@@ -298,13 +298,13 @@ Můžete nakonfigurovat všechny tři, z v reálném čase sestavy, nebo můžet
 
     ![Typ agregace](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ff.png)
 
-22. Změnit grafu **název** k **průměrná těžba ropy modul, přestanou zatížení, rychlosti a údržba pravděpodobnosti modelem**.
+22. Změnit grafu **název** k **průměrná těžba ropy modul, můžete zadat naléhavost, rychlost a údržby pravděpodobnosti modelem**.
 
     ![Název oblasti grafu](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4gg.png)
 
 23. Vyberte oblast, chcete-li přidat nové vizualizace na prázdné.
 
-24. Na **vizualizace** vyberte **bodový graf** vizualizace. Přetáhněte **modelu** k **podrobnosti** a **legendy** oblasti. Přetáhněte **paliva** k **osy X** oblasti. Změnit agregace na **průměrná**. Přetáhněte **engineTemperature** k **osy Y** oblasti. Změnit agregace na **průměrná**. Přetáhněte **vin** k **velikost** oblasti.
+24. Na **vizualizace** vyberte **bodový graf** vizualizace. Přetáhněte **modelu** k **podrobnosti** a **legendy** oblasti. Přetáhněte **paliva** k **osy x** oblasti. Změnit agregace na **průměrná**. Přetáhněte **engineTemperature** k **osy y** oblasti. Změnit agregace na **průměrná**. Přetáhněte **vin** k **velikost** oblasti.
 
     ![Podrobnosti, legendy, osy a velikosti oblasti](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4hh.png)
 
@@ -333,7 +333,7 @@ Můžete nakonfigurovat všechny tři, z v reálném čase sestavy, nebo můžet
 
 ## <a name="set-up-the-power-bi-batch-processing-dashboard"></a>Nastavit řídicí panel Power BI dávkové zpracování
 > [!NOTE]
-> O dvou hodin (z úspěšné dokončení nasazení) je potřebná pro zpracování kanálu dokončí provádění a zpracovat v roce za generované datové dávky začátku do konce. Počkejte, než pro zpracování dokončeno předtím, než budete pokračovat v následujících krocích. 
+> O dvou hodin (z úspěšné dokončení nasazení) je potřebná pro zpracování kanálu dokončí provádění a zpracovat v roce za generované datové dávky začátku do konce. Čekající na zpracování dokončení, než budete pokračovat v následujících krocích:
 > 
 > 
 
