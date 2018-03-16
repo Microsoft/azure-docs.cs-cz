@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 12/08/2017
 ms.author: andret
 ms.openlocfilehash: b23afd26f7ac1828381a0410d2455206c8f43c88
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/14/2018
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Přidání přihlášení se společností Microsoft do webové aplikace ASP.NET
@@ -66,14 +66,14 @@ Tato část uvádí kroky pro instalaci a konfiguraci kanálu ověřování pros
 > Místo toho stáhněte projekt Visual Studio Tato ukázka dávají přednost? [Stažení projektu](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/GuidedSetup.zip) a pokračujte [krok konfigurace](#configure-your-webconfig-and-register-an-application) před provedením konfigurace ukázka kódu.
 
 ## <a name="create-your-aspnet-project"></a>Vytvoření projektu ASP.NET
-1. V sadě Visual Studio:`File` > `New` > `Project`<br/>
+1. V sadě Visual Studio: `File` > `New` > `Project`<br/>
 2. V části *Visual C# \Web*, vyberte `ASP.NET Web Application (.NET Framework)`.
 3. Název aplikace a klikněte na tlačítko *OK*
 4. Vyberte `Empty` a pak zaškrtněte políčko Přidat `MVC` odkazy
 
 ## <a name="add-authentication-components"></a>Přidat ověřování součásti
 
-1. V sadě Visual Studio:`Tools` > `Nuget Package Manager` > `Package Manager Console`
+1. V sadě Visual Studio: `Tools` > `Nuget Package Manager` > `Package Manager Console`
 2. Přidat *balíčky NuGet middleware OWIN* pomocí následujícího příkazu v okně konzoly Správce balíčků:
 
     ```powershell
@@ -92,8 +92,8 @@ Následující postup slouží k vytváření OWIN middleware *třída při spu�
 
 > [!TIP]
 > Pokud nemá projektu `Startup.cs` souboru v kořenové složce:<br/>
-> 1. Klikněte pravým tlačítkem na kořenové složky projektu: >`Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. Název`Startup.cs`<br/>
+> 1. Klikněte pravým tlačítkem na kořenové složky projektu: >    `Add` > `New Item...` > `OWIN Startup class`<br/>
+> 2. Název `Startup.cs`<br/>
 >
 >> Zajistěte, aby byl vybranou třídu třídy pro spuštění OWIN a není standardní C# třídu. To můžete ověřit kontrolou, pokud se zobrazí `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` výše obor názvů.
 
@@ -119,7 +119,7 @@ Následující postup slouží k vytváření OWIN middleware *třída při spu�
 
 Tento krok ukazuje, jak vytvořit nový řadič vystavit metody přihlášení a odhlášení.
 
-1.  Klikněte pravým tlačítkem myši `Controllers` složky a vyberte`Add` > `Controller`
+1.  Klikněte pravým tlačítkem myši `Controllers` složky a vyberte `Add` > `Controller`
 2.  Vyberte `MVC (.NET version) Controller – Empty`.
 3.  Klikněte na tlačítko *přidat*
 4.  Pojmenujte ji `HomeController` a klikněte na tlačítko *přidat*
@@ -135,7 +135,7 @@ Tento krok ukazuje, jak vytvořit nový řadič vystavit metody přihlášení a
 
 V sadě Visual Studio vytvořte nové zobrazení přidat tlačítko přihlásit a zobrazit informace o uživateli po ověření:
 
-1.  Klikněte pravým tlačítkem myši `Views\Home` složky a vyberte`Add View`
+1.  Klikněte pravým tlačítkem myši `Views\Home` složky a vyberte `Add View`
 2.  Pojmenujte ji `Index`.
 3.  Přidejte následující kód HTML, která obsahuje tlačítko přihlášení, do souboru:
 
@@ -149,10 +149,10 @@ V sadě Visual Studio vytvořte nové zobrazení přidat tlačítko přihlásit 
 ## <a name="display-users-claims-by-adding-a-controller"></a>Zobrazit deklarací identity uživatele přidáním řadič
 Tento řadič ukazuje použití `[Authorize]` atribut k ochraně řadiči. Tento atribut omezuje přístup k řadiči tím, že se pouze ověřené uživatele. Následující kód díky zobrazíte deklarace identity uživatelů, které byly získány v rámci přihlášení pomocí atributu.
 
-1.  Klikněte pravým tlačítkem myši `Controllers` složky:`Add` > `Controller`
+1.  Klikněte pravým tlačítkem myši `Controllers` složky: `Add` > `Controller`
 2.  Vyberte `MVC {version} Controller – Empty`.
 3.  Klikněte na tlačítko *přidat*
-4.  Název`ClaimsController`
+4.  Název `ClaimsController`
 5.  Nahraďte kód vaší řadiče třídy následujícím kódem – tím se přidá `[Authorize]` atribut třídy:
 
     [!code-csharp[main](../../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
@@ -166,7 +166,7 @@ Tento řadič ukazuje použití `[Authorize]` atribut k ochraně řadiči. Tento
 
 V sadě Visual Studio vytvořte nové zobrazení zobrazíte deklaracích identity uživatele na webové stránce:
 
-1.  Klikněte pravým tlačítkem myši `Views\Claims` složky a:`Add View`
+1.  Klikněte pravým tlačítkem myši `Views\Claims` složky a: `Add View`
 2.  Pojmenujte ji `Index`.
 3.  Do souboru přidejte následující kód HTML:
 
@@ -186,7 +186,7 @@ V sadě Visual Studio vytvořte nové zobrazení zobrazíte deklaracích identit
     <add key="Authority" value="https://login.microsoftonline.com/{0}" /> 
     ```
 2. V Průzkumníku řešení, vyberte projekt a podívejte se na <i>vlastnosti</i> okno (Pokud se nezobrazí okno Vlastnosti stisknutím klávesy F4)
-3. Změna SSL povoleno<code>True</code>
+3. Změna SSL povoleno <code>True</code>
 4. Adresa URL projektu SSL zkopírujte do schránky:<br/><br/>![Vlastnosti projektu](media/active-directory-aspnetwebapp-v1/visual-studio-project-properties.png)<br />
 5. V <code>web.config</code>, nahraďte <code>Enter_the_Redirect_URL_here</code> pomocí adresy URL protokolu SSL vašeho projektu 
 
@@ -213,8 +213,8 @@ Můžete nakonfigurovat aplikaci povolit pouze uživatelé, kteří patří do j
 Postupujte podle následujících kroků, pokud chcete, aby přijímal přihlášení pracovní a školní účty v jakémkoli společnosti nebo organizace, která má integrované s Azure Active Directory. Toto je běžný scénář pro *aplikace SaaS*:
 
 1. Přejděte zpět na [portálu Microsoft Azure – registrace aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) a vyhledejte aplikace, které jste právě zaregistrovali
-2. V části `All Settings` vyberte`Properties`
-3. Změna `Multi-tenanted` vlastnost `Yes` a klikněte na tlačítko`Save`
+2. V části `All Settings` vyberte `Properties`
+3. Změna `Multi-tenanted` vlastnost `Yes` a klikněte na tlačítko `Save`
 
 Další informace o toto nastavení a konceptu víceklientským aplikacím, najdete v části [v tomto článku](../active-directory-devhowto-multi-tenant-overview.md "víceklientské přehled").
 

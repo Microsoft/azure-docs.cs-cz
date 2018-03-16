@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: ff61008710766830640c0de31bf9fd23198946fd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 35632cc93c9a0650b45220ba84b4983679de3d9c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="creating-an-internet-facing-load-balancer-using-the-azure-portal"></a>Vytvoření internetového nástroje pro vyrovnávání zatížení pomocí webu Azure Portal
 
@@ -54,7 +54,7 @@ Další informace o komponentách nástroje pro vyrovnávání zatížení s Azu
 ## <a name="set-up-a-load-balancer-in-azure-portal"></a>Nastavení nástroje pro vyrovnávání zatížení na webu Azure Portal
 
 > [!IMPORTANT]
-> Tento příklad předpokládá, že máte virtuální síť s názvem **myVNet**. Pokyny k jejímu vytvoření najdete v tématu [Vytvoření virtuální sítě](../virtual-network/virtual-networks-create-vnet-arm-pportal.md). Dále předpokládá, že v rámci **myVNet** je podsíť s názvem **LB-Subnet-BE** a že v rámci jedné skupiny dostupnosti s názvem **myAvailSet** v síti **myVNet** jsou dva virtuální počítače s názvy **web1** a **web2**. Pokyny k vytvoření virtuálních počítačů najdete na [tomto odkazu](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Tento příklad předpokládá, že máte virtuální síť s názvem **myVNet**. Pokyny k jejímu vytvoření najdete v tématu [Vytvoření virtuální sítě](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Dále předpokládá, že v rámci **myVNet** je podsíť s názvem **LB-Subnet-BE** a že v rámci jedné skupiny dostupnosti s názvem **myAvailSet** v síti **myVNet** jsou dva virtuální počítače s názvy **web1** a **web2**. Pokyny k vytvoření virtuálních počítačů najdete na [tomto odkazu](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 1. V prohlížeči přejděte na web Azure Portal: [http://portal.azure.com](http://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
 2. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **Sítě** > **Nástroj pro vyrovnávání zatížení**.

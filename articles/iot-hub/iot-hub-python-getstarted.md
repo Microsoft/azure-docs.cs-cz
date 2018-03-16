@@ -10,14 +10,14 @@ ms.devlang: python
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/25/2017
+ms.date: 03/02/2018
 ms.author: dkshir
 ms.custom: na
-ms.openlocfilehash: acc237afc5c7eccbf2caf876973c147eb8574d7b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 2c14176a3d45b85ae94c27549e5d6448e240ed98
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-python"></a>Připojení simulovaného zařízení ke službě IoT Hub pomocí Pythonu
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]

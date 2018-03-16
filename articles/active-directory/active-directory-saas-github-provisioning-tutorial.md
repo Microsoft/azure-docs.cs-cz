@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.openlocfilehash: 53eb2d0e76cb4765612dfd30226979d839a96235
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHub pro zřizování automatické uživatelů
 
@@ -78,7 +78,7 @@ Tato část vás provede připojení k Githubu uživatelský účet zřizování
 
     ![Dialogové okno autorizace](./media/active-directory-saas-github-provisioning-tutorial/GitHub2.png)
 
-7. Na portálu Azure vstupní **URL klienta** a klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k aplikaci Githubu. Pokud se nepovede připojit, ujistěte se, váš účet GitHub má oprávnění správce a **URl klienta** je správně zadané hodnoty, a akci opakujte krok "Ověřit" (mohou představovat **URL klienta** pravidlem: "https://api.github.com/scim/v2/organizations/ + <Organizations_name>", vaší organizace můžete najít v rámci účtu GitHub: **nastavení** > **organizace**).
+7. Na portálu Azure vstupní **URL klienta** a klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k aplikaci Githubu. Pokud se nepovede připojit, ujistěte se, váš účet GitHub má oprávnění správce a **URl klienta** je správně zadané hodnoty, a akci opakujte krok "Ověřit" (mohou představovat **URL klienta** pravidlem: "https://api.github.com/scim/v2/organizations/ + < Organizations_name > ", vaší organizace můžete najít v rámci účtu GitHub: **nastavení** > **organizace**).
 
     ![Dialogové okno autorizace](./media/active-directory-saas-github-provisioning-tutorial/GitHub3.png)
 

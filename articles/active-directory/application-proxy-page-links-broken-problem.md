@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 17f2afb0aaf3b899784a504b77f33a1284f0a232
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Odkazy na stránce nejsou k dispozici pro aplikaci Proxy aplikace
 
@@ -42,8 +42,8 @@ Existují tři způsoby, jak tento problém vyřešit. Volby níže jsou uvedeny
 
 3.  Pokud žádná z těchto možností jsou vhodná, připojíte preview pro novou funkci, která provádějí překlad/přepisování adresy URL. Tato možnost, interní adresy URL nebo odkazy, které existují v těle HTML aplikací se přeložit, nebo "namapované", na publikované externí Proxy adresy URL aplikací. To funguje pouze pro odkazy HTML nebo šablon stylů CSS, a to není pomoct v případě odkaz na vaši je generována prostřednictvím JS. 
 
-V důsledku toho důrazně doporučujeme používat [vlastní domény](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) řešení, pokud je to možné. Pokud chcete pro připojení ve verzi preview, e-mailu < aadapfeedback@microsoft.com > s applicationId(s).
+V důsledku toho důrazně doporučujeme používat [vlastní domény](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) řešení, pokud je to možné. Pokud chcete pro připojení ve verzi preview, e-mailu <aadapfeedback@microsoft.com> s applicationId(s).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Práce s existující místní proxy servery](application-proxy-working-with-proxy-servers.md)
 

@@ -3,8 +3,8 @@ title: "Hledání trasy s použitím Azure Location Based Services | Dokumentace
 description: "Trasa k bodu zájmu s použitím Azure Location Based Services"
 services: location-based-services
 keywords: 
-author: dsk-2015
-ms.author: dkshir
+author: kgremban
+ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: tutorial
 ms.service: location-based-services
@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 7303347444952d9c09dc6c04eea5b962e18729b4
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: b54d97afb4e762a7d252acf7cf53a5deac01d43f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="route-to-a-point-of-interest-using-azure-location-based-services"></a>Trasa k bodu zájmu s použitím Azure Location Based Services
 
@@ -24,7 +24,7 @@ Tento kurz demonstruje způsob použití účtu Azure Location Based Services a 
 
 > [!div class="checklist"]
 > * Získat souřadnice pro adresu
-> * Zadat dotaz na službu Route Service ohledně trasy k bodu zájmu
+> * Zadat dotaz na rozhraní API Route Service ohledně trasy k bodu zájmu
 
 ## <a name="prerequisites"></a>Požadavky
 

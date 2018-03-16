@@ -12,20 +12,20 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/04/2017
+ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: 9aedd5561397c78622a43f39f423c618000a2a33
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 87e124b1dc14ad34d1d790d463ce1f5ded18f74b
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Spuštění Plánovače nasazení služby Azure Site Recovery pro nasazení VMware do Azure
 Tento článek představuje uživatelskou příručku k nástroji Azure Site Recovery Deployment Planner pro produkční nasazení VMware do Azure.
 
 
 ## <a name="modes-of-running-deployment-planner"></a>Režimy spuštění plánovače nasazení
-Nástroj příkazového řádku (ASRDeploymentPlanner.exe) můžete spustit v některém z následujících čtyř režimů: 
+Nástroj příkazového řádku (ASRDeploymentPlanner.exe) můžete spustit v některém z následujících čtyř režimů:
 
 1.  [Profilace](#profile-vmware-vms)
 2.  [Generování sestav](#generate-report)
@@ -49,8 +49,8 @@ Nejprve potřebujete seznam virtuálních počítačů určených k profilaci. V
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
 4. Možná bude potřeba spustit následující příkaz, pokud Connect-VIServer nebude rozpoznán jako název rutiny.
- 
-            Add-PSSnapin VMware.VimAutomation.Core 
+
+            Add-PSSnapin VMware.VimAutomation.Core
 
 5. Chcete-li získat všechny názvy virtuálních počítačů na serveru vCenter nebo hostiteli vSphere ESXi a jejich seznam uložit do souboru .txt, spusťte zde uvedené dva příkazy.
 Nahraďte zástupné hodnoty &lsaquo;server name&rsaquo; (název serveru), &lsaquo;user name&rsaquo; (uživatelské jméno), &lsaquo;password&rsaquo; (heslo) a &lsaquo;outputfile.txt&rsaquo; (výstupní soubor) vlastními hodnotami.
@@ -101,7 +101,7 @@ Ve výchozím nastavení je tento nástroj konfigurovaný tak, aby profiloval a 
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-Pokud chcete s výchozím nastavením profilovat řekněme 1 500 virtuálních počítačů, vytvořte dva soubory VMList.txt. Jeden s 1000 virtuálních počítačů a druhý se seznamem 500 virtuálních počítačů. Spusťte dvě instance Plánovače nasazení ASR, jednu s VMList1.txt druhou s VMList2.txt. K uložení profilovaných dat virtuálních počítačů z obou seznamů VMList můžete použít stejnou adresářovou cestu. 
+Pokud chcete s výchozím nastavením profilovat řekněme 1 500 virtuálních počítačů, vytvořte dva soubory VMList.txt. Jeden s 1000 virtuálních počítačů a druhý se seznamem 500 virtuálních počítačů. Spusťte dvě instance Plánovače nasazení ASR, jednu s VMList1.txt druhou s VMList2.txt. K uložení profilovaných dat virtuálních počítačů z obou seznamů VMList můžete použít stejnou adresářovou cestu.
 
 Viděli jsme, že na základě konfigurace hardwaru, zejména velikosti RAM na serveru, ze kterého se spouští nástroj pro vygenerování sestavy, může operace selhat z důvodu nedostatku paměti. Pokud máte kvalitní hardware, můžete změnit MaxVMsSupported na libovolnou vyšší hodnotu.  
 
@@ -293,4 +293,3 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 
 ## <a name="next-steps"></a>Další kroky
 * [Analýza vygenerované sestavy](site-recovery-vmware-deployment-planner-analyze-report.md)
-

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: nitinme
 ms.openlocfilehash: 5da6ffc346cc0e7f0f83bf4a4c33600b668a17ca
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Časté otázky k Azure Databricks
 
@@ -101,7 +101,7 @@ Clustery Databricks použít jednu veřejnou IP adresu na jeden uzel. Pokud vaš
 #### <a name="error-message"></a>Chybová zpráva
 
 "Cloudu selhání spuštění poskytovatele: došlo k chybě zprostředkovatele cloudu při nastavení clusteru. Další informace naleznete v Průvodci Databricks.
-Kód chyby Azure: MissingSubscriptionRegistration Azure chybová zpráva: předplatné není zaregistrované používání oboru názvů 'Microsoft.Compute'. Viz https://aka.ms/rps-not-found pro postup registrace odběry."
+Kód chyby Azure: MissingSubscriptionRegistration Azure chybová zpráva: předplatné není zaregistrované používání oboru názvů 'Microsoft.Compute'. V tématu https://aka.ms/rps-not-found pro postup registrace odběry. "
 
 #### <a name="solution"></a>Řešení
 

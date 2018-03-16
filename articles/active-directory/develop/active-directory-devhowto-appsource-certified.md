@@ -16,10 +16,10 @@ ms.date: 08/03/2017
 ms.author: andret
 ms.custom: aaddev
 ms.openlocfilehash: 5601ad80e271364fec519cf34bcdc2f650f3bb92
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak získat AppSource certifikované pro Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) je cíl pro firmy uživatelům zjišťovat, zkuste a spravovat-obchodní aplikace SaaS (samostatný SaaS a rozšíření na existující produktů Microsoft SaaS).
@@ -35,7 +35,7 @@ Aplikace, která přijímá přihlášení od uživatelů v jakémkoli společno
 
 Chcete-li povolit více klientů ve vaší aplikaci:
 - Nastavit `Multi-Tenanted` vlastnost `Yes` na informace o registraci aplikace v [portálu Azure](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) (ve výchozím nastavení jsou aplikace vytvořené na portálu Azure nakonfigurovaný jako *jednoho klienta*)
-- Aktualizujte kód a odeslání žádosti o '`common`se koncový bod (aktualizaci koncového bodu z *https://login.microsoftonline.com/ {yourtenant}* k *https://login.microsoftonline.com/common*)
+- Aktualizujte kód a odeslání žádosti o '`common`se koncový bod (aktualizaci koncového bodu z  *https://login.microsoftonline.com/{yourtenant}*  k  *https://login.microsoftonline.com/common* )
 - Pro některé platformy, jako je ASP.NET budete muset taky aktualizovat kód tak, aby přijímal více vystavitelů
 
 Další informace o víceklientské najdete v tématu: [jak se přihlásit žádné uživatele Azure Active Directory (AD) pomocí vzoru víceklientské aplikace](./active-directory-devhowto-multi-tenant-overview.md).

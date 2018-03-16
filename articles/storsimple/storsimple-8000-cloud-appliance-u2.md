@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 46b1be5bdd4fa400f437bca274e7f3f6e0dfec08
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 4d47b5426da5d857085991767faa5fb227476408
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Nasazení a správa řešení StorSimple Cloud Appliance v Azure (s aktualizací Update 3 a novější)
 
@@ -78,7 +78,7 @@ Následující části popisují požadavky na konfiguraci pro řešení StorSim
 Než zřídíte cloudové zařízení, je třeba provést následující přípravy v prostředí Azure:
 
 * Ujistěte se, že ve svém datovém centru máte nasazené a spuštěné fyzické zařízení StorSimple řady 8000 (model 8100 nebo 8600). Zaregistrujte toto zařízení ve stejné službě Správce zařízení StorSimple, pro kterou chcete vytvořit řešení StorSimple Cloud Appliance.
-* Pro cloudové zařízení [nakonfigurujte virtuální síť v Azure](../virtual-network/virtual-networks-create-vnet-arm-pportal.md). Používáte-li službu Premium Storage, musíte vytvořit virtuální síť v oblasti Azure, která podporuje službu Premium Storage. Oblasti služby Storage úrovně Premium jsou oblasti, které odpovídají řádku pro Diskové úložiště v [seznamu služeb Azure podle oblasti](https://azure.microsoft.com/regions/services/).
+* Pro cloudové zařízení [nakonfigurujte virtuální síť v Azure](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Používáte-li službu Premium Storage, musíte vytvořit virtuální síť v oblasti Azure, která podporuje službu Premium Storage. Oblasti služby Storage úrovně Premium jsou oblasti, které odpovídají řádku pro Diskové úložiště v [seznamu služeb Azure podle oblasti](https://azure.microsoft.com/regions/services/).
 * Doporučujeme použít výchozí server DNS poskytovaný platformou Azure místo zadávání vlastního názvu serveru DNS. Pokud název serveru DNS není platný nebo pokud server DNS není schopen správně přeložit IP adresy, vytvoření cloudového zařízení se nezdaří.
 * Připojení point-to-site a site-to-site jsou volitelná, ale nejsou vyžadována. Pokud chcete, můžete nastavit tyto možnosti pro pokročilejší scénáře.
 * Můžete ve virtuální síti vytvořit [virtuální počítače Azure](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (hostitelské servery), které můžou používat svazky vystavené cloudovým zařízením. Tyto servery musí splňovat následující požadavky:

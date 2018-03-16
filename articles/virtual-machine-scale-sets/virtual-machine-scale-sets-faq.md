@@ -17,10 +17,10 @@ ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
 ms.openlocfilehash: 52be84b73e70a02c43ef71917dc272060d82b42d
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy k sadách škálování virtuálních počítačů Azure
 
@@ -77,7 +77,7 @@ Výstrahy můžete vytvořit na metriky pro sady škálování virtuálního po�
 
 TargetResourceId škálovací sadu virtuálních počítačů vypadá takto: 
 
-/subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.COMPUTE/virtualMachineScaleSets/yourvmssname
+/subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
 Můžete jako metriku nastavit výstrahy pro všechny čítače výkonu virtuálních počítačů. Další informace najdete v tématu [metriky hostovaného operačního systému pro virtuální počítače na bázi správce prostředků Windows](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms) a [metriky hostovaného operačního systému pro virtuální počítače s Linuxem](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms) v [běžné metriky automatického škálování Azure monitorování](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)článku.
 
@@ -219,8 +219,8 @@ Veřejné klíče SSH ve formátu prostého textu můžete zadat při vytvářen
 Název elementu linuxConfiguration | Požaduje se | Typ | Popis
 --- | --- | --- | --- |  ---
 SSH | Ne | Kolekce | Určuje klíče konfigurace SSH pro operační systém Linux.
-Cesta | Ano | Řetězec | Určuje cestu souboru Linux, kde klíče SSH nebo certifikát má být umístěn
-data klíče | Ano | Řetězec | Určuje kódování base64 veřejný klíč SSH
+path | Ano | Řetězec | Určuje cestu souboru Linux, kde klíče SSH nebo certifikát má být umístěn
+keyData | Ano | Řetězec | Určuje kódování base64 veřejný klíč SSH
 
 Příklad, naleznete v části [šablony rychlý start Githubu 101-vm-sshkey](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
@@ -291,9 +291,9 @@ Tento problém není dojde při škálování, protože není v mezipaměti kopi
  
 Dokumentace Azure Key Vault stavy, získání tajného klíče rozhraní API REST by měla vrátit nejnovější verzi tajný klíč, pokud není zadán verze.
  
-Metoda | Adresa URL
+Metoda | zprostředkovatele identity
 --- | ---
-GET | https://mykeyvault.Vault.Azure.NET/secrets/ {tajný klíč name} / {tajný klíč version}? api-version = {api-version}
+GET | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
 
 Nahraďte {*tajný klíč název*} s názvem a nahraďte {*tajný klíč verze*} s verzí tajného klíče můžete obnovit. Verzi tajného klíče může být vyloučeny. V takovém případě se načte aktuální verze.
   
@@ -339,7 +339,7 @@ Další informace najdete na webu [Centrum zabezpečení Microsoft](https://www.
 
 ### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>Nemá [identita spravované služby Azure](https://docs.microsoft.com/azure/active-directory/msi-overview) práce s sady škálování virtuálního počítače?
 
-Ano. Můžete zobrazit některé šablony příklad MSI v šablonách Azure rychlý start. Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux). Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows).
+Ano. Můžete zobrazit některé šablony příklad MSI v šablonách Azure rychlý start. Linux: [ https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux). Windows: [ https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows).
 
 
 ## <a name="extensions"></a>Rozšíření
@@ -690,7 +690,7 @@ Když je vytvořen nový virtuální počítač, jak vlastnost virtuálního po�
 
 Chcete-li získat informace o vlastnosti pro každý virtuální počítač bez volání více, můžete zavolat `ListVMInstanceViews` pomocí rozhraní REST API `GET` na následující identifikátor URI prostředku:
 
-/subscriptions/ < ID_ODBĚRU > /resourceGroups/ < resource_group_name > /providers/Microsoft.Compute/virtualMachineScaleSets/ < scaleset_name > / virtualMachines? $expand = instanceView & $select = instanceView
+/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scaleset_name>/virtualMachines?$expand=instanceView&$select=instanceView
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>Můžete předat argumenty jiné rozšíření pro různé virtuální počítače ve škálovací sadě virtuálního počítače?
 

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 ms.openlocfilehash: e0b835f4cbad9855bfb7ddccf2d9bf5b4bf88231
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="troubleshoot-routes-using-the-azure-portal"></a>Řešení potíží s postupy pomocí portálu Azure
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Tento příklad používá jenom systémové trasy, stejný postup slouží k ur
 ### <a name="view-effective-routes-for-a-virtual-machine"></a>Zobrazit účinné postupy pro virtuální počítač
 Agregace tras, které se použijí k virtuálnímu počítači najdete proveďte následující kroky:
 
-1. Přihlášení k portálu Azure v https://portal.azure.com. Musí mít váš účet přiřazenou *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* operace pro síťové rozhraní. Zjistěte, jak přiřadit operations účty, najdete v tématu [vytvářet vlastní role pro řízení přístupu](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Přihlášení k portálu Azure na https://portal.azure.com. Musí mít váš účet přiřazenou *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* operace pro síťové rozhraní. Zjistěte, jak přiřadit operations účty, najdete v tématu [vytvářet vlastní role pro řízení přístupu](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Klikněte na tlačítko **všechny služby**, pak klikněte na tlačítko **virtuální počítače** v seznamu, který se zobrazí.
 3. Vyberte virtuální počítač ze seznamu, který se zobrazí řešení a zobrazí se okno virtuálních počítačů s možnostmi.
 4. Klikněte na tlačítko **Diagnostikujte & řešení problémů** a pak vyberte častých problémů. V tomto příkladu **nelze se připojit k virtuálnímu počítači s Windows** je vybrána.
@@ -96,7 +96,7 @@ Více řešení potíží scénáře pro vyhodnocení vynucené tunelování a s
 ### <a name="view-effective-routes-for-a-network-interface"></a>Zobrazit účinné postupy pro rozhraní sítě
 Pokud pro konkrétní síťové rozhraní (NIC) je ovlivněn tok přenosu sítě, můžete zobrazit úplný seznam efektivní trasy přímo na síťový adaptér. Pokud chcete zobrazit agregační tras, které se použijí pro síťový adaptér, proveďte následující kroky:
 
-1. Přihlášení k portálu Azure v https://portal.azure.com.
+1. Přihlášení k portálu Azure na https://portal.azure.com.
 2. Klikněte na tlačítko **všechny služby**, pak klikněte na tlačítko **síťová rozhraní**
 3. Pro název síťového adaptéru v seznamu Hledat, nebo ho vyberte v seznamu, který se zobrazí. V tomto příkladu **VM1 NIC1** je vybrána.
 4. Vyberte **efektivní trasy** v **síťové rozhraní** okno, jak je znázorněno na následujícím obrázku:
@@ -116,7 +116,7 @@ V tomto příkladu UDR (*UDRoute*) je zadána ve směrovací tabulce (*UDRouteTa
 
 Pokud chcete zobrazit agregační trasy pro směrovací tabulku, proveďte následující kroky:
 
-1. Přihlášení k portálu Azure v https://portal.azure.com.
+1. Přihlášení k portálu Azure na https://portal.azure.com.
 2. Klikněte na tlačítko **všechny služby**, pak klikněte na tlačítko **směrovacích tabulek**
 3. Vyhledejte v seznamu směrovací tabulka, které chcete zobrazit agregační trasy pro a vyberte ho. V tomto příkladu **UDRouteTable** je vybrána. Zobrazí se okno pro vybraný směrovací tabulka, jak je znázorněno na následujícím obrázku:
 

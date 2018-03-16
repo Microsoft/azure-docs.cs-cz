@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 ms.openlocfilehash: 5998aa0e0b281ead859c24d792c3e175e3cca899
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Řešení potíží s skupin zabezpečení sítě pomocí portálu Azure
 > [!div class="op_single_selector"]
@@ -95,7 +95,7 @@ Pomocí následujících kroků pro řešení potíží s skupiny Nsg pro virtu�
 ### <a name="nic"></a>Zobrazení pravidla efektivní zabezpečení pro rozhraní sítě
 Pokud vaše tok přenosů dat virtuálního počítače je ovlivněn pro konkrétní síťové karty, můžete zobrazit úplný seznam efektivní pravidla pro síťový adaptér z daného kontextu rozhraní sítě pomocí následujících kroků:
 
-1. Přihlášení k portálu Azure v https://portal.azure.com.
+1. Přihlášení k portálu Azure na https://portal.azure.com.
 2. Klikněte na tlačítko **všechny služby**, pak klikněte na tlačítko **síťových rozhraní** v seznamu, který se zobrazí.
 3. Vyberte síťové rozhraní. Na následujícím obrázku s názvem síťový adaptér *VM1 NIC1* je vybrána.
    
@@ -112,7 +112,7 @@ Pokud vaše tok přenosů dat virtuálního počítače je ovlivněn pro konkré
 ## <a name="nsg"></a>Zobrazení pravidla efektivní zabezpečení pro skupinu zabezpečení sítě (NSG)
 Při úpravě pravidla NSG, můžete zkontrolovat dopad pravidla přidávané na konkrétním virtuálním počítači. Můžete zobrazit úplný seznam pravidel efektivní zabezpečení pro všechny síťové adaptéry, které daný NSG se použije, aniž by bylo nutné přepnout kontext z okna dané skupiny NSG. Chcete-li vyřešit efektivní pravidel ve skupině NGS, proveďte následující kroky:
 
-1. Přihlášení k portálu Azure v https://portal.azure.com.
+1. Přihlášení k portálu Azure na https://portal.azure.com.
 2. Klikněte na tlačítko **všechny služby**, pak klikněte na tlačítko **skupin zabezpečení sítě** v seznamu, který se zobrazí.
 3. Vyberte skupinu NSG. Na následujícím obrázku nebyla vybrána skupina NSG s názvem VM1 nsg.
    

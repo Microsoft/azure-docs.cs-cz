@@ -16,10 +16,10 @@ ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
 ms.openlocfilehash: 86cf6ba2f2ec86a609b4ec60cc143b07d9e542b3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Přihlaste se pomocí telefonu není heslo
 
@@ -87,7 +87,7 @@ U počítačů doporučujeme, abyste přihlášení pomocí Windows Hello ve Win
 ### <a name="can-i-sign-in-with-my-windows-phone"></a>Můžete Moje Windows Phone přihlásit?  
 V tuto chvíli jsme nejsou vývoj tuto funkci pro Microsoft Authenticator na Windows Phone. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud jste ještě nestáhli aplikaci Microsoft Authenticator, ji rezervovat. Aplikace je k dispozici pro [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), a přihlášení phone jsou dostupné v aplikaci Microsoft Authenticator pro [Android](http://go.microsoft.com/fwlink/?Linkid=825072) a [iOS](http://go.microsoft.com/fwlink/?Linkid=825073).
 
 Pokud máte dotazy týkající se aplikace obecně, podívejte se na [Microsoft Authenticator nejčastější dotazy](microsoft-authenticator-app-faq.md)

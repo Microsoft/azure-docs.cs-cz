@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: dec4beef44e4086e1b41e3c20bea6585db385c9c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 618e2bb7ef124883af2d73264e01922ad2329d12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů VMware a fyzických serverů replikovaných do Azure
 
@@ -48,7 +48,7 @@ Převzetí služeb při selhání a navrácení služeb po obnovení probíhá v
 
 ## <a name="verify-vm-properties"></a>Ověření vlastností virtuálního počítače
 
-Ověřte vlastnosti virtuálního počítače a ujistěte se, že splňuje [požadavky Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
+Ověřte vlastnosti virtuálního počítače a ujistěte se, že splňuje [požadavky Azure](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 1. V části **Chráněné položky** klikněte na **Replikované položky** a pak na virtuální počítač.
 
@@ -88,7 +88,7 @@ Procesový server přijímá data z virtuálního počítače Azure a odesílá 
 
 - Pokud používáte připojení Azure ExpressRoute, můžete pro účely testování použít místní procesový server, který je automaticky nainstalovaný na konfiguračním serveru.
 - Pokud používáte připojení VPN nebo pokud spouštíte navrácení služeb po obnovení v produkčním prostředí, musíte nastavit virtuální počítač Azure jako procesový server založený na Azure pro navrácení služeb po obnovení.
-- Pokud chcete nastavit procesový server v Azure, postupujte podle pokynů v [tomto článku](site-recovery-vmware-setup-azure-ps-resource-manager.md).
+- Pokud chcete nastavit procesový server v Azure, postupujte podle pokynů v [tomto článku](vmware-azure-set-up-process-server-azure.md).
 
 ## <a name="configure-the-master-target-server"></a>Konfigurace hlavního cílového serveru
 

@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 1b2bba200ea98d7499c1dbf99d2db6552c314d19
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: cab3b03dceffc68400a7481aecbb7ee2425d8095
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mysql-server-using-azure-cli"></a>Monitorování a škálování serveru Azure Database for MySQL pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku po dotazování metrik škáluje jeden server Azure Database for MySQL na jinou úroveň výkonu.
@@ -42,6 +42,6 @@ Tento skript používá příkazy uvedené v následující tabulce:
 | [az group delete](/cli/azure/group#az_group_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o Azure CLI najdete tady: [Dokumentace k Azure CLI](/cli/azure/overview).
+- Další informace o Azure CLI najdete tady: [Dokumentace k Azure CLI](/cli/azure).
 - Vyzkoušejte i další skripty: [Ukázky v Azure CLI pro službu Azure Database for MySQL](../sample-scripts-azure-cli.md)
 - Další informace o škálování najdete v tématech [Úrovně služby](../concepts-service-tiers.md) a [Výpočetní jednotky a jednotky úložiště](../concepts-compute-unit-and-storage.md).

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: garye;bradsev
 ms.openlocfilehash: eb22f516f298df9396ca809acaa9c8cb62589c2a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>Import cvičných dat do nástroje Azure Machine Learning Studio z různých zdrojů dat
 Chcete-li použít vlastní data v nástroji Machine Learning Studio pro vývoj a cvičení řešení prediktivní analýzy, můžete: 
@@ -59,10 +59,10 @@ Můžete importovat do experimentu několik typů dat, v závislosti na tom, jak
 * Prostý text (TXT)
 * Hodnot oddělených čárkami (CSV) s hlavičkou (CSV) nebo bez (. nh.csv)
 * Karta s oddělovači (TSV) s hlavičkou (TSV) nebo bez (. nh.tsv)
-* Soubor aplikace Excel
-* Tabulky Azure
+* Excelový soubor
+* Tabulka Azure
 * Tabulku Hive
-* Tabulka databáze SQL
+* Tabulka databází SQL
 * Hodnoty OData
 * Data SVMLight (.svmlight) (najdete v článku [SVMLight definice](http://svmlight.joachims.org/) formátu informace)
 * Atribut dat vztah soubor formátu (ARFF) (.arff) (najdete v článku [ARFF definice](http://weka.wikispaces.com/ARFF) formátu informace)
@@ -79,10 +79,10 @@ Následující **datové typy** rozpoznává Machine Learning Studio:
 
 * Řetězec
 * Integer
-* Double
+* Dvojitý
 * Logická hodnota
-* Data a času
-* Časový interval
+* DateTime
+* TimeSpan
 
 Machine Learning Studio používá typ interních datových názvem ***tabulky dat*** k předávání dat mezi moduly. Můžete explicitně převést svá data pomocí formátu Data tabulky [převést na datovou sadu] [ convert-to-dataset] modulu.
 

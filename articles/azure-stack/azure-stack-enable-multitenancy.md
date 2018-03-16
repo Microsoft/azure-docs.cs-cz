@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: mabrigg
 ms.openlocfilehash: 66689d80cbee0be36b3e8c9951a43d0d43fa01be
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>Povolit víceklientský v Azure zásobníku
 
@@ -89,7 +89,7 @@ Register-AzSWithMyDirectoryTenant `
  -Verbose 
 ````
 ## <a name="direct-users-to-sign-in"></a>Přímé přihlášení uživatelů k
-Teď, když jste a Marie jste dokončili postup zařadit Marie adresáře, můžete nastavit Marie Fabrikam uživatelům přihlášení.  Společnost Fabrikam uživatele (to znamená, uživatelé s příponou fabrikam.onmicrosoft.com) přihlásit návštěvou https://portal.local.azurestack.external.  
+Teď, když jste a Marie jste dokončili postup zařadit Marie adresáře, můžete nastavit Marie Fabrikam uživatelům přihlášení.  Společnost Fabrikam uživatele (to znamená, uživatelé s příponou fabrikam.onmicrosoft.com) se přihlaste navštívíte https://portal.local.azurestack.external.  
 
 Marie budou směrovat všechny [cizí objekty zabezpečení](../active-directory/active-directory-understanding-resource-access.md) v adresáři společnosti Fabrikam (to znamená, uživatelé v adresáři společnosti Fabrikam bez přípona fabrikam.onmicrosoft.com) se přihlásit pomocí https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Pokud se nepoužívají tuto adresu URL, posílají se na jejich výchozí adresář (Fabrikam) a zobrazí chybová zpráva s upozorněním, že jejich správce nedala souhlas.
 

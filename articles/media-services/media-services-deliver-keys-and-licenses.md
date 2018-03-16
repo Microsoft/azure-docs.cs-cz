@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/10/2017
 ms.author: juliako
 ms.openlocfilehash: 0f934cc572409462ca1a35ff3cce49be2f82a9bd
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Pomocí Azure Media Services pro doručování licencí DRM nebo klíčů AES
 Azure Media Services umožňuje ingestovat, kódovat, přidat ochranu obsahu a Streamovat obsah. Další informace najdete v tématu [použití PlayReady nebo Widevine běžného dynamického šifrování](media-services-protect-with-playready-widevine.md). Někteří zákazníci chtějí média služby použijete jen k doručování licencí nebo klíče a kódování, šifrování a stream pomocí jejich místních serverů. Tento článek popisuje, jak můžete použít Media Services k doručování licencí PlayReady nebo Widevine, ale udělá zbytek s vašimi místními servery. 
@@ -41,7 +41,7 @@ Chcete-li stáhnout ukázku popsanou v tomto článku, přečtěte si téma [pom
 
 2. Do části **appSettings** definované ve vašem souboru app.config přidejte následující elementy:
 
-    add key="Issuer" value="http://testacs.com"/
+    Přidejte klíč = "Vystavitele" value = "http://testacs.com" /
     
     add key="Audience" value="urn:test"/
 
@@ -340,7 +340,7 @@ namespace DeliverDRMLicenses
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poslat názor
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Další informace najdete v tématech

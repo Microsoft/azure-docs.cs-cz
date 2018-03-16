@@ -3,8 +3,8 @@ title: "Hledání s použitím Azure Location Based Services | Dokumentace Micro
 description: "Hledání okolních bodů zájmu s použitím Azure Location Based Services"
 services: location-based-services
 keywords: 
-author: dsk-2015
-ms.author: dkshir
+author: kgremban
+ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: tutorial
 ms.service: location-based-services
@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 791992028d11633fc20f55ae1a34e7fcd442bf3a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f03cdd5491868b78de0514bb66184235dd7df5c2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="search-nearby-points-of-interest-using-azure-location-based-services"></a>Hledání okolních bodů zájmu s použitím Azure Location Based Services
 
