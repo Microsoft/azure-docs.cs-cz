@@ -16,10 +16,10 @@ ms.custom: performance
 ms.date: 08/23/2017
 ms.author: joeyong;barbkess;kavithaj
 ms.openlocfilehash: eaf2d43286dbaa52ada1430fbb7ce1e37f41c0d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="concurrency-and-workload-management-in-sql-data-warehouse"></a>Souběžnost a úlohy správy v SQL Data Warehouse
 Zajistit předvídatelný výkon ve velkém měřítku, Microsoft Azure SQL Data Warehouse pomáhá řídit souběžnosti úrovně a přidělení prostředků jako paměti a procesoru stanovení priorit. Tento článek vás seznámí s koncepty souběžnosti a úlohy správy, která vysvětluje, jak oba implementována a jak je můžete řídit v datovém skladu. Úlohy správy datového skladu SQL je určený můžete podporovat prostředí s více uživateli. Rozhraní není určeno pro více klientů úlohy.
@@ -224,9 +224,9 @@ Tady je účelem tuto uloženou proceduru:
 #### <a name="usage-example"></a>Příklad použití:
 Syntaxe:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`  
-1. @DWU:Buď zadejte parametr hodnotu NULL pro rozbalení aktuální DWU z databáze datového skladu nebo zadejte všechny podporované DWU ve tvaru "od DW100.
-2. @SCHEMA_NAME:Zadejte název schématu tabulky
-3. @TABLE_NAME:Zadejte název tabulky zájmu
+1. @DWU: Buď zadejte parametr hodnotu NULL pro rozbalení aktuální DWU z databáze datového skladu nebo zadejte všechny podporované DWU ve tvaru "od DW100.
+2. @SCHEMA_NAME: Zadejte název schématu tabulky
+3. @TABLE_NAME: Zadejte název tabulky zájmu
 
 Příklady provádění této uložené procedury:  
 ```sql  
@@ -573,7 +573,7 @@ Následující tabulka uvádí důležitosti mapování pro každou skupinu úlo
 Z **přidělení a využití souběžnosti přihrádky** grafu, zjistíte, že DW500 používá 1, 4, 8 nebo 16 souběžnosti sloty pro smallrc, mediumrc, largerc a xlargerc, v uvedeném pořadí. Tyto hodnoty lze vyhledat v předchozí tabulce najít význam pro každou třídu prostředků.
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500 mapování třídy prostředků na význam
-| Třída prostředků | Skupina úlohy | Použít sloty souběžnosti | MB / distribuce | Význam |
+| Třída prostředků | Skupina úlohy | Použít sloty souběžnosti | MB / distribuce | Důležitost |
 |:--- |:--- |:---:|:---:|:--- |
 | smallrc |SloDWGroupC00 |1 |100 |Střednědobé používání |
 | mediumrc |SloDWGroupC02 |4 |400 |Střednědobé používání |
@@ -643,7 +643,7 @@ Chcete-li znovu opakují, následující příkazy respektovat třídy prostřed
 
 * PŘÍKAZ INSERT SELECT
 * AKTUALIZACE
-* ODSTRANIT
+* DELETE
 * Vyberte (při dotazování tabulky uživatelů)
 * PŘÍKAZ ALTER INDEX OPĚTOVNÉ SESTAVENÍ
 * PŘÍKAZ ALTER INDEX REORGANIZE
@@ -673,7 +673,7 @@ Následující příkazy nerespektují třídy prostředků:
 * VLOŽENÍ HODNOTY
 * Vyberte z systémová zobrazení a zobrazení dynamické správy
 * VYSVĚTLUJÍ
-* PŘÍKAZ DBCC
+* DBCC
 
 <!--
 Removed as these two are not confirmed / supported under SQLDW
@@ -682,7 +682,7 @@ Removed as these two are not confirmed / supported under SQLDW
 - REDISTRIBUTE
 -->
 
-##  <a name="changing-user-resource-class-example"></a>Změnit v příkladu třída prostředků uživatele
+##  <a name="changing-user-resource-class-example"></a> Změnit v příkladu třída prostředků uživatele
 1. **Vytvořit přihlášení:** otevřít připojení k vaší **hlavní** databáze na SQL server hostující databázi SQL Data Warehouse a spusťte následující příkazy.
    
     ```sql
@@ -699,7 +699,7 @@ Removed as these two are not confirmed / supported under SQLDW
     ```sql
     CREATE USER newperson FOR LOGIN newperson;
     ```
-3. **Udělení oprávnění:** následující příklad povolí `CONTROL` na **SQL Data Warehouse** databáze. `CONTROL`v databázi úroveň je ekvivalentem db_owner v systému SQL Server.
+3. **Udělení oprávnění:** následující příklad povolí `CONTROL` na **SQL Data Warehouse** databáze. `CONTROL` v databázi úroveň je ekvivalentem db_owner v systému SQL Server.
    
     ```sql
     GRANT CONTROL ON DATABASE::MySQLDW to newperson;
@@ -827,7 +827,7 @@ SELECT    w.[pdw_node_id]
 FROM    sys.dm_pdw_wait_stats w;
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o správě uživatelů a zabezpečení najdete v tématu [zabezpečení databáze v SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Další informace o tom, jak větší třídy prostředků můžete zlepšení kvality indexu columnstore clusteru, najdete v části [nové sestavení indexů ke zlepšení kvality segment].
 
 <!--Image references-->

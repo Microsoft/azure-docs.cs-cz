@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/4/2017
 ms.author: saurse;markgal;
-ms.openlocfilehash: 52a32d61dd69110ace560fd1e52389140f322678
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: f7f4ac328c4e35f52bcc9708faf96d06189dd9ac
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="troubleshoot-azure-backup-agent-configuration-and-registration-issues"></a>Řešení potíží s Azure Backup Agent konfigurace a registrace problémy
 ## <a name="recommended-steps"></a>Doporučené kroky
 Naleznete v následujících tabulkách vyřešit chyby, které můžete narazit při konfiguraci a registraci agenta Azure Backup pomocí doporučených akcí.
+
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="invalid-vault-credentials-provided-the-file-is-either-corrupted-or-does-not-have-the-latest-credentials-associated-with-recovery-service"></a>Neplatné přihlašovací údaje úložiště. Soubor je buď poškozený nebo nemá mít poslední přihlašovací údaje přísluší službě obnovení.
 | Detaily chyby | Možné příčiny | Doporučené akce |
@@ -50,6 +52,6 @@ Naleznete v následujících tabulkách vyřešit chyby, které můžete narazit
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Získat podrobnosti o [zálohování Windows serveru s Azure Backup Agent](tutorial-backup-windows-server-to-azure.md).
 * Potřebujete-li obnovit zálohu, použijte tento článek k [obnovení souborů na počítač se systémem Windows](backup-azure-restore-windows-server.md).

@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: saeda
-ms.openlocfilehash: 65a39479b4d4b86d569501636e4a0678b052d426
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 4f71380917a5a29497da9831791cd9f86ec4c8ca
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: Shromažďování protokolů.
 
@@ -52,16 +52,16 @@ Azure AD B2C podporuje funkci pro odesílání dat do služby Application Insigh
   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
   ```
 
-1. Pokud již neexistuje, přidejte podřízený uzel `<UserJourneyBehaviors>` k `<RelyingParty>` uzlu. Musí být umístěna bezprostředně po`<DefaultUserJourney ReferenceId="UserJourney Id from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`
+1. Pokud již neexistuje, přidejte podřízený uzel `<UserJourneyBehaviors>` k `<RelyingParty>` uzlu. Musí být umístěna bezprostředně po `<DefaultUserJourney ReferenceId="UserJourney Id from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`
 2. Přidejte následující uzel jako podřízený `<UserJourneyBehaviors>` elementu. Nezapomeňte nahradit `{Your Application Insights Key}` s **klíč instrumentace** získaný ze služby Application Insights v předchozí části.
 
   ```XML
   <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
   ```
 
-  * `DeveloperMode="true"`informuje ApplicationInsights urychlit telemetrie skrz kanál zpracování, vhodné pro vývoj, ale omezené na vysokou svazky.
-  * `ClientEnabled="true"`odešle klientský skript ApplicationInsights pro sledování zobrazení a na straně klienta chyby stránky (není potřeba).
-  * `ServerEnabled="true"`odešle existující JSON UserJourneyRecorder jako vlastní události Application insights.
+  * `DeveloperMode="true"` informuje ApplicationInsights urychlit telemetrie skrz kanál zpracování, vhodné pro vývoj, ale omezené na vysokou svazky.
+  * `ClientEnabled="true"` odešle klientský skript ApplicationInsights pro sledování zobrazení a na straně klienta chyby stránky (není potřeba).
+  * `ServerEnabled="true"` odešle existující JSON UserJourneyRecorder jako vlastní události Application insights.
 Ukázka:
 
   ```XML
@@ -97,7 +97,7 @@ Ukázka:
 | Dotaz | Popis |
 |---------------------|--------------------|
 Trasování | Zobrazit všechny protokoly služby Azure AD B2C |
-trasování \| kde časové razítko > ago(1d) | Zobrazit všechny protokoly služby Azure AD B2C pro poslední den
+trasování \| kterých časové razítko > ago(1d) | Zobrazit všechny protokoly služby Azure AD B2C pro poslední den
 
 Položky může trvat dlouho.  Obrázek otevřete exportovat do souboru CSV.
 
@@ -105,6 +105,8 @@ Další informace o nástroj pro analýzu [zde](https://docs.microsoft.com/azure
 
 >[!NOTE]
 >Komunita vyvinula prohlížeč cesty uživatele, což vývojářům identity.  Není podporovaný společností Microsoft a k dispozici výhradně jako-je.  Přečte z vaší instance služby Application Insights a poskytuje také struktura zobrazení uživatele cesty události.  Získat zdrojový kód a nasaďte ho ve vlastní řešení.
+
+Verze prohlížeče, který čte události z Application Insights se nachází [sem](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
 
 >[!NOTE]
 >V současné době jsou navrženy protokoly podrobné aktivity, které jsou zde popsané **pouze** a usnadňuje vývoj vlastních zásad. Nepoužívejte režimu pro vývoj v produkčním prostředí.  Protokoly shromažďovat všechny deklarace identity posílané do a z poskytovatelů identit během vývoje.  Pokud se používá v produkčním prostředí, vývojář odpovědnost pro PII (soukromě osobní informace) shromážděné v protokolu statistiky aplikace, kterou vlastní.  Tyto podrobné protokoly jsou shromažďovány pouze, pokud zásady je umístěn na **režimu pro vývoj**.

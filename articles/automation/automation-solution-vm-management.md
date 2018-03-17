@@ -1,24 +1,18 @@
 ---
-title: "Spuštění a zastavení virtuálních počítačů během počítačem nepracujete řešení (preview) | Microsoft Docs"
+title: "Spuštění a zastavení virtuálních počítačů během počítačem nepracujete řešení (preview)"
 description: "Toto řešení správy virtuální počítač spustí a zastaví virtuální počítače Azure Resource Manager podle plánu a proaktivně monitoruje z analýzy protokolů."
 services: automation
-documentationCenter: 
-authors: eslesar
-manager: carmonm
-editor: 
-ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 12/18/2017
-ms.author: magoedte
-ms.openlocfilehash: 7ffd424de2a7224b5ac50fa228289c5397092b2e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+manager: carmonm
+ms.openlocfilehash: ec15859a92527c4e084075b40d3439d7a19fea1a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Spuštění a zastavení virtuálních počítačů během počítačem nepracujete řešení (preview) ve službě Azure Automation
 
@@ -129,7 +123,7 @@ Všechny plány, by neměla být povolena, protože to může vytvořit překrý
 
 Proveďte následující kroky k přidání spuštění a zastavení virtuálních počítačů během počítačem nepracujete řešení na účtu Automation a pak nakonfigurujte proměnné, které chcete přizpůsobit řešení.
 
-1. Na portálu Azure Portal klikněte na **Vytvořit prostředek**.<br> ![portál Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)<br>  
+1. Na portálu Azure Portal klikněte na **Vytvořit prostředek**.<br> ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)<br>  
 2. V podokně Marketplace zadejte klíčové slovo **spustit** nebo **spuštění a zastavení**. Seznam se průběžně filtruje podle zadávaného textu. Alternativně můžete zadejte jeden nebo více klíčových slov z úplný název tohoto řešení a stiskněte klávesu Enter.  Vyberte **spuštění a zastavení virtuálních počítačů, která [Preview]** ve výsledcích hledání.  
 3. V **spuštění a zastavení virtuálních počítačů, která [Preview]** vybraného řešení. v podokně zkontrolujte souhrnné informace a potom klikněte na **vytvořit**.  
 4. **Přidat řešení** podokně se zobrazí. Zobrazí se výzva ke konfiguraci řešení, než můžete ho importovat do vašeho předplatného automatizace.<br><br> ![Okno Přidat řešení správy virtuálních počítačů](media/automation-solution-vm-management/azure-portal-add-solution-01.png)<br><br>
@@ -296,8 +290,8 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 Dotaz | Popis|
 ----------|----------|
-Najít úlohy pro runbook ScheduledStartStop_Parent, které dokončily úspěšně | hledání kategorie == "JobLogs" &#124; kde (RunbookName_s == "ScheduledStartStop_Parent") &#124; kde (ResultType == "Dokončeno") &#124; shrnout AggregatedValue = count() podle ResultType, bin (TimeGenerated, 1 hod) &#124; Řadit podle TimeGenerated desc|
-Najít úlohy pro runbook SequencedStartStop_Parent, které dokončily úspěšně | hledání kategorie == "JobLogs" &#124; kde (RunbookName_s == "SequencedStartStop_Parent") &#124; kde (ResultType == "Dokončeno") &#124; shrnout AggregatedValue = count() podle ResultType, bin (TimeGenerated, 1 hod) &#124; Řadit podle TimeGenerated desc
+Najít úlohy pro runbook ScheduledStartStop_Parent, které dokončily úspěšně | hledání kategorie == "JobLogs" &#124; kde (RunbookName_s == "ScheduledStartStop_Parent") &#124; kde (ResultType == "Dokončeno") &#124; shrnout AggregatedValue = count() podle ResultType bin (TimeGenerated, 1 hod) &#124; řazení podle TimeGenerated desc|
+Najít úlohy pro runbook SequencedStartStop_Parent, které dokončily úspěšně | hledání kategorie == "JobLogs" &#124; kde (RunbookName_s == "SequencedStartStop_Parent") &#124; kde (ResultType == "Dokončeno") &#124; shrnout AggregatedValue = count() podle ResultType bin (TimeGenerated, 1 hod) &#124; řazení podle TimeGenerated desc
 
 ## <a name="removing-the-solution"></a>Odebrání řešení
 

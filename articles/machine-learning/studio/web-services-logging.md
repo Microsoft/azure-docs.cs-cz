@@ -3,8 +3,9 @@ title: "Protokolování pro webové služby Machine Learning | Microsoft Docs"
 description: "Informace o povolení protokolování pro webové služby Machine Learning. Protokolování poskytuje další informace k řešení rozhraní API."
 services: machine-learning
 documentationcenter: 
-author: raymondlaghaeian
-manager: jhubbard
+author: aashishb
+ms.author: aashishb
+manager: hjerez
 editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.author: raymondl;garye
-ms.openlocfilehash: 31497bcae5889590a2261b716574ec4eae21852d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e04ef638c46ef0f3b40fd56d27ba3673565bdc7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>Povolení protokolování webových služeb Machine Learning
 Tento dokument obsahuje informace o možnosti protokolování webových služeb Machine Learning. Protokolování poskytuje další informace, kromě právě číslo chyby a zprávu, která vám pomohou vyřešit váš volání rozhraní API Machine Learning.  
@@ -27,7 +27,7 @@ Tento dokument obsahuje informace o možnosti protokolování webových služeb 
 
 Povolit protokolování z [webové služby Azure Machine Learning](https://services.azureml.net) portálu. 
 
-1. Přihlaste se k portálu webové služby Azure Machine Learning na [https://services.azureml.net](https://services.azureml.net). Pro webovou službu Classic, také získáte na portál kliknutím **nové webové služby prostředí** na stránku webové služby Machine Learning v Machine Learning Studio.
+1. Přihlaste se k portálu webové služby Azure Machine Learning na [ https://services.azureml.net ](https://services.azureml.net). Pro webovou službu Classic, také získáte na portál kliknutím **nové webové služby prostředí** na stránku webové služby Machine Learning v Machine Learning Studio.
 
    ![Nový odkaz webové služby prostředí](./media/web-services-logging/new-web-services-experience-link.png)
 
@@ -82,7 +82,7 @@ Název každý objekt blob může mít předponu v následujícím formátu:
 
 Kde _protokolu zadejte_ je jedním z následujících hodnot:  
 
-* Batch  
+* dávka  
 * skóre nebo požadavky  
 * skóre/init  
 

@@ -1,25 +1,21 @@
 ---
-title: "Můj první runbook pracovního postupu PowerShellu v Azure Automation | Dokumentace Microsoftu"
+title: "Můj první runbook pracovního postupu Powershellu ve službě Azure Automation"
 description: "Kurz vás provede vytvořením, otestováním a publikováním jednoduchého textového runbooku, který využívá pracovní postup PowerShellu."
-services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: 
 keywords: "pracovní postup v powershellu, příklady pracovního postupu v powershellu, pracovní postup powershell"
-ms.assetid: 0002d7f7-e2b5-46e3-b5eb-4596b84fd526
+services: automation
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 08/31/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: 62cb96075deed6c252ae44c8a000e820cb691a90
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: 61191e78ebd2f0d7a960dfb0c74a1d8260331212
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Můj první runbook pracovního postupu PowerShellu
 
@@ -106,7 +102,7 @@ Vytvořený runbook je stále v režimu konceptu. Je potřeba publikovat před j
 Jste otestovali a publikovali runbookem, ale zatím nedělá nic užitečného. Chcete ho spravovat prostředky Azure. Nebudete moci v případě, že pokud nemáte ověření pomocí přihlašovacích údajů, které jsou uvedené v to udělat [požadavky](#prerequisites). Můžete to udělat pomocí **Add-AzureRMAccount** rutiny.
 
 1. Kliknutím na **Upravit** v podokně MyFirstRunbook-Workflow otevřete textový editor.
-2. není nutné **Write-Output** řádek už, proto pokračujte a odstraňte ji.
+2. Není nutné **Write-Output** řádek už, proto pokračujte a odstraňte ji.
 3. Umístěte kurzor na prázdný řádek mezi složenými závorkami.
 4. Zadejte nebo zkopírujte a vložte následující kód, který bude zpracovávat ověřování pomocí vašeho účtu Automation Spustit jako:
 
@@ -119,7 +115,7 @@ Jste otestovali a publikovali runbookem, ale zatím nedělá nic užitečného. 
 6. Kliknutím na **Spustit** spustíte test. Po dokončení byste měli obdržet výstup podobný následujícímu se základními informacemi z vašeho účtu. Tím se potvrdí platnost přihlašovacích údajů.<br><br> ![Ověření](media/automation-first-runbook-textual/runbook-auth-output.png)
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>Krok 6 – přidání kódu pro spuštění virtuálního počítače
-Teď, když runbook umí ověřit vašeho předplatného Azure, můžete spravovat prostředky. můžete přidat příkaz ke spuštění virtuálního počítače. Můžete vybrat jakýkoli virtuální počítač ve vašem předplatném Azure a teď jste hardcoding, název sady runbook.
+Teď, když runbook umí ověřit vašeho předplatného Azure, můžete spravovat prostředky. Můžete přidat příkaz ke spuštění virtuálního počítače. Můžete vybrat jakýkoli virtuální počítač ve vašem předplatném Azure a teď jste hardcoding, název sady runbook.
 
 1. Po *Add-AzureRmAccount* zadejte *Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'* a nezapomeňte zadat název a název skupiny prostředků virtuálního počítače, který chcete spustit.  
 

@@ -1,6 +1,6 @@
 ---
-title: "Povolit nebo zakázat LinkedIn integrace pro aplikace Office v Azure Active Directory | Microsoft Docs"
-description: "Vysvětluje, jak povolit nebo zakázat LinkedIn integrace pro aplikace společnosti Microsoft v Azure Active Directory"
+title: "Povolit připojení LinkedIn pro Microsoft aplikace a služby v Azure Active Directory | Microsoft Docs"
+description: "Vysvětluje, jak povolit nebo zakázat připojení LinkedIn účet Microsoft Apps v Azure Active Directory"
 services: active-directory
 author: curtand
 manager: mtillman
@@ -9,40 +9,51 @@ ms.workload: identity
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: cdfb5458b020e9d3a3f33cecbeb0ee7b9a48909d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3bf224edea9e6da0d0eadb6fb6a409248de3d0e3
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="linkedin-integration-for-office-applications"></a>Integrace LinkedIn pro aplikace systému Office
-Tento článek vysvětluje, jak omezit uživatele, kterým je LinkedIn integrace součástí Azure Active Directory (Azure AD). Integrace LinkedIn je povolena ve výchozím nastavení při přidání klienta, což umožňuje uživatelům používat veřejná data LinkedIn v některé z aplikace Microsoft. Každý uživatel může vybrat nezávisle připojit svůj pracovní nebo školní účet k účtu mají LinkedIn.
+# <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>Účet připojení LinkedIn Microsoft aplikace a služby
+V tomto článku se můžete naučit ke správě připojení účtu LinkedIn pro vašeho klienta v Centru správy služby Azure Active Directory (Azure AD). 
 
 > [!IMPORTANT]
-> Integrace LinkedIn není nasazované na všechny klienty Azure AD ve stejnou dobu. Jakmile je vrátit ke klientovi Azure, LinkedIn integrace ve výchozím nastavení zapnutá. Integrace LinkedIn není k dispozici pro místní přejít, suverénní a government klienty. Aktuální zobrazení informací o zavedení, najdete v článku [plán Office 365](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc) stránky.
+> Funkce připojení účtu LinkedIn se zrovna vydávají pro klienty Azure AD. Když je vrátit ke klientovi, povolí se ve výchozím nastavení. Není k dispozici pro Spojené státy government zákazníků a organizace s Exchange Online poštovním schránkám hostovaným v Austrálie, Kanada, Čína, Francie, Německo, Indie, Jižní Korea, Spojené království, Japonsko a Jihoafrická republika. Podpora pro tyto umístění poštovní schránky bude brzo.  Aktuální zobrazení informací o zavedení, najdete v článku [plán Office 365](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc) stránky.
 
-## <a name="linkedin-integration-from-the-user-perspective"></a>Integrace LinkedIn z pohledu uživatele
-Pokud uživatelé ve vaší organizaci připojit jejich LinkedIn účtu ke svým pracovním nebo školním účtem [umožňují LinkedIn poskytující data](https://www.linkedin.com/help/linkedin/answer/84077) mají být použity v Microsoft aplikace a služby, které poskytuje vaší organizace. [Uživatele můžete odpojit účty](https://www.linkedin.com/help/linkedin/answer/85097), které odebere oprávnění ke sdílení dat s Microsoft LinkedIn. Integrace LinkedIn používá veřejně dostupné informace o profilu LinkedIn. [Uživatelé můžou řídit, jak zobrazit svůj vlastní profil LinkedIn](https://www.linkedin.com/help/linkedin/answer/83) pomocí nastavení ochrany osobních údajů LinkedIn, včetně toho, jestli svůj profil lze zobrazit v aplikacích společnosti Microsoft.
+## <a name="how-linkedin-account-connections-appear-to-the-user"></a>Jak LinkedIn účet připojení zobrazí uživateli
+Připojení účtu LinkedIn povolit uživatelům zobrazit veřejné informace o LinkedIn profilu v některé z aplikace Microsoft. Uživatelé ve vašem klientovi se mohou připojit jejich LinkedIn a Microsoft pracovní či školní účty zobrazíte další informace o profilu LinkedIn. Další informace najdete v tématu [LinkedIn informace a funkce v Microsoft aplikace a služby](https://go.microsoft.com/fwlink/?linkid=850740).
+
+Pokud uživatelé ve vaší organizaci připojit jejich LinkedIn a Microsoft pracovní nebo školní účty, mají dvě možnosti: 
+* Udělte oprávnění ke sdílení dat mezi oba účty. To znamená, že jejich udělit oprávnění pro svůj účet LinkedIn sdílení dat s jejich Microsoft pracovní nebo školní účet, jakož i jejich Microsoft pracovní nebo školní účet ke sdílení dat pomocí svého účtu LinkedIn. Data, která je sdílena s LinkedIn zanechává online služeb. 
+* Udělit oprávnění ke sdílení dat jenom z jejich LinkedIn účet jejich Microsoft pracovní a školní účet
+
+Další informace o datech, která jsou sdílena mezi LinkedIn a Microsoft uživatelů pracovní nebo školní účty, najdete v části [LinkedIn v aplikacích společnosti Microsoft v práci nebo škole](https://www.linkedin.com/help/linkedin/answer/84077). 
+* [Uživatele můžete odpojit účty](https://www.linkedin.com/help/linkedin/answer/85097) a odeberte oprávnění ke sdílení kdykoli data. 
+* [Uživatelé můžou řídit, jak zobrazit svůj vlastní profil LinkedIn](https://www.linkedin.com/help/linkedin/answer/83), včetně jestli svůj profil lze zobrazit v aplikacích společnosti Microsoft.
 
 ## <a name="privacy-considerations"></a>Aspekty ochrany osobních údajů
-Povolení integrace LinkedIn ve službě Azure AD umožňuje aplikace společnosti Microsoft a službám přístup k některé z vašich uživatelů LinkedIn informací. Pro čtení [prohlášení o ochraně osobních údajů Microsoft](https://privacy.microsoft.com/privacystatement/) Další informace o aspektech ochrany osobních údajů při povolování LinkedIn integrace ve službě Azure AD. 
+Povolení LinkedIn umožňuje připojení účtu Microsoft aplikacím a službám přístup k některé z vašich uživatelů LinkedIn informací. Pro čtení [prohlášení o ochraně osobních údajů Microsoft](https://privacy.microsoft.com/privacystatement/) Další informace o aspektech ochrany osobních údajů při povolování LinkedIn účet připojení ve službě Azure AD. 
 
-## <a name="manage-linkedin-integration"></a>Správa integrace LinkedIn
-Integrace LinkedIn podnikům, které je povolena ve výchozím nastavení ve službě Azure AD. Povolení integrace LinkedIn umožňuje všem uživatelům ve vaší organizaci používat funkce LinkedIn v rámci služby společnosti Microsoft, například zobrazení LinkedIn profily v aplikaci Outlook. Zakázání integrace LinkedIn odebere funkce LinkedIn z aplikace Microsoft a služby a zastavuje data sdílení mezi LinkedIn a vaše organizace prostřednictvím služeb Microsoft.
+## <a name="manage-linkedin-account-connections"></a>Správa připojení účtu LinkedIn
+Funkce připojení účtu LinkedIn je ve výchozím pro celý klienta. Můžete zakázat LinkedIn účet připojení pro celý klienta nebo povolit LinkedIn účet připojení pro vybrané uživatele ve vašem klientovi. 
 
-### <a name="enable-or-disable-linkedin-integration-for-your-organization-in-the-azure-portal"></a>Povolit nebo zakázat LinkedIn integrace pro vaši organizaci na portálu Azure
+### <a name="enable-or-disable-linkedin-account-connection-for-your-tenant-in-the-azure-portal"></a>Povolit nebo zakázat LinkedIn účet připojení pro vašeho tenanta na portálu Azure
 
 1. Přihlaste se k [centra pro správu Azure Active Directory](https://aad.portal.azure.com/) pomocí účtu, který je globální správce pro tenanta Azure AD.
 2. Vyberte **uživatelé**.
 3. Na **uživatelé** vyberte **uživatelská nastavení**.
-4. V části **LinkedIn integrace**, vyberte **Ano** nebo **ne** k povolení nebo zakázání integrace LinkedIn.
-   ![Povolení integrace LinkedIn](./media/linkedin-integration/LinkedIn-integration.PNG)
+4. V části **LinkedIn účet připojení**:
+  * Vyberte **Ano** povolit připojení LinkedIn účet pro všechny uživatele ve vašem klientovi
+  * Vyberte **vybrané** povolit účet LinkedIn připojení pouze vybraného klienta uživatele
+  * Vyberte **ne** zakázat LinkedIn účet připojení pro všechny uživatele ![povolení LinkedIn účet připojení](./media/linkedin-integration/LinkedIn-integration.png)
+5. Uložit nastavení, když jste hotovi výběrem **Uložit**.
 
-### <a name="enable-or-disable-linkedin-integration-for-your-organizations-office-2016-apps-using-group-policy"></a>Povolit nebo zakázat LinkedIn integrace pro aplikace Office 2016 vaší organizace pomocí zásad skupiny
+### <a name="enable-or-disable-linkedin-account-connections-for-your-organizations-office-2016-apps-using-group-policy"></a>Povolení nebo zakázání LinkedIn účet připojení pro aplikace Office 2016 vaší organizace pomocí zásad skupiny
 
 1. Stažení [souborů šablon pro správu Office 2016 (ADMX nebo ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
 2. Extrahování **ADMX** soubory a zkopírujte je do vašeho **centrálním úložišti**.
@@ -60,6 +71,6 @@ Tato zásada skupiny ovlivní pouze aplikace Office 2016 pro místní počítač
 * [Centrum pro nápovědu LinkedIn](https://www.linkedin.com/help/linkedin)
 
 ## <a name="next-steps"></a>Další postup
-Pomocí následujícího odkazu zobrazíte aktuální nastavení integrace LinkedIn na portálu Azure:
+Pomocí následujícího odkazu zobrazíte aktuální připojení účtu LinkedIn nastavení na portálu Azure:
 
-[Konfigurace integrace LinkedIn](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings) 
+[Konfigurace připojení účtu LinkedIn](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings) 

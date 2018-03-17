@@ -2,18 +2,19 @@
 title: "Koncové body služby virtuální sítě a pravidla pro Azure SQL Database | Microsoft Docs"
 description: "Podsíť označte jako koncový bod služby virtuální sítě. Potom koncový bod jako virtuální sítě se pravidlo seznamu řízení přístupu vaší databázi SQL Azure. Pak můžete SQL Database přijme komunikaci ze všech virtuálních počítačů a dalších uzlů v podsíti."
 services: sql-database
+ms.service: sql-database
 author: MightyPen
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: article
-ms.date: 02/20/2018
+ms.date: 03/15/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 61f3112d684e0b1ec1d331f063f7930b3dc64d0c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7622c6e6ffb1410cc2cbd42f6ac3601d281832da
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Použít koncové body služby virtuální sítě a pravidla pro databázi SQL Azure
 
@@ -229,6 +230,12 @@ Tato část ukazuje, jak můžete použít [portál Azure] [ http-azure-portal-l
 
 Skript prostředí PowerShell můžete taky vytvořit pravidla virtuální sítě. Rutinu zásadní **New-AzureRmSqlServerVirtualNetworkRule**. Pokud uvažujete o, přečtěte si téma [prostředí PowerShell vytvořit koncový bod služby virtuální sítě a pravidla pro databázi SQL Azure][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
+#### <a name="rest-api-alternative"></a>Alternativní REST API
+
+Interně rutin prostředí PowerShell pro virtuální síť SQL akce volání rozhraní REST API. Rozhraní REST API můžete volat přímo.
+
+- [Pravidla pro virtuální sítě: operace][rest-api-virtual-network-rules-operations-862r]
+
 #### <a name="prerequisites"></a>Požadavky
 
 Již musí mít podsíť, která je označené konkrétní koncový bod služby virtuální sítě *název typu* relevantní pro Azure SQL Database.
@@ -285,9 +292,11 @@ Již musí mít podsíť, která je označené konkrétní koncový bod služby 
 
 Funkce pravidlo virtuální sítě pro databázi SQL Azure jsou k dispozici v pozdní září 2017.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Vytvoření koncového bodu služby virtuální sítě a potom pravidlo virtuální sítě pro Azure SQL Database pomocí prostředí PowerShell.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
+- [Pravidla pro virtuální sítě: Operace] [ rest-api-virtual-network-rules-operations-862r] pomocí rozhraní REST API
+
 
 
 <!-- Link references, to images. -->
@@ -328,6 +337,7 @@ Funkce pravidlo virtuální sítě pro databázi SQL Azure jsou k dispozici v po
 
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
 
+[rest-api-virtual-network-rules-operations-862r]: https://docs.microsoft.com/rest/api/sql/virtualnetworkrules
 
 
 

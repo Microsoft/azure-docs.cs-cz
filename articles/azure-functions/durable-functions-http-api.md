@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 01e85290f00dc70323a16056ca8e73bfba72c975
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5fa5d9e66912bdeffdf553ddc0cb7d3feb0a5b77
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Rozhraní API HTTP trvanlivý funkcí (Azure Functions)
 
@@ -127,7 +127,7 @@ Mohou být vráceny několik možných hodnot.
 
 Pro datové části odpovědi **HTTP 200** a **HTTP 202** případech je objekt JSON s následující pole:
 
-| Pole           | Datový typ | Popis |
+| Pole           | Typ dat | Popis |
 |-----------------|-----------|-------------|
 | runtimeStatus   | řetězec    | Stav běhu instance. Hodnoty zahrnují *systémem*, *čekající*, *se nezdařilo*, *zrušeno*, *ukončeno*, *Dokončit*. |
 | Vstup           | JSON      | Data JSON, která používá k inicializaci instance. |
@@ -226,7 +226,7 @@ Mohou být vráceny několik možných hodnot.
 * **HTTP 404 (Nenalezeno)**: Zadaná instance nebyla nalezena.
 * **HTTP 410 (Gone)**: Zadaná instance má byla dokončena nebo se nezdařilo a nemůže zpracovat všechny události vyvolané.
 
-Zde je požadavek příklad, který odesílá řetězce formátu JSON `"incr"` do instance čekání na událost s názvem **operace** (převzaty z [čítač](durable-functions-counter.md) ukázkové):
+Zde je požadavek příklad, který odesílá řetězce formátu JSON `"incr"` do instance čekání na událost s názvem **operace**:
 
 ```
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -258,7 +258,7 @@ DELETE /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}/te
 
 Požadavku parametry pro toto rozhraní API patří výchozí nastavení, a také následující parametr jedinečný bylo zmíněno dříve.
 
-| Pole       | Typ parametru  | Datový typ | Popis |
+| Pole       | Typ parametru  | Typ dat | Popis |
 |-------------|-----------------|-----------|-------------|
 | Důvod      | Řetězec dotazu    | řetězec    | Volitelné. Důvod pro ukončení orchestration instance. |
 

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 557eab702175b1741cdcde62045947f2c031fbcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 721b18845a3b839d59c7eb0a04646635fa8d9fe7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače vědecké účely Data pro Linux (Ubuntu)
 
@@ -185,7 +185,7 @@ Svítilnou je scientific výpočetní architektura s wide Podpora algoritmů str
 
 Dále je dostupný v prostředí Anaconda kořenové PyTorch. Příklady jsou /dsvm/samples/pytorch.
 
-### <a name="microsoft-r-server"></a>Server Microsoft R
+### <a name="microsoft-r-server"></a>Microsoft R Server
 R je jedním z Nejoblíbenější jazyky pro analýzu dat a strojové učení. Pokud chcete použít pro analytické údaje R, virtuální počítač má Microsoft R Server (Paní) s Microsoft R otevřete (MRO) a matematické jádra knihovny (MKL). MKL optimalizuje matematické operace v analytical algoritmy běžné. MRO je kompatibilní s CRAN r. 100 procent a některé z knihovny R publikované v CRAN lze nainstalovat MRO. PANÍ vám dává škálování a operationalization R modelů do webové služby. Můžete upravit programy R v jednom z výchozí editory, jako je Rstudia, vi nebo Emacs. Pokud dáváte přednost, pomocí editoru Emacs, byla předem nainstalovaná. Balíček Emacs ESS (Emacs mluví statistik) zjednodušuje práci se soubory R v editoru Emacs.
 
 Pro spuštění R konzole, stačí zadat **R** v prostředí. Tím přejdete na interaktivní prostředí. K vývoji vašeho programu R, obvykle pomocí editoru jako Emacs nebo vi a potom spuštěním skriptů v R. S Rstudia máte úplné grafické prostředí IDE vyvíjet váš R program.
@@ -212,10 +212,10 @@ Python 3.5 je nainstalována v */anaconda/envs/py35/bin*.
 
 K vyvolání interaktivní relace Python, stačí zadat **python** v prostředí. Pokud jsou na grafické rozhraní nebo mají X11 předávání sadu nahoru, můžete zadat **pycharm** spustit prostředí IDE PyCharm Python.
 
-Pokud chcete nainstalovat další knihovny Python, budete muset spustit ```conda``` nebo ````pip```` příkazu v části sudo a zadejte úplnou cestu Správce balíčků Python (conda nebo pip), chcete-li nainstalovat správnou prostředí Python. Například:
+Pokud chcete nainstalovat další knihovny Python, budete muset spustit ```conda``` nebo ````pip```` příkazu v části sudo a zadejte úplnou cestu Správce balíčků Python (conda nebo pip), chcete-li nainstalovat správnou prostředí Python. Příklad:
 
-    sudo /anaconda/bin/pip install <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install <package> # for Python 3.5 environment
+    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
+    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
 
 
 ### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
@@ -272,7 +272,7 @@ Musíte vybrat několik editory kódu. To zahrnuje vi/VIM, Emacs, PyCharm, Rstud
 
 Před prvním použitím nastavení ovladače a aliasy databáze. Ovladače JDBC jsou umístěné na adrese:
 
-*/USR/share/Java/jdbcdrivers*
+*/usr/share/java/jdbcdrivers*
 
 Další informace najdete v tématu [SQuirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots).
 
@@ -409,7 +409,7 @@ Nyní grafické rozhraní otevře sadu karet. Tady jsou kroky pro rychlé spušt
 
 Můžete ukončit Rattle a R. Nyní můžete upravit generovaného skriptu R, nebo ho použít, protože to je vše, co bylo provedeno v rámci rozhraní Rattle opakování ji kdykoli spustit. Zejména pro začátečníky v R je to snadný způsob, jak rychle provést analýzy a strojového učení v jednoduchého grafického rozhraní, při automatické generování kódu v R upravit nebo Další informace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Zde je, jak můžete dál učení a zkoumání:
 
 * [Vědecké zpracování dat na datové vědě virtuální počítač pro Linux](linux-dsvm-walkthrough.md) návodu se dozvíte, jak provést několik běžné úkoly vědecké účely dat datové vědy virtuálního počítače s Linuxem zřízený sem. 

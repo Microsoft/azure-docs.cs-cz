@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: f1def2a43edee58bc8b5a33880e206130a1b4687
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: b5269bb51c787c927b4224b3520d5514b6d24501
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="durable-functions-overview-preview"></a>Trvanlivý přehled funkcí (preview)
 
@@ -153,44 +153,43 @@ public static async Task<HttpResponseMessage> Run(
 
 [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` parametr je hodnota z `orchestrationClient` výstup vazby, která je součástí rozšíření trvanlivý funkce. Poskytuje metody pro počáteční, odeslání události, ukončení a dotazuje se na nový nebo existující orchestrator funkce instancí. V předchozím příkladu protokolu HTTP aktivované – funkce přebírá `functionName` hodnotu z příchozí adresy URL a předává, které hodnoty na [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). Toto rozhraní API vazby vrátí odpověď obsahující `Location` hlavičky a další informace o instanci, která můžete později použije pro vyhledávání registrace stavu spuštěna instance nebo ho ukončit.
 
-## <a name="pattern-4-stateful-singletons"></a>Vzor #4: Stavová jednotlivých prvků
+## <a name="pattern-4-monitoring"></a>Vzor #4: sledování
 
-Většina funkcí mít explicitní počáteční a koncové a nemáte komunikovat přímo s zdroje externí událostí. Ale podporují orchestrations [stavová singleton](durable-functions-singletons.md) vzor, který vám umožní se chovat jako spolehlivého [aktéři](https://en.wikipedia.org/wiki/Actor_model) v distribuovaných počítačů.
+Vzor monitorování odkazuje flexibilní *opakovaného* procesu v pracovním postupu – například dotazování až do splnění určitých podmínek. Regulární aktivaci časovačem můžete vyřešit jednoduchého scénáře, jako je například úlohu pravidelné čištění, ale jeho interval je statický a správa životnosti instance se změní na komplexní. Trvanlivý funkce umožňuje flexibilní opakování intervalech, správu životního cyklu úloh a schopnost vytvářet více monitorování procesů z jedné orchestration.
 
-Následující diagram znázorňuje funkci, která běží v nekonečné smyčce při zpracování událostí přijatých z externích zdrojů.
+Příklad by Prohodit starší scénář rozhraní API HTTP asynchronní. Místo vystavení koncový bod pro externí klienta k monitorování dlouho běžící operace, dlouhotrvajících monitorování spotřebovává externí koncový bod, čekání některé změny stavu.
 
-![Diagram stavová singleton](media/durable-functions-overview/stateful-singleton.png)
+![Diagram monitorování](media/durable-functions-overview/monitor.png)
 
-Přestože trvanlivý funkce není implementace objektu actor modelu, funkce orchestrator mají mnoho společných vlastností s stejné runtime. Například jsou dlouho běžící (může být nekonečná), stateful, spolehlivé, jedním podprocesem, transparentní pro umístění a globálně adresovatelné. Díky tomu funkce orchestrator užitečné pro "objektu actor"-jako scénáře.
-
-Běžné funkce jsou bezstavové a není proto vhodný implementace vzoru stavová singleton. Však rozšíření trvanlivý funkce usnadňuje vzoru stavová singleton trivial relativně k implementaci. Následující kód je jednoduchý orchestrator funkce, která implementuje čítače.
+Pomocí trvanlivý funkcí, lze vytvořit více monitorů, které sledovat libovolný koncové body v několika řádků kódu. Monitorování můžete ukončit provádění, pokud nějaká podmínka splníte nebo ukončí se [DurableOrchestrationClient](durable-functions-instance-management.md), a jejich interval čekání se dá změnit podle nějaká podmínka (tj. exponenciálního omezení rychlosti.) Následující kód implementuje základní monitorování.
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
 {
-    int counterState = ctx.GetInput<int>();
-
-    string operation = await ctx.WaitForExternalEvent<string>("operation");
-    if (operation == "incr")
+    int jobId = ctx.GetInput<int>();
+    int pollingInterval = GetPollingInterval();
+    DateTime expiryTime = GetExpiryTime();
+    
+    while (ctx.CurrentUtcDateTime < expiryTime) 
     {
-        counterState++;
-    }
-    else if (operation == "decr")
-    {
-        counterState--;
+        var jobStatus = await ctx.CallActivityAsync<string>("GetJobStatus", jobId);
+        if (jobStatus == "Completed")
+        {
+            // Perform action when condition met
+            await ctx.CallActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration will sleep until this time
+        var nextCheck = ctx.CurrentUtcDateTime.AddSeconds(pollingInterval);
+        await ctx.CreateTimer(nextCheck, CancellationToken.None);
     }
 
-    ctx.ContinueAsNew(counterState);
+    // Perform further work here, or let the orchestration end
 }
 ```
 
-Tento kód je může popisují jako "eternal orchestration" &mdash; tedy ten, který spustí a nikdy se ukončí. Se provede následující kroky:
-
-* Začíná vstupní hodnoty v `counterState`.
-* Volá počká po neomezenou dobu pro zprávu `operation`.
-* Provádí některé logiku a aktualizovat stav místní.
-* "Restartuje" samotné voláním `ctx.ContinueAsNew`.
-* Čeká znovu po neomezenou dobu pro další operace.
+Odeslaná žádost, je vytvořena nová instance orchestration pro ID tohoto úlohy. Instance dotazuje stavu, dokud je splněna podmínka a smyčky je byl ukončen. Trvanlivý časovač se používá k řízení interval dotazování. Pak lze provádět další práci, nebo můžete ukončit orchestration. Když `ctx.CurrentUtcDateTime` překračuje `expiryTime`, skončení monitorování.
 
 ## <a name="pattern-5-human-interaction"></a>Vzor #5: Zásahem ze strany
 
@@ -229,7 +228,7 @@ Trvanlivý časovač se vytvoří voláním `ctx.CreateTimer`. Doručení pomoc�
 
 ## <a name="the-technology"></a>Technologie
 
-Na pozadí rozšíření trvanlivý funkce je postavený na [trvanlivý Framework úloh](https://github.com/Azure/durabletask), knihovny s otevřeným zdrojem na Githubu pro vytváření orchestrations trvanlivý úloh. Jako jak Azure Functions je bez serveru vývoj Azure WebJobs, mnohem trvanlivý Functions je bez serveru vývoj trvanlivý Framework úloh. Trvanlivý úloh Framework se používá výraznou v rámci společnosti Microsoft a mimo také automatizovat klíčové procesy. Je přirozené přizpůsobit pro bez serveru prostředí Azure Functions.
+Na pozadí rozšíření trvanlivý funkce je postavený na [trvanlivý Framework úloh](https://github.com/Azure/durabletask), knihovny open-source na Githubu pro vytváření orchestrations trvanlivý úloh. Jako jak Azure Functions je bez serveru vývoj Azure WebJobs, mnohem trvanlivý Functions je bez serveru vývoj trvanlivý Framework úloh. Trvanlivý úloh Framework se používá výraznou v rámci společnosti Microsoft a mimo také automatizovat klíčové procesy. Je přirozené přizpůsobit pro bez serveru prostředí Azure Functions.
 
 ### <a name="event-sourcing-checkpointing-and-replay"></a>Událost sourcing, vytváření kontrolních bodů a opětovného přehrání
 

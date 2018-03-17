@@ -3,8 +3,9 @@ title: "Pomocí Azure Machine Learning parametry webové služby | Microsoft Doc
 description: "Jak používat parametry webové služby Azure Machine Learning Pokud chcete změnit chování modelu při přístupu k webové službě."
 services: machine-learning
 documentationcenter: 
-author: raymondlaghaeian
-manager: jhubbard
+author: aashishb
+ms.author: aashishb
+manager: hjerez
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.author: raymondl;garye
-ms.openlocfilehash: 715ea008b84c1a503661394da14e8af167327941
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41b35b8160c777c8598a30e2d775d997e06438f0
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Použití parametrů webové služby Azure Machine Learning
 Webové služby Azure Machine Learning je vytvořen publikování experimentu, který obsahuje moduly, které se dají konfigurovat parametry. V některých případech můžete změnit chování modulu je spuštěn webovou službu. *Parametry webové služby* umožňují tuto úlohu. 
@@ -43,7 +43,7 @@ Dokumentaci rozhraní API pro webovou službu obsahuje informace o uživateli sl
 > 
 > 
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 Jako příklad předpokládejme máme experimentu s [Export dat] [ writer] modul, který odesílá informace do Azure blob storage. Budeme definovat parametr webové služby s názvem "Blob cestu", který umožňuje uživateli webové služby změnit cestu k úložišti objektů blob při přístupu k službě.
 
 1. V nástroji Machine Learning Studio, klikněte na tlačítko [Export dat] [ writer] modul a vyberte ji. Jeho vlastnosti jsou uvedené v podokně vlastností napravo od plátna experimentu.
@@ -53,7 +53,7 @@ Jako příklad předpokládejme máme experimentu s [Export dat] [ writer] modul
    * V části **zadejte typ ověřování**, vyberte "Účet".
    * Zadejte informace o účtu pro úložiště objektů blob v Azure. 
      <p />
-3.Klikněte na ikonu napravo **cesta k objektu blob počínaje kontejneru parametr**. Vypadá takto:
+3. Klikněte na ikonu napravo **cesta k objektu blob počínaje kontejneru parametr**. Vypadá takto:
    
    ![Ikona webové služby parametr][icon]
    
@@ -63,7 +63,7 @@ Jako příklad předpokládejme máme experimentu s [Export dat] [ writer] modul
 4. Chcete-li přejmenovat parametr webové služby, klikněte na název, zadejte "Blob cestu" a stiskněte klávesu **Enter** klíč. 
 5. Zadejte výchozí hodnotu pro parametr webové služby, klikněte na ikonu vpravo od názvu, vyberte možnost "Zadejte výchozí hodnotu", zadejte hodnotu (například "container1/output1.csv") a stiskněte klávesu **Enter** klíč.
    
-   ![Parametr webové služby][parameter]
+   ![Web Service Parameter][parameter]
 6. Klikněte na **Run** (Spustit). 
 7. Klikněte na tlačítko **nasazení webové služby** a vyberte **nasazení webové služby [Classic]** nebo **nasazení [nové] webové služby** nasadit webovou službu.
 

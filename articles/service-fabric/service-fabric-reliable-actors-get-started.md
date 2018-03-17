@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/20/2017
+ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: ea17cf744779f390fe4b3f4049deb0c1ad985024
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 20786522a9a25d84a32a53e5e111b4b542501287
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="getting-started-with-reliable-actors"></a>Začínáme s Reliable Actors
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Spusťte sadu Visual Studio 2015 nebo novější jako správce a pak vytvořte n
 
 ![Service Fabric nástrojů pro Visual Studio – nový projekt][1]
 
-V dialogovém okně Další zvolte **služby objektu Actor** a zadejte název pro službu.
+V dialogovém okně Další zvolte **služby objektu Actor** pod **základní rozhraní .net 2.0** a zadejte název pro službu.
 
 ![Šablony projektů Service Fabric][5]
 
@@ -156,7 +156,7 @@ Výstup obsahuje textu, *aplikace je připravena*, je možné otestovat pomocí 
 > [!TIP]
 > Modul runtime Service Fabric aktéři vysílá některé [události a čítače výkonu související s metody objektu actor](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). Jsou užitečné v Diagnostika a sledování výkonu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o [jak Reliable Actors pomocí platformy Service Fabric](service-fabric-reliable-actors-platform.md).
 
 

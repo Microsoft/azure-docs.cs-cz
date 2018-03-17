@@ -1,25 +1,23 @@
 ---
-title: "Objekt JSON předat runbook služby Azure Automation | Microsoft Docs"
+title: "Předání objektu JSON do runbooku Azure Automation"
 description: "Jak předat parametry sady runbook jako objekt JSON"
 services: automation
-documentationcenter: dev-center-name
-author: georgewallace
-manager: carmonm
-keywords: "prostředí PowerShell, sady runbook, json, služby azure automation"
 ms.service: automation
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: powershell
-ms.workload: TBD
-ms.date: 06/15/2017
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 5390ba34a25713aed84d6e778335e30f27c2b1f8
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 03/16/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+keywords: "prostředí PowerShell, sady runbook, json, služby azure automation"
+ms.openlocfilehash: c5ceced9f37cb76c8c760a7f2d1c680f98e704c3
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Předat objekt JSON do runbooku automatizace Azure
+# <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Předání objektu JSON do runbooku Azure Automation
 
 Může být užitečné k ukládání dat, který chcete předat do sady runbook v souboru JSON.
 Například může vytvořit soubor JSON, který obsahuje všechny parametry, které chcete předat k sadě runbook.
@@ -90,7 +88,7 @@ Spusťte následující příkazy prostředí PowerShell:
     ```powershell
     $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
     ```
-    `JsonPath`je cesta, kam jste uložili soubor JSON.
+    `JsonPath` je cesta, kam jste uložili soubor JSON.
 1. Převést řetězec obsah `$json` na objekt prostředí PowerShell:
    ```powershell
    $JsonParams = @{"json"=$json}
@@ -112,7 +110,7 @@ Spusťte následující příkazy prostředí PowerShell:
 
 Sada runbook používá hodnoty ze souboru JSON pro spuštění virtuálního počítače.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o úpravách prostředí PowerShell a pracovní postup prostředí PowerShell sad runbook s textový editor, najdete v části [úpravy textovou sady runbook ve službě Azure Automation](automation-edit-textual-runbook.md) 
 * Další informace o vytváření a import sad runbook najdete v tématu [vytvoření nebo import runbooku ve službě Azure Automation](automation-creating-importing-runbook.md)

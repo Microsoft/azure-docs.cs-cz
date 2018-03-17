@@ -11,13 +11,13 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: db1360fa54d82c50adc04194697d994925338296
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 03/16/2018
+ms.author: gokuma
+ms.openlocfilehash: 75baef65b8a826009cdbaac3a260d021559504da
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Zřídit hluboká učení virtuálního počítače na Azure 
 
@@ -46,7 +46,7 @@ Tady jsou kroky k vytvoření instance služby hloubkové Virtual Machine Learni
 > [!NOTE]
 > Vzhledem k tomu, že DLVM je zřízený v instancích virtuálního počítače Azure NC-Series GPU, musíte zvolit jedno z umístění v Azure, který má grafickými procesory. Aktuálně jsou umístění, které mají virtuální počítače GPU: **Východ USA, severní jihu USA, Jižní střední USA, západní USA 2, Severní Evropa, západní Evropa**. Nejnovější seznam, zkontrolujte [produkty Azure podle oblasti stránky](https://azure.microsoft.com/en-us/regions/services/) a vyhledejte **NC-Series** pod **výpočetní**. 
 
-   2. **Nastavení**: vyberte jednu z NC-Series GPU velikost virtuálního počítače, který splňuje požadavek na funkční a náklady na omezení. Vytvořte účet úložiště pro virtuální počítač.  ![dlvm – nastavení](./media/dlvm-provision-step-2.PNG)
+   2. **Nastavení**: vyberte jednu z NC-Series GPU velikost virtuálního počítače, který splňuje požadavek na funkční a náklady na omezení. Vytvořte účet úložiště pro virtuální počítač.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
    3. **Souhrn**: Zkontrolujte, zda jsou všechny informace, které jste zadali správné.
    5. **Kupte si**: klikněte na tlačítko **koupit** zahájíte přidělení přístupových práv. Je k dispozici odkaz na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní pro velikost serveru, který jste zvolili v **velikost** krok. 

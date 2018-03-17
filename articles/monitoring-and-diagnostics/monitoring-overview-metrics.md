@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.openlocfilehash: 32ca0ce5148ae2641500c98cb04b0d7db1987960
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 4a78236f9c6945bb982466b59690b221f35a1804
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Přehled metriky v Microsoft Azure
 Tento článek popisuje, co metriky jsou ve službě Microsoft Azure jejich výhody a jak je začít používat.  
@@ -63,7 +63,7 @@ Rovněž můžete:
 Toto je rychlý návod, jak vytvořit metriky grafu pomocí portálu Azure.
 
 ### <a name="to-view-metrics-after-creating-a-resource"></a>Chcete-li zobrazit metriky po vytvoření prostředku
-1. Otevřete portál Azure.
+1. Otevřete web Azure Portal.
 2. Vytvoření webu k službě Azure App Service.
 3. Po vytvoření webu, přejděte na **přehled** okno webu.
 4. Můžete zobrazit nové metriky jako **monitorování** dlaždici. Potom můžete upravit na dlaždici a vybrat další metriky.
@@ -71,7 +71,7 @@ Toto je rychlý návod, jak vytvořit metriky grafu pomocí portálu Azure.
    ![Metriky pro prostředek v Azure monitorování](./media/monitoring-overview-metrics/MetricsOverview1.png)
 
 ### <a name="to-access-all-metrics-in-a-single-place"></a>Pro přístup k všechny metriky na jednom místě
-1. Otevřete portál Azure.
+1. Otevřete web Azure Portal.
 2. Přejděte do nové **monitorování** karty, vyberte a poté **metriky** možnost pod ním.
 3. V rozevíracím seznamu vyberte předplatné, skupinu prostředků a názvu prostředku.
 4. Zobrazte seznam dostupných metriky. Pak vyberte metriku zájem a jeho vykreslení.
@@ -116,7 +116,7 @@ Metriky výstrahy: můžete se pak upozornění e-mailem nebo fire webhooku, kte
 
  ![Metriky a pravidla výstrah v monitorování Azure](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
-V blízkosti upozornění v reálném čase (preview): tyto mít možnost sledovat více metriky a prahové hodnoty pro prostředek a potom oznámíme vám prostřednictvím [akce skupiny](/monitoring-action-groups.md). Další informace o Leran [téměř v reálném čase metrika výstrahy zde](https://aka.ms/azuremonitor/near-real-time-alerts).
+V blízkosti upozornění v reálném čase (preview): tyto mít možnost sledovat více metriky a prahové hodnoty pro prostředek a potom oznámíme vám prostřednictvím [akce skupiny](/monitoring-action-groups.md). Další informace o [téměř v reálném čase metrika výstrahy zde](https://aka.ms/azuremonitor/near-real-time-alerts).
 
 
 ### <a name="autoscale-your-azure-resources"></a>Škálování vašeho Azure prostředky
@@ -127,7 +127,7 @@ Některé prostředky Azure podporují, změny velikosti nebo v několika instan
 ## <a name="learn-about-supported-services-and-metrics"></a>Další informace o podporovaných služeb a metriky
 Můžete zobrazit podrobný seznam všech podporovaných služeb a jejich metriky [Azure monitorování metriky – podporované metriky na typ prostředku](monitoring-supported-metrics.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Najdete pod odkazy v tomto článku. Kromě toho další informace o:  
 
 * [Běžné metriky pro automatické škálování](insights-autoscale-common-metrics.md)

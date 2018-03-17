@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 8560921734e5037182955d8fe9605cc9831bf1b4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: cb4115b98091f55a0324ea795ffcc83cb29223a4
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Eternal orchestrations trvanlivý funkcí (Azure Functions)
 
@@ -94,6 +94,3 @@ Pokud funkce orchestrator v nekonečné smyčce a musí být zastaven, použijte
 
 > [!div class="nextstepaction"]
 > [Zjistěte, jak implementovat singleton orchestrations](durable-functions-singletons.md)
-
-> [!div class="nextstepaction"]
-> [Spuštění ukázkové eternal orchestration](durable-functions-counter.md)

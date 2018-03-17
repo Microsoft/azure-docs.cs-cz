@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: mbaldwin
 ms.custom: aaddev
-ms.openlocfilehash: 5f47f03594e64281b55161edb1c391ed0be83a73
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 130d26828acd5394756c47f22217272338cc33e6
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-active-directory-code-samples"></a>Ukázky kódu Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -38,6 +38,7 @@ Tyto ukázky ukazují, jak psát webové aplikace, která přesměruje prohlíž
 | C#/.NET |[WebApp-OpenIDConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) |Použijte OpenID Connect (ASP.Net OpenID Connect OWIN middleware) k ověřování uživatelů z klienta služby Azure AD. |
 | C#/.NET |[WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect) |Více klientů .NET MVC webové aplikace používající OpenID Connect (ASP.Net OpenID Connect OWIN middleware) k ověřování uživatelů od víc klientů Azure AD. |
 | C#/.NET |[WebApp-WSFederation-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) |Použijte WS-Federation (WS-Federation OWIN ASP.Net middleware) k ověřování uživatelů z klienta služby Azure AD. |
+| C# nebo .NET Core |[WebApp-OpenIDConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) |Webové aplikace .NET MVC, která používá OpenID Connect přihlášení uživatele z jednoho klienta Azure Active Directory (Azure AD) pomocí ASP.NET Core OpenID Connect middleware. |
 
 ## <a name="single-page-application-spa"></a>Jednostránkové aplikace (SPA)
 Tento příklad ukazuje, jak psát jednostránkové aplikace zabezpečené s Azure AD.  

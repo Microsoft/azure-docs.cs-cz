@@ -6,40 +6,39 @@ documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
 editor: 
-ms.assetid: 6f326f26-8a54-49df-a482-9c96a58db371
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: t-sql
-ms.date: 10/31/2016
+ms.date: 03/15/2018
 ms.author: jrj;barbkess
-ms.openlocfilehash: f9f19d75a37351b3562ce8c2f3629df14c5437c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 607c169e3d9e8aa741084392439da383f46cfe0c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="optimizing-transactions-for-sql-data-warehouse"></a>Optimalizace transakcí pro SQL Data Warehouse
 Tento článek vysvětluje, jak optimalizovat výkon transakcí kódu a současně minimalizujete její rizik dlouho odvolání.
 
 ## <a name="transactions-and-logging"></a>Transakce a protokolování
-Transakce jsou důležitou součástí relační databázový stroj. SQL Data Warehouse používá při úpravě dat transakce. Tyto transakce může být explicitní nebo implicitní. Jeden `INSERT`, `UPDATE` a `DELETE` příkazy jsou všechny příklady implicitní transakce. Explicitní transakce jsou zapsány explicitně vývojáři pomocí `BEGIN TRAN`, `COMMIT TRAN` nebo `ROLLBACK TRAN` a jsou obvykle používány, pokud se více příkazů úpravy musí být vázáno společně v jedné jednotky atomic. 
+Transakce jsou důležitou součástí relační databázový stroj. SQL Data Warehouse používá při úpravě dat transakce. Tyto transakce může být explicitní nebo implicitní. Jeden `INSERT`, `UPDATE`, a `DELETE` příkazy jsou všechny příklady implicitní transakce. Použijte explicitní transakce `BEGIN TRAN`, `COMMIT TRAN`, nebo `ROLLBACK TRAN`. Explicitní transakce jsou obvykle používány, pokud se více příkazů úpravy musí být vázáno společně v jedné jednotky atomic. 
 
 Azure SQL Data Warehouse potvrdí změny do databáze pomocí protokolů transakcí. Každý distribuční má svou vlastní transakčního protokolu. Zápisy protokolu transakce jsou automatické. Není nutná žádná konfigurace. Ale a zároveň zaručí se tento proces zápisu zavést režijní náklady v systému. Zápisem transakčně efektivní kódu můžete minimalizovat tomuto vlivu. Transakčně efektivní kód široce spadá do dvou kategorií.
 
-* Pokud je to možné konstruktů minimální úroveň protokolování
+* Minimální úroveň protokolování použití vytvoří vždy, když je to možné
 * Zpracování dat pomocí obor dávky, aby se zabránilo singulární dlouhotrvající transakce
 * Použít oddíl přepínání vzor pro velké změny v daném oddílu
 
 ## <a name="minimal-vs-full-logging"></a>Minimální oproti úplné protokolování
-Na rozdíl od plně protokolovaných operací, které používají ke sledování každé změně řádek transakčního protokolu, minimálně protokolovaných operací uchovávání informací o přidělení rozsahu a pouze metadata změny. Proto minimální protokolování zahrnuje protokolování pouze informace, které je potřeba vrácení transakce v případě selhání nebo explicitní žádost (`ROLLBACK TRAN`). Jak informace je mnohem méně sledovat v protokolu transakcí, provede se lépe než podobné velikosti plně protokolovaných operací minimálně protokolovaných operací. Kromě toho protože méně zápisy přejděte transakčního protokolu, je generována mnohem menší množství dat protokolu a stejně tak více vstupně-výstupních operací efektivní.
+Na rozdíl od plně protokolovaných operací, které používají ke sledování každé změně řádek transakčního protokolu, minimálně protokolovaných operací uchovávání informací o přidělení rozsahu a pouze metadata změny. Proto minimální protokolování zahrnuje protokolování pouze informace, které je potřeba vrácení transakce po selhání, nebo pro požadavek explicitní (`ROLLBACK TRAN`). Jak informace je mnohem méně sledovat v protokolu transakcí, provede se lépe než podobné velikosti plně protokolovaných operací minimálně protokolovaných operací. Kromě toho protože méně zápisy přejděte transakčního protokolu, je generována mnohem menší množství dat protokolu a stejně tak více vstupně-výstupních operací efektivní.
 
 Omezení zabezpečení transakce se vztahují pouze na plně protokolovaných operací.
 
 > [!NOTE]
-> Minimálně protokolovaných operací se účastnit explicitních transakcí. Jak jsou sledovat všechny změny v přidělení struktury, je možné vrátit minimálně protokolovaných operací. Je důležité si uvědomit, že změna "minimálně" protokolu není zrušení protokolu.
+> Minimálně protokolovaných operací se účastnit explicitních transakcí. Jak jsou sledovat všechny změny v přidělení struktury, je možné vrátit minimálně protokolovaných operací. 
 > 
 > 
 
@@ -67,15 +66,15 @@ Následující operace podporují minimálně protokolována:
 > 
 
 ## <a name="minimal-logging-with-bulk-load"></a>Minimální protokolování s hromadné načtení
-`CTAS`a `INSERT...SELECT` jsou obě hromadné operace zatížení. Ale obě jsou ovlivněné definici cílové tabulky a závisí na scénáři zatížení. Dole je tabulku, která vysvětluje, pokud hromadné operace plně nebo minimálně zaznamenán:  
+`CTAS` a `INSERT...SELECT` jsou obě hromadné operace zatížení. Ale obě jsou ovlivněné definici cílové tabulky a závisí na scénáři zatížení. Následující tabulka vysvětluje, při hromadné operace jsou plně nebo minimálně protokolování:  
 
 | Primární Index | Scénář zatížení | Režim protokolování |
 | --- | --- | --- |
-| Haldy |Všechny |**Minimální** |
-| Clusterovaný Index |Prázdná cílová tabulka |**Minimální** |
-| Clusterovaný Index |Načíst řádky se nepřekrývají s existující stránky v cíli |**Minimální** |
+| Haldy |Všechny |**minimální** |
+| Clusterovaný Index |Prázdná cílová tabulka |**minimální** |
+| Clusterovaný Index |Načíst řádky se nepřekrývají s existující stránky v cíli |**minimální** |
 | Clusterovaný Index |Načíst řádky překrývá s existující stránky v cíli |Úplná |
-| Clusterovaný Index Columnstore |Velikost dávky > = 102,400 za oddílu zarovnán distribuce |**Minimální** |
+| Clusterovaný Index Columnstore |Velikost dávky > = 102,400 za oddílu zarovnán distribuce |**minimální** |
 | Clusterovaný Index Columnstore |Velikost < 102,400 za oddílu zarovnán distribuční služby batch |Úplná |
 
 Je vhodné poznamenat, že všechny zápisy k aktualizaci sekundární nebo neclusterované indexy bude vždy plně protokolovaných operací.
@@ -88,7 +87,7 @@ Je vhodné poznamenat, že všechny zápisy k aktualizaci sekundární nebo necl
 Načítání dat do tabulky neprázdný clusterovaný index často může obsahovat kombinaci plně protokolu a minimálně zaznamenané řádků. Clusterovaný index je vyrovnáváním stromu (b stromu) stránek. Pokud stránky zapisuje do již obsahuje sloupce z jiné transakci, pak tyto zápisy plně zaznamenán. Ale pokud stránka je prázdný pak zápis na této stránce minimálně zaznamenán.
 
 ## <a name="optimizing-deletes"></a>Optimalizace odstranění
-`DELETE`je plně protokolovaných operací.  Pokud potřebujete odstranit velké množství dat v tabulce nebo oddíl, často má smysl Další `SELECT` data chcete zachovat, která může běžet jako minimálně protokolovaných operací.  K tomu, vytvořit novou tabulku s [funkce CTAS][CTAS].  Po vytvoření použít [přejmenovat] [ RENAME] vyměnit vaše staré tabulky s nově vytvořené tabulky.
+`DELETE` je plně protokolovaných operací.  Pokud potřebujete odstranit velké množství dat v tabulce nebo oddíl, často má smysl Další `SELECT` data chcete zachovat, která může běžet jako minimálně protokolovaných operací.  Vyberte data, umožňuje vytvořit novou tabulku s [funkce CTAS][CTAS].  Po vytvoření použít [přejmenovat] [ RENAME] vyměnit vaše staré tabulky s nově vytvořené tabulky.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -119,7 +118,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Optimalizace aktualizace
-`UPDATE`je plně protokolovaných operací.  Pokud je potřeba aktualizovat velký počet řádků v tabulce nebo oddíl může být často mnohem efektivnější pomocí minimálně protokolovaných operací, jako například [funkce CTAS] [ CTAS] Uděláte to tak.
+`UPDATE` je plně protokolovaných operací.  Pokud je potřeba aktualizovat velký počet řádků v tabulce nebo oddíl, může být často mnohem efektivnější pomocí minimálně protokolovaných operací, jako například [funkce CTAS] [ CTAS] Uděláte to tak.
 
 V příkladu níže úplné tabulku aktualizace byl převeden na `CTAS` tak, aby minimální protokolování je možné.
 
@@ -180,12 +179,12 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Znovu vytvořit velké tabulky můžete využívat výhod pomocí funkce SQL Data Warehouse úlohy správy. Pro další podrobnosti naleznete v části úlohy správy v [souběžnosti] [ concurrency] článku.
+> Znovu vytvořit velké tabulky můžete využívat výhod pomocí funkce SQL Data Warehouse úlohy správy. Další informace najdete v tématu [třídy prostředků pro úlohy správy](resource-classes-for-workload-management.md).
 > 
 > 
 
 ## <a name="optimizing-with-partition-switching"></a>Optimalizace s přepnutí oddílu
-Při velkém měřítku úpravy uvnitř [tabulky oddílu][table partition], pak oddíl přepínání vzor díky spoustu smysl. Pokud úprava dat je důležité a zahrnuje více oddílů, pak jednoduše iterování přes oddíly dosáhne stejného výsledku.
+Pokud se potýkají s rozsáhlé úpravy uvnitř [tabulky oddílu][table partition], pak oddíl přepínání vzor smysl. Pokud úprava dat je důležité a zahrnuje více oddílů, pak iterování přes oddíly dosáhne stejného výsledku.
 
 Postup provedení oddílu přepínače jsou následující:
 
@@ -195,7 +194,7 @@ Postup provedení oddílu přepínače jsou následující:
 4. Přepínač ve nová data
 5. Vyčistit data
 
-Však k identifikaci oddílů přepnout jsme bude nejprve nutné sestavení pomocné rutiny postup je dole. 
+Však možné identifikovat oddíly, které mají přepínače, vytvořte následující proceduru pomocné rutiny.  
 
 ```sql
 CREATE PROCEDURE dbo.partition_data_get
@@ -241,9 +240,9 @@ OPTION (LABEL = 'dbo.partition_data_get : CTAS : #ptn_data')
 GO
 ```
 
-Tento postup maximalizuje opětovné použití kódu a udržuje přepnutí příklad kompaktnější oddílu.
+Tento postup maximalizuje opakované použití kódu a udržuje přepnutí příklad kompaktnější oddílu.
 
-Následující kód ukazuje pět kroků uvedených výše k dosažení úplné oddíl přepínání rutiny.
+Následující kód ukazuje postup k dosažení úplné oddíl přepínání rutiny bylo zmíněno dříve.
 
 ```sql
 --Create a partitioned aligned empty table to switch out the data 
@@ -349,7 +348,7 @@ DROP TABLE #ptn_data
 ## <a name="minimize-logging-with-small-batches"></a>Minimalizovat protokolování s malé balíků
 Pro operace úpravy velkého množství dat má smysl rozdělit operaci do bloků dat nebo dávky k určení rozsahu pracovní jednotce.
 
-Příklad pracovní najdete níže. Velikost dávky byla nastavena na trivial číslo chcete zvýraznit techniku. Ve skutečnosti bude podstatně větší velikost dávky. 
+Následující kód je příklad práci. Velikost dávky byla nastavena na trivial číslo chcete zvýraznit techniku. Ve skutečnosti bude podstatně větší velikost dávky. 
 
 ```sql
 SET NO_COUNT ON;
@@ -408,19 +407,19 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Pozastavení a škálování pokyny
-Azure SQL Data Warehouse umožňuje pozastavit, obnovit a škálovat datový sklad na vyžádání. Při pozastavení nebo škálovat datový sklad SQL je důležité si uvědomit, že jakékoli během letu transakce budou ukončeny okamžitě; způsobuje všechny otevřené transakce zpět. Pokud vaše úlohy vystavila dlouho běžící a nedokončené úprava dat před operace pozastavení nebo určený počet číslic, tento pracovní bude muset být vrátit zpět. To může mít vliv na čas potřebný k pozastavení nebo škálování databáze Azure SQL Data Warehouse. 
+Azure SQL Data Warehouse umožňuje [pozastavit, obnovit a škálování](sql-data-warehouse-manage-compute-overview.md) datového skladu na vyžádání. Při pozastavení nebo škálování SQL Data Warehouse, je důležité si uvědomit, že jakékoli během letu transakce budou ukončeny okamžitě; způsobuje všechny otevřené transakce zpět. Pokud vaše úlohy vystavila dlouho běžící a nedokončené úprava dat před operace pozastavení nebo určený počet číslic, tento pracovní bude muset být vrátit zpět. Toto zrušení může mít vliv na čas potřebný k pozastavení nebo škálování databáze Azure SQL Data Warehouse. 
 
 > [!IMPORTANT]
 > Obě `UPDATE` a `DELETE` jsou plně protokolovaných operací a tak tyto zpět/opakování operace může trvat výrazně déle, než ekvivalentní minimálně protokolována operace. 
 > 
 > 
 
-Scénář Nejlepší je umožnit v cestě data změny transakce dokončení před pozastavení nebo škálování SQL Data Warehouse. Ale to nemusí být vždy praktické. Pro zmírnění rizik dlouho vrácení zpět, zvažte jednu z následujících možností:
+Scénář Nejlepší je umožnit v cestě data změny transakce dokončení před pozastavení nebo škálování SQL Data Warehouse. Však tento scénář nemusí být vždy praktické. Pro zmírnění rizik dlouho vrácení zpět, zvažte jednu z následujících možností:
 
-* Znovu zapsat dlouhotrvající operace pomocí [funkce CTAS][CTAS]
-* Operaci rozdělení do bloků; pracující na podmnožinu řádků
+* Přepište dlouho běžící operace pomocí [funkce CTAS][CTAS]
+* Rozdělit operaci na bloky dat; pracující na podmnožinu řádků
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tématu [transakcí v SQL Data Warehouse] [ Transactions in SQL Data Warehouse] Další informace o úrovních izolace a omezení transakcí.  Přehled ostatní osvědčené postupy najdete v tématu [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
@@ -428,7 +427,6 @@ V tématu [transakcí v SQL Data Warehouse] [ Transactions in SQL Data Warehouse
 <!--Article references-->
 [Transactions in SQL Data Warehouse]: ./sql-data-warehouse-develop-transactions.md
 [table partition]: ./sql-data-warehouse-tables-partition.md
-[Concurrency]: ./sql-data-warehouse-develop-concurrency.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
 [SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 36cd2f106c39f1a6bdcb6ee33b96209974a06336
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 586d78e29177dd4a627c94cd754c21cc2b6f37d4
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace programu Sledování výkonu sítě pro ExpressRoute
 
@@ -118,7 +118,7 @@ Doporučujeme nainstalovat aspoň dva agenty na každé straně připojení Expr
   >
   
   >[!NOTE]
-  >SCOM agentů nemusí být schopna zjistit konzistentně, pokud jsou hostované v Azure.  Doporučujeme vám, že nepoužijete SCOM agentů ve virtuálních sítí Azure monitorovat ExpressRoute.
+  >Agenti nabídnutých nástrojem SCOM (zahrnuje [MMA](https://technet.microsoft.com/en-us/library/dn465154(v=sc.12).aspx)) nemusí být schopna zjistit konzistentně jejich umístění, pokud jsou hostované v Azure.  Doporučujeme vám, že nepoužíváte tyto agenty v sítě Azure Vnet monitorování ExpressRoute.
   >
   >
 

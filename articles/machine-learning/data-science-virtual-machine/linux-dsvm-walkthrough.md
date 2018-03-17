@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 03/16/2018
 ms.author: bradsev;paulsh
-ms.openlocfilehash: 650b11d66f3ca32266b9842af77c909e125b4e4d
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 9b8a9b9bba242fd7c86dc285a77317a5821948df
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Vědecké zpracování dat pomocí datové vědy virtuální počítač s Linuxem v Azure
 Tento návod ukazuje, jak provést několik běžných úkolů data vědecké účely pomocí virtuálního počítače s Linuxem dat vědecké účely. Virtuální počítač pro vědecké účely Data Linux (DSVM) je bitová kopie virtuálního počítače, která je k dispozici v Azure, který je předem nainstalovaná s kolekcí nástrojů pro běžně používané k analýze dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřízení virtuálního počítače Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače lze snadno začít provádění vědecké zpracování dat v minutách, bez nutnosti instalace a konfigurace každého nástroje jednotlivě. Můžete snadno škálování virtuálních počítačů, v případě potřeby a zastavte ji když není používán. Proto tento prostředek je elastické a nákladově efektivní.
@@ -78,7 +78,7 @@ Kopií ukázky kódu, který je použit v tomto názorném postupu získáte klo
 Otevřete okno terminálu a spusťte novou relaci R s R interaktivní konzoly.
 
 > [!NOTE]
-> Následující postupy můžete použít také Rstudia. Chcete-li nainstalovat Rstudia, spusťte tento příkaz v terminálu:`./Desktop/DSVM\ tools/installRStudio.sh`
+> Následující postupy můžete použít také Rstudia. Chcete-li nainstalovat Rstudia, spusťte tento příkaz v terminálu: `./Desktop/DSVM\ tools/installRStudio.sh`
 >
 >
 
@@ -385,7 +385,7 @@ Rattle můžete také provést analýzu clusteru. Umožňuje vyloučit některé
 * word_freq_money
 * capital_run_length_longest
 * word_freq_business
-* nevyžádané pošty
+* spam
 
 Poté přejděte zpět na **clusteru** , zvolte **KMeans**a nastavte *počtu clusterů, které* na 4. Potom **provést**. Výsledky jsou zobrazeny v okně výstupu. Jeden cluster má vysoká frekvence "Jirka" a "hp" a je pravděpodobně legitimní firemní e-mail.
 
@@ -527,7 +527,7 @@ A dotazování pomocí sqlcmd:
 
 Také můžete dotazovat pomocí Squirrel SQL. Podobný postup PostgreSQL, ovladač JDBC Microsoft MSSQL serveru, pomocí kterého lze nalézt v ***/usr/share/java/jdbcdrivers/sqljdbc42.jar***.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Přehled témata, která vás provede procesem úlohy, které tvoří proces vědecké zpracování dat v Azure najdete v tématu [proces vědecké účely dat Team](http://aka.ms/datascienceprocess).
 
 Popis dalších návody začátku do konce, které ukazují kroků v procesu vědecké účely Team dat u konkrétních scénářů najdete v tématu [proces vědecké účely dat Team návody](../team-data-science-process/walkthroughs.md). Názorné postupy také ukazují, jak kombinovat cloudové a místní nástroje a služby do pracovního postupu nebo kanálu vytvoření inteligentního aplikace.

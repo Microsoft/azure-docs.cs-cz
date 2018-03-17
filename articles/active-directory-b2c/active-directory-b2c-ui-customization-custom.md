@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: c430b488016f038ed1d7a67a8d52c057df1ea40e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dcd8b6df68a68f5feb428b4fd98aee938b3bfe6c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: Konfigurace ve vlastních zásadách pro přizpůsobení uživatelského rozhraní
 
@@ -106,19 +106,19 @@ Konfigurace úložiště objektů Blob pro sdílení prostředků různého pův
 >Chcete vyzkoušet funkce přizpůsobení uživatelského rozhraní pomocí naše ukázka HTML a CSS obsahu? Nabízíme [jednoduché pomocný nástroj](active-directory-b2c-reference-ui-customization-helper-tool.md) , odešle a nakonfiguruje naše ukázkový obsah na vašem účtu úložiště objektů Blob. Pokud použijete nástroj, přeskočit na [upravte registrace nebo přihlášení vlastní zásady](#modify-your-sign-up-or-sign-in-custom-policy).
 
 1. Na **úložiště** okno, v části **nastavení**, otevřete **CORS**.
-2. Klikněte na tlačítko **Přidat**.
+2. Klikněte na tlačítko **Add** (Přidat).
 3. Pro **povolené zdroje**, zadejte hvězdičku (\*).
 4. V **povolených operací** rozevíracího seznamu, vyberte **získat** a **možnosti**.
 5. Pro **povolené hlavičky**, zadejte hvězdičku (\*).
 6. Pro **zveřejněné hlavičky**, zadejte hvězdičku (\*).
 7. Pro **maximální stáří (v sekundách)**, typ **200**.
-8. Klikněte na tlačítko **Přidat**.
+8. Klikněte na tlačítko **Add** (Přidat).
 
 ## <a name="test-cors"></a>Test CORS
 
 Ověřte, že jste připraveni následujícím způsobem:
 
-1. Přejděte na [test cors.org](http://test-cors.org/) webu a vložte adresu URL v **vzdálenou adresou URL** pole.
+1. Přejděte na [www.test-cors.org](http://www.test-cors.org/) webu a vložte adresu URL v **vzdálenou adresou URL** pole.
 2. Klikněte na tlačítko **poslat žádost o**.  
     Pokud se zobrazí chyba, ujistěte se, že vaše [nastavení CORS](#configure-cors) jsou správné. Může se také muset vymazat mezipaměť prohlížeče nebo otevřete relaci procházení v privátní stisknutím kombinace kláves Ctrl + Shift + P.
 
@@ -161,27 +161,27 @@ Složka sample_templates/wingtip obsahuje následující soubory HTML:
 
 | HTML5 šablony | Popis |
 |----------------|-------------|
-| *phonefactor.HTML* | Tento soubor jako šablonu použijte pro stránku služby Multi-Factor authentication. |
-| *ResetPassword.HTML* | Použít jako šablonu pro tento soubor zapomněli jste heslo?. |
-| *selfasserted.HTML* | Tento soubor jako šablonu použijte pro stránku pro přihlášení sociálních účet, stránku pro přihlášení místní účet nebo na přihlašovací stránku místní účet. |
-| *Unified.HTML* | Tento soubor jako šablonu použijte pro jednotné stránku registrace nebo přihlášení. |
-| *updateprofile.HTML* | Tento soubor jako šablonu použijte pro stránku aktualizace profilu. |
+| *phonefactor.html* | Tento soubor jako šablonu použijte pro stránku služby Multi-Factor authentication. |
+| *resetpassword.html* | Použít jako šablonu pro tento soubor zapomněli jste heslo?. |
+| *selfasserted.html* | Tento soubor jako šablonu použijte pro stránku pro přihlášení sociálních účet, stránku pro přihlášení místní účet nebo na přihlašovací stránku místní účet. |
+| *unified.html* | Tento soubor jako šablonu použijte pro jednotné stránku registrace nebo přihlášení. |
+| *updateprofile.html* | Tento soubor jako šablonu použijte pro stránku aktualizace profilu. |
 
 V [upravte část vaší vlastní zásady registrace nebo přihlášení](#modify-your-sign-up-or-sign-in-custom-policy), jste nakonfigurovali obsahu definice `api.idpselections`. Kompletní obsah definice ID, která rozpoznává rozhraní Azure AD B2C identity prostředí a jejich popisy jsou v následující tabulce:
 
 | ID obsahu definice | Popis | 
 |-----------------------|-------------|
-| *API.Error* | **Chybové stránky**. Tato stránka se zobrazí, když je došlo k výjimce nebo došlo k chybě. |
-| *API.idpselections* | **Stránka Výběr zprostředkovatele identity**. Tato stránka obsahuje seznam zprostředkovatelů identity, které může uživatel vybírat během přihlášení. Tyto možnosti jsou poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook a Google + nebo místním účtům. |
-| *API.idpselections.Signup* | **Výběr zprostředkovatele identity pro registraci**. Tato stránka obsahuje seznam poskytovatelů identity, které může uživatel vybírat během registrace. Tyto možnosti jsou poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook a Google + nebo místním účtům. |
-| *API.localaccountpasswordreset* | **Zapomněli jste heslo**. Tato stránka obsahuje formulář, který uživatel musí dokončit zahájíte resetování hesla.  |
-| *API.localaccountsignin* | **Přihlašovací stránka místní účet**. Tato stránka obsahuje formulář přihlášení pro přihlášení pomocí místního účtu, který je založený na e-mailovou adresu nebo uživatelské jméno. Formulář může obsahovat vstupní textové pole a pole pro zadání hesla. |
-| *API.localaccountsignup* | **Místní účet stránku**. Tato stránka obsahuje registrační formulář pro registraci pro místní účet, který je založený na e-mailovou adresu nebo uživatelské jméno. Formulář může obsahovat různé vstupní ovládací prvky, jako je například vstupní textové pole, pole pro zadání hesla, přepínače, pole rozevíracího seznamu vyberte jeden a vybrat víc zaškrtávací políčka. |
-| *API.phonefactor* | **Stránka služby Multi-Factor authentication**. Na této stránce uživatelé mohli ověřit jejich telefonní čísla (pomocí textové nebo hlasové) během registrace nebo přihlášení. |
-| *API.selfasserted* | **Stránku pro přihlášení sociálních účet**. Tato stránka obsahuje registrační formulář, který uživatelé musí dokončit při registraci pomocí stávající účet od poskytovatele identity sociálních třeba Facebook nebo Google +. Tato stránka je podobný na předchozí sociálních registrační stránku účtu, s výjimkou pole pro zadání hesla. |
-| *API.selfasserted.profileupdate* | **Stránka pro aktualizaci profilu**. Tato stránka obsahuje formulář, který uživatelé lze použít k aktualizaci svůj profil. Tato stránka je podobná registrační stránku sociálních účtu, s výjimkou pole pro zadání hesla. |
-| *API.signuporsignin* | **Jednotná stránku registrace nebo přihlášení**. Tato stránka zpracovává registrace i přihlášení uživatelů, kteří můžou využívat poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook nebo Google + nebo místní účty.  |
+| *api.error* | **Chybové stránky**. Tato stránka se zobrazí, když je došlo k výjimce nebo došlo k chybě. |
+| *api.idpselections* | **Stránka Výběr zprostředkovatele identity**. Tato stránka obsahuje seznam zprostředkovatelů identity, které může uživatel vybírat během přihlášení. Tyto možnosti jsou poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook a Google + nebo místním účtům. |
+| *api.idpselections.signup* | **Výběr zprostředkovatele identity pro registraci**. Tato stránka obsahuje seznam poskytovatelů identity, které může uživatel vybírat během registrace. Tyto možnosti jsou poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook a Google + nebo místním účtům. |
+| *api.localaccountpasswordreset* | **Zapomněli jste heslo**. Tato stránka obsahuje formulář, který uživatel musí dokončit zahájíte resetování hesla.  |
+| *api.localaccountsignin* | **Přihlašovací stránka místní účet**. Tato stránka obsahuje formulář přihlášení pro přihlášení pomocí místního účtu, který je založený na e-mailovou adresu nebo uživatelské jméno. Formulář může obsahovat vstupní textové pole a pole pro zadání hesla. |
+| *api.localaccountsignup* | **Místní účet stránku**. Tato stránka obsahuje registrační formulář pro registraci pro místní účet, který je založený na e-mailovou adresu nebo uživatelské jméno. Formulář může obsahovat různé vstupní ovládací prvky, jako je například vstupní textové pole, pole pro zadání hesla, přepínače, pole rozevíracího seznamu vyberte jeden a vybrat víc zaškrtávací políčka. |
+| *api.phonefactor* | **Stránka služby Multi-Factor authentication**. Na této stránce uživatelé mohli ověřit jejich telefonní čísla (pomocí textové nebo hlasové) během registrace nebo přihlášení. |
+| *api.selfasserted* | **Stránku pro přihlášení sociálních účet**. Tato stránka obsahuje registrační formulář, který uživatelé musí dokončit při registraci pomocí stávající účet od poskytovatele identity sociálních třeba Facebook nebo Google +. Tato stránka je podobný na předchozí sociálních registrační stránku účtu, s výjimkou pole pro zadání hesla. |
+| *api.selfasserted.profileupdate* | **Stránka pro aktualizaci profilu**. Tato stránka obsahuje formulář, který uživatelé lze použít k aktualizaci svůj profil. Tato stránka je podobná registrační stránku sociálních účtu, s výjimkou pole pro zadání hesla. |
+| *api.signuporsignin* | **Jednotná stránku registrace nebo přihlášení**. Tato stránka zpracovává registrace i přihlášení uživatelů, kteří můžou využívat poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook nebo Google + nebo místní účty.  |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o prvky uživatelského rozhraní, které se dají přizpůsobit najdete v tématu [referenční příručka pro přizpůsobení uživatelského rozhraní pro předdefinované zásady](active-directory-b2c-reference-ui-customization.md).

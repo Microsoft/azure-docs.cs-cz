@@ -6,23 +6,22 @@ documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
 editor: 
-ms.assetid: 69ecd479-0941-48df-b3d0-cf54c79e6549
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 12/14/2017
+ms.date: 03/15/2018
 ms.author: joeyong;barbkess;kevin
-ms.openlocfilehash: 1895e9c6174dfb05212991040cc265b8cb6e0651
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7e25a1f8d807fa317e8ce246fd49de034182af96
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitorování vaší úlohy pomocí DMV
-Tento článek popisuje, jak sledovat vaše úlohy a prozkoumat provádění dotazů v Azure SQL Data Warehouse pomocí zobrazení dynamické správy (zobrazení dynamické správy).
+Tento článek popisuje, jak sledovat vaše úlohy pomocí zobrazení dynamické správy (zobrazení dynamické správy). To zahrnuje příčin provádění dotazů v Azure SQL Data Warehouse.
 
 ## <a name="permissions"></a>Oprávnění
 Dotaz zobrazení dynamické správy v tomto článku, musíte stav zobrazení databáze nebo řízení oprávnění. Stav databáze poskytující zobrazení obvykle je upřednostňovaný oprávnění, protože to je mnohem víc omezující.
@@ -72,7 +71,7 @@ WHERE   [label] = 'My Query';
 
 Z předchozí výsledky dotazu **si poznamenejte ID žádosti o** dotazu, který chcete prozkoumat.
 
-Dotazy v **pozastaveno** stavu jsou zařazena do fronty z důvodu omezení souběžnosti. Tyto dotazy se zobrazí také v dotazu počká sys.dm_pdw_waits s typem UserConcurrencyResourceType. V tématu [souběžnosti a úlohy správy] [ Concurrency and workload management] další podrobnosti o souběžnosti omezení. Dotazy můžete taky počkat z jiných důvodů, jako pro zámek objektu.  Pokud váš dotaz je čeká na prostředek, přečtěte si téma [příčin dotazy čekání na prostředky] [ Investigating queries waiting for resources] další dolů v tomto článku.
+Dotazy v **pozastaveno** stavu jsou zařazena do fronty z důvodu omezení souběžnosti. Tyto dotazy se zobrazí také v dotazu počká sys.dm_pdw_waits s typem UserConcurrencyResourceType. Informace o limitech souběžnosti najdete v tématu [úrovně výkonu](performance-tiers.md) nebo [třídy prostředků pro úlohy správy](resource-classes-for-workload-management.md). Dotazy můžete taky počkat z jiných důvodů, jako pro zámek objektu.  Pokud váš dotaz je čeká na prostředek, přečtěte si téma [příčin dotazy čekání na prostředky] [ Investigating queries waiting for resources] další dolů v tomto článku.
 
 Pro zjednodušení vyhledávací dotaz v tabulce sys.dm_pdw_exec_requests, použijte [popisek] [ LABEL] přiřadit váš dotaz, který lze vyhledávat v zobrazení sys.dm_pdw_exec_requests komentář.
 
@@ -135,7 +134,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
 * Zkontrolujte *total_elapsed_time* zobrazíte, když konkrétní distribuční trvá výrazně delší než jiné pro přesun dat.
-* Pro dlouhodobé distribuci, zkontrolujte *rows_processed* zobrazíte, pokud počet řádků přesouvaných z příslušné distribuci je podstatně větší než jiné. Pokud ano, může to znamenat zkosení podkladová data.
+* Pro dlouhodobé distribuci, zkontrolujte *rows_processed* zobrazíte, pokud počet řádků přesouvaných z příslušné distribuci je podstatně větší než jiné. Pokud ano, může znamenat toto zjištění zkosení podkladová data.
 
 Pokud dotaz běží, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] slouží k načtení odhadované plánu systému SQL Server z mezipaměti plánu SQL serveru pro SQL kroku aktuálně spuštěného v rámci konkrétní distribuce.
 
@@ -174,9 +173,9 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 Pokud dotaz aktivně čeká na prostředky z jiného dotazu, pak bude stav **AcquireResources**.  Pokud dotaz obsahuje všechny požadované prostředky, pak bude stav **udělit**.
 
 ## <a name="monitor-tempdb"></a>Databáze tempdb monitorování
-Databáze tempdb vysoké využití může být hlavní příčinou nízký výkon a mimo problémy s pamětí. Vezměte v úvahu škálování datového skladu, pokud zjistíte, tempdb dosažení jeho omezení během provádění dotazu. Následující část popisuje postup identifikovat využití databáze tempdb na jeden dotaz na každém uzlu. 
+Databáze tempdb vysoké využití může být hlavní příčinou nízký výkon a mimo problémy s pamětí. Vezměte v úvahu škálování datového skladu, pokud zjistíte, tempdb dosažení jeho omezení během provádění dotazu. Následující informace popisují, jak identifikovat využití databáze tempdb na jeden dotaz na každém uzlu. 
 
-Vytvořte následující zobrazení přidružit id odpovídající uzlu pro sys.dm_pdw_sql_requests. To vám umožní využít další průchozí zobrazení dynamické správy a zapojit tyto tabulky s sys.dm_pdw_sql_requests.
+Vytvořte následující zobrazení přidružit ID odpovídající uzlu pro sys.dm_pdw_sql_requests. S ID uzlu vám umožní použít jiné průchozí zobrazení dynamické správy a zapojit tyto tabulky s sys.dm_pdw_sql_requests.
 
 ```sql
 -- sys.dm_pdw_sql_requests with the correct node id
@@ -200,7 +199,7 @@ CREATE VIEW sql_requests AS
 FROM sys.pdw_distributions AS d
 RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
 ```
-Spusťte následující dotaz pro databázi tempdb monitorování:
+Chcete-li monitorovat databáze tempdb, spusťte následující dotaz:
 
 ```sql
 -- Monitor tempdb
@@ -258,7 +257,7 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-size"></a>Velikost protokolu transakcí monitorování
-Následující dotaz vrátí velikost protokolu transakcí v každém distribučním. Pokud jeden ze souborů protokolu dosahuje 160GB, měli byste zvážit vertikálním navýšení kapacity instanci nebo omezíte velikost vašeho transakce. 
+Následující dotaz vrátí velikost protokolu transakcí v každém distribučním. Pokud jeden ze souborů protokolu dosahuje 160 GB, měli byste zvážit vertikálním navýšení kapacity instanci nebo omezíte velikost vašeho transakce. 
 ```sql
 -- Transaction log size
 SELECT
@@ -284,8 +283,8 @@ GROUP BY t.pdw_node_id, nod.[type]
 ```
 
 ## <a name="next-steps"></a>Další postup
-V tématu [zobrazení systému] [ System views] Další informace o zobrazení dynamické správy.
-V tématu [osvědčené postupy pro SQL Data Warehouse] [ SQL Data Warehouse best practices] Další informace o osvědčených postupů
+Další informace o zobrazení dynamické správy najdete v tématu [zobrazení systému][System views].
+
 
 <!--Image references-->
 
@@ -294,7 +293,6 @@ V tématu [osvědčené postupy pro SQL Data Warehouse] [ SQL Data Warehouse bes
 [SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
 [System views]: ./sql-data-warehouse-reference-tsql-system-views.md
 [Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Concurrency and workload management]: ./sql-data-warehouse-develop-concurrency.md
 [Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
 
 <!--MSDN references-->

@@ -1,24 +1,18 @@
 ---
-title: "Správa aktualizací pro několik virtuálních počítačů Azure | Dokumentace Microsoftu"
+title: "Správa aktualizací pro několik virtuálních počítačů Azure"
 description: "Toto téma popisuje, jak se spravují aktualizace pro virtuální počítače Azure."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: 
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 11/30/2017
-ms.author: magoedte;gwallace
-ms.openlocfilehash: 1763077aa733fc93dd59147405db9942c6c98960
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+manager: carmonm
+ms.openlocfilehash: 29ab87b6afe31b7bbb40ef7d743e209f86811c9d
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 

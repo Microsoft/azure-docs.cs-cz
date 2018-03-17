@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: arramac
 ms.custom: devcenter
-ms.openlocfilehash: 71eadc08aeb4ac197f55b6d3aac8eb6009be9107
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 90b720c174ab5730237f27d5ebb253976a70b071
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-cosmos-db-getting-started-with-the-sql-api-and-net-core"></a>Azure Cosmos DB: Začínáme s SQL API a .NET Core
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ Můžeme začít!
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)] 
+* Pokud ještě nemáte nainstalované Visual Studio 2017, můžete stáhnout a používat bezplatnou [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Pokud vyvíjíte aplikace pro práci s univerzální platformu Windows (UWP), měli byste použít **Visual Studio 2017 verzi 15.4** nebo vyšší. Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
     * Pokud pracujete v systému MacOS nebo Linux, můžete vyvíjet aplikace .NET Core z příkazového řádku nainstalováním [.NET Core SDK](https://www.microsoft.com/net/core#macos) pro platformu podle svého výběru. 
     * Pokud pracujete v systému Windows, můžete vyvíjet aplikace .NET Core z příkazového řádku nainstalováním [.NET Core SDK](https://www.microsoft.com/net/core#windows). 
     * Můžete použít vlastní editor nebo stáhnout [Visual Studio Code](https://code.visualstudio.com/), který je zdarma a funguje v systému Windows, Linux a systému MacOS. 
@@ -576,7 +576,7 @@ Abyste mohli sestavit řešení GetStarted, které obsahuje všechny ukázky toh
 
 Chcete-li obnovit odkazy na rozhraní SQL API pro Azure Cosmos DB .NET Core SDK v sadě Visual Studio, klikněte pravým tlačítkem **GetStarted** řešení v Průzkumníku řešení a pak klikněte na tlačítko **povolit obnovení balíčků NuGet**. Dále v souboru Program.cs aktualizujte hodnoty EndpointUrl a authorizationkey tak jak je popsáno v [připojit k účtu Azure Cosmos DB](#Connect).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Chcete komplexnější kurz pro ASP.NET MVC? V tématu [kurz k ASP.NET MVC: vývoj webových aplikací s Azure Cosmos DB](sql-api-dotnet-application.md).
 * Chcete vyvíjet Xamarin iOS, Android nebo formuláře aplikace pomocí rozhraní SQL API pro Azure Cosmos DB .NET Core SDK? V tématu [vytváření mobilních aplikací s Xamarin a Azure Cosmos DB](mobile-apps-with-xamarin.md).
 * Chcete testovat škálování a výkon pomocí služby Azure Cosmos DB? V tématu [výkonu a možností škálování testování pomocí Azure Cosmos DB](performance-testing.md)

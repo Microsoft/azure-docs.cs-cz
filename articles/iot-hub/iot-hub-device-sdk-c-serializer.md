@@ -3,7 +3,7 @@ title: "Pro zařízení Azure IoT SDK pro jazyk C - serializátor | Microsoft Do
 description: "Jak používat knihovnu serializátor v zařízení Azure IoT SDK pro jazyk C vytvoření aplikace pro zařízení, které komunikují pomocí služby IoT hub."
 services: iot-hub
 documentationcenter: 
-author: olivierbloch
+author: yzhong94
 manager: timlt
 editor: 
 ms.assetid: defbed34-de73-429c-8592-cd863a38e4dd
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2016
-ms.author: obloch
-ms.openlocfilehash: d8b9e147b68d16c6c166e92cbabf5b5b63e23e8d
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.author: yizhon
+ms.openlocfilehash: da9a2dd8bad68c03bb75d1772cf9e5dc539892aa
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Pro zařízení Azure IoT SDK pro jazyk C – informace o serializátor
 [Nejprve článek](iot-hub-device-sdk-c-intro.md) této série zavedená **zařízení Azure IoT SDK pro jazyk C**. Další článek poskytuje podrobnější popis [ **IoTHubClient**](iot-hub-device-sdk-c-iothubclient.md). Tento článek poskytuje podrobnější popis zbývající součásti dokončí pokrytí sady SDK: **serializátor** knihovny.
@@ -72,10 +72,10 @@ Jsou podporovány následující typy dat v modelů vytvořených pomocí **seri
 | dlouhá |dlouhé celé číslo |
 | int8\_t |8bitové celé číslo |
 | Int16\_t |16bitové celé číslo |
-| Int32\_t |32bitové celé číslo |
-| Int64\_t |64bitové celé číslo |
-| BOOL |Logická hodnota |
-| ASCII\_char\_ptr |Řetězec ASCII |
+| int32\_t |32bitové celé číslo |
+| int64\_t |64bitové celé číslo |
+| BOOL |Boolean |
+| ascii\_char\_ptr |Řetězec ASCII |
 | EDM\_DATUM\_ČAS\_POSUNUTÍ |Datum čas posunutí |
 | EDM\_GUID |IDENTIFIKÁTOR GUID |
 | EDM\_BINÁRNÍ |Binární |
@@ -594,7 +594,7 @@ Chcete-li použít novou verzi – makro\_utils.h, odebrat **serializátor** bal
 
 Pak přidejte tento projekt do řešení sady Visual Studio:
 
-> . \\c\\serializátor\\sestavení\\windows\\serializer.vcxproj
+> .\\c\\serializer\\build\\windows\\serializer.vcxproj
 > 
 > 
 
@@ -622,9 +622,9 @@ Tato rozhraní API je ukázán v **simplesample\_amqp**.
 
 K dispozici je také podobá sadu rozhraní API nižší úrovně.
 
-* IoTHubClient\_UDOU\_CreateFromConnectionString
-* IoTHubClient\_UDOU\_SendEventAsync
-* IoTHubClient\_UDOU\_SetMessageCallback
+* IoTHubClient\_LL\_CreateFromConnectionString
+* IoTHubClient\_LL\_SendEventAsync
+* IoTHubClient\_LL\_SetMessageCallback
 * IoTHubClient\_UDOU\_Destroy
 
 Některé nižší úrovně rozhraní API funkční stejným způsobem, jak je popsáno v předchozí článcích. První sadu rozhraní API můžete použít, pokud chcete, aby vlákna na pozadí pro zpracování událostí odesílání a příjmu zprávy. Druhá sada rozhraní API použijte, pokud chcete, aby explicitní ovládat, kdy odesílat a přijímat data ze služby IoT Hub. Buď sadu rozhraní API pracovní stejnou měrou i s **serializátor** knihovny.
@@ -662,7 +662,7 @@ serializer_deinit();
 
 Jinak, všechny ostatní funkce výše uvedených fungovat stejně **serializátor** knihovny nebudou **IoTHubClient** knihovny. Další informace o kterékoli z těchto témat, najdete v článku [předchozí článek](iot-hub-device-sdk-c-iothubclient.md) této série.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Tento článek podrobně popisuje jedinečné aspekty **serializátor** knihovny, které jsou součástí **zařízení Azure IoT SDK pro jazyk C**. S informacemi, pokud že byste měli mít dostatečné povědomí o tom, jak používat modely odesílat události a přijímat zprávy ze služby IoT Hub.
 
 To se taky ukončí řady třemi částmi o tom, jak vyvíjet aplikace s **zařízení Azure IoT SDK pro jazyk C**. To by měl být dostatek informací pro jenom vám pomůžou začít ale získáte důkladné znalosti o fungování rozhraní API. Další informace nejsou několik ukázky v sadě SDK, které nejsou zahrnuté v tomto poli. Jinak [dokumentaci k sadě SDK](https://github.com/Azure/azure-iot-sdk-c) je dobré prostředku pro další informace.
@@ -671,7 +671,7 @@ Další informace o vývoji pro IoT Hub, najdete v tématu [SDK služby Azure Io
 
 Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
-* [Nasazení AI do hraniční zařízení s Azure IoT Edge][lnk-iotedge]
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
 
 [lnk-sdks]: iot-hub-devguide-sdks.md
 

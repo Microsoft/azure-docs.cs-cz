@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a5d539172f03246e3c658f2485d29d3ae389ae52
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 446ddbff7d945e90ebfd12bc6e9e7a1f0e18267c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>FAN odesílacího/fan v scénář v trvanlivý funkce – příklad zálohování cloudu
 
@@ -97,7 +97,7 @@ Implementace načte soubor z disku a asynchronně datové proudy obsah do objekt
 > [!NOTE]
 > To je ideální příklad přesunu vstupně-výstupních operací do `activityTrigger` funkce. Pouze mohou práce být distribuovány na mnoha různých virtuálních počítačů, ale můžete také získat výhody vytváření kontrolních bodů průběhu. Pokud hostitelský proces získá ukončeno z jakéhokoli důvodu, víte, které nahrávání už byl dokončený.
 
-## <a name="run-the-sample"></a>Spustit ukázku
+## <a name="run-the-sample"></a>Spuštění ukázky
 
 Orchestration můžete spustit odesláním následující požadavku HTTP POST.
 
@@ -156,9 +156,9 @@ Tady je orchestration jako jeden soubor jazyka C# v projektu sady Visual Studio:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Tato ukázka ukazuje, jak implementovat fan odesílacího/fan v vzor. Další příklad ukazuje, jak implementovat [stavová singleton](durable-functions-singletons.md) vzor v [eternal orchestration](durable-functions-eternal-orchestrations.md).
+Tato ukázka ukazuje, jak implementovat fan odesílacího/fan v vzor. Další příklad ukazuje, jak implementovat pomocí vzoru monitorování [trvanlivý časovače](durable-functions-timers.md).
 
 > [!div class="nextstepaction"]
-> [Stavová singleton ukázku spustit](durable-functions-counter.md)
+> [Spustit ukázku monitorování](durable-functions-monitor.md)

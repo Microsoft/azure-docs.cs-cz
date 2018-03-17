@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 8384d17405653a29207cdfa4f6143504d0db2022
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: ea8b5db946d6b35ea4583d9170ec36e5f95e16cd
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton orchestrators trvanlivý funkcí (Azure Functions)
 
@@ -61,10 +61,7 @@ Ve výchozím nastavení instance, které jsou ID náhodně generované identifi
 
 Podrobnosti implementace orchestrator funkce není ve skutečnosti podstatné. Může to být regulární orchestrator funkci, která při spuštění a dokončení, nebo může být ten, který spouští navždy (tedy [Eternal Orchestration](durable-functions-eternal-orchestrations.md)). Důležité je, se někdy jedinou instanci spuštěné současně.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Zjistěte, jak volat dílčí orchestrations](durable-functions-sub-orchestrations.md)
-
-> [!div class="nextstepaction"]
-> [Spuštění ukázkové singleton](durable-functions-counter.md)

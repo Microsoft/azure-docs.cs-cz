@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 495ef6a93ee06423495269306ad06e76dda13e10
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: be737550aa1cff22bc413ee8ce243f8d8588f6a5
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Nasazení zařízení StorSimple virtuální pole - zřídit ve službě VMware
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -127,7 +127,7 @@ Proveďte následující kroky pro zřízení virtuálního zařízení ve vaš�
 17. Na **úložiště** vyberte úložiště, kterou chcete použít ke zřízení virtuálního počítače.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image18.png)
-18. Na **verze virtuálního počítače** vyberte **verze virtuálního počítače: 8**. Verze 8 až 11 všechny podporované.
+18. Na **verze virtuálního počítače** vyberte **verze virtuálního počítače: 8**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
 19. Na **hostovaný operační systém** vyberte **hostovaný operační systém** jako **Windows**. Pro **verze**, z rozevíracího seznamu vyberte **Microsoft Windows Server 2012 (64 bitů)**.
@@ -157,7 +157,7 @@ Proveďte následující kroky pro zřízení virtuálního zařízení ve vaš�
 27. Na **připravení Dokončit** zkontrolujte všechna nastavení, které jsou přidružené k novému virtuálnímu počítači. Zkontrolujte **upravit nastavení virtuálního počítače před dokončením**. Klikněte na tlačítko **pokračovat**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. Na **vlastnosti virtuálního počítače** stránky v **hardwaru** najděte hardwarové zařízení. Vyberte **nový pevný Disk**. Klikněte na tlačítko **Přidat**.
+28. Na **vlastnosti virtuálního počítače** stránky v **hardwaru** najděte hardwarové zařízení. Vyberte **nový pevný Disk**. Klikněte na tlačítko **Add** (Přidat).
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
 29. Zobrazí **přidat Hardware** okno. Na **typ zařízení** v části **vyberte typ zařízení, které chcete přidat**, vyberte **pevný Disk**a klikněte na tlačítko **Další**.
@@ -243,6 +243,6 @@ Pokud jste čelí chybě během počáteční konfigurace provedená prostředni
 * Spustit diagnostické testy na [řešení potíží s instalací webového uživatelského rozhraní](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
 * [Generovat balíček protokolu a prohlížení soubory protokolů](storsimple-ova-web-ui-admin.md#generate-a-log-package).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Nastavení pole virtuální zařízení StorSimple jako souborový server](storsimple-virtual-array-deploy3-fs-setup.md)
 * [Nastavení pole virtuální zařízení StorSimple jako serveru iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md)

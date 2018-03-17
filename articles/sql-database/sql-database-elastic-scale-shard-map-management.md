@@ -7,20 +7,20 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 03/16/2018
 ms.author: sstein
-ms.openlocfilehash: beddb3d9ac4a8c1ec5bd034c959c6b734c5b4403
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cf8d4427cddbe6368ac265fe9ecc0f408f7fb1fb
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontální navýšení kapacity databáze pomocí Správce horizontálního oddílu mapy
 Chcete-li snadno škálovat databáze na SQL Azure, použijte správce mapy horizontálního oddílu. Mapa správce horizontálního oddílu je speciální databáze, která uchovává globální mapování informace o všech horizontálních oddílů (databáze) v sadě horizontálního oddílu. Metadata umožňuje aplikaci připojit ke správné databázi na základě hodnotu **horizontálního dělení klíč**. Kromě toho každých horizontálního oddílu v sadě obsahuje mapy, které sledují místní sdílení dat (označované jako **shardlets**). 
 
 ![Správa mapování horizontálních](./media/sql-database-elastic-scale-shard-map-management/glossary.png)
 
-Pochopení, jak se vytvářejí tyto mapy je nezbytné pro správu mapy horizontálního oddílu. To se provádí pomocí třídy ShardMapManager ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)), který se nachází v [klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md) ke správě map horizontálního oddílu.  
+Pochopení, jak se vytvářejí tyto mapy je nezbytné pro správu mapy horizontálního oddílu. To se provádí pomocí třídy ShardMapManager ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager), který se nachází v [klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md) ke správě map horizontálního oddílu.  
 
 ## <a name="shard-maps-and-shard-mappings"></a>Mapování horizontálních a horizontálního oddílu mapy
 Pro každý horizontálního oddílu je nutné vybrat typ mapy horizontálního oddílu k vytvoření. Výběr závisí na architektuře databáze: 
@@ -96,7 +96,7 @@ A **ShardMapManager** objektu je vytvořený objekt pro vytváření ([Java](/ja
 
 **Poznámka:** **ShardMapManager** by měla být vytvořena instance pouze jednou v každé doméně aplikace v rámci kód inicializace pro aplikaci. Vytvoření další instance ShardMapManager ve stejné doméně aplikace má za následek vyšší paměť a využití CPU aplikace. A **ShardMapManager** může obsahovat libovolný počet horizontálních mapy. Mapu jeden horizontálního oddílu může být dostatečné pro mnoho aplikací, jsou časy při použití různé sady databází pro jiné schéma nebo pro jedinečné účely; v těchto případech může být vhodnější než více mapami horizontálního oddílu. 
 
-V tomto kódu aplikace pokusí otevřít existující **ShardMapManager** s TryGetSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.trygetsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)) metoda.  Pokud objekty, které představují globální **ShardMapManager** (GSM) není dosud neexistuje v databázi, klientské knihovny vytvoří je existuje pomocí CreateSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.createsqlshardmapmanager), [rozhraní .NET ](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) metoda.
+V tomto kódu aplikace pokusí otevřít existující **ShardMapManager** s TryGetSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.trygetsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) metoda. Pokud objekty, které představují globální **ShardMapManager** (GSM) není dosud neexistuje v databázi, klientské knihovny vytvoří je existuje pomocí CreateSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.createsqlshardmapmanager), [rozhraní .NET ](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) metoda.
 
 ```Java
 // Try to get a reference to the Shard Map Manager in the shardMapManager database.

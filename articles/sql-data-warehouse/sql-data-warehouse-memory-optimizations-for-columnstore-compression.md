@@ -6,20 +6,19 @@ documentationcenter: NA
 author: barbkess
 manager: jhubbard
 editor: 
-ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 10/23/2017
+ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: 6640ed8958f6b05c015fb6c61d07aeea95b18022
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 74e641f9da418d678bdbef0c69f9f59ccee32303
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Tím se maximalizuje quality rowgroup pro columnstore
 
@@ -140,9 +139,9 @@ OPTION (MAXDOP 1);
 Velikost DWU a třída prostředků uživatele, společně určují, kolik paměti je k dispozici pro dotaz uživatele. Ke zvýšení přidělení paměti pro dotaz zatížení, můžete zvýšit počet Dwu nebo zvýšit Třída prostředků.
 
 - Pokud chcete zvýšit jednotkami Dwu, najdete v části [jak škálování výkonu?](quickstart-scale-compute-portal.md)
-- Chcete-li změnit třídy prostředků pro dotaz, [změnit v příkladu třída prostředků uživatele](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example).
+- Chcete-li změnit třídy prostředků pro dotaz, [změnit v příkladu třída prostředků uživatele](resource-classes-for-workload-management.md#assigning-resource-classes).
 
-Například na DWU 100 může uživatel ve třídě prostředků smallrc používat 100 MB paměti pro každý distribuci. Podrobnosti najdete v tématu [souběžnost v SQL Data Warehouse](sql-data-warehouse-develop-concurrency.md).
+Například na DWU 100 může uživatel ve třídě prostředků smallrc používat 100 MB paměti pro každý distribuci. Podrobnosti najdete v tématu [souběžnost v SQL Data Warehouse](resource-classes-for-workload-management.md).
 
 Předpokládejme, že zjistíte, je nutné, aby 700 MB paměti pro získání vysoce kvalitní rowgroup velikosti. Tyto příklady ukazují, jak můžete spuštěním dotazu zatížení s dostatek paměti.
 

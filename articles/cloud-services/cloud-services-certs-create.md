@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: 4032a429901c675436cb5e7fb04aa5645925fa30
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 6a1e4f5316cc0321c1409f9e48daeae6ee483bf6
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikáty pro cloudové služby Azure
 Certifikáty se používají v Azure pro cloudové služby ([služby certifikáty](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled oba typy certifikátů, jak k [vytvořit](#create) a [nasazení](#deploy) je do Azure.
@@ -41,14 +41,12 @@ Certifikáty služby může být spravován od něj odděleně vašim službám 
 Certifikáty pro správu umožňují ověření pomocí modelu nasazení classic. Mnoho programy a nástroje (například Visual Studio nebo sadu Azure SDK) použít tyto certifikáty k automatizaci konfigurace a nasazení různých služeb Azure. Tyto spolu nesouvisejí skutečně cloudových služeb. 
 
 > [!WARNING]
-> Dej si pozor! Tyto typy certifikátů, povolí všem uživatelům, kteří se mají spravovat předplatné, které jsou přidruženy ověřuje. 
+> Buďte opatrní! Tyto typy certifikátů, povolí všem uživatelům, kteří se mají spravovat předplatné, které jsou přidruženy ověřuje. 
 > 
 > 
 
 ### <a name="limitations"></a>Omezení
 Existuje limit 100 certifikáty pro správu podle předplatného. Je také limit 100 certifikáty pro správu pro všechna předplatná pod ID specifické služby správce uživatele. Pokud ID uživatele pro účet správce již byl použit pro přidání 100 certifikáty pro správu a je nezbytné pro další certifikáty, můžete přidat společné správce o přidání dalších certifikátů. 
-
-Před přidáním více než 100 certifikáty, najdete v části Pokud můžete opakovaně použít stávající certifikát. Potenciálně nepotřebné složitost pomocí spolusprávci přidá do vašeho certifikátu správy.
 
 <a name="create"></a>
 ## <a name="create-a-new-self-signed-certificate"></a>Vytvořit nový certifikát podepsaný svým držitelem
@@ -66,7 +64,7 @@ Můžete použít jakýkoli nástroj, který je možné vytvořit certifikát po
 
 Existují dva způsoby snadné vytvoření certifikátu v systému Windows, pomocí `makecert.exe` nástroje nebo služby IIS.
 
-### <a name="makecertexe"></a>MakeCert.exe
+### <a name="makecertexe"></a>Makecert.exe
 Tento nástroj je zastaralá a již jsou zde uvedeny. Další informace najdete v tématu [tohoto článku na webu MSDN](https://msdn.microsoft.com/library/windows/desktop/aa386968).
 
 ### <a name="powershell"></a>PowerShell
@@ -92,7 +90,7 @@ Existuje mnoho stránek na Internetu, které se týkají jak to provést pomocí
 ### <a name="linux"></a>Linux
 [To](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) článek popisuje, jak umožnit vytváření certifikátů pomocí protokolu SSH.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Nahrajte certifikát služby do portálu Azure](cloud-services-configure-ssl-certificate-portal.md).
 
 Nahrát [certifikát správy rozhraní API](../azure-api-management-certs.md) na portál Azure.

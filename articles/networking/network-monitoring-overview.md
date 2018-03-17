@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 66e6b49dd3e3c7d0f2cbd7547b68733e1d4959ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7b9f42607f313f5570f414e810eafc6775ea18b9
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="network-monitoring-solutions"></a>Řešení pro monitorování sítě 
 
@@ -33,6 +33,8 @@ Monitorování výkonu v síti (NPM) je sada funkcí, z nichž každá byla zam�
 * Víc datových center a firemní pobočky
 * Mise kritické vícevrstvé aplikace a micro – služby
 * Umístění uživatele a webové aplikace (HTTP či HTTPs) 
+
+Sledování výkonu, ExpressRoute sledování a monitorování koncového bodu služby jsou možnosti v rámci NPM monitorování a jsou popsané níže.
 
 ## <a name="performance-monitor"></a>Monitorování výkonu
 
@@ -91,6 +93,7 @@ Analýza provozu je cloudové řešení, která poskytuje přehled o činnosti u
 * Provoz TOP talkers, chatty aplikace konverzace virtuálních počítačů v cloudu, aktivní body
 * Zdroje a cíle provozu mezi virtuálními sítěmi, vzájemných vztahů mezi nejdůležitější obchodní služby a aplikace
 * Zabezpečení – škodlivý přenos, porty, otevřete na Internetu, aplikace nebo virtuální počítače pokusu o přístup k Internetu...
+* Využití kapacity - pomáhá eliminovat problémy předimenzování nebo nedostatečné podle monitorování trendů využití brány sítě VPN a další služby
 
 Analýza provozu poskytuje jim s řešitelné informace, které pomáhá audit aktivitu sítě vaší organizace, zabezpečené aplikacím a datům, optimalizace výkonu zatížení a zůstat kompatibilní.
 
@@ -100,7 +103,7 @@ Související odkazy:
 * [Příspěvek blogu](https://aka.ms/trafficanalytics), [dokumentace](https://aka.ms/trafficanalyticsdocs), [– nejčastější dotazy](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
 
 ## <a name="dns-analytics"></a>DNS Analytics
-Vytvořené pro Správce DNS, toto řešení shromažďuje, analyzuje a korelaci protokolů DNS zajistit bezpečnost, operace a výkonu související s statistiky.  Některé možnosti jsou:
+Vytvořené pro Správce DNS, toto řešení shromažďuje, analyzuje a korelaci protokolů DNS k zajištění zabezpečení, operace a přehledy související s výkonem.  Některé možnosti jsou:
 
 * Identifikace klientů, které se pokusí přeložit na škodlivý domén
 * Identifikace záznamů o prostředcích
@@ -113,7 +116,7 @@ Vytvořené pro Správce DNS, toto řešení shromažďuje, analyzuje a korelaci
 Související odkazy:
 * [Příspěvek blogu](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentace](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Konfigurace programu Sledování výkonu sítě](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor)
 * [Konfigurace Network Performance Monitor pro ExpressRoute](../expressroute/how-to-npm.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 77c3e41dd4b1fdf7e518de67b353f69fcb758c60
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3f4da70d94d28496f5b08035ead0ef7acf1ca3bc
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak zapisovat do protokolu událostí Azure Event Hubs ve službě Azure API Management
 Vysoce škálovatelná služba Azure Event Hubs slouží ke zpracování příchozích dat. Dokáže přijímat miliony událostí za sekundu a umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Služba Event Hubs slouží jako "přední dveře" pro kanál událostí, a jakmile jsou data shromážděna do centra událostí, lze je transformovat a uložené pomocí kteréhokoli poskytovatele služeb, analýzu v reálném čase nebo adaptérů pro dávkování či ukládání. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události, aby spotřebitelé událostí mohli k událostem přistupovat podle svého vlastního plánu.
@@ -36,7 +36,7 @@ Protokolovací nástroje API Management jsou konfigurováni pomocí [rozhraní A
 
 Pokud chcete vytvořit protokoly, ujistěte se, požadavek HTTP PUT pomocí následující šablony adresy URL:
 
-`https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2014-02-14-preview`
+`https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2017-03-01`
 
 * Nahraďte `{your service}` s názvem vaší instance služby API Management.
 * Nahraďte `{new logger name}` s požadovaným názvem pro vaše nové protokolovacího nástroje. Při konfiguraci odkazujete tento název [protokolu eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) zásad
@@ -51,7 +51,7 @@ Zadejte text žádosti pomocí následující šablony:
 
 ```json
 {
-  "loggertype" : "AzureEventHub",
+  "loggerType" : "AzureEventHub",
   "description" : "Sample logger description",
   "credentials" : {
     "name" : "Name of the Event Hub from the Azure Classic Portal",
@@ -60,9 +60,9 @@ Zadejte text žádosti pomocí následující šablony:
 }
 ```
 
-* `loggertype`musí být nastavena na `AzureEventHub`.
-* `description`poskytuje volitelný popis protokolovacího nástroje a v případě potřeby může být řetězec nulové délky.
-* `credentials`obsahuje `name` a `connectionString` centra událostí Azure.
+* `loggerType` musí být nastavena na `AzureEventHub`.
+* `description` poskytuje volitelný popis protokolovacího nástroje a v případě potřeby může být řetězec nulové délky.
+* `credentials` obsahuje `name` a `connectionString` centra událostí Azure.
 
 Pokud vytvoříte požadavek, je-li protokolovač vytvořena stavový kód `201 Created` je vrácen.
 

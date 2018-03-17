@@ -1,25 +1,22 @@
 ---
-title: "Předávání Azure Automation DSC data pro vytváření sestav k analýze protokolů OMS | Microsoft Docs"
-description: "Tento článek ukazuje, jak odeslat požadovaného stavu konfigurace (DSC) data pro vytváření sestav a správy Microsoft Operations Management Suite Log Analytics k poskytování další aspekty."
+title: "Předávání data pro vytváření sestav k analýze protokolů Azure Automation DSC."
+description: "Tento článek ukazuje, jak odeslat požadovaného stavu konfigurace (DSC) data pro vytváření sestav k Log Analytics k poskytování správy a další aspekty."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
 ms.service: automation
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/24/2017
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 5de22072a436e7a2dbaa7d413595c048f730189b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 03/16/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: d06ec240477c2defca7a463b2e9338bc5e3930ab
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>Předávání Azure Automation DSC data pro vytváření sestav k analýze protokolů OMS
+# <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>Předání dat sestav Azure Automation DSC do služby OMS Log Analytics
 
 Automatizace může odesílat data stavu uzlu DSC do pracovního prostoru analýzy protokolů Microsoft Operations Management Suite (OMS).  
 Stav dodržování předpisů se zobrazí na portálu Azure nebo v prostředí PowerShell pro uzly a pro jednotlivé prostředky DSC v konfigurace uzlu. Pomocí analýzy protokolů můžete:
@@ -81,7 +78,7 @@ Po nastavení integrace s analýzy protokolů pro data Automation DSC, **hledán
 Klikněte na každou operaci v seznamu se zobrazí data pro tuto operaci.
 
 Můžete také zobrazit protokoly [hledání v analýzy protokolů. V tématu [najít data pomocí protokolu hledání](../log-analytics/log-analytics-log-searches.md).
-Zadejte následující dotaz k vyhledání protokolů DSC:`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category = "DscNodeStatus"`
+Zadejte následující dotaz k vyhledání protokolů DSC: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category = "DscNodeStatus"`
 
 Také můžete zúžit dotaz podle názvu operaci. Například: ' typ = AzureDiagnostics ResourceProvider = "MICROSOFT. Kategorie AUTOMATIZACE"="DscNodeStatus"OperationName ="DscNodeStatusData"
 
@@ -92,7 +89,7 @@ Jednou z našich žádostem nejvyšší zákazníků je pro možnost odesílat e
 Pokud chcete vytvořit pravidlo výstrahy, začněte vytvořením hledání protokolů pro záznamy sestavy DSC, které by měla vyvolat výstrahu.  Klikněte **výstraha** tlačítko Vytvořit a nakonfigurovat pravidlo výstrahy.
 
 1. Na stránce Přehled protokolu Analytics klikněte na tlačítko **hledání protokolů**.
-1. Vytvoření vyhledávací dotaz protokolu pro upozornění zadáním následujících hledání do pole dotazu:`Type=AzureDiagnostics Category=DscNodeStatus NodeName_s=DSCTEST1 OperationName=DscNodeStatusData ResultType=Failed`
+1. Vytvoření vyhledávací dotaz protokolu pro upozornění zadáním následujících hledání do pole dotazu:  `Type=AzureDiagnostics Category=DscNodeStatus NodeName_s=DSCTEST1 OperationName=DscNodeStatusData ResultType=Failed`
 
   Pokud jste nastavili protokolů z více než jeden účet Automation nebo odběr do pracovního prostoru, můžete je seskupovat vaše předplatné a účet Automation.  
   Název účtu Automation může být odvozen z pole prostředků do vyhledávání DscNodeStatusData.  
@@ -104,7 +101,7 @@ Jednou z výhod použití analýzy protokolů je, že můžete vyhledat selhán�
 Vyhledejte všechny instance prostředků DSC, které se nezdařilo.
 
 1. Na stránce Přehled protokolu Analytics klikněte na tlačítko **hledání protokolů**.
-1. Vytvoření vyhledávací dotaz protokolu pro upozornění zadáním následujících hledání do pole dotazu:`Type=AzureDiagnostics Category=DscNodeStatus OperationName=DscResourceStatusData ResultType=Failed`
+1. Vytvoření vyhledávací dotaz protokolu pro upozornění zadáním následujících hledání do pole dotazu:  `Type=AzureDiagnostics Category=DscNodeStatus OperationName=DscResourceStatusData ResultType=Failed`
 
 ### <a name="view-historical-dsc-node-status"></a>Zobrazit historická DSC uzlu stav
 
@@ -146,7 +143,7 @@ Diagnostika z Azure Automation vytvoří dvě kategorie záznamů v analýzy pro
 | ResultDescription | Popis pro tuto operaci. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet služby Automation. |
 | ResourceGroup | Název skupiny prostředků pro účet služby Automation. |
-| ResourceProvider | SPOLEČNOSTI MICROSOFT. AUTOMATIZACE |
+| ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 | CorrelationId |Identifikátor GUID, který se o Id korelace sestavy dodržování předpisů. |
 
@@ -177,7 +174,7 @@ Diagnostika z Azure Automation vytvoří dvě kategorie záznamů v analýzy pro
 | ResultDescription | Popis pro tuto operaci. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet služby Automation. |
 | ResourceGroup | Název skupiny prostředků pro účet služby Automation. |
-| ResourceProvider | SPOLEČNOSTI MICROSOFT. AUTOMATIZACE |
+| ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 | CorrelationId |Identifikátor GUID, který se o Id korelace sestavy dodržování předpisů. |
 
@@ -190,7 +187,7 @@ Odeslání dat Automation DSC k analýze protokolů, lze získat lepší přehle
 
 Log Analytics poskytuje lepší viditelnost provozní data Automation DSC a může pomoct adresu incidenty rychleji.  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o tom, jak vytvořit různé vyhledávací dotazy a kontrolujte protokoly Automation DSC s analýzy protokolů najdete v tématu [hledání přihlásit analýzy protokolů](../log-analytics/log-analytics-log-searches.md)
 * Další informace o používání Azure Automation DSC, najdete v části [Začínáme s Azure Automation DSC.](automation-dsc-getting-started.md)

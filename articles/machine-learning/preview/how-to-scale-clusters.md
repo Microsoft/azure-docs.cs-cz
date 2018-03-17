@@ -2,8 +2,8 @@
 title: "Postup škálování clusteru Azure Container Service pro Machine Learning | Microsoft Docs"
 description: "Škálování clusteru služby ACS - škálování a statické škálování; škálování počtu uzlů v clusteru"
 services: machine-learning
-author: AashishB
-ms.author: AashishB
+author: aashishb
+ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: ea91cbf1fb8825563fa9f7e084da7869c973715b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 58709b5a5b060552e1bc349a6f720d3f45348ba0
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Škálování clusteru spravovat propustnost webové služby
 
