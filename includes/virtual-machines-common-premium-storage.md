@@ -57,10 +57,12 @@ Zde jsou některé funkce úložiště Premium Storage:
 
     Prémiový účet úložiště podporuje jenom místně redundantního úložiště jako možnost replikace. Místně redundantní úložiště udržuje tři kopie dat v jedné oblasti. Místní zotavení po havárii, je třeba zálohovat vaše disky virtuálních počítačů v jiné oblasti s použitím [Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md). Také musíte použít účet geograficky redundantní úložiště (GRS) jako úložiště záloh. 
 
-    Azure pomocí svého účtu úložiště jako kontejner pro nespravovaná disky. Když vytvoříte Azure DS-series, DSv2-series, GS-series, nebo služby Fs-series virtuálních počítačů s nespravované disky a vyberte účet úložiště premium operačního systému a datové disky jsou uložené v daném účtu úložiště.
+    Azure pomocí svého účtu úložiště jako kontejner pro nespravovaná disky. Když vytvoříte virtuální počítač Azure, který podporuje službu Premium Storage s nespravované disky, a vyberte účet úložiště premium, operačního systému a datové disky jsou uložené v daném účtu úložiště.
 
 ## <a name="supported-vms"></a>Podporované virtuální počítače
-Premium Storage podporuje DS-series, DSv2-series, GS-series, Ls-series, Fs-series a B-series virtuálních počítačů. Můžete použít úložiště standard a premium disků s těmito typy virtuálních počítačů. Disky úložiště premium nelze použít s řadou virtuálních počítačů, které nejsou Premium úložiště kompatibilní.
+
+Premium Storage podporuje B-series, DS-series, DSv2-series, DSv3-series, GS-series, Ls-series, M-series a virtuálních počítačů služby Fs-series. Můžete použít úložiště standard a premium disků s těmito typy virtuálních počítačů. Disky úložiště premium nelze použít s řadou virtuálních počítačů, které nejsou Premium úložiště kompatibilní.
+
 
 Informace o typech a velikostech virtuálních počítačů v Azure pro Windows najdete v tématu věnovaném [velikostem virtuálních počítačů s Windows](../articles/virtual-machines/windows/sizes.md). Informace o typech a velikostech virtuálních počítačů v Azure pro Linux najdete v tématu věnovaném [velikostem virtuálních počítačů s Linuxem](../articles/virtual-machines/linux/sizes.md).
 
