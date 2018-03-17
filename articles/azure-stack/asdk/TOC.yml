@@ -1,0 +1,87 @@
+- name: Dokumentaci Azure zásobníku Development Kit
+  href: index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je ASDK?
+      href: asdk-what-is.md
+    - name: Poznámky k verzi ASDK
+      href: asdk-release-notes.md
+- name: Kurzy
+  items:
+    - name: 1. Nasazení ASDK
+      items:
+        - name: Nasazení ASDK – instalační program
+          href: asdk-deploy.md
+        - name: Nasazení ASDK – prostředí PowerShell
+          href: asdk-deploy-powershell.md
+        - name: Znovu nasaďte ASDK
+          href: asdk-redeploy.md
+    - name: 2. Přidat položku marketplace.
+      items:
+        - name: Stáhnout ze služby Azure
+          href: asdk-marketplace-item.md
+        - name: Přidat z místního zdroje
+          href: asdk-marketplace-item-offline.md
+    - name: 3. Nabídka služeb IaaS
+      href: asdk-offer-services.md
+    - name: 4. Přihlášení k odběru nabídky
+      href: asdk-subscribe-services.md
+    - name: 5. Aktualizace nabídky a plány
+      href: asdk-update-offers.md
+    - name: 6. Vytvoření virtuálního počítače ze šablony
+      href: asdk-create-vm-template.md
+- name: Koncepty
+  items:
+    - name: Informace o plánování nasazení
+      href: asdk-deploy-considerations.md
+    - name: Architektura Development kit
+      href: asdk-architecture.md
+    - name: Základy správy ASDK
+      href: asdk-admin-basics.md
+    - name: Úlohy pokročilé hodnocení
+      href: asdk-advanced-eval.md
+- name: Postup
+  items:
+    - name: Instalační program ASDK
+      items:
+        - name: Stažení a extrakci development kit
+          href: asdk-download.md
+        - name: Příprava na hostitelském počítači ASDK
+          href: asdk-prepare-host.md
+        - name: Nainstalujte ASDK
+          href: asdk-install.md
+        - name: Po nasazení konfigurace
+          href: asdk-post-deploy.md
+    - name: Registrace ASDK
+      href: asdk-register.md
+    - name: Konfigurace nastavení telemetrie Azure zásobníku
+      href: asdk-telemetry.md
+    - name: Řešení potíží
+      href: asdk-troubleshooting.md
+- name: Referenční informace
+  items:
+    - name: Azure Stack PowerShell
+      href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.10
+    - name: Azure Stack CLI
+      href: /cli/azure/?view=azure-cli-2017-03-09-profile
+- name: Související
+  items:
+    - name: Dokumentace operátora k Azure Stacku
+      href: /azure/azure-stack/
+    - name: Uživatelská dokumentace k Azure Stacku
+      href: /azure/azure-stack/user/
+- name: Zdroje a prostředky
+  items:
+    - name: Přehled Azure zásobníku
+      href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
+    - name: Azure fórum MSDN zásobníku
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
+    - name: Azure zásobníku dokumentace zpětné vazby
+      href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
+    - name: Informace o cenách
+      href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-stack'
+    - name: Školení a certifikace
+      href: 'https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert'
