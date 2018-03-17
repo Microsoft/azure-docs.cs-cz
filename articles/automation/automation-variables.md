@@ -1,24 +1,18 @@
 ---
-title: "Proměnné prostředky ve službě Azure Automation | Microsoft Docs"
+title: "Proměnné prostředky ve službě Azure Automation"
 description: "Proměnné prostředky jsou hodnoty, které jsou k dispozici pro všechny runbooky a konfigurace DSC ve službě Azure Automation.  Tento článek vysvětluje podrobnosti proměnné a postupy pro práci s nimi v textové a grafické vytváření."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: b880c15f-46f5-4881-8e98-e034cc5a66ec
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/07/2018
-ms.author: magoedte;bwren
-ms.openlocfilehash: 2ed4cf16615a0ca1789b789a635de564af568eb9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+manager: carmonm
+ms.openlocfilehash: 7c36fce380712da6572e9512a05af9c23c4152a2
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="variable-assets-in-azure-automation"></a>Proměnné prostředky ve službě Azure Automation
 
@@ -34,8 +28,8 @@ Proměnné služeb automatizace jsou trvalé, takže budou nadále k dispozici i
 
 Při vytváření proměnné je můžete zadat, že je uložen šifrované. Když je proměnná zašifrovaná, bezpečně se uloží ve službě Azure Automation a jeho hodnotu nelze načíst z [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) rutinu, která se dodává jako součást modulu Azure PowerShell. Jediným způsobem, že šifrovaná hodnota se dá načíst je z **Get-AutomationVariable** aktivity v sady runbook nebo konfigurace DSC.
 
-> [!NOTE]
-> Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, připojení, certifikátů a zašifrované proměnné. Tyto prostředky jsou zašifrovány a uložené ve službě Azure Automation pomocí jedinečný klíč, který se vygeneruje pro každý účet automation. Tento klíč se šifruje pomocí hlavního certifikátu a uloží ve službě Azure Automation. Před ukládání o zabezpečený prostředek, klíč pro účet služby automation jsou dešifrována pomocí hlavního certifikátu a pak se použije k zašifrování asset.
+>[!NOTE]
+>Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, připojení, certifikátů a zašifrované proměnné. Tyto prostředky jsou zašifrovány a uložené ve službě Azure Automation pomocí jedinečný klíč, který se vygeneruje pro každý účet automation. Tento klíč je uložený v Key Vault. Před uložením o zabezpečený prostředek, je klíč načtený ze Key Vault a pak použije k zašifrování asset.
 
 ## <a name="variable-types"></a>Typy proměnných
 

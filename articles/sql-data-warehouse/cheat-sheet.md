@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 02/20/2018
 ms.author: acomet
-ms.openlocfilehash: 6c8278be32ae6c6452283ba946a36f363dd4d76d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c67d56ff63f70baa052be17c119d943c558d398f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Tahák pro Azure SQL Data Warehouse
 Chcete-li list podvést poskytuje užitečné tipy a osvědčené postupy pro vytváření řešení Azure SQL Data Warehouse. Před zahájením práce, další informace o jednotlivých kroků podrobně načtením [vzory úlohy Azure SQL Data Warehouse a proti vzory](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns), která vysvětluje, co je SQL Data Warehouse a co není.
@@ -146,12 +146,12 @@ Nasaďte jedním kliknutím vaší koncových v databázích SQL z SQL Data Ware
 [Nákresu]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
 
 <!--Article references-->
-[načítání dat]:./design-elt-data-loading.md
-[deeper guidance]: ./guidance-for-loading-data.md
-[indexy]:./sql-data-warehouse-tables-index.md
-[oddíly]:./sql-data-warehouse-tables-partition.md
-[statistiky]:./sql-data-warehouse-tables-statistics.md
-[třídy prostředků a souběžnost]:./sql-data-warehouse-develop-concurrency.md
+[načítání dat]:design-elt-data-loading.md
+[deeper guidance]:guidance-for-loading-data.md
+[indexy]:sql-data-warehouse-tables-index.md
+[oddíly]:sql-data-warehouse-tables-partition.md
+[statistiky]:sql-data-warehouse-tables-statistics.md
+[třídy prostředků a souběžnost]:resource-classes-for-workload-management.md
 
 <!--MSDN references-->
 

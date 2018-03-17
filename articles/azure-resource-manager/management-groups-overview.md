@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: rithorn
-ms.openlocfilehash: 1264bf77b6d922f5beb22177d1ac63efa9386ef2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a86fc568a0c7f4ada0b853cda8a7b2e06ed7dfcb
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání prostředků s skupin pro správu Azure 
 
-Pokud máte více předplatných, můžete je uspořádat do kontejnerů názvem "skupin pro správu" vám pomůžou spravovat přístup, zásady a dodržování předpisů ve vašich předplatných. Skupiny pro správu poskytují podnikové úrovni správy ve velkém měřítku bez ohledu na to, jaký typ předplatné můžete mít.  
+Pokud má vaše organizace mnoho odběrů, musíte způsob, jak efektivně spravovat přístup, zásady a dodržování předpisů pro tyto odběry. Skupiny pro správu Azure poskytuje úroveň oboru výše odběry. Uspořádání odběrů do kontejnerů názvem "skupin pro správu" a použít vaše podmínky zásad správného řízení ke skupinám pro správu. Všechny odběry v rámci skupiny pro správu automaticky převezmou podmínky pro skupinu pro správu. Skupiny pro správu poskytují podnikové úrovni správy ve velkém měřítku bez ohledu na to, jaký typ předplatné můžete mít.
 
 Funkce skupiny správy je dostupná ve verzi public preview. Chcete začít používat správu skupin, přihlášení, které [portál Azure](https://portal.azure.com) a vyhledejte **skupin pro správu** v **všechny služby** části. 
 

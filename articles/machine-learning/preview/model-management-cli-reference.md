@@ -2,8 +2,8 @@
 title: "Azure Machine Learning modelu rozhraní příkazového řádku managementu | Microsoft Docs"
 description: "Referenční informace o rozhraní příkazového řádku Azure Machine Learning modelu Management."
 services: machine-learning
-author: raymondl
-ms.author: raymondl, aashishb
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/08/2017
-ms.openlocfilehash: 219c61d1842369caadaf8e85dcb039242c37ef6c
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 27361c5b92a8748a026d457875fadfc1f3529076
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="model-management-command-line-interface-reference"></a>Referenční informace o modelu správy rozhraní příkazového řádku
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/23/2018
 
 **Vytvoření modelu správy účtu**
 
-Vytvoření modelu správy účtu pomocí následujícího příkazu. Tento účet se použije pro fakturaci.
+Vytvořte účet model správy pro fakturaci pomocí následujícího příkazu:
 
 `az ml account modelmanagement create --location [Azure region e.g. eastus2] --name [new account name] --resource-group [resource group name to store the account in]`
 
@@ -76,7 +76,7 @@ Existují dvě možnosti pro nasazení: *místní* a *clusteru*. Nastavení `--c
 
 `az ml env setup [-c] --location [location of environment resources] --name[name of environment]`
 
-To inicializuje vaší Azure strojového učení prostředí s účet úložiště, ACR registru a službě Statistika aplikaci vytvořit ve vašem předplatném. Ve výchozím nastavení je-li zadána žádná příznak prostředí inicializována pro pouze místní nasazení (žádné ACS). Pokud potřebujete škálování služby, zadejte `--cluster` (nebo `-c`) příznak pro vytvoření clusteru služby ACS.
+Tento příkaz inicializuje vaší Azure strojového učení prostředí s účet úložiště, ACR registru a službě Statistika aplikaci vytvořit ve vašem předplatném. Ve výchozím nastavení je-li zadána žádná příznak prostředí inicializována pro pouze místní nasazení (žádné ACS). Pokud potřebujete škálování služby, zadejte `--cluster` (nebo `-c`) příznak pro vytvoření clusteru služby ACS.
 
 Podrobnosti o příkazu:
 
@@ -89,12 +89,12 @@ Podrobnosti o příkazu:
     --cluster -c                   : Flag to provision ACS cluster. Off by default; specify this to force an ACS cluster deployment.
     --key-pem                      : Path to .pem file with certificate key.
     --master-count -m              : Number of master nodes to provision in the ACS cluster. Acceptable values: 1, 3, 5. Default: 1.
-    --resource-group -g            : Resource group in which to create compute resource. Will be created if it does not exist.
-                                     If not provided, resource group will be created with 'rg' appended to 'name.'.
+    --resource-group -g            : Resource group in which to create compute resource. Is created if it does not exist.
+                                     If not provided, resource group is created with 'rg' appended to 'name.'.
     --service-principal-app-id -a  : App ID of service principal to use for configuring ML compute.
     --service-principal-password -p: Password associated with service principal.
     --storage -s                   : ARM ID of storage account to associate with this environment.
-    --yes -y                       : Flag to answer 'yes' to any prompts. Command will fail if user is not logged in.
+    --yes -y                       : Flag to answer 'yes' to any prompts. Command fails if user is not logged in.
 
 Globální argumenty
 ```
@@ -110,7 +110,7 @@ Globální argumenty
     register
     show
 
-Zaregistrovat modelu
+**Zaregistrovat modelu**
 
 Příkaz pro registraci modelu.
 
@@ -143,7 +143,7 @@ Globální argumenty
 
 **Vytvoření manifestu**
 
-Vytvoří soubor manifestu pro model. 
+Následující příkaz vytvoří soubor manifestu pro model. 
 
 `az ml manifest create --manifest-name [your new manifest name] -f [path to code file] -r [runtime for the image, e.g. spark-py]`
 
@@ -289,7 +289,7 @@ Globální argumenty
 
 Poznámka: na `-d` příznak pro připojení závislosti: Pokud předáte název adresáře, který ještě není dodávat (zip, vkládání atd.), automaticky získá tar'ed adresáře a je předán hotová, pak automaticky jednoduchý na druhém konci. 
 
-Pokud předáte v adresáři, který je již instalován, jsme s nimi zacházet jako soubor a předejte ji společně, jako je. Nebude zpřístupnění automaticky. předpokládá se, že pro zpracování, který do vašeho kódu.
+Pokud předáte v adresáři, který je již instalován, adresář je považován za soubor a předají je. Je zpřístupnění automaticky. předpokládá se, že pro zpracování, který do vašeho kódu.
 
 **Získat podrobnosti služby**
 

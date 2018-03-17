@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 7892c74f03647e289ed96055fb9db5c2f08f0234
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 59ee56e225623295dd63bf5ae303bfe1aa8e95cf
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrace databáze SQL serveru do Azure SQL Database
 
@@ -33,7 +33,7 @@ V obou případech je potřeba zajistit, že zdrojová databáze je kompatibiln�
 
  Tuto metodu použijte k migraci na jednu, nebo databázi ve fondu, pokud si může dovolit výpadky nebo novější migraci provádíte testovací migraci provozní databáze. Podívejte se kurz [migrovat databázi systému SQL Server](sql-database-migrate-your-sql-server-database.md).
 
-Následující seznam obsahuje obecné pracovní postup pro migraci databáze systému SQL Server je jedna nebo databázi ve fondu pomocí této metody. Migrace na spravované Instance, najdete v části [migrace do Instance spravované](sql-database-cloud-migrate.md#migration-to-azure-sql-database-managed-instance).
+Následující seznam obsahuje obecné pracovní postup pro migraci databáze systému SQL Server je jedna nebo databázi ve fondu pomocí této metody. Migrace na spravované Instance, najdete v části [migrace do Instance spravované](sql-database-managed-instance-migrate.md).
 
   ![Diagram migrace VSSSDT](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
@@ -116,7 +116,7 @@ Kromě hledání na internetu a využití těchto prostředků použijte [fóra 
 > Spravované Instance databáze SQL umožňuje migrovat existující instanci systému SQL Server a její databáze s minimálním k žádné problémy s kompatibilitou. V tématu [co je Instance spravované](sql-database-managed-instance.md).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Pomocí skriptu na blogu inženýrů Azure SQL EMEA můžete [monitorovat využití databáze tempdb během migrace](https://blogs.msdn.microsoft.com/azuresqlemea/2016/12/28/lesson-learned-10-monitoring-tempdb-usage/).
 * Pomocí skriptu na blogu inženýrů Azure SQL EMEA můžete [monitorovat volné místo pro protokoly transakcí ve vaší databázi, zatímco probíhá migrace](https://blogs.msdn.microsoft.com/azuresqlemea/2016/10/31/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database/0).
 * Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).

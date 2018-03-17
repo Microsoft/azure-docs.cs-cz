@@ -1,24 +1,20 @@
 ---
-title: "Podřízené runbooky ve službě Azure Automation | Microsoft Docs"
+title: "Podřízené runbooky ve službě Azure Automation"
 description: "Popisuje různé metody pro spuštění sady runbook ve službě Azure Automation z jiného runbooku a sdílení informací mezi nimi."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 919887b9-43e2-4c16-883c-f81807fe37db
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/15/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/02/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: 5c18444b5a2767ccdd9a61a3bc9218fa4c0aac04
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: e8fe3b0023d2cdb9061b5a2c15c3b2c7095c128e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podřízené runbooky ve službě Azure Automation
 Je osvědčeným postupem ve službě Azure Automation zapisovat opakovaně použitelné modulární runbooky se samostatnou funkcí, které můžete používat ostatní runbooky. Nadřazená sada runbook bude často volat podřízené runbooky provést požadovanou funkci. Existují dva způsoby, jak volat podřízené runbooky, a každá z nich má významné rozdíly, kterým byste měli porozumět, aby mohla určit, která bude vhodné pro různé scénáře.
@@ -43,7 +39,7 @@ Při publikování pořadí věci:
 
 * Pro sady runbook PowerShell Workflow a grafické prostředí PowerShell Workflow pouze záleží na pořadí publikování sad runbook.
 
-Při volání pomocí vložené spouštění podřízeného runbooku grafický nebo pracovního postupu Powershellu se právě používá název sady runbook.  Při volání podřízeného runbooku prostředí PowerShell, musí před jeho název s *.\\*  k určení, že se skript nachází v místním adresáři. 
+Při volání pomocí vložené spouštění podřízeného runbooku grafický nebo pracovního postupu Powershellu se právě používá název sady runbook.  Při volání podřízeného runbooku prostředí PowerShell, musí před jeho název s *.\\* k určení, že se skript nachází v místním adresáři. 
 
 ### <a name="example"></a>Příklad:
 Následující příklad popisuje vyvolání podřízeného testovacího runbooku, který přijímá tři parametry, komplexní objekt, celé číslo a logickou hodnotu. Výstup podřízeného runbooku je přiřazený k proměnné.  V takovém případě podřízené sady runbook je runbook pracovního postupu Powershellu

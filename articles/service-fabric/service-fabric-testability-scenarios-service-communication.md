@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4c6b53673dd4c79ce435c1593e7d08c7dd4a1cb0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c87b5d82b6eef2b1d28a3280cc2fa07c28084f90
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric testovatelnosti scénáře: komunikace služby
 Prostor orientované na služby architektury styly přirozeně v Azure Service Fabric a Mikroslužeb. V těchto typech distribuované architektury se komponentizované mikroslužbu aplikace obvykle skládají z více služeb, které je potřeba komunikovat. V případech i nejjednodušší obecně mít alespoň bezstavové webová služba a služba úložiště stavová data, která musí komunikovat.
@@ -67,7 +67,7 @@ Pomocí nástrojů testovatelnosti Service Fabric, můžete vytvořit testovací
    
     ```powershell
    
-    PS > Restart-ServiceFabricNode -NodeName Node_1
+    PS > Stop-ServiceFabricNode -NodeName Node_1
    
     ```
 
@@ -89,7 +89,7 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 V tomto příkladu jsme nastavený `QuorumLossMode` k `QuorumReplicas` indikující, že má vyvolat ztrátě kvora bez nutnosti převádět dolů všechny repliky. Tímto způsobem operace čtení jsou stále možné. K testování scénář, kde je k dispozici celý oddíl, můžete nastavit na tento přepínač `AllReplicas`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Další informace o akcích testovatelnosti](service-fabric-testability-actions.md)
 
 [Další informace o scénářích testovatelnosti](service-fabric-testability-scenarios.md)

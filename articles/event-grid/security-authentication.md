@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/15/2018
 ms.author: babanisa
-ms.openlocfilehash: 9d2b32df6e4b931539eac34d09135ea33069b936
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0b7ef71cf940f82f46a7f053e5c9f7ef64342b6e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Události zabezpečení mřížky a ověřování 
 
@@ -24,9 +24,9 @@ Azure mřížky událostí má tři typy ověřování:
 
 ## <a name="webhook-event-delivery"></a>Události Webhooku doručení
 
-Webhook má jedna řada způsobů pro příjem událostí v reálném čase z Azure událostí mřížky. Pokaždé, když je připraven k dodání novou událost, odešle Webhooku mřížky událostí nakonfigurovaný koncový bod HTTP s událostí v textu požadavku HTTP.
+Webhooky jsou jedním z mnoha způsoby, jak přijímat události z události mřížky Azure. Až o novou událost připravena, odešle Webhooku mřížky událostí nakonfigurovaný koncový bod HTTP s událostí v textu požadavku HTTP.
 
-Při registraci svůj vlastní koncový bod Webhooku s událostí mřížky, odešle požadavek POST s kódem jednoduché ověření aby bylo možné prokázat vlastnictví koncový bod. Vaše aplikace musí odpovídat tak, že odezva zpět ověřovacího kódu. Událost mřížky nejsou poskytovány události Webhooku koncových bodů, které nebyly předány ověření.
+Při registraci svůj vlastní koncový bod Webhooku s událostí mřížky, odešle požadavek POST s kódem jednoduché ověření prokázat vlastnictví koncový bod. Vaše aplikace musí odpovídat tak, že odezva zpět ověřovacího kódu. Mřížky událostí není doručovat události Webhooku koncových bodů, které nebyly ověření proběhlo úspěšně.
 
 ### <a name="validation-details"></a>Podrobnosti o ověření
 
@@ -34,6 +34,7 @@ Při registraci svůj vlastní koncový bod Webhooku s událostí mřížky, ode
 * Události obsahuje hodnotu hlavičky "Æg typu události: SubscriptionValidation".
 * V textu události má stejné schéma jako ostatní události událostí mřížky.
 * Data události obsahuje vlastnost s náhodně generované řetězec "validationCode". Například "validationCode: acb13...".
+* Toto pole obsahuje pouze událost ověření. Další události jsou zasílány v samostatné žádosti po vracení ověřovacího kódu.
 
 V následujícím příkladu je uveden příklad SubscriptionValidationEvent:
 
@@ -52,7 +53,7 @@ V následujícím příkladu je uveden příklad SubscriptionValidationEvent:
 }]
 ```
 
-Aby bylo možné prokázat vlastnictví koncový bod, vracení ověřovacího kódu ve vlastnosti validationResponse, jak je znázorněno v následujícím příkladu:
+K prokázání vlastnictví koncový bod, vracení ověřovacího kódu ve vlastnosti validationResponse, jak je znázorněno v následujícím příkladu:
 
 ```json
 {
@@ -69,7 +70,7 @@ Nakonec je důležité si uvědomit, mřížky událostí Azure podporuje pouze 
 
 ## <a name="event-subscription"></a>Odběru událostí
 
-K odběru události, musíte mít **Microsoft.EventGrid/EventSubscriptions/Write** oprávnění na požadovaný prostředek. Je nutné toto oprávnění, protože píšete nové předplatné v oboru prostředku. Požadovaný prostředek se liší v závislosti na tom, jestli se odběru tématu systému nebo vlastní heslo. Oba typy jsou popsané v této části.
+K odběru události, musíte mít **Microsoft.EventGrid/EventSubscriptions/Write** oprávnění na požadovaný prostředek. Je nutné toto oprávnění, protože psaní nové předplatné v oboru prostředku. Požadovaný prostředek se liší v závislosti na tom, jestli můžete jste přihlášení k odběru tématu systému nebo vlastní téma. Oba typy jsou popsané v této části.
 
 ### <a name="system-topics-azure-service-publishers"></a>Témata týkající se systému (vydavateli služby Azure)
 
@@ -79,7 +80,7 @@ Například k odběru události na účet úložiště s názvem **UCET**, potř
 
 ### <a name="custom-topics"></a>Vlastní témata
 
-Pro vlastní témata budete potřebovat oprávnění k zápisu nového odběru události v oboru tématu událostí mřížky. Formát prostředku není: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
+Pro vlastní témata budete potřebovat oprávnění k zápisu nového odběru události v oboru tohoto tématu mřížky událostí. Formát prostředku není: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
 Například k odběru vlastní téma s názvem **mytopic**, potřebujete oprávnění Microsoft.EventGrid/EventSubscriptions/Write na: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
@@ -103,7 +104,7 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 Tokeny SAS pro událost mřížky zahrnují prostředku, čas vypršení platnosti a podpis. Formát tokenu SAS: `r={resource}&e={expiration}&s={signature}`.
 
-Prostředek je cesta k tématu, ke kterému jsou odesílání událostí. Například je cesta platná prostředku: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
+Prostředek je cesta k tématu mřížky událostí, které události chcete odeslat. Například je cesta platná prostředku: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
 
 Generování podpisu z klíče.
 
@@ -140,7 +141,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ## <a name="management-access-control"></a>Správa řízení přístupu
 
-Azure mřížky událostí můžete řídit úroveň přístupu k různým uživatelům dělat různé operace správy, jako je například seznam událostí odběry, vytvořte nové a generovat klíče. Událost mřížky využívá Azure na základě Role přístupu zkontrolujte (RBAC).
+Azure mřížky událostí můžete řídit úroveň přístupu k různým uživatelům dělat různé operace správy, jako je například seznam událostí odběry, vytvořte nové a generovat klíče. Událost mřížky používá Azure na základě Role přístupu zkontrolujte (RBAC).
 
 ### <a name="operation-types"></a>Typy operací
 

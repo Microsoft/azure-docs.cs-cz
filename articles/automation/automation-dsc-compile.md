@@ -1,23 +1,20 @@
 ---
-title: "Kompilování konfigurace v Azure Automation DSC. | Microsoft Docs"
+title: "Kompilování konfigurace v Azure Automation DSC."
 description: "Tento článek popisuje způsob kompilace konfigurace konfigurace požadovaného stavu (DSC) automatizace Azure."
 services: automation
-documentationcenter: na
-author: georgewallace
-manager: carmonm
-ms.assetid: 49f20b31-4fa5-4712-b1c7-8f4409f1aecc
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: powershell
-ms.workload: na
-ms.date: 03/02/2018
-ms.author: magoedte; gwallace
-ms.openlocfilehash: 3ba9200023b71e6f1e69ee4c54d5c90efe1bc954
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: 2df9512a70f8299ad9282894c0ae0805d05473bd
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Kompilování konfigurace v Azure Automation DSC.
 
@@ -299,7 +296,7 @@ Konfigurace podepsaný uzlu je ověřováno místně na spravovaný uzel DSC age
 > [!NOTE]
 > Soubor konfigurace uzlu musí být větší než 1 MB tak, aby ji bylo možné importovat do Azure Automation.
 
-Můžete zjistěte, jak se přihlásit konfigurace uzlu v https://msdn.microsoft.com/en-us/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module.
+Zjistěte, jak podepsat konfigurace uzlu v https://msdn.microsoft.com/en-us/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module.
 
 ### <a name="importing-a-node-configuration-in-the-azure-portal"></a>Import konfigurace uzlu na portálu Azure
 

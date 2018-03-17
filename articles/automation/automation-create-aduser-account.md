@@ -1,5 +1,5 @@
 ---
-title: "Vytvoření účtu uživatele Azure AD | Dokumentace Microsoftu"
+title: "Vytvoření účtu uživatele Azure AD"
 description: "Tento článek popisuje postup vytvoření pověření účtu uživatele Azure AD pro runbooky ve službě Azure Automation k ověřování v Azure."
 services: automation
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2017
 ms.author: magoedte
-ms.openlocfilehash: f0a9664898cd27529daf73d130dd25fd296a9b48
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: cd9e3ee5900c3928573fbac6809c107b5ac331b5
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Ověření runbooků pomocí nasazení Azure Classic a Resource Manager
-Tento článek popisuje kroky, které musíte provést při konfiguraci uživatelského účtu Azure AD pro runbooky Azure Automation, které běží s modelem nasazení Azure Classic nebo prostředky Azure Resource Manageru.  Když toto zůstává podporovanou identitou ověřování pro runbooky na základě Azure Resource Manager, je použít účet spustit v Azure jako doporučenou metodu.       
+Tento článek popisuje kroky, které musíte provést při konfiguraci uživatelského účtu Azure AD pro runbooky Azure Automation, které běží s modelem nasazení Azure Classic nebo prostředky Azure Resource Manageru. Když toto zůstává podporovanou identitou ověřování pro runbooky na základě Azure Resource Manager, je použít účet spustit v Azure jako doporučenou metodu.       
 
 ## <a name="create-a-new-azure-active-directory-user"></a>Vytvoření nového uživatele Azure Active Directory
 1. Přihlaste se k portálu Azure jako správce služby pro předplatné Azure, které chcete spravovat.
@@ -31,7 +31,7 @@ Tento článek popisuje kroky, které musíte provést při konfiguraci uživate
 4. Poznamenejte si celé jméno uživatele a dočasné heslo.
 5. Vyberte **Directory role**.
 6. Přiřazení role globální nebo správce s omezeními.
-7. Odhlaste se ze služby Azure a potom se přihlaste zpět pomocí právě vytvořeného účtu. Zobrazí se výzva ke změně uživatelského hesla.
+7. Odhlaste se z Azure a pak se přihlaste zpět pomocí účtu, který jste právě vytvořili. Zobrazí se výzva ke změně hesla uživatele.
 
 ## <a name="create-an-automation-account-in-the-azure-portal"></a>Vytvoření účtu Automation na webu Azure Portal
 V této části provedete následující kroky, abyste na webu Azure Portal vytvořili účet Azure Automation, který budete spolu s runbooky používat ke správě prostředků v režimu Azure Resource Manager.  
@@ -44,23 +44,23 @@ V této části provedete následující kroky, abyste na webu Azure Portal vytv
 6. U možnosti **Vytvořit účet Spustit v Azure jako** vyberte **Ano** a klikněte na tlačítko **Vytvořit**.  
    
     > [!NOTE]
-    > Pokud se rozhodnete nevytvořit účet Spustit v Azure jako tím, že nevyberete možnost **Ne**, zobrazí se v okně **Přidání účtu Automation** zpráva upozornění.  Při vytváření účtu a jeho přiřazování k roli **přispěvatele** v předplatném, nebude mít účet odpovídající identitu ověřování v rámci adresářové služby vašeho předplatného, a proto nebude předplatné obsahovat žádné přístupové prostředky.  Všechny runbooky odkazující na tento účet kvůli tomu nebudou moct ověřit a provádět úlohy s prostředky Azure Resource Manager.
+    > Pokud se rozhodnete vytvořit účet Spustit jako, a to vybráním možnosti **ne**, zobrazí se upozornění v **přidat účet Automation** okno. Když se účet vytvoří a přiřazené **Přispěvatel** role v rámci předplatného, nemá odpovídající identitu ověřování v rámci adresářové služby a proto žádný přístup k prostředkům ve vaší předplatné. Tím se zabrání všechny runbooky odkazující na tento účet nebudou moct ověřit a provádět úlohy s prostředky Azure Resource Manager.
     > 
     >
 
     <br>![Přidání upozornění k účtu Automation](media/automation-create-aduser-account/add-automation-acct-properties-error.png)<br>  
 7. Zatímco Azure vytváří účet Automation, můžete průběh sledovat v nabídce v části **Oznámení**.
 
-Po vytvoření přihlašovacích údajů bude nutné, abyste vytvořili asset přihlašovacích údajů, který přidružíte k účtu Automation pomocí dříve vytvořeného účtu uživatele služby AD.  Nezapomeňte, že jsme účet Automation teprve vytvořili a že ještě není přidružený k identitě ověřování.  Proveďte kroky popsané v [článku Assety přihlašovacích údajů v Azure Automation](automation-credentials.md#creating-a-new-credential-asset) a zadejte hodnotu **uživatelského jména** ve formátu **doména\uživatel**.
+Po vytvoření přihlašovacích údajů bude nutné, abyste vytvořili asset přihlašovacích údajů, který přidružíte k účtu Automation pomocí dříve vytvořeného účtu uživatele služby AD. Pamatujte si, že vytvoříte účet Automation a není přidružená k identitě ověřování. Proveďte kroky popsané v [článku Assety přihlašovacích údajů v Azure Automation](automation-credentials.md#creating-a-new-credential-asset) a zadejte hodnotu **uživatelského jména** ve formátu **doména\uživatel**.
 
 ## <a name="use-the-credential-in-a-runbook"></a>Použití přihlašovacích údajů v runbooku
-Přihlašovací údaje v runbooku můžete získat pomocí aktivity [Get-AutomationPSCredential](http://msdn.microsoft.com/library/dn940015.aspx) a použít je s [Add-AzureAccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) k připojení k vašemu předplatnému Azure. Pokud přihlašovací údaje patří správci několika předplatných Azure, potom byste měli použít také [Select-AzureSubscription](http://msdn.microsoft.com/library/dn495203.aspx) a určit to správné. Můžete to vidět níže v ukázce prostředí Windows PowerShell, které se obvykle zobrazuje v horní části většiny runbooků služby Azure Automation.
+Přihlašovací údaje v runbooku můžete získat pomocí aktivity [Get-AutomationPSCredential](http://msdn.microsoft.com/library/dn940015.aspx) a použít je s [Add-AzureAccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) k připojení k vašemu předplatnému Azure. Pokud přihlašovací údaje patří správci několika předplatných Azure, potom byste měli použít také [Select-AzureSubscription](http://msdn.microsoft.com/library/dn495203.aspx) a určit to správné. To je znázorněno v následující ukázce prostředí PowerShell, který obvykle se zobrazí v horní části většiny runbooků služeb automatizace Azure.
 
     $cred = Get-AutomationPSCredential –Name "myuseraccount.onmicrosoft.com"
     Add-AzureAccount –Credential $cred
     Select-AzureSubscription –SubscriptionName "My Subscription"
 
-Tyto řádky byste měli v runbooku opakovat po všech [kontrolních bodech](http://technet.microsoft.com/library/dn469257.aspx#bk_Checkpoints). Pokud je runbook pozastavený a potom se obnoví u dalšího pracovního procesu, je potřeba znovu provést ověření.
+Opakujte tyto řádky po všech [kontrolní body](http://technet.microsoft.com/library/dn469257.aspx#bk_Checkpoints) v sadě runbook. Pokud runbook pozastavený a potom obnoví u dalšího pracovního procesu, je potřeba znovu provést ověření.
 
 ## <a name="next-steps"></a>Další kroky
 * O různých typech runbooků a krocích k vytvoření vlastních runbooků si můžete přečíst v článku [Typy runbooků v Azure Automation](automation-runbook-types.md)

@@ -2,23 +2,19 @@
 title: "Vytvoření nebo import runbooku ve službě Azure Automation"
 description: "Tento článek popisuje, jak vytvořit nový runbook ve službě Azure Automation nebo importovat jeden ze souboru."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 24414362-b690-4474-8ca7-df18e30fc31d
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/15/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/29/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: 0484b1f230a8544e3de2388df2cbdab3b54f9d3d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 61fd58e21c8afce141f17f39da9ff6f77070c7a8
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Vytvoření nebo import runbooku ve službě Azure Automation
 Přidáním sady runbook do Azure Automation a to buď [vytvořením nového](#creating-a-new-runbook) nebo importováním existujícího runbooku ze souboru nebo z [Galerie Runbooků](automation-runbook-gallery.md). Tento článek obsahuje informace o vytvoření a import sad runbook ze souboru.  Můžete získat všechny podrobnosti o přístupu k komunity runbooky a moduly v [Galerie Runbooků a modulů pro Azure Automation](automation-runbook-gallery.md).

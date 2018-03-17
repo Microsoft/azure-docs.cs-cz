@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 1763c63b37c5e6b326c3623dc058974f718ac990
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: e0b919ae5ef0639c8afdc5f9b006d899c8dbc4c1
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Zásahem ze strany v trvanlivý funkce – Ukázka ověření telefonu
 
@@ -35,21 +35,13 @@ Tato ukázka implementuje služby SMS na telefonu ověřovacího systému. Tyto 
 
 Ověření telefonu se používá k ověření, že koncovým uživatelům vaší aplikace nejsou odesílatelé nevyžádané pošty a že jsou kdo říká se, že jsou. Službu Multi-Factor authentication je běžně používá pro ochranu před hackery uživatelské účty. Problém s implementace vlastního ověření telefonu je, že vyžaduje **stavová interakce** s člověka. Koncový uživatel se většinou poskytuje určitý kód (například číslo 4 číslice) a musí odpovídat **v přiměřené době**.
 
-Obyčejnou Azure Functions jsou bezstavové (jako jsou mnoho dalších cloudu koncových bodů na jiných platformách), takže tyto typy interakce bude zahrnovat explicitně správě externě do databáze nebo některých jiných trvalé úložiště stavu. Kromě toho interakce musí rozdělit do více funkcí, které lze koordinovat společně. Například musíte alespoň jednu funkci pro rozhodnutí týkající se kódu, jeho uložením někde a odesílání do telefonu uživatele. Kromě toho musíte mít alespoň jeden další funkce, obdrží odpověď od uživatele a namapovat je nějakým způsobem zpět na původní volání funkce, aby bylo možné provést ověření kódu. Vypršení časového limitu je také důležité aspekt zajistit zabezpečení. To můžete získat poměrně složitá poměrně rychle.
+Obyčejnou Azure Functions jsou bezstavové (jako jsou mnoho dalších cloudu koncových bodů na jiných platformách), takže tyto typy interakce zahrnují explicitně správě externě do databáze nebo některých jiných trvalé úložiště stavu. Kromě toho interakce musí rozdělit do více funkcí, které lze koordinovat společně. Například musíte alespoň jednu funkci pro rozhodnutí týkající se kódu, jeho uložením někde a odesílání do telefonu uživatele. Kromě toho musíte mít alespoň jeden další funkce, obdrží odpověď od uživatele a namapovat je nějakým způsobem zpět na původní volání funkce, aby bylo možné provést ověření kódu. Vypršení časového limitu je také důležité aspekt zajistit zabezpečení. To můžete získat poměrně složitá rychle.
 
-Při použití trvanlivý funkcí, se výrazně snižuje složitost tohoto scénáře. Jak uvidíte v této ukázce, funkce orchestrator můžete spravovat stavová interakce velmi snadno a bez zásahu žádné externí datová úložiště. Protože jsou funkce orchestrator *trvanlivý*, tyto interaktivní toky jsou také vysokou spolehlivé.
+Při použití trvanlivý funkcí, se výrazně snižuje složitost tohoto scénáře. Jak uvidíte v této ukázce, funkce orchestrator můžete spravovat stavová interakce snadno a bez zásahu žádné externí datová úložiště. Protože jsou funkce orchestrator *trvanlivý*, tyto interaktivní toky jsou také vysokou spolehlivé.
 
 ## <a name="configuring-twilio-integration"></a>Konfigurace integrace Twilio
 
-Tato ukázka zahrnuje použití [Twilio](https://www.twilio.com/) službu pro odeslání zpráv serveru SMS na mobilní telefon. Azure Functions již podporu pro Twilio prostřednictvím [Twilio vazby](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio), a ukázku pomocí této funkce.
-
-První věcí, kterou je třeba je účet Twilio. Můžete vytvořit jeden volné na https://www.twilio.com/try-twilio. Jakmile máte účet, přidejte následující tři **nastavení aplikace** do funkce aplikace.
-
-| Název nastavení aplikace | Hodnota Popis |
-| - | - |
-| **TwilioAccountSid**  | Identifikátor SID účtu Twilio |
-| **TwilioAuthToken**   | Token ověření účtu Twilio |
-| **TwilioPhoneNumber** | Telefonní číslo přidružené k účtu Twilio. To se používá k odesílání zpráv serveru SMS. |
+[!INCLUDE [functions-twilio-integration](../../includes/functions-twilio-integration.md)]
 
 ## <a name="the-functions"></a>Funkce
 
@@ -77,7 +69,7 @@ Po spuštění této funkce orchestrator provede následující akce:
 3. Vytvoří trvanlivý časovač této aktivační události 90 sekund od aktuálního času.
 4. Paralelně s časovač čeká **SmsChallengeResponse** události od uživatele.
 
-Uživatel obdrží zprávu SMS s kódem čtyři číslice. Mají 90 sekund a odešlete tento stejný kód 4 číslice zpátky instance funkce orchestrator k dokončení procesu ověření. Pokud se odeslat nesprávný kód, získají další tři pokusí získat vpravo (v rámci stejné 90 druhé okno).
+Uživatel obdrží zprávu SMS s kódem čtyř číslic. Mají 90 sekund a odešlete tento stejný kód 4 číslice zpátky instance funkce orchestrator k dokončení procesu ověření. Pokud se odeslat nesprávný kód, získají další tři pokusí získat vpravo (v rámci téhož okna 90 sekund).
 
 > [!NOTE]
 > Nemusí být zřejmé na první, ale tato orchestrator je zcela deterministická funkce. Důvodem je, že `CurrentUtcDateTime` vlastnost se používá k výpočtu čas vypršení platnosti časovače a tato vlastnost vrací stejnou hodnotu v každé opakování v tomto okamžiku v kódu produktu orchestrator. To je důležité zajistit, aby stejné `winner` výsledkem každé opakovaná volání `Task.WhenAny`.
@@ -97,9 +89,9 @@ A zde je kód, který generuje kód výzvy 4 číslice a odešle zprávu SMS:
 
 To **E4_SendSmsChallenge** funkce získá volána pouze jednou, i když dojde k chybě procesu nebo získá přehrány. Toto je funkční, protože nechcete, aby koncový uživatel získávání více zpráv serveru SMS. `challengeCode` Vrátit hodnota se automaticky jako trvalé, aby funkce orchestrator vždy věděli, co je správný kód.
 
-## <a name="run-the-sample"></a>Spustit ukázku
+## <a name="run-the-sample"></a>Spuštění ukázky
 
-Pomocí funkce aktivované protokolem HTTP zahrnuty ve vzorku, můžete začít orchestration odesláním následující požadavku HTTP POST.
+Pomocí funkce aktivované protokolem HTTP zahrnuty ve vzorku, můžete spustit orchestration odesláním následující požadavku HTTP POST:
 
 ```
 POST http://{host}/orchestrators/E4_SmsPhoneVerification
@@ -158,7 +150,7 @@ Tady je orchestration jako jeden soubor jazyka C# v projektu sady Visual Studio:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tato ukázka vám ukázal, některé rozšířené možnosti trvanlivý funkcí, zejména `WaitForExternalEvent` a `CreateTimer`. Už víte, jak tyto mohou být kombinovány s `Task.WaitAny` implementovat spolehlivé vypršení časového limitu systému, což je často užitečné pro interakci s skutečné osoby. Další informace o tom, jak použít trvanlivý funkce čtením řada články, které nabízí podrobný krytí konkrétní témata.
 

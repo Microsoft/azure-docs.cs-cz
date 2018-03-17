@@ -1,24 +1,20 @@
 ---
-title: "Volání runbooku Azure Automation z upozornění Log Analytics | Microsoft Docs"
+title: "Volání runbooku Azure Automation z upozornění Log Analytics"
 description: "Tento článek obsahuje přehled způsobů, jak vyvolat runbook Automation z upozornění Log Analytics v prostředí Operations Management Suite."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: 
-ms.assetid: 
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 01/31/2017
-ms.author: magoedte
-ms.openlocfilehash: a10be867965eef9746a0f4cc9b14c4fc429f6e35
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: d7e3bc262fa20a2628ad25502a3d1819996a18f7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Volání runbooku Azure Automation z upozornění Log Analytics
 

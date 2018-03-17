@@ -2,19 +2,20 @@
 title: "Zjistěte, jak zařadit řešení pro správu aktualizací, sledování změn a inventáře v Azure Automation."
 description: "Zjistěte, jak zařadit do služby Azure virtuální počítač s řešeními správy aktualizací, sledování změn a inventáře, které jsou součástí Azure Automation."
 services: automation
-keywords: 
+ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/28/2018
+ms.date: 03/16/2018
 ms.topic: article
-ms.service: automation
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 670a0c2a11ebfe09406233ab4b454b2e9c2ba0e0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.custom: mvc
+ms.openlocfilehash: 65bf0d98da8111e986d5dbdfd58f1692d40ee286
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Zařadit řešení správy aktualizací, sledování změn a inventáře
 
@@ -22,23 +23,23 @@ Azure Automation nabízí řešení pro správu aktualizací zabezpečení opera
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k Azure na adrese https://portal.azure.com.
+Přihlaste se k Azure v https://portal.azure.com
 
-## <a name="enable-solutions"></a>Povolit řešení
+## <a name="enable-solutions"></a>Povolení řešení
 
 Přejděte na svůj účet Automation a vyberte buď **inventáře** nebo **sledování změn** pod **CONFIGURATION MANAGEMENT**.
 
-Vyberte pracovní prostor analýzy protokolů a účet Automation a klikněte na **povolit** povolit řešení. Řešení bude povolit až 15 minut.
+Vyberte pracovní prostor analýzy protokolů a účet Automation a klikněte na **povolit** povolit řešení. Povolení řešení trvá přibližně 15 minut.
 
 ![Zařadit řešení inventáře](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-Sledování změn a inventáře řešení poskytuje schopnost [sledování změn](automation-vm-change-tracking.md) a [inventáře](automation-vm-inventory.md) na virtuálních počítačích. V tomto kroku povolíte řešení na virtuálním počítači.
+Řešení Change Tracking a Inventory poskytují možnost na virtuálních počítačích [sledovat změny](automation-vm-change-tracking.md) a [inventář](automation-vm-inventory.md). V tomto kroku povolíte řešení na virtuálním počítači.
 
-Po dokončení inventáře a sledování řešení registrace oznámení o změně, klikněte na **správy aktualizací** pod **CONFIGURATION MANAGEMENT**.
+Po oznámení dokončení začlenění řešení Change Tracking a Inventory klikněte v části **SPRÁVA KONFIGURACE** na **Update Management**.
 
-Řešení pro správu aktualizací můžete spravovat aktualizace a opravy pro virtuální počítače Windows Azure. Můžete vyhodnotit stav dostupné aktualizace, naplánovat instalaci požadovaných aktualizací, a zobrazit výsledky nasazení aktualizace byly úspěšně použity k virtuálnímu počítači. Tato akce Povolit řešení pro virtuální počítač.
+Řešení Update Management umožňuje spravovat aktualizace a opravy pro virtuální počítače Azure s Windows. Můžete vyhodnotit stav dostupných aktualizací, naplánovat instalaci požadovaných aktualizací a zkontrolovat výsledky nasazení za účelem ověření správného použití aktualizací ve virtuálních počítačích. Tato akce Povolit řešení pro virtuální počítač.
 
-Vyberte **Správa aktualizací** pod **správy aktualizací**. Vybraný pracovní prostor Log analytics je ve stejném pracovním prostoru použité v předchozím kroku. Klikněte na tlačítko **povolit** se budou registrovat do řešení pro správu aktualizací. Řešení bude povolit až 15 minut.
+Vyberte **Správa aktualizací** pod **správy aktualizací**. Vybraný pracovní prostor Log Analytics je stejný jako pracovní prostor použitý v předchozím kroku. Kliknutím na **Povolit** začleňte řešení Update Management. Povolení řešení trvá přibližně 15 minut.
 
 ![Řešení zařadit aktualizací](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 

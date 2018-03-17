@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2018
+ms.date: 03/16/2018
 ms.author: billmath
-ms.openlocfilehash: e97d3e3e35ee87864c5d38e75e08e62088e25fdb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 06c715cf5dbf039334adfde8b3111d9bfcb86568
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizace Azure AD Connect: Změňte výchozí konfigurace
 Účelem tohoto článku je vám ukážeme, jak změnit výchozí konfigurace v synchronizaci Azure Active Directory (Azure AD) připojit. Popisuje kroky pro některé běžné scénáře. Replikace byste měli možnost provádět jednoduché změny do vlastní konfigurace založené na vlastní obchodní pravidla.
@@ -245,7 +245,7 @@ Ve výchozím nastavení není atribut UserType nastavený na importovat do Azur
  1. Přejděte na **konektory** kartě Synchronization Service Manager.
  2. Klikněte pravým tlačítkem myši **konektoru služby Azure AD** a vyberte **vlastnosti**.
  3. V dialogovém okně automaticky otevírané okno přejděte do **vybrat atributy** kartě.
- 4. Ujistěte se, že je zaškrtnuté atribut PreferredDataLocation v seznamu atributů.
+ 4. Ujistěte se, že je atribut UserType nastavený na zaškrtnutí v seznamu atributů.
  5. Klikněte na tlačítko **OK** uložit.
 
 ![Přidejte zdrojový atribut do schématu Azure AD Connector.](./media/active-directory-aadconnectsync-change-the-configuration/usertype2.png)
@@ -293,7 +293,7 @@ Pravidla synchronizace příchozích dat umožňuje hodnota atributu, které jso
 ![Vytvoření pravidla synchronizace příchozích dat](./media/active-directory-aadconnectsync-change-the-configuration/usertype3.png)
 
 ### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>Krok 5: Vytvoření pravidlo odchozí synchronizace pro tok hodnota atributu do služby Azure AD
-Pravidlo odchozí synchronizace umožňuje hodnota atributu, které jsou předávány z úložiště metaverse do atribut PreferredDataLocation ve službě Azure AD:
+Pravidlo odchozí synchronizace umožňuje hodnota atributu, které jsou předávány z úložiště metaverse do atribut UserType nastavený na ve službě Azure AD:
 
 1. Přejděte do editoru pravidla synchronizace.
 2. Nastavit filtr hledání **směr** být **odchozí**.

@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/08/2017
+ms.date: 03/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 264764c5e9c32574d97beb2cc3c1bb1cfb555568
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46fd818d8ca15515c91bb6e65e99b0a3bc1f1fa4
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Osvědčené postupy pole virtuální zařízení StorSimple
 ## <a name="overview"></a>Přehled
@@ -38,7 +38,7 @@ Implementujte následující osvědčené postupy při zřizování virtuální 
 
 |  | Hyper-V | VMware |
 | --- | --- | --- |
-| **Typ virtuálního počítače** |**2. generace** virtuálního počítače pro použití se systémem Windows Server 2012 nebo novější a *.vhdx* bitové kopie. <br></br> **Generace 1** virtuálního počítače pro použití se systémem Windows Server 2008 nebo novějším a *VHD* bitové kopie. |Při použití použít virtuální počítač verze 8-11 *vmdk* bitové kopie. |
+| **Typ virtuálního počítače** |**2. generace** virtuálního počítače pro použití se systémem Windows Server 2012 nebo novější a *.vhdx* bitové kopie. <br></br> **Generace 1** virtuálního počítače pro použití se systémem Windows Server 2008 nebo novějším a *VHD* bitové kopie. |Verze virtuálního počítače pomocí 8 při použití *vmdk* bitové kopie. |
 | **Typ paměti** |Konfigurace jako **statická paměť**. <br></br> Nepoužívejte **dynamické paměti** možnost. | |
 | **Datový typ disku** |Zřízení jako **dynamicky se zvětšující**.<br></br> **Pevná velikost** trvá příliš dlouho. <br></br> Nepoužívejte **rozdílových** možnost. |Použití **dynamického zřizování** možnost. |
 | **Úprava dat disku** |Rozšíření nebo zmenšení není povoleno. Pokus o Uděláte to tak vede ke ztrátě všech místních dat v zařízení. |Rozšíření nebo zmenšení není povoleno. Pokus o Uděláte to tak vede ke ztrátě všech místních dat v zařízení. |
@@ -191,7 +191,7 @@ Při konfiguraci ACRs pro svazky zařízení StorSimple, použijte následujíc�
 
 * Při přiřazování ACR více než jeden svazek, ujistěte se, že svazek není vystavení způsobem, kde můžete současně přistupovat ve více než jeden neclusterovaného hostitele. Pokud jste přiřadili více ACRs na svazek, upozornění se zobrazí pro vás k posouzení konfiguraci.
 
-### <a name="data-security-and-encryption"></a>Zabezpečení dat a šifrování
+### <a name="data-security-and-encryption"></a>Zabezpečení a šifrování dat
 Pole virtuální zařízení StorSimple je funkce zabezpečení a šifrování dat, které zajistit důvěrnost a integritu dat. Při používání těchto funkcí, doporučujeme dodržovat tyto osvědčené postupy: 
 
 * Zadejte šifrovací klíč cloudového úložiště pro generování šifrování AES 256 před odesláním dat z vaší virtuální pole do cloudu. Tento klíč se nevyžaduje, pokud vaše data se šifrují na začátku. Klíč může generovat a uchovávat bezpečné pomocí systémem správy klíčů, jako třeba [Azure trezoru klíčů](../key-vault/key-vault-whatis.md).
@@ -282,6 +282,6 @@ Několik polí virtuální chtít nasadit na účet pro rostoucí pracovní sadu
 * Pokud nasazení několik virtuálních polí, doporučujeme, aby ze služby Vyrovnávání zatížení perspektivy, distribuovat do hostitelů hypervisoru jiné pole.
 * Několik virtuálních polí (Pokud je nakonfigurovaný jako souborový server nebo server se službou iSCSI) se dá nasadit v distribuované Namespace systému souborů. Podrobné kroky, přejděte na [distribuované soubor řešení systému Namespace s hybridní cloudové úložiště Deployment Guide](https://www.microsoft.com/download/details.aspx?id=45507). Replikaci distribuovaného systému souborů se aktuálně nedoporučuje pro použití s poli virtuální. 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 Zjistěte, jak [spravovat vaše pole virtuální zařízení StorSimple](storsimple-virtual-array-manager-service-administration.md) přes službu StorSimple Manager.
 

@@ -15,11 +15,11 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 28e43d48b4fa27202d58ee081a60e2fb5bfe9d99
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f97b2541bb755a9b7ab8e3602dfad90f50ada740
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Zástupný znak aplikace v proxy aplikace služby Azure Active Directory 
 
@@ -70,7 +70,7 @@ Pokud používáte vlastní domény, je potřeba vytvořit položku DNS s zázna
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-Potvrďte, že jste správně nakonfigurovali vaší CNAME, můžete použít [nslookup](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup) na cílové koncové body, například `expenses.adventure-works.com`.  Vaše odpověď by měla obsahovat již bylo uvedeno alias (`<Id.tenant>.runtime.msappproxy.net`).
+Potvrďte, že jste správně nakonfigurovali vaší CNAME, můžete použít [nslookup](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup) na cílové koncové body, například `expenses.adventure-works.com`.  Vaše odpověď by měla obsahovat již bylo uvedeno alias (`<yourAADTenantId>.tenant.runtime.msappproxy.net`).
 
 
 ## <a name="considerations"></a>Požadavky
@@ -83,7 +83,7 @@ Pro aplikace zástupný znak **interní adresa URL** je třeba naformátovat jak
 ![appId](./media/active-directory-application-proxy-wildcard\22.png)
 
 
-Při konfiguraci **externí adresu URL**, musíte použít následující formát:`https://*.<custom domain>` 
+Při konfiguraci **externí adresu URL**, musíte použít následující formát: `https://*.<custom domain>` 
 
 ![appId](./media/active-directory-application-proxy-wildcard\21.png)
 
@@ -138,7 +138,7 @@ Všechny tři aplikace:
 
 Můžete publikovat pomocí postupu uvedeného v aplikací se zástupnými znaky [publikování aplikací pomocí proxy aplikace služby Azure AD](application-proxy-publish-azure-portal.md). Tento scénář předpokládá:
 
-- Klient s následujícím ID:`000aa000-11b1-2ccc-d333-4444eee4444e` 
+- Klient s následujícím ID: `000aa000-11b1-2ccc-d333-4444eee4444e` 
 
 - Volá se ověřené domény `adventure-works.com` nebyl nakonfigurován.
 

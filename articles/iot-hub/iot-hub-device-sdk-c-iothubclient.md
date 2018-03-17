@@ -3,7 +3,7 @@ title: "Pro zařízení Azure IoT SDK pro jazyk C - IoTHubClient | Microsoft Doc
 description: "Jak používat knihovnu IoTHubClient v zařízení Azure IoT SDK pro jazyk C vytvoření aplikace pro zařízení, které komunikují pomocí služby IoT hub."
 services: iot-hub
 documentationcenter: 
-author: olivierbloch
+author: yzhong94
 manager: timlt
 editor: 
 ms.assetid: 828cf2bf-999d-4b8a-8a28-c7c901629600
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
-ms.author: obloch
-ms.openlocfilehash: 8428857bcd444f99ba2c0f6b31ff662d5596b591
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.author: yizhon
+ms.openlocfilehash: 6efd2980ce4dde99d934b3fe174d341fb68fac03
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Pro zařízení Azure IoT SDK pro jazyk C – informace o IoTHubClient
 [Nejprve článek](iot-hub-device-sdk-c-intro.md) této série zavedená **zařízení Azure IoT SDK pro jazyk C**. Tento článek vysvětluje, SDK jsou dvě vrstvy architektury. Na bázi je **IoTHubClient** knihovnu, která přímo spravuje komunikace se službou IoT Hub. K dispozici je také **serializátor** knihovny, který sestaví v horní části daného k poskytování služeb serializace. V tomto článku jsme vám poskytují další podrobnosti na **IoTHubClient** knihovny.
@@ -60,9 +60,9 @@ IoTHubClient_Destroy(iotHubClientHandle);
 
 Jsou ale doprovodné funkce pro každé z těchto rozhraní API:
 
-* IoTHubClient\_UDOU\_CreateFromConnectionString
-* IoTHubClient\_UDOU\_SendEventAsync
-* IoTHubClient\_UDOU\_SetMessageCallback
+* IoTHubClient\_LL\_CreateFromConnectionString
+* IoTHubClient\_LL\_SendEventAsync
+* IoTHubClient\_LL\_SetMessageCallback
 * IoTHubClient\_UDOU\_Destroy
 
 Všechny tyto funkce zahrnout "Vše" název rozhraní API. Než tu, která jsou shodné s jejich protějšky v jiné všechny parametry každou z těchto funkcí. Chování těchto funkcí je však jinou důležitá jedním způsobem.
@@ -127,8 +127,8 @@ Je v podstatě jen jednu sadu rozhraní API pro odesílat a přijímat data z vl
 
 Podle toho, která modelu si zvolíte, ujistěte se konzistentní které rozhraní API používáte. Pokud spustíte voláním **IoTHubClient\_UDOU\_CreateFromConnectionString**, ujistěte se, jenom pomocí odpovídající nižší úrovně rozhraní API pro všechny následné pracovní:
 
-* IoTHubClient\_UDOU\_SendEventAsync
-* IoTHubClient\_UDOU\_SetMessageCallback
+* IoTHubClient\_LL\_SendEventAsync
+* IoTHubClient\_LL\_SetMessageCallback
 * IoTHubClient\_UDOU\_Destroy
 * IoTHubClient\_UDOU\_DoWork
 
@@ -264,14 +264,14 @@ Existuje několik možností, které se běžně používají:
 
 Dávkování možnost je důležité. Ve výchozím nastavení jsou události ingresses knihovny jednotlivě (jedna událost je to bez ohledu na předáte **IoTHubClient\_UDOU\_SendEventAsync**). Pokud je možnost dávkování **true**, knihovny shromažďuje tolik události, jak je možné z vyrovnávací paměti (až maximální velikost zprávy, bude přijímat IoT Hub).  Batch událostí se odešlou do služby IoT Hub v jediném volání protokolu HTTPS (jednotlivé události jsou seskupeny do pole JSON). Povolení dávkování obvykle za následek zvýšení výkonu velkých vzhledem k tomu, že se snižuje odezvy sítě. Také významně snižuje šířky pásma, protože při odesílání jednu sadu hlaviček protokolu HTTPS pomocí batch událostí a nikoli sadu hlavičky pro každé jednotlivé události. Pokud nemáte konkrétní důvod, proč neurčí jinak, obvykle budete chtít povolit dávkování.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Tento článek podrobně popisuje chování **IoTHubClient** knihovna nalezena v **zařízení Azure IoT SDK pro jazyk C**. Pomocí těchto informací byste měli mít dostatečné povědomí o možnostech **IoTHubClient** knihovny. [Následující článek](iot-hub-device-sdk-c-serializer.md) poskytuje podobné podrobností na **serializátor** knihovny.
 
 Další informace o vývoji pro IoT Hub, najdete v tématu [SDK služby Azure IoT][lnk-sdks].
 
 Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
-* [Nasazení AI do hraniční zařízení s Azure IoT Edge][lnk-iotedge]
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
 
 [lnk-sdks]: iot-hub-devguide-sdks.md
 

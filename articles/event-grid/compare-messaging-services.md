@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: e082b9014e3734b554d3dae1cf8aecbaed65a28a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 30bbe7442cac96a1dcf6959cac2abedd61454a29
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Zvolit služby Azure, které doručování zpráv
 
@@ -30,18 +30,22 @@ Je důležité rozdíl mezi služby přinášející událost a služby přiná�
 
 ### <a name="event"></a>Událost
 
-Událost je lightweight oznámení akce nebo změně stavu. Data události obsahuje informace o co se stalo, ale nemá data, která spustí událost. Například událost upozorní Odběratelé, kteří, že soubor byl vytvořen. Obecné informace o souboru může obsahovat, ale neobsahuje samotném souboru. Obecně platí události aktivovat obslužné rutiny událostí tak, aby fungoval v reálném čase.
+Událost je lightweight oznámení podmínku nebo změně stavu. Vydavatel události nemá žádné očekávání o zpracování události. Příjemci události rozhodne co dělat s oznámením. Události může být diskrétní jednotky nebo součástí řady.
+
+Diskrétní události změny stavu sestavy a je možné použít. Chcete-li přejít k dalšímu kroku, příjemce jenom je potřeba vědět, že se něco stalo. Data události obsahuje informace o co se stalo, ale nemá data, která spustí událost. Například událost upozorní příjemci, že soubor byl vytvořen. Obecné informace o souboru může obsahovat, ale neobsahuje samotném souboru. Diskrétní události jsou ideální pro bez serveru řešení, které je potřeba škálování.
+
+Události řady sestavy podmínku a jsou analyzable. Události jsou seřazené čas a vzájemně propojené. Příjemce musí sekvencované řadu událostí k analýze, co se stalo.
 
 ### <a name="message"></a>Zpráva
 
-Zpráva je nezpracovaných dat vytváří služba spotřebované nebo uložená na jiném místě. Zpráva obsahuje data, která aktivuje zpráva kanálu. Tato zpráva může být cokoli z pořadí elektronického obchodování na uživatele telemetrie. Na rozdíl od oznámení o události může očekávat vydavatele zprávu odpovědi. Například zpráva obsahuje nezpracovaná data, ale očekává další součástí systému od data vytvoření souboru.
+Zpráva je nezpracovaných dat vytváří služba spotřebované nebo uložená na jiném místě. Zpráva obsahuje data, která aktivuje zpráva kanálu. Vydavatel zpráva má očekávané o zpracování zprávy příjemce. Mezi sociálními existuje kontraktu. Například vydavatele odešle zprávu s nezpracovaná data a očekává příjemce k vytvoření souboru z těchto dat a odeslání odpovědi při práci.
 
 ## <a name="comparison-of-services"></a>Porovnání služeb
 
 | Služba | Účel | Typ | Kdy je použít |
 | ------- | ------- | ---- | ----------- |
-| Event Grid | Přepnutí do reaktivního programování | Distribuci událostí | Reagovat na změny stavu |
-| Event Hubs | Kanál velkých objemů dat | Událost streamování | Telemetrická data a vysílání datového proudu distribuovaných datech |
+| Event Grid | Přepnutí do reaktivního programování | Distribuci událostí (diskrétní) | Reagovat na změny stavu |
+| Event Hubs | Kanál velkých objemů dat | Událost streamování (řada) | Telemetrická data a vysílání datového proudu distribuovaných datech |
 | Service Bus | Citlivých podnikových způsobů zasílání zpráv | Zpráva | Pořadí zpracování a finanční transakce |
 
 ### <a name="event-grid"></a>Event Grid

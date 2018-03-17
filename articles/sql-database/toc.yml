@@ -380,7 +380,6 @@
             - name: Zřizování tenantů
               href: saas-standaloneapp-provision-and-catalog.md
         - name: Databáze na tenanta
-          href: saas-dbpertenant-wingtip-app-overview.md
           items:
             - name: Úvod ke kurzu
               href: saas-dbpertenant-wingtip-app-overview.md

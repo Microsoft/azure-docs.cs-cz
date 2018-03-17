@@ -1,24 +1,18 @@
 ---
-title: "Typy Runbooků služby Azure Automation | Microsoft Docs"
+title: "Typy Runbooků služby Azure Automation"
 description: "Popisuje různé typy sad runbook, které můžete použít v Azure Automation a důležité informace, které byste měli vzít v úvahu při určování, který typ používat. "
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 9265c975-4281-4819-a84f-d86641277f36
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/01/2017
-ms.author: bwren
-ms.openlocfilehash: e4a8ab0e68d6614fea1b44f0115a1c633f145277
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+manager: carmonm
+ms.openlocfilehash: f3a6b15891a4a1564073d149a198f6789b407342
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-automation-runbook-types"></a>Typy runbooků služby Azure Automation
 Služby Azure Automation podporuje několik typů sad runbook, které jsou popsány v následující tabulce.  V níže uvedených částech poskytují další informace o jednotlivých typech včetně důležité informace týkající se použití každé.
@@ -104,7 +98,7 @@ Byste měli vzít v úvahu následující další aspekty při určování, kter
 * Sady runbook z grafického nelze převést na typ textové nebo naopak.
 * Existují omezení pomocí runbooků různých typů jako podřízené sady runbook.  V tématu [podřízené runbooky ve službě Azure Automation](automation-child-runbooks.md) Další informace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o vytváření grafický runbook najdete v tématu [vytváření grafického obsahu ve službě Azure Automation](automation-graphical-authoring-intro.md)
 * Chcete-li pochopit rozdíly mezi prostředí PowerShell a prostředí PowerShell najdete v části pracovní postupy pro sady runbook, [Learning pracovního postupu prostředí Windows PowerShell](automation-powershell-workflow.md)
 * Další informace o tom, jak vytvořit nebo importovat sady Runbook najdete v tématu [vytvoření nebo import Runbooku](automation-creating-importing-runbook.md)

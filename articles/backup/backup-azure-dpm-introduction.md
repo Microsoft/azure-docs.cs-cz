@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: c22e6fc85e88d89007107c8c3bad142ac91e9d12
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0e547a5991c0ce00344eff6d6b77edb0e34bd62c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>Příprava zálohování úloh do Azure pomocí DPM
 > [!div class="op_single_selector"]
@@ -43,26 +43,28 @@ Tento článek obsahuje úvod do Microsoft Azure Backup používá k ochraně va
 [System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) zálohuje data souborů a aplikací. Další informace o podporovaných úlohách najdete [zde](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix). Data zálohovaná na DPM můžete uložit na pásce, na disku, nebo zálohovat do Azure se zálohováním Microsoft Azure. Aplikace DPM komunikuje s Azure Backup následujícím způsobem:
 
 * **Aplikace DPM nasazená jako fyzický server nebo místní virtuální počítač** – Pokud aplikace DPM je nasazená jako fyzický server nebo jako virtuální počítač technologie Hyper-V místní data můžete zálohovat do trezoru služeb zotavení kromě disku a pásky Zálohování.
-* **Aplikace DPM nasazená jako virtuální počítač Azure** – ze System Center 2012 R2 s aktualizací 3, DPM dá nasadit jako virtuální počítač Azure. Pokud je aplikace DPM nasazená jako virtuální počítač Azure, které můžete zálohovat data na disky Azure připojené k virtuálnímu počítači DPM Azure nebo může přenést úložiště data prostřednictvím jejich zálohování až do trezoru služeb zotavení.
+* **Aplikace DPM nasazená jako virtuální počítač Azure** – ze System Center 2012 R2 s aktualizací 3 na, DPM můžete nasadit na virtuální počítač Azure. Pokud je aplikace DPM nasazená jako virtuální počítač Azure, můžete data zálohovat na disky Azure připojené k virtuálnímu počítači, nebo přesměrovat datové úložiště pomocí zálohování na trezor služeb zotavení.
 
-## <a name="why-backup-from-dpm-to-azure"></a>Proč zálohovat z aplikace DPM do Azure?
-Mezi výhody firmy pomocí služby Azure Backup k zálohování serverů aplikace DPM patří:
+## <a name="why-back-up-dpm-to-azure"></a>Proč zálohovat aplikace DPM do Azure?
+Příklady výhod obchodní zálohování serverů aplikace DPM do Azure:
 
-* Pro místní nasazení aplikace DPM můžete použít Azure jako alternativu k dlouhodobé nasazení na pásku.
-* Pro nasazení aplikace DPM v Azure Azure Backup k přesměrování zpracování úloh úložiště z disku Azure vám umožní škálování uložením starších data v trezoru služeb zotavení a nových dat na disku.
+* Pro místní nasazení aplikace DPM použijte Azure jako alternativu k dlouhodobé nasazení na pásku.
+* Pro nasazení aplikace DPM na virtuálním počítači v Azure, snižování zátěže úložiště z disku Azure. Uložením starších data ve vašem trezoru služeb zotavení umožňuje vaší firmě tak škálování uložením nová data na disk.
 
 ## <a name="prerequisites"></a>Požadavky
 Příprava Azure Backup k zálohování dat aplikace DPM následujícím způsobem:
 
 1. **Vytvoření trezoru služeb zotavení** – vytvoření trezoru na portálu Azure.
-2. **Stažení přihlašovacích údajů trezoru** – stáhnout přihlašovací údaje, které použijete k registraci serveru aplikace DPM do trezoru služeb zotavení.
-3. **Nainstalovat agenta Azure Backup** – z Azure Backup nainstalujte agenta na každém serveru DPM.
-4. **Registrace serveru** – registrace serveru DPM do trezoru služeb zotavení.
+2. **Stažení přihlašovacích údajů trezoru** – stáhnout přihlašovací údaje použijete k registraci serveru aplikace DPM s trezor služeb zotavení.
+3. **Nainstalovat agenta Azure Backup** – nainstalujte agenta na každém serveru DPM.
+4. **Registrace serveru** – registrace serveru DPM s trezor služeb zotavení.
+
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="key-definitions"></a>Klíčové definice
 Zde jsou některé klíčové definice pro zálohování Azure pro aplikaci DPM:
 
-1. **Přihlašovací údaje trezoru** – přihlašovací údaje úložiště jsou potřebné k ověření počítače pro odesílání zálohovaných dat do identifikovaného trezoru ve službě Azure Backup. Ho můžete stáhnout z trezoru a je platný pro 48hrs.
+1. **Přihlašovací údaje trezoru** – přihlašovací údaje úložiště jsou potřebné k ověření počítače pro odesílání zálohovaných dat do identifikovaného trezoru ve službě Azure Backup. Ho můžete stáhnout z trezoru a je platný pro 48 hodin.
 2. **Přístupové heslo** – heslo se používá k šifrování záloh do cloudu. Uložte soubor na bezpečné místo, jako je vyžadována během operace obnovení.
 3. **Zabezpečení kódu PIN** – Pokud jste povolili [nastavení zabezpečení](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) úložiště, je potřeba zabezpečení PIN kódu pro provádění kritické operace zálohování. Tato služba Multi-Factor authentication přidá další vrstvu zabezpečení. 
 4. **Složka pro obnovení** – je slovní spojení, které jsou zálohy z cloudu dočasně stáhnout do během obnovení cloudu. Jeho velikost musí být přibližně rovná velikosti zálohování položek, které chcete obnovit souběžně.
@@ -81,7 +83,7 @@ Vytvoření trezoru Recovery Services:
 
     ![Vytvoření trezoru Recovery Services – krok 2](./media/backup-azure-dpm-introduction/rs-vault-menu.png)
 
-    Otevře se okno trezoru Recovery Services s výzvou k vyplnění polí **Název**, **Předplatné**, **Skupina prostředků** a **Oblast**.
+    Trezoru služeb zotavení nabídky otevře výzvou k zadání **název**, **předplatné**, **skupiny prostředků**, a **umístění**.
 
     ![Vytvoření trezoru Recovery Services – krok 5](./media/backup-azure-dpm-introduction/rs-vault-attributes.png)
 4. Jako **Název** zadejte popisný název pro identifikaci trezoru. Název musí být jedinečný v rámci předplatného Azure. Zadejte název v rozsahu 2 až 50 znaků. Musí začínat písmenem a může obsahovat pouze písmena, číslice a pomlčky.
@@ -96,8 +98,8 @@ Možnost replikace úložiště umožňuje výběr mezi geograficky redundantní
 
 Chcete-li upravit nastavení replikace úložiště:
 
-1. Vyberte svůj trezor pro otevření řídícího panelu trezoru a okna Nastavení. Pokud se okno **Nastavení** neotevře, klikněte na **Všechna nastavení** v řídicím panelu trezoru.
-2. Kliknutím na **Infrastruktura zálohování** > **Konfigurace zálohování** v okně **Nastavení** otevřete okno **Konfigurace zálohování**. V okně **Konfigurace zálohování** zvolte pro svůj trezor možnost replikace úložiště.
+1. Vyberte svůj trezor pro otevření panelu trezoru a v nabídce nastavení. Pokud **nastavení** nabídky neotevře, klikněte na tlačítko **všechna nastavení** v řídícím panelu trezoru.
+2. Na **nastavení** nabídky, klikněte na tlačítko **infrastruktura zálohování** > **konfigurace zálohování** otevřete **konfigurace zálohování**nabídky. Na **konfigurace zálohování** nabídce zvolte možnost replikace úložiště pro svůj trezor.
 
     ![Seznam trezorů záloh](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -112,9 +114,9 @@ Soubor s přihlašovacími údaji trezoru je stažen prostřednictvím zabezpeč
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Otevřete trezor služeb zotavení, který chcete zaregistrovat počítač aplikace DPM.
-3. Otevře se okno nastavení ve výchozím nastavení. Pokud je zavřený, klikněte na **nastavení** na řídicím panelu trezoru otevřete okno nastavení. V okně nastavení klikněte na **vlastnosti**.
+3. Nabídky nastavení otevře ve výchozím nastavení. Pokud je zavřený, klikněte na **nastavení** na řídicím panelu trezoru otevřete nabídku nastavení. V nabídce nastavení, klikněte na **vlastnosti**.
 
-    ![Otevřené okno trezoru](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
+    ![Otevření nabídky trezoru](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 4. Na stránce vlastnosti, klikněte na **Stáhnout** pod **zálohování pověření**. Na portálu vygeneruje soubor pověření pro úložiště, který je k dispozici ke stažení.
 
     ![Ke stažení](./media/backup-azure-dpm-introduction/vault-credentials.png)
@@ -130,9 +132,9 @@ Na portálu vygeneruje přihlašovací údaje úložiště pomocí kombinace ná
 Po vytvoření trezoru zálohování Azure, je třeba nainstalovat agenta na všechny vaše Windows počítače (Windows Server, klient systému Windows, server System Center Data Protection Manager nebo počítače serveru Azure Backup), které povoluje zálohování dat a aplikací do Azure.
 
 1. Otevřete trezor služeb zotavení, který chcete zaregistrovat počítač aplikace DPM.
-2. Otevře se okno nastavení ve výchozím nastavení. Pokud je zavřený, klikněte na **nastavení** otevřete okno nastavení. V okně nastavení klikněte na **vlastnosti**.
+2. Nabídky nastavení otevře ve výchozím nastavení. Pokud je zavřený, klikněte na **nastavení** otevřete nabídku nastavení. V nabídce nastavení, klikněte na **vlastnosti**.
 
-    ![Otevřené okno trezoru](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
+    ![Otevření nabídky trezoru](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. Na stránce nastavení, klikněte na **Stáhnout** pod **Azure Backup Agent**.
 
     ![Ke stažení](./media/backup-azure-dpm-introduction/azure-backup-agent.png)

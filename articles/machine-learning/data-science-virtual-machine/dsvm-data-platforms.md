@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: 9b8beb51c555c6125fa3b0abbad892d627a180b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 03/16/2018
+ms.author: gokuma;
+ms.openlocfilehash: 921ccf67e5e0320e742066186b7929643536424f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-platforms"></a>Datové platformy
 
@@ -67,10 +67,10 @@ SQL Server je nainstalován ve standardním způsobem. Se nachází v `C:\Progra
 | | |
 | ------------- | ------------- |
 | Co je to?   | Samostatné (jeden uzel v procesu) instance Oblíbené platformy Apache Spark, systém pro rychlé rozsáhlé zpracování dat a strojové učení     |
-| Podporované DSVM edice      | Linux <br /> Windows (experimentální)      |
+| Podporované DSVM edice      | Linux <br /> Windows (Experimental)      |
 | Typické použití      | * Rychlý vývoj aplikací Spark/PySpark místně s menší datové sady a později ho nasadit na velkých clusterech Spark, jako je například Azure HDInsight<br/> * Kontextu Spark serveru Microsoft R testu <br />* Použití SparkML nebo společnosti Microsoft otevřený zdroj [MMLSpark](https://github.com/Azure/mmlspark) knihovny sestavovat aplikace ML  |
 | Odkazy na ukázky      |    Ukázka Jupyter: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Server Microsoft R (Spark kontextu): /dsvm/samples/MRS/MRSSparkContextSample.R |
-| Na DSVM souvisejících nástrojích       | PySpark, Scala<br/>Jupyter (Spark/PySpark jádra)<br/>Server, SparkR, Sparklyr Microsoft R <br />Apache procházení      |
+| Na DSVM souvisejících nástrojích       | PySpark, Scala<br/>Jupyter (Spark/PySpark jádra)<br/>Microsoft R Server, SparkR, Sparklyr <br />Apache procházení      |
 
 ### <a name="how-to-use-it"></a>Způsobu jeho použití
 Můžete spouštět Spark a odesílání úloh Spark na příkazovém řádku s `spark-submit` nebo `pyspark` příkazy. Můžete také vytvořit poznámkového bloku Jupyter tak, že vytvoříte nový poznámkový blok s jádrem Spark. 
@@ -99,8 +99,8 @@ Můžete zastavit Hadoop související služby, pokud není nutné spuštěním 
 ### <a name="how-is-it-configured--installed-on-the-dsvm"></a>Jak je ho nakonfigurovaná a nainstalovaná na DSVM? 
 |Platforma|Nainstalujte umístění ($SPARK_HOME)|
 |:--------|:--------|
-|Windows | c:\dsvm\tools\spark-X.X.X-Bin-hadoopX.X|
-|Linux   | /dsvm/Tools/Spark-X.X.X-Bin-hadoopX.X|
+|Windows | c:\dsvm\tools\spark-X.X.X-bin-hadoopX.X|
+|Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 
 Knihovny přístup k datům z Azure Blob nebo úložiště Azure Data Lake (ADLS) a použití knihoven MMLSpark strojové učení společnosti Microsoft jsou předinstalován v $SPARK_HOME/JAR. Tyto JAR se načítají automaticky při spuštění Spark. Ve výchozím nastavení používá Spark data na místním disku. V pořadí pro instanci Spark na DSVM přístup k datům uloženým v objektech blob v Azure nebo ADLS, budete muset vytvořit nebo konfigurovat `core-site.xml` souboru založený na šabloně najít v $SPARK_HOME/conf/core-site.xml.template (kde je zástupné symboly pro objekt Blob a ADLS Konfigurace) se správnými přihlašovacími údaji do objektů blob v Azure a Azure Data Lake Storage. Najít další podrobné kroky k vytvoření pověření služby ADLS [zde](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory#create-an-active-directory-application). Po zadání přihlašovacích údajů pro objektů blob v Azure nebo ADLS v souboru core-site.xml, můžete odkazovat data uložená v těchto zdrojích s URI předponu wasb: / / nebo adl: / /. 

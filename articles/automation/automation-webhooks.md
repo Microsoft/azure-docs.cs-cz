@@ -1,24 +1,18 @@
 ---
-title: "Počínaje webhook, jehož runbook služby Azure Automation | Microsoft Docs"
+title: "Počínaje webhook, jehož runbook služby automatizace Azure"
 description: "Webhook, která umožňuje klientovi spuštění sady runbook ve službě Azure Automation z volání protokolu HTTP.  Tento článek popisuje, jak vytvořit webhook, jehož a postup volání jednoho spuštění runbooku."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 9b20237c-a593-4299-bbdc-35c47ee9e55d
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/22/2017
-ms.author: magoedte;bwren;sngun
-ms.openlocfilehash: 03d1617eb64c48b6a90925ae76e1ab3ce0312ff1
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+manager: carmonm
+ms.openlocfilehash: b3e8e489ef4b79a89facb2395543743c427b0310
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Počínaje webhook, jehož runbook služby automatizace Azure
 A *webhooku* umožňuje spustit konkrétní runbook ve službě Azure Automation prostřednictvím jedné žádosti HTTP. To umožňuje externích služeb, jako je například Visual Studio Team Services, GitHub, analýzy protokolů Microsoft Operations Management Suite nebo vlastních aplikací ke spouštění sad runbook bez implementace úplné řešení pomocí rozhraní API služby Azure Automation.  
@@ -32,7 +26,7 @@ Následující tabulka popisuje vlastnosti, které je nutné nakonfigurovat pro 
 | Vlastnost | Popis |
 |:--- |:--- |
 | Název |Můžete zadat libovolný název, který chcete použít pro webhook, jehož vzhledem k tomu, že to není vystavený klienta.  Používá se pouze pro vás k identifikaci sady runbook ve službě Azure Automation. <br>  Jako osvědčený postup musíte získat webhooku název související klientovi, který bude používat. |
-| Adresa URL |Adresa URL webhooku je jedinečnou adresu, která volá klienta pomocí metody POST protokolu HTTP pro spuštění sady runbook propojené s webhooku.  Generuje se automaticky při vytvoření webhooku.  Nelze zadat vlastní adresu URL. <br> <br>  Adresa URL obsahuje token zabezpečení, který umožňuje sady runbook vyvolat systému třetích stran se žádné další ověřování. Z tohoto důvodu by zpracovávat jako heslo.  Z bezpečnostních důvodů můžete jenom zobrazit adresu URL na portálu Azure v době, kdy je vytvoření webhooku. Upozorňujeme ale, adresu URL na bezpečné místo pro budoucí použití. |
+| zprostředkovatele identity |Adresa URL webhooku je jedinečnou adresu, která volá klienta pomocí metody POST protokolu HTTP pro spuštění sady runbook propojené s webhooku.  Generuje se automaticky při vytvoření webhooku.  Nelze zadat vlastní adresu URL. <br> <br>  Adresa URL obsahuje token zabezpečení, který umožňuje sady runbook vyvolat systému třetích stran se žádné další ověřování. Z tohoto důvodu by zpracovávat jako heslo.  Z bezpečnostních důvodů můžete jenom zobrazit adresu URL na portálu Azure v době, kdy je vytvoření webhooku. Upozorňujeme ale, adresu URL na bezpečné místo pro budoucí použití. |
 | Datum konce platnosti |Stejně jako certifikát má každý webhooku datum vypršení platnosti, po kterém již slouží.  Po vytvoření webhooku můžete upravit toto datum vypršení platnosti. |
 | Povoleno |Webhook, jehož je ve výchozím nastavení povolena, když je vytvořeno.  Pokud je nastavena na zakázáno, pak žádný klient bude moct používat.  Můžete nastavit **povoleno** vlastnost při vytvoření webhooku nebo kdykoli po jeho vytvoření. |
 

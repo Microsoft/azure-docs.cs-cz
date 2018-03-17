@@ -1,24 +1,20 @@
 ---
-title: "Vytvoření modulu integrace pro Azure Automation | Dokumentace Microsoftu"
+title: "Vytvoření modulu integrace služby Azure Automation"
 description: "Kurz vás provede vytvořením, otestováním a ukázkovým použitím modulů integrace ve službě Azure Automation."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: 
-ms.assetid: 27798efb-08b9-45d9-9b41-5ad91a3df41e
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 01/13/2017
-ms.author: magoedte
-ms.openlocfilehash: 4eddce9d355a4b709e266129935766376d352045
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: e1bcdb2938d1dcb2743b4c1c523ccefb322dd428
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-automation-integration-modules"></a>Moduly integrace pro Azure Automation
 PowerShell je základní technologií, která stojí za službou Azure Automation. Vzhledem k tomu, že Azure Automation je postavená na PowerShellu, jsou moduly PowerShellu klíčem k rozšiřitelnosti služby Azure Automation. V tomto článku jsme vás provede specifiky používání Azure Automation moduly Powershellu, označuje jako "Moduly integrace" a osvědčené postupy pro vytváření vlastních modulů Powershellu, abyste měli jistotu, že fungují jako moduly integrace v rámci Azure Automatizace. 

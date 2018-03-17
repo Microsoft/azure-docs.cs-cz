@@ -6,56 +6,55 @@ documentationcenter: NA
 author: jrowlandjones
 manager: barbkess
 editor: 
-ms.assetid: 996e3afc-c21c-4e21-b9df-997f953f6dfd
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: develop
-ms.date: 10/31/2016
+ms.date: 03/15/2018
 ms.author: jrj;barbkess
-ms.openlocfilehash: b85a4f09e561e429aa5bf46ec680014487fb40c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 329217faaf865052b79a1d44200cc3c788702046
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Rozhodnutí o návrhu a kódování techniky pro SQL Data Warehouse
-Prohlédněte si prostřednictvím tyto články vývoj, abyste lépe pochopili rozhodnutí o návrhu klíče, doporučení a kódování techniky pro SQL Data Warehouse.
+Prohlédněte si prostřednictvím tyto články vývoj lépe pochopit klíčových rozhodnutí, doporučení a kódování techniky pro SQL Data Warehouse.
 
 ## <a name="key-design-decisions"></a>Rozhodnutí o návrhu klíče
-V následujících článcích zvýrazněte některé klíčové koncepty a rozhodnutí o návrhu, které je třeba porozumět pro vývoj distribuované datového skladu pomocí SQL Data Warehouse:
+V následujících článcích zvýrazněte koncepty a rozhodnutí o návrhu pro vývoj distribuované datový sklad SQL Data Warehouse pomocí:
 
-* [připojení][connections]
-* [souběžnosti][concurrency]
-* [transakce][transactions]
-* [uživatelem definované schémata][user-defined schemas]
+* [Připojení][connections]
+* [Souběžnosti][concurrency]
+* [Transakce][transactions]
+* [Uživatelem definované schémata][user-defined schemas]
 * [distribuce tabulky][table distribution]
 * [indexy tabulek][table indexes]
 * [Tabulka oddílů][table partitions]
-* [FUNKCE CTAS][CTAS]
-* [statistiky][statistics]
+* [CTAS][CTAS]
+* [Statistiky][statistics]
 
 ## <a name="development-recommendations-and-coding-techniques"></a>Doporučení pro vývoj a techniky kódování
 Tyto články zvýraznit konkrétní kódování techniky, tipy a doporučení pro vývoj SQL Data Warehouse:
 
-* [uložené procedury][stored procedures]
-* [popisky][labels]
+* [Uložené procedury][stored procedures]
+* [Popisky][labels]
 * [zobrazení][views]
 * [dočasné tabulky][temporary tables]
-* [dynamické SQL][dynamic SQL]
+* [dynamic SQL][dynamic SQL]
 * [ve smyčce][looping]
-* [Seskupit podle možností][group by options]
-* [přiřazení proměnné][variable assignment]
+* [Seskupit podle možnosti][group by options]
+* [Přiřazení proměnné][variable assignment]
 
-## <a name="next-steps"></a>Další kroky
-Jakmile jste prostřednictvím články vývoj prohlédněte prostřednictvím [referenční dokumentace jazyka Transact-SQL] [ Transact-SQL reference] stránka Další informace o podporovaných syntaxe pro SQL Data Warehouse.
+## <a name="next-steps"></a>Další postup
+Další informace najdete v článku [referenční dokumentace jazyka Transact-SQL] [ Transact-SQL reference] stránky pro SQL Data Warehouse.
 
 <!--Image references-->
 
 <!--Article references-->
-[concurrency]: ./sql-data-warehouse-develop-concurrency.md
+[concurrency]: ./resource-classes-for-workload-management.md
 [connections]: ./sql-data-warehouse-connect-overview.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
 [dynamic SQL]: ./sql-data-warehouse-develop-dynamic-sql.md

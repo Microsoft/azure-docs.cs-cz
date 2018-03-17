@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: a6e1b6230742c1c2f065418110f76932306a9588
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2e05be2131ca89a084da5eeffc0b025b38432a8d
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Vytvářet a spravovat servery Azure SQL Database a databáze
 
@@ -21,7 +21,7 @@ SQL Database nabízí tři typy databází:
 
 - Vytvořit v rámci jedné databáze [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s definovanou sadu [výpočetní a úložnou kapacitu pro různé úlohy](sql-database-service-tiers.md). Azure SQL database je přidružen logického serveru Azure SQL Database, která je vytvořena v rámci konkrétní oblasti Azure.
 - Databáze vytvořené jako součást [fond databází](sql-database-elastic-pool.md) v rámci [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s definovanou sadu [výpočetní a úložnou kapacitu pro různé úlohy](sql-database-service-tiers.md) , které jsou sdíleno mezi všechny databáze ve fondu. Azure SQL database je přidružen logického serveru Azure SQL Database, která je vytvořena v rámci konkrétní oblasti Azure.
-- [Instance systému SQL server](sql-database-managed-instance.md) vytvořen v rámci [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s definovanou sadu výpočetní a úložnou kapacitu pro všechny databáze v instanci serveru. Spravované instance obsahuje systém a uživatele databáze. Spravované Instance vytvořené za účelem povolení databáze navýšení a posunu plně spravovaná PaaS, bez přepracování aplikace. Spravované Instance poskytuje vysokou kompatibilitu s programovací model místní systém SQL Server a podporuje velká většina funkcí systému SQL Server a doprovodné nástroje a služby.  
+- [Instance systému SQL server](sql-database-managed-instance.md) (spravované instanci) vytvořen v rámci [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s definovanou sadu výpočetní a úložnou kapacitu pro všechny databáze v instanci serveru. Spravované instance obsahuje systém a uživatele databáze. Spravované Instance vytvořené za účelem povolení databáze navýšení a posunu plně spravovaná PaaS, bez přepracování aplikace. Spravované Instance poskytuje vysokou kompatibilitu s programovací model místní systém SQL Server a podporuje velká většina funkcí systému SQL Server a doprovodné nástroje a služby.  
 
 Microsoft Azure SQL Database podporuje tabular data stream (TDS) protokol klienta verze 7.3 nebo novější a umožňuje šifrované připojení TCP/IP.
 
@@ -140,7 +140,7 @@ Vytvoření a Správa serveru Azure SQL, databáze a brány firewall se [rozhran
 |[az group create](/cli/azure/group#az_group_create)|Vytvoří skupinu prostředků.|
 |[az sql server create](/cli/azure/sql/server#az_sql_server_create)|Vytvoří serveru|
 |[seznam serverů sql az](/cli/azure/sql/server#az_sql_server_list)|Vytvoří seznam serverů|
-|[server sql az seznamu – použití](/cli/azure/sql/server#az_sql_server_list-usages)|Vrátí použití serveru|
+|[server sql az seznamu – použití](/cli/azure/sql/server#az_sql_server_list_usages)|Vrátí použití serveru|
 |[AZ sql serveru zobrazit](/cli/azure/sql/server#az_sql_server_show)|Získá serveru|
 |[aktualizace az sql server](/cli/azure/sql/server#az_sql_server_update)|Aktualizace serveru|
 |[Odstranění serveru sql az](/cli/azure/sql/server#az_sql_server_delete)|Odstraní server|
@@ -196,7 +196,6 @@ Vytvoření a Správa serveru Azure SQL, databáze a brány firewall, použijte 
 |[Servery – seznam](/rest/api/sql/servers/list)|Vrátí seznam serverů.|
 |[Servery – seznam podle skupiny prostředků](/rest/api/sql/servers/listbyresourcegroup)|Vrátí seznam serverů ve skupině prostředků.|
 |[Servery – aktualizace](/rest/api/sql/servers/update)|Aktualizuje existující server.|
-|[Servery – Sql](/rest/api/sql/servers%20-%20sql)|Určuje, zda lze vytvořit prostředek se zadaným názvem.|
 |[Databáze - vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate)|Vytvoří novou databázi nebo aktualizuje existující databázi.|
 |[Databáze - Get](/rest/api/sql/databases/get)|Získá databáze.|
 |[Databáze - získat elastického fondu](/rest/api/sql/databases/getbyelasticpool)|Získá databáze v elastickém fondu.|
@@ -210,7 +209,7 @@ Vytvoření a Správa serveru Azure SQL, databáze a brány firewall, použijte 
 |[Pravidla brány firewall - Get](/rest/api/sql/firewallrules/get)|Získá pravidla brány firewall.|
 |[Pravidla brány firewall - seznamu serverem](/rest/api/sql/firewallrules/listbyserver)|Vrátí seznam pravidel brány firewall.|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o migraci databáze SQL serveru do Azure najdete v tématu [migrací do Azure SQL Database](sql-database-cloud-migrate.md).
 - Informace o podporovaných funkcích najdete v tématu [Funkce](sql-database-features.md).

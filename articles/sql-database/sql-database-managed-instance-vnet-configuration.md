@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 2f2a1289aa4c7681d16ab27bf8546b97f5ea3939
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e724a660f8ba2373cefdabe8595908b7bb42f4d6
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurace virtuální sítě pro spravované Instance databáze Azure SQL
 
@@ -33,7 +33,7 @@ Naplánujte, jak nasadit a spravovat Instance ve virtuální síti pomocí vaše
 
    Pokud budete chtít použít existující virtuální síť, musíte ke změně této konfigurace sítě pro přizpůsobení Instance spravované. Další informace najdete v tématu [upravit existující virtuální síť pro spravované Instance](#modify-an-existing-virtual-network-for-managed-instances). 
 
-   Pokud budete chtít vytvořit novou virtuální síť, přečtěte si téma [vytvořit novou virtuální síť pro spravované Instance](#create-new-virtual-network-for-managed-instances).
+   Pokud budete chtít vytvořit novou virtuální síť, přečtěte si téma [vytvořit novou virtuální síť pro spravované Instance](#create-a-new-virtual-network-for-managed-instances).
 
 ## <a name="requirements"></a>Požadavky
 
@@ -105,7 +105,7 @@ Vytvoření virtuální sítě Azure je předpokladem pro vytvoření Instance s
 
 4. Tato trasa přidružte podsítě pro spravované Instance způsobem jako na následujících snímcích obrazovky:
 
-    ![Podsíť](./media/sql-database-managed-instance-tutorial/subnet.png)
+    ![podsíť](./media/sql-database-managed-instance-tutorial/subnet.png)
 
     ![Sada směrovací tabulku](./media/sql-database-managed-instance-tutorial/set-route-table.png)
 
@@ -142,7 +142,7 @@ Pokud ano, přečtěte si téma [konfiguraci DNS vlastní](sql-database-managed-
 
 - Vytvořte požadované směrovací tabulka a přidružte ji: najdete v části [vytvořte požadované směrovací tabulka a přidružte ji](#create-the-required-route-table-and-associate-it)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přehled najdete v tématu [co je spravované Instance](sql-database-managed-instance.md)
 - Zobrazuje postup vytvoření virtuální sítě, vytvořte instanci spravované a obnovit databázi ze zálohy databáze, na adrese [vytvoření Azure SQL Database spravované Instance](sql-database-managed-instance-tutorial-portal.md).

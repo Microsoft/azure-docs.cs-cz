@@ -1,24 +1,20 @@
 ---
-title: "Průběžné nasazování služby Azure Automation DSC s Chocolatey | Microsoft Docs"
+title: "Průběžné nasazování služby Azure Automation DSC s Chocolatey"
 description: "DevOps průběžné nasazování pomocí Azure Automation DSC a správce Chocolatey balíčků.  Příklad s kompletní šablonou JSON ARM a zdroj PowerShell."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: c0baa411-eb76-4f91-8d14-68f68b4805b6
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: na
-ms.date: 10/29/2016
-ms.author: golive
-ms.openlocfilehash: f9957d745ed910fbdcbeeee7d9ddb24a51da141b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: 8c1427bd40a6fd75a755c4709d88a4b8e4c55571
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Příklad použití: Průběžné nasazování pro virtuální počítače pomocí Automation DSC a Chocolatey
 Ve světě DevOps jsou celou řadu nástrojů pro pomoc s různými body v kanálu nepřetržité integrace.  Konfigurace Azure Automation žádaný stavu (DSC) je úvodní nové přidání možnosti, které můžete použít DevOps týmy.  Tento článek ukazuje nastavení nahoru průběžné nasazení (CD) pro počítač se systémem Windows.  Můžete snadno rozšířit techniku, například jako v mnoha počítače se systémem Windows v případě potřeby v roli (webový server, např.) a z ní také další rolí.
@@ -77,7 +73,7 @@ Nebo je ruční metodu.  Struktura složek modulu integrace prostředí PowerShe
 
 * Nainstalujte modul, který je nutné na pracovní stanici, následujícím způsobem:
   * Nainstalujte [Windows Management Framework, verze 5](http://aka.ms/wmf5latest) (nejsou potřeba pro Windows 10)
-  * `Install-Module –Name MODULE-NAME`< – získá modul z Galerie Powershellu 
+  * `Install-Module –Name MODULE-NAME`    < – získá modul z Galerie Powershellu 
 * Zkopírujte složku modul z `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` do dočasné složky 
 * Ukázky a dokumentace odstranit z hlavní složky 
 * ZIP složce hlavní názvy souboru ZIP, stejně jako složka 
@@ -138,7 +134,7 @@ ISVBoxConfig.ps1:
         }    
     }
 
-Nový-ConfigurationScript.ps1:
+New-ConfigurationScript.ps1:
 
     Import-AzureRmAutomationDscConfiguration ` 
         -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT ` 

@@ -1,24 +1,20 @@
 ---
-title: "Vytváření účtů Azure Automation Spustit jako | Dokumentace Microsoftu"
+title: "Vytvoření Azure Automation účtů spustit jako"
 description: "Tento článek popisuje postup aktualizace účtu Automation a vytváření účtů Spustit jako pomocí PowerShellu nebo z portálu."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: 
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/14/2018
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 467ff5ae3a9478c32ba212774cf7040f03dec00a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 03/15/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: e7a339ae443bc61e1d2364afd8400fc436593b9f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualizace ověřování účtu Automation o účty Spustit jako 
 Existující účet Automation můžete aktualizovat z webu Azure Portal nebo pomocí PowerShellu, pokud jste postupovali takto:

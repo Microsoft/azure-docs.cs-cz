@@ -13,27 +13,27 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2017
+ms.date: 03/16/2018
 ms.author: gokuma;bradsev
-ms.openlocfilehash: c6948447ea7bfa6219bf70d46d14f82724fa0c60
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ce99577d57179e641b86385fd1b543e327d7474
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>Seznámení s datové vědy virtuálního počítače
 
-Datové vědy virtuálního počítače (**DSVM**) obsahuje rozsáhlé seznam oblíbených vědecké zpracování dat, Machine Learning / AI nástroje a Data platformy. Tyto nastavili v konfiguracích, které se pečlivě testují podle datových vědců a vývojářů v Microsoftu, a širší komunita vědecké zpracování dat pro zajištění stability a obecné životnost.
+Virtuální počítač vědecké účely dat (DSVM) zahrnuje rozsáhlého seznamu oblíbených data vědy, nástroje machine learning/AI a data platformy. Nástroj konfigurace jsou testovány pečlivě datových vědců a vývojáře společnosti Microsoft a komunitou širší datové vědy zajistit stability a obecné životnost.
 
-DSVM také zahrnuje několik ukázky kódu a návody ve formě Jupyter notebooks, které můžete provést místně. Je také dokumentaci pro tyto ukázky můžete docílit míru porozumění. 
+DSVM také zahrnuje několik ukázky kódu a návody ve formě Jupyter Notebooks, může být spuštěn místně. Je také dokumentaci pro tyto ukázky můžete docílit míru porozumění. 
 
-Nástroje, platformy, nástroje a vzorků zahrnutých DSVM mít byla uspořádány do následujících částí:
+Nástroje, platformy, nástroje a ukázky, které jsou součástí virtuálního počítače vědecké účely Data jsou uspořádány do následujících částí:
 
-1. **[Hloubkové Learning & architektury AI](dsvm-deep-learning-ai-frameworks.md)**
-2. **[ML & nástrojů Data vědecké účely](dsvm-ml-data-science-tools.md)**
+1. **[Hloubkové učení a architektur AI](dsvm-deep-learning-ai-frameworks.md)**
+2. **[Machine Learning a vědecké účely nástrojů Data](dsvm-ml-data-science-tools.md)**
 3. **[Programovací jazyky](dsvm-languages.md)**
 4. **[Nástroje pro vývoj a integrovaného vývojového prostředí](dsvm-tools-development.md)**
 5. **[Nástroje pro přijímání dat](dsvm-tools-ingestion.md)**
-6. **[Zkoumání dat & vizualizace nástroje](dsvm-tools-explore-and-visualize.md)**
+6. **[Zkoumání dat a vizualizaci nástroje](dsvm-tools-explore-and-visualize.md)**
 7. **[Data platformy](dsvm-data-platforms.md)**
 8. **[Ukázky a návody](dsvm-samples-and-walkthroughs.md)**

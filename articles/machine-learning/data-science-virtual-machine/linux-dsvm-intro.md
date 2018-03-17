@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: e36c28ef1c05dcdcebc7372316c7f144c92fd02f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 550d49e3d6007c6b494deec95b785ea9bc214f3a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Zřídit CentOS datové vědy virtuální počítač s Linuxem v Azure
 
@@ -32,7 +32,7 @@ Virtuální počítač Linux Data vědecké účely je na základě CentOS Azure
 * JupyterHub - víceuživatelská server poznámkového bloku Jupyter s podporou R, Python, PySpark, Dita jádra
 * Azure Storage Explorer
 * Rozhraní příkazového řádku Azure (CLI) ke správě prostředků Azure
-* PostgresSQL databáze
+* PostgresSQL Database
 * Nástroje Machine learning
   * [Kognitivní Toolkit](https://github.com/Microsoft/CNTK): hluboká učení softwaru nástrojů Microsoft Research.
   * [K dispozici Vowpal](https://github.com/JohnLangford/vowpal_wabbit): rychlé strojového učení systému, který podporuje, jako jsou online a hash, allreduce, snížení, learning2search, aktivní a interaktivní učení.
@@ -124,7 +124,7 @@ Virtuální počítač s Linuxem již zřízená X2Go server a přijímá připo
 Po přihlášení k virtuálnímu počítači pomocí SSH klienta nebo XFCE grafické plochy prostřednictvím klienta X2Go, jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované ve virtuálním počítači. Na XFCE můžete zobrazit zástupce aplikace nabídky a ikony na ploše pro řadu nástrojů.
 
 ## <a name="tools-installed-on-the-linux-data-science-virtual-machine"></a>Nástroje nainstalované na datové vědě virtuální počítač Linux
-### <a name="microsoft-r-server"></a>Server Microsoft R
+### <a name="microsoft-r-server"></a>Microsoft R Server
 R je jedním z Nejoblíbenější jazyky pro analýzu dat a strojové učení. Pokud chcete použít pro analytické údaje R, virtuální počítač má Microsoft R Server (Paní) s Microsoft R otevřete (MRO) a matematické jádra knihovny (MKL). MKL optimalizuje matematické operace v analytical algoritmy běžné. MRO je kompatibilní s CRAN r. 100 procent a některé z knihovny R publikované v CRAN lze nainstalovat MRO. PANÍ vám dává škálování a operationalization R modelů do webové služby. Můžete upravit programy R v jednom z výchozí editory, jako je Rstudia, vi, Emacs nebo gedit. Pokud používáte editoru Emacs, Všimněte si, že balíček Emacs ESS (mluví statistiky Emacs), který zjednodušuje práce se soubory R v editoru Emacs je už předem nainstalovaná.
 
 Pro spuštění R konzole, stačí zadat **R** v prostředí. Tím přejdete na interaktivní prostředí. K vývoji vašeho programu R, obvykle pomocí editoru jako Emacs nebo vi nebo gedit a potom spuštěním skriptů v R. S Rstudia máte úplné grafické prostředí IDE vyvíjet váš R program.
@@ -151,10 +151,10 @@ Python 3.5 je nainstalována v */anaconda/envs/py35/bin*.
 
 K vyvolání interaktivní relace Python, stačí zadat **python** v prostředí. Pokud jsou na grafické rozhraní nebo mají X11 předávání sadu nahoru, můžete zadat **pycharm** spustit prostředí IDE PyCharm Python.
 
-Pokud chcete nainstalovat další knihovny Python, budete muset spustit ```conda``` nebo ````pip```` příkazu v části sudo a zadejte úplnou cestu Správce balíčků Python (conda nebo pip), chcete-li nainstalovat správnou prostředí Python. Například:
+Pokud chcete nainstalovat další knihovny Python, budete muset spustit ```conda``` nebo ````pip```` příkazu v části sudo a zadejte úplnou cestu Správce balíčků Python (conda nebo pip), chcete-li nainstalovat správnou prostředí Python. Příklad:
 
-    sudo /anaconda/bin/pip install <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install <package> # for Python 3.5 environment
+    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
+    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
 
 
 ### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
@@ -215,7 +215,7 @@ Databáze s otevřeným zdrojem **Postgres** je k dispozici na virtuální poč�
 
 Před prvním použitím nastavení ovladače a aliasy databáze. Ovladače JDBC jsou umístěné na adrese:
 
-*/USR/share/Java/jdbcdrivers*
+*/usr/share/java/jdbcdrivers*
 
 Další informace najdete v tématu [SQuirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots).
 
@@ -366,7 +366,7 @@ Nyní grafické rozhraní otevře sadu karet. Tady jsou kroky pro rychlé spušt
 
 Můžete ukončit Rattle a R. Nyní můžete upravit generovaného skriptu R, nebo ho použít, protože to je vše, co bylo provedeno v rámci rozhraní Rattle opakování ji kdykoli spustit. Zejména pro začátečníky v R je to snadný způsob, jak rychle provést analýzy a strojového učení v jednoduchého grafického rozhraní, při automatické generování kódu v R upravit nebo Další informace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Zde je, jak můžete dál učení a zkoumání:
 
 * [Vědecké zpracování dat na datové vědě virtuální počítač Linux](linux-dsvm-walkthrough.md) návodu se dozvíte, jak provést několik běžné úkoly vědecké účely dat datové vědy virtuálního počítače s Linuxem zřízený sem. 

@@ -6,14 +6,14 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 03/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 7e8a5014ce9168ba3d67d175935649bfd9fec511
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6f7f0d9aea86594140c302e6d12e6528e802b9e7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů v Azure kontejner instancí
 
@@ -23,13 +23,14 @@ Je nejvyšší úrovně prostředků v Azure kontejner instancí *skupina kontej
 
 Skupina kontejneru je kolekce kontejnery, které získat naplánovat na stejném hostitelském počítači. Kontejnery v kontejneru skupiny sdílet životního cyklu, místní sítí a svazky úložiště. Je podobný koncept *pod* v [Kubernetes] [ kubernetes-pod] a [DC/OS][dcos-pod].
 
-Následující diagram ukazuje příklad skupinou kontejneru, která obsahuje více kontejnerů.
+Následující diagram ukazuje příklad skupinou kontejneru, která obsahuje více kontejnerů:
 
 ![Diagram skupiny kontejneru][container-groups-example]
 
 Tato skupina kontejneru příklad:
 
 * Je naplánován na jeden hostitelský počítač.
+* Popisek názvu DNS není přiřazen.
 * Zpřístupní jednu veřejnou IP adresu, s zveřejněné jeden port.
 * Se skládá ze dvou kontejnery. Jeden kontejner naslouchá na portu 80, při dalších sleduje na port 5000.
 * Zahrnuje dvě Azure sdílené složky jako svazek připojení zařízení a každý kontejner připojí některé sdílené složky místně.
@@ -51,7 +52,7 @@ Můžete zadat externí svazky připojit v rámci skupiny kontejneru. Můžete n
 
 ## <a name="common-scenarios"></a>Obvyklé scénáře
 
-Více kontejner skupiny jsou užitečné v případech, ve které chcete rozdělit jeden úkol funkční do malý počet kontejneru Image, které mohou být dodány pomocí různými týmy a obsahují požadavky samostatné prostředků.
+Více kontejner skupiny jsou užitečné v případech, ve které chcete rozdělit jeden úkol funkční na malý počet bitových kopií kontejneru. Tyto bitové kopie pak mohou být dodány pomocí různé týmy a mít požadavky na samostatný prostředky.
 
 Příklad použití můžou zahrnovat:
 
