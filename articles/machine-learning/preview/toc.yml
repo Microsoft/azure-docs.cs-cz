@@ -27,6 +27,8 @@
       href: overview-general-concepts.md
 - name: Návody
   items:
+    - name: Hlavní úlohy rozhraní příkazového řádku
+      href: cli-for-azure-machine-learning.md
     - name: Použití aplikace Workbench
       items:
         - name: Práce s integrovanými vývojovými prostředími Pythonu

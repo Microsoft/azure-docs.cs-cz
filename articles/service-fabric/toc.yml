@@ -31,6 +31,18 @@
           href: service-fabric-tutorial-deploy-app-with-cicd-vsts.md
         - name: 4. Monitorování a diagnostika
           href: service-fabric-tutorial-monitoring-aspnet.md
+    - name: Nasazení aplikace v Javě
+      items:
+        - name: 1. Sestavení aplikace v Javě
+          href: service-fabric-tutorial-create-java-app.md
+        - name: 2. Ladění aplikace
+          href: service-fabric-tutorial-debug-log-local-cluster.md
+        - name: 3. Nasazení aplikace
+          href: service-fabric-tutorial-java-deploy-azure.md
+        - name: 4. Monitorování a diagnostika
+          href: service-fabric-tutorial-java-elk.md
+        - name: 5. Konfigurace CI/CD
+          href: service-fabric-tutorial-java-jenkins.md
     - name: Kontejnerizace existující aplikace v .NET
       items:
         - name: 1. Nasazení aplikace .NET pomocí Docker Compose
@@ -129,6 +141,8 @@
               href: service-fabric-reliable-actors-reentrancy.md
             - name: Serializace typu
               href: service-fabric-reliable-actors-notes-on-actor-type-serialization.md
+        - name: Spustitelné soubory typu Host
+          href: service-fabric-guest-executables-introduction.md
     - name: Aplikace a služby
       items:
         - name: Aplikační model

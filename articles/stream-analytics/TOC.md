@@ -64,6 +64,7 @@
 ## Nástroje sady Visual Studio
 ### [Instalace nástrojů](stream-analytics-tools-for-visual-studio-install.md)
 ### [Vývoj cloudové úlohy](stream-analytics-tools-for-visual-studio.md)
+### [Vývoj hraniční úlohy](stream-analytics-tools-for-visual-studio-edge-jobs.md)
 ### [Nastavení kanálu CI/CD](stream-analytics-tools-for-visual-studio-cicd.md)
 
 ## Řešení potíží

@@ -61,6 +61,7 @@
 ## [Vlastní nastavení jazyka](active-directory-b2c-reference-language-customization.md)
 ## [Použití rozhraní API pro vytváření sestav](active-directory-b2c-reference-usage-reporting-api.md)
 ## [Migrace uživatelů](active-directory-b2c-user-migration.md)
+## [Migrace sociálních identit](active-directory-b2c-social-migration.md)
 
 # Architektura prostředí identit
 ## [Vlastní zásady](active-directory-b2c-overview-custom.md)

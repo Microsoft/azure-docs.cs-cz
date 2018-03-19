@@ -57,10 +57,12 @@
 ## [Galerie aplikací Azure AD](active-directory-app-gallery-listing.md)
 ## [Řídicí panel pro prodejce Office 365](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
 ## Práce se sadou Visual Studio
-### [Začínáme s připojenými službami sady Visual Studio](vs-active-directory-dotnet-getting-started.md)
+### [Použití připojené služby Active Directory](vs-active-directory-add-connected-service.md)
+### [Začínáme s projekty .NET MVC](vs-active-directory-dotnet-getting-started.md)
+### [Co se stalo s mým projektem .NET MVC?](vs-active-directory-dotnet-what-happened.md)
+### [Začínáme s projekty WebAPI](vs-active-directory-webapi-getting-started.md)
+### [Co se stalo s mým projektem WebAPI?](vs-active-directory-webapi-what-happened.md)
 ### [Chyba během detekce ověřování](vs-active-directory-error.md)
-### [Začínáme s WebApi](vs-active-directory-webapi-getting-started.md)
-### [Co se stalo s mým projektem webového rozhraní API](vs-active-directory-webapi-what-happened.md)
 ## [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
 ## [Migrace ACS](active-directory-acs-migration.md)
 ## [Osvědčené postupy zpracování chyb pro ADAL](active-directory-devhowto-adal-error-handling.md)
@@ -110,7 +112,7 @@
 #### [Referenční informace o tokenech](active-directory-v2-tokens.md)
 #### [Přihlašovací údaje ve formě certifikátu](active-directory-certificate-credentials.md)
 ### [Obory](active-directory-v2-scopes.md)
-# Zdroje
+# Zdroje a prostředky
 ## [Získání nápovědy](active-directory-develop-help-support.md)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)

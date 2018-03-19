@@ -6,11 +6,11 @@ description: "Naučte se vytvářet a spravovat výkonné aplikace pomocí cloud
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 88b49cb3f16ec8980c480e7a553e0798be7a6f0f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6d188cc25d858cc2d07fc49450d6b2d4a4a04c09
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -199,7 +199,7 @@ ms.lasthandoff: 03/08/2018
                                                 </ul>
                                                 <h4>Umělá inteligence a Cognitive Services</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/machine-learning/preview">Služby Machine Learning</a></li>
+                                                    <li><a class="barLink" href="/azure/machine-learning/">Machine Learning</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/computer-vision/">Rozhraní API pro počítačové zpracování obrazu</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/face/">Rozhraní API pro rozpoznávání tváře</a></li>
                                                 </ul>
@@ -216,7 +216,7 @@ ms.lasthandoff: 03/08/2018
                                                 <h3>Nástroje příkazového řádku</h3>
                                                 <ul class="noBullet">
                                                     <li>
-                                                        <a class="barLink" href="/cli/azure/overview">
+                                                        <a class="barLink" href="/cli/azure">
                                                             <img src="media/index/azure_dev-7.svg" alt=""> Azure CLI </a>
                                                     </li>
                                                     <li>
@@ -600,9 +600,9 @@ ms.lasthandoff: 03/08/2018
                                     <h3>AI a Machine Learning</h3>
                                     <ul>
                                         <li>
-                                            <a href="/azure/machine-learning/preview">
+                                            <a href="/azure/machine-learning/">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>Služby Machine Learning</p>
+                                                <p>Machine Learning</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2545,7 +2545,7 @@ ms.lasthandoff: 03/08/2018
                                 <h2>Umělá inteligence</h2>
                             </li>
                             <li>
-                                <a href="/azure/machine-learning/preview">
+                                <a href="/azure/machine-learning/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2555,7 +2555,7 @@ ms.lasthandoff: 03/08/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Služby Machine Learning</h3>
+                                                    <h3>Machine Learning</h3>
                                                     <p>Přístup k AI pro všechny díky komplexní, škálovatelné a důvěryhodné platformě se správou experimentů a modelů</p>
                                                 </div>
                                             </div>
@@ -2733,10 +2733,10 @@ ms.lasthandoff: 03/08/2018
                                                                 <a class="barLink" href="/azure/cognitive-services/Bing-Autosuggest"><img src="media/index/API_Bing_AutoSuggest.svg" alt="" />Automatické návrhy Bingu</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="media/index/API_Bing_Custom_Search.svg" alt="" /><span>Vlastní vyhledávání Bingu</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="media/index/API_Bing_Custom_Search.svg" alt="" />Vlastní vyhledávání Bingu</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/"><img src="media/index/API_Bing_Entity_Search.svg" alt="" /><span>Vyhledávání entit Bingu&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/"><img src="media/index/API_Bing_Entity_Search.svg" alt="" />Vyhledávání entit Bingu</a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-image-search"><img src="media/index/API_Bing_Image_Search.svg" alt="" />Vyhledávání obrázků Bingu</a>

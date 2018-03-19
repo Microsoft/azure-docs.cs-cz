@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/21/2017
   ms.author: routlaw
-  ms.openlocfilehash: 0a49fda383b025f80e4f1a066330a0e64b159366
-  ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+  ms.openlocfilehash: 71ffbc2f8d6728a414a8e001198b8c9f9b36c485
+  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/01/2018
+  ms.lasthandoff: 03/16/2018
 abstract:
   description: "Použijte Terraform ke spolehlivé správě verzí a vytvoření infrastruktury v Azure. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte vytvářet prostředky, používat moduly Terraformu pro Azure a udržovat infrastrukturu pomocí kódu."
 sections:
@@ -43,6 +43,7 @@ sections:
   - type: list
     style: unordered
     items:
+    - html: "<a href=\"/azure/terraform/terraform-vm-msi\">Vytvoření virtuálního počítače Terraform s povoleným ověřováním MSI pomocí image z Azure Marketplace</a>"
     - html: "<a href=\"/azure/terraform/terraform-create-vm-cluster-module\">Vytvoření clusteru virtuálních počítačů s vyrovnáváním zatížení pomocí modulů Terraformu pro Azure</a>"
     - html: "<a href=\"/azure/terraform/terraform-create-vm-cluster-with-infrastructure\">Vytvoření clusteru virtuálních počítačů s vyrovnáváním zatížení ve službě Azure Cloud Shell</a>"
     - html: "<a href=\"/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl\">Konfigurace škálovací sady virtuálních počítačů se síťovými službami a úložištěm</a>"

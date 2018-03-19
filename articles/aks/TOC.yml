@@ -79,6 +79,8 @@
           href: jenkins-continuous-deployment.md
         - name: Použití OpenFaaS s AKS
           href: openfaas.md
+        - name: Spouštění sparkových úloh v AKS
+          href: spark-job.md
     - name: Základy Kubernetes
       items:
         - name: Použití řídicího panelu Kubernetes

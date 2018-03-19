@@ -15,6 +15,8 @@
       maintainContext: true
 - name: Kurzy
   items:
+    - name: Vytvoření virtuálního počítače Terraform s povolenou službou MSI
+      href: terraform-vm-msi.md
     - name: Vytvoření clusteru virtuálních počítačů s využitím modulů Terraformu
       href: terraform-create-vm-cluster-module.md
     - name: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL

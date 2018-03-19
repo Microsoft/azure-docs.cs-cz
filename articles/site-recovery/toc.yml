@@ -67,6 +67,8 @@
       items:
         - name: Replikace do Azure
           items:
+            - name: Běžné otázky pro replikaci z VMware do Azure
+              href: vmware-azure-common-questions.md
             - name: Systém podpory replikace z VMware/fyzických prostředků do Azure
               href: vmware-physical-azure-support-matrix.md
             - name: Architektura replikace z VMware do Azure
@@ -77,6 +79,8 @@
               href: vmware-azure-multi-tenant-overview.md
             - name: Informace o službě Mobility
               href: vmware-azure-install-mobility-service.md
+            - name: Možnosti umístění navrácení služeb po obnovení
+              href: concepts-types-of-failback.md
         - name: Replikace do sekundární lokality
           items:
             - name: Systém podpory replikace z VMware/fyzických prostředků do sekundární lokality
@@ -117,7 +121,7 @@
               href: azure-to-azure-about-networking.md
             - name: Příprava mapování sítě pro zotavení po havárii virtuálního počítače Azure
               href: azure-to-azure-network-mapping.md
-            - name: Nastavení IP adres po převzetí služeb při selhání virtuálního počítače Azure
+            - name: Nastavení přidělování IP adres pro převzetí služeb při selhání
               href: site-recovery-retain-ip-azure-vm-failover.md
         - name: Zotavení po havárii
           items:
@@ -139,7 +143,7 @@
           items:
             - name: Správa síťových rozhraní pro replikaci místního prostředí do Azure
               href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
-            - name: Nastavení IP adres po převzetí služeb při selhání do Azure
+            - name: Nastavení přidělování IP adres pro převzetí služeb při selhání
               href: concepts-on-premises-to-azure-networking.md
         - name: Plánování kapacity
           items:
@@ -241,7 +245,7 @@
           items:
             - name: Správa síťových rozhraní pro replikaci místního prostředí do Azure
               href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
-            - name: Nastavení IP adres po převzetí služeb při selhání do Azure
+            - name: Nastavení přidělování IP adres pro převzetí služeb při selhání
               href: concepts-on-premises-to-azure-networking.md
         - name: Plánování kapacity
           items:
@@ -255,8 +259,6 @@
                   href: hyper-v-deployment-planner-analyze-report.md
                 - name: Analýza sestavy odhadu náklady
                   href: hyper-v-deployment-planner-cost-estimation.md
-            - name: Testy škálování výkonu pro replikaci Hyper-V do sekundární lokality
-              href: hyper-v-vmm-performance-results.md
         - name: Zotavení po havárii
           items:
             - name: Nastavení replikace Hyper-V do Azure (bez VMM) s využitím PowerShellu
@@ -295,12 +297,14 @@
           href: hyper-v-vmm-powershell-resource-manager.md
         - name: Spuštění postupu zotavení virtuálních počítačů Hyper-V po havárii do sekundární lokality
           href: hyper-v-vmm-test-failover.md
-        - name: Nastavení IP adresy po převzetí služeb při selhání do sekundární lokality
+        - name: Nastavení přidělování IP adres pro převzetí služeb při selhání
           href: hyper-v-vmm-networking.md
         - name: Přidání skriptů VMM do plánů obnovení
           href: hyper-v-vmm-recovery-script.md
         - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení mezi místními lokalitami
           href: hyper-v-vmm-failover-failback.md
+        - name: Testy škálování výkonu pro replikaci Hyper-V do sekundární lokality
+          href: hyper-v-vmm-performance-results.md
     - name: Replikace aplikací
       items:
         - name: Active Directory a DNS

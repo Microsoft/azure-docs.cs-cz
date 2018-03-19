@@ -190,11 +190,10 @@
 #### [Sestavy pro automatické zřizování uživatelů](active-directory-saas-provisioning-reporting.md)
 #### [Řešení potíží se zřizováním uživatelů](active-directory-application-provisioning-content-map.md)
 
-
-
 ### [Vzdálený přístup k aplikací s App Proxy](active-directory-application-proxy-get-started.md)
 #### Začínáme
 ##### [Povolení proxy aplikace](active-directory-application-proxy-enable.md)
+##### [Podpora GDPR](active-directory-application-proxy-gdpr.md)
 ##### [Publikování aplikací](application-proxy-publish-azure-portal.md)
 ##### [Vlastní domény](active-directory-application-proxy-custom-domains.md)
 #### [Jednotné přihlašování](application-proxy-sso-overview.md)

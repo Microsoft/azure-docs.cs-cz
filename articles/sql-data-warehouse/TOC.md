@@ -18,7 +18,7 @@
 
 
 # Kurzy
-## [1. Načtení dat z objektu blob](load-data-from-azure-blob-storage-using-polybase.md)
+## [1. Načtení WideWorldImporters](load-data-wideworldimportersdw.md)
 
 # Koncepty
 ## Funkce služby
@@ -101,6 +101,7 @@
 
 
 ## Načítání a přesun dat
+### [Údaje o newyorských taxících](load-data-from-azure-blob-storage-using-polybase.md)
 ### [Veřejná data společnosti Contoso](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 ### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
