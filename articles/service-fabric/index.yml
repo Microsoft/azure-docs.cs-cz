@@ -15,11 +15,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/03/2017
   ms.author: carolz
-  ms.openlocfilehash: b9f76a98894485f48d495f32f352672784b86316
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.openlocfilehash: f2f85dfb82e62dd60c469abfdd87faa9cad43454
+  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 03/16/2018
 abstract:
   description: "Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb a kontejnerů. Vývojáři a správci se můžou vyhnout problémům se složitou infrastrukturou a místo toho se soustředit na implementaci zásadních a náročných úloh, které jsou škálovatelné, spolehlivé a spravovatelné. Naučte se používat službu Azure Service Fabric prostřednictvím našich šablon Rychlý start, kurzů a ukázek."
 sections:
@@ -58,6 +58,7 @@ sections:
     style: unordered
     items:
     - html: "<a href=\"service-fabric-tutorial-create-dotnet-app\">Nasazení aplikace .NET</a>"
+    - html: "<a href=\"service-fabric-tutorial-create-java-app\">Nasazení aplikace v Javě</a>"
     - html: "<a href=\"service-fabric-host-app-in-a-container\">Kontejnerizace existující aplikace .NET</a>"
     - html: "<a href=\"service-fabric-tutorial-create-container-images\">Vytvoření aplikace typu kontejner pro Linux</a>"
     - html: "Vytvoření a správa clusteru se systémem <a href=\"service-fabric-tutorial-create-vnet-and-windows-cluster\">Windows</a> nebo <a href=\"service-fabric-tutorial-create-vnet-and-linux-cluster\">Linux</a>"
@@ -102,7 +103,7 @@ sections:
       html: "<p><a href=\"https://azure.microsoft.com/resources/samples/service-fabric-dotnet-getting-started/\">Začínáme</a></p><p><a href=\"https://github.com/Azure-Samples/service-fabric-dotnet-quickstart\">Hlasování</a></p><p><a href=\"https://azure.microsoft.com/resources/samples/service-fabric-dotnet-web-reference-app/\">Webový odkaz</a></p><p><a href=\"https://azure.microsoft.com/resources/samples/service-fabric-dotnet-iot/\">IoT</a></p><p><a href=\"https://azure.microsoft.com/resources/samples/service-fabric-watchdog-service/\">Sledovací zařízení</a></p>"
     - title: Java
       html: "<p><a href=\"https://azure.microsoft.com/resources/samples/service-fabric-java-getting-started/\">Začínáme</a></p>"
-- title: Odkaz
+- title: "Referenční informace"
   items:
   - type: list
     style: cards

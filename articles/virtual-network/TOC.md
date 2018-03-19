@@ -27,14 +27,9 @@
 ### [Skupiny zabezpečení sítě](virtual-networks-nsg.md)
 
 ## Nasazení
-### Virtuální sítě
-#### [portál Azure Portal](virtual-networks-create-vnet-arm-pportal.md)
-#### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
-#### [Azure CLI](virtual-networks-create-vnet-arm-cli.md)
-#### [Šablona](virtual-networks-create-vnet-arm-template-click.md)
 
 ### Skupiny zabezpečení sítě
-#### [portál Azure Portal](virtual-networks-create-nsg-arm-pportal.md)
+#### [Azure Portal](virtual-networks-create-nsg-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-nsg-arm-ps.md)
 #### [Azure CLI](virtual-networks-create-nsg-arm-cli.md)
 #### [Šablona](virtual-networks-create-nsg-arm-template.md)
@@ -44,7 +39,7 @@
 ##### [Azure CLI 1.0](virtual-networks-create-nsg-classic-cli.md)
 
 ### Směrovací tabulky
-#### [portál Azure Portal](tutorial-create-route-table-portal.md)
+#### [Azure Portal](tutorial-create-route-table-portal.md)
 #### [Azure PowerShell](tutorial-create-route-table-powershell.md)
 #### [Azure CLI](tutorial-create-route-table-cli.md)
 #### [Šablona](virtual-network-create-udr-arm-template.md)
@@ -54,7 +49,7 @@
 
 ### Partnerské vztahy virtuálních sítí
 #### Stejný model nasazení, stejné předplatné
-##### [portál Azure Portal](tutorial-connect-virtual-networks-portal.md)
+##### [Azure Portal](tutorial-connect-virtual-networks-portal.md)
 ##### [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md)
 ##### [Azure CLI](tutorial-connect-virtual-networks-cli.md)
 #### [Stejný model nasazení, různá předplatná](create-peering-different-subscriptions.md)
@@ -63,15 +58,10 @@
 
 ### [Koncové body služby virtuální sítě](virtual-network-service-endpoints-configure.md)
 
-### Veřejná IP adresa – zóna dostupnosti
-#### [portál Azure Portal](create-public-ip-availability-zone-portal.md)
-#### [Azure CLI](create-public-ip-availability-zone-cli.md)
-#### [PowerShell](create-public-ip-availability-zone-powershell.md)
-
 ### Virtuální počítače
 #### [Propustnost sítě virtuálních počítačů](virtual-machine-network-throughput.md)
 #### Vytvoření virtuálního počítače se statickou veřejnou IP adresou
-##### [portál Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
+##### [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [Azure PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 ##### [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
 ##### [Šablona](virtual-network-deploy-static-pip-arm-template.md)
@@ -79,11 +69,11 @@
 ###### [Azure PowerShell](virtual-networks-reserved-public-ip.md)
 
 #### Vytvoření virtuálního počítače – statická privátní IP adresa
-##### [portál Azure Portal](virtual-networks-static-private-ip-arm-pportal.md)
+##### [Azure Portal](virtual-networks-static-private-ip-arm-pportal.md)
 ##### [Azure PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 ##### [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
 ##### Classic
-###### [portál Azure Portal](virtual-networks-static-private-ip-classic-pportal.md)
+###### [Azure Portal](virtual-networks-static-private-ip-classic-pportal.md)
 ###### [Azure PowerShell](virtual-networks-static-private-ip-classic-ps.md)
 ###### [Azure CLI](virtual-networks-static-private-ip-classic-cli.md)
 
@@ -97,7 +87,7 @@
 ###### [Azure CLI](virtual-network-deploy-multinic-classic-cli.md)
 
 #### Vytvoření virtuálního počítače – několik IP adres
-##### [portál Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
+##### [Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
 ##### [Azure PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
 ##### [Azure CLI](virtual-network-multiple-ip-addresses-cli.md)
 ##### [Šablona](virtual-network-multiple-ip-addresses-template.md)
@@ -126,7 +116,7 @@
 
 ### Classic
 #### [Virtuální síť](create-virtual-network-classic.md)
-##### [portál Azure Portal](virtual-networks-create-vnet-classic-pportal.md)
+##### [Azure Portal](virtual-networks-create-vnet-classic-pportal.md)
 ##### [Azure PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
 ##### [Azure CLI](virtual-networks-create-vnet-classic-cli.md)
 #### [Zadání nastavení DNS v konfiguračním souboru virtuální sítě](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
@@ -147,18 +137,18 @@
 
 ### Classic
 #### Seznamy řízení přístupu
-##### [portál Azure Portal](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure Portal](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### [Azure PowerShell](virtual-networks-acl-powershell.md)
 
 ## Spravovat
-### [Virtuální sítě](virtual-network-manage-network.md)
+### [Virtuální sítě](manage-virtual-network.md)
 #### [Podsítě](virtual-network-manage-subnet.md)
 #### [Partnerské vztahy](virtual-network-manage-peering.md)
 #### Classic
 ##### [Konfigurační soubory sítě](virtual-networks-using-network-configuration-file.md)
 ##### [Migrace ze skupiny vztahů do oblasti](virtual-networks-migrate-to-regional-vnet.md)
 ### Skupiny zabezpečení sítě
-#### [portál Azure Portal](virtual-network-manage-nsg-arm-portal.md)
+#### [Azure Portal](virtual-network-manage-nsg-arm-portal.md)
 #### [Azure PowerShell](virtual-network-manage-nsg-arm-ps.md)
 #### [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
 
@@ -171,15 +161,15 @@
 #### [Přesun virtuálního počítače do jiné podsítě](virtual-networks-move-vm-role-to-subnet.md)
 ### [Veřejné IP adresy](virtual-network-public-ip-address.md)
 ### DDoS Protection
-#### [portál Azure Portal](ddos-protection-manage-portal.md)
+#### [Azure Portal](ddos-protection-manage-portal.md)
 #### [Azure PowerShell](ddos-protection-manage-ps.md)
 
 ## Řešení potíží
 ### Skupiny zabezpečení sítě
-#### [portál Azure Portal](virtual-network-nsg-troubleshoot-portal.md)
+#### [Azure Portal](virtual-network-nsg-troubleshoot-portal.md)
 #### [Azure PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
 ### Trasy
-#### [portál Azure Portal](virtual-network-routes-troubleshoot-portal.md)
+#### [Azure Portal](virtual-network-routes-troubleshoot-portal.md)
 #### [Azure PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 ### [Testování propustnosti](virtual-network-bandwidth-testing.md)
 ### [Nelze odstranit virtuální sítě](virtual-network-troubleshoot-cannot-delete-vnet.md)

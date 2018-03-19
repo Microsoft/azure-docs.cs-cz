@@ -22,7 +22,6 @@
 ## [Kontrola stavu spravované domény](active-directory-ds-check-health.md)
 ## [Použití Azure AD Domain Services v předplatných Azure CSP](active-directory-ds-csp.md)
 ## [Povolení služby Azure AD Domain Services pomocí PowerShellu](active-directory-ds-enable-using-powershell.md)
-## [Kontrola stavu domény](active-directory-ds-check-health.md)
 ## Připojení ke spravované doméně
 ### [Virtuální počítač s Windows Serverem](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [Virtuální počítač s Windows Serverem ze šablony](active-directory-ds-join-windows-vm-template.md)

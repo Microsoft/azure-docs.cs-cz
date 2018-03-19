@@ -235,5 +235,3 @@
       href: 'http://stackoverflow.com/questions/tagged/azure-machine-learning'
     - name: Videa
       href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
-    - name: Získání pomoci přes živý chat
-      href: live-chat.md
