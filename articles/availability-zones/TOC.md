@@ -22,8 +22,9 @@
 ### Škálovací sady virtuálních počítačů
 #### [Vytvoření škálovací sady v zóně dostupnosti](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
 
-### Nástroj pro vyrovnávání zatížení
-#### [Co je Load Balancer?](../load-balancer/load-balancer-standard-overview.md)
+### Load Balancer
+#### [Co je nástroj pro vyrovnávání zatížení?](../load-balancer/load-balancer-standard-overview.md)
+#### [Load Balancer úrovně Standard a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md)
 #### [Vytvoření zónově redundantní veřejné služby Load Balancer Standard s využitím webu Azure Portal](../load-balancer/load-balancer-get-started-internet-az-portal.md)
 #### [Vytvoření zónově redundantní služby Load Balancer Standard s využitím PowerShellu](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
 #### [Vytvoření zónově redundantní veřejné služby Load Balancer Standard s využitím rozhraní příkazového řádku](../load-balancer/load-balancer-get-started-internet-az-cli.md)

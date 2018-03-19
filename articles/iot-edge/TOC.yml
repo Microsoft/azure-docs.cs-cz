@@ -62,6 +62,8 @@
           href: module-development.md
         - name: Složení
           href: module-composition.md
+        - name: Agent Edge a vlastnosti centra
+          href: module-edgeagent-edgehub.md
     - name: Modul runtime IoT Edge
       href: iot-edge-runtime.md
     - name: Nasazení

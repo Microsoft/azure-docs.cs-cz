@@ -38,6 +38,7 @@
 #### [Použití Azure CLI 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md)
 ### [Práce s velkými škálovacími sadami](virtual-machine-scale-sets-placement-groups.md)
 ### [Převod šablony škálovací sady pro použití spravovaného disku](virtual-machine-scale-sets-convert-template-to-md.md)
+### [Použití s nízkou prioritou](virtual-machine-scale-sets-use-low-priority.md)
 
 ## Spravovat
 ### Běžné úlohy správy

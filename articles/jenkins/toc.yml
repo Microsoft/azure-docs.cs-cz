@@ -1,4 +1,4 @@
-- name: Dokumentace k Jenkins v Azure
+- name: Jenkins v Azure
   href: index.yml
 - name: Přehled
   items:
@@ -46,7 +46,7 @@
 - name: Ukázky
   items:
     - name: Ukázkové úlohy a skripty
-      href: 'https://github.com/Azure/azure-devops-utils/tree/master/jenkins'
+      href: 'https://github.com/azure/jenkins'
 - name: Zdroje a prostředky
   items:
     - name: Moduly plug-in
@@ -75,3 +75,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Domovská stránka Jenkinse
       href: 'https://jenkins.io/'
+    - name: Architektura Jenkinse
+      href: /azure/architecture/reference-architectures/jenkins/
+      maintainContext: true

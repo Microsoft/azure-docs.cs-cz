@@ -21,7 +21,9 @@
       href: tutorial-forecast-spending.md
     - name: 3. Správa nákladů
       href: tutorial-manage-costs.md
-    - name: 4. Řízení přístupu k datům
+    - name: 4. Optimalizace rezervovaných instancí
+      href: tutorial-optimize-reserved-instances.md
+    - name: 5. Řízení přístupu k datům
       href: tutorial-user-access.md
 - name: Koncepty
   items:

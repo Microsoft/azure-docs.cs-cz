@@ -107,6 +107,8 @@
               href: backup-azure-vms-encryption.md
             - name: Povolení zálohování virtuálních počítačů během vytváření virtuálních počítačů
               href: backup-during-vm-creation.md
+            - name: Upgrade na zásobník záloh virtuálních počítačů V2
+              href: backup-upgrade-to-vm-backup-stack-v2.md
         - name: Správa a monitorování virtuálních počítačů
           items:
             - name: Správa záloh virtuálních počítačů Azure na webu Azure Portal

@@ -11,6 +11,7 @@
 ## [Podpora protokolu IPv6](load-balancer-ipv6-overview.md)
 ## [Více virtuálních IP adres](load-balancer-multivip-overview.md)
 ## [Principy odchozích připojení](load-balancer-outbound-connections.md)
+## [Load Balancer úrovně Standard a zóny dostupnosti](load-balancer-standard-availability-zones.md)
 
 # Začínáme
 
@@ -49,6 +50,7 @@
 ### [Řešení potíží s nástrojem pro vyrovnávání zatížení Azure](load-balancer-troubleshoot.md)
 
 ## Články věnované modelu nasazení Classic
+### [Odchozí připojení (klasické)](load-balancer-outbound-connections-classic.md)
 ### [Konfigurace interního nástroje pro vyrovnávání zatížení pro Cloud Services](load-balancer-get-started-ilb-classic-cloud.md)
 #### [Konfigurace interního nástroje pro vyrovnávání zatížení pro Cloud Services (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
 #### [Konfigurace interního nástroje pro vyrovnávání zatížení pro Cloud Services (rozhraní příkazového řádku)](load-balancer-get-started-ilb-classic-cli.md)
