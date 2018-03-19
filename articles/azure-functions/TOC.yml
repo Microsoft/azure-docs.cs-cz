@@ -175,8 +175,8 @@
           href: durable-functions-sequence.md
         - name: Výstupní/vstupní větvení
           href: durable-functions-cloud-backup.md
-        - name: Stavový singleton
-          href: durable-functions-counter.md
+        - name: Monitory
+          href: durable-functions-monitor.md
         - name: Lidská interakce
           href: durable-functions-phone-verification.md
         - name: Testování částí

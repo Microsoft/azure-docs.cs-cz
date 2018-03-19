@@ -52,11 +52,12 @@
 ### [Elastický dotaz SQL Database](how-to-use-elastic-query-with-sql-data-warehouse.md)
 
 
-## Monitorování a ladění
-### [Správa úloh](resource-classes-for-workload-management.md)
+## Výkon dotazů
+### [Třídy prostředků](resource-classes-for-workload-management.md)
 ### [Komprese columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
-### [Monitorování](sql-data-warehouse-manage-monitor.md)
-### [Řešení problémů](sql-data-warehouse-troubleshoot.md)
+
+## [Monitorování](sql-data-warehouse-manage-monitor.md)
+
 
 ## Vývoj datových skladů
 ### [Přehled](sql-data-warehouse-overview-develop.md)
@@ -87,6 +88,8 @@
 #### [Schémata definovaná uživatelem](sql-data-warehouse-develop-user-defined-schemas.md)
 #### [Přiřazení proměnné](sql-data-warehouse-develop-variable-assignment.md)
 #### [Zobrazení](sql-data-warehouse-develop-views.md)
+
+## [Řešení problémů](sql-data-warehouse-troubleshoot.md)
 
 # Návody
 ## Funkce služby

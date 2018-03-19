@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 03/16/2018
 ms.author: bonova
-ms.openlocfilehash: 77d421e9c97f3baa3541040494fb91e0297edb5a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bc9c16462f28d129efa8c47183c6325e69bb64f3
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Instance spravované (preview)?
 
@@ -39,7 +39,7 @@ Následující tabulka jsou podrobněji popsány dále klíčové rozdíly a př
 | | Scénáře použití | 
 | --- | --- | 
 |MI |Pro zákazníky chtějí migrovat velký počet aplikací z místní nebo IaaS, samoobslužné vytvořen nebo ISV, které jsou k dispozici s navrhnout jako nízkou migrace úsilí co možná, spravované Instance. Pomocí plně automatického [služby migrace dat (DMS)](/sql/dma/dma-overview) v Azure, zákazníků navýšení a posunutí jejich místní SQL Server na spravované Instance, která nabízí kompatibilitu s místním SQL serverem a dokončení izolace instance zákazníků s nativní podporou virtuální sítě.  Pomocí programu Software Assurance, můžete vyměňovat své stávající licence pro zvýhodněné sazby na spravované Instance databáze SQL pomocí [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Spravované Instance databáze SQL je nejlepší cíl migrace v cloudu pro instance systému SQL Server, které vyžadují vysoké zabezpečení a bohaté programovatelnosti prostor. |
-|Azure SQL Database |Pro zákazníky vývoj nové víceklientské aplikace SaaS nebo záměrně transformace svoje existující místní aplikace do víceklientské aplikace SaaS, návrh elastické fondy. Výhody tohoto modelu: <br><ul><li>Převod modelu obchodní prodávané licencí, které chcete prodávané odběry služby (pro ISV)</li></ul><ul><li>Izolace snadný a odrážka ověření klienta</li></ul><ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul><ul><li>Mohlo škálování bez stiskne pevný mezní hodnoty</li></ul>Pro zákazníky vývoji nových aplikací než SaaS více klientů, jejichž zatížení je stabilní a předvídatelné, navrhnout izolované databáze. Výhody tohoto modelu:<ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul>  <ul><li>Předvídatelný výkon pro každou databázi</li></ul>|
+|Azure SQL Database |**Elastické fondy**: pro zákazníky vývoj nové víceklientské aplikace SaaS nebo záměrně transformace své stávající místní aplikace do víceklientské aplikace SaaS, navrhnout elastické fondy. Výhody tohoto modelu: <br><ul><li>Převod modelu obchodní prodávané licencí, které chcete prodávané odběry služby (pro ISV)</li></ul><ul><li>Izolace snadný a odrážka ověření klienta</li></ul><ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul><ul><li>Mohlo škálování bez stiskne pevný mezní hodnoty</li></ul>**Jedna databáze**: pro zákazníky vývoji nových aplikací než SaaS více klientů, jejichž zatížení je stabilní a předvídatelné, navrhnout izolované databáze. Výhody tohoto modelu:<ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul>  <ul><li>Předvídatelný výkon pro každou databázi</li></ul>|
 |SQL IaaS |Pro zákazníky museli přizpůsobení operačního systému nebo na serveru databáze, a také zákazníků, kterým se specifické požadavky z hlediska spouštění aplikací třetích stran stranou s SQL serverem (ve stejném virtuálním počítači), navrhnout virtuálním počítačům systému SQL nebo IaaS jako optimální řešení|
 |||
 
@@ -193,7 +193,7 @@ Spravované Instance povolení správce systému a zaměřit se na čem nejvíc 
 > [!IMPORTANT]
 > Seznam podporovaných, částečně podporované a nepodporované funkce najdete v tématu [funkce SQL Database](sql-database-features.md). Seznam rozdíly T-SQL ve spravované instance oproti systému SQL Server najdete v tématu [spravované Instance T-SQL rozdíly v systému SQL Server](sql-database-managed-instance-transact-sql-information.md)
  
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Pro funkce a porovnání seznamu, najdete v části [společné funkce SQL](sql-database-features.md).
 - Kurz, který vytvoří instanci spravované a obnoví databázi ze záložního souboru, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md).
