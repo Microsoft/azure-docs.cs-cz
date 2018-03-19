@@ -221,7 +221,7 @@
 ##### [Vzdálená plocha](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
-#### [PowerShell](https://docs.microsoft.com/powershell/module/azuread)
+#### [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)
 #### [Řešení problémů](active-directory-application-proxy-troubleshoot.md)
 
 

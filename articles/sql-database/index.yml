@@ -10,15 +10,15 @@ metadata:
   manager: carolz
   ms.service: sql-database
   ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.devlang: 
   ms.topic: landing-page
   ms.date: 05/03/2017
   ms.author: carolz
-  ms.openlocfilehash: 662d4f32cb6abb8694253a50d17daa242b55e409
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.openlocfilehash: 4acc092e4c6006263dda31ab2a54038e60e57651
+  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 03/16/2018
 abstract:
   description: "Azure SQL Database je relační databáze jako služba v cloudu, která je založená na modulu Microsoft SQL Serveru. SQL Database je vysoce výkonná, spolehlivá a zabezpečená databáze, kterou můžete použít k vytváření datových aplikací a webů v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek."
   aside:
@@ -82,7 +82,7 @@ sections:
     items:
     - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
     - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>
-- title: Odkaz
+- title: "Referenční informace"
   items:
   - type: list
     style: cards

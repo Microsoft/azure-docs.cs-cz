@@ -50,7 +50,7 @@
     - name: Prohledávání protokolů
       items:
         - name: Přehled prohledávání protokolů
-          href: log-analytics-log-search-new.md
+          href: log-analytics-log-search.md
         - name: Portály prohledávání protokolů
           href: log-analytics-log-search-portals.md
 - name: Návody
@@ -107,7 +107,7 @@
           href: 'https://docs.loganalytics.io'
         - name: Přechod ze starší verze jazyka
           href: log-analytics-log-search-transition.md
-        - name: Vyhledávání napříč pracovními prostory
+        - name: Hledání napříč prostředky
           href: log-analytics-cross-workspace-search.md
         - name: Provedení akce na základě výsledků hledání
           href: log-analytics-log-search-takeaction.md
@@ -117,20 +117,6 @@
           href: log-analytics-flow-tutorial.md
         - name: Rozhraní API pro prohledávání protokolů
           href: 'https://dev.loganalytics.io/'
-    - name: Starší verze vyhledávání protokolu
-      items:
-        - name: Přehled prohledávání protokolů
-          href: log-analytics-log-searches.md
-        - name: Reference ke službě Search
-          href: log-analytics-search-reference.md
-          items:
-            - name: Regulární výrazy
-              href: log-analytics-log-searches-regex.md
-        - name: Rozhraní API pro prohledávání protokolů
-          href: log-analytics-log-search-api.md
-          items:
-            - name: Python
-              href: log-analytics-log-search-api-python.md
     - name: Analýza dat
       items:
         - name: Řídicí panely
