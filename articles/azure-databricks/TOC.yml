@@ -11,8 +11,10 @@
       href: quickstart-create-databricks-workspace-portal.md
 - name: Kurzy
   items:
-    - name: Streamování událostí s využitím Event Hubs
+    - name: Streamování dat s využitím Event Hubs
       href: databricks-stream-from-eventhubs.md
+    - name: Analýza mínění s využitím Cognitive Services
+      href: databricks-sentiment-analysis-cognitive-services.md
 - name: Návody
   items:
     - name: 'Propojení s využitím Excelu, R a Pythonu'
