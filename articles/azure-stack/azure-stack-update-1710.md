@@ -1,11 +1,11 @@
 ---
-title: "Aktualizace zásobníku Azure 1710 (sestavení 20171020.1) | Microsoft Docs"
-description: "Další informace o tom, co je v aktualizaci 1710 pro Azure zásobníku integrované systémy, známé problémy a kde se stáhnout aktualizaci."
+title: Aktualizace zásobníku Azure 1710 (sestavení 20171020.1) | Microsoft Docs
+description: Další informace o tom, co je v aktualizaci 1710 pro Azure zásobníku integrované systémy, známé problémy a kde se stáhnout aktualizaci.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 135314fd-7add-4c8c-b02a-b03de93ee196
 ms.service: azure-stack
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: mabrigg
 ms.openlocfilehash: 1a482f1d2f3eef8775bb7b64d4f6749f69fa5471
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-1710-update-build-201710201"></a>Aktualizace zásobníku Azure 1710 (sestavení 20171020.1)
 
@@ -35,7 +35,7 @@ Tato aktualizace zahrnuje následující vylepšení kvality a opravy pro Azure 
  
 ### <a name="windows-server-2016-improvements-and-fixes"></a>Windows Server 2016 vylepšení a opravy
 
-- Aktualizace pro systém Windows Server 2016: 10. října 2017 – KB4041691 (sestavení 14393.1770 operačního systému. V tématu [https://support.microsoft.com/help/4041691](https://support.microsoft.com/help/4041691) Další informace.
+- Aktualizace pro systém Windows Server 2016: 10. října 2017 – KB4041691 (sestavení 14393.1770 operačního systému. V tématu [ https://support.microsoft.com/help/4041691 ](https://support.microsoft.com/help/4041691) Další informace.
 
 ### <a name="additional-quality-improvements-and-fixes"></a>Další kvalitou vylepšení a opravy
 
@@ -64,7 +64,7 @@ Tato část obsahuje známé problémy, které mohou nastat při instalaci aktua
 | Při provádění aktualizace proces aktualizace se stalace<br> a není poskytnutí přehledu o pokroku po kroku "krok: spuštěním kroku 2.4 - instalace<br> Aktualizovat"akce plánu aktualizace.<br><br>Tento krok je následována řadu procesy kopírování .nupkg<br> soubory ke sdíleným složkám interní infrastruktury. Příklad:<br><br>**Kopírování souborů 1 z content\PerfCollector\VirtualMachines k <br> \VirtualMachineName-ERCS03\C$\TraceCollectorUpdate\ <br>PerfCounterConfiguration**<br><br>Nebo, zobrazí se zpráva:<br><br>**WarningMessage:Task: Volání rozhraní 'LiveUpdate'<br> role Cloud\Fabric\VirtualMachines se nezdařilo:<br> zadejte 'LiveUpdate' role vyvolá VirtualMachines<br> výjimka: není dostatek místa na disku .**  | Problém je způsoben soubory protokolu naplňování disky na virtuální počítač infrastruktury a o problém v systému Windows Server Škálováním na více systémů souborovým serverem (SOFS), bude dodána v další aktualizaci. | O pomoc obraťte se na oddělení zákaznických služeb a podpory společnosti Microsoft. | 
 | Při aktualizaci, chyba podobná následující<br> může dojít během kroku "krok: spuštěním kroku 2.13.2 - aktualizace<br> *VM_Name*"v plánu akce aktualizace. (Virtuální počítač<br> Název se může lišit.)<br><br>**ActionPlanInstanceWarning ece/MachineName:<br> WarningMessage:Task: volání rozhraní 'LiveUpdate' z<br> role Cloud\Fabric\WAS se nezdařilo: Zadejte 'LiveUpdate' role<br> 'Byl' způsobila výjimku: došlo k CHYBĚ během úložiště<br> inicializace: došlo k chybě při pokusu o vytvoření rozhraní API<br> volání do služby Microsoft Storage: {"Zpráva": "vypršení časového limitu<br> došlo k chybě při komunikaci se službou Service Fabric.<br> Typ výjimky: TimeoutException.<br> Zpráva o výjimce: Vypršel časový limit operace. "}**  | Problém je způsoben vypršení časového limitu vstupně-výstupních operací v systému Windows Server, který bude opraven v další aktualizaci. | Požádejte o pomoc Microsoft CSS.
 | Při aktualizaci, chyba podobná následující<br> může dojít během kroku "krok 21 restartování virtuálních počítačů SQL serveru."<br><br>**Typ 'LiveUpdateRestart' Role vyvolá VirtualMachines<br> výjimka: VerboseMessage: [VirtualMachines:LiveUpdateRestart]<br> dotazování pro virtuální počítač MachineName-Sql01. - 13/10/2017 5:23:50: 00 VerboseMessage: [virtuálních počítačů: LiveUpdateRestart]<br> virtuální počítač je označený jako vysoké dostupnosti. – 13/10/2017 5:23:50: 00<br> VerboseMessage: [VirtualMachines:LiveUpdateRestart] v<br>MS. Internal.ServerClusters.ExceptionHelp.Build v<br>MS. Internal.ServerClusters.ClusterResource.BeginTakeOffline<br>(Boolean force) v Microsoft.FailoverClusters.PowerShell.<br> StopClusterResourceCommand.BeginTimedOperation() v <br>Microsoft.FailoverClusters.PowerShell.TimedCmdlet.Wrapped<br>ProcessRecord() v Microsoft.FailoverClusters.PowerShell.<br> FCCmdlet.ProcessRecord() - 13/10/2017 5:23:50: 00 upozornění<br>zpráva: úloha: volání rozhraní 'LiveUpdateRestart' z<br> role Cloud\Fabric\VirtualMachines se nezdařilo:** | Tento problém může dojít, pokud virtuální počítač se nepodařilo restartovat. | Požádejte o pomoc Microsoft CSS.
-| Když provedete aktualizaci, může dojít k chybě podobný následujícímu:<br><br>**2017-10-22T01:37:37.5369944Z typ "Vypnout" Role 'SQL'<br> vyvolal výjimku: došlo k chybě pozastavení uzlu<br> nástroje 's45r1004-Sql01' Stop-SQL, C:\ProgramData\SF\ErcsClusterNode2 <br>\Fabric\work\ Applications\ EnterpriseCloud <br>EngineApplicationType &#95; App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\ <br> CloudDeployment\Roles\SQL\SQL.psm1:line 542 v<br> vypnutí, C:\ProgramData\SF\ErcsClusterNode2\Fabric\work\ <br> Aplikace \EnterpriseCloudEngineApplicationType &#95; App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\Cloud<br>Deployment\Classes\SQL\SQL.psm1: řádek 50 na < ScriptBlock & č. 62;<br> <No file>: řádek 18 v < ScriptBlock & č. 62; < žádný soubor & č. 62;: řádek 16** | Tento problém může dojít, pokud virtuální počítač nelze vložit do pozastaveném stavu na vyprazdňování role. | Požádejte o pomoc Microsoft CSS.
+| Když provedete aktualizaci, může dojít k chybě podobný následujícímu:<br><br>**2017-10-22T01:37:37.5369944Z typ "Vypnout" Role 'SQL'<br> vyvolal výjimku: došlo k chybě pozastavení uzlu<br> nástroje 's45r1004-Sql01' Stop-SQL, C:\ProgramData\SF\ErcsClusterNode2 <br>\Fabric\work\ Applications\ EnterpriseCloud <br>EngineApplicationType&#95;App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\ <br> CloudDeployment\Roles\SQL\SQL.psm1:line 542 v<br> Vypnutí, C:\ProgramData\SF\ErcsClusterNode2\Fabric\work\ <br>aplikace \EnterpriseCloudEngineApplicationType&#95;App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\Cloud<br> Deployment\Classes\SQL\SQL.psm1: 50 v řádku < ScriptBlock&#62;,<br> <No file>: řádek 18 v < ScriptBlock&#62;, < žádný soubor&#62;: řádek 16** | Tento problém může dojít, pokud virtuální počítač nelze vložit do pozastaveném stavu na vyprazdňování role. | Požádejte o pomoc Microsoft CSS.
 | Při aktualizaci, může dojít k některým z těchto chyb:<br><br>**Typ "Ověřit" Role "ADFS" způsobila výjimku: ověření<br> pro roli služby AD FS nebo grafu se nezdařilo s chybou: Chyba při kontrole služby AD FS<br> testu Koncový bod *endpoint_URI*: výjimka volání<br> " GetResponse"s"0"argumenty:" vzdáleného serveru<br> došlo k chybě: (503) serveru není k dispozici. "v Invoke -<br>ADFSGraphValidation**<br><br>**Typ "Ověřit" Role "ADFS" způsobila výjimku: ověření<br> pro roli služby AD FS nebo grafu se nezdařilo s chybou: Chyba při načítání<br> vlastnosti služby AD FS: Nelze se připojit k <br>net.tcp://localhost: 1 500 nebo zásad. Pokus o připojení už bylo<br> pro časový rozsah 00:00:02.0498923. Kód chyby TCP<br> 10061: žádné připojení může vytvořit, protože cíl<br> počítač je aktivně odmítl 127.0.0.1:1500.<br> v Invoke-ADFSGraphValidation** | Plán akcí aktualizace nelze ověřit stav služby Active Directory Federation Services (AD FS). | Požádejte o pomoc Microsoft CSS.
 
 ## <a name="known-issues-post-installation"></a>Známé problémy (po instalaci)

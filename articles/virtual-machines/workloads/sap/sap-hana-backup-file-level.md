@@ -1,11 +1,11 @@
 ---
-title: "SAP HANA Azure Backup na úrovni souborů | Microsoft Docs"
-description: "Existují dvě hlavní zálohování možnosti pro SAP HANA na virtuálních počítačích Azure, tento článek se zabývá SAP HANA Azure Backup na úrovni souborů"
+title: SAP HANA Azure Backup na úrovni souborů | Microsoft Docs
+description: Existují dvě hlavní zálohování možnosti pro SAP HANA na virtuálních počítačích Azure, tento článek se zabývá SAP HANA Azure Backup na úrovni souborů
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 ms.openlocfilehash: 5db0ceb1648b5afa278e1cbe1c42fce8033bfdc1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup na úrovni souborů
 
@@ -87,9 +87,9 @@ Na tomto snímku obrazovky jeden můžete zobrazit, jak vypadá na portálu Azur
 
 Konzole zálohování HANA Studio umožňuje jednu pro omezení maximální velikost HANA záložní soubory. V prostředí ukázka zvýšení výkonu tím, že je možné, že několik menších souborů zálohování, místo jednoho velkého souboru 230 GB.
 
-![Nastavení omezení velikosti záložní soubor nemá straně HANA & č. 39; t zlepšit čas zálohování](media/sap-hana-backup-file-level/image029.png)
+![Nastavení omezení velikosti záložní soubor na nemá straně HANA&#39;t zlepšit čas zálohování](media/sap-hana-backup-file-level/image029.png)
 
-Nastavení omezení velikosti záložní soubor nemá straně HANA & č. 39; t zlepšit čas zálohování, protože soubory jsou zapsány postupně, jak je vidět na tomto obrázku. Limit velikosti souborů byla nastavena na 60 GB, proto zálohování vytvořit čtyři velké datové soubory místo 230 GB jeden soubor.
+Nastavení omezení velikosti záložní soubor na nemá straně HANA&#39;t zlepšit čas zálohování, protože soubory jsou zapsány postupně, jak je vidět na tomto obrázku. Limit velikosti souborů byla nastavena na 60 GB, proto zálohování vytvořit čtyři velké datové soubory místo 230 GB jeden soubor.
 
 ![K testování paralelismus nástroj blobxfer, byla maximální velikost souboru pro zálohování HANA pak nastavena na 15 GB](media/sap-hana-backup-file-level/image030.png)
 
@@ -139,7 +139,7 @@ Proto funguje, ale nebyla výkonu vhodné pro testovací zálohování 230 GB. A
 
 Je možné připojit sdílenou složku Azure uvnitř virtuálního počítače Azure Linux. Článek [postup používání Azure File storage s Linuxem](../../../storage/files/storage-how-to-use-files-linux.md) obsahuje podrobné informace o tom, jak to provést. Uvědomte si, že je aktuálně 5 TB kvótu jednu sdílenou složku Azure a maximální velikost souboru 1 TB na soubor. V tématu [a cíle výkonnosti služby Azure Storage Scalability](../../../storage/common/storage-scalability-targets.md) informace o omezení úložiště.
 
-Testy ukázaly, však, že zálohování nemá SAP HANA & č. 39; t aktuálně pracovat přímo s Tento druh CIFS připojení. Je také uvádí [1820529 Poznámka SAP](https://launchpad.support.sap.com/#/notes/1820529) , CIFS se nedoporučuje.
+Testy ukázaly, ale která zálohování není SAP HANA&#39;t aktuálně pracovní přímo s tímto typem CIFS připojení. Je také uvádí [1820529 Poznámka SAP](https://launchpad.support.sap.com/#/notes/1820529) , CIFS se nedoporučuje.
 
 ![Tento obrázek ukazuje chybu, v dialogovém okně Zálohování v SAP HANA Studio](media/sap-hana-backup-file-level/image038.png)
 
@@ -155,7 +155,7 @@ Na tomto snímku obrazovky jeden uvidí, že zdroj strukturu adresáře na virtu
 
 Ukládání záložních souborů SAP HANA na soubory Azure může být zajímavé možnost v budoucnu, pokud přímo záloh souboru SAP HANA ho podporují. Nebo pokud bude možné soubory Azure připojení prostřednictvím systému souborů NFS a limit maximální kvóty je podstatně vyšší než 5 TB.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Příručce zálohování pro SAP HANA ve virtuálních počítačích Azure](sap-hana-backup-guide.md) nabízí přehled a informace o zahájení práce.
 * [SAP HANA zálohování podle úložiště snímků](sap-hana-backup-storage-snapshots.md) popisuje zálohování možnosti založené na snímku úložiště.
 * Další informace o vytvoření vysoké dostupnosti a plán pro zotavení po havárii SAP HANA v Azure (velké instance) naleznete v tématu [SAP HANA (velké instance) vysoké dostupnosti a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).

@@ -1,11 +1,11 @@
 ---
-title: "Šablony"
-description: "Toto téma vysvětluje šablon pro Azure notification hubs."
+title: Šablony
+description: Toto téma vysvětluje šablon pro Azure notification hubs.
 services: notification-hubs
 documentationcenter: .net
 author: ysxu
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 1ca24a4bf08ecdbe1c1e47a931613144309a04a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="templates"></a>Šablony
 ## <a name="overview"></a>Přehled
@@ -114,13 +114,13 @@ Zaregistrovat se šablonami pomocí modelu instalace (doporučeno) nebo model re
 
 V následující tabulce jsou povolené v šablonách jazyk:
 
-| výraz | Popis |
+| Výraz | Popis |
 | --- | --- |
 | $(prop) |Odkaz na vlastnost události se zadaným názvem. Názvy vlastností nerozlišují malá a velká písmena. Tento výraz přeloží do vlastnosti textové hodnoty nebo na prázdný řetězec, pokud vlastnost není k dispozici. |
 | $(prop, n) |Jak je uvedeno výše zatímco text elementu je explicitně oříznut n znaků, například $(název, 20) klipy obsah název vlastnosti v 20 znaků. |
 | . (prop, n) |Jak je uvedeno výše ale text je na konci se třemi tečkami jako je oříznut. Celková velikost oříznutí řetězec a příponu nepřesahuje n znaků. . (title, 20) s vstupní vlastností "Toto je název řádku" výsledků v **Toto je název...** |
 | %(Prop) |Podobně jako u $(name) s tím rozdílem, že výstupem je kódovaný identifikátor URI. |
-| #(prop) |Používá se v šablony JSON (například pro iOS a Android šablony).<br><br>Tato funkce funguje stejně jako $(prop) dříve zadán, s výjimkou při používány šablony JSON (například Apple šablony). V tomto případě, pokud není tato funkce obklopená "{','}" (například myJsonProperty: '#(název).), a se vyhodnocuje na číslo ve formátu Javascript, například regexp: (0 &#124; (&#91; 1-9 &#93; &#91; 0-9 &#93;;*))(\.&#91; 0-9 &#93; +)? () (e &#124; E) (+ &#124;-)? &#91; 0-9 &#93; +)?, pak výstup JSON je číslo.<br><br>Například "oznámení" BADGE ":"#(název), se změní na "oznámení": 40 (a ne 40). |
+| #(prop) |Používá se v šablony JSON (například pro iOS a Android šablony).<br><br>Tato funkce funguje stejně jako $(prop) dříve zadán, s výjimkou při používány šablony JSON (například Apple šablony). V tomto případě, pokud není tato funkce obklopená "{','}" (například myJsonProperty: '#(název)'), a se vyhodnocuje na číslo ve formátu Javascript, například regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*)) (\. &#91;0-9&#93;+)? ((e&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, pak výstup JSON je číslo.<br><br>Například "oznámení" BADGE ":"#(název), se změní na "oznámení": 40 (a ne 40). |
 | 'text' nebo "text" |Literál. Literály obsahovat libovolný text v jednoduchých nebo dvojitých uvozovek. |
 | Výraz1 + Výraz2 |Operátor řetězení propojení dvou výrazů do jednoho řetězce. |
 
@@ -139,7 +139,7 @@ Například následující není platné šablony XML:
     </tile>
 
 
-Jak je vysvětleno výše při použití zřetězení, výrazy musí být uzavřen do složených závorek. Například:
+Jak je vysvětleno výše při použití zřetězení, výrazy musí být uzavřen do složených závorek. Příklad:
 
     <tile>
       <visual>

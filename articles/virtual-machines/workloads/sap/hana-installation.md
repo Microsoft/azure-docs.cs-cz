@@ -1,11 +1,11 @@
 ---
-title: "Nainstalujte SAP HANA SAP HANA v Azure (velké instance) | Microsoft Docs"
-description: "Postup instalace SAP HANA v SAP HANA v Azure (velké Instance)."
+title: Nainstalujte SAP HANA SAP HANA v Azure (velké instance) | Microsoft Docs
+description: Postup instalace SAP HANA v SAP HANA v Azure (velké Instance).
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8ef85c098058c97e5ec6d758fcf1dab5b1a87786
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Postup instalace a konfigurace SAP HANA (velké instance) na Azure
 
@@ -51,13 +51,13 @@ Zkontrolujte znovu, zejména při plánování instalace HANA 2.0 [SAP podporu P
 
 V konkrétní, zkontrolujte následující parametry a nakonec upravený tak, aby:
 
-- NET.Core.rmem_max = 16777216
-- NET.Core.wmem_max = 16777216
-- NET.Core.rmem_default = 16777216
-- NET.Core.wmem_default = 16777216
-- NET.Core.optmem_max = 16777216
-- NET.IPv4.tcp_rmem = 65536 16777216 16777216
-- NET.IPv4.tcp_wmem = 65536 16777216 16777216
+- net.core.rmem_max = 16777216
+- net.core.wmem_max = 16777216
+- net.core.rmem_default = 16777216
+- net.core.wmem_default = 16777216
+- net.core.optmem_max = 16777216
+- net.ipv4.tcp_rmem = 65536 16777216 16777216
+- net.ipv4.tcp_wmem = 65536 16777216 16777216
 
 Od verze SLES12 SP1 a RHEL 7.2, musí tyto parametry nastavit v konfiguračním souboru v adresáři /etc/sysctl.d. Například musíte vytvořit konfigurační soubor s názvem 91-NetApp-HANA.conf. Pro starší verze SLES a RHEL musí být tyto parametry in/etc/sysctl.conf sady.
 
@@ -100,11 +100,11 @@ Zásady vytváření názvů svazky úložiště jsou uvedeny v následující t
 
 | Využití úložiště | Název připojení | Název svazku | 
 | --- | --- | ---|
-| HANA data | /Hana/data/SID/mnt0000<m> | Úložiště IP: / hana_data_SID_mnt00001_tenant_vol |
-| HANA protokolu | /Hana/log/SID/mnt0000<m> | Úložiště IP: / hana_log_SID_mnt00001_tenant_vol |
-| Záloha protokolu HANA | /Hana/log/backups | Úložiště IP: / hana_log_backups_SID_mnt00001_tenant_vol |
-| Sdílené HANA | /Hana/Shared/SID | Úložiště IP: / hana_shared_SID_mnt00001_tenant_vol/sdílené |
-| USR/sap | /USR/SAP/SID | Úložiště IP: / hana_shared_SID_mnt00001_tenant_vol/usr_sap |
+| HANA data | /hana/data/SID/mnt0000<m> | Storage IP:/hana_data_SID_mnt00001_tenant_vol |
+| HANA protokolu | /hana/log/SID/mnt0000<m> | Storage IP:/hana_log_SID_mnt00001_tenant_vol |
+| Záloha protokolu HANA | /Hana/log/backups | Storage IP:/hana_log_backups_SID_mnt00001_tenant_vol |
+| Sdílené HANA | /Hana/Shared/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/shared |
+| USR/sap | /usr/sap/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
 
 Kde SID = instance HANA ID systému 
 
@@ -139,9 +139,9 @@ Výstup příkaz df -h na jednotce, S72m HANA velké Instance bude vypadat:
 Chcete-li optimalizovat SAP HANA do úložiště používá pod, je třeba nastavit také následující konfigurační parametry SAP HANA:
 
 - max_parallel_io_requests 128
-- async_read_submit na
-- async_write_submit_active na
-- všechny async_write_submit_blocks
+- async_read_submit on
+- async_write_submit_active on
+- async_write_submit_blocks all
  
 Verze SAP HANA 1.0 až SPS12, tyto parametry lze nastavit při instalaci databázi SAP HANA, jak je popsáno v [SAP Poznámka #2267798 - konfigurace databázi SAP HANA](https://launchpad.support.sap.com/#/notes/2267798)
 
@@ -192,7 +192,7 @@ SAP podporu poznámky platí pro implementace SAP HANA na Red Hat:
 
 SAP aplikace založené na architektuře SAP NetWeaver jsou citlivé na čas rozdíly pro různé součásti, které tvoří systém SAP. Výpisy paměti SAP ABAP krátké s název chyby ZDATE\_velké\_čas\_Rozdílové jsou pravděpodobně známý, jako když je příliš daleko od sebe plovoucí systémového času jiné servery nebo virtuální počítače, zobrazí se tyto krátké výpisy.
 
-SAP HANA v Azure (velké instance), časové synchronizace provádí v Azure nemá & č. 39; t platí pro výpočetní jednotky v velké Instance razítka. Tato synchronizace se nedá použít pro spouštění aplikací SAP v nativní virtuálních počítačích Azure, jak Azure zajistí systému & č. 39; s čas je správně synchronizovaný. V důsledku toho samostatné čas, který server musí být nastaven, mohou být využívána SAP aplikačních serverů se systémem na virtuálních počítačích Azure a SAP HANA databáze instancí spuštěných na velké instance HANA. Infrastruktura úložiště v velké Instance razítka je časově synchronizované s NTP servery.
+Pro SAP HANA v Azure (velké instance), čas synchronizace provádí v Azure nemá&#39;t platí pro výpočetní jednotky v velké Instance razítka. Tato synchronizace se nedá použít pro spouštění aplikací SAP v nativní virtuálních počítačích Azure, jak Azure zajistí systému&#39;s čas je správně synchronizovaný. V důsledku toho samostatné čas, který server musí být nastaven, mohou být využívána SAP aplikačních serverů se systémem na virtuálních počítačích Azure a SAP HANA databáze instancí spuštěných na velké instance HANA. Infrastruktura úložiště v velké Instance razítka je časově synchronizované s NTP servery.
 
 ## <a name="setting-up-smt-server-for-suse-linux"></a>Nastavení serveru SMT SUSE Linux
 Velké instance SAP HANA nemají přímé připojení k Internetu. Proto není jednoduchý proces registrace taková jednotka s poskytovatelem operačního systému a ke stažení a instalaci opravy. V případě SUSE Linux může být jedno řešení nastavit serveru SMT ve virtuálním počítači Azure. Zatímco virtuálního počítače Azure musí být hostované ve virtuální síti Azure, který je připojen k instanci velké HANA. Pomocí těchto SMT serveru může jednotka velké Instance HANA zaregistrovat a stažení oprav. 
