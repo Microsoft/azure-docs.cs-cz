@@ -1,24 +1,24 @@
 ---
-title: "Poznámky k verzi Microsoft Azure zásobníku Development Kit | Microsoft Docs"
-description: "Vylepšení, opravy a známé problémy pro Azure zásobníku Development Kit."
+title: Poznámky k verzi Microsoft Azure zásobníku Development Kit | Microsoft Docs
+description: Vylepšení, opravy a známé problémy pro Azure zásobníku Development Kit.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 176b850120958a5ca5fdaece4831e2ed27ac0a04
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6b08c1793857fd6c6a6a04c0d450e76a36357597
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Poznámky k verzi Azure zásobníku Development Kit
 Tyto poznámky k verzi obsahují informace o vylepšení, opravy a známých problémů v Azure zásobníku Development Kit. Pokud si nejste jistí, kterou verzi používáte, můžete [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -56,6 +56,11 @@ Najdete v článku [nové funkce a opravy](.\.\azure-stack-update-1802.md#new-fe
     - *Chyba: šablonu pro FaultType ResourceProviderTimeout nebyl nalezen.*
 
     Tuto výstrahu můžete ignorovat. 
+
+- V portálu pro správu i v portálu user portal, v okně Přehled nepodaří načíst, když vyberete v okně Přehled pro účty úložiště, které byly vytvořeny ve starší verzi rozhraní API (Příklad: 2015-06-15). 
+
+  Jako alternativní řešení, pomocí prostředí PowerShell spustit **Start-ResourceSynchronization.ps1** skript k obnovení přístup podrobnosti o účtu úložiště. [Skript je k dispozici z Githubu]( https://github.com/Azure/AzureStack-Tools/tree/master/Support/scripts)a je nutné spustit s přihlašovací údaje Správce služby na hostiteli development kit Pokud použijete ASDK.  
+
 
 #### <a name="health-and-monitoring"></a>Sledování stavu a
 Na portálu správy Azure zásobníku může zobrazit kritickou výstrahu s názvem **čekající na vyřízení vypršení platnosti certifikátu externí**.  Tuto výstrahu můžete ignorovat a ovlivnit operace Azure zásobníku Development Kit. 
@@ -273,9 +278,11 @@ V Azure Active Directory Federation Services (ADFS) nasazené prostředí, **azu
     > Některé z uvedených v položek **nové funkce a opravy** části se vztahují pouze k Azure zásobníku integrované systémy.
 
 ### <a name="known-issues"></a>Známé problémy
+
  
 #### <a name="deployment"></a>Nasazení
 - Čas serveru podle IP adresy musí zadat během nasazování.
+- Počínaje verzí 1711, **CloudAdmin** se o název vyhrazený účet a nesmí být zadaný ručně při nasazení development kit. 
 
 #### <a name="infrastructure-management"></a>Správu infrastruktury
 - Nepovolujte infrastruktura zálohování na **infrastruktura zálohování** okno.

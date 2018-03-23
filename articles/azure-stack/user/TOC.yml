@@ -131,6 +131,8 @@
   items:
     - name: Dokumentace operátora k Azure Stacku
       href: /azure/azure-stack/
+    - name: ASDK dokumentace
+      href: /azure/azure-stack/asdk/
 - name: Zdroje a prostředky
   items:
     - name: Přehled Azure zásobníku

@@ -1,11 +1,11 @@
 ---
-title: "Ochrana virtuálních počítačů nasadit v Azure zásobníku | Microsoft Docs"
-description: "Pokyny k ochraně virtuálních počítačů nasazených v zásobníku Azure."
+title: Ochrana virtuálních počítačů nasadit v Azure zásobníku | Microsoft Docs
+description: Pokyny k ochraně virtuálních počítačů nasazených v zásobníku Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: 02get-started-article
 ms.date: 02/27/2018
 ms.author: mabrigg
 ms.reviewer: hector.linares
-ms.openlocfilehash: e7c437e3310fbf5c921920a3f08ecb8fe1f0d931
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0e74c6af36130d206456634548f452a1f1a2d4af
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrana virtuálních počítačů nasazených v Azure zásobníku
 
@@ -68,8 +68,8 @@ Nejběžnější schéma ochrany pro aplikace založené na virtuální počíta
  
 Obnovení aplikace vyžaduje obnovení jeden nebo více virtuálních počítačů na stejném cloudu nebo do nového cloudu. Ve vašem datovém centru nebo veřejného cloudu, můžete vybrat v cloudu. Které cloudové cílíte je zcela v rámci vlastního ovládacího prvku a je založena na požadavky na ochranu osobních údajů a suverenity vaše data. 
  
- - RTO: Výpadek měří v sekundách 
- - Plánovaný bod obnovení: Minimálními ztrátami dat
+ - RTO: Výpadek měřeno v hodinách 
+ - Plánovaný bod obnovení: Proměnné datové ztráty (v závislosti na četnost zálohování)
  - Topologie nasazení: aktivní/pasivní 
 
 #### <a name="planning-your-backup-strategy"></a>Plánování strategie zálohování
@@ -95,8 +95,8 @@ S tímto přístupem je aplikace nasazená v jedné cloudu. Virtuální počíta
 
 ![Replikace ruční převzetí služeb při selhání](media\azure-stack-manage-vm-backup\vm_backupdataflow_02.png)
 
- - RTO: Výpadek v minutách 
- - Plánovaný bod obnovení: Proměnné datové ztráty
+ - RTO: Výpadek měřená v minutách 
+ - Plánovaný bod obnovení: Proměnné datové ztráty (podle četnosti replikací)
  - Topologie nasazení: úsporný režim s připojením aktivní/pasivní
  
 ### <a name="high-availabilityautomatic-failover"></a>Vysoká dostupnost automatické převzetí služeb při selhání

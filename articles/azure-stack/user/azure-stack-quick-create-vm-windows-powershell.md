@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell v zásobníku Azure | Microsoft Docs"
-description: "Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell v zásobníku Azure."
+title: Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell v zásobníku Azure | Microsoft Docs
+description: Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell v zásobníku Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 7CA6C0AC-23B7-4007-BA32-7A950FD1F3B8
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 688ab6c55867d72d55e27c21c883c14ef90078d2
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: f73f6599f24c0748862ba3a2f1384246841e7e8e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell v Azure zásobníku
 
@@ -197,7 +197,7 @@ $VirtualMachine = Set-AzureRmVMOSDisk `
   -CreateOption FromImage | `
   Add-AzureRmVMNetworkInterface -Id $nic.Id 
 
-#Create the virtual machine.
+# Create the virtual machine.
 New-AzureRmVM `
   -ResourceGroupName $ResourceGroupName `
   -Location $location `
@@ -213,7 +213,7 @@ Get-AzureRmPublicIpAddress `
   -ResourceGroupName $ResourceGroupName | Select IpAddress
 ```
  
-Použijte následující příkaz pro vytvoření relace vzdálené plochy s virtuálním počítačem. Nahraďte IP adresu publicIPAddress virtuálního počítače. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které jste použili při vytvoření virtuálního počítače.
+Použijte následující příkaz pro vytvoření relace vzdálené plochy s virtuálním počítačem. IP adresu nahraďte veřejnou IP adresou vašeho virtuálního počítače. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které jste použili při vytvoření virtuálního počítače.
 
 ```powershell
 mstsc /v <publicIpAddress>
@@ -243,7 +243,7 @@ Remove-AzureRmResourceGroup `
   -Name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tento rychlý start jste nasadili jednoduchého virtuálního počítače Windows. Další informace o virtuálních počítačích Azure zásobníku, nadále [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).
 

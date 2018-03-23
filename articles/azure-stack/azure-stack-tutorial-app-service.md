@@ -1,29 +1,28 @@
 ---
-title: "Zpřístupnit web a aplikace API Azure zásobníku uživatelům | Microsoft Docs"
-description: "Kurz k instalaci zprostředkovatele prostředků služby App Service a vytvoření nabízí, zásobník Azure uživatelům zadat možnost vytvářet webové aplikace nebo aplikace API."
+title: Zpřístupnit web a aplikace API Azure zásobníku uživatelům | Microsoft Docs
+description: Kurz k instalaci zprostředkovatele prostředků služby App Service a vytvoření nabízí, zásobník Azure uživatelům zadat možnost vytvářet webové aplikace nebo aplikace API.
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 7/03/2017
-ms.author: brenduns
-ms.reviewer: 
+ms.date: 03/22/2018
+ms.author: jeffgilb
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 5978706f2cab69c83a49bfd0e15ae904a38c7bab
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: e2f15ca3a46af51ab6228e772298c51ad33fd49c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Zpřístupnit web a aplikace API Azure zásobníku uživatelům
-
 Jako správce cloudu Azure zásobníku, můžete vytvořit nabídky, které uživatelům (klienty) vytvořit Azure Functions a rozhraní API a webové aplikace. Tím, že uživatelům poskytuje přístup k těmto aplikacím na vyžádání, založené na cloudu, můžete je uložit čas a prostředky. Pokud chcete nastavit tuto možnost, bude takto:
 
 > [!div class="checklist"]
@@ -63,7 +62,7 @@ Teď, když máte ukázku nasazenou zprostředkovatele prostředků služby App 
 
 ### <a name="create-a-sql-database"></a>Vytvoření databáze SQL
 
-1. Klikněte na tlačítko  **+**   >  **Data + úložiště** > **databáze SQL**.
+1. Klikněte na tlačítko **+**  >  **Data + úložiště** > **databáze SQL**.
 2. Ponechte výchozí hodnoty pro pole, s výjimkou následujícím způsobem:
     - **Název databáze**: DNNdb
     - **Maximální velikost v MB**: 100
@@ -75,7 +74,7 @@ Teď, když máte ukázku nasazenou zprostředkovatele prostředků služby App 
 
 ### <a name="create-a-dnn-app"></a>Vytvoření aplikace DNN    
 
-1. Klikněte na tlačítko  **+**   >  **zobrazit všechny** > **preview platformy DNN** > **vytvořit**.
+1. Klikněte na tlačítko **+**  >  **zobrazit všechny** > **preview platformy DNN** > **vytvořit**.
 2. Typ *DNNapp* pod **název aplikace** a vyberte **TestAppServiceOffer** pod **předplatné**.
 3. Klikněte na tlačítko **konfigurovat požadované nastavení** > **vytvořit nový** > typ **plán služby App Service** název.
 4. Klikněte na tlačítko **cenová úroveň** > **F1 Free** > **vyberte** > **OK**.

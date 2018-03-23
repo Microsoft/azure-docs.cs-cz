@@ -1,87 +1,83 @@
 ---
-title: "Registrace Azure pro Azure zásobníku integrované systémy | Microsoft Docs"
-description: "Popisuje proces registrace Azure pro nasazení na víc uzlů připojená k Azure zásobník Azure."
+title: Registrace Azure pro Azure zásobníku integrované systémy | Microsoft Docs
+description: Popisuje proces registrace Azure pro nasazení na víc uzlů připojená k Azure zásobník Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/21/2018
 ms.author: jeffgilb
-ms.reviewer: wfayed
-ms.openlocfilehash: 27bd44f936e19890526c0834e14084647dcec086
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.reviewer: avishwan
+ms.openlocfilehash: e51a15b197e875c35997cfe2ac96d673c01a80f9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>Zaregistrovat Azure zásobník Azure
-Zásobník Azure můžete zaregistrovat s Azure můžete stáhnout z Azure marketplace položky a nastavit obchodování při generování sestav dat zpět do společnosti Microsoft. Po registraci Azure zásobníku využití oznamovány obchodu Spojených států v Azure. Zobrazí se v rámci předplatného, které jste použili pro registraci.
+Registrace [zásobník Azure](azure-stack-poc.md) s Azure vám umožní stáhnout položky marketplace z Azure a nastavit obchodování při generování sestav dat zpět do společnosti Microsoft. Po registraci Azure zásobníku využití údajně Azure obchodování a zobrazí se v rámci předplatného použít pro registraci. 
 
 > [!IMPORTANT]
 > Registrace je povinný, pokud se rozhodnete fakturační model platím jako--používání. Jinak bude narušuje licenční podmínky pro nasazení Azure zásobníku jako využití nebudou oznámeny v opačném případě.
 
-## <a name="before-you-register-azure-stack-with-azure"></a>Předtím, než zaregistrujete zásobník Azure s Azure
+## <a name="prerequisites"></a>Požadavky
 Před registrací zásobník Azure s Azure, musíte mít:
 
 - ID předplatného pro předplatné Azure. Chcete-li získat ID, přihlaste se k Azure, klikněte na **další služby** > **odběry**, klikněte na předplatné, které chcete použít, a v části **Essentials** můžete najít ID předplatného. 
 
   > [!NOTE]
-  > Čína, Německu a US government Cloudová předplatná nejsou aktuálně podporovány. 
+  > Cloudová předplatná Čína, Německu a US Government nejsou aktuálně podporovány. 
 
 - Uživatelské jméno a heslo pro účet, který je vlastníkem předplatného (podporovány jsou účty MSA nebo 2FA)
-- *Nepožadováno počínaje verzí aktualizace 1712 zásobník Azure (180106.1)*: Azure AD pro předplatné Azure. Tento adresář můžete najít v Azure podržením ukazatele nad miniatury v pravém horním rohu portálu Azure. 
-- Registrovaný poskytovatel prostředků Azure zásobníku (viz část registrace poskytovatele prostředků Azure zásobníku níže podrobnosti)
+- Registrovaný poskytovatel prostředků Azure zásobníku (viz část registrace poskytovatele prostředků Azure zásobníku níže podrobnosti).
 
 Pokud nemáte předplatné Azure, který splňuje tyto požadavky, můžete [vytvořit bezplatný účet Azure zde](https://azure.microsoft.com/free/?b=17.06). Registrace Azure zásobníku způsobuje bez nákladů na vaše předplatné Azure.
 
 ### <a name="bkmk_powershell"></a>Instalace prostředí PowerShell pro Azure zásobníku
-Budete muset použít nejnovější prostředí PowerShell pro Azure zásobníku při registraci v systému s Azure.
+Budete muset použít nejnovější prostředí PowerShell pro Azure zásobníku při registraci s Azure.
 
 Pokud ještě není nainstalován, [nainstalujte prostředí PowerShell pro Azure zásobníku](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install). 
 
 ### <a name="bkmk_tools"></a>Stažení nástroje Azure zásobníku
 Úložiště GitHub nástroje Azure zásobníku obsahuje moduly Powershellu, které podporují funkce Azure zásobníku; včetně registrace funkcí. Během registrace proces, který budete muset importovat a používat modul RegisterWithAzure.psm1 PowerShell nalezen v úložišti Azure zásobníku nástroje pro registraci vaší instance zásobník Azure s Azure. 
 
-```powershell
-# Change directory to the root directory. 
-cd \
-
-# Download the tools archive.
-  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
-  invoke-webrequest `
-  https://github.com/Azure/AzureStack-Tools/archive/master.zip `
-  -OutFile master.zip
-
-# Expand the downloaded files.
-  expand-archive master.zip `
-  -DestinationPath . `
-  -Force
-
-# Change to the tools directory.
-  cd AzureStack-Tools-master
-```
+Aby používáte nejnovější verzi, byste měli odstranit všechny existující verze nástroje Azure zásobníku a [stáhnout nejnovější verzi z webu GitHub](azure-stack-powershell-download.md) před registrací v Azure.
 
 ## <a name="register-azure-stack-in-connected-environments"></a>Zaregistrovat Azure zásobníku v připojených prostředích
 Připojených prostředích získat přístup k Internetu a Azure. U těchto prostředí musíte registrovat poskytovatele prostředků zásobník Azure s Azure a pak nakonfigurujte model fakturace.
+
+> [!NOTE]
+> Všechny tyto kroky nutné spustit z počítače, který má přístup k privilegované koncový bod. 
 
 ### <a name="register-the-azure-stack-resource-provider"></a>Registrace poskytovatele prostředků Azure zásobníku
 Registrace poskytovatele prostředků zásobník Azure s Azure, spusťte prostředí Powershell ISE jako správce a použijte následující příkazy prostředí PowerShell. Budou tyto příkazy:
 - Vyzvat vás k přihlášení jako vlastníka předplatného Azure k použití a nastavit `EnvironmentName` parametru **AzureCloud**.
 - Registrace zprostředkovatele prostředků Azure **Microsoft.AzureStack**.
 
-Spusťte prostředí PowerShell:
+1. Přidáte účet Azure, který použijete k registraci Azure zásobníku. Chcete-li přidat účet, spusťte **Add-AzureRmAccount** rutiny. Zobrazí se výzva k zadání přihlašovacích údajů účtu globálního správce služby Azure a možná budete muset použít 2 ověřování na základě konfigurace vašeho účtu.
 
-```powershell
-Login-AzureRmAccount -EnvironmentName "AzureCloud"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack 
-```
+   ```Powershell
+      Add-AzureRmAccount -EnvironmentName AzureCloud
+   ```
+
+2. Pokud máte více předplatných, spusťte následující příkaz a vyberte ten, že který chcete použít:  
+
+   ```powershell
+      Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
+   ```
+
+3. Spusťte následující příkaz pro registraci poskytovatele prostředků zásobník Azure ve vašem předplatném Azure:
+
+   ```Powershell
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
+   ```
 
 ### <a name="register-azure-stack-with-azure-using-the-pay-as-you-use-billing-model"></a>Zaregistrovat Azure zásobník Azure pomocí fakturační model platím jako jste – použití
 Použijte tyto kroky pro registraci zásobník Azure s Azure pomocí fakturační model platím jako--používání.
@@ -197,22 +193,6 @@ Pokud chcete změnit model fakturace nebo syndikace funkcí pro instalaci, můž
 ```powershell
 Set-AzsRegistration -CloudAdminCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse
 ```
-
-## <a name="remove-a-registered-resource"></a>Odeberte registrované prostředek
-Pokud chcete odebrat registrace, pak musíte použít **UnRegister-AzsEnvironment** rutiny a předejte jí název prostředku registraci nebo registraci token jste použili pro **Register-AzsEnvironment**.
-
-Postup odebrání registrace pomocí názvu prostředku:
-
-```Powershell    
-UnRegister-AzsEnvironment -RegistrationName "*Name of the registration resource*"
-```
-Postup odebrání registrace pomocí tokenu registrace:
-
-```Powershell
-$registrationToken = "*Your copied registration token*"
-UnRegister-AzsEnvironment -RegistrationToken $registrationToken
-```
-
 ## <a name="next-steps"></a>Další postup
 
-[Externí monitorování integrace](azure-stack-integrate-monitor.md)
+[Stažení položky marketplace z Azure](azure-stack-download-azure-marketplace-item.md)

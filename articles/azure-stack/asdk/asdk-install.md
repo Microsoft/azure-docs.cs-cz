@@ -1,25 +1,25 @@
 ---
-title: "Nainstalovat Azure zásobníku Development Kit (ASDK) | Microsoft Docs"
-description: "Popisuje postup instalace Azure zásobníku Development Kit (ASDK)."
+title: Nainstalovat Azure zásobníku Development Kit (ASDK) | Microsoft Docs
+description: Popisuje postup instalace Azure zásobníku Development Kit (ASDK).
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e1f4cfb74d83cb23631e5a16a6e6f2dba98027ef
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7b8fe61731a9412c61152bc58e55deebb611d011
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Nainstalovat Azure zásobníku Development Kit (ASDK)
 Po [Příprava hostitelský počítač ASDK](asdk-prepare-host.md), ASDK lze nasadit do bitové kopie CloudBuilder.vhdx pomocí následujících kroků v tomto článku.
@@ -55,8 +55,10 @@ Kroky v tomto článku ukazují, jak nasadit ASDK pomocí grafického uživatels
     - **DHCP** (výchozí): virtuální počítač získá konfigurace sítě IP ze serveru DHCP.
     - **Statické**: tuto možnost použijte pouze v případě DHCP nelze přiřadit platnou IP adresu pro zásobník Azure pro přístup k Internetu. **Statická IP adresa musí být zadán s délka maska podsítě ve formátu CIDR (například 10.0.0.5/24)**.
     - Zadejte platnou **čas IP adresa serveru** adresu. To vyžaduje, že pole nastaví čas serveru, který má být používána development kit. Tento parametr je zadat jako IP adresa serveru doby platnosti. Názvy serverů nejsou podporovány.
+
       > [!TIP]
       > Čas serveru najít IP adresu, navštivte [pool.ntp.org](http:\\pool.ntp.org) nebo příkaz ping time.windows.com. 
+
     - **Volitelně**, nastavte následující hodnoty:
         - **ID sítě VLAN**: Nastaví ID sítě VLAN. Tuto možnost použijte pouze v případě hostitele a AzS BGPNAT01 musíte nakonfigurovat ID sítě VLAN pro přístup k fyzické síti (a Internetu). 
         - **Server DNS pro předávání**: server A DNS je vytvořen jako součást nasazení Azure zásobníku. Pokud chcete umožnit uvnitř řešení překládat názvy mimo razítka, zadejte existující infrastrukturu DNS server. Server DNS v razítko předává Neznámý název k tomuto serveru.
@@ -88,10 +90,10 @@ Blahopřejeme, úspěšně jste nainstalovali ASDK.
 
 Pokud z nějakého důvodu selže nasazení, můžete [znovu nasaďte](asdk-redeploy.md) z nuly nebo použijte PowerShell následující příkazy, z téhož okna zvýšenými prostředí PowerShell, restartujte nasazení z poslední úspěšné kroku:
 
-    ```powershell
-    cd C:\CloudDeployment\Setup
-    .\InstallAzureStackPOC.ps1 -Rerun
-    ```
+  ```powershell
+  cd C:\CloudDeployment\Setup
+  .\InstallAzureStackPOC.ps1 -Rerun
+  ```
 
 ## <a name="next-steps"></a>Další postup
 [Konfigurace nasazení POST](asdk-post-deploy.md)

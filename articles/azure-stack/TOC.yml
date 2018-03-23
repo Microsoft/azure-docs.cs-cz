@@ -6,18 +6,14 @@
       href: azure-stack-poc.md
     - name: "Poznámky k\_verzi"
       items:
-        - name: Poznámky k verzi Development kit
-          href: azure-stack-asdk-release-notes.md
-        - name: Poznámky k verzi integrované systémy
-          items:
-            - name: 1802 aktualizace
-              href: azure-stack-update-1802.md
-            - name: aktualizace 1712
-              href: azure-stack-update-1712.md
-            - name: aktualizace 1711
-              href: azure-stack-update-1711.md
-            - name: aktualizace 1710
-              href: azure-stack-update-1710.md
+        - name: 1802 aktualizace
+          href: azure-stack-update-1802.md
+        - name: aktualizace 1712
+          href: azure-stack-update-1712.md
+        - name: aktualizace 1711
+          href: azure-stack-update-1711.md
+        - name: aktualizace 1710
+          href: azure-stack-update-1710.md
 - name: Šablony Rychlý start
   expanded: true
   items:
@@ -67,8 +63,6 @@
               href: validate-pki-certs.md
         - name: Integrace identit
           href: azure-stack-integrate-identity.md
-        - name: Zaregistrovat Azure zásobníku
-          href: azure-stack-registration.md
         - name: Externí monitorování
           href: azure-stack-integrate-monitor.md
         - name: Integrace zabezpečení
@@ -77,30 +71,14 @@
       href: azure-stack-servicing-policy.md
     - name: Klíčové funkce a koncepty
       href: azure-stack-key-features.md
-    - name: Architektura Development kit
-      href: azure-stack-architecture.md
     - name: Základy správy
       href: azure-stack-manage-basics.md
 - name: Návody
   items:
-    - name: Nasazení ASDK
-      items:
-        - name: Požadavky
-          href: azure-stack-deploy.md
-        - name: Telemetrická data
-          href: azure-stack-telemetry.md
-        - name: Nasazení
-          href: azure-stack-run-powershell-script.md
-        - name: Instalace PowerShellu
-          href: azure-stack-powershell-install.md
-        - name: Registrace
-          href: azure-stack-register.md
-        - name: Připojení ke službě Azure Stack
-          href: azure-stack-connect-azure-stack.md
-        - name: Přidání výchozí image
-          href: azure-stack-add-default-image.md
-        - name: Vytvoření testovacího virtuálního počítače
-          href: azure-stack-provision-vm.md
+    - name: Konfigurace shromažďování telemetrických dat
+      href: azure-stack-telemetry.md
+    - name: Zaregistrovat Azure zásobníku
+      href: azure-stack-registration.md
     - name: Spravovat
       items:
         - name: Správa oblastí
@@ -246,7 +224,7 @@
               href: azure-stack-app-service-add-worker-roles.md
             - name: Konfigurace zdrojů nasazení
               href: azure-stack-app-service-configure-deployment-sources.md
-            - name: Služby App Service aktualizovat jeden poznámky k verzi
+            - name: Aplikační služby na Azure zásobníku update 1 poznámky
               href: azure-stack-app-service-release-notes-update-one.md
         - name: Naplnění webu Marketplace
           items:
@@ -318,6 +296,8 @@
   items:
     - name: Uživatelská dokumentace k Azure Stacku
       href: /azure/azure-stack/user/
+    - name: ASDK dokumentace
+      href: /azure/azure-stack/asdk/
 - name: Zdroje a prostředky
   items:
     - name: Přehled Azure zásobníku

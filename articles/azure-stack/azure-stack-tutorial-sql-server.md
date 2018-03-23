@@ -1,29 +1,28 @@
 ---
-title: "Databáze SQL zpřístupnit uživatelům zásobník Azure | Microsoft Docs"
-description: "Kurz k instalaci zprostředkovatele prostředků SQL serveru a vytvořte nabízí, která umožní uživatelům zásobník Azure vytvářet databáze SQL."
+title: Databáze SQL zpřístupnit uživatelům zásobník Azure | Microsoft Docs
+description: Kurz k instalaci zprostředkovatele prostředků SQL serveru a vytvořte nabízí, která umožní uživatelům zásobník Azure vytvářet databáze SQL.
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 7/03/2017
-ms.author: brenduns
-ms.reviewer: 
+ms.date: 03/22/2017
+ms.author: jeffgilb
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: e9fd74fa44bb9482ee2285f4305085ee6ff2fb73
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f8d2dd65d9d427872fe78508ed0bcc61e644fdb0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Databáze SQL zpřístupnit uživatelům Azure zásobníku
-
 Jako správce cloudu Azure zásobníku, můžete vytvořit nabídky, které uživatelům vytvoření databáze SQL, které můžete použít s jejich nativní cloudové aplikace, weby a úlohami (klienty). Tím, že tyto databáze vlastní, na vyžádání, založené na cloudu poskytuje uživatelům, můžete je uložit čas a prostředky. Pokud chcete nastavit tuto možnost, bude takto:
 
 > [!div class="checklist"]
@@ -64,7 +63,7 @@ Teď, když máte ukázku nasazenou poskytovatele prostředků systému SQL Serv
 
 ### <a name="create-a-sql-database"></a>Vytvoření databáze SQL
 
-1. Klikněte na tlačítko  **+**   >  **Data + úložiště** > **databáze SQL**.
+1. Klikněte na tlačítko **+**  >  **Data + úložiště** > **databáze SQL**.
 2. Ponechte výchozí hodnoty pro pole, nebo můžete použít tyto příklady:
     - **Název databáze**: SQLdb
     - **Maximální velikost v MB**: 100

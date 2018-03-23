@@ -1,11 +1,11 @@
 ---
-title: "Správa Key Vault v zásobníku Azure pomocí prostředí PowerShell | Microsoft Docs"
-description: "Zjistěte, jak spravovat Key Vault v zásobníku Azure pomocí prostředí PowerShell"
+title: Správa Key Vault v zásobníku Azure pomocí prostředí PowerShell | Microsoft Docs
+description: Zjistěte, jak spravovat Key Vault v zásobníku Azure pomocí prostředí PowerShell
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 22B62A3B-B5A9-4B8C-81C9-DA461838FAE5
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: mabrigg
-ms.openlocfilehash: 6ee2ceff10d16456a6e8c6283f40fa594b3311bc
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 9dac59d74347e21bebaf7cb65d199711f45b29a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-powershell"></a>Správa Key Vault v zásobníku Azure pomocí prostředí PowerShell
 
@@ -81,7 +81,7 @@ New-AzureRmKeyVault -VaultName “Vault01” -ResourceGroupName “VaultRG” -L
 
 ![Nový trezor klíčů](media/azure-stack-kv-manage-powershell/image4.png)
 
-Výstup tohoto příkazu zobrazuje vlastnosti trezoru klíčů, který jste vytvořili. Když aplikace získá přístup k tomuto trezoru, použije **identifikátor URI trezoru** vlastnosti zobrazené ve výstupu. Například trezoru identifikátor URI (Uniform Resource) je v tomto případě "https://vault01.vault.local.azurestack.external". Aplikace, které se s tímto trezorem klíčů přes REST API musí používat tento identifikátor URI.
+Výstup tohoto příkazu zobrazuje vlastnosti trezoru klíčů, který jste vytvořili. Když aplikace získá přístup k tomuto trezoru, použije **identifikátor URI trezoru** vlastnosti zobrazené ve výstupu. Například trezoru identifikátor URI (Uniform Resource) v tomto případě je "https://vault01.vault.local.azurestack.external". Aplikace, které se s tímto trezorem klíčů přes REST API musí používat tento identifikátor URI.
 
 Ve službě Active Directory Federation Services (AD FS) – na základě nasazení, při vytváření klíče trezoru pomocí prostředí PowerShell, může se zobrazit upozornění, že "zásady přístupu není nastaven. Žádné uživatele nebo aplikace má přístupová oprávnění k použití tento trezor." Chcete-li vyřešit tento problém, nastavení zásad přístupu pro úložiště pomocí [Set-AzureRmKeyVaultAccessPolicy](azure-stack-kv-manage-powershell.md#authorize-an-application-to-use-a-key-or-secret) příkaz:
 
@@ -90,7 +90,7 @@ Ve službě Active Directory Federation Services (AD FS) – na základě nasaze
 $adUser = Get-ADUser -Filter "Name -eq '{Active directory user name}'"
 $objectSID = $adUser.SID.Value 
 
-#Set the key vault access policy
+# Set the key vault access policy
 Set-AzureRmKeyVaultAccessPolicy -VaultName "{key vault name}" -ResourceGroupName "{resource group name}" -ObjectId "{object SID}" -PermissionsToKeys {permissionsToKeys} -PermissionsToSecrets {permissionsToSecrets} -BypassObjectIdValidation 
 ```
 
@@ -111,10 +111,10 @@ Add-AzureKeyVaultKey -VaultName “Vault01” -Name “Key01” -verbose -Destin
 
 ![Nový klíč](media/azure-stack-kv-manage-powershell/image5.png)
 
-Vytvořený klíč můžete odkazovat pomocí jeho identifikátoru URI. Pokud vytvoříte nebo import klíče, který má stejný název jako existující klíč, je původní klíč aktualizované hodnoty zadané v nový klíč. Předchozí verze můžete přistupovat pomocí identifikátoru URI specifické pro verzi klíče. Například: 
+Vytvořený klíč můžete odkazovat pomocí jeho identifikátoru URI. Pokud vytvoříte nebo import klíče, který má stejný název jako existující klíč, je původní klíč aktualizované hodnoty zadané v nový klíč. Předchozí verze můžete přistupovat pomocí identifikátoru URI specifické pro verzi klíče. Příklad: 
 
-* Pomocí "https://vault10.vault.local.azurestack.external:443/klíče nebo key01" vždy získáte aktuální verzi. 
-* Chcete-li získat konkrétní verzi, použijte "https://vault010.vault.local.azurestack.external:443/klíče nebo key01/d0b36ee2e3d14e9f967b8b6b1d38938a".
+* Použití "https://vault10.vault.local.azurestack.external:443/keys/key01" k vždy získáte aktuální verzi. 
+* Použití "https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" Chcete-li získat konkrétní verzi.
 
 ### <a name="get-a-key"></a>Získat klíč
 
@@ -162,7 +162,7 @@ Pokud chcete autorizovat tu samou aplikaci pro čtení tajných klíčů v trezo
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300 -PermissionsToKeys Get
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Nasadit virtuální počítač s heslem uložené v Key Vault](azure-stack-kv-deploy-vm-with-secret.md) 
 * [Nasadit virtuální počítač s certifikát uložený v Key Vault](azure-stack-kv-push-secret-into-vm.md)
 

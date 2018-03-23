@@ -1,25 +1,25 @@
 ---
-title: "Sítě aspekty integrace pro Azure zásobníku integrované systémy | Microsoft Docs"
-description: "Zjistěte, co můžete dělat plánování integrace sítě datového centra s několika uzly Azure zásobníku."
+title: Sítě aspekty integrace pro Azure zásobníku integrované systémy | Microsoft Docs
+description: Zjistěte, co můžete dělat plánování integrace sítě datového centra s několika uzly Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 03/21/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 04cfe3c4ac6011b9c3d31b7d4ac3c018c350d67b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5ade2a09d0729f48c075a5bcaa20bee079ead47d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="network-connectivity"></a>Připojení k síti
 Tento článek obsahuje informace o infrastruktuře síťový zásobník Azure vám pomohou rozhodnout, jak nejlépe zásobník Azure integrovat do stávajícího síťového prostředí. 
@@ -67,7 +67,7 @@ Tato /24 254 hostitele sítě (IP na) je privátní oblast Azure zásobníku (ne
 To/24 síť je vyhrazená pro interní součásti zásobníku Azure, aby se mohli komunikovat a výměnu dat mezi sebou. Tato podsíť vyžaduje směrovatelné IP adresy, ale se ukládají privátní do řešení pomocí seznamů řízení přístupu (ACL). Neočekává směrování nad rámec přepínače ohraničení s výjimkou malé rozsah ekvivalentní velikost/27 sítě využít pomocí některé z těchto služeb v případě, které vyžadují přístup k externím prostředkům nebo k Internetu. 
 
 ### <a name="public-infrastructure-network"></a>Infrastruktura veřejných sítě
-To/27 síť je malý rozsahu podsítě infrastruktury Azure zásobníku, již bylo zmíněno dříve, nevyžaduje veřejné IP adresy, ale vyžaduje přístup k Internetu prostřednictvím NAT nebo transparentní proxy server. Tato síť se přidělí pro nouzové obnovení konzoly System (ERCS), virtuální počítač ERCS během registrace do Azure vyžaduje přístup k Internetu a musí být směrovatelné vaší síti pro správu pro účely odstraňování potíží.
+To/27 síť je malý rozsahu podsítě infrastruktury Azure zásobníku, již bylo zmíněno dříve, nevyžaduje veřejné IP adresy, ale vyžaduje přístup k Internetu prostřednictvím NAT nebo transparentní proxy server. Tato síť se přidělí pro nouzové obnovení konzoly System (ERCS), ERCS virtuální počítač vyžaduje přístup k Internetu během registrace do Azure a infrastruktura zálohování. Virtuální počítač ERCS musí být směrovatelné vaší síti pro správu pro účely odstraňování potíží.
 
 ### <a name="public-vip-network"></a>Veřejné síti VIP
 Veřejné síti VIP je přiřazen do síťového adaptéru v zásobníku Azure. Není logická síť na přepínači. SLB pomocí fondu adres a přiřadí/32 sítě pro úlohy klientů. V tabulce směrování přepínače jsou inzerovaný těchto 32 IP adres jako trasu k dispozici prostřednictvím protokolu BGP. Tato síť obsahuje externí dostupný nebo veřejné IP adresy. Infrastruktura Azure zásobníku používá aspoň 8 adres z této veřejné síti VIP, zatímco zbytek používá klientské virtuální počítače. Velikost sítě v této podsíti může být v rozsahu od minimálně /26 (64 hostitele) do maximálně /22 (1022 hostitele), doporučujeme, abyste naplánovali pro/24 sítě.

@@ -1,11 +1,11 @@
 ---
-title: "Základy správy Azure zásobníku | Microsoft Docs"
-description: "Zjistěte, co potřebujete vědět, abyste mohli spravovat Azure zásobníku."
+title: Základy správy Azure zásobníku | Microsoft Docs
+description: Zjistěte, co potřebujete vědět, abyste mohli spravovat Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
 ms.service: azure-stack
 ms.workload: na
@@ -14,16 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
-ms.openlocfilehash: fa77faac195de3be7bf7b2785eb589b030a6e6ce
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 799651caf937ca2bafc79dc76f99ae43e700673a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-administration-basics"></a>Základy správy Azure zásobníku
-
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
-
 Existuje několik věcí, které potřebujete vědět, pokud začínáte Azure zásobníku správy. V tomto návodu najdete přehled role jako operátor zásobník Azure a co je potřeba říct uživatelům pro ně k produktivní rychle.
 
 ## <a name="understand-the-builds"></a>Pochopení sestavení
@@ -58,7 +55,7 @@ S těmito službami základní nabízejí uživatelům s minimální konfigurac�
 V současné době podporujeme tyto další služby platformy jako služba (PaaS):
 
 - App Service
-- Funkce Azure
+- Azure Functions
 - Databáze SQL a MySQL
 
 Tyto služby vyžadují další konfiguraci, než jste je zpřístupnit uživatelům. Další informace najdete v tématu "Kurzy" a "postupy guides\Offer služby" části naší dokumentaci operátor zásobník Azure.
@@ -132,7 +129,7 @@ Pro jiné účely kontaktujte CSS společnosti Microsoft.
 
 Pro development kit můžete klást otázky týkající se podpory v [fóra Microsoft](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). Klikněte na ikonu nápovědy a podpory (otazník) v pravém horním rohu portálu správce, a pak klikněte na tlačítko **nová žádost o podporu**, přímo otevře webu fóra. Tato fóra jsou pravidelně sledovat. Protože development kit je prostředí pro testování, neexistuje oficiální podpora nabízeným přes Microsoft CSS.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Oblast správy v Azure zásobníku](azure-stack-region-management.md)
 

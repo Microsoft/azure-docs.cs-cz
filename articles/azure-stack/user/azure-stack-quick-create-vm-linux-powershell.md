@@ -1,11 +1,11 @@
 ---
-title: "Vytvořit virtuální počítač s Linuxem pomocí prostředí PowerShell v zásobníku Azure | Microsoft Docs"
-description: "Vytvořte virtuální počítač s Linuxem pomocí prostředí PowerShell v zásobníku Azure."
+title: Vytvořit virtuální počítač s Linuxem pomocí prostředí PowerShell v zásobníku Azure | Microsoft Docs
+description: Vytvořte virtuální počítač s Linuxem pomocí prostředí PowerShell v zásobníku Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 03EE5929-4F05-47D7-B246-EA93D6FC47CD
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 97847c0c2fcc4ab7d5fe8e4e5badd5809b7e2363
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 5446f00b698fbe1fe1bae9c52bf3e73fe0d1c506
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-linux-virtual-machine-by-using-powershell-in-azure-stack"></a>Vytvořit virtuální počítač s Linuxem pomocí prostředí PowerShell v Azure zásobníku 
 
@@ -189,7 +189,7 @@ Add-AzureRmVMSshPublicKey -VM $VirtualMachine `
  -KeyData $sshPublicKey `
  -Path "/home/azureuser/.ssh/authorized_keys"
 
-#Create the virtual machine.
+# Create the virtual machine.
 New-AzureRmVM `
   -ResourceGroupName $ResourceGroupName `
  -Location $location `
@@ -219,6 +219,6 @@ Pokud již nepotřebujete, můžete použít [Remove-AzureRmResourceGroup](/powe
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tento rychlý start jste nasadili jednoduchý systém Linux virtuálního počítače. Další informace o virtuálních počítačích Azure zásobníku, nadále [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).

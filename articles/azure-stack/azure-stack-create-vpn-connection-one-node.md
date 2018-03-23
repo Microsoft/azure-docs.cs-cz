@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření připojení site-to-site VPN mezi dvěma virtuálními sítěmi v různých prostředích Azure zásobníku Development Kit | Microsoft Docs"
-description: "Podrobný postup, který správce cloudu používá k vytvoření připojení site-to-site VPN mezi dvěma prostředími Azure zásobníku Development Kit jeden uzel."
+title: Vytvoření připojení site-to-site VPN mezi dvěma virtuálními sítěmi v různých prostředích Azure zásobníku Development Kit | Microsoft Docs
+description: Podrobný postup, který správce cloudu používá k vytvoření připojení site-to-site VPN mezi dvěma prostředími Azure zásobníku Development Kit jeden uzel.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: brenduns
 ms.reviewer: scottnap
-ms.openlocfilehash: 886d56169c5500c9175b7ddc43edfc29c5142fbb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8bb10be63ef31ebe6241c15a79dafe71923a4cf7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Vytvoření připojení site-to-site VPN mezi dvěma virtuálními sítěmi v různých prostředích Azure zásobníku Development Kit
 ## <a name="overview"></a>Přehled
@@ -33,7 +33,7 @@ Následující diagram znázorňuje, by měla vypadat konfigurace připojení po
 ### <a name="before-you-begin"></a>Než začnete
 K dokončení konfigurace připojení, ověřte, zda máte následující položky, než začnete:
 
-* Dva servery, které splňují požadavky na hardware Azure zásobníku Development Kit, které jsou definovány [požadavky nasazení Azure zásobníku](azure-stack-deploy.md). Ujistěte se, že požadavky, které se zobrazují v [článku](azure-stack-deploy.md) jsou příliš splněny.
+* Dva servery a další nezbytné součásti, které splňují požadavky na hardware Azure zásobníku Development Kit, jak je popsáno v [rychlý start: vyhodnocení Development Kit zásobník Azure](azure-stack-deploy-overview.md). 
 * [Azure zásobníku Development Kit](https://azure.microsoft.com/en-us/overview/azure-stack/try/) balíček pro nasazení.
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Nasazení prostředí Azure zásobníku Development Kit
@@ -312,7 +312,7 @@ Pokud chcete konfigurovat připojení k síti VPN, musíte vytvořit statickou t
 
 4. Opakujte tento postup u POC2.
 
-## <a name="test-the-connection"></a>Otestovat připojení
+## <a name="test-the-connection"></a>Otestování připojení
 Teď, když připojení site-to-site je třeba ověřit, získáte provoz přes něj. Chcete-li ověřit, přihlaste se do jednoho z virtuálních počítačů, které jste vytvořili v prostředí Azure zásobníku Development Kit. Pak odeslat příkaz ping virtuální počítač, který jste vytvořili v druhém prostředí. 
 
 Aby odesílat provoz prostřednictvím připojení site-to-site, ujistěte se, příkazem ping otestovat adresu přímé IP (DIP) virtuálního počítače ve vzdálené podsíti, není VIP. K tomuto účelu najít adresu vyhrazené IP adresy na druhém konci připojení. Uložte adresu pro pozdější použití.

@@ -1,24 +1,25 @@
 ---
-title: "Aktualizace zásobníku Azure 1711 | Microsoft Docs"
-description: "Další informace o tom, co je v aktualizaci 1711 pro Azure zásobníku integrované systémy, známé problémy a kde se stáhnout aktualizaci."
+title: Aktualizace zásobníku Azure 1711 | Microsoft Docs
+description: Další informace o tom, co je v aktualizaci 1711 pro Azure zásobníku integrované systémy, známé problémy a kde se stáhnout aktualizaci.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 2b66fe05-3655-4f1a-9b30-81bd64ba0013
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 03/22/2018
 ms.author: brenduns
-ms.openlocfilehash: 3b3f6d66d8d5a095ff839195ccf718a9fa085527
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.reviewer: justini
+ms.openlocfilehash: fd57699a329fbccdbefc73dae7d473070cd831ea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-1711-update"></a>Azure aktualizace 1711 zásobníku
 
@@ -37,7 +38,13 @@ Tento článek popisuje vylepšení a opravy v tomto balíčku aktualizace – z
 
 ### <a name="prerequisites"></a>Požadavky
 
-Je nutné nejprve nainstalovat Azure zásobníku [aktualizovat 1710](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1710) před instalací této aktualizace.
+- Je nutné nejprve nainstalovat Azure zásobníku [aktualizovat 1710](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1710) před instalací této aktualizace.
+
+- Zkontrolujte použití **CloudAdmin** jako název účtu před instalací aktualizace 1711. Počínaje verzí 1711, *CloudAdmin* se o název vyhrazený účet a nesmí být zadaný ručně. Při aktualizaci na verzi 1711 aktualizace odebere existující instance nasazení účtu (obvykle nazývá AzureStackAdmin). Pokud jste s názvem účet nasazení *CloudAdmin*, aktualizace až po 1711 odstraní. 
+
+  *CloudAdmin* je předdefinovaný účet pro připojení k [ *privilegované koncový bod* ](azure-stack-privileged-endpoint.md) (období). Odstranění tohoto účtu může způsobit uzamčení období, pokud již existuje jiný uživatelský účet, který je členem skupiny CloudAdmin. 
+
+  Pokud jste použili CloudAdmin jako název účtu, nasazení, přidáte nového uživatele CloudAdmin k vaší období před zahájením aktualizace 1711, aby nedošlo k uzamknutí mimo Azure zásobníku. Chcete-li přidat nového uživatele CloudAdmin, spusťte rutinu **New-CloudAdminUser** na období.
 
 ### <a name="new-features-and-fixes"></a>Nové funkce a opravy
 
@@ -61,7 +68,7 @@ Tato aktualizace zahrnuje následující vylepšení a opravy pro Azure zásobn�
 
 #### <a name="windows-server-2016-new-features-and-fixes"></a>Windows Server 2016 nové funkce a opravy
 
-- [14 listopadu 2017 – KB4048953 (sestavení operačního systému 14393.1884)](https://support.microsoft.com/help/4048953)
+- [14 listopadu 2017 – KB4048953 (sestavení operačního systému 14393.1884) ](https://support.microsoft.com/help/4048953)
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace
 
@@ -76,11 +83,11 @@ Tato část obsahuje známé problémy, které mohou nastat při instalaci aktua
     1. **Příčina:** tento problém je způsoben při pokračování v aktualizaci z portálu, která byla dříve obnovení pomocí privilegované koncového bodu (období).
     2. **Řešení:** obraťte se na oddělení zákaznických služeb a podpory společnosti Microsoft pro pomoc.
 <br><br>
-3. **Příznak:**operátory Azure zásobníku dojít k následující chybě během procesu aktualizace:*"typ"CheckHealth"Role"virtuálních počítačů, vyvolá k výjimce: \n\nVirtual počítač kontrolu pro <machineName>-ACS01 vytvořeného následující chyby. \nThere došlo k chybě při načítání informace o virtuálních počítačů z hostitelů. Výjimka. Podrobnosti: \nGet-virtuálních počítačů: operace v počítači se nezdařilo Node03: Služba WS-Management nemůže zpracovat žádost. \Nservice rozhraní WMI nebo zprostředkovatele rozhraní WMI vrátila neznámou chybu: HRESULT 0x8004106c ".*
+3. **Příznak:** operátory Azure zásobníku dojít k následující chybě během procesu aktualizace:*"typ"CheckHealth"Role"virtuálních počítačů, vyvolá k výjimce: \n\nVirtual počítač kontrolu pro <machineName>-ACS01 vytvořeného následující chyby. \nThere došlo k chybě při načítání informace o virtuálních počítačů z hostitelů. Výjimka. Podrobnosti: \nGet-virtuálních počítačů: operace v počítači se nezdařilo Node03: Služba WS-Management nemůže zpracovat žádost. \Nservice rozhraní WMI nebo zprostředkovatele rozhraní WMI vrátila neznámou chybu: HRESULT 0x8004106c ".*
     1. **Příčina:** tento problém je způsoben problém systému Windows Server, který je určený vzít v úvahu v následných aktualizací serveru okno.
     2. **Řešení:** obraťte se na oddělení zákaznických služeb a podpory společnosti Microsoft pro pomoc.
 <br><br>
-4. **Příznak:**operátory Azure zásobníku dojít k následující chybě během procesu aktualizace:*"typ"DefenderUpdate"Role 'URP' způsobila výjimku: selhání získání verze z \\SU1FileServer\SU1_Public\ DefenderUpdates\x64\{název souboru} .exe po 60 pokusů na kopírování-AzSDefenderFiles, C:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.Defender\Microsoft.AzureStack.Defender.psm1: řádek 262"*
+4. **Příznak:** operátory Azure zásobníku dojít k následující chybě během procesu aktualizace:*"typ"DefenderUpdate"Role 'URP' způsobila výjimku: selhání získání verze z \\SU1FileServer\SU1_Public\ DefenderUpdates\x64\{název souboru} .exe po 60 pokusů na kopírování-AzSDefenderFiles, C:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.Defender\Microsoft.AzureStack.Defender.psm1: řádek 262"*
     1. **Příčina:** tento problém je způsoben pozadí se nezdařilo nebo jsou neúplné stahování aktualizací definic program Windows Defender.
     2. **Řešení:** od první aktualizace zkuste uplynulo prosím pokus o pokračování aktualizace po až 8 hodin.
 

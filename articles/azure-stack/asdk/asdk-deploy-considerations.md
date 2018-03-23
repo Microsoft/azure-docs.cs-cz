@@ -1,25 +1,25 @@
 ---
-title: "Požadavky Azure zásobníku Development Kit nasazení (ASDK) | Microsoft Docs"
-description: "Zkontrolujte požadavky na prostředí a hardware pro Azure zásobníku Development Kit (ASDK)."
+title: Požadavky Azure zásobníku Development Kit nasazení (ASDK) | Microsoft Docs
+description: Zkontrolujte požadavky na prostředí a hardware pro Azure zásobníku Development Kit (ASDK).
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/21/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 24a766ada1cdd1cb854b6869d571acd73e376327
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f4b55bb3287f67792b3257c3f62256437f5625ca
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Plánování nasazení Azure zásobníku
 Před nasazením Azure zásobníku Development Kit (ASDK), ujistěte se, že vaše development kit hostitelský počítač splňuje požadavky popsané v tomto článku.
@@ -34,7 +34,7 @@ Před nasazením Azure zásobníku Development Kit (ASDK), ujistěte se, že va�
 | Výpočetní služby: Paměť |96 GB RAM |128 GB paměti RAM (to je minimální pro podporu zprostředkovatele prostředků PaaS.)|
 | Výpočetní služby: BIOS |Povolená technologie Hyper-V (s podporou SLAT) |Povolená technologie Hyper-V (s podporou SLAT) |
 | Síť: NIC |V případě NIC se vyžaduje certifikace Windows Serveru 2012 R2. Specializované funkce se nepožadují |V případě NIC se vyžaduje certifikace Windows Serveru 2012 R2. Specializované funkce se nepožadují |
-| Hardwarová certifikace loga |[Certifikované pro systém Windows Server 2012 R2](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Certifikované pro systém Windows Server 2012 R2](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
+| Hardwarová certifikace loga |[Certifikované pro systém Windows Server 2012 R2](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Certifikované pro systém Windows Server 2016](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup> Budete potřebovat větší, než to doporučeno kapacity, pokud chcete použít k přidání řadu [položky marketplace](asdk-marketplace-item.md) z Azure.
 

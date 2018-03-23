@@ -1,31 +1,28 @@
 ---
-title: "Virtuální počítače zpřístupnit uživatelům zásobník Azure | Microsoft Docs"
-description: "Kurz a zpřístupnit virtuální počítače v Azure zásobníku"
+title: Virtuální počítače zpřístupnit uživatelům zásobník Azure | Microsoft Docs
+description: Kurz a zpřístupnit virtuální počítače v Azure zásobníku
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2017
-ms.author: brenduns
-ms.reviewer: 
+ms.date: 03/22/2018
+ms.author: jeffgilb
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: d169a18df8916cfb8dd30b00248099a3d374aacc
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: af97f32736959f8ebf8f3c4fbca400d6b0c41f3e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Virtuální počítače zpřístupnit uživatelům Azure zásobníku
-
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
-
 Jako správce cloudu Azure zásobníku můžete vytvořit nabídky, které vaši uživatelé (někdy označované jako klienty) můžete přihlásit k odběru. Pomocí svého předplatného, mohou uživatelé pak využívání služeb Azure zásobníku.
 
 Tento článek ukazuje, jak vytvořit nabídku a pak otestovat. Pro test Přihlaste se k portálu jako uživatel, přihlášení k odběru na nabídku a pak vytvořte virtuální počítač na základě předplatného.
@@ -116,7 +113,7 @@ Teď, když jste vytvořili nabídku, můžete ji otestovat. Přihlaste se jako 
    Nyní je můžete přihlásit k portálu jako uživatel k odběru na nabídku.
 
    a. Přihlaste se k portálu user portal jako uživatele a klikněte na tlačítko **získat předplatné**.
-   - Pro integrovaný systém adresa URL se liší v závislosti na vaší operátor oblast a název externí domény a bude v https://portal formátu. &lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
+   - Pro integrovaný systém adresa URL se liší v závislosti na vaší operátor oblast a název externí domény a bude v formátu https://portal.&lt;*oblast*&gt;.&lt;*FQDN*&gt;.
    - Pokud používáte Development Kit Azure zásobníku, portál adresa je https://portal.local.azurestack.external.
 
    ![Získat předplatné](media/azure-stack-subscribe-plan-provision-vm/image01.png)
@@ -134,7 +131,7 @@ Teď, když jste vytvořili nabídku, můžete ji otestovat. Přihlaste se jako 
    Nyní je můžete přihlásit k portálu jako uživatel ke zřízení virtuálního počítače pomocí předplatného. 
 
    a. Přihlaste se k portálu user portal jako uživatel.
-      - Pro integrovaný systém adresa URL se liší v závislosti na vaší operátor oblast a název externí domény a bude v https://portal formátu. &lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
+      - Pro integrovaný systém adresa URL se liší v závislosti na vaší operátor oblast a název externí domény a bude v formátu https://portal.&lt;*oblast*&gt;.&lt;*FQDN*&gt;.
    - Pokud používáte Development Kit Azure zásobníku, portál adresa je https://portal.local.azurestack.external.
 
    b.  Na řídicím panelu klikněte na tlačítko **nový** > **výpočetní** > **Windows Server 2016 Datacenter Eval**a pak klikněte na tlačítko **vytvořit**.
