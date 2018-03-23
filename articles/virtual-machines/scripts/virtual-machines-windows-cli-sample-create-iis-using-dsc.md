@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI skriptu ukázkové – vytvoření virtuálního počítače Windows serveru 2016 se službou IIS pomocí DSC | Microsoft Docs"
-description: "Azure CLI skriptu ukázkové – vytvoření virtuálního počítače Windows serveru 2016 se službou IIS pomocí DSC"
+title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem 2016 a službou IIS pomocí DSC | Microsoft Docs
+description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem 2016 a službou IIS pomocí DSC
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rickstercdn
 manager: timlt
 editor: tysonn
-tags: 
-ms.assetid: 
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-Windows
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: 96516cb374841e663f831957ccbc6690e801154d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 7cb0532eff41ab28c9769a7582cc810f768859c7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-vm-with-iis-using-dsc"></a>Vytvoření virtuálního počítače se službou IIS pomocí DSC
 
-Tento skript vytvoří virtuální počítač a rozšíření vlastních skriptů DSC virtuální počítač Azure používá k instalaci a konfiguraci služby IIS. 
+Tento skript vytvoří virtuální počítač a pomocí rozšíření vlastních skriptů DSC virtuálního počítače Azure nainstaluje a nakonfiguruje službu IIS. 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -36,7 +36,7 @@ Tento skript vytvoří virtuální počítač a rozšíření vlastních skript�
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
@@ -44,18 +44,18 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, virtuální počítač a všechny související prostředky. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript k vytvoření skupiny prostředků, virtuálního počítače a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Vytvoření skupiny az](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky. |
-| [Vytvoření virtuálního počítače az](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Vytvoří virtuální počítač a připojí jej k síťové karty, virtuální sítě, podsítě a NSG. Tento příkaz také Určuje bitovou kopii virtuálního počítače, který se má použít a pověření pro správu.  |
-| [nastavení rozšíření virtuálního az](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Přidejte do virtuálního počítače, které vyvolá skript k instalaci IIS rozšíření vlastních skriptů. |
-| [virtuální počítač az open-port](https://docs.microsoft.com/cli/azure/vm#az_vm_open_port) | Vytvoří pravidlo skupiny zabezpečení sítě chcete povolit příchozí přenosy. V této ukázce je otevřen port 80 pro přenosy protokolu HTTP. |
-| [Odstranění skupiny az](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Odstraní skupinu prostředků, včetně všech vnořených prostředků. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
+| [az vm extension set](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Přidá do virtuálního počítače rozšíření vlastních skriptů, které vyvolá skript pro instalaci služby IIS. |
+| [az vm open-port](https://docs.microsoft.com/cli/azure/vm#az_vm_open_port) | Vytvoří pravidlo skupiny zabezpečení sítě, které povolí příchozí provoz. V této ukázce se otevře port 80 pro přenosy HTTP. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Ukázky skriptu rozhraní příkazového řádku další virtuální počítač nachází v [virtuálního počítače Windows Azure dokumentaci](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Windows](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

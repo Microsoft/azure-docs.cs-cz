@@ -1,8 +1,8 @@
 ---
-title: "Kurz – Kontrola využití a nákladů ve službě Azure Cost Management | Microsoft Docs"
-description: "V tomto kurzu zkontrolujete využití a náklady, abyste mohli sledovat trendy, zjišťovat nedostatečnou efektivitu a vytvářet výstrahy."
+title: Kurz – Kontrola využití a nákladů ve službě Azure Cost Management | Microsoft Docs
+description: V tomto kurzu zkontrolujete využití a náklady, abyste mohli sledovat trendy, zjišťovat nedostatečnou efektivitu a vytvářet výstrahy.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/27/2018
@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e8f09a90ae9a4dd54d81335de2494f0dcbe09485
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 558dcd65051c0134a87205dcd8bbf432d7763fd2
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
 
 # <a name="tutorial-review-usage-and-costs"></a>Kurz: Kontrola využití a nákladů
 
-Azure Cost Management od Cloudyn zobrazuje využití a náklady, abyste mohli sledovat trendy, zjišťovat nedostatečnou efektivitu a vytvářet upozornění. Všechna data o využití a nákladech se zobrazí na řídicích panelech a v sestavách Cloudyn. Příklady v tomto kurzu vás provedou kontrolou využití a nákladů prostřednictvím řídicích panelů a sestav. V tomto kurzu se naučíte:
+Azure Cost Management zobrazuje využití a náklady, abyste mohli sledovat trendy, zjišťovat nedostatečnou efektivitu a vytvářet upozornění. Všechna data o využití a nákladech se zobrazí na řídicích panelech a v sestavách Cloudyn. Příklady v tomto kurzu vás provedou kontrolou využití a nákladů prostřednictvím řídicích panelů a sestav. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Sledování trendů využití a nákladů
@@ -57,7 +57,7 @@ V předchozím příkladu se od 31. 8. 2017 utratilo méně peněz než předtí
 
 V příkladu je jasně vidět, že od 31. 8. 2017 klesly náklady na Azure Storage, zatímco výdaje na ostatní služby Azure zůstaly stejné. Co tedy toto snížení výdajů způsobilo? V tomto příkladu došlo k tomu, že někteří zaměstnanci byli na dovolené a službu Storage nepoužívali.
 
-Pokud se chcete podívat výukové video o sledování trendů využití a nákladů, podívejte se na video [Analýza informací o fakturaci cloudu pomocí služby Azure Cost Management od Cloudyn](https://youtu.be/7LsVPHglM0g).
+Pokud chcete zhlédnout výukové video o sledování trendů využití a nákladů, podívejte se na video [Analyzing your cloud billing data vs. time with Azure Cost Management](https://youtu.be/7LsVPHglM0g) (Analýza informací o fakturaci cloudu pomocí služby Azure Cost Management).
 
 ## <a name="detect-usage-inefficiencies"></a>Zjišťovat nedostatečnou efektivitu využití
 
@@ -81,7 +81,7 @@ Kliknutím na symbol plus vedle položky **List of Candidates** (Seznam kandidá
 
 ![Seznam kandidátů](./media/tutorial-review-usage/sizing03.png)
 
-Pokud vás zajímá výukové video o zjišťování nedostatečné efektivity využití, podívejte se na video [Optimalizace velikosti virtuálního počítače ve službě Azure Cost Management od Cloudyn](https://youtu.be/1xaZBNmV704).
+Pokud chcete zhlédnout výukové video o zjišťování nedostatečné efektivity využití, podívejte se na video [Optimizing VM Size in Azure Cost Management](https://youtu.be/1xaZBNmV704) (Optimalizace velikosti virtuálního počítače ve službě Azure Cost Management).
 
 ## <a name="create-alerts-for-unusual-spending"></a>Vytváření upozornění na neobvyklé výdaje
 

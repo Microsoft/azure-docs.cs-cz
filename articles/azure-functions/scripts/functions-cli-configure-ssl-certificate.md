@@ -1,11 +1,11 @@
 ---
-title: "Ukázka skriptu Azure CLI - vazby SSL vlastní certifikát do aplikaci funkce | Microsoft Docs"
-description: "Ukázka skriptu Azure CLI - vazby vlastní certifikát SSL pro funkce aplikace v Azure"
+title: Ukázkový skript Azure CLI – Vazba vlastního certifikátu SSL na aplikaci funkcí | Microsoft Docs
+description: Ukázkový skript Azure CLI – Vazba vlastního certifikátu SSL na aplikaci funkcí v Azure
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
 ms.service: functions
@@ -16,26 +16,26 @@ ms.topic: sample
 ms.date: 04/10/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f8e8570d9c3093b5f49b000916644888304eed4e
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
-ms.translationtype: MT
+ms.openlocfilehash: fd4c69036960364e12aeea5d9e5f65e7b36eff0d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="bind-a-custom-ssl-certificate-to-a-function-app"></a>Vlastní certifikát SSL vazbu na aplikaci – funkce
+# <a name="bind-a-custom-ssl-certificate-to-a-function-app"></a>Vazba vlastního certifikátu SSL na aplikaci funkcí
 
-Tento ukázkový skript vytvoří aplikaci funkce ve službě App Service se jeho souvisejících prostředků a potom vytvoří vazbu certifikátu SSL vlastního názvu domény. Tato ukázka je třeba:
+Tento ukázkový skript vytvoří ve službě App Service aplikaci funkcí se souvisejícími prostředky a pak k ní vytvoří vazbu certifikátu SSL vlastního názvu domény. Pro tuto ukázku potřebujete:
 
-* Přístup na stránku konfigurace DNS doménového registrátora.
-* Platné. Soubor PFX a heslo pro certifikát SSL chcete nahrát a jejich vazby.
+* Přístup ke konfigurační stránce DNS doménového registrátora.
+* Platný soubor .PFX a heslo pro certifikát SSL, který chcete nahrát a svázat.
 
-Funkce aplikace k vytvoření vazby certifikátu SSL, musí být vytvořený v plán služby App Service a nejsou v plánu spotřeby.
+Pokud chcete vytvořit vazbu certifikátu SSL, vaše aplikace funkcí musí být vytvořená v plánu služby App Service, a ne v plánu Consumption.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, musíte používat Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -45,19 +45,19 @@ Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místn�
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Vytvoření skupiny az](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky. |
-| [Vytvořit plán aplikační služby az](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Vytvoří plán služby App Service potřebné k vytvoření vazby certifikátů SSL. |
-| [Vytvoření az functionapp]() | Vytvoří aplikaci funkce. |
-| [Přidat az název hostitele konfigurace webové služby App Service](https://docs.microsoft.com/cli/azure/appservice/web/config/hostname#az_appservice_web_config_hostname_add) | Vlastní doména se mapuje na aplikaci funkce. |
-| [AZ služby App Service web konfigurace ssl nahrávání](https://docs.microsoft.com/cli/azure/appservice/web/config/ssl#az_appservice_web_config_ssl_upload) | Certifikát SSL odešle do aplikaci funkce. |
-| [AZ služby App Service web konfigurace protokolu ssl vazby](https://docs.microsoft.com/cli/azure/appservice/web/config/ssl#az_appservice_web_config_ssl_bind) | Váže nahraný certifikát SSL k aplikaci funkce. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Vytvoří plán služby App Service, který se vyžaduje k vytvoření vazby certifikátů SSL. |
+| [az functionapp create]() | Vytvoří aplikaci funkcí. |
+| [az appservice web config hostname add](https://docs.microsoft.com/cli/azure/appservice/web/config/hostname#az_appservice_web_config_hostname_add) | Namapuje na aplikaci funkcí vlastní doménu. |
+| [az appservice web config ssl upload](https://docs.microsoft.com/cli/azure/appservice/web/config/ssl#az_appservice_web_config_ssl_upload) | Nahraje do aplikace funkcí certifikát SSL. |
+| [az appservice web config ssl bind](https://docs.microsoft.com/cli/azure/appservice/web/config/ssl#az_appservice_web_config_ssl_bind) | Vytvoří vazbu nahraného certifikátu SSL na aplikaci funkcí. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Další ukázky skript aplikace služby rozhraní příkazového řádku najdete v [dokumentaci služby Azure App Service]().
+Další ukázkové skripty rozhraní příkazového řádku pro službu App Service najdete v [dokumentaci ke službě Azure App Service]().

@@ -1,11 +1,11 @@
 ---
-title: "Přehled služby Azure Batch pro vývojáře | Dokumentace Microsoftu"
-description: "Informace o funkcích služby Batch a jejích rozhraní API z hlediska vývoje."
+title: Přehled služby Azure Batch pro vývojáře | Dokumentace Microsoftu
+description: Informace o funkcích služby Batch a jejích rozhraní API z hlediska vývoje.
 services: batch
 documentationcenter: .net
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c53007530fe80f03cefbf138193cfad4b0e8292a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: b0a18f975530d2a291e529308ee53d6d48a68e42
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -28,7 +28,7 @@ V tomto přehledu základních součástí služby Azure Batch probereme primár
 Ať vyvíjíte distribuovanou výpočetní aplikaci nebo službu, která vystavuje přímá volání rozhraní [REST API][batch_rest_api], nebo pracujete s některou ze [sad SDK služby Batch](batch-apis-tools.md#azure-accounts-for-batch-development), používáte mnoho prostředků a funkcí popsaných v tomto článku.
 
 > [!TIP]
-> Obecný úvod do služby Batch najdete v části [Základy služby Azure Batch](batch-technical-overview.md).
+> Obecný úvod do služby Batch najdete v části [Základy služby Azure Batch](batch-technical-overview.md). Prohlédněte si také nejnovější [aktualizace služby Batch](https://azure.microsoft.com/updates/?product=batch).
 >
 >
 

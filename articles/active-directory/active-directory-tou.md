@@ -1,24 +1,24 @@
 ---
-title: Funkce Azure Active Directory Terms of Use | Microsoft Docs
-description: "Funkce Azure AD Terms of Use umožní vám a vaší společnosti poskytnout podmínky použití uživatelům služby Azure AD."
+title: Funkce Azure Active Directory Terms of Use | Dokumentace Microsoftu
+description: Funkce Azure AD Terms of Use umožní vám a vaší společnosti poskytnout podmínky použití uživatelům služby Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: d55872ef-7e45-4de5-a9a0-3298e3de3565
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2017
+ms.date: 03/06/2018
 ms.author: billmath
-ms.openlocfilehash: c01ea7c6a05c77244ab29fe6eec00ed1e49b6f7e
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: e29e842a54d286e19d23c1c91c08d55933a0eada
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-active-directory-terms-of-use-feature-preview"></a>Funkce Azure Active Directory Terms of Use (Preview)
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům.  Zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů.
@@ -128,7 +128,7 @@ Odpověď: Vyjádření souhlasu uživatele s podmínkami použití se zapíše 
 Odpověď: Ano, správce může změnit podmínky použití. Vyžaduje to opakované přijetí nových podmínek.
 
 **Otázka: Podporují se podmínky použití ve více jazycích?**</br>
-Odpověď: Ne, aktuálně není možné mít několik jazyků v jedněch podmínkách použití.  Můžete ale využít nastavení rozsahu pro skupinu (například podmínky použití pro Francii jsou jiné než podmínky použití pro Spojené království). 
+Odpověď: Ano.  Správce v současné době může pro jedny podmínky použití nakonfigurovat 18 různých jazyků. 
 
 **Otázka: Kdy se podmínky použití aktivují?**</br>
 Odpověď: Podmínky použití se aktivují během přihlašování.

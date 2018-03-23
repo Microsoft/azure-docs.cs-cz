@@ -1,6 +1,6 @@
 ---
-title: "Kurz projektu BikeShare – pokročilá příprava dat pomocí aplikace Azure Machine Learning Workbench"
-description: "V tomto kurzu provedete úlohu komplexní přípravy dat pomocí aplikace Azure Machine Learning Workbench."
+title: Kurz projektu BikeShare – pokročilá příprava dat pomocí aplikace Azure Machine Learning Workbench
+description: V tomto kurzu provedete úlohu komplexní přípravy dat pomocí aplikace Azure Machine Learning Workbench.
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: ca7239fd3e31c7a6cfc6fb64e04afb376e01c190
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: f1d4b58d0fe0628aa00b8229a1383d3ada414f62
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Kurz: Použití aplikace Azure Machine Learning Workbench k pokročilé přípravě dat (data projektu BikeShare)
 Služba Azure Machine Learning (Preview) představuje integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
@@ -736,7 +736,7 @@ Pokud chcete uložit tok dat **Join Result** (Výsledek spojení) do souboru .cs
 3. Vytvořte konfiguraci spuštění služby HDInsight. Potřebujete název vašeho clusteru a heslo uživatele `sshuser`.
 
     ```azurecli
-    az ml computetarget attach --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password> --type cluster
+    az ml computetarget attach cluster --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password>
     az ml experiment prepare -c hdinsight
     ```
 > [!NOTE]

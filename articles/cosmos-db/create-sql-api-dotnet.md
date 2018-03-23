@@ -1,25 +1,25 @@
 ---
-title: "Azure Cosmos DB: Vytvoření webové aplikace s využitím .NET a rozhraní SQL API | Dokumentace Microsoftu"
-description: "Tento článek představuje vzorový kód .NET, který můžete použít k připojení a dotazování služby Azure Cosmos DB přes rozhraní SQL API."
+title: 'Azure Cosmos DB: Vytvoření webové aplikace s využitím .NET a rozhraní SQL API | Dokumentace Microsoftu'
+description: Tento článek představuje vzorový kód .NET, který můžete použít k připojení a dotazování služby Azure Cosmos DB přes rozhraní SQL API.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc, devcenter
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/15/2017
 ms.author: mimig
-ms.openlocfilehash: 9541fa7331a5a6a5a5405244dd79eb8a92d96386
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b5ab66371b47bdd0f3bd7a4c9e86e419efebe902
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření webové aplikace SQL API s využitím .NET a webu Azure Portal
 
@@ -97,19 +97,19 @@ Teď přejděme k práci s kódem. Naklonujeme aplikaci SQL API z GitHubu, nast
 
 Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete soubor DocumentDBRepository.cs a zjistíte, že tyto řádky kódu vytvářejí prostředky Azure Cosmos DB. 
 
-* Na řádku 78 se inicializuje DocumentClient.
+* Na řádku 76 se inicializuje DocumentClient.
 
     ```csharp
     client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);
     ```
 
-* Na řádku 93 se vytvoří nová databáze.
+* Na řádku 91 se vytvoří nová databáze.
 
     ```csharp
     await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
     ```
 
-* Na řádku 112 se vytvoří nová kolekce.
+* Na řádku 110 se vytvoří nová kolekce.
 
     ```csharp
     await client.CreateDocumentCollectionAsync(
@@ -117,10 +117,9 @@ Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete
         new DocumentCollection { Id = CollectionId },
         new DocumentCollection
             {
-               Id = CollectionId,
-               PartitionKey = new PartitionKeyDefinition() { Paths = new Collection<string>() { "/category" } }
+               Id = CollectionId
             },
-        new RequestOptions { OfferThroughput = 1000 });
+        new RequestOptions { OfferThroughput = 400 });
     ```
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce

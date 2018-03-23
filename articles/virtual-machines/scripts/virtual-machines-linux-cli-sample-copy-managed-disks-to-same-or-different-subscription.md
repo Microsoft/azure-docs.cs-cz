@@ -1,13 +1,13 @@
 ---
-title: "Ukázka skriptu Azure CLI - kopírování (přesunout) spravovaných disků na stejný nebo jiný předplatné | Microsoft Docs"
-description: "Ukázka skriptu Azure CLI - kopírování (přesunout) spravovaných disků na stejný nebo jiný odběr"
+title: Ukázkový skript Azure CLI – Kopírování (přesun) spravovaných disků do stejného nebo jiného předplatného | Microsoft Docs
+description: Ukázkový skript Azure CLI – Kopírování (přesun) spravovaných disků do stejného nebo jiného předplatného
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 8ff34f3d0b11c47f19205b92aebfc96e5cd5a014
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: dfdbc0563810447a1a214356b5153afe38d9cf2f
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>Zkopírujte spravovaných disků na stejný nebo jiný odběr pomocí rozhraní příkazového řádku
+# <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>Kopírování spravovaných disků do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku
 
-Tento skript zkopíruje spravovaných disků na stejný nebo jiný odběr, ale ve stejné oblasti. 
+Tento skript zkopíruje spravovaný disk do stejného nebo jiného předplatného ve stejné oblasti. 
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -38,17 +38,17 @@ Tento skript zkopíruje spravovaných disků na stejný nebo jiný odběr, ale v
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření nového spravovaného disku v cílové předplatné pomocí Id zdrojového spravovaného disku. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript k vytvoření nového spravovaného disku v cílovém předplatném pomocí ID zdrojového spravovaného disku používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Zobrazit az disku](https://docs.microsoft.com/cli/azure/disk#az_disk_show) | Získá všechny vlastnosti spravovaného disku pomocí názvu a vlastnosti skupiny prostředků spravovaného disku. Vlastnost ID se používá ke zkopírování spravovaných disků do jiného předplatného.  |
-| [Vytvoření az disku](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | Kopie spravovaného disku tak, že vytvoříte novou spravované disk v jiném předplatném. pomocí Id a název spravovaného nadřazený disk.  |
+| [az disk show](https://docs.microsoft.com/cli/azure/disk#az_disk_show) | Získá všechny vlastnosti spravovaného disku s použitím názvu a vlastností skupiny prostředků spravovaného disku. Vlastnost ID se použije ke zkopírování spravovaného disku do jiného předplatného.  |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | Zkopíruje spravovaný disk vytvořením nového spravovaného disku v jiném předplatném s použitím ID a názvu nadřazeného spravovaného disku.  |
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytvoření virtuálního počítače z spravovaného disku](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[Vytvoření virtuálního počítače ze spravovaného disku](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Další virtuální počítač a spravované disky ukázky skriptu rozhraní příkazového řádku najdete v [virtuální počítač Azure s Linuxem dokumentaci](../../app-service/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače a spravované disky najdete v [dokumentaci k virtuálním počítačům Azure s Linuxem](../../app-service/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

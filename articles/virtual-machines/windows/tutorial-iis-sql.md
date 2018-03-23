@@ -1,6 +1,6 @@
 ---
-title: "Vytváření virtuálních počítačů se stackem SQL&#92;IIS&#92;.NET v Azure| Microsoft Docs"
-description: "Kurz – Instalace stacku Azure SQL, služby IIS a .NET na virtuálních počítačích s Windows"
+title: Vytváření virtuálních počítačů se stackem SQL&#92;IIS&#92;.NET v Azure| Microsoft Docs
+description: Kurz – Instalace stacku Azure SQL, služby IIS a .NET na virtuálních počítačích s Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ad84d6e8f74fa184ac2359ff7f08e6c8143d419a
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: ac6038f7600d6eb4c8d021998f9cfc40bd369332
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="install-a-sql92iis92net-stack-in-azure"></a>Instalace stacku SQL&#92;IIS&#92;.NET v Azure
 
@@ -33,7 +33,7 @@ V tomto kurzu nainstalujeme stack SQL&#92;IIS&#92;.NET pomocí Azure PowerShellu
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Tento kurz vyžaduje modul AzureRM.Compute verze 4.3.1 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM.Compute`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul AzureRM.Compute verze 4.3.1 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM.Compute`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 ## <a name="create-a-iis-vm"></a>Vytvoření virtuálního počítače se službou IIS 
 

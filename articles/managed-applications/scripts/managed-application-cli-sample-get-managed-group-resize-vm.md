@@ -1,6 +1,6 @@
 ---
-title: "Rozhraní příkazového řádku Azure ukázkový skript – získat skupinu spravovaných prostředků a změně velikosti virtuálních počítačů | Microsoft Docs"
-description: "Ukázka skriptu Azure CLI - získat skupinu spravovaných prostředků a změně velikosti virtuálních počítačů"
+title: Ukázkový skript Azure CLI – Získání spravované skupiny prostředků a změna velikosti virtuálních počítačů | Microsoft Docs
+description: Ukázkový skript Azure CLI – Získání spravované skupiny prostředků a změna velikosti virtuálních počítačů
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: c78d2646471e40d60972cf91cb5bbd351f71a66c
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
-ms.translationtype: MT
+ms.openlocfilehash: 9c4032191738703b71319c05bce4f6bbbc61b44b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Získat prostředky ve skupině spravovaných prostředků a změna velikosti virtuálních počítačů pomocí rozhraní příkazového řádku Azure
+# <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Získání prostředků ve spravované skupině prostředků a změna velikosti virtuálních počítačů pomocí Azure CLI
 
-Tento skript načte zdroje ze skupiny spravovaných prostředků a změní velikost virtuální počítače v příslušné skupině prostředků.
+Tento skript načte prostředky ze spravované skupiny prostředků a změní velikost virtuálních počítačů v této skupině prostředků.
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -34,16 +34,16 @@ Tento skript načte zdroje ze skupiny spravovaných prostředků a změní velik
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k nasazení spravované aplikace. Každý příkaz v tabulce odkazy na dokumentaci specifické pro příkaz.
+Tento skript k nasazení spravované aplikace používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [AZ managedapp seznamu](https://docs.microsoft.com/cli/azure/managedapp#az_managedapp_list) | Seznam spravovaných aplikací. Zadejte hodnoty dotazu a zaměřit se výsledky. |
-| [Seznam zdrojů az](https://docs.microsoft.com/cli/azure/resource#az_resource_list) | Zobrazí seznam prostředků. Zadejte prostředek skupiny a dotaz hodnoty a zaměřit se výsledek. |
-| [Změna velikosti virtuálních počítačů az](https://docs.microsoft.com/cli/azure/vm#az_vm_resize) | Aktualizujte velikost virtuálního počítače. |
+| [az managedapp list](https://docs.microsoft.com/cli/azure/managedapp#az_managedapp_list) | Vypíše spravované aplikace. Pro zúžení výsledků zadejte hodnoty dotazu. |
+| [az resource list](https://docs.microsoft.com/cli/azure/resource#az_resource_list) | Vypíše prostředky. Pro zúžení výsledků zadejte skupinu prostředků a hodnoty dotazu. |
+| [az vm resize](https://docs.microsoft.com/cli/azure/vm#az_vm_resize) | Aktualizuje velikost virtuálního počítače. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do spravovaných aplikací, najdete v části [Azure spravovaných aplikací – přehled](../overview.md).
-* Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+* Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací Azure](../overview.md).
+* Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).

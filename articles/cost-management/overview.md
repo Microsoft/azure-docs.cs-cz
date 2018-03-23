@@ -1,8 +1,8 @@
 ---
-title: "Přehled služby Azure Cost Management by Cloudyn | Dokumentace Microsoftu"
-description: "Azure Cost Management by Cloudyn je multicloudové řešení správy nákladů, které pomáhá využívat Azure a další cloudové prostředky."
+title: Přehled služby Azure Cost Management | Microsoft Docs
+description: Azure Cost Management je multicloudové řešení správy nákladů, které pomáhá využívat Azure a další cloudové prostředky.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
@@ -10,17 +10,17 @@ ms.topic: overview
 ms.service: cost-management
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f09bb135d4521325ab3e3e12af2f69d862434b75
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e2f12a989eb275e645c8b3bde3494928c5cbdb47
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="what-is-azure-cost-management"></a>Co je Azure Cost Management?
 
-Azure Cost Management by Cloudyn umožňuje sledovat využití cloudu a výdaje za prostředky Azure a dalších poskytovatelů cloudu, včetně AWS a Google. Snadno pochopitelné sestavy řídicího panelu pomáhají s přidělováním nákladů i metodami showback a chargeback. Cost Management pomáhá optimalizovat výdaje za cloud díky identifikaci nevyužitých prostředků, které následně můžete spravovat a upravovat.
+Služba Azure Cost Management, kterou licencuje pobočka Microsoftu Cloudyn, umožňuje sledovat využití cloudu a výdaje za prostředky Azure a dalších poskytovatelů cloudu, včetně AWS a Google. Snadno pochopitelné sestavy řídicího panelu pomáhají s přidělováním nákladů i metodami showback a chargeback. Cost Management pomáhá optimalizovat výdaje za cloud díky identifikaci nevyužitých prostředků, které následně můžete spravovat a upravovat.
 
-Pokud chcete zhlédnout úvodní video, podívejte se na video [Introduction to Azure Cost Management by Cloudyn](https://youtu.be/NWIRny6Wpsk) (Seznámení se službou Azure Cost Management by Cloudyn).
+Pokud chcete zhlédnout úvodní video, podívejte se na video [Introduction to Azure Cost Management](https://youtu.be/NWIRny6Wpsk) (Seznámení se službou Azure Cost Management).
 
 ## <a name="monitor-usage-and-spending"></a>Monitorování využití a výdajů
 

@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření funkce v Linuxu pomocí vlastní image (verze Preview) | Microsoft Docs"
-description: "Naučte se vytvářet funkce služby Azure Functions běžící na vlastní imagi Linuxu."
+title: Vytvoření funkce v Linuxu pomocí vlastní image (verze Preview) | Microsoft Docs
+description: Naučte se vytvářet funkce služby Azure Functions běžící na vlastní imagi Linuxu.
 services: functions
-keywords: 
+keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 11/15/2017
@@ -11,11 +11,11 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 555d05c6cd5e804e5f80ecb8df77237fd8270105
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4b9cb7923b177c73f83a7ac17b1022a5455c7f30
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Vytvoření funkce v Linuxu pomocí vlastní image (verze Preview)
 
@@ -108,7 +108,7 @@ Ověřte si funkčnost sestavené image tak, že image Dockeru spustíte v míst
 docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 ```
 
-Když už v místním kontejneru Dockeru běží vlastní image, ověřte správnou funkčnost aplikace Function App a kontejneru tak, že přejdete na adresu <http://localhost:8080>.
+Když už v místním kontejneru Dockeru běží vlastní image, ověřte správnou funkčnost aplikace funkcí a kontejneru tak, že přejdete na adresu <http://localhost:8080>.
 
 ![Místní testování aplikace Function App](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -127,7 +127,7 @@ docker login --username <docker-id>
 Zpráva „login succeeded“ (Přihlášení proběhlo úspěšně) potvrzuje, že jste přihlášení. Po přihlášení odešlete image do Docker Hubu pomocí příkazu [docker push](https://docs.docker.com/engine/reference/commandline/push/).
 
 ```bash
-docker push <docker-id>/mydockerimage:v1.0.0 .
+docker push <docker-id>/mydockerimage:v1.0.0
 ```
 
 Prozkoumejte výstup příkazu a ověřte si, jestli odeslání proběhlo úspěšně.

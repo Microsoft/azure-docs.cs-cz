@@ -1,6 +1,6 @@
 ---
-title: "Skupiny zabezpečení sítě v Azure | Dokumentace Microsoftu"
-description: "Zjistěte, jak izolovat a řídit tok provozu ve virtuálních sítích pomocí distribuované brány firewall v Azure používající skupiny zabezpečení sítě."
+title: Skupiny zabezpečení sítě v Azure | Dokumentace Microsoftu
+description: Zjistěte, jak izolovat a řídit tok provozu ve virtuálních sítích pomocí distribuované brány firewall v Azure používající skupiny zabezpečení sítě.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 5eca18ca2f34097d98ce947c61c635abc6ab27b8
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: bd15b7786552d21c8791eeb307aa8c87066b2bcd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Filtrování provozu sítě s použitím skupin zabezpečení sítě
 
 Skupina zabezpečení sítě (NSG) obsahuje seznam pravidel zabezpečení, která prostředkům připojeným k virtuálním sítím Azure povolují nebo odpírají síťový provoz. Skupiny zabezpečení sítě můžou být přidružené k podsítím, jednotlivým virtuálním počítačům (klasický model) nebo jednotlivým síťovým rozhraním (síťovým kartám) připojeným k virtuálním počítačům (Resource Manager). Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla se vztahují na všechny prostředky, které jsou připojené k příslušné podsíti. Provoz se dá dále omezit přidružením skupiny zabezpečení sítě k virtuálnímu počítači nebo síťové kartě.
-
+ 
 > [!NOTE]
 > Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek popisuje použití obou modelů, ale Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager.
 
@@ -98,7 +98,7 @@ Skupinu zabezpečení sítě můžete přidružit k virtuálním počítačům, 
 
 * **Virtuální počítač (pouze klasický model):** Pravidla zabezpečení se aplikují na veškerý příchozí/odchozí provoz virtuálního počítače. 
 * **Síťová karta (pouze Resource Manager):** Pravidla zabezpečení se aplikují na veškerý příchozí/odchozí provoz síťové karty, ke které je skupina zabezpečení sítě přidružena. V případě virtuálního počítače s více síťovými kartami můžete pro každou síťovou kartu samostatně použít jinou skupinu zabezpečení sítě (nebo tutéž). 
-* **Podsíť (Resource Manager a klasický model):** Pravidla zabezpečení se aplikují na veškerý příchozí/odchozí provoz prostředků připojených k příslušné virtuální síti.
+* **Podsíť (Resource Manager a Classic):** Pravidla zabezpečení se aplikují na veškerý příchozí/odchozí provoz prostředků připojených k příslušné podsíti.
 
 K virtuálnímu počítači (nebo síťové kartě, podle modelu nasazení) a podsíti, ke které je síťová karta nebo virtuální počítač vázán, můžete přidružit různé skupiny zabezpečení sítě. Na provoz se aplikují pravidla zabezpečení, a to podle priority v jednotlivých skupinách zabezpečení sítě v následujícím pořadí:
 

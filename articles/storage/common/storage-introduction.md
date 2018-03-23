@@ -1,24 +1,18 @@
 ---
-title: "Úvod do Azure Storage | Dokumentace Microsoftu"
-description: "Úvod do Azure Storage, datového úložiště v cloudu od Microsoftu."
+title: Úvod do Azure Storage | Dokumentace Microsoftu
+description: Úvod do Azure Storage, datového úložiště v cloudu od Microsoftu.
 services: storage
-documentationcenter: 
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/21/2018
+ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: 088a58bf5bfe3736a158d2384c69cb5928b53556
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 799636d0a702407be06bbe8cebae552b34d860db
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Úvod do Microsoft Azure Storage
 
@@ -137,7 +131,7 @@ Pro služby Storage jsou k dispozici dva základní druhy šifrování. Další 
 
 Šifrování služby Azure Storage (SSE) v klidovém stavu pomáhá zabezpečit a chránit vaše data pro splnění závazků organizace souvisejících se zabezpečením a dodržováním předpisů. Pomocí této funkce služba Azure Storage automaticky šifruje vaše data před zachováním v úložišti a dešifruje před jejich načtením. Šifrování, dešifrování a správa klíčů je pro uživatele zcela transparentní.
 
-Můžete povolit šifrování služby Storage (SSE) pro úložiště objektů blob nebo pro službu Azure Files (ve verzi Preview). Pokud je povolené, všechna data zapsaná do konkrétní služby se před zápisem zašifrují. Když tato data čtete, před vrácením se dešifrují.
+SSE automaticky šifruje data na všech úrovních výkonu (Standard a Premium), ve všech modelech nasazení (Azure Resource Manager a Classic) a ve všech službách Azure Storage (Blob, Queue, Table a File). SSE nemá vliv na výkon služby Azure Storage.
 
 Další informace o šifrování SSE v klidovém stavu najdete v tématu[Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md).
 

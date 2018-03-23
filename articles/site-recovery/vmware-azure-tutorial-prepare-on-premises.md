@@ -1,19 +1,19 @@
 ---
-title: "Příprava místních serverů VMware na zotavení po havárii virtuálních počítačů VMware do Azure | Microsoft Docs"
-description: "Zjistěte, jak připravit místní servery VMware na zotavení po havárii do Azure pomocí služby Azure Site Recovery."
+title: Příprava místních serverů VMware na zotavení po havárii virtuálních počítačů VMware do Azure | Microsoft Docs
+description: Zjistěte, jak připravit místní servery VMware na zotavení po havárii do Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 03/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6b5c16e5b4136acc06c4ace4b16e8eb0e3522d24
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 07f62775c9286250d33635febe01dbad4362df12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů VMware na zotavení po havárii do Azure
 
@@ -86,7 +86,7 @@ Ujistěte se, že virtuální počítač splňuje požadavky Azure uvedené v n�
 **Název virtuálního počítače** | 1 až 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí.
 **Typ virtuálního počítače** | Generace 1 – Linux nebo Windows<br/><br/>Generace 2 – Pouze Windows
 
-Na virtuálním počítači musí být také podporovaný operační systém. Úplný seznam podporovaných verzí najdete v [matici podpory Site Recovery](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions).
+Na virtuálním počítači musí být také podporovaný operační systém. Úplný seznam podporovaných verzí najdete v [matici podpory pro VMware a fyzické servery](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Příprava připojení k virtuálním počítačům Azure po převzetí služeb při selhání
 

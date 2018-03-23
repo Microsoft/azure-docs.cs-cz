@@ -1,8 +1,8 @@
 ---
-title: "Kurz – Správa nákladů pomocí služby Azure Cost Management | Microsoft Docs"
-description: "V tomto kurzu zjistíte, jak spravovat náklady s využitím přidělování nákladů a sestav metod showback a chargeback."
+title: Kurz – Správa nákladů pomocí služby Azure Cost Management | Microsoft Docs
+description: V tomto kurzu zjistíte, jak spravovat náklady s využitím přidělování nákladů a sestav metod showback a chargeback.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/27/2018
@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7e9f11e702dbbe8864f8a0c307777c922e5f028d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 238964540bffaf8d05148c587462256ce20d87f4
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>Kurz: Správa nákladů pomocí služby Azure Cost Management
 
-Ve službě Azure Cost Management od Cloudyn spravujete náklady a vytváříte sestavy metody showback přidělováním nákladů na základě značek. Proces přidělování nákladů přiřazuje náklady ke spotřebovaným cloudovým prostředkům. K úplnému přidělení nákladů dojde, když jsou všechny prostředky uspořádané do kategorií pomocí značek. Po přidělení nákladů můžete svým uživatelům prostřednictvím řídicích panelů a sestav poskytnout metodu showback nebo chargeback. Když však začnete používat službu Cost Management, řada prostředků nemusí být označených nebo označení nemusí podporovat.
+Ve službě Azure Cost Management spravujete náklady a vytváříte sestavy metody showback přidělováním nákladů na základě značek. Proces přidělování nákladů přiřazuje náklady ke spotřebovaným cloudovým prostředkům. K úplnému přidělení nákladů dojde, když jsou všechny prostředky uspořádané do kategorií pomocí značek. Po přidělení nákladů můžete svým uživatelům prostřednictvím řídicích panelů a sestav poskytnout metodu showback nebo chargeback. Když však začnete používat službu Cost Management, řada prostředků nemusí být označených nebo označení nemusí podporovat.
 
 Například si můžete chtít nechat uhradit náklady na vytváření. Musíte být schopni svému technickému týmu ukázat, že potřebujete konkrétní částku v závislosti na nákladech na prostředky. Můžete jim ukázat sestavu všech spotřebovaných prostředků označených značkou *engineering* (vytváření).
 

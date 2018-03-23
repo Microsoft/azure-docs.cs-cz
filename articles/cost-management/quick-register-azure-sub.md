@@ -1,8 +1,8 @@
 ---
-title: "Registrace předplatného Azure ve službě Azure Cost Management | Dokumentace Microsoftu"
-description: "Použijte své předplatné Azure k registraci ve službě Azure Cost Management by Cloudyn."
+title: Registrace předplatného Azure ve službě Azure Cost Management | Dokumentace Microsoftu
+description: Použijte své předplatné Azure k registraci ve službě Azure Cost Management.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
@@ -10,15 +10,15 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 666919e37ffa3bb039fc9387737b8e6c3789311a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b7c1fee3276d98b6b7c611a09133804c1253384a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>Registrace samostatného předplatného Azure a zobrazení informací o nákladech
 
-Pomocí svého předplatného Azure se zaregistrujete ve službě Azure Cost Management by Cloudyn. Registrací získáte přístup k portálu Cloudyn. Tento rychlý start podrobně popisuje proces registrace nezbytný k vytvoření zkušebního předplatného a přihlášení k portálu Cloudyn. Ukazuje také, jak rovnou začít zobrazovat informace o nákladech.
+Pomocí svého předplatného Azure se zaregistrujete ve službě Azure Cost Management. Registrací získáte přístup k portálu Cloudyn. Tento rychlý start podrobně popisuje proces registrace nezbytný k vytvoření zkušebního předplatného a přihlášení k portálu Cloudyn. Ukazuje také, jak rovnou začít zobrazovat informace o nákladech.
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
@@ -40,13 +40,13 @@ Pomocí svého předplatného Azure se zaregistrujete ve službě Azure Cost Man
 9. Kliknutím na **Přejít do Cloudyn** otevřete portál Cloudyn a na stránce **Správa účtů** by se měly zobrazit informace o vašem účtu předplatného Azure.  
     ![Správa účtů](./media/quick-register-azure-sub/accounts-mgt.png)
 
-Pokud chcete zhlédnout videokurz k registraci předplatného Azure, podívejte se na video [Finding your Directory GUID and Rate ID for use in Azure Cost Management by Cloudyn](https://youtu.be/PaRjnyaNGMI) (Vyhledání GUID adresáře a ID sazby pro použití ve službě Azure Cloud Management by Cloudyn).
+Pokud chcete zhlédnout videokurz k registraci předplatného Azure, podívejte se na video [Finding your Directory GUID and Rate ID for use in Azure Cost Management](https://youtu.be/PaRjnyaNGMI) (Vyhledání GUID adresáře a ID sazby pro použití ve službě Azure Cloud Management).
 
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili informace o svém předplatném Azure k registraci ve službě Cost Management. Také jste se přihlásili k portálu Cloudyn a začali jste zobrazovat informace o nákladech. Další informace o službě Azure Cost Management by Cloudyn najdete v kurzu pro službu Cost Management.
+V tomto rychlém startu jste použili informace o svém předplatném Azure k registraci ve službě Cost Management. Také jste se přihlásili k portálu Cloudyn a začali jste zobrazovat informace o nákladech. Další informace o službě Azure Cost Management najdete v kurzu pro službu Cost Management.
 
 > [!div class="nextstepaction"]
 > [Kontrola využití a nákladů](./tutorial-review-usage.md)

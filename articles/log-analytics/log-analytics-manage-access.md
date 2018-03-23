@@ -1,11 +1,11 @@
 ---
-title: "Správa pracovních prostorů v Azure Log Analytics | Dokumentace Microsoftu"
-description: "V Azure Log Analytics můžete spravovat pracovní prostory pomocí různých úloh správy prováděných s uživateli, účty, pracovními prostory a účty Azure."
+title: Správa pracovních prostorů v Azure Log Analytics | Dokumentace Microsoftu
+description: V Azure Log Analytics můžete spravovat pracovní prostory pomocí různých úloh správy prováděných s uživateli, účty, pracovními prostory a účty Azure.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: d0e5162d-584b-428c-8e8b-4dcaa746e783
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 5121535768b7fb430486c1c2c623e1a3a488858f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6caa0c8769ea6e62a22659089f37f74f6962e1c7
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-workspaces"></a>Správa pracovních prostorů
 

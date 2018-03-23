@@ -1,91 +1,91 @@
 ---
-title: "Použití Azure CLI 2.0 a rozšíření IoT ke správě zařízení zřizování služby | Microsoft Docs"
-description: "Další informace o použití Azure CLI 2.0 a rozšíření IoT ke správě službami zřizování zařízení"
+title: Správa služeb Device Provisioning pomocí Azure CLI 2.0 a rozšíření IoT | Microsoft Docs
+description: Zjistěte, jak pomocí Azure CLI 2.0 a rozšíření IoT spravovat služby Device Provisioning.
 services: iot-dps
-keywords: 
+keywords: ''
 author: chrissie926
 ms.author: menchi
 ms.date: 01/17/2018
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 674245f1e284e7308474fed0f6c53b350ec1c819
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.openlocfilehash: a1224c48537441726c0e01134f6a9256cf3b71c6
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="how-to-use-azure-cli-20-and-the-iot-extension-to-manage-device-provisioning-services"></a>Použití Azure CLI 2.0 a rozšíření IoT ke správě zařízení zřizování služeb
+# <a name="how-to-use-azure-cli-20-and-the-iot-extension-to-manage-device-provisioning-services"></a>Správa služeb Device Provisioning pomocí Azure CLI 2.0 a rozšíření IoT
 
-[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) je open source pro různé platformy nástroj příkazového řádku pro správu prostředků Azure, jako je například IoT okraj. Azure CLI 2.0 je k dispozici v systému Windows, Linux a systému MacOS. Azure CLI 2.0 umožňuje spravovat prostředky Azure IoT Hub, instance služby zřizování zařízení a propojené rozbočovače mimo pole.
+[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy určený ke správě prostředků Azure, jako je služba IoT Edge. Azure CLI 2.0 je k dispozici v systémech Windows, Linux a MacOS. Azure CLI 2.0 bez dalších úprav umožňuje spravovat prostředky služby Azure IoT Hub, instance služby Device Provisioning a propojená centra.
 
-Rozšíření IoT vylepšuje 2.0 rozhraní příkazového řádku Azure s funkcemi, jako je Správa zařízení a úplných možností IoT okraj.
+Rozšíření IoT vylepšuje Azure CLI 2.0 o funkce, jako jsou správa zařízení a úplné možnosti služby IoT Edge.
 
-V tomto kurzu nejprve dokončit postup instalace 2.0 rozhraní příkazového řádku Azure a IoT rozšíření. Pak zjistíte, jak spouštět příkazy příkazového řádku k provedení operací základní zařízení zřizování služby. 
+V tomto kurzu nejprve dokončíte kroky k instalaci Azure CLI 2.0 a rozšíření IoT. Pak se naučíte spouštět příkazy rozhraní příkazového řádku pro provádění základních operací služby Device Provisioning. 
 
 ## <a name="installation"></a>Instalace 
 
-### <a name="step-1---install-python"></a>Krok 1 – instalace Python
+### <a name="step-1---install-python"></a>Krok 1 – Instalace Pythonu
 
-[Python 2.7 x nebo Python 3.x](https://www.python.org/downloads/) je vyžadován.
+Vyžaduje se [Python 2.7x nebo Python 3.x](https://www.python.org/downloads/).
 
-### <a name="step-2---install-azure-cli-20"></a>Krok 2 – nainstalovat rozhraní příkazového řádku Azure 2.0
+### <a name="step-2---install-azure-cli-20"></a>Krok 2 – Instalace Azure CLI 2.0
 
-Postupujte podle [pokyny k instalaci](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) nastavení Azure CLI 2.0 ve vašem prostředí. Minimálně musí být vaší verzi 2.0 rozhraní příkazového řádku Azure 2.0.24 nebo vyšší. Použití `az –version` k ověření. Tato verze podporuje az rozšíření příkazy a zavádí rozhraní Knack příkaz. Jeden způsob, jak nainstalovat v systému Windows je ke stažení a instalaci [MSI](https://aka.ms/InstallAzureCliWindows).
+Nainstalujte ve svém prostředí Azure CLI 2.0 podle [pokynů k instalaci](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). Vaše verze Azure CLI 2.0 musí být minimálně 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack. Ve Windows můžete instalaci jednoduše provést stažením a instalací [MSI](https://aka.ms/InstallAzureCliWindows).
 
-### <a name="step-3---install-iot-extension"></a>Krok 3: instalace IoT rozšíření
+### <a name="step-3---install-iot-extension"></a>Krok 3 – Instalace rozšíření IoT
 
-[V souboru readme rozšíření IoT](https://github.com/Azure/azure-iot-cli-extension) popisuje několik způsobů, jak nainstalovat rozšíření. Nejjednodušší způsob, jak se má spustit `az extension add --name azure-cli-iot-ext`. Po instalaci, můžete použít `az extension list` ověření aktuálně nainstalovaná rozšíření nebo `az extension show --name azure-cli-iot-ext` zobrazíte podrobnosti o rozšíření IoT. Chcete-li odebrat rozšíření, můžete použít `az extension remove --name azure-cli-iot-ext`.
-
-
-## <a name="basic-device-provisioning-service-operations"></a>Základní zařízení zřizování operací služby
-Tento příklad ukazuje, jak přihlásit k účtu Azure, vytvořte skupinu prostředků Azure (kontejner, který obsahuje související prostředky pro řešení s Azure), vytvoření služby IoT Hub, vytvoření zřizování službu v zařízení, zobrazí seznam stávajících zařízení zřizování služby a vytvoření propojené IoT hub pomocí rozhraní příkazového řádku. 
-
-Kroky instalace popsané dříve než začnete. Pokud nemáte účet Azure, ale můžete [vytvořit bezplatný účet](https://azure.microsoft.com/free/?v=17.39a) ještě dnes. 
+Soubor [Readme rozšíření IoT](https://github.com/Azure/azure-iot-cli-extension) obsahuje popis několika způsobů instalace rozšíření. Nejjednodušším způsobem je spustit příkaz `az extension add --name azure-cli-iot-ext`. Po instalaci můžete pomocí příkazu `az extension list` ověřit aktuálně nainstalovaná rozšíření nebo pomocí příkazu `az extension show --name azure-cli-iot-ext` zobrazit podrobnosti o rozšíření IoT. K odebrání rozšíření můžete použít příkaz `az extension remove --name azure-cli-iot-ext`.
 
 
-### <a name="1-log-in-to-the-azure-account"></a>1. Přihlaste se k účtu Azure
+## <a name="basic-device-provisioning-service-operations"></a>Základní operace služby Device Provisioning
+Tento příklad ukazuje, jak pomocí příkazů rozhraní příkazového řádku provést přihlášení k účtu Azure, vytvoření skupiny prostředků Azure (kontejner obsahující související prostředky pro řešení Azure), vytvoření centra IoT, vytvoření služby Device Provisioning, výpis existujících služeb Device Provisioning a vytvoření propojeného centra IoT. 
+
+Než začnete, dokončete výše popsané kroky instalace. Pokud ještě nemáte účet Azure, můžete si ještě dnes [vytvořit bezplatný účet](https://azure.microsoft.com/free/?v=17.39a). 
+
+
+### <a name="1-log-in-to-the-azure-account"></a>1. Přihlášení k účtu Azure
   
     az login
 
 ![přihlášení][1]
 
-### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. Vytvořte skupinu prostředků IoTHubBlogDemo v eastus
+### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. Vytvoření skupiny prostředků IoTHubBlogDemo v umístění eastus
 
     az group create -l eastus -n IoTHubBlogDemo
 
 ![Vytvoření skupiny prostředků][2]
 
 
-### <a name="3-create-two-device-provisioning-services"></a>3. Vytvořte dva službami zřizování zařízení
+### <a name="3-create-two-device-provisioning-services"></a>3. Vytvoření dvou služeb Device Provisioning
 
     az iot dps create --resource-group IoTHubBlogDemo --name demodps
 
-![Vytvoření distribučních bodů][3]
+![Vytvoření služeb DPS][3]
 
     az iot dps create --resource-group IoTHubBlogDemo --name demodps2
 
-### <a name="4-list-all-the-existing-device-provisioning-services-under-this-resource-group"></a>4. Zobrazí seznam všech stávajících zařízení zřizování služeb v rámci následující skupiny prostředků
+### <a name="4-list-all-the-existing-device-provisioning-services-under-this-resource-group"></a>4. Výpis všech existujících služeb Device Provisioning v rámci této skupiny prostředků
 
     az iot dps list --resource-group IoTHubBlogDemo
 
-![Seznam distribučních bodů][4]
+![Výpis služeb DPS][4]
 
 
-### <a name="5-create-an-iot-hub-blogdemohub-under-the-newly-created-resource-group"></a>5. Vytvoření IoT Hub blogDemoHub ve skupině nově vytvořený prostředek
+### <a name="5-create-an-iot-hub-blogdemohub-under-the-newly-created-resource-group"></a>5. Vytvoření IoT Hubu blogDemoHub v rámci nově vytvořené skupiny prostředků
 
     az iot hub create --name blogDemoHub --resource-group IoTHubBlogDemo
 
-![Vytvoření centra IoT][5]
+![Vytvoření IoT Hubu][5]
 
-### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6. Propojit jeden stávající služby IoT Hub zařízení zřizování služby
+### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6. Propojení existujícího IoT Hubu se službou Device Provisioning
 
     az iot dps linked-hub create --resource-group IoTHubBlogDemo --dps-name demodps --connection-string <connection string> -l westus
 
-![Odkaz rozbočovače][5]
+![Propojení centra][5]
 
 <!-- Images -->
 [1]: ./media/how-to-manage-dps-with-cli/login.jpg
@@ -102,9 +102,9 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Registrace zařízení
 > * Spuštění zařízení
-> * Ověřte, zda že je zařízení zaregistrované
+> * Ověření registrace zařízení
 
-Přechodu na v dalším kurzu se dozvíte, jak zřídit víc zařízení přes centra Vyrovnávání zatížení sítě. 
+V dalším kurzu se dozvíte, jak zřídit několik zařízení napříč centry s vyrovnáváním zatížení. 
 
 > [!div class="nextstepaction"]
-> [Zřízení zařízení napříč Vyrovnávání zatížení sítě centra IoT](./tutorial-provision-multiple-hubs.md)
+> [Zřízení zařízení v několika centrech IoT s vyrovnáváním zatížení](./tutorial-provision-multiple-hubs.md)

@@ -1,11 +1,11 @@
 ---
-title: "Příklady integrace služby Azure Service Bus do služby Event Grid | Microsoft Docs"
-description: "Příklady integrace zasílání zpráv služby Service Bus a služby Event Grid"
+title: Příklady integrace služby Azure Service Bus do služby Event Grid | Microsoft Docs
+description: Příklady integrace zasílání zpráv služby Service Bus a služby Event Grid
 services: service-bus-messaging
 documentationcenter: .net
 author: ChristianWolf42
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
 ms.service: service-bus-messaging
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: 2a4d17673340d145de9a3514f920c74f7eebf6b6
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3819a274696762861fbe76a9684b8495f1724f6a
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-service-bus-to-azure-event-grid-examples"></a>Příklady integrace služby Azure Service Bus do služby Azure Event Grid
 
@@ -118,7 +118,7 @@ Klikněte na Uložit a spustit.
 
 ## <a name="connect-function-and-namespace-via-event-grid"></a>Propojení funkce a oboru názvů přes službu Event Grid
 
-Dalším krokem je provázání funkce s oborem názvů služby Service Bus. V tomto příkladu použijete Azure Portal. Na stránce [Koncepty](service-bus-to-event-grid-integration-concept.md najdete návod, jak to samé provést pomocí PowerShellu nebo Azure CLI.
+Dalším krokem je provázání funkce s oborem názvů služby Service Bus. V tomto příkladu použijete Azure Portal. Na stránce věnované [konceptům](service-bus-to-event-grid-integration-concept.md) najdete návod, jak to samé provést pomocí PowerShellu nebo Azure CLI.
 
 Pokud chcete vytvořit nový odběr služby Azure Event Grid, na webu Azure Portal přejděte do vašeho oboru názvů a vyberte okno Event Grid. Klikněte na + Odběr události.
 

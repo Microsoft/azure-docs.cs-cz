@@ -1,51 +1,44 @@
 ---
-title: "Zabezpečení databáze Azure SQL | Microsoft Docs"
-description: "Další informace o techniky a funkce zabezpečení databáze Azure SQL."
+title: Zabezpečení databáze SQL Azure | Microsoft Docs
+description: Seznamte se s technikami a funkcemi určenými k zabezpečení databáze SQL Azure.
 services: sql-database
-documentationcenter: 
 author: DRediske
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,security
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 06/28/2017
 ms.author: daredis
-ms.openlocfilehash: 90c03f1538197e1cd1c90165417a4ec74c9c5961
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
-ms.translationtype: MT
+ms.openlocfilehash: 99b719c302bb02e96e4bfa0ea4588862e9f304e2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="secure-your-azure-sql-database"></a>Zabezpečení databáze Azure SQL
+# <a name="secure-your-azure-sql-database"></a>Zabezpečení služby Azure SQL Database
 
 Služba SQL Database chrání vaše data omezením přístupu k databázi pomocí pravidel brány firewall, ověřovacími mechanismy vyžadujícími po uživatelích prokázání identity a autorizací přístupu k datům prostřednictvím členství a oprávnění na základě rolí, stejně jako prostřednictvím zabezpečení na úrovni řádku a dynamického maskování dat.
 
-Můžete zvýšit ochranu databáze před uživateli se zlými úmysly a neoprávněným přístupem pomocí několika jednoduchých kroků. V tomto kurzu jste postup: 
+Ochranu databáze před uživateli se zlými úmysly nebo neoprávněným přístupem můžete zlepšit v několika jednoduchých krocích. V tomto kurzu se naučíte: 
 
 > [!div class="checklist"]
-> * Nastavit pravidla brány firewall na úrovni serveru pro váš server na portálu Azure
-> * Nastavit pravidla brány firewall na úrovni databáze pro vaši databázi pomocí aplikace SSMS
-> * Připojení k vaší databázi pomocí zabezpečené připojovací řetězec
-> * Spravovat přístup uživatelů
-> * Chraňte svá data pomocí šifrování
-> * Povolit auditování databáze SQL
-> * Povolení detekce hrozeb databáze SQL
+> * Nastavení pravidel brány firewall na úrovni serveru na webu Azure Portal
+> * Nastavení pravidel brány firewall na úrovni databáze pomocí aplikace SSMS
+> * Připojení k databázi pomocí zabezpečeného připojovacího řetězce
+> * Správa uživatelského přístupu
+> * Ochrana dat pomocí šifrování
+> * Povolení auditování služby SQL Database
+> * Povolení detekce hrozeb služby SQL Database
 
-Pokud nemáte předplatné Azure, [vytvořit bezplatný účet](https://azure.microsoft.com/free/) před zahájením.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu, ujistěte se, že máte následující:
+Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
-- Nainstalovanou nejnovější verzi [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). 
-- Nainstalovaný Microsoft Excel
-- Vytvoření služby Azure SQL server a databáze - najdete v části [vytvoření Azure SQL database na portálu Azure](sql-database-get-started-portal.md), [vytvářet izolované databáze Azure SQL pomocí rozhraní příkazového řádku Azure](sql-database-get-started-cli.md), a [vytvořit jeden SQL Azure databáze pomocí prostředí PowerShell](sql-database-get-started-powershell.md). 
+- Instalace nejnovější verze aplikace [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). 
+- Instalace aplikace Microsoft Excel.
+- Vytvořený server a databázi SQL Azure – Viz [Vytvoření databáze SQL Azure na webu Azure Portal](sql-database-get-started-portal.md), [Vytvoření izolované databáze SQL Azure pomocí Azure CLI](sql-database-get-started-cli.md) a [Vytvoření izolované databáze SQL Azure pomocí PowerShellu](sql-database-get-started-powershell.md). 
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
@@ -53,29 +46,29 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Vytvoření pravidla brány firewall na úrovni serveru na webu Azure Portal
 
-Databáze SQL jsou chráněné bránou firewall v Azure. Ve výchozím nastavení všechna připojení k serveru a databází uvnitř serveru odmítají s výjimkou připojení z jiných služeb systému Azure. Další informace najdete v tématu [Pravidla brány firewall na úrovni serveru a databáze služby Azure SQL Database](sql-database-firewall-configure.md).
+Databáze SQL jsou chráněné bránou firewall v Azure. Ve výchozím nastavení se všechna připojení k serveru a databázím uvnitř serveru odmítají, s výjimkou připojení z dalších služeb Azure. Další informace najdete v tématu [Pravidla brány firewall na úrovni serveru a databáze služby Azure SQL Database](sql-database-firewall-configure.md).
 
-Nejbezpečnější konfiguraci je nastavení "Povolit přístup ke službám Azure" na hodnotu OFF. Pokud potřebujete připojení k databázi ze služby virtuální počítač Azure nebo cloudu, měli byste vytvořit [vyhrazenou IP adresu](../virtual-network/virtual-networks-reserved-public-ip.md) a povolit pouze vyhrazené IP adresy přístup přes bránu firewall. 
+Nejbezpečnější konfigurací je nastavit možnost Povolit přístup ke službám Azure na VYPNUTO. Pokud se k databázi potřebujete připojit z cloudové služby nebo virtuálního počítače Azure, měli byste vytvořit [vyhrazenou IP adresu](../virtual-network/virtual-networks-reserved-public-ip.md) a povolit přístup přes bránu firewall pouze této vyhrazené IP adrese. 
 
-Postupujte podle těchto kroků můžete vytvořit [pravidlo brány firewall na úrovni serveru SQL Database](sql-database-firewall-configure.md) pro váš server umožňuje připojení z konkrétní IP adresu. 
+Pomocí těchto kroků vytvořte [pravidlo brány firewall na úrovni serveru SQL Database](sql-database-firewall-configure.md), aby váš server umožňoval připojení z konkrétní IP adresy. 
 
 > [!NOTE]
-> Pokud jste vytvořili ukázkové databáze v Azure pomocí jedné z předchozích kurzy nebo – elementy QuickStart a fungují v tomto kurzu v počítači se stejnou adresou IP, který měl při si projít tyto kurzy, můžete tento krok přeskočit, protože už je nutné vytvořit ated pravidlo brány firewall na úrovni serveru.
+> Pokud jste vytvořili ukázkovou databázi v Azure podle některého z předchozích kurzů nebo rychlých startů a provádíte tento kurz na počítači se stejnou IP adresou, kterou měl při procházení daných kurzů, můžete tento krok přeskočit, protože pravidlo brány firewall na úrovni serveru už budete mít vytvořené.
 >
 
-1. Klikněte na tlačítko **databází SQL** z nabídky levé straně a klikněte na databázi, kterou chcete nakonfigurovat bránu firewall pravidla pro u **databází SQL** stránky. Otevře se stránka Přehled pro vaši databázi, ukazuje název plně kvalifikovaný serveru (například **mynewserver 20170313.database.windows.net**) a poskytuje možnosti pro další konfiguraci.
+1. V nabídce vlevo klikněte na **Databáze SQL** a na stránce **Databáze SQL** klikněte na databázi, pro kterou chcete pravidlo brány firewall nakonfigurovat. Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **mynewserver-20170313.database.windows.net**) a možnosti pro další konfiguraci.
 
       ![pravidlo brány firewall serveru](./media/sql-database-security-tutorial/server-firewall-rule.png) 
 
 2. Klikněte na **Nastavit bránu firewall serveru** na panelu nástrojů, jak je vidět na předchozím obrázku. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database. 
 
-3. Klikněte na tlačítko **přidat IP adresu klienta** na panelu nástrojů přidejte veřejnou IP adresu počítače, připojení se k portálu a zadejte pravidlo brány firewall ručně a pak klikněte na tlačítko **Uložit**.
+3. Kliknutím na **Přidat IP adresu klienta** na panelu nástrojů přidejte veřejnou IP adresu počítače připojeného k portálu nebo zadejte pravidlo brány firewall ručně a pak klikněte na **Uložit**.
 
       ![nastavení pravidla brány firewall serveru](./media/sql-database-security-tutorial/server-firewall-rule-set.png) 
 
 4. Kliknutím na **OK** a pak na **X** zavřete stránku **Nastavení brány firewall**.
 
-Nyní můžete připojit k jakékoli databázi na serveru se zadanou IP adresu nebo rozsah IP adres.
+Nyní se můžete pomocí zadané IP adresy nebo rozsahu IP adres připojit k jakékoli databázi na serveru.
 
 > [!NOTE]
 > SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
@@ -83,34 +76,34 @@ Nyní můžete připojit k jakékoli databázi na serveru se zadanou IP adresu n
 
 ## <a name="create-a-database-level-firewall-rule-using-ssms"></a>Vytvoření pravidla brány firewall na úrovni databáze pomocí aplikace SSMS
 
-Pravidla brány firewall na úrovni databáze umožňují vytvořit jinou bránu firewall nastavení pro jiné databáze v rámci stejného logického serveru a k vytvoření pravidla brány firewall, které jsou přenosné - znamená, že následují databáze během [převzetíslužebpřiselhání](sql-database-geo-replication-overview.md) místo uložené na serveru SQL server. Pravidla brány firewall na úrovni databáze může být pouze nakonfigurovaná pomocí příkazů Transact-SQL a pouze po nakonfigurování prvního pravidla brány firewall na úrovni serveru. Další informace najdete v tématu [Pravidla brány firewall na úrovni serveru a databáze služby Azure SQL Database](sql-database-firewall-configure.md).
+Pravidla brány firewall na úrovni databáze umožňují vytvářet různá nastavení brány firewall pro různé databáze v rámci stejného logického serveru a vytvářet přenositelná pravidla brány firewall – to znamená, že nejsou uložená na serveru SQL, ale při [převzetí služeb při selhání](sql-database-geo-replication-overview.md) se přenášejí spolu s databází. Pravidla brány firewall na úrovni databáze je možné konfigurovat pouze pomocí příkazů jazyka Transact-SQL a pouze po nakonfigurování prvního pravidla brány firewall na úrovni serveru. Další informace najdete v tématu [Pravidla brány firewall na úrovni serveru a databáze služby Azure SQL Database](sql-database-firewall-configure.md).
 
-Postupujte podle následujících kroků k vytvoření pravidla brány firewall pro specifické pro databázi.
+Postupujte podle těchto kroků a vytvořte pravidlo brány firewall specifické pro databázi.
 
-1. Připojení ke své databázi, například pomocí [SQL Server Management Studio](./sql-database-connect-query-ssms.md).
+1. Připojte se ke své databázi například pomocí aplikace [SQL Server Management Studio](./sql-database-connect-query-ssms.md).
 
-2. V Průzkumníku objektů, klikněte pravým tlačítkem na databázi, kterou chcete přidat pravidlo brány firewall pro a klikněte na **nový dotaz**. Otevře se prázdné okno dotazu připojené k vaší databázi.
+2. V Průzkumníku objektů klikněte pravým tlačítkem na databázi, pro kterou chcete přidat pravidlo brány firewall, a pak klikněte na **Nový dotaz**. Otevře se prázdné okno dotazu připojené k vaší databázi.
 
-3. V okně dotazu změnit IP adresu na veřejnou IP adresu a potom spusťte následující dotaz:
+3. V okně dotazu upravte IP adresu na svou veřejnou IP adresu a pak proveďte následující dotaz:
 
     ```sql
     EXECUTE sp_set_database_firewall_rule N'Example DB Rule','0.0.0.4','0.0.0.4';
     ```
 
-4. Na panelu nástrojů klikněte na tlačítko **Execute** a vytvořte tak pravidlo brány firewall.
+4. Na panelu nástrojů klikněte na **Provést** a vytvořte pravidlo brány firewall.
 
-## <a name="view-how-to-connect-an-application-to-your-database-using-a-secure-connection-string"></a>Zobrazit postup připojení aplikace k vaší databázi pomocí zabezpečené připojovací řetězec
+## <a name="view-how-to-connect-an-application-to-your-database-using-a-secure-connection-string"></a>Postup pro připojení aplikace k databázi pomocí zabezpečeného připojovacího řetězce
 
-Aby zabezpečené, šifrované připojení mezi klientská aplikace a SQL Database, připojovací řetězec má nakonfigurovat tak, aby:
+Pokud chcete zajistit zabezpečené a šifrované připojení mezi klientskou aplikací a službou SQL Database, připojovací řetězec je potřeba nakonfigurovat tak, aby:
 
-- Žádosti o šifrované připojení, a
-- Není důvěřovat certifikátu serveru. 
+- Vyžadoval šifrované připojení
+- Nedůvěřoval certifikátu serveru 
 
-Tím se naváže připojení pomocí zabezpečení TLS (Transport Layer) a snižuje riziko útoků man-in-the-middle. Můžete získat správně nakonfigurované připojovací řetězce pro vaši databázi SQL pro podporované klientské ovladače z portálu Azure jak je vidět na tomto snímku obrazovky pro technologii ADO.net.
+Tím se naváže připojení pomocí protokolu TLS (Transport Layer Security) a sníží riziko napadení útočníky, kteří se vydávají za prostředníky. Správně nakonfigurované připojovací řetězce pro vaši službu SQL Database pro podporované ovladače klienta můžete získat z webu Azure Portal, jak je znázorněno na tomto snímku obrazovky pro ADO.NET.
 
-1. Vyberte **databází SQL** z nabídky na levé straně a klikněte na databázi **databází SQL** stránky.
+1. V nabídce vlevo vyberte **Databáze SQL** a na stránce **Databáze SQL** klikněte na vaši databázi.
 
-2. Na **přehled** stránky pro vaši databázi, klikněte na tlačítko **zobrazit databázové připojovací řetězce**.
+2. Na stránce **Přehled** pro vaši databázi klikněte na **Zobrazit databázové připojovací řetězce**.
 
 3. Zkontrolujte úplný připojovací řetězec **ADO.NET**.
 
@@ -118,19 +111,19 @@ Tím se naváže připojení pomocí zabezpečení TLS (Transport Layer) a sniž
 
 ## <a name="creating-database-users"></a>Vytváření uživatelů databáze
 
-Před vytvořením všechny uživatele, musíte nejprve zvolit jednu z Azure SQL Database podporuje dva typy ověřování: 
+Před vytvořením uživatelů musíte nejprve zvolit jeden ze dvou typů ověřování, které podporuje služba Azure SQL Database: 
 
-**Ověřování SQL**, který používá uživatelské jméno a heslo pro přihlášení a uživatele, které jsou platné pouze v kontextu konkrétní databáze v rámci logického serveru. 
+**Ověřování SQL**, které pro přihlášení používá uživatelské jméno a heslo a uživatele, kteří jsou platní pouze v kontextu konkrétní databáze v rámci logického serveru. 
 
-**Ověřování služby Azure Active Directory**, identity, které jsou spravované službou Azure Active Directory, který používá. 
+**Ověřování Azure Active Directory,**, které používá identity spravované v Azure Active Directory. 
 
-Pokud chcete použít [Azure Active Directory](./sql-database-aad-authentication.md) k ověření proti databázi SQL, musí existovat vyplněná Azure Active Directory, abyste mohli pokračovat.
+Pokud chcete k ověřování ve službě SQL Database použít [Azure Active Directory](./sql-database-aad-authentication.md), musí existovat naplněná služba Azure Active Directory, abyste mohli pokračovat.
 
-Postupujte podle těchto kroků můžete vytvořit uživatele pomocí ověřování SQL:
+Postupujte podle těchto kroků a vytvořte uživatele využívajícího ověřování SQL:
 
-1. Připojení ke své databázi, například pomocí [SQL Server Management Studio](./sql-database-connect-query-ssms.md) pomocí svých přihlašovacích údajů správce serveru.
+1. Připojte se ke své databázi například pomocí aplikace [SQL Server Management Studio](./sql-database-connect-query-ssms.md) s použitím svých přihlašovacích údajů správce serveru.
 
-2. V Průzkumníku objektů, klikněte pravým tlačítkem na databázi, kterou chcete přidat nového uživatele na a klikněte na tlačítko **nový dotaz**. Otevře okno prázdné dotazu, který je připojen k vybrané databázi.
+2. V Průzkumníku objektů klikněte pravým tlačítkem na databázi, pro kterou chcete přidat nového uživatele, a pak klikněte na **Nový dotaz**. Otevře se prázdné okno dotazu připojené k vybrané databázi.
 
 3. Do okna dotazu zadejte následující dotaz:
 
@@ -138,118 +131,118 @@ Postupujte podle těchto kroků můžete vytvořit uživatele pomocí ověřová
     CREATE USER ApplicationUser WITH PASSWORD = 'YourStrongPassword1';
     ```
 
-4. Na panelu nástrojů klikněte na tlačítko **Execute** vytvořit uživateli.
+4. Na panelu nástrojů klikněte na **Provést** a vytvořte uživatele.
 
-5. Ve výchozím nastavení uživatel může připojit k databázi, ale nemá oprávnění číst nebo zapisovat data. Udělení těchto oprávnění pro nově vytvořeného uživatele, spusťte následující dva příkazy v novém okně dotazu
+5. Ve výchozím nastavení se uživatel může připojit k databázi, ale nemá žádná oprávnění ke čtení nebo zápisu dat. Pokud chcete nově vytvořenému uživateli tato oprávnění udělit, v novém okně dotazu spusťte následující dva příkazy:
 
     ```sql
     ALTER ROLE db_datareader ADD MEMBER ApplicationUser;
     ALTER ROLE db_datawriter ADD MEMBER ApplicationUser;
     ```
 
-Je vhodné vytvořit tyto účty bez oprávnění správce na úrovni databáze pro připojení k databázi, pokud potřebujete provést úlohy správce, jako je vytváření nových uživatelů. Přečtěte si [kurz služby Azure Active Directory](./sql-database-aad-authentication-configure.md) o tom, jak ověřit pomocí služby Azure Active Directory.
+Pro připojení k databázi je osvědčeným postupem vytvořit tyto účty bez oprávnění správce na úrovni databáze, pokud nepotřebujete provádět úlohy správce, jako je vytváření nových uživatelů. Informace o ověřování pomocí Azure Active Directory najdete v [kurzu pro Azure Active Directory](./sql-database-aad-authentication-configure.md).
 
 
-## <a name="protect-your-data-with-encryption"></a>Chraňte svá data pomocí šifrování
+## <a name="protect-your-data-with-encryption"></a>Ochrana dat pomocí šifrování
 
-Azure SQL Database transparentní šifrování dat (šifrování TDE) automaticky šifruje vaše data v klidu, bez nutnosti změny k aplikaci přístup k databázi šifrované. Pro nově vytvořené databáze je ve výchozím nastavení šifrování TDE. Chcete-li povolit šifrování TDE pro vaši databázi nebo ověřte, zda je šifrování TDE na, postupujte takto:
+Transparentní šifrování dat služby Azure SQL Database automaticky šifruje neaktivní uložená data, aniž by vyžadovalo jakékoli změny aplikace, která k šifrované databázi přistupuje. U nově vytvořených databází je transparentní šifrování dat ve výchozím nastavení zapnuté. Pokud chcete povolit transparentní šifrování dat pro svou databázi nebo ověřit, že je transparentní šifrování dat zapnuté, postupujte podle těchto kroků:
 
-1. Vyberte **databází SQL** z nabídky na levé straně a klikněte na databázi **databází SQL** stránky. 
+1. V nabídce vlevo vyberte **Databáze SQL** a na stránce **Databáze SQL** klikněte na vaši databázi. 
 
-2. Klikněte na **transparentní šifrování dat** otevřete stránku konfigurace pro šifrování TDE.
+2. Kliknutím na **Transparentní šifrování dat** otevřete konfigurační stránku pro transparentní šifrování dat.
 
     ![Transparentní šifrování dat](./media/sql-database-security-tutorial/transparent-data-encryption-enabled.png)
 
-3. V případě potřeby nastavte **šifrování dat** na hodnotu ON a klikněte na tlačítko **Uložit**.
+3. V případě potřeby nastavte **Šifrování dat** na ZAPNUTO a klikněte na **Uložit**.
 
-Spustí se proces šifrování na pozadí. Průběh můžete sledovat pomocí připojení k databázi SQL pomocí [SQL Server Management Studio](./sql-database-connect-query-ssms.md) dotazováním encryption_state sloupec `sys.dm_database_encryption_keys` zobrazení.
+Na pozadí se spustí proces šifrování. Průběh můžete monitorovat po připojení ke službě SQL Database pomocí aplikace [SQL Server Management Studio](./sql-database-connect-query-ssms.md) dotazováním sloupce encryption_key v zobrazení `sys.dm_database_encryption_keys`.
 
-## <a name="enable-sql-database-auditing-if-necessary"></a>Povolit auditování databáze SQL, v případě potřeby
+## <a name="enable-sql-database-auditing-if-necessary"></a>Povolení auditování služby SQL Database v případě potřeby
 
-Auditování databáze SQL Azure sleduje události databáze a zápisu, které mají auditu protokolu ve vašem účtu úložiště Azure. Auditování vám může pomoct zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které by mohly být známkou případné porušení zabezpečení. Postupujte podle těchto kroků můžete vytvořit výchozí zásady pro vaši databázi SQL auditování:
+Auditování služby Azure SQL Database sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu Azure Storage. Auditování pomáhá zajistit dodržování legislativních předpisů, porozumět databázové aktivitě a získat přehled o nesrovnalostech a anomáliích, které můžou značit potenciální narušení zabezpečení. Postupujte podle těchto kroků a vytvořte pro svou databázi SQL výchozí zásadu auditování:
 
-1. Vyberte **databází SQL** z nabídky na levé straně a klikněte na databázi **databází SQL** stránky. 
+1. V nabídce vlevo vyberte **Databáze SQL** a na stránce **Databáze SQL** klikněte na vaši databázi. 
 
-2. V okně Nastavení vyberte **auditování a detekce hrozeb**. Všimněte si, že auditování na úrovni serveru je diabled a zda je **zobrazit nastavení serveru** odkaz, který umožňuje zobrazit nebo upravit nastavení auditování ze tento kontext serveru.
+2. V okně Nastavení vyberte **Auditování a detekce hrozeb**. Všimněte si vypnutého auditování na straně serveru a odkazu **Zobrazit nastavení serveru**, který umožňuje zobrazit nebo upravit nastavení auditování serveru z tohoto kontextu.
 
-    ![Auditování okno](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
+    ![Okno Auditování](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
 
-3. Pokud dáváte přednost umožňuje typ auditu (nebo umístění?), než je zadaná na úrovni serveru, zapněte **ON** auditování a vyberte **Blob** typu auditování. Pokud je auditování objektů Blob serveru je povoleno, audit databáze nakonfigurována, budou existovat node souběžně s auditování objektů Blob serveru.
+3. Pokud upřednostňujete povolení jiného typu auditu (nebo umístění), než je zadaný na úrovni serveru, **zapněte** auditování a zvolte typ auditování **Objekt blob**. Pokud je povolené auditování objektů blob serveru, nakonfigurovaný audit databáze bude existovat vedle auditu objektů blob serveru.
 
-    ![Zapnout auditování](./media/sql-database-security-tutorial/auditing-get-started-turn-on.png)
+    ![Zapnutí auditování](./media/sql-database-security-tutorial/auditing-get-started-turn-on.png)
 
-4. Vyberte **podrobnosti úložiště** otevřete okno úložiště protokoly auditu. Vyberte účet úložiště Azure, kde budou uloženy protokoly, a pak klikněte na dobu uchování, po jejímž uplynutí se odstraní starých protokolů, **OK** dole. 
+4. Vyberte **Podrobnosti o úložišti** a otevřete okno Úložiště protokolů auditů. Vyberte účet úložiště Azure, do kterého se protokoly budou ukládat, a období uchovávání, po jehož uplynutí se staré protokoly odstraní, a pak klikněte na **OK** v dolní části. 
 
    > [!TIP]
-   > Použijte stejný účet úložiště pro všechny databáze, auditované k plnému využití mimo auditování šablony sestavy.
+   > Pro všechny auditované databáze použijte stejný účet úložiště, abyste získali maximum z šablon sestav auditování.
    > 
 
 5. Klikněte na **Uložit**.
 
 > [!IMPORTANT]
-> Pokud chcete přizpůsobit auditované události, můžete k tomu pomocí prostředí PowerShell nebo rozhraní REST API – viz [auditování databáze SQL](sql-database-auditing.md) další podrobnosti.
+> Pokud chcete přizpůsobit auditované události, můžete to provést prostřednictvím PowerShellu nebo rozhraní REST API – další informace najdete v tématu [Auditování databáze SQL](sql-database-auditing.md).
 >
 
-## <a name="enable-sql-database-threat-detection"></a>Povolení detekce hrozeb databáze SQL
+## <a name="enable-sql-database-threat-detection"></a>Povolení detekce hrozeb služby SQL Database
 
-Detekce hrozeb poskytuje novou vrstvu zabezpečení, která uživatelům umožňuje zjistit a reagovat na potenciální hrozby, kdy k nim dojde tím, že poskytuje výstrahy zabezpečení na neobvyklé aktivity. Uživatele můžete prozkoumat podezřelé události pomocí auditování databáze SQL k určení, pokud vyplývají z pokus o přístup, porušení nebo využívat data v databázi. Detekce hrozeb zjednodušuje na potenciální hrozby adres do databáze bez nutnosti odborné zabezpečení nebo spravovat pokročilým zabezpečením monitorování systémů.
-Například detekce hrozeb zjistila určité nezvyklé databázové aktivity, které indikují potenciální pokusu o Injektáž SQL. Injektáž SQL je jedním z běžné problémy zabezpečení webových aplikací na Internetu, slouží k útokům na základě dat aplikace. Útočníci využít výhod vložit škodlivý příkazy SQL, do pole pro zadání aplikací, před nedodržením nebo upravovat data v databázi aplikace ohrožení zabezpečení.
+Detekce hrozeb poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje díky poskytování výstrah zabezpečení na neobvyklé aktivity detekovat a reagovat na potenciální hrozby, když k nim dojde. Uživatelé můžou pomocí auditování služby SQL Database prozkoumat podezřelé události a určit, jestli jsou důsledkem pokusu o přístup, porušení zabezpečení nebo zneužití dat v databázi. Detekce hrozeb usnadňuje řešení potenciálních ohrožení databáze, aniž byste museli být odborníkem na zabezpečení nebo museli spravovat pokročilé systémy monitorování zabezpečení.
+Detekce hrozeb například detekuje určité neobvyklé databázové aktivity značící potenciální pokusy o útok prostřednictvím injektáže SQL. Injektáž SQL představuje jeden z nejběžnějších problémů zabezpečení webových aplikací na internetu a používá se k útokům na aplikace založené na datech. Útočníci využívají ohrožení zabezpečení aplikací k injektáži škodlivých příkazů jazyka SQL do vstupních polí aplikace za účelem porušení zabezpečení nebo úpravy dat v databázi.
 
-1. Přejděte do okna konfigurace SQL databáze, kterou chcete monitorovat. V okně Nastavení vyberte **auditování a detekce hrozeb**.
+1. Přejděte do okna konfigurace databáze SQL, kterou chcete monitorovat. V okně Nastavení vyberte **Auditování a detekce hrozeb**.
 
     ![Navigační podokno](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
-2. V **auditování a detekce hrozeb** zapnout okno Konfigurace **ON** auditování, které se zobrazí nastavení detekce hrozby.
+2. V navigačním okně **Auditování a detekce hrozeb** **zapněte** auditování. Tím se zobrazí nastavení detekce hrozeb.
 
-3. Zapnout **ON** detekce hrozby.
+3. **Zapněte** detekci hrozeb.
 
-4. Konfigurace seznamu e-mailů, které budou dostávat upozornění zabezpečení při zjištění nezvyklé databázové aktivity.
+4. Nakonfigurujte seznam emailů, které budou přijímat výstrahy zabezpečení po detekci neobvyklých databázových aktivit.
 
-5. Klikněte na tlačítko **Uložit** v **auditování a detekce hrozeb** uložíte nové nebo aktualizované auditování a zásady detekce hrozby.
+5. Kliknutím na **Uložit** v okně **Auditování a detekce hrozeb** uložte novou nebo aktualizovanou zásadu auditování a detekce hrozeb.
 
     ![Navigační podokno](./media/sql-database-security-tutorial/td-turn-on-threat-detection.png)
 
-    Pokud se zjistila nezvyklé databázové aktivity, obdržíte e-mail s oznámením při zjištění nezvyklé databázové aktivity. E-mailu bude poskytují informace o události podezřelé zabezpečení, včetně povahu neobvyklé aktivity, název databáze, název serveru a čas události. Kromě toho bude poskytovat informace na možné příčiny a doporučené akce ke zkoumání a zmírnit potenciální hrozbu do databáze. V dalších krocích vás prostřednictvím co dělat, by měl obdržíte e-mailu:
+    Pokud dojde k detekci neobvyklých databázových aktivit, obdržíte e-mailové oznámení. E-mail bude obsahovat informace o podezřelé události zabezpečení, včetně povahy neobvyklých aktivit, názvu databáze, názvu serveru a času události. Kromě toho bude obsahovat informace o možných příčinách a doporučených akcích pro šetření a zmírnění potenciálního ohrožení databáze. Další kroky vás provedou doporučeným postupem po přijetí takového e-mailu:
 
-    ![E-mailu detekce hrozeb](./media/sql-database-threat-detection-get-started/4_td_email.png)
+    ![E-mail detekce hrozeb](./media/sql-database-threat-detection-get-started/4_td_email.png)
 
-6. V e-mailu, klikněte na **protokolu auditování databáze SQL Azure** odkaz, který bude spuštění portálu Azure a zobrazit relevantní auditování záznamy v době podezřelé události.
+6. V e-mailu klikněte na odkaz **Protokol auditování SQL Azure**. Tím se otevře Azure Portal, na kterém se zobrazí relevantní záznamy auditování v době výskytu podezřelé události.
 
     ![Záznamy auditu](./media/sql-database-threat-detection-get-started/5_td_audit_records.png)
 
-7. Klikněte na záznamy auditu zobrazíte další podrobnosti v databázi podezřelé aktivity, například příkazy SQL, selhání důvod a klient IP.
+7. Kliknutím na záznamy auditu zobrazíte další informace o podezřelých databázových aktivitách, jako je příkaz jazyka SQL, důvod selhání a IP adresa klienta.
 
-    ![Podrobnosti záznamu](./media/sql-database-security-tutorial/6_td_audit_record_details.png)
+    ![Podrobnosti o záznamu](./media/sql-database-security-tutorial/6_td_audit_record_details.png)
 
-8. V okně auditování záznamy, klikněte na tlačítko **otevřete v aplikaci Excel** otevřete předem nakonfigurovaná v aplikaci excel šablony k importu a spuštění hlubší analýzy protokol auditu v době podezřelé události.
+8. V okně Záznamy auditování klikněte na **Otevřít v aplikaci Excel** a otevřete předkonfigurovanou šablonu aplikace Excel umožňující import a spuštění hlubší analýzy protokolu auditu v době výskytu podezřelé události.
 
     > [!NOTE]
-    > V aplikaci Excel 2010 nebo novější, Power Query a **rychle zkombinovat** nastavení je povinné.
+    > V aplikaci Excel 2010 a novější se vyžaduje doplněk Power Query a nastavení **Rychle zkombinovat**.
 
     ![Otevřené záznamy v aplikaci Excel](./media/sql-database-threat-detection-get-started/7_td_audit_records_open_excel.png)
 
-9. Ke konfiguraci **rychle zkombinovat** nastavení - v **POWER QUERY** pásu karet vyberte **možnosti** zobrazíte dialogové okno Možnosti. Vyberte v části o ochraně osobních údajů a vyberte druhou možnost - 'Ignorovat úrovně soukromí a potenciálně tak vylepšit výkon':
+9. Konfigurace nastavení **Rychle zkombinovat** – Na záložce pásu karet **POWER QUERY** vyberte **Možnosti** a zobrazte dialogové okno Možnosti. Vyberte část Osobní údaje a zvolte druhou možnost – Ignorovat úrovně ochrany osobních údajů a potenciálně tak vylepšit výkon:
 
-    ![Kombinování rychlé aplikace Excel](./media/sql-database-threat-detection-get-started/8_td_excel_fast_combine.png)
+    ![Rychle zkombinovat v aplikaci Excel](./media/sql-database-threat-detection-get-started/8_td_excel_fast_combine.png)
 
-10. Načíst protokoly auditu SQL, zajistěte, aby parametrů v nastavení kartě jsou správně nastavena a poté vyberte pásu karet, Data a klikněte na tlačítko 'aktualizovat vše.
+10. Pokud chcete načíst protokoly auditu SQL, ujistěte se, že jsou správně nastavené parametry na kartě Nastavení, pak vyberte pás karet Data a klikněte na tlačítko Aktualizovat vše.
 
-    ![Parametry aplikace Excel](./media/sql-database-threat-detection-get-started/9_td_excel_parameters.png)
+    ![Parametry v aplikaci Excel](./media/sql-database-threat-detection-get-started/9_td_excel_parameters.png)
 
-11. Výsledky se zobrazí v **protokoly auditu SQL** listu, která umožňuje spustit hlubší analýzu neobvyklé aktivity, které byly zjištěny a zmírnit dopad událostí zabezpečení ve vaší aplikaci.
+11. Výsledky se zobrazí na listu **Protokoly auditu SQL**, na kterém můžete spustit hlubší analýzu detekovaných neobvyklých aktivit a zmírnit dopad události zabezpečení na vaši aplikaci.
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste se dozvěděli pro zvýšení ochrany proti vaší databáze před uživateli se zlými úmysly a neoprávněným přístupem pomocí jenom pár jednoduchých kroků.  Naučili jste se tyto postupy: 
+V tomto kurzu jste zjistili, jak v několika jednoduchých krocích zlepšit ochranu databáze před uživateli se zlými úmysly nebo neoprávněným přístupem.  Naučili jste se tyto postupy: 
 
 > [!div class="checklist"]
-> * Nastavení pravidel brány firewall pro váš server nebo databáze
-> * Připojení k vaší databázi pomocí zabezpečené připojovací řetězec
-> * Spravovat přístup uživatelů
-> * Chraňte svá data pomocí šifrování
-> * Povolit auditování databáze SQL
-> * Povolení detekce hrozeb databáze SQL
+> * Nastavení pravidel brány firewall pro server nebo databázi
+> * Připojení k databázi pomocí zabezpečeného připojovacího řetězce
+> * Správa uživatelského přístupu
+> * Ochrana dat pomocí šifrování
+> * Povolení auditování služby SQL Database
+> * Povolení detekce hrozeb služby SQL Database
 
-Přechodu na v dalším kurzu se dozvíte, jak implementovat geograficky distribuovaná databáze.
+V dalším kurzu se dozvíte, jak implementovat geograficky distribuovanou databázi.
 
 > [!div class="nextstepaction"]
 >[Implementace geograficky distribuované databáze](sql-database-implement-geo-distributed-database.md)

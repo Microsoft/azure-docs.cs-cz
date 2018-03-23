@@ -1,13 +1,13 @@
 ---
-title: "Rozhraní příkazového řádku příklad monitorování škálování jedním Azure SQL database | Microsoft Docs"
-description: "Azure CLI ukázkový skript ke sledování a škálování jedné databáze Azure SQL"
+title: Příklad rozhraní příkazového řádku – Monitorování a škálování izolované databáze SQL Azure | Microsoft Docs
+description: Ukázkový skript Azure CLI pro monitorování a škálování izolované databáze SQL Azure
 services: sql-database
 documentationcenter: sql-database
 author: janeng
 manager: jstrauss
 editor: carlrab
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: monitor & tune, mvc
 ms.devlang: azurecli
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 12/14/2017
 ms.author: janeng
-ms.openlocfilehash: 741c066d62364e34b788883bfc96fba1ea3507c3
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
-ms.translationtype: MT
+ms.openlocfilehash: 6a09558b67c3e84d1057e5e51af256e6ed71a9e5
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>Pomocí rozhraní příkazového řádku ke sledování a škálování jedné databáze SQL
+# <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>Monitorování a škálování izolované databáze SQL pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript příkazového řádku Azure CLI škáluje jedné databáze Azure SQL na úroveň výkonu různých po dotaz na informace o velikosti databáze. 
+Tento ukázkový skript Azure CLI škáluje izolovanou databázi SQL Azure na jinou úroveň výkonu po provedení dotazu na informace o velikosti databáze. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,11 +37,11 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 [!code-azurecli-interactive[main](../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "Monitor and scale single SQL Database")]
 
 > [!TIP]
-> Použít [az sql db op seznamu](/cli/azure/sql/db/op?#az_sql_db_op_list) získáte seznam operací prováděných na databázi a použití [az sql db op Storno](/cli/azure/sql/db/op#az_sql_db_op_cancel) zrušit operaci aktualizace v databázi.
+> Pomocí příkazu [az sql db op list](/cli/azure/sql/db/op?#az_sql_db_op_list) získáte seznam operací provedených s databází a pomocí příkazu [az sql db op cancel](/cli/azure/sql/db/op#az_sql_db_op_cancel) zrušíte operaci aktualizace databáze.
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků a všechny prostředky, které jsou s ním spojená.
+Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -49,19 +49,19 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Vytvoření skupiny az](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky. |
-| [Vytvoření az sql serveru](https://docs.microsoft.com/cli/azure/sql/server#az_sql_server_create) | Vytvoří logického serveru, který je hostitelem databáze. |
-| [db sql az zobrazit využití](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_show_usage) | Zobrazuje informace o využití velikost pro databázi. |
-| [aktualizace databáze sql az](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_update) | Aktualizuje vlastnosti databáze (například výkon nebo vrstvě úrovně služby) nebo přesouvá databázi do, mimo nebo mezi elastické fondy. |
-| [Odstranění skupiny az](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Odstraní skupinu prostředků, včetně všech vnořených prostředků. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az_sql_server_create) | Vytvoří logický server, který je hostitelem databáze. |
+| [az sql db show-usage](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_show_usage) | Zobrazí informace o využití velikosti databáze. |
+| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_update) | Aktualizuje vlastnosti databáze (například úroveň služby nebo úroveň výkonu) nebo přesune databázi do nebo z elastického fondu nebo mezi elastickými fondy. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Další ukázky skriptu SQL databáze rozhraní příkazového řádku najdete v [dokumentace Azure SQL Database](../sql-database-cli-samples.md).
+Další ukázkové skripty rozhraní příkazového řádku pro službu SQL Database najdete v [dokumentaci ke službě Azure SQL Database](../sql-database-cli-samples.md).

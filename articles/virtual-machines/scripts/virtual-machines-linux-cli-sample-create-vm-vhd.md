@@ -1,13 +1,13 @@
 ---
-title: "Rozhraní příkazového řádku Azure Script ukázka – vytvoření virtuálního počítače s virtuální pevný disk | Microsoft Docs"
-description: "Azure CLI skriptu ukázkové – vytvoření virtuálního počítače pomocí virtuálního pevného disku."
+title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s využitím virtuálního pevného disku | Microsoft Docs
+description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s využitím virtuálního pevného disku
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: allclark
 manager: douge
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,20 +16,20 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 6234473d9f7f0eb18ea85e52273eb82a9ce04da5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 414ef43063cc48b7b9ae7be5fbccbb7906ae8c03
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="create-a-vm-with-a-virtual-hard-disk"></a>Vytvoření virtuálního počítače s virtuálním pevným diskem
+# <a name="create-a-vm-with-a-virtual-hard-disk"></a>Vytvoření virtuálního počítače s využitím virtuálního pevného disku
 
-Tento příklad vytvoří virtuální počítač pomocí virtuálního pevného disku.
-Vytvoří skupinu prostředků, účet úložiště a kontejner a potom vytvoří virtuální počítač odesláním disku VHD do kontejneru.
-Nahradí ssh veřejný klíč pomocí veřejného klíče, máte přístup k virtuálnímu počítači.
+Tento příklad vytvoří virtuální počítač s využitím virtuálního pevného disku.
+Vytvoří skupinu prostředků, účet úložiště a kontejner a pak vytvoří virtuální počítač nahráním virtuálního pevného disku do kontejneru.
+Nahradí veřejný klíč SSH vaším veřejným klíčem, abyste získali přístup k virtuálnímu počítači.
 
 Budete potřebovat spouštěcí virtuální pevný disk.
-Můžete stáhnout z https://azclisamples.blob.core.windows.net/vhds/sample.vhd virtuální pevný disk, který jsme použili nebo použít vlastní virtuální pevný disk. Skript hledá `~/sample.vhd`.
+Můžete stáhnout zde použitý virtuální pevný disk z adresy https://azclisamples.blob.core.windows.net/vhds/sample.vhd nebo použít vlastní virtuální pevný disk. Skript hledá soubor `~/sample.vhd`.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -41,7 +41,7 @@ Můžete stáhnout z https://azclisamples.blob.core.windows.net/vhds/sample.vhd 
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```azurecli-interactive 
 az group delete -n az-cli-vhd
@@ -49,24 +49,24 @@ az group delete -n az-cli-vhd
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, virtuální počítač, skupina dostupnosti, nástroj pro vyrovnávání zatížení a všechny související prostředky. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skupiny dostupnosti, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Vytvoření skupiny az](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky. |
-| [seznam účtů úložiště az](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_list) | Účty úložiště seznamy |
-| [AZ název účtu úložiště kontrola-](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_check_name) | Ověří, zda je platný název účtu úložiště a že ještě neexistuje |
-| [seznam klíčů účtu úložiště az](https://docs.microsoft.com/cli/azure/storage/account/keys#az_storage_account_keys_list) | Obsahuje seznam klíčů pro účty úložiště |
-| [Objekt blob úložiště az existuje](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_exists) | Ověří, zda existuje objektu blob |
-| [Vytvoření kontejneru úložiště az](https://docs.microsoft.com/cli/azure/storage/container#az_storage_container_create) | Vytvoří kontejner v účtu úložiště. |
-| [Nahrání objektu blob úložiště az](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | Vytvoří objekt blob v kontejneru, tím, že nahrajete virtuální pevný disk. |
-| [Seznam virtuálních počítačů az](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | Použít s `--query` zkontrolujte, zda název virtuálního počítače je používán. | 
-| [Vytvoření virtuálního počítače az](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | Vytvoří virtuální počítače. |
-| [AZ virtuálních počítačů přístupu sada linux uživatele](https://docs.microsoft.com/cli/azure/vm/access#az_vm_access_set_linux_user) | Obnoví klíč SSH poskytnout aktuální uživatel přístup k virtuálnímu počítači. |
-| [virtuální počítač az seznam ip adres](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | Získá IP adresu virtuálního počítače, který byl vytvořen. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az storage account list](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_list) | Vypíše účty úložiště. |
+| [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_check_name) | Zkontroluje platnost názvu účtu úložiště a jestli už neexistuje. |
+| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys#az_storage_account_keys_list) | Vypíše klíče pro účty úložiště. |
+| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_exists) | Zkontroluje, jestli objekt blob existuje. |
+| [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#az_storage_container_create) | Vytvoří kontejner v účtu úložiště. |
+| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | Vytvoří v kontejneru objekt blob nahráním virtuálního pevného disku. |
+| [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | Používá se s parametrem `--query` ke kontrole, jestli už se název virtuálního počítače nepoužívá. | 
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | Vytvoří virtuální počítače. |
+| [az vm access set-linux-user](https://docs.microsoft.com/cli/azure/vm/access#az_vm_access_set_linux_user) | Obnoví klíč SSH, aby aktuální uživatel získal přístup k virtuálnímu počítači. |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | Získá IP adresu vytvořeného virtuálního počítače. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Ukázky skriptu rozhraní příkazového řádku další virtuální počítač nachází v [virtuální počítač Azure s Linuxem dokumentaci](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Linuxem](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

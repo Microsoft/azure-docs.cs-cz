@@ -1,8 +1,8 @@
 ---
-title: "Registrace ve službě Azure Cost Management s použitím informací o partnerovi CSP | Dokumentace Microsoftu"
-description: "Použijte své informace o partnerovi CSP k registraci ve službě Azure Cost Management by Cloudyn."
+title: Registrace ve službě Azure Cost Management s použitím informací o partnerovi CSP | Dokumentace Microsoftu
+description: Použijte své informace o partnerovi CSP k registraci ve službě Azure Cost Management.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
@@ -10,15 +10,15 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 0e5e247182335b88f109aa6624a40bc782975b97
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cf4fb7e82529388a030fd37da9469bf17c8dc343
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Registrace do partnerského programu CSP a zobrazení informací o nákladech
 
-Jako partner CSP se můžete zaregistrovat ve službě Azure Cost Management by Cloudyn. Registrací získáte přístup k portálu Cloudyn. Tento rychlý start podrobně popisuje proces registrace nezbytný k vytvoření zkušebního předplatného a přihlášení k portálu Cloudyn. Ukazuje také, jak rovnou začít zobrazovat informace o nákladech.
+Jako partner CSP se můžete zaregistrovat ve službě Azure Cost Management. Registrací získáte přístup k portálu Cloudyn. Tento rychlý start podrobně popisuje proces registrace nezbytný k vytvoření zkušebního předplatného a přihlášení k portálu Cloudyn. Ukazuje také, jak rovnou začít zobrazovat informace o nákladech.
 
 
 >[!NOTE]
@@ -71,7 +71,7 @@ Nepřímí partneři CSP se k portálu Cloudyn přihlašují pomocí účtů, kt
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili své informace o CSP k registraci ve službě Cost Management. Také jste se přihlásili k portálu Cloudyn a začali jste zobrazovat informace o nákladech. Další informace o službě Azure Cost Management by Cloudyn najdete v kurzu pro službu Cost Management.
+V tomto rychlém startu jste použili své informace o CSP k registraci ve službě Cost Management. Také jste se přihlásili k portálu Cloudyn a začali jste zobrazovat informace o nákladech. Další informace o službě Azure Cost Management najdete v kurzu pro službu Cost Management.
 
 > [!div class="nextstepaction"]
 > [Kontrola využití a nákladů](./tutorial-review-usage.md)
