@@ -1,8 +1,8 @@
 ---
-title: "Hybridní identita požadované porty a protokoly - Azure | Microsoft Docs"
-description: "Tato stránka je stránka technické reference pro porty, které musejí být otevřené pro Azure AD Connect"
+title: Hybridní identita požadované porty a protokoly - Azure | Microsoft Docs
+description: Tato stránka je stránka technické reference pro porty, které musejí být otevřené pro Azure AD Connect
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: billmath
 ms.openlocfilehash: 79c339c136e614be8a98461533c63d244dabc166
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Porty a protokoly, které vyžaduje hybridní identita
 Následující dokument je technické na požadované porty a protokoly pro implementaci řešení hybridní identity. Použijte následující obrázek a naleznete v příslušné tabulce.
@@ -31,7 +31,7 @@ Tato tabulka popisuje porty a protokoly, které jsou požadovány pro komunikaci
 | Protocol (Protokol) | Porty | Popis |
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |Vyhledávání DNS v cílové doménové struktuře. |
-| Pomocí protokolu Kerberos |88 (TCP/UDP) |Ověřování protokolu Kerberos k doménové struktuře AD. |
+| Kerberos |88 (TCP/UDP) |Ověřování protokolu Kerberos k doménové struktuře AD. |
 | MS-RPC |135 (TCP/UDP) |Použít během počáteční konfigurace Průvodce Azure AD Connect, když se váže k doménové struktuře AD a taky během synchronizace hesel. |
 | LDAP |389 (TCP/UDP) |Používá pro import dat ze služby Active Directory. Data se šifrují pomocí protokolu Kerberos přihlašovací & zapečetění. |
 | RPC | 445 (TCP/UDP) |Používá bezproblémové jednotného přihlašování k vytvoření účtu počítače v doménové struktuře AD. |

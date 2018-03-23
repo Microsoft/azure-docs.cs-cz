@@ -1,6 +1,6 @@
 ---
-title: "Migrace virtuálních počítačů do Azure Premium Storage | Microsoft Docs"
-description: "Migrujte existující virtuální počítače na Azure Premium Storage. Premium Storage nabízí podporu vysoce výkonné, nízkou latencí disku pro I náročnými úlohy běžící na virtuálních počítačích Azure."
+title: Migrace virtuálních počítačů do Azure Premium Storage | Microsoft Docs
+description: Migrujte existující virtuální počítače na Azure Premium Storage. Premium Storage nabízí podporu vysoce výkonné, nízkou latencí disku pro I náročnými úlohy běžící na virtuálních počítačích Azure.
 services: storage
 documentationcenter: na
 author: yuemlu
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.openlocfilehash: 36ff73d36c752fb342dcfff2360b4f6f7013740e
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace na Azure Premium Storage (nespravované disků)
 
@@ -163,7 +163,7 @@ Vytvořte účet úložiště pro údržbu virtuální pevné disky. Při pláno
 Pro datové disky můžete si nechat některé datové disky v standardní účet úložiště (například disky, které obsahují chladič úložiště), ale důrazně doporučujeme přesouvání všech dat pro produkční pracovního vytížení k používání služby storage úrovně premium.
 
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>Krok 3. Zkopírujte virtuální pevný disk s AzCopy nebo prostředí PowerShell
-Musíte se najít klíč kontejneru úložiště a cesta účtu ke zpracování některá z těchto dvou možností. Klíč účtu úložiště a cesta kontejneru lze nalézt v **portálu Azure** > **úložiště**. Jako "https://myaccount.blob.core.windows.net/mycontainer/" bude mít adresu URL kontejneru.
+Musíte se najít klíč kontejneru úložiště a cesta účtu ke zpracování některá z těchto dvou možností. Klíč účtu úložiště a cesta kontejneru lze nalézt v **portálu Azure** > **úložiště**. Kontejner, bude mít adresu URL jako "https://myaccount.blob.core.windows.net/mycontainer/".
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Možnost 1: Zkopírujte virtuální pevný disk s AzCopy (asynchronní kopie)
 Pomocí AzCopy, můžete snadno nahrávat VHD přes Internet. V závislosti na velikosti virtuálních pevných disků může to trvat čas. Mějte na paměti, zkontrolujte vstupní/výstupní limity účtu úložiště při použití této možnosti. V tématu [a cíle výkonnosti služby Azure Storage Scalability](storage-scalability-targets.md) podrobnosti.
@@ -222,7 +222,7 @@ Pokud migrujete virtuální pevný disk z jiných - cloudové úložiště Azure
 
 #### <a name="step-1-export-vhd-to-a-local-directory"></a>Krok 1. Export virtuálního pevného disku do místního adresáře
 ##### <a name="copy-a-vhd-from-aws"></a>Zkopírujte virtuální pevný disk z AWS
-1. Pokud používáte AWS, vyexportovat do disku VHD v sady Amazon S3 EC2 instance. Postupujte podle kroků popsaných v dokumentaci k Amazon pro export Amazon EC2 instance, které chcete nainstalovat nástroj Amazon EC2 rozhraní příkazového řádku (CLI) a spusťte příkaz Vytvořit instanci export úkolů EC2 instance exportovat do souboru VHD. Nezapomeňte použít **virtuálního pevného disku** pro DISK &#95; IMAGE &#95; Formát proměnné při spuštění **vytvořit instanci export úkolů** příkaz. Exportovaný soubor virtuálního pevného disku je uložen v Amazon S3 sady, které určíte během tohoto procesu.
+1. Pokud používáte AWS, vyexportovat do disku VHD v sady Amazon S3 EC2 instance. Postupujte podle kroků popsaných v dokumentaci k Amazon pro export Amazon EC2 instance, které chcete nainstalovat nástroj Amazon EC2 rozhraní příkazového řádku (CLI) a spusťte příkaz Vytvořit instanci export úkolů EC2 instance exportovat do souboru VHD. Nezapomeňte použít **virtuálního pevného disku** disku&#95;IMAGE&#95;formát proměnné při spuštění **vytvořit instanci export úkolů** příkaz. Exportovaný soubor virtuálního pevného disku je uložen v Amazon S3 sady, které určíte během tohoto procesu.
 
     ```
     aws ec2 create-instance-export-task --instance-id ID --target-environment TARGET_ENVIRONMENT \

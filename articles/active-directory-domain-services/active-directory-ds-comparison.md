@@ -1,8 +1,8 @@
 ---
-title: "Služba Azure AD Domain Services: Porovnání Azure AD Domain Services na řadiče domény DIY | Microsoft Docs"
-description: "Porovnání Azure Active Directory Domain Services na řadiče domény DIY"
+title: 'Služba Azure AD Domain Services: Porovnání Azure AD Domain Services na řadiče domény DIY | Microsoft Docs'
+description: Porovnání Azure Active Directory Domain Services na řadiče domény DIY
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
 ms.openlocfilehash: c384046d280e03de5a808d245dd273fdf7b44549
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Rozhodování, pokud služba Azure AD Domain Services je nejvhodnější pro váš případ použití
 S Azure AD Domain Services můžete nasadit úlohy ve službách infrastruktury Azure, aniž by museli starosti údržbu infrastruktury identity v Azure. Tato spravované služby se liší od typické nasazení systému Windows Server Active Directory, které můžete nasadit a spravovat sami. Služba nasazení je snadné a poskytuje automatizované stavu monitorování a nápravu. Jsme neustále vyvíjí službu, kterou chcete přidat podporu pro nejčastější scénáře nasazení.
@@ -32,23 +32,23 @@ Chcete-li rozhodnout, zda chcete používat Azure AD Domain Services doporučuje
 ## <a name="compare-azure-ad-domain-services-to-diy-ad-domain-in-azure"></a>Porovnání služby Azure AD Domain Services k doméně DIY AD v Azure
 Následující tabulka vám pomůže zjistit, mezi pomocí Azure AD Domain Services a správu vlastní infrastrukturu AD v Azure.
 
-| **Funkce** | **Služba Azure AD Domain Services** | **'Samoobslužné' AD ve virtuálních počítačích Azure** |
+| **Funkce** | **Azure AD Domain Services** | **'Samoobslužné' AD ve virtuálních počítačích Azure** |
 | --- |:---:|:---:|
-| [**Spravované služby**](active-directory-ds-comparison.md#managed-service) |**&amp;#x2713;** |**& #x 2715;** |
-| [**Bezpečné nasazení**](active-directory-ds-comparison.md#secure-deployments) |**&amp;#x2713;** |Správce musí k zabezpečení nasazení. |
-| [**DNS server**](active-directory-ds-comparison.md#dns-server) |**& #x 2713;**  (spravované služby) |**&amp;#x2713;** |
-| [**Oprávnění správce domény nebo Enterprise**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**& #x 2715;** |**&amp;#x2713;** |
-| [**Připojení k doméně**](active-directory-ds-comparison.md#domain-join) |**&amp;#x2713;** |**&amp;#x2713;** |
-| [**Ověřování v doméně pomocí protokolu NTLM a Kerberos**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&amp;#x2713;** |**&amp;#x2713;** |
+| [**Spravované služby**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
+| [**Bezpečné nasazení**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |Správce musí k zabezpečení nasazení. |
+| [**DNS server**](active-directory-ds-comparison.md#dns-server) |**&#x2713;**(spravované služby) |**&#x2713;** |
+| [**Oprávnění správce domény nebo Enterprise**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
+| [**Připojení k doméně**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
+| [**Ověřování v doméně pomocí protokolu NTLM a Kerberos**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
 | [**Omezené delegování protokolu Kerberos**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|na základě prostředků|na základě prostředků & založené na klientech|
-| [**Vlastní struktury organizační jednotky**](active-directory-ds-comparison.md#custom-ou-structure) |**&amp;#x2713;** |**&amp;#x2713;** |
-| [**Rozšíření schématu**](active-directory-ds-comparison.md#schema-extensions) |**& #x 2715;** |**&amp;#x2713;** |
-| [**Vztahy důvěryhodnosti domény nebo doménové struktuře AD**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**& #x 2715;** |**&amp;#x2713;** |
-| [**Čtení protokolu LDAP**](active-directory-ds-comparison.md#ldap-read) |**&amp;#x2713;** |**&amp;#x2713;** |
-| [**Zabezpečený LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&amp;#x2713;** |**&amp;#x2713;** |
-| [**Zápis LDAP**](active-directory-ds-comparison.md#ldap-write) |**& #x 2715;** |**&amp;#x2713;** |
-| [**Zásady skupiny**](active-directory-ds-comparison.md#group-policy) |**&amp;#x2713;** |**&amp;#x2713;** |
-| [**Geograficky distribuovaná nasazení**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**& #x 2715;** |**&amp;#x2713;** |
+| [**Vlastní struktury organizační jednotky**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
+| [**Rozšíření schématu**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
+| [**Vztahy důvěryhodnosti domény nebo doménové struktuře AD**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&#x2715;** |**&#x2713;** |
+| [**Čtení protokolu LDAP**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
+| [**Zabezpečený LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
+| [**Zápis LDAP**](active-directory-ds-comparison.md#ldap-write) |**&#x2715;** |**&#x2713;** |
+| [**Zásady skupiny**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
+| [**Geograficky distribuovaná nasazení**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
 
 #### <a name="managed-service"></a>Spravované služby
 Microsoft spravuje domén Azure AD Domain Services. Nemusíte si dělat starosti o opravy, aktualizace, monitorování, zálohování a zajištění dostupnosti vaší domény. Tyto úlohy správy jsou nabízena jako služba Microsoft Azure pro vaše spravované domény.
@@ -86,7 +86,7 @@ Spravované domény nelze konfigurovat nastavení vztahy důvěryhodnosti (pří
 #### <a name="ldap-read"></a>LDAP pro čtení
 Spravované doméně podporuje čtení úlohy LDAP. Proto můžete nasadit aplikace, které provádějí operace čtení LDAP proti spravované domény.
 
-#### <a name="secure-ldap"></a>Zabezpečený LDAP
+#### <a name="secure-ldap"></a>Protokol Secure LDAP
 Můžete konfigurovat Azure AD Domain Services zajistit zabezpečený přístup protokolu LDAP k vaší spravované domény, včetně přes internet.
 [Další informace](active-directory-ds-admin-guide-configure-secure-ldap.md)
 

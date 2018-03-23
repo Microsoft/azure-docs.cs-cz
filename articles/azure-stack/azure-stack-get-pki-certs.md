@@ -1,25 +1,25 @@
 ---
-title: "Vygenerujete certifikáty infrastruktury veřejných klíčů Azure zásobníku pro nasazení Azure zásobníku integrované systémy | Microsoft Docs"
-description: "Popisuje Azure zásobníku infrastruktury veřejných KLÍČŮ certifikátu nasazení processfor zásobník Azure integrované systémy."
+title: Vygenerujete certifikáty infrastruktury veřejných klíčů Azure zásobníku pro nasazení Azure zásobníku integrované systémy | Microsoft Docs
+description: Popisuje Azure zásobníku infrastruktury veřejných KLÍČŮ certifikátu nasazení processfor zásobník Azure integrované systémy.
 services: azure-stack
-documentationcenter: 
-author: jeffgilb
+documentationcenter: ''
+author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
-ms.author: jeffgilb
+ms.date: 03/22/2018
+ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 991a94e4ca41bad438a3c8d06e4e1f691cff91bc
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 4a7432260167b8740567ad4308e102417abad82c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="generate-pki-certificates-for-azure-stack-deployment"></a>Generovat certifikáty PKI pro nasazení Azure zásobníku
 Nyní když znáte [požadavcích na certifikáty PKI](azure-stack-pki-certs.md) pro nasazení zásobník Azure, budete muset získat tyto certifikáty z certifikační autority (CA) podle svého výběru. 
@@ -30,7 +30,7 @@ Jedním ze způsobů žádosti o certifikáty z interní certifikační Autority
 ### <a name="sample-inf-file"></a>Ukázkový soubor INF 
 Příklad souboru INF žádost o certifikát slouží k vytvoření souboru žádosti o certifikát offline pro odeslání certifikační Autoritě (interní nebo veřejná). Soubor INF obsahuje požadované koncové body (včetně volitelné služby PaaS) v certifikát jeden zástupný znak. 
 
-Ukázkový soubor INF předpokládá této oblasti se rovná **sea** a externí hodnota plně kvalifikovaný název domény je **sea &#46; contoso &#46; com**. Změnit tyto hodnoty tak, aby odpovídaly prostředí před vygenerováním. Soubor INF pro vaše nasazení. 
+Ukázkový soubor INF předpokládá této oblasti se rovná **sea** a externí hodnota plně kvalifikovaný název domény je **sea&#46;contoso&#46;com**. Změnit tyto hodnoty tak, aby odpovídaly prostředí před vygenerováním. Soubor INF pro vaše nasazení. 
 
     
     [Version] 

@@ -1,11 +1,11 @@
 ---
-title: "Filtry v zobrazeních Azure Log Analytics | Microsoft Docs"
-description: "Filtr zobrazení analýzy protokolů umožňuje uživatelům filtrování dat v zobrazení hodnotou určité vlastnosti beze změny samotném zobrazení.  Tento článek popisuje, jak používat filtr a přidat vlastní zobrazení."
+title: Filtry v zobrazeních Azure Log Analytics | Microsoft Docs
+description: Filtr zobrazení analýzy protokolů umožňuje uživatelům filtrování dat v zobrazení hodnotou určité vlastnosti beze změny samotném zobrazení.  Tento článek popisuje, jak používat filtr a přidat vlastní zobrazení.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: bwren
 ms.openlocfilehash: 5c2201292eb085dcc043e4257580c7971dbaffbd
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="filters-in-log-analytics-views"></a>Filtry v zobrazení analýzy protokolů
 A **filtru** v [zobrazení analýzy protokolů](log-analytics-view-designer.md) umožňuje uživatelům filtrování dat v zobrazení hodnotou určité vlastnosti beze změny samotném zobrazení.  Můžete například povolit uživatelům zobrazení filtrovat zobrazení pro data pouze z určitého počítače nebo sadu počítačů.  V rámci jednoho zobrazení umožníte uživatelům filtrovat podle více vlastností můžete vytvořit více filtrů.  Tento článek popisuje, jak používat filtr a přidat vlastní zobrazení.
@@ -52,10 +52,10 @@ Následující tabulka obsahuje několik příkladů běžných filtrů.
 
 | Název pole | Dotaz pro hodnoty | Značka |
 |:--|:--|:--|
-| Počítač   | Prezenční signál &#124; odlišné počítač &#124; Řadit podle počítače asc | Počítače |
-| EventLevelName | Událost &#124; odlišné EventLevelName | Závažnost |
+| Počítač   | Prezenční signál &#124; distinct Computer &#124; řazení podle počítače asc | Počítače |
+| EventLevelName | Event &#124; distinct EventLevelName | Závažnost |
 | Úroveň závažnosti | Syslog &#124; odlišné úroveň závažnosti | Závažnost |
-| SvcChangeType | Změnakonfigurace &#124; odlišné svcChangeType | ChangeType – |
+| SvcChangeType | Změnakonfigurace &#124; odlišné svcChangeType | ChangeType |
 
 
 ## <a name="modify-view-queries"></a>Upravit zobrazení dotazů
@@ -74,5 +74,5 @@ Pokud jste přidali další filtr názvem závažnost, můžete použít násled
 
     Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o [vizualizace částí](log-analytics-view-designer-parts.md) můžete přidat do vlastní zobrazení.

@@ -1,6 +1,6 @@
 ---
-title: "Azure AD UserPrincipalName naplnění"
-description: "Následující dokument popisuje, jak se naplní atribut UserPrincipalName."
+title: Azure AD UserPrincipalName naplnění
+description: Následující dokument popisuje, jak se naplní atribut UserPrincipalName.
 author: billmath
 ms.author: billmath
 ms.date: 02/02/2018
@@ -9,10 +9,10 @@ ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
 ms.openlocfilehash: 96b12fbddd4293c55e9029b194416541ca44c622
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName naplnění
 
@@ -25,7 +25,7 @@ V tomto článku se používá následující terminologií:
 |Označení|Popis|
 |-----|-----|
 |Počáteční domény|Výchozí doména (onmicrosoft.com) v klientovi Azure AD. Například contoso.onmicrosoft.com.|
-|Microsoft Online e-mailů směrování adres (MOERA)|Azure AD vypočítá MOERA z atributu Azure AD MailNickName a Azure AD počáteční domény jako &lt;MailNickName&gt;& č. 64;&lt; počáteční domény&gt;.|
+|Microsoft Online e-mailů směrování adres (MOERA)|Azure AD vypočítá MOERA z atributu Azure AD MailNickName a Azure AD počáteční domény jako &lt;MailNickName&gt;&#64;&lt;počáteční domény&gt;.|
 |Atribut místní mailNickName|Atribut ve službě Active Directory, jehož hodnota představuje alias uživatele v organizaci Exchange.|
 |Atribut mail na místě|Představuje atribut ve službě Active Directory, jehož hodnota e-mailovou adresu uživatele|
 |Primární adresa SMTP|Primární e-mailová adresa příjemce objekt Exchange. Například, SMTP:user@contoso.com.|
@@ -56,7 +56,7 @@ Povolit alternativního přihlašovacího ID s Azure AD, je potřeba žádné da
 Další informace najdete v části [konfigurace alternativního přihlašovacího ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) a [konfigurace přihlášení k Azure AD](active-directory-aadconnect-get-started-custom.md#azure-ad-sign-in-configuration)
 
 ## <a name="non-verified-upn-suffix"></a>Přípona UPN – ověření
-Pokud přípona místní UserPrincipalName atribut nebo alternativní přihlašovací ID není ověřen pomocí klienta Azure AD, Azure AD UserPrincipalName hodnotu atributu nastavená na MOERA. Azure AD vypočítá MOERA z Azure AD MailNickName atribut a počáteční doménu služby Azure AD jako &lt;MailNickName&gt;& č. 64;&lt; počáteční domény&gt;.
+Pokud přípona místní UserPrincipalName atribut nebo alternativní přihlašovací ID není ověřen pomocí klienta Azure AD, Azure AD UserPrincipalName hodnotu atributu nastavená na MOERA. Azure AD vypočítá MOERA z Azure AD MailNickName atribut a počáteční doménu služby Azure AD jako &lt;MailNickName&gt;&#64;&lt;počáteční domény&gt;.
 
 ## <a name="verified-upn-suffix"></a>Ověřené příponu UPN
 Pokud atribut UserPrincipalName místní nebo alternativní je ověřen příponu ID přihlášení pomocí klienta Azure AD, bude hodnota atributu Azure AD UserPrincipalName stejná jako hodnota místní UserPrincipalName atribut nebo alternativní přihlašovací ID.
@@ -87,12 +87,12 @@ Následuje příklad scénáře jak UPN je vypočtena na základě v této situa
 Místní objekt uživatele:
 - mailNickName: &lt;není nastaven.&gt;
 - proxyAddresses: {SMTP:us1@contoso.com}
-- e-mailu:us2@contoso.com
+- e-mailu: us2@contoso.com
 - userPrincipalName : us3@contoso.com`
 
 Synchronizovat první objekt uživatele, který má klienta Azure AD
 - Nastavte atribut Azure AD MailNickName na primární předpona adresy SMTP.
-- Nastavte MOERA na &lt;MailNickName&gt;& č. 64;&lt; počáteční domény&gt;.
+- Nastavte MOERA na &lt;MailNickName&gt;&#64;&lt;počáteční domény&gt;.
 - Nastavte atribut Azure AD UserPrincipalName na MOERA.
 
 Objekt uživatele Azure AD klienta:
@@ -103,9 +103,9 @@ Objekt uživatele Azure AD klienta:
 ### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>Scénář 2: Příponu UPN neověřený – sadu místní atribut mailNickName
 
 Místní objekt uživatele:
-- mailNickName: us4
+- MailNickName: us4
 - proxyAddresses: {SMTP:us1@contoso.com}
-- e-mailu:us2@contoso.com
+- e-mailu: us2@contoso.com
 - userPrincipalName : us3@contoso.com
 
 Synchronizovat aktualizace na místní mailNickName atribut klienta Azure AD
@@ -119,14 +119,14 @@ Objekt uživatele Azure AD klienta:
 ### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>Scénář 3: Příponu UPN neověřený – aktualizace místní atribut userPrincipalName
 
 Místní objekt uživatele:
-- mailNickName: us4
+- MailNickName: us4
 - proxyAddresses: {SMTP:us1@contoso.com}
-- e-mailu:us2@contoso.com
+- e-mailu: us2@contoso.com
 - userPrincipalName : us5@contoso.com
 
 Synchronizovat aktualizace na atribut userPrincipalName místní klienta Azure AD
 - Aktualizace na atribut userPrincipalName v místě, spustí MOERA a Azure AD UserPrincipalName atributu.
-- Nastavte MOERA na &lt;MailNickName&gt;& č. 64;&lt; počáteční domény&gt;.
+- Nastavte MOERA na &lt;MailNickName&gt;&#64;&lt;počáteční domény&gt;.
 - Nastavte atribut Azure AD UserPrincipalName na MOERA.
 
 Objekt uživatele Azure AD klienta:
@@ -136,9 +136,9 @@ Objekt uživatele Azure AD klienta:
 ### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>Scénář 4: Příponu UPN neověřený – primární adresa SMTP aktualizace a místní poštovní atribut
 
 Místní objekt uživatele:
-- mailNickName: us4
+- MailNickName: us4
 - proxyAddresses: {SMTP:us6@contoso.com}
-- e-mailu:us7@contoso.com
+- e-mailu: us7@contoso.com
 - userPrincipalName : us5@contoso.com
 
 Synchronizovat aktualizace na atribut mail v místě a primární adresa SMTP klienta Azure AD
@@ -151,9 +151,9 @@ Objekt uživatele Azure AD klienta:
 ### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>Scénář 5: Příponu UPN ověřené – aktualizace místní příponu atribut userPrincipalName
 
 Místní objekt uživatele:
-- mailNickName: us4
+- MailNickName: us4
 - proxyAddresses: {SMTP:us6@contoso.com}
-- e-mailu:us7@contoso.com
+- e-mailu: us7@contoso.com
 - serPrincipalName  : us5@verified.contoso.com
 
 Synchronizovat aktualizace na atribut userPrincipalName místně klientovi Azure AD

@@ -1,6 +1,6 @@
 ---
-title: "Adresy pro správu Azure App Service Environment"
-description: "Zobrazí seznam adres správy používá k příkazu služby App Service Environment"
+title: Adresy pro správu Azure App Service Environment
+description: Zobrazí seznam adres správy používá k příkazu služby App Service Environment
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: ccompy
 ms.openlocfilehash: 3da0e4b7f1db7173124d2b33ee4c9634a253aa31
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="app-service-environment-management-addresses"></a>Adresy pro správu App Service Environment
 

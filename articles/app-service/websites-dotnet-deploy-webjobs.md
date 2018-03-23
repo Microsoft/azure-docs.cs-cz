@@ -1,9 +1,9 @@
 ---
-title: "Vývoj a nasazení webové úlohy pomocí sady Visual Studio – Azure"
-description: "Zjistěte, jak k vývoji a nasazení Azure WebJobs Azure App Service pomocí sady Visual Studio."
+title: Vývoj a nasazení webové úlohy pomocí sady Visual Studio – Azure
+description: Zjistěte, jak k vývoji a nasazení Azure WebJobs Azure App Service pomocí sady Visual Studio.
 services: app-service
-documentationcenter: 
-author: ggailey777
+documentationcenter: ''
+author: tdykstra
 manager: erikre
 editor: jimbe
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 8793485f2f1967e8c14ef335f14f81c9b946f974
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: babe190c0865f5be4aeecb40ca48b52673c6920e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Vývoj a nasazení webové úlohy pomocí sady Visual Studio – Azure App Service
 
@@ -29,7 +29,7 @@ Toto téma vysvětluje, jak používat Visual Studio k nasazení projektu konzol
 Když Visual Studio nasadí projekt aplikace s povolenými webové konzoly, provádí dvě úlohy:
 
 * Kopíruje soubory modulu runtime do příslušné složky ve webové aplikaci (*App_Data/úlohy/průběžné* pro nepřetržité webové úlohy *App_Data, úlohy nebo aktivaci* pro webové úlohy naplánované i na vyžádání).
-* Nastaví [úlohy Azure Scheduler](#scheduler) pro webové úlohy, které mají naplánované spuštění v určitou dobu. (To není nutné pro nepřetržité webové úlohy).
+* Nastaví [Azure Scheduler](https://docs.microsoft.com/azure/scheduler/) úlohy pro webové úlohy, které mají naplánované spuštění v určitou dobu. (To není nutné pro nepřetržité webové úlohy).
 
 Projekt webové úlohy povolené má přidána následující položky:
 
@@ -50,7 +50,7 @@ Pokud používáte Visual Studio 2015, nainstalujte [Azure SDK for .NET (Visual 
 
 Pokud používáte Visual Studio 2017, nainstalujte [pracovního vytížení Azure development](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads).
 
-## <a id="convert"></a>Povolit nasazení webové úlohy pro existující projekt konzolové aplikace
+## <a id="convert"></a> Povolit nasazení webové úlohy pro existující projekt konzolové aplikace
 
 Máte dvě možnosti:
 
@@ -62,7 +62,7 @@ Máte dvě možnosti:
 
   Existující projekt konzolové aplikace nasadit jako webovou úlohu samostatně, se žádný odkaz na projekt webové konfigurace. Tuto možnost použijte, pokud chcete spustit webovou úlohu ve webové aplikaci samostatně, s žádná webová aplikace spuštěna ve webové aplikaci. Můžete k tomu, aby bylo možné škálovat vaše prostředky webové úlohy nezávisle na prostředkům webové aplikace.
 
-### <a id="convertlink"></a>Povolit automatické nasazení webové úlohy s webovým projektem
+### <a id="convertlink"></a> Povolit automatické nasazení webové úlohy s webovým projektem
 
 1. Klikněte pravým tlačítkem na projekt webové v **Průzkumníku řešení**a potom klikněte na **přidat** > **stávající projekt jako webová úloha Azure**.
    
@@ -74,7 +74,7 @@ Máte dvě možnosti:
     ![Výběr projektu v dialogovém okně Přidat webové úlohy Azure](./media/websites-dotnet-deploy-webjobs/aaw1.png)
 3. Dokončení [přidat webové úlohy Azure](#configure) dialogové okno a potom klikněte na **OK**. 
 
-### <a id="convertnolink"></a>Povolit nasazení webové úlohy bez webového projektu
+### <a id="convertnolink"></a> Povolit nasazení webové úlohy bez webového projektu
 1. Klikněte pravým tlačítkem na projekt konzolové aplikace v **Průzkumníku řešení**a pak klikněte na tlačítko **publikovat jako webová úloha Azure...** . 
    
     ![Publikovat jako webová úloha Azure](./media/websites-dotnet-deploy-webjobs/paw.png)
@@ -99,13 +99,13 @@ Pokud chcete vytvořit nový projekt webové úlohy povolené, můžete pomocí 
 > 
 > 
 
-### <a id="createnolink"></a>Použít šablonu nový projekt webové úlohy pro nezávislé webové úlohy
+### <a id="createnolink"></a> Použít šablonu nový projekt webové úlohy pro nezávislé webové úlohy
 1. Klikněte na tlačítko **soubor** > **nový projekt**a potom v **nový projekt** dialogovém okně **cloudu** > **webové úlohy Azure (rozhraní .NET Framework)**.
    
     ![Dialogové okno Nový projekt zobrazující šablony webové úlohy](./media/websites-dotnet-deploy-webjobs/np.png)
 2. Postupujte podle pokynů, zobrazí dříve do [zpřístupnění aplikace konzoly projektu nezávislé projekt webové úlohy](#convertnolink).
 
-### <a id="createlink"></a>Použít šablonu nový projekt webové úlohy pro webovou úlohu propojené s webového projektu
+### <a id="createlink"></a> Použít šablonu nový projekt webové úlohy pro webovou úlohu propojené s webového projektu
 1. Klikněte pravým tlačítkem na projekt webové v **Průzkumníku řešení**a potom klikněte na **přidat** > **nový projekt webové úlohy Azure**.
    
     ![Nová položka nabídky projektu webová úloha Azure](./media/websites-dotnet-deploy-webjobs/nawj.png)
@@ -127,7 +127,7 @@ Pole v tomto dialogovém okně odpovídají pole na **přidat webové úlohy** d
 > 
 > 
 
-## <a id="publishsettings"></a>Webová úloha publikovat settings.json
+## <a id="publishsettings"></a>webjob-publish-settings.json
 Při konfiguraci konzolovou aplikaci pro webové úlohy nasazení nainstaluje Visual Studio [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet balíčku a ukládá informace v o plánování *webové úlohy publikovat settings.json* v projektu *vlastnosti* složku projekt webové úlohy. Tady je příklad tohoto souboru:
 
         {
@@ -140,9 +140,9 @@ Při konfiguraci konzolovou aplikaci pro webové úlohy nasazení nainstaluje Vi
           "runMode": "Continuous"
         }
 
-Tento soubor můžete upravit přímo a Visual Studio poskytuje technologii IntelliSense. Schéma souboru je uložené v [http://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) a lze je zobrazit.  
+Tento soubor můžete upravit přímo a Visual Studio poskytuje technologii IntelliSense. Schéma souboru je uložené v [ http://schemastore.org ](http://schemastore.org/schemas/json/webjob-publish-settings.json) a lze je zobrazit.  
 
-## <a id="webjobslist"></a>list.json webové úlohy
+## <a id="webjobslist"></a>webjobs-list.json
 Když propojíte projekt webové úlohy povolené webového projektu, Visual Studio uloží název projektu webové úlohy v *webjobs list.json* souboru webového projektu *vlastnosti* složky. Seznam může obsahovat více projektů webové úlohy, jak je znázorněno v následujícím příkladu:
 
         {
@@ -157,7 +157,7 @@ Když propojíte projekt webové úlohy povolené webového projektu, Visual Stu
           ]
         }
 
-Tento soubor můžete upravit přímo a Visual Studio poskytuje technologii IntelliSense. Schéma souboru je uložené v [http://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json) a lze je zobrazit.
+Tento soubor můžete upravit přímo a Visual Studio poskytuje technologii IntelliSense. Schéma souboru je uložené v [ http://schemastore.org ](http://schemastore.org/schemas/json/webjobs-list.json) a lze je zobrazit.
 
 ## <a id="deploy"></a>Nasazení projektu webové úlohy
 Projekt webové úlohy, který propojení projektu webové nasadí automaticky s webového projektu. Informace o nasazení webového projektu najdete v tématu **postupy provede** > **nasadit aplikaci** v levém navigačním panelu.
