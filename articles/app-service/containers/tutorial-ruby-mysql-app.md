@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření webové aplikace Ruby využívající databázi MySQL ve službě Azure App Service v Linuxu | Microsoft Docs"
-description: "Naučte se v Azure zprovoznit aplikaci Ruby s připojením k databázi MySQL v Azure."
+title: Vytvoření webové aplikace Ruby využívající databázi MySQL ve službě Azure App Service v Linuxu | Microsoft Docs
+description: Naučte se v Azure zprovoznit aplikaci Ruby s připojením k databázi MySQL v Azure.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
 ms.service: app-service-web
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/21/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 951e66e47cf8fbe9d2cdf1606a8d63054bcada13
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 73839127c23eca29e3a20ab4d68668dfb7c6a375
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="build-a-ruby-and-mysql-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace Ruby využívající databázi MySQL ve službě Azure App Service v Linuxu
 
@@ -132,7 +132,7 @@ V tomto kroku vytvoříte v [Azure Database for MySQL (Preview)](/azure/mysql) d
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-no-h.md)] 
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
 ### <a name="create-a-mysql-server"></a>Vytvoření serveru MySQL
 
@@ -183,7 +183,7 @@ Po zobrazení výzvy k zadání hesla použijte heslo _My5up3r$tr0ngPa$w0rd!_, k
 
 ### <a name="create-a-production-database"></a>Vytvoření produkční databáze
 
-Po výzvě `mysql` vytvořte databázi.
+Na příkazovém řádku `mysql` vytvořte databázi.
 
 ```sql
 CREATE DATABASE sampledb;
@@ -231,7 +231,7 @@ Uložte změny.
 > Přidá se položka `sslca` odkazující na existující soubor _.pem_ v úložišti ukázek. Ve výchozím nastavení vynucuje Azure Database for MySQL od klientů připojení SSL. Tento certifikát `.pem` umožňuje vytvořit připojení SSL k Azure Database for MySQL. Další informace najdete v tématu [Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MySQL](../../mysql/howto-configure-ssl.md).
 >
 
-### <a name="test-the-application-locally"></a>Testování aplikace v místním prostředí
+### <a name="test-the-application-locally"></a>Test aplikace v místním prostředí
 
 V místní terminálu nastavte následující proměnné prostředí:
 
@@ -312,37 +312,7 @@ V tomto kroku nasadíte aplikaci Rails připojenou k MySQL do služby Azure App 
 
 ### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Ve službě Cloud Shell pomocí příkazu [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) vytvořte v plánu služby App Service `myAppServicePlan` webovou aplikaci. 
-
-V následujícím příkladu nahraďte `<app_name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na hodnotu `RUBY|2.3`, která nasadí [výchozí imagi Ruby](https://hub.docker.com/r/appsvc/ruby/). Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes). 
-
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "RUBY|2.3" --deployment-local-git
-```
-
-Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujícímu příkladu:
-
-```json
-Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
-```
-
-Vytvořili jste novou prázdnou webovou aplikaci s povoleným nasazením Gitu.
-
-> [!NOTE]
-> Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Tuto adresu URL si uložte, protože ji budete potřebovat později.
->
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
 ### <a name="configure-database-settings"></a>Konfigurace nastavení databáze
 

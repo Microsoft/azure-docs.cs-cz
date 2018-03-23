@@ -1,24 +1,24 @@
 ---
-title: "Integrace řešení zabezpečení v Azure Security Center | Dokumentace Microsoftu"
-description: "Zjistěte, jak Azure Security Center umožňuje integrací s partnerskými řešeními zvýšit celkové zabezpečení vašich prostředků Azure."
+title: Integrace řešení zabezpečení v Azure Security Center | Dokumentace Microsoftu
+description: Zjistěte, jak Azure Security Center umožňuje integrací s partnerskými řešeními zvýšit celkové zabezpečení vašich prostředků Azure.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 03/08/2018
 ms.author: yurid
-ms.openlocfilehash: 42cbc442d03cdca04d380d05d9e904355476099e
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 48648c2e84d2a2e4de01f04495fb08df603c6017
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -63,7 +63,15 @@ Prostředí integrace ochrany koncových bodů se může lišit v závislosti na
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Správa integrovaných řešení zabezpečení Azure a dalších zdrojů dat
 
-Po nasazení můžete zobrazit informace o stavu integrovaných řešení zabezpečení Azure a provádět základní úlohy správy. Můžete také připojit další typy zdrojů dat zabezpečení, jako jsou upozornění služby Azure Active Directory Identity Protection a protokoly brány firewall ve formátu CEF (Common Event Format). Na řídicím panelu Security Center vyberte Řešení zabezpečení.
+1. Přihlaste se k [portálu Azure](https://azure.microsoft.com/features/azure-portal/).
+
+2. V **nabídce Microsoft Azure** vyberte **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
+
+  ![Přehled služby Security Center](./media/security-center-partner-integration/overview.png)
+
+3. V části **Přehled** vyberte **Řešení zabezpečení**.
+
+V části **Řešení zabezpečení** můžete zobrazit informace o stavu integrovaných řešení zabezpečení Azure a provádět základní úlohy správy. Můžete také připojit další typy zdrojů dat zabezpečení, jako jsou upozornění služby Azure Active Directory Identity Protection a protokoly brány firewall ve formátu CEF (Common Event Format).
 
 ### <a name="connected-solutions"></a>Připojená řešení
 
@@ -71,13 +79,22 @@ Po nasazení můžete zobrazit informace o stavu integrovaných řešení zabezp
 
 ![Připojená řešení](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
 
+Další informace najdete v tématu [Správa připojených partnerských řešení](security-center-partner-solutions.md).
+
 ### <a name="discovered-solutions"></a>Zjištěná řešení
 
-V části **Zjištěná řešení** se zobrazují všechna řešení přidaná prostřednictvím Azure. Zobrazují se také řešení, u kterých služba Security Center navrhuje, že by se k ní měla připojit.
+Security Center automaticky vyhledává řešení zabezpečení spuštěná v Azure, která však nejsou připojená ke službě Security Center, a zobrazuje je v části **Zjištěná řešení**. To zahrnuje řešení Azure, jako je [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection), i partnerská řešení.
+
+> [!NOTE]
+> Funkce zjištěných řešení je dostupná ve službě Security Center úrovně Standard. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
+>
+>
+
+Pod řešením vyberte **PŘIPOJIT**, aby se řešení integrovalo se službou Security Center a vy jste dostávali upozornění na výstrahy zabezpečení.
 
 ![Zjištěná řešení](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
 
-Security Center automaticky zjišťuje další řešení zabezpečení provozovaná v Azure. To zahrnuje řešení Azure, jako je [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection), i partnerská řešení provozovaná v Azure. Pokud chcete integrovat tato řešení se službou Security Center, vyberte **PŘIPOJIT**.
+Security Center také vyhledává řešení nasazená v předplatném, která dokážou přesměrovat protokoly CEF (Common Event Format). Zjistěte, jak ke službě Security Center [připojit řešení zabezpečení](quick-security-solutions.md) využívající protokoly CEF.
 
 ### <a name="add-data-sources"></a>Přidat zdroje dat
 
@@ -90,7 +107,6 @@ Security Center automaticky zjišťuje další řešení zabezpečení provozova
 
 V tomto článku jste se naučili integrovat partnerská řešení do služby Security Center. Další informace o službě Security Center najdete v následujících článcích:
 
-* [Průvodce plánováním a provozem služby Security Center](security-center-planning-and-operations-guide.md)
 * [Propojení Microsoft Advanced Threat Analytics a Azure Security Center](security-center-ata-integration.md)
 * [Propojení Azure Active Directory Identity Protection a Azure Security Center](security-center-aadip-integration.md)
 * [Monitorování stavu zabezpečení ve službě Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.

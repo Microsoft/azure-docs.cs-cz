@@ -1,18 +1,18 @@
 ---
-title: "O službě Azure Site Recovery | Dokumenty Microsoft"
-description: "Poskytuje přehled služby Azure Site Recovery a shrnuje scénáře nasazení."
+title: Informace o Azure Site Recovery | Microsoft Docs
+description: Poskytuje přehled služby Azure Site Recovery a shrnuje scénáře nasazení.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 01/07/2018
+ms.date: 03/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4cc5d849630114577709f8373d08f0ce659e7e65
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 57b191a5dbdea487a0105c6af2866cdc037864e2
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="about-site-recovery"></a>O službě Azure Site Recovery
 
@@ -57,8 +57,8 @@ Site Recovery může spravovat replikaci pro:
 --- | ---
 **Scénáře replikace** | Replikace virtuálních počítačů Azure z jedné oblasti Azure do jiné<br/><br/>  Replikace místních virtuálních počítačů VMware a Hyper-V a fyzických serverů (s Windows nebo Linuxem) do Azure<br/><br/> Replikace místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, které spravuje System Center VMM, a fyzických serverů do sekundární lokality
 **Oblasti** | Prohlédněte si [podporované oblasti](https://azure.microsoft.com/regions/services/) pro Site Recovery. |
-**Replikované počítače** | Zkontrolujte požadavky na replikaci pro [virtuální počítače Azure](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions), [místní virtuální počítače](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions) a [fyzické servery](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions).
-**Hostitelé/servery VMware** | Virtuální počítače VMware, které chcete replikovat, můžou být umístěné na [podporovaných hostitelích vSphere nebo serverech vCenter](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers).
+**Replikované počítače** | Zkontrolujte požadavky na replikaci pro [virtuální počítače Azure](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions), [místní fyzické servery a virtuální počítače VMware](vmware-physical-azure-support-matrix.md#replicated-machines) a [místní virtuální počítače Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms).
+**Hostitelé/servery VMware** | Virtuální počítače VMware, které chcete replikovat, můžou být umístěné na [podporovaných hostitelích a serverech virtualizace](vmware-physical-azure-support-matrix.md).
 **Úlohy** | Můžete replikovat jakoukoli úlohu běžící v počítači, u kterého se podporuje replikace. Kromě toho tým Site Recovery [pro řadu aplikací](site-recovery-workload.md#workload-summary) provedl testování specifické pro aplikace.
 
 

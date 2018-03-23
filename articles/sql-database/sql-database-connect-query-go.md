@@ -1,25 +1,21 @@
 ---
-title: "Použití jazyka Go k dotazování služby Azure SQL Database | Dokumentace Microsoftu"
-description: "Vytvořte pomocí jazyka Go program, který se připojí ke službě Azure SQL Database, a dotazujte a upravujte data s použitím příkazů jazyka Transact-SQL."
+title: Použití jazyka Go k dotazování služby Azure SQL Database | Dokumentace Microsoftu
+description: Vytvořte pomocí jazyka Go program, který se připojí ke službě Azure SQL Database, a dotazujte a upravujte data s použitím příkazů jazyka Transact-SQL.
 services: sql-database
-documentationcenter: 
 author: David-Engel
 manager: craigg
-editor: MightyPen
-ms.assetid: 
+ms.reviewer: MightyPen
 ms.service: sql-database
 ms.custom: mvc,develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-daveng
-ms.openlocfilehash: 248f4d0b4b54ce2a2ca005379a590d895e9b4b3e
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: e479b0445e0055b77773554bb5b725cb04498ba2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-go-to-query-an-azure-sql-database"></a>Použití jazyka Go k dotazování databáze SQL Azure
 

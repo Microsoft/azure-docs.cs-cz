@@ -1,21 +1,21 @@
 ---
-title: "Kurz sestavení modelu pro služby Azure Machine Learning (Preview) | Microsoft Docs"
-description: "V tomto kurzu na pokračování se dozvíte, jak komplexně používat služby Azure Machine Learning (Preview). Toto je druhá část, ve které se probírá experimentování."
+title: Kurz sestavení modelu pro služby Azure Machine Learning (Preview) | Microsoft Docs
+description: V tomto kurzu na pokračování se dozvíte, jak komplexně používat služby Azure Machine Learning (Preview). Toto je druhá část, ve které se probírá experimentování.
 services: machine-learning
 author: hning86
 ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/28/2018
-ms.openlocfilehash: 9a1613e2137e178d00a24f9f5b3c802f8a894b15
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 3/7/2018
+ms.openlocfilehash: 3e7f1b25757dc627f0f42a34c1a42b2d421c06c9
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-classify-iris-part-2---build-a-model"></a>Kurz: Klasifikace Iris, část 2 – Sestavení modelu
 Služby Azure Machine Learning (Preview) představují integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
@@ -66,13 +66,13 @@ Pokud chcete experimentovat s odesíláním skriptů ke spuštění v kontejneru
 
    - Pomocí knihovny pro machine learning [scikit-learn](http://scikit-learn.org/stable/index.html) sestaví model logistické regrese. 
 
-   - Serializuje model vložením knihovny [pickle](https://docs.python.org/2/library/pickle.html) do souboru ve složce `outputs`. Skript ho pak načte a deserializuje zpět do paměti.
+   - Serializuje model vložením knihovny [pickle](https://docs.python.org/3/library/pickle.html) do souboru ve složce `outputs`. Skript ho pak načte a deserializuje zpět do paměti.
 
    - Pomocí deserializovaného modelu vytvoří předpověď nového záznamu. 
 
    - Pomocí knihovny [matplotlib](https://matplotlib.org/) vytvoří dva grafy – chybovou matici a křivku ROC (Receiver Operating Characteristic) s více třídami – a pak je uloží do složky `outputs`.
 
-   - V celém průběhu se pomocí objektu `run_logger` zaznamenává do protokolů míra regularizace a přesnost modelu. Protokoly se automaticky promítají do historie spouštění.
+   - V celém průběhu se pomocí objektu `run_logger` zaznamenává do protokolů míra regularizace a přesnost modelu. Tyto hodnoty se automaticky promítají do historie spuštění.
 
 
 ## <a name="execute-irissklearnpy-script-in-a-local-environment"></a>Spuštění skriptu iris_sklearn.py v místním prostředí
@@ -92,30 +92,31 @@ Teď se připravíme na první spuštění skriptu **iris_sklearn.py**. Tento sk
 
 3. Vraťte se do okna aplikace Workbench. 
 
-4. Na panelu nástrojů v horní části karty **iris_sklearn.py** výběrem otevřete rozevírací nabídku vedle ikony **Uložit** a pak vyberte **Konfigurace spuštění**. Jako spouštěcí prostředí vyberte **local** a jako skript ke spuštění zadejte `iris_sklearn.py`.
+4. Na panelu nástrojů v horní části karty **iris_sklearn.py** vyberte jako spouštěcí prostředí **local** a jako skript ke spuštění vyberte `iris_sklearn.py`.
 
-5. Pak se přesuňte na pravou stranu panelu nástrojů a do pole **Argumenty** zadejte `0.01`. 
+5. Pak se přesuňte na pravou stranu panelu nástrojů a do pole **Argumenty** zadejte `0.01`. Tato hodnota odpovídá míře regularizace modelu logistické regrese.
 
    ![Řízení spuštění](media/tutorial-classifying-iris/run_control.png)
 
 6. Vyberte tlačítko **Spustit**. Okamžitě se naplánuje úloha. Tato úloha se objeví v podokně **Úlohy** na pravé straně okna aplikace Workbench. 
 
-7. Po chvíli se stav úlohy změní z **Odesílání** na **Spuštěno** a pak na **Dokončeno**.
+7. Po chvíli se stav úlohy změní z **Odesílání** na **Spuštěno** a nakonec na **Dokončeno**.
 
    ![Spuštění skriptu sklearn](media/tutorial-classifying-iris/run_sklearn.png)
 
-8. V textu stavu úlohy na panelu **Úlohy** vyberte **Dokončeno**. Zobrazí se automaticky otevírané okno s textem standardního výstupu (stdout) spuštěného skriptu. Pokud chcete text standardního výstupu zavřít, vyberte tlačítko **Zavřít** (**x**) v pravém horním rohu automaticky otevíraného okna.
+8. V textu stavu úlohy na panelu **Úlohy** vyberte **Dokončeno**. Zobrazí se automaticky otevírané okno s textem standardního výstupu (stdout) spuštění. Pokud chcete text standardního výstupu zavřít, vyberte tlačítko **Zavřít** (**x**) v pravém horním rohu automaticky otevíraného okna.
 
 9. Ve stejném stavu úlohy v podokně **Úlohy** vyberte modrý text **iris_sklearn.py [n]** (_n_ je číslo spuštění) hned nad stavem **Dokončeno** a časem spuštění. Otevře se okno **Vlastnosti spuštění**, ve kterém se zobrazí následující informace o tomto konkrétním spuštění:
    - Informace o **vlastnostech spuštění**
-   - Soubory s **výstupy**
+   - **Výstupy**
+   - **Metriky**
    - **Vizualizace**, pokud nějaké existují
    - **Protokoly** 
 
    Po dokončení spuštění se v automaticky otevíraném okně zobrazí následující výsledky:
 
    >[!NOTE]
-   >Vzhledem k tomu, že jsme u cvičné sady použili náhodnost, se můžou vaše přesné výsledky mírně lišit od zde uvedených výsledků.
+   >Vzhledem k tomu, že jsme u cvičné sady použili náhodnost, vaše výsledky se můžou mírně lišit od zde uvedených výsledků.
 
    ```text
    Python version: 3.5.2 |Continuum Analytics, Inc.| (default, Jul  5 2016, 11:41:13) [MSC v.1900 64 bit (AMD64)]
@@ -148,9 +149,9 @@ Teď se připravíme na první spuštění skriptu **iris_sklearn.py**. Tento sk
 
 10. Zavřete kartu **Vlastnosti spuštění** a vraťte se na kartu **iris_sklearn.py**. 
 
-11. Opakujte další spuštění. 
+11. Opakujte pro další spuštění. 
 
-    Do pole **Argumenty** zadejte řadu různých číselných hodnot od `0.001` do `10`. Výběrem možnosti **Spustit** ještě několikrát spusťte kód. Hodnota argumentu, kterou pokaždé změníte, se předává algoritmu logistické regrese v kódu, takže se pokaždé zobrazí jiné závěry.
+    Do pole **Argumenty** zadejte řadu hodnot od `0.001` do `10`. Výběrem možnosti **Spustit** ještě několikrát spusťte kód. Hodnota argumentu, kterou pokaždé změníte, se předává modelu logistické regrese v kódu, takže se pokaždé zobrazí jiné závěry.
 
 ## <a name="review-the-run-history-in-detail"></a>Podrobná kontrola historie spuštění
 V aplikaci Azure Machine Learning Workbench se každé spuštění skriptu zaznamená v podobě záznamu historie spuštění. Pokud otevřete zobrazení **Spuštění**, můžete si prohlédnout historii spuštění určitého skriptu.
@@ -175,16 +176,16 @@ V aplikaci Azure Machine Learning Workbench se každé spuštění skriptu zazna
 
 ## <a name="execute-scripts-in-the-local-docker-environment"></a>Spouštění skriptů v místním prostředí Dockeru
 
-Pomocí služby Machine Learning můžete snadno konfigurovat další spouštěcí prostředí, jako je Docker, a spouštět v těchto prostředích skripty. 
+Můžete snadno nakonfigurovat další spouštěcí prostředí, jako je Docker, a spouštět skript v těchto prostředích. 
 
 >[!IMPORTANT]
->K provedení tohoto kroku je potřeba mít v místním počítači nainstalovaný a spuštěný modul Docker. Další informace najdete v pokynech k instalaci Dockeru.
+>K provedení tohoto kroku je potřeba mít v místním počítači nainstalovaný a spuštěný modul Docker. Další informace najdete v [pokynech k instalaci Dockeru](https://docs.docker.com/install/).
 
 1. Výběrem ikony **složky** v levém podokně otevřete seznam **Soubory** pro váš projekt. Rozbalte složku `aml_config`. 
 
-2. Je tu několik předkonfigurovaných prostředí, například **docker-python**, **docker-spark** a **local**. 
+2. Je tu několik předkonfigurovaných prostředí: **docker-python**, **docker-spark** a **local**. 
 
-   Každé prostředí má dva soubory, například `docker-python.compute` a `docker-python.runconfig`. Otevřete oba soubory a všimněte si, že v textovém editoru se dají konfigurovat některé možnosti.  
+   Každé prostředí obsahuje dva soubory, jako je například `docker.compute` (pro prostředí **docker-python** i **docker-spark**) a `docker-python.runconfig`. Otevřete oba soubory a všimněte si, že v textovém editoru se dají konfigurovat některé možnosti.  
 
    Pokud chcete zavřít karty otevřených textových editorů vyberte na nich **Zavřít** (**x**).
 
@@ -198,7 +199,7 @@ Pomocí služby Machine Learning můžete snadno konfigurovat další spouštěc
 
 4. Všimněte si, že se spustí nová úloha. Zobrazí se v podokně **Úlohy** na pravé straně okna aplikace Workbench.
 
-   Pokud spouštíte skript v prostředí Docker poprvé, bude zpracování trvat o několik minut déle. 
+   Pokud spouštíte skript v prostředí Docker poprvé, bude dokončení úlohy trvat o několik minut déle. 
 
    Aplikace Azure Machine Learning Workbench na pozadí sestaví nový soubor Docker. 
    Tento nový soubor odkazuje na základní image Dockeru zadanou v souboru `docker.compute` a závislé balíčky Pythonu zadané v souboru `conda_dependencies.yml`. 
@@ -211,9 +212,9 @@ Pomocí služby Machine Learning můžete snadno konfigurovat další spouštěc
     - Zkopíruje lokální kopii (nebo na ni podle konfigurace spuštění vytvoří odkaz) složky projektu.      
     - Spustí skript `iris_sklearn.py`.
 
-   Nakonec by se vám měl zobrazit naprosto stejný výsledek jako při použití prostředí **local**.
+   Nakonec by se vám měly zobrazit naprosto stejné výsledky jako při použití prostředí **local**.
 
-5. Teď vyzkoušíme prostředí Spark. Základní image Dockeru obsahuje předinstalovanou a nakonfigurovanou instanci prostředí Spark. Díky této instanci v ní můžete spustit skript PySpark. Je to snadný způsob, jak vyvíjet a testovat program v jazyce Spark, aniž byste museli ztrácet čas instalací a konfigurací prostředí Spark. 
+5. Teď vyzkoušíme prostředí Spark. Základní image Dockeru obsahuje předinstalovanou a nakonfigurovanou instanci prostředí Spark, kterou můžete použít ke spuštění skriptu PySpark. Je to snadný způsob, jak vyvíjet a testovat program Spark, aniž byste museli ztrácet čas instalací a konfigurací prostředí Spark. 
 
    Otevřete soubor `iris_spark.py`. Tento skript načte datový soubor `iris.csv` a klasifikuje datovou sadu Iris pomocí algoritmu logistické regrese z knihovny Spark Machine Learning. Teď změňte prostředí pro spuštění na **docker-spark** a skript na **iris_spark.py** a pak ho znovu spusťte. Tento proces trvá o něco déle, protože je potřeba vytvořit relaci Spark a spustit ji uvnitř kontejneru Docker. Můžete si taky všimnout, že standardní výstup se liší od standardního výstupu skriptu `iris_spark.py`.
 
@@ -242,7 +243,7 @@ Pomocí služby Machine Learning můžete snadno konfigurovat další spouštěc
    az account list -o table
    
    REM sets the current Azure subscription to the one you want to use
-   az account set -s <subscriptionId>
+   az account set -s <SubscriptionId>
    
    REM verifies that your current subscription is set correctly
    az account show
@@ -269,6 +270,7 @@ Pomocí služby Machine Learning můžete snadno konfigurovat další spouštěc
    REM executes iris_spark.py in the local Docker container Spark environment
    az ml experiment submit -c docker-spark .\iris_spark.py 0.1
    ```
+
 6. V aplikaci Workbench výběrem ikony **složky** v levém podokně zobrazte seznam souborů projektu a otevřete skript Pythonu s názvem **run.py**. 
 
    Tento skript slouží k vytvoření smyčky s různými mírami regularizace. Spusťte několikrát experiment s těmito mírami. Tento skript spustí úlohu `iris_sklearn.py` s mírou regularizace `10.0` (absurdně vysoké číslo). Skript v následujícím spuštění tuto míru o polovinu sníží a tak dále, dokud nedosáhne hodnoty `0.005`. 
@@ -283,17 +285,17 @@ Pomocí služby Machine Learning můžete snadno konfigurovat další spouštěc
        reg = reg / 2
    ```
 
-   Pokud chcete otevřít skript **run.py** z příkazového řádku, spusťte následující příkazy:
+   Pokud chcete spustit skript **run.py** z příkazového řádku, spusťte následující příkazy:
 
    ```cmd
    REM submits iris_sklearn.py multiple times with different regularization rates
    python run.py
    ```
 
-   Když se skript `run.py` dokončí, uvidíte v zobrazení seznamu historie spuštění v aplikaci Workbench graf.
+   Když se skript `run.py` dokončí, uvidíte v zobrazení seznamu historie spuštění v aplikaci Workbench grafy různých metrik.
 
 ## <a name="execute-in-a-docker-container-on-a-remote-machine"></a>Spuštění v kontejneru Docker ve vzdáleném počítači
-Pokud chcete skript spustit v kontejneru Docker ve vzdáleném počítači s Linuxem, potřebujete přístup SSH (uživatelské jméno a heslo) do tohoto vzdáleného počítače. Kromě toho musí být na vzdáleném počítači nainstalovaný a spuštěný modul Docker. Nejjednodušší způsob, jak takový počítač s Linuxem získat, spočívá ve vytvoření virtuálního počítače pro datové vědy se systémem Ubuntu v Azure. Přečtěte si víc o [postupu vytvoření virtuálního počítače pro datové vědy se systémem Ubuntu pro použití v aplikaci Azure ML Workbench](how-to-create-dsvm-hdi.md#create-an-ubuntu-dsvm-in-azure-portal).
+Pokud chcete skript spustit v kontejneru Docker ve vzdáleném počítači s Linuxem, potřebujete přístup SSH (uživatelské jméno a heslo) do tohoto vzdáleného počítače. Kromě toho musí být na počítači nainstalovaný a spuštěný modul Docker. Nejjednodušší způsob, jak takový počítač s Linuxem získat, spočívá ve vytvoření virtuálního počítače pro datové vědy se systémem Ubuntu v Azure. Přečtěte si víc o [postupu vytvoření virtuálního počítače pro datové vědy se systémem Ubuntu pro použití v aplikaci Azure ML Workbench](how-to-create-dsvm-hdi.md#create-an-ubuntu-dsvm-in-azure-portal).
 
 >[!NOTE] 
 >Virtuální počítače pro datové vědy se systémem CentOS se *nepodporují*.
@@ -308,6 +310,9 @@ Pokud chcete skript spustit v kontejneru Docker ve vzdáleném počítači s Lin
    >[!NOTE]
    >IP adresa může být také veřejně adresovatelný plně kvalifikovaný název domény, například `vm-name.southcentralus.cloudapp.azure.com`. Je vhodné přidat do virtuálního počítače pro datové vědy plně kvalifikovaný název domény a používat ho místo IP adresy. Tento postup je vhodný, protože z důvodu úspory nákladů můžete někdy chtít virtuální počítač vypnout. Kromě toho se může při příštím spuštění virtuálního počítače IP adresa změnit.
 
+   >[!NOTE]
+   >Kromě ověřování uživatelského jména a hesla můžete zadat privátní klíč a odpovídající heslo (pokud existuje) pomocí možností `--private-key-file` a (volitelně) `--private-key-passphrase`.
+
    Potom spusťte následující příkaz pro vytvoření image Dockeru ve virtuálním počítači, abyste ho připravili na spouštění skriptů:
    
    ```azurecli
@@ -315,17 +320,17 @@ Pokud chcete skript spustit v kontejneru Docker ve vzdáleném počítači s Lin
    az ml experiment prepare -c myvm
    ```
    >[!NOTE]
-   >Můžete také změnit hodnotu položky `PrepareEnvironment` v souboru `myvm.runconfig` z výchozí hodnoty `false` na `true`. Tato změna automaticky připraví kontejner Dockeru pro první spuštění.
+   >Můžete také změnit hodnotu položky `PrepareEnvironment` v souboru `myvm.runconfig` z výchozí hodnoty `false` na `true`. Tato změna automaticky připraví kontejner Dockeru v rámci prvního spuštění.
 
 2. Upravte vygenerovaný soubor `myvm.runconfig` ve složce `aml_config` a změňte rozhraní z výchozí hodnoty `PySpark` na `Python`:
 
    ```yaml
-   "Framework": "Python"
+   Framework: Python
    ```
    >[!NOTE]
-   >Pokud rozhraní necháte nastavené na hodnotu PySpark, mělo by také fungovat správně. Toto nastavení je ale neefektivní, pokud doopravdy nepotřebujete, aby váš skript Pythonu spouštěla relace Spark.
+   >Přestože by měl fungovat i PySpark, efektivnější je použít Python, pokud doopravdy nepotřebujete, aby váš skript Python spouštěla relace Spark.
 
-3. V okně CLI zadejte stejný příkaz jako předtím, jenom tentokrát s cílem _myvm_:
+3. V okně CLI zadejte stejný příkaz jako předtím, jenom tentokrát jako cíl použijte _myvm_:
    ```azurecli
    REM executes iris_sklearn.py in a remote Docker container
    az ml experiment submit -c myvm iris_sklearn.py
@@ -334,11 +339,11 @@ Pokud chcete skript spustit v kontejneru Docker ve vzdáleném počítači s Lin
 
 4. Teď si vyzkoušíme použití Sparku v kontejneru. Otevřete Průzkumníka souborů. Pokud znáte základní příkazy pro manipulaci se soubory, můžete to také udělat z okna CLI. Vytvořte kopii souboru `myvm.runconfig` a pojmenujte ji `myvm-spark.runconfig`. Upravte nový soubor tak, že změníte nastavení `Framework` z hodnoty `Python` na `PySpark`:
    ```yaml
-   "Framework": "PySpark"
+   Framework: PySpark
    ```
-   Neprovádějte žádné změny souboru `myvm.compute`. Pro provádění příkazu Spark se používá stejná image Dockeru ve stejném virtuálním počítači. V novém souboru `myvm-spark.runconfig` pole `target` odkazuje na stejný soubor `myvm.compute` prostřednictvím jeho názvu `myvm`.
+   Neprovádějte žádné změny souboru `myvm.compute`. Pro provádění příkazu Spark se používá stejná image Dockeru ve stejném virtuálním počítači. V novém souboru `myvm-spark.runconfig` pole `Target` odkazuje na stejný soubor `myvm.compute` prostřednictvím jeho názvu `myvm`.
 
-5. Zadáním následujícího příkazu ho spusťte v instanci Spark ve vzdáleném kontejneru Dockeru:
+5. Zadáním následujícího příkazu spusťte skript **iris_spark.py** v instanci Spark spuštěné ve vzdáleném kontejneru Dockeru:
    ```azureli
    REM executes iris_spark.py in a Spark instance on a remote Docker container
    az ml experiment submit -c myvm-spark .\iris_spark.py
@@ -363,9 +368,9 @@ Tento skript můžete také spustit v clusteru HDInsight Spark. Seznamte se s [p
    Plně kvalifikovaný název domény hlavního uzlu clusteru je obvykle `<cluster_name>-ssh.azurehdinsight.net`.
 
    >[!NOTE]
-   >`username` je uživatelské jméno SSH clusteru. Výchozí hodnota je `sshuser`, pokud ji nezměníte při nastavování služby HDInsight. Hodnota není `admin`, což je druhý uživatel vytvořený při nastavování za účelem povolení přístupu na web správce clusteru. 
+   >`username` je uživatelské jméno SSH clusteru. Výchozí hodnota je `sshuser`, pokud jste ji nezměnili při nastavování služby HDInsight. Hodnota není `admin`, což je druhý uživatel vytvořený při nastavování za účelem povolení přístupu na web správce clusteru. 
 
-2. Spusťte následující příkaz a skript se spustí v clusteru HDInsight:
+2. Spuštěním následujícího příkazu spusťte skript **iris_spark.py** v clusteru HDInsight:
 
    ```azurecli
    REM executes iris_spark on the HDInsight cluster
@@ -374,7 +379,6 @@ Tento skript můžete také spustit v clusteru HDInsight Spark. Seznamte se s [p
 
    >[!NOTE]
    >Při spouštění ve vzdáleném clusteru HDInsight můžete také pomocí uživatelského účtu `admin` zobrazit na adrese `https://<cluster_name>.azurehdinsight.net/yarnui` podrobnosti provádění úlohy YARN (Yet Another Resource Negotiator).
-
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -1,6 +1,6 @@
 ---
-title: "Možnosti účtu Azure Storage | Dokumentace Microsoftu"
-description: "Vysvětlení možností použití služby Azure Storage."
+title: Možnosti účtu Azure Storage | Dokumentace Microsoftu
+description: Vysvětlení možností použití služby Azure Storage.
 services: storage
 author: jirwin
 manager: jwillis
@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: jirwin
-ms.openlocfilehash: aa8704b9991dde639b50a5b6c9a27ad5cd08ad02
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2c69519b865169b477950bc8fa659d5ad9081bbf
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-storage-account-options"></a>Možnosti účtu Azure Storage
 
@@ -298,8 +298,8 @@ Pomocí některé z knihoven klienta Azure nebo rozhraní REST API služeb úlo�
 
 Další informace najdete v tématu [Začínáme se službou Azure Blob Storage](../blobs/storage-dotnet-how-to-use-blobs.md).
 
-> [!NOTE]
-> Objekty blob šifrované na straně klienta ukládají metadata šifrování uložená s objektem blob. Je potřeba, aby každý použitý mechanizmus kopírování zajistil zachování metadat objektů blob, především metadat šifrování. Pokud objekty blob zkopírujete bez těchto metadat, obsah objektů blob bude nenávratně ztracený. Další informace o metadatech šifrování najdete v tématu [Azure Storage a šifrování na straně klienta](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+> [!IMPORTANT]
+> Objekty blob šifrované na straně klienta ukládají metadata šifrování s objektem blob. Pokud kopírujete objekt blob šifrovaný na straně klienta, ujistěte se, že operace kopírování zachová metadata objektu blob, zejména metadata šifrování. Pokud objekt blob zkopírujete bez metadat šifrování, obsah objektu blob bude nenávratně ztracený. Další informace o metadatech šifrování najdete v tématu [Azure Storage a šifrování na straně klienta](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="faq"></a>Nejčastější dotazy
 

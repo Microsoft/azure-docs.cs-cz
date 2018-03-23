@@ -1,6 +1,6 @@
 ---
-title: "Partnerské vztahy virtuálních sítí v Azure | Dokumentace Microsoftu"
-description: "Seznamte se s partnerskými vztahy virtuálních sítí v Azure."
+title: Partnerské vztahy virtuálních sítí v Azure | Dokumentace Microsoftu
+description: Seznamte se s partnerskými vztahy virtuálních sítí v Azure.
 services: virtual-network
 documentationcenter: na
 author: NarayanAnnamalai
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: 7c384f07ec6b71596dcdbc5b7214fa7ce65d0b7d
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 23281067021dd6e4b8959fe73f3c8a11a651d9d2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -35,7 +35,7 @@ Mezi výhody použití partnerských vztahů virtuálních sítí patří:
 
 ## <a name="requirements-constraints"></a>Požadavky a omezení
 
-* Vytváření partnerských vztahů virtuálních sítí ve stejné oblasti je všeobecně dostupné. Virtuální sítě partnerských vztahů v různých oblastech je v současné době ve verzi Preview pro oblasti USA – středozápad, Střední Kanada, USA – západ 2, Korea – jih, Velká Británie – jih, Velká Británie – západ, Východní Kanada, Indie – jih, Indie – střed a Indie – západ. Před vytvořením partnerského vztahu virtuálních sítí v různých oblastech musíte nejprve [zaregistrovat své předplatné](virtual-network-create-peering.md#register) pro verzi Preview. Pokud nedokončíte registraci verze Preview, nebude pokus o vytvoření partnerského vztahu virtuálních sítí v různých oblastech úspěšný.
+* Vytváření partnerských vztahů virtuálních sítí ve stejné oblasti je všeobecně dostupné. Virtuální sítě partnerských vztahů v různých oblastech je v současné době ve verzi Preview pro oblasti USA – středozápad, Střední Kanada, USA – západ 2, Korea – jih, Velká Británie – jih, Velká Británie – západ, Východní Kanada, Indie – jih, Indie – střed a Indie – západ. Před vytvořením partnerského vztahu virtuálních sítí v různých oblastech musíte nejprve [zaregistrovat své předplatné](tutorial-connect-virtual-networks-powershell.md#register) pro verzi Preview. Pokud nedokončíte registraci verze Preview, nebude pokus o vytvoření partnerského vztahu virtuálních sítí v různých oblastech úspěšný.
     > [!WARNING]
     > Partnerské vztahy virtuálních sítí vytvořené mezi oblastmi nemusí dosahovat stejné úrovně dostupnosti a spolehlivosti jako partnerské vztahy ve verzi všeobecné dostupnosti. Partnerské vztahy virtuálních sítí můžou mít omezené možnosti a nemusí být dostupné ve všech oblastech Azure. Nejaktuálnější oznámení o dostupnosti a stavu této funkce najdete na stránce [Aktualizace služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -126,7 +126,7 @@ Za příchozí a výchozí přenos využívající partnerské propojení virtu�
 
     |Model nasazení Azure  | Předplatné  |
     |---------|---------|
-    |Obě Resource Manager |[Stejné](virtual-network-create-peering.md)|
+    |Obě Resource Manager |[Stejné](tutorial-connect-virtual-networks-portal.md)|
     | |[Různé](create-peering-different-subscriptions.md)|
     |Jedna Resource Manager, druhá Classic     |[Stejné](create-peering-different-deployment-models.md)|
     | |[Různé](create-peering-different-deployment-models-subscriptions.md)|

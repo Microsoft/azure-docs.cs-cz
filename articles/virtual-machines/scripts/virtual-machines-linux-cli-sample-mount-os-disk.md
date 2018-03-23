@@ -1,13 +1,13 @@
 ---
-title: "Ukázka skriptu Azure CLI - disk operačního systému připojit | Microsoft Docs"
-description: "Ukázka skriptu Azure CLI - připojení disku operačního systému"
+title: Ukázkový skript Azure CLI – Připojení disku s operačním systémem | Microsoft Docs
+description: Ukázkový skript Azure CLI – Připojení disku s operačním systémem
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c32ea5e6cade34a9c8dac0eab523ebcaa10ef039
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 7b9f1624426c7f401756310cd4fbe2789c29999d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="troubleshoot-a-vms-operating-system-disk"></a>Řešení potíží s diskem operačního systému virtuálních počítačů
+# <a name="troubleshoot-a-vms-operating-system-disk"></a>Řešení potíží s diskem s operačním systémem virtuálního počítače
 
-Tento skript připojí disk operačního systému virtuálního počítače se nezdařilo nebo problematické jako datový disk do druhého virtuálního počítače. To může být užitečné při řešení potíží s disku problémy nebo obnovení dat. 
+Tento skript připojí disk s operačním systémem virtuálního počítače, který selhal, nebo problematického virtuálního počítače jako datový disk ke druhému virtuálnímu počítači. To může být užitečné při řešení potíží s diskem nebo obnovování dat. 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -36,18 +36,18 @@ Tento skript připojí disk operačního systému virtuálního počítače se n
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, virtuální počítač a všechny související prostředky. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript k vytvoření skupiny prostředků, virtuálního počítače a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Zobrazit az virtuálních počítačů](https://docs.microsoft.com/cli/azure/vm#az_vm_show) | Vrátí seznam virtuálních počítačů. V takovém případě se používá možnost dotazu vrátit disku operačního systému virtuálního počítače. Tato hodnota se pak přidá k názvu proměnné 'uri'. |
-| [Odstranění virtuálního počítače az](https://docs.microsoft.com/cli/azure/vm#az_vm_delete) | Odstraní virtuální počítač. |
-| [Vytvoření virtuálního počítače az](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Vytvoří virtuální počítač.  |
-| [připojit disk az virtuálních počítačů](https://docs.microsoft.com/cli/azure/vm/disk#az_vm_disk_attach) | Disk se připojuje k virtuálnímu počítači. |
-| [virtuální počítač az seznam ip adres](https://docs.microsoft.com/cli/azure/vm#az_vm_list_ip_addresses) | Vrátí IP adresy virtuálního počítače. |
+| [az vm show](https://docs.microsoft.com/cli/azure/vm#az_vm_show) | Vrátí seznam virtuálních počítačů. V tomto případě se možnost dotazu používá k vrácení disku s operačním systémem virtuálního počítače. Tato hodnota se pak přidá do proměnné uri. |
+| [az vm delete](https://docs.microsoft.com/cli/azure/vm#az_vm_delete) | Odstraní virtuální počítač. |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Vytvoří virtuální počítač.  |
+| [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#az_vm_disk_attach) | Připojí disk k virtuálnímu počítači. |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list_ip_addresses) | Vrátí IP adresy virtuálního počítače. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Ukázky skriptu rozhraní příkazového řádku další virtuální počítač nachází v [virtuální počítač Azure s Linuxem dokumentaci](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Linuxem](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

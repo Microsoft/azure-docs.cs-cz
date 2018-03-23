@@ -1,8 +1,8 @@
 ---
-title: "Kurz – Přiřazení přístupu do služby Azure Cost Management | Microsoft Docs"
-description: "V tomto kurzu zjistíte, jak přiřadit přístup k datům služby Cost Management pomocí uživatelských účtů, které určují úroveň přístupu k entitám."
+title: Kurz – Přiřazení přístupu do služby Azure Cost Management | Microsoft Docs
+description: V tomto kurzu zjistíte, jak přiřadit přístup k datům služby Cost Management pomocí uživatelských účtů, které určují úroveň přístupu k entitám.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/27/2018
@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0e2edc946c5d6ada1049fbd6a960ec138f7088f2
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6434eb9780eefdcd492273f11f8675668d8d6479
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Kurz: Přiřazení přístupu k datům služby Cost Management
 
@@ -54,7 +54,7 @@ Běžní uživatelé, které potřebují přístup k datům služby Cost Managem
 
 ![Přidání nového uživatele s uživatelským přístupem](.\media\tutorial-user-access\new-user-access.png)
 
-Pokud se chcete podívat na výukové video o přidávání uživatelů, přejděte na video [Přidávání uživatelů do služby Azure Cost Management od Cloudyn](https://youtu.be/Nzn7GLahx30).
+Pokud chcete zhlédnout výukové video o přidávání uživatelů, podívejte se na video [Adding Users to Azure Cost Management](https://youtu.be/Nzn7GLahx30) (Přidávání uživatelů do služby Azure Cost Management).
 
 ## <a name="create-entities"></a>Vytváření entit
 
@@ -75,9 +75,9 @@ Vedle položky **Entities** (Entity) klikněte na **Add Entity** (Přidat entitu
 Po dokončení uložte entitu kliknutím na **Save** (Uložit).
 
 
-Pokud se chcete podívat na výukové video o vytváření nákladové hierarchie entit, přejděte na video [Vytváření nákladové hierarchie entit ve službě Azure Cost Management od Cloudyn](https://youtu.be/dAd9G7u0FmU).
+Pokud chcete zhlédnout výukové video o vytváření nákladové hierarchie entit, podívejte se na video [Creating a Cost Entity Hierarchy in Azure Cost Management](https://youtu.be/dAd9G7u0FmU) (Vytváření nákladové hierarchie entit ve službě Azure Cost Management).
 
-Pokud se uživatel se smlouvou Azure Enterprise, podívejte se na výukové video o přiřazení účtů a předplatných k entitám [Připojení k Azure Resource Manageru ve službě Azure Cost Management od Cloudyn](https://youtu.be/oCIwvfBB6kk).
+Pokud jste uživatel se smlouvou Azure Enterprise, podívejte se na výukové video o přiřazování účtů a předplatných k entitám [Connecting to Azure Resource Manager with Azure Cost Management](https://youtu.be/oCIwvfBB6kk) (Připojení k Azure Resource Manageru ve službě Azure Cost Management).
 
 ## <a name="next-steps"></a>Další kroky
 

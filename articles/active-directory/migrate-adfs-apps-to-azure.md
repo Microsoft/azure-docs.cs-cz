@@ -1,6 +1,6 @@
 ---
-title: "Migrace místních aplikací AD FS do Azure | Dokumenty Microsoft"
-description: "Účelem tohoto dokumentu je pomoct organizacím porozumět postupu při migraci místních aplikací do služby Azure AD se zaměřením na federované aplikace SaaS."
+title: Migrace místních aplikací AD FS do Azure | Dokumenty Microsoft
+description: Účelem tohoto dokumentu je pomoct organizacím porozumět postupu při migraci místních aplikací do služby Azure AD se zaměřením na federované aplikace SaaS.
 services: active-directory
 author: billmath
 manager: mtillman
@@ -9,13 +9,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/29/2018
+ms.date: 03/02/2018
 ms.author: billmath
-ms.openlocfilehash: ec0731534da2543d48bedc575bf882b790fa136b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f1256e2fefe1ad3d37403f37804888ab9dcf6e99
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migrace místních aplikací AD FS do Azure 
 
@@ -115,11 +115,11 @@ Následující tabulka obsahuje podrobnější popis klíčových elementů konf
 
 |Element konfigurace|Popis|AD FS|Azure AD|
 |---|---|---|---|
-|Přihlašovací </br>adresa URL </br>zprostředkovatele identity|Přihlašovací adresa URL zprostředkovatele identity z pohledu aplikace (kam se uživatel přesměruje kvůli přihlášení).|Přihlašovací adresa URL služby AD FS je název federační služby AD FS, za kterým následuje /adfs/ls/, například: https&#58;//fs.contoso.com/adfs/ls/|Odpovídající hodnota pro službu Azure AD má následující formát, kde se {ID_tenanta} nahradí za ID vašeho tenanta, které se nachází na webu Azure Portal v části Azure Active Directory -> Vlastnosti jako ID adresáře.</br></br>Aplikace používající protokol SAML-P: https&#58;//login.microsoftonline.com</br>/{ID_tenanta}/saml2 </br></br>Aplikace používající protokol WS-Federation: https&#58;//login.microsoftonline.com</br>/{ID_tenanta}/wsfed|
+|Federační </br>adresa URL </br>zprostředkovatele identity|Přihlašovací adresa URL zprostředkovatele identity z pohledu aplikace (kam se uživatel přesměruje kvůli přihlášení).|Přihlašovací adresa URL služby AD FS je název federační služby AD FS, za kterým následuje /adfs/ls/, například: https&#58;//fs.contoso.com/adfs/ls/|Odpovídající hodnota pro službu Azure AD má následující formát, kde se {ID_tenanta} nahradí za ID vašeho tenanta, které se nachází na webu Azure Portal v části Azure Active Directory -> Vlastnosti jako ID adresáře.</br></br>Aplikace používající protokol SAML-P: https&#58;//login.microsoftonline.com</br>/{ID_tenanta}/saml2 </br></br>Aplikace používající protokol WS-Federation: https&#58;//login.microsoftonline.com</br>/{ID_tenanta}/wsfed|
 |Odhlašovací </br>adresa URL </br>zprostředkovatele identity|Odhlašovací adresa URL zprostředkovatele identity z pohledu aplikace (kam se uživatel přesměruje, když se rozhodne odhlásit z aplikace).|Pro službu AD FS je odhlašovací adresa URL buď stejná jako přihlašovací adresa URL, nebo stejná adresa URL, ke které je připojeno wa=wsignout1.0, například https&#58;//fs.contoso.com/adfs/ls?wa=wsignout1.0.|Odpovídající hodnota pro službu Azure AD závisí na tom, jestli je aplikace schopná podporovat odhlašování přes protokol SAML 2.0.</br></br>Pokud aplikace podporuje odhlašování přes protokol SAML, hodnota má následující formát, kde se hodnota {ID_tenanta} nahradí za ID tenanta, které se nachází na webu Azure Portal v části Azure Active Directory -> Vlastnosti jako ID adresáře. https&#58;//login.microsoftonline.com</br>/{ID_tenanta}/saml2</br></br>Pokud aplikace nepodporuje odhlašování přes protokol SAML: https&#58;//login.microsoftonline.com</br>/common/wsfederation?wa=wsignout1.0|
-|Podpisový </br>certifikát </br>tokenů|Certifikát, jehož privátní klíč používá zprostředkovatel identity k podepisování vydaných tokenů.  Ověřuje, že token pochází ze stejného zprostředkovatele identity, kterému aplikace podle konfigurace důvěřuje.|Podpisový certifikát tokenu AD FS se nachází ve správě služby AD FS v části Certifikáty.|Ve službě Azure AD se podpisový certifikát tokenu nachází na webu Azure Portal ve vlastnostech jednotného přihlašování aplikace pod nadpisem Podpisový certifikát SAML, kde můžete certifikát stáhnout, abyste ho mohli nahrát do aplikace.</br></br>  Pokud má aplikace více než jeden certifikát, pak se všechny certifikáty nacházejí v souboru XML s federačními metadaty.|
+|Podpisový </br>certifikát </br>Certifikát|Certifikát, jehož privátní klíč používá zprostředkovatel identity k podepisování vydaných tokenů.  Ověřuje, že token pochází ze stejného zprostředkovatele identity, kterému aplikace podle konfigurace důvěřuje.|Podpisový certifikát tokenu AD FS se nachází ve správě služby AD FS v části Certifikáty.|Ve službě Azure AD se podpisový certifikát tokenu nachází na webu Azure Portal ve vlastnostech jednotného přihlašování aplikace pod nadpisem Podpisový certifikát SAML, kde můžete certifikát stáhnout, abyste ho mohli nahrát do aplikace.</br></br>  Pokud má aplikace více než jeden certifikát, pak se všechny certifikáty nacházejí v souboru XML s federačními metadaty.|
 |Identifikátor / </br>Vystavitel|Identifikátor zprostředkovatele identity z pohledu aplikace (někdy se označuje jako Vystavitel nebo ID vystavitele).</br></br>V tokenu SAML se hodnota zobrazí jako element Issuer.|Identifikátor pro službu AD FS je obvykle Identifikátor federační služby ve správě služby AD FS v části Služba -> Upravit vlastnosti služby FS (Federation Service).  Příklad: http&#58;//fs.contoso.com/adfs/services/trust|Odpovídající hodnota pro službu Azure AD má následující formát, kde se hodnota {ID_tenanta} nahradí za ID tenanta, které se nachází na webu Azure Portal v části Azure Active Directory -> Vlastnosti jako ID adresáře.  https&#58;//sts.windows.net/{ID_tenanta}/|
-|Federační </br>metadata </br>zprostředkovatele identity|Umístění veřejně dostupných federačních metadat zprostředkovatele identity.  (Federační metadata se v některých aplikacích používají jako alternativa ke konfiguraci adres URL, identifikátoru a podpisového certifikátu tokenu správcem)|Adresu URL federačních metadat služby AD FS najdete ve správě služby AD FS v části Služba -> Koncové body -> Metadata ->Typ: Federační metadata, například: https&#58;//fs.contoso.com/ FederationMetadata/2007-06/</br>FederationMetadata.xml|Odpovídající hodnota pro službu Azure AD má formát https&#58;//login.microsoftonline.com</br>/{název_domény_tenanta}/FederationMetadata/2007-06/</br>FederationMetadata.xml, kde se hodnota {název_domény_tenanta} nahradí názvem vašeho tenanta ve formátu contoso.onmicrosoft.com. </br></br>[Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-federation-metadata) o federačních metadatech ve službě Azure AD.
+|Federační </br>metadata </br>Metadata|Umístění veřejně dostupných federačních metadat zprostředkovatele identity.  (Federační metadata se v některých aplikacích používají jako alternativa ke konfiguraci adres URL, identifikátoru a podpisového certifikátu tokenu správcem)|Adresu URL federačních metadat služby AD FS najdete ve správě služby AD FS v části Služba -> Koncové body -> Metadata ->Typ: Federační metadata, například: https&#58;//fs.contoso.com/ FederationMetadata/2007-06/</br>FederationMetadata.xml|Odpovídající hodnota pro službu Azure AD má formát https&#58;//login.microsoftonline.com</br>/{název_domény_tenanta}/FederationMetadata/2007-06/</br>FederationMetadata.xml, kde se hodnota {název_domény_tenanta} nahradí názvem vašeho tenanta ve formátu contoso.onmicrosoft.com. </br></br>[Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-federation-metadata) o federačních metadatech ve službě Azure AD.
 
 ## <a name="migrating-saas-apps"></a>Migrace aplikací SaaS
 V současné době se migrace aplikací SaaS ze služby AD FS nebo jiného zprostředkovatele identity do služby Azure AD provádí ručně. Pokyny pro konkrétní aplikaci [najdete v seznamu kurzů integrace aplikací SaaS v galerii](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
@@ -166,7 +166,7 @@ V současné době není možné migrovat aplikace, které vyžadují následuj�
 - Možnosti deklarací identity v rámci tokenů
     - Vystavování názvů místních skupin jako deklarací identity
     - Deklarace identity z jiných úložišť než služba Azure AD
-    - Komplexní pravidla transformace vystavování deklarací identity (informace o podporovaných mapováních deklarací identity najdete v tomto a tomto dokumentu)
+    - Komplexní pravidla transformace vystavování deklarací identity (informace o podporovaných mapováních deklarací identity najdete v [tomto](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) a [tomto](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization) dokumentu)
     - Vystavování rozšíření adresáře jako deklarací identity
     - Vlastní specifikace formátu NameID
     - Vystavování atributů s více hodnotami

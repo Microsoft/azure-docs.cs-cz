@@ -1,14 +1,14 @@
 ---
-title: "Rozhraní příkazového řádku Azure ukázkový skript – vytvoření clusteru Kubernetes Linux ACS | Microsoft Docs"
-description: "Rozhraní příkazového řádku Azure ukázkový skript – vytvoření clusteru Kubernetes Linux ACS"
+title: Ukázkový skript Azure CLI – Vytvoření clusteru ACS Kubernetes s Linuxem | Microsoft Docs
+description: Ukázkový skript Azure CLI – Vytvoření clusteru ACS Kubernetes s Linuxem
 services: container-service
-documentationcenter: 
+documentationcenter: ''
 author: neilpeterson
 manager: timlt
-editor: 
+editor: ''
 tags: acs, azure-container-service
-keywords: "Docker, Kontejnery, mikroslužby, Kubernetes, DC/OS, Azure"
-ms.assetid: 
+keywords: Docker, Kontejnery, mikroslužby, Kubernetes, DC/OS, Azure
+ms.assetid: ''
 ms.service: container-service
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: 1a2672af6428b9db83f3c916897d25de38035531
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 7d9b689ef9746c152fcc98a47a022fcbe9a8a6bb
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="create-an-azure-container-service-kubernetes-linux-cluster"></a>Vytvoření clusteru Azure Container Service Kubernetes Linux
+# <a name="create-an-azure-container-service-kubernetes-linux-cluster"></a>Vytvoření clusteru Azure Container Service Kubernetes s Linuxem
 
-Tato ukázka vytvoří cluster služby Azure Container Service spuštěná Kubernetes pro kontejnery založenými na systému Linux.
+Tato ukázka vytvoří cluster Azure Container Service s Kubernetes pro kontejnery založené na Linuxu.
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -44,7 +44,7 @@ az acs create \
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -52,16 +52,16 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření nasazení. Každou položku v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript pomocí následujících příkazů vytvoří nasazení. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Vytvoření skupiny az](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky. |
-| [vytvoření služby acs az](https://docs.microsoft.com/cli/azure/acs#az_acs_create) | Vytvoří a cluster služby ACS. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az acs create](https://docs.microsoft.com/cli/azure/acs#az_acs_create) | Vytvoří cluster ACS. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Další ukázky skript příkazového řádku Azure Container Service najdete v [dokumentace Azure Container Service](../cli-samples.md).
+Další ukázkové skripty rozhraní příkazového řádku Azure Container Service najdete v [dokumentaci k Azure Container Service](../cli-samples.md).
 

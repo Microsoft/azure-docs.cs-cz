@@ -1,23 +1,23 @@
 ---
-title: "Rychlý start – Vytvoření privátního registru Dockeru v Azure pomocí webu Azure Portal"
-description: "Rychle se naučíte, jak vytvořit privátní registr Dockeru pomocí webu Azure Portal."
+title: Rychlý start – Vytvoření privátního registru Dockeru v Azure pomocí webu Azure Portal
+description: Rychle se naučíte, jak vytvořit privátní registr Dockeru pomocí webu Azure Portal.
 services: container-registry
 author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 12/06/2017
+ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 1a4c5b365b93b30987ff6541aba762cbf8a4b7a5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: db112f7f8f486093509a86f9781c30133925c25f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>Vytvoření registru kontejnerů pomocí webu Azure Portal
 
-Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete ukládat a spravovat privátní image kontejnerů Dockeru. V tomto rychlém startu vytvoříte registr kontejnerů pomocí webu Azure Portal.
+Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete ukládat a spravovat privátní image kontejnerů Dockeru. V tomto rychlém startu pomocí webu Azure Portal vytvoříte registr kontejneru, nasdílíte do registru image kontejneru a nakonec nasadíte kontejner z registru do služby Azure Container Instances (ACI).
 
 K dokončení tohoto rychlého startu je potřeba místně nainstalovaný Docker. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakémkoli [Macu][docker-mac] nebo systému [Windows][docker-windows] či [Linux][docker-linux].
 
@@ -73,13 +73,13 @@ docker pull microsoft/aci-helloworld
 
 Před nasdílením image do registru k ní musíte přidat značku s názvem přihlašovacího serveru služby ACR. Označte image pomocí příkazu [docker tag][docker-tag]. Nahraďte *login server* názvem přihlašovacího serveru, který jste si poznamenali dříve.
 
-```
+```bash
 docker tag microsoft/aci-helloworld <login server>/aci-helloworld:v1
 ```
 
 Nakonec pomocí příkazu [docker push][docker-push] nasdílejte image do instance služby ACR. Nahraďte *login server* názvem přihlašovacího serveru vaší instance služby ACR.
 
-```
+```bash
 docker push <login server>/aci-helloworld:v1
 ```
 
@@ -104,15 +104,43 @@ V tomto příkladu vybereme úložiště **aci-helloworld** a v části **ZNAČK
 
 ![Vytvoření registru kontejnerů na webu Azure Portal][qs-portal-09]
 
+## <a name="deploy-image-to-aci"></a>Nasazení image do služby ACI
+
+Abychom mohli do instance nasadit image z registru, musíme přejít do úložiště (aci-helloworld) a pak kliknout na tři tečky vedle v1.
+
+![Spuštění instance kontejneru Azure z portálu][qs-portal-10]
+
+Zobrazí se místní nabídka, ve které vyberte **Spustit instanci**:
+
+![Spuštění ACI – Místní nabídka][qs-portal-11]
+
+Vyplňte **Název kontejneru**, ujistěte se, že je vybrané správné předplatné, vyberte existující **skupinu prostředků** myResourceGroup a pak kliknutím na **OK** spusťte instanci kontejneru Azure.
+
+![Spuštění ACI – Možnosti nasazení][qs-portal-12]
+
+Po zahájení nasazení se na váš řídicí panel portálu umístí dlaždice oznamující průběh nasazování. Po dokončení nasazení se dlaždice aktualizuje a zobrazí novou skupinu kontejnerů **mycontainer**.
+
+![Stav nasazení ACI][qs-portal-13]
+
+Vyberte skupinu kontejnerů mycontainer a zobrazte její vlastnosti. Poznamenejte si **IP adresu** skupiny kontejnerů a také **STAV** kontejneru.
+
+![Podrobnosti o kontejneru ACI][qs-portal-14]
+
+## <a name="view-the-application"></a>Zobrazení aplikace
+
+Jakmile bude kontejner ve stavu **Spuštěno**, v oblíbeném prohlížeči přejděte na IP adresu, kterou jste si poznamenali v předchozím kroku, a zobrazte aplikaci.
+
+![Aplikace Hello World v prohlížeči][qs-portal-15]
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už ji nepotřebujete, odstraňte skupinu prostředků **myResourceGroup**. Tím se odstraní skupina prostředků, instance služby ACR a všechny image kontejneru.
+Pokud chcete vyčistit prostředky, přejděte na portálu do skupiny prostředků **myResourceGroup**. Po načtení skupiny prostředků kliknutím na **Odstranit skupinu prostředků** odeberte skupinu prostředků, službu Azure Container Registry a všechny instance kontejnerů Azure.
 
 ![Vytvoření registru kontejnerů na webu Azure Portal][qs-portal-08]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili službu Azure Container Registry pomocí webu Azure Portal. Pokud chcete používat službu Azure Container Registry se službou Azure Container Instances, přejděte na kurz služby Azure Container Instances.
+V tomto rychlém startu jste pomocí Azure CLI vytvořili službu Azure Container Registry a prostřednictvím služby Azure Container Instances jste spustili její instanci. Pokračujte ke kurzu služby Azure Container Instances, kde najdete podrobnější přehled ACI.
 
 > [!div class="nextstepaction"]
 > [Kurzy služby Azure Container Instances][container-instances-tutorial-prepare-app]
@@ -127,6 +155,12 @@ V tomto rychlém startu jste vytvořili službu Azure Container Registry pomocí
 [qs-portal-07]: ./media/container-registry-get-started-portal/qs-portal-07.png
 [qs-portal-08]: ./media/container-registry-get-started-portal/qs-portal-08.png
 [qs-portal-09]: ./media/container-registry-get-started-portal/qs-portal-09.png
+[qs-portal-10]: ./media/container-registry-get-started-portal/qs-portal-10.png
+[qs-portal-11]: ./media/container-registry-get-started-portal/qs-portal-11.png
+[qs-portal-12]: ./media/container-registry-get-started-portal/qs-portal-12.png
+[qs-portal-13]: ./media/container-registry-get-started-portal/qs-portal-13.png
+[qs-portal-14]: ./media/container-registry-get-started-portal/qs-portal-14.png
+[qs-portal-15]: ./media/container-registry-get-started-portal/qs-portal-15.png
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

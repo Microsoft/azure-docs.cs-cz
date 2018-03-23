@@ -1,6 +1,6 @@
 ---
-title: "Migrace virtuálních počítačů z AWS do Azure pomocí Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje migraci virtuálních počítačů s Windows na platformě Amazon Web Services (AWS) do Azure pomocí Azure Site Recovery."
+title: Migrace virtuálních počítačů z AWS do Azure pomocí Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje migraci virtuálních počítačů s Windows na platformě Amazon Web Services (AWS) do Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -133,7 +133,7 @@ Na stránce **Připravit zdroj** klikněte na **+ Konfigurační server**.
 
 6. Na virtuálním počítači spusťte **cspsconfigtool.exe**, pomocí kterého vytvoříte na konfiguračním serveru jeden nebo více účtů pro správu. Ujistěte se, že účty pro správu mají oprávnění správce na instancích EC2, které chcete migrovat.
 
-Po dokončení nastavení konfiguračního serveru přejděte zpátky na portál Azure Portal, vyberte server, který jste právě vytvořili jako **Konfigurační server**, a klikněte na *OK**, abyste přešli na třetí krok.
+Po dokončení nastavení konfiguračního serveru přejděte zpátky na portál Azure Portal, vyberte server, který jste právě vytvořili jako **Konfigurační server**, a klikněte na *OK** , abyste přešli na třetí krok.
 
 ### <a name="3-target-prepare"></a>3 Příprava cíle
 

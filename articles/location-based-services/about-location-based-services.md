@@ -1,25 +1,29 @@
 ---
-title: "Azure Location Based Services – přehled | Dokumentace Microsoftu"
-description: "Úvod do služeb Azure Location Based Services (Preview)"
+title: Azure Location Based Services – přehled | Dokumentace Microsoftu
+description: Úvod do služeb Azure Location Based Services (Preview)
 services: location-based-services
-keywords: 
-author: dsk-2015
-ms.author: dkshir
-ms.date: 02/05/2017
+keywords: ''
+author: kgremban
+ms.author: kgremban
+ms.date: 02/05/2018
 ms.topic: overview
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 9e6236f7d69556d7636962c98886d9f9508445ac
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 91df49aa3f522ea765698a1d64ed2686606f71f3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="an-introduction-to-azure-location-based-services-preview"></a>Úvod do služeb Azure Location Based Services (Preview)
 Azure Location Based Services je portfolio geoprostorových služeb, mezi které patří rozhraní API pro mapy, vyhledávání, trasy, provoz a časová pásma. Portfolio služeb odpovídajících standardu Azure OneAPI umožňuje používat známé nástroje pro vývojáře k rychlému vývoji a škálování komponent, které integrují informace o poloze do vašich řešení v Azure. Azure Location Based Services poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce společně s čerstvými mapovými daty, které jsou nezbytné k zajištění geografického kontextu pro webové a mobilní aplikace. Azure Location Based Services je sada rozhraní odpovídajících standardu Azure One API doplněná o webové řízení v JavaScriptu pro zajištění snadného, flexibilního a přenositelného vývoje napříč různými médii. 
+
+Následující video představuje Azure Location Based Services.
+
+<iframe src="https://channel9.msdn.com/Shows/Azure-Friday/Azure-Location-Based-Services/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
 Služby Azure Location Based Services se skládají z pěti primární služeb pro podporu aplikací v Azure, které vyžadují geografický kontext. Každá ze služeb je podrobně popsána níže.
 
@@ -64,6 +68,16 @@ Služby Azure Location Based Services se skládají z pěti primární služeb p
 Služby Azure Location Based Services jsou navržené pro mobilní aplikace a je možné na nich založit i víceplatformní aplikace, protože jejich programovací model je agnostický a podporuje výstup JSON prostřednictvím rozhraní REST API. Kromě toho služby Azure LBS nabízejí pohodlný javascriptový ovládací prvek mapy s jednoduchým programovacím modelem pro rychlý a snadný vývoj webových i mobilních aplikací. 
 
 Služby Azure Location Based Services používá schéma ověřování na základě klíčů, takže přístup ke služby je otázkou přechodu na web [Azure Portal](http://portal.azure.com) a vytvoření účtu Azure Location Based Services. V účtu budou pro vás předem vygenerované dva klíče. Při zahájení integrace těchto polohových služeb do vaší aplikace můžete v požadavcích na službu Azure Location Based Services použít kterýkoli z obou klíčů.
+
+## <a name="unsupported-regions"></a>Nepodporované oblasti
+Naše rozhraní API není aktuálně dostupné v následujících zemích. Zkontrolujte aktuální IP adresu a ověřte, že umístění této IP adresy není v jedné z nepodporovaných zemích níže.
+
+* Argentina
+* Čína
+* Indie
+* Maroko
+* Pákistán
+* Jižní Korea
 
 ## <a name="relationship-with-bing-maps"></a>Vztah ke službě Mapy Bing
 Služby Azure Location Based Services popsané v tomto dokumentu se liší od těch, které poskytuje služba Mapy Bing.  Přestože tyto dvě služby sdílejí velmi podobné funkce, jsou rozdílné a vzájemně nesouvisejí.  Dostupnost této nové služby, která se bude spravovat samostatně, neovlivní plány nebo nabídku produktů Mapy Bing.
