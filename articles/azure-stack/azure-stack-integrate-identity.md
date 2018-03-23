@@ -1,20 +1,20 @@
 ---
-title: "Zásobník datacenter integrace se službou Azure - Identity"
-description: "Zjistěte, jak integrovat zásobník Azure AD FS s vaším datovým centrem služby AD FS"
+title: Zásobník datacenter integrace se službou Azure - Identity
+description: Zjistěte, jak integrovat zásobník Azure AD FS s vaším datovým centrem služby AD FS
 services: azure-stack
 author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/20/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
-ms.openlocfilehash: 9e71707f13a14cb4cd0bc9cc7cd7d13dd7bb38e5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+keywords: ''
+ms.openlocfilehash: 3180b24454fc49a34a40bdf2873fad1d56173e3d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Zásobník datacenter integrace se službou Azure - Identity
 Zásobník Azure pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je nutné provést před nasazením Azure zásobníku. Nasazení pomocí služby AD FS se také označuje jako nasazení Azure zásobníku v odpojeném režimu.
@@ -334,4 +334,4 @@ Pokud žádné z rutiny selže, můžete shromažďovat další protokoly pomoc�
 
 ## <a name="next-steps"></a>Další postup
 
-[Zaregistrovat Azure zásobníku](azure-stack-registration.md)
+[Integrovat externí řešení monitorování](azure-stack-integrate-monitor.md)

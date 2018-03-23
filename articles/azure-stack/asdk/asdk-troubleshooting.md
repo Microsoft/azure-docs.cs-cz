@@ -1,25 +1,25 @@
 ---
-title: "Řešení potíží s Microsoft Azure zásobníku | Microsoft Docs"
-description: "Azure zásobníku Development Kit (ASDK) informace o odstraňování potíží."
+title: Řešení potíží s Microsoft Azure zásobníku | Microsoft Docs
+description: Azure zásobníku Development Kit (ASDK) informace o odstraňování potíží.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 6ed3fb7c7c4de9edbf31fb2c47290e2e39ceadcd
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6c715f07f75c9196b7cf2cc8659c6e541e1260da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Řešení potíží s Microsoft Azure zásobníku Development Kit (ASDK)
 Tento dokument obsahuje společné informace o odstraňování potíží pro ASDK. Pokud dochází k problému, který není dokumentováno, nezapomeňte zaškrtnout [fórum MSDN zásobník Azure](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) informace a další pomoc.  
@@ -31,7 +31,12 @@ Doporučení pro odstraňování problémů, které jsou popsané v této část
 
 ## <a name="deployment"></a>Nasazení
 ### <a name="deployment-failure"></a>Nasazení se nezdařilo.
-Pokud dojde k selhání během instalace, můžete restartovat nasazení z vadný krok pomocí-znovu spusťte možnost skriptu nasazení.  
+Pokud dojde k selhání během instalace, můžete restartovat nasazení z vadný krok pomocí-znovu spusťte možnost skriptu nasazení jako v následujícím příkladu:
+
+  ```powershell
+  cd C:\CloudDeployment\Setup
+  .\InstallAzureStackPOC.ps1 -Rerun
+  ```
 
 ### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>Na konci nasazení relaci prostředí PowerShell je stále otevřen a nezobrazí žádný výstup
 Toto chování je pravděpodobně právě výsledek výchozí chování příkazové okno prostředí PowerShell, pokud byla vybrána. Development kit nasazení proběhla úspěšně, ale skript byla pozastavena při výběru okna. Můžete ověřit, že instalační program dokončil tak, že vyhledá slovo "Vyberte" v záhlaví příkazové okno. Stisknutím klávesy ESC zrušte jeho výběr a po ní se má zobrazit zpráva dokončení.

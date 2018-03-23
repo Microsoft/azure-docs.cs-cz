@@ -1,24 +1,24 @@
 ---
-title: "Pomocí privilegované koncový bod v zásobníku Azure | Microsoft Docs"
-description: "Ukazuje, jak používat privilegované koncový bod (období) v zásobníku Azure (pro operátor zásobník Azure)."
+title: Pomocí privilegované koncový bod v zásobníku Azure | Microsoft Docs
+description: Ukazuje, jak používat privilegované koncový bod (období) v zásobníku Azure (pro operátor zásobník Azure).
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: e94775d5-d473-4c03-9f4e-ae2eada67c6c
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: 29ac4517ec691f94f24ced81ca227cd4d1e7214e
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fb4dea9832e781b2ec9f4cfa573b5a4f630188db
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Pomocí privilegované koncový bod v Azure zásobníku
 
@@ -74,7 +74,7 @@ Doporučujeme vám, že se připojit k období pouze z hostitele životního cyk
       ```` 
    Pokud budete vyzváni, použijte následující pověření:
 
-      - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *zásobník Azure domény*&gt;\cloudadmin**. (Pro ASDK, uživatelské jméno je **azurestack\cloudadmin**.)
+      - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *zásobník Azure domény*&gt;\accountname**. (Pro ASDK, uživatelské jméno je **azurestack\accountname**.) 
       - **Heslo**: Zadejte stejné heslo, které jste zadali během instalace pro účet správce domény AzureStackAdmin.
     
 3.  Když se připojíte, řádku se změní na **[*ERCS virtuálního počítače nebo IP adresu název*]: PS >** nebo **[azs-ercs01]: PS >**, v závislosti na prostředí. Odtud spustit `Get-Command` zobrazíte seznam dostupných rutin.
@@ -143,7 +143,7 @@ Chcete-li importovat období relaci na místním počítači, proveďte následu
       ```` 
    Pokud budete vyzváni, použijte následující pověření:
 
-      - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *zásobník Azure domény*&gt;\cloudadmin**. (Pro ASDK, uživatelské jméno je **azurestack\cloudadmin**.)
+      - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *zásobník Azure domény*&gt;\accountname**. (Pro ASDK, uživatelské jméno je **azurestack\accountname**.) 
       - **Heslo**: Zadejte stejné heslo, které jste zadali během instalace pro účet správce domény AzureStackAdmin.
 
 3. Importovat období relace do místního počítače
@@ -161,7 +161,7 @@ K ukončení relace koncového bodu:
 
 1. Vytvoření externí sdílené složky, která je přístupná pomocí období. Ve vývojovém prostředí sady právě vytvoříte sdílenou složku na hostiteli development kit.
 2. Spustit `Close-PrivilegedEndpoint` rutiny. 
-3. Se zobrazí výzva k zadání cesty na které chcete uložit soubor protokolu přepis. Zadejte sdílené složky, kterou jste vytvořili dříve, ve formátu &#92; &#92; *servername*&#92; *ShareName*. Pokud nezadáte cestu, rutina selže a relace zůstane otevřená. 
+3. Se zobrazí výzva k zadání cesty na které chcete uložit soubor protokolu přepis. Zadejte sdílené složky, kterou jste vytvořili dříve, ve formátu &#92; &#92; *servername*&#92;*sharename*. Pokud nezadáte cestu, rutina selže a relace zůstane otevřená. 
 
     ![Zavřít PrivilegedEndpoint výstupu rutiny, který ukazuje, kde zadáte cílovou cestu přepis](media/azure-stack-privileged-endpoint/closeendpoint.png)
 

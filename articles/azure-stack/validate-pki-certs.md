@@ -1,25 +1,25 @@
 ---
-title: "Ověření certifikátů infrastruktury veřejných klíčů Azure zásobníku pro nasazení Azure zásobníku integrované systémy | Microsoft Docs"
-description: "Popisuje, jak k ověření certifikátů PKI zásobník Azure pro Azure zásobníku integrované systémy."
+title: Ověření certifikátů infrastruktury veřejných klíčů Azure zásobníku pro nasazení Azure zásobníku integrované systémy | Microsoft Docs
+description: Popisuje, jak k ověření certifikátů PKI zásobník Azure pro Azure zásobníku integrované systémy.
 services: azure-stack
-documentationcenter: 
-author: jeffgilb
+documentationcenter: ''
+author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
-ms.author: jeffgilb
+ms.date: 03/22/2018
+ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 86f1b889d83905abfb5ddab2e82f32922409ff5f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b38e3cc45d14645611c0cd804f2bfa66047810f0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Ověření Azure zásobníku infrastruktury veřejných KLÍČŮ certifikátů
 Nástroj Azure zásobníku certifikát kontrolu popsané v tomto článku je poskytnutou výrobcem OEM součástí souboru deploymentdata.json, aby bylo možné ověřit, zda [generované certifikáty PKI](azure-stack-get-pki-certs.md) jsou vhodné pro před nasazením. Certifikáty by měly být ověřené pomocí dostatek času k testování a získání certifikátů znova vydat v případě potřeby. 

@@ -1,25 +1,25 @@
 ---
-title: "Aktualizace zásobníku Azure 1802 | Microsoft Docs"
-description: "Další informace o tom, co je v aktualizaci 1802 pro Azure zásobníku integrované systémy, známé problémy a kde se stáhnout aktualizaci."
+title: Aktualizace zásobníku Azure 1802 | Microsoft Docs
+description: Další informace o tom, co je v aktualizaci 1802 pro Azure zásobníku integrované systémy, známé problémy a kde se stáhnout aktualizaci.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/20/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 247f13717971d3660b3ec0ee94821bd593c5fed0
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 71862463a62f11a4f2cea7dfcc60961331ded377
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure aktualizace 1802 zásobníku
 
@@ -123,6 +123,13 @@ Toto jsou známé problémy po instalaci pro sestavení **20180302.1**
     - *Chyba: šablonu pro FaultType ResourceProviderTimeout nebyl nalezen.*
 
     Tuto výstrahu můžete ignorovat. 
+
+- <!-- 2253274 --> In the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and  manage this information.
+
+- V portálu pro správu i v portálu user portal, v okně Přehled nepodaří načíst, když vyberete v okně Přehled pro účty úložiště, které byly vytvořeny ve starší verzi rozhraní API (Příklad: 2015-06-15). To zahrnuje účty úložiště systému jako **updateadminaccount** používané během opravy a aktualizace. 
+
+  Jako alternativní řešení, pomocí prostředí PowerShell spustit **Start-ResourceSynchronization.ps1** skript k obnovení přístup podrobnosti o účtu úložiště. [Skript je k dispozici z Githubu]( https://github.com/Azure/AzureStack-Tools/tree/master/Support/scripts)a musí být spuštěna s přihlašovací údaje Správce služby pro privilegované koncový bod. 
+
 
 #### <a name="health-and-monitoring"></a>Sledování stavu a
 Po aktualizaci 1802 nejsou žádné známé problémy.
