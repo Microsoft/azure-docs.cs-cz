@@ -1,29 +1,28 @@
 ---
-title: "Vytvoření Machine Learning Studio prostoru | Microsoft Docs"
-description: "Postup vytvoření pracovního prostoru pro Azure Machine Learning Studio"
+title: Vytvoření Machine Learning Studio prostoru | Microsoft Docs
+description: Postup vytvoření pracovního prostoru pro Azure Machine Learning Studio
 services: machine-learning
-author: garyericson
-manager: jhubbard
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.author: garye
-ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview
-ms.openlocfilehash: 7aad885b1643ddeb25e5d00a151005b8444315fa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8da10e474c62868ca109a44e7c66dc11ee62b6de
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>Vytvoření a sdílení pracovního prostoru Azure Machine Learning
 Tato nabídka odkazy na témata, které popisují, jak nastavit různé vědě prostředí data používá Cortana proces pro analýzu (CAP).
 
 [!INCLUDE [data-science-environment-setup](../../../includes/cap-setup-environments.md)]
 
-Pokud chcete používat Azure Machine Learning Studio, musíte mít pracovní prostor Machine Learning. Tento pracovní prostor obsahuje nástroje, které potřebujete k vytváření, správu a publikování experimenty.
+Pokud chcete používat Azure Machine Learning Studio, musíte mít pracovní prostor Machine Learning. Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
@@ -41,7 +40,7 @@ Pokud chcete používat Azure Machine Learning Studio, musíte mít pracovní pr
 
 4. Zadejte informace o pracovním prostoru:
 
-    - *Název pracovního prostoru* může být až 260 znaků, ne končí v prostoru. Název nesmí obsahovat tyto znaky:`< > * % & : \ ? + /`
+    - *Název pracovního prostoru* může být až 260 znaků, ne končí v prostoru. Název nesmí obsahovat tyto znaky: `< > * % & : \ ? + /`
     - *Plán webové služby* vyberete (nebo vytvořte), spolu s příslušnými *cenová úroveň* můžete vybrat, se používá při nasazování webových služeb z tohoto pracovního prostoru.
 
     ![Vytvořit nový pracovní prostor](./media/create-workspace/create-new-workspace.png)
@@ -50,7 +49,7 @@ Pokud chcete používat Azure Machine Learning Studio, musíte mít pracovní pr
 
 Po nasazení pracovním prostoru můžete ho otevřít v nástroji Machine Learning Studio.
 
-1. Procházet a strojového učení Studio na [https://studio.azureml.net/](https://studio.azureml.net/).
+1. Procházet a strojového učení Studio na [ https://studio.azureml.net/ ](https://studio.azureml.net/).
 
 2. V pravém horním rohu vyberte pracovní prostor.
 

@@ -1,11 +1,11 @@
 ---
 title: Dokud aktivity v Azure Data Factory | Microsoft Docs
-description: "Dokud aktivita provede sadu aktivit ve smyčce, dokud přidružený k aktivitě podmínka vyhodnocena jako true nebo uplyne časový limit."
+description: Dokud aktivita provede sadu aktivit ve smyčce, dokud přidružený k aktivitě podmínka vyhodnocena jako true nebo uplyne časový limit.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: da15ddd47580a37a7fdb35adfd80482b698074fd
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 14abd3f069cb5cd49265a6b27e4b1c4363a21441
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Dokud aktivity v Azure Data Factory
 Dokud aktivity nabízí stejné funkce, která DNT – dokud opakování ve smyčce struktura poskytuje programovací jazyky. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu. 
@@ -60,7 +60,7 @@ Vlastnost | Popis | Povolené hodnoty | Požaduje se
 jméno | Název `Until` aktivity. | Řetězec | Ano
 type | Musí být nastavena na **dokud**. | Řetězec | Ano
 výraz | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz.  | Ano
-timeout | Do – dokud smyčky časový limit po zadané doby. | Řetězec. `d.hh:mm:ss`(nebo) `hh:mm:ss`. Výchozí hodnota je 7 dní. Maximální hodnota je: 90 dní. | Ne
+timeout | Do – dokud smyčky časový limit po zadané doby. | Řetězec. `d.hh:mm:ss` (nebo) `hh:mm:ss`. Výchozí hodnota je 7 dní. Maximální hodnota je: 90 dní. | Ne
 Aktivity | Sada aktivit, které jsou prováděny, dokud výraz vyhodnocen jako `true`. | Pole aktivit. |  Ano
 
 ## <a name="example-1"></a>Příklad 1

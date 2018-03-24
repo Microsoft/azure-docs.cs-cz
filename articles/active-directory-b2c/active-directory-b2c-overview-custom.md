@@ -1,43 +1,40 @@
 ---
-title: "Služby Azure Active Directory B2C: Vlastní zásady | Microsoft Docs"
-description: "Téma na Azure Active Directory B2C vlastní zásady"
+title: 'Služby Azure Active Directory B2C: Vlastní zásady | Microsoft Docs'
+description: Téma na Azure Active Directory B2C vlastní zásady
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 1ff398a4-2079-4615-94f1-57de22c0aad6
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/04/2017
-ms.author: parakhj
-ms.openlocfilehash: 6c59075bb1eacb05599b23be3d8731fa40eabf98
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 269b65662796c092190cd2622c240756f6bd1cf7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C: Vlastní zásady
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-## <a name="what-are-custom-policies"></a>Jaké jsou vlastní zásady?
+## <a name="what-are-custom-policies"></a>Co jsou vlastní zásady?
 
 Vlastní zásady jsou konfigurační soubory, které určují chování tenanta služby Azure AD B2C. Zatímco **integrovaných zásad** předdefinovaných na portálu Azure AD B2C nejčastějších úloh, identity, vlastní zásady dá plně upravit podle vývojář identity k dokončení near neomezený počet úloh. Pokračujte ve čtení a určí, jestli jsou pro vás ideální a váš scénář identity vlastní zásady.
 
 ## <a name="comparing-built-in-policies-and-custom-policies"></a>Porovnání zásad předdefinované a vlastní zásady
 
-| | Předdefinované zásady | vlastní zásady |
+| | Předdefinované zásady | Vlastní zásady |
 |-|-------------------|-----------------|
 |Cíloví uživatelé | Všechny vývojáři aplikací s nebo bez znalosti identity | Odborníci na identitu: integrátorem systémů, konzultanty a týmy interní identity. Jsou tedy se OpenIDConnect toky a pochopit poskytovatelů identit a ověřování na základě deklarace identity |
 |Konfigurace – metoda | Portál Azure s uživatelsky přívětivý uživatelského rozhraní | Přímo úpravy souborů XML a pak se nahrávají na portálu Azure |
 |Přizpůsobení uživatelského rozhraní | Úplné přizpůsobení uživatelského rozhraní, včetně podpory HTML, CSS a javascript (vyžaduje vlastní domény)<br><br>Podpora více jazyků s vlastní řetězce | stejné |
 | Vlastní nastavení atributu | Standardní a vlastní atributy | stejné |
 |Token a relace správy | Vlastní token a více možností relace | stejné |
-|Zprostředkovatelé identity| **Dnes**: předdefinované místní, sociálních zprostředkovatele<br><br>**Budoucí**: založených na standardech OIDC SAML, OAuth | **Dnes**: založených na standardech OIDC OAUTH, SAML<br><br>**Budoucí**: WsFed |
+|Zprostředkovatelé identit| **Dnes**: předdefinované místní, sociálních zprostředkovatele<br><br>**Budoucí**: založených na standardech OIDC SAML, OAuth | **Dnes**: založených na standardech OIDC OAUTH, SAML<br><br>**Budoucí**: WsFed |
 |Úlohy identity (příklady) | Zaregistrujte nebo Přihlaste se pomocí místního a mnoho sociálních účty<br><br>Samoobslužné resetování hesla<br><br>Úpravy profilu<br><br>Služba Multi-Factor Auth scénáře<br><br>Přizpůsobení tokeny a relace<br><br>Tok tokenu přístupu | Dokončení úloh jako integrovaných zásad pomocí poskytovatelů vlastní identitu nebo používat vlastní obory<br><br>Zřízení uživatele v jiném systému v době registrace<br><br>Odeslání Uvítacího e-mailu pomocí vlastního zprostředkovatele služby e-mailu<br><br>Použít úložiště uživatele mimo B2C<br><br>Ověření uživatele informace s důvěryhodné systému prostřednictvím rozhraní API |
 
 ## <a name="policy-files"></a>Soubory zásad
@@ -74,7 +71,7 @@ Plně konfigurovatelné řízená zásadami, cloudové platformy Azure, které o
 Předdefinované konfigurační soubory, které budou řídit chování Azure AD B2C provést nejvíc běžně používané identity úlohy (tj. uživatel registrace, přihlášení, resetování hesla) a interakci s důvěryhodné strany, jejichž relace je také předdefinovaná v Azure AD B2C (pro Příklad Facebook zprostředkovatele identity, LinkedIn, Account Microsoft, Google účty).  V budoucnu integrovaných zásad může taky poskytnout k přizpůsobení zprostředkovatelů identity, které jsou obvykle ve sféře enterprise, například Azure Active Directory Premium, Active Directory nebo ADFS Salesforce ID zprostředkovatele.
 
 
-### <a name="custom-policies"></a>vlastní zásady
+### <a name="custom-policies"></a>Vlastní zásady
 
 Konfigurační soubory, které definují chování rozhraní Framework Identity ve vašem klientovi Azure AD B2C. Vlastní zásady přístupný jako jednoho nebo několika souborů XML (viz definice soubory zásad) spouštěných rámcem prostředí Identity při vyvolání předávající strana (například aplikace). Vlastní zásady můžete přímo upravovat vývojář identity k dokončení near neomezený počet úloh. Vývojáři vlastní zásady konfigurace musí definovat důvěryhodné vztahy pečlivě podrobně zahrnout koncové body metadat, přesný deklarací exchange definice a konfigurace tajné klíče, klíče a certifikáty podle potřeby jednotlivých poskytovatele identit.
 
@@ -92,9 +89,9 @@ Vlastní zásady je reprezentován jako jednoho nebo několika souborů ve form�
 
 | Typ zásad souboru | Příklady název souboru | Doporučené použití | Dědí z |
 |---------------------|--------------------|-----------------|---------------|
-| ZÁKLADNÍ |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com. B2C 1A_BASE1.xml | Obsahuje základní deklarace identity schématu, transformace deklarací, zprostředkovatelů deklarací identit a cesty uživatele konfigurovat tak, že Microsoft<br><br>Ujistěte se, minimální změny do tohoto souboru | Žádný |
-| Rozšíření (EXT) | TrustFrameworkExtensions.xml<br><br>Mytenant.onmicrosoft.com. B2C 1A_EXT.xml | Konsolidovat všechny změny základního souboru<br><br>Zprostředkovatelé upravené deklarací<br><br>Cesty upravené uživatele<br><br>Vlastní definice vlastní schéma | ZÁKLADNÍHO souboru |
-| Předávající stranu | B2C_1A_sign_up_sign_in.XML| Token tvar a relace nastavení změnit tady| Soubor Extensions(ext) |
+| ZÁKLADNÍ |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_BASE1.xml | Obsahuje základní deklarace identity schématu, transformace deklarací, zprostředkovatelů deklarací identit a cesty uživatele konfigurovat tak, že Microsoft<br><br>Ujistěte se, minimální změny do tohoto souboru | Žádné |
+| Rozšíření (EXT) | TrustFrameworkExtensions.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_EXT.xml | Konsolidovat všechny změny základního souboru<br><br>Zprostředkovatelé upravené deklarací<br><br>Cesty upravené uživatele<br><br>Vlastní definice vlastní schéma | ZÁKLADNÍHO souboru |
+| Předávající stranu | B2C_1A_sign_up_sign_in.xml| Token tvar a relace nastavení změnit tady| Soubor Extensions(ext) |
 
 ### <a name="inheritance-model"></a>Model dědičnosti
 
@@ -102,7 +99,7 @@ Pokud aplikace zavolá soubor zásad RP, rozhraní Identity prostředí v B2C p�
 
 **Předdefinované zásady** v Azure AD B2C, postupujte podle vzoru souboru 3, které popsané výše, ale vývojář se zobrazují pouze soubor předávající strany (RP), zatímco na portálu provede změny na pozadí EXTenstions souboru.  Všechny Azure AD B2C sdílí základní zásady souboru, který je pod kontrolou týmu Azure B2C a se často aktualizuje.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Začínáme s vlastní zásady](active-directory-b2c-get-started-custom.md)

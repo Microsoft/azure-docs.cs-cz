@@ -1,6 +1,6 @@
 ---
-title: "Cenové úrovně v Azure databáze pro databázi MySQL"
-description: "Tento článek popisuje cenové úrovně ve službě Azure Database pro databázi MySQL."
+title: Cenové úrovně v Azure databáze pro databázi MySQL
+description: Tento článek popisuje cenové úrovně ve službě Azure Database pro databázi MySQL.
 services: mysql
 author: jan-eng
 ms.author: janeng
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 6bd24da05c337a902ce0e4a2b9acf22a809eb653
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: ec475648f1da4420e86bf59053d95770409bed8e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure databáze pro databázi MySQL cenové úrovně
 
@@ -22,7 +22,7 @@ Databázi Azure pro server databáze MySQL lze vytvořit v jednom ze tří různ
 |    | **Basic** | **Obecné účely** | **Paměťově optimalizované** |
 |:---|:----------|:--------------------|:---------------------|
 | Výpočetní generování | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
-| vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16, 32 |
+| vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | Paměť na vCore | 1x | 2x Basic | 2 x obecné účely |
 | Velikost Storage | 5 GB až 1 TB | 5 GB až 1 TB | 5 GB až 1 TB |
 | Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
@@ -40,7 +40,32 @@ Po vytvoření serveru počet vCores lze změnit nahoru nebo dolů v sekundách.
 
 ## <a name="compute-generations-vcores-and-memory"></a>Výpočetní generace, vCores a paměti
 
-Výpočetní prostředky jsou uvedeny jako vCores, představující logického procesoru základní hardware. V současné době dvou generací výpočetní Gen 4 a 5 generace jsou nabízena můžete vybírat. Logické CPU 4. generace jsou založené na procesorech Intel E5-2673 v3 (Haswell) 2,4 GHz. Logické CPU 5. generace jsou založené na procesorech Intel E5-2673 v4 (Broadwell) 2,3 GHz.
+Výpočetní prostředky jsou uvedeny jako vCores, představující logického procesoru základní hardware. V současné době dvou generací výpočetní Gen 4 a 5 generace jsou nabízena můžete vybírat. Logické CPU 4. generace jsou založené na procesorech Intel E5-2673 v3 (Haswell) 2,4 GHz. Logické CPU 5. generace jsou založené na procesorech Intel E5-2673 v4 (Broadwell) 2,3 GHz. Gen 4 a 5 generace jsou k dispozici v následujících oblastech ("X" označuje k dispozici): 
+
+| **Azure Region** | **Generování 4** | **Generování 5** |
+|:---|:----------:|:--------------------:|
+| Střed USA |  | X |
+| Východ USA | X | X |
+| Východní USA 2 | X |  |
+| Střed USA – sever | X |  |
+| Střed USA – jih | X |  |
+| Západní USA | X | X |
+| Západní USA 2 |  | X |
+| Střední Kanada | X | X |
+| Východní Kanada | X | X |
+| Brazílie – jih | X |  |
+| Severní Evropa | X | X |
+| Západní Evropa | X | X |
+| Spojené království – západ |  | X |
+| Spojené království – jih |  | X |
+| Východní Asie | X |  |
+| Jihovýchodní Asie | X |  |
+| Austrálie – východ |  | X |
+| Střed Indie | X |  |
+| Indie – západ | X |  |
+| Japonsko – východ | X |  |
+| Japonsko – západ | X |  |
+| Korea – jih |  | X |
 
 V závislosti na cenovou úroveň je zajištěna každý vCore s určitou velikostí paměti. Při zvýšení nebo snížení počtu vCores pro váš server, paměť zvýší nebo sníží úměrně. Úroveň obecné účely poskytuje double množství paměti na vCore ve srovnání s základní vrstvě. Paměťově optimalizovaná vrstvy poskytuje double množství paměti ve srovnání s vrstvě obecné účely.
 

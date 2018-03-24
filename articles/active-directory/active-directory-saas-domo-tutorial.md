@@ -1,23 +1,23 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Domo | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Domo."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Domo.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 058626e4-73b3-4dc2-86ca-b060d002d70a
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2017
+ms.date: 03/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 3fbfd8839b1a45c6927753a48d1ac617f2d34427
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c7f74d3bd8a2f0173f8f3cc69c611696044875a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>Kurz: Azure Active Directory integrace s Domo
 
@@ -110,7 +110,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-domo-tutorial/tutorial_domo_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.domo.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.domo.com`
 
     b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:     
 
@@ -139,8 +139,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |    
-    | jméno | User.DisplayName |
-    | E-mailu | User.Mail |
+    | jméno | user.displayname |
+    | e-mail | user.mail |
     
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -167,7 +167,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-domo-tutorial/tutorial_domo_configure.png) 
 
-9. Konfigurace jednotného přihlašování na **Domo** straně, budete muset odeslat stažené **certifikát**, **SAML Entity ID**, **SAML jeden přihlašování adresa URL služby** a **Sign-Out URL** k [tým podpory Domo](mailto:support@domo.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+9. Konfigurace jednotného přihlašování na **Domo** straně, přejděte na článek znalostní báze Knowledge Base na Domo nalezen [zde](http://knowledge.domo.com?cid=azuread)a postupujte podle pokynů.
 
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -246,12 +246,10 @@ Když kliknete na dlaždici Domo na přístupovém panelu, jste měli získat au
 
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

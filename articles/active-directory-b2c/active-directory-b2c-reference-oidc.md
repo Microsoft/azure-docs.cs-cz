@@ -1,24 +1,21 @@
 ---
-title: "Webové přihlášení s OpenID Connect - Azure AD B2C | Microsoft Docs"
-description: "Vytváření webových aplikací pomocí služby Azure Active Directory implementace ověřovacího protokolu OpenID Connect"
+title: Webové přihlášení s OpenID Connect - Azure AD B2C | Microsoft Docs
+description: Vytváření webových aplikací pomocí služby Azure Active Directory implementace ověřovacího protokolu OpenID Connect
 services: active-directory-b2c
-documentationcenter: 
-author: saeedakhter-msft
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 21d420c8-3c10-4319-b681-adf2e89e7ede
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: saeedakhter-msft
-ms.openlocfilehash: 0eb4194307d1d3953fa1cd88ac014ac7c2ba7311
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: e787ea36ab5099705f151504385dd5dc97029e37
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: Přihlášení Web s OpenID Connect
 OpenID Connect je ověřovací protokol, nástavbou OAuth 2.0, který slouží k bezpečně přihlášení uživatele k webovým aplikacím. Pomocí Azure Active Directory B2C implementaci OpenID Connect (Azure AD B2C), můžete externí registrace, přihlášení a prostředí pro další správu identit ve vaší webové aplikace do Azure Active Directory (Azure AD). Tento průvodce vám ukáže, jak postupovat způsobem nezávislé na jazyku. Popisuje, jak odesílat a přijímat zprávy HTTP bez použití některé z našich knihovny open-source.
@@ -29,7 +26,7 @@ Vzhledem k tomu, že ji rozšiřuje OAuth 2.0, taky umožňuje aplikace bezpečn
 
 Azure AD B2C rozšiřuje standardní protokol OpenID Connect více než jednoduché ověřování a autorizace. Zavádí [zásad parametr](active-directory-b2c-reference-policies.md), který můžete použít OpenID Connect přidání uživatelského prostředí – například registrace, přihlašování a správy profilů--do vaší aplikace. Zde jsme ukazují, jak používat OpenID Connect a zásady implementace každý z těchto prostředí na vaše webové aplikace. Jsme budete také ukazují, jak získat přístupové tokeny pro přístup k webové rozhraní API.
 
-Požadavky HTTP příklad v další části používat naše ukázka adresáři B2C, fabrikamb2c.onmicrosoft.com, a také naše ukázková aplikace, https://aadb2cplayground.azurewebsites.net a zásady. Jste volné můžete vyzkoušet na žádosti sami pomocí těchto hodnot, nebo je můžete nahradit vlastními.
+Příklad protokolu HTTP žádosti v další části použijte naše ukázka adresáři B2C, fabrikamb2c.onmicrosoft.com, jakož i naše ukázková aplikace https://aadb2cplayground.azurewebsites.neta zásady. Jste volné můžete vyzkoušet na žádosti sami pomocí těchto hodnot, nebo je můžete nahradit vlastními.
 Zjistěte, jak [získat klienta B2C, aplikace a zásady](#use-your-own-b2c-directory).
 
 ## <a name="send-authentication-requests"></a>Odeslání žádosti o ověření
@@ -85,7 +82,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | response_mode |Doporučené |Metoda, která se má použít k odeslání výsledné autorizační kód zpět do aplikace. Může být buď `query`, `form_post`, nebo `fragment`.  `form_post` Režim odpovědi se doporučuje pro zvýšení zabezpečení. |
 | state |Doporučené |Hodnota součástí požadavek, který je také vrácený v odpovědi tokenu. Může být řetězec o délce veškerý obsah, který chcete. Náhodně generované jedinečné hodnoty se obvykle používá pro prevence útoků padělání požadavku posílaného mezi weby. Stav se také používá ke kódování informace o stavu uživatele v aplikaci, než k žádosti o ověření, například stránky, které byly na. |
 | hodnotu Nonce |Požaduje se |Hodnota součástí požadavek (generované aplikace), který bude součástí výsledný token ID jako deklarace identity. Aplikace pak může ověřit tuto hodnotu zmírnit útoky opětovného přehrání tokenu. Hodnota je obvykle náhodnou jedinečného řetězce, který slouží k určení původu požadavku. |
-| P |Požaduje se |Zásady, které budou spuštěny. Je název zásady, který je vytvořen v svého klienta B2C. Hodnota název zásad by měl začínat obráceným `b2c\_1\_`. Další informace o zásadách a [rozšiřitelném rozhraní zásad](active-directory-b2c-reference-policies.md). |
+| p |Požaduje se |Zásady, které budou spuštěny. Je název zásady, který je vytvořen v svého klienta B2C. Hodnota název zásad by měl začínat obráceným `b2c\_1\_`. Další informace o zásadách a [rozšiřitelném rozhraní zásad](active-directory-b2c-reference-policies.md). |
 | řádku |Nepovinné |Typ interakci s uživatelem, který je vyžadován. Jedinou platnou hodnotou v tuto chvíli je `login`, který vynutí uživatele k zadání přihlašovacích údajů tohoto požadavku. Jednotné přihlašování se neprojeví. |
 
 V tomto okamžiku uživatel požádán o dokončení pracovního postupu nastavení zásad. To může zahrnovat uživatele zadáním uživatelského jména a hesla, přihlášení pomocí sociálních identitu, přihlašování k adresáři, nebo jakékoli jiné číslo kroků, v závislosti na tom, jak je definované zásady.
@@ -103,8 +100,8 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 
 | Parametr | Popis |
 | --- | --- |
-| požadavku id_token |ID token, který požadované aplikace. ID token můžete použít k ověření identity uživatele a zahájit relaci s uživatelem. Další informace o ID tokeny a jejich obsah jsou součástí [odkaz tokenu Azure AD B2C](active-directory-b2c-reference-tokens.md). |
-| Kód |Autorizační kód, který požadované aplikace, pokud jste použili `response_type=code+id_token`. Aplikace můžete autorizační kód vyžádat token přístupu pro cílový prostředek. Kódy ověřování jsou velmi krátkodobou. Obvykle se jejich platnost vyprší po přibližně 10 minut. |
+| id_token |ID token, který požadované aplikace. ID token můžete použít k ověření identity uživatele a zahájit relaci s uživatelem. Další informace o ID tokeny a jejich obsah jsou součástí [odkaz tokenu Azure AD B2C](active-directory-b2c-reference-tokens.md). |
+| kód |Autorizační kód, který požadované aplikace, pokud jste použili `response_type=code+id_token`. Aplikace můžete autorizační kód vyžádat token přístupu pro cílový prostředek. Kódy ověřování jsou velmi krátkodobou. Obvykle se jejich platnost vyprší po přibližně 10 minut. |
 | state |Pokud `state` parametr je zahrnuta v žádosti o stejnou hodnotu by se měla objevit v odpovědi. Aplikace by měla ověřte, zda `state` hodnoty v požadavku a odpovědi jsou identické. |
 
 Chybové odpovědi lze je také odeslat do `redirect_uri` parametr tak, aby aplikace můžete správně zpracovat:
@@ -172,13 +169,13 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | Parametr | Povinné? | Popis |
 | --- | --- | --- |
-| P |Požaduje se |Zásada, která byla použita k získání autorizační kód. V této žádosti nelze použít jinou zásadu. Poznámka: Přidat tento parametr do řetězce dotazu, nikoli k `POST` textu. |
+| p |Požaduje se |Zásada, která byla použita k získání autorizační kód. V této žádosti nelze použít jinou zásadu. Poznámka: Přidat tento parametr do řetězce dotazu, nikoli k `POST` textu. |
 | client_id |Požaduje se |ID aplikace, která [portál Azure](https://portal.azure.com/) přiřazené vaší aplikaci. |
 | grant_type |Požaduje se |Typ udělení, který musí být `authorization_code` pro tok autorizačního kódu. |
 | Obor |Doporučené |Seznam obory oddělených mezerami. Hodnota jeden obor označuje do služby Azure AD obě oprávnění, které jsou požadovány. `openid` Oboru označuje oprávnění přihlásit uživatele a získat data o uživateli ve formě požadavku id_token parametry. Slouží k získání tokenů pro vaše aplikace vlastní back endové webové rozhraní API, která je reprezentována stejným ID aplikace jako klient. `offline_access` Oboru označuje, že vaše aplikace budete potřebovat obnovovací token pro dlouhodobé přístup k prostředkům. |
-| Kód |Požaduje se |Autorizační kód, který jste získali v prvním větev toku. |
+| kód |Požaduje se |Autorizační kód, který jste získali v prvním větev toku. |
 | redirect_uri |Požaduje se |`redirect_uri` Parametr aplikace, kterou jste dostali autorizační kód. |
-| tajný klíč client_secret |Požaduje se |Tajný klíč aplikace, který jste vygenerovali v [portál Azure](https://portal.azure.com/). Tento tajný klíč aplikace je důležité zabezpečení artefakt. Měli byste uložit ji bezpečně na vašem serveru. Musí také otočit tento tajný klíč klienta v pravidelných intervalech. |
+| client_secret |Požaduje se |Tajný klíč aplikace, který jste vygenerovali v [portál Azure](https://portal.azure.com/). Tento tajný klíč aplikace je důležité zabezpečení artefakt. Měli byste uložit ji bezpečně na vašem serveru. Musí také otočit tento tajný klíč klienta v pravidelných intervalech. |
 
 Úspěšné odpovědi tokenu vypadá takto:
 
@@ -237,13 +234,13 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 | Parametr | Požaduje se | Popis |
 | --- | --- | --- |
-| P |Požaduje se |Zásada, která byla použita k získání původní token obnovení. V této žádosti nelze použít jinou zásadu. Všimněte si, že přidáte tento parametr řetězce dotazu, nikoli při textu POST. |
+| p |Požaduje se |Zásada, která byla použita k získání původní token obnovení. V této žádosti nelze použít jinou zásadu. Všimněte si, že přidáte tento parametr řetězce dotazu, nikoli při textu POST. |
 | client_id |Požaduje se |ID aplikace, která [portál Azure](https://portal.azure.com/) přiřazené vaší aplikaci. |
 | grant_type |Požaduje se |Typ udělení, který musí být token obnovení pro tuto větev toku kódu autorizace. |
 | Obor |Doporučené |Seznam obory oddělených mezerami. Hodnota jeden obor označuje do služby Azure AD obě oprávnění, které jsou požadovány. `openid` Oboru označuje oprávnění přihlásit uživatele a získat data o uživateli ve formě ID tokeny. Slouží k získání tokenů pro vaše aplikace vlastní back endové webové rozhraní API, která je reprezentována stejným ID aplikace jako klient. `offline_access` Oboru označuje, že vaše aplikace budete potřebovat obnovovací token pro dlouhodobé přístup k prostředkům. |
 | redirect_uri |Doporučené |`redirect_uri` Parametr aplikace, kterou jste dostali autorizační kód. |
 | refresh_token |Požaduje se |Původní obnovovací token, který jste získali v druhé větev toku. Všimněte si, že je třeba pomocí oboru `offline_access` v autorizace a žádosti o tokeny, aby bylo možné přijímat token obnovení. |
-| tajný klíč client_secret |Požaduje se |Tajný klíč aplikace, který jste vygenerovali v [portál Azure](https://portal.azure.com/). Tento tajný klíč aplikace je důležité zabezpečení artefakt. Měli byste uložit ji bezpečně na vašem serveru. Musí také otočit tento tajný klíč klienta v pravidelných intervalech. |
+| client_secret |Požaduje se |Tajný klíč aplikace, který jste vygenerovali v [portál Azure](https://portal.azure.com/). Tento tajný klíč aplikace je důležité zabezpečení artefakt. Měli byste uložit ji bezpečně na vašem serveru. Musí také otočit tento tajný klíč klienta v pravidelných intervalech. |
 
 Úspěšné odpovědi tokenu vypadá takto:
 
@@ -293,7 +290,7 @@ p=b2c_1_sign_in
 
 | Parametr | Povinné? | Popis |
 | --- | --- | --- |
-| P |Požaduje se |Zásada, kterou chcete použít k podepsání uživateli mimo vaší aplikace. |
+| p |Požaduje se |Zásada, kterou chcete použít k podepsání uživateli mimo vaší aplikace. |
 | post_logout_redirect_uri |Doporučené |Adresu URL, kterou uživatel by měl být přesměrován na po úspěšné odhlášení. Pokud není součástí, Azure AD B2C zobrazí obecná zpráva uživatele. |
 
 > [!NOTE]

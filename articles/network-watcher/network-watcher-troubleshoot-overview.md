@@ -1,11 +1,11 @@
 ---
-title: "Úvod k řešení potíží s v sledovací proces sítě Azure prostředku | Microsoft Docs"
-description: "Tato stránka obsahuje přehled možnosti pro odstraňování potíží prostředků sledovací proces sítě"
+title: Úvod k řešení potíží s v sledovací proces sítě Azure prostředku | Microsoft Docs
+description: Tato stránka obsahuje přehled možnosti pro odstraňování potíží prostředků sledovací proces sítě
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
 ms.service: network-watcher
 ms.devlang: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: a37c92e1aa58184ed29185742ec727c120fe593f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 646caa5e4aacd58377c0a2b5985a69277d00cec3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Úvod k řešení potíží s v sledovací proces sítě Azure prostředku
 
-Brány virtuální sítě zajistěte připojení mezi místními prostředky a dalším virtuálním sítím v rámci Azure. Monitorování tyto brány a jejich připojení je důležité používat k zajištění komunikace není přerušeno. Sledovací proces sítě poskytuje možnost Poradce při potížích brány virtuální sítě a připojení. To je možné volat prostřednictvím portálu, prostředí PowerShell, rozhraní příkazového řádku nebo REST API. Při volání, sledovací proces sítě diagnostikuje stavu brány virtuální sítě nebo připojení a vrátit správné výsledky. Tento požadavek je dlouhotrvající transakci, budou vráceny výsledky, po dokončení diagnostiky.
+Brány virtuální sítě zajistěte připojení mezi místními prostředky a dalším virtuálním sítím v rámci Azure. Monitorování brány a jejich připojení jsou důležité k zajištění komunikace není přerušeno. Sledovací proces sítě poskytuje možnost Poradce při potížích s připojení a bran. Funkce je možné volat prostřednictvím portálu, prostředí PowerShell, rozhraní příkazového řádku Azure nebo REST API. Při volání, sledovací proces sítě diagnostikuje stav brány, nebo připojení a vrátí odpovídající výsledky. Žádost je dlouhotrvající transakci. Po dokončení diagnostiky, budou vráceny výsledky.
 
 ![portál][2]
 
@@ -50,52 +50,51 @@ Následující tabulky popisují různé chyby typy (id pod výsledky v předcho
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Když je zjištěna žádná chyba. |Ano|
-| GatewayNotFound | Nelze najít, že není zřízený brány nebo brána. |Ne|
-| PlannedMaintenance |  Instance brány je v rámci údržby.  |Ne|
-| UserDrivenUpdate | Pokud je aktualizace uživatele v průběhu. To může být operace změny velikosti. | Ne |
-| VipUnResponsive | Nelze kontaktovat primární instance brány. To se stane, když selže test stavu. | Ne |
+| NoFault | Když je zjištěna žádná chyba |Ano|
+| GatewayNotFound | Nelze najít bránu nebo brány není zřízený. |Ne|
+| PlannedMaintenance |  Instance brány je v rámci údržby  |Ne|
+| UserDrivenUpdate | Toto selhání nastane, když probíhá aktualizace uživatele. Aktualizace může být operace změny velikosti. | Ne |
+| VipUnResponsive | Toto selhání nastane, když primární instance brány není dosažitelná z důvodu selhání kontroly stavu. | Ne |
 | PlatformInActive | Nastane problém s platformou. | Ne|
 | ServiceNotRunning | Základní služba není spuštěna. | Ne|
-| NoConnectionsFoundForGateway | Žádná připojení existuje v bráně. Toto je pouze upozornění.| Ne|
-| ConnectionsNotConnected | Připojení nejsou připojené. Toto je pouze upozornění.| Ano|
+| NoConnectionsFoundForGateway | Na bráně existovat žádné připojení. Toto selhání je pouze upozornění.| Ne|
+| ConnectionsNotConnected | Připojení nejsou připojené. Toto selhání je pouze upozornění.| Ano|
 | GatewayCPUUsageExceeded | Aktuální využití procesoru brány je > 95 %. | Ano |
 
 ### <a name="connection"></a>Připojení
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Když je zjištěna žádná chyba. |Ano|
-| GatewayNotFound | Nelze najít, že není zřízený brány nebo brána. |Ne|
-| PlannedMaintenance | Instance brány je v rámci údržby.  |Ne|
-| UserDrivenUpdate | Pokud je aktualizace uživatele v průběhu. To může být operace změny velikosti.  | Ne |
-| VipUnResponsive | Nelze kontaktovat primární instance brány. Ho se stane, když selže test stavu. | Ne |
-| ConnectionEntityNotFound | Konfigurace připojení nebyl nalezen. | Ne |
-| ConnectionIsMarkedDisconnected | Připojení je označena jako "odpojené". |Ne|
+| NoFault | Když je zjištěna žádná chyba |Ano|
+| GatewayNotFound | Nelze najít bránu nebo brány není zřízený. |Ne|
+| PlannedMaintenance | Instance brány je v rámci údržby  |Ne|
+| UserDrivenUpdate | Toto selhání nastane, když probíhá aktualizace uživatele. Aktualizace může být operace změny velikosti.  | Ne |
+| VipUnResponsive | Toto selhání nastane, když primární instance brány není dosažitelná z důvodu selhání kontroly stavu. | Ne |
+| ConnectionEntityNotFound | Chybí konfigurace připojení | Ne |
+| ConnectionIsMarkedDisconnected | Připojení je označena "odpojené" |Ne|
 | ConnectionNotConfiguredOnGateway | Základní služby není k dispozici připojení nakonfigurovaná. | Ano |
 | ConnectionMarkedStandy | Základní služby je označena jako pohotovostní režim.| Ano|
-| Authentication | Neshoda předsdílený klíč. | Ano|
+| Authentication | Neshoda předsdílených klíčů | Ano|
 | PeerReachability | Sdílené brána není dostupný. | Ano|
 | IkePolicyMismatch | Bránu sdílené má IKE zásady, které nejsou podporované službou Azure. | Ano|
 | Chyba WfpParse | Došlo k chybě při analýze protokolů Ochrana souborů systému Windows. |Ano|
 
 ## <a name="supported-gateway-types"></a>Podporované typy brány
 
-Následující seznam obsahuje podporu ukazuje připojení a bran, které jsou podporovány při řešení problémů sledovací proces sítě.
+Následující tabulka uvádí připojení a bran, které jsou podporovány při řešení problémů sledovací proces sítě:
+
 |  |  |
 |---------|---------|
 |**Typy brány**   |         |
-|Síť VPN      | Podporuje se        |
+|Síť VPN      | Podporováno        |
 |ExpressRoute | Nepodporuje se |
-|Hypernet | Nepodporuje se|
 |**Typy sítě VPN** | |
-|Na základě trasy | Podporuje se|
+|Na základě trasy | Podporováno|
 |Na základě zásad | Nepodporuje se|
 |**Typy připojení**||
-|Protokol IPSec| Podporuje se|
-|VNet2Vnet| Podporuje se|
+|Protokol IPSec| Podporováno|
+|VNet2Vnet| Podporováno|
 |ExpressRoute| Nepodporuje se|
-|Hypernet| Nepodporuje se|
 |VPNClient| Nepodporuje se|
 
 ## <a name="log-files"></a>Soubory protokolu
@@ -147,11 +146,11 @@ Error: On-prem device sent invalid payload.
      based on log : IkeFindPayloadInPacket failed with Windows error 13843(ERROR_IPSEC_IKE_INVALID_PAYLOAD)
 ```
 
-### <a name="scrubbed-wfpdiagtxt"></a>Očistí wfpdiag.txt
+### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag.txt
 
 **Scrubbed wfpdiag.txt** protokolový soubor obsahuje protokol Ochrana souborů systému Windows. Tento protokol obsahuje protokolování paketu vyřaďte a IKE/AuthIP selhání.
 
-Následující příklad ukazuje obsah souboru Scrubbed wfpdiag.txt. V tomto příkladu nebyla sdílený klíč připojení správné, jak je vidět z 3. řádku dole. V následujícím příkladu je právě fragment celý protokolu, jako protokol může být náročná v závislosti na problém.
+Následující příklad ukazuje obsah souboru Scrubbed wfpdiag.txt. V tomto příkladu nebyla sdílený klíč připojení správné, jak je vidět z ve třetím řádku dole. V následujícím příkladu je právě fragment celý protokolu, jako protokol může být náročná v závislosti na problém.
 
 ```
 ...
@@ -180,7 +179,7 @@ Následující příklad ukazuje obsah souboru Scrubbed wfpdiag.txt. V tomto př
 ...
 ```
 
-### <a name="wfpdiagtxtsum"></a>wfpdiag.txt.Sum
+### <a name="wfpdiagtxtsum"></a>wfpdiag.txt.sum
 
 **Wfpdiag.txt.sum** je soubor protokolu vyrovnávací paměti a zpracovaných událostí.
 
@@ -210,7 +209,7 @@ Elapsed Time            330 sec
 |        12    ikeext               ike_sa_management_c3307  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak diagnostikovat brány sítě VPN a připojení přes portál navštivte stránky [brány řešení potíží – portál Azure](network-watcher-troubleshoot-manage-portal.md).
 <!--Image references-->

@@ -1,31 +1,28 @@
 ---
-title: "Měření reálný uživatel v Azure Traffic Manageru | Microsoft Docs"
-description: "Úvod do měření reálný uživatel v Traffic Manageru"
+title: Měření reálný uživatel v Azure Traffic Manageru | Microsoft Docs
+description: Úvod do měření reálný uživatel v Traffic Manageru
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
 manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 09/19/2017
+ms.date: 03/16/2018
 ms.author: kumud
-ms.custom: 
-ms.openlocfilehash: a7e8ae605b6234341d9ab8b790f4c54d8627f29f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 4e8d808d65c9898d230455d128e3ffc50db303d6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Přehled reálného měření uživatele správce provozu
-
->[!NOTE]
->Funkce reálného měření uživatele v Traffic Manager je ve verzi Public Preview a nemusí mít stejnou úroveň dostupnost a spolehlivost jako verze funkce, které jsou obecné dostupnosti. Funkce není podporována, může mít omezené možnosti a nemusí být k dispozici ve všech Azure umístění. Nejaktuálnější upozornění na stav této funkce a dostupnost, zkontrolujte [Azure Traffic Manager aktualizuje](https://azure.microsoft.com/updates/?product=traffic-manager) stránky.
 
 Při nastavování profilu Traffic Manageru lze pomocí této metody směrování výkonu služby zjistí kde pocházejících z požadavků na dotazy DNS a provádí rozhodnutí o směrování směrovat těchto žadatele oblasti Azure, který jim poskytne nejnižší latenci. To se provádí s využitím intelligence latence sítě, která udržuje správce provozu pro sítě jiný koncový uživatel.
 
@@ -41,7 +38,7 @@ V čase to se stane, kolikrát a v mnoha sítích úvodní do Traffic Manageru z
 
 Pokud používáte reálného měření uživatele, se účtují, na základě počtu měření odeslaných do Traffic Manageru. Další podrobnosti o cenách najdete na webu [Traffic Manager stránce s cenami](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace o použití [reálného měření uživatele s webovými stránkami](traffic-manager-create-rum-web-pages.md)
 - Další informace [fungování Traffic Manager](traffic-manager-overview.md)
 - Další informace o [Mobile Center](https://docs.microsoft.com/mobile-center/)

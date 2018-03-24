@@ -1,24 +1,18 @@
 ---
-title: "Nastavení sady Runbook | Microsoft Docs"
-description: "Popisuje konfiguraci nastavení pro sady runbook v Azure Automation a jak ji pomocí portálu Azure a prostředí Windows PowerShell změnit."
+title: Nastavení sady Runbook ve službě Azure Automation
+description: Popisuje konfiguraci nastavení pro sady runbook v Azure Automation a jak ji pomocí portálu Azure a prostředí Windows PowerShell změnit.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: stevenka
-editor: tysonn
-ms.assetid: a726f20c-a952-48b8-88ee-36d76aa3ac61
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/19/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/11/2016
-ms.author: bwren
-ms.openlocfilehash: 527c40c4a0c5c9a0eb4745f542a8afcc63281416
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+manager: carmonm
+ms.openlocfilehash: 548a168055a63ee8cb5147b56fb77ef0bc801e17
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="runbook-settings"></a>Nastavení runbooku
 Každá sada runbook ve službě Azure Automation má několik nastavení, která pomáhají identifikovat a změnit její chování při protokolování. Každá z těchto nastavení je popsána níže následují procedury na tom, jak je upravit.

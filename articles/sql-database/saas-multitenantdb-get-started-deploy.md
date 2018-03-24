@@ -1,6 +1,6 @@
 ---
-title: "Nasaďte aplikaci SaaS horizontálně dělené víceklientské databáze, která používá Azure SQL Database | Microsoft Docs"
-description: "Nasazení a prozkoumejte víceklientské databázovou aplikaci horizontálně dělené Wingtip lístky SaaS, která demonstruje SaaS vzory pomocí Azure SQL Database."
+title: Nasaďte aplikaci SaaS horizontálně dělené víceklientské databáze, která používá Azure SQL Database | Microsoft Docs
+description: Nasazení a prozkoumejte víceklientské databázovou aplikaci horizontálně dělené Wingtip lístky SaaS, která demonstruje SaaS vzory pomocí Azure SQL Database.
 keywords: kurz k sql database
 services: sql-database
 author: MightyPen
@@ -11,11 +11,11 @@ ms.workload: data-management
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: genemi
-ms.openlocfilehash: 82983c8926bdf3c7256c529448e5b4f3b2c2381c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3806b165e0124e979f59b51d5583cdbb1f949366
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Nasazení a prozkoumejte horizontálně dělené víceklientské aplikace, která používá Azure SQL Database
 
@@ -172,7 +172,7 @@ Počáteční nasazení obsahuje tři ukázkové klienty v *Tenants1* databáze.
 2. Stiskněte klávesu **F5** (ne **F8**) pro spuštění skriptu (ponechte výchozí hodnoty pro nyní).
 
    > [!NOTE]
-   > Je nutné spustit skripty prostředí PowerShell pouze stisknutím **F5** klíče není stisknutím **F8** spustit vybranou část skriptu. Problém s **F8** je, že *$PSScriptRoot* proměnné, nebude hodnocen. Tato proměnná je potřeba mnoho skriptů přejděte složek, nebo volat jiné skripty nebo naimportovat moduly.
+   > Je nutné spustit skripty prostředí PowerShell pouze stisknutím **F5** klíče není stisknutím **F8** spustit vybranou část skriptu. Problém s **F8** je, že *$PSScriptRoot* proměnné, nebude hodnocen. Tato proměnná je potřeba pomocí mnoho skriptů k procházení složek vyvolání jiné skripty nebo naimportovat moduly.
 
 K novému klientovi Red javor Racing je přidán do *Tenants1* databáze a zaregistrovány v katalogu. Je k novému klientovi prodávané ticket **události** lokality se otevře v prohlížeči:
 
@@ -250,7 +250,7 @@ Někdy víceklientské databáze vyžaduje více prostředků pro dobrý výkon 
     - [Elastických fondů pomáhají spravovat a škálování více databází Azure SQL](sql-database-elastic-pool.md)
     - [Horizontální navýšení kapacity s Azure SQL Database](sql-database-elastic-scale-introduction.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli:
 

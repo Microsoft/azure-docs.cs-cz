@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 9b168231669c50c8f00d3527288fd03ab3bf9ce8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/23/2018
+---
 ### <a name="noconnection"></a>Úprava předpon IP adres místní síťové brány – žádné připojení brány
 
 Pokud nemáte připojení brány a chcete přidat nebo odebrat předpony IP adres, můžete použít stejný příkaz, který používáte k vytvoření brány místní sítě, tedy [az network local-gateway create](https://docs.microsoft.com/cli/azure/network/local-gateway#az_network_local_gateway_create). Tento příkaz můžete použít také k aktualizaci IP adresy brány pro zařízení VPN. K přepsání aktuálního nastavení použijte existující název brány místní sítě. Pokud použijete jiný název, vytvoříte novou bránu místní sítě, místo abyste přepsali tu stávající.

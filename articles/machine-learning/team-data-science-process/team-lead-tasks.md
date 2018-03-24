@@ -1,11 +1,11 @@
 ---
-title: "Tým datové vědy procesu Team vést úlohy – Azure | Microsoft Docs"
-description: "Přehled úloh pro tým vést na datové vědě týmového projektu."
-documentationcenter: 
+title: Tým datové vědy procesu Team vést úlohy – Azure | Microsoft Docs
+description: Přehled úloh pro tým vést na datové vědě týmového projektu.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: bradsev;
-ms.openlocfilehash: 58e8bfeb547fbcd7f472fbed50073b1ca3176b72
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 995ad557eb06e545b1813e1f4631e243a98830b3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="team-lead-tasks"></a>Tým realizace úlohy
 
@@ -208,7 +208,7 @@ Po klonování, dva adresáře **MyTeamProjectTemplate** (D3) a **MyTeamUtilitie
 
 Kopírování obsahu místní **GroupProjectTemplate** (D1) složku pro místní **MyTeamProjectTemplate** (D3), spusťte jeden z následujících skriptů prostředí: 
 
-####<a name="from-the-powershell-command-line-for-windows"></a>Z příkazového řádku pro Windows PowerShell        
+#### <a name="from-the-powershell-command-line-for-windows"></a>Z příkazového řádku pro Windows PowerShell       
 
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
     .\tdsp_local_copy_win.ps1 2
@@ -216,7 +216,7 @@ Kopírování obsahu místní **GroupProjectTemplate** (D1) složku pro místní
     
 ![16](./media/team-lead-tasks/team-leads-16-local_copy_team_lead_new.png)
 
-####<a name="from-the-linux-shell-for-the-linux-dsvm"></a>Z prostředí Linux pro **Linux DSVM**
+#### <a name="from-the-linux-shell-for-the-linux-dsvm"></a>Z prostředí Linux pro **Linux DSVM**
     
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
     bash tdsp_local_copy_linux.sh 2
@@ -388,7 +388,7 @@ Potvrďte, že na nový disk F úspěšně připojen k vašemu počítači.
 
 **Jak ručně zadat informace o úložiště Azure file:** Pokud nemáte vaše informace Azure file storage s textovým souborem, můžete podle pokynů na následující obrazovce zadejte požadované předplatné, účet úložiště a Azure informace o souboru úložiště:
 
-- Vstup  **n** .
+- Vstup **n**.
 - Vyberte index název odběru, které bylo vytvořeno úložiště Azure file v předchozím kroku:
 
     ![41](./media/team-lead-tasks/team-leads-41-attach-s5-linux.png)
@@ -408,7 +408,7 @@ Ze serveru vaší skupiny služby VSTS domovské stránky, klikněte na tlačít
 
 ![44](./media/team-lead-tasks/team-leads-44-add-team-members.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tady jsou odkazy na podrobnější popis jednotlivých rolí a úloh, které jsou definované procesu Team dat vědecké účely:
 

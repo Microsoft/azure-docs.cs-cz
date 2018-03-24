@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: REST API deklarací výměnu jako krok orchestration | Microsoft Docs"
-description: "Téma na Azure Active Directory B2C vlastní zásady, které se integrují s rozhraní API"
+title: 'Azure Active Directory B2C: REST API deklarací výměnu jako krok orchestration | Microsoft Docs'
+description: Téma na Azure Active Directory B2C vlastní zásady, které se integrují s rozhraní API
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/24/2017
-ms.author: joroja
-ms.openlocfilehash: 3e4f0bccf02c0332663a746d4ed8e5234c51f54e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: bde1ef711fe19b7e26f2d93b58d653dc816b1a07
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Návod: Integrace rozhraní REST API deklarace identity výměn v vám dobře slouží Azure AD B2C uživatele jako krok orchestration
 
@@ -257,7 +254,7 @@ Pokud všechno, co je správně nastavena, je token bude obsahovat nová deklara
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Pomocí rozhraní API REST jako krok ověření](active-directory-b2c-rest-api-validation-custom.md)
 

@@ -1,11 +1,11 @@
 ---
-title: "IT služby konektoru Management v Azure Log Analytics | Microsoft Docs"
-description: "Tento článek obsahuje přehled IT služby správy konektoru (ITSMC) a informace o tom, jak používat toto řešení centrálně monitorovat a spravovat ITSM pracovních položek v Azure Log Analytics a rychle vyřešit všechny problémy."
+title: IT služby konektoru Management v Azure Log Analytics | Microsoft Docs
+description: Tento článek obsahuje přehled IT služby správy konektoru (ITSMC) a informace o tom, jak používat toto řešení centrálně monitorovat a spravovat ITSM pracovních položek v Azure Log Analytics a rychle vyřešit všechny problémy.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JYOTHIRMAISURI
 manager: riyazp
-editor: 
+editor: ''
 ms.assetid: 0b1414d9-b0a7-4e4e-a652-d3a6ff1118c4
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 56da2d4349a4a32eed783045381e504b529b1a1c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a51b96641c80a6575c64f58fa09e0bf6078e4185
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí konektoru služby správy IT
 
@@ -191,7 +191,7 @@ Můžete také vytvořit pracovní položky v připojených zdrojů ITSM přímo
 4. Zadejte odpovídající hodnoty v **typu Kontakt**, **dopad**, **naléhavost**, **kategorie**, a **dílčí kategorie** textová pole a pak klikněte na tlačítko **vytvořit**.
 
 
-##<a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Vizualizace a analyzovat incidentu a změnit data požadavku
+## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Vizualizace a analyzovat incidentu a změnit data požadavku
 
 V závislosti na vaší konfiguraci při nastavování připojení ITSM konektor synchronizovat až 120 dní incidentů a změn dat požadavku. Je součástí schéma záznam protokolu pro tato data [další části](#additional-information).
 
@@ -234,7 +234,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Naléhavosti
 - Dopad
 - Priorita
-- Eskalaci
+- Eskalace
 - Vytvořil(a)
 - Vyřešil
 - Uzavřené
@@ -265,7 +265,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Typ
 - Kategorie
 - Stav
-- Eskalaci
+- Eskalace
 - Konflikt stavu
 - Naléhavosti
 - Priorita

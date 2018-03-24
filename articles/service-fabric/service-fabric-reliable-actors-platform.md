@@ -1,6 +1,6 @@
 ---
 title: Reliable Actors v Service Fabric | Microsoft Docs
-description: "Popisuje, jak jsou vrstvu na spolehlivé služby Reliable Actors a pomocí funkcí platformy Service Fabric."
+description: Popisuje, jak jsou vrstvu na spolehlivé služby Reliable Actors a pomocí funkcí platformy Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: ee248cb656eeb54e259ff1adf45080a207b5a866
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 088f56f33c85d3c590acf4a2eaa660a9d586f7ec
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak objekty Reliable Actors využívají platformu Service Fabric
 Tento článek vysvětluje, jak fungují Reliable Actors na platformě Azure Service Fabric. Spustit v rozhraní, které je hostován v implementaci stavové spolehlivé služby Reliable Actors názvem *služby objektu actor*. Služby objektu actor obsahuje všechny komponenty potřebné ke správě životního cyklu a odeslání pro vaše aktéři zpráva:
@@ -42,282 +42,10 @@ V spolehlivé služby, služby dědí `StatefulService` třídy. Tato třída je
 * Sdílené funkce pro všechny účastníky, například jistič.
 * Vzdálená volání procedur v samotné služby objektu actor a v každé jednotlivé objektu actor.
 
-### <a name="using-the-actor-service"></a>Pomocí služby objektu actor
-Instance objektu actor mít přístup ke službě objektu actor, ve kterém běží. Prostřednictvím služby objektu actor instancí objektu actor prostřednictvím kódu programu získat kontext služby. Kontext služby má ID oddílu, název služby, název aplikace a další informace specifické pro platformu Service Fabric:
+> [!NOTE]
+> Stavové služby nejsou aktuálně podporované v jazyce Java nebo Linux.
 
-```csharp
-Task MyActorMethod()
-{
-    Guid partitionId = this.ActorService.Context.PartitionId;
-    string serviceTypeName = this.ActorService.Context.ServiceTypeName;
-    Uri serviceInstanceName = this.ActorService.Context.ServiceName;
-    string applicationInstanceName = this.ActorService.Context.CodePackageActivationContext.ApplicationName;
-}
-```
-```Java
-CompletableFuture<?> MyActorMethod()
-{
-    UUID partitionId = this.getActorService().getServiceContext().getPartitionId();
-    String serviceTypeName = this.getActorService().getServiceContext().getServiceTypeName();
-    URI serviceInstanceName = this.getActorService().getServiceContext().getServiceName();
-    String applicationInstanceName = this.getActorService().getServiceContext().getCodePackageActivationContext().getApplicationName();
-}
-```
-
-
-Podobně jako všechny spolehlivé služby musí být zaregistrován služby objektu actor s typem služby v modulu runtime Service Fabric. Služby objektu actor ke spuštění vaše instance objektu actor musí být typu vašeho objektu actor také zaregistrován u služby objektu actor. Pro objekty actor tuto práci provádí metoda registrace `ActorRuntime`. V nejjednodušším případě zaregistrujete na typ vašeho objektu actor a služby objektu actor s výchozím nastavením se implicitně použije:
-
-```csharp
-static class Program
-{
-    private static void Main()
-    {
-        ActorRuntime.RegisterActorAsync<MyActor>().GetAwaiter().GetResult();
-
-        Thread.Sleep(Timeout.Infinite);
-    }
-}
-```
-
-Alternativně můžete lambda poskytované registrace metoda služby objektu actor vytvořit sami. Můžete pak nakonfigurovat služby objektu actor a explicitně vytvořit vaše objektu actor instance, kde můžete vložit závislosti na vaší objektu actor prostřednictvím jeho konstruktoru:
-
-```csharp
-static class Program
-{
-    private static void Main()
-    {
-        ActorRuntime.RegisterActorAsync<MyActor>(
-            (context, actorType) => new ActorService(context, actorType, () => new MyActor()))
-            .GetAwaiter().GetResult();
-
-        Thread.Sleep(Timeout.Infinite);
-    }
-}
-```
-```Java
-static class Program
-{
-    private static void Main()
-    {
-      ActorRuntime.registerActorAsync(
-              MyActor.class,
-              (context, actorTypeInfo) -> new FabricActorService(context, actorTypeInfo),
-              timeout);
-
-        Thread.sleep(Long.MAX_VALUE);
-    }
-}
-```
-
-### <a name="actor-service-methods"></a>Metody služby objektu actor
-Implementuje služby objektu Actor `IActorService` (C#) nebo `ActorService` (Java), který naopak implementuje `IService` (C#) nebo `Service` (Java). Toto je rozhraní používá vzdálenou komunikaci spolehlivé služby, které umožňuje vzdálené volání procedur u metod služby. Obsahuje metody úrovni služby, které je možné volat vzdáleně přes vzdálenou komunikaci služby.
-
-#### <a name="enumerating-actors"></a>Vytváření výčtu actors
-Služby objektu actor umožňuje klientovi výčet metadata o aktéři, která je hostitelem služby. Protože služby objektu actor oddílů stavové služby, výčet se provádí na oddíl. Protože každý oddíl může obsahovat mnoho aktéři, výčtu se vrátí jako sadu stránkových výsledků. Na stránkách jsou smyčce přes, dokud se číst všechny stránky. Následující příklad ukazuje, jak vytvořit seznam všech active aktéři v jednom oddílu služby objektu actor:
-
-```csharp
-IActorService actorServiceProxy = ActorServiceProxy.Create(
-    new Uri("fabric:/MyApp/MyService"), partitionKey);
-
-ContinuationToken continuationToken = null;
-List<ActorInformation> activeActors = new List<ActorInformation>();
-
-do
-{
-    PagedResult<ActorInformation> page = await actorServiceProxy.GetActorsAsync(continuationToken, cancellationToken);
-
-    activeActors.AddRange(page.Items.Where(x => x.IsActive));
-
-    continuationToken = page.ContinuationToken;
-}
-while (continuationToken != null);
-```
-
-```Java
-ActorService actorServiceProxy = ActorServiceProxy.create(
-    new URI("fabric:/MyApp/MyService"), partitionKey);
-
-ContinuationToken continuationToken = null;
-List<ActorInformation> activeActors = new ArrayList<ActorInformation>();
-
-do
-{
-    PagedResult<ActorInformation> page = actorServiceProxy.getActorsAsync(continuationToken);
-
-    while(ActorInformation x: page.getItems())
-    {
-         if(x.isActive()){
-              activeActors.add(x);
-         }
-    }
-
-    continuationToken = page.getContinuationToken();
-}
-while (continuationToken != null);
-```
-
-#### <a name="deleting-actors"></a>Odstranění actors
-Služby objektu actor také poskytuje funkce pro odstranění aktéři:
-
-```csharp
-ActorId actorToDelete = new ActorId(id);
-
-IActorService myActorServiceProxy = ActorServiceProxy.Create(
-    new Uri("fabric:/MyApp/MyService"), actorToDelete);
-
-await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
-```
-```Java
-ActorId actorToDelete = new ActorId(id);
-
-ActorService myActorServiceProxy = ActorServiceProxy.create(
-    new URI("fabric:/MyApp/MyService"), actorToDelete);
-
-myActorServiceProxy.deleteActorAsync(actorToDelete);
-```
-
-Další informace o odstranění aktéři a jejich stavu najdete v tématu [objektu actor životního cyklu dokumentaci](service-fabric-reliable-actors-lifecycle.md).
-
-### <a name="custom-actor-service"></a>Služba vlastní objektu actor
-Pomocí lambda registrace objektu actor můžete zaregistrovat vlastní vlastní objektu actor služba, která je odvozena z `ActorService` (C#) a `FabricActorService` (Java). V rámci této služby objektu actor vlastní můžete implementovat vlastní úroveň služby funkce napsáním třídu služby, který dědí `ActorService` (C#) nebo `FabricActorService` (Java). Služby objektu actor vlastní dědí všechny funkcionalita modulu runtime objektu actor z `ActorService` (C#) nebo `FabricActorService` (Java) a lze použít k implementaci vlastních metod služby.
-
-```csharp
-class MyActorService : ActorService
-{
-    public MyActorService(StatefulServiceContext context, ActorTypeInformation typeInfo, Func<ActorBase> newActor)
-        : base(context, typeInfo, newActor)
-    { }
-}
-```
-```Java
-class MyActorService extends FabricActorService
-{
-    public MyActorService(StatefulServiceContext context, ActorTypeInformation typeInfo, BiFunction<FabricActorService, ActorId, ActorBase> newActor)
-    {
-         super(context, typeInfo, newActor);
-    }
-}
-```
-
-```csharp
-static class Program
-{
-    private static void Main()
-    {
-        ActorRuntime.RegisterActorAsync<MyActor>(
-            (context, actorType) => new MyActorService(context, actorType, () => new MyActor()))
-            .GetAwaiter().GetResult();
-
-        Thread.Sleep(Timeout.Infinite);
-    }
-}
-```
-```Java
-public class Program
-{
-    public static void main(String[] args)
-    {
-        ActorRuntime.registerActorAsync(
-                MyActor.class,
-                (context, actorTypeInfo) -> new FabricActorService(context, actorTypeInfo),
-                timeout);
-        Thread.sleep(Long.MAX_VALUE);
-    }
-}
-```
-
-#### <a name="implementing-actor-backup-and-restore"></a>Implementace objektu actor zálohování a obnovení
- V následujícím příkladu služby objektu actor vlastní zpřístupní metodu zálohování dat objektu actor využívat výhod naslouchacího procesu vzdálené komunikace, která je již v `ActorService`:
-
-```csharp
-public interface IMyActorService : IService
-{
-    Task BackupActorsAsync();
-}
-
-class MyActorService : ActorService, IMyActorService
-{
-    public MyActorService(StatefulServiceContext context, ActorTypeInformation typeInfo, Func<ActorBase> newActor)
-        : base(context, typeInfo, newActor)
-    { }
-
-    public Task BackupActorsAsync()
-    {
-        return this.BackupAsync(new BackupDescription(PerformBackupAsync));
-    }
-
-    private async Task<bool> PerformBackupAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
-    {
-        try
-        {
-           // store the contents of backupInfo.Directory
-           return true;
-        }
-        finally
-        {
-           Directory.Delete(backupInfo.Directory, recursive: true);
-        }
-    }
-}
-```
-```Java
-public interface MyActorService extends Service
-{
-    CompletableFuture<?> backupActorsAsync();
-}
-
-class MyActorServiceImpl extends ActorService implements MyActorService
-{
-    public MyActorService(StatefulServiceContext context, ActorTypeInformation typeInfo, Func<FabricActorService, ActorId, ActorBase> newActor)
-    {
-       super(context, typeInfo, newActor);
-    }
-
-    public CompletableFuture backupActorsAsync()
-    {
-        return this.backupAsync(new BackupDescription((backupInfo, cancellationToken) -> performBackupAsync(backupInfo, cancellationToken)));
-    }
-
-    private CompletableFuture<Boolean> performBackupAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
-    {
-        try
-        {
-           // store the contents of backupInfo.Directory
-           return true;
-        }
-        finally
-        {
-           deleteDirectory(backupInfo.Directory)
-        }
-    }
-
-    void deleteDirectory(File file) {
-        File[] contents = file.listFiles();
-        if (contents != null) {
-            for (File f : contents) {
-               deleteDirectory(f);
-             }
-        }
-        file.delete();
-    }
-}
-```
-
-
-V tomto příkladu `IMyActorService` je Vzdálená komunikace kontrakt, který implementuje `IService` (C#) a `Service` (Java) a pak je implementováno modulem `MyActorService`. Přidáním této smlouvy vzdálenou komunikaci, metody na `IMyActorService` jsou nyní k dispozici také ke klientovi vytvořením proxy vzdálenou komunikaci prostřednictvím `ActorServiceProxy`:
-
-```csharp
-IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
-    new Uri("fabric:/MyApp/MyService"), ActorId.CreateRandom());
-
-await myActorServiceProxy.BackupActorsAsync();
-```
-```Java
-MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.class,
-    new URI("fabric:/MyApp/MyService"), actorId);
-
-myActorServiceProxy.backupActorsAsync();
-```
+Další informace najdete v tématu [implementace funkce na úrovni služby ve službě objektu actor](service-fabric-reliable-actors-using.md).
 
 ## <a name="application-model"></a>Aplikační model
 Služby objektu actor jsou spolehlivé služby, takže aplikačního modelu je stejný. Však nástroje sestavení objektu actor framework generovat některé soubory modelu aplikace za vás.
@@ -369,34 +97,6 @@ ActorProxyBase.create(MyActor.class, new ActorId(1234));
 
 Pokud používáte GUID/UUID a řetězce, hodnoty rozdělí na datovém typu Int64. Ale když explicitně zadáváte Int64 pro `ActorId`, Int64 se mapování přímo na oddíl bez další algoritmu hash. Tento postup na ovládací prvek oddíl, který aktéři jsou umístěny v můžete použít.
 
-## <a name="actor-using-remoting-v2-stack"></a>Použití zásobníku V2 vzdálenou komunikaci objektu actor
-2,8 balíčkem nuget uživatelé teď můžou používat vzdálenou komunikaci V2 zásobníku, která je další původce a poskytuje funkce, například vlastní serializace. Vzdálená komunikace V2 není zpětně kompatibilní s existující vzdálenou komunikaci zásobníku (voláme teď ho jako Vzdálená komunikace V1 zásobníku).
-
-Následující změny vyžadovaných pro použití zásobníku V2 vzdálenou komunikaci.
- 1. Přidejte následující atribut sestavení v objektu Actor rozhraní.
-   ```csharp
-   [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
-   ```
-
- 2. Sestavení a upgradovat ActorService a objektu Actor klienta projekty k použití zásobníku V2.
-
-### <a name="actor-service-upgrade-to-remoting-v2-stack-without-impacting-service-availability"></a>Objektu actor služby upgradovat na vzdálenou komunikaci V2 zásobníku bez dopadu na dostupnost služeb.
-Tato změna bude upgrade kroku 2. Jak je uvedeno, postupujte podle kroků ve stejném pořadí.
-
-1.  Přidejte následující atribut sestavení v objektu Actor rozhraní. Tento atribut se spustí dva naslouchací procesy pro ActorService V1 (existující) a V2 naslouchací proces. Upgrade ActorService v této změně.
-
-  ```csharp
-  [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.CompatListener,RemotingClient = RemotingClient.V2Client)]
-  ```
-
-2. Upgrade ActorClients po dokončení upgradu výše.
-Tento krok zajistí, že Proxy objektu Actor používá zásobník V2 vzdálenou komunikaci.
-
-3. Tento krok je volitelný. Změňte atribut výše, čímž odeberete naslouchací proces V1.
-
-    ```csharp
-    [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
-    ```
 
 ## <a name="next-steps"></a>Další postup
 * [Řízení stavu objektu actor](service-fabric-reliable-actors-state-management.md)

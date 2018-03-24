@@ -1,31 +1,28 @@
 ---
-title: "Reálný uživatel měření do Azure Traffic Manageru s Visual Studio Mobile Center | Microsoft Docs"
-description: "Nastavení mobilní aplikace vyvinuté pomocí Visual Studio Mobile Center odeslat reálného měření uživatele do Traffic Manageru"
+title: Reálný uživatel měření do Azure Traffic Manageru s Visual Studio Mobile Center | Microsoft Docs
+description: Nastavení mobilní aplikace vyvinuté pomocí Visual Studio Mobile Center odeslat reálného měření uživatele do Traffic Manageru
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
 manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 09/29/2017
+ms.date: 03/16/2018
 ms.author: kumud
-ms.custom: 
-ms.openlocfilehash: 756496e5291d932ee9ac89265291e6892c4304fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 893e84b07b365fb0b534e0ddc021b2249c4174cf
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Postup odesílání reálného měření uživatele do Traffic Manageru s Visual Studio Mobile Center
-
->[!NOTE]
->Funkce reálného měření uživatele v Traffic Manager je ve verzi Public Preview a nemusí mít stejnou úroveň dostupnost a spolehlivost jako verze funkce, které jsou obecné dostupnosti. Funkce není podporována, může mít omezené možnosti a nemusí být k dispozici ve všech Azure umístění. Nejaktuálnější upozornění na stav této funkce a dostupnost, zkontrolujte [Azure Traffic Manager aktualizuje](https://azure.microsoft.com/updates/?product=traffic-manager) stránky.
 
 Můžete nastavit mobilní aplikace vyvinuté pomocí Visual Studio Mobile Center k odeslání do Traffic Manageru reálného měření uživatele pomocí následujících kroků:
 
@@ -101,7 +98,7 @@ Pokud chcete používat reálného měření uživatele, proveďte následujíc�
     MobileCenter.start(getApplication(), "<Your Mobile Center AppSecret>", RealUserMeasurements.class);
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace o [reálného měření uživatele](traffic-manager-rum-overview.md)
 - Další informace [fungování Traffic Manager](traffic-manager-overview.md)
 - Další informace o [Mobile Center](https://docs.microsoft.com/mobile-center/)

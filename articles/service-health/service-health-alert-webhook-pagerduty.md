@@ -1,12 +1,12 @@
 ---
-title: "Konfigurace výstrah stavu služeb Azure s PagerDuty | Microsoft Docs"
-description: "Získáte přizpůsobený oznámení o události stavu služby k vaší instanci PagerDuty."
+title: Konfigurace výstrah stavu služeb Azure s PagerDuty | Microsoft Docs
+description: Získáte přizpůsobený oznámení o události stavu služby k vaší instanci PagerDuty.
 author: shawntabrizi
 manager: scotthit
-editor: 
+editor: ''
 services: service-health
 documentationcenter: service-health
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-health
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 9edcb727b9f0af348cacd5533523c4f2e8214703
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 6e9fcf20d368e270f9af4551c539acd873335498
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-service-health-alerts-with-pagerduty"></a>Konfigurace výstrah stavu služeb s PagerDuty
 
@@ -79,7 +79,7 @@ Tento článek ukazuje, jak nastavit oznámení o stavu služby Azure prostředn
 5. Vyberte **Uložit** po dokončení aktualizace skupiny akce.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testování svoji integraci webhooku prostřednictvím požadavku HTTP POST
-1. Vytvoření datové části stav služby, které chcete odeslat. Můžete najít datovou část příklad stav služby webhooku na [Webhooky Azure aktivity protokolu výstrahy](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+1. Vytvoření datové služby stavu, který chcete odeslat. Můžete najít datovou příklad služby stavu webhooku v [Webhooky Azure aktivity protokolu výstrahy](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
 
 2. Vytvořte požadavek HTTP POST takto:
 
@@ -88,13 +88,13 @@ Tento článek ukazuje, jak nastavit oznámení o stavu služby Azure prostředn
 
     HEADERS     Content-Type: application/json
 
-    BODY        <Service Health payload>
+    BODY        <service health payload>
     ```
 3. Měli byste obdržet `202 Accepted` zprávou obsahující vaší "ID události."
 
 4. Přejděte na [PagerDuty](https://www.pagerduty.com/) potvrďte, že byl úspěšně nastaven svoji integraci.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy správy problém](service-health-alert-webhook-guide.md).
 - Zkontrolujte [schéma výstrahy webhooku protokolu činnosti](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
 - Další informace o [oznámení o stavu služby](../monitoring-and-diagnostics/monitoring-service-notifications.md).

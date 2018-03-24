@@ -1,11 +1,11 @@
 ---
-title: "Kopírování dat z databáze Oracle pomocí Azure Data Factory | Microsoft Docs"
-description: "Zjistěte, jak zkopírovat data z podporované zdrojové úložiště k databázi Oracle nebo Oracle na podporované podřízený úložiště pomocí služby Data Factory."
+title: Kopírování dat z databáze Oracle pomocí Azure Data Factory | Microsoft Docs
+description: Zjistěte, jak zkopírovat data z podporované zdrojové úložiště k databázi Oracle nebo Oracle na podporované podřízený úložiště pomocí služby Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: dfbc6e1d8bdf20cc7a0a4b1571882ba84487dddc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: aa96356b01d63aa21c55f1b2e6998e65f9d617f6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do databáze Oracle pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 - všeobecně dostupná](v1/data-factory-onprem-oracle-connector.md)
+> * [Verze 1 – Obecně dostupná](v1/data-factory-onprem-oracle-connector.md)
 > * [Verze 2 – Preview](connector-oracle.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z a do databáze Oracle. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který představuje obecný přehled o aktivitě kopírování.
@@ -58,7 +58,7 @@ Následující vlastnosti jsou podporovány pro Oracle propojené služby.
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavená na **Oracle**. | Ano |
-| připojovací řetězec | Určuje informace potřebné pro připojení k instanci databáze Oracle. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md).<br><br>**Typ připojení podporovaný**: můžete použít **Oracle SID** nebo **název služby Oracle** k identifikaci vaší databáze:<br>– Pokud používáte SID:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud používáte název služby:`Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | Ano |
+| připojovací řetězec | Určuje informace potřebné pro připojení k instanci databáze Oracle. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md).<br><br>**Typ připojení podporovaný**: můžete použít **Oracle SID** nebo **název služby Oracle** k identifikaci vaší databáze:<br>– Pokud používáte SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud používáte název služby: `Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | Ano |
 | connectVia | [Integrace runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je veřejně přístupná data store), můžete použít modul Runtime integrace Self-hosted nebo Runtime integrace Azure. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
 
 **Příklad:**
@@ -211,7 +211,7 @@ Při kopírování dat z a do databáze Oracle, se používají následující m
 | OBJEKT BLOB |Byte[]<br/>(podporováno pouze Oracle 10g a vyšší) |
 | CHAR – |Řetězec |
 | DATOVÝ TYP CLOB |Řetězec |
-| DATE (Datum) |Datum a čas |
+| DATE (Datum) |DateTime |
 | PLOVOUCÍ DESETINNÁ ČÁRKA |Decimal, řetězec (Pokud přesnost > 28) |
 | CELÉ ČÍSLO |Decimal, řetězec (Pokud přesnost > 28) |
 | DLOUHÁ |Řetězec |
@@ -222,7 +222,7 @@ Při kopírování dat z a do databáze Oracle, se používají následující m
 | NVARCHAR2 |Řetězec |
 | NEZPRACOVANÁ |Byte[] |
 | ID ŘÁDKU |Řetězec |
-| ČASOVÉ RAZÍTKO |Datum a čas |
+| ČASOVÉ RAZÍTKO |DateTime |
 | ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÉM PÁSMU |Řetězec |
 | ČASOVÉ RAZÍTKO S ČASOVÝM PÁSMEM |Řetězec |
 | CELÉ ČÍSLO BEZ ZNAMÉNKA |Číslo |

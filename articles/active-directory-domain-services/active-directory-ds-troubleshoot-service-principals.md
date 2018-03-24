@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory Domain Services: Řešení potíží s konfigurací instanční objekt | Microsoft Docs"
-description: "Řešení potíží s konfigurací objekt služby pro Azure AD Domain Services"
+title: 'Azure Active Directory Domain Services: Řešení potíží s konfigurací instanční objekt | Microsoft Docs'
+description: Řešení potíží s konfigurací objekt služby pro Azure AD Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: eringreenlee
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory-ds
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: e1be075ba2d3e6ae7512ccc030073fd7f1862502
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d1a605ae5c0ea598ba507de0b21a841333df79ef
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>Řešení potíží s neplatná instanční objekt konfigurace pro spravované doméně
 
@@ -93,7 +93,7 @@ Postupujte podle těchto kroků, pokud objekt služby s ID ```d87dcbc6-a371-462e
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Výstrahy AADDS105: Heslo synchronizace aplikace je zastaralé.
 
-**Upozornění:** byl odstraněn objekt služby s ID aplikace "d87dcbc6-a371-462e-88e3-28ad15ec4e64" a Microsoft bylo možné ho znovu vytvořit. Tato služba hlavní spravuje jiného objektu služby a aplikace, která se používají pro synchronizaci hesel. Hlavní spravované služby a aplikace nemáte oprávnění v rámci objektu nově vytvořený služby a bude zastaralé, když vyprší platnost certifikátu synchronizace. To znamená, že bude nově vytvořený instanční objekt nelze aktualizovat staré spravovaných aplikací a synchronizace objektů z AAD bude mít vliv.
+**Upozornění:** instanční objekt s ID aplikace "d87dcbc6-a371-462e-88e3-28ad15ec4e64" byl odstraněn a pak znovu vytvořen. Tato služba hlavní spravuje jiného objektu služby a aplikace, která se používají pro synchronizaci hesel. Hlavní spravované služby nebo aplikace nebyl autorizován v rámci objektu nově vytvořený služby, nemůže být spravován naši službu. To znamená, že bude nově vytvořený instanční objekt nelze aktualizovat staré spravovaných aplikací a synchronizace hesel bude mít vliv.
 
 
 **Řešení:** potřebujete Azure AD PowerShell k provedení těchto kroků. Informace o instalaci Azure AD PowerShell najdete v tématu [v tomto článku](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).
@@ -108,7 +108,7 @@ Chcete-li tento problém vyřešit, zadejte následující příkazy v okně pro
 2. Odstranit staré aplikace a objekt, který používá následující příkazy prostředí PowerShell
 
     ```powershell
-    $app = Get-AzureADApplication -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
+    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
     Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $app.ObjectId

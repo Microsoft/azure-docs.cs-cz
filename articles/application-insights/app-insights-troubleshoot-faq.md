@@ -1,6 +1,6 @@
 ---
-title: "Nejčastější dotazy k Azure Application Insights | Microsoft Docs"
-description: "Nejčastější dotazy o Application Insights."
+title: Nejčastější dotazy k Azure Application Insights | Microsoft Docs
+description: Nejčastější dotazy o Application Insights.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: ed10b364a809c519fe9fe49e019df22598b8c04e
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 721799703923339d397113fc278cdeb6c6dbb88f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -121,7 +121,7 @@ Z jiných zdrojů, pokud je nakonfigurovat:
 * [Azure diagnostics](app-insights-azure-diagnostics.md)
 * [Kontejnery docker](app-insights-docker.md)
 * [Import tabulky k analýze](app-insights-analytics-import.md)
-* [OMS (analýzy protokolů)](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
+* [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
 * [Logstash](app-insights-analytics-import.md)
 
 ## <a name="can-i-filter-out-or-modify-some-telemetry"></a>Můžete filtrovat nebo upravovat nějaké telemetrie?
@@ -188,7 +188,7 @@ Použijte jediný zdroj pro všechny součásti nebo role v rámci jedné obchod
 * Pokud jeden reálný uživatel používá váš web v různých prohlížečích nebo pomocí procházení v privátní nebo incognito nebo různých počítačů a potom se budou počítat více než jednou.
 * Chcete-li identifikovat přihlášeného uživatele na počítače a prohlížeče, přidejte volání [setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users).
 
-## <a name="q17"></a>I povolili všechno ve službě Application Insights?
+## <a name="q17"></a> I povolili všechno ve službě Application Insights?
 | Co byste měli vidět | Jak ji připravit | Proč byste je |
 | --- | --- | --- |
 | Grafy dostupnosti |[Testy webu](app-insights-monitor-web-app-availability.md) |Vědět, že vaše webová aplikace je nahoru |
@@ -250,7 +250,7 @@ Zde jsou dvě metody:
 
 ### <a name="firewall-door"></a>Dvířka brány firewall
 
-Povolit odesílání telemetrie na naše https://dc.services.visualstudio.com:443 koncových bodů a https://rt.services.visualstudio.com:443 webovému serveru. 
+Povolit váš webový server k odeslání telemetrie do našich koncových bodů https://dc.services.visualstudio.com:443 a https://rt.services.visualstudio.com:443. 
 
 ### <a name="proxy"></a>Proxy server
 
@@ -262,7 +262,7 @@ Směrovat provoz ze serveru brány v síti intranet, pomocí tohoto nastavení v
 </TelemetryChannel>
 ```
 
-Vaše brána by měl směrovat přenosy https://dc.services.visualstudio.com:443 nebo v2 nebo sledování
+Vaše brána by měl směrovat přenosy do https://dc.services.visualstudio.com:443/v2/track
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Můžete spouštět testy dostupnosti webu na intranetový server?
 

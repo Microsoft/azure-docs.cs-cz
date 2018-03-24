@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: wgries
-ms.openlocfilehash: b42287580078b4391ddbc5b8ff2835131c64236d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bb7fa68809341b5132d551ff1cab187bd4d7eeac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Poznámky k verzi pro agenta Azure File Sync (Preview)
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -93,11 +93,12 @@ Následující položky se nesynchronizují, ale zbytek systému bude fungovat n
 - Koncový bod serveru nemůže být na systémovém svazku. Například C:\moje_složka není přijatelná cesta, pokud C:\moje_složka není bod připojení.
 - Clustering převzetí služeb při selhání se podporuje pouze s clusterovanými disky, nikoli však se sdílenými svazky clusteru (CSV).
 - Koncový bod serveru nemůže být vnořený. Může existovat paralelně na stejném svazku spolu s jiným koncovým bodem.
-- Odstranění velkého počtu (více než 10 000) adresářů ze serveru najednou může způsobit chyby synchronizace. Odstraňujte adresáře v dávkách po méně než 10 000. Před odstraněním další dávky se ujistěte, že se operace odstranění úspěšně synchronizovaly.
 - Tato verze přidává podporu kořenového adresáře synchronizace v kořenovém adresáři svazku.
 - Neukládejte stránkovací soubor operačního systému nebo aplikace, který je na koncovém bodu serveru.
 - Změna v této vydané verzi: Přidání nových událostí pro sledování celkové doby vrstvení cloudu (ID události 9016), průběhu nahrávání synchronizace (ID události 9302) a souborů, které se nesynchronizovaly (ID události 9900).
-- Změna v této vydané verzi: Výrazné zvýšení výkonu rychlé synchronizace oboru názvů DR.
+- Vylepšené v této verzi: 
+- Obor názvů rychlé zotavení po Havárii synchronizace výkon bude vyšší výrazně.
+- Odstraňování velké počty adresáře (více než 10 000) není nutné provést v dávkách s v2 *.
  
 ### <a name="cloud-tiering"></a>Vrstvení cloudu
 - Změna oproti předchozí verzi: Vrstvení nových souborů proběhne do 1 hodiny (dříve to bylo 32 hodin) v souladu s nastavením zásad vrstvení. Pro vrstvení na vyžádání poskytujeme rutinu PowerShellu. Pomocí této rutiny můžete vrstvení vyhodnotit efektivněji a bez čekání na procesy na pozadí.

@@ -1,25 +1,25 @@
 ---
-title: "Upgrade na virtuální počítač Azure backup zásobníku V2 | Microsoft Docs"
-description: "Upgrade proces a nejčastější dotazy pro zálohování virtuálních počítačů zásobníku V2"
+title: Upgrade na virtuální počítač Azure backup zásobníku V2 | Microsoft Docs
+description: Upgrade proces a nejčastější dotazy pro zálohování virtuálních počítačů zásobníku V2
 services: backup, virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
+ms.assetid: ''
 ms.service: backup, virtual-machines
 ms.devlang: na
 ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
-ms.author: trinadhk
-ms.openlocfilehash: b7e9f45c61d2af1940be50a368b87cd35c85b1dd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: trinadhk, sogup
+ms.openlocfilehash: 6d214072bccb8b2b42828ee003dcf349985b4f43
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="upgrade-to-vm-backup-stack-v2"></a>Upgrade na zálohování virtuálních počítačů zásobníku V2
+# <a name="upgrade-to-vm-backup-stack-v2"></a>Upgrade na zásobník záloh virtuálních počítačů V2
 Upgrade zálohování zásobníku V2 virtuální počítač (VM) obsahuje následující vylepšení funkce:
 * Umožňuje zobrazit snímek pořízený jako součást úlohy zálohování, aby byly dostupné pro obnovení bez čekání na dokončení přenosu dat došlo k chybě.
 Omezí čekání na snímku zkopírovány do trezoru než obnovení. Také odstraníte tím požadavek na další úložiště pro zálohování virtuálních počítačů premium s výjimkou první zálohy.  
@@ -49,7 +49,6 @@ Ve výchozím nastavení bude uchovávat snímky sedm dní. To umožňuje obnove
 * Toto je upgrade jednosměrnou zásobníku zálohování virtuálních počítačů. Ano všechny budoucí zálohy přejde do tohoto datového toku. Vzhledem k tomu **je povolena na úrovni předplatného, budou všechny virtuální počítače přejděte na tento tok**. Všechny nově přidané funkce budou založeny na se stejným zásobníkem. Uvolní možnost řízení, které to na úrovni zásady pochází v budoucnosti. 
 * U virtuálních počítačů s prémiové disky během první zálohování Ujistěte se, že je prostor úložiště rovná velikosti virtuálního počítače je k dispozici v účtu úložiště až po dokončení první zálohy. 
 * Vzhledem k tomu, že snímky jsou uložené místně pro zvýšení vytvoření bodu obnovení a také pro urychlení obnovení, zobrazí se náklady na úložiště odpovídající snímky během období sedmi dnů.
-Pro spravované disky, je *žádné zvýšení ceny* protože restorePointCollections jsou zdarma. 
 * Pokud provádíte obnovení z bodu obnovení snímku pro virtuální počítač, Premium, zobrazí se umístění dočasné úložiště používá jako součást obnovení je při vytváření virtuálního počítače. 
 
 ## <a name="how-to-upgrade"></a>Postup upgradu?

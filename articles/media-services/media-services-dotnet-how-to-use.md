@@ -1,11 +1,11 @@
 ---
-title: "Postup nastavení počítače pro vývoj pomocí rozhraní .NET služby Media Services"
-description: "Další informace o požadavcích na Media Services pomocí sady Media Services SDK pro .NET. Také zjistěte, jak vytvořit aplikaci Visual Studio."
+title: Postup nastavení počítače pro vývoj pomocí rozhraní .NET služby Media Services
+description: Další informace o požadavcích na Media Services pomocí sady Media Services SDK pro .NET. Také zjistěte, jak vytvořit aplikaci Visual Studio.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: ec2804c7-c656-4fbf-b3e4-3f0f78599a7f
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 532306427ba13aca70c50d47a33bb7edeac71720
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: b5daa2198d76534e5756684e0482d59c047d634f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="media-services-development-with-net"></a>Vývoj pro Media Services pomocí rozhraní .NET
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -27,7 +27,7 @@ Tento článek popisuje, jak chcete začít vyvíjet aplikace Media Services pom
 
 **Azure Media Services .NET SDK** knihovny umožňuje programu proti Media Services pomocí rozhraní .NET. Aby bylo snazší i pro vývoj pomocí rozhraní .NET, **rozšíření Azure Media Services .NET SDK** knihovna je k dispozici. Tato knihovna obsahuje sadu metod rozšíření a pomocných funkcí, které zjednodušují kódu .NET. Obě knihovny jsou k dispozici prostřednictvím **NuGet** a **Githubu**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Účet Media Services v novém nebo existujícím předplatném Azure. Najdete v článku [postup vytvoření účtu Media Services](media-services-portal-create-account.md).
 * Operační systémy: Windows 10, Windows 7, Windows 2008 R2 nebo Windows 8.
 * Rozhraní .NET framework 4.5 nebo novější.
@@ -91,7 +91,7 @@ Alternativně můžete získat nejnovější sadu Media Services .NET SDK bits z
 
     V tomto okamžiku jste připravení začít s vývojem aplikací Media Services.    
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 
 Zde je malý příklad, který se připojuje k rozhraní API pro AMS a uvádí všechny dostupné procesory médií.
 
@@ -130,7 +130,7 @@ Zde je malý příklad, který se připojuje k rozhraní API pro AMS a uvádí v
             }
  ```
 
-##<a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další postup
 
 Nyní [se můžete připojit k rozhraní API pro AMS](media-services-use-aad-auth-to-access-ams-api.md) a spusťte [vývoj](media-services-dotnet-get-started.md).
 
@@ -138,6 +138,6 @@ Nyní [se můžete připojit k rozhraní API pro AMS](media-services-use-aad-aut
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poslat názor
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 

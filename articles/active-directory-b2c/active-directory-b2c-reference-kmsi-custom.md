@@ -1,23 +1,21 @@
 ---
 title: 'Azure Active Directory B2C: KMSI | Microsoft Docs'
-description: "Téma, který ukazuje, jak nastavit 'zajistit mi přihlášení."
+description: Téma, který ukazuje, jak nastavit 'zajistit mi přihlášení.
 services: active-directory-b2c
-documentationcenter: 
-author: vigunase
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-ms.assetid: 926e9711-71c0-49e8-b658-146ffb7386c0
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2016
-ms.author: vigunase
-ms.openlocfilehash: a3d78945f862d1ae12cec05da0cf0ea7df511f43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 073ba8eef7f2f42d1c308fb20d3bfdbfc8d321b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-enable-keep-me-signed-in-kmsi"></a>Azure Active Directory B2C: Povolte 'zůstat přihlášeni (KMSI).  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -94,7 +92,7 @@ Místní přihlášení účtu můžete definovat jako zprostředkovatele deklar
 
 Přidat ID aplikace souboru rozšíření (`TrustFrameworkExtensions.xml`):
 
-1. V souboru rozšíření (TrustFrameworkExtensions.xml) nalezen element `<TechnicalProfile Id="login-NonInteractive">` a`<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
+1. V souboru rozšíření (TrustFrameworkExtensions.xml) nalezen element `<TechnicalProfile Id="login-NonInteractive">` a `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
 
 2. Nahraďte všechny výskyty `IdentityExperienceFrameworkAppId` s ID aplikace Framework prostředí Identity aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md). Zde naleznete příklad:
 
@@ -166,11 +164,11 @@ Potom aktualizujte soubor předávající stranu, který iniciuje cesty uživate
 
 4. KMSI je nakonfigurovaný v `UserJourneyBehaviors`. 
 
-5. **`KeepAliveInDays`**Určuje, jak dlouho zůstane přihlášeného uživatele. V následujícím příkladu KMSI relace automaticky vyprší 14 dnů bez ohledu na to, jak často uživatel provede bezobslužnou ověřování.
+5. **`KeepAliveInDays`** Určuje, jak dlouho zůstane přihlášeného uživatele. V následujícím příkladu KMSI relace automaticky vyprší 14 dnů bez ohledu na to, jak často uživatel provede bezobslužnou ověřování.
 
    Nastavení `KeepAliveInDays` hodnota 0 vypne KMSI funkce. Ve výchozím nastavení tato hodnota je 0
 
-6. Pokud  **`SessionExpiryType`**  je *kolejová*, pak KMSI relace je rozšířeno 14 dnů pokaždé, když uživatel provede bezobslužnou ověřování.  Pokud *kolejová* je vybraný, doporučujeme zachovat s minimální počet dnů. 
+6. Pokud **`SessionExpiryType`** je *kolejová*, pak KMSI relace je rozšířeno 14 dnů pokaždé, když uživatel provede bezobslužnou ověřování.  Pokud *kolejová* je vybraný, doporučujeme zachovat s minimální počet dnů. 
 
        <RelyingParty>
        <DefaultUserJourney ReferenceId="SignUpOrSignInWithKmsi" />

@@ -1,11 +1,11 @@
 ---
-title: "Řešení chyb zálohy s virtuální počítač Azure | Microsoft Docs"
-description: "Řešení zálohování a obnovení virtuálních počítačů Azure"
+title: Řešení chyb zálohy s virtuální počítač Azure | Microsoft Docs
+description: Řešení zálohování a obnovení virtuálních počítačů Azure
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: 
+editor: ''
 ms.assetid: 73214212-57a4-4b57-a2e2-eaf9d7fde67f
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -13,36 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/21/2018
-ms.author: trinadhk;markgal;jpallavi;
-ms.openlocfilehash: d8840d2561e6102fe1679c36e981de6614b84d54
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.author: trinadhk;markgal;jpallavi;sogup
+ms.openlocfilehash: 89535fc22faccfb184d9b56a6138337877957829
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Odstraňování potíží se zálohováním virtuálních počítačů Azure
 Řešení potíží s chyb zjištěných při pomocí Azure Backup informace uvedené v následující tabulce.
-
-## <a name="backup"></a>Backup
-
-### <a name="error-the-specified-disk-configuration-is-not-supported"></a>Chyba: Zadaný konfigurace disku nejsou podporovány.
-
-> [!NOTE]
-> Máme privátní Preview verzi pro podporu zálohování pro virtuální počítače s > disky 1TB. Podrobnosti najdete na [privátní Preview verzi pro podporu zálohování velkých disků virtuálních počítačů](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)
->
->
-
-V současné době zálohování Azure nepodporuje velikosti disků [větší než 1023GB](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm). 
-- Pokud máte disky větší než 1 TB, [připojte nové disky](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal), které jsou menší než 1 TB. <br>
-- Potom zkopírujte data z disku většího než 1 TB na nově vytvořené disky s velikostí menší než 1 TB. <br>
-- Zkontrolujte, že se všechna data zkopírovala, a potom disky větší než 1 TB odeberte.
-- Zahajte zálohování.
 
 | Detaily chyby | Alternativní řešení |
 | --- | --- |
 | Operace se nedá provést, protože virtuální počítač už neexistuje. -Zastavení ochrany virtuálního počítače bez odstraňují se záložní data. Další podrobnosti o http://go.microsoft.com/fwlink/?LinkId=808124 |To se stane, když primární virtuální počítač odstraněn, ale zásady zálohování pokračuje v hledání pro virtuální počítač k zálohování. Chcete-li vyřešit tuto chybu: <ol><li> Znovu vytvořte virtuální počítač se stejným názvem a stejný název skupiny prostředků [název cloudové služby],<br>(OR)</li><li> Zastavte ochranu virtuálního počítače s nebo bez odstranění zálohovaná data. [Další informace](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
 | Snímku operace se nezdařila z důvodu žádné připojení k síti na virtuálním počítači - zkontrolujte, zda má počítač přístup k síti. Pro vytvoření snímku proběhla úspěšně buď rozsahy IP seznamu povolených IP adres Azure datacenter nebo nastavení proxy serveru pro přístup k síti. Další podrobnosti najdete v části http://go.microsoft.com/fwlink/?LinkId=800034. Pokud už používáte proxy server, ujistěte se, že jsou správně nakonfigurované nastavení proxy serveru | Tato chyba se vyvolá, když odepřete odchozí připojení k Internetu na virtuálním počítači. Připojení k Internetu je vyžadována pro rozšíření snímek virtuálního počítače k pořízení snímku základní disky virtuálního počítače. [Další informace](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine) o tom, jak opravit snímku selhání kvůli přístupu k síti blokované. |
-| Agent virtuálního počítače se nepodařilo komunikovat se službou Azure Backup. -Zkontrolujte virtuální počítač má síťové připojení a agent virtuálního počítače je nejnovější a spuštěná. Další informace naleznete v http://go.microsoft.com/fwlink/?LinkId=800034 |Tato chyba se vyvolá, pokud došlo k potížím s agenta virtuálního počítače, nebo blokovaný přístup k síti na infrastrukturu Azure nějakým způsobem. [Další informace](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vm-agent-unable-to-communicate-with-azure-backup) o ladění do virtuálních počítačů snímku problémy.<br> Pokud agenta virtuálního počítače není způsobuje problémy, restartujte virtuální počítač. Nesprávný stav virtuálního počítače v některých případech může způsobit problémy a restartování virtuálního počítače obnoví tento "chybný stav". |
+| Agent virtuálního počítače se nepodařilo komunikovat se službou Azure Backup. -Zkontrolujte virtuální počítač má síťové připojení a agent virtuálního počítače je nejnovější a spuštěná. Další informace naleznete v  http://go.microsoft.com/fwlink/?LinkId=800034 |Tato chyba se vyvolá, pokud došlo k potížím s agenta virtuálního počítače, nebo blokovaný přístup k síti na infrastrukturu Azure nějakým způsobem. [Další informace](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vm-agent-unable-to-communicate-with-azure-backup) o ladění do virtuálních počítačů snímku problémy.<br> Pokud agenta virtuálního počítače není způsobuje problémy, restartujte virtuální počítač. Nesprávný stav virtuálního počítače v některých případech může způsobit problémy a restartování virtuálního počítače obnoví tento "chybný stav". |
 | Virtuální počítač je v chybovém stavu zřizování – restartujte virtuální počítač a ujistěte se, že virtuální počítač je ve stavu spuštění nebo vypnutí pro zálohování | K tomu dochází, pokud jeden z chyby rozšíření vede stav virtuálního počítače ve stavu selhání zřizování. Přejít na seznam rozšíření a jestli je neúspěšné rozšíření, odeberte ji a zkuste restartovat virtuální počítač. Pokud všechna rozšíření je v běžícím stavu, zkontrolujte, zda je spuštěna Služba agenta virtuálního počítače. Pokud ne, restartujte službu agent virtuálního počítače. | 
 | VMSnapshot rozšíření operace se nezdařila pro spravované disky - opakujte operaci zálohování. Pokud se problém opakuje, postupujte podle pokynů v 'http://go.microsoft.com/fwlink/?LinkId=800034'. Pokud selže dál, kontaktujte prosím podporu společnosti Microsoft | Tato chyba, když se nepodaří aktivovat snímek služby zálohování Azure. [Další informace](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vmsnapshot-extension-operation-failed) o ladění virtuální počítač snímek problémy. |
 | Může kopírování snímku virtuálního počítače, z důvodu nedostatku volného místa v účtu úložiště – zkontrolujte, zda má účet úložiště volné místo ekvivalentní data obsažená na prémiových discích úložiště připojených k virtuálnímu počítači | V případě virtuálních počítačů úrovně premium jsme zkopírujte snímku do účtu úložiště. Toto je zajistit, že není správu záloh přenos, který funguje na snímek, omezit počet IOPS, které jsou k dispozici pro aplikaci používáte prémiové disky. Společnost Microsoft doporučuje, že přidělíte jen 50 % jeho celkový úložný prostor účet tak, že služba Azure Backup můžete zkopírovat snímku do úložiště účet a přenos dat z tohoto umístění zkopírovaný v účtu úložiště do trezoru. | 
@@ -75,7 +60,7 @@ V současné době zálohování Azure nepodporuje velikosti disků [větší ne
 | Zrušení není podporován pro tento typ úlohy – počkejte na dokončení úlohy. |Žádné |
 | Úloha není ve stavu, možné zrušit – počkejte na dokončení úlohy. <br>NEBO<br> Vybraná úloha není ve stavu, možné zrušit – počkejte na dokončení úlohy. |Ve všech pravděpodobnost téměř dokončení úlohy. Počkejte prosím na dokončení úlohy.|
 | Nelze zrušit úlohu, protože není v průběhu – zrušení je podporována pouze pro úlohy, které jsou v průběhu. Prosím pokus o zrušení na v průběhu úlohy. |K tomu dochází z důvodu přechodné stavu. Počkejte několik minut a opakujte operaci zrušit. |
-| Nepodařilo se zrušit úlohy – prosím počkejte na dokončení úlohy. |Žádné |
+| Nepodařilo se zrušit úlohy – prosím počkejte na dokončení úlohy. |Žádný |
 
 ## <a name="restore"></a>Obnovení
 | Detaily chyby | Alternativní řešení |
@@ -83,7 +68,7 @@ V současné době zálohování Azure nepodporuje velikosti disků [větší ne
 | Obnovení se nezdařilo s cloudu vnitřní chyba |<ol><li>Cloudové služby, ke kterému se pokoušíte obnovit je nakonfigurováno nastavení DNS. Můžete zkontrolovat <br>$deployment = get-AzureDeployment - ServiceName "ServiceName"-slotu "Výroba" Get-AzureDns - DnsSettings $deployment. DnsSettings<br>Pokud je nakonfigurovanou adresu, znamená to, zda jsou nakonfigurovány nastavení DNS.<br> <li>Cloudové služby, ke kterému chcete se pokoušíte obnovit je nakonfigurován s vyhrazené IP adresy a stávající virtuální počítače v rámci cloudové služby jsou v zastaveném stavu.<br>Můžete zkontrolovat, že cloudové služby má vyhrazená IP adresa pomocí následující rutiny prostředí powershell:<br>$deployment = get-AzureDeployment - ServiceName "servicename"-slotu $ "Výroba" dep. ReservedIPName <br><li>Pokoušíte se virtuální počítač s následující zvláštní síťové konfigurace v obnovit do stejné cloudové služby. <br>-Virtuální počítače v části Konfigurace služby Vyrovnávání zatížení (interní a externí)<br>-Virtuální počítače s víc vyhrazených IP adres<br>-Virtuální počítače s více síťovými kartami<br>Vyberte novou cloudovou službu v uživatelském rozhraní nebo prostudujte si prosím [obnovit aspekty](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations) u virtuálních počítačů s zvláštní síťové konfigurace.</ol> |
 | Vybraný název DNS už je zabraný – Zadejte prosím jiný název DNS a zkuste to znovu. |Název DNS odkazuje na název cloudové služby (obvykle konče. cloudapp.net). Toto musí být jedinečný. Pokud dojde k této chybě, budete muset zvolit jiný název virtuálního počítače během obnovení. <br><br> Tato chyba se zobrazí pouze uživatelům na portálu Azure. Operace obnovení pomocí prostředí PowerShell bude úspěšné, protože pouze obnoví disky a nepodporuje vytvoření virtuálního počítače. Chyba se potýkají, když virtuální počítač je explicitně vytvořený můžete po operaci obnovení na disku. |
 | Zadaný virtuální síťový konfigurace není správná – zadejte konfiguraci s jinou virtuální síť a zkuste to znovu. |Žádné |
-| Zadaná Cloudová služba používá vyhrazenou IP adresu, která nebude odpovídat konfiguraci virtuálního počítače, který se má obnovit – zadejte jinou cloudovou službu, která není pomocí vyhrazené IP adresy nebo zvolte jiný bod obnovení pro obnovení z. |Žádný |
+| Zadaná Cloudová služba používá vyhrazenou IP adresu, která nebude odpovídat konfiguraci virtuálního počítače, který se má obnovit – zadejte jinou cloudovou službu, která není pomocí vyhrazené IP adresy nebo zvolte jiný bod obnovení pro obnovení z. |Žádné |
 | Cloudové služby bylo dosaženo limitu počtu vstupní koncové body – zkuste operaci zopakovat zadáním jiné cloudové služby nebo pomocí existující koncový bod. |Žádné |
 | Zálohování úložiště a cílový účet úložiště jsou ve dvou různých oblastech – zajistěte, aby byl účet úložiště zadaný v operaci obnovení ve stejné oblasti Azure jako úložiště záloh. |Žádné |
 | Účet úložiště, zadaný pro operaci obnovení není podporována – účty úložiště pouze Basic nebo Standard s místně redundantní nebo geograficky redundantní replikaci nastavení nejsou podporovány. Vyberte prosím účet podporované úložiště |Žádné |

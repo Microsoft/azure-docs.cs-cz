@@ -1,32 +1,32 @@
 ---
-title: "Konfigurace portů pro vysokou dostupnost pro vyrovnávání zatížení Azure | Microsoft Docs"
-description: "Naučte se používat porty vysokou dostupnost pro interní přenosů na všech portech služby Vyrovnávání zatížení"
+title: Konfigurace portů pro vysokou dostupnost pro vyrovnávání zatížení Azure | Microsoft Docs
+description: Naučte se používat porty vysokou dostupnost pro interní přenosů na všech portech služby Vyrovnávání zatížení
 services: load-balancer
 documentationcenter: na
 author: rdhillon
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/02/2017
+ms.date: 03/21/20178
 ms.author: kumud
-ms.openlocfilehash: 36bc3d7a35f41384706cbc7101457d00848639b2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f7f8e254e0ed0556446e7b08eaf46ec59977f62
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Konfigurace portů pro vysokou dostupnost pro interní nástroj
 
 Tento článek obsahuje příklad nasazení vysoké dostupnosti portů na interní nástroj. Další informace o konfiguracích, které jsou specifické pro síťových virtuálních zařízení (NVAs) najdete na webech odpovídající zprostředkovatele.
 
 >[!NOTE]
-> Funkce vysoké dostupnosti portů je aktuálně ve verzi preview. Ve verzi Preview funkci nemusí mít stejnou úroveň dostupnost a spolehlivost jako verze funkce, které jsou obecné dostupnosti. Další informace najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje nástroj pro vyrovnávání zatížení. Další informace o základní nástroj pro vyrovnávání zatížení najdete v tématu [přehled nástroje pro vyrovnávání zatížení](load-balancer-overview.md).
 
 Na obrázku vidíte příklad nasazení, které jsou popsané v tomto článku následující konfiguraci:
 
@@ -108,6 +108,6 @@ V kroku 4 [vytvořit sadu Nástroje pro vyrovnávání zatížení pro vnitřní
 azure network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o [vysokou dostupnost porty](load-balancer-ha-ports-overview.md).

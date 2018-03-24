@@ -1,11 +1,10 @@
 ---
-title: "Připojení k virtuální síti Azure SSIS integrace runtime | Microsoft Docs"
-description: "Zjistěte, jak propojit runtime integrace Azure SSIS virtuální sítě Azure."
+title: Připojení k virtuální síti Azure SSIS integrace runtime | Microsoft Docs
+description: Zjistěte, jak propojit runtime integrace Azure SSIS virtuální sítě Azure.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 4f1100b7e4fa2250baf282b53ef83c5f1aaa1c0e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: cdda3fbe2aff40e26c6086e87ef3e05670c3419f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení modulu runtime integrace Azure SSIS k virtuální síti.
 Vaše Azure SSIS integrace modulu runtime (IR) připojení k virtuální síť Azure v následujících scénářích: 
@@ -52,7 +51,7 @@ Tady je několik bodů důležité si uvědomit:
 - Pokud je virtuální sítě připojený k síti na pracovišti v jiném umístění z vaší služby SSIS Azure IR existující správce prostředků Azure, je nejprve vytvořit [virtuální sítě Azure Resource Manager](../virtual-network/quick-create-portal.md##create-a-virtual-network) pro Azure-SSIS Pro připojení reakcí na Incidenty. Potom nakonfigurujte připojení k virtuální síti Azure Resource Manager Azure Resource Manager. Nebo můžete vytvořit [klasickou virtuální síť](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) pro vaši Azure SSIS IR pro připojení. Potom nakonfigurujte [virtuální sítě classic Azure Resource Manager](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) připojení.
 
 ## <a name="domain-name-services-server"></a>Domain Name Services server 
-Pokud budete muset použít vlastní server služby DNS (Domain Name) ve virtuální síti připojí pomocí vaší runtime integrace Azure SSIS, použijte pokyny, které [zajistit, že uzly vaší runtime integrace Azure SSIS ve virtuální síti může přeložit Azure Koncové body](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
+Pokud budete muset použít vlastní server služby DNS (Domain Name) ve virtuální síti připojí pomocí vaší runtime integrace Azure SSIS, postupujte podle pokynů v části "Překlad názvů, který používá DNS server" článku [pro překlad názvů virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 ## <a name="network-security-group"></a>Skupina zabezpečení sítě
 Pokud potřebujete implementovat skupinu zabezpečení sítě (NSG) ve virtuální síti připojí pomocí vaší runtime integrace Azure SSIS, povolte příchozí nebo odchozí provoz prostřednictvím následující porty:

@@ -1,6 +1,6 @@
 ---
-title: "Předání objektu JSON do runbooku Azure Automation"
-description: "Jak předat parametry sady runbook jako objekt JSON"
+title: Předání objektu JSON do runbooku Azure Automation
+description: Jak předat parametry sady runbook jako objekt JSON
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,14 +8,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-keywords: "prostředí PowerShell, sady runbook, json, služby azure automation"
-ms.openlocfilehash: c5ceced9f37cb76c8c760a7f2d1c680f98e704c3
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+keywords: prostředí PowerShell, sady runbook, json, služby azure automation
+ms.openlocfilehash: dd90c15ca70b08a010215a10f35abb3706825dea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Předání objektu JSON do runbooku Azure Automation
 

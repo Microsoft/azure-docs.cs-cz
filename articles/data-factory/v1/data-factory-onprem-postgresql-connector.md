@@ -1,11 +1,10 @@
 ---
-title: "Přesun dat z PostgreSQL pomocí Azure Data Factory | Microsoft Docs"
-description: "Další informace o tom, jak přesunout data z databáze PostgreSQL pomocí Azure Data Factory."
+title: Přesun dat z PostgreSQL pomocí Azure Data Factory | Microsoft Docs
+description: Další informace o tom, jak přesunout data z databáze PostgreSQL pomocí Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 888d9ebc-2500-4071-b6d1-0f6bd1b5997c
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4cec177456b007fd7c6721380c00a622b43af677
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 4ee466c85b68ebc72dbd55849db84a473d584ffb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -327,9 +326,9 @@ Při přesunu dat na PostgreSQL, se používají následující mapování z typ
 | intarry | |Řetězec |&nbsp;
 | int4range | |Řetězec |&nbsp;
 | int8range | |Řetězec |&nbsp;
-| integer |int, int4 |Int32 |
+| celé číslo |int, int4 |Int32 |
 | Interval [pole] [(p)] | |Časový interval |&nbsp;
-| json | |Řetězec |&nbsp;
+| JSON | |Řetězec |&nbsp;
 | jsonb | |Byte[] |&nbsp;
 | řádek | |Byte [] řetězec |&nbsp;
 | lseg | |Byte [] řetězec |&nbsp;

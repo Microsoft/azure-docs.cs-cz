@@ -1,20 +1,20 @@
 ---
-title: "Kopírování dat z Amazon jednoduché úložiště služby pomocí Azure Data Factory | Microsoft Docs"
-description: "Další informace o tom, jak zkopírovat data z Amazon jednoduché úložiště služby (S3) do úložiště podporované jímku dat pomocí Azure Data Factory."
+title: Kopírování dat z Amazon jednoduché úložiště služby pomocí Azure Data Factory | Microsoft Docs
+description: Další informace o tom, jak zkopírovat data z Amazon jednoduché úložiště služby (S3) do úložiště podporované jímku dat pomocí Azure Data Factory.
 services: data-factory
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b5dbf4b7ae0fc1f8871fbf6df1a29f0f7324d83a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 82d46d29b1e75995c5436b985717f45104dad955
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon jednoduché úložiště služby pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,8 +36,8 @@ Konkrétně tento konektor Amazon S3 podporuje kopírování souborů jako-je ne
 
 Pokud chcete zkopírovat data z Amazonu S3, zkontrolujte, zda že máte následující oprávnění:
 
-- `s3:GetObject`a `s3:GetObjectVersion` pro Amazon S3 objekt operace.
-- `s3:ListBucket`nebo `s3:GetBucketLocation` pro operace sady Amazon S3. Pokud použijete Průvodce kopírováním objekt pro vytváření dat `s3:ListAllMyBuckets` je také nutný.
+- `s3:GetObject` a `s3:GetObjectVersion` pro Amazon S3 objekt operace.
+- `s3:ListBucket` nebo `s3:GetBucketLocation` pro operace sady Amazon S3. Pokud použijete Průvodce kopírováním objekt pro vytváření dat `s3:ListAllMyBuckets` je také nutný.
 
 Podrobnosti o úplný seznam Amazon S3 oprávnění najdete v tématu [zadání oprávnění v zásadách](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 

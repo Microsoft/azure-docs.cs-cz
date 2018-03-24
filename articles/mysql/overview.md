@@ -1,6 +1,6 @@
 ---
-title: "Přehled Azure databáze pro služba relační databáze MySQL"
-description: "Přehled databáze Azure pro služba relační databáze MySQL."
+title: Přehled Azure databáze pro služba relační databáze MySQL
+description: Přehled databáze Azure pro služba relační databáze MySQL.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,16 +8,16 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/20/2018
 ms.custom: mvc
-ms.openlocfilehash: 82d96424569daf481e31ab04c08dcb5e63e58476
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 2689befc6a686d0ffc25d1fccbacb66cc6e10725
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co je Azure Database pro databázi MySQL?
-Databáze pro databázi MySQL Azure je služba relační databáze v cloudu Microsoftu na základě [MySQL Community Edition](https://www.mysql.com/products/community/) databázového stroje. Tato služba je ve verzi Public Preview. Azure Database pro databázi MySQL nabízí:
+Databáze pro databázi MySQL Azure je služba relační databáze v cloudu Microsoftu na základě [MySQL Community Edition](https://www.mysql.com/products/community/) databázového stroje. Azure Database pro databázi MySQL nabízí:
 
 - Integrovanou vysokou dostupnost bez dalších poplatků.
 - Předvídatelný výkon a všeobecné ceny při průběžných platbách.
@@ -38,7 +38,7 @@ Tento článek je úvodem do databáze Azure pro MySQL základní koncepty a fun
 - [Ukázek Azure CLI pro databázi Azure pro databázi MySQL](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Úprava výkonu a škálování během několika sekund
-Ve verzi preview, databáze Azure pro službu MySQL nabízí několik úrovní služeb: Basic, obecné účely a paměťově optimalizovaná. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [Cenové úrovně](concepts-service-tiers.md).
+Databáze Azure pro službu MySQL nabízí několik úrovní služeb: Basic, obecné účely a paměťově optimalizovaná. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [Cenové úrovně](concepts-service-tiers.md).
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 Jak se rozhodnout, kdy přidat a kdy odebrat výkon? Můžete použít předdefinované výkonu monitorování a výstrah funkce v kombinaci s hodnocení výkonu podle vCores. Používání těchto nástrojů, můžete rychle posoudit dopad vCores škálování nahoru nebo dolů na základě potřeb aktuální nebo předpokládané výkonu. Podrobnosti najdete v tématu [Upozornění](howto-alert-on-metric.md).

@@ -1,12 +1,12 @@
 ---
-title: "IoT DevKit do cloudu: připojit IoT DevKit AZ3166 do služby Azure IoT Hub | Microsoft Docs"
-description: "V tomto kurzu zjistěte, jak odeslat stav senzorů na IoT DevKit AZ3166 Azure IoT Suite pro monitorování a vizualizace."
+title: 'IoT DevKit do cloudu: připojit IoT MXChip DevKit do služby Azure IoT Hub | Microsoft Docs'
+description: V tomto kurzu zjistěte, jak odeslat stav senzorů na IoT DevKit AZ3166 Azure IoT Suite pro monitorování a vizualizace.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: liydu
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: b43061f5af3e836ba3f0b37eb11b351a769890be
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 92efd0970bcf516c4210f831a0c2f23b3ee7b5d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="connect-iot-devkit-az3166-to-azure-iot-suite-for-remote-monitoring"></a>Připojení IoT DevKit AZ3166 Azure IoT Suite pro vzdálené monitorování
+# <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>Připojení MXChip IoT DevKit Azure IoT Suite pro vzdálené monitorování
 
 V tomto kurzu zjistěte, jak spouštět ukázkovou aplikaci na vašem DevKit k odesílání dat snímačů do sady Azure IoT Suite.
 
@@ -42,7 +42,7 @@ Aktivní předplatné Azure. Pokud jeden nemáte, můžete zaregistrovat pomocí
 
 1. Přejděte na [Azure IoT Suite lokality](https://www.azureiotsuite.com/) a klikněte na tlačítko **vytvořte nové řešení**.
   ![Vyberte typ Azure IoT Suite](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
-  > [!NOTE]
+  > [!WARNING]
   > Ve výchozím nastavení tato ukázka vytvoří Centrum IoT S2 po vytvoření jednoho IoT Suite. Pokud toto centrum IoT se nepoužívá s ohromnou počet zařízení, důrazně doporučujeme ho starší verzi z S2 S1 a odstranit IoT Suite, související IoT Hub se taky dají odstranit, pokud ji už nepotřebujete. 
 
 2. Vyberte **vzdálené monitorování**.

@@ -1,8 +1,8 @@
 ---
-title: "Řešení potíží s hybridní Azure Active Directory nižší úrovně zařízení připojená k | Microsoft Docs"
-description: "Řešení potíží s hybridní Azure Active Directory připojené zařízení nižší úrovně."
+title: Řešení potíží s hybridní Azure Active Directory nižší úrovně zařízení připojená k | Microsoft Docs
+description: Řešení potíží s hybridní Azure Active Directory připojené zařízení nižší úrovně.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 03/20/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ecf77a614922ef58cdfb2b2c8174f66e01ea9b46
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0d21a8848222c4b09723e22d2d51ec43b2154553
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Nižší úrovně zařízení připojená k řešení potíží s hybridní Azure Active Directory 
 
@@ -88,10 +88,10 @@ Pokud připojení k Azure AD hybridní nebyla úspěšná, dialogové okno vám 
     
     2. Pokud z nějakého důvodu nedokáže Autoworkplace.exe bezobslužně ověření pomocí Azure AD ani AD FS. Z několika možných příčin může být problémy s připojením k síti odesílací vázané na Azure AD adresy URL, (zkontrolujte, zda požadavky) nebo pokud je nakonfigurovaný pro tohoto uživatele jejich povoleno vícefaktorové ověřování, ale WIAORMUTLIAUTHN není nakonfigurovaná na federačním serveru (postup kontroly konfigurace). Další možností je, že této stránce zjišťování domovské sféry se čeká na interakci s uživatelem, brání Autoworkplace.exe bezobslužně získat token.
     
-    3. Pokud organizace používá Azure AD bezproblémové jednotné přihlašování, následující adresy URL nejsou k dispozici v nastavení intranetu IE zařízení:
+    3. Pokud organizace používá Azure AD bezproblémové jednotné přihlašování, následující adresu URL se nenachází na nastavení intranetu IE zařízení:
     
        - https://autologon.microsoftazuread-sso.com
-       - https://aadg.windows.net.nsatc.net
+
     
        a nastavení "Povolit aktualizace stavového řádku pomocí skriptu" musí být povoleno pro zónu intranetu.
 

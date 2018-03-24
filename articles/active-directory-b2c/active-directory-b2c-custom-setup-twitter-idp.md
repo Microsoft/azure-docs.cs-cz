@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Přidání služby Twitter jako zprostředkovatel identity OAuth1 pomocí vlastních zásad"
-description: "Pomocí služby Twitter jako poskytovatel identit pomocí protokolu OAuth1"
+title: 'Azure Active Directory B2C: Přidání služby Twitter jako zprostředkovatel identity OAuth1 pomocí vlastních zásad'
+description: Pomocí služby Twitter jako poskytovatel identit pomocí protokolu OAuth1
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 10/23/2017
-ms.author: yoelh
-ms.openlocfilehash: 629e0bbaa7c62ef5d381085588c6a99c203c41cb
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: davidmu
+ms.openlocfilehash: 4a7cc552f49877874dc173a47efe22873d5aeeed
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Přidání služby Twitter jako zprostředkovatel identity OAuth1 pomocí vlastních zásad
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -39,9 +36,9 @@ Použití služby Twitter jako poskytovatel identit v Azure Active Directory B2C
  
     a. Typ **název** a **popis** pro novou aplikaci. 
 
-    b. V **webu** pole, vložte  **https://login.microsoftonline.com** . 
+    b. V **webu** pole, vložte **https://login.microsoftonline.com**. 
 
-    c. V **adresu URL zpětné volání** pole, vložte  **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp** . Nahraďte {*klienta*} s názvem vašeho klienta (například contosob2c.onmicrosoft.com). Ujistěte se, že používáte schéma HTTPS. 
+    c. V **adresu URL zpětné volání** pole, vložte **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp**. Nahraďte {*klienta*} s názvem vašeho klienta (například contosob2c.onmicrosoft.com). Ujistěte se, že používáte schéma HTTPS. 
 
     d. V dolní části stránky, přečtěte si a přijměte podmínky a potom vyberte **vytvořit aplikaci služby Twitter**.
 

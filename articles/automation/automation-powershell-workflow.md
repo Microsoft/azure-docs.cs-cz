@@ -1,6 +1,6 @@
 ---
-title: "Učení pracovní postup prostředí PowerShell pro Azure Automation."
-description: "Tento článek je určený jako rychlé lekce pro autory znají PowerShell pochopit určité rozdíly mezi prostředí PowerShell a pracovní postup prostředí PowerShell a koncepty pro runbooky služby automatizace."
+title: Učení pracovní postup prostředí PowerShell pro Azure Automation.
+description: Tento článek je určený jako rychlé lekce pro autory znají PowerShell pochopit určité rozdíly mezi prostředí PowerShell a pracovní postup prostředí PowerShell a koncepty pro runbooky služby automatizace.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: b8d78d6dfd258fb51e7b30832b6c214c67ac0fec
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 32f991f0b0017e673828b1ceb832511e118efa92
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Učení klíčové koncepty pracovního postupu prostředí Windows PowerShell pro automatizaci sady runbook 
 Runbooky ve službě Azure Automation se implementují jako pracovní postupy prostředí Windows PowerShell.  Pracovní postup prostředí Windows PowerShell je podobná skript prostředí Windows PowerShell, ale existují některé významné rozdíly, které mohou být pro nového uživatele matoucí.  Když tento článek je určený k usnadnění psaní sady runbook pomocí prostředí PowerShell. pracovní postup, doporučujeme, abyste že zápisu sady runbook pomocí prostředí PowerShell, pokud potřebujete kontrolní body.  Existuje několik rozdílů v syntaxi při autorizaci sad runbook PowerShell Workflow a tyto rozdíly vyžaduje trochu další práci psaní efektivní pracovních postupů.  

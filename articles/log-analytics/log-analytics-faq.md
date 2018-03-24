@@ -1,24 +1,24 @@
 ---
-title: "Protokolu Analytics – nejčastější dotazy | Microsoft Docs"
-description: "Odpovědi na nejčastější dotazy týkající se služby Azure Log Analytics."
+title: Protokolu Analytics – nejčastější dotazy | Microsoft Docs
+description: Odpovědi na nejčastější dotazy týkající se služby Azure Log Analytics.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 03/21/2018
 ms.author: magoedte
-ms.openlocfilehash: 0b27386cd0f9f3ae50314b8c5d7708aea3e3d028
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 398a62cbba952f35f29c1b1f411a6d5b901d2973
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je seznam často kladené otázky týkající se analýzy protokolů v Microsoft Azure. Pokud máte další dotazy o analýzy protokolů, přejděte k [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte svoje otázky. Dotaz je dotaz, často, přidáme ji k tomuto článku tak, aby se nachází snadno a rychle.
@@ -51,19 +51,21 @@ Odpověď: Ne. Analýzy protokolů je škálovatelná Cloudová služba, která 
 
 ### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>OTÁZKY. Jak odstranit Pokud analýzy protokolů je už shromažďování dat?
 
-Odpověď: Pokud jsou na bezplatnou cenová úroveň a odeslali více než 500 MB dat za den, zastaví se shromažďování dat pro zbytek dne. Dosažení denního limitu je běžným důvodem, který analýzy protokolů zastaví shromažďování dat, nebo se zdá být chybí data.
+Odpověď: Pokud jsou na bezplatnou cenová úroveň a odeslali více než 500 MB dat za den, zastaví se shromažďování dat pro zbytek dne. Dosažení denního limitu je běžným důvodem, který analýzy protokolů zastaví shromažďování dat, nebo se zdá být chybí data.  
 
-Analýzy protokolů vytváří událost typu *operace* při shromažďování dat, spuštění a zastavení. 
+Analýzy protokolů vytváří událost typu *prezenčního signálu* a slouží k určení, pokud se shromažďování dat zastaví. 
 
-Spuštěním následujícího dotazu v hledání, zkontrolujte, zda jsou dosažení denního limitu a chybějící data:`Type=Operation OperationCategory="Data Collection Status"`
+Spuštěním následujícího dotazu v hledání, zkontrolujte, zda jsou dosažení denního limitu a chybějící data: `Heartbeat | summarize max(TimeGenerated)`
 
-Když se shromažďování dat zastaví, *OperationStatus* je **upozornění**. Při spuštění shromažďování dat, *OperationStatus* je **úspěšné**. 
+Pokud chcete zkontrolovat v určitém počítači, spusťte následující dotaz: `Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)`
+
+Když se shromažďování dat zastaví, v závislosti na časové rozmezí vybrána, neuvidíte žádné záznamy, vrátí.   
 
 Následující tabulka popisuje důvody, které shromažďování dat zastaví a navrhovanou akci obnovíte shromažďování dat:
 
 | Důvod shromažďování dat zastaví                       | Chcete-li obnovit shromažďování dat |
 | -------------------------------------------------- | ----------------  |
-| Dosažení denního limitu volné dat<sup>1</sup>       | Počkat, až další den pro kolekci k automatickému restartu, nebo<br> Změnit na placené cenovou úroveň. |
+| Dosažen limit volné dat<sup>1</sup>       | Počkejte, až do následujícího měsíce pro kolekci k automatickému restartu, nebo<br> Změnit na placené cenovou úroveň. |
 | Předplatné Azure je v pozastaveném stavu z důvodu: <br> Bezplatná zkušební verze skončila <br> Platnost Azure průchodu <br> Měsíčně útrat dosažen (například na předplatné MSDN nebo v sadě Visual Studio)                          | Převést na placené předplatné <br> Převést na placené předplatné <br> Odeberte limit nebo počkejte, až se obnoví limit |
 
 <sup>1</sup> Pokud pracovního prostoru na cenová úroveň free, jste omezené s odesíláním 500 MB dat za den ke službě. Po dosažení denního limitu shromažďování dat zastaví až další den. Data odeslaná při ukončení shromažďování dat je není indexované a není k dispozici pro vyhledávání. Když se obnoví shromažďování dat, dojde k zpracování pouze pro nová data odeslána. 
@@ -77,14 +79,13 @@ Odpověď: pomocí kroků popsaných v [vytvořit pravidlo výstrahy](log-analyt
 Při vytváření výstrahy pro při shromažďování dat zastaví, nastavte:
 - **Název** k *zastavit shromažďování dat*
 - **Závažnost** na *Upozornění*.
-- **Vyhledávací dotaz** na `Type=Operation OperationCategory="Data Collection Status" OperationStatus=Warning`.
-- **Časový interval** k *2 hodiny*.
-- **Četnosti upozornění** na 1 hodinu, protože se data o využití aktualizují pouze jednou za hodinu.
+- **Vyhledávací dotaz** na `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`.
+- **Časový interval** k *30 minut*.
+- **Výstrahy frekvence** ke každému *deset* minut.
 - **Generovat upozornění na základě** na *Počet výsledků*.
 - **Počet výsledků** na *Větší než 0*.
 
-Pomocí kroků popsaných v tématu o [přidání akcí k pravidlům upozornění](log-analytics-alerts-actions.md) nakonfigurujte pro pravidlo upozornění akci e-mailu, webhooku nebo runbooku.
-
+Tato výstraha se aktivují, když dotaz vrátí výsledky pouze v případě, že máte prezenčního signálu pro více než 15 minut.  Pomocí kroků popsaných v tématu o [přidání akcí k pravidlům upozornění](log-analytics-alerts-actions.md) nakonfigurujte pro pravidlo upozornění akci e-mailu, webhooku nebo runbooku.
 
 ## <a name="configuration"></a>Konfigurace
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>OTÁZKY. Můžete změnit název tabulky nebo objekt blob kontejneru použít ke čtení z Azure Diagnostics (WAD)?
@@ -141,9 +142,9 @@ Zkontrolujte, zda že máte oprávnění v obou předplatných Azure.
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>OTÁZKY. Množství dat, můžete odeslat prostřednictvím agenta k analýze protokolů? Existuje maximální množství dat za zákazníka?
 A. Plánu úrovně free Nastaví denní cap 500 MB za pracovního prostoru. Plány standard a premium mají omezení není nastaveno na množství dat, který je nahraný. Jako cloudová služba, analýzy protokolů slouží k automatické škálování až popisovač svazku pocházejících z zákazník – i když je terabajtů za den.
 
-Analýzy protokolů agenta byla navržená tak, aby Ujistěte se, že má malé nároky. Jeden z našich zákazníků napsali blogu o ty testy, které budou provedeny s naše agenta, a jak dojem byli. Datový svazek se liší v závislosti na řešení, která je povolit. Můžete najít podrobné informace o objemu dat a řešení v najdete v článku rozpadu [využití](log-analytics-usage.md) stránky.
+Analýzy protokolů agenta byla navržená tak, aby Ujistěte se, že má malé nároky. Datový svazek se liší v závislosti na řešení, která je povolit. Můžete najít podrobné informace o objemu dat a řešení v najdete v části rozdělení [využití](log-analytics-usage.md) stránky.
 
-Další informace si můžete přečíst [zákazníka blog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) o nízkým nárokům agenta OMS.
+Další informace si můžete přečíst [zákazníka blog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) o malé nároky agenta OMS.
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>OTÁZKY. Při odesílání dat k analýze protokolů, jaký poměr šířky pásma sítě se používá pomocí správy agenta MMA (Microsoft)?
 
@@ -165,5 +166,5 @@ Pro počítače, které je možné spouštět WireData agenta použijte následu
 Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost.exe") (Direction=Outbound) | measure Sum(TotalBytes) by Computer
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Začínáme s analýzy protokolů](log-analytics-get-started.md) získáte další informace o analýzy protokolů a zprovoznění v minutách.

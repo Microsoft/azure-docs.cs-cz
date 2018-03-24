@@ -1,24 +1,24 @@
 ---
-title: "Pokyny pro nasazení systému Windows Server Active Directory na virtuálních počítačích Azure | Microsoft Docs"
-description: "Pokud znáte postup nasazení služby AD Domain Services a federační služby AD na místní, zjistěte, jak fungují na virtuálních počítačích Azure."
+title: Pokyny pro nasazení systému Windows Server Active Directory na virtuálních počítačích Azure | Microsoft Docs
+description: Pokud znáte postup nasazení služby AD Domain Services a federační služby AD na místní, zjistěte, jak fungují na virtuálních počítačích Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 04df4c46-e6b6-4754-960a-57b823d617fa
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/26/2017
+ms.date: 03/20/2018
 ms.author: femila
-ms.openlocfilehash: 7a56876dfa545d273807444b105de3645dd79d34
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c2d58e056cdb285be51d259492e11e6ae37b253e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Pokyny pro nasazení systému Windows Server Active Directory na virtuálních počítačích Azure
 Tento článek vysvětluje rozdíly mezi nasazení systému Windows Server Active Directory Domain Services (AD DS) a služby Active Directory Federation Services (AD FS) místně a jejich nasazení na virtuálních počítačích Microsoft Azure.
@@ -71,8 +71,10 @@ V tématu [virtuální sítě](http://azure.microsoft.com/documentation/services
 > 
 > 
 
-### <a name="static-ip-addresses-must-be-configured-with-azure-powershell"></a>Statické IP adresy musí být nakonfigurované v prostředí Azure PowerShell.
-Dynamické adresy jsou přiděleny ve výchozím nastavení, ale místo toho přiřadit statickou IP adresu pomocí rutiny Set-AzureStaticVNetIP. Statickou IP adresu, která zachová prostřednictvím službou opravy a vypnutí nebo restartování virtuálního počítače, který nastavuje. Další informace najdete v tématu [statické interní IP adresu pro virtuální počítače](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/).
+### <a name="static-ip-addresses-can-be-configured-with-azure-powershell"></a>Statické IP adresy můžete nakonfigurovat pomocí prostředí Azure PowerShell
+Dynamické adresy jsou přiděleny ve výchozím nastavení, ale použijte rutinu Set-AzureStaticVNetIP, pokud chcete místo toho přiřadit statickou IP adresu. Tuto rutinu nastaví statickou IP adresu, která zachová prostřednictvím službou opravy a vypnutí nebo restartování virtuálního počítače. Další informace najdete v tématu [statické interní IP adresu pro virtuální počítače](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/). Můžete také nakonfigurovat statickou IP adresu při vytváření virtuálního počítače na portálu Azure, jak je uvedeno níže. Další informace najdete v tématu [vytvoření virtuálního počítače se statickou veřejnou IP adresu pomocí portálu Azure](../virtual-network/virtual-network-deploy-static-pip-arm-portal.md).
+
+![snímek obrazovky kroku přidejte statickou IP adresu, při vytváření virtuálního počítače](media/active-directory-deploying-ws-ad-guidelines/static-ip.png)
 
 ## <a name="BKMK_Glossary"></a>Termíny a definice
 Následuje seznam není vyčerpávající podmínky pro různé Azure technologie, které se bude odkazovat v tomto článku.
@@ -408,7 +410,7 @@ Musíte zvolit, jestli nasazení řadiče domény jen pro čtení či pro zápis
 
 Azure nemá k dispozici fyzické bezpečnostní riziko pobočkové sítě, ale stále může prokázat řadičů jen pro čtení, být cenově efektivnější, protože funkce, které poskytují představují vhodné řešení do těchto prostředí, i když velmi různých důvodů. Například pro mít žádná odchozí replikace a jsou dokáže selektivně naplnit tajné klíče (hesla). Nevýhodou nedostatečná těchto tajných klíčů může vyžadovat odchozí přenosy na vyžádání a ověří, zda uživatel nebo počítač ověří. Ale tajných klíčů můžete selektivně naplněnými a uložili do mezipaměti.
 
-Řadičů jen pro čtení poskytnout další výhody v a kolem HBI a PII obavy, protože můžete přidat, že atributy, které obsahují citlivá data do RODC filtrovat sadu atributů (DM). DM je přizpůsobitelnou sadu atributů, které nejsou replikována do řadičů jen pro čtení. Jako pojistku můžete použít DM, v případě, že nejsou povoleny nebo nechcete, aby k ukládání identifikovatelné osobní údaje nebo HBI v Azure. Další informace najdete v tématu [RODC filtrovanou sadu atributů [(https://technet.microsoft.com/library/cc753459)].
+Řadičů jen pro čtení poskytnout další výhody v a kolem HBI a PII obavy, protože můžete přidat, že atributy, které obsahují citlivá data do RODC filtrovat sadu atributů (DM). DM je přizpůsobitelnou sadu atributů, které nejsou replikována do řadičů jen pro čtení. Jako pojistku můžete použít DM, v případě, že nejsou povoleny nebo nechcete, aby k ukládání identifikovatelné osobní údaje nebo HBI v Azure. Další informace najdete v tématu [RODC filtrovat sadu atributů [(https://technet.microsoft.com/library/cc753459)].
 
 Ujistěte se, že aplikace bude kompatibilní s řadičů jen pro čtení, kterou plánujete použít. Mnoho aplikací systému Windows Server Active Directory povolena funkce fungují dobře u řadičů jen pro čtení, ale některé aplikace mohou provádět neefektivnímu nebo nezdaří, pokud nemají přístup k zapisovatelný řadič domény. Další informace najdete v tématu [kompatibility příručka aplikace pro řadiče domény jen pro čtení](https://technet.microsoft.com/library/cc755190).
 

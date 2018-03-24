@@ -1,6 +1,6 @@
 ---
-title: "Povolit protokolování diagnostiky pro webové aplikace v Azure App Service"
-description: "Zjistěte, jak povolit protokolování diagnostiky a přidání instrumentace do aplikace, jakož i postupy pro přístup k informacím v Azure protokolu."
+title: Povolit protokolování diagnostiky pro webové aplikace v Azure App Service
+description: Zjistěte, jak povolit protokolování diagnostiky a přidání instrumentace do aplikace, jakož i postupy pro přístup k informacím v Azure protokolu.
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: e82bbff908ea5499765edc71e52caa573c816a62
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c39a8fafef9a45f5e80d00f8cbc75833201df150
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro webové aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -120,7 +120,7 @@ Tento příkaz uloží protokoly pro webovou aplikaci určeného **-název** par
 ### <a name="download-with-azure-command-line-interface"></a>Stáhnout pomocí rozhraní příkazového řádku Azure
 Chcete-li stáhnout soubory protokolů pomocí rozhraní příkazového řádku Azure, otevřete nový příkazový řádek, prostředí PowerShell, Bash nebo relaci Terminálové služby a zadejte následující příkaz:
 
-    azure site log download webappname
+    az webapp log download --name webappname
 
 Tento příkaz uloží protokoly pro webovou aplikaci s názvem "webappname" do souboru s názvem **diagnostics.zip** v aktuálním adresáři.
 
@@ -223,7 +223,7 @@ Při přihlašování do úložiště table, další vlastnosti se používají 
 | ApplicationName |Název webové aplikace |
 | Úroveň |Úroveň události (například Chyba, upozornění, informace) |
 | ID události |ID události této události<p><p>Výchozí hodnota je 0-li zadán žádný |
-| identifikátor instanceId |Instanci webové aplikace, které i došlo |
+| ID instance |Instanci webové aplikace, které i došlo |
 | PID |ID procesu |
 | TID |ID vlákna vlákna, která vytváří událost |
 | Zpráva |Podrobná zpráva události |
@@ -237,7 +237,7 @@ Při přihlašování do úložiště objektů blob, data se ukládají ve form�
 | Datum |Datum a čas, kdy došlo k události |
 | Úroveň |Úroveň události (například Chyba, upozornění, informace) |
 | ApplicationName |Název webové aplikace |
-| identifikátor instanceId |Instanci webové aplikace, které došlo k události |
+| ID instance |Instanci webové aplikace, které došlo k události |
 | EventTickCount |Datum a čas, kdy došlo k události, ve formátu značky (větší přesnost) |
 | ID události |ID události této události<p><p>Výchozí hodnota je 0-li zadán žádný |
 | PID |ID procesu |

@@ -1,23 +1,23 @@
 ---
-title: "Datové sady a propojené služby v Azure Data Factory | Microsoft Docs"
-description: "Další informace o datových sad a propojené služby ve službě Data Factory. Propojené služby propojují úložiště výpočetní nebo dat do data factory. Datové sady představují vstupní a výstupní data."
+title: Datové sady a propojené služby v Azure Data Factory | Microsoft Docs
+description: Další informace o datových sad a propojené služby ve službě Data Factory. Propojené služby propojují úložiště výpočetní nebo dat do data factory. Datové sady představují vstupní a výstupní data.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 98d58b97457cc64954094d7e8d8b4defca7e05ff
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d88e4a068841f68feffb094b2aa07faaf5a6a8cc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Datové sady a propojené služby v Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

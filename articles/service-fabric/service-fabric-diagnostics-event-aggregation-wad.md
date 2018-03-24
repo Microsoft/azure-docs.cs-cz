@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric událostí agregace se systémem Windows Azure Diagnostics | Microsoft Docs"
-description: "Další informace o agregaci a shromažďování událostí pomocí WAD pro monitorování a Diagnostika Azure Service Fabric clusterů."
+title: Azure Service Fabric událostí agregace se systémem Windows Azure Diagnostics | Microsoft Docs
+description: Další informace o agregaci a shromažďování událostí pomocí WAD pro monitorování a Diagnostika Azure Service Fabric clusterů.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
-ms.author: dekapur
-ms.openlocfilehash: 8e6c82aa60544d672bb249d589b63d55b48309fe
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 03/19/2018
+ms.author: dekapur;srrengar
+ms.openlocfilehash: f8159d8637967c3297c886ec79a002f0765047e4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Seskupení událostí a kolekce s použitím Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -170,67 +170,75 @@ Potom aktualizovat `VirtualMachineProfile` souboru template.json přidáním ná
 
 Jakmile upravíte soubor template.json, jak je popsáno, znovu publikujte šablony Resource Manageru. Pokud byl exportován šablony, spuštěním souboru deploy.ps1 znovu publikuje uzamkl šablony. Poté, co nasadíte, ujistěte se, že **ProvisioningState** je **úspěšné**.
 
-## <a name="collect-health-and-load-events"></a>Shromažďování stavu a načtení události
+## <a name="log-collection-configurations"></a>Konfigurace protokolu kolekce
+Protokoly z další kanály jsou také k dispozici pro kolekci, zde jsou některé nejběžnější konfigurace, které lze provést v šabloně pro clustery spuštěná v Azure.
 
-Počínaje 5.4 verzi Service Fabric, stavu a zatížení metriky události jsou k dispozici pro kolekci. Tyto události podle událostí generovaných systému nebo v kódu pomocí stavu nebo zatížení rozhraní API pro vytváření sestav, jako [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) nebo [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). To umožňuje pro agregaci a zobrazení stavu systému v čase a pro výstrahy na základě stavu nebo zatížení událostí. Chcete-li zobrazit tyto události v sadě Visual Studio prohlížeč diagnostických událostí přidat "Microsoft-ServiceFabric:4:0x4000000000000008" do seznamu zprostředkovatelů trasování událostí pro Windows.
-
-Shromažďování událostí v clusteru, upravte `scheduledTransferKeywordFilter` v WadCfg vaší šablony Resource Manageru `4611686018427387912`.
+* Provozní kanál - Base: Povolená ve výchozím nastavení, vysoké úrovně operací prováděných Service Fabric a cluster, včetně událostí pro uzel objevuje, novou aplikaci nasazuje nebo upgradu vrácení zpět, atd. Seznam událostí, najdete v části [provozní události kanál](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
+  
+```json
+      scheduledTransferKeywordFilter: "4611686018427387904"
+  ```
+* Podrobné provozní kanál -: To zahrnuje sestavy o stavu a rozhodnutí, plus vše v základní provozní kanál Vyrovnávání zatížení. Tyto události jsou generována systému nebo v kódu pomocí stavu nebo načíst rozhraní API pro vytváření sestav, jako [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) nebo [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Chcete-li zobrazit tyto události v sadě Visual Studio prohlížeč diagnostických událostí přidat "Microsoft-ServiceFabric:4:0x4000000000000008" do seznamu zprostředkovatelů trasování událostí pro Windows.
 
 ```json
-  "EtwManifestProviderConfiguration": [
-    {
-      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
-      "scheduledTransferLogLevelFilter": "Information",
-      "scheduledTransferKeywordFilter": "4611686018427387912",
-      "scheduledTransferPeriod": "PT5M",
-      "DefaultEvents": {
-        "eventDestination": "ServiceFabricSystemEventTable"
-      }
-    }
-```
+      scheduledTransferKeywordFilter: "4611686018427387912"
+  ```
 
-## <a name="collect-reverse-proxy-events"></a>Shromažďování událostí reverzní proxy server
-
-Od verze 5.7 verzi Service Fabric [reverse proxy](service-fabric-reverseproxy.md) události jsou k dispozici pro kolekci prostřednictvím kanálů Data & zasílání zpráv. 
-
-Reverzní proxy server nabízených oznámení pouze chybové události prostřednictvím hlavní Data & zasílání zpráv kanálu - odrážející zpracování chyb a důležité problémy požadavku. Podrobné kanál obsahuje podrobné události týkající se všechny požadavky zpracovávány reverzní proxy server. 
-
-Chcete-li zobrazit chybové události v sadě Visual Studio prohlížeč diagnostických událostí přidat "Microsoft-ServiceFabric:4:0x4000000000000010" do seznamu zprostředkovatelů trasování událostí pro Windows. Pro všechny žádosti o telemetrie, aktualizujte Microsoft ServiceFabric položku v seznamu zprostředkovatele trasování událostí pro Windows "Microsoft-ServiceFabric:4:0x4000000000000020".
-
-Pro clustery spuštěná v Azure:
-
-Upravit a pokračovat tam trasování v hlavní kanál dat & zasílání zpráv, `scheduledTransferKeywordFilter` hodnota v WadCfg vaší šablony Resource Manageru `4611686018427387920`.
+* Data a kanál zasílání zpráv – základ: kritické protokoly a události vygenerované v zasílání zpráv (aktuálně pouze ReverseProxy) a cesta k datům, navíc k protokolům podrobné provozní kanál. Tyto události jsou zpracování chyb a další důležité problémy v ReverseProxy a požadavků zpracovaných požadavků. **Toto je naše doporučení pro komplexní protokolování**. Chcete-li zobrazit tyto události v sadě Visual Studio prohlížeč diagnostických událostí, přidejte "Microsoft-ServiceFabric:4:0x4000000000000010" do seznamu zprostředkovatelů trasování událostí pro Windows.
 
 ```json
-  "EtwManifestProviderConfiguration": [
-    {
-      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
-      "scheduledTransferLogLevelFilter": "Information",
-      "scheduledTransferKeywordFilter": "4611686018427387920",
-      "scheduledTransferPeriod": "PT5M",
-      "DefaultEvents": {
-        "eventDestination": "ServiceFabricSystemEventTable"
-      }
-    }
-```
+      scheduledTransferKeywordFilter: "4611686018427387928"
+  ```
 
-Shromažďování událostí zpracování všech požadavků, zapněte Data & zasílání zpráv - podrobnějších kanál změnou `scheduledTransferKeywordFilter` hodnota v WadCfg vaší šablony Resource Manageru `4611686018427387936`.
+* Data & zasílání zpráv kanál - podrobné: podrobné kanálu, který obsahuje všechny nekritické protokoly z dat a zasílání zpráv v clusteru a podrobné provozní kanál. Podrobné řešení potíží s všechny události reverzní proxy server, naleznete na [Průvodce diagnostiky reverzní proxy server](service-fabric-reverse-proxy-diagnostics.md).  Chcete-li zobrazit tyto události v prohlížeči diagnostických událostí v sadě Visual Studio, přidejte "Microsoft-ServiceFabric:4:0x4000000000000020" do seznamu zprostředkovatelů trasování událostí pro Windows.
 
 ```json
-  "EtwManifestProviderConfiguration": [
-    {
-      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
-      "scheduledTransferLogLevelFilter": "Information",
-      "scheduledTransferKeywordFilter": "4611686018427387936",
-      "scheduledTransferPeriod": "PT5M",
-      "DefaultEvents": {
-        "eventDestination": "ServiceFabricSystemEventTable"
-      }
-    }
-```
+      scheduledTransferKeywordFilter: "4611686018427387944"
+  ```
 
-Povolení shromažďování událostí z tohoto podrobné výsledky kanál v spoustu trasování generován rychle a můžete využívat kapacitu úložiště. Pouze tuto možnost zapněte nezbytně nutných případech.
-Podrobné řešení potíží s události reverzní proxy server, naleznete [reverzní proxy server diagnostiky průvodce](service-fabric-reverse-proxy-diagnostics.md).
+>[!NOTE]
+>Tento kanál má velmi velký objem událostí, povolení shromažďování událostí z tohoto podrobné výsledky kanál v spoustu trasování generován rychle a můžete využívat kapacitu úložiště. Pouze tuto možnost zapněte Pokud je to nezbytně nutné.
+
+
+Chcete-li povolit **základní Data a kanál zasílání zpráv** Naše doporučení pro komplexní protokolování `EtwManifestProviderConfiguration` v `WadCfg` šablony by vypadat třeba takto:
+
+```json
+  "WadCfg": {
+        "DiagnosticMonitorConfiguration": {
+          "overallQuotaInMB": "50000",
+          "EtwProviders": {
+            "EtwEventSourceProviderConfiguration": [
+              {
+                "provider": "Microsoft-ServiceFabric-Actors",
+                "scheduledTransferKeywordFilter": "1",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                  "eventDestination": "ServiceFabricReliableActorEventTable"
+                }
+              },
+              {
+                "provider": "Microsoft-ServiceFabric-Services",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                  "eventDestination": "ServiceFabricReliableServiceEventTable"
+                }
+              }
+            ],
+            "EtwManifestProviderConfiguration": [
+              {
+                "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+                "scheduledTransferLogLevelFilter": "Information",
+                "scheduledTransferKeywordFilter": "4611686018427387928",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                  "eventDestination": "ServiceFabricSystemEventTable"
+                }
+              }
+            ]
+          }
+        }
+      },
+```
 
 ## <a name="collect-from-new-eventsource-channels"></a>Shromáždit z nové EventSource kanály
 
@@ -263,7 +271,7 @@ Pokud používáte jímky Application Insights, jak je popsáno v následující
 
 Odeslání dat monitorování a Diagnostika Statistika aplikace (AI) lze provést v rámci konfigurace WAD. Pokud se rozhodnete použít AI pro analýzu událostí a vizualizace, přečtěte si [analýza události a vizualizace s Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) nastavit jímky AI jako součást vaší "WadCfg".
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Jakmile jste správně nakonfigurovali Azure diagnostics, zobrazí se data v tabulkách úložiště z protokolů trasování událostí pro Windows a EventSource. Pokud se rozhodnete použít OMS, Kibana nebo jakékoli jiné data analýzy a vizualizace platformě, která není přímo nakonfigurovanou v šabloně Resource Manager, ujistěte se, zda je nastavení platformou vaší volby pro čtení dat z těchto tabulek úložiště. Díky tomuto pro OMS je relativně jednoduchá a je vysvětleno v [událostí a protokolu analýzu prostřednictvím OMS](service-fabric-diagnostics-event-analysis-oms.md). Application Insights je bit ve speciálním případě v tomto smyslu získáte vzhledem k tomu může být nakonfigurovaný jako součást konfigurace rozšíření diagnostiky, takže [příslušném článku](service-fabric-diagnostics-event-analysis-appinsights.md) Pokud se rozhodnete použít AI.
 

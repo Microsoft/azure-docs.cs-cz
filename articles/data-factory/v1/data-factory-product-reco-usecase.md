@@ -1,11 +1,10 @@
 ---
-title: "Případ použití Data Factory - doporučení produktů"
-description: "Další informace o případ použití implementovaná pomocí Azure Data Factory spolu s jinými službami."
+title: Případ použití Data Factory - doporučení produktů
+description: Další informace o případ použití implementovaná pomocí Azure Data Factory spolu s jinými službami.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 04504d1e32243f752e488a24e04ec5ba73fbadc1
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 41948d8141d0f3c0e41b95f169bcec6c4b641106
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-case---product-recommendations"></a>Příklad použití – doporučení produktu
 Azure Data Factory je jedním z mnoha služby použít k implementaci řešení akcelerátorů Cortana Intelligence Suite.  V tématu [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) stránku Podrobnosti o této sady. V tomto dokumentu jsme popisují běžné případ použití, který Azure uživatelé už vyřeší a implementovaná pomocí Azure Data Factory a dalším službám součásti Cortana Intelligence.
@@ -29,7 +28,7 @@ Prodejci běžně chcete přesvědčit jejich zákazníci zakoupit produktů je 
 
 Cílem těchto prodejců je optimalizovat pro uživatele klikněte na tlačítko Prodej převody a vám vyšší výnosy prodeje.  Se zavedením kontextové, na základě chování produktu doporučení na základě zájmů zákazníka a akce dosáhnout tento převod. Pro tento případ použití používáme prodejci jako příklad firmám, které chcete optimalizovat pro své zákazníky. Ale tyto zásady se vztahují na všechny podnikání, které chce zaujmout svým zákazníkům kolem jeho zboží a služeb a zajištění lepších možností nákupní svým zákazníkům s doporučeními přizpůsobené produktu.
 
-## <a name="challenges"></a>Problémy
+## <a name="challenges"></a>Výzvy
 Existuje mnoho problémů s této prodejci setkávají při pokusu o implementaci tohoto typu případ použití. 
 
 Nejdřív musíte data různých tvarů a obrazců konzumaci z více zdrojů dat, jak místně a v cloudu. Tato data zahrnují data produktu, data o chování historických zákazníka a data uživatele jako uživatel prohlíží web online prodejní. 

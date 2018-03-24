@@ -1,11 +1,12 @@
 ---
-title: "Kódy chyb Azure Machine Learning REST API | Microsoft Docs"
-description: "Tyto kódy chyb mohou být vráceny při operace na webové služby Azure Machine Learning."
-keywords: 
+title: Kódy chyb Azure Machine Learning REST API | Microsoft Docs
+description: Tyto kódy chyb mohou být vráceny při operace na webové služby Azure Machine Learning.
+keywords: ''
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.author: garye
-ms.openlocfilehash: 5cf7d5bb878f323e4e3559822dc745359e43608e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ba44b2a93bcd542db1350def2d0554c8c44233c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="machine-learning-rest-api-error-codes"></a>Strojového učení kódy chyb rozhraní API REST
  
@@ -71,7 +71,7 @@ Tato třída chyb znamená, že argument zadaný někde byl neplatný. To může
 | RequestBodyInvalid | Žádné poskytuje textu žádosti nebo Chyba při deserializaci textu požadavku. |
 | RequestIsEmpty | Není zadaný žádný požadavek. Zadejte platnou žádost a zkuste to znovu. |
 | UnexpectedParameter | Neočekávané parametry zadané. Ověřte všechny názvy parametrů jsou správně zadané, pouze očekávané parametrů a zkuste to znovu. |
-| Neznámé chyby | Došlo k neznámé chybě. |
+| Neznámé chyby | Neznámá chyba |
 | UserParameterInvalid | {0} |
 | WebServiceConcurrentRequestRequirementInvalid | Nelze změnit požadavky souběžných požadavků pro webovou službu {0}. |
 | WebServiceIdInvalid | Zadané id neplatný webové služby. Id webové služby musí být platný identifikátor guid. |

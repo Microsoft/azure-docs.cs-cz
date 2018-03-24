@@ -1,18 +1,18 @@
 ---
 title: Upgrade kontejneru registru Classic Azure
-description: "Využít výhod rozšířená sada funkcí Basic, Standard a Premium spravuje upgradu vaší nespravované kontejneru registru Classic registrech kontejneru."
+description: Využít výhod rozšířená sada funkcí Basic, Standard a Premium spravuje upgradu vaší nespravované kontejneru registru Classic registrech kontejneru.
 services: container-registry
 author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: 19090bb69d7165c1e904450dc93b925e23e44782
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c5a61941bab2aa49cd8205e0a07dd2b5f7378ce9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Upgrade kontejneru registru Classic
 
@@ -27,16 +27,18 @@ Spravované registrech poskytují:
 * Integrace služby Azure Active Directory [jednotlivých přihlášení](container-registry-authentication.md#individual-login-with-azure-ad)
 * Podpora odstranění bitové kopie a značka
 * [Geografická replikace](container-registry-geo-replication.md)
-* [Webhooky](container-registry-webhook.md)
+* [Webhooks](container-registry-webhook.md)
 
-Většina všech Classic registru závisí na účet úložiště tuto Azure automaticky zřizovat ve vašem předplatném Azure, když jste vytvořili registru. Naopak Basic, Standard a Premium SKU využít výhod *spravované úložiště*. To znamená, Azure transparentně spravuje úložiště obrázků pro vás – účet samostatného úložiště není vytvořená ve svého vlastního předplatného.
+Většina všech Classic registru závisí na účet úložiště, Azure automaticky zřídí ve vašem předplatném Azure při vytváření registru. Naopak Basic, Standard a Premium SKU využít výhod Azure [pokročilé funkce úložiště](container-registry-storage.md) pomocí transparentního zpracování úložiště obrázků za vás. Účet samostatného úložiště není vytvořená ve svého vlastního předplatného.
 
 Spravované registru úložiště poskytuje následující výhody:
 
-* Kontejner Image jsou [zašifrovaná přinejmenším](../storage/common/storage-service-encryption.md).
-* Image jsou uložené pomocí [geograficky redundantní úložiště](../storage/common/storage-redundancy.md#geo-redundant-storage), zajišťuje zálohování obrázků s více oblast replikace.
+* Kontejner Image jsou [zašifrovaná přinejmenším](container-registry-storage.md#encryption-at-rest).
+* Image jsou uložené pomocí [geograficky redundantní úložiště](container-registry-storage.md#geo-redundant-storage), zajišťuje zálohování obrázků s více oblast replikace.
 * Schopnost volně [přesouvat mezi SKU](container-registry-skus.md#changing-skus), povolení vyšší propustnost, když zvolíte vyšší úrovně SKU. S každou SKU můžete ACR splňují požadavky propustnost zvýšit vašim potřebám.
 * Model jednotná zabezpečení pro registru a jeho úložiště poskytuje zjednodušenou rights management. Správa oprávnění pouze pro kontejner registru, aniž by bylo nutné také spravovat oprávnění pro účet samostatného úložiště.
+
+Další informace o úložiště bitové kopie v ACR v [kontejneru úložiště bitové kopie v registru kontejner Azure](container-registry-storage.md).
 
 ## <a name="migration-considerations"></a>Posouzení migrace
 

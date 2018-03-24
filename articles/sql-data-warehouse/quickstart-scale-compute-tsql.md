@@ -1,24 +1,24 @@
 ---
-title: "Rychlý úvod: Škálovat výpočetní v Azure SQL Data Warehouse - T-SQL | Microsoft Docs"
-description: "T-SQL příkazy škálovat výpočetní prostředky úpravou Dwu."
+title: 'Rychlý úvod: Škálovat výpočetní v Azure SQL Data Warehouse - T-SQL | Microsoft Docs'
+description: T-SQL příkazy škálovat výpočetní prostředky úpravou Dwu.
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 01/31/2018
+ms.date: 03/16/2018
 ms.author: elbutter;barbkess
-ms.openlocfilehash: f984f9b348f589e20cb8a4b68578ddef84d8292d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1591192c72f5bf201dbbef80acc5895c8324fca4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Rychlý úvod: Škálování výpočetní kapacity v Azure SQL Data Warehouse pomocí T-SQL
 
@@ -101,18 +101,9 @@ MODIFY (SERVICE_OBJECTIVE = 'DW300')
 ;
 ```
 
-## <a name="check-database-state"></a>Zkontrolujte stav databáze
+## <a name="check-data-warehouse-state"></a>Zkontrolujte stav datového skladu
 
-Pokud chcete zkontrolovat stav databáze, spusťte následující dotaz proti **hlavní** databáze.
-
-```sql
-SELECT name AS "Database Name", state_desc AS "Status" 
-FROM sys.databases db
-WHERE db.name = 'mySampleDataWarehouse'
-;
-```
-
-Když spustíte tento příkaz, měli byste obdržet hodnotou stavu Online, pozastavení, obnovování, škálování nebo pozastaveno.
+Pokud datový sklad je pozastavena, nemůžete se připojit k jeho s T-SQL. Pokud chcete zobrazit aktuální stav datového skladu, můžete použít rutiny prostředí PowerShell. Příklad, naleznete v části [zkontrolujte stav datového skladu - Powershell](quickstart-scale-compute-powershell.md#check-data-warehouse-state). 
 
 ## <a name="check-operation-status"></a>Zkontrolujte stav operace
 

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s GoToMeeting | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GoToMeeting."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GoToMeeting.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 4826dee82e62ffac70d7ca3d6dcfe005129de764
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d26b78fb5be96e979fb7b375acf6e907d858b706
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>Kurz: Azure Active Directory integrace s GoToMeeting
 
@@ -108,77 +108,32 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![GoToMeeting domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_url.png)
 
-    V **identifikátor** textovému poli, zadejte adresu URL:`https://login.citrixonline.com/saml/sp`
+    V **identifikátor** textovému poli, zadejte adresu URL: `https://authentication.logmeininc.com/saml/sp`
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+4. Klikněte na tlačítko **zobrazit URL Advanced configuration** a nakonfigurovat následující adresy URL
 
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_certificate.png) 
-
+    **Přihlaste se adresa URL** (Mějte to prázdný)
+    
+    **Adresa URL odpovědi**: `https://authentication.logmeininc.com/saml/acs`
+    
+    **RelayState**:
+    
+    - Pro aplikaci GoToMeeting použijte `https://global.gotomeeting.com`
+    
+    - Pro GoToTraining použijte `https://global.gototraining.com`
+    
+    - Pro GoToWebinar použijte `https://global.gotowebinar.com` 
+    
+    - Pro GoToAssist použijte `https://app.gotoassist.com`
+    
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-gotomeeting-tutorial/tutorial_general_400.png)
 
-6. Ke generování **Metadata** adresu url, proveďte následující kroky:
+6. V okně jiný prohlížeč, přihlaste se k vaší [GoToMeeting organizace Center](https://organization.logmeininc.com/). Vás vyzve k potvrzení, zda byl aktualizován rozšíření IdP
 
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpointicon.png)
+7. Povolte políčka "Mého poskytovatele Identity bylo aktualizováno v nové doméně". Klikněte na tlačítko **provádí** po dokončení.
 
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **GoToMeeting** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
-
-7. Na **GoToMeeting konfigurace** klikněte na tlačítko **konfigurace GoToMeeting** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
-
-    ![Konfigurace GoToMeeting](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_configure.png) 
-
-8. V okně jiný prohlížeč, přihlaste se k vaší [GoToMeeting organizace Center](https://organization.logmeininc.com/)
-
-9. V části **zprostředkovatele identity** kartě, můžete nakonfigurovat nastavení Azure buď pomocí poskytování vygenerovaného **adresu URL metadat** nebo stažené **soubor metadat** nebo **Ruční**.
-
-10. Pro **adresu URL metadat** proveďte následující kroky:
-
-    ![Konfigurace GoToMeeting](./media/active-directory-saas-gotomeeting-tutorial/config1.png)
-
-    a. V **jak byste chtěli nakonfigurovat vaše SAML IDP?**, vyberte **automatické** z rozevíracího seznamu.
-
-    b. Vložení **adresu URL metadat**, který se mají vygenerovat v předchozích krocích do **adresu URL metadat** textové pole.
-
-    c. Klikněte na **Uložit**.
-
-11. Pro **soubor metadat** proveďte následující kroky:
-
-    ![Konfigurace GoToMeeting](./media/active-directory-saas-gotomeeting-tutorial/config2.png)
-
-    a. V **jak byste chtěli nakonfigurovat vaše SAML IDP?**, vyberte **SAML nahrát soubor metadat** z rozevíracího seznamu.
-
-    b. Chcete-li nahrát soubor stažený metadata, klikněte na tlačítko **metadata souboru k odeslání**.
-
-    c. Klikněte na **Uložit**.
-
-12. Pro **ruční** proveďte následující kroky:
-
-    ![Konfigurace GoToMeeting](./media/active-directory-saas-gotomeeting-tutorial/config3.png)
-
-    a.  V **přihlašovací adresa URL stránky** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
-
-    b.  V **adresy URL odhlašovací stránky** textovému poli, vložte hodnotu **Sign-Out URL** který jste zkopírovali z portálu Azure.
-
-    c.  V **ID Entity zprostředkovatele Identity** textovému poli, vložte hodnotu **SAML Entity ID** který jste zkopírovali z portálu Azure.
-
-    d. Rozbalte certifikátu x 509 z soubor stažený metadat a kliknutím na tento certifikát nahrát **nahrání certifikátu**.
-
-    e. Klikněte na **Uložit**.
 
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)

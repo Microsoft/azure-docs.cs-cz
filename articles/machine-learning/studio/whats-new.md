@@ -1,12 +1,12 @@
 ---
-title: "Co je nového v Azure Machine Learning | Microsoft Docs"
-description: "Nové funkce, které jsou k dispozici v Azure Machine Learning."
+title: Co je nového v Azure Machine Learning | Microsoft Docs
+description: Nové funkce, které jsou k dispozici v Azure Machine Learning.
 services: machine-learning
-documentationcenter: 
-author: serinakaye
-ms.author: serinak
-manager: mwinkle
-editor: 
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
+editor: cgronlun
 ms.assetid: ddc716ed-2615-4806-bf27-6c9a5662a7f2
 ms.service: machine-learning
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: bad36abc0960ec9b1bc8755a477f6fc7d2883384
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: e0bf53670895c81379dcc2cd58542a8e3b3bc585
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Novinky ve službě Azure Machine Learning
 

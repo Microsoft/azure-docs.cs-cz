@@ -1,6 +1,6 @@
 ---
-title: "Úprava textové sady runbook ve službě Azure Automation"
-description: "Tento článek obsahuje různé postupy pro práci se sadami runbook Powershellu a pracovní postup prostředí PowerShell ve službě Azure Automation pomocí textový editor."
+title: Úprava textové sady runbook ve službě Azure Automation
+description: Tento článek obsahuje různé postupy pro práci se sadami runbook Powershellu a pracovní postup prostředí PowerShell ve službě Azure Automation pomocí textový editor.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: 4fbb24f068092e4e256119b5e0288360dcef8fe0
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: eb82971338f829667dfdc842e253ad4921865632
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Úprava textové sady runbook ve službě Azure Automation
 Textový editor ve službě Azure Automation lze upravit [Powershellové runbooky](automation-runbook-types.md#powershell-runbooks) a [runbooky pracovních postupů Powershellu](automation-runbook-types.md#powershell-workflow-runbooks). Tato akce nemá typické funkce editory další kód například intellisense a barevné kódování s další speciální funkce pomoc při přístupu k prostředkům, které jsou společné pro sady runbook.  Tento článek poskytuje podrobné pokyny pro provádění různé funkce pomocí tohoto editoru.

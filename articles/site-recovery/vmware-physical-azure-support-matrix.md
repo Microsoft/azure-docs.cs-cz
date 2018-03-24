@@ -1,18 +1,18 @@
 ---
-title: "Podporu pro virtuální počítače VMware a fyzické servery replikující se do Azure s Azure Site Recovery je dostupná | Microsoft Docs"
-description: "Shrnuje podporované operační systémy a součásti pro replikaci virtuálních počítačů VMware a fyzické serveru do Azure pomocí Azure Site Recovery."
+title: Podporu pro virtuální počítače VMware a fyzické servery replikující se do Azure s Azure Site Recovery je dostupná | Microsoft Docs
+description: Shrnuje podporované operační systémy a součásti pro replikaci virtuálních počítačů VMware a fyzické serveru do Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/20/2018
 ms.author: raynew
-ms.openlocfilehash: c4fb466443e2f29fb79c3707ce142895f140f9a7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6f2f28b36fdb3751a469d66f242f9fa2119f9ae8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Podporu pro VMware a fyzické serveru replikaci do Azure.
 
@@ -101,7 +101,7 @@ Host server sítě několik síťových adaptérů | Ano.
 **Komponenta** | **Podporuje se**
 --- | ---
 Azure ExpressRoute | Ano
-ILB | Ano
+Interní nástroj pro vyrovnávání zatížení | Ano
 ELB | Ano
 Azure Traffic Manager | Ano
 Multi-NIC | Ano
@@ -175,7 +175,7 @@ Architektura operačního systému hosta | 64bitová verze. | Kontrola selže, p
 Velikost disku operačního systému | Až 2 048 GB. | Kontrola selže, pokud není podporován. 
 Počet disků operačního systému | 1 | Kontrola selže, pokud není podporován.  
 Počet datových disků | 64 nebo méně. | Kontrola selže, pokud není podporován.  
-Velikost datového disku virtuálního pevného disku | Až 4095 GB | Kontrola selže, pokud není podporován. 
+Velikost datového disku | Až 4095 GB | Kontrola selže, pokud není podporován. 
 Síťové adaptéry | Několik adaptérů jsou podporovány. | 
 Sdílený virtuální pevný disk | Nepodporuje se. | Kontrola selže, pokud není podporován. 
 FC disku | Nepodporuje se. | Kontrola selže, pokud není podporován. 
@@ -199,5 +199,5 @@ Azure Site Recovery sjednocený instalační program | Koordinuje komunikaci mez
 Služba mobility | Koordinuje replikaci mezi místními VMware servery/fyzické servery a Azure nebo sekundární lokality<br/><br/> Nainstalovat na virtuální počítač VMware nebo fyzických serverů, které chcete replikovat | 9.12.4653.1 (k dispozici z portálu) | [Nejnovější funkce a opravy](https://aka.ms/latest_asr_updates)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Zjistěte, jak](tutorial-prepare-azure.md) Příprava Azure pro zotavení po havárii virtuálních počítačů VMware.

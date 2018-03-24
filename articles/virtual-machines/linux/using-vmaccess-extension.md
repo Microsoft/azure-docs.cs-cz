@@ -1,11 +1,11 @@
 ---
-title: "Obnovte přístup na virtuální počítač Azure Linux | Microsoft Docs"
-description: "Jak spravovat administrativní uživatele a obnovte přístup na virtuální počítače s Linuxem pomocí rozšíření VMAccess a 2.0 rozhraní příkazového řádku Azure"
+title: Obnovte přístup na virtuální počítač Azure Linux | Microsoft Docs
+description: Jak spravovat administrativní uživatele a obnovte přístup na virtuální počítače s Linuxem pomocí rozšíření VMAccess a 2.0 rozhraní příkazového řádku Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 261a9646-1f93-407e-951e-0be7226b3064
 ms.service: virtual-machines-linux
@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: danlep
-ms.openlocfilehash: 235a6367ad317945cfeaaa6aae4e060208fb8e8e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a5467722b347e68693b335da6b3ac3c5d1a3a441
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Spravovat administrativní uživatele, SSH a zkontrolujte nebo opravte disky na virtuální počítače s Linuxem pomocí rozšíření VMAccess 2.0 rozhraní příkazového řádku Azure
 Disk ve virtuálním počítačům s Linuxem se zobrazuje chyby. Nějakým způsobem resetování hesla kořenového virtuálním počítačům s Linuxem nebo omylem odstraněné svůj privátní klíč SSH. V takovém případě zpět v dny v datovém centru potřebovali byste existuje jednotky a pak otevřete KVM získat z konzoly serveru. Rozšíření Azure VMAccess si můžete představit jako že KVM přepínačů, která umožňuje přístup ke konzole resetovat přístup do systému Linux nebo provést údržbu na úrovni disku.
 
-Tento článek ukazuje, jak používat Azure rozšíření VMAccess k kontrola opravit disk, obnovte přístup uživatele, spravovat účty administrativních uživatelů nebo obnovte konfiguraci SSH na Linux. K provedení těchto kroků můžete také využít [Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Tento článek ukazuje, jak používat Azure rozšíření VMAccess k kontrola opravit disk, obnovte přístup uživatele, spravovat účty administrativních uživatelů nebo aktualizovat konfiguraci SSH na Linux. K provedení těchto kroků můžete také využít [Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>Způsoby použití rozšíření VMAccess
@@ -35,8 +35,8 @@ Existují dva způsoby, které můžete rozšíření VMAccess na virtuální po
 
 Následující příklady použití [uživatele virtuálního počítače az](/cli/azure/vm/user) příkazy. K provedení těchto kroků, budete potřebovat nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login).
 
-## <a name="reset-ssh-key"></a>Resetovat klíč SSH
-Následující příklad resetuje klíč SSH pro uživatele `azureuser` ve virtuálním počítači s názvem `myVM`:
+## <a name="update-ssh-key"></a>Aktualizovat klíč SSH
+Následující příklad aktualizuje klíč SSH pro uživatele `azureuser` ve virtuálním počítači s názvem `myVM`:
 
 ```azurecli
 az vm user update \
@@ -45,6 +45,8 @@ az vm user update \
   --username azureuser \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
+
+> **Poznámka:** `az vm user update` příkaz připojí nový veřejný klíč text, který `~/.ssh/authorized_keys` souboru pro uživatele správce ve virtuálním počítači. To nemá nahradit nebo odeberte nějaké existující klíče SSH. To nebude odebrat předchozí klíče nastavit v době nasazení nebo následné aktualizace prostřednictvím rozšíření VMAccess.
 
 ## <a name="reset-password"></a>Resetování hesla
 Následující příklad resetuje heslo pro uživatele `azureuser` ve virtuálním počítači s názvem `myVM`:
@@ -94,9 +96,9 @@ az vm user delete \
 Následující příklady použití nezpracované soubory JSON. Použití [nastavení rozšíření virtuálního az](/cli/azure/vm/extension#az_vm_extension_set) pak volat souborů JSON. Tyto soubory JSON je možné také volat z šablony Azure. 
 
 ### <a name="reset-user-access"></a>Obnovte uživatele přístup
-Pokud jste ztratili přístup ke kořenové na virtuálním počítačům s Linuxem, můžete spustit skript VMAccess k resetování klíč SSH uživatele nebo heslo.
+Pokud jste ztratili přístup ke kořenové na virtuálním počítačům s Linuxem, můžete spustit skript VMAccess k aktualizaci klíče SSH uživatele nebo heslo.
 
-Resetovat veřejný klíč SSH uživatele, vytvořte soubor s názvem `reset_ssh_key.json` a přidat nastavení v následujícím formátu. Dosaďte svoje vlastní hodnoty `username` a `ssh_key` parametry:
+Pokud chcete aktualizovat veřejný klíč SSH uživatele, vytvořte soubor s názvem `update_ssh_key.json` a přidat nastavení v následujícím formátu. Dosaďte svoje vlastní hodnoty `username` a `ssh_key` parametry:
 
 ```json
 {
@@ -114,7 +116,7 @@ az vm extension set \
   --name VMAccessForLinux \
   --publisher Microsoft.OSTCExtensions \
   --version 1.4 \
-  --protected-settings reset_ssh_key.json
+  --protected-settings update_ssh_key.json
 ```
 
 Pokud chcete resetovat heslo uživatele, vytvořte soubor s názvem `reset_user_password.json` a přidat nastavení v následujícím formátu. Dosaďte svoje vlastní hodnoty `username` a `password` parametry:

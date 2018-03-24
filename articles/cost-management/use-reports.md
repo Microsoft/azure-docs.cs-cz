@@ -1,24 +1,24 @@
 ---
-title: "Použití sestav náklady na správu v Azure náklady na správu | Microsoft Docs"
-description: "Tento článek popisuje použití různých náklady na správu sestav na portálu Cloudyn."
+title: Použití sestav náklady na správu v Azure náklady na správu | Microsoft Docs
+description: Tento článek popisuje použití různých náklady na správu sestav na portálu Cloudyn.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 8078591b1e2ad120190a23dd29800bd0f1ae33ea
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: fa263a4b6f41e2b31328f46b8d1341d0d74c9a85
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-cost-management-reports"></a>Použití sestav Cost Managementu
 
-Tento článek popisuje použití různých náklady na správu sestav na portálu Cloudyn. Většina Cloudyn sestavy jsou intuitivní a mít jednotný vzhled a chování. Přehled o Cloudyn sestavách najdete v tématu [Principy náklady sestavy](understading-cost-reports.md). Článek také popisuje různé možnosti a pole použít ve většině sestavy.
+Tento článek popisuje použití různých náklady na správu sestav na portálu Cloudyn. Většina Cloudyn sestavy jsou intuitivní a mít jednotný vzhled a chování. Přehled o Cloudyn sestavách najdete v tématu [Principy náklady sestavy](understanding-cost-reports.md). Článek také popisuje různé možnosti a pole použít ve většině sestavy.
 
 ## <a name="cost-analysis-reports"></a>Náklady sestavy analýzy
 

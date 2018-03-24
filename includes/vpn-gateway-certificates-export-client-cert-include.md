@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 517ebbf739c64c0364dc21386fee86ebc740e997
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/23/2018
+---
 Při generování klientský certifikát se automaticky nainstaluje na počítači, který jste použili k jeho vygenerování. Pokud chcete nainstalovat certifikát klienta v jiném počítači klienta, musíte exportovat certifikát klienta, který jste vygenerovali.
 
 1. Pokud chcete exportovat klientský certifikát, otevřete **správu uživatelských certifikátů**. Klientské certifikáty, které jste vygenerovali nacházejí ve výchozím nastavení, v 'Certifikáty – aktuální User\Personal\Certificates'. Klikněte pravým tlačítkem na certifikát klienta, který chcete exportovat, klikněte na **všechny úlohy**a potom klikněte na **exportovat** otevřete **Průvodce exportem certifikátu**.

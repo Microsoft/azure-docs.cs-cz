@@ -1,11 +1,10 @@
 ---
-title: "Přesun dat z Amazon Redshift pomocí Azure Data Factory | Microsoft Docs"
-description: "Zjistěte, jak pro přesun dat z Amazon Redshift pomocí aktivity kopírování objektu pro vytváření dat Azure."
+title: Přesun dat z Amazon Redshift pomocí Azure Data Factory | Microsoft Docs
+description: Zjistěte, jak pro přesun dat z Amazon Redshift pomocí aktivity kopírování objektu pro vytváření dat Azure.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 47a9feaa692eaf048371b4e534e6b2e8c4086997
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: ab21eaf935ed03b6f34af00f69e993eaffdad1db
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon Redshift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -88,7 +87,7 @@ Pro aktivitu kopírování, pokud je zdroj typu **AmazonRedshiftSource**, násle
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **dotaz** | Pomocí vlastního dotazu přečíst data. |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
+| **Dotaz** | Pomocí vlastního dotazu přečíst data. |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
 | **redshiftUnloadSettings** | Obsahuje vlastnost skupiny při použití Redshift **uvolnění** příkaz. | Ne |
 | **s3LinkedServiceName** | Amazon S3 používat jako dočasné úložiště. Propojené služby je zadán pomocí Azure Data Factory název typu **AwsAccessKey**. | Při použití vyžaduje **redshiftUnloadSettings** vlastnost |
 | **bucketName** | Označuje sady Amazon S3 používat k uložení dočasné data. Pokud není tato vlastnost k dispozici, aktivity kopírování automaticky generuje blok. | Při použití vyžaduje **redshiftUnloadSettings** vlastnost |
@@ -97,7 +96,7 @@ Alternativně můžete použít **RelationalSource** typu, který zahrnuje Amazo
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **dotaz** |Pomocí vlastního dotazu přečíst data. | Ne (Pokud **tableName** je zadána vlastnost datové sady) |
+| **Dotaz** |Pomocí vlastního dotazu přečíst data. | Ne (Pokud **tableName** je zadána vlastnost datové sady) |
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>UVOLNĚNÍ použít ke zkopírování dat z Amazon Redshift
 
@@ -340,8 +339,8 @@ Aktivita kopírování převádí data z typ Amazon Redshift na typ .NET jsou po
 | LOGICKÁ HODNOTA |Řetězec |
 | CHAR – |Řetězec |
 | VARCHAR |Řetězec |
-| DATE (Datum) |Datum a čas |
-| ČASOVÉ RAZÍTKO |Datum a čas |
+| DATE (Datum) |DateTime |
+| ČASOVÉ RAZÍTKO |DateTime |
 | TEXT |Řetězec |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje jímky sloupců

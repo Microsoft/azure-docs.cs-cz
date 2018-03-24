@@ -1,18 +1,18 @@
 ---
-title: "Azure schématu události událostí mřížky"
-description: "Popisuje vlastnosti, které jsou k dispozici pro události se Azure událostí mřížky"
+title: Azure schématu události událostí mřížky
+description: Popisuje vlastnosti, které jsou k dispozici pro události se Azure událostí mřížky
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/22/2018
 ms.author: babanisa
-ms.openlocfilehash: 9d1f0eed28a1c1c6776ddba89480adcedfc599a5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7af0e1cc8ae36774ef1cebf1bada6477888860d0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure schématu události událostí mřížky
 
@@ -84,7 +84,7 @@ Všechny události obsahovat stejné nejvyšší úrovně následující data:
 | eventType | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
 | eventTime | řetězec | Čas, který se vygeneruje událost založené na čas UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
-| data | Objekt | Data události specifické pro poskytovatele prostředků. |
+| data | objekt | Data události specifické pro poskytovatele prostředků. |
 | dataVersion | řetězec | Verze schématu datového objektu. Vydavatel definuje verze schématu. |
 | metadataVersion | řetězec | Verze schématu metadat událostí. Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
 
@@ -97,7 +97,11 @@ Další informace o vlastnosti v objektu data, najdete v části Zdroj události
 * [IoT Hub](event-schema-iot-hub.md)
 * [Skupiny prostředků (operace správy)](event-schema-resource-groups.md)
 
-Pro vlastní témata určuje vydavatel události datový objekt. Nejvyšší úrovně data by měla obsahovat stejná pole jako standardní událostí definovaných prostředků. Při publikování událostí do vlastní témata, měli byste zvážit modelování předmět události pro usnadnění směrování a filtrování.
+Pro vlastní témata určuje vydavatel události datový objekt. Nejvyšší úrovně data by měla obsahovat stejná pole jako standardní událostí definovaných prostředků.
+
+Při publikování událostí do vlastní témata, vytvořte témata pro vaše události, které usnadňují Odběratelé, kteří potřebují vědět, jestli se zájem o události. Odběratelé použijte subjektu na filtr a trasy události. Zvažte, zadat cestu pro kde došlo k události, tak odběratele můžete filtrovat podle segmenty dané cesty. Cesta umožňuje odběratelům nechat úzce nebo široce filtrování událostí. Pokud zadáte cestu tři segment jako například `/A/B/C` v předmětu, Odběratelé, kteří můžete filtrovat podle první segment `/A` získat širokou škálu události. Tyto odběratele získání událostí s témata jako `/A/B/C` nebo `/A/D/E`. Další odběratele můžete filtrovat podle `/A/B` získat užší sadu událostí.
+
+Někdy vaší subjektu musí více podrobností o co se stalo. Například **účty úložiště** vydavatele poskytuje předmět `/blobServices/default/containers/<container-name>/blobs/<file>` po přidání souboru do kontejneru. Odběratel může filtrovat podle cesty `/blobServices/default/containers/testcontainer` zobrazíte všechny události pro tento kontejner, ale ne jiné kontejnery v účtu úložiště. Může také filtrovat odběratele nebo trasa podle přípona `.txt` pouze pracovat s textovými soubory.
 
 ## <a name="next-steps"></a>Další postup
 

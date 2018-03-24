@@ -1,11 +1,10 @@
 ---
-title: "Výpočetní prostředí podporovaných službou Azure Data Factory | Microsoft Docs"
-description: "Další informace o výpočetní prostředí, které můžete použít v Azure Data Factory kanály (například Azure HDInsight) k datům transformace nebo proces."
+title: Výpočetní prostředí podporovaných službou Azure Data Factory | Microsoft Docs
+description: Další informace o výpočetní prostředí, které můžete použít v Azure Data Factory kanály (například Azure HDInsight) k datům transformace nebo proces.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 6877a7e8-1a58-4cfb-bbd3-252ac72e4145
 ms.service: data-factory
 ms.workload: data-services
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 410fb74d8f8ec6196bbd4cc19cc97704649b75c9
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 09568dcbbec90bcba2f2782072b83cc04d9e8a87
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaných službou Azure Data Factory
 > [!NOTE]
@@ -51,7 +50,7 @@ Microsoft aktualizuje seznam podporovaných verzí HDInsight s nejnovější kom
 Po 15. prosince 2017:
 
 - Můžete vytvořit už HDInsight se systémem Linux verze 3.3 (nebo starší verze) clustery HDInsight na vyžádání pomocí propojená služba v datové továrně verze 1. 
-- Pokud [ **osType** a **verze** vlastnosti](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nejsou explicitně zadané v definici JSON pro existující objekt pro vytváření dat verze 1 na vyžádání HDInsight propojené služby , výchozí hodnota je změněn z **verze 3.1, osType = = Windows** k **verze =\<nejnovější verze HDI výchozí\>(https://docs.microsoft.com/azure/hdinsight/ hdinsight-Component-Versioning#hadoop-Components-Available-with-different-hdinsight-versions), osType = Linux**.
+- Pokud [ **osType** a **verze** vlastnosti](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nejsou explicitně zadané v definici JSON pro existující objekt pro vytváření dat verze 1 na vyžádání HDInsight propojené služby , výchozí hodnota je změněn z **verze 3.1, osType = = Windows** k **verze =\<nejnovější verze HDI výchozí\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions), osType = Linux**.
 
 Po 31. července 2018:
 
@@ -124,7 +123,7 @@ Následující kód JSON určuje základě Linux na vyžádání propojené slu�
 | Vlastnost                     | Popis                              | Požaduje se |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Nastavte vlastnost type na **HDInsightOnDemand**. | Ano      |
-| Parametr ClusterSize                  | Počet uzlů pracovního procesu a data v clusteru. Vytvoření clusteru HDInsight s 2 hlavních uzlů se kromě počet uzlů pracovního procesu, které zadáte pro tuto vlastnost. Uzly jsou velikosti Standard_D3, který má 4 jádra. 4 pracovního uzlu clusteru trvá 24 jader (4\*4 = 16 jader pro uzly pracovního procesu, plus 2\*4 = 8 jader pro head uzly). Podrobnosti o vrstvě Standard_D3 najdete v tématu [vytvořit systémem Linux Hadoop clusterů v HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Ano      |
+| clusterSize                  | Počet uzlů pracovního procesu a data v clusteru. Vytvoření clusteru HDInsight s 2 hlavních uzlů se kromě počet uzlů pracovního procesu, které zadáte pro tuto vlastnost. Uzly jsou velikosti Standard_D3, který má 4 jádra. 4 pracovního uzlu clusteru trvá 24 jader (4\*4 = 16 jader pro uzly pracovního procesu, plus 2\*4 = 8 jader pro head uzly). Podrobnosti o vrstvě Standard_D3 najdete v tématu [vytvořit systémem Linux Hadoop clusterů v HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Ano      |
 | timeToLive                   | Povolené doby nečinnosti pro cluster HDInsight na vyžádání. Určuje, jak dlouho clusteru HDInsight na vyžádání zůstane aktivní až po dokončení aktivity spustit, pokud nejsou žádné aktivní úlohy v clusteru.<br /><br />Například pokud aktivitu spustit trvá 6 minut a **timeToLive** nastavena na 5 minut, v clusteru zůstane aktivní po dobu 5 minut po 6 minut zpracování aktivity při spuštění. Pokud jiné aktivity při spuštění je proveden v okně 6 minut, je zpracován stejného clusteru.<br /><br />Vytvoření clusteru HDInsight na vyžádání je náročná operace (může trvat nějakou dobu). Pomocí tohoto nastavení podle potřeby zvýšit výkon služby data factory pomocí opakovaného použití clusteru HDInsight na vyžádání.<br /><br />Pokud nastavíte **timeToLive** hodnotu **0**, odstranění clusteru ihned po dokončení spuštění aktivity. Ale pokud nastavíte na vysokou hodnotu, cluster může zůstat nečinnosti zbytečně výsledkem vysoké náklady. Je důležité nastavit na odpovídající hodnotu na základě potřeb.<br /><br />Pokud **timeToLive** správně nastavena hodnota, více kanálů můžete sdílet instanci clusteru HDInsight na vyžádání. | Ano      |
 | verze                      | Verze clusteru HDInsight. Povolené HDInsight verze najdete v tématu [podporované HDInsight verze](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Pokud tato hodnota není zadaná, [nejnovější verze HDI výchozí](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions) se používá. | Ne       |
 | linkedServiceName            | Propojenou službu úložiště Azure pro použití v clusteru na vyžádání pro ukládání a zpracování dat. HDInsight cluster vytvoří ve stejné oblasti jako účet úložiště.<p>V současné době nelze vytvořit cluster HDInsight na vyžádání, který používá jako úložiště Azure Data Lake Store. Pokud chcete uložit výsledek data z HDInsight zpracování v Data Lake Store, pomocí aktivity kopírování zkopírovat data z úložiště objektů Blob do Data Lake Store. </p> | Ano      |

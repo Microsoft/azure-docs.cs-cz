@@ -1,12 +1,12 @@
 ---
-title: "Úrovně konzistence v Azure Cosmos DB | Microsoft Docs"
-description: "Azure Cosmos DB má pět úrovní konzistence můžete vyrovnávat případné konzistence, dostupností a latencí kompromis."
-keywords: "konzistence typu případné azure cosmos databáze, azure, Microsoft azure"
+title: Úrovně konzistence v Azure Cosmos DB | Microsoft Docs
+description: Azure Cosmos DB má pět úrovní konzistence můžete vyrovnávat případné konzistence, dostupností a latencí kompromis.
+keywords: konzistence typu případné azure cosmos databáze, azure, Microsoft azure
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: cgronlun
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3fe51cfa-a889-4a4a-b320-16bf871fe74c
 ms.service: cosmos-db
 ms.workload: data-services
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3bd28316e3d2e7596021d6964594002d47d160a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: aa95cae5d62ebe23d6822232c4a5ab872e1f2c6a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Data přizpůsobitelné úrovně konzistence v Azure Cosmos DB
 Azure Cosmos DB slouží od základů až s globální distribuce v paměti pro každý datový model. Je navržen pro nabízejí předvídatelný s nízkou latencí záruky a více dobře definovaný volný konzistence modelů. V současné době Azure Cosmos DB poskytuje pět úrovně konzistence: silnou, s ohraničenou odolností, založenou relace, konzistentní Předpona a případnou. Typu ohraničenou prošlostí, relace, konzistentní předponu a případné jsou označovány jako "volný konzistence modely", jako poskytují menší konzistence než silné, což je většina vysoce konzistentní modelu, který je k dispozici. 
@@ -60,6 +60,7 @@ Azure Cosmos DB nabízí komplexní 99,99 % [SLA](https://azure.microsoft.com/su
 ## <a name="consistency-levels"></a>Úrovně konzistentnosti
 Výchozí úroveň konzistence můžete nakonfigurovat na vašem účtu databáze, která platí pro všechny kolekce (a databází) v rámci účtu Cosmos DB. Ve výchozím nastavení všechny čtení a dotazy vydaný pro uživatelem definované prostředky používají výchozí úroveň konzistence zadaný u databázového účtu. Můžete uvolnit úroveň konzistence pomocí požadavek specifického pro čtení nebo dotazu v každé z podporovaných rozhraní API. Existují pět typy úrovně konzistence nepodporuje Azure Cosmos DB protokol replikace, které poskytují zrušte kompromis mezi záruky konkrétní konzistence a výkon, jak je popsáno v této části.
 
+<a id="strong"></a>
 **Silná**: 
 
 * Nabízí silnou konzistenci [linearizability](https://aphyr.com/posts/313-strong-consistency-models) zaručit s čtení zaručit vrátit nejnovější verzi položky. 
@@ -67,6 +68,7 @@ Výchozí úroveň konzistence můžete nakonfigurovat na vašem účtu databáz
 * Azure Cosmos DB účty, které jsou nakonfigurovány pro použití silnou konzistenci nelze přiřadit více než jedné oblasti Azure pomocí svého účtu Azure Cosmos DB.  
 * Náklady na operace čtení (z hlediska [požadované jednotky](request-units.md) spotřebované) se silnou konzistenci je vyšší než relaci a případnou, ale stejný jako typu s ohraničenou prošlostí.
 
+<a id="bounded-staleness"></a>
 **Vázaný typu prošlostí**: 
 
 * Vázaný typu prošlostí konzistence záruky, které čtení může funkce lag za zápisy podle maximálně *tisíc* verze nebo předpony položky nebo *t* časovém intervalu. 
@@ -76,6 +78,7 @@ Výchozí úroveň konzistence můžete nakonfigurovat na vašem účtu databáz
 * Azure Cosmos DB účty, které jsou nakonfigurovány s konzistence typu s ohraničenou prošlostí můžete přidružit libovolný počet oblastí Azure pomocí svého účtu Azure Cosmos DB. 
 * Náklady na operace čtení (z hlediska RUs spotřebované) s typu s ohraničenou prošlostí je vyšší než relace a konzistence typu případné, ale stejný jako silnou konzistenci.
 
+<a id="session"></a>
 **Relace**: 
 
 * Na rozdíl od globální konzistence modely, které nabízí úrovně konzistence typu silné a ohraničenou prošlostí je vymezen konzistence typu relace k relaci klienta. 
@@ -91,6 +94,7 @@ Výchozí úroveň konzistence můžete nakonfigurovat na vašem účtu databáz
 * Konzistentní předponu zaručuje, že čtení nikdy neuvidí mimo pořadí zápisy. Pokud zápisy se prováděly v pořadí `A, B, C`, pak klient uvidí buď `A`, `A,B`, nebo `A,B,C`, ale nikdy mimo pořadí jako `A,C` nebo `B,A,C`.
 * Azure Cosmos DB účty, které jsou nakonfigurovány s konzistentní předponu konzistence můžete přidružit libovolný počet oblastí Azure pomocí svého účtu Azure Cosmos DB. 
 
+<a id="eventual"></a>
 **Závěrečné**: 
 
 * Konzistence typu případné zaručuje, že při absenci dalších zápisů budou repliky ve skupině konvergovat. 
@@ -114,7 +118,7 @@ Ve výchozím nastavení pro uživatelem definované prostředky úroveň konzis
 | --- | --- | --- |
 | Konzistentní (výchozí) |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Vyberte, ze silného typu s ohraničenou prošlostí, relaci nebo případné |
 | Lazy |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Nahodilé |
-| Žádné |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Neuvedeno |
+| Žádný |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Neuvedeno |
 
 Jako s požadavky na čtení, můžete snížit úroveň konzistence požadavku specifického dotazu v každé rozhraní API.
 
@@ -125,19 +129,12 @@ Azure Cosmos DB aktuálně implementuje MongoDB verze 3.4, který má dvě nasta
 ## <a name="next-steps"></a>Další postup
 Pokud chcete provést další výklad o úrovně konzistence a kompromisy, doporučujeme v následujících zdrojích informací:
 
-* Doug Terry. Replikovaná Data konzistence vysvětlené prostřednictvím baseballové (video).   
-  [https://www.youtube.com/watch?v=gluIh8zd26I](https://www.youtube.com/watch?v=gluIh8zd26I)
-* Doug Terry. Replikovaná Data konzistence vysvětlené prostřednictvím baseballové.   
-  [http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
-* Doug Terry. Relace záruky pro slabě konzistentní replikovaná Data.   
-  [http://dl.acm.org/citation.cfm?id=383631](http://dl.acm.org/citation.cfm?id=383631)
-* Daniel Abadi. Konzistence kompromisy moderní distribuované návrhu databáze systémy: Zakončení je pouze část textu ".   
-  [http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
-* Peter Bailis, Shivaram Venkataraman, Michael J. Franklin, Joseph M. Hellerstein, Ion Stoica. Pravděpodobnosti ohraničenou typu Prošlostí (PBS) pro praktické částečné kvor.   
-  [http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
-* Wernerovi Vogels. Závěrečné konzistentní – kdykoli znovu spustit.    
-  [http://allthingsdistributed.com/2008/12/eventually_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
-* Moni Naor, Avishai vlny, zatížení, kapacity a dostupnosti systémů kvora, SIAM deníku na výpočetních, v.27 n.2, p.423-447, duben 1998.
-  [http://epubs.siam.org/doi/abs/10.1137/S0097539795281232](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)
-* Sebastianu Burckhardt, Jan Dern, Macanal Musuvathi, Royi Tan, řada produktů: nástroj úplný a automatické linearizability pro kontrolu, řízení 2010 konference ACM SIGPLAN na programovací jazyk návrhu a implementace, června 05-10, 2010, Toronto, Ontario, Kanada [doi > 10.1145/1806596.1806634] [http://dl.acm.org/citation.cfm?id=1806634](http://dl.acm.org/citation.cfm?id=1806634)
-* Petr Bailis, Shivaram Venkataraman, Michael J. tw, Joseph M. Hellerstein, uchování Stoica Probabilistically ohraničenou typu prošlostí pro praktické částečné kvor řízení dotační VLDB, v.5 n.8, p.776-787, duben 2012 [http:// DL.ACM.org/CITATION.cfm?ID=2212359](http://dl.acm.org/citation.cfm?id=2212359)
+* [Vysvětlení konzistence replikovaných dat prostřednictvím baseballové (video) Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
+* [Vysvětlení konzistence replikovaných dat prostřednictvím podle Doug Terry baseballové (dokument White Paper)](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
+* [Relace záruky pro slabě konzistentní replikovaná Data](http://dl.acm.org/citation.cfm?id=383631)
+* [Konzistence kompromisy moderní distribuované návrhu databáze systémy: Zakončení je pouze část textu](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
+* [Pravděpodobnosti typu s ohraničenou Prošlostí (PBS) pro praktické částečné kvor](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
+* [Závěrečné konzistentní – kdykoli znovu spustit.](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
+* [Zatížení, kapacity a dostupnosti systémů kvora, SIAM deníku na výpočetních](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)
+* [Řada produktů: nástroj úplný a automatické linearizability pro kontrolu, řízení 2010 konference ACM SIGPLAN na programovací jazyk návrhu a implementace](http://dl.acm.org/citation.cfm?id=1806634)
+* [Typu s probabilistically ohraničenou prošlostí pro praktické částečné kvor](http://dl.acm.org/citation.cfm?id=2212359)

@@ -1,12 +1,12 @@
 ---
-title: "Ověřování připojení: Průvodce odstraňováním potíží s Azure ExpressRoute | Microsoft Docs"
-description: "Tato stránka obsahuje pokyny na řešení problémů a ověření připojení koncová okruhu ExpressRoute."
+title: 'Ověřování připojení: Průvodce odstraňováním potíží s Azure ExpressRoute | Microsoft Docs'
+description: Tato stránka obsahuje pokyny na řešení problémů a ověření připojení koncová okruhu ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: rambk
 manager: tracsman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 74b6589a7e06570d978dfe40c5f5bf140e092cc6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5d01f2e402e4b793274761703ec3ca1ea3ff8164
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="verifying-expressroute-connectivity"></a>Ověření připojení ExpressRoute
 ExpressRoute, které zasahuje do místní sítě do cloudu Microsoftu přes privátní připojení, které usnadňují poskytovatele připojení, zahrnuje následující tři odlišné sítě zóny:
@@ -68,7 +68,7 @@ Ověření okruhu ExpressRoute, následující kroky jsou popsané (s bodu sít�
 
 Další ověření a kontroly bude přidána v budoucí, vraťte měsíčně!
 
-##<a name="validate-circuit-provisioning-and-state"></a>Zřizování okruhů a stavu ověření
+## <a name="validate-circuit-provisioning-and-state"></a>Zřizování okruhů a stavu ověření
 Bez ohledu na modelu připojení je potřeba vytvořit okruh ExpressRoute a proto vygenerované zřizování okruhů klíč služby. Zřizování okruh ExpressRoute vytváří redundantní připojení vrstvy 2 mezi PE-Msee (4) a Msee (5). Další informace o tom, jak vytvořit, upravit, poskytnout a ověřit okruh ExpressRoute najdete v článku [vytvoření a úprava okruhu ExpressRoute][CreateCircuit].
 
 >[!TIP]
@@ -76,7 +76,7 @@ Bez ohledu na modelu připojení je potřeba vytvořit okruh ExpressRoute a prot
 >
 >
 
-###<a name="verification-via-the-azure-portal"></a>Ověření prostřednictvím portálu Azure
+### <a name="verification-via-the-azure-portal"></a>Ověření prostřednictvím portálu Azure
 Na portálu Azure stav okruhu ExpressRoute můžete zkontrolovat výběrem ![2][2] v nabídce vlevo. straně panelu a potom vyberete okruh ExpressRoute. Výběr ExpressRoute okruhu uvedené v části "Všechny prostředky" otevře okno okruhu ExpressRoute. V ![3][3] části okna, ExpressRoute essentials jsou uvedeny, jak je znázorněno na následujícím snímku obrazovky:
 
 ![4][4]    
@@ -90,7 +90,7 @@ Pro okruh ExpressRoute do provozu *okruhu stav* musí být *povoleno* a *stav zp
 >
 >
 
-###<a name="verification-via-powershell"></a>Ověření pomocí prostředí PowerShell
+### <a name="verification-via-powershell"></a>Ověření pomocí prostředí PowerShell
 K zobrazení seznamu všech okruhy ExpressRoute ve skupině prostředků, použijte následující příkaz:
 
     Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
@@ -139,7 +139,7 @@ Pokud chcete potvrdit, pokud okruh ExpressRoute je funkční, věnujte zvláštn
 >
 >
 
-###<a name="verification-via-powershell-classic"></a>Ověření pomocí prostředí PowerShell (klasické)
+### <a name="verification-via-powershell-classic"></a>Ověření pomocí prostředí PowerShell (klasické)
 K zobrazení seznamu všech okruhy ExpressRoute v rámci předplatného, použijte následující příkaz:
 
     Get-AzureDedicatedCircuit
@@ -167,10 +167,10 @@ Abyste si potvrdili, pokud je provozní okruh ExpressRoute, věnovat zvláštní
 >
 >
 
-##<a name="validate-peering-configuration"></a>Ověření konfigurace partnerského vztahu
+## <a name="validate-peering-configuration"></a>Ověření konfigurace partnerského vztahu
 Po dokončení zřizování okruh ExpressRoute poskytovatele služeb konfigurace směrování lze vytvořit nad rámec okruhu ExpressRoute mezi MSEE-PRs (4) a Msee (5). Každý okruh ExpressRoute může mít jednu, dvě nebo tři směrování kontexty povoleno: soukromý partnerský vztah Azure (provoz v Azure virtuální privátní sítě), veřejný partnerský vztah Azure (provoz na veřejné IP adresy v Azure) a partnerský vztah Microsoftu (provoz do služeb Office 365 a Dynamics 365). Další informace o tom, jak vytvořit a upravit konfigurace směrování, najdete v článku [vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].
 
-###<a name="verification-via-the-azure-portal"></a>Ověření prostřednictvím portálu Azure
+### <a name="verification-via-the-azure-portal"></a>Ověření prostřednictvím portálu Azure
 
 >[!NOTE]
 >Pokud vrstvy 3 je poskytované poskytovatelem služby a partnerských vztahů jsou prázdné na portálu, aktualizujte konfiguraci okruh pomocí tlačítka Aktualizovat na protal. Tato operace platí správné konfigurace směrování na váš okruh. 
@@ -188,7 +188,7 @@ V předchozím příkladu jako uvedené Azure soukromého partnerského vztahu s
 >
 >
 
-###<a name="verification-via-powershell"></a>Ověření pomocí prostředí PowerShell
+### <a name="verification-via-powershell"></a>Ověření pomocí prostředí PowerShell
 Chcete-li podrobností konfigurace partnerského vztahu Azure privátní, použijte následující příkazy:
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
@@ -364,7 +364,7 @@ Následující příklad ukazuje, že odpověď příkazu pro partnerský vztah 
 
     Route Table Info:
 
-##<a name="check-the-traffic-statistics"></a>Zkontrolujte statistiky provozu
+## <a name="check-the-traffic-statistics"></a>Zkontrolujte statistiky provozu
 Chcete-li získat statistiku provozu kombinované primární a sekundární cesta – bajtů a odhlašování – partnerského vztahu kontextu, použijte následující příkaz:
 
     Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private

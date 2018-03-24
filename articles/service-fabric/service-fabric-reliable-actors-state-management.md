@@ -1,11 +1,11 @@
 ---
-title: "Stav správy Reliable Actors | Microsoft Docs"
-description: "Popisuje způsob správy, jako trvalý a pro zajištění vysoké dostupnosti replikují Reliable Actors stavu."
+title: Stav správy Reliable Actors | Microsoft Docs
+description: Popisuje způsob správy, jako trvalý a pro zajištění vysoké dostupnosti replikují Reliable Actors stavu.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: f196b2e54efc5ecbbd93e48e1f115edb99e5c858
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d5d38e7fa80db3484c397d9840bbc6092e4f18bb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="reliable-actors-state-management"></a>Spolehlivé aktéři řízení stavu
 Reliable Actors jsou jedním podprocesem objekty, které může zapouzdřit logiku a stavu. Protože aktéři spustit na spolehlivé služby, jejich stavu udržovat spolehlivé pomocí stejné trvalosti a mechanismech replikace. Tímto způsobem Neztraťte aktéři jejich stav po selhání při opětovné aktivaci po uvolnění paměti, nebo při jejich přesunu mezi uzly v clusteru s podporou kvůli vyrovnávání prostředků nebo upgradu.
@@ -111,308 +111,16 @@ Správce stavu klíče musí být řetězce. Hodnoty jsou obecné a mohou být j
 
 Správce stavu zpřístupní běžné metody slovník pro správu stavu, podobné těm, které jsou obsaženy ve slovníku pro spolehlivé.
 
-## <a name="accessing-state"></a>Přístup ke stavu
-Stav je přístupná prostřednictvím Správce stavu podle klíče. Metody správce stavu jsou všechny asynchronní, protože v/v disku může vyžadují při aktéři držena formou stavu. Při prvním přístupu jsou uložená v mezipaměti objektů stavu. Opakujte přístup operations přístup k objektům přímo z paměti a vrátí synchronně, aniž by docházelo k vstupně-výstupní diskové nebo asynchronní režií přepínání kontextu. Stav objektu se odebere z mezipaměti v následujících případech:
+Správa stavu objektu actor příkladů, najdete v tématu [přístup, uložit a odeberte Reliable Actors stavu](service-fabric-reliable-actors-access-save-remove-state.md).
 
-* Po ho načte objekt z správce stavu, vyvolá metoda objektu actor k neošetřené výjimce.
-* Objekt actor je znovu aktivovat, po právě deaktivována nebo po selhání.
-* Zprostředkovatel stavu stránky stavu na disk. Tento postup závisí na implementaci zprostředkovatele stavu. Výchozí zprostředkovatel stavu pro `Persisted` nastavení je toto chování.
-
-Stav můžete načíst pomocí standardního *získat* operace, která vyvolá `KeyNotFoundException`(C#) nebo `NoSuchElementException`(Java), pokud položka neexistuje pro klíč:
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public Task<int> GetCountAsync()
-    {
-        return this.StateManager.GetStateAsync<int>("MyState");
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture<Integer> getCountAsync()
-    {
-        return this.stateManager().getStateAsync("MyState");
-    }
-}
-```
-
-Můžete také načíst stav pomocí *TryGet* metoda, která nevyvolá výjimku pokud záznam neexistuje pro klíč:
-
-```csharp
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public async Task<int> GetCountAsync()
-    {
-        ConditionalValue<int> result = await this.StateManager.TryGetStateAsync<int>("MyState");
-        if (result.HasValue)
-        {
-            return result.Value;
-        }
-
-        return 0;
-    }
-}
-```
-```Java
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture<Integer> getCountAsync()
-    {
-        return this.stateManager().<Integer>tryGetStateAsync("MyState").thenApply(result -> {
-            if (result.hasValue()) {
-                return result.getValue();
-            } else {
-                return 0;
-            });
-    }
-}
-```
-
-## <a name="saving-state"></a>Ukládání stavu
-Metody načtení stavu manager vrátí odkaz na objekt v místní paměti. Úprava tento objekt v místní paměti samostatně nezpůsobí, je bezpečně uložit. Pokud objekt je načtena z správce stavu a upravit, musíte znovu vložit do Správce stavu bezpečně uložit.
-
-Můžete vložit stavu pomocí nepodmíněné *nastavit*, což je ekvivalentem `dictionary["key"] = value` syntaxe:
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public Task SetCountAsync(int value)
-    {
-        return this.StateManager.SetStateAsync<int>("MyState", value);
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture setCountAsync(int value)
-    {
-        return this.stateManager().setStateAsync("MyState", value);
-    }
-}
-```
-
-Stav můžete přidat pomocí *přidat* metoda. Tato metoda vyvolá `InvalidOperationException`(C#) nebo `IllegalStateException`(Java) při pokusu o přidání klíče, která již existuje.
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public Task AddCountAsync(int value)
-    {
-        return this.StateManager.AddStateAsync<int>("MyState", value);
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture addCountAsync(int value)
-    {
-        return this.stateManager().addOrUpdateStateAsync("MyState", value, (key, old_value) -> old_value + value);
-    }
-}
-```
-
-Můžete také přidat stavu pomocí *TryAdd* metoda. Tato metoda nevyvolá výjimku při pokusu o přidání klíče, který již existuje.
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public async Task AddCountAsync(int value)
-    {
-        bool result = await this.StateManager.TryAddStateAsync<int>("MyState", value);
-
-        if (result)
-        {
-            // Added successfully!
-        }
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture addCountAsync(int value)
-    {
-        return this.stateManager().tryAddStateAsync("MyState", value).thenApply((result)->{
-            if(result)
-            {
-                // Added successfully!
-            }
-        });
-    }
-}
-```
-
-Na konci metodu objektu actor správce stavu automaticky uloží všechny hodnoty, které byly přidány nebo upraveném operace insert nebo update. "Uložení" může obsahovat uložením na disk a replikace, v závislosti na nastavení použít. Hodnoty, které nebyly upraveny nejsou jako trvalý, nebo replikovat. Pokud byly změněny žádné hodnoty, uložení operace se nic nestane. Pokud ukládání selže, budou zahozeny upravený stav a je znovu původního stavu.
-
-Můžete také uložit stav ručně voláním `SaveStateAsync` metodu objektu actor základní:
-
-```csharp
-async Task IMyActor.SetCountAsync(int count)
-{
-    await this.StateManager.AddOrUpdateStateAsync("count", count, (key, value) => count > value ? count : value);
-
-    await this.SaveStateAsync();
-}
-```
-```Java
-interface MyActor {
-    CompletableFuture setCountAsync(int count)
-    {
-        this.stateManager().addOrUpdateStateAsync("count", count, (key, value) -> count > value ? count : value).thenApply();
-
-        this.stateManager().saveStateAsync().thenApply();
-    }
-}
-```
-
-## <a name="removing-state"></a>Odebrání stavu
-Můžete odebrat stavu trvale ze Správce stavu objektu actor voláním *odebrat* metoda. Tato metoda vyvolá `KeyNotFoundException`(C#) nebo `NoSuchElementException`(Java) při pokusu o odstranění klíče, který neexistuje.
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public Task RemoveCountAsync()
-    {
-        return this.StateManager.RemoveStateAsync("MyState");
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture removeCountAsync()
-    {
-        return this.stateManager().removeStateAsync("MyState");
-    }
-}
-```
-
-Rovněž můžete odebrat stavu trvale pomocí *TryRemove* metoda. Tato metoda nevyvolá výjimku při pokusu o odebrání klíče, který neexistuje.
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public async Task RemoveCountAsync()
-    {
-        bool result = await this.StateManager.TryRemoveStateAsync("MyState");
-
-        if (result)
-        {
-            // State removed!
-        }
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture removeCountAsync()
-    {
-        return this.stateManager().tryRemoveStateAsync("MyState").thenApply((result)->{
-            if(result)
-            {
-                // State removed!
-            }
-        });
-    }
-}
-```
-
-## <a name="best-practices"></a>Doporučené postupy
+## <a name="best-practices"></a>Osvědčené postupy
 Tady jsou některé navrhované postupy a tipy k řešení potíží pro správu vašeho stavu objektu actor.
 
 ### <a name="make-the-actor-state-as-granular-as-possible"></a>Zkontrolujte jako podrobné nejblíže stavu objektu actor
 To je důležité pro výkon a využití prostředků aplikace. Vždy, když je všechny aktualizace nebo zápisu "s názvem stavu" objektu actor, celou hodnotu odpovídající této "s názvem stavu" se serializovat a odesílá přes síť na sekundárních replikách.  Sekundárních zapisují na místní disk a odpověď zpět na primární repliku. Když primární obdrží potvrzení z kvora sekundárních replikách, zapíše stav jeho místní disk. Předpokládejme například, zda že je hodnota třídu, která má 20 členy a jejich velikost je 1 MB. I když mezi členy třídy, které je pouze změnit velikost 1 KB, end až platícího náklady na serializaci a sítě a disku zápisy pro úplné 1 MB. Podobně pokud je hodnota kolekce (například seznam, pole nebo slovník), platíte náklady na úplnou kolekci i v případě, že upravíte jednoho z jeho členů. Rozhraní StateManager třídy objektu actor je jako slovník. Vždy by měl model datovou strukturu představující stavu objektu actor nad tohoto slovníku.
  
 ### <a name="correctly-manage-the-actors-life-cycle"></a>Správně spravovat životní cyklus objektu actor
-Měli byste mít jasné zásady o správě velikosti stavu v každém oddílu služby objektu actor. Služby objektu actor by měl mít pevný počet aktéři a znovu použít, je velmi míře. Pokud vytvoříte nepřetržitě nové aktéři, musíte je odstranit, jakmile se provádějí v práci. Rozhraní objektu actor ukládá některé metadata o každém objektu actor, který již existuje. Odstranění všech stavu objektu actor metadata o tomto objektu actor neodebere. Je nutné odstranit objektu actor (viz [odstraňování aktéři a jejich stavu](service-fabric-reliable-actors-lifecycle.md#deleting-actors-and-their-state)) k odebrání všech informací o je uložená v systému. Jako další kontrolu, musí zadat dotaz na službu objektu actor (najdete v části [vytváření výčtu aktéři](service-fabric-reliable-actors-platform.md)) v k zkontrolujte, zda jsou čísla aktéři očekávaný rozsah.
+Měli byste mít jasné zásady o správě velikosti stavu v každém oddílu služby objektu actor. Služby objektu actor by měl mít pevný počet aktéři a znovu použít, je velmi míře. Pokud vytvoříte nepřetržitě nové aktéři, musíte je odstranit, jakmile se provádějí v práci. Rozhraní objektu actor ukládá některé metadata o každém objektu actor, který již existuje. Odstranění všech stavu objektu actor metadata o tomto objektu actor neodebere. Je nutné odstranit objektu actor (viz [odstraňování aktéři a jejich stavu](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)) k odebrání všech informací o je uložená v systému. Jako další kontrolu, musí zadat dotaz na službu objektu actor (najdete v části [vytváření výčtu aktéři](service-fabric-reliable-actors-platform.md)) v k zkontrolujte, zda jsou čísla aktéři očekávaný rozsah.
  
 Pokud někdy uvidíte, že velikost souboru databáze služby objektu Actor roste překračuje očekávanou velikost, ujistěte se, že jsou následující výše uvedených pokynů. Pokud postupujete podle těchto pokynů a jsou stále databáze problémům s velikostí souboru, měli byste [otevřete lístek podpory](service-fabric-support.md) s produktový tým jak získat nápovědu.
 

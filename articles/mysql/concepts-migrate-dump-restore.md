@@ -1,6 +1,6 @@
 ---
-title: "Migraci databáze MySQL pomocí výpis nebo obnovení v databázi Azure pro databázi MySQL"
-description: "Tento článek vysvětluje dvě běžné způsoby zálohování a obnovení databází v Azure Database pro databázi MySQL, pomocí nástrojů, jako je mysqldump, MySQL Workbench a PHPMyAdmin."
+title: Migraci databáze MySQL pomocí výpis nebo obnovení v databázi Azure pro databázi MySQL
+description: Tento článek vysvětluje dvě běžné způsoby zálohování a obnovení databází v Azure Database pro databázi MySQL, pomocí nástrojů, jako je mysqldump, MySQL Workbench a PHPMyAdmin.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 0c5a6b6d971d434a52bf80da6b34d7f6949589bc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: ef35ee881923c69d41b79fd6cb8464c695c614f9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migraci databáze MySQL do Azure Database pro databázi MySQL pomocí výpisu a obnovení
 Tento článek vysvětluje dvě běžné způsoby zálohování a obnovení databází v Azure Database pro databázi MySQL
@@ -87,10 +87,12 @@ $ mysqldump -u root -p --all-databases > alldb_backup.sql
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>Vytvoření databáze v cílové databázi Azure pro server databáze MySQL
 Vytvořte prázdnou databázi v cílové databázi Azure pro server databáze MySQL, ve které chcete migrovat data. Pomocí nástroje, jako je MySQL Workbench, Toad nebo Navicat k vytvoření databáze. Databáze může mít stejný název jako databáze, která je obsažená dumpingových dat nebo můžete vytvořit databázi s jiným názvem.
 
-Se připojí, vyhledejte informace o připojení na stránce vlastnosti ve službě Azure Database pro databázi MySQL.
-![Vyhledat informace o připojení na portálu Azure](./media/concepts-migrate-dump-restore/1_server-properties-name-login.png)
+Se připojí, vyhledejte informace o připojení v **přehled** Azure databáze pro databázi MySQL.
+
+![Vyhledat informace o připojení na portálu Azure](./media/concepts-migrate-dump-restore/1_server-overview-name-login.png)
 
 Přidáte informace o připojení do vaší databáze MySQL Workbench.
+
 ![MySQL Workbench připojovací řetězec](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
 

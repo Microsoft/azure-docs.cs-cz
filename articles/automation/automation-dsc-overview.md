@@ -1,24 +1,19 @@
 ---
-title: "Přehled služby Azure Automation DSC | Microsoft Docs"
-description: "Přehled o DSC Azure Automation požadovaného stavu konfigurace (), podmínky a známé problémy"
+title: Přehled služby Azure Automation DSC
+description: Přehled o DSC Azure Automation požadovaného stavu konfigurace (), podmínky a známé problémy
+keywords: prostředí PowerShell dsc, konfigurace požadovaného stavu prostředí powershell dsc azure
 services: automation
-documentationcenter: dev-center-name
-author: georgewallace
-manager: carmonm
-keywords: "prostředí PowerShell dsc, konfigurace požadovaného stavu prostředí powershell dsc azure"
-ms.assetid: fd40cb68-c1a6-48c3-bba2-710b607d1555
 ms.service: automation
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: powershell
-ms.workload: TBD
-ms.date: 06/15/2017
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 7440fa58f9cbd201984d178a7e9a2c12afc84783
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 03/15/2018
+ms.topic: article
+manager: carmonm
+ms.openlocfilehash: 3949b79c3729ecdc2dfdd6297a5f10852e061540
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-automation-dsc-overview"></a>Přehled služby Azure Automation DSC
 
@@ -45,8 +40,8 @@ Z portálu Azure nebo z prostředí PowerShell můžete spravovat všechny vaše
 ### <a name="import-reporting-data-into-log-analytics"></a>Importovat data pro generování sestav do analýzy protokolů
 
 Uzly, které budou spravovat pomocí Azure Automation DSC poslat podrobné údaje o chybách stav předdefinované načítacího serveru.
-Můžete nakonfigurovat Azure Automation DSC k odesílat tato data do pracovního prostoru analýzy protokolů Microsoft Operations Management Suite (OMS).
-Zjistěte, jak odesílat data o stavu DSC do pracovního prostoru analýzy protokolů, najdete v tématu [dál Azure Automation DSC data pro vytváření sestav k analýze protokolů OMS](automation-dsc-diagnostics.md).
+Můžete nakonfigurovat odesílat tato data do pracovního prostoru analýzy protokolů Azure Automation DSC.
+Zjistěte, jak odesílat data o stavu DSC do pracovního prostoru analýzy protokolů, najdete v tématu [dál Azure Automation DSC data pro vytváření sestav k analýze protokolů](automation-dsc-diagnostics.md).
 
 ## <a name="introduction-video"></a>Úvodní video
 
@@ -58,7 +53,7 @@ Raději se díváte, než čtete? Podíváme se na následující videa z květe
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace jak pro zařadit uzly pro správu ve službě Azure Automation DSC, najdete v části [registrace počítačů pro správu Azure Automation DSC.](automation-dsc-onboarding.md)
 * Chcete-li začít používat Azure Automation DSC, přečtěte si téma [Začínáme s Azure Automation DSC.](automation-dsc-getting-started.md)

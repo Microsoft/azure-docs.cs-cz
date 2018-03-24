@@ -1,19 +1,19 @@
 ---
-title: "Služba Azure SQL Database | Microsoft Docs"
-description: "Další informace o úrovních služeb pro jeden a zadejte velikost úložiště a úrovně výkonu databáze fondu."
+title: Služba Azure SQL Database | Microsoft Docs
+description: Další informace o úrovních služeb pro jeden a zadejte velikost úložiště a úrovně výkonu databáze fondu.
 services: sql-database
 author: CarlRabeler
-manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/21/2018
+manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 6153616de763eee1b20fff40d38816eca8b455de
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3fe7add4ad4c5563a6307db0dec27c658913429b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Co je Azure SQL Database úrovně služeb?
 
@@ -33,7 +33,8 @@ Volba úrovně služby závisí hlavně na kontinuity podnikových procesů, úl
 |Procesor|Nízká|Nízká, střední, vysoká|Střední, vysoká|
 |Propustnost vstupně-výstupní operace (přibližnou) |2.5 IOPS na DTU  | 2.5 IOPS na DTU | 48 IOPS na DTU|
 |Latence vstupně-výstupní operace (přibližnou)|5 ms (načíst), 10 ms (zápisu)|5 ms (načíst), 10 ms (zápisu)|2 ms (čtení a zápis)|
-|Indexu Columnstore a OLTP v paměti|neuvedeno|neuvedeno|Podporováno|
+|Indexu Columnstore |neuvedeno|S3 a novější|Podporováno|
+|OLTP v paměti|neuvedeno|neuvedeno|Podporováno|
 |||||
 
 ## <a name="performance-level-and-storage-size-limits"></a>Omezení velikosti úroveň výkonu a úložiště

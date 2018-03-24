@@ -1,24 +1,24 @@
 ---
-title: "Skupiny počítačů v Azure Log Analytics protokolu hledání | Microsoft Docs"
-description: "Skupiny počítačů v analýzy protokolů umožňují oboru vyhledávání protokolu na konkrétní sadu počítačů.  Tento článek popisuje různé metody, které můžete použít k vytvoření skupiny počítačů a jejich použití v hledání protokolů."
+title: Skupiny počítačů v Azure Log Analytics protokolu hledání | Microsoft Docs
+description: Skupiny počítačů v analýzy protokolů umožňují oboru vyhledávání protokolu na konkrétní sadu počítačů.  Tento článek popisuje různé metody, které můžete použít k vytvoření skupiny počítačů a jejich použití v hledání protokolů.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: a28b9e8a-6761-4ead-aa61-c8451ca90125
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4d6a80082711f09e9c189d53fb4fda00a7d73c29
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: a6f0aa58762966f8da76387f3da7a7895801fcb9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Skupiny počítačů v analýzy protokolů protokolu hledání
 
@@ -49,7 +49,7 @@ Následující tabulka popisuje vlastnosti, které definují skupinu počítač�
 | Zobrazovaný název   | Název hledání pro zobrazení na portálu. |
 | Kategorie       | Kategorie k uspořádání vyhledávání v portálu. |
 | Dotaz          | Dotaz pro skupinu počítačů. |
-| Alias – funkce | Jedinečný odkaz použít k identifikaci skupiny počítačů v dotazu. |
+| Alias funkce | Jedinečný odkaz použít k identifikaci skupiny počítačů v dotazu. |
 
 Použijte následující postup k vytvoření skupiny počítačů z protokolu hledání na portálu Azure.
 
@@ -66,12 +66,6 @@ Použijte následující postup k vytvoření skupiny počítačů z protokolu h
 5. Zadejte hodnoty pro každou vlastnost pro skupinu počítačů. 
 
 
->[!NOTE]
-> Pokud je stále pomocí pracovního prostoru [starší verze protokolu Analytics query language](log-analytics-log-search-upgrade.md) pak použijte stejný postup pro vytvoření skupiny počítačů, ale vy musíte použít syntaxi jazyka dotazů starší verze.
-
-
-### <a name="log-search-api"></a>Hledání protokolů rozhraní API
-Skupiny počítačů, které jsou vytvořené pomocí rozhraní API pro vyhledávání protokolu jsou stejné jako rozšířeného hledání protokolů hledání.  Podrobné informace o vytváření skupiny počítačů pomocí rozhraní API pro vyhledávání protokolu najdete v tématu [skupiny počítačů v protokolu analýzy protokolů hledání REST API](log-analytics-log-search-api.md#computer-groups).
 
 ### <a name="active-directory"></a>Active Directory
 Když konfigurujete analýzy protokolů pro import členství ve skupině služby Active Directory, analyzuje členství ve skupině všechny počítače připojené k doméně s agentem OMS.  Skupina počítačů se vytvoří v analýzy protokolů pro každou skupinu zabezpečení ve službě Active Directory a každý počítač se přidá do odpovídající skupiny zabezpečení, které jsou členy skupin počítačů.  Členství v této se průběžně aktualizuje každé 4 hodiny.  
@@ -131,18 +125,6 @@ Následující dotaz vrátí UpdateSummary záznamy pro jenom pro počítače v 
 
 
 
-  
-
->[!NOTE]
-> Pokud je stále pomocí pracovního prostoru [starší verze protokolu Analytics query language](log-analytics-log-search-upgrade.md)>, pak můžete odkazovat na skupinu počítačů do protokolu hledání použijte následující syntaxi.  Určení **kategorie** > je volitelné a vyžaduje, pokud máte skupiny počítačů se stejným názvem v různých kategorií. 
->
->    `$ComputerGroups[Category: Name]`
->
->Skupiny počítačů se obvykle používají se **IN** klauzuli v hledání protokolů jako v následujícím příkladu:
->
->    `Type=UpdateSummary Computer IN $ComputerGroups[My Computer Group]`
-
-
 
 ## <a name="computer-group-records"></a>Záznamů skupiny počítače
 V pracovním prostoru analýzy protokolů pro každý členství ve skupině počítačů vytvořené pomocí služby Active Directory nebo služby WSUS se vytvoří záznam.  Tyto záznamy mají typ **ComputerGroup** a mít vlastnosti v následující tabulce.  Záznamy nejsou vytvořeny pro skupiny počítačů, které jsou založené na protokolu hledání.
@@ -154,7 +136,7 @@ V pracovním prostoru analýzy protokolů pro každý členství ve skupině po�
 | Počítač |Název členského počítače. |
 | Skupina |Název skupiny. |
 | GroupFullName |Úplná cesta ke skupině, včetně zdroje a název zdroje. |
-| GroupSource |Zdroj této skupině se shromážděných z. <br><br>Active Directory<br>SLUŽBY WSUS<br>WSUSClientTargeting |
+| GroupSource |Zdroj této skupině se shromážděných z. <br><br>ActiveDirectory<br>SLUŽBY WSUS<br>WSUSClientTargeting |
 | GroupSourceName |Název zdroje, který skupině nebyla shromážděna z.  U služby Active Directory je to název domény. |
 | ManagementGroupName |Název skupiny pro správu agentů SCOM.  Pro jiné agenty jde AOI -\<ID pracovního prostoru\> |
 | TimeGenerated |Datum a čas vytvoření nebo aktualizovat skupiny počítačů. |

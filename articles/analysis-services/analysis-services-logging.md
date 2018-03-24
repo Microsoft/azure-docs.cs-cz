@@ -1,31 +1,31 @@
 ---
-title: "Diganostic protokolování pro Azure Analysis Services | Microsoft Docs"
-description: "Informace o nastavení protokolování diagnostiky pro Azure Analysis Services."
+title: Diganostic protokolování pro Azure Analysis Services | Microsoft Docs
+description: Informace o nastavení protokolování diagnostiky pro Azure Analysis Services.
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: cadd47d2e5f490f82846ea562803fcd60f5405a7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 20e2e76e8df9421ee97671000f9557f5db34f1b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
-Důležitou součást řešení služby Analysis Services je monitorování výkonu vašich serverů. S [diagnostické protokoly prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md), můžete monitorovat a odeslat protokoly, které [Azure Storage](https://azure.microsoft.com/services/storage/), jejich stream [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [protokolu Analýza](https://azure.microsoft.com/services/log-analytics/), součástí [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite). 
+Důležitou součást řešení služby Analysis Services je monitorování výkonu vašich serverů. S [diagnostické protokoly prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md), můžete monitorovat a odeslat protokoly, které [Azure Storage](https://azure.microsoft.com/services/storage/), jejich stream [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [protokolu Analýza](https://azure.microsoft.com/services/log-analytics/), služby z [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). 
 
-![Protokolování diagnostiky úložišť, Event Hubs nebo Operations Management Suite prostřednictvím analýzy protokolů](./media/analysis-services-logging/aas-logging-overview.png)
+![Protokolování diagnostiky úložišť, Event Hubs nebo analýzy protokolů](./media/analysis-services-logging/aas-logging-overview.png)
 
 
 ## <a name="whats-logged"></a>Co je protokolováno?
@@ -171,7 +171,7 @@ V **typ**, klikněte na tlačítko **AzureDiagnostics**a potom klikněte na **po
 
 Klikněte na tlačítko **EventClass\_s** nebo jeden z názvy událostí a analýzy protokolů pokračuje vytváření dotazu. Je nutné uložit vaše dotazy pro pozdější použití.
 
-Ujistěte se, že Operations Management Suite, které poskytuje rozšířené dotazu, dashboarding a v protokolu analytická data výstrah funkce webu v tématu.
+Ujistěte se, že analýzy protokolů, které poskytuje rozšířené dotazu, dashboarding a v shromážděná data výstrah funkce webu v tématu.
 
 ### <a name="queries"></a>Dotazy
 

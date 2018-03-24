@@ -1,10 +1,11 @@
 ---
-title: "Vlastní moduly Azure AI Galerie | Microsoft Docs"
-description: "Zjistit moduly vlastní machine learning v Azure AI Gallery."
+title: Vlastní moduly Azure AI Galerie | Microsoft Docs
+description: Zjistit moduly vlastní machine learning v Azure AI Gallery.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: 16037a84-dad0-4a8c-9874-a1d3bd551cf0
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.author: garye
-ms.openlocfilehash: bec2860d1da5044ad6969e2b23142256aa90042e
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 26cd814980af0824cbf40052a4a9f47161b8cc62
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Zjistit moduly vlastní machine learning v Azure AI Gallery
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -34,7 +34,7 @@ Chcete-li procházet vlastní moduly [v galerii](http://gallery.cortanaintellige
 
 ![Vyberte vlastní moduly na domovské stránce Galerie](./media/gallery-custom-modules/select-custom-modules-in-gallery.png)
 
-**[Vlastní moduly](https://gallery.cortanaintelligence.com/customModules)**  stránky zobrazí seznam nedávno přidané a Oblíbené moduly. Chcete-li zobrazit všechny vlastní moduly, vyberte **zobrazit všechny** tlačítko. Chcete-li vyhledat konkrétní vlastní modul, vyberte **zobrazit všechny**a potom vyberte filtr kritéria. Také můžete zadat hledaný text v **vyhledávání** pole v horní části stránky galerie.
+**[Vlastní moduly](https://gallery.cortanaintelligence.com/customModules)** stránky zobrazí seznam nedávno přidané a Oblíbené moduly. Chcete-li zobrazit všechny vlastní moduly, vyberte **zobrazit všechny** tlačítko. Chcete-li vyhledat konkrétní vlastní modul, vyberte **zobrazit všechny**a potom vyberte filtr kritéria. Také můžete zadat hledaný text v **vyhledávání** pole v horní části stránky galerie.
 
 ![Vyberte možnost "najdete všechny" procházet všechny vlastní moduly](./media/gallery-custom-modules/click-see-all-for-all-custom-modules.png)
 

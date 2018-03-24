@@ -1,12 +1,12 @@
 ---
-title: "Nainstalovat doménovou strukturu služby Active Directory na virtuální síť Azure | Microsoft Docs"
-description: "Kurz, který vysvětluje, jak vytvořit novou doménovou strukturu služby Active Directory na virtuálním počítači (VM) na virtuální síť Azure."
+title: Nainstalovat doménovou strukturu služby Active Directory na virtuální síť Azure | Microsoft Docs
+description: Kurz, který vysvětluje, jak vytvořit novou doménovou strukturu služby Active Directory na virtuálním počítači (VM) na virtuální síť Azure.
 services: active-directory, virtual-network
-keywords: "služby Active directory virtuálního počítače, instalace služby active directory doménové struktury, videa služby azure active directory "
-documentationcenter: 
+keywords: 'služby Active directory virtuálního počítače, instalace služby active directory doménové struktury, videa služby azure active directory '
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
-tags: 
+tags: ''
 ms.assetid: eb7170d0-266a-4caa-adce-1855589d65d1
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2017
 ms.author: joflore
-ms.openlocfilehash: c98082b7d839490410132f19fdbf653c61d7165c
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 0b98b475f49847589398ca743fc3ac3b8bcbb381
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>Instalace nové doménové struktury služby Active Directory na virtuální síť Azure
 Tento článek ukazuje, jak vytvořit nového prostředí služby Active Directory pro Windows Server na virtuálním počítači (VM) na [virtuální síť Azure](../virtual-network/virtual-networks-overview.md). V takovém případě virtuální síť Azure není připojen k místní síti.
@@ -31,7 +31,7 @@ Může být také zájem o tyto související články:
 * Koncepční informace o instalaci služby Active Directory Domain Services (AD DS) na virtuální síť Azure, najdete v části [pokyny pro nasazení systému Windows Server Active Directory ve virtuálních počítačích Azure](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
 ## <a name="scenario-diagram"></a>Diagram scénáře
-V tomto scénáři externí uživatelé potřebovat přístup k aplikacím, které běží na servery připojené k doméně. Virtuální počítače, které používat aplikačních serverů a virtuálních počítačů, které spustit řadiče domény jsou nainstalovány nainstalovaný ve své vlastní cloudové služby v rámci virtuální sítě Azure. Jsou taky součástí sadu dostupnosti pro lepší odolnost proti chybám.
+V tomto scénáři externí uživatelé potřebovat přístup k aplikacím, které běží na servery připojené k doméně. Virtuální počítače, které používat aplikačních serverů a virtuálních počítačů, které spustit řadiče domény jsou nainstalované v vlastní cloudové služby v rámci virtuální sítě Azure. Jsou taky součástí sadu dostupnosti pro lepší odolnost proti chybám.
 
 ![Doménové struktury Active Directory na virtuální počítače ve virtuální síti Azure ][1] 7
 

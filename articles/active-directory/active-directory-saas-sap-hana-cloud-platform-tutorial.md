@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s SAP Cloudová platforma | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Cloudová platforma SAP."
+title: 'Kurz: Azure Active Directory integrace s SAP Cloudová platforma | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Cloudová platforma SAP.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 309415a68308943f638195303ceb236569519472
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a578a732efa3d2b91240ef0f4c02670aea8e547f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Kurz: Azure Active Directory integrace s SAP Cloudová platforma
 
@@ -111,7 +111,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![SAP cloudové platformy domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_url.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL používají vaši uživatelé pro přihlášení do vaší **SAP Cloudová platforma** aplikace. Toto je adresa URL účtu konkrétní chráněného prostředku v aplikaci SAP Cloudová platforma. Adresa URL je založena na vzoru následující:`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL používají vaši uživatelé pro přihlášení do vaší **SAP Cloudová platforma** aplikace. Toto je adresa URL účtu konkrétní chráněného prostředku v aplikaci SAP Cloudová platforma. Adresa URL je založena na vzoru následující: `https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
      >[!NOTE]
      >Toto je adresa URL v aplikaci SAP Cloudová platforma, která vyžaduje ověření uživatele.
@@ -217,8 +217,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Kontrolní výraz atribut | Objekt zabezpečení atribut |
     | --- | --- |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |FirstName |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |Příjmení |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |E-mailu |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |lastname |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |e-mail |
    
      >[!NOTE]
      >Konfigurace atributů závisí na tom, jak aplikace na spojovací bod služby jsou vyvinuté, to znamená, které atributy se očekává v odpovědi SAML a pod které názvem (hlavní atribut) přistupují tento atribut v kódu.
@@ -228,7 +228,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
  
     c. Názvy a hodnoty pro **hlavní atribut** ukazuje snímek obrazovky závisí na tom, jak je aplikace vyvinuté. Je možné, že vaše aplikace vyžaduje jiný mapování.
 
-###<a name="assertion-based-groups"></a>Skupiny založené na výrazu
+### <a name="assertion-based-groups"></a>Skupiny založené na výrazu
 
 Volitelný krok můžete nakonfigurovat skupiny založené na assertion pro zprostředkovatele Identity Azure Active Directory.
 
@@ -333,7 +333,7 @@ Cílem této části je Azure AD jeden přihlašování konfigurace pomocí př�
 Když kliknete na dlaždici Cloudová platforma SAP na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci SAP Cloudová platforma.
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

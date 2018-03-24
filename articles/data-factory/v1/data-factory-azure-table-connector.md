@@ -1,11 +1,10 @@
 ---
-title: "Přesun dat do/z Azure Table | Microsoft Docs"
-description: "Další informace o přesunutí dat z úložiště tabulek Azure pomocí Azure Data Factory."
+title: Přesun dat do/z Azure Table | Microsoft Docs
+description: Další informace o přesunutí dat z úložiště tabulek Azure pomocí Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 07b046b1-7884-4e57-a613-337292416319
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 765ca21c7c38fa116e0ca95b3c8dc6a6152834ce
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 2c560bf9eeac5f9aed1024bd87d450f7aee7ce05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Přesun dat do a z Azure Table pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -476,10 +475,10 @@ Při přesunu dat do a z Azure Table, následující [mapování definovaná slu
 
 | Typ dat OData | .NET Type | Podrobnosti |
 | --- | --- | --- |
-| Edm.Binary |Byte] |Pole bajtů až 64 KB. |
+| Edm.Binary |Byte |Pole bajtů až 64 KB. |
 | Edm.Boolean |BOOL |Logická hodnota. |
-| Edm.DateTime |Datum a čas |Hodnota 64-bit, vyjádřené jako koordinovaný světový čas (UTC). Podporovaný rozsah datum a čas zahájení z 12:00 hodin, 1, 1601. ledna (C.E.), UTC. Rozsah končí u 31. prosince 9999. |
-| Edm.Double |double |Hodnota 64-bit plovoucí bodu. |
+| Edm.DateTime |DateTime |Hodnota 64-bit, vyjádřené jako koordinovaný světový čas (UTC). Podporovaný rozsah datum a čas zahájení z 12:00 hodin, 1, 1601. ledna (C.E.), UTC. Rozsah končí u 31. prosince 9999. |
+| Edm.Double |Double |Hodnota 64-bit plovoucí bodu. |
 | Edm.Guid |Guid |Globálně jedinečný identifikátor 128-bit. |
 | Edm.Int32 |Int32 |32bitové celé číslo. |
 | Edm.Int64 |Int64 |64bitové celé číslo. |

@@ -1,10 +1,10 @@
 ---
-title: "Pochopení schéma webhooku použít ve výstrahách aktivity protokolu | Microsoft Docs"
-description: "Další informace o schématu formátu JSON, který je odeslána do URL webhooku se nenačetla, když se aktivuje výstrahu protokolu aktivit."
+title: Pochopení schéma webhooku použít ve výstrahách aktivity protokolu | Microsoft Docs
+description: Další informace o schématu formátu JSON, který je odeslána do URL webhooku se nenačetla, když se aktivuje výstrahu protokolu aktivit.
 author: johnkemnetz
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.openlocfilehash: 7816efd44c01c3ed60c95d8699042f89cf6de5ec
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: f71714774d7ad54d7eb2132e8c20c87f972157ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky Azure aktivity protokolu výstrahy
 Jako součást definice skupiny akce můžete nakonfigurovat webhooku koncových bodů pro příjem oznámení o výstrahách protokolu aktivit. Pomocí webhooků je možné směrovat tato oznámení s dalšími systémy pro následné zpracování nebo vlastní akce. Tento článek ukazuje, jak vypadá pro HTTP POST na webhook, jehož datové části.
@@ -31,7 +31,7 @@ Webhooku můžete volitelně použít ověření na základě tokenu pro ověřo
 ## <a name="payload-schema"></a>Datová část schématu
 Datová část JSON, které jsou obsažené v operaci POST liší v závislosti na pole data.context.activityLog.eventSource datové části.
 
-###<a name="common"></a>Společné
+### <a name="common"></a>Společné
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -58,7 +58,7 @@ Datová část JSON, které jsou obsažené v operaci POST liší v závislosti 
     }
 }
 ```
-###<a name="administrative"></a>Správa
+### <a name="administrative"></a>Správa
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -85,7 +85,7 @@ Datová část JSON, které jsou obsažené v operaci POST liší v závislosti 
 }
 
 ```
-###<a name="servicehealth"></a>ServiceHealth
+### <a name="servicehealth"></a>ServiceHealth
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -143,7 +143,7 @@ Podrobnosti konkrétní schématu na všechny ostatní výstrahy protokolu aktiv
 | subscriptionId |ID předplatného Azure. |
 | časové razítko |Čas, kdy byla generována událost pomocí služby Azure, který požadavek zpracoval. |
 | resourceId |ID prostředku ovlivněné prostředku. |
-| Název skupiny prostředků |Název skupiny prostředků pro prostředek dopad. |
+| resourceGroupName |Název skupiny prostředků pro prostředek dopad. |
 | properties |Sada `<Key, Value>` páry (tedy `Dictionary<String, String>`) obsahující podrobnosti o události. |
 | událost |Element, který obsahuje metadata o události. |
 | Autorizace |Řízení přístupu na základě Role vlastnosti události. Tyto vlastnosti obvykle obsahovat akci, role a obor. |
@@ -153,13 +153,13 @@ Podrobnosti konkrétní schématu na všechny ostatní výstrahy protokolu aktiv
 | eventDescription |Statický text popis události. |
 | eventDataId |Jedinečný identifikátor pro událost. |
 | EventSource |Název služby Azure nebo infrastruktury, které vygenerovalo událost. |
-| požadavku HTTP |Požadavek obvykle obsahuje clientRequestId, clientIpAddress a metodou HTTP (například přidat). |
+| httpRequest |Požadavek obvykle obsahuje clientRequestId, clientIpAddress a metodou HTTP (například přidat). |
 | úroveň |Jeden z následujících hodnot: kritická, chyba, upozornění a informativní. |
 | operationId |Obvykle GUID sdílen události odpovídající jedné operace. |
 | operationName |Název operace. |
 | properties |Vlastnosti události. |
 | status |Řetězec. Stav operace. Běžné hodnoty zahrnují Začínáme, probíhá, bylo úspěšné, neúspěšné, aktivní a vyřešeno. |
-| Podřízený stav |Obvykle zahrnuje stavový kód HTTP odpovídající volání REST. Může také obsahovat další řetězce, které popisují podřízeného stavu. Běžné substatus hodnoty zahrnují OK (stavový kód HTTP: 200), které byly vytvořeny (stavový kód HTTP: 201), platné (stavový kód HTTP: 202), ne obsahu (stavový kód HTTP: 204), chybný požadavek (stavový kód HTTP: 400), nebyl nalezen (stavový kód HTTP: 404), konflikt (stavový kód HTTP: 409 ), Vnitřní chybu serveru (kód stavu HTTP: 500), služba není k dispozici (kód stavu HTTP: 503) a vypršel časový limit brány (kód stavu HTTP: 504). |
+| subStatus |Obvykle zahrnuje stavový kód HTTP odpovídající volání REST. Může také obsahovat další řetězce, které popisují podřízeného stavu. Běžné substatus hodnoty zahrnují OK (stavový kód HTTP: 200), které byly vytvořeny (stavový kód HTTP: 201), platné (stavový kód HTTP: 202), ne obsahu (stavový kód HTTP: 204), chybný požadavek (stavový kód HTTP: 400), nebyl nalezen (stavový kód HTTP: 404), konflikt (stavový kód HTTP: 409 ), Vnitřní chybu serveru (kód stavu HTTP: 500), služba není k dispozici (kód stavu HTTP: 503) a vypršel časový limit brány (kód stavu HTTP: 504). |
 
 ## <a name="next-steps"></a>Další postup
 * [Další informace o protokolu činnosti](monitoring-overview-activity-logs.md).

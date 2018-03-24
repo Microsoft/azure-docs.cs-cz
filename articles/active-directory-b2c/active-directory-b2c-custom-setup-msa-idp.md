@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Přidáte účet Microsoft (MSA) jako zprostředkovatele identity pomocí vlastních zásad"
-description: "Ukázka použití Microsoft jako zprostředkovatele identity pomocí protokolu OpenID Connect (OIDC)"
+title: 'Azure Active Directory B2C: Přidáte účet Microsoft (MSA) jako zprostředkovatele identity pomocí vlastních zásad'
+description: Ukázka použití Microsoft jako zprostředkovatele identity pomocí protokolu OpenID Connect (OIDC)
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: yoelh
-ms.openlocfilehash: cdc77d093358fa15bb1acbc9ba6b1867bae062f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: a49e9589322eeb90a713321b4fbe4c4820609f7a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Přidáte účet Microsoft (MSA) jako zprostředkovatele identity pomocí vlastních zásad
 
@@ -38,7 +35,7 @@ K těmto krokům patří:
 5.  Odeslání zásady do Azure AD B2C klienta a otestovat ji
 
 ## <a name="create-a-microsoft-account-application"></a>Vytvoření aplikace účtu Microsoft
-Pokud chcete používat účet Microsoft jako poskytovatel identit v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci účtu Microsoft a zadejte se správné parametry. Potřebujete účet Microsoft. Pokud nemáte, navštivte [https://www.live.com/](https://www.live.com/).
+Pokud chcete používat účet Microsoft jako poskytovatel identit v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci účtu Microsoft a zadejte se správné parametry. Potřebujete účet Microsoft. Pokud nemáte, navštivte [ https://www.live.com/ ](https://www.live.com/).
 
 1.  Přejděte na [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) a přihlaste se pomocí přihlašovacích údajů účtu Microsoft.
 2.  Klikněte na tlačítko **přidat aplikaci**.
@@ -156,10 +153,10 @@ V tomto okamžiku byla nastavena zprostředkovatele identity, ale není k dispoz
 4.  Vložte celý obsah `<UserJournesy>` uzlu, který jste zkopírovali jako podřízenou `<UserJourneys>` elementu.
 
 ### <a name="display-the-button"></a>Zobrazení tlačítka
-`<ClaimsProviderSelections>` Element definuje seznam možnosti výběru poskytovatele deklarací identity a jejich pořadí.  `<ClaimsProviderSelection>`Element je obdobou tlačítko zprostředkovatele identity na stránce registrace-množství nebo přihlášení. Pokud přidáte `<ClaimsProviderSelection>` element pro účet Microsoft, nové tlačítko se zobrazí při pojmenováváme uživatele na stránce. Chcete-li přidat tento element:
+`<ClaimsProviderSelections>` Element definuje seznam možnosti výběru poskytovatele deklarací identity a jejich pořadí.  `<ClaimsProviderSelection>` Element je obdobou tlačítko zprostředkovatele identity na stránce registrace-množství nebo přihlášení. Pokud přidáte `<ClaimsProviderSelection>` element pro účet Microsoft, nové tlačítko se zobrazí při pojmenováváme uživatele na stránce. Chcete-li přidat tento element:
 
 1.  Najít `<UserJourney>` uzlu, který zahrnuje `Id="SignUpOrSignIn"` v cesty uživatele, který jste zkopírovali.
-2.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje`Order="1"`
+2.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje `Order="1"`
 3.  Přidejte následující fragment kódu XML v části `<ClaimsProviderSelections>` uzlu:
 
 ```xml
@@ -204,7 +201,7 @@ Můžete také přidat zprostředkovatele identity Account Microsoft pro vaše u
 ### <a name="display-the-button"></a>Zobrazení tlačítka
 1.  Otevřete soubor rozšíření zásad (například TrustFrameworkExtensions.xml).
 2.  Najít `<UserJourney>` uzlu, který zahrnuje `Id="ProfileEdit"` v cesty uživatele, který jste zkopírovali.
-3.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje`Order="1"`
+3.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje `Order="1"`
 4.  Přidejte následující fragment kódu XML v části `<ClaimsProviderSelections>` uzlu:
 
 ```xml

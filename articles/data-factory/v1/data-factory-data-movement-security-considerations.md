@@ -1,11 +1,10 @@
 ---
-title: "Důležité informace o zabezpečení pro přesun dat v Azure Data Factory | Microsoft Docs"
-description: "Další informace o zabezpečení přesun dat v Azure Data Factory."
+title: Důležité informace o zabezpečení pro přesun dat v Azure Data Factory | Microsoft Docs
+description: Další informace o zabezpečení přesun dat v Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: f483109170ed1dda7506f7ef5f02fb8b42ea331e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c2b6c494a9c4d0dac37315520b8d7b962f3490b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - důležité informace o zabezpečení pro přesun dat
 
@@ -48,7 +47,7 @@ V tomto článku jsme zkontrolujte důležité informace o zabezpečení v násl
 - **Scénář hybridního**– v tomto scénáři vaše zdrojové nebo cílové je za bránou firewall nebo uvnitř podnikové sítě na místní nebo data úložiště je v privátní síti / virtuální sítě (nejčastěji zdroje) a není veřejně přístupná. Databázové servery hostované ve virtuálních počítačích také spadají pod tento scénář.
 
 ## <a name="cloud-scenarios"></a>Scénáře cloudu
-###<a name="securing-data-store-credentials"></a>Zabezpečení údaje k úložišti dat.
+### <a name="securing-data-store-credentials"></a>Zabezpečení údaje k úložišti dat.
 Azure Data Factory chrání přihlašovací údaje k úložišti dat pomocí **šifrování** je pomocí **certifikáty, které spravuje Microsoft**. Tyto certifikáty otáčejí každých **dva roky** (která zahrnuje obnovení certifikátu a migrace přihlašovacích údajů). Tyto zašifrované přihlašovací údaje jsou bezpečně uložené v **Azure Storage spravuje služby Azure Data Factory pro**. Další informace o zabezpečení Azure Storage, najdete v části [Přehled zabezpečení služby Azure Storage](../../security/security-storage-overview.md).
 
 ### <a name="data-encryption-in-transit"></a>Šifrování dat při přenosu

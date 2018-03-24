@@ -1,11 +1,11 @@
 ---
-title: "Nastavení brány sítě VPN pro Azure připojení mezi různými místy | Microsoft Docs"
-description: "Další informace o nastavení brány sítě VPN pro brány virtuální sítě Azure."
+title: Nastavení brány sítě VPN pro Azure připojení mezi různými místy | Microsoft Docs
+description: Další informace o nastavení brány sítě VPN pro brány virtuální sítě Azure.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: 
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ae665bc5-0089-45d0-a0d5-bc0ab4e79899
 ms.service: vpn-gateway
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2018
+ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: e4f02e2b001b6821e732cead660aa0b758f1133e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: dfa116981cb0ce912ee83fade54f2502262178bc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>O nastavení konfigurace brány sítě VPN
 
@@ -28,7 +28,9 @@ Brána sítě VPN je typ brány virtuální sítě, které odesílá šifrovaný
 Připojení k bráně VPN závisí na konfiguraci více prostředků, z nichž každý obsahuje konfigurovat nastavení. Části v tomto článku popisují prostředky a nastavení, které se týkají brány VPN pro virtuální síti vytvořené v modelu nasazení Resource Manager. Můžete najít popisy a diagramy topologie pro každé připojení řešení v [o službě VPN Gateway](vpn-gateway-about-vpngateways.md) článku.
 
 >[!NOTE]
-> Hodnoty v tomto článku se týkají brány virtuální sítě, které použijte parametr-GatewayType 'Vpn'. To je důvod, proč jsou označovány jako brány sítě VPN. Hodnoty, které platí pro - GatewayType 'ExpressRoute, naleznete v části [brány virtuální sítě pro ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md). Hodnoty pro brány ExpressRoute nejsou stejné hodnoty, které používáte pro brány VPN.
+> Hodnoty v tomto článku se týkají brány virtuální sítě, které použijte parametr-GatewayType 'Vpn'. Z tohoto důvodu tyto brány konkrétní virtuální sítě se označují jako brány sítě VPN. Hodnoty pro brány ExpressRoute nejsou stejné hodnoty, které používáte pro brány VPN.
+>
+>Hodnoty, které platí pro - GatewayType 'ExpressRoute, naleznete v části [brány virtuální sítě pro ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md).
 >
 >
 
@@ -55,7 +57,7 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
-### <a name="configure-the-gateway-sku"></a>Konfigurace skladová položka brány
+### <a name="configure-a-gateway-sku"></a>Konfigurace brány SKU
 
 #### <a name="azure-portal"></a>Azure Portal
 
@@ -63,24 +65,35 @@ Pokud používáte portál Azure k vytvoření brány virtuální sítě Resourc
 
 #### <a name="powershell"></a>PowerShell
 
-Následující příklad PowerShell Určuje `-GatewaySku` jako VpnGw1.
+Následující příklad PowerShell Určuje `-GatewaySku` jako VpnGw1. Při vytváření brány pomocí prostředí PowerShell, budete muset nejdřív vytvořte konfiguraci protokolu IP a potom na ni odkazuje pomocí proměnné. V tomto příkladu je proměnná konfigurace $gwipconfig.
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
--Location 'West US' -IpConfigurations $gwipconfig -GatewaySku VpnGw1 `
+New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
+-Location 'US East' -IpConfigurations $gwipconfig -GatewaySku VpnGw1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-#### <a name="resize"></a>Změna (změny velikosti) skladová položka brány
+#### <a name="azure-cli"></a>Azure CLI
 
-Pokud chcete upgradovat bránu SKU výkonnější SKU, můžete použít `Resize-AzureRmVirtualNetworkGateway` rutiny prostředí PowerShell. Můžete také starší verzi brány velikost SKU použití této rutiny.
-
-Následující příklad PowerShell ukazuje změnu velikosti na VpnGw2 SKU brány.
-
-```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
-Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku VpnGw2
+```azurecli
+az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
 ```
+
+###  <a name="resizechange"></a>Změna velikosti oproti změna SKU
+
+Změna velikosti brány SKU je poměrně snadné. Jako brána změní, budete mít velmi malé výpadku. Existují však pravidel ohledně Změna velikosti:
+
+1. Můžete měnit velikost mezi VpnGw1, VpnGw2 a VpnGw3 SKU.
+2. Pokud používáte staré SKU brány, můžete měnit velikost mezi Basic, Standard a HighPerformance SKU.
+3. **Není možné** změnit velikost z Basic/Standard/HighPerformance SKU na nové VpnGw1/VpnGw2/VpnGw3 SKU. Místo toho musíte [změnit](#change) k nové SKU.
+
+#### <a name="resizegwsku"></a>Ke změně velikosti brány
+
+[!INCLUDE [Resize a SKU](../../includes/vpn-gateway-gwsku-resize-include.md)]
+
+####  <a name="change"></a>Chcete-li změnit z původní (starší) identifikátoru SKU pro nové SKU
+
+[!INCLUDE [Change a SKU](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
 ## <a name="connectiontype"></a>Typy připojení
 
@@ -150,7 +163,7 @@ New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 
 V některých případech budete muset změnit nastavení brány místní sítě. Například když přidáváte nebo odebíráte rozsah adres nebo pokud se IP adresa zařízení VPN změní. V tématu [upravit nastavení brány místní sítě pomocí prostředí PowerShell](vpn-gateway-modify-local-network-gateway.md).
 
-## <a name="resources"></a>Rutiny prostředí PowerShell a rozhraní REST API
+## <a name="resources"></a>REST API, rutiny prostředí PowerShell a rozhraní příkazového řádku
 
 Další zdroje technických informací a specifickou syntaxi požadavky při použití rozhraní REST API, rutiny prostředí PowerShell nebo rozhraní příkazového řádku Azure pro konfigurace brány sítě VPN najdete na následujících stránkách:
 

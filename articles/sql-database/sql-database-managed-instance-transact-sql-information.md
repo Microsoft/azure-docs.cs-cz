@@ -1,20 +1,20 @@
 ---
-title: "Databáze Azure SQL spravované Instance T-SQL rozdíly | Microsoft Docs"
-description: "Tento článek popisuje T-SQL rozdíly mezi spravované Instance serveru Azure SQL Database a SQL Server."
+title: Databáze Azure SQL spravované Instance T-SQL rozdíly | Microsoft Docs
+description: Tento článek popisuje T-SQL rozdíly mezi spravované Instance serveru Azure SQL Database a SQL Server.
 services: sql-database
 author: jovanpop-msft
 ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: bd8733590819faa3c4286c1940f0b9258842c930
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b633c3c4a4f476cb8e89afde8adeb94558643d4b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database spravované Instance T-SQL rozdíly v systému SQL Server 
 
@@ -393,7 +393,11 @@ Následující proměnné, funkce a zobrazení vrátí odlišné výsledky:
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Překročení prostoru úložiště s malou databází soubory
 
-Každá Instance spravované až 35 TB zarezervovala prostor úložiště, a všechny soubory databáze je původně umístěn na 128 GB úložiště alokační jednotky. Databáze s mnoho malých souborů může být umístěny na 128 GB jednotkách, které celkem překročila omezení 35 TB. V takovém případě nové databáze nelze vytvořit nebo obnovit, i když celková velikost všech databází nebylo dosaženo limitu velikosti instance. Chyba, která je vrácena v takovém případě nemusí být zrušte.
+Každá Instance spravované musel vyhrazená místa na disku Azure Premium storage 35 TB a každý databázový soubor je umístěn na jiném fyzickém disku. Velikosti disků může být 128 GB, 256 GB, 512 GB, 1 TB nebo 4 TB. Není účtován nevyužité místo na disku, ale celkového součtu velikostí disku Azure Premium nesmí být delší než 35 TB. V některých případech může překročit spravované Instnace, který není nutné 8 TB celkem 35 TB Azure limit velikost úložiště, z důvodu vnitřní fragmentace. 
+
+Například do spravované Instance může mít jeden soubor s velikostí 1.2 TB, který používá disk 4 TB a 248 soubory s 1 GB, každý, které jsou umístěny na 248 disky o velikosti 128 GB. V tomto příkladu je velikost úložiště disku celkem 1 x 4 TB + 248 × 128 GB = 35 TB. Celkový počet vyhrazenou instanci velikost databází je však 1 x 1.2 TB + 248 1 GB = 1,4 TB. To ukazuje, že za určitých okolností, z důvodu velmi konkrétní distribuční souborů, může do spravované Instance dosažení limit úložiště Azure Premium disku, kde nemusí být jeho. 
+
+Na existující databáze by se žádná chyba a můžou růst bez jakékoli potíže, pokud nejsou přidány nové soubory, ale nové databáze nelze vytvořit nebo obnovit, protože není dostatek místa pro nové diskové jednotky, i když celková velikost všech databází nedorazily t zadá instanci omezení velikosti. Chyba, která je vrácena v takovém případě není zrušte.
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Nesprávná konfigurace klíče SAS během databáze obnovení
 

@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření kanálů prediktivní dat pomocí Azure Data Factory | Microsoft Docs"
-description: "Zjistěte, jak vytvořit prediktivní kanál pomocí Azure Machine Learning - aktivita provedení dávky v Azure Data Factory."
+title: Vytvoření kanálů prediktivní dat pomocí Azure Data Factory | Microsoft Docs
+description: Zjistěte, jak vytvořit prediktivní kanál pomocí Azure Machine Learning - aktivita provedení dávky v Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: fa493a6d7b4cf775f64b87c1d5cc21ff4a138609
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: bd72fd957948e77df6ffb0b310c590132c663235
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytvořit prediktivní kanály pomocí Azure Machine Learning a Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -75,7 +75,7 @@ Azure Machine Learning podporuje Classic webové služby a nové webové služby
 
 ![Webové služby Azure Machine Learning](./media/transform-data-using-machine-learning/web-services.png)
 
-##<a name="azure-machine-learning-batch-execution-activity"></a>Aktivita služby Azure Machine Learning Batch Execution
+## <a name="azure-machine-learning-batch-execution-activity"></a>Aktivita služby Azure Machine Learning Batch Execution
 
 Následující fragment kódu JSON definuje Azure Machine Learning dávkového spuštění aktivity. Definici aktivity obsahuje odkaz na službu Azure Machine Learning propojené, kterou jste vytvořili dříve. 
 

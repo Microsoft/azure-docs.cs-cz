@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace modulu Runtime Azure SSIS integrace pro vysoký výkon | Microsoft Docs"
-description: "Zjistěte, jak konfigurovat vlastnosti Runtime integrace Azure SSIS pro vysoký výkon"
+title: Konfigurace modulu Runtime Azure SSIS integrace pro vysoký výkon | Microsoft Docs
+description: Zjistěte, jak konfigurovat vlastnosti Runtime integrace Azure SSIS pro vysoký výkon
 services: data-factory
 ms.date: 01/10/2018
 ms.topic: article
@@ -9,11 +9,11 @@ ms.workload: data-services
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 7d0e75ad85731b10f9a993c2fa62f30c0142ed05
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 3c19ebc601136653a88ca8d2a3073d897af863f9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace modulu Runtime Azure SSIS integrace pro vysoký výkon
 
@@ -24,7 +24,7 @@ Tento článek popisuje postup konfigurace služby Azure SSIS integrace modulu R
 
 ## <a name="properties-to-configure"></a>Vlastnosti konfigurace
 
-Následující část konfigurační skript zobrazuje vlastnosti, které můžete nakonfigurovat při vytváření modulu Runtime integrace Azure SSIS. Dokončení skriptu prostředí PowerShell a popis najdete v tématu [balíčky nasazení SQL Server Integration Services do Azure](tutorial-deploy-ssis-packages-azure.md).
+Následující část konfigurační skript zobrazuje vlastnosti, které můžete nakonfigurovat při vytváření modulu Runtime integrace Azure SSIS. Dokončení skriptu prostředí PowerShell a popis najdete v tématu [balíčky nasazení SQL Server Integration Services do Azure](tutorial-deploy-ssis-packages-azure-powershell.md).
 
 ```powershell
 $SubscriptionName = "<Azure subscription name>"

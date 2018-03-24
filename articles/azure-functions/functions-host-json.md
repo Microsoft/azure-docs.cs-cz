@@ -1,12 +1,12 @@
 ---
 title: Host.JSON odkazu pro Azure Functions
-description: "Referenční dokumentace pro soubor host.json Azure Functions."
+description: Referenční dokumentace pro soubor host.json Azure Functions.
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 6b5a8c81b1e3e45c85ea84a46054b6a38a886c5b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 577c45edc832288943a7eeefe27c7a189a61b7b0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Host.JSON odkazu pro Azure Functions
 
-*Host.json* soubor metadat obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce pro funkce aplikace. Tento článek obsahuje seznam nastavení, které jsou k dispozici. Schéma JSON je na http://json.schemastore.org/host.
+*Host.json* soubor metadat obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce pro funkce aplikace. Tento článek obsahuje seznam nastavení, které jsou k dispozici. Schéma JSON je v http://json.schemastore.org/host.
 
 Existují další možnosti globální konfigurace v [nastavení aplikace](functions-app-settings.md) a v [local.settings.json](functions-run-local.md#local-settings-file) souboru.
 
@@ -139,7 +139,7 @@ Ovládací prvky [vzorkování funkce ve službě Application Insights](function
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|isEnabled|nepravda|Povolí nebo zakáže vzorkování.| 
+|isEnabled|false (nepravda)|Povolí nebo zakáže vzorkování.| 
 |maxTelemetryItemsPerSecond|5|Prahová hodnota, na které vzorkování začne.| 
 
 ## <a name="eventhub"></a>eventHub
@@ -187,7 +187,7 @@ Nastavení konfigurace pro [monitorování stavu hostitele](https://github.com/A
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |povoleno|true (pravda)|Jestli je funkce zapnutá. | 
-|healthCheckInterval|10 sekund.|Kontroluje, časový interval mezi stavy pravidelných pozadí. | 
+|healthCheckInterval|10 sekund|Kontroluje, časový interval mezi stavy pravidelných pozadí. | 
 |healthCheckWindow|2 minuty|Posuvné okno čas používá ve spojení s `healthCheckThreshold` nastavení.| 
 |healthCheckThreshold|6|Maximální počet kontrolou stavu může selhat, než je zahájeno recyklaci hostitele.| 
 |counterThreshold|0.80|Prahová hodnota, na které čítač výkonu, který se bude zvažovat není v pořádku.| 
@@ -201,6 +201,9 @@ Nastavení konfigurace pro [http triggerů a vazeb](functions-bindings-http-webh
 ## <a name="id"></a>id
 
 Jedinečné ID pro úlohu hostitele. Mohou být malé písmeno GUID s pomlčkami odebrány. Při místním spuštění vyžaduje. Při spuštění v Azure Functions, je-li automaticky vygeneruje ID `id` je vynechán.
+
+Pokud účet úložiště můžete sdílet mezi více aplikacemi funkce, ujistěte se, že každá funkce aplikace má jiné `id`. Můžete vynechat `id` vlastnost nebo ručně nastavit každé funkce aplikace `id` na jinou hodnotu. Aktivační událost časovače používá úložiště zámek k zajištění, že bude pouze jedna instance časovače při aplikaci funkce horizontálně navýší kapacitu na více instancí. Pokud dvě funkce aplikace sdílet stejný `id` a každá používá aktivaci časovačem, bude spuštěna pouze jedna časovače.
+
 
 ```json
 {

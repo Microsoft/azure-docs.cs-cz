@@ -1,20 +1,20 @@
 ---
-title: "Seznámení s náklady na správu sestav v Azure náklady na správu | Microsoft Docs"
-description: "Tento článek vám pomůže pochopit Cloudyn náklady na správu sestav základní strukturu a funkce."
+title: Seznámení s náklady na správu sestav v Azure náklady na správu | Microsoft Docs
+description: Tento článek vám pomůže pochopit Cloudyn náklady na správu sestav základní strukturu a funkce.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/07/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
+ms.custom: ''
 ms.openlocfilehash: bc2c696dceb3ed4741c10a5c611bd2d438b71bd5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="understanding-cost-management-reports"></a>Principy náklady na správu sestav
 

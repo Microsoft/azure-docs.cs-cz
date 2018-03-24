@@ -1,24 +1,21 @@
 ---
 title: 'Azure Active Directory B2C: Konfigurace QQ | Microsoft Docs'
-description: "Zadejte registrace a přihlášení k příjemce s QQ účty v aplikacích, které jsou zabezpečené službou Azure Active Directory B2C."
+description: Zadejte registrace a přihlášení k příjemce s QQ účty v aplikacích, které jsou zabezpečené službou Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 18c2cf94-8004-4de1-81c2-e45be65ce12d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2017
-ms.author: parakhj
-ms.openlocfilehash: d4cc26d4f206baf9137feae0825b1f9fa5a7c8d6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 12daed5f90e2b073a7520c061f18761baaed5c03
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-qq-accounts"></a>Azure Active Directory B2C: Zadejte registrace a přihlášení k příjemce s QQ účty
 
@@ -28,12 +25,12 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="create-a-qq-application"></a>Vytvoření aplikace QQ
 
-Pokud chcete použít QQ jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci QQ a zadat se správné parametry. Potřebujete účet QQ k tomu. Pokud nemáte, můžete jej získat v [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033).
+Pokud chcete použít QQ jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci QQ a zadat se správné parametry. Potřebujete účet QQ k tomu. Pokud nemáte, můžete jej získat v [ https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033 ](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033).
 
 ### <a name="register-for-the-qq-developer-program"></a>Registrace pro QQ programu pro vývojáře
 
 1. Přejděte na [portál pro vývojáře QQ](http://open.qq.com) a přihlaste se pomocí přihlašovacích údajů účtu QQ.
-2. Po přihlášení, přejděte na [http://open.qq.com/reg](http://open.qq.com/reg) sami zaregistrovat jako vývojář.
+2. Po přihlášení, přejděte na [ http://open.qq.com/reg ](http://open.qq.com/reg) sami zaregistrovat jako vývojář.
 3. V nabídce vyberte**个人**(jednotlivé vývojáře).
 4. Zadejte požadované informace do formuláře a klikněte na tlačítko**下一步**(Další krok).
 5. Dokončete proces ověření e-mailu.
@@ -43,7 +40,7 @@ Pokud chcete použít QQ jako zprostředkovatele identity v Azure Active Directo
 
 ### <a name="register-a-qq-application"></a>Registrace aplikace QQ
 
-1. Přejděte na [https://connect.qq.com/index.html](https://connect.qq.com/index.html).
+1. Přejděte do [ (Nastavení)https://connect.qq.com/index.html](https://connect.qq.com/index.html) (Integrace a služby).
 2. Klikněte na**应用管理**(Správa aplikací).
 3. Klikněte na**创建应用**(vytvořit aplikaci).
 4. Zadejte informace potřebné aplikace.

@@ -1,8 +1,8 @@
 ---
-title: "Plánování nasazení synchronizace souboru Azure (preview) | Microsoft Docs"
-description: "Zjistěte, co je potřeba zvážit při plánování nasazení služby Azure Files."
+title: Plánování nasazení synchronizace souboru Azure (preview) | Microsoft Docs
+description: Zjistěte, co je potřeba zvážit při plánování nasazení služby Azure Files.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 5f42bee31e3bc1a23c9b0c6de9d6748e23c94713
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 097c1719ffc493539276cd98edc761eba20f3751
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Plánování nasazení synchronizace souboru Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -160,9 +160,14 @@ Synchronizace služby Azure souboru je k dispozici pouze v následujících obla
 |--------|---------------------|
 | Austrálie – východ | Nový Jižní Wales |
 | Střední Kanada | Toronto |
+| Střed USA | Iowa |
+| Východní Asie | Hongkong |
 | Východ USA | Virginie |
+| Východní US2 | Virginie |
+| Severní Evropa | Irsko |
 | Jihovýchodní Asie | Singapur |
 | Spojené království – jih | Londýn |
+| Cental západní USA |
 | Západní Evropa | Nizozemsko |
 | Západní USA | Kalifornie |
 

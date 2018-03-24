@@ -1,11 +1,11 @@
 ---
-title: "Datové typy pokyny - Azure SQL Data Warehouse | Microsoft Docs"
-description: "Doporučení k definování typů dat, které jsou kompatibilní s SQL Data Warehouse."
+title: Datové typy pokyny - Azure SQL Data Warehouse | Microsoft Docs
+description: Doporučení k definování typů dat, které jsou kompatibilní s SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
+editor: ''
 ms.assetid: d4a1f0a3-ba9f-44b9-95f6-16a4f30746d6
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 12/06/2017
+ms.date: 03/17/2018
 ms.author: barbkess
-ms.openlocfilehash: 2bde5da8593c559e2afb33c9c4842695dc273ac3
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: dcdcb6eddf35fe3ec4754353452c68cd3e24f907
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>Pokyny pro definování typů dat pro tabulky v SQL Data Warehouse
 Tato doporučení použijte k definování typů tabulek dat, které jsou kompatibilní s datovým skladem SQL. Kromě kompatibility minimalizovat velikost datových typů zlepšuje výkon dotazů.
@@ -55,21 +55,21 @@ Následující seznam obsahuje typy dat, že SQL Data Warehouse nepodporuje a al
 
 | Nepodporovaný datový typ. | Alternativní řešení |
 | --- | --- |
-| [geometrie][geometry] |[varbinary][varbinary] |
+| [Geometrie][geometry] |[varbinary][varbinary] |
 | [Geography][geography] |[varbinary][varbinary] |
-| [ID hierarchie][hierarchyid] |[nvarchar][nvarchar](4000) |
-| [bitové kopie][ntext,text,image] |[varbinary][varbinary] |
+| [hierarchyid][hierarchyid] |[nvarchar][nvarchar](4000) |
+| [image][ntext,text,image] |[varbinary][varbinary] |
 | [text][ntext,text,image] |[varchar][varchar] |
 | [ntext][ntext,text,image] |[nvarchar][nvarchar] |
-| [SQL_VARIANT][sql_variant] |Rozdělí sloupec do několika sloupců silného typu. |
+| [sql_variant][sql_variant] |Rozdělí sloupec do několika sloupců silného typu. |
 | [Tabulka][table] |Převeďte na dočasné tabulky. |
 | [časové razítko][timestamp] |Přepracování kódu pro použití [datetime2] [ datetime2] a `CURRENT_TIMESTAMP` funkce.  Jsou podporovány pouze konstanty jako výchozí, proto current_timestamp nelze definovat jako výchozí omezení. Pokud potřebujete migrovat hodnoty verze řádků z typu sloupec časového razítka, použijte [binární][BINARY](8) nebo [VARBINARY][BINARY](8) pro NOT NULL nebo Řádek verze hodnoty NULL. |
-| [XML][xml] |[varchar][varchar] |
+| [xml][xml] |[varchar][varchar] |
 | [uživatelsky definovaný typ.][user defined types] |Převeďte zpátky na nativní datový typ, pokud je to možné. |
 | výchozí hodnoty | Výchozí hodnoty podporují literály a pouze konstanty.  Nedeterministické výrazy nebo funkce, jako například `GETDATE()` nebo `CURRENT_TIMESTAMP`, nejsou podporovány. |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace naleznete v tématu:
 
 - [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices]

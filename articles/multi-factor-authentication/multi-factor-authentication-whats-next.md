@@ -1,8 +1,8 @@
 ---
 title: Konfigurace Azure Multi-Factor Authentication | Microsoft Docs
-description: "Tento článek popisuje postup konfigurace nastavení ověřování Azure Multi-Factor Authentication pro sestavy, upozornění na podvod, jednorázové přeskočení, vlastní hlasové zprávy, ukládání do mezipaměti, důvěryhodné IP adresy a hesla aplikací."
+description: Tento článek popisuje postup konfigurace nastavení ověřování Azure Multi-Factor Authentication pro sestavy, upozornění na podvod, jednorázové přeskočení, vlastní hlasové zprávy, ukládání do mezipaměti, důvěryhodné IP adresy a hesla aplikací.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 75af734e-4b12-40de-aba4-b68d91064ae8
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 4421b995e69e115fbb6c7379af79aaef537aed0d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: e2b6651f0d341567f1d02d0ca16b8f445e3d26f4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
 
-Tento článek pomáhá spravovat Azure Multi-Factor Authentication teď, když jste spuštěný a funkční. Vysvětluje různé témata, které umožňují využívat naplno Azure Multi-Factor Authentication. Ne všechny funkce jsou dostupné v každé [verzi Azure Multi-Factor Authentication](/multi-factor-authentication-get-started.md#what-features-do-i-need).
+Tento článek pomáhá spravovat Azure Multi-Factor Authentication teď, když jste spuštěný a funkční. Vysvětluje různé témata, které umožňují využívat naplno Azure Multi-Factor Authentication. Ne všechny funkce jsou dostupné v každé [verzi Azure Multi-Factor Authentication](multi-factor-authentication-get-started.md#what-features-do-i-need).
 
 | Funkce | Popis | 
 |:--- |:--- |
@@ -73,7 +73,7 @@ Konfigurace _upozornění na podvod_ funkci tak, aby vaši uživatelé mohou zas
 ### <a name="configuration-options"></a>Možnosti konfigurace
 
 - **Blokování uživatele při nahlášení podvodu**: Pokud uživatel sestavy podvod, jejich účet je blokován 90 dní nebo dokud správce odblokuje svého účtu. Správce může zkontrolovat přihlášení pomocí sestavy přihlášení a proveďte příslušné akce, aby se zabránilo budoucí podvodů. Správce pak může [Odblokovat](#unblock-a-user) uživatelského účtu.
-- **Kód pro nahlášení podvodu při úvodním pozdravu**: když uživatelé obdrží telefonní hovor provést dvoustupňové ověřování, se za normálních okolností stiskněte  **#**  potvrďte jejich přihlášení. Pro nahlášení podvodu uživatel zadá kód před stiskněte  **#** . Tento kód je **0** ve výchozím nastavení, ale můžete jej upravit.
+- **Kód pro nahlášení podvodu při úvodním pozdravu**: když uživatelé obdrží telefonní hovor provést dvoustupňové ověřování, se za normálních okolností stiskněte **#** potvrďte jejich přihlášení. Pro nahlášení podvodu uživatel zadá kód před stiskněte **#**. Tento kód je **0** ve výchozím nastavení, ale můžete jej upravit.
 
   >[!NOTE]
   >Výchozí hlasový pozdrav od Microsoftu vyzvat uživatele, aby stiskněte **0#** odeslat upozornění na možný podvod. Pokud chcete použít jiné než kód **0**, zaznamenejte a odeslat vlastní vlastní hlasový pozdrav příslušné pokyny pro uživatele.

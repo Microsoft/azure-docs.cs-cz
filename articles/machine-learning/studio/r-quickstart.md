@@ -1,11 +1,12 @@
 ---
-title: "Rychlý úvodní kurz pro jazyk R pro Machine Learning | Microsoft Docs"
-description: "Použijte tento kurz programovací R začít rychle vytvářet prognózy řešení pomocí jazyka R s Azure Machine Learning Studio."
-keywords: "Rychlý start, jazyk r, programovací jazyk r, programovací kurzu r"
+title: Rychlý úvodní kurz pro jazyk R pro Machine Learning | Microsoft Docs
+description: Použijte tento kurz programovací R začít rychle vytvářet prognózy řešení pomocí jazyka R s Azure Machine Learning Studio.
+keywords: Rychlý start, jazyk r, programovací jazyk r, programovací kurzu r
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.author: garye
-ms.openlocfilehash: 40cc3728d1361b9304896bf0cc4ceed439291d45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 231d505e91fc036b30344e2fd9971db8ba2fdf05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Stručný úvodní kurz k programovacímu jazyku R pro službu Azure Machine Learning
 
@@ -123,11 +123,11 @@ Pokud nerozumíte poslední řádek tohoto kódu v okamžiku, přečtěte si. Ve
 ### <a name="introduction-to-rstudio"></a>Úvod do Rstudia
 Rstudia je často používaný IDE pro R. Pro úpravy, testování a ladění některé kód R použité v této úvodní příručce použiji Rstudia. Jakmile kódu jazyka R otestované a připravené, jednoduše kopírování a vkládání z editoru Rstudia do nástroje Machine Learning Studio [spustit skript jazyka R] [ execute-r-script] modulu.  
 
-Pokud nemáte programovací jazyk R nainstalovaný na počítači klientů, doporučujeme, že udělejte to teď. Ke stažení zdarma jazyka R s otevřeným zdrojem jsou k dispozici na komplexní R archivu sítě (CRAN) v [http://www.r-project.org/](http://www.r-project.org/). Nejsou k dispozici pro Windows, Mac OS a Linux a UNIX stáhne. Zvolte blízkým zrcadlení a postupujte podle pokynů ke stažení. Kromě toho CRAN obsahuje širokou řadu užitečné balíčky manipulaci s analytickými funkcemi a data.
+Pokud nemáte programovací jazyk R nainstalovaný na počítači klientů, doporučujeme, že udělejte to teď. Ke stažení zdarma jazyka R s otevřeným zdrojem jsou k dispozici na komplexní R archivu sítě (CRAN) v [ http://www.r-project.org/ ](http://www.r-project.org/). Nejsou k dispozici pro Windows, Mac OS a Linux a UNIX stáhne. Zvolte blízkým zrcadlení a postupujte podle pokynů ke stažení. Kromě toho CRAN obsahuje širokou řadu užitečné balíčky manipulaci s analytickými funkcemi a data.
 
-Pokud jste ještě Rstudia, by měl stáhněte a nainstalujte verzi pro stolní počítače. Můžete najít, že že rstudia soubory ke stažení pro Windows, Mac OS a Linux a UNIX v http://www.rstudio.com/products/RStudio/. Postupujte podle pokynů k instalaci Rstudia na stolního počítače.  
+Pokud jste ještě Rstudia, by měl stáhněte a nainstalujte verzi pro stolní počítače. Můžete najít Rstudia soubory ke stažení pro Windows, Mac OS a Linux a UNIX v http://www.rstudio.com/products/RStudio/. Postupujte podle pokynů k instalaci Rstudia na stolního počítače.  
 
-Kurz Úvod do Rstudia je k dispozici na https://support.rstudio.com/hc/sections/200107586-Using-RStudio.
+Je k dispozici v kurzu Úvod do Rstudia https://support.rstudio.com/hc/sections/200107586-Using-RStudio.
 
 Poskytují I některé další informace o používání Rstudia v [příloha A][appendixa].  
 
@@ -306,7 +306,7 @@ Chcete-li zobrazit výstup R zařízení, klikněte na port a pak na **vizualizo
 
 ![Standardní výstupní zařízení a standardní chyba z portu R zařízení][8]
 
-*Na obrázku 7. Standardní výstupní zařízení a standardní chyba z portu R zařízení.*
+*Obrázek 7. Standardní výstupní zařízení a standardní chyba z portu R zařízení.*
 
 Posouvání dolů nemůžeme zobrazit výstup grafiky z našich skript jazyka R na obrázku 8.  
 
@@ -521,7 +521,7 @@ Pokud se podíváte na hodnoty v souhrnných informací o našem dataframe měli
 
 Pro náš model prognózy používáme multiplikativní model pro trendu a sezónní úpravu tato data. Transformace protokolu budeme tak moct používat model lineární ke zjednodušení tohoto procesu. Transformace protokolu ve stejné funkci, kdy se používá násobitel jsme můžete použít.
 
-V následujícím kódu I definovat novou funkci, `log.transform()`a použijte ho pro řádky obsahující číselné hodnoty. R `Map()` funkce se používá k aplikování `log.transform()` funkce na vybrané sloupce dataframe. `Map()`je podobná `apply()` , ale umožňuje více než jeden seznam argumentů funkce. Všimněte si, že poskytuje seznam multiplikátory druhý argument `log.transform()` funkce. `na.omit()` Funkce slouží jako kousek čištění k zajištění nemáme chybějící nebo nedefinované hodnoty dataframe.
+V následujícím kódu I definovat novou funkci, `log.transform()`a použijte ho pro řádky obsahující číselné hodnoty. R `Map()` funkce se používá k aplikování `log.transform()` funkce na vybrané sloupce dataframe. `Map()` je podobná `apply()` , ale umožňuje více než jeden seznam argumentů funkce. Všimněte si, že poskytuje seznam multiplikátory druhý argument `log.transform()` funkce. `na.omit()` Funkce slouží jako kousek čištění k zajištění nemáme chybějící nebo nedefinované hodnoty dataframe.
 
     log.transform <- function(invec, multiplier = 1) {
       ## Function for the transformation, which is the log
@@ -1213,15 +1213,15 @@ Rstudia je velmi dobře zdokumentovat, tak v tomto dodatku I zajistí některé 
 
 1. Vytváření projektů
    
-   Můžete uspořádat a spravovat váš kód R do projektů pomocí Rstudia. Dokumentace, která používá projekty lze najít na https://support.rstudio.com/hc/articles/200526207-Using-Projects.
+   Můžete uspořádat a spravovat váš kód R do projektů pomocí Rstudia. Dokumentace, která používá projekty najdete na https://support.rstudio.com/hc/articles/200526207-Using-Projects.
    
    Doporučujeme I postupujte podle těchto pokynů a vytvoření projektu pro R příklady kódu v tomto dokumentu.  
 2. Úpravy a spouštění kódu jazyka R
    
-   Rstudia poskytuje integrované prostředí pro úpravy a provádění kódu jazyka R. Dokumentace lze najít na https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code.
+   Rstudia poskytuje integrované prostředí pro úpravy a provádění kódu jazyka R. Dokumentace naleznete na https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code.
 3. Ladění
    
-   Rstudia zahrnuje výkonné možnosti ladění. Dokumentace pro tyto funkce jsou v https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio.
+   Rstudia zahrnuje výkonné možnosti ladění. Dokumentace pro tyto funkce je v https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio.
    
    Řešení potíží funkce zarážek jsou popsány v https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting.
 
@@ -1229,15 +1229,15 @@ Rstudia je velmi dobře zdokumentovat, tak v tomto dodatku I zajistí některé 
 V tomto kurzu programovací R popisuje základy toho, co je potřeba použít jazyk R s Azure Machine Learning Studio. Pokud nejste obeznámeni s R, jsou k dispozici na CRAN dva úvodní informace:
 
 * R pro začátečníky podle Emmanuel Paradis je vhodná pro spuštění na http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf.  
-* Úvod do R n. dokončeno Venables et. Al. Klient se přepne do trochu další hloubku, http://cran.r-project.org/doc/manuals/R-intro.html.
+* Úvod do R n. dokončeno Venables et. al. Klient se přepne do hloubky o něco víc, v http://cran.r-project.org/doc/manuals/R-intro.html.
 
 Neexistují mnoho knih na R, který můžete začít pracovat. Zde najdete několik, které užitečné:
 
 * Obrázky R programování: prohlídka z statistické softwaru návrh podle Norman Matloff je vynikající Úvod do programování v jazyce R.  
 * R kuchařka podle Paul Teetor poskytuje přístup problému a řešení pomocí R.  
-* R v akce Robert Kabacoff je další užitečné úvodní adresáře. Stránku rychlý R doprovodné je užitečné prostředek v http://www.statmethods.net/.
+* R v akce Robert Kabacoff je další užitečné úvodní adresáře. Stránku rychlý R doprovodné je užitečné prostředků v http://www.statmethods.net/.
 * R Inferno podle Patrik popáleniny je překvapivě vážný adresáře, která pracuje s počtem složité a obtížně témata, která může být zjistil při programování v jazyce R. Seznamu je k dispozici zdarma na http://www.burns-stat.com/documents/books/the-r-inferno/.
-* Pokud chcete podrobné informace do Pokročilá témata v R, podívejte se na seznam upřesnit R podle Hadley Wickham. Online verze této příručky je k dispozici zdarma http://adv-r.had.co.nz/.
+* Pokud chcete podrobné informace do Pokročilá témata v R, podívejte se na seznam upřesnit R podle Hadley Wickham. Online verze této příručky je k dispozici zdarma na http://adv-r.had.co.nz/.
 
 Katalog R časové řady balíčků naleznete v zobrazení úlohy CRAN pro analýzu časových řad: http://cran.r-project.org/web/views/TimeSeries.html. Informace o určité časové řady objektu balíčky by měl naleznete v dokumentaci pro tento balíček.
 
@@ -1245,8 +1245,8 @@ Příručka úvodní časové řady s R Paul Cowpertwait a Andrew Metcalfe obsah
 
 Některé skvělé prostředků z Internetu:
 
-* DataCamp: DataCamp učí R v pohodlí prohlížeč s video lekce a kódování cvičení. Existují interaktivní kurzy o nejnovější techniky R a balíčků. Přijmout volné Interaktivní kurz R na https://www.datacamp.com/courses/introduction-to-r
-* Průvodce Začínáme pracovat s R z Programiz https://www.programiz.com/r-programming
+* DataCamp: DataCamp učí R v pohodlí prohlížeč s video lekce a kódování cvičení. Existují interaktivní kurzy o nejnovější techniky R a balíčků. Trvat volné Interaktivní kurz R na https://www.datacamp.com/courses/introduction-to-r
+* Spuštění Průvodce Začínáme s R z Programiz https://www.programiz.com/r-programming
 * Rychlý kurz R podle Jan černé z Clarkson univerzity http://www.cyclismo.org/tutorial/R/
 * 60 + R prostředky uvedené v http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
 

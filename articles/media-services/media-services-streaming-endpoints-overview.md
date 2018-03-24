@@ -1,12 +1,12 @@
 ---
-title: "Přehled služby Azure Media Services streamování Endpoint | Microsoft Docs"
-description: "Toto téma nabízí přehled Azure Media Services koncové body streamování."
+title: Přehled služby Azure Media Services streamování Endpoint | Microsoft Docs
+description: Toto téma nabízí přehled Azure Media Services koncové body streamování.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 writer: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 097ab5e5-24e1-4e8e-b112-be74172c2701
 ms.service: media-services
 ms.workload: media
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 80d625a6ab2d3c6d5de0a90fbff0760888154d70
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: f923a2fb328ee62ce4dc73669fd922f275ba34a0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="streaming-endpoints-overview"></a>Přehled koncových bodů streamování 
 
-##<a name="overview"></a>Přehled
+## <a name="overview"></a>Přehled
 
 V Microsoft Azure Media Services (AMS) **koncový bod streamování** představuje streamování služba, která může poskytnout obsah přímo k aplikaci player klienta nebo do obsah Delivery Network (CDN) pro další distribuci. Služba Media Services také poskytuje bezproblémovou integraci Azure CDN. Výstupní datový proud z StreamingEndpoint služba může být živý datový proud, video na vyžádání nebo progresivní stahování asset ve vašem účtu Media Services. Každý účet Azure Media Services obsahuje výchozí StreamingEndpoint. V rámci účtu se dají vytvořit další koncové body streamování. Existují dvě verze koncové body streamování, 1.0 a 2.0. Od ledna 2017 10, budou všechny nově vytvořené účty AMS obsahovat verze 2.0 **výchozí** StreamingEndpoint. Další streamování koncové body, které přidáte k tomuto účtu budou i verze 2.0. Tato změna nemá vliv na existující účty; stávající koncové body streamování bude verze 1.0 a lze upgradovat na verzi 2.0. V této změně bude změny chování, fakturace a funkce (Další informace najdete v tématu **streamování typy a verze** části popsané dole).
 

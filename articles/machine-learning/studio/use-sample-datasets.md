@@ -1,10 +1,11 @@
 ---
-title: "Pomocí ukázkových datových sad v nástroji Machine Learning Studio | Microsoft Docs"
-description: "Popis datové sady použité v ukázkových modelů, které jsou zahrnuty v nástroji Machine Learning Studio. Pro experimentů můžete použít tyto ukázkových datových sad."
+title: Pomocí ukázkových datových sad v nástroji Machine Learning Studio | Microsoft Docs
+description: Popis datové sady použité v ukázkových modelů, které jsou zahrnuty v nástroji Machine Learning Studio. Pro experimentů můžete použít tyto ukázkových datových sad.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.author: garye
-ms.openlocfilehash: 3339d3b3bab2c0ce210950c178ef03fc6c0ecab9
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 38f31220b7cf4624367d872df152ef9e1304e841
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Použití vzorových datových sad v Azure Machine Learning Studiu
 [top]: #machine-learning-sample-datasets
@@ -47,7 +47,7 @@ Podmnožinu databázi roce 1994 za úplné zjišťování, pomocí pracovní dos
 <p></p>
 <b>Použití:</b> klasifikovat uživatelé, kteří používají demografie předpovědět, zda uživatel mírou více než 50 tisíc a roce.
 <p></p>
-<b>Související Research:</b> Kohavi, R., Becker B., (1996). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
+<b>Související Research:</b> Kohavi, R., Becker B., (1996). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
 </tr>
 
 <tr>
@@ -68,7 +68,7 @@ Rizikové skóre je původně přidružen cena automaticky. Toto pravidlo se upr
 <p></p>
 <b>Použití:</b> předpovědi skóre rizika podle funkcí, pomocí klasifikace regrese nebo multivariate. 
 <p></p>
-<b>Související Research:</b> Schlimmer, J.C. (1987). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
+<b>Související Research:</b> Schlimmer, J.C. (1987). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
 </tr>
 
 <tr>
@@ -99,9 +99,9 @@ Dárce data zahrnují měsíců od poslední odběru) a četnost nebo celkový p
 <p></p>
 <b>Použití:</b> cílem je k předvídání prostřednictvím klasifikace, zda dárce věnován krve v březnu 2007, kde 1 znamená dárce během období cíl a 0 bez dárce. 
 <p></p>
-<b>Související Research:</b> Já, systémem, (2008). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače
+<b>Související Research:</b> Já, systémem, (2008). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače
 <p></p>
-Já, I-vývoj: Cheng, Yang, král-Jang a si toho, jde Tao "zjišťování znalostní báze na modelu do režimu omezené Funkčnosti pomocí Bernoulliho pořadí" Expert systémy s aplikacemi, 2008, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
+Já, I-vývoj: Cheng, Yang, král-Jang a si toho, Tao-jde "znalostní báze zjišťování na modelu do režimu omezené Funkčnosti pomocí Bernoulliho pořadí,"Expert systémy s aplikacemi, 2008, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
 </tr>
 
@@ -112,7 +112,7 @@ Jeden ze tří související rakoviny datové sady poskytované Institute radiol
 <p></p>
 <b>Použití:</b> klasifikace typ rakoviny, na základě 9 atributů, z nichž některé jsou lineární a některé jsou kategorií. 
 <p></p>
-<b>Související Research:</b> Wohlberg, čísel, ulici, W.N. a Mangasarian, O.L. (1995). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
+<b>Související Research:</b> Wohlberg, čísel, ulici, W.N. a Mangasarian, O.L. (1995). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
 </tr>
 
 <tr>
@@ -165,7 +165,7 @@ Kolekce simulované energie profily založené na 12 jiné budovy tvarů. Budovy
 <p></p>
 <b>Použití:</b> použít k předpovědi energií hodnocení na základě jako jednu ze dvou skutečných hodnot odpovědí regrese nebo klasifikace. Pro více třída klasifikace se zaokrouhlí proměnnou odpovědi na nejbližší celé číslo. 
 <p></p>
-<b>Související Research:</b> Xifara A. & Tsanas A. (2012). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
+<b>Související Research:</b> Xifara A. & Tsanas A. (2012). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
 </tr>
 
 <tr>
@@ -190,7 +190,7 @@ Záznamy letadle letu doručení a odchylky v USA z října 2011.
 <p></p>
 <b>Použití:</b> předpovědi zpoždění letů. 
 <p></p>
-<b>Související Research:</b> z USA oddělení Transport <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>.
+<b>Související Research:</b> z USA oddělení Transport <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time"> http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time </a>.
   </td>
 </tr>
 
@@ -201,9 +201,9 @@ Obsahuje data, počasí, jako je například teploty a vlhkosti indexy a rychlos
 <p></p>
 <b>Použití:</b> Toto je úloha obtížné regrese, kde je cílem předpovídat oblasti vypáleném aktivuje se v doménové struktuře. 
 <p></p>
-<b>Související Research:</b> Cortez, P. & Morais A. (2008). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače
+<b>Související Research:</b> Cortez, P. & Morais A. (2008). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače
 <p></p>
-[Cortez a Morais 2007] P. Cortez a A. Morais. Na Data Mining přístup k předvídání lesních požárech pomocí meteorologických Data. V J. Neves, M. F. Santos a Edit.: J. Machado, nové trendy v umělé inteligence řízení 13. EPIA 2007 - portugalština konference o umělé Intelligence, prosinec, 523-Guimarães, Portugalsko s. 512, 2007. APPIA, ISBN-13 978-989-95618-0-9. K dispozici na: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>.
+[Cortez a Morais 2007] P. Cortez a A. Morais. Na Data Mining přístup k předvídání lesních požárech pomocí meteorologických Data. V J. Neves, M. F. Santos a Edit.: J. Machado, nové trendy v umělé inteligence řízení 13. EPIA 2007 - portugalština konference o umělé Intelligence, prosinec, 523-Guimarães, Portugalsko s. 512, 2007. APPIA, ISBN-13 978-989-95618-0-9. K dispozici na: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf"> http://www.dsi.uminho.pt/~pcortez/fires.pdf </a>.
   </td>
 </tr>
 
@@ -230,7 +230,7 @@ Toto je možná nejlepší známé databáze má být vyhledána v dokumentace r
 <p></p>
 <b>Použití:</b> předpovědi typu iris z měření.  
 <p></p>
-<b>Související Research:</b> Fisherovy R.A. (1988). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
+<b>Související Research:</b> Fisherovy R.A. (1988). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
 </tr>
 
 <tr>
@@ -249,7 +249,7 @@ Data jsou uvedené spotřeby paliva u různých automobilů v miles za spotřeby
 <p></p>
 <b>Použití:</b> předpovědi paliva na základě tří s více hodnotami diskrétních atributů a pět souvislé atributy. 
 <p></p>
-<b>Související Research:</b> StatLib, Carnegie TruSecure, (1993). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
+<b>Související Research:</b> StatLib, Carnegie TruSecure, (1993). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
 </tr>
 
 <tr>
@@ -259,7 +259,7 @@ Podmnožinu dat z National Institute Diabetes a trávícího a ledviny nákaz da
 <p></p>
 <b>Použití:</b> předpovědět, zda má předmět diabetes (binární klasifikace). 
 <p></p>
-<b>Související Research:</b> Sigillito, V. (1990). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml "</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
+<b>Související Research:</b> Sigillito, V. (1990). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml"</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače </td>
 </tr>
 
 <tr>
@@ -269,7 +269,7 @@ Sada metadata o zákazníků, včetně demografické údaje a předvolby.
 <p></p>
 <b>Použití:</b> použít tuto datovou sadu v kombinaci s další dva restaurace datové sady, a natrénuje a otestuje doporučené systému. 
 <p></p>
-<b>Související Research:</b> Bache, K. a Lichman, M. (2013). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače.
+<b>Související Research:</b> Bache, K. a Lichman, M. (2013). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače.
   </td>
 </tr>
 
@@ -280,7 +280,7 @@ Sada metadata o restaurace a jejich funkce, jako je například typ jídlo, nab�
 <p></p>
 <b>Použití:</b> použít tuto datovou sadu v kombinaci s další dva restaurace datové sady, a natrénuje a otestuje doporučené systému. 
 <p></p>
-<b>Související Research:</b> Bache, K. a Lichman, M. (2013). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače.
+<b>Související Research:</b> Bache, K. a Lichman, M. (2013). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače.
   </td>
 </tr>
 
@@ -291,7 +291,7 @@ Obsahuje hodnocení poskytují uživatelům restaurace na škále od 0 do 2.
 <p></p>
 <b>Použití:</b> použít tuto datovou sadu v kombinaci s další dva restaurace datové sady, a natrénuje a otestuje doporučené systému. 
 <p></p>
-<b>Související Research:</b> Bache, K. a Lichman, M. (2013). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače.
+<b>Související Research:</b> Bache, K. a Lichman, M. (2013). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače.
   </td>
 </tr>
 
@@ -304,9 +304,9 @@ Tato datová sada obsahuje řadu záznamy ze oceli žíhání zkušební verze. 
 <p></p>
 Ocelové tříd podle sady standard, definované SAE a jiných organizací. Hledáte konkrétní "třída" (třída proměnná) a chcete získat další informace potřebné hodnoty. 
 <p></p>
-<b>Související Research:</b> šterlinků, D. & Buntine, dokončeno (NA). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače
+<b>Související Research:</b> šterlinků, D. & Buntine, dokončeno (NA). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity kalifornské, školní informace a vědecké účely počítače
 <p></p>
-Užitečné Průvodce oceli tříd naleznete zde: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
+Užitečné Průvodce ocelovými tříd naleznete zde: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
@@ -325,7 +325,7 @@ Data byla předem zpracovaných vytvořit podlouhlého cluster s na dlouhém osy
 <p></p>
 Všimněte si také, že počet událostí na pozadí (pro hadronic sprchy h) je podceňována. V reálného měření představuje třídy h nebo šumu většiny událostí. 
 <p></p>
-<b>Související Research:</b> Bock, R.K. (1995). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, certifikační Autorita: Univerzity z kalifornské, školní informace </td>
+<b>Související Research:</b> Bock, R.K. (1995). UCI strojového učení úložiště <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, certifikační Autorita: Univerzity z kalifornské, školní informace </td>
 </tr>
 
 <tr>

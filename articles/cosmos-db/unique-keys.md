@@ -1,25 +1,25 @@
 ---
-title: "Jedinečné klíče v Azure Cosmos DB | Microsoft Docs"
-description: "Další informace o použití jedinečné klíče v databázi Azure Cosmos DB."
+title: Jedinečné klíče v Azure Cosmos DB | Microsoft Docs
+description: Další informace o použití jedinečné klíče v databázi Azure Cosmos DB.
 services: cosmos-db
-keywords: "jedinečné klíče omezení, porušení omezení jedinečnosti klíče"
+keywords: jedinečné klíče omezení, porušení omezení jedinečnosti klíče
 author: rafats
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: b15d5041-22dd-491e-a8d5-a3d18fa6517d
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 03/21/2018
 ms.author: rafats
-ms.openlocfilehash: c530b34edf9bfa0651b7b114dcf7e8add0d906ed
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 0c80ee13298c2c749c5f7eb7e55d1d77a8d6a34e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Jedinečné klíče v Azure Cosmos DB
 
@@ -58,7 +58,7 @@ Po vytvoření kontejneru zásadám jedinečné klíče nelze změnit zásady, p
 
 Maximálně 16 hodnotami cestu (například /firstName, /lastName, /address/zipCode atd.) můžou být součástí každého jedinečný klíč. 
 
-Každá zásada jedinečné klíče může mít maximálně 10 jedinečné omezení klíčů nebo kombinace. Proto nejprve název předchozího příkladu, který používá, příjmení, e-mailová adresa není právě jedno omezení a používá tři 16 možných cest k dispozici. 
+Každá zásada jedinečné klíče může mít maximálně 10 jedinečné omezení klíčů nebo kombinace a kombinované cesty pro všechny vlastnosti jedinečný index nesmí být delší než 60 znaků. Proto nejprve název předchozího příkladu, který používá, příjmení, e-mailová adresa není právě jedno omezení a používá tři 16 možných cest k dispozici. 
 
 Žádosti o jednotky poplatky za vytváření, aktualizaci, odstranění položky jsou mírně zvýší, když je jedinečné klíče zásady v kontejneru. 
 
@@ -133,7 +133,7 @@ Následující ukázkový příkaz ukazuje, jak vytvořit jedinečný index na j
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste zjistili, jak vytvořit jedinečné klíče pro položky v databázi. Pokud chcete vytvořit kontejner poprvé, přečtěte si [segmentace dat v Azure Cosmos DB](partition-data.md) jako jedinečné klíče a klíče oddílů závisí na sobě navzájem. 
 

@@ -1,6 +1,6 @@
 ---
-title: "Nakonfigurujte příchozí s clusterem Azure Container Service (AKS)"
-description: "Nainstalujte a nakonfigurujte řadič NGINX příjem příchozích dat na clusteru Azure Container Service (AKS)."
+title: Nakonfigurujte příchozí s clusterem Azure Container Service (AKS)
+description: Nainstalujte a nakonfigurujte řadič NGINX příjem příchozích dat na clusteru Azure Container Service (AKS).
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 908910b44a9de28f184906dd4e904e651fe034ce
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4294169e89533150cade700fb89e14c4121c4404
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Příchozí přenos HTTPS na Azure Container Service (AKS)
 
@@ -31,21 +31,20 @@ Aktualizujte graf úložiště.
 helm repo update
 ```
 
-Nainstalujte řadiče příjem příchozích dat NGINX.
+Nainstalujte řadiče příjem příchozích dat NGINX. Tento příklad nainstaluje řadič v `kube-system` obor názvů, lze upravit k oboru názvů podle svého výběru.
 
 ```
-helm install stable/nginx-ingress
+helm install stable/nginx-ingress --namespace kube-system
 ```
 
 Během instalace se vytvoří Azure veřejnou IP adresu pro příjem příchozích dat řadič. Chcete-li získat veřejnou IP adresu, použijte příkaz kubectl get service. Může trvat nějakou dobu IP adresu pro přiřazení ke službě.
 
 ```console
-$ kubectl get service
+$ kubectl get service -l app=nginx-ingress --namespace kube-system
 
-NAME                                          TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                      AGE
-kubernetes                                    ClusterIP      10.0.0.1       <none>           443/TCP                      3d
-toned-spaniel-nginx-ingress-controller        LoadBalancer   10.0.236.223   52.224.125.195   80:30927/TCP,443:31144/TCP   18m
-toned-spaniel-nginx-ingress-default-backend   ClusterIP      10.0.5.86      <none>           80/TCP                       18m
+NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)                      AGE
+eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   13.82.238.45   80:30920/TCP,443:30426/TCP   20m
+eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>         80/TCP                       20m
 ```
 
 Protože žádná pravidla příjem příchozích dat byly vytvořeny, pokud přejdete na veřejnou IP adresu, jsou směrovány na NGINX příjem příchozích dat řadiče výchozí 404 stránku.

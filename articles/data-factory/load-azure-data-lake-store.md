@@ -1,21 +1,21 @@
 ---
-title: "Načtení dat do Azure Data Lake Store pomocí Azure Data Factory | Microsoft Docs"
-description: "Použití Azure Data Factory ke zkopírování dat do Azure Data Lake Store"
+title: Načtení dat do Azure Data Lake Store pomocí Azure Data Factory | Microsoft Docs
+description: Použití Azure Data Factory ke zkopírování dat do Azure Data Lake Store
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 4446f83563293d0834f241dcca382ccf6ea99403
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: bf0d607d63a68a222a1d44d9cb05253497d12591
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="load-data-into-azure-data-lake-store-by-using-azure-data-factory"></a>Načtení dat do Azure Data Lake Store pomocí Azure Data Factory
 
@@ -47,12 +47,12 @@ Tento článek ukazuje, jak používat nástroj Data Factory kopírovat Data k _
 
 1. V nabídce vlevo vyberte **nový** > **Data + analýzy** > **Data Factory**:
    
-   ![Vytvořit nový objekt pro vytváření dat](./media/load-data-into-azure-data-lake-store/new-azure-data-factory-menu.png)
+   ![Vytvoření nové datové továrny](./media/load-data-into-azure-data-lake-store/new-azure-data-factory-menu.png)
 2. V **nový objekt pro vytváření dat** stránky, zadejte hodnoty pro pole, která jsou zobrazená na následujícím obrázku: 
       
    ![Stránka Nová datová továrna](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
-    * **Název**: Zadejte globálně jedinečný název objektu pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadADLSDemo\" není k dispozici," Zadejte jiný název služby data Factory. Například můžete použít název  _**jméno**_**ADFTutorialDataFactory**. Zkuste vytvořit objekt pro vytváření dat znovu. Pravidla pojmenování artefaktů služby Data Factory, najdete v části [pravidla pojmenování Data Factory](naming-rules.md).
+    * **Název**: Zadejte globálně jedinečný název objektu pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadADLSDemo\" není k dispozici," Zadejte jiný název služby data Factory. Například můžete použít název  _**jméno**_**ADFTutorialDataFactory**. Zkuste vytvořit objekt pro vytváření dat znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: Vyberte předplatné Azure, ve kterém se má vytvořit datová továrna. 
     * **Skupina prostředků**: Vyberte existující skupinu prostředků z rozevíracího seznamu, nebo **vytvořit nový** možnost a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
     * **Verze**: vyberte **V2 (Preview)**.
@@ -120,7 +120,7 @@ Tento článek ukazuje, jak používat nástroj Data Factory kopírovat Data k _
 13. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. **Akce** sloupec obsahuje odkazy, chcete-li zobrazit podrobnosti o spuštění aktivity a znovu spusťte kanál:
 
     ![Monitorování spuštění kanálu](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-14. Chcete-li zobrazit běh aktivit, které jsou spojené s kanálu spustit, vyberte **zobrazení aktivity spouští** odkaz v **akce** sloupce. Není pouze jednu aktivitu (aktivita kopírování) v kanálu, takže se zobrazí pouze jedna položka. Chcete-li přepnout zpět do kanálu spustí zobrazení, vyberte **kanály** odkaz v horní části. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**. 
+14. Chcete-li zobrazit běh aktivit, které jsou spojené s kanálu spustit, vyberte **zobrazení aktivity spouští** odkaz v **akce** sloupce. Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Chcete-li přepnout zpět do kanálu spustí zobrazení, vyberte **kanály** odkaz v horní části. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**. 
 
     ![Monitorování spuštění aktivit](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 

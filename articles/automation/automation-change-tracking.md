@@ -1,6 +1,6 @@
 ---
-title: "Sledování změn s Azure Automation."
-description: "Sledování změn řešení pomáhá identifikovat software a služby systému Windows změny ve vašem prostředí."
+title: Sledování změn s Azure Automation.
+description: Sledování změn řešení pomáhá identifikovat software a služby systému Windows změny ve vašem prostředí.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,14 +8,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06034a87d6015a057c01c2bc87ae4db9fba1269a
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 91a093a44106ad861449b6defb140532698fa668
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledovat změny v prostředí s řešením sledování změn
 

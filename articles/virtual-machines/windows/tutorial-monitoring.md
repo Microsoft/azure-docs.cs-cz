@@ -1,26 +1,26 @@
 ---
-title: "Azure monitorování a aktualizace a virtuální počítače s Windows | Microsoft Docs"
-description: "Kurz – monitorovat a aktualizovat virtuální počítač Windows v prostředí Azure PowerShell"
+title: Azure monitorování a aktualizace a virtuální počítače s Windows | Microsoft Docs
+description: Kurz – monitorovat a aktualizovat virtuální počítač Windows v prostředí Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: davidmu1
-manager: timlt
-editor: tysonn
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/04/2017
-ms.author: davidmu
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a37aed8b3321d3518ffd73e09f5bb21266a7e577
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94151008f0aba6020786e65c60cec66285f310c4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Monitorovat a aktualizovat virtuální počítač s Windows v prostředí Azure PowerShell
 
@@ -33,14 +33,14 @@ V tomto kurzu se naučíte:
 > * Zobrazení diagnostiky spouštění
 > * Zobrazit metriky hostitele virtuálního počítače
 > * Instalace rozšíření diagnostiky
-> * Zobrazit metriky virtuálního počítače
+> * Zobrazení metrik virtuálního počítače
 > * Vytvořit výstrahu
 > * Správa aktualizací Windows
-> * Nastavit pokročilé monitorování
+> * Nastavení pokročilého monitorování
 
 Tento kurz vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
-Pokud chcete provést v příkladu v tomto kurzu, musí mít existující virtuální počítač. V případě potřeby to [ukázka skriptu](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) můžete vytvořit za vás. Při práci se prostřednictvím tohoto kurzu je nahradit skupinu prostředků, název virtuálního počítače a umístění tam, kde je potřeba.
+K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač. V případě potřeby si ho můžete nechat vytvořit pomocí tohoto [ukázkového skriptu](../scripts/virtual-machines-windows-powershell-sample-create-vm.md). Při práci se prostřednictvím tohoto kurzu je nahradit skupinu prostředků, název virtuálního počítače a umístění tam, kde je potřeba.
 
 ## <a name="view-boot-diagnostics"></a>Zobrazení diagnostiky spouštění
 
@@ -52,100 +52,100 @@ Můžete získat spouštění diagnostiky dat pomocí [Get-AzureRmVMBootDiagnost
 Get-AzureRmVMBootDiagnosticsData -ResourceGroupName myResourceGroup -Name myVM -Windows -LocalPath "c:\"
 ```
 
-## <a name="view-host-metrics"></a>Zobrazit hostitele metriky
+## <a name="view-host-metrics"></a>Zobrazení metrik hostitele
 
 Virtuální počítač s Windows má vyhrazený virtuální počítač hostitele v Azure, který komunikuje se službou. Metriky jsou automaticky shromažďovat pro hostitele a lze je zobrazit na portálu Azure.
 
-1. Na portálu Azure klikněte na tlačítko **skupiny prostředků**, vyberte **myResourceGroup**a potom vyberte **Můjvp** v seznamu prostředků.
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroup** a potom v seznamu prostředků vyberte **myVM**.
 2. Klikněte na tlačítko **metriky** v okně virtuálního počítače a potom vyberte některé z metriky hostitele pod **dostupné metriky** zobrazíte, jaký je výkon hostitele virtuálního počítače.
 
-    ![Zobrazit hostitele metriky](./media/tutorial-monitoring/tutorial-monitor-host-metrics.png)
+    ![Zobrazení metrik hostitele](./media/tutorial-monitoring/tutorial-monitor-host-metrics.png)
 
-## <a name="install-diagnostics-extension"></a>Instalace rozšíření diagnostiky
+## <a name="install-diagnostics-extension"></a>Instalace diagnostického rozšíření
 
-Metriky základní hostitele jsou dostupné, ale podrobnější a metriky specifické pro virtuální počítač, budete muset nainstalovat rozšíření diagnostiky Azure ve virtuálním počítači. Rozšíření diagnostiky Azure umožňuje další funkce monitorování a diagnostická data mají být načteny z virtuálního počítače. Můžete zobrazit tyto metriky výkonu a vytvářet výstrahy založené na tom, jak se provádí virtuálního počítače. Diagnostické rozšíření nainstalovaný prostřednictvím portálu Azure následujícím způsobem:
+Metriky základní hostitele jsou dostupné, ale podrobnější a metriky specifické pro virtuální počítač, budete muset nainstalovat rozšíření diagnostiky Azure ve virtuálním počítači. Diagnostické rozšíření Azure umožňuje načítání dalších monitorovacích a diagnostických dat z virtuálního počítače. Tyto metriky výkonu můžete zobrazit a vytvářet výstrahy na základě výkonnosti virtuálního počítače. Diagnostické rozšíření se instaluje prostřednictvím portálu Azure Portal následujícím způsobem:
 
-1. Na portálu Azure klikněte na tlačítko **skupiny prostředků**, vyberte **myResourceGroup**a potom vyberte **Můjvp** v seznamu prostředků.
-2. Klikněte na tlačítko **diagnostiku nastavení**. V seznamu uvedena, který *spouštění diagnostiky* jsou již povolené z předchozí části. Klikněte na zaškrtávací políčko pro *základní metriky*.
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroup** a potom v seznamu prostředků vyberte **myVM**.
+2. Klikněte na **Nastavení diagnostiky**. V seznamu je vidět, že *Diagnostika spouštění* je již povolená z předchozí části. Zaškrtněte políčko *Základní metriky*.
 3. Klikněte **povolit sledování na úrovni hosta** tlačítko.
 
-    ![Zobrazit diagnostické metriky](./media/tutorial-monitoring/enable-diagnostics-extension.png)
+    ![Zobrazení diagnostických metrik](./media/tutorial-monitoring/enable-diagnostics-extension.png)
 
-## <a name="view-vm-metrics"></a>Zobrazit metriky virtuálního počítače
+## <a name="view-vm-metrics"></a>Zobrazení metrik virtuálního počítače
 
-Metriky virtuálního počítače lze zobrazit stejným způsobem, že jste si zobrazili hostitele metriky virtuálního počítače:
+Metriky virtuálního počítače lze zobrazit stejným způsobem jako metriky virtuálního počítače hostitele:
 
-1. Na portálu Azure klikněte na tlačítko **skupiny prostředků**, vyberte **myResourceGroup**a potom vyberte **Můjvp** v seznamu prostředků.
-2. Chcete-li zjistit, jaký je výkon virtuálního počítače, klikněte na tlačítko **metriky** v okně virtuálního počítače a potom vyberte některé z metriky diagnostiky v části **dostupné metriky**.
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroup** a potom v seznamu prostředků vyberte **myVM**.
+2. Pokud chcete zjistit, jaký je výkon virtuálního počítače, klikněte na tlačítko **Metriky** v okně virtuálního počítače a pak vyberte některou z diagnostických metrik v části **Dostupné metriky**.
 
-    ![Zobrazit metriky virtuálního počítače](./media/tutorial-monitoring/monitor-vm-metrics.png)
+    ![Zobrazení metrik virtuálního počítače](./media/tutorial-monitoring/monitor-vm-metrics.png)
 
 ## <a name="create-alerts"></a>Vytváření upozornění
 
-Můžete vytvořit na základě metriky výkonu specifických výstrah. Výstrahy lze oznámí, že jste při průměrné využití procesoru překračuje prahovou hodnotu nebo volné místo na disku klesne pod určitou částku, například. Výstrahy jsou zobrazeny v portálu Azure nebo lze odeslat e-mailem. Runbooky služby automatizace Azure nebo Azure Logic Apps můžete také aktivovat v reakci na výstrahy generován.
+Na základě konkrétních metrik výkonu můžete vytvořit výstrahy. Výstrahy lze například použít k upozornění, že průměrné využití procesoru překračuje prahovou hodnotu nebo že volné místo na disku kleslo pod určitou velikost. Výstrahy ze zobrazují v portálu Azure Portal nebo je lze odeslat e-mailem. V reakci na vygenerované výstrahy můžete také aktivovat runbooky Azure Automation nebo Azure Logic Apps.
 
-Následující příklad vytvoří výstrahu při průměrné využití procesoru.
+Následující příklad vytvoří výstrahu týkající se průměrného využití procesoru.
 
-1. Na portálu Azure klikněte na tlačítko **skupiny prostředků**, vyberte **myResourceGroup**a potom vyberte **Můjvp** v seznamu prostředků.
-2. Klikněte na tlačítko **výstrah pravidla** v okně virtuálního počítače klikněte **přidat metriky upozornění** v horní části okna výstrahy.
-4. Zadejte **název** výstrahy, jako například *myAlertRule*
-5. Spustí výstrahu, pokud procento využití procesoru překročí 1.0 pět minut, ponechte všechny ostatní výchozí nastavení vybrané.
-6. Volitelně můžete zaškrtnout políčko pro *e-mailu vlastníci, přispěvatelé a čtenáři* k odesílání e-mailové oznámení. Výchozí akce je k dispozici oznámení na portálu.
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroup** a potom v seznamu prostředků vyberte **myVM**.
+2. Klikněte na tlačítko **Pravidla výstrah** v okně virtuálního počítače a potom na **Přidat upozornění metriky** v horní části okna výstrahy.
+4. Zadejte **Název** výstrahy, například *mojePravidloVystrahy*.
+5. Pokud chcete spustit výstrahu, pokud procento využití procesoru překročí hodnotu 1,0 po dobu pěti minut, ponechte výchozí výběr všech ostatních nastavení.
+6. Volitelně můžete zaškrtnutím políčka *Vlastníci, přispěvatelé a čtenáři e-mailů* odesílat oznámení e-mailem. Výchozí akce je zobrazení oznámení na portálu.
 7. Klikněte na tlačítko **OK**.
 
 ## <a name="manage-windows-updates"></a>Správa aktualizací Windows
 
 Správa aktualizací můžete spravovat aktualizace a opravy pro virtuální počítače Windows Azure.
-Přímo z virtuálního počítače, můžete rychle vyhodnotit stav dostupné aktualizace, naplánovat instalaci požadovaných aktualizací a zkontrolovat výsledky nasazení k ověření, že bylo úspěšně nasazení aktualizací do virtuálního počítače.
+Přímo z virtuálního počítače můžete rychle vyhodnotit stav dostupných aktualizací, naplánovat instalaci požadovaných aktualizací a zkontrolovat výsledky nasazení za účelem ověření správného použití aktualizací ve virtuálních počítačích.
 
-Informace o cenách naleznete v tématu [ceny automatizace správy aktualizací](https://azure.microsoft.com/pricing/details/automation/)
+Informace o cenách najdete na stránce s [cenami služby Automation za správu aktualizací](https://azure.microsoft.com/pricing/details/automation/).
 
-### <a name="enable-update-management"></a>Povolení správy aktualizací
+### <a name="enable-update-management"></a>Povolení řešení Update Management
 
 Povolení správy aktualizací pro virtuální počítač:
  
-1. Na levé straně obrazovky vyberte **virtuální počítače**.
+1. Na levé straně obrazovky vyberte **Virtuální počítače**.
 2. V seznamu vyberte virtuální počítač.
-3. Na obrazovce virtuálních počítačů v **operace** klikněte na tlačítko **Správa aktualizací**. **Povolit správu aktualizace** obrazovky otevře.
+3. Na obrazovce virtuálního počítače v části **Operace** klikněte na **Update Management**. Otevře se obrazovka **Povolit řešení Update Management**.
 
-Chcete-li zjistit, zda je povoleno správy aktualizací pro tento virtuální počítač se provádí ověřování. Ověření zahrnuje kontroly pro pracovní prostor analýzy protokolů a propojené účet Automation, a pokud řešení v pracovním prostoru.
+Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management. Toto ověření zahrnuje kontroly pracovního prostoru Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení nachází v tomto pracovním prostoru.
 
-Pracovní prostor analýzy protokolů se používá ke shromažďování dat, které se generují ve funkcích a službách, například správu aktualizací. Pracovní prostor poskytuje jedno umístění ke kontrole a analyzovat data z více zdrojů. K provedení další akce na virtuálních počítačích, které vyžadují aktualizace, Azure Automation umožňuje spouštět skripty u virtuálních počítačů, například ke stažení a použití aktualizací.
+Pracovní prostor Log Analytics slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Update Management. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě. Pokud chcete na virtuálních počítačích, které vyžadují aktualizace, provádět další akce, umožňuje Azure Automation spouštět ve virtuálních počítačích skripty, například ke stažení a použití aktualizací.
 
-Proces ověření také zkontroluje, pokud je virtuální počítač opatřen Microsoft Monitoring Agent (MMA) a hybridní pracovní proces. Tento agent se používá ke komunikaci s virtuálním Počítačem a získat informace o stavu aktualizace. 
+Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agentem Microsoft Monitoring Agent (MMA) a procesem hybrid worker. Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru. 
 
-Pokud nejsou splněny tyto požadavky, zobrazí se banner, která vám dává možnost povolit řešení.
+Pokud se nesplní tyto požadavky, zobrazí se banner nabízející možnost povolit dané řešení.
 
-![Aktualizovat banner zařadit configuration Management](./media/tutorial-monitoring/manageupdates-onboard-solution-banner.png)
+![Banner konfigurace připojení k řešení Update Management](./media/tutorial-monitoring/manageupdates-onboard-solution-banner.png)
 
-Kliknutím na banner řešení povolte. Pokud některý z těchto předpokladů byl zjištěn chybět po ověření, budou automaticky přidány:
+Kliknutím na banner řešení povolte. Pokud po ověření chyběla některá z následujících požadovaných součástí, automaticky se přidá:
 
-* [Analýza protokolu](../../log-analytics/log-analytics-overview.md) prostoru
+* Pracovní prostor [Log Analytics](../../log-analytics/log-analytics-overview.md)
 * [Automation](../../automation/automation-offering-get-started.md)
-* A [hybridní pracovní proces runbooku](../../automation/automation-hybrid-runbook-worker.md) je povoleno na virtuálním počítači
+* Povolený [hybridní pracovní proces runbooku](../../automation/automation-hybrid-runbook-worker.md) na virtuálním počítači
 
-**Povolit správu aktualizace** obrazovky otevře. Nakonfigurujte nastavení a klikněte na tlačítko **povolit**.
+Otevře se obrazovka **Povolit řešení Update Management**. Nakonfigurujte nastavení a klikněte na tlačítko **Povolit**.
 
-![Povolit řešení pro správu aktualizací](./media/tutorial-monitoring/manageupdates-update-enable.png)
+![Povolení řešení Update Management](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
-Povolení řešení může trvat až 15 minut a během této doby by neměl zavřete okno prohlížeče. Po povolení řešení informace o chybějící aktualizace ve virtuálním počítači jsou k analýze protokolů.
-Může trvat až 30 minut, 6 hodin pro data, která mají být k dispozici pro analýzu.
+Povolení řešení může trvat až 15 minut a během této doby byste neměli zavírat okno prohlížeče. Po povolení řešení začnou do Log Analytics proudit informace o chybějících aktualizacích na virtuálních počítačích.
+Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 ### <a name="view-update-assessment"></a>Zobrazení posouzení aktualizací
 
 Po povolení **správy aktualizací** se zobrazí obrazovka **Správa aktualizací**. Na kartě **Chybějící aktualizace** můžete zobrazit seznam chybějících aktualizací.
 
- ![Stav aktualizace zobrazení](./media/tutorial-monitoring/manageupdates-view-status-win.png)
+ ![Zobrazení stavu aktualizace](./media/tutorial-monitoring/manageupdates-view-status-win.png)
 
 ### <a name="schedule-an-update-deployment"></a>Naplánování nasazení aktualizace
 
 Pokud chcete nainstalovat aktualizace, naplánujte nasazení odpovídající vašemu plánu vydávání a časovému intervalu pro správu a údržbu.
-Můžete zvolit typy aktualizací, které budou součástí nasazení. Například můžete zahrnout kritické nebo aktualizace zabezpečení a vyloučení kumulativní aktualizace.
+Můžete zvolit typy aktualizací, které budou součástí nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
 
-Naplánovat nové nasazení aktualizace pro virtuální počítač kliknutím **nasazení aktualizace plánu** v horní části **Správa aktualizací** obrazovky. V **nové nasazení aktualizace** obrazovky, zadejte následující informace:
+Naplánujte nové nasazení aktualizací pro virtuální počítač kliknutím na **Naplánovat nasazení aktualizace** v horní části obrazovky **Update Management**. Na obrazovce **Nové nasazení aktualizací** zadejte následující informace :
 
 * **Název** – Zadejte jedinečný název pro identifikaci nasazení aktualizací.
-* **Klasifikace aktualizací** -vyberte typy softwaru, nasazení aktualizace, které jsou zahrnuty do nasazení. Typy klasifikace jsou:
+* **Klasifikace aktualizací** – Vyberte typy softwaru, které se zahrnou do nasazení aktualizací. Typy klasifikace jsou:
   * Důležité aktualizace
   * Aktualizace zabezpečení
   * Kumulativní aktualizace
@@ -163,7 +163,7 @@ Naplánovat nové nasazení aktualizace pro virtuální počítač kliknutím **
 * **Časové období údržby (minuty)** – Zadejte časové období, ve kterém má dojít k nasazení aktualizací.  Pomůžete tím zajistit, že se změny provedou v rámci vašich definovaných časových intervalů pro správu a údržbu.
 
 Jakmile dokončíte konfiguraci plánu, klikněte na tlačítko **Vytvořit** a vrátíte se na řídicí panel stavu.
-Všimněte si, že **naplánovaná** tabulka ukazuje plán nasazení jste vytvořili.
+Všimněte si, že v tabulce **Naplánované** se zobrazí plán nasazení, který jste vytvořili.
 
 > [!WARNING]
 > Aktualizace, které vyžadují restartování je virtuální počítač automaticky restartuje.
@@ -175,26 +175,26 @@ Pokud je nasazení aktuálně spuštěno, jeho stav je **Probíhající**. Po ú
 Pokud u jedné nebo více aktualizací v nasazení dojde k chybě, stav je **Částečné selhání**.
 Kliknutím na dokončené nasazení aktualizací zobrazíte řídicí panel pro toto nasazení aktualizací.
 
-   ![Řídicí panel stavu nasazení aktualizací pro konkrétní nasazení](./media/tutorial-monitoring/manageupdates-view-results.png)
+   ![Řídicí panel stavu nasazování aktualizací pro konkrétní nasazení](./media/tutorial-monitoring/manageupdates-view-results.png)
 
-V **aktualizaci výsledků** dlaždice je uveden seznam celkový počet aktualizací a výsledky nasazení do virtuálního počítače.
+Na dlaždici **Výsledky aktualizací** je souhrn celkového počtu aktualizací a výsledků nasazení na virtuálním počítači.
 V tabulce vpravo je podrobný rozpis všech aktualizací a výsledků instalace, které můžou mít jednu z následujících hodnot:
 
-* **Nebyl proveden pokus o** -aktualizace nenainstalovala, protože došlo k dispozici dostatečná doba podle doba trvání okna údržby definované.
-* **Úspěšné** -aktualizace byla úspěšná
-* **Se nezdařilo** -aktualizace se nezdařila
+* **Nebyl proveden pokus** – aktualizace se nenainstalovala, protože podle definovaného trvání časového období údržby nebylo k dispozici dostatek času.
+* **Úspěch** – Aktualizace byla úspěšná.
+* **Neúspěch** – Aktualizace se nezdařila.
 
 Kliknutím na **Všechny protokoly** zobrazíte všechny položky protokolu, které toto nasazení vytvořilo.
 
-Klikněte **výstup** dlaždice zobrazíte stream úloh sady runbook zodpovědní za správu nasazení aktualizací na cílovém virtuálním počítači.
+Kliknutím na dlaždici **Výstup** zobrazíte datový proud úlohy runbooku zodpovědného za správu nasazení aktualizací na cílovém virtuálním počítači.
 
 Kliknutím na **Chyby** zobrazíte podrobné informace o případných chybách nasazení.
 
 ## <a name="advanced-monitoring"></a>Pokročilé sledování 
 
-Můžete provést rozšířené monitorování vašeho virtuálního počítače pomocí [Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview). Pokud jste tak již neučinili, můžete si zaregistrovat [bezplatnou zkušební verzi](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-trial) služby Operations Management Suite.
+Pomocí sady [Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) můžete provést rozšířené monitorování virtuálního počítače. Pokud jste to již neudělali, můžete si zaregistrovat [bezplatnou zkušební verzi](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-trial) sady Operations Management Suite.
 
-Až budete mít přístup k portálu OMS, můžete najít klíč pracovního prostoru a identifikátor prostoru v okně nastavení. Použití [Set-AzureRmVMExtension](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmextension) příkaz pro přidání rozšíření OMS k virtuálnímu počítači. Aktualizace hodnoty proměnné v níže ukázka tak, aby odrážela jste klíč pracovního prostoru OMS a prostoru ID.  
+Až budete mít přístup k portálu OMS, najdete klíč a identifikátor pracovního prostoru v okně Nastavení. Použití [Set-AzureRmVMExtension](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmextension) příkaz pro přidání rozšíření OMS k virtuálnímu počítači. Aktualizace hodnoty proměnné v níže ukázka tak, aby odrážela jste klíč pracovního prostoru OMS a prostoru ID.  
 
 ```powershell
 $omsId = "<Replace with your OMS Id>"
@@ -215,20 +215,20 @@ Po několika minutách měli byste vidět nový virtuální počítač v pracovn
 
 ![Okno OMS](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste nakonfigurovali a zkontrolovat virtuálních počítačů pomocí Azure Security Center. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě
 > * Vytvoření skupiny prostředků a virtuálních počítačů 
-> * Povolit Diagnostika spouštění ve virtuálním počítači
+> * Povolení diagnostiky spouštění ve virtuálním počítači
 > * Zobrazení diagnostiky spouštění
-> * Zobrazit hostitele metriky
+> * Zobrazení metrik hostitele
 > * Instalace rozšíření diagnostiky
-> * Zobrazit metriky virtuálního počítače
+> * Zobrazení metrik virtuálního počítače
 > * Vytvořit výstrahu
 > * Správa aktualizací Windows
-> * Nastavit pokročilé monitorování
+> * Nastavení pokročilého monitorování
 
 Přechodu na v dalším kurzu se dozvíte o službě Azure security center.
 

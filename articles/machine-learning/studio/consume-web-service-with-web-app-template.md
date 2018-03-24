@@ -1,11 +1,12 @@
 ---
-title: "Pomocí šablony webové aplikace využívají webové služby Machine Learning | Microsoft Docs"
-description: "Použití šablony webové aplikace v Azure Marketplace využívat prediktivní webové služby v Azure Machine Learning."
-keywords: "Webová služba, operationalization, REST API strojového učení"
+title: Pomocí šablony webové aplikace využívají webové služby Machine Learning | Microsoft Docs
+description: Použití šablony webové aplikace v Azure Marketplace využívat prediktivní webové služby v Azure Machine Learning.
+keywords: Webová služba, operationalization, REST API strojového učení
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: raymondl
-ms.openlocfilehash: f7efa647fa6afc247509cd4a52066c0459f75ca3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 81b89a1f8a053fd3b1d0d6a0a1bcc5c67d2ba728
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Pomocí šablony webové aplikace využívají webové služby Azure Machine Learning
 

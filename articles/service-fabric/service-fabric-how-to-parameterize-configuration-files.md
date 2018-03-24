@@ -1,10 +1,10 @@
 ---
-title: "Postupy: Parametrizace konfigurační soubory v Azure Service Fabric | Microsoft Docs"
-description: "Ukazuje, jak Parametrizace konfigurační soubory v Service Fabric"
+title: 'Postupy: Parametrizace konfigurační soubory v Azure Service Fabric | Microsoft Docs'
+description: Ukazuje, jak Parametrizace konfigurační soubory v Service Fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: 1e7d59ecb231440711b8ed3dc0b27a2b105890c4
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 14fbdf27b8735bb3f2dc91ce0891711e9aaf2af3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Postupy: Parametrizace konfigurační soubory v Service Fabric
 
@@ -35,7 +35,7 @@ V tomto příkladu přepíšete hodnotu konfigurace pomocí parametrů v nasazen
       </Section>
     ```
 
-1. Uložte a zavřete soubor.
+1. Uložte soubor a zavřete ho.
 1. Otevřete soubor `ApplicationManifest.xml`.
 1. Přidat `ConfigOverride` elementu, odkazující na konfigurační balíček, v části a parametr.
 
@@ -59,7 +59,7 @@ V tomto příkladu přepíšete hodnotu konfigurace pomocí parametrů v nasazen
       </Parameters>
     ```
 
-1. A definovat`DefaultValue`
+1. A definovat `DefaultValue`
 
     ```xml
       <Parameters>
@@ -71,8 +71,6 @@ V tomto příkladu přepíšete hodnotu konfigurace pomocí parametrů v nasazen
 > V případě, kdy přidáte ConfigOverride Service Fabric vždy vybere parametry aplikace nebo z výchozí hodnoty zadané v manifestu aplikace.
 >
 >
-
-Při publikování aplikace ze sady Visual Studio pomocí Cloud.xml profil publikování, vaše služba je nakonfigurována pro používání portu 80. Pokud nasadíte aplikaci bez zadání parametru MyWebAPI_PortNumber, služba service používá port 8080.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o některých základní koncepty, které jsou popsané v tomto článku najdete v tématu [spravovat aplikace pro více článcích prostředí](service-fabric-manage-multiple-environment-app-configuration.md).

@@ -1,6 +1,6 @@
 ---
-title: "Monitorovat přístup k protokolům, protokolování výkonu, back-end stavu a metrik pro službu Application Gateway | Microsoft Docs"
-description: "Zjistěte, jak povolit a spravovat přístup k protokolům a protokolování výkonu pro službu Application Gateway"
+title: Monitorovat přístup k protokolům, protokolování výkonu, back-end stavu a metrik pro službu Application Gateway | Microsoft Docs
+description: Zjistěte, jak povolit a spravovat přístup k protokolům a protokolování výkonu pro službu Application Gateway
 services: application-gateway
 documentationcenter: na
 author: amitsriva
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: amitsriva
-ms.openlocfilehash: 12c252340b82aba5ee69b12db83353750782e7c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c739d98f81bafb6474995b141cab3400bcb4dc33
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back-end, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -152,9 +152,9 @@ Pro každý prostředek Resource Manager je automaticky povolené protokolován�
 
    ![Spuštění procesu konfigurace][2]
 
-4. Zvolte existujícímu pracovnímu prostoru služby Operations Management Suite (OMS) nebo vytvořte novou. Tento příklad používá nějaký existující.
+4. Vyberte existující pracovní prostor analýzy protokolů nebo vytvořte novou. Tento příklad používá nějaký existující.
 
-   ![Možnosti pro OMS pracovní prostory][3]
+   ![Možnosti pro pracovní prostory analýzy protokolů][3]
 
 5. Potvrďte nastavení a klikněte na tlačítko **Uložit**.
 
@@ -183,7 +183,7 @@ Přístup k protokolu se vygeneruje pouze v případě, že jste ho povolili ka�
 |ReceivedBytes     | Velikost paketu přijaté v bajtech.        |
 |SentBytes| Velikost paket odeslaný v bajtech.|
 |timeTaken| Délka dobu (v milisekundách), která je potřebná pro zpracování požadavku a odpovědi na odeslání. Počítá se jako interval od okamžiku, kdy Application Gateway přijímá první bajt požadavku HTTP na čas, kdy odpovědi odeslat dokončení operace. Je důležité si uvědomit, že pole Time-Taken obvykle zahrnuje čas, jsou pakety žádostí a odpovědí přenášeny po síti. |
-|Protokol| Jestli komunikaci s back endové fondy používat protokol SSL. Platné hodnoty jsou zapnout a vypnout.|
+|sslEnabled| Jestli komunikaci s back endové fondy používat protokol SSL. Platné hodnoty jsou zapnout a vypnout.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -219,7 +219,7 @@ V protokolu výkonu se vygeneruje pouze v případě, že jste povolili každé 
 |healthyHostCount     | Počet pořádku hostitelích ve fondu back-end.        |
 |unHealthyHostCount     | Počet není v pořádku hostitelích ve fondu back-end.        |
 |RequestCount     | Počet požadavků zpracovaných.        |
-|Čekací doba | Latence (v milisekundách) požadavků z instance back end, který obsluhuje žádosti. |
+|latence | Latence (v milisekundách) požadavků z instance back end, který obsluhuje žádosti. |
 |failedRequestCount| Počet neúspěšných požadavků.|
 |Propustnost| Průměrná propustnost od poslední protokolu měřená v bajtech za sekundu.|
 
@@ -259,9 +259,9 @@ Protokol brány firewall se vygeneruje pouze v případě, že jste je povolili 
 |ruleSetType     | Typ sady pravidel. K dispozici hodnota je OWASP.        |
 |ruleSetVersion     | Verze použitá sady pravidel. Dostupné jsou hodnoty 2.2.9 a 3.0.     |
 |RuleId     | ID pravidla spouštěcí události.        |
-|Zpráva     | Uživatelsky přívětivý zpráva pro aktivační událost. Další podrobnosti najdete v části Podrobnosti.        |
-|Akce     |  Akce v žádosti. Dostupné hodnoty jsou blokované a povolené.      |
-|Lokality     | Web, pro které byla vygenerována v protokolu. V současné době pouze globální se má zobrazit, protože pravidla jsou globální.|
+|zpráva     | Uživatelsky přívětivý zpráva pro aktivační událost. Další podrobnosti najdete v části Podrobnosti.        |
+|akce     |  Akce v žádosti. Dostupné hodnoty jsou blokované a povolené.      |
+|Web     | Web, pro které byla vygenerována v protokolu. V současné době pouze globální se má zobrazit, protože pravidla jsou globální.|
 |Podrobnosti     | Podrobnosti o aktivační událost.        |
 |details.Message     | Popis pravidla.        |
 |details.data     | Konkrétní data uvedená v požadavek, který odpovídá pravidlo.         |
@@ -322,7 +322,7 @@ Metriky jsou funkce u některých prostředků Azure, kde můžete zobrazit čí
 
 Pokud chcete zobrazit aktuální seznam metriky, najdete v části [podporované metriky s Azure monitorování](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
-### <a name="alert-rules"></a>Pravidla výstrah
+### <a name="alert-rules"></a>Pravidla upozornění
 
 Můžete spustit na základě metriky pro prostředek pravidla výstrah. Výstrahu můžete například volat webhook, jehož nebo e-mailu správce, pokud propustnost aplikační brány je výše, níže nebo na prahovou hodnotu v zadaném období.
 
@@ -354,7 +354,7 @@ Další informace o oznámeních výstrah najdete v tématu [dostávat oznámen�
 
 Bližší informace o webhooky a jak je možné používat s výstrahy, navštivte [konfigurace webhook, jehož na výstrahu Azure metriky](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Vizualizovat čítač a protokoly událostí pomocí [analýzy protokolů](../log-analytics/log-analytics-azure-networking-analytics.md).
 * [Aktivita Azure protokolu s Power BI vizualizovat](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) příspěvku na blogu.

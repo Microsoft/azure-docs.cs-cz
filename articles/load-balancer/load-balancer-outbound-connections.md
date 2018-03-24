@@ -1,24 +1,24 @@
 ---
-title: "Odchozí připojení v Azure | Microsoft Docs"
-description: "Tento článek vysvětluje, jak Azure umožňuje virtuálním počítačům komunikovat s služby veřejného Internetu."
+title: Odchozí připojení v Azure | Microsoft Docs
+description: Tento článek vysvětluje, jak Azure umožňuje virtuálním počítačům komunikovat s služby veřejného Internetu.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2018
+ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 32661ad4d647f266273c4c94a5ba177a348c5431
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3fc9810f2f7f86b4c795a7f008e8e1bd174a84db
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -26,6 +26,9 @@ ms.lasthandoff: 03/16/2018
 > Standardní SKU pro vyrovnávání zatížení je aktuálně ve verzi preview. Verzi Preview funkci nemusí mít stejnou úroveň dostupnost a spolehlivost jako verze funkce, které jsou obecné dostupnosti. Další informace najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Použít obecně dostupná [základní SKU služby Vyrovnávání zatížení](load-balancer-overview.md) pro vaše produkční služby. Použít [dostupnost zóny Preview](https://aka.ms/availabilityzones) s touto verzí Preview vyžaduje [samostatné registrace](https://aka.ms/availabilityzones), kromě registrace do služby pro vyrovnávání zatížení [standardní preview](#preview-sign-up).
 
 Azure poskytuje odchozí připojení pro zákaznických nasazení pomocí několika různých mechanismů. Tento článek popisuje, co jsou scénáře, kdy se vztahují, jak pracují a jak spravovat.
+
+>[!NOTE] 
+>Tento článek se týká pouze nasazení Resource Manager. Zkontrolujte [odchozí připojení (klasické)](load-balancer-outbound-connections-classic.md) pro všechny scénáře nasazení Classic v Azure.
 
 Nasazení v Azure může komunikovat s koncovými body mimo Azure v rámci veřejný adresní prostor IP adres. Pokud instance zahájí odchozího toku do cílového umístění v veřejný adresní prostor IP adres, Azure dynamicky mapuje privátní IP adresu na veřejnou IP adresu. Po vytvoření tohoto mapování, návratový provoz pro tuto odchozí původu toku dosáhnout taky privátní IP adresu kde toku vytvořena.
 
@@ -38,11 +41,7 @@ Existuje více [odchozí scénáře](#scenarios). Tyto scénáře můžete kombi
 
 ## <a name="scenarios"></a>Přehled scénáře
 
-Azure má dva modely nasazení hlavní: Azure Resource Manager a Klasický model. Azure nástroj pro vyrovnávání zatížení a související prostředky jsou explicitně definován při použití [Azure Resource Manager](#arm). Nasazení Classic abstraktní koncept služby Vyrovnávání zatížení a express podobné funkce prostřednictvím definice koncové body [Cloudová služba](#classic). Příslušné [scénáře](#scenarios) pro vaše nasazení závisí na modelu nasazení použijete.
-
-### <a name="arm"></a>Azure Resource Manager
-
-Azure aktuálně poskytuje tři různých způsobů dosažení odchozí připojení pro prostředky Azure Resource Manager. [Classic](#classic) má podmnožinu těchto scénářích nasazení.
+Azure nástroj pro vyrovnávání zatížení a související prostředky jsou explicitně definován při použití [Azure Resource Manager](#arm).  Azure aktuálně poskytuje tři různých způsobů dosažení odchozí připojení pro prostředky Azure Resource Manager. 
 
 | Scénář | Metoda | Popis |
 | --- | --- | --- |
@@ -51,14 +50,6 @@ Azure aktuálně poskytuje tři různých způsobů dosažení odchozí připoje
 | [3. Samostatný virtuální počítač (žádná služba Vyrovnávání zatížení, žádná Instance úroveň veřejná IP adresa)](#defaultsnat) | Překládat pomocí SNAT s port vydávají (PAT) | Azure automaticky označí veřejnou IP adresu pro překládat pomocí SNAT, sdílí tato veřejná IP adresa s více privátních IP adres skupiny dostupnosti a používá dočasné porty tato veřejná IP adresa. Toto je záložní scénář pro uvedených scénářů. Pokud potřebujete viditelnost a kontrolu se nedoporučuje. |
 
 Pokud nechcete, aby virtuální počítač ke komunikaci s koncovými body mimo Azure v rámci prostor veřejných IP adres, můžete použít skupiny zabezpečení sítě (Nsg) k blokování přístupu podle potřeby. V části [nelze navázat odchozí připojení](#preventoutbound) podrobněji popisuje skupiny Nsg. Pokyny k návrhu, implementaci a správu virtuálních sítí bez jakékoli odchozí přístup je mimo rámec tohoto článku.
-
-### <a name="classic"></a>Classic (cloudové služby)
-
-Scénáře, které jsou k dispozici pro nasazení classic jsou podmnožinou k dispozici pro scénáře [Azure Resource Manager](#arm) nasazení a základní nástroje pro vyrovnávání zatížení.
-
-Klasické virtuální počítač má stejné tři základní scénáře, jak je popsáno pro prostředky Azure Resource Manager ([1](#ilpip), [2](#lb), [3](#defaultsnat)). Má jenom dva scénáře classic webové role pracovního procesu ([2](#lb), [3](#defaultsnat)). [Zmírnění dopadů strategie](#snatexhaust) mít také stejnou rozdíly.
-
-Algoritmus používaný pro [předběžné přidělování dočasné porty](#ephemeralprots) Jan pro nasazení classic je stejné jako pro nasazení prostředků Azure Resource Manager.  
 
 ### <a name="ilpip"></a>Scénář 1: Počítač s adresou veřejná IP adresa na úrovni Instance
 
@@ -97,15 +88,11 @@ Překládat pomocí SNAT porty jsou souhrnů ještě neumístěných jak je pops
 
 ### <a name="combinations"></a>Více, kombinované scénářů
 
-Popsané v předchozích částech k dosažení konkrétní výsledek scénáře můžete kombinovat. Pokud existuje více scénářů, se vztahují pořadí podle priority: [scénář 1](#ilpip) má přednost před [scénář 2](#lb) a [3](#defaultsnat) (pouze Azure Resource Manager). [Scénář 2](#lb) přepsání [scénář 3](#defaultsnat) (Azure Resource Manager a klasický).
+Popsané v předchozích částech k dosažení konkrétní výsledek scénáře můžete kombinovat. Pokud existuje více scénářů, se vztahují pořadí podle priority: [scénář 1](#ilpip) má přednost před [scénář 2](#lb) a [3](#defaultsnat). [Scénář 2](#lb) přepsání [scénář 3](#defaultsnat).
 
 Příkladem je nasazení služby Správce prostředků Azure, kde založena na odchozí připojení k omezenému počtu cílů aplikace, ale také přijme příchozí toky přes front-end pro vyrovnávání zatížení. V takovém případě můžete kombinovat scénáře 1 a 2 pro pomoc. Pro další vzory, zkontrolujte [Správa překládat pomocí SNAT vyčerpání](#snatexhaust).
 
 ### <a name="multife"></a> Více frontends pro odchozí toky
-
-#### <a name="load-balancer-basic"></a>Basic nástroje pro vyrovnávání zatížení
-
-Základní nástroje pro vyrovnávání zatížení vybere jeden front-endu má být použit pro odchozí toky při [více (veřejné) frontends IP](load-balancer-multivip-overview.md) jsou kandidáty pro odchozí toky. Tento výběr není konfigurovatelné a měli byste zvážit algoritmus výběr být náhodné. Konkrétní IP adresu pro odchozí toky můžete určit, jak je popsáno v [několika kombinaci scénáře](#combinations).
 
 #### <a name="load-balancer-standard"></a>Load Balancer úrovně Standard
 
@@ -122,6 +109,10 @@ Můžete potlačit na front-endovou IP adresu z používá pro odchozí připoje
 ```
 
 Za normálních okolností se tato možnost výchozí _false_ a označuje, že toto pravidlo programy odchozí překládat pomocí SNAT pro přidružené virtuální počítače ve fondu back-end pravidlo Vyrovnávání zatížení.  Toto můžete změnit tak, aby _true_ zabránit Vyrovnávání zatížení pomocí IP adresy přidružené front-endu pro odchozí připojení pro virtuální počítač je ve fondu back-end toto pravidlo Vyrovnávání zatížení.  A konkrétní IP adresu pro odchozí toky můžete stále také určit, jak je popsáno v [několika kombinaci scénáře](#combinations) také.
+
+#### <a name="load-balancer-basic"></a>Basic nástroje pro vyrovnávání zatížení
+
+Základní nástroje pro vyrovnávání zatížení vybere jeden front-endu má být použit pro odchozí toky při [více (veřejné) frontends IP](load-balancer-multivip-overview.md) jsou kandidáty pro odchozí toky. Tento výběr není konfigurovatelné a měli byste zvážit algoritmus výběr být náhodné. Konkrétní IP adresu pro odchozí toky můžete určit, jak je popsáno v [několika kombinaci scénáře](#combinations).
 
 ### <a name="az"></a> Dostupnost zóny
 
@@ -147,7 +138,12 @@ Vzory pro zmírnění podmínky, které běžně vést k vyčerpání port přek
 
 Azure používá algoritmus určit počet souhrnů ještě neumístěných překládat pomocí SNAT porty, které jsou k dispozici na základě velikosti fondu back-end při použití portu podvržený překládat pomocí SNAT ([PAT](#pat)). Překládat pomocí SNAT porty jsou dočasné porty, které jsou k dispozici pro konkrétní veřejné zdrojové adresy IP.
 
-Azure preallocates překládat pomocí SNAT porty ke konfiguraci IP adresy síťového adaptéru každý virtuální počítač. Při konfiguraci IP adres je přidán do fondu, jsou porty překládat pomocí SNAT souhrnů ještě neumístěných pro tuto konfiguraci IP adresy na základě velikosti fondu back-end. Pro classic webové role pracovního procesu je přidělení za role instance. Když se vytváří odchozí toky, [PAT](#pat) dynamicky využívá (až předběžně přidělené limit) a uvolní tyto porty toku zavře nebo [časové limity nečinnosti](#ideltimeout) dojít.
+Stejný počet překládat pomocí SNAT porty jsou souhrnů ještě neumístěných UDP a TCP v uvedeném pořadí a využívat nezávisle na přenosového protokolu IP. 
+
+>[!IMPORTANT]
+>Standardní SKU SNAT programování je za přenosový protokol IP a jsou odvozené z pravidlo Vyrovnávání zatížení.  Pokud pravidlo Vyrovnávání zatížení TCP existuje pouze, je k dispozici pro TCP pouze překládat pomocí SNAT. Pokud máte pouze TCP pravidlo Vyrovnávání zatížení a nutnost UDP odchozí překládat pomocí SNAT, vytvořte pravidla ze stejné front-endu do stejného fondu back-end pro vyrovnávání zatížení UDP.  Tím se aktivuje programování pro UDP překládat pomocí SNAT.  Pracovní pravidlo nebo stav testu se nevyžaduje.  Základní SKU překládat pomocí SNAT vždy programů překládat pomocí SNAT pro obě transportního protokolu IP, bez ohledu na přenosový protokol zadaný v pravidlo Vyrovnávání zatížení.
+
+Azure preallocates překládat pomocí SNAT porty ke konfiguraci IP adresy síťového adaptéru každý virtuální počítač. Při konfiguraci IP adres je přidán do fondu, jsou porty překládat pomocí SNAT souhrnů ještě neumístěných pro tuto konfiguraci IP adresy na základě velikosti fondu back-end. Když se vytváří odchozí toky, [PAT](#pat) dynamicky využívá (až předběžně přidělené limit) a uvolní tyto porty toku zavře nebo [časové limity nečinnosti](#ideltimeout) dojít.
 
 V následující tabulce jsou uvedeny preallocations port překládat pomocí SNAT pro úrovně velikosti fondu back-end:
 
@@ -168,6 +164,18 @@ Mějte na paměti, že počet dostupných portů překládat pomocí SNAT nepře
 Změna velikosti fondu back-end může mít vliv na některé vaše zavedených toků. Pokud velikost fondu back-end zvyšuje a přejde do s další vrstvou, polovinu vaší předběžně přidělené překládat pomocí SNAT porty jsou uvolnit při přechodu do další vrstvou větší fond back-end. Toky, které jsou spojeny s regenerovaný portem překládat pomocí SNAT vypršení časového limitu, který se musí znovu navázat. Pokud dojde k pokusu o nové toku, bude toku okamžitě úspěšné, dokud předběžně přidělené porty jsou k dispozici.
 
 Pokud velikost fondu back-end snižuje a přejde do nižší úrovně, zvyšuje počet dostupných portů překládat pomocí SNAT. V takovém případě existující přidělené překládat pomocí SNAT porty a jejich odpovídajících toky neovlivní.
+
+Přidělení překládat pomocí SNAT porty jsou konkrétní IP přenosového protokolu (TCP a UDP udržované samostatně) a jsou uvolněny za následujících podmínek:
+
+### <a name="tcp-snat-port-release"></a>Verze port TCP překládat pomocí SNAT
+
+- Pokud obě server nebo klient odešle najít nebo potvrzení, budou překládat pomocí SNAT port vydané po 240 sekund.
+- Pokud je vidět RVNÍ, budou překládat pomocí SNAT port vydané po 15 sekund.
+- byl dosažen limit nečinnosti
+
+### <a name="udp-snat-port-release"></a>Verze port UDP překládat pomocí SNAT
+
+- byl dosažen limit nečinnosti
 
 ## <a name="problemsolving"></a> Řešení problémů 
 
@@ -208,9 +216,19 @@ Pokud používáte veřejný Standard pro vyrovnávání zatížení, přiřadí
 >[!NOTE]
 >Ve většině případů je vyčerpání překládat pomocí SNAT portů znaménkem chybný návrhu.  Ujistěte se, že rozumíte, proč se vyčerpává porty před použitím více frontends přidání portů překládat pomocí SNAT.  Může být maskování problém, což může vést k selhání později.
 
+#### <a name="scaleout"></a>Horizontální navýšení kapacity
+
+[Souhrnů ještě neumístěných porty](#preallocatedports) jsou přiřazené podle velikosti fondu back-end a seskupené do vrstev, abyste minimalizovali dopad při některé porty muset znovu přidělit, aby dokázala pojmout další vrstvou velikost větší fond back-end.  Můžete mít možnost zvýšit intenzitou využití portu překládat pomocí SNAT pro danou front-endu škálování fondu back-end pro maximální velikost v dané vrstvě.  To vyžaduje pro aplikace pro efektivní škálování.
+
+Například 2 virtuální počítače ve fondu back-end by měla mít 1024 překládat pomocí SNAT porty pro konfiguraci protokolu IP, která umožňuje celkem překládat pomocí SNAT 2048 porty pro nasazení k dispozici.  Pokud nasazení bylo možné zvýšit na 50 virtuální počítače, i když počet souhrnů ještě neumístěných konstanta zůstanou porty na virtuální počítač, celkem 51,200 (50 x 1 024) překládat pomocí SNAT porty lze toto nasazení.  Pokud chcete horizontální škálování vašeho nasazení, zkontrolujte počet [souhrnů ještě neumístěných porty](#preallocatedports) za vrstvy, abyste měli jistotu, utvářejí vaše škálování na maximum pro odpovídající úroveň.  V příkladu předcházející, pokud jste nastavili škálovat na 51 místo 50 instancí vaší by průběhu další vrstvou a end až s menší překládat pomocí SNAT porty na virtuální počítač také jako součet.
+
+Naopak škálování na další větší back-end fondu velikost vrstvy potenciálně odchozí připojení Pokud přidělené porty muset znovu přidělit.  Pokud nechcete, aby to proběhla, budete muset utvářejí nasazení tak, aby velikost vrstvy.  Případně zajistěte, aby vaše aplikace zjistit a opakujte podle potřeby.  Může být užitečné udržování otevřených připojení protokolu TCP v rozpoznat, kdy překládat pomocí SNAT porty už funkce z důvodu se opětovnému přidělení.
+
 ### <a name="idletimeout"></a>Použít udržování otevřených připojení k resetování odchozí časový limit nečinnosti
 
-Odchozí připojení mít časový limit nečinnosti 4 minuty. Tento časový limit není upravit. Však můžete přenos (například TCP udržování otevřených připojení) nebo udržování otevřených připojení aplikační vrstvě aktualizujte tok nečinnosti a obnovit tento časový limit nečinnosti v případě potřeby.
+Odchozí připojení mít časový limit nečinnosti 4 minuty. Tento časový limit není upravit. Však můžete přenos (například TCP udržování otevřených připojení) nebo udržování otevřených připojení aplikační vrstvě aktualizujte tok nečinnosti a obnovit tento časový limit nečinnosti v případě potřeby.  
+
+Při použití udržování otevřených připojení TCP, je dostatečná a umožňuje jim na jedné straně připojení. Například je dostačující je povolit na straně serveru pouze na resetovat časovač nečinnosti toku a není nutné pro obě strany initiated udržování otevřených připojení TCP.  Podobně jako koncepty pro aplikační vrstvu, včetně konfigurace klienta se serverem databáze neexistují.  Zkontrolujte na straně serveru, pro jaké možnosti pro konkrétní udržování otevřených připojení aplikace neexistují.
 
 ## <a name="discoveroutbound"></a>Zjišťování veřejnou IP adresu, která používá virtuální počítač
 Existuje mnoho způsobů, jak určit IP adresu zdrojového veřejné odchozí připojení. OpenDNS poskytuje službu, která můžete zobrazit veřejnou IP adresu vašeho virtuálního počítače. 
@@ -229,8 +247,9 @@ Pokud skupina NSG blokuje žádostí o stav testu z výchozí značka AZURE_LOAD
 ## <a name="limitations"></a>Omezení
 - DisableOutboundSnat není k dispozici možnost, při konfiguraci portálu pravidlo Vyrovnávání zatížení.  Místo toho použijte nástroje REST, šablonu nebo klienta.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- Další informace o [základní nástroje pro vyrovnávání zatížení](load-balancer-overview.md).
+- Další informace o [nástroj pro vyrovnávání zatížení](load-balancer-overview.md).
+- Další informace o [nástroj pro vyrovnávání zatížení](load-balancer-standard-overview.md).
 - Další informace o [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md).
 - Přečtěte si o některých dalších klíče [sítě možnosti](../networking/networking-overview.md) v Azure.

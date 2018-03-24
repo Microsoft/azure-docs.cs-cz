@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Přístupy migrace uživatele"
-description: "Informace o základní a rozšířené koncepty na migraci uživatele pomocí rozhraní Graph API a volitelně pomocí vlastních zásad Azure AD B2C."
+title: 'Azure Active Directory B2C: Přístupy migrace uživatele'
+description: Informace o základní a rozšířené koncepty na migraci uživatele pomocí rozhraní Graph API a volitelně pomocí vlastních zásad Azure AD B2C.
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 10/04/2017
-ms.author: yoelh
-ms.openlocfilehash: 25023359e3f1eeb241f6f0e70bcb179aa32974af
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: be80ea534be6de4fad2b072cf531669f45eda527
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migrace uživatelů
 Když migrujete zprostředkovatele identity do Azure Active Directory B2C (Azure AD B2C), možná budete také muset migrovat uživatelský účet. Tento článek vysvětluje, jak migrovat existující uživatelské účty z kteréhokoli zprostředkovatele identity do Azure AD B2C. Článek by neměl být doporučený, ale místo toho popisuje dvě několik přístupů. Vývojář je zodpovědná za vhodnosti obou těchto přístupů.
@@ -28,13 +25,13 @@ S Azure AD B2C, můžete migrovat uživateli prostřednictvím [rozhraní Graph 
 
 * **Před migrací**: Tento tok platí, pokud máte buď zrušte přístup k přihlašovacím údajům uživatele (uživatelské jméno a heslo) nebo přihlašovací údaje jsou šifrované, ale lze je dešifrovat. Proces před migrací zahrnuje čtení z původního zprostředkovatele identity uživatelů a vytváření nových účtů v adresáři Azure AD B2C.
 
-* **Před migrací a heslo resetovat**: Tento tok platí, pokud heslo uživatele není dostupný. Například:
+* **Před migrací a heslo resetovat**: Tento tok platí, pokud heslo uživatele není dostupný. Příklad:
     * Je heslo uloženo ve formátu HASH.
     * Heslo je uloženo v zprostředkovatele identity, ke kterému nelze přistupovat. Původní zprostředkovatele identity ověří přihlašovací údaje uživatele při volání webové služby.
 
 V obou toky je nejprve spustit proces před migrací, čtení uživatelů z původního zprostředkovatele identity a vytvořit nové účty v adresáři Azure AD B2C. Pokud nemáte heslo, vytvoříte účet pomocí náhodně generovaný heslo. Pak požádejte uživatele, chcete-li změnit heslo, nebo při prvním přihlášení uživatele, Azure AD B2C požádá uživatele, aby ho resetovat.
 
-## <a name="password-policy"></a>Zásady pro hesla
+## <a name="password-policy"></a>Zásady hesel
 Zásady hesel Azure AD B2C (pro lokální účty) je založena na zásady služby Azure AD. Azure AD B2C registrace nebo přihlášení a heslo resetovat zásady použití síly hesla "silné" a není vypršení platnosti hesla. Další informace najdete v tématu [zásady hesel služby Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx).
 
 Pokud účty, které chcete migrovat pomocí slabší síly hesla, než [silné heslo sílu vynucováno Azure AD B2C](https://msdn.microsoft.com/library/azure/jj943764.aspx), můžete zakázat požadavek na silné heslo. Chcete-li změnit výchozí zásady hesel, nastavte `passwordPolicies` vlastnost `DisableStrongPassword`. Požadavek na vytvoření uživatele můžete například upravit následujícím způsobem: 
@@ -97,7 +94,7 @@ Nyní máte aplikace s oprávněními k vytváření, čtení a aktualizaci uži
 Čtení a zápis dat oprávnění directory *není* zahrnovat právo odstranit uživatele. Chcete-li poskytují aplikace možnost odstranit uživatele (za účelem vyčištění prostředí), musíte provést další krok, který zahrnuje prostředí PowerShell a nastavit oprávnění pro správce účtu uživatele. Jinak můžete přeskočit k další části.
 
 > [!IMPORTANT]
-> Musíte použít účet správce klienta B2C, který je *místní* klienta B2C. Syntaxe názvu účtu není  *admin@contosob2c.onmicrosoft.com* .
+> Musíte použít účet správce klienta B2C, který je *místní* klienta B2C. Syntaxe názvu účtu není *admin@contosob2c.onmicrosoft.com*.
 
 >[!NOTE]
 > Následující skript prostředí PowerShell vyžaduje [Azure Active Directory PowerShell verze 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
@@ -148,10 +145,10 @@ Chcete-li upravit soubor JSON, otevřete `AADB2C.UserMigration.sln` řešení sa
 ![Soubor dat uživatele](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Jak vidíte, soubor obsahuje seznam entitami uživatelů. Každá entita uživatel má následující vlastnosti:
-* E-mailu
+* e-mail
 * displayName
-* FirstName
-* Příjmení
+* firstName
+* lastName
 * heslo (nesmí být prázdné)
 
 > [!NOTE]
@@ -214,7 +211,7 @@ Ověření migrace, použijte jednu z následujících dvou metod:
 
     b. Otevřete *UserProfile.json* souboru v editoru JSON. S kódem jazyka Visual Studio, můžete ho naformátovat dokumentu JSON výběrem Shift + Alt + F nebo výběrem **formátovat dokument** v místní nabídce.
 
-    ![Soubor UserProfile.json](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
+    ![The UserProfile.json file](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
 
 ### <a name="step-25-optional-environment-cleanup"></a>Krok 2.5: Vyčištění prostředí (volitelné)
 Pokud chcete vyčistit až klientovi Azure AD a odebrat uživatele z adresáře služby Azure AD, spusťte `UserMigration.exe 5` příkaz.
@@ -250,7 +247,7 @@ Chcete-li získat odkaz na vaše zásady resetování hesel, postupujte takto:
 > Chcete-li zkontrolovat a změnit migrace stavu uživatele, musíte použít vlastní zásadu. Další informace najdete v tématu [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md).
 >
 
-Když uživatelé se pokusí přihlásit se bez nejprve resetuje se heslo, vaše zásady by měl vrátit popisný chybová zpráva. Například: 
+Když uživatelé se pokusí přihlásit se bez nejprve resetuje se heslo, vaše zásady by měl vrátit popisný chybová zpráva. Příklad: 
 >*Vašeho hesla vypršela. Aby to udělal, vyberte odkaz resetovat heslo.* 
 
 Tento volitelný krok vyžaduje použití vlastních zásad Azure AD B2C, jak je popsáno v [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md) článku.

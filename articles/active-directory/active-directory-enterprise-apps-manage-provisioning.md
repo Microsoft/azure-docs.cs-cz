@@ -1,11 +1,11 @@
 ---
-title: "Zřizování správy firemních aplikací ve službě Azure Active Directory uživatelů | Microsoft Docs"
-description: "Naučte se spravovat uživatele zřizování účtu pro podnikové aplikace pomocí služby Azure Active Directory"
+title: Zřizování správy firemních aplikací ve službě Azure Active Directory uživatelů | Microsoft Docs
+description: Naučte se spravovat uživatele zřizování účtu pro podnikové aplikace pomocí služby Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 846ec63d47ebc787fa1edbf1968f1a843e96ac9d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bded73b4a335dc85a84691f5edabac5055f43cca
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa uživatelský účet zřizování pro podnikové aplikace na portálu Azure
 Tento článek popisuje postup použití [portál Azure](https://portal.azure.com) ke správě automatické uživatel účet zřizování a jeho rušení pro aplikace, které to podporují, zejména ta, která byla přidána z "doporučenou" kategorii [ Galerii aplikací Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). Další informace o zřizování účtu automatické uživatele a jak to funguje, najdete v části [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](active-directory-saas-app-provisioning.md).
@@ -76,7 +76,7 @@ Tato část obsahuje další podrobnosti o operaci zřizování služby, včetn�
 
 Jsou uvedeny odkazy na **zřizování sestava aktivit**, který poskytuje protokolu všichni uživatelé a skupiny vytvořený, aktualizovat a odebrané mezi Azure AD a cílová aplikace a **zřizování chybách** který nabízí podrobnější chybové zprávy pro uživatele a objektů skupin, které se nepodařilo přečíst, vytvořit, aktualizace nebo odstranění. 
 
-##<a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Váš názor
 
 Věříme, že je jako prostředí Azure AD. Prosím udržovat zpětnou vazbu, než dorazí! POST vaše názory a návrhy pro zlepšení **portál pro správu** části našich [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Jsme se vzrušení o vytváření nástrojů nové vlastní položky každý den a použijte vaše pokyny na obrazec a definovat, co se máme zaměřit příště.
 

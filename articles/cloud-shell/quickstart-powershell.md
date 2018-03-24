@@ -1,12 +1,12 @@
 ---
-title: "Prostředí PowerShell v cloudu Azure Quickstart prostředí (Preview) | Microsoft Docs"
-description: "Rychlý start pro prostředí PowerShell v prostředí cloudu"
+title: Prostředí PowerShell v cloudu Azure Quickstart prostředí (Preview) | Microsoft Docs
+description: Rychlý start pro prostředí PowerShell v prostředí cloudu
 services: Azure
-documentationcenter: 
+documentationcenter: ''
 author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: 71ae70c13b4de87593345fd957a773741294b49c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4b0831173212d3324c851ad1bd04ec443a9face5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Rychlý start pro prostředí PowerShell v prostředí cloudu Azure (Preview)
 
@@ -33,7 +33,7 @@ Tento dokument podrobně popisuje, jak pomocí prostředí PowerShell v prostře
 
   ![](media/quickstart-powershell/shell-icon.png)
 
-2. Z rozevíracího seznamu vyberte prostředí PowerShell a zobrazí se v Azure jednotce`(Azure:)`
+2. Z rozevíracího seznamu vyberte prostředí PowerShell a zobrazí se v Azure jednotce `(Azure:)`
 
   ![](media/quickstart-powershell/environment-ps.png)
 
@@ -62,7 +62,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
     PS Azure:\> dir
     ```
 
- 2. `cd`k předplatnému upřednostňované
+ 2. `cd` k předplatnému upřednostňované
 
     ``` PowerShell
     PS Azure:\> cd MySubscriptionName
@@ -118,7 +118,7 @@ Však můžete vždy použít `dir -Force` získat čerstvá data.
 
 ### <a name="navigate-storage-resources"></a>Přejděte prostředky úložiště
     
-V rámci `StorageAccounts` složky můžete snadno přejít vaše prostředky úložiště
+V rámci `StorageAccounts` adresář můžete snadno přejít vaše prostředky úložiště
     
 ``` PowerShell 
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
@@ -227,7 +227,7 @@ Můžete také přejít na `VirtualMachines` directory první a spusťte `Enter-
 
 ### <a name="discover-webapps"></a>Zjistit WebApps
 
-V rámci `WebApps` složky můžete snadno přejít prostředkům webových aplikací
+V rámci `WebApps` adresář můžete snadno přejít prostředkům webových aplikací
 
 ``` PowerShell
 PS Azure:\MySubscriptionName> dir .\WebApps\
@@ -274,11 +274,11 @@ K ověření na serverech nebo virtuálních počítačů pomocí protokolu SSH,
 
 ### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>Pomocí vlastního profilu pro stávající nastavení GIT a SSH
 
-Vzhledem k tomu, že relace nezůstanou zachována při odhlášení uložit vaše `$env:USERPROFILE\.ssh` složku pro `CloudDrive` nebo vytvořte symlink při získá spuštění prostředí cloudu.
+Vzhledem k tomu, že relace nezůstanou zachována při odhlášení uložit vaše `$env:USERPROFILE\.ssh` do adresáře `CloudDrive` nebo vytvořte symlink při získá spuštění prostředí cloudu.
 Přidejte následující fragment kódu ve vašem profile.ps1 vytvořit symlink k CloudDrive.
 
 ``` PowerShell
-# Check if the .ssh folder exists
+# Check if the .ssh directory exists
 if( -not (Test-Path $home\CloudDrive\.ssh)){
     mkdir $home\CloudDrive\.ssh
 }
@@ -357,7 +357,7 @@ PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
 Hello World!
 ```
 
-Při použití prostředí PowerShell v prostředí cloudu, při příštím `helloworld.ps1` soubor bude existovat v rámci `CloudDrive` složky, která připojí vaše soubory Azure sdílenou složku.
+Při použití prostředí PowerShell v prostředí cloudu, při příštím `helloworld.ps1` soubor bude existovat v rámci `CloudDrive` adresář, který připojí vaše soubory Azure sdílenou složku.
 
 ## <a name="use-custom-profile"></a>Použít vlastní profil
 

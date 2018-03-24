@@ -1,8 +1,8 @@
 ---
 title: Profil ASP.NET core Azure Linux web apps s Application Insights profileru | Microsoft Docs
-description: "Přehled koncept a podrobný kurz o tom, jak ji povolit"
+description: Přehled koncept a podrobný kurz o tom, jak ji povolit
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2d7405baee84b53311f01e748ca7975147c107d8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 63a7ceacffe1ee33227d3a8272dda7de7b3b1135
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core Linux webové aplikace Azure s Application Insights profileru
 
@@ -143,6 +143,18 @@ Zobrazí se výstup podobný následujícímu:
 5. Přejděte do podokna výkonu Application Insights na portálu Azure. Zobrazí se profileru trasování, které jsou k dispozici v pravém dolním rohu.
 
     ![Zobrazení trasování](./media/app-insights-profiler-aspnetcore-linux/view-traces.png)
+
+## <a name="known-issues"></a>Známé problémy
+
+### <a name="enable-button-in-profiler-configuration-pane-does-not-work"></a>Povolit tlačítko v konfiguraci profileru podokně nefunguje.
+**Pokud hostujete vaší aplikace pomocí aplikace služby Linux, není nutné znovu zapnout profileru v podokně výkonu na portálu Statistika aplikace. Včetně balíček NuGet v projektu a nastavení aplikace Statistika iKey v nastavení aplikace jsou dostatečná k povolení profileru**.
+
+Pokud budete postupovat podle [App Insights profileru pro systém Windows](./app-insights-profiler.md) povolování pracovní postup klikněte na tlačítko **povolit** v podokně Konfigurace profileru se zobrazí chyba, jak na tlačítko se pokusí nainstalovat verzi systému Windows profileru agenta v prostředí Linux.
+
+Pracujeme na řešení tohoto problému v možnosti povolování.
+
+![Nemusíte povolit profileru znovu v podokně výkonu aby profileru pracovat na Linux aplikační služby](./media/app-insights-profiler-aspnetcore-linux/issue-enable-profiler.png)
+
 
 ## <a name="next-steps"></a>Další kroky
 Pokud používáte vlastní kontejnery hostitelem aplikační služby, postupujte podle pokynů v [ povolit služby profileru kontejnerové aplikace ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) povolit App Insights profileru

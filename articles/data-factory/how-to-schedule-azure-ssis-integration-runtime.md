@@ -1,23 +1,23 @@
 ---
-title: "Naplánování runtime integrace Azure SSIS | Microsoft Docs"
-description: "Tento článek popisuje, jak naplánovat spuštění a zastavení z modulu runtime integrační služby SSIS Azure pomocí Azure Automation a Data Factory."
+title: Naplánování runtime integrace Azure SSIS | Microsoft Docs
+description: Tento článek popisuje, jak naplánovat spuštění a zastavení z modulu runtime integrační služby SSIS Azure pomocí Azure Automation a Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 5a9d1ba4d72bc6d4b297695c478438079d34c6e7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: cc9ab244c784cab608a75092b542dea0a6f69f22
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Naplánování spuštění a zastavení z modulu runtime integrace Azure SSIS 
 Spuštění modulu runtime integrace Azure služby SSIS (SQL Server Integration Services) (IR) má poplatků, s ním spojená. Tedy chcete spustit IR pouze v případě potřeby pro spouštění balíčků SSIS v Azure a zastavte ji, pokud tomu tak není. Můžete použít uživatelské rozhraní objektu pro vytváření dat nebo prostředí Azure PowerShell [ruční spuštění nebo zastavení služby SSIS IR Azure](manage-azure-ssis-integration-runtime.md)). Tento článek popisuje, jak naplánovat spuštění a zastavení z modulu runtime integrace Azure služby SSIS (IR) pomocí Azure Automation a Azure Data Factory. Zde jsou základní kroky popsané v tomto článku:
@@ -340,7 +340,7 @@ Po vytvoření a testování kanálu, můžete vytvořit aktivační událost pl
 4. Připojení **uloženou proceduru** aktivity na poslední **webové** aktivity.
 
     ![Úplné kanálu](./media/how-to-schedule-azure-ssis-integration-runtime/full-pipeline.png)
-5. Kliknutím na ověřit nastavení kanál **ověřením** na panelu nástrojů. Zavřít **sestavu ověření kanálu** kliknutím  **>>**  tlačítko. 
+5. Kliknutím na ověřit nastavení kanál **ověřením** na panelu nástrojů. Zavřít **sestavu ověření kanálu** kliknutím **>>** tlačítko. 
 
     ![Ověření kanálu](./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png)
 

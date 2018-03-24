@@ -1,11 +1,10 @@
 ---
-title: "Kopírování dat do/z Azure SQL Data Warehouse | Microsoft Docs"
-description: "Zjistěte, jak ke zkopírování dat z Azure SQL Data Warehouse pomocí Azure Data Factory"
+title: Kopírování dat do/z Azure SQL Data Warehouse | Microsoft Docs
+description: Zjistěte, jak ke zkopírování dat z Azure SQL Data Warehouse pomocí Azure Data Factory
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: d90fa9bd-4b79-458a-8d40-e896835cfd4a
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 97782d1437f47a5ec403a98464d38961874d7575
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 709a178d99a34adb9c77086e55270fe41ed84551
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -166,10 +165,10 @@ GO
 ```
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Použijte PolyBase k načtení dat do Azure SQL Data Warehouse
-Pomocí  **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)**  je účinný způsob načítání velké množství dat do Azure SQL Data Warehouse s vysokou propustností. Velký nárůst v propustnost můžete zobrazit pomocí PolyBase místo výchozího mechanismu hromadné vložení. V tématu [zkopírujte výkonu referenční číslo](data-factory-copy-activity-performance.md#performance-reference) s podrobné porovnání. Návod s případu použití najdete v tématu [načíst 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v části 15 minut](data-factory-load-sql-data-warehouse.md).
+Pomocí **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** je účinný způsob načítání velké množství dat do Azure SQL Data Warehouse s vysokou propustností. Velký nárůst v propustnost můžete zobrazit pomocí PolyBase místo výchozího mechanismu hromadné vložení. V tématu [zkopírujte výkonu referenční číslo](data-factory-copy-activity-performance.md#performance-reference) s podrobné porovnání. Návod s případu použití najdete v tématu [načíst 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v části 15 minut](data-factory-load-sql-data-warehouse.md).
 
-* Pokud je zdroj dat v **objektů Blob v Azure nebo Azure Data Lake Store**a formát je kompatibilní s funkcí PolyBase, můžete zkopírovat přímo do Azure SQL Data Warehouse pomocí PolyBase. V tématu  **[přímé kopírování pomocí PolyBase](#direct-copy-using-polybase)**  s podrobnostmi.
-* Pokud vaše zdrojového úložiště dat a formát není podporován původně polybase, můžete použít  **[připravený kopírování pomocí PolyBase](#staged-copy-using-polybase)**  místo toho funkci. Také poskytuje lepší propustnosti automaticky převod dat do formátu kompatibilní s funkcí PolyBase a ukládání dat v úložišti objektů Blob v Azure. Potom načte data do SQL Data Warehouse.
+* Pokud je zdroj dat v **objektů Blob v Azure nebo Azure Data Lake Store**a formát je kompatibilní s funkcí PolyBase, můžete zkopírovat přímo do Azure SQL Data Warehouse pomocí PolyBase. V tématu **[přímé kopírování pomocí PolyBase](#direct-copy-using-polybase)** s podrobnostmi.
+* Pokud vaše zdrojového úložiště dat a formát není podporován původně polybase, můžete použít **[připravený kopírování pomocí PolyBase](#staged-copy-using-polybase)** místo toho funkci. Také poskytuje lepší propustnosti automaticky převod dat do formátu kompatibilní s funkcí PolyBase a ukládání dat v úložišti objektů Blob v Azure. Potom načte data do SQL Data Warehouse.
 
 Nastavte `allowPolyBase` vlastnost **true** jak je znázorněno v následujícím příkladu pro Azure Data Factory ke zkopírování dat do Azure SQL Data Warehouse pomocí funkce PolyBase. Když nastavíte allowPolyBase na hodnotu true, můžete zadat konkrétní vlastnosti PolyBase pomocí `polyBaseSettings` skupina vlastností. najdete v článku [SqlDWSink](#SqlDWSink) část Podrobnosti o vlastnosti, které můžete použít s polyBaseSettings.
 
@@ -198,11 +197,11 @@ Pokud požadavky nejsou splněny, zkontroluje nastavení Azure Data Factory a au
 1. **Zdroj propojené služby** je typu: **azurestorage** nebo **AzureDataLakeStore s objekt zabezpečení ověřování služby**.  
 2. **Vstupní datové sady** je typu: **AzureBlob** nebo **AzureDataLakeStore**a zadejte v části formát `type` vlastnosti je **OrcFormat**, **ParquetFormat**, nebo **TextFormat** s následující konfigurace:
 
-   1. `rowDelimiter`musí být  **\n** .
-   2. `nullValue`je nastavena na **prázdný řetězec** (""), nebo `treatEmptyAsNull` je nastaven na **true**.
-   3. `encodingName`je nastavena na **znakové sady utf-8**, což je **výchozí** hodnotu.
+   1. `rowDelimiter` musí být **\n**.
+   2. `nullValue` je nastavena na **prázdný řetězec** (""), nebo `treatEmptyAsNull` je nastaven na **true**.
+   3. `encodingName` je nastavena na **znakové sady utf-8**, což je **výchozí** hodnotu.
    4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, a `skipLineCount` nejsou zadané.
-   5. `compression`může být **bez komprese**, **GZip**, nebo **Deflate**.
+   5. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
 
     ```JSON
     "typeProperties": {
@@ -310,14 +309,14 @@ Data Factory vytvoří v cílové úložiště se stejným názvem tabulky v zdr
 | Bit | Bit |
 | Decimal | Decimal |
 | číselné | Decimal |
-| Float | Float |
+| Plovoucí desetinná čárka | Plovoucí desetinná čárka |
 | peníze | peníze |
 | Real | Real |
 | SmallMoney | SmallMoney |
 | Binární hodnota | Binární hodnota |
 | varbinary | Varbinary (až 8000) |
 | Datum | Datum |
-| Datum a čas | Datum a čas |
+| DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | Čas | Čas |
 | DateTimeOffset | DateTimeOffset |
@@ -350,13 +349,13 @@ Mapování je stejné jako [mapování datového typu aplikace SQL Server pro te
 | Binární |Byte[] |
 | Bit |Logická hodnota |
 | Char |Řetězec, Char] |
-| datum |Datum a čas |
-| Datum a čas |Datum a čas |
-| datetime2 |Datum a čas |
+| datum |DateTime |
+| Datum a čas |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte[] |
-| Float |Dvojitý |
+| Plovoucí desetinná čárka |Dvojitý |
 | Bitové kopie |Byte[] |
 | celá čísla |Int32 |
 | money |Decimal |
@@ -366,7 +365,7 @@ Mapování je stejné jako [mapování datového typu aplikace SQL Server pro te
 | nvarchar |Řetězec, Char] |
 | skutečné |Svobodný/svobodná |
 | ROWVERSION |Byte[] |
-| smalldatetime |Datum a čas |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | Smallmoney |Decimal |
 | sql_variant |Objekt * |

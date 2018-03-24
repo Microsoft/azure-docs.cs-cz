@@ -1,22 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Využití sestav ukázky rozhraní API a definice | Microsoft Docs"
-description: "Průvodce a ukázky na získávání sestavy na klienta Azure AD B2C, uživatelé, ověřování a ověřování službou Multi-Factor Authentication"
+title: 'Azure Active Directory B2C: Využití sestav ukázky rozhraní API a definice | Microsoft Docs'
+description: Průvodce a ukázky na získávání sestavy na klienta Azure AD B2C, uživatelé, ověřování a ověřování službou Multi-Factor Authentication
 services: active-directory-b2c
 documentationcenter: dev-center-name
-author: rojasja
+author: davidmu1
 manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/04/2017
-ms.author: joroja
-ms.openlocfilehash: 6014301a026d60775634138cbdfe56bfa625508f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 3470f45683ea508dfe338c313a5307eb6c1164d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Přístup k použití sestav v Azure AD B2C prostřednictvím rozhraní API pro generování sestav
 
@@ -118,7 +117,7 @@ Uživatel počet data se aktualizují každých 24 až 48 hodin. Ověření se a
   * ID aplikace existuje, ale v období vytváření sestav nebyla nalezena žádná data. Zkontrolujte parametry data a času.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 ### <a name="monthly-bill-estimates-for-azure-ad"></a>Odhadne měsíčních nákladů pro Azure AD
 V kombinaci s [nejaktuálnější Azure AD B2C cenách dostupné](https://azure.microsoft.com/pricing/details/active-directory-b2c/), můžete odhadnout denní, týdenní a měsíční využití platformy Azure.  Odhad je obzvláště užitečná při plánování změny v chování klienta, který může mít vliv na celkové náklady. Můžete zkontrolovat skutečné náklady v vaše [přidružené předplatné Azure](active-directory-b2c-how-to-enable-billing.md).
 

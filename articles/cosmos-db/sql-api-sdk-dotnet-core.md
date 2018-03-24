@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: SQL .NET Core API, sadu SDK a prostředky | Microsoft Docs"
-description: "Další informace o SQL .NET Core API a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi Cosmos DB .NET SDK služby Azure jádra."
+title: 'Azure Cosmos DB: SQL .NET Core API, sadu SDK a prostředky | Microsoft Docs'
+description: Další informace o SQL .NET Core API a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi Cosmos DB .NET SDK služby Azure jádra.
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c7981bc0388fee763396e68d6de3375a01178a7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f9bdec9f019a3add62610f7f05c7dfd86e66d5d5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní API pro SQL: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -56,9 +56,6 @@ ms.lasthandoff: 03/16/2018
 ## <a name="release-notes"></a>Poznámky k verzi
 
 Cosmos DB .NET SDK služby Azure základní má parity funkcí s nejnovější verzi [.NET SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md).
-
-> [!NOTE] 
-> Cosmos DB .NET SDK služby Azure jádra není kompatibilní s aplikací pro univerzální platformu Windows (UWP). Pokud vás zajímá .NET Core SDK, který podporuje aplikace UWP odeslat e-mailu [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com).
 
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
 

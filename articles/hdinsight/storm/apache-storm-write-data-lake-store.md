@@ -1,6 +1,6 @@
 ---
-title: "Apache Storm při zápisu do úložiště nebo Data Lake Store - Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití Apache Storm k zápisu do HDFS kompatibilní úložiště pro HDInsight. Azure Storage nebo Azure Data Lake Store zadejte HDFS comptabile úložiště pro HDInsight. Tento dokument a související příklad ukazují, jak součást HdfsBolt slouží k zápisu do výchozího úložiště Storm v clusteru HDInsight."
+title: Apache Storm při zápisu do úložiště nebo Data Lake Store - Azure HDInsight | Microsoft Docs
+description: Další informace o použití Apache Storm k zápisu do HDFS kompatibilní úložiště pro HDInsight. Azure Storage nebo Azure Data Lake Store zadejte HDFS comptabile úložiště pro HDInsight. Tento dokument a související příklad ukazují, jak součást HdfsBolt slouží k zápisu do výchozího úložiště Storm v clusteru HDInsight.
 services: hdinsight
 documentationcenter: na
 author: Blackmist
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 908a1130171cc091b4d95d4532cc3bb95edb44f9
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 2310894e7257d0ddb919406a8f297089189a9484
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Zápis do HDFS z Apache Storm v HDInsight
 
-Naučte se používat Storm k zápisu dat do HDFS kompatibilní úložiště používané Apache Storm v HDInsight. HDInsight můžete je používat jako úložiště HDFS comptabile úložiště Azure Storage a Azure Data Lake. Storm poskytuje [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) komponenty, která zapisuje data do HDFS. Tento dokument obsahuje informace o zápis z HdfsBolt na některý typ úložiště. 
+Naučte se používat Storm k zápisu dat do HDFS kompatibilní úložiště používané Apache Storm v HDInsight. HDInsight můžete je používat jako úložiště HDFS kompatibilní úložiště Azure Storage a Azure Data Lake. Storm poskytuje [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) komponenty, která zapisuje data do HDFS. Tento dokument obsahuje informace o zápis z HdfsBolt na některý typ úložiště. 
 
 > [!IMPORTANT]
 > Příklad topologii použitou v tomto dokumentu využívá součásti, které jsou součástí Storm v HDInsight. Změny pro práci s Azure Data Lake Store při použití s další clustery Apache Storm může požadovat.
 
 ## <a name="get-the-code"></a>Získání kódu
 
-Projekt obsahující tato topologie je k dispozici ke stažení z [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
+Projekt obsahující tato topologie je k dispozici ke stažení z [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
 
 Kompilace projektu, potřebujete následující konfigurace pro vývojové prostředí:
 
@@ -134,7 +134,7 @@ Tato YAML definuje následující položky:
 * `rotationPolicy`: Určuje, kdy otočení soubory. V tomto příkladu se provádí bez otočení.
 * `hdfs-bolt`: Používá předchozí komponenty jako parametry konfigurace pro `HdfsBolt` třídy.
 
-Další informace o rozhraní tok najdete v tématu [https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html).
+Další informace o rozhraní tok najdete v tématu [ https://storm.apache.org/releases/1.1.0/flux.html ](https://storm.apache.org/releases/1.1.0/flux.html).
 
 ## <a name="configure-the-cluster"></a>Konfigurace clusteru
 
@@ -148,7 +148,7 @@ Informace o použití tohoto skriptu k vašemu clusteru najdete v tématu [HDIns
 
 ## <a name="build-and-package-the-topology"></a>Sestavení a balíček topologie
 
-1. Stáhněte si příklad projektu ze [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) na svoje vývojové prostředí.
+1. Stáhněte si příklad projektu ze [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) na svoje vývojové prostředí.
 
 2. Z příkazového řádku, terminálu nebo skořápce relace, změnit adresáře do kořenového adresáře staženého projektu. Pro sestavení a balíček topologii, použijte následující příkaz:
    

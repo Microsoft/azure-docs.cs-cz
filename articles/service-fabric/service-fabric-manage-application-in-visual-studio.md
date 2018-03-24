@@ -1,24 +1,24 @@
 ---
-title: "Správa aplikací v sadě Visual Studio | Microsoft Docs"
-description: "Pomocí sady Visual Studio k vytvoření, vývoji, balíčku, nasazení a ladění aplikací Service Fabric a služeb."
+title: Spravovat vaše aplikace Azure Statistika Fabric v sadě Visual Studio | Microsoft Docs
+description: Pomocí sady Visual Studio k vytvoření, vývoji, balíčku, nasazení a ladění aplikace Azure Service Fabric a služeb.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c317cb7e-7eae-466e-ba41-6aa2518be5cf
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/07/2017
-ms.author: mikkelhegn
-ms.openlocfilehash: 81814ef07cfab06855b3bfbf0eb6ef51b8dfce4f
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.date: 02/23/2018
+ms.author: mikhegn
+ms.openlocfilehash: 16ca821f7cae252148e8901c2ccb8539a25d1d59
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Pomocí sady Visual Studio zjednodušují zápis a správu aplikací Service Fabric
 Můžete spravovat vaše aplikace Azure Service Fabric a služby pomocí sady Visual Studio. Jakmile jste [nastavení vývojového prostředí](service-fabric-get-started.md), Visual Studio můžete použít k vytvoření aplikací Service Fabric, přidání služby nebo balíček, registrace a nasazení aplikací v místní vývojový cluster.
@@ -45,7 +45,7 @@ Visual Studio poskytují vlastnost s názvem **režim ladění aplikací**, kter
 
 #### <a name="application-debug-modes"></a>Režim ladění aplikace
 
-1. **Aktualizovat aplikaci** tento režim umožňuje rychle změnit a ladění kódu a podporuje úpravy statických webových souborů při ladění. Tento režim funguje jenom v případě místního vývojového clusteru je v [režim 1 uzel](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
+1. **Aktualizovat aplikaci** tento režim umožňuje rychle změnit a ladění kódu a podporuje úpravy statických webových souborů při ladění. Tento režim funguje jenom v případě místního vývojového clusteru je v [režim 1 uzel](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode). Toto je výchozí režim ladění aplikací.
 2. **Odebrání aplikace** způsobí, že aplikace má být odebrán při ukončení relace ladění.
 3. **Automaticky Upgrade** aplikace stále běží při ukončení relace ladění. Další relaci ladění bude považovat za nasazení upgradu. Proces upgradu zachová všechna data, která jste zadali v předchozí relaci ladění.
 4. **Zachovat aplikace** aplikace neustále běží v clusteru při ukončení relace ladění. Na začátku další relaci ladění, se odeberou aplikace.
@@ -53,7 +53,7 @@ Visual Studio poskytují vlastnost s názvem **režim ladění aplikací**, kter
 Pro **automatického upgradu** uchování dat s použitím možnosti upgradu aplikace Service Fabric. Další informace o upgrade aplikace a jak můžete provést upgrade v prostředí skutečné najdete v tématu [upgradu aplikace Service Fabric](service-fabric-application-upgrade.md).
 
 ## <a name="add-a-service-to-your-service-fabric-application"></a>Přidání služby do aplikace Service Fabric
-Nové služby je možné přidat do vaší aplikace pro rozšíření její funkce.  Aby se zajistilo, že služba je součástí balíčku aplikace, přidejte služby pomocí **nové služby technologie Fabric...**  položku nabídky.
+Nové služby je možné přidat do vaší aplikace pro rozšíření její funkce. Aby se zajistilo, že služba je součástí balíčku aplikace, přidejte služby pomocí **nové služby technologie Fabric...**  položku nabídky.
 
 ![Přidejte novou službu Service Fabric][newservice]
 
@@ -74,12 +74,12 @@ Můžete provádět operace správy základní cluster z v sadě Visual Studio p
 ![Odebrání aplikace][removeapplication]
 
 > [!TIP]
-> Funkce správy bohatší clusteru, najdete v části [vizualizace vašeho clusteru pomocí Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md).
+> Širší funkce správy clusteru najdete v části [vizualizace vašeho clusteru pomocí Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md).
 >
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Model aplikace Service Fabric](service-fabric-application-model.md)
 * [Nasazení aplikace Service Fabric](service-fabric-deploy-remove-applications.md)
 * [Správa aplikací parametry pro prostředí s více](service-fabric-manage-multiple-environment-app-configuration.md)

@@ -1,12 +1,13 @@
 ---
-title: "Jak zvolit algoritmy strojového učení | Microsoft Docs"
-description: "Jak zvolit algoritmy pro učení se supervizí a bez s Azure Machine Learning v clustering, klasifikační nebo regresní experimenty."
+title: Jak zvolit algoritmy strojového učení | Microsoft Docs
+description: Jak zvolit algoritmy pro učení se supervizí a bez s Azure Machine Learning v clustering, klasifikační nebo regresní experimenty.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: pakalra
+ms.author: pakalra
+manager: cgronlun
 editor: cgronlun
-tags: 
+tags: ''
 ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
 ms.devlang: na
@@ -14,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/18/2017
-ms.author: garye
-ms.openlocfilehash: 1b30e4dbf20cac653c323720de779aa5f8edba68
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: e1c7030a5f0c6e13653b302fcb48e7d4efa232c7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>Jak vybrat algoritmy pro službu Microsoft Azure Machine Learning
 Odpověď na otázku "Co algoritmus strojového učení mám použít?" je vždy "Závisí." To závisí na velikosti, kvality a povaha data. To závisí na co chcete udělat s odpověď. To závisí na tom, jak byl výpočty algoritmu přeložit na pokyny k počítači, který používáte. A závisí na tom, jak dlouho je k dispozici. I nejvíce zkušeného datových vědců nelze zjistit, který algoritmus provede než to zkusíte je nejvhodnější.
@@ -102,10 +102,10 @@ Pro některé typy dat, řadu funkcí, může být velmi velké ve srovnání s 
 ### <a name="special-cases"></a>Zvláštní případy
 Některé algoritmy učení zkontrolujte určité předpoklady o struktuře data nebo požadovaných výsledků. Pokud můžete najít ten, který vyhovuje vašim potřebám, se vám může poskytnout užitečnější výsledky, přesnější předpovědi nebo školení rychlejší.
 
-| **Algoritmus** | **Přesnost** | **Čas školení** | **Linearity** | **Parametry** | **Poznámky k** |
+| **Algoritmus** | **Přesnost** | **Čas školení** | **Linearity** | **Parametry** | **Poznámky** |
 | --- |:---:|:---:|:---:|:---:| --- |
 | **Klasifikace dva – třída** | | | | | |
-| [logistic regression](https://msdn.microsoft.com/library/azure/dn905994.aspx) | |● |● |5 | |
+| [Logistic regression](https://msdn.microsoft.com/library/azure/dn905994.aspx) | |● |● |5 | |
 | [rozhodnutí doménové struktury](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
 | [rozhodovací Džungle](https://msdn.microsoft.com/library/azure/dn905976.aspx) |● |○ | |6 |Nároky nedostatku paměti |
 | [Vylepšené rozhodovací strom](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |Nároky velké paměti |
@@ -115,13 +115,13 @@ Některé algoritmy učení zkontrolujte určité předpoklady o struktuře data
 | [počítač vektoru místně přímé podpory](https://msdn.microsoft.com/library/azure/dn913070.aspx) |○ | | |8 |Dobré pro velké funkce sady |
 | [Počítač bodu Bayes.](https://msdn.microsoft.com/library/azure/dn905930.aspx) | |○ |● |3 | |
 | **Klasifikace více – třída** | | | | | |
-| [logistic regression](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
+| [Logistic regression](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
 | [rozhodnutí doménové struktury](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
-| [rozhodovací Džungle](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Nároky nedostatku paměti |
+| [rozhodovací Džungle ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Nároky nedostatku paměti |
 | [neuronové sítě](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Je možné další přizpůsobení](http://go.microsoft.com/fwlink/?LinkId=402867) |
-| [One-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Informace naleznete ve vlastnostech vybrané metody dva – třída |
+| [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Informace naleznete ve vlastnostech vybrané metody dva – třída |
 | **Regrese** | | | | | |
-| [lineární](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
+| [linear](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
 | [Bayesova lineární](https://msdn.microsoft.com/library/azure/dn906022.aspx) | |○ |● |2 | |
 | [rozhodnutí doménové struktury](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
 | [Vylepšené rozhodovací strom](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Nároky velké paměti |
@@ -187,7 +187,7 @@ Podpora vektoru počítače (SVMs) najít hranice, která odděluje třídy podl
 
 ***Okraj oddělujících dvě třídy maximalizuje hranici typické podporu počítač vector – třída***
 
-Jiného produktu Microsoft Research [two-class místně hloubkové SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) je – lineární varianta SVM, který bude mít většinu rychlost a paměť efektivitu lineární verze. Je ideální pro případy, kdy lineární přístup nedává dostatečně přesné odpovědi. Vývojáři je udržováno rychlého rozdělením problém do spoustu malé lineární SVM potíže. Pro čtení [úplný popis](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf) podrobnosti o tom, jak se vyžádat vypnout platí to.
+Jiného produktu Microsoft Research [two-class místně hloubkové SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) je – lineární varianta SVM, který bude mít většinu rychlost a paměť efektivitu lineární verze. Je ideální pro případy, kdy lineární přístup nedává dostatečně přesné odpovědi. Vývojáři je udržováno rychlého rozdělením problém do spoustu malé lineární SVM potíže. Pro čtení [úplný popis](http://proceedings.mlr.press/v28/jose13.html) podrobnosti o tom, jak se vyžádat vypnout platí to.
 
 Pomocí inteligentní rozšíření nelineární SVMs [SVM jedna třída](https://msdn.microsoft.com/library/azure/dn913103.aspx) nevykresluje hranici, která úzce popisuje celé datové sady. Je užitečné pro zjišťování anomálií. Všechny nové datové body, které daleko spadal mimo tuto hranici neobvyklá dostatečně být pozoruhodné.
 

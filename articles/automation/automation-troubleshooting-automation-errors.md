@@ -1,26 +1,20 @@
 ---
-title: "Řešení běžných potíží Azure Automation | Microsoft Docs"
-description: "Tento článek obsahuje informace o řešení potíží a opravte běžné chyby Azure Automation."
+title: Řešení běžných potíží Azure Automation | Microsoft Docs
+description: Tento článek obsahuje informace o řešení potíží a opravte běžné chyby Azure Automation.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: stevenka
-editor: tysonn
-tags: top-support-issue
-keywords: "Chyba automatizace, řešení potíží problém"
-ms.assetid: 5f3cfe61-70b0-4e9c-b892-d02daaeee07d
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/22/2017
-ms.author: sngun; v-reagie
-ms.openlocfilehash: 76a3096595d07916159b3a50da0793c653a490a0
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+manager: carmonm
+tags: top-support-issue
+keywords: Chyba automatizace, řešení potíží problém
+ms.openlocfilehash: 9764068dd7a1a499c61695f39bff726a8ea3aac9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Odstraňování běžných problémů ve službě Azure Automation 
 Tento článek obsahuje nápovědu k odstraňování běžných chyb, může docházet v Azure Automation a navrhne možná řešení jejich řešení potíží.
@@ -33,7 +27,7 @@ Tento článek obsahuje nápovědu k odstraňování běžných chyb, může doc
 
 **Tipy pro odstraňování potíží:** Chcete-li určit příčinu chyby, proveďte následující kroky:  
 
-1. Ujistěte se, že nemáte žádné speciální znaky, včetně  **@**  znak v názvu asset přihlašovacích údajů automatizace, kterou používáte pro připojení k Azure.  
+1. Ujistěte se, že nemáte žádné speciální znaky, včetně **@** znak v názvu asset přihlašovacích údajů automatizace, kterou používáte pro připojení k Azure.  
 2. Zkontrolujte, můžete použít uživatelské jméno a heslo, které jsou uložené v Azure Automation přihlašovací údaje ve svém místním prostředí PowerShell ISE editoru. Můžete provést spuštěním následující rutiny v integrovaném Skriptovacím prostředí PowerShell:  
 
         $Cred = Get-Credential  
@@ -133,7 +127,7 @@ Tento článek obsahuje nápovědu k odstraňování běžných chyb, může doc
 
 **Tipy pro odstraňování potíží:** některý z následujících řešení opravě problému:
 
-* Ujistěte se, že modul dodržuje následující formát: ModuleName.Zip  **->**  ModuleName nebo číslo verze  **->**  (ModuleName.psm1, ModuleName.psd1)
+* Ujistěte se, že modul dodržuje následující formát: ModuleName.Zip **->** ModuleName nebo číslo verze **->** (ModuleName.psm1, ModuleName.psd1)
 * Otevřete soubor .psd1 a zjistěte, zda modul všechny závislosti. Pokud ano, nahrajte do účtu Automation tyto moduly.
 * Ujistěte se, že jsou všechny odkazované knihoven DLL umístěny ve složce modulu.
 

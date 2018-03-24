@@ -1,33 +1,33 @@
 ---
-title: "Nabízí konzultace ohledně Azure Marketplace"
-description: "Podmínky kritéria a požadavky na publikování pro nový typ nabídky v Azure Marketplace"
+title: Nabízí konzultace ohledně Azure Marketplace
+description: Podmínky kritéria a požadavky na publikování pro nový typ nabídky v Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: 
+documentationcenter: ''
 author: ellacroi
 manager: msmbaldwin
-editor: 
+editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: dd00711a9be208ddf635c998a77935ed63fcf996
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e063721f2fa2ac87b2f9dd7385b2d114a1b76cb3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="azure-marketplace-consulting-services"></a>Konzultace ohledně služby Azure Marketplace
+# <a name="azure-marketplace-consulting-services"></a>Konzultace ohledně služby Azure Marketplace
 Azure Marketplace s cílem propojení zákazníků s služby podporují a rozšířit jejich použití Microsoft Azure, podporuje seznam konzultace ohledně nabídky služby od partnerů systému integrátor (SI) společnosti Microsoft. 
 
 Tyto konzultace ohledně služby, které jsou specifické pro zákazníka oznámeních podporujících zapojení uživatelů, pevné v rozsahu a doby trvání, nabídky odstraněny cena nebo uvolněte a mít definovanou výsledek. Potenciální zákazníci snadno vyžádat nechat se kontaktovat partnery způsobem bez tření. Partneři obdrží oznámení v jejich systému CRM a zaměřte se na odpověď pro uživatele v rámci 48hrs.
 
 Služba nabízí na základě Microsoft Dynamics 365, Microsoft Office 365 a Microsoft Power BI se mohou být uvedený na AppSource. Zkontrolujte podrobné [pokyny pro tyto služby zde](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
 
-##<a name="eligible-services-and-partners"></a>Oprávněných služeb a partnery
+## <a name="eligible-services-and-partners"></a>Oprávněných služeb a partnery
 
 Partneři také musí mít stříbrným nebo gold competency v příslušné oblasti pro jejich službu. Níže najdete vhodné možnosti:
 
@@ -49,7 +49,7 @@ S výjimkou informačních, konzultační služby může být nabídnuta osoba (
 
 Další informace o [možnosti prostřednictvím Microsoft Partner Network](https://partner.microsoft.com/en-US/membership/competencies#simple-tab-content-1). 
 
-##<a name="countries-supported"></a>Podporované země
+## <a name="countries-supported"></a>Podporované země
 
 Partnerů SI můžete odeslat konzultační služby nabídky pro následující 18 zemích. 
 
@@ -65,7 +65,7 @@ Partnerů SI můžete odeslat konzultační služby nabídky pro následující 
 
 Spuštění pro Azure Marketplace konzultace ohledně služby přejde za provozu nejprve Austrálie, Kanada, Spojené království a Spojených státech amerických. Katalogy ostatních zemí přejde za provozu, jakmile smysluplný číslo a poutavých výběr nabídek služeb byly odeslaný partnery a schváleny společností Microsoft.
 
-##<a name="prepare-your-publishing-artifacts"></a>Příprava publikování artefaktů
+## <a name="prepare-your-publishing-artifacts"></a>Příprava publikování artefaktů
 Ještě dříve, než můžete určit služby, můžete spustit shromažďování a příprava obsahu, které vám pomohou vaše výpis vyjádřete hodnota služby a řešení zákazníkovi cíl. 
 
 
@@ -88,7 +88,7 @@ Ještě dříve, než můžete určit služby, můžete spustit shromažďován�
 |Marketingové dokumenty (maximální 3)     |
 
 
-##<a name="publishing-process"></a>Proces publikování
+## <a name="publishing-process"></a>Proces publikování
 Výpis nabídku vaší konzultační služby v Azure Marketplace zahrnuje následující:
 
 1. **Požadavek:** odeslat ve vaší žádosti [zde](https://azuremarketplace.microsoft.com/en-us/sell/nominate) a dejte nám vědět více o vaší organizaci. 

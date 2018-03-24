@@ -1,11 +1,11 @@
 ---
-title: "Zobrazení dat aplikací Azure Application Insights | Microsoft Docs"
-description: "Řešení Application Insights konektor slouží k diagnostice problémů s výkonem a pochopit, co uživatelé dělají s vaší aplikací, pokud monitorované pomocí Application Insights."
+title: Zobrazení dat aplikací Azure Application Insights | Microsoft Docs
+description: Řešení Application Insights konektor slouží k diagnostice problémů s výkonem a pochopit, co uživatelé dělají s vaší aplikací, pokud monitorované pomocí Application Insights.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: magoedte
-ms.openlocfilehash: 1556e91710990351d6723325789201afa99b1943
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 854ec70c897b6a561fdec056228f82ccec3ae16c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Řešení správy konektor služby Statistika aplikací (Preview)
 
@@ -88,12 +88,12 @@ Klikněte **Application Insights** dlaždici otevřete **Application Insights** 
 
 | **Sloupec** | **Popis** |
 | --- | --- |
-| Aplikace – počet aplikací | Zobrazuje počet aplikací v prostředky aplikace. Také uvádí názvy aplikací a pro každou počet záznamů aplikace. Klikněte na číslo ke spuštění vyhledávání protokolu pro <code>Type=ApplicationInsights &#124; measure sum(SampledCount) by ApplicationName</code> <br><br>  Klikněte na název aplikace ke spuštění vyhledávání protokolu pro aplikaci, která zobrazuje aplikace záznamů na hostitele, záznamy podle typu telemetrie a všechna data podle typu (na základě poslední den). |
-| Datový svazek – hostitelů odeslání dat | Zobrazuje počet počítač hostitele, kteří odesílají data. Také uvádí hostitele počítače a počet záznamů pro každého hostitele. Klikněte na číslo ke spuštění vyhledávání protokolu pro <code>Type=ApplicationInsights &#124; measure sum(SampledCount) by Host</code> <br><br> Klikněte na název počítače, spusťte hledání protokolů pro hostitele, který zobrazuje aplikace záznamů na hostitele, záznamy podle typu telemetrie a všechna data podle typu (na základě poslední den). |
-| Dostupnost – výsledky testu webu | Zobrazí prstencový graf pro web výsledky testů, označující průchodu nebo selhání. Klikněte na graf ke spuštění vyhledávání protokolu pro <code>Type=ApplicationInsights TelemetryType=Availability &#124; measure sum(SampledCount) by AvailabilityResult</code> <br><br> Výsledky zobrazit počet průchodů a selhání pro všechny testy. Zobrazuje všechny webové aplikace s přenosy dat za poslední minutu. Klikněte na název aplikace zobrazíte vyhledávání protokolu s podrobnostmi o testy webu se nezdařilo. |
-| Požadavky serveru – počet požadavků za hodinu | Zobrazí graf řádku požadavků serveru za hodinu pro různé aplikace. Najeďte myší na řádek v grafu pro zobrazení 3 hlavních aplikace přijímá požadavky na bod v čase. Také ukazuje seznam aplikací, které přijímá požadavky a počet požadavků pro vybrané období. <br><br>Klikněte na graf tak, aby spuštění protokolu vyhledejte <code>Type=ApplicationInsights TelemetryType=Request &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code> který ukazuje podrobnější spojnicový graf požadavků serveru za hodinu pro různé aplikace. <br><br> Klikněte na tlačítko Spustit hledání protokolů pro aplikaci v seznamu <code>Type=ApplicationInsights  ApplicationName=yourapplicationname  TelemetryType=Request</code> , obsahuje seznam požadavků, grafy pro požadavky na čas a žádost o dobu trvání a seznam požadavek kódů odpovědi.   |
-| Chyby – neúspěšné požadavky za hodinu | Zobrazí graf řádku žádostí o selhání aplikace za hodinu. Najeďte na graf zobrazíte hlavních 3 aplikací s neúspěšných požadavků pro bod v čase. Také ukazuje seznam aplikací s počtem neúspěšných požadavků pro každou. Klikněte na graf ke spuštění protokolu vyhledejte <code>Type=ApplicationInsights TelemetryType=Request  RequestSuccess = false &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code> který ukazuje podrobnější spojnicový graf požadavků na aplikaci, která selhala. <br><br>Klikněte na položku v seznamu a spusťte hledání protokolů pro <code>Type=ApplicationInsights ApplicationName=yourapplicationname TelemetryType=Request  RequestSuccess=false</code> , ukazuje neúspěšné požadavky, grafy pro neúspěšné požadavky přes čas a žádost o doba trvání a seznam kódů odpovědi chybných požadavků. |
-| Výjimky – výjimky za hodinu | Zobrazí graf řádku výjimek za hodinu. Najeďte na graf zobrazíte hlavních 3 aplikací s výjimky pro bod v čase. Také ukazuje seznam aplikací s počet výjimek pro každou. Klikněte na graf ke spuštění protokolu vyhledejte <code>Type=ApplicationInsights TelemetryType=Exception &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code> , zobrazí podrobnější graf odkaz výjimek. <br><br>Klikněte na položku v seznamu a spusťte hledání protokolů pro <code>Type=ApplicationInsights  ApplicationName=yourapplicationname TelemetryType=Exception</code> , zobrazí se seznam výjimek, grafy pro výjimky přes čas a k selhání požadavků a seznam typů výjimek.  |
+| Aplikace – počet aplikací | Zobrazuje počet aplikací v prostředky aplikace. Také uvádí názvy aplikací a pro každou počet záznamů aplikace. Klikněte na číslo ke spuštění vyhledávání protokolu pro <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Klikněte na název aplikace ke spuštění vyhledávání protokolu pro aplikaci, která zobrazuje aplikace záznamů na hostitele, záznamy podle typu telemetrie a všechna data podle typu (na základě poslední den). |
+| Datový svazek – hostitelů odeslání dat | Zobrazuje počet počítač hostitele, kteří odesílají data. Také uvádí hostitele počítače a počet záznamů pro každého hostitele. Klikněte na číslo ke spuštění vyhledávání protokolu pro <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Klikněte na název počítače, spusťte hledání protokolů pro hostitele, který zobrazuje aplikace záznamů na hostitele, záznamy podle typu telemetrie a všechna data podle typu (na základě poslední den). |
+| Dostupnost – výsledky testu webu | Zobrazí prstencový graf pro web výsledky testů, označující průchodu nebo selhání. Klikněte na graf ke spuštění vyhledávání protokolu pro <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Výsledky zobrazit počet průchodů a selhání pro všechny testy. Zobrazuje všechny webové aplikace s přenosy dat za poslední minutu. Klikněte na název aplikace zobrazíte vyhledávání protokolu s podrobnostmi o testy webu se nezdařilo. |
+| Požadavky serveru – počet požadavků za hodinu | Zobrazí graf řádku požadavků serveru za hodinu pro různé aplikace. Najeďte myší na řádek v grafu pro zobrazení 3 hlavních aplikace přijímá požadavky na bod v čase. Také ukazuje seznam aplikací, které přijímá požadavky a počet požadavků pro vybrané období. <br><br>Klikněte na graf tak, aby spuštění protokolu vyhledejte <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> který ukazuje podrobnější spojnicový graf požadavků serveru za hodinu pro různé aplikace. <br><br> Klikněte na tlačítko Spustit hledání protokolů pro aplikaci v seznamu <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> , obsahuje seznam požadavků, grafy pro požadavky na čas a žádost o dobu trvání a seznam požadavek kódů odpovědi.   |
+| Chyby – neúspěšné požadavky za hodinu | Zobrazí graf řádku žádostí o selhání aplikace za hodinu. Najeďte na graf zobrazíte hlavních 3 aplikací s neúspěšných požadavků pro bod v čase. Také ukazuje seznam aplikací s počtem neúspěšných požadavků pro každou. Klikněte na graf ke spuštění protokolu vyhledejte <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> který ukazuje podrobnější spojnicový graf požadavků na aplikaci, která selhala. <br><br>Klikněte na položku v seznamu a spusťte hledání protokolů pro <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> , ukazuje neúspěšné požadavky, grafy pro neúspěšné požadavky přes čas a žádost o doba trvání a seznam kódů odpovědi chybných požadavků. |
+| Výjimky – výjimky za hodinu | Zobrazí graf řádku výjimek za hodinu. Najeďte na graf zobrazíte hlavních 3 aplikací s výjimky pro bod v čase. Také ukazuje seznam aplikací s počet výjimek pro každou. Klikněte na graf ke spuštění protokolu vyhledejte <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> , zobrazí podrobnější graf odkaz výjimek. <br><br>Klikněte na položku v seznamu a spusťte hledání protokolů pro <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> , zobrazí se seznam výjimek, grafy pro výjimky přes čas a k selhání požadavků a seznam typů výjimek.  |
 
 ### <a name="view-the-application-insights-perspective-with-log-search"></a>Zobrazení perspektivy Application Insights s hledání protokolů
 
@@ -117,7 +117,7 @@ Když kliknete na libovolné místo v **výjimky** okně uvidíte vizualizace, p
 
 ![Okna Statistika výjimky aplikací](./media/log-analytics-app-insights-connector/exceptions-blade-drill-search.png)
 
-Bez ohledu na to, jestli klepnutí na něco **konektor služby Statistika aplikace** řídicího panelu, v **vyhledávání** samostatně, stránka jakýkoli dotaz vrací Application Insights data zobrazují perspektivy Application Insights. Pokud se nacházíte Application Insights data, například  **&#42;**  dotaz také zobrazí na kartě perspektivy jako na následujícím obrázku:
+Bez ohledu na to, jestli klepnutí na něco **konektor služby Statistika aplikace** řídicího panelu, v **vyhledávání** samostatně, stránka jakýkoli dotaz vrací Application Insights data zobrazují perspektivy Application Insights. Pokud se nacházíte Application Insights data, například **&#42;** dotaz také zobrazí na kartě perspektivy jako na následujícím obrázku:
 
 ![Application Insights ](./media/log-analytics-app-insights-connector/app-insights-search.png)
 
@@ -140,12 +140,12 @@ Chcete-li otáčení, klikněte na symbol tří teček (**...** ), zobrazí se n
 
 ### <a name="sample-corrected-data"></a>Opravě ukázková data
 
-Poskytuje služby Application Insights  *[vzorkování oprava](../application-insights/app-insights-sampling.md)*  ke snížení telemetrie přenosů. Když povolíte vzorkování ve vaší aplikaci Application Insights, zobrazí menší počet položek, které jsou uložené ve službě Application Insights a v analýzy protokolů. Při konzistenci dat se zachová, i v **konektor služby Statistika aplikace** stránky a perspektivy, je nutno ručně opravit jen Vzorkovaná data pro své vlastní dotazy.
+Poskytuje služby Application Insights *[vzorkování oprava](../application-insights/app-insights-sampling.md)* ke snížení telemetrie přenosů. Když povolíte vzorkování ve vaší aplikaci Application Insights, zobrazí menší počet položek, které jsou uložené ve službě Application Insights a v analýzy protokolů. Při konzistenci dat se zachová, i v **konektor služby Statistika aplikace** stránky a perspektivy, je nutno ručně opravit jen Vzorkovaná data pro své vlastní dotazy.
 
 Tady je příklad vzorkování oprava do protokolu vyhledávacího dotazu:
 
 ```
-Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
+ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by TelemetryType
 ```
 
 **Počet vzorků** pole je k dispozici ve všech položek a zobrazuje počet datových bodů, které představuje položku. Pokud zapnete vzorkování pro vaši aplikaci Application Insights **počet vzorků** je větší než 1. Zjistit skutečný počet položek, které vaše aplikace generuje součet **počet vzorků** pole.

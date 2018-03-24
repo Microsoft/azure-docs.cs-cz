@@ -1,11 +1,11 @@
 ---
-title: "Azure Resource Health – nejčastější dotazy | Microsoft Docs"
-description: "Přehled o stavu prostředků Azure."
+title: Azure Resource Health – nejčastější dotazy | Microsoft Docs
+description: Přehled o stavu prostředků Azure.
 services: Resource health
 documentationcenter: dev-center-name
 author: BernardoAMunoz
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
 ms.service: service-health
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/05/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 692d03ad80989a969a73b15bb9042a01c286d1ec
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5155faac6051f5a586255148f77a52a90745673e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health – nejčastější dotazy
 Přečtěte si odpovědi na časté otázky týkající se stavu prostředků Azure.
@@ -81,12 +81,12 @@ Stav prostředku je k dispozici v napříč všech oblastech Azure s výjimkou n
 - Německo – střed
 - Německo – severovýchod
 
-## <a name="how-is-resource-health-different-from-the-service-health-dashboard-or-the-azure-portal-service-notifications"></a>Jak se liší od řídicím panelu stavu služeb nebo oznámení portálu služby Azure stav prostředku?
-Informace poskytované stav prostředku je specifičtější než co je poskytováno řídicím panelu stavu služeb Azure.
+## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Jak se liší od Azure stavu nebo řídicí panel stavu služby stavu prostředků?
+Informace poskytované stav prostředku je specifičtější než je zadán podle stavu Azure nebo řídicího panelu služby stavu.
 
-Zatímco [stavu Azure](https://status.azure.com) a oznámení portálu service je informovat o problémů služby, které ovlivňují širokou škálu zákazníků (například oblasti Azure), stav prostředku zpřístupní podrobnější události, které se vztahují pouze k konkrétní prostředek. Například pokud hostitel neočekávaně restartuje, stav prostředku výstrahy pouze zákazníků, jejichž virtuální počítače běžely na tomto hostiteli.
+Zatímco [Azure stav](https://status.azure.com) a řídicí panel stavu služby je informovat o problémů služby, které ovlivňují širokou škálu zákazníků (například oblasti Azure), stav prostředku zpřístupní podrobnější události, které se vztahují pouze k konkrétní prostředek. Například pokud hostitel neočekávaně restartuje, stav prostředku výstrahy pouze zákazníků, jejichž virtuální počítače běžely na tomto hostiteli.
 
-Je důležité si všimněte si, že abyste si mohli kompletní přehled událostí vaše prostředky, které mají vliv, stav prostředku navíc zobrazí události, které jsou publikovány v oznámení o službách a řídicím panelu stavu služeb.
+Je důležité si všimněte si, že abyste si mohli kompletní přehled událostí vaše prostředky, které mají vliv, stav prostředku navíc zobrazí události, které jsou publikovány v řídicím panelu stavu služeb.
 
 ## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Je nutné aktivovat stav prostředku pro všechny prostředky?
 Ne, informace o stavu není k dispozici pro všechny typy prostředků, k dispozici prostřednictvím stav prostředku. 
@@ -100,7 +100,7 @@ Ano.  Azure stav prostředku je zdarma.
 ## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Jaké jsou doporučení, které poskytuje stav prostředku?
 Podle toho, stav, stav prostředku poskytuje doporučení s cílem snížit dobu, že stráví řešení potíží. Pro dostupné prostředky dojde k doporučení zaměřená na tom, jak vyřešit nejběžnější problémy zákazníků. Pokud prostředek není k dispozici z důvodu Azure neplánované událost, pak se fokus bude na které jste během a po dokončení procesu obnovení. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o stavu prostředků:
 -  [Přehled Azure Resource Health](Resource-health-overview.md)

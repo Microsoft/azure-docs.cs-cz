@@ -1,11 +1,11 @@
 ---
-title: "Určení koncové body služby Service Fabric | Microsoft Docs"
-description: "Postupy popisují koncový bod prostředků v service manifest, včetně toho, jak nastavit koncové body HTTPS"
+title: Určení koncové body služby Service Fabric | Microsoft Docs
+description: Postupy popisují koncový bod prostředků v service manifest, včetně toho, jak nastavit koncové body HTTPS
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: da36cbdb-6531-4dae-88e8-a311ab71520d
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 6fa425829e8da294c8db3d64c3d8fd202c74375a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a028471871754c2b9c3981ec13f5788643675a77
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Zadání prostředků v manifestu služby
 ## <a name="overview"></a>Přehled
@@ -154,7 +154,7 @@ Pro Linux clusterů **MY** uložení výchozích hodnot do složky **/var/lib/sf
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>Přepsání koncových bodů v ServiceManifest.xml
 
-ApplicationManifest přidejte ResourceOverrides část, která bude na stejné úrovni ConfigOverrides sekci. V této části můžete zadat přepsání pro oddíl koncové body v části prostředky zadané v Service manifest.
+ApplicationManifest přidejte ResourceOverrides část, která bude na stejné úrovni ConfigOverrides sekci. V této části můžete zadat přepsání pro oddíl koncové body v části prostředky zadané v Service manifest. Přepsání koncových bodů je podporována v modulu runtime 5.7.217/SDK 2.7.217 a vyšší.
 
 Chcete-li přepsat koncového bodu v ServiceManifest pomocí ApplicationParameters změn ApplicationManifest jako následující:
 

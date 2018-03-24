@@ -1,24 +1,19 @@
 ---
-title: "Obchodní kontinuitu a zotavení po havárii (BCDR): spárovat oblasti Azure | Microsoft Docs"
-description: "Další informace o Azure regionální párování zajistit, aby aplikace byly odolné při selhání datového centra."
+title: 'Obchodní kontinuitu a zotavení po havárii (BCDR): spárovat oblasti Azure | Microsoft Docs'
+description: Další informace o Azure regionální párování zajistit, aby aplikace byly odolné při selhání datového centra.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rayne-wiselman
-manager: cfreeman
-editor: 
-ms.assetid: c2d0a21c-2564-4d42-991a-bc31723f61a4
-ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
+manager: carmonm
+ms.service: multiple
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/21/2018
 ms.author: raynew
-ms.openlocfilehash: 394f353837433e241e4da6f4accdb5eaa24bae46
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 660ced47b48e981b65c6b9390809e345be8eda2d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Obchodní kontinuitu a zotavení po havárii (BCDR): spárovat oblasti Azure
 
@@ -58,10 +53,10 @@ Obrázek 1 – Azure regionální pár diagram
 
 Tabulka 1 - mapování regionální párů Azure
 
-- > (1) Indie – západ je jiný, protože je spárován s jinou oblast jenom v jednom směru. Je sekundární oblast Západní Indie – Jih, Indie, ale je sekundární oblast Indie – Jih, střed.
-- > (2) Brazílie – jih je jedinečný, protože je spárován s oblastí mimo svůj vlastní geography. Brazílie – jih sekundární oblast je jihu USA, ale jihu USA na sekundární oblast není Brazílie – jih.
-- > (3) sekundární oblast USA verze pro státní správu Iowa je Virginia nám verze pro státní správu, ale nám verze pro státní správu Virginia sekundární oblast není Iowa nám verze pro státní správu.
-- > (4) sekundární oblast USA verze pro státní správu Virginia je Texas nám verze pro státní správu, ale nám verze pro státní správu Texas sekundární oblast není Virginia nám verze pro státní správu.
+- (1) Indie – západ je jiný, protože je spárován s jinou oblast jenom v jednom směru. Je sekundární oblast Západní Indie – Jih, Indie, ale je sekundární oblast Indie – Jih, střed.
+- (2) Brazílie – jih je jedinečný, protože je spárován s oblastí mimo svůj vlastní geography. Brazílie – jih sekundární oblast je jihu USA, ale jihu USA na sekundární oblast není Brazílie – jih.
+- (3) sekundární oblast USA verze pro státní správu Iowa je Virginia nám verze pro státní správu, ale nám verze pro státní správu Virginia sekundární oblast není Iowa nám verze pro státní správu.
+- (4) sekundární oblast USA verze pro státní správu Virginia je Texas nám verze pro státní správu, ale nám verze pro státní správu Texas sekundární oblast není Virginia nám verze pro státní správu.
 
 
 Doporučujeme, abyste replikaci úloh mezi místní dvojice k těžit z Azure a zásad izolace a dostupnost. Například aktualizace plánované systému Azure se nasadí postupně (ne ve stejnou dobu) přes spárované oblasti. To znamená, že i v výjimečná událost vadný aktualizace, obou oblastí to nebude mít vliv současně. Navíc k nepravděpodobnému široký výpadku obnovení alespoň jedné oblasti mimo každý pár prioritu.

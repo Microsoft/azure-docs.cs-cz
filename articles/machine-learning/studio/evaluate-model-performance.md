@@ -1,10 +1,11 @@
 ---
-title: "Vyhodnocení modelu výkon v Machine Learning | Microsoft Docs"
-description: "Vysvětluje, jak k vyhodnocení výkonu modelu v Azure Machine Learning."
+title: Vyhodnocení modelu výkon v Machine Learning | Microsoft Docs
+description: Vysvětluje, jak k vyhodnocení výkonu modelu v Azure Machine Learning.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: 48ce4584f7270d78b1d09b848bfdd305d03012b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bf065d8e91bd4ebb4cc3932c0525cb091b26b38
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Jak vyhodnotit výkon modelu ve službě Azure Machine Learning
 Tento článek ukazuje, jak k vyhodnocení výkonu modelu v Azure Machine Learning Studio a poskytuje stručné vysvětlení metriky, které jsou k dispozici pro tuto úlohu. Tři běžné scénáře pod dohledem learning uvádíme: 
@@ -151,7 +151,7 @@ Připojte porty, jak je znázorněno níže na obrázku 10.
 
 Nastavte popisek index sloupce [Train Model] [ train-model] modulu 5. Datová sada má žádný řádek záhlaví, ale víme, že popisky třídy jsou ve sloupci pátý.
 
-Klikněte na [importovat Data] [ import-data] modul a sadu *zdroj dat* vlastnost *adresa URL webové prostřednictvím protokolu HTTP*a *adresa URL* k http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
+Klikněte na [importovat Data] [ import-data] modul a sadu *zdroj dat* vlastnost *adresa URL webové prostřednictvím protokolu HTTP*a *URL* k http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
 
 Nastavte podíl instance, které chcete použít pro školení v [rozdělení dat] [ split] modulu (0,7 např.).
 

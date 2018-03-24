@@ -1,12 +1,12 @@
 ---
 title: Nainstalujte Azure Backup Server v2 | Microsoft Docs
-description: "Azure v2 zálohování serveru poskytuje vylepšené možnosti zálohování pro ochranu virtuálních počítačů, soubory a složky, úlohy a další. Informace o instalaci nebo upgradu na Azure Backup Server v2."
+description: Azure v2 zálohování serveru poskytuje vylepšené možnosti zálohování pro ochranu virtuálních počítačů, soubory a složky, úlohy a další. Informace o instalaci nebo upgradu na Azure Backup Server v2.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: masaran;markgal
-ms.openlocfilehash: 1bbb16afef7940933b4c3ae23873f212770137e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd7b76d9e06bc82ffd75f12131c2c247da05cc91
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-azure-backup-server-v2"></a>Nainstalujte Azure Backup Server v2
 
@@ -36,7 +36,7 @@ Zálohování serveru v2 můžete nainstalovat na Windows Server 2012 R2 nebo Wi
 ## <a name="upgrade-backup-server-to-v2"></a>Upgrade záložní Server pro v2
 K upgradu na Backup Server v2 zálohovat Server v1, zkontrolujte, zda že má instalace požadovaných aktualizací:
 
-- [Aktualizovat agenty ochrany](backup-mabs-upgrade-to-v2.md#update-the-dpm-protection-agent) na chráněných serverech.
+- [Aktualizovat agenty ochrany](backup-mabs-upgrade-to-v2.md#update-the-data-protection-manager-protection-agent) na chráněných serverech.
 - Upgrade systému Windows Server 2012 R2 na Windows Server 2016.
 - Správce vzdáleného serveru Azure Backup upgradujte na všech provozních serverech.
 - Ujistěte se, že jsou zálohy nastaveny na pokračovat bez restartování provozním serveru.
@@ -74,7 +74,7 @@ K upgradu na Backup Server v2 zálohovat Server v1, zkontrolujte, zda že má in
 
   ![Instalační program instalace - zkontrolujte nastavení SQL a tlačítko Instalovat](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5a-check-and fix-settings.png)
 
-8. Na **nastavení instalace** stránky, proveďte požadované změny umístění, kde je nainstalován Backup Server, nebo cesta k pomocnému umístění. Vyberte **Další**.
+8. Na **nastavení instalace** stránky, proveďte požadované změny umístění, kde je nainstalován Backup Server, nebo cesta k pomocnému umístění. Vyberte **Next** (Další).
 
   ![Instalační program instalaci - stránka nastavení instalace](./media/backup-mabs-upgrade-to-v2/mabs-installer-s6-installation-settings.png)
 
@@ -115,7 +115,7 @@ Postup přidání svazku v konzole pro správu:
 
 Zálohování serveru zadejte, které úlohy jsou přiřazeny k svazků, které. Například můžete nastavit nákladné svazky, které podporují vysoký počet vstupně výstupních operací za sekundu (IOPS) pro uložení pouze úlohy, které vyžadují časté, vysoký počet záloh. Příkladem je SQL Server s protokoly transakcí.
 
-#### <a name="update-dpmdiskstorage"></a>Aktualizace DPMDiskStorage
+#### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
 Pokud chcete aktualizovat vlastnosti svazku ve fondu úložiště zálohování serveru, použijte rutinu prostředí PowerShell DPMDiskStorage aktualizace.
 
@@ -143,12 +143,12 @@ Chcete-li vytvořit skupinu ochrany:
 
   ![Průvodce vytvořením nové skupiny ochrany](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-1.png)
 
-3. Na **úvodní** vyberte **Další**.
+3. Na **úvodní** stránce vyberte **Další**.
 4. Na **vybrat typ skupiny ochrany** vyberte typ skupiny ochrany, kterou chcete vytvořit a potom vyberte **Další**.
 
   ![Stránka Typ vyberte skupinu ochrany](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-2.png)
 
-5. Na **vybrat členy skupiny** stránky v **Dostupní členové** podokně, členy s jsou uvedeny agenty ochrany. V tomto příkladu vyberte svazek D:\ a E:\ a přidat je do **vybrané členy** podokně. Vyberte **Další**.
+5. Na **vybrat členy skupiny** stránky v **Dostupní členové** podokně, členy s jsou uvedeny agenty ochrany. V tomto příkladu vyberte svazek D:\ a E:\ a přidat je do **vybrané členy** podokně. Vyberte **Next** (Další).
 
   ![Vyberte skupiny členy stránky](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-3.png)
 
@@ -276,10 +276,10 @@ zálohování do Azure, spusťte příkaz DPMSYNC-SYNC
 ## <a name="new-powershell-cmdlets-in-v2"></a>Nové rutiny prostředí PowerShell v v2
 
 Při instalaci serveru Azure Backup v2 jsou k dispozici dvě nové rutiny: 
-* [DPMRecoveryPoint připojení](https://technet.microsoft.com/library/mt787159.aspx)
-* [Odpojení DPMRecoveryPoint](https://technet.microsoft.com/library/mt787158.aspx)
+* [Mount-DPMRecoveryPoint](https://technet.microsoft.com/library/mt787159.aspx)
+* [Dismount-DPMRecoveryPoint](https://technet.microsoft.com/library/mt787158.aspx)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak připravit server nebo začít chránit zatížení:
 - [Příprava úlohy zálohování serveru](backup-azure-microsoft-azure-backup.md)

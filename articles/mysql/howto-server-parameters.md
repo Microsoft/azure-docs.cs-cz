@@ -1,6 +1,6 @@
 ---
-title: "Postup konfigurace serveru parametry v databáze Azure pro databázi MySQL"
-description: "Tento článek popisuje, jak nakonfigurovat parametry serveru MySQL v Azure Database pro databázi MySQL pomocí portálu Azure."
+title: Postup konfigurace serveru parametry v databáze Azure pro databázi MySQL
+description: Tento článek popisuje, jak nakonfigurovat parametry serveru MySQL v Azure Database pro databázi MySQL pomocí portálu Azure.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: b3510c616d2a9ba66cb83cb998c42e03fdbb0f2b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6865663bebc84df288f4c7e2564ddb4870667c6f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Postup konfigurace serveru parametry v Azure Database pro databázi MySQL pomocí portálu Azure
 
@@ -40,25 +40,24 @@ InnoDB fondu vyrovnávací paměti a maximální počet připojení nejsou konfi
 
 |**Cenová úroveň**| **Výpočetní generování**|**vCore(s)**|**Fond InnoDB vyrovnávací paměti (MB)**| **Maximální počet připojení**|
 |---|---|---|---|--|
-|Basic| Gen 4| 1| 1024| 50 |
-|Basic| Gen 4| 2| 2560| 100 |
-|Basic| Gen 5| 1| 1024| 50 |
-|Basic| Gen 5| 2| 2560| 100 |
-|Obecné použití| Gen 4| 2| 2560| 200|
-|Obecné použití| Gen 4| 4| 5120| 400|
-|Obecné použití| Gen 4| 8| 10240| 800|
-|Obecné použití| Gen 4| 16| 20480| 1600|
-|Obecné použití| Gen 4| 32| 40960| 3200|
-|Obecné použití| Gen 5| 2| 2560| 200|
-|Obecné použití| Gen 5| 4| 5120| 400|
-|Obecné použití| Gen 5| 8| 10240| 800|
-|Obecné použití| Gen 5| 16| 20480| 1600|
-|Obecné použití| Gen 5| 32| 40960| 3200|
+|Basic| Gen 4| 1| 1024| 50|
+|Basic| Gen 4| 2| 2560| 100|
+|Basic| Gen 5| 1| 1024| 50|
+|Basic| Gen 5| 2| 2560| 100|
+|Obecné použití| Gen 4| 2| 3584| 300|
+|Obecné použití| Gen 4| 4| 7680| 625|
+|Obecné použití| Gen 4| 8| 15360| 1250|
+|Obecné použití| Gen 4| 16| 31232| 2500|
+|Obecné použití| Gen 4| 32| 62976| 5000|
+|Obecné použití| Gen 5| 2| 3584| 300|
+|Obecné použití| Gen 5| 4| 7680| 625|
+|Obecné použití| Gen 5| 8| 15360| 1250|
+|Obecné použití| Gen 5| 16| 31232| 2500|
+|Obecné použití| Gen 5| 32| 62976| 5000|
 |Paměťově optimalizované| Gen 5| 2| 7168| 600|
 |Paměťově optimalizované| Gen 5| 4| 15360| 1250|
 |Paměťově optimalizované| Gen 5| 8| 30720| 2500|
 |Paměťově optimalizované| Gen 5| 16| 62464| 5000|
-|Paměťově optimalizované| Gen 5| 32| 125952| 10000| 
 
 Tyto další server parametry nejsou konfigurovatelné v systému:
 

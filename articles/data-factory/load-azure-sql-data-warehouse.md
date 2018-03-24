@@ -1,21 +1,21 @@
 ---
-title: "Načtení dat do Azure SQL Data Warehouse pomocí Azure Data Factory | Microsoft Docs"
-description: "Použití Azure Data Factory ke zkopírování dat do Azure SQL Data Warehouse"
+title: Načtení dat do Azure SQL Data Warehouse pomocí Azure Data Factory | Microsoft Docs
+description: Použití Azure Data Factory ke zkopírování dat do Azure SQL Data Warehouse
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: eec6eeb3419c5f5f4c8d22398051f7cf057ac980
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 49ba61ba8cf68a39eef21b1939a3e8a6c92f8827
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Načtení dat do Azure SQL Data Warehouse pomocí Azure Data Factory
 
@@ -42,18 +42,18 @@ Tento článek ukazuje, jak používat nástroj Data Factory kopírovat Data k _
 * Předplatné Azure: Pokud nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/) před zahájením.
 * Azure SQL Data Warehouse: Datového skladu obsahuje data, která se zkopíruje přes z databáze SQL. Pokud nemáte Azure SQL Data Warehouse, postupujte podle pokynů v [vytvořit SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
 * Azure SQL Database: V tomto kurzu zkopíruje data z databáze Azure SQL s ukázkovými daty LT společnosti Adventure Works. Databáze SQL můžete vytvořit podle pokynů v [vytvoření Azure SQL database](../sql-database/sql-database-get-started-portal.md). 
-* Účet úložiště Azure: úložiště Azure se používá jako _pracovní_ objektů blob v operaci hromadného kopírování. Pokud nemáte účet úložiště Azure, postupujte podle pokynů v [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+* Účet úložiště Azure: úložiště Azure se používá jako _pracovní_ objektů blob v operaci hromadného kopírování. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. V nabídce vlevo vyberte **nový** > **Data + analýzy** > **Data Factory**: 
    
-   ![Vytvořit nový objekt pro vytváření dat](./media/load-azure-sql-data-warehouse/new-azure-data-factory-menu.png)
+   ![Vytvoření nové datové továrny](./media/load-azure-sql-data-warehouse/new-azure-data-factory-menu.png)
 2. V **nový objekt pro vytváření dat** stránky, zadejte hodnoty pro pole, která jsou zobrazená na následujícím obrázku:
       
    ![Stránka Nová datová továrna](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
  
-    * **Název**: Zadejte globálně jedinečný název objektu pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadSQLDWDemo\" není k dispozici," Zadejte jiný název služby data Factory. Například můžete použít název  _**jméno**_**ADFTutorialDataFactory**. Zkuste vytvořit objekt pro vytváření dat znovu. Pravidla pojmenování artefaktů služby Data Factory, najdete v části [pravidla pojmenování Data Factory](naming-rules.md).
+    * **Název**: Zadejte globálně jedinečný název objektu pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadSQLDWDemo\" není k dispozici," Zadejte jiný název služby data Factory. Například můžete použít název  _**jméno**_**ADFTutorialDataFactory**. Zkuste vytvořit objekt pro vytváření dat znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: Vyberte předplatné Azure, ve kterém se má vytvořit datová továrna. 
     * **Skupina prostředků**: Vyberte existující skupinu prostředků z rozevíracího seznamu, nebo **vytvořit nový** možnost a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
     * **Verze**: vyberte **V2 (Preview)**.

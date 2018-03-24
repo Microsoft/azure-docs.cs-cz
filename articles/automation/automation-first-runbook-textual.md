@@ -1,7 +1,7 @@
 ---
-title: "Můj první runbook pracovního postupu Powershellu ve službě Azure Automation"
-description: "Kurz vás provede vytvořením, otestováním a publikováním jednoduchého textového runbooku, který využívá pracovní postup PowerShellu."
-keywords: "pracovní postup v powershellu, příklady pracovního postupu v powershellu, pracovní postup powershell"
+title: Můj první runbook pracovního postupu Powershellu ve službě Azure Automation
+description: Kurz vás provede vytvořením, otestováním a publikováním jednoduchého textového runbooku, který využívá pracovní postup PowerShellu.
+keywords: pracovní postup v powershellu, příklady pracovního postupu v powershellu, pracovní postup powershell
 services: automation
 ms.service: automation
 author: georgewallace
@@ -9,13 +9,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: 61191e78ebd2f0d7a960dfb0c74a1d8260331212
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b29fd8a576b4360b8465cc59db606fb1a8f2a02d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Můj první runbook pracovního postupu PowerShellu
 

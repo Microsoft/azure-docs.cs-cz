@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Jednostránkové aplikace pomocí implicitního toku | Microsoft Docs"
-description: "Naučte se vytvářet jednostránkové aplikace přímo pomocí implicitního toku OAuth 2.0 s Azure Active Directory B2C."
+title: 'Azure Active Directory B2C: Jednostránkové aplikace pomocí implicitního toku | Microsoft Docs'
+description: Naučte se vytvářet jednostránkové aplikace přímo pomocí implicitního toku OAuth 2.0 s Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: a45cc74c-a37e-453f-b08b-af75855e0792
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
-ms.author: parakhj
-ms.openlocfilehash: 2ce4aaac117920c1da0b8a29797169d536825c1a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: ac0351ce220da5194d3a447e51185409b7368f21
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Jednostránkové aplikace přihlášení pomocí implicitního toku OAuth 2.0
 
@@ -99,7 +96,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | Obor |Požaduje se |Seznam obory oddělených mezerami. Hodnota jeden obor označuje do služby Azure AD i oprávnění, která se vyžadují. `openid` Oboru označuje oprávnění přihlásit uživatele a získat data o uživateli ve formě ID tokeny. (Budeme mluvit o tom víc později v článku.) `offline_access` Obor je volitelné pro webové aplikace. Označuje, že vaše aplikace musí obnovovací token pro dlouhodobé přístup k prostředkům. |
 | state |Doporučené |Hodnota, zahrnuté v požadavku, která je vrácena v odpovědi tokenu. Může být řetězec o délce veškerý obsah, který chcete použít. Obvykle náhodně generované, jedinečné hodnoty se používá, aby se zabránilo útokům padělání požadavku posílaného mezi weby. Stav se také používá ke kódování informace o stavu uživatele v aplikaci, než požadavek na ověření došlo k chybě, jako jsou stránky byly na. |
 | hodnotu Nonce |Požaduje se |Hodnota, zahrnuté v požadavku (generované aplikace), který je součástí výsledný token ID jako deklarace identity. Aplikace pak může ověřit tuto hodnotu zmírnit útoky opětovného přehrání tokenu. Hodnota je obvykle náhodnou jedinečného řetězce, který můžete použít k identifikaci původcem požadavku. |
-| P |Požaduje se |Zásada provést. Je název zásady, který je vytvořen v klientovi Azure AD B2C. Hodnota název zásad by měl začínat obráceným **b2c\_1\_**. Další informace najdete v tématu [integrovaných zásad Azure AD B2C](active-directory-b2c-reference-policies.md). |
+| p |Požaduje se |Zásada provést. Je název zásady, který je vytvořen v klientovi Azure AD B2C. Hodnota název zásad by měl začínat obráceným **b2c\_1\_**. Další informace najdete v tématu [integrovaných zásad Azure AD B2C](active-directory-b2c-reference-policies.md). |
 | řádku |Nepovinné |Typ interakci s uživatelem, které je nutné. V současné době je jedinou platnou hodnotou `login`. Vynutí se tak, aby uživatel zadal své přihlašovací údaje tohoto požadavku. Jednotné přihlašování se neprojeví. |
 
 V tomto okamžiku uživatel požádán o dokončení pracovního postupu nastavení zásad. To může zahrnovat uživatele zadáním uživatelského jména a hesla, přihlášení pomocí sociálních identitu, přihlašování k adresáři, nebo jakékoli jiné číslo kroky. Uživatel akce závisí na tom, jak je definované zásady.
@@ -125,7 +122,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | token_type |Typ tokenu hodnota. Pouze typ, který podporuje Azure AD je nosiče. |
 | expires_in |Časový interval, který přístupový token je platný (v sekundách). |
 | Obor |Obory, které token je platný pro. Také můžete pomocí oborů tokeny mezipaměti pro pozdější použití. |
-| požadavku id_token |ID token, který požadované aplikace. ID token můžete použít k ověření identity uživatele a zahájit relaci s uživatelem. Další informace o ID tokeny a jejich obsah, najdete v článku [odkaz tokenu Azure AD B2C](active-directory-b2c-reference-tokens.md). |
+| id_token |ID token, který požadované aplikace. ID token můžete použít k ověření identity uživatele a zahájit relaci s uživatelem. Další informace o ID tokeny a jejich obsah, najdete v článku [odkaz tokenu Azure AD B2C](active-directory-b2c-reference-tokens.md). |
 | state |Pokud `state` parametr je zahrnuta v žádosti o stejnou hodnotu by se měla objevit v odpovědi. Aplikace by měla ověřte, zda `state` hodnoty v požadavku a odpovědi jsou identické. |
 
 ### <a name="error-response"></a>Chybové odpovědi
@@ -162,7 +159,7 @@ Chcete-li zjistit, jaké zásady se použil k podepsání ID token (a kde se na�
 Poté, co jste získali dokument metadat z koncového bodu metadat OpenID Connect, můžete k ověření podpisu tokenu ID veřejné klíče RSA-256 (nachází se na tento koncový bod). Může být více klíčů uvedený na tento koncový bod v každém okamžiku, každý se identifikovanou pomocí `kid`. Záhlaví `id_token` také obsahuje `kid` deklarací identity. Označuje, která tyto klíče se použil k podepsání ID token. Další informace, včetně informací o [ověřování tokenů](active-directory-b2c-reference-tokens.md#token-validation), najdete v článku [odkaz tokenu Azure AD B2C](active-directory-b2c-reference-tokens.md).
 <!--TODO: Improve the information on this-->
 
-Po ověření podpisu tokenu ID několik deklarací vyžadovat ověření. Například:
+Po ověření podpisu tokenu ID několik deklarací vyžadovat ověření. Příklad:
 
 * Ověření `nonce` deklarace identity, aby se zabránilo útokům opětovného přehrání tokenu. Její hodnota musí být zadaná v žádosti o přihlášení.
 * Ověření `aud` deklarace identity k zajištění, že ID token vydán pro vaši aplikaci. Její hodnota musí být ID aplikace vaší aplikace.
@@ -258,7 +255,7 @@ ID tokeny a přístupové tokeny vyprší po krátkou dobu. Aplikace musí být 
 ## <a name="send-a-sign-out-request"></a>Poslat žádost o odhlášení
 Pokud se chcete přihlásit uživatele mimo aplikaci, přesměruje uživatele na Azure AD se odhlásíte. Pokud to neuděláte, uživatel může být schopný k novému ověření do vaší aplikace bez opětovného zadávání svých přihlašovacích údajů. Je to proto, že budou mít platný jedné přihlášení relace s Azure AD.
 
-Můžete jednoduše přesměruje uživatele na `end_session_endpoint` uvedenou v stejné OpenID Connect dokument metadat popsané v [ověřit ID token](#validate-the-id-token). Například:
+Můžete jednoduše přesměruje uživatele na `end_session_endpoint` uvedenou v stejné OpenID Connect dokument metadat popsané v [ověřit ID token](#validate-the-id-token). Příklad:
 
 ```
 GET https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
@@ -268,7 +265,7 @@ p=b2c_1_sign_in
 
 | Parametr | Povinné? | Popis |
 | --- | --- | --- |
-| P |Požaduje se |Zásady, který se mají použít pro přihlášení uživatele z vaší aplikace. |
+| p |Požaduje se |Zásady, který se mají použít pro přihlášení uživatele z vaší aplikace. |
 | post_logout_redirect_uri |Doporučené |Adresu URL, kterou uživatel by měl být přesměrován na po úspěšné odhlášení. Pokud nezadáte, Azure AD B2C zobrazí obecná zpráva uživateli. |
 
 > [!NOTE]

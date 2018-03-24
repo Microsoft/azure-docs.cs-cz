@@ -1,24 +1,24 @@
 ---
-title: "Průvodce AppSource vydavatele a Azure Marketplace"
-description: "Podrobný průvodce a publikování kontrolní seznamy pro nové vydavatelé pro Azure Marketplace"
+title: Průvodce AppSource vydavatele a Azure Marketplace
+description: Podrobný průvodce a publikování kontrolní seznamy pro nové vydavatelé pro Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: 
+documentationcenter: ''
 author: ellacroi
 manager: msmbaldwin
-editor: 
+editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7faa34b5528c53c06aeda25be17cbc5f3db2acdf
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0abf25726936a3d5e69c809c9714965936c7c64c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Průvodce AppSource vydavatele a Azure Marketplace
 
@@ -34,7 +34,7 @@ Vítá vás [Azure Marketplace](https://azuremarketplace.microsoft.com) a [AppSo
 - Jak se na vydavatele
 - Kde lze vytvářet a publikovat nabízí
 - Tom, jak optimalizovat v seznamu a používat prostředky, přejděte na trh na disku vliv
-- Kde pro nápovědu a podporu otázky o Azure Marketplace, AppSource, nebo tato příručka pro publikování, kontaktujte tým služby Marketplace na  **cloudmarketplace@microsoft.com** . 
+- Kde pro nápovědu a podporu otázky o Azure Marketplace, AppSource, nebo tato příručka pro publikování, kontaktujte tým služby Marketplace na **cloudmarketplace@microsoft.com**. 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>Výhody účasti v marketplace.
 
@@ -59,10 +59,10 @@ Obchodní poutače marketplace je zarovnán cílové skupiny a cloudu produkty s
 |          |Azure Marketplace |AppSource  |
 |---------|---------|---------|
 |Cílové skupiny     |Odborníci v oblasti IT, vývojáři (specialisty role zahrnují DBAs, zajištění bezpečnosti, DevOps, atd.)    | Řádek obchodní rozhodnutí ve firmě (specialisty role zahrnují nákup, výrobní, monitorování účtů, atd.)      |
-|Vytvořené s nástroji nebo rozšiřovat     |Azure         | Azure, Dynamics 365, Office 365, Power BI a výkonu aplikací       |
+|Vytvořené s nástroji nebo rozšiřovat     |Azure         | Azure, Dynamics 365, Office 365, Power BI a Power Apps       |
 |Typy řešení a služby     |  Řešení infrastruktury a odborníky v oblasti služeb   | Dokončení řádku obchodní cloudové aplikace, doplňky Office 365 a odborníky v oblasti služeb        |
 |Možnosti publikování     |  Obraťte se na mě, konzultační služby nabízejí, zkušební verze, virtuálního počítače, šablony řešení a spravovaných aplikacích       |  Bezplatná zkušební verze, získat nyní, Test jednotky, obraťte se na mě konzultace ohledně nabídky služeb      |
-|V aplikaci prostředí poskytuje uživatelům přístup k aplikacím a službám v kontextu jejich aplikace  | Portál Azure a rozhraní příkazového řádku         | Office 365, Dynamics 365 Power BI Office klientské aplikace       |
+|V aplikaci prostředí poskytuje uživatelům přístup k aplikacím a službám v kontextu jejich aplikace  | Azure Portal a CLI         | Office 365, Dynamics 365, Power BI, klientské aplikace Office       |
 
 ## <a name="leveraging-these-storefronts"></a>Využití těchto obchodní poutače
 
@@ -112,9 +112,9 @@ Tato část vás provede možnosti dostupné pro vás v obou obchodní poutače.
 
 |**Možnost publikování**  | **Typ nabídky** | **Výkladní skříň**  |
 |---------|---------|---------|
-|**seznam**    |    Obraťte se na mě konzultace ohledně služby     |  Azure Marketplace, AppSource       |
-|**Zkušební verze**   |     Uvolněte zkušební verze, zkušební verze SaaS, interaktivní ukázku, Test jednotky    |  Azure Marketplace, AppSource       |
-|**Příkaz Transact**     |   Virtuální počítač, šablona řešení spravované aplikace      |    Azure Marketplace     |
+|**seznam**    |    Kontaktujte mě, konzultační služby     |  Azure Marketplace, AppSource       |
+|**Zkušební verze**   |     Bezplatná zkušební verze, zkušební verze SaaS, interaktivní ukázka, testovací verze    |  Azure Marketplace, AppSource       |
+|**Příkaz Transact**     |   Virtuální počítač, šablona řešení, spravovaná aplikace      |    Azure Marketplace     |
 
 ### <a name="list"></a>SEZNAM
 
@@ -259,8 +259,8 @@ Každý zákazník se smlouvou Enterprise může přidat Azure do své smlouvy p
 
 |**Požadavek**  |**Podrobnosti** |**Možnost publikování**  |
 |---------|---------|---------|
-|**Fakturace a měření**    |  Virtuální počítač musí podporovat buď model použití vlastní licence nebo na základě využití, měsíční fakturace.       |    Příkaz Transact    |
-|**Azure kompatibilní virtuální pevný disk (VHD)**     |   Virtuální počítače musí být založený na [Windows] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) nebo ([Linux]https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)    |   Příkaz Transact      |
+|**Fakturace a měření**    |  Virtuální počítač musí podporovat buď model použití vlastní licence nebo na základě využití, měsíční fakturace.       |    Transakce    |
+|**Azure kompatibilní virtuální pevný disk (VHD)**     |   Virtuální počítače musí být založený na [Windows] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) nebo ([Linux]https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)    |   Transakce      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Konkrétní požadavky na konzultace ohledně publikování služby
 
@@ -308,7 +308,7 @@ Pro jednoho klienta aplikace několika způsoby:
 - Vývoj každého zákazníka, Test jednotky.
 - Vytvoření ukázkové víceklientské ukázkovou aplikaci pomocí jednotného přihlašování
 
-##<a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>Publikování procesy produktu pro systém Office, Dynamics a Power BI
+## <a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>Publikování procesy produktu pro systém Office, Dynamics a Power BI
 Pro AppSource aplikace, které rozšiřují Office, Dynamics a Power BI můžete použít další informace o specifických požadavků v určitém dokumentaci v této části. 
 
 
@@ -519,7 +519,7 @@ Další informace o zabezpečení a další vývojáře účet pokyny, klikněte
 
 Podnikový účet může být federované pomocí [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/), a vrátí chybu, pokud se pokusíte vytvořit ID společnosti Microsoft s podnikovým e-mailovou adresu. Pokud dojde k chybě, nejprve zkontrolujte se svým týmem IT a ujistěte se, že to tak je. Jedná se o známý problém a pracujeme na jeho řešení. Alternativní řešení je následující:
 
-Doporučujeme vytvořit novou e-mailovou adresu v  **@outlook.com**  domény. Postupujte následovně:
+Doporučujeme vytvořit novou e-mailovou adresu v **@outlook.com** domény. Postupujte následovně:
 
 1. Přejděte na [ https://signup.live.com/signup ](https://signup.live.com/signup) a vyberte **získat novou e-mailovou adresu**
 

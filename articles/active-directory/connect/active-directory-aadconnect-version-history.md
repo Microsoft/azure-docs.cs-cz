@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: Historie verzí | Microsoft Docs"
-description: "Tento článek obsahuje seznam všech verzích Azure AD Connect a Azure AD Sync"
+title: 'Azure AD Connect: Historie verzí | Microsoft Docs'
+description: Tento článek obsahuje seznam všech verzích Azure AD Connect a Azure AD Sync
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 0c6a0c43eb7d0187120c3264f1f439af66d73978
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0fd653b1a4058ce4284bf87b0b9152a264581e5c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkce. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -40,6 +40,10 @@ Stáhněte si | [Stažení Azure AD Connect](http://go.microsoft.com/fwlink/?Lin
 Stav: Vydala vyberte zákazníky, které je tato verze aktuálně distribuován do malých a náhodný výběr AADConnect klienty, kteří mají povolen automatický upgrade. Tato skupina klientů, které jsme se rozbalí v následujících týdnech až 100 % naše zákazníky automatický upgrade obdrželi tuto verzi. Poté zveřejníme sestavení pro obecné stahování na výše uvedený odkaz ke stažení.
 >[!NOTE]
 >Po dokončení upgradu na tuto novou verzi, automaticky spustí úplné synchronizace a úplný import pro konektor Azure AD a úplné synchronizace konektoru služby AD. Vzhledem k tomu, že to může trvat delší dobu, v závislosti na velikosti vašeho prostředí Azure AD Connect, ujistěte se, že jste udělali potřebné kroky pro podporu to nebo zdržovat upgrade, dokud jste našli pohodlný chvíli to udělat.
+
+>[!NOTE]
+>"AutoUpgrade funkce nesprávně zakázal pro některé klienty sestavení později než 1.1.524.0. K zajištění, že vaší instanci Azure AD Connect je stále možné AutoUpgrade, spusťte následující rutinu prostředí PowerShell: "Set ADSyncAutoUpgrade - AutoupGradeState AutoUpgradeConfigurationState.Enabled"?
+
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>Opravené problémy

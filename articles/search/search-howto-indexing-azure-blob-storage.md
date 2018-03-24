@@ -1,24 +1,24 @@
 ---
-title: "Indexování úložiště objektů Blob v Azure s Azure Search"
-description: "Naučte se indexovat Azure Blob Storage a rozbalte text z dokumentů s Azure Search"
+title: Indexování úložiště objektů Blob v Azure s Azure Search
+description: Naučte se indexovat Azure Blob Storage a rozbalte text z dokumentů s Azure Search
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
+editor: ''
 ms.assetid: 2a5968f4-6768-4e16-84d0-8b995592f36a
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/28/2017
+ms.date: 03/22/2018
 ms.author: eugenesh
-ms.openlocfilehash: 286e2b8eddc87a5132fa13468b0cef1b499c3993
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 67f6775fb68f4cd13c52ebe66727f2b4df23c692
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indexování dokumentů v úložišti objektů Blob v Azure s Azure Search
 Tento článek ukazuje, jak používat Azure Search k indexování dokumentů (například soubory PDF, dokumentů Microsoft Office a několik dalších běžných formátů) uložené v úložišti objektů Blob Azure. Nejprve vysvětluje základní informace o nastavení a konfiguraci indexer objektů blob. Poté nabízí podrobnější zkoumání chování, a scénáře, můžete se setkat.
@@ -31,7 +31,7 @@ Indexer objektů blob můžete rozbalte text z následujících formátů dokume
 ## <a name="setting-up-blob-indexing"></a>Nastavení indexování objektů blob
 Můžete nastavit indexer Azure Blob Storage pomocí:
 
-* [portál Azure Portal](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Služba Azure Search [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Služba Azure Search [sady .NET SDK](https://aka.ms/search-sdk)
 
@@ -230,9 +230,9 @@ Pokud oba `indexedFileNameExtensions` a `excludedFileNameExtensions` dostupné p
 
 Můžete řídit, které části objekty BLOB jsou indexované pomocí `dataToExtract` konfigurační parametr. Může trvat následující hodnoty:
 
-* `storageMetadata`-Určuje pouze [vlastnosti standardní objektů blob a zadat uživatele metadata](../storage/blobs/storage-properties-metadata.md) jsou indexovány.
-* `allMetadata`-Určuje, že metadata úložiště a [konkrétních metadat typu obsahu](#ContentSpecificMetadata) extrahovat z objektu blob jsou indexované obsah.
-* `contentAndMetadata`-Určuje, že jsou indexován všechna metadata a textový obsah extrahoval z objektu blob. Toto je výchozí hodnota.
+* `storageMetadata` -Určuje pouze [vlastnosti standardní objektů blob a zadat uživatele metadata](../storage/blobs/storage-properties-metadata.md) jsou indexovány.
+* `allMetadata` -Určuje, že metadata úložiště a [konkrétních metadat typu obsahu](#ContentSpecificMetadata) extrahovat z objektu blob jsou indexované obsah.
+* `contentAndMetadata` -Určuje, že jsou indexován všechna metadata a textový obsah extrahoval z objektu blob. Toto je výchozí hodnota.
 
 Například indexovat pouze metadata úložiště, použijte:
 
@@ -271,6 +271,10 @@ Ve výchozím nastavení zastaví indexeru objektů blob při výskytu objekt bl
 Pro některé objekty BLOB Azure Search nelze určit typ obsahu nebo se nepodařilo zpracovat doklad o jinak podporovaná typ obsahu. Chcete-li tento režim selhání ignorovat, nastavte `failOnUnprocessableDocument` konfiguračního parametru na hodnotu false:
 
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+
+Služba Azure Search omezuje velikost objekty BLOB, které jsou uloženy. Tato omezení jsou dokumentovány v článku [omezení služby ve službě Azure Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity). Příliš velký objekty BLOB jsou považovány za chyby ve výchozím nastavení. Ale můžete pořád indexovat metadata úložiště objektů BLOB příliš velký Pokud nastavíte `indexStorageMetadataOnlyForOversizedDocuments` konfiguračního parametru na hodnotu true: 
+
+    "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
 Můžete také pokračovat indexování Pokud chyby v libovolném bodě zpracování, při analýze objektů BLOB nebo při přidávání dokumentů do indexu. Chcete-li ignorovat konkrétní počet chyb, nastavte `maxFailedItems` a `maxFailedItemsPerBatch` parametry konfigurace pro požadované hodnoty. Příklad:
 

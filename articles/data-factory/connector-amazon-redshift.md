@@ -1,11 +1,11 @@
 ---
-title: "Kopírování dat z Amazon Redshift pomocí Azure Data Factory | Microsoft Docs"
-description: "Další informace o tom, jak zkopírovat data z Amazon Redshift do úložiště podporované jímku dat pomocí Azure Data Factory."
+title: Kopírování dat z Amazon Redshift pomocí Azure Data Factory | Microsoft Docs
+description: Další informace o tom, jak zkopírovat data z Amazon Redshift do úložiště podporované jímku dat pomocí Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 22bc237d551214997cc21a489c3c4aa20a5fcbd3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7dc4af39a659a9c3c910c835265886b79ad5cf62
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopírování dat z Amazon Redshift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -215,14 +215,14 @@ Při kopírování dat z Amazon Redshift, se používají následující mapová
 | BIGINT |Int64 |
 | LOGICKÁ HODNOTA |Řetězec |
 | CHAR – |Řetězec |
-| DATE (Datum) |Datum a čas |
+| DATE (Datum) |DateTime |
 | DECIMAL |Decimal |
 | DVOJITÁ PŘESNOST |Dvojitý |
 | CELÉ ČÍSLO |Int32 |
 | SKUTEČNÉ |Svobodný/svobodná |
 | SMALLINT |Int16 |
 | TEXT |Řetězec |
-| ČASOVÉ RAZÍTKO |Datum a čas |
+| ČASOVÉ RAZÍTKO |DateTime |
 | VARCHAR |Řetězec |
 
 ## <a name="next-steps"></a>Další postup

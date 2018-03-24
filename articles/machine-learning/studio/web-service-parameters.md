@@ -1,10 +1,10 @@
 ---
-title: "Pomocí Azure Machine Learning parametry webové služby | Microsoft Docs"
-description: "Jak používat parametry webové služby Azure Machine Learning Pokud chcete změnit chování modelu při přístupu k webové službě."
+title: Pomocí Azure Machine Learning parametry webové služby | Microsoft Docs
+description: Jak používat parametry webové služby Azure Machine Learning Pokud chcete změnit chování modelu při přístupu k webové službě.
 services: machine-learning
-documentationcenter: 
-author: aashishb
-ms.author: aashishb
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
 manager: hjerez
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 41b35b8160c777c8598a30e2d775d997e06438f0
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 520427b99c05fcbc8125bdbde7d8eb56e7487292
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Použití parametrů webové služby Azure Machine Learning
 Webové služby Azure Machine Learning je vytvořen publikování experimentu, který obsahuje moduly, které se dají konfigurovat parametry. V některých případech můžete změnit chování modulu je spuštěn webovou službu. *Parametry webové služby* umožňují tuto úlohu. 

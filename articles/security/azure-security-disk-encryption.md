@@ -1,6 +1,6 @@
 ---
-title: "Azure Disk Encryption pro systém Windows a virtuálních počítačů Linux IaaS | Microsoft Docs"
-description: "Tento článek obsahuje přehled Microsoft Azure Disk Encryption pro systém Windows a virtuálních počítačů IaaS Linux."
+title: Azure Disk Encryption pro systém Windows a virtuálních počítačů Linux IaaS | Microsoft Docs
+description: Tento článek obsahuje přehled Microsoft Azure Disk Encryption pro systém Windows a virtuálních počítačů IaaS Linux.
 services: security
 documentationcenter: na
 author: DevTiw
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 03/13/2018
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: cc609d7c7b28fc4aef6eb1e25ee46fd77edd4102
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 73212a231d11136854115922df423a7cb5b08f05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption pro systém Windows a virtuálních počítačů Linux IaaS
 Microsoft Azure se důrazně zaměřuje na zajištění ochrany osobních údajů, suverenity data a umožňuje vám řízení vaší Azure hostované data prostřednictvím řadu pokročilých technologiích k šifrování, řídit a spravovat šifrovací klíče, řízení a audit přístupu k datům. To poskytuje Azure zákazníkům flexibilitu zvolit si řešení, které nejlépe vyhovuje potřebám své firmy. V tomto dokumentu jsme vás seznámí s nové řešení technologie "Azure Disk Encryption pro systém Windows a Linux IaaS virtuálního počítače je" k ochraně a ochranu dat, aby splňovaly vaše organizace zabezpečení a dodržování předpisů závazky. Dokumentu poskytuje podrobné pokyny k použití funkcí Azure disk encryption, včetně Podporované scénáře a uživatel dojde.
@@ -156,13 +156,13 @@ Než povolíte Azure Disk Encryption na virtuálních počítačích Azure IaaS 
 * Platformy Azure potřebuje přístup k šifrovacích klíčů nebo tajných klíčů v trezoru klíčů, aby byly k dispozici pro virtuální počítač při spuštění a dešifruje svazek operačního systému virtuálního počítače. Chcete-li udělit oprávnění pro platformu Azure, nastavte **EnabledForDiskEncryption** vlastnost v trezoru klíčů. Další informace najdete v tématu **nastavit registrace a konfigurace trezoru klíčů pro Azure Disk Encryption** v příloze.
 * Tajný klíč trezoru klíčů a adresy URL KEK musí být verzí. Azure vynucuje toto omezení Správa verzí. Platný tajný klíč a KEK adresy URL najdete v následujících příkladech:
 
-  * Příklad platnou adresu URL tajný: *https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * Příklad platnou adresu URL KEK: *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Příklad tajný platnou adresu URL:   *https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Příklad platnou adresu URL KEK:   *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 * Azure Disk Encryption nepodporuje zadání čísla portu jako součást tajné klíče trezoru klíčů a adresy URL KEK. Příkladem adresy URL není podporován a podporované trezoru klíčů naleznete v následujících tématech:
 
-  * Adresa URL nemůže být přijata trezoru klíčů *https://contosovault.vault.azure.net:443 nebo tajných klíčů nebo contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * Adresa URL přijatelné trezoru klíčů: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Adresa URL nemůže být přijata trezoru klíčů  *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Adresa URL přijatelné trezoru klíčů:   *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 * Povolit Azure Disk Encryption funkce, virtuální počítače IaaS musí splňovat následující požadavky konfigurace koncového bodu sítě:
   * Získá token pro připojení k trezoru klíčů, musí být možné se připojit k Azure Active Directory koncový bod, virtuálních počítačů IaaS \[login.microsoftonline.com\].
@@ -172,7 +172,7 @@ Než povolíte Azure Disk Encryption na virtuálních počítačích Azure IaaS 
   > [!NOTE]
   > Pokud vaše zásady zabezpečení omezuje přístup z virtuálních počítačů Azure k Internetu, můžete předchozí URI vyřešit a nakonfigurovat konkrétní pravidlo povolení odchozí připojení k IP adresy.
   >
-  >Ke konfiguraci a přístup k Azure Key Vault za bránou firewall (https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall)
+  >Ke konfiguraci a za bránu firewall (přístup k Azure Key Vaulthttps://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall)
 
 * Použijte nejnovější verzi Azure PowerShell SDK verze konfigurovat Azure Disk Encryption. Stáhněte si nejnovější verzi [verzi prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 
@@ -193,7 +193,7 @@ Než povolíte Azure Disk Encryption na virtuálních počítačích Azure IaaS 
 * Konfigurace šifrování disku požadavků pomocí Azure CLI, najdete v části [tento skript Bash](https://github.com/ejarvi/ade-cli-getting-started).
 * Pomocí služby Azure Backup k zálohování a obnovení virtuálních počítačů služby šifrovaná, pokud je povolené šifrování s Azure Disk Encryption, zašifrujte virtuální počítače pomocí klíče konfigurace Azure Disk Encryption. Služba zálohování podporuje virtuální počítače, které jsou šifrované pomocí ne KEK nebo KEK konfigurace. V tématu [šifrované zálohování a obnovení virtuálních počítačů s šifrováním Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
 
-* Při šifrování svazku operačního systému Linux, je momentálně nevyžaduje na konci procesu Všimněte si, že virtuální počítač restartovat. To lze provést přes portál, prostředí powershell nebo rozhraní příkazového řádku.   Pokud chcete sledovat průběh šifrování, pravidelně dotazovala vrácený Get-AzureRmVMDiskEncryptionStatus https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus stavové zprávy.  Po dokončení šifrování stavové zprávy vrácené tento příkaz označí to.  Například "ProgressMessage: disk operačního systému úspěšně šifrování, restartujte virtuální počítač" v tomto okamžiku může být virtuální počítač restartovat a použita.  
+* Při šifrování svazku operačního systému Linux, je momentálně nevyžaduje na konci procesu Všimněte si, že virtuální počítač restartovat. To lze provést přes portál, prostředí powershell nebo rozhraní příkazového řádku.   Pokud chcete sledovat průběh šifrování, pravidelně dotazovat stavovou zprávu vrácený Get-AzureRmVMDiskEncryptionStatus https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus.  Po dokončení šifrování bude tuto oznámí stavovou zprávu vrácený tento příkaz. Například "ProgressMessage: disk operačního systému úspěšně šifrování, restartujte virtuální počítač" v tomto okamžiku může být virtuální počítač restartovat a použita.  
 
 * Azure Disk Encryption pro Linux vyžaduje datové disky tak, aby měl systém připojeného souboru v systému Linux před šifrování
 
@@ -224,25 +224,25 @@ Pomocí následující rutiny prostředí PowerShell vytvořit aplikaci Azure AD
 ##### <a name="setting-up-the-azure-ad-client-id-and-secret-from-the-azure-portal"></a>Nastavení ID klienta Azure AD a tajný klíč z portálu Azure
 Můžete také nastavit tak vaše ID klienta Azure AD a tajný klíč pomocí portálu Azure. K provedení této úlohy, postupujte takto:
 
-1. Klikněte **služby Active Directory** kartě.
+1. Vyberte **všechny služby > Azure Active Directory**
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig3.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-service.png)
 
-2. Klikněte na tlačítko **přidat aplikaci**a pak zadejte název aplikace.
+2. Vyberte **registrace aplikace > novou registraci aplikace**
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig4.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-app-registration.png)
 
-3. Klikněte na tlačítko se šipkou a pak nakonfigurujte vlastnosti aplikace.
+3. Zadejte požadované informace a vytvoření aplikace:
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig5.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-create-app.png)
 
-4. Kliknutím na značku zaškrtnutí v levém dolním rohu na dokončení. Zobrazí se stránka konfigurace aplikace a ID klienta Azure AD se zobrazí v dolní části stránky.
+4. Vyberte nově vytvořenou aplikaci a zobrazte její vlastnosti, včetně ID aplikace.  Chcete-li vytvořit klíč pro aplikaci, vyberte **Nastavení > klíče**, přidat popis a vypršení platnosti pro klíč a klikněte na tlačítko **uložit**
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig6.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-create-pw.png)
 
-5. Sdílený tajný klíč klienta Azure AD uložte kliknutím **Uložit** tlačítko. Všimněte si, tajný klíč klienta Azure AD, do textového pole klíče. Zabezpečit správně.
+5. Zkopírujte vygenerovaný tajná hodnota a chrání ji odpovídajícím způsobem.
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig7.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-save-pw.png)
 
 
 ##### <a name="use-an-existing-application"></a>Použít stávající aplikaci

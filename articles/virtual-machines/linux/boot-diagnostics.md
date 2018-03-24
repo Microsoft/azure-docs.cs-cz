@@ -1,25 +1,25 @@
 ---
-title: "Spuštění diagnostiky pro virtuální počítače s Linuxem v Azure | Microsoft dokumentů"
-description: "Přehled ladění dvou funkcí pro virtuální počítače s Linuxem v Azure"
+title: Spuštění diagnostiky pro virtuální počítače s Linuxem v Azure | Microsoft dokumentů
+description: Přehled ladění dvou funkcí pro virtuální počítače s Linuxem v Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: Deland-Han
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 03/19/2018
 ms.author: delhan
-ms.openlocfilehash: 70254d39b5c6326166f7e29fdfc99533835502f9
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: bf8e1b338012898ed3de3f443cf492b6890af796
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-linux-virtual-machines-in-azure"></a>Jak používat Diagnostika spouštění k řešení potíží s virtuální počítače s Linuxem v Azure
 
@@ -39,9 +39,9 @@ Obě tyto funkce jsou podporované pro virtuální počítače Azure ve všech o
 
 ## <a name="common-boot-errors"></a>Běžné chyby spuštění
 
-- [Problémy systému souborů](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/)
-- [Problémy jádra](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/)
-- [FSTAB chyby](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/ )
+- [Problémy systému souborů](https://support.microsoft.com/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck) 
+- [Problémy jádra](https://support.microsoft.com/help/4091524/how-recovery-azure-linux-vm-from-kernel-related-boot-related-issues/) 
+- [FSTAB chyby](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>Povolení diagnostiky na novém virtuálním počítači
 1. Při vytváření nového virtuálního počítače na portálu Preview vyberte z rozevíracího seznamu modelu nasazení **Azure Resource Manager**:
@@ -79,3 +79,7 @@ Obě tyto funkce jsou podporované pro virtuální počítače Azure ve všech o
 Pokud chcete povolit Diagnostika spouštění prostřednictvím portálu, můžete také aktualizovat existujícího virtuálního počítače přes portál. Vyberte možnost Diagnostika spuštění a klikněte na Uložit. Restartujte virtuální počítač, aby se projevily změny.
 
 ![Aktualizace stávajícího virtuálního počítače](./media/boot-diagnostics/screenshot5.png)
+
+## <a name="next-steps"></a>Další postup
+
+Pokud se zobrazí chybu "Nepodařilo se získat obsah protokolu" při použití Diagnostika spouštění virtuálních počítačů, přečtěte si téma [se nezdařilo načíst obsah Chyba protokolu v Diagnostika spouštění virtuálních počítačů](https://support.microsoft.com/help/4094480/failed-to-get-contents-of-the-log-error-in-vm-boot-diagnostics-in-azur).

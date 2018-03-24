@@ -1,6 +1,6 @@
 ---
-title: "Výstup a zprávy v Azure Automation Runbooku"
-description: "Popisuje postup vytvoření a načtení výstupní zařízení a chybové zprávy ze sady runbook ve službě Azure Automation."
+title: Výstup a zprávy v Azure Automation Runbooku
+description: Popisuje postup vytvoření a načtení výstupní zařízení a chybové zprávy ze sady runbook ve službě Azure Automation.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a02ea2854de7ff32a8c50ff2e6f317596fb4aa1b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d4b8d485906701b4f05e057996bc31232a29e620
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Výstup a zprávy ve službě Azure Automation Runbooku
 Většina runbooků služeb automatizace Azure má určitou formu výstupu, jako je chybová zpráva pro uživatele nebo složitý objekt určené pro jiný pracovní postup. Prostředí Windows PowerShell poskytuje [víc datových proudů](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) pro odeslání výstupu z skript nebo pracovního postupu. Služby Azure Automation funguje s každou z těchto datových proudů jinak a postupujte podle osvědčené postupy pro jejich používání při vytváření sady runbook.
@@ -204,8 +204,8 @@ Uvidíte z předchozí snímek obrazovky, když povolíte podrobné protokolová
    
    ![Grafické vytváření protokolování a trasování okno](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="microsoft-operations-management-suite-oms-log-analytics"></a>Microsoft Operations Management Suite (OMS) Log Analytics
-Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pracovního prostoru analýzy protokolů Microsoft Operations Management Suite (OMS). Pomocí analýzy protokolů je možné,
+### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
+Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pracovního prostoru analýzy protokolů. Pomocí analýzy protokolů je možné,
 
 * Pohled na vaše úlohy automatizace 
 * Aktivační událost e-mailem nebo výstrahy podle runbook stav úlohy (například chybných nebo pozastavených) 
@@ -213,7 +213,7 @@ Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pr
 * Vazbu mezi úlohy v účtech Automation 
 * Vizualizace historii úlohy v čase    
 
-Další informace o tom, jak nakonfigurovat integraci s analýzy protokolů ke shromažďování, korelaci a fungovat na data úlohy najdete v tématu [předávání zpráv o stavu úlohy a datové proudy úlohy z Automatizace analýzy protokolů (OMS)](automation-manage-send-joblogs-log-analytics.md).
+Další informace o tom, jak nakonfigurovat integraci s analýzy protokolů ke shromažďování, korelaci a fungovat na data úlohy najdete v tématu [předávání zpráv o stavu úlohy a datové proudy úlohy ze služby Automation k analýze protokolů](automation-manage-send-joblogs-log-analytics.md).
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o spouštění runbooků, postupy při monitorování úloh runbooků a další technické podrobnosti najdete v článku [Sledování úlohy runbooku](automation-runbook-execution.md).

@@ -1,28 +1,25 @@
 ---
-title: "Azure Active Directory B2C: Konfigurace účtu Microsoft | Microsoft Docs"
-description: "Zadejte registrace a přihlášení k příjemce s účty Microsoft v aplikacích, které jsou zabezpečené službou Azure Active Directory B2C."
+title: 'Azure Active Directory B2C: Konfigurace účtu Microsoft | Microsoft Docs'
+description: Zadejte registrace a přihlášení k příjemce s účty Microsoft v aplikacích, které jsou zabezpečené službou Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: 06407322-142c-4cb3-9106-a8d752c4c853
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: e746a5e7a2d9a13eb23ac0268104a9394c9b198d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: e167c8737bc600f52759f33456fec3bc6e0a3678
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory B2C: Zadejte registrace a přihlášení k příjemce s účty Microsoft
 ## <a name="create-a-microsoft-account-application"></a>Vytvoření aplikace účtu Microsoft
-Pokud chcete používat účet Microsoft jako poskytovatel identit v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci účtu Microsoft a zadejte se správné parametry. Potřebujete účet Microsoft k tomu. Pokud nemáte, můžete ho na získat [https://www.live.com/](https://www.live.com/).
+Pokud chcete používat účet Microsoft jako poskytovatel identit v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci účtu Microsoft a zadejte se správné parametry. Potřebujete účet Microsoft k tomu. Pokud nemáte, můžete ho na získat [ https://www.live.com/ ](https://www.live.com/).
 
 1. Přejděte na [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) a přihlaste se pomocí přihlašovacích údajů účtu Microsoft.
 2. Klikněte na tlačítko **přidat aplikaci**.

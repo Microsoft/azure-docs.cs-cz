@@ -1,34 +1,32 @@
 ---
-title: "Nástroj pro vyrovnávání zatížení několika Frontends pro Azure. | Microsoft Docs"
-description: "Přehled více Frontends na Vyrovnávání zatížení Azure"
+title: Nástroj pro vyrovnávání zatížení několika Frontends pro Azure. | Microsoft Docs
+description: Přehled více Frontends na Vyrovnávání zatížení Azure
 services: load-balancer
 documentationcenter: na
 author: chkuhtz
 manager: narayan
-editor: 
+editor: ''
 ms.assetid: 748e50cd-3087-4c2e-a9e1-ac0ecce4f869
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/22/2018
 ms.author: chkuhtz
-ms.openlocfilehash: e4c77f3b9bd53df632a433532376eb859969a036
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: cf8fa396e0518e1c847225dfc1d8f91c3421bd11
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Více Frontends pro vyrovnávání zatížení Azure
-
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Vyrovnávání zatížení můžete načíst vyrovnat služby na více porty, více IP adres nebo obojí. Definice nástroje pro vyrovnávání zatížení veřejné a interní můžete použít pro toky Vyrovnávání zatížení v rámci sadu virtuálních počítačů.
 
 Tento článek popisuje základní informace o této schopnosti, důležité koncepty a omezení. Pokud chcete vystavit služby na jednu IP adresu, najdete pokyny, zjednodušené [veřejné](load-balancer-get-started-internet-portal.md) nebo [interní](load-balancer-get-started-ilb-arm-portal.md) konfigurací služby Vyrovnávání zatížení. Přidání více frontends je přírůstkové na jednom front-endovou konfiguraci. Pomocí koncepty v tomto článku, můžete rozbalit zjednodušená konfigurace kdykoli.
 
-Když definujete k pro vyrovnávání zatížení Azure, front-end a back-end konfigurace jsou připojené pomocí pravidel. Test stavu odkazuje pravidlo se používá k určení jak nové toků se odesílají do uzlu ve fondu back-end. Konfigurace IP front-endu (neboli VIP), což je 3 řazené kolekce členů skládá z adresy IP (veřejné nebo interní), přenosový protokol (UDP nebo TCP) a číslo portu od pravidlo Vyrovnávání zatížení je definován front-endu. Vyhrazené IP adresy je IP adresa na Azure virtuální síťovou kartu připojenou k virtuálnímu počítači ve fondu back-end.
+Když definujete k pro vyrovnávání zatížení Azure, front-end a back-end fondu konfigurace jsou připojené pomocí pravidel. Test stavu odkazuje pravidlo se používá k určení jak nové toků se odesílají do uzlu ve fondu back-end. Front-endu (neboli VIP) je definován 3 řazené kolekce členů skládá z adresy IP (veřejné nebo interní), přenosový protokol (UDP nebo TCP) a číslo portu od pravidlo Vyrovnávání zatížení. Fond back-end je kolekce konfigurací IP virtuálního počítače (součást Síťových prostředků), které odkazují na back-endový fond Vyrovnávání zatížení.
 
 Následující tabulka obsahuje některé příklady front-endové konfigurace:
 
@@ -134,6 +132,10 @@ Typ pravidla plovoucí IP adresa je základ pro několik vzorů konfigurace slu�
 ## <a name="limitations"></a>Omezení
 
 * Více front-endové konfigurace jsou podporovány pouze s virtuální počítače IaaS.
-* S tímto pravidlem plovoucí IP adresa musí vaše aplikace používat DIP pro odchozí toky. Pokud vaše aplikace vytvoří vazbu front-endovou IP adresou nakonfigurovanou na rozhraní zpětné smyčky v hostovaný operační systém, pak není k dispozici přepsání odchozího toku překládat pomocí SNAT a toku nezdaří.
+* S tímto pravidlem plovoucí IP adresa musí vaše aplikace použít primární konfiguraci IP adresy pro odchozí toky. Pokud vaše aplikace vytvoří vazbu front-endovou IP adresou nakonfigurovanou na zpětné smyčce není k dispozici přepsání odchozího toku rozhraní v hostovaný operační systém, Azure na překládat pomocí SNAT a toku nezdaří.
 * Veřejné IP adresy mají vliv na fakturace. Další informace najdete v tématu [ceny IP adresu](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * Limity předplatného použít. Další informace najdete v tématu [omezení služby](../azure-subscription-service-limits.md#networking-limits) podrobnosti.
+
+## <a name="next-steps"></a>Další postup
+
+- Zkontrolujte [odchozí připojení](load-balancer-outbound-connections.md) pochopit dopad několika frontends na chování odchozí připojení.

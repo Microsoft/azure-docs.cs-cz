@@ -3,7 +3,7 @@
 Přejděte k vaší instanci APIM, postupujte takto:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
-2. Vyberte ![Šipka](./media/api-management-navigate-to-instance/arrow.png).
+2. V levém horním rohu obrazovky, vyberte **všechny služby**.  
 3. Do vyhledávacího pole zadejte "api".
 4. Klikněte na tlačítko **služby API Management**.
 

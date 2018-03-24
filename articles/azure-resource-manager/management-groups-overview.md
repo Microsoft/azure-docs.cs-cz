@@ -1,22 +1,22 @@
 ---
-title: "Uspořádání prostředků s skupin pro správu Azure | Microsoft Docs"
-description: "Další informace o skupin pro správu a jejich použití."
+title: Uspořádání prostředků s skupin pro správu Azure | Microsoft Docs
+description: Další informace o skupin pro správu a jejich použití.
 author: rthorn17
 manager: rithorn
-editor: 
+editor: ''
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2018
+ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: a86fc568a0c7f4ada0b853cda8a7b2e06ed7dfcb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: db472345bacda916f1b1664ed7803978ab235a2a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání prostředků s skupin pro správu Azure 
 
@@ -24,15 +24,13 @@ Pokud má vaše organizace mnoho odběrů, musíte způsob, jak efektivně sprav
 
 Funkce skupiny správy je dostupná ve verzi public preview. Chcete začít používat správu skupin, přihlášení, které [portál Azure](https://portal.azure.com) a vyhledejte **skupin pro správu** v **všechny služby** části. 
 
-Podpora Azure zásad skupiny pro správu není k dispozici, ale ve verzi Public Preview a pochází v následujících týdnech.  
-
 Jako příklad můžete používat zásady do skupiny pro správu, který omezuje oblastí, které jsou k dispozici pro vytvoření virtuálního počítače (VM). Tato zásada by bylo možné provést pro všechny skupiny pro správu, odběry a prostředky v této skupině pro správu tím, že se jenom virtuální počítače vytvořené v této oblasti.
 
 ## <a name="hierarchy-of-management-groups-and-subscriptions"></a>Hierarchie skupin pro správu a odběry 
 
 Můžete vytvořit flexibilní strukturu skupin pro správu a odběry, které slouží k uspořádání prostředků do hierarchie jednotná zásad a správu přístupu. Následující diagram znázorňuje příklad hierarchie, která se skládá ze skupiny pro správu a odběry uspořádané podle oddělení.    
 
-![Hierarchie](media/management-groups/MG_overview.png)
+![strom](media/management-groups/MG_overview.png)
 
 Vytvořením hierarchie, která je seskupené podle oddělení, budete moci přiřadit [řízení řízení přístupu (RBAC)](../active-directory/role-based-access-control-what-is.md) role, *dědění* k oddělení pod tuto skupinu pro správu. Pomocí skupin pro správu, můžete snížit vaše úlohy a snižuje riziko chyby tak, že pouze jednou přiřadit role. 
 
@@ -42,6 +40,14 @@ Vytvořením hierarchie, která je seskupené podle oddělení, budete moci při
     - Tento limit nezahrnuje úrovni kořenového adresáře nebo na úrovni předplatného.
 - Každou skupinu pro správu podporuje pouze jednu nadřazenou položku.
 - Každou skupinu pro správu může mít více podřízených položek. 
+
+### <a name="preview-subscription-visibility-limitation"></a>Omezení viditelnosti předplatné Preview 
+Není aktuálně omezení ve verzi preview kde nejste schopni zobrazit předplatná, která mají zděděná přístup k. Zdědí přístup k předplatnému, ale Azure Resource Manager není schopna ještě respektovat dědičnosti přístup.  
+
+Pomocí rozhraní REST API informace o odběru vrátí podrobnosti, jak máte přístup, ale v rámci portálu Azure a prostředí Azure Powershell nezobrazovat odběrů. 
+
+Tato položka je pracuje a vyřeší před skupin pro správu se oznámeno jako "Obecné dostupnosti."  
+
 
 ## <a name="root-management-group-for-each-directory"></a>Skupina pro správu kořenového pro každý adresář
 

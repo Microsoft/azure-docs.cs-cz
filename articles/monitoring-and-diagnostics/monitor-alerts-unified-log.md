@@ -1,9 +1,9 @@
 ---
-title: "Protokol výstrah v monitorování Azure – výstrahy (Preview) | Microsoft Docs"
-description: "Aktivační událost e-mailů, oznámení, adresy URL weby volání (webhooky) nebo automatizace při splnění zadané podmínky komplexní dotazu pro výstrahy Azure (Preview)."
+title: Přihlášení výstrahy monitorování Azure – výstrahy | Microsoft Docs
+description: Aktivační událost e-mailů, oznámení, adresy URL weby volání (webhooky) nebo při splnění zadané podmínky komplexní dotazu pro výstrahy Azure automation.
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
@@ -12,35 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/17/2018
 ms.author: vinagara
-ms.openlocfilehash: 0cee8bf77e0facc12159b823152b8859ce5cedd8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5928bbcec08d6ba4ac0b0d03b66fa4bfc8f5e3d7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Protokol výstrah v monitorování Azure – výstrahy (Preview)
-Tento článek poskytuje podrobné informace o tom, jak výstrahy pravidla v pracovní dotazy Analytics ve výstrahách Azure (Preview) a popisuje rozdíly mezi různé typy protokolu pravidla výstrah. Podrobnosti o výstrahách metrika pomocí protokolů [téměř upozornění v reálném čase metrika](monitoring-near-real-time-metric-alerts.md)
+# <a name="log-alerts-in-azure-monitor---alerts"></a>Protokol výstrah v monitorování Azure – výstrahy 
+Tento článek poskytuje podrobné informace o tom, jak výstrahy pravidla v pracovní dotazy Analytics ve výstrahách Azure a popisuje rozdíly mezi různé typy protokolu pravidla výstrah. Podrobnosti o výstrahách metrika pomocí protokolů [téměř upozornění v reálném čase metrika](monitoring-near-real-time-metric-alerts.md)
 
-Aktuálně výstrahy Azure (Preview), podporuje protokolu výstrahy na dotazy z [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) a [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events).
+Aktuálně Azure výstrahy, podporuje protokolu výstrahy na dotazy z [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) a [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events).
 
 > [!WARNING]
 
-> V současné době výstrahu protokolu ve výstrahách Azure (Preview) nepodporuje dotazů mezi prostoru nebo napříč aplikacemi.
+> Výstraha protokolu ve výstrahách Azure v současné době nepodporuje dotazů mezi prostoru nebo napříč aplikacemi. A výstrahy protokolu pro službu Application Insights je ve verzi public preview – funkce a uživatelské rozhraní se může změnit.
 
-Navíc můžete uživatelům ideální jejich dotazy v analytické platformě podle výběru v Azure a potom *importovat je pro použití ve výstrahách (Preview) uložením dotaz*. Postup:
+Navíc můžete uživatelům ideální jejich dotazy v analytické platformě podle výběru v Azure a potom *importovat je pro použití ve výstrahách uložením dotaz*. Postup:
 - Pro službu Application Insights: Portálu analýza přejděte k ověření dotazů a jeho výsledky. Potom uložte s jedinečným názvem do *sdílené dotazy*.
 - Pro analýzu protokolu: Přejděte do protokolu vyhledávání, ověření dotazu a jeho výsledky. Pak použijte uložit s jedinečným názvem do žádné kategorie.
 
-Pak když [vytváření výstrahu protokolu ve výstrahách (Preview)](monitor-alerts-unified-usage.md), najdete v části uloženého dotazu uvedené jako typ signálu **protokolu (uložený dotaz)**; jak je znázorněno v následujícím příkladu: ![uložený dotaz importovat do výstrahy](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
+Pak když [vytváření výstrahu protokolu ve výstrahách ](monitor-alerts-unified-usage.md), najdete v části uloženého dotazu uvedené jako typ signálu **protokolu (uložený dotaz)**; jak je znázorněno v následujícím příkladu: ![uložený dotaz importovat do výstrahy](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
 
 > [!NOTE]
 > Pomocí **protokolu (uložený dotaz)** výsledkem importu výstrah. Proto nebudou všechny změny provést po v Analytics odrážející v uloženém pravidla výstrah a naopak.
 
 ## <a name="log-alert-rules"></a>Pravidla výstrah protokolu
 
-Výstrahy jsou vytvářeny pomocí výstrah Azure (Preview) pro automatické spouštění dotazů protokolu v pravidelných intervalech.  Pokud výsledky dotazu protokolu konkrétním kritériím, se vytvoří záznam výstrahy. Pravidlo může automaticky spusťte jednu nebo více akcí proaktivně oznámíme vám výstrahy nebo vyvolání jiným procesem jako externí aplikace pomocí odesílání dat [json na základě webhooku](monitor-alerts-unified-log-webhook.md)pomocí [akce skupiny](monitoring-action-groups.md). Různé typy pravidla výstrah pomocí různých logiku k provedení této analýze.
+Výstrahy jsou vytvořené pomocí Azure výstrahy pro automatické spouštění dotazů protokolu v pravidelných intervalech.  Pokud výsledky dotazu protokolu konkrétním kritériím, se vytvoří záznam výstrahy. Pravidlo může automaticky spusťte jednu nebo více akcí proaktivně oznámíme vám výstrahy nebo vyvolání jiným procesem jako externí aplikace pomocí odesílání dat [json na základě webhooku](monitor-alerts-unified-log-webhook.md)pomocí [akce skupiny](monitoring-action-groups.md). Různé typy pravidla výstrah pomocí různých logiku k provedení této analýze.
 
 Pravidla výstrah jsou definovány následující podrobnosti:
 
@@ -118,7 +118,7 @@ V tomto příkladu by se vytvořit samostatné výstrahy pro srv02 a srv03, prot
 
 ## <a name="next-steps"></a>Další postup
 * Pochopení [akce Webhooku protokolu výstrahy](monitor-alerts-unified-log-webhook.md)
-* [Získat přehled o výstrahách Azure (Preview)](monitoring-overview-unified-alerts.md)
-* Další informace o [pomocí výstrah Azure (preview)](monitor-alerts-unified-usage.md)
+* [Získat přehled o výstrahách Azure ](monitoring-overview-unified-alerts.md)
+* Další informace o [pomocí Azure výstrahy ](monitor-alerts-unified-usage.md)
 * Další informace o [Application Insights](../application-insights/app-insights-analytics.md)
 * Další informace o [analýzy protokolů](../log-analytics/log-analytics-overview.md).    

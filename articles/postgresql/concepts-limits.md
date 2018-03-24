@@ -1,6 +1,6 @@
 ---
-title: "Omezení v Azure databázi PostgreSQL"
-description: "Tento článek popisuje omezení v Azure databázi PostgreSQL, jako je například počet připojení a možnosti úložiště modul."
+title: Omezení v Azure databázi PostgreSQL
+description: Tento článek popisuje omezení v Azure databázi PostgreSQL, jako je například počet připojení a možnosti úložiště modul.
 services: postgresql
 author: kamathsun
 ms.author: sukamat
@@ -8,15 +8,15 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: ba05308039e9743dd207333476e61a45c0ca166a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 7e06cdba7c9c9f7e5c1d621e7421a18c342c0fdb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Omezení v Azure databázi PostgreSQL
-Databáze Azure pro PostgreSQL služby je ve verzi public preview. Následující části popisují kapacitu a funkční omezení ve službě databáze.
+Následující části popisují kapacitu a funkční omezení ve službě databáze.
 
 ## <a name="pricing-tier-maximums"></a>Maximální hodnoty cenové úrovně
 Azure databáze PostgreSQL má více cenové úrovně, které lze vybírat při vytváření serveru. Další informace najdete v tématu [cenové úrovně v databázi Azure pro PostgreSQL](concepts-pricing-tiers.md).  
@@ -43,7 +43,6 @@ Takto je maximální počet připojení, výpočetní jednotky a úložiště v 
 |Paměťově optimalizované| Gen 5| 4| 250|
 |Paměťově optimalizované| Gen 5| 8| 480|
 |Paměťově optimalizované| Gen 5| 16| 950|
-|Paměťově optimalizované| Gen 5| 32| 1900|
 
 Při připojení přesahuje limit, může se zobrazit chybová zpráva:
 > Závažná chyba: bohužel již příliš mnoho klientů

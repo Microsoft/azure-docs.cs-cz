@@ -1,11 +1,11 @@
 ---
-title: "Datový proud za provozu s místními kodéry, které vytvářejí proudy s více přenosovými rychlostmi - Azure | Microsoft Docs"
-description: "Toto téma popisuje, jak nastavit kanál, který přijímá živý datový proud s více přenosovými rychlostmi z místní kodér. Datový proud mohou být zajišťovány pak pro klientské aplikace přehrávání přes jeden nebo více koncových bodů streamování, pomocí jedné z následujících protokolů adaptivní streamování: HLS, technologie Smooth Streaming, čárka."
+title: Datový proud za provozu s místními kodéry, které vytvářejí proudy s více přenosovými rychlostmi - Azure | Microsoft Docs
+description: 'Toto téma popisuje, jak nastavit kanál, který přijímá živý datový proud s více přenosovými rychlostmi z místní kodér. Datový proud mohou být zajišťovány pak pro klientské aplikace přehrávání přes jeden nebo více koncových bodů streamování, pomocí jedné z následujících protokolů adaptivní streamování: HLS, technologie Smooth Streaming, čárka.'
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: d9f0912d-39ec-4c9c-817b-e5d9fcf1f7ea
 ms.service: media-services
 ms.workload: media
@@ -14,13 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 1266c7b6c1539f84eafea1007999fb4360184857
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: fae123d2cc594bb741fb1cdb0da62bef05a2a8c2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Živé streamování s místními kodéry, které vytvářejí proudy s více přenosovými rychlostmi
+
+> [!NOTE]
+> Od 12 může 2018 za provozu kanály se už podporu datový proud RTP/MPEG-2 transport ingestování. Proveďte prosím migraci z RTP/MPEG-2 RTMP nebo fragmentovaných MP4 (technologie Smooth Streaming) ingestování protokoly.
+
 ## <a name="overview"></a>Přehled
 Ve službě Azure Media Services *kanál* představuje cestu pro zpracování datových proudů za provozu obsahu. Kanál, který obdrží živé vstupní datové proudy v jednom ze dvou způsobů:
 
@@ -114,7 +118,7 @@ Pokud používáte místní kodér za provozu k vygenerování více přenosový
 
 Následující tabulka uvádí výpočtu doby trvání segmentu:
 
-| Interval klíčový snímek | HLS segment balení poměr (FragmentsPerSegment) | Příklad |
+| Interval klíčový snímek | HLS segment balení poměr (FragmentsPerSegment) | Příklad: |
 | --- | --- | --- |
 | Menší než nebo rovna 3 sekund |3:1 |Pokud KeyFrameInterval (nebo GOP) 2 sekundy, je výchozí HLS segment balení poměr 3: 1. Tím se vytvoří segment HLS 6 sekundu. |
 | 3 až 5 sekund |2:1 |Pokud KeyFrameInterval (nebo GOP) je 4 a víc sekund, je výchozí HLS segment balení poměr 2: 1. Tím se vytvoří segment HLS 8 sekundu. |
@@ -189,7 +193,7 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 ## <a id="cc_and_ads"></a>Uzavřené přidávání titulků a ad vložení
 Následující tabulka ukazuje podporované standardy pro uzavřené přidávání titulků a ad vložení.
 
-| Úroveň Standard | Poznámky |
+| Standard | Poznámky |
 | --- | --- |
 | CEA 708 a EIA 608 (708/608) |Titulky jsou CEA 708 a EIA 608 standardy pro Spojené státy americké a Kanadu.<p><p>V současné době přidávání titulků je podporována pouze v případě, že se provádí v kódovaného vstupního datového proudu. Budete muset použít kodér médií za provozu, která můžete vložit 608 nebo 708 titulky v kódovaného datový proud, který je odeslán Media Services. Služba Media Services doručí obsah s titulky vložené do vašeho prohlížeče. |
 | TTML uvnitř .ismt (technologie Smooth Streaming textové stopy) |Dynamické balení Media Services umožňuje vašim klientům ke streamování obsahu v některém z následujících formátů: DASH, HLS nebo technologie Smooth Streaming. Ale pokud jste ingestování fragmentovaný soubor MP4 (technologie Smooth Streaming) s titulky uvnitř .ismt (technologie Smooth Streaming textové stopy), abyste mohli zajistit datový proud jenom pro klienty technologie Smooth Streaming. |
@@ -220,7 +224,7 @@ Zde jsou další důležité informace týkající se práce s kanály a souvise
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="feedback"></a>Odezva
+## <a name="feedback"></a>Váš názor
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Související témata

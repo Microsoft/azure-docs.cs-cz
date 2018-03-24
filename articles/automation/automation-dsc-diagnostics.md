@@ -1,6 +1,6 @@
 ---
-title: "Předávání data pro vytváření sestav k analýze protokolů Azure Automation DSC."
-description: "Tento článek ukazuje, jak odeslat požadovaného stavu konfigurace (DSC) data pro vytváření sestav k Log Analytics k poskytování správy a další aspekty."
+title: Předávání data pro vytváření sestav k analýze protokolů Azure Automation DSC.
+description: Tento článek ukazuje, jak odeslat požadovaného stavu konfigurace (DSC) data pro vytváření sestav k Log Analytics k poskytování správy a další aspekty.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,17 +8,15 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: d06ec240477c2defca7a463b2e9338bc5e3930ab
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ac0da2b73341f0c6ed4f1e99e077996525890ab7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>Předání dat sestav Azure Automation DSC do služby OMS Log Analytics
+# <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>Předávání data pro vytváření sestav k analýze protokolů Azure Automation DSC.
 
-Automatizace může odesílat data stavu uzlu DSC do pracovního prostoru analýzy protokolů Microsoft Operations Management Suite (OMS).  
+Automatizace může odesílat data stavu uzlu DSC do pracovního prostoru analýzy protokolů.  
 Stav dodržování předpisů se zobrazí na portálu Azure nebo v prostředí PowerShell pro uzly a pro jednotlivé prostředky DSC v konfigurace uzlu. Pomocí analýzy protokolů můžete:
 
 * Získat informace o dodržování předpisů pro spravované uzly a jednotlivé prostředky
@@ -34,7 +32,7 @@ Chcete-li zahájit odesílání sestav Automation DSC k analýze protokolů, je 
 * Listopadu 2016 nebo novější vydání [prostředí Azure PowerShell](/powershell/azure/overview) (v2.3.0).
 * Účet Azure Automation. Další informace najdete v tématu [Začínáme s Azure Automation.](automation-offering-get-started.md)
 * Pracovní prostor analýzy protokolů se **automatizace a řízení** nabídky služeb. Další informace najdete v tématu [začít pracovat s analýzy protokolů](../log-analytics/log-analytics-get-started.md).
-* Nejméně jeden uzel Azure Automation DSC. Další informace najdete v tématu [registrace počítačů pro správu Azure Automation DSC.](automation-dsc-onboarding.md) 
+* Nejméně jeden uzel Azure Automation DSC. Další informace najdete v tématu [registrace počítačů pro správu Azure Automation DSC.](automation-dsc-onboarding.md)
 
 ## <a name="set-up-integration-with-log-analytics"></a>Nastavení integrace s analýzy protokolů
 
@@ -191,5 +189,5 @@ Log Analytics poskytuje lepší viditelnost provozní data Automation DSC a mů�
 
 * Další informace o tom, jak vytvořit různé vyhledávací dotazy a kontrolujte protokoly Automation DSC s analýzy protokolů najdete v tématu [hledání přihlásit analýzy protokolů](../log-analytics/log-analytics-log-searches.md)
 * Další informace o používání Azure Automation DSC, najdete v části [Začínáme s Azure Automation DSC.](automation-dsc-getting-started.md)
-* Další informace o službě Log Analytics v OMS a o zdrojích pro shromažďování dat najdete v článku [Přehled shromažďování dat úložiště Azure ve službě Log Analytics](../log-analytics/log-analytics-azure-storage.md).
+* Další informace o analýzy protokolů a kolekci zdrojů dat naleznete v tématu [shromažďování Azure úložiště dat v přehledu analýzy protokolů](../log-analytics/log-analytics-azure-storage.md)
 

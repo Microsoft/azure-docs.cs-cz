@@ -1,11 +1,12 @@
 ---
-title: "Azure Machine Learning webové služby: Nasazení a používání | Microsoft Docs"
-description: "Prostředky pro nasazení a využívají webové služby."
+title: 'Azure Machine Learning webové služby: Nasazení a používání | Microsoft Docs'
+description: Prostředky pro nasazení a využívají webové služby.
 services: machine-learning
-documentationcenter: 
-author: aashishb
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
 manager: hjerez
-editor: 
+editor: cgronlun
 ms.assetid: 47635376-d1f4-4ea4-a6af-bd1f99f69a69
 ms.service: machine-learning
 ms.workload: data-services
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: aashishb
-ms.openlocfilehash: 7eecfe4a80499fbba0533f0d410dd920db61e62c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 2d64b007b68db4df652bde4308760400f4de6dbc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Webové služby Azure Machine Learning: Nasazení a využití
 Azure Machine Learning můžete použít k nasazení pracovní postupy a modely jako webové služby machine learning. Tyto webové služby pak lze volat modely machine learningu z aplikací přes Internet udělat předpovědi v reálném čase nebo v dávkovém režimu. Protože webových služeb jsou dosáhl standardu RESTful, můžete je volat z různé programovací jazyky a platformy, jako je například rozhraní .NET a Javu a z aplikace, jako je například aplikace Excel.

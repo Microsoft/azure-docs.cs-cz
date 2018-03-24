@@ -1,12 +1,12 @@
 ---
-title: "Řešení potíží Storm pomocí Azure HDInsight | Microsoft Docs"
-description: "Získejte odpovědi na časté otázky týkající se používání Apache Storm s Azure HDInsight."
-keywords: "Azure HDInsight, Storm, – nejčastější dotazy, řešení potíží s průvodce, běžné problémy"
+title: Řešení potíží Storm pomocí Azure HDInsight | Microsoft Docs
+description: Získejte odpovědi na časté otázky týkající se používání Apache Storm s Azure HDInsight.
+keywords: Azure HDInsight, Storm, – nejčastější dotazy, řešení potíží s průvodce, běžné problémy
 services: Azure HDInsight
 documentationcenter: na
 author: raviperi
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 74E51183-3EF4-4C67-AA60-6E12FAC999B5
 ms.service: multiple
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: raviperi
-ms.openlocfilehash: c0295af2e71d891d07dad7012b7a27402c375178
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6ee408b32650fe0f0e0b66294896756732a2ca5b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Řešení potíží Storm pomocí Azure HDInsight
 
@@ -28,7 +28,7 @@ Další informace o hlavních problémů a jejich řešení pro práci s Apache 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Jak získám přístup k rozhraní Storm v clusteru?
 Máte dvě možnosti pro přístup k rozhraní Storm z prohlížeče:
 
-### <a name="ambari-ui"></a>Uživatelské rozhraní Ambari
+### <a name="ambari-ui"></a>Ambari UI
 1. Přejděte na řídicí panel Ambari.
 2. V seznamu služeb vyberte **Storm**.
 3. V **rychlé odkazy** nabídce vyberte možnost **uživatelské rozhraní Storm**.
@@ -36,11 +36,11 @@ Máte dvě možnosti pro přístup k rozhraní Storm z prohlížeče:
 ### <a name="direct-link"></a>Přímý odkaz
 Uživatelské rozhraní Storm na následující adrese URL se můžete dostat:
 
-https://\<název DNS clusteru\>/stormui
+https://\<cluster DNS name\>/stormui
 
 Příklad:
 
- https://stormcluster.azurehdinsight.NET/stormui
+ https://stormcluster.azurehdinsight.net/stormui
 
 ## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Jak převést Storm událostí hub spout kontrolního bodu informace z jednoho topologie do jiného?
 
@@ -71,7 +71,7 @@ Příkaz export zapíše metadata na cestu Apache Hadoop Distributed File System
     ```
 
 #### <a name="import-offset-metadata"></a>Import metadat posunutí
-1. Přejděte do ZooKeeper clusteru v clusteru, ze kterého posun kontrolního bodu musí být exportován pomocí SSH.
+1. Přejděte do ZooKeeper clusteru v clusteru, ze kterého posun kontrolního bodu musí být importovány pomocí SSH.
 2. Spusťte následující příkaz pro import dat posunutí ZooKeeper z /stormmetadata/zkdata cesty HDFS ZooKeeper server v cílovém clusteru (po aktualizaci softwaru HDP řetězec verze):
 
     ```apache
@@ -79,7 +79,7 @@ Příkaz export zapíše metadata na cestu Apache Hadoop Distributed File System
     ```
    
 #### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>Odstranit posunutí metadata tak, aby topologie spustit od začátku, nebo ze časové razítko, které uživatel vybere zpracování dat
-1. Přejděte do ZooKeeper clusteru v clusteru, ze kterého posun kontrolního bodu musí být exportován pomocí SSH.
+1. Použití SSH přejdete do ZooKeeper clusteru v clusteru, ze kterého posun kontrolního bodu musí být odstraněn.
 2. Spusťte následující příkaz k odstranění všech dat posunutí ZooKeeper v aktuální clusteru (po aktualizaci softwaru HDP řetězec verze):
 
     ```apache
@@ -107,7 +107,7 @@ Uzel brány je služba reverzní proxy server, která umožňuje veřejný pří
 ### <a name="head-nodes"></a>hlavních uzlech
 Storm hlavních uzlech spusťte následující služby:
 * Nimbus
-* Ambari serveru
+* Ambari server
 * Ambari metriky serveru
 * Kolekce Ambari metriky
  

@@ -1,24 +1,24 @@
 ---
-title: "Správa instancí trvanlivý funkcí – Azure"
-description: "Naučte se spravovat instancí v rozšíření trvanlivý funkce pro Azure Functions."
+title: Správa instancí trvanlivý funkcí – Azure
+description: Naučte se spravovat instancí v rozšíření trvanlivý funkce pro Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9cea9b18cd7434a34138d5cecad8a8fd7f10d2e5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 01a6fefc10dfd83997acc290dbd1c85ba86a4799
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Správa instancí trvanlivý funkcí (Azure Functions)
 
@@ -104,7 +104,7 @@ public static async Task Run(
 
 ## <a name="terminating-instances"></a>Ukončení instance
 
-Spuštěné instance můžete ukončit pomocí [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) třídy. Jsou dva parametry `instanceId` a `reason` řetězce, který se zapisují do protokolů a stav instance. Ukončenou instance se zastaví také nedosáhne Další `await` bod, nebo se ukončí okamžitě pokud už je na `await`.
+Spuštěné instance orchestration můžete ukončit pomocí [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) třídy. Jsou dva parametry `instanceId` a `reason` řetězce, který se zapisují do protokolů a stav instance. Ukončenou instance se zastaví také nedosáhne Další `await` bod, nebo se ukončí okamžitě pokud už je na `await`. 
 
 ```csharp
 [FunctionName("TerminateInstance")]
@@ -119,6 +119,9 @@ public static Task Run(
 
 > [!NOTE]
 > Instance ukončení aktuálně je podporována pouze pro orchestrator funkcí jazyka C#.
+
+> [!NOTE]
+> Ukončení instance nejsou aktuálně rozšířena. Aktivita funkce a dílčí orchestrations se spustí až do ukončení bez ohledu na to, zda byla ukončena orchestration instance, která je volána.
 
 ## <a name="sending-events-to-instances"></a>Odesílání událostí do instance
 

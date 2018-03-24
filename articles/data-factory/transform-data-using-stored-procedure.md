@@ -1,11 +1,11 @@
 ---
-title: "Transformace dat pomocí aktivity uložené procedury v Azure Data Factory | Microsoft Docs"
-description: "Vysvětluje, jak vyvolat uloženou proceduru v databázi nebo datový sklad SQL Azure z objektu pro vytváření dat kanál pomocí aktivity uložené procedury aplikace SQL Server."
+title: Transformace dat pomocí aktivity uložené procedury v Azure Data Factory | Microsoft Docs
+description: Vysvětluje, jak vyvolat uloženou proceduru v databázi nebo datový sklad SQL Azure z objektu pro vytváření dat kanál pomocí aktivity uložené procedury aplikace SQL Server.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 6b4523747b57ee7a3d48211c9bb7fba1123fe4ce
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 84ef1e48de17db6f8b3b6fa4bdea2b5ef0f2efe6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity uložené procedury serveru SQL v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -79,7 +79,7 @@ Následující tabulka popisuje tyto vlastnosti JSON:
 | storedProcedureName       | Zadejte název uložené procedury, která bude vyvolána. | Ano      |
 | storedProcedureParameters | Zadejte hodnoty pro parametry uložené procedury. Použití `"param1": { "value": "param1Value","type":"param1Type" }` předat hodnoty parametrů a jejich typu zdroje dat nepodporuje. Pokud potřebujete předat hodnotu null pro parametr, použijte `"param1": { "value": null }` (všechny malá písmena). | Ne       |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Najdete v následujících článcích, které vysvětlují, jak k transformaci dat jinými způsoby: 
 
 * [Aktivita U-SQL](transform-data-using-data-lake-analytics.md)

@@ -1,11 +1,10 @@
 ---
-title: "Přesun dat ze služby Salesforce pomocí služby Data Factory | Microsoft Docs"
-description: "Další informace o tom, jak přesunout data ze služby Salesforce pomocí Azure Data Factory."
+title: Přesun dat ze služby Salesforce pomocí služby Data Factory | Microsoft Docs
+description: Další informace o tom, jak přesunout data ze služby Salesforce pomocí Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9e678e947a686b5a672af13cb0f0e60b4a272de9
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: d4c679722e36eb9533b65037a488fb9af9a5bc80
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Přesun dat ze služby Salesforce pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -111,10 +110,10 @@ Při aktivitě kopírování, pokud je zdroj typu **RelationalSource** (která z
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Načítání dat pomocí where klauzule ve sloupci data a času
 Při zadejte SOQL nebo SQL dotaz, věnujte pozornost rozdíl formátu data a času. Příklad:
 
-* **Ukázka SOQL**:`$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **Ukázka SOQL**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
 * **Ukázka SQL**:
-    * **Pomocí Průvodce kopírováním vytvoříte dotaz:**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
-    * **Pomocí úpravy zadat dotaz JSON (char vyhnuli správně):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
+    * **Pomocí Průvodce kopírováním vytvoříte dotaz:** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
+    * **Pomocí úpravy zadat dotaz JSON (char vyhnuli správně):** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>Načítání dat ze sestavy služby Salesforce
 Ze sestavy služby Salesforce můžete data načíst zadáním dotazu jako `{call "<report name>"}`, např. `"query": "{call \"TestReport\"}"`.
@@ -290,8 +289,8 @@ V tématu [vlastnosti typu RelationalSource](#copy-activity-properties) pro sezn
 | Automatické číslování |Řetězec |
 | Zaškrtávací políčko |Logická hodnota |
 | Měna |Dvojitý |
-| Datum |Datum a čas |
-| Datum/čas |Datum a čas |
+| Datum |DateTime |
+| Datum/čas |DateTime |
 | E-mail |Řetězec |
 | ID |Řetězec |
 | Relace hledání |Řetězec |
@@ -305,7 +304,7 @@ V tématu [vlastnosti typu RelationalSource](#copy-activity-properties) pro sezn
 | Textová oblast (Long) |Řetězec |
 | (Rich) textová oblast |Řetězec |
 | Text (šifrované) |Řetězec |
-| Adresa URL |Řetězec |
+| zprostředkovatele identity |Řetězec |
 
 > [!NOTE]
 > Mapování sloupců z datové sady zdroje na sloupce ze sady jímku dat naleznete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).

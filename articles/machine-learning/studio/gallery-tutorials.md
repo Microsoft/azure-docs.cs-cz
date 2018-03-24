@@ -1,10 +1,11 @@
 ---
 title: Azure kurzy AI Galerie | Microsoft Docs
-description: "Vyhledat a sdílet kurzy v Azure AI Gallery."
+description: Vyhledat a sdílet kurzy v Azure AI Gallery.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 70f0eb31-7dca-4907-a5d7-504357dcd889
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: garye
-ms.openlocfilehash: 9a93a027ed5243496a86efff0d86de7092f44b43
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 6f9c765027ccd915d6754839353a744ac0743bc2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Vyhledat a sdílet kurzy v galerii Azure AI
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -31,7 +31,7 @@ Chcete-li procházet kurzy [v galerii](http://gallery.cortanaintelligence.com)v 
 
 ![Vyberte na domovské stránce Galerie kurzy](./media/gallery-tutorials/select-tutorials-in-gallery.png)
 
-**[Kurzy](https://gallery.cortanaintelligence.com/tutorials)**  stránka zobrazuje seznam kurzů nedávno přidané a Oblíbené. Pokud chcete zobrazit všechny kurzy, vyberte **zobrazit všechny** tlačítko. Chcete-li vyhledat konkrétní kurz, vyberte **zobrazit všechny**a potom vyberte filtr kritéria. Také můžete zadat hledaný text v **vyhledávání** pole v horní části stránky galerie.
+**[Kurzy](https://gallery.cortanaintelligence.com/tutorials)** stránka zobrazuje seznam kurzů nedávno přidané a Oblíbené. Pokud chcete zobrazit všechny kurzy, vyberte **zobrazit všechny** tlačítko. Chcete-li vyhledat konkrétní kurz, vyberte **zobrazit všechny**a potom vyberte filtr kritéria. Také můžete zadat hledaný text v **vyhledávání** pole v horní části stránky galerie.
 
 Můžete získat další informace o kurz na stránce podrobností kurzu. Otevřete stránku kurz podrobnosti, vyberte tento kurz. V **komentáře** části na stránce kurz podrobnosti, můžete okomentovat, poskytnout zpětnou vazbu nebo klást otázky týkající se tohoto kurzu. Tento kurz můžete také sdílet s přátele nebo kolegy na Twitteru nebo LinkedIn. Také můžete e-mailem odkaz na stránku kurzu podrobností pozvaným jiní uživatelé při zobrazení stránky.
 

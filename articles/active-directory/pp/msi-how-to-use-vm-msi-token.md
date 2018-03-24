@@ -1,11 +1,11 @@
 ---
-title: "Jak získat přístupový token na virtuálním počítači používat Identity spravované služby přiřazený uživatelem."
-description: "Podrobné pokyny a příklady pro použití MSI přiřazený uživatelem z virtuálního počítače Azure OAuth získat přístup k tokenu."
+title: Jak získat přístupový token na virtuálním počítači používat Identity spravované služby přiřazený uživatelem.
+description: Podrobné pokyny a příklady pro použití MSI přiřazený uživatelem z virtuálního počítače Azure OAuth získat přístup k tokenu.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 68454d3f3880df82ca895d1c5f140ebdb6030e77
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6c6422bc2b13c0c40e48dabf0470c821b13e7851
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="acquire-an-access-token-for-a-vm-user-assigned-managed-service-identity-msi"></a>Získání tokenu přístupu pro virtuální počítač přiřazený uživatelem identita spravované služby (MSI)
 
@@ -42,7 +42,9 @@ Klientská aplikace může požádat o MSI [jen aplikace přístupový token](~/
 | [Získat token pomocí CURL](#get-a-token-using-curl) | Příklad použití koncový bod MSI REST z klienta Bash/CURL |
 | [Zpracování vypršení platnosti tokenu](#handling-token-expiration) | Pokyny pro nakládání s vypršenou platností přístupové tokeny |
 | [Zpracování chyb](#error-handling) | Pokyny pro zpracování chyby protokolu HTTP vrácená z koncový bod tokenu MSI |
+| [Omezení pokyny](#throttling-guidance) | Pokyny pro zpracování omezení koncový bod token MSI |
 | [ID prostředků pro služby Azure](#resource-ids-for-azure-services) | Získání ID prostředku pro podporované služby Azure |
+
 
 ## <a name="get-a-token-using-http"></a>Získat token pomocí protokolu HTTP 
 
@@ -155,7 +157,7 @@ Tato část popisuje možné chybové odpovědi. A "200 OK" ve stavu úspěšné
 
 | Stavový kód | Chyba | Popis chyby | Řešení |
 | ----------- | ----- | ----------------- | -------- |
-| 400 – Chybný požadavek | invalid_resource | AADSTS50001: Aplikaci s názvem  *\<URI\>*  nebyl nalezen v klientovi s názvem  *\<ID klienta\>*. To může nastat, když aplikace nebyla nainstalována správcem klienta nebo souhlas žádný uživatel v klientovi. Požadavek na ověření mohou mít odeslány nesprávný klienta. \ | (Pouze Linux) |
+| 400 – Chybný požadavek | invalid_resource | AADSTS50001: Aplikaci s názvem *\<URI\>* nebyl nalezen v klientovi s názvem  *\<ID klienta\>*. To může nastat, když aplikace nebyla nainstalována správcem klienta nebo souhlas žádný uživatel v klientovi. Požadavek na ověření mohou mít odeslány nesprávný klienta. \ | (Pouze Linux) |
 | 400 – Chybný požadavek | bad_request_102 | Není zadána hlavička požadovaná metadata | Buď `Metadata` pole hlavičky požadavku ze svého požadavku chybí nebo je v nesprávném formátu. Hodnota musí být zadány jako `true`, všechny malými písmeny. V části "Ukázková žádost" v [získat token pomocí protokolu HTTP](#get-a-token-using-http) části příklad.|
 | 401 unauthorized | unknown_source | Neznámé zdroje  *\<identifikátor URI\>* | Ověřte, že žádost HTTP GET URI správně naformátován. `scheme:host/resource-path` Část musí být zadány jako `http://169.254.169.254/metadata/identity/oath2/token` nebo `http://localhost:50342/oauth2/token`. V části "Ukázková žádost" v [získat token pomocí protokolu HTTP](#get-a-token-using-http) části příklad.|
 |           | invalid_request | Žádosti chybí povinný parametr, obsahuje neplatnou hodnotu parametru, parametr obsahuje více než jednou nebo je jinak poškozený. |  |
@@ -164,6 +166,16 @@ Tato část popisuje možné chybové odpovědi. A "200 OK" ve stavu úspěšné
 |           | unsupported_response_type | Autorizace serveru nepodporuje získání tokenu přístupu pomocí této metody. |  |
 |           | invalid_scope | Požadovaný rozsah je neplatný, neznámý nebo je nesprávný. |  |
 | 500 vnitřní chybu serveru | Neznámé | Nepodařilo se získat token ze služby Active directory. Podrobnosti najdete v tématu protokoly v  *\<cesta k souboru\>* | Ověřte, že je povoleno MSI ve virtuálním počítači. V tématu [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí portálu Azure](msi-qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálních počítačů.<br><br>Také ověřte, že žádost HTTP GET URI správně naformátován, zejména prostředek, který je zadaný identifikátor URI v řetězci dotazu. Najdete v části "Ukázková žádost" v [získat token pomocí protokolu HTTP](#get-a-token-using-http) části příklad, nebo [služeb Azure, podpora Azure AD ověření](msi-overview.md#azure-services-that-support-azure-ad-authentication) seznam služeb a jejich odpovídající ID prostředku.
+
+## <a name="throttling-guidance"></a>Omezení pokyny 
+
+Omezení omezení se vztahuje na počet volání na koncový bod MSI IMDS. Překročení omezení prahovou hodnotu, koncový bod MSI IMDS omezuje žádné další požadavky omezení je v platnosti. Během této doby koncový bod MSI IMDS vrátí stavový kód HTTP 429 ("příliš mnoho požadavků"), a požadavky selžou. 
+
+Zkuste to znovu doporučujeme následující strategie: 
+
+| **Strategie opakování** | **Nastavení** | **Hodnoty** | **Jak to funguje** |
+| --- | --- | --- | --- |
+|ExponentialBackoff |Počet opakování<br />Min back-off<br />Max back-off<br />Delta back-off<br />První rychlé opakování |5<br />0 s<br />60 s<br />2 s<br />false (nepravda) |Pokus 1 – zpoždění 0 s<br />Pokus 2 – zpoždění ~2 s<br />Pokus 3 – zpoždění ~6 s<br />Pokus 4 – zpoždění ~14 s<br />Pokus 5 – zpoždění ~30 s |
 
 ## <a name="resource-ids-for-azure-services"></a>ID prostředků pro služby Azure
 

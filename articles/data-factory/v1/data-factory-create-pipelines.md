@@ -1,11 +1,10 @@
 ---
-title: "Vytvořit nebo plán kanály, řetězu aktivit ve službě Data Factory | Microsoft Docs"
-description: "Naučte se vytvořit kanál dat v Azure Data Factory přesunout a transformovat data. Vytvoření pracovního postupu řízených daty k vytvoření připravené k použití informací."
+title: Vytvořit nebo plán kanály, řetězu aktivit ve službě Data Factory | Microsoft Docs
+description: Naučte se vytvořit kanál dat v Azure Data Factory přesunout a transformovat data. Vytvoření pracovního postupu řízených daty k vytvoření připravené k použití informací.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 13b137c7-1033-406f-aea7-b66f25b313c0
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c8ddd2b49ca48f3bf232a8650d870a8b7159f66a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: be071c8138a6782ad144a42d52d737f248ff7a7b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

@@ -1,6 +1,6 @@
 ---
-title: "Sledování operací, události a čítače pro vyrovnávání zatížení | Microsoft Docs"
-description: "Zjistěte, jak povolit události výstrah a sběru dat stavu stav protokolování pro nástroj pro vyrovnávání zatížení Azure"
+title: Sledování operací, události a čítače pro vyrovnávání zatížení | Microsoft Docs
+description: Zjistěte, jak povolit události výstrah a sběru dat stavu stav protokolování pro nástroj pro vyrovnávání zatížení Azure
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 4388a1e933a0ebf211b5a7621c74b0622be41a4c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: dabf4bcae957559978e731636bb13554f1a68b73
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="log-analytics-for-azure-load-balancer"></a>Log Analytics pro Azure Load Balancer
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+>[!NOTE] 
+>Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o standardní nástroje pro vyrovnávání zatížení najdete v tématu [nástroj pro vyrovnávání zatížení přehled](load-balancer-standard-overview.md).
 
 Různé typy protokolů v Azure můžete použít ke správě a odstraňování potíží nástroje pro vyrovnávání zatížení. Některé z těchto protokolů jsou přístupné prostřednictvím portálu. Všechny protokoly můžete extrahovat z Azure blob storage a zobrazit v různých nástrojů, jako je například aplikace Excel a PowerBI. Další informace o různých typech protokolů z níže uvedeného seznamu.
 

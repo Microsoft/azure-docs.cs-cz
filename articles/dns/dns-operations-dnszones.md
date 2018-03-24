@@ -1,6 +1,6 @@
 ---
-title: "Správa zón DNS v Azure DNS - prostředí PowerShell | Microsoft Docs"
-description: "Můžete spravovat zóny DNS pomocí Azure Powershell. Tento článek popisuje, jak k aktualizaci, odstranění a vytvoření zóny DNS na Azure DNS"
+title: Správa zón DNS v Azure DNS - prostředí PowerShell | Microsoft Docs
+description: Můžete spravovat zóny DNS pomocí Azure Powershell. Tento článek popisuje, jak k aktualizaci, odstranění a vytvoření zóny DNS na Azure DNS
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/22/2016
+ms.date: 03/19/2018
 ms.author: gwallace
-ms.openlocfilehash: 3f28e70bb6ef46f53375d256a520db40fcb71ad0
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: b9c263acf754a72cde5b2716703b8e771a349457
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>Správa zón DNS pomocí prostředí PowerShell
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 12/21/2017
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
 Tento článek ukazuje, jak spravovat zóny DNS pomocí prostředí Azure PowerShell. Můžete také spravovat zóny DNS pomocí napříč platformami [rozhraní příkazového řádku Azure](dns-operations-dnszones-cli.md) nebo portálu Azure.
+
+Tato příručka konkrétně zabývá veřejném DNS zóny. Informace o použití prostředí Azure PowerShell můžete spravovat soukromé zóny v Azure DNS najdete v tématu [začít pracovat s zón DNS privátní Azure pomocí Azure PowerShell](private-dns-getstarted-powershell.md).
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -50,7 +52,7 @@ Následující příklad ukazuje, jak vytvořit zónu DNS se dvěma [Azure Resou
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-Azure DNS teď také podporuje privátní zóny DNS (aktuálně funkce preview).  Příklad toho, jak vytvořit zónu DNS privátní, naleznete v části [začít pracovat s privátní zóny Azure DNS pomocí prostředí PowerShell](./private-dns-getstarted-powershell.md).
+Azure DNS teď také podporuje privátní zóny DNS (momentálně ve verzi public preview).  Další informace o privátních zónách DNS najdete v tématu [Použití DNS Azure pro privátní domény](private-dns-overview.md). Příklad toho, jak vytvořit zónu DNS privátní, naleznete v části [začít pracovat s privátní zóny Azure DNS pomocí prostředí PowerShell](./private-dns-getstarted-powershell.md).
 
 ## <a name="get-a-dns-zone"></a>Získat zóny DNS
 
@@ -165,7 +167,7 @@ Můžete přepsat aktuální `$ConfirmPreference` nastavení pomocí `-Confirm` 
 
 Další informace o `-Confirm` a `$ConfirmPreference`, najdete v části [o proměnné předvoleb](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak [spravovat sady záznamů a záznamy](dns-operations-recordsets.md) ve vaší zóně DNS.
 <br>

@@ -1,8 +1,8 @@
 ---
-title: "Azure AD Connect: Objekt synchronizace řešení potíží s | Microsoft Docs"
-description: "Toto téma obsahuje postup pro řešení potíží se objekt synchronizace pomocí řešení potíží úlohy."
+title: 'Azure AD Connect: Objekt synchronizace řešení potíží s | Microsoft Docs'
+description: Toto téma obsahuje postup pro řešení potíží se objekt synchronizace pomocí řešení potíží úlohy.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -11,19 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 10ebe039b9d266d15696b397b9cdef9bc7ec2a10
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 54ae18b9a802fe078d307f4d36400adf806b233f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží s objekt synchronizace s synchronizace Azure AD Connect
 Tento dokument obsahuje kroky pro řešení potíží s objekt synchronizace pomocí řešení potíží úlohy.
 
 ## <a name="troubleshooting-task"></a>Řešení potíží s úloh
-Pro nasazení připojení Azure Active Directory (AAD) s verzí <verison> nebo vyšší, použijte úlohu odstraňování potíží v průvodci k řešení potíží objekt synchronizace. U starších verzí, prosím vyřešit ručně, jak je popsáno [zde](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md).
+Pro Azure Active Directory (AAD) připojit nasazení s verzí 1.1.749.0 nebo vyšší, použijte úlohu odstraňování potíží v Průvodci potíží objekt synchronizace. U starších verzí, prosím vyřešit ručně, jak je popsáno [zde](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md).
 
 ### <a name="run-the-troubleshooting-task-in-the-wizard"></a>Spusťte úlohu odstraňování potíží v Průvodci
 Pokud chcete spustit úlohu řešení potíží v průvodci, proveďte následující kroky:

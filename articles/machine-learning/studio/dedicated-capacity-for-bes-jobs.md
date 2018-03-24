@@ -1,23 +1,23 @@
 ---
-title: "Vyhrazené kapacity pro Machine Learning dávky spuštění služby úlohy | Microsoft Docs"
-description: "Přehled služby Azure Batch pro Machine Learning úlohy."
+title: Vyhrazené kapacity pro Machine Learning dávky spuštění služby úlohy | Microsoft Docs
+description: Přehled služby Azure Batch pro Machine Learning úlohy.
 services: machine-learning
-documentationcenter: 
-author: serinakaye
-ms.author: serinak
-manager: mwinkle
-editor: 
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
+editor: cgronlun
 ms.service: machine-learning
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 51ae9d72906799e0e4f2f7d8a8a228cd0df0d91a
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 5a3d2c976ca4deef093f2640e56634acf911f4c0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>Služba Azure Batch pro Machine Learning úlohy
 

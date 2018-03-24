@@ -1,24 +1,24 @@
 ---
-title: "Funkce řetězení trvanlivý funkcí – Azure"
-description: "Zjistěte, jak spustit ukázku trvanlivý funkce, která postupně provede sekvenci funkce."
+title: Funkce řetězení trvanlivý funkcí – Azure
+description: Zjistěte, jak spustit ukázku trvanlivý funkce, která postupně provede sekvenci funkce.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9ba1cdc5c72e04802d29794fa6cb40a29cc1d353
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 0020f19e00f3365c4a0d80ebb67aeeedd7fe76df
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funkce řetězení v trvanlivý funkce – ukázka pořadí Hello
 
@@ -26,7 +26,7 @@ Funkce řetězení odkazuje na vzor provádění pořadí funkcí v určitém po
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Postupujte podle pokynů v [nainstalovat trvanlivý funkce](durable-functions-install.md) nastavit vzorku.
+* [Nainstalujte trvanlivý funkce](durable-functions-install.md).
 
 ## <a name="the-functions"></a>Funkce
 
@@ -35,7 +35,7 @@ Tento článek vysvětluje v ukázkové aplikace následující funkce:
 * `E1_HelloSequence`Funkce: orchestrator, který volá `E1_SayHello` vícekrát v pořadí. Ukládají se výstup z `E1_SayHello` volá a zaznamenává výsledky.
 * `E1_SayHello`: Aktivita funkce, která přidá řetězec s text "Hello".
 
-Následující části popisují konfiguraci a kód, který se používá pro vývoj na portálu Azure. Kód pro vývoj v sadě Visual Studio se zobrazí na konci tohoto článku.
+Následující části popisují konfiguraci a kódu, které se používají pro C# skriptování. Kód pro vývoj v sadě Visual Studio se zobrazí na konci tohoto článku.
  
 ## <a name="functionjson-file"></a>soubor Function.JSON
 
@@ -71,7 +71,7 @@ Implementace `E1_SayHello` je poměrně trivial řetězec formátování operaci
 
 Tato funkce obsahuje parametr typu [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html), která je používá k získání vstupu, který byl předán voláním funkce orchestrator [ `CallActivityAsync<T>` ](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_).
 
-## <a name="run-the-sample"></a>Spustit ukázku
+## <a name="run-the-sample"></a>Spuštění ukázky
 
 Spuštění `E1_HelloSequence` orchestration, odeslat požadavek na následující HTTP POST.
 
@@ -121,7 +121,7 @@ Tady je orchestration jako jeden soubor jazyka C# v projektu sady Visual Studio:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tato ukázka vám ukázal jednoduché řetězení funkce orchestration. Další příklad ukazuje, jak implementovat fan odesílacího/fan v vzor. 
 

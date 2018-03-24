@@ -1,22 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Správa jednotného přihlašování a tokenu přizpůsobení pomocí vlastních zásad | Microsoft Docs"
-description: 
+title: Správa jednotného přihlašování a tokenu přizpůsobení pomocí vlastních zásad | Microsoft Docs
+description: Další informace o správě jednotného přihlašování a tokenu přizpůsobení pomocí vlastních zásad.
 services: active-directory-b2c
-documentationcenter: 
-author: sama
-ms.assetid: eec4d418-453f-4755-8b30-5ed997841b56
+documentationcenter: ''
+author: davidmu
+manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 05/02/2017
-ms.author: sama
-ms.openlocfilehash: 8f5703d15766f221517cd89352d41685652d32d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: davidmu
+ms.openlocfilehash: c9eb7f7711a8987945b8aeaee8d6798b7a6b8284
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Azure Active Directory B2C: Správa jednotného přihlašování a tokenu přizpůsobení pomocí vlastních zásad
 Pomocí vlastních zásad poskytuje stejné kontrolu nad token, relací a jeden přihlašování konfigurace (SSO) jako prostřednictvím integrovaných zásad.  Další informace o jaké každé nastavení, najdete v dokumentaci [zde](#active-directory-b2c-token-session-sso).

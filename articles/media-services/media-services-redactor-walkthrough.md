@@ -1,11 +1,11 @@
 ---
-title: "Redigovat tyto řezy v Průvodci Azure Media Analytics | Microsoft Docs"
-description: "Toto téma ukazuje podrobné informace o tom, jak spustit workflow úplné redigování pomocí Azure Media Services Explorer (AMSE) a Azure Media Redactor vizualizér (nástroj s otevřeným zdrojem)."
+title: Redigovat tyto řezy v Průvodci Azure Media Analytics | Microsoft Docs
+description: Toto téma ukazuje podrobné informace o tom, jak spustit workflow úplné redigování pomocí Azure Media Services Explorer (AMSE) a Azure Media Redactor vizualizér (nástroj s otevřeným zdrojem).
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: d6fa21b8-d80a-41b7-80c1-ff1761bc68f2
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/03/2017
 ms.author: rli; juliako;
-ms.openlocfilehash: 0bd385ba78028a722c52cdf1508f3348ff90f05f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b33da21a32373196d86ec8c93f180b3d40b1c6e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Redigovat tyto řezy v Průvodci Azure Media Analytics
 
@@ -59,7 +59,7 @@ Výstup bude obsahovat soubor json poznámky se data o umístění řez, jakož 
 
 ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
-###<a name="second-pass--redact-mode"></a>Druhý předat – redigovat režimu
+### <a name="second-pass--redact-mode"></a>Druhý předat – redigovat režimu
 
 1. Nahrát asset videa původní k výstupu z první fáze a nastavit jako primární asset. 
 
@@ -78,7 +78,7 @@ Výstup bude obsahovat soubor json poznámky se data o umístění řez, jakož 
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
-##<a name="azure-media-redactor-visualizer-open-source-tool"></a>Nástroj Azure vizualizér Redactor médií s otevřeným zdrojem
+## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Nástroj Azure vizualizér Redactor médií s otevřeným zdrojem
 
 Typu open source [vizualizér nástroj](https://github.com/Microsoft/azure-media-redactor-visualizer) pomáhá vývojářům právě spouští s formátem poznámky s analýzou a pomocí výstup.
 
@@ -97,7 +97,7 @@ Pokud jste vývojář pokusu o analýzu poznámky data JSON, podívejte se do Mo
 
     ![Rozmazání obličejů](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
-4. Spusťte AzureMediaRedactor.exe. 
+4. Run AzureMediaRedactor.exe. 
 
 ### <a name="use-the-tool"></a>Pomocí nástroje
 
@@ -119,7 +119,7 @@ Pokud jste vývojář pokusu o analýzu poznámky data JSON, podívejte se do Mo
 6.  Tento soubor nahrajte na výstupní asset z kroku 1. Pro tento prostředek také nahrát původní video a nastavit jako primární asset. 
 7.  Spustit úlohu redigování na tento prostředek s režimem "Redact" získat konečné redigovaný video. 
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další postup 
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

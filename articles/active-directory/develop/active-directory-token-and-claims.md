@@ -1,11 +1,11 @@
 ---
-title: "Další informace o různých token a deklarace identity typy podporované službou Azure AD | Microsoft Docs"
-description: "Příručka pro pochopení a zhodnocení deklarace identity v tokenech SAML 2.0 a webové tokeny JSON (JWT), vystavené pomocí Azure Active Directory (AAD)"
+title: Další informace o různých token a deklarace identity typy podporované službou Azure AD | Microsoft Docs
+description: Příručka pro pochopení a zhodnocení deklarace identity v tokenech SAML 2.0 a webové tokeny JSON (JWT), vystavené pomocí Azure Active Directory (AAD)
 documentationcenter: na
 author: hpsin
 services: active-directory
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/07/2017
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ca8a34c0a29ffad21e6384feac055d7a292311a5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8f9eb95f49e0d2bd01d9ead7eda7d13288bfd573
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-token-reference"></a>Odkaz tokenu Azure AD
 Azure Active Directory (Azure AD) vysílá několik typů tokenů zabezpečení ve zpracování každý tok ověřování. Tento dokument popisuje formát, zabezpečení vlastnosti a obsah každého typu token.
@@ -71,7 +71,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | `sub` |Předmět |Identifikuje objekt o tom, které vyhodnotí token informace, například uživatele aplikace. Tato hodnota se nedá změnit a nelze přiřadit nebo opakovaně, takže může sloužit ke kontrole autorizace bezpečně. Protože subjekt se vždy nachází v tokenech problémy Azure AD, je doporučeno použití této hodnoty autorizace systému obecné účely. <br> `SubjectConfirmation` není deklarace identity. Popisuje, jak ověřit předmět tokenu. `Bearer` Označuje, předmět byl potvrzen mít k dispozici tokenu. <br><br> **Příklad SAML hodnoty**: <br> `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>` <br><br> **Příklad JWT hodnoty**: <br> `"sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"` |
 | `tid` |ID tenanta |Neměnné, jednorázovým identifikátor, který identifikuje klienta directory, která vydala token. Tuto hodnotu můžete použít pro přístup k prostředkům directory konkrétního klienta v aplikaci na více klientů. Tuto hodnotu můžete například použít k identifikaci klienta v volání rozhraní Graph API. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name=”http://schemas.microsoft.com/identity/claims/tenantid”>`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `"tid":"cbb1a5ac-f33b-45fa-9bf5-f37db0fed422"` |
 | `nbf`, `exp` |Životnost tokenu |Definuje časový interval, ve kterém je token platný. Služba, která ověří token měli ověřit, že je aktuální datum v rámci dobu životnosti tokenu, else ho měli odmítnout token. Služba může povolit pro až pět minut mimo rozsah dobu životnosti tokenu aby se zohlednily případné rozdíly v času hodin ("čas zkosení") mezi službami Azure AD a služby. <br><br> **Příklad SAML hodnoty**: <br> `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br><br> **Příklad JWT hodnoty**: <br> `"nbf":1363289634, "exp":1363293234` |
-| `upn` |Hlavní název uživatele |Ukládá uživatelské jméno hlavní název uživatele.<br><br> **Příklad JWT hodnoty**: <br> `"upn": frankm@contoso.com` |
+| `upn` |Hlavní název uživatele (UPN) |Ukládá uživatelské jméno hlavní název uživatele.<br><br> **Příklad JWT hodnoty**: <br> `"upn": frankm@contoso.com` |
 | `ver` |Verze |Ukládá číslo verze tokenu. <br><br> **Příklad JWT hodnoty**: <br> `"ver": "1.0"` |
 
 ## <a name="access-tokens"></a>Přístupové tokeny
@@ -321,3 +321,4 @@ Kromě deklarace identity a token zahrnuje číslo verze v **ver** a **appidacr*
 ## <a name="related-content"></a>Související obsah
 * V tématu Azure AD Graph [zásad operations](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) a [zásad entity](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity), další informace o správě zásad životnost tokenu přes Azure AD Graph API.
 * Další informace a ukázky na Správa zásad prostřednictvím rutin prostředí PowerShell, včetně ukázky, najdete v části [konfigurovat životnosti tokenu ve službě Azure AD](../active-directory-configurable-token-lifetimes.md). 
+* Přidat [volitelné a vlastní deklarace identity](active-directory-optional-claims.md) na tokeny pro vaši aplikaci. 

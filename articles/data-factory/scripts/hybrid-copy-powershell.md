@@ -1,10 +1,10 @@
 ---
-title: "Skript prostředí PowerShell: kopírování dat z místní do Azure pomocí služby Data Factory | Microsoft Docs"
-description: "Tento skript prostředí PowerShell zkopíruje data z místní databáze systému SQL Server do jiné Azure Blob Storage."
+title: 'Skript prostředí PowerShell: kopírování dat z místní do Azure pomocí služby Data Factory | Microsoft Docs'
+description: Tento skript prostředí PowerShell zkopíruje data z místní databáze systému SQL Server do jiné Azure Blob Storage.
 services: data-factory
 author: linda33wj
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: bf84603c587b7bee5d0f69355ff9c1375ed7e60c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 5c0252e42dd3dd53a0a95684553b193b983e95ee
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Vytvoření kanálu data factory ke zkopírování dat z místního do Azure pomocí prostředí PowerShell
 
@@ -24,7 +24,7 @@ Tento ukázkový skript prostředí PowerShell vytvoří kanál v Azure Data Fac
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **SQL Server**. Můžete použít místní databázi systému SQL Server jako **zdroj** úložiště dat v této ukázce.
 - **Účet služby Azure Storage**. Použít úložiště objektů blob v Azure jako **cílové/jímka** úložiště dat v této ukázce. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md#create-a-storage-account), kde najdete kroky pro jeho vytvoření.

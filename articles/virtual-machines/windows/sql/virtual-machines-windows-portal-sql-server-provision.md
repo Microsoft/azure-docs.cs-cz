@@ -1,6 +1,6 @@
 ---
-title: "Zřizování Průvodce pro virtuální počítače Windows SQL serveru na portálu Azure | Microsoft Docs"
-description: "Tento postup průvodce popisuje možnosti pro vytváření virtuálních počítačů Windows SQL serveru 2017 na portálu Azure."
+title: Zřizování Průvodce pro virtuální počítače Windows SQL serveru na portálu Azure | Microsoft Docs
+description: Tento postup průvodce popisuje možnosti pro vytváření virtuálních počítačů Windows SQL serveru 2017 na portálu Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 7e55227773820af26435100b11dfefce058e7e78
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 33b7c82f08f63199cd128055bc497f61cb30fc4a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Postup zřízení virtuálního počítače s Windows SQL Server na portálu Azure
 
@@ -27,7 +27,7 @@ Tato příručka obsahuje podrobnosti o různých možnostech, které jsou k dis
 Tuto příručku použijte k vytvoření vlastní virtuální počítač SQL Server. Nebo použijte jako pomůcku možnosti dostupné na portálu Azure.
 
 > [!TIP]
-> Pokud máte dotazy týkající se virtuální počítače systému SQL Server, najdete v článku [– nejčastější dotazy](virtual-machines-windows-sql-server-iaas-faq.md).
+> Pokud máte dotazy k virtuálním počítačům s SQL Serverem, přečtěte si [Nejčastější dotazy](virtual-machines-windows-sql-server-iaas-faq.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -59,7 +59,7 @@ Při vytváření virtuálního počítače s SQL serverem, vyberete jednu z ně
    > Developer edition se používá v tomto návodu, protože je plně funkční, bezplatná edice systému SQL Server pro vývoj, testování. Platíte jenom náklady na provozování virtuálního počítače. Jste však můžete vybrat kteroukoli z obrázky, které chcete použít v tomto průvodci. Popis dostupných imagí najdete v tématu [virtuálního počítače se systémem SQL Server Windows přehled](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo).
 
    > [!TIP]
-   > Náklady na licencování SQL serveru jsou součástí ceny za minutu virtuálního počítače vytvořit a liší se edice a počet jader. SQL Server Developer edition je však zdarma pro vývoj/testování (ne produkční) a systém SQL Express je zdarma pro prosté úlohy (menší než 1 GB paměti menší než 10 GB úložiště). Můžete také uvést – vaše – vlastní – licence (BYOL) a platím pouze pro virtuální počítač. Tyto názvy bitových kopií mají předponu {BYOL}. 
+   > Náklady na licencování SQL serveru jsou součástí ceny za sekundu virtuálního počítače vytvořit a liší se edice a počet jader. SQL Server Developer edition je však zdarma pro vývoj/testování (ne produkční) a systém SQL Express je zdarma pro prosté úlohy (menší než 1 GB paměti menší než 10 GB úložiště). Můžete také uvést – vaše – vlastní – licence (BYOL) a platím pouze pro virtuální počítač. Tyto názvy bitových kopií mají předponu {BYOL}. 
    >
    > Další informace o těchto možnostech najdete v tématu [Doprovodné materiály k cenám pro virtuální počítače Azure s SQL Serverem](virtual-machines-windows-sql-server-pricing-guidance.md).
 

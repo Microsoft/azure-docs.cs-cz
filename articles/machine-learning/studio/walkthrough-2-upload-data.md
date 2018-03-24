@@ -1,10 +1,11 @@
 ---
-title: "Krok 2: Nahrání dat do experimentu Machine Learning | Microsoft Docs"
-description: "Vývoj prediktivního řešení návod krok 2: nahrání veřejná data uložena do Azure Machine Learning Studio."
+title: 'Krok 2: Nahrání dat do experimentu Machine Learning | Microsoft Docs'
+description: 'Vývoj prediktivního řešení návod krok 2: nahrání veřejná data uložena do Azure Machine Learning Studio.'
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 9f4bc52e-9919-4dea-90ea-5cf7cc506d85
 ms.service: machine-learning
@@ -12,13 +13,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2017
-ms.author: garye
-ms.openlocfilehash: 469c94f6115f99bc4cf067e9c8f0e55c64990358
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f482b1273f83f5ae5bb4f1e64609767ee0c5fe32
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-experiment"></a>Krok 2 průvodce: Nahrání stávajících dat do experimentu služby Azure Machine Learning
 Toto je druhý krok tohoto průvodce, [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md)
@@ -32,7 +31,7 @@ Toto je druhý krok tohoto průvodce, [vývoj řešení prediktivní analýzy v 
 
 - - -
 K vývoji prediktivního modelu pro úvěrové riziko, potřebujeme data, která jsme můžete použít k trénování a pak model otestujeme. V tomto návodu použijeme "UCI Statlog (němčině platební Data) Data Set" z úložiště UC Irvine Machine Learning. Najdete ho tady:  
-<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ICS.uci.edu/ml/datasets/Statlog+(German+Credit+data)</a>
+<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
 Použijeme soubor s názvem **german.data**. Stáhněte si tento soubor na místní pevný disk.  
 

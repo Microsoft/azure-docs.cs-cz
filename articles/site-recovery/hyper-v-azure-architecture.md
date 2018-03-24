@@ -1,16 +1,16 @@
 ---
 title: Technologie Hyper-V do Azure replikace architektury v Azure Site Recovery | Microsoft Docs
-description: "Tento článek obsahuje přehled komponent a architektury používané při replikaci místních virtuálních počítačů Hyper-V (bez nástroje VMM) do Azure s využitím služby Azure Site Recovery."
+description: Tento článek obsahuje přehled komponent a architektury používané při replikaci místních virtuálních počítačů Hyper-V (bez nástroje VMM) do Azure s využitím služby Azure Site Recovery.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 03/194/2018
 ms.author: raynew
-ms.openlocfilehash: dd3dcf325ed5a628c98ac63683440e1796aa8c3f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 978d290287a4ff8875eea7e93f003c78e7177dae
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="hyper-v-to-azure-replication-architecture"></a>Technologie Hyper-V do architektury Azure replikace
 
@@ -28,7 +28,7 @@ Následující obrázek a tabulka poskytují souhrnné zobrazení komponenty pou
 **Komponenta** | **Požadavek** | **Podrobnosti**
 --- | --- | ---
 **Azure** | Předplatné Azure, účet úložiště Azure a sítě Azure. | Replikovaná data z místní úlohy virtuálních počítačů je uložený v účtu úložiště. Virtuální počítače Azure vytvořené mají dat replikovaných úloh, když dojde k převzetí služeb při selhání z vaší místní lokalitě.<br/><br/> Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření.
-**Hyper-V** | Během nasazování Site Recovery shromažďovat hostitelů Hyper-V a clustery do lokalit Hyper-V. Nainstalujte zprostředkovatele Azure Site Recovery a agenta služeb zotavení na každém počítači technologie Hyper-V. | Zprostředkovatel orchestruje replikaci pomocí služby Site Recovery přes internet. Agent Recovery Services se stará o replikaci dat.<br/><br/> Komunikace z poskytovatele i agenta je zabezpečená a šifrovaná. Šifrují se rovněž replikovaná data v úložišti Azure.
+**Hyper-V** | Během nasazování Site Recovery shromažďovat hostitelů Hyper-V a clustery do lokalit Hyper-V. Nainstalujte zprostředkovatele Azure Site Recovery a obnovení služby agenta na každém hostiteli technologie Hyper-V samostatné nebo na každém uzlu clusteru technologie Hyper-V. | Zprostředkovatel orchestruje replikaci pomocí služby Site Recovery přes internet. Agent Recovery Services se stará o replikaci dat.<br/><br/> Komunikace z poskytovatele i agenta je zabezpečená a šifrovaná. Šifrují se rovněž replikovaná data v úložišti Azure.
 **Virtuální počítače Hyper-V** | Jeden nebo více virtuálních počítačů spuštěných na Hyper-V. | Nic musí být nainstalován na virtuálních počítačích.
 
 
@@ -46,7 +46,7 @@ Následující obrázek a tabulka poskytují souhrnné zobrazení komponenty pou
 --- | --- | ---
 **Azure** | Předplatné Azure, účet úložiště Azure a sítě Azure. | Replikovaná data z místní úlohy virtuálních počítačů je uložený v účtu úložiště. Virtuální počítače Azure vytvořené mají replikovaná data, když dojde k převzetí služeb při selhání z vaší místní lokalitě.<br/><br/> Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření.
 **Server VMM** | Server VMM obsahuje jeden nebo více cloudů s hostiteli Hyper-V. | Instalace zprostředkovatele služby Site Recovery na serveru VMM pro orchestraci replikace pomocí Site Recovery a zaregistrujte server v trezoru služeb zotavení.
-**Hostitel Hyper-V** | Jeden nebo několik hostitelů/clusterů Hyper-V spravovaných nástrojem VMM. |  Na každého hostitele nebo člena clusteru nainstalujete agenta Recovery Services.
+**Hostitel Hyper-V** | Jeden nebo několik hostitelů/clusterů Hyper-V spravovaných nástrojem VMM. |  Nainstalujte agenta služeb zotavení na každém uzlu hostitele nebo cluster technologie Hyper-V.
 **Virtuální počítače Hyper-V** | Jeden nebo několik virtuálních počítačů spuštěných na hostitelském serveru Hyper-V. | Na virtuálních počítačích není výslovně potřeba nic instalovat.
 **Sítě** | Logické sítě a sítě virtuálních počítačů nastavené na serveru VMM. Síť virtuálních počítačů musí být propojena na logickou síť, která je přidružena ke cloudu. | Sítě virtuálních počítačů jsou namapované na virtuálních sítí Azure. Když jsou virtuální počítače Azure vytvořené po převzetí služeb při selhání, jsou přidány k síti Azure, který je namapovaný na síť virtuálních počítačů.
 

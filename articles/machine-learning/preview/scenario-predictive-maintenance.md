@@ -1,6 +1,6 @@
 ---
-title: "Prediktivní údržby pro scénářích reálného světa | Microsoft Docs"
-description: "Prediktivní údržby pro scénářích reálného světa pomocí PySpark"
+title: Prediktivní údržby pro scénářích reálného světa | Microsoft Docs
+description: Prediktivní údržby pro scénářích reálného světa pomocí PySpark
 services: machine-learning
 author: ehrlinger
 ms.author: jehrling
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: 81e227194ff64d7b7af842a208349ccc63528ab8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: bb6e4f9f147db2fb70d991922cf0bb8d16b29671
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>Prediktivní údržby pro scénářích reálného světa
 
@@ -25,7 +25,7 @@ Jsou zde popsány v tomto scénáři relativně [rozsáhlých datových sad simu
 
 ### <a name="cortana-intelligence-gallery-github-repository"></a>Úložiště Cortana Intelligence Galerie GitHub
 
-Cortana Intelligence Gallery kurzu PM je veřejný úložiště GitHub ([https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance)) kde hlášení problémů a ujistěte se, příspěvky.
+Cortana Intelligence Gallery kurzu PM je veřejný úložiště GitHub ([https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance)) kde hlášení problémů a příspěvky.
 
 
 ## <a name="use-case-overview"></a>Přehled případu použití
@@ -49,8 +49,8 @@ Model operationalization bylo provedeno pomocí verze 0.1.0a22 z rozhraní pří
 ## <a name="create-a-new-workbench-project"></a>Vytvoření nového projektu Workbench
 
 Vytvořte nový projekt v tomto příkladu jako šablona:
-1.  Otevřete strojového učení Workbench.
-2.  Na **projekty** vyberte  **+** a potom vyberte **nový projekt**.
+1.  Otevřete aplikaci Machine Learning Workbench.
+2.  Na **projekty** vyberte **+**a potom vyberte **nový projekt**.
 3.  V **vytvořit nový projekt** podokně, vyplňte informace pro nový projekt.
 4.  V **šablony projektů vyhledávání** vyhledávacího pole zadejte "Prediktivní Údržba", vyberte **prediktivní údržby** šablony.
 5.  Vyberte **Vytvořit**.

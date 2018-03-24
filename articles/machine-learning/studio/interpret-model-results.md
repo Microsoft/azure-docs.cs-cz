@@ -1,10 +1,11 @@
 ---
-title: "Interpretovat výsledky modelu v Machine Learning | Microsoft Docs"
-description: "Jak vybrat optimální parametr nastavit pro algoritmus pomocí a vizualizace score model výstupy."
+title: Interpretovat výsledky modelu v Machine Learning | Microsoft Docs
+description: Jak vybrat optimální parametr nastavit pro algoritmus pomocí a vizualizace score model výstupy.
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: cgronlun
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: d6563d411e9f159399f9863a5b572365dc2b05cc
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: e8f6d3accc7ad8de1161f08cceb0e856cf764255
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="interpret-model-results-in-azure-machine-learning"></a>Interpretovat výsledky modelu v Azure Machine Learning
 Toto téma vysvětluje, jak interpretovat výsledky předpovědi v Azure Machine Learning Studio a vizualizaci. Po Trénink modelu a provádí předpovědi nad jeho ("vypočítat skóre modelu"), musíte pochopit a interpretovat výsledek předpovědi.
@@ -27,7 +27,7 @@ Toto téma vysvětluje, jak interpretovat výsledky předpovědi v Azure Machine
 
 Existují čtyři hlavní druhy strojového učení modely v Azure Machine Learning:
 
-* klasifikace
+* Klasifikace
 * Clustering
 * Regrese
 * Doporučené systémy
@@ -44,7 +44,7 @@ Toto téma nabízí interpretace předpovědi, ale ne zkušební modelu. Další
 
 Pokud jsou nové pro Azure Machine Learning a potřebujete další pomoc vytvoření jednoduchého experimentu začít, najdete v článku [vytvoření jednoduchého experimentu v nástroji Azure Machine Learning Studio](create-experiment.md) v Azure Machine Learning Studio.
 
-## <a name="classification"></a>klasifikace
+## <a name="classification"></a>Klasifikace
 Existují dvě podkategorie klasifikaci problémy:
 
 * Problémy s pouze dvěma třídami (dvě třídy nebo binární klasifikace)

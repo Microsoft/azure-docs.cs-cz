@@ -1,25 +1,25 @@
 ---
-title: "Kopírování dat z a do Dynamics CRM nebo Dynamics 365 pomocí Azure Data Factory | Microsoft Docs"
-description: "Zjistěte, jak ke zkopírování dat z aplikace Microsoft Dynamics CRM nebo Microsoft Dynamics 365 na podporované jímky úložiště dat nebo z podporovanými úložišti dat zdroje k Dynamics CRM nebo Dynamics 365 pomocí aktivity kopírování v kanálu data factory."
+title: Kopírování dat z a do Dynamics CRM nebo Dynamics 365 (běžných dat služby) pomocí Azure Data Factory | Microsoft Docs
+description: Zjistěte, jak ke zkopírování dat z aplikace Microsoft Dynamics CRM nebo Microsoft Dynamics 365 (služba běžné dat) na podporované jímky úložiště dat nebo z podporovanými úložišti dat zdroje k Dynamics CRM nebo Dynamics 365 pomocí aktivity kopírování v kanálu data factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 03/16/2018
 ms.author: jingwang
-ms.openlocfilehash: dc0b01e23ebb2695fd0365f054b3cacd2573f3c6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ea69fdab9ec510f6060b280db3afffb7533a4bda
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="copy-data-from-and-to-dynamics-365-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 nebo Dynamics CRM pomocí Azure Data Factory
+# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (běžných dat služby) nebo Dynamics CRM pomocí Azure Data Factory
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z a do společnosti Microsoft Dynamics 365 nebo Microsoft Dynamics CRM. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
 
@@ -28,7 +28,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
-Z Dynamics 365 nebo Dynamics CRM můžete zkopírovat data do úložiště dat žádné podporované jímky. Také můžete zkopírovat data z úložiště dat žádné podporované zdrojové Dynamics 365 nebo Dynamics CRM. Seznam úložišť dat jako zdroje nebo jímky nepodporuje aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data můžete zkopírovat z Dynamics 365 (běžných dat služby) nebo Dynamics CRM do úložiště dat žádné podporované jímky. Také můžete zkopírovat data z úložiště dat žádné podporované zdrojové Dynamics 365 (běžných dat služby) nebo Dynamics CRM. Seznam úložišť dat jako zdroje nebo jímky nepodporuje aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
 Tento konektor Dynamics podporuje následující verze Dynamics a typy ověřování. (IFD je zkratka pro nasazení aplikace.)
 
@@ -339,5 +339,5 @@ Nakonfigurujte odpovídající datový typ objektu pro vytváření dat ve struk
 > [!NOTE]
 > Datové typy Dynamics AttributeType.CalendarRules a AttributeType.PartyList nejsou podporovány.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v objektu pro vytváření dat najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

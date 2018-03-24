@@ -1,11 +1,11 @@
 ---
-title: "Aktivita vyhledávání v Azure Data Factory | Microsoft Docs"
-description: "Zjistěte, jak pomocí aktivity vyhledávání najít hodnotu z externího zdroje. Na tento výstup mohou dále odkazovat následující aktivity."
+title: Aktivita vyhledávání v Azure Data Factory | Microsoft Docs
+description: Zjistěte, jak pomocí aktivity vyhledávání najít hodnotu z externího zdroje. Na tento výstup mohou dále odkazovat následující aktivity.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 2f551e97b833460c7c4ccd276b0df1dae562c03b
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: f55e85bb424f4f5973fd6d633b6adf9fbca4d0ef
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
 Vyhledávání aktivity slouží ke čtení nebo vyhledat záznam, název tabulky nebo hodnota z externího zdroje. Na tento výstup mohou dále odkazovat následující aktivity. 
@@ -60,7 +60,7 @@ Maximální počet řádků vrácených vyhledávání aktivity je **5000**a až
 ```
 
 ## <a name="type-properties"></a>Vlastnosti typu
-Jméno | Popis | Typ | Požadováno?
+Název | Popis | Typ | Povinné?
 ---- | ----------- | ---- | --------
 dataset | Poskytuje odkaz na datovou sadu pro vyhledávání. V současné době jsou typy podporované datové sady:<ul><li>`AzureBlobDataset` pro [úložiště objektů Azure Blob](connector-azure-blob-storage.md#dataset-properties) jako zdroj</li><li>`FileShareDataset` pro [systém souborů](connector-file-system.md#dataset-properties) jako zdroj</li><li>`AzureSqlTableDataset` pro [Azure SQL Database](connector-azure-sql-database.md#dataset-properties) nebo [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#dataset-properties) jako zdroj</li><li>`SqlServerTable` pro [systému SQL Server](connector-sql-server.md#dataset-properties) jako zdroj</li><li>`AzureTableDataset` pro [Azure Table storage](connector-azure-table-storage.md#dataset-properties) jako zdroj</li> | Dvojice klíč/hodnota | Ano
 zdroj | Obsahuje vlastnosti specifické pro datové sady zdroje, stejný jako zdroj kopie aktivity. Získáte podrobnosti o z části "Zkopírovat vlastnosti aktivity" v jednotlivých odpovídající konektor článků. | Dvojice klíč/hodnota | Ano
@@ -100,7 +100,7 @@ Výsledek vyhledávání je vrácený v `output` části aktivity při spuštěn
     } 
     ```
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 V tomto příkladu aktivity kopírování kopíruje data z tabulky SQL ve vaší instanci databáze SQL Azure do Azure Blob storage. Název tabulky SQL je uložené v souboru JSON v úložišti objektů Blob. Aktivita vyhledávání vyhledá název tabulky za běhu. Tento přístup umožňuje JSON má být změněn dynamicky bez nutnosti znovu nasaďte kanály ani datové sady. 
 
 Tento příklad ukazuje vyhledávání pouze první řádek. Vyhledávání pro všechny řádky a zřetězit výsledky pomocí příkazu ForEach aktivity, najdete v části Ukázky [kopírovat více tabulek hromadné pomocí Azure Data Factory](tutorial-bulk-copy.md).

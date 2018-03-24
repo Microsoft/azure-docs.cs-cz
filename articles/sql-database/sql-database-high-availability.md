@@ -1,19 +1,19 @@
 ---
-title: "Vysoká dostupnost – služba Azure SQL Database | Microsoft Docs"
-description: "Další informace o možnosti vysokou dostupnost služby Azure SQL Database a funkcí"
+title: Vysoká dostupnost – služba Azure SQL Database | Microsoft Docs
+description: Další informace o možnosti vysokou dostupnost služby Azure SQL Database a funkcí
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8deb78ba108aafc3297e6b96d6d88d0c56c60afd
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d26fe28d301cf563dc6bdb3d9e17903dea3e73fc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 Od zahájení nabídky PaaS databáze SQL Azure společnost Microsoft vyvinula potenciálu svým zákazníkům, které vysoké dostupnosti (HA) je součástí služby a zákazníků nemusejí fungovat, přidejte speciální logiku pro nebo rozhodnutí ohledně HA. Společnost Microsoft udržuje plnou kontrolu nad konfigurace systému HA a operace, zákazníkům nabídnout SLA. HA SLA platí pro databáze SQL v oblasti a neposkytuje ochranu v případě selhání celkový oblasti, které je faktory, které mimo Microsoft nemohla ovlivnit (například přírodní katastrofě, war, jednání teroristický útok, povstáním, government akci, nebo síťové zařízení selhání nebo externí vzhledem k datových centrech společnosti Microsoft, včetně v lokalitách zákazníka nebo mezi lokalitami zákazníka a datového centra společnosti Microsoft).
@@ -23,7 +23,7 @@ Pro zjednodušení problém prostor HA, společnost Microsoft používá násled
 2.  Provozní pracovníci uděláte chyby, které vést k chybám
 3.  Plánované údržby operace způsobit výpadky 
 
-Když tyto jednotlivé události jsou jen zřídka, v cloudovém měřítku, budou každý týden, pokud není každý den. 
+Tyto jednotlivé události jsou jen zřídka, v cloudovém měřítku, k nim dojde, pokud každý týden ne každý den. 
 
 ## <a name="fault-tolerant-sql-databases"></a>Odolné proti chybám databáze SQL
 Zákazníci se nejvíc zajímat odolnost vlastní databáze a jsou méně zájem o odolnost službě SQL Database jako celek. 99,99 % dostupnost služby je smysl, pokud "databáze" je součástí 0,01 % databází, které jsou vypnuté. Každé databáze musí být odolné proti chybám a zmírnění chyby by nikdy dojít ke ztrátě potvrzené transakce. 
@@ -46,7 +46,7 @@ Klíčové výhody:
 
 ## <a name="data-redundancy"></a>Data redundancy
 
-Řešení vysoké dostupnosti v SQL Database je založeno na [Always ON](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) technologie v systému SQL Server a udělá z něj fungovat pro LS a RS databáze s minimálním rozdíly. Konfigurace, Always ON se používá pro trvalost v RS v LS je, že ji použít k zajištění dostupnosti (nízkou RTO). 
+Řešení vysoké dostupnosti v SQL Database je založeno na [skupin dostupnosti Always ON](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technologie v systému SQL Server a udělá z něj fungovat pro LS a RS databáze s minimálním rozdíly. V konfiguraci LS technologie skupiny dostupnosti Always ON se používá pro trvalost při v RS se používá k zajištění dostupnosti (nízkou RTO). 
 
 ## <a name="local-storage-configuration"></a>Místní úložiště konfigurace
 

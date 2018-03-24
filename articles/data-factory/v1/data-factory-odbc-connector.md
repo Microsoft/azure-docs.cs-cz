@@ -1,11 +1,10 @@
 ---
-title: "Přesun dat z úložiště dat rozhraní ODBC | Microsoft Docs"
-description: "Další informace o tom, jak přesun dat z úložiště dat rozhraní ODBC pomocí Azure Data Factory."
+title: Přesun dat z úložiště dat rozhraní ODBC | Microsoft Docs
+description: Další informace o tom, jak přesun dat z úložiště dat rozhraní ODBC pomocí Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: ad70a598-c031-4339-a883-c6125403cb76
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 381069f8d8b5fef0d283fcfc6bc3f82fcf119c0e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e75f7a6caac87be9ffb5209fa4eb423097820bfc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Přesun dat z rozhraní ODBC datová úložiště pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +67,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | --- | --- | --- |
 | type |Vlastnost typu musí být nastavena na: **OnPremisesOdbc** |Ano |
 | připojovací řetězec |Přístup k pověření část připojovací řetězec a volitelné šifrovat přihlašovací údaje. Příklady v následujících částech. <br/><br/>Můžete zadat připojovací řetězec pomocí vzoru jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, nebo pomocí systému DSN (název zdroje dat), nastavení na počítači s bránou s `"DSN=<name of the DSN>;"` (třeba stále zadáte části přihlašovací údaje v propojené službě odpovídajícím způsobem). |Ano |
-| přihlašovací údaje |Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve formátu ovladačem vlastnost hodnota. Příklad: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Ne |
+| pověření |Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve formátu ovladačem vlastnost hodnota. Příklad: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Ne |
 | authenticationType. |Typ ověřování používaný pro připojení k úložišti dat ODBC. Možné hodnoty jsou: anonymní a Basic. |Ano |
 | uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |

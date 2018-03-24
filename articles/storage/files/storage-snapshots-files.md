@@ -1,6 +1,6 @@
 ---
-title: "Přehled sdílení snímků pro soubory Azure (preview) | Microsoft Docs"
-description: "Sdílené složky snímků je jen pro čtení verze Azure Files sdílené složky, která je provedená v bodě v čase, jako způsob, jak zálohovat sdílenou složku."
+title: Přehled sdílení snímků pro soubory Azure (preview) | Microsoft Docs
+description: Sdílené složky snímků je jen pro čtení verze Azure Files sdílené složky, která je provedená v bodě v čase, jako způsob, jak zálohovat sdílenou složku.
 services: storage
 documentationcenter: .net
 author: RenaShahMSFT
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: c309804f33fc0e5b2091e18dfe5fe3c9849a2709
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: a6b80c134351429ec85a20f7ab83b7674b8b7352
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-share-snapshots-for-azure-files-preview"></a>Přehled sdílení snímků pro soubory Azure (preview)
 Soubory Azure poskytuje schopnost pořizovat snímky sdílenou složku Sdílené složky. Sdílené složky snímků (preview) zaznamenat stav sdílené složky v tomto bodě v čase. V tomto článku jsme popisují, jaké funkce poskytovat sdílené složky snímků a jak můžete využít výhod těchto ve vašem případě vlastní použití.
@@ -48,7 +48,7 @@ Po vytvoření snímku sdílené složky ji můžete číst, kopírovat, nebo od
 
 Vytváření sdílené složky snímků je k dispozici na úrovni sdílené složky souborů. Načtení je k dispozici na úrovni jednotlivých souborů, umožňující obnovení jednotlivých souborů. Dokončení sdílené složky můžete obnovit pomocí protokolu SMB, rozhraní API REST, na portálu, klientské knihovny nebo PowerShell nebo rozhraní příkazového řádku nástroje.
 
-Sdílenou složku snímku sdílené složky je stejný jako jeho základní sdílené složky. Jediným rozdílem je, že **data a času** hodnota se připojí ke sdílené složce identifikátor URI, který označuje datum a čas, kdy pořízení snímku sdílené složky. Například pokud sdílenou složku URI http://storagesample.core.file.windows.net/myshare, sdílenou složku snímku identifikátor URI je podobná:
+Sdílenou složku snímku sdílené složky je stejný jako jeho základní sdílené složky. Jediným rozdílem je, že **data a času** hodnota se připojí ke sdílené složce identifikátor URI, který označuje datum a čas, kdy pořízení snímku sdílené složky. Například pokud sdílenou identifikátor URI je http://storagesample.core.file.windows.net/myshare, identifikátor URI je podobná snímku sdílené složky:
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -98,5 +98,5 @@ Sdílené složky snímků zajišťují jenom ochranu souborů. Sdílené složk
 
 ## <a name="next-steps"></a>Další postup
 * [Práce s snímky sdílené složky](storage-how-to-use-files-snapshots.md)
-* [Sdílená složka snímku – nejčastější dotazy](storage-files-faq.md)
+* [Sdílená složka snímku – nejčastější dotazy](storage-files-faq.md#share-snapshots)
 

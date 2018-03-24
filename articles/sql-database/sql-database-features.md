@@ -1,19 +1,19 @@
 ---
-title: "Porovnání funkcí Azure SQL Database | Microsoft Docs"
-description: "Tento článek porovnává funkce Azure SQL Database a spravované instancí mezi sebou a se systémem SQL Server."
+title: Porovnání funkcí Azure SQL Database | Microsoft Docs
+description: Tento článek porovnává funkce Azure SQL Database a spravované instancí mezi sebou a se systémem SQL Server.
 services: sql-database
 author: jovanpop-msft
 ms.reviewer: bonova, carlrab
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/21/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 4c50adeef0d6e811af6e144aa7351d9b65c1bd76
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 842c65987dc97872751071dbcf138794a14940e2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server 
 
@@ -34,7 +34,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Skupiny dostupnosti AlwaysOn](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Vysoká dostupnost](sql-database-high-availability.md) je součástí každé databázi. Zotavení po havárii je popsána v [přehled kontinuity podnikových procesů s Azure SQL Database](sql-database-business-continuity.md) | [Vysoká dostupnost](sql-database-high-availability.md) je součástí každé databázi. Zotavení po havárii je popsána v [přehled kontinuity podnikových procesů s Azure SQL Database](sql-database-business-continuity.md) |
 | [Připojit databázi](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Ne | Ne |
 | [Aplikační role](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) | Ano | Ano |
-|[Auditování](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [Ano](sql-database-auditing.md)| Ano – najdete v části [auditování rozdíly](sql-database-managed-instance-transact-sql-information.md#auditing) |
+|[Auditování](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [Ano](sql-database-auditing.md)| [Ano](sql-database-managed-instance-auditing.md) |
 | [Automatické zálohování](sql-database-automated-backups.md) | Ano | Ano |
 | [Automatické ladění (vynucení plánu)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ano](sql-database-automatic-tuning.md)| [Ano](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [Automatické ladění (indexy)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ano](sql-database-automatic-tuning.md)| Ne |
@@ -45,7 +45,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Funkce Change data capture](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Ne | Ano |
 | [Sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | Ano |Ano |
 | [Kolace příkazy](https://docs.microsoft.com/sql/t-sql/statements/collations) | Ano | Ano |
-| [Indexy Columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Ano – [pouze ve verzi Premium](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ano |
+| [Indexy Columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Ano – [úroveň Premium a úroveň Standard - S3 a novější](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ano |
 | [Modul common language runtime (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Ne | Ano – najdete v části [rozdíly CLR](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [Databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Ano | Ano |
 | [Uživatelů s omezením](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Ano | Ano |
@@ -91,6 +91,11 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Minimální úroveň protokolování v hromadného importu](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Ne | Ne |
 | [Úprava dat systému](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | Ne | Ano |
 | [Online operace indexu](https://docs.microsoft.com/sql/relational-databases/indexes/perform-index-operations-online) | Ano | Ano |
+| [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql)|Ne|Ano – najdete v části [rozdíly T-SQL](sql-database-managed-instance-transact-sql-information.md)|
+| [OPENJSON](https://docs.microsoft.com/sql/t-sql/functions/openjson-transact-sql)|Ano|Ano|
+| [OPENQUERY](https://docs.microsoft.com/sql/t-sql/functions/openquery-transact-sql)|Ne|Ano – najdete v části [rozdíly T-SQL](sql-database-managed-instance-transact-sql-information.md)|
+| [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)|Ne|Ano – najdete v části [rozdíly T-SQL](sql-database-managed-instance-transact-sql-information.md)|
+| [OPENXML](https://docs.microsoft.com/sql/t-sql/functions/openxml-transact-sql)|Ano|Ano|
 | [Operátory](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Většina - najdete jednotlivé operátory |Ano – najdete v části [rozdíly T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Dělení na oddíly](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | Ano | Ano |
 | [Obnovení bodu v čase databáze](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Ano – najdete v části [obnovení databáze SQL](sql-database-recovery-using-backups.md#point-in-time-restore) | Ano – najdete v části [obnovení databáze SQL](sql-database-recovery-using-backups.md#point-in-time-restore) |
@@ -128,6 +133,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Zobrazení katalogu systému](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/catalog-views-transact-sql) | Některé – viz jednotlivých zobrazení | Ano – najdete v části [rozdíly T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Dočasné tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#database-scoped-global-temporary-tables-azure-sql-database) | Místní a obor databáze globální dočasné tabulky. | Místní a obor instance globální dočasné tabulky. |
 | [Dočasné tabulky](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | Ano | Ano |
+|Detekce hrozeb|  [Ano](sql-database-threat-detection.md)|[Ano](sql-database-managed-instance-threat-detection.md)|
 | [Příznaky trasování](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Ne | Ne |
 | [Proměnné](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Ano | Ano |
 | [Transparentní šifrování dat (šifrování TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Ano | Ne, není ve verzi Public Preview |

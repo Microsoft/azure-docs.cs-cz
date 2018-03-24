@@ -1,11 +1,10 @@
 ---
-title: "Přesun dat z DB2 pomocí Azure Data Factory | Microsoft Docs"
-description: "Další informace o přesunutí dat z databáze DB2 místně pomocí Azure Data Factory kopie aktivity"
+title: Přesun dat z DB2 pomocí Azure Data Factory | Microsoft Docs
+description: Další informace o přesunutí dat z databáze DB2 místně pomocí Azure Data Factory kopie aktivity
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 17ffd0de41964736d2f59b0cf891d0c6b2e7d16b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 0e597574c1993e2f2a5421d24063cf9f42a7e57b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesun dat z DB2 pomocí Azure Data Factory kopie aktivity
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +57,7 @@ Konektor služby Data Factory DB2 podporuje tyto platformy IBM DB2 a verze sprá
 
 > [!TIP]
 > Pokud se zobrazí chybová zpráva "nebyl nalezen balíček odpovídající žádost o provedení příkazu SQL. SQLSTATE = 51002 = SQLCODE-805, "z důvodu je nutné balíček není vytvořen normální uživatele na operačního systému. Chcete-li vyřešit tento problém, postupujte podle těchto pokynů pro váš typ serveru DB2:
-> - DB2 pro i (AS400): může uživatel power vytvoření kolekce pro běžné uživatele před spuštěním aktivity kopírování. Chcete-li vytvořit kolekci, použijte příkaz:`create collection <username>`
+> - DB2 pro i (AS400): může uživatel power vytvoření kolekce pro běžné uživatele před spuštěním aktivity kopírování. Chcete-li vytvořit kolekci, použijte příkaz: `create collection <username>`
 > - DB2 pro z/OS nebo LUW: použití účtu s vysokou úrovní oprávnění – power users nebo správce, který má balíček autority a vazby, BINDADD, UDĚLTE EXECUTE veřejná oprávnění – pro kopírování jednou. Potřebný balíček je vytvořeno automaticky při vytvoření kopie. Potom můžete přepnout zpět na normální uživatelské pro vaše další kopie spustí.
 
 ## <a name="getting-started"></a>Začínáme
@@ -107,7 +106,7 @@ Pro aktivitu kopírování, pokud je zdroj typu **RelationalSource** (která zah
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| **dotaz** |Pomocí vlastního dotazu přečíst data. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
+| **Dotaz** |Pomocí vlastního dotazu přečíst data. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
 
 > [!NOTE]
 > Schéma a tabulku názvy rozlišují malá a velká písmena. V příkazu dotazu, uzavřete názvy vlastností pomocí "" (dvojité uvozovky).
@@ -314,13 +313,13 @@ Aktivita kopírování převádí data z typu DB2 na typ .NET jsou použity nás
 | BigInt |Int64 |
 | Real |Svobodný/svobodná |
 | Dvojitý |Dvojitý |
-| Float |Dvojitý |
+| Plovoucí desetinná čárka |Dvojitý |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | číselné |Decimal |
-| Datum |Datum a čas |
+| Datum |DateTime |
 | Čas |TimeSpan |
-| Časové razítko |Datum a čas |
+| Časové razítko |DateTime |
 | Xml |Byte[] |
 | Char |Řetězec |
 | VarChar |Řetězec |
@@ -340,13 +339,13 @@ Aktivita kopírování převádí data z typu DB2 na typ .NET jsou použity nás
 | BigInt |Int64 |
 | Real |Svobodný/svobodná |
 | Dvojitý |Dvojitý |
-| Float |Dvojitý |
+| Plovoucí desetinná čárka |Dvojitý |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | číselné |Decimal |
-| Datum |Datum a čas |
+| Datum |DateTime |
 | Čas |TimeSpan |
-| Časové razítko |Datum a čas |
+| Časové razítko |DateTime |
 | Xml |Byte[] |
 | Char |Řetězec |
 

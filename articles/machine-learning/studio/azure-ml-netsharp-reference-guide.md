@@ -1,11 +1,12 @@
 ---
-title: "NET # Neuronové sítě specifikace jazyka průvodce – Azure Machine Learning | Microsoft Docs"
-description: "Syntaxe Net # neuronové sítě specifikace jazyka, společně s příklady způsobu vytvoření modelu vlastní neuronové sítě pomocí Net #"
+title: 'NET # Neuronové sítě specifikace jazyka průvodce – Azure Machine Learning | Microsoft Docs'
+description: 'Syntaxe Net # neuronové sítě specifikace jazyka, společně s příklady způsobu vytvoření modelu vlastní neuronové sítě pomocí Net #'
 services: machine-learning
-documentationcenter: 
-author: jeannt
-manager: cgronlun
-editor: 
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
+editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
 ms.workload: data-services
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.author: jeannt
-ms.openlocfilehash: a166b45e7e482092006ddad276986b6f8b0f378c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 599dc158cde0508aa0836c7028a87ed708ba1d86
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Průvodce jazyk specifikace neuronové sítě Net # pro Azure Machine Learning
 

@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Nástroj pomocné rutiny pro přizpůsobení uživatelského rozhraní stránky | Microsoft Docs"
-description: "Pomocný nástroj demonstrovat funkce přizpůsobení uživatelského rozhraní stránky v Azure Active Directory B2C"
+title: 'Azure Active Directory B2C: Nástroj pomocné rutiny pro přizpůsobení uživatelského rozhraní stránky | Microsoft Docs'
+description: Pomocný nástroj demonstrovat funkce přizpůsobení uživatelského rozhraní stránky v Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: ae935d52-3520-4a94-b66e-b35bb40e7514
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: swkrish
-ms.openlocfilehash: a9ccdea64213d564b271699afe28f5ae6db0a71a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: f898c626d52b1a4e7df72284190749f4481999ad
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C: Pomocná nástroj používaný k předvedení stránce uživatelské rozhraní (UI) přizpůsobení funkce
 Tento článek je Pomocníka pro [hlavní článek přizpůsobení uživatelského rozhraní](active-directory-b2c-reference-ui-customization.md) v Azure Active Directory (Azure AD) B2C. Následující kroky popisují postup vykonávat funkci přizpůsobení uživatelského rozhraní stránky pomocí ukázkový kód HTML a CSS obsah, který nabízíme.
@@ -26,7 +23,7 @@ Tento článek je Pomocníka pro [hlavní článek přizpůsobení uživatelské
 ## <a name="get-an-azure-ad-b2c-tenant"></a>Získání klienta Azure AD B2C
 Před úpravou nic, budete muset [získat klienta Azure AD B2C](active-directory-b2c-get-started.md) Pokud jste ještě nemáte.
 
-## <a name="create-a-sign-up-or-sign-in-policy"></a>Vytvoření zásady registrace nebo přihlášení
+## <a name="create-a-sign-up-or-sign-in-policy"></a>Vytvoření zásady registrace nebo přihlašování
 Ukázkový obsah nabízíme slouží k customze dvě stránky v [zásady registrace nebo přihlášení](active-directory-b2c-reference-policies.md): [jednotná přihlašovací stránce](active-directory-b2c-reference-ui-customization.md) a [samoobslužné uplatňovaná atributy stránky](active-directory-b2c-reference-ui-customization.md). Když [vytváření zásad vaše registrace nebo přihlášení](active-directory-b2c-reference-policies.md#create-a-sign-up-or-sign-in-policy), přidejte místní účet (e-mailovou adresu), Facebook, Google a Microsoft jako **zprostředkovatelů Identity**. Toto jsou pouze IDPs, které bude přijímat naše ukázka obsah HTML.  Můžete také přidat podmnožinu těchto IDPs, nechcete-li.
 
 ## <a name="register-an-application"></a>Registrace aplikace
@@ -80,7 +77,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 Toto úložiště obsahuje `sample_templates\wingtip` adresáři, který obsahuje příklad HTML, CSS a obrázků. Pro tyto šablony k odkazování svůj vlastní účet Azure Blob Storage musíte upravit soubory HTML. Otevřete `unified.html` a `selfasserted.html` a nahraďte všechny výskyty `https://localhost` s adresou URL vlastní kontejner, který jste si poznamenali v předchozím kroku. Absolutní cesta souborů HTML musíte použít, protože v takovém případě se službou Azure AD, v rámci domény zpracuje HTML `https://login.microsoftonline.com`.
 
 ### <a name="upload-the-sample-files"></a>Odeslání ukázkových souborů
-V úložišti stejné rozbalte `B2CAzureStorageClient.zip` a spusťte `B2CAzureStorageClient.exe` souboru v rámci. Tento program bude jednoduše nahrát všechny soubory v adresáři, který určíte na váš účet úložiště a povolení CORS přístup pro tyto soubory. Pokud jste postupovali podle kroků výše, soubory HTML a CSS teď přejdete k vašemu účtu úložiště. Všimněte si, zda je název vašeho účtu úložiště část, která předchází `blob.core.windows.net`, například `contoso`. Můžete ověřit, že obsah se nahrají správně podle pokusu o přístup k `https://{storage-account-name}.blob.core.windows.net/{container-name}/wingtip/unified.html` v prohlížeči. Použít také [http://test-cors.org/](http://test-cors.org/) a ujistěte se, že obsah je nyní povolení CORS. (Vyhledejte "stav XHR: 200" ve výsledku.)
+V úložišti stejné rozbalte `B2CAzureStorageClient.zip` a spusťte `B2CAzureStorageClient.exe` souboru v rámci. Tento program bude jednoduše nahrát všechny soubory v adresáři, který určíte na váš účet úložiště a povolení CORS přístup pro tyto soubory. Pokud jste postupovali podle kroků výše, soubory HTML a CSS teď přejdete k vašemu účtu úložiště. Všimněte si, zda je název vašeho účtu úložiště část, která předchází `blob.core.windows.net`, například `contoso`. Můžete ověřit, že obsah se nahrají správně podle pokusu o přístup k `https://{storage-account-name}.blob.core.windows.net/{container-name}/wingtip/unified.html` v prohlížeči. Použít také [ http://test-cors.org/ ](http://test-cors.org/) a ujistěte se, že obsah je nyní povolení CORS. (Vyhledejte "stav XHR: 200" ve výsledku.)
 
 ### <a name="customize-your-policy-again"></a>Přizpůsobit zásady vaší znovu
 Teď, když si ukázkový obsah jste odeslali do účtu úložiště, je nutné upravit svojí registrační zásadě na něj odkazovat. Opakujte kroky z ["Přizpůsobit vaše zásady"](#customize-your-policy) části výše, tentokrát pomocí adresy URL svůj vlastní účet úložiště. Například umístění vaší `unified.html` souboru by `<url-of-your-container>/wingtip/unified.html`.

@@ -1,12 +1,12 @@
 ---
-title: "Synchronizace Azure AD Connect: Změna účtu služby Azure AD Connect Sync | Microsoft Docs"
-description: "Tento dokument téma popisuje šifrovací klíč a jak ho ukončil po změně hesla."
+title: 'Synchronizace Azure AD Connect: Změna účtu služby Azure AD Connect Sync | Microsoft Docs'
+description: Tento dokument téma popisuje šifrovací klíč a jak ho ukončil po změně hesla.
 services: active-directory
-keywords: "Účtu synchronizační služby Azure AD, heslo"
-documentationcenter: 
+keywords: Účtu synchronizační služby Azure AD, heslo
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: c22dd91f236454c774c00371bff668da245d45c6
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: faa6d667b514563516c23e0484437ac9572e52b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Změna hesla účtu služby synchronizace Azure AD Connect
 Pokud změníte heslo účtu služby synchronizace Azure AD Connect, synchronizační služby nebude možné spustit správně opuštění šifrovací klíč a heslo účtu služby Azure AD Connect sync znovu inicializován. 
@@ -30,7 +30,7 @@ Azure AD Connect: jako součást synchronizační služby používá šifrovací
 
 Pokud potřebujete změnit heslo účtu služby můžete použít postupy v [zrušení šifrovací klíč Azure AD Connect Sync](#abandoning-the-azure-ad-connect-sync-encryption-key) toho chcete dosáhnout.  Tyto postupy by měla být používána Pokud potřebujete abandon šifrovacího klíče z jakéhokoli důvodu.
 
-##<a name="issues-that-arise-from-changing-the-password"></a>Problémy, které vznikají z Změna hesla
+## <a name="issues-that-arise-from-changing-the-password"></a>Problémy, které vznikají z Změna hesla
 Existují dvě věci, které je třeba provést, pokud změníte heslo účtu služby.
 
 Je třeba nejprve, chcete-li změnit heslo v části správce řízení služeb systému Windows.  Dokud nebude tento problém vyřešen. zobrazí se následující chyby:
@@ -72,9 +72,9 @@ Zrušte existující šifrovací klíč, že nový šifrovací klíč lze vytvo�
 
 2. Spusťte novou relaci prostředí PowerShell.
 
-3. Přejděte do složky:`$env:Program Files\Microsoft Azure AD Sync\bin\`
+3. Přejděte do složky: `$env:Program Files\Microsoft Azure AD Sync\bin\`
 
-4. Spusťte příkaz:`./miiskmu.exe /a`
+4. Spusťte příkaz: `./miiskmu.exe /a`
 
 ![Azure AD Connect Sync šifrovací klíče nástroje](media/active-directory-aadconnectsync-encryption-key/key5.png)
 

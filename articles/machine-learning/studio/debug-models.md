@@ -1,10 +1,11 @@
 ---
-title: "Ladění modelu v Azure Machine Learning | Microsoft Docs"
-description: "Postup ladění chyby, vytvořené na moduly Train Model a Score Model v Azure Machine Learning."
+title: Ladění modelu v Azure Machine Learning | Microsoft Docs
+description: Postup ladění chyby, vytvořené na moduly Train Model a Score Model v Azure Machine Learning.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 629dc45e-ac1e-4b7d-b120-08813dc448be
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: e6e9e1a3b30f84d634592581ea24fb308dcb478e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bca5ebbda2d46270cc0a996df5fc46f201931343
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="debug-your-model-in-azure-machine-learning"></a>Ladění modelu ve službě Azure Machine Learning
 

@@ -1,9 +1,9 @@
 ---
-title: "Přehled metriky v Microsoft Azure | Microsoft Docs"
-description: "Přehled metriky a jejich použití v Microsoft Azure"
-author: johnkemnetz
+title: Přehled metriky v Microsoft Azure | Microsoft Docs
+description: Přehled metriky a jejich použití v Microsoft Azure
+author: anirudhcavale
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 405ec51c-0946-4ec9-b535-60f65c4a5bd1
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: johnkem
-ms.openlocfilehash: 4a78236f9c6945bb982466b59690b221f35a1804
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.date: 03/19/2018
+ms.author: ancav
+ms.openlocfilehash: 88020b27403f06ab8f1c0a1c45b798db02f517f5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Přehled metriky v Microsoft Azure
 Tento článek popisuje, co metriky jsou ve službě Microsoft Azure jejich výhody a jak je začít používat.  
@@ -38,9 +38,9 @@ Metriky jsou cenné zdroj telemetrie a vám umožňují provádět následujíc�
 ## <a name="what-are-the-characteristics-of-metrics"></a>Jaké jsou charakteristiky metrik?
 Metriky mít následující vlastnosti:
 
-* Mají všechny metriky **jedné minuty frekvence**. Zobrazí hodnota metriky každou minutu z prostředku, která poskytuje téměř v reálném čase přehled o stavu a stavu prostředku.
+* Mají všechny metriky **jedné minuty frekvence** (Pokud není uvedeno jinak v definici metrika). Zobrazí hodnota metriky každou minutu z prostředku, která poskytuje téměř v reálném čase přehled o stavu a stavu prostředku.
 * Metriky **k dispozici okamžitě**. Nemusíte vyjádřit výslovný souhlas nebo nastavit další diagnostiky.
-* Dostanete **30 dní od historie** pro jednotlivé metriky. Můžete rychle zobrazit poslední a měsíční trendy v výkon nebo stav prostředku.
+* Dostanete **93 dny historie** pro jednotlivé metriky. Můžete rychle zobrazit poslední a měsíční trendy v výkon nebo stav prostředku.
 * Některé metriky můžou mít atributy dvojice název hodnota volána **dimenze**. Ty umožňují další segment a zkoumat metriky smysluplnější způsobem.
 
 Rovněž můžete:
@@ -93,7 +93,7 @@ Azure metriky je přístupný prostřednictvím rozhraní API Azure monitorován
 * Použití [REST API služby Azure monitorování metriky](https://docs.microsoft.com/rest/api/monitor/metrics) segmentu, filtrovat a přístup k datům skutečné metriky.
 
 > [!NOTE]
-> Tento článek se zabývá metriky prostřednictvím [nové rozhraní API pro metriky](https://docs.microsoft.com/rest/api/monitor/) pro prostředky Azure. Verze rozhraní API pro nové definice metrik a metriky rozhraní API je 2017-05-01-preview. Starší verze definice metrik a metriky můžete přistupovat pomocí rozhraní API verze 2014-04-01.
+> Tento článek se zabývá metriky prostřednictvím [nové rozhraní API pro metriky](https://docs.microsoft.com/rest/api/monitor/) pro prostředky Azure. Verze rozhraní API pro nové definice metrik a metriky rozhraní API je 2018-01-01. Starší verze definice metrik a metriky můžete přistupovat pomocí rozhraní API verze 2014-04-01.
 >
 >
 

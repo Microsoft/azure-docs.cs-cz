@@ -1,11 +1,12 @@
 ---
-title: "Spuštění skriptů Python machine learning | Microsoft Docs"
-description: "Obsahuje přehled návrhu zásadami pro Podpora skriptů Python v Azure Machine Learning a základní informace o využití scénáře, možnosti a omezení."
-keywords: "Python machine learningu pandas, python pandas, skriptů python, spuštění skriptů python"
+title: Spuštění skriptů Python machine learning | Microsoft Docs
+description: Obsahuje přehled návrhu zásadami pro Podpora skriptů Python v Azure Machine Learning a základní informace o využití scénáře, možnosti a omezení.
+keywords: Python machine learningu pandas, python pandas, skriptů python, spuštění skriptů python
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: cgronlun
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: ee9eb764-0d3e-4104-a797-19fc29345d39
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: c25f31ca72417672298657c4585184ad72db6c99
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 0efa2a7604b41b791ed3717b7f2b667b7181085d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Spouštění skriptů strojového učení v Pythonu v nástroji Azure Machine Learning Studio
 
@@ -188,7 +188,7 @@ Tady je funkce Python slouží k výpočtu skóre důležitosti a pořadí funkc
 ![image11](./media/execute-python-scripts/figure8.png)
 
 Obrázek 10. Funkce rank funkcí podle skóre.
- Následující experimentu pak vypočítá a vrátí skóre důležitosti funkcí v datové sadě "Pima indickém Diabetes" v Azure Machine Learning:
+  Následující experimentu pak vypočítá a vrátí skóre důležitosti funkcí v datové sadě "Pima indickém Diabetes" v Azure Machine Learning:
 
 ![image12](./media/execute-python-scripts/figure9a.png)
 ![image13](./media/execute-python-scripts/figure9b.png)    
@@ -208,7 +208,7 @@ Obrázek 11. Experiment rank funkcí v datové sadě Pima indickém Diabetes.
 
 Očekáváme, že poskytuje další funkce k [Execute Python Script] [ execute-python-script] modulu například umožňuje trénování a zprovoznit modely v Pythonu a přidat lepší podporu pro vývoj a ladění kódu v Azure Machine Learning Studio.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace naleznete ve [Středisku pro vývojáře Python](https://azure.microsoft.com/develop/python/).
 
 <!-- Module References -->

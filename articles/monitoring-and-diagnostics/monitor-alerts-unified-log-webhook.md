@@ -1,12 +1,12 @@
 ---
-title: "Akce Webhooku protokolu výstrahy ve výstrahách Azure (Preview) | Microsoft Docs"
-description: "Tento článek popisuje, jak pro pravidlo výstrahy protokolu pomocí protokolu statistice analýzy nebo aplikace, bude nabízet data jako webhooku protokolu HTTP a další podrobnosti o různých přizpůsobení možné."
+title: Akce Webhooku protokolu výstrahy ve výstrahách Azure | Microsoft Docs
+description: Tento článek popisuje, jak pro pravidlo výstrahy protokolu pomocí protokolu statistice analýzy nebo aplikace, bude nabízet data jako webhooku protokolu HTTP a další podrobnosti o různých přizpůsobení možné.
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/2/2018
 ms.author: vinagara
-ms.openlocfilehash: 5852eb099f6620656aa69e5085447c2a8b4e0c01
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9d2bc934424ff7a31b65ad6c03624ff02ee2a6f3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla výstrah protokolu
-Když [v Azure (Preview) se vytvoří výstraha](monitor-alerts-unified-usage.md), máte možnost [konfigurace pomocí akce skupiny](monitoring-action-groups.md) provést několik akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o konfiguraci vlastních webhooku založenými na JSON.
+Když [v Azure se vytvoří výstraha ](monitor-alerts-unified-usage.md), máte možnost [konfigurace pomocí akce skupiny](monitoring-action-groups.md) provést několik akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o konfiguraci vlastních webhooku založenými na JSON.
 
 
 ## <a name="webhook-actions"></a>Akce Webhooku
@@ -33,7 +33,7 @@ Akce Webhooku vyžadovat vlastnosti v následující tabulce:
 | Vlastnost | Popis |
 |:--- |:--- |
 | Adresa URL Webhooku |Adresa URL webhooku. |
-| Vlastní datovou část JSON |Vlastní datovou část odeslat spolu s webhook, když zvolíte tuto možnost během vytváření výstrahy. Podrobnosti jsou dostupné v [Správa výstrah pomocí výstrah Azure (Preview)](monitor-alerts-unified-usage.md) |
+| Vlastní datovou část JSON |Vlastní datovou část odeslat spolu s webhook, když zvolíte tuto možnost během vytváření výstrahy. Podrobnosti jsou dostupné v [Správa výstrah pomocí Azure výstrahy ](monitor-alerts-unified-usage.md) |
 
 > [!NOTE]
 > Tlačítko Webhooku souběžně s test *zahrnout vlastní datovou část JSON webhooku* možnost protokolu výstrah, fiktivní volání otestovat adresu URL webhooku se aktivuje. Neobsahuje se skutečná data a zástupce schématu JSON se používá pro výstrahy, protokolu. 
@@ -157,6 +157,8 @@ Následuje ukázka datové části pro standardní webhooku *bez vlastní možno
     }
     }
 
+> [!NOTE]
+> Protokolu výstrahy pro službu Application Insights je momentálně ve veřejné verzi preview – funkce a činnost koncového uživatele mohou podléhat změnám.
 
 #### <a name="log-alert-with-custom-json-payload"></a>Výstraha protokolu s vlastní datovou část JSON
 Například pokud chcete vytvořit vlastní datovou část, která obsahuje jenom název výstrahy a výsledky hledání, můžete použít následující: 
@@ -194,7 +196,7 @@ Následuje ukázka datové části pro akci vlastní webhooku pro všechny výst
 
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [protokolu výstrahy ve výstrahách Azure (preview)](monitor-alerts-unified-log.md)
+- Další informace o [protokolu výstrahy ve výstrahách Azure ](monitor-alerts-unified-log.md)
 - Vytvoření a správa [akce skupin v Azure](monitoring-action-groups.md)
 - Další informace o [Application Insights](../application-insights/app-insights-analytics.md)
 - Další informace o [analýzy protokolů](../log-analytics/log-analytics-overview.md). 
