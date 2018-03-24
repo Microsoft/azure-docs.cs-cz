@@ -1,6 +1,6 @@
 ---
-title: "Použití Azure Key Vault z webové aplikace | Microsoft Docs"
-description: "Pomocí tohoto kurzu můžete Naučte se používat Azure Key Vault z webové aplikace."
+title: Použití Azure Key Vault z webové aplikace | Microsoft Docs
+description: Pomocí tohoto kurzu můžete Naučte se používat Azure Key Vault z webové aplikace.
 services: key-vault
 author: adhurwit
 manager: mbaldwin
@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: adhurwit
-ms.openlocfilehash: 107be940b4c105056c63f793fb0111b03469bf66
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 93ef76729123c7187c3dd616419b5771324fe2cb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Použití Azure Key Vault z webové aplikace
 
@@ -61,7 +61,7 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.20
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-## <a id="webconfig"></a>Upravit soubor Web.Config
+## <a id="webconfig"></a>Modify Web.Config
 
 Existují tři nastavení aplikace, které je třeba přidat do souboru web.config následujícím způsobem.
 
@@ -151,7 +151,7 @@ makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2017 -e 07/31/2018
 pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 ```
 
-Poznamenejte si koncové datum a heslo .pfx (v tomto příkladu: 07/31/2017 a test123). Je nutné je níže.
+Poznamenejte si koncové datum a heslo .pfx (v tomto příkladu: 07/31/2018 a test123). Je nutné je níže.
 
 Další informace o vytvoření testovacího certifikátu najdete v tématu [postup: vytvořit vaše vlastní testovací certifikát](https://msdn.microsoft.com/library/ff699202.aspx)
 

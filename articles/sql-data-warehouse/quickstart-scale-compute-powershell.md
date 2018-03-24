@@ -1,24 +1,24 @@
 ---
-title: "Rychlý úvod: Škálovat výpočetní v Azure SQL Data Warehouse – prostředí PowerShell | Microsoft Docs"
-description: "Prostředí PowerShell úlohy chcete škálovat výpočetní prostředky úpravou jednotky datového skladu."
+title: 'Rychlý úvod: Škálovat výpočetní v Azure SQL Data Warehouse – prostředí PowerShell | Microsoft Docs'
+description: Prostředí PowerShell úlohy chcete škálovat výpočetní prostředky úpravou jednotky datového skladu.
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 01/31/2018
+ms.date: 03/16/2018
 ms.author: elbutter;barbkess
-ms.openlocfilehash: a3a435d6bdb0d35c96349540d5e9f9b5be61bd9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3236c0ad9676712afd220a3c8a9326f3ea1f59d5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Rychlý úvod: Škálovat výpočetní v Azure SQL Data Warehouse v prostředí PowerShell
 
@@ -64,7 +64,7 @@ Postupujte podle těchto kroků se najít informace o umístění pro datový sk
 
     ![Název a prostředek skupiny serverů](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Poznamenejte si název datového skladu, který se použije jako název databáze. Také poznamenejte si název serveru a skupině prostředků. Budete používat v pozastavit a obnovit příkazy.
+4. Poznamenejte si název datového skladu, který se použije jako název databáze. Pamatujte si, že se datový sklad je jeden typ databáze. Také poznamenejte si název serveru a skupině prostředků. Budete používat v pozastavit a obnovit příkazy.
 5. Pokud je server foo.database.windows.net, použijte pouze první část jako název serveru v rutin prostředí PowerShell. Na předchozím obrázku je úplný název serveru NovyServer 20171113.database.windows.net. Používáme **NovyServer 20171113** jako název serveru ve výsledcích rutiny Powershellu.
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
@@ -77,12 +77,13 @@ Chcete-li změnit jednotky datového skladu, použijte [Set-AzureRmSqlDatabase](
 Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
 ```
 
-## <a name="check-database-state"></a>Zkontrolujte stav databáze
+## <a name="check-data-warehouse-state"></a>Zkontrolujte stav datového skladu
 
 Pokud chcete zobrazit aktuální stav datového skladu, použijte [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) rutiny prostředí PowerShell. To získá stav **mySampleDataWarehouse** databáze v ResourceGroup **myResourceGroup** a server **mynewserver 20171113.database.windows.net**.
 
 ```powershell
-Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
+$database = Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
+$database
 ```
 
 Důsledkem přibližně takto:
@@ -113,7 +114,13 @@ ReadScale                     : Disabled
 ZoneRedundant                 : False
 ```
 
-Potom můžete zkontrolovat v tématu **stav** databáze. V takovém případě se zobrazí, že tato databáze je online.  Když spustíte tento příkaz, měli byste obdržet hodnotou stavu Online, pozastavení, obnovování, škálování nebo pozastaveno.
+Můžete zobrazit **stav** databáze ve výstupu. V takovém případě se zobrazí, že tato databáze je online.  Když spustíte tento příkaz, měli byste obdržet hodnotou stavu Online, pozastavení, obnovování, škálování nebo pozastaveno. 
+
+Pokud chcete zobrazit stav samostatně, použijte následující příkaz:
+
+```powershell
+$database | Select-Object DatabaseName,Status
+```
 
 ## <a name="next-steps"></a>Další postup
 Jste se naučili nyní škálování výpočetní pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.

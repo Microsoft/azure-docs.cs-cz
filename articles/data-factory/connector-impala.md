@@ -1,11 +1,11 @@
 ---
-title: "Kopírování dat z Impala pomocí Azure Data Factory (beta) | Microsoft Docs"
-description: "Postup kopírování dat z Impala do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanálu data factory."
+title: Kopírování dat z Impala pomocí Azure Data Factory (beta) | Microsoft Docs
+description: Postup kopírování dat z Impala do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanálu data factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: e1f745fc70395f06d2eb3d98644d54c314a0ef26
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 22e1ddbd9f621a3ef270c4b769032e6456b54fc9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-beta"></a>Kopírování dat z Impala pomocí Azure Data Factory (beta)
 

@@ -1,10 +1,10 @@
 ---
-title: "Skript prostředí PowerShell: kopírování dat v cloudu pomocí Azure Data Factory | Microsoft Docs"
-description: "Tento skript prostředí PowerShell zkopíruje data z jednoho umístění do Azure Blob Storage do jiného umístění v stejné úložiště objektů Blob."
+title: 'Skript prostředí PowerShell: kopírování dat v cloudu pomocí Azure Data Factory | Microsoft Docs'
+description: Tento skript prostředí PowerShell zkopíruje data z jednoho umístění do Azure Blob Storage do jiného umístění v stejné úložiště objektů Blob.
 services: data-factory
 author: linda33wj
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: jingwang
-ms.openlocfilehash: cb452735b2f8f855a43d12c0fd50973baa3150fd
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 0b7552bb981a5b5a4850778709c08323b0e9124f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>Vytvoření kanálu data factory ke zkopírování dat v cloudu pomocí prostředí PowerShell
 
@@ -24,7 +24,7 @@ Tento ukázkový skript prostředí PowerShell vytvoří kanál v Azure Data Fac
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Účet služby Azure Storage**. Úložiště objektů blob použijete jako úložiště dat pro **zdroj** i **jímku**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md#create-a-storage-account). 
 * Vytvořte **kontejner objektů blob** ve službě Blob Storage, v tomto kontejneru vytvořte vstupní **složku** a uložte do ní nějaké soubory. Nástroje, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), můžete použít k připojení k úložišti objektů blob v Azure, k vytvoření kontejneru objektů blob, nahrání vstupního souboru a ověření výstupního souboru.
 

@@ -1,10 +1,11 @@
 ---
 title: Galerie Azure AI | Microsoft Docs
-description: "Sdílet a zjišťovat prostředky analýzy a další obsah v Azure AI Gallery. Další informace od ostatních a provádět vlastní příspěvky ze strany komunity."
+description: Sdílet a zjišťovat prostředky analýzy a další obsah v Azure AI Gallery. Další informace od ostatních a provádět vlastní příspěvky ze strany komunity.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: cf518538-6046-4657-a7cb-a0bc487c67e6
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: garye
-ms.openlocfilehash: 5ccb595e24d8ee169cc6ee589a3ddc2f9fef5dcd
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 540f97d1383b8a992a12426b03249ef82af0e7a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílené složky a zjišťovat prostředky v Azure AI Gallery
 [!INCLUDE [gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -46,7 +46,7 @@ Tyto základní prostředky Galerie je možné seskupit logicky několik různý
 * **[Kolekce](gallery-collections.md)**  – kolekce umožňuje seskupit experimenty, rozhraní API, a další galerie položek tuto adresu specifického řešení nebo koncept.
 * **[Odvětví](gallery-industries.md)**  -část odvětví Galerie spojuje různé prostředky, které jsou specifické pro takové odvětví jako prodejní, výroby, bankovnictví a zdravotní péče.
 
-Nakonec  **[soutěže](gallery-competitions.md)**  nabízejí zajímavých možnost pokouší s komunitou data scientsts do dokáže řešit složité problémy pomocí Cortana Intelligence Suite.
+Nakonec **[soutěže](gallery-competitions.md)** nabízejí zajímavých možnost pokouší s komunitou data scientsts do dokáže řešit složité problémy pomocí Cortana Intelligence Suite.
 
 ![Domovské stránky Azure Galerie AI](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
 
@@ -91,5 +91,5 @@ Chceme galerii jezdit naši uživatelé a pro naše uživatele. Řekněte nám, 
 
 ![Váš názor](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[PŘEJÍT DO GALERIE DO >>](http://gallery.cortanaintelligence.com)**
+**[PŘEJÍT DO GALERIE DO &GT;&GT;](http://gallery.cortanaintelligence.com)**
 

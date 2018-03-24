@@ -1,8 +1,8 @@
 ---
-title: "Ladění uživatelem definované C# – kód pro selhání úloh Azure Data Lake U-SQL | Microsoft Docs"
-description: "Zjistěte, jak k ladění selhání vrchol U-SQL pomocí nástrojů Azure Data Lake pro Visual Studio."
+title: Ladění uživatelem definované C# – kód pro selhání úloh Azure Data Lake U-SQL | Microsoft Docs
+description: Zjistěte, jak k ladění selhání vrchol U-SQL pomocí nástrojů Azure Data Lake pro Visual Studio.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yanancai
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/31/2017
 ms.author: yanacai
-ms.openlocfilehash: 739d46753729b70a24dbd3d6e2d78f8513e143e6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b614583079347c2634f8d03531517d1d32c75132
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Ladění uživatelem definované C# – kód pro selhání úloh U-SQL
 
@@ -41,7 +41,7 @@ Při otevření neúspěšnou úlohu v nástrojů Azure Data Lake pro Visual Stu
 
 1. Klikněte na tlačítko **Stáhnout** a stahovat požadované prostředky a vstupní datové proudy. Pokud stahování nedokončí, klikněte na tlačítko **opakujte**.
 
-2. Klikněte na tlačítko **otevřete** po dokončení stahování pro generování prostředí místní ladění. Nová instance Visual Studio s ladění řešení je automaticky vytvořen a otevřít.
+2. Klikněte na tlačítko **otevřete** po dokončení stahování pro generování prostředí místní ladění. Otevře se nové ladění řešení, a pokud máte existující řešení otevřít v sadě Visual Studio, prosím Ujistěte se, že uložte a zavřete před ladění.
 
 ![Azure Data Lake Analytics U-SQL vrchol stažení sady visual studio pro ladění](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
 
@@ -109,7 +109,7 @@ Odeslat znovu úlohu došlo k chybě:
 
 3. Odešlete znovu úlohu U-SQL.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Průvodce programovatelnosti U-SQL](data-lake-analytics-u-sql-programmability-guide.md)
 - [Vývoj U-SQL uživatelem definované operátory pro úlohy Azure Data Lake Analytics](data-lake-analytics-u-sql-develop-user-defined-operators.md)

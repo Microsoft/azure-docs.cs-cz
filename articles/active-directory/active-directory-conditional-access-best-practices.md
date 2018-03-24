@@ -1,12 +1,12 @@
 ---
-title: "Osvědčené postupy pro podmíněný přístup v Azure Active Directory | Microsoft Docs"
-description: "Další informace o věcí, které byste měli vědět, a co je, že byste neměli dělat při konfiguraci zásad podmíněného přístupu."
+title: Osvědčené postupy pro podmíněný přístup v Azure Active Directory | Microsoft Docs
+description: Další informace o věcí, které byste měli vědět, a co je, že byste neměli dělat při konfiguraci zásad podmíněného přístupu.
 services: active-directory
-keywords: "podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu"
-documentationcenter: 
+keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 02/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 16f9179b6cbaee00a2afbe2efe090cb3eb8b204a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8d3fa9bf11cd1c14b2d7ef37544cb5e043e2d9da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -106,7 +106,7 @@ Ve vašem prostředí neměli byste následující konfigurace:
 
 - **Blokovat přístup** – tato konfigurace zablokuje celé organizace, která není výborný vhodné.
 
-- **Vyžaduje kompatibilní zařízení** – pro uživatele, který nebudete mít zaregistrovali svá zařízení ještě tato zásada blokuje veškerý přístup, včetně přístupu k portálu služby Intune. Pokud jste správce bez registrovaných zařízení, zablokuje vás tyto zásady z získali zpět do portálu Azure, změna zásad.
+- **Vyžaduje kompatibilní zařízení** – pro uživatele, který nezaregistrovali svoje zařízení, ale tato zásada blokuje veškerý přístup, včetně přístupu k portálu služby Intune. Pokud jste správce bez registrovaných zařízení, zablokuje vás tyto zásady z získali zpět do portálu Azure, změna zásad.
 
 - **Vyžadovat připojení k doméně** – tento blok zásad přístupu se taky může blokovat přístup pro všechny uživatele ve vaší organizaci, pokud ještě nemáte zařízení připojených k doméně.
 

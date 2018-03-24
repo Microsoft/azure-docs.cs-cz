@@ -1,11 +1,11 @@
 ---
-title: "Virtuální síť Azure | Microsoft Docs"
-description: "Další informace o Azure Virtual Network konceptů a funkcí."
+title: Virtuální síť Azure | Microsoft Docs
+description: Další informace o Azure Virtual Network konceptů a funkcí.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 9633de4b-a867-4ddf-be3c-a332edf02e24
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/1/2018
 ms.author: jdial
-ms.openlocfilehash: fadc1994cd930df36387a5bfb302c00d66f74fad
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 8d02afcc590482fdca4705ac582d85bb985dd3c2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
@@ -32,7 +32,7 @@ Virtuální síť Azure poskytuje následující obecné možnosti:
 - **[Připojení k virtuální síti:](#connect-vnets)**  virtuální sítě může být připojena k sobě navzájem, povolení prostředky v žádné virtuální síti komunikovat s prostředky v žádné jiné virtuální síti.
 - **[Místní připojení:](#connect-on-premises)**  virtuální sítě může být připojen k místní síti, povolení materiály, které mohou mezi sebou komunikovat.
 - **[Filtrování přenosu:](#filtering)**  můžete filtrovat síťový provoz do a z prostředků ve virtuální síti zdrojové IP adresy a portu, cílové IP adresy a portu a protokolu.
-- **[Směrování:](#routing)**  můžete volitelně přepsat výchozí Azure směrování pouze vlastní trasy, nebo pomocí protokolu BGP šíření tras prostřednictvím brány sítě.
+- **[Směrování:](#routing)**  Volitelně můžete přepsat výchozí Azure směrování pouze vlastní trasy, nebo pomocí šíření protokol BGP směrování (BGP) prostřednictvím brány sítě.
 
 ## <a name = "isolation"></a>Izolace sítě a segmentace
 

@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Zabezpečení služby RESTful pomocí klientských certifikátů"
-description: "Zabezpečit vaše vlastní výměnu REST API deklarace identity ve vašem Azure AD B2C pomocí klientských certifikátů"
+title: 'Azure Active Directory B2C: Zabezpečení služby RESTful pomocí klientských certifikátů'
+description: Zabezpečit vaše vlastní výměnu REST API deklarace identity ve vašem Azure AD B2C pomocí klientských certifikátů
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 09/25/2017
-ms.author: yoelh
-ms.openlocfilehash: 582aadd35821779e307ac285804e3b7fe5c24abd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: davidmu
+ms.openlocfilehash: f1b9ef9a78715c08c5361e4bab6a31384c5c98d3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Zabezpečení služby RESTful pomocí klientských certifikátů
 V souvisejícím článku jste [vytvoření RESTful služby](active-directory-b2c-custom-rest-api-netfw.md) který komunikuje se službou Azure Active Directory B2C (Azure AD B2C).

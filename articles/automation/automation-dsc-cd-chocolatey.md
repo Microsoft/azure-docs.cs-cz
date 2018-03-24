@@ -1,6 +1,6 @@
 ---
-title: "Průběžné nasazování služby Azure Automation DSC s Chocolatey"
-description: "DevOps průběžné nasazování pomocí Azure Automation DSC a správce Chocolatey balíčků.  Příklad s kompletní šablonou JSON ARM a zdroj PowerShell."
+title: Průběžné nasazování služby Azure Automation DSC s Chocolatey
+description: DevOps průběžné nasazování pomocí Azure Automation DSC a správce Chocolatey balíčků.  Příklad s kompletní šablonou JSON ARM a zdroj PowerShell.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: 8c1427bd40a6fd75a755c4709d88a4b8e4c55571
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: e92bb8b4078bc5c85a639d3b5b38c124152576f7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Příklad použití: Průběžné nasazování pro virtuální počítače pomocí Automation DSC a Chocolatey
 Ve světě DevOps jsou celou řadu nástrojů pro pomoc s různými body v kanálu nepřetržité integrace.  Konfigurace Azure Automation žádaný stavu (DSC) je úvodní nové přidání možnosti, které můžete použít DevOps týmy.  Tento článek ukazuje nastavení nahoru průběžné nasazení (CD) pro počítač se systémem Windows.  Můžete snadno rozšířit techniku, například jako v mnoha počítače se systémem Windows v případě potřeby v roli (webový server, např.) a z ní také další rolí.

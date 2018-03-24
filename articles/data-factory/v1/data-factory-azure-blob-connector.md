@@ -1,11 +1,10 @@
 ---
-title: "Kopírování dat do/z Azure Blob Storage | Microsoft Docs"
-description: "Zjistěte, jak zkopírovat data objektů blob v Azure Data Factory. Použijte naše ukázka: kopírování dat do a z Azure Blob Storage a Azure SQL Database."
+title: Kopírování dat do/z Azure Blob Storage | Microsoft Docs
+description: 'Zjistěte, jak zkopírovat data objektů blob v Azure Data Factory. Použijte naše ukázka: kopírování dat do a z Azure Blob Storage a Azure SQL Database.'
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: bec8160f-5e07-47e4-8ee1-ebb14cfb805d
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d94fef9d51c5f696df37b26867c1c8ebe12a15b9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fe7b419a2f4bbc3ae4aa69dad1e3b3e0957cc848
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopírovat data do nebo z Azure Blob Storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

@@ -1,26 +1,18 @@
 ---
-title: "Konfigurace serverů na požadovaný stav a spravovat odlišily s Azure Automation | Microsoft Docs"
-description: "Kurz – Správa konfigurací serveru s Azure Automation DSC."
+title: Konfigurace serverů do požadovaného stavu a správa odchylek s využitím Azure Automation
+description: Kurz – Správa konfigurací serveru s Azure Automation DSC.
 services: automation
-documentationcenter: automation
-author: georgewallace
-manager: carmonm
-editor: tysonn
-tags: azure-service-management
-ms.assetid: 
 ms.service: automation
-ms.devlang: powershell
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-ms.date: 09/25/2017
+author: georgewallace
 ms.author: gwallace
-ms.custom: 
-ms.openlocfilehash: c510b2244dfa85b12ed08cad9dbab75067ebe41a
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+manager: carmonm
+ms.topic: article
+ms.date: 09/25/2017
+ms.openlocfilehash: 50c58224eaecc20a0878df5e1c7f100039978455
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurace serverů na požadovaný stav a spravovat odlišily
 
@@ -44,7 +36,7 @@ K dokončení tohoto kurzu, budete potřebovat:
 * Azure PowerShell verze modulu 3,6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 * Znalost DSC. Informace o DSC najdete v tématu [potřeby přehled stavu konfigurace prostředí Windows PowerShell](https://docs.microsoft.com/powershell/dsc/overview)
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k předplatnému Azure pomocí příkazu `Login-AzureRmAccount` a postupujte podle pokynů na obrazovce.
 
@@ -56,9 +48,9 @@ Login-AzureRmAccount
 
 V tomto kurzu budeme používat jednoduchá konfigurace DSC, která zajišťuje, že ve virtuálním počítači je nainstalována služba IIS.
 
-Informace o konfiguracích DSC najdete v tématu [konfigurace DSC](https://docs.microsoft.com/powershell/dsc/configurations).
+Informace o konfiguracích DSC najdete v tématu [Konfigurace DSC](https://docs.microsoft.com/powershell/dsc/configurations).
 
-V textovém editoru, zadejte následující příkaz a uložte ho místně jako `TestConfig.ps1`.
+V textovém editoru zadejte následující a soubor místně uložte jako `TestConfig.ps1`.
 
 ```powershell
 configuration TestConfig {
@@ -158,7 +150,7 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 $reports[0]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace jak pro zařadit uzly pro správu ve službě Azure Automation DSC, najdete v části [registrace počítačů pro správu Azure Automation DSC.](automation-dsc-onboarding.md)
 * Další informace o použití portálu Azure Automation DSC použít, najdete v tématu [Začínáme s Azure Automation DSC.](automation-dsc-getting-started.md)

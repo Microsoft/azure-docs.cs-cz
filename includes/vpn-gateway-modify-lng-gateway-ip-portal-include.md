@@ -1,10 +1,26 @@
-### <a name="gwipnoconnection"></a>Chcete-li upravit IP adresu brány místní sítě – žádné připojení brány
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: a929149f115d716bf7f9d850abe5ba97bd5a8189
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/23/2018
+---
+### <a name="gwipnoconnection"></a> Chcete-li upravit IP adresu brány místní sítě – žádné připojení brány
 
 Pomocí tohoto příkladu upravte bránu místní sítě, která nemá připojení brány. Při upravování této hodnoty můžete také zároveň upravit předpony adres.
 
 1. Na bráně místní sítě prostředku v **nastavení** klikněte na tlačítko **konfigurace**.
 2. V **IP adresu** pole, je třeba změnit IP adresu.
-3. Klikněte na tlačítko **Uložit** uložte nastavení.
+3. Kliknutím na **Uložit** nastavení uložte.
 
 ### <a name="gwipwithconnection"></a>Chcete-li upravit místní síťová brána brány IP adresa - existující připojení brány
 
@@ -21,7 +37,7 @@ Pokud chcete upravit bránu místní sítě, který má připojení, musíte nej
 Můžete také zároveň upravit předpony adresy.
 
 1. V **IP adresu** pole, je třeba změnit IP adresu.
-2. Klikněte na tlačítko **Uložit** uložte nastavení.
+2. Kliknutím na **Uložit** nastavení uložte.
 
 #### <a name="3-recreate-the-connection"></a>3. Znovu vytvořte připojení.
 

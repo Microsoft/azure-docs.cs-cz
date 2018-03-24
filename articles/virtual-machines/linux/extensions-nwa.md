@@ -1,11 +1,11 @@
 ---
-title: "Rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux | Microsoft Docs"
-description: "Nasaďte agenta sledovací proces sítě na virtuální počítač s Linuxem pomocí rozšíření virtuálního počítače."
+title: Rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux | Microsoft Docs
+description: Nasaďte agenta sledovací proces sítě na virtuální počítač s Linuxem pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dennisg
 manager: amku
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5c81e94c-e127-4dd2-ae83-a236c4512345
 ms.service: virtual-machines-linux
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: fd160fc8cfc2e79ffa9492bb0ef4556bec5820d0
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a51566148eec88f707b524346afc59606196e4da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Sítě rozšíření virtuálního počítače sledovacích procesů agenta pro Linux
 
 ## <a name="overview"></a>Přehled
 
-[Azure sledovací proces sítě](https://review.docs.microsoft.com/azure/network-watcher/) je sítě výkonu monitorování, diagnostiku a analýzy služba, která umožňuje monitorování pro sítě Azure. Rozšíření sítě sledovacích procesů agenta virtuálního počítače není pro některé funkce sledovací proces sítě na virtuálních počítačích Azure. To zahrnuje Zachytávání síťových přenosů na vyžádání a další pokročilé funkce.
+[Azure sledovací proces sítě](https://docs.microsoft.com/azure/network-watcher/) je sítě výkonu monitorování, diagnostiku a analýzy služba, která umožňuje monitorování pro sítě Azure. Rozšíření sítě sledovacích procesů agenta virtuálního počítače není pro některé funkce sledovací proces sítě na virtuálních počítačích Azure. To zahrnuje Zachytávání síťových přenosů na vyžádání a další pokročilé funkce.
 
 Tento dokument podrobně popisuje možnosti nasazení pro rozšíření sítě sledovacích procesů agenta virtuálního počítače pro Linux a podporované platformy.
 
@@ -40,7 +40,7 @@ Rozšíření agenta sledovací proces sítě může být spuštěn proti tyto L
 | Ubuntu | 16.04 LTS, 14.04 LTS a 12.04 LTS |
 | Debian | 7 a 8 |
 | RedHat | 6.x a 7.x |
-| Oracle Linux | 7 x |
+| Oracle Linux | 7x |
 | SuSE | 11 a 12 |
 | OpenSuse | 7.0 |
 | CentOS | 7.0 |
@@ -75,7 +75,7 @@ Následujícím kódu JSON znázorňuje schéma pro rozšíření sítě sledova
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name (Název) | Hodnota nebo příklad |
+| Název | Hodnota nebo příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | Vydavatele | Microsoft.Azure.NetworkWatcher |

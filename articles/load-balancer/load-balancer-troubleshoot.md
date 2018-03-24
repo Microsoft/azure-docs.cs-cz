@@ -1,12 +1,12 @@
 ---
-title: "Řešení potíží pro vyrovnávání zatížení Azure | Microsoft Docs"
-description: "Řešení známých problémů s nástrojem pro vyrovnávání zatížení Azure"
+title: Řešení potíží pro vyrovnávání zatížení Azure | Microsoft Docs
+description: Řešení známých problémů s nástrojem pro vyrovnávání zatížení Azure
 services: load-balancer
 documentationcenter: na
 author: RamanDhillon
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: bc059221656a695bb43af0dca06df941ca77c73d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 560e2ed7cafd1018f4b64ac6d0e45134560082b6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží pro vyrovnávání zatížení Azure
 
@@ -54,7 +54,7 @@ Pokud virtuální počítač je v pořádku, ale nereaguje na sondy, pak jednou 
 3. Pokud stav portu není uvedena jako **NASLOUCHAJÍCÍ**, nakonfigurujte správný port. 
 4. Nebo můžete vybrat jiný port, který je uveden jako **NASLOUCHAJÍCÍ**a aktualizovat konfiguraci nástroje pro vyrovnávání zatížení odpovídajícím způsobem.              
 
-###<a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Příčina 3: Brána Firewall nebo skupinu zabezpečení sítě je blokování port na back-endový fond Vyrovnávání zatížení virtuálních počítačů  
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Příčina 3: Brána Firewall nebo skupinu zabezpečení sítě je blokování port na back-endový fond Vyrovnávání zatížení virtuálních počítačů  
 Pokud brána firewall na virtuálním počítači blokuje port testu nebo jeden nebo více skupin zabezpečení, které jsou nakonfigurované v podsíti nebo na virtuálním počítači sítě, která není umožňují test k dosažení port, virtuální počítač se nemůže reagovat na test stavu.          
 
 **Ověření a řešení**
@@ -131,7 +131,7 @@ Pokud se rozhodnete otevřít případ podpory, shromážděte následující in
 - Použít TCPing z jednoho z back-end virtuálních počítačů v rámci virtuální sítě k otestování portu odpovědi testu (Příklad: pspingu 10.0.0.4:3389) a zaznamenejte výsledky.
 - Pokud je v těchto testech ping žádná odpověď, spusťte souběžných příkazu Netsh trace v back-end virtuálního počítače a virtuální síť testovacího virtuálního počítače při spuštění Pspingu pak Zastavit trasování Netsh. 
   
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud předchozí kroky není problém vyřešit, otevřete [lístek podpory](https://azure.microsoft.com/support/options/).
 

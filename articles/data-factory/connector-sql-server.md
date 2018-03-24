@@ -1,11 +1,11 @@
 ---
-title: "Kopírování dat do nebo ze serveru SQL Server pomocí Azure Data Factory | Microsoft Docs"
-description: "Další informace o tom, jak přesunout data z databáze serveru SQL Server, který je místně nebo v virtuálního počítače Azure pomocí Azure Data Factory."
+title: Kopírování dat do nebo ze serveru SQL Server pomocí Azure Data Factory | Microsoft Docs
+description: Další informace o tom, jak přesunout data z databáze serveru SQL Server, který je místně nebo v virtuálního počítače Azure pomocí Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f46917731ef64290816870b6abd14679dd465211
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b845f3112d96838454653dcd742b950009206bf4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopírování dat z SQL serveru pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -485,9 +485,9 @@ Při kopírování dat z/do systému SQL Server, se používají následující 
 | Binární |Byte[] |
 | Bit |Logická hodnota |
 | Char |Řetězec, Char] |
-| datum |Datum a čas |
-| Datum a čas |Datum a čas |
-| datetime2 |Datum a čas |
+| datum |DateTime |
+| Datum a čas |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte[] |
@@ -501,7 +501,7 @@ Při kopírování dat z/do systému SQL Server, se používají následující 
 | nvarchar |Řetězec, Char] |
 | skutečné |Svobodný/svobodná |
 | ROWVERSION |Byte[] |
-| smalldatetime |Datum a čas |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | Smallmoney |Decimal |
 | sql_variant |Objekt * |

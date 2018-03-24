@@ -1,25 +1,25 @@
 ---
-title: "Místní data brána | Microsoft Docs"
-description: "Bránu místní je nezbytný, pokud váš server služby Analysis Services v Azure se připojí k místní datové zdroje."
+title: Místní data brána | Microsoft Docs
+description: Bránu místní je nezbytný, pokud váš server služby Analysis Services v Azure se připojí k místní datové zdroje.
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: cd596155-b608-4a34-935e-e45c95d884a9
 ms.service: analysis-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/02/2018
+ms.date: 03/19/2018
 ms.author: owend
-ms.openlocfilehash: a0af2e0448d8ce991c9bcc138d6132d216715768
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 2bb85eafc7722840b6a35956403c29d4ac642cc1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Připojení k místní zdroje dat s Azure místní brány dat
 Místní data brána funguje jako mostu, zajištění zabezpečených dat přenos mezi místní zdroje dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery Azure Analysis Services ve stejné oblasti, nejnovější verzi brány taky spolupracuje se službou Azure Logic Apps, Power BI, Power aplikace a Flow společnosti Microsoft. S jednou bránou můžete přidružit více služeb ve stejné oblasti. 
@@ -36,7 +36,7 @@ Získání Instalační program s bránou prvním je proces, který sestávajíc
 
 Pokud chcete začít hned, najdete v části [nainstalujte a nakonfigurujte místní brána dat](analysis-services-gateway-install.md).
 
-## <a name="how-it-works"></a>Jak to funguje
+## <a name="how-it-works"> </a>Jak to funguje
 Brána je nainstalujte do počítače ve vaší organizaci používá jako služby systému Windows, **místní brána dat**. Tato místní služba není zaregistrována cloudové službě brány přes Azure Service Bus. Pak vytvořte prostředek brány cloudové službě brány pro vaše předplatné Azure. Vaše servery Azure Analysis Services jsou připojena k vaší brány prostředku. Při modely na serveru je nutné se připojit k místním datům zdroje pro dotazy nebo zpracování, prochází přes prostředek brány, Azure Service Bus, místní služba brány dat a zdroje dat dotazu a datový tok. 
 
 ![Jak to funguje](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
@@ -50,18 +50,18 @@ Tok dotazy a data:
 5. Brána odešle dotaz na zdroj dat pro spuštění.
 6. Výsledky jsou odesílány ze zdroje dat zpět na bránu a pak do cloudové služby a vaším serverem.
 
-## <a name="windows-service-account"></a>Účtu služby systému Windows
+## <a name="windows-service-account"> </a>Účet služby systému Windows
 Místní brána dat je nakonfigurován pro použití *NT SERVICE\PBIEgwService* pro přihlašovací pověření služby systému Windows. Ve výchozím nastavení má právo přihlášení jako služba; v kontextu na počítač, který instalujete na bránu. Tento přihlašovací údaj není stejný účet používaný pro připojení k místním zdrojům dat nebo účtu Azure.  
 
 Pokud narazíte na potíže s proxy serveru z důvodu ověřování, můžete změnit účet služby systému Windows na uživatele domény nebo účet spravované služby.
 
-## <a name="ports"></a>Porty
+## <a name="ports"> </a>Porty
 Brána vytvoří odchozí připojení k Azure Service Bus. Komunikuje na odchozí porty: TCP 443 (výchozí), 5671, 5672, 9350 prostřednictvím 9354.  Brána nevyžaduje příchozí porty.
 
 Doporučujeme povolených IP adres pro vaši oblast dat v bráně firewall. Si můžete stáhnout [seznamu Microsoft Azure Datacenter IP](https://www.microsoft.com/download/details.aspx?id=41653). Tento seznam je aktualizovaný týdně.
 
 > [!NOTE]
-> V notaci CIDR, jsou uvedené v seznamu IP Datacentra Azure IP adresy. Například 10.0.0.0/24 neznamená 10.0.0.0 prostřednictvím 10.0.0.24. Další informace o [notaci CIDR](http://whatismyipaddress.com/cidr).
+> V notaci CIDR, jsou uvedené v seznamu IP Datacentra Azure IP adresy. Další informace najdete v tématu [směrování mezi doménami](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 >
 >
 
@@ -141,7 +141,7 @@ Můžete aplikaci Azure rychlost testovací nástroj třetí strany ke měřidla
 **Q**: co je výhodou obnovovací klíč? <br/>
 **A**: obnovovací klíč poskytuje způsob, jak migrovat nebo obnovení po havárii nastavení brány.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"> </a>Řešení potíží
 
 **Q**: Proč nevidím moje brány v seznamu instancí brány při pokusu o vytvoření prostředku brány v Azure? <br/>
 **A**: existují dvě možné příčiny. Nejprve je že již vytvořen prostředek pro bránu v aktuální nebo některé jiné předplatné. Pokud chcete odstranit tuto možnost, provést výčet prostředků typu **místní brány Data Gateways** z portálu. Ujistěte se, že při vytváření výčtu všechny prostředky, vyberte všechny odběry. Po vytvoření prostředku brány se nezobrazí v seznamu instancí brány v prostředí portálu vytvořit prostředek brány. Druhá možnost je, že Azure AD identity uživatele, který bránu nainstalovali, se liší od uživateli přihlášení k portálu Azure. Chcete-li vyřešit, přihlaste se k portálu pomocí stejného účtu jako uživatel, který bránu nainstalovali.

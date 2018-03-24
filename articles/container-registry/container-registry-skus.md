@@ -1,18 +1,18 @@
 ---
 title: Kontejner Azure registru SKU
-description: "Porovnejte různých úrovních služby dostupné v registru kontejner Azure."
+description: Porovnejte různých úrovních služby dostupné v registru kontejner Azure.
 services: container-registry
 author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: 15179fa3e3567f92a5eae69ba9a684addc3138dd
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c9b8e072b5ccd89c27d9c46407e472d6bf1e1e84
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-container-registry-skus"></a>Kontejner Azure registru SKU
 
@@ -37,11 +37,11 @@ Basic, Standard a Premium SKU se souhrnně označují jako *spravované* registr
 
 ### <a name="managed-basic-standard-premium"></a>Spravované (Basic, Standard, Premium)
 
-Spravované registrech jsou zajišťované účtu Azure Storage, který spravuje Azure. To znamená, že účet úložiště, který ukládá obrázků nezobrazí v rámci vašeho předplatného Azure. Existuje více výhod získaných pomocí jedné z registru spravované SKU, popsané podrobný v [Upgrade Classic registru][container-registry-upgrade]. Tento článek se zaměřuje na spravované registru SKU a jejich možnosti.
+Spravovat registrech benefit z úložiště image kompletně spravované službou Azure. To znamená účet úložiště, který ukládá obrázků nezobrazí v rámci vašeho předplatného Azure. Existuje více výhod získaných pomocí jedné z registru spravované SKU, popsané podrobný v [kontejneru úložiště bitové kopie v registru kontejner Azure][container-registry-storage]. Tento článek se zaměřuje na spravované registru SKU a jejich možnosti.
 
 ### <a name="unmanaged-classic"></a>Nespravované (klasické)
 
-Classic registrech jsou "nespravované" v tom smyslu, že účet úložiště, který zálohuje Classic registru se nachází v rámci *vaše* předplatného Azure. Jako takový jste zodpovědní za správu účtu úložiště, ve kterém jsou uloženy vaše Image kontejneru. S nespravované registrech, nelze přepnout mezi SKU podle potřeby (jiné než [upgrade] [ container-registry-upgrade] spravované registru), a několik funkce spravované registrech nejsou k dispozici (například) Odstranění obrázku kontejneru, [geografická replikace] [ container-registry-geo-replication] a [webhooky][container-registry-webhook]).
+Classic registrech jsou "nespravované" v tom smyslu, že účet úložiště, který zálohuje Classic registru se nachází v rámci *vaše* předplatného Azure. Jako takový jste zodpovědní za správu účtu úložiště, ve kterém jsou uloženy vaše Image kontejneru. S nespravované registrech, nelze přepnout mezi SKU podle potřeby (jiné než [upgrade] [ container-registry-upgrade] spravované registru), a několik funkce spravované registrech nejsou k dispozici (například) Odstranění obrázku kontejneru, [geografická replikace][container-registry-geo-replication], a [webhooky][container-registry-webhook]).
 
 Další informace o upgradu na jednu z spravované SKU Classic registru najdete v tématu [Upgrade Classic registru][container-registry-upgrade].
 
@@ -81,7 +81,7 @@ Podrobnosti týkající se upgradu vaší Classic registru na jednu z spravovan�
 
 Informace o cenách ve všech SKU registru kontejner Azure, najdete v části [ceny kontejneru registru][container-registry-pricing].
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 **Kontejner Azure registru plán**
 
@@ -103,4 +103,5 @@ Odeslání a hlasovat o nové funkce návrhů v [ACR UserVoice][container-regist
 [az-acr-update]: /cli/azure/acr#az_acr_update
 [container-registry-geo-replication]: container-registry-geo-replication.md
 [container-registry-upgrade]: container-registry-upgrade.md
+[container-registry-storage]: container-registry-storage.md
 [container-registry-webhook]: container-registry-webhook.md

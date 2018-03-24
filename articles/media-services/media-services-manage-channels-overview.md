@@ -1,26 +1,30 @@
 ---
-title: "Přehled živé streamování využívající Azure Media Services | Microsoft Docs"
-description: "Toto téma poskytuje přehled živé streamování využívající Azure Media Services."
+title: Přehled živé streamování využívající Azure Media Services | Microsoft Docs
+description: Toto téma poskytuje přehled živé streamování využívající Azure Media Services.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 6f500f25129470a679c75cae6cd1abc9d71b72a7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 451513c364978348eba922f5cf42b6e6c79f8700
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Přehled živé streamování využívající Azure Media Services
+
+> [!NOTE]
+> Od 12 může 2018 za provozu kanály se už podporu datový proud RTP/MPEG-2 transport ingestování. Proveďte prosím migraci z RTP/MPEG-2 RTMP nebo fragmentovaných MP4 (technologie Smooth Streaming) ingestování protokoly.
+
 ## <a name="overview"></a>Přehled
 Při doručování živě streamovaných událostí pomocí služby Azure Media Services se běžně podílejí následující komponenty:
 
@@ -64,9 +68,9 @@ Následující tabulka poskytuje vodítko k porovnání dvou kanál typy podporo
 | --- | --- | --- |
 | Jednou přenosovou rychlostí vstup je zakódován do více přenosových rychlostí v cloudu |Ne |Ano |
 | Maximální rozlišení, počet vrstev |1080p, 8 vrstvy 60 + snímků za sekundu |720p, 6 vrstev, 30 snímků za sekundu |
-| Vstupní protokoly |RTMP funkce Smooth Streaming |RTMP, technologie Smooth Streaming a protokol RTP |
+| Vstupní protokoly |RTMP, Smooth Streaming |RTMP, technologie Smooth Streaming a protokol RTP |
 | Cena |Najdete v článku [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu "Live Video" |Najdete v článku [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) |
-| Maximální doba běhu |24 x 7 |8 hodin |
+| Maximální doba běhu |Nepřetržitě |8 hodin |
 | Podpora pro vkládání slaty |Ne |Ano |
 | Podpora pro signalizace ad |Ne |Ano |
 | Průchozí CEA 608/708 titulky |Ano |Ano |
@@ -134,7 +138,7 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 | Stav kanálu | Indikátory v uživatelském rozhraní portálu | Je fakturace? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Běžící (Spuštěno) |Připraveno (žádný běžící program)<br/>nebo<br/>Streamování (nejméně jeden běžící program) |ANO |
+| Spuštěno |Připraveno (žádný běžící program)<br/>nebo<br/>Streamování (nejméně jeden běžící program) |ANO |
 | Zastavování |Zastavování |Ne (přechodný stav) |
 | Zastaveno |Zastaveno |Ne |
 

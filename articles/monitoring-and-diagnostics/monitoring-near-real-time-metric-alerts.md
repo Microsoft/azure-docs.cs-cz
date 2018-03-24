@@ -1,12 +1,12 @@
 ---
-title: "Téměř v reálném čase metriky výstrah v monitorování Azure | Microsoft Docs"
-description: "Další informace o použití téměř v reálném čase metriky výstrahy monitorovat metriky prostředků Azure s frekvencí co 1 minuta."
+title: Téměř v reálném čase metriky výstrah v monitorování Azure | Microsoft Docs
+description: Další informace o použití téměř v reálném čase metriky výstrahy monitorovat metriky prostředků Azure s frekvencí co 1 minuta.
 author: snehithm
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,59 +14,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: snmuvva, vinagara
-ms.custom: 
-ms.openlocfilehash: 88995b1f3350fe485e28efccc93779ae0a42eb97
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.custom: ''
+ms.openlocfilehash: 15b9b0b69f3805b3e3af1d3973fd3a77bea62ab9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="near-real-time-metric-alerts-preview"></a>Téměř v reálném čase metriky výstrahy (preview)
-Azure monitorování podporuje nové výstrahy typu s názvem téměř v reálném čase metriky výstrahy (preview). Tato funkce je aktuálně ve verzi public preview.
+# <a name="use-the-newer-metric-alerts-for-azure-services-in-azure-portal"></a>Použít novější metriky výstrahy pro služby Azure na portálu Azure
+Azure monitorování podporuje nové výstrahy typu s názvem téměř v reálném čase metriky výstrahy. 
 
-Téměř v reálném čase metrika výstrahy se liší od regulární metriky výstrahy několika způsoby:
+Téměř v reálném čase metrika výstrahy se liší od [classic metriky výstrahy](insights-alerts-portal.md) několika způsoby:
 
-- **Vylepšené latence**: téměř v reálném čase metrika výstrah můžete sledovat změny v metriky hodnoty s frekvencí malá jako jednu minutu.
+- **Vylepšené latence**: téměř v reálném čase metrika výstrahy můžete spustit často každou minutu. Starší metriky výstrahy vždy spustit v intervalu 5 minut.
+- **Podpora pro multidimenzionální metriky**: můžete výstrahy na dimenzí metriky, které umožňuje sledovat segment zajímavé metriky.
 - **Větší kontrolu nad metriky podmínky**: můžete definovat bohatší pravidla výstrah v téměř v reálném čase metriky výstrahy. Výstrahy podporovat monitorování maximální, minimální, průměrná a celkové hodnoty metrik.
-- **Metriky z protokolů**: Z oblíbených protokolu dat pocházejících do [analýzy protokolů](../log-analytics/log-analytics-overview.md), metriky lze extrahovat do Azure monitorování a upozorněni na téměř v reálném čase
 - **Kombinaci monitorování více metrik**: téměř v reálném čase metrika výstrah můžete sledovat více metriky (v současné době až dvě metriky) s jedním pravidlem. Výstraha se spustí, pokud obě metriky narušit jejich příslušné prahové hodnoty pro zadané časové období.
 - **Modulární oznámení systému**: téměř v reálném čase metrika výstrahy použít [skupiny akcí](monitoring-action-groups.md). Akce skupiny slouží k vytvoření modulární akce. Akce skupiny pro více pravidla výstrah můžete znovu použít.
+- **Metriky z protokolů**: Z oblíbených protokolu dat pocházejících do [analýzy protokolů](../log-analytics/log-analytics-overview.md), metriky lze extrahovat do Azure monitorování a upozorněni na téměř v reálném čase.
 
-> [!NOTE]
-> Near v reálném čase metriky výstraha je aktuálně je ve verzi public preview. A metriky využívá funkce, které protokoly jsou v *omezené* verzi public preview. Funkce a uživatelské prostředí je mohou podléhat změnám.
->
 
 ## <a name="metrics-and-dimensions-supported"></a>Metriky a dimenze podporována
 Téměř v reálném čase metriky výstrahy podporují generování výstrah pro metriky, které používají dimenze. Dimenze můžete použít k filtrování vaší metrika se používá k správnou úroveň. Všechny podporované metriky společně s příslušné dimenze můžete prozkoumali a vizualizována z [monitorování Azure – metriky Explorer (Preview)](monitoring-metric-charts.md).
 
 Tady je úplný seznam Azure monitorování na základě metriky zdroje, které jsou podporovány pro téměř v reálném čase metriky výstrahy:
 
-|Název metriky/podrobnosti  |Dimenze podporována  |
-|---------|---------|
-|Microsoft.ApiManagement/service     | Ano        |
-|Microsoft.Automation/automationAccounts     |     neuvedeno    |
-|Microsoft.Automation/automationAccounts     |   neuvedeno      |
-|Microsoft.Cache/Redis     |    neuvedeno     |
-|Microsoft.Compute/virtualMachines     |    neuvedeno     |
-|Microsoft.Compute/virtualMachineScaleSets     |   neuvedeno      |
-|Microsoft.DataFactory/factories     |   neuvedeno      |
-|Microsoft.DBforMySQL/servers     |   neuvedeno      |
-|Microsoft.DBforPostgreSQL/servers     |    neuvedeno     |
-|Microsoft.EventHub/namespaces     |   neuvedeno      |
-|Microsoft.Logic/workflows     |     neuvedeno    |
-|Microsoft.Network/applicationGateways     |    neuvedeno     |
-|Microsoft.Network/publicipaddresses     |  neuvedeno       |
-|Microsoft.Search/searchServices     |   neuvedeno      |
-|Microsoft.ServiceBus/namespaces     |  neuvedeno       |
-|Microsoft.Storage/storageAccounts.     |    Ano     |
-|Microsoft.Storage/storageAccounts/services     |     Ano    |
-|Microsoft.StreamAnalytics/streamingjobs     |  neuvedeno       |
-|Microsoft.CognitiveServices/accounts     |    neuvedeno     |
+|Typ prostředku  |Dimenze podporována  | Metriky, které jsou k dispozici|
+|---------|---------|----------------|
+|Microsoft.ApiManagement/service     | Ano        | [API Management](monitoring-supported-metrics.md#microsoftapimanagementservice)|
+|Microsoft.Automation/automationAccounts     |     Ano   | [Účty Automation](monitoring-supported-metrics.md#microsoftautomationautomationaccounts)|
+|Microsoft.Batch/batchAccounts | neuvedeno| [Účty batch](monitoring-supported-metrics.md#microsoftbatchbatchaccounts)|
+|Microsoft.Cache/Redis     |    neuvedeno     |[Redis Cache](monitoring-supported-metrics.md#microsoftcacheredis)|
+|Microsoft.Compute/virtualMachines     |    neuvedeno     | [Virtual Machines](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)|
+|Microsoft.Compute/virtualMachineScaleSets     |   neuvedeno      |[Sady škálování virtuálního počítače](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.DataFactory/factories     |   Ano     |[Data Factory V2](monitoring-supported-metrics.md#microsoftdatafactoryfactories)|
+|Microsoft.DBforMySQL/servers     |   neuvedeno      |[Databáze pro databázi MySQL](monitoring-supported-metrics.md#microsoftdbformysqlservers)|
+|Microsoft.DBforPostgreSQL/servers     |    neuvedeno     | [DB pro PostgreSQL](monitoring-supported-metrics.md#microsoftdbforpostgresqlservers)|
+|Microsoft.EventHub/namespaces     |  Ano      |[Event Hubs](monitoring-supported-metrics.md#microsofteventhubnamespaces)|
+|Microsoft.Logic/workflows     |     neuvedeno    |[Logic Apps](monitoring-supported-metrics.md#microsoftlogicworkflows) |
+|Microsoft.Network/applicationGateways     |    neuvedeno     | [Application Gateway](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
+|Microsoft.Network/publicipaddresses     |  neuvedeno       |[Veřejná IP adresa Addreses](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
+|Microsoft.Search/searchServices     |   neuvedeno      |[Služby vyhledávání](monitoring-supported-metrics.md#microsoftsearchsearchservices)|
+|Microsoft.ServiceBus/namespaces     |  Ano       |[Service Bus](monitoring-supported-metrics.md#microsoftservicebusnamespaces)|
+|Microsoft.Storage/storageAccounts.     |    Ano     | [Účty úložiště](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|
+|Microsoft.Storage/storageAccounts/services     |     Ano    | [Objekt BLOB služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [pro služby souborového](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [fronty služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) a [tabulky služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
+|Microsoft.StreamAnalytics/streamingjobs     |  neuvedeno       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
+|Microsoft.CognitiveServices/accounts     |    neuvedeno     | [Cognitive Services](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|
+|Microsoft.OperationalInsights/workspaces (Preview) | Ano|[Pracovní prostory analýzy protokolů](#support-for-oms-logs-as-metrics-for-alerting)|
 
 
-Metriky z protokolů, v současné době podporuje následující protokoly OMS oblíbených:
+## <a name="create-a-newer-metric-alert"></a>Vytvořit výstrahu pro novější metriky
+V současné době můžete vytvořit novější metriky výstrahy pouze v portálu Azure nebo REST API. Podpora pro konfiguraci téměř v reálném čase metriky výstrah pomocí prostředí PowerShell, rozhraní příkazového řádku Azure (Azure CLI) bude brzo.
+
+Naučte se vytvářet upozornění na novější metriky na portálu Azure, najdete v tématu [vytvořit pravidlo výstrahy na portálu Azure](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal).
+
+## <a name="manage-newer-metric-alerts"></a>Správa novější metriky výstrah
+Po vytvoření metriky upozornění na near v reálném čase, výstrahy můžete spravovat pomocí kroků popsaných v [oznámení na portálu Azure spravovat](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal).
+
+## <a name="support-for-oms-logs-as-metrics-for-alerting"></a>Podpora pro protokoly OMS jako metriky pro výstrahy
+
+Můžete také použít téměř v reálném čase metriky výstrahy na oblíbených protokoly OMS extrahovat jako metriky jako součást metriky z verze Preview protokoly.  
 - [Čítače výkonu](../log-analytics/log-analytics-data-sources-performance-counters.md) pro počítače s Windows a Linux
-- Záznamy prezenčního signálu pro počítače
+- [Záznamy prezenčního signálu pro stav agenta](../operations-management-suite/oms-solution-agenthealth.md)
 - [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md) záznamů
 
 Tady je úplný seznam na základě protokolu OMS metriky se zdroje, které jsou podporovány pro téměř v reálném čase metriky výstrahy:
@@ -143,17 +152,8 @@ Název metriky/podrobnosti  |Dimenze podporována  | Typ protokolu  |
 |    Aktualizace |     Ano – počítače, produktů, klasifikace, UpdateState, volitelné & schválené    |   Update Management |
 
 > [!NOTE]
-> Konkrétní metrika nebo dimenze se zobrazí pouze pokud data pro něj existuje ve zvolené období
+> Konkrétní metrika nebo dimenze se zobrazí pouze pokud data pro něj existuje ve zvolené období. Tyto metriky jsou dostupné pro zákazníky s nimi ve východní USA, západní centrální USA a západní Evropa, kteří zvolili možnosti ve verzi preview. Pokud chcete být součástí této verze preview, zaregistrujte se pomocí [zjišťování](https://aka.ms/MetricLogPreview).
 
-## <a name="create-a-near-real-time-metric-alert"></a>Vytvořit výstrahu metriky near v reálném čase
-V současné době můžete vytvořit téměř v reálném čase metriky výstrahy pouze na portálu Azure. Podpora konfigurace téměř v reálném čase metriky výstrah pomocí prostředí PowerShell, rozhraní příkazového řádku Azure (Azure CLI) a rozhraní API REST Azure monitorování tu bude brzo dostupná.
-
-Prostředí pro vytváření near v reálném čase metriky výstraha se přesunul do nového **výstrahy (Preview)** stránky. I v případě, že stránka zobrazuje aktuální výstrahy **přidat téměř v reálném čase metrika výstraha**, budete přesměrováni na **výstrahy (Preview)** stránky.
-
-Další postup vytvoření metriky upozornění na near v reálném čase najdete v tématu [vytvořit pravidlo výstrahy na portálu Azure](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal).
-
-## <a name="manage-near-real-time-metric-alerts"></a>Spravovat téměř v reálném čase metriky výstrahy
-Po vytvoření metriky upozornění na near v reálném čase, výstrahy můžete spravovat pomocí kroků popsaných v [oznámení na portálu Azure spravovat](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal).
 
 ## <a name="payload-schema"></a>Datová část schématu
 
@@ -209,6 +209,6 @@ Operaci POST obsahuje následující datové části JSON a schématu pro všech
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o nové [výstrahy (Preview) prostředí](monitoring-overview-unified-alerts.md).
-* Další informace o [protokolu výstrahy ve výstrahách Azure (Preview)](monitor-alerts-unified-log.md).
+* Další informace o nové [výstrahy prostředí](monitoring-overview-unified-alerts.md).
+* Další informace o [protokolu výstrahy v Azure](monitor-alerts-unified-log.md).
 * Další informace o [výstrahy v Azure](monitoring-overview-alerts.md).

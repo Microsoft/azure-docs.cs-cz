@@ -1,24 +1,24 @@
 ---
-title: "Konektor historie verzí | Microsoft Docs"
-description: "Toto téma uvádí všechny verze konektorů pro Forefront Identity Manager (FIM) a Microsoft Identity Manager (MIM)"
+title: Konektor historie verzí | Microsoft Docs
+description: Toto téma uvádí všechny verze konektorů pro Forefront Identity Manager (FIM) a Microsoft Identity Manager (MIM)
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6a0c66ab-55df-4669-a0c7-1fe1a091a7f9
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2017
-ms.author: billmath
-ms.openlocfilehash: 5b43284a86a7e5d4cdbf50a29d73f970c9ad9d58
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.date: 03/22/2018
+ms.author: davidste
+ms.openlocfilehash: 5b13338646abda7eefec44c42dc0159e9338adfa
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connector-version-release-history"></a>Historie vydaných verzí konektoru
 Konektory pro Forefront Identity Manager (FIM) a Microsoft Identity Manager (MIM) jsou často aktualizuje.
@@ -34,9 +34,26 @@ Související odkazy:
 * [Stáhněte si nejnovější konektory](http://go.microsoft.com/fwlink/?LinkId=717495)
 * [Obecné konektor LDAP](active-directory-aadconnectsync-connector-genericldap.md) referenční dokumentace
 * [Obecné konektor SQL](active-directory-aadconnectsync-connector-genericsql.md) referenční dokumentace
-* [Web Services Connector](http://go.microsoft.com/fwlink/?LinkID=226245) referenční dokumentace
+* [Web Services Connector](https://docs.microsoft.com/en-us/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws) referenční dokumentace
 * [PowerShell Connector](active-directory-aadconnectsync-connector-powershell.md) referenční dokumentace
 * [Konektoru Lotus Domino](active-directory-aadconnectsync-connector-domino.md) referenční dokumentace
+
+
+## <a name="118300"></a>1.1.830.0
+
+### <a name="fixed-issues"></a>Opravené problémy:
+* Vyřešený System.Diagnostics.EventLogInternal.InternalWriteEvent(Message: A device attached to the system is not functioning) ConnectorsLog
+* V této verzi konektorů budete muset aktualizovat přesměrování vazeb z 3.3.0.0-4.1.3.0 na 4.1.4.0 v miiserver.exe.config
+* Obecné webové služby:
+    * Vyřešený platný kód JSON odpovědi nebylo možné uložit v konfiguračním nástroji služby
+* Obecné SQL:
+    * Export vždy vygeneruje pouze aktualizace dotaz pro operaci odstranění. Přidat ke generování dotazu odstranění
+    * Příkaz jazyka SQL, který získá objekty pro operaci rozdílový Import, pokud 'Rozdílů strategie' je sledování změn byla opravena. V této implementaci známá omezení: rozdílový Import s režimem sledování změn není sledovat změny v více hodnot atributů
+    * Přidání možnosti ke generování dotazu delete pro případ, když je potřeba odstranit poslední hodnotu z vícehodnotového atributu a tento řádek neobsahuje žádná data kromě hodnotu, která je potřeba odstranit.
+    * Při zpracování System.ArgumentException implementována výstupní parametry podle SP 
+    * Nesprávný dotazu proveďte operaci exportu do pole, která má typ varbinary(max)
+    * Problém s proměnnou parameterList byl inicializován dvakrát (v funkce ExportAttributes a GetQueryForMultiValue)
+
 
 ## <a name="116490-aadconnect-116490"></a>1.1.649.0 (AADConnect 1.1.649.0)
 
@@ -79,7 +96,9 @@ Související odkazy:
 * Obecné webové služby:
   * Nástroj Wsconfig nepřevádět správně pole Json z "Ukázková žádost" pro metodu služby REST. Příčinou problémů s serializace toto pole Json pro požadavek REST.
   * Webové služby konektoru konfigurační nástroj nepodporuje názvy atributů JSON využití místa symbolů 
-    * Vzor nahrazení lze přidat ručně soubor WSConfigTool.exe.config, například```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+    * Vzor nahrazení lze přidat ručně soubor WSConfigTool.exe.config, například ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+> [!NOTE]
+> JSONSpaceNamePattern klíč je požadován, jak exportovat zobrazí následující chybová zpráva: zpráva: prázdný název není platný. 
 
 * Lotus Notes:
   * Pokud možnost **povolit vlastní udělení licence certifikátorům pro organizace nebo organizační jednotky** je po exportu toku Domino, ale v době exportu, exportují se všechny atributy zakázán konektoru selže při exportu (Update) KeyNotFoundException dochází k synchronizaci. 

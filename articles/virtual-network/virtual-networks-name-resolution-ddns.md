@@ -1,11 +1,11 @@
 ---
-title: "Pomocí dynamického DNS k registraci názvů hostitelů"
-description: "Tato stránka obsahuje údaje o tom, jak nastavit dynamického DNS zaregistrovat názvy hostitelů na serverech DNS."
+title: Pomocí dynamického DNS k registraci názvů hostitelů
+description: Tato stránka obsahuje údaje o tom, jak nastavit dynamického DNS zaregistrovat názvy hostitelů na serverech DNS.
 services: dns
 documentationcenter: na
 author: GarethBradshawMSFT
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c315961a-fa33-45cf-82b9-4551e70d32dd
 ms.service: dns
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: garbrad
-ms.openlocfilehash: 440a062e5fff73526b2d77d7d0a7c52ca72a66f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d62c40bfc909915fa222db12413634aa7ce7158
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Pomocí dynamického DNS zaregistrovat názvy hostitelů na serveru DNS
 [Azure poskytuje překlad](virtual-networks-name-resolution-for-vms-and-role-instances.md) pro virtuální počítače (VM) a instancí rolí. Ale pokud vaše překlad musí přejít nad rámec těch, které poskytuje Azure, můžete zadat vlastní servery DNS. To vám umožňuje přizpůsobit řešení DNS tak, aby odpovídal vašim požadavkům. Potřebujete například přístup k místním prostředkům prostřednictvím řadiči domény služby Active Directory.
@@ -26,14 +26,14 @@ ms.lasthandoff: 10/11/2017
 Pokud vaše vlastní servery DNS jsou hostované jako virtuální počítače Azure může předat dotazy název hostitele pro stejnou virtuální síť Azure přeložit názvy hostitelů. Pokud nechcete použít tuto trasu, můžete zaregistrovat vaše názvy hostitelů virtuálních počítačů v serveru DNS pomocí dynamického DNS.  Azure nemá možnost (například přihlašovací údaje), jsou často potřeba alternativní uspořádání přímo vytvářet záznamy v vaše servery DNS. Tady jsou některé běžné scénáře s alternativy.
 
 ## <a name="windows-clients"></a>Klienti systému Windows
-Klienty připojené k jiné doméně systému Windows pokus zabezpečená aktualizace dynamického DNS (DDNS), když se budou spouštět nebo když se změní své IP adresy. Název DNS je název hostitele a primární příponu DNS. Azure zůstane prázdné primární příponu DNS, ale můžete tuto nastavit ve virtuálním počítači, pomocí [uživatelského rozhraní](https://technet.microsoft.com/library/cc794784.aspx) nebo [pomocí automatizace](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix).
+Klienty připojené k jiné doméně systému Windows pokus zabezpečená aktualizace dynamického DNS (DDNS), když se budou spouštět nebo když se změní své IP adresy. Název DNS je název hostitele a primární příponu DNS. Azure zůstane prázdné primární příponu DNS, ale můžete tuto nastavit ve virtuálním počítači, pomocí [uživatelského rozhraní](https://technet.microsoft.com/library/cc794784.aspx) nebo [s použitím automatizace popsané tady](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix).
 
 Klienty připojené k doméně systému Windows registrovat IP adresy s řadičem domény pomocí zabezpečené dynamické DNS. Proces připojení k doméně nastaví primární příponu DNS na straně klienta a vytvoří a udržuje vztah důvěryhodnosti.
 
 ## <a name="linux-clients"></a>Klienti Linux
 Klienti Linux obecně není zaregistrovat na serveru DNS při spuštění, se předpokládá, že DHCP server dělá. Servery DHCP Azure nemají možnost nebo přihlašovací údaje, o registraci záznamů v serveru DNS.  Můžete použít nástroj nazvaný *nsupdate*, který je součástí balíčku vazby, k odeslání DNS dynamické aktualizace. Protože protokol dynamického DNS je standardizovaný, můžete použít *nsupdate* i když nepoužíváte vazby na serveru DNS.
 
-Můžete použít háky, které jsou k dispozici klientem DHCP pro vytváření a údržbu položka názvu hostitele v serveru DNS. Během cyklu DHCP, klient spustí skripty v */etc/dhcp/dhclient-exit-hooks.d/*. To slouží k registraci novou IP adresu pomocí *nsupdate*. Například:
+Můžete použít háky, které jsou k dispozici klientem DHCP pro vytváření a údržbu položka názvu hostitele v serveru DNS. Během cyklu DHCP, klient spustí skripty v */etc/dhcp/dhclient-exit-hooks.d/*. To slouží k registraci novou IP adresu pomocí *nsupdate*. Příklad:
 
         #!/bin/sh
         requireddomain=mydomain.local

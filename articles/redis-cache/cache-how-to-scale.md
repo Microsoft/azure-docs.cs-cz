@@ -1,11 +1,11 @@
 ---
-title: "Postup škálování Azure Redis Cache | Microsoft Docs"
-description: "Zjistěte, jak se škálovat vaše instance služby Azure Redis Cache"
+title: Postup škálování Azure Redis Cache | Microsoft Docs
+description: Zjistěte, jak se škálovat vaše instance služby Azure Redis Cache
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 350db214-3b7c-4877-bd43-fef6df2db96c
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: b0a9208681b164fe7be33bf9ef5f635358284ba3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0cf0e41fe03bf3be7ecf2172cff3e6ab5f3eb65d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Postup škálování Azure Redis Cache
 Azure Redis Cache má jiný mezipaměti nabídky, které poskytují flexibilitu při výběru velikost mezipaměti a funkce. Po vytvoření mezipaměti je možné škálovat na velikost a cenovou úroveň mezipaměti, pokud se změní požadavky vaší aplikace. Tento článek ukazuje, jak se škálovat mezipaměti pomocí portálu Azure a nástroje, jako je Azure PowerShell a rozhraní příkazového řádku Azure.
@@ -111,6 +111,7 @@ Následující seznam obsahuje odpovědi na nejčastější dotazy o škálován
 * [Bude možné ztrátě dat z mé mezipaměti při škálování?](#will-i-lose-data-from-my-cache-during-scaling)
 * [Je databází. vlastní nastavení ovlivněných během změny měřítka?](#is-my-custom-databases-setting-affected-during-scaling)
 * [Moje mezipaměti bude k dispozici během změny měřítka?](#will-my-cache-be-available-during-scaling)
+* [S geografickou replikací, nakonfigurovali, Proč nemohu škálování Moje mezipaměti nebo změňte horizontálních oddílů v clusteru?](#scaling-limitations-with-geo-relication)
 * [Operace, které nejsou podporovány](#operations-that-are-not-supported)
 * [Jak dlouho škálování trvá?](#how-long-does-scaling-take)
 * [Jak poznám, škálování po dokončení?](#how-can-i-tell-when-scaling-is-complete)
@@ -151,6 +152,12 @@ I když Standard a Premium mezipamětí má SLA 99,9 % dostupnosti, není žádn
 * **Standardní** a **Premium** mezipamětí zůstanou dostupné během operace škálování. Ale blips připojení situace může nastat při škálování Standard a Premium mezipaměti a také při škálování ze základní standardní mezipamětí. Očekávány malé blips těchto připojení a klientů redis musí být schopen okamžitě znovu vytvořit připojení.
 * **Základní** mezipamětí jsou offline během změny měřítka na jinou velikost operací. Základní mezipamětí zůstanou dostupné, když škálování z **základní** k **standardní** ale může dojít k blip malé připojení. Pokud dojde k připojení blip, klienti redis byste měli mít okamžitě znovu navázat připojení.
 
+
+### <a name="scaling-limitations-with-geo-relication"></a>Omezení s relication geografické škálování
+
+Po přidání geografická replikace propojení mezi dvěma mezipamětí, budete moci zahájit škálování operaci nebo změňte počet horizontálních oddílů v clusteru. Je nutné zrušit mezipaměti vystavit tyto příkazy. Další informace najdete v tématu [geografická replikace konfigurovat](cache-how-to-geo-replication.md).
+
+
 ### <a name="operations-that-are-not-supported"></a>Operace, které nejsou podporovány
 * Z používat vyšší cenová úroveň je nelze škálovat na nižší cenovou úroveň.
   * Nelze škálovat od **Premium** dolů do mezipaměti **standardní** nebo **základní** mezipaměti.
@@ -160,6 +167,7 @@ I když Standard a Premium mezipamětí má SLA 99,9 % dostupnosti, není žádn
 * Nelze škálovat z větší velikost dolů na **C0 (250 MB)** velikost.
 
 Pokud škálování operace selže, služba se pokusí vrátit operaci a mezipaměti se vrátí k původní velikost.
+
 
 ### <a name="how-long-does-scaling-take"></a>Jak dlouho škálování trvá?
 Škálování trvá přibližně 20 minut v závislosti na tom, kolik dat je v mezipaměti.

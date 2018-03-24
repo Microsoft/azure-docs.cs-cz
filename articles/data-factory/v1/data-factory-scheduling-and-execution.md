@@ -1,11 +1,10 @@
 ---
-title: "Plánování a provádění pomocí služby Data Factory | Microsoft Docs"
-description: "Další aspekty plánování a provádění aplikačního modelu služby Azure Data Factory."
+title: Plánování a provádění pomocí služby Data Factory | Microsoft Docs
+description: Další aspekty plánování a provádění aplikačního modelu služby Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 088a83df-4d1b-4ac1-afb3-0787a9bd1ca5
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a729b38b2fc0b8ef759037976753e0030557a6fa
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 58274b2255de13efaa1fba8af8beff7b7b59f7a8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory plánování a provádění
 > [!NOTE]
@@ -185,13 +184,13 @@ Jste viděli využití frekvence a intervalu vlastností v části dostupnosti d
 ### <a name="dataset-availability"></a>Datovou sadu dostupnosti 
 Následující tabulka popisuje vlastnosti, které můžete použít v **dostupnosti** části:
 
-| Vlastnost | Popis | Požadováno | Výchozí |
+| Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
-| frequency |Určuje časovou jednotku pro produkční řez datovou sadu.<br/><br/><b>Podporované frekvence</b>: minutu, hodinu, den, týden, měsíc |Ano |není k dispozici |
-| interval |Určuje multiplikátor pro četnost<br/><br/>"Frekvence x interval" Určuje, jak často se vytvářejí řez.<br/><br/>Pokud budete potřebovat datovou sadu, která se rozříznut hodinu, nastavíte <b>frekvence</b> k <b>hodinu</b>, a <b>interval</b> k <b>1</b>.<br/><br/><b>Poznámka:</b>: Pokud zadáte četnost jako minutu, doporučujeme nastavit interval na menší než 15 |Ano |není k dispozici |
+| frequency |Určuje časovou jednotku pro produkční řez datovou sadu.<br/><br/><b>Podporované frekvence</b>: minutu, hodinu, den, týden, měsíc |Ano |Není k dispozici |
+| interval |Určuje multiplikátor pro četnost<br/><br/>"Frekvence x interval" Určuje, jak často se vytvářejí řez.<br/><br/>Pokud budete potřebovat datovou sadu, která se rozříznut hodinu, nastavíte <b>frekvence</b> k <b>hodinu</b>, a <b>interval</b> k <b>1</b>.<br/><br/><b>Poznámka:</b>: Pokud zadáte četnost jako minutu, doporučujeme nastavit interval na menší než 15 |Ano |Není k dispozici |
 | Styl |Určuje, zda by měl být na zahájení a ukončení intervalu předložen řez.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je nastavena frekvence měsíc a styl je nastaven na EndOfInterval, řez vytváří poslední den v měsíci. Pokud je styl nastavené na StartOfInterval, řez vytváří první den v měsíci.<br/><br/>Pokud je nastavena frekvence den a styl je nastaven na EndOfInterval, řez se vytvářejí za poslední hodinu dne.<br/><br/>Pokud je nastavena frekvence hodinu a styl je nastaven na EndOfInterval, řez se vytvářejí na konci za hodinu. Například pro řez dobu 13: 00 – 14: 00, je řez vytvořeného ve 2. |Ne |EndOfInterval |
 | anchorDateTime |Definuje absolutní pozici v čase plánovačem slouží k výpočtu hranice řez datovou sadu. <br/><br/><b>Poznámka:</b>: Pokud AnchorDateTime má částí data, která jsou podrobnější než je četnost pak podrobnější části jsou ignorovány. <br/><br/>Například pokud <b>interval</b> je <b>každou hodinu</b> (frekvence: hodinu a intervalu: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>, pak se <b>minuty a sekundy</b> částí AnchorDateTime jsou ignorovány. |Ne |01/01/0001 |
-| Posun |Časový interval, ve kterém jsou zapuštěno počáteční a koncová všech řezech datovou sadu. <br/><br/><b>Poznámka:</b>: Pokud jsou zadané anchorDateTime i posun, výsledkem je kombinovaná shift. |Ne |není k dispozici |
+| Posun |Časový interval, ve kterém jsou zapuštěno počáteční a koncová všech řezech datovou sadu. <br/><br/><b>Poznámka:</b>: Pokud jsou zadané anchorDateTime i posun, výsledkem je kombinovaná shift. |Ne |Není k dispozici |
 
 ### <a name="offset-example"></a>Příklad posunutí
 Ve výchozím nastavení, každý den (`"frequency": "Day", "interval": 1`) řezy spuštění na čas UTC 12: 00 (půlnoc). Pokud chcete, aby čas spuštění jako čas UTC 6: 00, nastavte posun, jak je znázorněno v následujícím fragmentu kódu: 
@@ -233,10 +232,10 @@ Datovou sadu, může mít definované zásady ověřování, která určuje, jak
 
 **Zásad** oddíl v definici datové sady definuje kritéria nebo podmínku, musíte splnit řezy datovou sadu. Následující tabulka popisuje vlastnosti, které můžete použít v **zásad** části:
 
-| Název zásady | Popis | Použít | Požadováno | Výchozí |
+| Název zásad | Popis | Použít | Požaduje se | Výchozí |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Ověří, jestli data v **objektů blob v Azure** splňuje požadavky na minimální velikost (v megabajtech). |Azure Blob |Ne |není k dispozici |
-| minimumRows | Ověří, jestli data v **Azure SQL database** nebo **tabulky Azure** obsahuje minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |Ne |není k dispozici |
+| minimumSizeMB | Ověří, jestli data v **objektů blob v Azure** splňuje požadavky na minimální velikost (v megabajtech). |Azure Blob |Ne |Není k dispozici |
+| minimumRows | Ověří, jestli data v **Azure SQL database** nebo **tabulky Azure** obsahuje minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |Ne |Není k dispozici |
 
 #### <a name="examples"></a>Příklady
 **minimumSizeMB:**

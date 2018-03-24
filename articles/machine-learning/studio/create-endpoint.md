@@ -1,10 +1,11 @@
 ---
-title: "Vytváření koncových bodů webové služby v Machine Learning | Microsoft Docs"
-description: "Vytváření koncových bodů webové služby v Azure Machine Learning"
+title: Vytváření koncových bodů webové služby v Machine Learning | Microsoft Docs
+description: Vytváření koncových bodů webové služby v Azure Machine Learning
 services: machine-learning
-documentationcenter: 
-author: hiteshmadan
-manager: padou
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: 4657fc1b-5228-4950-a29e-bc709259f728
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.author: himad
-ms.openlocfilehash: 6de83042779a1a4edae57499f108dcddc9d68309
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: fac284e9f0c852306d99733a879fc13c85f07768
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="creating-endpoints"></a>Vytváření koncových bodů
 > [!NOTE]
@@ -54,6 +54,6 @@ Koncový bod můžete přidat k webové službě programově pomocí [AddEndpoin
 3. Klikněte na možnost **Nové**.
 4. Zadejte název a popis pro nový koncový bod. Názvy koncových bodů musí být 24 znaky nebo méně délku a musí být tvořen malá písmena nebo číslice. Vyberte úroveň protokolování a určuje, jestli je povolená ukázková data. Další informace o protokolování naleznete v tématu [povolení protokolování pro Machine Learning webové služby](web-services-logging.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Jak používat Azure Machine Learning webové služby](consume-web-services.md).
 

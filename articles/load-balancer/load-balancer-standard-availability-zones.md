@@ -1,24 +1,24 @@
 ---
-title: "Nástroje pro vyrovnávání zatížení Azure standardní a dostupnosti zón | Microsoft Docs"
-description: "Nástroj pro vyrovnávání zatížení standardní a dostupnosti zón"
+title: Nástroje pro vyrovnávání zatížení Azure standardní a dostupnosti zón | Microsoft Docs
+description: Nástroj pro vyrovnávání zatížení standardní a dostupnosti zón
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 61e0e7cf960d7eb2294bc294ec1eec9d80428a81
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 70b39b854a3b7cb28716d3cb290998690dbeb549
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Nástroj pro vyrovnávání zatížení standardní a dostupnosti zón
 
@@ -39,7 +39,7 @@ Veřejné a interní nástroj pro vyrovnávání zatížení podporují scéná�
 
 Samotný prostředek pro vyrovnávání zatížení je místní a nikdy oblastmi.  A virtuálních sítí a podsítí jsou vždy regionálního a nikdy oblastmi.
 
-### <a name="frontend"></a>Front-endu
+### <a name="frontend"></a>Front-end
 
 Konfigurace IP front-endu odkazující na prostředek veřejné IP adresy nebo privátní IP adresy v rámci podsítě virtuální sítě prostředku je front-end pro vyrovnávání zatížení.  Ho tvoří koncový bod Vyrovnávání zatížení, kde je vystaven služby.
 
@@ -151,7 +151,7 @@ Pokud používáte stávající šablony Resource Manageru ve vaší konfiguraci
 
 Vyrovnávání zatížení mezi zóny je schopnost Vyrovnávání zatížení k dosažení koncový bod back-end v každé zóně a je nezávislý na front-endové a jeho zonality.
 
-Pokud chcete zarovnat a zaručit nasazení s jedné oblasti, zarovnejte oblastmi front-endové a back-endové oblastmi prostředky do stejné zóny. Není vyžadována žádná další akce.
+Pokud chcete zarovnat a zaručit nasazení v jedné oblasti, zarovnejte oblastmi front-endové a back-endové oblastmi prostředky do stejné zóny. Není vyžadována žádná další akce.
 
 ### <a name="backend"></a>Back-end
 
@@ -210,12 +210,12 @@ Zónově redundantní můžete poskytnout zóny na úlohách a na stejný čas o
 
 Oblastmi můžete poskytnout explicitní záruku na zónu, sdílení rozklad s stav zóny. Přidružení oblastmi IP adresu nebo oblastmi front-endu nástroj pro vyrovnávání zatížení může být žádoucí nebo přiměřené atribut obzvláště pokud připojené prostředku je oblastmi virtuálního počítače ve stejné zóny.  Nebo možná vaše aplikace vyžaduje explicitní znalosti o zóně, ve které je prostředek umístěn ve a chcete explicitně důvodu o dostupnosti v samostatných zón.  Můžete se rozhodnout vystavit několika oblastmi frontends služby začátku do konce distribuovaná do zóny (který je za oblastmi frontends zóny pro více škálování oblastmi virtuálních počítačů nastaví).  A pokud jsou vaše oblastmi frontends veřejné IP adresy, můžete použít tyto několika oblastmi frontends pro vystavení služby prostřednictvím [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Nebo můžete několika oblastmi frontends získat za zóny přehled stavu a výkonu prostřednictvím sledování řešení třetí strany a vystavit službu celkové s zónově redundantní front-endu. Pouze by měla sloužit oblastmi prostředky s oblastmi frontends zarovnán stejné zóny a vyhnout se potenciálně škodlivé scénáře zóny mezi oblastmi prostředky.  Oblastmi prostředky existují jenom v oblastech, kde existují dostupnost zóny.
 
-Neexistuje žádné obecné pokyny, že jeden je vhodnější než jiné, aniž by věděly, službu začátku do konce.
+Neexistuje žádné obecné pokyny, že jeden je vhodnější než jiné, aniž by věděly, architektura služby.
 
 ## <a name="limitations"></a>Omezení
 
 - Při datové roviny je plně zónově redundantní (Pokud byl zadán oblastmi záruku), operace rovině řízení nejsou plně redundantní pro zónu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace o [dostupnost zóny](../availability-zones/az-overview.md)
 - Další informace o [nástroj pro vyrovnávání zatížení](load-balancer-standard-overview.md)

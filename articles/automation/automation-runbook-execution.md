@@ -1,6 +1,6 @@
 ---
-title: "Spuštění sady Runbook ve službě Azure Automation"
-description: "Popisuje podrobnosti o způsobu zpracování sady runbook ve službě Azure Automation."
+title: Spuštění sady Runbook ve službě Azure Automation
+description: Popisuje podrobnosti o způsobu zpracování sady runbook ve službě Azure Automation.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: edfd317e7d3f7595f656c6c24ad65f3d87fea14c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 18059ef1e0efba4f030a6e99198f0b7c72b7daf3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění sady Runbook ve službě Azure Automation
 Při spuštění sady runbook ve službě Azure Automation se vytvoří úloha. Úloha je instance jednoho spuštění sady runbook. Ke spuštění Každá úloha je přiřazen pracovního procesu automatizace Azure. Když zaměstnanci jsou sdíleny více účtů Azure, úlohy z různých účtů Automation jsou izolované od sebe navzájem. Můžete mít není řídit, přes které worker služby žádost o úlohu. Jedné sady runbook může mít několik úloh spuštěných současně.  Prostředí pro spuštění úloh ze stejného účtu Automation může být znovu použita. Při zobrazení seznamu sad runbook na portálu Azure, zobrazí stav všech úloh, které byly zahájeny pro každou sadu runbook. Chcete-li sledovat stav každého z nich můžete zobrazit seznam úloh pro každou sadu runbook. Popis stavy různé úlohy [stavy úlohy](#job-statuses).
@@ -46,7 +46,7 @@ Následující tabulka popisuje různé stavy, které jsou u úlohy nastat.
 | Pozastavování |Systém se pokouší pozastavit úlohu na žádost uživatele. Sada runbook dosažení následujícího kontrolního bodu předtím, než se může pozastavit. Pokud již uplynul svého posledního kontrolního bodu, pak dokončí předtím, než se může pozastavit.  Platí pro [pracovní postup prostředí PowerShell a grafický runbook](automation-runbook-types.md) pouze. |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Zobrazení stavu úlohy z portálu Azure
-Můžete zobrazit souhrnnou stav všechny úlohy sady runbook nebo podrobnostem úlohu konkrétní sady runbook na portálu Azure nebo konfigurace integrace s pracovní prostor analýzy protokolů Microsoft Operations Management Suite (OMS) k předávání datové proudy úlohy stavu a úlohu runbook.  Další informace o integraci do OMS analýzy protokolů najdete v tématu [předávání zpráv o stavu úlohy a datové proudy úlohy z Automatizace analýzy protokolů (OMS)](automation-manage-send-joblogs-log-analytics.md).  
+Můžete zobrazit souhrnnou stav všechny úlohy sady runbook nebo podrobnostem úlohu konkrétní sady runbook na portálu Azure nebo konfigurace integrace s pracovní prostor analýzy protokolů předávat datové proudy úlohy stavu a úlohu runbook.  Další informace o integraci s analýzy protokolů najdete v tématu [předávání zpráv o stavu úlohy a datové proudy úlohy ze služby Automation k analýze protokolů](automation-manage-send-joblogs-log-analytics.md).  
 
 ### <a name="automation-runbook-jobs-summary"></a>Souhrn úlohy sady runbook automatizace
 Na pravé straně vybrané účtu Automation, můžete zobrazit souhrn všechny úlohy sady runbook pro vybraný účet automatizace v rámci **Statistika projektu** dlaždici.<br><br> ![Dlaždice úlohy statistiky](./media/automation-runbook-execution/automation-account-job-status-summary.png).<br> Tuto dlaždici zobrazí počet a grafické vyjádření stavu úlohy pro všechny úlohy provést.  

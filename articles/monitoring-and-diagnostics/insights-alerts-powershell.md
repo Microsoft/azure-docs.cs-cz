@@ -1,9 +1,9 @@
 ---
-title: "Vytvořte výstrahy pro služby Azure – prostředí PowerShell | Microsoft Docs"
-description: "Aktivační událost e-mailů, oznámení, weby adresy URL (webhooky), nebo volat automatizace při splnění zadané podmínky."
+title: Vytvořte výstrahy pro služby Azure – prostředí PowerShell | Microsoft Docs
+description: Aktivační událost e-mailů, oznámení, weby adresy URL (webhooky), nebo volat automatizace při splnění zadané podmínky.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: d26ab15b-7b7e-42a9-81c8-3ce9ead5d252
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2016
 ms.author: robb
-ms.openlocfilehash: d3fca8675c1f15b8fd0f952cfbf520f5c68478b3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 03026ee8bedd5277b2bb6cf28dabafabf207b0ae
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Vytvoření metriky výstrah v monitorování Azure pro služby Azure – prostředí PowerShell
+# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Vytvoření klasického metriky výstrahy v Azure monitorování pro služby Azure – prostředí PowerShell
 > [!div class="op_single_selector"]
 > * [Azure Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -29,12 +29,18 @@ ms.lasthandoff: 12/21/2017
 >
 
 ## <a name="overview"></a>Přehled
+
+> [!NOTE]
+> Tento článek popisuje postup vytvoření starší metriky výstrahy. Azure nyní podporuje monitorování [novější, lepší metriky výstrahy](monitoring-near-real-time-metric-alerts.md). Tyto výstrahy můžete sledovat více metriky a povolit pro výstrahy na dimenzí metriky. Podpora prostředí PowerShell pro novější metriky výstrahy tu bude brzo dostupná.
+>
+>
+
 Tento článek ukazuje, jak nastavit Azure metriky výstrah pomocí prostředí PowerShell.  
 
 Můžete zobrazit upozornění na základě monitorování metriky pro nebo událostí na služeb Azure.
 
 * **Metriky hodnoty** -výstrahy aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu přiřadíte v obou směrech. To znamená, aktivuje obě při nejprve je splněna podmínka, a pak později, pokud podmínka je už plněny.    
-* **Události protokolu aktivit** -výstrahu můžete aktivovat pro *každých* události nebo pouze tehdy, když dojde k určité události. Další informace o výstrahách aktivity protokolu [, klikněte sem](monitoring-activity-log-alerts.md)
+* **Aktivity protokolu události** -výstrahu můžete aktivovat pro *každých* události nebo pouze tehdy, když dojde k určité události. Další informace o výstrahách aktivity protokolu [, klikněte sem](monitoring-activity-log-alerts.md)
 
 Můžete nakonfigurovat metriky výstrahu při aktivaci, proveďte následující:
 
@@ -45,15 +51,15 @@ Můžete nakonfigurovat metriky výstrahu při aktivaci, proveďte následujíc�
 
 Můžete nakonfigurovat a získat informace o použití pravidla výstrah
 
-* [portál Azure Portal](insights-alerts-portal.md)
+* [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
-* [rozhraní příkazového řádku (CLI)](insights-alerts-command-line-interface.md)
+* [Rozhraní příkazového řádku (CLI)](insights-alerts-command-line-interface.md)
 * [Rozhraní API REST Azure monitorování](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 Další informace najdete vždy zadáte ```Get-Help``` a potom příkaz prostředí PowerShell chcete zobrazit nápovědu.
 
 ## <a name="create-alert-rules-in-powershell"></a>Vytvořit pravidla výstrah v prostředí PowerShell
-1. Přihlaste se k Azure.   
+1. Přihlásí se k Azure.   
 
     ```PowerShell
     Login-AzureRmAccount
@@ -127,7 +133,7 @@ Další informace najdete vždy zadáte ```Get-Help``` a potom příkaz prostře
     Remove-AzureRmAlertRule -ResourceGroup myresourcegroup -Name myLogAlertRule
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Získat přehled o Azure monitorování](monitoring-overview.md) včetně typy informací, můžete sledovat a shromažďovat.
 * Další informace o [konfigurace webhooky ve výstrahách](insights-webhooks-alerts.md).
 * Další informace o [konfigurace výstrah pro aktivitu protokolu události](monitoring-activity-log-alerts.md).

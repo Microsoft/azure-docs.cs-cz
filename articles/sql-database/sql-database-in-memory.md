@@ -1,19 +1,19 @@
 ---
-title: "Azure SQL Database v paměti technologie | Microsoft Docs"
-description: "Azure SQL Database v paměti technologie výrazně zlepšit výkon transakcí a analýzy úlohy."
+title: Azure SQL Database v paměti technologie | Microsoft Docs
+description: Azure SQL Database v paměti technologie výrazně zlepšit výkon transakcí a analýzy úlohy.
 services: sql-database
 author: jodebrui
 manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 03/21/2018
 ms.author: jodebrui
-ms.openlocfilehash: 107df78f0ec6ce924785f5027958ee66f2a86c7c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 442c860a13e2af1d5398fb30a6069a0e3764ee64
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizace výkonu pomocí technologie v paměti v databázi SQL
 
@@ -104,7 +104,7 @@ Při použití neclusterovaných indexů columnstore základní tabulka je poř�
 
 Nejsou nikdy žádné nekompatibility nebo jiné problémy při upgradu na vyšší cenová úroveň, například z standardní, Premium. K dispozici funkce a prostředky pouze zvýšit.
 
-Ale přechod na starší verzi cenové úrovně může mít negativní vliv na vaši databázi. Dopad je obzvláště zřejmá při downgradovat z úrovně Premium standardní nebo základní Pokud databáze obsahuje objekty OLTP v paměti. Paměťově optimalizované tabulky a indexy columnstore jsou k dispozici po downgrade (i v případě, že zůstanou viditelné). Stejné aspekty platí při snížení cenová úroveň fondu elastické databáze, nebo přesunutí databáze s technologiemi v paměti do Standard a Basic elastického fondu.
+Ale přechod na starší verzi cenové úrovně může mít negativní vliv na vaši databázi. Dopad je obzvláště zřejmá při downgradovat z úrovně Premium standardní nebo základní Pokud databáze obsahuje objekty OLTP v paměti. Paměťově optimalizované tabulky nejsou k dispozici po downgrade (i v případě, že zůstanou viditelné). Stejné aspekty platí při snížení cenová úroveň fondu elastické databáze, nebo přesunutí databáze s technologiemi v paměti do Standard a Basic elastického fondu.
 
 ### <a name="in-memory-oltp"></a>OLTP v paměti
 
@@ -130,11 +130,11 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="columnstore-indexes"></a>Indexy Columnstore
 
-*Přechod na starší verzi Basic nebo Standard*: indexy Columnstore jsou podporovány pouze na cenová úroveň Premium a ne na úrovních Standard nebo Basic. Když jste se downgradovat databázi Standard a Basic, stane indexu columnstore není k dispozici. Systém udržuje indexu columnstore, ale nikdy využívá index. Pokud později upgradujete zpět na Premium, je okamžitě připraven znovu využít indexu columnstore.
+*Přechod na starší verzi Basic nebo Standard*: indexy Columnstore jsou podporovány pouze na cenová úroveň Premium a na úrovni Standard S3 a výše a není v základní vrstvě. Když jste starší verzi databáze na úrovni nebo nepodporovaný vrstvy, stane se indexu columnstore není k dispozici. Systém udržuje indexu columnstore, ale nikdy využívá index. Pokud později upgradujete zpět na úrovni nebo podporovanou úroveň, je okamžitě připraven znovu využít indexu columnstore.
 
-Pokud máte **clusterové** columnstore index, celé tabulky nedostupný po vrstvy přechod na starší verzi. Proto doporučujeme vyřaďte všechny *clusterové* indexy columnstore před downgradovat databáze nižší než úroveň Premium.
+Pokud máte **clusterové** columnstore index, celé tabulky nedostupný po downgrade. Proto doporučujeme vyřaďte všechny *clusterové* indexy columnstore před downgradovat databáze na úrovni nebo nepodporovaný vrstvy.
 
-*Přechod na starší verzi nižší úrovně Premium*: Tento přechod na starší verzi úspěšná, pokud odpovídá celé databáze v rámci maximální velikost pro cíl cenová úroveň, nebo dostupné úložiště v elastickém fondu. Neexistuje žádný konkrétní vliv z indexů columnstore.
+*Přechod na starší verzi na nižší úroveň podporované nebo úroveň*: Tento přechod na starší verzi úspěšná, pokud odpovídá celé databáze v rámci maximální velikost pro cíl cenová úroveň, nebo dostupné úložiště v elastickém fondu. Neexistuje žádný konkrétní vliv z indexů columnstore.
 
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
@@ -487,7 +487,7 @@ V databázi s P2 cenovou úroveň bude pravděpodobně přibližně devětkrát 
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Rychlý Start 1: Technologie OLTP v paměti pro dosažení vyššího výkonu T-SQL](http://msdn.microsoft.com/library/mt694156.aspx)
 

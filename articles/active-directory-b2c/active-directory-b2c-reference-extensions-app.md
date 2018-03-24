@@ -1,24 +1,21 @@
 ---
-title: "Rozšíření aplikace – Azure AD B2C | Microsoft Docs"
-description: "Obnovení aplikace rozšíření b2c"
+title: Rozšíření aplikace – Azure AD B2C | Microsoft Docs
+description: Obnovení aplikace rozšíření b2c
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: f0392e32-0771-473c-a799-81438ca2bcff
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 9/06/2017
-ms.author: parja
-ms.openlocfilehash: 450a7a5051cdbd6a3c8105a06fd3ebae10d5388e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: davidmu
+ms.openlocfilehash: c07aba797118af2cc8283509944eda8b41d499b3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Rozšíření aplikace
 
@@ -39,7 +36,7 @@ Chcete-li ověřit, zda aplikace rozšíření b2c je k dispozici:
 
 Pokud jste omylem odstranili aplikace rozšíření b2c, máte 30 dní, jak jej obnovit. Můžete obnovit aplikace pomocí rozhraní Graph API:
 
-1. Přejděte do [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
+1. Přejděte do [ https://graphexplorer.azurewebsites.net/ ](https://graphexplorer.azurewebsites.net/).
 1. Přihlaste se k webu jako globální správce adresáře Azure AD B2C, který chcete obnovit odstraněné aplikace pro. Tato globální správce musí mít e-mailovou adresu, která je podobný následujícímu: `username@{yourTenant}.onmicrosoft.com`.
 1. Vydávat na HTTP GET na adresu URL `https://graph.windows.net/myorganization/deletedApplications` s verze api-version = 1.6. Tato operace se zobrazí seznam všech aplikacích, které byly odstraněny v posledních 30 dnů.
 1. Vyhledat aplikaci v seznamu, kde název začíná 'aplikace b2c rozšíření a zkopírujte její `objectid` hodnotu vlastnosti.

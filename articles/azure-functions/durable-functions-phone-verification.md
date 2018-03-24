@@ -1,24 +1,24 @@
 ---
-title: "Zásahem ze strany a vypršení časových limitů trvanlivý funkcí – Azure"
-description: "Zjistěte, jak zpracovat zásahem ze strany a vypršení časových limitů v rozšíření trvanlivý funkce pro Azure Functions."
+title: Zásahem ze strany a vypršení časových limitů trvanlivý funkcí – Azure
+description: Zjistěte, jak zpracovat zásahem ze strany a vypršení časových limitů v rozšíření trvanlivý funkce pro Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e0b919ae5ef0639c8afdc5f9b006d899c8dbc4c1
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 071a9ffb8305a30b0fedeaa49c4a95d91fbce6c1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Zásahem ze strany v trvanlivý funkce – Ukázka ověření telefonu
 
@@ -28,8 +28,8 @@ Tato ukázka implementuje služby SMS na telefonu ověřovacího systému. Tyto 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Postupujte podle pokynů v [nainstalovat trvanlivý funkce](durable-functions-install.md) nastavit vzorku.
-* Tento článek předpokládá, že jste již prošli [Hello pořadí](durable-functions-sequence.md) ukázka návod.
+* [Nainstalujte trvanlivý funkce](durable-functions-install.md).
+* Dokončení [Hello pořadí](durable-functions-sequence.md) návod.
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
@@ -50,7 +50,7 @@ Tento článek vás provede v ukázkové aplikace následující funkce:
 * **E4_SmsPhoneVerification**
 * **E4_SendSmsChallenge**
 
-Následující části popisují konfiguraci a kód, který se používá pro vývoj na portálu Azure. Kód pro vývoj v sadě Visual Studio se zobrazí na konci tohoto článku.
+Následující části popisují konfiguraci a kódu, které se používají pro C# skriptování. Kód pro vývoj v sadě Visual Studio se zobrazí na konci tohoto článku.
  
 ## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Ověření orchestration serveru SMS (portálu ukázkový kód pro Visual Studio Code a Azure) 
 

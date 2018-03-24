@@ -1,10 +1,11 @@
 ---
-title: "Krok 6: Přístup ke službě Machine Learning Web | Microsoft Docs"
-description: "Krok 6 vývoj prediktivního řešení návod: přístup k Azure Machine Learning webové služby aktivní."
+title: 'Krok 6: Přístup ke službě Machine Learning Web | Microsoft Docs'
+description: 'Krok 6 vývoj prediktivního řešení návod: přístup k Azure Machine Learning webové služby aktivní.'
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: 6a65c89a-40ab-4673-8dd8-8eee0a150e3b
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.author: garye
-ms.openlocfilehash: d1a31bc95b249c3fa1caced138bbf3459eb6282c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82e068ca3656b28e5e8dad19a31d6e5ff9c6f8b6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>Krok 6 průvodce: Přístup k webové službě Azure Machine Learning
 

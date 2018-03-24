@@ -1,6 +1,6 @@
 ---
-title: "Přehled životního cyklu na základě objektu actor Azure mikroslužeb | Microsoft Docs"
-description: "Popisuje spolehlivé objektu Actor prostředků infrastruktury služby životního cyklu, uvolňování paměti a ručně odstranit aktéři a jejich stavu"
+title: Přehled životního cyklu na základě objektu actor Azure mikroslužeb | Microsoft Docs
+description: Popisuje spolehlivé objektu Actor prostředků infrastruktury služby životního cyklu, uvolňování paměti a ručně odstranit aktéři a jejich stavu
 services: service-fabric
 documentationcenter: .net
 author: amanbha
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: dd45acd75e1cf263029c869d88c87b28f56d50cc
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4abb1ea6e5c79a5280d6ca4ad96070603b81793a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Životní cyklus objektu actor, automatické uvolňování paměti a ruční delete
 Objekt actor se aktivuje při prvním volání Přišla žádost o jeho metod. Objekt actor je deaktivované (paměti shromážděných modulem runtime aktéři), pokud se nepoužívá pro nastaveném časovém intervalu. Objekt actor a její stav lze také odstranit ručně kdykoli.
@@ -112,37 +112,8 @@ Příklad ukazuje na dobu životnosti tohoto objektu actor dopad volání metody
 
 Objekt actor nebude nikdy uvolnění z paměti, zatímco je prováděna jednu z jeho metod, bez ohledu na to, jak dlouho je věnovaný provedení této metody. Jak už bylo zmíněno dříve, brání spuštění metody rozhraní objektu actor a zpětná volání připomenutí uvolňování resetováním čas nečinnosti objektu actor na hodnotu 0. Provádění zpětných volání časovače neprovádí vynulování dobu nečinnosti, po na hodnotu 0. Uvolňování objektu actor je však odložené až zpětné volání časovače po dokončení provádění.
 
-## <a name="deleting-actors-and-their-state"></a>Odstraňování aktéři a jejich stavu
-Uvolnění paměti deaktivované aktéři pouze vyčistí objekt actor, ale neodebere data, která je uložená v objektu actor správce stavu. Při opětovné aktivaci objektu actor jeho data se znovu k dispozici k němu pomocí Správce stavu. V případech, kdy aktéři ukládání dat do Správce stavu a jsou deaktivována ale nikdy znovu aktivovat může být nutné vyčistit svá data.
-
-[Služby objektu Actor](service-fabric-reliable-actors-platform.md) poskytuje funkce pro odstranění aktéři ze vzdáleného volající:
-
-```csharp
-ActorId actorToDelete = new ActorId(id);
-
-IActorService myActorServiceProxy = ActorServiceProxy.Create(
-    new Uri("fabric:/MyApp/MyService"), actorToDelete);
-
-await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
-```
-```Java
-ActorId actorToDelete = new ActorId(id);
-
-ActorService myActorServiceProxy = ActorServiceProxy.create(
-    new Uri("fabric:/MyApp/MyService"), actorToDelete);
-
-myActorServiceProxy.deleteActorAsync(actorToDelete);
-```
-
-Odstranění objektu actor má následující důsledky v závislosti na tom, jestli je aktuálně aktivní objektu actor:
-
-* **Aktivní objektu Actor**
-  * Objektu actor se odebral ze seznamu active aktéři a je deaktivována.
-  * Jeho stav se trvale odstraní.
-* **Neaktivní objektu Actor**
-  * Jeho stav se trvale odstraní.
-
-Všimněte si, že objekt actor nelze volat odstranit sám na sobě z jednoho z jeho metody objektu actor, protože objekt actor nelze odstranit, při provádění v rámci kontextu volání objektu actor, ve kterém má modul runtime získat zámek kolem volání objektu actor pro vynucení jednovláknové přístupu.
+## <a name="manually-deleting-actors-and-their-state"></a>Ručním odstranění aktéři a jejich stavu
+Uvolnění paměti deaktivované aktéři pouze vyčistí objekt actor, ale neodebere data, která je uložená v objektu actor správce stavu. Při opětovné aktivaci objektu actor jeho data se znovu k dispozici k němu pomocí Správce stavu. V případech, kdy aktéři ukládání dat do Správce stavu a jsou deaktivována ale nikdy znovu aktivovat může být nutné vyčistit svá data.  Příklady, jak odstranit aktéři, najdete v tématu [odstranit aktéři a jejich stavu](service-fabric-reliable-actors-delete-actors.md).
 
 ## <a name="next-steps"></a>Další postup
 * [Časovače objektu actor a upomínek](service-fabric-reliable-actors-timers-reminders.md)

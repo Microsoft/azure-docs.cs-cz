@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory Domain Services: Řešení potíží s výstrahy | Microsoft Docs"
-description: "Řešení potíží s výstrahy pro Azure AD Domain Services"
+title: 'Azure Active Directory Domain Services: Řešení potíží s výstrahy | Microsoft Docs'
+description: Řešení potíží s výstrahy pro Azure AD Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: eringreenlee
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
 ms.service: active-directory-ds
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: ergreenl
-ms.openlocfilehash: e4b8f31fe3eb79f9b38ae01af598290582a2cde3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 436fa31b9fd1231b38b39d911d9b6c2d4829461d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Služba Azure AD Domain Services – řešení výstrah
 Tento článek obsahuje řešení problémů s příručky pro všechny výstrahy, které mohou nastat ve vaší spravované domény.
@@ -34,7 +34,7 @@ Vyberte kroky řešení potíží, které odpovídají ID nebo zprávy ve výstr
 | AADDS102 | *Objekt služby vyžaduje pro správné fungování Azure AD Domain Services se odstranil z adresáře služby Azure AD. Tato konfigurace ovlivní schopnost společnosti Microsoft monitorovat, spravovat, opravy a synchronizovat vaší spravované domény.* | [Chybí instančního objektu](active-directory-ds-troubleshoot-service-principals.md) |
 | AADDS103 | *Rozsah IP adres pro virtuální síť, ve kterém jste povolili službu Azure AD Domain Services je v rozsahu veřejné IP. Služba Azure AD Domain Services musí být povolena ve virtuální síti s rozsah privátních IP adres. Tato konfigurace ovlivní schopnost společnosti Microsoft monitorovat, spravovat, opravy a synchronizovat vaší spravované domény.* | [Adresa je v rozsahu veřejné IP](#aadds103-address-is-in-a-public-ip-range) |
 | AADDS104 | *Společnost Microsoft se nelze spojit s řadiče domény pro toto spravované domény. To může dojít, pokud skupina zabezpečení sítě (NSG) nakonfigurované na vaší virtuální sítě blokuje přístup k spravované doméně. Jiné možných příčin je, pokud je trasu definovanou uživatelem aby bloky příchozí provoz z Internetu.* | [Chyba sítě](active-directory-ds-troubleshoot-nsg.md) |
-| AADDS105 | *Hlavní s ID aplikace "d87dcbc6-a371-462e-88e3-28ad15ec4e64" služba je Odstraněná a Microsoft bylo možné ho znovu vytvořit. Tato služba hlavní spravuje jiného objektu služby a aplikace, která se používají pro synchronizaci hesel. Hlavní spravované služby a aplikace nemáte oprávnění v rámci objektu nově vytvořený služby a bude zastaralé, když vyprší platnost certifikátu synchronizace. To znamená, že bude nově vytvořený instanční objekt nelze aktualizovat staré spravovaných aplikací a synchronizace objektů z AAD bude mít vliv.* | [Aplikace synchronizace hesla je zastaralé.](active-directory-ds-troubleshoot-service-principals.md#alert-aadds105-password-synchronization-application-is-out-of-date) |
+| AADDS105 | *Objekt služby s ID aplikace "d87dcbc6-a371-462e-88e3-28ad15ec4e64" byl odstraněn a pak znovu vytvoří. Tato služba hlavní spravuje jiného objektu služby a aplikace, která se používají pro synchronizaci hesel. Hlavní spravované služby nebo aplikace nebyl autorizován v rámci objektu nově vytvořený služby, nemůže být spravován naši službu. To znamená, že bude nově vytvořený instanční objekt nelze aktualizovat staré spravovaných aplikací a synchronizace hesel bude mít vliv.* | [Aplikace synchronizace hesla je zastaralé.](active-directory-ds-troubleshoot-service-principals.md#alert-aadds105-password-synchronization-application-is-out-of-date) |
 | AADDS500 | *Spravované doméně poslední synchronizace s Azure AD na [datum]. Uživatelé nebudou moci přihlásit se na spravované doméně nebo členství ve skupinách pravděpodobně není synchronizována s Azure AD.* | [Synchronizaci nedošlo po dobu](#aadds500-synchronization-has-not-completed-in-a-while) |
 | AADDS501 | *Spravované doméně jeho poslední zálohy na [datum].* | [Zálohování není přijato za chvíli](#aadds501-a-backup-has-not-been-taken-in-a-while) |
 | AADDS502 | *Zabezpečený LDAP certifikát pro spravované doméně vyprší XX.* | [Vypršení platnosti certifikátu zabezpečeného LDAP](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |

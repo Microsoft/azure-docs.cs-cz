@@ -1,11 +1,11 @@
 ---
-title: "Kopírování dat z vertikální pomocí Azure Data Factory (Beta) | Microsoft Docs"
-description: "Postup kopírování dat z vertikální do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory."
+title: Kopírování dat z vertikální pomocí Azure Data Factory (Beta) | Microsoft Docs
+description: Postup kopírování dat z vertikální do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 23183d1710779c12376f94254fd3d5cfac400e28
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: a308de5dea3f97c5b285c1be715969f5ca373e5d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-vertica-using-azure-data-factory-beta"></a>Kopírování dat z vertikální pomocí Azure Data Factory (Beta)
 

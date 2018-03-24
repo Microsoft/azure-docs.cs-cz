@@ -1,24 +1,21 @@
 ---
-title: "Požaduje přístupové tokeny – Azure AD B2C | Microsoft Docs"
-description: "Tento článek vám ukáže, jak nastavit klientskou aplikaci a získat přístupový token."
+title: Požaduje přístupové tokeny – Azure AD B2C | Microsoft Docs
+description: Tento článek vám ukáže, jak nastavit klientskou aplikaci a získat přístupový token.
 services: active-directory-b2c
 documentationcenter: android
-author: parakhj
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 1c75f17f-5ec5-493a-b906-f543b3b1ea66
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
-ms.author: parakhj
-ms.openlocfilehash: 9d2df39118741d4254f7b7fe4c419a00ceb4ba8e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: bd919543072a8d2bf5fb0ebba17e69ba2f467218
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Požaduje přístupové tokeny
 
@@ -85,7 +82,7 @@ Po rozhraní API je nakonfigurována pro publikování obory, klientská aplikac
 https://login.microsoftonline.com/<tenantName>.onmicrosoft.com/oauth2/v2.0/authorize?p=<yourPolicyId>&client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
-Chcete-li získat více oprávnění ve stejném požadavku, můžete přidat více položek v jedné **oboru** parametr, oddělené mezerami. Například:
+Chcete-li získat více oprávnění ve stejném požadavku, můžete přidat více položek v jedné **oboru** parametr, oddělené mezerami. Příklad:
 
 Adresa URL dekódovat:
 
@@ -117,7 +114,7 @@ Pokud `response_type` parametr `/authorize` žádost obsahuje `token`, `scope` p
 
 V úspěšně minted **přístup\_tokenu** (buď z `/authorize` nebo `/token` koncového bodu), bude k dispozici následující deklarace identity:
 
-| Name (Název) | Deklarovat | Popis |
+| Název | Deklarovat | Popis |
 | --- | --- | --- |
 |Cílová skupina |`aud` |**ID aplikace** jednoho prostředku, který token uděluje přístup k. |
 |Rozsah |`scp` |Oprávnění udělená k prostředku. Více udělená oprávnění budou oddělte mezerou. |
@@ -127,7 +124,7 @@ Pokud vaše rozhraní API obdrží **přístup\_tokenu**, musí [ověřit token]
 
 Snažíme se vždy otevřený a názory a návrhy! Pokud máte jakékoli problémy s tímto tématem, prosím zveřejnit na Stack Overflow pomocí značky [, azure ad b2c,](https://stackoverflow.com/questions/tagged/azure-ad-b2c). Pro žádosti o funkce, přidejte je do [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Sestavení webového rozhraní API pomocí [.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)
 * Sestavení webového rozhraní API pomocí [Node.JS](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)

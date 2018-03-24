@@ -1,11 +1,11 @@
 ---
-title: "Kopírování dat z/do systému souborů pomocí Azure Data Factory | Microsoft Docs"
-description: "Zjistěte, jak ke zkopírování dat z a podporovaných podřízený datová úložiště v systému souborů (nebo) z podporované zdrojové úložiště dat do systému souborů pomocí Azure Data Factory."
+title: Kopírování dat z/do systému souborů pomocí Azure Data Factory | Microsoft Docs
+description: Zjistěte, jak ke zkopírování dat z a podporovaných podřízený datová úložiště v systému souborů (nebo) z podporované zdrojové úložiště dat do systému souborů pomocí Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ff8fb061a5a5108e574860fa26d0d983ef5ffe99
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e765c5b0240eb1b0311210dc466d1bc0a43ae58f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Kopírovat data do nebo ze systému souborů pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

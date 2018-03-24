@@ -1,6 +1,6 @@
 ---
-title: "Předávání dat úlohu Azure Automation k analýze protokolů OMS"
-description: "Tento článek ukazuje, jak odesílat stav úlohy a runbook proudy úlohy Microsoft Operations Management Suite Log Analytics k poskytování další aspekty a správu."
+title: Předávání dat úloh Azure Automation do Log Analytics
+description: Tento článek ukazuje, jak odesílat stav úlohy a runbook proudy úlohy Microsoft Operations Management Suite Log Analytics k poskytování další aspekty a správu.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,16 +8,14 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: c73a523f1239fb7d549b573ea6105168f4a63144
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c9b604b0fc7a3524686bec6832a19ee9f85f6ed2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>Předávání zpráv o stavu úlohy a datové proudy úlohy z Automatizace analýzy protokolů (OMS)
-Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pracovního prostoru analýzy protokolů Microsoft Operations Management Suite (OMS). Protokoly úlohy a datové proudy úlohy jsou viditelné na portálu Azure nebo v prostředí PowerShell pro jednotlivé úlohy a to umožňuje provádět jednoduché šetření. Pomocí analýzy protokolů můžete nyní:
+# <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Předávání zpráv o stavu úlohy a datové proudy úlohy ze služby Automation k analýze protokolů
+Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pracovního prostoru analýzy protokolů. Protokoly úlohy a datové proudy úlohy jsou viditelné na portálu Azure nebo v prostředí PowerShell pro jednotlivé úlohy a to umožňuje provádět jednoduché šetření. Pomocí analýzy protokolů můžete nyní:
 
 * Pohled na vaše úlohy automatizace.
 * Aktivační událost e-mailem nebo výstrahy podle runbook stav úlohy (například chybných nebo pozastavených).
@@ -157,7 +155,7 @@ Když ladíte úlohu, můžete také viděl datové proudy úlohy. Následujíc�
 Nakonec můžete vizualizovat historii úlohy v čase. Tento dotaz můžete použít k vyhledání stav úloh v čase.
 
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
-<br> ![OMS historie úlohy stavu grafu](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
+<br> ![Graf stav historie úlohy analýzy protokolů](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
 ## <a name="summary"></a>Souhrn
 Odeslání dat datového proudu a stav úlohy automatizace k analýze protokolů, lze získat lepší přehled o stavu vaší automatizace úloh podle:
@@ -170,4 +168,4 @@ Log Analytics poskytuje větší provozní viditelnost do automatizace úloh a m
 * Další informace o tom, jak vytvořit různé vyhledávací dotazy a kontrolujte protokoly úlohy automatizace s analýzy protokolů najdete v tématu [přihlásit analýzy protokolů hledání](../log-analytics/log-analytics-log-searches.md).
 * Chcete-li pochopit, jak vytvořit a ze sady runbook načíst výstupní a chybové zprávy, přečtěte si téma [Runbook výstup a zprávy](automation-runbook-output-and-messages.md).
 * Další informace o spouštění runbooků, postupy při monitorování úloh runbooků a další technické podrobnosti najdete v článku [Sledování úlohy runbooku](automation-runbook-execution.md).
-* Další informace o OMS analýzy protokolů a kolekci zdrojů dat naleznete v tématu [shromažďování Azure úložiště dat v přehledu analýzy protokolů](../log-analytics/log-analytics-azure-storage.md).
+* Další informace o analýzy protokolů a kolekci zdrojů dat naleznete v tématu [shromažďování Azure úložiště dat v přehledu analýzy protokolů](../log-analytics/log-analytics-azure-storage.md).

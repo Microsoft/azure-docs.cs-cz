@@ -1,11 +1,11 @@
 ---
-title: "Pomocí prostředí PowerShell vytvořit a nakonfigurovat pracovní prostor Log Analytics | Microsoft Docs"
-description: "Protokolovat Analytics používá data ze serverů v místní nebo cloudové infrastruktury. Můžete shromáždit data počítače z úložiště Azure generování Azure diagnostics."
+title: Pomocí prostředí PowerShell vytvořit a nakonfigurovat pracovní prostor Log Analytics | Microsoft Docs
+description: Protokolovat Analytics používá data ze serverů v místní nebo cloudové infrastruktury. Můžete shromáždit data počítače z úložiště Azure generování Azure diagnostics.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: 3b9b7ade-3374-4596-afb1-51b695f481c2
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: 6807ab67e3593da82c147669b29bfdae3b6c967c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a3f91323a017533d2d012f1e81760396c17a643
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Správa služby Log Analytics pomocí PowerShellu
 Můžete použít [rutiny prostředí PowerShell Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) k provádění různých funkcí v analýzy protokolů z příkazového řádku nebo v rámci skriptu.  Příklady úlohy, které můžete provést pomocí prostředí PowerShell:
@@ -145,7 +145,7 @@ foreach ($solution in $Solutions) {
     Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -IntelligencePackName $solution -Enabled $true
 }
 
-#List enabled solutions
+# List enabled solutions
 (Get-AzureRmOperationalInsightsIntelligencePacks -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName).Where({($_.enabled -eq $true)})
 
 # Import Saved Searches
@@ -193,19 +193,19 @@ Pro monitorování bez agentů prostředků Azure, prostředky musí být Azure 
 | --- | --- | --- |
 | Brány Application Gateway    | Ano | Ano |
 | Účty Automation     | Ano | |
-| Účty batch          | Ano | Ano |
+| Účty Batch          | Ano | Ano |
 | Data Lake analytics     | Ano | | 
 | Úložiště data Lake store         | Ano | |
 | Fond elastické SQL        |     | Ano |
-| Názvový prostor události rozbočovače     |     | Ano |
-| Centra IoT                |     | Ano |
+| Obor názvů centra událostí     |     | Ano |
+| IoT Huby                |     | Ano |
 | Key Vault               | Ano | |
-| Nástroje pro vyrovnávání zatížení          | Ano | |
+| Služby vyrovnávání zatížení          | Ano | |
 | Logic Apps              | Ano | Ano |
 | Network Security Groups (Skupiny zabezpečení sítě) | Ano | |
 | Redis Cache             |     | Ano |
 | Služby hledání         | Ano | Ano |
-| Obor názvů Service Bus   |     | Ano |
+| Obor názvů služby Service Bus   |     | Ano |
 | SQL (v12)               |     | Ano |
 | Weby               |     | Ano |
 | Webové serverové farmy        |     | Ano |
@@ -263,6 +263,6 @@ Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Re
 Můžete taky uvedený skript ke shromažďování protokolů z účty úložiště v různých předplatných. Skript je možné pracovat ve předplatných vzhledem k tomu, že zadáváte id prostředků účtu úložiště a odpovídající přístupový klíč. Když změníte přístupový klíč, je potřeba aktualizovat náhled úložiště tak, aby měl nový klíč.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Zkontrolujte rutiny prostředí PowerShell Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) Další informace o použití prostředí PowerShell pro konfiguraci analýzy protokolů.
 

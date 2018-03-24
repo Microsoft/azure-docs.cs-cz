@@ -1,11 +1,11 @@
 ---
-title: "Nasadit existující spustitelný soubor do Azure Service Fabric | Microsoft Docs"
-description: "Informace k balíčkování stávající aplikace jako Host spustitelného souboru, aby ji můžete nasadit na cluster Service Fabric."
+title: Nasadit existující spustitelný soubor do Azure Service Fabric | Microsoft Docs
+description: Informace k balíčkování stávající aplikace jako Host spustitelného souboru, aby ji můžete nasadit na cluster Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-ms.openlocfilehash: 029a0e297469dd5845a82dbdc8fd5f898cfebccc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f0c6c54b0f168f87ff122dee70a091fdcb96014e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Zabalení a nasazení existující spustitelný soubor do Service Fabric
 Když balení existující spustitelný soubor jako [spustitelný soubor hosta](service-fabric-guest-executables-introduction.md), můžete buď používat šablony projektů Visual Studio nebo [ručně vytvořit balíček aplikace](#manually). Pomocí sady Visual Studio, struktury balíček aplikace a soubory manifestu vytvářejí nové šablona projektu pro vás.
@@ -293,7 +293,7 @@ Pokud přejdete do adresáře pomocí Průzkumníku serveru, můžete najít pra
 
 ![Umístění protokolu](./media/service-fabric-deploy-existing-app/loglocation.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jste se naučili, jak zabalit spustitelný soubor hosta a nasadíte ho do Service Fabric. Najdete v následujících článcích související informace a úlohy.
 
 * [Ukázka pro balení a nasazení spustitelný soubor hosta](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), včetně odkaz na zkušební verzi nástroje balení

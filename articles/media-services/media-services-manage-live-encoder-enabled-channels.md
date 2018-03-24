@@ -1,11 +1,11 @@
 ---
-title: "Živé streamování využívající Azure Media Services k vytvářejí proudy s více přenosovými rychlostmi | Microsoft Docs"
-description: "Toto téma popisuje, jak nastavit kanál, který přijímá živý datový proud s jednou přenosovou rychlostí z místní kodér a potom provede kódování v reálném čase do datového proudu s adaptivní přenosovou rychlostí pomocí služby Media Services. Datový proud můžete pak bude doručen do klientské aplikace přehrávání přes jeden nebo více koncové body streamování, pomocí jedné z následujících protokolů adaptivní streamování: HLS, Smooth Stream MPEG DASH."
+title: Živé streamování využívající Azure Media Services k vytvářejí proudy s více přenosovými rychlostmi | Microsoft Docs
+description: 'Toto téma popisuje, jak nastavit kanál, který přijímá živý datový proud s jednou přenosovou rychlostí z místní kodér a potom provede kódování v reálném čase do datového proudu s adaptivní přenosovou rychlostí pomocí služby Media Services. Datový proud můžete pak bude doručen do klientské aplikace přehrávání přes jeden nebo více koncové body streamování, pomocí jedné z následujících protokolů adaptivní streamování: HLS, Smooth Stream MPEG DASH.'
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: anilmur
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 30ce6556-b0ff-46d8-a15d-5f10e4c360e2
 ms.service: media-services
 ms.workload: media
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: f7cd457fe0660718c3939d39ec1825009c5e4d17
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 9d89849bb982804515b21de8c251859591dbf6ce
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
+
+> [!NOTE]
+> Od 12 může 2018 za provozu kanály se už podporu datový proud RTP/MPEG-2 transport ingestování. Proveďte prosím migraci z RTP/MPEG-2 RTMP nebo fragmentovaných MP4 (technologie Smooth Streaming) ingestování protokoly.
+
 ## <a name="overview"></a>Přehled
 V Azure Media Services (AMS) **kanál** představuje cestu pro zpracování obsahu živého streamování. A **kanál** přijímat živé vstupní datové proudy v jednom ze dvou způsobů:
 
@@ -65,7 +69,7 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 | Stav kanálu | Indikátory v uživatelském rozhraní portálu | Je fakturace? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Běží |Připraveno (žádný běžící program)<br/>nebo<br/>Streamování (nejméně jeden běžící program) |ANO |
+| Spuštěno |Připraveno (žádný běžící program)<br/>nebo<br/>Streamování (nejméně jeden běžící program) |ANO |
 | Zastavování |Zastavování |Ne (přechodný stav) |
 | Zastaveno |Zastaveno |Ne |
 
@@ -217,7 +221,7 @@ Když vytvoříte kanál, můžete získat adresu URL náhledu. Získat adresu U
 Jakmile se kanál spustí příjem dat, můžete zobrazit náhled datového proudu.
 
 > [!NOTE]
-> Aktuálně datový proud preview mohou být dodány pouze v fragmentovaný soubor MP4 formátu (technologie Smooth Streaming) bez ohledu na zadaný typ vstupu. Můžete použít [http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor) player k testování datový proud Smooth. Přehrávač hostované na portálu Azure můžete použít také k zobrazení datového proudu.
+> Aktuálně datový proud preview mohou být dodány pouze v fragmentovaný soubor MP4 formátu (technologie Smooth Streaming) bez ohledu na zadaný typ vstupu. Můžete použít [ http://smf.cloudapp.net/healthmonitor ](http://smf.cloudapp.net/healthmonitor) player k testování datový proud Smooth. Přehrávač hostované na portálu Azure můžete použít také k zobrazení datového proudu.
 > 
 > 
 
@@ -364,7 +368,7 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 | Stav kanálu | Indikátory v uživatelském rozhraní portálu | Fakturováno? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Běží |Připraveno (žádný běžící program)<br/>nebo<br/>Streamování (nejméně jeden běžící program) |Ano |
+| Spuštěno |Připraveno (žádný běžící program)<br/>nebo<br/>Streamování (nejméně jeden běžící program) |Ano |
 | Zastavování |Zastavování |Ne (přechodný stav) |
 | Zastaveno |Zastaveno |Ne |
 
@@ -381,7 +385,7 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 * Ve výchozím nastavení můžete přidat pouze 5 kanály pro váš účet Media Services. Toto je doporučené kvóty na všechny nové účty. Další informace najdete v tématu [kvóty a omezení](media-services-quotas-and-limitations.md).
 * Vstupní protokol nemůžete změnit, když kanál nebo jeho přidružené programy běží. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý vstupní protokol.
 * Se účtují pouze pokud je kanál v **systémem** stavu. Další informace najdete v části [to](media-services-manage-live-encoder-enabled-channels.md#states) části.
-* V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Obraťte se na amslived@microsoft.com Pokud potřebujete kanál běžel delší.
+* V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amslived@microsoft.com.
 * Zajistěte, aby tak, aby měl koncový bod streamování, ze kterého chcete Streamovat obsah v **systémem** stavu.
 * Při vložení vícejazyčných stop a provádění kódování v reálném čase s Azure, je podporován pouze protokol RTP pro vícejazyčné vstup. Můžete definovat až 8 zvukové datové proudy MPEG-2 TS pomocí přes protokol RTP. Příjem více zvukových stop s RTMP nebo technologie Smooth streaming není aktuálně podporováno. Při provádění kódování v reálném čase s [místní live kóduje](media-services-live-streaming-with-onprem-encoders.md), neexistuje žádné takové omezení, protože ať posílá AMS prostřednictvím kanálu předá bez dalšího zpracování.
 * Předvolby kódování používá pojem "maximální kmitočet" 30 snímků za sekundu. Pokud vstup je 60fps / 59.97i, Vstupní rámce jsou vyřazeny nebo deaktivuje-interlaced na 30/29,97 fps. Pokud vstup je 50fps/50i, Vstupní rámce jsou vyřazeny nebo deaktivuje-interlaced až 25 fps. Pokud vstupní 25 snímků za sekundu, zůstane výstup 25 snímků za sekundu.

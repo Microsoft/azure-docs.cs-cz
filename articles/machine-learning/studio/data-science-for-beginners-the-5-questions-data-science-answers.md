@@ -1,11 +1,12 @@
 ---
-title: "Vědecké zpracování 5 dat otázky - datové vědy pro začátečníky - Azure Machine Learning | Microsoft Docs"
-description: "Vědecké zpracování dat pro začátečníky je se dozvíte, jaké základní koncepce při 5 krátké videa, počínaje The 5 otázky datové vědy odpovědi. Z Azure Machine Learning."
-keywords: "provádění vědecké zpracování dat, data vědecké účely začátečníka, vědecké zpracování dat pro začátečníka, datové vědy základy, otázky ohledně dat vědecké účely, datové vědy video, datové vědy Úvod"
+title: Vědecké zpracování 5 dat otázky - datové vědy pro začátečníky - Azure Machine Learning | Microsoft Docs
+description: Vědecké zpracování dat pro začátečníky je se dozvíte, jaké základní koncepce při 5 krátké videa, počínaje The 5 otázky datové vědy odpovědi. Z Azure Machine Learning.
+keywords: provádění vědecké zpracování dat, data vědecké účely začátečníka, vědecké zpracování dat pro začátečníka, datové vědy základy, otázky ohledně dat vědecké účely, datové vědy video, datové vědy Úvod
 services: machine-learning
 documentationcenter: na
-author: cjgronlund
-manager: jhubbard
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cjgronlund
 ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.author: cgronlun
-ms.openlocfilehash: 0482a680999e58b8be45334c9ae620b6b37ac273
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: 494c8293a1dbfccbfe2df1e2f48f770edb6452dc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Vědecké zkoumání dat pro začátečníky – Video 1: 5 otázek, na které odpovídá vědecké zkoumání dat
 Rychlý úvod k vědecké zpracování dat z *vědecké zpracování dat pro začátečníky* v pěti krátké videa z vědecký pracovník hlavní data. Tyto videa jsou základní ale užitečná, ať už vás zajímá provádění vědecké zpracování dat nebo práci s datových vědců.

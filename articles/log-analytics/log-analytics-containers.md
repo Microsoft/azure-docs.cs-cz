@@ -1,11 +1,11 @@
 ---
-title: "Kontejner monitorování řešení v Azure Log Analytics | Microsoft Docs"
-description: "Řešení monitorování kontejneru v analýzy protokolů umožňuje zobrazení a správa Docker a Windows hostitele kontejneru na jednom místě."
+title: Kontejner monitorování řešení v Azure Log Analytics | Microsoft Docs
+description: Řešení monitorování kontejneru v analýzy protokolů umožňuje zobrazení a správa Docker a Windows hostitele kontejneru na jednom místě.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: e1e4b52b-92d5-4bfa-8a09-ff8c6b5a9f78
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte
-ms.openlocfilehash: 0ad267b9694c2f9cdb574b6b6008d4f6fa027fce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0041a58c8da58785ebc3ead6c8128316b153728c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení monitorování kontejneru v analýzy protokolů
 
@@ -100,7 +100,10 @@ Použijte následující informace k instalaci a konfiguraci řešení.
     - V systému Windows Server 2016 a Windows 10 nainstalujte modul Docker a klienta pak připojit agenta pro shromažďování informací a odeslat ho k analýze protokolů. Zkontrolujte [nainstalujte a nakonfigurujte hostitele Windows kontejneru](#install-and-configure-windows-container-hosts) Pokud máte prostředí systému Windows.
   - Pro orchestration více hostitelů Docker:
     - Pokud máte Red Hat OpenShift prostředí, přečtěte si [konfigurace agenta OMS pro Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
-    - Pokud máte Kubernetes clusteru Azure Container Service pomocí, přečtěte si [konfigurace agenta OMS pro Kubernetes](#configure-an-oms-agent-for-kubernetes).
+    - Pokud máte Kubernetes clusteru Azure Container Service pomocí:
+       - Zkontrolujte [konfigurace agenta OMS Linux pro Kubernetes](#configure-an-oms-linux-agent-for-kubernetes).
+       - Zkontrolujte [konfigurace agenta OMS Windows pro Kubernetes](#configure-an-oms-windows-agent-for-kubernetes).
+       - Zkontrolujte [Helm použijte k nasazení agenta OMS na Linux Kubernetes](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
     - Pokud máte cluster Azure Container Service DC/OS, přečtěte si informace v [monitorování clusteru Azure Container Service DC/OS s Operations Management Suite](../container-service/dcos-swarm/container-service-monitoring-oms.md).
     - Pokud máte prostředí režimu Docker Swarm, další informace v [konfigurace agenta OMS pro Docker Swarm](#configure-an-oms-agent-for-docker-swarm).
     - Pokud máte cluster Service Fabric, další informace v [monitorování kontejnery s analýzy protokolů OMS](../service-fabric/service-fabric-diagnostics-oms-containers.md).
@@ -387,7 +390,7 @@ WSID:   36 bytes
 KEY:    88 bytes
 ```
 
-#### <a name="configure-an-oms-agent-for-windows-kubernetes"></a>Konfigurace agenta OMS pro Windows Kubernetes
+#### <a name="configure-an-oms-windows-agent-for-kubernetes"></a>Konfigurace agenta OMS Windows pro Kubernetes
 Pro Windows Kubernetes pomocí skriptu pro generování souboru yaml tajné klíče pro ID pracovního prostoru a primární klíč pro instalaci agenta OMS. Na [OMS Docker Kubernetes Githubu](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) stránky, jsou soubory, které můžete použít s tajné informace.  Musíte nainstalovat agenta OMS samostatně pro hlavní server a agenta uzly.  
 
 1. Použít DaemonSet agenta OMS pomocí tajné informace na hlavním uzlu, přihlaste se a nejdříve vytvořit těchto tajných klíčů.

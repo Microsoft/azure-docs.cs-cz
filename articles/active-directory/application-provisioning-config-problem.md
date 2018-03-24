@@ -1,11 +1,11 @@
 ---
-title: "Problém konfiguraci zřizování uživatelů k aplikaci Galerie Azure AD | Microsoft Docs"
-description: "Postup řešení běžných problémů s potýkají při konfiguraci zřizování uživatelů na aplikaci již uveden v galerii aplikací Azure AD"
+title: Problém konfiguraci zřizování uživatelů k aplikaci Galerie Azure AD | Microsoft Docs
+description: Postup řešení běžných problémů s potýkají při konfiguraci zřizování uživatelů na aplikaci již uveden v galerii aplikací Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 3a19169effad54e26cd2061bffae369cd31e9a9e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9fcfee9cbbeb01422e7d9e92d90b908e054f96da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Problém konfiguraci zřizování uživatelů k aplikaci Galerie Azure AD
 
@@ -31,7 +31,7 @@ Po nakonfigurování služby lze většinu přehledy operaci služby rozlišovat
 
 -   **Protokoly auditu** – protokoly zřizování auditu záznam všech operací prováděných zřizování službou, včetně dotazování Azure AD pro přiřazené uživatele, kteří jsou v oboru pro zřizování. Dotaz na cílové aplikace existenci uživatelům porovnávání uživatelských objektů mezi systémem. Potom přidání, aktualizace nebo zakázat účet uživatele v cílovém systému podle porovnání. Zřizování protokolů auditu na portálu Azure v přístupné **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt; protokolech auditování** kartě. Filtrovat protokoly **zřizování účtu** kategorii zobrazíte jen zřizování události pro tuto aplikaci.
 
--   **Stav – zřízení** souhrn poslední zřizování spusťte pro danou aplikaci si můžete prohlédnout ve **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt; Zřizování** části, v dolní části obrazovky v části Nastavení služby. Tento oddíl shrnuje, kolik uživatelů (nebo skupin) jsou nyní synchronizovány mezi těmito dvěma systémy, a pokud nejsou žádné chyby. Podrobnosti o chybě se v protokolech auditu. Všimněte si, že stav zřizování nesmí být naplněny až do dokončení jeden úplné počáteční synchronizaci mezi službou Azure AD a aplikace.
+-   **Stav – zřízení** souhrn poslední zřizování spusťte pro danou aplikaci si můžete prohlédnout ve **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt;Zřizování** části, v dolní části obrazovky v části Nastavení služby. Tento oddíl shrnuje, kolik uživatelů (nebo skupin) jsou nyní synchronizovány mezi těmito dvěma systémy, a pokud nejsou žádné chyby. Podrobnosti o chybě se v protokolech auditu. Všimněte si, že stav zřizování nesmí být naplněny až do dokončení jeden úplné počáteční synchronizaci mezi službou Azure AD a aplikace.
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>Obecné problémových oblastí se zřizováním vzít v úvahu
 
@@ -66,5 +66,5 @@ Když uživatel se zobrazí jako "přeskočen" v protokolech auditu, je velmi d�
 
    * **Mapování pro skupiny atributů:** zřizování název skupiny a údaje skupiny, kromě členy, pokud pro některé aplikace podporován. Můžete povolit nebo zakázat tuto funkci povolením nebo zakázáním **mapování** pro objekty skupiny ukazuje **zřizování** kartě. Pokud je povoleno zřizování skupiny, nezapomeňte si projít mapování atributů k zajištění, že na odpovídající pole je používána pro "Odpovídající ID". Může to být alias zobrazovaný název nebo e-mailu), protože skupiny a její členy nelze zřídit Pokud odpovídající vlastnost je prázdná nebo není vyplněná skupiny ve službě Azure AD.
 
-#<a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory](active-directory-saas-app-provisioning.md)

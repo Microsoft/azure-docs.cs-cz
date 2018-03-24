@@ -1,6 +1,6 @@
 ---
 title: Replikace dat v Azure Storage | Microsoft Docs
-description: "Data ve vašem účtu úložiště Microsoft Azure se replikují pro odolnost a vysokou dostupnost. Možnosti replikace zahrnují místně redundantní úložiště (LRS), zónově redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)."
+description: Data ve vašem účtu úložiště Microsoft Azure se replikují pro odolnost a vysokou dostupnost. Možnosti replikace zahrnují místně redundantní úložiště (LRS), zónově redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště s přístupem pro čtení (RA-GRS).
 services: storage
 author: tamram
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 18d0e8bc6cc1559f9ae1a1a4457aa85d2a206597
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 600b66af3b7da24c5a40d09d5cdf76f2d5be67ac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-storage-replication"></a>Účet replikace Azure Storage
 
@@ -30,7 +30,7 @@ Při vytvoření účtu úložiště si můžete vybrat jednu z těchto možnost
 * [Geograficky redundantní úložiště (GRS)](#geo-redundant-storage)
 * [Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](#read-access-geo-redundant-storage)
 
-Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) je výchozí možností při vytváření účtu úložiště.
+Místně redundantní úložiště (LRS) je výchozí možností při vytváření účtu úložiště.
 
 Následující tabulka poskytuje rychlý přehled o rozdílech mezi LRS, ZRS, GRS a RA-GRS. Následující části tohoto článku adres každý typ replikace podrobněji.
 
@@ -54,9 +54,9 @@ V tématu [Azure Storage – ceny](https://azure.microsoft.com/pricing/details/s
 
 ### <a name="zrs-classic-accounts"></a>ZRS klasické účty
 
-Existující funkce ZRS se nyní označuje jako ZRS Classic. ZRS klasické účty jsou k dispozici pouze pro objekty BLOB bloku v účtech úložiště pro obecné účely V1. 
+Existující funkce ZRS se nyní označuje jako ZRS Classic. Účty ZRS Classic jsou k dispozici jen pro objekty blob bloku v účtech úložiště pro obecné účely verze 1. 
 
-ZRS Classic replikuje data asynchronně přes datových center v rámci jedné nebo dvou oblastech. Repliky nemusí být k dispozici, pokud Microsoft zahájí převzetí služeb při selhání na sekundární. 
+ZRS Classic replikuje data asynchronně mezi datovými centry v jedné až dvou oblastech. Replika nemusí být k dispozici, pokud společnost Microsoft nezahájí převzetí služeb při selhání a přechod na sekundární data. 
 
 ZRS klasické účty nelze převést na nebo z LRS, GRS nebo RA-GRS. ZRS klasické účty také nepodporují metriky nebo protokolování.   
 
@@ -148,5 +148,5 @@ Při první zónu přestane fungovat, i nadále ZRS zápisu repliky data mezi dv
 * [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
 * [Informace o účtech úložiště Azure](../storage-create-storage-account.md)
 * [Azure Storage škálovatelnosti a cílech výkonnosti](storage-scalability-targets.md)
-* [Microsoft Azure Storage redundance možnosti a přístup pro čtení geograficky redundantní úložiště](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+* [Microsoft Azure Storage redundance možnosti a přístup pro čtení geograficky redundantní úložiště ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 * [STUDIE Sosp - Azure Storage: Vysoce dostupný cloudové úložiště služby se silnou konzistenci](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

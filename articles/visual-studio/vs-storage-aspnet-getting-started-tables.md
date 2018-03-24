@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s Azure table storage a Visual Studio připojené služby (ASP.NET) | Microsoft Docs"
-description: "Jak začít používat úložiště tabulek Azure po připojení k účtu úložiště pomocí Visual Studio připojené služby v projektu ASP.NET v sadě Visual Studio"
+title: Začínáme s Azure table storage a Visual Studio připojené služby (ASP.NET) | Microsoft Docs
+description: Jak začít používat úložiště tabulek Azure po připojení k účtu úložiště pomocí Visual Studio připojené služby v projektu ASP.NET v sadě Visual Studio
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: kraigb
 manager: ghogen
-editor: 
+editor: ''
 ms.assetid: af81a326-18f4-4449-bc0d-e96fba27c1f8
 ms.service: storage
 ms.workload: web
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: kraigb
-ms.openlocfilehash: 32a57e77bf6fe3cff88b9d6772ede9e6669ec75f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 646ff3a12d1b28f99376ea67af25f1b6858d675a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure table storage a Visual Studio připojené služby (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -29,7 +29,7 @@ Azure Table storage umožňuje ukládat velké množství strukturovaná data. S
 
 Tento kurz ukazuje, jak napsat kód ASP.NET pro některé běžné scénáře s využitím Azure table storage entity. Mezi tyto scénáře patří vytvoření tabulky a přidání, dotazování a odstranění entity tabulky. 
 
-##<a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadavky
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Účet služby Azure Storage](../storage/common/storage-create-storage-account.md#create-a-storage-account)
@@ -172,7 +172,7 @@ Následující kroky ukazují, jak vytvořit tabulku:
 
 1. Spusťte aplikaci a vyberte **vytvořit tabulku** a zobrazte výsledky podobné následujícím snímku obrazovky:
   
-    ![Vytvoření tabulky](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
+    ![Vytvořit tabulku](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
     Jak je uvedeno nahoře, **CloudTable.CreateIfNotExists** metoda vrátí **true** pouze když neexistuje a k vytvoření tabulky. Proto pokud spustíte aplikaci v tabulce existuje, vrátí metoda **false**. Aplikace je třeba spustit vícekrát, je nutné odstranit tabulky před spuštěním aplikace znovu. Odstraňování tabulky, můžete to udělat pomocí **CloudTable.Delete** metoda. Můžete také odstranit pomocí tabulky [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040) nebo [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
@@ -708,7 +708,7 @@ Tato část ukazuje postup odstranění entity z tabulky.
   
     ![Získat jeden](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Projděte si další průvodce funkcemi, kde najdete další informace o dalších možnostech pro ukládání dat v Azure.
 
   * [Začínáme s Azure blob storage a Visual Studio připojené služby (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)

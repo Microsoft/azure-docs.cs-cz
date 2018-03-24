@@ -1,11 +1,11 @@
 ---
-title: "Přesun dat z SAP HANA pomocí Azure Data Factory | Microsoft Docs"
-description: "Další informace o tom, jak přesunout data z SAP HANA pomocí Azure Data Factory."
+title: Přesun dat z SAP HANA pomocí Azure Data Factory | Microsoft Docs
+description: Další informace o tom, jak přesunout data z SAP HANA pomocí Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 108b6e3ae704a99e5c050fea07c72300ab948905
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 6052dae1321e8ac8238ec2994886de30db27551e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Přesun dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -297,10 +297,10 @@ NVARCHAR | Řetězec
 DATOVÝ TYP CLOB | Byte[]
 ALPHANUM | Řetězec
 OBJEKT BLOB | Byte[]
-DATE (Datum) | Datum a čas
+DATE (Datum) | DateTime
 ČAS | TimeSpan
-ČASOVÉ RAZÍTKO | Datum a čas
-SECONDDATE | Datum a čas
+ČASOVÉ RAZÍTKO | DateTime
+SECONDDATE | DateTime
 
 ## <a name="known-limitations"></a>Známá omezení
 Při kopírování dat z SAP HANA existuje několik známá omezení:

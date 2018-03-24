@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Přidáte jako poskytovatele identity SAML, používat vlastní zásady služby AD FS"
-description: "Postupy: článek o nastavení služby AD FS 2016 pomocí protokolu SAML a vlastní zásady"
+title: 'Azure Active Directory B2C: Přidáte jako poskytovatele identity SAML, používat vlastní zásady služby AD FS'
+description: 'Postupy: článek o nastavení služby AD FS 2016 pomocí protokolu SAML a vlastní zásady'
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: yoelh
-ms.openlocfilehash: 22b360aec8878925ebe8d2c67c76d275a42ca7a8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: af102bbc3bc7608fe641db19f4af8c760907a564
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Přidáte jako poskytovatele identity SAML, používat vlastní zásady služby AD FS
 
@@ -63,7 +60,7 @@ Chcete-li přidat nový vztah důvěryhodnosti předávající strany pomocí mo
 7.  Na **konfigurace adresy URL** vyberte **povolit podporu protokolu SAML 2.0 WebSSO** zaškrtněte políčko. V části **URL služby SAML 2.0 SSO předávající strany**, zadejte adresu URL koncového bodu služby Security (Assertion Markup Language SAML) pro tento vztah důvěryhodnosti předávající strany a pak klikněte na tlačítko **Další**.  Pro **URL služby SAML 2.0 SSO předávající strany**, vložte `https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/{policy}`. Nahraďte názvem vašeho klienta (například contosob2c.onmicrosoft.com) {klient} a {zásady} nahraďte název zásady přípony (například B2C_1A_TrustFrameworkExtensions).
     > [!IMPORTANT]
     >Název zásady je ten, který signup_or_signin zásad zdědí v tomto případě je: `B2C_1A_TrustFrameworkExtensions`.
-    >Adresa URL může být například: https://login.microsoftonline.com/te/**contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**.
+    >Adresa URL může být například: https://login.microsoftonline.com/te/ **contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**.
 
     ![Předávající strany adresa URL služby SAML 2.0 SSO](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-6.png)
 8. Na **konfigurovat identifikátory** stránky, zadejte stejnou adresu URL jako v předchozím kroku, klikněte na **přidat** je přidejte do seznamu, a pak klikněte na **Další**.
@@ -163,10 +160,10 @@ V tomto okamžiku zprostředkovatele identity má nastaven.  Však není k dispo
 4.  Vložte celý obsah `<UserJournesy>` uzlu, který jste zkopírovali jako podřízenou `<UserJourneys>` elementu.
 
 ### <a name="display-the-button"></a>Zobrazení tlačítka
-`<ClaimsProviderSelections>` Element definuje seznam možnosti výběru poskytovatele deklarací identity a jejich pořadí.  `<ClaimsProviderSelection>`Element je obdobou tlačítko zprostředkovatele identity na stránce registrace-množství nebo přihlášení. Pokud přidáte `<ClaimsProviderSelection>` element pro účet služby AD FS, nové tlačítko se zobrazí při pojmenováváme uživatele na stránce. Chcete-li přidat tento element:
+`<ClaimsProviderSelections>` Element definuje seznam možnosti výběru poskytovatele deklarací identity a jejich pořadí.  `<ClaimsProviderSelection>` Element je obdobou tlačítko zprostředkovatele identity na stránce registrace-množství nebo přihlášení. Pokud přidáte `<ClaimsProviderSelection>` element pro účet služby AD FS, nové tlačítko se zobrazí při pojmenováváme uživatele na stránce. Chcete-li přidat tento element:
 
 1.  Najít `<UserJourney>` uzlu, který zahrnuje `Id="SignUpOrSignIn"` v cesty uživatele, který jste zkopírovali.
-2.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje`Order="1"`
+2.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje `Order="1"`
 3.  Přidejte následující fragment kódu XML v části `<ClaimsProviderSelections>` uzlu:
 
 ```xml
@@ -206,7 +203,7 @@ Můžete také přidat zprostředkovatele identity účtu služby AD FS pro vaš
 ### <a name="display-the-button"></a>Zobrazení tlačítka
 1.  Otevřete soubor rozšíření zásad (například TrustFrameworkExtensions.xml).
 2.  Najít `<UserJourney>` uzlu, který zahrnuje `Id="ProfileEdit"` v cesty uživatele, který jste zkopírovali.
-3.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje`Order="1"`
+3.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje `Order="1"`
 4.  Přidejte následující fragment kódu XML v části `<ClaimsProviderSelections>` uzlu:
 
 ```xml

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Spacio | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Spacio."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Spacio.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 03/22/2018
 ms.author: jeedes
-ms.openlocfilehash: faf4b2ff24ef733b740a5b65864941a10de64ed8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 604249151f3c1ca206f64a178b25ea1dae5b5023
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Kurz: Azure Active Directory integrace s Spacio
 
@@ -112,18 +112,32 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Spacio klienta](mailto:support@spac.io) k získání těchto hodnot. 
- 
 
-
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
-
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_certificate.png) 
-
-5. Klikněte na tlačítko **Uložit** tlačítko.
+4. Klikněte na tlačítko **Uložit**.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-spacio-tutorial/tutorial_general_400.png)
 
-6. Konfigurace jednotného přihlašování na **Spacio** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory Spacio](mailto:support@spac.io). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+5. Ke generování **adresu URL metadat**, proveďte následující kroky:
+
+    a. Klikněte na tlačítko **registrace aplikace**.
+    
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_appregistrations.png)
+   
+    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
+    
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_endpointicon.png)
+
+    c. Klikněte na tlačítko **kopie** tlačítko Kopírovat **dokument FEDERAČNÍCH METADAT** adresy URL a vložte do poznámkového bloku.
+    
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_endpoint.png)
+     
+    d. Nyní přejděte na stránku vlastností **Spacio** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
+ 
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_appid.png)
+
+    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
+
+6. Konfigurace jednotného přihlašování na **Spacio** straně, budete muset odeslat vygenerovaného **adresu URL metadat** k [tým podpory Spacio](mailto:support@spac.io). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)

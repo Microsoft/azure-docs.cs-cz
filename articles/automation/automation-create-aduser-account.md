@@ -1,25 +1,19 @@
 ---
-title: "Vytvoření účtu uživatele Azure AD"
-description: "Tento článek popisuje postup vytvoření pověření účtu uživatele Azure AD pro runbooky ve službě Azure Automation k ověřování v Azure."
+title: Vytvoření účtu uživatele Azure AD
+description: Tento článek popisuje postup vytvoření pověření účtu uživatele Azure AD pro runbooky ve službě Azure Automation k ověřování v Azure.
+keywords: uživatel azure active directory, správa služby azure, uživatelský účet azure ad
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-keywords: "uživatel azure active directory, správa služby azure, uživatelský účet azure ad"
-ms.assetid: fcfe266d-b22e-4dfb-8272-adcab09fc0cf
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/15/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/13/2017
-ms.author: magoedte
-ms.openlocfilehash: cd9e3ee5900c3928573fbac6809c107b5ac331b5
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+manager: carmonm
+ms.openlocfilehash: 43490b8ec2139b5e9f62def614dc67e4274304c1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Ověření runbooků pomocí nasazení Azure Classic a Resource Manager
 Tento článek popisuje kroky, které musíte provést při konfiguraci uživatelského účtu Azure AD pro runbooky Azure Automation, které běží s modelem nasazení Azure Classic nebo prostředky Azure Resource Manageru. Když toto zůstává podporovanou identitou ověřování pro runbooky na základě Azure Resource Manager, je použít účet spustit v Azure jako doporučenou metodu.       

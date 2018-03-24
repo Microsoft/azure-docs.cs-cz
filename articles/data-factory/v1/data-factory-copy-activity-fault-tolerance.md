@@ -1,11 +1,10 @@
 ---
-title: "Přidání odolnost proti chybám v Azure Data Factory kopie aktivity přeskočení nekompatibilní řádků | Microsoft Docs"
-description: "Informace o postupu přidání odolnost proti chybám při aktivitě kopírování objektu pro vytváření dat Azure pomocí přeskočení nekompatibilní řádky během kopírování"
+title: Přidání odolnost proti chybám v Azure Data Factory kopie aktivity přeskočení nekompatibilní řádků | Microsoft Docs
+description: Informace o postupu přidání odolnost proti chybám při aktivitě kopírování objektu pro vytváření dat Azure pomocí přeskočení nekompatibilní řádky během kopírování
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6e7923e2e0a23f22f7dff8c316050a1757310456
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 29c78eb850b418772126dea50b40e924b6e71423
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Přidání odolnost proti chybám v aktivitě kopírování přeskočení nekompatibilní řádků
 > [!NOTE]
@@ -71,7 +70,7 @@ Následující příklad uvádí definici JSON konfigurace přeskočení nekompa
 | **enableSkipIncompatibleRow** | Povolte přeskočení nekompatibilní řádků při kopírování nebo ne. | True<br/>NEPRAVDA (výchozí) | Ne |
 | **redirectIncompatibleRowSettings** | Skupina vlastností, které může být zadán, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | Ne |
 | **linkedServiceName** | Propojené služby Azure Storage k ukládání protokol, který obsahuje přeskočených řádků. | Název [azurestorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) propojené služby, která odkazuje na instanci úložiště, který chcete použít k uložení souboru protokolu. | Ne |
-| **Cesta** | Cesta souboru protokolu, který obsahuje přeskočených řádků. | Zadejte cestu úložiště objektů Blob, které chcete používat k protokolování nekompatibilní data. Pokud nezadáte cestu, služby pro vás vytvoří kontejner. | Ne |
+| **path** | Cesta souboru protokolu, který obsahuje přeskočených řádků. | Zadejte cestu úložiště objektů Blob, které chcete používat k protokolování nekompatibilní data. Pokud nezadáte cestu, služby pro vás vytvoří kontejner. | Ne |
 
 ## <a name="monitoring"></a>Monitorování
 Po dokončení kopírování aktivity při spuštění, zobrazí se počet přeskočených řádků v části monitorování:

@@ -1,28 +1,25 @@
 ---
 title: 'Azure Active Directory B2C: Konfigurace LinkedIn | Microsoft Docs'
-description: "Zadejte registrace a přihlášení k příjemce s účty LinkedIn v aplikacích, které jsou zabezpečené službou Azure Active Directory B2C"
+description: Zadejte registrace a přihlášení k příjemce s účty LinkedIn v aplikacích, které jsou zabezpečené službou Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: fa51a16b-9ce9-4e27-9eff-0869b4c4f0ef
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: 860aa90c391604924850a00cf2137d59fa4a1b53
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 91970b3ec41c645cd1cd3e203cc96ad655dafd7e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-linkedin-accounts"></a>Azure Active Directory B2C: Zadejte registrace a přihlášení k příjemce s účty LinkedIn
 ## <a name="create-a-linkedin-application"></a>Vytvoření aplikace LinkedIn
-Pokud chcete použít LinkedIn jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci LinkedIn a zadat se správné parametry. Potřebujete účet LinkedIn k tomu. Pokud nemáte, můžete ho na získat [https://www.linkedin.com/](https://www.linkedin.com/).
+Pokud chcete použít LinkedIn jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci LinkedIn a zadat se správné parametry. Potřebujete účet LinkedIn k tomu. Pokud nemáte, můžete ho na získat [ https://www.linkedin.com/ ](https://www.linkedin.com/).
 
 1. Přejděte na [LinkedIn vývojáři webu](https://www.developer.linkedin.com/) a přihlaste se pomocí přihlašovacích údajů účtu LinkedIn.
 2. Klikněte na tlačítko **Moje aplikace** v horní nabídce panelu a pak klikněte na tlačítko **vytvořit aplikaci**.

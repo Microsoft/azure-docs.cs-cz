@@ -1,24 +1,24 @@
 ---
-title: "Odchozí připojení v Azure (klasický) | Microsoft Docs"
-description: "Tento článek vysvětluje, jak Azure umožňuje cloudové služby pro komunikaci s služby veřejného Internetu."
+title: Odchozí připojení v Azure (klasický) | Microsoft Docs
+description: Tento článek vysvětluje, jak Azure umožňuje cloudové služby pro komunikaci s služby veřejného Internetu.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2018
+ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 7a307a598bd71369615b30476d387c06f473c397
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8a24987ae3423a02647b1dd246b40179be100c06
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="outbound-connections-classic"></a>Odchozí připojení (klasické)
 
@@ -123,6 +123,18 @@ Změna velikosti vašeho nasazení může mít vliv na některé vaše zavedený
 
 Pokud velikost nasazení snižuje a přejde do nižší úrovně, zvyšuje počet dostupných portů překládat pomocí SNAT. V takovém případě existující přidělené překládat pomocí SNAT porty a jejich odpovídajících toky neovlivní.
 
+Přidělení překládat pomocí SNAT porty jsou konkrétní IP přenosového protokolu (TCP a UDP udržované samostatně) a jsou uvolněny za následujících podmínek:
+
+### <a name="tcp-snat-port-release"></a>Verze port TCP překládat pomocí SNAT
+
+- Pokud obě server nebo klient odešle najít nebo potvrzení, budou překládat pomocí SNAT port vydané po 240 sekund.
+- Pokud je vidět RVNÍ, budou překládat pomocí SNAT port vydané po 15 sekund.
+- byl dosažen limit nečinnosti
+
+### <a name="udp-snat-port-release"></a>Verze port UDP překládat pomocí SNAT
+
+- byl dosažen limit nečinnosti
+
 ## <a name="problemsolving"></a> Řešení problémů 
 
 Tato část je určena pro zmírnění překládat pomocí SNAT vyčerpání a v dalších scénářích, které mohou nastat u odchozí připojení v Azure.
@@ -167,6 +179,7 @@ Pomocí příkazu nslookup můžete odeslat dotaz DNS pro název myip.opendns.co
     nslookup myip.opendns.com resolver1.opendns.com
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [nástroj pro vyrovnávání zatížení](load-balancer-overview.md) používá v nasazení Resource Manager.
+- Informace o režimu [odchozí připojení](load-balancer-outbound-connections.md) scénáře, které jsou k dispozici v nasazení Resource Manager.

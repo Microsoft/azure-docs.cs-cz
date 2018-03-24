@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Přidejte LinkedIn jako zprostředkovatel identity OAuth2 pomocí vlastních zásad"
-description: "Postupy: článek o nastavení aplikace LinkedIn pomocí OAuth2 protokol a vlastní zásady"
+title: 'Azure Active Directory B2C: Přidejte LinkedIn jako zprostředkovatel identity OAuth2 pomocí vlastních zásad'
+description: 'Postupy: článek o nastavení aplikace LinkedIn pomocí OAuth2 protokol a vlastní zásady'
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 10/23/2017
-ms.author: yoelh
-ms.openlocfilehash: 77e2b9b283e4051370ffb905681135c27512834e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: davidmu
+ms.openlocfilehash: 9e5235739abcfbee1e530685890098a45a1b093d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Přidejte LinkedIn jako zprostředkovatel identity pomocí vlastních zásad
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -43,7 +40,7 @@ Použít LinkedIn jako poskytovatel identit v Azure Active Directory B2C (Azure 
 
     c. Vyberte **využívání aplikací**.
 
-    d. V **adresu URL webu** pole, vložte  **https://login.microsoftonline.com** .
+    d. V **adresu URL webu** pole, vložte **https://login.microsoftonline.com**.
 
     e. Typ vaše **e-mailová adresa** adresu a **Telefon do zaměstnání** číslo.
 
@@ -53,7 +50,7 @@ Použít LinkedIn jako poskytovatel identit v Azure Active Directory B2C (Azure 
 
 3. Vyberte **ověřování**a poznamenejte si **ID klienta** a **tajný klíč klienta** hodnoty.
 
-4. V **oprávnění adres URL pro přesměrování** pole, vložte  **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp** . Nahraďte {*klienta*} s názvem vašeho klienta (například contosob2c.onmicrosoft.com). Ujistěte se, že používáte schéma HTTPS. 
+4. V **oprávnění adres URL pro přesměrování** pole, vložte **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp**. Nahraďte {*klienta*} s názvem vašeho klienta (například contosob2c.onmicrosoft.com). Ujistěte se, že používáte schéma HTTPS. 
 
     ![Účet LinkedIn – sadu oprávnění přesměrování adresy URL](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app3.png)
 

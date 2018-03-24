@@ -1,10 +1,10 @@
 ---
-title: "Podporované připojení pomocí konektoru služby správy IT v Azure Log Analytics | Microsoft Docs"
-description: "Tento článek obsahuje informace o tom, jak připojení ITSM produkty nebo služby s konektor pro správu služby IT (ITSMC) v OMS analýzy protokolů centrálně monitorovat a spravovat ITSM pracovní položky."
-documentationcenter: 
+title: Podporované připojení pomocí konektoru služby správy IT v Azure Log Analytics | Microsoft Docs
+description: Tento článek obsahuje informace o tom, jak připojení ITSM produkty nebo služby s konektor pro správu služby IT (ITSMC) v OMS analýzy protokolů centrálně monitorovat a spravovat ITSM pracovní položky.
+documentationcenter: ''
 author: JYOTHIRMAISURI
 manager: riyazp
-editor: 
+editor: ''
 ms.assetid: 8231b7ce-d67f-4237-afbf-465e2e397105
 ms.service: log-analytics
 ms.workload: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: e0cae844e8b7f3eab68ed02dbcd17f4d1cebfd25
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 35d04fabc66ede309fe91969c5bec3131a282afb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojit ITSM produkty nebo služby s konektoru služby správy IT
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktům a službám a konektor pro správu služby IT (ITSMC) v analýzy protokolů můžete centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](log-analytics-itsmc-overview.md).
@@ -200,7 +200,7 @@ Zajistěte, aby že byly splněny následující požadavky:
 - Nainstalujte aplikaci uživatele pro integraci Microsoft OMS (ServiceNow aplikace). [Další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Umožňuje vytvořte roli uživatele integrace pro nainstalovanou aplikaci uživatele. Informace o tom, jak vytvořit roli uživatele integrace [zde](#create-integration-user-role-in-servicenow-app).
 
-### <a name="connection-procedure"></a>Postup připojení
+### <a name="connection-procedure"></a>**Postup připojení**
 Pomocí následujícího postupu vytvořte připojení ServiceNow:
 
 
@@ -271,13 +271,7 @@ Jakmile uživatel je úspěšně vytvořen, stav **zkontrolujte kontrolní sezna
 
 > [!NOTE]
 
-> Umožňuje uživateli vytvořit **výstrahy** a **události** v ServiceNow z Azure:
-
-> - Zkontrolujte, zda že máte modul událostí správy nainstalovaná na vaší instance ServiceNow.
-
-> - Přidejte následující role uživatele integrace:
->      - evt_mgmt_integration
->      - evt_mgmt_operator  
+> Konektor ITSM můžete odesílat incidenty ServiceNow bez některý z ostatních modulů nainstalovat na vaše instance ServiceNow. Pokud používáte modul EventManagement v instanci ServiceNow a chcete vytvořit události nebo výstrahy v ServiceNow pomocí konektoru, přidejte následující role uživatele integrace: - evt_mgmt_integration - evt_mgmt_operator  
 
 
 ## <a name="connect-provance-to-it-service-management-connector-in-azure"></a>Připojit k službě, IT Provance konektoru Management v Azure

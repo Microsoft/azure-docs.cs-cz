@@ -1,6 +1,6 @@
 ---
-title: "Grafické vytváření obsahu v Azure Automation."
-description: "Vytváření grafického obsahu umožňuje vytváření runbooků pro automatizaci Azure bez práce s kódem. Tento článek obsahuje úvod do vytváření grafického obsahu a všechny podrobnosti, které jsou potřebné k zahájení vytváření grafický runbook."
+title: Grafické vytváření obsahu v Azure Automation.
+description: Vytváření grafického obsahu umožňuje vytváření runbooků pro automatizaci Azure bez práce s kódem. Tento článek obsahuje úvod do vytváření grafického obsahu a všechny podrobnosti, které jsou potřebné k zahájení vytváření grafický runbook.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: 5bdb92378a72789918f40494bebb5faf68e64c84
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c67be9fc2fbeefd47b70f48885d641eebfbf2521
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafické vytváření obsahu v Azure Automation.
 ## <a name="introduction"></a>Úvod

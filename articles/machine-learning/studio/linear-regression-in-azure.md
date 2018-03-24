@@ -1,11 +1,12 @@
 ---
-title: "Pomocí lineární regrese v Machine Learning | Microsoft Docs"
-description: "Porovnání modelů lineární regrese v aplikaci Excel a v nástroji Azure Machine Learning Studio"
-metakeywords: 
+title: Pomocí lineární regrese v Machine Learning | Microsoft Docs
+description: Porovnání modelů lineární regrese v aplikaci Excel a v nástroji Azure Machine Learning Studio
+metakeywords: ''
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: kbaroni;garye
-ms.openlocfilehash: 218f2b141e3551180a2152570f99fdb427980dd7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ea5a2720542217d3bb6a0a2b1309312fb74a953
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-linear-regression-in-azure-machine-learning"></a>Používání lineární regrese ve službě Azure Machine Learning
 > *Kate Baroni* a *Ben Boatman* jsou podnikové řešení architekty ve společnosti Microsoft Data Statistika špičkové Center. V tomto článku popisují jejich prostředí migrace sady analysis existující regrese na cloudové řešení pomocí Azure Machine Learning. 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-## <a name="goal"></a>Cílem
+## <a name="goal"></a>Cíl
 Naše projektu začít s dva cíle v paměti: 
 
 1. Použijte k zajištění přesnosti naší organizace měsíční výnosy projekce prediktivní analýzy 
@@ -62,8 +62,8 @@ Na první pohled model aplikace Excel jasně outperformed model Machine Learning
 |  | Excel | Studio |
 | --- |:---:|:---:|
 | Výkon | | |
-| <ul style="list-style-type: none;"><li>Upraví hranaté R</li></ul> |0.96 |Není k dispozici |
-| <ul style="list-style-type: none;"><li>Koeficient <br />Rozhodnutí</li></ul> |Není k dispozici |0.78<br />(nízkou přesnost) |
+| <ul style="list-style-type: none;"><li>Upraví hranaté R</li></ul> |0.96 |neuvedeno |
+| <ul style="list-style-type: none;"><li>Koeficient <br />Rozhodnutí</li></ul> |neuvedeno |0.78<br />(nízkou přesnost) |
 | Střední absolutní chyba |$9. 5M |$ 19.4 M |
 | Střední absolutní chyba (%) |6.03% |12.2% |
 
@@ -81,13 +81,13 @@ Když jsme použili doporučení, jsme dosáhli stejné základní úroveň výk
 | --- |:---:|:---:|:---:|
 | Hodnota s popiskem |Skutečné hodnoty (číslice) |stejné |stejné |
 | Student |Excel -> datové analýzy -> regrese |Lineární regrese. |Lineární regrese |
-| Možnosti student |Není k dispozici |Výchozí hodnoty |obyčejnou nejmenší čtverce<br />L2 = 0,005 |
+| Možnosti student |neuvedeno |Výchozí hodnoty |obyčejnou nejmenší čtverce<br />L2 = 0,005 |
 | Datové sady |26 řádky, funkce 3, 1 popisek. Všechny číselný. |stejné |stejné |
 | Rozdělení: Train |Excel trénink na první 18 řádky, otestovali na poslední 8 řádky. |stejné |stejné |
 | Rozdělení: Test |Vzorec regrese použitý pro poslední 8 řádky v aplikaci Excel |stejné |stejné |
 | **Výkon** | | | |
-| Upraví hranaté R |0.96 |Není k dispozici | |
-| Koeficient spolehlivosti |Není k dispozici |0.78 |0.952049 |
+| Upraví hranaté R |0.96 |neuvedeno | |
+| Koeficient spolehlivosti |neuvedeno |0.78 |0.952049 |
 | Střední absolutní chyba |$9. 5M |$ 19.4 M |$9. 5M |
 | Střední absolutní chyba (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
 
@@ -137,12 +137,12 @@ Můžeme také zjistil, že je vhodné používat [na základě filtru výběr f
 
 Umožňuje přenos, prediktivní analýzy prognózy ze strojového učení do aplikace Excel systemically umožňuje významné zvýšení v úspěšně poskytovat výsledky pro cílovou skupinu široký obchodní uživatele. 
 
-## <a name="resources"></a>Zdroje
+## <a name="resources"></a>Zdroje a prostředky
 Zde jsou některé prostředky pro umožňují pracovat s regrese: 
 
 * Regrese v aplikaci Excel. Pokud jste se nikdy zkusili Regrese v aplikaci Excel, v tomto kurzu lze snadno: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
-* Regrese vs prognózy. Tyler Chessman napsali článek blogu, která vysvětluje, jak časové řady prognózy v aplikaci Excel, který obsahuje popis dobrý začátečníka lineární regrese. [http://sqlmag.com/SQL-Server-Analysis-Services/Understanding-Time-Series-forecasting-Concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* Obyčejnou čtverce nejmenší lineární regrese: Nedostatky, problémy a nástrahy. Úvod a diskuzi o regrese: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* Regrese vs prognózy. Tyler Chessman napsali článek blogu, která vysvětluje, jak časové řady prognózy v aplikaci Excel, který obsahuje popis dobrý začátečníka lineární regrese. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
+* Obyčejnou čtverce nejmenší lineární regrese: Nedostatky, problémy a nástrahy. Úvod a diskuzi o regrese: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 [1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
 [2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png

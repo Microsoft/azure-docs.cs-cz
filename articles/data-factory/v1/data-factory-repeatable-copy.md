@@ -1,11 +1,11 @@
 ---
-title: "Opakovatelných kopie v Azure Data Factory | Microsoft Docs"
-description: "Jak se vyhnout duplikáty, i když je více než jednou spustit řez, který kopíruje data."
+title: Opakovatelných kopie v Azure Data Factory | Microsoft Docs
+description: Jak se vyhnout duplikáty, i když je více než jednou spustit řez, který kopíruje data.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7a9023253b87d97d874dbcf1ade97bf32e1f0639
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: ce4f2d377fa6430206055cdb6d84db13a5341157
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Opakovatelných kopie v Azure Data Factory
 

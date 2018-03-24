@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Přidejte Google + jako zprostředkovatele identity OAuth2 pomocí vlastních zásad"
-description: "Ukázku pomocí Google + jako zprostředkovatele identity pomocí protokolu OAuth2"
+title: 'Azure Active Directory B2C: Přidejte Google + jako zprostředkovatele identity OAuth2 pomocí vlastních zásad'
+description: Ukázku pomocí Google + jako zprostředkovatele identity pomocí protokolu OAuth2
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: yoelh
-ms.openlocfilehash: d389a44ce38d84e510060f3b0a53cda58513dee5
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.author: davidmu
+ms.openlocfilehash: f12bbc2472aa2d83088c7d4d7b8f173744fb36b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Přidejte Google + jako zprostředkovatele identity OAuth2 pomocí vlastních zásad
 
@@ -39,7 +36,7 @@ K těmto krokům patří:
 5.  Odeslání zásady do Azure AD B2C klienta a otestovat ji
 
 ## <a name="create-a-google-account-application"></a>Vytvoření aplikace účet Google +
-Pokud chcete používat Google + jako poskytovatel identit v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci Google + a zadat se správné parametry. Můžete zaregistrovat Google aplikace + zde: [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp)
+Pokud chcete používat Google + jako poskytovatel identit v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci Google + a zadat se správné parametry. Můžete zaregistrovat Google aplikace + tady: [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp)
 
 1.  Přejděte na [konzole pro vývojáře Google](https://console.developers.google.com/) a přihlaste se pomocí přihlašovací údaje účtu Google +.
 2.  Klikněte na tlačítko **vytvořit projekt**, zadejte **název projektu**a potom klikněte na **vytvořit**.
@@ -48,7 +45,7 @@ Pokud chcete používat Google + jako poskytovatel identit v Azure Active Direct
 
     ![Google + účet – vyberte projektu](media/active-directory-b2c-custom-setup-goog-idp/goog-add-new-app1.png)
 
-4.  Klikněte na  **+**  tlačítko.
+4.  Klikněte na **+** tlačítko.
 
     ![Google + účet – vytvoření nového projektu](media/active-directory-b2c-custom-setup-goog-idp//goog-add-new-app2.png)
 
@@ -178,10 +175,10 @@ Poskytovatel identity nastavit.  Však není k dispozici v žádném z obrazovky
 4.  Vložte celý obsah `<UserJourney>` uzlu, který jste zkopírovali jako podřízenou `<UserJourneys>` elementu.
 
 ### <a name="display-the-button"></a>Zobrazení tlačítka
-`<ClaimsProviderSelections>` Element definuje seznam možnosti výběru poskytovatele deklarací identity a jejich pořadí.  `<ClaimsProviderSelection>`Element je obdobou tlačítko zprostředkovatele identity na stránce registrace-množství nebo přihlášení. Pokud přidáte `<ClaimsProviderSelection>` element pro účet Google + nové tlačítko se zobrazí při pojmenováváme uživatele na stránce. Chcete-li přidat tento element:
+`<ClaimsProviderSelections>` Element definuje seznam možnosti výběru poskytovatele deklarací identity a jejich pořadí.  `<ClaimsProviderSelection>` Element je obdobou tlačítko zprostředkovatele identity na stránce registrace-množství nebo přihlášení. Pokud přidáte `<ClaimsProviderSelection>` element pro účet Google + nové tlačítko se zobrazí při pojmenováváme uživatele na stránce. Chcete-li přidat tento element:
 
 1.  Najít `<UserJourney>` uzlu, který zahrnuje `Id="SignUpOrSignIn"` v cesty uživatele, který jste zkopírovali.
-2.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje`Order="1"`
+2.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje `Order="1"`
 3.  Přidejte následující fragment kódu XML v části `<ClaimsProviderSelections>` uzlu:
 
 ```xml
@@ -229,7 +226,7 @@ Můžete také přidat zprostředkovatele identity účet Google + pro vaše už
 ### <a name="display-the-button"></a>Zobrazení tlačítka
 1.  Otevřete soubor rozšíření zásad (například TrustFrameworkExtensions.xml).
 2.  Najít `<UserJourney>` uzlu, který zahrnuje `Id="ProfileEdit"` v cesty uživatele, který jste zkopírovali.
-3.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje`Order="1"`
+3.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje `Order="1"`
 4.  Přidejte následující fragment kódu XML v části `<ClaimsProviderSelections>` uzlu:
 
 ```xml

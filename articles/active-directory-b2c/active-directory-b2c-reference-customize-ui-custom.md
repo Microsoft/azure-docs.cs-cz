@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Referenční: přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad | Microsoft Docs"
-description: "Téma na Azure Active Directory B2C vlastní zásady"
+title: 'Azure Active Directory B2C: Referenční: přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad | Microsoft Docs'
+description: Téma na Azure Active Directory B2C vlastní zásady
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/25/2017
-ms.author: joroja
-ms.openlocfilehash: 40245c25a7f80db27a25a0d34eb20f1057fc5e02
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: davidmu
+ms.openlocfilehash: b0f68f76bfb746b91cb82b2b7e9e750f15f14253
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad
 
@@ -153,7 +150,7 @@ Následující tabulka popisuje účel předchozí stránkách HTML5.
 
 Přímou úpravou vlastní zásady můžete vám dobře slouží uživatele přidáte propojení na vaše šablony HTML5 nebo šablon stylů CSS.
 
-Vlastní šablony HTML5 nebo šablon stylů CSS pro použití v vám dobře slouží uživatele muset zadat seznam obsahu definice, které lze použít v těchto cesty uživatele. K tomuto účelu, volitelný  *<ContentDefinitions>*  – element XML musí být deklarován v části  *<BuildingBlocks>*  části souboru XML vlastní zásady.
+Vlastní šablony HTML5 nebo šablon stylů CSS pro použití v vám dobře slouží uživatele muset zadat seznam obsahu definice, které lze použít v těchto cesty uživatele. K tomuto účelu, volitelný *<ContentDefinitions>* – element XML musí být deklarován v části *<BuildingBlocks>* části souboru XML vlastní zásady.
 
 Následující tabulka popisuje sadu ID definice rozpoznáno identit Azure AD B2C prostředí stroj a typ stránky, která má vztah k jejich obsah.
 

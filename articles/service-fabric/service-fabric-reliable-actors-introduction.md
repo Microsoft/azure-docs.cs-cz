@@ -1,11 +1,11 @@
 ---
-title: "Služba Fabric Reliable Actors přehled | Microsoft Docs"
-description: "Úvod do programovacího modelu Service Fabric Reliable Actors."
+title: Služba Fabric Reliable Actors přehled | Microsoft Docs
+description: Úvod do programovacího modelu Service Fabric Reliable Actors.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7fdad07f-f2d6-4c74-804d-e0d56131f060
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 640e051a909b1b9457b20cbd507b418342297c6e
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 6a13ced8b1c49239d1ad5fb96775f43de9c3943e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Seznámení se službou Service Fabric Reliable Actors
 Reliable Actors je architektura aplikace Service Fabric na základě [virtuální objektu Actor](http://research.microsoft.com/en-us/projects/orleans/) vzor. Rozhraní API spolehlivé aktéři poskytuje programovací model jednovláknové založený na škálovatelnost a spolehlivost záruk poskytnutých Service Fabric.
@@ -40,7 +40,7 @@ V Service Fabric aktéři jsou implementované v rámci Reliable Actors: na zák
 
 Každý objekt actor je definován jako instanci objektu actor typu identické způsobem, jakým objekt .NET je instance typu .NET. Například může být typ objektu actor, která implementuje funkce kalkulačky a může být mnoho aktéři daného typu, které jsou rozmístěny v různých uzlech v clusteru. Každé takové objektu actor je jedinečně identifikovaný identifikátor objektu actor.
 
-### <a name="actor-lifetime"></a>Doba života objektu actor
+## <a name="actor-lifetime"></a>Doba života objektu actor
 Service Fabric aktéři jsou virtuální, což znamená, že své životnosti není vázaný k jejich reprezentaci v paměti. V důsledku toho se nemusíte být explicitně vytvořen nebo zničeno. Modul runtime Reliable Actors automaticky aktivuje doba objektu actor první obdrží žádost pro ID tohoto objektu actor. Pokud objekt actor se nepoužívá pro určitou dobu, modul runtime Reliable Actors uvolňování paměti – shromažďuje objekt v paměti. Také zachová znalostní báze objektu actor existence měli později znovu aktivovat. Další podrobnosti najdete v tématu [kolekce paměti a životního cyklu objektu Actor](service-fabric-reliable-actors-lifecycle.md).
 
 Tato abstrakce doba života objektu actor virtuální představuje některé upozornění v důsledku virtuální objektu actor modelu a ve skutečnosti implementace Reliable Actors odchylují někdy z tohoto modelu.
@@ -49,7 +49,7 @@ Tato abstrakce doba života objektu actor virtuální představuje některé upo
 * Voláním jakékoli metody objektu actor pro ID objektu actor aktivuje tohoto objektu actor. Z tohoto důvodu objektu actor typy mají jejich konstruktor volána implicitně modulem runtime. Kód klienta proto nemůžete předat parametry do konstruktoru objektu actor typu, i když může být předány parametry objektu actor konstruktor samotné služby. Výsledkem je, že aktéři může zkonstruovat ve stavu částečně inicializovat podle času, které se nazývají jiné metody, pokud objektu actor vyžaduje inicializační parametry z klienta. Neexistuje jeden vstupní bod pro aktivaci objektu actor z klienta.
 * I když Reliable Actors implicitně vytvořit objekty objektu actor; Máte možnost explicitně odstranit objekt actor a její stav.
 
-### <a name="distribution-and-failover"></a>Distribuce a převzetí služeb při selhání
+## <a name="distribution-and-failover"></a>Distribuce a převzetí služeb při selhání
 Zajistit škálovatelnost a spolehlivost, Service Fabric distribuuje aktéři v rámci clusteru a automaticky je migraci z selhání uzlů do pořádku ty, které jsou podle potřeby. Toto je abstrakci přes [oddílů, stavová služba spolehlivé](service-fabric-concepts-partitioning.md). Distribuce, škálovatelnost, spolehlivost a automatické převzetí služeb při selhání jsou k všechny dispozici základě skutečnost, že aktéři běží ve stavové služby spolehlivé volat *služby objektu Actor*.
 
 Aktéři jsou distribuovány na oddíly služby objektu Actor a tyto oddíly jsou rozdělené mezi uzly v clusteru Service Fabric. Každý oddíl služby obsahuje sadu aktéři. Service Fabric spravuje distribuce a převzetí služeb při selhání oddílů služby.
@@ -67,12 +67,12 @@ Rozhraní objektu Actor oddílu schéma a klíč nastavení rozsahu pro vás spr
 
 Další informace o tom, jak jsou služby objektu actor do několika oddílů, najdete v části [dělení koncepty pro aktéři](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
 
-### <a name="actor-communication"></a>Komunikace objektu actor
+## <a name="actor-communication"></a>Komunikace objektu actor
 Interakce objektu actor jsou definovány v rozhraní, které sdílí objektu actor, který implementuje rozhraní a klienta, který získá proxy serveru k objektu actor prostřednictvím stejné rozhraní. Protože toto rozhraní se použije k vyvolání metody objektu actor asynchronně, musí být každý metoda v rozhraní vrácení úloh.
 
 Volání metod a jejich odpovědi konečným výsledkem je síťové požadavky napříč clusterem, takže argumenty a typy výsledků úlohy, které vracejí musejí být serializovatelná platformou. Konkrétně musí být [kontraktů dat serializovatelný](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
-#### <a name="the-actor-proxy"></a>Proxy objektu actor
+### <a name="the-actor-proxy"></a>Proxy objektu actor
 Klient Reliable Actors rozhraní API poskytuje komunikaci mezi instanci objektu actor a objektu actor klienta. Ke komunikaci s objektu actor, klient vytvoří objekt actor proxy, který implementuje rozhraní objektu actor. Klient komunikuje s objektu actor vyvoláním metody pro objekt proxy serveru. Proxy objektu actor lze použít pro komunikaci klienta do objektu actor a objektu actor actor.
 
 ```csharp
@@ -105,7 +105,7 @@ Upozorňujeme, že jsou dva kusy informace, které slouží k vytvoření objekt
 * Doručení zpráv je nejlepší úsilí.
 * Aktéři může se zobrazit duplicitní zprávy ze stejného klienta.
 
-### <a name="concurrency"></a>Souběžnost
+## <a name="concurrency"></a>Souběžnost
 Modul runtime Reliable Actors poskytuje jednoduché přístupu na základě zapněte model pro přístup k objektu actor metody. To znamená, že kdykoli může být aktivní uvnitř objekt actor kód více než jedno vlákno. Není nutné pro synchronizaci mechanismy pro přístup k datům přístupu na základě zapnout výrazně zjednodušuje souběžných systémy. Taky to znamená, že systémy musí být vytvořeny s zvláštní upozornění pro jednovláknové přístup povaze každá instance objektu actor.
 
 * Více než jeden požadavek nelze zpracovat instance jednoho objektu actor v čase. Instance objektu actor může způsobit úzkým místem propustnost, pokud se očekává, zpracování souběžných požadavků.
@@ -113,7 +113,7 @@ Modul runtime Reliable Actors poskytuje jednoduché přístupu na základě zapn
 
 ![Spolehlivé aktéři komunikace][3]
 
-#### <a name="turn-based-access"></a>Přístupu na základě zapnout
+### <a name="turn-based-access"></a>Přístupu na základě zapnout
 Zapněte se skládá z dokončení provádění metody objektu actor v reakci na žádost o jiných klientů nebo aktéři nebo dokončení provádění [časovače nebo připomenutí](service-fabric-reliable-actors-timers-reminders.md) zpětného volání. I když jsou tyto metody a zpětná volání asynchronní, modul runtime aktéři není prokládání dat je. Předtím, než je povolený nový zapnout, musí být plně dokončení zapnout. Jinými slovy musí být plně dokončení před nové volání do metody objektu actor metoda nebo časovače nebo připomenutí zpětné volání, které právě probíhá nebo je povoleno zpětného volání. Metoda nebo zpětné volání se považuje dokončily, pokud provádění vrátila z metody nebo dokončení zpětného volání a úloha vrácená metoda nebo zpětného volání. Je vhodné zdůraznění, že na základě zapnout concurrency je dodržena i přes různé metody, časovače a zpětná volání.
 
 Modul runtime aktéři vynucuje na základě zapnout souběžnosti získávání zámku na objektu actor na začátku zapnout a uvolnění uzamčení na konci zapnout. Na základě zapnout souběžnosti je proto vynucují na základě za objekt actor a není mezi aktéři. Metody objektu actor a zpětná volání časovače nebo připomenutí můžete spustit současně jménem různých aktéři.
@@ -136,13 +136,13 @@ Některé důležité body vzít v úvahu:
 * Provádění *Method1* jménem *ActorId1* se překrývá s jeho spuštění jménem *ActorId2*. Je to proto, že na základě zapnout concurrency se vynucuje jenom v rámci objektu actor a není napříč aktéři.
 * V některých spuštěních metoda/zpětného volání `Task`(C#) nebo `CompletableFuture`(Java) vrácený dokončení metoda/zpětného volání po vrátí metoda. V některých jiných asynchronní operace již byla dokončena o dobu, kterou vrátí metoda zpětného volání. V obou případech zámek na objektu actor vydání až po, vrátí metoda zpětného volání i dokončení asynchronní operace.
 
-#### <a name="reentrancy"></a>Vícenásobný přístup
+### <a name="reentrancy"></a>Vícenásobný přístup
 Modul runtime aktéři umožňuje vícenásobný přístup ve výchozím nastavení. To znamená, že pokud metoda objektu actor *objektu Actor A* volá metodu na *objektu Actor B*, která volá jinou metodu na *objektu Actor A*, že je metoda může spustit. Je to proto, že je součástí stejného logického řetězce volání kontextu. Všechna volání časovače a připomenutí začínat nový kontext logické volání. Najdete v článku [vícenásobný přístup Reliable Actors](service-fabric-reliable-actors-reentrancy.md) další podrobnosti.
 
-#### <a name="scope-of-concurrency-guarantees"></a>Rozsah záruky souběžnosti
+### <a name="scope-of-concurrency-guarantees"></a>Rozsah záruky souběžnosti
 Modul runtime aktéři poskytuje tyto záruky souběžnosti v situacích, kde se řídí volání z těchto metod. Například poskytuje tyto záruky pro volání metod, které se provádějí v odpovědi na požadavek klienta, a také pro zpětné volání časovače a připomenutí. Ale pokud kód objektu actor přímo vyvolá tyto metody mimo mechanismy, které poskytuje modulem runtime aktéři, modul runtime nelze zadejte jakékoli záruky souběžnosti. Například pokud metoda je volána v rámci některých úloh, který není spojen s Úloha vrácená metody objektu actor, modul runtime nelze zadejte souběžnosti záruky. Pokud je metoda je vyvolána z vlákna, která objektu actor vytvoří sama o sobě, modul runtime nelze zadejte také souběžnosti záruky. Proto k provedení operace na pozadí, měli používat aktéři [objektu actor časovače a upomínek objektu actor](service-fabric-reliable-actors-timers-reminders.md) , respektují na základě zapnout souběžnosti.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Začínáme se ve vaší první službě Reliable Actors:
    * [Začínáme s Reliable Actors na rozhraní .NET](service-fabric-reliable-actors-get-started.md)
    * [Začínáme s Reliable Actors v jazyce Java](service-fabric-reliable-actors-get-started-java.md)

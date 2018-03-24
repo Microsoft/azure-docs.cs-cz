@@ -1,8 +1,8 @@
 ---
-title: "Architektura Azure HDInsight připojený k doméně | Microsoft Docs"
-description: "Naučte se plánovat službu HDInsight připojenou k doméně."
+title: Architektura Azure HDInsight připojený k doméně | Microsoft Docs
+description: Naučte se plánovat službu HDInsight připojenou k doméně.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bhanupr
 manager: jhubbard
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/14/2017
+ms.date: 03/20/2018
 ms.author: bprakash
-ms.openlocfilehash: 5285199d22528ed6b9fa3b7dbc85e382e7b28569
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b4f79388e45e24dc906a3a03dc0c0e51df52160d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Plánování clusterů Azure Hadoop připojených k doméně ve službě HDInsight
 
@@ -47,16 +47,14 @@ Následující snímek obrazovky ukazuje organizační jednotce vytvořené v do
 
 ![Organizační jednotky clusterů HDInsight připojené k doméně](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
 
-### <a name="two-ways-of-bringing-your-own-active-directory-domain-controllers"></a>Dva způsoby uvedení vlastní řadiče domény služby Active Directory
-
-Existují dva způsoby, můžete zahrnout řadiče domény služby Active Directory k vytvoření clusterů HDInsight připojený k doméně. 
+### <a name="the-way-of-bringing-your-own-active-directory-domain-controllers"></a>Způsob uvedení vlastní řadiče domény služby Active Directory
 
 - **Azure Active Directory Domain Services**: Tato služba poskytuje spravované doméně služby Active Directory, která je plně kompatibilní s Windows Server Active Directory. Microsoft má na starosti správu, opravy a monitorování doméně AD. Cluster můžete nasadit bez starostí o správu řadičů domény. Uživatelé, skupiny a hesla se synchronizují ze služby Azure Active Directory, uživatelé budou moct přihlásit ke clusteru pomocí své podnikové přihlašovací údaje. Další informace najdete v tématu [clusterů HDInsight připojený k doméně nakonfigurovat pomocí Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md).
 
-- **Služba Active Directory v virtuální počítače Azure IaaS**: tuto možnost, můžete nasadit a spravovat vlastní domény Windows Server Active Directory na virtuálních počítačích Azure IaaS. Další informace najdete v tématu [konfigurace domény připojené k izolovanému prostoru prostředí](./apache-domain-joined-configure.md).
+> [!NOTE]
+> Služba Active Directory v virtuální počítače Azure IaaS již není podporována.
 
 ## <a name="next-steps"></a>Další postup
-* Pokud chcete konfigurovat cluster HDInsight připojený k doméně, přečtěte si téma [Konfigurace clusterů HDInsight připojených k doméně](apache-domain-joined-configure.md).
 * Pokud chcete spravovat clustery HDInsight připojené k doméně, přečtěte si téma [Správa clusterů HDInsight připojených k doméně](apache-domain-joined-manage.md).
 * Pokud chcete konfigurovat zásady Hivu a spouštět dotazy Hivu, přečtěte si téma [Konfigurace zásad Hivu pro clustery HDInsight připojené k doméně](apache-domain-joined-run-hive.md).
 * Ke spouštění dotazů Hive pomocí protokolu SSH na doméně clusterů HDInsight, najdete v části [použití SSH s HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).

@@ -1,22 +1,21 @@
 ---
-title: "Postup propojení předplatné Azure s Azure AD B2C | Microsoft Docs"
-description: "Podrobný průvodce povolit fakturace pro klienta Azure AD B2C do předplatného Azure."
+title: Postup propojení předplatné Azure s Azure AD B2C | Microsoft Docs
+description: Podrobný průvodce povolit fakturace pro klienta Azure AD B2C do předplatného Azure.
 services: active-directory-b2c
 documentationcenter: dev-center-name
-author: parakhj
+author: davidmu1
 manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2017
-ms.author: parja
-ms.openlocfilehash: c61cf24083ac3422e30dabf8514dcbd3aec0599d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: davidmu
+ms.openlocfilehash: bb9324b01bb810ba15994612bac2ff20dc83ab82
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Propojování předplatné Azure klienta Azure AD B2C
 

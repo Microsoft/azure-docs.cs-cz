@@ -1,11 +1,11 @@
 ---
-title: "Nejčastější dotazy o virtuálních počítačích Windows v Azure | Microsoft Docs"
-description: "Poskytuje odpovědi na některé časté otázky týkající se virtuální počítače s Windows, které jsou vytvořené pomocí modelu Resource Manager."
+title: Nejčastější dotazy o virtuálních počítačích Windows v Azure | Microsoft Docs
+description: Poskytuje odpovědi na některé časté otázky týkající se virtuální počítače s Windows, které jsou vytvořené pomocí modelu Resource Manager.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-management
 ms.assetid: 757da816-a050-4889-a010-6f75d7978eb7
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: cynthn
-ms.openlocfilehash: 9aa316e59fb78373cc044f8e18f5d24ea9c5258f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: e440385ca0f22dce8668fe73b91efe14e0c8a9b6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Časté otázky o virtuálních počítačích s Windows
 Tento článek se zaměřuje na některé běžné dotazy týkající se virtuální počítače s Windows, které jsou vytvořené v Azure pomocí modelu nasazení Resource Manager. Linux verzi tohoto tématu naleznete v části [často kladené otázky o virtuálních počítačích s Linuxem](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -75,7 +75,7 @@ Ano. Pokud chcete rychle vytvořit virtuální počítač s Linuxem můžete vyz
 Ano, to je nyní možné. Virtuální počítač nejdřív je potřeba zastavit deallocated. Potom můžete přidat nebo odebrat síťový adaptér (Pokud je poslední síťový adaptér ve virtuálním počítači). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Existují jakékoli požadavky na název počítače?
-Ano. Název počítače nesmí být delší než 15 znaků. V tématu [pojmenování konvence pravidla a omezení](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Další informace ohledně pojmenování vašich prostředků.
+Ano. Název počítače nesmí být delší než 15 znaků. V tématu [pojmenování konvence pravidla a omezení](/azure/architecture/best-practices/naming-conventions#compute) Další informace ohledně pojmenování vašich prostředků.
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Dochází k jakémukoli prostředku, požadavky na název skupiny?
 Ano. Název skupiny prostředků může být maximálně 90 znaků. V tématu [pojmenování konvence pravidla a omezení](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) Další informace o skupinách prostředků.

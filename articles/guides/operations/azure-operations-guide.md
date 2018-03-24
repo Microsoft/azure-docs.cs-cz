@@ -1,25 +1,25 @@
 ---
-title: "Příručka pro operátory Azure IT Začínáme | Microsoft Docs"
-description: "Úvodní příručka pro operátory IT Azure"
-services: 
-documentationcenter: 
+title: Příručka pro operátory Azure IT Začínáme | Microsoft Docs
+description: Úvodní příručka pro operátory IT Azure
+services: ''
+documentationcenter: ''
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
-ms.devlang: 
-ms.topic: 
-ms.tgt_pltfrm: 
+ms.devlang: ''
+ms.topic: ''
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 8d7cbe27e5acfe741aeb5ed85756bf3c7ce2160b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0be60fff3d49ff39691f19cb1013e023f9f984e6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Úvod k řešení cloud computing a Microsoft Azure
 
@@ -148,7 +148,7 @@ Jedním z beneﬁts používání Azure je, že můžete nasadit aplikace do rů
 ### <a name="azure-portal"></a>Azure Portal
 
 
-Portál Azure je webové aplikace, která slouží k vytváření, správu a odebrat prostředky Azure a služby. Portál Azure je umístěn v https://portal.azure.com. Zahrnuje přizpůsobitelný řídicí panel a nástrojů pro správu prostředků Azure. Nabízí taky informace fakturace a předplatného. Další informace najdete v tématu [přehled portálu Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Azure spravovat prostředky prostřednictvím portálu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
+Portál Azure je webové aplikace, která slouží k vytváření, správu a odebrat prostředky Azure a služby. Portál Azure se nachází v https://portal.azure.com. Zahrnuje přizpůsobitelný řídicí panel a nástrojů pro správu prostředků Azure. Nabízí taky informace fakturace a předplatného. Další informace najdete v tématu [přehled portálu Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Azure spravovat prostředky prostřednictvím portálu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
 ### <a name="resources"></a>Zdroje a prostředky
 
@@ -485,7 +485,7 @@ Místní sítě můžete připojit k virtuální síti Azure pomocí ExpressRout
 
 Protože virtuální síť Azure je připojen k síti na pracovišti, mezi různými místy, že virtuální sítě musíte použít jedinečnou část adresního prostoru, který vaše organizace používá. Stejným způsobem, který různých sídlech společnosti jsou přiřazeny určité podsítě IP Azure stane jiného umístění, jako rozšíření vaší sítě.
 
-###<a name="deploying-a-virtual-network"></a>Nasazení virtuální sítě
+### <a name="deploying-a-virtual-network"></a>Nasazení virtuální sítě
 
 Existuje několik možností pro nasazení virtuální sítě.
 

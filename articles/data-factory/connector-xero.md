@@ -1,11 +1,11 @@
 ---
-title: "Kopírování dat z Xero pomocí Azure Data Factory (Beta) | Microsoft Docs"
-description: "Postup kopírování dat z Xero do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory."
+title: Kopírování dat z Xero pomocí Azure Data Factory (Beta) | Microsoft Docs
+description: Postup kopírování dat z Xero do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 458ad702b510c0fd01ab63541b2026b8a9a06e91
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 09a1bfc47cd048e371575f80933f5bfd0116bf8e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-beta"></a>Kopírování dat z Xero pomocí Azure Data Factory (Beta)
 

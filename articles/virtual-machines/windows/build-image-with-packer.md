@@ -1,24 +1,24 @@
 ---
-title: "Vytvoření bitové kopie virtuálního počítače Windows Azure s balírna | Microsoft Docs"
-description: "Další informace o použití balírna k vytvoření bitové kopie virtuálních počítačů s Windows v Azure"
+title: Vytvoření bitové kopie virtuálního počítače Windows Azure s balírna | Microsoft Docs
+description: Další informace o použití balírna k vytvoření bitové kopie virtuálních počítačů s Windows v Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: b5030e12743ca81b74502e31767eb6b2e05e444f
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: b53b301a45fb7482aa05f24b386b79fcedc148e2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak používat balírna k vytváření bitových kopií systému Windows virtuálního počítače v Azure
 Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje distribuci systému Windows a verze operačního systému. Bitové kopie může zahrnovat předinstalované aplikace a konfigurace. Azure Marketplace poskytuje celou řadu imagí první a třetí strany pro nejběžnější operačního systému a aplikací prostředí, nebo můžete vytvořit vlastní vlastních bitových kopií přizpůsobit svým potřebám. Tento článek popisuje, jak používat nástroj open source [balírna](https://www.packer.io/) definovat a vytvářet vlastní bitové kopie v Azure.
@@ -27,7 +27,7 @@ Každý virtuální počítač (VM) v Azure je vytvořený z image, která defin
 ## <a name="create-azure-resource-group"></a>Vytvoření skupiny prostředků Azure.
 Během procesu vytváření balírna vytvoří dočasný prostředky Azure, jako sestavuje zdrojového virtuálního počítače. Když Pokud chcete zachytit tohoto zdrojového virtuálního počítače pro použití jako bitovou kopii, je nutné zadat skupinu prostředků. Výstup z procesu sestavení balírna je uložený v této skupině prostředků.
 
-Vytvořte skupinu prostředků s [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *eastus* umístění:
+Vytvořte skupinu prostředků s [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -59,17 +59,17 @@ V dalším kroku použijete tyto dva identifikátory ID.
 
 
 ## <a name="define-packer-template"></a>Definovat balírna šablonu
-K vytvoření bitové kopie, vytvořit šablonu jako soubor ve formátu JSON. V šabloně definujete tvůrce a provisioners, které provádějí procesu skutečné sestavení. Má balírna [zajištění webu pro Azure](https://www.packer.io/docs/builders/azure.html) , což vám umožní definovat prostředky Azure, jako jsou hlavní přihlašovací údaje služby vytvořili v předchozím kroku.
+K vytvoření bitové kopie, vytvořit šablonu jako soubor ve formátu JSON. V šabloně definujete tvůrce a provisioners, které provádějí procesu skutečné sestavení. Má balírna [tvůrce pro Azure](https://www.packer.io/docs/builders/azure.html) , což vám umožní definovat prostředky Azure, jako jsou hlavní přihlašovací údaje služby vytvořili v předchozím kroku.
 
 Vytvořte soubor s názvem *windows.json* a vložte následující obsah. Zadejte vlastní hodnoty pro následující:
 
 | Parametr                           | Kde můžete získat |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Zobrazení ID objektu zabezpečení služby s`$sp.applicationId` |
-| *tajný klíč client_secret*                     | Heslo, které jste zadali v`$securePassword` |
+| *client_id*                         | Zobrazení ID objektu zabezpečení služby s `$sp.applicationId` |
+| *client_secret*                     | Heslo, které jste zadali v `$securePassword` |
 | *tenant_id*                         | Výstup z `$sub.TenantId` příkaz |
-| *ID_ODBĚRU*                   | Výstup z `$sub.SubscriptionId` příkaz |
-| *object_id*                         | ID objektu zabezpečení služby zobrazení s`$sp.Id` |
+| *subscription_id*                   | Výstup z `$sub.SubscriptionId` příkaz |
+| *object_id*                         | ID objektu zabezpečení služby zobrazení s `$sp.Id` |
 | *managed_image_resource_group_name* | Název skupiny prostředků, kterou jste vytvořili v prvním kroku |
 | *managed_image_name*                | Název bitové kopie spravovaného disku, který je vytvořen |
 
@@ -110,8 +110,8 @@ Vytvořte soubor s názvem *windows.json* a vložte následující obsah. Zadejt
     "type": "powershell",
     "inline": [
       "Add-WindowsFeature Web-Server",
-      "if( Test-Path $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml ){ rm $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml -Force}",
-      "& $Env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /shutdown /quiet"
+      "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit",
+      "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"
     ]
   }]
 }
@@ -281,7 +281,7 @@ Trvá několik minut vytvořit virtuální počítač z bitové kopie balírna.
 
 
 ## <a name="test-vm-and-iis"></a>Testovací virtuální počítač a služby IIS
-Získat veřejnou IP adresu vašeho virtuálního počítače s [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Následující příklad, získá IP adresu pro *myPublicIP* vytvořili dříve:
+Získejte veřejnou IP adresu virtuálního počítače pomocí rutiny [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIP*:
 
 ```powershell
 Get-AzureRmPublicIPAddress `
@@ -289,12 +289,12 @@ Get-AzureRmPublicIPAddress `
     -Name "myPublicIP" | select "IpAddress"
 ```
 
-Potom můžete zadat veřejnou IP adresu v do webového prohlížeče.
+Veřejnou IP adresu pak můžete zadat do webového prohlížeče.
 
 ![Výchozí web služby IIS](./media/build-image-with-packer/iis.png) 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto příkladu jste použili balírna k vytvoření image virtuálního počítače s již nainstalovanou službu IIS. Můžete tuto bitovou kopii virtuálního počítače spolu s existující pracovní postupy nasazení, například k nasazení vaší aplikace na virtuální počítače vytvořené z bitové kopie s Team Services, Ansible, Chef nebo Puppet.
 
 Další příklad šablony balírna pro ostatní distribucích systému Windows, najdete v části [toto úložiště GitHub](https://github.com/hashicorp/packer/tree/master/examples/azure).

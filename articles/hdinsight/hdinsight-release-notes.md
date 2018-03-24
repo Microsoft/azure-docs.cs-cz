@@ -1,8 +1,8 @@
 ---
-title: "Poznámky k verzi pro komponent systému Hadoop v Azure HDInsight | Microsoft Docs"
-description: "Nejnovější poznámky k verzi a verze komponent systému Hadoop pro Azure HDInsight. Získáte tipy pro vývoj a podrobnosti pro Spark, R Server, Hive a další."
+title: Poznámky k verzi pro komponent systému Hadoop v Azure HDInsight | Microsoft Docs
+description: Nejnovější poznámky k verzi a verze komponent systému Hadoop pro Azure HDInsight. Získáte tipy pro vývoj a podrobnosti pro Spark, R Server, Hive a další.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 editor: cgronlun
 manager: jhubbard
 author: nitinme
@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/20/2018
 ms.author: nitinme
-ms.openlocfilehash: 38a33056ccd908b43319125b3fe517988b1507c6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bf0bfa052c8cd7589af40972fda1e1802b4d1acb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Poznámky k verzi pro komponent systému Hadoop v Azure HDInsight
 
@@ -29,9 +29,10 @@ Tento článek obsahuje informace o **nejnovější** Azure HDInsight verze aktu
 > [!IMPORTANT]
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [HDInsight verze článku](hdinsight-component-versioning.md).
 
-## <a name="notes-for-03082018---release-of-spark-22-on-hdinsight-36"></a>Poznámky pro 03/08/2018 - verzi 2.2 Spark v HDInsight 3.6
+## <a name="notes-for-03202018---release-of-spark-22-on-hdinsight-36"></a>Poznámky pro 03/20/2018 - verzi 2.2 Spark v HDInsight 3.6
 
 - Spark 2.2.0 zlepšuje stabilitu napříč Spark Core, SQL, ML a přináší strukturovaných streamování GA stavu. Spark 2.2.0 je nyní k dispozici na HDInsight 3.6.
+
 
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>Poznámky k verzi 08/01/2017 HDInsight
 

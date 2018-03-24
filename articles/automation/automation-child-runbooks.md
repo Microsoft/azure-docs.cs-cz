@@ -1,6 +1,6 @@
 ---
-title: "Podřízené runbooky ve službě Azure Automation"
-description: "Popisuje různé metody pro spuštění sady runbook ve službě Azure Automation z jiného runbooku a sdílení informací mezi nimi."
+title: Podřízené runbooky ve službě Azure Automation
+description: Popisuje různé metody pro spuštění sady runbook ve službě Azure Automation z jiného runbooku a sdílení informací mezi nimi.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: e8fe3b0023d2cdb9061b5a2c15c3b2c7095c128e
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 587a6badd57aad839b4b03ca9da1b62d97b38f82
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podřízené runbooky ve službě Azure Automation
 Je osvědčeným postupem ve službě Azure Automation zapisovat opakovaně použitelné modulární runbooky se samostatnou funkcí, které můžete používat ostatní runbooky. Nadřazená sada runbook bude často volat podřízené runbooky provést požadovanou funkci. Existují dva způsoby, jak volat podřízené runbooky, a každá z nich má významné rozdíly, kterým byste měli porozumět, aby mohla určit, která bude vhodné pro různé scénáře.

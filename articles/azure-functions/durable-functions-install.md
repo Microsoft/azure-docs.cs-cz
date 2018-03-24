@@ -1,24 +1,24 @@
 ---
-title: "Nainstalujte rozšíření trvanlivý funkce a vzorky – Azure"
-description: "Naučte se nainstalovat rozšíření trvanlivý funkce pro funkce Azure pro vývoj portálu nebo vývoj sady Visual Studio."
+title: Nainstalujte rozšíření trvanlivý funkce a vzorky – Azure
+description: Naučte se nainstalovat rozšíření trvanlivý funkce pro funkce Azure pro vývoj portálu nebo vývoj sady Visual Studio.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e1e8b019fe4632b0b6ac02888b562d6718c14fcc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3451f268e78df6efa5e3fc489b88415349efe169
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Nainstalujte rozšíření trvanlivý funkce a ukázky (Azure Functions)
 
@@ -77,12 +77,17 @@ Visual Studio Code poskytuje místní vývojové prostředí, který po sobě za
 3. Nainstalujte rozšíření trvanlivý funkce Azure tak, že spustíte následující v příkazu výzvy a Terminálový okno:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.1.0-beta2
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.2.0-beta3
     ```
-4. Spusťte emulátor úložiště Azure nebo aktualizace *local.appsettings.json* soubor s skutečné připojovacího řetězce úložiště Azure.
-3. Otevřete projekt ve Visual Studio Code. 
-5. Pokyny ke spuštění ukázky začínat [funkce řetězení – Hello ukázka pořadí](durable-functions-sequence.md). Ukázku můžete spustit místně nebo publikované do Azure.
-6. Spusťte projekt tak, že spustíte v příkazu výzvy a Terminálový následující příkaz:
+4. Nainstalujte rozšíření Twilio funkce Azure tak, že spustíte následující v příkazu výzvy a Terminálový okno:
+
+    ```bash
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta4
+    ```
+5. Spusťte emulátor úložiště Azure nebo aktualizace *local.appsettings.json* soubor s skutečné připojovacího řetězce úložiště Azure.
+6. Otevřete projekt ve Visual Studio Code. 
+7. Pokyny ke spuštění ukázky začínat [funkce řetězení – Hello ukázka pořadí](durable-functions-sequence.md). Ukázku můžete spustit místně nebo publikované do Azure.
+8. Spusťte projekt tak, že spustíte v příkazu výzvy a Terminálový následující příkaz:
     ```bash
     func host start
     ```

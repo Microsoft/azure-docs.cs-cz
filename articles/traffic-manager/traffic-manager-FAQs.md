@@ -1,24 +1,24 @@
 ---
-title: "Azure Traffic Manager – nejčastější dotazy | Microsoft Docs"
-description: "Tento článek obsahuje odpovědi na nejčastější dotazy o Traffic Manager"
+title: Azure Traffic Manager – nejčastější dotazy | Microsoft Docs
+description: Tento článek obsahuje odpovědi na nejčastější dotazy o Traffic Manager
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2018
+ms.date: 03/18/2018
 ms.author: kumud
-ms.openlocfilehash: 09fd133ec72f7ebbbcb45f652855e7640656a0ca
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: d9db669ab905fb51390f6ca80736af4cde13d902
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager nejčastější dotazy (FAQ)
 
@@ -123,9 +123,6 @@ Ano, geografické směrování zadejte pouze verze rozhraní API 2017-03-01 a no
 
 ## <a name="real-user-measurements"></a>Real User Measurements
 
->[!NOTE]
->Funkce reálného měření uživatele v Traffic Manager je ve verzi Public Preview a nemusí mít stejnou úroveň dostupnost a spolehlivost jako verze funkce, které jsou obecné dostupnosti. Funkce není podporována, může mít omezené možnosti a nemusí být k dispozici ve všech Azure umístění. Nejaktuálnější upozornění na stav této funkce a dostupnost, zkontrolujte [Azure Traffic Manager aktualizuje](https://azure.microsoft.com/updates/?product=traffic-manager) stránky.
-
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Jaké jsou výhody používání reálného měření uživatele?
 Při použití metody směrování podle výkonu Traffic Manager vybere nejlepší oblast Azure pro koncovým uživatelům se připojit k zkontrolováním zdrojové IP adresy a EDNS klientské podsíti (Pokud je předaná) a kontrola proti intelligence latence sítě služby udržuje. Skutečné uživatele měření to zvyšuje pro základní koncovým uživatelům tak, že jejich prostředí přispívat do této tabulky latence také ověřit, která v této tabulce adekvátní zahrnuje sítě koncového uživatele z kde koncoví uživatelé připojit k Azure. To vede k vyšší přesností v směrování koncovým uživatelům.
 
@@ -140,7 +137,8 @@ Ne, je potřeba jenom jednou povolit jedno předplatné a všechny informace o l
 
 ### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Jak vypnout reálného měření uživatele pro Moje předplatné?
 Můžete zastavit nabíhání poplatků za reálného měření uživatele Když zastavíte shromažďování a odesílání back latence měření z klientské aplikace. Například při měření JavaScript vložené do webové stránky, můžete zastavit pomocí této funkce odebráním JavaScript nebo vypnutím jeho volání při vykreslení stránky.
-Jiný způsob, jak vypnout reálného měření uživatele je odstranit klíč. Jakmile to uděláte, se zahodí všechny měření odeslaných do Traffic Manageru s tímto klíčem.
+
+Můžete také vypnout reálného měření uživatele odstraněním váš klíč. Po odstranění klíče se zahodí všechny měření odeslaných do Traffic Manageru s tímto klíčem.
 
 ### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Můžete použít reálného měření uživatele pomocí klientských aplikací než webové stránky?
 Ano, reálného měření uživatele slouží k ingestování údaje shromážděné prostřednictvím jiného typu klientů koncového uživatele. Tyto nejčastější dotazy bude aktualizován, jak získat podporuje nové typy klientské aplikace.
@@ -155,16 +153,16 @@ Ne, je žádné naprogramovaných zpoždění před vyvoláním skript.
 Ne, každý čas vyvolání, skript reálného měření uživatele měří sadu šesti oblastí, které jsou určené pomocí služby Azure. Toto nastavení změny mezi různými voláními a když stát velké množství takových volání pokrytí měření fungují v rámci různých oblastech Azure.
 
 ### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Můžete omezit počet měření provedených na konkrétní číslo?
-Měření, které JavaScript je vkládán vaši webovou stránku a jsou v úplnou kontrolu nad k zahájení a ukončení jeho použití. Tak dlouho, dokud služby Traffic Manager obdrží žádost o seznam oblastí Azure měření, jsou vráceny sadu oblasti. Také mějte na paměti, že během období preview je nebudou účtovány poplatky za jakékoli měření hlášené do Traffic Manageru
+Měření, které JavaScript je vkládán vaši webovou stránku a jsou v úplnou kontrolu nad k zahájení a ukončení jeho použití. Tak dlouho, dokud služby Traffic Manager obdrží žádost o seznam oblastí Azure měření, jsou vráceny sadu oblasti.
 
 ### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Můžete zobrazit měření pořízených Moje aplikace klienta jako součást reálného měření uživatele?
-Vzhledem k tomu, že logice měření spuštění z klientské aplikace, se v úplné řízení co se stane, včetně, zobrazuje se zjištěnými hodnotami latence. Traffic Manager nevytváří sestavu agregované zobrazení měření přijatých pod klíčem přidružený k vašemu předplatnému
+Vzhledem k tomu, že logice měření spuštění z klientské aplikace, se v úplné řízení co se stane, včetně, zobrazuje se zjištěnými hodnotami latence. Traffic Manager nevytváří sestavu agregované zobrazení měření přijatých pod klíčem přidružený k vašemu předplatnému.
 
 ### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Můžete upravit skript měření uvedený Traffic Managerem?
 Když jste kontrolu nad co vložené na webové stránce, jsme důrazně bránit vám v provedení změn měření skript, aby mohly měří a sestavy latence správně.
 
 ### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>Je možné pro ostatní uživatele na klíč, který se používá s reálného měření uživatele?
-Vložený skript měření webové stránky, je možné pro ostatní uživatele skript a klíč měření skutečné uživatele (RUM). Ale je důležité vědět, že tento klíč se liší od svoje id předplatného a je generována Traffic Managerem má být použit pouze pro tento účel. Znalost RUMU klíč nebude ohrozit bezpečnost vašeho účtu Azure
+Vložený skript měření webové stránky, je možné pro ostatní uživatele skript a klíč měření skutečné uživatele (RUM). Ale je důležité vědět, že tento klíč se liší od svoje id předplatného a je generována Traffic Managerem má být použit pouze pro tento účel. Znalost RUMU klíč nebude ohrozit bezpečnost vašeho účtu Azure.
 
 ### <a name="can-others-abuse-my-rum-key"></a>Ostatní zneužití Moje RUMU klíč?
 Když je možné, aby jej ostatní mohli používat klíč k odesílání chybných informací do Azure Upozorňujeme, že několik nesprávný měření nezmění směrování vzhledem k tomu, že ho je vzít v úvahu společně s všech měření získaných. Pokud potřebujete změnit klíče, můžete znovu vygenerovat klíč okamžiku stane starý klíč zahozeny.
@@ -186,9 +184,6 @@ Jak je uvedeno v předchozí odpověď, serverové komponenty reálného měřen
 
 ## <a name="traffic-view"></a>Traffic View
 
->[!NOTE]
->Funkce zobrazení provoz v Traffic Manager je ve verzi Public Preview a nemusí mít stejnou úroveň dostupnost a spolehlivost jako verze funkce, které jsou obecné dostupnosti. Funkce není podporována, může mít omezené možnosti a nemusí být k dispozici ve všech Azure umístění. Nejaktuálnější upozornění na stav této funkce a dostupnost, zkontrolujte [Azure Traffic Manager aktualizuje](https://azure.microsoft.com/updates/?product=traffic-manager) stránky.
-
 ### <a name="what-does-traffic-view-do"></a>Jakým způsobem zobrazení provozu?
 Zobrazení provozu je funkce správce provoz, který vám pomůže pochopit více o uživatele a jak se jejich prostředí. Používá dotazů přijatých Traffic Manager a tabulky intelligence latenci sítě, které služba udržuje, kde přinášejí následující:
 - Oblasti, kde jsou vaši uživatelé připojovala k vaší koncových bodů v Azure.
@@ -196,7 +191,7 @@ Zobrazení provozu je funkce správce provoz, který vám pomůže pochopit víc
 - Oblastí Azure, ke kterým jsou získávání směrovány do.
 - Jejich latence prostředí k těchto oblastem Azure.
 
-Tyto informace jsou k dispozici pro můžete využívat prostřednictvím tabulkové zobrazení na portálu nejen k dispozici jako nezpracovaná data ke stažení.
+Tyto informace jsou k dispozici pro můžete využívat prostřednictvím překrytí zeměpisné mapě a tabulkové zobrazení na portálu nejen k dispozici jako nezpracovaná data ke stažení.
 
 ### <a name="how-can-i-benefit-from-using-traffic-view"></a>Jak můžete využívat pomocí zobrazení provozu?
 
@@ -208,7 +203,7 @@ Monitorování Azure slouží k pochopení na agregační úrovni provoz přijí
 
 ### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Používá provoz zobrazit informace o podsíti EDNS klienta?
 
-Zobrazení provoz nebere v úvahu informace o podsíti klienta EDNS při vytváření její výstup. Seskupovat je použije IP adresu z vašich uživatelů místní překladač služby DNS.
+Dotazy DNS obsluhovat pomocí Azure Traffic Manager vezměte v úvahu informace ECS zvýšit přesnost směrování. Ale při vytváření datové sady, který ukazuje, kde se uživatelé připojují z, provoz zobrazení používá pouze IP adresu Překladač DNS.
 
 ### <a name="how-many-days-of-data-does-traffic-view-use"></a>Kolik dnů dat zobrazení provozu použít?
 
@@ -219,15 +214,18 @@ Zobrazení provoz vytvoří její výstup zpracování dat z sedm dní před den
 Pokud používáte externí koncové body hostované mimo Azure oblasti v profilu Traffic Manageru můžete jej namapované na oblast Azure, což je proxy server pro jeho vlastnosti latence (to je ve skutečnosti je třeba Pokud používáte metody směrování podle výkonu). Pokud má toto mapování oblast Azure, že Azure oblast latence metriky se použije při vytváření zobrazení provoz výstup. Pokud není zadaný žádný oblast Azure, bude informace latence prázdný v datech pro tyto externí koncové body.
 
 ### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>Je potřeba povolit provoz zobrazení pro každý profil v Moje předplatné?
-Během období preview provoz zobrazení je povolená na úrovni předplatného a je k dispozici pro všechny profily Traffic Manager v rámci tohoto předplatného.
 
-### <a name="how-can-i-turn-off-traffic-view"></a>Jak je můžete zobrazit provoz vypnout?
-Během období preview jsme žádost, vytvořit lístek podpory zakázat zobrazení provozu pro vaše předplatné.
+Během období preview provoz zobrazení bylo povoleno na úrovni předplatného. Jako součást vylepšení, které jsme provedli před obecné dostupnosti můžete teď povolit provoz zobrazení na úrovni profilu, díky tomu můžete získat podrobnější povolení této funkce. Ve výchozím nastavení bude zakázáno provoz zobrazení pro profil.
+
+>[!NOTE]
+>Pokud jste povolili zobrazení provoz na úrovni předplatného během doby preview, musíte nyní znovu ji povolit pro každý profil v rámci tohoto předplatného.
+ 
+### <a name="how-can-i-turn-off-traffic-view"></a>Jak je můžete zobrazit provoz vypnout? 
+Provoz zobrazení můžete vypnout pro žádné profily pomocí portálu nebo REST API. 
 
 ### <a name="how-does-traffic-view-billing-work"></a>Jak funguje fakturace zobrazení provozu?
 
 Počet datových bodů použít k vytvoření výstupu vychází provoz Zobrazit cenu. V současné době podporováno pouze datový typ je dotazy, které obdrží váš profil. Kromě toho můžete se účtují pouze pro zpracování, které bylo provedeno, když máte provoz zobrazení povoleno. To znamená, že pokud povolíte provoz zobrazení pro některé časové období, za měsíc a vypnout během jinou dobu, jenom datové body zpracovat měl funkci povoleno počet směrem vašem vyúčtování.
-Během období preview vám není účtován pomocí zobrazení provoz.
 
 ## <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
 

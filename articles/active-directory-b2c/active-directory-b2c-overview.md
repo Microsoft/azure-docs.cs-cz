@@ -1,25 +1,21 @@
 ---
-title: "Web správy cloudových identit a mobilní aplikace Azure AD B2C | Microsoft Docs"
-description: "Vývoj aplikací určených uživatelům pomocí Azure Active Directory B2C"
+title: Web správy cloudových identit a mobilní aplikace Azure AD B2C | Microsoft Docs
+description: Vývoj aplikací určených uživatelům pomocí Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: 
-author: saeedakhter-msft
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: c465dbde-f800-4f2e-8814-0ff5f5dae610
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.date: 12/06/2016
-ms.author: saeedakhter-msft
-ms.custom: seohack1
-ms.openlocfilehash: 7881793ebce10b4f9fbc9c534d9d6fc0ebb38f0b
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
-ms.translationtype: HT
+ms.author: davidmu
+ms.openlocfilehash: 6385a4e4b89cf889b71db6e09010dfe3a674336a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-focus-on-your-app-let-us-worry-about-sign-up-and-sign-in"></a>Azure AD B2C: Soustřeďte se na svoji aplikaci, o registraci a přihlašování se postaráme my
 
@@ -64,7 +60,7 @@ Další informace o použití konkrétních funkcí Azure Active Directory B2C:
 * [Přizpůsobení vzhledu a chování registrace a přihlášení a dalších stránek určených uživatelům](active-directory-b2c-reference-ui-customization.md), které obsluhuje Azure Active Directory B2C.
 * [Využijte Azure Active Directory Graph API k programovému vytváření, čtení, aktualizaci a mazání uživatelů](active-directory-b2c-devquickstarts-graph-dotnet.md) ve svém klientu Azure Active Directory B2C.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Následující odkazy jsou užitečné při prozkoumávání služby do hloubky:
 

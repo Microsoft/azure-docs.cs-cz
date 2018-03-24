@@ -1,11 +1,11 @@
 ---
-title: "Kopírování dat do/z Azure SQL Data Warehouse pomocí služby Data Factory | Microsoft Docs"
-description: "Zjistěte, jak zkopírovat data z podporované zdrojové úložiště do Azure SQL Data Warehouse (nebo) z SQL Data Warehouse na podporované podřízený úložiště pomocí služby Data Factory."
+title: Kopírování dat do/z Azure SQL Data Warehouse pomocí služby Data Factory | Microsoft Docs
+description: Zjistěte, jak zkopírovat data z podporované zdrojové úložiště do Azure SQL Data Warehouse (nebo) z SQL Data Warehouse na podporované podřízený úložiště pomocí služby Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 2601d386bdacbe005b2930a44db531a0b58fb7b5
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 5d284277f600465345be0058468192f2f5609d89
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírovat data do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -375,10 +375,10 @@ Další informace o tom, jak pomocí funkce PolyBase načteme do SQL Data Wareho
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Použijte PolyBase k načtení dat do Azure SQL Data Warehouse
 
-Pomocí  **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)**  je účinný způsob načítání velké množství dat do Azure SQL Data Warehouse s vysokou propustností. Velký nárůst v propustnost můžete zobrazit pomocí PolyBase místo výchozího mechanismu hromadné vložení. V tématu [zkopírujte výkonu referenční číslo](copy-activity-performance.md#performance-reference) s podrobné porovnání. Návod s případu použití najdete v tématu [načíst 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v části 15 minut](connector-azure-sql-data-warehouse.md).
+Pomocí **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** je účinný způsob načítání velké množství dat do Azure SQL Data Warehouse s vysokou propustností. Velký nárůst v propustnost můžete zobrazit pomocí PolyBase místo výchozího mechanismu hromadné vložení. V tématu [zkopírujte výkonu referenční číslo](copy-activity-performance.md#performance-reference) s podrobné porovnání. Návod s případu použití najdete v tématu [načíst 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v části 15 minut](connector-azure-sql-data-warehouse.md).
 
-* Pokud je zdroj dat v **objektů Blob v Azure nebo Azure Data Lake Store**a formát je kompatibilní s funkcí PolyBase, můžete zkopírovat přímo do Azure SQL Data Warehouse pomocí PolyBase. V tématu  **[přímé kopírování pomocí PolyBase](#direct-copy-using-polybase)**  s podrobnostmi.
-* Pokud vaše zdrojového úložiště dat a formát není podporován původně polybase, můžete použít  **[připravený kopírování pomocí PolyBase](#staged-copy-using-polybase)**  místo toho funkci. Také poskytuje lepší propustnosti automaticky převod dat do formátu kompatibilní s funkcí PolyBase a ukládání dat v úložišti objektů Blob v Azure. Potom načte data do SQL Data Warehouse.
+* Pokud je zdroj dat v **objektů Blob v Azure nebo Azure Data Lake Store**a formát je kompatibilní s funkcí PolyBase, můžete zkopírovat přímo do Azure SQL Data Warehouse pomocí PolyBase. V tématu **[přímé kopírování pomocí PolyBase](#direct-copy-using-polybase)** s podrobnostmi.
+* Pokud vaše zdrojového úložiště dat a formát není podporován původně polybase, můžete použít **[připravený kopírování pomocí PolyBase](#staged-copy-using-polybase)** místo toho funkci. Také poskytuje lepší propustnosti automaticky převod dat do formátu kompatibilní s funkcí PolyBase a ukládání dat v úložišti objektů Blob v Azure. Potom načte data do SQL Data Warehouse.
 
 > [!IMPORTANT]
 > Všimněte si, podporuje se jen PolyBase authentcation Azure SQL Data Warehouse SQL, ale není ověřování Azure Active Directory.
@@ -395,7 +395,7 @@ Pokud požadavky nejsou splněny, zkontroluje nastavení Azure Data Factory a au
 1. **Zdroj propojené služby** je typu: **azurestorage** nebo **AzureDataLakeStore** s objekt zabezpečení ověřování služby.
 2. **Vstupní datové sady** je typu: **AzureBlob** nebo **AzureDataLakeStoreFile**a zadejte v části formát `type` vlastnosti je **OrcFormat** , **ParquetFormat**, nebo **TextFormat** s následující konfigurace:
 
-   1. `rowDelimiter` musí být  **\n** .
+   1. `rowDelimiter` musí být **\n**.
    2. `nullValue` je nastavena na **prázdný řetězec** (""), nebo `treatEmptyAsNull` je nastaven na **true**.
    3. `encodingName` je nastavena na **znakové sady utf-8**, což je **výchozí** hodnotu.
    4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, a `skipLineCount` nejsou zadané.
@@ -510,7 +510,7 @@ Pokud máte zdroj dat s řádky o velikosti větší než 1 MB, můžete rozděl
 
 ### <a name="sql-data-warehouse-resource-class"></a>Třída prostředků SQL Data Warehouse
 
-K dosažení nejlepší možné propustnost, zvažte, pro větší Třída prostředků přiřadit uživatele používaný k načtení dat do SQL Data Warehouse pomocí PolyBase. Zjistěte, jak to provést pomocí následujících [změnit v příkladu třída prostředků uživatele](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example).
+K dosažení nejlepší možné propustnost, vezměte v úvahu přiřazení větší Třída prostředků uživateli používaný k načtení dat do SQL Data Warehouse pomocí PolyBase.
 
 ### <a name="tablename-in-azure-sql-data-warehouse"></a>Název tabulky v Azure SQL Data Warehouse
 

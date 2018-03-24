@@ -1,6 +1,6 @@
 ---
-title: "Spuštění úloh služby Azure Batch na virtuálních počítačích nákladově efektivní nízkou prioritu | Microsoft Docs"
-description: "Zjistěte, jak zřídit virtuální počítače s nízkou prioritou snížit náklady na úloh služby Azure Batch."
+title: Spuštění úloh služby Azure Batch na virtuálních počítačích nákladově efektivní nízkou prioritu | Microsoft Docs
+description: Zjistěte, jak zřídit virtuální počítače s nízkou prioritou snížit náklady na úloh služby Azure Batch.
 services: batch
 author: mscurrell
 manager: timlt
@@ -9,13 +9,13 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 02/01/2018
+ms.date: 03/19/2018
 ms.author: markscu
-ms.openlocfilehash: 7e4f37ca6997f1770de8acbc10eeeb25ddf87deb
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 68240e29429b4c6321e8627b62ad65ce7ecb468e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Pomocí služby Batch použijte virtuální počítače s nízkou prioritou
 
@@ -26,12 +26,6 @@ Virtuální počítače s nízkou prioritou využít výhod kapacitní v Azure. 
 Kompromis pro používání virtuálních počítačů s nízkou prioritou je, že tyto virtuální počítače nemusí být k dispozici přidělování, nebo může být zrušené kdykoli, v závislosti na dostupné kapacity. Z toho důvodu jsou nejvhodnější pro některé typy úloh virtuálních počítačů s nízkou prioritou. Použijte virtuální počítače nízkou prioritu pro batch a asynchronní zpracování úloh, kde čas dokončení úlohy je flexibilní a práce je distribuován do mnoha virtuálních počítačů.
  
 Virtuální počítače s nízkou prioritou jsou nabízena za výrazně sníženou cenu ve srovnání s vyhrazených virtuálních počítačích. Podrobnosti o cenách najdete v části [ceny služby Batch](https://azure.microsoft.com/pricing/details/batch/).
-
-
-> [!IMPORTANT]
-> Nízkou prioritu virtuální počítače jsou aktuálně dostupné jen pro úlohy běžící v dávce. 
->
->
 
 ## <a name="use-cases-for-low-priority-vms"></a>Případy použití pro virtuální počítače s nízkou prioritou
 

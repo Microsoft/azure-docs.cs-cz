@@ -1,11 +1,10 @@
 ---
-title: "Transformace dat pomocí skriptu U-SQL - Azure | Microsoft Docs"
-description: "Informace o zpracování nebo transformace dat pomocí spouštění skriptů U-SQL na výpočetní služba Azure Data Lake Analytics."
+title: Transformace dat pomocí skriptu U-SQL - Azure | Microsoft Docs
+description: Informace o zpracování nebo transformace dat pomocí spouštění skriptů U-SQL na výpočetní služba Azure Data Lake Analytics.
 services: data-factory
-documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+documentationcenter: ''
+author: douglaslMS
+manager: craigg
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2017
-ms.author: spelluru
+ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: ff91a3da978fd027605b3674eae14d1d74b309cd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7861a3380ee330241f0c735ee6c5ed84f121e512
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformace dat pomocí spouštění skriptů U-SQL v Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,10 +49,10 @@ Následující tabulka obsahuje popis obecné vlastnosti používané v definici
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | **Typ** |Vlastnost typu musí být nastavená na: **AzureDataLakeAnalytics**. |Ano |
-| **název účtu** |Název účtu Azure Data Lake Analytics. |Ano |
+| **accountName** |Název účtu Azure Data Lake Analytics. |Ano |
 | **dataLakeAnalyticsUri** |Identifikátor URI služby Azure Data Lake Analytics. |Ne |
-| **ID předplatného** |Id předplatného Azure |Ne (když není určeno, předplatné objektu pro vytváření dat se používá). |
-| **Název skupiny prostředků** |Název skupiny prostředků Azure. |Ne (když není určeno, skupinu prostředků objektu pro vytváření dat se používá). |
+| **subscriptionId** |Id předplatného Azure |Ne (když není určeno, předplatné objektu pro vytváření dat se používá). |
+| **resourceGroupName** |Název skupiny prostředků Azure. |Ne (když není určeno, skupinu prostředků objektu pro vytváření dat se používá). |
 
 ### <a name="service-principal-authentication-recommended"></a>Objekt zabezpečení ověřování služby (doporučeno)
 Pokud chcete použít ověřování hlavní služby, zaregistrujte entitu aplikace v Azure Active Directory (Azure AD) a jí udělit přístup k Data Lake Store. Podrobné pokyny najdete v tématu [Service-to-service ověřování](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Poznamenejte si následující hodnoty, které můžete použít k definování propojené služby:
@@ -67,7 +66,7 @@ Použijte objekt zabezpečení ověřování služby tak, že zadáte následuj�
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Zadejte ID aplikace klienta. | Ano |
 | **servicePrincipalKey** | Zadejte klíč aplikace. | Ano |
-| **klienta** | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano |
+| **Klienta** | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano |
 
 **Příkladu: Ověření objektu službu**
 ```json
@@ -93,7 +92,7 @@ Alternativně můžete použít ověřování pověření uživatele pro Data La
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| **autorizace** | Klikněte **Autorizovat** tlačítko v editoru služby Data Factory a zadejte svoje přihlašovací údaje, který přiřazuje URL pro autorizaci automaticky generovaný této vlastnosti. | Ano |
+| **Autorizace** | Klikněte **Autorizovat** tlačítko v editoru služby Data Factory a zadejte svoje přihlašovací údaje, který přiřazuje URL pro autorizaci automaticky generovaný této vlastnosti. | Ano |
 | **ID relace** | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečné a může být použit pouze jednou. Toto nastavení se automaticky generuje při pomocí editoru služby Data Factory. | Ano |
 
 **Příklad: Ověření pověření uživatele**
@@ -213,9 +212,9 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 | linkedServiceName   | Referenční dokumentace k Azure Data Lake Analytics registrován jako propojené služby v datové továrně | Ano                                      |
 | scriptPath          | Cesta ke složce, který obsahuje skript U-SQL. Název souboru je malá a velká písmena. | Ne (když používáte skript)                   |
 | scriptLinkedService | Propojené služby, který odkazuje úložiště, který obsahuje skript pro vytváření dat. | Ne (když používáte skript)                   |
-| Skript              | Zadejte místo zadání scriptPath a scriptLinkedService zpracování vloženého skriptu. Například: `"script": "CREATE DATABASE test"`. | Ne (když používáte scriptPath a scriptLinkedService) |
+| skript              | Zadejte místo zadání scriptPath a scriptLinkedService zpracování vloženého skriptu. Například: `"script": "CREATE DATABASE test"`. | Ne (když používáte scriptPath a scriptLinkedService) |
 | degreeOfParallelism | Maximální počet uzlů současně slouží ke spuštění úlohy. | Ne                                       |
-| Priorita            | Určuje, jaké úlohy mimo všechny, které jsou zařazeny do fronty, měla by být vybrána má spustit jako první. Čím nižší je číslo, tím vyšší je priorita. | Ne                                       |
+| priorita            | Určuje, jaké úlohy mimo všechny, které jsou zařazeny do fronty, měla by být vybrána má spustit jako první. Čím nižší je číslo, tím vyšší je priorita. | Ne                                       |
 | parameters          | Parametry pro skript U-SQL          | Ne                                       |
 | runtimeVersion      | Verze runtime – stroje U-SQL používat | Ne                                       |
 | compilationMode     | <p>Režim kompilace U-SQL. Musí být jedna z těchto hodnot:</p> <ul><li>**Sémantické:** provádět jenom sémantického kontroly a nezbytné správností kontroly.</li><li>**Úplné:** provést úplné kompilace, včetně kontrola syntaxe, optimalizace, generování kódu atd.</li><li>**SingleBox:** provést úplné kompilace s TargetType nastavení SingleBox.</li></ul><p>Pokud nezadáte hodnotu pro tuto vlastnost, server určí režim optimální kompilace. </p> | Ne                                       |
@@ -318,7 +317,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-Hodnoty pro  **@in**  a  **@out**  parametry ve skriptu U-SQL jsou předaná dynamicky ADF pomocí části parametry.". Najdete v části 'parametry' v definici kanálu.
+Hodnoty pro **@in** a **@out** parametry ve skriptu U-SQL jsou předaná dynamicky ADF pomocí části parametry.". Najdete v části 'parametry' v definici kanálu.
 
 Také můžete zadat další vlastnosti, například degreeOfParallelism a priority v definici vaší kanálu pro úlohy, které běží na službu Azure Data Lake Analytics.
 
@@ -332,7 +331,7 @@ V definici ukázkový kanál a odhlašování parametry jsou přiřazeny pevně 
 }
 ```
 
-Je možné místo toho použít dynamické parametry. Například: 
+Je možné místo toho použít dynamické parametry. Příklad: 
 
 ```json
 "parameters": {

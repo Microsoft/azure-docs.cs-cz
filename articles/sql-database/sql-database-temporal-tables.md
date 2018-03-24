@@ -1,19 +1,19 @@
 ---
-title: "Začínáme s dočasné tabulky v databázi Azure SQL Database | Microsoft Docs"
-description: "Zjistěte, jak začít s použitím dočasné tabulky v databázi SQL Azure."
+title: Začínáme s dočasné tabulky v databázi Azure SQL Database | Microsoft Docs
+description: Zjistěte, jak začít s použitím dočasné tabulky v databázi SQL Azure.
 services: sql-database
 author: bonova
+ms.date: 03/21/2018
 manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 01/10/2017
 ms.author: bonova
-ms.openlocfilehash: 8e76d78e402d2cdc58ca26767c55c413f83226d9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0299d52396549baf8ea7e5eb7145585c7b5900a6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Začínáme s dočasné tabulky v databázi Azure SQL
 Dočasné tabulky jsou novou funkcí programovatelnosti databáze SQL Azure, která umožňuje sledovat a analyzovat úplnou historii změn ve vašich datech bez nutnosti vlastní kódování. Dočasné tabulky zachovat data úzce související čas kontextu tak, aby uložené fakty lze interpretovat jako platný jen v určitou dobu. Tato vlastnost dočasné tabulky umožňuje efektivní analýzu založené na čase a získávání přehledy z dat vývoj.
@@ -64,7 +64,7 @@ Při vytváření dočasné tabulce se systémovou správou verzí se automatick
 V tomto konkrétním případě usilujeme provádět analýzy trendů založené na čase přes delší data historie a s větší sady dat, takže volba úložiště pro tabulku historie je clusterovaný index columnstore. Clusterované columnstore poskytuje velmi dobré komprese a výkon pro analytické dotazy. Dočasné tabulky poskytují flexibilitu: Konfigurace indexy zcela nezávisle na aktuální a dočasné tabulky. 
 
 > [!NOTE]
-> Indexy Columnstore jsou dostupné jen ve vrstvě služeb premium.
+> Indexy Columnstore jsou dostupné v úrovni Premium a úrovně Standard S3 a vyšší.
 >
 
 Tento skript je ukázkou, jak lze změnit výchozí index pro tabulku historie na clusterových columnstore:
@@ -188,7 +188,7 @@ Dočasných tabulek se systémovou správou verzí může zvýšit v tabulce his
 * [Vytváření oddílů tabulky](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_2)
 * [Skript pro vyčištění vlastní](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Podrobné informace o dočasné tabulky, podívejte se na [dokumentace MSDN](https://msdn.microsoft.com/library/dn935015.aspx).
 Navštivte Channel 9 a poslechnout [scénáře úspěchu dočasné implementace skutečné zákazníka](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) a sledujte [live dočasné ukázkový](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
 

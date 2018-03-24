@@ -1,11 +1,11 @@
 ---
-title: "Kopírování dat do a z Azure Table storage pomocí služby Data Factory | Microsoft Docs"
-description: "Zjistěte, jak zkopírovat data z podporované zdrojové úložiště Azure Table storage, nebo z tabulky úložiště do úložiště podporované podřízený pomocí služby Data Factory."
+title: Kopírování dat do a z Azure Table storage pomocí služby Data Factory | Microsoft Docs
+description: Zjistěte, jak zkopírovat data z podporované zdrojové úložiště Azure Table storage, nebo z tabulky úložiště do úložiště podporované podřízený pomocí služby Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 41e2117e14f336d33f5d6f4e1f446e32a6886079
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ef43037ff33b693256c82459eec2e4b3beab4d9a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopírování dat do a z Azure Table storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 - všeobecně dostupná](v1/data-factory-azure-table-connector.md)
+> * [Verze 1 – Obecně dostupná](v1/data-factory-azure-table-connector.md)
 > * [Verze 2 – Preview](connector-azure-table-storage.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat do a z Azure Table storage. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
@@ -271,7 +271,7 @@ Když přesun dat do a z Azure Table, následující [mapování definované Azu
 |:--- |:--- |:--- |
 | Edm.Binary |Byte |Pole bajtů až 64 KB. |
 | Edm.Boolean |BOOL |Logická hodnota. |
-| Edm.DateTime |Datum a čas |Hodnota 64-bit, vyjádřené jako koordinovaný světový čas (UTC). Podporovaný rozsah data a času zahájení půlnoc, 1 leden roku 1601. (C.E.), UTC. Rozsah končí 31. prosince 9999. |
+| Edm.DateTime |DateTime |Hodnota 64-bit, vyjádřené jako koordinovaný světový čas (UTC). Podporovaný rozsah data a času zahájení půlnoc, 1 leden roku 1601. (C.E.), UTC. Rozsah končí 31. prosince 9999. |
 | Edm.Double |Double |Hodnota 64-bit plovoucí bodu. |
 | Edm.Guid |Guid |Globálně jedinečný identifikátor 128-bit. |
 | Edm.Int32 |Int32 |32bitové celé číslo. |

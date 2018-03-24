@@ -1,24 +1,24 @@
 ---
-title: "Nainstalujte Azure AD Connect pomocí SQL delegovaného správce oprávnění | Microsoft Docs"
-description: "Toto téma popisuje aktualizaci na Azure AD Connect, který umožňuje instalaci pomocí účtu, který má pouze oprávnění SQL dbo."
-documentationcenter: 
+title: Nainstalujte Azure AD Connect pomocí SQL delegovaného správce oprávnění | Microsoft Docs
+description: Toto téma popisuje aktualizaci na Azure AD Connect, který umožňuje instalaci pomocí účtu, který má pouze oprávnění SQL dbo.
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.reviewer: jparsons
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: c2d77c37f2f65c9a7db1fd5c4010fc43bcbc7ebf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2686bdef9c25f4540f9b2a21594b18cbe0404e08
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalace služby Azure AD Connect s použitím SQL delegovaná oprávnění správce
 Před posledním sestavení Azure AD Connect správu delegování, při nasazování konfigurace, které vyžaduje SQL, nepodporuje.  Uživatelé, kteří chtěli nainstalovat Azure AD Connect je potřeba mít oprávnění správce (SA) serveru na serveru SQL server.
@@ -51,6 +51,8 @@ K poskytnutí databáze vzdálené správy a nainstalujte Azure AD Connect s opr
 
 ## <a name="additional-information"></a>Další informace
 Po zřízení databáze, správce Azure AD Connect můžete nainstalovat a nakonfigurovat místní synchronizace v jejich pohodlí.  
+
+**/UseExistingDatabase** příznak je potřeba při použití předem vytvořené databáze.  Jenom se nepoužívá v situacích, obnovení.
 
 Také podporuje nové instalace služby Azure AD Connect, tato funkce také umožňuje delegování pro každý scénář související s **/UseExistingDatabase** příznak.  Další informace o instalaci Azure AD Connect s existující databázi, naleznete v části [použití existující databáze ADSync instalaci Azure AD Connect](active-directory-aadconnect-existing-database.md)
 

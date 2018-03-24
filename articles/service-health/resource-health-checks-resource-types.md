@@ -1,11 +1,11 @@
 ---
-title: "Podporované typy prostředků pomocí Azure Resource Health | Microsoft Docs"
-description: "Podporované typy prostředků prostřednictvím stavu prostředků Azure"
+title: Podporované typy prostředků pomocí Azure Resource Health | Microsoft Docs
+description: Podporované typy prostředků prostřednictvím stavu prostředků Azure
 services: Resource health
-documentationcenter: 
+documentationcenter: ''
 author: BernardoAMunoz
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
 ms.service: service-health
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: b67e72af8a34799af97cd46f968636050f4ce485
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0694c45363eb2534416f1dad59196ecfa1dacd17
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a stav kontrol ve stavu prostředků Azure.
 Níže je úplný seznam všechny kontroly provedené prostřednictvím stav prostředku pro typy prostředků.
@@ -48,7 +48,7 @@ Níže je úplný seznam všechny kontroly provedené prostřednictvím stav pro
 |---|
 |<ul><li>Lze účet přejít z v rámci datového centra?</li><li>Je k dispozici kognitivní poskytovatelem prostředků služby?</li><li>Je k dispozici služba kognitivní v příslušné oblasti?</li><li>Můžete přečíst na účet úložiště, která uchovává metadata prostředků provádět operace?</li><li>Bylo dosaženo kvóty volání rozhraní API?</li><li>Bylo dosaženo čtení limit volání rozhraní API?</li></ul>|
 
-## <a name="microsoftcomputevirtualmachines"></a>Microsoft.COMPUTE/virtualmachines
+## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Spuštění kontroly|
 |---|
 |<ul><li>Je server hostování tohoto virtuálního počítače nahoru a systémem?</li><li>Spuštění operačního systému hostitele dokončil?</li><li>Kontejner virtuálního počítače je zřízený a zapnut?</li><li>Je k dispozici síťové připojení mezi hostitelem a účet úložiště?</li><li>Spouštění hostovaný operační systém dokončil?</li><li>Je k dispozici probíhající plánované údržby?</li></ul>|
@@ -64,7 +64,7 @@ Níže je úplný seznam všechny kontroly provedené prostřednictvím stav pro
 |---|
 |<ul><li>Můžete uživatelům odesílání dat do Data Lake Store v oblasti?</li><li>Mohou uživatelé stáhnout dat z Data Lake Store v oblasti?</li></ul>|
 
-## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/iothubs
+## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 
 |Spuštění kontroly|
 |---|
@@ -75,7 +75,7 @@ Níže je úplný seznam všechny kontroly provedené prostřednictvím stav pro
 |---|
 |<ul><li>Existuje byly všechny databáze nebo kolekce žádosti není zpracovat z důvodu nedostupnosti služby databázi Cosmos Azure?</li><li>Existuje byly všechny žádosti dokument není zpracovat z důvodu nedostupnosti služby databázi Cosmos Azure?</li></ul>|
 
-## <a name="microsoftnetworkconnections"></a>Microsoft.Network/Connections
+## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Spuštění kontroly|
 |---|
 |<ul><li>Je připojen tunelového připojení sítě VPN?</li><li>Jsou konfliktům v konfiguraci připojení?</li><li>Jsou předsdílených klíčů správně nakonfigurovaná?</li><li>Je dostupná místní zařízení VPN?</li><li>Existují neshody v zásadách zabezpečení protokolu IPSec/IKE?</li><li>Správně zřízený, nebo ve stavu selhání, je připojení S2S VPN?</li><li>Správně zřízený, nebo ve stavu selhání, je připojení VNET-to-VNET?</li></ul>|
@@ -115,12 +115,12 @@ Níže je úplný seznam všechny kontroly provedené prostřednictvím stav pro
 |---|
 |<ul><li>Hostitelský server je spuštěný a funkční?</li><li>Běží Internetová informační služba</li><li>Je spuštěn nástroj pro vyrovnávání zatížení?</li><li>Webové služby plánování dosažitelný z v rámci datového centra?</li><li>Účet úložiště je hostitelem lokality obsah pro serverovou farmu, která je k dispozici??</li></ul>|
 
-## <a name="microsoftwebsites"></a>Microsoft.Web/Sites
+## <a name="microsoftwebsites"></a>Microsoft.web/sites
 |Spuštění kontroly|
 |---|
 |<ul><li>Hostitelský server je spuštěný a funkční?</li><li>Je spuštěn server Internet Information server?</li><li>Je spuštěn nástroj pro vyrovnávání zatížení?</li><li>Webové aplikace dosažitelný z v rámci datového centra?</li><li>Účet úložiště je hostitelem obsahu webu, který je k dispozici?</li></ul>|
 
 # <a name="next-steps"></a>Další kroky
--  V tématu [Úvod do stavu služby Azure](service-health-overview.md) a [Úvod do Azure Resource Health](resource-health-overview.md) bližší informace o nich. 
+-  V tématu [Úvod na řídicím panelu stavu služeb Azure](service-health-overview.md) a [Úvod do Azure Resource Health](resource-health-overview.md) bližší informace o nich. 
 -  [Nejčastější dotazy o stavu prostředků Azure](resource-health-faq.md)
-- Nastavení výstrah, takže je znázorněna problémy v oblasti stavu. Další informace najdete v tématu [konfigurovat výstrahy pro stav služby](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 
+- Nastavení výstrah, takže je znázorněna problémy v oblasti stavu. Další informace najdete v tématu [konfigurovat výstrahy pro události stavu služby](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 

@@ -1,11 +1,10 @@
 ---
-title: "Vytvoření modulu integrace se službou Azure runtime v Azure Data Factory | Microsoft Docs"
-description: "Naučte se vytvořit modul runtime integrace se službou Azure v Azure Data Factory, který slouží ke kopírování dat a odesílání aktivit transformace."
+title: Vytvoření modulu integrace se službou Azure runtime v Azure Data Factory | Microsoft Docs
+description: Naučte se vytvořit modul runtime integrace se službou Azure v Azure Data Factory, který slouží ke kopírování dat a odesílání aktivit transformace.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: douglasl
-ms.openlocfilehash: 5d665206989ebf41c9ecb2f9fea0134e2e4f52cc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: e2ebb3db4d51bf4ec1dea4f2f5cc4cc9dcb2ad70
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Jak vytvořit a nakonfigurovat Runtime integrace Azure
 Integrační modul Runtime (IR) je na výpočetní infrastruktuře používá k zajištění funkce integrace dat různých prostředích sítě Azure Data Factory. Další informace o IR najdete v tématu [integrace runtime](concepts-integration-runtime.md).

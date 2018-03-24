@@ -1,10 +1,10 @@
 ---
-title: "Ukázky pro vytváření dat Azure Azure PowerShell | Microsoft Docs"
-description: "Ukázek Azure PowerShell - skripty, které vám pomůžou vytvořit a spravovat datové továrny."
+title: Ukázky pro vytváření dat Azure Azure PowerShell | Microsoft Docs
+description: Ukázek Azure PowerShell - skripty, které vám pomůžou vytvořit a spravovat datové továrny.
 services: data-factory
-author: spelluru
+author: douglaslMS
 manager: douglaslMS
-editor: 
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 25d9f63eb6c8afee9bc8ca4771ff51d98bc2d09b
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7071ab88fd42d26c841d46c2cc42dbfdca6418cf
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Ukázek Azure PowerShell pro Azure Data Factory
 

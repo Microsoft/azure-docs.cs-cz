@@ -1,10 +1,10 @@
 ---
-title: "Poznámky k verzi sady Azure SDK pro .NET 2.9"
-description: "Poznámky k verzi sady Azure SDK pro .NET 2.9"
+title: Poznámky k verzi sady Azure SDK pro .NET 2.9
+description: Poznámky k verzi sady Azure SDK pro .NET 2.9
 services: app-service\web
 documentationcenter: .net
 author: chrissfanos
-editor: 
+editor: ''
 ms.assetid: c83d815b-fc19-4260-821e-7d2a7206dffc
 ms.service: app-service
 ms.devlang: multiple
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 199f0906f73d693d7cd4b73c928f23ae83b99596
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a62268cee0750c544703fb4c3f7e91238e26b872
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Poznámky k verzi sady Azure SDK pro .NET 2.9
 
 Toto téma obsahuje poznámky k verzi pro verze 2.9 a 2.9.6 sady Azure SDK pro .NET.
 
-##<a name="azure-sdk-for-net-296-release-summary"></a>Azure SDK pro .NET 2.9.6 verze souhrn
+## <a name="azure-sdk-for-net-296-release-summary"></a>Azure SDK pro .NET 2.9.6 verze souhrn
 
 Datum vydání: 11/16/2016
  
@@ -31,7 +31,7 @@ V této verzi byly zavedeny žádné nejnovější změny do Azure SDK 2.9. Je t
 
 ### <a name="visual-studio-2017-release-candidate"></a>Visual Studio 2017 Release Candidate
 
-- V sadě Visual Studio 2017 RC tato verze sady Azure SDK pro .NET je součástí pracovního vytížení Azure. Všechny nástroje, které musíte udělat Azure development budou součástí Visual Studio RC 2017 do budoucna. Pro Visual Studio 2015 a Visual Studio 2013 sadu SDK bude stále k dispozici prostřednictvím WebPI. Již Azure SDK pro .NET verze pro sadu Visual Studio 2013, když Visual Studio 2017 uvolní jako poslední produktu. Tento odkaz ke stažení sady Visual Studio 2017 RC: https://www.visualstudio.com/vs/visual-studio-2017-rc/
+- V sadě Visual Studio 2017 RC tato verze sady Azure SDK pro .NET je součástí pracovního vytížení Azure. Všechny nástroje, které musíte udělat Azure development budou součástí Visual Studio RC 2017 do budoucna. Pro Visual Studio 2015 a Visual Studio 2013 sadu SDK bude stále k dispozici prostřednictvím WebPI. Již Azure SDK pro .NET verze pro sadu Visual Studio 2013, když Visual Studio 2017 uvolní jako poslední produktu. Chcete-li stáhnout sadu Visual Studio RC 2017 na tento odkaz: https://www.visualstudio.com/vs/visual-studio-2017-rc/
 
 ### <a name="azure-diagnostics"></a>Diagnostika Azure
 
@@ -48,7 +48,7 @@ V této verzi byly zavedeny žádné nejnovější změny do Azure SDK 2.9. Je t
 - Azure .NET SDK 2.9.6 zavedená omezení, které blokuje nasazení projektů pomocí nepodporované rozhraní .NET Framework (například .NET 4.6) do všech operačního systému rodiny < 5. Alternativní řešení [zde](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9).
 
  
-### <a name="azure-in-role-cache"></a>Mezipaměť hostovaná v instanci Role na Azure 
+### <a name="azure-in-role-cache"></a>Azure In-Role Cache 
 
 - Podpora pro Azure Cache v roli končí na 30. listopadu 2016. Další podrobnosti získáte kliknutím na [zde](https://azure.microsoft.com/en-us/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/).
 
@@ -88,6 +88,6 @@ Tato aktualizace zahrnuje následující položky:
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 Tato verze přidává [KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) podporu pro šablony Resource Manageru.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 [Azure SDK 2.9 oznámení post](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
 

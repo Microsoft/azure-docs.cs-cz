@@ -1,11 +1,11 @@
 ---
-title: "Registrace správy"
-description: "Toto téma vysvětluje, jak k registraci zařízení s centry oznámení, aby bylo možné přijímat nabízená oznámení."
+title: Registrace správy
+description: Toto téma vysvětluje, jak k registraci zařízení s centry oznámení, aby bylo možné přijímat nabízená oznámení.
 services: notification-hubs
 documentationcenter: .net
 author: ysxu
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: a1a349150ef4c7837932706f0c4fcc8d022ec7ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af5738ac96bd2afacee493765453567f7f13c9e5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="registration-management"></a>Správa registrací
 ## <a name="overview"></a>Přehled
@@ -39,7 +39,7 @@ Tady jsou některé klíčové výhody pomocí instalace:
 * Instalační model usnadňuje provést jednotlivé nabízených oznámení - cílení na konkrétní zařízení. Značku systému **"$InstallationId: [installationId]"** se automaticky přidá s každou instalace na základě registrace. Proto můžete volat odeslání na tuto značku zaměřit na konkrétní zařízení bez nutnosti psaní Další.
 * Pomocí instalace také umožňuje provést registraci částečné aktualizace. Částečné aktualizace instalace se požaduje pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). To je zvlášť užitečné, pokud chcete aktualizovat značky na registraci. Nemáte stahují celý registrace a pak znovu odeslat všechny předchozí značky.
 
-Instalace může obsahovat následující vlastnosti. Úplný seznam najdete v tématu instalace vlastnosti [vytvoření nebo instalaci přepsat REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) nebo [vlastnosti instalace](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx) pro.
+Instalace může obsahovat následující vlastnosti. Úplný seznam najdete v tématu instalace vlastnosti [vytvoření nebo instalaci přepsat REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) nebo [vlastnosti instalace](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
 
     // Example installation format to show some supported properties
     {
@@ -293,7 +293,7 @@ Můžete taky pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/
 
 
 #### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Ukázkový kód pro registraci se Centrum oznámení ze zařízení pomocí id registrace
-Z vašeho back-end aplikace můžete provádět základní operace CRUDS při registraci. Například:
+Z vašeho back-end aplikace můžete provádět základní operace CRUDS při registraci. Příklad:
 
     var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
 

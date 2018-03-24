@@ -1,6 +1,6 @@
 ---
-title: "Prostředků přihlašovacích údajů ve službě Azure Automation"
-description: "Prostředků přihlašovacích údajů ve službě Azure Automation obsahovat zabezpečovací pověření, která můžete použít k ověřování k prostředkům přístup sada runbook nebo konfigurace DSC. Tento článek popisuje, jak vytvořit prostředků přihlašovacích údajů a použít je v sady runbook nebo konfigurace DSC."
+title: Prostředků přihlašovacích údajů ve službě Azure Automation
+description: Prostředků přihlašovacích údajů ve službě Azure Automation obsahovat zabezpečovací pověření, která můžete použít k ověřování k prostředkům přístup sada runbook nebo konfigurace DSC. Tento článek popisuje, jak vytvořit prostředků přihlašovacích údajů a použít je v sady runbook nebo konfigurace DSC.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: bb6aec41813930cbf74ab989cc4ce6b526b9c6b6
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c56758012fc09287d0abb887db9148bd093a678a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="credential-assets-in-azure-automation"></a>Prostředků přihlašovacích údajů ve službě Azure Automation
 Obsahuje prostředek přihlašovacích údajů automatizace [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) objekt, který obsahuje zabezpečovací přihlašovací údaje, jako je například uživatelské jméno a heslo. Konfigurace Runbooků a DSC může použít rutiny přijmout objekt PSCredential pro ověřování, nebo se může extrahuje uživatelské jméno a heslo objektu PSCredential zajistit některé aplikace nebo služby, které vyžadují ověřování. Vlastnosti přihlašovacích údajů jsou bezpečně uloženy ve službě Azure Automation a je přístupný v sada runbook nebo konfigurace DSC s [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) aktivity.

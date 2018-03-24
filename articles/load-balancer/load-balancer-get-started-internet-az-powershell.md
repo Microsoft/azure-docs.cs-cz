@@ -1,25 +1,25 @@
 ---
-title: "Vytvořte standardní veřejné zatížení na vyrovnávání s zónově redundantní veřejná IP adresa front-endu pomocí prostředí PowerShell | Microsoft Docs"
-description: "Naučte se vytvářet vyrovnávání standardní veřejné zatížení s zónově redundantní front-end veřejnou IP adresu pomocí prostředí PowerShell"
+title: Vytvořte standardní veřejné zatížení na vyrovnávání s zónově redundantní veřejná IP adresa front-endu pomocí prostředí PowerShell | Microsoft Docs
+description: Naučte se vytvářet vyrovnávání standardní veřejné zatížení s zónově redundantní front-end veřejnou IP adresu pomocí prostředí PowerShell
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2017
+ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: abe970eb72be5ea6944acc253c2c3d9008b20c56
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2849ef9b862b4471f348ac83a4a18eb9a3a4d42a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-powershell"></a>Vytvořte standardní veřejné zatížení na vyrovnávání s zónově redundantní veřejná IP adresa front-endu pomocí prostředí PowerShell
 
@@ -27,17 +27,12 @@ Tento článek popisuje postup procesem vytvoření veřejné [standardní nást
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="register-for-availability-zones-load-balancer-standard-and-public-ip-standard-preview"></a>Registrace pro dostupnost zóny, standardní nástroje pro vyrovnávání zatížení a veřejnou IP adresu standardní Preview
+## <a name="register-for-availability-zones-preview"></a>Registrace pro dostupnost zóny Preview
 
 Tento článek vyžaduje, že máte verzi 4.4.0 nebo vyšší modulu AzureRM nainstalovat. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete nainstalovat nebo upgradovat, nainstalujte nejnovější verzi modulu AzureRM z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureRM).
 
->[!NOTE]
-[Standardní SKU pro vyrovnávání zatížení](https://aka.ms/azureloadbalancerstandard) je aktuálně ve verzi Preview. Během období Preview tato funkce nemusí dosahovat stejné úrovně dostupnosti a spolehlivosti jako funkce, které jsou ve verzi všeobecné dostupnosti. Další informace najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Použít obecně dostupná [základní SKU služby Vyrovnávání zatížení](load-balancer-overview.md) pro vaše produkční služby. 
-
 > [!NOTE]
 > Dostupnost zóny jsou ve verzi preview a jsou připraveny pro váš vývojový a testovací scénáře. Podpora je k dispozici pro vyberte prostředků Azure a oblasti a rodiny velikost virtuálního počítače. Další informace o tom, jak začít pracovat a které prostředky Azure, oblasti a rodiny velikost virtuálního počítače můžete zkusit dostupnost zóny s, najdete v části [přehled dostupnosti zón](https://docs.microsoft.com/azure/availability-zones/az-overview). Pokud budete potřebovat podporu, můžete kontaktovat [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) nebo [otevřít lístek podpory Azure](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
-
-Před výběrem zóny nebo zónově redundantní možnost pro veřejnou IP adresu front-endu nástroje pro vyrovnávání zatížení, musíte nejdřív dokončit kroky v [zaregistrovat verzi Preview zón dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview).
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 

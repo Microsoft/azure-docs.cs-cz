@@ -1,17 +1,17 @@
 ---
-title: "Kolekce zařízení v Azure migrovat | Microsoft Docs"
-description: "Poskytuje přehled kolekce zařízení a jeho konfiguraci."
+title: Kolekce zařízení v Azure migrovat | Microsoft Docs
+description: Poskytuje přehled kolekce zařízení a jeho konfiguraci.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 49f3d5ba55a9c1abfcd6dcb50058ed7a001a2eec
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ea2367a6e1facfbe6a36cb145e258491a1c99517
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="collector-appliance"></a>Kolekce zařízení
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="overview"></a>Přehled
 
-Migrace kolekce služby Azure je lighweight zařízení, který slouží ke zjištění prostředí místní vCenter. Toto zařízení zjistí počítače VMware na místě a metadata o nich se odešle do služby Azure migrovat.
+Migrace kolekce služby Azure je lightweight zařízení, který slouží ke zjištění prostředí místní vCenter. Toto zařízení zjistí počítače VMware na místě a metadata o nich se odešle do služby Azure migrovat.
 
 Kolekce zařízení je OVF, které si můžete stáhnout z projektu Azure migrovat. Vytvoření instance virtuálního počítače VMware s 4 jádra, 8 GB paměti RAM a jeden disk 80 GB. Operační systém zařízení je Windows Server 2012 R2 (64bitová verze).
 
@@ -172,6 +172,15 @@ Následující tabulka uvádí čítače výkonu, které se shromažďují a tak
 Kolekce pouze zjistí počítač data a odešle ji do projektu. Projektu může trvat déle než zjištěná data se zobrazí na portálu a můžete začít s vytvářením posouzení.
 
 Podle počtu virtuálních počítačů v oboru vybrané, trvá až 15 minut odeslat statické metadata do projektu. Jakmile statické metadata jsou dostupné na portálu, můžete zobrazit seznam počítačů v portálu a začít vytvářet skupiny. Posouzení nelze vytvořit, až do dokončení úlohy kolekce a projekt má zpracovat data. Jednou kolekce úloha nebyla dokončena v kolekci, může trvat až jednu hodinu, než výkonu data, která mají být k dispozici na portálu, podle počtu virtuálních počítačů v oboru vybrané.
+
+## <a name="locking-down-the-collector-appliance"></a>Zamykání kolekce zařízení
+Doporučujeme spustit průběžné aktualizace systému Windows na kolekce zařízení. Pokud kolekce není aktualizován 45 dní, kolekce se spustí automaticky vypíná počítač. Pokud zjišťování běží, počítač nebude vypnout, i když je po jeho období 45 dnů. Dokončení POST úloha zjišťování, počítač se vypne. Pokud používáte kolekce déle než 45 dní, doporučujeme zachovat počítač aktualizován na všechny časy spuštěné služby Windows update.
+
+Doporučujeme také následující kroky pro zabezpečení vašeho zařízení
+1. Sdílené složky nebo někam nezaložili hesla správce s neoprávněným stranami.
+2. Vypněte zařízení, když není používán.
+3. Umístíte zařízení do zabezpečené sítě.
+4. Po dokončení migrace pracovní Odstraňte skupinu prostředků zařízení. Ujistěte se, že jste také odstranit disk, na kterém soubory (VMDKs), jako vCenter přihlašovací údaje do mezipaměti na je možné, že disky.
 
 ## <a name="how-to-upgrade-collector"></a>Postup upgradu kolekce
 

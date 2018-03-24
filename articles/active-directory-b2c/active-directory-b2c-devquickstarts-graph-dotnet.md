@@ -1,24 +1,21 @@
 ---
-title: "Pomocí rozhraní Graph API – Azure AD B2C | Microsoft Docs"
-description: "Postup pro volání rozhraní Graph API pro klienta B2C identity aplikací pro automatizaci procesu."
+title: Pomocí rozhraní Graph API – Azure AD B2C | Microsoft Docs
+description: Postup pro volání rozhraní Graph API pro klienta B2C identity aplikací pro automatizaci procesu.
 services: active-directory-b2c
 documentationcenter: .net
-author: parakhj
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: f9904516-d9f7-43b1-ae4f-e4d9eb1c67a0
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
-ms.author: parakhj
-ms.openlocfilehash: aee051946c90c686959066ac14798f807e7b91b0
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.author: davidmu
+ms.openlocfilehash: 2f95df26abcd2c0d5b62c395f92c359170d6d701
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API pomocí
 

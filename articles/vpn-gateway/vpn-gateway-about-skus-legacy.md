@@ -1,25 +1,25 @@
 ---
-title: "SKU brány starší virtuální síť Azure | Microsoft Docs"
-description: "Starý virtuální sítě SKU brány."
+title: Virtuální síť starší verze Azure SKU služby VPN gateway | Microsoft Docs
+description: Jak pracovat s původním SKU; brány virtuální sítě Basic, Standard a HighPerformance.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: 
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/31/2017
+ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: d5127c7fa512bad49817fa4c8edf3a16ca2f7d60
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 4feecb9c1e91e1bc6c66a610c092e7bf894886e5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Práce s SKU (starší verze SKU) brány virtuální sítě
 
@@ -37,35 +37,29 @@ Tento článek obsahuje informace o starší verze (starý) brány virtuální s
 
 [!INCLUDE [Table requirements for old SKUs](../../includes/vpn-gateway-table-requirements-legacy-sku-include.md)]
 
-## <a name="resize"></a>Změnit velikost brány (změnit a skladová položka brány)
+## <a name="resize"></a>Změnit velikost brány
 
-Můžete změnit velikost skladová položka brány v rámci stejné řada SKU. Například pokud máte standardní SKU, můžete změnit velikost na HighPerformance SKU. Nelze změnit velikost vašich bran VPN mezi SKU staré a nové rodiny SKU. Například nelze přejít z standardní SKU VpnGw2 SKU.
+Můžete změnit velikost bránu skladová položka brány v rámci stejné řada SKU. Například pokud máte standardní SKU, můžete změnit velikost na HighPerformance SKU. Však nemůže změnit velikost bránu VPN mezi SKU staré a nové rodiny SKU. Například nelze přejít z standardní SKU VpnGw2 SKU nebo základní SKU pro VpnGw1.
 
->[!IMPORTANT]
->Když změníte velikost bránu, budete mít 20-30 minutách nečinnosti této brány při ho změnit.
->
->
-
-Ke změně velikosti skladová položka brány pro model nasazení classic, použijte následující příkaz:
+Ke změně velikosti bránu pro model nasazení classic, použijte následující příkaz:
 
 ```powershell
 Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 ```
 
-Ke změně velikosti skladová položka brány pro model nasazení Resource Manager, použijte následující příkaz:
+Ke změně velikosti bránu pro model nasazení Resource Manager pomocí prostředí PowerShell, použijte následující příkaz:
 
 ```powershell
 $gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
+Můžete taky změnit velikost brány na portálu Azure.
 
-## <a name="migrate"></a>Migrace na nové bráně SKU
+## <a name="change"></a>Změnit na nový SKU brány.
 
-Pokud pracujete s modelem nasazení Resource Manager, můžete migrovat do nového SKU brány. Pokud pracujete s modelem nasazení classic, nemůže se migrovat do nového SKU a místo toho musíte dál používat starší verze SKU.
+[!INCLUDE [Change to the new SKUs](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
-[!INCLUDE [Migrate SKU](../../includes/vpn-gateway-migrate-legacy-sku-include.md)]
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o nové SKU brány najdete v tématu [SKU brány](vpn-gateway-about-vpngateways.md#gwsku).
 

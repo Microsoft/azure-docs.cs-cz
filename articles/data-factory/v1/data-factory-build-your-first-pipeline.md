@@ -1,11 +1,11 @@
 ---
-title: "Data Factory kurz: první kanál dat | Microsoft Docs"
-description: "V tomto kurzu Azure Data Factory se dozvíte, jak vytvořit a plán objekt pro vytváření dat, která zpracovává data pomocí skriptu Hive v clusteru Hadoop."
+title: 'Data Factory kurz: první kanál dat | Microsoft Docs'
+description: V tomto kurzu Azure Data Factory se dozvíte, jak vytvořit a plán objekt pro vytváření dat, která zpracovává data pomocí skriptu Hive v clusteru Hadoop.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.assetid: 81f36c76-6e78-4d93-a3f2-0317b413f1d0
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 374eebfe35207f6e5264159dcb72abddc6de4598
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 2fc9c0a823f48446f98fe9686242b8500462427b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Kurz: Sestavení svůj první kanál, který umožňuje transformovat data pomocí clusteru Hadoop
 > [!div class="op_single_selector"]
@@ -80,13 +80,13 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 
 Z řádků ukázka výše uvedeném, první z nich (s 2016-01-01) je zapsán do souboru 000000_0 v měsíci = 1 složky. Podobně je druhý řádek zapsán do souboru ve složce month=2 a třetí řádek je zapsán do souboru ve složce month=3.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Je nutné, abyste před zahájením tohoto kurzu splňovali následující požadavky:
 
 1. **Předplatné Azure** – Pokud nemáte předplatné Azure, můžete si během několika minut vytvořit bezplatný zkušební účet. Postup při vytváření bezplatného zkušebního účtu najdete v článku [Bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 2. **Úložiště Azure** – Pro ukládání dat v rámci tohoto kurzu budete používat účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md#create-a-storage-account). Poznamenejte si po vytvoření účtu úložiště **název účtu** a **přístupový klíč**. Přečtěte si článek [Zobrazení, kopírování a opětovné vygenerování přístupových klíčů k úložišti](../../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys).
-3. Stáhnout a revidovat soubor dotazů Hive (**HQL**) nachází v: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Tento dotaz transformuje vstupní data nevytvořila výstupní data. 
-4. Stáhnout a revidovat ukázkový vstupní soubor (**input.log**) nachází v: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
+3. Stáhnout a revidovat soubor dotazů Hive (**HQL**) nachází v: [ https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql ](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Tento dotaz transformuje vstupní data nevytvořila výstupní data. 
+4. Stáhnout a revidovat ukázkový vstupní soubor (**input.log**) na: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Vytvořte kontejner objektů blob s názvem **adfgetstarted** ve službě Azure Blob Storage. 
 6. Nahrát **partitionweblogs.hql** do souboru **skriptu** složku **adfgetstarted** kontejneru. Pomocí nástrojů, jako [Microsoft Azure Storage Explorer](http://storageexplorer.com/). 
 7. Nahrát **input.log** do souboru **inputdata** složku **adfgetstarted** kontejneru. 

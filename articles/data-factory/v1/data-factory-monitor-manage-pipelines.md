@@ -1,11 +1,10 @@
 ---
-title: "Monitorování a Správa kanálů pomocí portálu Azure a prostředí PowerShell | Microsoft Docs"
-description: "Další informace o použití portálu Azure a prostředí Azure PowerShell monitorovat a spravovat Azure data Factory a kanály, které jste vytvořili."
+title: Monitorování a Správa kanálů pomocí portálu Azure a prostředí PowerShell | Microsoft Docs
+description: Další informace o použití portálu Azure a prostředí Azure PowerShell monitorovat a spravovat Azure data Factory a kanály, které jste vytvořili.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b361ca67ebece9ba1ced1010835eb90586dd7359
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: f3fb7c0be6f69f15b5b761f0c36d983f008282e9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů služby Azure Data Factory pomocí portálu Azure a prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -86,7 +85,7 @@ Dvojitým kliknutím **OutputBlobTable** v **Diagram**, zobrazí se všechny dat
 
 <table>
 <tr>
-    <th align="left">Okres</th><th align="left">Dílčí stav</th><th align="left">Popis</th>
+    <th align="left">Stav</th><th align="left">Dílčí stav</th><th align="left">Popis</th>
 </tr>
 <tr>
     <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Pro spuštění řezu ještě nenastal čas.</td>
@@ -104,40 +103,40 @@ Dvojitým kliknutím **OutputBlobTable** v **Diagram**, zobrazí se všechny dat
 <td>ActivityResume</td><td>Aktivita je pozastavená a zpracování řezů nejde spustit, dokud je obnoveno aktivity.</td>
 </tr>
 <tr>
-<td>Zkusit znovu</td><td>Probíhá pokus o spuštění aktivity je zopakován.</td>
+<td>Retry</td><td>Probíhá pokus o spuštění aktivity je zopakován.</td>
 </tr>
 <tr>
-<td>Ověřování</td><td>Ověření se ještě nespustilo.</td>
+<td>Ověření</td><td>Ověření se ještě nespustilo.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Ověření čeká na opakovat.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Probíhá zpracování.</td><td>Ověřuje se</td><td>Probíhá ověřování.</td>
+<td rowspan="2">Probíhá zpracování.</td><td>Ověřování platnosti</td><td>Probíhá ověřování.</td>
 </tr>
 <td>-</td>
 <td>Řez se zpracovává.</td>
 </tr>
 <tr>
-<td rowspan="4">Selhání</td><td>TimedOut</td><td>Provedení aktivity trvalo déle, než je povolené aktivitou.</td>
+<td rowspan="4">Selhalo</td><td>TimedOut</td><td>Provedení aktivity trvalo déle, než je povolené aktivitou.</td>
 </tr>
 <tr>
 <td>Zrušeno</td><td>Řez zrušil akce uživatele.</td>
 </tr>
 <tr>
-<td>Ověřování</td><td>Ověření selhalo.</td>
+<td>Ověření</td><td>Ověření selhalo.</td>
 </tr>
 <tr>
 <td>-</td><td>Řez se nepodařilo vygenerovat nebo ověřit.</td>
 </tr>
-<td>Připravené</td><td>-</td><td>Řez je připraven ke spotřebování.</td>
+<td>Připraveno</td><td>-</td><td>Řez je připraven ke spotřebování.</td>
 </tr>
 <tr>
-<td>Vynecháno</td><td>Žádná</td><td>Řez se zpracovává.</td>
+<td>Vynecháno</td><td>Žádné</td><td>Řez se zpracovává.</td>
 </tr>
 <tr>
-<td>Žádná</td><td>-</td><td>Řez měl dříve jiný stav, ale byla obnovena.</td>
+<td>Žádné</td><td>-</td><td>Řez měl dříve jiný stav, ale byla obnovena.</td>
 </tr>
 </table>
 
@@ -366,13 +365,13 @@ Tento příklad nastaví upozornění pro všechny datové továrny v rámci va�
 
 Následující tabulka obsahuje seznam dostupné operace a stavy (a dílčí stavy).
 
-| Název operace | Stav | Podřízený stav |
+| Název operace | Status | Podřízený stav |
 | --- | --- | --- |
-| RunStarted |Spuštěné |Spouštění |
-| RunFinished |Nemohl / bylo úspěšné |FailedResourceAllocation<br/><br/>Úspěšně dokončeno<br/><br/>FailedExecution<br/><br/>TimedOut<br/><br/>< zrušena<br/><br/>FailedValidation<br/><br/>Abandoned |
-| OnDemandClusterCreateStarted |Spuštěné | |
-| OnDemandClusterCreateSuccessful |Úspěšně dokončeno | |
-| OnDemandClusterDeleted |Úspěšně dokončeno | |
+| RunStarted |Spuštěno |Spouštění |
+| RunFinished |Nemohl / bylo úspěšné |FailedResourceAllocation<br/><br/>Úspěch<br/><br/>FailedExecution<br/><br/>TimedOut<br/><br/>< zrušena<br/><br/>FailedValidation<br/><br/>Abandoned |
+| OnDemandClusterCreateStarted |Spuštěno | |
+| OnDemandClusterCreateSuccessful |Úspěch | |
+| OnDemandClusterDeleted |Úspěch | |
 
 V tématu [vytvořit pravidlo výstrahy](https://msdn.microsoft.com/library/azure/dn510366.aspx) podrobnosti o elementy JSON, které se používají v příkladu.
 
@@ -624,7 +623,7 @@ Nahraďte *subscriptionId*, *resourceGroupName*, a *dataFactoryName* v ukázce s
 * FailedRuns
 * SuccessfulRuns
 
-Nasazení výstrahy
+**Nasazení výstrahy**
 
 Nasadit výstrahy, použijte rutinu prostředí Azure PowerShell **New-AzureRmResourceGroupDeployment**, jak je znázorněno v následujícím příkladu:
 

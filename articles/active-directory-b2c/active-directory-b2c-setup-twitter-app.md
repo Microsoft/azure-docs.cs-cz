@@ -1,29 +1,26 @@
 ---
-title: "Azure Active Directory B2C: Konfigurace služby Twitter | Microsoft Docs"
-description: "Zadejte registrace a přihlášení k příjemce s účty služby Twitter v aplikacích, které jsou zabezpečené službou Azure Active Directory B2C."
+title: 'Azure Active Directory B2C: Konfigurace služby Twitter | Microsoft Docs'
+description: Zadejte registrace a přihlášení k příjemce s účty služby Twitter v aplikacích, které jsou zabezpečené službou Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 579a6841-9329-45b8-a351-da4315a6634e
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 4/06/2017
-ms.author: parakhj
-ms.openlocfilehash: 4dbc70d866a728a63102bd169a124bd26990aeb2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: davidmu
+ms.openlocfilehash: ee2d82f8c90b88a898428973a1febaa21034a14f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts"></a>Azure Active Directory B2C: Zadejte registrace a přihlášení k příjemce s účty služby Twitter.
 
 ## <a name="create-a-twitter-application"></a>Vytvořit aplikaci služby Twitter.
-Pokud chcete používat služby Twitter jako poskytovatel identit v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci služby Twitter a zadat se správné parametry. Twitter vývojářského účtu k tomu potřebujete. Pokud nemáte, můžete ho na získat [https://dev.twitter.com/](https://dev.twitter.com/).
+Pokud chcete používat služby Twitter jako poskytovatel identit v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci služby Twitter a zadat se správné parametry. Twitter vývojářského účtu k tomu potřebujete. Pokud nemáte, můžete ho na získat [ https://dev.twitter.com/ ](https://dev.twitter.com/).
 
 1. Přejděte na [Twitter webu pro vývojáře](https://dev.twitter.com/) a přihlaste se pomocí přihlašovacích údajů.
 2. Klikněte na tlačítko **Moje aplikace** pod **nástroje & podporu** a pak klikněte na **vytvořit novou aplikaci**. 

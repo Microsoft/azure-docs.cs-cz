@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning Model správy nastavení a konfigurace | Microsoft Docs"
-description: "Tento dokument popisuje kroky a koncepty součástí nastavení a konfiguraci modelu správy v Azure Machine Learning."
+title: Azure Machine Learning Model správy nastavení a konfigurace | Microsoft Docs
+description: Tento dokument popisuje kroky a koncepty součástí nastavení a konfiguraci modelu správy v Azure Machine Learning.
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/6/2017
-ms.openlocfilehash: d231fd525d310d2496c9ace40808b7deab0dd48f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 0859031ac26b061861aa51dce1093f2fe4350935
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="model-management-setup"></a>Nastavení modelu správce
 
@@ -154,12 +154,9 @@ Chcete-li použít existující účet, použijte následující příkaz:
 az ml account modelmanagement set -n [your account name] -g [resource group it was created in]
 ```
 
-### <a name="deploy-your-model"></a>Nasazení modelu
-Nyní jste připraveni k nasazení uložené model jako webovou službu. 
-
-```azurecli
-az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
-```
+V důsledku tohoto procesu je prostředí připravené a účet správy model byl vytvořen a zajistit tak funkce potřebné ke správě a nasazení modelů Machine Learning (najdete v části [Azure Machine Learning modelu Management](model-management-overview.md) pro Přehled).
 
 ## <a name="next-steps"></a>Další postup
-Použijte jeden z mnoha ukázek v galerii.
+
+* Pro pokyny o tom, jak nasadit webové služby ke spuštění v místním počítači nebo clusteru pokračovat na [nasazení modelu strojového učení jako webovou službu](model-management-service-deploy.md).
+* Použijte jeden z mnoha ukázek v galerii.

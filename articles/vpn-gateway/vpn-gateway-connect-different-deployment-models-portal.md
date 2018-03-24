@@ -1,11 +1,11 @@
 ---
-title: "Připojení klasické virtuální sítě k virtuálním sítím Azure Resource Manager: portál | Microsoft Docs"
-description: "Kroky pro připojení k virtuální sítě Resource Manager pomocí brány sítě VPN a portálu classic virtuální sítě"
+title: 'Připojení klasické virtuální sítě k virtuálním sítím Azure Resource Manager: portál | Microsoft Docs'
+description: Kroky pro připojení k virtuální sítě Resource Manager pomocí brány sítě VPN a portálu classic virtuální sítě
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 5a90498c-4520-4bd3-a833-ad85924ecaf9
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: ad6b33b5411d3e38f099726df01fcafc8dc90d38
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 65cfbafbd5fbdd576f01b5cba638c1b5869f377b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Připojit virtuální sítě z různé modely nasazení pomocí portálu
 
@@ -216,7 +216,7 @@ V těchto kroků můžete nakonfigurovat připojení z virtuální sítě Resour
 2. Klikněte na tlačítko **konfigurace** a ověřte, zda je hodnota IP adresu brány VPN pro klasické virtuální sítě. Aktualizovat, v případě potřeby a pak klikněte na **Uložit**. Zavřete stránku.
 3. V **všechny prostředky**, klikněte na tlačítko brána místní sítě.
 4. Klikněte na tlačítko **připojení** chcete otevřít stránku připojení.
-5. Na **připojení** klikněte na tlačítko  **+**  přidat připojení.
+5. Na **připojení** klikněte na tlačítko **+** přidat připojení.
 6. Na **přidat připojení** stránky, název připojení. Například 'RMtoClassic'.
 7. **Site-to-Site** je již vybrána na této stránce.
 8. Vyberte bránu virtuální sítě, který chcete přidružit k této lokalitě.
@@ -301,7 +301,7 @@ Připojení můžete ověřit pomocí portálu Azure nebo prostředí PowerShell
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
-###<a name="to-verify-the-connection-from-your-resource-manager-vnet-to-your-classic-vnet"></a>Chcete-li ověřit připojení z vaší virtuální sítě Resource Manager k vaší klasické virtuální sítě
+### <a name="to-verify-the-connection-from-your-resource-manager-vnet-to-your-classic-vnet"></a>Chcete-li ověřit připojení z vaší virtuální sítě Resource Manager k vaší klasické virtuální sítě
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 

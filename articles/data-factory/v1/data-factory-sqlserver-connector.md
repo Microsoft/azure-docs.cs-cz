@@ -1,11 +1,10 @@
 ---
-title: "Přesun dat do a z SQL serveru | Microsoft Docs"
-description: "Další informace o tom, jak přesunout data z databáze serveru SQL Server, který je místně nebo v virtuálního počítače Azure pomocí Azure Data Factory."
+title: Přesun dat do a z SQL serveru | Microsoft Docs
+description: Další informace o tom, jak přesunout data z databáze serveru SQL Server, který je místně nebo v virtuálního počítače Azure pomocí Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 864ece28-93b5-4309-9873-b095bbe6fedd
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 19398a33e17bde7f496070d1f1c84e61dbe65855
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 1f1a2ec3bdf77e6f4f433c88b470e108b734fc4c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Přesun dat do a z místní SQL Server nebo na IaaS (virtuální počítač Azure) pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -658,13 +657,13 @@ Mapování je stejný jako mapování SQL Server datového typu pro technologii 
 | Binární |Byte[] |
 | Bit |Logická hodnota |
 | Char |Řetězec, Char] |
-| datum |Datum a čas |
-| Datum a čas |Datum a čas |
-| datetime2 |Datum a čas |
+| datum |DateTime |
+| Datum a čas |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte[] |
-| Float |Dvojitý |
+| Plovoucí desetinná čárka |Dvojitý |
 | Bitové kopie |Byte[] |
 | celá čísla |Int32 |
 | money |Decimal |
@@ -674,7 +673,7 @@ Mapování je stejný jako mapování SQL Server datového typu pro technologii 
 | nvarchar |Řetězec, Char] |
 | skutečné |Svobodný/svobodná |
 | ROWVERSION |Byte[] |
-| smalldatetime |Datum a čas |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | Smallmoney |Decimal |
 | sql_variant |Objekt * |

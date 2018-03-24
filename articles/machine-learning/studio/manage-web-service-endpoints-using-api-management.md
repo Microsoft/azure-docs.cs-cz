@@ -1,12 +1,13 @@
 ---
-title: "Naučte se spravovat AzureML webové služby pomocí rozhraní API Management | Microsoft Docs"
-description: "Příručka znázorňující postup správy AzureML webové služby pomocí rozhraní API správy."
-keywords: "strojového učení, rozhraní api management"
+title: Naučte se spravovat AzureML webové služby pomocí rozhraní API Management | Microsoft Docs
+description: Příručka znázorňující postup správy AzureML webové služby pomocí rozhraní API správy.
+keywords: strojového učení, rozhraní api management
 services: machine-learning
-documentationcenter: 
-author: roalexan
-manager: jhubbard
-editor: 
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
+editor: cgronlun
 ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
 ms.service: machine-learning
 ms.workload: data-services
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: roalexan
-ms.openlocfilehash: b2c9f53de1abd2aea5fabbefecc5bbb144148a7b
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: fe916df286b0e50430464b3f2f8837b898abb827
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>Zjistěte, jak spravovat webové služby Azure ML pomocí služby API Management
 ## <a name="overview"></a>Přehled
@@ -54,7 +54,7 @@ Můžete spravovat vaše webové služby Azure Machine Learning s instance služ
 
 To může trvat až 30 minut, pro který se má vytvořit novou službu.
 
-![vytvoření služby](./media/manage-web-service-endpoints-using-api-management/create-service.png)
+![create-service](./media/manage-web-service-endpoints-using-api-management/create-service.png)
 
 
 ## <a name="create-the-api"></a>Vytvoření rozhraní API
@@ -65,7 +65,7 @@ Vytvoření rozhraní API:
 1. Na portálu Azure otevřete instance služby, kterou jste právě vytvořili.
 2. V levém navigačním podokně, vyberte **rozhraní API**.
 
-   ![rozhraní API. správu nabídky](./media/manage-web-service-endpoints-using-api-management/api-management.png)
+   ![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management.png)
 
 1. Klikněte na tlačítko **přidání rozhraní API**.
 2. Zadejte **název webového rozhraní API** (Tento příklad používá "Ukázku AzureML rozhraní API").
@@ -91,12 +91,12 @@ Nejprve vytvořte operace pro službu AzureML RRS:
 2. Pro **adresa URL šablony**, typu "`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`".
 3. Zadejte **zobrazovaný název** (Tento příklad používá "RRS spuštění").
 
-   ![přidat záznamy o prostředku operace podpisu](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
+   ![add-rrs-operation-signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
 4. Klikněte na tlačítko **odpovědí** > **přidat** na levé straně a vyberte **200 OK**.
 5. Klikněte na tlačítko **Uložit** uložte tuto operaci.
 
-   ![přidat záznamy o prostředku operace odpověď](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
+   ![add-rrs-operation-response](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
 
 ## <a name="add-bes-operations"></a>Přidání BES operací
 
@@ -161,7 +161,7 @@ Operace lze volat přímo z portálu pro vývojáře, která představuje pohodl
 
    Pro **text žádosti**, typ `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`.
 
-   ![rozhraní api azureml demo](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
+   ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
 5. Klikněte na tlačítko **odeslat**.
 
@@ -173,19 +173,19 @@ Po vyvolání operace portál pro vývojáře zobrazí **požadovaná adresa URL
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>Příloha A - vytváření a testování jednoduché AzureML webové služby
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
-V následující tabulce jsou kroky pro vytvoření jednoduchého experimentu AzureML a jeho nasazení jako webové služby. Webové služby trvá, protože vstupní sloupec libovolný text a vrátí sadu funkcí vyjádřena jako celá čísla. Například:
+V následující tabulce jsou kroky pro vytvoření jednoduchého experimentu AzureML a jeho nasazení jako webové služby. Webové služby trvá, protože vstupní sloupec libovolný text a vrátí sadu funkcí vyjádřena jako celá čísla. Příklad:
 
 | Text | Hash textu |
 | --- | --- |
 | To je dobrý den |1 1 2 2 0 2 0 1 |
 
-Nejdřív pomocí prohlížeče podle vaší volby, přejděte na: [https://studio.azureml.net/](https://studio.azureml.net/) a zadejte své přihlašovací údaje pro přihlášení. Dále vytvořte nový prázdný experiment.
+Nejdřív pomocí prohlížeče podle vaší volby, přejděte na: [ https://studio.azureml.net/ ](https://studio.azureml.net/) a zadejte své přihlašovací údaje pro přihlášení. Dále vytvořte nový prázdný experiment.
 
-![Hledat experimentu – šablony](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
+![search-experiment-templates](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
 Přejmenujte jej na **SimpleFeatureHashingExperiment**. Rozbalte položku **uložit datové sady** a přetáhněte ji **kniha recenze z Amazon** do experimentu.
 
-![jednoduché – funkce-algoritmu hash experimentu](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
+![simple-feature-hashing-experiment](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
 Rozbalte položku **transformaci dat** a **manipulaci s** a přetáhněte ji **výběr sloupců v datové sadě** do experimentu. Připojit **sešit recenze z Amazon** k **výběr sloupců v datové sadě**.
 
@@ -214,38 +214,38 @@ Teď vytvořte webovou službu. Rozbalte položku **webové služby** a přetáh
 
 Klikněte na tlačítko **publikování webové služby**.
 
-![publikování – webové služby](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
+![publish-web-service](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
 
 Klikněte na tlačítko **Ano** publikovat experimentu.
 
-![Ano publikování](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
+![yes-to-publish](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Test webové služby
 Webové služby AzureML se skládá z RSS (požadavků a odpovědí služby) a koncové body BES (dávky spuštění služby). RSS je pro synchronní zpracování. BES je pro provádění asynchronní úlohy. Testování webové služby s ukázkový zdroj Python níže, budete muset stáhnout a nainstalovat sadu Azure SDK pro jazyk Python (viz: [postup instalace Python](../../python-how-to-install.md)).
 
 Budete také potřebovat **prostoru**, **služby**, a **api_key** experimentu pro následující ukázkový zdroj. Pracovní prostor a služby zjistíte kliknutím na možnost **požadavků a odpovědí** nebo **Batch Execution** svého experimentu v řídicím panelu webové služby.
 
-![Najít prostoru a service](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
+![find-workspace-and-service](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
 Můžete najít **api_key** kliknutím experimentu v řídicím panelu webové služby.
 
-![najít klíč rozhraní api](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
+![find-api-key](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
 
 #### <a name="test-rrs-endpoint"></a>Koncový bod RRS testu
 ##### <a name="test-button"></a>Tlačítko Test
 Snadný způsob, jak otestovat záznamy o prostředku koncového bodu je kliknout na **testování** na řídicím panelu webové služby.
 
-![Test](./media/manage-web-service-endpoints-using-api-management/test.png)
+![testování](./media/manage-web-service-endpoints-using-api-management/test.png)
 
 Typ **to je dobrý den** pro **col2**. Kliknutím na značku zaškrtnutí.
 
-![zadávání dat](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
+![enter-data](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
 
 Zobrazí se něco podobného jako
 
 ![Ukázkový výstup](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
 
-##### <a name="sample-code"></a>Ukázkový kód
+##### <a name="sample-code"></a>Vzorový kód
 Jiný způsob, jak otestovat váš RRS je z vašeho kódu klienta. Pokud kliknete na tlačítko **požadavků a odpovědí** na řídicí panel a přejděte do dolní, uvidíte ukázkový kód pro C#, Python a R. Zobrazí se také syntaxe RRS požadavku, včetně identifikátoru URI žádosti, hlavičky a text.
 
 Tato příručka ukazuje příklad Python funkční. Budete muset upravit její **prostoru**, **služby**, a **api_key** experimentu.

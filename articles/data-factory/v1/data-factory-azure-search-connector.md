@@ -1,11 +1,10 @@
 ---
-title: "Nabízet data do indexu vyhledávání pomocí služby Data Factory | Microsoft Docs"
-description: "Další informace o tom, jak nabízet data do indexu Azure Search pomocí Azure Data Factory."
+title: Nabízet data do indexu vyhledávání pomocí služby Data Factory | Microsoft Docs
+description: Další informace o tom, jak nabízet data do indexu Azure Search pomocí Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: f8d46e1e-5c37-4408-80fb-c54be532a4ab
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d8848f93518392333df16c9c7bf07bd0b2529034
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: fa5ca52f399f74ac6b3eae5c6918442292f87955
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Zápis dat do indexu Azure Search pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

@@ -1,11 +1,11 @@
 ---
-title: "Prostřednictvím kódu programu Sledování služby Azure data factory | Microsoft Docs"
-description: "Naučte se monitorovat kanál v objekt pro vytváření dat pomocí různých software development Kit (SDK)."
+title: Prostřednictvím kódu programu Sledování služby Azure data factory | Microsoft Docs
+description: Naučte se monitorovat kanál v objekt pro vytváření dat pomocí různých software development Kit (SDK).
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,17 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 95934de9b84270ff112489a7b67f622dad609970
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 87e69349245c5f67e23022e3a45ed798400e6a2c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Prostřednictvím kódu programu Sledování služby Azure data factory
 Tento článek popisuje, jak monitorovat kanál v objekt pro vytváření dat pomocí různých software development Kit (SDK). 
 
 > [!NOTE]
 > Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [monitorování a Správa kanálů v objektu pro vytváření dat version1](v1/data-factory-monitor-manage-pipelines.md).
+
+## <a name="data-range"></a>Oblast dat
+
+Objekt pro vytváření dat ukládá jenom kanálu spouští dat 45 dní. Když dotazujete prostřednictvím kódu programu pro data o spuštění kanálu pro vytváření dat – například pomocí příkazu prostředí PowerShell `Get-AzureRmDataFactoryV2PipelineRun` -nejsou žádné maximální data pro volitelné `LastUpdatedAfter` a `LastUpdatedBefore` parametry. Ale pokud dotaz na data v minulém roce, například dotaz nevrátí chybu, ale vrátí jenom kanálu spuštění data z posledních 45 dní.
+
+Pokud chcete zachovat kanálu spouští dat déle než 45 dní, nastavit vlastní protokolování diagnostiky s [Azure monitorování](monitor-using-azure-monitor.md).
 
 ## <a name="net"></a>.NET
 Kompletní a podrobný postup vytváření a monitorování kanálu pomocí sady .NET SDK, naleznete v části [vytvořte objekt pro vytváření dat a kanál pomocí rozhraní .NET](quickstart-create-data-factory-dot-net.md).

@@ -1,11 +1,11 @@
 ---
-title: "Použití vlastních aktivit v kanálu Azure Data Factory"
-description: "Zjistěte, jak vytvořit vlastní aktivity a použít je v kanál služby Azure Data Factory."
+title: Použití vlastních aktivit v kanálu Azure Data Factory
+description: Zjistěte, jak vytvořit vlastní aktivity a použít je v kanál služby Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 6aaeaaacdc9ee67ebbed3ea3090455dde2357c3d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 770187c16ed9d0eacfaf99e571ad048c6723a9cf
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -298,7 +298,7 @@ Pokud chcete pracovat s obsahem stdout.txt v podřízené aktivity, můžete zí
   > - Activity.json, linkedServices.json a datasets.json jsou uloženy ve složce modulu runtime úlohy Batch. V tomto příkladu activity.json, linkedServices.json a datasets.json jsou uloženy v "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" cesta. V případě potřeby, musíte je vyčistit samostatně. 
   > - Pro účely propojené služby, Self-Hosted integrace Runtime, citlivé informace, jako jsou klíče nebo hesla zašifrován modulem Runtime integrace Self-Hosted zajistit přihlašovací údaje definované zůstane u zákazníka prostředí privátní sítě. Když odkazuje kód vlastní aplikace tímto způsobem, může být chybějící některých polí. Použijte SecureString v extendedProperties místo použití odkaz na propojenou službu, v případě potřeby. 
 
-## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a>Porovnání v2 vlastní aktivity a verze 1 (vlastní) aktivity DotNet.
+## <a name="compare-v2-v1"></a> Porovnání v2 vlastní aktivity a verze 1 (vlastní) aktivity DotNet.
 
   V Azure Data Factory verze 1, implementovat aktivitu DotNet (vlastní) tak, že vytvoříte .net projektu knihovny tříd s třídou, která implementuje `Execute` metodu `IDotNetActivity` rozhraní. Propojené služby, datové sady a rozšířené vlastnosti v datové části JSON aktivity DotNet (vlastní) jsou předaný metodě provádění jako objekty silného typu. Podrobnosti o chování verze 1 najdete v tématu [DotNet (vlastní) ve verzi 1](v1/data-factory-use-custom-activities.md). Z důvodu tato implementace má váš kód DotNet aktivity verze 1 pro rozhraní .net Framework 4.5.2. Verze 1 DotNet aktivity také musí být spuštěn v systému Windows fondu Azure Batch uzlech. 
 

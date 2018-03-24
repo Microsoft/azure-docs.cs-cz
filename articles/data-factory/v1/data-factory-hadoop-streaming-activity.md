@@ -1,11 +1,10 @@
 ---
-title: "Transformace dat pomocí streamované aktivitě Hadoop - Azure | Microsoft Docs"
-description: "Zjistěte, jak můžete pomocí streamované aktivitě Hadoop v objektu pro vytváření dat Azure pro transformaci dat spuštěním streamování Hadoop programy na na vyžádání nebo vaše vlastní cluster HDInsight."
+title: Transformace dat pomocí streamované aktivitě Hadoop - Azure | Microsoft Docs
+description: Zjistěte, jak můžete pomocí streamované aktivitě Hadoop v objektu pro vytváření dat Azure pro transformaci dat spuštěním streamování Hadoop programy na na vyžádání nebo vaše vlastní cluster HDInsight.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9022b03af8c87651a552e7fd3f505156daa3924e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 7d9e103a5953fe5b103c953eee794419e27b43ef
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí streamované aktivitě Hadoop v Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]

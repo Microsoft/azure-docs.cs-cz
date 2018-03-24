@@ -1,11 +1,11 @@
 ---
-title: "Webové aplikace Azure AD Node.js Začínáme | Microsoft Docs"
-description: "Naučte se vytvářet webové aplikace Node.js Express MVC, která se integruje se službou Azure AD pro přihlášení."
+title: Webové aplikace Azure AD Node.js Začínáme | Microsoft Docs
+description: Naučte se vytvářet webové aplikace Node.js Express MVC, která se integruje se službou Azure AD pro přihlášení.
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 81deecec-dbe2-4e75-8bc0-cf3788645f99
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0a3bbfe32bde0cd3971450f5a9a909dcf8b5d793
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 477056581b847693ae115f94c2f6466036add765
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Začínáme se službou Azure AD Node.js webové aplikace
 Tady používáme Passport:
@@ -402,7 +402,7 @@ Nyní `app.js` dokončení. Musíme jednoduše přidat trasy a zobrazení, kter�
     </html>
     ```
 
-##<a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další postup
 Nakonec sestavte a spusťte aplikaci. Spustit `node app.js`a pak přejděte na `http://localhost:3000`.
 
 Přihlaste se pomocí osobního účtu Microsoft nebo pracovní nebo školní účet a Všimněte si, jak se v seznamu /account projeví identitu uživatele. Nyní máte webovou aplikaci, která je zabezpečen pomocí standardních oborových protokolech, které může ověřit uživatele s svoje osobní, tak i pracovní nebo školní účty.

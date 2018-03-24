@@ -1,11 +1,11 @@
 ---
-title: "Aspekty zabezpečení v Azure Data Factory | Microsoft Docs"
-description: "Popisuje základní zabezpečení infrastrukturu, která využívají služby pro přesun dat v Azure Data Factory k zabezpečení vaše data."
+title: Aspekty zabezpečení v Azure Data Factory | Microsoft Docs
+description: Popisuje základní zabezpečení infrastrukturu, která využívají služby pro přesun dat v Azure Data Factory k zabezpečení vaše data.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 3c8215ab4a1759efef3c2c13a5ac44f6944b53d7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 56602e269a441f9541314424190da04be2c4add5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Důležité informace o zabezpečení pro přesun dat v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,9 +49,10 @@ V tomto článku jsme zkontrolujte důležité informace o zabezpečení v násl
 - **Scénář hybridního**: V tomto scénáři vaše zdroj nebo cíl jsou za bránou firewall nebo uvnitř podnikové sítě na místní. Nebo úložiště dat je v soukromé síti nebo virtuální sítě (nejčastěji zdroje) a není veřejně přístupná. Databázové servery hostované ve virtuálních počítačích také spadají pod tento scénář.
 
 ## <a name="cloud-scenarios"></a>Scénáře cloudu
-### <a name="secure-data-store-credentials"></a>Data zabezpečeného úložiště pověření
-- **Uložení zašifrované přihlašovací údaje v úložišti Azure Data Factory spravované**. Objekt pro vytváření dat pomáhá chránit přihlašovací údaje k úložišti dat šifrováním s certifikáty, které spravuje Microsoft. Tyto certifikáty otáčejí každé dva roky (které zahrnuje obnovení certifikátu a migrace přihlašovacích údajů). Zašifrované přihlašovací údaje jsou bezpečně uložené v účtu úložiště Azure, který spravuje služby pro Azure Data Factory. Další informace o zabezpečení Azure Storage najdete v tématu [Přehled zabezpečení Azure Storage](../security/security-storage-overview.md).
 
+### <a name="securing-data-store-credentials"></a>Zabezpečení údaje k úložišti dat.
+
+- **Uložení zašifrované přihlašovací údaje v úložišti Azure Data Factory spravované**. Objekt pro vytváření dat pomáhá chránit přihlašovací údaje k úložišti dat šifrováním s certifikáty, které spravuje Microsoft. Tyto certifikáty otáčejí každé dva roky (které zahrnuje obnovení certifikátu a migrace přihlašovacích údajů). Zašifrované přihlašovací údaje jsou bezpečně uložené v účtu úložiště Azure, který spravuje služby pro Azure Data Factory. Další informace o zabezpečení Azure Storage najdete v tématu [Přehled zabezpečení Azure Storage](../security/security-storage-overview.md).
 - **Ukládat přihlašovací údaje v Azure Key Vault**. Také můžete uložit přihlašovací údaje úložiště dat v [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Objekt pro vytváření dat načte přihlašovacích údajů během provádění aktivity. Další informace najdete v tématu [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md).
 
 ### <a name="data-encryption-in-transit"></a>Šifrování dat při přenosu
@@ -144,7 +145,7 @@ Následující tabulka uvádí požadavky odchozí port a domény pro podnikové
 
 | Názvy domén                  | Odchozí porty | Popis                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443, 80        | Požadované pro připojení k služby pro přesun dat v datové továrně modulem runtime vlastním hostováním integrace. |
+| `*.servicebus.windows.net`    | 443            | Požadované pro připojení k služby pro přesun dat v datové továrně modulem runtime vlastním hostováním integrace. |
 | `*.core.windows.net`          | 443            | Používané vlastním hostováním integrace modulu runtime pro připojení k účtu úložiště Azure při použití [připravený kopie](copy-activity-performance.md#staged-copy) funkce. |
 | `*.frontend.clouddatahub.net` | 443            | Požadované modulem runtime vlastním hostováním integrace pro připojení ke službě Data Factory. |
 | `*.database.windows.net`      | 1433           | (Volitelné) Vyžaduje se při kopírování z nebo na Azure SQL Database nebo Azure SQL Data Warehouse. Použijte funkci dvoufázové instalace kopírování zkopírovat data do Azure SQL Database nebo Azure SQL Data Warehouse bez otevření portu 1433. |

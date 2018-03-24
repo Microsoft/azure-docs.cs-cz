@@ -1,10 +1,9 @@
 ---
-title: "Řešení problémů Brána pro správu dat | Microsoft Docs"
-description: "Tipy pro řešení potíží s Brána pro správu dat poskytuje."
+title: Řešení problémů Brána pro správu dat | Microsoft Docs
+description: Tipy pro řešení potíží s Brána pro správu dat poskytuje.
 services: data-factory
 author: nabhishek
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
@@ -14,17 +13,17 @@ ms.topic: article
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b3b34921168661089946b5c5dd9e6d489880733b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d82592bfda3eaf44d28f67b8bb6599aa4ae4bae7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Řešení potíží při použití Brány pro správu dat
 Tento článek obsahuje informace o řešení potíží s použitím brány pro správu dat.
 
 > [!NOTE]
-> Tento článek se týká verze 1 Azure Data Factory, který je všeobecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [hostovanou na vlastním integrace runtime v datové továrně verze 2](../create-self-hosted-integration-runtime.md).
+> Tento článek se týká verze 1 služby Azure Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [hostovanou na vlastním integrace runtime v datové továrně verze 2](../create-self-hosted-integration-runtime.md).
 
 Najdete v článku [Brána pro správu dat](data-factory-data-management-gateway.md) článku podrobné informace o bráně. Najdete v článku [přesun dat mezi místními a cloudovými](data-factory-move-data-between-onprem-and-cloud.md) článku návod přesun dat z databáze SQL serveru místně do Microsoft Azure Blob storage pomocí brány.
 
@@ -206,7 +205,7 @@ Certifikát SSL může byla v počítači s bránou ztraceny. Počítač brány 
 Postupujte podle těchto kroků problém vyřešit:
 
 1. Spusťte Správce konfigurace brány pro správu dat.
-2. Přepnout **nastavení** kartě.  
+2. Přepněte na kartu **Nastavení**.  
 3. Klikněte **změnit** tlačítko změňte certifikát SSL.
 
    ![Tlačítko změnit certifikát](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)

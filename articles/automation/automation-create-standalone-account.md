@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření samostatného účtu Azure Automation"
-description: "Tento článek vás provede kroky vytváření, testování a používání ověření objektu příklad zabezpečení ve službě Azure Automation."
+title: Vytvoření samostatného účtu Azure Automation
+description: Tento článek vás provede kroky vytváření, testování a používání ověření objektu příklad zabezpečení ve službě Azure Automation.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,16 +8,14 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: 5ea3d1af6f8bb4a6c0ef45560d8707afc58f61b1
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ca00736c6c42223a0fe6259da5ee2531c287de18
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
-Tento článek ukazuje, jak vytvořit účet Azure Automation na portálu Azure. Portál účtu Automation můžete použít k vyhodnocení a další informace o automatizaci bez integrace nebo další správu řešení pomocí Azure Log Analytics v Operations Management Suite (OMS). Můžete přidat těchto řešení pro správu nebo integrovat analýzy protokolů pro pokročilé monitorování úlohy sady runbook v libovolném bodě v budoucnu. 
+Tento článek ukazuje, jak vytvořit účet Azure Automation na portálu Azure. Portál účtu Automation můžete použít k vyhodnocení a další informace o automatizaci bez integrace nebo další správu řešení pomocí Azure Log Analytics. Můžete přidat těchto řešení pro správu nebo integrovat analýzy protokolů pro pokročilé monitorování úlohy sady runbook v libovolném bodě v budoucnu. 
 
 Pomocí účtu Automation můžete ověřovat sady runbook ve správě prostředků v Azure Resource Manager nebo modelu nasazení classic.
 

@@ -1,13 +1,13 @@
 ---
 title: Azure Blob storage vazby pro Azure Functions
-description: "Pochopit, jak používat Azure Blob storage triggerů a vazeb v Azure Functions."
+description: Pochopit, jak používat Azure Blob storage triggerů a vazeb v Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru"
+editor: ''
+tags: ''
+keywords: Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 221a049ae37cc6934d04e90b6b8035e2a020e811
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bf2c4a12d1344ec17ce9688e1c7192f57104dc7b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob storage vazby pro Azure Functions
 
@@ -233,12 +233,12 @@ V jazyce C# a C# skript můžete použít následující typy parametrů pro spo
 * `string`
 * `Byte[]`
 * Serializovatelné jako JSON objektů POCO
-* `ICloudBlob` (vyžaduje směr "inout" vazby v *function.json*)
-* `CloudBlockBlob` (vyžaduje směr "inout" vazby v *function.json*)
-* `CloudPageBlob` (vyžaduje směr "inout" vazby v *function.json*)
-* `CloudAppendBlob` (vyžaduje směr "inout" vazby v *function.json*)
+* `ICloudBlob`<sup>1</sup>
+* `CloudBlockBlob`<sup>1</sup>
+* `CloudPageBlob`<sup>1</sup>
+* `CloudAppendBlob`<sup>1</sup>
 
-Jak jsme uvedli, vyžadují některé z těchto typů `inout` vazby směr v *function.json*. Tento směr nepodporuje standardního editoru na portálu Azure, je nutné použít rozšířené editor.
+<sup>1</sup> vyžaduje "inout" vazba `direction` v *function.json* nebo `FileAccess.ReadWrite` v knihovně tříd jazyka C#.
 
 Vytvoření vazby na `string`, `Byte[]`, nebo objektů POCO se doporučuje, pouze pokud má malou velikost objektu blob, jako celý objekt blob se obsah načten do paměti. Obecně platí, je vhodnější použít `Stream` nebo `CloudBlockBlob` typu. Další informace najdete v tématu [souběžnosti a použití paměti](#trigger---concurrency-and-memory-usage) dále v tomto článku.
 
@@ -364,7 +364,7 @@ Podívejte se na konkrétní jazyk příklad:
 
 ### <a name="input---c-example"></a>(Vstup) – příklad jazyka C#
 
-Následující příklad je [C# funkce](functions-dotnet-class-library.md) používající aktivační procedury fronty a vazbu vstupního objektu blob. Fronty messagge obsahuje název objektu blob a funkce protokoly velikost objektu blob.
+Následující příklad je [C# funkce](functions-dotnet-class-library.md) používající aktivační procedury fronty a vazbu vstupního objektu blob. Zprávy ve frontě obsahuje název objektu blob a funkce protokoly velikost objektu blob.
 
 ```csharp
 [FunctionName("BlobInput")]
@@ -374,7 +374,6 @@ public static void Run(
     TraceWriter log)
 {
     log.Info($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
-
 }
 ```        
 
@@ -534,12 +533,12 @@ V jazyce C# a C# skript můžete použít následující typy parametrů pro vst
 * `Byte[]`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`
-* `ICloudBlob` (vyžaduje směr "inout" vazby v *function.json*)
-* `CloudBlockBlob` (vyžaduje směr "inout" vazby v *function.json*)
-* `CloudPageBlob` (vyžaduje směr "inout" vazby v *function.json*)
-* `CloudAppendBlob` (vyžaduje směr "inout" vazby v *function.json*)
+* `ICloudBlob`<sup>1</sup>
+* `CloudBlockBlob`<sup>1</sup>
+* `CloudPageBlob`<sup>1</sup>
+* `CloudAppendBlob`<sup>1</sup>
 
-Jak jsme uvedli, vyžadují některé z těchto typů `inout` vazby směr v *function.json*. Tento směr nepodporuje standardního editoru na portálu Azure, je nutné použít rozšířené editor.
+<sup>1</sup> vyžaduje "inout" vazba `direction` v *function.json* nebo `FileAccess.ReadWrite` v knihovně tříd jazyka C#.
 
 Vytvoření vazby na `string` nebo `Byte[]` se doporučuje jenom když je velikost objektu blob malé, protože obsah celý objekt blob jsou načtena do paměti. Obecně platí, je vhodnější použít `Stream` nebo `CloudBlockBlob` typu. Další informace najdete v tématu [souběžnosti a použití paměti](#trigger---concurrency-and-memory-usage) výše v tomto článku.
 
@@ -737,21 +736,23 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="output---usage"></a>Výstup – použití
 
-V jazyce C# a C# skript, můžete použít následující typy parametrů pro tento objekt blob výstup vazby:
+V jazyce C# a C# skript můžete vázat na následující typy k zápisu objektů blob:
 
 * `TextWriter`
 * `out string`
 * `out Byte[]`
 * `CloudBlobStream`
 * `Stream`
-* `CloudBlobContainer`
+* `CloudBlobContainer`<sup>1</sup>
 * `CloudBlobDirectory`
-* `ICloudBlob` (vyžaduje směr "inout" vazby v *function.json*)
-* `CloudBlockBlob` (vyžaduje směr "inout" vazby v *function.json*)
-* `CloudPageBlob` (vyžaduje směr "inout" vazby v *function.json*)
-* `CloudAppendBlob` (vyžaduje směr "inout" vazby v *function.json*)
+* `ICloudBlob`<sup>2</sup>
+* `CloudBlockBlob`<sup>2</sup>
+* `CloudPageBlob`<sup>2</sup>
+* `CloudAppendBlob`<sup>2</sup>
 
-Jak jsme uvedli, vyžadují některé z těchto typů `inout` vazby směr v *function.json*. Tento směr nepodporuje standardního editoru na portálu Azure, je nutné použít rozšířené editor.
+<sup>1</sup> vyžaduje "v" vazba `direction` v *function.json* nebo `FileAccess.Read` v knihovně tříd jazyka C#.
+
+<sup>2</sup> vyžaduje "inout" vazba `direction` v *function.json* nebo `FileAccess.ReadWrite` v knihovně tříd jazyka C#.
 
 Asynchronní funkcí, použití návratovou hodnotu nebo `IAsyncCollector` místo `out` parametr.
 

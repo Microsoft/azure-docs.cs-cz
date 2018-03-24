@@ -1,11 +1,11 @@
 ---
-title: "Azure Cosmos DB: Rozhraní API pro SQL Začínáme s .NET Core kurzu | Microsoft Docs"
-description: "Kurz, který vytváří online databáze a Konzolová aplikace C# pomocí sady Azure Cosmos DB SQL rozhraní API .NET Core SDK."
+title: 'Azure Cosmos DB: Rozhraní API pro SQL Začínáme s .NET Core kurzu | Microsoft Docs'
+description: Kurz, který vytváří online databáze a Konzolová aplikace C# pomocí sady Azure Cosmos DB SQL rozhraní API .NET Core SDK.
 services: cosmos-db
 documentationcenter: .net
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 9f93e276-9936-4efb-a534-a9889fa7c7d2
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: arramac
 ms.custom: devcenter
-ms.openlocfilehash: 90b720c174ab5730237f27d5ebb253976a70b071
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 460b963f09384e246d914cd7c4aeca046da83dd3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cosmos-db-getting-started-with-the-sql-api-and-net-core"></a>Azure Cosmos DB: Začínáme s SQL API a .NET Core
 > [!div class="op_single_selector"]
@@ -51,9 +51,6 @@ Tento kurz se zabývá:
 Nemáte čas? Nevadí! Úplné řešení je k dispozici na [GitHubu](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started). Pro rychlé pokyny přeskočte na [oddíl Získání úplného řešení](#GetSolution).
 
 Chcete sestavení Xamarin iOS, Android nebo formuláře aplikace pomocí rozhraní API pro SQL a .NET Core SDK? V tématu [vytváření mobilních aplikací s Xamarin a Azure Cosmos DB](mobile-apps-with-xamarin.md).
-
-> [!NOTE]
-> Cosmos DB .NET SDK služby Azure základní použili v tomto kurzu není kompatibilní s aplikací pro univerzální platformu Windows (UWP). Verzi Preview sady .NET Core SDK, která podporuje aplikace UWP, pošlete e-mail na adresu [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
 
 Můžeme začít!
 

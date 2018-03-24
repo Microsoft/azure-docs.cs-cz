@@ -1,9 +1,9 @@
 ---
-title: "Vytvořte výstrahy pro služby Azure - napříč platformami rozhraní příkazového řádku | Microsoft Docs"
-description: "Aktivační událost e-mailů, oznámení, weby adresy URL (webhooky), nebo volat automatizace při splnění zadané podmínky."
+title: Vytvořte výstrahy pro služby Azure - napříč platformami rozhraní příkazového řádku | Microsoft Docs
+description: Aktivační událost e-mailů, oznámení, weby adresy URL (webhooky), nebo volat automatizace při splnění zadané podmínky.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 5c6a2d27-7dcc-4f89-8752-9bb31b05ff35
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
-ms.openlocfilehash: 92246a8da73a244a1c9a924bed55711d71a20fd8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cf93c95a37c9c32333727059317e05cfcc252905
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Vytvoření metriky výstrah v monitorování Azure pro služby Azure - napříč platformami rozhraní příkazového řádku
+# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Vytvoření classic metriky výstrah v monitorování Azure pro služby Azure - napříč platformami rozhraní příkazového řádku
 > [!div class="op_single_selector"]
 > * [Azure Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -29,6 +29,11 @@ ms.lasthandoff: 12/21/2017
 >
 
 ## <a name="overview"></a>Přehled
+> [!NOTE]
+> Tento článek popisuje postup vytvoření starší metriky výstrahy. Azure nyní podporuje monitorování [novější, lepší metriky výstrahy](monitoring-near-real-time-metric-alerts.md). Tyto výstrahy můžete sledovat více metriky a povolit pro výstrahy na dimenzí metriky. Podpora rozhraní příkazového řádku pro novější metriky výstrahy tu bude brzo dostupná.
+>
+>
+
 Tento článek ukazuje, jak nastavit Azure metriky výstrah pomocí napříč platformami rozhraní příkazového řádku (CLI).
 
 > [!NOTE]
@@ -39,7 +44,7 @@ Tento článek ukazuje, jak nastavit Azure metriky výstrah pomocí napříč pl
 Můžete zobrazit upozornění na základě monitorování metriky pro nebo událostí na služeb Azure.
 
 * **Metriky hodnoty** -výstrahy aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu přiřadíte v obou směrech. To znamená, aktivuje obě při nejprve je splněna podmínka, a pak později, pokud podmínka je už plněny.    
-* **Události protokolu aktivit** -výstrahu můžete aktivovat pro *každých* události nebo pouze tehdy, když dojde k určité události. Další informace o výstrahách aktivity protokolu [, klikněte sem](monitoring-activity-log-alerts.md)
+* **Aktivity protokolu události** -výstrahu můžete aktivovat pro *každých* události nebo pouze tehdy, když dojde k určité události. Další informace o výstrahách aktivity protokolu [, klikněte sem](monitoring-activity-log-alerts.md)
 
 Můžete nakonfigurovat metriky výstrahu při aktivaci, proveďte následující:
 
@@ -50,9 +55,9 @@ Můžete nakonfigurovat metriky výstrahu při aktivaci, proveďte následujíc�
 
 Můžete nakonfigurovat a získat informace o použití metriky pravidla výstrah
 
-* [portál Azure Portal](insights-alerts-portal.md)
+* [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
-* [rozhraní příkazového řádku (CLI)](insights-alerts-command-line-interface.md)
+* [Rozhraní příkazového řádku (CLI)](insights-alerts-command-line-interface.md)
 * [Rozhraní API REST Azure monitorování](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 Vždy dostanete nápovědy pro příkazy zadáním příkazu a - pomoci na konci. Příklad:
@@ -99,7 +104,7 @@ Vždy dostanete nápovědy pro příkazy zadáním příkazu a - pomoci na konci
      *PT1M* je stejná i členitost dostupné měření (1-minutách). Pomocí různých členitostí nabízí různé možnosti metriky.
 4. Pokud chcete vytvořit pravidlo výstrahy založené na metrika, použijte příkaz v následujícím formátu:
 
-    **metriky sadu pravidel výstrahy statistiky Azure** *[možnosti] &lt;ruleName&gt; &lt;umístění&gt; &lt;resourceGroup&gt; &lt;velikost_okna &gt; &lt;operátor&gt; &lt;prahová hodnota&gt; &lt;targetResourceId&gt; &lt;metricName&gt; &lt; timeAggregationOperator&gt;*
+    **metriky sadu pravidel výstrahy statistiky Azure** *[možnosti] &lt;ruleName&gt; &lt;umístění&gt; &lt;resourceGroup&gt; &lt;velikost_okna&gt; &lt;operátor&gt; &lt;prahová hodnota&gt; &lt;targetResourceId&gt; &lt;metricName&gt; &lt;timeAggregationOperator&gt;*
 
     Následující příklad nastaví výstrahu na webový server prostředku. Výstrahy aktivačních událostí, kdykoliv konzistentně obdrží veškerou komunikaci pro 5 minut a opakujte při přijetí žádný provoz 5 minut.
 
@@ -134,7 +139,7 @@ Vždy dostanete nápovědy pro příkazy zadáním příkazu a - pomoci na konci
     azure insights alerts rule delete myresourcegroup myActivityLogRule
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Získat přehled o Azure monitorování](monitoring-overview.md) včetně typy informací, můžete sledovat a shromažďovat.
 * Další informace o [konfigurace webhooky ve výstrahách](insights-webhooks-alerts.md).
 * Další informace o [konfigurace výstrah pro aktivitu protokolu události](monitoring-activity-log-alerts.md).

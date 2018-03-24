@@ -1,11 +1,11 @@
 ---
-title: "Visual vytváření obsahu v Azure Data Factory | Microsoft Docs"
-description: "Další informace o použití visual vytváření obsahu v Azure Data Factory"
+title: Visual vytváření obsahu v Azure Data Factory | Microsoft Docs
+description: Další informace o použití visual vytváření obsahu v Azure Data Factory
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/9/2018
 ms.author: shlo
-ms.openlocfilehash: 954693ee208dc7868a5a5ad0e774c5c352036627
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bce74c80f53eda654bb0289a1ff8a6cb88fd13f5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visual vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní prostředí (UX) umožňuje vizuálně vytvořit a nasadit prostředky pro vytváření dat bez nutnosti psaní jakéhokoli kódu. Můžete přetáhněte na plátno kanálu aktivity, proveďte test spustí, interaktivně, ladění a nasadit a monitorovat běží vaše kanálu. Pro použití uživatelského k provedení visual vytváření dvěma způsoby:

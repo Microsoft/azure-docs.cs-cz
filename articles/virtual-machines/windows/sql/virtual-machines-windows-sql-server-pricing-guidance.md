@@ -1,13 +1,13 @@
 ---
-title: "Efektivní správě náklady pro SQL Server na virtuálních počítačích Azure | Microsoft Docs"
-description: "Obsahuje doporučené postupy pro výběr správné virtuálního počítače systému SQL Server cenový model."
+title: Efektivní správě náklady pro SQL Server na virtuálních počítačích Azure | Microsoft Docs
+description: Obsahuje doporučené postupy pro výběr správné virtuálního počítače systému SQL Server cenový model.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/20/2018
 ms.author: jroth
-ms.openlocfilehash: 3103ca2c659e40fd945b597ed4671fe96daf1905
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a275df84ce784147b5fd4f09afe4995417affffd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Pokyny pro virtuální počítače SQL serveru Azure – ceny
 
@@ -63,7 +63,7 @@ Máte dvě možnosti platit za licencování SQL serveru pro tyto edice: *platí
 
 ### <a name="pay-per-usage"></a>Platba za použití
 
-**Licenci systému SQL Server za použití platícího** znamená, že za minutu náklady na provozování virtuálního počítače Azure obsahuje náklady na licence pro SQL Server. Zobrazí cenách pro různých edicích systému SQL Server (Web, Standard, Enterprise) v [virtuálního počítače Azure stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Náklady na je stejný pro všechny verze systému SQL Server (2012 SP3 na 2017). Stejně jako u obecně licencování SQL serveru, náklady na licencování za minutu závisí na počtu jader virtuálního počítače.
+**Licenci systému SQL Server za použití platícího** znamená, že za sekundu náklady na provozování virtuálního počítače Azure obsahuje náklady na licence pro SQL Server. Zobrazí cenách pro různých edicích systému SQL Server (Web, Standard, Enterprise) v [virtuálního počítače Azure stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Náklady na je stejný pro všechny verze systému SQL Server (2012 SP3 na 2017). Stejně jako u obecně licencování SQL serveru, náklady na licencování za sekundu závisí na počtu jader virtuálního počítače.
 
 Platícího systému SQL Server licencování za použití se doporučuje pro:
 
@@ -113,7 +113,7 @@ Vytvoření virtuálního počítače s SQL Server 2016 Azure s jedním z těcht
 > Dejte nám vědět do 10 dnů kolik licencí systému SQL Server, budete používat v Azure. Odkazy na předchozí bitové kopie jsou pokyny o tom, jak to udělat.
 
 > [!NOTE]
-> Není možné změnit licenční model virtuálního počítače s SQL Serverem placeného po minutách, aby používal vaši vlastní licenci. V takovém případě musíte vytvořit nový virtuální počítač BYOL a migrovat databáze do nového virtuálního počítače. 
+> Není možné změnit model licencování platím za sekundu virtuální počítač SQL Server používat vlastní licenci. V takovém případě musíte vytvořit nový virtuální počítač BYOL a migrovat databáze do nového virtuálního počítače. 
 
 ## <a name="avoid-unnecessary-costs"></a>Vyhněte se zbytečných nákladů
 

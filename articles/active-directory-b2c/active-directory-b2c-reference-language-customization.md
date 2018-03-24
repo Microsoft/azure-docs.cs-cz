@@ -1,22 +1,21 @@
 ---
-title: "Pomocí vlastního nastavení jazyka – Azure AD B2C | Microsoft Docs"
-description: 
+title: Pomocí vlastního nastavení jazyka – Azure AD B2C | Microsoft Docs
+description: Informace o přizpůsobení nastavení jazyka počítače.
 services: active-directory-b2c
-documentationcenter: 
-author: sama
-ms.assetid: eec4d418-453f-4755-8b30-5ed997841b56
+documentationcenter: ''
+author: davidmu1
+manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 02/26/2018
-ms.author: sama
-ms.openlocfilehash: 332c6b4ffd841a2c7aef9db5c8ba9e843790f4d6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: davidmu
+ms.openlocfilehash: 7c72c1d43d9a5fa541c72a8ba7a5ccedeafdaaff
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-using-language-customization"></a>Azure Active Directory B2C: Přizpůsobení jazyka pomocí
 
@@ -180,7 +179,7 @@ Chrome a Firefox obě žádosti pro své jazykové sady a pokud je podporovaném
 |-----------------------|---------------|
 | Bengálština                | bn            |
 | Čeština                 | cs            |
-| Dánština                | da            |
+| dánština                | da            |
 | Němčina                | de            |
 | Řečtina                 | el            |
 | Angličtina               | en            |
@@ -189,9 +188,9 @@ Chrome a Firefox obě žádosti pro své jazykové sady a pokud je podporovaném
 | Francouzština                | fr            |
 | Gudžarátština              | gu            |
 | Hindština                 | hi            |
-| Chorvatština              | hod            |
+| Chorvatština              | h            |
 | Maďarština             | hu            |
-| Italština               | it            |
+| italština               | it            |
 | Japonština              | ja            |
 | Kannadština               | kn            |
 | Korejština                | ko            |
@@ -201,16 +200,16 @@ Chrome a Firefox obě žádosti pro své jazykové sady a pokud je podporovaném
 | Norská Bokmål      | nb            |
 | Holandština                 | nl            |
 | Paňdžábština               | pa            |
-| Polština                | pl            |
+| polština                | pl            |
 | Portugalština – Brazílie   | pt-br         |
 | Portugalština – Portugalsko | pt-pt         |
 | Rumunština              | ro            |
-| Ruština               | ru            |
+| ruština               | ru            |
 | Slovenština                | sk            |
-| Švédština               | sv            |
+| švédština               | sv            |
 | Tamilština                 | ta            |
 | Telugština                | te            |
 | Thajština                  | tý            |
-| Turečtina               | tr            |
+| turečtina               | tr            |
 | -Čínština, zjednodušená čínština  | zh-hans       |
 | Tradiční čínština – | zh-hant       |

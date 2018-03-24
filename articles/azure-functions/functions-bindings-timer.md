@@ -1,13 +1,13 @@
 ---
-title: "Aktivační událost časovače pro Azure Functions"
-description: "Pochopit, jak použít aktivační události časovače v Azure Functions."
+title: Aktivační událost časovače pro Azure Functions
+description: Pochopit, jak použít aktivační události časovače v Azure Functions.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru"
+editor: ''
+tags: ''
+keywords: Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: functions
 ms.devlang: multiple
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
-ms.custom: 
-ms.openlocfilehash: bd1a2643d9faf65d664c786169c38f01767fb7e5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.custom: ''
+ms.openlocfilehash: 6f74dd4d9cb78c1316c87bd5a261e751b9b34923
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
@@ -167,7 +167,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**Typ** | neuvedeno | Musí být nastavena na "timerTrigger". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
 |**Směr** | neuvedeno | Musí být nastavena na "v". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
 |**name** | neuvedeno | Název proměnné, který představuje objekt časovače v kódu funkce. | 
-|**schedule**|**ScheduleExpression**|Spotřeba plánu můžete definovat plány se výraz CRON. Pokud používáte plánu služby App Service, můžete také použít `TimeSpan` řetězec. Následující části popisují CRON výrazy. Můžete umístit výraz plán v nastavení aplikace a nastavte tuto vlastnost na hodnotu uzavřen do  **%**  znaky, jako v následujícím příkladě: "% NameOfAppSettingWithCRONExpression %". |
+|**schedule**|**ScheduleExpression**|Spotřeba plánu můžete definovat plány se výraz CRON. Pokud používáte plánu služby App Service, můžete také použít `TimeSpan` řetězec. Následující části popisují CRON výrazy. Můžete umístit výraz plán v nastavení aplikace a nastavte tuto vlastnost na hodnotu uzavřen do **%** znaky, jako v následujícím příkladě: "% NameOfAppSettingWithCRONExpression %". |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -256,6 +256,10 @@ Po vyvolání funkce aktivační událost časovače [časovače objekt](https:/
 ## <a name="scale-out"></a>Škálování na víc systémů
 
 Aktivační událost časovače podporuje víc instancí Škálováním na více systémů. Ve všech instancích je spuštěna jedna instance funkce konkrétní časovače.
+
+## <a name="function-apps-sharing-storage"></a>Funkce aplikace pro sdílení úložiště
+
+Pokud účet úložiště můžete sdílet mezi více aplikacemi funkce, ujistěte se, že každá funkce aplikace má jiné `id` v *host.json*. Můžete vynechat `id` vlastnost nebo ručně nastavit každé funkce aplikace `id` na jinou hodnotu. Aktivační událost časovače používá úložiště zámek k zajištění, že bude pouze jedna instance časovače při aplikaci funkce horizontálně navýší kapacitu na více instancí. Pokud dvě funkce aplikace sdílet stejný `id` a každá používá aktivaci časovačem, bude spuštěna pouze jedna časovače.
 
 ## <a name="next-steps"></a>Další postup
 

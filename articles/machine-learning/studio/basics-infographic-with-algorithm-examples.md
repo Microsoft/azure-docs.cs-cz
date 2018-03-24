@@ -1,11 +1,12 @@
 ---
-title: "Infografice: Základy learning - algoritmus příklady počítač | Microsoft Docs"
-description: "Přehled snadno pochopit základy machine learning obsahuje příklady algoritmus. Zaváděná infografice popisuje většina strojového učení otázky."
-keywords: "Machine learning základy, příklady algoritmus strojového učení pro začátečníky, machine learning otázky, oblíbených algoritmy, infografice algoritmus"
+title: 'Infografice: Základy learning - algoritmus příklady počítač | Microsoft Docs'
+description: Přehled snadno pochopit základy machine learning obsahuje příklady algoritmus. Zaváděná infografice popisuje většina strojového učení otázky.
+keywords: Machine learning základy, příklady algoritmus strojového učení pro začátečníky, machine learning otázky, oblíbených algoritmy, infografice algoritmus
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: cf4e2308-9285-4adc-9f00-408e3ee7931b
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: garye
-ms.openlocfilehash: 8c392740eb0c06b7a3c47e07e5beb667b17117ae
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 4f07defd3df3a7933a69463729240d856f6282d4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Infografika ke stažení: Základy služby Machine Learning s příklady algoritmů
 Stáhněte si tento snadno pochopit infografice přehled nástroje machine learning základní informace o další informace o oblíbených algoritmy používané k odpovědi na časté otázky machine learning. Příklady algoritmus pomoct pochopit, jaké algoritmy mají být použity a co se používají pro začátečníka machine learning.

@@ -1,8 +1,8 @@
 ---
-title: "SQL Server na virtuálních počítačích Linux Azure – nejčastější dotazy | Microsoft Docs"
-description: "Tento článek obsahuje odpovědi na nejčastější dotazy týkající se systémem SQL Server na virtuálních počítačích Azure Linux."
+title: SQL Server na virtuálních počítačích Linux Azure – nejčastější dotazy | Microsoft Docs
+description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se systémem SQL Server na virtuálních počítačích Azure Linux.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: jhubbard
 tags: azure-service-management
@@ -12,11 +12,11 @@ ms.topic: troubleshooting
 ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: jroth
-ms.openlocfilehash: 8b556b01aa47aeb3588138dfa61e517c00dc44dc
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 56a0629249cdb5f0f098d2b7b6d36b3fbb215009
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Nejčastější dotazy pro SQL Server na virtuálních počítačích Linux Azure
 
@@ -31,7 +31,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy o spuště
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a id="images"></a>Bitové kopie
+## <a id="images"></a> Bitové kopie
 
 1. **Jaké Image Galerie virtuálních počítačů systému SQL Server jsou k dispozici?**
 
@@ -71,13 +71,17 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy o spuště
 
 1. **Můžete změnit virtuálního počítače použít vlastní licenci na SQL Server, pokud byl vytvořen z jedné z bitových kopií průběžnými platbami Galerie?**
 
-   Ne. Nelze přepnout z platím za minutu licencí k používání vlastní licence. Musíte vytvořit nový virtuální počítač s Linuxem, instalaci systému SQL Server a přenést data. Přejděte k předchozí otázce další podrobnosti o přinesou vlastní licenci.
+   Ne. Nelze přepnout z platím za sekundu licencí k používání vlastní licence. Musíte vytvořit nový virtuální počítač s Linuxem, instalaci systému SQL Server a přenést data. Přejděte k předchozí otázce další podrobnosti o přinesou vlastní licenci.
 
 ## <a name="administration"></a>Správa
 
 1. **Můžete spravovat virtuální počítače s SQL serverem Linux s SQL Server Management Studio (SSMS)?**
 
    Ano, ale aplikace SSMS je aktuálně nástroj pouze pro systém Windows. Je nutné připojit vzdáleně z počítače s Windows pro použití aplikace SSMS s virtuální počítače s Linuxem SQL Server. Místně v systému Linux nové [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) nástroj může provádět mnoho úloh správy. Zobrazte náhled nástroj pro správu databáze a platformy, najdete v části [SQL Server Operations Studio (preview)](https://docs.microsoft.com/sql/sql-operations-studio/what-is).
+
+1. **Lze odebrat systému SQL Server úplně z virtuálního počítače s SQL?**
+
+   Ano, ale bude dál účtovat pro virtuální počítač SQL, jak je popsáno v [ceny pokyny pro virtuální počítače Azure SQL Server](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). Pokud již nepotřebujete systému SQL Server, můžete nasadit nového virtuálního počítače a migraci dat a aplikací do nového virtuálního počítače. Potom můžete odebrat virtuální počítač systému SQL Server.
 
 ## <a name="updating-and-patching"></a>Aktualizace a opravy chyb
 

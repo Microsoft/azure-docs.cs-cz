@@ -1,8 +1,8 @@
 ---
-title: "Výstrahy řešení pro správu v Azure Log Analytics | Microsoft Docs"
-description: "Řešení pro správu výstrah v analýzy protokolů umožňuje analyzovat všechny výstrahy ve vašem prostředí.  Kromě sloučením výstrahy generované v rámci analýzy protokolů se importuje výstrahy z připojených skupin pro správu System Center Operations Manager do analýzy protokolů."
+title: Výstrahy řešení pro správu v Azure Log Analytics | Microsoft Docs
+description: Řešení pro správu výstrah v analýzy protokolů umožňuje analyzovat všechny výstrahy ve vašem prostředí.  Kromě sloučením výstrahy generované v rámci analýzy protokolů se importuje výstrahy z připojených skupin pro správu System Center Operations Manager do analýzy protokolů.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: c34916913915331020d9fc9789221f790b75a070
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 0d9028b821e4c488186143311c81bfa6d17908ff
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Výstrahy řešení pro správu v Azure Log Analytics
 
@@ -109,28 +109,15 @@ Pokud jste se posuňte doprava, řídicí panel uvádí několik běžných dota
 Následující tabulka obsahuje ukázkový protokol hledání výstrah záznamů shromažďují toto řešení: 
 
 | Dotaz | Popis |
-|:--- |:--- |
-| Typ = výstrahy SourceSystem = OpsManager AlertSeverity = chyby TimeRaised > nyní 24 hodin |Kritické výstrahy vyvolané během posledních 24 hodin |
-| Typ = výstrahy AlertSeverity = upozornění TimeRaised > nyní 24 hodin |Upozorňující výstrahy vyvolané během posledních 24 hodin |
-| Typ = výstrahy SourceSystem = OpsManager AlertState! = uzavřené TimeRaised > nyní 24 hodin &#124; míra count() jako počet podle SourceDisplayName |Zdroje s aktivními výstrahami vyvolanými během posledních 24 hodin |
-| Typ = výstrahy SourceSystem = OpsManager AlertSeverity = chyby TimeRaised > nyní 24 hodin AlertState! = uzavřeno |Kritické výstrahy vyvolané během posledních 24 hodin, které jsou stále aktivní |
-| Typ = výstrahy SourceSystem = OpsManager TimeRaised > nyní 24 hodin AlertState = uzavřený |Výstrahy vyvolané během posledních 24 hodin, které už jsou uzavřené |
-| Typ = výstrahy SourceSystem = OpsManager TimeRaised > nyní - 1 den &#124; míra count() jako počet podle AlertSeverity |Výstrahy vyvolané za poslední 1 den seskupené podle závažnosti |
-| Typ = výstrahy SourceSystem = OpsManager TimeRaised > nyní - 1 den &#124; řazení RepeatCount desc |Výstrahy vyvolané za poslední 1 den seřazené podle počtu opakování |
-
-
->[!NOTE]
-> Pokud pracovní prostor byl upgradován na verzi [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak předchozí dotazy by změnit na následující:
->
->| Dotaz | Popis |
 |:---|:---|
-| Upozornit &#124; kde SourceSystem == "OpsManager" a AlertSeverity == "Chyba" a TimeRaised > ago(24h) |Kritické výstrahy vyvolané během posledních 24 hodin |
-| Upozornit &#124; kde AlertSeverity == "upozornění" a TimeRaised > ago(24h) |Upozorňující výstrahy vyvolané během posledních 24 hodin |
-| Upozornit &#124; kde SourceSystem == "OpsManager" a AlertState! = "Uzavřeno" a TimeRaised > ago(24h) &#124; shrnout Count = count() podle SourceDisplayName |Zdroje s aktivními výstrahami vyvolanými během posledních 24 hodin |
-| Upozornit &#124; kde SourceSystem == "OpsManager" a AlertSeverity == "Chyba" a TimeRaised > ago(24h) a AlertState! = "Uzavřeno" |Kritické výstrahy vyvolané během posledních 24 hodin, které jsou stále aktivní |
-| Upozornit &#124; kde SourceSystem == "OpsManager" a TimeRaised > ago(24h) a AlertState == "Uzavřeno" |Výstrahy vyvolané během posledních 24 hodin, které už jsou uzavřené |
-| Upozornit &#124; kde SourceSystem == "OpsManager" a TimeRaised > ago(1d) &#124; shrnout Count = count() podle AlertSeverity |Výstrahy vyvolané za poslední 1 den seskupené podle závažnosti |
-| Upozornit &#124; kde SourceSystem == "OpsManager" a TimeRaised > ago(1d) &#124; Řadit podle RepeatCount desc |Výstrahy vyvolané za poslední 1 den seřazené podle počtu opakování |
+| Výstrahy &#124; kde SourceSystem == "OpsManager" a AlertSeverity == "Chyba" a TimeRaised > ago(24h) |Kritické výstrahy vyvolané během posledních 24 hodin |
+| Výstrahy &#124; kde AlertSeverity == "upozornění" a TimeRaised > ago(24h) |Upozorňující výstrahy vyvolané během posledních 24 hodin |
+| Výstrahy &#124; kde SourceSystem == "OpsManager" a AlertState! = "Uzavřeno" a TimeRaised > ago(24h) &#124; shrnout Count = count() podle SourceDisplayName |Zdroje s aktivními výstrahami vyvolanými během posledních 24 hodin |
+| Výstrahy &#124; kde SourceSystem == "OpsManager" a AlertSeverity == "Chyba" a TimeRaised > ago(24h) a AlertState! = "Uzavřeno" |Kritické výstrahy vyvolané během posledních 24 hodin, které jsou stále aktivní |
+| Výstrahy &#124; kde SourceSystem == "OpsManager" a TimeRaised > ago(24h) a AlertState == "Uzavřeno" |Výstrahy vyvolané během posledních 24 hodin, které už jsou uzavřené |
+| Výstrahy &#124; kde SourceSystem == "OpsManager" a TimeRaised > ago(1d) &#124; shrnout Count = count() podle AlertSeverity |Výstrahy vyvolané za poslední 1 den seskupené podle závažnosti |
+| Výstrahy &#124; kde SourceSystem == "OpsManager" a TimeRaised > ago(1d) &#124; řazení podle RepeatCount desc |Výstrahy vyvolané za poslední 1 den seřazené podle počtu opakování |
+
 
 
 ## <a name="next-steps"></a>Další postup

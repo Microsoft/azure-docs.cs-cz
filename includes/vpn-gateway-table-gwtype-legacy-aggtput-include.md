@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 6efec75884857d93f2e128104136bf59a1114594
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/23/2018
+---
 Následující tabulka ukazuje typy brány a odhadovanou agregovanou propustnost podle SKU brány. Tato tabulka platí pro správce prostředků a modely nasazení classic. 
 
 Ceny se liší pro jednotlivé SKU brány. Další informace najdete v tématu [VPN Gateway – ceny](https://azure.microsoft.com/pricing/details/vpn-gateway).

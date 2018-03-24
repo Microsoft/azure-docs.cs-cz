@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s CylancePROTECT | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a CylancePROTECT."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a CylancePROTECT.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 03/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 3b0afd52ccfa3aa637a64e57601cd5f43fe8df10
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: a4b8cbbe3d75702f38b5060957aff9f5c30e1daa
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cylanceprotect"></a>Kurz: Azure Active Directory integrace s CylancePROTECT
 
@@ -138,7 +138,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurace CylancePROTECT](./media/active-directory-saas-cylanceprotect-tutorial/tutorial_cylanceprotect_configure.png) 
 
-7. Konfigurace jednotného přihlašování na **CylancePROTECT** straně, budete muset odeslat stažené **Certificate(Base64), adresa URL Sign-Out, SAML Entity ID a SAML jeden přihlašování adresa URL služby** k [ Tým podpory CylancePROTECT](mailto:Ibrahim.nafea@toyota.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+7. Konfigurace jednotného přihlašování na **CylancePROTECT** straně, budete muset odeslat stažené **Certificate(Base64), adresa URL Sign-Out, SAML Entity ID a SAML jeden přihlašování adresa URL služby** do konzoly správce. Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -177,7 +177,7 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
   
 ### <a name="create-a-cylanceprotect-test-user"></a>Vytvoření zkušebního uživatele CylancePROTECT
 
-V této části vytvoříte volal Britta Simon v CylancePROTECT uživatele. Práce s [tým podpory CylancePROTECT](mailto:Ibrahim.nafea@toyota.com) přidat uživatele do CylancePROTECT platformy. Držitel účtu Azure Active Directory bude dostávat e-mailu a postupujte podle odkaz potvrďte svůj účet, pak se změní na aktivní.
+V této části vytvoříte volal Britta Simon v CylancePROTECT uživatele. Spolupracovat s konzoly správce přidat uživatele do CylancePROTECT platformy. Držitel účtu Azure Active Directory bude dostávat e-mailu a postupujte podle odkaz potvrďte svůj účet, pak se změní na aktivní.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 

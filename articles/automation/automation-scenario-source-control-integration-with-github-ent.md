@@ -1,24 +1,18 @@
 ---
-title: "Integrace ovládacích prvků zdrojového služby Azure Automation s Enterprise Githubu | Microsoft Docs"
-description: "Popisuje postup konfigurace integrace s GitHub Enterprise pro zdrojového kódu runbooků služeb automatizace podrobnosti."
+title: Integrace ovládacích prvků zdrojového služby Azure Automation s Enterprise Githubu
+description: Popisuje postup konfigurace integrace s GitHub Enterprise pro zdrojového kódu runbooků služeb automatizace podrobnosti.
 services: automation
-documentationCenter: 
-authors: georgewallace
-manager: jwhit
-editor: 
-ms.assetid: e01d817c-7d38-421c-adf5-647a4b526eb4
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 07/26/2017
-ms.author: magoedte
-ms.openlocfilehash: 2944b62cb3dc6146573041533d56d45b6cc87f18
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+manager: carmonm
+ms.openlocfilehash: eab61daafe7ef8b5ca2fc1416dc7c04f97b8c671
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Azure Automation scénář – integrace ovládacích prvků zdrojového automatizace s Enterprise Githubu
 
@@ -52,10 +46,10 @@ GitHRWCredential | Asset přihlašovacích údajů, můžete vytvořit tak, aby 
 
 1. Sada runbook LocalGitFolderToAutomationAccount synchronizace se ověří pomocí [účet spustit v Azure jako](automation-sec-configure-azure-runas-account.md). 
 
-2. Microsoft Operations Management Suite (OMS) prostoru s řešení služby Azure Automation povolené a nakonfigurované je také nutný. Pokud nemáte jednu, která souvisí s automatizace účet použitý k instalaci a konfiguraci tohoto scénáře, se vytvoří a konfigurace. při spuštění **New-OnPremiseHybridWorker.ps1** skript z hybridní pracovní proces runbooku.        
+2. Pracovní prostor analýzy protokolů Azure Automation řešení povolené a nakonfigurované je také nutný. Pokud nemáte jednu, která souvisí s automatizace účet použitý k instalaci a konfiguraci tohoto scénáře, se vytvoří a konfigurace. při spuštění **New-OnPremiseHybridWorker.ps1** skript z hybridní pracovní proces runbooku.        
 
     > [!NOTE]
-    > Aktuálně následující oblasti podporují pouze automatizace integrace s OMS - **Austrálie – jihovýchod**, **východní USA 2**, **jihovýchodní Asie**, a **západní Evropa**. 
+    > Aktuálně následující oblasti podporují pouze automatizace integrace s analýzy protokolů - **Austrálie – jihovýchod**, **východní USA 2**, **jihovýchodní Asie**, a  **Západní Evropa**. 
 
 3. Počítač, který může sloužit jako vyhrazené hybridní Runbook Worker hostujícím softwaru Githubu a udržovat souborů služby runbook (*runbook*.ps1) v zdrojový adresář v systému souborů k synchronizaci mezi Githubu a váš automatizace účet.
 

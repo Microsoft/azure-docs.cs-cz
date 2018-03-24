@@ -1,24 +1,24 @@
 ---
-title: "Použití úkolů s více instancemi ke spouštění aplikací MPI - Azure Batch | Microsoft Docs"
-description: "Zjistěte, jak ke spouštění aplikací rozhraní MPI (Message Passing) pomocí typu úlohy s více instancemi v Azure Batch."
+title: Použití úkolů s více instancemi ke spouštění aplikací MPI - Azure Batch | Microsoft Docs
+description: Zjistěte, jak ke spouštění aplikací rozhraní MPI (Message Passing) pomocí typu úlohy s více instancemi v Azure Batch.
 services: batch
-documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: 5/22/2017
-ms.author: tamram
+ms.tgt_pltfrm: ''
+ms.date: 5/22/2017
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01da017587aed7c0f2415786fdcbf6f64024cbe3
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 0fb5ea21c6403369cbcb60df58c0f70a57a61d4e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Pomocí úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing) ve službě Batch
 
@@ -49,6 +49,10 @@ Při odesílání úlohy s více instancemi nastavení do úlohy, Batch provede 
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Požadavky pro úkoly s více instancemi
 Úkoly s více instancemi vyžadují fond s **komunikaci mezi uzly povolena**a s **provedení souběžné úlohy zakázáno**. Chcete-li zakázat provádění souběžných úkolů, nastavte [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool#Microsoft_Azure_Batch_CloudPool_MaxTasksPerComputeNode) vlastnost na hodnotu 1.
+
+> [!NOTE]
+> Batch [omezení](batch-quota-limit.md#other-limits) velikost fondu, který má komunikaci mezi uzly povolena.
+
 
 Tento fragment kódu ukazuje, jak vytvořit fond pro úkoly s více instancemi pomocí knihovny Batch .NET.
 
@@ -107,8 +111,7 @@ Vyhledejte velikosti definované jako "Podporující RDMA" v těchto článcích
   * [Velikosti virtuálních počítačů v Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> Abyste mohli využívat funkce RDMA [Linuxových výpočetních uzlů](batch-linux-nodes.md), je nutné použít **Intel MPI** na uzlech. Další informace o CloudServiceConfiguration a VirtualMachineConfiguration fondy, najdete v části fondu [přehled funkcí Batch](batch-api-basics.md).
->
+> Abyste mohli využívat funkce RDMA [Linuxových výpočetních uzlů](batch-linux-nodes.md), je nutné použít **Intel MPI** na uzlech. 
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>Vytvoření úlohy s více instancemi pomocí rozhraní Batch .NET
@@ -278,7 +281,7 @@ await subtasks.ForEachAsync(async (subtask) =>
 >
 >
 
-### <a name="execution"></a>Provádění
+### <a name="execution"></a>Provedení
 1. Stažení [azure-batch-samples] [ github_samples_zip] z Githubu.
 2. Otevřete MultiInstanceTasks **řešení** v sadě Visual Studio 2015 nebo novější. `MultiInstanceTasks.sln` Řešení soubor je umístěný ve:
 
@@ -327,7 +330,7 @@ Delete pool? [yes] no: yes
 Sample complete, hit ENTER to exit...
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Popisuje Microsoft HPC & Azure Batch Team blog [MPI podporu pro systém Linux na Azure Batch][blog_mpi_linux]a obsahuje informace o používání [OpenFOAM] [ openfoam] pomocí služby Batch. Ukázky kódu Pythonu pro můžete najít [příklad OpenFOAM na Githubu][github_mpi].
 * Zjistěte, jak [vytvořit fondy Linuxových výpočetních uzlů](batch-linux-nodes.md) pro použití v Azure Batch MPI řešení.
 

@@ -1,6 +1,6 @@
 ---
-title: "Obrázek Docker nabízené privátní Azure registru"
-description: "Nahrání a stažení imagí Dockeru do soukromého registru kontejnerů v Azure pomocí rozhraní příkazového řádku Dockeru"
+title: Obrázek Docker nabízené privátní Azure registru
+description: Nahrání a stažení imagí Dockeru do soukromého registru kontejnerů v Azure pomocí rozhraní příkazového řádku Dockeru
 services: container-registry
 author: stevelas
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21d1abfbb49eaeae654a600d35ab350b96a12fd3
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 8fc04ec77a101e08bfde22df76e845b87f8c316e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Nahrání první image do soukromého registru kontejnerů Dockeru pomocí rozhraní příkazového řádku Dockeru
 
@@ -40,7 +40,7 @@ Můžete také protokolu s [docker přihlášení](https://docs.docker.com/engin
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
-Vrátí oba příkazy `Login Succeeded` po dokončení. Pokud používáte `docker login`, můžete si také prohlédnout upozornění zabezpečení doporučujeme použít `--password-stdin` parametr. Při jeho použití je mimo rámec tohoto článku, doporučujeme následující tento osvědčený postup. Další informace najdete v tématu [docker přihlášení](https://docs.docker.com/engine/reference/commandline/login/) příkaz odkaz.
+Vrátí oba příkazy `Login Succeeded` po dokončení. Pokud používáte `docker login`, můžete si také prohlédnout upozornění zabezpečení doporučujeme použít `--password-stdin` parametr. I když je jeho použití nad rámec tohoto článku, doporučujeme řídit se osvědčeným postupem. Další informace najdete v tématu [docker přihlášení](https://docs.docker.com/engine/reference/commandline/login/) příkaz odkaz.
 
 > [!TIP]
 > Vždy zadejte název plně kvalifikovaný registru (všechny malá písmena) při použití `docker login` a když můžete označit bitových kopií pro vkládání do registru. V příkladech v tomto článku je plně kvalifikovaný název *myregistry.azurecr.io*.
@@ -121,6 +121,10 @@ Odebrat bitové kopie z registru kontejner Azure, můžete použít příkaz př
 az acr repository delete --name myregistry --repository samples/nginx --tag latest --manifest
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Nyní když znáte základy, jste připraveni začít používat registr! Například nasazení bitových kopií kontejneru z registru tak, aby [Azure Container Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md) clusteru.
+Nyní když znáte základy, jste připraveni začít používat registr! Nasazení bitových kopií kontejneru z registru na:
+
+* [Azure Container Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
+* [Kontejner Azure instancí](../container-instances/container-instances-tutorial-prepare-app.md)
+* [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)

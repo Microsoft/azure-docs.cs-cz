@@ -1,10 +1,11 @@
 ---
-title: "Cortana Intelligence soutěže – nejčastější dotazy | Microsoft Docs"
-description: "Nejčastější dotazy o Microsoft Cortana Intelligence soutěže."
+title: Cortana Intelligence soutěže – nejčastější dotazy | Microsoft Docs
+description: Nejčastější dotazy o Microsoft Cortana Intelligence soutěže.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: hning86
-manager: jhubbard
+ms.author: haining
+manager: mwinkle
 editor: cgronlun
 ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: haining;garye
-ms.openlocfilehash: f7c839a8471dc54daebc47d0bb5a450358f5250d
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: db6fb6cd6c500ffe4537b57a968ef3b8792bcad6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Nejčastější dotazy k soutěžím Microsoft Cortana Intelligence Competitions
 **Co je Cortana Intelligence soutěže?**
@@ -35,7 +35,7 @@ Pro obecné otázky, můžete použít [fórum Microsoft Azure Machine Learning]
 
 **Jak lze zadávat do soutěže?**
 
-Přístup [soutěže](https://gallery.cortanaintelligence.com/competitions) domovské stránce v [Azure AI Galerie](https://gallery.cortanaintelligence.com/), nebo přejděte na [http://aka.ms/CIComp](http://aka.ms/CIComp). Domovská stránka obsahuje seznam všech soutěže, které jsou aktuálně spuštěny. Každý soutěže obsahuje podrobné pokyny a pravidla účasti, ceny a doba trvání na stránku s jeho registraci.
+Přístup [soutěže](https://gallery.cortanaintelligence.com/competitions) domovské stránce v [Azure AI Galerie](https://gallery.cortanaintelligence.com/), nebo přejděte na [ http://aka.ms/CIComp ](http://aka.ms/CIComp). Domovská stránka obsahuje seznam všech soutěže, které jsou aktuálně spuštěny. Každý soutěže obsahuje podrobné pokyny a pravidla účasti, ceny a doba trvání na stránku s jeho registraci.
 
 1. Najít konfliktům, které se chcete účastnit, přečtěte si všechny pokyny a podívejte se na kurz video. Klikněte **zadejte soutěže** tlačítko a zkopírujte experimentu Starter do pracovního prostoru existující Azure Machine Learning. Pokud již nemáte přístup k pracovním prostoru, je nutné ho vytvořit předem. Spusťte Starter Experiment, sledovat metriku výkonu a pak použít svou kreativitu ke zlepšení výkonu modelu. Pravděpodobně budete tráví většinu času v tomto kroku.   
 
@@ -55,7 +55,7 @@ Po odeslání úspěšně položku, můžete se vrátit do zkopírovaný Starter
 
 Ne. Ve skutečnosti doporučujeme data nadšenců, každý, kdo chcete zjistit, vědecké zpracování dat a jiných aspiring datových vědců zadat naše kontextu. Byl navržen povolit všem pokouší podpůrné dokumentů. Cílové skupiny je:
 
-* **Vývojáři data**, **datových vědců**, **BI** a **Odborníci v oblasti Analytics**: uživatelů, kteří jsou zodpovědní za vytváření dat a analýzy obsahu pro další osoby mohly využívat
+* **Vývojáři data**, **datových vědců**, **BI** a **Analytics Odborníci v oblasti**: uživatelů, kteří jsou zodpovědní za vytváření dat a analýzy obsah další osoby mohly využívat
 * **Data Stewards**: uživatelů, kteří mají znalosti o datech, co znamená a jak je určen pro použití a za tímto účelem
 * **Studenti, kteří** & **výzkumných pracovníků:** uživatelů, kteří jsou učení a získat znalosti týkající se dat prostřednictvím academic programy v vysoké školy nebo účastníky v masivním otevřené Online kurzy (MOOCs)
 

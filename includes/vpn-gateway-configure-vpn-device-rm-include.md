@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: b5aea9d7fe54402693be095350f7c095334fd4b5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/23/2018
+---
 **Chcete-li stáhnout konfiguraci zařízení VPN skriptů:**
 
 V závislosti na zařízení VPN, ke které máte nebudete moct stáhnout konfigurační skript zařízení VPN. Další informace najdete v tématu [skripty konfigurace zařízení VPN Stáhnout](../articles/vpn-gateway/vpn-gateway-download-vpndevicescript.md).

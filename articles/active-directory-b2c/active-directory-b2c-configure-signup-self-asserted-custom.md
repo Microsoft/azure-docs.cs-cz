@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: Upravit přihlašovací nahoru v vlastní zásady a nakonfigurovat vlastní prohlašovanou zprostředkovatele"
-description: "Návod k přidání deklarací zaregistrovat a nakonfigurovat uživatelský vstup"
+title: 'Azure Active Directory B2C: Upravit přihlašovací nahoru v vlastní zásady a nakonfigurovat vlastní prohlašovanou zprostředkovatele'
+description: Návod k přidání deklarací zaregistrovat a nakonfigurovat uživatelský vstup
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: tbd
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/29/2017
-ms.author: joroja
-ms.openlocfilehash: e9eb9fa941569c508c4dddc6b85786537a5a0fac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: b9ea48f0700509194602dd15ff42c7c689685a53
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: Upravte přihlašovací nahoru k přidání nových deklarací identity a konfiguraci vstup uživatele.
 
@@ -47,11 +44,11 @@ Umožňuje požádat uživatele pro jejich město.  Přidejte následující ele
 ```
 Existují další možnosti, které můžete provést zde přizpůsobit deklarace identity.  Úplné schéma, najdete v části **Identity rozhraní Framework technické referenční příručka**.  Tato příručka brzy zveřejníme v části odkaz.
 
-* `<DisplayName>`je řetězec, který definuje uživatelsky orientovaný *popisek*
+* `<DisplayName>` je řetězec, který definuje uživatelsky orientovaný *popisek*
 
-* `<UserHelpText>`pomáhá uživateli pochopit, co je požadováno
+* `<UserHelpText>` pomáhá uživateli pochopit, co je požadováno
 
-* `<UserInputType>`obsahuje následující čtyři možnosti zvýrazněná níže:
+* `<UserInputType>` obsahuje následující čtyři možnosti zvýrazněná níže:
     * `TextBox`
 ```xml
 <ClaimType Id="city">
@@ -62,7 +59,7 @@ Existují další možnosti, které můžete provést zde přizpůsobit deklarac
 </ClaimType>
 ```
 
-    * `RadioSingleSelectduration`-Vynucuje jednoho výběru.
+    * `RadioSingleSelectduration` -Vynucuje jednoho výběru.
 ```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
@@ -76,7 +73,7 @@ Existují další možnosti, které můžete provést zde přizpůsobit deklarac
 </ClaimType>
 ```
 
-    * `DropdownSingleSelect`-Umožňuje výběr pouze platnou hodnotu.
+    * `DropdownSingleSelect` -Umožňuje výběr pouze platnou hodnotu.
 
 ![Snímek obrazovky možností rozevíracího seznamu](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
@@ -95,7 +92,7 @@ Existují další možnosti, které můžete provést zde přizpůsobit deklarac
 ```
 
 
-* `CheckboxMultiSelect`Umožňuje výběr jednoho nebo více hodnot.
+* `CheckboxMultiSelect` Umožňuje výběr jednoho nebo více hodnot.
 
 ![Snímek obrazovky možnost vícenásobného výběru.](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
@@ -188,7 +185,7 @@ Existují další možnosti, které můžete provést zde přizpůsobit deklarac
   </TechnicalProfile>
   ```
 
-3. Přidá deklaraci k TechnicalProfile, který čte z adresáře, když se uživatel přihlásí jako`<OutputClaim ClaimTypeReferenceId="city" />`
+3. Přidá deklaraci k TechnicalProfile, který čte z adresáře, když se uživatel přihlásí jako `<OutputClaim ClaimTypeReferenceId="city" />`
 
   ```xml
   <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
@@ -278,7 +275,7 @@ Ověřit e-mailu je povolena ve výchozím nastavení `<TechnicalProfile Id="Loc
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přidejte novou deklaraci na toky pro sociálních účet přihlášení změnou TechnicalProfiles uvedené níže. Ty se používají sociálního/federovaný účet přihlášení k zápisu a čtení dat uživatele pomocí alternativeSecurityId jako Lokátor.
 ```xml

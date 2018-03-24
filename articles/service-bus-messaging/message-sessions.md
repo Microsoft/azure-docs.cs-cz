@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus zprávu relací | Microsoft Docs"
-description: "Zpracování zpráv Azure Service Bus s relací pořadí."
+title: Azure Service Bus zprávu relací | Microsoft Docs
+description: Zpracování zpráv Azure Service Bus s relací pořadí.
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: sethm
-ms.openlocfilehash: 7a594e5951f6e90c9151fbaf231675d6ed091d1f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 551432cd13c16fdd5423c46ed9c6f740353808f8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Zpráva relací: první, nejprve out (FIFO) 
 
@@ -53,13 +53,7 @@ Vydání zámek při **zavřete** nebo **CloseAsync** se nazývají, nebo když 
 
 Když více souběžných příjemci načítat z fronty, jsou odesílány zprávy, které patří do konkrétní relace do konkrétní příjemce, který má v současnosti zámek pro tuto relaci. V této operaci datového proudu prokládaná zpráv, které se nacházejí v jednom fronty nebo předplatné je řádně zrušte multiplexní k různým příjemcům a tyto příjemci můžete také za provozu na různých klientských počítačů, protože správa zámku se straně služby, stane uvnitř Service Bus.
 
-Fronta je, ale stále fronty: není k dispozici náhodný přístup. Pokud je více souběžných příjemci čekat na přijmout konkrétní relací nebo počkejte na zprávy z konkrétní relace a zpráva v horní části fronty patřící do relace, který nemá žádný příjemce ještě požadován, dodávky podržte, dokud relace příjemce deklarace identity, která relace.
-
-Tři souběžných relací příjemců, což vyžaduje aktivně zprávy z fronty pro každý příjemce pro poskytnutí přehledu o pokroku na předchozím obrázku. Předchozí relace s `SessionId` = 4 má žádné active vlastnícím klienta, což znamená, že žádné doručování zpráv všem uživatelům, dokud zpráva byla přijata. podle nově vytvořený, který vlastní relace příjemce.
-
-Při, může se zdát být chovaly, proces jednoho příjemce může zpracovávat velký počet souběžných relací snadno, zejména v případě, že jsou zapsány s výhradně asynchronní kódu; této několik desítek souběžných relací je efektivně automatické s modelem zpětného volání.
-
-Strategie pro zpracování velký počet souběžných relací, kterým každou relaci pouze zřídka přijímá zprávy, je pro obslužnou rutinu vyřadit relace po určité době nečinnosti a pokračovat ve zpracování, když relace byla přijata jako dorazí další relace.
+Tři příjemci souběžných relací na předchozím obrázku. Jedna relace s `SessionId` = 4 nemá žádné aktivní, vlastnícím klienta, což znamená, že se dodávají žádné zprávy z této konkrétní relace. Relaci funguje v mnoha směrech jako fronty sub.
 
 Relace uzamčení relace příjemce je zastřešující pro zámek zprávy používané *funkce Náhled zámku* vyrovnání režimu. Příjemce nemůže současně mít dvě zprávy "v cestě", ale zprávy musí být zpracovány v pořadí. Nové zprávy se dá získat jenom při předchozí zpráva byla dokončena nebo lettered zpráv. Zrušení zpráva příčiny, stejná zpráva obsluhovat znovu s další operace příjmu.
 

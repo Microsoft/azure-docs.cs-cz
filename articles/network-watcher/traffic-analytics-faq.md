@@ -1,11 +1,11 @@
 ---
-title: "Nejčastější dotazy k Azure provoz Analytics | Microsoft Docs"
-description: "Získejte odpovědi na některé nejčastější dotazy o analýzy provozu."
+title: Nejčastější dotazy k Azure provoz Analytics | Microsoft Docs
+description: Získejte odpovědi na některé nejčastější dotazy o analýzy provozu.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: fd97e0ca7615691c537dcb1dc18643627046742d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: b9090f91db11b5bde53f3652028030201f135fa5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastější dotazy
 
@@ -29,6 +29,18 @@ ms.lasthandoff: 03/09/2018
     - Tok protokolů NSG pro skupiny Nsg, kterou chcete sledovat povoleno
     - Účet úložiště Azure pro uložení nezpracovaná flog protokoly
     - Pracovní prostor analýzy protokolů (OMS) s oprávnění ke čtení a zápisu
+    - Musí váš účet přiřazenou na poskytovateli Microsoft.Network následující akce:
+
+        - Microsoft.Network/applicationGateways/read
+        - Microsoft.Network/connections/read
+        - Microsoft.Network/loadBalancers/read 
+        - Microsoft.Network/localNetworkGateways/read 
+        - Microsoft.Network/networkInterfaces/read 
+        - Microsoft.Network/networkSecurityGroups/read 
+        - Microsoft.Network/publicIPAddresses/read
+        - Microsoft.Network/routeTables/read
+        - Microsoft.Network/virtualNetworkGateways/read 
+        - Microsoft.Network/virtualNetworks/read
 
 2.  Které oblasti jsou k dispozici v provozu Analytics?
 
@@ -94,7 +106,7 @@ ms.lasthandoff: 03/09/2018
 
 14.  Jak je cenově Analýza provozu?
 
-        Žádné poplatky se účtují při provozu Analytics je ve verzi Public Preview. Generování toku protokolů NSG a uchovávání dat v pracovním prostoru OMS podléhají poplatky publikované tempem.
+        Analýza provozu je – měření podle objemu rozšíření snížené protokoly a ukládání rozšířené protokolů v pracovním prostoru analýzy protokolů. Zatímco ve verzi preview, není účtován Analýza provozu rozšíření snížené protokoly, ale uchovávání dat v pracovním prostoru podléhá fakturace publikované tempem. Tato odpověď bude aktualizován, jakmile ceny pro provoz Analytics je k dispozici.
 
 15.  Jak můžete přejít pomocí klávesnice v zobrazení mapy geograficky?
 

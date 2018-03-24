@@ -1,10 +1,11 @@
 ---
-title: "Vytvořit vlastní R moduly v Azure Machine Learning | Microsoft Docs"
-description: "Rychlý start pro vytváření vlastních modulů R v Azure Machine Learning."
+title: Vytvořit vlastní R moduly v Azure Machine Learning | Microsoft Docs
+description: Rychlý start pro vytváření vlastních modulů R v Azure Machine Learning.
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: cgronlun
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.author: bradsev;ankarlof;garye
-ms.openlocfilehash: 16442a30f130e7cc9b60d2d9ae9c86d7282471ff
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 945c238411dac8f2e64666935308ef3c1cb2f0ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Vytváření vlastních modulů R ve službě Azure Machine Learning
 Toto téma popisuje, jak vytvořit a nasadit vlastní modul R v Azure Machine Learning. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k definovat. Ukazuje, jak vytvořit soubory, které definují modul a jak registrace modulu pro nasazení v pracovním prostoru Machine Learning. Elementy a atributy používané v definici vlastní modul jsou pak popsány podrobněji. Postup použití pomocného funkce a soubory a několik výstupů také popsané. 
@@ -291,7 +291,7 @@ Parametr modulu je definován pomocí **Arg** podřízený element **argumenty**
     * Řetězec
     * Štítek
     * Funkce
-    * Hodnocení
+    * Skóre
     * Vše
   * **výchozí** -platný výchozí možnosti pro výběr sloupce patří: 
     

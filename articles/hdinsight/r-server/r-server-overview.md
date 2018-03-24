@@ -1,8 +1,8 @@
 ---
-title: "Úvod do R serverem v Azure HDInsight | Microsoft Docs"
-description: "Naučte se používat R Server pro vytváření aplikací pro analýzy velkých objemů dat v HDInsight."
+title: Úvod do R serverem v Azure HDInsight | Microsoft Docs
+description: Naučte se používat R Server pro vytváření aplikací pro analýzy velkých objemů dat v HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 860099b2634765f3088199c89341f0b48b20b801
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 2106e5f0c9b6a27da3747bc67aad0937f2356873
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>Úvod k serveru R a možnosti R open source v HDInsight
+# <a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>Úvod k serveru R a možnosti R open source v HDInsight
 
 Microsoft R Server je k dispozici jako možnost nasazení, při vytváření clusterů HDInsight v Azure. Tato nová funkce poskytuje datových vědců statistikami a programátory v jazyce R na vyžádání přístup k škálovatelné, distribuované metody analýz v HDInsight.
 
@@ -53,7 +53,7 @@ Můžete také připojíte k serveru R z příkazovému řádku pomocí SSH nebo
 ## <a name="develop-and-run-r-scripts"></a>Vývoj a spouštět skripty R
 Vytvářet a spouštět skripty R můžete použít některou z balíčky R s otevřeným zdrojem 8000 + kromě paralelizovaná málo a distribuované rutiny, dostupné v knihovně ScaleR. Obecně platí skript, který běží na uzlu edge s R Server běží v rámci překladač R v tomto uzlu. Výjimky jsou tyto kroky, které je třeba volat funkci ScaleR s výpočetní kontext, který je nastavený na Hadoop mapy snížení (RxHadoopMR) nebo Spark (RxSpark). V takovém případě je funkce spuštěná distribuované způsobem napříč dat (úlohy) uzlů clusteru, které jsou spojeny s daty odkazuje. Další informace o možnostech kontextu různými výpočetními najdete v tématu [výpočetní kontextu možnosti pro R Server v HDInsight](r-server-compute-contexts.md).
 
-## <a name="operationalize-a-model"></a>Zprovoznit model
+## <a name="operationalize-a-model"></a>Zprovoznění modelu
 Po dokončení modelování vaše data můžete zprovoznit model, který má provádět předpovědi nových dat, buď z Azure a místní. Tento proces se označuje jako vyhodnocování. Vyhodnocování lze provést v prostředí HDInsight, Azure Machine Learning nebo místně.
 
 ### <a name="score-in-hdinsight"></a>Skóre v HDInsight

@@ -1,31 +1,31 @@
 ---
-title: "Azure Service Fabric - nastavení monitorování s agentem OMS | Microsoft Docs"
-description: "Zjistěte, jak nastavit agenta OMS pro monitorování kontejnery a čítače výkonu pro Azure Service Fabric clusterů."
+title: Azure Service Fabric - nastavení monitorování s agentem OMS | Microsoft Docs
+description: Zjistěte, jak nastavit agenta OMS pro monitorování kontejnery a čítače výkonu pro Azure Service Fabric clusterů.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/31/2017
+ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: 095db20e7d22bd517337f24fc9a81b84988d1465
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 4c4095071235dac7e8be3c16b614bdfa5b706a1c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="add-the-oms-agent-to-a-cluster"></a>Přidat agenta OMS do clusteru
 
-Tento článek popisuje kroky pro přidání agenta OMS jako sady škálování virtuálního počítače rozšíření do clusteru a připojte ho k vaší existující pracovní prostor analýzy protokolů OMS. To umožňuje shromažďování dat diagnostiky o kontejnery, aplikací a monitorování výkonu. Jej přidat jako rozšíření Azure Resource Manager zajistí, že ho získá nainstalovat na každý uzel, i když škálování clusteru.
+Tento článek popisuje kroky pro přidání agenta OMS jako sady škálování virtuálního počítače rozšíření do clusteru a připojte ho k vaší existující pracovní prostor analýzy protokolů Azure. To umožňuje shromažďování dat diagnostiky o kontejnery, aplikací a monitorování výkonu. Jej přidat jako rozšíření Azure Resource Manager zajistí, že ho získá nainstalovat na každý uzel, i když škálování clusteru.
 
 > [!NOTE]
-> Tento článek předpokládá, že máte k pracovnímu prostoru analýzy protokolů OMS už nastavili. Pokud ho použít nechcete, přejděte na [nastavení analýzy protokolů OMS](service-fabric-diagnostics-oms-setup.md)
+> Tento článek předpokládá, že máte k pracovnímu prostoru analýzy protokolů Azure už nastavili. Pokud ho použít nechcete, přejděte na [nastavení analýzy protokolů Azure](service-fabric-diagnostics-oms-setup.md)
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Přidat agenta rozšíření prostřednictvím rozhraní příkazového řádku Azure
 
@@ -33,9 +33,9 @@ Nejlepší způsob, jak přidat agenta OMS ke clusteru prostřednictvím škálo
 
 1. Jakmile se vyžaduje vaše cloudové prostředí, zkontrolujte, zda že pracujete v rámci stejného předplatného jako prostředku. Zkontrolovat to s `az account show` a zajistěte, aby hodnota "název" odpovídá předplatného vašeho clusteru.
 
-2. Na portálu přejděte do skupiny prostředků, kde je umístěn pracovní prostor OMS. Klikněte na tlačítko do analýzy protokolů prostředku (typ prostředku bude analýzy protokolů), na pravé straně, posuňte se dolů a klikněte na **vlastnosti**.
+2. Na portálu přejděte do skupiny prostředků, kde je umístěn pracovní prostor analýzy protokolů. Klikněte na tlačítko do analýzy protokolů prostředku (typ prostředku bude analýzy protokolů), na pravé straně, posuňte se dolů a klikněte na **vlastnosti**.
 
-    ![Stránka vlastností OMS](media/service-fabric-diagnostics-oms-agent/oms-properties.png)
+    ![Stránka vlastností analýzy protokolů](media/service-fabric-diagnostics-oms-agent/oms-properties.png)
 
     Poznamenejte si vaše `workspaceId`. 
 
@@ -59,7 +59,14 @@ Nejlepší způsob, jak přidat agenta OMS ke clusteru prostřednictvím škálo
 
     ![Příkaz rozhraní příkazového řádku agenta OMS](media/service-fabric-diagnostics-oms-agent/cli-command.png)
  
-    Je třeba vzít méně než 15 minut úspěšně přidat agenta do uzlů. Můžete ověřit, že byly přidány agenty pomocí `az vmss extension list` rozhraní API:
+5. Spusťte příkaz pro použití této konfigurace vaše instance virtuálních počítačů, které již existují:  
+
+
+    ```sh
+    az vmss update-instances
+    ```
+
+Je třeba vzít méně než 15 minut úspěšně přidat agenta do uzlů. Můžete ověřit, že byly přidány agenty pomocí `az vmss extension list` rozhraní API:
 
     ```sh
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
@@ -67,11 +74,11 @@ Nejlepší způsob, jak přidat agenta OMS ke clusteru prostřednictvím škálo
 
 ## <a name="add-the-agent-via-the-resource-manager-template"></a>Přidat agenta pomocí šablony Resource Manageru
 
-Ukázka Resource Manager šablony, které nasazení k pracovnímu prostoru analýzy protokolů OMS a přidat agenta na každý z uzlů je k dispozici pro [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) nebo [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
+Ukázka Resource Manager šablony, které nasazení k pracovnímu prostoru analýzy protokolů Azure a přidat agenta na každý z uzlů je k dispozici pro [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) nebo [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
 
 Můžete stáhnout a upravit tato šablona nasazení clusteru, který nejlépe vyhovuje vašim potřebám.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Shromažďovat relevantní [čítače výkonu](service-fabric-diagnostics-event-generation-perf.md). Konfigurace agenta OMS na vyzvednutí konkrétních čítačích výkonu, head na portálu OMS (propojené v horní části prostředků analýzy protokolů OMS). Potom klikněte na **Domů > Nastavení > Data > čítačů výkonu systému Windows** nebo **čítače výkonu Linux** a vyberte čítače, které chcete shromažďovat.
-* Konfigurace OMS nastavit [automatizované výstrahy](../log-analytics/log-analytics-alerts.md) které pomáhají při zjišťování a Diagnostika
+* Shromažďovat relevantní [čítače výkonu](service-fabric-diagnostics-event-generation-perf.md). Konfigurace agenta OMS ke shromažďování konkrétních čítačích výkonu, zkontrolujte [konfigurace zdroje dat](../log-analytics/log-analytics-data-sources.md#configuring-data-sources).
+* Konfigurace analýzy protokolů nastavit [automatizované výstrahy](../log-analytics/log-analytics-alerts.md) které pomáhají při zjišťování a Diagnostika

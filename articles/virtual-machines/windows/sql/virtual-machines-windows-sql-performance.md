@@ -1,11 +1,11 @@
 ---
-title: "Osvědčené postupy z hlediska výkonu pro SQL Server v Azure | Microsoft Docs"
-description: "Obsahuje osvědčené postupy pro optimalizaci výkonu serveru SQL Server ve virtuálních počítačích Microsoft Azure."
+title: Osvědčené postupy z hlediska výkonu pro SQL Server v Azure | Microsoft Docs
+description: Obsahuje osvědčené postupy pro optimalizaci výkonu serveru SQL Server ve virtuálních počítačích Microsoft Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
 ms.service: virtual-machines-sql
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/29/2018
+ms.date: 03/20/2018
 ms.author: jroth
-ms.openlocfilehash: 3458e2f1a09b597c50c01d59eb6522b3fa521310
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2aa066caf6239f29038228c3c91607d913e70682
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Osvědčené postupy z hlediska výkonu pro SQL Server na Azure Virtual Machines
 
@@ -41,8 +41,8 @@ Následuje seznam Rychlá kontrola pro optimální výkon systému SQL Server na
 | --- | --- |
 | [Velikost virtuálního počítače](#vm-size-guidance) |[DS3](../sizes-memory.md) nebo vyšší pro SQL Enterprise edition.<br/><br/>[DS2](../sizes-memory.md) nebo vyšší verze SQL Standard a Web. |
 | [Úložiště](#storage-guidance) |Použití [Storage úrovně Premium](../premium-storage.md). Standardní úložiště se doporučuje jenom pro vývojové a testovací.<br/><br/>Zachovat [účet úložiště](../../../storage/common/storage-create-storage-account.md) a virtuální počítač SQL Server ve stejné oblasti.<br/><br/>Zakázat Azure [geograficky redundantní úložiště](../../../storage/common/storage-redundancy.md) (geografická replikace) na účet úložiště. |
-| [Disky](#disks-guidance) |Použití minimálně 2 [P30 disky](../premium-storage.md#scalability-and-performance-targets) (1 pro soubory protokolů, 1 pro datové soubory a databáze TempDB).<br/><br/>Vyhněte se použití operačního systému nebo dočasné disků pro úložiště databáze nebo protokolování.<br/><br/>Povolit čtení ukládání do mezipaměti na disky hostující databázi TempDB a datových souborů.<br/><br/>Nepovolujte ukládání do mezipaměti na disky hostování souboru protokolu.<br/><br/>Důležité: Zastavte službu systému SQL Server při změně nastavení do mezipaměti pro disk pro virtuální počítač Azure.<br/><br/>Prokládané více Azure datových disků získat vyšší propustnost vstupně-výstupní operace.<br/><br/>Formát s velikostí zdokumentovaných přidělení. |
-| [I/O](#io-guidance) |Povolte kompresi stránky databáze.<br/><br/>Povolte rychlé soubor inicializace pro datové soubory.<br/><br/>Omezit nebo zakázat automatické zvětšování v databázi.<br/><br/>Zakažte autoshrink v databázi.<br/><br/>Přesunete všechny databáze na datové disky, včetně systémové databáze.<br/><br/>Přesun serveru SQL Server chyba protokolu a trasování souboru adresářů do datových disků.<br/><br/>Nastavte výchozí zálohování a databáze umístění souborů.<br/><br/>Povolte uzamčených stránek.<br/><br/>Použijte opravy výkonu systému SQL Server. |
+| [Disky](#disks-guidance) |Použití minimálně 2 [P30 disky](../premium-storage.md#scalability-and-performance-targets) (1 pro soubory protokolů, 1 pro datové soubory a databáze TempDB).<br/><br/>Vyhněte se použití operačního systému nebo dočasné disků pro úložiště databáze nebo protokolování.<br/><br/>Povolte čtení ukládání do mezipaměti na disky hostující datové soubory a datové soubory databáze TempDB.<br/><br/>Nepovolujte ukládání do mezipaměti na disky hostování souboru protokolu.<br/><br/>Důležité: Zastavte službu systému SQL Server při změně nastavení do mezipaměti pro disk pro virtuální počítač Azure.<br/><br/>Prokládané více Azure datových disků získat vyšší propustnost vstupně-výstupní operace.<br/><br/>Formát s velikostí zdokumentovaných přidělení. |
+| [I/O](#io-guidance) |Povolte kompresi stránky databáze.<br/><br/>Povolte rychlé soubor inicializace pro datové soubory.<br/><br/>Omezit autogrow v databázi.<br/><br/>Zakažte autoshrink v databázi.<br/><br/>Přesunete všechny databáze na datové disky, včetně systémové databáze.<br/><br/>Přesun serveru SQL Server chyba protokolu a trasování souboru adresářů do datových disků.<br/><br/>Nastavte výchozí zálohování a databáze umístění souborů.<br/><br/>Povolte uzamčených stránek.<br/><br/>Použijte opravy výkonu systému SQL Server. |
 | [Konkrétní funkce](#feature-specific-guidance) |Zálohovat přímo do úložiště objektů blob. |
 
 Další informace o *jak* a *proč* Chcete-li tyto optimalizace, přečtěte si podrobné informace a pokyny, které jsou uvedeny v následujících částech.
@@ -118,7 +118,7 @@ Pro virtuální počítače, které podporují službu Premium Storage (DS-serie
 
   * Pokud nepoužíváte Storage úrovně Premium (scénáře vývoje/testování), doporučuje se přidat maximální počet datových disků, které podporuje vaše [velikost virtuálního počítače](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a používat prokládání disků.
 
-* **Ukládání do mezipaměti zásad**: datových disků pro Storage úrovně Premium, povolit čtení ukládání do mezipaměti na datové disky pouze hostování datové soubory a databáze TempDB. Pokud nepoužíváte Storage úrovně Premium, nepovolujte žádné ukládání do mezipaměti na všech datových disků. Pokyny ke konfiguraci ukládání do mezipaměti na disku naleznete v následujících článcích. Model nasazení classic (ASM) najdete v tématu: [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) a [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Model nasazení Azure Resource Manager najdete v tématu: [Set-AzureRMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.4.1) a [Set-AzureRMVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmdatadisk?view=azurermps-4.4.1).
+* **Ukládání do mezipaměti zásad**: datových disků pro Storage úrovně Premium, povolit čtení ukládání do mezipaměti na hostování datové soubory a soubory databáze TempDB dat pouze datových disků. Pokud nepoužíváte Storage úrovně Premium, nepovolujte žádné ukládání do mezipaměti na všech datových disků. Pokyny ke konfiguraci ukládání do mezipaměti na disku naleznete v následujících článcích. Model nasazení classic (ASM) najdete v tématu: [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) a [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Model nasazení Azure Resource Manager najdete v tématu: [Set-AzureRMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.4.1) a [Set-AzureRMVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmdatadisk?view=azurermps-4.4.1).
 
   > [!WARNING]
   > Zastavte službu systému SQL Server při změně nastavení mezipaměti disků virtuálního počítače Azure, aby se zabránilo možnost nedošlo k poškození databáze.
@@ -171,4 +171,4 @@ Některá nasazení může dosáhnout výhody další výkonu pomocí složitěj
 
 Osvědčené postupy zabezpečení, najdete v části [důležité informace o zabezpečení pro SQL Server v Azure Virtual Machines](virtual-machines-windows-sql-security.md).
 
-Zkontrolovat další články virtuálního počítače systému SQL Server na [SQL Server na Přehled virtuálních počítačů Azure](virtual-machines-windows-sql-server-iaas-overview.md). Pokud máte dotazy týkající se virtuální počítače systému SQL Server, najdete v článku [– nejčastější dotazy](virtual-machines-windows-sql-server-iaas-faq.md).
+Zkontrolovat další články virtuálního počítače systému SQL Server na [SQL Server na Přehled virtuálních počítačů Azure](virtual-machines-windows-sql-server-iaas-overview.md). Pokud máte dotazy k virtuálním počítačům s SQL Serverem, přečtěte si [Nejčastější dotazy](virtual-machines-windows-sql-server-iaas-faq.md).

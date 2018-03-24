@@ -1,12 +1,12 @@
 ---
-title: "Přehled protokolu IPv6 pro vyrovnávání zatížení Azure | Microsoft Docs"
-description: "Principy podporu IPv6 pro vyrovnávání zatížení Azure a virtuálních počítačů s vyrovnáváním zatížení."
+title: Přehled protokolu IPv6 pro vyrovnávání zatížení Azure | Microsoft Docs
+description: Principy podporu IPv6 pro vyrovnávání zatížení Azure a virtuálních počítačů s vyrovnáváním zatížení.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: 
-keywords: "protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejnou IP adresu, nativní protokol ipv6, mobilní, iot"
+manager: jeconnoc
+editor: ''
+keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejnou IP adresu, nativní protokol ipv6, mobilní, iot
 ms.assetid: 6a1d583f-a305-40fd-a94b-fa42e1943bbb
 ms.service: load-balancer
 ms.devlang: na
@@ -15,16 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 1902475c81c4f83f8ba69a05f9564bc65a5de833
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9622ad4922aa98efe093e7f809a490a8797eb1fd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Přehled protokolu IPv6 pro vyrovnávání zatížení Azure
 
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+>[!NOTE] 
+>Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o standardní nástroje pro vyrovnávání zatížení najdete v tématu [nástroj pro vyrovnávání zatížení přehled](load-balancer-standard-overview.md).
 
 Internetové služby Vyrovnávání zatížení můžete nasadit pomocí adresy IPv6. Kromě připojení pomocí protokolu IPv4 to umožňuje následující možnosti:
 
@@ -78,7 +79,7 @@ Omezení
 * Změna parametr loadDistributionMethod pro protokol IPv6 je **aktuálně není podporována**.
 * Vyhrazené IP adresy IPv6 (kde IPAllocationMethod = statické) jsou **aktuálně není podporována**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Informace o nasazení Vyrovnávání zatížení s IPv6.
 

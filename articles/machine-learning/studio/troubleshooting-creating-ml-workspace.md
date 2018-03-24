@@ -1,10 +1,11 @@
 ---
-title: "Řešení potíží: Vytvořte a připojte se k pracovní prostor Machine Learning | Microsoft Docs"
-description: "Řešení pro běžné problémy při vytvoření a připojení k pracovní prostor služby Azure Machine Learning"
+title: 'Řešení potíží: Vytvořte a připojte se k pracovní prostor Machine Learning | Microsoft Docs'
+description: Řešení pro běžné problémy při vytvoření a připojení k pracovní prostor služby Azure Machine Learning
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 1a8aec4b-35f9-44e8-9570-2575b8979ab1
 ms.service: machine-learning
@@ -13,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: garye
-ms.openlocfilehash: cdccd4ce7b87f47d21578076653bde901748188b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c265b14a88e993512811de365f1ba51f7ba6028
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>Průvodce odstraňováním potíží: Vytvoření pracovního prostoru Machine Learning a připojení k němu
 Tato příručka poskytuje řešení pro některé nejčastější problémy při se nastavování pracovních prostorů Azure Machine Learning.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-## <a name="workspace-owner"></a>Vlastník pracovní prostor
+## <a name="workspace-owner"></a>Vlastník pracovního prostoru
 Otevřete pracovní prostor v nástroji Machine Learning Studio, musíte být přihlášeni k Microsoft Account jste použili k vytvoření pracovního prostoru, nebo je potřeba přijmout pozvánku od vlastníka pro připojení k pracovním prostoru. Z portálu Azure můžete spravovat pracovní prostor, který zahrnuje možnost konfigurace přístupu.
 
 Další informace o pracovním prostoru Správa, najdete v části [spravovat pracovní prostor služby Azure Machine Learning].

@@ -1,24 +1,21 @@
 ---
-title: "Přizpůsobení uživatelského rozhraní pomocí vlastních zásad – Azure AD B2C | Microsoft Docs"
-description: "Další informace o přizpůsobení uživatelského rozhraní (UI), zatímco pomocí vlastních zásad v Azure AD B2C."
+title: Přizpůsobení uživatelského rozhraní pomocí vlastních zásad – Azure AD B2C | Microsoft Docs
+description: Další informace o přizpůsobení uživatelského rozhraní (UI), zatímco pomocí vlastních zásad v Azure AD B2C.
 services: active-directory-b2c
-documentationcenter: 
-author: saeedakhter-msft
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 658c597e-3787-465e-b377-26aebc94e46d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/04/2017
-ms.author: saeedakhter-msft
-ms.openlocfilehash: dcd8b6df68a68f5feb428b4fd98aee938b3bfe6c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: davidmu
+ms.openlocfilehash: 659910f239087a1d87d650c05af157c085e8c72c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: Konfigurace ve vlastních zásadách pro přizpůsobení uživatelského rozhraní
 
@@ -40,7 +37,7 @@ Zde je, jak to funguje: Azure AD B2C spuštěním kódu v prohlížeči vašeho 
 
 Vytváření obsahu s názvem vašeho produktu značky HTML v názvu.
 
-1. Zkopírujte následující fragment kódu HTML. Je ve správném formátu názvem HTML5 s prázdný element  *\<div id = "api"\>\</div\>*  umístěné v rámci  *\<textu\>*  značky. Tento element určuje, kde Azure AD B2C obsah má být vložen.
+1. Zkopírujte následující fragment kódu HTML. Je ve správném formátu názvem HTML5 s prázdný element *\<div id = "api"\>\</div\>* umístěné v rámci *\<textu\>* značky. Tento element určuje, kde Azure AD B2C obsah má být vložen.
 
    ```html
    <!DOCTYPE html>
@@ -124,7 +121,7 @@ Ověřte, že jste připraveni následujícím způsobem:
 
 ## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>Upravit vlastní zásady registrace nebo přihlášení
 
-V části nejvyšší úrovně  *\<TrustFrameworkPolicy\>*  značka, byste měli najít  *\<BuildingBlocks\>*  značky. V rámci  *\<BuildingBlocks\>*  přidat značky,  *\<ContentDefinitions\>*  značky tak, že zkopírujete následující příklad. Nahraďte *your_storage_account* s názvem účtu úložiště.
+V části nejvyšší úrovně *\<TrustFrameworkPolicy\>* značka, byste měli najít *\<BuildingBlocks\>* značky. V rámci *\<BuildingBlocks\>* přidat značky, *\<ContentDefinitions\>* značky tak, že zkopírujete následující příklad. Nahraďte *your_storage_account* s názvem účtu úložiště.
 
   ```xml
   <BuildingBlocks>
@@ -141,7 +138,7 @@ V části nejvyšší úrovně  *\<TrustFrameworkPolicy\>*  značka, byste měli
 1. V [portál Azure](https://portal.azure.com), [přepnout do kontextu klienta služby Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak otevřete **Azure AD B2C** okno.
 2. Klikněte na tlačítko **všechny zásady**.
 3. Klikněte na tlačítko **nahrát zásady**.
-4. Nahrát `SignUpOrSignin.xml` s  *\<ContentDefinitions\>*  značky, které jste přidali dříve.
+4. Nahrát `SignUpOrSignin.xml` s *\<ContentDefinitions\>* značky, které jste přidali dříve.
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>Otestovat pomocí vlastních zásad **spustit nyní**
 

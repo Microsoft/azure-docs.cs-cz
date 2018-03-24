@@ -1,11 +1,10 @@
 ---
-title: "Přesun dat pomocí aktivity kopírování | Microsoft Docs"
-description: "Další informace o přesun dat v kanálů služby Data Factory: migrace dat mezi cloudové úložiště a mezi úložišti místního a cloudového úložiště. Pomocí aktivity kopírování."
+title: Přesun dat pomocí aktivity kopírování | Microsoft Docs
+description: 'Další informace o přesun dat v kanálů služby Data Factory: migrace dat mezi cloudové úložiště a mezi úložišti místního a cloudového úložiště. Pomocí aktivity kopírování.'
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dff87d41df2bdb5439785846c9653f2f0be2b40d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 09b35483b5ace1523c88576cfe37dfc313b93036
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-by-using-copy-activity"></a>Přesun dat pomocí aktivity kopírování
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -212,6 +211,6 @@ Různé datové úložiště mají jiný typ nativní systémy. Aktivita kopíro
 
 Mapování z nativní typ systému na typ .NET pro úložiště dat, které je v článku příslušných dat úložiště. (Klikněte na odkaz v [podporovanými úložišti dat](#supported-data-stores) tabulky). Tato mapování můžete použít k určení odpovídající typy při vytváření tabulek, tak, aby aktivita kopírování provádí převody správné.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o aktivitě kopírování najdete v tématu [kopírování dat z Azure Blob storage do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 * Další informace o přesouvání dat z místního úložiště dat do úložiště dat cloudu najdete v tématu [přesun dat z cloudových úložišť dat místní](data-factory-move-data-between-onprem-and-cloud.md).

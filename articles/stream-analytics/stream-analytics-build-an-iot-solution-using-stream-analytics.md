@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření řešení IoT pomocí služby Stream Analytics | Microsoft Docs"
-description: "Úvodní kurz pro řešení Stream Analytics IoT mýtná celnice scénáře"
-keywords: "řešení IOT, okno funkce"
-documentationcenter: 
+title: Vytvoření řešení IoT pomocí služby Stream Analytics | Microsoft Docs
+description: Úvodní kurz pro řešení Stream Analytics IoT mýtná celnice scénáře
+keywords: řešení IOT, okno funkce
+documentationcenter: ''
 services: stream-analytics
 author: SnehaGunda
 manager: kfile
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/12/2018
+ms.date: 03/21/2018
 ms.author: sngun
-ms.openlocfilehash: cc84a34a410a750ddf2acb8f19b3bb809d269098
-ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
+ms.openlocfilehash: 6ee2c1c4b1255b462f2974c111e626d62608de5c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Vytvoření řešení IoT pomocí služby Stream Analytics
 
@@ -41,8 +41,7 @@ Budete potřebovat k dokončení tohoto kurzu následující požadavky:
 * 2017 Visual Studio 2015, nebo bezplatnou [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 * [Předplatného Azure](https://azure.microsoft.com/pricing/free-trial/)
 * Oprávnění správce na počítači
-* Stažení [TollApp.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) z webu Microsoft Download Center
-* Volitelné: Zdrojový kód pro generátor TollApp událostí v [Githubu](https://aka.ms/azure-stream-analytics-toll-source)
+* Stáhnout zdrojový kód pro TollApp analýza dat snímačů z [úložiště azure. stream analytics GitHub.](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp). Toto úložiště obsahuje ukázková data a dotazy, které budete používat v dalších částech. 
 
 ## <a name="scenario-introduction-hello-toll"></a>Scénář Úvod: "Hello, Projedou!"
 Stanice projedou je běžné jevu. Narazíte je na mnoha rychlostních, mosty a tunely po celém světě. Každé stanici projedou má více kabin projedou. Na ruční kabin zastavíte platit projedou k průvodcem. Senzor nad každý stánek na automatizované kabin kontroluje RFID kartu, která je opatřit čelního skla z vaší vehicle, jak předat stánek projedou. Je snadné k vizualizaci průchod vozidel přes tyto stanice projedou jako datového proudu událostí za které zajímavé operace lze provádět.
@@ -222,7 +221,7 @@ Ale pokud vás zajímají podrobnosti implementace najdete zdrojový kód aplika
 ## <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
 1. Na portálu Azure klikněte na zelenou znaménko plus v levém horním rohu stránky vytvořte novou úlohu služby Stream Analytics. Vyberte **Intelligence + analýzy** a pak klikněte na **úlohy služby Stream Analytics**.
    
-    ![tlačítko Nový](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image21.png)
+    ![Tlačítko Nová](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image21.png)
 2. Zadejte název úlohy, ověření předplatného opravte a potom vytvořit novou skupinu prostředků ve stejné oblasti jako úložiště centra událostí (výchozí hodnota je jihu USA pro skript).
 3. Klikněte na tlačítko **připnout na řídicí panel** a potom **vytvořit** v dolní části stránky.
    

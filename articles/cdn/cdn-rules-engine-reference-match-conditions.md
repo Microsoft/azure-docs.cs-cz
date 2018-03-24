@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN pravidla podmínky shody modul | Microsoft Docs"
-description: "Referenční dokumentace pro Azure Content Delivery Network pravidla shody stav motoru."
+title: Azure CDN pravidla podmínky shody modul | Microsoft Docs
+description: Referenční dokumentace pro Azure Content Delivery Network pravidla shody stav motoru.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: e4b7113f27e5e15d69dfdd1efd13e255ef4a8ab7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f8dac5469e7160fae93e8251ab7f4195a383f8b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Stroj pravidel Azure CDN splňují podmínky 
 Tento článek obsahuje seznam podrobný popis dostupných porovnání podmínky pro Content Delivery Network (CDN) Azure [stroj pravidel](cdn-rules-engine.md).
@@ -526,15 +526,15 @@ Informace o klíči:
 
      Příklad: https:\//&lt;koncový bod&gt;.azureedge.net/**Moje_složka**/index.htm 
 
-     Tato adresa URL odkazuje na následující hostitele Verizon CDN: http:\//wpc.0001.&lt; Domény&gt;/800001/myorigin/**Moje_složka**/index.htm
+     Tato adresa URL odkazuje na následující hostitele Verizon CDN: http:\//wpc.0001.&lt; domény&gt;/800001/myorigin/**Moje_složka**/index.htm
 
 - Okraj CNAME adresa URL je přepsaná na adresu URL CDN před porovnání adresy URL.
 
     Například obě následující adresy URL bodu pro stejný prostředek a proto mít stejnou cestu adresy URL.
-    - CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+    - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
     
     - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
+    
     Další informace:
     - Custom domain: https:\//my.domain.com/path/asset.htm
     
@@ -640,21 +640,21 @@ Informace o klíči:
     Jsou k dispozici pro tyto hodnoty **relativně k** možnost:
      - **Kořenové**: Určuje, že bod porovnání adresa URL začíná přímo po hostitele CDN.
 
-       Příklad: http:\//wpc.0001.&lt; Domény&gt;/**800001/myorigin/myfolder/index.htm**
+       Příklad: http:\//wpc.0001.&lt; domény&gt;/**800001/myorigin/myfolder/index.htm**
 
      - **Původ**: Určuje, že bod porovnání URL zahájí po bodem přístup k obsahu (například /000001 nebo/800001/myorigin). Protože \*. azureedge.net CNAME se vytvoří relativně ke zdroji adresáře na hostitele Verizon CDN ve výchozím nastavení, Azure CDN uživatelé by měli použít **původu** hodnotu. 
 
        Příklad: https:\//&lt;koncový bod&gt;.azureedge.net/**myfolder/index.htm**
 
-     Tato adresa URL odkazuje na následující hostitele Verizon CDN: http:\//wpc.0001.&lt; Domény&gt;/800001/myorigin/**myfolder/index.htm**
+     Tato adresa URL odkazuje na následující hostitele Verizon CDN: http:\//wpc.0001.&lt; domény&gt;/800001/myorigin/**myfolder/index.htm**
 
 - Okraj CNAME adresa URL je přepsaná na adresu URL CDN před porovnání adresy URL.
 
-   Například obě následující adresy URL bodu pro stejný prostředek a proto mají stejnou cestu adresy URL:
-    - CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+    Například obě následující adresy URL bodu pro stejný prostředek a proto mají stejnou cestu adresy URL:
+    - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
     - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
-   Další informace:
+    
+    Další informace:
     
     - Cestu adresy URL (relativní vůči kořenovému adresáři): /800001/CustomerOrigin/path/asset.htm
    
@@ -681,13 +681,13 @@ Porovná cesty URL požadavku na zadaný [regulární výraz](cdn-rules-engine-r
 Informace o klíči:
 - Okraj CNAME adresa URL je přepsaná na adresu URL CDN před porovnání adresy URL. 
  
-   Například obě adresy URL bodu pro stejný prostředek a proto mít stejnou cestu adresy URL.
+    Například obě adresy URL bodu pro stejný prostředek a proto mít stejnou cestu adresy URL.
 
-     - CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+     - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
 
      - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
-
-   Další informace:
+    
+    Další informace:
     
      - Cesta adresy URL: /800001/CustomerOrigin/path/asset.htm
 
@@ -715,21 +715,21 @@ Informace o klíči:
    Tato možnost může mít následující hodnoty:
      - **Kořenové**: Určuje, že bod porovnání adresa URL začíná přímo po hostitele CDN.
 
-       Příklad: http:\//wpc.0001.&lt; Domény&gt;/**800001/myorigin/myfolder/index.htm**
+       Příklad: http:\//wpc.0001.&lt; domény&gt;/**800001/myorigin/myfolder/index.htm**
 
      - **Původ**: Určuje, že bod porovnání URL zahájí po bodem přístup k obsahu (například /000001 nebo/800001/myorigin). Protože \*. azureedge.net CNAME se vytvoří relativně ke zdroji adresáře na hostitele Verizon CDN ve výchozím nastavení, Azure CDN uživatelé by měli použít **původu** hodnotu. 
 
        Příklad: https:\//&lt;koncový bod&gt;.azureedge.net/**myfolder/index.htm**
 
-     Tato adresa URL odkazuje na následující hostitele Verizon CDN: http:\//wpc.0001.&lt; Domény&gt;/800001/myorigin/**myfolder/index.htm**
+     Tato adresa URL odkazuje na následující hostitele Verizon CDN: http:\//wpc.0001.&lt; domény&gt;/800001/myorigin/**myfolder/index.htm**
 
 - Okraj CNAME adresa URL je přepsaná na adresu URL CDN před porovnání adresy URL.
 
-   Například obě následující adresy URL bodu pro stejný prostředek a proto mají stejnou cestu adresy URL:
-     - CDN URL: http://wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+    Například obě následující adresy URL bodu pro stejný prostředek a proto mají stejnou cestu adresy URL:
+     - CDN URL: http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
      - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
-   Další informace:
+    
+    Další informace:
     
      - Cestu adresy URL (relativní vůči kořenovému adresáři): /800001/CustomerOrigin/path/asset.htm
     
@@ -757,7 +757,7 @@ Hodnota                   | Vzhledem k    | Výsledek
 / 80ABCD/původ nebo text / *   | Kořen           | Tento vzor je nalezena shoda, pokud požadovaný prostředek splňuje následující kritéria: <br />– Musí být umístěn na zákazníka původu, nazývá "původ." <br />– Relativní cesta musí začínat složku s názvem "text". To znamená, že požadovaný prostředek se může nacházet ve složce "text" nebo jeden z jejích podsložkách rekurzivní.
 */css/* */js/*          | Kořenový server WSUS nebo počátek | Tento vzor má odpovídající všechny CDN nebo Microsoft edge CNAME adresy URL, které obsahují složku šablon stylů css nebo js.
 *.jpg *.gif *.png       | Kořenový server WSUS nebo počátek | Tento vzor má odpovídající všechny CDN nebo Microsoft edge CNAME adresy URL konče JPG, GIF nebo PNG. Zadejte tento vzor alternativní způsob je pomocí [rozšíření cesty adresy URL vyhovují podmínce](#url-path-extension).
-/ Image / * / media / *      | Zdroj         | Tento vzor má odpovídající CDN nebo Microsoft edge CNAME adresy URL, jehož relativní cesta začíná na "kopie" nebo "média" složku. <br />- CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
+/ Image / * / media / *      | Zdroj         | Tento vzor má odpovídající CDN nebo Microsoft edge CNAME adresy URL, jehož relativní cesta začíná na "kopie" nebo "média" složku. <br />- CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
 
 [Zpět na začátek](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -867,11 +867,11 @@ Informace o klíči:
 #### <a name="sample-scenarios"></a>Vzorové scénáře
 Následující příklad ukazuje, jak se tato možnost funguje v konkrétních situacích:
 
-Název      | Hodnota |  Výsledek
-----------|-------|--------
-Uživatel      | Jan   | Tento vzor je nalezena shoda, pokud je řetězec dotazu pro požadovanou adresu URL "? uživatele = Jan."
-Uživatel      | *     | Tento vzor je nalezena shoda, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr uživatele.
-Jan e-mailu | *     | Tento vzor je nalezena shoda, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr e-mailu, který začíná "Jan".
+Název  | Hodnota |  Výsledek
+------|-------|--------
+Uživatel  | Jan   | Tento vzor je nalezena shoda, pokud je řetězec dotazu pro požadovanou adresu URL "? uživatele = Jan."
+Uživatel  | *     | Tento vzor je nalezena shoda, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr uživatele.
+E-mail | Jan\* | Tento vzor je nalezena shoda, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr e-mailu, který začíná "Jan".
 
 [Zpět na začátek](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -908,7 +908,7 @@ Informace o klíči:
    Hodnota | Interpretovat jako 
    ------|---------------
    \\+    | +
-   \\\+   | \\+
+   \\\\+   | \\+
 
 - Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení tato podmínka shoda není kompatibilní s následující funkce:
    - Dokončení výplně mezipaměti
@@ -970,8 +970,8 @@ user=joe              | Tento vzor je nalezena shoda, pokud je řetězec dotazu 
 
 ## <a name="next-steps"></a>Další postup
 * [Přehled sítě pro doručování obsahu Azure](cdn-overview.md)
-* [Referenční dokumentace pravidel modulu](cdn-rules-engine-reference.md)
-* [Podmíněné výrazy stroj pravidel](cdn-rules-engine-reference-conditional-expressions.md)
-* [Funkce modulu pravidla](cdn-rules-engine-reference-features.md)
+* [Referenční informace ke stroji pravidel](cdn-rules-engine-reference.md)
+* [Podmíněné výrazy stroje pravidel](cdn-rules-engine-reference-conditional-expressions.md)
+* [Funkce stroje pravidel](cdn-rules-engine-reference-features.md)
 * [Přepsání výchozího nastavení HTTP používá stroj pravidel](cdn-rules-engine.md)
 

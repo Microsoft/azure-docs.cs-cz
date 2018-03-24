@@ -1,11 +1,11 @@
 ---
-title: "Schéma mapování v aktivitě kopírování | Microsoft Docs"
-description: "Informace o způsobu aktivitu kopírování v Azure Data Factory mapování schémat a datové typy na jímky dat při kopírování dat ze zdrojových dat."
+title: Schéma mapování v aktivitě kopírování | Microsoft Docs
+description: Informace o způsobu aktivitu kopírování v Azure Data Factory mapování schémat a datové typy na jímky dat při kopírování dat ze zdrojových dat.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: c1fde0abd2f5fa8e36c71707d14cd5afeb3a0d2d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 22dbaa3d10d09456a972a7991583dc29b7941db1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schéma mapování v aktivitě kopírování
 Tento článek popisuje, jak funguje Azure Data Factory aktivity kopírování schéma mapování a mapování datového typu od zdrojových dat za účelem jímky dat při kopírování dat provádění.

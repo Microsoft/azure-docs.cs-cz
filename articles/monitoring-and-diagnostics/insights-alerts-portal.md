@@ -1,9 +1,9 @@
 ---
-title: "Vytvořte výstrahy pro služby Azure - portálu Azure | Microsoft Docs"
-description: "Aktivační událost e-mailů, oznámení, weby adresy URL (webhooky), nebo volat automatizace při splnění zadané podmínky."
+title: Vytvořte výstrahy pro služby Azure - portálu Azure | Microsoft Docs
+description: Aktivační událost e-mailů, oznámení, weby adresy URL (webhooky), nebo volat automatizace při splnění zadané podmínky.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
-ms.openlocfilehash: 3e09c145d35665ec1c2467b60f06191ac51a5c16
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 4acf1f549a6c901fb0b772c4591f1f35d61365ad
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Vytvoření metriky výstrah v monitorování Azure pro služby Azure – portál Azure
+# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Vytvoření klasického metriky výstrahy v Azure monitorování pro služby Azure - portálu Azure
 > [!div class="op_single_selector"]
 > * [Azure Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -29,12 +29,18 @@ ms.lasthandoff: 12/21/2017
 >
 
 ## <a name="overview"></a>Přehled
+
+> [!NOTE]
+> Tento článek popisuje postup vytvoření starší metriky výstrahy. Azure nyní monitorování podporuje novější, lepší metriky výstrahy. Tyto výstrahy můžete sledovat více metriky a povolit pro výstrahy na dimenzí metriky. Další informace o [téměř v reálném čase metrika výstrahy](monitoring-near-real-time-metric-alerts.md).
+>
+>
+
 Tento článek ukazuje, jak nastavit Azure metriky výstrah pomocí portálu Azure. 
 
 Můžete zobrazit upozornění na základě monitorování metriky pro nebo událostí na služeb Azure.
 
 * **Metriky hodnoty** -výstrahy aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu přiřadíte v obou směrech. To znamená, aktivuje obě při nejprve je splněna podmínka, a pak později, pokud podmínka je už plněny.    
-* **Události protokolu aktivit** -výstrahu můžete aktivovat pro *každých* události nebo pouze tehdy, když dojde k určité události. Další informace o [aktivity protokolu výstrahy](monitoring-activity-log-alerts.md).
+* **Aktivity protokolu události** -výstrahu můžete aktivovat pro *každých* události nebo pouze tehdy, když dojde k určité události. Další informace o [aktivity protokolu výstrahy](monitoring-activity-log-alerts.md).
 
 Můžete nakonfigurovat metriky výstrahu při aktivaci, proveďte následující:
 
@@ -43,28 +49,23 @@ Můžete nakonfigurovat metriky výstrahu při aktivaci, proveďte následujíc�
 * Volat webhook, jehož
 * Spusťte provádění runbook služby Azure (pouze z portálu Azure)
 
-> [!NOTE]
-> Monitorování Azure nyní podporuje téměř v reálném čase metrika výstrahy ve verzi public preview. Tyto akce skupiny použít. Další informace o [téměř v reálném čase metrika výstrahy](monitoring-near-real-time-metric-alerts.md).
->
->
-
 Můžete nakonfigurovat a získat informace o použití metriky pravidla výstrah
 
-* [portál Azure Portal](insights-alerts-portal.md)
+* [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
-* [rozhraní příkazového řádku (CLI)](insights-alerts-command-line-interface.md)
+* [Rozhraní příkazového řádku (CLI)](insights-alerts-command-line-interface.md)
 * [Rozhraní API REST Azure monitorování](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Vytvořit pravidlo výstrahy na metrika pomocí portálu Azure
 1. V [portál](https://portal.azure.com/), vyhledejte prostředků, které vás zajímají monitorování a vyberte ho.
 
-2. Vyberte **výstrahy** nebo **výstrah pravidla** části monitorování. Text a ikona se mohou mírně lišit pro různé prostředky.  
+2. Vyberte **výstrahy (klasické)** části monitorování. Text a ikona se mohou mírně lišit pro různé prostředky. Pokud nenajdete **výstrahy (klasické)**, můžete zjistit, je v části **výstrahy** nebo **pravidla výstrah**
 
     ![Monitorování](./media/insights-alerts-portal/AlertRulesButton.png)
 
-3. Vyberte **přidat upozornění** příkazů a vyplňte příslušná pole.
+3. Vyberte **přidat metriky upozornění** příkazů a vyplňte příslušná pole.
 
-    ![Přidání oznámení](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
+    ![Přidat výstrahu](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 
 4. **Název** upozornění pravidlo a vyberte **popis**, který také zobrazuje v oznámení e-mailů.
 
@@ -89,9 +90,9 @@ Po vytvoření výstrahy, můžete ji vybrat a:
 * Upravit nebo odstranit.
 * **Zakázat** nebo **povolit** ji, pokud chcete dočasně zastavit nebo obnovit příjem oznámení pro výstrahy.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Získat přehled o Azure monitorování](monitoring-overview.md) včetně typy informací, můžete sledovat a shromažďovat.
-* Další informace o nové [téměř v reálném čase metriky výstrahy (preview)](monitoring-near-real-time-metric-alerts.md)
+* Další informace o [novější metriky výstrahy](monitoring-near-real-time-metric-alerts.md)
 * Další informace o [konfigurace webhooky ve výstrahách](insights-webhooks-alerts.md).
 * Další informace o [konfigurace výstrah pro aktivitu protokolu události](monitoring-activity-log-alerts.md).
 * Další informace o [sad Azure Automation Runbook](../automation/automation-starting-a-runbook.md).

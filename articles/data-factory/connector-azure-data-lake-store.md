@@ -1,22 +1,22 @@
 ---
-title: "Kopírování dat do/z Azure Data Lake Store pomocí služby Data Factory | Microsoft Docs"
-description: "Zjistěte, jak zkopírovat data z podporované zdrojové úložiště dat do Azure Data Lake Store (nebo) z Data Lake Store k úložištím podporované podřízený pomocí služby Data Factory."
+title: Kopírování dat do/z Azure Data Lake Store pomocí služby Data Factory | Microsoft Docs
+description: Zjistěte, jak zkopírovat data z podporované zdrojové úložiště dat do Azure Data Lake Store (nebo) z Data Lake Store k úložištím podporované podřízený pomocí služby Data Factory.
 services: data-factory
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: d4f5123ff47bbe1e4d88acdaef004dcecd2f3512
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: f346accd318689bbaa10080111d07e3fedd84556
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Kopírovat data do nebo z Azure Data Lake Store pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

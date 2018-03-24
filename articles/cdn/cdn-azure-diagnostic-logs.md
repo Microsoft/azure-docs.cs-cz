@@ -1,12 +1,12 @@
 ---
-title: "Azure diagnostické protokoly | Microsoft Docs"
-description: "Zákazníka můžete povolit analýzy protokolů pro Azure CDN."
+title: Azure diagnostické protokoly | Microsoft Docs
+description: Zákazníka můžete povolit analýzy protokolů pro Azure CDN.
 services: cdn
-documentationcenter: 
-author: 
-manager: 
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: ''
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: 7bb4eebc80d1c0fdcb9fb5d0f6bb7aeeeb3cb08d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f9711f9cfaab1ef22da220a773689c95b1103970
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -48,7 +48,7 @@ Další informace o diagnostických protokolů najdete v tématu [diagnostické 
 
 Postupujte podle těchto kroků povolit protokolování s CDN základní analýza:
 
-Přihlaste se k webu [Azure Portal](http://portal.azure.com). Pokud ještě nemáte CDN povolené pro pracovní postup [povolení Azure CDN](cdn-create-new-endpoint.md) než budete pokračovat.
+Přihlaste se k [portálu Azure](http://portal.azure.com). Pokud ještě nemáte CDN povolené pro pracovní postup [povolení Azure CDN](cdn-create-new-endpoint.md) než budete pokračovat.
 
 1. Na portálu, přejděte na **profil CDN**.
 2. Vyberte profil CDN a pak vyberte koncový bod CDN, pro který chcete povolit **protokolů diagnostiky**.
@@ -109,7 +109,7 @@ Další informace o zpoždění dat protokolu najdete v tématu [protokolu zpož
 
 Následující příklad ukazuje postup povolení diagnostických protokolů prostřednictvím rutin prostředí PowerShell Azure.
 
-###<a name="enabling-diagnostic-logs-in-a-storage-account"></a>Povolení diagnostických protokolů v účtu úložiště
+### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>Povolení diagnostických protokolů v účtu úložiště
 
 Nejdřív se přihlaste a vyberte předplatné:
 
@@ -165,7 +165,7 @@ Než se dostanete k základní analytická data z účtu úložiště Azure, mus
 |Rok|  4 číslice reprezentace roku, například 2017|
 |Měsíc| 2 číslice reprezentace číslo měsíce. 01 = leden... 12 = prosinec|
 |Den|   2 číslice reprezentace den v měsíci|
-|PT1H.JSON| Skutečný soubor JSON se uloží analytická data|
+|PT1H.json| Skutečný soubor JSON se uloží analytická data|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Export základní analytická data do souboru CSV
 
@@ -173,7 +173,7 @@ Chcete-li snadný přístup k základní analýza, je k dispozici ukázkový kó
 
 Zde je, jak můžete použít nástroj:
 
-1.  Po kliknutí na odkaz githubu: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
+1.  Po kliknutí na odkaz githubu: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
 2.  Stáhněte si kód.
 3.  Postupujte podle pokynů pro kompilaci a konfigurace.
 4.  Spusťte nástroj.
@@ -406,7 +406,7 @@ Příklad vlastnosti:
 
 ```
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Azure diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Základní analýza prostřednictvím doplňkovém portálu Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)

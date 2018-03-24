@@ -1,11 +1,11 @@
 ---
-title: "Kopírování dat z HBase pomocí Azure Data Factory | Microsoft Docs"
-description: "Zjistěte, jak zkopírovat data z HBase k úložištím dat. podporované podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory."
+title: Kopírování dat z HBase pomocí Azure Data Factory | Microsoft Docs
+description: Zjistěte, jak zkopírovat data z HBase k úložištím dat. podporované podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 543d0ec5d0c94b793b1e825d44356039b366908a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: ee4fe897bc8b0b1c969ea2fbfc1289d6a5bba7c2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopírování dat z HBase pomocí Azure Data Factory 
 
@@ -42,9 +42,9 @@ Následující části obsahují podrobnosti o vlastnosti, které slouží k ur�
 
 Pro HBase propojené služby jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typu musí být nastavena na: **HBase** | Ano |
+| type | Vlastnost typu musí být nastavena na: **HBase** | Ano |
 | hostitel | IP adresu nebo název hostitele serveru HBase. (i.e. 192.168.222.160, [clustername].azurehdinsight.net)  | Ano |
 | port | Port TCP, který používá instanci HBase naslouchat pro připojení klientů. Výchozí hodnota je 9090.  | Ne |
 | httpPath | Částečné adresa URL odpovídající serveru HBase. (tj. /gateway/sandbox/hbase/version)  | Ne |
@@ -143,9 +143,9 @@ Ke zkopírování dat z HBase, nastavte vlastnost typu datové sady, která **HB
 
 Ke zkopírování dat z HBase, nastavte typ zdroje v aktivitě kopírování do **HBaseSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **HBaseSource** | Ano |
+| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **HBaseSource** | Ano |
 | query | Čtení dat pomocí vlastního dotazu SQL. Například: `"SELECT * FROM MyTable"`. | Ano |
 
 **Příklad:**

@@ -1,11 +1,11 @@
 ---
-title: "Zkopírujte aktivity výkonu a vyladění průvodce v Azure Data Factory | Microsoft Docs"
-description: "Další informace o klíčových faktorů, které ovlivňují výkon přesun dat v Azure Data Factory při použití aktivity kopírování."
+title: Zkopírujte aktivity výkonu a vyladění průvodce v Azure Data Factory | Microsoft Docs
+description: Další informace o klíčových faktorů, které ovlivňují výkon přesun dat v Azure Data Factory při použití aktivity kopírování.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 53f2b59e57d49a409552aebbdb1b0e81ccd5200c
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 733a396117a58d8dc51e55614e503853f13141c0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Zkopírujte aktivity výkonu a vyladění Průvodce
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -251,7 +251,7 @@ Doporučujeme, aby je provést tyto kroky pro optimalizaci výkonu služby Data 
    * [Serializace a deserializace](#considerations-for-serialization-and-deserialization)
    * [Komprese](#considerations-for-compression)
    * [Mapování sloupce](#considerations-for-column-mapping)
-   * [Další důležité informace](#other-considerations)
+   * [Další aspekty](#other-considerations)
 
 3. **Rozbalte položku konfigurace pro celou sadu dat**. Až budete spokojeni s výsledky spuštění a výkon, můžete rozbalit definice a kanál tak, aby pokrývalo celé datové sady.
 

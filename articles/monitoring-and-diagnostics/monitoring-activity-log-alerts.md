@@ -1,33 +1,32 @@
 ---
-title: "Vytvořit aktivitu protokolu výstrahy | Microsoft Docs"
-description: "Informování prostřednictvím serveru SMS, webhooku a e-mailu při určité události v protokolu aktivit."
+title: Vytvoření klasického aktivity protokolu výstrahy | Microsoft Docs
+description: Informování prostřednictvím serveru SMS, webhooku a e-mailu při určité události v protokolu aktivit.
 author: johnkemnetz
-manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 03/18/2017
 ms.author: johnkem
-ms.openlocfilehash: c8a2ce3ca90895262e77c3895867d29c9d3530a2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e0d92fcd6d3cbd50a2bcb8166b27b11bc86aad83
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-activity-log-alerts"></a>Vytvořit aktivitu protokolu výstrahy
+# <a name="create-activity-log-alerts-classic"></a>Vytvořit aktivitu protokolu výstrahy (klasické)
 
 ## <a name="overview"></a>Přehled
 Výstrahy protokolu aktivit jsou výstrahy, které aktivovat při výskytu nové aktivity protokolu události, která odpovídá podmínkám uvedeném ve výstraze. Jsou prostředky Azure, takže je lze vytvořit pomocí šablony Azure Resource Manager. Také mohou být vytvořeny, aktualizovat nebo odstranit na portálu Azure. Tento článek představuje koncepty za aktivitu protokolu výstrahy. Ji pak ukazuje, jak nastavit výstrahy na aktivity protokolu události pomocí portálu Azure.
 
 > [!NOTE]
 
->  [Výstrahy (Preview)](monitoring-overview-unified-alerts.md) aktuálně nabízí vylepšené prostředí při vytváření a správě protokoly aktivity.  [Další informace](monitoring-activity-log-alerts-new-experience.md).
+>  Nové [výstrahy](monitoring-overview-unified-alerts.md) prostředí nahradili tento postup. Tento článek slouží jako odkaz pro předchozí zkušenosti. [Další informace](monitoring-activity-log-alerts-new-experience.md).
 
 Obvykle můžete vytvořit aktivitu protokolu výstrahy pro příjem oznámení při:
 
@@ -59,11 +58,11 @@ Další informace o skupinách akce najdete v tématu [vytvořit a spravovat sku
 
 Další informace o oznámení o stavu služby najdete v tématu [výstrahy v protokolu aktivit na oznámení o stavu služby](monitoring-activity-log-alerts-on-service-notifications.md).
 
-## <a name="create-an-alert-on-an-activity-log-event-with-a-new-action-group-by-using-the-azure-portal"></a>Vytvořit výstrahu na aktivity protokolu události s novou skupinu akce pomocí portálu Azure
+## <a name="create-an-alert-classic-on-an-activity-log-event-with-a-new-action-group-by-using-the-azure-portal"></a>Vytvoření (klasické) výstrahu na aktivity protokolu události s novou skupinu akce pomocí portálu Azure
 1. V [portál](https://portal.azure.com), vyberte **monitorování**.
 
     ![Službu "Sledování"](./media/monitoring-activity-log-alerts/home-monitor.png)
-2. V **protokol aktivit** vyberte **výstrahy**.
+2. V **protokol aktivit** vyberte **výstrahy (klasické)**.
 
     ![Na kartě "Výstrahy"](./media/monitoring-activity-log-alerts/alerts-blades.png)
 3. Vyberte **přidat aktivitu protokolu upozornění**a vyplňte příslušná pole.

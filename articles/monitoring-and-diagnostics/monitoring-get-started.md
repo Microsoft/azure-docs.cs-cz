@@ -1,9 +1,9 @@
 ---
-title: "Začínáme s Azure monitorování | Microsoft Docs"
-description: "Začněte používat Azure Monitor, získejte přehled o provozu svých prostředků a provádějte akce podle dat."
+title: Začínáme s Azure monitorování | Microsoft Docs
+description: Začněte používat Azure Monitor, získejte přehled o provozu svých prostředků a provádějte akce podle dat.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: ce2930aa-fc41-4b81-b0cb-e7ea922467e1
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.openlocfilehash: 9c352c67aa0e9392c9e9d68822abeb27344bd8b7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 69ec5392f034ffe94315c17366a9242d86c69d6d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-monitor"></a>Začínáme se službou Azure Monitor
-Azure Monitor je služba platformy, která poskytuje jeden zdroj pro monitorování prostředků Azure. Prostřednictvím služby Azure Monitor můžete vizualizovat metriky a protokoly pocházející z prostředků v Azure, zadávat na ně dotazy, směrovat je, archivovat je a provádět s nimi příslušné akce. Můžete pracovat s dat pomocí pomocí portálu Azure [rutiny prostředí PowerShell monitorování](insights-powershell-samples.md), [rozhraní příkazového řádku a platformy](insights-cli-samples.md), nebo [rozhraní REST API Azure monitorování](https://msdn.microsoft.com/library/dn931943.aspx). V tomto článku vás seznámíme s několika klíčovými komponentami služby Azure Monitor a pro ukázky budeme používat portál.
+Azure Monitor je služba platformy, která poskytuje jeden zdroj pro monitorování prostředků Azure. S monitorováním Azure můžete vizualizovat, dotaz, směrovat, archivaci a v opačném případě proveďte akce na metriky a protokoly pocházejících z prostředků v Azure. Můžete pracovat s dat pomocí pomocí portálu Azure [rutiny prostředí PowerShell monitorování](insights-powershell-samples.md), [rozhraní příkazového řádku a platformy](insights-cli-samples.md), nebo [rozhraní REST API Azure monitorování](https://msdn.microsoft.com/library/dn931943.aspx). V tomto článku vás seznámíme s několika klíčovými komponentami služby Azure Monitor a pro ukázky budeme používat portál.
 
 ## <a name="walkthrough"></a>Názorný postup
 1. Na portálu, přejděte na **všechny služby** a najděte **monitorování** možnost. Kliknutím na ikonu hvězdičky si tuto možnost přidejte do seznamu oblíbených položek, abyste k ní neustále měli snadný přístup z levého navigačního panelu.
@@ -39,7 +39,7 @@ Azure Monitor je služba platformy, která poskytuje jeden zdroj pro monitorová
     [**Protokol aktivit**](monitoring-overview-activity-logs.md) popisuje všechny operace prováděné s prostředky v rámci vašeho předplatného. Na základě protokolu aktivit můžete určit „co, kdo a kdy“ pro každou operaci vytvoření, aktualizace nebo odstranění týkající se prostředků v rámci vašeho předplatného. Protokol aktivit například obsahuje informace o tom, kdy byla webová aplikace zastavena a kdo ji zastavil. Události protokolu aktivit se ukládají v rámci platformy a pro dotazy jsou k dispozici po dobu 90 dní.
 
     Můžete vytvářet a ukládat dotazy pro běžné filtry a pak připnout nejdůležitější dotazy na řídicí panel portálu. Díky tomu se dozvíte o všech výskytech událostí, které splňují příslušná kritéria.
-4. V zobrazení nastavte filtrování konkrétní skupiny prostředků za poslední týden. Pak klikněte na tlačítko **Uložit**.
+4. V zobrazení nastavte filtrování konkrétní skupiny prostředků za poslední týden. Pak klikněte na tlačítko **Uložit**. Zadejte název dotazu. 
 
     ![Uložení dotazu protokolu aktivit](./media/monitoring-get-started/monitor-act-log-save.png)
 5. Nyní klikněte na tlačítko **Pin** (Připnout).

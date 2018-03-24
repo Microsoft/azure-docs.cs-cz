@@ -1,11 +1,11 @@
 ---
-title: "Šifrování databáze v klidovém stavu: Azure Cosmos DB | Microsoft Docs"
-description: "Zjistěte, jak Azure Cosmos DB poskytuje výchozí šifrování všechna data."
+title: 'Šifrování databáze v klidovém stavu: Azure Cosmos DB | Microsoft Docs'
+description: Zjistěte, jak Azure Cosmos DB poskytuje výchozí šifrování všechna data.
 services: cosmos-db
 author: voellm
 manager: jhubbard
 editor: mimig
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 99725c52-d7ca-4bfa-888b-19b1569754d3
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: voellm
-ms.openlocfilehash: 193dbede0655376714c6f8f12c826ba3f9bc8933
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: df793fb0511d1289b927caad200eb8252f2b64e6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>Azure Cosmos DB databáze šifrování v klidovém stavu
 
@@ -53,7 +53,6 @@ Odpověď: Microsoft obsahuje sadu interní pokyny pro šifrovací klíče otoč
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>Otázka: je možné použít vlastní šifrovací klíče?
 Odpověď: cosmos DB je služba PaaS a jsme fungovala pevného zachovat nejjednodušší službu. Zaznamenali jsme si, že toto je často dotaz pokládán jako proxy otázka pro splnění požadavků dodržování předpisů jako PCI-DSS. Jako součást sestavení tuto funkci jsme pracovali s auditory dodržování předpisů zajistit, že zákazníci, kteří používají Cosmos DB splňují požadavky na jejich bez nutnosti Správa klíčů sami.
-V důsledku toho jsme aktuálně nenabízejí uživatelům možnost nebyli sami pomocí správy klíčů.
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>Otázka: co oblasti mají zapnutým šifrováním?
 Odpověď: všechny oblasti Azure Cosmos DB mít šifrování pro všechna uživatelská data zapnuté.

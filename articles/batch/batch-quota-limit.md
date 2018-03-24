@@ -1,25 +1,25 @@
 ---
-title: "Služba kvóty a omezení pro Azure Batch | Microsoft Docs"
-description: "Další informace o výchozích Azure Batch kvót, omezení a omezení a zvyšuje jak požádat o kvótu"
+title: Služba kvóty a omezení pro Azure Batch | Microsoft Docs
+description: Další informace o výchozích Azure Batch kvót, omezení a omezení a zvyšuje jak požádat o kvótu
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 03/16/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 775db415e667729f6eecf8223a84f5ac0aa45c4c
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 3cc833e456571b63fa03574808529c8c501d7ab5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -53,6 +53,7 @@ Pokud jste vytvořili účet Batch se režim přidělení fondu nastavený na **
 | Velikost balíčku aplikace, (všechny) |Approx. 195GB<sup>1</sup> |
 | Velikost maximální spuštění úloh | 32768 znaků<sup>2</sup> |
 | Úloha maximální doba platnosti | 7 dní<sup>3</sup> |
+| Výpočetní uzly ve fondu komunikaci mezi uzly povolena | 100 |
 
 <sup>1</sup> azure Storage limit pro velikost objektu blob maximální bloku<br />
 <sup>2</sup> zahrnuje soubory prostředků a proměnných prostředí<br />

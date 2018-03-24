@@ -1,6 +1,6 @@
 ---
-title: "Vytvořit cluster Service Fabric na portálu Azure | Microsoft Docs"
-description: "Tento článek popisuje postup nastavení zabezpečení clusteru Service Fabric v Azure pomocí portálu Azure a Azure Key Vault."
+title: Vytvořit cluster Service Fabric na portálu Azure | Microsoft Docs
+description: Tento článek popisuje postup nastavení zabezpečení clusteru Service Fabric v Azure pomocí portálu Azure a Azure Key Vault.
 services: service-fabric
 documentationcenter: .net
 author: chackdan
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 4a42e36307f440a29740d947314f91dffac51a42
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 864952554b04d8d6bc14aad92d168298e554710e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvořit cluster Service Fabric v Azure pomocí portálu Azure
 > [!div class="op_single_selector"]
@@ -131,7 +131,7 @@ Nakonfigurujte uzly clusteru. Typy uzlů definovat velikosti virtuálních poč�
 
 Chcete-li nastavení zabezpečení zkušební cluster snadno pro vás, uvádíme **základní** možnost. Pokud už máte certifikát a mít nahrán do vaší keyvault (a povolené trezor klíčů pro nasazení), použijte **vlastní** možnost
 
-#####<a name="basic-option"></a>Základní možnosti
+##### <a name="basic-option"></a>Základní možnosti
 Postupujte podle obrazovky pro přidání nebo znovu použít existující keyvault a přidání certifikátu. Přidání certifikátu je synchronní proces, a proto je nutné čekat na certifikát, který chcete vytvořit.
 
 
@@ -151,7 +151,7 @@ Nyní jste připraveni pokračovat s ostatními procesu vytvoření clusteru.
 
 ![CreateKeyVault4]
 
-#####<a name="custom-option"></a>Vlastní možnost
+##### <a name="custom-option"></a>Vlastní možnost
 Tuto část přeskočit, pokud jste již provedli kroky v **základní** možnost.
 
 ![SecurityCustomOption]

@@ -1,12 +1,12 @@
 ---
-title: "Řešení potíží s Enterprise State Roaming nastavení ve službě Azure Active Directory | Microsoft Docs"
-description: "Poskytuje odpovědi na dotazy, které správci IT můžou mít o nastavení a synchronizaci dat aplikací."
+title: Řešení potíží s Enterprise State Roaming nastavení ve službě Azure Active Directory | Microsoft Docs
+description: Poskytuje odpovědi na dotazy, které správci IT můžou mít o nastavení a synchronizaci dat aplikací.
 services: active-directory
-keywords: "Enterprise stavu nastavení roamingu windows cloudu, nejčastější dotazy na enterprise stavu roaming"
-documentationcenter: 
+keywords: Enterprise stavu nastavení roamingu windows cloudu, nejčastější dotazy na enterprise stavu roaming
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
 ms.service: active-directory
 ms.workload: identity
@@ -17,11 +17,11 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 8ee3b523baf562b06bd5f7d652a431e1d4553d5c
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: d9936da3ee1b0cfb4ee6e834a838798a35140620
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s Enterprise State Roaming nastavení ve službě Azure Active Directory
 
@@ -47,7 +47,7 @@ Pokud se vám nepovede vyřešit problém s níže uvedené pokyny, můžete kon
 
 Tyto informace včetně pomáhá nám co nejdříve vyřešit problém.
 
-## <a name="troubleshooting-and-diagnosing-issues"></a>Řešení potíží a diagnostice problémů
+## <a name="troubleshooting-and-diagnosing-issues"></a>Řešení potíží a diagnostika problémů
 Tato část nabízí návrhy o tom, jak odstraňovat a diagnostikovat problémy související s Enterprise State Roaming.
 
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Ověření synchronizace a nastavení stránky "Synchronizace nastavení" 
@@ -78,7 +78,7 @@ Za určitých podmínek Enterprise State Roaming může selhat synchronizaci dat
 
 **Potenciální problém**: synchronizace může selhat, pokud správce nakonfiguruje zásady podmíněného přístupu Active Directory Federation služby Multi-Factor Authentication a vyprší platnost přístupového tokenu v zařízení. Zajistěte, aby přihlášení a odhlášení pomocí Microsoft Passport pro pracovní PIN kód nebo dokončení služby Multi-Factor Authentication při přístupu k jiným službám Azure, jako je Office 365.
 
-###<a name="event-viewer"></a>Prohlížeč událostí
+### <a name="event-viewer"></a>Prohlížeč událostí
 Pro pokročilé řešení problémů s prohlížeči událostí můžete použít k vyhledání konkrétní chyby. Ty jsou popsané v následující tabulce. Události lze nalézt v prohlížeči událostí > protokoly aplikací a služeb > **Microsoft** > **Windows** > **SettingSync** a pro problémy související s identity se synchronizací **Microsoft** > **Windows** > **Azure AD**.
 
 
@@ -109,7 +109,7 @@ Aby se zabránilo úniku dat, data, která je chráněná pomocí [Windows Infor
 
 
 **Doporučená akce**  
-Žádné Tento problém může vyřešit budoucí aktualizace systému Windows.
+Žádné. Tento problém může vyřešit budoucí aktualizace systému Windows.
 
 ---
 
@@ -118,7 +118,7 @@ Aby se zabránilo úniku dat, data, která je chráněná pomocí [Windows Infor
 Zařízení, které jsou připojené k doméně už nebude synchronizace pro nastavení datum, čas a oblast: automatické čas. Pomocí automatické času mohou přepsat jiné datum, čas a oblasti nastavení a tato nastavení nejsou pro synchronizaci. 
 
 **Doporučená akce**  
-Žádné 
+Žádné. 
 
 ---
 
@@ -135,7 +135,7 @@ Ověřte, zda má kumulativní aktualizaci klienta v1511 Windows 10 ([KB3140743]
 Pokud se pokusíte se přihlásit k zařízení s Windows pomocí čipové karty a virtuální čipové karty, nastavení synchronizace přestanou fungovat.     
 
 **Doporučená akce**  
-Žádné Tento problém může vyřešit budoucí aktualizace systému Windows.
+Žádné. Tento problém může vyřešit budoucí aktualizace systému Windows.
 
 ---
 
@@ -154,8 +154,8 @@ Připojte zařízení k podnikové síti, aby mohli obnovit synchronizace.
 Uživatel bude muset zrušení služby a znovu připojit zařízení do cloudu. Uděláte to přihlášení jako uživatel místního správce a zrušení služby zařízení tak, že přejdete do **nastavení** > **systému** > **o** a vyberte možnost "Manage nebo odpojení od práci nebo ve škole ". Vyčištění zařízení znovu na následující soubory a pak Azure AD Join **nastavení** > **systému** > **o** a výběrem "připojit se k práci nebo Školní". Nadále připojit zařízení k Azure Active Directory a dokončete postup.
 
 V kroku čištění čištění následující soubory:
-- Settings.dat v`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
-- Všechny soubory ve složce`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
+- Settings.dat v `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
+- Všechny soubory ve složce `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: "Omezení v Azure databáze pro databázi MySQL"
-description: "Tento článek popisuje omezení v Azure Database pro databázi MySQL, jako je například počet připojení a možnosti úložiště modul."
+title: Omezení v Azure databáze pro databázi MySQL
+description: Tento článek popisuje omezení v Azure Database pro databázi MySQL, jako je například počet připojení a možnosti úložiště modul.
 services: mysql
 author: kamathsun
 ms.author: sukamat
@@ -8,20 +8,20 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 85e57170c1cbd977d2de6e7e614916333c79e047
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 2fa69182b4238cfd19fcc9571e4327512e9528c1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Omezení v Azure databáze pro databázi MySQL
-Databáze Azure pro službu MySQL je ve verzi public preview. Následující části popisují kapacity, modul úložiště s podporou, oprávnění podpory, podpora příkaz manipulaci dat a funkční omezení ve službě databázového. Viz také [obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) vztahuje k modulu databáze MySQL.
+Následující části popisují kapacity, modul úložiště s podporou, oprávnění podpory, podpora příkaz manipulaci dat a funkční omezení ve službě databázového. Viz také [obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) vztahuje k modulu databáze MySQL.
 
 ## <a name="service-tier-maximums"></a>Maximální hodnoty úroveň služby
 Azure databáze MySQL, má více úrovní služeb, které lze vybírat při vytváření serveru. Další informace najdete v tématu [Azure Database pro databázi MySQL cenové úrovně](concepts-pricing-tiers.md).  
 
-Je maximální počet připojení, výpočetní jednotky a úložiště v jednotlivých úrovních služeb verzi Preview, následujícím způsobem: 
+Takto je maximální počet připojení, výpočetní jednotky a úložiště v jednotlivých úrovních služeb: 
 
 |**Cenová úroveň**| **Výpočetní generování**|**vCore(s)**| **Maximální počet připojení**|
 |---|---|---|---|
@@ -29,21 +29,20 @@ Je maximální počet připojení, výpočetní jednotky a úložiště v jednot
 |Basic| Gen 4| 2| 100|
 |Basic| Gen 5| 1| 50|
 |Basic| Gen 5| 2| 100|
-|Obecné použití| Gen 4| 2| 200|
-|Obecné použití| Gen 4| 4| 400|
-|Obecné použití| Gen 4| 8| 800|
-|Obecné použití| Gen 4| 16| 1600|
-|Obecné použití| Gen 4| 32| 3200|
-|Obecné použití| Gen 5| 2| 200|
-|Obecné použití| Gen 5| 4| 400|
-|Obecné použití| Gen 5| 8| 800|
-|Obecné použití| Gen 5| 16| 1600|
-|Obecné použití| Gen 5| 32| 3200|
+|Obecné použití| Gen 4| 2| 300|
+|Obecné použití| Gen 4| 4| 625|
+|Obecné použití| Gen 4| 8| 1250|
+|Obecné použití| Gen 4| 16| 2500|
+|Obecné použití| Gen 4| 32| 5000|
+|Obecné použití| Gen 5| 2| 300|
+|Obecné použití| Gen 5| 4| 625|
+|Obecné použití| Gen 5| 8| 1250|
+|Obecné použití| Gen 5| 16| 2500|
+|Obecné použití| Gen 5| 32| 5000|
 |Paměťově optimalizované| Gen 5| 2| 600|
 |Paměťově optimalizované| Gen 5| 4| 1250|
 |Paměťově optimalizované| Gen 5| 8| 2500|
 |Paměťově optimalizované| Gen 5| 16| 5000|
-|Paměťově optimalizované| Gen 5| 32| 10000| 
 
 Když se dosáhne příliš mnoha připojení, může se zobrazit chybová zpráva:
 > Chyba 1040 (08004): Příliš mnoho připojení
@@ -74,7 +73,7 @@ Když se dosáhne příliš mnoha připojení, může se zobrazit chybová zprá
 ### <a name="unsupported"></a>Nepodporovaný
 - VYBERTE... DO VÝSTUPNÍ_SOUBOR
 
-## <a name="preview-functional-limitations"></a>Funkční omezení verze Preview
+## <a name="functional-limitations"></a>Funkční omezení
 
 ### <a name="scale-operations"></a>Operace škálování
 - Dynamické škálování serverů napříč cenové úrovně se aktuálně nepodporuje. To znamená přepínání mezi Basic, obecné účely a paměťově optimalizované cenové úrovně.

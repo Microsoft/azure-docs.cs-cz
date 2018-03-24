@@ -1,11 +1,11 @@
 ---
-title: "Co je nového v nástroji Správa podniková aplikace v Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, co je nového v nástroji Správa podniková aplikace v Azure Active Directory."
+title: Co je nového v nástroji Správa podniková aplikace v Azure Active Directory | Microsoft Docs
+description: Zjistěte, co je nového v nástroji Správa podniková aplikace v Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 949eae51c469205489153c271a7c20fcc843ad46
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8d1b24708380aeed6055912fcf3538f0e5319e2d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Co je nového v nástroji Správa podniková aplikace v Azure Active Directory 
 
@@ -147,7 +147,7 @@ Po přidání spoustu nové aplikace, možná budete chtít povolit uživatelům
 1. Chcete-li začít, můžete vybrat **samoobslužné služby** levé navigační nabídku a nastavit možnost z aplikace **povolit uživatelům žádat o přístup k této aplikaci?** možnost k '**Ano**'. 
 2. To vám umožní nakonfigurovat, kdo může schválit přístup k této aplikaci a kteří uživatelé samoobslužné služby skupiny budou přidáni. Kromě toho pokud aplikace je nakonfigurovaná pro heslo jednotného přihlašování, se také zobrazí jinou možnost, která umožňuje volitelně povolit tyto schvalovatelů spravovat hesla přiřazené k aplikaci.
 
-##<a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Váš názor
 
 Věříme, že je jako vylepšenou prostředí Azure AD. Prosím udržovat zpětnou vazbu, než dorazí! POST vaše názory a návrhy pro zlepšení **portál pro správu** části našich [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Jsme se vzrušení o vytváření nástrojů nové vlastní položky každý den a použijte vaše pokyny na obrazec a definovat, co se máme zaměřit příště.
 

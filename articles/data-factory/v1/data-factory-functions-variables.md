@@ -1,10 +1,9 @@
 ---
-title: "Funkce pro vytváření dat a systémové proměnné | Microsoft Docs"
-description: "Obsahuje seznam funkcí Azure Data Factory a systémové proměnné"
-documentationcenter: 
+title: Funkce pro vytváření dat a systémové proměnné | Microsoft Docs
+description: Obsahuje seznam funkcí Azure Data Factory a systémové proměnné
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 services: data-factory
 ms.assetid: b6b3c2ae-b0e8-4e28-90d8-daf20421660d
 ms.service: data-factory
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f42ba7ed9c07a9d0bc73929db2a095248ad7d56f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b9884dac8a2716cbce6fca7b8172f7d272ad8f2f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – funkce a systémové proměnné
 > [!NOTE]
@@ -59,7 +58,7 @@ Můžete použít funkce v datové továrně společně s systémové proměnné
 
 1. Určení dotazy výběru dat (najdete v článcích konektor odkazuje [aktivity přesunu dat](data-factory-data-movement-activities.md) článku.
    
-   Tady je syntax k vyvolání funkce objektu pro vytváření dat:  **$$ <function>**  pro dotazy výběru dat a další vlastnosti aktivity a datové sady.  
+   Tady je syntax k vyvolání funkce objektu pro vytváření dat: **$$ <function>** pro dotazy výběru dat a další vlastnosti aktivity a datové sady.  
 2. Určení vstupní závislosti pomocí funkce objekt pro vytváření dat v kolekci vstupy aktivity.
    
     $$ není potřeba pro zadání vstupní závislost výrazy.     
@@ -80,12 +79,12 @@ V následujících tabulkách najdete všechny funkce v Azure Data Factory:
 
 | Kategorie | Funkce | Parametry | Popis |
 | --- | --- | --- | --- |
-| Čas |AddHours(X,Y) |X: data a času <br/><br/>/ Y: int |Přidá do okamžiku X Y hodin. <br/><br/>Příklad:`9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| Čas |AddMinutes(X,Y) |X: data a času <br/><br/>/ Y: int |Přidá do X minut Y.<br/><br/>Příklad:`9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Čas |StartOfHour(X) |X: data a času |Získá počáteční čas za hodinu reprezentována komponentu hodin hodnoty X. <br/><br/>Příklad:`StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Čas |AddHours(X,Y) |X: data a času <br/><br/>/ Y: int |Přidá do okamžiku X Y hodin. <br/><br/>Příklad: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| Čas |AddMinutes(X,Y) |X: data a času <br/><br/>/ Y: int |Přidá do X minut Y.<br/><br/>Příklad: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| Čas |StartOfHour(X) |X: data a času |Získá počáteční čas za hodinu reprezentována komponentu hodin hodnoty X. <br/><br/>Příklad: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Datum |AddDays(X,Y) |X: data a času<br/><br/>/ Y: int |Přidá Y dní X. <br/><br/>Příklad: 9/15/2013 12:00:00 PM + 2 dny = 9/17/2013 12:00:00 PM.<br/><br/>Počet dnů můžete odečtena příliš zadáním Y jako záporné číslo.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Datum |AddMonths(X,Y) |X: data a času<br/><br/>/ Y: int |Přidá Y měsíců X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Je příliš odečíst měsíců zadáním Y jako záporné číslo.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
-| Datum |AddQuarters(X,Y) |X: data a času <br/><br/>/ Y: int |Přidá Y * 3 měsíců X.<br/><br/>Příklad:`9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
+| Datum |AddQuarters(X,Y) |X: data a času <br/><br/>/ Y: int |Přidá Y * 3 měsíců X.<br/><br/>Příklad: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
 | Datum |AddWeeks(X,Y) |X: data a času<br/><br/>/ Y: int |Přidá Y * 7 dnů, X<br/><br/>Příklad: 9/15/2013 12:00:00 PM + 1 týden = 9/22/2013 12:00:00 PM<br/><br/>Týdny lze odečíst příliš zadáním Y jako záporné číslo.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
 | Datum |AddYears(X,Y) |X: data a času<br/><br/>/ Y: int |Přidá Y let X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Je příliš odečíst let zadáním Y jako záporné číslo.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
 | Datum |Day(X) |X: data a času |Získá komponentu den hodnoty X.<br/><br/>Příklad: `Day of 9/15/2013 12:00:00 PM is 9`. |
@@ -95,12 +94,12 @@ V následujících tabulkách najdete všechny funkce v Azure Data Factory:
 | Datum |EndOfDay(X) |X: data a času |Získá datum a čas, který představuje konec dne (komponenta dne) X.<br/><br/>Příklad: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
 | Datum |EndOfMonth(X) |X: data a času |Získá Konec měsíce reprezentována měsíc součást parametr X. <br/><br/>Příklad: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (datum a čas, který představuje konec dne měsíce) |
 | Datum |StartOfDay(X) |X: data a času |Získá začátek dne reprezentována komponentu den parametru X.<br/><br/>Příklad: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| Datum a čas |From(X) |X: řetězec |Analyzovat řetězec X datum a čas. |
-| Datum a čas |Ticks(X) |X: data a času |Získá o rysky vlastnost parametru X. Jeden značek rovná 100 nanosekundách. Hodnota této vlastnosti představuje počet značek, které uplynuly od 12:00:00, 1. ledna 0001. |
+| DateTime |From(X) |X: řetězec |Analyzovat řetězec X datum a čas. |
+| DateTime |Ticks(X) |X: data a času |Získá o rysky vlastnost parametru X. Jeden značek rovná 100 nanosekundách. Hodnota této vlastnosti představuje počet značek, které uplynuly od 12:00:00, 1. ledna 0001. |
 | Text |Format(X) |X: proměnnou string |Formáty text (použijte `\\'` kombinaci, abyste se vyhnuli `'` znaků).|
 
 > [!IMPORTANT]
-> Při práci s funkcí v jiné funkci, není potřeba použít  **$$**  předponu pro vnitřní funkce. Například: $$Text.Format ('PartitionKey eq \\' my_pkey_filter_value\\' a RowKey ge \\' {0: rrrr MM-dd hh: mm:}\\", Time.AddHours (SliceStart, -6)). V tomto příkladu, Všimněte si, že  **$$**  předponu nepoužívá pro **Time.AddHours** funkce. 
+> Při práci s funkcí v jiné funkci, není potřeba použít **$$** předponu pro vnitřní funkce. Například: $$Text.Format ('PartitionKey eq \\' my_pkey_filter_value\\' a RowKey ge \\' {0: rrrr MM-dd hh: mm:}\\", Time.AddHours (SliceStart, -6)). V tomto příkladu, Všimněte si, že **$$** předponu nepoužívá pro **Time.AddHours** funkce. 
 
 #### <a name="example"></a>Příklad:
 V následujícím příkladu jsou vstupní a výstupní parametry pro aktivitu Hive určit pomocí `Text.Format` funkce a proměnné SliceStart systému. 

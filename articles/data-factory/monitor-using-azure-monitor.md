@@ -1,11 +1,11 @@
 ---
-title: "Monitorovat pomocí monitorování Azure data Factory | Microsoft Docs"
-description: "Naučte se používat Azure monitorování pro monitorování služby Data Factory kanálů povolením diagnostických protokolů informace z Azure Data Factory."
+title: Monitorovat pomocí monitorování Azure data Factory | Microsoft Docs
+description: Naučte se používat Azure monitorování pro monitorování služby Data Factory kanálů povolením diagnostických protokolů informace z Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: cae3c797171c3904f100ae3cdec47a31b06d3b31
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: d4022a89b8e0e08679e1c593dc1b691a23d21471
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Monitorovat pomocí monitorování Azure data Factory  
 Cloudové aplikace jsou komplexní s mnoha přesunutí částmi. Monitorování poskytuje data a ujistěte se, že vaše aplikace zůstává nahoru a spuštěna v dobrém stavu. Také pomáhá stave vypnout potenciální problémy nebo vyřešit potíže s uplynulou těch, které jsou. Kromě toho můžete data monitorování a získáte přehled o hloubkové o vaší aplikaci. Tato znalostní báze můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
@@ -230,7 +230,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-More info here](https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
+Další informace v tomto poli] ()https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
 
 ## <a name="schema-of-logs--events"></a>Schéma protokoly a události
 
@@ -387,7 +387,7 @@ Azure monitorování umožňuje využívat telemetrie a získáte přehled o vý
 
 ADFV2 vysílá následující metriky
 
-| **Metrika**           | **Metriky zobrazovaný název**         | **Jednotka** | **Typ agregace** | **Popis**                                       |
+| **Metrika**           | **Metriky zobrazovaný název**         | **jednotka** | **Typ agregace** | **Popis**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
 | PipelineSucceededRun | Úspěšné metriky spuštění kanálu | Počet    | Celkem                | Celkový počet kanálů spustí úspěšně v rámci časového období minut |
 | PipelineFailedRuns   | Metriky spustí kanálu se nezdařilo    | Počet    | Celkem                | Celkový počet kanálů běží v rámci minutu okna se nezdařila    |
@@ -396,7 +396,7 @@ ADFV2 vysílá následující metriky
 | TriggerSucceededRuns | Aktivační událost metriky spustí bylo úspěšné  | Počet    | Celkem                | Celkový aktivační událost spustí úspěšně v rámci časového období minut   |
 | TriggerFailedRuns    | Aktivační událost metriky spuštění se nezdařilo     | Počet    | Celkem                | Celkový počet aktivační událost běží v rámci okno minut se nezdařilo      |
 
-Přístup metriky, postupujte podle pokynů v článku – https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
+Pro přístup k metriky, postupujte podle pokynů v článku – https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
 
 ## <a name="next-steps"></a>Další postup
 V tématu [monitorování a Správa kanálů prostřednictvím kódu programu](monitor-programmatically.md) článku se dozvíte o monitorování a Správa kanálů spuštěním. 

@@ -1,11 +1,11 @@
 ---
-title: "Kopírování dat z tabulky webové pomocí Azure Data Factory | Microsoft Docs"
-description: "Další informace o webové tabulky konektor služby Azure Data Factory umožňující kopírování dat z tabulky webové k úložištím dat podporovaných službou Data Factory jako jímky."
+title: Kopírování dat z tabulky webové pomocí Azure Data Factory | Microsoft Docs
+description: Další informace o webové tabulky konektor služby Azure Data Factory umožňující kopírování dat z tabulky webové k úložištím dat podporovaných službou Data Factory jako jímky.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: c5d2fdb3ed3c00114437b0be9759bf8bea2521b7
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f4755d6cce0787a411fee7d32c887ae71c134c94
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky webové pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -103,7 +103,7 @@ Ke zkopírování dat z tabulky webové, nastavte vlastnost typu datové sady, k
 }
 ```
 
-## <a name="copy-activity-properties"></a>Zkopírovat vlastnosti aktivit
+## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které podporuje webové zdroje tabulky.
 
@@ -148,7 +148,7 @@ Ke zkopírování dat z tabulky webové, nastavte typ zdroje v aktivitě kopíro
 2. Klikněte na tlačítko **nový dotaz** na panelu nástrojů, přejděte na **z jiných zdrojů** a klikněte na tlačítko **z webové**.
 
     ![Power Query nabídky](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. V **z webové** dialogovém okně zadejte **URL** , kterou použijete v propojené službě JSON (například: https://en.wikipedia.org/wiki/) společně s cesty zadáte pro datovou sadu (například: AFI % 27s_ 100_Years... 100_Movies) a klikněte na tlačítko **OK**.
+3. V **z webové** dialogovém okně zadejte **URL** , kterou použijete v propojené službě JSON (například: https://en.wikipedia.org/wiki/) společně s cesty zadáte pro datovou sadu (například: AFI % 27s_100_Years... 100_Movies) a klikněte na tlačítko **OK**.
 
     ![Z webové dialogového okna](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 

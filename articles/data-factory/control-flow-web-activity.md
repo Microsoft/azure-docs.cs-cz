@@ -1,11 +1,11 @@
 ---
-title: "Webové aktivity v Azure Data Factory | Microsoft Docs"
-description: "Zjistěte, jak webové aktivity, jeden z aktivity toku řízení podporovaných službou Data Factory, můžete vyvolat koncový bod REST z kanálu."
+title: Webové aktivity v Azure Data Factory | Microsoft Docs
+description: Zjistěte, jak webové aktivity, jeden z aktivity toku řízení podporovaných službou Data Factory, můžete vyvolat koncový bod REST z kanálu.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 510f9ac95245580cb7f2f51487b5aeacc2a4825c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e6846661370fcad139730fc0443d9df54fa12a70
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Aktivity webového v Azure Data Factory
 Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup. 
@@ -81,7 +81,7 @@ linkedServices | Seznam propojené služby předaná koncovému bodu. | Pole Pro
 
 ## <a name="authentication"></a>Authentication
 
-### <a name="none"></a>Žádný
+### <a name="none"></a>Žádné
 Pokud ověření není potřeba, nezahrnujte vlastnosti "ověřování".
 
 ### <a name="basic"></a>Basic

@@ -1,24 +1,24 @@
 ---
-title: "Řešení Agent Health v OMS | Dokumentace Microsoftu"
-description: "Tento článek vám objasní, jak pomocí tohoto řešení monitorovat stav agentů odesílajících sestavy přímo do OMS nebo nástroje System Center Operations Manager."
+title: Řešení Agent Health v OMS | Dokumentace Microsoftu
+description: Tento článek vám objasní, jak pomocí tohoto řešení monitorovat stav agentů odesílajících sestavy přímo do OMS nebo nástroje System Center Operations Manager.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 939bf5ae6ee306008567ce62ddf8a6d1f05da60a
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: d7eb1550a21e66d4ae4cc4932b30a90956c60d1e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 #  <a name="agent-health-solution-in-oms"></a>Řešení Agent Health v OMS
 Řešení Agent Health v OMS vám pomůže rozpoznat, kteří z agentů, odesílajících sestavy přímo do pracovního prostoru OMS nebo do skupiny pro správu nástroje System Center Operations Manager připojené k OMS, nereagují a odesílají provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
@@ -98,25 +98,6 @@ Každý agent odesílající sestavy na server pro správu nástroje Operations 
 V následující tabulce jsou uvedeny ukázky prohledávání protokolu pro záznamy shromážděné tímto řešením.
 
 | Dotaz | Popis |
-| --- | --- |
-| Type=Heartbeat &#124; distinct Computer |Celkový počet agentů |
-| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-24HOURS |Počet nereagujících agentů za posledních 24 hodin |
-| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-15MINUTES |Počet nereagujících agentů za posledních 15 minut |
-| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer IN {Type=Heartbeat TimeGenerated>NOW-24HOURS &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |Online počítače (za posledních 24 hodin) |
-| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer NOT IN {Type=Heartbeat TimeGenerated>NOW-30MINUTES &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |Celkový počet agentů, kteří byli v průběhu posledních 30 minut offline (za posledních 24 hodin) |
-| Type=Heartbeat &#124; measure countdistinct(Computer) by OSType |Získání trendu vývoje počtu agentů v průběhu času podle typu operačního systému|
-| Type=Heartbeat&#124;measure countdistinct(Computer) by OSType |Distribuce podle typu operačního systému |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by Version |Distribuce podle verze agenta |
-| Type=Heartbeat&#124;measure count() by Category |Distribuce podle kategorie agenta |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by ManagementGroupName | Distribuce podle skupiny pro správu |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by RemoteIPCountry |Geografické umístění agentů |
-| Type=Heartbeat IsGatewayInstalled=true&#124;Distinct Computer |Počet nainstalovaných bran OMS |
-
-
->[!NOTE]
-> Pokud byl váš pracovní prostor upgradován na [nový dotazovací jazyk Log Analytics](../log-analytics/log-analytics-log-search-upgrade.md), výše uvedené dotazy se změní na následující.
->
->| Dotaz | Popis |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Celkový počet agentů |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Počet nereagujících agentů za posledních 24 hodin |
@@ -130,6 +111,9 @@ V následující tabulce jsou uvedeny ukázky prohledávání protokolu pro záz
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | Distribuce podle skupiny pro správu |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |Geografické umístění agentů |
 | Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |Počet nainstalovaných bran OMS |
+
+
+
 
 ## <a name="next-steps"></a>Další postup
 

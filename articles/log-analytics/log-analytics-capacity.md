@@ -1,11 +1,11 @@
 ---
-title: "Kapacitu a výkon řešení v Azure Log Analytics | Microsoft Docs"
-description: "Použijte řešení kapacitu a výkon v analýzy protokolů vám pomohou pochopit kapacitu serverů Hyper-V."
+title: Kapacitu a výkon řešení v Azure Log Analytics | Microsoft Docs
+description: Použijte řešení kapacitu a výkon v analýzy protokolů vám pomohou pochopit kapacitu serverů Hyper-V.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 26e87da60dc02dce8122c82a2208477a8b1813a7
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 99c29afec7d06a458ed6d34071f1b6acbba1f03b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Plánování kapacity virtuálního počítače technologie Hyper-V s řešením kapacitu a výkon (Preview)
 
@@ -120,23 +120,11 @@ To Shrneme, shromažďuje řešení kapacitu a výkon data z různých zdrojů v
 
 Následující tabulka obsahuje ukázkový protokol hledání pro kapacitu a výkon data shromážděna a vypočítána toto řešení.
 
+
 | Dotaz | Popis |
-|---|---|
-| Všechny konfigurace paměti hostitele | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="Host Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
-| Všechny konfigurace paměti virtuálního počítače | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="VM Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
-| Rozdělení celkový počet IOPS Disk napříč všechny virtuální počítače | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="VHD Reads/s" OR CounterName="VHD Writes/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-| Rozdělení celková propustnost disku napříč všechny virtuální počítače | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="VHD Read MB/s" OR CounterName="VHD Write MB/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-| Rozdělení celkový počet IOPS napříč všechny sdílené svazky clusteru | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Reads/s" OR CounterName="CSV Writes/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-| Rozdělení celková propustnost mezi všechny sdílené svazky clusteru | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read MB/s" OR CounterName="CSV Write MB/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-| Rozdělení nízkou celkovou latenci mezi všechny sdílené svazky clusteru | <code> Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read Latency" OR CounterName="CSV Write Latency") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-
->[!NOTE]
-> Pokud byl váš pracovní prostor upgradován na [nový dotazovací jazyk Log Analytics](log-analytics-log-search-upgrade.md), výše uvedené dotazy se změní na následující.
-
-> | Dotaz | Popis |
 |:--- |:--- |
 | Všechny konfigurace paměti hostitele | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a název_čítače == "Hostitele přiřazené MB paměti" &#124; shrnout MB = avg(CounterValue) podle InstanceName |
-| Všechny konfigurace paměti virtuálního počítače | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a název_čítače == "MB přiřazené paměti virtuálního počítače" &#124; shrnout MB = avg(CounterValue) podle InstanceName |
+| Všechny konfigurace paměti virtuálního počítače | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a název_čítače == "Virtuální počítač přiřazen MB paměti" &#124; shrnout MB = avg(CounterValue) podle InstanceName |
 | Rozdělení celkový počet IOPS Disk napříč všechny virtuální počítače | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a (název_čítače == "Čtení virtuálního pevného disku/s" nebo název_čítače == "Zápisy virtuálního pevného disku/s") &#124; shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hod), název_čítače, InstanceName |
 | Rozdělení celková propustnost disku napříč všechny virtuální počítače | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a (název_čítače == "Pro čtení virtuálního pevného disku MB/s" nebo název_čítače == "VHD zápisu MB/s") &#124; shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hod), název_čítače, InstanceName |
 | Rozdělení celkový počet IOPS napříč všechny sdílené svazky clusteru | Výkonu &#124; kde ObjectName == "Kapacitu a výkon" a (název_čítače == "Čtení sdíleného svazku clusteru nebo s" nebo název_čítače == "CSV zápisy nebo s") &#124; shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hod), název_čítače, InstanceName |
@@ -145,4 +133,4 @@ Následující tabulka obsahuje ukázkový protokol hledání pro kapacitu a vý
 
 
 ## <a name="next-steps"></a>Další postup
-* Použití [hledání přihlásit analýzy protokolů](log-analytics-log-searches.md) na podrobnější data kapacitu a výkon.
+* Použití [hledání přihlásit analýzy protokolů](log-analytics-log-search.md) na podrobnější data kapacitu a výkon.

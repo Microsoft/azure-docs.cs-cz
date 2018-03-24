@@ -1,11 +1,11 @@
 ---
-title: "Časté otázky týkající se služby Microsoft Azure Service Fabric | Microsoft Docs"
-description: "Nejčastější dotazy ohledně Service Fabric a jejich odpovědi"
+title: Časté otázky týkající se služby Microsoft Azure Service Fabric | Microsoft Docs
+description: Nejčastější dotazy ohledně Service Fabric a jejich odpovědi
 services: service-fabric
 documentationcenter: .net
 author: chackdan
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: facbb980f57b4e70c34b238a8b8fbd988cb20d57
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0ecce5581e8f14a02ad0ad618a226f4671e92f4b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Často kladené otázky Service Fabric
 
@@ -89,17 +89,7 @@ Při pracujeme na vylepšené uživatelské prostředí, v současné době jste
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Můžete šifrovat připojené datové disky v typu uzlu clusteru (škálovací sadu virtuálních počítačů)?
 Ano.  Další informace najdete v tématu [vytvořit cluster s disky připojené data](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [šifrování disků (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md), a [šifrování disků (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
 
-## <a name="container-support"></a>Podpora kontejnerů
-
-### <a name="why-are-my-containers-that-are-deployed-to-sf-unable-to-resolve-dns-addresses"></a>Proč je můj kontejnery, které jsou nasazeny do SF nelze přeložit adresy DNS?
-
-Potíže hlášené v clusterech, které jsou na 5.6.204.9494 verze 
-
-**Zmírnění dopadů**: postupujte podle [tento dokument](service-fabric-dnsservice.md) povolení služby prostředků infrastruktury služby DNS v clusteru.
-
-**Opravte**: Upgrade clusteru podporovanou verzi, která je vyšší než 5.6.204.9494, jakmile bude k dispozici. Pokud váš cluster je nastavena na automatické upgrady, pak clusteru bude automaticky upgradovat na verzi, která má potíže pevné.
-
-  
+ 
 ## <a name="application-design"></a>Návrh aplikace
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Co je nejlepší způsob, jak dotaz na data napříč oddíly spolehlivé kolekce?
@@ -146,9 +136,11 @@ Kontejnery nabízejí jednoduchý způsob, jak balíček služeb a jejich závis
 
 ### <a name="are-you-planning-to-open-source-service-fabric"></a>Plánujete open-source Service Fabric
 
-Plánujeme zajistit open-source spolehlivé služeb a rozhraní spolehlivé aktéři na Githubu a přijímat příspěvky ze strany komunity na těchto projekty. Postupujte podle [Service Fabric blog](https://blogs.msdn.microsoft.com/azureservicefabric/) další podrobnosti, jak se budou oznámeny.
+Máme open source částí Service Fabric ([framework spolehlivé služby](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [spolehlivé aktéři framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [integrace knihovny ASP.NET Core](https://github.com/Azure/service-fabric-aspnetcore), [ Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer), a [Service Fabric rozhraní příkazového řádku](https://github.com/Azure/service-fabric-cli)) na webu GitHub a přijímat příspěvky ze strany komunity na těchto projekty. 
 
-Modulu runtime Service Fabric se aktuálně ani neplánuje open source.
+Jsme [nedávno vydal](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/) že plánujeme open-source modulu runtime Service Fabric. V tomto okamžiku máme [úložiště Service Fabric](https://github.com/Microsoft/service-fabric/) až na Githubu s Linuxem sestavení a otestování nástroje, což znamená, můžete naklonujte úložiště, sestavení Service Fabric pro Linux, základní testy, otevřete problémy a odeslání žádosti o přijetí změn. Tvrdě pracujeme získat prostředí pro sestavení nemigrují přes taky společně s kompletní CI prostředí systému Windows.
+
+Postupujte podle [Service Fabric blog](https://blogs.msdn.microsoft.com/azureservicefabric/) další podrobnosti, jak se budou oznámeny.
 
 ## <a name="next-steps"></a>Další postup
 

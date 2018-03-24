@@ -1,24 +1,21 @@
 ---
-title: "Token, relace a jeden přihlašování konfigurace – Azure AD B2C | Microsoft Docs"
-description: "Token, relace a konfiguraci jednoho přihlášení v Azure Active Directory B2C"
+title: Token, relace a jeden přihlašování konfigurace – Azure AD B2C | Microsoft Docs
+description: Token, relace a konfiguraci jednoho přihlášení v Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: e78e6344-0089-49bf-8c7b-5f634326f58c
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: parakhj
-ms.openlocfilehash: 76feb172ce9b08d4feef9c86e74a592553a3c7f4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 925313b6f2a00826f2ec8086457315c60f70b007
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: Token, relace a jednotné přihlašování
 
@@ -32,7 +29,7 @@ Tato funkce poskytuje jemně odstupňovanou kontrolu na [-policy základ](active
 Pro předdefinované zásady můžete tuto funkci v adresáři Azure AD B2C následujícím způsobem:
 
 1. Postupujte podle těchto kroků [přejděte do nabídky funkce B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) na portálu Azure.
-2. Klikněte na tlačítko **zásady registrace nebo přihlášení**. *Poznámka: Můžete použít tuto funkci na libovolného typu zásady, nejen na **zásady registrace nebo přihlášení***.
+2. Klikněte na tlačítko **zásady registrace nebo přihlášení**. * Poznámka: Můžete použít tuto funkci na libovolného typu zásady, nejen na ** registrace nebo přihlášení zásady ***.
 3. Kliknutím otevřete zásadu. Klikněte například na **B2C_1_SiUpIn**.
 4. Klikněte na tlačítko **upravit** v horní nabídce.
 5. Klikněte na tlačítko **Token, relace a konfigurace přihlášení**.
@@ -67,7 +64,7 @@ Toto je několik případů použití, které můžete povolit pomocí těchto v
     > 
     > 
 
-## <a name="token-compatibility-settings"></a>Nastavení kompatibility tokenu
+## <a name="token-compatibility-settings"></a>Nastavení kompatibility tokenů
 
 Jsme provedli změny formátování důležité deklarací identity v tokenech zabezpečení vygenerované pomocí Azure AD B2C. K tomu bylo potřeba pro zlepšení naše standardní protokol podporu a pro lepší spolupráci s knihovny identity jiných výrobců. Ale pokud chcete vyhnout pozastavení existující aplikace, jsme vytvořili umožňuje zákazníkům výslovný souhlas podle potřeby následující vlastnosti:
 

@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 735d6f51dee8e88bec2210717a11d6707686415f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/23/2018
+---
 ### <a name="supportedclientos"></a>Které klientské operační systémy je možné používat s připojeními typu Point-to-Site?
 
 Podporovány jsou následující operační systémy:
@@ -59,8 +75,8 @@ Příprava pro IKEv2 Windows 10 nebo Server 2016:
 
   | Verze operačního systému | Datum | Číslo nebo odkaz |
   |---|---|---|---|
-  | Windows Server 2016<br>Windows 10 verze 1607 | 17 leden 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
-  | Verze systému Windows 10 1703 | 17 leden 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+  | Windows Server 2016<br>Windows 10 verze 1607 | 17. ledna 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+  | Verze systému Windows 10 1703 | 17. ledna 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
   |  |  |  |  |
 
 2. Nastavte hodnotu klíče registru. Vytvořit nebo nastavit klíč "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload" REG_DWORD v registru na 1.

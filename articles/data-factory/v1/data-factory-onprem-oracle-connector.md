@@ -1,11 +1,10 @@
 ---
-title: "Kopírování dat do nebo z databáze Oracle pomocí služby Data Factory | Microsoft Docs"
-description: "Zjistěte, jak ke zkopírování dat z Oracle databázi, která je v místním prostředí pomocí Azure Data Factory."
+title: Kopírování dat do nebo z databáze Oracle pomocí služby Data Factory | Microsoft Docs
+description: Zjistěte, jak ke zkopírování dat z Oracle databázi, která je v místním prostředí pomocí Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 82fe637b46decfc9c8d09b5c7e03f328a8636263
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 64e8a20f72d451908c12751c0f8062bf4ae86370
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Kopírování dat z místní Oracle pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +51,7 @@ Vyžaduje se brána, i když Oracle je hostovaná ve virtuálním počítači Az
 ## <a name="supported-versions-and-installation"></a>Podporované verze a instalaci
 Tento konektor Oracle podporují dvě verze ovladače:
 
-- **Ovladač Microsoft pro Oracle (doporučeno)**: od Brána pro správu dat. verze 2.7 ovladač Microsoft pro Oracle se nainstaluje automaticky společně bránu, takže nemusíte dále zpracovávat ovladačů, aby bylo možné navázat připojení do databáze Oracle a můžete také dochází k lepší výkon kopírování pomocí tento ovladač. Následující verze systému Oracle jsou podporovány databází:
+- **Ovladač Microsoft pro Oracle (doporučeno)**: od Brána pro správu dat. verze 2.7, ovladače pro Oracle se nainstaluje automaticky společně brány, takže nemusíte dále zpracovávat ovladač za účelem od společnosti Microsoft navázat připojení do databáze Oracle a můžete také dochází k lepší výkon kopírování pomocí tohoto ovladače. Následující verze systému Oracle jsou podporovány databází:
     - R1 Oracle 12c (12.1)
     - R1 Oracle 11g nebo R2 (11.1, 11.2)
     - R1 Oracle 10g, R2 (10,1, 10.2)
@@ -576,7 +575,7 @@ Při přesouvání dat z databáze Oracle, se používají následující mapov�
 | OBJEKT BLOB |Byte[]<br/>(podporovány pouze na Oracle 10g a vyšší, kdy pomocí ovladače Microsoft) |
 | CHAR – |Řetězec |
 | DATOVÝ TYP CLOB |Řetězec |
-| DATE (Datum) |Datum a čas |
+| DATE (Datum) |DateTime |
 | PLOVOUCÍ DESETINNÁ ČÁRKA |Decimal, řetězec (Pokud přesnost > 28) |
 | CELÉ ČÍSLO |Decimal, řetězec (Pokud přesnost > 28) |
 | INTERVAL ROK, MĚSÍC |Int32 |
@@ -589,9 +588,9 @@ Při přesouvání dat z databáze Oracle, se používají následující mapov�
 | NVARCHAR2 |Řetězec |
 | NEZPRACOVANÁ |Byte[] |
 | ID ŘÁDKU |Řetězec |
-| ČASOVÉ RAZÍTKO |Datum a čas |
-| ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÉM PÁSMU |Datum a čas |
-| ČASOVÉ RAZÍTKO S ČASOVÝM PÁSMEM |Datum a čas |
+| ČASOVÉ RAZÍTKO |DateTime |
+| ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÉM PÁSMU |DateTime |
+| ČASOVÉ RAZÍTKO S ČASOVÝM PÁSMEM |DateTime |
 | CELÉ ČÍSLO BEZ ZNAMÉNKA |Číslo |
 | VARCHAR2 |Řetězec |
 | XML |Řetězec |

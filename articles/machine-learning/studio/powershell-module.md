@@ -1,11 +1,12 @@
 ---
-title: "Modul prostředí PowerShell pro Machine Learning | Microsoft Docs"
-description: "Modul PowerShell pro Azure Machine Learning je dostupný v režimu veřejné zkušební verze. Použijte PowerShell k vytváření a správě pracovní prostory, experimenty, webové služby a další."
-keywords: "experiment,lineární regrese,algoritmy Machine Learningu,kurz Machine Learningu,techniky prediktivního modelování,experiment z oblasti datové vědy"
+title: Modul prostředí PowerShell pro Machine Learning | Microsoft Docs
+description: Modul PowerShell pro Azure Machine Learning je dostupný v režimu veřejné zkušební verze. Použijte PowerShell k vytváření a správě pracovní prostory, experimenty, webové služby a další.
+keywords: experiment,lineární regrese,algoritmy Machine Learningu,kurz Machine Learningu,techniky prediktivního modelování,experiment z oblasti datové vědy
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: hning86
-manager: jhubbard
+ms.author: haining
+manager: mwinkle
 editor: cgronlun
 ms.assetid: a9001cc2-3aa0-47e1-b175-1f76408ba1d1
 ms.service: machine-learning
@@ -14,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: garye;haining
-ms.openlocfilehash: 47d005e584b6cb87d27a77f56ff619d342481aaa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9553e372f4d1cb5c60935fae5a7af61806ea6d4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="powershell-module-for-microsoft-azure-machine-learning"></a>Modul PowerShell pro Microsoft Azure Machine Learning
 Modul prostředí PowerShell pro Azure Machine Learning je výkonný nástroj, který umožňuje spravovat pracovní prostory, experimenty, datové sady, Classic webové služby a další pomocí prostředí Windows PowerShell.
 
-Projít si dokumentaci a stáhnout modul včetně celého zdrojového kódu můžete na adrese [https://aka.ms/amlps](https://aka.ms/amlps). 
+Můžete zobrazit dokumentaci a stáhnout modul, společně s úplný zdrojový kód, na adrese [ https://aka.ms/amlps ](https://aka.ms/amlps). 
 
 > [!NOTE]
 > Modul Powershellu pro Azure Machine Learning je aktuálně v režimu preview. Modul bude třeba zlepšit a rozšířit během tohoto období preview. Dohlížet na [Cortana Intelligence a Machine Learning Blog](https://blogs.technet.microsoft.com/machinelearning/) pro příspěvky a informace.
@@ -58,7 +58,7 @@ Pokud chcete začít s Machine Learning PowerShell, stáhněte si [vydaný balí
 
 Pokud chcete, můžete naklonovat stromu git upravit kód a zkompilovat ho místně pomocí sady Visual Studio.
 
-## <a name="next-steps"></a>Další kroky
-Úplnou dokumentaci pro modul PowerShell na můžete najít [https://aka.ms/amlps](https://aka.ms/amlps). 
+## <a name="next-steps"></a>Další postup
+Úplnou dokumentaci pro modul PowerShell na můžete najít [ https://aka.ms/amlps ](https://aka.ms/amlps). 
 
 Příklad rozšířené informace o použití modulu ve scénáři reálného, podívejte se na případ podrobné použití, [vytvořit mnoho modely Machine Learning a webové koncové body služby z jednoho experimentu pomocí prostředí PowerShell](create-models-and-endpoints-with-powershell.md).

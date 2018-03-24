@@ -1,24 +1,19 @@
 ---
-title: "Integrovat Azure Automation Visual Stuido Team Services zdrojového kódu | Microsoft Docs"
-description: "Scénář vás provede procesem nastavení integrace s účet Azure Automation a zdrojového kódu Visual Stuido Team Services."
+title: Integrovat Azure Automation Visual Stuido Team Services zdrojového kódu
+description: Scénář vás provede procesem nastavení integrace s účet Azure Automation a zdrojového kódu Visual Stuido Team Services.
 services: automation
-documentationcenter: 
-author: eamono
-manager: 
-editor: 
-keywords: "služby VSTS, Azure powershell zdrojového kódu automatizace"
-ms.assetid: a43b395a-e740-41a3-ae62-40eac9d0ec00
+documentationcenter: ''
+author: eamonoreilly
+ms.author: eamono
+keywords: služby VSTS, Azure powershell zdrojového kódu automatizace
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
-ms.openlocfilehash: 5afccc4aa7b751958952d1401182f93109cff358
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 03/19/2017
+ms.openlocfilehash: a60143db03e5f89685a25f26789003de30d91f4c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure Automation scénář – integrace ovládacích prvků zdrojového automatizace s Visual Studio Team Services
 
@@ -51,7 +46,7 @@ Vytvoření [zabezpečené proměnná](automation-variables.md) ve vašem účtu
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSTokenVariable.png)
 
-Naimportujte sadu runbook, který je synchronizován sady runbook nebo konfigurace do účtu automation. Můžete použít [ukázkové sady runbook služby VSTS](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) nebo [VSTS s Git ukázkové sady runbook] (https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) z PowerShellGallery.com podle toho, pokud používáte služby VSTS zdroje služby VSTS s Gitem nebo ovládací prvek a nasazení do vašeho účtu automation.
+Naimportujte sadu runbook, který je synchronizován sady runbook nebo konfigurace do účtu automation. Můžete použít [služby VSTS ukázkové sady runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) nebo [VSTS s Git ukázkové sady runbook] (https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) z PowerShellGallery.com podle toho, pokud používáte služby VSTS zdrojového kódu nebo služby VSTS s Gitem a nasazení do vašeho účtu automation.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPowerShellGallery.png)
 

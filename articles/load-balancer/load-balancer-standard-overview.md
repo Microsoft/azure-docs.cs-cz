@@ -1,72 +1,98 @@
 ---
-title: "Přehled služby Azure standardní nástroje pro vyrovnávání zatížení | Microsoft Docs"
-description: "Přehled funkcí Azure zatížení vyrovnávání standardní"
+title: Přehled služby Azure nástroj pro vyrovnávání zatížení | Microsoft Docs
+description: Přehled funkcí Azure standardní nástroj pro vyrovnávání zatížení
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2018
+ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 2d7fcb3ee066fa768615fbf643a0c2e1c1d28498
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cfc789b3768c21efc7a03c11370b17ac6c3985cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="azure-load-balancer-standard-overview-preview"></a>Přehled služby Azure standardní nástroje pro vyrovnávání zatížení (preview)
+# <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure standardní nástroje pro vyrovnávání zatížení
 
-Standardní SKU pro vyrovnávání zatížení Azure a veřejné IP standardní SKU společně umožňují vytvořit vysoce škálovatelného a spolehlivého architektury. Aplikace, které používají standardní nástroje pro vyrovnávání zatížení můžete využít nové funkce. S nízkou latencí a vysokou propustnost a měřítko jsou k dispozici pro miliony toků pro všechny aplikace, TCP a UDP.
+Azure nástroj pro vyrovnávání zatížení umožňuje škálování aplikací a vytvořte vysokou dostupnost pro vaše služby. Nástroj pro vyrovnávání zatížení lze použít pro příchozí i odchozí scénáře a nabízí nízkou latencí a vysokou propustnost a škáluje až miliony toků pro všechny aplikace, TCP a UDP. 
+
+Tento článek se zaměřuje na nástroj pro vyrovnávání zatížení.  Další obecné přehled nástroje pro vyrovnávání zatížení Azure, zkontrolujte [přehled nástroje pro vyrovnávání zatížení](load-balancer-overview.md) také.
+
+## <a name="what-is-standard-load-balancer"></a>Co je nástroj pro vyrovnávání zatížení?
+
+Nástroj pro vyrovnávání zatížení je nový produkt nástroj pro vyrovnávání zatížení pro všechny TCP a UDP aplikací pomocí funkce ze rozšířené a podrobnější nastavení přes základní nástroj pro vyrovnávání zatížení.  Existuje mnoho podobností, je důležité se seznámit s rozdíly, jak je uvedeno v tomto článku.
+
+Můžete použít standardní zatížení vyrovnávání standardní jako veřejný nebo interní Vyrovnávání zatížení. A virtuální počítač může být připojený k veřejné a jeden interní nástroj pro vyrovnávání zatížení prostředků.
+
+Funkce Vyrovnávání zatížení prostředků jsou vždy vyjádřené jako front-end, pravidlo, test stavu a definici fondu back-end.  Prostředek může obsahovat více pravidel. Virtuální počítače můžete umístit do fondu back-end zadáním fondu back-end z prostředku Síťový adaptér virtuálního počítače.  V případě škálovací sadu virtuálních počítačů je tento parametr předána profilu sítě a rozšířit.
+
+Jeden aspekt klíče je pro prostředek oboru virtuální sítě.  Existuje základní nástroj pro vyrovnávání zatížení v rámci oboru skupiny dostupnosti, standardní Vyrovnávání zatížení jsou plně integrované s oboru virtuální sítě a použít všechny koncepce virtuální sítě.
+
+Prostředky nástroje pro vyrovnávání zatížení jsou objekty v rámci kterých můžete express, jak by měla Azure programu její infrastruktuře víceklientské k dosažení scénáře, který chcete vytvořit.  Není žádný přímý vztah mezi prostředky pro vyrovnávání zatížení a skutečný infrastruktury; vytvoření služby Vyrovnávání zatížení nepodporuje vytvoření instance, kapacita je vždy k dispozici a neexistují žádné spuštění nebo škálování zpoždění vzít v úvahu. 
 
 >[!NOTE]
-> Standardní SKU pro vyrovnávání zatížení je aktuálně ve verzi preview. Verzi Preview funkci nemusí mít stejnou úroveň dostupnost a spolehlivost jako verze funkce, které jsou obecné dostupnosti. Další informace najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Použít obecně dostupná [základní SKU služby Vyrovnávání zatížení](load-balancer-overview.md) pro vaše produkční služby. Použít [dostupnost zóny Preview](https://aka.ms/availabilityzones) s touto verzí Preview vyžaduje [samostatné registrace](https://aka.ms/availabilityzones), kromě registrace do služby pro vyrovnávání zatížení [standardní preview](#preview-sign-up).
+> Azure poskytuje sada plně spravovaná řešení pro vaše scénáře Vyrovnávání zatížení.  Pokud hledáte ukončení protokolu TLS ("přesměrování zpracování SSL") nebo zpracování vrstvy aplikace HTTP/HTTPS, přečtěte si [Application Gateway](../application-gateway/application-gateway-introduction.md).  Pokud hledáte pro globální DNS Vyrovnávání zatížení, přečtěte si [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Vaše scénáře začátku do konce může těžit z kombinace těchto řešení podle potřeby.
 
-## <a name="why-use-load-balancer-standard"></a>Proč používat standardní nástroje pro vyrovnávání zatížení?
+## <a name="why-use-standard-load-balancer"></a>Proč používat nástroj pro vyrovnávání zatížení?
 
-Můžete použít standardní nástroje pro vyrovnávání zatížení pro celou řadu virtuální datových centrech. Nasazení v menším měřítku do zóny s více architekturami velké a komplexní můžete standardní nástroje pro vyrovnávání zatížení využívat následující funkce:
+Nástroj pro vyrovnávání zatížení můžete použít pro celou řadu virtuální datových centrech v menším měřítku nasazení zóny s více architekturami velké a komplexní na.
 
-- [Podnikové škálování](#enterprisescale) lze dosáhnout pomocí standardní nástroje pro vyrovnávání zatížení. Tato funkce slouží k jakékoli instanci virtuálního počítače (VM) v rámci virtuální sítě, až 1 000 instancí virtuálních počítačů.
+Projděte si v následující tabulce základní informace o rozdílech mezi nástroj pro vyrovnávání zatížení a základní nástroj pro vyrovnávání zatížení:
 
-- [Nové diagnostické statistiky](#diagnosticinsights) jsou k dispozici vám pomohou pochopit, Správa a řešení potíží s Tento důležitou součástí virtuální datového centra. Monitorování Azure (preview) slouží k zobrazení, filtrovat a skupiny nové vícerozměrných metriky pro souvislá Datová cesta stavu měření. Monitorujte svá data z front-endu pro virtuální počítač, sondy koncový bod stavu pro pokusy o připojení protokolu TCP a odchozí připojení.
+>[!NOTE]
+> Nové návrhy měli zvážit použití nástroj pro vyrovnávání zatížení. 
 
-- [Skupin zabezpečení sítě](#nsg) jsou nyní požadované pro všechny instance virtuálního počítače, který je přidružený standardní SKU pro vyrovnávání zatížení nebo veřejné IP standardní SKU. Skupiny zabezpečení sítě (Nsg) zadejte rozšířené zabezpečení pro váš scénář.
+| | Standardní SKU | Základní SKU |
+| --- | --- | --- |
+| Velikost fondu back-end | až 1 000 instancí | až 100 instancí |
+| Koncové body fond back-end | jakýkoli virtuální počítač v jedné virtuální sítě, včetně blend virtuálních počítačů, skupiny dostupnosti, sadách škálování virtuálních počítačů. | nastavení virtuálních počítačů v jedné dostupnost sady nebo virtuální počítač škálování |
+| Zóny dostupnosti | zónově redundantní a oblastmi frontends pro příchozí a odchozí, odchozí toky mapování zůstanou platné i po selhání zóny cross zóny Vyrovnávání zatížení | / |
+| Diagnostika | Azure monitorování vícerozměrných metriky, včetně bajtů a čítače paketů, stav testu stavu, pokusy o připojení (TCP SYN), stav odchozí připojení (úspěšné i neúspěšné překládat pomocí SNAT toky), aktivní data roviny měření | Azure Log Analytics pouze veřejné Vyrovnávání zatížení, překládat pomocí SNAT vyčerpání výstraha, počet stavu fondu back-end |
+| HA porty | Interní zátěže. | / |
+| Ve výchozím nastavení zabezpečení | Výchozí zavřít pro veřejné IP adresy a nástroj pro vyrovnávání zatížení koncové body a skupiny zabezpečení sítě musí použije k explicitně povolených pro přenosy na toku | Výchozí otevřená, skupinu zabezpečení sítě volitelné |
+| Odchozí připojení | Více frontends s každé pravidlo výslovný nesouhlas s. Odchozí scénář _musí_ explicitně vytvořit pro virtuální počítač, abyste mohli použít odchozí připojení.  [Koncové body služby virtuální síť](../virtual-network/virtual-network-service-endpoints-overview.md) dostupný bez odchozí připojení a zpracování dat není započítávat.  Všechny veřejné IP adresy, včetně služeb Azure PaaS není k dispozici jako koncové body služby virtuální sítě, musí být dosaženo přes odchozí připojení a počtu ke zpracování dat. Když virtuální počítač je obsluhuje pouze k interním pro vyrovnávání zatížení, nejsou k dispozici odchozí připojení přes výchozí překládat pomocí SNAT. | Jeden front-endu, náhodně vybrané, pokud existuje více frontends.  Když virtuální počítač je obsluhuje pouze interní nástroj pro vyrovnávání zatížení, použije se výchozí překládat pomocí SNAT.  Odchozí překládat pomocí SNAT programování je transportní protokol konkrétní. |
+| Více frontends | Příchozí a odchozí | Pouze příchozí |
+| Operace správy | Většinu operací < 30 sekund | 60-90 sekund typické |
+| SLA | 99,99 % pro cestu k datům s dva virtuální počítače v pořádku | Implicitní v SLA k Virtuálním počítačům | 
+| Ceny | Účtovat na základě počtu pravidel, zpracování dat příchozí nebo odchozí přidružené prostředků  | Bez poplatků |
 
-- [Vysoké dostupnosti (HA) porty poskytovat vysokou spolehlivostí](#highreliability) a škálování pro virtuální síťové zařízení (NVAs) a v dalších scénářích aplikace. Všechny porty na Azure interní načíst vyrovnávání (ILB) do fondu instancí virtuálních počítačů front-end můžete vyrovnávat zatížení porty HA.
-
-- [Odchozí připojení](#outboundconnections) teď použít nový model přidělení port zdroj síťové adresy překlad (SNAT), který poskytuje vyšší odolnosti a škálování.
-
-- [Načíst vyrovnávání standardní dostupnosti zón](#availabilityzones) lze použít k vytvoření zónově redundantní a oblastmi architektury. Obě tyto architektury může zahrnovat Vyrovnávání zatížení mezi zóny. Můžete dosáhnout zálohování zóny bez závislosti na záznamy DNS. Zónově redundantní ve výchozím nastavení je jedinou IP adresu.  Jedna IP adresa se lze připojit žádné virtuální počítače ve virtuální síti v rámci oblasti, která je v rámci všech zón dostupnosti.
+Zkontrolujte [omezení služby pro vyrovnávání zatížení](https://aka.ms/lblimits), a také [ceny](https://aka.ms/lbpricing), a [SLA](https://aka.ms/lbsla).
 
 
-Můžete použít standardní nástroje pro vyrovnávání zatížení buď v interní nebo veřejné konfigurace pro podporu následující základní scénáře:
+### <a name="backend"></a>Fond back-end
 
-- Příchozí provoz na dobrý instance back-end můžete vyrovnávat zatížení.
-- Port přesměrovat příchozí provoz do jediné instance back-end.
-- Převede odchozí provoz z privátní IP adresy v rámci virtuální sítě na veřejnou IP adresu.
+Standardní nástroj pro vyrovnávání zatížení back-endové fondy rozšíří k jakémukoli prostředku virtuálního počítače ve virtuální síti.  Může obsahovat až 1000 instance back-end.  Instance back-end je konfiguraci IP adresy, což je vlastnost prostředku Síťový adaptér.
 
-### <a name = "enterprisescale"></a>Podnikové škálování
+Back-endový fond může obsahovat samostatné virtuální počítače, skupiny dostupnosti nebo sady škálování virtuálního počítače.  Můžete inovativně prostředky ve fondu back-end a může obsahovat libovolnou kombinaci těchto prostředků až 150 celkový.
 
- Použijte standardní nástroje pro vyrovnávání zatížení návrh vysoce výkonné virtuální datové centrum a podporují všechny aplikace TCP nebo UDP. Použijte samostatné instance virtuálních počítačů, nebo až 1 000 instancí virtuálního počítače sadách škálování ve fondu back-end. Nadále používat předávání nízkou latencí, vysoké propustnosti výkonu a možností škálování na miliony toky ve plně spravovaná služba Azure.
- 
-Standardní nástroje pro vyrovnávání zatížení můžete předat dál provoz na jakoukoli instanci virtuálního počítače ve virtuální síti v oblasti. Velikost fondu back-end může být až 1 000 instancí s libovolnou kombinaci těchto scénářích virtuálních počítačů:
+Při zvažování návrhu back-endového fondu, můžete navrhnout pro nejmenší počet jednotlivých back-end fondu prostředků optimalizovat trvání operace správy.  Není žádný rozdíl ve výkonu roviny dat nebo určený počet číslic.
 
-- Samostatné virtuální počítače bez skupiny dostupnosti
-- Samostatné virtuální počítače s skupiny dostupnosti
-- Sadách škálování virtuálních počítačů, až 1 000 instancí
-- Nastaví více škálování virtuálních počítačů
-- Prolnutí virtuální počítače a sady škálování virtuálního počítače
+## <a name="az"></a>Dostupnost zóny
 
-Už je požadavek pro skupiny dostupnosti. Můžete použít pro další výhody, které obsahují skupiny dostupnosti.
+>[!NOTE]
+> Použít [dostupnost zóny Preview](https://aka.ms/availabilityzones) s nástroj pro vyrovnávání zatížení vyžaduje [registrace pro dostupnost zóny](https://aka.ms/availabilityzones).
 
-### <a name = "diagnosticinsights"></a>Přehled diagnostiky
+Nástroj pro vyrovnávání zatížení podporuje další dalo v oblastech, kde dostupnost zóny jsou k dispozici.  Tyto funkce jsou přírůstkové všechny standardní Vyrovnávání zatížení poskytuje.  Konfigurace zón dostupnosti jsou k dispozici pro veřejné a interní standardní Vyrovnávání zatížení.
 
-Standardní nástroje pro vyrovnávání zatížení poskytuje nové vícerozměrných diagnostické funkce pro veřejné a vnitřní konfigurace pro vyrovnávání zatížení. Tyto nové metriky jsou k dispozici prostřednictvím monitorování Azure (preview) a využívat všech souvisejících funkcí, včetně možnosti integrovat podřízené příjemci.
+Bez oblastmi frontends stát zónově redundantní ve výchozím nastavení při nasazení v oblasti dostupnosti zón.   Zónově redundantní front-endu odolává selhání zóny a je vyhovovat vyhrazená infrastruktura, kterou ve všech zónách současně. 
+
+Kromě toho může zaručit front-end pro konkrétní zónu. Oblastmi front-endu sdílí rozklad s příslušnými zóny a je obsluhuje pouze vyhrazená infrastruktura, kterou v jedné oblasti.
+
+Vyrovnávání zatížení mezi zóny je dostupná pro fond back-end a všechny prostředek virtuálního počítače ve virtuální síti můžou být součástí fondu back-end.
+
+Zkontrolujte [podrobnou diskuzi o dostupnosti zóny související dalo](load-balancer-standard-availability-zones.md).
+
+### <a name="diagnostics"></a> Diagnostika
+
+Nástroj pro vyrovnávání zatížení poskytuje vícerozměrných metriky prostřednictvím Azure monitorování.  Tyto metriky lze filtrovat, seskupené a zadejte aktuální a historický přehled o výkonu a stavu služby.  Stav prostředku je také podporována.  Toto je stručný přehled podporovaných diagnostiky:
 
 | Metrika | Popis |
 | --- | --- |
@@ -77,222 +103,74 @@ Standardní nástroje pro vyrovnávání zatížení poskytuje nové vícerozmě
 | Čítače bajtů | Standardní nástroje pro vyrovnávání zatížení sestavy dat zpracovaných za front-endu.|
 | Čítače paketů | Standardní nástroje pro vyrovnávání zatížení hlásí paketů zpracovaných za front-endu.|
 
-### <a name = "highreliability"></a>Vysoká spolehlivost
+Zkontrolujte [podrobné informace o standardního diagnostického nástroje pro vyrovnávání zatížení](load-balancer-standard-diagnostics.md).
 
-Konfigurace pravidel a ujistěte se, vaše aplikace škálování za vysoce spolehlivé Vyrovnávání zatížení. Můžete nakonfigurovat pravidla pro jednotlivé porty a porty HA můžete vyrovnávat všechny přenosy bez ohledu na číslo portu TCP nebo UDP.  
+### <a name="haports"></a>HA porty
 
-K odemknutí celou řadu scénářů, včetně vysoké dostupnosti a možností škálování pro interní NVAs můžete použít funkci nové porty HA. Tato funkce je užitečná pro scénáře, kde je nepraktické nebo žádoucí, aby zadat jednotlivé porty. Porty HA poskytovat redundance a škálování tím, že jako velký počet instancí, protože potřebujete. Konfiguraci už není aktivní nebo pasivní scénářů s omezeným přístupem. Vaše konfigurace testu stavu předávají provoz jenom na v pořádku instance chránit vaši službu.
+Nástroj pro vyrovnávání zatížení podporuje nový typ pravidla.  
 
-Hodnocení chyb zabezpečení dodavatelé nabízejí plně podporované dodavatele, odolné scénáře zákazníkům. Jediný bod selhání je odebrána a více aktivních instancích jsou podporovaná pro škálování. Je možné škálovat na dva nebo víc instancí, v závislosti na možnostech vašeho zařízení. Obraťte se na dodavatele hodnocení chyb zabezpečení sítě pro další pokyny pro tyto scénáře.
+Můžete nakonfigurovat pravidla a ujistěte se, vaše aplikace škálování za vysoce spolehlivé Vyrovnávání zatížení. Když použijete pravidlo, standardní Vyrovnávání zatížení vyrovnávání zatížení HA porty poskytne za každých dočasných portů k interní standardní Vyrovnávání zatížení na front-endovou IP adresu pro vyrovnávání zatížení toku.  Tato funkce je užitečná pro scénáře, kde je nepraktické nebo žádoucí, aby zadat jednotlivé porty.
 
-### <a name = "availabilityzones"></a>Dostupnost zóny
+Pravidlo Vyrovnávání zatížení HA porty umožňuje vytvářet aktivní pasivní nebo aktivní aktivní n + 1 scénáře pro sítě virtuálních zařízení a všechny aplikace, které vyžaduje velkých oblastí příchozí porty.  Test stavu slouží k určení, které back-EndY by měl přijetí nové toky.  Skupina zabezpečení sítě můžete emulovat scénáři rozsah portů.
 
-[!INCLUDE [availability-zones-preview-statement](../../includes/availability-zones-preview-statement.md)]
+>[!IMPORTANT]
+> Pokud máte v úmyslu použít virtuální zařízení sítě, poraďte s dodavatelem pro informace o tom, jestli byl testovaný svých produktech s HA porty a postupujte podle jejich konkrétní pokyny pro implementaci. 
 
-Posunutí odolnost vaší aplikace s použitím dostupnosti zón v podporovaných oblastí. Dostupnost zóny jsou aktuálně ve verzi preview do určitých oblastí a vyžadovat další výslovný souhlas.
+Zkontrolujte [podrobné diskuzi o HA porty](load-balancer-ha-ports-overview.md).
 
-### <a name="automatic-zone-redundancy"></a>Automatické zálohování zóny
+### <a name="securebydefault"></a>Ve výchozím nastavení zabezpečení
 
-Můžete vybrat, zda nástroj pro vyrovnávání zatížení by měl poskytovat a zónově redundantní nebo oblastmi front-end pro každý z vašich aplikací. Je snadné vytvořit zálohování zóny s standardní nástroje pro vyrovnávání zatížení. Jediné front-end IP adresy je automaticky zónově redundantní. Zónově redundantní front-endu je poskytovaný dostupnosti zón v oblasti současně. Zónově redundantní data cesta vytvořena pro příchozí a odchozí připojení. Zálohování zóny v Azure nevyžaduje více IP adres a záznamy DNS. 
-
-Zálohování zóny je dostupná pro interní nebo veřejné front-end. Zónově redundantní lze veřejnou IP adresu a front-end privátní IP adresu pro interní nástroj pro vyrovnávání zatížení.
-
-Pomocí následujícího skriptu pro vytvoření zónově redundantní veřejné IP adresy pro interní nástroj pro vyrovnávání zatížení. Pokud používáte stávající šablony Resource Manageru ve vaší konfiguraci, přidejte **sku** části tyto šablony.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-Pomocí následujícího skriptu k vytvoření zónově redundantní front-end IP adresu pro interní nástroj pro vyrovnávání zatížení. Pokud používáte stávající šablony Resource Manageru ve vaší konfiguraci, přidejte **sku** části tyto šablony.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zone_redundant_frontend",
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-Pokud vaše veřejná IP adresa front-endu zónově redundantní, stane zónově redundantní odchozí připojení, které jsou automaticky vytvářeny z instancí virtuálních počítačů. Front-endu je chráněn selhání zóny. Vaše přidělení port překládat pomocí SNAT také odolává selhání zóny.
-
-#### <a name="cross-zone-load-balancing"></a>Vyrovnávání zatížení mezi zóny
-
-Je k dispozici v rámci oblasti pro fond back-end pro vyrovnávání zatížení mezi zóny a nabízí nejvyšší flexibilitu pro vaše instance virtuálních počítačů. Front-end přináší toky žádné virtuální počítače ve virtuální síti, bez ohledu na dostupnosti pásmo instance virtuálního počítače.
-
-Můžete také zadat konkrétní zóně pro vaše front-end a back-end instance, chcete-li zarovnat cestu k datům a prostředkům pomocí konkrétní zónu.
-
-Virtuální sítě a podsítě se nikdy omezené zónu. Pouze definuje fond back-end s požadovanou instancím virtuálních počítačů a nastavení konfigurace.
-
-#### <a name="zonal-deployments"></a>Oblastmi nasazení
-
-Jako možnost, můžete nástroj pro vyrovnávání zatížení front-end pro konkrétní zónu zarovnat definováním oblastmi front-endu. Oblastmi front-end obsluhovaného určené jeden dostupnosti zóna jenom. Když front-endu je spojeno s oblastmi instance virtuálních počítačů, můžete zarovnat prostředky do určité zóny.
-
-Veřejná IP adresa, který je vytvořen v konkrétní zónu vždy existuje pouze v této zóně. Není možné změnit pásmo veřejnou IP adresu. Veřejná IP adresa, které lze připojit k prostředkům ve více zónách vytvořte místo toho raději zónově redundantní veřejnou IP adresu.
-
-Pomocí následujícího skriptu k vytvoření oblastmi veřejnou IP adresu v dostupnosti zóny 1. Pokud používáte stávající šablony Resource Manageru ve vaší konfiguraci, přidejte **sku** části tyto šablony.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "zones": [ "1" ],
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-Pomocí následujícího skriptu k vytvoření interní pro vyrovnávání zatížení front-endu do zóny 1 dostupnosti.
-
-Pokud používáte stávající šablony Resource Manageru ve vaší konfiguraci, přidejte **sku** části tyto šablony. Navíc definovat **zón** vlastnost ve front-endové konfiguraci protokolu IP pro podřízený prostředek.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zonal_frontend_in_az1",
-                        "zones": [ "1" ],
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-Přidejte mezi zóny Vyrovnávání zatížení pro back-end fondu umístěním vaší instance virtuálních počítačů, které jsou ve virtuální síti do fondu.
-
-Standardní nástroje pro vyrovnávání zatížení prostředků je stále místní a zónově redundantní kde dostupnosti jsou podporovány. Můžete nasadit na veřejnou IP adresu nebo interní Vyrovnávání zatížení front-end, který nemá přiřazenou zóny v libovolné oblasti. Podpora pro dostupnost zóny nebude mít vliv na možnosti nasazení. Pokud oblast později získá dostupnost zóny, nasadili veřejné IP adresy nebo interní nástroj pro vyrovnávání zatížení front-end automaticky stane zónově redundantní Zónově redundantní data cesta neznamená 0 % ztráta paketů.
-
-### <a name = "nsg"></a>Skupiny zabezpečení sítě
-
-Načíst vyrovnávání Standard a veřejné IP Standard plně připojit k virtuální síti, která vyžaduje použití skupin zabezpečení sítě (Nsg). Skupiny Nsg umožňují pro tok přenosů seznam povolených adres. Skupiny Nsg můžete použít k získání plnou kontrolu nad provoz do vašeho nasazení. Už máte čekat na další tok provozu tak, aby dokončit.
-
-Skupiny Nsg přidružte podsítě nebo síťová rozhraní (NIC) instance virtuálního počítače ve fondu back-end. Pomocí této konfigurace s standardní nástroje pro vyrovnávání zatížení a veřejné IP Standard, pokud se používá jako veřejná IP adresa úrovni instance. NSG musí explicitně povolených přenos, který chcete povolit, aby tento tok provozu.
+Nástroj pro vyrovnávání zatížení je plně zařazený, nemá k virtuální síti.  Virtuální síť je uzavřené, privátní síť.  Protože nástroje pro vyrovnávání zatížení a veřejné IP adresy jsou navržená tak, aby této virtuální síti nelze přistupovat ze mimo virtuální síť, tyto prostředky teď výchozí uzavřen, pokud je otevřete. To znamená, že skupiny zabezpečení sítě (Nsg) se nyní používají tak, aby výslovně povolovala a seznam povolených adres povolené přenosy.  Můžete vytvořit vaše virtuální celého datového centra a rozhodnout prostřednictvím NSG, co a pokud by měl být k dispozici.  Pokud nemáte skupinu NSG na podsítě nebo síťová karta tohoto prostředku virtuálního počítače, jsme nebude povolit provoz k dosažení tohoto prostředku.
 
 Další informace o skupiny Nsg a způsobu jejich použití pro váš scénář naleznete v tématu [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md).
 
-### <a name ="outboundconnections"></a>Odchozí připojení
+### <a name="outbound"></a> Odchozí připojení
 
-Standardní nástroje pro vyrovnávání zatížení poskytuje odchozí připojení pro virtuální počítače, které jsou ve virtuální síti, když nástroj pro vyrovnávání zatížení používá port vydávají překládat pomocí SNAT. Algoritmus vydávají port překládat pomocí SNAT poskytuje vyšší odolnosti a škálování.
+Nástroj pro vyrovnávání zatížení podporuje scénáře příchozí a odchozí.  Nástroj pro vyrovnávání zatížení se výrazně liší pro základní nástroj pro vyrovnávání zatížení s ohledem na odchozí připojení.
 
-Pokud prostředek veřejné nástroje pro vyrovnávání zatížení je spojen s instancí virtuálních počítačů, je přepsaná každý zdroj odchozí připojení. Zdroj je přepsaná z prostor virtuální sítě privátní IP adresy front-endu veřejné IP adresy služby Vyrovnávání zatížení.
+Zdroj síťové adresy překlad (SNAT) se používá k mapování interní a privátní IP adresa ve vaší virtuální síti na veřejné IP adresy na frontends nástroj pro vyrovnávání zatížení.
 
-Při použití odchozí připojení s zónově redundantní front-end, připojení jsou také zónově redundantní a překládat pomocí SNAT port přidělení zůstanou platné i po selhání zóny.
+Zavádí nový algoritmus pro nástroj pro vyrovnávání zatížení [robustní, škálovatelnou a předvídatelný překládat pomocí SNAT algoritmus](load-balancer-outbound-connections.md#snat) a nové schopnosti povolí, odebere nejednoznačnosti a vynutí explicitní konfigurace místo straně účinky. Tyto změny jsou nezbytné pro povolení pro nové funkce, které vznikat. 
 
-Nového algoritmu v standardní nástroje pro vyrovnávání zatížení preallocates překládat pomocí SNAT porty na síťový adaptér každého virtuálního počítače. Pokud síťový adaptér je přidán do fondu, překládat pomocí SNAT porty jsou souhrnů ještě neumístěných na základě velikosti fondu. V následující tabulce jsou uvedeny preallocations port pro šest úrovně velikostí fond back-end:
+Toto jsou klíčové principů pamatovat při práci s nástroj pro vyrovnávání zatížení:
 
-| Velikost fondu (instance virtuálních počítačů) | Předběžně přidělené počet portů překládat pomocí SNAT |
-| --- | --- |
-| 1 - 50 | 1024 |
-| 51 - 100 | 512 |
-| 101 - 200 | 256 |
-| 201 - 400 | 128 |
-| 401 - 800 | 64 |
-| 801 - 1,000 | 32 |
+- dokončení pravidla jednotky prostředek pro vyrovnávání zatížení.  všechny programování Azure je odvozena z její konfiguraci.
+- Když jsou k dispozici více frontends, se používají všechny frontends a každý front-endu vynásobí počet dostupných portů překládat pomocí SNAT
+- můžete vybrat a řízení, pokud nechcete, aby pro konkrétní front-endu má být použit pro odchozí připojení.
+- odchozí scénáře jsou explicitní a odchozí připojení neexistuje, dokud není zadán.
+- pravidla Vyrovnávání zatížení odvození, jak programovat překládat pomocí SNAT. Pravidla Vyrovnávání zatížení jsou specifická pro protokol. Překládat pomocí SNAT je specifická pro protokol a konfigurace musí tuto skutečnost místo vytvoření vedlejším účinkem.
 
-Porty překládat pomocí SNAT není přímo převede na počet odchozí připojení. Port překládat pomocí SNAT lze znovu použít pro více cílů jedinečný. Podrobnosti najdete v článku [odchozí připojení](load-balancer-outbound-connections.md) článku.
+#### <a name="multiple-frontends"></a>Více frontends
+Pokud chcete další překládat pomocí SNAT porty, protože je očekávána nebo se již vyskytuje vysokého zatížení pro odchozí připojení, můžete také přidat přírůstkové inventáře port překládat pomocí SNAT nakonfigurováním dalších frontends, pravidla a back-endové fondy stejný virtuální počítač prostředky.
 
-Pokud velikost fondu back-end zvyšuje a přejde do vyšší úrovně, se uvolní polovinu vaší přidělené porty. Připojení, které jsou přiřazeny k vypršení časového limitu regenerovaný portu a musí je znovu vytvořit. Pokusy o připojení úspěšné okamžitě. Pokud velikost fondu back-end snižuje a přejde do nižší úrovně, zvyšuje počet dostupných portů překládat pomocí SNAT. V takovém případě se neovlivní existující připojení.
+#### <a name="control-which-frontend-is-used-for-outbound"></a>Ovládací prvek front-end, který se používá pro odchozí
+Pokud chcete omezit odchozí připojení k provádět jenom na konkrétní front-endovou IP adresu, můžete volitelně můžete zakázat odchozí překládat pomocí SNAT na pravidlo, které vyjadřoval odchozí mapování.
 
-Standardní nástroje pro vyrovnávání zatížení má možnost Další konfiguraci, která lze použít na základě pravidla. Můžete řídit, které front-endu se používá pro port vydávají překládat pomocí SNAT, když jsou k dispozici více front-end.
+#### <a name="control-outbound-connectivity"></a>Ovládací prvek odchozí připojení
+Nástroj pro vyrovnávání zatížení v rámci virtuální sítě existuje.  Virtuální síť se izolované privátní síti.  Pokud existuje přidružení s veřejnou IP adresu, veřejné připojení není povoleno.  Můžete uživatele oslovit [koncové body služby virtuální síť](../virtual-network/virtual-network-service-endpoints-overview.md) vzhledem k tomu, že jsou uvnitř a místní k virtuální síti.  Pokud chcete navázat odchozí připojení do cílového umístění mimo virtuální síť, máte dvě možnosti:
+- Přiřaďte standardní SKU veřejnou IP adresu jako veřejná IP adresa na úrovni Instance adresu pro prostředek virtuálního počítače nebo
+- Umístěte prostředek virtuálního počítače ve fondu back-end veřejný Standard pro vyrovnávání zatížení.
 
-Když pouze zatížení vyrovnávání standardní obsluhuje instance virtuálních počítačů, nejsou k dispozici odchozí připojení překládat pomocí SNAT. Tuto možnost můžete obnovit explicitně také přiřazením instance virtuálních počítačů pro vyrovnávání zatížení veřejné. Veřejné IP adresy můžete také přímo přiřadit jako veřejné IP adresy instance úrovni k jednotlivým instancím virtuálních počítačů. Tato možnost konfigurace mohou být požadovány pro některé operační systém a scénáře aplikací. 
+Jak vám umožní odchozí připojení z virtuální sítě, abyste mimo virtuální síť. 
 
-### <a name="port-forwarding"></a>Přesměrování portu
+Pokud jste _pouze_ mít k interní standardní pro vyrovnávání zatížení přidružené k fondu back-end, ve kterém se nachází váš prostředek virtuálního počítače, virtuální počítač můžete mít pouze přístup k prostředkům virtuální sítě a [virtuální sítě služby Koncové body](../virtual-network/virtual-network-service-endpoints-overview.md).  Můžete postupovat podle kroků popsaných v předchozím odstavci vytvořit odchozí připojení.
 
-Základní a nástroje pro vyrovnávání zatížení zadejte možnost konfigurace příchozích pravidel NAT pro mapování front-end port na jednotlivé instance back-end. Nakonfigurováním tato pravidla můžete vystavit koncové body SSH a Remote Desktop Protocol koncových bodů nebo provádět jiné scénáře aplikací.
+Odchozí připojení není přidružený standardní SKU zůstanou jako před prostředku virtuálního počítače.
 
-Standardní nástroje pro vyrovnávání zatížení nadále poskytuje možnost předávání portů prostřednictvím příchozích pravidel NAT. Při použití s zónově redundantní front-end, příchozích pravidel NAT stane zónově redundantní a zůstanou platné i po selhání zóny.
+Zkontrolujte [podrobné informace o odchozí připojení](load-balancer-outbound-connections.md).
 
-### <a name="multiple-front-ends"></a>Více front-end
+### <a name="multife"></a>Více frontends
+Nástroj pro vyrovnávání zatížení podporuje více pravidel s více frontends.  Nástroj pro vyrovnávání zatížení rozšíří to odchozí scénářů.  Odchozí scénáře jsou v podstatě inverzní příchozí pravidlo Vyrovnávání zatížení.  Příchozí pravidlo také Vyrovnávání zatížení vytváří spolupracovníkovi pro odchozí připojení. Standardní Vyrovnávání zatížení používá všechny frontends přidružený prostředek virtuálního počítače prostřednictvím pravidlo Vyrovnávání zatížení.  Kromě toho parametr na Vyrovnávání zatížení pravidla a umožňuje potlačit pro účely odchozí připojení, která umožňuje výběr specifické frontends včetně žádné pravidlo Vyrovnávání zatížení.
 
-Konfigurace více front-end pro návrh flexibilitu při aplikace vyžadují více jednotlivých IP adres mají být exponovány, jako je například TLS weby nebo koncových bodů skupina dostupnosti AlwaysOn serveru SQL. 
+Pro porovnání základní nástroje pro vyrovnávání zatížení náhodně vybere jeden front-endu a neexistuje žádná možnost řídit, která nebyla vybrána.
 
-Standardní nástroje pro vyrovnávání zatížení nadále poskytuje více front-end kde je nutné vystavit koncový bod konkrétní aplikaci na jedinečnou IP adresu.
+Zkontrolujte [podrobné informace o odchozí připojení](load-balancer-outbound-connections.md).
 
-Další informace o konfiguraci více front-end IP adresy najdete v tématu [konfiguraci více IP](load-balancer-multivip-overview.md).
+### <a name="operations"></a> Operace správy
 
-## <a name = "sku"></a>O SKU
+Standardní prostředky aplikace pro vyrovnávání zatížení existovat na úplně novou infrastrukturu platformě.  To umožňuje výrazně rychlejší operace správy pro standardní SKU a dokončení časy jsou obvykle méně než 30 sekund na standardní SKU prostředků.  Upozorňujeme, že back-endové fondy zvýšit velikost, doba trvání požadované pro back-end fondu změní také zvýšení.
 
-SKU jsou dostupné jenom v modelu nasazení Azure Resource Manager. Tato verze preview zavádí dvě SKU pro nástroj pro vyrovnávání zatížení a veřejná IP adresa zdroje: Basic a Standard. Dalo, výkonové charakteristiky, omezení a některé vnitřní chování skladové jednotky se liší. Virtuální počítače můžete použít s buď SKU. SKU pro prostředky pro vyrovnávání zatížení a veřejnou IP adresu, zůstanou volitelných atributů. Když v definici scénář byly vynechány SKU, konfigurace ve výchozím nastavení používá základní SKU.
-
->[!IMPORTANT]
->Skladová položka prostředku není měnitelný. Skladová položka existující prostředek nesmí změnit.  
-
-### <a name="load-balancer"></a>Load Balancer
-
-[Existující prostředek pro vyrovnávání zatížení](load-balancer-overview.md) stane základní SKU a zůstane obecně dostupné a beze změny.
-
-Standardní SKU pro vyrovnávání zatížení je nový a je momentálně ve verzi preview. 1 srpnu 2017 verze rozhraní API pro Microsoft.Network/loadBalancers přidá **sku** vlastnosti tak, aby definice prostředků:
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-Standardní nástroje pro vyrovnávání zatížení je automaticky zóny odolné v oblastech, které nabízejí dostupnost zóny. Pokud nástroj pro vyrovnávání zatížení bylo deklarováno oblastmi, pak není automaticky zóny odolný.
-
-### <a name="public-ip"></a>Veřejná IP adresa
-
-[Existující prostředek veřejné IP adresy](../virtual-network/virtual-network-ip-addresses-overview-arm.md) stane základní SKU a zůstane všeobecně dostupná se všemi jeho schopnosti, výkonové charakteristiky a omezení.
-
-Veřejné IP standardní SKU je nový a je momentálně ve verzi preview. 1 srpnu 2017 verze rozhraní API pro Microsoft.Network/publicIPAddresses přidá **sku** vlastnosti tak, aby definice prostředků:
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-Na rozdíl od veřejných IP základní, který nabízí několik metod přidělení, Public IP Standard vždy používá statického přidělování.
-
-Veřejné IP Standard se automaticky zóny odolné v oblastech, které nabízejí dostupnost zóny. Pokud veřejné IP adresy bylo deklarováno oblastmi, pak není automaticky zóny odolný. Oblastmi veřejnou IP adresu z jednu zónu nelze změnit na jiný.
+Můžete upravit prostředky nástroj pro vyrovnávání zatížení a přesunutí standardní veřejnou IP adresu z jednoho virtuálního počítače na jiný mnohem rychlejší.
 
 ## <a name="migration-between-skus"></a>Migrace mezi SKU
 
@@ -322,135 +200,21 @@ SKU nejsou měnitelný. Postupujte podle kroků v této části přesunuty z jed
 >
 >HA porty a diagnostiky standardní SKU jsou k dispozici pouze v standardní SKU. Nelze migrovat ze standardní SKU základní SKU a uchovávají taky tyto funkce.
 >
->Odpovídající identifikátory SKU musí použít pro nástroj pro vyrovnávání zatížení a veřejnou IP adresu prostředky. Nemůžete mít směs základní SKU a standardní SKU prostředků. Nelze připojit virtuální počítač, virtuální počítače v skupiny dostupnosti, nebo nastavte škálování virtuálních počítačů na obě položky současně.
+>Základní a standardní SKU mít počet rozdíly, jak je uvedeno v tomto článku.  Zajistěte, aby pochopení a příprava pro ně.
 >
+>Odpovídající identifikátory SKU musí použít pro nástroj pro vyrovnávání zatížení a veřejnou IP adresu prostředky. Nemůžete mít směs základní SKU a standardní SKU prostředků. Nelze připojit samostatné virtuální počítače, virtuální počítače v prostředek sadu dostupnosti nebo škálování virtuálního počítače nastavte prostředky na obě položky současně.
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Standardní nástroje pro vyrovnávání zatížení je aktuálně k dispozici ve všech oblastech veřejného cloudu, s výjimkou západní USA.
+Standardní nástroje pro vyrovnávání zatížení je aktuálně k dispozici ve všech oblastech veřejného cloudu.
 
->[!IMPORTANT]
-> Krátké době přístup do oblasti mimo počáteční spuštění oblastí (východní USA 2, střed USA, Severní Evropa, Západ střední USA, západní Evropa, jihovýchodní Asie) vyžaduje registraci předplatného další funkce (AllowLBPreviewWave2 a AllowLBPreviewWave3).  [Postupujte podle těchto kroků](#additionalpreviewregions). Proveďte prosím všechny z nich i v případě, že jste dříve zaregistrovali k AllowLBPreview již.
-> Tento požadavek se odeberou v následujících týdnech.
+## <a name="sla"></a>SLA
 
-## <a name="sku-service-limits-and-abilities"></a>Omezení služby SKU a možnosti
+Nástroje pro vyrovnávání zatížení jsou k dispozici SLA 99,99 %.  Zkontrolujte [standardní SLA nástroje pro vyrovnávání zatížení](https://aka.ms/lbsla) podrobnosti.
 
-Azure [omezení služby pro sítě](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits) použít na oblast na předplatné. 
-
-Následující tabulka porovnává omezení a dalo základní nástroje pro vyrovnávání zatížení a standardní SKU:
-
-| Load Balancer | Basic | Standard |
-| --- | --- | --- |
-| Velikost fondu back-end | až 100 | až 1 000 |
-| Fond back-end hranic | Skupina dostupnosti | virtuální síť, oblast |
-| Fond back-end návrhu | Virtuální počítače ve skupině dostupnosti, nastavte ve skupině dostupnosti škálování virtuálních počítačů | Všechny instance virtuálního počítače ve virtuální síti |
-| HA porty | Nepodporuje se | Dostupné |
-| Diagnostika | Omezené, veřejné pouze | Dostupné |
-| Dostupnost virtuálních IP adres  | Nepodporuje se | Dostupné |
-| Rychlé IP Mobility | Nepodporuje se | Dostupné |
-|Scénáře dostupnosti zóny | Pouze oblastmi | Oblastmi, Zónově redundantní, Vyrovnávání zatížení mezi zóny |
-| Odchozí překládat pomocí SNAT algoritmus | On-demand | Souhrnů ještě neumístěných |
-| Odchozí překládat pomocí SNAT front-end výběr | Nejde konfigurovat více kandidáty | Volitelné konfigurace pro snížení kandidáty |
-| Skupina zabezpečení sítě | Volitelné na síťový adaptér a podsítě | Požaduje se |
-
-Následující tabulka porovnává omezení a dalo veřejné IP Basic a standardní SKU:
-
-| Veřejná IP adresa | Basic | Standard |
-| --- | --- | --- |
-| Scénáře dostupnosti zóny | Pouze oblastmi | Zónově redundantní (výchozí), oblastmi (volitelné) | 
-| Rychlé IP Mobility | Nepodporuje se | Dostupné |
-| Dostupnost virtuálních IP adres | Nepodporuje se | Dostupné |
-| Čítače | Nepodporuje se | Dostupné |
-| Skupina zabezpečení sítě | Volitelné na síťový adaptér | Požaduje se |
-
-
-## <a name="preview-sign-up"></a>Náhled registrace
-
-K účasti ve verzi preview pro standardní SKU pro vyrovnávání zatížení a doprovodné veřejné IP standardní SKU, zaregistrujte své předplatné.  Probíhá registrace vaše předplatné vám umožňuje přístup z prostředí PowerShell nebo Azure CLI 2.0. Pokud chcete zaregistrovat, proveďte následující kroky:
-
->[!NOTE]
->Registrace funkci standardní nástroje pro vyrovnávání zatížení může trvat až jednu hodinu, globálně začnou platit. Pokud chcete použít zatížení vyrovnávání standardní s [dostupnost zóny](https://aka.ms/availabilityzones), [samostatné registrace](https://aka.ms/availabilityzones) je vyžadován AZ ve verzi Preview.
-
-<a name="additionalpreviewregions"></a>
->[!IMPORTANT]
-> Pro krátké době přístup k oblasti mimo počáteční spuštění oblastí (východní USA 2, střed USA, Severní Evropa, Západ střední USA, západní Evropa, jihovýchodní Asie) vyžadují registraci předplatného další funkce (AllowLBPreviewWave2 a AllowLBPreviewWave3).  Následující postup bylo upraveno, aby další předplatné funkce povolit. Proveďte prosím všechny z nich i v případě, že jste dříve zaregistrovali k AllowLBPreview již. Tento požadavek se odeberou v následujících týdnech.
-
-
-### <a name="sign-up-by-using-azure-cli-20"></a>Přihlásit pomocí Azure CLI 2.0
-
-1. Zaregistrujte funkci zprostředkovatele:
-
-    ```cli
-    az feature register --name AllowLBPreview --namespace Microsoft.Network
-    az feature register --name AllowLBPreviewWave2 --namespace Microsoft.Network
-    az feature register --name AllowLBPreviewWave3 --namespace Microsoft.Network
-    ```
-    
-2. Operace může trvat až 10 minut. Můžete zkontrolovat stav operace pomocí následujícího příkazu:
-
-    ```cli
-    az feature list --query "[?name=='Microsoft.Network/AllowLBPreview']" --output json
-    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave2']" --output json
-    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave3']" --output json
-    ```
-    
-    Pokračujte k dalšímu kroku, když se stav registrace funkce vrátí "Registrovaná" pro každou z výše uvedených funkcí předplatného. Příklad:
-   
-    ```json
-    {
-       "id": "/subscriptions/foo/providers/Microsoft.Features/providers/Microsoft.Network/features/AllowLBPreview",
-       "name": "Microsoft.Network/AllowLBPreview",
-       "properties": {
-          "state": "Registered"
-       },
-       "type": "Microsoft.Features/providers/features"
-    }
-    ```
-    
-4. Proveďte registraci ve verzi preview opakováním registrace předplatného s poskytovatelem prostředků:
-
-    ```cli
-    az provider register --namespace Microsoft.Network
-    ```
-    
-
-### <a name="sign-up-by-using-powershell"></a>Zaregistrujte si pomocí prostředí PowerShell
-
-1. Zaregistrujte funkci zprostředkovatele:
-
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
-    ```
-    
-2. Operace může trvat až 10 minut. Můžete zkontrolovat stav operace pomocí následujícího příkazu:
-
-    ```powershell
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
-    ```
-
-  Pokračujte k dalšímu kroku, když se stav registrace funkce vrátí "Registrovaná" pro každou z výše uvedených funkcí předplatného. Příklad:
-
-    ```
-    FeatureName      ProviderName        RegistrationState
-    -----------      ------------        -----------------
-    AllowLBPreview   Microsoft.Network   Registered
-    ```
-    
-3. Proveďte registraci ve verzi preview opakováním registrace předplatného s poskytovatelem prostředků:
-
-    ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-    ```
- 
 ## <a name="pricing"></a>Ceny
 
-Fakturace standardní SKU pro vyrovnávání zatížení je založena na nakonfigurovaných pravidel a zpracovaná data. Během období preview se vám neúčtují žádné poplatky. Další informace najdete v článku [nástroj pro vyrovnávání zatížení](https://aka.ms/lbpreviewpricing) a [veřejnou IP adresu](https://aka.ms/lbpreviewpippricing) ceny stránky.
-
-Zákazníci se nadále získejte základní SKU služby Vyrovnávání zatížení zdarma.
+Standardní Vyrovnávání zatížení je odečtena produkt na základě počtu Vyrovnávání zatížení nakonfigurovaná pravidla a všechny příchozí a odchozí data zpracování. Informace o cenách standardní Vyrovnávání zatížení, najdete v článku [ceny služby Vyrovnávání zatížení](https://aka.ms/lbpricing) stránky.
 
 ## <a name="limitations"></a>Omezení
 
@@ -458,22 +222,23 @@ Tato omezení platí v době preview a se mohou změnit:
 
 - Instance back-end pro vyrovnávání zatížení nemohou být umístěny v peered virtuálních sítí v tuto chvíli. Všechny instance back-end musí být ve stejné oblasti.
 - SKU nejsou měnitelný. Skladová položka existující prostředek nesmí změnit.
-- Obě položky lze použít s samostatný virtuální počítač, instance virtuálního počítače ve skupině dostupnosti, nebo sadu škálování virtuálního počítače. Kombinace virtuálního počítače se nedá použít obě skladových položek najednou. Konfigurace, který obsahuje směs SKU není povoleno.
-- Pomocí vnitřní zatížení vyrovnávání Standard pro instanci virtuálního počítače (nebo libovolná součást skupiny dostupnosti) zakáže [výchozí odchozí připojení překládat pomocí SNAT](load-balancer-outbound-connections.md). Tuto možnost na samostatný virtuální počítač, instancím virtuálních počítačů ve skupině dostupnosti nebo škálovací sadu virtuálních počítačů, můžete obnovit. Můžete také obnovit schopnost provádět odchozí připojení. K obnovení těchto schopností, současně vyrovnávání standardní veřejné zatížení, nebo přidělte veřejné IP standardní jako úrovni instance veřejné IP adresy, na stejnou instanci virtuálního počítače. Po dokončení přiřazení portu vydávají překládat pomocí SNAT veřejné IP adresy je zadat znovu.
-- Instance virtuálních počítačů může být nutné být seskupeny do sad dostupnosti můžete dosáhnout úplné back-end fondu škálování. Až 150 dostupnosti sady a samostatné virtuální počítače můžete umístit do jednoho fondu back-end.
+- Prostředek virtuálního počítače samostatnou sadu dostupnosti prostředků nebo prostředek sady škálování virtuálního počítače, můžete odkazovat jednoho identifikátoru SKU, nikdy obě.
+- Povolení ochrany Azure DDoS ve virtuální síti ovlivňuje dobu trvání operace správy.
 - Protokol IPv6 není podporován.
-- V kontextu dostupnosti zón front-endu není měnitelný z oblastmi na zónově redundantní a naopak. Po front-endu je vytvořen jako zónově redundantní, zůstane zónově redundantní. Po front-endu je vytvořen jako oblastmi, zůstane oblastmi.
-- V kontextu dostupnosti zóny nelze z jedné zóny na jiný přesunout oblastmi veřejnou IP adresu.
 - [Azure monitorování výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md) nejsou podporovány v tuto chvíli.
-- Portál zatím nepodporuje rozšířené preview oblasti.  Použijte nástroje klienta, například šablony, Azure CLI 2.0 nebo prostředí PowerShell jako alternativní řešení.
 - [Přesunutí operací předplatné](../azure-resource-manager/resource-group-move-resources.md) nejsou podporovány pro standardní SKU LB a PIP prostředky.
-- Není k dispozici v západní USA.
-
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [základní nástroje pro vyrovnávání zatížení](load-balancer-overview.md).
+- Další informace o použití [dostupnost zóny a nástroj pro vyrovnávání zatížení](load-balancer-standard-availability-zones.md)
 - Další informace o [dostupnost zóny](../availability-zones/az-overview.md).
+- Další informace o [diagnostické nástroje pro vyrovnávání zatížení standardní](load-balancer-standard-diagnostics.md).
+- Další informace o [podporované vícerozměrných metriky](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) pro diagnostiku v [Azure monitorování](../monitoring-and-diagnostics/monitoring-overview.md).
+- Další informace o použití [Vyrovnávání zatížení pro odchozí připojení](load-balancer-outbound-connections.md)
+- Další informace o [standardní Vyrovnávání zatížení s pravidla Vyrovnávání zatížení HA porty](load-balancer-ha-ports-overview.md)
+- Další informace o použití [Vyrovnávání zatížení s více Frontends](load-balancer-multivip-overview.md)
+- Další informace o [virtuální sítě](../virtual-network/virtual-networks-overview.md).
 - Další informace o [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md).
+- Další informace o [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md)
 - Přečtěte si o některých dalších klíče [sítě možnosti](../networking/networking-overview.md) v Azure.
-- Další informace o [metriky, které jsou zveřejněné](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) v [Azure monitorování](../monitoring-and-diagnostics/monitoring-overview.md).
+- Další informace o [nástroj pro vyrovnávání zatížení](load-balancer-overview.md).

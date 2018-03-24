@@ -1,6 +1,6 @@
 ---
-title: "Systému SQL Server FCI – virtuální počítače Azure | Microsoft Docs"
-description: "Tento článek vysvětluje, jak vytvořit Instance clusteru převzetí služeb při selhání SQL serveru na virtuálních počítačích Azure."
+title: Systému SQL Server FCI – virtuální počítače Azure | Microsoft Docs
+description: Tento článek vysvětluje, jak vytvořit Instance clusteru převzetí služeb při selhání SQL serveru na virtuálních počítačích Azure.
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -14,13 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/26/2017
+ms.date: 13/22/2018
 ms.author: mikeray
-ms.openlocfilehash: 8c957b1f2b4466ba68d81885fb014ad4026a47d2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: faa849fc53aa15a47e850a20531c4fa30544f750
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace Instance clusteru převzetí služeb při selhání systému SQL Server na virtuálních počítačích Azure
 
@@ -46,6 +46,18 @@ Na předchozím obrázku uvádí:
 Podrobnosti o S2D najdete v tématu [Windows Server 2016 Datacenter edition prostory úložiště – přímé \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview).
 
 S2D podporuje dva typy architektury - sblížené a hyperkonvergované. Architektura v tomto dokumentu je hyperkonvergované. V infrastruktuře hyperkonvergované umístí úložiště na stejné servery, které jsou hostiteli clusterové aplikace. V této architektuře úložiště je na každém uzlu SQL serveru FCI.
+
+## <a name="licensing-and-pricing"></a>Licencování a ceny
+
+Ve virtuálních počítačích Azure můžete licencí systému SQL Server pomocí platím průběžně (srážek daně ze MZDY) nebo přineste si vlastní licenci Image virtuálních počítačů (BYOL). Typ obrázku, který zvolíte ovlivňuje, jak vám účtovat.
+
+S licencování srážek daně ze MZDY instance clusteru převzetí služeb při selhání (FCI) systému SQL Server na virtuálních počítačích Azure budou vám účtovány poplatky pro všechny uzly FCI, včetně pasivní uzly. Další informace najdete v tématu [SQL Server Enterprise ceny služeb Virtual Machines](http://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
+
+Zákazníci s Enterprise Agreement pomocí programu Software Assurance mít právo používat jeden volné pasivní uzel FCI pro každou aktivní uzel. Chcete-li využít tuto výhodu v Azure, použít Image virtuálních počítačů BYOL a pak použijte stejné licence na aktivní a pasivní uzly FCI. Další informace najdete v tématu [smlouva Enterprise Agreement](http://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
+
+Můžete porovnat srážek daně ze MZDY a BYOL licencování pro SQL Server na virtuálních počítačích Azure najdete v části [začít s virtuálními počítači SQL](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
+
+Úplné informace o licencování SQL serveru najdete v tématu [cenová](http://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
 ### <a name="example-azure-template"></a>Příklad šablony Azure
 
@@ -91,7 +103,7 @@ Tyto požadavky splněny můžete pokračovat s vytvářením clusteru převzet�
 
    Pokud jste dosud nevytvořili skupinu prostředků pro virtuální počítače, když vytvoříte skupinu dostupnosti Azure ho proveďte. Pokud používáte portál Azure k vytvoření skupiny dostupnosti, proveďte následující kroky:
 
-   - Na portálu Azure klikněte na tlačítko  **+**  otevřete Azure Marketplace. Vyhledejte **sadu dostupnosti**.
+   - Na portálu Azure klikněte na tlačítko **+** otevřete Azure Marketplace. Vyhledejte **sadu dostupnosti**.
    - Klikněte na tlačítko **sadu dostupnosti**.
    - Klikněte na možnost **Vytvořit**.
    - Na **vytvořit skupinu dostupnosti** okno, nastavte následující hodnoty:
@@ -123,7 +135,7 @@ Tyto požadavky splněny můžete pokračovat s vytvářením clusteru převzet�
 
    Vyberte bitovou kopii správné podle způsob platit za licenci systému SQL Server:
 
-   - **Platba za použití licencování**: náklady za minutu těchto bitových kopií zahrnuje licencování SQL serveru:
+   - **Platba za použití licencování**: náklady za sekundu na těchto bitových kopií zahrnuje licencování SQL serveru:
       - **SQL Server 2016 Enterprise na Windows Server Datacenter 2016**
       - **SQL Server 2016 Standard na Windows Server Datacenter 2016**
       - **SQL Server 2016 vývojáře v systému Windows Server Datacenter 2016**

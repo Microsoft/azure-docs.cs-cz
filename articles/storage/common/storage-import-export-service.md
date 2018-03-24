@@ -1,18 +1,18 @@
 ---
-title: "Používání Azure Import/Export pro přenos dat do a z Azure Storage | Microsoft Docs"
-description: "Naučte se vytvořit import a export úloh na portálu Azure pro přenos dat do a z Azure Storage."
+title: Používání Azure Import/Export pro přenos dat do a z Azure Storage | Microsoft Docs
+description: Naučte se vytvořit import a export úloh na portálu Azure pro přenos dat do a z Azure Storage.
 author: muralikk
 manager: syadav
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/22/2018
 ms.author: muralikk
-ms.openlocfilehash: d096d6fd4664fecc9c759d683ed79e76cda9b6af
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: cc36fdde962ec44d679dc0e96f440b0437a84fa8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Použít službu Microsoft Azure Import/Export k přenosu dat do úložiště Azure.
 V tomto článku jsme poskytují podrobné pokyny k používání služby Azure Import/Export bezpečně přenést velké objemy dat do úložiště objektů Blob v Azure a Azure Files jednotkami přenosů disku pro datové centrum Azure. Tato služba slouží také k přenosu dat ze služby Azure storage na jednotky pevného disku a dodávat místní servery. Buď do úložiště objektů Blob v Azure nebo Azure Files můžete importovat data z jednoho disku interní disků SATA. 
@@ -151,7 +151,7 @@ Pro úlohy exportu po zkopírování dat na discích, bude služba šifrování 
 ### <a name="operating-system"></a>Operační systém
 Příprava pevný disk pomocí nástroje WAImportExport před přesouvání jednotky do Azure můžete použít jednu z následujících 64bitových operačních systémů:
 
-Windows 7 Enterprise, Windows 7 Ultimate, Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise, Windows 10<sup>1</sup>, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2. Všechny tyto operační systémy podporují nástroj BitLocker Drive Encryption.
+Windows 7 Enterprise, Windows 7 Ultimate, Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise, Windows 10, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2. Všechny tyto operační systémy podporují nástroj BitLocker Drive Encryption.
 
 ### <a name="locations"></a>Umístění
 Služba Azure Import/Export podporuje kopírování dat do a ze všech účtů úložiště veřejný Azure. Můžete zaslat jednotky pevného disku na jeden z uvedených umístění. Pokud váš účet úložiště je do veřejného umístění Azure, který není zde určený přesouvání alternativní umístění bude třeba zadat při vytváření úlohy pomocí portálu Azure nebo REST API pro Import nebo Export.

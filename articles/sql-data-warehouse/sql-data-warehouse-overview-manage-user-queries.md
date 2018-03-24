@@ -1,11 +1,11 @@
 ---
-title: "Monitorování uživatelských dotazů v Azure SQL Data Warehouse | Microsoft Docs"
-description: "Přehled důležité informace, osvědčené postupy a úlohy pro monitorování uživatelských dotazů v Azure SQL Data Warehouse"
+title: Monitorování uživatelských dotazů v Azure SQL Data Warehouse | Microsoft Docs
+description: Přehled důležité informace, osvědčené postupy a úlohy pro monitorování uživatelských dotazů v Azure SQL Data Warehouse
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,10 @@ ms.custom: performance
 ms.date: 03/15/2018
 ms.author: joeyong;barbkess
 ms.openlocfilehash: 23b5edd559fd4b97554df4547d5ac16742d00a9f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-user-queries-in-azure-sql-data-warehouse"></a>Monitorování uživatelských dotazů v Azure SQL Data Warehouse
 Přehled důležité informace, osvědčené postupy a úlohy pro monitorování uživatelských dotazů v SQL Data Warehouse.

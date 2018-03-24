@@ -1,13 +1,13 @@
 ---
-title: "Směrování síťového provozu - rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Zjistěte, jak ke směrování síťového provozu s směrovací tabulku pomocí rozhraní příkazového řádku Azure."
+title: Směrování síťového provozu - rozhraní příkazového řádku Azure | Microsoft Docs
+description: Zjistěte, jak ke směrování síťového provozu s směrovací tabulku pomocí rozhraní příkazového řádku Azure.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 67bfc8ee677a14735174e9501fa5e10a69bd1ec7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.custom: ''
+ms.openlocfilehash: 871b562fa12b93d1b65e23ca58615d35ef6bb34b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Směrovat síťový provoz s směrovací tabulku pomocí rozhraní příkazového řádku Azure
 
@@ -207,7 +207,7 @@ Poznamenejte si **publicIpAddress**. Tato adresa se používá pro přístup k v
 
 ## <a name="route-traffic-through-an-nva"></a>Směrovat provoz prostřednictvím hodnocení chyb zabezpečení
 
-Použijte následující příkaz pro vytvoření relace SSH s *myVmPrivate* virtuálních počítačů. Nahraďte  *<publicIpAddress>*  s veřejnou IP adresu vašeho virtuálního počítače. V příkladu nahoře, IP adresa je *13.90.242.231*.
+Použijte následující příkaz pro vytvoření relace SSH s *myVmPrivate* virtuálních počítačů. Nahraďte *<publicIpAddress>* s veřejnou IP adresu vašeho virtuálního počítače. V příkladu nahoře, IP adresa je *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -273,11 +273,11 @@ Pokud již nepotřebujete, použijte [odstranění skupiny az](/cli/azure/group#
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku vytvořit směrovací tabulku a přidružené k podsíti. Můžete vytvořit jednoduché chyb zabezpečení, který směruje provoz z veřejné podsítě privátní podsítě. Nasazení celou řadu předem nakonfigurovaná NVAs, které provádějí síťových funkcí, jako jsou brány firewall a optimalizace sítě WAN z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Před nasazením směrovací tabulky pro použití v provozním prostředí, doporučujeme, aby důkladně Seznamte se s [směrování v Azure](virtual-networks-udr-overview.md), [spravovat směrovací tabulky](manage-route-table.md), a [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 Když nasadíte mnoho prostředků Azure v rámci virtuální sítě, zdrojů u některých služeb Azure PaaS nelze nasadit do virtuální sítě. Můžete dál omezit přístup k prostředkům některé služby Azure PaaS provoz jenom z podsítě virtuální sítě, když. Přechodu na v dalším kurzu se dozvíte, jak omezit přístup k síti na Azure PaaS prostředky.
 
 > [!div class="nextstepaction"]
-> [Omezit přístup k síti na PaaS prostředky](virtual-network-service-endpoints-configure.md#azure-cli)
+> [Omezit přístup k síti na PaaS prostředky](tutorial-restrict-network-access-to-resources-cli.md)

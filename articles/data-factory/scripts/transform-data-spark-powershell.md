@@ -1,10 +1,10 @@
 ---
-title: "Prostředí PowerShell skriptu transformace dat v cloudu pomocí služby Data Factory | Microsoft Docs"
-description: "Tento skript prostředí PowerShell transformuje dat v cloudu spuštěním programu Spark v clusteru Azure HDInsight Spark."
+title: Prostředí PowerShell skriptu transformace dat v cloudu pomocí služby Data Factory | Microsoft Docs
+description: Tento skript prostředí PowerShell transformuje dat v cloudu spuštěním programu Spark v clusteru Azure HDInsight Spark.
 services: data-factory
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: shlo
-ms.openlocfilehash: f83d9d2e862f909d6eaa0c02ecac745909aab83a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 27458a48c04a6d4ec612252dc298d454a48cf009
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>Skript prostředí PowerShell - transformace dat v cloudu pomocí Azure Data Factory
 
@@ -24,7 +24,7 @@ Tento ukázkový skript prostředí PowerShell vytvoří kanál, který transfor
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Účet služby Azure Storage**. Vytvořte python skriptu a vstupní soubor a jejich nahrávání do úložiště Azure. V tomto účtu úložiště se ukládá výstup z programu Sparku. Cluster Spark na vyžádání používá stejný účet úložiště jako primární úložiště.  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Uložení skriptu Pythonu do účtu služby Blob Storage

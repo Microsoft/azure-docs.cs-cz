@@ -1,24 +1,21 @@
 ---
-title: "Token odkaz – Azure AD B2C | Microsoft Docs"
-description: "Typy tokeny vydané v Azure Active Directory B2C"
+title: Token odkaz – Azure AD B2C | Microsoft Docs
+description: Typy tokeny vydané v Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 6df79878-65cb-4dfc-98bb-2b328055bc2e
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: parakhj
-ms.openlocfilehash: ce82fcc82cf411d1596fea56ff368d96eceeff38
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: e5cc6a0974f9481491518779209ec5256870921f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Odkaz tokenu
 
@@ -71,12 +68,12 @@ Pokud používáte Azure AD B2C, máte jemně odstupňovanou kontrolu nad obsah 
 
 Všimněte si, že deklarace identity v tokenech ID nebudou zobrazeny v libovolném pořadí. Kromě toho může být nových deklarací identity zavedená v tokeny typu ID kdykoli. Aplikace by neměl rozdělit zavedeném nových deklarací identity. Tady jsou deklarace identity, které by měla existovat v ID a přístupové tokeny vydané pomocí Azure AD B2C. Zásady jsou určeny žádné další deklarace identity. Postup kontroly deklarací identity ve ukázkový token pro ID vložením do vyzkoušejte [jwt.ms](https://jwt.ms). Další podrobnosti najdete v [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html).
 
-| Name (Název) | Deklarovat | Příklad hodnoty | Popis |
+| Název | Deklarovat | Příklad hodnoty | Popis |
 | --- | --- | --- | --- |
 | Cílová skupina |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Deklaraci identity cílovou skupinu identifikuje zamýšlený příjemce tokenu. Pro Azure AD B2C cílová skupina je ID aplikace vaší aplikace, jako přiřazené vaší aplikaci v portálu pro registraci aplikace. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud neodpovídá. |
 | Vystavitel |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |Toto tvrzení identifikuje služby tokenů na zabezpečení (STS), která vytvoří a vrátí token. Také identifikuje adresář Azure AD, ve kterém byl uživatel ověřený. Aplikace by měl ověřit vystavitele deklarace zajistit, že token pochází od koncového bodu v2.0 Azure Active Directory. |
 | vydané v |`iat` |`1438535543` |Tato deklarace identity je čas, kdy byl token vydán, v čase epoch. |
-| čas vypršení platnosti |`exp` |`1438539443` |Čas vypršení platnosti, které deklarace identity je čas, kdy stává neplatným, token znázorněná epoch čas. Aplikace by měl ověřit správnost dobu životnosti tokenu pomocí této deklarace identity. |
+| Čas vypršení platnosti |`exp` |`1438539443` |Čas vypršení platnosti, které deklarace identity je čas, kdy stává neplatným, token znázorněná epoch čas. Aplikace by měl ověřit správnost dobu životnosti tokenu pomocí této deklarace identity. |
 | Neplatný před |`nbf` |`1438535543` |Tento požadavek je okamžikem, kdy se token platný, reprezentována v čase epoch. Je to obvykle stejné jako čas, který byl vydán token. Aplikace by měl ověřit správnost dobu životnosti tokenu pomocí této deklarace identity. |
 | Verze |`ver` |`1.0` |Toto je verze ID tokenu, jak je definované ve službě Azure AD. |
 | Kód hash |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Hodnota hash kódu je součástí ID token jenom v případě, že je token vydán společně s autorizační kód OAuth 2.0. Kód hash slouží k ověření pravosti autorizační kód. Další podrobnosti o tom, jak toto ověření proveďte najdete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html).  |
@@ -124,7 +121,7 @@ Azure AD B2C má koncový bod metadat OpenID Connect. To umožňuje aplikacím n
 https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
 ```
 
-`fabrikamb2c.onmicrosoft.com`je adresář B2C používá k ověření uživatele, a `b2c_1_sign_in` zásady použité k získání tokenu. Chcete-li zjistit, jaké zásady se použil k podepsání token (a kde lze načíst metadata), máte dvě možnosti. Nejprve je součástí název zásady `acr` deklarací identity v tokenu. Pomocí kódování base-64 dekódování textu a deserializaci řetězce formátu JSON, která způsobí, že můžete analyzovat deklarace identity z textu token JWT. `acr` Deklarací identity bude název zásady, která byla použita k vydání tokenu.  Vaše další možností je určený ke kódování zásad v hodnotě `state` parametr při vydání požadavku a potom ji k určení, jaké zásady byl použit dekódovat. Buď metoda je platná.
+`fabrikamb2c.onmicrosoft.com` je adresář B2C používá k ověření uživatele, a `b2c_1_sign_in` zásady použité k získání tokenu. Chcete-li zjistit, jaké zásady se použil k podepsání token (a kde lze načíst metadata), máte dvě možnosti. Nejprve je součástí název zásady `acr` deklarací identity v tokenu. Pomocí kódování base-64 dekódování textu a deserializaci řetězce formátu JSON, která způsobí, že můžete analyzovat deklarace identity z textu token JWT. `acr` Deklarací identity bude název zásady, která byla použita k vydání tokenu.  Vaše další možností je určený ke kódování zásad v hodnotě `state` parametr při vydání požadavku a potom ji k určení, jaké zásady byl použit dekódovat. Buď metoda je platná.
 
 Dokument metadat je objekt JSON, který obsahuje několik užitečné informací. Mezi ně patří umístění koncových bodů potřebná k provedení ověřování OpenID Connect. Zahrnují taky, že `jwks_uri`, což dává umístění sady veřejných klíčů, který slouží k podepisování tokenů. Umístění je tady uvedené, že je vhodné se dynamicky načíst umístění pomocí dokument metadat a analýze se `jwks_uri`:
 
@@ -146,10 +143,10 @@ Když aplikaci nebo API obdrží ID token, má také provést několik kontrol p
 
 Úplný seznam ověření proveďte vaší aplikace, najdete v části [OpenID Connect specifikace](https://openid.net). Podrobnosti o očekávaných hodnot pro tyto deklarace identity jsou zahrnuty v předchozím [token části](#types-of-tokens).  
 
-## <a name="token-lifetimes"></a>Token životnosti
+## <a name="token-lifetimes"></a>Doby života tokenů
 Následující token životnosti jsou k dispozici pro další vašeho vědomí. Můžou vám pomoct při vývoji a ladění aplikací. Všimněte si, že vaše aplikace nemá zapisovat očekávat některé z těchto životnosti nezměnila. Mohou a změní. Další informace o [přizpůsobení tokenu životnosti](active-directory-b2c-token-session-sso.md) v Azure AD B2C.
 
-| Token | Doba platnosti | Popis |
+| Podpisový | Doba platnosti | Popis |
 | --- | --- | --- |
 | ID tokeny |Jedna hodina. |ID tokeny jsou obvykle platný jednu hodinu. Webové aplikace můžete použít tato doba platnosti udržovat svůj vlastní relací uživatelů (doporučeno). Můžete také dobu platnosti jiné relace. Pokud aplikace potřebuje k získání tokenu nové ID, jednoduše potřebuje k vytvoření nové žádosti o přihlášení do služby Azure AD. Pokud má uživatel relace platná prohlížeče s Azure AD, tento uživatel nemusí nutné znovu zadat přihlašovací údaje. |
 | Obnovovacích tokenů |Až 14 dní |Jeden obnovovací token je platný pro maximálně 14 dní. Token obnovení však můžete stane neplatnou kdykoli z několika příčin. Aplikace by měly být nadále pokoušet použít obnovovací token, dokud žádost skončí s chybou, nebo dokud aplikace nahradí nový token obnovení. Obnovovací token se může stát také neplatné, pokud od uživatele naposledy zadali přihlašovací údaje, uplynulo 90 dní. |

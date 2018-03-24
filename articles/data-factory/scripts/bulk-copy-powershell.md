@@ -1,10 +1,10 @@
 ---
-title: "Skript prostředí PowerShell: kopírování dat hromadně pomocí Azure Data Factory | Microsoft Docs"
-description: "Tento skript prostředí PowerShell ukazuje, jak používat Azure Data Factory ke zkopírování dat ze zdrojového úložiště dat do cílového úložiště dat hromadně."
+title: 'Skript prostředí PowerShell: kopírování dat hromadně pomocí Azure Data Factory | Microsoft Docs'
+description: Tento skript prostředí PowerShell ukazuje, jak používat Azure Data Factory ke zkopírování dat ze zdrojového úložiště dat do cílového úložiště dat hromadně.
 services: data-factory
 author: linda33wj
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: f8a66f3daab9b57723f67a60fa195e53333f3b8d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 49102d573dd93b1481d1ef97ef3e603fc2f3ad46
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Prostředí PowerShell script – kopírovat více tabulek hromadné pomocí Azure Data Factory
 
