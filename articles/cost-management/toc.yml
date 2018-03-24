@@ -28,7 +28,7 @@
 - name: Koncepty
   items:
     - name: Vysvětlení sestav nákladů
-      href: understading-cost-reports.md
+      href: understanding-cost-reports.md
 - name: Návody
   items:
     - name: Aktivace účtů a předplatných Azure

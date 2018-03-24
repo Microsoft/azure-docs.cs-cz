@@ -1,24 +1,24 @@
 ---
-title: "Dokumentace ke službě Azure StorSimple – kurzy | Dokumentace Microsoftu"
-description: "Naučte se používat Azure StorSimple, integrované řešení úložiště, které spravuje úlohy úložiště mezi místními zařízeními a úložištěm cloudu Azure."
+title: Dokumentace ke službě Azure StorSimple – kurzy | Dokumentace Microsoftu
+description: Naučte se používat Azure StorSimple, integrované řešení úložiště, které spravuje úlohy úložiště mezi místními zařízeními a úložištěm cloudu Azure.
 services: storsimple
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: storsimple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 579fe32f75e051e679e6cbbaea5f99c7fcd6037b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0115c1794878296df826e7d04724a561464125d6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="storsimple-documentation"></a>Dokumentace ke službě StorSimple
+# <a name="storsimple-documentation"></a>Dokumentace ke službě StorSimple
 
 Naučte se používat Azure StorSimple, integrované řešení úložiště, které spravuje úlohy úložiště mezi místními zařízeními a úložištěm cloudu Azure. Kurzy a další dokumentace ukazují, jak nastavit správu úložiště, zálohování nezávislé na umístění a zotavení po havárii.
 
@@ -117,7 +117,7 @@ Naučte se používat Azure StorSimple, integrované řešení úložiště, kte
 
 ---
 
-##<a name="other-storsimple-solutions"></a>Další řešení StorSimple
+## <a name="other-storsimple-solutions"></a>Další řešení StorSimple
 
 <ul class="panelContent cardsW">
     <li>

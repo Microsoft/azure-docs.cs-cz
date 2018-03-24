@@ -1,73 +1,73 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace k nástroji Azure Machine Learning Studio"
+title: Dokumentace k nástroji Azure Machine Learning Studio
 metadata:
-  title: "Dokumentace k nástroji Azure Machine Learning Studio"
-  description: "Další informace o použití nástroje Azure Machine Learning Studio"
+  title: Dokumentace k nástroji Azure Machine Learning Studio
+  description: Další informace o použití nástroje Azure Machine Learning Studio
   services: machine-learning
-  author: carolz
-  manager: carolz
+  author: j-martens
+  manager: cgronlun
   ms.service: machine-learning
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/18/2018
-  ms.author: carolz
-  ms.openlocfilehash: dd55c06d62f7678a5b5e721be80f3483c96be0f0
-  ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+  ms.author: jmartens
+  ms.openlocfilehash: 7a12213df1ba496ea19b3d2d93bf7b62a6a0bb29
+  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/13/2018
+  ms.lasthandoff: 03/23/2018
 abstract:
-  description: "Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Kurzy, videa a ukázkové modely ukazují, jak pomocí nástroje Studio vytvářet a nasazovat modely Machine Learningu."
+  description: Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Kurzy, videa a ukázkové modely ukazují, jak pomocí nástroje Studio vytvářet a nasazovat modely Machine Learningu.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Přečtěte si, jak rychle začít používat Azure Machine Learning Studio:"
+    text: 'Přečtěte si, jak rychle začít používat Azure Machine Learning Studio:'
   - type: list
     style: unordered
     items:
-    - html: "<a href=\"create-experiment\">Vytvoření prvního experimentu</a>"
-    - html: "<a href=\"algorithm-choice\">Volba nejlepšího algoritmu</a>"
-    - html: "<a href=\"deploy-consume-web-service-guide\">Zprovoznění vašeho modelu</a>"
-    - html: "<a href=\"data-science-for-beginners-the-5-questions-data-science-answers\">Seznámení s datovými vědami</a>"
-- title: "Podrobné kurzy"
+    - html: <a href="create-experiment">Vytvoření prvního experimentu</a>
+    - html: <a href="algorithm-choice">Volba nejlepšího algoritmu</a>
+    - html: <a href="deploy-consume-web-service-guide">Zprovoznění vašeho modelu</a>
+    - html: <a href="data-science-for-beginners-the-5-questions-data-science-answers">Seznámení s datovými vědami</a>
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Postupujte podle rozšířených kurzů, které vás provedou vytvořením a nasazením modelů:"
+    text: 'Postupujte podle rozšířených kurzů, které vás provedou vytvořením a nasazením modelů:'
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"walkthrough-develop-predictive-solution\">Vytvoření a nasazení prediktivního řešení</a>"
-    - html: "<a href=\"azure-ml-customer-churn-scenario\">Příklad změn zákazníka</a>"
-- title: "Další technologie Azure Machine Learning"
+    - html: <a href="walkthrough-develop-predictive-solution">Vytvoření a nasazení prediktivního řešení</a>
+    - html: <a href="azure-ml-customer-churn-scenario">Příklad změn zákazníka</a>
+- title: Další technologie Azure Machine Learning
   items:
   - type: paragraph
-    text: "Další technologie dostupné ve službách Azure Machine Learning:"
+    text: 'Další technologie dostupné ve službách Azure Machine Learning:'
   - type: list
     style: cards
     className: cardsFTitle
     items:
-    - title: "Služby Azure Machine Learning (Preview)"
+    - title: Služby Azure Machine Learning (Preview)
       href: /azure/machine-learning/preview/
       image:
         src: media/index/i_machine-learning.svg
         href: /azure/machine-learning/preview/
-    - title: "Virtuální počítač pro datové vědy"
+    - title: Virtuální počítač pro datové vědy
       href: /azure/machine-learning/data-science-virtual-machine/
       image:
         src: media/index/virtual-machines.svg
         href: /azure/machine-learning/data-science-virtual-machine/
-- title: "Referenční informace"
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "Příkazový řádek"
-      html: "<p><a href=\"/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning\">Modul PowerShell (nový)</a></p><p><a href=\"powershell-module\">Modul PowerShell (klasický)</a></p>"
+    - title: Příkazový řádek
+      html: <p><a href="/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning">Modul PowerShell (nový)</a></p><p><a href="powershell-module">Modul PowerShell (klasický)</a></p>
     - title: Moduly
-      html: "<p><a href=\"https://msdn.microsoft.com/library/azure/dn905974.aspx\">Referenční materiály k modulům a algoritmům</a></p>"
+      html: <p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">Referenční materiály k modulům a algoritmům</a></p>
     - title: REST
-      html: "<p><a href=\"/rest/api/machinelearning\">Rozhraní API pro správu REST</a></p><p><a href=\"web-service-error-codes\">Kódy chyb webových služeb</a></p>"
+      html: <p><a href="/rest/api/machinelearning">Rozhraní API pro správu REST</a></p><p><a href="web-service-error-codes">Kódy chyb webových služeb</a></p>

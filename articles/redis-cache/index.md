@@ -1,24 +1,24 @@
 ---
-title: "Dokumentace ke službě Azure Redis Cache – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se využívat službu Azure Redis Cache. Tento zprostředkovatel zasílání zpráv a zabezpečené mezipaměti dat poskytuje aplikacím rychlý přístup k datům. Kurzy, reference k rozhraní API a další zdroje informací"
+title: Dokumentace ke službě Azure Redis Cache – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+description: Naučte se využívat službu Azure Redis Cache. Tento zprostředkovatel zasílání zpráv a zabezpečené mezipaměti dat poskytuje aplikacím rychlý přístup k datům. Kurzy, reference k rozhraní API a další zdroje informací
 services: redis-cache
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: redis-cache
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 6528d900ba3641189f8000db8d2535c9b215d148
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b772df55f8862330da9e557b9bf2ed11b9e2347
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="redis-cache-documentation"></a>Dokumentace ke službě Redis Cache
+# <a name="redis-cache-documentation"></a>Dokumentace ke službě Redis Cache
 
 Naučte se využívat službu Azure Redis Cache. Tento zprostředkovatel zasílání zpráv a zabezpečené mezipaměti dat poskytuje aplikacím přístup k datům s vysokou propustností a nízkou latencí. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy využití Redis Cache z libovolné aplikace v Azure.
 

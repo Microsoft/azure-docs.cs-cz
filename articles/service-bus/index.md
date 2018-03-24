@@ -1,24 +1,24 @@
 ---
-title: "Dokumentace ke službě Azure Service Bus – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Zjistěte, jak nastavit až zasílání zpráv, které spojuje aplikace a služby mezi místními i cloudovými prostředí.  Kurzy, videa, reference k rozhraní API a další zdroje informací"
+title: Dokumentace ke službě Azure Service Bus – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+description: Zjistěte, jak nastavit až zasílání zpráv, které spojuje aplikace a služby mezi místními i cloudovými prostředí.  Kurzy, videa, reference k rozhraní API a další zdroje informací
 services: service-bus
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-bus
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/14/2017
 ms.author: carolz
-ms.openlocfilehash: 9651d93f4d29121e561108845ed48558e46e42f5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ce116da6fe3651a4ed50805660ced2c2e5ac61d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="service-bus-documentation"></a>Dokumentace ke službě Service Bus
+# <a name="service-bus-documentation"></a>Dokumentace ke službě Service Bus
 
 Naučte se používat Service Bus a Relay k připojení napříč místními i cloudovými prostředími. Kurzy, videa, reference k rozhraní API a další dokumentace ukazují, jak můžete nastavit zasílání zpráv cloudu mezi aplikacemi a službami.
 

@@ -1,49 +1,49 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace ke službě Azure Data Factory V2 ve verzi Preview"
+title: Dokumentace ke službě Azure Data Factory V2 ve verzi Preview
 metadata:
-  title: "Dokumentace ke službě Azure Data Factory – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-  description: "Naučte se používat službu Data Factory k nastavování automatizovaných datových kanálů do místních a cloudových zdrojů a z nich s cílem přesouvat a zpracovávat data pro analýzu."
+  title: Dokumentace ke službě Azure Data Factory – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+  description: Naučte se používat službu Data Factory k nastavování automatizovaných datových kanálů do místních a cloudových zdrojů a z nich s cílem přesouvat a zpracovávat data pro analýzu.
   services: data-factory
-  author: spelluru
-  manager: jhubbard
+  author: douglaslMS
+  manager: craigg
   ms.service: data-factory
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 09/08/2017
-  ms.author: spelluru
-  ms.openlocfilehash: 0eb34f3b8cd287624e4a8a6930e8cc145d5e8fbb
-  ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+  ms.author: douglasl
+  ms.openlocfilehash: e31500a02bc3470e338f727771eebe887dcc493f
+  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/01/2018
+  ms.lasthandoff: 03/23/2018
 abstract:
-  description: "Naučte se používat cloudovou službu pro integraci dat Data Factory k sestavování služeb úložišť dat, přesouvání a zpracování v automatizovaných datových kanálech. V kurzech a další dokumentaci se naučíte nastavit a spravovat datové kanály a také přesouvat a transformovat data pro analýzu. <p>Momentálně je služba Data Factory V2 ve verzi Preview. Verze V1 je obecně dostupná. Pokud používáte službu Data Factory V1, projděte si <a href=/azure/data-factory/v1/data-factory-introduction>dokumentaci k V1</a>.</p>"
+  description: Naučte se používat cloudovou službu pro integraci dat Data Factory k sestavování služeb úložišť dat, přesouvání a zpracování v automatizovaných datových kanálech. V kurzech a další dokumentaci se naučíte nastavit a spravovat datové kanály a také přesouvat a transformovat data pro analýzu. <p>Momentálně je služba Data Factory V2 ve verzi Preview. Verze V1 je obecně dostupná. Pokud používáte službu Data Factory V1, projděte si <a href=/azure/data-factory/v1/data-factory-introduction>dokumentaci k V1</a>.</p>
   aside:
     image:
       alt: 
       height: 110
       src: media/index/video.png
       width: 250
-    title: "Vizuálně sestavené kanály pro Azure Data Factory V2 (19:31)"
+    title: Vizuálně sestavené kanály pro Azure Data Factory V2 (19:31)
     href: https://azure.microsoft.com/en-us/resources/videos/azure-friday-visually-build-pipelines-for-azure-data-factory-v2
     width: 250
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Naučte se, jak vytvořit datovou továrnu s využitím těchto možností:"
+    text: 'Naučte se, jak vytvořit datovou továrnu s využitím těchto možností:'
   - type: list
     style: icon48
     items:
     - image:
         src: /azure/data-factory/media/index/portal.svg
-      text: "Uživatelské rozhraní Data Factory"
+      text: Uživatelské rozhraní Data Factory
       href: /azure/data-factory/quickstart-create-data-factory-portal
     - image:
         src: /azure/data-factory/media/index/copy-data-tool.png
-      text: "Nástroj pro kopírování dat"
+      text: Nástroj pro kopírování dat
       href: /azure/data-factory/quickstart-create-data-factory-copy-data-tool
     - image:
         src: /azure/data-factory/media/index/logo_powershell.svg
@@ -63,39 +63,39 @@ sections:
       href: /azure/data-factory/quickstart-create-data-factory-rest-api
     - image:
         src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
-      text: "Šablona Resource Manageru"
+      text: Šablona Resource Manageru
       href: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Naučte se, jak vytvořit a monitorovat datovou továrnu:"
+    text: 'Naučte se, jak vytvořit a monitorovat datovou továrnu:'
   - type: list
     style: ordered
     items:
-    - html: "Nasazení balíčků SSIS do – <a href=\"/azure/data-factory/tutorial-create-azure-ssis-runtime-portal\">Uživatelské rozhraní Data Factory</a> | <a href=\"/azure/data-factory/tutorial-deploy-ssis-packages-azure\">Azure PowerShell</a>"
-    - html: "Kopírování dat v cloudu – <a href=\"/azure/data-factory/tutorial-copy-data-tool\">Nástroj pro kopírování dat</a> | <a href=\"/azure/data-factory/tutorial-copy-data-portal\">Uživatelské rozhraní Data Factory</a> | <a href=\"/azure/data-factory/tutorial-copy-data-dot-net\">.NET</a>"
-    - html: "Kopírování místních dat do cloudu – <a href=\"/azure/data-factory/tutorial-hybrid-copy-data-tool\">Nástroj pro kopírování dat | <a href=\"/azure/data-factory/tutorial-hybrid-copy-portal\">Uživatelské rozhraní Data Factory</a> | <a href=\"/azure/data-factory/tutorial-hybrid-copy-powershell\">Azure PowerShell</a>"
-    - html: "Hromadné kopírování dat – <a href=\"/azure/data-factory/tutorial-bulk-copy-portal\">Uživatelské rozhraní Data Factory</a> | <a href=\"/azure/data-factory/tutorial-bulk-copy\">Azure PowerShell</a>"
-    - html: "Přírůstkové kopírování dat – <a href=\"/azure/data-factory/tutorial-incremental-copy-portal\">Uživatelské rozhraní Data Factory</a> | <a href=\"/azure/data-factory/tutorial-incremental-copy-powershell\">Azure PowerShell</a>"
-    - html: "Transformace dat v cloudu s využitím Sparku – <a href=\"/azure/data-factory/tutorial-transform-data-spark-portal\">Uživatelské rozhraní Data Factory</a> | <a href=\"/azure/data-factory/tutorial-transform-data-spark-powershell\">Azure PowerShell</a>"
-    - html: "Transformace dat ve virtuální síti – <a href=\"/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal\">Uživatelské rozhraní Data Factory</a> | <a href=\"/azure/data-factory/tutorial-transform-data-hive-virtual-network\">Azure PowerShell</a>"
-    - html: "Tok řízení – <a href=\"/azure/data-factory/tutorial-control-flow-portal\">Uživatelské rozhraní Data Factory</a> | <a href=\"/azure/data-factory/tutorial-control-flow\">.NET</a>"
-- title: "Ukázky"
+    - html: Nasazení balíčků SSIS do – <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">Uživatelské rozhraní Data Factory</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
+    - html: Kopírování dat v cloudu – <a href="/azure/data-factory/tutorial-copy-data-tool">Nástroj pro kopírování dat</a> | <a href="/azure/data-factory/tutorial-copy-data-portal">Uživatelské rozhraní Data Factory</a> | <a href="/azure/data-factory/tutorial-copy-data-dot-net">.NET</a>
+    - html: Kopírování místních dat do cloudu – <a href="/azure/data-factory/tutorial-hybrid-copy-data-tool">Nástroj pro kopírování dat | <a href="/azure/data-factory/tutorial-hybrid-copy-portal">Uživatelské rozhraní Data Factory</a> | <a href="/azure/data-factory/tutorial-hybrid-copy-powershell">Azure PowerShell</a>
+    - html: Hromadné kopírování dat – <a href="/azure/data-factory/tutorial-bulk-copy-portal">Uživatelské rozhraní Data Factory</a> | <a href="/azure/data-factory/tutorial-bulk-copy">Azure PowerShell</a>
+    - html: Přírůstkové kopírování dat – <a href="/azure/data-factory/tutorial-incremental-copy-portal">Uživatelské rozhraní Data Factory</a> | <a href="/azure/data-factory/tutorial-incremental-copy-powershell">Azure PowerShell</a>
+    - html: Transformace dat v cloudu s využitím Sparku – <a href="/azure/data-factory/tutorial-transform-data-spark-portal">Uživatelské rozhraní Data Factory</a> | <a href="/azure/data-factory/tutorial-transform-data-spark-powershell">Azure PowerShell</a>
+    - html: Transformace dat ve virtuální síti – <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">Uživatelské rozhraní Data Factory</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
+    - html: Tok řízení – <a href="/azure/data-factory/tutorial-control-flow-portal">Uživatelské rozhraní Data Factory</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
+- title: Ukázky
   items:
   - type: paragraph
-    text: "Následující ukázky použijte při práci s Data Factory."
+    text: Následující ukázky použijte při práci s Data Factory.
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="/azure/data-factory/samples-powershell">PowerShell</a>
-- title: "Referenční informace"
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "Příkazový řádek"
+    - title: Příkazový řádek
       html: <p><a href="/powershell/module/azurerm.datafactoryv2/">Azure PowerShell</a></p>
     - title: Jazyky
       html: <p><a href="/dotnet/api/microsoft.azure.management.datafactory">.NET</a></p><p><a href="/python/api/overview/azure/datafactory?view=azure-python">Python</a></p>

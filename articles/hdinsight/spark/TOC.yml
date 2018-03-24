@@ -97,8 +97,6 @@
           href: apache-spark-structured-streaming-overview.md
         - name: Vytvoření vysoce dostupných streamovacích úloh Sparku v YARNu
           href: apache-spark-streaming-high-availability.md
-        - name: Strukturované streamování s využitím Event Hubs
-          href: apache-spark-eventhub-structured-streaming.md
         - name: Strukturované streamování s využitím Kafky
           href: ../hdinsight-apache-kafka-spark-structured-streaming.md
           maintainContext: true
