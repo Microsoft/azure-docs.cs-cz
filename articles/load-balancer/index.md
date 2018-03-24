@@ -1,24 +1,24 @@
 ---
-title: "Dokumentace ke službě Azure Load Balancer – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se používat Load Balancer pro síťový výkon aplikací. Spravujte provoz pro virtuální počítače a cloudové prostředky a také ve virtuálních sítích na více místech."
+title: Dokumentace ke službě Azure Load Balancer – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+description: Naučte se používat Load Balancer pro síťový výkon aplikací. Spravujte provoz pro virtuální počítače a cloudové prostředky a také ve virtuálních sítích na více místech.
 services: load-balancer
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: load-balancer
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 169ca89ccd80e5a70f3e9ab07b3c34358c154be7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4642b0108343b417dc09bbc5978b6a18a58d39a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="load-balancer-documentation"></a>Dokumentace k nástroji pro vyrovnávání zatížení
+# <a name="load-balancer-documentation"></a>Dokumentace k nástroji pro vyrovnávání zatížení
 
 Naučte se konfigurovat Load Balancer k zajištění vysoké dostupnosti a síťového výkonu pro vaše aplikace. Dokumentace ukazuje, jak vyrovnávat zatížení provozu z a do virtuálních počítačů a cloudových prostředků a také ve virtuálních sítích na více místech.
 

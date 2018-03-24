@@ -6,8 +6,6 @@
       href: apache-domain-joined-introduction.md
     - name: Plán pro clustery připojené k doméně
       href: apache-domain-joined-architecture.md
-    - name: Konfigurace prostředí sandboxu připojeného k doméně
-      href: apache-domain-joined-configure.md
     - name: Konfigurace clusterů připojených k doméně s využitím Azure AD DS
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Synchronizace uživatelů Azure AD do clusteru služby HDInsight

@@ -1,24 +1,24 @@
 ---
-title: "Dokumentace ke škálovacím sadám virtuálních počítačů Azure – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se používat škálovací sady virtuálních počítačů k vytváření virtuálních počítačů s Windows nebo Linuxem a automatickým škálováním pro rozsáhlá výpočetní řešení, řešení pro velké objemy dat a kontejnerizovaná řešení."
+title: Dokumentace ke škálovacím sadám virtuálních počítačů Azure – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+description: Naučte se používat škálovací sady virtuálních počítačů k vytváření virtuálních počítačů s Windows nebo Linuxem a automatickým škálováním pro rozsáhlá výpočetní řešení, řešení pro velké objemy dat a kontejnerizovaná řešení.
 services: virtual-machine-scale-sets
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f6c51a605a3fe28fb906e8c35a68a885a46136ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53a6db483ff760c143d98a209e622e1214762ce3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="virtual-machine-scale-sets-documentation"></a>Dokumentace ke škálovacím sadám virtuálních počítačů
+# <a name="virtual-machine-scale-sets-documentation"></a>Dokumentace ke škálovacím sadám virtuálních počítačů
 
 Naučte se používat škálovací sady virtuálních počítačů k nasazení a správě sady identických virtuálních počítačů s Windows nebo Linuxem a automatickým škálováním. V dokumentaci se dozvíte, jak škálovací sady využít k podpoře služeb, které cílí na rozsáhlá výpočetní řešení, řešení pro velké objemy dat a kontejnerizovaná řešení.
 
