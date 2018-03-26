@@ -1,0 +1,21 @@
+- name: Dokumentace k OpenShiftu
+  href: index.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: 'OpenShift: Komunitní šablona'
+      href: 'https://azure.microsoft.com/en-us/resources/templates/openshift-origin-rhel/'
+- name: Kurzy
+  items:
+    - name: Nasazení do virtuálních počítačů Azure
+      href: /azure/virtual-machines/linux/openshift-get-started
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Šablona OpenShift Container
+      href: 'https://github.com/Microsoft/openshift-container-platform'
+    - name: OpenShift Origin
+      href: 'https://docs.openshift.org/latest/getting_started/index.html'
+    - name: Web OpenShift
+      href: 'https://docs.openshift.org/latest/welcome/index.html'

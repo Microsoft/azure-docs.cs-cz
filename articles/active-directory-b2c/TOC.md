@@ -91,7 +91,8 @@
 #### [Složitost hesel](active-directory-b2c-reference-password-complexity-custom.md)
 #### [Změna hesel](active-directory-b2c-reference-password-change-custom.md)
 #### [Povolení možnosti zůstat přihlášeni](active-directory-b2c-reference-kmsi-custom.md)
-### Řešení potíží
+### Řešení potíží a protokoly událostí
+#### [Vytvoření vlastních událostí s využitím Application Insights](active-directory-b2c-custom-guide-eventlogger-appins.md)
 #### [Shromažďování protokolů pomocí Application Insights](active-directory-b2c-troubleshoot-custom.md)
 ## Referenční informace
 ### [Poznámky k verzi](active-directory-b2c-developer-notes-custom.md)

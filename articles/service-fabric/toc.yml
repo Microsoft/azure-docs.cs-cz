@@ -131,6 +131,8 @@
           items:
             - name: Architektura
               href: service-fabric-reliable-actors-platform.md
+            - name: Implementace funkcí na úrovni služby
+              href: service-fabric-reliable-actors-using.md
             - name: Životní cyklus a uvolňování paměti
               href: service-fabric-reliable-actors-lifecycle.md
             - name: Správa stavu
@@ -389,7 +391,15 @@
               href: service-fabric-reliable-services-backup-restore.md
         - name: Sestavení služby s modelem Reliable Actors
           items:
-            - name: Odeslat oznámení
+            - name: Uložení a odebrání stavu objektu actor a přístup k němu
+              href: service-fabric-reliable-actors-access-save-remove-state.md
+            - name: Zobrazení výčtu objektů actor
+              href: service-fabric-reliable-actors-enumerate.md
+            - name: Odstranění objektů actor a jejich stavu
+              href: service-fabric-reliable-actors-delete-actors.md
+            - name: Zálohování a obnovení objektů actor
+              href: service-fabric-reliable-actors-backup-and-restore.md
+            - name: Odeslání oznámení objektů actor
               href: service-fabric-reliable-actors-events.md
             - name: Nastavení časovačů a připomenutí
               href: service-fabric-reliable-actors-timers-reminders.md

@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentace k Azure Databricks ve verzi Preview
+title: Dokumentace k Azure Databricks
 metadata:
-  title: "Dokumentace k Azure Databricks – Kurzy | Dokumentace Microsoftu"
-  description: "Zjistěte, jak používat Azure Databricks, pomocí zde uvedeného Rychlého startu a dalších odkazů. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure."
+  title: Dokumentace k Azure Databricks – Kurzy | Dokumentace Microsoftu
+  description: Zjistěte, jak používat Azure Databricks, pomocí zde uvedeného Rychlého startu a dalších odkazů. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure.
   services: azure-databricks
   author: nitinme
   manager: cgronlun
@@ -11,29 +11,29 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/15/2017
+  ms.date: 03/19/2018
   ms.author: nitinme
-  ms.openlocfilehash: 8bbb8bb020c8c64e11d072729b59074a406a03ca
-  ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+  ms.openlocfilehash: 2c0bbbe6d9799258b983723c5d6980754a9908ae
+  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/17/2018
+  ms.lasthandoff: 03/23/2018
 abstract:
-  description: "Zjistěte, jak používat Azure Databricks, pomocí zde uvedeného Rychlého startu a dalších odkazů. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure. Platforma Databricks je navržená ve spolupráci se zakladateli Apache Spark a díky integraci s Azure poskytuje nastavení jedním kliknutím, zjednodušené pracovní postupy a interaktivní pracovní prostor, který umožňuje spolupráci mezi datovými vědci, odborníky přes data a obchodními analytiky."
+  description: Zjistěte, jak používat Azure Databricks, pomocí zde uvedeného Rychlého startu a dalších odkazů. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure. Platforma Databricks je navržená ve spolupráci se zakladateli Apache Spark a díky integraci s Azure poskytuje nastavení jedním kliknutím, zjednodušené pracovní postupy a interaktivní pracovní prostor, který umožňuje spolupráci mezi datovými vědci, odborníky přes data a obchodními analytiky.
   aside:
     image:
       alt: 
       height: 110
       src: media/index/video.png
       width: 250
-    title: "Seznámení s Azure Databricks (3:38)"
+    title: Seznámení s Azure Databricks (3:38)
     href: https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/
     width: 250
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Zjistěte, jak vytvořit pracovní prostor Azure Databricks a cluster Spark a jak následně spouštět úlohy s použitím:"
+    text: 'Zjistěte, jak vytvořit pracovní prostor Azure Databricks a cluster Spark a jak následně spouštět úlohy s použitím:'
   - type: list
     style: icon48
     items:
@@ -41,17 +41,26 @@ sections:
         src: /azure/azure-databricks/media/index/portal.svg
       text: Azure Portal
       href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
-- title: "Podrobné kurzy"
+    - image:
+        src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
+      text: Šablona Resource Manageru
+      href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Informace o práci s Azure Databricks:"
+    text: 'Informace o práci s Azure Databricks:'
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/azure-databricks/databricks-stream-from-eventhubs\">Streamování dat z Event Hubs s využitím Azure Databricks</a>"
-    - html: "<a href=\"/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services\">Analýza mínění s využitím Azure Databricks a Cognitive Services</a>"
-    - html: "<a href=\"https://go.microsoft.com/fwlink/?linkid=864083\" target=\"_blank\">Import dat ze služby Azure Storage</a>"
-    - hmtl: <a href="https://go.microsoft.com/fwlink/?linkid=864084" target="_blank">Import data from Azure Data Lake Store</a>
-    - html: "<a href=\"https://docs.azuredatabricks.net/user-guide/notebooks/index.html\" target=\"_blank\">Práce s poznámkovými bloky</a>"
-    - html: "<a href=\"https://docs.azuredatabricks.net/user-guide/jobs.html\" target=\"_blank\">Spouštění úloh Spark</a>"
-    - html: "<a href=\"https://docs.azuredatabricks.net/spark/latest/data-sources/index.html\" target=\"_blank\">Použití zdrojů dat Spark</a>"
+    - html: <a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">Extrakce, transformace a načtení dat</a>
+    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Streamování dat z Event Hubs</a>
+    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Analýza mínění s využitím Cognitive Services</a>
+    - html: <a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">Streamování dat z HDInsight Kafka</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: REST
+      html: <p><a href="/rest/api/databricks">REST API</a></p>

@@ -1,0 +1,33 @@
+- name: Dokumentace k Dockeru
+  href: index.md
+- name: Rychlý start
+  expanded: true
+  items:
+    - name: Šablona Marketplace pro Docker
+      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS'
+- name: Kurzy
+  items:
+    - name: Webová aplikace v Pythonu s Dockerem a PostgreSQL
+      href: /azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app
+    - name: Průběžná integrace a doručování s využitím Dockeru Swarm a VSTS
+      href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
+    - name: 'Průběžná integrace a doručování s využitím Dockeru, Jenkinse a Linuxu'
+      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+- name: Návody
+  items:
+    - name: Rozšíření Docker VM
+      href: /azure/virtual-machines/linux/dockerextension
+    - name: Docker Machine
+      href: /azure/virtual-machines/linux/docker-machine
+    - name: Registr kontejneru Dockeru
+      href: /azure/container-registry/container-registry-get-started-portal
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Ovladač Dockeru pro Azure
+      href: 'https://docs.docker.com/machine/drivers/azure/'
+    - name: Web Dockeru pro Azure
+      href: 'https://www.docker.com/docker-azure'
+    - name: Web Dockeru
+      href: 'https://docker.com'

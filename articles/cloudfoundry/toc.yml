@@ -1,0 +1,27 @@
+- name: Dokumentace ke Cloud Foundry
+  href: index.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Šablona Marketplace
+      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
+- name: Kurzy
+  items:
+    - name: Nasazení aplikace CF do Azure
+      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+    - name: CloudFoundry v Azure
+      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+    - name: Nasazení CF OMS Nozzle
+      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Web Cloud Foundry
+      href: 'https://docs.cloudfoundry.org/'
+    - name: Instalace CF v Azure
+      href: 'https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html'
+    - name: Pivotal a Azure
+      href: 'https://pivotal.io/partners/microsoft'
+    - name: Plug-in VSTS pro CF
+      href: 'https://github.com/Microsoft/vsts-cloudfoundry'

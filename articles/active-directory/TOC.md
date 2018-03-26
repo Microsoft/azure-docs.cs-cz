@@ -77,7 +77,8 @@
 ## [Správa skupin a členů](active-directory-manage-groups.md)
 ### Správa skupin
 #### [Azure Portal](active-directory-groups-create-azure-portal.md)
-#### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure PowerShell – model Azure Resource Manageru](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure PowerShell – model nasazení Classic](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### [Správa členů skupin](active-directory-groups-members-azure-portal.md)
 ### [Správa vlastníků skupin](active-directory-accessmanagement-managing-group-owners.md)
 ### [Správa členství ve skupinách](active-directory-groups-membership-azure-portal.md)
@@ -94,9 +95,8 @@
 ### [Zobrazení všech skupin](active-directory-groups-view-azure-portal.md)
 ### [Přidání skupiny k aplikacím SaaS](active-directory-accessmanagement-group-saasapps.md)
 ### [Obnovení odstraněné skupiny Office 365](active-directory-groups-restore-azure-portal.md)
-### Správa nastavení skupin
-#### [Azure Portal](active-directory-groups-settings-azure-portal.md)
-#### [Rutiny](active-directory-accessmanagement-groups-settings-cmdlets.md)
+### [Správa nastavení skupin](active-directory-groups-settings-azure-portal.md)
+
 ### Vytváření rozšířených pravidel
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
 ### [Vytvoření samoobslužných skupin](active-directory-accessmanagement-self-service-group-management.md)
@@ -215,12 +215,12 @@
 ##### [Vlastní domovská stránka](application-proxy-office365-app-launcher.md)
 ##### [Převod vložených odkazů](application-proxy-link-translation.md)
 ##### [Aplikace se zástupnými znaky](active-directory-application-proxy-wildcard.md)
-
+##### [Proxy aplikací služby Azure AD a Qlik Sense](active-directory-application-proxy-qlik.md) 
 #### Názorné postupy publikování
 ##### [Vzdálená plocha](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
-#### [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)
+#### [PowerShell](https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
 #### [Řešení problémů](active-directory-application-proxy-troubleshoot.md)
 
 

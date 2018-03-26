@@ -7,7 +7,7 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Upozornění na podmínku metriky
+    - name: Upozornění (Classic) na podmínku metriky
       href: monitor-quick-resource-metric-alert-portal.md
     - name: Upozornění na aktivitu předplatného
       href: monitor-quick-audit-notify-action-in-subscription.md
@@ -21,66 +21,45 @@
   items:
     - name: Zdroje dat monitorování
       href: monitoring-data-sources.md
+    - name: Azure Monitor
+      href: monitoring-overview-azure-monitor.md
+    - name: Metriky
+      href: monitoring-overview-metrics.md
+    - name: Automatické škálování
+      href: monitoring-overview-autoscale.md
+    - name: Diagnostické protokoly
+      href: monitoring-overview-of-diagnostic-logs.md
+    - name: Protokol aktivit
+      href: monitoring-overview-activity-logs.md
+    - name: Výstrahy
+      href: monitoring-overview-unified-alerts.md
+    - name: Upozornění (Classic)
+      href: monitoring-overview-alerts.md
+    - name: Výstrahy protokolu
+      href: monitor-alerts-unified-log.md
+    - name: Upozornění protokolu aktivit (Preview)
+      href: monitoring-activity-log-alerts-new-experience.md
+    - name: Rozšíření upozornění z OMS do Azure
+      href: monitoring-alerts-extend.md
+    - name: Skupiny akcí
+      href: monitoring-action-groups.md
+    - name: Rozšíření Azure Diagnostics
+      href: azure-diagnostics.md
     - name: Zabezpečení a oprávnění rolí
       href: monitoring-roles-permissions-security.md
     - name: Integrace partnerů
       href: monitoring-partners.md
-    - name: Další přehledy
-      items:
-        - name: Azure Monitor
-          href: monitoring-overview-azure-monitor.md
-        - name: Metriky
-          href: monitoring-overview-metrics.md
-        - name: Výstrahy
-          href: monitoring-overview-alerts.md
-        - name: Upozornění (Preview)
-          href: monitoring-overview-unified-alerts.md
-        - name: Výstrahy protokolu
-          href: monitor-alerts-unified-log.md
-        - name: Automatické škálování
-          href: monitoring-overview-autoscale.md
-        - name: Protokol aktivit
-          href: monitoring-overview-activity-logs.md
-        - name: Upozornění protokolu aktivit (Preview)
-          href: monitoring-activity-log-alerts-new-experience.md
-        - name: Skupiny akcí
-          href: monitoring-action-groups.md
-        - name: Diagnostické protokoly
-          href: monitoring-overview-of-diagnostic-logs.md
-        - name: Rozšíření Azure Diagnostics
-          href: azure-diagnostics.md
-    - name: Schémata
-      items:
-        - name: Schéma rozšíření Azure Diagnostics
-          href: azure-diagnostics-schema.md
-          items:
-            - name: 1
-              href: azure-diagnostics-schema-1dot0.md
-            - name: 1.2
-              href: azure-diagnostics-schema-1dot2.md
-            - name: 1.3 a novější
-              href: azure-diagnostics-schema-1dot3-and-later.md
 - name: Návody
   items:
-    - name: Názorné postupy
-      items:
-        - name: Principy Azure Monitoru
-          href: monitoring-get-started.md
-        - name: Principy automatického škálování
-          href: monitoring-autoscale-get-started.md
-        - name: Průzkumník vícedimenzionálních metrik
-          href: monitoring-metric-charts.md
-        - name: Ukázky Azure CLI 1.0
-          href: insights-cli-samples.md
-        - name: Ukázky Azure PowerShellu
-          href: insights-powershell-samples.md
+    - name: Principy Azure Monitoru
+      href: monitoring-get-started.md
     - name: Použití výstrah
       items:
-        - name: Konfigurace upozornění téměř v reálném čase na webu Azure Portal
+        - name: Konfigurace nových upozornění na webu Azure Portal
           href: monitoring-near-real-time-metric-alerts.md
-        - name: Konfigurace upozornění na webu Azure Portal
+        - name: Konfigurace klasických upozornění na webu Azure Portal
           href: insights-alerts-portal.md
-        - name: Konfigurace výstrah protokolu nebo metriky v upozorněních (Preview) na webu Azure Portal
+        - name: Konfigurace upozornění protokolů nebo metrik na webu Azure Portal
           href: monitor-alerts-unified-usage.md
         - name: Konfigurace upozornění pomocí rozhraní příkazového řádku
           href: insights-alerts-command-line-interface.md
@@ -90,8 +69,12 @@
           href: monitor-alerts-unified-log-webhook.md
         - name: Vytvoření upozornění na metriku pomocí šablony Resource Manageru
           href: monitoring-enable-alerts-using-template.md
+        - name: Zahájení rozšiřování upozornění z OMS do Azure
+          href: monitoring-alerts-extend-tool.md
     - name: Použití automatického škálování
       items:
+        - name: Principy automatického škálování
+          href: monitoring-autoscale-get-started.md
         - name: Vysvětlení nastavení automatického škálování
           href: monitoring-understanding-autoscale-settings.md
         - name: Osvědčené postupy
@@ -151,10 +134,6 @@
         - name: Povolení diagnostických nastavení pomocí šablon Resource Manageru
           href: monitoring-enable-diagnostic-logs-using-template.md
     - name: Použití rozhraní REST API
-      items:
-        - name: Názorný postup s použitím REST API
-          href: monitoring-rest-api-walkthrough.md
-    - name: Použití rozšíření diagnostiky Azure
       items:
         - name: Odeslání do Application Insights
           href: azure-diagnostics-configure-application-insights.md

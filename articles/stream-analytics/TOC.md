@@ -41,6 +41,7 @@
 ### [Analýza subjektivního hodnocení na Twitteru](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [Zjišťování možných podvodů v reálném čase](stream-analytics-real-time-fraud-detection.md)
 ### [Spouštění úloh ve službě IoT Edge](stream-analytics-edge.md) 
+### [Analýza dat snímačů z mýtných bran](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
 ### [Spuštění UDA JavaScriptu](stream-analytics-javascript-user-defined-aggregates.md)
 ### [Vysokofrekvenční obchodování](stream-analytics-high-frequency-trading.md)
 ### [Spuštění Azure Functions](stream-analytics-with-azure-functions.md)

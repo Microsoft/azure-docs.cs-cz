@@ -18,6 +18,7 @@
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Historie verzí služby Azure AD Connect Health](active-directory-aadconnect-health-version-history.md)
+## [Katalog upozornění služby Azure AD Connect Health](active-directory-aadconnect-health-alert-catalog.md)
 ## [Dodržování předpisů GDPR a Azure AD Connect Health](active-directory-aadconnect-health-gdpr.md)
 
 # Související
