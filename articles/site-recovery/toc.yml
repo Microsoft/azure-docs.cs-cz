@@ -103,6 +103,8 @@
               href: hyper-v-vmm-architecture.md
     - name: Zotavení po havárii pro aplikace
       href: site-recovery-workload.md
+    - name: Plány obnovení
+      href: recovery-plan-overview.md
     - name: Informace o migraci
       href: migrate-overview.md
     - name: Řízení přístupu na základě role s využitím Site Recovery
@@ -273,6 +275,12 @@
           items:
             - name: Spuštění postupu zotavení po havárii do Azure
               href: site-recovery-test-failover-to-azure.md
+            - name: Nastavení plánů obnovení
+              href: site-recovery-create-recovery-plans.md
+            - name: Přidání skriptů VMM do plánů obnovení
+              href: hyper-v-vmm-recovery-script.md
+            - name: Přidání runbooků Azure do plánů obnovení
+              href: site-recovery-runbook-automation.md
             - name: Spuštění převzetí služeb při selhání do Azure
               href: site-recovery-failover.md
             - name: Navrácení služeb po obnovení z Azure na Hyper-V

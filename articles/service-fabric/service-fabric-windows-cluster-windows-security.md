@@ -1,11 +1,11 @@
 ---
-title: "Zabezpečení clusteru se systémem Windows pomocí zabezpečení systému Windows | Microsoft Docs"
-description: "Naučte se konfigurovat – uzly a klientský uzel zabezpečení v samostatné clusteru se systémem Windows pomocí zabezpečení systému Windows."
+title: Zabezpečení clusteru se systémem Windows pomocí zabezpečení systému Windows | Microsoft Docs
+description: Naučte se konfigurovat – uzly a klientský uzel zabezpečení v samostatné clusteru se systémem Windows pomocí zabezpečení systému Windows.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ce3bf686-ffc4-452f-b15a-3c812aa9e672
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: e093a631b0cf81195981a8e3d345504ebce02723
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4eac453ad866910839088892de457c2cec48791c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Zabezpečení samostatné clusteru v systému Windows pomocí zabezpečení systému Windows
 K zabránění neoprávněného přístupu k cluster Service Fabric, je nutné zabezpečit clusteru. Zabezpečení je zvlášť důležité při spuštění úlohy v produkčním prostředí clusteru. Tento článek popisuje, jak nakonfigurovat zabezpečení – uzly a uzlu klientů pomocí zabezpečení systému Windows v *souboru ClusterConfig.JSON* souboru.  Proces odpovídá krok konfigurace zabezpečení [vytvořit samostatnou clusteru se systémem Windows](service-fabric-cluster-creation-for-windows-server.md). Další informace o tom, jak Service Fabric používá zabezpečení systému Windows najdete v tématu [clusteru scénáře zabezpečení](service-fabric-cluster-security.md).
@@ -32,10 +32,12 @@ K zabránění neoprávněného přístupu k cluster Service Fabric, je nutné z
 Ukázka *ClusterConfig.gMSA.Windows.MultiMachine.JSON* konfigurační soubor stažené společně se sadou [Microsoft.Azure.ServiceFabric.WindowsServer.<version>. ZIP](http://go.microsoft.com/fwlink/?LinkId=730690) samostatný cluster balíček obsahuje šablony pro konfiguraci zabezpečení systému Windows pomocí [skupinový účet spravované služby (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
 
 ```  
-"security": {  
+"security": {
+            "ClusterCredentialType": "Windows",
+            "ServerCredentialType": "Windows",
             "WindowsIdentities": {  
-                "ClustergMSAIdentity": "accountname@fqdn"  
-                "ClusterSPN": "fqdn"  
+                "ClustergMSAIdentity": "[gMSA Identity]", 
+                "ClusterSPN": "[Registered SPN for the gMSA account]",
                 "ClientIdentities": [  
                     {  
                         "Identity": "domain\\username",  
@@ -45,16 +47,18 @@ Ukázka *ClusterConfig.gMSA.Windows.MultiMachine.JSON* konfigurační soubor sta
             }  
         }  
 ```  
-  
-| **Nastavení konfigurace** | **Popis** |  
-| --- | --- |  
+
+| **Nastavení konfigurace** | **Popis** |
+| --- | --- |
+| ClusterCredentialType |Nastavte na *Windows* povolit zabezpečení systému Windows pro komunikaci mezi uzly.  | 
+| ServerCredentialType |Nastavte na *Windows* povolit zabezpečení systému Windows pro komunikaci klienta uzlu. |  
 | WindowsIdentities |Obsahuje identity clusteru a klientů. |  
 | ClustergMSAIdentity |Nakonfiguruje zabezpečení mezi uzly. Skupinu účet spravované služby. |  
-| ClusterSPN |Plně kvalifikované domény hlavního názvu služby pro účet gMSA|  
-| ClientIdentities |Nakonfiguruje klienta uzel zabezpečení. Pole klienta uživatelské účty. |  
-| Identita |Je identita klienta, uživatel domény. |  
-| IsAdmin |Hodnota TRUE určí, že uživatele domény má přístup správce klienta, hodnotu false pro klientský přístup uživatele. |  
-  
+| ClusterSPN |Registrovaný název SPN pro účet gMSA|  
+| ClientIdentities |Nakonfiguruje klienta uzel zabezpečení. Pole klienta uživatelské účty. | 
+| Identita |Přidejte uživatele domény, doména\uživatelské jméno pro identitu klienta. |  
+| IsAdmin |Nastavte na hodnotu true, chcete-li určit, zda má uživatel domény přístup správce klienta, nebo hodnotu NEPRAVDA pro klientský přístup uživatele. |  
+
 [Uzel zabezpečení uzlu](service-fabric-cluster-security.md#node-to-node-security) je nakonfigurované nastavením **ClustergMSAIdentity** když service fabric potřebuje pro spuštění pod gMSA. Chcete-li vytvořit vztahy důvěryhodnosti mezi uzly, se musí být provedeny vědět navzájem. Můžete to provést dvěma způsoby: Skupinový účet spravované služby zahrnující všechny uzly v clusteru nebo zadejte skupinu domény počítače, který obsahuje všechny uzly v clusteru. Důrazně doporučujeme pomocí [skupinový účet spravované služby (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) přístup, zejména pro větší clustery (víc než 10 uzlů) nebo pro clustery, které by mohly zvětšení nebo zmenšení.  
 Tento přístup nevyžaduje vytváření skupiny domény, na který byla udělena Správce clusterů přístupová práva k přidání a odebrání členů. Tyto účty jsou také užitečná pro automatickou správu hesel. Další informace najdete v tématu [Začínáme s skupinové účty spravované služby](http://technet.microsoft.com/library/jj128431.aspx).  
  
@@ -63,10 +67,12 @@ Tento přístup nevyžaduje vytváření skupiny domény, na který byla udělen
 Následující příklad **zabezpečení** části nakonfiguruje zabezpečení systému Windows pomocí gMSA a určuje, že počítače v *ServiceFabric.clusterA.contoso.com* gMSA jsou součástí clusteru a že *CONTOSO\usera* má klient přístup správce:  
   
 ```  
-"security": {  
+"security": {
+    "ClusterCredentialType": "Windows",            
+    "ServerCredentialType": "Windows",
     "WindowsIdentities": {  
         "ClustergMSAIdentity" : "ServiceFabric.clusterA.contoso.com",  
-        "ClusterSPN" : "clusterA.contoso.com",  
+        "ClusterSPN" : "http/servicefabric/clusterA.contoso.com",  
         "ClientIdentities": [{  
             "Identity": "CONTOSO\\usera",  
             "IsAdmin": true  
@@ -76,7 +82,7 @@ Následující příklad **zabezpečení** části nakonfiguruje zabezpečení s
 ```  
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Konfigurace zabezpečení systému Windows ve skupině počítač  
-Ukázka *ClusterConfig.Windows.MultiMachine.JSON* konfigurační soubor stažené společně se sadou [Microsoft.Azure.ServiceFabric.WindowsServer.<version>. ZIP](http://go.microsoft.com/fwlink/?LinkId=730690) samostatný cluster balíček obsahuje šablony pro konfiguraci zabezpečení systému Windows.  Zabezpečení systému Windows je nakonfigurovaný v **vlastnosti** části: 
+Tento model je zastaralá. Doporučuje se pro používání gMSA podle popisu výše. Ukázka *ClusterConfig.Windows.MultiMachine.JSON* konfigurační soubor stažené společně se sadou [Microsoft.Azure.ServiceFabric.WindowsServer.<version>. ZIP](http://go.microsoft.com/fwlink/?LinkId=730690) samostatný cluster balíček obsahuje šablony pro konfiguraci zabezpečení systému Windows.  Zabezpečení systému Windows je nakonfigurovaný v **vlastnosti** části: 
 
 ```
 "security": {
@@ -94,8 +100,8 @@ Ukázka *ClusterConfig.Windows.MultiMachine.JSON* konfigurační soubor stažen�
 
 | **Nastavení konfigurace** | **Popis** |
 | --- | --- |
-| ClusterCredentialType |**ClusterCredentialType** je nastaven na *Windows* Pokud ClusterIdentity Určuje název skupiny počítače Active Directory. |  
-| ServerCredentialType |Nastavte na *Windows* povolení zabezpečení systému Windows pro klienty.<br /><br />To znamená, že klienti clusteru a samotného clusteru běží v rámci domény služby Active Directory. |  
+| ClusterCredentialType |Nastavte na *Windows* povolit zabezpečení systému Windows pro komunikaci mezi uzly.  | 
+| ServerCredentialType |Nastavte na *Windows* povolit zabezpečení systému Windows pro komunikaci klienta uzlu. |  
 | WindowsIdentities |Obsahuje identity clusteru a klientů. |  
 | ClusterIdentity |Název skupiny počítače, domain\machinegroup, slouží ke konfiguraci zabezpečení mezi uzly. |  
 | ClientIdentities |Nakonfiguruje klienta uzel zabezpečení. Pole klienta uživatelské účty. |  
@@ -132,7 +138,7 @@ Následující příklad **zabezpečení** části nakonfiguruje zabezpečení s
 >
 >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Po dokončení konfigurace zabezpečení systému Windows v *souboru ClusterConfig.JSON* souboru, pokračovat v procesu vytváření clusteru [vytvořit samostatnou clusteru se systémem Windows](service-fabric-cluster-creation-for-windows-server.md).
 
 Další informace o tom, jak-uzly zabezpečení, klientský uzel zabezpečení a řízení přístupu na základě rolí, najdete v tématu [clusteru scénáře zabezpečení](service-fabric-cluster-security.md).

@@ -74,7 +74,9 @@
 ## [REST](/rest/api/cdn/)
 
 # Zdroje a prostředky
-## [Lokality POP v Azure CDN](cdn-pop-locations.md)
+## Lokality POP v Azure CDN
+### [Lokality POP podle oblastí](cdn-pop-locations.md)
+### [Lokality POP podle zkratek](cdn-pop-abbreviations.md)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
 ## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
 ## [Ceny](https://azure.microsoft.com/pricing/details/cdn/)

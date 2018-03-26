@@ -56,7 +56,10 @@
 #### [Různé modely nasazení, stejné předplatné](create-peering-different-deployment-models.md)
 #### [Různé modely nasazení, různá předplatná](create-peering-different-deployment-models-subscriptions.md)
 
-### [Koncové body služby virtuální sítě](virtual-network-service-endpoints-configure.md)
+### Koncové body služby virtuální sítě
+#### [Azure Portal](tutorial-restrict-network-access-to-resources.md)
+#### [Azure PowerShell](tutorial-restrict-network-access-to-resources-powershell.md)
+#### [Azure CLI](tutorial-restrict-network-access-to-resources-cli.md)
 
 ### Virtuální počítače
 #### [Propustnost sítě virtuálních počítačů](virtual-machine-network-throughput.md)
@@ -176,8 +179,12 @@
 ### [Problémy propojení virtuálních počítačů](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
 ### [Konfigurace PTR pro kontrolu bannerů protokolu SMTP](create-ptr-for-smtp-service.md)
 
+## Ukázkové skripty
+### [Azure CLI](cli-samples.md)
+### [Azure PowerShell](powershell-samples.md)
+
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=virtual-network)
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.network)
 ## [Azure PowerShell (Classic)](/powershell/module/azure/)
 ## [Azure CLI](/cli/azure/network)

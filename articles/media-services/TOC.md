@@ -236,6 +236,7 @@
 ## [REST](/rest/api/media/mediaservice)
 ## Specifikace
 ### [Živé ingestování – specifikace živého ingestování fragmentovaného MP4](media-services-fmp4-live-ingest-overview.md)
+### [Živé ingestování – signalizace časovaných metadat v živém streamování](media-services-specifications-live-timed-metadata.md)
 ### [Smooth Streaming HEVC](media-services-specifications-ms-sstr-ammendment-hevc.md)
 
 # Zdroje a prostředky

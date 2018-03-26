@@ -19,6 +19,8 @@
       items:
         - name: SSMS
           href: sql-database-connect-query-ssms.md
+        - name: SQL Operations Studio
+          href: 'https://docs.microsoft.com/sql/sql-operations-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json'
         - name: Azure Portal
           href: sql-database-connect-query-portal.md
         - name: VS Code
@@ -101,8 +103,10 @@
           href: sql-database-manage-logins.md
         - name: Vícefaktorové ověřování
           href: sql-database-ssms-mfa-authentication.md
-        - name: Auditování
+        - name: Auditování – SQL Database
           href: sql-database-auditing.md
+        - name: Auditování – spravovaná instance
+          href: sql-database-managed-instance-auditing.md
         - name: Detekce hrozeb – SQL Database
           href: sql-database-threat-detection.md
         - name: Detekce hrozeb – MI

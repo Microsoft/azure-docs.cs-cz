@@ -77,11 +77,15 @@
           href: search-performance-optimization.md
     - name: Zabezpečení
       items:
-        - name: Zabezpečení dat a provozní zabezpečení
+        - name: Přehled zabezpečení
           href: search-security-overview.md
-        - name: Zabezpečení pomocí filtrů identity
+        - name: Správa klíčů služeb
+          href: search-security-api-keys.md
+        - name: Přístup správce na základě role
+          href: search-security-rbac.md
+        - name: Filtry zabezpečení
           href: search-security-trimming-for-azure-search.md
-        - name: Zabezpečení pomocí služby Active Directory
+        - name: Filtry na identity AAD
           href: search-security-trimming-for-azure-search-with-aad.md
     - name: Vývoj
       items:

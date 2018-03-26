@@ -1,0 +1,25 @@
+- name: Dokumentace k Chefu
+  href: index.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: 'Automatizace: Šablona Rychlý start'
+      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview'
+- name: Kurzy
+  items:
+    - name: Automatizace virtuálních počítačů
+      href: /azure/virtual-machines/windows/chef-automation
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 'Blog: VSTS a Chef'
+      href: 'https://blog.chef.io/2017/05/10/integrate-chef-into-your-build-and-release-pipelines-with-microsoft-visual-studio-team-services/'
+    - name: Chef a Azure PS
+      href: 'https://docs.microsoft.com/powershell/module/azure/get-azurevmchefextension?view=azuresmps-4.0.0'
+    - name: Chef a VSTS
+      href: 'https://github.com/chef-partners/vsts-chef/wiki/Getting-Started'
+    - name: Web Chefu
+      href: 'https://www.chef.io'
+    - name: 'Video: Chef a VSTS'
+      href: 'https://channel9.msdn.com/Events/TechDaysOnline/UK-TechDays-Online-2016/Release-Management-with-VSTS--integration-with-Azure--Chef-Deployment'

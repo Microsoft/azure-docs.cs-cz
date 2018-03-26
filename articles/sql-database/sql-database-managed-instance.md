@@ -1,6 +1,6 @@
 ---
-title: "Databáze Azure SQL spravované Instance přehled | Microsoft Docs"
-description: "Toto téma popisuje spravované Instance databáze Azure SQL a vysvětluje, jak to funguje a jak se liší od jedné databáze ve službě Azure SQL Database."
+title: Databáze Azure SQL spravované Instance přehled | Microsoft Docs
+description: Toto téma popisuje spravované Instance databáze Azure SQL a vysvětluje, jak to funguje a jak se liší od jedné databáze ve službě Azure SQL Database.
 services: sql-database
 author: bonova
 ms.reviewer: carlrab
@@ -8,17 +8,17 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/21/2018
 ms.author: bonova
-ms.openlocfilehash: bc9c16462f28d129efa8c47183c6325e69bb64f3
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: e13583e0364b01c3a4560d88882eb1dcf82b8c99
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Instance spravované (preview)?
 
-SQL databáze spravované Instance Azure (preview) je nová funkce Azure SQL Database, poskytuje téměř 100 % kompatibilitu s systému SQL Server – místní, poskytuje nativní [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md) implementace, které řeší běžné otázky zabezpečení a [modelu business](https://azure.microsoft.com/pricing/details/sql-database/) uspokojivým pro zákazníky, místní systém SQL Server. Spravované Instance umožňuje stávající zákazníky služby SQL Server a navýšení posunutí své místní aplikace do cloudu s minimálními změnami aplikace a databáze. Ve stejnou dobu spravované Instance uchovává všechny možnosti PaaS (Automatické aktualizace použití dílčích oprav a verze, zálohování, vysokou dostupnost), které výrazně snižuje správní režii a celkové náklady na vlastnictví.
+SQL databáze spravované Instance Azure (preview) je nová funkce Azure SQL Database, poskytuje téměř 100 % kompatibilitu s systému SQL Server na místní (Enterprise Edition), poskytuje nativní [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md) implementace, které řeší běžné otázky zabezpečení a [modelu business](https://azure.microsoft.com/pricing/details/sql-database/) uspokojivým pro zákazníky, místní systém SQL Server. Spravované Instance umožňuje stávající zákazníky služby SQL Server a navýšení posunutí své místní aplikace do cloudu s minimálními změnami aplikace a databáze. Ve stejnou dobu spravované Instance uchovává všechny možnosti PaaS (Automatické aktualizace použití dílčích oprav a verze, zálohování, vysokou dostupnost), které výrazně snižuje správní režii a celkové náklady na vlastnictví.
 
 > [!IMPORTANT]
 > Seznam oblastí, ve kterých spravované Instance je aktuálně k dispozici, najdete v části [migrace databáze do plně spravovaná služba s Azure SQL Database spravované Instance](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
@@ -58,6 +58,9 @@ Následující tabulka uvádí několik vlastností, přístupný prostřednictv
 
 ## <a name="key-features-and-capabilities-of-a-managed-instance"></a>Klíčové funkce a možnosti spravované instance 
 
+> [!IMPORTANT]
+> Do spravované Instance, spustí se všechny funkce nejnovější verzi systému SQL Server, včetně online operace, automatické plán opravy a dalších vylepšení výkonu enterprise. 
+
 | **Výhody PaaS** | **Kontinuita podnikových procesů** |
 | --- | --- |
 |Žádné nákup hardwaru a správy <br>Žádné správu režie pro správu základní infrastruktury <br>Rychlé zřizování a škálování služby <br>Automatizované opravy a verze upgradu <br>Integrace s jinými službami PaaS dat |99,99 % dostupnost SLA  <br>Integrovanou vysokou dostupnost <br>Data chráněná pomocí automatizované zálohování <br>Období konfigurovat uchovávání záloh zákazníků (fixed do 7 dnů ve verzi Public Preview) <br>Uživatel spustil zálohování <br>Obnovení bodu v databázi čas schopností |
@@ -90,6 +93,7 @@ Následující část popisuje klíčové funkce vrstvy služby s obecné účel
 | Verze systému SQL Server / sestavení | SQL Server nejnovější (k dispozici) |
 | Minimální velikost úložiště | 32 GB |
 | Maximální velikost úložiště | 8 TB |
+| Maximální počet úložiště na databázi | 4 TB |
 | Očekávaný úložiště IOPS | 500-7500 IOPS na datový soubor (závisí na datový soubor). V tématu [Storage úrovně Premium](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) |
 | Počet datových souborů (řádky) na databázi | Několik | 
 | Počet souborů protokolu (protokol) na databázi | 1 | 
@@ -120,7 +124,7 @@ Následující diagram popisuje izolace návrhu:
 
 ### <a name="auditing-for-compliance-and-security"></a>Auditování dodržování předpisů a zabezpečení 
 
-Spravované Instance [auditování](sql-database-auditing.md) sleduje události databáze a zapisuje je do auditu přihlášení účtu úložiště Azure. Audit může pomoct zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které by mohly být známkou problémů obchodního charakteru nebo by mohly vzbuzovat podezření narušení zabezpečení. 
+[Spravovat auditování Instance](sql-database-managed-instance-auditing.md) sleduje události databáze a zapisuje je do auditu přihlášení účtu úložiště Azure. Audit může pomoct zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které by mohly být známkou problémů obchodního charakteru nebo by mohly vzbuzovat podezření narušení zabezpečení. 
 
 ### <a name="data-encryption-in-motion"></a>Šifrování přenášených dat 
 
@@ -138,7 +142,7 @@ Databáze SQL [dynamická data maskování](/sql/relational-databases/security/d
 
 ### <a name="threat-detection"></a>Detekce hrozeb 
 
-Azure SQL Database [detekce hrozeb](sql-database-threat-detection.md) doplňuje auditování, tím, že poskytuje další vrstvu zabezpečení intelligence integrovaná služba, která upozorní na neobvyklé a potenciálně škodlivé pokusy přístup nebo využívat databáze. Jsou výstrahy o podezřelých aktivit, potenciální ohrožení zabezpečení a útoky prostřednictvím injektáže SQL, a také nezvyklé databázové přístupové vzorce. Můžete prohlížet výstrah o zjištěných hrozbách [Azure Security Center](https://azure.microsoft.com/services/security-center/) a zadejte podrobnosti podezřelých aktivit a doporučujeme akce o tom, jak prozkoumat a zmírnit riziko.  
+[Spravované Instance detekce hrozeb](sql-database-managed-instance-threat-detection.md) doplňuje [spravované Instance auditování](sql-database-managed-instance-auditing.md) tím, že poskytuje další vrstvu zabezpečení intelligence integrovaná služba, která zjistí neobvyklou a potenciálně škodlivé pokusy o přístup nebo zneužití databází. Jsou výstrahy o podezřelých aktivit, potenciální ohrožení zabezpečení a útoky prostřednictvím injektáže SQL, a také nezvyklé databázové přístupové vzorce. Můžete prohlížet výstrah o zjištěných hrozbách [Azure Security Center](https://azure.microsoft.com/services/security-center/) a zadejte podrobnosti podezřelých aktivit a doporučujeme akce o tom, jak prozkoumat a zmírnit riziko.  
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integrace s Azure Active Directory a vícefaktorové ověřování 
 
@@ -197,4 +201,4 @@ Spravované Instance povolení správce systému a zaměřit se na čem nejvíc 
 
 - Pro funkce a porovnání seznamu, najdete v části [společné funkce SQL](sql-database-features.md).
 - Kurz, který vytvoří instanci spravované a obnoví databázi ze záložního souboru, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md).
-- Kurz pomocí služby pro migraci databáze Azure (DMS) pro migraci, najdete v části [spravované Instance migraci pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).
+- Kurz migrace pomocí Azure Database Migration Service (DMS) najdete v tématu věnovaném [migraci Managed Instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).

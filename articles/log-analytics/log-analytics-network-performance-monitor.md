@@ -1,11 +1,11 @@
 ---
-title: "Síťová řešení pro sledování výkonu v Azure | Microsoft Docs"
-description: "Sledování výkonu v Azure sítě vám pomůže s monitorováním výkonu vaší sítě-in téměř skutečné čas – chcete zjišťovat a vyhledejte kritická místa výkonu sítě."
+title: Síťová řešení pro sledování výkonu v Azure | Microsoft Docs
+description: Sledování výkonu v Azure sítě vám pomůže s monitorováním výkonu vaší sítě-in téměř skutečné čas – chcete zjišťovat a vyhledejte kritická místa výkonu sítě.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: abshamsft
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 399fe552d5c7d9a96cdabc2a1dfafe99635d4a61
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 90fd9b09f90d5b209e0eb8cc6996ef7fb1e7e0b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Síťová řešení pro sledování výkonu v Azure
 
@@ -38,6 +38,8 @@ NPM nabízí tři obecné možnosti:
 Tato funkce slouží k provádění http, HTTPS, TCP a ICMP na základě testy ke sledování v téměř v reálném čase nebo v minulosti dostupnosti a doba odezvy služby a příspěvku sítě v ztráta paketů a latence. S mapy topologie sítě můžete izolovat zpomalení sítě tím, že určíte body problém, ke kterým došlo v síťové cestě z uzlu službu s data latence jednotlivých směrování. Pomocí předdefinovaných testů monitorování síťové připojení k Office 365 a Dynamics CRM bez jakékoli předběžné konfigurace. Díky této funkci můžete sledovat síťové připojení k žádný TCP podporující koncový bod, jako jsou například weby, SaaS, PaaS aplikace, databáze SQL, atd.  
 
 [Monitorování ExpressRoute](log-analytics-network-performance-monitor-expressroute.md): sledování začátku do konce připojení a výkonu mezi pobočkami a Azure, přes Azure ExpressRoute.  
+
+Další informace o různých možnostech nepodporuje [sledování výkonu sítě](https://docs.microsoft.com/azure/networking/network-monitoring-overview) je k dispozici online.
  
 
 ## <a name="set-up-and-configure"></a>Nastavení a konfigurace

@@ -7,28 +7,31 @@
 ## [Delegování DNS s využitím Azure DNS](dns-domain-delegation.md)
 ## [Nejčastější dotazy k DNS](dns-faq.md)
 ## [Použití privátních zón DNS](private-dns-overview.md)
+## [Scénáře pro privátní DNS](private-dns-scenarios.md)
+
 
 # Začínáme
 
 ## Vytvoření záznamu a zóny DNS
-### [portál Azure Portal](dns-getstarted-portal.md)
+### [Azure Portal](dns-getstarted-portal.md)
 ### [Azure PowerShell](dns-getstarted-powershell.md)
 ### [Azure CLI](dns-getstarted-cli.md)
 
 ## Vytvoření privátní zóny DNS a záznamu
 ### [PowerShell](private-dns-getstarted-powershell.md)
+### [Azure CLI](private-dns-getstarted-cli.md)
 ## [Delegování domény do Azure DNS](dns-delegate-domain-azure-dns.md)
 ## [Vytvoření vlastních záznamů DNS pro webovou aplikaci](dns-web-sites-custom-domain.md)
 
 # Postup
 
 ## Správa zón DNS
-### [portál Azure Portal](dns-operations-dnszones-portal.md)
+### [Azure Portal](dns-operations-dnszones-portal.md)
 ### [Azure PowerShell](dns-operations-dnszones.md)
 ### [Azure CLI](dns-operations-dnszones-cli.md)
 
 ## Správa záznamů DNS
-### [portál Azure Portal](dns-operations-recordsets-portal.md)
+### [Azure Portal](dns-operations-recordsets-portal.md)
 ### [Azure PowerShell](dns-operations-recordsets.md)
 ### [Azure CLI](dns-operations-recordsets-cli.md)
 

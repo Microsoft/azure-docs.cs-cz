@@ -7,20 +7,40 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Vytvoření pracovního prostoru Databricks
+    - name: Vytvoření pracovního prostoru Databricks – portál
       href: quickstart-create-databricks-workspace-portal.md
+    - name: Vytvoření pracovního prostoru Databricks – šablona Resource Manageru
+      href: quickstart-create-databricks-workspace-resource-manager-template.md
 - name: Kurzy
   items:
+    - name: Provádění operací ETL
+      href: databricks-extract-load-sql-data-warehouse.md
     - name: Streamování dat s využitím Event Hubs
       href: databricks-stream-from-eventhubs.md
     - name: Analýza mínění s využitím Cognitive Services
       href: databricks-sentiment-analysis-cognitive-services.md
+    - name: Streamování dat z HDInsight Kafka
+      href: 'https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html'
 - name: Návody
   items:
+    - name: Vytvoření clusteru Spark
+      href: 'https://docs.azuredatabricks.net/user-guide/clusters/index.html'
+    - name: Práce s poznámkovými bloky
+      href: 'https://docs.azuredatabricks.net/user-guide/notebooks/index.html'
+    - name: Spouštění sparkových úloh
+      href: 'https://docs.azuredatabricks.net/user-guide/jobs.html'
+    - name: Připojení ke zdrojům dat
+      href: databricks-connect-to-data-sources.md
     - name: 'Propojení s využitím Excelu, R a Pythonu'
       href: connect-databricks-excel-python-r.md
     - name: Použití rozhraní příkazového řádku Databricks z Azure Cloud Shellu
       href: databricks-cli-from-azure-cloud-shell.md
+    - name: Použití nástrojů BI
+      href: 'https://docs.azuredatabricks.net/user-guide/bi/index.html'
+- name: Referenční informace
+  items:
+    - name: REST API
+      href: /rest/api/databricks
 - name: Zdroje a prostředky
   items:
     - name: Časté dotazy
