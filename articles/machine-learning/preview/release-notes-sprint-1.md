@@ -1,6 +1,6 @@
 ---
-title: "Azure ML Workbench poznámky k 1. listopadu 2017 sprintu"
-description: "Tento dokument podrobně popisuje aktualizace pro verzi sprintu 1 Azure ML"
+title: Azure ML Workbench poznámky k 1. listopadu 2017 sprintu
+description: Tento dokument podrobně popisuje aktualizace pro verzi sprintu 1 Azure ML
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
 ms.openlocfilehash: a4945c77be5763ffeda328184149f712572937c0
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="sprint-1---november-2017"></a>Sprint 1 – listopad 2017 
 
@@ -96,14 +96,14 @@ Níže je seznam podrobné aktualizací v oblasti Azure Machine Learning v této
 - Ukončování aplikace už naruší úloh spuštěna v rozhraní příkazového řádku.
 - Úlohy spuštěna CLI nyní nadále rozdělit standardní výstup i po jedné hodině provádění.
 - Lepší chybové zprávy se zobrazují, když se nezdaří spustit přípravný balíček dat v Pythonu nebo PySpark.
-- `az ml experiment clean`Nyní vyčistí imagí Dockeru do vzdáleného virtuálního počítače.
-- `az ml experiment clean`nyní pracuje správně pro místní cíl v systému macOS.
+- `az ml experiment clean` Nyní vyčistí imagí Dockeru do vzdáleného virtuálního počítače.
+- `az ml experiment clean` nyní pracuje správně pro místní cíl v systému macOS.
 - Chybové zprávy při cílení na místním nebo vzdáleném Docker spuštění vyčištěním nahoru a snadněji číst.
 - Lepší chybová zpráva se zobrazí, když při připojené jako cíl provádění není správně naformátovaný název hlavního uzlu clusteru HDInsight.
 - Lepší chybová zpráva se zobrazí, pokud tajný klíč nebyl nalezen ve službě přihlašovacích údajů. 
 - Knihovna MMLSpark upgradován na podporu Apache Spark 2.2.
 - MMLSpark nyní zahrnují subjektu kódování transformace (OK kódování) pro lékařské dokumenty.
-- `matplotlib`verze 2.1.0 je nyní uvidíte na více systémů v pole s Workbench.
+- `matplotlib` verze 2.1.0 je nyní uvidíte na více systémů v pole s Workbench.
 
 ### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
 - Vyhledávání názvu poznámkového bloku nyní pracuje správně v zobrazení poznámkových bloků.
@@ -112,7 +112,7 @@ Níže je seznam podrobné aktualizací v oblasti Azure Machine Learning v této
 - Chyby jádra jsou nyní prezentované v stav úlohy poznámkového bloku pro snazší ladění.
 - Jupyter nyní správně vypnutí serveru při přihlášení uživatele mimo aplikaci.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 - Účet experimentování a účet Model správy mohou být vytvořeny teď v dvě nové oblasti Azure: západní Evropa a jihovýchodní Asie.
 - Model správy účtu DevTest plán nyní je k dispozici pouze pokud je první z nich má být vytvořen v rámci předplatného. 
 - Odkaz Nápověda v portálu Azure je aktualizována tak, aby odkazoval na stránce dokumentace správné.
@@ -128,10 +128,10 @@ Níže je seznam podrobné aktualizací v oblasti Azure Machine Learning v této
 
 ### <a name="sample-projects"></a>Ukázkové projekty
 - [_Klasifikace Iris_ ](./tutorial-classifying-iris-part-1.md) ukázkového projektu:
-    - `iris_pyspark.py`je přejmenován na `iris_spark.py`.
-    - `iris_score.py`je přejmenován na `score_iris.py`.
-    - `iris.dprep`a `iris.dsource` jsou aktualizovány tak, aby odrážela nejnovější aktualizace dat přípravný modul.
-    - `iris.ipynb`Poznámkového bloku se mění pro práci v clusteru HDInsight.
+    - `iris_pyspark.py` je přejmenován na `iris_spark.py`.
+    - `iris_score.py` je přejmenován na `score_iris.py`.
+    - `iris.dprep` a `iris.dsource` jsou aktualizovány tak, aby odrážela nejnovější aktualizace dat přípravný modul.
+    - `iris.ipynb` Poznámkového bloku se mění pro práci v clusteru HDInsight.
     - Historie spouštění zapnutý `iris.ipynb` Poznámkový blok buněk.
 - [_Rozšířená Data Prep pomocí dat sdílené složky kolo_ ](./tutorial-bikeshare-dataprep.md) ukázkový projekt "Zpracování chyby hodnota" krok pevné.
 - [_MMLSpark na datech pro dospělé úplné zjišťování_ ](https://github.com/Azure/MachineLearningSamples-mmlspark) ukázkový projekt `docker.runconfig` aktualizováno z JSON na YAML formátu.
