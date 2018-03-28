@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7725c5a9a7b6359257efadcc46366a7a360ec69c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2b306cc9dc9bbf435eb70315cc46e7faf4268b47
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>A její spuštění pomocí prostředí PowerShell v Azure zásobníku
 
@@ -174,6 +174,9 @@ Nyní, když jste nakonfigurovali prostředí PowerShell, můžete otestovat kon
 New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
 ```
 
+> [!note]  
+> Pokud chcete zadat skupinu prostředků, musíte mít skupiny prostředků v rámci vašeho předplatného. Další informace o předplatných najdete v tématu [přehled plán, nabídka, kvóty a předplatného](azure-stack-plan-offer-quota-overview.md)
+
 Po vytvoření skupiny prostředků **Stav zřizování** je nastavena na **úspěšné**.
 
 ## <a name="next-steps"></a>Další postup
@@ -181,10 +184,3 @@ Po vytvoření skupiny prostředků **Stav zřizování** je nastavena na **úsp
 * [Instalace a konfigurace rozhraní příkazového řádku](azure-stack-connect-cli.md)
 
 * [Vývoj šablon](user/azure-stack-develop-templates.md)
-
-
-
-
-
-
-

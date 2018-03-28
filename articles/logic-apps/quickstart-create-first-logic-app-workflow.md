@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření prvního automatizovaného pracovního postupu – Azure Logic Apps | Dokumentace Microsoftu"
-description: "Tento rychlý start ukazuje, jak pomocí Azure Logic Apps automatizovat první pracovní postup pro scénáře systémové integrace a integrace podnikových aplikací (EAI), které integrují systémy a cloudové služby."
+title: Vytvoření prvního automatizovaného pracovního postupu – Azure Logic Apps | Dokumentace Microsoftu
+description: Tento rychlý start ukazuje, jak pomocí Azure Logic Apps automatizovat první pracovní postup pro scénáře systémové integrace a integrace podnikových aplikací (EAI), které integrují systémy a cloudové služby.
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
 keywords: workflows, cloud services, system integration, enterprise application integration, EAI
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: ce3582b5-9c58-4637-9379-75ff99878dcd
 ms.service: logic-apps
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 1/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: d382144c202b2b7f5623f2cca2a82c384387e8ca
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ccd00fbb3c5dc0f78a31adcaed31bbe6e4a6e785
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>Rychlý start: Vytvoření prvního pracovního postupu aplikace logiky – Azure Portal
 
@@ -60,6 +60,8 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
    ![Výběr šablony prázdné aplikace logiky](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
 Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje, když se v informačním kanálu RSS objeví nová položka. Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při určité události nebo splnění určité podmínky. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu.
+
+<a name="add-rss-trigger"></a>
 
 ## <a name="check-rss-feed-with-a-trigger"></a>Kontrola informačního kanálu RSS pomocí triggeru
 
@@ -144,7 +146,7 @@ Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts),
       ![Přidání obsahu e-mailu](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
       | Nastavení | Popis | 
-      | ----- | ----------- | 
+      | ------- | ----------- | 
       | **Název informačního kanálu** | Název položky | 
       | **Datum publikování informačního kanálu** | Datum a čas publikování položky | 
       | **Odkaz na primární informační kanál** | Adresa URL položky | 
@@ -156,15 +158,16 @@ Dále svou aplikaci logiky otestujte.
 
 ## <a name="run-your-logic-app"></a>Spuštění aplikace logiky
 
-Pokud chcete aplikaci logiky spustit ručně, na panelu nástrojů návrháře zvolte **Spustit**. Nebo počkejte na spuštění aplikace logiky podle zadaného plánu (každou minutu). Pokud informační kanál RSS obsahuje nové položky, aplikace logiky za každou novou položku odešle e-mail. Pokud však informační kanál neobsahuje nové položky, aplikace logiky přeskočí aktivaci triggeru a s další kontrolou počká na další interval. 
+Pokud chcete aplikaci logiky spustit ručně, na panelu nástrojů návrháře zvolte **Spustit**. Nebo počkejte, až aplikace logiky zkontroluje informační kanál RSS podle zadaného plánu (každou minutu). Pokud informační kanál RSS obsahuje nové položky, aplikace logiky za každou novou položku odešle e-mail. Jinak vaše aplikace logiky s další kontrolou počká na další interval. 
 
-Například tady je ukázka e-mailu, který tato aplikace logiky odešle:
+Například tady je ukázka e-mailu, který tato aplikace logiky odešle. Pokud neobdržíte žádné e-maily, zkontrolujte složku s nevyžádanými e-maily.
 
 ![E-mail odeslaný za novou položku informačního kanálu RSS](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-Pokud neobdržíte žádné e-maily, zkontrolujte složku s nevyžádanou poštou. Váš filtr nevyžádané pošty může tento typ e-mailů přesměrovávat. 
+Technicky vzato, když trigger zkontroluje informační kanál RSS a najde nové položky, aktivuje se a modul Logic Apps vytvoří instanci pracovního postupu vaší aplikace logiky, která provede akce v tomto pracovním postupu.
+Pokud trigger nenajde nové položky, neaktivuje se a přeskočí vytvoření instance pracovního postupu.
 
-Gratulujeme, právě jste vytvořili a spustili svou první aplikaci logiky.
+Blahopřejeme, právě jste pomocí webu Azure Portal úspěšně sestavili a spustili svou první aplikaci logiky.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

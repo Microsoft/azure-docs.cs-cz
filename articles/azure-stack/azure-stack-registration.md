@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 03/26/2018
 ms.author: jeffgilb
 ms.reviewer: avishwan
-ms.openlocfilehash: e51a15b197e875c35997cfe2ac96d673c01a80f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1dc3d9a96b9b27927cc8cc66b5e80987fba4f8ea
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>Zaregistrovat Azure zásobník Azure
 Registrace [zásobník Azure](azure-stack-poc.md) s Azure vám umožní stáhnout položky marketplace z Azure a nastavit obchodování při generování sestav dat zpět do společnosti Microsoft. Po registraci Azure zásobníku využití údajně Azure obchodování a zobrazí se v rámci předplatného použít pro registraci. 
@@ -58,7 +58,7 @@ Připojených prostředích získat přístup k Internetu a Azure. U těchto pro
 
 ### <a name="register-the-azure-stack-resource-provider"></a>Registrace poskytovatele prostředků Azure zásobníku
 Registrace poskytovatele prostředků zásobník Azure s Azure, spusťte prostředí Powershell ISE jako správce a použijte následující příkazy prostředí PowerShell. Budou tyto příkazy:
-- Vyzvat vás k přihlášení jako vlastníka předplatného Azure k použití a nastavit `EnvironmentName` parametru **AzureCloud**.
+- Vyzvat vás k přihlášení jako vlastníka předplatného Azure k použití a nastavit **EnvironmentName** parametru **AzureCloud**.
 - Registrace zprostředkovatele prostředků Azure **Microsoft.AzureStack**.
 
 1. Přidáte účet Azure, který použijete k registraci Azure zásobníku. Chcete-li přidat účet, spusťte **Add-AzureRmAccount** rutiny. Zobrazí se výzva k zadání přihlašovacích údajů účtu globálního správce služby Azure a možná budete muset použít 2 ověřování na základě konfigurace vašeho účtu.
@@ -95,7 +95,7 @@ Spusťte prostředí PowerShell:
 
 ```powershell
 $AzureContext = Get-AzureRmContext
-$CloudAdminCred = Get-Credential -UserName <Azure subscription owner>  -Message "Enter the cloud domain credentials to access the privileged endpoint"
+$CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials>  -Message "Enter the credentials to access the privileged endpoint"
 Set-AzsRegistration `
     -CloudAdminCredential $CloudAdminCred `
     -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
@@ -104,7 +104,7 @@ Set-AzsRegistration `
 
 |Parametr|Popis|
 |-----|-----|
-|CloudAdminCredential|Objekt prostředí PowerShell, který obsahuje informace o pověření (uživatelské jméno a heslo) pro vlastníka předplatného Azure.|
+|CloudAdminCredential|Objekt prostředí PowerShell, který obsahuje přihlašovací údaje (uživatelské jméno a heslo) používá pro přístup k privilegované koncový bod.|
 |PrivilegedEndpoint|Předem nakonfigurovaná vzdáleného prostředí PowerShell konzoly, která poskytuje funkce jako je shromažďování protokolů a jiné post úlohy nasazení. Další informace naleznete [pomocí privilegované koncový bod](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint#access-the-privileged-endpoint) článku.|
 |BillingModel|Fakturační model, který používá vaše předplatné. Povolené hodnoty tohoto parametru jsou: kapacitu, PayAsYouUse a vývoj.|
 
@@ -114,7 +114,7 @@ Postupujte podle stejných pokynů používaná pro registraci pomocí platím j
 Spusťte prostředí PowerShell:
 ```powershell
 $AzureContext = Get-AzureRmContext
-$CloudAdminCred = Get-Credential -UserName <Azure subscription owner>  -Message "Enter the cloud domain credentials to access the privileged endpoint"
+$CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials>  -Message "Enter the credentials to access the privileged endpoint"
 Set-AzsRegistration `
     -CloudAdminCredential $CloudAdminCred `
     -PrivilegedEndpoint <PrivilegedEndPoint computer name> `

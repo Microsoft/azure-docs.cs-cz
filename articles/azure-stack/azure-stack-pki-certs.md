@@ -1,25 +1,25 @@
 ---
-title: "Azure požadavky na certifikáty infrastruktury veřejných klíčů zásobníku pro Azure zásobníku integrované systémy | Microsoft Docs"
-description: "Popisuje požadavky na nasazení certifikát PKI zásobník Azure pro Azure zásobníku integrované systémy."
+title: Azure požadavky na certifikáty infrastruktury veřejných klíčů zásobníku pro Azure zásobníku integrované systémy | Microsoft Docs
+description: Popisuje požadavky na nasazení certifikát PKI zásobník Azure pro Azure zásobníku integrované systémy.
 services: azure-stack
-documentationcenter: 
-author: jeffgilb
+documentationcenter: ''
+author: mabriggs
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f2f71372211dcc9db34beb3fa3fd788920f8bd45
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 455c74ca808f71258a12166c2e36bdd73d9a3e20
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Požadavky na certifikát Azure zásobníku infrastruktura veřejných klíčů
 Sada Azure má síť infrastruktury veřejných pomocí externě dostupný veřejné IP adresy přiřazené k malého služeb Azure zásobníku a které by mohly mít klientské virtuální počítače. Certifikáty PKI s odpovídající názvy DNS pro tyto koncové body Azure zásobníku infrastruktury veřejných jsou nezbytné při nasazení Azure zásobníku. Tento článek obsahuje informace o:
@@ -39,6 +39,7 @@ Následující seznam popisuje požadavky na certifikát, které jsou nutné k n
 - Certifikát musí být ve formátu PFX, jako veřejné a soukromé klíče jsou požadovány pro instalaci zásobník Azure. 
 - Soubory certifikátů pfx musí mít hodnotu "Digitální podpis" a "KeyEncipherment" v jeho poli "Použití klíče".
 - Soubory certifikátů pfx musí mít hodnoty "Ověření serveru (1.3.6.1.5.5.7.3.1)" a "Ověření klienta (1.3.6.1.5.5.7.3.2)" v poli "Použití rozšířeného klíče".
+- Tento certifikát "vystaveno pro:" pole nesmí být stejné jako jeho "vydaný:" pole.
 - Hesla, aby všechny soubory pfx certifikátů musí být stejný v době nasazení
 - Zajistěte, aby názvy subjektu a alternativní názvy předmětu certifikátů odpovídaly specifikace popsané v tomto článku, aby se zabránilo selhání nasazení.
 
@@ -50,7 +51,7 @@ V tabulce v této části jsou certifikáty infrastruktury veřejných KLÍČŮ 
 
 Certifikáty s odpovídající názvy DNS pro každý koncový bod Azure zásobníku infrastruktury veřejných se vyžadují. Název DNS každý koncový bod je vyjádřen ve formátu:  *&lt;předpony >.&lt; oblast >. &lt;plně kvalifikovaný název domény >*. 
 
-Pro vaše nasazení [Oblast] a [externalfqdn] hodnoty musí odpovídat oblasti a názvy externí domény, které jste zvolili pro systém Azure zásobníku. Jako příklad, pokud byl název oblasti *Redmond* a název domény externího byl *contoso.com*, názvy DNS by mít formát  *&lt;předpony >. redmond.contoso.com* .  *&lt;Předpony >* hodnoty jsou předem definovanou společností Microsoft k popisu zabezpečené certifikát koncového bodu. Kromě toho  *&lt;předpony >* hodnoty koncových bodů externí infrastruktury závisí na službu Azure zásobníku, která používá konkrétní koncový bod. 
+Pro vaše nasazení [Oblast] a [externalfqdn] hodnoty musí odpovídat oblasti a názvy externí domény, které jste zvolili pro systém Azure zásobníku. Jako příklad, pokud byl název oblasti *Redmond* a název domény externího byl *contoso.com*, názvy DNS by mít formát *&lt;předpony >. redmond.contoso.com*.  *&lt;Předpony >* hodnoty jsou předem definovanou společností Microsoft k popisu zabezpečené certifikát koncového bodu. Kromě toho  *&lt;předpony >* hodnoty koncových bodů externí infrastruktury závisí na službu Azure zásobníku, která používá konkrétní koncový bod. 
 
 |Složky pro nasazení|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|Obor (podle oblasti)|SubDomain namespace|
 |-----|-----|-----|-----|
@@ -93,7 +94,7 @@ Následující tabulka popisuje koncové body a certifikáty potřebné pro adap
 
 <sup>1</sup> vyžaduje jeden certifikát s více alternativní názvy subjektu zástupný znak. Více zástupné sítí SAN na jeden certifikát nemusí podporovat všechny veřejné certifikačních autorit 
 
-<sup>2</sup> A &#42;. služby App Service.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >* zástupný certifikát nelze použít namísto tyto tři certifikáty (api.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*, ftp.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*a sso.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*. Služby App Service explicitně vyžaduje použití samostatných certifikátů pro tyto koncové body. 
+<sup>2</sup> A &#42;.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >* zástupný certifikát nelze použít namísto tyto tři certifikáty (api.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*, ftp.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*a sso.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*. Služby App Service explicitně vyžaduje použití samostatných certifikátů pro tyto koncové body. 
 
 ## <a name="learn-more"></a>Další informace
 Zjistěte, jak [vygenerujete certifikáty infrastruktury veřejných KLÍČŮ pro nasazení Azure zásobníku](azure-stack-get-pki-certs.md). 

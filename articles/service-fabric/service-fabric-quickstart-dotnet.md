@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření aplikace Service Fabric v .NET v Azure | Dokumentace Microsoftu"
-description: "V tomto rychlém startu vytvoříte aplikaci .NET pro Azure s využitím ukázkové aplikace Service Fabric Reliable Services."
+title: Vytvoření aplikace Service Fabric v .NET v Azure | Dokumentace Microsoftu
+description: V tomto rychlém startu vytvoříte aplikaci .NET pro Azure s využitím ukázkové aplikace Service Fabric Reliable Services.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: quickstart
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/25/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5187aadf686a49f6d78fc4f5c2b2c42487e56c13
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4c81baec0c047b551e1bdac2152b330f010baa18
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Rychlý start: Vytvoření aplikace Service Fabric v .NET v Azure
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů. 
@@ -125,15 +125,19 @@ Pokud chcete nasadit aplikaci do Azure, potřebujete cluster Service Fabric, ve 
 ### <a name="join-a-party-cluster"></a>Připojení k Party clusteru
 Party clustery jsou bezplatné, časově omezené clustery Service Fabric hostované v Azure a provozované týmem Service Fabric, na kterých může kdokoli nasazovat aplikace a seznamovat se s platformou. Cluster používá jediný certifikát podepsaný svým držitelem (self-signed certificate) pro zabezpečení mezi uzly i mezi klientem a uzlem. 
 
-Přihlaste se a [připojte se ke clusteru Windows](http://aka.ms/tryservicefabric). Stáhněte si certifikát PFX do počítače kliknutím na odkaz **PFX**. Certifikát a hodnota **Koncový bod připojení** použijete v následujících krocích.
+Přihlaste se a [připojte se ke clusteru Windows](http://aka.ms/tryservicefabric). Stáhněte si certifikát PFX do počítače kliknutím na odkaz **PFX**. Klikněte na odkaz **How to connect to a secure Party cluster?** (Jak se připojit k zabezpečenému Party Clusteru?) a zkopírujte heslo certifikátu. Certifikát, heslo certifikátu a hodnotu **Koncový bod připojení** použijete v následujících krocích.
 
 ![PFX a koncový bod připojení](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
 
-Na počítači s Windows nainstalujte PFX do úložiště certifikátů *CurrentUser\My*.
+> [!Note]
+> Každou hodinu je k dispozici omezený počet Party Clusterů. Pokud se vám při pokusu o registraci Party Clusteru zobrazí chyba, můžete chvíli počkat a zkusit to znovu nebo můžete podle kroků v kurzu [Nasazení aplikace .NET](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application) vytvořit cluster Service Fabric ve svém předplatném Azure a nasadit aplikaci do něj. Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Po nasazení a ověření aplikace v clusteru můžete přeskočit k části [Škálování aplikací a služeb v clusteru](#scale-applications-and-services-in-a-cluster) v tomto rychlém startu.
+>
+
+
+Na svém počítači s Windows nainstalujte soubor PFX do úložiště certifikátů *CurrentUser\My*.
 
 ```powershell
-PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
-\CurrentUser\My
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString 873689604 -AsPlainText -Force)
 
 
    PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
@@ -155,7 +159,7 @@ Aplikace je teď připravená a přímo ze sady Visual Studio ji můžete nasadi
 1. V Průzkumníku řešení klikněte pravým tlačítkem na **Voting** a zvolte **Publikovat**. Zobrazí se dialogové okno Publikovat.
 
 
-2. Do pole **Koncový bod připojení** zkopírujte **Koncový bod připojení** ze stránky Party clusteru. Například, `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klikněte na **Rozšířené parametry připojení** a vyplňte následující informace.  Hodnoty *FindValue* and *ServerCertThumbprint* musí odpovídat kryptografickému otisku certifikátu nainstalovanému v předchozím kroku. 
+2. Do pole **Koncový bod připojení** zkopírujte **Koncový bod připojení** ze stránky Party clusteru. Například, `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klikněte na **Rozšířené parametry připojení** a ujistěte se, že hodnoty *FindValue* and *ServerCertThumbprint* odpovídají kryptografickému otisku certifikátu nainstalovaného v předchozím kroku. 
 
     ![Dialogové okno Publikovat](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
@@ -165,7 +169,7 @@ Aplikace je teď připravená a přímo ze sady Visual Studio ji můžete nasadi
 
 4. Otevřete prohlížeč a přejděte do aplikace v clusteru zadáním adresy clusteru následované :8080, například `http://zwin7fh14scd.westus.cloudapp.azure.com:8080`. Nyní by se měla zobrazit aplikace spuštěná v clusteru v Azure.
 
-![Front-end aplikace](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
+    ![Front-end aplikace](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Škálování aplikací a služeb v clusteru
 Služby Service Fabric je možné snadno škálovat napříč clusterem a vyřešit tak změny jejich zatížení. Služby se škálují změnou počtu instancí spuštěných v clusteru. Služby můžete škálovat několika způsoby – můžete použít skripty nebo příkazy v PowerShellu nebo Service Fabric CLI (sfctl). V tomto příkladu používáme Service Fabric Explorer.

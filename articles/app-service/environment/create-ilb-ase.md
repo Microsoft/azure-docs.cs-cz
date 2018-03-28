@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě Azure App Service Environment"
-description: "Podrobnosti o tom, jak vytvořit a používat službu Azure App Service Environment izolované od internetu"
+title: Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě Azure App Service Environment
+description: Podrobnosti o tom, jak vytvořit a používat službu Azure App Service Environment izolované od internetu
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 7480c1f71a64e31b65cc76f28734df6f424a6b3f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0d08d140ab338d8c742277835fdfb4316862f07b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -139,7 +139,7 @@ Převeďte/uložte certifikát SSL jako soubor .pfx. Soubor .pfx musí obsahovat
 
 Pokud chcete vytvořit certifikát podepsaný svým držitelem, můžete tady použít příkazy prostředí PowerShell. Nezapomeňte použít název domény služby ASE s interním nástrojem pro vyrovnávání zatížení, ne název domény *internal.contoso.com*: 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "\*.internal-contoso.com","\*.scm.internal-contoso.com"
+    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
     
     $certThumbprint = "cert:\localMachine\my\" +$certificate.Thumbprint
     $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
@@ -174,9 +174,9 @@ Pokud chcete nahrát vlastní certifikáty a otestovat přístup, postupujte tak
 
     b. Pokud chcete provést test publikování nasazení webu nebo získat přístup k rozšířené konzole, vytvořte záznam pro adresu _mytestapp.scm.ilbase.com_.
 
-7. Otevřete v tomto virtuálním počítači prohlížeč a přejděte na adresu http://mytestapp.ilbase.com. (Nebo přejděte na název vaší webové aplikace ve vaší doméně.)
+7. V prohlížeči na tomto virtuálním počítači přejděte na adresu http://mytestapp.ilbase.com. (Nebo přejděte na název vaší webové aplikace ve vaší doméně.)
 
-8. Otevřete v tomto virtuálním počítači prohlížeč a přejděte na adresu https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, přijměte nedostatek zabezpečení.
+8. V prohlížeči na tomto virtuálním počítači přejděte na adresu https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, přijměte nedostatek zabezpečení.
 
     IP adresa vašeho interního nástroje pro vyrovnávání zatížení je uvedená v seznamu **IP adresy**. Tento seznam obsahuje také IP adresy používané externí virtuální IP adresou a k řízení příchozích přenosů.
 

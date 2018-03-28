@@ -8,13 +8,13 @@ ms.service: storage
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: quickstart
-ms.date: 03/09/2018
+ms.date: 03/15/2018
 ms.author: rogarana
-ms.openlocfilehash: 474c03921369035cd7334fdddd9806f8f90b7d58
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4adad6fe3da16653bbd654a3e93e14f9e68b7c90
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Přenos objektů do a z úložiště objektů blob v Azure pomocí PHP
 V tomto rychlém startu zjistíte, jak pomocí PHP nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
@@ -23,7 +23,7 @@ V tomto rychlém startu zjistíte, jak pomocí PHP nahrávat, stahovat a vypisov
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba: 
 * Nainstalovat [PHP](http://php.net/downloads.php).
-* Nainstalovat sadu [Azure SDK pro PHP](https://github.com/Azure/azure-storage-php).
+* Nainstalovat sadu [SDK služby Azure Storage pro PHP](https://github.com/Azure/azure-storage-php).
 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -196,6 +196,13 @@ Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu,
     echo "<br />";
     unlink($fileToUpload);   
 ```
+
+## <a name="resources-for-developing-php-applications-with-blobs"></a>Zdroje informací pro vývoj aplikací PHP s využitím objektů blob
+
+Prohlédněte si tyto další zdroje informací o vývoji v PHP s využitím úložiště objektů blob:
+
+- Prohlédněte, stáhněte a nainstalujte si [zdrojový kód klientské knihovny pro PHP](https://github.com/Azure/azure-storage-php) pro službu Azure Storage na GitHubu.
+- Prozkoumejte [ukázky pro úložiště objektů blob](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=php&term=blob) napsané s využitím klientské knihovny pro PHP.
 
 ## <a name="next-steps"></a>Další kroky
  

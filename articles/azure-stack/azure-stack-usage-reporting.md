@@ -1,24 +1,24 @@
 ---
-title: "Generování sestav dat využití zásobník Azure do Azure | Microsoft Docs"
-description: "Zjistěte, jak nastavit vytváření sestav v Azure zásobníku data o využití."
+title: Generování sestav dat využití zásobník Azure do Azure | Microsoft Docs
+description: Zjistěte, jak nastavit vytváření sestav v Azure zásobníku data o využití.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 29d53f63bf3d551823ca27df04f0e385a92cdec7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9153efb73e84d7b84a732217b92a9c66617e90ae
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Generování sestav Azure zásobníku využití dat do Azure 
 
@@ -27,7 +27,7 @@ Data o využití, označované taky jako datům o spotřebě, představuje objem
 Azure systémy s více uzly zásobníku, které používají model fakturace na základě spotřeby by měl sestavy data o využití do Azure pro účely fakturace.  Operátory Azure zásobníku měli nakonfigurovat jejich zásobník Azure instance sestavy využití dat do Azure.
 
 > [!NOTE]
-> Generování sestav dat využití je potřeba pro uživatele Azure zásobníku více uzly, kteří licencují v rámci modelu platím jako--používání. Zadání je volitelné pro zákazníky, kteří licencí v rámci modelu kapacity (najdete v článku [jak koupit](https://azure.microsoft.com/overview/azure-stack/how-to-buy/ to learn more about pricing in Azure Stack)). Uživatelé Development Kit zásobník Azure můžete Azure zásobníku operátory sestavy data o využití a otestovat funkci. Uživatelé ale neplatí žádné využití, kterým jsou vystaveni. 
+> Generování sestav dat využití je potřeba pro uživatele Azure zásobníku více uzly, kteří licencují v rámci modelu platím jako--používání. Zadání je volitelné pro zákazníky, kteří licencí v rámci modelu kapacity (najdete v článku [jak koupit](https://azure.microsoft.com/en-us/overview/azure-stack/how-to-buy/). Uživatelé Development Kit zásobník Azure můžete Azure zásobníku operátory sestavy data o využití a otestovat funkci. Uživatelé ale neplatí žádné využití, kterým jsou vystaveni. 
 
 
 ![fakturace toku](media/azure-stack-usage-reporting/billing-flow.png)
