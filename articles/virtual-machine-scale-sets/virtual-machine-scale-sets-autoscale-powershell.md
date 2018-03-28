@@ -1,11 +1,11 @@
 ---
-title: "Sadách škálování virtuálních počítačů škálování s prostředím Azure PowerShell | Microsoft Docs"
-description: "Postup vytvoření pravidla automatického škálování pro škálování virtuálních počítačů nastaví pomocí prostředí Azure PowerShell"
+title: Sadách škálování virtuálních počítačů škálování s prostředím Azure PowerShell | Microsoft Docs
+description: Postup vytvoření pravidla automatického škálování pro škálování virtuálních počítačů nastaví pomocí prostředí Azure PowerShell
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
 ms.openlocfilehash: 8928e56f353858234db314714d411a9c2990eb4e
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Automatické škálování škálování virtuálních počítačů, nastavit pomocí prostředí Azure PowerShell
 Když vytvoříte sadu škálování, definujete se počet instancí virtuálního počítače, které chcete spustit. Podle požadavků vaší aplikaci změní, můžete automaticky zvýšit nebo snížit počet instancí virtuálního počítače. Schopnost škálování umožňuje udržovat tempo s poptávku zákazníků nebo odpověď na změny výkonu aplikace v průběhu cyklu vaší aplikace.
@@ -50,9 +50,9 @@ Pro toto pravidlo se používají tyto parametry:
 | Parametr               | Vysvětlení                                                                                                         | Hodnota          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | Metrika výkonu ke sledování a škálování použít na nastavit akce.                                                   | Procento CPU |
-| *-Časovými úseky*            | Jak často metriky se shromažďují pro analýzu.                                                                   | 1 minuta       |
+| *-TimeGrain*            | Jak často metriky se shromažďují pro analýzu.                                                                   | 1 minuta       |
 | *-MetricStatistic*      | Definuje, jak by měla být agregován shromažďovat metriky pro analýzu.                                                | Průměr        |
-| *-Hodnota TimeWindow*           | Množství času, které jsou monitorovány před porovnání hodnot metriky a prahová hodnota.                                   | 10 minut      |
+| *-TimeWindow*           | Množství času, které jsou monitorovány před porovnání hodnot metriky a prahová hodnota.                                   | 10 minut      |
 | *-– Operátor*             | Operátor použit k porovnání metriky data před prahovou hodnotu.                                                     | Větší než   |
 | *-Prahová hodnota*            | Hodnota, která způsobí, že pravidlo škálování akci aktivovat.                                                      | 70%            |
 | *-ScaleActionDirection* | Určuje, zda byly sadou škálování by měl škálovat nahoru nebo dolů, když se pravidlo vztahuje.                                             | Zvětšit       |

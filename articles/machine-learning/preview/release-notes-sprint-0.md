@@ -1,6 +1,6 @@
 ---
-title: "Azure ML Workbench poznámky k sprintu 0 říjen 2017"
-description: "Tento dokument podrobně popisuje aktualizace pro verzi sprintu 0 Azure ML"
+title: Azure ML Workbench poznámky k sprintu 0 říjen 2017
+description: Tento dokument podrobně popisuje aktualizace pro verzi sprintu 0 Azure ML
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 10/12/2017
 ms.openlocfilehash: 37e0a4461e8a0de631a6194a1eb8cc16b610954f
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="sprint-0---october-2017"></a>Sprint 0 – říjen 2017 
 
@@ -55,7 +55,7 @@ Jsme provedli několik aktualizací pro zlepšení různé problémy přihláše
 - Poznámkový blok serveru nelze spustit, pokud uživatel používá s určitými typy přihlášení.
 - Poznámkový blok serveru chybové zprávy není surface protokolů, které jsou viditelné pro uživatele.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 - Když vyberete tmavým motivem portálu Azure, budou okna Správa modelu zobrazuje jako černé políčko.
 
 ### <a name="operationalization"></a>Operationalization

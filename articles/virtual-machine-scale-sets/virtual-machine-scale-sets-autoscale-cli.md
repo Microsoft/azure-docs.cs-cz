@@ -1,11 +1,11 @@
 ---
-title: "Sadách škálování virtuálních počítačů škálování pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Postup vytvoření pravidla automatického škálování pro škálování virtuálních počítačů, nastaví se 2.0 rozhraní příkazového řádku Azure"
+title: Sadách škálování virtuálních počítačů škálování pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Postup vytvoření pravidla automatického škálování pro škálování virtuálních počítačů, nastaví se 2.0 rozhraní příkazového řádku Azure
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 83e93d9c-cac0-41d3-8316-6016f5ed0ce4
 ms.service: virtual-machine-scale-sets
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
 ms.openlocfilehash: 8552f6b2723fef2c61d49a34d2d60c2a6c209a32
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Automatické škálování škálování virtuálních počítačů, nastavit pomocí Azure CLI 2.0
 Když vytvoříte sadu škálování, definujete se počet instancí virtuálního počítače, které chcete spustit. Podle požadavků vaší aplikaci změní, můžete automaticky zvýšit nebo snížit počet instancí virtuálního počítače. Schopnost škálování umožňuje udržovat tempo s poptávku zákazníků nebo odpověď na změny výkonu aplikace v průběhu cyklu vaší aplikace.
@@ -66,12 +66,12 @@ Pro toto pravidlo se používají tyto parametry:
 | Parametr         | Vysvětlení                                                                                                         | Hodnota           |
 |-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
 | *metricName*      | Metrika výkonu ke sledování a škálování použít na nastavit akce.                                                   | Procento CPU  |
-| *časovými úseky*       | Jak často metriky se shromažďují pro analýzu.                                                                   | 1 minuta        |
-| *Agregace času* | Definuje, jak by měla být agregován shromažďovat metriky pro analýzu.                                                | Průměr         |
-| *Hodnota timeWindow*      | Množství času, které jsou monitorovány před porovnání hodnot metriky a prahová hodnota.                                   | 10 minut      |
-| *operátor*        | Operátor použit k porovnání metriky data před prahovou hodnotu.                                                     | Větší než    |
+| *timeGrain*       | Jak často metriky se shromažďují pro analýzu.                                                                   | 1 minuta        |
+| *timeAggregation* | Definuje, jak by měla být agregován shromažďovat metriky pro analýzu.                                                | Průměr         |
+| *timeWindow*      | Množství času, které jsou monitorovány před porovnání hodnot metriky a prahová hodnota.                                   | 10 minut      |
+| *Operátor*        | Operátor použit k porovnání metriky data před prahovou hodnotu.                                                     | Větší než    |
 | *Prahová hodnota*       | Hodnota, která způsobí, že pravidlo škálování akci aktivovat.                                                      | 70%             |
-| *směr*       | Určuje, zda byly sadou škálování by měl škálovat nahoru nebo dolů, když se pravidlo vztahuje.                                             | Zvětšit        |
+| *Směr*       | Určuje, zda byly sadou škálování by měl škálovat nahoru nebo dolů, když se pravidlo vztahuje.                                             | Zvětšit        |
 | *Typ*            | Označuje, že se počet instancí virtuálního počítače by měli měnit procentuální hodnota.                                 | Procentuální změnu  |
 | *Hodnota*           | Jak velký počet instancí virtuálního počítače by měl škálovat nahoru nebo dolů, když se pravidlo vztahuje.                                            | 20              |
 | *cooldown*        | Množství času, který se má čekat před pravidlo se použije znovu tak, aby akce škálování čas vstoupily v platnost. | 5 minut       |
