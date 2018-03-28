@@ -7,13 +7,13 @@ manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/01/2018
+ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: 8d1f09a39e865500aa8e4d093473d4989f134c3d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 716e61840f4bfb5a68a995683e67dae0b43d3854
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí .NET
 
@@ -253,13 +253,13 @@ Prohlédněte si tyto další zdroje informací o vývoji v .NET s využitím ú
 
 ### <a name="binaries-and-source-code"></a>Binární soubory a zdrojový kód
 
-- Stáhněte si balíček NuGet s nejnovější verzí [klientské knihovny služby Storage pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). 
-- Prohlédněte si [zdrojový kód klientské knihovny služby Storage pro .NET](https://github.com/Azure/azure-storage-net) na GitHubu.
+- Stáhněte si balíček NuGet s nejnovější verzí [klientské knihovny pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/) pro službu Azure Storage. 
+- Prohlédněte si [zdrojový kód klientské knihovny pro .NET](https://github.com/Azure/azure-storage-net) na GitHubu.
 
 ### <a name="client-library-reference-and-samples"></a>Klientská knihovna – referenční informace a ukázky
 
-- Další informace o klientské knihovně najdete v [referenčních informacích k rozhraní .NET API služby Storage](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
-- Prozkoumejte [ukázky pro úložiště objektů blob](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob) napsané s využitím klientské knihovny služby Storage pro .NET.
+- Další informace o klientské knihovně pro .NET najdete v [referenčních informacích k rozhraní .NET API](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
+- Prozkoumejte [ukázky pro úložiště objektů blob](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob) napsané s využitím klientské knihovny pro .NET.
 
 ## <a name="next-steps"></a>Další kroky
 

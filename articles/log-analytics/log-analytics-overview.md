@@ -1,10 +1,10 @@
 ---
-title: "Co je služba Log Analytics v Azure? | Dokumenty Microsoft"
-description: "Log Analytics je služba v Azure, která pomáhá shromažďovat a analyzovat provozní data vygenerovaná prostředky ve vašem cloudovém a místním prostředí.  Tento článek poskytuje stručný přehled různých komponent služby Log Analytics a odkazy na podrobný obsah."
+title: Co je Azure Log Analytics? | Dokumenty Microsoft
+description: Log Analytics je služba v Azure, která pomáhá shromažďovat a analyzovat provozní data vygenerovaná prostředky ve vašem cloudovém a místním prostředí.  Tento článek poskytuje stručný přehled různých komponent služby Log Analytics a odkazy na podrobný obsah.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: bd90b460-bacf-4345-ae31-26e155beac0e
 ms.service: log-analytics
@@ -12,67 +12,95 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/24/2018
+ms.date: 03/14/2018
 ms.author: bwren
-ms.openlocfilehash: a95528f5bd259a36ea96c7bc0660ca082c09d6e6
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: b951d41dab4d349a8d648e7eaa7e23b73ced2ced
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="what-is-log-analytics"></a>Co je služba Log Analytics?
-Log Analytics je služba v Azure, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon.  Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji.  Tento článek obsahuje stručný popis toho, co služba Log Analytics poskytuje, přehled toho, jak funguje, a odkazy na podrobnější obsah, abyste ji mohli blíž prozkoumat.
+# <a name="what-is-azure-log-analytics"></a>Co je Azure Log Analytics?
+Log Analytics hraje hlavní roli ve správě Azure díky tomu, že shromažďuje telemetrii a další data z široké škály zdrojů a poskytuje dotazovací jazyk a analytický modul, který zajišťuje přehled o provozu aplikací a prostředků.  S daty Log Analytics můžete pracovat buď přímo prostřednictvím prohledávání protokolů a zobrazení, nebo můžete použít analytické nástroje v dalších službách Azure, které ukládají data v Log Analytics, jako jsou například Application Insights nebo Azure Security Center.  
 
-## <a name="is-log-analytics-for-you"></a>Je pro vás služba Log Analytics vhodná?
-Pokud ještě nemáte pro prostředí Azure nastavené žádné monitorování, měli byste začít se službou [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md), která shromažďuje a analyzuje data monitorování prostředků Azure.  Log Analytics může [shromažďovat data z Azure Monitoru](log-analytics-azure-storage.md), dát je do souvislosti s ostatními daty a poskytovat další analýzy.
-
-Pokud chcete monitorovat místní prostředí nebo už využíváte monitorování pomocí služeb, jako je Azure Monitor nebo System Center Operations Manager, může využití služby Log Analytics výrazně zlepšit situaci.  Může do jednoho úložiště shromažďovat data přímo z agentů a také z těchto dalších nástrojů.  Analytické nástroje služby Log Analytics, jako je prohledávání protokolu, zobrazení a řešení, využívají všechna shromážděná data a poskytují centralizovanou analýzu celého prostředí.
+Služba Log Analytics vyžaduje minimální konfiguraci a je již integrovaná s dalšími službami Azure.  K povolení shromažďování stačí jenom vytvořit pracovní prostor.  Pak můžete na virtuální počítače nainstalovat agenty a tím je zahrnout do pracovního prostoru a povolit řešení pro správu, která obsahují logiku pro poskytování dalších přehledů o různých aplikacích.  Na pozadí jsou datové typy buď předdefinované, nebo se automaticky vytváří s tím, jak se data shromažďují.
 
 
-## <a name="using-log-analytics"></a>Použití Log Analytics
-Pro přístup ke službě Log Analytics můžete využít web Azure Portal, který se dá otevřít v jakémkoli prohlížeči a který poskytuje přístup k nastavení konfigurace a několika nástrojům pro analýzy shromážděných dat a práci s nimi.  Na portálu můžete využívat [prohledávání protokolů](log-analytics-log-searches.md), kde je možné vytvářet dotazy pro analýzy shromážděných dat, [řídicí panely](log-analytics-dashboards.md), které můžete přizpůsobit pomocí grafických zobrazení nejdůležitějších hledání, a [řešení](log-analytics-add-solutions.md), která poskytují další funkce a analytické nástroje.
+## <a name="role-in-monitoring"></a>Role v monitorování
 
-Následující obrázek ukazuje obrazovku s přehledem, na které se zobrazují souhrnné informace o [řešeních](#add-functionality-with-management-solutions), která jsou v pracovním prostoru nainstalovaná.  Kliknutím na libovolnou dlaždici můžete přejít k podrobným datům pro příslušné řešení.
+Různé služby monitorování v Azure jsou popsané v tématu [Monitorování aplikací a prostředků Azure](../monitoring-and-diagnostics/monitoring-overview.md).  Log Analytics hraje hlavní roli díky tomu, že konsoliduje data monitorování z různých zdrojů a poskytuje výkonný dotazovací jazyk pro konsolidaci a analýzu.  
 
-![Portál OMS](media/log-analytics-overview/portal.png)
+Log Analytics se však neomezuje pouze na monitorování prostředků Azure.  Dokáže shromažďovat data z prostředků v místním prostředí nebo v jiných cloudech a vytváří tak prostředí hybridního monitorování a může se přímo připojit k nástroji System Center Operations Manager a shromažďovat telemetrii ze stávajících agentů.  Analytické nástroje v Log Analytics, jako je prohledávání protokolů, zobrazení a řešení pro správu, využívají všechna shromážděná data a poskytují možnost centralizované analýzy celého prostředí.
 
-Log Analytics poskytuje dotazovací jazyk pro rychlé načítání a slučování dat v úložišti.  Můžete vytvořit a uložit [prohledávání protokolů](log-analytics-log-searches.md) pro přímou analýzu dat na portálu, nebo nechat prohledávání protokolů běžet automaticky, aby se vytvořila výstraha v případě, že výsledky dotazu indikují důležitou podmínku.
 
-![Prohledávání protokolů](media/log-analytics-overview/log-search.png)
 
-Pro účely analýzy dat mimo službu Log Analytics můžete exportovat data do nástrojů jako [Power BI](log-analytics-powerbi.md) nebo Excel.  Můžete také využít [rozhraní API hledání v protokolu](log-analytics-log-search-api.md) k vytvoření vlastních řešení, která využívají data služby Log Analytics nebo se integrují s ostatními systémy.
+## <a name="data-collection"></a>Shromažďování dat
+Log Analytics shromažďuje data z široké škály zdrojů.  Po shromáždění se data organizují do samostatných tabulek pro jednotlivé datové typy, což umožňuje společnou analýzu všech dat bez ohledu na jejich původní zdroj.
+
+Mezi metody shromažďování dat do Log Analytics patří následující:
+
+- Konfigurace služby Azure Monitor pro kopírování metrik a protokolů, které shromáždí z prostředků Azure.
+- Agenti na virtuálních počítačích s [Windows](log-analytics-windows-agent.md) a [Linuxem](log-analytics-linux-agents.md), kteří odesílají telemetrii z hostovaného operačního systému a aplikací do Log Analytics podle [zdrojů dat](log-analytics-data-sources.md), které nakonfigurujete.  
+- Připojení [skupiny pro správu nástroje System Center Operations Manager](log-analytics-om-agents.md) k Log Analytics pro shromažďování dat z agentů, které obsahuje.
+- Služby Azure, jako jsou [Application Insights](https://docs.microsoft.com/azure/application-insights/) a [Azure Security Center](https://docs.microsoft.com/azure/security-center/), které ukládají data přímo do Log Analytics bez jakékoli konfigurace.
+- Zápis dat z příkazového řádku PowerShellu nebo [runbooku Azure Automation](../automation/automation-runbook-types.md) pomocí rutin Log Analytics.
+- Pokud máte vlastní požadavky, můžete použít [rozhraní API kolekce dat HTTP](log-analytics-data-collector-api.md) a zapisovat do Log Analytics data z jakéhokoli klienta REST API.
+
+
+![Komponenty služby Log Analytics](media/log-analytics-overview/collecting-data.png)
 
 ## <a name="add-functionality-with-management-solutions"></a>Přidání funkcí s využitím řešení pro správu
-[Řešení pro správu](log-analytics-add-solutions.md) doplňují do Log Analytics další funkce a poskytují další data a analytické nástroje pro Log Analytics.  Můžou také definovat nové typy záznamů, které se mají shromáždit a které se dají analyzovat pomocí prohledávání protokolu nebo prostřednictvím dalšího uživatelského rozhraní poskytnutého řešením v řídicím panelu.  Na následujícím obrázku je příklad [řešení pro sledování změn](log-analytics-change-tracking.md)
+[Řešení pro správu](log-analytics-add-solutions.md) poskytují předpřipravenou logiku pro konkrétní produkt nebo scénář.  Můžou do Log Analytics shromažďovat další data nebo zpracovávat již shromážděná data.  Obvykle zahrnují zobrazení, které vám pomůže tato další data analyzovat.  Řešení jsou k dispozici pro celou řadu funkcí a průběžně se přidávají další řešení.  Dostupná řešení můžete snadno procházet a [přidávat je do pracovního prostoru](log-analytics-add-solutions.md) z Azure Marketplace.  
 
-![Řešení pro sledování změn](media/log-analytics-overview/change-tracking.png)
+![Marketplace](media/log-analytics-overview/solutions.png)
 
-Řešení jsou k dispozici pro celou řadu funkcí a průběžně se přidávají další řešení.  Dostupná řešení můžete snadno procházet a [přidávat je do pracovního prostoru](log-analytics-add-solutions.md) z Azure Marketplace.  Řada jich bude nasazených automaticky a začnou fungovat hned, zatímco jiná můžou vyžadovat určitou konfiguraci.
 
-![Galerie řešení](media/log-analytics-overview/solution-gallery.png)
+## <a name="query-language"></a>Dotazovací jazyk
 
-## <a name="log-analytics-components"></a>Komponenty služby Log Analytics
-Centrem služby Log Analytics je úložiště shromážděných dat, které je hostované v cloudu Azure.  Data se shromažďují z připojených zdrojů tak, že se konfigurují zdroje dat a přidávají řešení do vašeho předplatného.  Zdroje dat a řešení vytvářejí různé typy záznamů, které mají vlastní sady vlastností, ale dají se přesto analyzovat společně v dotazech zasílaných do úložiště.  To vám umožňuje používat stejné nástroje a metody pro práci s různými druhy dat shromážděných různými prostředky.
+Log Analytics zahrnuje [bohatý dotazovací jazyk](http://docs.loganalytics.io) pro rychlé načítání, slučování a analýzy shromážděných dat.  Dotazy můžete vytvářet a testovat pomocí [portálu pro prohledávání protokolů nebo portálu pro pokročilé analýzy](log-analytics-log-search-portals.md) a pak data přímo analyzovat s použitím těchto nástrojů nebo ukládat dotazy pro použití s vizualizacemi, výstrahami nebo exporty do dalších nástrojů, jako jsou Power BI nebo Excel.
 
-![Komponenty služby Log Analytics](media/log-analytics-overview/overview.png)
+Dotazovací jazyk Log Analytics je vhodný pro jednoduchá prohledávání protokolů, ale zahrnuje také pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Tento dotazovací jazyk se můžete rychle naučit s využitím [několika dostupných kurzů](https://docs.loganalytics.io/docs/Learn/Tutorials).  Pro uživatele, kteří již znají [SQL](https://docs.loganalytics.io/docs/Learn/References/SQL-to-Azure-Log-Analytics) a [Splunk](https://docs.loganalytics.io/docs/Learn/References/Splunk-to-Azure-Log-Analytics), jsou k dispozici konkrétní pokyny.
 
-Propojené zdroje jsou počítače a další prostředky, které generují data shromážděná službou Log Analytics.  Můžou sem patřit agenti nainstalovaní na počítačích s [Windows](log-analytics-windows-agent.md) a [Linuxem](log-analytics-linux-agents.md), kteří se připojují přímo, nebo agenti v [připojené skupině pro správu System Center Operations Manageru](log-analytics-om-agents.md).  V případě prostředků Azure služba Log Analytics shromažďuje data z [Azure Monitoru a Azure Diagnostics](log-analytics-azure-storage.md).
+![Prohledávání protokolů](media/log-analytics-overview/analytics-query.png)
 
-[Zdroje dat](log-analytics-data-sources.md) jsou různé druhy dat shromážděných z každého připojeného zdroje.  Patří sem údaje o [událostech](log-analytics-data-sources-windows-events.md) a [výkonu](log-analytics-data-sources-performance-counters.md) z agentů [Windows](log-analytics-data-sources-windows-events.md) a Linux spolu se zdroji, jako jsou [protokoly IIS](log-analytics-data-sources-iis-logs.md) a [vlastní textové protokoly](log-analytics-data-sources-custom-logs.md).  Nakonfigurujete každý zdroj dat, který chcete shromáždit, a konfigurace se automaticky distribuuje každému připojenému zdroji.
 
-Pokud máte vlastní požadavky, můžete použít [rozhraní API kolekce dat HTTP](log-analytics-data-collector-api.md) a zapsat data do úložiště z klienta REST API.
+## <a name="visualize-log-analytics-data"></a>Vizualizace dat Log Analytics
 
-## <a name="log-analytics-architecture"></a>Architektura služby Log Analytics
-Požadavky na nasazení služby Log Analytics jsou minimální, protože základní součásti jsou hostované v cloudu Azure.  Kromě služeb, které umožňují korelaci a analýzy shromážděných údajů, sem patří také úložiště.  Portál je přístupný z libovolného prohlížeče, takže není potřeba žádný klientský software.
+[Zobrazení v Log Analytics](log-analytics-view-designer.md) vizuálně reprezentují data z prohledávání protokolů.  Každé zobrazení obsahuje kombinaci vizualizací, jako jsou pruhové a spojnicové grafy, společně se seznamy se souhrnem důležitých data.  [Řešení pro správu](#add-functionality-with-management-solutions) zahrnují zobrazení se souhrnem dat pro konkrétní aplikaci a umožňují vytvářet vlastní zobrazení pro reprezentaci dat z jakéhokoli prohledávání protokolu Log Analytics.
 
-Musíte nainstalovat agenty na počítače s [Windows](log-analytics-windows-agent.md) a [Linuxem](log-analytics-linux-agents.md), ale nepožaduje se žádný další agent pro počítače, které jsou už členy [připojené skupiny pro správu System Center Operations Manageru](log-analytics-om-agents.md).  Agenti Operations Manageru nadále komunikují se servery pro správu, které přeposílají jejich údaje do služby Log Analytics.  Některá řešení ale budou pro přímou komunikaci se službou Log Analytics vyžadovat agenty.  Požadavky na komunikaci jednotlivých řešení uvádí dokumentace k těmto řešením.
+![Zobrazení v Log Analytics](media/log-analytics-overview/view.png)
 
-Když [se zaregistrujete ke službě Log Analytics](log-analytics-get-started.md), vytvoří se pracovní prostor.  Ten si můžete představit jako jedinečné prostředí Log Analytics s vlastním úložištěm dat, zdroji dat a řešeními. V rámci svého předplatného můžete vytvořit několik pracovních prostorů na podporu několika prostředí, jako je například výrobní a testovací prostředí.
+Výsledky dotazu Log Analytics můžete také připnout na [řídicí panel Azure](../azure-portal/azure-portal-dashboards.md), na kterém můžete kombinovat dlaždice z různých služeb Azure.  Na řídicí panel můžete připnout dokonce i zobrazení Log Analytics.
 
-![Architektura služby Log Analytics](media/log-analytics-overview/architecture.png)
+![Řídicí panely Azure](media/log-analytics-overview/dashboard.png)
+
+## <a name="creating-alerts-from-log-analytics-data"></a>Vytváření výstrah z dat Log Analytics
+
+Pomocí [výstrah Azure](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) můžete zajistit aktivní upozorňování na podmínky v datech Log Analytics, které jsou pro vás důležité.  Dotaz se automaticky spouští v naplánovaných intervalech, a pokud jeho výsledky odpovídají určitým kritériím, vytvoří se výstraha.  To umožňuje kombinovat upozorňování z Log Analytics s dalšími zdroji, jako jsou výstrahy služby [Azure Monitor](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md) téměř v reálném čase a výjimky aplikací v [Application Insights](../application-insights/app-insights-alerts.md), které sdílí [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md) pro reakci na podmínky upozornění.
+
+![Výstrahy](media/log-analytics-overview/alerts.png)
+
+
+## <a name="using-log-analytics-data-in-other-services"></a>Použití dat Log Analytics v dalších službách
+Služby, jako jsou Application Insights a Azure Security Center, ukládají data do Log Analytics.  Obvykle budete pracovat s bohatými analytickými nástroji poskytovanými těmito službami, ale k přístupu k datům těchto služeb a jejich případné kombinaci s daty z jiných služeb můžete použít také dotazy Log Analytics.  
+
+Například následující zobrazení je z Application Insights.  Pokud kliknete na ikonu v pravém horním rohu, spustí se konzola pro analýzy Log Analytics s dotazy použitými v grafu.
+
+![Application Insights](media/log-analytics-overview/application-insights.png)
+
+
+## <a name="exporting-log-analytics-data"></a>Export dat Log Analytics
+
+Log Analytics zpřístupňuje data také mimo Azure.  Můžete nakonfigurovat [Power BI](log-analytics-powerbi.md) pro import výsledků dotazu v naplánovaných intervalech, což vám umožní využít jeho funkce, jako je kombinace dat z různých zdrojů a sdílení sestav na webu a mobilních zařízeních.  Můžete také využít [rozhraní API hledání v protokolu](log-analytics-log-search-api.md) k vytvoření vlastních řešení, která využívají data služby Log Analytics nebo se integrují s ostatními systémy.
+
+Pomocí [Logic Apps](../logic-apps/logic-apps-overview.md) v Azure můžete vytvářet vlastní pracovní postupy založené na datech Log Analytics.  Pro složitější logiku založenou na PowerShellu můžete použít [runbooky ve službě Azure Automation](../automation/automation-runbook-types.md).
+
+![Power BI](media/log-analytics-overview/export.png)
+
+
 
 ## <a name="next-steps"></a>Další kroky
-* [Zaregistrujte se k bezplatnému účtu Log Analytics](log-analytics-get-started.md), abyste mohli provádět testování ve vlastním prostředí.
-* Prohlédněte si různé dostupné [zdroje dat](log-analytics-data-sources.md) ke shromažďování dat do služby Log Analytics.
-* Pokud chcete přidávat funkce do služby Log Analytics, [procházejte dostupná řešení v galerii řešení](log-analytics-add-solutions.md).
+- Začněte [shromažďováním dat z virtuálních počítačů Azure](log-analytics-quick-collect-azurevm.md).
+- Projděte si [kurz analýzy dat Log Analytics s použitím jednoduchého dotazu](log-analytics-tutorial-viewdata.md).
+* [Projděte si dostupná řešení](log-analytics-add-solutions.md), pomocí kterých můžete přidávat funkce do Log Analytics.
 

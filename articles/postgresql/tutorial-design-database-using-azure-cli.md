@@ -1,6 +1,6 @@
 ---
-title: "Kurz – Návrh první databáze Azure Database for PostgreSQL pomocí Azure CLI"
-description: "Tento kurz ukazuje, jak vytvořit, nakonfigurovat a dotazovat první server Azure Database for PostgreSQL pomocí Azure CLI."
+title: 'Kurz: Návrh databáze Azure Database for PostgreSQL pomocí Azure CLI'
+description: Tento kurz ukazuje, jak vytvořit, nakonfigurovat a dotazovat první server Azure Database for PostgreSQL pomocí Azure CLI.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -11,13 +11,13 @@ ms.custom: mvc
 ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: 7eeb3b01ddaea56b1e11fc37bbeba7d3f328772d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 56425ec7ccb1d6629b82db6683a02a57ab9999b4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-design-your-first-azure-database-for-postgresql-using-azure-cli"></a>Kurz: Návrh první databáze Azure Database for PostgreSQL pomocí Azure CLI 
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Kurz: Návrh databáze Azure Database for PostgreSQL pomocí Azure CLI 
 V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další nástroje k získání informací o těchto tématech:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for PostgreSQL
@@ -79,7 +79,7 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver -
 ```
 
 > [!IMPORTANT]
-> Zde zadané jméno správce serveru a heslo se vyžadují k přihlášení na server a jeho databáze dále v tomto rychlém startu. Tyto informace si zapamatujte nebo poznamenejte pro pozdější použití.
+> Zde zadané přihlašovací jméno a heslo správce serveru se vyžadují pro přihlášení k serveru a jeho databázím dále v tomto rychlém startu. Tyto informace si zapamatujte nebo poznamenejte pro pozdější použití.
 
 Ve výchozím nastavení se databáze **postgres** vytvoří v rámci vašeho serveru. Databáze [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) je výchozí databáze určená pro uživatele, nástroje a aplikace třetích stran. 
 
@@ -163,9 +163,9 @@ CREATE DATABASE mypgsqldb;
 ```
 
 ## <a name="create-tables-in-the-database"></a>Vytvoření tabulek v databázi
-Když teď víte, jak se připojit ke službě Azure Database for PostgreSQL, můžeme si vysvětlit provádění některých základních úloh.
+Teď víte, jak se připojit k databázi Azure Database for PostgreSQL, a můžete začít provádět některé základní úlohy:
 
-Nejprve můžeme vytvořit tabulku a načíst do ní nějaká data. Pojďme vytvořit tabulku, která sleduje informace o inventáři:
+Nejdřív vytvoříte tabulku a načtete do ní data. Vytvořte například tabulku, která sleduje informace o inventáři:
 ```sql
 CREATE TABLE inventory (
     id serial PRIMARY KEY, 
@@ -180,7 +180,7 @@ Teď můžete nově vytvořenou databázi zobrazit v seznamu databází zadání
 ```
 
 ## <a name="load-data-into-the-table"></a>Načtení dat do tabulky
-Teď máme vytvořenou tabulku a můžeme do ní vložit data. V otevřeném okně příkazového řádku spusťte následující dotaz, který vloží několik řádků dat:
+Když teď máte vytvořenou tabulku, přidejte do ní nějaká data. V otevřeném okně příkazového řádku spusťte následující dotaz, který vloží několik řádků dat:
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);

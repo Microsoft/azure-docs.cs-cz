@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 03/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07f62775c9286250d33635febe01dbad4362df12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6898f725d1d3cbf3f8d9d90faeafc13fbc8cb201
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů VMware na zotavení po havárii do Azure
 
@@ -59,34 +59,16 @@ Na virtuálním počítači, který chcete replikovat, musí být nainstalovaná
 3. Pokud chcete instalaci provést na virtuální počítače s Linuxem, připravte na zdrojovém serveru s Linuxem kořenový účet.
 
 
-## <a name="check-vmware-server-requirements"></a>Kontrola požadavků na servery VMware
+## <a name="check-vmware-requirements"></a>Kontrola požadavků na VMware
 
-Ujistěte se, že servery VMware splňují následující požadavky.
+Ujistěte se, že servery a virtuální počítače VMware splňují požadavky.
 
-**Komponenta** | **Požadavek**
---- | ---
-**Server vCenter** | vCenter 6.5, 6.0 nebo 5.5
-**Hostitel vSphere** | vSphere 6.5, 6.0, 5.5
+1. [Ověřte](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers) požadavky na servery VMware.
+2. V případě Linuxu [zkontrolujte](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) požadavky na systém souborů a úložiště. 
+3. Zkontrolujte podporu místní [sítě](vmware-physical-azure-support-matrix.md#network) a [úložiště](vmware-physical-azure-support-matrix.md#storage). 
+4. Zkontrolujte podporované [sítě Azure](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [úložiště](vmware-physical-azure-support-matrix.md#azure-storage) a [výpočetní prostředí](vmware-physical-azure-support-matrix.md#azure-compute) po převzetí služeb při selhání.
+5. Místní virtuální počítače, které replikujete do Azure, musí splňovat [Požadavky na virtuální počítače Azure](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
 
-## <a name="check-vmware-vm-requirements"></a>Kontrola požadavků na virtuální počítač VMware
-
-Ujistěte se, že virtuální počítač splňuje požadavky Azure uvedené v následující tabulce.
-
-**Požadavek na virtuální počítač** | **Podrobnosti**
---- | ---
-**Velikost disku s operačním systémem** | Až 2 048 GB
-**Počet disků s operačním systémem** | 1
-**Počet datových disků** | 64 nebo méně
-**Velikost datového virtuálního pevného disku** | Až 4 095 GB
-**Síťové adaptéry** | Podporuje se více adaptérů
-**Sdílený virtuální pevný disk** | Nepodporuje se
-**Disk FC** | Nepodporuje se
-**Formát pevného disku** | VHD nebo VHDX.<br/><br/> Přestože Azure v současné době formát VHDX nepodporuje, Site Recovery při převzetí služeb při selhání do Azure automaticky převede formát VHDX na VHD. Když provedete navrácení služeb po obnovení zpět na místní virtuální počítače, bude se nadále používat formát VHDX.
-**Bitlocker** | Nepodporuje se. Zakažte ho, než povolíte replikaci virtuálního počítače.
-**Název virtuálního počítače** | 1 až 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí.
-**Typ virtuálního počítače** | Generace 1 – Linux nebo Windows<br/><br/>Generace 2 – Pouze Windows
-
-Na virtuálním počítači musí být také podporovaný operační systém. Úplný seznam podporovaných verzí najdete v [matici podpory pro VMware a fyzické servery](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Příprava připojení k virtuálním počítačům Azure po převzetí služeb při selhání
 

@@ -1,43 +1,43 @@
 ---
-title: "Postup dotazování dat grafu v Azure Cosmos DB? | Dokumenty Microsoft"
-description: "Další informace k dotazování na data grafu v Azure Cosmos DB"
+title: Jak provádět dotazy na data grafu ve službě Azure Cosmos DB? | Dokumenty Microsoft
+description: Zjistěte, jak provádět dotazy na data grafu ve službě Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: luisbosquez
 manager: jhubbard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 8bde5c80-581c-4f70-acb4-9578873c92fa
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 5a635abfa9fa10cd8c8498e3c95a17af997cea3e
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
-ms.translationtype: MT
+ms.openlocfilehash: eb1da11c8b27a429ffcf9ea8fb50b6c7cee26ec0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-with-the-graph-api"></a>Azure Cosmos DB: Jak dotazovat pomocí rozhraní Graph API?
+# <a name="tutorial-query-azure-cosmos-db-graph-api-by-using-gremlin"></a>Kurz: Dotazování rozhraní Graph API služby Azure Cosmos DB pomocí Gremlin
 
-Azure Cosmos DB [rozhraní Graph API](graph-introduction.md) podporuje [Gremlin](https://github.com/tinkerpop/gremlin/wiki) dotazy. Tento článek obsahuje ukázkové dokumentech a dotazech, které vám pomůžou začít. A podrobné Gremlin je součástí odkaz [Gremlin podporu](gremlin-support.md) článku.
+Rozhraní [Graph API](graph-introduction.md) služby Azure Cosmos DB podporuje dotazy [Gremlin](https://github.com/tinkerpop/gremlin/wiki). Tento článek poskytuje ukázkové dokumenty a dotazy, které vám pomůžou začít. Podrobné referenční informace ke Gremlin najdete v článku [Podpora Gremlin](gremlin-support.md).
 
-Tento článek obsahuje následující úlohy: 
+Tento článek se zabývá následujícími úkony: 
 
 > [!div class="checklist"]
-> * Dotazování na data s Gremlin
+> * Dotazování dat pomocí Gremlin
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro tyto dotazy pro práci musí mít účet Azure Cosmos DB a mít dat grafu v kontejneru. Nemáte žádné těchto? Dokončení [rychlý start 5 minut](create-graph-dotnet.md) nebo [vývojáře kurzu](tutorial-query-graph.md) k vytvoření účtu a naplnit databázi. Můžete spustit následující dotazy pomocí [knihovny Azure Cosmos DB .NET grafu](graph-sdk-dotnet.md), [Gremlin konzoly](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console), nebo vaše oblíbené Gremlin ovladač.
+Aby tyto dotazy fungovaly, musíte mít účet služby Azure Cosmos DB a data grafu v kontejneru. Něco z toho nemáte? Vytvořte účet a naplňte databázi dokončením [5minutového rychlého startu](create-graph-dotnet.md) nebo [kurzu pro vývojáře](tutorial-query-graph.md). Následující dotazy můžete spustit pomocí [knihovny .NET služby Azure Cosmos DB pro grafy](graph-sdk-dotnet.md), [konzoly Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) nebo oblíbeného ovladače Gremlin.
 
-## <a name="count-vertices-in-the-graph"></a>Počet vrcholy v grafu
+## <a name="count-vertices-in-the-graph"></a>Výpočet vrcholů v grafu
 
-Následující fragment kódu ukazuje, jak můžete zjistit, kolik vrcholy v grafu:
+Následující fragment kódu ukazuje, jak vypočítat počet vrcholů v grafu:
 
 ```
 g.V().count()
@@ -45,7 +45,7 @@ g.V().count()
 
 ## <a name="filters"></a>Filtry
 
-Můžete nastavit filtry, pomocí na Gremlin `has` a `hasLabel` kroky a zkombinovat pomocí `and`, `or`, a `not` k vytvoření složitějších filtrů. Azure Cosmos DB poskytuje, bez ohledu na schéma indexu všech vlastností v rámci vrcholy a stupňů pro rychlé dotazy:
+Můžete provádět filtrování pomocí kroků Gremlin `has` a `hasLabel` a jejich kombinací pomocí operátorů `and`, `or` a `not` vytvářet složitější filtry. Azure Cosmos DB poskytuje na schématu nezávislé indexování všech vlastností v rámci vrcholů a stupňů pro zajištění rychlých dotazů:
 
 ```
 g.V().hasLabel('person').has('age', gt(40))
@@ -53,36 +53,36 @@ g.V().hasLabel('person').has('age', gt(40))
 
 ## <a name="projection"></a>Projekce
 
-Můžete promítnout některé vlastnosti ve výsledcích dotazu pomocí `values` kroku:
+Do výsledků dotazu můžete promítnout určité vlastnosti pomocí kroku `values`:
 
 ```
 g.V().hasLabel('person').values('firstName')
 ```
 
-## <a name="find-related-edges-and-vertices"></a>Vyhledání souvisejících okraje a vrcholy
+## <a name="find-related-edges-and-vertices"></a>Vyhledání souvisejících hran a vrcholů
 
-Zatím jste pouze viděli operátory dotazu, které fungují v některé z databází. Grafy jsou rychlé a efektivní pro operace traversal, když potřebujete přejít na související okraje a vrcholy. Umožňuje najít všechny přátelích Thomas. Provedeme to pomocí na Gremlin `outE` krok najdete všechny odesílací okrajů z Thomas pak procházení k v vrcholy z těchto hran pomocí Gremlin na `inV` krok:
+Zatím jsme viděli pouze operátory dotazu, které fungují v jakékoli databázi. Grafy jsou rychlé a efektivní pro operace procházení, kdy potřebujete přecházet k souvisejícím hranám a vrcholům. Teď najdeme všechny přátele Thomase. Provedeme to pomocí kroku Gremlin `outE`, kterým vyhledáme všechny vnější hrany od Thomase, a pak pomocí kroku Gremlin `inV` přejdeme z těchto hran k vnitřním vrcholům:
 
 ```cs
 g.V('thomas').outE('knows').inV().hasLabel('person')
 ```
 
-Další dotaz provádí dvěma segmenty směrování k vyhledání všech Thomas. "přátelích přátel,", voláním `outE` a `inV` dvakrát. 
+Další dotaz provádí dva segmenty směrování a dvojím zavoláním kroků `outE` a `inV` vyhledá všechny přátele přátel Thomase. 
 
 ```cs
 g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 
-Můžete vytvořit složitější dotazy a implementovat logiku traversal výkonné grafu pomocí Gremlin, včetně kombinování filtru výrazů, provádění opakování pomocí `loop` kroku a implementuje pomocí podmíněného navigace `choose` krok. Další informace o co můžete dělat s [Gremlin podporu](gremlin-support.md)!
+Pomocí Gremlin můžete vytvářet i složitější dotazy a implementovat výkonnou logiku procházení grafů, včetně kombinování výrazů filtru, provádění smyček pomocí kroku `loop` a implementace podmíněné navigace pomocí kroku `choose`. Získejte další informace o tom, co můžete provádět díky [podpoře Gremlin](gremlin-support.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
-> * Zjistili, jak k dotazování pomocí grafu 
+> * Zjistili jste, jak provádět dotazy pomocí Graphu. 
 
-Nyní můžete přejít k dalším kurzu se dozvíte, jak se bude distribuovat globální data.
+Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak globálně distribuovat data.
 
 > [!div class="nextstepaction"]
-> [Globálně distribuci dat](tutorial-global-distribution-sql-api.md)
+> [Globální distribuce dat](tutorial-global-distribution-sql-api.md)

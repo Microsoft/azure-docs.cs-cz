@@ -1,6 +1,6 @@
 ---
-title: "Přehled Service Fabric v Azure | Dokumentace Microsoftu"
-description: "Přehled platformy Service Fabric, kde se aplikace skládají z mnoha mikroslužeb pro zajištění škálování a odolnosti. Service Fabric je platforma distribuovaných systémů, která slouží k sestavování škálovatelných a spolehlivých aplikací se snadnou správou pro cloud."
+title: Přehled Service Fabric v Azure | Dokumentace Microsoftu
+description: Přehled platformy Service Fabric, kde se aplikace skládají z mnoha mikroslužeb pro zajištění škálování a odolnosti. Service Fabric je platforma distribuovaných systémů, která slouží k sestavování škálovatelných a spolehlivých aplikací se snadnou správou pro cloud.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -15,18 +15,17 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: msfussell
 ms.custom: mvc
-ms.openlocfilehash: aab15e6981e4f5f3c69ea6a85995fd2db69ff8b8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d5bd75dfff87e73fa4104901c1c0ac0989b1e3bb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="overview-of-azure-service-fabric"></a>Přehled Azure Service Fabric
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb a kontejnerů. Service Fabric se také zaměřuje na problematiku vývoje a správy nativních cloudových aplikací. Vývojáři a správci se můžou vyhnout problémům se složitou infrastrukturou a místo toho se soustředit na implementaci zásadních a náročných úloh, které jsou škálovatelné, spolehlivé a spravovatelné. Service Fabric představuje novou generaci platforem pro vytváření a správu těchto podnikových cloudových aplikací 1. úrovně spouštěných v kontejnerech.
 
-Toto krátké video představuje Service Fabric a mikroslužby: <center><a target="_blank" href="https://aka.ms/servicefabricvideo">  
-<img src="./media/service-fabric-overview/OverviewVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
+Toto krátké video představuje Service Fabric a mikroslužby:
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 ## <a name="applications-composed-of-microservices"></a>Aplikace skládající se z mikroslužeb 
 Service Fabric umožňuje vytvářet a spravovat škálovatelné a odolné aplikace skládající se z mikroslužeb, které se spouštějí s vysokou hustotou ve sdíleném fondu počítačů, který se označuje jako cluster. Poskytuje propracovaný a nenáročný modul runtime pro sestavování distribuovaných, škálovatelných, bezstavových a stavových mikroslužeb spouštěných v kontejnerech. Poskytuje také komplexní možnosti správy aplikací umožňující zřizování, nasazování, monitorování, upgradování, opravování a odstraňování nasazených aplikací, včetně kontejnerizovaných služeb.
@@ -42,7 +41,7 @@ Service Fabric nabízí aplikacím, které se skládají z těchto mikroslužeb,
 Další informace o přístupu založeném na mikroslužbách najdete v tématu [Proč při sestavování aplikací zvolit přístup založený na mikroslužbách?](service-fabric-overview-microservices.md)
 
 ## <a name="container-deployment-and-orchestration"></a>Nasazení a orchestrace kontejnerů
-Service Fabric je [orchestrátor kontejnerů](service-fabric-cluster-resource-manager-introduction.md) od Microsoftu, který nasazuje mikroslužby napříč clusterem počítačů. Mikroslužby je možné vyvíjet mnoha způsoby, od použití [programovacích modelů Service Fabric](service-fabric-choose-framework.md) přes [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) až po nasazení [libovolného vlastního kódu](service-fabric-deploy-existing-app.md). Důležité je, že ve stejné aplikaci můžete kombinovat služby v procesech i služby v kontejnerech. Pokud chcete pouze [nasazovat a spravovat kontejnery](service-fabric-containers-overview.md), Service Fabric je jako orchestrátor kontejnerů ideální volbou.
+Service Fabric je [orchestrátor kontejnerů](service-fabric-cluster-resource-manager-introduction.md) od Microsoftu, který nasazuje mikroslužby napříč clusterem počítačů. Mikroslužby je možné vyvíjet mnoha způsoby, od použití [programovacích modelů Service Fabric](service-fabric-choose-framework.md) přes [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) až po nasazení [libovolného vlastního kódu](service-fabric-guest-executables-introduction.md). Důležité je, že ve stejné aplikaci můžete kombinovat služby v procesech i služby v kontejnerech. Pokud chcete pouze [nasazovat a spravovat kontejnery](service-fabric-containers-overview.md), Service Fabric je jako orchestrátor kontejnerů ideální volbou.
 
 ## <a name="any-os-any-cloud"></a>Jakýkoli operační systém a cloud
 Service Fabric funguje všude. Clustery pro Service Fabric můžete vytvářet v mnoha prostředích, včetně Azure, místního prostředí, Windows Serveru nebo Linuxu. Dokonce můžete vytvářet clustery v jiných veřejných cloudech. Kromě toho je vývojové prostředí v sadě SDK **identické** s produkčním prostředím, a to bez použití emulátorů. Jinými slovy, cokoli běží v místním vývojovém clusteru se nasadí i do clusterů v jiných prostředích.

@@ -1,11 +1,11 @@
 ---
-title: "Přidání existujícího předplatného Azure do adresáře služby Azure AD | Dokumentace Microsoftu"
-description: "Přidání existujícího předplatného do adresáře služby Azure AD"
+title: Přidání existujícího předplatného Azure do adresáře služby Azure AD | Dokumentace Microsoftu
+description: Přidání existujícího předplatného do adresáře služby Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: bc4773c2-bc4a-4d21-9264-2267065f0aea
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: e063e6a46b6b99c4bbe749347e6887a930adb882
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 2b9ed5b3374c98740923790dac90cb1eb2f065d8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory
 
@@ -34,6 +34,7 @@ Všichni uživatelé mají jeden domovský adresář, který je ověřuje, ale m
 
 * Abyste měli přístup k příslušnému předplatnému, musíte se přihlásit pomocí účtu, který má přiřazenou roli vlastníka předplatného RBAC.
 * Musíte se přihlásit pomocí účtu, který existuje v aktuálním adresáři, ke kterému je předplatné přidruženo, i v adresáři, do kterého chcete předplatné přidat. Další informace o tom, jak získat přístup k jinému adresáři, najdete v tématu [Jak správci služby Azure Active Directory přidávají uživatele s možností B2B spolupráce?](active-directory-b2b-admin-add-users.md)
+* Tato funkce není dostupná pro předplatná CSP (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-159P) a předplatná Microsoft Imagine (MS-AZR-0144P).
 
 ## <a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>Přiřazení existujícího předplatného do adresáře služby Azure AD
 

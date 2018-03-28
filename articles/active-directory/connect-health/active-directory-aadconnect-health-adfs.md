@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f363119ae75a1adb5a01d584de70fba0f3852dfc
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4e82b1364593ff70ed87efcaa24c135277002904
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health pro synchronizaci](active-directory-aadconnect-health-sync.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](active-directory-aadconnect-health-adds.md).
@@ -78,10 +78,7 @@ Sledování výkonu služby Azure AD Connect Health poskytuje sledovací informa
 
 Výběrem možnosti Filtrovat (v horní části okna) můžete filtrovat podle serveru a prohlédnout si metriky na jednotlivých serverech. Pokud chcete změnit metriky, klikněte pravým tlačítkem na graf sledování pod oknem sledování a vyberte Upravit graf (nebo vyberte tlačítko Upravit graf). V nově otevřeném okně můžete vybrat další metriky pomocí rozevíracího seznamu a také zadat časový rozsah pro zobrazení dat výkonu.
 
-## <a name="reports-for-ad-fs"></a>Sestavy služby AD FS
-Azure AD Connect Health poskytuje sestavy s informacemi o činnosti a výkonu služby AD FS. Tyto sestavy pomáhají správcům získat přehled o aktivitách na jejich serverech AD FS.
-
-### <a name="top-50-users-with-failed-usernamepassword-logins"></a>Nejčastějších 50 uživatelů s neúspěšným přihlášením kvůli uživatelskému jména nebo heslu
+## <a name="top-50-users-with-failed-usernamepassword-logins"></a>Nejčastějších 50 uživatelů s neúspěšným přihlášením kvůli uživatelskému jména nebo heslu
 Jednou z běžných příčin neúspěšného požadavku na ověření na serveru AD FS je požadavek provedený s neplatnými přihlašovacími údaji, tedy s nesprávným uživatelským jménem nebo heslem. Do této situace se uživatelé zpravidla dostávají v důsledku používání složitých hesel, zapomenutí hesel nebo překlepů.
 
 Existují však i další důvody, které mohou mít za následek neočekávaný počet požadavků zpracovávaných vašimi servery služby AD FS. Příklady: Aplikace, která ukládá do mezipaměti přihlašovací údaje uživatelů a vypršení jejich platnosti nebo pokus uživatele se zlými úmysly o přihlášení k účtu s použitím řady známých hesel. Tyto dva příklady jsou legitimními důvody, které by mohly vést k prudkému nárůstu množství požadavků.
@@ -95,7 +92,7 @@ V rámci této sestavy máte snadný přístup k následujícím informacím:
 * Celkový počet neúspěšných požadavků s nesprávným uživatelským jménem nebo heslem za posledních 30 dní.
 * Průměrný počet uživatelů, kteří mají problém s přihlašováním kvůli chybnému uživatelskému jménu nebo heslu, za jeden den.
 
-Kliknutím na tuto část přejdete do hlavního okna sestavy, které vám nabídne další podrobnosti. Toto okno obsahuje graf informace o trendech, které vám usnadní vytváření směrného plánu pro požadavky s nesprávným uživatelským jménem nebo heslem. Kromě toho obsahuje seznam 50 uživatelů s nejvyšším počtem neúspěšných pokusů za poslední týden.
+Kliknutím na tuto část přejdete do hlavního okna sestavy, které vám nabídne další podrobnosti. Toto okno obsahuje graf informace o trendech, které vám usnadní vytváření směrného plánu pro požadavky s nesprávným uživatelským jménem nebo heslem. Kromě toho obsahuje seznam 50 uživatelů s nejvyšším počtem neúspěšných pokusů za poslední týden. Všimněte si, že těchto 50 uživatelů z minulého týdne může pomoct s identifikací špiček zadání špatného hesla.  
 
 Graf obsahuje následující informace:
 
@@ -119,8 +116,90 @@ Sestava obsahuje následující informace:
 >
 >
 
-### <a name="risky-ip-report"></a>Sestava rizikových IP adres 
-Připravujeme verzi Preview.
+## <a name="risky-ip-report"></a>Sestava rizikových IP adres 
+Zákazníci služby AD FS můžou zveřejnit koncové body ověřování pomocí hesla na internetu a poskytnout tak koncovým zákazníkům ověřovací služby pro přístup k aplikacím SaaS, jako je Office 365. V takovém případě může pochybný aktér zkoušet přihlášení do systému AD FS za účelem uhodnutí hesla koncového uživatele a získání přístupu k prostředkům aplikace. Služba AD FS od verze AD FS ve Windows Serveru 2012 R2 poskytuje funkci uzamčení účtu pro extranet, která brání těmto typům útoku. Pokud používáte nižší verzi, důrazně doporučujeme upgradovat systém AD FS na Windows Server 2016. <br />
+Kromě toho je možné, aby se jedna IP adresa pokoušela o přihlášení za několik uživatelů. V takových případech je možné počet pokusů na jednoho uživatele omezit prahovou hodnotou pro ochranu uzamčení účtu ve službě AD FS. Azure AD Connect Health nyní poskytuje sestavu rizikových IP adres, která tuto podmínku detekuje a upozorňuje na její výskyt správce. Klíčové výhody této sestavy jsou následující: 
+- Detekce IP adres, které překročí prahovou hodnotu neúspěšných pokusů o přihlášení na základě hesla
+- Podpora neúspěšných přihlášení kvůli špatnému heslu nebo kvůli stavu uzamčení extranetu
+- E-mailová oznámení s přizpůsobitelným nastavením e-mailu, která okamžitě upozorní správce, když k tomu dojde
+- Přizpůsobitelná nastavení prahových hodnot, která odpovídají zásadám zabezpečení organizace
+- Sestavy ke stažení pro účely offline analýzy a integrace s dalšími systémy prostřednictvím automatizace
+
+> [!NOTE]
+> Pokud chcete tuto sestavu použít, ujistěte se, že je povolené auditování AD FS. Další informace najdete v článku o [povolení auditování služby AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs).
+>
+>
+
+### <a name="what-is-in-the-report"></a>Obsah sestavy
+Každá položka v sestavě rizikových IP adres ukazuje agregované informace o neúspěšných aktivitách přihlášení ke službě AD FS, které překročí určenou prahovou hodnotu. Obsahuje následující informace: ![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health-adfs/report4a.png)
+
+| Položky sestavy | Popis |
+| ------- | ----------- |
+| Časové razítko | Ukazuje časové razítko na základě místního času webu Azure Portal při zahájení časového intervalu zjišťování.<br /> Všechny denní události se generují o půlnoci UTC. <br />Hodinové události mají hodnotu časového razítka zaokrouhlenou na celou hodinu. Čas spuštění první aktivity můžete vyhledat v položce firstAuditTimestamp v exportovaném souboru. |
+| Typ triggeru | Ukazuje typ časového intervalu zjišťování. Typ triggeru agregace určuje, jestli se aktivuje každou hodinu nebo každý den. To je užitečně k rozpoznání útoku hrubou silou s vysokou frekvencí od pomalého útoku, při kterém se počet pokusů distribuuje během celého dne. |
+| IP adresa | Jedna riziková IP adresa, ze které probíhaly aktivity přihlášení se špatným heslem nebo uzamčením extranetu. Může se jednat o adresu IPv4 nebo IPv6. |
+| Počet chybných zadání hesla | Počet chybných zadání hesla, ke kterým z dané IP adresy došlo během časového intervalu zjišťování. K chybnému zadání hesla může u určitých uživatelů dojít vícekrát. Všimněte si, že toto číslo nezahrnuje neúspěšné pokusy kvůli heslům, kterým vypršela platnost. |
+| Počet chyb uzamčení extranetu | Počet chyb uzamčení extranetu, ke kterým z dané IP adresy došlo během časového intervalu zjišťování. K chybám uzamčení extranetu může u určitých uživatelů dojít vícekrát. Tato položka se zobrazí pouze v případě, že je uzamčení extranetu nakonfigurované ve službě AD FS (verze 2012R2 nebo novější). <b>Poznámka:</b> Důrazně doporučujeme tuto funkci zapnout, pokud umožňujete přihlášení pomocí hesel z extranetu. |
+| Počet vyzkoušených jedinečných uživatelů | Počet vyzkoušených jedinečných uživatelských účtů, ke kterým z dané IP adresy došlo během časového intervalu zjišťování. Tato položka poskytuje mechanismus pro odlišení vzorce útoku na jednoho uživatele od vzorce útoku na více uživatelů.  |
+
+Například níže uvedená položka sestavy značí, že 28. 2. 2018 v časovém intervalu od 18:00 do 19:00 u IP adresy <i>104.2XX.2XX.9</i> nedošlo k žádnému chybnému zadání hesla, ale došlo k 284 chybám uzamčení extranetu. V rámci kritérií to mělo dopad na 14 jedinečných uživatelů. Událost aktivity překročila určenou hodinovou prahovou hodnotu sestavy. 
+
+![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health-adfs/report4b.png)
+
+> [!NOTE]
+> - V seznamu sestavy se zobrazí pouze aktivity překračující určenou prahovou hodnotu. 
+> - V této sestavě je možné dojít maximálně 30 dnů nazpět.
+> - V této sestavě upozornění se nezobrazují IP adresy Exchange ani privátní IP adresy. Ty jsou však stále součástí exportovaného seznamu. 
+>
+
+
+![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health-adfs/report4c.png)
+
+### <a name="download-risky-ip-report"></a>Stažení sestavy rizikových IP adres
+Pomocí funkce **Stáhnout** můžete z portálu služby Connect Health exportovat celý seznam rizikových IP adres za posledních 30 dnů. Výsledek exportu bude obsahovat všechny neúspěšné aktivity přihlášení ke službě AD FS v jednotlivých časových intervalech zjišťování, abyste si po exportu mohli upravit filtrování. Kromě zvýrazněných agregací na portálu bude výsledek exportu obsahovat také další podrobnosti o neúspěšných aktivitách přihlášení podle IP adresy:
+
+|  Položky sestavy  |  Popis  | 
+| ------- | ----------- | 
+| firstAuditTimestamp | Ukazuje časové razítko prvního výskytu neúspěšných aktivit během časového intervalu zjišťování.  | 
+| lastAuditTimestamp | Ukazuje časové razítko posledního výskytu neúspěšných aktivit během časového intervalu zjišťování.  | 
+| attemptCountThresholdIsExceeded | Příznak, který značí, jestli aktuální aktivity překračují prahovou hodnotu pro upozornění.  | 
+| isWhitelistedIpAddress | Příznak, který značí, jestli se daná IP adresa filtruje z upozorňování a generování sestav. Privátní IP adresy (<i>10.x.x.x, 172.x.x.x a 192.168.x.x</i>) a IP adresy Exchange se filtrují a jsou označené hodnotou True. Pokud se vám zobrazují rozsahy privátních IP adres, je vysoce pravděpodobné, že váš externí nástroj pro vyrovnávání zatížení při předávání požadavku na proxy server webové aplikace neodesílá IP adresu klienta.  | 
+
+### <a name="configure-notification-settings"></a>Konfigurace nastavení oznámení
+Kontakty pro správu sestavy je možné aktualizovat prostřednictvím **Nastavení oznámení**. Ve výchozím nastavení je e-mailové oznámení o upozornění na rizikové IP adresy vypnuté. Oznámení můžete zapnout přepnutím tlačítka v části Dostávat e-mailová oznámení o sestavě IP adres, které překročily prahovou hodnotu neúspěšné aktivity. Podobně jako v případě nastavení oznámení o obecných upozornění ve službě Connect Health můžete na tomto místě upravit určený seznam příjemců oznámení o sestavě rizikových IP adres. Při provádění změny můžete také upozornit všechny globální správce. 
+
+### <a name="configure-threshold-settings"></a>Konfigurace nastavení prahových hodnot
+Prahovou hodnotu pro upozornění můžete upravit prostřednictvím nastavení prahových hodnot. Pro začátek má systém nastavené výchozí prahové hodnoty. Nastavení prahových hodnot pro sestavu rizikových IP adres obsahuje čtyři kategorie:
+
+![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health-adfs/report4d.png)
+
+| Položka prahové hodnoty | Popis |
+| --- | --- |
+| (Chybné U/P + uzamčení extranetu) / den  | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když součet počtu chybných zadání hesla a uzamčení extranetu za **den** překročí tuto prahovou hodnotu. |
+| (Chybné U/P + uzamčení extranetu) / hodina | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když součet počtu chybných zadání hesla a uzamčení extranetu za **hodinu** překročí tuto prahovou hodnotu. |
+| Uzamčení extranetu / den | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když počet uzamčení extranetu za **den** překročí tuto prahovou hodnotu. |
+| Uzamčení extranetu / hodina| Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když počet uzamčení extranetu za **hodinu** překročí tuto prahovou hodnotu. |
+
+> [!NOTE]
+> - Změna prahových hodnot pro sestavu se projeví za hodinu od provedení změny nastavení. 
+> - Stávající ohlášené položky změna prahových hodnot neovlivní. 
+> - Doporučujeme analyzovat počet událostí, ke kterým ve vašem prostředí dochází, a upravit prahové hodnoty odpovídajícím způsobem. 
+>
+>
+
+### <a name="faq"></a>Nejčastější dotazy
+1. Proč se v sestavě zobrazují rozsahy privátních IP adres?  <br />
+Privátní IP adresy (<i>10.x.x.x, 172.x.x.x a 192.168.x.x</i>) a IP adresy Exchange se filtrují a v seznamu povolených IP adres jsou označené hodnotou True. Pokud se vám zobrazují rozsahy privátních IP adres, je vysoce pravděpodobné, že váš externí nástroj pro vyrovnávání zatížení při předávání požadavku na proxy server webové aplikace neodesílá IP adresu klienta.
+
+2. Jak můžu zablokovat IP adresu?  <br />
+Zjištěné škodlivé IP adresy byste měli přidat do brány firewall nebo je blokovat v Exchange.   <br />
+V případě služby AD FS 2016 + 1803.C+ QFE můžete IP adresu zablokovat přímo ve službě AD FS. 
+
+3. Proč se mi v této sestavě nezobrazují žádné položky? <br />
+   - Neúspěšné aktivity přihlášení nepřekračují nastavení prahových hodnot. 
+   - Ujistěte se, že v seznamu serverů AD FS nejsou žádná aktivní upozornění Služba Health není aktuální.  Další informace o [řešení potíží s tímto upozorněním](active-directory-aadconnect-health-data-freshness.md).
+   - Na farmách služby AD FS není povolené auditování.
+
 
 ## <a name="related-links"></a>Související odkazy
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

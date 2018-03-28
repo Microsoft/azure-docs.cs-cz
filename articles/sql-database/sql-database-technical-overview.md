@@ -3,25 +3,17 @@ title: Co je služba Azure SQL Database? | Dokumenty Microsoft
 description: Přečtěte si základní informace o službě SQL Database – technické podrobnosti a možností cloudového systému pro správu relačních databází (RDBMS) společnosti Microsoft.
 keywords: představení sql,úvod do sql,co je sql database
 services: sql-database
-documentationcenter: ''
 author: CarlRabeler
-manager: jhubbard
-editor: ''
-ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
+manager: craigg
 ms.service: sql-database
-ms.custom: overview
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.date: 03/07/2018
-ms.workload: Active
 ms.author: carlrab
-ms.reviewer: carlrab
-ms.openlocfilehash: a1c4426acec8e9e006c2349b886297f45cc8ecb2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7a06ed8433ebcf728c7b090f5e984d4e3ebeb846
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co je služba Azure SQL Database? 
 
@@ -37,7 +29,8 @@ SQL Database sdílí základ kódu s [databázovým strojem Microsoft SQL Server
 
 SQL Database nabízí předvídatelný výkon na několika úrovních služeb, které poskytují dynamickou škálovatelnost bez přerušení provozu, integrovanou inteligentní optimalizaci, globální škálovatelnost a dostupnost a pokročilé možnosti zabezpečení – to vše téměř bez nutnosti jakékoli správy. Díky těmto možnostem se můžete zaměřit na rychlý vývoj aplikací a zkrácení doby dodání produktu na trh, namísto vynakládání prostředků a drahocenného času na správu virtuálních počítačů a infrastruktury. SQL Database je aktuálně v 38 datových centrech po celém světě a další datová centra se pravidelně přidávají, což vám umožňuje provozovat databázi v datovém centru ve vaší blízkosti.
 
-> [DŮLEŽITÉ!] SQL Database Managed Instance je aktuálně ve verzi Preview a je k dispozici pouze na jedné úrovni služby. Další informace najdete v tématu [SQL Database Managed Instance](sql-database-managed-instance.md).
+> [!IMPORTANT]
+> SQL Database Managed Instance je aktuálně ve verzi Preview a je k dispozici pouze na jedné úrovni služby. Další informace najdete v tématu [SQL Database Managed Instance](sql-database-managed-instance.md).
 >
 
 ## <a name="scalable-performance-and-pools"></a>Škálovatelnost výkonu a fondy

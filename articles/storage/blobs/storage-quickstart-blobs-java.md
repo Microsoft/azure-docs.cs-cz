@@ -1,19 +1,19 @@
 ---
-title: "Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Javy | Microsoft Docs"
-description: "V tomto rychlém startu vytvoříte účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Javu k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru."
+title: Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Javy | Microsoft Docs
+description: V tomto rychlém startu vytvoříte účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Javu k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: roygara
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 03/15/2018
 ms.author: rogarana
-ms.openlocfilehash: cde366e75e4111a911be67795a2ad4dfa73778ea
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 44e5f921ca9303e680c76d439ab7503ea3c39680
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-java"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Javy
 
@@ -202,6 +202,19 @@ downloadedFile.deleteOnExit();
 if(sourceFile != null)
 sourceFile.deleteOnExit();
 ```
+
+## <a name="resources-for-developing-java-applications-with-blobs"></a>Zdroje informací pro vývoj aplikací v Javě s využitím objektů blob
+
+Prohlédněte si tyto další zdroje informací o vývoji v Javě s využitím úložiště objektů blob:
+
+### <a name="binaries-and-source-code"></a>Binární soubory a zdrojový kód
+
+- Prohlédněte a stáhněte si [zdrojový kód klientské knihovny pro Javu](https://github.com/Azure/azure-storage-java) pro službu Azure Storage na GitHubu.
+
+### <a name="client-library-reference-and-samples"></a>Klientská knihovna – referenční informace a ukázky
+
+- Další informace o klientské knihovně pro Javu najdete v [referenčních informacích k rozhraní Java API](https://docs.microsoft.com/en-us/java/api/overview/azure/storage).
+- Prozkoumejte [ukázky pro úložiště objektů blob](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=java&term=blob) napsané s využitím klientské knihovny pro Javu.
 
 ## <a name="next-steps"></a>Další kroky
 

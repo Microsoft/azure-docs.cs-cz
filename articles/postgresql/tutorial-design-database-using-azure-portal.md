@@ -1,6 +1,6 @@
 ---
-title: "Kurz – Návrh první databáze Azure Database for PostgreSQL pomocí webu Azure Portal"
-description: "V tomto kurzu se dozvíte, jak navrhnout první databázi Azure Database for PostgreSQL pomocí webu Azure Portal."
+title: 'Kurz: Návrh databáze Azure Database for PostgreSQL pomocí webu Azure Portal'
+description: V tomto kurzu se dozvíte, jak navrhnout první databázi Azure Database for PostgreSQL pomocí webu Azure Portal.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -10,13 +10,13 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: df8f308b17879d7fd22d033fb535b59bd8a85086
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9f4d886bbbf2b9111d736e291e420b822de9766a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-design-your-first-azure-database-for-postgresql-using-the-azure-portal"></a>Kurz: Návrh první databáze Azure Database for PostgreSQL pomocí webu Azure Portal
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for PostgreSQL pomocí webu Azure Portal
 
 Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure Portal umožňuje snadnou správu vašeho serveru a návrh databáze.
 

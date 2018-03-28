@@ -1,40 +1,33 @@
 ---
-title: "Navrhnout první databázi SQL Azure - C# | Microsoft Docs"
-description: "Naučte se navrhnout první databáze Azure SQL a k nim připojit pomocí programu v C# pomocí ADO.NET."
+title: Návrh první databáze SQL Azure – Jazyk C# | Microsoft Docs
+description: Zjistěte, jak navrhnout první databázi SQL Azure a jak se k ní připojit pomocí programu v jazyce C# s využitím ADO.NET.
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg-msft
-editor: CarlRabeler
-tags: 
-ms.assetid: 
+ms.reviewer: CarlRabeler
 ms.service: sql-database
 ms.custom: develop databases, mvc, devcenter
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: On Demand
-ms.date: 01/12/2018
-ms.author: genemi
-ms.openlocfilehash: d99456b488302c9b3fa44510af84641876861afe
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
-ms.translationtype: MT
+ms.date: 03/15/2018
+ms.openlocfilehash: 3b6f260983e3c826bf558f0fe6d1a0fa6ae6b3af
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Návrh Azure SQL database a připojení s C & #x23; a ADO.NET
+# <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Návrh databáze SQL Azure a její připojení pomocí C&#x23; a ADO.NET
 
-Databáze SQL Azure je relační databáze jako a služba (DBaaS) v Microsoft cloudu (Azure). V tomto kurzu můžete další informace o použití portálu Azure a ADO.NET pomocí sady Visual Studio: 
+Azure SQL Database je relační databáze jako služba (DBaaS) v cloudu Microsoftu (Azure). V tomto kurzu zjistíte, jak pomocí webu Azure Portal a ADO.NET v sadě Visual Studio provádět následující úlohy: 
 
 > [!div class="checklist"]
-> * Vytvoření databáze na portálu Azure
-> * Nastavit pravidlo brány firewall na úrovni serveru, na portálu Azure
-> * Připojení k databázi s ADO.NET a Visual Studio
-> * Vytváření tabulek s ADO.NET
-> * Vložit, aktualizovat a odstranit data s ADO.NET 
-> * Dotaz na data ADO.NET
+> * Vytvořit databázi na webu Azure Portal
+> * Vytvořit pravidlo brány firewall na úrovni serveru na webu Azure Portal
+> * Připojit se k databázi pomocí ADO.NET a sady Visual Studio
+> * Vytvářet tabulky pomocí ADO.NET
+> * Vkládat, aktualizovat a odstraňovat data pomocí ADO.NET 
+> * Dotazovat data pomocí ADO.NET
 
-Pokud nemáte předplatné Azure, [vytvořit bezplatný účet](https://azure.microsoft.com/free/) před zahájením.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -54,19 +47,19 @@ And it starts with a ## H2.
 [!INCLUDE [sql-database-csharp-adonet-create-query-2](../../includes/sql-database-csharp-adonet-create-query-2.md)]
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli, že databáze basic úlohy, jako například vytvořit databáze a tabulky, načítat a zadávat dotazy na data a obnovit databázi do předchozího bodu v čase. Naučili jste se tyto postupy:
+V tomto kurzu jste se naučili základním úkonům při práci s databází, jako je vytvoření databáze a tabulek, načtení a dotazování dat a obnovení databáze k určitému bodu v čase. Naučili jste se tyto postupy:
 > [!div class="checklist"]
 > * Vytvoření databáze
-> * Nastavit pravidlo brány firewall
-> * Připojení k databázi s [Visual Studio a C#](sql-database-connect-query-dotnet-visual-studio.md)
-> * Vytváření tabulek
-> * Vložit, aktualizovat a odstranit data
+> * Nastavení pravidla brány firewall
+> * Připojení k databázi pomocí sady [Visual Studio a jazyka C#](sql-database-connect-query-dotnet-visual-studio.md)
+> * Vytvoření tabulek
+> * Vložení, aktualizace a odstranění dat
 > * Dotazování dat
 
-Přechodu na další informace o migraci dat v dalším kurzu.
+V dalším kurzu se dozvíte, jak migrovat data.
 
 > [!div class="nextstepaction"]
->[Migrovat databázi SQL serveru do Azure SQL Database](sql-database-migrate-your-sql-server-database.md)
+>[Migrace databáze SQL Serveru do služby Azure SQL Database](sql-database-migrate-your-sql-server-database.md)
 

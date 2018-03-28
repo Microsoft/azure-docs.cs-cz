@@ -1,20 +1,20 @@
 ---
-title: "Přehled služby Azure Policy | Dokumentace Microsoftu"
-description: "Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure."
+title: Přehled služby Azure Policy | Dokumentace Microsoftu
+description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders; nini
-ms.date: 01/17/2018
+ms.date: 03/14/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bb6f08e8e6252233c51c47c63ca0aec4636247dd
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 72b3e46e4755d50589eeefeeb0478ab9af49e97b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -30,6 +30,9 @@ Pokud chcete používat zásady, musíte být ověřeni pomocí RBAC. Konkrétn�
 
 - Oprávnění `Microsoft.Authorization/policydefinitions/write` pro definování zásady.
 - Oprávnění `Microsoft.Authorization/policyassignments/write` pro přiřazení zásady.
+- Oprávnění `Microsoft.Authorization/policySetDefinitions/write` pro definování iniciativy.
+- Oprávnění `Microsoft.Authorization/policyassignments/write` pro přiřazení iniciativy.
+
 
 Tato oprávnění nejsou součástí role **Přispěvatel**.
 
