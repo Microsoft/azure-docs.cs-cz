@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: Vytvoření webové aplikace s využitím .NET a rozhraní SQL API | Dokumentace Microsoftu'
-description: Tento článek představuje vzorový kód .NET, který můžete použít k připojení a dotazování služby Azure Cosmos DB přes rozhraní SQL API.
+title: Vytvoření webové aplikace .NET se službou Azure Cosmos DB pomocí rozhraní SQL API | Microsoft Docs
+description: V tomto rychlém startu pomocí rozhraní SQL API služby Azure Cosmos DB a webu Azure Portal vytvoříte webovou aplikaci .NET.
 services: cosmos-db
 documentationcenter: ''
 author: mimig1
@@ -15,13 +15,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/15/2017
 ms.author: mimig
-ms.openlocfilehash: b5ab66371b47bdd0f3bd7a4c9e86e419efebe902
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: eb361ce596cbb95e01e7dbd82001bd089d51d70e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-build-a-sql-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření webové aplikace SQL API s využitím .NET a webu Azure Portal
+# <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Rychlý start: Vytvoření webové aplikace .NET se službou Azure Cosmos DB pomocí rozhraní SQL API a webu Azure Portal
 
 [!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
 

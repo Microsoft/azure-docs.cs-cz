@@ -1,25 +1,25 @@
 ---
-title: "Začínáme s Apache Kafka – Azure HDInsight | Dokumentace Microsoftu"
-description: "Zjistěte, jak vytvořit cluster Apache Kafka v Azure HDInsight. Naučte se, jak vytvářet témata, odběratele a příjemce."
+title: Začínáme s Apache Kafka – Azure HDInsight | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit cluster Apache Kafka v Azure HDInsight. Naučte se, jak vytvářet témata, odběratele a příjemce.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
+ms.devlang: ''
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: e00ab06a26d60dd5beca11362df58f35812491d9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 27e6472480dac104de799ebf0e7579a7987f6c4c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>Začínáme s Apache Kafka ve službě HDInsight
 
@@ -39,6 +39,15 @@ K vytvoření platformy Kafka v clusteru HDInsight použijte následující post
 
     * **Název clusteru:** Název clusteru HDInsight. Tento název musí být jedinečný.
     * **Předplatné:** Vyberte předplatné, které chcete použít.
+    * **Typ clusteru:** Vyberte tuto položku a pak v části **Konfigurace clusteru** nastavte následující hodnoty:
+
+        * **Typ clusteru:** Kafka
+        * **Verze:** Kafka 0.10.0 (HDI 3.6)
+
+        Pomocí tlačítka **Vybrat** uložte nastavení typu clusteru.
+
+        ![Výběr typu clusteru](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
+
     * **Uživatelské jméno přihlášení clusteru** a **Heslo přihlášení clusteru**: Přihlašovací údaje pro přístup ke clusteru pomocí protokolu HTTPS. Tyto přihlašovací údaje se používají i pro přístup ke službám, jako jsou webové uživatelské rozhraní Ambari nebo REST API.
     * **Uživatelské jméno Secure Shell (SSH:)** Přihlašovací údaje používané pro přístup ke clusteru přes SSH. Ve výchozím nastavení je heslo stejné jako pro přihlášení ke clusteru.
     * **Skupina prostředků:** Skupina prostředků, ve které se cluster vytváří.
@@ -49,24 +58,15 @@ K vytvoření platformy Kafka v clusteru HDInsight použijte následující post
    
  ![Výběr předplatného](./media/apache-kafka-get-started/hdinsight-basic-configuration.png)
 
-3. Vyberte **Typ clusteru** a pak v části **Konfigurace clusteru** nastavte následující hodnoty:
-   
-    * **Typ clusteru:** Kafka
-    * **Verze:** Kafka 0.10.0 (HDI 3.6)
+3. Pomocí tlačítka __Další__ dokončete základní konfiguraci.
 
-    Nakonec uložte nastavení tlačítkem **Vybrat**.
-     
- ![Výběr typu clusteru](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
-
-4. Po výběru typu clusteru použijte tlačítko __Vybrat__ k výběru typu clusteru. Dále stisknutím tlačítka __Další__ dokončete základní konfiguraci.
-
-5. V části **Úložiště** vyberte nebo vytvořte účet úložiště. Pro ukázkový postup v tomto dokumentu ponechte ve všech ostatních polích výchozí hodnoty. Stisknutím tlačítka __Další__ uložte konfiguraci úložiště.
+4. V části **Úložiště** vyberte nebo vytvořte účet úložiště. Pro ukázkový postup v tomto dokumentu ponechte ve všech ostatních polích výchozí hodnoty. Stisknutím tlačítka __Další__ uložte konfiguraci úložiště.
 
     ![Nastavení účtu úložiště pro HDInsight](./media/apache-kafka-get-started/set-hdinsight-storage-account.png)
 
-6. Pokud chcete pokračovat, v části __Aplikace (volitelné)__ vyberte __Další__. Pro tento příklad se nepožadují žádné aplikace.
+5. Pokud chcete pokračovat, v části __Aplikace (volitelné)__ vyberte __Další__. Pro tento příklad se nepožadují žádné aplikace.
 
-7. Pokud chcete pokračovat, v části __Velikost clusteru__ vyberte __Další__.
+6. Pokud chcete pokračovat, v části __Velikost clusteru__ vyberte __Další__.
 
     > [!WARNING]
     > Pokud chcete zajistit dostupnost Kafka v HDInsightu, musí cluster obsahovat aspoň tři pracovní uzly. Další informace najdete v části [Vysoká dostupnost dat](#data-high-availability).
@@ -76,9 +76,9 @@ K vytvoření platformy Kafka v clusteru HDInsight použijte následující post
     > [!IMPORTANT]
     > Položka **počet disků na pracovní uzel** konfiguruje škálovatelnost Kafka ve službě HDInsight. Platforma Kafka ve službě HDInsight používá místní disky virtuálních počítačů v clusteru. Platforma Kafka je náročná na V/V prostředky, proto k zajištění vysoké propustnosti a vyšší kapacity úložiště na každý uzel se využívá služba [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Typ spravovaného disku může být buď __Standardní__ (HDD), nebo __Prémiový__ (SSD). Prémiové disky se používají u virtuálních počítačů řady DS a GS. Všechny ostatní typy virtuálních počítačů používají standardní disky.
 
-8. Pokud chcete pokračovat, v části __Upřesňující nastavení__ vyberte __Další__.
+7. Pokud chcete pokračovat, v části __Upřesňující nastavení__ vyberte __Další__.
 
-9. V části **Souhrn** zkontrolujte konfiguraci clusteru. Pomocí odkazů __Upravit__ opravte případná chybná nastavení. Nakonec stisknutím tlačítka Vytvořit cluster vytvořte.
+8. V části **Souhrn** zkontrolujte konfiguraci clusteru. Pomocí odkazů __Upravit__ opravte případná chybná nastavení. Nakonec stisknutím tlačítka Vytvořit cluster vytvořte.
    
     ![Souhrn konfigurace clusteru](./media/apache-kafka-get-started/hdinsight-configuration-summary.png)
    

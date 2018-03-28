@@ -1,33 +1,36 @@
 ---
-title: "Služba Azure Cosmos DB: Sestavení webové aplikace s ověřením přes Xamarin a Facebook | Dokumentace Microsoftu"
-description: "Obsahuje ukázku kódu .NET , který můžete použít pro připojení ke službě Azure Cosmos DB a zadávání dotazů."
+title: 'Služba Azure Cosmos DB: Sestavení webové aplikace s ověřením přes Xamarin a Facebook | Dokumentace Microsoftu'
+description: Obsahuje ukázku kódu .NET , který můžete použít pro připojení ke službě Azure Cosmos DB a zadávání dotazů.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: dfaa8d05d999f5528daff875d89e38d4fc442992
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 5074034b18bdf842c34b1208e6cc6312d7a3e6b2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-web-app-with-net-xamarin-and-facebook-authentication"></a>Služba Azure Cosmos DB: Sestavení webové aplikace s rozhraním .NET a ověřením přes Xamarin a Facebook
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos.
 
-Tento rychlý start popisuje způsob vytvoření účtu služby Azure Cosmos DB, databáze dokumentů a kolekce pomocí portálu Azure Portal. Pak budete moci sestavit a nasadit webovou aplikaci seznamu úkolů založenou na rozhraní [SQL .NET API](sql-api-sdk-dotnet.md), [Xamarin](https://www.xamarin.com/) a modulu přihlášení ke službě Azure Cosmos DB. Webová aplikace seznamu úkolů implementuje vzorek dat podle uživatele, který umožňuje uživatelům přihlášení pomocí Facebooku a správu vlastních položek úkolů.
+> [!NOTE]
+> Vzorový kód celé ukázkové kanonické aplikace Xamarin ukazující několik nabídek Azure, včetně služby Cosmos DB, najdete [tady](https://github.com/xamarinhq/app-geocontacts) na GitHubu. Tato aplikace ukazuje, jak zobrazit kontakty rozptýlené v různých geografických umístěních a jak těmto kontaktům umožnit aktualizaci svého umístění.
+
+Tento rychlý start popisuje způsob vytvoření účtu služby Azure Cosmos DB, databáze dokumentů a kolekce pomocí webu Azure Portal. Pak budete moci sestavit a nasadit webovou aplikaci seznamu úkolů založenou na rozhraní [SQL .NET API](sql-api-sdk-dotnet.md), [Xamarin](https://www.xamarin.com/) a modulu přihlášení ke službě Azure Cosmos DB. Webová aplikace seznamu úkolů implementuje vzorek dat podle uživatele, který umožňuje uživatelům přihlášení pomocí Facebooku a správu vlastních položek úkolů.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,7 +51,7 @@ Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout
 
 Teď naklonujeme aplikaci SQL API z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `cd` přejděte do pracovního adresáře.  
+1. Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `cd` přejděte do pracovního adresáře.
 
 2. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. 
 
@@ -56,7 +59,7 @@ Teď naklonujeme aplikaci SQL API z GitHubu, nastavíme připojovací řetězec
     git clone https://github.com/Azure/azure-documentdb-dotnet.git
     ```
 
-3. Pak otevřete soubor DocumentDBTodo.sln ze složky samples/xamarin/UserItems/xamarin.forms v sadě Visual Studio. 
+3. Pak otevřete soubor DocumentDBTodo.sln ze složky samples/xamarin/UserItems/xamarin.forms v sadě Visual Studio.
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
@@ -65,17 +68,17 @@ Kód ve složce Xamarin obsahuje:
 * Aplikaci Xamarin. Aplikace ukládá položky seznamu úkolů uživatele v dělené kolekci s názvem UserItems.
 * Rozhraní API zprostředkovatele tokenu prostředku. Jednoduché webové rozhraní ASP.NET pro zprostředkování tokenů prostředku služby Azure Cosmos DB přihlášeným uživatelům aplikace. Tokeny prostředků jsou krátkodobé přístupové tokeny, které zajišťují aplikaci přístup k datům přihlášených uživatelů.
 
-Tok ověřování a dat je znázorněn v následujícím diagramu.
+Tok ověřování a dat je znázorněný v následujícím diagramu.
 
 * Kolekce UserItems se vytváří s klíčem oddílu '/userid'. Zadání klíče oddílu kolekce umožňuje službě Azure Cosmos DB neomezené škálování s rostoucím počtem uživatelů a položek.
-* Aplikace Xamarin umožňuje uživatelům přihlášení s přihlašovacími údaji sítě Facebook.
+* Aplikace Xamarin umožňuje uživatelům přihlášení pomocí přihlašovacích údajů k Facebooku.
 * Aplikace Xamarin používá přístupový token sítě Facebook pro ověřování s rozhraním ResourceTokenBroker API
 * Rozhraní API zprostředkovatele tokenu prostředku ověřuje požadavek pomocí funkce App Service Auth a vyžaduje od služby Azure Cosmos DB token prostředku s přístupem ke čtení a zápisu všech dokumentů, které sdílejí klíč oddílu ověřeného uživatele.
 * Zprostředkovatel tokenu prostředku vrátí token prostředku klientské aplikaci.
 * Aplikace přistoupí k položkám seznamu úkolů uživatele pomocí tokenu prostředků.
 
 ![Aplikace seznamu úkolů s ukázkovými daty](./media/create-sql-api-xamarin-dotnet/tokenbroker.png)
-    
+
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
@@ -90,7 +93,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     `<add key="accountUrl" value="{Azure Cosmos DB account URL}"/>`
 
-4. Pak z portálu zkopírujte hodnotu PRIMÁRNÍHO KLÍČE a nastavte ji jako hodnotu accountKey v souboru Web.congif. 
+4. Pak z portálu zkopírujte hodnotu PRIMÁRNÍHO KLÍČE a nastavte ji jako hodnotu accountKey v souboru Web.config.
 
     `<add key="accountKey" value="{Azure Cosmos DB secret}"/>`
 
@@ -119,14 +122,14 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu: 
+Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:
 
-1. V levé nabídce na portálu Azure Portal klikněte na **Skupiny prostředků** a potom klikněte na název prostředku, který jste právě vytvořili. 
+1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku.
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB, vytvoření kolekce pomocí Průzkumníku dat a sestavení a nasazení aplikace Xamarin. Teď můžete do účtu Cosmos DB importovat další data. 
+V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB, vytvoření kolekce pomocí Průzkumníku dat a sestavení a nasazení aplikace Xamarin. Teď můžete do účtu Cosmos DB importovat další data.
 
 > [!div class="nextstepaction"]
 > [Importování dat do služby Azure Cosmos DB](import-data.md)

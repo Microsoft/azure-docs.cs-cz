@@ -1,25 +1,24 @@
 ---
-title: "Osvědčené postupy pro službu Azure SQL Data Warehouse | Dokumentace Microsoftu"
-description: "Doporučení a osvědčené postupy, které byste měli znát, když budete vyvíjet řešení pro službu Azure SQL Data Warehouse. Pomohou vám stát se úspěšnými."
+title: Osvědčené postupy pro službu Azure SQL Data Warehouse | Dokumentace Microsoftu
+description: Doporučení a osvědčené postupy, které byste měli znát, když budete vyvíjet řešení pro službu Azure SQL Data Warehouse. Pomohou vám stát se úspěšnými.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
-ms.assetid: 7b698cad-b152-4d33-97f5-5155dfa60f79
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 02/20/2018
+ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: 50d02b657ec3063b0ca4078844563b4ba7932f37
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 53ad9f654c498f562d66de461a2a489895d0a46b
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Osvědčené postupy pro službu Azure SQL Data Warehouse
 Tento článek je kolekcí mnoha osvědčených postupů, které vám pomohou dosáhnout optimálního výkonu vaší služby Azure SQL Data Warehouse.  Některé koncepty v tomto článku jsou základní a snadno se vysvětlují, další koncepty jsou pokročilejší a v tomto článku se jich jenom lehce dotýkáme.  Účelem tohoto článku je poskytnout vám základní pokyny a zvýšit povědomí o důležitých oblastech, na které byste se měli zaměřit, když budete sestavovat svůj datový sklad.  Každá část vám představí nějaký koncept a odkáže vás na podrobnější články, které se danému konceptu věnují více do hloubky.
@@ -80,7 +79,7 @@ Viz také [Dočasné tabulky][Temporary tables], [CREATE TABLE][CREATE TABLE], [
 ## <a name="optimize-clustered-columnstore-tables"></a>Optimalizujte clusterované tabulky columnstore
 Clusterované indexy columnstore jsou jedním z nejefektivnějších způsobů ukládání dat ve službě SQL Data Warehouse.  Vy výchozím nastavení se tabulky ve službě SQL Data Warehouse vytváří jako clusterované columnstore.  Pokud chcete dosáhnout co nejlepšího výkonu dotazů na tabulky columnstore, je důležité mít kvalitní segmenty.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Kvalitu segmentů lze změřit podle počtu řádků v komprimované skupině řádků.  V části [Příčiny nekvalitních indexů columnstore][Causes of poor columnstore index quality] v článku [Indexy tabulky][Table indexes] najdete podrobné pokyny k zjišťování a zlepšování kvality segmentů clusterovaných tabulek columnstore.  Vzhledem k důležitosti vysoké kvality segmentů columnstore je vhodné k nahrávání dat používat ID uživatelů, kteří jsou ve střední nebo velké třídě prostředků. Použití nižší [úrovně služby](performance-tiers.md#service-levels) znamená, že chcete svému uživateli, který nahrává data, přiřadit větší třídu prostředků.
 
-Protože tabulky columnstore zpravidla nebudou vkládat data do komprimovaného segmentu columnstore, dokud v něm nebude více než 1 milion řádků na tabulku, a každá tabulka služby SQL Data Warehouse je rozdělená na 60 tabulek, obecně platí, že tabulky columnstore nepřináší dotazům žádné výhody, pokud tabulka nemá alespoň 60 milionů řádků.  Pro tabulky s méně než 60 miliony řádků může být použití indexu columnstore zbytečné.  Ale také to nemusí vadit.  Kromě toho, pokud svá data dělíte, pamatujte na to, že každý oddíl musí mít alespoň 1 milion řádků, abyste využili výhod clusterovaného indexu columnstore.  Pokud má tabulka 100 oddílů, bude muset mít alespoň 6 miliard řádků, abyste využili výhod clusterovaného úložiště sloupců (60 distribucí * 100 oddílů * 1 milion řádků).  Pokud vaše tabulka v tomto příkladu neobsahuje 6 miliard řádků, buď snižte počet oddílů, nebo místo ní zvažte použití tabulky haldy.  Můžete také experimentovat, abyste zjistili, jestli pomocí tabulky haldy se sekundárními indexy dosáhnete lepšího výkonu než s tabulkou columnstore.
+Protože tabulky columnstore zpravidla nebudou vkládat data do komprimovaného segmentu columnstore, dokud v něm nebude více než 1 milion řádků na tabulku, a každá tabulka služby SQL Data Warehouse je rozdělená na 60 tabulek, obecně platí, že tabulky columnstore nepřináší dotazům žádné výhody, pokud tabulka nemá alespoň 60 milionů řádků.  Pro tabulky s méně než 60 miliony řádků může být použití indexu columnstore zbytečné.  Ale také to nemusí vadit.  Kromě toho, pokud svá data dělíte, pamatujte na to, že každý oddíl musí mít alespoň 1 milion řádků, abyste využili výhod clusterovaného indexu columnstore.  Pokud má tabulka 100 oddílů, bude muset mít alespoň 6 miliard řádků, abyste využili výhod clusterovaného úložiště sloupců (60 distribucí × 100 oddílů × 1 milion řádků).  Pokud vaše tabulka v tomto příkladu neobsahuje 6 miliard řádků, buď snižte počet oddílů, nebo místo ní zvažte použití tabulky haldy.  Můžete také experimentovat, abyste zjistili, jestli pomocí tabulky haldy se sekundárními indexy dosáhnete lepšího výkonu než s tabulkou columnstore.
 
 Při dotazování tabulky columnstore budou příkazy pracovat rychleji, pokud vyberete pouze sloupce, které potřebujete.  
 
@@ -89,12 +88,12 @@ Viz také [Indexy tabulky][Table indexes], [Průvodce indexy columnstore][Column
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>Použijte větší třídu prostředků k vylepšení výkonu dotazu
 SQL Data Warehouse používá skupiny prostředků jako způsob přidělení paměti pro dotazy.  Standardně jsou všichni uživatelé přiřazeni k malé třídě prostředků, která poskytuje 100 MB paměti na distribuci.  Protože vždy existuje 60 distribucí a každé distribuci je poskytnuto minimálně 100 MB paměti, velikost celkově přidělené paměti v systému je 6 000 MB, tedy téměř 6 GB.  Pro určité dotazy, například velká spojení nebo nahrávání do clusterovaných tabulek columnstore, bude větší přidělení paměti přínosem.  U některých dotazů, jako jsou třeba pouhá prohledávání, se výhody neprojeví.  Na druhou stranu využívání velkých tříd prostředků ovlivňuje souběžnost, což byste měli zvážit před přesunutím všech svých uživatelů do velké třídy prostředků.
 
-Viz také [Souběžnost a správa úloh][Concurrency and workload management].
+Viz také [Třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).
 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>Použijte menší třídu prostředků pro zlepšení souběžnosti
 Pokud se vám zdá, že dotazy uživatelů mají dlouhé zpoždění, může to být tím, že jsou vaši uživatelé spuštění ve větší třídě prostředků a spotřebovávají velké množství slotů souběžnosti. To způsobuje, že se ostatní dotazy řadí do fronty.  Pokud chcete zjistit, jestli jsou požadavky uživatelů ve frontě, spusťte příkaz `SELECT * FROM sys.dm_pdw_waits` a zkontrolujte, jestli se vrátí nějaké řádky.
 
-Viz také [Souběžnost a správa úloh][Concurrency and workload management], [sys.dm_pdw_waits][sys.dm_pdw_waits].
+Viz také [Třídy prostředků pro správu úloh](resource-classes-for-workload-management.md), [sys.dm_pdw_waits][sys.dm_pdw_waits].
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Použijte zobrazení dynamických zpráv k monitorování a optimalizaci dotazů
 SQL Data Warehouse obsahuje různá zobrazení dynamických zpráv, která mohou sloužit k monitorování provádění dotazů.  Níže uvedený článek o monitorování vás provede podrobnými pokyny k tomu, jak se dívat na podrobnosti prováděného dotazu.  S rychlým vyhledáváním dotazů v těchto zobrazeních dynamických zpráv může pomoci použití možnosti LABEL v dotazech.
@@ -112,7 +111,6 @@ Nakonec můžete použít stránku [Zpětná vazba k službě Azure SQL Data War
 
 <!--Article references-->
 [Create a support ticket]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Concurrency and workload management]: ./sql-data-warehouse-develop-concurrency.md
 [Create table as select (CTAS)]: ./sql-data-warehouse-develop-ctas.md
 [Table overview]: ./sql-data-warehouse-tables-overview.md
 [Table data types]: ./sql-data-warehouse-tables-data-types.md

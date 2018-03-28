@@ -1,25 +1,18 @@
 ---
-title: "Správa aktualizací a oprav pro virtuální počítače Azure s Windows | Dokumentace Microsoftu"
-description: "Tento článek poskytuje přehled použití řešení Update Management služby Azure Automation ke správě aktualizací a oprav pro vaše virtuální počítače Azure s Windows."
+title: Správa aktualizací a oprav pro virtuální počítače Azure s Windows
+description: Tento článek poskytuje přehled použití řešení Update Management služby Azure Automation ke správě aktualizací a oprav pro vaše virtuální počítače Azure s Windows.
 services: automation
-documentationcenter: 
 author: zjalexander
-manager: jwhit
-editor: 
-ms.assetid: 
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/28/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 614b5bd7a2663c3b61f511dcc6b6a49218ac439a
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: bded1621dc56a6e621408e567ce39a3107bec7c9
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="manage-windows-updates-with-azure-automation"></a>Správa aktualizací pro Windows pomocí služby Azure Automation
 

@@ -1,22 +1,22 @@
 ---
-title: "Nastavení služby Device Provisioning pomocí šablony Azure Resource Manageru | Microsoft Docs"
-description: "Rychlý start Azure – Nastavení služby Azure IoT Hub Device Provisioning pomocí šablony"
+title: Nastavení služby Device Provisioning pomocí šablony Azure Resource Manageru | Microsoft Docs
+description: Rychlý start Azure – Nastavení služby Azure IoT Hub Device Provisioning pomocí šablony
 services: iot-dps
-keywords: 
+keywords: ''
 author: JimacoMS2
 ms.author: v-jamebr
 ms.date: 02/26/2018
 ms.topic: hero-article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 827be2be6915b0f0c9892e73b8f0a293a9659b6e
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 389691bddf1a7d6cab0845ca0a0cf1bde1152507
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Nastavení služby IoT Hub Device Provisioning pomocí šablony Azure Resource Manageru
 
@@ -340,7 +340,7 @@ Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusť
 az group delete --name {your resource group name}
 ```
 
-Skupiny prostředků i jednotlivé prostředky můžete odstranit také pomocí webu Azure Portal, PowerShellu nebo rozhraní REST API nebo podporovaných sad SDK platformy pro Azure Resource Manager nebo službu IoT Hub a Device Provisioning.
+Skupiny prostředků i jednotlivé prostředky můžete odstranit také pomocí webu Azure Portal, PowerShellu nebo rozhraní REST API nebo podporovaných sad SDK platformy pro Azure Resource Manager nebo službu IoT Hub Device Provisioning.
 
 ## <a name="next-steps"></a>Další kroky
 

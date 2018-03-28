@@ -1,39 +1,39 @@
 ---
-title: "Azure Cosmos DB: Jak dotazovat pomocí rozhraní API pro MongoDB? | Dokumentace Microsoftu"
-description: "Postup dotazování pomocí rozhraní API MongoDB pro Azure Cosmos DB"
+title: 'Azure Cosmos DB: Jak provádět dotazy pomocí rozhraní MongoDB API? | Dokumenty Microsoft'
+description: Zjistěte, jak provádět dotazy pomocí rozhraní MongoDB API pro službu Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
-ms.date: 05/10/2017
+ms.workload: ''
+ms.date: 03/16/2018
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 1818476a95ddf373701ad93860b02ea4c2ad761d
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 7c51a2a1cace89305b971d5fb0f56c360cbf93cb
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB: Jak dotazovat pomocí rozhraní API pro MongoDB?
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní MongoDB API
 
-Azure Cosmos DB [rozhraní API pro MongoDB](mongodb-introduction.md) podporuje [MongoDB prostředí dotazy](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+Rozhraní [API pro MongoDB](mongodb-introduction.md) služby Azure Cosmos DB podporuje [dotazy prostředí MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
-Tento článek obsahuje následující úlohy: 
+Tento článek se zabývá následujícími úkony: 
 
 > [!div class="checklist"]
-> * Dotazování na data s MongoDB
+> * Dotazování dat pomocí MongoDB
 
-## <a name="sample-document"></a>Ukázka dokumentu
+## <a name="sample-document"></a>Ukázkový dokument
 
-Dotazy v tomto článku použít následující ukázka dokumentu.
+Dotazy v tomto článku využívají následující ukázkový dokument.
 
 ```json
 {
@@ -65,13 +65,13 @@ Dotazy v tomto článku použít následující ukázka dokumentu.
 ```
 ## <a id="examplequery1"></a>Příklad dotazu 1 
 
-Zadaný vzorek rodiny dokumentu výše, následující dotaz vrátí dokumenty kde pole id odpovídá `WakefieldFamily`.
+S použitím výše uvedeného dokumentu family (rodina) vrátí následující dotaz dokumenty, jejichž pole ID odpovídá `WakefieldFamily`.
 
 **Dotaz**
     
     db.families.find({ id: “WakefieldFamily”})
 
-**Výsledky**
+**Results**
 
     {
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
@@ -115,13 +115,13 @@ Zadaný vzorek rodiny dokumentu výše, následující dotaz vrátí dokumenty k
 
 ## <a id="examplequery2"></a>Příklad dotazu 2 
 
-Další dotaz vrátí všechny podřízené objekty řady. 
+Další dotaz vrátí všechny děti v rodině. 
 
 **Dotaz**
     
-    db.familes.find( { id: “WakefieldFamily” }, { children: true } )
+    db.families.find( { id: “WakefieldFamily” }, { children: true } )
 
-**Výsledky**
+**Results**
 
     {
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
@@ -148,21 +148,21 @@ Další dotaz vrátí všechny podřízené objekty řady.
 
 ## <a id="examplequery3"></a>Příklad dotazu 3 
 
-Další dotaz vrátí všechny rodiny, které jsou registrované. 
+Další dotaz vrátí všechny zaregistrované rodiny. 
 
 **Dotaz**
     
     db.families.find( { "isRegistered" : true })
-**Výsledky** bude vrácen žádný dokument. 
+**Výsledky** Nevrátí se žádný dokument. 
 
 ## <a id="examplequery4"></a>Příklad dotazu 4
 
-Další dotaz vrátí všechny rodiny, které nejsou registrované. 
+Další dotaz vrátí všechny nezaregistrované rodiny. 
 
 **Dotaz**
     
     db.families.find( { "isRegistered" : false })
-**Výsledky**
+**Results**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -201,13 +201,13 @@ Další dotaz vrátí všechny rodiny, které nejsou registrované.
 
 ## <a id="examplequery5"></a>Příklad dotazu 5
 
-Další dotaz vrátí všechny řady, která nejsou registrovaná a stavu je NY. 
+Další dotaz vrátí všechny nezaregistrované rodiny ve státě NY. 
 
 **Dotaz**
     
      db.families.find( { "isRegistered" : false, "address.state" : "NY" })
 
-**Výsledky**
+**Results**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -247,13 +247,13 @@ Další dotaz vrátí všechny řady, která nejsou registrovaná a stavu je NY.
 
 ## <a id="examplequery6"></a>Příklad dotazu 6
 
-Další dotaz vrátí všechny rodiny, kde jsou podřízené objekty tříd 8.
+Další dotaz vrátí všechny rodiny s dětmi v 8. ročníku.
 
 **Dotaz**
   
      db.families.find( { children : { $elemMatch: { grade : 8 }} } )
 
-**Výsledky**
+**Results**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -292,25 +292,25 @@ Další dotaz vrátí všechny rodiny, kde jsou podřízené objekty tříd 8.
 
 ## <a id="examplequery7"></a>Příklad dotazu 7
 
-Další dotaz vrátí všechny rodiny, kde je velikost, děti pole 3.
+Další dotaz vrátí všechny rodiny s polem children (děti) velikosti 3.
 
 **Dotaz**
   
       db.Family.find( {children: { $size:3} } )
 
-**Výsledky**
+**Results**
 
-Žádné výsledky, bude vrácen jako nemáme k dispozici více než 2 podřízené objekty. Jenom v případě, že je parametr 2 Tento dotaz bude úspěšné a vrátit celého dokumentu.
+Nevrátí se žádné výsledky, protože máme pouze 2 děti. Tento dotaz bude úspěšný pouze v případě, že parametr bude 2, a pak vrátí celý dokument.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
-> * Zjistili, jak k dotazování pomocí MongoDB 
+> * Zjistili jste, jak provádět dotazy pomocí MongoDB. 
 
-Nyní můžete přejít k dalším kurzu se dozvíte, jak se bude distribuovat globální data.
+Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak globálně distribuovat data.
 
 > [!div class="nextstepaction"]
-> [Globálně distribuci dat](tutorial-global-distribution-sql-api.md)
+> [Globální distribuce dat](tutorial-global-distribution-sql-api.md)
 

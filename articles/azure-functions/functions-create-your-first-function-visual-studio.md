@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření první funkce v Azure pomocí sady Visual Studio | Dokumentace Microsoftu"
-description: "Vytvořte a publikujte do Azure jednoduchou funkci aktivovanou protokolem HTTP pomocí Azure Functions Tools for Visual Studio."
+title: Vytvoření první funkce v Azure pomocí sady Visual Studio | Dokumentace Microsoftu
+description: Vytvořte a publikujte do Azure jednoduchou funkci aktivovanou protokolem HTTP pomocí Azure Functions Tools for Visual Studio.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 keywords: azure functions, functions, event processing, compute, serverless architecture
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: functions
@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/17/2018
+ms.date: 03/13/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fa17a021526a728c6fabc9607b1d00f5521cbb21
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9b43ec7106c70b7d9b326208043d2fe874fb7e20
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Vytvoření první funkce pomocí sady Visual Studio
 
@@ -37,11 +37,13 @@ Toto téma obsahuje [video](#watch-the-video), které ilustruje stejný základn
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Nainstalujte [Visual Studio 2017 verze 15.4](https://www.visualstudio.com/vs/) nebo novější včetně sady funkcí **Azure – vývoj**.
+* Instalaci sady [Visual Studio 2017 verze 15.5](https://www.visualstudio.com/vs/) nebo novější včetně sady funkcí **Vývoj pro Azure**.
 
     ![Instalace sady Visual Studio 2017 se sadou funkcí Vývoj pro Azure](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-* Zkontrolujte, že proběhla aktualizace na nejnovější verzi služby Azure Functions a nástrojů webových úloh. Tuto operaci proveďte v sekci **Aktualizace** > **Visual Studio Marketplace** v části **Rozšíření a aktualizace**.
+    Pokud už máte sadu Visual Studio nainstalovanou, ujistěte se, že jste nainstalovali případné čekající aktualizace. 
+
+* Pokud jste nainstalovali sadu funkcí Vývoj pro Azure společně se sadou Visual Studio 2017 verze 15.4 nebo starší, možná bude také potřeba [aktualizovat nástroje Azure Functions](functions-develop-vs.md#check-your-tools-version). 
     
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 

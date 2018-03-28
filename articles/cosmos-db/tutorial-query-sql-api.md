@@ -1,41 +1,41 @@
 ---
-title: "Postup dotazování pomocí SQL v Azure Cosmos DB? | Dokumentace Microsoftu"
-description: "Postup dotazování pomocí SQL v Azure Cosmos DB"
+title: Jak provádět dotazy pomocí jazyka SQL ve službě Azure Cosmos DB? | Dokumenty Microsoft
+description: Zjistěte, jak provádět dotazy pomocí jazyka SQL ve službě Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: rafats
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
-ms.openlocfilehash: ffef6ec2120a80d907449470efb7b4ab6dca8037
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 60910b602f9386738f9d8895fd151d15f3ebf058
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-using-sql"></a>Azure Cosmos DB: Jak dotazovat pomocí SQL?
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní SQL API
 
 [!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
-Azure Cosmos DB [rozhraní SQL API](documentdb-introduction.md) podporuje dotazování dokumentů pomocí SQL. Tento článek obsahuje ukázkové dokumentu a dva ukázkové dotazy SQL a výsledky.
+Rozhraní [SQL API](documentdb-introduction.md) služby Azure Cosmos DB podporuje dotazování dokumentů pomocí jazyka SQL. Tento článek obsahuje ukázkový dokument a dva ukázkové dotazy SQL a jejich výsledky.
 
-Tento článek obsahuje následující úlohy: 
+Tento článek se zabývá následujícími úkony: 
 
 > [!div class="checklist"]
-> * Dotazování na data pomocí SQL
+> * Dotazování dat pomocí jazyka SQL
 
-## <a name="sample-document"></a>Ukázka dokumentu
+## <a name="sample-document"></a>Ukázkový dokument
 
-Dotazy SQL v tomto článku použít následující ukázka dokumentu.
+Dotazy SQL v tomto článku využívají následující ukázkový dokument.
 
 ```json
 {
@@ -65,20 +65,20 @@ Dotazy SQL v tomto článku použít následující ukázka dokumentu.
   "isRegistered": false
 }
 ```
-## <a name="where-can-i-run-sql-queries"></a>Kde je můžete spouštět dotazy SQL?
+## <a name="where-can-i-run-sql-queries"></a>Kde můžu spouštět dotazy SQL?
 
-Můžete spouštět dotazy pomocí Průzkumníku dat na portálu Azure pomocí [REST API a sadám SDK,](sql-api-sdk-dotnet.md)a to i v [Query playground](https://www.documentdb.com/sql/demo), která se spouští dotazy na existující sady ukázková data.
+Dotazy můžete spouštět pomocí Průzkumníka dat na webu Azure Portal, prostřednictvím [rozhraní REST API a sad SDK](sql-api-sdk-dotnet.md) a dokonce i pomocí [Query Playground](https://www.documentdb.com/sql/demo), kde se spouští dotazy na existující sadu ukázkových dat.
 
-Další informace o dotazech SQL najdete v tématu:
-* [Dotaz SQL a syntaxe SQL](sql-api-sql-query.md)
+Další informace o dotazech SQL najdete tady:
+* [Dotazy a syntaxe SQL](sql-api-sql-query.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento kurz předpokládá, že máte účet Azure Cosmos databáze a kolekce. Nemáte žádné těchto? Dokončení [rychlý start 5 minut](create-mongodb-nodejs.md) nebo [vývojáře kurzu](tutorial-develop-mongodb.md) vytvoření účtu a kolekce.
+V tomto kurzu se předpokládá, že máte účet a kolekci Azure Cosmos DB. Něco z toho nemáte? Vytvořte účet a kolekci dokončením [5minutového rychlého startu](create-mongodb-nodejs.md) nebo [kurzu pro vývojáře](tutorial-develop-mongodb.md).
 
 ## <a name="example-query-1"></a>Příklad dotazu 1
 
-Zadaný vzorek rodiny dokumentu výše, následující dotaz SQL vrátí dokumenty kde pole id odpovídá `WakefieldFamily`. Vzhledem k tomu, že je `SELECT *` příkaz výstup tohoto dotazu je kompletní dokumentu JSON:
+S použitím výše uvedeného dokumentu family (rodina) vrátí následující dotaz SQL dokumenty, jejichž pole ID odpovídá `WakefieldFamily`. Vzhledem k tomu, že se jedná o příkaz `SELECT *`, výstupem dotazu bude celý dokument JSON:
 
 **Dotaz**
 
@@ -86,7 +86,7 @@ Zadaný vzorek rodiny dokumentu výše, následující dotaz SQL vrátí dokumen
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
 
-**Výsledky**
+**Results**
 
 ```json
 {
@@ -119,7 +119,7 @@ Zadaný vzorek rodiny dokumentu výše, následující dotaz SQL vrátí dokumen
 
 ## <a name="example-query-2"></a>Příklad dotazu 2
 
-Další dotaz vrátí všechny názvy daným podřízených prvků v dané rodině, jehož id odpovídá `WakefieldFamily` seřazené podle jejich úrovni.
+Další dotaz vrátí křestní jména všech dětí v rodině, jejíž ID odpovídá `WakefieldFamily`, seřazená podle ročníku.
 
 **Dotaz**
 
@@ -129,7 +129,7 @@ Další dotaz vrátí všechny názvy daným podřízených prvků v dané rodin
     WHERE f.id = 'WakefieldFamily'
     ORDER BY f.children.grade ASC
 
-**Výsledky**
+**Results**
 
     [
       { "givenName": "Jesse" }, 
@@ -139,13 +139,13 @@ Další dotaz vrátí všechny názvy daným podřízených prvků v dané rodin
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
-> * Zjistili, jak k dotazování pomocí SQL  
+> * Zjistili jste, jak provádět dotazy pomocí jazyka SQL.  
 
-Nyní můžete přejít k dalším kurzu se dozvíte, jak se bude distribuovat globální data.
+Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak globálně distribuovat data.
 
 > [!div class="nextstepaction"]
-> [Globálně distribuci dat](tutorial-global-distribution-sql-api.md)
+> [Globální distribuce dat](tutorial-global-distribution-sql-api.md)
 

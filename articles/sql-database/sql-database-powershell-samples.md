@@ -1,51 +1,48 @@
 ---
-title: "Azure příklady skript prostředí PowerShell pro databázi SQL. | Microsoft Docs"
-description: "Skript prostředí Azure PowerShell, příklady vám pomohou vytvořit a spravovat servery Azure SQL Database, elastické fondy, databází a brány firewall."
+title: Ukázkové skripty Azure PowerShellu pro službu SQL Database | Microsoft Docs
+description: Ukázkové skripty Azure PowerShellu, které vám pomůžou vytvářet a spravovat servery služby Azure SQL Database, elastické fondy, databáze a brány firewall.
 services: sql-database
 documentationcenter: sql-database
 author: CarlRabeler
-manager: jhubbard
+manager: craigg
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
 ms.service: sql-database
 ms.custom: overview-samples, mvc
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: On Demand
 ms.date: 06/23/2017
-ms.author: janeng
-ms.openlocfilehash: fd60a8987e6c57cf72eb7766f6a1b784e46a894d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
-ms.translationtype: MT
+ms.author: carlrab
+ms.openlocfilehash: 63be3858bf159195acb99821a17447b7f05d7917
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-powershell-samples-for-azure-sql-database"></a>Ukázek Azure PowerShell pro Azure SQL Database
+# <a name="azure-powershell-samples-for-azure-sql-database"></a>Ukázky v Azure PowerShellu pro službu Azure SQL Database
 
-Následující tabulka obsahuje odkazy na ukázkové skripty prostředí Azure PowerShell pro Azure SQL Database.
+Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu pro službu Azure SQL Database.
 
 | |  |
 |---|---|
-|**Vytvoření jedné databáze a fondu elastické databáze**||
-| [Vytvořte jednu databázi a nakonfigurujte pravidlo brány firewall](scripts/sql-database-create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript prostředí PowerShell vytvoří jednu databázi Azure SQL a nakonfiguruje pravidla brány firewall na úrovni serveru. |
-| [Vytvoření elastických fondů a přesunutí databází ve fondu](scripts/sql-database-move-database-between-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript prostředí PowerShell vytvoří fondů elastické databáze SQL Azure a přesune databáze ve fondu a změny úrovně výkonu.|
-|**Konfigurace geografická replikace a převzetí služeb při selhání**||
-| [Konfigurace a převzetí služeb při selhání jedné databáze používá aktivní geografickou replikaci](scripts/sql-database-setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript prostředí PowerShell nakonfiguruje aktivní geografickou replikací pro jednu databázi Azure SQL a převezme na sekundární repliku. |
-| [Konfigurace a převzetí služeb při selhání ve fondu databáze používá aktivní geografickou replikaci](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript prostředí PowerShell nakonfiguruje aktivní geografickou replikací pro Azure SQL database v elastický fond SQL a převezme na sekundární repliku. |
-| [Konfigurace a převzetí služeb při selhání a převzetí služeb při selhání skupiny pro jednu databázi (preview)](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript prostředí PowerShell nakonfiguruje skupinu převzetí služeb při selhání pro instanci serveru Azure SQL Database, přidává databáze ke skupině převzetí služeb při selhání a převezme na sekundární server |
-|**Škálování izolovaných databází a fondu elastické databáze**||
-| [Škálování jedné databáze](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Toto monitorování skriptu prostředí PowerShell metriky výkonu databáze Azure SQL, škálovatelná pro vyšší úroveň výkonu a vytvoří pravidlo výstrahy na jednom metrik výkonu. |
-| [Škálování fondu elastické databáze](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Toto monitorování skriptu prostředí PowerShell metriky výkonu fondu elastické databáze Azure SQL Database škáluje na vyšší úroveň výkonu a vytvoří pravidlo výstrahy na jednom metrik výkonu.  |
-| **Auditování a zjišťování hrozeb** |
-| [Konfigurace auditování a detekce hrozeb](scripts/sql-database-auditing-and-threat-detection-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript prostředí PowerShell nakonfiguruje zásady detekce hrozeb a auditování pro databázi Azure SQL. |
-| **Obnovit, kopírování a importování databáze.**||
-| [Obnovení databáze](scripts/sql-database-restore-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript prostředí PowerShell obnoví databázi Azure SQL z geograficky redundantní zálohy a obnovení odstraněné databáze Azure SQL nejnovější zálohu. |
-| [Zkopírujte databázi do nového serveru](scripts/sql-database-copy-database-to-new-server-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript prostředí PowerShell vytvoří kopii existující databázi Azure SQL v nový server Azure SQL. |
-| [Import ze souboru bacpac souboru databáze](scripts/sql-database-import-from-bacpac-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript Powershellu importuje ze souboru bacpac souboru databáze serveru Azure SQL. |
-| **Synchronizaci dat mezi databázemi**||
-| [Synchronizaci dat mezi databází SQL](scripts/sql-database-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript prostředí PowerShell nakonfiguruje synchronizaci dat pro synchronizaci mezi více databází Azure SQL. |
-| [Synchronizaci dat mezi SQL Database a SQL Server na místě](scripts/sql-database-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript prostředí PowerShell nakonfiguruje synchronizaci dat pro synchronizaci mezi Azure SQL database a místní databázi systému SQL Server. |
-| [Aktualizace schématu synchronizace synchronizaci dat SQL](scripts/sql-database-sync-update-schema.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript prostředí PowerShell přidá nebo odebere položky ze synchronizace dat schématu synchronizace. |
+|**Vytvoření izolované databáze a elastického fondu**||
+| [Vytvoření izolované databáze a konfigurace pravidla brány firewall](scripts/sql-database-create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří izolovanou databázi SQL Azure a nakonfiguruje pravidlo brány firewall na úrovni serveru. |
+| [Vytváření elastických fondů a přesun databází ve fondu](scripts/sql-database-move-database-between-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří elastické fondy Azure SQL Database, přesune databáze ve fondu a změní úrovně výkonu.|
+|**Konfigurace geografické replikace a převzetí služeb při selhání**||
+| [Konfigurace a převzetí služeb při selhání izolované databáze s využitím aktivní geografické replikace](scripts/sql-database-setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje aktivní geografickou replikaci pro izolovanou databázi SQL Azure a převezme její služby při selhání do sekundární repliky. |
+| [Konfigurace a převzetí služeb při selhání databáze ve fondu s využitím aktivní geografické replikace](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje aktivní geografickou replikaci pro databázi SQL Azure v elastickém fondu SQL a převezme její služby při selhání do sekundární repliky. |
+| [Konfigurace a převzetí služeb při selhání skupiny převzetí služeb při selhání pro izolovanou databázi (Preview)](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu nakonfiguruje skupinu převzetí služeb při selhání pro instanci serveru služby Azure SQL Database, do této skupiny převzetí služeb při selhání přidá databázi a převezme její služby při selhání na sekundární server. |
+|**Škálování izolované databáze a elastického fondu**||
+| [Škálování izolované databáze](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu monitoruje metriky výkonu databáze SQL Azure, škáluje ji na vyšší úroveň výkonu a vytvoří pravidlo upozornění na jednu z metrik výkonu. |
+| [Škálování elastického fondu](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu monitoruje metriky výkonu elastického fondu Azure SQL Database, škáluje ho na vyšší úroveň výkonu a vytvoří pravidlo upozornění na jednu z metrik výkonu.  |
+| **Auditování a detekce hrozeb** |
+| [Konfigurace auditování a detekce hrozeb](scripts/sql-database-auditing-and-threat-detection-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje zásady auditování a detekce hrozeb pro databázi SQL Azure. |
+| **Obnovení, kopírování a import databáze**||
+| [Obnovení databáze](scripts/sql-database-restore-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu obnoví databázi SQL Azure z geograficky redundantní zálohy a odstraněnou databázi SQL Azure z poslední zálohy. |
+| [Kopírování databáze na nový server](scripts/sql-database-copy-database-to-new-server-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu vytvoří kopii stávající databáze SQL Azure na novém serveru SQL Azure. |
+| [Import databáze ze souboru bacpac](scripts/sql-database-import-from-bacpac-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu importuje databázi na server SQL Azure ze souboru bacpac. |
+| **Synchronizace dat mezi databázemi**||
+| [Synchronizace dat mezi databázemi SQL](scripts/sql-database-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu nakonfiguruje Synchronizaci dat pro synchronizaci mezi několika databázemi SQL Azure. |
+| [Synchronizace dat mezi službou SQL Database a místním SQL Serverem](scripts/sql-database-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu nakonfiguruje Synchronizaci dat pro synchronizaci mezi databází SQL Azure a místní databází SQL Serveru. |
+| [Aktualizace schématu synchronizace pro Synchronizaci dat SQL](scripts/sql-database-sync-update-schema.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu přidá položky do schématu synchronizace pro Synchronizaci dat nebo je z něj odebere. |
 |||

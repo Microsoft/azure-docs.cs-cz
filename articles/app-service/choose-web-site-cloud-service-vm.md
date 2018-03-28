@@ -1,8 +1,8 @@
 ---
-title: "Porovnání služeb Azure App Service, Virtual Machines, Service Fabric a Cloud Services | Dokumentace Microsoftu"
-description: "Zjistěte, jak si pro hostování webových aplikací vybrat mezi službami Azure App Service, Virtual Machines, Service Fabric a Cloud Services."
+title: Porovnání služeb Azure App Service, Virtual Machines, Service Fabric a Cloud Services | Dokumentace Microsoftu
+description: Zjistěte, jak si pro hostování webových aplikací vybrat mezi službami Azure App Service, Virtual Machines, Service Fabric a Cloud Services.
 services: app-service\web, virtual-machines, cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: ggailey777
 manager: erikre
 editor: jimbe
@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 627782d3d6dd9f2eeff1b79e9cf721f9a4eb4ac2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f930cec984a8b92e00ec613ce3bba91a40518911
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porovnání služeb App Service, Virtual Machines, Service Fabric a Cloud Services
 ## <a name="overview"></a>Přehled
@@ -49,7 +49,7 @@ Následující tabulka porovnává možnosti služeb App Service, Cloud Services
 | Hostování vrstvy webů nebo webových služeb z vícevrstvé architektury |× |× |× |× | |
 | Hostování střední vrstvy vícevrstvé architektury |× |× |× |× |Webové aplikace App Service můžou snadno hostovat střední vrstvu rozhraní REST API a funkce [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) může hostovat úlohy zpracování na pozadí. WebJobs můžete spouštět na vyhrazeném webu a dosáhnout tak nezávislého škálování této úrovně. |
 | Integrovaná podpora MySQL jako služby |× |× | | | |
-| Podpora ASP.NET, klasického ASP, Node.js, PHP a Pythonu |× |× |× |× |Service Fabric podporuje vytvoření webového front-endu pomocí [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md), případně můžete nasadit jakýkoli typ aplikace (Node.js, Java atd.) jako [spustitelný soubor typu Host](../service-fabric/service-fabric-deploy-existing-app.md). |
+| Podpora ASP.NET, klasického ASP, Node.js, PHP a Pythonu |× |× |× |× |Service Fabric podporuje vytvoření webového front-endu pomocí [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md), případně můžete nasadit jakýkoli typ aplikace (Node.js, Java atd.) jako [spustitelný soubor typu Host](../service-fabric/service-fabric-guest-executables-introduction.md). |
 | Horizontální navýšení kapacity na několik instancí bez opětovného nasazení |× |× |× |× |Služba Virtual Machines se může škálovat na více instancí, ale služby v ní spuštěné musí být napsané tak, aby si s tímto škálováním na více instancí poradily. Je potřeba nakonfigurovat nástroj pro vyrovnávání zatížení tak, aby směroval požadavky napříč počítači, a vytvořit skupinu vztahů, aby se zabránilo souběžnému restartování všech instancí kvůli údržbě nebo selhání hardwaru. |
 | Podpora protokolu SSL |× |× |× |× |Webové aplikace App Service podporují SSL pro vlastní názvy domén pouze v režimu Basic a Standard. Informace o použití SSL s webovými aplikacemi najdete v tématu [Konfigurace certifikátu SSL pro web Azure](app-service-web-tutorial-custom-ssl.md). |
 | Integrace se sadou Visual Studio |× |× |× |× | |
@@ -59,7 +59,7 @@ Následující tabulka porovnává možnosti služeb App Service, Cloud Services
 | Podpora služby [Azure Traffic Manager](/azure/traffic-manager/) |× |× |× |× | |
 | Integrované monitorování koncových bodů |× |× |× | | |
 | Přístup k serveru přes Vzdálenou plochu | |× |× |× | |
-| Instalace jakékoli vlastní Instalační služby MSI | |× |× |× |Service Fabric umožňuje hostovat jakýkoli spustitelný soubor jako [spustitelný soubor typu Host](../service-fabric/service-fabric-deploy-existing-app.md), případně můžete na virtuální počítače nainstalovat jakoukoli aplikaci. |
+| Instalace jakékoli vlastní Instalační služby MSI | |× |× |× |Service Fabric umožňuje hostovat jakýkoli spustitelný soubor jako [spustitelný soubor typu Host](../service-fabric/service-fabric-guest-executables-introduction.md), případně můžete na virtuální počítače nainstalovat jakoukoli aplikaci. |
 | Možnost definovat a spouštět úlohy při spuštění | |× |× |× | |
 | Možnost naslouchat událostem Trasování událostí pro Windows | |× |× |× | |
 

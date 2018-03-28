@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure Database for MySQL z Pythonu"
-description: "V tomto rychlém startu najdete vzorový kód Pythonu, který můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL."
+title: Připojení k Azure Database for MySQL z Pythonu
+description: V tomto rychlém startu najdete vzorový kód Pythonu, který můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 4003c1258fcc0a6d04c4ae8d234eba4d0224b8a0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 08725493f9d050da762a6527363b77af6eeed6e6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Použití Pythonu k připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí [Pythonu](https://python.org). Používá příkazy jazyka SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac OS, Ubuntu Linux a Windows. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí Pythonu a teprve začínáte pracovat se službou Azure Database for MySQL.
@@ -37,7 +37,7 @@ Nainstalujte na svém počítači [Python](https://www.python.org/downloads/) a 
 1. V systému Linux (Ubuntu) je Python obvykle nainstalován jako součást výchozí instalace.
 2. Spusťte prostředí Bash a zkontrolujte instalaci Pythonu. Spuštěním příkazu `python -V` s použitím přepínače V (velké písmeno) zobrazte číslo verze.
 3. Zkontrolujte instalaci PIP spuštěním příkazu `pip show pip -V`, který zobrazí číslo verze. 
-4. PIP může být součástí některých verzí Pythonu. Pokud PIP není nainstalovaný, můžete balíček [PIP] (https://pip.pypa.io/en/stable/installing/) nainstalovat spuštěním příkazu `sudo apt-get install python-pip`.
+4. PIP může být součástí některých verzí Pythonu. Pokud PIP není nainstalovaný, můžete balíček [PIP](https://pip.pypa.io/en/stable/installing/) nainstalovat spuštěním příkazu `sudo apt-get install python-pip`.
 5. Aktualizujte PIP na nejnovější verzi spuštěním příkazu `pip install -U pip`.
 6. Nainstalujte konektor MySQL pro Python a jeho závislosti pomocí tohoto příkazu PIP:
 

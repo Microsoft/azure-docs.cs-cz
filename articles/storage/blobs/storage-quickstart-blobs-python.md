@@ -1,19 +1,19 @@
 ---
-title: "Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Pythonu | Microsoft Docs"
-description: "V tomto rychlém startu vytvoříte účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Python k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru."
+title: Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Pythonu | Microsoft Docs
+description: V tomto rychlém startu vytvoříte účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Python k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: a82ec92449730a784e7cd36d7f364a9a4516c15f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: d4c489bc41a9c04b15e2ee28b944edc1f15ef81c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Pythonu
 
@@ -23,7 +23,7 @@ V tomto rychlém startu zjistíte, jak pomocí Pythonu nahrávat, stahovat a vyp
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba: 
 * Nainstalovat [Python](https://www.python.org/downloads/).
-* Stáhnout a nainstalovat [sadu SDK služby Azure Storage pro Python](storage-python-how-to-use-blob-storage.md#download-and-install-azure-storage-sdk-for-python). 
+* Stáhnout a nainstalovat [sadu SDK služby Azure Storage pro Python](storage-python-how-to-use-blob-storage.md). 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -160,6 +160,18 @@ block_blob_service.delete_container(container_name)
 os.remove(full_path_to_file)
 os.remove(full_path_to_file2)
 ```
+## <a name="resources-for-developing-python-applications-with-blobs"></a>Zdroje informací pro vývoj aplikací v Pythonu s využitím objektů blob
+
+Prohlédněte si tyto další zdroje informací o vývoji v Pythonu s využitím úložiště objektů blob:
+
+### <a name="binaries-and-source-code"></a>Binární soubory a zdrojový kód
+
+- Prohlédněte, stáhněte a nainstalujte si [zdrojový kód klientské knihovny pro Python](https://github.com/Azure/azure-storage-python) pro službu Azure Storage na GitHubu.
+
+### <a name="client-library-reference-and-samples"></a>Klientská knihovna – referenční informace a ukázky
+
+- Další informace o klientské knihovně pro Python najdete v [referenčních informacích k rozhraní Python API](https://docs.microsoft.com/python/api/overview/azure/storage).
+- Prozkoumejte [ukázky pro úložiště objektů blob](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob) napsané s využitím klientské knihovny pro Python.
 
 ## <a name="next-steps"></a>Další kroky
  
@@ -168,5 +180,4 @@ V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním di
 > [!div class="nextstepaction"]
 > [Operace s úložištěm objektů blob – postupy](./storage-python-how-to-use-blob-storage.md)
  
-
 Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

@@ -6,15 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/15/2017
-ms.topic: tutorial
+ms.date: 03/21/2018
+ms.topic: article
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7b9f9f8295aac0920ae4726289c535aae12c4482
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
-ms.translationtype: HT
+ms.openlocfilehash: c7a632aba678e733f9ff3134b292b571bf2d78b0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -30,10 +30,16 @@ Když narazíte na problém, získejte další informace o stavu vašeho zaříz
    docker logs <container name>
    ```
 
-* Zobrazte zprávy procházející přes centrum Edge a získejte přehled o aktualizacích vlastností zařízení s využitím podrobných protokolů z kontejnerů modulu runtime. Pokud postupujete podle článků rychlý start, můžete chtít přidat možnost --auto-cert-gen-force-no-passwords.
+* Zobrazte zprávy procházející přes centrum Edge a získejte přehled o aktualizacích vlastností zařízení s využitím podrobných protokolů z kontejnerů modulu runtime.
 
    ```cmd
    iotedgectl setup --connection-string "{device connection string}" --runtime-log-level debug
+   ```
+   
+* Zobrazte podrobné protokoly z příkazů iotedgectl:
+
+   ```cmd
+   iotedgectl --verbose DEBUG <command>
    ```
 
 * Pokud dochází k problémům s připojením, zkontrolujte proměnné prostředí vašeho hraničního zařízení, například připojovací řetězec zařízení:
@@ -98,7 +104,8 @@ Agent Edge nemá oprávnění pro přístup k imagi modulu.
 Zkuste znovu spustit příkaz `iotedgectl login`.
 
 ## <a name="iotedgectl-cant-find-docker"></a>Příkaz iotedgectl nemůže najít Docker
-Příkazu iotedgectl se nedaří provést příkaz k instalaci nebo spuštění a zapíše do protokolů následující zprávu:
+
+Příkazy `iotedgectl setup` nebo `iotedgectl start` služeb při selhání a tisk do protokolů se následující zpráva:
 ```output
 File "/usr/local/lib/python2.7/dist-packages/edgectl/host/dockerclient.py", line 98, in get_os_type
   info = self._client.info()
@@ -114,5 +121,25 @@ Příkaz iotedgectl nemůže najít Docker, což je nezbytný předpoklad.
 ### <a name="resolution"></a>Řešení
 Nainstalujte Docker, ujistěte se, že je spuštěný, a zkuste to znovu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="iotedgectl-setup-fails-with-an-invalid-hostname"></a>Instalační program iotedgectl selže s neplatný název hostitele
+
+Příkaz `iotedgectl setup` se nezdaří a zobrazí se následující zpráva: 
+
+```output
+Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
+```
+
+### <a name="root-cause"></a>Původní příčina
+K této chybě dojde, když spustíte hranou IoT na virtuálním počítači Azure Windows. Názvy hostitelů vygenerované tyto počítače jsou obvykle velmi dlouhé a může být vyšší než limit 64 znaků. 
+
+### <a name="resolution"></a>Řešení
+Kratší názvy virtuálních počítačů mají kratší názvy hostitelů, takže pokud vytvoříte nové virtuální počítače pro IoT Edge jim poskytnout stručného názvy, aby se tato chyba. 
+
+Když se tato chyba, abyste ho mohli vyřešit tak, že zadáte vlastní název hostitele pomocí následujícího příkazu: 
+
+```input
+iotedgectl setup --connection-string "<connection string>" --auto-cert-gen-force-no-passwords --edge-hostname "<hostname>"
+```
+
+## <a name="next-steps"></a>Další postup
 Myslíte si, že jste v platformě IoT Edge našli chybu? [Odešlete problém](https://github.com/Azure/iot-edge/issues), abychom mohli pokračovat ve zlepšování. 

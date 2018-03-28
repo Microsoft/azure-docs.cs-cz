@@ -1,35 +1,35 @@
 ---
-title: "Vytvoření webové aplikace ASP.NET Core v Azure | Microsoft Docs"
-description: "Nasazením výchozí webové aplikace ASP.NET Core se naučíte, jak spouštět webové aplikace ve službě Azure App Service."
+title: Vytvoření webové aplikace ASP.NET Core v Azure | Dokumentace Microsoftu
+description: Nasazením výchozí webové aplikace ASP.NET Core se naučíte, jak spouštět webové aplikace ve službě Azure App Service.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/05/2018
+ms.date: 03/18/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7f098b6c66109cb5cafbcb19e463daa15a65b59
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 4b7dbf7609b6ca7fb11391e01a1ac0ce2bc2e897
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Core v Azure
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v .NET Core ve službě App Service v Linuxu](./containers/quickstart-dotnetcore.md).
+> Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v .NET Core ve službě App Service v Linuxu](./containers/quickstart-dotnetcore.md). 
 >
 > Pokud hledáte postup pro aplikaci ASP.NET Framework, přečtěte si téma [Vytvoření webové aplikace ASP.NET Framework v Azure](app-service-web-get-started-dotnet-framework.md). 
 >
 
-[Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto kurzu Rychlý start se dozvíte, jak nasadit svoji první webovou aplikaci ASP.NET Core do služby Azure Web Apps. Po dokončení kurzu budete mít skupinu prostředků, která se bude skládat z plánu služby App Service a webové aplikace Azure s nasazenou webovou aplikací.
+[Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto kurzu Rychlý start se dozvíte, jak nasadit svoji první webovou aplikaci ASP.NET Core do služby Azure Web Apps. Po dokončení kurzu budete mít skupinu prostředků, která se bude skládat z plánu služby App Service a webové aplikace Azure s nasazenou webovou aplikací. Můžete se [podívat na video](#video), které ukazuje provedení těchto kroků zcela v rámci sady Visual Studio 2017.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -173,7 +173,7 @@ Po dokončení nasazení přejděte znovu na `http://<app_name>.azurewebsites.ne
 
 ## <a name="manage-the-azure-web-app"></a>Správa webové aplikace Azure
 
-Pokud chcete webovou aplikaci spravovat, přejděte na portál <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+Pokud chcete webovou aplikaci spravovat, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
 V levé nabídce klikněte na **App Services** a potom vyberte název své webové aplikace Azure.
 
@@ -181,11 +181,15 @@ V levé nabídce klikněte na **App Services** a potom vyberte název své webov
 
 Zobrazí se stránka s přehledem vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. 
 
-![Stránka služby App Service na portálu Azure Portal](./media/app-service-web-get-started-dotnet/web-app-blade.png)
+![Stránka služby App Service na webu Azure Portal](./media/app-service-web-get-started-dotnet/web-app-blade.png)
 
 Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplikace. 
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
+
+## <a name="video"></a>Video
+
+> [!VIDEO https://www.youtube-nocookie.com/embed/AEfG9PWPAxg]
 
 ## <a name="next-steps"></a>Další kroky
 
