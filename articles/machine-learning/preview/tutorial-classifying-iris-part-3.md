@@ -1,23 +1,23 @@
 ---
-title: Kurz nasazení modelu pro služby Azure Machine Learning (Preview) | Microsoft Docs
-description: V tomto kurzu na pokračování se dozvíte, jak komplexně používat služby Azure Machine Learning (Preview). Toto je třetí část, ve které se probírá nasazení modelu.
+title: Kurz nasazení modelu pro služby Azure Machine Learning
+description: V tomto kurzu na pokračování se dozvíte, jak komplexně používat služby Azure Machine Learning. Toto je třetí část, ve které se probírá nasazení modelu.
 services: machine-learning
-author: raymondl
-ms.author: raymondl, j-martens, aashishb
+author: aashishb
+ms.author: aashishb
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
+ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/7/2018
-ms.openlocfilehash: 13ddc0ef8c7eac86e6cd7abb684ce35ae18fba84
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.date: 3/13/2018
+ms.openlocfilehash: 87d1e605bfd7603e4e07f6b427033fe2c1d2b83e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-classify-iris-part-3-deploy-a-model"></a>Kurz: Klasifikace Iris, část 3 – Nasazení modelu
+# <a name="tutorial-3-classify-iris-deploy-a-model"></a>Kurz 3: Klasifikace Iris – Nasazení modelu
 Azure Machine Learning (Preview) představuje integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce. Datoví vědci pomocí nich můžou připravovat data, vyvíjet experimenty a nasazovat modely na úrovni cloudu.
 
 Tento kurz je **třetí částí z třídílné série**. V této části kurzu provedete pomocí služby Machine Learning (Preview) následující úlohy:
@@ -30,17 +30,15 @@ Tento kurz je **třetí částí z třídílné série**. V této části kurzu 
 > * Spuštění webové služby v reálném čase
 > * Zkoumání výstupních dat objektů blob 
 
-Tento kurz používá nadčasovou [datovou sadu Iris](https://en.wikipedia.org/wiki/iris_flower_data_set). Snímky obrazovky jsou specifické pro systém Windows, ale prostředí v systému Mac OS je téměř shodné.
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Tento kurz používá nadčasovou [datovou sadu Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set). 
 
 ## <a name="prerequisites"></a>Požadavky
-Měli byste si nejdříve projít první dva kurzy z této série:
 
-   * Postupujte podle [kurzu přípravy dat](tutorial-classifying-iris-part-1.md) a vytvořte prostředky služby Machine Learning a nainstalujte aplikaci Azure Machine Learning Workbench.
-   * Postupujte podle [kurzu sestavení modelu](tutorial-classifying-iris-part-2.md) a vytvořte ve službě Machine Learning model logistické regrese.
-
-Potřebujete nainstalovaný a místně spuštěný modul Docker. Alternativně můžete nasazení provést do clusteru Azure Container Service v Azure.
+Pro absolvování tohoto kurzu potřebujete:
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+- Účet Experimentování a nainstalovanou aplikaci Azure Machine Learning Workbench, jak je popsáno v tomto [rychlém startu](quickstart-installation.md).
+- Model klasifikace z [části 2 tohoto kurzu](tutorial-classifying-iris-part-2.md).
+- Nainstalovaný a místně spuštěný modul Docker.
 
 ## <a name="download-the-model-pickle-file"></a>Stažení souboru pickle modelu
 V předchozí části kurzu se skript **iris_sklearn.py** spouštěl místně v aplikaci Machine Learning Workbench. Tento krok zajistil serializaci modelu logistické regrese pomocí oblíbeného balíčku serializace objektů Python [pickle](https://docs.python.org/3/library/pickle.html). 
@@ -91,7 +89,7 @@ Pokud společně se souborem modelu chcete nasadit i webovou službu, potřebuje
 
 4. Pokud chcete získat soubor schématu, spusťte skript. Na příkazovém řádku vyberte prostředí **local** a skript **score_iris.py** a pak vyberte **Spustit**. 
 
-5. Tento skript vytvoří v části **Výstupy** soubor JSON, ve kterém je zaznamenané schéma vstupních dat vyžadované modelem.
+   Tento skript vytvoří v části **Výstupy** soubor JSON, ve kterém je zaznamenané schéma vstupních dat vyžadované modelem.
 
 6. Všimněte si podokna **Úlohy** na pravé straně podokna **Řídicí panel projektu**. Počkejte, až se u nejnovější úlohy **score_iris.py** zobrazí zelený stav **Dokončeno**. Potom vyberte hypertextový odkaz **score_iris.py** u nejnovějšího spuštění úlohy a prohlédněte si podrobnosti o spuštění. 
 
@@ -128,7 +126,10 @@ Pomocí nasazení v _místním režimu_ proveďte spuštění v kontejnerech Doc
 _Místní režim_ můžete použít pro vývoj a testování. K provedení následujících kroků pro zprovoznění modelu je potřeba, aby byl modul Docker spuštěný místně. Pomocí příznaku `-h` na konci každého příkazu můžete zobrazit odpovídající zprávu nápovědy.
 
 >[!NOTE]
->Pokud nemáte místní modul Docker, můžete místo toho v Azure vytvořit cluster k nasazení. Jenom po tomto kurzu nezapomeňte cluster odstranit, aby vám zbytečně nenabíhaly poplatky.
+>Pokud nemáte modul Docker v místním počítači, můžete místo toho v Azure vytvořit cluster k nasazení. Cluster můžete ponechat pro opakované použití nebo ho po těchto kurzech odstranit, aby vám zbytečně nenabíhaly poplatky.
+
+>[!NOTE]
+>Webové služby nasazené místně se nezobrazí v seznamu služeb na webu Azure Portal. Budou spuštěné v Dockeru na místním počítači.
 
 1. Otevřete rozhraní příkazového řádku (CLI).
    V aplikaci Machine Learning Workbench v nabídce **Soubor** vyberte **Otevřít příkazový řádek**.

@@ -1,23 +1,23 @@
 ---
-title: "Vytvoření datové továrny Azure pomocí .NET | Dokumentace Microsoftu"
-description: "Vytvořte datovou továrnu Azure ke zkopírování dat z jednoho umístění ve službě Azure Blob Storage do jiného umístění v stejné službě."
+title: Vytvoření datové továrny Azure pomocí .NET | Dokumentace Microsoftu
+description: Vytvořte datovou továrnu Azure ke zkopírování dat z jednoho umístění v úložišti objektů blob v Azure do jiného.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: b430f5932bcd54d5e2ab787fb6c4491b48dbc416
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 4829fde008516aff70652cff337838a162582c24
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Vytvoření datové továrny a kanálu s využitím .NET SDK
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -105,7 +105,7 @@ Stáhněte sadu [Azure .NET SDK](http://azure.microsoft.com/downloads/) a nainst
 Postupujte podle pokynů v [tomto článku](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) a proveďte následující úlohy: 
 
 1. **Vytvořte aplikaci Azure Active Directory**. V Azure Active Directory vytvořte aplikaci reprezentující aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).
-2. Pomocí pokynů v části tohoto článku věnované **získání ID aplikace a ověřovacího klíče** získejte **ID aplikace** a **ověřovací klíč**\*\*. Poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
+2. Pomocí pokynů v části tohoto článku věnované **získání ID aplikace a ověřovacího klíče** získejte **ID aplikace** a **ověřovací klíč****. Poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
 3. Pomocí pokynů v části tohoto článku věnované **získání ID tenanta** získejte **ID tenanta**. Poznamenejte si tuto hodnotu. 
 4. Přiřaďte aplikaci k roli **Přispěvatel** na úrovni předplatného, aby aplikace mohla v předplatném vytvářet datové továrny. Pomocí pokynů v části tohoto článku věnované **přiřazení aplikace k roli**. 
 

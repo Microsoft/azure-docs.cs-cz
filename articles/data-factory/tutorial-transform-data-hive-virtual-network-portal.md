@@ -1,8 +1,8 @@
 ---
-title: "Transformace dat pomocí Hivu ve službě Azure Virtual Network | Dokumentace Microsoftu"
-description: "Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Hivu v Azure Data Factory."
+title: Transformace dat pomocí Hivu ve službě Azure Virtual Network | Dokumentace Microsoftu
+description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Hivu v Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
 ms.author: shengc
-ms.openlocfilehash: a7575549225d47e5266ca7e1778c3e61835de1cc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8711d7ed1d02f0960ef00c1cf5053e97aa00ad5c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
 V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Data Factory, který transformuje data pomocí aktivity Hivu v clusteru HDInsight ve službě Azure Virtual Network. V tomto kurzu provedete následující kroky:
@@ -114,7 +114,7 @@ Vzhledem k tomu, že cluster Hadoop je ve virtuální síti, musíte do stejné 
 2. V okně **Instalace prostředí Integration Runtime** vyberte možnost **Provést přesun dat a odeslání aktivit do externích výpočetních prostředí** a klikněte na **Další**. 
 
    ![Výběr možnosti Provést přesun dat a odeslání aktivit](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-perform-data-movement-compute-option.png)
-3. Vyberte **Veřejná síť** a klikněte na **Další**.
+3. Vyberte **Privátní síť** a klikněte na **Další**.
     
    ![Výběr privátní sítě](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-private-network.png)
 4. Jako **Název** zadejte **MySelfHostedIR** a klikněte na **Další**. 

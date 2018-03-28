@@ -16,7 +16,7 @@ ms.date: 01/23/2018
 ms.author: v-jysur
 ms.openlocfilehash: a51b96641c80a6575c64f58fa09e0bf6078e4185
 ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
 ---

@@ -1,21 +1,21 @@
 ---
-title: "Rychlý start – Vytvoření prvního kontejneru služby Azure Container Instances pomocí webu Azure Portal"
-description: "Nasazení služby Azure Container Instances a zahájení práce"
+title: Rychlý start – Vytvoření prvního kontejneru služby Azure Container Instances pomocí webu Azure Portal
+description: V tomto rychlém startu pomocí webu Azure Portal nasadíte kontejner ve službě Azure Container Instances.
 services: container-instances
 author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 03/19/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 63f22544276da07ec98e779cc524879603655db6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 18238c94ba9acff15497a666a63b65b95779d4ac
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="create-your-first-container-in-azure-container-instances"></a>Vytvoření prvního kontejneru ve službě Azure Container Instances
+# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Rychlý start: Vytvoření prvního kontejneru ve službě Azure Container Instances
 
 Azure Container Instances zjednodušuje vytváření a správu kontejnerů v Azure. V tomto rychlém startu vytvoříte kontejner v Azure a zveřejníte ho na internetu s použitím veřejné IP adresy. Tuto operaci provedete pomocí webu Azure Portal. Po několika kliknutích uvidíte ve svém prohlížeči toto:
 
