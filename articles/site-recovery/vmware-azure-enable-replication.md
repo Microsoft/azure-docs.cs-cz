@@ -1,6 +1,6 @@
 ---
-title: "Povolit replikaci do Azure pro virtuální počítače VMware s Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje, jak nastavit replikaci virtuálních počítačů VMware do Azure pomocí Azure Site Recovery."
+title: Povolit replikaci do Azure pro virtuální počítače VMware s Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak nastavit replikaci virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: asgang
-ms.openlocfilehash: 17cd6a931563c7d33576749453d742aca253526b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 48d84f59a80ea14c2b40821d886fc410c7e3f2c3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolit replikaci do Azure pro virtuální počítače VMware
 
@@ -112,15 +112,15 @@ V dalším kroku ověřit vlastnosti zdrojového počítače. Mějte na paměti,
     Například pokud má zdrojový počítač dva síťové adaptéry a velikost cílového počítače podporuje čtyři, má cílový počítač dva adaptéry. Pokud má zdrojový počítač dva adaptéry, ale podporovaná velikost cíle podporuje pouze jeden, cílového počítače má jenom jeden adaptér.
     - Pokud virtuální počítač má několik síťových adaptérů, budou všechny připojit ke stejné síti. Navíc bude první z nich uvedené v seznamu *výchozí* síťový adaptér ve virtuálním počítači Azure.
 
-### <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
+### <a name="azure-hybrid-benefit"></a>Zvýhodněné hybridní využití Azure
 
-Programu Microsoft Software Assurance zákazníci mohou využít výhody použití Azure hybridní uložit na licenční náklady pro Windows Server počítače, které se migrují do Azure, nebo použít Azure pro zotavení po havárii. Pokud jste vhodné používat Azure hybridní použít využívat, můžete zadat, že virtuální počítač přiřazen této výhody je ten, který vytvoří Azure Site Recovery, pokud dojde převzetí služeb při selhání. Použijte následující postup:
+Programu Microsoft Software Assurance zákazníci mohou využít výhody hybridní Azure, uložte na licenční náklady pro Windows Server počítače, které se migrují do Azure nebo používat Azure pro zotavení po havárii. Pokud jste užívat těžit hybridní Azure, můžete zadat, že virtuální počítač přiřazen této výhody je ten, který vytvoří Azure Site Recovery, pokud dojde převzetí služeb při selhání. Použijte následující postup:
 - Přejděte k části Vlastnosti výpočtů a sítě replikované virtuální počítače.
-- Odpovězte na otázku, která požaduje, pokud máte licence systému Windows Server, že si uživatel opravňuje k Benefitu použití hybridní Azure.
-- Výběrem zaškrtávacího políčka potvrďte, že máte licenci oprávněné systému Windows Server pomocí programu Software Assurance, které můžete použít výhodou použití hybridní na počítači, který bude vytvořena na převzetí služeb při selhání.
+- Odpovězte na otázku, která požaduje, pokud máte licence systému Windows Server, že si uživatel opravňuje k Benefitu hybridní Azure.
+- Výběrem zaškrtávacího políčka potvrďte, že máte licenci oprávněné systému Windows Server pomocí programu Software Assurance, které můžete použít Benefit hybridní Azure na počítači, který bude vytvořena na převzetí služeb při selhání.
 - Uložte nastavení pro replikovaného počítače.
 
-Další informace o [Azure hybridní použití zvýhodnění](https://aka.ms/azure-hybrid-use-benefit-pricing).
+Další informace o [Azure hybridní Benefit](https://aka.ms/azure-hybrid-benefit-pricing).
 
 ## <a name="common-issues"></a>Běžné problémy
 

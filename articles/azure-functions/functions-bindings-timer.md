@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: 6f74dd4d9cb78c1316c87bd5a261e751b9b34923
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 89469af2b1d02ef00fc347e47719956885e7f142
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
@@ -52,6 +52,10 @@ Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) 
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
 {
+    if(myTimer.IsPastDue)
+    {
+        log.Info("Timer is running late!");
+    }
     log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
 }
 ```
@@ -144,19 +148,19 @@ module.exports = function (context, myTimer) {
 
 V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
-Konstruktoru atributu trvá výraz CRON, jak je znázorněno v následujícím příkladu:
+Konstruktoru atributu trvá výraz CRON nebo `TimeSpan`. Můžete použít `TimeSpan` pouze v případě, že funkce aplikace běží na plán služby App Service. Následující příklad ukazuje výraz CRON:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
 {
-   ...
+    if (myTimer.IsPastDue)
+    {
+        log.Info("Timer is running late!");
+    }
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
 }
  ```
-
-Můžete zadat `TimeSpan` místo výraz CRON, pokud vaše aplikace funkce běží na plán služby App Service (není plánu spotřeby).
-
-Úplný příklad najdete v tématu [příklad jazyka C#](#c-example).
 
 ## <a name="configuration"></a>Konfigurace
 
@@ -167,75 +171,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**Typ** | neuvedeno | Musí být nastavena na "timerTrigger". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
 |**Směr** | neuvedeno | Musí být nastavena na "v". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
 |**name** | neuvedeno | Název proměnné, který představuje objekt časovače v kódu funkce. | 
-|**schedule**|**ScheduleExpression**|Spotřeba plánu můžete definovat plány se výraz CRON. Pokud používáte plánu služby App Service, můžete také použít `TimeSpan` řetězec. Následující části popisují CRON výrazy. Můžete umístit výraz plán v nastavení aplikace a nastavte tuto vlastnost na hodnotu uzavřen do **%** znaky, jako v následujícím příkladě: "% NameOfAppSettingWithCRONExpression %". |
+|**schedule**|**ScheduleExpression**|A [výraz CRON](#cron-expressions) nebo [časový interval](#timespan) hodnotu. A `TimeSpan` lze použít pouze pro funkce aplikace, která běží na plán služby App Service. Můžete uvést výraz plán v nastavení aplikace a nastavte tuto vlastnost na název uzavřen do nastavení aplikace **%** znaky, jako v následujícím příkladě: "% NameOfAppSettingWithScheduleExpression %". |
+|**runOnStartup**|**RunOnStartup**|Pokud `true`, funkce je volána při spuštění modulu runtime. Například modul runtime spustí, když aplikaci funkce probudí po přechodu nečinnosti z důvodu nečinnosti. funkce aplikace při restartování z důvodu změn funkce a horizontálně navýší kapacitu aplikaci funkce. Proto **runOnStartup** musí zřídka Pokud někdy být nastavena na `true`, jak bude kód provést v vysoce nepředvídatelným časech. Pokud potřebujete aktivovat funkci mimo plán časovače, můžete vytvořit druhý funkci s typem různých aktivační události a sdílet kód mezi dvě funkce. Například k aktivaci na nasazení můžete [přizpůsobení nasazení](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) k vyvolání funkce second tím, že požadavek HTTP, po dokončení nasazení.|
+|**useMonitor**|**UseMonitor**|Nastavte na `true` nebo `false` indikující, zda plán by se měly monitorovat. Plán monitorování trvá výskytů plán a usnadňuje zajištění, že plán je udržován správně i v případě, že instance funkce aplikaci restartovat. Pokud není explicitně nastavena, výchozí hodnota je `true` pro plány, které mají interval opakování, který je větší než 1 minuta. Pro plány, které aktivují více než jednou za minutu, výchozí hodnota je `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
-
-### <a name="cron-format"></a>Formát procesu CRON 
-
-A [výraz CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression) pro Azure Functions časovač aktivační události obsahuje tyto šesti pole: 
-
-```
-{second} {minute} {hour} {day} {month} {day-of-week}
-```
-
->[!NOTE]   
->Řada výrazů CRON zjistíte online vynechejte `{second}` pole. Pokud zkopírujete z jednoho z nich, přidejte chybějící `{second}` pole.
-
-### <a name="cron-time-zones"></a>Časová pásma procesu CRON
-
-Použít s výrazy CRON výchozí časové pásmo je koordinovaný světový čas (UTC). Pokud chcete, aby vaše výraz CRON založený na jiném časovém pásmu, vytvořte nové nastavení aplikace pro funkce aplikace s názvem `WEBSITE_TIME_ZONE`. Nastavte hodnotu na název požadované časové pásmo, jak je znázorněno [Microsoft časové pásmo Index](https://technet.microsoft.com/library/cc749073(v=ws.10).aspx). 
-
-Například *východní běžný čas* je UTC-05:00. Má vaše časovače aktivovat ještě efektivněji na 10:00 AM EST každý den, použijte následující výraz CRON účty pro časové pásmo UTC:
-
-```json
-"schedule": "0 0 15 * * *",
-``` 
-
-Alternativně můžete přidat nové nastavení aplikace pro funkce aplikace s názvem `WEBSITE_TIME_ZONE` a nastavte hodnotu na **východní běžný čas**.  Následující výraz CRON pak může použít pro 10:00 AM EST: 
-
-```json
-"schedule": "0 0 10 * * *",
-``` 
-### <a name="cron-examples"></a>Příklady procesu CRON
-
-Zde jsou některé příklady CRON výrazy, které můžete použít pro aktivační událost časovače v Azure Functions. 
-
-K aktivaci každých pět minut:
-
-```json
-"schedule": "0 */5 * * * *"
-```
-
-K aktivaci jednou v horní části každou hodinu:
-
-```json
-"schedule": "0 0 * * * *",
-```
-
-K aktivaci každé dvě hodiny:
-
-```json
-"schedule": "0 0 */2 * * *",
-```
-
-K aktivaci jednou za hodinu z 9: 00 do 17: 00:
-
-```json
-"schedule": "0 0 9-17 * * *",
-```
-
-Spouštět v 9:30:00 každý den:
-
-```json
-"schedule": "0 30 9 * * *",
-```
-
-Spouštět v 9:30:00 každý den v týdnu:
-
-```json
-"schedule": "0 30 9 * * 1-5",
-```
 
 ## <a name="usage"></a>Využití
 
@@ -246,20 +186,91 @@ Po vyvolání funkce aktivační událost časovače [časovače objekt](https:/
     "Schedule":{
     },
     "ScheduleStatus": {
-        "Last":"2016-10-04T10:15:00.012699+00:00",
+        "Last":"2016-10-04T10:15:00+00:00",
+        "LastUpdated":"2016-10-04T10:16:00+00:00",
         "Next":"2016-10-04T10:20:00+00:00"
     },
     "IsPastDue":false
 }
 ```
 
+`IsPastDue` Vlastnost je `true` Pokud je novější než naplánované aktuální volání funkce. Například funkce restartování aplikace může dojít k vyvolání k být načteni.
+
+## <a name="cron-expressions"></a>Výrazy procesu CRON 
+
+Výraz CRON pro aktivační událost časovače Azure Functions obsahuje šest polí: 
+
+`{second} {minute} {hour} {day} {month} {day-of-week}`
+
+Každé pole může mít jednu z následujících typů hodnot:
+
+|Typ  |Příklad:  |Při aktivaci  |
+|---------|---------|---------|
+|Konkrétní hodnotou |<nobr>"0 5 * * * *"</nobr>|v hh:05:00, kde je hh každou hodinu (jednou za hodinu)|
+|Všechny hodnoty (`*`)|<nobr>"0 * 5 * * *"</nobr>|v 5:mm: 00 každý den, kde je mm každou minutu hodinu (60 x denně)|
+|Rozsah (`-` operátor)|<nobr>"5-7 * * * * *"</nobr>|v hh:mm:05, hh:mm:06 a hh:mm:07, kde je HH: mm každou minutu každou hodinu (3krát minuty)|  
+|Sadu hodnot (`,` operátor)|<nobr>"5,8,10 * * * * *"</nobr>|v hh:mm:05, hh:mm:08 a hh:mm:10, kde je HH: mm každou minutu každou hodinu (3krát minuty)|
+|Hodnotu intervalu (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|v hh:05:00, hh:10:00, hh:15:00, a tak dále prostřednictvím hh:55:00, kde je hh každou hodinu (12krát více než jedna hodina)|
+
+### <a name="cron-examples"></a>Příklady procesu CRON
+
+Zde jsou některé příklady CRON výrazy, které můžete použít pro aktivační událost časovače v Azure Functions.
+
+|Příklad:|Při aktivaci  |
+|---------|---------|
+|"0 */5 * * * *"|každých pět minut|
+|"0 0 * * * *"|jednou v horní části každou hodinu|
+|"0 0 */2 * * *"|každé dvě hodiny|
+|"0 0 9-17 * * *"|jednou za hodinu z 9: 00 do 17: 00|
+|"0 30 9 * * *"|v 9:30:00 každý den|
+|"0 30 9 * * 1-5"|v 9:30:00 každý den v týdnu|
+
+>[!NOTE]   
+>Můžete najít CRON příklady výrazů online, ale vynechejte kolika z nich `{second}` pole. Pokud zkopírujete z jednoho z nich, přidejte chybějící `{second}` pole. Obvykle je vhodné nula v tomto poli není hvězdičku.
+
+### <a name="cron-time-zones"></a>Časová pásma procesu CRON
+
+Čísla ve výrazu CRON odkazovat na čas a datum, není časové období. Například 5 v `hour` pole se vztahuje k 5:00 AM, není každých 5 hodin.
+
+Použít s výrazy CRON výchozí časové pásmo je koordinovaný světový čas (UTC). Pokud chcete, aby vaše výraz CRON založený na jiném časovém pásmu, vytvořte nastavení aplikace pro funkce aplikace s názvem `WEBSITE_TIME_ZONE`. Nastavte hodnotu na název požadované časové pásmo, jak je znázorněno [Microsoft časové pásmo Index](https://technet.microsoft.com/library/cc749073). 
+
+Například *východní běžný čas* je UTC-05:00. Má vaše časovače aktivovat ještě efektivněji na 10:00 AM EST každý den, použijte následující výraz CRON účty pro časové pásmo UTC:
+
+```json
+"schedule": "0 0 15 * * *",
+``` 
+
+Nebo vytvoření nastavení aplikace pro funkce aplikace s názvem `WEBSITE_TIME_ZONE` a nastavte hodnotu na **východní běžný čas**.  Pak použije následující výraz CRON: 
+
+```json
+"schedule": "0 0 10 * * *",
+``` 
+
+## <a name="timespan"></a>TimeSpan
+
+ A `TimeSpan` lze použít pouze pro funkce aplikace, která běží na plán služby App Service.
+
+Na rozdíl od výraz CRON `TimeSpan` hodnota určuje časový interval mezi každé vyvolání funkce. Po dokončení funkci po spuštění déle než zadanou dobu časovač okamžitě volá funkci znovu.
+
+Vyjádřený jako řetězec, `TimeSpan` formát je `hh:mm:ss` při `hh` je kratší než 24. Pokud první dvě číslice 24 nebo větší, formát je `dd:hh:mm`. Zde je několik příkladů:
+
+|Příklad: |Při aktivaci  |
+|---------|---------|
+|"01:00:00" | Každou hodinu        |
+|"00:01:00"|každou minutu         |
+|"24:00:00" | každých 24 dní        |
+
 ## <a name="scale-out"></a>Škálování na víc systémů
 
-Aktivační událost časovače podporuje víc instancí Škálováním na více systémů. Ve všech instancích je spuštěna jedna instance funkce konkrétní časovače.
+Pokud aplikaci funkce horizontálně navýší kapacitu na více instancí, je spuštěna pouze jedna instance funkce aktivovaného časovačem napříč všemi instancemi.
 
 ## <a name="function-apps-sharing-storage"></a>Funkce aplikace pro sdílení úložiště
 
 Pokud účet úložiště můžete sdílet mezi více aplikacemi funkce, ujistěte se, že každá funkce aplikace má jiné `id` v *host.json*. Můžete vynechat `id` vlastnost nebo ručně nastavit každé funkce aplikace `id` na jinou hodnotu. Aktivační událost časovače používá úložiště zámek k zajištění, že bude pouze jedna instance časovače při aplikaci funkce horizontálně navýší kapacitu na více instancí. Pokud dvě funkce aplikace sdílet stejný `id` a každá používá aktivaci časovačem, bude spuštěna pouze jedna časovače.
+
+## <a name="retry-behavior"></a>Postup opakování
+
+Na rozdíl od frontě aktivační události není aktivační událost časovače opakujte po selhání funkce. Pokud funkci nezdaří, je is't názvem znovu až po příštím podle plánu.
 
 ## <a name="next-steps"></a>Další postup
 

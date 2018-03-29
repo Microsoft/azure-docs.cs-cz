@@ -1,23 +1,23 @@
 ---
-title: "Nejčastější dotazy k Azure Files | Microsoft Docs"
-description: "Odpovědi na časté otázky o Azure Files."
+title: Nejčastější dotazy k Azure Files | Microsoft Docs
+description: Odpovědi na časté otázky o Azure Files.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: 8762b2cca03f4c95f7543803a024bff4573927a1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb44f1d456ec12b7fd21e397b749117942560f05
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Časté otázky k Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes oborových standardů [zpráva bloku protokol Server (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (také označovaný jako systém souborů běžné Internet nebo CIFS). Sdílené složky Azure můžete ke cloudu nebo na místní nasazení systému Windows, Linux a systému macOS připojit současně. Také můžete mezipaměti Azure sdílené složky na počítačích systému Windows Server pomocí synchronizace souboru Azure (preview) pro rychlý přístup blízko kde data se používají.
@@ -232,7 +232,7 @@ Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubor
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Jak zálohovat Moje Azure soubor sdílet?**  
-    Můžete použít pravidelné [sdílet snímky (preview)](storage-how-to-use-files-snapshots.md) pro ochranu před náhodným odstraněním. Také můžete použít AzCopy, Robocopy nebo zálohování nástroj třetí strany, který můžete zálohovat připojené sdílené složky. 
+    Můžete použít pravidelné [sdílet snímky](storage-how-to-use-files-snapshots.md) pro ochranu před náhodným odstraněním. Také můžete použít AzCopy, Robocopy nebo zálohování nástroj třetí strany, který můžete zálohovat připojené sdílené složky. 
 
 ## <a name="share-snapshots"></a>Sdílet snímky
 ### <a name="share-snapshots-general"></a>Sdílet snímky: Obecné
@@ -255,6 +255,10 @@ Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubor
 * <a id="snapshot-limits"></a>
 **Existují omezení počtu snímků sdílené složky, které mohu použít?**  
     Ano. Soubory Azure můžete uchovávat maximálně 200 sdílené složky snímků. Sdílené složky snímků nepočítá kvóta pro sdílenou složku, takže není žádné omezení za sdílené složky na celkové místo, které používají všechny snímky sdílené složky. Limity účtu úložiště se stále účtují. Po 200 sdílené složky snímků je nutné odstranit starší snímky k vytvoření nové sdílené složky snímků.
+* <a id="snapshot-cost"></a>
+**Kolik sdílet náklady na snímku?**  
+    Standardní transakce a náklady na úložiště standard se uplatní na snímku. Snímky jsou ve své podstatě přírůstkové. Základní snímku je sdílená složka sám sebe. Všechny následné snímky jsou přírůstkové a uloží pouze rozdílový z předchozího snímku. To znamená, že rozdílové změny, které se zobrazí v kusovníku bude minimální, pokud je minimální, vaše klidové vytížení. V tématu [cenová stránky](https://azure.microsoft.com/en-us/pricing/details/storage/files/) pro standardní soubory Azure informace o cenách. V dnešní době způsob, jak můžete prohlížet velikost používané ve sdílené složce snímků je tak, že porovnáte fakturovaná kapacitu s použít kapacity. Pracujeme na nástrojů ke zlepšení generování sestav.
+
 
 ### <a name="create-share-snapshots"></a>Vytvoření sdílené složky snímků
 * <a id="file-snaphsots"></a>

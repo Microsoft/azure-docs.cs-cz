@@ -1,6 +1,6 @@
 ---
 title: Klasifikace leteckou Image | Microsoft Docs
-description: "Poskytuje pokyny pro scénář skutečných na klasifikaci leteckou bitové kopie"
+description: Poskytuje pokyny pro scénář skutečných na klasifikaci leteckou bitové kopie
 author: mawah
 ms.author: mawah
 manager: mwinkle
@@ -10,11 +10,11 @@ ms.service: machine-learning
 services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
-ms.openlocfilehash: 76c706496b3bcdbc1604661be85dc31000873ad3
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 42ebb7dc3abf8fdb6049f1114dc8604a7b810a7e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="aerial-image-classification"></a>Klasifikace leteckou bitové kopie
 
@@ -83,7 +83,7 @@ Tento příklad vyžaduje clusteru HDInsight Spark a účet úložiště Azure n
 
 Vytvořte nový projekt v tomto příkladu jako šablona:
 1.  Otevřete Azure Machine Learning Workbench
-2.  Na **projekty** klikněte na tlačítko  **+**  přihlásit a vybrat **nový projekt**
+2.  Na **projekty** klikněte na tlačítko **+** přihlásit a vybrat **nový projekt**
 3.  V **vytvořit nový projekt** podokně, vyplňte informace pro nový projekt
 4.  V **šablony projektů vyhledávání** vyhledávacího pole zadejte "Leteckou Image klasifikaci" a vyberte šablonu
 5.  Klikněte na **Vytvořit**
@@ -222,7 +222,7 @@ Cluster Batch AI přistupuje k datům školení na souborovém serveru sítě. P
 1. Vydejte následující příkaz k vytvoření síťového serveru:
 
     ```
-    az batchai file-server create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --vm-size Standard_DS2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
+    az batchai file-server create -n landuseclassifier -u demoUser -p "Dem0Pa$$w0rd" --vm-size Standard_DS2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
     ```
 
 1. Zkontrolujte stav zřizování sítě souborového serveru pomocí následujícího příkazu:
@@ -253,7 +253,7 @@ V případě potřeby si můžete ověřit, zda přenos dat proběhl podle plán
 1. Vytvoření clusteru po vydání následujícího příkazu:
 
     ```
-    az batchai cluster create -n landuseclassifier2 -u demoUser -p Dem0Pa$$w0rd --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 --storage-account-name %STORAGE_ACCOUNT_NAME% 
+    az batchai cluster create -n landuseclassifier2 -u demoUser -p "Dem0Pa$$w0rd" --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 --storage-account-name %STORAGE_ACCOUNT_NAME% 
     ```
 
 1. Použijte následující příkaz a zkontrolovat, zda že je stav zřizování clusteru:
@@ -267,12 +267,12 @@ V případě potřeby si můžete ověřit, zda přenos dat proběhl podle plán
 #### <a name="record-batch-ai-training-credentials"></a>Záznamů přihlašovací údaje Batch AI školení
 
 Na popředí pro přidělení clusteru k dokončení, otevřete `settings.cfg` soubor z podadresáři "Kód" tohoto projektu v textovém editoru podle svého výběru. Aktualizujte následující proměnné svoje vlastní přihlašovací údaje:
-- `bait_subscription_id`(ID vašeho předplatného Azure 36 znaků)
-- `bait_aad_client_id`(ID aplikace nebo klienta Azure Active Directory uvedených v části "Požadavky")
-- `bait_aad_secret`(Azure Active Directory tajný klíč aplikace uvedený v části "Požadavky")
-- `bait_aad_tenant`(ID klienta Azure Active Directory uvedených v části "Požadavky")
-- `bait_region`(době psaní tohoto textu je jedinou možností: eastus)
-- `bait_resource_group_name`(skupina prostředků, které jste zvolili dříve)
+- `bait_subscription_id` (ID vašeho předplatného Azure 36 znaků)
+- `bait_aad_client_id` (ID aplikace nebo klienta Azure Active Directory uvedených v části "Požadavky")
+- `bait_aad_secret` (Azure Active Directory tajný klíč aplikace uvedený v části "Požadavky")
+- `bait_aad_tenant` (ID klienta Azure Active Directory uvedených v části "Požadavky")
+- `bait_region` (době psaní tohoto textu je jedinou možností: eastus)
+- `bait_resource_group_name` (skupina prostředků, které jste zvolili dříve)
 
 Pokud jste přiřadili tyto hodnoty, by měl vypadat upravené řádky souboru settings.cfg následující text:
 
@@ -400,7 +400,7 @@ Poznámkového bloku Jupyter "Modelu předpovědi analysis" v podsložce "Code\0
 5. Klikněte na "buňky -> spustit všechny" provést všechny buňky v poznámkovém bloku.
 6. Přečtěte si společně s další informace o analýzy a vizualizací, které představuje poznámkového bloku.
 
-## <a name="cleanup"></a>Čištění
+## <a name="cleanup"></a>Vyčištění
 Po dokončení v příkladu doporučujeme odstranit všechny prostředky, které jste vytvořili spuštěním následujícího příkazu z Azure rozhraní příkazového řádku:
 
   ```

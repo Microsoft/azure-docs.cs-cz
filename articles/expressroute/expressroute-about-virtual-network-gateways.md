@@ -1,11 +1,11 @@
 ---
-title: "O brány virtuální sítě ExpressRoute | Microsoft Docs"
-description: "Další informace o brány virtuální sítě pro ExpressRoute."
+title: O brány virtuální sítě ExpressRoute | Microsoft Docs
+description: Další informace o brány virtuální sítě pro ExpressRoute.
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager, azure-service-management
 ms.assetid: 7e0d9658-bc00-45b0-848f-f7a6da648635
 ms.service: expressroute
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2018
+ms.date: 03/22/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0517caed3a7d6632c1a5650147f4db240dbe0a17
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ae971e7743d6dd3269c0a4f976bd2a5316300f58
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>O branách virtuálních sítí pro ExpressRoute
 Brána virtuální sítě se používá k posílání síťového provozu mezi virtuálními sítěmi Azure a místními umístěními. Při konfiguraci připojení ExpressRoute, musíte vytvořit a konfigurovat bránu virtuální sítě a připojení brány virtuální sítě.
@@ -35,13 +35,13 @@ Každá virtuální síť může mít pouze jednu bránu virtuální sítě pro 
 
 Pokud chcete upgradovat bránu výkonnější skladová položka brány, ve většině případů, můžete použít rutinu prostředí PowerShell, změny velikosti-AzureRmVirtualNetworkGateway'. To bude fungovat při upgradu Standard a HighPerformance SKU. Chcete-li upgradovat na UltraPerformance SKU, musíte ale bránu znovu vytvořte.
 
-### <a name="aggthroughput"></a>Odhadovaná agregovaná propustnost podle skladová položka brány
-Následující tabulka ukazuje typy brány a odhadovanou agregovanou propustnost. Tato tabulka platí pro model nasazení Resource Manager i pro klasický model.
+### <a name="aggthroughput"></a>Odhadované přínos podle skladová položka brány
+V následující tabulce jsou uvedeny typy brány a odhadovanou funkční. Tato tabulka platí pro model nasazení Resource Manager i pro klasický model.
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
 > [!IMPORTANT]
-> Propustnost aplikace závisí na několika faktorech, například na začátku do konce latenci a počet tok přenosů dat, které se aplikace spustí. Čísla v tabulce představují horní limit aplikace může teoreticky dosáhnout v prostředí ideální. 
+> Výkon aplikace závisí na několika faktorech, například na začátku do konce latenci a počet tok přenosů dat, které se aplikace spustí. Čísla v tabulce představují horní limit aplikace může teoreticky dosáhnout v prostředí ideální. 
 > 
 >
 

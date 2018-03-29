@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: Připojení virtuálních počítačů systému RHEL ke spravované doméně | Microsoft Docs"
-description: "Připojit virtuální počítač Red Hat Enterprise Linux k Azure AD Domain Services"
+title: 'Azure Active Directory Domain Services: Připojení virtuálních počítačů systému RHEL ke spravované doméně | Microsoft Docs'
+description: Připojit virtuální počítač Red Hat Enterprise Linux k Azure AD Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: maheshu
-ms.openlocfilehash: 9046bdb5bd8ff21429c951cbe7120334bd000621
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b278f5c4c8c87590205aca13a50a82fe8712d909
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače Red Hat Enterprise Linux 7 ke spravované doméně
 Tento článek ukazuje, jak připojit virtuální počítač Red Hat Enterprise Linux (RHEL) 7 k spravované doméně služby Azure AD Domain Services.
@@ -34,7 +34,7 @@ Chcete-li provést úkoly vypsané v tomto článku, je třeba:
 
 ## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>Zřídit virtuální počítač Red Hat Enterprise Linux
 Zřízení virtuálního počítače s RHEL 7 v Azure, pomocí kteréhokoli z následujících metod:
-* [portál Azure Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -133,7 +133,7 @@ Ověřte, zda je počítač byl úspěšně připojen k spravované doméně. P�
 
 
 ## <a name="troubleshooting-domain-join"></a>Řešení potíží s připojení k doméně
-Odkazovat [připojení k doméně Poradce při potížích s](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) článku.
+Odkazovat [připojení k doméně Poradce při potížích s](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) článku.
 
 ## <a name="related-content"></a>Související obsah
 * [Azure AD Domain Services – Příručka Začínáme](active-directory-ds-getting-started.md)

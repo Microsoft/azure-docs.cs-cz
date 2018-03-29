@@ -1,8 +1,8 @@
 ---
-title: "Přizpůsobení clusterů HDInsight pomocí akcí skriptů - Azure | Microsoft Docs"
-description: "Přidáte vlastní komponenty ke clusterům HDInsight se systémem Linux pomocí akcí skriptů. Akce skriptů jsou skripty Bash, které lze použít k přizpůsobení konfigurace clusteru nebo přidání další služby a nástroje, jako je Hue, Solr nebo R."
+title: Přizpůsobení clusterů HDInsight pomocí akcí skriptů - Azure | Microsoft Docs
+description: Přidáte vlastní komponenty ke clusterům HDInsight se systémem Linux pomocí akcí skriptů. Akce skriptů jsou skripty Bash, které lze použít k přizpůsobení konfigurace clusteru nebo přidání další služby a nástroje, jako je Hue, Solr nebo R.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: 42bf760b793f3c035a766c4d39524e03c1cbe6ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: bc8078a1681b8977a0748f633df02beb2f2bdc8a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů
 
@@ -210,17 +210,19 @@ Tato část obsahuje příklady o různých způsobech skriptových akcí může
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Použití akce skriptu z šablon Azure Resource Manageru
 
-Akce skriptu lze pomocí šablon Azure Resource Manager. Příklad, naleznete v části [https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/](https://azure.microsoft.com/en-us/resources/templates/hdinsight-linux-run-script-action/).
+Akce skriptu lze pomocí šablon Azure Resource Manager. Příklad, naleznete v části [ https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/ ](https://azure.microsoft.com/en-us/resources/templates/hdinsight-linux-run-script-action/).
 
 V tomto příkladu je přidána akce skriptu, pomocí následujícího kódu:
 
-    "scriptActions": [
-        {
-            "name": "setenvironmentvariable",
-            "uri": "[parameters('scriptActionUri')]",
-            "parameters": "headnode"
-        }
-    ]
+```json
+"scriptActions": [
+    {
+        "name": "setenvironmentvariable",
+        "uri": "[parameters('scriptActionUri')]",
+        "parameters": "headnode"
+    }
+]
+```
 
 Informace o tom, jak nasadit šablonu najdete v následujících dokumentech:
 
@@ -305,15 +307,21 @@ Než budete pokračovat, ujistěte se, je nainstalován a nakonfigurován rozhra
 
 1. Chcete-li přepnout do režimu Azure Resource Manager, použijte následující příkaz na příkazovém řádku:
 
-        azure config mode arm
+    ```bash
+    azure config mode arm
+    ```
 
 2. Použijte následující k ověření vašeho předplatného Azure.
 
-        azure login
+    ```bash
+    azure login
+    ```
 
 3. Použijte následující příkaz pro použití akce skriptu do clusteru s podporou spuštěná
 
-        azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
+    ```bash
+    azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
+    ```
 
     Pokud nezadáte parametry pro tento příkaz, zobrazí se výzva pro ně. Pokud skript určete s `-u` přijímá parametry, můžete je zadat pomocí `-p` parametr.
 
@@ -337,7 +345,7 @@ V tématu [spuštění akcí skriptů v clusteru s podporou spuštěné](https:/
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-hdinsight-net-sdk"></a>Pro cluster běžící akce skriptu ze sady SDK rozhraní .NET HDInsight
 
-Příklad použití sady .NET SDK skripty do clusteru, naleznete v části [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
+Příklad použití sady .NET SDK skripty do clusteru, naleznete v části [ https://github.com/Azure-Samples/hdinsight-dotnet-script-action ](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
 
 ## <a name="view-history-promote-and-demote-script-actions"></a>Zobrazit historii, povýšení a snížení akcí skriptů
 
@@ -396,7 +404,7 @@ Následující ukázkový skript ukazuje použití rutiny povýšit, pak sníže
 
 ### <a name="using-the-hdinsight-net-sdk"></a>Pomocí HDInsight .NET SDK
 
-Příklad použití sady .NET SDK k načtení historie skriptu z clusteru, zvýšení úrovně nebo snížení úrovně skriptů najdete v tématu [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
+Příklad použití sady .NET SDK k načtení historie skriptu z clusteru, zvýšení úrovně nebo snížení úrovně skriptů najdete v tématu [ https://github.com/Azure-Samples/hdinsight-dotnet-script-action ](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
 
 > [!NOTE]
 > Tento příklad také ukazuje, jak instalace aplikace HDInsight pomocí sady .NET SDK.
@@ -413,7 +421,7 @@ Existují dva typy open-source komponent, které jsou k dispozici ve službě HD
 > [!WARNING]
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporovány. Microsoft Support pomáhá izolovat a vyřešení problémů týkajících se těchto součástí.
 >
-> Vlastní komponenty získat vyvineme podporu k pomoci při další řešení problému. Podporu společnosti Microsoft může být schopni vyřešit problém nebo mohou požádat, abyste zaujmout dostupné kanály pro technologie s otevřeným zdrojem, kterých se nachází hluboké znalosti pro tuto technologii. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [http://apache.org](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
+> Vlastní komponenty získat vyvineme podporu k pomoci při další řešení problému. Podporu společnosti Microsoft může být schopni vyřešit problém nebo mohou požádat, abyste zaujmout dostupné kanály pro technologie s otevřeným zdrojem, kterých se nachází hluboké znalosti pro tuto technologii. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
 
 Služba HDInsight poskytuje několik způsobů, jak používat vlastní komponenty. Stejnou úroveň podpory platí bez ohledu na to, jak je součást použít nebo nainstalované v clusteru. Následující seznam popisuje nejběžnější způsoby vlastní komponenty lze v clusterech HDInsight:
 
@@ -429,7 +437,7 @@ Webovému uživatelskému rozhraní Ambari slouží k zobrazení informací zazn
 
 ### <a name="using-the-ambari-web-ui"></a>Pomocí Ambari webového uživatelského rozhraní
 
-1. V prohlížeči přejděte na https://CLUSTERNAME.azurehdinsight.net. Nahraďte název clusteru s názvem clusteru HDInsight.
+1. V prohlížeči přejděte na adresu https://CLUSTERNAME.azurehdinsight.net. Nahraďte název clusteru s názvem clusteru HDInsight.
 
     Po zobrazení výzvy zadejte název účtu správce (správce) a heslo pro cluster. Možná budete muset znovu zadat přihlašovací údaje správce v webového formuláře.
 
@@ -493,7 +501,7 @@ __Příčina__: k této chybě dojde, pokud upgradujete klienta Python Azure Sto
 
 __Řešení__: Chcete-li tuto chybu vyřešit, ručně připojit k každého uzlu clusteru pomocí `ssh` a znovu nainstalujte požadovanou verzi klienta správný úložiště pomocí následujícího příkazu:
 
-```
+```bash
 sudo pip install azure-storage==0.20.0
 ```
 

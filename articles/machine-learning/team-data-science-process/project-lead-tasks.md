@@ -1,23 +1,23 @@
 ---
-title: "Tým datové vědy proces projektu vést úlohy – Azure | Microsoft Docs"
-description: "Přehled úloh pro projekt vést na datové vědě týmového projektu."
-documentationcenter: 
+title: Tým datové vědy proces projektu vést úlohy – Azure | Microsoft Docs
+description: Přehled úloh pro projekt vést na datové vědě týmového projektu.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: fe7cf1e6167de7d0dfaa5ed75c0b7f5ec23b18cf
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 5c769fda09e70cfb0a43e0305ffab4923fbe3307
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="project-lead-tasks"></a>Úkoly realizace projektu
 
@@ -100,7 +100,7 @@ Pokud potřebujete nastavit vaše **DSProject1** projektu úložiště ke splně
 
 Na místním počítači vytvořte adresář:
 
-- *C:\GitRepos\MyTeamCommon* pro Windows 
+- *C:\GitRepos\MyTeamCommon* for Windows 
 - *$home/GitRepos/MyTeamCommon* pro Linux
 
 Změnit do tohoto adresáře. Potom spusťte následující příkaz, který klonovat úložiště šablony týmového projektu do místního počítače. 
@@ -115,7 +115,7 @@ Pokud používáte služby VSTS jako hostování kódu platformy, obvykle *adres
 
 V tomto příkladu máme:
 
-***https://mysamplegroup.VisualStudio.com/MyTeam/_git/MyTeamProjectTemplate***. 
+***https://mysamplegroup.visualstudio.com/MyTeam/_git/MyTeamProjectTemplate***. 
 
 ![7](./media/project-lead-tasks/project-leads-7-clone-team-project-template.png)
             
@@ -127,7 +127,7 @@ V tomto příkladu máme:
 
 Pokud používáte služby VSTS jako hostování kódu platformy, obvykle *SSH URL úložiště šablony týmového projektu* je:
 
-***SSH: / /\<název serveru služby VSTS\>@\<název serveru služby VSTS\>.visualstudio.com:22/\<si název týmového projektu > /_git/\<úložiště šablony týmového projektu název\>.*** 
+***SSH: / /\<název serveru služby VSTS\>@\<název serveru služby VSTS\>.visualstudio.com:22/\<si název týmového projektu > /_git/\<název úložiště šablony týmového projektu \>.*** 
 
 V tomto příkladu máme:
 
@@ -151,7 +151,7 @@ Pokud používáte služby VSTS jako hostování kódu platformy, obvykle _adres
 
 ![10](./media/project-lead-tasks/project-leads-10-clone-project-repository-linux.png)
 
-Pokud používáte služby VSTS jako hostování kódu platformy, obvykle _SSH URL projektu úložiště_ je _ssh: / / < název serveru služby VSTS\>@< název serveru služby VSTS\>.visualstudio.com:22/<Your Team Project Name> / \_git / < název projektu úložiště\>. V tomto příkladu máme  ***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1*** .
+Pokud používáte služby VSTS jako hostování kódu platformy, obvykle _SSH URL projektu úložiště_ je _ssh: / / < název serveru služby VSTS\>@< název serveru služby VSTS\>.visualstudio.com:22/<Your Team Project Name> / \_git / < název projektu úložiště\>. V tomto příkladu máme ***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***.
 
 ### <a name="copy-contents-of-d3-to-d5"></a>Zkopírujte obsah D3 do D5 
 
@@ -186,7 +186,7 @@ Pokud váš projekt vyžaduje některé konkrétní adresáře nebo dokumenty, n
 
 ### <a name="add-contents-of-dsproject1-in-d5-to-r5-on-your-group-vsts-server"></a>Přidat obsah DSProject1 v D5 R5 na serveru služby VSTS skupiny
 
-Nyní je třeba push obsah  **_DSProject1_**  k _R5_ úložiště v týmových projektech na serveru služby VSTS vaší skupině. 
+Nyní je třeba push obsah **_DSProject1_** k _R5_ úložiště v týmových projektech na serveru služby VSTS vaší skupině. 
 
 
 - Přejděte do adresáře **D5**. 
@@ -212,7 +212,7 @@ Nyní je třeba push obsah  **_DSProject1_**  k _R5_ úložiště v týmových p
 Pokud chcete vytvořit úložiště Azure file sdílet data, jako je například projektu nezpracovaná data nebo funkce generované pro svůj projekt tak, aby všechny projektu členové mají přístup do stejné datové sady z více DSVMs, postupujte podle pokynů v částech 3 a 4 [ Tým realizace úlohy pro tým datové vědy](team-lead-tasks.md). 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tady jsou odkazy na podrobnější popis jednotlivých rolí a úloh, které jsou definované procesu Team dat vědecké účely:
 

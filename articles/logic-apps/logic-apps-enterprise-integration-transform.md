@@ -1,6 +1,6 @@
 ---
-title: "Převést data XML s transformací - Azure Logic Apps | Microsoft Docs"
-description: "Vytvořit transformací nebo mapps převést data XML mezi formáty v logiku aplikace pomocí sady SDK integrace Enterprise"
+title: Převést data XML s transformací - Azure Logic Apps | Microsoft Docs
+description: Vytvořit transformací nebo mapps převést data XML mezi formáty v logiku aplikace pomocí sady SDK integrace Enterprise
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f4ca7004432d28233888483424164456b008e992
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: fd59b6b3f51adb538e774bc5bb089880ca22e97e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>Enterprise integrace s transformace XML
 ## <a name="overview"></a>Přehled
@@ -64,6 +64,7 @@ V tomto okamžiku jste dokončili nastavení mapy. V reálné aplikaci můžete 
 
 Nyní můžete otestovat váš transformace tak, že požadavek na koncový bod HTTP.  
 
+
 ## <a name="features-and-use-cases"></a>Funkce a případy použití
 * Transformace vytvořené v mapu může být jednoduchý, jako je například kopírování názvu a adresy z jednoho dokumentu do jiného. Nebo můžete vytvořit složitější transformace pomocí operace, které se na pole mapy.  
 * Více mapy operace nebo funkce jsou snadno dostupné, včetně řetězce, datum časové funkce a tak dále.  
@@ -73,11 +74,49 @@ Nyní můžete otestovat váš transformace tak, že požadavek na koncový bod 
 * Nahrát existující mapy  
 * Zahrnuje podporu pro formát XML.
 
-## <a name="adanced-features"></a>Funkce Adanced
-Následující funkce jsou přístupné pouze v zobrazení kódu.
+## <a name="advanced-features"></a>Pokročilé funkce
+
+### <a name="reference-assembly-or-custom-code-from-maps"></a>Odkaz na sestavení nebo vlastní kód z mapy 
+Akce transformace také podporuje mapy nebo transformuje nese odkaz na externí sestavení. Tato funkce umožňuje volání vlastní kód .NET přímo z XSLT mapy. Tady jsou požadavky pro použití sestavení v rámci služby maps.
+
+* Mapy a sestavení na něj odkazovat z mapy, musí být [integrace účet nahraje](./logic-apps-enterprise-integration-maps.md). 
+
+  > [!NOTE]
+  > Mapy a sestavení nutných k odeslání v určitém pořadí. Před nahráním mapu, která odkazuje na sestavení, je potřeba načíst sestavení.
+
+* Mapa musí rovněž mít tyto atributy a CDATA oddíl, který obsahuje volání kódu sestavení:
+
+    * **název** je název vlastního sestavení.
+    * **obor názvů** je obor názvů ve vaší sestavení, která obsahuje vlastní kód.
+
+  Tento příklad ukazuje mapu, která odkazuje na sestavení s názvem "XslUtilitiesLib" a volání `circumreference` metoda ze sestavení.
+
+  ````xml
+  <?xml version="1.0" encoding="UTF-8"?>
+  <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:my-scripts">
+  <msxsl:script language="C#" implements-prefix="user">
+    <msxsl:assembly name="XsltHelperLib"/>
+    <msxsl:using namespace="XsltHelpers"/>
+    <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
+  </msxsl:script>
+  <xsl:template match="data">
+     <circles>
+        <xsl:for-each select="circle">
+            <circle>
+                <xsl:copy-of select="node()"/>
+                    <circumference>
+                        <xsl:value-of select="user:circumference(radius)"/>
+                    </circumference>
+            </circle>
+        </xsl:for-each>
+     </circles>
+    </xsl:template>
+    </xsl:stylesheet>
+  ````
+
 
 ### <a name="byte-order-mark"></a>Značka pořadí bajtů
-Ve výchozím nastavení spustí odpověď z transformace značky pořadí bajtů (BOM). Chcete-li zakázat tuto funkci, zadejte `disableByteOrderMark` pro `transformOptions` vlastnost:
+Ve výchozím nastavení spustí odpověď z transformace značky pořadí bajtů (BOM). Tuto funkci můžete přistupovat pouze při práci v editoru kódu zobrazení. Chcete-li zakázat tuto funkci, zadejte `disableByteOrderMark` pro `transformOptions` vlastnost:
 
 ````json
 "Transform_XML": {
@@ -94,6 +133,10 @@ Ve výchozím nastavení spustí odpověď z transformace značky pořadí bajt�
     "type": "Xslt"
 }
 ````
+
+
+
+
 
 ## <a name="learn-more"></a>Další informace
 * [Další informace o integračního balíčku Enterprise](../logic-apps/logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku")  

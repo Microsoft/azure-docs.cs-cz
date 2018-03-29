@@ -1,25 +1,25 @@
 ---
-title: "Platformy dat pro datové vědy virtuálního počítače – Azure | Microsoft Docs"
-description: "Data platformy pro virtuální počítač vědecké účely Data."
-keywords: "datové vědy nástroje, datové vědy virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux"
+title: Platformy dat pro datové vědy virtuálního počítače – Azure | Microsoft Docs
+description: Data platformy pro virtuální počítač vědecké účely Data.
+keywords: datové vědy nástroje, datové vědy virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
-ms.author: gokuma;
-ms.openlocfilehash: 921ccf67e5e0320e742066186b7929643536424f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: gokuma
+ms.openlocfilehash: c9c85ebed6382a4188db028fbfb35675751bce76
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-platforms"></a>Datové platformy
 

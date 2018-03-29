@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 0270fa207b782d2d89f2408a380b766f58fa05cb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/23/2018
+---
 1. Na portálu v části **Všechny prostředky** klikněte na **+Přidat**. 
 2. Do vyhledávacího pole na stránce **Všechno** zadejte **Brána místní sítě** a potom kliknutím vyhledejte. Zobrazí se seznam. Kliknutím na **Brána místní sítě** otevřete stránku a potom kliknutím na **Vytvořit** otevřete stránku **Vytvořit bránu místní sítě**.
 

@@ -1,11 +1,11 @@
 ---
-title: "Nejčastější dotazy pro virtuální počítače s Linuxem v Azure | Microsoft Docs"
-description: "Poskytuje odpovědi na některé časté otázky týkající se virtuální počítače Linux vytvořené pomocí modelu Resource Manager."
+title: Nejčastější dotazy pro virtuální počítače s Linuxem v Azure | Microsoft Docs
+description: Poskytuje odpovědi na některé časté otázky týkající se virtuální počítače Linux vytvořené pomocí modelu Resource Manager.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-management
 ms.assetid: 3648e09c-1115-4818-93c6-688d7a54a353
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: f7fb3f24e9ca6b1827028d118cf833aad830e6a1
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 8a4d93ff12affac56c12c0eab85168c609400ee2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Časté otázky o virtuálních počítačích s Linuxem
 Tento článek se zaměřuje na některé běžné dotazy týkající se virtuální počítače Linux vytvořené v Azure pomocí modelu nasazení Resource Manager. Windows verzi tohoto tématu naleznete v části [často kladené otázky o virtuálních počítačích s Windows](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -58,34 +58,35 @@ Ano. Název počítače nesmí být delší než 64 znaků. V tématu [pojmenov�
 Ano. Název skupiny prostředků může být maximálně 90 znaků. V tématu [pojmenování konvence pravidla a omezení](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace o skupinách prostředků.
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na uživatelské jméno při vytváření virtuálního počítače?
-Uživatelská jména musí být 1-64 znaků.
+
+Uživatelská jména musí být 1-32 znaků.
 
 Následující uživatelská jména nejsou povoleny:
 
 <table>
     <tr>
-        <td style="text-align:center">Správce </td><td style="text-align:center"> Správce </td><td style="text-align:center"> Uživatel </td><td style="text-align:center"> Uživatel1</td>
+        <td style="text-align:center">Správce </td><td style="text-align:center"> správce </td><td style="text-align:center"> uživatel </td><td style="text-align:center"> Uživatel1</td>
     </tr>
     <tr>
-        <td style="text-align:center">Test </td><td style="text-align:center"> uživatel2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> UŽIVATEL3</td>
+        <td style="text-align:center">testování </td><td style="text-align:center"> uživatel2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> UŽIVATEL3</td>
     </tr>
     <tr>
-        <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> A</td>
+        <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
     </tr>
     <tr>
-        <td style="text-align:center">actuser  </td><td style="text-align:center"> ADM </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> ASPNET</td>
+        <td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
     </tr>
     <tr>
-        <td style="text-align:center">zálohování </td><td style="text-align:center"> Konzola </td><td style="text-align:center"> David </td><td style="text-align:center"> hosta</td>
+        <td style="text-align:center">zálohování </td><td style="text-align:center"> Konzola </td><td style="text-align:center"> david </td><td style="text-align:center"> hosta</td>
     </tr>
     <tr>
-        <td style="text-align:center">Jan </td><td style="text-align:center"> Vlastník </td><td style="text-align:center"> kořenové </td><td style="text-align:center"> server</td>
+        <td style="text-align:center">Jan </td><td style="text-align:center"> vlastník </td><td style="text-align:center"> kořenové </td><td style="text-align:center"> server</td>
     </tr>
     <tr>
-        <td style="text-align:center">SQL </td><td style="text-align:center"> Podpora </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> Sys</td>
+        <td style="text-align:center">SQL </td><td style="text-align:center"> podpora </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> Sys</td>
     </tr>
     <tr>
-        <td style="text-align:center">test2 </td><td style="text-align:center"> Test3 </td><td style="text-align:center"> Uživatel4 </td><td style="text-align:center"> user5</td>
+        <td style="text-align:center">test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> Uživatel4 </td><td style="text-align:center"> user5</td>
     </tr>
 </table>
 

@@ -1,25 +1,25 @@
 ---
-title: "Místní převzetí služeb při selhání v Azure Cosmos DB | Microsoft Docs"
-description: "Další informace o tom, jak ruční a automatické převzetí služeb při selhání funguje s Azure Cosmos DB."
+title: Místní převzetí služeb při selhání v Azure Cosmos DB | Microsoft Docs
+description: Další informace o tom, jak ruční a automatické převzetí služeb při selhání funguje s Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 446e2580-ff49-4485-8e53-ae34e08d997f
 ms.service: cosmos-db
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2017
+ms.date: 03/27/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a8b32440ce3ec6cd2da7aaccf218a94e0ee3e77
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8da3e2c970ab1e60e3396cb0aaeaba64dba1713c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Automatické regionální převzetí služeb při selhání pro kontinuitu podnikových procesů v Azure Cosmos DB
 Azure Cosmos DB zjednodušuje globální distribuci dat tím, že nabídka plně spravované, [účty databáze více oblast](distribute-data-globally.md) , poskytovat jasné kompromisy mezi konzistencí, dostupnosti a výkonu, všechny odpovídající záruky. Účty cosmos DB nabízí vysokou dostupnost, jednu číslici ms latenci, [dobře definované úrovně konzistence](consistency-levels.md), transparentní regionální převzetí služeb při selhání s více funkci rozhraní API a schopnost Elasticky škálovat propustnost a úložiště napříč zeměkouli. 
@@ -30,9 +30,10 @@ Cosmos DB podporuje obě explicitní a zásad řízené převzetí služeb při 
 * Jak pracovní automatické převzetí služeb při selhání v systému Cosmos DB a co se stane, když data center přejde dolů?
 * Jak můžete použít ruční převzetí služeb při selhání v architekturách aplikací?
 
-Můžete si také přečíst o místní převzetí služeb při selhání v této Azure pátek video s Scott Hanselman a Karthik Raman hlavní manažer inženýrství.
+Můžete si také přečíst o místní převzetí služeb při selhání v tomto videu pomocí Azure manažer programu DB Cosmos Andrew Liu, která demonstruje globální distribuční funkce včetně regionální převzetí služeb při selhání.
 
->[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
+>[!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
+>
 
 ## <a id="ConfigureMultiRegionApplications"></a>Konfigurace aplikací s více oblast
 Před jsme ponořte do režimy převzetí služeb při selhání, podíváme se na konfiguraci aplikace a využívat výhod dostupnost v několika oblastech být odolné při krátkodobém regionální převzetí služeb při selhání.

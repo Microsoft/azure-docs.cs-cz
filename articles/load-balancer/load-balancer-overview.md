@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 4f46e796ff1ab85c0061c70ff9a725a6945a4f5d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3a5d1e897d8ffe063ecf9277bef346c8b7c5092b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-load-balancer-overview"></a>Azure Load Balancer – přehled
 
@@ -41,7 +41,7 @@ Azure nástroj pro vyrovnávání zatížení lze provádět:
 
 
 >[!NOTE]
-> Azure poskytuje sada plně spravovaná řešení pro vaše scénáře Vyrovnávání zatížení.  Pokud hledáte ukončení protokolu TLS ("přesměrování zpracování SSL") nebo zpracování vrstvy aplikace HTTP/HTTPS, přečtěte si [Application Gateway](../application-gateway/application-gateway-introduction.md).  Pokud hledáte pro globální DNS Vyrovnávání zatížení, přečtěte si [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Vaše scénáře začátku do konce může těžit z kombinace těchto řešení podle potřeby.
+> Azure poskytuje sada plně spravovaná řešení pro vaše scénáře Vyrovnávání zatížení.  Pokud hledáte pro ukončení protokolu TLS ("přesměrování zpracování SSL") nebo za zpracování vrstvy aplikace žádosti protokolu HTTP nebo HTTPS, přečtěte si [Application Gateway](../application-gateway/application-gateway-introduction.md).  Pokud hledáte pro globální DNS Vyrovnávání zatížení, přečtěte si [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Vaše scénáře začátku do konce může těžit z kombinace těchto řešení podle potřeby.
 
 ## <a name="what-is-load-balancer"></a>Co je nástroj pro vyrovnávání zatížení?
 
@@ -107,7 +107,7 @@ Podporuje dvě různé identifikátory SKU Azure nástroj pro vyrovnávání zat
 V závislosti na tom, který je zvoleno SKU, může být mírně odlišné podrobností konfigurace úplného scénáře. Dokumentace pro vyrovnávání zatížení volá, pokud se článek vztahuje na konkrétní SKU jenom. Naleznete v následující tabulce níže porovnat a pochopit rozdíly.  Zkontrolujte [standardní přehled nástroje pro vyrovnávání zatížení](load-balancer-standard-overview.md) další podrobnosti.
 
 >[!NOTE]
-> Nové návrhy měli použít nástroj pro vyrovnávání zatížení. 
+> Nové návrhy měli zvážit použití nástroj pro vyrovnávání zatížení. 
 
 Do jednoho identifikátoru SKU, nikdy obě lze připojit pouze samostatné virtuální počítače, skupiny dostupnosti a sady škálování virtuálního počítače. Při použití s veřejné IP adresy, nástroj pro vyrovnávání zatížení a veřejnou IP adresu SKU se musí shodovat. Nástroj pro vyrovnávání zatížení a veřejné IP SKU nejsou měnitelný.
 
@@ -118,15 +118,15 @@ _Je osvědčeným postupem zadejte SKU explicitně, i když ještě není povinn
 
 | | [Standardní SKU](load-balancer-standard-overview.md) | Základní SKU |
 | --- | --- | --- |
-| Velikost fondu back-end | až 1 000 instancí | až 100 instancí|
+| Velikost fondu back-end | až 1 000 instancí | až 100 instancí |
 | Koncové body fond back-end | jakýkoli virtuální počítač v jedné virtuální sítě, včetně blend virtuálních počítačů, skupiny dostupnosti, sadách škálování virtuálních počítačů. | nastavení virtuálních počítačů v jedné dostupnost sady nebo virtuální počítač škálování |
 | Zóny dostupnosti | zónově redundantní a oblastmi frontends pro příchozí a odchozí, odchozí toky mapování zůstanou platné i po selhání zóny cross zóny Vyrovnávání zatížení | / |
-| Diagnostika | Azure monitorování vícerozměrných metriky, včetně bajtů a čítače paketů, stav testu stavu, pokusy o připojení (TCP SYN), stav odchozí připojení (úspěšné i neúspěšné překládat pomocí SNAT toky), aktivní data roviny měření | Azure analýzy protokolů pro pouze veřejné Vyrovnávání zatížení, překládat pomocí SNAT vyčerpání výstraha, počet stavu fondu back-end |
+| Diagnostika | Azure monitorování vícerozměrných metriky, včetně bajtů a čítače paketů, stav testu stavu, pokusy o připojení (TCP SYN), stav odchozí připojení (úspěšné i neúspěšné překládat pomocí SNAT toky), aktivní data roviny měření | Azure Log Analytics pouze veřejné Vyrovnávání zatížení, překládat pomocí SNAT vyčerpání výstraha, počet stavu fondu back-end |
 | HA porty | Interní zátěže. | / |
-| Ve výchozím nastavení zabezpečení | veřejné koncové body IP adresy a nástroj pro vyrovnávání zatížení se vždy výchozí uzavřen, skupinu zabezpečení sítě umožňuje explicitně seznamu povolených IP adres | Výchozí hodnoty otevřete, volitelné skupinu zabezpečení sítě |
-| Odchozí připojení | Více frontends za pravidlo výslovný nesouhlas s. Přidružení virtuálního počítače s adresou odchozí _musí_ explicitně vytvořit.  Jedná se o připojení k jiným službám Azure PaaS nebo [koncové body služby virtuální síť](../virtual-network/virtual-network-service-endpoints-overview.md) se musí použít. Odchozí připojení přes výchozí překládat pomocí SNAT nejsou k dispozici, když slouží pouze k interním pro vyrovnávání zatížení virtuálního počítače. | Jeden front-endu. Když obsluhuje pouze interní nástroj pro vyrovnávání zatížení virtuálního počítače, použije se výchozí překládat pomocí SNAT |
+| Ve výchozím nastavení zabezpečení | Výchozí zavřít pro veřejné IP adresy a nástroj pro vyrovnávání zatížení koncové body a skupiny zabezpečení sítě musí použije k explicitně povolených pro přenosy na toku | Výchozí otevřená, skupinu zabezpečení sítě volitelné |
+| Odchozí připojení | Více frontends s každé pravidlo výslovný nesouhlas s. Odchozí scénář _musí_ explicitně vytvořit pro virtuální počítač, abyste mohli použít odchozí připojení.  [Koncové body služby virtuální síť](../virtual-network/virtual-network-service-endpoints-overview.md) dostupný bez odchozí připojení a zpracování dat není započítávat.  Všechny veřejné IP adresy, včetně služeb Azure PaaS není k dispozici jako koncové body služby virtuální sítě, musí být dosaženo přes odchozí připojení a počtu ke zpracování dat. Když virtuální počítač je obsluhuje pouze k interním pro vyrovnávání zatížení, nejsou k dispozici odchozí připojení přes výchozí překládat pomocí SNAT. Odchozí překládat pomocí SNAT programování je transportní protokol konkrétní na základě protokolu Příchozí pravidlo Vyrovnávání zatížení. | Jeden front-endu, náhodně vybrané, pokud existuje více frontends.  Když virtuální počítač je obsluhuje pouze interní nástroj pro vyrovnávání zatížení, použije se výchozí překládat pomocí SNAT. |
 | Více frontends | Příchozí a odchozí | Pouze příchozí |
-| Operace | Většinu operací < 30 sekund | 60-90 sekund typické |
+| Operace správy | Většinu operací < 30 sekund | 60-90 sekund typické |
 | SLA | 99,99 % pro cestu k datům s dva virtuální počítače v pořádku | Implicitní v SLA k Virtuálním počítačům | 
 | Ceny | Účtovat na základě počtu pravidel, zpracování dat příchozí nebo odchozí přidružené prostředků  | Bez poplatků |
 

@@ -1,11 +1,11 @@
 ---
-title: "Přehled virtuálních počítačů s Windows | Dokumentace Microsoftu"
-description: "Zjistěte, jak vytvářet a spravovat virtuální počítače s Windows v Azure."
+title: Přehled virtuálních počítačů s Windows | Dokumentace Microsoftu
+description: Zjistěte, jak vytvářet a spravovat virtuální počítače s Windows v Azure.
 services: virtual-machines-windows
-documentationcenter: 
-author: davidmu1
-manager: timlt
-editor: tysonn
+documentationcenter: ''
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: fbae9c8e-2341-4ed0-bb20-fd4debb2f9ca
 ms.service: virtual-machines-windows
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
-ms.author: davidmu
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4e33186b189394172cba6cf550c01954db941c19
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 6ab964760ea06c2e82d0c9f69f89fe62dec8ceac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Přehled virtuálních počítačů s Windows v Azure
 
@@ -145,7 +145,7 @@ Pomocí tlačítka [Připojit](connect-logon.md?toc=%2fazure%2fvirtual-machines%
 ### <a name="manage-availability"></a>Správa dostupnosti
 Je důležité, abyste porozuměli tomu, jak pro svoji aplikaci [zajistit vysokou dostupnost](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tato konfigurace zahrnuje vytvoření více virtuálních počítačů pro zajištění, že je alespoň jeden spuštěný.
 
-Aby se na vaše nasazení vztahovala záruka 99,95% dostupnosti virtuálního počítače podle smlouvy SLA, je nutné nasadit alespoň dva virtuální počítače, které vaši úlohu spouští v rámci [skupiny dostupnosti](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tato konfigurace zajišťuje distribuci vašich virtuálních počítačů mezi více domén selhání a jejich nasazení na hostitele s různými časovými obdobími údržby. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) vysvětluje garantovanou dostupnost Azure jako celku.
+Aby se na vaše nasazení vztahovala záruka 99,95% dostupnosti virtuálního počítače podle smlouvy SLA, je nutné nasadit alespoň dva virtuální počítače, které vaši úlohu spouští v rámci [skupiny dostupnosti](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tato konfigurace zajišťuje distribuci vašich virtuálních počítačů mezi více domén selhání a jejich nasazení na hostitele s různými časovými obdobími údržby. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
 
 ### <a name="back-up-the-vm"></a>Zálohování virtuálního počítače
 [Trezor služby Recovery Services](../../backup/backup-introduction-to-azure-backup.md) slouží k ochraně dat a assetů ve službě Backup a službách Azure Site Recovery. Pomocí trezoru služby Recovery Services můžete [nasadit a spravovat zálohy virtuálních počítačů nasazených Resource Managerem pomocí prostředí PowerShell](../../backup/backup-azure-vms-automation.md). 

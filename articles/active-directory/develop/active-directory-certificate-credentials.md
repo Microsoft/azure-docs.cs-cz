@@ -1,33 +1,33 @@
 ---
-title: "Certifikát přihlašovacích údajů ve službě Azure AD | Microsoft Docs"
-description: "Tento článek popisuje registrace a používání certifikát přihlašovacích údajů pro ověřování aplikace"
+title: Certifikát přihlašovacích údajů ve službě Azure AD | Microsoft Docs
+description: Tento článek popisuje registrace a používání certifikát přihlašovacích údajů pro ověřování aplikace
 services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/02/2017
+ms.date: 03/15/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 68de6295b84385f54eaadd6d24e8309a32fae9ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7c58b4ebd840aca555b52a03cf44ace311b64e3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Přihlašovací údaje certifikátu pro ověřování aplikace
 
-Azure Active Directory umožňuje aplikacím používat svoje vlastní přihlašovací údaje pro ověřování, například v toku udělení pověření klienta OAuth 2.0 ([v1](active-directory-protocols-oauth-service-to-service.md) [v2](active-directory-v2-protocols-oauth-client-creds.md)) a tok On-Behalf-Of ([v1](active-directory-protocols-oauth-on-behalf-of.md) [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)).
+Azure Active Directory umožňuje aplikacím používat svoje vlastní přihlašovací údaje pro ověřování. Například v toku udělení pověření klienta OAuth 2.0 ([v1](active-directory-protocols-oauth-service-to-service.md), [v2](active-directory-v2-protocols-oauth-client-creds.md)) a tok On-Behalf-Of ([v1](active-directory-protocols-oauth-on-behalf-of.md), [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)).
 Jednu formu přihlašovacích údajů, které je možné je Token(JWT) webové JSON kontrolní výraz systému podepsané certifikátem, který vlastní aplikace.
 
 ## <a name="format-of-the-assertion"></a>Formát kontrolní výraz
-Vypočítat kontrolní výraz, budete pravděpodobně chtít použít jednu z dalších [webových tokenů JSON](https://jwt.io/) knihovny v jazyce podle svého výběru. Informace, které token je:
+Vypočítat kontrolní výraz, budete pravděpodobně chtít použít jednu z dalších [webových tokenů JSON](https://jwt.ms/) knihovny v jazyce podle svého výběru. Informace, které token je:
 
 #### <a name="header"></a>Záhlaví
 
@@ -43,10 +43,10 @@ Vypočítat kontrolní výraz, budete pravděpodobně chtít použít jednu z da
 | --- | --- |
 | `aud` | Cílová skupina: By měla být  **https://login.microsoftonline.com/ *tenant_Id*  /oauth2/token** |
 | `exp` | Datum vypršení platnosti: datum vypršení platnosti tokenu. Čas je reprezentován jako počet sekund od 1. ledna 1970 (pod hodnotou 1970-01-01T0:0:0Z) UTC až do okamžiku vypršení platnosti tokenu.|
-| `iss` | Vystavitel: by měla být client_id (Id aplikace služby klienta) |
+| `iss` | Vystavitel: by měla být client_id (ID aplikace služby klienta) |
 | `jti` | Identifikátor GUID: JWT ID |
 | `nbf` | Neplatný před: datum, před kterou nelze použít daný token. Čas je reprezentován jako počet sekund od 1. ledna 1970 (pod hodnotou 1970-01-01T0:0:0Z) UTC až do okamžiku byl token vydán. |
-| `sub` | Předmět: jako u `iss`, by měla být client_id (Id aplikace služby klienta) |
+| `sub` | Předmět: jako u `iss`, by měla být client_id (ID aplikace služby klienta) |
 
 #### <a name="signature"></a>Podpis
 
@@ -85,7 +85,14 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ### <a name="register-your-certificate-with-azure-ad"></a>Zaregistrujte svůj certifikát s Azure AD
 
-Pokud chcete přiřadit certifikát přihlašovacích údajů klientská aplikace ve službě Azure AD, budete muset upravit manifest aplikace.
+Certifikát přihlašovacích údajů můžete přidružit klientská aplikace ve službě Azure AD pomocí portálu Azure pomocí kteréhokoli z následujících metod:
+
+**Nahrání souboru certifikátu**
+
+V registraci aplikace Azure pro klientskou aplikaci, klikněte na **nastavení**, klikněte na tlačítko **klíče** a pak klikněte na **nahrát veřejný klíč**. Vyberte soubor certifikátu, který chcete nahrát a klikněte na tlačítko **Uložit**. Po uložení, nahrání certifikátu a kryptografický otisk, počáteční datum a vyprší platnost hodnoty jsou zobrazeny. 
+
+**Aktualizace manifest aplikace**
+
 S podržení certifikát, je třeba k výpočtu:
 
 - `$base64Thumbprint`, což je Base64, pomocí kódování hodnota Hash certifikátu

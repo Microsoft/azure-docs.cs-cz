@@ -1,11 +1,11 @@
 ---
-title: "Azure Key Vault řešení v Log Analytics | Microsoft Docs"
-description: "Řešení Azure Key Vault v analýzy protokolů můžete použít ke kontrole protokoly Azure Key Vault."
+title: Azure Key Vault řešení v Log Analytics | Microsoft Docs
+description: Řešení Azure Key Vault v analýzy protokolů můžete použít ke kontrole protokoly Azure Key Vault.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: 5e25e6d6-dd20-4528-9820-6e2958a40dae
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 651586e0846ffb22a23e64b73c2cc614980d9b92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c4b16ec11d1990de687014c5385314f0e0c602a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Azure Key Vault Analytics řešení v analýzy protokolů
 
@@ -118,8 +118,8 @@ Po kliknutí **přehled** dlaždici, můžete zobrazit souhrny souborů protokol
 | Prostředek |Název trezoru klíčů |
 | ResourceGroup |Skupina prostředků služby key vault |
 | ID prostředku |ID prostředku Azure Resource Manageru Pro protokoly Key Vault to je ID prostředku Key Vault. |
-| ResourceProvider |*SPOLEČNOSTI MICROSOFT. KEYVAULT* |
-| ResourceType | *TREZORY* |
+| ResourceProvider |*MICROSOFT.KEYVAULT* |
+| ResourceType | *VAULTS* |
 | ResultSignature |Stav protokolu HTTP (například *OK*) |
 | ResultType |Výsledek požadavku REST API (například *úspěch*) |
 | SubscriptionId |ID předplatného Azure předplatného obsahující Key Vault |
@@ -137,18 +137,18 @@ Chcete-li použít aktualizované řešení:
 2. Povolení Azure Key Vault řešení pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md)
 3. Aktualizovat žádné uložené dotazy, řídicí panely nebo výstrahy používat nový datový typ.
   + Typ je změna z: KeyVaults k AzureDiagnostics. Příkaz ResourceType můžete filtrovat, aby protokoly Key Vault.
-  - Místo: `Type=KeyVaults`, použijte`Type=AzureDiagnostics ResourceType=VAULTS`
+  - Místo: `KeyVaults`, použijte `AzureDiagnostics | where ResourceType'=="VAULTS"`
   + Pole: (názvy polí jsou malá a velká písmena)
   - Pro každé pole, které má příponu \_s, \_d, nebo \_g v názvu, změna po prvním znaku na malá písmena
-  - Pro každé pole, které má příponu \_o název, data je rozdělená do jednotlivých polí na základě názvů vnořená pole. Například hlavní název uživatele volajícího je uložený v poli`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+  - Pro každé pole, které má příponu \_o název, data je rozdělená do jednotlivých polí na základě názvů vnořená pole. Například hlavní název uživatele volajícího je uložený v poli `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
    - Pole CallerIpAddress změnit tak, aby CallerIPAddress
    - Pole RemoteIPCountry je již k dispozici
-4. Odeberte *klíč trezoru Analytics (nepoužívané)* řešení. Pokud používáte prostředí PowerShell, použijte`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
+4. Odeberte *klíč trezoru Analytics (nepoužívané)* řešení. Pokud používáte prostředí PowerShell, použijte `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 Data jsou shromažďována předtím, než tato změna není zobrazená v nové řešení. Můžete pokračovat se dotázat na tato data pomocí starého typu a názvy polí.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Použití [hledání přihlásit analýzy protokolů](log-analytics-log-searches.md) na podrobnější data Azure Key Vault.

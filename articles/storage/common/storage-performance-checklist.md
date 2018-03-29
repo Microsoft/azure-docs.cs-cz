@@ -1,10 +1,10 @@
 ---
-title: "Azure Storage výkon a škálovatelnost kontrolní seznam | Microsoft Docs"
-description: "Kontrolní seznam osvědčené postupy pro použití s Azure Storage při vývoji aplikací původce."
+title: Azure Storage výkon a škálovatelnost kontrolní seznam | Microsoft Docs
+description: Kontrolní seznam osvědčené postupy pro použití s Azure Storage při vývoji aplikací původce.
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 959d831b-a4fd-4634-a646-0d2c0c462ef8
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: tamram
-ms.openlocfilehash: 6f5a136d1be7a4bb4093baad820271770305b718
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: 945289a172270eea56625287baf437fd4b70c7f3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
@@ -34,7 +34,7 @@ Tento článek slouží k uspořádání osvědčené postupy do následujícíc
 * Tabulky
 * Fronty  
 
-| Hotovo | Oblast | Kategorie | Otázky |
+| Hotovo | Oblast | Kategorie | Otázka |
 | --- | --- | --- | --- |
 | &nbsp; | Všechny služby |Cíle škálovatelnosti |[Je vaše aplikace tak, aby zabránilo blíží cíle škálovatelnosti?](#subheading1) |
 | &nbsp; | Všechny služby |Cíle škálovatelnosti |[Zásady vytváření názvů umožňuje lepší vyrovnávání zatížení?](#subheading47) |
@@ -72,10 +72,10 @@ Tento článek slouží k uspořádání osvědčené postupy do následujícíc
 | &nbsp; | Tabulky |Omezení vrácená Data |[Používáte filtrování předejdete vrací entity, které nejsou potřebné?](#subheading32) |
 | &nbsp; | Tabulky |Omezení vrácená Data |[Aby se zabránilo vracení vlastností, které nejsou potřebné použít projekce?](#subheading33) |
 | &nbsp; | Tabulky |Denormalization |[Máte tak, aby se vyhnout neefektivní dotazy nebo víc požadavků na čtení, při pokusu o získání dat nenormalizovanou svá data?](#subheading34) |
-| &nbsp; | Tabulky |Vložení, aktualizaci nebo odstranění |[Jsou můžete dávkování požadavky, které je potřeba mít transakcí, nebo můžete provést ve stejnou dobu ke snížení odezvy?](#subheading35) |
-| &nbsp; | Tabulky |Vložení, aktualizaci nebo odstranění |[Se můžete vyhnout, načítání entity jenom k určení, zda volání vložení nebo aktualizace?](#subheading36) |
-| &nbsp; | Tabulky |Vložení, aktualizaci nebo odstranění |[Zvážení ukládání řadu data, která bude často načten společně v jedné entity jako vlastnosti místo více entit](#subheading37) |
-| &nbsp; | Tabulky |Vložení, aktualizaci nebo odstranění |[Pro entity, které budou načteny vždy společně a může být napsán v dávkách (například časové řady data) ke zvážení použití objektů BLOB místo tabulky](#subheading38) |
+| &nbsp; | Tabulky |Insert/Update/Delete |[Jsou můžete dávkování požadavky, které je potřeba mít transakcí, nebo můžete provést ve stejnou dobu ke snížení odezvy?](#subheading35) |
+| &nbsp; | Tabulky |Insert/Update/Delete |[Se můžete vyhnout, načítání entity jenom k určení, zda volání vložení nebo aktualizace?](#subheading36) |
+| &nbsp; | Tabulky |Insert/Update/Delete |[Zvážení ukládání řadu data, která bude často načten společně v jedné entity jako vlastnosti místo více entit](#subheading37) |
+| &nbsp; | Tabulky |Insert/Update/Delete |[Pro entity, které budou načteny vždy společně a může být napsán v dávkách (například časové řady data) ke zvážení použití objektů BLOB místo tabulky](#subheading38) |
 | &nbsp; | Fronty |Cíle škálovatelnosti |[Blíží jsou cíle škálovatelnosti zpráv za sekundu?](#subheading39) |
 | &nbsp; | Fronty |Konfigurace |[Jste vypnuli Nagle ke zlepšení výkonu malé požadavků?](#subheading40) |
 | &nbsp; | Fronty |Velikost zprávy |[Jsou vaše zprávy compact ke zlepšení výkonu fronty?](#subheading41) |
@@ -206,7 +206,7 @@ Paralelismus mohou být ideální pro výkon, dávejte pozor, o použití bez va
 Vždy používejte nejnovější Microsoft poskytuje klientské knihovny a nástroje. V době psaní jsou dostupné pro rozhraní .NET, Windows Phone, prostředí Windows Runtime, Java a C++ klientské knihovny, jakož i preview knihovny pro jiné jazyky. Kromě toho společnost Microsoft vydala rutiny prostředí PowerShell a rozhraní příkazového řádku Azure pro práci s Azure Storage. Společnost Microsoft aktivně sama vyvinula tyto nástroje s výkonem na paměti, zajišťuje jejich aktuální pomocí nejnovější verze služby a zajišťuje, že mnoho postupů Principy výkonu se interně zpracovat.  
 
 ### <a name="retries"></a>Opakování
-#### <a name="subheading14"></a>Omezení šířky pásma nebo ServerBusy
+#### <a name="subheading14"></a>Throttling/ServerBusy
 Služba úložiště v některých případech může omezení aplikace nebo může být jednoduše nemůže obsluhovat požadavek, protože některé přechodného stavu a vrátíte se zpráva "503 Server je zaneprázdněný" nebo "500 časový limit".  Tomu může dojít, pokud vaše aplikace se blíží některé z cíle škálovatelnosti, nebo pokud je systém vyrovnává oddílů dat, aby se povolit pro vyšší propustnost.  Klientská aplikace by měl obvykle opakujte operaci, kterou způsobí, že takové chyby: Pokus stejné žádost později mohlo být úspěšné. Ale pokud službu úložiště je omezení aplikace, protože přesahuje cíle škálovatelnosti, nebo i v případě, že služba nemohla obsluhovat žádosti z jiného důvodu, agresivní opakování obvykle provést nejhorší problém. Z tohoto důvodu byste měli používat exponenciální zpět vypnuto (knihovny výchozí klienta pro toto chování). Vaše aplikace může například opakovat po 2 sekundy, pak 4 a víc sekund, a 10 sekund a potom 30 sekund a úplně uvolňovat. Toto chování je výsledkem aplikace výrazně snížit jeho zátěž služby spíše než ke zhoršení potíže.  
 
 Všimněte si, že k chybám připojení můžete opakovat okamžitě, protože nejsou výsledek omezení a se očekává, že být dočasné.  
@@ -261,7 +261,7 @@ Rychlé nahrát objekty BLOB, je první otázku odpovědět: jste odesílání j
 Pokud chcete rychle nahrát jediného velkého objektu blob, měli klientské aplikace nahrávat stránkách paralelně (Probíhá s vědomím cíle škálovatelnosti pro jednotlivé objekty BLOB a účet úložiště jako celek) nebo jeho bloky.  Všimněte si, že oficiální poskytovaný společností Microsoft RTM úložiště klientské knihovny (.NET, Java) mají možnost to udělat.  Pro každou z knihoven, použijte níže zadaný objekt nebo vlastnost nastavit úroveň souběžnosti:  
 
 * Rozhraní .NET: Sada ParallelOperationThreadCount na objekt BlobRequestOptions má být použit.
-* Javě a Androidu: Použít BlobRequestOptions.setConcurrentRequestCount()
+* Java/Android: Use BlobRequestOptions.setConcurrentRequestCount()
 * Node.js: Použijte parallelOperationThreadCount na možnosti požadavku nebo služby objektů blob.
 * C++: Použijte metodu blob_request_options::set_parallelism_factor.
 
@@ -355,7 +355,7 @@ Pokud klientské aplikace potřebuje pouze omezenou sadu vlastnosti z entit v ta
 ##### <a name="subheading34"></a>Denormalization
 Na rozdíl od práce relačních databází, osvědčené postupy pro efektivní dotazování na data tabulky vést k denormalizing vaše data. To znamená duplikování stejná data ve více entit (jeden pro každý klíč, který můžete použít k vyhledání dat) Chcete-li minimalizovat počet entit, které musí dotaz prohledat najít data klienta musí namísto nutnosti kontrolovat velký počet entit najít data aplikace musí.  Například v webem elektronického obchodu může chcete najít řazení obou podle ID zákazníka (mě objednávky tohoto zákazníka) a k datu (mě objednávky na datum).  Ve službě Table Storage, je nejvhodnější pro ukládání entit (nebo odkaz na jeho) dvakrát – jednou s názvem tabulky Primárníklíč a pracovní usnadňuje hledání podle zákazníka ID, jednou pro usnadnění hledání k datu.  
 
-#### <a name="insertupdatedelete"></a>Vložení, aktualizaci nebo odstranění
+#### <a name="insertupdatedelete"></a>Insert/Update/Delete
 Tato část popisuje osvědčené postupy pro úpravy entit, které jsou uložené ve službě table.  
 
 ##### <a name="subheading35"></a>Dávkování

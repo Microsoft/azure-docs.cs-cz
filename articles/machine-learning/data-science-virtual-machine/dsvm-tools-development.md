@@ -1,25 +1,25 @@
 ---
-title: "Nástroje pro vývoj vědecké účely virtuálního počítače dat – Azure | Microsoft Docs"
-description: "Datové vědy virtuální počítače nástroje pro vývoj."
-keywords: "datové vědy nástroje, datové vědy virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux"
+title: Nástroje pro vývoj vědecké účely virtuálního počítače dat – Azure | Microsoft Docs
+description: Datové vědy virtuální počítače nástroje pro vývoj.
+keywords: datové vědy nástroje, datové vědy virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: 0d7ee9a54c2c11f814ce041c5c7e5bd9f2e605e5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: gokuma
+ms.openlocfilehash: 6f141fc03b64d0ca922d003f6352b7751ab9967d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Nástroje pro vývoj na Data virtuálního počítače vědecké účely
 
@@ -59,7 +59,7 @@ Virtuální počítač vědecké účely dat (DSVM) poskytuje produktivní prost
 | Co je to?   | Webové rozhraní IDE pro R    |
 | Podporované DSVM verze      | Linux      |
 | Typické použití      |  Vývoj R     |
-| Jak se použít nebo ji spustit?      | Povolit službu s _systemctl povolit serveru rstudia_, spusťte službu s _systemctl spustit server rstudia_. Můžete pak přihlášení k serveru Rstudia v http://your-vm-ip:8787.       |
+| Jak se použít nebo ji spustit?      | Povolit službu s _systemctl povolit serveru rstudia_, spusťte službu s _systemctl spustit server rstudia_. Znovu přihlásili k serveru Rstudia http://your-vm-ip:8787.       |
 | Na DSVM souvisejících nástrojích      |   Visual Studio 2017, Visual Studio kód, Rstudia plochy      |
 
 ## <a name="juno"></a>Juno 

@@ -1,6 +1,6 @@
 ---
-title: "Rychlý start – Cluster Azure Docker Swarm pro Linux"
-description: "Rychle se naučíte, jak pomocí Azure CLI vytvořit cluster Docker Swarm pro kontejnery Linuxu ve službě Azure Container Service."
+title: Rychlý start – Cluster Azure Docker Swarm pro Linux
+description: Rychle se naučíte, jak pomocí Azure CLI vytvořit cluster Docker Swarm pro kontejnery Linuxu ve službě Azure Container Service.
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 691c09c8dfb5335aabb431d06bd687963fe4c488
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7bd781d2fd71c6075cb458b222a93953a22892b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-docker-swarm-cluster"></a>Nasazení clusteru Docker Swarm
 
-V tomto rychlém startu se nasadí cluster Docker Swarm pomocí Azure CLI. Následně se na tomto clusteru nasadí a spustí vícekontejnerová aplikace skládající se z webového front-endu a instance Redis. Po dokončení bude aplikace přístupná přes internet.
+V tomto rychlém startu se nasadí cluster Docker Swarm pomocí Azure CLI. Následně se na tomto clusteru nasadí a spustí vícekontejnerová aplikace skládající se z webu front-end a instance Redis. Po dokončení bude aplikace přístupná přes internet.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

@@ -10,17 +10,17 @@ ms.topic: overview
 ms.service: cost-management
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: e2f12a989eb275e645c8b3bde3494928c5cbdb47
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3e5caff5ff1af79154baddf39bf465ddea5aadae
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-is-azure-cost-management"></a>Co je Azure Cost Management?
 
 Služba Azure Cost Management, kterou licencuje pobočka Microsoftu Cloudyn, umožňuje sledovat využití cloudu a výdaje za prostředky Azure a dalších poskytovatelů cloudu, včetně AWS a Google. Snadno pochopitelné sestavy řídicího panelu pomáhají s přidělováním nákladů i metodami showback a chargeback. Cost Management pomáhá optimalizovat výdaje za cloud díky identifikaci nevyužitých prostředků, které následně můžete spravovat a upravovat.
 
-Pokud chcete zhlédnout úvodní video, podívejte se na video [Introduction to Azure Cost Management](https://youtu.be/NWIRny6Wpsk) (Seznámení se službou Azure Cost Management).
+Pokud chcete zhlédnout úvodní video, podívejte se na video [Introduction to Azure Cost Management](https://azure.microsoft.com/en-us/resources/videos/azure-cost-management-overview-and-demo) (Seznámení se službou Azure Cost Management).
 
 ## <a name="monitor-usage-and-spending"></a>Monitorování využití a výdajů
 

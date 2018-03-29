@@ -1,11 +1,11 @@
 ---
-title: "Nasazení Azure Log Analytics trysek pro monitorování cloudu Foundry | Microsoft Docs"
-description: "Podrobné pokyny pro nasazení cloudu Foundry loggregator trysek pro analýzy protokolů Azure. Ke sledování metrik Foundry cloudu systému stavu a výkonu použijte tryska."
+title: Nasazení Azure Log Analytics trysek pro monitorování cloudu Foundry | Microsoft Docs
+description: Podrobné pokyny pro nasazení cloudu Foundry loggregator trysek pro analýzy protokolů Azure. Ke sledování metrik Foundry cloudu systému stavu a výkonu použijte tryska.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: ningk
 manager: timlt
-editor: 
+editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: virtual-machines-linux
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 0d13d39d2921c51c537534a5b000564a9df91880
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b900a42196eedab89af8e55d71a336ed7adc45a4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Nasazení Azure Log Analytics trysek pro monitorování systému cloudu Foundry
 
-[Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) je služba v Microsoft [Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/) (OMS). Umožňuje shromažďovat a analyzovat data, která se generují z vašeho cloudu a místní prostředí.
+[Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) je služba v Azure. Umožňuje shromažďovat a analyzovat data, která se generují z vašeho cloudu a místní prostředí.
 
 Trysek analýzy protokolů (trysek) je součástí cloudu Foundry (CR), který předává metriky z [cloudu Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) firehose k analýze protokolů. S trysek můžete shromažďovat, zobrazit a analyzovat vaše CR systému stavu a metrik výkonu, napříč více nasazení.
 
-V tomto dokumentu zjistěte, jak nasadit tryska do prostředí CR a poté přístup k datům z konzoly protokolů analýzy OMS.
+V tomto dokumentu zjistěte, jak nasadit tryska do prostředí CR a poté přístup k datům z konzoly pro analýzy protokolů.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,9 +53,9 @@ Tryska musí také přístupová oprávnění k loggregator firehose a Kontroler
 
 Před nastavením klienta UAA příkazového řádku, zkontrolujte, zda je nainstalován Rubygems.
 
-### <a name="3-create-an-oms-workspace-in-azure"></a>3. Vytvořit pracovní prostor OMS služby v Azure
+### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. Vytvořit pracovní prostor analýzy protokolů v Azure
 
-Pracovní prostor OMS můžete vytvořit ručně nebo pomocí šablony. Po dokončení nasazení trysek načíst předem nakonfigurovaná zobrazení OMS a výstrahy.
+Pracovní prostor analýzy protokolů můžete vytvořit ručně nebo pomocí šablony. Po dokončení nasazení trysek načíst předem nakonfigurovaná zobrazení OMS a výstrahy.
 
 Ruční vytvoření pracovního prostoru:
 
@@ -70,7 +70,7 @@ Ruční vytvoření pracovního prostoru:
 
 Další informace najdete v tématu [začít pracovat s analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
-Alternativně můžete vytvořit pracovní prostor OMS šablonou OMS. Pomocí této metody šablony načte předem nakonfigurovaná zobrazení OMS a výstrahy automaticky. Další informace najdete v tématu [analýzy protokolů Azure OMS řešení pro Cloud Foundry](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution).
+Alternativně můžete vytvořit pracovní prostor analýzy protokolů pomocí šablony OMS. Pomocí této metody šablony načte předem nakonfigurovaná zobrazení OMS a výstrahy automaticky. Další informace najdete v tématu [Azure Log Analytics řešení pro Cloud Foundry](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution).
 
 ## <a name="deploy-the-nozzle"></a>Nasazení tryska
 
@@ -116,16 +116,16 @@ git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
 cd oms-log-analytics-firehose-nozzle
 ```
 
-#### <a name="set-environment-variables"></a>Proměnné prostředí sady
+#### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
-Nyní můžete nastavit proměnné prostředí v souboru manifest.yml v aktuálním adresáři. Následující obrázek znázorňuje manifest aplikace pro tryska. Nahraďte hodnoty konkrétní informace pracovní prostor OMS.
+Nyní můžete nastavit proměnné prostředí v souboru manifest.yml v aktuálním adresáři. Následující obrázek znázorňuje manifest aplikace pro tryska. Nahraďte hodnoty konkrétní informace o pracovním prostoru analýzy protokolů.
 
 ```
-OMS_WORKSPACE             : OMS workspace ID: open OMS portal from your OMS workspace, select Settings, and select connected sources.
-OMS_KEY                   : OMS key: open OMS portal from your OMS workspace, select Settings, and select connected sources.
-OMS_POST_TIMEOUT          : HTTP post timeout for sending events to OMS Log Analytics. The default is 10 seconds.
-OMS_BATCH_TIME            : Interval for posting a batch to OMS Log Analytics. The default is 10 seconds.
-OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to OMS Log Analytics. The default is 1000.
+OMS_WORKSPACE             : Log Analytics workspace ID: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
+OMS_KEY                   : OMS key: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
+OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Log Analytics. The default is 10 seconds.
+OMS_BATCH_TIME            : Interval for posting a batch to Log Analytics. The default is 10 seconds.
+OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Log Analytics. The default is 1000.
 API_ADDR                  : The API URL of the CF environment. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 DOPPLER_ADDR              : Loggregator's traffic controller URL. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 FIREHOSE_USER             : CF user you created in the preceding section, "Create a CF user and grant required privileges." This user has firehose and Cloud Controller admin access.
@@ -135,8 +135,8 @@ SKIP_SSL_VALIDATION       : If true, allows insecure connections to the UAA and 
 CF_ENVIRONMENT            : Enter any string value for identifying logs and metrics from different CF environments.
 IDLE_TIMEOUT              : The Keep Alive duration for the firehose consumer. The default is 60 seconds.
 LOG_LEVEL                 : The logging level of the Nozzle. Valid levels are DEBUG, INFO, and ERROR.
-LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to OMS Log Analytics as CounterEvents.
-LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to OMS Log Analytics. The default is 60 seconds.
+LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to Log Analytics as CounterEvents.
+LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Log Analytics. The default is 60 seconds.
 ```
 
 ### <a name="push-the-application-from-your-development-computer"></a>Push aplikace z vývojovém počítači
@@ -165,7 +165,7 @@ Zkontrolujte, zda že je spuštěna aplikace trysek OMS.
 
 ### <a name="1-import-the-oms-view"></a>1. Import OMS zobrazení
 
-Z portálu OMS, přejděte do **Návrhář zobrazení** > **Import** > **Procházet**a vyberte jeden ze souborů omsview. Vyberte například *cloudu Foundry.omsview*a uložte zobrazení. Nyní se zobrazí na dlaždici na OMS **přehled** stránky. Vyberte Zobrazit vizualizovaných metriky.
+Z portálu OMS, přejděte do **Návrhář zobrazení** > **Import** > **Procházet**a vyberte jeden ze souborů omsview. Vyberte například *cloudu Foundry.omsview*a uložte zobrazení. Teď dlaždici se zobrazí na **přehled** stránky. Vyberte Zobrazit vizualizovaných metriky.
 
 Můžete přizpůsobit tato zobrazení nebo vytvořte nové zobrazení prostřednictvím **Návrhář zobrazení**.
 
@@ -175,15 +175,15 @@ Můžete přizpůsobit tato zobrazení nebo vytvořte nové zobrazení prostřed
 
 Můžete [vytvoření výstrahy](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)a podle potřeby přizpůsobit dotazy a prahové hodnoty. Následující doporučujeme výstrahy:
 
-| Vyhledávací dotaz.                                                                  | Generují výstrahu založenou na | Popis                                                                       |
+| Vyhledávací dotaz                                                                  | Generovat výstrahu na základě | Popis                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
-| Typ = CF_ValueMetric_CL Origin_s = bbs Name_s = "Domain.cf aplikací"                   | Počet výsledků < 1   | **BBS. Aplikace Domain.cf** Určuje, zda je aktuální domény CR aplikace. To znamená, že požadavky aplikace CR z cloudu řadiče jsou synchronizovány do bbs. LRPsDesired (AIs potřeby Diego) pro provedení. Nebyla přijata žádná data znamená, že aplikace CR domény není aktuální v zadaný časový interval. |
+| Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Počet výsledků < 1   | **BBS. Aplikace Domain.cf** Určuje, zda je aktuální domény CR aplikace. To znamená, že požadavky aplikace CR z cloudu řadiče jsou synchronizovány do bbs. LRPsDesired (AIs potřeby Diego) pro provedení. Nebyla přijata žádná data znamená, že aplikace CR domény není aktuální v zadaný časový interval. |
 | Typ = CF_ValueMetric_CL Origin_s = rep Name_s = UnhealthyCell Value_d > 1            | Počet výsledků > 0   | Pro Diego buněk 0 znamená v pořádku a 1 znamená není v pořádku. Nastavte výstrahy, pokud zjištění více není v pořádku Diego buněk v zadaný časový interval. |
-| Typ = CF_ValueMetric_CL Origin_s = "bosh předávání hm" Name_s="system.healthy" Value_d = 0 | Počet výsledků > 0 | 1 znamená systém je v pořádku a 0 znamená, že systém není v pořádku. |
+| Type=CF_ValueMetric_CL Origin_s="bosh-hm-forwarder" Name_s="system.healthy" Value_d=0 | Počet výsledků > 0 | 1 znamená systém je v pořádku a 0 znamená, že systém není v pořádku. |
 | Typ = CF_ValueMetric_CL Origin_s = route_emitter Name_s = ConsulDownMode Value_d > 0 | Počet výsledků > 0   | Konzul pravidelně vysílá jeho stav. 0 znamená, systém je v pořádku a 1 znamená, že vysílače trasy zjistí, že konzul dolů. |
 | Typ = CF_CounterEvent_CL Origin_s Delta_d DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" nebo Name_s="doppler.shedEnvelopes") = > 0 | Počet výsledků > 0 | Rozdílů je počet zpráv Doppler záměrně zrušených kvůli nárokům na pozadí. |
 | Typ = CF_LogMessage_CL SourceType_s = LGR MessageType_s = ERR                      | Počet výsledků > 0   | Vysílá Loggregator **LGR** případné problémy s procesem protokolování. Příkladem takových problémů je při výstup zprávu protokolu je příliš vysoká. |
-| Typ = CF_ValueMetric_CL Name_s = slowConsumerAlert                               | Počet výsledků > 0   | Když se tryska obdrží upozornění na pomalé příjemce od loggregator, odešle **slowConsumerAlert** ValueMetric k OMS. |
+| Typ = CF_ValueMetric_CL Name_s = slowConsumerAlert                               | Počet výsledků > 0   | Když se tryska obdrží upozornění na pomalé příjemce od loggregator, odešle **slowConsumerAlert** ValueMetric k analýze protokolů. |
 | Typ = CF_CounterEvent_CL Job_s = trysek Name_s = Ztracené události Delta_d > 0              | Počet výsledků > 0   | Pokud počet rozdílů ke ztrátě událostí dosáhne prahové hodnoty, znamená to, že se tryska může jít o problém s. |
 
 ## <a name="scale"></a>Měřítko
@@ -218,7 +218,7 @@ V okně CR rozhraní příkazového řádku zadejte:
 cf delete <App Name> -r
 ```
 
-Pokud odeberete tryska, data na portálu OMS automaticky se neodebere. Jeho platnost vyprší podle vašeho nastavení uchování analýzy protokolů OMS.
+Pokud odeberete tryska, data na portálu OMS automaticky se neodebere. Jeho platnost vyprší podle vašeho nastavení uchování analýzy protokolů.
 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba
 

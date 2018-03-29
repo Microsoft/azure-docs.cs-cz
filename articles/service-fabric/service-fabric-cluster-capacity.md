@@ -1,11 +1,11 @@
 ---
-title: "Plánování kapacity clusteru Service Fabric | Microsoft Docs"
-description: "Informace o plánování kapacity clusteru Service Fabric. Nodetypes, operace, odolnost a spolehlivost vrstev"
+title: Plánování kapacity clusteru Service Fabric | Microsoft Docs
+description: Informace o plánování kapacity clusteru Service Fabric. Nodetypes, operace, odolnost a spolehlivost vrstev
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4c584f4a-cb1f-400c-b61f-1f797f11c982
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: ad5f396cd71eb0136fe683bbccb9360291be2d59
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b39c22fb45b0e20a3aa7a6dcf59619a87df32ca1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Aspekty plánování kapacity služby cluster Service Fabric
 Pro všechna produkční nasazení plánování kapacity je důležitý krok. Zde jsou některé položky, které je nutné zvážit jako součást tohoto procesu.
@@ -69,7 +69,7 @@ Pro cluster s několika typy uzlů je jeden typ primárního uzlu a zbývající
 
 Toto oprávnění je vyjádřena v následující hodnoty:
 
-* Pozastavit lze po dobu dvou hodin za UD zlatý - infrastruktury úloh. Gold odolnost lze povolit pouze na úplné uzlu virtuálního počítače SKU L32s, GS5, G5, DS15_v2, D15_v2 atd (obecně všechny velikosti virtuálních počítačů uvedené v http://aka.ms/vmspecs, které jsou označené jako "Instance je izolovaná hardware vyhrazený pro jednoho zákazníka" v poznámce jsou virtuální počítače úplné uzlu)
+* Pozastavit lze po dobu dvou hodin za UD zlatý - infrastruktury úloh. Gold odolnost lze povolit pouze na úplné uzlu virtuálního počítače SKU L32s, GS5, G5, DS15_v2, D15_v2 atd (obecně uvedeny všechny velikosti virtuálních počítačů v http://aka.ms/vmspecs, které jsou označené jako "Instance je izolovaná hardware vyhrazený pro jednoho zákazníka" v poznámce, jsou virtuální počítače úplné uzlu)
 * Stříbrná - úloh infrastruktury můžete pozastaven po dobu 10 minut na jednu UD a je k dispozici na všechny standardní virtuální počítače z jediného jádra a vyšší.
 * Bronzová - žádná oprávnění. Toto je výchozí hodnota. Tato úroveň odolnosti používat jenom pro typy uzlů, které používají _pouze_ Bezstavová zatížení. 
 
@@ -87,7 +87,7 @@ Získáte zvolte si úroveň odolnost pro každou z vaší typy uzlů. Můžete 
 **Nevýhody použití úrovně Silver nebo zlatý odolnost**
  
 1. Nasazení pro sadu škálování virtuálního počítače a dalších souvisejících prostředků Azure) může být zpoždění, můžete vypršení časového limitu nebo může být blokovány zcela problémy v clusteru nebo na úrovni infrastruktury. 
-2. Zvyšuje počet [události životního cyklu repliky](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle ) (například primární záměna) z důvodu automatizované deaktivací uzlu během operací infrastruktury Azure.
+2. Zvyšuje počet [události životního cyklu repliky](service-fabric-reliable-services-lifecycle.md) (například primární záměna) z důvodu automatizované deaktivací uzlu během operací infrastruktury Azure.
 3. Trvá uzly mimo provoz za období při platformy Azure aktualizace softwaru nebo hardwaru údržby, které se vyskytnou aktivity. Během tyto aktivity se může zobrazit uzly se stavem zakážete/zakázáno. To zmenšuje kapacitu vašeho clusteru dočasně, ale nesmí mít dopad na dostupnost aplikace nebo clusteru.
 
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>Doporučení týkající se použití úrovně Silver nebo zlatý odolnost
@@ -101,10 +101,10 @@ Použít Silver nebo zlatý odolnost pro všechny typy uzlů, které jsou hostit
 
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Provozní doporučení pro uzel zadejte, že jste nastavili stříbrným nebo gold odolnost úrovně.
 
-1. Zachovat cluster a aplikace v pořádku po celou dobu a ujistěte se, že aplikace reagovat na všechny [služby události životního cyklu repliky](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (jako jsou repliky v sestavení zasekl) včas.
+1. Zachovat cluster a aplikace v pořádku po celou dobu a ujistěte se, že aplikace reagovat na všechny [služby události životního cyklu repliky](service-fabric-reliable-services-lifecycle.md) (jako jsou repliky v sestavení zasekl) včas.
 2. Přijmout bezpečnější způsoby, jak udělat změnu SKU virtuálních počítačů (škálování nahoru/dolů): Změna SKU virtuálních počítačů sady škálování virtuálního počítače je ze své podstaty nezabezpečené operace a proto je nutno Pokud je to možné. Tady je proces postupovat, aby se zabránilo běžné problémy.
     - **Pro neprimární nodetypes:** se doporučuje vytvořit novou sadu škálování virtuálního počítače, je třeba změnit omezení umístění služby, které zahrnují nový typ sady škálování virtuálních počítačů nebo uzel a potom snížit na původní instanci sadu škálování virtuálního počítače počet na hodnotu 0, jeden uzel v čase (to je zajistit, že odebrání uzlů nemají vliv spolehlivost clusteru).
-    - **Primární NodeType:** doporučujeme neměnit SKU virtuálních počítačů typu primárního uzlu. Změna typu primárního uzlu, který není podporován SKU. Pokud z důvodu pro nové SKU je kapacita, doporučujeme přidávání více instancí. Pokud tento není možné, vytvořte nový cluster a [obnovit stav aplikace](service-fabric-reliable-services-backup-restore.md) (pokud existuje) z původního clusteru. Není nutné obnovit všechny služby stavu systému, že jsou vytvořeny při nasazení aplikací do nového clusteru. Pokud jste právě spuštěna bezstavové aplikace v clusteru, je všechny, které můžete provést nasazení aplikací do nového clusteru, máte žádné položky k obnovení. Pokud se rozhodnete přejít nepodporované trasy a chcete změnit SKU virtuálního počítače, proveďte úpravy definici modelu nastavit škálování virtuálního počítače, aby odpovídala nové verze SKU. Pokud cluster obsahuje pouze jeden typ uzlu, ujistěte se, že všechny stavové aplikace reagovat na všechny [služby události životního cyklu repliky](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (jako je zablokované repliky v sestavení) v a včasné a které vaše služba repliky sestavit Doba trvání je méně než pět minut (úroveň stříbrným odolnost). 
+    - **Primární NodeType:** doporučujeme neměnit SKU virtuálních počítačů typu primárního uzlu. Změna typu primárního uzlu, který není podporován SKU. Pokud z důvodu pro nové SKU je kapacita, doporučujeme přidávání více instancí. Pokud tento není možné, vytvořte nový cluster a [obnovit stav aplikace](service-fabric-reliable-services-backup-restore.md) (pokud existuje) z původního clusteru. Není nutné obnovit všechny služby stavu systému, že jsou vytvořeny při nasazení aplikací do nového clusteru. Pokud jste právě spuštěna bezstavové aplikace v clusteru, je všechny, které můžete provést nasazení aplikací do nového clusteru, máte žádné položky k obnovení. Pokud se rozhodnete přejít nepodporované trasy a chcete změnit SKU virtuálního počítače, proveďte úpravy definici modelu nastavit škálování virtuálního počítače, aby odpovídala nové verze SKU. Pokud cluster obsahuje pouze jeden typ uzlu, ujistěte se, že všechny stavové aplikace reagovat na všechny [služby události životního cyklu repliky](service-fabric-reliable-services-lifecycle.md) (jako je zablokované repliky v sestavení) v a včasné a které vaše služba repliky sestavit Doba trvání je méně než pět minut (úroveň stříbrným odolnost). 
 
 
 > [!WARNING]

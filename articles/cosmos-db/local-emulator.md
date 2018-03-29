@@ -1,12 +1,12 @@
 ---
-title: "Vývoj místně pomocí emulátoru DB Cosmos Azure | Microsoft Docs"
-description: "Pomocí emulátoru DB Cosmos Azure, můžete vývoj a testování vaší aplikace místně pro bezplatné bez vytváření předplatného Azure."
+title: Vývoj místně pomocí emulátoru DB Cosmos Azure | Microsoft Docs
+description: Pomocí emulátoru DB Cosmos Azure, můžete vývoj a testování vaší aplikace místně pro bezplatné bez vytváření předplatného Azure.
 services: cosmos-db
-documentationcenter: 
-keywords: "Emulátor Azure Cosmos DB"
+documentationcenter: ''
+keywords: Emulátor Azure Cosmos DB
 author: David-Noble-at-work
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 90b379a6-426b-4915-9635-822f1a138656
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: danoble
-ms.openlocfilehash: 1991157330f6607efcf42ad42694c6b4d19fe609
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4a393887d8e82e833b0c956666bf36e5adb19e70
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Použití emulátoru DB Cosmos Azure pro místní vývoj a testování
 
@@ -43,7 +43,7 @@ Emulátor DB Cosmos Azure poskytuje místní prostředí, které emuluje služby
 > [!NOTE]
 > V tuto chvíli Průzkumníku dat v emulátoru pouze plně podporuje rozhraní SQL API kolekcí a kolekcí MongoDB. Tabulka, graf a Cassandra kontejnerů nejsou plně podporovány. 
 
-Tento článek obsahuje následující úlohy: 
+Tento článek se zabývá následujícími úkony: 
 
 > [!div class="checklist"]
 > * Instalace v emulátoru
@@ -105,7 +105,7 @@ Emulátor DB Cosmos Azure je nainstalována ve výchozím nastavení `C:\Program
 
 ## <a name="start-data-explorer"></a>Spuštění Průzkumníka dat
 
-Při spuštění v Azure Cosmos DB emulátoru automaticky otevře Průzkumníku dat Azure Cosmos DB v prohlížeči. Adresa se zobrazí jako [https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html). Pokud ho zavřete v Exploreru a chtěli později ho znovu otevřete, můžete otevřít adresu URL v prohlížeči nebo spustit z emulátoru DB Cosmos Azure v oznamovací ikoně Windows, jak je uvedeno níže.
+Při spuštění v Azure Cosmos DB emulátoru automaticky otevře Průzkumníku dat Azure Cosmos DB v prohlížeči. Adresa se zobrazí jako [ https://localhost:8081/_explorer/index.html ](https://localhost:8081/_explorer/index.html). Pokud ho zavřete v Exploreru a chtěli později ho znovu otevřete, můžete otevřít adresu URL v prohlížeči nebo spustit z emulátoru DB Cosmos Azure v oznamovací ikoně Windows, jak je uvedeno níže.
 
 ![Azure Cosmos DB místní emulátoru data Průzkumníka Spouštěče](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
 
@@ -312,7 +312,7 @@ Pokud se pokusíte vytvořit kolekci po překročení aktuální počet oddílů
     Sorry, we are currently experiencing high demand in this region, 
     and cannot fulfill your request at this time. We work continuously 
     to bring more and more capacity online, and encourage you to try again. 
-    Please do not hesitate to email docdbswat@microsoft.com at any time or 
+    Please do not hesitate to email askcosmosdb@microsoft.com at any time or
     for any reason. ActivityId: 29da65cc-fba1-45f9-b82c-bf01d78a1f91
 
 Chcete-li změnit počet kolekcí, které jsou k dispozici na emulátoru DB Cosmos Azure, postupujte takto:
@@ -483,7 +483,7 @@ Mnoho zákazníků, které jste už jsme mluvili do mají uvedená: bude dobrý,
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste provést následující:
+V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
 > * Nainstalována na místní emulátoru

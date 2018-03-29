@@ -1,8 +1,8 @@
 ---
-title: "Vědecké zpracování dat s Linux datové vědy virtuálního počítače v Azure | Microsoft Docs"
-description: "Jak provést několik běžných úkolů data vědecké účely pomocí virtuálního počítače s Linuxem dat vědecké účely."
+title: Vědecké zpracování dat s Linux datové vědy virtuálního počítače v Azure | Microsoft Docs
+description: Jak provést několik běžných úkolů data vědecké účely pomocí virtuálního počítače s Linuxem dat vědecké účely.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
-ms.author: bradsev;paulsh
-ms.openlocfilehash: 9b8a9b9bba242fd7c86dc285a77317a5821948df
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: bradsev
+ms.openlocfilehash: aff0dd17baa72b3f58ed5effbedb3a4c630f22c6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Vědecké zpracování dat pomocí datové vědy virtuální počítač s Linuxem v Azure
 Tento návod ukazuje, jak provést několik běžných úkolů data vědecké účely pomocí virtuálního počítače s Linuxem dat vědecké účely. Virtuální počítač pro vědecké účely Data Linux (DSVM) je bitová kopie virtuálního počítače, která je k dispozici v Azure, který je předem nainstalovaná s kolekcí nástrojů pro běžně používané k analýze dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřízení virtuálního počítače Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače lze snadno začít provádění vědecké zpracování dat v minutách, bez nutnosti instalace a konfigurace každého nástroje jednotlivě. Můžete snadno škálování virtuálních počítačů, v případě potřeby a zastavte ji když není používán. Proto tento prostředek je elastické a nákladově efektivní.
@@ -473,7 +473,7 @@ Abyste mohli začít, spusťte Squirrel SQL v nabídce aplikace. Nastavení ovla
 Nastavení připojení k místnímu serveru:
 
 * Vyberte **Windows**, pak **zobrazit aliasy.**
-* Vyberte  **+**  tlačítko Vytvořit nový alias.
+* Vyberte **+** tlačítko Vytvořit nový alias.
 * Pojmenujte ji *nevyžádané pošty databáze*, zvolte **PostgreSQL** v **ovladač** rozevíracího seznamu.
 * Nastavení adresy URL *jdbc:postgresql://localhost/spam*.
 * Zadejte vaše *uživatelské jméno* a *heslo*.

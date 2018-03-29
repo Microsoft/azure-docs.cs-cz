@@ -1,24 +1,24 @@
 ---
-title: "Zákazník přijetí fáze životního cyklu proces vědecké účely dat Team - Azure | Microsoft Docs"
-description: "Cíle, úlohy a úkoly pro fázi přijetí zákaznické projekty vědecké zpracování dat"
+title: Zákazník přijetí fáze životního cyklu proces vědecké účely dat Team - Azure | Microsoft Docs
+description: Cíle, úlohy a úkoly pro fázi přijetí zákaznické projekty vědecké zpracování dat
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: e150b3e7c7e98443264dd5b8aaeda1bfe6047b2c
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: 0030698bafc3d92a1c6daf944ba496421080912c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="customer-acceptance"></a>Přijetí zákazníky
 
@@ -35,7 +35,7 @@ Zde je vizuální reprezentace životního cyklu TDSP:
 ![Životní cyklus TDSP](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
-## <a name="goal"></a>Cílem
+## <a name="goal"></a>Cíl
 **Dokončení dodávky projektu**: Ověřte, že kanál, model a jejich nasazení v produkčním prostředí splňují cíle zákazníka.
 
 ## <a name="how-to-do-it"></a>Jak to udělat
@@ -50,7 +50,7 @@ Zákazník musí ověřit, zda systém splňuje jejich obchodních potřeb a že
 Hlavní artefaktů vytvořeného v této konečné fázi je **ukončete sestavy projektu pro zákazníka**. Tato sestava technické obsahuje všechny podrobností projektu, které jsou užitečné pro získání informací o tom, jak pracovat v systému. Poskytuje TDSP [ukončete sestavy](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) šablony. Šablonu, protože je můžete použít nebo si můžete přizpůsobit pro konkrétního klienta potřeby. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tady jsou odkazy na každý krok v životním cyklu TDSP:
 

@@ -1,6 +1,6 @@
 ---
-title: "Opětovné ochrany převzetí služeb při selhání virtuálních počítačích Azure zpět na primární oblast Azure s Azure Site Recovery | Microsoft Docs"
-description: "Popisuje, jak znovu nastavte ochranu virtuálních počítačů Azure v sekundární oblasti, po převzetí služeb při selhání z primární oblasti, pomocí Azure Site Recovery."
+title: Opětovné ochrany převzetí služeb při selhání virtuálních počítačích Azure zpět na primární oblast Azure s Azure Site Recovery | Microsoft Docs
+description: Popisuje, jak znovu nastavte ochranu virtuálních počítačů Azure v sekundární oblasti, po převzetí služeb při selhání z primární oblasti, pomocí Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: 47056c85c6cb66a7fa28d623a4472b827d970dab
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4171a904626d3b624b39b8a3a261df0d342012df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Opětovné ochrany převzal virtuálních počítačích Azure primární oblasti
 
@@ -57,7 +57,8 @@ Následující vlastnosti cíle VMe můžete přizpůsobit během vytvoření.
 |---------|---------|
 |Cílová skupina prostředků     | Upravte cílová skupina prostředků, ve kterém je virtuální počítač vytvořený. Jako součást nové provedení ochrany je odstraněn cílovém virtuálním počítači. Můžete novou skupinu prostředků, pod kterým chcete vytvořit virtuální počítač po převzetí služeb při selhání.        |
 |Cílová virtuální síť     | Cílová síť nelze změnit během úloh opětovné ochrany. Chcete-li změnit síť, znovu proveďte mapování sítě.         |
-|Cílové úložiště     | Můžete změnit účet úložiště, který používá virtuální počítač po převzetí služeb při selhání.         |
+|Cílové úložiště (sekundární virtuální počítač nepoužívá spravovaných disků)     | Můžete změnit účet úložiště, který používá virtuální počítač po převzetí služeb při selhání.         |
+|Repliky spravované disky (sekundární virtuální počítač používá spravovaných disků)    | Site Recovery vytvoří repliky spravované disky v primární oblasti pro zrcadlení sekundární virtuální počítač spravovaný disky.         | 
 |Úložiště mezipaměti     | Můžete zadat účet úložiště mezipaměti, který se používá během replikace. Ve výchozím nastavení je možné vytvořit nový účet úložiště mezipaměti, pokud neexistuje.         |
 |Skupina dostupnosti     |Pokud virtuální počítač v sekundární oblasti je součástí skupiny dostupnosti, můžete vybrat sadu dostupnosti pro cílový počítač v primární oblasti. Ve výchozím nastavení Site Recovery se pokusí vyhledat existující dostupnosti nastavena v primární oblasti a použít. Během přizpůsobení můžete určit nové sady dostupnosti.         |
 
@@ -68,7 +69,8 @@ Ve výchozím nastavení dojde k následujícímu:
 
 1. Účet úložiště mezipaměti se vytvoří v primární oblasti
 2. Pokud cílový účet úložiště (původní účet úložiště v primární oblasti) neexistuje, vytvoří se nový. Název účtu úložiště přiřazené je název účtu úložiště používat sekundární virtuální počítač, na konci "Automatické obnovení systému".
-3. Pokud cílovou sadu dostupnosti neexistuje, vytvoří se nový jako součást úlohy opětovné ochrany v případě potřeby. Pokud jste upravili nastavení nové provedení ochrany, je použít vybrané sady.
+3. Pokud virtuální počítač používá spravované disky, spravovat repliky disků jsou vytvořené v primární oblasti k ukládání dat replikovaných z disků sekundární virtuální počítač. 
+4. Pokud cílovou sadu dostupnosti neexistuje, vytvoří se nový jako součást úlohy opětovné ochrany v případě potřeby. Pokud jste upravili nastavení nové provedení ochrany, je použít vybrané sady.
 
 Když spustíte opětovné ochrany úlohy a cílových virtuálních počítačů existuje, dojde k následující položky:
 

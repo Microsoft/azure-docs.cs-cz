@@ -1,27 +1,28 @@
 ---
-title: "Spravovat referenční data v prostředí Azure časové řady statistika pomocí jazyka C# | Microsoft Docs"
-description: "Tento článek popisuje, jak spravovat referenčních dat pro prostředí Statistika řady čas Azure tak, že vytvoříte vlastní aplikaci napsanou v jazyce .NET (c ostrý) C#."
+title: Spravovat referenční data v prostředí Azure časové řady statistika pomocí jazyka C# | Microsoft Docs
+description: Tento článek popisuje, jak spravovat referenčních dat pro prostředí Statistika řady čas Azure tak, že vytvoříte vlastní aplikaci napsanou v jazyce .NET (c ostrý) C#.
 services: time-series-insights
 ms.service: time-series-insights
 author: venkatgct
 ms.author: venkatja
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/21/2017
-ms.openlocfilehash: b08b6af7abccb550884adc6cc90d180cfcadb2af
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.date: 03/23/2018
+ms.openlocfilehash: 61375ae3b304959d5cda37c4ce0364d566d576a5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Spravovat referenčních dat pro prostředí Statistika řady čas Azure pomocí jazyka C#
 
-Toto téma popisuje ukázkový kód C# můžete zkompilovat ke správě referenčních dat pro prostředí Statistika Azure časové řady.
+Tento článek popisuje příklad C# projektu můžete zkompilovat ke správě referenčních dat pro prostředí Statistika Azure časové řady.
 
+## <a name="prerequistes"></a>Předpoklady
 Před zkompilování a spuštění ukázkového kódu, proveďte následující kroky:
 1. [Vytvořit odkaz na sadu dat](time-series-insights-add-reference-data-set.md).
 
@@ -30,6 +31,11 @@ Před zkompilování a spuštění ukázkového kódu, proveďte následující 
    Informace o tom, jak nastavit neinteraktivní aplikace najdete v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md).
 
 3. Upravte ukázkový kód nahradit příklad konstanty, určené v **DUMMY #**, v blízkosti začátek kódu. 
+
+Tento příklad kódu je také k dispozici na [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
+
+## <a name="project-references"></a>Odkazy na projekt
+Přidání balíčků NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` a `Newtonsoft.Json` v tomto příkladu. 
 
 ## <a name="c-sample-code"></a>Ukázkový kód C# 
 ```csharp
@@ -233,5 +239,5 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Referenční data rozhraní API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)

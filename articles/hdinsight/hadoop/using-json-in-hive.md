@@ -1,8 +1,8 @@
 ---
-title: "Analýza a zpracování dokumentů JSON s Apache Hive v Azure HDInsight | Microsoft Docs"
-description: "Naučte se používat dokumentů JSON a analyzovat je pomocí apache Hive v Azure HDInsight"
+title: Analýza a zpracování dokumentů JSON s Apache Hive v Azure HDInsight | Microsoft Docs
+description: Naučte se používat dokumentů JSON a analyzovat je pomocí apache Hive v Azure HDInsight
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -15,75 +15,80 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 62b21db5c52287c1d0d058cba3a433434c364777
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 04c3a8262e52a630012a0a70e4b1ccb0ade76449
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracovávat a analyzovat dokumenty JSON pomocí Apache Hive v Azure HDInsight
 
 Zjistěte, jak zpracovávat a analyzovat JavaScript Object Notation (JSON) souborů pomocí Apache Hive v Azure HDInsight. Tento kurz používá následující dokumentu JSON:
 
+```json
+{
+  "StudentId": "trgfg-5454-fdfdg-4346",
+  "Grade": 7,
+  "StudentDetails": [
     {
-        "StudentId": "trgfg-5454-fdfdg-4346",
-        "Grade": 7,
-        "StudentDetails": [
-            {
-                "FirstName": "Peggy",
-                "LastName": "Williams",
-                "YearJoined": 2012
-            }
-        ],
-        "StudentClassCollection": [
-            {
-                "ClassId": "89084343",
-                "ClassParticipation": "Satisfied",
-                "ClassParticipationRank": "High",
-                "Score": 93,
-                "PerformedActivity": false
-            },
-            {
-                "ClassId": "78547522",
-                "ClassParticipation": "NotSatisfied",
-                "ClassParticipationRank": "None",
-                "Score": 74,
-                "PerformedActivity": false
-            },
-            {
-                "ClassId": "78675563",
-                "ClassParticipation": "Satisfied",
-                "ClassParticipationRank": "Low",
-                "Score": 83,
-                "PerformedActivity": true
-                    ]
+      "FirstName": "Peggy",
+      "LastName": "Williams",
+      "YearJoined": 2012
     }
+  ],
+  "StudentClassCollection": [
+    {
+      "ClassId": "89084343",
+      "ClassParticipation": "Satisfied",
+      "ClassParticipationRank": "High",
+      "Score": 93,
+      "PerformedActivity": false
+    },
+    {
+      "ClassId": "78547522",
+      "ClassParticipation": "NotSatisfied",
+      "ClassParticipationRank": "None",
+      "Score": 74,
+      "PerformedActivity": false
+    },
+    {
+      "ClassId": "78675563",
+      "ClassParticipation": "Satisfied",
+      "ClassParticipationRank": "Low",
+      "Score": 83,
+      "PerformedActivity": true
+    }
+  ]
+}
+```
 
-Soubor můžete najít v  **wasb://processjson@hditutorialdata.blob.core.windows.net/** . Další informace o tom, jak používat úložiště objektů Azure Blob s HDInsight naleznete v tématu [HDFS kompatibilního použití Azure Blob storage s Hadoop v HDInsight](../hdinsight-hadoop-use-blob-storage.md). Zkopírujte soubor do kontejneru výchozí clusteru.
+Soubor můžete najít v **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Další informace o tom, jak používat úložiště objektů Azure Blob s HDInsight naleznete v tématu [HDFS kompatibilního použití Azure Blob storage s Hadoop v HDInsight](../hdinsight-hadoop-use-blob-storage.md). Zkopírujte soubor do kontejneru výchozí clusteru.
 
 V tomto kurzu použijete konzolu Hive. Pokyny o tom, otevřete konzolu Hive naleznete v tématu [používání Hive s Hadoop v HDInsight pomocí vzdálené plochy](apache-hadoop-use-hive-remote-desktop.md).
 
 ## <a name="flatten-json-documents"></a>Vyrovnání dokumentů JSON
 Metody uvedené v následující části vyžadují, aby dokumentu JSON skládá z jednoho řádku. Ano musí vyrovnání dokumentu JSON na řetězec. Pokud už je průmětu dokumentu JSON, můžete tento krok přeskočte a přejděte rovnou k další části Analýza dat JSON. Chcete-li shrnout dokumentu JSON, spusťte následující skript:
 
-    DROP TABLE IF EXISTS StudentsRaw;
-    CREATE EXTERNAL TABLE StudentsRaw (textcol string) STORED AS TEXTFILE LOCATION "wasb://processjson@hditutorialdata.blob.core.windows.net/";
+```sql
+DROP TABLE IF EXISTS StudentsRaw;
+CREATE EXTERNAL TABLE StudentsRaw (textcol string) STORED AS TEXTFILE LOCATION "wasb://processjson@hditutorialdata.blob.core.windows.net/";
 
-    DROP TABLE IF EXISTS StudentsOneLine;
-    CREATE EXTERNAL TABLE StudentsOneLine
-    (
-      json_body string
-    )
-    STORED AS TEXTFILE LOCATION '/json/students';
+DROP TABLE IF EXISTS StudentsOneLine;
+CREATE EXTERNAL TABLE StudentsOneLine
+(
+  json_body string
+)
+STORED AS TEXTFILE LOCATION '/json/students';
 
-    INSERT OVERWRITE TABLE StudentsOneLine
-    SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
-          FROM (SELECT INPUT__FILE__NAME,BLOCK__OFFSET__INSIDE__FILE, textcol FROM StudentsRaw DISTRIBUTE BY INPUT__FILE__NAME SORT BY BLOCK__OFFSET__INSIDE__FILE) x
-          GROUP BY INPUT__FILE__NAME;
+INSERT OVERWRITE TABLE StudentsOneLine
+SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
+      FROM (SELECT INPUT__FILE__NAME,BLOCK__OFFSET__INSIDE__FILE, textcol FROM StudentsRaw DISTRIBUTE BY INPUT__FILE__NAME SORT BY BLOCK__OFFSET__INSIDE__FILE) x
+      GROUP BY INPUT__FILE__NAME;
 
-    SELECT * FROM StudentsOneLine
+SELECT * FROM StudentsOneLine
+```
 
-Soubor raw JSON se nachází v  **wasb://processjson@hditutorialdata.blob.core.windows.net/** . **StudentsRaw** Hive tabulky body k nezpracované dokument JSON, který se nesloučí.
+Soubor raw JSON se nachází v **wasb://processjson@hditutorialdata.blob.core.windows.net/**. **StudentsRaw** Hive tabulky body k nezpracované dokument JSON, který se nesloučí.
 
 **StudentsOneLine** tabulku Hive ukládá data do HDInsight výchozí systém souborů v části **/json/studenty/** cesta.
 
@@ -108,10 +113,12 @@ Hive poskytuje integrované UDF názvem [get_json_object](https://cwiki.apache.o
 
 Následující dotaz vrátí křestní jméno a příjmení pro každý student:
 
-    SELECT
-      GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.FirstName'),
-      GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.LastName')
-    FROM StudentsOneLine;
+```sql
+SELECT
+  GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.FirstName'),
+  GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.LastName')
+FROM StudentsOneLine;
+```
 
 Toto je výstup při spuštění tohoto dotazu v okně konzoly:
 
@@ -127,10 +134,12 @@ Z tohoto důvodu Hive wiki doporučuje používat json_tuple.
 ### <a name="use-the-jsontuple-udf"></a>Použití json_tuple UDF
 Jiné UDF poskytované Hive se nazývá [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple), která provede lepší, než [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Tato metoda přebírá sadu klíčů a řetězec formátu JSON a vrátí řazené kolekce členů hodnot pomocí funkce. Následující dotaz vrátí student ID a úrovni z dokumentu JSON:
 
-    SELECT q1.StudentId, q1.Grade
-      FROM StudentsOneLine jt
-      LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
-        AS StudentId, Grade;
+```sql
+SELECT q1.StudentId, q1.Grade
+FROM StudentsOneLine jt
+LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
+  AS StudentId, Grade;
+```
 
 Výstup skriptu v konzole nástroje Hive:
 

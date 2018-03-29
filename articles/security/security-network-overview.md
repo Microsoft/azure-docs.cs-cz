@@ -1,5 +1,5 @@
 ---
-title: "Sítě koncepty zabezpečení požadavky v Azure | Microsoft Docs"
+title: Sítě koncepty zabezpečení požadavky v Azure | Microsoft Docs
 description: " Tento článek snadno pochopit, co je Microsoft Azure nabízí v oblasti zabezpečení sítě. Poskytujeme základní vysvětlení základní koncepty zabezpečení sítě a informace a požadavky na Azure má nabízet v každé z těchto oblastí. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: e477ce9a5f9f35d88a6faeb68ee4e0403f64c030
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0e32cd1f4267b9ae0825fbb34ed00e25dd1b63b5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 Microsoft Azure obsahuje robustní síťové infrastruktury pro podporu aplikací a služeb požadavky na připojení. Připojení k síti je možné mezi prostředky, které jsou umístěné v Azure, mezi místními a Azure hostovaným prostředkům a do a z Internetu a Azure.
@@ -252,11 +252,11 @@ Azure poskytuje funkce, které vám pomohou v této oblasti klíče s časná zj
 ### <a name="azure-network-watcher"></a>Sledovací proces sítě Azure
 Azure sledovací proces sítě obsahuje velké množství funkcí, které pomáhají při řešení problémů a také poskytují zcela nový sadu nástrojů pomoct s identifikací problémy se zabezpečením.
 
-[Zobrazení skupiny zabezpečení ](/network-watcher/network-watcher-security-group-view-overview.md) pomáhá s kontrolou auditování a zabezpečení virtuálních počítačů a slouží k provádění programový audity porovnávání standardních hodnot zásad definovaných ve vaší organizaci, aby efektivní pravidla pro jednotlivé virtuální počítače. Můžete identifikovat všechny odlišily konfigurace.
+[Zobrazení skupiny zabezpečení ](../network-watcher/network-watcher-security-group-view-overview.md) pomáhá s kontrolou auditování a zabezpečení virtuálních počítačů a slouží k provádění programový audity porovnávání standardních hodnot zásad definovaných ve vaší organizaci, aby efektivní pravidla pro jednotlivé virtuální počítače. Můžete identifikovat všechny odlišily konfigurace.
 
-[Zachytáváním paketů](/network-watcher/network-watcher-packet-capture-overview.md) umožňuje zaznamenat síťový provoz do a z virtuálního počítače. Kromě toho, tedy zvýšení tím, že se můžete shromáždit statistiku sítě a problémů v aplikaci mohou být neocenitelnou pomocí při šetření sítě vniknutí zachytáváním paketů. Tato funkce společně s Azure Functions můžete také použít ke spuštění síťových přenosů v reakci na konkrétní Azure výstrahy.
+[Zachytáváním paketů](../network-watcher/network-watcher-packet-capture-overview.md) umožňuje zaznamenat síťový provoz do a z virtuálního počítače. Kromě toho, tedy zvýšení tím, že se můžete shromáždit statistiku sítě a problémů v aplikaci mohou být neocenitelnou pomocí při šetření sítě vniknutí zachytáváním paketů. Tato funkce společně s Azure Functions můžete také použít ke spuštění síťových přenosů v reakci na konkrétní Azure výstrahy.
 
-Další informace o sledovací proces sítě Azure a jak zahájit testování některé z funkcí, které ve vaší laboratoře podívejte se na [sledovací proces sítě Azure Přehled monitorování](/network-watcher/network-watcher-monitoring-overview.md)
+Další informace o sledovací proces sítě Azure a jak zahájit testování některé z funkcí, které ve vaší laboratoře podívejte se na [sledovací proces sítě Azure Přehled monitorování](../network-watcher/network-watcher-monitoring-overview.md)
 
 >[!NOTE]
 Azure sledovací proces sítě je stále ve verzi public preview, takže se nemusí mít stejnou úroveň dostupnost a spolehlivost jako verze služby, které jsou obecné dostupnosti. Některé funkce nemusí být podporována, může mít omezené možnosti a nemusí být k dispozici ve všech Azure umístění. Nejaktuálnější oznámení o dostupnosti a stav této služby, zkontrolujte [Azure aktualizace stránky](https://azure.microsoft.com/updates/?product=network-watcher)

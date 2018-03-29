@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 8a24987ae3423a02647b1dd246b40179be100c06
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ec13109173f89b53e32f903febcec13c7f38c574
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="outbound-connections-classic"></a>Odchozí připojení (klasické)
 
@@ -60,7 +60,7 @@ Jiné nasazení v klasickém mají různé funkce:
 
 V tomto scénáři má virtuální počítač instanci úroveň veřejné IP splnění přiřazen. Pokud jde o odchozí připojení, nezáleží, jestli virtuální počítač má koncový bod Vyrovnávání zatížení, nebo ne. Tento scénář má přednost před ostatní. Pokud se používá splnění, virtuální počítač používá splnění pro všechny odchozí toky.  
 
-Port podvržený (Jan) se nepoužívá a virtuální počítač má všechny dočasné porty, které jsou k dispozici pro použití.
+Veřejné IP adresy, které jsou přiřazené k virtuálnímu počítači je 1:1 relace (místo 1:many) a implementovaný jako bezstavové NAT. 1:1  Port podvržený (Jan) se nepoužívá a virtuální počítač má všechny dočasné porty, které jsou k dispozici pro použití.
 
 Pokud vaše aplikace iniciuje mnoho odchozí toky a dochází k vyčerpání port překládat pomocí SNAT, vezměte v úvahu přiřazení [splnění zmírnit překládat pomocí SNAT omezení](#assignilpip). Zkontrolujte [Správa překládat pomocí SNAT vyčerpání](#snatexhaust) v celé jeho šíři.
 

@@ -1,11 +1,11 @@
 ---
-title: "Správu výpočetních prostředků v Azure SQL Data Warehouse | Microsoft Docs"
-description: "Další informace o výkonu s více instancemi možnosti v Azure SQL Data Warehouse. Horizontální navýšení kapacity úpravou Dwu nebo nižší poplatky za ponecháte datového skladu."
+title: Správu výpočetních prostředků v Azure SQL Data Warehouse | Microsoft Docs
+description: Další informace o výkonu s více instancemi možnosti v Azure SQL Data Warehouse. Horizontální navýšení kapacity úpravou Dwu nebo nižší poplatky za ponecháte datového skladu.
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: johnmac
-editor: 
+editor: ''
 ms.assetid: e13a82b0-abfe-429f-ac3c-f2b6789a70c6
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 02/20/2018
 ms.author: elbutter
-ms.openlocfilehash: 7e6ae6e59b53dd79dab5e2504cf7a43a30e55353
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c34e37f0c6393c65d4b60705012769608bb7395b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Správa výpočtů v Azure SQL Data Warehouse
 Další informace o správě výpočetních prostředků v Azure SQL Data Warehouse. Nižší náklady ponecháte datového skladu nebo změně velikosti datového skladu k splňovat požadavky na výkon. 
@@ -110,7 +110,7 @@ K automatizaci operací správy výpočetní, najdete v části [spravovat výpo
 
 Každý Škálováním na více systémů, pozastavení a obnovení operace může trvat několik minut na dokončení. Pokud jste se škálování, pozastavení, nebo obnovení automaticky, doporučujeme, abyste implementace logiku a ujistěte se, že některé operace dokončili před pokračováním další akci. Kontroluje stav datového skladu pomocí různých koncové body umožňuje správně implementovat automatizace těchto operací. 
 
-Pokud chcete zkontrolovat stav datového skladu, najdete v článku [prostředí PowerShell](quickstart-scale-compute-powershell.md#check-database-state) nebo [T-SQL](quickstart-scale-compute-tsql.md#check-database-state) rychlý start. Můžete také zkontrolovat stav datového skladu s [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
+Chcete-li zkontrolovat stav datového skladu, se [prostředí PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) nebo [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) rychlý start. Můžete také zkontrolovat stav datového skladu s [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
 
 
 ## <a name="permissions"></a>Oprávnění

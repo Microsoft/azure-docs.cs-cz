@@ -1,8 +1,8 @@
 ---
-title: "Pokyny pro zotavení po havárii pro Azure Data Lake Store | Microsoft Docs"
-description: "Pokyny k zotavení po havárii pro Azure Data Lake Store"
+title: Pokyny pro zotavení po havárii pro Azure Data Lake Store | Microsoft Docs
+description: Pokyny k zotavení po havárii pro Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: d76f756e7a6fe77886f0d4e00ab8b23273b4e09d
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9a2705a2372ea4f2fbea1e27bf675679dfda28f8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Pokyny pro zotavení po havárii pro dat v Data Lake Store
 
-Data ve vašem účtu Azure Data Lake Store jsou odolná vůči krátkodobému selhání hardwaru v rámci oblasti díky automatizovaným replikám. Tím se zajišťuje odolnost a vysoká dostupnost splňující podmínky smlouvy SLA pro Azure Data Lake Store. Tento článek obsahuje pokyny o tom, jak další data chránit před výjimečných celou oblast výpadků nebo náhodného odstranění.
+Azure Data Lake Store poskytuje místně redundantní úložiště (LRS). Data ve vašem účtu Azure Data Lake Store je proto odolné vůči selhání hardwaru v rámci oblasti prostřednictvím automatizované repliky. Tím se zajišťuje odolnost a vysoká dostupnost splňující podmínky smlouvy SLA pro Azure Data Lake Store. Tento článek obsahuje pokyny o tom, jak další data chránit před výjimečných celou oblast výpadků nebo náhodného odstranění.
 
 ## <a name="disaster-recovery-guidance"></a>Pokyny pro zotavení po havárii
-Je důležité, aby si každý zákazník připravil vlastní plán zotavení po havárii. Pokud chcete vytvořit vlastní plán zotavení po havárii, použijte prosím dokumentaci k Azure níže. Tady jsou některé prostředky, které vám můžou s vytvořením vlastního plánu pomoct.
+Je důležité, aby si každý zákazník připravil vlastní plán zotavení po havárii. Přečtěte si informace v tomto článku k vytvoření vašeho plánu zotavení po havárii. Tady jsou některé prostředky, které vám můžou s vytvořením vlastního plánu pomoct.
 
 * [Zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Technické pokyny k odolnosti Azure](../resiliency/resiliency-technical-guidance.md)

@@ -1,12 +1,12 @@
 ---
-title: "Nelze se připojit pomocí protokolu RDP pro virtuální počítač s Windows v Azure | Microsoft Docs"
-description: "Řešení problémů, pokud se nemůžete připojit k virtuálnímu počítači Windows v Azure pomocí vzdálené plochy"
-keywords: "Vzdálené plochy chyba, Chyba připojení ke vzdálené ploše, nelze se připojit k virtuální počítač, řešení potíží vzdálené plochy"
+title: Nelze se připojit pomocí protokolu RDP pro virtuální počítač s Windows v Azure | Microsoft Docs
+description: Řešení problémů, pokud se nemůžete připojit k virtuálnímu počítači Windows v Azure pomocí vzdálené plochy
+keywords: Vzdálené plochy chyba, Chyba připojení ke vzdálené ploše, nelze se připojit k virtuální počítač, řešení potíží vzdálené plochy
 services: virtual-machines-windows
-documentationcenter: 
-author: genlin
+documentationcenter: ''
+author: danielsollondon
 manager: timlt
-editor: 
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 0d740f8e-98b8-4e55-bb02-520f604f5b18
 ms.service: virtual-machines-windows
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
-ms.author: genli
-ms.openlocfilehash: 4731a34d143d402372aaff7c03f95dbf0bb508a4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.date: 03/23/2018
+ms.author: danis
+ms.openlocfilehash: e2b792743f1b4ba458cff111ab6dd888b0c26d93
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Řešení potíží s připojení ke vzdálené ploše pro virtuální počítač Azure
 Protokol RDP (Remote Desktop) připojení k systému Windows Azure virtuálního počítače (VM) může selhat z různých důvodů, můžete ponechat nelze získat přístup k virtuálnímu počítači. Tento problém může být pomocí služby Vzdálená plocha na virtuální počítač, síťové připojení nebo klienta vzdálené plochy v hostitelském počítači. Tento článek vás provede některé z nejběžnějších metod k vyřešení potíží s připojeními RDP. 
@@ -77,7 +77,7 @@ Po dokončení každého kroku řešení potíží zkuste znovu připojit k virt
     Vyberte virtuální počítač na portálu Azure. Projděte dolů podokno nastavení **podporu + Poradce při potížích s** části téměř dolní části seznamu. Klikněte **stav prostředku** tlačítko. V pořádku virtuálního počítače hlásí, že je **dostupné**:
    
     ![Zkontrolujte stav virtuálního počítače prostředků na portálu Azure](./media/troubleshoot-rdp-connection/check-resource-health.png)
-6. **Resetovat přihlašovací údaje uživatele**. Tento krok řešení potíží resetuje heslo pro účet místního správce, když nejste jistí nebo zapomněli přihlašovací údaje.
+6. **Resetovat přihlašovací údaje uživatele**. Tento krok řešení potíží resetuje heslo pro účet místního správce, když nejste jistí nebo zapomněli přihlašovací údaje.  Po přihlášení do virtuálního počítače byste měli obnovit heslo pro daného uživatele.
    
     Vyberte virtuální počítač na portálu Azure. Projděte dolů podokno nastavení **podporu + Poradce při potížích s** části téměř dolní části seznamu. Klikněte **resetovat heslo** tlačítko. Zajistěte, aby **režimu** je nastaven na **resetovat heslo** a pak zadejte svoje uživatelské jméno a nové heslo. Nakonec klikněte na **aktualizace** tlačítko:
    
@@ -207,7 +207,7 @@ Po dokončení každého kroku řešení potíží pokuste o připojení k virtu
     Vyberte virtuální počítač na portálu Azure. Projděte dolů podokno nastavení **podporu + Poradce při potížích s** části téměř dolní části seznamu. Klikněte **stav prostředku** tlačítko. V pořádku virtuálního počítače hlásí, že je **dostupné**:
    
     ![Zkontrolujte stav virtuálního počítače prostředků na portálu Azure](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
-5. **Resetovat přihlašovací údaje uživatele**. Tento krok řešení potíží resetuje heslo pro účet místního správce, který zadáte, pokud nejste jistí nebo zapomněli přihlašovací údaje.
+5. **Resetovat přihlašovací údaje uživatele**. Tento krok řešení potíží resetuje heslo pro účet místního správce, který zadáte, pokud nejste jistí nebo zapomněli přihlašovací údaje.  Po přihlášení do virtuálního počítače byste měli obnovit heslo pro daného uživatele.
    
     Vyberte virtuální počítač na portálu Azure. Projděte dolů podokno nastavení **podporu + Poradce při potížích s** části téměř dolní části seznamu. Klikněte **resetovat heslo** tlačítko. Zadejte svoje uživatelské jméno a nové heslo. Nakonec klikněte na **Uložit** tlačítko:
    

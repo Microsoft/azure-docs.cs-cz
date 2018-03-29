@@ -1,11 +1,11 @@
 ---
-title: "Azure AD do služby ověřování pomocí OAuth2.0 | Microsoft Docs"
-description: "Tento článek popisuje, jak použít k implementaci služeb ověřování pomocí tok udělení přihlašovacích údajů klienta OAuth2.0 zpráv protokolu HTTP."
+title: Azure AD do služby ověřování pomocí OAuth2.0 | Microsoft Docs
+description: Tento článek popisuje, jak použít k implementaci služeb ověřování pomocí tok udělení přihlašovacích údajů klienta OAuth2.0 zpráv protokolu HTTP.
 services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: ad2118130ec36aed1561db763946104501eb0f32
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: da657fb6072c0655e47623c58e7051e8dd462049
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Služby volání služby pomocí pověření klienta (sdílený tajný klíč nebo certifikát)
 OAuth 2.0 klienta pověření Grant toku umožňuje webové služby (*důvěrné klienta*) používat svoje vlastní přihlašovací údaje namísto zosobňování uživatele, k ověřování při volání metody jiné webové služby. V tomto scénáři klient je většinou střední vrstvy webové služby, služba démon nebo webu. Pro vyšší úroveň záruky Azure AD umožňuje také volání služby pro použití certifikátu (ne sdílený tajný klíč) jako pověření.
@@ -53,12 +53,12 @@ Pokud používáte sdílený tajný klíč, žádosti o token přístupu service
 | Parametr |  | Popis |
 | --- | --- | --- |
 | grant_type |Požadované |Určuje typ požadovaný udělení. V toku udělení pověření klienta, musí být hodnota **client_credentials**. |
-| client_id |Požadované |Určuje id klienta Azure AD volání webové služby. K vyhledání ID klienta je volající aplikace, v [portál Azure](https://portal.azure.com), klikněte na tlačítko **služby Active Directory**, přepínač adresář, klikněte na aplikaci. Je client_id *ID aplikace* |
-| tajný klíč client_secret |Požadované |Zadejte klíč zaregistrovat pro volání webové služby nebo proces démon aplikace ve službě Azure AD. Chcete-li vytvořit klíč, na portálu Azure, klikněte na tlačítko **služby Active Directory**, přepínač adresář, klikněte na aplikaci, klikněte na **nastavení**, klikněte na tlačítko **klíče**, a přidejte klíč.|
-| Prostředek |Požadované |Zadejte identifikátor ID URI aplikace přijímající webové služby. Chcete-li najít identifikátor ID URI aplikace na portálu Azure, klikněte na tlačítko **služby Active Directory**, přepínač adresář, klikněte na aplikaci služby a pak klikněte na tlačítko **nastavení** a **vlastnosti** |
+| client_id |Požadované |Určuje id klienta Azure AD volání webové služby. K vyhledání ID klienta je volající aplikace, v [portál Azure](https://portal.azure.com), klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, klikněte na aplikaci. Je client_id *ID aplikace* |
+| client_secret |Požadované |Zadejte klíč zaregistrovat pro volání webové služby nebo proces démon aplikace ve službě Azure AD. Chcete-li vytvořit klíč, na portálu Azure, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, klikněte na aplikaci, klikněte na **nastavení**, klikněte na tlačítko **klíče** , a přidejte klíč.|
+| prostředek |Požadované |Zadejte identifikátor ID URI aplikace přijímající webové služby. Chcete-li najít identifikátor ID URI aplikace na portálu Azure, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, klikněte na aplikaci služby a pak klikněte na tlačítko **nastavení** a  **Vlastnosti**. |
 
-#### <a name="example"></a>Příklad
-V následujícím příspěvku HTTP požadavků přístupový token pro webovou službu https://service.contoso.com/. `client_id` Identifikuje webové služby, která požaduje přístupový token.
+#### <a name="example"></a>Příklad:
+Přístupový token pro požadavky následující HTTP POST https://service.contoso.com/ webové služby. `client_id` Identifikuje webové služby, která požaduje přístupový token.
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1
@@ -74,15 +74,15 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 | Parametr |  | Popis |
 | --- | --- | --- |
 | grant_type |Požadované |Určuje typ požadované odpovědi. V toku udělení pověření klienta, musí být hodnota **client_credentials**. |
-| client_id |Požadované |Určuje id klienta Azure AD volání webové služby. K vyhledání ID klienta je volající aplikace, v [portál Azure](https://portal.azure.com), klikněte na tlačítko **služby Active Directory**, přepínač adresář, klikněte na aplikaci. Je client_id *ID aplikace* |
-| client_assertion_type |Požadované |Hodnota musí být`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_id |Požadované |Určuje id klienta Azure AD volání webové služby. K vyhledání ID klienta je volající aplikace, v [portál Azure](https://portal.azure.com), klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, klikněte na aplikaci. Je client_id *ID aplikace* |
+| client_assertion_type |Požadované |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |Požadované | (Webového tokenu JSON) kontrolní výraz, který potřebujete k vytvoření a podepsání s certifikátem, můžete zaregistrovat jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) Další informace o registraci vašeho certifikátu a formát kontrolní výraz.|
-| Prostředek | Požadované |Zadejte identifikátor ID URI aplikace přijímající webové služby. Chcete-li najít identifikátor ID URI aplikace na portálu Azure, klikněte na tlačítko **služby Active Directory**, klikněte na adresář, klikněte na aplikaci a pak klikněte na tlačítko **konfigurace**. |
+| prostředek | Požadované |Zadejte identifikátor ID URI aplikace přijímající webové služby. Chcete-li najít identifikátor ID URI aplikace na portálu Azure, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, klikněte na aplikaci služby a pak klikněte na tlačítko **nastavení** a  **Vlastnosti**. |
 
 Všimněte si, že parametry jsou téměř stejné jako v případě požadavku pomocí sdílený tajný klíč, s tím rozdílem, že parametr tajný klíč client_secret je nahrazena dva parametry: client_assertion_type a client_assertion.
 
-#### <a name="example"></a>Příklad
-V následujícím příspěvku HTTP požadavků přístupový token pro webovou službu https://service.contoso.com/ s certifikátem. `client_id` Identifikuje webové služby, která požaduje přístupový token.
+#### <a name="example"></a>Příklad:
+Přístupový token pro požadavky následující HTTP POST https://service.contoso.com/ webové služby pomocí certifikátu. `client_id` Identifikuje webové služby, která požaduje přístupový token.
 
 ```
 POST /<tenant_id>/oauth2/token HTTP/1.1
@@ -103,7 +103,7 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 | expires_in |Jak dlouho přístupový token je platný (v sekundách). |
 | expires_on |Čas, kdy vyprší platnost přístupového tokenu. Datum je reprezentován jako počet sekund od pod hodnotou 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby platnosti tokenů v mezipaměti. |
 | not_before |Čas, ze kterého se stane přístupový token použitelné. Datum je reprezentován jako počet sekund od pod hodnotou 1970-01-01T0:0:0Z UTC dokud čas platnosti tokenu.|
-| Prostředek |Identifikátor ID URI aplikace přijímající webové služby. |
+| prostředek |Identifikátor ID URI aplikace přijímající webové služby. |
 
 #### <a name="example-of-response"></a>Příklad odpovědi
 Následující příklad ukazuje úspěšná odpověď na žádost o token přístupu k webové službě.
@@ -118,6 +118,6 @@ Následující příklad ukazuje úspěšná odpověď na žádost o token pří
 }
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [OAuth 2.0 ve službě Azure AD](active-directory-protocols-oauth-code.md)
 * [Ukázka v jazyce C# volání služeb s sdílený tajný klíč](https://github.com/Azure-Samples/active-directory-dotnet-daemon) a [ukázka v jazyce C# volání do služby pomocí certifikátu](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)

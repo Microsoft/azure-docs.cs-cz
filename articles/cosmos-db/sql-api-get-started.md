@@ -1,7 +1,7 @@
 ---
-title: "Azure Cosmos DB: Rozhraní SQL API kurz Začínáme | Microsoft Docs"
-description: "Kurz, který vytváří online databáze a Konzolová aplikace C# pomocí rozhraní SQL API."
-keywords: "kurz nosql, online databáze konzolová aplikace jazyka c#"
+title: 'Azure Cosmos DB: Rozhraní SQL API kurz Začínáme | Microsoft Docs'
+description: Kurz, který vytváří online databáze a Konzolová aplikace C# pomocí rozhraní SQL API.
+keywords: kurz nosql, online databáze konzolová aplikace jazyka c#
 services: cosmos-db
 documentationcenter: .net
 author: AndrewHoh
@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: anhoh
-ms.openlocfilehash: 28714106a6228b5bdaa1933d6e8ea89105eb4b30
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 870bdce0b909a882b99de92bbe5ad1e51db11a39
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: Rozhraní SQL API kurz Začínáme
 > [!div class="op_single_selector"]
@@ -31,8 +31,6 @@ ms.lasthandoff: 12/18/2017
 > * [C++](sql-api-cpp-get-started.md)
 >  
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Vítá vás rozhraní API pro Azure Cosmos DB SQL kurzu Začínáme! Až projdete tímto kurzem, budete mít konzolovou aplikaci, která vytváří prostředky Azure Cosmos DB a dotazuje se na ně.
 
@@ -542,7 +540,7 @@ Chcete-li obnovit odkazy na Cosmos DB .NET SDK služby Azure v sadě Visual Stud
 A to je vše, stačí sestavit a máte hotovo.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Chcete komplexnější kurz pro ASP.NET MVC? V tématu [kurz k ASP.NET MVC: vývoj webových aplikací s Azure Cosmos DB](sql-api-dotnet-application.md).
 * Chcete testovat škálování a výkon pomocí služby Azure Cosmos DB? V tématu [výkonu a možností škálování testování pomocí Azure Cosmos DB](performance-testing.md)
 * Zjistěte, jak [sledování požadavků, využití a úložiště Azure Cosmos DB](monitor-accounts.md).

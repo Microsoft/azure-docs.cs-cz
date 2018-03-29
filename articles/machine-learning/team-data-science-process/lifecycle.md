@@ -1,8 +1,8 @@
 ---
-title: "Životní cyklus proces vědecké účely dat Team – Azure | Microsoft Docs"
-description: "Kroky potřebné k provedení projekty vědecké zpracování dat"
+title: Životní cyklus proces vědecké účely dat Team – Azure | Microsoft Docs
+description: Kroky potřebné k provedení projekty vědecké zpracování dat
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 5d69d4d2371b42b3595cf3dc71d99d913e225c59
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: a971e40bc4338f187991eeae991044248844d8b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Životní cyklus procesu Team dat vědecké účely
 
@@ -47,7 +47,7 @@ Pro každou fázi jsme zadejte následující informace:
    * **Jak to udělat**: Přehled konkrétní úlohy a pokyny k jejich dokončení.
    * **Artefakty**: dodávky a podporu k jejich vytvoření.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Poskytujeme návody úplného začátku do konce, které ukazují všechny kroky v procesu pro konkrétní scénáře. [Příklad návody](walkthroughs.md) článek obsahuje seznam scénářů s odkazy a popisy miniatur. Názorné postupy ukazují, jak kombinovat cloud, místní nástroje a služby do pracovního postupu nebo kanálu vytvoření inteligentního aplikace. 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: cfc789b3768c21efc7a03c11370b17ac6c3985cd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d7ee74a19f806faed0bcfcfa5f1c5de3937d9f31
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure standardní nástroje pro vyrovnávání zatížení
 
@@ -39,7 +39,7 @@ Jeden aspekt klíče je pro prostředek oboru virtuální sítě.  Existuje zák
 Prostředky nástroje pro vyrovnávání zatížení jsou objekty v rámci kterých můžete express, jak by měla Azure programu její infrastruktuře víceklientské k dosažení scénáře, který chcete vytvořit.  Není žádný přímý vztah mezi prostředky pro vyrovnávání zatížení a skutečný infrastruktury; vytvoření služby Vyrovnávání zatížení nepodporuje vytvoření instance, kapacita je vždy k dispozici a neexistují žádné spuštění nebo škálování zpoždění vzít v úvahu. 
 
 >[!NOTE]
-> Azure poskytuje sada plně spravovaná řešení pro vaše scénáře Vyrovnávání zatížení.  Pokud hledáte ukončení protokolu TLS ("přesměrování zpracování SSL") nebo zpracování vrstvy aplikace HTTP/HTTPS, přečtěte si [Application Gateway](../application-gateway/application-gateway-introduction.md).  Pokud hledáte pro globální DNS Vyrovnávání zatížení, přečtěte si [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Vaše scénáře začátku do konce může těžit z kombinace těchto řešení podle potřeby.
+> Azure poskytuje sada plně spravovaná řešení pro vaše scénáře Vyrovnávání zatížení.  Pokud hledáte pro ukončení protokolu TLS ("přesměrování zpracování SSL") nebo za zpracování vrstvy aplikace žádosti protokolu HTTP nebo HTTPS, přečtěte si [Application Gateway](../application-gateway/application-gateway-introduction.md).  Pokud hledáte pro globální DNS Vyrovnávání zatížení, přečtěte si [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Vaše scénáře začátku do konce může těžit z kombinace těchto řešení podle potřeby.
 
 ## <a name="why-use-standard-load-balancer"></a>Proč používat nástroj pro vyrovnávání zatížení?
 
@@ -58,7 +58,7 @@ Projděte si v následující tabulce základní informace o rozdílech mezi ná
 | Diagnostika | Azure monitorování vícerozměrných metriky, včetně bajtů a čítače paketů, stav testu stavu, pokusy o připojení (TCP SYN), stav odchozí připojení (úspěšné i neúspěšné překládat pomocí SNAT toky), aktivní data roviny měření | Azure Log Analytics pouze veřejné Vyrovnávání zatížení, překládat pomocí SNAT vyčerpání výstraha, počet stavu fondu back-end |
 | HA porty | Interní zátěže. | / |
 | Ve výchozím nastavení zabezpečení | Výchozí zavřít pro veřejné IP adresy a nástroj pro vyrovnávání zatížení koncové body a skupiny zabezpečení sítě musí použije k explicitně povolených pro přenosy na toku | Výchozí otevřená, skupinu zabezpečení sítě volitelné |
-| Odchozí připojení | Více frontends s každé pravidlo výslovný nesouhlas s. Odchozí scénář _musí_ explicitně vytvořit pro virtuální počítač, abyste mohli použít odchozí připojení.  [Koncové body služby virtuální síť](../virtual-network/virtual-network-service-endpoints-overview.md) dostupný bez odchozí připojení a zpracování dat není započítávat.  Všechny veřejné IP adresy, včetně služeb Azure PaaS není k dispozici jako koncové body služby virtuální sítě, musí být dosaženo přes odchozí připojení a počtu ke zpracování dat. Když virtuální počítač je obsluhuje pouze k interním pro vyrovnávání zatížení, nejsou k dispozici odchozí připojení přes výchozí překládat pomocí SNAT. | Jeden front-endu, náhodně vybrané, pokud existuje více frontends.  Když virtuální počítač je obsluhuje pouze interní nástroj pro vyrovnávání zatížení, použije se výchozí překládat pomocí SNAT.  Odchozí překládat pomocí SNAT programování je transportní protokol konkrétní. |
+| Odchozí připojení | Více frontends s každé pravidlo výslovný nesouhlas s. Odchozí scénář _musí_ explicitně vytvořit pro virtuální počítač, abyste mohli použít odchozí připojení.  [Koncové body služby virtuální síť](../virtual-network/virtual-network-service-endpoints-overview.md) dostupný bez odchozí připojení a zpracování dat není započítávat.  Všechny veřejné IP adresy, včetně služeb Azure PaaS není k dispozici jako koncové body služby virtuální sítě, musí být dosaženo přes odchozí připojení a počtu ke zpracování dat. Když virtuální počítač je obsluhuje pouze k interním pro vyrovnávání zatížení, nejsou k dispozici odchozí připojení přes výchozí překládat pomocí SNAT. Odchozí překládat pomocí SNAT programování je transportní protokol konkrétní na základě protokolu Příchozí pravidlo Vyrovnávání zatížení. | Jeden front-endu, náhodně vybrané, pokud existuje více frontends.  Když virtuální počítač je obsluhuje pouze interní nástroj pro vyrovnávání zatížení, použije se výchozí překládat pomocí SNAT. |
 | Více frontends | Příchozí a odchozí | Pouze příchozí |
 | Operace správy | Většinu operací < 30 sekund | 60-90 sekund typické |
 | SLA | 99,99 % pro cestu k datům s dva virtuální počítače v pořádku | Implicitní v SLA k Virtuálním počítačům | 
@@ -218,13 +218,9 @@ Standardní Vyrovnávání zatížení je odečtena produkt na základě počtu 
 
 ## <a name="limitations"></a>Omezení
 
-Tato omezení platí v době preview a se mohou změnit:
-
 - Instance back-end pro vyrovnávání zatížení nemohou být umístěny v peered virtuálních sítí v tuto chvíli. Všechny instance back-end musí být ve stejné oblasti.
 - SKU nejsou měnitelný. Skladová položka existující prostředek nesmí změnit.
 - Prostředek virtuálního počítače samostatnou sadu dostupnosti prostředků nebo prostředek sady škálování virtuálního počítače, můžete odkazovat jednoho identifikátoru SKU, nikdy obě.
-- Povolení ochrany Azure DDoS ve virtuální síti ovlivňuje dobu trvání operace správy.
-- Protokol IPv6 není podporován.
 - [Azure monitorování výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md) nejsou podporovány v tuto chvíli.
 - [Přesunutí operací předplatné](../azure-resource-manager/resource-group-move-resources.md) nejsou podporovány pro standardní SKU LB a PIP prostředky.
 

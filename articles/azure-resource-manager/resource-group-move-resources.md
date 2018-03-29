@@ -1,8 +1,8 @@
 ---
-title: "Přesunutí nové předplatné nebo prostředek skupiny prostředků Azure | Microsoft Docs"
-description: "Azure Resource Manager využívat k přesunu prostředků do nové skupiny prostředků nebo předplatného."
+title: Přesunutí nové předplatné nebo prostředek skupiny prostředků Azure | Microsoft Docs
+description: Azure Resource Manager využívat k přesunu prostředků do nové skupiny prostředků nebo předplatného.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4709ee707aa67c8de531b2b3e0b58dbed5c2667b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 94f11504597c127d505d103a417c3d78744d99d1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutím prostředků do nové skupiny prostředků nebo předplatného
 
@@ -87,6 +87,11 @@ Před přesunutím prostředku je nutné provést několik důležitých kroků.
   az provider register --namespace Microsoft.Batch
   ```
 
+4. Přesun prostředků účet musí mít alespoň následující oprávnění:
+
+   * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** na zdrojové skupiny prostředků.
+   * **Microsoft.Resources/subscriptions/resourceGroups/write** v cílové skupině prostředků.
+
 ## <a name="when-to-call-support"></a>Při volání podpory
 
 Většina prostředkům prostřednictvím operace samoobslužné služby uvedené v tomto článku se můžete přesunout. Pomocí operace samoobslužné služby, které se:
@@ -105,6 +110,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 
 * API Management
 * Aplikace služby App Service (webové aplikace) – viz [omezení služby App Service](#app-service-limitations)
+* Certifikáty App Service
 * Application Insights
 * Automation
 * Azure Cosmos DB
@@ -193,7 +199,9 @@ Virtuální síť nemůžete přesunout do jiného předplatného, pokud virtuá
 
 ## <a name="app-service-limitations"></a>Omezení služby App Service
 
-Omezení pro přesun prostředků služby App Service se liší v závislosti na tom, jestli jsou přesun prostředků v rámci předplatného nebo do nového předplatného.
+Omezení pro přesun prostředků služby App Service se liší v závislosti na tom, jestli jsou přesun prostředků v rámci předplatného nebo do nového předplatného. 
+
+Omezení popsaná v těchto částech platí pro nahraném certifikáty, není služby App Service Certificate. Služby App Service Certificate můžete přesunout do nové skupiny prostředků nebo předplatného bez omezení. Pokud máte více webových aplikací, které používají stejný certifikát služby aplikace, nejprve přesunout všechny webové aplikace, pak přesuňte certifikát.
 
 ### <a name="moving-within-the-same-subscription"></a>Přesunutí v rámci stejného předplatného.
 

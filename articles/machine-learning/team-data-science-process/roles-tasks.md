@@ -1,23 +1,23 @@
 ---
-title: "Tým datové vědy proces role a úkoly – Azure | Microsoft Docs"
-description: "Přehled klíčové komponenty, role pracovníky a přidružené úlohy pro datové vědy týmového projektu."
-documentationcenter: 
+title: Tým datové vědy proces role a úkoly – Azure | Microsoft Docs
+description: Přehled klíčové komponenty, role pracovníky a přidružené úlohy pro datové vědy týmového projektu.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: b502a586cdb7351d5b22c6b0db966723b8ebb7b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: bradsev
+ms.openlocfilehash: b92bb8e633aa859324f2ff46f5d76a5934007ccf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Tým proces vědecké účely dat rolí a úloh
 
@@ -82,7 +82,7 @@ Vést Team (nebo správce a určené týmového projektu) přijmout TDSP jsou pr
 - Pokud je vybrán služby VSTS být hostující platforma kódu pro verze a spolupráci, vytvořte **týmového projektu** na serveru služby VSTS skupiny. Tato úloha, jinak můžete přeskočena.
 - Vytvořte **týmového projektu šablony úložiště** pod týmového projektu a počáteční hodnoty z úložiště šablon projektu skupiny nastavit tak, že vaše skupina správce nebo delegovaného správce. 
 - Vytvořte **úložiště pro nástroj team**a přidejte nástroje team konkrétní do úložiště. 
-- (Volitelné) Vytvoření  **[úložiště Azure file](https://azure.microsoft.com/services/storage/files/)**  použije k uložení datové prostředky, které mohou být užitečné pro celý tým. Ostatní členové týmu lze připojit tento soubor úložiště sdíleného cloudu na jejich analýzy počítačů.
+- (Volitelné) Vytvoření **[úložiště Azure file](https://azure.microsoft.com/services/storage/files/)** použije k uložení datové prostředky, které mohou být užitečné pro celý tým. Ostatní členové týmu lze připojit tento soubor úložiště sdíleného cloudu na jejich analýzy počítačů.
 - (Volitelné) Připojte úložiště Azure file **datové vědy virtuální počítač** (DSVM) týmu vést a přidejte datové prostředky na něm.
 - Nastavit **řízení zabezpečení** nástrojem přidávání členů týmu a nakonfigurujte svá oprávnění. 
 
@@ -130,7 +130,7 @@ Pracovní postup obsahuje kroky, které je možné rozdělit na tři aktivity:
 
 Podrobné pokyny v pracovním postupu spuštění projektu, najdete v části [provádění datové vědy projekty](project-execution.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tady jsou odkazy na podrobnější popis jednotlivých rolí a úloh, které jsou definované procesu Team dat vědecké účely:
 

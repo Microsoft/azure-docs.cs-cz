@@ -1,7 +1,7 @@
 ---
-title: "Příklady Node.js pro Azure Cosmos DB | Microsoft Docs"
-description: "Pro běžné úlohy v Azure DB Cosmos, včetně operace CRUD najít příklady Node.js na githubu."
-keywords: "Příklady Node.js"
+title: Příklady Node.js pro Azure Cosmos DB | Microsoft Docs
+description: Pro běžné úlohy v Azure DB Cosmos, včetně operace CRUD najít příklady Node.js na githubu.
+keywords: Příklady Node.js
 services: cosmos-db
 author: moderakh
 manager: jhubbard
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: moderakh
-ms.openlocfilehash: 1df7008b1b8bf8bac116fd41b61c6bc954cf3254
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 2c9e623c5e99834bba6cc6ccd34e7c6993e1dc94
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Příklady Azure Cosmos DB Node.js
 > [!div class="op_single_selector"]
@@ -29,8 +29,6 @@ ms.lasthandoff: 12/18/2017
 > * [Galerie ukázkový kód Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Ukázka řešení, která provádět operace CRUD a dalších běžných operací s prostředky Azure Cosmos DB jsou součástí [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) úložiště GitHub. Tento článek obsahuje:
 
@@ -97,7 +95,7 @@ Musíte taky [Node.js SDK](sql-api-sdk-node.md).
 | --- | --- |
 | [Vytvořte kolekci s výchozí indexování](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L657-L701) |[DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection) |
 | [Ručně index určitého dokumentu](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L185-L238) |[RequestOptions.indexingDirective: "zahrnovat"](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
-| [Ručně vyloučit konkrétní dokumentu z indexu](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L120-L183) |[RequestOptions.indexingDirective: vyloučení](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
+| [Ručně vyloučit konkrétní dokumentu z indexu](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L120-L183) |[RequestOptions.indexingDirective: 'exclude'](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
 | [Použít Opožděné indexování pro hromadný import nebo číst velkou kolekce](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L240-L269) |[IndexingMode.Lazy](http://azure.github.io/azure-documentdb-node/global.html#IndexingMode) |
 | [Indexování zahrnout konkrétních cest dokumentu](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L433-L444) |[IndexingPolicy.IncludedPaths](http://azure.github.io/azure-documentdb-node/global.html#IndexingPolicy) |
 | [Vyloučení určitých cest z indexování](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L427-L450) |[IndexingPolicy.ExcludedPath](http://azure.github.io/azure-documentdb-node/global.html#IndexingPolicy) |

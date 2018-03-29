@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření funkce pro data úložiště objektů blob v Azure pomocí Panda | Microsoft Docs"
-description: "Postup vytvoření funkce pro data, která je uložená v kontejneru objektů blob v Azure s balíčkem Panda Python."
+title: Vytvoření funkce pro data úložiště objektů blob v Azure pomocí Panda | Microsoft Docs
+description: Postup vytvoření funkce pro data, která je uložená v kontejneru objektů blob v Azure s balíčkem Panda Python.
 services: machine-learning,storage
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: 7a2e64927f4afca87642fb4829166c5ec60dbc09
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: bradsev
+ms.openlocfilehash: a5a4b92f04fcb4683f792263f3477ecea4d7239e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>Vytvoření funkcí pro data služby Azure Blob Storage pomocí knihovny Pandas
 Tento dokument ukazuje, jak vytvořit funkcí pro data, která je uložená v pomocí kontejneru objektů blob v Azure [Pandas](http://pandas.pydata.org/) balíček Python. Po osnovy jak načíst data do rámečku data Panda, ukazuje, jak vygenerovat kategorií funkce pomocí skriptů Python s hodnotami indikátoru a přihrádkování funkce.
@@ -27,7 +27,7 @@ Tento dokument ukazuje, jak vytvořit funkcí pro data, která je uložená v po
 
 To **nabídky** odkazy na témata, které popisují, jak vytvořit funkce pro data v různých prostředích. Tato úloha je krok v [tým datové vědy procesu (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento článek předpokládá, že jste vytvořili účet úložiště objektů blob v Azure a jsou uloženy vaše data existuje. Pokud budete potřebovat pokyny k nastavení účtu, najdete v části [vytvoření účtu úložiště Azure](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Načíst data do rámečku Pandas dat

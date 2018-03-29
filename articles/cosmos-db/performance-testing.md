@@ -1,12 +1,12 @@
 ---
-title: "Azure Cosmos DB škálování a testování výkonu | Microsoft Docs"
-description: "Naučte se provádět škálování a výkon testování pomocí Azure Cosmos DB"
-keywords: "Testování výkonu"
+title: Azure Cosmos DB škálování a testování výkonu | Microsoft Docs
+description: Naučte se provádět škálování a výkon testování pomocí Azure Cosmos DB
+keywords: Testování výkonu
 services: cosmos-db
 author: arramac
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: f4c96ebd-f53c-427d-a500-3f28fe7b11d0
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,15 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: f72a75f2750d4838566815bece5c2221359ece29
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 36665c0c26dad4e3b667b341b63c5859ece7605b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Výkonu a možností škálování testování pomocí Azure Cosmos DB
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Testování výkonu a škálování je klíče krok při vývoji aplikace. Mnoho aplikací databázové vrstvy má významný dopad na celkový výkon a škálovatelnost. Proto je zásadní součástí testování výkonu. [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je vytvořeného pro tento účel pro elastické škálování a předvídatelný výkon. Tyto funkce umožňují skvělé přizpůsobit pro aplikace, které potřebují a vysoce výkonné databázové vrstvy. 
 
@@ -102,7 +100,7 @@ Pro zkompilování a spuštění vzorového .NET je nejrychlejší způsob, jak 
 
 Až budete mít aplikaci spuštěnou, můžete zkusit jiný [indexování zásady](indexing-policies.md) a [úrovně konzistence](consistency-levels.md) pochopit jejich dopad na propustnosti a latence. Můžete také zkontrolovat zdrojový kód a implementovat podobné konfigurace sad testů nebo výrobní aplikace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jsme se podívali na tom, jak můžete provádět výkonu a možností škálování testování pomocí Azure Cosmos DB pomocí konzolové aplikace .NET. Další informace najdete v následujících článcích:
 
 * [Testování ukázkové Azure Cosmos DB výkonu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)

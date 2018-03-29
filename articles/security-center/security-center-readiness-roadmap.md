@@ -1,11 +1,11 @@
 ---
-title: "Plán připravenosti služby Azure Security Center | Dokumentace Microsoftu"
-description: "Tento dokument vám poskytne plány připravenosti pro zavedení služby Azure Security Center."
+title: Plán připravenosti služby Azure Security Center | Dokumentace Microsoftu
+description: Tento dokument vám poskytne plány připravenosti pro zavedení služby Azure Security Center.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: ndicola
-editor: 
+editor: ''
 ms.assetid: fece670cc-df70-445d-9773-b32cbaba8d4a
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
 ms.author: yurid
-ms.openlocfilehash: 7a6717f4a9ec0594ccd6b326520d0e0ab620739a
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 0de8dda6f88f31208c3fe7d560a461fea46a67e6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Plán připravenosti služby Azure Security Center
 Tento dokument vám poskytne plány připravenosti, které vám pomůžou zahájit používání služby Azure Security Center.
@@ -116,7 +116,7 @@ Video
 * [Doporučení k PaaS](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [Dodržování předpisů](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist)
 
-##<a name="community-resources"></a>Komunitní zdroje
+## <a name="community-resources"></a>Komunitní zdroje
 
 * [UserVoice ke službě Security Center](https://feedback.azure.com/forums/347535-azure-security-center)
 * [Fórum komunity ke službě Security Center](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSecurityCenter)

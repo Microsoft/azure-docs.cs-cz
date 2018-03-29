@@ -1,10 +1,10 @@
 ---
-title: "Azure Storage Analytics můžete použít ke shromažďování metrik a protokolování dat | Microsoft Docs"
-description: "Analytika úložiště umožňuje sledovat data metriky pro všechny služby, úložiště a shromažďovat protokoly pro úložiště Blob, fronty a tabulky."
+title: Azure Storage Analytics můžete použít ke shromažďování metrik a protokolování dat | Microsoft Docs
+description: Analytika úložiště umožňuje sledovat data metriky pro všechny služby, úložiště a shromažďovat protokoly pro úložiště Blob, fronty a tabulky.
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 7894993b-ca42-4125-8f17-8f6dfe3dca76
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
-ms.author: tamram
-ms.openlocfilehash: 9ae9dd0b078911a695d441cd3891be720dc204ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: edda01cbfe1b53d934f9f4a7bb01c645fa680873
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -79,7 +79,7 @@ Následující tabulka popisuje jednotlivé atributy v názvu protokolového.
 
 | Atribut | Popis |
 | --- | --- |
-| < název služby > |Název služby úložiště. Příklad: Objekt blob, tabulka nebo fronty. |
+| <service-name> |Název služby úložiště. Příklad: Objekt blob, tabulka nebo fronty. |
 | RRRR |Čtyřmístný rok pro protokol. Příklad: 2011. |
 | MM |Letopočty měsíce pro protokol. Příklad: 07. |
 | DD |Letopočty měsíce pro protokol. Příklad: 07. |
@@ -95,7 +95,7 @@ Zde je ukázka identifikátor URI, který lze použít pro přístup k předchoz
 
     https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log
 
-Při zaznamenání požadavku úložiště, výsledný název protokolu korelaci hodinu po dokončení požadované operace. Například, pokud žádost o getblob – byla dokončena v 6:30 na 31/7/2011 by byla zapsána do protokolu s předponou následující:`blob/2011/07/31/1800/`
+Při zaznamenání požadavku úložiště, výsledný název protokolu korelaci hodinu po dokončení požadované operace. Například, pokud žádost o getblob – byla dokončena v 6:30 na 31/7/2011 by byla zapsána do protokolu s předponou následující: `blob/2011/07/31/1800/`
 
 ### <a name="log-metadata"></a>Metadata protokolu
 Všechny objekty BLOB protokolu se ukládají s metadata, která umožňuje určit protokolování data, která obsahuje objekt blob. Následující tabulka popisuje každý atribut metadat.
@@ -103,15 +103,15 @@ Všechny objekty BLOB protokolu se ukládají s metadata, která umožňuje urč
 | Atribut | Popis |
 | --- | --- |
 | LogType |Popisuje, zda v protokolu obsahuje informace týkající se čtení, zápisu nebo odstranění operace. Tato hodnota může obsahovat jeden typ nebo kombinaci všechny tři, oddělených čárkami. Příklad 1: zápis; Příklad 2: Číst, zapisovat; Příklad 3: Číst, zapisovat, odstranit. |
-| Čas spuštění |Denní čas, může záznam v protokolu ve formátu RRRR-MM-ddTHH. Příklad: 2011-07-31T18:21:46Z. |
-| čas ukončení |Čas posledního záznamu v protokolu ve formátu RRRR-MM-ddTHH. Příklad: 2011-07-31T18:22:09Z. |
+| StartTime |Denní čas, může záznam v protokolu ve formátu RRRR-MM-ddTHH. Příklad: 2011-07-31T18:21:46Z. |
+| EndTime |Čas posledního záznamu v protokolu ve formátu RRRR-MM-ddTHH. Příklad: 2011-07-31T18:22:09Z. |
 | LogVersion |Verze formátu protokolu. Aktuálně jedinou podporovanou hodnotou je 1.0. |
 
 V následujícím seznamu zobrazí ucelenou ukázku metadat pomocí v předchozích příkladech.
 
-* LogType = zápisu
-* StartTime = 2011-07-31T18:21:46Z
-* Čas ukončení = 2011-07-31T18:22:09Z
+* LogType=write
+* StartTime=2011-07-31T18:21:46Z
+* EndTime=2011-07-31T18:22:09Z
 * LogVersion = 1.0
 
 ### <a name="accessing-logging-data"></a>Přístup k datům protokolování
@@ -157,7 +157,7 @@ Veškerá data metriky pro jednotlivé služby storage je uložena v tři tabulk
 | Minutu metriky, sekundárních umístění |$MetricsMinuteSecondaryTransactionsBlob <br/>$MetricsMinuteSecondaryTransactionsTable <br/>$MetricsMinuteSecondaryTransactionsQueue |Všechny verze, včetně 2013-08-15. Musí být povolen přístup pro čtení geo redundantní replikaci. |
 | Kapacita (pouze služby objektů Blob) |$MetricsCapacityBlob |Všechny verze, včetně 2013-08-15. |
 
-Tyto tabulky se automaticky vytvoří, když je pro účet úložiště povolená analytika úložiště. Jsou přístupná prostřednictvím obor názvů účet úložiště, například:`https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`
+Tyto tabulky se automaticky vytvoří, když je pro účet úložiště povolená analytika úložiště. Jsou přístupná prostřednictvím obor názvů účet úložiště, například: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`
 
 ### <a name="accessing-metrics-data"></a>Přístup k datům metriky
 Všechna data v tabulkách metriky můžete přistupovat pomocí rozhraní API služby Table, včetně .NET API poskytované Azure spravovanou knihovnu. Správce účtu úložiště můžete číst a odstranit tabulku entity, ale nelze vytvořit nebo aktualizovat je.
@@ -177,7 +177,7 @@ Každý požadavek do služby účtu úložiště je fakturovatelný nebo Nefakt
 
 Při prohlížení analytika úložiště dat, můžete použít tabulky v [stavové zprávy a Storage Analytics protokolované](https://msdn.microsoft.com/library/azure/hh343260.aspx) tématu, které chcete určit, jaké požadavky jsou fakturovatelné. Pak můžete porovnat protokoly a metriky data stavových zpráv a zjistí, pokud byla požadována pro konkrétní žádost. Tabulky v předchozím tématu můžete použít také k nalezení dostupnosti pro službu úložiště nebo jednotlivé operace rozhraní API.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 ### <a name="setting-up-storage-analytics"></a>Nastavení služby Storage Analytics
 * [Monitorování účtu úložiště na portálu Azure](storage-monitor-storage-account.md)
 * [Povolení a konfigurace úložiště analýzy](https://msdn.microsoft.com/library/hh360996.aspx)

@@ -1,8 +1,8 @@
 ---
-title: "Vývoj akcí skriptů v HDInsight se systémem Linux - Azure | Microsoft Docs"
-description: "Naučte se používat skripty Bash přizpůsobit clustery HDInsight se systémem Linux. Funkci akce skriptu HDInsight umožňuje spouštět skripty během nebo po vytvoření clusteru. Skripty lze změnit nastavení konfigurace clusteru nebo nainstalovat další software."
+title: Vývoj akcí skriptů v HDInsight se systémem Linux - Azure | Microsoft Docs
+description: Naučte se používat skripty Bash přizpůsobit clustery HDInsight se systémem Linux. Funkci akce skriptu HDInsight umožňuje spouštět skripty během nebo po vytvoření clusteru. Skripty lze změnit nastavení konfigurace clusteru nebo nainstalovat další software.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: larryfr
-ms.openlocfilehash: ddf5db3e61633c45e388e161e165637521803094
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5074345533f0fdb0c72bf319646ad614632d1940
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj akcí skriptů v prostředí HDInsight
 
@@ -66,7 +66,7 @@ Při vývoji vlastních skriptů pro cluster služby HDInsight, existuje několi
 
 Různé verze HDInsight mají různé verze služby Hadoop a nainstalovány součásti. Pokud váš skript očekává na konkrétní verzi služeb nebo součásti, byste měli skript používat jenom k verzi HDInsight, který obsahuje požadované součásti. Můžete najít informace o verze součástí, které jsou součástí HDInsight pomocí [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md) dokumentu.
 
-### <a name="bps10"></a>Cílové verze operačního systému
+### <a name="bps10"></a> Cílové verze operačního systému
 
 HDInsight se systémem Linux je založena na rozdělení Ubuntu Linux. Různé verze HDInsight využívají různé verze Ubuntu, což může změnit chování vašeho skriptu. Například vychází HDInsight 3.4 a starší verze Ubuntu, které používají Upstart. Verze 3.5 a vyšší jsou založené na 16.04 Ubuntu, který používá Systemd. Systemd a Upstart závisí na jiné příkazy, tak budou zasílány váš skript pro práci s obě.
 
@@ -103,7 +103,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-Můžete získat úplné skript, který obsahuje tyto fragmenty kódu v https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh.
+Můžete najít úplné skript, který obsahuje tyto fragmenty kódu v https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh.
 
 Verze Ubuntu, který se používá v prostředí HDInsight, najdete v článku [verze komponenty HDInsight](hdinsight-component-versioning.md) dokumentu.
 
@@ -118,7 +118,7 @@ Osvědčeným postupem je ke stažení a archivaci vše v účtu Azure Storage n
 > [!IMPORTANT]
 > Účet úložiště používané musí být výchozí účet úložiště pro cluster nebo kontejner veřejné, jen pro čtení na jiný účet úložiště.
 
-Například ukázky od společnosti Microsoft jsou uloženy v [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) účet úložiště. Toto umístění je veřejný, jen pro čtení kontejner udržovat týmem HDInsight.
+Například ukázky od společnosti Microsoft jsou uloženy v [ https://hdiconfigactions.blob.core.windows.net/ ](https://hdiconfigactions.blob.core.windows.net/) účet úložiště. Toto umístění je veřejný, jen pro čtení kontejner udržovat týmem HDInsight.
 
 ### <a name="bPS4"></a>Použití předem zkompilovat prostředky
 
@@ -168,11 +168,11 @@ Ve výchozím nastavení `echo` odešle řetězec STDOUT. Pro přesměrování j
 >&2 echo "An error occurred installing Foo"
 ```
 
-To přesměruje informace místo zapsána do STDOUT do STDERR (2). Další informace o přesměrování vstupů/výstupů, najdete v části [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html).
+To přesměruje informace místo zapsána do STDOUT do STDERR (2). Další informace o přesměrování vstupů/výstupů, najdete v části [ http://www.tldp.org/LDP/abs/html/io-redirection.html ](http://www.tldp.org/LDP/abs/html/io-redirection.html).
 
 Další informace o zobrazení informací zaznamenaných akcí skriptů naleznete v tématu [clusterů HDInsight přizpůsobit pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
-### <a name="bps8"></a>Ukládat soubory ve formátu ASCII s LF konce řádků
+### <a name="bps8"></a> Ukládat soubory ve formátu ASCII s LF konce řádků
 
 Skripty bash být uloženy ve formě formátu ASCII, se ukončila příkazem LF řádky. Soubory, které jsou uloženy jako UTF-8, nebo použijte Line FEED jako ukončuje řádku může selhat s následující chybou:
 
@@ -181,7 +181,7 @@ $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="bps9"></a>Logika opakovaných pokusů použít k obnovení z přechodné chyby
+### <a name="bps9"></a> Logika opakovaných pokusů použít k obnovení z přechodné chyby
 
 Při stahování souborů, instalace balíčků pomocí výstižný get nebo jiné akce, které přenášet data přes internet, akce se pravděpodobně nezdaří z důvodu přechodné chyby sítě. Vzdálený prostředek, který komunikuje se například může být právě převzetí služeb při selhání zálohování uzlu.
 
@@ -221,7 +221,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helpermethods"></a>Pomocné metody pro vlastní skripty
 
-Pomocné metody akcí skriptů jsou nástroje, které můžete použít při zápisu vlastních skriptů. Tyto metody jsou součástí[https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) skriptu. Stáhnout a použít je jako součást vašeho skriptu, použijte následující:
+Pomocné metody akcí skriptů jsou nástroje, které můžete použít při zápisu vlastních skriptů. Tyto metody jsou součástí[ https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh ](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) skriptu. Stáhnout a použít je jako součást vašeho skriptu, použijte následující:
 
 ```bash
 # Import the helper method module.
@@ -251,7 +251,7 @@ Tato část obsahuje pokyny k implementaci některých běžných vzorů využit
 
 V některých případech může váš skript vyžadovat parametry. Například můžete potřebovat heslo správce pro cluster při pomocí nástroje Ambari REST API.
 
-Parametry předané do skriptu se označují jako *poziční parametry*a jsou přiřazeny k `$1` pro první parametr `$2` pro druhý a proto v. `$0`obsahuje název samotný skript.
+Parametry předané do skriptu se označují jako *poziční parametry*a jsou přiřazeny k `$1` pro první parametr `$2` pro druhý a proto v. `$0` obsahuje název samotný skript.
 
 Hodnoty předány do skriptu jako parametry by měl být uzavřen v jednoduchých uvozovkách ('). Tím zajistíte, že předaný hodnota je považována za literál.
 
@@ -317,7 +317,7 @@ fi
 Zde jsou proveďte kroky při přípravě nasazení skriptu:
 
 * Uveďte soubory, které obsahují vlastní skripty na místě, která je přístupná na uzlech clusteru během nasazení. Například výchozí úložiště pro cluster. Soubory můžete také uloženy ve veřejně čitelné hostitelských služeb.
-* Ověřte, že skript impotent. To uděláte skript, který chcete spustit několikrát na stejném uzlu.
+* Ověřte, že skript idempotent. To uděláte skript, který chcete spustit několikrát na stejném uzlu.
 * Pomocí TMP dočasný soubor directory zachovat stažené soubory, které skripty používají a pak vyčištění je po mají spouštět skripty.
 * Pokud se změní nastavení na úrovni operačního systému nebo soubory konfigurace služby Hadoop, můžete restartovat služby HDInsight.
 
@@ -371,7 +371,7 @@ Tento problém nejčastěji nastane, když skript je vytvořené v prostředí W
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
-Nahraďte `INFILE` v souboru s Kusovníku. `OUTFILE`musí být nový název souboru, který obsahuje skript bez Kusovníku.
+Nahraďte `INFILE` v souboru s Kusovníku. `OUTFILE` musí být nový název souboru, který obsahuje skript bez Kusovníku.
 
 ## <a name="seeAlso"></a>Další kroky
 

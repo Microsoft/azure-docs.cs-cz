@@ -1,11 +1,11 @@
 ---
-title: "Mapování polí v Azure Search indexery"
-description: "Konfigurace mapování polí indexer Azure Search, aby se zohlednily rozdíly v názvy polí a reprezentace dat"
+title: Mapování polí v Azure Search indexery
+description: Konfigurace mapování polí indexer Azure Search, aby se zohlednily rozdíly v názvy polí a reprezentace dat
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
+editor: ''
 ms.assetid: 0325a4de-0190-4dd5-a64d-4e56601d973b
 ms.service: search
 ms.devlang: rest-api
@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 08/30/2017
 ms.author: eugenesh
-ms.openlocfilehash: 3f2ead208ea1525489a40d1fb637da47cd8a9b24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e4d6960e540641405b879064a8064d45521dc04f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Mapování polí v Azure Search indexery
 Při použití indexerů Azure Search, můžete sami někdy nalézt v situacích, kde vstupní data poměrně neodpovídá schématu cílový index. V takových případech můžete použít **pole mapování** pro transformaci dat do požadovaného tvaru.
@@ -60,7 +60,7 @@ Indexer může mít několik mapování polí. Například je zde jak vám můž
 
 "fieldMappings" : [
     { "sourceFieldName" : "text", "targetFieldName" : "textStandardEnglishAnalyzer" },
-    { "sourceFieldName" : "text", "targetFieldName" : "textSoundexAnalyzer" },
+    { "sourceFieldName" : "text", "targetFieldName" : "textSoundexAnalyzer" }
 ]
 ```
 
@@ -87,7 +87,7 @@ Provede *URL bezpečných* vstupní řetězec kódování Base64. Předpokládá
 ### <a name="sample-use-case---document-key-lookup"></a>Případ použití ukázkové - vyhledávání klíčů dokumentu
 Pouze adresy URL bezpečných znaky se mohou objevit v klíči dokumentu Azure Search (protože zákazníci musí umět vyřešit pomocí dokumentu [rozhraní API pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/lookup-document), například). Pokud vaše data obsahuje adresu URL unsafe znaky a chcete použít k naplnění klíčové pole v indexu vyhledávání, použijte tuto funkci. Jakmile je zakódován klíč, můžete použít base64 dekódovat načíst původní hodnotu. Podrobnosti najdete v tématu [base64 kódování a dekódování](#base64details) části.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 ```JSON
 
 "fieldMappings" : [
@@ -101,7 +101,7 @@ Pouze adresy URL bezpečných znaky se mohou objevit v klíči dokumentu Azure S
 ### <a name="sample-use-case---retrieve-original-key"></a>Případ použití ukázkové - načtení původního klíče
 Máte indexer objektů blob, který indexů objektů BLOB s cesta metadata objektu blob jako klíč dokumentu. Po načtení klíč kódovaného dokumentu, budete chtít dekódovat cestu a stáhnout objektu blob.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 ```JSON
 
 "fieldMappings" : [
@@ -122,7 +122,7 @@ Provede Base64 dekódování vstupního řetězce. Vstup se předpokládá, že 
 ### <a name="sample-use-case"></a>Ukázka případ použití
 Hodnoty vlastní metadata objektu BLOB musí být kódováním ASCII. Kódování Base64 můžete reprezentovat libovolný řetězce UTF-8 v vlastní metadata objektu blob. Ale aby vyhledávání smysl, můžete tuto funkci zapnout kódovaného data zpět do "Regulérní" řetězce při naplňování indexu vyhledávání.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 ```JSON
 
 "fieldMappings" : [
@@ -151,7 +151,7 @@ Následující tabulka porovnává kódování base64 jiné řetězce `00>00?00`
 | Base64 s odsazení | `MDA+MDA/MDA=` | Použít znaky adresy URL bezpečných a odeberte odsazení | Použít standardní base64 znaky a přidejte odsazení |
 | Base64 bez odsazení | `MDA+MDA/MDA` | Použít znaky adresy URL bezpečných | Použít standardní base64 znaky |
 | Base64 URL bezpečné pomocí odsazení | `MDA-MDA_MDA=` | Odebrat odsazení | Přidat odsazení |
-| Adresa URL bezpečných base64 bez odsazení | `MDA-MDA_MDA` | Žádný | Žádný |
+| Adresa URL bezpečných base64 bez odsazení | `MDA-MDA_MDA` | Žádný | Žádné |
 
 <a name="extractTokenAtPositionFunction"></a>
 
@@ -167,7 +167,7 @@ Zdroj dat obsahuje `PersonName` pole a chcete indexu jako dva samostatné `First
 * `delimiter`: řetězec, který chcete použít jako oddělovače při rozdělování vstupní řetězec.
 * `position`: celé číslo pozice s nulovým základem tokenu a vyberte po vstupní řetězec rozdělen.    
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 ```JSON
 
 "fieldMappings" : [
@@ -193,7 +193,7 @@ Například, pokud je vstupní řetězec `["red", "white", "blue"]`, pak cílov�
 ### <a name="sample-use-case"></a>Ukázka případ použití
 Databáze SQL Azure nemá předdefinované datový typ, který mapuje přirozeně `Collection(Edm.String)` pole ve službě Azure Search. K naplnění kolekci polí s řetězcem, formátování zdroj dat jako pole řetězců JSON a tuto funkci můžete používat.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 ```JSON
 
 "fieldMappings" : [

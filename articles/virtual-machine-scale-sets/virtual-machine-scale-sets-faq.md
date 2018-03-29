@@ -1,11 +1,11 @@
 ---
-title: "Nejčastější dotazy k sadách škálování virtuálního počítače Azure | Microsoft Docs"
-description: "Získejte odpovědi na nejčastější dotazy týkající se sady škálování virtuálního počítače."
+title: Nejčastější dotazy k sadách škálování virtuálního počítače Azure | Microsoft Docs
+description: Získejte odpovědi na nejčastější dotazy týkající se sady škálování virtuálního počítače.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -16,15 +16,55 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 52be84b73e70a02c43ef71917dc272060d82b42d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4dd908908877a222c708c9b2ab6255ab9a4b414a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy k sadách škálování virtuálních počítačů Azure
 
 Získejte odpovědi na nejčastější dotazy týkající se sady škálování virtuálního počítače v Azure.
+
+## <a name="top-frequently-asked-questions-for-scale-sets"></a>Horní nejčastější dotazy pro sady škálování
+**Otázka:** Kolik virtuálních počítačů může obsahovat škálovací sada?
+
+**Odpověď:** Škálovací sada může obsahovat 0 až 1 000 virtuálních počítačů založených na imagích platformy nebo 0 až 300 virtuálních počítačů založených na vlastních imagích. 
+
+**Otázka:** Podporují se ve škálovacích sadách datové disky?
+
+**Odpověď:** Ano. Škálovací sada může definovat konfiguraci připojených datových jednotek, která se použije na všechny virtuální počítače v sadě. Další informace najdete v tématu [Škálovací sady Azure a připojené datové disky](virtual-machine-scale-sets-attached-disks.md). Další možnosti ukládání dat zahrnují:
+
+* Soubory Azure (sdílené jednotky SMB)
+* Jednotka operačního systému
+* Dočasné jednotky (místní úložiště, nezálohované pomocí Azure Storage)
+* Datová služba Azure (např. tabulky Azure, objekty blob Azure)
+* Externí datová služba (např. vzdálená databáze)
+
+**Otázka:** Které oblasti Azure podporují škálovací sady?
+
+**Odpověď:** Všechny oblasti podporují škálovací sady.
+
+**Otázka:** Jak se vytváří škálovací sada s použitím vlastní image?
+
+**Odpověď:** Na základě virtuálního pevného disku vlastní image vytvoříte spravovaný disk, na který budete odkazovat v šabloně škálovací sady. [Tady je příklad](https://github.com/chagarw/MDPP/tree/master/101-vmss-custom-os).
+
+**Otázka:** Pokud snížím kapacitu škálovací sady z 20 na 15, které virtuální počítače budou odebrány?
+
+**Odpověď:** Virtuální počítače se ze škálovací sady odebírají rovnoměrně napříč aktualizačními doménami a doménami selhání, aby se maximalizovala dostupnost. Nejprve se odeberou virtuální počítače s nejvyšším ID.
+
+**Otázka:** A co když pak zvýším kapacitu z 15 na 18?
+
+**Odpověď:** Pokud zvýšíte kapacitu na 18, vytvoří se 3 nové virtuální počítače. ID instance virtuálního počítače se přírůstkově zvýší oproti předchozí nejvyšší hodnotě (např. 20, 21, 22). Virtuální počítače se vyvažují mezi doménami selhání a aktualizačními doménami.
+
+**Otázka:** Pokud ve škálovací sadě používám několik rozšíření, je možné vynucovat určitou posloupnost provádění?
+
+**Odpověď:** Ne přímo, ale u rozšíření customScript by váš skript mohl čekat na dokončení jiného rozšíření. Další pokyny k nastavení pořadí rozšíření najdete v blogovém příspěvku o [nastavení pořadí rozšíření ve škálovacích sadách virtuálních počítačů Azure](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/).
+
+**Otázka:** Spolupracují škálovací sady se skupinami dostupnosti Azure?
+
+**Odpověď:** Ano. Škálovací sada je implicitní skupina dostupnosti s pěti doménami selhání a pěti aktualizačními doménami. Škálovací sady s více než 100 virtuálních počítačů pokrývají více *skupin umístění* odpovídajících více skupinám dostupnosti. Další informace o skupinách umístění najdete v tématu [Práce s velkými škálovacími sadami virtuálních počítačů](virtual-machine-scale-sets-placement-groups.md). Skupina dostupnosti virtuálních počítačů může existovat ve stejné virtuální síti jako škálovací sada virtuálních počítačů. Běžnou konfigurací je umístění virtuálních počítačů řídicích uzlů, které často vyžadují jedinečnou konfiguraci, do skupiny dostupnosti, a datových uzlů do škálovací sady.
+
 
 ## <a name="autoscale"></a>Automatické škálování
 
@@ -558,7 +598,7 @@ K vytvoření škálování virtuálních počítačů, nastavit pomocí vlastn�
 
 ### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>Konfigurování sad přiřadit veřejnou IP adresu pro každý virtuální počítač škálování
 
-Chcete-li vytvořit sadu škálování virtuálního počítače, který přiřazuje veřejnou IP adresu pro každý virtuální počítač, zkontrolujte, zda je verze rozhraní API Microsoft.Compute/virtualMAchineScaleSets prostředku 2017-03-30 a přidejte _publicipaddressconfiguration_ JSON paket ke stupnici nastavit část konfigurace IP adresy. Příklad:
+Chcete-li vytvořit sadu škálování virtuálního počítače, který přiřazuje veřejnou IP adresu pro každý virtuální počítač, zkontrolujte, zda je verze rozhraní API Microsoft.Compute/virtualMachineScaleSets prostředku 2017-03-30 a přidejte _publicipaddressconfiguration_ JSON paket ke stupnici nastavit část konfigurace IP adresy. Příklad:
 
 ```json
     "publicipaddressconfiguration": {
@@ -694,7 +734,7 @@ Chcete-li získat informace o vlastnosti pro každý virtuální počítač bez 
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>Můžete předat argumenty jiné rozšíření pro různé virtuální počítače ve škálovací sadě virtuálního počítače?
 
-Ne, nemůžete předat jiné rozšíření argumenty různé virtuální počítače ve škálovací sadě virtuálních počítačů. Rozšíření však může fungovat podle jedinečné vlastnosti virtuálního počítače, že jsou spuštěny v, například jako na název počítače. Rozšíření můžete také dotazu instance metadata na http://169.254.169.254 získat další informace o virtuálním počítači.
+Ne, nemůžete předat jiné rozšíření argumenty různé virtuální počítače ve škálovací sadě virtuálních počítačů. Rozšíření však může fungovat podle jedinečné vlastnosti virtuálního počítače, že jsou spuštěny v, například jako na název počítače. Rozšíření také můžete dotazu instance metadata na http://169.254.169.254 získat další informace o virtuálním počítači.
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Proč se mezery mezi Moje identifikátory virtuálních počítačů a názvy počítačů virtuálních počítačů sady škálování virtuálního počítače? Příklad: 0, 1, 3...
 

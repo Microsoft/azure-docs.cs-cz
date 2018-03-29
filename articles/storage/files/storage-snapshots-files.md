@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: a6b80c134351429ec85a20f7ab83b7674b8b7352
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 671e3737a620d85c732a091d5a62f35f35c1d515
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="overview-of-share-snapshots-for-azure-files-preview"></a>Přehled sdílení snímků pro soubory Azure (preview)
-Soubory Azure poskytuje schopnost pořizovat snímky sdílenou složku Sdílené složky. Sdílené složky snímků (preview) zaznamenat stav sdílené složky v tomto bodě v čase. V tomto článku jsme popisují, jaké funkce poskytovat sdílené složky snímků a jak můžete využít výhod těchto ve vašem případě vlastní použití.
+# <a name="overview-of-share-snapshots-for-azure-files"></a>Přehled sdílené složky snímků pro Azure Files 
+Soubory Azure poskytuje schopnost pořizovat snímky sdílenou složku Sdílené složky. Sdílet snímky zachycení stavu sdílení v tomto bodě v čase. V tomto článku jsme popisují, jaké funkce poskytovat sdílené složky snímků a jak můžete využít výhod těchto ve vašem případě vlastní použití.
 
 
 ## <a name="when-to-use-share-snapshots"></a>Kdy použít sdílené složky snímků

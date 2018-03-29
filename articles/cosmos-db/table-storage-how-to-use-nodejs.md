@@ -1,6 +1,6 @@
 ---
-title: "Jak používat Azure Table storage nebo Azure DB Cosmos z Node.js | Microsoft Docs"
-description: "Ukládejte si strukturovaná data v cloudu pomocí Azure Table storage nebo Azure Cosmos DB."
+title: Jak používat Azure Table storage nebo Azure DB Cosmos z Node.js | Microsoft Docs
+description: Ukládejte si strukturovaná data v cloudu pomocí Azure Table storage nebo Azure Cosmos DB.
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/23/2018
 ms.author: mimig
-ms.openlocfilehash: dcd729da0b9e913046da1ad5619594f5ce485bdb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fc6e3ca079b4d1edefa82e06dbe63b393ab2fbb3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>Používání úložiště Azure Table z Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -361,8 +361,6 @@ dc.table.queryEntities(tableName,
 ```
 
 Je-li si prohlédnout `continuationToken` objekt, zjistíte, vlastnosti, jako `nextPartitionKey`, `nextRowKey` a `targetLocation`, které lze použít k iteraci v rámci všechny výsledky.
-
-Je zde i ukázku pokračování (continuationsample.js) [uzlu úložiště azure úložiště](https://github.com/Azure/azure-storage-node/tree/master/examples/samples) na Githubu. 
 
 ## <a name="work-with-shared-access-signatures"></a>Práce s podpisy sdíleného přístupu
 Sdílené přístupové podpisy (SAS) jsou zabezpečené způsob, jak poskytnout podrobné přístup k tabulkám bez zadání názvu účtu úložiště nebo klíče. SAS se často používá k poskytování omezený přístup k datům, například povolení mobilní aplikace vyhledejte záznamy.

@@ -1,13 +1,13 @@
 ---
-title: "Správa sady škálování virtuálního počítače pomocí Azure CLI 2.0 | Microsoft Docs"
-description: "Běžné Azure CLI 2.0 příkazy ke správě sady škálování virtuálního počítače, jako je například postup spuštění a zastavení instance, nebo změnit měřítko nastavená kapacita."
+title: Správa sady škálování virtuálního počítače pomocí Azure CLI 2.0 | Microsoft Docs
+description: Běžné Azure CLI 2.0 příkazy ke správě sady škálování virtuálního počítače, jako je například postup spuštění a zastavení instance, nebo změnit měřítko nastavená kapacita.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: a484cf6734ff663a852be1a46e2b2ca2f75bb17d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1afb43b65203406a7d49b0e3f641bc22d164a4a9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Spravovat škálování virtuálních počítačů, nastavit pomocí Azure CLI 2.0
-V průběhu cyklu škálovací sadu virtuálních počítačů můžete spustit jeden nebo více úloh správy. Kromě toho můžete vytvořit skripty, které automatizují různé úlohy životního cyklu. Tento článek podrobně popisuje některé běžné příkazy Azure CLI 2.0, které umožňují provádět tyto úlohy.
+V průběhu cyklu škálovací sadu virtuálních počítačů můžete spustit jeden nebo více úloh správy. Kromě toho možná budete chtít vytvořit skripty pro automatizaci různých úloh souvisejících s životním cyklem. Tento článek podrobně popisuje některé běžné příkazy Azure CLI 2.0, které umožňují provádět tyto úlohy.
 
-K dokončení těchto úloh správy, musíte na nejnovější verzi 2.0 rozhraní příkazového řádku Azure. Informace o tom, jak nainstalovat a použít nejnovější verzi najdete v tématu [nainstalovat Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud potřebujete vytvořit škálovací sadu virtuálních počítačů, můžete [vytvořit měřítko nastavit na portálu Azure](virtual-machine-scale-sets-create-portal.md).
+K dokončení těchto úloh správy, je třeba nejnovější 2.0 rozhraní příkazového řádku Azure. Informace najdete v tématu [nainstalovat Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud potřebujete vytvořit škálovací sadu virtuálních počítačů, můžete [vytvořit škálování s Azure CLI 2.0](quick-create-cli.md).
 
 
 ## <a name="view-information-about-a-scale-set"></a>Zobrazit informace o sadě škálování
@@ -35,7 +35,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 ```
 
 
-## <a name="view-vms-in-a-scale-set"></a>Zobrazení virtuální počítače ve škálovací sadě
+## <a name="view-vms-in-a-scale-set"></a>Zobrazení virtuálních počítačů ve škálovací sadě
 Chcete-li zobrazit seznam instance virtuálního počítače ve škálovací sadě, použijte [az vmss seznamu instance](/cli/azure/vmss#list-instances). Následující příklad zobrazí seznam všech instancí virtuálních počítačů v pojmenované sad škálování *myScaleSet* v *myResourceGroup* skupinu prostředků. Zadejte vlastní hodnoty pro tyto názvy:
 
 ```azurecli
@@ -68,7 +68,7 @@ az vmss list-instance-connection-info \
 ## <a name="change-the-capacity-of-a-scale-set"></a>Změna kapacity škálovací sadě
 Předchozí příkazy vám ukázal, informace o vaší sadě škálování a instancí virtuálních počítačů. Chcete-li zvýšit nebo snížit počet instancí v sadě škálování, můžete změnit kapacitu. Škálovací sadu vytvoří nebo odstraní požadovaný počet virtuálních počítačů a potom nakonfiguruje virtuální počítače přijímat provoz aplikace.
 
-Pokud chcete zobrazit počet instancí, které máte aktuálně v sadě škálování, použijte [az vmss zobrazit](/cli/azure/vmss#az_vmss_show) a dotazovat se na *sku.capacity*:
+Pokud chcete zobrazit počet instancí, které aktuálně máte ve škálovací sadě, použijte příkaz [az vmss show](/cli/azure/vmss#az_vmss_show) s dotazem na *sku.capacity*:
 
 ```azurecli
 az vmss show \
@@ -78,7 +78,7 @@ az vmss show \
     --output table
 ```
 
-Potom můžete ručně zvýšení nebo snížení počtu virtuálních počítačů v sad s škálování [az vmss škálování](/cli/azure/vmss#az_vmss_scale). Následující příklad nastaví počet virtuálních počítačů ve vaší škálování nastavena na *5*:
+Pak můžete ručně navýšit nebo snížit počet virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss scale](/cli/azure/vmss#az_vmss_scale). Následující příklad nastaví počet virtuálních počítačů ve vaší škálování nastavena na *5*:
 
 ```azurecli
 az vmss scale \

@@ -1,10 +1,10 @@
 ---
-title: "Povolení metrik úložiště na portálu Azure | Microsoft Docs"
-description: "Postup povolení úložiště metriky pro služby objektů Blob, fronty, tabulky a souborů"
+title: Povolení metrik úložiště na portálu Azure | Microsoft Docs
+description: Postup povolení úložiště metriky pro služby objektů Blob, fronty, tabulky a souborů
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 0407adfc-2a41-4126-922d-b76e90b74563
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
-ms.author: tamram
-ms.openlocfilehash: 8abb4f968c1fa84e03c8cc807826d3684713847a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: 0caa4eff80877ad4bf8d501a276e82922b1a84c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Zapnutí metrik Azure Storage a prohlížení dat metrik
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -135,12 +135,12 @@ K přístupu k tabulce analýzy prostřednictvím kódu programu, Všimněte si,
 
 Můžete najít podrobnosti schémat pro tyto tabulky v [schématu tabulky metriky Analytics úložiště](https://msdn.microsoft.com/library/azure/hh343264.aspx). Ukázka řádků níže zobrazit pouze podmnožinu sloupců, které jsou k dispozici, ale ilustrovat některé důležité funkce způsob, jakým Storage Metrics uloží tyto metriky:
 
-| Klíč oddílu | RowKey | časové razítko | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Dostupnost | AverageE2ELatency | AverageServerLatency | PercentSuccess |
+| PartitionKey | RowKey | Časové razítko | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Dostupnost | AverageE2ELatency | AverageServerLatency | PercentSuccess |
 | --- |:---:| ---:| --- | --- | --- | --- | --- | --- | --- | --- |
 | 20140522T1100 |uživatel; Všechny |2014-05-22T11:01:16.7650250Z |7 |7 |4003 |46801 |100 |104.4286 |6.857143 |100 |
 | 20140522T1100 |uživatel; QueryEntities |2014-05-22T11:01:16.7640250Z |5 |5 |2694 |45951 |100 |143.8 |7.8 |100 |
 | 20140522T1100 |uživatel; QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
-| 20140522T1100 |uživatel; UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
+| 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
 
 V těchto datech minutu metriky příklad používá klíč oddílu čas na minutu řešení. Klíč řádku určuje typ informací, která je uložená v řádku. Klíč řádku se skládá ze dvou částí informace, typ přístupu a typ požadavku:
 
@@ -212,5 +212,5 @@ Kapacita používané metriky tabulky je také fakturovatelný: k zjištění p�
 * Pokud každou hodinu služba využívá každé rozhraní API v každé službě, pak přibližně 12KB dat je uložený každou hodinu do tabulky transakcí metriky Pokud jste povolili právě služby úrovni souhrnu.
 * Tabulka kapacity pro objekty BLOB obsahuje dva řádky přidat každý den (za předpokladu, že uživatel požádal v protokolů): to znamená, že každý den velikost této tabulky zvyšuje úroveň až přibližně 300 bajtů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Povolení protokolování a přístup k datům protokolu úložiště](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)

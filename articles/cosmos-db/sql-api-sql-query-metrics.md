@@ -1,9 +1,9 @@
 ---
-title: "Metriky dotazů SQL pro rozhraní API pro Azure Cosmos databáze SQL | Microsoft Docs"
-description: "Další informace o tom, jak instrumentace a ladění výkon dotazů SQL Azure Cosmos DB požadavků."
-keywords: "syntaxe SQL, dotaz sql, sql dotazy, json dotazovací jazyk, databázových koncepcí a sql, agregační funkce"
+title: Metriky dotazů SQL pro rozhraní API pro Azure Cosmos databáze SQL | Microsoft Docs
+description: Další informace o tom, jak instrumentace a ladění výkon dotazů SQL Azure Cosmos DB požadavků.
+keywords: syntaxe SQL, dotaz sql, sql dotazy, json dotazovací jazyk, databázových koncepcí a sql, agregační funkce
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
 editor: monicar
@@ -15,15 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: a2a42fd65ba4344f703ca423dc451802f3f0ac76
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: a92d2ed1686765a54812ff82066bc30c1d48848d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů s Azure Cosmos DB
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Poskytuje Azure Cosmos DB [SQL rozhraní API pro dotazování na data](sql-api-sql-query.md), aniž byste museli schématu nebo sekundární indexy. Tento článek obsahuje následující informace pro vývojáře:
 
@@ -151,7 +149,7 @@ Níže jsou většiny běžných faktorů, které mít vliv na výkon dotazů Az
 | Dělení a klíče oddílů | Upřednostnit dotazů s hodnotou klíče oddílu v klauzuli filtru pro s nízkou latencí. |
 | Možnosti sady SDK a dotazů | Doporučené postupy SDK jako přímé připojení a ladit možnosti provedení dotazu na straně klienta. |
 | Latence sítě | Účet pro síť režie v měření a použít více funkci rozhraní API ke čtení z nejbližší oblast. |
-| Zásady indexování | Ujistěte se, že máte požadované indexování cesty nebo zásady pro dotaz. |
+| Zásada indexování | Ujistěte se, že máte požadované indexování cesty nebo zásady pro dotaz. |
 | Metriky spuštění dotazu | Analyzujte metriky provádění dotazu identifikovat potenciální přepisů dotaz a datové obrazce.  |
 
 ### <a name="provisioned-throughput"></a>Zřízená propustnost
@@ -191,7 +189,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 #### <a name="max-degree-of-parallelism"></a>Maximální počet stupně paralelního zpracování
-Pro dotazy, ladit `MaxDegreeOfParallelism` k identifikaci doporučené konfigurace pro aplikace, zejména v případě, že můžete provádět dotazy cross-partition (bez filtru na základě hodnoty klíč oddílu). `MaxDegreeOfParallelism`Určuje maximální počet paralelních úkolů, například maximální počet oddílů návštěvy paralelně. 
+Pro dotazy, ladit `MaxDegreeOfParallelism` k identifikaci doporučené konfigurace pro aplikace, zejména v případě, že můžete provádět dotazy cross-partition (bez filtru na základě hodnoty klíč oddílu). `MaxDegreeOfParallelism`  Určuje maximální počet paralelních úkolů, například maximální počet oddílů návštěvy paralelně. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -256,9 +254,9 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `documentLoadTimeInMs` | milisekundy | Čas strávený v nahrávání dokumentů  | 
 | `systemFunctionExecuteTimeInMs` | milisekundy | Celkový čas strávený provádění (Předdefinované) funkce systému v milisekundách  | 
 | `userFunctionExecuteTimeInMs` | milisekundy | Celkový čas strávený spouštění uživatelsky definované funkce v milisekundách | 
-| `retrievedDocumentCount` | Počet | Celkový počet načtených dokumentů  | 
-| `retrievedDocumentSize` | Bajty | Celková velikost načtené dokumenty v bajtech  | 
-| `outputDocumentCount` | Počet | Počet výstupních dokumentů | 
+| `retrievedDocumentCount` | počet | Celkový počet načtených dokumentů  | 
+| `retrievedDocumentSize` | bajtů | Celková velikost načtené dokumenty v bajtech  | 
+| `outputDocumentCount` | počet | Počet výstupních dokumentů | 
 | `writeOutputTimeInMs` | milisekundy | Doba provádění dotazu v milisekundách | 
 | `indexUtilizationRatio` | poměr (< = 1) | Načíst poměr počtu dokumenty odpovídala filtr pro počet dokumentů  | 
 
@@ -278,7 +276,7 @@ Tady jsou některé ukázkové dotazy a jak interpretovat některé z metriky vr
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | Dotaz se provádí jako kontrolu, protože používá `LOWER`, a jsou vráceny 500 mimo 2491 načtené dokumenty. |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o podporovaných klíčová slova a operátory dotazu SQL najdete v tématu [dotazu SQL](sql-api-sql-query.md). 
 * Další informace o jednotkách žádosti, najdete v části [požadované jednotky](request-units.md).
 * Další informace o zásady indexování najdete v tématu [indexování zásad](indexing-policies.md) 

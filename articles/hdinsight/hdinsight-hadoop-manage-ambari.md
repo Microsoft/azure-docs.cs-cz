@@ -1,8 +1,8 @@
 ---
-title: "Sledování a správě Azure HDInsight pomocí Ambari webového uživatelského rozhraní | Microsoft Docs"
-description: "Další informace o použití Ambari ke sledování a správě clusterů HDInsight se systémem Linux. V tomto dokumentu zjistěte, jak pomocí uživatelského rozhraní Ambari Web součástí clusterů HDInsight."
+title: Sledování a správě Azure HDInsight pomocí Ambari webového uživatelského rozhraní | Microsoft Docs
+description: Další informace o použití Ambari ke sledování a správě clusterů HDInsight se systémem Linux. V tomto dokumentu zjistěte, jak pomocí uživatelského rozhraní Ambari Web součástí clusterů HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/04/2018
+ms.date: 03/23/2018
 ms.author: larryfr
-ms.openlocfilehash: dc1265c7af011b92a9f862cf2e91b47c3998b2e4
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 922dfd475f27f182d8958887087fc2f4945cc43a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>Správa clusterů HDInsight pomocí Ambari webového uživatelského rozhraní
 
@@ -41,7 +41,7 @@ Webové uživatelské rozhraní Ambari je dostupné ve výchozím nastavení s c
 
 ## <a name="connectivity"></a>Připojení
 
-Webové uživatelské rozhraní Ambari je k dispozici v clusteru HDInsight na HTTPS://CLUSTERNAME.azurehdidnsight.net, kde **CLUSTERNAME** je název clusteru.
+Webové uživatelské rozhraní Ambari je k dispozici v clusteru HDInsight na HTTPS://CLUSTERNAME.azurehdinsight.net, kde **CLUSTERNAME** je název clusteru.
 
 > [!IMPORTANT]
 > Připojení k Ambari v HDInsight vyžaduje protokol HTTPS. Po zobrazení výzvy k ověření, použijte název účtu správce a heslo, které jste zadali při vytvoření clusteru.
@@ -50,7 +50,7 @@ Webové uživatelské rozhraní Ambari je k dispozici v clusteru HDInsight na HT
 
 Při Ambari pro váš cluster je přístupná přímo přes Internet, nejsou některé odkazy z webové uživatelské rozhraní Ambari, (například za účelem jako JobTracker) zveřejněné na Internetu. Pro přístup k těmto službám, je nutné vytvořit tunelového propojení SSH. Další informace najdete v tématu [používání tunelového propojení SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
 
-## <a name="ambari-web-ui"></a>Webovému uživatelskému rozhraní Ambari
+## <a name="ambari-web-ui"></a>Ambari Web UI
 
 > [!WARNING]
 > Ne všechny funkce webové uživatelské rozhraní Ambari jsou podporovány v HDInsight. Další informace najdete v tématu [Nepodporovaná operace](#unsupported-operations) část tohoto dokumentu.
@@ -59,7 +59,7 @@ Při připojování k webové uživatelské rozhraní Ambari, zobrazí se výzva
 
 Po otevření stránky, poznamenejte si panelu nahoře. Tento panel obsahuje následující informace a ovládací prvky:
 
-![ambari nav](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
+![ambari-nav](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
 
 * **Ambari logo** -otevře řídicí panel, který můžete použít ke sledování clusteru.
 
@@ -87,7 +87,7 @@ Následující seznam obsahuje společné výstrahy stavy, které jsou používa
 
 * **OK**
 * **Upozornění**
-* **KRITICKÉ**
+* **CRITICAL**
 * **NEZNÁMÝ**
 
 Výstrahy jiné než **OK** způsobit, že **# výstrahy** položku v horní části stránky a zobrazuje počet výstrah. Výběrem této položky zobrazí výstrahy a jejich stav.
@@ -230,7 +230,7 @@ Ke konfiguraci služby, použijte následující kroky:
 
 3. Používání polí zobrazí konfiguraci upravit, a potom vyberte **Uložit**. Nebo vyberte předchozí konfiguraci a pak vyberte **změnit na aktuální** se vrátit zpět předchozí nastavení.
 
-## <a name="ambari-views"></a>Zobrazení Ambari
+## <a name="ambari-views"></a>Ambari views
 
 Zobrazení Ambari umožňují vývojářům připojte prvky uživatelského rozhraní pomocí webové uživatelské rozhraní Ambari [Framework zobrazení Ambari](https://cwiki.apache.org/confluence/display/AMBARI/Views). HDInsight poskytuje následující zobrazení s typy clusteru Hadoop:
 

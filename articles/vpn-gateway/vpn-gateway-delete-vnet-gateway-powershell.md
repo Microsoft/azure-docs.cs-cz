@@ -1,29 +1,29 @@
 ---
-title: "Odstranit bránu virtuální sítě: prostředí PowerShell: Azure Resource Manager | Microsoft Docs"
-description: "Odstraňte bránu virtuální sítě pomocí prostředí PowerShell v modelu nasazení Resource Manager."
+title: 'Odstranit bránu virtuální sítě: prostředí PowerShell: Azure Resource Manager | Microsoft Docs'
+description: Odstraňte bránu virtuální sítě pomocí prostředí PowerShell v modelu nasazení Resource Manager.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/20/2017
+ms.date: 03/26/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4d0f085423d5bd60b24d88649ee1d77bcd1d009f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c7e536b62ecaa374a278aeb8d18ef39489675711
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Odstranit bránu virtuální sítě pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (Classic)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
@@ -74,7 +74,7 @@ Následující postup se vztahuje k modelu nasazení Resource Manager.
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Získáte bránu virtuální sítě, který chcete odstranit.
 
 ```powershell
-$Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+$GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Zkontrolujte, jestli Brána virtuální sítě má všechna připojení.
@@ -157,7 +157,7 @@ Následující postup se vztahuje k modelu nasazení Resource Manager.
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Získáte bránu virtuální sítě, který chcete odstranit.
 
 ```powershell
-$Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+$GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Zkontrolujte, jestli Brána virtuální sítě má všechna připojení.
@@ -251,7 +251,7 @@ Následující postup se vztahuje k modelu nasazení Resource Manager.
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Získáte bránu virtuální sítě, který chcete odstranit.
 
 ```powershell
-$Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+$GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-delete-the-virtual-network-gateway"></a>2. Odstraňte bránu virtuální sítě.

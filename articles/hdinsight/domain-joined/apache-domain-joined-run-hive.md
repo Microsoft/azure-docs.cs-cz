@@ -1,8 +1,8 @@
 ---
-title: "Nakonfigurovat zásady Hive v HDInsight připojený k doméně - Azure | Microsoft Docs"
-description: "Zjistěte..."
+title: Nakonfigurovat zásady Hive v HDInsight připojený k doméně - Azure | Microsoft Docs
+description: Zjistěte...
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: saurinsh
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.openlocfilehash: 35a74ffb6a30fe2ae7db686be5b6774800ce37b1
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 919a0a45c4c8c94b19ed1d602ed20df0afabd09a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>Nakonfigurovat zásady Hive v HDInsight připojený k doméně
 Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Hive. V tomto článku vytvoříte dvě zásady Ranger pro omezení přístupu k hivesampletable. Hivesampletable je součástí clusterů HDInsight. Po nakonfigurování zásad použijete Excel nebo ovladač ODBC a připojíte se k tabulkám Hivu ve službě HDInsight.
@@ -45,10 +45,10 @@ Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Hive. V tomto článku 
     V současné době Ranger funguje pouze s Yarn a Hivem.
 
 ## <a name="create-domain-users"></a>Vytvoření uživatelů domén
-V tématu [Konfigurace clusterů HDInsight připojených k doméně](apache-domain-joined-configure.md#optional-create-ad-users-and-groups) jste vytvořili uživatele hiveuser1 a hiveuser2. V tomto kurzu použijete dvě uživatelský účet.
+V tématu [vytvoření clusteru HDInsight se připojený k doméně](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster), informace o tom, jak vytvořit hiveruser1 a hiveuser2. V tomto kurzu použijete dvě uživatelské účty.
 
 ## <a name="create-ranger-policies"></a>Vytvoření zásad Ranger
-V této části vytvoříte dvě škálu zásady pro přístup k hivesampletable. Udělíte oprávnění Vybrat na různé sady sloupců. Oba uživatelé byli vytvořeni v tématu [Konfigurace clusterů HDInsight připojených k doméně](apache-domain-joined-configure.md#optional-create-ad-users-and-groups).  V další části tyto dvě zásady otestujete v Excelu.
+V této části vytvoříte dvě škálu zásady pro přístup k hivesampletable. Udělíte oprávnění Vybrat na různé sady sloupců. Jak uživatelé byly vytvořené pomocí [vytvoření clusteru HDInsight se připojený k doméně](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster). V další části tyto dvě zásady otestujete v Excelu.
 
 **Vytvoření zásad Ranger**
 

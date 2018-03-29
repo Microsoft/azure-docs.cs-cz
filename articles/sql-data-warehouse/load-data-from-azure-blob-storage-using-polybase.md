@@ -1,31 +1,31 @@
 ---
-title: "Kurz: Načítání dat pomocí PolyBase – Z Azure Storage Blob do služby Azure SQL Data Warehouse | Microsoft Docs"
-description: "Kurz, který používá Azure Portal a aplikaci SQL Server Management Studio k načtení dat taxislužby města New York z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse."
+title: 'Kurz: Načítání dat pomocí PolyBase – Z Azure Storage Blob do služby Azure SQL Data Warehouse | Microsoft Docs'
+description: Kurz, který používá Azure Portal a aplikaci SQL Server Management Studio k načtení dat taxislužby města New York z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: 
+documentationcenter: ''
 author: ckarst
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: sql-data-warehouse
 ms.custom: mvc,develop data warehouses
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 11/17/2017
+ms.date: 03/16/2018
 ms.author: cakarst
 ms.reviewer: barbkess
-ms.openlocfilehash: 4bb9b4a01d3efb90486e34d2b0eb5cfeef66e50c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 77e1666a5c8cc51495f2058ff76b2b99a3212db0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>Kurz: Použití PolyBase k načítání dat z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse
 
-PolyBase je standardní technologie načítání pro přesun dat do služby SQL Data Warehouse. V tomto kurzu pomocí PolyBase načtete data taxislužby města New York z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) k: 
+PolyBase je standardní technologie načítání pro přesun dat do služby SQL Data Warehouse. V tomto kurzu pomocí PolyBase načtete data taxislužby města New York z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k: 
 
 > [!div class="checklist"]
 > * Vytvoření datového skladu na webu Azure Portal
@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS).
+Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
@@ -91,7 +91,7 @@ Pomocí následujících kroků vytvořte prázdný datový sklad SQL.
     ![konfigurace výkonu](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
 8. Klikněte na tlačítko **Použít**.
-9. Na stránce služby SQL Data Warehouse vyberte **kolaci** pro prázdnou databázi. Pro účely tohoto kurzu použijte výchozí hodnotu. Další informace o kolacích najdete v tématu [Kolace](/sql/t-sql/statements/collations.md).
+9. Na stránce služby SQL Data Warehouse vyberte **kolaci** pro prázdnou databázi. Pro účely tohoto kurzu použijte výchozí hodnotu. Další informace o kolacích najdete v tématu [Kolace](/sql/t-sql/statements/collations).
 
 11. Po vyplnění formuláře pro SQL Database klikněte na **Vytvořit** a databázi zřiďte. Zřizování trvá několik minut. 
 
@@ -146,7 +146,7 @@ Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. 
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Připojení k serveru jako správce serveru
 
-V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) naváže připojení k serveru SQL Azure.
+V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) naváže připojení k serveru SQL Azure.
 
 1. Otevřete SQL Server Management Studio.
 
@@ -221,7 +221,7 @@ Prvním krokem k načítání dat je přihlášení jako LoaderRC20.
 
 ## <a name="create-external-tables-for-the-sample-data"></a>Vytvoření externích tabulek pro ukázková data
 
-Teď jste připraveni zahájit proces načítání dat do svého nového datového skladu. Tento kurz ukazuje, jak pomocí [PolyBase](/sql/relational-databases/polybase/polybase-guide.md) načíst data taxislužby města New York z úložiště objektů blob v Azure. Informace o přesunu dat do Azure Blob Storage nebo jejich načtení přímo ze zdroje do služby SQL Data Warehouse najdete pro budoucí použití v části s [přehledem načítání](sql-data-warehouse-overview-load.md).
+Teď jste připraveni zahájit proces načítání dat do svého nového datového skladu. Tento kurz ukazuje, jak pomocí [PolyBase](/sql/relational-databases/polybase/polybase-guide) načíst data taxislužby města New York z úložiště objektů blob v Azure. Informace o přesunu dat do Azure Blob Storage nebo jejich načtení přímo ze zdroje do služby SQL Data Warehouse najdete pro budoucí použití v části s [přehledem načítání](sql-data-warehouse-overview-load.md).
 
 Spuštěním následujících skriptů SQL zadejte informace o datech, která chcete načíst. Tyto informace zahrnují umístění dat, formát obsahu dat a definici tabulky pro data. 
 
@@ -237,7 +237,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     CREATE MASTER KEY;
     ```
 
-4. Spuštěním následujícího příkazu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql.md) definujte umístění objektu blob v Azure. Toto je umístění externích dat taxislužby.  Pokud chcete spustit příkaz, který jste připojili k oknu dotazu, zvýrazněte příkazy, které chcete spustit, a klikněte na **Provést**.
+4. Spuštěním následujícího příkazu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) definujte umístění objektu blob v Azure. Toto je umístění externích dat taxislužby.  Pokud chcete spustit příkaz, který jste připojili k oknu dotazu, zvýrazněte příkazy, které chcete spustit, a klikněte na **Provést**.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
@@ -248,7 +248,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     );
     ```
 
-5. Spuštěním následujícího příkazu T-SQL [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql.md) určete charakteristiky a možnosti formátování pro externí datový soubor. Tento příkaz určuje, že jsou externí data uložená jako text a hodnoty jsou oddělené znakem roury („|“). Externí soubor je komprimovaný pomocí Gzip. 
+5. Spuštěním následujícího příkazu T-SQL [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql) určete charakteristiky a možnosti formátování pro externí datový soubor. Tento příkaz určuje, že jsou externí data uložená jako text a hodnoty jsou oddělené znakem roury („|“). Externí soubor je komprimovaný pomocí Gzip. 
 
     ```sql
     CREATE EXTERNAL FILE FORMAT uncompressedcsv
@@ -273,7 +273,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     );
     ```
 
-6.  Spuštěním následujícího příkazu [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql.md) vytvořte schéma pro formát vašeho externího souboru. Schéma představuje způsob uspořádání externích tabulek, které se chystáte vytvořit.
+6.  Spuštěním následujícího příkazu [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql) vytvořte schéma pro formát vašeho externího souboru. Schéma představuje způsob uspořádání externích tabulek, které se chystáte vytvořit.
 
     ```sql
     CREATE SCHEMA ext;
@@ -456,7 +456,7 @@ V této části se použijí externí tabulky, které jste právě definovali, k
 > V tomto kurzu se data načítají přímo do konečné tabulky. V produkčním prostředí budete obvykle používat příkaz CREATE TABLE AS SELECT k načtení dat do pracovní tabulky. Zatímco jsou data v pracovní tabulce, můžete provést všechny potřebné transformace. K připojení dat v pracovní tabulce do provozní tabulky můžete použít příkaz INSERT...SELECT. Další informace najdete v tématu popisujícím [vkládání dat do provozní tabulky](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 > 
 
-Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) načítá data z Azure Storage Blob do nových tabulek ve vašem datovém skladu. Příkaz CTAS vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT. Když příkaz SELECT provádí výběr z externí tabulky, SQL Data Warehouse importuje data do relační tabulky v datovém skladu. 
+Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) načítá data z Azure Storage Blob do nových tabulek ve vašem datovém skladu. Příkaz CTAS vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT. Když příkaz SELECT provádí výběr z externí tabulky, SQL Data Warehouse importuje data do relační tabulky v datovém skladu. 
 
 1. Spuštěním následujícího skriptu načtěte data do nových tabulek ve svém datovém skladu.
 

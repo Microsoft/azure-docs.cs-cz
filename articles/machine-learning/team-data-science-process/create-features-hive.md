@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření funkce pro data v clusteru služby Hadoop pomocí dotazů Hive | Microsoft Docs"
-description: "Příklady dotazů Hive, které generují funkce v dat uložených v clusteru Azure HDInsight Hadoop."
+title: Vytvoření funkce pro data v clusteru služby Hadoop pomocí dotazů Hive | Microsoft Docs
+description: Příklady dotazů Hive, které generují funkce v dat uložených v clusteru Azure HDInsight Hadoop.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: hangzh;bradsev
-ms.openlocfilehash: d72e10332263fac0b0ca0f937d394d2832d88781
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.author: bradsev
+ms.openlocfilehash: f49eeee2dd26d54674b4619e6c986952718caa47
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Vytvoření funkce pro data v clusteru Hadoop pomocí dotazů Hive
 Tento dokument ukazuje, jak vytvořit funkcí pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů Hive. Tyto dotazy Hive pomocí vložených Hive User-Defined funkcí (UDF), skripty, pro které jsou k dispozici.
@@ -93,14 +93,14 @@ Hive obsahuje sadu UDF pro zpracování pole data a času. V Hive, je výchozí 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-Tento dotaz Hive předpokládá, že  *<datetime field>*  je ve výchozím formátu data a času.
+Tento dotaz Hive předpokládá, že *<datetime field>* je ve výchozím formátu data a času.
 
 Pokud je pole data a času není ve formátu výchozí, budete muset nejdřív převést pole data a času na časové razítko systému Unix a pak převést na řetězec data a času, který je ve výchozím formátu Unix časové razítko. Pokud hodnota datetime je ve výchozím formátu, uživatelé mohou nainstalovat vložená data a času k extrakci funkce UDF.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-V tomto dotazu Pokud  *<datetime field>*  má vzor jako *03/26/2015 12:04:39*,  *<pattern of the datetime field>'* by měla být `'MM/dd/yyyy HH:mm:ss'`. Chcete-li otestovat ji, můžou uživatelé spouštět.
+V tomto dotazu Pokud *<datetime field>* má vzor jako *03/26/2015 12:04:39*,  *<pattern of the datetime field>'* by měla být `'MM/dd/yyyy HH:mm:ss'`. Chcete-li otestovat ji, můžou uživatelé spouštět.
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;

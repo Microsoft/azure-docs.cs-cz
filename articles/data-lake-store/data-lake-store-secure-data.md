@@ -1,8 +1,8 @@
 ---
-title: "Zabezpečení dat uložených v Azure Data Lake Store | Microsoft Docs"
-description: "Zjistěte, jak k zabezpečení dat v Azure Data Lake Store pomocí skupin a seznamy řízení přístupu"
+title: Zabezpečení dat uložených v Azure Data Lake Store | Microsoft Docs
+description: Zjistěte, jak k zabezpečení dat v Azure Data Lake Store pomocí skupin a seznamy řízení přístupu
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: aa71a1cc48449c6ef48365b301bf9e297c0597ae
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 4d926ee08da593e590aa77a2ca09d8d1e1f6bb46
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Zabezpečení dat uložených v Azure Data Lake Store
-Zabezpečení dat v Azure Data Lake Store je přístup třech krocích.
+Zabezpečení dat v Azure Data Lake Store je přístup třech krocích.  Jak na základě rolí přístup řízení (RBAC) a seznamy řízení přístupu (ACL) musí být nastavena na plně povolit přístup k datům pro uživatele a skupiny zabezpečení.
 
 1. Začněte vytvořením skupiny zabezpečení v Azure Active Directory (AAD). Tyto skupiny zabezpečení slouží k implementaci řízení přístupu na základě role (RBAC) na portálu Azure. Další informace najdete v tématu [řízení přístupu na základě rolí ve službě Microsoft Azure](../active-directory/role-based-access-control-configure.md).
 2. Skupiny zabezpečení AAD přiřadíte k účtu Azure Data Lake Store. To řídí přístup k účtu Data Lake Store z portál a management operace z portálu nebo rozhraní API.
@@ -54,67 +54,66 @@ Pokyny k vytváření skupin zabezpečení AAD a jak přidat uživatele do skupi
 ## <a name="assign-users-or-security-groups-to-azure-data-lake-store-accounts"></a>Přiřadit uživatele nebo skupiny zabezpečení účtů Azure Data Lake Store
 Když přiřadíte uživatele nebo skupiny zabezpečení účtů Azure Data Lake Store, můžete řídit přístup ke operace správy v účtu pomocí portálu Azure a rozhraní API Správce Azure Resource Manager. 
 
-1. Otevřete účet Azure Data Lake Store. V levém podokně klikněte na tlačítko **Procházet**, klikněte na tlačítko **Data Lake Store**a potom v okně Data Lake Store klikněte na název účtu, ke kterému chcete přiřadit uživatele nebo novou skupinu zabezpečení.
+1. Otevřete účet Azure Data Lake Store. V levém podokně klikněte na tlačítko **všechny prostředky**a potom v okně všechny prostředky, klikněte na název účtu, ke kterému chcete přiřadit uživatele nebo novou skupinu zabezpečení.
 
-2. V okně Nastavení účtu Data Lake Store, klikněte na tlačítko **řízení přístupu (IAM)**. V okně výchozí seznamy **správci předplatného** skupiny jako vlastníka.
+2. V okně účtu Data Lake Store, klikněte na tlačítko **řízení přístupu (IAM)**. V okně ve výchozím nastavení jsou vlastníky předplatného uvedené jako vlastník.
    
     ![Přiřazení skupiny zabezpečení k účtu Azure Data Lake Store](./media/data-lake-store-secure-data/adl.select.user.icon.png "skupinu zabezpečení přiřadit k účtu Azure Data Lake Store")
 
-    Existují dva způsoby, jak přidat skupinu a přiřaďte příslušných rolí.
-   
-    * Přidat skupinu uživatelů nebo k účtu a pak mu přiřaďte roli, nebo
-    * Přidejte roli a potom přiřadit role uživatele nebo skupiny.
-     
-    V této části se podíváme na první postup přidání skupiny a pak přiřazení rolí. Můžete provést podobným způsobem nejprve vyberte roli a potom přiřadit skupiny do této role.
-4. V **uživatelé** okně klikněte na tlačítko **přidat** otevřete **přidat přístup** okno. V **přidat přístup** okně klikněte na tlačítko **vyberte roli**a potom vyberte roli pro uživatele nebo skupinu.
+3. V **řízení přístupu (IAM)** okně klikněte na tlačítko **přidat** otevřete **přidat oprávnění** okno. V **přidat oprávnění** vyberte **Role** pro uživatele nebo skupinu. Hledat skupiny zabezpečení, kterou jste vytvořili dříve v Azure Active Directory a vyberte jej. Pokud máte mnoho uživatelů a skupin pro vyhledávání z, použijte **vyberte** textové pole k filtrovat podle názvu skupiny. 
    
     ![Přidání role pro uživatele](./media/data-lake-store-secure-data/adl.add.user.1.png "přidání role pro uživatele")
    
-    **Vlastníka** a **Přispěvatel** role umožňují přístup k různým funkcím pro správu v účtu data lake. Pro uživatele, kteří budou pracovat s daty v úložišti data lake, můžete přidat je do ** čtečky ** role. Rozsah těchto rolí je omezený na operace správy vztahující se k účtu Azure Data Lake Store.
+    **Vlastníka** a **Přispěvatel** role umožňují přístup k různým funkcím pro správu v účtu data lake. Pro uživatele, kteří budou pracovat s daty v data lake, ale stále potřeba zobrazit informace o účtu pro správu, můžete přidat je do **čtečky** role. Rozsah těchto rolí je omezený na operace správy vztahující se k účtu Azure Data Lake Store.
    
-    Pro data oprávnění systému operations jednotlivých souborů definovat, co můžete dělat uživatele. Proto uživatele s role Čtenář můžete zobrazit jenom nastavení pro správu, které jsou přidružené k účtu, ale můžete potenciálně čtení a zápisu dat podle přiřazeného oprávnění systému souborů. Oprávnění systému souborů data Lake Store jsou popsány v [skupinu zabezpečení přiřadit jako seznamy ACL pro systém souborů Azure Data Lake Store](#filepermissions).
-5. V **přidat přístup** okně klikněte na tlačítko **přidat uživatele** otevřete **přidat uživatele** okno. V tomto okně vyhledejte skupinu zabezpečení, kterou jste vytvořili dříve v Azure Active Directory. Pokud máte spoustu skupin vyhledávat od, použijte k filtrování název skupiny v horní části textového pole. Klikněte na **Vybrat**.
+    Pro datové operace oprávnění systému souborů jednotlivých definovat, co můžete dělat uživatele. Proto uživatele s role Čtenář můžete zobrazit jenom nastavení pro správu, které jsou přidružené k účtu, ale můžete potenciálně čtení a zápisu dat podle přiřazeného oprávnění systému souborů. Oprávnění systému souborů data Lake Store jsou popsány v [skupinu zabezpečení přiřadit jako seznamy ACL pro systém souborů Azure Data Lake Store](#filepermissions).
+
+    > [!IMPORTANT]
+    > Pouze **vlastníka** role automaticky povolí přístupu k systému souborů. **Přispěvatel**, **čtečky**, a všechny ostatní role vyžadovat seznamy ACL, chcete-li povolit žádné úroveň přístupu k složek a souborů.  **Vlastníka** role poskytuje superuživatele souborům a složkám, které nebylo možné přepsat pomocí seznamů řízení přístupu. Další informace o tom, jak zásady RBAC mapování na přístup k datům, najdete v části [RBAC pro správu účtu](data-lake-store-security-overview.md#rbac-for-account-management).
+
+4. Pokud chcete přidat skupinu nebo uživatele, který není uveden ve **přidat oprávnění** okně můžete pozvat je zadáním e-mailové adresy ve **vyberte** textového pole a potom je vyberete ze seznamu.
    
     ![Přidat skupinu zabezpečení](./media/data-lake-store-secure-data/adl.add.user.2.png "přidat skupinu zabezpečení")
    
-    Pokud chcete přidat skupinu nebo uživatele, který není uveden, můžete je pozvat pomocí **pozvat** ikonu a zadání e-mailovou adresu pro uživatele nebo skupinu.
-6. Klikněte na **OK**. Měli byste vidět skupiny zabezpečení přidat, jak je uvedeno níže.
+5. Klikněte na **Uložit**. Měli byste vidět skupiny zabezpečení přidat, jak je uvedeno níže.
    
     ![Skupiny zabezpečení přidat](./media/data-lake-store-secure-data/adl.add.user.3.png "přidat skupinu zabezpečení")
 
-7. Skupině zabezpečení nebo uživatelů nyní má přístup k účtu Azure Data Lake Store. Pokud chcete k poskytování přístupu konkrétním uživatelům, můžete je přidat do skupiny zabezpečení. Podobně pokud chcete odvolat přístup pro uživatele, můžete je odebrat ze skupiny zabezpečení. Víc skupin zabezpečení můžete také přiřadit k účtu. 
+6. Skupině zabezpečení nebo uživatelů nyní má přístup k účtu Azure Data Lake Store. Pokud chcete k poskytování přístupu konkrétním uživatelům, můžete je přidat do skupiny zabezpečení. Podobně pokud chcete odvolat přístup pro uživatele, můžete je odebrat ze skupiny zabezpečení. Víc skupin zabezpečení můžete také přiřadit k účtu. 
 
 ## <a name="filepermissions"></a>Přiřadit uživatele nebo skupiny zabezpečení jako seznamy řízení přístupu k systému souborů Azure Data Lake Store
 Přiřazením zabezpečení uživatelů nebo skupin na systém souborů Azure Data Lake nastavit řízení přístupu na data uložená v Azure Data Lake Store.
 
 1. V okně účtu Data Lake Store klikněte na možnost **Průzkumník dat**.
    
-    ![Vytváření adresářů v účtu Data Lake Store](./media/data-lake-store-secure-data/adl.start.data.explorer.png "vytváření adresářů v účtu Data Lake")
-2. V **Průzkumníku dat** okně klikněte na soubor nebo složku, pro který chcete konfigurovat seznam ACL a potom klikněte na **přístup**. Do souboru přiřadit seznamu ACL, musíte kliknout na **přístup** z **náhled souboru** okno.
+    ![Zobrazení dat pomocí Průzkumníku dat](./media/data-lake-store-secure-data/adl.start.data.explorer.png "zobrazení dat pomocí Průzkumníku dat")
+2. V **Průzkumníku dat** okně klikněte na složku, pro který chcete konfigurovat seznam ACL a potom klikněte na **přístup**. Přiřadit seznamy řízení přístupu k souboru, musíte nejprve klikněte na soubor zobrazit jeho náhled a potom klikněte na **přístup** z **náhled souboru** okno.
    
     ![Nastavit seznamy ACL v systému souborů Data Lake](./media/data-lake-store-secure-data/adl.acl.1.png "nastavit seznamy ACL v Data Lake systému souborů")
-3. **Přístup** okno obsahuje standardní přístup a vlastní přístup již přiřazen do kořenového adresáře. Klikněte **přidat** ikonu, čímž přidáte vlastní úroveň seznamy ACL.
+3. **Přístup** uvádí vlastníci a přiřadit oprávnění již přiřazen do kořenového adresáře. Klikněte **přidat** ikonu, čímž přidáte další seznamy ACL přístupu.
+    > [!IMPORTANT]
+    > Nastavení oprávnění přístupu pro jeden soubor neuděluje nutně přístup uživatele nebo skupiny do tohoto souboru. Cesta k souboru musí být přístupné pro přiřazené uživatele nebo skupiny. Další informace a příklady naleznete v tématu [běžné scénáře související s oprávnění](data-lake-store-access-control.md#common-scenarios-related-to-permissions).
    
     ![Standardní a vlastní přístup](./media/data-lake-store-secure-data/adl.acl.2.png "standardní a vlastní přístup")
    
-   * **Standardní přístup** je stylu systému UNIX přístup, kde zadáte pro čtení, zápisu, provést (rwx) třídy tři odlišné uživatelů: vlastník, skupiny a dalších.
-   * **Vlastní přístup** odpovídá POSIX seznamy ACL, která umožňuje nastavit oprávnění pro konkrétní jmenovaní uživatelé nebo skupiny a jenom vlastníka souboru nebo skupiny. 
+   * **Vlastníky** a **všichni ostatní** poskytovat přístup stylu systému UNIX, kde můžete určit číst, zapisovat, provést (rwx) třídy tři odlišné uživatelů: vlastník, skupiny a dalších.
+   * **Oprávnění přiřazena** odpovídá POSIX seznamy ACL, které vám umožní nastavit oprávnění pro konkrétní jmenovaní uživatelé nebo skupiny nad rámec vlastník souboru nebo skupiny. 
      
      Další informace najdete v tématu [seznamy ACL HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Další informace o tom, jak jsou implementované seznamy ACL v Data Lake Store najdete v tématu [řízení přístupu v Data Lake Store](data-lake-store-access-control.md).
-4. Klikněte na tlačítko **přidat** ikonu Otevřít **přidat vlastní přístup** okno. V tomto okně klikněte na tlačítko **vybrat uživatele nebo skupinu**a potom v **vybrat uživatele nebo skupinu** okno, podívejte se na skupinu zabezpečení, kterou jste vytvořili dříve v Azure Active Directory. Pokud máte spoustu skupin vyhledávat od, použijte k filtrování název skupiny v horní části textového pole. Klikněte na skupinu, kterou chcete přidat a pak klikněte na **vyberte**.
+4. Klikněte **přidat** ikonu otevřete **přiřadit oprávnění** okno. V tomto okně klikněte na tlačítko **vyberte uživatele nebo skupiny**a potom v **vyberte uživatele nebo skupiny** okno, podívejte se na skupinu zabezpečení, kterou jste vytvořili dříve v Azure Active Directory. Pokud máte spoustu skupin vyhledávat od, použijte k filtrování název skupiny v horní části textového pole. Klikněte na skupinu, kterou chcete přidat a pak klikněte na **vyberte**.
    
     ![Přidat skupinu](./media/data-lake-store-secure-data/adl.acl.3.png "přidat skupinu")
-5. Klikněte na tlačítko **vyberte oprávnění**, vybrat oprávnění a zda chcete přiřadit oprávnění jako výchozí seznam ACL, přístup k seznamu ACL, nebo obojí. Klikněte na **OK**.
+5. Klikněte na tlačítko **vyberte oprávnění**, vyberte oprávnění, jestli bude použito oprávnění k rekurzivnímu a jestli chcete přiřadit oprávnění jako přístupový seznam ACL, výchozí seznam ACL, nebo obojí. Klikněte na **OK**.
    
     ![Přiřazení oprávnění k seskupení](./media/data-lake-store-secure-data/adl.acl.4.png "přiřadit oprávnění k seskupení")
    
     Další informace o oprávněních v Data Lake Store a seznamy ACL výchozí nebo přístupu najdete v tématu [řízení přístupu v Data Lake Store](data-lake-store-access-control.md).
-6. V **přidat vlastní přístup** okně klikněte na tlačítko **OK**. Nově přidané skupiny s příslušnými oprávněními, se teď uvedený v **přístup** okno.
+6. Po kliknutí na **Ok** v **vyberte oprávnění** okno, nově přidané skupiny a přidružená tato oprávnění se teď uvedený v **přístup** okno.
    
     ![Přiřazení oprávnění k seskupení](./media/data-lake-store-secure-data/adl.acl.5.png "přiřadit oprávnění k seskupení")
    
    > [!IMPORTANT]
-   > V aktuální verzi, můžete mít pouze 9 položky v rámci **vlastní přístup**. Pokud chcete přidat více než 9 uživatele, měli byste vytvořit skupiny zabezpečení přidat uživatele do skupiny zabezpečení, přidejte poskytovat přístup do těchto skupin zabezpečení pro účet Data Lake Store.
+   > V aktuální verzi, může mít až 28 položky v rámci **oprávnění přiřazena**. Pokud chcete přidat více než 28 uživatele, měli byste vytvořit skupiny zabezpečení přidat uživatele do skupiny zabezpečení, přidejte poskytovat přístup do těchto skupin zabezpečení pro účet Data Lake Store.
    > 
    > 
 7. V případě potřeby můžete také upravit přístupová oprávnění, po přidání skupiny. Zaškrtněte políčko pro každý typ oprávnění (pro čtení, zápisu, spouštění) založené na tom, zda chcete odebrat nebo přiřadit tato oprávnění ke skupině zabezpečení nebo zrušte. Klikněte na tlačítko **Uložit** a uložte změny, nebo **zahodit** vrátit zpět změny.
@@ -125,15 +124,14 @@ Azure Data Lake Store umožňuje další uzamčení přístup k úložišti dat 
 ![Nastavení brány firewall a IP přístup](./media/data-lake-store-secure-data/firewall-ip-access.png "nastavení a IP adresu brány Firewall")
 
 ## <a name="remove-security-groups-for-an-azure-data-lake-store-account"></a>Odebrání skupiny zabezpečení k účtu Azure Data Lake Store
-Když odeberete skupin zabezpečení z účtů Azure Data Lake Store, jsou pouze změna přístup na operace správy v účtu, pomocí webu Azure Portal a rozhraní API Správce Azure Resource Manager.
+Když odeberete skupin zabezpečení z účtů Azure Data Lake Store, jsou pouze změna přístup na operace správy v účtu, pomocí webu Azure Portal a rozhraní API Správce Azure Resource Manager.  
 
-1. V okně účtu Data Lake Store, klikněte na tlačítko **nastavení**. Z **nastavení** okně klikněte na tlačítko **uživatelé**.
+Přístup k datům se neliší a stále spravovaný přístup seznamy ACL.  Výjimkou jsou uživatelé nebo skupiny v roli vlastníky.  Uživatelé nebo skupiny odebral z role vlastníky již nejsou superuživatele a jejich přístup se vrátí k nastavení seznamu ACL přístupu. 
+
+1. V okně účtu Data Lake Store, klikněte na tlačítko **řízení přístupu (IAM)**. 
    
     ![Přiřazení skupiny zabezpečení k účtu Azure Data Lake](./media/data-lake-store-secure-data/adl.select.user.icon.png "skupinu zabezpečení přiřadit k účtu Azure Data Lake")
-2. V **uživatelé** okně klikněte na skupinu zabezpečení, kterou chcete odebrat.
-   
-    ![Odebrat skupinu zabezpečení](./media/data-lake-store-secure-data/adl.add.user.3.png "odebrat skupinu zabezpečení")
-3. V okně skupiny zabezpečení, klikněte na tlačítko **odebrat**.
+2. V **řízení přístupu (IAM)** okně klikněte na skupiny zabezpečení, kterou chcete odebrat. Klikněte na tlačítko **odebrat**.
    
     ![Odebrat skupinu zabezpečení](./media/data-lake-store-secure-data/adl.remove.group.png "odebrat skupinu zabezpečení")
 
@@ -143,10 +141,10 @@ Když odeberete skupiny zabezpečení seznamy ACL systému souborů Azure Data L
 1. V okně účtu Data Lake Store klikněte na možnost **Průzkumník dat**.
    
     ![Vytváření adresářů v účtu Data Lake](./media/data-lake-store-secure-data/adl.start.data.explorer.png "vytváření adresářů v účtu Data Lake")
-2. V **Průzkumníku dat** okně klikněte na soubor nebo složku, pro který chcete odebrat seznamu ACL a potom v okně účtu, klikněte **přístup** ikonu. Odebrat seznamu ACL pro soubor, musíte kliknout na **přístup** z **náhled souboru** okno.
+2. V **Průzkumníku dat** okně klikněte na složku, pro který chcete odebrat seznamu ACL a potom klikněte na **přístup**. K odebrání seznamů řízení přístupu k souboru, musíte nejprve klikněte na soubor zobrazit jeho náhled a potom klikněte na **přístup** z **náhled souboru** okno. 
    
     ![Nastavit seznamy ACL v systému souborů Data Lake](./media/data-lake-store-secure-data/adl.acl.1.png "nastavit seznamy ACL v Data Lake systému souborů")
-3. V **přístup** okně z **vlastní přístup** části, klikněte na skupinu zabezpečení, kterou chcete odebrat. V **vlastní přístup** okně klikněte na tlačítko **odebrat** a pak klikněte na **OK**.
+3. V **přístup** okně klikněte na skupinu zabezpečení, kterou chcete odebrat. V **přístup podrobnosti** okně klikněte na tlačítko **odebrat**.
    
     ![Přiřazení oprávnění k seskupení](./media/data-lake-store-secure-data/adl.remove.acl.png "přiřadit oprávnění k seskupení")
 

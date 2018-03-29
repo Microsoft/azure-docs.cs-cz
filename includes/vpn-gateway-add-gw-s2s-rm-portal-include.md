@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: f93a7c2fe75a643553a4dd5a8ccfcea975b336bb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/23/2018
+---
 1. Na levé straně stránky portálu klikněte na **+** a do vyhledávacího pole zadejte text „Brána virtuální sítě“. V části **Výsledky** vyhledejte položku **Brána virtuální sítě** a klikněte na ni.
 2. V dolní části stránky Brána virtuální sítě klikněte na **Vytvořit**. Tím otevřete stránku **Vytvořit bránu virtuální sítě**.
 

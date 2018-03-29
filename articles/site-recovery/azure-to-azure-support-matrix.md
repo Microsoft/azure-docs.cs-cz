@@ -1,21 +1,21 @@
 ---
 title: Azure Site Recovery matici podpory pro replikaci z Azure do Azure | Microsoft Docs
-description: "Shrnuje podporované operační systémy a konfigurace pro virtuální počítače Azure (VM) Azure Site Recovery replikaci z jedné oblasti do jiné pro potřeby zotavení po havárii."
+description: Shrnuje podporované operační systémy a konfigurace pro virtuální počítače Azure (VM) Azure Site Recovery replikaci z jedné oblasti do jiné pro potřeby zotavení po havárii.
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/24/2018
 ms.author: sujayt
-ms.openlocfilehash: 4383286285f02bad1645344fab43f8b6bdb145cb
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 30ee269b3f484256001af211181a517821d79617
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure Site Recovery matici podpory pro replikaci z Azure do Azure
+# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Podporu pro replikaci z jedné oblasti Azure do jiného
 
 
 >[!NOTE]
@@ -28,7 +28,7 @@ Tento článek shrnuje podporované konfigurace a součásti služby Azure Site 
 
 **Uživatelské rozhraní** |  **Podporované / nepodporované**
 --- | ---
-**portál Azure Portal** | Podporováno
+**Azure Portal** | Podporováno
 **Portál Classic** | Nepodporuje se
 **PowerShell** | Aktuálně nepodporuje
 **REST API** | Aktuálně nepodporuje
@@ -133,7 +133,7 @@ Německo | Německo – střed, Německo – severovýchod
 
 **Konfigurace** | **Podporované/nepodporované** | **Poznámky**
 --- | --- | ---
-Velikost | Jakékoli velikosti virtuálního počítače Azure s jader procesoru alespoň 2 a 1 GB paměti RAM | Odkazovat na [velikosti virtuálního počítače Azure](../virtual-machines/windows/sizes.md)
+Velikost | Jakékoli velikosti virtuálního počítače Azure s nejméně 2 jádra procesoru a 1 GB paměti RAM | Odkazovat na [velikosti virtuálního počítače Azure](../virtual-machines/windows/sizes.md)
 Skupiny dostupnosti | Podporováno | Pokud použijete výchozí možnost během kroku replikaci povolit portálu, skupina dostupnosti je automaticky vytvořit, podle konfigurace oblast zdroje. Můžete změnit skupinu dostupnosti cíl ' replikované položky > Nastavení > výpočty a síť > skupiny dostupnosti, kdykoli.
 Hybridní použití zvýhodnění (ROZBOČOVAČ) virtuálních počítačů | Podporováno | Pokud zdrojový virtuální počítač má licenci ROZBOČOVAČE povolené, testovací převzetí služeb při selhání nebo virtuálního počítače převzetí služeb při selhání také používá licence ROZBOČOVAČE.
 Škálovací sady virtuálních počítačů | Nepodporuje se |
@@ -148,8 +148,8 @@ Virtuální počítače migrovat pomocí Site Recovery | Podporováno | Pokud je
 --- | --- | ---
 Maximální velikost disku operačního systému | 2048 GB | Odkazovat na [disky, které jsou používány virtuálními počítači.](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
 Velikost disku maximum dat. | 4095 GB | Odkazovat na [disky, které jsou používány virtuálními počítači.](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
-Počet datových disků | Až 64 podporuje konkrétní velikost virtuálního počítače Azure | Odkazovat na [velikosti virtuálního počítače Azure](../virtual-machines/windows/sizes.md)
-Dočasné disku | Vždy z replikace vyloučit. | Dočasné disk je vyloučený z replikace vždy. Neměli vložit žádná trvalá data na dočasné disku podle Azure guida nce. Odkazovat na [dočasným diskovým na virtuálních počítačích Azure](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk) další podrobnosti.
+Počet datových disků | Podporuje až 64 jako konkrétní velikost virtuálního počítače Azure | Odkazovat na [velikosti virtuálního počítače Azure](../virtual-machines/windows/sizes.md)
+Dočasné disku | Vždy z replikace vyloučit. | Dočasné disk je vyloučený z replikace vždy. Neměli vložit žádná trvalá data na dočasné disku podle Azure pokyny. Odkazovat na [dočasným diskovým na virtuálních počítačích Azure](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk) další podrobnosti.
 Míry změny dat na disku | Nesmí být delší než 10 MB/s na disk pro storage úrovně Premium až 2 MB/s na disk pro standardní úložiště | Pokud se o míru změn průměr dat na disku je nad rámec 10 MB/s (pro Premium) a 2 MB/s (pro Standard) nepřetržitě, nebudou aktualizovány replikace. Ale pokud je shluků příležitostně dat a míry změny dat je větší než 10 MB/s (pro Premium) až 2 MB/s (pro Standard) po určitou dobu a dodává se, replikace budou aktualizovány. V takovém případě může se zobrazit body obnovení mírně zpožděné.
 Disky na účty úložiště standard storage | Podporováno |
 Disky na prémiové účty úložiště | Podporováno | Pokud virtuální počítač obsahuje disky, které jsou rozloženy účty úložiště standard a premium, můžete vybrat jiný cílový účet úložiště pro každý z disků, zda že máte stejnou konfiguraci úložiště v cílová oblast
@@ -179,7 +179,7 @@ Internetový nástroj pro vyrovnávání zatížení | Podporováno | Je nutné 
 Interní nástroj pro vyrovnávání zatížení | Podporováno | Je nutné přidružit Vyrovnávání zatížení předem nakonfigurovaná pomocí služby azure automation skriptu v plánu obnovení.
 Veřejná IP adresa| Podporováno | Budete muset přiřadit stávající veřejnou IP adresu na síťový adaptér nebo vytvořit a přidružit na síťový adaptér pomocí služby azure automation skriptu v plánu obnovení.
 Skupina NSG na síťovou kartu (Resource Manager)| Podporováno | Je nutné přidružit NSG na síťový adaptér pomocí služby azure automation skriptu v plánu obnovení.  
-Skupina NSG na podsítě (Resource Manager a klasický)| Podporováno | Je nutné přidružit NSG na síťový adaptér pomocí služby azure automation skriptu v plánu obnovení.
+Skupina NSG na podsítě (Resource Manager a klasický)| Podporováno | Je potřeba přidružení skupiny NSG k podsíti pomocí služby azure automation skriptu v plánu obnovení.
 Skupina NSG na virtuálním počítači (klasické)| Podporováno | Je nutné přidružit NSG na síťový adaptér pomocí služby azure automation skriptu v plánu obnovení.
 Vyhrazená IP adresa (statickou IP adresu) / zachovat zdrojové IP adresy | Podporováno | Pokud má síťový adaptér na zdrojový virtuální počítač konfiguraci statické IP adresy a cílové podsíti má stejnou IP adresu, k dispozici, je přiřazen k převzetí služeb při selhání virtuálního počítače. Pokud cílové podsíti nemá stejnou IP Adresou, k dispozici, jednu z dostupných IP adres v podsíti je vyhrazený pro tento virtuální počítač. Můžete zadat pevné IP zvoleného v ' replikované položky > Nastavení > výpočty a síť > síťových rozhraní se. Můžete vybrat síťový adaptér a zadejte podsíť a IP podle svého výběru.
 Dynamic IP| Podporováno | Pokud má síťový adaptér na zdrojový virtuální počítač konfigurace s dynamickými IP, síťový adaptér na převzetí služeb při selhání virtuálního počítače je také dynamické ve výchozím nastavení. Můžete zadat pevné IP zvoleného v ' replikované položky > Nastavení > výpočty a síť > síťových rozhraní se. Můžete vybrat síťový adaptér a zadejte podsíť a IP podle svého výběru.

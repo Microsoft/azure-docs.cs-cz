@@ -1,8 +1,8 @@
 ---
-title: "Cortana Intelligence řešení se nástroj hodnocení | Microsoft Docs"
-description: "Jako Partner společnosti Microsoft tady jsou všechny kroky, které je třeba provést, pokud chcete publikovat řešení Cortana Intelligence AppSource."
+title: Cortana Intelligence řešení se nástroj hodnocení | Microsoft Docs
+description: Jako Partner společnosti Microsoft tady jsou všechny kroky, které je třeba provést, pokud chcete publikovat řešení Cortana Intelligence AppSource.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
-ms.author: anupams;v-bruham;garye
-ms.openlocfilehash: c9ea8164d5866662a7ed81672ee1ba776603b193
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: anupams
+ms.openlocfilehash: f678cb9819a2c03f97bcca5a2092160212779328
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Nástroj pro vyhodnocení řešení Cortana Intelligence
 ## <a name="overview"></a>Přehled
@@ -54,7 +54,7 @@ Tyto informace používáme k lépe pochopit, jak je řešení využívá různ�
 Přijímání v tomto případě znamená žádné zdroje dat, které se používají k získává data ze mimo řešení nebo všechny služby mimo řešení použít tak, aby nabízel data do ní.
 
 ### <a name="consumption"></a>Využití
-Spotřeba v tomto případě znamená žádné datové sady, které se používají tak, aby nabízel data pro koncové uživatele, buď přímo nebo nepřímo. Například:
+Spotřeba v tomto případě znamená žádné datové sady, které se používají tak, aby nabízel data pro koncové uživatele, buď přímo nebo nepřímo. Příklad:
 - Datové sady použité v přímý dotaz z PowerBI.
 - Datové sady v WebApp dotazována.
 

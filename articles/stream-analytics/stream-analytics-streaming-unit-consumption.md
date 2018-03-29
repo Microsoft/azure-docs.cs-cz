@@ -1,13 +1,13 @@
 ---
-title: "Azure Stream Analytics: Pochopení a upravit jednotek streamování | Microsoft Docs"
-description: "Pochopte, jaké faktory dopad na výkon v Azure Stream Analytics."
-keywords: "streamování jednotky, výkon dotazů"
+title: 'Azure Stream Analytics: Pochopení a upravit jednotek streamování | Microsoft Docs'
+description: Pochopte, jaké faktory dopad na výkon v Azure Stream Analytics.
+keywords: streamování jednotky, výkon dotazů
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JSeb225
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: e8812f10662ee7b571e8e353074c2537d1a3181b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5c60b1808959c73759a78141566c5c49f0350e2f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Rady pro pochopení a upravit jednotek streamování
 
@@ -88,18 +88,18 @@ Velikost stavu dočasné připojení k je úměrná počtu událostí v místnos
 
 Využití paměti pro dotaz ovlivnit počet neodpovídající události ve spojení. Následující dotaz hledá imprese reklamy, které generují kliknutí:
 
-    SELECT id
+    SELECT clicks.id
     FROM clicks 
-    INNER JOIN, impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
+    INNER JOIN impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
 
 V tomto příkladu je možné, že se zobrazují spoustu reklamy a několik lidí, klikněte na možnost na něm a je potřeba zachovat všechny události v časovém intervalu. Využitá paměť je přímo úměrná velikosti tohoto okna a frekvenci událostí. 
 
 Toto řešení, odesílání událostí do centra událostí rozdělena na oddíly tak, že spojení klíče (id v tomto případě) a škálování dotaz tím, že systém pro každý vstupní oddíl samostatně pomocí zpracování **PARTITION BY** znázorněné:
 
-    SELECT id
+    SELECT clicks.id
     FROM clicks PARTITION BY PartitionId
     INNER JOIN impressions PARTITION BY PartitionId 
-    ON impression.PartitionId = clocks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
+    ON impression.PartitionId = clicks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
 </code>
 
 Jakmile je dotaz rozdělený, rozprostře se mezi několik uzlů. Výsledkem je snížen počet události pocházející do každého uzlu, a snižují se velikost stavu uchovává se v okně připojení. 
@@ -124,7 +124,7 @@ Když přidáte funkce UDF, načte Azure Stream Analytics prostředí JavaScript
 ## <a name="get-help"></a>Podpora
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Vytvoření paralelní dotazy v Azure Stream Analytics](stream-analytics-parallelization.md)
 * [Škálování služby Stream Analytics ke zvýšení propustnosti](stream-analytics-scale-jobs.md)
 

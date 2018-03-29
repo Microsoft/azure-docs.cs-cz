@@ -1,8 +1,8 @@
 ---
-title: "Ukázková data v Azure blob storage | Microsoft Docs"
-description: "Ukázková data do Azure Blob Storage"
+title: Ukázková data v Azure blob storage | Microsoft Docs
+description: Ukázková data do Azure Blob Storage
 services: machine-learning,storage
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: garye;bradsev
-ms.openlocfilehash: 1e5cf5da727b6720c936e43147beb8d87fb925cd
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: bradsev
+ms.openlocfilehash: fecff09b67f019a0d2b95d8ca33d16011b17b9ce
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="heading"></a>Ukázková data v Azure blob storage
 Tento dokument popisuje vzorkování dat uložených v Azure blob storage stáhnout prostřednictvím kódu programu a potom ji pomocí postupů, které jsou napsané v Pythonu vzorkování.

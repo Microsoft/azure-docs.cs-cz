@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Předávací ověřování – aktuální omezení | Microsoft Docs"
-description: "Tento článek popisuje aktuální omezení předávací ověřování Azure Active Directory (Azure AD)"
+title: 'Azure AD Connect: Předávací ověřování – aktuální omezení | Microsoft Docs'
+description: Tento článek popisuje aktuální omezení předávací ověřování Azure Active Directory (Azure AD)
 services: active-directory
-keywords: "Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování"
-documentationcenter: 
+keywords: Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 3e533b8b23c095a3de845d9b26a96aea9d8ee086
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 680e9967010771b8e3651c6f4eed81237f8fb4c3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure předávací ověřování služby Active Directory: Aktuální omezení
 
@@ -50,7 +50,7 @@ Následující scénáře jsou _není_ podporovány:
 - Apple Device Enrollment Program (Apple DEP) pomocí Pomocníka s nastavením iOS nepodporuje moderní ověřování. To nebude možné registrovat zařízení Apple DEP do Intune pro spravované domény pomocí předávacího ověřování. Zvažte použití [aplikaci portál společnosti](https://blogs.technet.microsoft.com/intunesupport/2018/02/08/support-for-multi-token-dep-and-authentication-with-company-portal/) jako alternativu.
 
 >[!IMPORTANT]
->Jako alternativní řešení pro nepodporované scénáře _pouze_, povolte synchronizaci hodnoty Hash hesla na [volitelné funkce](active-directory-aadconnect-get-started-custom.md#optional-features) stránku průvodce Azure AD Connect.
+>Jako alternativní řešení pro nepodporované scénáře _pouze_, povolte synchronizaci hodnoty Hash hesla na [volitelné funkce](active-directory-aadconnect-get-started-custom.md#optional-features) stránku průvodce Azure AD Connect. Při přihlášení uživatele do aplikace uvedené v "nepodporované scénáře" části, jsou tyto konkrétní požadavky na přihlášení _není_ zpracovávaných předávací ověřování agentů a nebude proto zaznamenaná v [ Předávací ověřování protokoly](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs).
 
 >[!NOTE]
 Povolení synchronizaci hodnoty hash hesla nabízí možnost převzetí služeb při selhání ověřování Pokud dojde k narušení na místní infrastrukturu. Toto převzetí služeb při selhání z předávací ověřování synchronizaci hodnoty hash hesla služby Active Directory není automatické. Budete potřebovat přepnout metoda přihlašování ručně pomocí služby Azure AD Connect. Pokud server se službou Azure AD Connect přestane fungovat, budete vyžadovat pomoc od společnosti Microsoft Support vypnout předávací ověřování.

@@ -1,22 +1,22 @@
 ---
-title: "Vytvoření virtuálního počítače a účtu úložiště pro škálovatelnou aplikaci v Azure | Microsoft Docs"
-description: "Zjistěte, jak nasadit virtuální počítač, který se použije ke spuštění škálovatelné aplikace využívající úložiště objektů blob v Azure."
+title: Vytvoření virtuálního počítače a účtu úložiště pro škálovatelnou aplikaci v Azure | Microsoft Docs
+description: Zjistěte, jak nasadit virtuální počítač, který se použije ke spuštění škálovatelné aplikace využívající úložiště objektů blob v Azure.
 services: storage
-documentationcenter: 
-author: tamram
+documentationcenter: ''
+author: roygara
 manager: jeconnoc
 ms.service: storage
 ms.workload: web
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/20/2018
-ms.author: tamram
+ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: aafb79a021b76b1347314815b1786a23f699be7a
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: fdc88f4ba893eed516aeca174e68fdda12a42a0f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Vytvoření virtuálního počítače a účtu úložiště pro škálovatelnou aplikaci
 

@@ -1,8 +1,8 @@
 ---
-title: "Proces Team dat. vědecké účely v akci: pomocí SQL Data Warehouse | Microsoft Docs"
-description: "Proces pokročilou analýzu a technologie v akci"
+title: 'Proces Team dat. vědecké účely v akci: pomocí SQL Data Warehouse | Microsoft Docs'
+description: Proces pokročilou analýzu a technologie v akci
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: bradsev;weig
-ms.openlocfilehash: 9c858427b01f7b94aae87136a46e1d9ae5e09a1c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.author: bradsev
+ms.openlocfilehash: 6566db5f186b92179df3125deaf5ad17c6f9e974
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Proces Team dat. vědecké účely v akci: pomocí SQL Data Warehouse
 V tomto kurzu jsme vás provede procesem vytváření a nasazování modelu strojového učení pomocí SQL datového skladu (SQL DW) pro veřejně dostupné datové sady – [NYC taxíkem cest](http://www.andresmh.com/nyctaxitrips/) datovou sadu. Binární klasifikace model sestavený předpovídá, zda je tip placené cesty a které předpovědi distribuce pro tip částky placené jsou popsány i modely pro více třídami klasifikace a regrese.
@@ -79,7 +79,7 @@ K nastavení prostředí vědecké zpracování dat Azure, postupujte podle těc
 **Zřízení instance Azure SQL DW.**
 Postupujte podle dokumentace v [vytvořit SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) ke zřízení instanci SQL Data Warehouse. Ujistěte se, abyste vytvořili zápisy na následující přihlašovací údaje SQL Data Warehouse, které se použije v dalších krocích.
 
-* **Název serveru**: <server Name>. database.windows.net
+* **Server Name**: <server Name>.database.windows.net
 * **Název SQLDW (databáze)**
 * **Uživatelské jméno**
 * **Heslo**
@@ -319,7 +319,7 @@ Geografické umístění účtů úložiště ovlivňuje časů načtení.
 Je nutné se rozhodnout co proveďte, pokud máte duplicitní zdrojový a cílový soubor.
 
 > [!NOTE]
-> Pokud soubory CSV zkopírovány z veřejného objektu blob úložiště k účtu úložiště objektů blob privátní již existuje v účtu úložiště objektů blob privátní, AzCopy se zeptá, jestli chcete je přepsat. Pokud nechcete je přepsat, vstup  **n**  po zobrazení výzvy. Pokud chcete přepsat **všechny** z nich, vstup po zobrazení výzvy. Můžete také zadat **y** přepsat soubory .csv jednotlivě.
+> Pokud soubory CSV zkopírovány z veřejného objektu blob úložiště k účtu úložiště objektů blob privátní již existuje v účtu úložiště objektů blob privátní, AzCopy se zeptá, jestli chcete je přepsat. Pokud nechcete je přepsat, vstup **n** po zobrazení výzvy. Pokud chcete přepsat **všechny** z nich, vstup po zobrazení výzvy. Můžete také zadat **y** přepsat soubory .csv jednotlivě.
 > 
 > 
 
@@ -836,7 +836,7 @@ V tomto cvičení jsme již prozkoumali a analýzou dat v SQL Data Warehouse a i
    
     ![Azure ML Import dat][17]
 2. Vyberte **Azure SQL Database** jako **zdroj dat** v **vlastnosti** panelu.
-3. Zadejte název DNS databáze v **název databázového serveru** pole. Formát:`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Zadejte název DNS databáze v **název databázového serveru** pole. Formát: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Zadejte **název databáze** v odpovídajícím poli.
 5. Zadejte *uživatelské jméno SQL* v **název uživatelského účtu serveru**a *heslo* v **heslo uživatelského účtu serveru**.
 7. V **databázový dotaz** upravit textová oblast, vložte dotaz, který extrahuje pole potřeby databáze (včetně všech počítané pole, jako je popisků) a nižší ukázky data na požadovanou velikost.

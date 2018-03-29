@@ -1,24 +1,24 @@
 ---
-title: "Použití Azure CLI 2.0 s Azure Storage | Microsoft Docs"
-description: "Naučte se používat rozhraní příkazového řádku Azure (Azure CLI) 2.0, s Azure Storage pro vytváření a správu účtů úložiště a pracovat s Azure BLOB a soubory. Azure CLI 2.0 je nástroj napříč platformami napsané v Pythonu."
+title: Použití Azure CLI 2.0 s Azure Storage | Microsoft Docs
+description: Naučte se používat rozhraní příkazového řádku Azure (Azure CLI) 2.0, s Azure Storage pro vytváření a správu účtů úložiště a pracovat s Azure BLOB a soubory. Azure CLI 2.0 je nástroj napříč platformami napsané v Pythonu.
 services: storage
 documentationcenter: na
-author: tamram
-manager: timlt
+author: roygara
+manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
-ms.author: tamram
-ms.openlocfilehash: 509c702054961c9d9fa525242ce0542059e32d81
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: rogarana
+ms.openlocfilehash: 99e67b9c8469f08f1cbfc980568eec35694d1ae2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Použití Azure CLI 2.0 s Azure Storage
 
@@ -95,10 +95,10 @@ Subgroups:
 
 Chcete-li pracovat s prostředky ve vašem předplatném Azure, musíte nejprve se přihlásit k účtu Azure s `az login`. Existuje několik způsobů, které se můžete přihlásit:
 
-* **Interaktivní přihlášení**:`az login`
-* **Přihlaste se pomocí uživatelského jména a hesla**:`az login -u johndoe@contoso.com -p VerySecret`
+* **Interaktivní přihlášení**: `az login`
+* **Přihlaste se pomocí uživatelského jména a hesla**: `az login -u johndoe@contoso.com -p VerySecret`
   * To nebude fungovat s účty Microsoft nebo účty, které používají službu Multi-Factor authentication.
-* **Přihlaste se pomocí objektu služby**:`az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
+* **Přihlaste se pomocí objektu služby**: `az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
 
 ## <a name="azure-cli-20-sample-script"></a>Azure CLI 2.0 ukázkový skript
 
@@ -146,11 +146,11 @@ echo "Done"
 
 3. Po aktualizaci nezbytné proměnné, uložte skript a ukončete editor. Další kroky předpokládají, že jste s názvem vašeho skriptu **my_storage_sample.sh**.
 
-4. Označte do skriptu jako spustitelný soubor, v případě potřeby:`chmod +x my_storage_sample.sh`
+4. Označte do skriptu jako spustitelný soubor, v případě potřeby: `chmod +x my_storage_sample.sh`
 
-5. Spusťte skript. Například v Bash:`./my_storage_sample.sh`
+5. Spusťte skript. Například v Bash: `./my_storage_sample.sh`
 
-Měli byste vidět výstup podobný následujícímu a  **\<destination_file\>**  kterou jste zadali v skriptu by se měla objevit v místním počítači.
+Měli byste vidět výstup podobný následujícímu a **\<destination_file\>** kterou jste zadali v skriptu by se měla objevit v místním počítači.
 
 ```
 Creating the container...
@@ -187,10 +187,10 @@ az storage account create \
     --sku <account_sku>
 ```
 
-* `--location`[Vyžaduje]: umístění. Například "západní USA".
-* `--name`[Vyžaduje]: název účtu úložiště. Název musí mít délku 3 až 24 znaků a používat jenom malé alfanumerické znaky.
-* `--resource-group`[Vyžaduje]: název skupiny prostředků.
-* `--sku`[Vyžaduje]: účet úložiště SKU. Povolené hodnoty:
+* `--location` [Vyžaduje]: umístění. Například "západní USA".
+* `--name` [Vyžaduje]: název účtu úložiště. Název musí mít délku 3 až 24 znaků a používat jenom malé alfanumerické znaky.
+* `--resource-group` [Vyžaduje]: název skupiny prostředků.
+* `--sku` [Vyžaduje]: účet úložiště SKU. Povolené hodnoty:
   * `Premium_LRS`
   * `Standard_GRS`
   * `Standard_LRS`
@@ -236,7 +236,7 @@ az storage container create --name <container_name>
 
 Můžete nastavit jednu ze tří úrovní přístupu pro čtení pro nový kontejner zadáním volitelného `--public-access` argument:
 
-* `off`(výchozí): Kontejner dat je soukromé pro vlastníka účtu.
+* `off` (výchozí): Kontejner dat je soukromé pro vlastníka účtu.
 * `blob`: Pro objekty BLOB veřejný přístup pro čtení.
 * `container`: Veřejné pro čtení a seznamu přístup k celé kontejneru.
 
@@ -396,7 +396,7 @@ Ukázkový výstup
 
 ### <a name="list-share-snapshots"></a>Snímky sdílené položky seznamu
 
-Lze zadat seznam konkrétní sdílenou složku pomocí snímků sdílené složky`az storage share list --include-snapshots`
+Lze zadat seznam konkrétní sdílenou složku pomocí snímků sdílené složky `az storage share list --include-snapshots`
 
 ```cli
 az storage share list --include-snapshots
@@ -439,7 +439,7 @@ az storage share list --include-snapshots
 ```
 
 ### <a name="browse-share-snapshots"></a>Procházet snímky sdílené složky
-Může také procházet do konkrétní sdílenou složku snímku na serveru obsahu pomocí `az storage file list`. Je nutné zadat název sdílené složky `--share-name <snare name>` a časové razítko`--snapshot '2017-10-04T19:45:18.0000000Z'`
+Může také procházet do konkrétní sdílenou složku snímku na serveru obsahu pomocí `az storage file list`. Je nutné zadat název sdílené složky `--share-name <snare name>` a časové razítko `--snapshot '2017-10-04T19:45:18.0000000Z'`
 
 ```azurecli-interactive
 az storage file list --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z' -otable

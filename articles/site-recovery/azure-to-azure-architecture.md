@@ -1,6 +1,6 @@
 ---
-title: "Architektura replikace Azure do Azure ve službě Azure Site Recovery | Microsoft Docs"
-description: "Tento článek obsahuje přehled součásti a architektura použít při replikaci virtuálních počítačů Azure mezi oblastmi Azure pomocí služby Azure Site Recovery."
+title: Architektura replikace Azure do Azure ve službě Azure Site Recovery | Microsoft Docs
+description: Tento článek obsahuje přehled součásti a architektura použít při replikaci virtuálních počítačů Azure mezi oblastmi Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 126f5c4db355af19a7151a267115127757b17599
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 111217e9335b16659c93da88731e0b7ce6d5fecd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Architektura replikace Azure do Azure
 
@@ -28,7 +28,7 @@ Tento článek popisuje architekturu používá při replikaci, převzetí služ
 ## <a name="architectural-components"></a>Komponenty architektury
 
 Následující obrázek poskytuje podrobný pohled prostředí virtuálního počítače Azure v určité oblasti (v tomto příkladu umístění východní USA). V prostředí virtuálního počítače Azure:
-- Aplikace může mít spuštěný na virtuálních počítačích s disky, které šíří mezi různými účty úložiště.
+- Aplikace může mít spuštěný na virtuálních počítačích s disky spravované nebo nespravované disky šíří mezi různými účty úložiště.
 - Virtuální počítače můžou být součástí jedné nebo více podsítí v rámci virtuální sítě.
 
 
@@ -49,7 +49,8 @@ Když povolíte replikaci virtuálního počítače Azure, v následujících zd
 **Cílová skupina prostředků** | Skupinu prostředků, do které patří replikované virtuální počítače po převzetí služeb při selhání.
 **Cílová virtuální síť** | Virtuální síť, ve kterém jsou replikované virtuální počítače umístěné po převzetí služeb při selhání. Mapování sítě se vytvoří mezi zdrojovými a cílovými virtuální sítě a naopak.
 **Účty úložiště mezipaměti** | Předtím, než změny zdrojů virtuálního počítače jsou replikovány do cílového účtu úložiště, jsou sledovány a odešle na účet úložiště mezipaměti v umístění zdroje. Tento krok zajistí minimální dopad na produkční aplikace běžící na virtuálním počítači.
-**Cílové úložiště účty**  | Účty úložiště v cílovém umístění, do které se replikují data.
+**Cíl účty úložiště (Pokud je zdroj, který nepoužívá virtuálních počítačů spravovaných disků)**  | Účty úložiště v cílovém umístění, do které se replikují data.
+** Repliky spravované disky (Pokud je zdrojový virtuální počítač na discích spravovaných) **  | Spravovat disky v cílovém umístění, do které se replikují data.
 **Cílové skupiny dostupnosti**  | Sady dostupnosti, které jsou replikované virtuální počítače umístěné po převzetí služeb při selhání.
 
 ### <a name="step-2"></a>Krok 2
@@ -76,7 +77,7 @@ Pokud chcete do replikační skupiny zahrnout virtuální počítače s Linuxem,
 
 ### <a name="step-3"></a>Krok 3
 
-Po průběžná replikace v průběhu zápisu disku přenesou okamžitě k účtu úložiště mezipaměti. Site Recovery zpracovává data a odešle ji do cílového účtu úložiště. Po zpracování dat, body obnovení jsou generovány v cílový účet úložiště každých několik minut.
+Po průběžná replikace v průběhu zápisu disku přenesou okamžitě k účtu úložiště mezipaměti. Site Recovery zpracovává data a odešle ji do cílový účet úložiště nebo repliky spravovaných disky. Po zpracování dat, body obnovení jsou generovány v cílový účet úložiště každých několik minut.
 
 ## <a name="failover-process"></a>Proces převzetí služeb při selhání
 

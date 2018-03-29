@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s ADP | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ADP."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ADP.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 1e0a35fd76f9eb6335685f05b8936b0b5105f6b2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 038b2337ea49b769c6b19e9d50a5f0f2edd13d56
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>Kurz: Azure Active Directory integrace s ADP
 
@@ -32,7 +32,7 @@ Integrace ADP s Azure AD poskytuje následující výhody:
 
 Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s ADP, potřebujete následující položky:
 
@@ -122,7 +122,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![ADP domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_url.png)
 
-    V **identifikátor** textovému poli, zadejte adresu URL: `https://fed.adp.com/` 
+    V **identifikátor** textovému poli, zadejte adresu URL: `https://fed.adp.com` 
     
 5. Aplikace ADP očekává SAML kontrolní výrazy ve specifickém formátu, který vyžaduje, můžete přidat mapování vlastních atributů do vaší konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad pro tento. Název deklarací bude vždy **"PersonImmutableID"** a hodnoty, které jsme mít mapované na **employeeid**. 
 
@@ -238,10 +238,6 @@ Po obdržení potvrzení z vaším zástupcem ADP nakonfigurujte pro řízení p
  
 11. Na potvrzení úspěšné testu přiřaďte federované služby ADP na jednotlivé uživatele nebo skupiny uživatelů, které se vysvětluje dále v tomto kurzu a zavedení zaměstnancům. 
 
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -315,10 +311,12 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici ADP na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci ADP.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+
+
 
 <!--Image references-->
 

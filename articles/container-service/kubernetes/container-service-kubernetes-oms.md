@@ -1,6 +1,6 @@
 ---
-title: "Monitorování Azure Kubernetes cluster - Operations Management"
-description: "Monitorování Kubernetes clusteru v Azure Container Service pomocí služby Microsoft Operations Management Suite"
+title: Monitorování Azure Kubernetes cluster - Operations Management
+description: Monitorování Kubernetes clusteru v Azure Container Service pomocí analýzy protokolů
 services: container-service
 author: bburns
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: e8a68896c923d785fea84cef60f8d2015906f342
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: efe4b3a1a63fa1986682a2fdde1a20221dc5d93a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-microsoft-operations-management-suite-oms"></a>Monitorování clusteru Azure Container Service s Operations Management Suite (OMS)
+# <a name="monitor-an-azure-container-service-cluster-with-log-analytics"></a>Monitorování clusteru Azure Container Service pomocí analýzy protokolů
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
@@ -56,18 +56,19 @@ CLUSTER_NAME=my-acs-name
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
 ```
 
-## <a name="monitoring-containers-with-operations-management-suite-oms"></a>Monitorování kontejnery s služby Operations Management Suite (OMS)
+## <a name="monitoring-containers-with-log-analytics"></a>Monitorování kontejnery s analýzy protokolů
 
-Microsoft Operations Management (OMS) je společnosti Microsoft založená na cloudu IT řešení správy, které pomáhá spravovat a chránit místní a cloudové infrastruktury. Kontejner řešení je řešení v OMS analýzy protokolů, který umožňuje zobrazit inventář kontejneru, výkonu a protokoly na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením protokoly v centrálním umístění a najít aktivní využívání nadbytečné kontejneru na hostiteli.
+Analýzy protokolů je společnosti Microsoft založená na cloudu IT řešení správy, které pomáhá spravovat a chránit místní a cloudové infrastruktury. Kontejner řešení je řešení v analýzy protokolů, který umožňuje zobrazit inventář kontejneru, výkonu a protokoly na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením protokoly v centrálním umístění a najít aktivní využívání nadbytečné kontejneru na hostiteli.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
 Další informace o kontejneru řešení, naleznete [analýzy protokolů řešení kontejneru](../../log-analytics/log-analytics-containers.md).
 
-## <a name="installing-oms-on-kubernetes"></a>Instalace OMS na Kubernetes
+## <a name="installing-log-analytics-on-kubernetes"></a>Instalace na Kubernetes analýzy protokolů
 
 ### <a name="obtain-your-workspace-id-and-key"></a>Získání ID a klíč
-Agent komunikovat službu pro OMS je potřeba nakonfigurovat s id pracovního prostoru a klíč pracovního prostoru. Id pracovního prostoru a klíč, je potřeba vytvořit na účet OMS <https://mms.microsoft.com>. Postupujte podle kroků pro vytvoření účtu. Po dokončení vytváření účtu, je nutné získat id a klíč kliknutím **nastavení**, pak **připojené zdroje**a potom **servery se systémem Linux**, jak je uvedeno níže.
+Agent komunikovat službu pro OMS je potřeba nakonfigurovat s id pracovního prostoru a klíč pracovního prostoru. Id pracovního prostoru a klíč musíte vytvořit účet na webu <https://mms.microsoft.com>.
+Postupujte podle kroků pro vytvoření účtu. Po dokončení vytváření účtu, je nutné získat id a klíč kliknutím **nastavení**, pak **připojené zdroje**a potom **servery se systémem Linux**, jak je uvedeno níže.
 
  ![](media/container-service-monitoring-oms/image5.png)
 
@@ -84,18 +85,18 @@ $ kubectl create -f oms-daemonset.yaml
 ```
 
 ### <a name="installing-the-oms-agent-using-a-kubernetes-secret"></a>Instalace agenta OMS pomocí Kubernetes tajný klíč
-K ochraně vašeho ID pracovního prostoru OMS a klíče, které můžete použít Kubernetes tajný klíč jako součást DaemonSet YAML souboru.
+K ochraně ID pracovního prostoru analýzy protokolů a klíč můžete jako součást souboru DaemonSet YAML Kubernetes tajný klíč.
 
  - Zkopírujte skript, soubor tajný šablonu a soubor DaemonSet YAML (z [úložiště](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) a ujistěte se, že jsou na stejném adresáři. 
       - Generování skriptu - tajný klíč gen.sh tajný klíč
       - Šablona tajné – template.yaml tajný klíč
    - Soubor DaemonSet YAML - omsagent – ds-secrets.yaml
- - Spusťte skript. Skript vyzve pro ID pracovního prostoru OMS a primární klíč. Vložte který. skript se vytvoří soubor tajný yaml, můžete ji spustit.   
+ - Spusťte skript. Skript vyzve pro ID pracovního prostoru analýzy protokolů a primární klíč. Vložte který. skript se vytvoří soubor tajný yaml, můžete ji spustit.   
    ```
    #> sudo bash ./secret-gen.sh 
    ```
 
-   - Vytvoření tajných klíčů pod spuštěním následujícího:``` kubectl create -f omsagentsecret.yaml ```
+   - Vytvoření tajných klíčů pod spuštěním následujícího: ``` kubectl create -f omsagentsecret.yaml ```
  
    - Pokud chcete zkontrolovat, spusťte následující: 
 
@@ -118,7 +119,7 @@ K ochraně vašeho ID pracovního prostoru OMS a klíče, které můžete použ�
    KEY:    88 bytes 
    ```
  
-  - Vytvoření vaší omsagent démon set spuštěním``` kubectl create -f omsagent-ds-secrets.yaml ```
+  - Vytvoření vaší omsagent démon set spuštěním ``` kubectl create -f omsagent-ds-secrets.yaml ```
 
 ### <a name="conclusion"></a>Závěr
 A to je vše! Po několika minutách byste měli vidět dat odesílaných do řídicího panelu OMS.

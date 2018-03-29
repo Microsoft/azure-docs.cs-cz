@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vinagara
-ms.openlocfilehash: 9361c2a0a4854f463eb2d679c3884f84f6858997
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 76b7481223566f16a5da8c08d9d76f2bdb6b542a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="initiate-extending-alerts-from-oms-into-azure"></a>Zahájit rozšíření výstrahy od OMS do Azure
 Od **23 duben 2018**, všechny zákazníky používající výstrahy, které jsou nakonfigurované v [Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), bude rozšířeno do Azure. Výstrahy, které jsou rozšířené Azure chovají stejným způsobem jako v OMS. Možnosti monitorování zůstanou beze změn. Rozšíření výstrahy vytvořené v OMS do Azure poskytuje řadu výhod. Další informace o výhodách a proces prodloužení výstrahy od OMS do Azure najdete v tématu [rozšířit výstrahy z OMS Azure](monitoring-alerts-extend.md).
@@ -40,16 +40,14 @@ Ukázka obrazovce níže.
 
     ![Rozšíření výstrahy od OMS do Azure – krok 2](./media/monitor-alerts-extend/ExtendStep2.png)
 
-    > [!NOTE]
-    > Pokud úpravy výstrah výše uvedenou možnost, je použita; uživatel nebude možné se vraťte do průvodce. A bude nutné restartovat proces rozšíření výstrahy od OMS do Azure, z kroku 1. Seznamu navrhované změny zobrazuje souhrn, skutečný výsledek se může lišit podle změny se taky dělá paralelně.
 
-4. V posledním kroku průvodce můžete pokládat OMS při plánování rozšíření všechny výstrahy do Azure – vytváření nových skupin akce a přidružení s výstrahami, jak je znázorněno na obrazovce starší. Chcete-li pokračovat, zvolte "K dispozici OMS automaticky všechny výstrahy v pracovním prostoru pro Azure", pak klikněte na tlačítko Dokončit a potvrďte příkazového řádku na zahájení procesu. Zákazníci používající můžete používat nové Log Analytics API - aktivovat ručně tak, že zvolíte možnost alternativní rozšíření výstrahy. 
+4. V posledním kroku průvodce můžete pokládat OMS při plánování rozšíření všechny výstrahy do Azure – vytváření nových skupin akce a přidružení s výstrahami, jak je znázorněno na obrazovce starší. Chcete-li pokračovat, vyberte kliknutím na tlačítko Dokončit a potvrďte příkazového řádku na zahájení procesu. Zákazníci Volitelně můžete zadat taky e-mailové adresy, na které se mu OMS k odeslání zprávy na dokončení zpracování.
 
     ![Rozšíření výstrahy od OMS do Azure – krok 3](./media/monitor-alerts-extend/ExtendStep3.png)
 
-5. Po dokončení Průvodce ovládacího prvku se vraťte na stránku nastavení výstrah a možnost "Rozšířit do Azure" bude odebrána. Na pozadí se naplánuje OMS výstrahy v OMS na Azure; To může nějakou dobu trvat a při zahájení operace pro krátké doby výstrahy v OMS nebudete mít k dispozici pro úpravy. Po dokončení procesu pozadí zašle e-mailu pro všechny uživatele s rolí správce nebo Přispěvatel; Podrobné informace o této akce skupiny vytvořené a příslušné výstrahy budou mít byla přidružena. 
+5. Po dokončení Průvodce ovládacího prvku se vraťte na stránku nastavení výstrah a možnost "Rozšířit do Azure" bude odebrána. Na pozadí se naplánuje OMS výstrahy v OMS na Azure; To může nějakou dobu trvat a při zahájení operace pro krátké doby výstrahy v OMS nebudete mít k dispozici pro úpravy. Prostřednictvím hlavička se zobrazí aktuální stav, a pokud e-mailových adres kde zadaný během kroku 4, budou informace, když proces na pozadí úspěšně rozšiřuje všechny výstrahy do Azure. 
 
-6. Výstrahy budou nadále uvedené na OMS, i po získání rozšířit do Azure.
+6. Výstrahy budou nadále uvedené na OMS, i po získání úspěšně rozšířit do Azure.
 
     ![Po rozšíření výstrahy v OMS do Azure](./media/monitor-alerts-extend/PostExtendList.png)
 
@@ -141,10 +139,11 @@ Pokud všechny výstrahy v pracovním prostoru zadaný už se rozšířily do Az
 }
 ```
 
-K zahájení plánování rozšíření výstrahy v OMS na Azure, inicializujte metodu POST SMĚŘUJÍCÍ do rozhraní API. Provádění tohoto volání příkazu potvrdí uživatele záměr a také přijetí výstrahy v OMS rozšířit do Azure a provést změny, které je uvedené v odpovědi GET volání rozhraní API.
+K zahájení plánování rozšíření výstrahy v OMS na Azure, inicializujte metodu POST SMĚŘUJÍCÍ do rozhraní API. Provádění tohoto volání příkazu potvrdí uživatele záměr a také přijetí výstrahy v OMS rozšířit do Azure a provést změny, které je uvedené v odpovědi GET volání rozhraní API. Uživatel může volitelně můžete zadat seznam e-mailové adresy, na které OMS bude Poštovní sestavy, až se dokončí proces na pozadí plánované rozšíření výstrahy v OMS na Azure úspěšně.
 
 ```
-armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
+$emailJSON = “{‘Recipients’: [‘a@b.com’, ‘b@a.com’]}”
+armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $emailJSON
 ```
 
 > [!NOTE]

@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
 ms.custom: mvc
-ms.openlocfilehash: 2689befc6a686d0ffc25d1fccbacb66cc6e10725
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3b7ae08446e672c218e7278cff4f77739286fead
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co je Azure Database pro databázi MySQL?
 Databáze pro databázi MySQL Azure je služba relační databáze v cloudu Microsoftu na základě [MySQL Community Edition](https://www.mysql.com/products/community/) databázového stroje. Azure Database pro databázi MySQL nabízí:
@@ -47,7 +47,7 @@ Jak se rozhodnout, kdy přidat a kdy odebrat výkon? Můžete použít předdefi
 Azure špičkové 99,99 % dostupnost smlouvu o úrovni služeb (SLA) používá technologii globální sítě datových center spravovaných společností Microsoft, pomáhá udržet vaše aplikace s 24/7. S každou databází Azure pro server databáze MySQL můžete využít výhod integrované zabezpečení, odolnost proti chybám a ochrany dat, která by jinak muset koupit nebo návrh, vytvářet a spravovat. S Azure Database pro databázi MySQL můžete v okamžiku obnovení obnovit server do předchozího stavu, až 35 dnů.
 
 ## <a name="secure-your-data"></a>Zabezpečení dat
-Služby Azure databáze mít tradici zabezpečení dat, které podporuje Azure Database pro databázi MySQL, s funkcemi, které omezit přístup, ochranu dat na rest a v provozu a vám pomůže sledovat činnost. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/en-us/TrustCenter/Security/default.aspx).
+Služby Azure databáze mít tradici zabezpečení dat, které podporuje Azure Database pro databázi MySQL, s funkcemi, které omezit přístup, ochranu dat na rest a v provozu a vám pomůže sledovat činnost. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/security).
 
 Databáze Azure pro službu MySQL používá šifrování úložiště pro data na rest. Data, včetně zálohování, jsou zašifrovaná na disku (s výjimkou dočasné soubory, které jsou vytvořené pomocí modulu při spuštění dotazů). Služba používá 256bitové šifrování AES, které je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 

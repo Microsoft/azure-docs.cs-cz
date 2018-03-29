@@ -1,6 +1,6 @@
 ---
-title: "Další Azure Service Fabric terminologie | Microsoft Docs"
-description: "Přehled terminologie Service Fabric. Popisuje klíčové terminologie konceptů a termínů používaných ve zbývající části v dokumentaci."
+title: Další Azure Service Fabric terminologie | Microsoft Docs
+description: Přehled terminologie Service Fabric. Popisuje klíčové terminologie konceptů a termínů používaných ve zbývající části v dokumentaci.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/18/2017
+ms.date: 03/26/2018
 ms.author: ryanwi
-ms.openlocfilehash: dc7e536ce40bf95e1950e1e44844cd8fe26ea1a1
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: bd57b6344baef3bdf97c850564ae2d3afa9c811e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-terminology-overview"></a>Přehled terminologie Service Fabric
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb. Tento článek podrobně technologiím použitým pomocí Service Fabric pochopit termínů používaných v dokumentaci.
@@ -26,9 +26,9 @@ Azure Service Fabric je platforma distribuovaných systémů usnadňující bale
 Koncepty uvedené v této části jsou popsány i v následující videa Microsoft Virtual Academy: <a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">základní koncepty</a>, <a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tlkI046yC_2906218965">koncepty návrhu</a>, a <a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=x7CVH56yC_1406218965">Runtime koncepty</a>.
 
 ## <a name="infrastructure-concepts"></a>Koncepty infrastruktury
-**Cluster**: sadu virtuální nebo fyzické počítače, do kterých jsou nasazené a spravovat vaše mikroslužeb připojené k síti.  Clustery můžete škálovat tisíce počítačů.
+**Cluster**: sadu virtuální nebo fyzické počítače, do kterých jsou nasazené a spravovat vaše mikroslužeb připojené k síti.  Clustery je možné škálovat na tisíce počítačů.
 
-**Uzel**: počítač nebo virtuální počítač, který je součástí clusteru, se nazývá *uzlu*. Každý uzel je přiřazen název uzlu (řetězec). Uzly mají charakteristiky, jako je například vlastnosti umístění. Každý počítač nebo virtuální počítač má služby systému Windows automaticky spouštěná `FabricHost.exe`, který spuštění při spuštění a pak spustí dvě spustitelné soubory: `Fabric.exe` a `FabricGateway.exe`. Tyto dvě spustitelné soubory tvoří uzlu. Pro testování scénáře, může hostovat více uzlů na jeden počítač nebo virtuální počítač spuštěním několika instancí `Fabric.exe` a `FabricGateway.exe`.
+**Uzel**: počítač nebo virtuální počítač, který je součástí clusteru, se nazývá *uzlu*. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají charakteristiky, jako je například vlastnosti umístění. Každý počítač nebo virtuální počítač má služby systému Windows automaticky spouštěná `FabricHost.exe`, který spuštění při spuštění a pak spustí dvě spustitelné soubory: `Fabric.exe` a `FabricGateway.exe`. Tyto dvě spustitelné soubory tvoří uzlu. Pro testování scénáře, může hostovat více uzlů na jeden počítač nebo virtuální počítač spuštěním několika instancí `Fabric.exe` a `FabricGateway.exe`.
 
 ## <a name="application-concepts"></a>Koncepty aplikace
 **Typ aplikace**: název a verzi, která je přiřazena ke kolekci typů služeb. Je definována v `ApplicationManifest.xml` souboru a vkládat v adresáři balíčku aplikace. Adresář je pak zkopíruje do úložiště bitové kopie cluster Service Fabric. Potom můžete vytvořit s názvem aplikace z tohoto typu aplikací v rámci clusteru.
@@ -89,17 +89,27 @@ Pro čtení [nasazení aplikace](service-fabric-deploy-remove-applications.md) �
    - Orchestruje upgrady aplikací a cluster.
    - Komunikuje s jinými součástmi systému.
 
+**Oprava Manager service**: Toto je volitelné systému služba, která umožňuje provést na cluster, které není bezpečné, akce opravy automatable a transparentní. Opravte manager se používá v:
+   - Provádění údržby Azure opraví na [stříbrný a zlatý odolnost](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric clusterů.
+   - Oprava akcí pro [oprava Orchestration aplikace](service-fabric-patch-orchestration-application.md)
+
 ## <a name="built-in-programming-models"></a>Předdefinované programovací modely
-Jsou k dispozici pro můžete vytvářet služby, Service Fabric programovací modely rozhraní .NET Framework:
+Nejsou k dispozici pro můžete vytvářet služby, Service Fabric rozhraní .NET Framework a Java programovací modely:
 
 **Spolehlivé služby**: K rozhraní API k sestavení bezzstavovými i stavovými službami. Stavové služby uložit jejich stavu spolehlivé kolekcí, jako je například slovník nebo fronty. Můžete také připojit v různých balíčcích, komunikace, jako jsou webové rozhraní API a Windows Communication Foundation (WCF).
 
 **Reliable Actors**: K rozhraní API k sestavení bezstavové a stavové objekty prostřednictvím virtuální objektu Actor programovací model. Tento model je užitečné, když máte velké množství nezávislých jednotek výpočtu nebo stavu. Tento model používá na základě zapnout vláken model, takže je vhodné, aby se zabránilo kód, který volá do jiných aktéři nebo služeb, protože jednotlivé objektu actor nemůže zpracovat další příchozí požadavky, až do dokončení všechny odchozí požadavky.
 
+Můžete taky spustit existující aplikace v Service Fabric:
+
+**Kontejnery**: Service Fabric podporuje nasazení kontejnerů Docker na Linux a Windows Server kontejnery v systému Windows Server 2016, společně s podporou pro technologii Hyper-V izolovaném režimu. V Service Fabric [aplikačního modelu](service-fabric-application-model.md), kontejner představuje hostitele aplikace ve více služby, která jsou umístěna repliky. Service Fabric můžete spustit všechny kontejnery a tento scénář je podobná hosta spustitelné scénář, kde balíček existující aplikaci uvnitř kontejneru. Kromě toho můžete [spuštění služeb Service Fabric uvnitř kontejnery](service-fabric-services-inside-containers.md) také.
+
+**Spustitelné soubory hosta**: jakýkoli typ kódu, třeba Node.js, Java nebo C++ můžete spustit v Azure Service Fabric jako služba. Service Fabric odkazuje na těchto typů služeb jako hosta spustitelné soubory, které jsou považovány za bezstavové služby. Výhody pro spuštění spustitelného souboru v clusteru Service Fabric Host zahrnují vysokou dostupnost, monitorování stavu, Správa životního cyklu aplikací, s vysokou hustotou a možnosti rozpoznání.
+
 Pro čtení [zvolte programovací model pro vaši službu](service-fabric-choose-framework.md) Další informace najdete v článku.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o Service Fabric:
 
 * [Přehled Service Fabric](service-fabric-overview.md)

@@ -1,11 +1,11 @@
 ---
 title: Aktualizovat Azure Linux Agent z webu GitHub | Microsoft Docs
-description: "Zjistěte, jak aktualizovat Azure Linux Agent pro váš virtuální počítač s Linuxem v Azure"
+description: Zjistěte, jak aktualizovat Azure Linux Agent pro váš virtuální počítač s Linuxem v Azure
 services: virtual-machines-linux
-documentationcenter: 
-author: SuperScottz
-manager: timlt
-editor: 
+documentationcenter: ''
+author: danielsollondon
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: f1f19300-987d-4f29-9393-9aba866f049c
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: mingzhan
-ms.openlocfilehash: 62e365c46d48285b2c03493debff86508b94348a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: danis
+ms.openlocfilehash: ed5bea98bc9b4849436ff5fafc90f85c99d582aa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Postup aktualizace Azure Linux Agent na virtuálním počítači
 
@@ -120,7 +120,7 @@ Tato verze Debian nemá na verzi > = 2.0.16, proto není k dispozici pro něj au
 #### <a name="check-your-current-package-version"></a>Zkontrolujte aktuální verzi balíčku
 
 ```bash
-apt list --installed | grep walinuxagent
+apt list --installed | grep waagent
 ```
 
 #### <a name="update-package-cache"></a>Aktualizace mezipaměti balíčku
@@ -389,7 +389,7 @@ Poté zadejte:
 sudo yum update WALinuxAgent
 ```
 
-Obvykle to je vše, potřebujete, ale pokud z nějakého důvodu je třeba ji nainstalovat z https://github.com přímo, použijte následující postup.
+Obvykle to je vše, budete potřebovat, ale pokud z nějakého důvodu musíte nainstalovat z https://github.com přímo, použijte následující postup.
 
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>Aktualizovat agenta systému Linux, pokud žádný balíček agenta existuje pro distribuci

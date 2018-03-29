@@ -1,25 +1,25 @@
 ---
 title: Azure funkce protokolu HTTP a webhooku vazby
-description: "Pochopit, jak používat protokol HTTP a webhooku triggerů a vazeb v Azure Functions."
+description: Pochopit, jak používat protokol HTTP a webhooku triggerů a vazeb v Azure Functions.
 services: functions
 documentationcenter: na
-author: mattchenderson
+author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Funkce Azure, funkce, událostí zpracování, webhooků, dynamické výpočetní, bez serveru Architektura protokolu HTTP, API REST"
+editor: ''
+tags: ''
+keywords: Funkce Azure, funkce, událostí zpracování, webhooků, dynamické výpočetní, bez serveru Architektura protokolu HTTP, API REST
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
-ms.author: mahender
-ms.openlocfilehash: a46177183035a53128c5341a3ce4c63dbc3a7497
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: tdykstra
+ms.openlocfilehash: 94a039ab1973cbd4112ddd0cd7548baa69924d26
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure funkce protokolu HTTP a webhooku vazby
 
@@ -536,7 +536,7 @@ Autorizace Webhooku se zpracovává souborem komponentu příjemce webhooku sou�
 
 ## <a name="trigger---limits"></a>Aktivační událost – omezení
 
-Délka požadavku HTTP je omezená na 100 kB (102,400) a délky adres URL je omezena na 4 kB (4 096) bajtů. Tato omezení jsou určené `httpRuntime` element modulu runtime [souboru Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
+Délka požadavku HTTP je omezený na 100MB (104,857,600 bajtů) a délky adres URL je omezena na 4KB (4 096 bajtů). Tato omezení jsou určené `httpRuntime` element modulu runtime [souboru Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
 
 Pokud funkci, která používá triggeru protokolu HTTP není dokončena v rámci přibližně 2,5 minut, bude časový limit brány a vrátí chybu HTTP 502. Funkce bude nadále používat, ale nebude možné vrátit odpovědi HTTP. Pro dlouhodobé funkce doporučujeme dodržovat asynchronní vzory a vrátí se umístění, kde může odeslat příkaz ping stav žádosti. Informace o jak dlouho může spustit funkci najdete v tématu [škálování a hostování - spotřeba plánování](functions-scale.md#consumption-plan). 
 

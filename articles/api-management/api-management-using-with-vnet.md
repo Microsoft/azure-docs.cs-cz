@@ -1,11 +1,11 @@
 ---
-title: "Jak používat Azure API Management s virtuálními sítěmi"
-description: "Zjistěte, jak nastavit připojení k virtuální síti ve webové služby Azure API Management a přístup přes něj."
+title: Jak používat Azure API Management s virtuálními sítěmi
+description: Zjistěte, jak nastavit připojení k virtuální síti ve webové služby Azure API Management a přístup přes něj.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: antonba
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: fe5e26a957d18f1f7f5ed360a27bb1f9c9826718
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: db0fab5b619ddbca4663a0f6afedfff373d406f9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (virtuální sítě) umožňují některé z vašich prostředků Azure umístění v síti routeable Internetu jiných výrobců, která můžete řídit přístup ke. Tyto sítě můžete pak připojené k vaší místní sítě pomocí různých technologií sítě VPN. Další informace o virtuálních sítí Azure začínat zde uvedené informace: [Přehled virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md).
@@ -96,7 +96,7 @@ Po služby API Management je připojen k virtuální síti, je přístup ke slu�
 ## <a name="network-configuration-issues"> </a>Běžné problémy s konfigurací sítě
 Následuje seznam běžných problémů chybné konfigurace, které se mohou vyskytnout při nasazení služby API Management do virtuální sítě.
 
-* **Vlastní instalace serveru DNS**: rozhraní API správy služby závisí na několik služeb Azure. Při API Management je umístěn ve virtuální síti s vlastního serveru DNS, je nutné přeložit názvy hostitelů těchto služeb Azure. Postupujte podle [to](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) pokyny na vlastní instalační program DNS. Zobrazit následující porty tabulce a další požadavky sítě pro referenci.
+* **Vlastní instalace serveru DNS**: rozhraní API správy služby závisí na několik služeb Azure. Při API Management je umístěn ve virtuální síti s vlastního serveru DNS, je nutné přeložit názvy hostitelů těchto služeb Azure. Postupujte podle [to](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) pokyny na vlastní instalační program DNS. Zobrazit následující porty tabulce a další požadavky sítě pro referenci.
 
 > [!IMPORTANT]
 > Pokud máte v plánu používat servery DNS vlastní sítě vnet, měli byste nastavit ho **před** nasazení služby API Management do ní. V opačném případě je potřeba aktualizovat služba API Management pokaždé, když změníte servery DNS tak, že spustíte [použít operace konfigurace sítě](https://docs.microsoft.com/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)

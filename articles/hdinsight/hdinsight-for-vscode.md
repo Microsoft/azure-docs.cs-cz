@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 7567ce516e6d08a458ff96f4554d9e92934408f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8c976e5508c928943e2a5e4820f72520554f9b5d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Pomocí nástroje Azure HDInsight pro Visual Studio Code
 
@@ -69,9 +69,9 @@ Vytvořte pracovní prostor v produktu VS Code předtím, než se můžete přip
 
 4. Otevřete **XXXX_hdi_settings.json** z **EXPLORER**, nebo klikněte pravým tlačítkem na editor skriptů a vyberte **nastavení konfigurace**. Můžete nakonfigurovat položku přihlášení, výchozího clusteru a parametry úlohy odeslání, jak je znázorněno v ukázce v souboru. Můžete také ponechat ostatní parametry prázdné.
 
-## <a name="connect-to-azure"></a>Připojení k Azure
+## <a name="connect-to-hdinsight-cluster"></a>Připojení ke clusteru HDInsight
 
-Před odesláním je skripty ke clusterům HDInsight z VS kódu, třeba připojit ke svému účtu Azure.
+Než skripty můžete odeslat ke clusterům HDInsight z VS Code, musíte buď připojit ke svému účtu Azure, nebo odkaz clusteru (pomocí nástroje Ambari uživatelského jména a hesla nebo doméně připojené k účtu).
 
 **Pro připojení k Azure**
 

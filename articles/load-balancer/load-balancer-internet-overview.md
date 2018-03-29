@@ -1,6 +1,6 @@
 ---
-title: "Přehled nástroje pro vyrovnávání zatížení Internetové | Microsoft Docs"
-description: "Přehled pro internetový bod nástroj pro vyrovnávání zatížení a jejich funkce. Jak funguje nástroj pro vyrovnávání zatížení pro Azure pomocí virtuální počítače a cloudové služby."
+title: Přehled nástroje pro vyrovnávání zatížení Internetové | Microsoft Docs
+description: Přehled pro internetový bod nástroj pro vyrovnávání zatížení a jejich funkce. Jak funguje nástroj pro vyrovnávání zatížení pro Azure pomocí virtuální počítače a cloudové služby.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 5b9ffeadf6b1ffc4eaf4f49b85ba752c27da0e46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14375dc7777a4f24db9f7246e6e99f26bd0eb858
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="internet-facing-load-balancer-overview"></a>Přehled nástroje pro vyrovnávání zatížení přístupných Internetu
 
@@ -38,11 +38,11 @@ Následující obrázek znázorňuje koncový bod Vyrovnávání zatížení sí
 
 Obrázek 1 – endpoint pro webový provoz s vyrovnáváním zatížení
 
-Pokud internetoví klienti odesílat žádosti o webovou stránku na veřejnou IP adresu cloudové služby na portu TCP 80, Vyrovnávání zatížení Azure distribuuje požadavky mezi tři virtuální počítače v sadě s vyrovnáváním zatížení. Další informace o algoritmy Vyrovnávání zatížení, najdete v článku [stránku přehled nástroje pro vyrovnávání zatížení](load-balancer-overview.md#load-balancer-features).
+Pokud internetoví klienti odesílat žádosti o webovou stránku na veřejnou IP adresu cloudové služby na portu TCP 80, Vyrovnávání zatížení Azure distribuuje požadavky mezi tři virtuální počítače v sadě s vyrovnáváním zatížení. Další informace o algoritmy Vyrovnávání zatížení, najdete v článku [stránku přehled nástroje pro vyrovnávání zatížení základní](load-balancer-overview.md#fundamental-load-balancer-features).
 
 Ve výchozím nastavení nástroj pro vyrovnávání zatížení Azure distribuuje síťový provoz mezi více instancí virtuálního počítače. Můžete také nakonfigurovat spřažení relace, další informace najdete v tématu [režim distribuce nástroje pro vyrovnávání zatížení](load-balancer-distribution-mode.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o [nástroj pro vyrovnávání zatížení pro vnitřní](load-balancer-internal-overview.md) abyste lépe pochopili, které nástroj pro vyrovnávání zatížení je lepší přizpůsobení pro vaše nasazení cloudu.
 

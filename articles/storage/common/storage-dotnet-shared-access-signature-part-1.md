@@ -1,10 +1,10 @@
 ---
-title: "Použití sdílené přístupové podpisy (SAS) ve službě Azure Storage | Microsoft Docs"
-description: "Naučte se používat sdílené přístupové podpisy (SAS) pro delegování přístupu k prostředkům Azure Storage, včetně objektů BLOB, fronty, tabulky a soubory."
+title: Použití sdílené přístupové podpisy (SAS) ve službě Azure Storage | Microsoft Docs
+description: Naučte se používat sdílené přístupové podpisy (SAS) pro delegování přístupu k prostředkům Azure Storage, včetně objektů BLOB, fronty, tabulky a soubory.
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: craigshoemaker
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 46fd99d7-36b3-4283-81e3-f214b29f1152
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
-ms.author: tamram
-ms.openlocfilehash: 32e92e6ffc376d27297810596691f0371770e86d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cshoe
+ms.openlocfilehash: d3f8b3261f9e2e86dbcaa41b92111545abeffe54
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-shared-access-signatures-sas"></a>Použití sdílených přístupových podpisů (SAS)
 
@@ -27,7 +27,7 @@ Sdílený přístupový podpis (SAS) poskytuje způsob, jak udělit omezený př
 Další příklady kódu pomocí SAS nad rámec těch, které jsou tu popsané, najdete v části [Začínáme s Azure Blob Storage v rozhraní .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) a ostatních vzorků, které jsou k dispozici v [ukázky kódu Azure](https://azure.microsoft.com/documentation/samples/?service=storage) knihovny. Stažení ukázkových aplikací a jejich spuštění nebo procházet kód na Githubu.
 
 ## <a name="what-is-a-shared-access-signature"></a>Co je sdílený přístupový podpis?
-Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Pomocí SAS můžete udělit klientům přístup k prostředkům ve vašem účtu úložiště bez sdílení klíče účtu. Toto je klíče bod použití sdílených přístupových podpisů ve svých aplikacích – SAS je zabezpečení způsob, jak sdílet svým prostředkům úložiště bez kompromisů klíče účtu.
+Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Pomocí SAS můžete udělit klientům přístup k prostředkům ve vašem účtu úložiště bez sdílení klíče účtu. Toto je zásadní aspekt používání sdílených přístupových podpisů v aplikacích – SAS představuje bezpečný způsob sdílení prostředků úložiště, aniž byste ohrozili své klíče účtu.
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
@@ -86,7 +86,7 @@ SAS účtu a tokeny SAS služby zahrnují některé společné parametry a také
 * **Čas vypršení platnosti.** Toto je čas, po jejímž uplynutí SAS již není platný. Osvědčené postupy doporučujeme, abyste zadejte čas vypršení platnosti pro SAS, nebo přidružit k zásadám uložené přístup. Čas vypršení platnosti musí být vyjádřena v UTC (Coordinated Universal Time), s speciální označení UTC ("Z"), například `1994-11-05T13:15:30Z` (Další informace níže).
 * **Oprávnění.** Oprávnění určená v SAS znamenat jakým operacím klienta můžete provést u prostředků úložiště pomocí SAS. K dispozici oprávnění se liší pro SAS účtu a SAS služby.
 * **IP.** Volitelný parametr, který určuje IP adresu nebo rozsah IP adres mimo Azure (naleznete v části [stav konfigurace relace směrování](../../expressroute/expressroute-workflows.md#routing-session-configuration-state) pro Express Route) ze kterého tak, aby přijímal požadavky.
-* **Protokol.** Volitelný parametr, který určuje protokol, povolené pro žádost. Možné hodnoty jsou protokolů HTTPS a HTTP (`https,http`), který je pouze výchozí hodnotu, nebo HTTPS (`https`). Všimněte si, že HTTP jenom není povolenou hodnotu.
+* **Protocol.** Volitelný parametr, který určuje protokol, povolené pro žádost. Možné hodnoty jsou protokolů HTTPS a HTTP (`https,http`), který je pouze výchozí hodnotu, nebo HTTPS (`https`). Všimněte si, že HTTP jenom není povolenou hodnotu.
 * **Podpis.** Podpis se vytvářejí na základě ostatní parametry zadaný jako součást tokenu a pak se zašifrují. Slouží k ověření SAS.
 
 ### <a name="parameters-for-a-service-sas-token"></a>Parametry pro token SAS služby
@@ -113,12 +113,12 @@ Tady je příklad služby identifikátor URI SAS, který poskytuje oprávnění 
 https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 ```
 
-| Name (Název) | Část SAS | Popis |
+| Název | Část SAS | Popis |
 | --- | --- | --- |
 | Identifikátor URI objektu BLOB |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |Adresa objektu blob. Všimněte si, že pomocí protokolu HTTPS se důrazně doporučuje. |
 | Verze služby úložiště |`sv=2015-04-05` |Pro úložiště služby verze 2012-02-12 a novější, tento parametr určuje verze se má použít. |
-| Čas spuštění |`st=2015-04-29T22%3A18%3A26Z` |Zadat ve formátu času UTC. Pokud chcete SAS platit okamžitě, vynechejte čas spuštění. |
-| Čas vypršení platnosti |`se=2015-04-30T02%3A23%3A26Z` |Zadat ve formátu času UTC. |
+| Čas zahájení |`st=2015-04-29T22%3A18%3A26Z` |Zadat ve formátu času UTC. Pokud chcete SAS platit okamžitě, vynechejte čas spuštění. |
+| Doba konce platnosti |`se=2015-04-30T02%3A23%3A26Z` |Zadat ve formátu času UTC. |
 | Prostředek |`sr=b` |Daný prostředek k objektu blob. |
 | Oprávnění |`sp=rw` |Oprávnění udělená pomocí sdíleného přístupového podpisu zahrnout Read (r) a zápis (w). |
 | Rozsah IP adres |`sip=168.1.5.60-168.1.5.70` |Rozsah IP adres, ze kterých budou přijímány žádost. |
@@ -133,7 +133,7 @@ Tady je příklad účtu SAS, který používá stejné společné parametry na 
 https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
 ```
 
-| Name (Název) | Část SAS | Popis |
+| Název | Část SAS | Popis |
 | --- | --- | --- |
 | Identifikátor URI |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |Objekt Blob koncový bod služby, s parametry pro získávání vlastnosti služby (Pokud je volána s GET) nebo nastavení vlastností služby (při volání sadou). |
 | Služby |`ss=bf` |SAS se vztahuje na služby objektů Blob a souborů |

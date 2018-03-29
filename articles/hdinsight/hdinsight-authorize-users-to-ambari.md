@@ -1,13 +1,13 @@
 ---
-title: "Autorizace uživatelů pro zobrazení Ambari - Azure HDInsight | Microsoft Docs"
-description: "Jak spravovat Ambari oprávnění uživatelů a skupin pro clustery služby HDInsight připojený k doméně."
+title: Autorizace uživatelů pro zobrazení Ambari - Azure HDInsight | Microsoft Docs
+description: Jak spravovat Ambari oprávnění uživatelů a skupin pro clustery služby HDInsight připojený k doméně.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: e8c1ff23ee00e15325a82e1df0f4643ec429b119
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: f4dfb51cf344d1ec51363ef3a9f74c1ca59119a6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="authorize-users-for-ambari-views"></a>Autorizace uživatelů pro zobrazení Ambari
 
@@ -35,7 +35,7 @@ Pokud jste tak již neučinili, postupujte podle [tyto pokyny](./domain-joined/a
 
 ## <a name="access-the-ambari-management-page"></a>Přístup na stránce Správa Ambari
 
-Abyste se dostali na **stránce management Ambari** na [webové uživatelské rozhraní Ambari](hdinsight-hadoop-manage-ambari.md), přejděte do  **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** . Zadejte uživatelské jméno správce clusteru a heslo, které jste definovali při vytvoření clusteru. Potom vyberte z řídicího panelu Ambari **spravovat Ambari** pod **správce** nabídky:
+Abyste se dostali na **stránce management Ambari** na [webové uživatelské rozhraní Ambari](hdinsight-hadoop-manage-ambari.md), přejděte do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Zadejte uživatelské jméno správce clusteru a heslo, které jste definovali při vytvoření clusteru. Potom vyberte z řídicího panelu Ambari **spravovat Ambari** pod **správce** nabídky:
 
 ![Manage Ambari](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 
@@ -122,7 +122,7 @@ Zobrazení seznamu umožňuje rychle upravovat ve dvou kategoriích: uživatelé
 
     ![Role zobrazení seznamu – Uživatelé](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* Kategorii zobrazení seznamu skupin zobrazí všechny skupiny a role přiřazené ke každé skupině. V našem příkladu seznam skupin synchronizovaných z zadaných v skupin Azure AD **skupiny uživatelů přístup** vlastnost nastavení domény clusteru. V tématu [clusteru HDInsight se vytvořit](./domain-joined/apache-domain-joined-configure.md#create-an-hdinsight-cluster-in-the-vnet).
+* Kategorii zobrazení seznamu skupin zobrazí všechny skupiny a role přiřazené ke každé skupině. V našem příkladu seznam skupin synchronizovaných z zadaných v skupin Azure AD **skupiny uživatelů přístup** vlastnost nastavení domény clusteru. V tématu [vytvoření clusteru HDInsight se připojený k doméně](/domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster).
 
     ![Role zobrazení seznamu – skupin](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

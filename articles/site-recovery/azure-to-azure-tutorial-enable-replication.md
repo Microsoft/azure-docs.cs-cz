@@ -1,6 +1,6 @@
 ---
-title: "Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure pomocí Azure Site Recovery (Preview)"
-description: "Zjistěte, jak nastavit zotavení po havárii pro virtuální počítače Azure do jiné oblasti Azure pomocí služby Azure Site Recovery."
+title: Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure pomocí Azure Site Recovery (Preview)
+description: Zjistěte, jak nastavit zotavení po havárii pro virtuální počítače Azure do jiné oblasti Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -12,11 +12,11 @@ ms.workload: storage-backup-recovery
 ms.date: 03/16/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 47d9a1e8aecde8ba0f01034f1d172c3fbd87ccfe
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7dd0bfbd96e6ba7b5d2174334419797c4fd60a51
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure (Preview)
 
@@ -144,7 +144,9 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
 
 - **Účty úložiště mezipaměti:** Site Recovery používá účet úložiště ve zdrojové oblasti. Do tohoto účtu se odešlou změny zdrojových virtuálních počítačů před replikací o cílového umístění.
 
-- **Cílové účty úložiště:** Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti nový účet úložiště zrcadlící účet úložiště zdrojového virtuálního počítače.
+- **Cíl účty úložiště (Pokud je zdrojový počítač nepoužívá spravované disky)**: ve výchozím nastavení, Site Recovery vytvoří nový účet úložiště v cílová oblast pro zrcadlení zdrojový účet úložiště virtuálního počítače.
+
+- **Repliky spravované disky (Pokud zdrojového virtuálního počítače používá spravované disky)**: ve výchozím nastavení, Site Recovery vytvoří repliky spravované disky v oblasti cíl pro zrcadlení zdrojového Virtuálního počítače spravované disků se stejným typem úložiště (Standard nebo premium) jako spravované zdrojového virtuálního počítače disk.
 
 - **Cílové skupiny dostupnosti:** Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou skupinu dostupnosti s příponou asr. Skupiny dostupnosti můžete přidávat pouze v případě, že jsou virtuální počítače ve zdrojové oblasti součástí sady.
 

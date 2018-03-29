@@ -1,8 +1,8 @@
 ---
-title: "Škálovatelné vědecké zpracování dat pomocí Azure Data Lake: návod začátku do konce | Microsoft Docs"
-description: "Jak používat Azure Data Lake udělat zkoumání a binární klasifikace úlohy dat na datovou sadu."
+title: 'Škálovatelné vědecké zpracování dat pomocí Azure Data Lake: návod začátku do konce | Microsoft Docs'
+description: Jak používat Azure Data Lake udělat zkoumání a binární klasifikace úlohy dat na datovou sadu.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev; weig
-ms.openlocfilehash: b18b454d1fcdfb2b6e8ea77508f779aeabdc87a0
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 6d0f889e1cc76eced172d66755a0a9275e6b7bdf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Škálovatelné vědecké zpracování dat pomocí Azure Data Lake: návod začátku do konce
 Tento návod ukazuje, jak používat Azure Data Lake a zkoumání dat a binární klasifikace úlohy na ukázku cesty taxíkem NYC jízdenky datová sada k předvídání, zda je tip uhrazeno tarif. Provede vás provede postupem [proces vědecké účely dat Team](http://aka.ms/datascienceprocess), klient server, získávání dat pro modelování školení a pak do nasazení webové služby, který publikuje modelu.
@@ -39,7 +39,7 @@ Tento názorný postup obsahuje také oddíl, který ukazuje, jak vytvářet a n
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Azure Machine Learning Studio je umožňuje vytvářet a nasazovat prediktivní modely. To se provádí pomocí dva přístupy: nejdřív se skriptů Pythonu a potom se tabulek Hive v clusteru HDInsight (Hadoop).
 
-### <a name="scripts"></a>Skripty
+### <a name="scripts"></a>Scripts
 V tomto názorném postupu jsou uvedeny pouze hlavní kroky. Si můžete stáhnout kompletní **skript U-SQL** a **Poznámkový blok Jupyter** z [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -149,7 +149,7 @@ Spuštění U-SQL, otevřete Visual Studio, klikněte na tlačítko **souboru-->
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
 ### <a name="ingest"></a>Přijímání dat: Přečíst data z veřejného objektu blob
-Umístění dat v Azure blob je odkazováno jako  **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**  a mohou být extrahovány pomocí **Extractors.Csv()**. Nahraďte váš vlastní název kontejneru a název účtu úložiště v následujících skriptů pro container_name@blob_storage_account_name wasb adresu. Vzhledem k tomu, že názvy souborů jsou ve stejném formátu, je možné použít **cestě\_data_ {\*\}.csv** ke čtení v všechny soubory 12 cesty. 
+Umístění dat v Azure blob je odkazováno jako **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** a mohou být extrahovány pomocí **Extractors.Csv()**. Nahraďte váš vlastní název kontejneru a název účtu úložiště v následujících skriptů pro container_name@blob_storage_account_name wasb adresu. Vzhledem k tomu, že názvy souborů jsou ve stejném formátu, je možné použít **cestě\_data_ {\*\}.csv** ke čtení v všechny soubory 12 cesty. 
 
     ///Read in Trip data
     @trip0 =
@@ -562,7 +562,7 @@ Chcete zprovoznit strojového učení modelu, jakmile byl vytvořen. Binární l
 
 * Najít z Azure ML studio nastavení přihlašovacích údajů pracovního prostoru. V nástroji Azure Machine Learning Studio, klikněte na tlačítko **nastavení** --> **název** --> **autorizace tokeny**. 
   
-    ![C3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
+    ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
         workspaceid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
         auth_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'

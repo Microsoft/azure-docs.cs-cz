@@ -1,8 +1,8 @@
 ---
-title: "Přehled zabezpečení v Data Lake Store | Microsoft Docs"
-description: "Pochopit, jak Azure Data Lake Store je bezpečnější úložiště velkých objemů dat"
+title: Přehled zabezpečení v Data Lake Store | Microsoft Docs
+description: Pochopit, jak Azure Data Lake Store je bezpečnější úložiště velkých objemů dat
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: e3df23e8803d8b34cc4178f8047d0fe2172d04be
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 65319df8db339b1c124be47f27a841bbd7141921
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Zabezpečení v Azure Data Lake Store
 Mnoho podniků jsou využívat výhod analýzy velkých objemů dat podnikových statistik pomáhá jim inteligentní rozhodnutí. Organizace může mít složitý a regulovaná prostředí s roste počet různých uživatelů. Je důležité pro organizace a ujistěte se, bezpečněji, uložení kritickými podnikovými daty s správné úrovně udělení přístupu k jednotlivým uživatelům. Azure Data Lake Store je navržená tak, abyste splňovat tyto požadavky na zabezpečení. V tomto článku se dozvíte o funkcích zabezpečení Data Lake Store, včetně:
@@ -46,7 +46,7 @@ Po Azure Active Directory ověřuje uživatele tak, že má uživatel přístup 
 * POSIX seznamu ACL pro přístup k datům v úložišti
 
 ### <a name="rbac-for-account-management"></a>RBAC pro správu účtu
-Čtyři základní role jsou definovány pro Data Lake Store ve výchozím nastavení. Role umožňují různé operace v účtu Data Lake Store prostřednictvím portálu Azure, rutiny prostředí PowerShell a rozhraní REST API. Role vlastník a Přispěvatel provádět celou řadu funkcí správy na účet. Můžete přiřadit role Čtenář pro uživatele, kteří pouze interagovat s daty.
+Čtyři základní role jsou definovány pro Data Lake Store ve výchozím nastavení. Role umožňují různé operace v účtu Data Lake Store prostřednictvím portálu Azure, rutiny prostředí PowerShell a rozhraní REST API. Role vlastník a Přispěvatel provádět celou řadu funkcí správy na účet. Uživatelům, kteří jenom zobrazit data účtu správy můžete přiřadit role Čtenář.
 
 ![Role RBAC](./media/data-lake-store-security-overview/rbac-roles.png "role RBAC")
 
@@ -65,9 +65,9 @@ Pokyny najdete v tématu [přiřadit uživatele nebo skupiny zabezpečení účt
 ### <a name="using-acls-for-operations-on-file-systems"></a>Pomocí seznamů řízení přístupu pro operace v systémech souborů.
 Data Lake Store je systém souborů hierarchické jako Hadoop Distributed File System (HDFS) a podporuje [seznamy ACL POSIX](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Ovládá pro čtení (r), zápis (w) a spouštět (oprávnění k prostředkům pro roli vlastníka pro vlastníky skupiny a pro ostatní uživatele a skupiny x). V Data Lake Store seznamy ACL se dá zapnout u kořenové složky, podsložky a jednotlivé soubory. Další informace o fungování seznamů řízení přístupu v souvislosti s Data Lake Storem najdete v tématu [Řízení přístupu v Data Lake Storu](data-lake-store-access-control.md).
 
-Doporučujeme, abyste definovat seznamy ACL pro více uživatelů pomocí [skupiny zabezpečení](../active-directory/active-directory-groups-create-azure-portal.md). Přidat uživatele do skupiny zabezpečení a pak mu přiřaďte seznamy ACL pro soubor nebo složku do této skupiny zabezpečení. To je užitečné, pokud chcete zadat vlastní přístup, protože jste omezeni na přidání maximálně devět položek pro vlastní přístup. Další informace o tom, jak lépe zabezpečit data uložená v Data Lake Store pomocí skupin zabezpečení služby Azure Active Directory najdete v tématu [přiřadit uživatele nebo skupiny zabezpečení jako seznamy řízení přístupu k systému souborů Azure Data Lake Store](data-lake-store-secure-data.md#filepermissions).
+Doporučujeme, abyste definovat seznamy ACL pro více uživatelů pomocí [skupiny zabezpečení](../active-directory/active-directory-groups-create-azure-portal.md). Přidat uživatele do skupiny zabezpečení a pak mu přiřaďte seznamy ACL pro soubor nebo složku do této skupiny zabezpečení. To je užitečné, pokud byste chtěli poskytnout přiřazená oprávnění, protože jste jsou omezeny na maximálně 28 položek pro přiřazená oprávnění. Další informace o tom, jak lépe zabezpečit data uložená v Data Lake Store pomocí skupin zabezpečení služby Azure Active Directory najdete v tématu [přiřadit uživatele nebo skupiny zabezpečení jako seznamy řízení přístupu k systému souborů Azure Data Lake Store](data-lake-store-secure-data.md#filepermissions).
 
-![Standardní a vlastní přístup](./media/data-lake-store-security-overview/adl.acl.2.png "standardní a vlastní přístup")
+![Seznam oprávnění k přístupu](./media/data-lake-store-security-overview/adl.acl.2.png "seznamu přístupová oprávnění")
 
 ## <a name="network-isolation"></a>Izolace sítě
 Použití Data Lake Store můžete lépe řízení přístupu k úložišti dat na úrovni sítě. Můžete určit brány firewall a definovat rozsah IP adres pro klienty důvěryhodné. Díky rozsah IP adres můžete připojit pouze klienti, kteří mají IP adresu v definovaném rozsahu do Data Lake Store.
@@ -83,30 +83,30 @@ Data Lake Store také zajišťuje šifrování dat, která jsou uložená v úč
 
 Pro správu klíčů Data Lake Store poskytuje dva režimy pro správu hlavní šifrovacích klíčů (MEKs), které jsou požadovány pro dešifrování žádná data, která je uložená v Data Lake Store. Můžete je nechat buď Data Lake Store můžete spravovat MEKs nebo zachovejte vlastnictví MEKs pomocí účtu Azure Key Vault. Zadejte režim správy klíčů při při vytváření účtu Data Lake Store. Další informace o tom, jak provést konfiguraci související se šifrováním, najdete v tématu [Začínáme s Azure Data Lake Storem pomocí webu Azure Portal](data-lake-store-get-started-portal.md).
 
-## <a name="auditing-and-diagnostic-logs"></a>Protokoly auditování a diagnostiky
-Můžete použít protokoly auditování a diagnostiky, v závislosti na tom, jestli hledáte protokoly pro týkajících se správy aktivit nebo aktivit souvisejících s daty.
+## <a name="activity-and-diagnostic-logs"></a>Diagnostické protokoly a aktivity
+Můžete použít aktivitu nebo diagnostických protokolů, v závislosti na tom, jestli hledáte protokolů pro účet týkajících se správy aktivit nebo aktivit souvisejících s daty.
 
-* Aktivity související s správy pomocí rozhraní API Správce Azure Resource Manager a jsou prezentované na portálu Azure přes protokoly auditu.
+* Aktivity související s řízením účtu pomocí rozhraní API Správce Azure Resource Manager a jsou prezentované na portálu Azure přes protokoly aktivity.
 * Aktivity související s data pomocí rozhraní REST API WebHDFS a jsou prezentované na portálu Azure prostřednictvím diagnostické protokoly.
 
-### <a name="auditing-logs"></a>Protokoly auditování
-Abyste dosáhli souladu s předpisy, organizace může vyžadovat záznamy odpovídající auditu, pokud potřebuje a dostanete se do konkrétní incidenty. Data Lake Store má integrované sledování a auditování a protokoluje všechny aktivity správy účtu.
+### <a name="activity-log"></a>Protokol aktivit
+Abyste dosáhli souladu s předpisy, organizace může vyžadovat záznamy auditu odpovídající účet správy aktivit, pokud potřebuje a dostanete se do konkrétní incidenty. Data Lake Store má integrované monitorování a protokoluje všechny aktivity správy účtu.
 
-Účet správy pro záznamy pro audit zobrazit a vybrat sloupce, které chcete protokolovat. Protokoly auditu a také můžete exportovat do služby Azure Storage.
+Účet správy pro záznamy pro audit zobrazit a vybrat sloupce, které chcete protokolovat. Můžete také exportovat protokoly aktivity do úložiště Azure.
 
-![Protokoly auditu](./media/data-lake-store-security-overview/audit-logs.png "Protokoly auditu")
+![Protokol aktivit](./media/data-lake-store-security-overview/activity-logs.png "protokol aktivit")
 
-### <a name="diagnostic-logs"></a>Diagnostické protokoly
-Můžete nastavit záznamy auditu přístupu k datům na portálu Azure (v nastavení pro diagnostiku) a vytvoření účtu úložiště objektů Blob v Azure, kde jsou uloženy protokoly.
+Další informace o práci s protokoly aktivity najdete v tématu [zobrazit protokoly aktivity akce u prostředků](../azure-resource-manager/resource-group-audit.md).
 
-![Diagnostické protokoly](./media/data-lake-store-security-overview/diagnostic-logs.png "diagnostické protokoly")
+### <a name="diagnostics-logs"></a>Protokoly diagnostiky
+Můžete povolit audit přístupu dat a diagnostická protokolování na portálu Azure a odeslat protokoly účet úložiště Azure Blob, centra událostí nebo analýzy protokolů.
 
-Po dokončení konfigurace nastavení diagnostiky, můžete zobrazit protokoly na **diagnostické protokoly** kartě.
+![Diagnostické protokoly](./media/data-lake-store-security-overview/diagnostic-logs.png "protokolů diagnostiky")
 
 Další informace o práci s diagnostické protokoly s Azure Data Lake Store najdete v tématu [přístupu k diagnostickým protokolům pro Data Lake Store](data-lake-store-diagnostic-logs.md).
 
 ## <a name="summary"></a>Souhrn
-Podnikoví zákazníci potřebují cloudové platformy analýzy dat, která jsou v bezpečí a snadno použitelný. Azure Data Lake Store je určena k usnadnění adresu, kterou tyto požadavky přes správu identit a ověření pomocí integrace služby Azure Active Directory, ověření na základě seznamu ACL, izolace sítě, šifrování dat při transitu i v rest (k dispozici v budoucnosti ) a auditování.
+Podnikoví zákazníci potřebují cloudové platformy analýzy dat, která jsou v bezpečí a snadno použitelný. Azure Data Lake Store je navrženy tak, aby vám budou snadněji řešit tyto požadavky přes správu identit a ověření pomocí integrace služby Azure Active Directory, ověření na základě seznamu ACL, izolace sítě, šifrování dat při přenosu i v klidu a auditování.
 
 Pokud chcete zobrazit nové funkce v Data Lake Store, pošlete nám svůj názor [Data Lake Store UserVoice fórum](https://feedback.azure.com/forums/327234-data-lake).
 

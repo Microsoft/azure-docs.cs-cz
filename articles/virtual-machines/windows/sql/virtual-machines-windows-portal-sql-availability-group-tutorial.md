@@ -1,6 +1,6 @@
 ---
-title: "Skupiny dostupnosti SQL serveru – virtuální počítače Azure – kurz | Microsoft Docs"
-description: "Tento kurz ukazuje, jak vytvořit Server vždy na skupinu dostupnosti SQL ve virtuálních počítačích Azure."
+title: Skupiny dostupnosti SQL serveru – virtuální počítače Azure – kurz | Microsoft Docs
+description: Tento kurz ukazuje, jak vytvořit Server vždy na skupinu dostupnosti SQL ve virtuálních počítačích Azure.
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 70e483f8b64648200bd6f0898a2877c2bf95e590
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fe79c6e6344bef8f25ae2e343e3301959c4e0ae5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurovat vždy na skupiny dostupnosti ve virtuálním počítači Azure ručně
 
@@ -356,7 +356,7 @@ Skupinu dostupnosti SQL Server na virtuálních počítačích Azure, vyžaduje 
    | **Virtuální síť** |Použijte název virtuální síť Azure. |
    | **Podsíť** |Použijte název podsítě, která je virtuální počítač.  |
    | **Přiřazení IP adresy** |Statická |
-   | **IP adresa** |Použijte dostupnou adresu z podsítě. |
+   | **IP adresa** |Použijte dostupnou adresu z podsítě. Všimněte si, že se to neliší od vaší IP adresu clusteru |
    | **Předplatné** |Pomocí stejného předplatného jako virtuální počítač. |
    | **Umístění** |Použijte stejné umístění jako virtuální počítač. |
 

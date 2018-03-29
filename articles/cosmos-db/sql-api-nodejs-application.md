@@ -1,7 +1,7 @@
 ---
-title: "Sestavení webové aplikace Node.js pro Azure Cosmos DB | Microsoft Docs"
-description: "Tento kurz Node.js popisuje jak používat Microsoft Azure Cosmos databázi k ukládání a přístup k datům z webové aplikace Node.js Express hostované na webech Azure."
-keywords: "Vývoj aplikací, databázový kurz výuka node.js, kurz k node.js"
+title: Sestavení webové aplikace Node.js pro Azure Cosmos DB | Microsoft Docs
+description: Tento kurz Node.js popisuje jak používat Microsoft Azure Cosmos databázi k ukládání a přístup k datům z webové aplikace Node.js Express hostované na webech Azure.
+keywords: Vývoj aplikací, databázový kurz výuka node.js, kurz k node.js
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/23/2018
 ms.author: mimig
-ms.openlocfilehash: 441f352555f40c0467df4c466d58ac35e32f9e61
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: ad6e335c562e52d7e2336dd1f29e5c159fe46589
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="_Toc395783175"></a>Sestavení webové aplikace Node.js využívající službu Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -29,8 +29,6 @@ ms.lasthandoff: 02/14/2018
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Tento kurz Node.js popisuje, jak používat Azure Cosmos DB a rozhraní SQL API k uložení a přístup k datům z aplikace Node.js Express hostované na webech Azure. Vytvoříte jednoduchou webovou aplikaci pro správu úkolů, aplikaci seznamu úkolů, která umožní vytvářet, získávat a dokončovat úkoly. Úkoly se ve službě Azure Cosmos DB ukládají jako dokumenty JSON. Tento kurz vás provede procesem vytvoření a nasazení aplikace a vysvětlí, co se v každé části děje.
 
@@ -76,7 +74,7 @@ Nyní se naučíme, jak vytvořit základní projekt Node.js Hello World pomocí
 5. Spusťte novou aplikaci.
    
         npm start
-6. Pokud si chcete zobrazit novou aplikaci, přejděte v prohlížeči na adresu [http://localhost:3000](http://localhost:3000).
+6. Je-li zobrazit novou aplikaci, přejděte v prohlížeči na [ http://localhost:3000 ](http://localhost:3000).
    
     ![Výuka Node.js – snímek obrazovky aplikace Hello World v okně prohlížeče](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
@@ -154,7 +152,7 @@ Tím je hotovo veškeré počáteční nastavování a konfigurace – nyní se 
 
     ```nodejs
     let DocumentDBClient = require('documentdb').DocumentClient;
-    let docdbUtils = require('./docdbUtils');
+    let docdbUtils = require('./cosmosdb-manager.js');
     ```
 7. Dále přidáte kód, který definuje export objektu Task. Ten má na starosti inicializaci objektu Task a nastavení databáze a kolekce dokumentů, které budeme používat.  
 
@@ -411,7 +409,7 @@ Tím je hotovo veškeré počáteční nastavování a konfigurace – nyní se 
 6. Nakonec soubor **app.js** uložte a zavřete a jsme téměř hotovi.
 
 ## <a name="_Toc395783181"></a>Krok 5: Vytvoření uživatelského rozhraní
-Nyní se zaměřme na vytvoření uživatelského rozhraní, aby uživatelé mohli s aplikací pracovat. Aplikace Express, kterou jsme vytvořili, používá jako zobrazovací modul **Jade**. Další informace o Jade najdete na stránce [http://jade-lang.com/](http://jade-lang.com/).
+Nyní se zaměřme na vytvoření uživatelského rozhraní, aby uživatelé mohli s aplikací pracovat. Aplikace Express, kterou jsme vytvořili, používá jako zobrazovací modul **Jade**. Další informace o Jade naleznete [ http://jade-lang.com/ ](http://jade-lang.com/).
 
 1. Soubor **layout.jade** v adresáři **views** slouží jako globální šablona pro ostatní soubory **.jade**. V tomto kroku jej upravíte tak, aby používal [Twitter Bootstrap](https://github.com/twbs/bootstrap). To je sada nástrojů, které usnadňují návrh pěkných webů. 
 2. Otevřete soubor **layout.jade** umístěný v adresáři **views** a nahraďte jeho obsah tímto:
@@ -489,7 +487,7 @@ Druhý formulář obsahuje dvě vstupní pole a tlačítko, které umožňuje vy
 To by mělo být vše, co potřebujeme ke zprovoznění aplikace.
 
 ## <a name="_Toc395783181"></a>Krok 6: Místní spuštění aplikace
-1. Pokud chcete aplikaci otestovat na místním počítači, spusťte aplikaci spuštěním příkazu `npm start` v terminálu a pak aktualizujte stránku prohlížeče [http://localhost:3000](http://localhost:3000). Stránka by teď měla vypadat jako na obrázku níže:
+1. Otestujte aplikace na místním počítači spustit `npm start` v terminálu spuštění vaší aplikace, pak aktualizujte vaše [ http://localhost:3000 ](http://localhost:3000) stránku prohlížeče. Stránka by teď měla vypadat jako na obrázku níže:
    
     ![Snímek obrazovky aplikace Seznam úkolů v okně prohlížeče](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
 

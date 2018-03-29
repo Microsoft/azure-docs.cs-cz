@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/23/2018
+ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 16ca821f7cae252148e8901c2ccb8539a25d1d59
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5c5c3dc20996fbbdee9f9ed61eb3b09e4b274d92
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Pomocí sady Visual Studio zjednodušují zápis a správu aplikací Service Fabric
 Můžete spravovat vaše aplikace Azure Service Fabric a služby pomocí sady Visual Studio. Jakmile jste [nastavení vývojového prostředí](service-fabric-get-started.md), Visual Studio můžete použít k vytvoření aplikací Service Fabric, přidání služby nebo balíček, registrace a nasazení aplikací v místní vývojový cluster.
@@ -32,7 +32,7 @@ Ve výchozím nastavení nasazení aplikace kombinuje následující kroky do je
 4. Odebrat všechny spuštěné instance aplikace
 5. Vytvoření instance aplikace
 
-Ve Visual Studiu stisknutím **F5** nasadí aplikaci a připojit ladicí program na všechny instance aplikace. Můžete použít **Ctrl + F5** k nasazení aplikace bez ladění, nebo můžete publikovat do místního nebo vzdáleného clusteru pomocí profilu publikování. 
+Ve Visual Studiu stisknutím **F5** nasadí aplikaci a připojit ladicí program na všechny instance aplikace. Můžete použít **Ctrl + F5** k nasazení aplikace bez ladění, nebo můžete publikovat do místního nebo vzdáleného clusteru pomocí profilu publikování.
 
 ### <a name="application-debug-mode"></a>Režim ladění aplikací
 Visual Studio poskytují vlastnost s názvem **režim ladění aplikací**, který určuje, jakým způsobem chcete Visual Studia pro zpracování nasazení aplikace v rámci ladění.
@@ -45,7 +45,7 @@ Visual Studio poskytují vlastnost s názvem **režim ladění aplikací**, kter
 
 #### <a name="application-debug-modes"></a>Režim ladění aplikace
 
-1. **Aktualizovat aplikaci** tento režim umožňuje rychle změnit a ladění kódu a podporuje úpravy statických webových souborů při ladění. Tento režim funguje jenom v případě místního vývojového clusteru je v [režim 1 uzel](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode). Toto je výchozí režim ladění aplikací.
+1. **Aktualizovat aplikaci** tento režim umožňuje rychle změnit a ladění kódu a podporuje úpravy statických webových souborů při ladění. Tento režim funguje jenom v případě místního vývojového clusteru je v [režimu uzlem 1]. Toto je výchozí režim ladění aplikací. (nebo service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
 2. **Odebrání aplikace** způsobí, že aplikace má být odebrán při ukončení relace ladění.
 3. **Automaticky Upgrade** aplikace stále běží při ukončení relace ladění. Další relaci ladění bude považovat za nasazení upgradu. Proces upgradu zachová všechna data, která jste zadali v předchozí relaci ladění.
 4. **Zachovat aplikace** aplikace neustále běží v clusteru při ukončení relace ladění. Na začátku další relaci ladění, se odeberou aplikace.

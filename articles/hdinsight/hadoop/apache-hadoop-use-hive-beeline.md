@@ -1,8 +1,8 @@
 ---
-title: "Použití Beeline s Apache Hive - Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití Beeline klienta ke spouštění dotazů Hive se systémem Hadoop v HDInsight. Beeline je nástroj pro práci s HiveServer2 prostřednictvím JDBC."
+title: Použití Beeline s Apache Hive - Azure HDInsight | Microsoft Docs
+description: Další informace o použití Beeline klienta ke spouštění dotazů Hive se systémem Hadoop v HDInsight. Beeline je nástroj pro práci s HiveServer2 prostřednictvím JDBC.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/02/2018
+ms.date: 03/26/2018
 ms.author: larryfr
-ms.openlocfilehash: 5d4e9d6ffb7fa0c2e4b69c5b534f0078aec5f68c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f2beb42f51bbbf65abe7bb6d95579106cdf1857a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>Pomocí klienta Beeline s Apache Hive
 
@@ -110,7 +110,7 @@ Beeline je klient Hive, který je zahrnutý o hlavních uzlech clusteru HDInsigh
         | sessionpagevieworder  | bigint     |          |
         +-----------------------+------------+----------+--+
 
-    Tyto informace popisují sloupců v tabulce. Když jsme může provádět některé dotazy pro tato data, místo toho vytvoříme zbrusu novou tabulku pro ukazují, jak načíst data do Hive a použijte schéma.
+    Tyto informace popisují sloupců v tabulce.
 
 4. Zadejte následující příkazy a vytvořte tabulku s názvem **log4jLogs** pomocí ukázkových dat, které jsou součástí clusteru HDInsight:
 
@@ -143,7 +143,7 @@ Beeline je klient Hive, který je zahrnutý o hlavních uzlech clusteru HDInsigh
 
     * `SELECT` – Počet všech řádků vybere kde sloupec **t4** obsahuje hodnotu **[Chyba]**. Tento dotaz vrací hodnotu **3** jsou tři řádky, které obsahují tuto hodnotu.
 
-    * `INPUT__FILE__NAME LIKE '%.log'` -Hive se pokusí použít schéma pro všechny soubory v adresáři. V takovém případě adresáře obsahuje soubory, které neodpovídají žádné schéma. Aby paměti data ve výsledcích tento příkaz informuje Hive, jsme by měl vrátit pouze data ze souborů končící na. log.
+    * `INPUT__FILE__NAME LIKE '%.log'` -Hive se pokusí použít schéma pro všechny soubory v adresáři. V takovém případě adresáře obsahuje soubory, které neodpovídají žádné schéma. Aby se zabránilo paměti data ve výsledcích, tento příkaz informuje Hive, že má být vrácen pouze data ze souborů končící na. log.
 
   > [!NOTE]
   > Externí tabulky by měl být použit při očekáváte, že v základních datech aktualizovat externího zdroje. Například procesu nahrávání automatizované dat nebo operace MapReduce.

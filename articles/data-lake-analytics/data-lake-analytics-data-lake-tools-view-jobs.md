@@ -1,8 +1,8 @@
 ---
-title: "Pomocí prohlížeče úlohy a zobrazení úloh pro úlohy Azure Data Lake Analytics | Microsoft Docs"
-description: "Naučte se používat prohlížeč úlohy a zobrazení úloh pro úlohy Azure Data Lake Analytics. "
+title: Pomocí prohlížeče úlohy a zobrazení úloh pro úlohy Azure Data Lake Analytics | Microsoft Docs
+description: 'Naučte se používat prohlížeč úlohy a zobrazení úloh pro úlohy Azure Data Lake Analytics. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/02/2017
 ms.author: jgao
-ms.openlocfilehash: 8f1729f84a4fde2a56427a41b356d6263818519e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc9048566dd58733cd86aac0f9836763fa095843
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>Pomocí prohlížeče úlohy a zobrazení úloh pro úlohy Azure Data lake Analytics
 Služba Azure Data Lake Analytics archivy odeslaná úloh v [úložiště dotazů](#query-store). V tomto článku zjistěte, jak používat prohlížeč úlohy a zobrazení úloh v nástrojů Azure Data Lake pro Visual Studio k nalezení informací o historie úlohy. 
@@ -31,7 +31,7 @@ V tématu [nástroje Data Lake pro Visual Studio požadavky](data-lake-analytics
 ## <a name="open-the-job-browser"></a>Otevřete prohlížeč úlohy
 Přístup k úloze prohlížeče prostřednictvím **Průzkumníka serveru > Azure > Data Lake Analytics > úlohy** v sadě Visual Studio.  Pomocí prohlížeče úlohy, získat přístup k úložišti dotazů účtu Data Lake Analytics. Úloha prohlížeče zobrazí úložiště dotazů na levé straně, informací o základní úloh a zobrazení úloh na pravé zobrazující podrobné informace o úlohách.
 
-## <a name="job-view"></a>Zobrazení úloh
+## <a name="job-view"></a>Zobrazení úlohy
 Zobrazení úloh jsou uvedené podrobné informace o úlohy. Chcete-li spustit úlohu, můžete dvakrát klikněte na úlohu v prohlížeči úlohy nebo otevřít z nabídky Data Lake klepnutím zobrazení úloh. Měli byste vidět, zobrazí se dialogové okno naplněný adresu URL úlohy.
 
 ![Nástroje data Lake Visual Studio úlohy prohlížeče](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view.png)
@@ -49,7 +49,7 @@ Obsahuje zobrazení úloh:
       ![Fáze stav úlohy Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
     * Příprava: Odešlete skript do cloudu, kompilace a optimalizace pomocí služby kompilace skriptu.
-    * Zařazených do fronty: Úlohy jsou ve frontě syrovátky, že čekají na dostatek prostředků nebo úlohy překročí maximální počet souběžných úloh na omezení účtu. Nastavení priority určuje pořadí úloh zařazených do fronty - Čím nižší je číslo, tím vyšší je priorita.
+    * Zařazených do fronty: Úlohy se zařadí do fronty při čekání na dostatek prostředků nebo úlohy překročí maximální počet souběžných úloh na omezení účtu. Nastavení priority určuje pořadí úloh zařazených do fronty - Čím nižší je číslo, tím vyšší je priorita.
     * Spuštění: Úloha je ve skutečnosti spuštěna v účtu Data Lake Analytics.
     * Dokončení: Úloha je dokončení (například dokončení souboru).
       
@@ -164,7 +164,7 @@ Podrobnosti úlohy jsou uvedené podrobné informace o úlohy, včetně skriptu,
 * Skript
   
     Tento skript U-SQL úlohy je uložený v úložišti dotazů. Můžete zobrazit původní skript U-SQL a odešlete ji znovu, v případě potřeby.
-* Zdroje
+* Zdroje a prostředky
   
     Můžete najít výstupy úlohy kompilace uložené v úložišti dotazů prostřednictvím prostředků. Například můžete najít "algebra.xml", který se používá k zobrazení grafu úlohy, sestavení, které jste zaregistrovali, zde atd.
 * Zobrazení provádění vrcholů

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: ef6d61e9dfc7c30910d897478f07dabc14136b48
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 405af7d1191e8ea3c0ba1c526f0c5a526aef795b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-vpn-gateway"></a>Informace o službě VPN Gateway
 
@@ -77,7 +77,7 @@ Diagramy a popisy vám pomohou s výběrem topologie připojení, která bude od
 
 ### <a name="S2S"></a>Site-to-Site
 
-Připojení brány VPN typu Site-to-Site (S2S) je připojení přes tunel VPN prostřednictvím protokolu IPsec/IKE (IKEv1 nebo IKEv2). Připojení S2S můžete použít pro konfigurace mezi různými místy a pro hybridní konfigurace. Připojení typu Site-to-Site vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu a není umístěné za překladem adres (NAT). Informace o výběru zařízení VPN najdete v tématu [Nejčastější dotazy k branám VPN – Zařízení VPN](/vpn-gateway-vpn-faq.md#s2s).
+Připojení brány VPN typu Site-to-Site (S2S) je připojení přes tunel VPN prostřednictvím protokolu IPsec/IKE (IKEv1 nebo IKEv2). Připojení S2S můžete použít pro konfigurace mezi různými místy a pro hybridní konfigurace. Připojení typu Site-to-Site vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu a není umístěné za překladem adres (NAT). Informace o výběru zařízení VPN najdete v tématu [Nejčastější dotazy k branám VPN – Zařízení VPN](vpn-gateway-vpn-faq.md#s2s).
 
 ![Příklad propojení Site-to-Site pomocí Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/vpngateway-site-to-site-connection-diagram.png)
 

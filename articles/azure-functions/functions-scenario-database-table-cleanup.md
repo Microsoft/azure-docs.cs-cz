@@ -1,12 +1,12 @@
 ---
-title: "Pomocí Azure Functions provádět databázi úlohy čištění | Microsoft Docs"
-description: "Pomocí Azure Functions můžete naplánovat úlohu, která se připojuje k databázi SQL Azure a pravidelně čistí řádky."
+title: Pomocí Azure Functions provádět databázi úlohy čištění | Microsoft Docs
+description: Pomocí Azure Functions můžete naplánovat úlohu, která se připojuje k databázi SQL Azure a pravidelně čistí řádky.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: functions
 ms.devlang: multiple
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: 9d8261a22f5ea9ce61bcdc79d24a6c054597039b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 2947fc6da0c4559e81cf97255b8375b020e0b657
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Používat Azure Functions k připojení k databázi SQL Azure
-Toto téma ukazuje, jak používat Azure Functions vytvořit naplánovanou úlohu, která vyčistí řádky v tabulce v Azure SQL Database. Nové funkce jazyka C# se vytvoří na základě šablony aktivační událost časovače předem definovaných na portálu Azure. Pro podporu tohoto scénáře, musíte taky nastavit připojovací řetězec databáze jako nastavení aplikace v aplikaci funkce. Tento scénář používá hromadné operace v databázi. 
+Toto téma ukazuje, jak používat Azure Functions vytvořit naplánovanou úlohu, která vyčistí řádky v tabulce v Azure SQL Database. Nové funkce skriptu jazyka C# se vytvoří na základě šablony aktivační událost časovače předem definovaných na portálu Azure. Pro podporu tohoto scénáře, musíte taky nastavit připojovací řetězec databáze jako nastavení aplikace v aplikaci funkce. Tento scénář používá hromadné operace v databázi. 
 
 Mít jednotlivé funkce proces vytváření, čtení, aktualizaci a operace odstranění (CRUD) v tabulce Mobile Apps, měli byste místo toho použít [Mobile Apps vazby](functions-bindings-mobile-apps.md).
 
@@ -40,11 +40,11 @@ Je nutné získat připojovací řetězec pro databázi, který jste vytvořili,
  
 3. Vyberte **databází SQL** z nabídky na levé straně a vyberte svou databázi na **databází SQL** stránky.
 
-4. Vyberte **zobrazit databázové připojovací řetězce** a zkopírujte kompletní **ADO.NET** připojovací řetězec.
+4. Vyberte **zobrazit databázové připojovací řetězce** a zkopírujte kompletní **ADO.NET** připojovací řetězec. 
 
     ![Zkopírujte připojovací řetězec ADO.NET.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
-## <a name="set-the-connection-string"></a>Nastavení připojovacího řetězce 
+## <a name="set-the-connection-string"></a>Nastavit připojovací řetězec 
 
 Provádění funkcí v Azure je hostováno v aplikaci funkce. Je osvědčeným postupem k ukládání připojovacích řetězců a jiné tajné v aplikaci nastavení funkce. Pomocí nastavení aplikace zabraňuje náhodného zpřístupnění připojovacího řetězce s vašeho kódu. 
 
@@ -62,7 +62,7 @@ Provádění funkcí v Azure je hostováno v aplikaci funkce. Je osvědčeným p
     | ------------ | ------------------ | --------------------- | 
     | **Název**  |  sqldb_connection  | Slouží k přístupu uložené připojovací řetězec v kódu funkce.    |
     | **Hodnota** | Řetězec zkopírovaný  | Vložte připojovací řetězec, který jste zkopírovali v předchozí části a nahraďte `{your_username}` a `{your_password}` zástupné symboly skutečné hodnoty. |
-    | **Typ** | SQL Database | Použijte výchozí připojení k databázi SQL. |   
+    | **Typ** | Databáze SQL | Použijte výchozí připojení k databázi SQL. |   
 
 3. Klikněte na **Uložit**.
 
@@ -70,14 +70,16 @@ Teď můžete přidat funkce kódu C#, která se připojuje k vaší databázi S
 
 ## <a name="update-your-function-code"></a>Aktualizace kódu – funkce
 
-1. V aplikaci funkce vyberte funkce spustí časovač.
+1. V aplikaci funkce na portálu vyberte funkce spustí časovač.
  
-3. Přidejte následující odkazy na sestavení v horní části existující kód funkce:
+3. Přidejte následující odkazy na sestavení v horní části existující kódu C# skript funkce:
 
     ```cs
     #r "System.Configuration"
     #r "System.Data"
     ```
+    >[!NOTE]
+    >Kód v těchto příkladech jsou C# skript z portálu. Při vývoji předkompilovaných C# funkci místně, je nutné místo toho přidat odkazy na tyto sestaví ve vašem místním projektu.  
 
 3. Přidejte následující `using` příkazy funkce:
     ```cs
@@ -113,7 +115,7 @@ Teď můžete přidat funkce kódu C#, která se připojuje k vaší databázi S
 
     ![Zobrazte protokoly funkcí.](./media/functions-scenario-database-table-cleanup/functions-logs.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V dalším kroku Další informace o použití funkce s Logic Apps pro integraci s jinými službami.
 

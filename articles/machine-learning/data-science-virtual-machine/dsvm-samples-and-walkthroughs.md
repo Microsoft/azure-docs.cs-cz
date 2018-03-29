@@ -1,25 +1,25 @@
 ---
-title: "Ukázky a návody pro Data vědecké účely virtuálního počítače – Azure | Microsoft Docs"
-description: "Ukázky a návody pro Data virtuálního počítače vědecké účely."
-keywords: "datové vědy nástroje, datové vědy virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux"
+title: Ukázky a návody pro Data vědecké účely virtuálního počítače – Azure | Microsoft Docs
+description: Ukázky a návody pro Data virtuálního počítače vědecké účely.
+keywords: datové vědy nástroje, datové vědy virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: fb9a7e900c489b3d22594dfcb6e1faa736c3c490
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: gokuma
+ms.openlocfilehash: 6c5b5c8c9dbb03a2189eb5f1539499ace55e7dfc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>Ukázky na datové vědě virtuálních počítačů (DSVM)
 
@@ -30,39 +30,39 @@ DSVMs se dodávají s uvedené ukázky plně fungovala na více systémů ve for
 ## <a name="quick-reference-of-samples"></a>Stručná referenční příručka vzorků
 | Kategorie – ukázky | Popis | Umístění |
 | ------------- | ------------- | ------------- |
-| **R** jazyk  | Ukázky v **R** vysvětlením scénáře jako připojení s daty cloudu Azure ukládá porovnávání otevřený zdroj R a Microsoft R & zprovozňování modely na Microsoft R Server nebo SQL Server. <br/> [Snímek obrazovky](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
-| **Python** jazyk  | Ukázky v **Python** scénáře, jako je připojení k úložišti dat cloudu Azure a práce s vysvětlením **Azure Machine Learning**.  <br/> [Snímek obrazovky](#python-language) | <br/>`~notebooks` <br/><br/>|
-| **Dita** jazyk  | Ukázka v **Dita** který podrobností Plotting v Dita, hluboké učení v Dita, volání C a Python z Dita atd. <br/> [Snímek obrazovky](#julia-language) |<br/> **Windows**:<br/> `~notebooks/Julia_notebooks`<br/><br/>`~notebooks`<br/><br/> **Linux**:<br/> `~notebooks/julia`<br/><br/> |
-| **CNTK** <br/> (Microsoft kognitivní Toolkit)  | Přímý učení ukázky publikováno kognitivní Toolkit týmu ve společnosti Microsoft.  <br/> [Snímek obrazovky](#cntk) | <br/>**Windows**:<br/> `~notebooks/CNTK/Tutorials`<br/><br/>`~/samples/CNTK-Samples-2-0/Examples`<br/><br/> **Linux**:<br/> `~notebooks/CNTK`<br/> <br/>|
-| **MXNet** poznámkových bloků  | Hluboké učení ukázky použití **MXNet** na základě neuronové sítě. Existuje mnoho různých poznámkových bloků od Začátečník až pokročilé scénáře.  <br/> [Snímek obrazovky](#mxnet) | <br/>`~notebooks/mxnet`<br/> <br/>|
-| **Azure Machine Learning** AzureML  | Interakci s **Azure Machine Learning** Studio a vytváření koncových bodů webové služby z místně trénované modely pro cloudové vyhodnocování pracovní postupy. <br/> [Snímek obrazovky](#azureml) | <br/>`~notebooks/azureml`<br/> <br/>|
-| **caffe2** | Hluboké učení ukázky použití **caffe2** na základě neuronové sítě. Existuje několik poznámkových bloků navržený tak, aby uživatelé seznamte s caffe2 a způsobu jeho použití efektivně, včetně příkladů, jako jsou bitové kopie předem zpracování, vytváření datovou sadu, regrese a pomocí předem Trénink modely. <br/> [Snímek obrazovky](#caffe2) | <br/>`~notebooks/caffe2`<br/><br/> |
-| **H2O**   | Na základě Python ukázky použití **H2O** řada problémů scénářem z reálného prostředí. <br/> [Snímek obrazovky](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
-| **SparkML** jazyk  | Ukázka použití funkcí a možností Spark **MLlib** toolkit prostřednictvím **pySpark 2.0** na **Apache Spark 2.0**.  <br/> [Snímek obrazovky](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/><br/> |
-| **MMLSpark** jazyk  | Celou řadu ukázky použití **MMLSpark - Microsoft Machine Learning pro Apache Spark**, což je rozhraní, které poskytuje řadu hloubkové učení a vědecké účely nástroje data pro **Apache Spark**. <br/> [Snímek obrazovky](#sparkml) | <br/>`~notebooks/MMLSpark`<br/><br/> |
-| **TensorFlow**  | Více různých Neuronové sítě ukázky a techniky implementovaná pomocí **TensorFlow** framework. <br/> [Snímek obrazovky](#tensorflow) | <br/>`~notebooks/tensorflow`<br/><br/> |
-| **XGBoost** | Ukázky standardní Machine Learning v **XGBoost** pro scénáře, jako je klasifikace, regrese atd. <br/> [Snímek obrazovky](#xgboost) | <br/>`~samples/xgboost/demo`<br/><br/> |
+| **R** jazyk  | Ukázky v **R** vysvětlením scénáře jako připojení s daty cloudu Azure ukládá porovnávání otevřený zdroj R a Microsoft R & zprovozňování modely na Microsoft R Server nebo SQL Server. <br/> [snímek obrazovky](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
+| **Python** jazyk  | Ukázky v **Python** scénáře, jako je připojení k úložišti dat cloudu Azure a práce s vysvětlením **Azure Machine Learning**.  <br/> [snímek obrazovky](#python-language) | <br/>`~notebooks` <br/><br/>|
+| **Dita** jazyk  | Ukázka v **Dita** který podrobností Plotting v Dita, hluboké učení v Dita, volání C a Python z Dita atd. <br/> [snímek obrazovky](#julia-language) |<br/> **Windows**:<br/> `~notebooks/Julia_notebooks`<br/><br/>`~notebooks`<br/><br/> **Linux**:<br/> `~notebooks/julia`<br/><br/> |
+| **CNTK** <br/> (Microsoft kognitivní Toolkit)  | Přímý učení ukázky publikováno kognitivní Toolkit týmu ve společnosti Microsoft.  <br/> [snímek obrazovky](#cntk) | <br/>**Windows**:<br/> `~notebooks/CNTK/Tutorials`<br/><br/>`~/samples/CNTK-Samples-2-0/Examples`<br/><br/> **Linux**:<br/> `~notebooks/CNTK`<br/> <br/>|
+| **MXNet** poznámkových bloků  | Hluboké učení ukázky použití **MXNet** na základě neuronové sítě. Existuje mnoho různých poznámkových bloků od Začátečník až pokročilé scénáře.  <br/> [snímek obrazovky](#mxnet) | <br/>`~notebooks/mxnet`<br/> <br/>|
+| **Azure Machine Learning** AzureML  | Interakci s **Azure Machine Learning** Studio a vytváření koncových bodů webové služby z místně trénované modely pro cloudové vyhodnocování pracovní postupy. <br/> [snímek obrazovky](#azureml) | <br/>`~notebooks/azureml`<br/> <br/>|
+| **caffe2** | Hluboké učení ukázky použití **caffe2** na základě neuronové sítě. Existuje několik poznámkových bloků navržený tak, aby uživatelé seznamte s caffe2 a způsobu jeho použití efektivně, včetně příkladů, jako jsou bitové kopie předem zpracování, vytváření datovou sadu, regrese a pomocí předem Trénink modely. <br/> [snímek obrazovky](#caffe2) | <br/>`~notebooks/caffe2`<br/><br/> |
+| **H2O**   | Na základě Python ukázky použití **H2O** řada problémů scénářem z reálného prostředí. <br/> [snímek obrazovky](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
+| **SparkML** jazyk  | Ukázka použití funkcí a možností Spark **MLlib** toolkit prostřednictvím **pySpark 2.0** na **Apache Spark 2.0**.  <br/> [snímek obrazovky](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/><br/> |
+| **MMLSpark** jazyk  | Celou řadu ukázky použití **MMLSpark - Microsoft Machine Learning pro Apache Spark**, což je rozhraní, které poskytuje řadu hloubkové učení a vědecké účely nástroje data pro **Apache Spark**. <br/> [snímek obrazovky](#sparkml) | <br/>`~notebooks/MMLSpark`<br/><br/> |
+| **TensorFlow**  | Více různých Neuronové sítě ukázky a techniky implementovaná pomocí **TensorFlow** framework. <br/> [snímek obrazovky](#tensorflow) | <br/>`~notebooks/tensorflow`<br/><br/> |
+| **XGBoost** | Ukázky standardní Machine Learning v **XGBoost** pro scénáře, jako je klasifikace, regrese atd. <br/> [snímek obrazovky](#xgboost) | <br/>`~samples/xgboost/demo`<br/><br/> |
 
 <br/>
 
 ## <a name="access-jupyter"></a>Přístup k Jupyter 
 
-Navštivte Jupyter domovské přechodem na  **`https://localhost:9999`**  v systému Windows nebo  **`https://localhost:8000`**  na Ubuntu.
+Navštivte Jupyter domovské přechodem na **`https://localhost:9999`** v systému Windows nebo **`https://localhost:8000`** na Ubuntu.
 
 
 ### <a name="enabling-jupyter-access-from-browser"></a>Povolení Jupyter přístup z prohlížeče
 
 **Windows DSVM**
 
-Spustit  **`Jupyter SetPassword`**  ze zástupce na ploše a postupujte podle řádku sadu nebo resetování hesla pro Jupyter a spustit Jupyter zpracovat. 
+Spustit **`Jupyter SetPassword`** ze zástupce na ploše a postupujte podle řádku sadu nebo resetování hesla pro Jupyter a spustit Jupyter zpracovat. 
 <br/>![Povolit výjimky Jupyter](./media/jupyter-setpassword.png)<br/>
-Jakmile Jupyter proces byl úspěšně spuštěn na vašem virtuálním počítači navštivte stránky dostanete domovské Jupyter  **`https://localhost:9999`**  v prohlížeči. Podívejte se snímek obrazovky Přidat výjimku a umožnit Jupyter přístup přes prohlížeč
+Jakmile Jupyter proces byl úspěšně spuštěn na vašem virtuálním počítači navštivte stránky dostanete domovské Jupyter **`https://localhost:9999`** v prohlížeči. Podívejte se snímek obrazovky Přidat výjimku a umožnit Jupyter přístup přes prohlížeč
 <br/>![Povolit výjimky Jupyter](./media/windows-jupyter-exception.png)<br/>
 Přihlaste se pomocí nové heslo, které jste právě nastavili.
 <br/>
 **Linux DSVM**
 
-Jupyter domovské můžete přejít na vašem virtuálním počítači pomocí navštívíte  **`https://localhost:8000`**  v prohlížeči. Podívejte se snímek obrazovky Přidat výjimku a umožnit Jupyter přístup přes prohlížeč.
+Jupyter domovské můžete přejít na vašem virtuálním počítači pomocí navštívíte **`https://localhost:8000`** v prohlížeči. Podívejte se snímek obrazovky Přidat výjimku a umožnit Jupyter přístup přes prohlížeč.
 <br/>![Povolit výjimky Jupyter](./media/ubuntu-jupyter-exception.png)<br/>
 Přihlaste se pomocí stejné heslo jako vaše přihlašovací údaje pro DSVM.
 <br/>

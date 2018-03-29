@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 4a334b63856a348838cbe61dfc0ab724f58100fb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d635938558a5c2bf68e7c20c287b16c672bdf962
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spuštěné sady runbook pro Hybrid Runbook Worker. 
 Není žádný rozdíl ve struktuře sad runbook, které běží v Azure Automation a ty, které běží na hybridní pracovní proces Runbooku. Sady Runbook, které můžete použít pro každý s největší pravděpodobností se podstatně liší ale vzhledem k tomu obvykle cílení hybridní pracovní proces Runbooku sady runbook spravovat prostředky v místním počítači sám sebe nebo s prostředky v místním prostředí, kde je nasazen, při sady runbook v Služby Azure Automation obvykle spravovat prostředky v cloudu Azure.
@@ -20,7 +20,7 @@ Není žádný rozdíl ve struktuře sad runbook, které běží v Azure Automat
 Můžete upravit sady runbook pro hybridní pracovní proces Runbooku ve službě Azure Automation, ale mohou mít problémy, pokud se pokusíte o test runbooku se v editoru.  Moduly prostředí PowerShell, které přístup k místním prostředkům pravděpodobně nainstalována ve vašem prostředí Azure Automation. v takovém případě, test se nezdaří.  Pokud nainstalujete požadované moduly, spusťte sadu runbook, ale nebude mít přístup k místním prostředkům pro dokončení testu.
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Spuštění sady runbook pro Hybrid Runbook Worker.
-[Spuštění sady Runbook ve službě Azure Automation](automation-starting-a-runbook.md) popisuje různé metody pro spuštění sady runbook.  Přidá hybridní pracovní proces Runbooku **RunOn** možnost, kde můžete zadat název skupiny hybridní Runbook Worker.  Pokud je skupina zadaná, sada runbook je načíst a spustit pracovníků v této skupině.  Pokud není tato možnost zadána, pak spuštění ve službě Azure Automation jako normální.
+[Spuštění sady Runbook ve službě Azure Automation](automation-starting-a-runbook.md) popisuje různé metody pro spuštění sady runbook.  Přidá hybridní pracovní proces Runbooku **RunOn** možnost, kde můžete zadat název skupiny hybridní Runbook Worker.  Pokud je skupina zadaná, sada runbook je načíst a spustit pomocí jedné z pracovních procesů v této skupině.  Pokud není tato možnost zadána, pak spuštění ve službě Azure Automation jako normální.
 
 Při spuštění sady runbook na portálu Azure, se zobrazí **spustit na** možnost, kde můžete vybrat **Azure** nebo **hybridní pracovní proces**.  Pokud vyberete **hybridní pracovní proces**, pak můžete vybrat skupiny z rozevírací seznam.
 

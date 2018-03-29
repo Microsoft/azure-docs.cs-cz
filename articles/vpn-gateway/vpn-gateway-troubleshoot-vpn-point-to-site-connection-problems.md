@@ -1,12 +1,12 @@
 ---
-title: "Poradce při potížích Azure připojení point-to-site | Microsoft Docs"
-description: "Zjistěte, jak chcete-li vyřešit potíže s připojením point-to-site."
+title: Poradce při potížích Azure připojení point-to-site | Microsoft Docs
+description: Zjistěte, jak chcete-li vyřešit potíže s připojením point-to-site.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2018
 ms.author: genli
-ms.openlocfilehash: 3884eec0e65f856be87505d45c25cad7d3742bab
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 51076c225167accaf386190eeda4ec159cb5657d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Řešení potíží: Problémy Azure připojení point-to-site
 
@@ -44,7 +44,7 @@ Chcete-li vyřešit tento problém, postupujte takto:
 
 2. Ujistěte se, že tyto certifikáty jsou ve správném umístění:
 
-    | Certifikát | Místo |
+    | Certifikát | Umístění |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuální User\Personal\Certificates |
     | Azuregateway-*GUID*.cloudapp.net  | Aktuální User\Trusted kořenové certifikační autority|
@@ -92,7 +92,7 @@ Když se pokusíte připojit k virtuální sítě Azure s použitím klienta VPN
 
 1. Ujistěte se, že tyto certifikáty jsou ve správném umístění:
 
-    | Certifikát | Místo |
+    | Certifikát | Umístění |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuální User\Personal\Certificates |
     | Azuregateway-*GUID*.cloudapp.net  | Aktuální User\Trusted kořenové certifikační autority|
@@ -289,7 +289,7 @@ Klient VPN Point-to-site používá servery Azure DNS, které jsou nakonfigurova
 
 ### <a name="solution"></a>Řešení
 
-Chcete-li problém vyřešit, ujistěte se, že servery Azure DNS, který používá na virtuální síť Azure lze vyřešit záznamy DNS pro místní prostředky. K tomuto účelu můžete použít servery DNS pro předávání nebo servery pro podmíněné předávání. Další informace najdete v tématu [překladu IP adresy serveru DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)
+Chcete-li problém vyřešit, ujistěte se, že servery Azure DNS, který používá na virtuální síť Azure lze vyřešit záznamy DNS pro místní prostředky. K tomuto účelu můžete použít servery DNS pro předávání nebo servery pro podmíněné předávání. Další informace najdete v tématu [překladu IP adresy serveru DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
 
 ## <a name="the-point-to-site-vpn-connection-is-established-but-you-still-cannot-connect-to-azure-resources"></a>Připojení point-to-site VPN je vytvořeno, ale stále se nemůže připojit k prostředkům Azure 
 

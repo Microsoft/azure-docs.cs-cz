@@ -1,18 +1,18 @@
 ---
-title: "O možnostech sítě v zotavení po havárii Azure do Azure pomocí Azure Site Recovery | Microsoft Docs"
-description: "Poskytuje přehled sítě pro replikaci virtuálních počítačů Azure pomocí Azure Site Recovery."
+title: O možnostech sítě v zotavení po havárii Azure do Azure pomocí Azure Site Recovery | Microsoft Docs
+description: Poskytuje přehled sítě pro replikaci virtuálních počítačů Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 03/26/2018
 ms.author: sujayt
-ms.openlocfilehash: 5ce85761df4e0ad62c22a829f67464a3145fd827
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 48be55632d9c1bece3f1a6e4f9ac12a68f9cb7ab
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O možnostech sítě v Azure do Azure replikace
 
@@ -70,7 +70,7 @@ Pokud používáte proxy služby založenou na protokolu IP brány firewall nebo
 Rozsahy IP adres jsou následující:
 
 >
-   cíl | **Obnovení lokality IP** |  **Site Recovery monitorování IP**
+   **cíl** | **Obnovení lokality IP** |  **Site Recovery monitorování IP**
    --- | --- | ---
    Východní Asie | 52.175.17.132 | 13.94.47.61
    Jihovýchodní Asie | 52.187.58.193 | 13.76.179.223
@@ -154,9 +154,10 @@ Postupujte podle následujících pokynů pro připojení mezi cílové umístě
 ### <a name="expressroute-configuration"></a>Konfigurace ExpressRoute
 Postupujte podle těchto osvědčené postupy pro konfiguraci ExpressRoute:
 
-- Budete muset vytvořit okruh ExpressRoute v oblasti pro zdroj i cíl. Pak musíte vytvořit spojení mezi:
-  - Virtuální síť zdroje a okruh ExpressRoute.
-  - Cílová virtuální síť a okruh ExpressRoute.
+- Vytvoření okruhu ExpressRoute v oblasti pro zdroj i cíl. Pak musíte vytvořit spojení mezi:
+    - Virtuální síť zdroje a místní sítě prostřednictvím okruh ExpressRoute v oblasti zdroje.
+    - Cílový virtuální sítě a místní sítě prostřednictvím okruh ExpressRoute v oblasti cíl.
+
 
 - Jako součást standardní ExpressRoute můžete vytvořit okruhů ve stejné geopolitické oblasti. K vytvoření okruhy ExpressRoute v různých geopolitických oblastí, Azure ExpressRoute Premium je nutné, což zahrnuje přírůstkové náklady. (Pokud už používáte ExpressRoute Premium, že nejsou zpoplatněné.) Další podrobnosti najdete v tématu [dokumentu umístění ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) a [ExpressRoute ceny](https://azure.microsoft.com/pricing/details/expressroute/).
 

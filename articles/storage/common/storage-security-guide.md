@@ -1,18 +1,18 @@
 ---
-title: "Průvodce zabezpečením služby Azure Storage | Microsoft Docs"
-description: "Podrobnosti o mnoho způsobů zabezpečení Azure Storage, včetně RBAC, šifrování služby úložiště, šifrování na straně klienta, protokolu SMB 3.0 a Azure Disk Encryption bez omezení."
+title: Průvodce zabezpečením služby Azure Storage | Microsoft Docs
+description: Podrobnosti o mnoho způsobů zabezpečení Azure Storage, včetně RBAC, šifrování služby úložiště, šifrování na straně klienta, protokolu SMB 3.0 a Azure Disk Encryption bez omezení.
 services: storage
-author: tamram
+author: craigshoemaker
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
-ms.author: tamram
-ms.openlocfilehash: d1a81a9029f2e9b8a36ecebdcc4be44984e82515
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: cshoe
+ms.openlocfilehash: e0a398075b01b3c3750a33a9dd74b5ad1c0f71fd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-storage-security-guide"></a>Průvodce zabezpečením služby Azure Storage
 
@@ -296,7 +296,7 @@ SSE je povolená pro všechny účty úložiště a nejde zakázat. Při zápisu
 
 Klíčů používaných pro SSE spravuje Microsoft. Společnost Microsoft generuje klíče původně a spravuje jejich zabezpečeného úložiště, jakož i jejich regulární otočení, jak je definována interní zásady společnosti Microsoft. Spravované zákazníkem klíče nakonec budou k dispozici, společně s cesty migrace z klíče spravované Microsoftem na klíče spravovaného zákazníkem.
 
-SSE automaticky šifruje data všechny úrovně výkonu (Standard a Premium), všechny modely nasazení (Azure Resource Manager a klasický) a všechny služby Azure Storage (objekt Blob, fronty, tabulky a soubor). 
+SSE automaticky šifruje data na všech úrovních výkonu (Standard a Premium), ve všech modelech nasazení (Azure Resource Manager a Classic) a ve všech službách Azure Storage (Blob, Queue, Table a File). 
 
 ### <a name="client-side-encryption"></a>Šifrování na straně klienta
 Jsme uvedených šifrování na straně klienta, když hovoříte o šifrování dat při přenosu. Tato funkce umožňuje prostřednictvím kódu programu šifrování dat v aplikaci klienta před odesláním přes přenosu má být zapsán do služby Azure Storage a prostřednictvím kódu programu dešifrovat data po načtení z úložiště Azure.
@@ -376,7 +376,7 @@ Pomocí šifrování na straně klienta můžete šifrovat entity tabulky, front
 
 #### <a name="storage-service-encryption-sse"></a>Šifrování služby úložiště (SSE)
 
-SSE spravuje Azure Storage. SSE neposkytuje pro zabezpečení přenášených dat, ale šifrování dat, jako je zapsán do úložiště Azure. SSE nemá vliv na výkon úložiště Azure.
+SSE spravuje Azure Storage. SSE neposkytuje pro zabezpečení přenášených dat, ale šifrování dat, jako je zapsán do úložiště Azure. SSE nemá vliv na výkon služby Azure Storage.
 
 Můžete šifrovat jakýkoli druh data účtu úložiště pomocí SSE (bloku, doplňovací objekty BLOB, objekty BLOB stránky, data tabulky, fronty data a soubory).
 

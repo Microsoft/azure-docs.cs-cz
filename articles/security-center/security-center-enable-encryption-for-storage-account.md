@@ -1,12 +1,12 @@
 ---
-title: "Povolit šifrování pro účet úložiště v Azure Security Center | Microsoft Docs"
-description: "Tento dokument ukazuje, jak implementovat Azure Security Center doporučení ** povolit šifrování pro rozhraní Azure úložiště účet **."
+title: Povolit šifrování pro účet úložiště v Azure Security Center | Microsoft Docs
+description: Tento dokument ukazuje, jak implementovat doporučení Azure Security Center **povolit šifrování pro účet úložiště Azure**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2016
 ms.author: terrylan
-ms.openlocfilehash: b7b2e8a12cbab68da9c8fcc348e8e3c543607007
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82bb201c0b518d0b45e06a1eb25d54f60cb3e028
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>Povolit šifrování pro účet úložiště Azure v Azure Security Center
 Azure Security Center může doporučujeme povolit šifrování služby úložiště Azure pro data v klidovém stavu.
@@ -27,7 +27,7 @@ Azure Security Center může doporučujeme povolit šifrování služby úloži�
 
 
 > [!Note]
-> Po povolení šifrování, se šifrují jenom nová data. Všechny existující objekty BLOB ve vašem účtu úložiště zůstat nezašifrovaný. K šifrování existující objekty BLOB, najdete v článku [nejčastější dotazy týkající se úložiště služby šifrování](../storage/common/storage-service-encryption.md#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest).
+> Po povolení šifrování, se šifrují jenom nová data. Všechny existující objekty BLOB ve vašem účtu úložiště zůstat nezašifrovaný. K šifrování existující objekty BLOB, najdete v článku [nejčastější dotazy týkající se úložiště služby šifrování](../storage/common/storage-service-encryption.md#faq-for-storage-service-encryption).
 >
 >
 
@@ -50,7 +50,7 @@ Azure Security Center může doporučujeme povolit šifrování služby úloži�
 Nyní jste povolili šifrování úložiště pro **storageacct1**.
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 Tento dokument vám ukázal, jak provést doporučení Security Center "Povolit šifrování pro účet služby Azure Storage." Další informace o šifrování služby úložiště Azure, naleznete v následujících tématech:
 
 * [Šifrování služby úložiště Azure pro Data v klidovém stavu](../storage/common/storage-service-encryption.md)

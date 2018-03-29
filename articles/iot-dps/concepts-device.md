@@ -1,26 +1,26 @@
 ---
-title: "Koncepty zařízení v Azure zařízení zřizování | Microsoft Docs"
-description: "Popisuje zřizování koncepty, které jsou specifické pro zařízení s služby zřizování zařízení a služby IoT Hub"
+title: Koncepty zařízení v Azure zařízení zřizování | Microsoft Docs
+description: Popisuje zřizování koncepty, které jsou specifické pro zařízení s služby zřizování zařízení a služby IoT Hub
 services: iot-dps
-keywords: 
+keywords: ''
 author: nberdy
 ms.author: nberdy
 ms.date: 09/05/2017
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 5297bc57729d9e983d63244c71eb21995cf73f0e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5482801461e2afea33d65d559723116f37a35d1f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Koncepty služby zřizování zařízení IoT Hub zařízení
 
-Služba zřizování zařízení IoT Hub je služba Pomocník pro IoT Hub, který použijete ke konfiguraci zařízení nula touch zřizování do zadané služby IoT hub. Se službou zřizování zařízení můžete zřídit miliony zařízení zabezpečené a škálovatelné způsobem.
+Služba zřizování zařízení IoT Hub je služba Pomocník pro IoT Hub, který použijete ke konfiguraci zařízení nula touch zřizování do zadané služby IoT hub. Se službou Device Provisioning můžete bezpečně a škálovatelně zřizovat miliony zařízení.
 
 Tento článek nabízí přehled *zařízení* koncepty, které jsou součástí zřizování zařízení. Tento článek je nejdůležitější osoby, které se účastní [výrobní krok](about-iot-dps.md#manufacturing-step) z Příprava zařízení pro nasazení.
 
@@ -33,7 +33,7 @@ Ověření mechanismu je metoda použitá pro potvrzení identity zařízení. O
 
 Službu zřizování zařízení podporuje dva způsoby ověření:
 * **Certifikáty X.509** podle standardní tok ověřování certifikátu X.509.
-* **Tokeny SAS** podle nonce výzvu pomocí čipu TPM standard pro klíče. Nevyžaduje fyzické TPM na zařízení, ale služba očekává, že ověřit identitu pomocí ověřovacího klíče na [specifikace TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Trusted Platform Module (TPM)** podle nonce výzvy, pomocí čipu TPM standard pro klíče podepsaný token sdíleného přístupového podpisu (SAS) k dispozici. Nevyžaduje fyzické TPM na zařízení, ale služba očekává, že ověřit identitu pomocí ověřovacího klíče na [specifikace TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
 
 ## <a name="hardware-security-module"></a>Modul hardwarového zabezpečení
 

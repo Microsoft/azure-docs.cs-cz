@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte
-ms.openlocfilehash: 0041a58c8da58785ebc3ead6c8128316b153728c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6d2c85225ab74c912183a0bb8d7f100d1354e6c5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení monitorování kontejneru v analýzy protokolů
 
@@ -547,15 +547,15 @@ V následující tabulce jsou uvedeny příklady záznamů shromážděných ře
 
 | Typ dat | Datový typ v hledání protokolů | Pole |
 | --- | --- | --- |
-| Výkon pro hostitele a kontejnery | `Type=Perf` | Počítač, ObjectName, název_čítače &#40;% času procesoru, disku čte MB, zapíše MB, MB využití paměti, disku sítě přijatých bajtů, sítě odesílat bajtů, procesor doba využití, sítě&#41;, přepočtené, TimeGenerated, Cesta_k_čítači, SourceSystem |
-| Kontejner inventáře | `Type=ContainerInventory` | TimeGenerated, počítače a název kontejneru, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, příkazu, CreatedTime, StartedTime, FinishedTime, SourceSystem, identifikátor ContainerID, ID obrázku |
-| Kontejner image inventáře | `Type=ContainerImageInventory` | TimeGenerated, počítače, Image, ImageTag, ImageSize, VirtualSize, spuštění, pozastavena, zastavit, se nezdařilo, SourceSystem, ID obrázku, TotalContainer |
-| Kontejner protokolu | `Type=ContainerLog` | TimeGenerated, počítač, ID bitové kopie, název kontejneru, LogEntrySource, LogEntry, SourceSystem, identifikátor ContainerID |
-| Protokol služby kontejneru | `Type=ContainerServiceLog`  | TimeGenerated, počítače, TimeOfCommand, Image, příkazu, SourceSystem, identifikátor ContainerID |
-| Uzel inventáře kontejneru | `Type=ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
-| Kubernetes inventáře | `Type=KubePodInventory_CL` | TimeGenerated, Computer, PodLabel_deployment_s, PodLabel_deploymentconfig_s, PodLabel_docker_registry_s, Name_s, Namespace_s, PodStatus_s, PodIp_s, PodUid_g, PodCreationTimeStamp_t, SourceSystem |
-| Proces kontejneru | `Type=ContainerProcess_CL` | TimeGenerated, počítače, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
-| Kubernetes události | `Type=KubeEvents_CL` | TimeGenerated, počítače, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, zprávy |
+| Výkon pro hostitele a kontejnery | `Perf` | Počítač, ObjectName, název_čítače &#40;% času procesoru, disku čte MB, zapíše MB, MB využití paměti, disku sítě přijatých bajtů, sítě odesílat bajtů, procesor doba využití, sítě&#41;, přepočtené, TimeGenerated, Cesta_k_čítači, SourceSystem |
+| Kontejner inventáře | `ContainerInventory` | TimeGenerated, počítače a název kontejneru, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, příkazu, CreatedTime, StartedTime, FinishedTime, SourceSystem, identifikátor ContainerID, ID obrázku |
+| Kontejner image inventáře | `ContainerImageInventory` | TimeGenerated, počítače, Image, ImageTag, ImageSize, VirtualSize, spuštění, pozastavena, zastavit, se nezdařilo, SourceSystem, ID obrázku, TotalContainer |
+| Kontejner protokolu | `ContainerLog` | TimeGenerated, počítač, ID bitové kopie, název kontejneru, LogEntrySource, LogEntry, SourceSystem, identifikátor ContainerID |
+| Protokol služby kontejneru | `ContainerServiceLog`  | TimeGenerated, počítače, TimeOfCommand, Image, příkazu, SourceSystem, identifikátor ContainerID |
+| Uzel inventáře kontejneru | `ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
+| Kubernetes inventáře | `KubePodInventory_CL` | TimeGenerated, Computer, PodLabel_deployment_s, PodLabel_deploymentconfig_s, PodLabel_docker_registry_s, Name_s, Namespace_s, PodStatus_s, PodIp_s, PodUid_g, PodCreationTimeStamp_t, SourceSystem |
+| Proces kontejneru | `ContainerProcess_CL` | TimeGenerated, počítače, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
+| Kubernetes události | `KubeEvents_CL` | TimeGenerated, počítače, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, zprávy |
 
 Popisky připojenou k *PodLabel* datové typy jsou vlastní štítky. Připojením PodLabel popisky uvedené v tabulce jsou uvedeny příklady. Ano `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` se liší v sadě dat vaše prostředí a obecně vypadat jako `PodLabel_yourlabel_s`.
 
@@ -610,7 +610,7 @@ Analýzy protokolů označí kontejneru jako **se nezdařilo** Pokud byl ukonče
    ![kontejnery stavu](./media/log-analytics-containers/containers-log-search.png)
 3. Klikněte na tlačítko agregovaná hodnota selhání kontejnery zobrazíte další informace. Rozbalte položku **zobrazit další** zobrazíte ID obrázku.  
    ![Neúspěšné kontejnery](./media/log-analytics-containers/containers-state-failed.png)  
-4. Potom zadejte následující příkaz v vyhledávací dotaz. `Type=ContainerInventory <ImageID>` Chcete-li zobrazit podrobnosti o bitovou kopii například velikost bitové kopie a počet zastaven a k selhání bitové kopie.  
+4. Potom zadejte následující příkaz v vyhledávací dotaz. `ContainerInventory <ImageID>` Chcete-li zobrazit podrobnosti o bitovou kopii například velikost bitové kopie a počet zastaven a k selhání bitové kopie.  
    ![Neúspěšné kontejnery](./media/log-analytics-containers/containers-failed04.png)
 
 ## <a name="search-logs-for-container-data"></a>Hledání protokoly pro kontejner dat
@@ -628,17 +628,17 @@ Pokud se řešení potíží s konkrétní chyby, může pomoct zobrazíte, kde 
 
 
 ### <a name="to-search-logs-for-container-data"></a>K vyhledání protokoly pro kontejner dat
-* Vyberte obrázek, který znáte selhával a najít v souborech protokolů chyb pro ni. Začněte tím, že název kontejneru, který běží této bitové kopie s hledání **ContainerInventory** vyhledávání. Například vyhledejte `Type=ContainerInventory ubuntu Failed`  
+* Vyberte obrázek, který znáte selhával a najít v souborech protokolů chyb pro ni. Začněte tím, že název kontejneru, který běží této bitové kopie s hledání **ContainerInventory** vyhledávání. Například vyhledejte `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![Hledat kontejnery Ubuntu](./media/log-analytics-containers/search-ubuntu.png)
 
-  Název kontejneru Další **název**a vyhledejte tyto protokoly. V tomto příkladu je to `Type=ContainerLog cranky_stonebreaker`.
+  Název kontejneru Další **název**a vyhledejte tyto protokoly. V tomto příkladu je to `ContainerLog | where Name == "cranky_stonebreaker"`.
 
 **Informace o zobrazení výkonu**
 
 Pokud jste od vytvořit dotazy, může pomoct vidět co je možné nejprve. Například pokud chcete zobrazit všechny údaje o výkonu, zkuste široký dotaz zadáním následujících vyhledávací dotaz.
 
 ```
-Type=Perf
+Perf
 ```
 
 ![kontejnery výkonu](./media/log-analytics-containers/containers-perf01.png)
@@ -646,7 +646,7 @@ Type=Perf
 Data výkonu, která se zobrazuje v určitém kontejneru zadáním názvu je napravo od dotazu, můžete určit obor.
 
 ```
-Type=Perf <containerName>
+Perf <containerName>
 ```
 
 Který zobrazí seznam metriky výkonu, které se shromažďují pro jednotlivé kontejneru.
@@ -655,8 +655,6 @@ Který zobrazí seznam metriky výkonu, které se shromažďují pro jednotlivé
 
 ## <a name="example-log-search-queries"></a>Příklad protokolu vyhledávací dotazy
 Je často užitečné k vytvoření dotazů počínaje příklad nebo dva a pak úpravy, aby odpovídaly vašemu prostředí. Jako počáteční bod, můžete vyzkoušet **ukázkové dotazy** oblasti, které vám umožní vytvořit složitější dotazy.
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Kontejnery dotazy](./media/log-analytics-containers/containers-queries.png)
 

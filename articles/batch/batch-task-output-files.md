@@ -1,10 +1,10 @@
 ---
-title: "Zachovat výstup úlohy a úkolů do služby Azure Storage pomocí rozhraní API služby Azure Batch | Microsoft Docs"
-description: "Naučte se používat rozhraní API služby Batch udržení výstup úlohy a úlohy Batch do služby Azure Storage."
+title: Zachovat výstup úlohy a úkolů do služby Azure Storage pomocí rozhraní API služby Azure Batch | Microsoft Docs
+description: Naučte se používat rozhraní API služby Batch udržení výstup úlohy a úlohy Batch do služby Azure Storage.
 services: batch
 author: tamram
 manager: timlt
-editor: 
+editor: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
-ms.openlocfilehash: 2530b7c20347b9fb58aee4dfe693847cf3911741
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa124109bfc9d333469c255c50df0af96a26bebf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Zachovat data úloh do služby Azure Storage pomocí rozhraní API služby Batch
 
@@ -142,7 +142,7 @@ https://myaccount.blob.core.windows.net/mycontainer/task1/output.txt
 https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 ```
 
-Další informace o virtuálních adresářů v Azure Storage najdete v tématu [seznam objektů BLOB v kontejneru](../storage/blobs/storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container).
+Další informace o virtuálních adresářů v Azure Storage najdete v tématu [seznam objektů BLOB v kontejneru](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container).
 
 
 ## <a name="diagnose-file-upload-errors"></a>Diagnostikovat chyby odesílání souborů
@@ -187,7 +187,7 @@ Pokud vyvíjíte v jiném jazyce než v C#, musíte implementovat standard soubo
 6. Po zobrazení výzvy vyberte technologie trvalost použít ke spuštění ukázky, zadejte **2** spustit ukázku pomocí rozhraní API služby Batch udržení výstup úlohy.
 7. V případě potřeby ukázku spustit znovu, zadávání **3** udržení výstup s rozhraním API služby Batch a také název cílová cesta kontejnerů a objektů blob podle standardu názvů souborů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o zachování výstup úlohy s knihovnou souboru konvence pro rozhraní .NET najdete v tématu [zachovat úloh a úkolů data do služby Azure Storage pomocí knihovny Batch souboru konvence pro technologii .NET zachovat ](batch-task-output-file-conventions.md).
 - Informace o dalších přístupy k zachování výstupní data ve službě Azure Batch, najdete v části [zachovat výstup úlohy a úkolů do služby Azure Storage](batch-task-output.md).

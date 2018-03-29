@@ -1,11 +1,11 @@
 ---
-title: "Správa prostředků Azure Blob Storage pomocí Storage Exploreru (Preview) | Microsoft Docs"
-description: "Správa objektů Blob v Azure kontejnerům a objektům BLOB pomocí Storage Exploreru (Preview)"
+title: Správa prostředků Azure Blob Storage pomocí Storage Exploreru (Preview) | Microsoft Docs
+description: Správa objektů Blob v Azure kontejnerům a objektům BLOB pomocí Storage Exploreru (Preview)
 services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: 2f09e545-ec94-4d89-b96c-14783cc9d7a9
 ms.service: storage
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: c23b87cca66df0834a31494be7d8657ff9f2a865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 98a1016f78587b4139041f140634b98fa47edfd1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>Správa prostředků Azure Blob Storage pomocí Storage Exploreru (Preview)
 ## <a name="overview"></a>Přehled
@@ -31,7 +31,7 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 * [Stažení a instalace Storage Exploreru (Preview)](http://www.storageexplorer.com)
 * [Připojení k účtu úložiště nebo službě Azure](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
-## <a name="create-a-blob-container"></a>Vytvořte kontejner objektů blob
+## <a name="create-a-blob-container"></a>Vytvoření kontejneru objektů blob
 Všechny objekty BLOB se musí nacházet v kontejneru objektů blob, který je jednoduše logické seskupení objektů BLOB. Účet může obsahovat neomezený počet kontejnerů a každý kontejner můžete pojmout neomezený počet objektů BLOB.
 
 Následující kroky ukazují, jak vytvořit kontejner objektů blob v rámci Storage Explorer (Preview).
@@ -41,7 +41,7 @@ Následující kroky ukazují, jak vytvořit kontejner objektů blob v rámci St
 3. Klikněte pravým tlačítkem na **kontejnery objektů Blob**a v místní nabídce - vyberte **vytvořit kontejner objektů Blob**.
 
    ![Vytvoření objektu blob kontejnery kontextové nabídky][0]
-4. V textovém poli se zobrazí níže **kontejnery objektů Blob** složky. Zadejte název pro váš kontejner objektů blob. Najdete v článku [pravidla pojmenování kontejneru](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container) části Seznam pravidel a omezení pro pojmenovávání kontejnerů objektů blob.
+4. V textovém poli se zobrazí níže **kontejnery objektů Blob** složky. Zadejte název kontejneru objektů blob. Najdete v článku [vytvoření kontejneru a nastavte oprávnění](storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) informace o pravidlech a omezení pro pojmenovávání kontejnerů objektů blob.
 
    ![Vytvoření textového pole kontejnery objektů Blob][1]
 5. Stiskněte klávesu **Enter** po dokončení vytvoření kontejneru objektů blob nebo **Esc** zrušit. Po úspěšném vytvoření kontejneru objektů blob se zobrazí v části **kontejnery objektů Blob** složku pro vybraný účet úložiště.
@@ -170,11 +170,11 @@ Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v kontejne
 
      1. Na panelu nástrojů v hlavním podokně vyberte **Nahrát** a pak v rozevírací nabídce vyberte **Nahrát soubory**.
 
-        ![Nahrát soubory nabídky][15]
+        ![Nabídka Nahrát soubory][15]
      2. V dialogovém okně **Nahrát soubory** vyberte tlačítko se třemi tečkami (**...**) na pravé straně textového pole **Soubory** a vyberte soubory, které chcete nahrát.
 
         ![Nahrávání souborů možnosti][16]
-     3. Zadejte typ **Blob typu**. Článek [Začínáme s Azure Blob storage pomocí rozhraní .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) vysvětluje rozdíly mezi různé typy objektů blob.
+     3. Zadejte typ **Blob typu**. V tématu [vytvoření kontejneru a nastavte oprávnění](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) Další informace.
      4. Volitelně zadejte cílovou složku, do kterého se nahraje vybrané soubory. Pokud cílová složka neexistuje, vytvoří se.
      5. Vyberte **Nahrát**.
    * **Nahrajte do složky na kontejner objektů blob**
@@ -185,7 +185,7 @@ Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v kontejne
      2. V dialogovém okně **Nahrát složku** vyberte tlačítko se třemi tečkami (**...**) na pravé straně textového pole **Složka** a vyberte složku, jejíž obsah chcete nahrát.
 
         ![Nahrát Možnosti složky][18]
-     3. Zadejte typ **Blob typu**. Článek [Začínáme s Azure Blob storage pomocí rozhraní .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) vysvětluje rozdíly mezi různé typy objektů blob.
+     3. Zadejte typ **Blob typu**. V tématu [vytvoření kontejneru a nastavte oprávnění](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) Další informace.
      4. Volitelně můžete zadat cílovou složku, do které se obsah vybrané složky nahraje. Pokud cílová složka neexistuje, vytvoří se.
      5. Vyberte **Nahrát**.
    * **Stáhnout objekt blob do místního počítače**
@@ -211,7 +211,7 @@ Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v kontejne
      2. Na panelu nástrojů v hlavním podokně vyberte **Odstranit**.
      3. V potvrzovacím dialogovém okně klikněte na **Ano**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Podívejte se na [nejnovější poznámky k verzi a videa pro Storage Explorer (Preview)](http://www.storageexplorer.com).
 * Zjistěte, jak [vytvářet aplikace pomocí objektů blob, tabulek, dotazů a souborů Azure](https://azure.microsoft.com/documentation/services/storage/).
 

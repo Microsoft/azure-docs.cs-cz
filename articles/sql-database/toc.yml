@@ -16,6 +16,7 @@
     - name: Vytvoření databáze – Azure PowerShell
       href: sql-database-get-started-powershell.md
     - name: Připojení a dotazování
+      href: sql-database-connect-query.md
       items:
         - name: SSMS
           href: sql-database-connect-query-ssms.md

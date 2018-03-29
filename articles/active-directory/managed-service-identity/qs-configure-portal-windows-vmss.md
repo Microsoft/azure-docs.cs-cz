@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace MSI ve virtuálním počítači Azure měřítku nastavit pomocí portálu Azure"
-description: "Krok podle podrobné pokyny ke konfiguraci a spravovaná služba Identity (MSI) na VMSS Azure, pomocí portálu Azure."
+title: Konfigurace MSI ve virtuálním počítači Azure měřítku nastavit pomocí portálu Azure
+description: Krok podle podrobné pokyny ke konfiguraci a spravovaná služba Identity (MSI) na VMSS Azure, pomocí portálu Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 4d308d9cdc0405ee0041c877f5678647343631ab
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d9b493203a78aebdfadef15cf53d9cc023bb66f8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-an-azure-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurace Azure Virtual Machine škálování nastavit spravované služby Identity (MSI) pomocí portálu Azure
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, povolení a odebrat MSI pro sadu škálování vir
 
 Od verze době psaní tohoto textu není podporována povolení MSI během vytváření škálování virtuálních počítačů, nastavte na portálu Azure. Místo toho prosím naleznete v následující virtuální počítač Azure škálování sadu vytvoření rychlý start článku nejprve vytvořit sadu škálování virtuálního počítače Azure:
 
-- [Vytvořit sadu škálování virtuálního počítače na portálu Azure](../../virtual-machine-scale-sets/virtual-machine-scale-sets-create-portal.md)  
+- [Vytvořit sadu škálování virtuálního počítače na portálu Azure](../../virtual-machine-scale-sets/quick-create-portal.md)  
 
 Přejděte k části Další informace o povolení MSI na škálovací sadu virtuálních počítačů.
 
