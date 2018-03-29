@@ -1,24 +1,24 @@
 ---
-title: "Bez serveru databáze computing – funkce Azure a Azure Cosmos DB | Microsoft Docs"
-description: "Další informace databáze Cosmos Azure a Azure Functions použití společně vytvářet událostmi řízené bez serveru výpočetní aplikace."
+title: Bez serveru databáze computing – funkce Azure a Azure Cosmos DB | Microsoft Docs
+description: Další informace databáze Cosmos Azure a Azure Functions použití společně vytvářet událostmi řízené bez serveru výpočetní aplikace.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 03/26/2018
 ms.author: mimig
-ms.openlocfilehash: 297f8929ec11b37a2cbbfb79bb442da75b4368a8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 39155a2407efa0cc13236a1bbbbcd292daac86b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Pomocí Azure Functions computing bez serveru databáze
 
@@ -113,12 +113,16 @@ Ve všech těchto případech použití, protože funkce má odpojené aplikace,
 
 ## <a name="tooling"></a>Nástrojů
 
-Nativní integrace mezi Azure Cosmos DB a Azure Functions je k dispozici na portálu Azure.
+Nativní integrace mezi Azure Cosmos DB a Azure Functions je k dispozici na portálu Azure a Visual Studio 2017.
 * Na portálu Azure Functions můžete vytvořit aktivační událost INSTEAD Azure Cosmos DB. Rychlý start pokyny najdete v tématu [na portálu Azure vytvořit aktivační událost INSTEAD Azure Cosmos DB](https://aka.ms/cosmosdbtriggerportalfunc) ![vytvořit aktivační událost INSTEAD Azure Cosmos DB na portálu Azure Functions](./media/serverless-computing-database/azure-function-cosmos-db-trigger.png) 
 * Na portálu Azure Functions můžete také přidat vazby Azure Cosmos DB vstupní a výstupní vazby na jiné typy služby aktivačních událostí. Rychlý start pokyny najdete v tématu [ukládání nestrukturovaných dat pomocí Azure Functions a Cosmos DB](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md).
     ![Vytvořit aktivační událost INSTEAD Azure Cosmos DB na portálu Azure Functions](./media/serverless-computing-database/function-portal-input-binding.png)
 *   Na portálu Azure Cosmos DB můžete přidat do existující aplikace funkce Azure ve stejné skupině prostředků aktivační procedury Azure Cosmos DB.
     ![Vytvořit aktivační událost INSTEAD Azure Cosmos DB na portálu Azure Functions](./media/serverless-computing-database/cosmos-db-portal.png)
+* V aplikaci Visual Studio 2017 můžete vytvořit aktivační procedury Azure Cosmos DB pomocí integrované šablony:
+
+    >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
+
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>Proč zvolit integrace Azure Functions pro výpočty bez serveru?
 

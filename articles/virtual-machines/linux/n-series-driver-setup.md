@@ -1,11 +1,11 @@
 ---
-title: "Instalace nástroje Azure ovladač N-series pro Linux | Microsoft Docs"
-description: "Jak nastavit NVIDIA GPU ovladače pro N-series virtuální počítače s Linuxem v Azure"
+title: Instalace nástroje Azure ovladač N-series pro Linux | Microsoft Docs
+description: Jak nastavit NVIDIA GPU ovladače pro N-series virtuální počítače s Linuxem v Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
 ms.service: virtual-machines-linux
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d353adcafed02832243277118da8480e54544ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d97afd2b5dccca64db2df7cb0d4f110987642cfb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU v N-series virtuální počítače se systémem Linux
 
-Abyste mohli využívat možnosti GPU Azure N-series virtuální počítače se systémem Linux, nainstalujte podporované NVIDIA grafické ovladače. Tento článek obsahuje kroky instalace ovladačů po nasadit virtuální počítač s N-series. Informace o instalaci ovladačů je také k dispozici pro [virtuálních počítačů Windows](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Abyste mohli využívat možnosti GPU Azure N-series virtuální počítače se systémem Linux, musí být nainstalován NVIDIA grafické ovladače. Tento článek obsahuje kroky instalace ovladačů po nasadit virtuální počítač s N-series. Informace o instalaci ovladačů je také k dispozici pro [virtuálních počítačů Windows](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Virtuální počítač N-series specifikace, kapacity úložiště a disku podrobnosti najdete v tématu [velikosti virtuálních počítačů Linux GPU](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
@@ -32,15 +32,12 @@ Virtuální počítač N-series specifikace, kapacity úložiště a disku podro
 
 ## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>Instalace ovladačů CUDA NC, NCv2, NCv3 a virtuální počítače a series
 
-Tady jsou kroky pro instalaci ovladače NVIDIA z nástrojů CUDA NVIDIA na virtuálních počítačích N-series. 
+Tady jsou kroky pro instalaci ovladače CUDA z nástrojů CUDA NVIDIA na virtuálních počítačích N-series. 
+
 
 Jazyk C a C++ vývojáři Volitelně můžete nainstalovat úplnou sadu nástrojů k vytváření aplikací GPU accelerated. Další informace najdete v tématu [Průvodce instalací CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
-> [!NOTE]
-> Tady jsou aktuální v době publikace k dispozici odkazy stahování ovladačů CUDA. Nejnovější ovladače CUDA, najdete v článku [NVIDIA](https://developer.nvidia.com/cuda-zone) webu.
->
-
-K instalaci nástrojů CUDA, zkontrolujte připojení SSH pro každý virtuální počítač. Pokud chcete ověřit, že systém má podporující CUDA grafického procesoru, spusťte následující příkaz:
+K instalaci ovladačů CUDA, zkontrolujte připojení SSH pro každý virtuální počítač. Pokud chcete ověřit, že systém má podporující CUDA grafického procesoru, spusťte následující příkaz:
 
 ```bash
 lspci | grep -i NVIDIA
@@ -162,16 +159,13 @@ Síťové připojení RDMA se dá nastavit na virtuálních počítačích podpo
 
 ### <a name="distributions"></a>Distribuce
 
-Nasazení podporující RDMA N-series virtuální počítače z bitové kopie v Azure Marketplace, která podporuje připojení RDMA na virtuálních počítačích N-series:
+Nasazení podporující RDMA N-series virtuálních počítačů z jedné bitové kopie v Azure Marketplace, která podporuje připojení RDMA na virtuálních počítačích N-series:
   
 * **Ubuntu 16.04 LTS** – konfigurace ovladače RDMA na virtuálním počítači a registrace s Intel ke stažení Intel MPI:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-> [!NOTE]
-> Na základě centOS obrázky HPC není aktuálně vhodné pro připojení RDMA na virtuálních počítačích N-series. RDMA není podporována na nejnovější CentOS 7.4 jádra, která podporuje NVIDIA grafickými procesory.
-> 
-
+* **Na základě centOS 7.4 HPC** -RDMA ovladače a Intel MPI 5.1 jsou nainstalovány ve virtuálním počítači.
 
 ## <a name="install-grid-drivers-for-nv-series-vms"></a>Instalace ovladačů mřížky pro virtuální počítače vs series
 
@@ -321,10 +315,10 @@ EndSection
  
 Kromě toho aktualizovat vaše `"Screen"` části k použití tohoto zařízení.
  
-BusID můžete najít spuštěním
+Desetinné BusID můžete najít spuštěním
 
 ```bash
-/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1
+echo $((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
 ```
  
 BusID lze změnit, pokud virtuální počítač získá znovu přidělit, nebo restartovat. Proto můžete chtít použít skript k aktualizaci BusID v X11 konfigurace, pokud je virtuální počítač restartovat. Příklad:
@@ -342,6 +336,6 @@ Tento soubor nelze vyvolat jako kořenová na spouštěcí tak, že vytvoříte 
 
 * Můžete nastavit pomocí režimu trvalost `nvidia-smi` tak výstup příkazu je rychlejší, když potřebujete karty dotazu. Nastavení režimu trvalost, provést `nvidia-smi -pm 1`. Všimněte si, že pokud restartování virtuálního počítače s nastavením režimu Vyčkat. Vždy můžete skript režim provést při spuštění.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * K zachycení bitové kopie virtuálního počítače s Linuxem s vaší nainstalované ovladače NVIDIA, najdete v části [generalize a zachycení virtuální počítač s Linuxem](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -1,6 +1,6 @@
 ---
-title: "Cluster Azure DC/OS monitorování - Operations Management"
-description: "Monitorování clusteru Azure Container Service DC/OS s Microsoft Operations Management Suite."
+title: Cluster Azure DC/OS monitorování - Operations Management
+description: Monitorování clusteru Azure Container Service DC/OS s analýzy protokolů.
 services: container-service
 author: keikhara
 manager: timlt
@@ -9,45 +9,46 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: a675f0b57ed9e5d515cfa79a3a841e0f133fff6f
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: ba76f8480dedb37326505f7ed756eb51a41ee0fe
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="monitor-an-azure-container-service-dcos-cluster-with-operations-management-suite"></a>Monitorování clusteru Azure Container Service DC/OS s Operations Management Suite
+# <a name="monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>Monitorování clusteru Azure Container Service DC/OS s analýzy protokolů
 
-Microsoft Operations Management Suite (OMS) je cloudové řešení společnosti Microsoft pro správu IT, které pomáhá se správou a ochranou místních a cloudových infrastruktur. Kontejner řešení je řešení v OMS analýzy protokolů, který umožňuje zobrazit inventář kontejneru, výkonu a protokoly na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením protokoly v centrálním umístění a najít aktivní využívání nadbytečné kontejneru na hostiteli.
+Analýzy protokolů je společnosti Microsoft založená na cloudu IT řešení správy, které pomáhá spravovat a chránit místní a cloudové infrastruktury. Kontejner řešení je řešení v analýzy protokolů, který umožňuje zobrazit inventář kontejneru, výkonu a protokoly na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením protokoly v centrálním umístění a najít aktivní využívání nadbytečné kontejneru na hostiteli.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
 Další informace o kontejneru řešení, naleznete [analýzy protokolů řešení kontejneru](../../log-analytics/log-analytics-containers.md).
 
-## <a name="setting-up-oms-from-the-dcos-universe"></a>Nastavení OMS z universe DC/OS
+## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>Nastavení analýzy protokolů z universe DC/OS
 
 
 Tento článek předpokládá, že jste nastavili DC/OS a nasadili jednoduchého webového kontejneru aplikace v clusteru.
 
 ### <a name="pre-requisite"></a>Předpoklad
 - [Předplatné služby Microsoft Azure](https://azure.microsoft.com/free/) -vám to zdarma.  
-- Instalační program pracovní prostor Microsoft OMS – najdete v části "Krok 3" pod
+- Nastavení pracovního prostoru analýzy protokolu – najdete v části "Krok 3" pod
 - [Rozhraní příkazového řádku DC/OS](https://dcos.io/docs/1.8/usage/cli/install/) nainstalována.
 
 1. Na řídicím panelu DC/OS klikněte na Universe a vyhledejte "OMS, jak je uvedeno níže.
 
 ![](media/container-service-monitoring-oms/image2.png)
 
-2. Klikněte na **Nainstalovat**. Uvidíte pop až s informace o verzi OMS a **instalovat balíček** nebo **rozšířený instalace** tlačítko. Když kliknete na tlačítko **rozšířený instalace**, což vede k **vlastnosti konkrétní konfigurace OMS** stránky.
+2. Klikněte na **Nainstalovat**. Uvidíte pop až s informacemi a **instalovat balíček** nebo **rozšířený instalace** tlačítko. Když kliknete na tlačítko **rozšířený instalace**, což vede k **vlastnosti konkrétní konfigurace OMS** stránky.
 
 ![](media/container-service-monitoring-oms/image3.png)
 
 ![](media/container-service-monitoring-oms/image4.png)
 
-3. Zde, zobrazí se výzva k zadání `wsid` (ID pracovního prostoru OMS) a `wskey` (OMS primární klíč pro id pracovního prostoru). Chcete-li získat i `wsid` a `wskey` je potřeba vytvořit na účet OMS <https://mms.microsoft.com>. Postupujte podle kroků pro vytvoření účtu. Po dokončení vytváření účtu, je nutné získat vaše `wsid` a `wskey` kliknutím **nastavení**, pak **připojené zdroje**a potom **servery se systémem Linux**, jak je uvedeno níže.
+3. Zde, zobrazí se výzva k zadání `wsid` (ID pracovního prostoru analýzy protokolů) a `wskey` (primární klíč pro id pracovního prostoru). Chcete-li získat i `wsid` a `wskey` musíte vytvořit účet na webu <https://mms.microsoft.com>.
+Postupujte podle kroků pro vytvoření účtu. Po dokončení vytváření účtu, je nutné získat vaše `wsid` a `wskey` kliknutím **nastavení**, pak **připojené zdroje**a potom **servery se systémem Linux**, jak je uvedeno níže.
 
  ![](media/container-service-monitoring-oms/image5.png)
 
-4. Vyberte číslo vám OMS instance a klikněte na tlačítko 'Zkontrolovat a nainstalovat'. Obvykle můžete získat počet instancí OMS rovná počtu Virtuálního počítače budete mít v clusteru agenta. Agent OMS pro Linux je nainstaluje jako jednotlivé kontejnery pro každý virtuální počítač, který chce shromažďovat informace o monitorování a informace o protokolování.
+4. Vyberte počet instancí a klikněte na tlačítko 'Zkontrolovat a nainstalovat'. Obvykle můžete získat počet instancí, které se rovná počtu Virtuálního počítače budete mít v clusteru agenta. Nainstaluje agenta OMS pro Linux jako jednotlivé kontejnery pro každý virtuální počítač, který chce shromažďovat informace o monitorování a informace o protokolování.
 
 ## <a name="setting-up-a-simple-oms-dashboard"></a>Nastavení jednoduchý řídicí panel OMS
 
@@ -81,7 +82,7 @@ Po dokončení výběru pracovního prostoru, klikněte na tlačítko **vytvoři
 
 ![](media/container-service-monitoring-oms/image11.png)
 
-Další informace o řešení kontejneru OMS, naleznete [analýzy protokolů řešení kontejneru](../../log-analytics/log-analytics-containers.md).
+Další informace o řešení protokolu analýzy kontejneru, naleznete [analýzy protokolů řešení kontejneru](../../log-analytics/log-analytics-containers.md).
 
 ### <a name="how-to-scale-oms-agent-with-acs-dcos"></a>Postup škálování agenta OMS s ACS DC/OS 
 
@@ -104,6 +105,6 @@ $ dcos package uninstall msoms
 ## <a name="let-us-know"></a>Dejte nám vědět!
 Co funguje? Co je chybějící? Co je potřeba pro to pro vás užitečné? Dejte nám vědět v <a href="mailto:OMSContainers@microsoft.com">OMSContainers</a>.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
- Teď, když jste nastavili OMS monitorování kontejnerů,[najdete v části řídicího panelu kontejneru](../../log-analytics/log-analytics-containers.md).
+ Teď, když jste nastavili analýzy protokolů pro monitorování kontejnerů,[najdete v části řídicího panelu kontejneru](../../log-analytics/log-analytics-containers.md).

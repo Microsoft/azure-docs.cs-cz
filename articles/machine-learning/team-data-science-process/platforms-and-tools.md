@@ -1,23 +1,23 @@
 ---
-title: "Týmové projekty - Azure platformy a nástroje pro vědecké zpracování dat | Microsoft Docs"
-description: "Rozepisuje a pojednává o prostředcích data a analýzy, které jsou k dispozici pro podniky standardizace v procesu Team dat vědecké účely."
-documentationcenter: 
+title: Týmové projekty - Azure platformy a nástroje pro vědecké zpracování dat | Microsoft Docs
+description: Rozepisuje a pojednává o prostředcích data a analýzy, které jsou k dispozici pro podniky standardizace v procesu Team dat vědecké účely.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 3ec2eaaf4e8d54e7b1ea3d272c47eac96451f317
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 404e3dd106edf82f4f22e4c6a17987bd0bc51f65
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>Týmové projekty platformy a nástroje pro vědecké zpracování dat
 
@@ -146,7 +146,7 @@ Pokud používáte počítače se systémem Linux (CentOS) ke spuštění přík
 - Vložení ssh klíč právě zkopírovali do textového pole a uložte.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Úplné návody začátku do konce, které ukazují všechny kroky v procesu pro **konkrétních scénářů** jsou také uvedeny. Jsou uvedena v seznamu a propojené s miniatur popisy v [příklad návody](walkthroughs.md) tématu. Se ukazují, jak kombinovat cloud, místní nástroje a služby do pracovního postupu nebo kanálu vytvoření inteligentního aplikace. 
 

@@ -1,19 +1,19 @@
 ---
-title: "Azure definice strukturu zásad. | Microsoft Docs"
-description: "Popisuje použití zásad definice prostředků zásadami Azure k vytvoření konvence pro prostředky ve vaší organizaci pomocí popisující, když je tato zásada vynucená a jaká opatření se mají provést."
+title: Azure definice strukturu zásad. | Microsoft Docs
+description: Popisuje použití zásad definice prostředků zásadami Azure k vytvoření konvence pro prostředky ve vaší organizaci pomocí popisující, když je tato zásada vynucená a jaká opatření se mají provést.
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
-ms.custom: 
-ms.openlocfilehash: ffff4a663b64342142f42a662905a290044e2dfb
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.custom: ''
+ms.openlocfilehash: 50965010d821d4edf94e2f5727546cb56f61f5db
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -70,7 +70,9 @@ Všechny ukázky šablony zásad Azure jsou [šablon pro Azure zásad](json-samp
 * `all`: vyhodnocení skupiny prostředků a všechny typy prostředků 
 * `indexed`: pouze vyhodnotit typy prostředků, které podporují značky a umístění
 
-Doporučujeme, abyste nastavili **režimu** k `all`. Všechny definice zásady vytvořené pomocí portálu použijte `all` režimu. Pokud používáte prostředí PowerShell nebo rozhraní příkazového řádku Azure, budete muset zadat **režimu** parametr a nastavte ji na `all`. 
+Doporučujeme, abyste nastavili **režimu** k `all` ve většině případů. Všechny definice zásady vytvořené pomocí portálu použijte `all` režimu. Pokud používáte prostředí PowerShell nebo rozhraní příkazového řádku Azure, budete muset zadat **režimu** parametr ručně.
+
+`indexed` by měl být použit při vytváření zásad, který vynutí značky nebo umístění. Tato akce není povinná, ale nebude možné prostředky, které nepodporují značky a umístění zobrazovala jako nevyhovující ve výsledcích dodržování předpisů. Jedinou výjimkou je **skupiny prostředků**. Měli nastavit zásady, které se pokoušíte vynutit umístění nebo značky na skupinu prostředků **režimu** k `all` a konkrétně cíle `Microsoft.Resources/subscriptions/resourceGroup` typu. Příklad, naleznete v části [vynutit značky prostředku skupiny](scripts/enforce-tag-rg.md).
 
 ## <a name="parameters"></a>Parametry
 
@@ -126,7 +128,7 @@ V **pak** bloku, definujete o tom, že se stane, když **Pokud** podmínky jsou 
     <condition> | <logical operator>
   },
   "then": {
-    "effect": "deny | audit | append"
+    "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
   }
 }
 ```
@@ -165,16 +167,22 @@ Logické operátory lze vnořit. Následující příklad ukazuje **není** oper
 Podmínka vyhodnocena jako jestli **pole** splňuje určitá kritéria. Jsou podporované podmínky:
 
 * `"equals": "value"`
+* `"notEquals": "value"`
 * `"like": "value"`
+* `"notLike": "value"`
 * `"match": "value"`
+* `"notMatch": "value"`
 * `"contains": "value"`
+* `"notContains": "value"`
 * `"in": ["value1","value2"]`
+* `"notIn": ["value1","value2"]`
 * `"containsKey": "keyName"`
+* `"notContainsKey": "keyName"`
 * `"exists": "bool"`
 
-Při použití **jako** podmínku, můžete zadat zástupný znak (*) v hodnotě.
+Při použití **jako** a **notLike** podmínky, můžete zadat zástupný znak (*) v hodnotě.
 
-Při použití **odpovídat** podmínky, zadejte `#` představují číslice, `?` písmeno a libovolný znak představují tento skutečný znak. Příklady najdete v tématu [Image schválené virtuálních počítačů](scripts/allowed-custom-images.md).
+Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` představují číslice, `?` pro písmeno a libovolný znak představují tento skutečný znak. Příklady najdete v tématu [Image schválené virtuálních počítačů](scripts/allowed-custom-images.md).
 
 ### <a name="fields"></a>Pole
 Podmínky se vytváří pomocí pole. Pole představuje vlastnosti v datová část požadavku prostředku, který se používá k popisu stavu prostředku.  
@@ -182,12 +190,28 @@ Podmínky se vytváří pomocí pole. Pole představuje vlastnosti v datová č�
 Podporovány jsou následující pole:
 
 * `name`
+* `fullName`
+  * Vrátí úplný název prostředku, včetně všech nadřazených položek (například "myServer/databáze")
 * `kind`
 * `type`
 * `location`
 * `tags`
-* `tags.*`
+* `tags.tagName`
+* `tags[tagName]`
+  * Tato syntaxe závorky podporuje názvy značek, které obsahovat tečky.
 * Vlastnost aliasy – seznam najdete v tématu [aliasy](#aliases).
+
+### <a name="alternative-accessors"></a>Alternativní přístupové objekty
+**Pole** je primární přistupujícího objektu používá v pravidla zásad. Zkontroluje přímo k prostředku, který se vyhodnocuje. Však zásady podporuje jeden další přistupujícího objektu **zdroj**.
+
+```json
+"source": "action",
+"equals": "Microsoft.Compute/virtualMachines/write"
+```
+
+**Zdroj** podporuje pouze jednu hodnotu, **akce**. Akce vrátí autorizace akce požadavek, který se vyhodnocuje. Autorizace akce jsou zveřejněné v části autorizace [protokol aktivit](../monitoring-and-diagnostics/monitoring-activity-log-schema.md).
+
+Když je zásad vyhodnocení existující prostředky na pozadí, nastaví **akce** k `/write` autorizace akce u typu prostředku.
 
 ### <a name="effect"></a>Efekt
 Zásady podporuje následující typy vliv:
@@ -212,7 +236,7 @@ Pro **připojit**, je nutné zadat následující podrobnosti:
 
 Hodnota může být řetězec nebo objekt formátu JSON.
 
-S **AuditIfNotExists** a **DeployIfNotExists** můžete vyhodnotit existenci podřízených prostředků a použít pravidlo a odpovídající efekt, pokud tento prostředek neexistuje. Například může vyžadovat, že sledovací proces sítě nasazuje pro všechny virtuální sítě.
+S **AuditIfNotExists** a **DeployIfNotExists** můžete vyhodnotit existenci související prostředek a použít pravidlo a odpovídající efekt, pokud tento prostředek neexistuje. Například může vyžadovat, že sledovací proces sítě nasazuje pro všechny virtuální sítě.
 Příklad audit, když není nasazený rozšíření virtuálního počítače, naleznete v části [Audit Pokud rozšíření neexistuje](scripts/audit-ext-not-exist.md).
 
 

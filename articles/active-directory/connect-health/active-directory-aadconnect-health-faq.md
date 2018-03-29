@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Connect Health – nejčastější dotazy - Azure | Microsoft Docs"
-description: "Tyto nejčastější dotazy odpovědi na otázky o Azure AD Connect Health. Jde o dotazy k používání služby, včetně modelu fakturace, schopností, omezení a podpory."
+title: Azure Active Directory Connect Health – nejčastější dotazy - Azure | Microsoft Docs
+description: Tyto nejčastější dotazy odpovědi na otázky o Azure AD Connect Health. Jde o dotazy k používání služby, včetně modelu fakturace, schopností, omezení a podpory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 312980ded8fad84f2ea4a41078597dd3a6cb8ca7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: b4c977b54c87276bd4b168bc56e70f3b918e6634
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure AD Connect Health
 Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o stavu připojení služby Azure Active Directory (Azure AD). Tyto nejčastější dotazy se týkají dotazy o tom, jak používat službu, která zahrnuje fakturační model, možnosti, omezení a podpory.
@@ -175,6 +175,9 @@ CheckForMS17-010
 
 ```
 
+**Otázka: Proč se rutiny prostředí PowerShell <i>Get-MsolDirSyncProvisioningError</i> zobrazit méně chyby synchronizace ve výsledku?**
+
+<i>Get-MsolDirSyncProvisioningError</i> vrátí jenom DirSync chyby zřizování. Kromě toho, že portál Connect Health také ukazuje další synchronizaci typů chyb, jako je například export chyby. To je konzistentní s Azure AD Connect rozdílů výsledek. Další informace o [Azure AD Connect Sync chyby](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
 
 
 ## <a name="related-links"></a>Související odkazy

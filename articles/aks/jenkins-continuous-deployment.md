@@ -1,19 +1,19 @@
 ---
-title: "Průběžné nasazování volaných s Kubernetes v Azure Container Service"
-description: "Jak automatizovat proces průběžné nasazování s volaných k nasazení a upgrade kontejnerizované aplikace na Kubernetes v Azure Container Service"
+title: Průběžné nasazování volaných s Kubernetes v Azure Container Service
+description: Jak automatizovat proces průběžné nasazování s volaných k nasazení a upgrade kontejnerizované aplikace na Kubernetes v Azure Container Service
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1293fda45602203570a0f7f75481f67bdcb6edf3
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 8238e0f55b88e4fa207357630aa4228250c33249
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Průběžné nasazování pomocí volaných a Azure Container Service
 
@@ -57,7 +57,7 @@ Po vytvoření rozvětvení naklonujte váš vývojový systém. Ujistěte se, �
 git clone https://github.com/<your-github-account>/azure-voting-app-redis.git
 ```
 
-Změňte adresáře tak, aby při práci z klonovaného adresáře.
+Změňte adresáře tak, abyste pracovali v naklonovaném adresáři.
 
 ```bash
 cd azure-voting-app-redis
@@ -71,7 +71,7 @@ docker-compose up -d
 
 Po dokončení použít [imagí dockeru] [ docker-images] příkazu zobrazte vytvořené bitové kopie.
 
-Všimněte si, že tři bitové kopie byly staženy nebo vytvořeny. `azure-vote-front` Image obsahuje aplikace a používá `nginx-flask` bitovou kopii jako základ. `redis` Image se použije ke spuštění Redis instance.
+Všimněte si, že se stáhly nebo vytvořily tři image. Image `azure-vote-front` obsahuje aplikaci a jako základ využívá image `nginx-flask`. Image `redis` slouží ke spuštění instance Redis.
 
 ```console
 $ docker images
@@ -160,6 +160,20 @@ Open a browser to http://52.166.118.64:8080
 Enter the following to Unlock Jenkins:
 667e24bba78f4de6b51d330ad89ec6c6
 ```
+
+Pokud máte problémy s přihlášením se do volaných, vytvořit relace SSH s virtuálním Počítačem volaných a restartujte službu volaných. IP adresa virtuálního počítače je stejnou adresu, která byla vydána v skriptu buildu. Uživatelské jméno správce virtuálního počítače je `azureuser`.
+
+```bash
+ssh azureuser@52.166.118.64
+```
+
+Restartujte službu volaných.
+
+```bash
+sudo service jenkins restart
+```
+
+Aktualizujte webový prohlížeč a by měla zobrazit přihlašovací formulář volaných.
 
 ## <a name="jenkins-environment-variables"></a>Proměnné prostředí volaných
 

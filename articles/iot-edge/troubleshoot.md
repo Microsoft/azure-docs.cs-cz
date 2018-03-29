@@ -6,15 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/21/2018
+ms.date: 03/23/2018
 ms.topic: article
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c7a632aba678e733f9ff3134b292b571bf2d78b0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b03ece52c4ff77c9e0abbc794325cd7e9a20c915
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -130,16 +130,23 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 ```
 
 ### <a name="root-cause"></a>Původní příčina
-K této chybě dojde, když spustíte hranou IoT na virtuálním počítači Azure Windows. Názvy hostitelů vygenerované tyto počítače jsou obvykle velmi dlouhé a může být vyšší než limit 64 znaků. 
+Modul runtime IoT Edge podporuje pouze názvy hostitelů, které jsou kratší než 64 znaků. To obvykle není problém pro fyzické počítače, ale může dojít, když nastavíte modul runtime na virtuálním počítači. Automaticky generované názvy hostitelů pro virtuální počítače s Windows, které jsou hostované v Azure, zejména, jsou obvykle dlouhé. 
 
 ### <a name="resolution"></a>Řešení
-Kratší názvy virtuálních počítačů mají kratší názvy hostitelů, takže pokud vytvoříte nové virtuální počítače pro IoT Edge jim poskytnout stručného názvy, aby se tato chyba. 
+Když se tato chyba, abyste ho mohli vyřešit konfiguraci název DNS virtuálního počítače, a jako název hostitele v možnosti instalačního příkazu nastavením názvu DNS.
 
-Když se tato chyba, abyste ho mohli vyřešit tak, že zadáte vlastní název hostitele pomocí následujícího příkazu: 
+1. Na portálu Azure přejděte na stránku přehled virtuálního počítače. 
+2. Vyberte **konfigurace** pod názvem DNS. Pokud virtuální počítač už má název DNS nakonfigurovaný, nemusíte konfigurovat nový. 
 
-```input
-iotedgectl setup --connection-string "<connection string>" --auto-cert-gen-force-no-passwords --edge-hostname "<hostname>"
-```
+   ![Konfigurace názvu DNS](./media/troubleshoot/configure-dns.png)
+
+3. Zadejte hodnotu pro **Popisek názvu DNS** a vyberte **Uložit**.
+4. Zkopírujte nový název DNS, které by měly být ve formátu  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.azure.com**.
+5. Ve virtuálním počítači použijte následující příkaz Nastavit hraniční IoT modulu runtime s název DNS:
+
+   ```input
+   iotedgectl setup --connection-string "<connection string>" --nopass --edge-hostname "<DNS name>"
+   ```
 
 ## <a name="next-steps"></a>Další postup
 Myslíte si, že jste v platformě IoT Edge našli chybu? [Odešlete problém](https://github.com/Azure/iot-edge/issues), abychom mohli pokračovat ve zlepšování. 

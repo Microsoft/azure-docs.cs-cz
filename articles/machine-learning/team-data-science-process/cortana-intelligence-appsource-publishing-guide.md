@@ -1,8 +1,8 @@
 ---
-title: "Průvodce publikování webu Cortana Intelligence AppSource | Microsoft Docs"
-description: "Jako Partner společnosti Microsoft tady jsou všechny kroky, které je třeba provést, pokud chcete publikovat řešení Cortana Intelligence AppSource."
+title: Průvodce publikování webu Cortana Intelligence AppSource | Microsoft Docs
+description: Jako Partner společnosti Microsoft tady jsou všechny kroky, které je třeba provést, pokud chcete publikovat řešení Cortana Intelligence AppSource.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
-ms.author: anupams;v-bruham;garye
-ms.openlocfilehash: 9f867641b77c8148c1d6cbf2913da9c1f5ce5b71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: anupams
+ms.openlocfilehash: 1a5671eda967c1bba585d31b001bb465526709f3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Průvodce publikování webu Cortana Intelligence AppSource
 
@@ -109,10 +109,10 @@ To je důvod, proč partneři by měli obsahu se umístí AppSource jako prodeje
 ## <a name="publish-your-app-on-the-publishing-portal"></a>Publikování aplikace na portálu publikování
 Jakmile budeme mít vyhodnotit výše uvedené kroky pro vaši aplikaci, získají přístup k portálu publikování a vidí [postup publikování na webu Cortana Intelligence nabídku přes portál pro partnery cloudu](https://cloudpartner.azure.com/#documentation/cloud-partner-portal-publish-cortana-intelligence-app) podrobné informace o dalších krocích.
 
-Pokud potřebujete informace o všech polí, e-mailu < appsourcecissupport@microsoft.com >.
+Pokud potřebujete informace o všech polí, e-mailu <appsourcecissupport@microsoft.com>.
 ## <a name="my-app-is-published-on-appsource---now-what"></a>Moje aplikace je publikována na AppSource - Co teď?
 Za prvé Blahopřejeme k získávání aplikace publikována.
 Úroveň vrátí můžete získat z vaší aplikace na AppSource výraznou publikování závisí na tom, jak ovlivnit cílovou skupinu. V tématu [růstu hackerům aplikace Cortana Intelligence na AppSource](http://aka.ms/aagrowthhackguide) pro další podrobnosti o tom, jak můžete zvýšit se vrátí.
 
-Pokud máte jakékoli dotazy nebo návrhy, kdybyste oslovení nás na adrese < appsourcecissupport@microsoft.com >.
+Pokud máte jakékoli dotazy nebo návrhy, kdybyste oslovení nás na adrese <appsourcecissupport@microsoft.com>.
 

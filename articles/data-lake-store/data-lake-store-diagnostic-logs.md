@@ -1,8 +1,8 @@
 ---
-title: "Zobrazení diagnostických protokolů pro Azure Data Lake Store | Microsoft Docs"
-description: "Pochopit, jak nastavit a přístupu k diagnostickým protokolům pro Azure Data Lake Store "
+title: Zobrazení diagnostických protokolů pro Azure Data Lake Store | Microsoft Docs
+description: 'Pochopit, jak nastavit a přístupu k diagnostickým protokolům pro Azure Data Lake Store '
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: b58a4b215b13d2e57a69a94a60e3e37471c926c8
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 5f1fa378c8eea68181d4596700238d03f360c5d0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Přístup k diagnostickým protokolům pro Azure Data Lake Store
 Informace o povolení protokolování pro váš účet Data Lake Store a postup zobrazení shromážděné pro váš účet protokoly diagnostiky.
@@ -31,7 +31,7 @@ Organizace může povolit protokolování diagnostiky ke svému účtu Azure Dat
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Povolit protokolování diagnostiky pro váš účet Data Lake Store
 1. Přihlaste se k novému webu [Azure Portal](https://portal.azure.com).
-2. Otevřete účet Data Lake Store a z vaší okně účtu Data Lake Store klikněte na tlačítko **nastavení**a potom klikněte na **diagnostické protokoly**.
+2. Otevřete účet Data Lake Store a z vaší okně účtu Data Lake Store klikněte na tlačítko **diagnostické protokoly**.
 3. V **protokolů diagnostiky** okně klikněte na tlačítko **zapněte diagnostiku**.
 
     ![Povolit protokolování diagnostiky](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "povolení diagnostických protokolů")
@@ -150,6 +150,7 @@ Zde je vzorového vstupu v protokolu auditování formátu JSON. Každý objekt 
              "category": "Audit",
              "operationName": "SeOpenStream",
              "resultType": "0",
+             "resultSignature": "0",
              "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
              "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
              "properties": {"StreamName":"adl://<data_lake_store_account_name>.azuredatalakestore.net/logs.csv"}
@@ -167,6 +168,7 @@ Zde je vzorového vstupu v protokolu auditování formátu JSON. Každý objekt 
 | category |Řetězec |Kategorie protokolu. Například **auditu**. |
 | operationName |Řetězec |Název operace, která je zaznamenána. Například getfilestatus. |
 | resultType |Řetězec |Stav operace, například 200. |
+| resultSignature |Řetězec |Další podrobnosti o operaci. |
 | correlationId |Řetězec |ID protokolu, který můžete použít k seskupení sady položek protokolu související |
 | identity |Objekt |Identity, která generuje protokol |
 | properties |JSON |Níže naleznete podrobnosti |
@@ -186,7 +188,7 @@ search *
 ```
 
 
-Azure Data Lake Store poskytuje vzorku o tom, jak zpracovávat a analyzovat data protokolu. Můžete najít ukázku najdete na adrese [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
+Azure Data Lake Store poskytuje vzorku o tom, jak zpracovávat a analyzovat data protokolu. Můžete najít ukázku najdete na adrese [ https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample ](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Přehled Azure Data Lake Store](data-lake-store-overview.md)

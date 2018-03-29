@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: 4b0831173212d3324c851ad1bd04ec443a9face5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: efee0842a2fca2afac28f179bba07c3b6682ee57
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Rychlý start pro prostředí PowerShell v prostředí cloudu Azure (Preview)
 
@@ -182,7 +182,7 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 #### <a name="invoke-powershell-script-across-remote-vms"></a>Vyvolání skriptu prostředí PowerShell přes vzdálené virtuální počítače
 
  > [!WARNING]
- > Naleznete [řešení potíží s vzdálenou správu virtuálních počítačích Azure](troubleshooting.md#powershell-resolutions).
+ > Naleznete [řešení potíží s vzdálenou správu virtuálních počítačích Azure](troubleshooting.md#troubleshooting-remote-management-of-azure-vms).
 
   Za předpokladu, že máte virtuální počítač, MyVM1, použijeme `Invoke-AzureRmVMCommand` k vyvolání blok skriptu prostředí PowerShell ve vzdáleném počítači.
 

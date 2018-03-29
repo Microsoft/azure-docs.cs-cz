@@ -1,6 +1,6 @@
 ---
-title: "Jak používat úložiště Azure Table z Javy | Microsoft Docs"
-description: "Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL."
+title: Jak používat Azure Table storage nebo rozhraní API služby Azure Cosmos DB tabulky z prostředí Java | Microsoft Docs
+description: Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL.
 services: cosmos-db
 documentationcenter: java
 author: mimig1
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/20/2018
 ms.author: mimig
-ms.openlocfilehash: 6862475e05f49c7da823bcfb70f30ee484131d12
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b11faf56ac700399fc411c7feb9910ada355e952
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="how-to-use-azure-table-storage-from-java"></a>Jak používat úložiště Azure Table z Javy
+# <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Jak používat Azure Table storage nebo Azure Cosmos DB tabulky API z Javy
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>Přehled
-Tento průvodce vám ukáže, jak provádět běžné scénáře s využitím služby Azure Table storage. Ukázky jsou napsané v jazyce Java a použít [sada SDK úložiště Azure pro jazyk Java][Azure Storage SDK for Java]. Pokryté scénáře zahrnují **vytváření**, **výpis**, a **odstraňování** tabulky, a také **vkládání**, **dotazování**, **úprava**, a **odstraňování** entity v tabulce. Další informace o tabulkách najdete v tématu [další kroky](#Next-Steps) části.
+Tento článek ukazuje, jak provádět běžné scénáře s využitím služby Azure Table storage a Azure Cosmos DB. Ukázky jsou napsané v jazyce Java a použít [sada SDK úložiště Azure pro jazyk Java][Azure Storage SDK for Java]. Pokryté scénáře zahrnují **vytváření**, **výpis**, a **odstraňování** tabulky, a také **vkládání**, **dotazování**, **úprava**, a **odstraňování** entity v tabulce. Další informace o tabulkách najdete v tématu [další kroky](#next-steps) části.
 
 > [!NOTE]
 > Sada SDK je k dispozici pro vývojáře, kteří na zařízení se systémem Android používají Azure Storage. Další informace najdete v tématu [sada SDK úložiště Azure pro Android][Azure Storage SDK for Android].
@@ -36,12 +36,12 @@ Tento průvodce vám ukáže, jak provádět běžné scénáře s využitím sl
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-java-application"></a>Vytvoření aplikace Java
-V této příručce bude používat funkce úložiště, které lze spustit v rámci aplikace Java místně nebo v kódu běžící v rámci webovou roli nebo role pracovního procesu v Azure.
+V této příručce bude používat funkce úložiště, které můžou běžet v aplikaci Java, místně nebo v kód spuštěný ve webové roli nebo role pracovního procesu v Azure.
 
-V takovém případě budete muset nainstalovat Java Development Kit (JDK) a vytvořit účet úložiště Azure ve vašem předplatném Azure. Jakmile provedete, budete muset ověřit, jestli váš vývojový systém splňuje minimální požadavky a závislosti, které jsou uvedeny v [sada SDK úložiště Azure pro jazyk Java] [ Azure Storage SDK for Java] úložišti na Githubu. Pokud váš systém splňuje tyto požadavky, můžete podle pokynů ke stažení a instalaci knihovny úložiště Azure pro jazyk Java systému z tohoto úložiště. Po dokončení těchto úloh, bude moci vytvořit aplikaci Java, která používá v příkladech v tomto článku.
+Pokud chcete používat ukázky v tomto článku, nainstalujte Java Development Kit (JDK) a potom vytvořit účet úložiště Azure ve vašem předplatném Azure. Jakmile provedete, ověřte, zda váš vývojový systém splňuje minimální požadavky a závislosti, které jsou uvedeny v [sada SDK úložiště Azure pro jazyk Java] [ Azure Storage SDK for Java] úložišti na Githubu. Pokud váš systém splňuje tyto požadavky, můžete podle pokynů ke stažení a instalaci knihovny úložiště Azure pro jazyk Java systému z tohoto úložiště. Po dokončení těchto úloh můžete vytvořit aplikaci Java, která se používá v příkladech v tomto článku.
 
 ## <a name="configure-your-application-to-access-table-storage"></a>Konfigurace aplikace k přístupu k table storage
-Přidejte následující příkazy pro import do horní části souboru Java, ve které chcete používat pro přístup k tabulky rozhraním API Microsoft Azure storage:
+Přidejte následující příkazy pro import do horní části souboru Java, ve které chcete použít rozhraním API v Azure storage nebo Cosmos DB tabulky rozhraní API služby Azure s tabulkami přístup:
 
 ```java
 // Include the following imports to use table APIs
@@ -50,8 +50,10 @@ import com.microsoft.azure.storage.table.*;
 import com.microsoft.azure.storage.table.TableQuery.*;
 ```
 
-## <a name="set-up-an-azure-storage-connection-string"></a>Nastavit připojovací řetězec úložiště Azure
-Klienta Azure storage používá připojovací řetězec úložiště k ukládání koncových bodů a pověření pro přístup ke službám dat správy. Když spustíte v aplikaci klienta, je nutné zadat připojovací řetězec úložiště v následujícím formátu, pomocí názvu účtu úložiště a primární přístupový klíč pro účet úložiště uvedené v [portál Azure](https://portal.azure.com) pro *AccountName* a *AccountKey* hodnoty. Tento příklad ukazuje, jak můžou deklarovat statické pole pro uložení připojovací řetězec:
+## <a name="add-an-azure-storage-connection-string"></a>Přidat připojovací řetězec úložiště Azure
+Klienta Azure storage používá připojovací řetězec úložiště k ukládání koncových bodů a pověření pro přístup ke službám dat správy. Když spustíte v aplikaci klienta, je nutné zadat připojovací řetězec úložiště v následujícím formátu, pomocí názvu účtu úložiště a primární přístupový klíč pro účet úložiště uvedené v [portál Azure](https://portal.azure.com) pro *AccountName* a *AccountKey* hodnoty. 
+
+Tento příklad ukazuje, jak můžou deklarovat statické pole pro uložení připojovací řetězec:
 
 ```java
 // Define the connection-string with your values.
@@ -61,7 +63,20 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-Ve spuštěné aplikace v rámci role ve službě Microsoft Azure, můžete tento řetězec uložené v konfiguračním souboru služby *souboru ServiceConfiguration.cscfg*a je přístupný pomocí volání **RoleEnvironment.getConfigurationSettings** metoda. Tady je příklad získávání připojovacího řetězce z **nastavení** element s názvem *StorageConnectionString* v konfiguračním souboru služby:
+## <a name="add-an-azure-cosmos-db-connection-string"></a>Přidat připojovací řetězec databázi Azure Cosmos
+Účet Azure Cosmos DB používá připojovací řetězec k uložení koncový bod tabulek a přihlašovacích údajů. Když spustíte v aplikaci klienta, je nutné zadat připojovací řetězec Azure Cosmos DB v následujícím formátu, pomocí názvu účtu Azure Cosmos DB a je primární přístupový klíč pro účet uveden v [portál Azure](https://portal.azure.com) pro *AccountName* a *AccountKey* hodnoty. 
+
+Tento příklad ukazuje, jak můžou deklarovat statické pole pro Azure Cosmos DB připojovací řetězec:
+
+```java
+public static final String storageConnectionString =
+    "DefaultEndpointsProtocol=https;" + 
+    "AccountName=your_cosmosdb_account;" + 
+    "AccountKey=your_account_key;" + 
+    "TableEndpoint=https://your_endpoint;" ;
+```
+
+V spuštěna aplikace v rámci role v Azure, můžete uložit tento řetězec v konfiguračním souboru služby *souboru ServiceConfiguration.cscfg*, a můžete k němu přístup pomocí volání  **RoleEnvironment.getConfigurationSettings** metoda. Tady je příklad získávání připojovacího řetězce z **nastavení** element s názvem *StorageConnectionString* v konfiguračním souboru služby:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -69,13 +84,19 @@ String storageConnectionString =
     RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 ```
 
-Následující ukázky předpokládejme, že používáte jednu z těchto dvou metod k získání připojovacího řetězce úložiště.
+Také můžete uložit připojovací řetězec v souboru projektu na config.properties:
 
-## <a name="how-to-create-a-table"></a>Postupy: vytvoření tabulky
+```java
+StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=your_account;AccountKey=your_account_key;TableEndpoint=https://your_table_endpoint/
+```
+
+Následující ukázky předpokládejme, že používáte jednu z těchto metod k získání připojovacího řetězce úložiště.
+
+## <a name="create-a-table"></a>Vytvoření tabulky
 A **CloudTableClient** objektu umožňuje získat odkaz na objekty pro tabulky a entity. Následující kód vytvoří **CloudTableClient** objektu a použije k vytvoření nového **CloudTable** objekt, který reprezentuje tabulku s názvem "uživatelé". 
 
 > [!NOTE]
-> Chcete-li vytvořit další způsoby **CloudStorageAccount** objekty; Další informace najdete v tématu **CloudStorageAccount** v [odkaz SDK klienta úložiště Azure].)
+> Existují jiné způsoby vytvoření **CloudStorageAccount** objekty; Další informace najdete v tématu **CloudStorageAccount** v [odkaz SDK klienta úložiště Azure]).
 >
 
 ```java
@@ -100,7 +121,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-list-the-tables"></a>Postupy: seznam tabulek
+## <a name="list-the-tables"></a>Seznam tabulek
 Chcete-li získat seznam tabulek, zavolejte **CloudTableClient.listTables()** metoda pro načtení iterable seznam názvů tabulek.
 
 ```java
@@ -127,7 +148,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-add-an-entity-to-a-table"></a>Postupy: Přidání entity do tabulky
+## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 Entity se mapují na objekty Java pomocí vlastní třídy implementace **TableEntity**. Pro usnadnění práce **TableServiceEntity** třída implementuje **TableEntity** a pomocí reflexe vlastnosti metody getter a setter s názvem vlastnosti. Chcete-li do tabulky přidat entitu, nejdřív vytvořte třídu, která definuje vlastnosti vaší entity. Následující kód definuje třídu entity, která používá jméno zákazníka jako klíč řádku a příjmení jako klíč oddílu. Společně pak klíč oddílu a řádku entity jednoznačně identifikují entitu v tabulce. Entity se stejným klíčem oddílu můžete položit dotaz rychleji než ty, které se různé klíče oddílů.
 
 ```java
@@ -193,7 +214,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-insert-a-batch-of-entities"></a>Postupy: vložení dávky entit
+## <a name="insert-a-batch-of-entities"></a>Vložení dávky entit
 V rámci jedné operace zápisu můžete vložit dávku entit do služby table. Následující kód vytvoří **TableBatchOperation** objekt a potom přidá tři operace k němu vložení. Každé operace insert přidá se při vytvoření nového objektu entity, nastavení jeho hodnoty a potom volání **vložit** metodu **TableBatchOperation** objekt, který chcete přidružit nové operace insert entity. Potom kód zavolá metodu **provést** na **CloudTable** objekt, zadání "lidé" tabulky a **TableBatchOperation** objekt, který dávku operace s tabulkou se odešle do služby úložiště v jedné žádosti.
 
 ```java
@@ -247,7 +268,7 @@ Některé věci poznamenat ohledně dávkových operací:
 * Všechny entity v jedné dávkové operaci musí mít stejný klíč oddílu.
 * Dávkové operace je omezený na datovou částí 4 MB volného místa.
 
-## <a name="how-to-retrieve-all-entities-in-a-partition"></a>Postupy: načtení všech entit v oddílu
+## <a name="retrieve-all-entities-in-a-partition"></a>Načtení všech entit v oddílu
 Dotaz na tabulku pro entity v oddílu, můžete použít **TableQuery**. Volání **TableQuery.from** k vytvoření dotazu na konkrétní tabulku, která vrátí typ určeného výsledku. Následující kód určuje filtr pro entity, kde je: Váša' klíč oddílu. **TableQuery.generateFilterCondition** je metoda helper pro vytvoření filtrů pro dotazy. Volání **kde** na odkaz na vrácený **TableQuery.from** metoda použít filtr dotazu. Provedení dotazu s výzvou k **provést** na **CloudTable** objektu se vrátí **Iterator** s **CustomerEntity** způsobit zadaný typ. Pak můžete použít **Iterator** , vrátí se v pro každou smyčku využívat výsledky. Tento kód zobrazí pole každé entity ve výsledcích dotazu do konzoly.
 
 ```java
@@ -294,7 +315,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-retrieve-a-range-of-entities-in-a-partition"></a>Postupy: načtení rozsahu entit v oddílu
+## <a name="retrieve-a-range-of-entities-in-a-partition"></a>Načtení rozsahu entit v oddílu
 Pokud nechcete, aby k dotazování všechny entity v oddílu, můžete zadat rozsah pomocí relačních operátorů ve filtru. Následující kód kombinuje dva filtry k získání všech entit v oddílu "Smith", kde klíč řádku (jméno) začíná písmenem až "E" abecedy. Potom zobrazí výsledky dotazu. Pokud používáte entity přidat do tabulky v dávce vložení této příručce, pouze dvě entity, jsou vráceny tentokrát (Ben a Karel Smith); Jeff Smith není zahrnutý.
 
 ```java
@@ -352,8 +373,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-retrieve-a-single-entity"></a>Postupy: načtení jedné entity
-Můžete napsat dotaz pro načtení jedné konkrétní entity. Následující kód volání **TableOperation.retrieve** s oddílem klíč a řádek klíče parametry k určení zákazníka "Jeff Smith", místo vytvoření **TableQuery** a stejnou věc udělat pomocí filtrů. Po provedení operace načtení vrátí místo kolekce pouze jednu entitu. **GetResultAsType** metoda vrhá výsledek, který má typ přiřazení cíle, **CustomerEntity** objektu. Pokud tento typ není kompatibilní s typem parametru dotazu, bude vyvolána výjimka. Pokud žádná entita má přesný klíč oddílu a řádku shodovat, je vrácena hodnota null. Určení jak klíčů oddílu, tak klíčů řádků v dotazu představuje nejrychlejší způsob, jak načíst jednu entitu ze služby Table.
+## <a name="retrieve-a-single-entity"></a>Načtení jedné entity
+Můžete napsat dotaz pro načtení jedné konkrétní entity. Následující kód volání **TableOperation.retrieve** s oddílem klíč a řádek klíče parametry k určení zákazníka "Jeff Smith", místo vytvoření **TableQuery** a stejnou věc udělat pomocí filtrů. Po provedení operace načtení vrátí místo kolekce pouze jednu entitu. **GetResultAsType** metoda vrhá výsledek, který má typ přiřazení cíle, **CustomerEntity** objektu. Pokud tento typ není kompatibilní s typem parametru dotazu, je vyvolána výjimka. Pokud žádná entita má přesný klíč oddílu a řádku shodovat, je vrácena hodnota null. Určení jak klíčů oddílu, tak klíčů řádků v dotazu představuje nejrychlejší způsob, jak načíst jednu entitu ze služby Table.
 
 ```java
 try
@@ -392,8 +413,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-modify-an-entity"></a>Postupy: Úprava entity
-Upravte entitu, načtěte ji ze služby table, změnit objekt entity a uložte změny zpět do služby table v operaci nahrazení nebo merge. Následující kód změní telefonní číslo stávajícího zákazníka. Místo volání **TableOperation.insert** jako jsme provedli vložení, tento kód zavolá **TableOperation.replace**. **CloudTable.execute** metoda volá služby table a nahradí entitu, pokud jiná aplikace změnil v čase vzhledem k tomu, že jejím načtení této aplikace. Pokud k tomu dojde, je vyvolána výjimka, a entity musí být načteny, upravit a uložit znovu. Tento vzor opakování optimistickou metodu souběžného je běžné v systém distribuovaného úložiště.
+## <a name="modify-an-entity"></a>Změnu entity
+Upravte entitu, načtěte ji ze služby table, změnit objekt entity a uložte změny zpět do služby table v operaci nahrazení nebo merge. Následující kód změní telefonní číslo stávajícího zákazníka. Místo volání **TableOperation.insert** jako jsme to udělali vložení, tento kód zavolá **TableOperation.replace**. **CloudTable.execute** metoda volá služby table a nahradí entitu, pokud jiná aplikace změnil v čase vzhledem k tomu, že jejím načtení této aplikace. Pokud k tomu dojde, je vyvolána výjimka, a entity musí být načteny, upravit a uložit znovu. Tento vzor opakování optimistickou metodu souběžného je běžné v systém distribuovaného úložiště.
 
 ```java
 try
@@ -432,7 +453,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-query-a-subset-of-entity-properties"></a>Postupy: dotaz na podmnožinu vlastností entity
+## <a name="query-a-subset-of-entity-properties"></a>Dotaz na podmnožinu vlastností entity
 Dotaz na tabulku můžete načíst jenom několik z entity. Tato technika, které se říká projekce, snižuje šířku pásma a může zlepšit výkon dotazů, zejména u velkých entit. Dotaz v následující kód používá **vyberte** metoda vrátí pouze e-mailové adresy entit v tabulce. Výsledky jsou promítnout do kolekce **řetězec** za pomoci **EntityResolver**, na které se převod typů na entity vrácená serverem. Další informace o projekce v [tabulky Azure: Představení funkcí Upsert a projekce dotazu][Azure Tables: Introducing Upsert and Query Projection]. Všimněte si, že projekci nepodporuje emulátor místního úložiště, takže tento kód spustí pouze v případě, že se pomocí účtu služby table.
 
 ```java
@@ -474,7 +495,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-insert-or-replace-an-entity"></a>Postupy: vložení nebo nahrazení entity
+## <a name="insert-or-replace-an-entity"></a>Vložení nebo nahrazení entity
 Často budete chtít do tabulky přidat entitu, aniž by věděly, pokud již existuje v tabulce. Operace vložení nebo nahrazení můžete jedné žádosti, která budou vkládat entity, pokud ji neexistuje nebo pokud k tomu nahradí existující. Sestavování na předchozí příklady, následující kód vložení nebo nahrazení entity pro "Walter tuleňů grónských". Po vytvoření nové entity, tento kód zavolá **TableOperation.insertOrReplace** metoda. Tento kód pak zavolá **provést** na **CloudTable** objektu s tabulkou a úlohy insert nebo nahradit tabulku operace jako parametry. Chcete-li aktualizovat jenom část entity, **TableOperation.insertOrMerge** metodu je možné použít místo. Všimněte si, že vložení nebo nahrazení není podporována na emulátor místního úložiště, takže tento kód spustí pouze v případě, že se pomocí účtu služby table. Můžete další informace o vložení nebo nahrazení a vložení nebo sloučení v tomto [tabulky Azure: Představení funkcí Upsert a projekce dotazu][Azure Tables: Introducing Upsert and Query Projection].
 
 ```java
@@ -508,7 +529,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-delete-an-entity"></a>Postupy: Odstranění entity
+## <a name="delete-an-entity"></a>Odstranění entity
 Entitu můžete snadno odstranit po jejím načtení. Jakmile se načíst entity, volání **TableOperation.delete** s entity, která má odstranit. Potom zavolejte **provést** na **CloudTable** objektu. Následující kód načte a odstraní entitu zákazníka.
 
 ```java
@@ -544,8 +565,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-delete-a-table"></a>Postupy: odstranění tabulky
-Následující kód nakonec odstraní tabulku z účtu úložiště. Tabulky, který byl odstraněn nebude znovu vytvořit pro následující odstranění, obvykle menší než 40 sekund časovém intervalu.
+## <a name="delete-a-table"></a>Odstranění tabulky
+Následující kód nakonec odstraní tabulku z účtu úložiště. O 40 sekund po odstranění tabulky, nelze znovu vytvořit ji. 
 
 ```java
 try
@@ -571,6 +592,7 @@ catch (Exception e)
 
 ## <a name="next-steps"></a>Další postup
 
+* [Začínáme se službou Azure tabulky v jazyce Java](https://github.com/Azure-Samples/storage-table-java-getting-started)
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 * [Úložiště Azure SDK pro jazyk Java][Azure Storage SDK for Java]
 * [Referenční informace sady SDK úložiště Azure klienta][odkaz SDK klienta úložiště Azure]
@@ -582,7 +604,7 @@ Další informace najdete na webu [Azure pro vývojáře v Javě](/java/azure).
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[odkaz SDK klienta úložiště Azure]: http://dl.windowsazure.com/storage/javadoc/
+[odkaz SDK klienta úložiště Azure]: http://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx

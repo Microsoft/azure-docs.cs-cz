@@ -1,17 +1,30 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines-linux
+author: dlepow
+ms.service: virtual-machines-linux
+ms.topic: include
+ms.date: 03/19/2018
+ms.author: danlep
+ms.custom: include file
+ms.openlocfilehash: c1e57ea28f597293d8bb52207bbbb76892b1d5f5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/28/2018
+---
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
 * Dostupnost virtuálních počítačů N-series, najdete v části [produkty podle oblasti](https://azure.microsoft.com/en-us/regions/services/).
 
 * N-series virtuálních počítačů lze nasadit pouze v modelu nasazení Resource Manager.
 
-* N-series virtuálních počítačů se liší v typ podporují pro jejich disky úložiště Azure. NC a virtuální počítače vs podporují jenom disky virtuálních počítačů, které jsou zajišťované pomocí standardní úložiště disku (HDD). NCv2 ND a NCv3 (Náhled) virtuálních počítačů pouze podporu virtuálních počítačů disky, které jsou zajišťované pomocí disku úložiště Premium (SSD).
+* N-series virtuálních počítačů se liší v typ podporují pro jejich disky úložiště Azure. NC a virtuální počítače vs podporují jenom disky virtuálních počítačů, které jsou zajišťované pomocí standardní úložiště disku (HDD). NCv2 ND a virtuální počítače NCv3 podporují jenom disky virtuálních počítačů, které jsou zajišťované pomocí disku úložiště Premium (SSD).
 
 * Pokud chcete nasadit víc než několik virtuálních počítačů N-series, zvažte průběžnými platbami předplatné nebo jiné možnosti nákupu. Pokud používáte [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete použít pouze omezený počet výpočetních jader Azure.
 
-* Potřebujete může se zvýšit kvótu jader (podle oblasti) ve vašem předplatném Azure a zvýšení samostatné kvóty pro počet jader NC NCv2, ND nebo vs. Požádat o zvýšení kvóty, [otevřete žádosti o podporu online zákazníka](../articles/azure-supportability/how-to-create-azure-support-request.md) zdarma. Výchozí omezení se může lišit v závislosti na vaše předplatné kategorii.
-
-* Můžete nasadit na virtuálních počítačích N-series jeden image virtuálního počítače je [virtuální počítač Azure datové vědy](../articles/machine-learning/data-science-virtual-machine/overview.md). Virtuální počítač datové vědy provede předinstalaci a nakonfiguruje mnoha oblíbených datové vědy a přímý výukové nástroje. Provede také předinstalaci NVIDIA tesla – měrná GPU ovladače.
-
+* Může být nutné zvýšíte kvóty jader (podle oblasti) ve vašem předplatném Azure a samostatné kvótu pro počet jader NC NCv2, NCv3 ND nebo vs. Požádat o zvýšení kvóty, [otevřete žádosti o podporu online zákazníka](../articles/azure-supportability/how-to-create-azure-support-request.md) zdarma. Výchozí omezení se může lišit v závislosti na vaše předplatné kategorii.
 
 
 

@@ -1,11 +1,11 @@
 ---
-title: "Referenční informace pro vývojáře Java pro Azure Functions | Microsoft Docs"
-description: "Pochopit, jak vyvíjet funkce s Java."
+title: Referenční informace pro vývojáře Java pro Azure Functions | Microsoft Docs
+description: Pochopit, jak vyvíjet funkce s Java.
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
-keywords: "Azure funkce, funkce, událostí zpracování, webhooků, dynamické výpočetní, bez serveru architektura, java"
+keywords: Azure funkce, funkce, událostí zpracování, webhooků, dynamické výpočetní, bez serveru architektura, java
 ms.service: functions
 ms.devlang: java
 ms.topic: article
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: 09a48d61cb27b4db0778295565d167a0688cc99f
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 71576e65d20d7e8cb7f5ff1c5f19c82439bb6807
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-functions-java-developer-guide"></a>Příručka vývojáře Azure funkce Java
 > [!div class="op_single_selector"]
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
-## <a name="programming-model"></a>Model programování 
+## <a name="programming-model"></a>Programovací model 
 
 Funkce Azure by měl být bezstavové třída metodu, která zpracovává vstup a výstup. I když budou moci zapsat metody instance, funkce nesmí být závislá na všechna pole instance třídy. Musí mít všechny funkce metody `public` – modifikátor přístupu.
 
@@ -33,7 +33,7 @@ Obvykle Azure funkce je volána z důvodu externí aktivační události. Funkce
 
 Java poznámky jsou součástí `azure-functions-java-core` balíček, který chcete vytvořit vazbu vstup a výstupy vaše metody. Podporované vstupní triggerů a výstup vazby poznámky jsou zahrnuty v následující tabulce:
 
-Vazba | Poznámky
+Vazba | Poznámka
 ---|---
 CosmosDB | neuvedeno
 HTTP | <ul><li>`HttpTrigger`</li><li>`HttpOutput`</li></ul>
@@ -325,9 +325,33 @@ public class Function {
 }
 ```
 
+## <a name="environment-variables"></a>Proměnné prostředí
+
+Je často žádoucí extrahovat tajné informace ze zdrojového kódu z bezpečnostních důvodů. To umožňuje kód publikování zdrojového kódu úložiště bez omylem zadání přihlašovacích údajů k jinými vývojáři. Toho lze dosáhnout jednoduše tak, že použití proměnných prostředí, jak při místním spuštění Azure Functions tak při nasazení funkce v Azure.
+
+Snadno nastavit proměnné prostředí při spuštění Azure Functions místně, můžete přidat do souboru local.settings.json tyto proměnné. Pokud není přítomen v kořenovém adresáři projektu funkce, klidně si ji vytvořit. Zde je, jak by měla vypadat souboru:
+
+```xml
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "AzureWebJobsDashboard": ""
+  }
+}
+```
+
+Každý klíč / hodnota mapování `values` mapy bude k dispozici v době běhu jako proměnné prostředí, přístupný pro volání `System.getenv("<keyname>")`, například `System.getenv("AzureWebJobsStorage")`. Přidání další klíč / hodnota dvojice je přijatá a doporučená praxe.
+
+> [!NOTE]
+> Pokud je zvolen tento přístup, být opravdu zvážit, zda local.settings.json přidání souboru do úložiště souboru, tak, aby ignoroval není potvrzená.
+
+Váš kód teď v závislosti na těchto proměnných prostředí vám umožní přihlásit k portálu Azure nastavte stejný klíč / hodnota dvojice v nastavení aplikace – funkce tak, aby váš kód funkce ekvivalentně při testování místně a při nasazení do Azure.
+
 ## <a name="next-steps"></a>Další postup
 Další informace najdete v následujících materiálech:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
 * [Azure funkce triggerů a vazeb](functions-triggers-bindings.md)
+* [Vzdálené ladění Java Azure Functions pomocí kódu v sadě Visual Studio](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)

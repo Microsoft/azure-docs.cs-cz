@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: d4022a89b8e0e08679e1c593dc1b691a23d21471
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8ab2e7cdc8472be9c0800eea5bef9322b0ed87f2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Monitorovat pomocí monitorování Azure data Factory  
 Cloudové aplikace jsou komplexní s mnoha přesunutí částmi. Monitorování poskytuje data a ujistěte se, že vaše aplikace zůstává nahoru a spuštěna v dobrém stavu. Také pomáhá stave vypnout potenciální problémy nebo vyřešit potíže s uplynulou těch, které jsou. Kromě toho můžete data monitorování a získáte přehled o hloubkové o vaší aplikaci. Tato znalostní báze můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
@@ -381,7 +381,7 @@ Další informace v tomto poli] ()https://msdn.microsoft.com/en-us/library/azure
 |start| Řetězec | Začátek ještě efektivněji aktivační události v časový interval, formátu UTC | `2017-06-26T20:55:29.5007959Z`|
 |status| Řetězec | Konečný stav jestli aktivační událost úspěšně vyvolána (úspěšné nebo neúspěšné) | `Succeeded`|
 
-### <a name="metrics"></a>Metriky
+## <a name="metrics"></a>Metriky
 
 Azure monitorování umožňuje využívat telemetrie a získáte přehled o výkonu a stavu úlohy v Azure. Nejdůležitější typ Azure telemetrická data je metriky (také nazývané čítače výkonu) vysílaných prostředků nejvíce Azure. Monitorování Azure poskytuje několik způsobů, jak nakonfigurovat a využívat tyto metriky pro monitorování a řešení potíží.
 
@@ -397,6 +397,51 @@ ADFV2 vysílá následující metriky
 | TriggerFailedRuns    | Aktivační událost metriky spuštění se nezdařilo     | Počet    | Celkem                | Celkový počet aktivační událost běží v rámci okno minut se nezdařilo      |
 
 Pro přístup k metriky, postupujte podle pokynů v článku – https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
+
+## <a name="alerts"></a>Výstrahy
+
+Můžete zvýšit výstrahy na podporované metriky v datové továrně. Klikněte na tlačítko **výstrahy** na objektu pro vytváření dat tlačítko **monitorování** stránky.
+
+![Možnost výstrahy](media/monitor-using-azure-monitor/alerts_image1.png)
+
+Tím přejdete **výstrahy** stránky.
+
+![stránka výstrah](media/monitor-using-azure-monitor/alerts_image2.png)
+
+Můžete také přihlásit k portálu Azure a klikněte na tlačítko **monitorování –&gt; výstrahy** k dosažení **výstrahy** stránky přímo.
+
+![Výstrahy v nabídce portálu](media/monitor-using-azure-monitor/alerts_image3.png)
+
+### <a name="create-alerts"></a>Vytvářet výstrahy
+
+1.  Klikněte na tlačítko **+ nové pravidlo výstrahy** vytvořit nové oznámení.
+
+    ![nové pravidlo výstrahy](media/monitor-using-azure-monitor/alerts_image4.png)
+
+2.  Definování **výstrahy podmínku**.
+
+    > [!NOTE]
+    > Je nutné vybrat **všechny** v **filtrovat podle typu prostředku**.
+
+    ![Podmínka výstrahy, obrazovky 1 ze 3](media/monitor-using-azure-monitor/alerts_image5.png)
+
+    ![Podmínka výstrahy, obrazovky 2 ze 3](media/monitor-using-azure-monitor/alerts_image6.png)
+
+    ![Podmínka výstrahy, obrazovce 3 ze 3](media/monitor-using-azure-monitor/alerts_image7.png)
+
+3.  Definování **podrobnosti výstrahy**.
+
+    ![Podrobnosti upozornění](media/monitor-using-azure-monitor/alerts_image8.png)
+
+4.  Definování **akce skupiny**.
+
+    ![Akce skupiny, obrazovky 1 4](media/monitor-using-azure-monitor/alerts_image9.png)
+
+    ![Akce skupiny, obrazovky 2 4](media/monitor-using-azure-monitor/alerts_image10.png)
+
+    ![Akce skupiny, obrazovky 3 4](media/monitor-using-azure-monitor/alerts_image11.png)
+
+    ![Akce skupiny, obrazovky 4 4](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>Další postup
 V tématu [monitorování a Správa kanálů prostřednictvím kódu programu](monitor-programmatically.md) článku se dozvíte o monitorování a Správa kanálů spuštěním. 

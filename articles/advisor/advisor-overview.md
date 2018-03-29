@@ -1,12 +1,12 @@
 ---
-title: "Úvod do Azure Advisor | Microsoft Docs"
-description: "Chcete-li optimalizovat nasazení Azure pomocí Azure Advisor."
+title: Úvod do Azure Advisor | Microsoft Docs
+description: Chcete-li optimalizovat nasazení Azure pomocí Azure Advisor.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: a4096b11a828cf6676aa22b11c4dd4d75f3b0286
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0aa97a7557706f0b704d4e31a84e9d356d1ad087
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisor
 
@@ -43,9 +43,6 @@ Dostanete Advisor prostřednictvím [portál Azure](https://aka.ms/azureadvisord
 
   ![Typy doporučení služby Advisor](./media/advisor-overview/advisor-dashboard.png)
 
-> [!NOTE]
-> Pomocí nástroje Poradce pro Azure s předplatným, předplatné *vlastníka* musí spustit Poradce pro řídicí panel.  Tato akce registruje Poradce pro předplatné.  Od tohoto okamžiku na libovolné předplatné, *vlastníka*, *Přispěvatel*, nebo *čtečky* přístup doporučením Poradce pro předplatné. 
-
 Můžete kliknutím na kategorii zobrazíte seznam doporučení v rámci této kategorie a vyberte doporučení Další informace o něm.  Můžete si také přečíst o akcích, které můžete využít výhod příležitost nebo vyřešte problém.
 
 ![Kategorie doporučení služby Advisor](./media/advisor-overview/advisor-ha-category-example.png) 
@@ -62,12 +59,12 @@ Dostanete Advisor prostřednictvím [portál Azure](https://aka.ms/azureadvisord
 Doporučení služby Advisor můžete zobrazit také prostřednictvím rozhraní prostředků virtuálního počítače. Vyberte virtuální počítač a poté přejděte k doporučení služby Advisor v nabídce. 
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Uvedete, jaká oprávnění jsou nutné pro přístup k Advisor?
-
-Pokud chcete získat doporučení Poradce pro předplatné, nejprve je nutné zaregistrovat předplatné službou Advisor. Předplatné je zaregistrován při předplatné *vlastníka* spustí Advisor řídicího panelu. Jedná se o jednorázovou operaci. Po registraci předplatného dostanete doporučení služby Advisor jako *vlastníka*, *Přispěvatel*, nebo *čtečky* předplatného.
+ 
+Dostanete doporučení služby Advisor jako *vlastníka*, *Přispěvatel*, nebo *čtečky* předplatného.
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Jaké prostředky poskytuje Advisor doporučení pro?
 
-Advisor poskytuje doporučení pro virtuální počítače, skupiny dostupnosti, application Gateway, aplikační služby, servery SQL Server, databáze SQL a Redis Cache.
+Advisor poskytuje doporučení pro virtuální počítače, skupiny dostupnosti, application Gateway, aplikační služby, servery SQL a Redis Cache.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Můžete odložit nebo zrušit doporučení?
 

@@ -1,11 +1,11 @@
 ---
-title: "Zobrazit všechny podnikové aplikace, které můžete spravovat I v Azure Active Directory | Microsoft Docs"
-description: "Jak zobrazit seznam podnikové aplikace, které máte oprávnění ke správě v Azure Active Directory"
+title: Zobrazit všechny podnikové aplikace, které můžete spravovat I v Azure Active Directory | Microsoft Docs
+description: Jak zobrazit seznam podnikové aplikace, které máte oprávnění ke správě v Azure Active Directory
 services: active-directory
-documentationcenter: 
-author: curtand
+documentationcenter: ''
+author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c4fb6f94-34f8-4323-8bd7-a3ee44901f7d
 ms.service: active-directory
 ms.workload: identity
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
-ms.author: curtand
+ms.author: markvi
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 5bcde742690e57d9195725fba524ee64cc691b30
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 64946b3bbf39cf8153fcc8c7aa548ed6055fb47f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="view-all-the-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>Zobrazit všechny podnikové aplikace, které můžete spravovat I v Azure Active Directory
 Můžete spravovat vaše podnikové aplikace ve službě Azure Active Directory (Azure AD). Můžete zobrazit aplikace, můžete spravovat, přiřaďte uživatele nebo skupiny do aplikace, spravovat vlastnosti pro aplikace, jako je například název aplikace nebo loga a i zakázat aplikaci tak, aby žádní uživatelé se můžete přihlásit k jeho.

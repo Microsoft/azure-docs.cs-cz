@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: a39e4ec68af70b7d189ac450f880a12b5397e4c4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1cbd29b480c80c93f750b97d47ccb3c09c984942
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>Vytvoření webové aplikace v PHP ve službě App Service v Linuxu
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/16/2018
 
 [App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. V tomto kurzu Rychlý start se dozvíte, jak nasadit aplikaci v PHP do služby Azure App Service v Linuxu. Pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ve službě Cloud Shell vytvoříte webovou aplikaci s použitím integrované image a pomocí Gitu do webové aplikace nasadíte kód PHP.
 
-![Ukázková aplikace spuštěná v Azure]](media/quickstart-php/hello-world-in-browser.png)
+![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-php/hello-world-in-browser.png)
 
 Postup v tomto článku můžete použít v případě počítačů se systémem Mac, Windows nebo Linux.
 

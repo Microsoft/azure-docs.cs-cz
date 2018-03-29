@@ -1,24 +1,24 @@
 ---
-title: "Používání systému geograficky umělé Intelligence Data vědecké účely virtuálního počítače – Azure | Microsoft Docs"
-description: "Jak používat geograficky AI virtuálního počítače na platformě Azure."
-keywords: "přímý učení, AI, vědecké účely nástrojů data, data vědecké účely virtuálního počítače, geoprostorové analytics"
+title: Používání systému geograficky umělé Intelligence Data vědecké účely virtuálního počítače – Azure | Microsoft Docs
+description: Jak používat geograficky AI virtuálního počítače na platformě Azure.
+keywords: přímý učení, AI, vědecké účely nástrojů data, data vědecké účely virtuálního počítače, geoprostorové analytics
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: gopitk
 manager: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
-ms.author: gokuma; bradsev;
-ms.openlocfilehash: f87b56ad2b19b10bca1e797f0a5aef5c2a92a5dd
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: gokuma
+ms.openlocfilehash: f7ee109c26f8b2f6107dfcb4853d5517384aef76
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Používání virtuálních počítačů geograficky umělé Intelligence Data vědecké účely
 

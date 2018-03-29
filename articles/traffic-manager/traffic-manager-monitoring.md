@@ -1,11 +1,11 @@
 ---
-title: "Monitorování koncového bodu v Azure Traffic Manageru | Microsoft Docs"
-description: "Tento článek vám může pomoct pochopit, jak Traffic Manager používá pro Azure zákazníky, nasazení aplikací s vysokou dostupností monitorování koncového bodu a koncový bod automatické převzetí služeb při selhání"
+title: Monitorování koncového bodu v Azure Traffic Manageru | Microsoft Docs
+description: Tento článek vám může pomoct pochopit, jak Traffic Manager používá pro Azure zákazníky, nasazení aplikací s vysokou dostupností monitorování koncového bodu a koncový bod automatické převzetí služeb při selhání
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fff25ac3-d13a-4af9-8916-7c72e3d64bc7
 ms.service: traffic-manager
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: 3b30aa04854b779c25582abafc0f9ebba65b71ba
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: c54454dd2e7b56820834e4f3cd7452be10d5ddca
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncového bodu Traffic Manageru
 
@@ -73,11 +73,14 @@ Stav monitorování koncového bodu je hodnota generované Traffic Manager, kter
 | Zakázáno |Povoleno |Neaktivní |Profil je zakázané. I když je stav koncového bodu je povoleno, přednost má stav profilu (zakázáno). Koncové body v zakázaném profily nejsou monitorovány. Zadání kódu odpovědi NXDOMAIN se vrátí pro dotaz DNS. |
 | &lt;všechny&gt; |Zakázáno |Zakázáno |Koncový bod je zakázané. Zakázané koncových bodů nejsou monitorovány. Koncový bod není součástí odpovědí DNS, proto, že neobdrží provoz. |
 | Povoleno |Povoleno |Online |Koncový bod je monitorována a je v pořádku. To je součástí odpovědí DNS a může přijímat provoz. |
-| Povoleno |Povoleno |Snížený výkon |Monitorování kontroly stavu koncový bod se nedaří. Koncový bod není zahrnutý v odpovědi DNS a nepřijímá provoz. <br>"Výjimkou je, pokud jsou degradovány všechny koncové body, v takovém případě všechny z nich jsou považovány za má být vrácen v odpovědi na dotaz).</br>|
+| Povoleno |Povoleno |Sníženo |Monitorování kontroly stavu koncový bod se nedaří. Koncový bod není zahrnutý v odpovědi DNS a nepřijímá provoz. <br>"Výjimkou je, pokud jsou degradovány všechny koncové body, v takovém případě všechny z nich jsou považovány za má být vrácen v odpovědi na dotaz).</br>|
 | Povoleno |Povoleno |CheckingEndpoint |Koncový bod je monitorována, ale výsledky první sondu ještě nebyly přijaty. CheckingEndpoint je dočasný stav, ke kterému dochází obvykle okamžitě po přidání nebo povolení koncového bodu v profilu. Koncový bod v tomto stavu je zahrnutý v odpovědi DNS a může přijímat provoz. |
 | Povoleno |Povoleno |Zastaveno |Cloudové služby nebo webovou aplikaci, odkazující na koncový bod není spuštěna. Zkontrolujte nastavení cloudové služby nebo webovou aplikaci. To také může dojít, pokud koncový bod je typ vnořené koncového bodu a podřízené profilu je zakázán nebo je neaktivní. <br>Koncový bod ve stavu Zastaveno není monitorován. To není zahrnutý v odpovědi DNS a neobdrží provoz. Výjimkou je, pokud jsou degradovány všechny koncové body, v takovém případě všechny z nich bude považovat za má být vrácen v odpovědi na dotaz.</br>|
 
 Podrobnosti o výpočtu stav monitorování koncových bodů pro vnořené koncové body najdete v tématu [vnořené profily Traffic Manageru](traffic-manager-nested-profiles.md).
+
+>[!NOTE]
+> Koncový bod zastavit monitorování stavu může dojít v App Service, pokud webová aplikace neběží na vrstvě Standard nebo vyšší. Další informace najdete v tématu [Traffic Manager integrace s App Service](/azure/app-service/web-sites-traffic-manager).
 
 ### <a name="profile-monitor-status"></a>Stav monitorování profilu
 
@@ -86,7 +89,7 @@ Stav monitorování profilu je kombinací stav nakonfigurované profilu a koncov
 | Stav profilu (jak je nakonfigurováno) | Stav monitorování koncových bodů | Stav monitorování profilu | Poznámky |
 | --- | --- | --- | --- |
 | Zakázáno |&lt;všechny&gt; nebo profil s žádné koncové body definované. |Zakázáno |Profil je zakázané. |
-| Povoleno |Je Degradovaný stav aspoň jeden koncový bod. |Snížený výkon |Zkontrolujte hodnoty stavu jednotlivých koncový bod k určení, které koncové body vyžadovat další pozornost. |
+| Povoleno |Je Degradovaný stav aspoň jeden koncový bod. |Sníženo |Zkontrolujte hodnoty stavu jednotlivých koncový bod k určení, které koncové body vyžadovat další pozornost. |
 | Povoleno |Stav aspoň jeden koncový bod je Online. Žádné koncové body mají stav snížený. |Online |Služba přijímá provoz. Není vyžadována žádná další akce. |
 | Povoleno |Stav aspoň jeden koncový bod je CheckingEndpoint. Ve stavu Online nebo snížený nejsou žádné koncové body. |CheckingEndpoints |Tento přechod stavu nastane, když profil Pokud vytvořené nebo povolené. První se kontroluje stav koncového bodu. |
 | Povoleno |Stavy všech koncových bodů v profilu jsou zakázán nebo zastaven nebo v profilu nemá žádné koncové body definované. |Neaktivní |Žádné koncové body jsou aktivní, ale stále profilovou. |
@@ -111,7 +114,7 @@ Následující časová osa na obrázku 2 je podrobný popis monitorování proc
 
 **Obrázek 2: Provoz manager koncový bod převzetí služeb při selhání a obnovení pořadí**
 
-1. **ZÍSKAT**. Pro každý koncový bod Traffic Manager monitorování systému provede požadavek GET na cestě zadaný v nastavení monitorování.
+1. **GET**. Pro každý koncový bod Traffic Manager monitorování systému provede požadavek GET na cestě zadaný v nastavení monitorování.
 2. **200 OK**. Systém monitorování očekává zprávu HTTP 200 OK má být vrácen do 10 sekund. Při přijetí této odpovědi, rozpozná, že služba je k dispozici.
 3. **30 sekundách mezi kontrolami**. Kontrola stavu koncový bod se opakuje každých 30 sekund.
 4. **Služba není k dispozici**. Služba nebude k dispozici. Traffic Manager nebude vědět, dokud další kontrolu stavu.
@@ -150,7 +153,7 @@ Další informace o řešení potíží se nezdařilo kontroly stavu, najdete v 
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace [fungování Traffic Manager](traffic-manager-how-traffic-manager-works.md)
 

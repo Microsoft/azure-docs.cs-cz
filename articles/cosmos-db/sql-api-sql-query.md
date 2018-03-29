@@ -1,9 +1,9 @@
 ---
 title: Dotazy SQL pro Azure Cosmos DB | Microsoft Docs
-description: "Další informace o syntaxi jazyka SQL, databáze koncepty a dotazy SQL pro Azure Cosmos DB. SQL lze použít jako dotazovací jazyk JSON v Azure Cosmos DB."
-keywords: "syntaxe SQL, dotaz sql, sql dotazy, json dotazovací jazyk, databázových koncepcí a sql, agregační funkce"
+description: Další informace o syntaxi jazyka SQL, databáze koncepty a dotazy SQL pro Azure Cosmos DB. SQL lze použít jako dotazovací jazyk JSON v Azure Cosmos DB.
+keywords: syntaxe SQL, dotaz sql, sql dotazy, json dotazovací jazyk, databázových koncepcí a sql, agregační funkce
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: LalithaMV
 manager: jhubbard
 editor: monicar
@@ -13,17 +13,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: 8425c9eae1bb7b50edec1d36d4e7c80b49b243ac
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a79b1a97909a38b4bfba06186db875d0c0c25f03
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Dotazy SQL pro Azure Cosmos DB
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Microsoft Azure Cosmos DB podporuje dotazování dokumentů pomocí jazyka SQL (Structured Query Language) jako dotazovací jazyk JSON na rozhraní API pro SQL účty. Azure Cosmos DB je skutečně bez schémat. Na základě jeho závazků do datového modelu JSON přímo v rámci databázový stroj poskytuje automatické indexování dokumentů JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů.
 
@@ -34,11 +32,17 @@ Při navrhování dotazovacího jazyka pro Cosmos DB, jsme měli dva cíle v pam
 
 Věříme, že tyto funkce jsou klíčem k omezení tření mezi aplikací a databáze a jsou zásadní pro produktivita vývojářů.
 
-Doporučujeme začít následujícím videem, kde Aravind Ramachandran zobrazí Cosmos DB je dotazování možnosti, a navštívíte naše [Query Playground](http://www.documentdb.com/sql/demo), kde můžete vyzkoušet Cosmos DB a spouštět dotazy SQL pro naše datové sady.
+Doporučujeme začít následujícím videem, kde Azure manažer programu DB Cosmos Andrew Liu ukazuje možnosti dotazování Azure Cosmos DB a předvádí online [Query Playground](http://www.documentdb.com/sql/demo), kde můžete vyzkoušet Azure Cosmos DB a spouštět dotazy SQL pro naší datové sadě, jak je předvedeno v videa.
 
-> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/DataExposedQueryingDocumentDB/player]
-> 
-> 
+> [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
+>
+>
+
+Pokročilejší dotazování techniky je ukázán v této následné video:
+
+> [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
+>
+>
 
 Pak se vraťte k tomuto článku, kde Začneme s kurz dotaz SQL, který vás provede některé jednoduché dokumentů JSON a příkazy SQL.
 
@@ -110,7 +114,7 @@ Nyní nyní si vyzkoušíte několik dotazů pro tato data pochopit některé z 
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Výsledky**
+**Results**
 
     [{
         "id": "AndersenFamily",
@@ -139,7 +143,7 @@ Teď se podíváme případu, které je třeba přeformátujte výstup JSON v r�
     FROM Families f 
     WHERE f.address.city = f.address.state
 
-**Výsledky**
+**Results**
 
     [{
         "Family": {
@@ -159,7 +163,7 @@ Další dotaz vrátí všechny názvy daným podřízených prvků v dané rodin
     WHERE f.id = 'WakefieldFamily'
     ORDER BY f.address.city ASC
 
-**Výsledky**
+**Results**
 
     [
       { "givenName": "Jesse" }, 
@@ -215,7 +219,7 @@ Zdroj může být také omezené menší podmnožinu. Například k vytváření
     SELECT * 
     FROM Families.children
 
-**Výsledky**  
+**Results**  
 
     [
       [
@@ -253,7 +257,7 @@ Při výše uvedeném příkladu pole jako zdroj, objekt může také použít j
     SELECT * 
     FROM Families.address.state
 
-**Výsledky**
+**Results**
 
     [
       "WA", 
@@ -272,7 +276,7 @@ Následující dotaz požadavků dokumentů, které obsahují název vlastnosti,
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Výsledky**
+**Results**
 
     [{
       "address": {
@@ -611,7 +615,7 @@ Následující příklad ukazuje typické dotaz SELECT.
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Výsledky**
+**Results**
 
     [{
       "address": {
@@ -631,7 +635,7 @@ V následujícím příkladu jsme jsou projekce dvě vnořené vlastnosti `f.add
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Výsledky**
+**Results**
 
     [{
       "state": "WA", 
@@ -647,7 +651,7 @@ Projekce také podporuje JSON výrazy, jak je znázorněno v následujícím př
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Výsledky**
+**Results**
 
     [{
       "$1": {
@@ -667,7 +671,7 @@ Podívejme se na roli `$1` sem. `SELECT` Klauzule musí vytvořit objekt JSON a 
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Výsledky**
+**Results**
 
     [{
       "$1": {
@@ -693,7 +697,7 @@ V případě, že dotaz má dvě vlastnosti se stejným názvem, musí být alia
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Výsledky**
+**Results**
 
     [{
       "AddressInfo": {
@@ -713,7 +717,7 @@ Kromě odkazů na vlastnost klauzule SELECT také podporuje skalární výrazy k
 
     SELECT "Hello World"
 
-**Výsledky**
+**Results**
 
     [{
       "$1": "Hello World"
@@ -726,7 +730,7 @@ Zde je ukázka používající skalární výraz.
 
     SELECT ((2 + 11 % 7)-2)/3    
 
-**Výsledky**
+**Results**
 
     [{
       "$1": 1.33333
@@ -740,7 +744,7 @@ V následujícím příkladu je výsledek skalární výraz logická hodnota.
     SELECT f.address.city = f.address.state AS AreFromSameCityState
     FROM Families f    
 
-**Výsledky**
+**Results**
 
     [
       {
@@ -760,7 +764,7 @@ Další klíčových funkcí rozhraní API SQL je vytvoření pole nebo objektu.
     SELECT [f.address.city, f.address.state] AS CityState 
     FROM Families f    
 
-**Výsledky**  
+**Results**  
 
     [
       {
@@ -784,7 +788,7 @@ Další klíčových funkcí rozhraní API SQL je vytvoření pole nebo objektu.
 
     SELECT VALUE "Hello World"
 
-**Výsledky**
+**Results**
 
     [
       "Hello World"
@@ -798,7 +802,7 @@ Následující dotaz vrátí hodnotu JSON bez `"address"` popisek ve výsledcíc
     SELECT VALUE f.address
     FROM Families f    
 
-**Výsledky**  
+**Results**  
 
     [
       {
@@ -820,7 +824,7 @@ Následující příklad rozšiřuje na ukazují, jak vrátit JSON primitivní h
     SELECT VALUE f.address.state
     FROM Families f    
 
-**Výsledky**
+**Results**
 
     [
       "WA",
@@ -837,7 +841,7 @@ Podporován je speciální operátor (*) do projektu dokumentu jako-je. Pokud se
     FROM Families f 
     WHERE f.id = "AndersenFamily"
 
-**Výsledky**
+**Results**
 
     [{
         "id": "AndersenFamily",
@@ -865,7 +869,7 @@ TOP – klíčové slovo lze omezit počet hodnot z dotazu. Když horní se pou�
     SELECT TOP 1 * 
     FROM Families f 
 
-**Výsledky**
+**Results**
 
     [{
         "id": "AndersenFamily",
@@ -895,7 +899,7 @@ Můžete také provést agregace v `SELECT` klauzule. Agregační funkce provád
     SELECT COUNT(1) 
     FROM Families f 
 
-**Výsledky**
+**Results**
 
     [{
         "$1": 2
@@ -908,7 +912,7 @@ Můžete se taky vrátit skalární hodnota agregace pomocí `VALUE` – klíčo
     SELECT VALUE COUNT(1) 
     FROM Families f 
 
-**Výsledky**
+**Results**
 
     [ 2 ]
 
@@ -920,7 +924,7 @@ Můžete také provést agregace v kombinaci s filtry. Například následujíc�
     FROM Families f
     WHERE f.address.state = "WA" 
 
-**Výsledky**
+**Results**
 
     [ 1 ]
 
@@ -953,7 +957,7 @@ Tady je příklad dotaz, který načte rodiny v pořadí podle název trvalé m�
     FROM Families f 
     ORDER BY f.address.city
 
-**Výsledky**
+**Results**
 
     [
       {
@@ -974,7 +978,7 @@ A zde uvádíme dotaz, který načte rodiny v pořadí podle data vytvoření, k
     FROM Families f 
     ORDER BY f.creationDate DESC
 
-**Výsledky**
+**Results**
 
     [
       {
@@ -997,7 +1001,7 @@ Byl přidán nový konstrukce prostřednictvím **IN** – klíčové slovo v ro
     SELECT * 
     FROM Families.children
 
-**Výsledky**  
+**Results**  
 
     [
       [
@@ -1031,7 +1035,7 @@ Nyní Podíváme se na další dotaz, který provádí iteraci přes podřízen�
     SELECT * 
     FROM c IN Families.children
 
-**Výsledky**  
+**Results**  
 
     [
       {
@@ -1062,7 +1066,7 @@ To dále lze filtrovat na každou položku pole, jak je znázorněno v následuj
     FROM c IN Families.children
     WHERE c.grade = 8
 
-**Výsledky**  
+**Results**  
 
     [{
       "givenName": "Lisa"
@@ -1075,7 +1079,7 @@ Můžete také provést agregace přes výsledek iterace pole. Například násl
     SELECT COUNT(child) 
     FROM child IN Families.children
 
-**Výsledky**  
+**Results**  
 
     [
       { 
@@ -1096,7 +1100,7 @@ Následující příklady ukazují, jak funguje klauzuli JOIN. V následujícím
     FROM Families f
     JOIN f.NonExistent
 
-**Výsledky**  
+**Results**  
 
     [{
     }]
@@ -1110,7 +1114,7 @@ V následujícím příkladu je spojení mezi kořen dokumentu a `children` subr
     FROM Families f
     JOIN f.children
 
-**Výsledky**
+**Results**
 
     [
       {
@@ -1130,7 +1134,7 @@ Následující příklad ukazuje konvenční připojení:
     FROM Families f
     JOIN c IN f.children 
 
-**Výsledky**
+**Results**
 
     [
       {
@@ -1167,7 +1171,7 @@ Skutečné nástroje připojení k je formulář řazených kolekcí členů z s
     JOIN c IN f.children 
     JOIN p IN c.pets
 
-**Výsledky**
+**Results**
 
     [
       {
@@ -1221,7 +1225,7 @@ V následujícím příkladu je další filtr na `pet`. Nevztahuje se na všech 
     JOIN p IN c.pets
     WHERE p.givenName = "Shadow"
 
-**Výsledky**
+**Results**
 
     [
       {
@@ -1271,7 +1275,7 @@ Tato UDF jsme teď můžete použít v dotazu v projekci. Funkce UDF musí být 
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
     FROM Families
 
-**Výsledky**
+**Results**
 
     [
       {
@@ -1290,7 +1294,7 @@ UDF můžete použít také uvnitř filtr, jak je znázorněno v následujícím
     FROM Families
     WHERE udf.REGEX_MATCH(Families.address.city, ".*eattle")
 
-**Výsledky**
+**Results**
 
     [{
         "id": "AndersenFamily",
@@ -1330,7 +1334,7 @@ Níže je příklad, který vykonává UDF.
     SELECT f.address.city, udf.SEALEVEL(f.address.city) AS seaLevel
     FROM Families f    
 
-**Výsledky**
+**Results**
 
      [
       {
@@ -1436,7 +1440,7 @@ Například můžete spustit nyní dotazy takto:
 
     SELECT VALUE ABS(-4)
 
-**Výsledky**
+**Results**
 
     [4]
 
@@ -1491,7 +1495,7 @@ Pomocí těchto funkcí, teď můžete spouštět dotazy takto:
 
     SELECT VALUE IS_NUMBER(-4)
 
-**Výsledky**
+**Results**
 
     [true]
 
@@ -1524,7 +1528,7 @@ Pomocí těchto funkcí, můžete nyní spustit dotazy podobně jako tento. Nap�
     SELECT VALUE UPPER(Families.id)
     FROM Families
 
-**Výsledky**
+**Results**
 
     [
         "WAKEFIELDFAMILY", 
@@ -1538,7 +1542,7 @@ Nebo zřetězení řetězců jako v tomto příkladu:
     SELECT Families.id, CONCAT(Families.address.city, ",", Families.address.state) AS location
     FROM Families
 
-**Výsledky**
+**Results**
 
     [{
       "id": "WakefieldFamily",
@@ -1558,7 +1562,7 @@ Funkce řetězce mohou sloužit také v klauzuli WHERE chcete filtrovat výsledk
     FROM Families
     WHERE STARTSWITH(Families.id, "Wakefield")
 
-**Výsledky**
+**Results**
 
     [{
       "id": "WakefieldFamily",
@@ -1583,7 +1587,7 @@ Funkce pole můžete použít k manipulaci s pole v rámci JSON. Tady je příkl
     FROM Families 
     WHERE ARRAY_CONTAINS(Families.parents, { givenName: "Robin", familyName: "Wakefield" })
 
-**Výsledky**
+**Results**
 
     [{
       "id": "WakefieldFamily"
@@ -1597,7 +1601,7 @@ Můžete zadat částečné fragment pro párování elementů v rámci pole. N�
     FROM Families 
     WHERE ARRAY_CONTAINS(Families.parents, { givenName: "Robin" }, true)
 
-**Výsledky**
+**Results**
 
     [{
       "id": "WakefieldFamily"
@@ -1611,7 +1615,7 @@ Zde je další příklad používající ARRAY_LENGTH získat počet podřízen�
     SELECT Families.id, ARRAY_LENGTH(Families.children) AS numberOfChildren
     FROM Families 
 
-**Výsledky**
+**Results**
 
     [{
       "id": "WakefieldFamily",
@@ -1660,7 +1664,7 @@ Prostorové funkcí lze provádět dotazy blízkosti proti prostorová data. Tad
     FROM Families f 
     WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
 
-**Výsledky**
+**Results**
 
     [{
       "id": "WakefieldFamily"
@@ -2012,7 +2016,7 @@ Následující příklady ukazují POST pro dotaz rozhraní SQL API směřovaný
     }
 
 
-**Výsledky**
+**Results**
 
     HTTP/1.1 200 Ok
     x-ms-activity-id: 8b4678fa-a947-47d3-8dd3-549a40da6eed
@@ -2085,7 +2089,7 @@ Druhý příklad ukazuje komplexnější dotaz, který vrátí více výsledků 
     }
 
 
-**Výsledky**
+**Results**
 
     HTTP/1.1 200 Ok
     x-ms-activity-id: 568f34e3-5695-44d3-9b7d-62f8b83e509d
@@ -2258,9 +2262,9 @@ Následující příklad ukazuje, jak lze pomocí dokumenty dotazu v rozhraní A
 4. [Úrovně konzistence databáze Azure Cosmos][consistency-levels]
 5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6. JSON [http://json.org/](http://json.org/)
-7. Javascript Specification [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
+7. Specifikace jazyka JavaScript [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
-9. Dotaz na vyhodnocení techniky pro velké databáze [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
+9. Techniky dotazu vyhodnocení pro velké databáze [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
 10. Zpracování v systémech paralelní relační databáze, stiskněte společnosti IEEE počítače, 1994 dotazů
 11. Logická jednotka, Ooi, Tan, zpracování v systémech paralelní relační databáze, stiskněte společnosti IEEE počítače, 1994 dotazů.
 12. Olston Kryštof, Robert Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: není tak cizí jazyk pro zpracování dat, SIGMOD 2008.

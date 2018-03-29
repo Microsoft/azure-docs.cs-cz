@@ -1,11 +1,11 @@
 ---
 title: Jak pracovat s Node.js back-end Server SDK pro Mobile Apps | Microsoft Docs
-description: "Naučte se pracovat s Node.js back-end Server SDK pro Azure App Service Mobile Apps."
+description: Naučte se pracovat s Node.js back-end Server SDK pro Azure App Service Mobile Apps.
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: elamalani
 manager: elamalani
-editor: 
+editor: ''
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: bd423d6fb62b2ace16832f665c8834b4aea7e26f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 335186deccaa82b9a8d262d62dd8ce5d620446b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak používat sadu SDK Mobile aplikace Node.js
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -119,7 +119,7 @@ Visual Studio 2015 vyžaduje rozšíření při vývoji aplikací Node.js v pros
         app.use(mobile);
 
    Uložte soubor.
-10. Spusťte aplikaci místně (rozhraní API je zpracování na http://localhost: 3000) nebo publikování v Azure.
+10. Buď místní spuštění aplikace (rozhraní API je zpracování na http://localhost:3000) nebo publikovat ve službě Azure.
 
 ### <a name="create-node-backend-portal"></a>Vytvoření back-end Node.js pomocí portálu Azure
 Můžete vytvořit Mobile Apps back-end přímo v [portál Azure]. Můžete provést následující kroky nebo vytvořit pomocí následujících klientských a serverových společně [vytvoření mobilní aplikace](app-service-mobile-ios-get-started.md) kurzu. Tento kurz obsahuje zjednodušenou verzi tyto pokyny a je nejvhodnější pro projekty testování konceptu.
@@ -135,7 +135,7 @@ Když vytvoříte back-end mobilní aplikace Node.js pomocí portálu společnos
 Následující postup používá úložiště Git ke stažení kód projektu rychlý start:
 
 1. Pokud jste tak již neučinili, nainstalujte Git. Kroky potřebné k instalaci Git lišit podle operačních systémů. Distribuce specifické pro operační systém a instalační pokyny najdete v tématu [instalace Git](http://git-scm.com/book/en/Getting-Started-Installing-Git).
-2. Postupujte podle kroků v [povolit úložišti aplikace služby App Service](../app-service/app-service-deploy-local-git.md#Step3) povolit úložiště Git pro vaši lokalitu back-end. Poznamenejte si nasazení uživatelské jméno a heslo.
+2. V tématu [Příprava úložiště](../app-service/app-service-deploy-local-git.md#prepare-your-repository) povolit úložiště Git pro vaši lokalitu back-end. Poznamenejte si nasazení uživatelské jméno a heslo.
 3. V podokně pro Mobile Apps back-end, poznamenejte si **adresy URL pro klon Git** nastavení.
 4. Spuštění `git clone` příkaz pomocí adresy URL pro klon Git. Zadejte své heslo, pokud jsou povinné, jako v následujícím příkladu:
 

@@ -1,9 +1,9 @@
 ---
-title: "Azure Cosmos DB model prostředků a koncepty | Microsoft Docs"
-description: "Další informace o databázi Cosmos Azure hierarchické model databáze, kolekce, uživatelem definované funkce (UDF), dokumentů, oprávnění ke správě prostředků a další."
-keywords: "Model hierarchické, cosmosdb, azure, Microsoft azure"
+title: Azure Cosmos DB model prostředků a koncepty | Microsoft Docs
+description: Další informace o databázi Cosmos Azure hierarchické model databáze, kolekce, uživatelem definované funkce (UDF), dokumentů, oprávnění ke správě prostředků a další.
+keywords: Hierarchical model, cosmosdb, azure, Microsoft azure
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: rafats
 manager: jhubbard
 ms.assetid: ef9d5c0c-0867-4317-bb1b-98e219799fd5
@@ -12,18 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a88f17a658987e1ff3ae0e0f38d6551c3acee1da
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: f64d79cd3929a279c7e279e74b0b21d163c0fa45
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Hierarchický model prostředků a základní koncepty databáze Azure Cosmos
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Databáze entitami, které spravuje databázi Cosmos Azure jsou označovány jako **prostředky**. Každý prostředek je jedinečně identifikovaný logického identifikátoru URI. Můžete pracovat s prostředky pomocí standardních operací protokolu HTTP, hlaviček požadavků a odpovědí a stavové kódy. 
 
@@ -34,6 +32,12 @@ Tento článek obsahuje odpovědi na tyto otázky:
 * Jak řeší prostředku?
 * Jak funguje s kolekcí?
 * Jak funguje s uložené procedury, triggery a uživatelem definované funkce (UDF)?
+
+V následujícím videu Azure manažer programu DB Cosmos Andrew Liu vás provede procesem model prostředků Azure Cosmos DB. 
+
+> [!VIDEO https://www.youtube.com/embed/luWFgTP0IL4]
+>
+>
 
 ## <a name="hierarchical-resource-model"></a>Model hierarchické prostředků
 Jak ukazuje následující diagram, Azure DB Cosmos hierarchické **model prostředků** se skládá ze sady prostředků v rámci účtu databáze, každý adresovatelné prostřednictvím logické a stabilní identifikátoru URI. Sadu prostředků jsou označovány jako **kanálu** v tomto článku. 
@@ -50,7 +54,7 @@ Chcete-li začít pracovat s prostředky, je potřeba [vytvoření databázovéh
 
 | Prostředek | Popis |
 | --- | --- |
-| Účet databáze |Databázový účet je přidružen sadu databází a pevné velikosti úložiště objektů blob pro přílohy. Můžete vytvořit jeden nebo více účtů databáze pomocí svého předplatného Azure. Další informace najdete v článku [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/). |
+| Databázový účet |Databázový účet je přidružen sadu databází a pevné velikosti úložiště objektů blob pro přílohy. Můžete vytvořit jeden nebo více účtů databáze pomocí svého předplatného Azure. Další informace najdete v článku [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/). |
 | Databáze |Databáze je logický kontejner úložiště dokumentů rozděleného mezi kolekcemi. Je také kontejner uživatelé. |
 | Uživatel |Logické obor názvů pro obor oprávnění. |
 | Oprávnění |Autorizační token přidružit k uživateli pro přístup k určitému zdroji. |
@@ -59,7 +63,7 @@ Chcete-li začít pracovat s prostředky, je potřeba [vytvoření databázovéh
 | Trigger |Logiku aplikace napsané v jazyce JavaScript provést před nebo po buď typu vložení, nahraďte nebo operace odstranění. |
 | UDF |Logiku aplikace napsané v jazyce JavaScript. Funkce UDF umožňují modelu operátor vlastního dotazu a tím rozšiřovat základní rozhraní SQL API dotazovací jazyk. |
 | Dokument |Uživatelem definovaný (libovolný) obsah JSON. Ve výchozím nastavení musí být definováno žádné schéma ani udělat sekundární indexy, které musí být zadané pro všechny dokumenty do kolekce přidána. |
-| Přílohy |Přílohu je speciální dokument obsahující odkazy a související metadata pro externí objektů blob nebo médium. Vývojář můžete mít objekt blob spravuje Cosmos DB nebo jej uložte u poskytovatele služeb externí objekt blob, jako je například OneDrive, Dropbox, atd. |
+| Příloha |Přílohu je speciální dokument obsahující odkazy a související metadata pro externí objektů blob nebo médium. Vývojář můžete mít objekt blob spravuje Cosmos DB nebo jej uložte u poskytovatele služeb externí objekt blob, jako je například OneDrive, Dropbox, atd. |
 
 ## <a name="system-vs-user-defined-resources"></a>Systém oproti uživatelem definované prostředky
 Prostředkům, například účty databáze, databáze, kolekce, uživatelé, oprávnění, uložené procedury, aktivační události a UDF – všechny mají pevného schématu a se označují jako systémové prostředky. Naproti tomu prostředkům, například dokumentů a příloh mít žádná omezení na schéma a jsou příklady uživatelem definované prostředky. V systému Cosmos databáze jsou systému i uživatelem definované prostředky reprezentované a spravovat jako kompatibilní se standardem standard JSON. Všechny prostředky, systém nebo uživatelsky definované, mají následující běžné vlastnosti:
@@ -112,16 +116,16 @@ Všechny prostředky jsou adresovatelné identifikátor URI. Hodnota **_self** v
 
 | Hodnota _self | Popis |
 | --- | --- |
-| /DBS |Informační kanál databází pod účtem databáze |
-| /DBS/ {dbName} |Databáze s id odpovídající hodnotě {dbName} |
-| /colls/ /DBS/ {dbName} |Informační kanál kolekcí v databázi |
-| /colls/ /DBS/ {dbName} {collName} |Kolekce s id odpovídající hodnotě {collName} |
-| /colls/ /DBS/ {dbName} {collName} / docs |Informační kanál dokumentů v kolekci |
-| /docs/ /colls/ {collName} /DBS/ {dbName} {docId} |Dokumentů s id odpovídající hodnotě {doc} |
-| /users/ /DBS/ {dbName} |Informační kanál uživatele v databázi |
-| /users/ /DBS/ {dbName} {userId} |Uživatel s id odpovídající hodnota {uživatele} |
-| /users/ /DBS/ {dbName} {userId} nebo oprávnění |Informační kanál oprávnění pod uživatelským |
-| /permissions/ /users/ {userId} /DBS/ {dbName} {permissionId} |Oprávnění s id odpovídající hodnotě {oprávnění} |
+| /dbs |Informační kanál databází pod účtem databáze |
+| /dbs/{dbName} |Databáze s id odpovídající hodnotě {dbName} |
+| /dbs/{dbName}/colls/ |Informační kanál kolekcí v databázi |
+| /dbs/{dbName}/colls/{collName} |Kolekce s id odpovídající hodnotě {collName} |
+| /dbs/{dbName}/colls/{collName}/docs |Informační kanál dokumentů v kolekci |
+| /dbs/{dbName}/colls/{collName}/docs/{docId} |Dokumentů s id odpovídající hodnotě {doc} |
+| /dbs/{dbName}/users/ |Informační kanál uživatele v databázi |
+| /dbs/{dbName}/users/{userId} |Uživatel s id odpovídající hodnota {uživatele} |
+| /dbs/{dbName}/users/{userId}/permissions |Informační kanál oprávnění pod uživatelským |
+| /dbs/{dbName}/users/{userId}/permissions/{permissionId} |Oprávnění s id odpovídající hodnotě {oprávnění} |
 
 Každý prostředek má jedinečný název definovaný uživatelem, zveřejňovány prostřednictvím vlastnost id. Poznámka: pro dokumenty, pokud uživatel není uveden id, sady SDK automaticky generovat jedinečný identifikátor pro dokument. Id je řetězec definovaný uživatelem, až 256 znaků, které je jedinečné v rámci konkrétní nadřazený prostředek. 
 
@@ -132,7 +136,7 @@ Rozhraní REST API podporují adresování prostředků a směrování požadavk
 ## <a name="database-accounts"></a>Databáze účtů
 Můžete zřídit jeden nebo více Cosmos DB databáze účtů pomocí svého předplatného Azure.
 
-Můžete vytvořit a spravovat účty pro databázi Cosmos DB prostřednictvím portálu Azure v [http://portal.azure.com/](https://portal.azure.com/). Vytváření a správa databázový účet vyžaduje přístup pro správu a lze provést pouze v rámci vašeho předplatného Azure. 
+Můžete vytvořit a spravovat účty pro databázi Cosmos DB prostřednictvím portálu Azure v [ http://portal.azure.com/ ](https://portal.azure.com/). Vytváření a správa databázový účet vyžaduje přístup pro správu a lze provést pouze v rámci vašeho předplatného Azure. 
 
 ### <a name="database-account-properties"></a>Vlastnosti účtu databáze
 V rámci zřizování a správa databázového účtu můžete nakonfigurovat a přečtěte si následující vlastnosti:  
@@ -457,7 +461,7 @@ Jediný způsob, jak získat klíč prostředku je vytvoření prostředku oprá
 
 Jako se všemi ostatními prostředky, můžete vytvořit oprávnění v Azure Cosmos DB, nahradit, odstranit, čtení nebo ve výčtu snadno pomocí rozhraní REST API nebo některou z klienta sady SDK. Azure Cosmos DB vždy poskytuje silnou konzistenci pro čtení nebo dotazování metadata oprávnění. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o práci s prostředky pomocí příkazů HTTP v [RESTful interakce s prostředky Azure Cosmos DB](https://msdn.microsoft.com/library/azure/mt622086.aspx).
 
 [1]: media/sql-api-resources/resources1.png

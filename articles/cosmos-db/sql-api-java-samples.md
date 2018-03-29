@@ -1,7 +1,7 @@
 ---
-title: "Azure Cosmos DB: Příklady Java rozhraní SQL API | Microsoft Docs"
-description: "Pro běžné úlohy pomocí Cosmos DB SQL rozhraní API služby Azure, včetně operace CRUD najít příkladů Java na Githubu."
-keywords: "Příklad NoSQL"
+title: 'Azure Cosmos DB: Příklady Java rozhraní SQL API | Microsoft Docs'
+description: Pro běžné úlohy pomocí Cosmos DB SQL rozhraní API služby Azure, včetně operace CRUD najít příkladů Java na Githubu.
+keywords: Příklad NoSQL
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: mimig
-ms.openlocfilehash: a46b6e4d64b44c07fe7a2aa63bc49bea59ad5b53
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 992451018baeea15bf63906c71ad72faccb0dbe4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB: Příklady Java rozhraní SQL API
 
@@ -30,8 +30,6 @@ ms.lasthandoff: 02/11/2018
 > * [Galerie ukázkový kód Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Nejnovější ukázkové aplikace, které provádějí operace CRUD a dalších běžných operací s prostředky Azure Cosmos DB jsou součástí [azure-documentdb-java](https://github.com/Azure/azure-documentdb-java) úložiště GitHub. Tento článek obsahuje:
 

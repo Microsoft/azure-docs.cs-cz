@@ -1,6 +1,6 @@
 ---
-title: Nabízí konzultace ohledně Azure Marketplace
-description: Podmínky kritéria a požadavky na publikování pro nový typ nabídky v Azure Marketplace
+title: Konzultační služby Azure Marketplace
+description: Tento článek popisuje podmínky kritéria a požadavky na publikování pro nové nabídky konzultace ohledně služby v Azure Marketplace.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: ellacroi
@@ -14,22 +14,22 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: e063721f2fa2ac87b2f9dd7385b2d114a1b76cb3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8d414a7a2ad46fbe63cc6eb8e6a6a41bb76aa432
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="azure-marketplace-consulting-services"></a>Konzultace ohledně služby Azure Marketplace
-Azure Marketplace s cílem propojení zákazníků s služby podporují a rozšířit jejich použití Microsoft Azure, podporuje seznam konzultace ohledně nabídky služby od partnerů systému integrátor (SI) společnosti Microsoft. 
+# <a name="azure-marketplace-consulting-services"></a>Konzultační služby Azure Marketplace
+Azure Marketplace s cílem propojení zákazníků s služby podporují a rozšířit jejich používání Azure, podporuje seznam všech nabídek konzultace ohledně služby od partnerů systému integrátor (SI) společnosti Microsoft. 
 
-Tyto konzultace ohledně služby, které jsou specifické pro zákazníka oznámeních podporujících zapojení uživatelů, pevné v rozsahu a doby trvání, nabídky odstraněny cena nebo uvolněte a mít definovanou výsledek. Potenciální zákazníci snadno vyžádat nechat se kontaktovat partnery způsobem bez tření. Partneři obdrží oznámení v jejich systému CRM a zaměřte se na odpověď pro uživatele v rámci 48hrs.
+Nabídky těchto konzultace ohledně služeb jsou specifické pro zákazníka oznámeních podporujících zapojení uživatelů. Jste pevné v rozsahu a doby trvání, můžete být pevné ceny nebo volné a mít definovanou výsledek. Potenciální zákazníci snadno vyžádat nechat se kontaktovat partnery. Partneři obdrží oznámení v jejich systému CRM a jejich cílem je reagovat na požadavky v rámci 48 hodin.
 
-Služba nabízí na základě Microsoft Dynamics 365, Microsoft Office 365 a Microsoft Power BI se mohou být uvedený na AppSource. Zkontrolujte podrobné [pokyny pro tyto služby zde](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+Nabídky služeb, které jsou založeny na Microsoft Dynamics 365, Office 365 a Power BI se mohou být uvedený na AppSource. Další informace najdete v tématu [Microsoft AppSource konzultace ohledně služeb výpis pokyny](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
 
 ## <a name="eligible-services-and-partners"></a>Oprávněných služeb a partnery
 
-Partneři také musí mít stříbrným nebo gold competency v příslušné oblasti pro jejich službu. Níže najdete vhodné možnosti:
+Partneři také musí mít stříbrným nebo gold competency v příslušné oblasti pro jejich službu. Vhodné možnosti jsou uvedené v následující tabulce:
 
 |Competency  |Řešení oblasti  |
 |---------|---------|
@@ -37,22 +37,21 @@ Partneři také musí mít stříbrným nebo gold competency v příslušné obl
 |Vývoj aplikací a ISV     |  Vývoj, integraci aplikací DevOps aplikace       |
 |Správa dat a analýzy    |  Analýza dat, datová platforma       |
 
-Nabídky musí mít jednu z následujících typů pět služby. Upozorňujeme, že je možné zobrazit více než jednu nabídku: 
+Nabídky musí být jeden z těchto pět typů služby (je možné uvést více než jeden): 
 
-1. **Hodnocení:** vyhodnocení prostředí zákazníka určit použitelnost řešení a zadejte odhad náklady a načasování. 
-2. Přehledová: Úvod do řešení nebo konzultační služby k vykreslení zájmu zákazníka pomocí architektury, ukázky a příklady zákazníka. 
-3. **Implementace:** dokončení instalace, jejímž výsledkem plně funkční řešení. Doporučujeme vám, omezení pro řešení, které může být implementováno ve 2 týdny nebo méně. 
-4. **Testování konceptu:**omezeným oborem implementace k určení, pokud řešení bude splňovat požadavky zákazníka. 
-5. **Dílny:** interaktivní engagement prováděné místní zákazníka, které by mohly školení, informačních, hodnocení a ukázky založený na data nebo prostředí zákazníka. 
+* **Hodnocení**: vyhodnocení prostředí zákazníka určit použitelnost řešení a zadejte odhad náklady a načasování. 
+* **Přehledovou**: Úvod do řešení nebo konzultační služby k vykreslení zájmu zákazníka pomocí architektury, ukázky a příklady zákazníka. 
+* **Implementace**: dokončení instalace, jejímž výsledkem plně funkční řešení. Doporučujeme vám, omezení pro řešení, které může být implementováno ve dvou týdnů nebo méně. 
+* **Testování konceptu**: implementace omezené oboru k určení, zda řešení splňuje požadavky zákazníků. 
+* **Dílny**: interaktivní zapojení, který se provádí místně zákazníka. Může zahrnovat, školení, informačních, hodnocení a ukázky, které jsou vytvořené na data nebo prostředí zákazníka. 
 
-S výjimkou informačních, konzultační služby může být nabídnuta osoba (tj, na místě v umístění zákazníka nebo partnera na zařízení), nebo virtuálně (tj. prostřednictvím telekonference webové konference, vzdálené implementace, atd.). Informačních musí být nabídnut osobně.
+S výjimkou *přehledové* typ služby, konzultační služby může být nabídnut osoba (který je na místě v umístění zákazníka nebo partnera na zařízení), nebo virtuálně (který je prostřednictvím telekonference, webového konference, nebo vzdálené implementace). Informačních musí být nabídnut osobně.
 
-Další informace o [možnosti prostřednictvím Microsoft Partner Network](https://partner.microsoft.com/en-US/membership/competencies#simple-tab-content-1). 
+Další informace najdete v tématu [možnosti prostřednictvím Microsoft Partner Network](https://partner.microsoft.com/en-US/membership/competencies). 
 
-## <a name="countries-supported"></a>Podporované země
+## <a name="supported-countries"></a>Podporované země
 
-Partnerů SI můžete odeslat konzultační služby nabídky pro následující 18 zemích. 
-
+Partnerů SI můžete odeslat nabídky konzultace ohledně služeb pro následující 18 zemích. 
 
 |Způsobilé země |  |  |
 |---------|---------|---------|
@@ -63,37 +62,36 @@ Partnerů SI můžete odeslat konzultační služby nabídky pro následující 
 |Finsko     |Mexiko         |Spojené království         |
 |Francie     |Nizozemsko         |Spojené státy         |
 
-Spuštění pro Azure Marketplace konzultace ohledně služby přejde za provozu nejprve Austrálie, Kanada, Spojené království a Spojených státech amerických. Katalogy ostatních zemí přejde za provozu, jakmile smysluplný číslo a poutavých výběr nabídek služeb byly odeslaný partnery a schváleny společností Microsoft.
+Spuštění webu Azure Marketplace konzultační služby přejde za provozu první Austrálie, Kanada, Spojené království a Spojených státech amerických. Katalogy ostatních zemí přejde za provozu po smysluplný číslo a atraktivní výběr nabídky služeb, kterou jste odeslaný partnery a schválené společností Microsoft.
 
 ## <a name="prepare-your-publishing-artifacts"></a>Příprava publikování artefaktů
 Ještě dříve, než můžete určit služby, můžete spustit shromažďování a příprava obsahu, které vám pomohou vaše výpis vyjádřete hodnota služby a řešení zákazníkovi cíl. 
 
-
 |Nastavení pro nové zdroje  |
 |---------|
 |MPN ID     |
-|Loga společnosti (48 × 48, 216 x 216)     |
+|Loga společnosti (48 &#215; 48, 216 &#215; 216)     |
 |Vést cílové     |
 
 
 |Nastavení pro nové nabídky  |
 |---------|
-|Nabízejí název (200 znaků) a popis (2000 znaků).    |
+|Nabízejí (200 znaků) název a popis (2000 znaků).    |
 |Kompetence     |
 |Země nebo oblast dostupnosti     |
 |Doba zapojení     |
 |Použít odvětví, kategorie a hledaná klíčová slova     |
-|Video přehled produktu    |
-|Snímky obrazovky (maximální 5, 1280 × 720)     |
-|Marketingové dokumenty (maximální 3)     |
+|Přehled produktu video    |
+|Snímky obrazovky (maximálně 5, 1 280 &#215; 720)     |
+|Dokumenty marketing (maximálně 3)     |
 
 
 ## <a name="publishing-process"></a>Proces publikování
-Výpis nabídku vaší konzultační služby v Azure Marketplace zahrnuje následující:
+Výpis vaši nabídku konzultace ohledně služby v Azure Marketplace zahrnuje těchto fází:
 
-1. **Požadavek:** odeslat ve vaší žádosti [zde](https://azuremarketplace.microsoft.com/en-us/sell/nominate) a dejte nám vědět více o vaší organizaci. 
-2. **Ověření:**projde kontrolou vaši žádost o ověření, že splňujete kritéria způsobilosti. Potom vám pošleme pokyny pro výpis vaše konzultační služby nabídky. 
-3. **Odeslání:** zadejte informace požadované v pokynech. Veškerý obsah a podpůrné materiálu třeba odeslat v angličtině. 
-4. **Kontrola:** bude náš tým marketing a redakční zkontrolujte vaše odeslání a proveďte změny za účelem optimalizace pro čitelnost, gramatika a efektivitu. 
-5. **Pracovní:** vaše odeslání pak připraví se ke kontrole vy. 
-6. **Publikování:** po jste s Microsoftem jsou splněny s obsahem dvoufázové instalace, je váš výpis připravené na vynucování za provozu v Azure Marketplace. Za provozu přejděte datum vašeho seznamu bude záviset na zemi, zadaný v rámci vaší nabídky. Pokud už je katalog pro vaši zemi vybrané za provozu na Azure Marketplace, bude výpis zobrazen v rámci několik hodin. Jinak bude výpis zobrazen hned, jak katalog pro vybrané země přejde za provozu.
+1. **Žádost o**: váš požadavek použít, použijte [Azure Marketplace navrženém formuláře](https://azuremarketplace.microsoft.com/en-us/sell/nominate) a dejte nám vědět více o vaší organizaci. 
+2. **Ověření**: vaše žádost je zkontrolovat zajistit, že jsou splněny podmínky kritéria. Potom vám můžeme poslat pokyny pro výpis vaše konzultační služby nabídky. 
+3. **Odeslání**: Zadejte požadované informace, která je uvedena v pokynech. Veškerý obsah a podpůrné materiálu podává v angličtině. 
+4. **Zkontrolujte**: náš tým marketing a redakční zkontroluje váš odeslání a optimalizuje kvůli přehlednosti, gramatika a efektivitu. 
+5. **Pracovní**: vaše žádost je připravený k vaší kontrole. 
+6. **Publikování**: Pokud jste s Microsoftem jsou splněny s obsahem dvoufázové instalace, vaše výpis je připraven k odeslání za provozu v Azure Marketplace. Datum za provozu přejděte váš seznam závisí na zemi, který je zadán v rámci vaší nabídky. Pokud už je katalog pro vaši zemi vybrané za provozu na Azure Marketplace, bude výpis zobrazen v rámci několik hodin. Seznam, jinak hodnota se zobrazí, jakmile uvedete katalogu.

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: 9de332324ba853d3df0aacce2db4bbc3d4d9d62d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e7e45a6af0857520eec27263281a0f0a43b30013
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -338,13 +338,17 @@ Výsledek, který by udělit přístup ke čtení všech identit zařízení, bu
 
 ## <a name="supported-x509-certificates"></a>Podporované certifikáty X.509
 
-K ověření zařízení IoT Hub můžete použít libovolný certifikát X.509. Certifikáty patří:
+K ověření zařízení IoT Hub tím, že nahrajete kryptografický otisk certifikátu nebo certifikační autoritu (CA) do služby Azure IoT Hub můžete použít libovolný certifikát X.509. Ověřování pomocí kryptografické otisky certifikátu pouze ověřuje, že vidění kryptografický otisk shoduje má nakonfigurovaný kryptografický otisk. Ověřování pomocí certifikační autority ověří řetěz certifikátů. 
 
-* **Existující certifikát X.509**. Zařízení již pravděpodobně certifikát X.509 s ním spojená. Zařízení můžete použít tento certifikát k ověření službou IoT Hub.
-* **A samoobslužné generované a X-509 certifikátu podepsaného svým držitelem**. Výrobce zařízení nebo interní nástroje pro nasazení můžete generovat tyto certifikáty a uložení odpovídající privátní klíč (a certifikátu) na zařízení. Můžete použít nástroje, jako [OpenSSL] [ lnk-openssl] a [Windows SelfSignedCertificate] [ lnk-selfsigned] nástroj pro tento účel.
-* **Certifikační Autority podepsané certifikát X.509**. K identifikaci zařízení a ověřování službou IoT Hub, můžete certifikát X.509, generovány a podepsaný pomocí certifikační autority (CA). IoT Hub pouze ověřuje, že kryptografický otisk uvedené shoduje má nakonfigurovaný kryptografický otisk. IotHub nelze ověřit řetěz certifikátů.
+Podporované certifikáty patří:
+
+* **Existující certifikát X.509**. Zařízení již pravděpodobně certifikát X.509 s ním spojená. Zařízení můžete použít tento certifikát k ověření službou IoT Hub. Funguje s kryptografickým otiskem nebo ověřování certifikační Autority. 
+* **Certifikační Autority podepsané certifikát X.509**. K identifikaci zařízení a ověřování službou IoT Hub, můžete certifikát X.509, generovány a podepsaný pomocí certifikační autority (CA). Funguje s kryptografickým otiskem nebo ověřování certifikační Autority.
+* **A samoobslužné generované a X-509 certifikátu podepsaného svým držitelem**. Výrobce zařízení nebo interní nástroje pro nasazení můžete generovat tyto certifikáty a uložení odpovídající privátní klíč (a certifikátu) na zařízení. Můžete použít nástroje, jako [OpenSSL] [ lnk-openssl] a [Windows SelfSignedCertificate] [ lnk-selfsigned] nástroj pro tento účel. Pracuje pouze s kryptografickým otiskem ověřování. 
 
 Zařízení může použít certifikát X.509 nebo token zabezpečení pro ověřování, ale ne obojí.
+
+Další informace o ověřování pomocí certifikační autority najdete v tématu [koncepční přehled o certifikáty certifikační Autority X.509](iot-hub-x509ca-concept.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Registrovat certifikát X.509 pro zařízení.
 
@@ -354,10 +358,7 @@ Zařízení může použít certifikát X.509 nebo token zabezpečení pro ově�
 
 **RegistryManager** třída poskytuje programový způsob, jak registrovat zařízení. Konkrétně **AddDeviceAsync** a **UpdateDeviceAsync** metody umožňují zaregistrovat a aktualizujte zařízení v registru identit služby IoT Hub. Tyto dvě metody přijímají **zařízení** instance jako vstup. **Zařízení** třída zahrnuje **ověřování** vlastnost, která vám umožní určit primární a sekundární X.509 kryptografické otisky certifikátu. Kryptografický otisk představuje hodnotu hash SHA-1 (uložené pomocí binární kódování DER) X.509 certifikátu. Máte možnost určení primární kryptografický otisk nebo sekundární kryptografický otisk nebo obojí. Primární a sekundární kryptografické otisky jsou podporovány pro zpracování scénáře výměnu certifikátů.
 
-> [!NOTE]
-> IoT Hub nevyžaduje ani uložit celý certifikát X.509 pouze kryptografický otisk.
-
-Zde je ukázka C\# fragment kódu registrovat zařízení pomocí certifikátu X.509. certifikát:
+Zde je ukázka C\# fragment kódu registrovat zařízení pomocí kryptografický otisk certifikátu X.509:
 
 ```csharp
 var device = new Device(deviceId)

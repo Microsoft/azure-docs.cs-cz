@@ -8,11 +8,11 @@ ms.topic: include file for PowerShell for Azure DNS
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: e96b312f03069256396261bd6efe2f2586cdadea
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1ddfd1ae8dffbc5d381773ea9679713e93a44a32
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Nastavení prostředí Azure PowerShell pro Azure DNS
 
@@ -27,7 +27,17 @@ Kromě toho k používání zón privátní (Public Preview), musíte zajistit, 
 * AzureRM.Dns - [verze 4.1.0](https://www.powershellgallery.com/packages/AzureRM.Dns/4.1.0) nebo novější
 * AzureRM.Network - [verze 5.4.0](https://www.powershellgallery.com/packages/AzureRM.Network/5.4.0) nebo novější
 
-Výše uvedené moduly můžete stáhnout z Galerie prostředí PowerShell pomocí výše uvedené odkazy vedle verze modulu. Pak je můžete instalovat pomocí následující příkazy. Oba moduly jsou vyžadována a jsou plně zpětně kompatibilní. 
+```powershell 
+Find-Module -Name AzureRM.Dns 
+``` 
+ 
+```powershell 
+Find-Module -Name AzureRM.Network 
+``` 
+ 
+Výstup z výše uvedených příkazů muset není 4.1.0 nebo vyšší verze verzi AzureRM.Dns a AzureRM.Network je 5.4.0 nebo vyšší verze.  
+
+V případě, že má váš systém starší verze, můžete buď nainstalovat nejnovější verzi prostředí Azure PowerShell nebo stáhnout a nainstalovat výše uvedené moduly z Galerie prostředí PowerShell pomocí výše uvedené odkazy vedle verze modulu. Pak je můžete instalovat pomocí následující příkazy. Oba moduly jsou vyžadována a jsou plně zpětně kompatibilní. 
 
 ```powershell
 Install-Module -Name AzureRM.Dns -Force

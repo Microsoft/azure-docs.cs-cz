@@ -1,23 +1,23 @@
 ---
-title: "Agilní vývoj datové vědy projekty - Azure Machine Learning | Microsoft Docs"
-description: "Jak vývojáři spuštění projektu vědecké účely data v řídí systematické, verzi a způsob spolupráce v rámci projektový tým pomocí procesu Team dat vědecké účely."
-documentationcenter: 
+title: Agilní vývoj datové vědy projekty - Azure Machine Learning | Microsoft Docs
+description: Jak vývojáři spuštění projektu vědecké účely data v řídí systematické, verzi a způsob spolupráce v rámci projektový tým pomocí procesu Team dat vědecké účely.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev;
-ms.openlocfilehash: 686f751b241d49d116948711c683f4b504d5d5f9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: bradsev
+ms.openlocfilehash: dbaf2df0f5572c9b269000c741f1d736a7521d73
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agilní vývoj datové vědy projektů
 
@@ -89,7 +89,7 @@ Tuto funkci můžete také propojit úložiště projektu. Klikněte na tlačít
 
 ## 4. <a name='AddStoryunderfeature-4'></a>Přidat scénáře s funkcí 
 
-V části funkce lze přidat scénářů k popisu důležitými kroky potřebnými k dokončení projektu (funkce). Chcete-li přidat nový článek, klikněte na tlačítko  **+**  přihlásit nalevo od funkci v zobrazení nevyřízených položek.  
+V části funkce lze přidat scénářů k popisu důležitými kroky potřebnými k dokončení projektu (funkce). Chcete-li přidat nový článek, klikněte na tlačítko **+** přihlásit nalevo od funkci v zobrazení nevyřízených položek.  
 
 ![4](./media/agile-development/4-sprint-add-story.png)
 
@@ -106,7 +106,7 @@ Tento scénář můžete propojit existující úložiště kliknutím **+ přid
 
 Úlohy jsou konkrétní podrobné kroky, které jsou nutné k dokončení každé scénáře. Po dokončení všech úloh scénáře by se měly článek příliš dokončit. 
 
-Chcete-li přidat úlohu do článku, klikněte na tlačítko  **+**  přihlašovací vedle položky scénáře, vyberte **úloh**a pak zadejte podrobné informace o této úlohy v místním okně.
+Chcete-li přidat úlohu do článku, klikněte na tlačítko **+** přihlašovací vedle položky scénáře, vyberte **úloh**a pak zadejte podrobné informace o této úlohy v místním okně.
 
 ![7](./media/agile-development/7-sprint-add-task.png)
 
@@ -117,7 +117,7 @@ Po vytvoření funkce, scénáře a úlohy, můžete je zobrazit **nevyřízený
 ![9](./media/agile-development/9-link-to-a-new-branch.png)
 
 
-## 6. <a name='set-up-agile-dsp-6'></a>Nastavit šablonu pracovní Agile TDSP v prostředí Visual Studio Online
+## 6. <a name='set-up-agile-dsp-6'></a> Nastavit šablonu pracovní Agile TDSP v prostředí Visual Studio Online
 
 Tento článek vysvětluje, jak nastavit šablonu procesu vědecké účely agilní data, která používá fáze životního cyklu TDSP datové vědy a sleduje pracovních položek pomocí sady Visual Studio Online (vso). Kroků ukázce příklad nastavení data vědecké účely konkrétní agilní Šablona procesu *AgileDataScienceProcess* a ukazují, jak vytvářet datové vědy pracovní položky na základě šablony.
 
@@ -178,14 +178,14 @@ Po vytvoření šablony procesu vědecké účely data, můžete vytvořit a sle
     ![18](./media/agile-development/18-workitems.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Spolupráce kódování s Gitem](collaborative-coding-with-git.md) popisuje postup vývoj spolupráce kódu pro projekty vědecké účely dat pomocí Git jako sdílený kód rozhraní pro vývoj a způsob propojení tyto aktivity k práci plánováno s procesu agile kódování.
 
 Zde jsou další odkazy na zdroje informací na agilní procesy.
 
-- Procesu agile [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
-- Procesu agile typy pracovních položek a pracovní postup [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
+- Procesu agile   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
+- Procesu agile typy pracovních položek a pracovní postup   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
 
 
 Návody, které ukazují všechny kroky v procesu pro **konkrétních scénářů** jsou také uvedeny. Jsou uvedena v seznamu a propojené s miniatur popisy v [příklad návody](walkthroughs.md) článku. Se ukazují, jak kombinovat cloud, místní nástroje a služby do pracovního postupu nebo kanálu vytvoření inteligentního aplikace. 

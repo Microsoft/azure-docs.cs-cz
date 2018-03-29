@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 0fd653b1a4058ce4284bf87b0b9152a264581e5c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8bae1140d4a3ac4762bdcbabb16851d29415a8fe
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkce. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -37,12 +37,12 @@ Požadovaná oprávnění | Oprávnění potřebná k použití aktualizace, naj
 Stáhněte si | [Stažení Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
 
 ## <a name="117500"></a>1.1.750.0
-Stav: Vydala vyberte zákazníky, které je tato verze aktuálně distribuován do malých a náhodný výběr AADConnect klienty, kteří mají povolen automatický upgrade. Tato skupina klientů, které jsme se rozbalí v následujících týdnech až 100 % naše zákazníky automatický upgrade obdrželi tuto verzi. Poté zveřejníme sestavení pro obecné stahování na výše uvedený odkaz ke stažení.
+Stav 3/22/2018: vydané pro automatický upgrade a stahování.
 >[!NOTE]
 >Po dokončení upgradu na tuto novou verzi, automaticky spustí úplné synchronizace a úplný import pro konektor Azure AD a úplné synchronizace konektoru služby AD. Vzhledem k tomu, že to může trvat delší dobu, v závislosti na velikosti vašeho prostředí Azure AD Connect, ujistěte se, že jste udělali potřebné kroky pro podporu to nebo zdržovat upgrade, dokud jste našli pohodlný chvíli to udělat.
 
 >[!NOTE]
->"AutoUpgrade funkce nesprávně zakázal pro některé klienty sestavení později než 1.1.524.0. K zajištění, že vaší instanci Azure AD Connect je stále možné AutoUpgrade, spusťte následující rutinu prostředí PowerShell: "Set ADSyncAutoUpgrade - AutoupGradeState AutoUpgradeConfigurationState.Enabled"?
+>"AutoUpgrade funkce nesprávně zakázal pro některé klienty, kteří později než 1.1.524.0 nasazenou sestavení. K zajištění, že vaší instanci Azure AD Connect je stále možné AutoUpgrade, spusťte následující rutinu prostředí PowerShell: "Set ADSyncAutoUpgrade - AutoupGradeState povoleno"
 
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect

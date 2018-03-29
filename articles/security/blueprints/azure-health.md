@@ -1,6 +1,6 @@
 ---
-title: "Plán, podle kterého Analytics Azure stavu"
-description: "Pokyny k nasazení HIPAA nebo HITRUST stavu Analytics plán, podle kterého"
+title: Plán, podle kterého Analytics Azure stavu
+description: Pokyny k nasazení HIPAA nebo HITRUST stavu Analytics plán, podle kterého
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: simorjay
-ms.openlocfilehash: 2bca630bb98b3d9c2be566fbd23ae3313c6a5a47
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 700378d23f869427fb50b9dee5bcf8448ac73404
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého - HIPAA nebo HITRUST Data o stavu a AI
 
@@ -202,7 +202,7 @@ Tato část popisuje, o výchozí konfigurace a bezpečnostní opatření, kter�
 - **INGESTOVÁNÍ** nezpracovaná zdrojů dat včetně FHIR zdroje dat
 - **ÚLOŽIŠTĚ** citlivé informace
 - **Analýza** a předvídání výstupy
-- **INTERAKCÍ** s výsledky a perditions
+- **INTERAKCÍ** s výsledky a předpovědi
 - **IDENTITY** správu řešení
 - **ZABEZPEČENÍ** povolena funkce
 

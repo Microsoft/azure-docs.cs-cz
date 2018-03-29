@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/9/2018
+ms.date: 03/27/2018
 ms.author: shlo
-ms.openlocfilehash: bce74c80f53eda654bb0289a1ff8a6cb88fd13f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 977fd59b746d13e9bf331edc32c63dd5a21c69f7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visual vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní prostředí (UX) umožňuje vizuálně vytvořit a nasadit prostředky pro vytváření dat bez nutnosti psaní jakéhokoli kódu. Můžete přetáhněte na plátno kanálu aktivity, proveďte test spustí, interaktivně, ladění a nasadit a monitorovat běží vaše kanálu. Pro použití uživatelského k provedení visual vytváření dvěma způsoby:
@@ -33,7 +33,7 @@ Visual vytváření obsahu pomocí služby Data Factory se liší od visual vytv
 
 ![Konfigurovat službu Data Factory ](media/author-visually/configure-data-factory.png)
 
-Při použití uživatelského **vytváření plátno** k vytváření přímo se službou Data Factory, jenom **publikovat** režim je k dispozici. Veškeré změny, které provedete jsou publikovány přímo ke službě Data Factory.
+Při použití uživatelského **vytváření plátno** k vytváření přímo se službou Data Factory, jenom **publikovat všechny** režim je k dispozici. Veškeré změny, které provedete jsou publikovány přímo ke službě Data Factory.
 
 ![Režim publikování](media/author-visually/data-factory-publish.png)
 
@@ -61,9 +61,12 @@ V podokně se zobrazují následující kód služby VSTS nastavení úložišt�
 | Nastavení | Popis | Hodnota |
 |:--- |:--- |:--- |
 | **Typ úložiště** | Typ úložiště služby VSTS kódu.<br/>**Poznámka:**: Githubu se aktuálně nepodporuje. | Visual Studio Team Services Git |
+| **Azure Active Directory** | Název vašeho klienta Azure AD. | <your tenant name> |
 | **Visual Studio Team Services Account** | Název účtu služby VSTS. Můžete vyhledat název účtu služby VSTS v `https://{account name}.visualstudio.com`. Můžete [přihlásit ke svému účtu služby VSTS](https://www.visualstudio.com/team-services/git/) přístup váš profil Visual Studio a zobrazit projekty a úložiště. | \<název účtu > |
 | **ProjectName** | Služby VSTS název projektu. Můžete vyhledat název projektu služby VSTS v `https://{account name}.visualstudio.com/{project name}`. | \<služby VSTS název projektu > |
 | **RepositoryName** | Název vaší služby VSTS kód úložiště. Služby VSTS projekty obsahují úložiště Git ke správě zdrojového kódu s růstem projektu. Můžete vytvořit nové úložiště, nebo použití existující úložiště, který už v projektu. | \<název služby VSTS kód úložiště > |
+| **Větev spolupráce** | Větev vaší služby VSTS spolupráce, který se použije pro publikování. Ve výchozím nastavení, je `master`. Toto nastavení změňte v případě, že chcete publikovat prostředky z jiné větve. | \<název větve spolupráce > |
+| **Kořenová složka** | Kořenové složky v služby VSTS spolupráce větev. | \<název kořenové složky > |
 | **Import existujících prostředků pro vytváření dat do úložiště** | Určuje, zda chcete importovat existující objekt pro vytváření zdroje dat z uživatelského **vytváření plátno** do úložiště Git služby VSTS. Vyberte pole pro import vašich prostředků objekt pro vytváření dat do úložiště Git přidruženého ve formátu JSON. Tato akce exportuje každého prostředku jednotlivě (to znamená, propojené služby a datové sady exportují do samostatné JSONs). Pokud není toto políčko zaškrtnuto, nebudou importovány existující prostředky. | Vybrané (výchozí) |
 
 #### <a name="configuration-method-2-ux-authoring-canvas"></a>Metoda konfigurace 2: UX vytváření plátno
@@ -76,41 +79,41 @@ Zobrazí se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v 
 ### <a name="use-version-control"></a>Použití správy verzí
 Systémy kontroly verze (také označované jako _ovládací prvek zdroje_) mohli spolupracovat na kód a sledovat změny, které jsou vytvářeny pomocí kódu základní vývojáři. Správa zdrojového kódu je základní nástroj pro projekty více vývojáři.
 
-Každý úložiště Git služby VSTS, který je spojen s objekt pro vytváření dat má hlavní větve. Když máte přístup do úložiště Git služby VSTS, můžete změnit kód tak, že zvolíte **synchronizace** nebo **publikovat**:
+Má každý úložiště Git služby VSTS, který je spojen s objekt pro vytváření dat spolupráce větev. (`master` je výchozí větev spolupráce). Uživatelé mohou také vytvářet funkce větví kliknutím **+ nové větve** a vývoj v větví funkce.
 
 ![Změnit kód tak, že synchronizace nebo publikování](media/author-visually/sync-publish.png)
 
-#### <a name="sync-code-changes"></a>Synchronizace změn kódu
-Po výběru **synchronizace**, můžete vyžádat změny z hlavní větve do svojí větve místní nebo nabízené změní z vaší místní větve do hlavní větve.
+Až budete připravení s vývojem pro funkce v větev funkci, kliknutí na tlačítko **vytvořit žádost o přijetí změn**. Tím přejdete do služby VSTS GIT, kde můžete zvýšit vyžádání požadavků, kód recenze a sloučit změny do svojí větve spolupráce. (`master` je výchozí nastavení). Jsou povoleny pouze k publikování do služby Data Factory z vaší větve spolupráce. 
 
-![Synchronizace změn kódu](media/author-visually/sync-change.png)
+![Vytvoření nové žádosti o přijetí změn](media/author-visually/create-pull-request.png)
 
 #### <a name="publish-code-changes"></a>Publikování změn kódu
-Vyberte **publikovat** Ruční publikování změn kódu v hlavní větvi ke službě Data Factory.
+Po mít sloučit změny do větve spolupráce (`master` je výchozí nastavení), vyberte **publikovat** Ruční publikování změn kódu v hlavní větvi ke službě Data Factory.
+
+![Publikování změn do služby Data Factory](media/author-visually/publish-changes.png)
 
 > [!IMPORTANT]
 > Hlavní větve se nemusí shodovat s co je nasazen ve službě Data Factory. Hlavní větve *musí* ke službě Data Factory publikovat ručně.
 
 ## <a name="use-the-expression-language"></a>Použití výrazu jazyka
-Výrazy pro hodnoty vlastností můžete zadat pomocí výrazu jazyka, která je podporována službou Azure Data Factory. Informace o podporovaných výrazech naleznete v tématu [výrazy a funkce v Azure Data Factory](control-flow-expression-language-functions.md).
+Výrazy pro hodnoty vlastností můžete zadat pomocí výrazu jazyka, která je podporována službou Azure Data Factory. 
 
-Zadejte výrazy pro hodnoty vlastností pomocí uživatelského **vytváření plátno**:
+Zadejte výrazy pro hodnoty vlastností výběrem **přidat dynamického obsahu**:
 
-![Použití výrazu jazyka](media/author-visually/expression-language.png)
+![Použití výrazu jazyka](media/author-visually/dynamic-content-1.png)
 
-## <a name="specify-parameters"></a>Zadejte parametry
-Můžete zadat parametry pro kanálů a datové sady v Azure Data Factory **parametry** kartě. Můžete snadno využít parametry ve vlastnostech výběrem **přidat dynamického obsahu**:
+## <a name="use-functions-and-parameters"></a>Použití funkcí a parametry
 
-![Přidejte dynamický obsah](media/author-visually/dynamic-content.png)
+Můžete použít funkce nebo zadejte parametry pro kanálů a datové sady v datové továrně **Tvůrce**:
 
-Můžete použít existující parametry nebo zadat nové parametry pro vaše hodnot vlastností:
+Informace o podporovaných výrazech naleznete v tématu [výrazy a funkce v Azure Data Factory](control-flow-expression-language-functions.md).
 
-![Zadejte parametry pro hodnoty vlastností](media/author-visually/parameters.png)
+![Přidejte dynamický obsah](media/author-visually/dynamic-content-2.png)
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 Vyberte **zpětné vazby** komentář o funkcí nebo oznámení o problémech s nástrojem Microsoft:
 
-![Váš názor](media/monitor-visually/feedback.png)
+![Váš názor](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Další postup
 Další informace o monitorování a Správa kanálů najdete v tématu [monitorování a Správa kanálů prostřednictvím kódu programu](monitor-programmatically.md).

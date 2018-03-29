@@ -1,6 +1,6 @@
 ---
 title: Importovat Azure Log Analytics data do Power BI | Microsoft Docs
-description: Power BI je služba cloudové obchodní analýzy od společnosti Microsoft, která poskytuje bohatých vizualizací a sestav pro analýzu dat různé sady.  Tento článek popisuje postup konfigurace do Power BI importovat data analýzy protokolů a nakonfigurovat, aby automaticky aktualizovat.
+description: Power BI je služba cloudové obchodní analýzy od společnosti Microsoft, která poskytuje bohatých vizualizací a sestav pro analýzu dat různé sady.  Tento článek popisuje postup konfigurace a importovat data analýzy protokolů do Power BI a nakonfigurovat, aby automaticky aktualizovat.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
-ms.openlocfilehash: 6d7f8f89f90223dc5dd186a63b3912a13910cb34
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 725828c2acc5ac4bb53c5e6af14d20578a3d3652
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Importovat Azure Log Analytics data do Power BI
 
 
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) je cloudové obchodní analýzy služba společnosti Microsoft, která poskytuje bohatých vizualizací a sestav pro analýzu dat různé sady.  Výsledky hledání protokolu analýzy protokolů můžete importovat do datové sady Power BI umožňuje využívat jeho funkce suchas kombinování dat z různých zdrojů a sdílení sestavy na web a mobilní zařízení.
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) je cloudové obchodní analýzy služba společnosti Microsoft, která poskytuje bohatých vizualizací a sestav pro analýzu dat různé sady.  Výsledky hledání protokolu analýzy protokolů můžete importovat do datové sady Power BI umožňuje využívat jeho funkce, jako je například kombinováním dat z různých zdrojů a sdílení sestavy na web a mobilní zařízení.
 
 ## <a name="overview"></a>Přehled
 K importu dat z pracovního prostoru analýzy protokolů do Power BI, vytvoříte datové sady ve službě Power BI založené na protokolu vyhledávací dotaz v analýzy protokolů.  Pokaždé, když se aktualizují datovou sadu spuštění dotazu.  Potom můžete vytvořit sestavy Power BI, které používají data z datové sady.  Vytvořit datová sada v Power BI, které exportujete dotazu z analýzy protokolů pro [Power Query (M) jazyk](https://msdn.microsoft.com/library/mt807488.aspx).  To poté použít k vytvoření dotazu v Power BI Desktop a potom jej publikujte do Power BI jako datové sady.  Podrobnosti tohoto procesu jsou popsané níže.

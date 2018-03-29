@@ -1,6 +1,6 @@
 ---
-title: "Zakoupení a konfigurace certifikátu protokolu SSL pro vaši Azure App Service | Microsoft Docs"
-description: "Zjistěte, jak koupit certifikát služby App Service a navázat jej aplikaci aplikační služby"
+title: Zakoupení a konfigurace certifikátu protokolu SSL pro vaši Azure App Service | Microsoft Docs
+description: Zjistěte, jak koupit certifikát služby App Service a navázat jej aplikaci aplikační služby
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 6c0125bf0bd22912a21372b5a7da6846e924e6cd
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 759bd1e8be8aaebbf98e1c02d67f3e56609354aa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Koupě a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -42,8 +42,8 @@ Zadejte popisný **název** certifikátů pro zabezpečení SSL a zadejte **náz
 
 Vyberte vaše **předplatné**, **skupiny prostředků**, a **certifikátu SKU**
 
-> [!WARNING]
-> Certifikáty App Service můžete použít pouze v případě ostatních služeb aplikace v rámci stejného předplatného.  
+> [!TIP]
+> Certifikáty App Service lze použít pro všechny Azure nebo Azure Services a není omezen na aplikační služby. K tomu potřebujete vytvořit místní kopii PFX certifikátu služby App Service, můžete ji použít všude, kde chcete. Další informace najdete v tématu [vytváření místní kopie PFX certifikát služby aplikace](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
 >
 
 ## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>Krok 3 – uložení certifikátu v Azure Key Vault
@@ -107,7 +107,7 @@ Klikněte na tlačítko **importovat aplikaci služby certifikát** a vyberte ce
 
 ![Vložit obrázek importovat certifikát](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-V **vazby ssl** část kliknutím na **přidat vazby**a pomocí rozevíracích seznamů vyberte název domény pro zabezpečené pomocí protokolu SSL a certifikát používat. Může také vybrat, jestli se má používat  **[indikace názvu serveru (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)**  nebo IP na základě protokolu SSL.
+V **vazby ssl** část kliknutím na **přidat vazby**a pomocí rozevíracích seznamů vyberte název domény pro zabezpečené pomocí protokolu SSL a certifikát používat. Může také vybrat, jestli se má používat **[indikace názvu serveru (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** nebo IP na základě protokolu SSL.
 
 ![Vložit obrázek vazby SSL](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
 

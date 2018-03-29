@@ -1,8 +1,8 @@
 ---
-title: "Simulovat Azure IoT Edge v systému Windows | Microsoft Docs"
-description: "Instalace modulu runtime Azure IoT Edge v simulovaném zařízení v systému Windows a nasazení první modul"
+title: Simulovat Azure IoT Edge v systému Windows | Microsoft Docs
+description: Instalace modulu runtime Azure IoT Edge v simulovaném zařízení v systému Windows a nasazení první modul
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0207418cf71902ce9bc9d2911124d1d46889d893
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: ae974162a460289a34443879a9e78224684d94ed
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>Nasazení v simulovaném zařízení v systému Windows Azure IoT Edge – náhled
 
@@ -51,8 +51,8 @@ Tento kurz předpokládá, že používáte počítač nebo virtuální počíta
 
 > [!NOTE]
 > Azure IoT Edge můžete spustit buď kontejnery Windows nebo Linux kontejnerů. Pokud používáte jednu z následujících verzí systému Windows, můžete použít Windows kontejnerů:
->    * Aktualizovat Creators patří Windows 10
->    * Windows Server. 1709 (sestavení 16299)
+>    * Windows 10 Fall Creators Update
+>    * Windows Server 1709 (Build 16299)
 >    * Jádro IoT Windows (sestavení 16299) na zařízení na x64
 >
 > Jádro IoT Windows, postupujte podle pokynů v [instalaci modulu runtime IoT Edge na jádro IoT Windows][lnk-install-iotcore]. Jinak jednoduše [konfigurace Docker používat Windows kontejnery][lnk-docker-containers]. Použijte následující příkaz k ověření vaší požadavky:
@@ -86,7 +86,7 @@ Modul runtime IoT okraj je nasadit na všechna zařízení IoT okraj. Obsahuje d
 Konfigurace modulu runtime připojovacím řetězcem IoT hraniční zařízení z předchozí části.
 
 ```cmd
-iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 Spusťte modul runtime.
@@ -133,7 +133,7 @@ docker logs -f tempSensor
 
 Můžete také zobrazit telemetrii zařízení odesílá pomocí [nástroji Průzkumník služby IoT Hub][lnk-iothub-explorer]. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili nové zařízení IoT okraj a použít rozhraní cloudu Azure IoT Edge k nasazení kódu do zařízení. Nyní máte simulované zařízení generování nezpracovaná data o jeho prostředí. 
 

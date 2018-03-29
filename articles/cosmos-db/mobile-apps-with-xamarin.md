@@ -1,11 +1,11 @@
 ---
-title: "Vytváření mobilních aplikací s Xamarin a Azure Cosmos DB | Microsoft Docs"
-description: "Kurz, který vytvoří Xamarin iOS, Android nebo formuláře aplikace pomocí Azure Cosmos DB. Azure Cosmos DB je fast, planetu škálování, cloudu databáze pro mobilní aplikace."
+title: Vytváření mobilních aplikací s Xamarin a Azure Cosmos DB | Microsoft Docs
+description: Kurz, který vytvoří Xamarin iOS, Android nebo formuláře aplikace pomocí Azure Cosmos DB. Azure Cosmos DB je fast, planetu škálování, cloudu databáze pro mobilní aplikace.
 services: cosmos-db
 documentationcenter: .net
 author: arramac
 manager: monicar
-editor: 
+editor: ''
 ms.assetid: ff97881a-b41a-499d-b7ab-4f394df0e153
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,15 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: arramac
-ms.openlocfilehash: 34952fb1cbe5577fa00ed7799d51ba46e7173d7e
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 0cbe9a8463e8b471e3e4b0b4403c3a5d01ed59a0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Vytváření mobilních aplikací s Xamarin a Azure Cosmos DB
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Většina mobilních aplikací potřebovat k ukládání dat v cloudu a Azure Cosmos databáze je databáze cloudu pro mobilní aplikace. Obsahuje všechny objekty, které musí vývojář mobilní. Je plně spravovaná databáze jako služba, která je škálovatelná na vyžádání. Ho můžete Oživte svoje data do vaší aplikace transparentně, bez ohledu na umístění uživatele po celém světě. Pomocí [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md), můžete povolit mobilní aplikace Xamarin pracovat přímo s Azure Cosmos DB bez střední vrstvy.
 
@@ -101,7 +99,7 @@ Jako oblíbenosti zvýšení vaší aplikace může získat uživatelé po celé
 
 Blahopřejeme. Byly dokončeny řešení a mít mobilní aplikaci s Xamarin a Azure Cosmos DB. Postupujte podle podobným způsobem můžete vytvářet aplikace Cordova pomocí sady Azure Cosmos DB JavaScript SDK a nativní aplikace iOS nebo Android pomocí rozhraní API REST Azure Cosmos DB.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Zobrazit zdrojový kód pro [Xamarin a Azure DB Cosmos na Githubu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin).
 * Stažení [Cosmos Azure DB .NET Core SDK](sql-api-sdk-dotnet-core.md).
 * Najít další ukázky kódu pro [aplikací .NET](sql-api-dotnet-samples.md).

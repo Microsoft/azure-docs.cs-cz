@@ -1,8 +1,8 @@
 ---
-title: "Řídicí panel Power BI pro vehicle stavu a řídí zvyklosti - Azure | Microsoft Docs"
-description: "Pomocí možnosti Cortana Intelligence získat přehledy v reálném čase a prediktivní na vehicle stavu a řídí zvyklosti."
+title: Řídicí panel Power BI pro vehicle stavu a řídí zvyklosti - Azure | Microsoft Docs
+description: Pomocí možnosti Cortana Intelligence získat přehledy v reálném čase a prediktivní na vehicle stavu a řídí zvyklosti.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: bradsev
-ms.openlocfilehash: 6a46a05539a7211fbc2a3a9f6ec45a28f5c64039
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 085ce90311d4d89b365f7fe51a95c00c1a734196
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Pokyny k instalaci vehicle Telemetrie Analytics řešení šablony Power BI řídicí panel
 Tato nabídka odkazy na kapitoly v této playbook: 
@@ -308,7 +308,7 @@ Můžete nakonfigurovat všechna tři sestavy, nebo můžete zastavit po jakéko
 
     ![Podrobnosti, legendy, osy a velikosti oblasti](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4hh.png)
 
-25. Změnit grafu **název** k **průměrná paliva průměr engineTemperature a počet vin ve Model a Model**.
+25. Změnit grafu **název** k **průměrná paliva průměr engineTemperature a počet vin modelem**.
 
     ![Bodový název grafu](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ii.png)
 

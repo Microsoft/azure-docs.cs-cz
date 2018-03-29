@@ -1,8 +1,8 @@
 ---
-title: "Přehled SQL Serveru na virtuálních počítačích Azure s Linuxem | Dokumentace Microsoftu"
-description: "Zjistěte, jak spouštět úplné edice SQL Serveru na virtuálních počítačích Azure s Linuxem. Získáte přímé odkazy na všechny image virtuálních počítačů s Linuxem a SQL Serverem a související obsah."
+title: Přehled SQL Serveru na virtuálních počítačích Azure s Linuxem | Dokumentace Microsoftu
+description: Zjistěte, jak spouštět úplné edice SQL Serveru na virtuálních počítačích Azure s Linuxem. Získáte přímé odkazy na všechny image virtuálních počítačů s Linuxem a SQL Serverem a související obsah.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: jhubbard
 tags: azure-service-management
@@ -10,13 +10,13 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: get-started-article
 ms.workload: iaas-sql-server
-ms.date: 10/02/2017
+ms.date: 03/22/2018
 ms.author: jroth
-ms.openlocfilehash: f044fcba92eb7aa7f4ac44608571fab3db0e03f5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: e752ad844a6efe572564e7081ebac87193e9c2a7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Přehled SQL Serveru na virtuálních počítačích Azure (Linux)
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 12/18/2017
 > * [Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 > * [Linux](sql-server-linux-virtual-machines-overview.md)
 
-Toto téma popisuje možnosti spouštění SQL Serveru na virtuálních počítačích Azure s Linuxem a uvádí [odkazy na image na portálu](#option-1-create-a-sql-vm-with-per-minute-licensing).
+Toto téma popisuje možnosti spouštění SQL Serveru na virtuálních počítačích Azure s Linuxem a uvádí [odkazy na image na portálu](#create).
 
 > [!NOTE]
 > Pokud jste již obeznámeni s SQL Serverem a chcete jenom zjistit, jak nasadit virtuální počítač s Linuxem a SQL Serverem, přečtěte si téma [Zřízení virtuálního počítače s Linuxem a SQL Serverem v Azure](provision-sql-server-linux-virtual-machine.md). Případně pokud chcete vytvořit virtuální počítač s Windows a SQL Serverem, přečtěte si téma [Zřízení virtuálního počítače s Windows a SQL Serverem v Azure](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md).

@@ -1,10 +1,10 @@
 ---
-title: "Azure DB Cosmos zásady indexování | Microsoft Docs"
-description: "Vysvětluje, jak indexování v Azure Cosmos DB. Zjistěte, jak nakonfigurovat a změnit zásady indexování pro automatické indexování a lepší výkon."
-keywords: "jak indexování funguje, automatické indexování, indexování databáze"
+title: Azure DB Cosmos zásady indexování | Microsoft Docs
+description: Vysvětluje, jak indexování v Azure Cosmos DB. Zjistěte, jak nakonfigurovat a změnit zásady indexování pro automatické indexování a lepší výkon.
+keywords: jak indexování funguje, automatické indexování, indexování databáze
 services: cosmos-db
-documentationcenter: 
-author: arramac
+documentationcenter: ''
+author: rafats
 manager: jhubbard
 editor: monicar
 ms.assetid: d5e8f338-605d-4dff-8a61-7505d5fc46d7
@@ -13,19 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 08/17/2017
-ms.author: arramac
-ms.openlocfilehash: b09f5323f0378721412baade9be9926ebd0c171e
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 03/26/2018
+ms.author: rafats
+ms.openlocfilehash: 5610c5fdc6a04f9ef13d2e4592f0d7e5d8eba30c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Jak funguje Azure Cosmos DB data indexu?
 
 Ve výchozím nastavení je indexovaný všechna data v Azure Cosmos DB. I když jsou radostí umožníte Azure DB Cosmos automaticky zpracovávat všechny aspekty indexování mnoho zákazníků, můžete zadat vlastní *indexování zásad* pro kolekce během vytváření v Azure Cosmos DB. Indexování zásady v Azure Cosmos DB jsou pružnější a výkonnější než sekundární indexy, které nabízí na jiných platformách, databáze. V Azure DB Cosmos můžete navrhnout a přizpůsobit tvaru indexu, aniž by došlo ke ztrátě flexibilitu schémat. 
 
 Informace o tom, jak indexování funguje v Azure Cosmos DB, je důležité si uvědomit, když spravujete zásady indexování, abyste vytvořili podrobných kompromis mezi režijní náklady na úložiště indexů, zápisu a propustnost dotazu a konzistence dotazu.  
+
+V následujícím videu ukazuje Azure manažer programu DB Cosmos Andrew Liu Azure DB Cosmos automatické indexování schopnosti a jak ladit a nakonfigurovat zásady indexování na vaše kontejner Azure Cosmos DB. 
+
+>[!VIDEO https://www.youtube.com/embed/uFu2D-GscG0]
 
 V tomto článku jsme trvat zblízka na Azure Cosmos DB indexování zásady na tom, jak přizpůsobit zásady indexování a přidružené kompromis. 
 
@@ -37,7 +41,7 @@ Po přečtení tohoto článku, budete moct odpovězte si na následující otá
 * Jak provést změny zásady indexování kolekce?
 * Jak porovnat úložiště a výkon různé zásady indexování?
 
-## Přizpůsobit zásady indexování kolekce<a id="CustomizingIndexingPolicy"></a>  
+## Přizpůsobit zásady indexování kolekce <a id="CustomizingIndexingPolicy"></a>  
 Přepsání výchozího indexování zásady na kolekci Azure Cosmos DB můžete přizpůsobit kompromis mezi úložiště, zápisu a výkon dotazů a konzistence dotazu. Můžete nakonfigurovat následující aspekty:
 
 * **Zahrnout nebo vyloučit dokumenty a cesty do a z indexu**. Můžete vyloučit nebo zahrnout konkrétní dokumenty v indexu při vložení nebo nahrazení dokumenty v kolekci. Můžete taky zahrnout nebo vyloučit konkrétní vlastnosti JSON, označované taky jako *cesty*, indexovaných na dokumentech, které jsou zahrnuty v indexu. Cesty obsahovat zástupné znaky.
@@ -69,7 +73,7 @@ Můžete změnit zásady indexování kolekce na portálu Azure:
 2. V levém navigační nabídce vyberte **nastavení**a potom vyberte **zásady indexování**. 
 3. V části **zásady indexování**, změnit zásady indexování a pak vyberte **OK**. 
 
-### Režimy indexování databáze<a id="indexing-modes"></a>  
+### Režimy indexování databáze <a id="indexing-modes"></a>  
 Azure Cosmos DB podporuje tři indexování režimy, které můžete nakonfigurovat přes zásady indexování v kolekci Azure Cosmos DB: konzistentní, opožděné a None.
 
 **Konzistentní**: Pokud kolekci Azure Cosmos DB zásady nejsou konzistentní, dotazy na určitou kolekci Azure Cosmos DB, postupujte podle kroků stejnou úroveň konzistence jsou zadány pro čtení bodu (silné a ohraničenou odolností, založenou relace, nebo případné). Index je aktualizována synchronně jako součást aktualizace dokumentu (vložení, nahraďte, aktualizace a odstranění dokumentu v kolekci Azure Cosmos DB).
@@ -365,7 +369,7 @@ Následující změny byly implementovány ve specifikaci JSON:
 * Každá cesta může mít několik definic indexu. Může mít jeden pro každý typ dat.
 * Indexování přesnost podporuje 1 až 8 pro čísla, 1 až 100 pro řetězce a -1 (Maximální přesnost).
 * Segmenty cesty nevyžadují dvojité uvozovky, abyste se vyhnuli každá cesta zahrnovat. Například můžete přidat cestu pro   **/název /?** místo **/ "title" /?**.
-* Kořenová cesta, která představuje "všechny cesty" může být reprezentován jako  **/ \***  (kromě  **/** ).
+* Kořenová cesta, která představuje "všechny cesty" může být reprezentován jako **/ \*** (kromě **/**).
 
 Pokud kódu máte s vlastní zásady indexování napsané pomocí .NET SDK verze 1.1.0 nebo starší verzi této kolekce zřizuje, přesunout do verze 1.2.0, sady SDK, musíte změnit kód aplikace pro zpracování těchto změn. Pokud nemáte kód, který nakonfiguruje zásady indexování nebo pokud plánujete dál používat starší verze sady SDK, je potřeba žádné změny.
 

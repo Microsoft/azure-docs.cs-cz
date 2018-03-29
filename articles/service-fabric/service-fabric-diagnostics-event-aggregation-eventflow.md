@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric událostí agregace s EventFlow | Microsoft Docs"
-description: "Další informace o agregaci a shromažďování událostí pomocí EventFlow pro monitorování a Diagnostika Azure Service Fabric clusterů."
+title: Azure Service Fabric událostí agregace s EventFlow | Microsoft Docs
+description: Další informace o agregaci a shromažďování událostí pomocí EventFlow pro monitorování a Diagnostika Azure Service Fabric clusterů.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: fd4c28c2317356cbc6e3fd4d46a10509c029d530
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 37cae133dda2f274a83db1df37e798c5da58c539
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Seskupení událostí a kolekce pomocí EventFlow
 
@@ -30,7 +30,7 @@ Binární soubory EventFlow jsou k dispozici jako sada balíčků NuGet. Pokud c
 
 ![Balíčky EventFlow NuGet v uživatelské rozhraní Správce balíčků Visual Studio NuGet](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
 
-Zobrazí se seznam různých balíčků objeví, s popiskem "Vstup" a "Výstupy". EventFlow podporuje různé zprostředkovatelé různých protokolování a analyzátory. Služby hostování EventFlow by měla obsahovat příslušné balíčky v závislosti na zdroj a cíl pro protokoly aplikací. Kromě základní ServiceFabric balíčku musíte také aspoň jeden vstup a výstup nakonfigurovaný. Můžete například přidat následující balíčky odeslané události EventSource Application insights:
+Zobrazí se seznam různých balíčků objeví, s popiskem "Vstup" a "Výstupy". EventFlow podporuje různé zprostředkovatelé různých protokolování a analyzátory. Služby hostování EventFlow by měla obsahovat příslušné balíčky v závislosti na zdroj a cíl pro protokoly aplikací. Kromě základní ServiceFabric balíčku musíte také aspoň jeden vstup a výstup nakonfigurovaný. Můžete například přidat následující balíčky určené k odesílání událostí EventSource Application Insights:
 
 * `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` k zaznamenání dat od služby EventSource – třída a od standardní EventSources například *služby společnosti Microsoft ServiceFabric* a *Microsoft-ServiceFabric-aktéři*)
 * `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (přidáme poslat protokoly prostředek Azure Application Insights)

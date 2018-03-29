@@ -1,13 +1,13 @@
 ---
-title: "Vytvořit sadu Azure škálování, který používá virtuální počítače s nízkou prioritou (Preview) | Microsoft Docs"
-description: "Informace o vytvoření sady škálování virtuálního počítače Azure, které k uložení na náklady použijte virtuální počítače s nízkou prioritou"
+title: Vytvořit sadu Azure škálování, který používá virtuální počítače s nízkou prioritou (Preview) | Microsoft Docs
+description: Informace o vytvoření sady škálování virtuálního počítače Azure, které k uložení na náklady použijte virtuální počítače s nízkou prioritou
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: rajraj
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: memccror
-ms.openlocfilehash: 9e4970ecc538caab537281931b89bfd57d994cfa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f25e4d1e3906a610e7c60e348f872a78d7db8fd3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>Virtuální počítače s nízkou prioritou na sady škálování (preview)
 
@@ -48,7 +48,7 @@ Chcete-li nasadit nízkou prioritu virtuálních počítačů na sady škálová
 
 ## <a name="use-the-azure-cli-20"></a>Použití Azure CLI 2.0
 
-Proces vytvoření škálování nastavit s nízkou prioritou virtuální počítače je stejný jako podrobné v [Začínáme článku](virtual-machine-scale-sets-create-cli.md). Stačí přidat ' – s prioritou se do rozhraní příkazového řádku parametr volání a nastavte ji na *nízká* jak je znázorněno v následujícím příkladu:
+Proces vytvoření škálování nastavit s nízkou prioritou virtuální počítače je stejný jako podrobné v [Začínáme článku](quick-create-cli.md). Stačí přidat ' – s prioritou se do rozhraní příkazového řádku parametr volání a nastavte ji na *nízká* jak je znázorněno v následujícím příkladu:
 
 ```azurecli
 az vmss create \
@@ -63,7 +63,7 @@ az vmss create \
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
-Proces vytvoření škálování nastavit s nízkou prioritou virtuální počítače je stejný jako podrobné v [Začínáme článku](virtual-machine-scale-sets-create-powershell.md).
+Proces vytvoření škálování nastavit s nízkou prioritou virtuální počítače je stejný jako podrobné v [Začínáme článku](quick-create-powershell.md).
 Stačí přidat '-s prioritou se parametru [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) a nastavte ji na *nízká* jak je znázorněno v následujícím příkladu:
 
 ```powershell
@@ -77,7 +77,7 @@ $vmssConfig = New-AzureRmVmssConfig `
 
 ## <a name="use-azure-resource-manager-templates"></a>Pomocí šablony Azure Resource Manageru
 
-Proces vytvoření sadě škálování, kterou používá virtuální počítače s nízkou prioritou je stejný jako v článku na získávání Začínáme pro podrobné [Linux](virtual-machine-scale-sets-create-template-linux.md) nebo [Windows](virtual-machine-scale-sets-create-template-windows.md). Přidat vlastnosti "priority", která má *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* prostředků zadejte v šabloně a *nízká* jako hodnotu. Nezapomeňte použít *2017-10-30-preview* verze rozhraní API nebo vyšší. 
+Proces vytvoření sadě škálování, kterou používá virtuální počítače s nízkou prioritou je stejný jako v článku na získávání Začínáme pro podrobné [Linux](quick-create-template-linux.md) nebo [Windows](quick-create-template-windows.md). Přidat vlastnosti "priority", která má *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* prostředků zadejte v šabloně a *nízká* jako hodnotu. Nezapomeňte použít *2017-10-30-preview* verze rozhraní API nebo vyšší. 
 
 Aby bylo možné nastavit zásady vyřazení k odstranění, přidejte parametr "evictionPolicy" a nastavte ji na *odstranit*.
 
@@ -121,7 +121,7 @@ Následující příklad vytvoří škálování nízkou prioritu Linux nastaven
   }
 }
 ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste vytvořili škálování nastavit s virtuálními počítači nízkou prioritu, zkuste nasazení naše [automatické škálování šablony pomocí nízkou prioritu](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri).
 
 Podívejte se [škálovací sadu virtuálních počítačů stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) pro podrobné informace o cenách.

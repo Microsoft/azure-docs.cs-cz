@@ -1,19 +1,19 @@
 ---
-title: "Složení modulu Azure IoT Edge | Microsoft Docs"
-description: "Zjistěte, co na moduly Azure IoT okraj a jak může být znovu"
+title: Složení modulu Azure IoT Edge | Microsoft Docs
+description: Zjistěte, co na moduly Azure IoT okraj a jak může být znovu
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/14/2018
+ms.date: 03/23/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4b59a715919e38e68c3b7518932617e9950940e3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7df566ced755e1e817b3107dac8f17e9f6e9b8e4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Pochopení IoT Edge moduly použití, nakonfigurovaná a znovu použít – náhled
 
@@ -134,32 +134,21 @@ Zdroj Určuje, odkud pocházejí zprávy. Může být libovolná z následujíc�
 ### <a name="condition"></a>Podmínka
 Je podmínka vyhodnocena jako volitelný v deklaraci trasy. Pokud chcete předat všechny zprávy z jímky ke zdroji, nechte **kde** klauzule úplně. Nebo můžete použít [IoT Hub dotazovací jazyk] [ lnk-iothub-query] vyfiltrujete pro některé zprávy nebo typ zprávy, které splňují zadanou podmínku.
 
-Azure IoT zprávy jsou formátovány jako JSON a mít vždy alespoň **textu** parametr. Příklad:
+Zprávy, které se předají mezi moduly v IoT Edge jsou formátovaná stejně jako zprávy, které předávají mezi zařízeními a Azure IoT Hub. Všechny zprávy jsou formátovány jako JSON a mít **systemProperties**, **objekt appProperties**, a **textu** parametry. 
 
-```json
-"message": {
-    "body":{
-        "ambient":{
-            "temperature": 54.3421,
-            "humidity": 25
-        },
-        "machine":{
-            "status": "running",
-            "temperature": 62.2214
-        }
-    },
-    "appProperties":{
-        ...
-    }
-}
+Můžete vytvořit dotazy ohledně všechny tři parametry s následující syntaxí: 
+
+* Vlastnosti systému: `$<propertyName>` nebo `{$<propertyName>}`
+* Vlastnosti aplikace: `<propertyName>`
+* Vlastnosti textu: `$body.<propertyName>` 
+
+Příklady o tom, jak vytvářet dotazy na vlastnosti zprávy naleznete v tématu [zpráv typu zařízení cloud trasy dotaz výrazy](../iot-hub/iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
+
+Příklad, který je specifický pro IoT okraj je, pokud chcete filtrovat zprávy, které byly přijaty zařízení brány ze zařízení typu list. Zprávy, které pocházejí z modulů obsahovat systému vlastnost s názvem **connectionModuleId**. Takže pokud chcete směrovat zprávy ze zařízení listu přímo do služby IoT Hub, použijte následující trasy pro vyloučení zprávy modulu:
+
+```sql
+FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 ```
-
-Zadané této vzorové zprávy, existují určité podmínky, které lze definovat, jako například:
-* `WHERE $body.machine.status != "running"`
-* `WHERE $body.ambient.temperature <= 60 AND $body.machine.temperature >= 60`
-
-Podmínky lze také seřaďte typy zpráv, například v bránu, která chce směrovat zprávy, které pocházejí z listu zařízení. Zprávy, které pocházejí z modulů obsahují konkrétní vlastnost s názvem **connectionModuleId**. Takže pokud chcete směrovat zprávy ze zařízení listu přímo do služby IoT Hub, použijte následující trasy pro vyloučení zprávy modulu:
-* `FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream`
 
 ### <a name="sink"></a>Jímka
 Jímky definuje, které jsou odesílány zprávy. Může být libovolná z následujících hodnot:

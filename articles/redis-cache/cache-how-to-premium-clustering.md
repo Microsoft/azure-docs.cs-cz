@@ -1,24 +1,24 @@
 ---
-title: "Postup konfigurace Redis clusterů pro mezipaměť Azure Redis Cache Premium | Microsoft Docs"
-description: "Naučte se vytvářet a spravovat Redis clusteringu pro vaše úroveň Premium instance služby Azure Redis Cache"
+title: Postup konfigurace Redis clusterů pro mezipaměť Azure Redis Cache Premium | Microsoft Docs
+description: Naučte se vytvářet a spravovat Redis clusteringu pro vaše úroveň Premium instance služby Azure Redis Cache
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
 ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 03/26/2018
 ms.author: wesmc
-ms.openlocfilehash: 16281cca4e4bc95e145317365d42382ab11fde93
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 4af6545058ab0031d7cd1b38618b6d80204f83b9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-redis-cache"></a>Postup konfigurace Redis clusterů pro mezipaměť Azure Redis Cache Premium
 Azure Redis Cache má jiný mezipaměti nabídky, které poskytují flexibilitu při výběru velikost mezipaměti a funkce, včetně funkce úrovně Premium, jako je clustering, trvalosti a podpory služby virtual network. Tento článek popisuje postup konfigurace clusterů v instanci služby Azure Redis Cache premium.
@@ -33,7 +33,7 @@ Azure Redis Cache nabízí clusteru Redis jako [implementované v Redis](http://
 * Další propustnost: zvyšuje propustnost lineárně zvýšit počet horizontálních oddílů. 
 * Další velikost paměti: lineárně zvyšuje zvýšit počet horizontálních oddílů.  
 
-Další informace o velikosti, propustnosti a šířky pásma u prémiových mezipamětí najdete v tématu [jaké mezipaměť Redis nabídky a velikosti použít?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
+Clustering nezvyšuje počet připojení, které jsou k dispozici pro Clusterované mezipaměti. Další informace o velikosti, propustnosti a šířky pásma u prémiových mezipamětí najdete v tématu [jaké mezipaměť Redis nabídky a velikosti použít?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 
 Ve službě Azure Redis clusteru je poskytován jako primární/replika modelu, kde každý horizontálního oddílu má pár primární/replika s replikací, kde je replikace spravované službou Azure Redis Cache. 
 
@@ -75,6 +75,8 @@ Chcete-li změnit velikost clusteru na spuštěný premium mezipaměti s cluster
 ![Velikost clusteru redis][redis-cache-redis-cluster-size]
 
 Chcete-li změnit velikost clusteru, posuvníkem nebo zadejte číslo mezi 1 a 10 v **počet horizontálních** textového pole a klikněte na tlačítko **OK** uložit.
+
+Zvětšení velikosti clusteru zvyšuje maximální propustnost a velikost mezipaměti. Zvětšení velikosti clusteru není zvýšit maximální. připojení k dispozici pro klienty.
 
 > [!NOTE]
 > Škálování clusteru běží [MIGRACÍ](https://redis.io/commands/migrate) příkaz, který je nákladné příkaz, takže na minimální, vezměte v úvahu spuštěním této operace v době mimo špičku. Během procesu migrace se zobrazí Špička při zatížení serveru. Škálování clusteru běží s dlouhým proces a množství doba závisí na počet klíčů a velikost hodnoty související s těmito klíči.
@@ -132,7 +134,7 @@ V současné době podporu klientů Redis, clustering. StackExchange.Redis je te
 Můžete připojit ke své mezipaměti pomocí stejné [koncové body](cache-configure.md#properties), [porty](cache-configure.md#properties), a [klíče](cache-configure.md#access-keys) používat při připojování do mezipaměti, která nemá povoleným clusteringem. Redis spravuje clustering pro back-end, takže není nutné spravovat z vašeho klienta.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Můžete přímo připojit k jednotlivých horizontálních oddílů Moje mezipaměti?
-Toto není oficiálně podporován. S třídou uvedená každý horizontálního oddílu se skládá z mezipaměti pár primární/replika souhrnně označované jako instance mezipaměti. Můžete připojit k tyto instance mezipaměti pomocí nástroje rozhraní příkazového řádku redis v [nestabilním](http://redis.io/download) větev úložiště Redis v Githubu. Tato verze implementuje základní podpora při spuštění s `-c` přepínače. Další informace najdete v části [přehrávání s clusterem](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) na [http://redis.io](http://redis.io) v [kurzu cluster Redis](http://redis.io/topics/cluster-tutorial).
+Toto není oficiálně podporován. S třídou uvedená každý horizontálního oddílu se skládá z mezipaměti pár primární/replika souhrnně označované jako instance mezipaměti. Můžete připojit k tyto instance mezipaměti pomocí nástroje rozhraní příkazového řádku redis v [nestabilním](http://redis.io/download) větev úložiště Redis v Githubu. Tato verze implementuje základní podpora při spuštění s `-c` přepínače. Další informace najdete v části [přehrávání s clusterem](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) na [ http://redis.io ](http://redis.io) v [kurzu cluster Redis](http://redis.io/topics/cluster-tutorial).
 
 Bez ssl použijte následující příkazy.
 

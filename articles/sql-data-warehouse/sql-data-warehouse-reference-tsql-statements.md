@@ -1,11 +1,11 @@
 ---
-title: "Referenční dokumentace jazyka Transact-SQL SQL datového skladu | Microsoft Docs"
-description: "Odkazy na referenční obsah pro SQL Data Warehouse používá témata Transact-SQL."
+title: Referenční dokumentace jazyka Transact-SQL SQL datového skladu | Microsoft Docs
+description: Odkazy na referenční obsah pro SQL Data Warehouse používá témata Transact-SQL.
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 0abc5934-1e67-491a-b7d7-8b520d1ae98e
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 10/31/2016
+ms.date: 03/22/2018
 ms.author: kevin;barbkess
-ms.openlocfilehash: d6ad9db8eae0dc35580194f2ffbf02eeab6b70d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f2148f6087a43f9cec252df4ef2b97b4a7afcb3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="transact-sql-topics"></a>Témata Transact-SQL
 ## <a name="data-definition-language-ddl-statements"></a>Příkazy Definition Language (DDL) dat
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/11/2017
 * [VYTVOŘENÍ ZOBRAZENÍ](https://msdn.microsoft.com/library/ms187956.aspx)
 * [VYŘAĎTE EXTERNÍ ZDROJ DAT](https://msdn.microsoft.com/library/mt146367.aspx)
 * [VYŘAĎTE FORMÁT EXTERNÍCH SOUBORŮ](https://msdn.microsoft.com/library/mt146379.aspx)
-* [ODPOJIT EXTERNÍ TABULKU](https://msdn.microsoft.com/library/mt130698.aspx)
+* [DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/mt130698.aspx)
 * [DROP INDEX](https://msdn.microsoft.com/library/ms176118.aspx)
 * [ODPOJIT PROCEDURU](https://msdn.microsoft.com/library/ms174969.aspx)
 * [VYŘAĎTE STATISTIKY](https://msdn.microsoft.com/library/ms175075.aspx)
@@ -56,25 +56,25 @@ ms.lasthandoff: 10/11/2017
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 
 ## <a name="data-manipulation-language-dml-statements"></a>Příkazy zpracování jazyka (DML) dat
-* [ODSTRANIT](https://msdn.microsoft.com/library/ms189835.aspx)
+* [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)
 * [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)
 * [AKTUALIZACE](https://msdn.microsoft.com/library/ms177523.aspx)
 
 ## <a name="database-console-commands"></a>Příkazů konzole databáze
-* [PŘÍKAZ DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
-* [PŘÍKAZ DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
-* [PŘÍKAZ DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
+* [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
+* [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
+* [DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
-* [PŘÍKAZ DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
-* [PŘÍKAZ DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
-* [PŘÍKAZ DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
+* [DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
+* [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
+* [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Dotaz – příkazy
 * [VYBERTE](https://msdn.microsoft.com/library/ms189499.aspx)
 * [S common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 * [S výjimkou a INTERSECT](https://msdn.microsoft.com/library/ms188055.aspx)
 * [VYSVĚTLUJÍ](https://msdn.microsoft.com/library/mt631615.aspx)
-* [Z](https://msdn.microsoft.com/library/ms177634.aspx)
+* [FROM](https://msdn.microsoft.com/library/ms177634.aspx)
 * [Pomocí PIVOT a UNPIVOT](https://msdn.microsoft.com/library/ms177410.aspx)
 * [SESKUPIT PODLE](https://msdn.microsoft.com/library/ms177673.aspx)
 * [S](https://msdn.microsoft.com/library/ms180199.aspx)
@@ -82,7 +82,7 @@ ms.lasthandoff: 10/11/2017
 * [OPTION](https://msdn.microsoft.com/library/ms190322.aspx)
 * [SJEDNOCENÍ](https://msdn.microsoft.com/library/ms180026.aspx)
 * [KDE](https://msdn.microsoft.com/library/ms188047.aspx)
-* [HORNÍ](https://msdn.microsoft.com/library/ms189463.aspx)
+* [TOP](https://msdn.microsoft.com/library/ms189463.aspx)
 * [Aliasy](https://msdn.microsoft.com/library/mt631614.aspx)
 * [Podmínka vyhledávání](https://msdn.microsoft.com/library/ms173545.aspx)
 * [Poddotazy](https://msdn.microsoft.com/library/mt631613.aspx)
@@ -112,13 +112,13 @@ ms.lasthandoff: 10/11/2017
 * [VYŘAĎTE UŽIVATELE](https://msdn.microsoft.com/library/ms189438.aspx)
 * [OTEVŘETE HLAVNÍ KLÍČ](https://msdn.microsoft.com/library/ms174433.aspx)
 
-## <a name="next-steps"></a>Další kroky
-Další příklady TSQL najdete v tématu [Přehled odkaz SQL Data Warehouse][SQL Data Warehouse reference overview].
+## <a name="next-steps"></a>Další postup
+Odkaz na další TSQL, najdete v části [prvků jazyka T-SQL SQL datového skladu](sql-data-warehouse-reference-tsql-language-elements.md).
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse reference overview]: sql-data-warehouse-overview-reference.md
+
 
 <!--MSDN references-->
 

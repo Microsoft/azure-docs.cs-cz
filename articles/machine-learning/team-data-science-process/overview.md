@@ -1,8 +1,8 @@
 ---
-title: "Co je proces vědecké účely Team dat? | Dokumentace Microsoftu"
-description: "Poskytuje data metodika vědecké účely k poskytování řešení prediktivní analýzy a inteligentní aplikací."
+title: Co je vědecké zpracování týmových dat? | Dokumenty Microsoft
+description: Poskytuje data metodika vědecké účely k poskytování řešení prediktivní analýzy a inteligentní aplikací.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: bradsev;
-ms.openlocfilehash: 75e170f29f9a6abeeb3393e43e6a4c355749044d
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.author: bradsev
+ms.openlocfilehash: f7c081dcd74164f4b1f054f5a65f2ff6aaabebd7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="what-is-the-team-data-science-process"></a>Co je proces vědecké účely Team dat?
+# <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
 
-Proces pro vědecké účely Data Team (TDSP) je metodika vědecké účely agilní, iterativní data k poskytování efektivní řešení prediktivní analýzy a inteligentní aplikací. TDSP pomáhá zlepšit týmovou spolupráci a získávání informací. Obsahuje destilace osvědčené postupy a struktury od společnosti Microsoft a ostatní v odvětví které usnadňují úspěšné dokončení implementace iniciativy vědecké účely data. Cílem je pomoct společnosti plně pochopit výhody jejich analýzy programu.
+Proces pro vědecké účely Data Team (TDSP) je metodika vědecké účely agilní, iterativní data k poskytování efektivní řešení prediktivní analýzy a inteligentní aplikací. Vědecké zpracování týmových dat pomáhá vylepšit spolupráci a učení v rámci týmů. Obsahuje výtah osvědčených postupů a struktur od Microsoftu a dalších společností v tomto oboru, které usnadňují úspěšnou implementaci iniciativ datových věd. Cílem je umožnit společnostem plně využít výhod jejich analytického programu.
 
 Tento článek obsahuje přehled TDSP a jeho hlavní součásti. Poskytujeme obecný popis zde procesu, který může být implementováno s celou řadu nástrojů. Podrobnější popis projektu úlohy a role zahrnutých v životním cyklu procesu najdete v další související témata. K dispozici jsou také pokyny o tom, jak implementovat TDSP pomocí konkrétní sadu nástrojů Microsoft a infrastrukturu, která jsme použít k implementaci TDSP v našimi týmy.
 
@@ -54,7 +54,7 @@ Pro projekty vědecké účely dat, které se dodávají jako součást intelige
 
 Tady je vizuální reprezentace **procesu vědecké účely Team datového cyklu**. 
 
-![TDSP Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
+![TDSP-Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
 
 Cíle, úlohy a artefakty dokumentace pro každé fáze životního cyklu v TDSP jsou popsané v [procesu vědecké účely Team datového cyklu](lifecycle.md) tématu. Tyto úlohy a artefaktů jsou přidruženy role projektu:
 
@@ -65,7 +65,7 @@ Cíle, úlohy a artefakty dokumentace pro každé fáze životního cyklu v TDSP
 
 Následující diagram představuje zobrazení mřížky úloh (modře) a artefakty (zeleně) přidružené každé fáze životního cyklu (na vodorovné ose) pro tyto role (na svislé ose). 
 
-![TDSP-role a úlohy](./media/overview/tdsp-tasks-by-roles.png)
+![TDSP-roles-and-tasks](./media/overview/tdsp-tasks-by-roles.png)
 
 ## <a name="standardized-project-structure"></a>Struktura standardizované projektu
 
@@ -104,6 +104,6 @@ Tady je příklad týmu pracující na více projektů a sdílení různých sou
 Představení procesy v většina organizací je náročná. Nástroje poskytované implementace nápovědy proces a životního cyklu vědecké účely data nižší se překážek a zvýšit konzistence jejich přijetí. TDSP poskytuje počáteční sadu nástrojů a skripty, které vám pomohou rychle začít přijetí TDSP v rámci týmu. Pomáhá také automatizovat některé běžné úlohy v životním cyklu vědecké účely data například zkoumání dat a modelování směrného plánu. Není dobře nastavené struktury zadaný pro jednotlivce přispívání sdílené nástrojů a pomůcek do úložiště sdíleného kódu jejich tým. Tyto prostředky lze poté využít další projekty v rámci tým nebo organizace. TDSP také plány povolit příspěvky nástrojů a pomůcek celé komunitě. Nástroje TDSP dají klonovat z [Githubu](https://github.com/Azure/Azure-TDSP-Utilities).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Proces vědecké účely dat Team: Rolí a úloh](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) popisuje role klíče pracovníky a jejich přidružených úloh pro data tým vědecké účely, standardizující tohoto postupu. 

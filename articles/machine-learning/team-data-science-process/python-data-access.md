@@ -1,6 +1,6 @@
 ---
-title: "Přístup k datové sady s knihovnou klienta Machine Learning Python | Microsoft Docs"
-description: "Nainstalovat a používat klientské knihovny Python přístup k datům a spravovat Azure Machine Learning bezpečně z místního prostředí Python."
+title: Přístup k datové sady s knihovnou klienta Machine Learning Python | Microsoft Docs
+description: Nainstalovat a používat klientské knihovny Python přístup k datům a spravovat Azure Machine Learning bezpečně z místního prostředí Python.
 services: machine-learning
 documentationcenter: python
 author: bradsev
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: huvalo;bradsev
-ms.openlocfilehash: 3cffb90baadef570bbb7e4e2d96741cc0420b0a2
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 5f0823e07f0e583e32829b664a1d3d463092169e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
 Ve verzi preview Klientská knihovna pro Microsoft Azure Machine Learning Python můžete povolit zabezpečený přístup k vaší Azure Machine Learning datové sady z místního prostředí Python a umožňuje vytváření a správu datových sad v pracovním prostoru.
@@ -40,8 +40,8 @@ Klientská knihovna Python byl testován v následujících prostředích:
 
 Má závislost na následujících balíčků:
 
-* požadavky
-* Python dateutil
+* žádostí
+* python-dateutil
 * pandas
 
 Doporučujeme použít distribuci jazyka Python, jako [Anaconda](http://continuum.io/downloads#all) nebo [zápoje](https://store.enthought.com/downloads/), které jsou součástí Python, IPython a nainstalované tři balíčky uvedené výše. I když IPython není nezbytně nutné, je skvělé prostředí pro manipulace a vizualizace dat interaktivně.

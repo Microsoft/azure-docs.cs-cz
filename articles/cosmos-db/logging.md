@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mimig
-ms.openlocfilehash: b1921820b5a1d94c6f5d6413204ee7814cc25c74
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3b7c9f1acd79a2f170ecead9dedd200ad37d9388
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Protokolování diagnostiky Azure Cosmos DB
 
-Jakmile začnete používat jednu nebo více databází Azure Cosmos DB, můžete chtít sledovat jak a kdy se k nim přistupuje vaší databáze. Tento článek obsahuje přehled protokolů, které jsou dostupné na platformě Azure. Informace o povolení protokolování diagnostiky pro účely k odeslání protokolů k monitorování [Azure Storage](https://azure.microsoft.com/services/storage/), jak k vysílání datového proudu protokolů [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportování protokoly [Azure Log Analytics ](https://azure.microsoft.com/services/log-analytics/), který je součástí [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite).
+Jakmile začnete používat jednu nebo více databází Azure Cosmos DB, můžete chtít sledovat jak a kdy se k nim přistupuje vaší databáze. Tento článek obsahuje přehled protokolů, které jsou dostupné na platformě Azure. Informace o povolení protokolování diagnostiky pro účely k odeslání protokolů k monitorování [Azure Storage](https://azure.microsoft.com/services/storage/), jak k vysílání datového proudu protokolů [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportování protokoly [Azure Log Analytics ](https://azure.microsoft.com/services/log-analytics/).
 
 ## <a name="logs-available-in-azure"></a>Protokoly, které jsou k dispozici v Azure
 
@@ -57,7 +57,7 @@ Protokoly aktivity (operace ovládacího prvku roviny) může být bohatší ve 
 
 Azure diagnostické protokoly jsou vygenerované prostředek a poskytují bohatou a často data o operaci prostředku. Obsah tyto protokoly se liší podle typu prostředku. Diagnostické protokoly na úrovni prostředků se také liší od diagnostické protokoly na úrovni operačního systému hosta. Diagnostické protokoly hostovaného operačního systému se shromažďují pomocí agenta, který běží uvnitř virtuálního počítače nebo jiné podporované typ prostředku. Diagnostické protokoly na úrovni prostředků vyžadují specifické pro zdroje dat z Azure k samotné platformě nástroje žádné agenta a zachycení. Diagnostické protokoly úrovni operačního systému hosta zaznamenání dat z operačního systému a aplikací, které jsou spuštěny na virtuálním počítači.
 
-![Protokolování diagnostiky úložišť, Event Hubs nebo Operations Management Suite prostřednictvím analýzy protokolů](./media/logging/azure-cosmos-db-logging-overview.png)
+![Protokolování diagnostiky úložišť, Event Hubs nebo analýzy protokolů](./media/logging/azure-cosmos-db-logging-overview.png)
 
 ### <a name="what-is-logged-by-azure-diagnostic-logs"></a>Co je protokolováno diagnostické protokoly Azure?
 

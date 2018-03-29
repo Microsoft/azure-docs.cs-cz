@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 9fa18b14b82376a25bb434acd770d340b1ef9262
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/23/2018
+---
 Pokud máte potíže s připojením, zkontrolujte následující položky:
 
 - Pokud jste exportovali klientský certifikát, ujistěte se, že jste ho exportovali jako soubor .pfx s výchozím nastavením Zahrnout všechny certifikáty na cestě k certifikátu, pokud je to možné. Při exportu s použitím této hodnoty se exportují také informace o kořenovém certifikátu. Při instalaci certifikátu na klientský počítač se na něj nainstaluje i kořenový certifikát obsažený v souboru .pfx. Na klientském počítači musí být nainstalované informace o kořenovém certifikátu. Můžete to ověřit tak, že otevřete **správu uživatelských certifikátů** a přejdete do umístění **Důvěryhodné kořenové certifikační autority\Certifikáty**. Zkontrolujte, že je kořenový certifikát uvedený. Aby ověřování fungovalo, musí být kořenový certifikát přítomný.

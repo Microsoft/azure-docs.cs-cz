@@ -1,12 +1,12 @@
 ---
-title: "Přehled diagnostiky a Azure Service Fabric monitorování | Microsoft Docs"
-description: "Další informace o monitorování a Diagnostika pro clustery, aplikace a služby Azure Service Fabric."
+title: Přehled diagnostiky a Azure Service Fabric monitorování | Microsoft Docs
+description: Další informace o monitorování a Diagnostika pro clustery, aplikace a služby Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/10/2018
 ms.author: dekapur
-ms.openlocfilehash: 1da2fab92c6fd51c5fc18589da5f8bbec2929503
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f784576547f0d85a825ad9dd107c6c84cd261092
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorovací a diagnostické pro Azure Service Fabric
 
@@ -86,7 +86,7 @@ Platforma Service Fabric obsahuje stav modelu, který poskytuje rozšiřitelný 
 
 ![Řídicí panel stavu SFX](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
 
-Kromě zobrazení nejnovější sestavy stavu v SFX, je také jednotlivých sestav k dispozici jako událost. Stav události se můžou shromažďovat prostřednictvím provozní kanálu (najdete v části [agregace událostí pomocí diagnostiky Azure](service-fabric-diagnostics-event-aggregation-wad.md#collect-health-and-load-events)) a jsou uložené v OMS analýzy protokolů pro výstrahy a dotazování v budoucnu. To pomáhá rozpoznat problémy, které můžou mít vliv dostupnosti vaší aplikace, takže doporučujeme, abyste nastavili výstrahy pro příslušné selhání scénáře (vlastní výstrahy prostřednictvím OMS).
+Kromě zobrazení nejnovější sestavy stavu v SFX, je také jednotlivých sestav k dispozici jako událost. Stav události se můžou shromažďovat prostřednictvím provozní kanálu (najdete v části [agregace událostí pomocí diagnostiky Azure](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)) a jsou uložené v OMS analýzy protokolů pro výstrahy a dotazování v budoucnu. To pomáhá rozpoznat problémy, které můžou mít vliv dostupnosti vaší aplikace, takže doporučujeme, abyste nastavili výstrahy pro příslušné selhání scénáře (vlastní výstrahy prostřednictvím OMS).
 
 ## <a name="monitoring-workflow"></a>Monitorování pracovního postupu 
 

@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k Azure provoz Analytics | Microsoft Docs
+title: Nejčastější dotazy k Azure provoz analytics | Microsoft Docs
 description: Získejte odpovědi na některé nejčastější dotazy o analýzy provozu.
 services: network-watcher
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: b9090f91db11b5bde53f3652028030201f135fa5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 01d5150bff8642a1a3fe9b7ac063923916f191c0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastější dotazy
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/23/2018
         - Microsoft.Network/virtualNetworkGateways/read 
         - Microsoft.Network/virtualNetworks/read
 
-2.  Které oblasti jsou k dispozici v provozu Analytics?
+2.  Které oblasti jsou k dispozici v provozu analytics?
 
     Ve verzi preview, můžete použít pro skupiny Nsg v některém z následujících Analýza provozu **podporované oblasti**: – Západ střední USA, Východ USA, Východ USA 2, – Sever střední USA, Jižní střední USA, střed USA, západ USA, západní USA 2, západní Evropa, Severní Evropa , Spojené království – Západ, Spojené království – Jih, Austrálie – východ a Austrálie – jihovýchod. Pracovní prostor analýzy protokolů musí existovat v – Západ střední USA, Východ USA, západní Evropa, Austrálie – jihovýchod nebo oblasti Spojené království – jih.
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 03/23/2018
 
     Ne. Nezpracovaná protokoly můžete uložit ve všech podporou skupina NSG pro tok protokoly účtu úložiště, ale účet úložiště a raw protokoly musí být ve stejném předplatném, oblasti.
 
-8.  Pokud se zobrazí chybu "Nebyl nalezen" při konfiguraci skupiny NSG pro analýzu provoz, jak mohu vyřešit?
+8.  Pokud se zobrazí chybu "Nebyl nalezen" při konfiguraci Skupina NSG pro analýzu provoz, jak mohu vyřešit?
 
     Vyberte podporované oblasti uvedené v otázku 2. Pokud vyberete oblast není podporován, obdržíte chybu "Nebyl nalezen".
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 03/23/2018
 
 14.  Jak je cenově Analýza provozu?
 
-        Analýza provozu je – měření podle objemu rozšíření snížené protokoly a ukládání rozšířené protokolů v pracovním prostoru analýzy protokolů. Zatímco ve verzi preview, není účtován Analýza provozu rozšíření snížené protokoly, ale uchovávání dat v pracovním prostoru podléhá fakturace publikované tempem. Tato odpověď bude aktualizován, jakmile ceny pro provoz Analytics je k dispozici.
+        Analýza provozu je – měření podle objemu rozšíření snížené protokoly a ukládání rozšířené protokolů v pracovním prostoru analýzy protokolů. Zatímco ve verzi preview, není účtován Analýza provozu rozšíření snížené protokoly, ale uchovávání dat v pracovním prostoru podléhá fakturace publikované tempem. Tato odpověď bude aktualizován, jakmile ceny pro provoz analytics je k dispozici.
 
 15.  Jak můžete přejít pomocí klávesnice v zobrazení mapy geograficky?
 

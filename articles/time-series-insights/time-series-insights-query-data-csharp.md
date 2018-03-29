@@ -1,22 +1,22 @@
 ---
-title: "Dotaz na data z prostředí Azure časové řady Statistika s použitím kódu jazyka C# | Microsoft Docs"
-description: "Tento článek popisuje, jak dotazovat data z prostředí Statistika řady čas Azure pomocí kódování vlastní aplikaci napsanou v jazyce C# (C-ostrý) .NET."
+title: Dotaz na data z prostředí Azure časové řady Statistika s použitím kódu jazyka C# | Microsoft Docs
+description: Tento článek popisuje, jak dotazovat data z prostředí Statistika řady čas Azure pomocí kódování vlastní aplikaci napsanou v jazyce C# (C-ostrý) .NET.
 services: time-series-insights
 ms.service: time-series-insights
 author: ankryach
 ms.author: ankryach
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
-reviewer: v-mamcge, jasonwhowell, kfile, tsidocs
+reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 561ad848e7bddc6bf9d71328db4ddbba9bc5d2b4
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.date: 03/23/2018
+ms.openlocfilehash: 2cbdf4a5c7272e88430b1db7b853f8b6d441c893
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Dotaz na data z prostředí Statistika řady čas Azure pomocí jazyka C#
 
@@ -26,6 +26,11 @@ V ukázce najdete několik základních příkladů použití rozhraní API pro 
 2. Je-li získat seznam prostředí, které má uživatel přístup k. Jeden z prostředí je převzata jako prostředí, které vás zajímají, a další je dotazován data pro toto prostředí.
 3. Jako příklad požadavku HTTPS se vyžádají data o dostupnosti pro prostředí, které nás zajímá.
 4. Jako příklad požadavku na webový socket se vyžádají agregovaná data o události pro prostředí, které nás zajímá. Data se vyžadují za celý časový rozsah dostupnosti.
+
+Tento příklad kódu je také k dispozici na [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
+
+## <a name="project-references"></a>Odkazy na projekt
+Přidání balíčků NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` a `Newtonsoft.Json` v tomto příkladu. 
 
 ## <a name="c-example"></a>Příklad jazyka C#
 
@@ -449,6 +454,6 @@ namespace TimeSeriesInsightsQuerySample
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Dotaz na referenční dokumentace rozhraní API](/rest/api/time-series-insights/time-series-insights-reference-queryapi).

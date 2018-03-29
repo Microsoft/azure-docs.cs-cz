@@ -1,24 +1,24 @@
 ---
-title: "Distribuci dat globálně pomocí Azure Cosmos DB | Microsoft Docs"
-description: "Další informace o škálování planetu geografická replikace, převzetí služeb při selhání a data obnovení pomocí globální databáze z databáze Cosmos Azure, služby globálně distribuované, podstoupí model databáze."
+title: Distribuci dat globálně pomocí Azure Cosmos DB | Microsoft Docs
+description: Další informace o škálování planetu geografická replikace, převzetí služeb při selhání a data obnovení pomocí globální databáze z databáze Cosmos Azure, služby globálně distribuované, podstoupí model databáze.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ba5ad0cc-aa1f-4f40-aee9-3364af070725
 ms.service: cosmos-db
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 03/26/2018
 ms.author: arramac
-ms.openlocfilehash: 0be81802996f27a4c063e4e728a3c95ad757bea0
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: e31b66f20c51e95dbc2d8285bb5602590abd4f4f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Jak se bude distribuovat dat globálně pomocí Azure Cosmos DB
 Azure je všudypřítomný – má globální nároků přes 30 + zeměpisné oblasti a průběžně zvětšuje. S jeho po celém světě přítomnosti jeden odlišné možnosti, které Azure nabízí pro jeho vývojáře je schopnost vytvářet, nasazovat a spravovat snadno globálně distribuované aplikace. 
@@ -37,6 +37,11 @@ V tomto článku poskytujeme přehled možností globální distribuční datab�
 
 ## <a id="EnableGlobalDistribution"></a>Povolení připraveného globální distribuční
 Azure Cosmos DB poskytuje následující funkce, které vám umožní snadno psaní planetu škálování aplikací. Tyto možnosti jsou dostupné prostřednictvím založenou na poskytovateli prostředků Azure Cosmos DB [rozhraní REST API](https://docs.microsoft.com/rest/api/documentdbresourceprovider/) a také na portálu Azure.
+
+V následujícím videu demonstruje Azure manažer programu DB Cosmos Andrew Liu připraveného globální distribuční funkce.
+
+> [!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
+>
 
 ### <a id="RegionalPresence"></a>Všudypřítomná regionální přítomnosti 
 Azure je neustále rostoucí jeho zeměpisné přítomnosti tak, že převedou [nové oblasti](https://azure.microsoft.com/regions/) online. Azure Cosmos DB je k dispozici ve všech oblastech nové Azure ve výchozím nastavení. To umožňuje přidružit geografické oblasti databázový účet Azure Cosmos DB co nejrychleji Azure otevře novou oblast pro firmy.
@@ -226,8 +231,8 @@ Azure Cosmos DB transparentně zpřístupní metriky propustnosti, latenci, konz
 ## <a id="References"></a>Odkazy
 1. Erica Brewer. [Směrem robustní distribuovaných systémů](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf)
 2. Erica Brewer. [Zakončení později – 12 letech jak změnily pravidla](http://informatik.unibas.ch/fileadmin/Lectures/HS2012/CS341/workshops/reportsAndSlides/PresentationKevinUrban.pdf)
-3. Gilbert, Lynch. - [Brewer & č. 39; s domněnek a vhodnosti konzistentní, k dispozici, Oddíl odolný vůči chybám webových služeb](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf)
-4. ADAM Abadi. [Konzistence kompromisy v moderních distribuovaných systémů návrhu databáze](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf)
+3. Gilbert, Lynch. - [Brewer&#39;s domněnek a vhodnosti konzistentní, k dispozici, Oddíl odolný vůči chybám webových služeb](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf)
+4. Daniel Abadi. [Konzistence kompromisy v moderních distribuovaných systémů návrhu databáze](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf)
 5. Martin Kleppmann. [Zastavte volání databáze prohlášení CP nebo Asie a Tichomoří](https://martin.kleppmann.com/2015/05/11/please-stop-calling-databases-cp-or-ap.html)
 6. Petr Bailis a další. [Pravděpodobnosti typu s ohraničenou Prošlostí (PBS) pro praktické částečné kvor](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 7. Naor a vlny. [Zatížení, kapacity a dostupnosti v systémech kvora](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf)

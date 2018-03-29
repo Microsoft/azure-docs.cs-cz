@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 70b39b854a3b7cb28716d3cb290998690dbeb549
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9f5a68972015f54e2333199652075cda2535a3c8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Nástroj pro vyrovnávání zatížení standardní a dostupnosti zón
 
 Podporuje Azure Vyrovnávání zatížení standardní SKU [dostupnost zóny](../availability-zones/az-overview.md) scénáře. Několik nových konceptů jsou k dispozici s standardní pro vyrovnávání zatížení, které umožňují optimalizovat dostupnosti ve vašem scénáři začátku do konce zarovnání prostředky zón a také rozprostřít do zóny.  Zkontrolujte [dostupnost zóny](../availability-zones/az-overview.md) pro co dostupnost zóny jsou pokyny, které oblasti v současné době podporují dostupnost zóny a další související koncepty a produkty. Dostupnost zóny v kombinaci s nástroj pro vyrovnávání zatížení je sada funkcí obsáhlou a flexibilní, můžete vytvořit mnoho různých scénářů.  Přečtěte si tento dokument pochopit tyto [koncepty](#concepts) a základní scénáře [návrh pokyny](#design).
 
 >[!NOTE]
-> Standardní SKU pro vyrovnávání zatížení je aktuálně ve verzi preview. Verzi Preview funkci nemusí mít stejnou úroveň dostupnost a spolehlivost jako verze funkce, které jsou obecné dostupnosti. Další informace najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Použít obecně dostupná [základní SKU služby Vyrovnávání zatížení](load-balancer-overview.md) pro vaše produkční služby. Použít [dostupnost zóny Preview](https://aka.ms/availabilityzones) s touto verzí Preview vyžaduje [samostatné registrace](https://aka.ms/availabilityzones), kromě registrace do služby pro vyrovnávání zatížení [standardní preview](#preview-sign-up).
+>Zkontrolujte [dostupnost zóny Preview](https://aka.ms/availabilityzones) další související témata. 
 
 ## <a name="concepts"></a> Koncepty dostupnost zóny použít nástroj pro vyrovnávání zatížení
 

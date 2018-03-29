@@ -1,24 +1,22 @@
 ---
-title: "Konfigurace protokolu SSL začátku do konce s Azure Application Gateway | Microsoft Docs"
-description: "Tento článek popisuje, jak konfigurovat začátku do konce protokolu SSL s Azure Application Gateway pomocí prostředí PowerShell"
+title: Konfigurace protokolu SSL začátku do konce s Azure Application Gateway
+description: Tento článek popisuje, jak konfigurovat začátku do konce protokolu SSL s Azure Application Gateway pomocí prostředí PowerShell
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: e6d80a33-4047-4538-8c83-e88876c8834e
+author: vhorne
+manager: jpconnock
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
-ms.author: davidmu
-ms.openlocfilehash: df14d5c4572a250f9f8951ee3b86e87e6f652782
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 3/27/2018
+ms.author: victorh
+ms.openlocfilehash: 2de7086d7c26d5a655ad5998678f392126ea7e1d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurace protokolu SSL začátku do konce pomocí Application Gateway pomocí prostředí PowerShell
 
@@ -77,7 +75,7 @@ Tato část vás provede procesem vytvoření skupiny prostředků, který obsah
    New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
    ```
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Vytvoření virtuální sítě a podsítě pro službu Application Gateway
+## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Vytvořte virtuální síť a podsíť pro aplikační bránu
 
 Následující příklad vytvoří virtuální síť a dvě podsítě. Jednu podsíť se používá k ukládání aplikační brány. Další podsítě se používá pro back elementy end, které jsou hostiteli webové aplikace.
 
@@ -124,7 +122,7 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
 > [!IMPORTANT]
 > Aplikační brána nepodporuje použití veřejnou IP adresu vytvořit s popiskem definované domény. Je podporován pouze veřejné IP adresy s popiskem dynamicky vytvořené domény. Pokud budete potřebovat popisný název DNS pro službu application gateway, doporučujeme že použít záznam CNAME jako alias.
 
-## <a name="create-an-application-gateway-configuration-object"></a>Vytvořte objekt konfigurace aplikační brány 
+## <a name="create-an-application-gateway-configuration-object"></a>Vytvoření objektu konfigurace služby Application Gateway
 
 Před vytvořením služby application gateway se nastavit všechny položky konfigurace. Následující kroky slouží k vytvoření položek konfigurace potřebné pro prostředek služby Application Gateway.
 
@@ -160,7 +158,8 @@ Před vytvořením služby application gateway se nastavit všechny položky kon
    5. Nakonfigurujte certifikát pro službu application gateway. Tento certifikát se používá k dešifrování a reencrypt provoz ve službě application gateway.
 
    ```powershell
-   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password <password for certificate file>
+   $password = ConvertTo-SecureString  <password for certificate file> -AsPlainText -Force 
+   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password $password 
    ```
 
    > [!NOTE]
@@ -177,7 +176,7 @@ Před vytvořením služby application gateway se nastavit všechny položky kon
    > [!NOTE]
    > Získá výchozí kontroly veřejného klíče z *výchozí* vazby SSL na IP adrese a porovná ji sem zadáte hodnotu veřejného klíče obdrží hodnotě veřejných klíčů můžete back-end. 
    
-   > Pokud používáte hlavičky hostitele a indikace názvu serveru (SNI) na back-end, nemusí být načtena veřejný klíč zamýšlená lokalita, na které přenosové toky. Pokud máte pochybnosti, navštivte https://127.0.0.1/ na back-end serverů k potvrzení, který certifikát se používá pro *výchozí* vazbu SSL. V této části použijte veřejný klíč z tohoto požadavku. Pokud používáte hlavičky hostitele a SNI na vazby HTTPS a neobdržíte odpověď a certifikát z žádost ruční prohlížeče na https://127.0.0.1/ na back-end serverech, musíte vytvořit vazbu výchozí SSL na nich. Pokud to neuděláte, selhání sondy a back-end není povolený.
+   > Pokud používáte hlavičky hostitele a indikace názvu serveru (SNI) na back-end, nemusí být načtena veřejný klíč zamýšlená lokalita, na které přenosové toky. Pokud máte pochybnosti, navštivte https://127.0.0.1/ na back-end serverech k potvrzení, který certifikát se používá pro *výchozí* vazbu SSL. V této části použijte veřejný klíč z tohoto požadavku. Pokud používáte hlavičky hostitele a SNI na vazby HTTPS a neobdržíte odpověď a certifikát z ruční prohlížeče požadavek na https://127.0.0.1/ na back-end serverech, je potřeba nastavit výchozí vazbu SSL na ně. Pokud to neuděláte, selhání sondy a back-end není povolený.
 
    ```powershell
    $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
@@ -283,7 +282,7 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o posílení zabezpečení webových aplikací pomocí brány Firewall webových aplikací prostřednictvím brány aplikací najdete v tématu [brány firewall webových aplikací – přehled](application-gateway-webapplicationfirewall-overview.md).
 

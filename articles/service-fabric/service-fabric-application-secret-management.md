@@ -1,47 +1,31 @@
 ---
-title: "Správa tajných klíčů v Service Fabric aplikace | Microsoft Docs"
-description: "Tento článek popisuje, jak zabezpečit tajný hodnoty v aplikaci Service Fabric."
+title: Spravovat tajné klíče aplikace Azure Service Fabric | Microsoft Docs
+description: Zjistěte, jak zabezpečit tajný hodnoty v aplikaci Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
+ms.date: 03/21/2018
 ms.author: vturecek
-ms.openlocfilehash: bb40f841c6c2671621624e0599a5f3a36a36ab26
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 931667509a9aa5e898cd01ad26ff046e30acd3fe
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="managing-secrets-in-service-fabric-applications"></a>Správa tajných klíčů v aplikace Service Fabric
+# <a name="manage-secrets-in-service-fabric-applications"></a>Spravovat tajných klíčů v aplikace Service Fabric
 Tento průvodce vás provede kroky správy tajných klíčů v aplikace Service Fabric. Tajné klíče může být žádné citlivé informace, jako je například úložiště připojovací řetězce, hesla nebo jiné hodnoty, které by neměly být zpracovány v prostém textu.
 
-Tato příručka používá Azure Key Vault pro správu klíčů a tajných klíčů. Ale *pomocí* tajných klíčů v aplikaci je Cloudová platforma vznikl k aplikacím umožňují nasadit do clusteru s podporou hostovat kdekoli. 
+[Azure Key Vault] [ key-vault-get-started] zde slouží jako umístění úložiště bezpečné pro certifikáty a jako způsob, jak získat certifikáty, které jsou nainstalované na clusterů Service Fabric v Azure. Pokud nejsou nasazení do Azure, není nutné používat ke správě tajných klíčů v Service Fabric aplikace Key Vault. Ale *pomocí* tajných klíčů v aplikaci je Cloudová platforma vznikl k aplikacím umožňují nasadit do clusteru s podporou hostovat kdekoli. 
 
-## <a name="overview"></a>Přehled
-Doporučený způsob, jak spravovat nastavení konfigurace služby je prostřednictvím [služby balíčky konfigurace][config-package]. Konfigurace balíčků jsou verzí a aktualizovat prostřednictvím spravované postupné upgrady s vyhodnocení stavu a automatického vrácení zpět. Jedná se upřednostňované globální konfiguraci, protože snižuje pravděpodobnost výpadkem globální služby. Šifrované tajné klíče jsou žádná výjimka. Service Fabric obsahuje integrované funkce pro šifrování a dešifrování hodnot v konfiguračním souboru souborech Settings.xml balíček pomocí šifrování certifikátu.
-
-Následující diagram znázorňuje základní postup pro tajný správy v aplikaci Service Fabric:
-
-![Přehled tajný správy][overview]
-
-V tomto toku existují čtyři hlavní kroky:
-
-1. Získejte certifikát dat šifrování.
-2. Nainstalujte certifikát v clusteru.
-3. Šifrování tajný hodnoty při nasazení aplikace pomocí certifikátu a vložit je do služby souborech Settings.xml konfigurační soubor.
-4. Číst šifrovaných hodnot mimo souborech Settings.xml dešifrování stejným certifikátem šifrování. 
-
-[Azure Key Vault] [ key-vault-get-started] zde slouží jako umístění úložiště bezpečné pro certifikáty a jako způsob, jak získat certifikáty, které jsou nainstalované na clusterů Service Fabric v Azure. Pokud nejsou nasazení do Azure, není nutné používat ke správě tajných klíčů v Service Fabric aplikace Key Vault.
-
-## <a name="data-encipherment-certificate"></a>Certifikát pro šifrování dat
+## <a name="obtain-a-data-encipherment-certificate"></a>Získejte certifikát pro šifrování dat
 Certifikát šifrování dat se používají výhradně pro šifrování a dešifrování konfigurace hodnoty v souborech Settings.xml služby a není používá pro ověřování nebo podpisový šifrovací textu. Certifikát musí splňovat následující požadavky:
 
 * Certifikát musí obsahovat privátní klíč.
@@ -58,7 +42,7 @@ Certifikát šifrování dat se používají výhradně pro šifrování a deši
 Tento certifikát musí být nainstalován na každém uzlu v clusteru. Použije se v době běhu k dešifrování hodnot uložených v souborech Settings.xml služby. V tématu [postup vytvoření clusteru s podporou pomocí Azure Resource Manager] [ service-fabric-cluster-creation-via-arm] pokyny pro instalaci. 
 
 ## <a name="encrypt-application-secrets"></a>Šifrování tajné klíče aplikace
-Sada Service Fabric SDK obsahuje vestavěné tajný šifrování a dešifrování funkce. Tajný hodnoty může být v vytvořené čas zašifrované dešifrovat a čtení prostřednictvím kódu programu v kódu služby. 
+Pokud nasazujete aplikaci, šifrování tajný hodnoty s certifikátem a jejich vložení do služby souborech Settings.xml konfigurační soubor. Sada Service Fabric SDK obsahuje vestavěné tajný šifrování a dešifrování funkce. Tajný hodnoty může být v vytvořené čas zašifrované dešifrovat a čtení prostřednictvím kódu programu v kódu služby. 
 
 Následující příkaz prostředí PowerShell se používá k šifrování tajného klíče. Tento příkaz šifruje pouze hodnotu parametru. provede **není** přihlásit šifrovaný text. Je nutné použít stejný certifikát šifrování, který je nainstalován v clusteru k vytvoření ciphertext tajný hodnoty:
 
@@ -66,7 +50,7 @@ Následující příkaz prostředí PowerShell se používá k šifrování tajn
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-Výsledný řetězec kódování base-64 obsahuje jak na tajný šifrovaný text a také informace o certifikátu, který byl použit k jejich zašifrování.  Řetězec s kódováním base-64 lze vložit do parametru v konfiguračním souboru na souborech Settings.xml vaší služby pomocí `IsEncrypted` atribut nastaven na `true`:
+Výsledný řetězec s kódováním base-64 obsahuje jak na tajný šifrovaný text a také informace o certifikátu, který byl použit k jejich zašifrování.  Řetězec s kódováním base-64 lze vložit do parametru v konfiguračním souboru na souborech Settings.xml vaší služby pomocí `IsEncrypted` atribut nastaven na `true`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -140,7 +124,7 @@ await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescript
 ```
 
 ## <a name="decrypt-secrets-from-service-code"></a>Dešifrování tajné klíče z kódu služby
-Služby v Service Fabric běží pod účtem NETWORK SERVICE ve výchozím nastavení v systému Windows a nemají přístup k certifikáty, které jsou nainstalovány na uzlu bez zvláštní nastavení.
+Šifrované hodnoty mimo souborech Settings.xml si můžete přečíst dešifrováním je šifrování certifikát použitý k šifrování tajného klíče. Služby v Service Fabric běží pod účtem NETWORK SERVICE ve výchozím nastavení v systému Windows a nemají přístup k certifikáty, které jsou nainstalovány na uzlu bez zvláštní nastavení.
 
 Když používá certifikát, šifrování dat, je třeba Ujistěte se, zda síťové služby nebo ať uživatelský účet služby je spuštěno má přístup k privátní klíč certifikátu. Udělení přístupu pro vaši službu automaticky, pokud je třeba nakonfigurovat tak, Service Fabric bude zpracovávat. Tuto konfiguraci lze provést v ApplicationManifest.xml definováním uživatelů a zásady zabezpečení pro certifikáty. V následujícím příkladu je účet NETWORK SERVICE poskytnut přístup pro čtení k definované jeho kryptografický otisk certifikátu:
 
@@ -176,7 +160,7 @@ SecureString mySecretValue = configPackage.Settings.Sections["MySettings"].Param
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [spuštění aplikací pomocí jiné bezpečnostní oprávnění](service-fabric-application-runas-security.md)
+Další informace o [aplikace a služby zabezpečení](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [key-vault-get-started]:../key-vault/key-vault-get-started.md

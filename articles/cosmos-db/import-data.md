@@ -1,12 +1,12 @@
 ---
-title: "Nástroj pro migraci databáze pro databázi Azure Cosmos | Microsoft Docs"
-description: "Další informace o použití nástrojů pro migraci dat Azure Cosmos DB s otevřeným zdrojem pro import dat do Azure Cosmos databáze z různých zdrojů, včetně souborů MongoDB, systému SQL Server, úložiště Table, Amazon DynamoDB, CSV a JSON. CSV k převodu formátu JSON."
-keywords: "CSV do formátu json, nástrojů pro migraci databáze, převést na json sdíleného svazku clusteru"
+title: Nástroj pro migraci databáze pro databázi Azure Cosmos | Microsoft Docs
+description: Další informace o použití nástrojů pro migraci dat Azure Cosmos DB s otevřeným zdrojem pro import dat do Azure Cosmos databáze z různých zdrojů, včetně souborů MongoDB, systému SQL Server, úložiště Table, Amazon DynamoDB, CSV a JSON. CSV k převodu formátu JSON.
+keywords: CSV do formátu json, nástrojů pro migraci databáze, převést na json sdíleného svazku clusteru
 services: cosmos-db
 author: andrewhoh
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: d173581d-782a-445c-98d9-5e3c49b00e25
 ms.service: cosmos-db
 ms.workload: data-services
@@ -16,15 +16,13 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: cf8b0e6a06f787c5b38622e9343e893d5d7daa12
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1276fb119199b9dbb9b50bed8ac12cff0a55d2dd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Nástroj pro migraci dat
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 V tomto kurzu poskytuje pokyny k používání nástroj Azure Cosmos DB Data migrace, který můžete importovat data z různých zdrojů do kolekce Azure Cosmos databáze a tabulky. Můžete importovat z JSON soubory, CSV soubory, SQL, MongoDB, Azure Table úložiště, Amazon DynamoDB a kolekce i rozhraní API pro Azure Cosmos databáze SQL a provedete migraci, že data do kolekcí a tabulky pro použití s Azure Cosmos DB. Nástroj pro migraci dat lze také při migraci z kolekce tvořené jedním oddílem kolekci více oddílů pro rozhraní SQL API.
 

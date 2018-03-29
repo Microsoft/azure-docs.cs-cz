@@ -1,11 +1,11 @@
 ---
 title: Typy IP adres v Azure | Dokumentace Microsoftu
-description: "Další informace o veřejných a privátních IP adresách v Azure"
+description: Další informace o veřejných a privátních IP adresách v Azure
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 610b911c-f358-4cfe-ad82-8b61b87c3b7e
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/16/2017
 ms.author: jdial
-ms.openlocfilehash: e3baedba814cf6ac19df72c49e1c95ea2cd5cf73
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: a5cda1b5ecb686c9b03da27bdbca42ddc1a74f54
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -68,13 +68,10 @@ Veřejné IP adresy standardních SKU jsou:
 
 - Přiřazované pouze pomocí metody statického přidělení.
 - Přiřazované k síťovým rozhraním nebo standardním internetovým nástrojům pro vyrovnávání zatížení. Další informace o skladových položkách nástroje pro vyrovnávání zatížení Azure najdete v tématu věnovaném [standardní SKU nástroje pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Ve výchozím nastavení zónově redundantní. Je možné je vytvořit zónově a zaručit jejich dostupnost v konkrétní zóně dostupnosti.  Další informace o zónách dostupnosti najdete v tématu [Přehled zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Ve výchozím nastavení zónově redundantní. Je možné je vytvořit zónově a zaručit jejich dostupnost v konkrétní zóně dostupnosti. Další informace o zónách dostupnosti najdete v tématu [Přehled zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> Při přiřazování veřejné IP adresy standardní SKU k síťovému rozhraní virtuálního počítače je potřeba explicitně povolit plánovaný provoz pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups).  Komunikace s prostředkem nebude možná, dokud nevytvoříte a nepřiřadíte skupinu zabezpečení sítě a explicitně nepovolíte požadovaný provoz.
-
-Standardní SKU je ve verzi Preview. Před vytvořením veřejné IP adresy standardní SKU si nejprve musíte zaregistrovat verzi Preview a vytvořit adresu v podporovaném umístění. Pokud si chcete zaregistrovat verzi Preview, přečtěte si téma popisující [registraci standardní SKU verze Preview](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview). Seznam podporovaných umístění (oblastí) najdete v tématu [Dostupnost v oblastech](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability). Průběžně také sledujte stránku [Aktualizace služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network), kde najdete informace o podpoře dalších oblastí.
-
+> Při přiřazování veřejné IP adresy standardní SKU k síťovému rozhraní virtuálního počítače je potřeba explicitně povolit plánovaný provoz pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups). Komunikace s prostředkem nebude možná, dokud nevytvoříte a nepřiřadíte skupinu zabezpečení sítě a explicitně nepovolíte požadovaný provoz.
 
 ### <a name="allocation-method"></a>Metoda přidělování
 

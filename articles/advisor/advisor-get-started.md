@@ -1,12 +1,12 @@
 ---
-title: "Začínáme s Azure Advisor | Microsoft Docs"
-description: "Začínáme s Azure Advisor."
+title: Začínáme s Azure Advisor | Microsoft Docs
+description: Začínáme s Azure Advisor.
 services: advisor
 documentationcenter: NA
 author: manbeenkohli
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-ms.openlocfilehash: 5a7864597e50294c8e1227cbab7a3be73dde0a7f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: cd64515beabec43a5209d62dccf2b55b21702c16
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-started-with-azure-advisor"></a>Začínáme se službou Azure Advisor
 
@@ -35,10 +35,7 @@ Zjistěte, jak přístup Advisor prostřednictvím portálu Azure, získat dopor
 
 4. Řídicí panel služby Advisor se zobrazí souhrn vaše doporučení pro všechny vybrané odběry.  Je možné, že odběry, které chcete doporučení, který se má zobrazit pro používání odběru filtrovat rozevíracího seznamu.
 
-5. Chcete-li získat doporučení pro určitou kategorii, klikněte na jednu z karty: **vysokou dostupnost**, **zabezpečení**, **výkonu**, nebo **náklady**.
- 
-> [!NOTE]
-> Pomocí nástroje Poradce pro Azure s předplatným, předplatné *vlastníka* musí spustit Poradce pro řídicí panel.  Tato akce registruje Poradce pro předplatné.  Od tohoto okamžiku na libovolné předplatné, *vlastníka*, *Přispěvatel*, nebo *čtečky* přístup doporučením Poradce pro předplatné.  
+5. Chcete-li získat doporučení pro určitou kategorii, klikněte na jednu z karty: **vysokou dostupnost**, **zabezpečení**, **výkonu**, nebo **náklady**. 
 
   ![Řídicí panel Azure Advisor](./media/advisor-overview/advisor-dashboard.png)
 

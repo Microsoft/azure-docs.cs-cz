@@ -1,11 +1,12 @@
 ---
 title: Co je Machine Learning v Azure? | Dokumenty Microsoft
-description: "Dočtete se o základních konceptech strojového učení v cloudu, dozvíte se, k čemu ho můžete využít, a seznámíte se s terminologií strojového učení."
-keywords: "co je strojové učení, terminologie strojového učení, prediktivní, co je prediktivní analýza, terminologie strojového učení"
+description: Dočtete se o základních konceptech strojového učení v cloudu, dozvíte se, k čemu ho můžete využít, a seznámíte se s terminologií strojového učení.
+keywords: co je strojové učení, terminologie strojového učení, prediktivní, co je prediktivní analýza, terminologie strojového učení
 services: machine-learning
-documentationcenter: 
-author: cjgronlund
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: eaee083e-eaa1-4408-838b-93e51423d159
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/23/2018
-ms.author: cgronlun;tedway;olgali
-ms.openlocfilehash: 2968a71141eb6e036bc8bff1bc620b978f3ffdd9
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 36095d24f091ac195fe95c839924b15efae05232
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-machine-learning-in-the-azure-cloud"></a>Úvod do služby Machine Learning v cloudu Azure
 

@@ -1,7 +1,7 @@
 ---
-title: "Kurz vývoje aplikace Java využívající službu Azure Cosmos DB | Dokumentace Microsoftu"
-description: "Tento kurz webové aplikace Java popisuje, jak používat Azure Cosmos DB a rozhraní SQL API k uložení a přístup k datům z aplikace Java hostované na webech Azure."
-keywords: "Vývoj aplikací, databázi, aplikaci java, kurz webové aplikace java, azure, Microsoft azure"
+title: Kurz vývoje aplikace Java využívající službu Azure Cosmos DB | Dokumentace Microsoftu
+description: Tento kurz webové aplikace Java popisuje, jak používat Azure Cosmos DB a rozhraní SQL API k uložení a přístup k datům z aplikace Java hostované na webech Azure.
+keywords: Vývoj aplikací, databázi, aplikaci java, kurz webové aplikace java, azure, Microsoft azure
 services: cosmos-db
 documentationcenter: java
 author: dennyglee
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 08/22/2017
 ms.author: denlee
-ms.openlocfilehash: 8507b772c537ac50bd40367fbde260a8d72375ca
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 816ea6e575759186973e23c6adfccd389c6920d9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Vytvoření webové aplikace Java pomocí Azure Cosmos DB a rozhraní SQL API
 > [!div class="op_single_selector"]
@@ -29,8 +29,6 @@ ms.lasthandoff: 12/18/2017
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Tento kurz webové aplikace Java se dozvíte, jak používat [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) služby k ukládání a přístup k datům z aplikace Java hostované v Azure App Service Web Apps. V tomto tématu se naučíte:
 
@@ -107,7 +105,7 @@ K tomu bude nutné převést projekt na projekt Maven. K tomu slouží následuj
      
    * Nebo přidejte XML závislosti pro Id skupiny a Id artefaktů přímo do souboru pom.xml pomocí textového editoru:
      
-        <dependency><groupId>com.microsoft.azure</groupId> <artifactId>azure-documentdb</artifactId> <version>1.9.1</version></dependency>
+        <dependency> <groupId>com.microsoft.azure</groupId> <artifactId>azure-documentdb</artifactId> <version>1.9.1</version> </dependency>
 6. Klikněte na tlačítko **OK** a Maven nainstaluje SQL Java SDK.
 7. Uložte soubor pom.xml.
 
@@ -729,7 +727,7 @@ Díky weby Azure je nasazování aplikací Java stejně snadné jako Export apli
 3. Teď, když máte soubor WAR v ručně, můžete tento soubor jednoduše nahrát do Azure webu **webapps** adresáře. Pokyny pro nahrání souboru, v tématu [přidat aplikace v jazyce Java do Azure App Service Web Apps](../app-service/web-sites-java-add-app.md).
    
     Až bude soubor WAR nahrán do adresáře webapps, běhové prostředí zjistí, že jste jej přidali, a automaticky ho načte.
-4. Pokud chcete zobrazit hotový produkt, přejděte na http://YOUR\_lokality\_NAME.azurewebsites.net/azure-java-sample/ a začněte přidávat úkoly!
+4. Chcete-li zobrazit hotový produkt, přejděte na http://YOUR \_lokality\_NAME.azurewebsites.net/azure-java-sample/ a začněte přidávat úkoly!
 
 ## <a id="GetProject"></a>Získání projektu z Githubu
 Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) na GitHubu. Pokud chcete importovat projekt todo do prostředí Eclipse, ujistěte se, že máte software a prostředky uvedené v části [Předpoklady](#Prerequisites), a udělejte následující:
@@ -739,7 +737,7 @@ Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.c
 3. V prostředí Eclipse v nabídce **File** (Soubor) klikněte na **Import**.
 4. V okně **Import** klikněte na **Git**, pak na **Projects from Git** (Projekty z Gitu) a nakonec na **Next** (Další).
 5. Na obrazovce **Select Repository Source** (Výběr zdroje úložiště) klikněte na **Clone URI** (Klonovat URI).
-6. Na **zdrojové úložiště Git** obrazovce **URI** zadejte https://github.com/Azure-Samples/java-todo-app.git a pak klikněte na tlačítko **Další**.
+6. Na **zdrojové úložiště Git** obrazovce **URI** zadejte https://github.com/Azure-Samples/java-todo-app.gita potom klikněte na **Další**.
 7. Na obrazovce **Branch Selection** (Výběr větve) se ujistěte, že je zvolena možnost **master** (hlavní), a klikněte na **Next**.
 8. Na obrazovce **Local Destination** (Místní cíl) klikněte na **Browse** (Procházet), vyberte složku, do které lze úložiště zkopírovat, a pak klikněte na **Next**.
 9. Na obrazovce **Select a wizard to use for importing projects** (Výběr průvodce, který se použije k importování projektů) se ujistěte, že je vybrána možnost **Import existing projects** (Import existujících projektů) a klikněte na **Next**.
@@ -754,6 +752,6 @@ Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.c
 18. Na kartě **Servers** (Servery) v dolní části obrazovky klikněte pravým tlačítkem na **Tomcat v7.0 Server at localhost** a pak levým na **Add and Remove** (Přidat a odstranit).
 19. V okně **Add and Remove** přesuňte **azure-documentdb-java-sample** do pole **Configured** (Nakonfigurováno) a klikněte na **Finish** (Dokončit).
 20. V **servery** kartě, klikněte pravým tlačítkem na **Tomcat v7.0 Server at localhost**a potom klikněte na **restartujte**.
-21. Přejděte v prohlížeči na http://localhost:8080/azure-documentdb-java-sample/ a začněte přidávat položky do seznamu úkolů. Poznámka: Pokud jste změnili výchozí hodnoty portů, změňte 8080 na hodnotu, kterou jste si vybrali.
+21. V prohlížeči přejděte na http://localhost:8080/azure-documentdb-java-sample/ a začněte přidávat položky do seznamu úkolů. Poznámka: Pokud jste změnili výchozí hodnoty portů, změňte 8080 na hodnotu, kterou jste si vybrali.
 22. Postup nasazení projektu na web Azure najdete v části [Krok 6. Nasazení aplikace na weby Azure](#Deploy).
 

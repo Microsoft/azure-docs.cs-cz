@@ -1,11 +1,11 @@
 ---
-title: "Monitorování úlohy pomocí zobrazení dynamické správy | Microsoft Docs"
-description: "Naučte se monitorovat pomocí zobrazení dynamické správy úlohy."
+title: Monitorování úlohy pomocí zobrazení dynamické správy | Microsoft Docs
+description: Naučte se monitorovat pomocí zobrazení dynamické správy úlohy.
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 03/15/2018
 ms.author: joeyong;barbkess;kevin
-ms.openlocfilehash: 7e25a1f8d807fa317e8ce246fd49de034182af96
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3bd7431b9371b1de762558b8bd3c4ed0ed360495
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitorování vaší úlohy pomocí DMV
 Tento článek popisuje, jak sledovat vaše úlohy pomocí zobrazení dynamické správy (zobrazení dynamické správy). To zahrnuje příčin provádění dotazů v Azure SQL Data Warehouse.
@@ -289,7 +289,6 @@ Další informace o zobrazení dynamické správy najdete v tématu [zobrazení 
 <!--Image references-->
 
 <!--Article references-->
-[Manage overview]: ./sql-data-warehouse-overview-manage.md
 [SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
 [System views]: ./sql-data-warehouse-reference-tsql-system-views.md
 [Table distribution]: ./sql-data-warehouse-tables-distribute.md

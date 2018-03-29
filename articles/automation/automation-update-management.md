@@ -1,6 +1,6 @@
 ---
-title: "Řešení pro správu aktualizací v Azure"
-description: "Tento článek vám objasní, jak toto řešení používat ke správě aktualizací pro počítače s Windows a Linuxem."
+title: Řešení pro správu aktualizací v Azure
+description: Tento článek vám objasní, jak toto řešení používat ke správě aktualizací pro počítače s Windows a Linuxem.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 202c75366477ae3445f607f75d08faf0335de79f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: e426f2b90e3ac3ac6bcb9825c7848c76e52a1021
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
@@ -36,7 +36,7 @@ Následující diagram znázorňuje koncepční zobrazení chování a tok dat z
 
 Poté, co počítač provede kontrolu shody aktualizací, agent předává informace hromadně k analýze protokolů. Na počítačích s Windows se kontrola kompatibility ve výchozím nastavení provádí každých 12 hodin. Kromě plánu vyhledávání se zahájí kontroly shody aktualizací do 15 minut, pokud je restartován Microsoft Monitoring Agent (MMA), před instalací aktualizace a po instalaci aktualizace. U počítače s Linuxem se kontrola aktualizací ve výchozím nastavení provádí každé 3 hodiny a také během 15 minut v případě restartování agenta MMA.
 
-Řešení podá zprávu o aktuálnosti počítače podle toho, s jakým zdrojem je nakonfigurována synchronizace. Pokud je počítač s Windows nakonfigurovaný tak, aby ukládal data do služby WSUS, v závislosti na času poslední synchronizace služby WSUS s Microsoft Update se výsledky můžou lišit od toho, co ukazuje Microsoft Update. To samé platí pro počítače s Linuxem, které jsou nakonfigurované k ukládání dat do místního úložiště, nebo naopak do veřejného úložiště.
+Řešení podá zprávu o aktuálnosti počítače podle toho, s jakým zdrojem je nakonfigurována synchronizace. Pokud je počítač s Windows nakonfigurovaný tak, aby ukládal data do služby WSUS, v závislosti na času poslední synchronizace služby WSUS s Microsoft Update se výsledky můžou lišit od toho, co ukazuje Microsoft Update. Toto je stejný pro počítače Linux, které jsou nakonfigurovány k místním úložišti a veřejné úložišti sestavy.
 
 Na počítače, které vyžadují aktualizace softwaru, můžete tyto aktualizace nasadit a nainstalovat tak, že vytvoříte plánované nasazení. Do oboru nasazení pro počítače s Windows nejsou zahrnuty aktualizace klasifikované jako *Volitelné*, pouze požadované aktualizace. Plánované nasazení definuje, jaký cílové počítače přijímat příslušné aktualizace, buď explicitně zadat počítače, nebo výběrem [skupinu počítačů](../log-analytics/log-analytics-computer-groups.md) který je založen na protokolu hledání konkrétní sady počítačů. Zadáte také plán pro schválení a vyhrazení časového období, kdy je možné aktualizace nainstalovat. Aktualizace se instalují podle runbooků ve službě Azure Automation. Tyto runbooky není možné zobrazit a nevyžadují žádnou konfiguraci. Při vytvoření nasazení aktualizací se vytvoří plán, který v zadanou dobu spustí hlavní runbook aktualizace pro zahrnuté počítače. Tento hlavní runbook spouští podřízený runbook na každém agentovi, který provádí instalaci požadovaných aktualizací.
 

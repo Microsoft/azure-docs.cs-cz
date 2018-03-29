@@ -1,39 +1,39 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace k vědeckému zpracování týmových dat"
+title: Dokumentace k vědeckému zpracování týmových dat
 metadata:
-  title: "Dokumentace k vědeckému zpracování týmových dat"
-  description: "Naučte se používat vědecké zpracování týmových dat."
+  title: Dokumentace k vědeckému zpracování týmových dat
+  description: Naučte se používat vědecké zpracování týmových dat.
   services: machine-learning
-  author: carolz
-  manager: carolz
+  author: bradsev
+  manager: cgronlun
   ms.service: machine-learning
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/18/2018
   ms.author: bradsev
-  ms.openlocfilehash: 05f47b7511108f4a94c6fd132c9b7fd18c6e267d
-  ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+  ms.openlocfilehash: a12326f4e3822bc32b863dd61de3b5f2a440dd23
+  ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/13/2018
+  ms.lasthandoff: 03/28/2018
 abstract:
-  description: "Vědecké zpracování týmových dat je agilní a interaktivní metodologie pro datové vědy, která pomáhá efektivně dodávat prediktivní analytická řešení a inteligentní aplikace. Vědecké zpracování týmových dat pomáhá vylepšit spolupráci a učení v rámci týmů. Obsahuje výtah osvědčených postupů a struktur od Microsoftu a dalších společností v tomto oboru, které usnadňují úspěšnou implementaci iniciativ datových věd. Cílem je umožnit společnostem plně využít výhod jejich analytického programu."
+  description: Vědecké zpracování týmových dat je agilní a interaktivní metodologie pro datové vědy, která pomáhá efektivně dodávat prediktivní analytická řešení a inteligentní aplikace. Vědecké zpracování týmových dat pomáhá vylepšit spolupráci a učení v rámci týmů. Obsahuje výtah osvědčených postupů a struktur od Microsoftu a dalších společností v tomto oboru, které usnadňují úspěšnou implementaci iniciativ datových věd. Cílem je umožnit společnostem plně využít výhod jejich analytického programu.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Další informace o vědeckém zpracování týmových dat:"
+    text: 'Další informace o vědeckém zpracování týmových dat:'
   - type: list
     style: unordered
     items:
-    - html: "<a href:\"overview\">Přehled</a>"
-    - html: "<a href:\"lifecycle\">Životní cyklus</a>"
-- title: "Podrobné kurzy"
+    - html: <a href:"overview">Přehled</a>
+    - html: <a href:"lifecycle">Životní cyklus</a>
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Naučte se používat vědecké zpracování týmových dat v různých scénářích:"
+    text: 'Naučte se používat vědecké zpracování týmových dat v různých scénářích:'
   - type: list
     style: ordered
     items:

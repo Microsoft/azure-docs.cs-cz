@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 0cf0e41fe03bf3be7ecf2172cff3e6ab5f3eb65d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9ef988ccdcca921c0285bf983125483a38a07678
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Postup škálování Azure Redis Cache
 Azure Redis Cache má jiný mezipaměti nabídky, které poskytují flexibilitu při výběru velikost mezipaměti a funkce. Po vytvoření mezipaměti je možné škálovat na velikost a cenovou úroveň mezipaměti, pokud se změní požadavky vaší aplikace. Tento článek ukazuje, jak se škálovat mezipaměti pomocí portálu Azure a nástroje, jako je Azure PowerShell a rozhraní příkazového řádku Azure.
@@ -120,7 +120,7 @@ Následující seznam obsahuje odpovědi na nejčastější dotazy o škálován
 * Nelze škálovat od **Premium** dolů do mezipaměti **základní** nebo **standardní** cenová úroveň.
 * Je možné škálovat od jednoho **Premium** mezipaměti cenová úroveň na jiný.
 * Nelze škálovat od **základní** přímo do mezipaměti **Premium** mezipaměti. Nejprve škálovat od **základní** k **standardní** v rámci jedné operace škálování a potom z **standardní** k **Premium** v následných škálování operace.
-* Pokud jste povolili clustering při vytváření vašeho **Premium** mezipaměti, můžete [změnit velikost clusteru](cache-how-to-premium-clustering.md#cluster-size). Pokud vaše mezipaměť byl vytvořen bez clusteringu povoleno, nelze nakonfigurovat clustering později.
+* Pokud jste povolili clustering při vytváření vašeho **Premium** mezipaměti, můžete [změnit velikost clusteru](cache-how-to-premium-clustering.md#cluster-size). Pokud vaše mezipaměť byl vytvořen bez clusteringu povolená, můžete nakonfigurovat clustering později.
   
   Další informace najdete v článku [Postup konfigurace clusterů pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-clustering.md).
 

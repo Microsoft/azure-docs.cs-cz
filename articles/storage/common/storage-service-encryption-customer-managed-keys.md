@@ -1,6 +1,6 @@
 ---
-title: "Azure šifrování služby úložiště v Azure Key Vault klíče spravovaného zákazníkem | Microsoft Docs"
-description: "Pomocí funkce šifrování služby úložiště Azure pro šifrování Azure Blob Storage na straně služby při ukládání dat a při získávání data pomocí klíče spravovaného zákazníkem ho dešifrovat."
+title: Azure šifrování služby úložiště v Azure Key Vault klíče spravovaného zákazníkem | Microsoft Docs
+description: Pomocí funkce šifrování služby úložiště Azure pro šifrování Azure Blob Storage na straně služby při ukládání dat a při získávání data pomocí klíče spravovaného zákazníkem ho dešifrovat.
 services: storage
 author: lakasa
 manager: jeconnoc
@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: lakasa
-ms.openlocfilehash: 1360d8bb0911c424747209c69b830fc1ee461798
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 04688f943ac9eba27ca193aa2054c69b6a94547d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování služby úložiště v Azure Key Vault klíče spravovaného zákazníkem
 
@@ -111,11 +111,11 @@ Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -
 
 ### <a name="step-5-copy-data-to-storage-account"></a>Krok 5: Kopírování dat do účtu úložiště
 
-Přenos dat do nového účtu úložiště tak, aby se šifrují, naleznete v kroku 3 [Začínáme v šifrování služby úložiště pro Data v klidovém stavu](storage-service-encryption.md#step-3-copy-data-to-storage-account).
+K přenosu dat do nového účtu úložiště tak, aby je zašifrovaná. Další informace najdete v části [– nejčastější dotazy pro šifrování služby úložiště](storage-service-encryption.md#faq-for-storage-service-encryption).
 
 ### <a name="step-6-query-the-status-of-the-encrypted-data"></a>Krok 6: Dotaz na stav šifrovaná data
 
-Dotaz na stav šifrovaná data, naleznete v kroku 4 v [Začínáme v šifrování služby úložiště pro Data v klidovém stavu](storage-service-encryption.md#step-4-query-the-status-of-the-encrypted-data).
+Dotaz na stav šifrovaná data.
 
 ## <a name="faq-for-sse-with-customer-managed-keys"></a>Nejčastější dotazy týkající se SSE zákazníka spravované klíče
 
@@ -167,7 +167,7 @@ Odpověď: SSE spravované zákazníkem klíče je k dispozici ve všech oblaste
 
 Odpověď: kontaktní [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) pro veškeré problémy související s šifrování služby úložiště.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 -   Další informace o komplexní sadu zabezpečení možnosti, které pomáhají vývojářům vytvářet aplikace, zabezpečení naleznete v tématu [Průvodce zabezpečením úložiště](storage-security-guide.md).
 

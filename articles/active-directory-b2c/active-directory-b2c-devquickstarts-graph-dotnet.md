@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: davidmu
-ms.openlocfilehash: 2f95df26abcd2c0d5b62c395f92c359170d6d701
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ff3aa44a4e2513f4d3e5ac2eed84715b8fe9b004
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API pomocí
 
@@ -45,7 +45,7 @@ Až budete mít klienta B2C, budete muset registrace vaší aplikace pomocí [po
 3. V levém navigačním podokně zvolte **všechny služby**, klikněte na tlačítko **registrace aplikace**a klikněte na tlačítko **přidat**.
 4. Postupujte podle zobrazených výzev a vytvořte novou aplikaci. 
     1. Vyberte **webová aplikace nebo rozhraní API** jako typ aplikace.    
-    2. Zadejte **žádný identifikátor URI přesměrování** (např. https://B2CGraphAPI) jako není relevantní pro tento příklad.  
+    2. Zadejte **libovolná adresa URL přihlašování** (například https://B2CGraphAPI) jako není relevantní pro tento příklad.  
 5. Budou aplikace teď objeví v seznamu aplikací, klikněte na ho získat **ID aplikace** (také označované jako ID klienta). Zkopírujte jej, protože ho budete potřebovat v další části.
 6. V nabídce nastavení, klikněte na **klíče** a přidejte nový klíč (také označovaný jako sdílený tajný klíč klienta). Také zkopírujte jej pro použití v další části.
 

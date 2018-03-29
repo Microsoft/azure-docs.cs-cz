@@ -1,8 +1,8 @@
 ---
-title: "Rozšíření prostředí HDInsight pomocí virtuální sítě - Azure | Microsoft Docs"
-description: "Naučte se používat pro připojení HDInsight k jiným cloudovým prostředkům nebo prostředkům ve vašem datovém centru Azure Virtual Network"
+title: Rozšíření prostředí HDInsight pomocí virtuální sítě - Azure | Microsoft Docs
+description: Naučte se používat pro připojení HDInsight k jiným cloudovým prostředkům nebo prostředkům ve vašem datovém centru Azure Virtual Network
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: ea686ea5dd6166d6e4e4055cb4a2cdd70af81ab4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b02a4625e3973ca7679d1d2018bd37ff1d2ae2ba
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí virtuální síť Azure
 
@@ -173,11 +173,11 @@ Chcete-li povolit překlad mezi virtuální sítě a prostředky v připojené k
 
     Příklad každé konfiguraci, naleznete v části [příklad: vlastní DNS](#example-dns) části.
 
-Další informace najdete v tématu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) dokumentu.
+Další informace najdete v tématu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
 ## <a name="directly-connect-to-hadoop-services"></a>Připojovat přímo k služby Hadoop
 
-Většina dokumentace v HDInsight předpokládá, že máte přístup ke clusteru přes internet. Pro příklad, který můžete připojit ke clusteru v https://CLUSTERNAME.azurehdinsight.net. Tato adresa se používá veřejný brány, která není k dispozici, pokud jste použili skupiny Nsg nebo udr k omezení přístupu z Internetu.
+Většina dokumentace v HDInsight předpokládá, že máte přístup ke clusteru přes internet. To znamená, že se ke clusteru můžete připojit třeba na https://CLUSTERNAME.azurehdinsight.net. Tato adresa se používá veřejný brány, která není k dispozici, pokud jste použili skupiny Nsg nebo udr k omezení přístupu z Internetu.
 
 Pro připojení k Ambari a další webové stránky prostřednictvím virtuální sítě, použijte následující kroky:
 

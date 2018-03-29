@@ -1,10 +1,10 @@
 ---
-title: "Škálovatelnost a cíle výkonnosti Azure Storage | Microsoft Docs"
-description: "Další informace o škálovatelnosti a výkonu cíle pro Azure Storage, včetně kapacitu, rychlost požadavků a příchozí a odchozí šířky pásma pro oba účty úložiště standard a premium. Pochopení cíle výkonnosti pro oddíly v rámci každé ze služby Azure Storage."
+title: Škálovatelnost a cíle výkonnosti Azure Storage | Microsoft Docs
+description: Další informace o škálovatelnosti a výkonu cíle pro Azure Storage, včetně kapacitu, rychlost požadavků a příchozí a odchozí šířky pásma pro oba účty úložiště standard a premium. Pochopení cíle výkonnosti pro oddíly v rámci každé ze služby Azure Storage.
 services: storage
 documentationcenter: na
-author: tamram
-manager: timlt
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: be721bd3-159f-40a1-88c1-96418537fe75
 ms.service: storage
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/24/2017
-ms.author: tamram
-ms.openlocfilehash: f62f2020d40e473886cb679cdfe1c164b95f7114
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: rogarana
+ms.openlocfilehash: e393bb9e7615b893699caf5a931ede5803046892
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Škálovatelnost a výkonnostní cíle Azure Storage
 ## <a name="overview"></a>Přehled
@@ -63,6 +63,6 @@ Další informace o škálování a výkon cíle pro soubory Azure a synchroniza
 * [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/)
 * [Předplatné Azure a omezení služby, kvóty a omezení](../../azure-subscription-service-limits.md)
 * [Replikace Azure Storage](../storage-redundancy.md)
-* [Microsoft Azure Storage výkon a škálovatelnost kontrolní seznam](../storage-performance-checklist.md)
+* [Kontrolní seznam pro výkon a škálovatelnost služby Microsoft Azure Storage](../storage-performance-checklist.md)
 * [Microsoft Azure Storage: Vysoce dostupný cloudové úložiště služby se silnou konzistenci](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

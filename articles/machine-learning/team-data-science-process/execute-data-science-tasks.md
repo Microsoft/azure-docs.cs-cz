@@ -1,23 +1,23 @@
 ---
-title: "Spuštění úlohy vědecké účely dat – Azure Machine Learning | Microsoft Docs"
-description: "Jak vědecký pracovník dat můžete spustit projekt vědecké účely data v organizovaným, verze kontrolovat a způsob spolupráce."
-documentationcenter: 
+title: Spuštění úlohy vědecké účely dat – Azure Machine Learning | Microsoft Docs
+description: Jak vědecký pracovník dat můžete spustit projekt vědecké účely data v organizovaným, verze kontrolovat a způsob spolupráce.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev;
-ms.openlocfilehash: 7f3bf3bb5743bfb64489188d1016fb18d4967f79
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.author: bradsev
+ms.openlocfilehash: da09ab7daba115e570bb8b97549cc5f01e7496b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Spuštění úlohy vědecké účely dat: zkoumání, modelování a nasazení
 

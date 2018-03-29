@@ -1,31 +1,31 @@
 ---
-title: "Správa úložiště v Azure nezávisle cloudů pomocí Azure PowerShell | Microsoft Docs"
-description: "Správa úložiště v cloudu Čína, Cloud vlády a německé cloudu pomocí Azure PowerShell"
+title: Správa úložiště v Azure nezávisle cloudů pomocí Azure PowerShell | Microsoft Docs
+description: Správa úložiště v cloudu Čína, Cloud vlády a německé cloudu pomocí Azure PowerShell
 services: storage
 documentationcenter: na
-author: robinsh
-manager: timlt
-ms.assetid: 
+author: roygara
+manager: jeconnoc
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
-ms.author: robinsh
-ms.openlocfilehash: 08e1af929d7ddc30c7dc149f6305ca1ca0bc22ae
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.author: rogarana
+ms.openlocfilehash: 31b36e6fb6a1ebf09c559b2777ffa5f554c3cfa0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Správa úložiště v Azure nezávislé cloudy pomocí prostředí PowerShell
 
 Většina lidí používá veřejném cloudu Azure pro jejich globální nasazení Azure. Existují také některé nezávislé nasazení Microsoft Azure z důvodů suverenity a tak dále. Tato nezávislé nasazení jsou označovány jako "prostředí." V následujícím seznamu jsou aktuálně k dispozici nezávislé cloudy.
 
-* [Cloud vlády Azure](https://azure.microsoft.com/features/gov/)
+* [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
 * [Čína cloudu Azure provozované v Číně společností 21Vianet](http://www.windowsazure.cn/)
-* [Němčině cloudu Azure](../../germany/germany-welcome.md)
+* [Azure German Cloud](../../germany/germany-welcome.md)
 
 ## <a name="using-an-independent-cloud"></a>Pomocí nezávislé cloudu 
 
@@ -37,7 +37,7 @@ Používání Azure Storage v jednom z nezávislé cloudy, připojit s tímto cl
 
 Příklady vyžadují prostředí Azure PowerShell verze modulu 4.4.0 nebo novější. V okně prostředí PowerShell, spusťte `Get-Module -ListAvailable AzureRM` najít verzi. Nic uvedeno, zda je nutné upgradovat, najdete v části [modul nainstalovat Azure PowerShell](/powershell/azure/install-azurerm-ps). 
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
 Spustit [Get-AzureEnvironment](/powershell/module/azure/Get-AzureRmEnvironment) rutiny zobrazíte dostupné prostředí Azure:
    
@@ -61,7 +61,7 @@ Get-AzureRmLocation | select Location, DisplayName
 
 Následující tabulka uvádí umístění vrátil němčině cloudu.
 
-|Umístění | displayName |
+|Umístění | DisplayName |
 |----|----|
 | germanycentral | Německo – střed|
 | germanynortheast | Německo – severovýchod | 
@@ -83,12 +83,12 @@ Get-AzureRmEnvironment | select Name, StorageEndpointSuffix
 
 Tento příkaz vrátí následující výsledky.
 
-| Name (Název)| StorageEndpointSuffix|
+| Název| StorageEndpointSuffix|
 |----|----|
-|AzureChinaCloud | Core.chinacloudapi.CN|
-| AzureCloud | Core.Windows.NET |
-| AzureGermanCloud | Core.cloudapi.de|
-| AzureUSGovernment | Core.usgov.cloudapi.NET |
+|AzureChinaCloud | core.chinacloudapi.cn|
+| AzureCloud | core.windows.net |
+| AzureGermanCloud | core.cloudapi.de|
+| AzureUSGovernment | core.usgov.cloudapi.net |
 
 
 Chcete-li načíst všechny vlastnosti pro zadaného prostředí, volejte **Get-AzureRmEnvironment** a zadejte název cloudu. Tento fragment kódu vrátí seznam hodnot vlastnosti; Vyhledejte **StorageEndpointSuffix** v seznamu. V následujícím příkladu se pro Cloud němčina.
@@ -101,17 +101,17 @@ Výsledky budou vypadat takto:
 
 |Název vlastnosti|Hodnota|
 |----|----|
-| Name (Název) | AzureGermanCloud |
+| Název | AzureGermanCloud |
 | EnableAdfsAuthentication | False |
-| ActiveDirectoryServiceEndpointResourceI | http://Management.Core.cloudapi.de/ |
-| GalleryURL | https://Gallery.cloudapi.de/ |
-| ManagementPortalUrl | https://Portal.microsoftazure.de/ | 
-| ServiceManagementUrl | https://Manage.Core.cloudapi.de/ |
-| PublishSettingsFileUrl| https://Manage.microsoftazure.de/publishsettings/index |
-| ResourceManagerUrl | http://Management.microsoftazure.de/ |
-| SqlDatabaseDnsSuffix | . database.cloudapi.de |
-| **StorageEndpointSuffix** | Core.cloudapi.de |
-| Tlačítka ... | Tlačítka ... | 
+| ActiveDirectoryServiceEndpointResourceI | http://management.core.cloudapi.de/ |
+| GalleryURL | https://gallery.cloudapi.de/ |
+| ManagementPortalUrl | https://portal.microsoftazure.de/ | 
+| ServiceManagementUrl | https://manage.core.cloudapi.de/ |
+| PublishSettingsFileUrl| https://manage.microsoftazure.de/publishsettings/index |
+| ResourceManagerUrl | http://management.microsoftazure.de/ |
+| SqlDatabaseDnsSuffix | .database.cloudapi.de |
+| **StorageEndpointSuffix** | core.cloudapi.de |
+| ... | ... | 
 
 Načtení právě vlastnosti přípony úložiště koncový bod, načíst konkrétní cloudové a požádejte o právě jeden vlastnosti.
 
@@ -159,13 +159,13 @@ Z zde do budoucna, můžete použít stejné PowerShell použít ke správě ú�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud jste vytvořili novou skupinu prostředků a účet úložiště pro toto cvičení, všechny prostředky můžete odebrat odstraněním skupiny prostředků. To také odstraní všechny prostředky obsažené v rámci skupiny. V takovém případě odebere účtu úložiště vytvořeném a skupině prostředků, sám sebe.
+Pokud jste vytvořili novou skupinu prostředků a účet úložiště pro toto cvičení, všechny prostředky můžete odebrat odstraněním skupiny prostředků. Tím se odstraní také všechny prostředky, které skupina obsahuje. V takovém případě odebere účtu úložiště vytvořeném a skupině prostředků, sám sebe.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Zachování přihlášení uživatelů mezi relace prostředí PowerShell](/powershell/azure/context-persistence)
 * [Úložiště Azure Government](../../azure-government/documentation-government-services-storage.md)

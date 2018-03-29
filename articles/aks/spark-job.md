@@ -1,6 +1,6 @@
 ---
-title: "Spustit úlohu Apache Spark s Azure Container Service (AKS)"
-description: "Spustit úlohu Apache Spark pomocí Azure Container Service (AKS)"
+title: Spustit úlohu Apache Spark s Azure Container Service (AKS)
+description: Spustit úlohu Apache Spark pomocí Azure Container Service (AKS)
 services: container-service
 author: lenadroid
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 9d57f572ba159191f5b634b5ea604563ac2f7801
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3991312d7f7609bb0a206ccc0ecc67123ebec469
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Spuštěné úlohy Apache Spark na AKS
 
@@ -33,7 +33,7 @@ Aby bylo možné provést kroky v tomto článku, budete potřebovat následují
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
 Spark je použitý pro zpracování velkých dat a vyžaduje, aby Kubernetes uzly mají velikost pro splnění požadavků prostředky Spark. Doporučujeme minimální velikost `Standard_D3_v2` pro uzly Azure Container Service (AKS).
- 
+
 Pokud budete potřebovat AKS clusteru, který splňuje toto minimální doporučení, spusťte následující příkazy.
 
 Vytvořte skupinu prostředků clusteru.
@@ -58,12 +58,12 @@ Pokud používáte Azure kontejneru registru (ACR) k ukládání imagí kontejne
 
 ## <a name="build-the-spark-source"></a>Sestavení zdroje Spark
 
-Před spuštěním úlohy Spark v clusteru AKS, potřebujete vytvořit Spark zdrojového kódu a balíček do bitové kopie kontejneru. Zdroj Spark obsahuje skripty, které slouží k dokončení tohoto procesu. 
+Před spuštěním úlohy Spark v clusteru AKS, potřebujete vytvořit Spark zdrojového kódu a balíček do bitové kopie kontejneru. Zdroj Spark obsahuje skripty, které slouží k dokončení tohoto procesu.
 
 Naklonujte úložiště projektu Spark pro váš vývojový systém.
 
 ```bash
-git clone https://github.com/apache/spark
+git clone -b branch-2.3 https://github.com/apache/spark
 ```
 
 Přejděte do adresáře klonovaný úložiště a uložit cestu zdroje Spark proměnné.
@@ -73,7 +73,7 @@ cd spark
 sparkdir=$(pwd)
 ```
 
-Pokud máte víc nainstalovaných verzí JDK, nastavte `JAVA_HOME` používat verzi 8 pro aktuální relaci. 
+Pokud máte víc nainstalovaných verzí JDK, nastavte `JAVA_HOME` používat verzi 8 pro aktuální relaci.
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
@@ -85,16 +85,21 @@ Spusťte následující příkaz k vytvoření zdrojového kódu s podporou Kube
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-Následující příkaz vytvoří Spark kontejneru bitové kopie a doručí do registru bitové kopie kontejneru. Nahraďte položku `registry.example.com` názvem svého registru kontejneru. Pokud používáte úložiště Docker Hub, je tato hodnota registru. Pokud používáte Azure kontejneru registru (ACR), tato hodnota je název ACR přihlášení serveru.
+Následující příkazy vytvořit bitovou kopii kontejneru Spark a poslat ho přímo registru kontejneru bitové kopie. Nahraďte `registry.example.com` s názvem vašeho kontejneru registru a `v1` se značkou, který chcete použít. Pokud používáte úložiště Docker Hub, je tato hodnota registru. Pokud používáte Azure kontejneru registru (ACR), tato hodnota je název ACR přihlášení serveru.
 
 ```bash
-./bin/docker-image-tool.sh -r registry.example.com -t v1 build
+REGISTRY_NAME=registry.example.com
+REGISTRY_TAG=v1
+```
+
+```bash
+./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG build
 ```
 
 Nabízená bitovou kopii kontejneru registru bitové kopie vašeho kontejneru.
 
 ```bash
-./bin/docker-image-tool.sh -r registry.example.com -t v1 push
+./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG push
 ```
 
 ## <a name="prepare-a-spark-job"></a>Příprava úlohy Spark
@@ -196,18 +201,10 @@ Proměnné `jarUrl` teď obsahuje veřejně přístupná cestu na soubor jar.
 
 ## <a name="submit-a-spark-job"></a>Odeslání úlohy Spark
 
-Před odesláním úlohy Spark, potřebujete adresu serveru Kubernetes rozhraní API. Použití `kubectl cluster-info` získat tuto adresu.
-
-Zjistit adresu URL, kde server Kubernetes API běží s.
+Spuštění kube proxy v samostatné příkazového řádku s následujícím kódem.
 
 ```bash
-kubectl cluster-info
-```
-
-Poznamenejte si adresu a port.
-
-```bash
-Kubernetes master is running at https://<your api server>:443
+kubectl proxy
 ```
 
 Přejděte zpět do kořenového úložiště Spark.
@@ -216,18 +213,16 @@ Přejděte zpět do kořenového úložiště Spark.
 cd $sparkdir
 ```
 
-Odeslání úlohy pomocí `spark-submit`. 
-
-Nahraďte hodnotu `<kubernetes-api-server>` pomocí rozhraní API serveru adresy a portu. Nahraďte `<spark-image>` s názvem kontejneru image ve formátu `<your container registry name>/spark:<tag>`.
+Odeslání úlohy pomocí `spark-submit`.
 
 ```bash
 ./bin/spark-submit \
-  --master k8s://https://<k8s-apiserver-host>:<k8s-apiserver-port> \
+  --master k8s://http://127.0.0.1:8001 \
   --deploy-mode cluster \
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
-  --conf spark.kubernetes.container.image=<spark-image> \
+  --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```
 
@@ -316,7 +311,10 @@ Při spuštění úlohy, místo označující adresu URL vzdálené jar `local:/
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```
 
-## <a name="next-steps"></a>Další kroky
+> [!WARNING]
+> Z Spark [dokumentace][spark-docs]: "Plánovač Kubernetes je aktuálně experimentální. V budoucích verzích může existovat chování změny kolem konfigurace, kontejner bitové kopie a entrypoints".
+
+## <a name="next-steps"></a>Další postup
 
 Projděte si dokumentaci Spark další podrobnosti.
 

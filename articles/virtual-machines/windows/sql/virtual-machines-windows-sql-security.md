@@ -1,11 +1,11 @@
 ---
-title: "Důležité informace o zabezpečení pro Server SQL v Azure | Microsoft Docs"
-description: "Toto téma obsahuje obecné pokyny pro zabezpečení SQL Server běžící virtuálním počítači Azure."
+title: Důležité informace o zabezpečení pro Server SQL v Azure | Microsoft Docs
+description: Toto téma obsahuje obecné pokyny pro zabezpečení SQL Server běžící virtuálním počítači Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: d710c296-e490-43e7-8ca9-8932586b71da
 ms.service: virtual-machines-sql
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2017
+ms.date: 03/23/2018
 ms.author: jroth
-ms.openlocfilehash: 609e18cf2bdfdd84c71b67e31b66cd0ca7d47577
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b91638b6b76675711150323bee4aa9ad9d9a73d1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Informace o zabezpečení pro SQL Server v Azure Virtual Machines
 
@@ -44,7 +44,7 @@ Při vytváření virtuálního počítače s SQL serverem pomocí bitovou kopii
 
 ![Připojení k SQL serveru](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
 
-Nejvyšší zabezpečení zvolte možnost nejvíc omezující pro váš scénář. Například pokud používáte aplikaci který přistupuje k systému SQL Server na stejný virtuální počítač, pak **místní** je nejbezpečnější volbou. Pokud používáte aplikaci Azure, která vyžaduje přístup k systému SQL Server, pak **privátní** zabezpečuje komunikaci pro SQL Server pouze v rámci zadaného [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md). Pokud budete potřebovat **veřejné** (internest) přístup k systému SQL Server virtuální počítač, pak proveďte dodržujte ostatní osvědčené postupy v tomto tématu, snížit útoku útoku.
+Nejvyšší zabezpečení zvolte možnost nejvíc omezující pro váš scénář. Například pokud používáte aplikaci který přistupuje k systému SQL Server na stejný virtuální počítač, pak **místní** je nejbezpečnější volbou. Pokud používáte aplikaci Azure, která vyžaduje přístup k systému SQL Server, pak **privátní** zabezpečuje komunikaci pro SQL Server pouze v rámci zadaného [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md). Pokud budete potřebovat **veřejné** (internet) přístup k virtuální počítač SQL Server, ujistěte se, postupujte podle ostatní osvědčené postupy v tomto tématu, snížit útoku útoku.
 
 Vybrané možnosti portálu použít pravidla zabezpečení příchozích na virtuálních počítačích [skupinu zabezpečení sítě](../../../virtual-network/virtual-networks-nsg.md) (NSG), aby povolili nebo zakázali síťový provoz do virtuálního počítače. Můžete upravit nebo vytvořit nový příchozí pravidla NSG, které chcete povolit přenosy na portu SQL Server (standardně 1433). Můžete také zadat konkrétní IP adresy, které jsou povoleny pro komunikaci prostřednictvím tohoto portu.
 
@@ -98,5 +98,5 @@ Kromě postupů popsaných v tomto tématu doporučujeme zkontrolovat a implemen
 
 Pokud vás zajímá také osvědčené postupy týkající se výkonu, najdete v části [osvědčené postupy z hlediska výkonu pro SQL Server v Azure Virtual Machines](virtual-machines-windows-sql-performance.md).
 
-Další témata související se systémem SQL Server ve virtuálních počítačích Azure, najdete v části [SQL Server na virtuálních počítačích Azure přehled](virtual-machines-windows-sql-server-iaas-overview.md). Pokud máte dotazy týkající se virtuální počítače systému SQL Server, najdete v článku [– nejčastější dotazy](virtual-machines-windows-sql-server-iaas-faq.md).
+Další témata související se systémem SQL Server ve virtuálních počítačích Azure, najdete v části [SQL Server na virtuálních počítačích Azure přehled](virtual-machines-windows-sql-server-iaas-overview.md). Pokud máte dotazy k virtuálním počítačům s SQL Serverem, přečtěte si [Nejčastější dotazy](virtual-machines-windows-sql-server-iaas-faq.md).
 

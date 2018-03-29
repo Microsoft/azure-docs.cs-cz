@@ -1,8 +1,8 @@
 ---
-title: "Azure nástrojů pro Eclipse: vytvoření Scala aplikací pro HDInsight Spark | Microsoft Docs"
-description: "Pomocí nástrojů HDInsight v Azure nástrojů pro Eclipse k vývoji aplikací Spark napsané v jazyce Scala a odesílat je na clusteru HDInsight Spark, přímo z integrovaného vývojového prostředí Eclipse."
+title: 'Azure nástrojů pro Eclipse: vytvoření Scala aplikací pro HDInsight Spark | Microsoft Docs'
+description: Pomocí nástrojů HDInsight v Azure nástrojů pro Eclipse k vývoji aplikací Spark napsané v jazyce Scala a odesílat je na clusteru HDInsight Spark, přímo z integrovaného vývojového prostředí Eclipse.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: 8ac118593ecc93a2dd9e53ff7ad9ecf13daef017
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4ff67ebcbac5b1b85345421b16036c96f8e807cc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Vytvoření aplikací Spark pro cluster služby HDInsight pomocí nástrojů Azure pro Eclipse
 
@@ -51,6 +51,8 @@ Otevřete prostředí Eclipse, HDInsight nástroj automaticky zjišťuje, zda js
 
 ![Automatická instalace modulu plug-in Scala](./media/apache-spark-eclipse-tool-plugin/auto-install-scala.png)
 
+Uživatel může buď [Přihlaste se k předplatnému Azure](#Sign-in-to-your-Azure-subscription), nebo [odkaz HDInsight cluster](#Link-a-cluster) pomocí nástroje Ambari uživatelského jména a hesla nebo domény připojeno přihlašovací údaje pro spuštění. 
+
 ## <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure.
 1. Spusťte Eclipse IDE a otevřete Průzkumník Azure. Na **okno** nabídce vyberte možnost **zobrazit zobrazení**a potom vyberte **jiných**. V dialogovém okně, které se otevře, rozbalte položku **Azure**, vyberte **Azure Explorer**a potom vyberte **OK**.
 
@@ -75,12 +77,13 @@ Můžete propojit normální clusteru pomocí Ambari spravované uživatelské j
 
    ![odkaz clusteru kontextové nabídky](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
-2. Zadejte **název clusteru**, **účet úložiště**, **klíč úložiště**, pak vyberte kontejner z **kontejner úložiště**, last, zadejte uživatelské jméno a heslo. Klikněte na tlačítko OK propojení clusteru.
+2. Zadejte **název clusteru**, **uživatelské jméno** a **heslo**, pak klikněte na tlačítko OK propojení clusteru. Volitelně můžete zadat účet úložiště, klíč úložiště a pak vyberte kontejner úložiště pro Průzkumník úložišť pro práci v levém stromové zobrazení
    
    ![Dialogové okno odkaz clusteru](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog.png)
    
    > [!NOTE]
    > Pokud cluster jak zaznamenána v rámci předplatného Azure a propojené cluster používáme klíč propojené úložiště, uživatelské jméno a heslo.
+   > ![Průzkumník úložišť v prostředí Eclipse](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
 
 3. Můžete zobrazit v clusteru s podporou propojené **HDInsight** uzlu po kliknutí na tlačítko OK, pokud vstupní informace jsou správná. Teď můžete odeslat žádost této propojené clusteru.
 

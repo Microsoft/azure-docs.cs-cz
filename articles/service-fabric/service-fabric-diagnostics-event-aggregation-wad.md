@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: f8159d8637967c3297c886ec79a002f0765047e4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ede128d23ca73dc46f2d4dc4b1dd4b1f83a2bc3f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Seskupení událostí a kolekce s použitím Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -169,6 +169,18 @@ Potom aktualizovat `VirtualMachineProfile` souboru template.json přidáním ná
 ```
 
 Jakmile upravíte soubor template.json, jak je popsáno, znovu publikujte šablony Resource Manageru. Pokud byl exportován šablony, spuštěním souboru deploy.ps1 znovu publikuje uzamkl šablony. Poté, co nasadíte, ujistěte se, že **ProvisioningState** je **úspěšné**.
+
+> [!TIP]
+> Pokud chcete nasazení kontejnerů do clusteru, povolte WAD zachycení docker statistiky tak, že přidáte k vaší **WadCfg > DiagnosticMonitorConfiguration** části.
+>
+>```json
+>"DockerSources": {
+>    "Stats": {
+>        "enabled": true,
+>        "sampleRate": "PT1M"
+>    }
+>},
+>```
 
 ## <a name="log-collection-configurations"></a>Konfigurace protokolu kolekce
 Protokoly z další kanály jsou také k dispozici pro kolekci, zde jsou některé nejběžnější konfigurace, které lze provést v šabloně pro clustery spuštěná v Azure.

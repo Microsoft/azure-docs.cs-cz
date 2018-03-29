@@ -1,8 +1,8 @@
 ---
-title: "Konstruování v vědecké zpracování dat | Microsoft Docs"
-description: "Popisuje účely funkce inženýrství a obsahuje příklady jeho role v proces vylepšení dat machine learning."
+title: Konstruování v vědecké zpracování dat | Microsoft Docs
+description: Popisuje účely funkce inženýrství a obsahuje příklady jeho role v proces vylepšení dat machine learning.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: zhangya;bradsev
-ms.openlocfilehash: 72a412c08e57491a306f405f400665e2b0d25a3c
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: bradsev
+ms.openlocfilehash: 70a78659bc14ce5ff9358ed11ad0af68be31bd17
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="feature-engineering-in-data-science"></a>Funkce analýzy v vědecké zpracování dat
 Tento článek popisuje účely funkce inženýrství a obsahuje příklady jeho role v proces vylepšení dat machine learning. V příkladech používají pro ilustraci tohoto procesu jsou vykreslovány z Azure Machine Learning Studio. 
@@ -70,7 +70,7 @@ Porovnání výkonu výsledky čtyři modely je shrnuto v následující tabulce
 
 K dosažení nejlepších výsledků se zobrazí funkce A + B + C. Všimněte si, že snižuje míra chyb při sada dalších funkcí jsou součástí jsou Cvičná data. Ověří, předpokládá, že sada funkcí B, C poskytovat další relevantní informace pro regresní úlohu. Ale přidávání funkci D zřejmě není zadejte jakékoli další snížení míra chyb.
 
-## <a name="example2"></a>Příklad 2: Vytvoření funkce v textu dolování
+## <a name="example2"></a> Příklad 2: Vytvoření funkce v textu dolování
 Funkce inženýrství je široce použity v úlohy související s dolování text, například klasifikace a postojích analýzy dokumentu. Například pokud chcete klasifikovat dokumenty do několika kategorií, typické předpokladem je, že jsou zahrnuté v jedné kategorii doc slova nebo fráze méně pravděpodobné, ke kterým došlo v jiné kategorii dokumentů. Jinými slovy frekvence rozdělení slova nebo fráze se moci charakterizovat dokumentu různých kategorií. V aplikacích dolování text protože jednotlivé obsah textu obvykle slouží jako vstupní data funkci technici procesu je nutné vytvořit funkcí zahrnující frekvencí slovo nebo frázi.
 
 K dosažení této úlohy, o techniku názvem **hashování** se použije pro efektivní zapnout funkce libovolný text do indexů. Místo přidružení jednotlivých funkcí text (slova nebo fráze) do konkrétního indexu, tato metoda funkce použití funkce hash pro funkce a použitím jejich hodnoty hash jako indexy, které přímo.

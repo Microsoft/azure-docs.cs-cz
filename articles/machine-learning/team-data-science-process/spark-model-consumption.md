@@ -1,8 +1,8 @@
 ---
-title: "Zprovoznit modely vytvořené Spark počítač learning | Microsoft Docs"
-description: "Jak načíst a stanovíte jeho skóre learning modely uložené v Azure Blob Storage (WASB) s Python."
+title: Zprovoznit modely vytvořené Spark počítač learning | Microsoft Docs
+description: Jak načíst a stanovíte jeho skóre learning modely uložené v Azure Blob Storage (WASB) s Python.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 9ff633b4543fbc537ffdb721756706e8de5e8e88
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 3a586d40a9d195fe5ec3fa456d450cb3d86f2e9d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Zprovoznit learning modely vytvořené Spark počítače
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -85,7 +85,7 @@ Tady je kód pro nastavení cesty k adresáři:
 
 **VÝSTUP:**
 
-DateTime.DateTime (2016, 4, 25, 23, 56, 19, 229403)
+datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
 ### <a name="import-libraries"></a>Importovat knihovny
 Nastavit kontext spark a importovat potřebné knihovny s následujícím kódem
@@ -115,7 +115,7 @@ Jádra PySpark, které jsou k dispozici s poznámkovými bloky Jupyter mít pře
 Poskytuje jádra PySpark některé předdefinované "Magic", které jsou speciální příkazy, které můžete volat s %%. Existují dva takové příkazy, které se používají v tyto ukázky kódu.
 
 * **%% místní** zadat, že kód v další řádek se spustí místně. Kód musí být platný kód Python.
-* **%% sql -o<variable name>** 
+* **%%sql -o <variable name>** 
 * Provede dotaz Hive proti sqlContext. Pokud je předán parametr -o, výsledek dotazu je uchován v %% lokální kontext Python jako Pandas dataframe.
 
 Pro další informace o jádrech pro poznámkové bloky Jupyter a předdefinovanou "magics", poskytují, najdete v části [jádra dostupná pro poznámkové bloky Jupyter s HDInsight Spark Linux clusterů v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
@@ -587,7 +587,7 @@ Pokud dáváte přednost volné klientského prostředí kódu, použijte [Azure
 * Se zprovoznit **logiku aplikace Návrhář**, zadejte název aplikace logiky a plán služby App Service.
 * Vyberte akci HTTP a zadejte parametry vidět na následujícím obrázku:
 
-![Návrhář aplikace logiky](./media/spark-model-consumption/spark-logica-app-client.png)
+![Návrhář pro Logic Apps](./media/spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>Co dále?
 **Křížové ověření a hyperparameter (vymetání) komínů**: najdete v části [Advanced zkoumání dat a modelování pomocí Spark](spark-advanced-data-exploration-modeling.md) na tom, jak může být modely Trénink pomocí sweeping křížové ověření a technologie hyper parametr.

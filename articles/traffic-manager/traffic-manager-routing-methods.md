@@ -1,11 +1,11 @@
 ---
-title: "Metody směrování provozu Azure Traffic Manageru - | Microsoft Docs"
-description: "To vám pomůže pochopit metody směrování jiný přenos používaný správcem provoz články"
+title: Metody směrování provozu Azure Traffic Manageru - | Microsoft Docs
+description: To vám pomůže pochopit metody směrování jiný přenos používaný správcem provoz články
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: KumudD
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: db1efbf6-6762-4c7a-ac99-675d4eeb54d0
 ms.service: traffic-manager
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2017
 ms.author: kumud
-ms.openlocfilehash: fe776e24a4f78b389c6096694055b38befa3c419
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9bd9b4913e38ed5c1f7f4ec8ee7e3210fa3be8f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody směrování Traffic Manageru
 
@@ -50,7 +50,7 @@ S Azure Resource Manager, můžete nakonfigurovat Priorita koncového bodu expli
 
 ![Azure Traffic Manager 'Vyvážené' směrování provozu – metoda][2]
 
-Vážený metoda směrování provozu přiřaďte váhu každý koncový bod v konfiguraci profilu Traffic Manageru. Váhu je celé číslo od 1 do 1000. Tento parametr je volitelný. Pokud tento parametr vynechán, provoz správce používá výchozí váhu '1'.
+Vážený metoda směrování provozu přiřaďte váhu každý koncový bod v konfiguraci profilu Traffic Manageru. Váhu je celé číslo od 1 do 1000. Tento parametr je volitelný. Pokud tento parametr vynechán, provoz správce používá výchozí váhu '1'. Váha vyšší, tím vyšší je priorita.
 
 Pro každé přijaté dotazy DNS Traffic Manager náhodně zvolí koncový bod k dispozici. Pravděpodobnost výběr koncový bod podle váhy přiřazené všechny koncové body k dispozici. Používá stejnou váhou mezi všechny výsledky koncové body rozdělení i provoz. Pomocí vyšší nebo nižší váhu na konkrétním koncovým bodům způsobí, že těchto koncových bodů, který se má vrátit více nebo méně často v odpovědi DNS.
 
@@ -124,7 +124,7 @@ Traffic Manager načte IP adresu zdrojového dotazu DNS a rozhodne, které geogr
 Jak je popsáno v [jak Traffic Manager funguje](traffic-manager-how-traffic-manager-works.md), Traffic Manager neobdrží dotazy DNS přímo z klientů. Místo toho dotazy DNS pocházet ze služby DNS rekurzivní aby klienti jsou konfigurovány k použití. Proto IP adresu používá k určení oblasti není IP adresa klienta, ale je IP adresa rekurzivní služby DNS. Tato IP adresa v praxi, je dobré proxy pro klienta.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace jak vyvíjet aplikací s vysokou dostupností pomocí [monitorování koncového bodu Traffic Manager](traffic-manager-monitoring.md)
 

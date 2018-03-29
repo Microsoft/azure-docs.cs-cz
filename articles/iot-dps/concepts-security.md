@@ -1,26 +1,26 @@
 ---
-title: "Koncepty zabezpečení ve službě Azure IoT Hub zařízení zřizování Service | Microsoft Docs"
-description: "Popisuje zabezpečení zřizování koncepty, které jsou specifické pro zařízení s služby zřizování zařízení a služby IoT Hub"
+title: Koncepty zabezpečení ve službě Azure IoT Hub zařízení zřizování Service | Microsoft Docs
+description: Popisuje zabezpečení zřizování koncepty, které jsou specifické pro zařízení s služby zřizování zařízení a služby IoT Hub
 services: iot-dps
-keywords: 
+keywords: ''
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 03/27/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ab2bfff571af659552eef8117de041ca6367ce56
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 5e35a802349bd85b50a13a3d9a7e0c78945937bd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Koncepty zabezpečení služby zřizování zařízení IoT Hub 
 
-Služba zřizování zařízení IoT Hub je služba Pomocník pro IoT Hub, který použijete ke konfiguraci zařízení nula touch zřizování do zadané služby IoT hub. Se službou zřizování zařízení můžete zřídit miliony zařízení zabezpečené a škálovatelné způsobem. Tento článek nabízí přehled *zabezpečení* koncepty, které jsou součástí zřizování zařízení. Tento článek je relevantní pro všechny osoby, které se účastní Příprava zařízení pro nasazení.
+Služba zřizování zařízení IoT Hub je služba Pomocník pro IoT Hub, který použijete ke konfiguraci zařízení nula touch zřizování do zadané služby IoT hub. Se službou Device Provisioning můžete bezpečně a škálovatelně zřizovat miliony zařízení. Tento článek nabízí přehled *zabezpečení* koncepty, které jsou součástí zřizování zařízení. Tento článek je relevantní pro všechny osoby, které se účastní Příprava zařízení pro nasazení.
 
 ## <a name="attestation-mechanism"></a>Ověření mechanismu
 
@@ -31,7 +31,7 @@ Ověření mechanismu je metoda použitá pro potvrzení identity zařízení. O
 
 Služba zřizování zařízení podporuje dva způsoby ověření:
 * **Certifikáty X.509** podle standardní tok ověřování certifikátu X.509.
-* **Tokeny SAS** podle nonce výzvu pomocí čipu TPM standard pro klíče. Nevyžaduje fyzické TPM na zařízení, ale služba očekává, že ověřit identitu pomocí ověřovacího klíče na [specifikace TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Trusted Platform Module (TPM)** podle nonce výzvy, pomocí čipu TPM standard pro klíče podepsaný token sdíleného přístupového podpisu (SAS) k dispozici. Nevyžaduje fyzické TPM na zařízení, ale služba očekává, že ověřit identitu pomocí ověřovacího klíče na [specifikace TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
 
 ## <a name="hardware-security-module"></a>Modul hardwarového zabezpečení
 
@@ -42,7 +42,7 @@ Modul hardwarového zabezpečení nebo modulu hardwarového zabezpečení, se po
 
 Tajné klíče zařízení může být taky uložené v softwaru (paměť), ale je méně bezpečné formu úložiště než modulu hardwarového zabezpečení.
 
-## <a name="trusted-platform-module-tpm"></a>Trusted Platform Module (TPM)
+## <a name="trusted-platform-module"></a>Trusted Platform Module
 
 Čip TPM mohou odkazovat na standard týkající se bezpečného ukládání klíče, které slouží k ověření platformu nebo mohou odkazovat na rozhraní vstupně-výstupních operací používají k interakci s moduly implementace standardní. Čipy TPM může existovat jako diskrétní hardware, integrované hardware, založené na firmwaru, nebo na základě softwaru. Další informace o [čipy TPM a TPM ověření](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Služba zřizování zařízení podporuje jenom čip TPM 2.0.
 
@@ -79,7 +79,7 @@ Zřizování služby zpřístupní dva typy zápisu položky, které můžete po
 - [Jednotlivé registrace](./concepts-service.md#individual-enrollment) položky jsou nakonfigurovány s zařízení certifikát přidružený k určitému zařízení. Tyto položky řízení registrace pro konkrétní zařízení.
 - [Registrace skupiny](./concepts-service.md#enrollment-group) položky, které jsou spojené s konkrétní zprostředkující nebo certifikát kořenové certifikační Autority. Tyto položky řízení registrace pro všechna zařízení, které mají které mezilehlé nebo kořenový certifikát v jejich řetězu certifikátů. 
 
-Když se zařízení připojí ke službě zřizování, službu upřednostňuje konkrétnější položky registrace v méně specifické položky pro zápis. To znamená jednotlivé zápisu pro zařízení existuje, službu zřizování se vztahuje na tuto položku. Pokud je bez individuálních registrace pro zařízení a skupinu registrace pro první zprostředkující certifikát v řetězu certifikátů v zařízení existuje, služba použije tuto položku, a tak dále řetězem do kořenového adresáře. Služba se vztahuje na první použít položku, která najde, tak, aby:
+Když se zařízení připojí ke službě zřizování, službu upřednostňuje konkrétnější položky registrace v méně specifické položky pro zápis. To znamená jednotlivé zápisu pro zařízení existuje, službu zřizování se vztahuje na tuto položku. Pokud je bez individuálních registrace pro zařízení a skupinu registrace pro první zprostředkující certifikát v řetězu certifikátů v zařízení existuje, službu použije tuto položku a tak dále, řetězem do kořenového adresáře. Služba se vztahuje na první použít položku, která najde, tak, aby:
 
 - Pokud je první byla nalezena položka registrace je povoleno, poskytne službu zařízení.
 - Pokud je první byla nalezena položka registrace vypnutá, neposkytuje službu zařízení.  

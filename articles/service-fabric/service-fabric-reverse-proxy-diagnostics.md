@@ -1,11 +1,11 @@
 ---
 title: Azure Service Fabric reverse proxy diagnostiky | Microsoft Docs
-description: "Zjistěte, jak sledovat a diagnostikovat zpracování požadavku na reverzní proxy server."
+description: Zjistěte, jak sledovat a diagnostikovat zpracování požadavku na reverzní proxy server.
 services: service-fabric
 documentationcenter: .net
 author: kavyako
 manager: vipulm
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: 1c62d2390709577bfde6225b783642fb55396a6b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e645d86e4527cab1e650575c4d9a10dbd4b9de4e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Monitorování a diagnostikovat zpracování požadavku na reverzní proxy server
 
 Události reverzní proxy server, počínaje 5.7 verzi Service Fabric, jsou k dispozici pro kolekci. Události jsou k dispozici ve dvou kanálů, jeden s pouze chybové události související s selhání zpracování požadavku na reverzní proxy server a druhý kanál obsahující podrobné události se záznamy pro úspěšných i neúspěšných požadavků.
 
-Odkazovat na [shromažďování událostí reverzní proxy server](service-fabric-diagnostics-event-aggregation-wad.md#collect-reverse-proxy-events) Chcete-li povolit shromažďování událostí z těchto kanálů v místní a clustery Azure Service Fabric.
+Odkazovat na [shromažďování událostí reverzní proxy server](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) Chcete-li povolit shromažďování událostí z těchto kanálů v místní a clustery Azure Service Fabric.
 
 ## <a name="troubleshoot-using-diagnostics-logs"></a>Řešení problémů pomocí protokolů diagnostiky
 Zde jsou některé příklady o tom, jak interpretovat běžné selhání protokoly, které se můžete setkat jeden:
@@ -37,7 +37,7 @@ První událost pod protokoly podrobnosti žádosti o přijme reverzní proxy se
 
     *  **traceId**: Tento identifikátor GUID slouží ke korelaci všechny události odpovídající jedné žádosti. V nižší než dvě události, traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**, zdání patří ke stejnému požadavku.
     *  **requestUrl**: adresa URL (URL reverzní proxy server), do které byl odeslán požadavek.
-    *  **příkaz**: příkaz HTTP.
+    *  **verb**: HTTP verb.
     *  **remoteAddress**: adresa odesílání požadavku klienta.
     *  **resolvedServiceUrl**: adresa URL koncového bodu, ke kterému byl vyřešen příchozí žádosti o služby. 
     *  **Detaily chyby**: Další informace o selhání.
@@ -195,7 +195,7 @@ První událost pod protokoly podrobnosti žádosti o přijme reverzní proxy se
 > [!NOTE]
 > Aktuálně nejsou protokolovány události související s zpracování požadavků protokolu websocket. To bude přidán v příští verzi.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Seskupení událostí a kolekce s použitím Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) pro povolení shromažďování protokolů v Azure clustery.
 * Chcete-li zobrazit události Service Fabric v sadě Visual Studio, najdete v části [monitorování a diagnostikovat místně](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
 * Odkazovat na [konfigurovat reverzní proxy server pro připojení k zabezpečení služeb](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) pro Azure Resource Manager šablony ukázky konfigurace zabezpečení reverzní proxy server s jinou službu certifikátem možnosti ověřování.

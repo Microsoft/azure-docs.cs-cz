@@ -1,30 +1,30 @@
 ---
-title: "Konfigurace funkce MPIO pro zařízení StorSimple | Microsoft Docs"
-description: "Popisuje postup konfigurace funkce Multipath I/O (MPIO) pro zařízení StorSimple připojené k hostitele se systémem Windows Server 2012 R2."
+title: Konfigurace funkce MPIO pro zařízení StorSimple | Microsoft Docs
+description: Popisuje postup konfigurace funkce Multipath I/O (MPIO) pro zařízení StorSimple připojené k hostitele se systémem Windows Server 2012 R2.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/05/2017
+ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 9fe3fa3a2df63d111de742ecb48b1469aad543cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f2b094604f486d283574f4669fcad6f72bd4431
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Konfigurace funkce Multipath I/O pro zařízení StorSimple
 
 Tento kurz popisuje kroky, postupujte podle nainstalovat a použít funkci Multipath I/O (MPIO) na hostitele se systémem Windows Server 2012 R2 a připojené k fyzického zařízení StorSimple. Pokyny v tomto článku se vztahuje na řady StorSimple 8000 jenom fyzické zařízení. Funkce MPIO není aktuálně podporováno v zařízení s StorSimple cloudu.
 
-Společnost Microsoft vyvinula podporu pro funkci Multipath I/O (MPIO) v systému Windows Server tak, aby nápovědy vysoce dostupné a odolné proti chybám sítě SAN konfigurace sestavení. Funkce MPIO používá redundantní komponenty fyzických cesty – adaptéry, kabely a přepínače – k vytvoření logických cest mezi serverem a paměťovým zařízením. Pokud dojde k selhání součásti způsobuje logickou cestu k selhání, logika více cest použije pro vstupně-výstupní operace alternativní cestu, tak, aby aplikace můžete stále přístup k datům. Kromě toho v závislosti na vaší konfiguraci funkce MPIO lze také vylepšit výkon vyrovnává zatížení mezi tyto cesty. Další informace najdete v tématu [Přehled funkce MPIO](https://technet.microsoft.com/library/cc725907.aspx "MPIO přehled a funkce").
+Společnost Microsoft vyvinula podporu pro funkci Multipath I/O (MPIO) ve Windows serveru k sestavení konfigurace iSCSI s vysokou dostupností, odolný proti chybám sítě. Funkce MPIO používá redundantní komponenty fyzických cesty – adaptéry, kabely a přepínače – k vytvoření logických cest mezi serverem a paměťovým zařízením. Pokud dojde k selhání součásti způsobuje logickou cestu k selhání, logika více cest použije pro vstupně-výstupní operace alternativní cestu, tak, aby aplikace můžete stále přístup k datům. Kromě toho v závislosti na vaší konfiguraci funkce MPIO lze také vylepšit výkon vyrovnává zatížení mezi tyto cesty. Další informace najdete v tématu [Přehled funkce MPIO](https://technet.microsoft.com/library/cc725907.aspx "MPIO přehled a funkce").
 
 Vysoká-dostupnosti vašeho řešení StorSimple musí být funkce MPIO nakonfigurovaný v zařízení StorSimple. Při instalaci funkce MPIO na hostitelských serverech s Windows serverem 2012 R2 servery tolerovat klikněte na odkaz, sítě nebo selhání rozhraní.
 
@@ -83,7 +83,7 @@ Funkce MPIO musí být nakonfigurované k identifikaci svazky zařízení StorSi
 3. Vyberte **přidat podporu pro zařízení iSCSI**a potom klikněte na **přidat**.  
    ![Funkce MPIO vlastnosti zjistit více cest](./media/storsimple-configure-mpio-windows-server/IC741003.png)
 4. Restartujte server po zobrazení výzvy.
-5. V **MPIO vlastnosti** dialogové okno, klikněte na tlačítko **MPIO zařízení** kartě. Klikněte na tlačítko **Přidat**.
+5. V **MPIO vlastnosti** dialogové okno, klikněte na tlačítko **MPIO zařízení** kartě. Klikněte na tlačítko **přidat**.
     </br>![Funkce MPIO vlastnosti MPIO zařízení](./media/storsimple-configure-mpio-windows-server/IC741004.png)
 6. V **přidat podporu funkce MPIO** dialogovém **ID hardwaru zařízení**, zadejte sériové číslo zařízení. Sériové číslo zařízení získáte přístup k službě StorSimple Manager zařízení. Přejděte na **zařízení > řídicí panel**. Sériové číslo zařízení se zobrazí v pravém **rychlý přehled** zařízení na řídicím panelu.
     </br>
@@ -149,12 +149,12 @@ Po dokončení konfigurace funkce MPIO v systému Windows Server, svazky, které
 
 ## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>Krok 4: Konfigurace funkce MPIO pro zajištění vysoké dostupnosti a vyrovnávání zatížení
 
-Pro vysokou dostupnost a vyrovnávání zatížení na základě více cestami, je nutné více relací ručně přidat deklarovat různé cesty, které jsou k dispozici. Například pokud má hostitel dvě rozhraní připojené k síti SAN a zařízení má dvě rozhraní, které jsou připojeny k síti SAN, pak je nutné nakonfigurovat pomocí správné cesty permutací (pouze dvě relace se bude vyžadovat Pokud každé rozhraní dat a hostitele rozhraní je v jiné podsíti protokolu IP a není směrovatelné) čtyři relací.
+Pro vysokou dostupnost a vyrovnávání zatížení na základě více cestami, je nutné více relací ručně přidat deklarovat různé cesty, které jsou k dispozici. Například pokud má hostitel dvě rozhraní připojené k síti iSCSI a zařízení má dvě rozhraní, které jsou připojené k síti iSCSI, pak je nutné nakonfigurovat pomocí správné cesty permutací čtyři relací (pouze dvě relace se bude vyžadovat, pokud každý rozhraní dat a rozhraní hostitel je v jiné podsíti protokolu IP a není směrovatelné).
 
 **Doporučujeme, abyste měli aspoň 8 paralelních aktivních relací mezi zařízením a vaší hostitele aplikací.** Toho lze dosáhnout povolením 4 rozhraní sítě systému Windows Server. Použití fyzická síťová rozhraní nebo virtuální rozhraní pomocí technologie virtualizace sítě na úrovni hardwaru nebo operačního systému na hostiteli s Windows Server. Tato konfigurace se dvěma síťovými rozhraními na zařízení, by způsobilo 8 aktivních relací. Tato konfigurace pomáhá optimalizovat výkon zařízení a cloudu.
 
 > [!IMPORTANT]
-> **Doporučujeme vám, že nemíchat 1 GbE a 10 GbE síťových rozhraní. Pokud používáte dvě síťová rozhraní, obě rozhraní musí být identické typu.**
+> **Doporučujeme vám, že nemíchat 1 GbE a 10 GbE síťových rozhraní. Pokud používáte dvě síťová rozhraní, by měla být identické typ obě rozhraní.**
 
 Následující postup popisuje, jak přidat relace při připojení zařízení StorSimple se dvěma síťovými rozhraními na hostitele se dvěma síťovými rozhraními. To vám dává jenom 4 relací. Použijte stejný postup s zařízení StorSimple se dvěma síťovými rozhraními připojený k hostiteli s čtyři síťových rozhraní. Musíte nakonfigurovat 8 namísto 4 relací, které jsou zde popsané.
 
@@ -172,22 +172,22 @@ Následující postup popisuje, jak přidat relace při připojení zařízení 
 6. V **Upřesnit nastavení** dialogové okno:
    
    1. Na **místní adaptér** rozevíracího seznamu vyberte **iniciátor iSCSI společnosti Microsoft**.
-   2. Na **iniciátor IP** rozevíracího seznamu vyberte IP adresu hostitele.
-   3. Na **portál cílová IP adresa** rozevíracím seznamu vyberte IP adresu rozhraní dat v zařízení povolená.
+   2. Na **iniciátor IP** rozevíracího seznamu vyberte IP adresu odpovídající první rozhraní na hostiteli (rozhraní iSCSI).
+   3. Na **portál cílová IP adresa** rozevíracího seznamu, vyberte možnost IP adresa pro rozhraní první data v zařízení povolená.
    4. Klikněte na tlačítko **OK** se vraťte do dialogového okna Vlastnosti iniciátoru iSCSI.
 7. Klikněte na tlačítko **vlastnosti**a v **vlastnosti** dialogové okno, klikněte na tlačítko **Přidat relaci**.
 8. V **připojit k cíli** dialogové okno, vyberte **povolit více cestami** zaškrtněte políčko a potom klikněte na **Upřesnit**.
 9. V **Upřesnit nastavení** dialogové okno:
    
    1. Na **místní adaptér** rozevíracího seznamu vyberte **iniciátor iSCSI společnosti Microsoft**.
-   2. Na **iniciátor IP** rozevíracího seznamu vyberte IP adresu odpovídající druhý rozhraní na hostiteli.
+   2. Na **iniciátor IP** rozevíracího seznamu vyberte IP adresu odpovídající druhý rozhraní iSCSI, na hostiteli.
    3. Na **portál cílová IP adresa** rozevíracího seznamu, vyberte možnost IP adresa pro rozhraní druhý data v zařízení povolená.
    4. Klikněte na tlačítko **OK** se vrátíte do **vlastnosti iniciátoru iSCSI** dialogové okno. Nyní jste přidali druhý relace k cíli.
 10. Opakujte kroky 8-10 přidat další relace (cest) k cíli. Dvě rozhraní na hostiteli a dva na zařízení můžete přidat celkem čtyři relací.
 11. Po přidání požadovaných relací (cest), v **vlastnosti iniciátoru iSCSI** dialogovém okně vyberte cíl a klikněte na tlačítko **vlastnosti**. Na kartě relací **vlastnosti** dialogové okno, Poznámka čtyři relace identifikátory, které odpovídají permutací možné cesta. Zrušit relaci, zaškrtněte políčko vedle identifikátor relace a potom klikněte na **odpojení**.
 12. Chcete-li zobrazit zařízení uvedené v rámci relací, vyberte **zařízení** kartě. Ke konfiguraci funkce MPIO zásady pro vybrané zařízení, klikněte na tlačítko **MPIO**. **Podrobnosti o zařízení** zobrazí se dialogové okno. Na **MPIO** kartě můžete vybrat odpovídající **zásad vyrovnávání zatížení** nastavení. Můžete také zobrazit **Active** nebo **pohotovostní** typ cesty.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o [změňte konfiguraci zařízení StorSimple pomocí služby StorSimple Manager zařízení](storsimple-8000-modify-device-config.md).
 

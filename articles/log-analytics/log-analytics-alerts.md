@@ -1,8 +1,8 @@
 ---
-title: "Vysvětlení výstrah v Azure Log Analytics | Microsoft Docs"
-description: "Výstrahy v Log Analytics identifikovat důležité informace ve svém úložišti OMS a můžete proaktivně upozorňují na problémy nebo vyvolání akce se pokusit o opravte je.  Tento článek popisuje různé druhy pravidla výstrah a jak jsou definovány."
+title: Vysvětlení výstrah v Azure Log Analytics | Microsoft Docs
+description: Výstrahy v Log Analytics identifikovat důležité informace ve svém úložišti OMS a můžete proaktivně upozorňují na problémy nebo vyvolání akce se pokusit o opravte je.  Tento článek popisuje různé druhy pravidla výstrah a jak jsou definovány.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/05/2018
 ms.author: bwren
-ms.openlocfilehash: 07e8312d5e113eeb9016dcc832b1cf66f8001c5f
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: ece2e7eeb53aebbb18bce4bb34e03307b0aea74c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>Vysvětlení výstrah v analýzy protokolů
 
-Výstrahy v Log Analytics identifikovat důležité informace do úložiště analýzy protokolů.  Tento článek popisuje některé z rozhodnutí o návrhu, které musí být provedeny na základě četnosti shromažďování dat je předmětem dotazu, náhodné zpoždění s přijímání dat může být způsobeno latence sítě nebo zpracování kapacitu a potvrzování data do protokolu Analýza úložiště.  Také poskytuje podrobnosti o tom, jak výstrahy pravidlech pracovního analýzy protokolů a popisuje rozdíly mezi různé typy pravidla výstrah.
+Upozornění v Log Analytics identifikují důležité informace v úložišti Log Analytics.  Tento článek popisuje některé z rozhodnutí o návrhu, které musí být provedeny na základě četnosti shromažďování dat je předmětem dotazu, náhodné zpoždění s přijímání dat může být způsobeno latence sítě nebo zpracování kapacitu a potvrzování data do protokolu Analýza úložiště.  Také poskytuje podrobnosti o tom, jak výstrahy pravidlech pracovního analýzy protokolů a popisuje rozdíly mezi různé typy pravidla výstrah.
 
 Proces vytváření pravidla výstrah najdete v následujících článcích:
 
@@ -39,9 +39,9 @@ Podrobnosti o frekvenci shromažďování dat pro různá řešení a typu dat j
 - Předtím, než může být výstraha, data musí být zapsané do úložiště, aby bylo k dispozici, pokud dotaz. Z důvodu latence popsané výše není frekvence kolekce stejný jako čas, kdy data je k dispozici pro dotazy. Například při data mohou být shromažďována přesněji každých 10 min, data budou k dispozici v úložišti dat nepravidelných intervalech. Shromažďovaných dat v počtu nula, 10 a 20 minut intervalech hypoteticky, může být k dispozici pro vyhledávání v 25, 28 a 35 minut v uvedeném pořadí, nebo v některých nestandardní intervalu ovlivněné přijímání latence. Nejhorším případě pro tyto zpoždění dokumentovány v článku [SLA pro analýzy protokolů](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1), který nezahrnuje zpoždění zaváděné kolekce latence frekvence nebo síti mezi počítači a analýzy protokolů služby.
 
 
-## <a name="alert-rules"></a>Pravidla výstrah
+## <a name="alert-rules"></a>Pravidla upozornění
 
-Výstrahy jsou vytvářeny pravidla výstrah, které automaticky spustit vyhledávání protokolu v pravidelných intervalech.  Pokud výsledky hledání protokolů odpovídají konkrétním kritériím se vytvoří záznam výstrahy.  Pravidlo lze poté automaticky spouštět jednu nebo více akcí proaktivně oznámíme vám výstrahy nebo vyvolání jiný proces.  Různé typy pravidla výstrah pomocí různých logiku k provedení této analýze.
+Upozornění se vytvářejí na základě pravidel upozornění, která automaticky a v pravidelných intervalech spouští prohledávání protokolů.  Pokud výsledky hledání protokolů odpovídají konkrétním kritériím se vytvoří záznam výstrahy.  Pravidlo pak může automaticky spustit jednu nebo více akcí a proaktivně vás upozornit nebo vyvolat jiný proces.  Různé typy pravidla výstrah pomocí různých logiku k provedení této analýze.
 
 ![Výstrahy Log Analytics](media/log-analytics-alerts/overview.png)
 
@@ -52,7 +52,7 @@ Je kompromis mezi spolehlivost výstrah a odezvy výstrahy. Můžete nakonfiguro
 Pravidla výstrah jsou definovány následující podrobnosti:
 
 - **Hledání protokolů**.  Dotaz, který se spustí pokaždé, když se aktivuje pravidlo výstrahy.  Vrácené tímto dotazem záznamy slouží k určení, jestli se má vytvořit výstrahu.
-- **Časový interval**.  Určuje časový rozsah pro dotaz.  Dotaz vrátí pouze záznamy, které byly vytvořeny v tomto rozsahu aktuální čas.  To může být libovolná hodnota 5 minut až 24 hodin. Rozsah musí být dost široké, aby dokázala pojmout přiměřené zpoždění při přijímání. Časový interval musí být dvakrát délka nejdelší zpoždění, které chcete být schopna zpracovávat.<br> Například pokud chcete generovat výstrahy za spolehlivé pro zpoždění 30 minut, pak rozsahu musí být jedna hodina.  
+- **Časový interval**.  Určuje časový rozsah pro dotaz.  Dotaz vrátí pouze záznamy vytvořené v tomto rozsahu před aktuálním časem.  To může být libovolná hodnota 5 minut až 24 hodin. Rozsah musí být dost široké, aby dokázala pojmout přiměřené zpoždění při přijímání. Časový interval musí být dvakrát délka nejdelší zpoždění, které chcete být schopna zpracovávat.<br> Například pokud chcete generovat výstrahy za spolehlivé pro zpoždění 30 minut, pak rozsahu musí být jedna hodina.  
 
     Existují dvě příznaků, kterým může dojít, pokud časový rozsah je příliš malá.
 
@@ -81,7 +81,7 @@ Rozdíl mezi typy pravidlo výstrahy se následujícím způsobem.
 ## <a name="number-of-results-alert-rules"></a>Počet výsledků pravidla výstrah
 **Počet výsledků** pravidla výstrah vytvořit jednu výstrahu, když počet záznamů vrácených dotazem vyhledávání překročí zadanou prahovou hodnotu.
 
-### <a name="threshold"></a>Prahová hodnota
+### <a name="threshold"></a>Mezní hodnota
 Prahová hodnota pro **počet výsledků** pravidlo výstrahy je jednoduše větší nebo menší než určitou hodnotu.  Pokud počet záznamů protokolu nalezené splňují tato kritéria, se vytvoří výstraha.
 
 ### <a name="scenarios"></a>Scénáře
@@ -102,12 +102,12 @@ Například, pokud chcete upozornit, když procesor běží víc než 90 %, byst
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
-Pokud chcete upozornit, když procesor průměrem více než 90 % pro konkrétní časové okno, byste použili dotazu pomocí [měření příkaz](log-analytics-search-reference.md#commands) jako na následujícím obrázku se prahová hodnota pro pravidlo výstrahy **větší než 0**.
+Pokud chcete upozornit, když procesor průměrem více než 90 % pro konkrétní časové okno, byste použili dotazu pomocí `measure` příkaz jako na následujícím obrázku se prahová hodnota pro pravidlo výstrahy **větší než 0**.
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
 >[!NOTE]
-> Pokud pracovní prostor byl upgradován na verzi [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak výše dotazy by změnit na následující:`Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90`
+> Pokud pracovní prostor byl upgradován na verzi [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak výše dotazy by změnit na následující: `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90`
 > `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90`
 
 
@@ -119,13 +119,13 @@ Pokud chcete upozornit, když procesor průměrem více než 90 % pro konkrétn�
 **Metriky měření** pravidla výstrah vytvářejí výstrahu pro každý objekt v dotazu s hodnotou, který je delší než zadaná prahová hodnota.  Mají odlišné následující rozdíly proti **počet výsledků** pravidla výstrah.
 
 #### <a name="log-search"></a>Prohledávání protokolů
-I když můžete používat pro jakýkoli dotaz **počet výsledků** pravidlo výstrahy, existují požadavky na dotaz pro pravidlo výstrahy metriky měření.  Musí obsahovat [měření příkaz](log-analytics-search-reference.md#commands) seskupí výsledky podle určitého pole. Tento příkaz musí zahrnovat následující prvky.
+I když můžete používat pro jakýkoli dotaz **počet výsledků** pravidlo výstrahy, existují požadavky na dotaz pro pravidlo výstrahy metriky měření.  Musí obsahovat `measure` příkazu seskupení výsledků podle určitého pole. Tento příkaz musí zahrnovat následující prvky.
 
 - **Agregační funkce**.  Určuje výpočet, který provádí a potenciálně číselného pole k agregaci.  Například **count()** vrátí počet záznamů v dotazu, **avg(CounterValue)** Vrátí průměrnou hodnotu pole přepočtené průběhu intervalu.
 - **Pole Seskupit**.  Pro každou instanci v tomto poli se vytvoří záznam s hodnotou agregované a výstraha může vygenerovat pro každý.  Například pokud chcete generovat výstrahy pro každý počítač, byste použili **počítačem**.   
 - **Interval**.  Definuje časový interval, za které agregovaná data.  Například pokud jste zadali **5 minut**, by se vytvoří záznam pro každou instanci pole skupiny v okně čas zadaný pro výstrahu agregován v intervalech 5 minut.
 
-#### <a name="threshold"></a>Prahová hodnota
+#### <a name="threshold"></a>Mezní hodnota
 Prahová hodnota pro pravidla výstrah metriky měření je definována agregovaná hodnota a celou řadu.  Pokud žádné datového bodu v hledání protokolů překročí tuto hodnotu, považuje za porušení.  Pokud počet porušení v u všech objektů ve výsledcích překročí zadanou hodnotu, se vytvoří výstraha pro tento objekt.
 
 #### <a name="example"></a>Příklad:
@@ -148,9 +148,9 @@ Mít výstrahy záznamy vytvořené pravidla výstrah v analýzy protokolů **ty
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Typ |*Výstrahy* |
+| Typ |*Alert* |
 | SourceSystem |*OMS* |
-| *Objekt*  | [Metriky měření výstrahy](#metric-measurement-alert-rules) bude mít vlastnost pro pole skupiny.  Například pokud protokol hledání skupin v počítači, výstrahy záznam s mít počítač pole s názvem počítače jako hodnotu.
+| *Object*  | [Metriky měření výstrahy](#metric-measurement-alert-rules) bude mít vlastnost pro pole skupiny.  Například pokud protokol hledání skupin v počítači, výstrahy záznam s mít počítač pole s názvem počítače jako hodnotu.
 | AlertName |Název výstrahy. |
 | AlertSeverity |Úroveň závažnosti výstrahy. |
 | LinkToSearchResults |Propojit vyhledávání protokolu analýzy protokolů, který vrátí záznamy v dotazu, který vytvořili výstrahu. |

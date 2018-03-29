@@ -1,11 +1,11 @@
 ---
 title: Upgrade aplikace Service Fabric | Microsoft Docs
-description: "Tento článek obsahuje úvod do upgradu aplikace Service Fabric, včetně výběrem možnosti upgradu režimy a provádění kontroly stavu."
+description: Tento článek obsahuje úvod do upgradu aplikace Service Fabric, včetně výběrem možnosti upgradu režimy a provádění kontroly stavu.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 765931d8a888432e0cc77ff86d597b6e2a029a2a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 60bbd75496b6e835a76edb4251aac6ea249187b3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade aplikace Service Fabric
 Aplikace Azure Service Fabric je kolekce služeb. Během upgradu, porovná Service Fabric nové [manifest aplikace](service-fabric-application-and-service-manifests.md) v předchozí verzi a určuje, které služby v uzlu aktualizace vyžadovat aplikace. Service Fabric porovnává verze čísla ve službě manifesty s čísla verze v předchozí verzi. Je-li služba se nezměnila, není aktualizován dané služby.
@@ -57,6 +57,13 @@ Při upgradu aplikace je vrácena, parametry výchozí služby se vrátit zpět 
 
 > [!TIP]
 > [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) nastavení konfigurace clusteru musí být *true* a povolte tak pravidla 2) a 3) nad (výchozí služby aktualizace a odstranění). Tato funkce je podporovaná počínaje Service Fabric verzi 5.5.
+
+## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Upgrade více aplikací s koncovými body HTTPS
+Budete muset pečlivě nepoužívat **stejný port** pro různé instance stejné aplikace při používání protokolu HTTP**S**. Důvodem je, že Service Fabric, nebude možné upgradovat certifikátu pro jednu z instancí aplikace. Například pokud aplikace 1 nebo aplikace 2 obou chcete upgradovat jejich cert 1 cert 2. Při upgradu se stane, Service Fabric může mít vyčistit cert 1 registrace pomocí ovladače http.sys i když se stále používá jiná aplikace. Chcete-li tomu zabránit, Service Fabric zjistí, že se už používá jiná instance aplikace zaregistrované na portu s certifikátem (z důvodu http.sys) a operaci se nezdaří.
+
+Proto Service Fabric nepodporuje upgrade dvě různé služby pomocí **stejný port** v případech jinou aplikaci. Jinými slovy nelze použít stejný certifikát na různé služby na stejném portu. Pokud potřebujete mít sdílené certifikát na stejném portu, je třeba zajistit, že služby jsou umístěny na různých počítačích s omezeními umístění. Nebo zvažte, pokud je to možné pomocí Service Fabric dynamické porty pro každou službu v každé instanci aplikace. 
+
+Pokud se zobrazí upgradu služeb při selhání s protokolem https, chybu upozornění oznamující "Rozhraní API systému Windows HTTP serveru nepodporuje víc certifikátů pro aplikace, které sdílejí port."
 
 ## <a name="application-upgrade-flowchart"></a>Vývojový diagram upgradu aplikace
 Vývojový diagram níže vám může pomoct pochopit proces upgradu aplikace Service Fabric. Konkrétně toku popisuje jak vypršení časových limitů, včetně *HealthCheckStableDuration*, *HealthCheckRetryTimeout*, a *UpgradeHealthCheckInterval*, pomůže ovládací prvek při upgradu v jedné aktualizační doméně se považuje za úspěch nebo selhání.

@@ -42,7 +42,7 @@ Ne.
 
 **Existují nějaká omezení škálování pro zákazníky, kteří používají spravované disky?**
 
-Spravované disky eliminuje omezení spojená s účty úložiště. Počet spravovaných disků na jedno předplatné je však omezená na 2 000 ve výchozím nastavení. Obraťte se na podporu, aby tento počet zvýšit.
+Spravované disky eliminuje omezení spojená s účty úložiště. Maximální limit a také výchozí limit je však 10 000 spravovaných disků na každou oblast a na typu disku pro předplatné.
 
 **Může trvat přírůstkový snímek spravovaného disku?**
 

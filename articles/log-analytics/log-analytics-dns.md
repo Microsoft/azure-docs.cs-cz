@@ -1,24 +1,24 @@
 ---
-title: "Řešení DNS analýzy v Azure Log Analytics | Microsoft Docs"
-description: "Nastavit a použít řešení DNS analýzy v analýzy protokolů získat přehled o infrastruktuře DNS na zabezpečení, výkonu a operací."
+title: Řešení DNS analýzy v Azure Log Analytics | Microsoft Docs
+description: Nastavit a použít řešení DNS analýzy v analýzy protokolů získat přehled o infrastruktuře DNS na zabezpečení, výkonu a operací.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 8ead058108f39eca8682eccc296760d4b756d336
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 6a59cf8b9444fe7cb197501c51d10dae81acb027
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Shromažďovat statistiky o infrastruktury služby DNS s řešením DNS Analytics Preview
 
@@ -145,7 +145,6 @@ Informace umožňuje identifikovat:
 
 **Ukázkové dotazy Analytics DDI**. Obsahuje seznam nejčastějších dotazů vyhledávání, které načíst nezpracovaná analytická data přímo.
 
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Ukázkové dotazy](./media/log-analytics-dns/queries.png)
 
@@ -166,7 +165,7 @@ Tyto dotazy můžete použít jako východisko pro vytvoření vlastní dotazy p
 
 Na stránce hledání protokolů můžete vytvořit dotaz. Můžete filtrovat výsledky hledání pomocí ovládacích prvků omezující vlastnosti. Můžete také vytvořit pokročilými dotazy transformace, filtr a sestavy na výsledky. Spusťte v následujících dotazech:
 
-1. V **vyhledávacího dotazu pole**, typ `Type=DnsEvents` zobrazíte všechny události DNS generovaných servery DNS, které spravuje řešení. Výsledky seznam data protokolu pro všechny události související s dotazy vyhledávání, dynamických registrací a změny konfigurace.
+1. V **vyhledávacího dotazu pole**, typ `DnsEvents` zobrazíte všechny události DNS generovaných servery DNS, které spravuje řešení. Výsledky seznam data protokolu pro všechny události související s dotazy vyhledávání, dynamických registrací a změny konfigurace.
 
     ![Hledání DnsEvents protokolů](./media/log-analytics-dns/log-search-dnsevents.png)  
 
@@ -176,7 +175,7 @@ Na stránce hledání protokolů můžete vytvořit dotaz. Můžete filtrovat v�
 
     c. Chcete-li zobrazit data protokolu pro změny konfigurace, vyberte **ConfigurationChange** jako **dílčí** filtru z ovládacího prvku omezující vlastnosti na levé straně. Tabulka, která obsahuje seznam všech událostí změny konfigurace pro vybrané časové období se zobrazí.
 
-2. V **vyhledávacího dotazu pole**, typ `Type=DnsInventory` zobrazíte všechny související s inventářem data DNS pro servery DNS, které spravuje řešení. Výsledky seznam data protokolu pro servery DNS, zóny DNS a záznamy o prostředcích.
+2. V **vyhledávacího dotazu pole**, typ `DnsInventory` zobrazíte všechny související s inventářem data DNS pro servery DNS, které spravuje řešení. Výsledky seznam data protokolu pro servery DNS, zóny DNS a záznamy o prostředcích.
 
     ![Hledání DnsInventory protokolů](./media/log-analytics-dns/log-search-dnsinventory.png)
 

@@ -1,11 +1,11 @@
 ---
-title: Azure Traffic Analytics | Microsoft Docs
-description: "Zjistěte, jak k analýze protokolů o zabezpečení skupiny toku síť Azure s přenosy Analytics."
+title: Provoz Azure analytics | Microsoft Docs
+description: Zjistěte, jak k analýze protokolů o zabezpečení skupiny toku síť Azure s přenosy analytics.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: 9fc44fdd6ce01452ffc2506c599e3d05aa0803e1
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ffb13d1190535dacbe3a0781a1d3b425a970d26e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -28,19 +28,19 @@ Analýza provozu je cloudové řešení, která poskytuje přehled o činnosti u
 - Pochopení vzory tok přenosů dat mezi oblastmi Azure a internet k optimalizaci nasazení sítě pro výkon a kapacitu.
 - Přesné nesprávné konfigurace sítě vedoucí k selhání připojení v síti.
 
-## <a name="why-traffic-analytics"></a>Proč provozu Analytics?
+## <a name="why-traffic-analytics"></a>Proč provozu analytics?
 
 Je důležité monitorovat, spravovat a znát vlastní síť neohrožený zabezpečení, dodržování předpisů a výkonu. Znalost svého vlastního prostředí je především třeba chránit a optimalizovat ho. Často potřebujete vědět, aktuální stav sítě, který se připojuje, kde, které porty jsou otevřené k Internetu, očekávané chování sítě, síťové nestandardní chování a nečekané roste v provozu.
 
 Cloudové sítě se liší od podnikové sítě na místě, kdy máte Netflow nebo ekvivalentní protokol podporující směrovače a přepínače, které poskytují schopnost shromažďovat IP síťový provoz, jak ho zadá nebo ji opustí síťové rozhraní. Analýzou dat tok přenosů, můžete vytvořit analýzu tok přenosu sítě a svazku.
 
-Virtuální sítě Azure mají NSG toku protokoly, které poskytují informace o příchozí a odchozí provoz IP prostřednictvím skupinu zabezpečení sítě přidružené k jednotlivým síťovým rozhraní, virtuální počítače nebo podsítě. Analýzou nezpracovaná NSG toku protokoly a vkládání intelligence zabezpečení, topologie a geography, analýza provozu vám může poskytnout přehled o přenosového toku ve vašem prostředí. Provoz Analytics poskytuje informace, jako je nejvíce komunikuje hostitele, většina komunikační protokoly aplikací, nejvíce konverzaci páry hostitele, povolené nebo blokované provoz, příchozí nebo odchozí přenosy, otevřené porty internet, nejvíce blokující pravidla, provoz distribuce pro datové centrum Azure, virtuální sítě, podsítě, nebo podvodné sítě.
+Virtuální sítě Azure mají NSG toku protokoly, které poskytují informace o příchozí a odchozí provoz IP prostřednictvím skupinu zabezpečení sítě přidružené k jednotlivým síťovým rozhraní, virtuální počítače nebo podsítě. Analýza nezpracovaná toku protokolů NSG a vkládání intelligence provozu, zabezpečení, topologie a geography, analýzy vám může poskytnout přehled o přenosového toku ve vašem prostředí. Provoz Analytics poskytuje informace, jako je nejvíce komunikuje hostitele, většina komunikační protokoly aplikací, nejvíce konverzaci páry hostitele, povolené nebo blokované provoz, příchozí nebo odchozí přenosy, otevřené porty internet, nejvíce blokující pravidla, provoz distribuce pro datové centrum Azure, virtuální sítě, podsítě, nebo podvodné sítě.
 
 ## <a name="key-components"></a>Klíčové komponenty 
 
 - **Skupina zabezpečení sítě (NSG)**: obsahuje seznam pravidel zabezpečení, která povolují nebo odpírají síťový provoz na prostředky, které jsou připojené k virtuální síti Azure. Skupiny zabezpečení sítě můžou být přidružené k podsítím, jednotlivým virtuálním počítačům (klasický model) nebo jednotlivým síťovým rozhraním (síťovým kartám) připojeným k virtuálním počítačům (Resource Manager). Další informace najdete v tématu [přehled skupiny zabezpečení sítě](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Síťové protokoly toku skupina zabezpečení (NSG)**: vám umožní zobrazit informace o příchozí a odchozí provoz IP prostřednictvím skupinu zabezpečení sítě. Skupina NSG toku protokoly jsou zapsány ve formátu json a zobrazit odchozí a příchozí tok na základě pravidla na síťový adaptér toku se vztahuje na 5 řazené kolekce členů informace o toku (zdrojové nebo cílové IP adresy, zdrojový nebo cílový port a protokol), a pokud přenos byl povolen nebo byl odepřen. Další informace o toku protokolů NSG najdete v tématu [protokolů NSG toku](network-watcher-nsg-flow-logging-overview.md).
-- **Analýza protokolu**: Služba Azure, která shromažďuje data monitorování a ukládá data v centrálním úložišti. Tato data můžou obsahovat události, údaje o výkonu nebo vlastní data poskytnutá prostřednictvím rozhraní API služby Azure. Po získání jsou data dostupná pro výstrahy, analýzu a export. Monitorování aplikací, jako je nástroj Sledování výkonu sítě a analýzy provozu jsou vytvořeny pomocí analýzy protokolů jako základ. Další informace najdete v tématu [protokolu analýzy](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Síťové protokoly zabezpečení skupiny (NSG) toku**: vám umožní zobrazit informace o příchozí a odchozí provoz IP prostřednictvím skupinu zabezpečení sítě. Skupina NSG toku protokoly jsou zapsány ve formátu json a zobrazit odchozí a příchozí tok na základě pravidla na síťový adaptér toku se vztahuje na 5 řazené kolekce členů informace o toku (zdrojové nebo cílové IP adresy, zdrojový nebo cílový port a protokol), a pokud přenos byl povolen nebo byl odepřen. Další informace o toku protokolů NSG najdete v tématu [protokolů NSG toku](network-watcher-nsg-flow-logging-overview.md).
+- **Analýza protokolu**: Služba Azure, která shromažďuje data monitorování a ukládá data v centrálním úložišti. Tato data můžou obsahovat události, údaje o výkonu nebo vlastní data poskytnutá prostřednictvím rozhraní API služby Azure. Po získání jsou data dostupná pro výstrahy, analýzu a export. Monitorování aplikací, jako jsou například analýzy výkonu monitorování a přenosy dat sítě jsou vytvořeny pomocí analýzy protokolů jako základ. Další informace najdete v tématu [protokolu analýzy](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Přihlaste se pracovní prostor analýzy**: instance analýzy protokolů, které jsou uložená data, která se týkají k účtu Azure. Další informace o pracovních prostorech analýzy protokolů, najdete v části [vytvořit pracovní prostor analýzy protokolů](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Sledovací proces sítě**: místní služba, která umožňuje sledovat a diagnostikovat podmínky na úrovni sítě scénář v Azure. Chcete-li toku protokolů NSG zapnout a vypnout s sledovací proces sítě. Další informace najdete v tématu [sledovací proces sítě](network-watcher-monitoring-overview.md#network-watcher).
 
@@ -52,13 +52,13 @@ Analýza provozu prozkoumá nezpracovaná toku protokolů NSG a zachytí sníže
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Analýza provozu je dostupná ve verzi preview. Funkce ve verzi preview nemají stejnou úroveň dostupnost a spolehlivost jako funkce v hlavní verze.  Ve verzi preview, můžete provádět analýzy provozu skupin Nsg v některém z následujících oblastí: – Západ střední USA, Východ USA, Východ USA 2, – Sever střední USA, Jižní střední USA, střed USA, západní USA, západní USA 2, západní Evropa, Severní Evropa, západní Spojené království, Spojené království – Jih, Austrálie – východ a Austrálie – jihovýchod. Pracovní prostor analýzy protokolů musí existovat v rámci – Západ střední USA, Východ USA, západní Evropa, Austrálie – jihovýchod nebo Spojené království – jih oblasti.
+Analýza provozu je dostupná ve verzi preview. Funkce ve verzi preview nemají stejnou úroveň dostupnost a spolehlivost jako funkce v hlavní verze.  Ve verzi preview, můžete provádět analýzy provozu skupin Nsg v některém z následujících oblastí: – Západ střední USA, Východ USA, Východ USA 2, – Sever střední USA, Jižní střední USA, střed USA, západní USA, západní USA 2, západní Evropa, Severní Evropa, západní Spojené království, Spojené království – Jih, Austrálie – východ a Austrálie – jihovýchod. Pracovní prostor log analytics musí existovat v rámci – Západ střední USA, Východ USA, západní Evropa, Austrálie – jihovýchod nebo Spojené království – jih oblasti.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="enable-network-watcher"></a>Povolit sledovací proces sítě 
 
-Analýza provozu, musíte mít existující sledovací proces sítě, nebo [povolit sledovací proces sítě Azure](network-watcher-create.md) v každé oblasti, ke které máte skupiny Nsg, které chcete analyzovat provoz pro. Analýza provozu se dá povolit pro skupiny Nsg hostovaná v některém z [podporované oblasti](#supported-regions).
+Analýza provozu, musíte mít existující sledovací proces sítě, nebo [povolit sledovací proces sítě](network-watcher-create.md) v každé oblasti, ke které máte skupiny Nsg, které chcete analyzovat provoz pro. Analýza provozu se dá povolit pro skupiny Nsg hostovaná v některém z [podporované oblasti](#supported-regions).
 
 ### <a name="re-register-the-network-resource-provider"></a>Opakujte registraci poskytovatele síťových prostředků 
 
@@ -76,7 +76,7 @@ Na levé straně na portálu Azure, vyberte **monitorování**, pak **sledovací
 
 ![Výběr skupiny Nsg, které vyžadují povolování NSG toku protokolu](media/traffic-analytics/selection-of-nsgs-that-require- enablement-of-nsg-flow-logging.png)
 
-Pokud se pokusíte povolit provoz Analytics pro skupinu NSG, který je hostován v libovolné oblasti jiné než [podporované oblasti](#supported-regions), obdržíte chybu "Nebyl nalezen". 
+Pokud se pokusíte povolit provoz analytics pro skupinu NSG, který je hostován v libovolné oblasti jiné než [podporované oblasti](#supported-regions), obdržíte chybu "Nebyl nalezen". 
 
 ## <a name="enable-flow-log-settings"></a>Povolte nastavení protokolu toku
 
@@ -107,7 +107,7 @@ Vyberte následující možnosti, jak je znázorněno na obrázku:
 4. Vyberte *na* pro **provozu Analytics stav**.
 5. Existujícímu pracovnímu prostoru analýzy protokolů (OMS) nebo vyberte **vytvořit nový pracovní prostor** vytvořit nový. Pracovní prostor analýzy protokolů je používán provoz Analytics k ukládání dat agregované a indexované, která se pak používá ke generování analytics. Pokud vyberete existujícímu pracovnímu prostoru, musí existovat v jednom z [podporované oblasti](#traffic-analytics-supported-regions) a které byly upgradované na nový dotazovací jazyk. Pokud nechcete, aby k existujícímu pracovnímu prostoru upgradu nebo nemají pracovního prostoru v podporované oblasti, vytvořte novou. Další informace o jazycích dotazů najdete v tématu [Azure Log Analytics upgradovat na nové hledání protokolu](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-    Pracovní prostor analýzy protokolů (OMS), hostování řešení analýzy provozu a skupin Nsg nemusí být ve stejné oblasti. Například může mít Analýza provozu v pracovním prostoru v oblasti západní Evropa, když máte skupin Nsg v Východ USA a západní USA. Více skupin Nsg se dá nakonfigurovat v ve stejném pracovním prostoru.
+    Pracovní prostor log analytics hostování řešení analýzy provozu a skupin Nsg nemusí být ve stejné oblasti. Například může mít Analýza provozu v pracovním prostoru v oblasti západní Evropa, když máte skupin Nsg v Východ USA a západní USA. Více skupin Nsg se dá nakonfigurovat v ve stejném pracovním prostoru.
 6. Vyberte **Uložit**.
 
     ![Výběr účtu úložiště, pracovní prostor analýzy protokolů a povolování Analýza provozu](media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)
@@ -276,4 +276,4 @@ Máte ve vašem prostředí škodlivý přenos? Kde je pocházející z? Kde je 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-Získejte odpovědi na časté otázky, najdete v tématu [nejčastější dotazy týkající se provozu Analytics](traffic-analytics-faq.md).
+Získejte odpovědi na časté otázky, najdete v tématu [provozu analytics – nejčastější dotazy](traffic-analytics-faq.md).

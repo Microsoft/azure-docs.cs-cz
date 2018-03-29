@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření služby Azure App Service environment pomocí šablony Resource Manageru"
-description: "Vysvětluje, jak vytvořit prostředí, externí nebo ILB Azure App Service pomocí šablony Resource Manageru"
+title: Vytvoření služby Azure App Service environment pomocí šablony Resource Manageru
+description: Vysvětluje, jak vytvořit prostředí, externí nebo ILB Azure App Service pomocí šablony Resource Manageru
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 015bf031aea6b79fcca0a416253e9aa47bb245b6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d85384620b2e4c7ba0de84e0fe82ef3e83376dd8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Vytvořit App Service Environment pomocí šablony Azure Resource Manager
 
@@ -40,7 +40,7 @@ K automatizovanému vytvoření vaší App Service Environment:
 
 2. Po vytvoření vaší App Service Environment ILB je nahrát certifikát SSL, který odpovídá vaší domény ILB App Service Environment.
 
-3. Nahrané certifikát SSL přiřazený k App Service Environment ILB jako certifikát SSL jeho "Výchozí".  Tento certifikát se používá pro přenosy protokolu SSL pro aplikace v App Service Environment ILB, když používají běžné kořenové domény, která je přiřazena k App Service Environment (například https://someapp.mycustomrootdomain.com).
+3. Nahrané certifikát SSL přiřazený k App Service Environment ILB jako certifikát SSL jeho "Výchozí".  Tento certifikát se používá pro přenosy protokolu SSL pro aplikace v App Service Environment ILB, když používají běžné kořenové domény, kterému je přiřazen App Service Environment (například https://someapp.mycustomrootdomain.com).
 
 
 ## <a name="create-the-ase"></a>Vytvořte App Service Environment
@@ -54,15 +54,17 @@ Pokud chcete, aby se App Service Environment ILB, použijte tyto šablony Resour
 
 Po *azuredeploy.parameters.json* souboru je vyplněno, vytvořte App Service Environment pomocí fragmentu kódu Powershellu. Změňte cesty k souborům tak, aby odpovídala umístění souboru šablony Resource Manager na váš počítač. Nezapomeňte zadat vlastní hodnoty pro název nasazení Resource Manager a název skupiny prostředků:
 
-    $templatePath="PATH\azuredeploy.json"
-    $parameterPath="PATH\azuredeploy.parameters.json"
+```powershell
+$templatePath="PATH\azuredeploy.json"
+$parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+```
 
 Trvá přibližně za hodinu App Service Environment, který se má vytvořit. Potom App Service Environment se zobrazí na portálu v seznamu ASEs pro odběr, který aktivoval nasazení.
 
 ## <a name="upload-and-configure-the-default-ssl-certificate"></a>Nahrání a konfigurace certifikátu protokolu SSL "Výchozí"
-Certifikát SSL musí být přidružen App Service Environment jako "Výchozí" certifikátu SSL, který se používá k navázání připojení SSL k aplikacím. Pokud je App Service Environment, výchozí příponu DNS *interní contoso.com*, vyžaduje certifikát SSL, který je platný pro připojení k https://some-random-app.internal-contoso.com **.internal contoso.com*. 
+Certifikát SSL musí být přidružen App Service Environment jako "Výchozí" certifikátu SSL, který se používá k navázání připojení SSL k aplikacím. Pokud je App Service Environment, výchozí příponu DNS *interní contoso.com*, připojení k https://some-random-app.internal-contoso.com vyžaduje certifikát SSL, který je platný pro **.internal contoso.com*. 
 
 Získejte platný certifikát SSL pomocí interní certifikačních autorit, nákupu certifikát z externího vystavitele, nebo certifikát podepsaný svým držitelem. Bez ohledu na zdroji certifikátu protokolu SSL musí být správně nakonfigurované následující atributy certifikátu:
 
@@ -82,17 +84,19 @@ Použijte následující fragment kódu prostředí PowerShell pro:
 
 Tento kód prostředí PowerShell pro kódování base64 byla přizpůsobena z [skriptů prostředí PowerShell blog][examplebase64encoding]:
 
-        $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```powershell
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-        $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-        $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-        $fileName = "exportedcert.pfx"
-        Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
 
-        $fileContentBytes = get-content -encoding byte $fileName
-        $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
-        $fileContentEncoded | set-content ($fileName + ".b64")
+$fileContentBytes = get-content -encoding byte $fileName
+$fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
+$fileContentEncoded | set-content ($fileName + ".b64")
+```
 
 Po certifikát SSL je úspěšně vygenerovat a převedeno na řetězec s kódováním base64, pomocí šablony Resource Manageru příklad [nakonfigurujte certifikát protokolu SSL výchozí] [ quickstartconfiguressl] na Githubu. 
 
@@ -107,37 +111,41 @@ Parametry v *azuredeploy.parameters.json* souboru jsou tady:
 
 Příklad zkrácené *azuredeploy.parameters.json* zobrazí se zde:
 
-    {
-         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
-         "contentVersion": "1.0.0.0",
-         "parameters": {
-              "appServiceEnvironmentName": {
-                   "value": "yourASENameHere"
-              },
-              "existingAseLocation": {
-                   "value": "East US 2"
-              },
-              "pfxBlobString": {
-                   "value": "MIIKcAIBAz...snip...snip...pkCAgfQ"
-              },
-              "password": {
-                   "value": "PASSWORDGOESHERE"
-              },
-              "certificateThumbprint": {
-                   "value": "AF3143EB61D43F6727842115BB7F17BBCECAECAE"
-              },
-              "certificateName": {
-                   "value": "DefaultCertificateFor_yourASENameHere_InternalLoadBalancingASE"
-              }
-         }
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appServiceEnvironmentName": {
+      "value": "yourASENameHere"
+    },
+    "existingAseLocation": {
+      "value": "East US 2"
+    },
+    "pfxBlobString": {
+      "value": "MIIKcAIBAz...snip...snip...pkCAgfQ"
+    },
+    "password": {
+      "value": "PASSWORDGOESHERE"
+    },
+    "certificateThumbprint": {
+      "value": "AF3143EB61D43F6727842115BB7F17BBCECAECAE"
+    },
+    "certificateName": {
+      "value": "DefaultCertificateFor_yourASENameHere_InternalLoadBalancingASE"
     }
+  }
+}
+```
 
 Po *azuredeploy.parameters.json* souboru je vyplněno, nakonfigurujte certifikát protokolu SSL výchozí pomocí fragmentu kódu Powershellu. Změňte cesty k souborům tak, aby odpovídaly, kde jsou umístěny soubory šablon Resource Manager na váš počítač. Nezapomeňte zadat vlastní hodnoty pro název nasazení Resource Manager a název skupiny prostředků:
 
-     $templatePath="PATH\azuredeploy.json"
-     $parameterPath="PATH\azuredeploy.parameters.json"
+```powershell
+$templatePath="PATH\azuredeploy.json"
+$parameterPath="PATH\azuredeploy.parameters.json"
 
-     New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+```
 
 Jak dlouho trvá přibližně 40 minutách na front-endu na použití změny App Service Environment. Například pro výchozí velikosti App Service Environment používající dva elementy end front, šablony trvá přibližně jednu hodinu a 20 minut. Když šablona je spuštěný, nelze škálovat App Service Environment.  
 

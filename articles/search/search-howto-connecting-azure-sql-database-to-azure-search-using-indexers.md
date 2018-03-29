@@ -1,24 +1,24 @@
 ---
-title: "Připojení databáze Azure SQL do Azure Search pomocí indexerů | Microsoft Docs"
-description: "Naučte se načítat data z databáze SQL Azure do indexu Azure Search pomocí indexerů."
+title: Připojení databáze Azure SQL do Azure Search pomocí indexerů | Microsoft Docs
+description: Naučte se načítat data z databáze SQL Azure do indexu Azure Search pomocí indexerů.
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
+editor: ''
 ms.assetid: e9bbf352-dfff-4872-9b17-b1351aae519f
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 08/12/2018
+ms.date: 03/26/2018
 ms.author: eugenesh
-ms.openlocfilehash: 5f85b81e894cba7354fb146d6e9a1aa987be7dc5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a5198cc6e3b019fc6fd241f22c4da088f0839066
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Připojení k Azure Search pomocí indexerů Azure SQL Database
 

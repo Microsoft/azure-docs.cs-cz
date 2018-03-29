@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 03/23/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 22fdb448dda1c824ae5e1fee6f9b2e7377680d6b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2b42840bc1053e9574e7c8ab1c68611c3b2bc7df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Vytvořit pravidla založená na atributu pro dynamické členství ve skupině v Azure Active Directory
 V Azure Active Directory (Azure AD) můžete vytvořit rozšířených pravidel povolit komplexní založená na atributu dynamické členství skupiny. Tento článek podrobně atributy a syntaxe k vytvoření pravidla dynamické členství pro uživatele nebo zařízení.
@@ -74,7 +74,7 @@ Následují příklady správně strukturovaný pokročilé pravidla:
 Celková délka textu rozšířeného pravidla nesmí překročit hodnotu 2048 znaků.
 
 > [!NOTE]
-> Operace řetězec a regex se nerozlišují malá a velká písmena. Můžete také provést kontroly Null pomocí *null* jako konstanta, například user.department - eq *null*.
+> Operace řetězec a regex se nerozlišují malá a velká písmena. Můžete také provést kontroly hodnoty null, pomocí *null* jako konstanta, například user.department - eq *$null*.
 > Řetězce obsahující uvozovky "by měly být ukončeny pomocí, například znak user.department - eq \`"Prodej".
 
 ## <a name="supported-expression-rule-operators"></a>Podporované výraz pravidlo operátory
@@ -160,32 +160,32 @@ Povolené operátory
 
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
-| city |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.city - eq "value") |
-| Země |Žádné hodnota typu řetězec nebo *hodnotu null.* |(User.Country. - eq "value") |
-| companyName | Žádné hodnota typu řetězec nebo *hodnotu null.* | (user.companyName -eq "value") |
-| Oddělení |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.department -eq "value") |
+| city |Žádné hodnota typu řetězec nebo *$null* |(user.city - eq "value") |
+| Země |Žádné hodnota typu řetězec nebo *$null* |(User.Country. - eq "value") |
+| companyName | Žádné hodnota typu řetězec nebo *$null* | (user.companyName -eq "value") |
+| Oddělení |Žádné hodnota typu řetězec nebo *$null* |(user.department -eq "value") |
 | displayName |Libovolnou hodnotu řetězce |(user.displayName -eq "value") |
-| číslo zaměstnance |Libovolnou hodnotu řetězce |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
-| facsimileTelephoneNumber |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.facsimileTelephoneNumber -eq "value") |
-| givenName |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.givenName -eq "value") |
-| pracovní funkce |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.jobTitle -eq "value") |
-| mail |Žádné hodnota typu řetězec nebo *null* (adresa SMTP uživatele) |(user.mail - eq "value") |
+| číslo zaměstnance |Libovolnou hodnotu řetězce |(user.employeeId - eq "value")<br>(user.employeeId - ne *$null*) |
+| facsimileTelephoneNumber |Žádné hodnota typu řetězec nebo *$null* |(user.facsimileTelephoneNumber -eq "value") |
+| givenName |Žádné hodnota typu řetězec nebo *$null* |(user.givenName -eq "value") |
+| pracovní funkce |Žádné hodnota typu řetězec nebo *$null* |(user.jobTitle -eq "value") |
+| mail |Žádné hodnota typu řetězec nebo *$null* (adresa SMTP uživatele) |(user.mail - eq "value") |
 | mailNickName |Libovolnou hodnotu řetězce (e-mailu alias uživatele) |(user.mailNickName -eq "value") |
-| mobilní |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.mobile - eq "value") |
+| mobilní |Žádné hodnota typu řetězec nebo *$null* |(user.mobile - eq "value") |
 | objectId |GUID objektu uživatele |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Místní identifikátor zabezpečení (SID) pro uživatele, kteří se synchronizovaly z místní do cloudu. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Žádný DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.physicalDeliveryOfficeName - eq "value") |
-| PSČ |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.postalCode - eq "value") |
+| physicalDeliveryOfficeName |Žádné hodnota typu řetězec nebo *$null* |(user.physicalDeliveryOfficeName - eq "value") |
+| PSČ |Žádné hodnota typu řetězec nebo *$null* |(user.postalCode - eq "value") |
 | preferredLanguage |Kód ISO 639-1 |(user.preferredLanguage -eq "en-US") |
-| sipProxyAddress |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.sipProxyAddress -eq "value") |
-| state |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.state - eq "value") |
-| StreetAddress |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.streetAddress - eq "value") |
-| surname |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.surname -eq "value") |
-| telephoneNumber |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.telephoneNumber - eq "value") |
+| sipProxyAddress |Žádné hodnota typu řetězec nebo *$null* |(user.sipProxyAddress -eq "value") |
+| state |Žádné hodnota typu řetězec nebo *$null* |(user.state - eq "value") |
+| StreetAddress |Žádné hodnota typu řetězec nebo *$null* |(user.streetAddress - eq "value") |
+| surname |Žádné hodnota typu řetězec nebo *$null* |(user.surname -eq "value") |
+| telephoneNumber |Žádné hodnota typu řetězec nebo *$null* |(user.telephoneNumber - eq "value") |
 | usageLocation |Dva písmeny směrové číslo země |(user.usageLocation - eq "US") |
 | userPrincipalName |Libovolnou hodnotu řetězce |(user.userPrincipalName -eq "alias@domain") |
-| userType |člen hosta *hodnotu null.* |(user.userType - eq "Člen") |
+| userType |člen hosta *$null* |(user.userType - eq "Člen") |
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti typu řetězec kolekce
 Povolené operátory
@@ -226,11 +226,11 @@ Následující výraz vybere všechny uživatele, kteří mají plán žádné s
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-## <a name="use-of-null-values"></a>Použití hodnoty Null
+## <a name="use-of-null-values"></a>Použití hodnoty null
 
 Chcete-li zadat hodnotu null v pravidle, můžete použít *null* hodnotu. Dejte pozor, abyste použít uvozovky, do kterých slovo *null* – v takovém případě bude interpretovat jako hodnotu řetězcového literálu. Správný způsob, jak odkazovat na hodnotu null je následující:
 ```
-   user.mail –ne null
+   user.mail –ne $null
 ```
 
 ## <a name="extension-attributes-and-custom-attributes"></a>Atributy rozšíření a vlastní atributy

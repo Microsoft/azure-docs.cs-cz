@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis Cache – nejčastější dotazy | Microsoft Docs"
-description: "Další odpovědi na časté otázky, vzory a osvědčené postupy pro Azure Redis Cache"
+title: Azure Redis Cache – nejčastější dotazy | Microsoft Docs
+description: Další odpovědi na časté otázky, vzory a osvědčené postupy pro Azure Redis Cache
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 82c01419d65e00ddf27dfeb8fd444d5d3d81803c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 66340e690e5a6ac3e440b8b4d26e1a8b2abab266
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-redis-cache-faq"></a>Nejčastější dotazy k Azure Redis Cache
 Další odpovědi na časté otázky, vzorce a osvědčené postupy pro Azure Redis Cache.
@@ -89,7 +89,7 @@ Existuje několik způsobů, které můžete začít používat s Azure Redis Ca
 
 * Můžete zkontrolovat jednou z našich kurzů k dispozici pro [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md), a [Python](cache-python-get-started.md).
 * Můžete sledovat [postup vytvoření vysoce výkonné aplikace pomocí Microsoft Azure Redis Cache](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
-* Můžete zkontrolovat na dokumentaci klienta pro klienty, kteří s jazykem vývoj projektu pro naleznete v části Použití Redis. Existuje mnoho klientů Redis, které lze použít s Azure Redis Cache. Seznam klientů Redis, naleznete v části [http://redis.io/clients](http://redis.io/clients).
+* Můžete zkontrolovat na dokumentaci klienta pro klienty, kteří s jazykem vývoj projektu pro naleznete v části Použití Redis. Existuje mnoho klientů Redis, které lze použít s Azure Redis Cache. Seznam klientů Redis, naleznete v části [ http://redis.io/clients ](http://redis.io/clients).
 
 Pokud účet Azure nemáte, můžete:
 
@@ -111,7 +111,7 @@ Níže jsou faktory pro výběr nabídku mezipaměti.
 * **Redis Cluster**: Chcete-li vytvořit ukládá do mezipaměti větší než 53 GB nebo sdílení dat mezi různými uzly Redis, můžete použít Redis clustering, která je dostupná v úrovni Premium. Každý uzel se skládá z dvojice primární/replika mezipaměti pro vysokou dostupnost. Další informace najdete v článku [Postup konfigurace clusterů pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-clustering.md).
 * **Rozšířené zabezpečení a sítě izolace**: nasazení virtuální sítě Azure (VNET) poskytuje lepší zabezpečení a izolaci pro vaši Azure Redis Cache, stejně jako podsítě, zásady řízení přístupu a další funkce k dalšímu omezení přístupu. Další informace najdete v článku [Postup konfigurace podpory služby Virtual Network pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-vnet.md).
 * **Konfigurace Redis**: na úrovních Standard a Premium, můžete nakonfigurovat pro oznámení Keyspace Redis.
-* **Maximální počet připojení klienta**: Premium úroveň nabízí maximální počet klientů, které se můžou připojit k Redis, s vyšší počet připojení pro větší velikosti mezipaměti. Další informace najdete v tématu [cenách Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/).
+* **Maximální počet připojení klienta**: Premium úroveň nabízí maximální počet klientů, které se můžou připojit k Redis, s vyšší počet připojení pro větší velikosti mezipaměti. Clustering nezvyšuje počet připojení, které jsou k dispozici pro Clusterované mezipaměti. Další informace najdete v tématu [cenách Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/).
 * **Vyhrazené jádra serveru Redis**: V úrovni Premium všech velikostí mezipaměti mají vyhrazené jádra pro Redis. Na úrovních Basic nebo Standard, velikost C1 a vyšší máte vyhrazený jádro serveru Redis.
 * **Redis je jedním podprocesem** tak s více než dvě jádra neposkytuje Další výhodou oproti má jenom dvě jádra, ale větší velikosti virtuálních počítačů obvykle mají větší šířku pásma než menší velikost. Pokud mezipaměti serveru nebo klienta dosáhne omezení šířky pásma, obdržíte vypršení časových limitů na straně klienta.
 * **Vylepšení výkonu**: mezipaměti v úrovni Premium jsou nasazeny na hardware, který má rychlejších procesorů, která poskytuje lepší výkon ve srovnání s úroveň Basic nebo Standard. Premium úroveň mezipaměti mají vyšší propustnost a nižší latenci.

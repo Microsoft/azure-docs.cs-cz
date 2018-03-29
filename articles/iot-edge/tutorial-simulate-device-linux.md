@@ -1,8 +1,8 @@
 ---
-title: "Simulovat Azure IoT Edge v systému Linux | Microsoft Docs"
-description: "Instalace modulu runtime Azure IoT Edge v simulovaném zařízení v systému Linux a nasazení první modul"
+title: Simulovat Azure IoT Edge v systému Linux | Microsoft Docs
+description: Instalace modulu runtime Azure IoT Edge v simulovaném zařízení v systému Linux a nasazení první modul
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 55770c92f5d5959e83066b425bc6ccf2b9dcc62e
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 65a3f6d71c0c0d92f703a5d48760dd348c726ba4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux-or-macos---preview"></a>Nasazení Azure IoT Edge v simulovaném zařízení v systému Linux nebo systému MacOS – náhled
 
@@ -31,13 +31,18 @@ V tomto kurzu se naučíte:
 
 Simulovaná zařízení, které vytvoříte v tomto kurzu je monitorování, které generuje teploty a vlhkosti a přetížení data. Ostatní kurzy Azure IoT Edge stavět na práci, kterou se zde provádí nasazení moduly, které analyzovat data podnikových statistik. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz používá svůj počítač nebo virtuální počítač jako zařízení s Internet věcí. Chcete-li váš počítač do IoT hraniční zařízení, jsou požadované následující služby:
 
 * Python pip nainstalovat modul runtime IoT okraj.
    * Linux: `sudo apt-get install python-pip`.
-   * Systému MacOS: `sudo easy_install pip`.
+     * _Všimněte si, že se na některých distribuce (například Raspbian), budete pravděpodobně potřebovat určité pip balíčky s upgradem a nainstalovat další závislosti:_
+     ```
+     sudo pip install --upgrade setuptools pip
+     sudo apt-get install python2.7-dev libffi-dev libssl-dev
+     ```
+   * MacOS: `sudo easy_install pip`.
 * Docker spouštět hraniční IoT moduly
    * [Instalace Docker pro Linux] [ lnk-docker-ubuntu] a ujistěte se, zda je spuštěna. 
    * [Nainstalovat pro systém Mac Docker] [ lnk-docker-mac] a ujistěte se, zda je spuštěna. 
@@ -70,7 +75,7 @@ sudo pip install -U azure-iot-edge-runtime-ctl
 
 Konfigurace modulu runtime připojovacím řetězcem IoT hraniční zařízení z předchozí části:
 ```cmd
-sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+sudo iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 Spusťte modul runtime:

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 94151008f0aba6020786e65c60cec66285f310c4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fdb8009e3dbca1037cae61ec8627f73190a8263d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Monitorovat a aktualizovat virtuální počítač s Windows v prostředí Azure PowerShell
 
@@ -38,15 +38,15 @@ V tomto kurzu se naučíte:
 > * Správa aktualizací Windows
 > * Nastavení pokročilého monitorování
 
-Tento kurz vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Tento kurz vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač. V případě potřeby si ho můžete nechat vytvořit pomocí tohoto [ukázkového skriptu](../scripts/virtual-machines-windows-powershell-sample-create-vm.md). Při práci se prostřednictvím tohoto kurzu je nahradit skupinu prostředků, název virtuálního počítače a umístění tam, kde je potřeba.
 
 ## <a name="view-boot-diagnostics"></a>Zobrazení diagnostiky spouštění
 
-Jak spustit virtuální počítače s Windows, zaznamená agenta pro diagnostiku spouštěcí obrazovky výstupu, který lze použít pro účely odstraňování potíží. Tato funkce je ve výchozím nastavení povolené. Snímky obrazovky zaznamenané jsou uložené v účtu úložiště Azure, který se také vytvoří ve výchozím nastavení. 
+Jak spustit virtuální počítače s Windows, zaznamená agenta pro diagnostiku spouštěcí obrazovky výstupu, který lze použít pro účely odstraňování potíží. Tato funkce je ve výchozím nastavení povolené. Snímky obrazovky zaznamenané jsou uložené v účtu úložiště Azure, který se také vytvoří ve výchozím nastavení.
 
-Můžete získat spouštění diagnostiky dat pomocí [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmbootdiagnosticsdata) příkaz. V následujícím příkladu se Diagnostika spouštění stáhnou do kořenového adresáře * c:\* jednotky. 
+Můžete získat spouštění diagnostiky dat pomocí [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmbootdiagnosticsdata) příkaz. V následujícím příkladu se Diagnostika spouštění stáhnou do kořenového adresáře * c:\* jednotky.
 
 ```powershell
 Get-AzureRmVMBootDiagnosticsData -ResourceGroupName myResourceGroup -Name myVM -Windows -LocalPath "c:\"
@@ -88,10 +88,10 @@ Následující příklad vytvoří výstrahu týkající se průměrného využi
 
 1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroup** a potom v seznamu prostředků vyberte **myVM**.
 2. Klikněte na tlačítko **Pravidla výstrah** v okně virtuálního počítače a potom na **Přidat upozornění metriky** v horní části okna výstrahy.
-4. Zadejte **Název** výstrahy, například *mojePravidloVystrahy*.
-5. Pokud chcete spustit výstrahu, pokud procento využití procesoru překročí hodnotu 1,0 po dobu pěti minut, ponechte výchozí výběr všech ostatních nastavení.
-6. Volitelně můžete zaškrtnutím políčka *Vlastníci, přispěvatelé a čtenáři e-mailů* odesílat oznámení e-mailem. Výchozí akce je zobrazení oznámení na portálu.
-7. Klikněte na tlačítko **OK**.
+3. Zadejte **Název** výstrahy, například *mojePravidloVystrahy*.
+4. Pokud chcete spustit výstrahu, pokud procento využití procesoru překročí hodnotu 1,0 po dobu pěti minut, ponechte výchozí výběr všech ostatních nastavení.
+5. Volitelně můžete zaškrtnutím políčka *Vlastníci, přispěvatelé a čtenáři e-mailů* odesílat oznámení e-mailem. Výchozí akce je zobrazení oznámení na portálu.
+6. Klikněte na tlačítko **OK**.
 
 ## <a name="manage-windows-updates"></a>Správa aktualizací Windows
 
@@ -103,44 +103,44 @@ Informace o cenách najdete na stránce s [cenami služby Automation za správu 
 ### <a name="enable-update-management"></a>Povolení řešení Update Management
 
 Povolení správy aktualizací pro virtuální počítač:
- 
+
 1. Na levé straně obrazovky vyberte **Virtuální počítače**.
 2. V seznamu vyberte virtuální počítač.
 3. Na obrazovce virtuálního počítače v části **Operace** klikněte na **Update Management**. Otevře se obrazovka **Povolit řešení Update Management**.
 
-Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management. Toto ověření zahrnuje kontroly pracovního prostoru Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení nachází v tomto pracovním prostoru.
+Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management.
+Toto ověření zahrnuje kontroly pracovního prostoru Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení nachází v tomto pracovním prostoru.
 
-Pracovní prostor Log Analytics slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Update Management. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě. Pokud chcete na virtuálních počítačích, které vyžadují aktualizace, provádět další akce, umožňuje Azure Automation spouštět ve virtuálních počítačích skripty, například ke stažení a použití aktualizací.
+Pracovní prostor [Log Analytics](../../log-analytics/log-analytics-overview.md) slouží ke shromažďování dat generovaných funkcemi a službami, jako je řešení Update Management.
+Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
+Pokud na virtuálních počítačích, které vyžadují aktualizace, chcete provádět další akce, Azure Automation umožňuje spouštět proti virtuálním počítačům runbooky například pro stahování a aplikování aktualizací.
 
-Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agentem Microsoft Monitoring Agent (MMA) a procesem hybrid worker. Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru. 
+Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agentem Microsoft Monitoring Agent (MMA) a hybridním pracovním procesem runbooku Automation.
+Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru.
 
-Pokud se nesplní tyto požadavky, zobrazí se banner nabízející možnost povolit dané řešení.
+Zvolte pracovní prostor Log Analytics a účet Automation a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
 
-![Banner konfigurace připojení k řešení Update Management](./media/tutorial-monitoring/manageupdates-onboard-solution-banner.png)
-
-Kliknutím na banner řešení povolte. Pokud po ověření chyběla některá z následujících požadovaných součástí, automaticky se přidá:
+Pokud během připojování chyběla některá z následujících požadovaných součástí, automaticky se přidá:
 
 * Pracovní prostor [Log Analytics](../../log-analytics/log-analytics-overview.md)
 * [Automation](../../automation/automation-offering-get-started.md)
 * Povolený [hybridní pracovní proces runbooku](../../automation/automation-hybrid-runbook-worker.md) na virtuálním počítači
 
-Otevře se obrazovka **Povolit řešení Update Management**. Nakonfigurujte nastavení a klikněte na tlačítko **Povolit**.
+Otevře se obrazovka řešení **Update Management**. Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
 
 ![Povolení řešení Update Management](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
-Povolení řešení může trvat až 15 minut a během této doby byste neměli zavírat okno prohlížeče. Po povolení řešení začnou do Log Analytics proudit informace o chybějících aktualizacích na virtuálních počítačích.
-Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
+Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče. Po povolení řešení začnou do Log Analytics proudit informace o chybějících aktualizacích na virtuálních počítačích. Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 ### <a name="view-update-assessment"></a>Zobrazení posouzení aktualizací
 
-Po povolení **správy aktualizací** se zobrazí obrazovka **Správa aktualizací**. Na kartě **Chybějící aktualizace** můžete zobrazit seznam chybějících aktualizací.
+Po povolení **správy aktualizací** se zobrazí obrazovka **Správa aktualizací**. Po dokončení vyhodnocení aktualizace uvidíte seznam chybějících aktualizací na **chybějící aktualizace** kartě.
 
  ![Zobrazení stavu aktualizace](./media/tutorial-monitoring/manageupdates-view-status-win.png)
 
 ### <a name="schedule-an-update-deployment"></a>Naplánování nasazení aktualizace
 
-Pokud chcete nainstalovat aktualizace, naplánujte nasazení odpovídající vašemu plánu vydávání a časovému intervalu pro správu a údržbu.
-Můžete zvolit typy aktualizací, které budou součástí nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
+Pokud chcete nainstalovat aktualizace, naplánujte nasazení odpovídající vašemu plánu vydávání a časovému intervalu pro správu a údržbu. Můžete zvolit typy aktualizací, které budou součástí nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
 
 Naplánujte nové nasazení aktualizací pro virtuální počítač kliknutím na **Naplánovat nasazení aktualizace** v horní části obrazovky **Update Management**. Na obrazovce **Nové nasazení aktualizací** zadejte následující informace :
 
@@ -175,7 +175,7 @@ Pokud je nasazení aktuálně spuštěno, jeho stav je **Probíhající**. Po ú
 Pokud u jedné nebo více aktualizací v nasazení dojde k chybě, stav je **Částečné selhání**.
 Kliknutím na dokončené nasazení aktualizací zobrazíte řídicí panel pro toto nasazení aktualizací.
 
-   ![Řídicí panel stavu nasazování aktualizací pro konkrétní nasazení](./media/tutorial-monitoring/manageupdates-view-results.png)
+![Řídicí panel stavu nasazování aktualizací pro konkrétní nasazení](./media/tutorial-monitoring/manageupdates-view-results.png)
 
 Na dlaždici **Výsledky aktualizací** je souhrn celkového počtu aktualizací a výsledků nasazení na virtuálním počítači.
 V tabulce vpravo je podrobný rozpis všech aktualizací a výsledků instalace, které můžou mít jednu z následujících hodnot:
@@ -190,15 +190,60 @@ Kliknutím na dlaždici **Výstup** zobrazíte datový proud úlohy runbooku zod
 
 Kliknutím na **Chyby** zobrazíte podrobné informace o případných chybách nasazení.
 
-## <a name="advanced-monitoring"></a>Pokročilé sledování 
+## <a name="monitor-changes-and-inventory"></a>Sledování změn a inventáře
 
-Pomocí sady [Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) můžete provést rozšířené monitorování virtuálního počítače. Pokud jste to již neudělali, můžete si zaregistrovat [bezplatnou zkušební verzi](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-trial) sady Operations Management Suite.
+Můžete shromažďovat a zobrazovat inventář softwaru, souborů, linuxových procesů démon, služeb systému Windows a klíčů registru Windows na vašich počítačích. Sledování konfigurací vašich počítačů vám může pomoci přesně identifikovat provozní problémy napříč prostředím a lépe porozumět stavu vašich počítačů.
 
-Až budete mít přístup k portálu OMS, najdete klíč a identifikátor pracovního prostoru v okně Nastavení. Použití [Set-AzureRmVMExtension](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmextension) příkaz pro přidání rozšíření OMS k virtuálnímu počítači. Aktualizace hodnoty proměnné v níže ukázka tak, aby odrážela jste klíč pracovního prostoru OMS a prostoru ID.  
+### <a name="enable-change-and-inventory-management"></a>Správu povolit změn a inventáře
+
+Povolit změnu a inventáře správy pro virtuální počítač:
+
+1. Na levé straně obrazovky vyberte **Virtuální počítače**.
+2. V seznamu vyberte virtuální počítač.
+3. Na obrazovce virtuálních počítačů v **operace** klikněte na tlačítko **inventáře** nebo **sledování změn**. **Povolit sledování změn a inventáře** obrazovky otevře.
+
+Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation. Eventhough řešení jsou oddělené v nabídce, jsou stejné řešení. Povolení jeden umožňuje pro virtuální počítač.
+
+![Povolit změnu a sledování inventáře](./media/tutorial-monitoring/manage-inventory-enable.png)
+
+Po řešení může trvat nějakou dobu inventáře jsou shromažďována ve virtuálním počítači, než se data zobrazí.
+
+### <a name="track-changes"></a>Sledovat změny
+
+Na váš počítač vyberte **sledování změn** pod **operace**. Klikněte na tlačítko **upravit nastavení**, **sledování změn** zobrazí se stránka. Vyberte typ nastavení, které chcete sledovat a pak klikněte na tlačítko **+ přidat** ke konfiguraci nastavení. Jsou k dispozici možnosti pro Windows:
+
+* Registru systému Windows
+* Soubory systému Windows
+
+Podrobné informace o sledování změn naleznete v tématu [řešení změny na virtuálním počítači](../../automation/automation-tutorial-troubleshoot-changes.md)
+
+### <a name="view-inventory"></a>Zobrazení inventáře
+
+Na váš počítač vyberte **inventáře** pod **operace**. Na kartě **Software** je tabulkový seznam nalezeného softwaru. V tabulce jsou zobrazené základní podrobnosti o jednotlivých záznamech softwaru. Tyto informace zahrnují softwaru název, verze, vydavatel, čas posledního aktualizovat.
+
+![Zobrazení inventáře](./media/tutorial-monitoring/inventory-view-results.png)
+
+### <a name="monitor-activity-logs-and-changes"></a>Sledování protokolů aktivit a změn
+
+Na stránce **Change Tracking** na vašem virtuálním počítači vyberte **Správa připojení protokolu aktivit**. Tato úloha otevře stránku **Protokol aktivit Azure**. Vyberte **Připojit** a propojte řešení Change Tracking s protokolem aktivit Azure pro váš virtuální počítač.
+
+Když je toto nastavení povolené, přejděte na stránku **Přehled** vašeho virtuálního počítače a výběrem **Zastavit** virtuální počítač zastavte. Po zobrazení výzvy vyberte **Ano** a zastavte virtuální počítač. Až bude přidělení vašeho virtuálního počítače zrušeno, vyberte **Spustit** a restartujte ho.
+
+Zastavení a spuštění virtuálního počítače zapíše tuto událost do jeho protokolu aktivit Vraťte se na stránku **Change Tracking**. Vyberte **Události** v dolní části stránky. Po chvíli se události zobrazí v grafu a tabulce. Chcete-li zobrazit podrobné informace o události lze vybrat všechny události.
+
+![Zobrazení změn v protokolu aktivit](./media/tutorial-monitoring/manage-activitylog-view-results.png)
+
+Tento graf ukazuje změny, ke kterým došlo v průběhu času. Po přidání připojení protokolu aktivit zobrazuje čára grafu úplně nahoře události protokolu aktivit Azure. Jednotlivé řádky grafu reprezentují různé typy sledovatelných změn. Tyto typy jsou linuxové procesy démon, soubory, klíče registru systému Windows, software a služby pro Windows. Karta Změny zobrazuje podrobnosti o změnách znázorněných ve vizualizaci v sestupném pořadí podle času, kdy ke změně došlo (nejnovější je první).
+
+## <a name="advanced-monitoring"></a>Pokročilé sledování
+
+Můžete to udělat pokročilejší monitorování vašeho virtuálního počítače pomocí řešení, jako jsou Správa aktualizací a změn a inventáře, které poskytuje Azure Automation. [Služby Operations Management Suite](../../automation/automation-intro.md).
+
+Až budete mít přístup k pracovnímu prostoru analýzy protokolů, můžete najít klíč pracovního prostoru a identifikátor prostoru na výběrem **upřesňující nastavení** pod **nastavení**. Použití [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) příkaz pro přidání rozšíření Microsoft Monitoring agent do virtuálního počítače. Aktualizace hodnoty proměnné v níže ukázka tak, aby odrážela jste klíč pracovního prostoru analýzy protokolů a prostoru ID.
 
 ```powershell
-$omsId = "<Replace with your OMS Id>"
-$omsKey = "<Replace with your OMS key>"
+$workspaceId = "<Replace with your workspace Id>"
+$key = "<Replace with your primary key>"
 
 Set-AzureRmVMExtension -ResourceGroupName myResourceGroup `
   -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
@@ -206,21 +251,22 @@ Set-AzureRmVMExtension -ResourceGroupName myResourceGroup `
   -Publisher "Microsoft.EnterpriseCloud.Monitoring" `
   -ExtensionType "MicrosoftMonitoringAgent" `
   -TypeHandlerVersion 1.0 `
-  -Settings @{"workspaceId" = $omsId} `
-  -ProtectedSettings @{"workspaceKey" = $omsKey} `
+  -Settings @{"workspaceId" = $workspaceId} `
+  -ProtectedSettings @{"workspaceKey" = $key} `
   -Location eastus
 ```
 
-Po několika minutách měli byste vidět nový virtuální počítač v pracovním prostoru OMS. 
+Po několika minutách měli byste vidět nový virtuální počítač v pracovním prostoru Anaytics protokolu.
 
 ![Okno OMS](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>Další postup
+
 V tomto kurzu jste nakonfigurovali a zkontrolovat virtuálních počítačů pomocí Azure Security Center. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě
-> * Vytvoření skupiny prostředků a virtuálních počítačů 
+> * Vytvoření skupiny prostředků a virtuálních počítačů
 > * Povolení diagnostiky spouštění ve virtuálním počítači
 > * Zobrazení diagnostiky spouštění
 > * Zobrazení metrik hostitele

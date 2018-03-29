@@ -1,11 +1,11 @@
 ---
-title: "Požadovaného stavu konfigurace rozšíření pomocí šablon Azure Resource Manager | Microsoft Docs"
-description: "Další informace o definici šablony Resource Manageru pro rozšíření konfigurace požadovaného stavu (DSC) v Azure."
+title: Požadovaného stavu konfigurace rozšíření pomocí šablon Azure Resource Manager | Microsoft Docs
+description: Další informace o definici šablony Resource Manageru pro rozšíření konfigurace požadovaného stavu (DSC) v Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mgreenegit
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
@@ -14,99 +14,121 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 02/02/2018
+ms.date: 03/22/2018
 ms.author: migreene
-ms.openlocfilehash: 0f1c53c9eafcd96e49232b75d46ef34537a1160f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ea259fc316827872cb1df8bcec385dddf8d2a461
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Požadovaný stav konfigurace rozšíření s šablon Azure Resource Manageru
 
-Tento článek popisuje šablony Azure Resource Manageru pro [obslužná rutina rozšíření konfigurace požadovaného stavu (DSC)](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Tento článek popisuje šablony Azure Resource Manageru pro [obslužná rutina rozšíření konfigurace požadovaného stavu (DSC)](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!NOTE]
 > Může dojít k příklady mírně odlišné schématu. Ve verzi z října 2016 došlo ke změně ve schématu. Podrobnosti najdete v tématu [aktualizace z předchozí formátu](#update-from-the-previous-format).
 
 ## <a name="template-example-for-a-windows-vm"></a>Příklad šablony pro virtuální počítač s Windows
 
-Následující fragment kódu je třeba do **prostředků** část šablony. Rozšíření DSC dědí vlastnosti rozšíření výchozí. Další informace najdete v tématu [VirtualMachineExtension třída](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.).
+Následující fragment kódu je třeba do **prostředků** část šablony.
+Rozšíření DSC dědí vlastnosti rozšíření výchozí.
+Další informace najdete v tématu [VirtualMachineExtension třída](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.).
 
 ```json
-            "name": "Microsoft.Powershell.DSC",
-            "type": "extensions",
-             "location": "[resourceGroup().location]",
-             "apiVersion": "2015-06-15",
-             "dependsOn": [
-                  "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-              ],
-              "properties": {
-                  "publisher": "Microsoft.Powershell",
-                  "type": "DSC",
-                  "typeHandlerVersion": "2.72",
-                  "autoUpgradeMinorVersion": true,
-                  "forceUpdateTag": "[parameters('dscExtensionUpdateTagVersion')]",
-                  "settings": {
-                    "configurationArguments": {
-                        {
-                            "Name": "RegistrationKey",
-                            "Value": {
-                                "UserName": "PLACEHOLDER_DONOTUSE",
-                                "Password": "PrivateSettingsRef:registrationKeyPrivate"
-                            },
+{
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
+    "apiVersion": "2017-12-01",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
+    ],
+    "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.75",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+            "protectedSettings": {
+            "Items": {
+                        "registrationKeyPrivate": "registrationKey"
+            }
+            },
+            "publicSettings": {
+                "configurationArguments": [
+                    {
+                        "Name": "RegistrationKey",
+                        "Value": {
+                            "UserName": "PLACEHOLDER_DONOTUSE",
+                            "Password": "PrivateSettingsRef:registrationKeyPrivate"
                         },
-                        "RegistrationUrl" : "[parameters('registrationUrl1')]",
-                        "NodeConfigurationName" : "nodeConfigurationNameValue1"
-                        }
-                        },
-                        "protectedSettings": {
-                            "Items": {
-                                        "registrationKeyPrivate": "[parameters('registrationKey1']"
-                                    }
-                        }
+                    },
+                    {
+                        "RegistrationUrl" : "registrationUrl",
+                    },
+                    {
+                        "NodeConfigurationName" : "nodeConfigurationName"
                     }
+                ]
+            }
+        },
+    }
+}
 ```
 
 ## <a name="template-example-for-windows-virtual-machine-scale-sets"></a>Nastaví příkladu šablony pro škálování virtuálních počítačů Windows
 
-Má uzel sady škálování virtuálního počítače **vlastnosti** oddíl, který má **VirtualMachineProfile extensionProfile** atribut. V části **rozšíření**, přidejte DSC.
+Má uzel sady škálování virtuálního počítače **vlastnosti** oddíl, který má **VirtualMachineProfile extensionProfile** atribut.
+V části **rozšíření**, přidat podrobnosti pro rozšíření DSC.
 
-Rozšíření DSC dědí vlastnosti rozšíření výchozí. Další informace najdete v tématu [VirtualMachineScaleSetExtension třída](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet).
+Rozšíření DSC dědí vlastnosti rozšíření výchozí.
+Další informace najdete v tématu [VirtualMachineScaleSetExtension třída](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet).
 
 ```json
 "extensionProfile": {
-            "extensions": [
-                {
-                    "name": "Microsoft.Powershell.DSC",
-                    "properties": {
-                        "publisher": "Microsoft.Powershell",
-                        "type": "DSC",
-                        "typeHandlerVersion": "2.72",
-                        "autoUpgradeMinorVersion": true,
-                        "forceUpdateTag": "[parameters('DscExtensionUpdateTagVersion')]",
-                        "settings": {
-                            "configurationArguments": {
-                                {
-                                    "Name": "RegistrationKey",
-                                    "Value": {
-                                        "UserName": "PLACEHOLDER_DONOTUSE",
-                                        "Password": "PrivateSettingsRef:registrationKeyPrivate"
-                                    },
-                                },
-                                "RegistrationUrl" : "[parameters('registrationUrl1')]",
-                                "NodeConfigurationName" : "nodeConfigurationNameValue1"
-                        }
-                        },
-                        "protectedSettings": {
-                            "Items": {
-                                        "registrationKeyPrivate": "[parameters('registrationKey1']"
-                                    }
-                        }
+    "extensions": [
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
+            "apiVersion": "2017-12-01",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Powershell",
+                "type": "DSC",
+                "typeHandlerVersion": "2.75",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "protectedSettings": {
+                    "Items": {
+                                "registrationKeyPrivate": "registrationKey"
                     }
-                ]
+                    },
+                    "publicSettings": {
+                        "configurationArguments": [
+                            {
+                                "Name": "RegistrationKey",
+                                "Value": {
+                                    "UserName": "PLACEHOLDER_DONOTUSE",
+                                    "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                                },
+                            },
+                            {
+                                "RegistrationUrl" : "registrationUrl",
+                            },
+                            {
+                                "NodeConfigurationName" : "nodeConfigurationName"
+                            }
+                        ]
+                    }
+                },
             }
         }
+    ]
+}
 ```
 
 ## <a name="detailed-settings-information"></a>Informace o podrobné nastavení
@@ -175,7 +197,8 @@ Seznam argumentů, které jsou k dispozici pro výchozí konfigurační skript n
 
 ## <a name="default-configuration-script"></a>Výchozí konfigurační skript
 
-Další informace o těchto hodnot najdete v tématu [základní nastavení správce místní konfigurace](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#basic-settings). Skript DSC rozšíření výchozí konfigurace můžete použít ke konfiguraci pouze LCM vlastnosti, které jsou uvedeny v následující tabulce.
+Další informace o těchto hodnot najdete v tématu [základní nastavení správce místní konfigurace](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#basic-settings).
+Skript DSC rozšíření výchozí konfigurace můžete použít ke konfiguraci pouze LCM vlastnosti, které jsou uvedeny v následující tabulce.
 
 | Název vlastnosti | Typ | Popis |
 | --- | --- | --- |
@@ -191,7 +214,10 @@ Další informace o těchto hodnot najdete v tématu [základní nastavení spr�
 
 ## <a name="settings-vs-protectedsettings"></a>Nastavení vs. ProtectedSettings
 
-Všechna nastavení se ukládají do textového souboru nastavení ve virtuálním počítači. Vlastnosti, které jsou uvedené v části **nastavení** jsou veřejné vlastnosti. Veřejné vlastnosti nejsou šifrovány nastavení textového souboru. Vlastnosti, které jsou uvedené v části **protectedSettings** jsou šifrované pomocí certifikátu a nejsou zobrazeny ve formátu prostého textu v souboru nastavení ve virtuálním počítači.
+Všechna nastavení se ukládají do textového souboru nastavení ve virtuálním počítači.
+Vlastnosti, které jsou uvedené v části **nastavení** jsou veřejné vlastnosti.
+Veřejné vlastnosti nejsou šifrovány nastavení textového souboru.
+Vlastnosti, které jsou uvedené v části **protectedSettings** jsou šifrované pomocí certifikátu a nejsou zobrazeny ve formátu prostého textu v souboru nastavení ve virtuálním počítači.
 
 Pokud konfigurace potřebuje přihlašovací údaje, můžete zahrnout přihlašovací údaje v **protectedSettings**:
 
@@ -208,7 +234,9 @@ Pokud konfigurace potřebuje přihlašovací údaje, můžete zahrnout přihlaš
 
 ## <a name="example-configuration-script"></a>Příklad konfigurační skript
 
-Následující příklad ukazuje, výchozí chování v rozšíření DSC, což je poskytovat LCM nastavení metadat a registrace ve službě Automation DSC. Konfigurace argumenty jsou povinné.  Výchozí konfigurační skript nastavit LCM metadata jsou předáno konfigurace argumentů.
+Následující příklad ukazuje, výchozí chování v rozšíření DSC, což je poskytovat LCM nastavení metadat a registrace ve službě Automation DSC.
+Konfigurace argumenty jsou povinné.
+Výchozí konfigurační skript nastavit LCM metadata jsou předáno konfigurace argumentů.
 
 ```json
 "settings": {
@@ -233,7 +261,10 @@ Následující příklad ukazuje, výchozí chování v rozšíření DSC, což 
 
 ## <a name="example-using-the-configuration-script-in-azure-storage"></a>Příklad použití konfigurační skript ve službě Azure Storage
 
-Následující příklad je z [DSC rozšíření obslužné rutiny přehled](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tento příklad používá šablony Resource Manager místo rutiny pro nasazení rozšíření. Uložte konfiguraci IisInstall.ps1, umístěte jej do souboru ZIP a potom odeslat soubor na adresu URL přístupné. Tento příklad používá úložiště objektů Blob v Azure, ale soubory .zip si můžete stáhnout z libovolného libovolného umístění.
+Následující příklad je z [DSC rozšíření obslužné rutiny přehled](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Tento příklad používá šablony Resource Manager místo rutiny pro nasazení rozšíření.
+Uložte konfiguraci IisInstall.ps1, umístěte jej do souboru ZIP a potom odeslat soubor na adresu URL přístupné.
+Tento příklad používá úložiště objektů Blob v Azure, ale soubory .zip si můžete stáhnout z libovolného libovolného umístění.
 
 Následující kód v šabloně Resource Manager dává pokyn virtuálního počítače ke stažení správný soubor a pak spusťte odpovídající funkce prostředí PowerShell:
 
@@ -252,7 +283,8 @@ Následující kód v šabloně Resource Manager dává pokyn virtuálního poč
 
 ## <a name="update-from-a-previous-format"></a>Aktualizace z předchozí formátu
 
-Všechna nastavení ve formátu předchozí rozšíření (a které mají veřejné vlastnosti **ModulesUrl**, **ConfigurationFunction**, **SasToken**, nebo  **Vlastnosti**) automaticky přizpůsobit na současný formát rozšíření. Spouštějí se stejně jako před.
+Všechna nastavení ve formátu předchozí rozšíření (a které mají veřejné vlastnosti **ModulesUrl**, **ConfigurationFunction**, **SasToken**, nebo  **Vlastnosti**) automaticky přizpůsobit na současný formát rozšíření.
+Spouštějí se stejně jako před.
 
 Následující schéma ukazuje, jaké předchozí nastavení schématu hledá jako:
 
@@ -302,7 +334,9 @@ Zde je, jak se v předchozím formátu přizpůsobuje na současný formát:
 
 ## <a name="troubleshooting---error-code-1100"></a>Řešení potíží – kód chyby 1100
 
-Kód chyby 1100 znamená problém s vstupu uživatele na rozšíření DSC. Text tyto chyby se liší a mohou změnit. Zde jsou některé z chyb, které můžete narazit na a jak můžete opravit je.
+Kód chyby 1100 znamená problém s vstupu uživatele na rozšíření DSC.
+Text tyto chyby se liší a mohou změnit.
+Zde jsou některé z chyb, které můžete narazit na a jak můžete opravit je.
 
 ### <a name="invalid-values"></a>Neplatné hodnoty
 
@@ -313,7 +347,8 @@ Pouze možné hodnoty jsou... a 'nejnovější' ".
 
 **Problém**: Zadaná hodnota není povolena.
 
-**Řešení**: Neplatná hodnota změňte na platnou hodnotu. Další informace najdete v tabulce v [podrobnosti](#details).
+**Řešení**: Neplatná hodnota změňte na platnou hodnotu.
+Další informace najdete v tabulce v [podrobnosti](#details).
 
 ### <a name="invalid-url"></a>Neplatná adresa URL
 
@@ -321,7 +356,8 @@ Pouze možné hodnoty jsou... a 'nejnovější' ".
 
 **Problém**: A Zadaná adresa URL není platná.
 
-**Řešení**: Zkontrolujte všechny zadané URL. Zajistěte, že všechny adresy URL přeložit na platné umístění, můžete přístup k rozšíření ve vzdáleném počítači.
+**Řešení**: Zkontrolujte všechny zadané URL.
+Zajistěte, že všechny adresy URL přeložit na platné umístění, můžete přístup k rozšíření ve vzdáleném počítači.
 
 ### <a name="invalid-configurationargument-type"></a>Neplatný typ ConfigurationArgument
 
@@ -329,7 +365,8 @@ Pouze možné hodnoty jsou... a 'nejnovější' ".
 
 **Problém**: *ConfigurationArguments* vlastnost nemůže být vyhodnocena **zatřiďovací tabulky** objektu.
 
-**Řešení**: Zkontrolujte vaše *ConfigurationArguments* vlastnost **zatřiďovací tabulky**. Použijte formát najdete v předchozím příkladu. Podívejte se na nabídky, čárky a složené závorky.
+**Řešení**: Zkontrolujte vaše *ConfigurationArguments* vlastnost **zatřiďovací tabulky**.
+Použijte formát najdete v předchozím příkladu. Podívejte se na nabídky, čárky a složené závorky.
 
 ### <a name="duplicate-configurationarguments"></a>Duplicitní ConfigurationArguments
 

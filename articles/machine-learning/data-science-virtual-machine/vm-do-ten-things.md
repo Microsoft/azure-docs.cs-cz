@@ -1,9 +1,9 @@
 ---
-title: "10 způsobů, jak na datové vědě virtuálního počítače v Azure | Microsoft Docs"
-description: "Proveďte různé zkoumání dat a modelování úloh na vědecké zpracování dat virtuálního počítače."
+title: 10 způsobů, jak na datové vědě virtuálního počítače v Azure | Microsoft Docs
+description: Proveďte různé zkoumání dat a modelování úloh na vědecké zpracování dat virtuálního počítače.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: gokuma;weig;bradsev
-ms.openlocfilehash: 71745260f45c5a5c150fdd3eac4e9a8221b8bce4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: gokuma
+ms.openlocfilehash: f11aff2231a5ae6a58d5c9a3f53379a6849d226a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>Deset věcí, které můžete provádět na virtuálních počítačích pro vědecké zkoumání dat
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: API Java asynchronní SQL, sadu SDK a prostředky | Microsoft Docs"
-description: "Další informace o rozhraní API Java asynchronní SQL a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB SQL asynchronní Java SDK."
+title: 'Azure Cosmos DB: API Java asynchronní SQL, sadu SDK a prostředky | Microsoft Docs'
+description: Další informace o rozhraní API Java asynchronní SQL a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB SQL asynchronní Java SDK.
 services: cosmos-db
 documentationcenter: java
 author: mimig1
@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: mimig
-ms.openlocfilehash: 408080fd7d9788d13b13e2769e59946a81e6742c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d117f0571bef8f8a2ec48a067d7796f03c0e535a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní API pro SQL: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/02/2018
 > * [Informační kanál změnu rozhraní .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Asynchronní Java](sql-api-sdk-async-java.md)
+> * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/documentdb/)
@@ -34,8 +34,6 @@ ms.lasthandoff: 03/02/2018
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 SQL API asynchronní Java SDK se liší od Java SDK pro rozhraní API SQL tím, že poskytuje asynchronní operace se podporuje [Netty knihovny](http://netty.io/). Již existující [SQL API Java SDK](sql-api-sdk-java.md) nepodporuje asynchronní operace. 
 
@@ -56,7 +54,7 @@ SQL API asynchronní Java SDK se liší od Java SDK pro rozhraní API SQL tím, 
 <tr><td>**Minimální podporovaný modul runtime**</td><td>[JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)</td></tr>
 </table></br>
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK s podporou začátku do konce neblokující vstupně-výstupní operace pomocí [Netty knihovny](http://netty.io/) v režimu brány. 
@@ -72,7 +70,7 @@ Každá žádost o DB Cosmos pomocí vyřazeno sady SDK budou odmítnuty službo
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
-| [1.0.0](#1.0.0) |27 února 2018|--- |
+| [1.0.0](#1.0.0) |27. února 2018|--- |
 
 ## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

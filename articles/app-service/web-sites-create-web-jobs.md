@@ -1,8 +1,8 @@
 ---
-title: "Spuštění úlohy na pozadí s webové úlohy v Azure App Service"
-description: "Naučte se používat webové úlohy ke spuštění úlohy na pozadí v Azure App Service webové aplikace, aplikace API nebo mobilní aplikace."
+title: Spuštění úlohy na pozadí s webové úlohy v Azure App Service
+description: Naučte se používat webové úlohy ke spuštění úlohy na pozadí v Azure App Service webové aplikace, aplikace API nebo mobilní aplikace.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: tdykstra
 manager: erikre
 editor: jimbe
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 3652e0171e0c6a53c16fb5b5fde20df9ed2ab7c7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f41cc83bfb18146e46e7d8501318acd68ce9c421
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spuštění úlohy na pozadí s webové úlohy v Azure App Service
 
@@ -170,15 +170,7 @@ when making changes in one don't forget the other two.
 
 ## <a name="cron-expressions"></a>Výrazy procesu CRON
 
-A [výraz CRON](https://en.wikipedia.org/wiki/Cron) se skládá z šesti pole: `{second} {minute} {hour} {day} {month} {day of the week}`.  Zde je několik příkladů:
-
-* Každých 15 minut: `0 */15 * * * *`
-* Každou hodinu (který je vždy, když počet minut je 0): `0 0 * * * *` 
-* Každou hodinu od 9: 00 do 17: 00: `0 0 9-17 * * *` 
-* V 9:30:00 každý den: `0 30 9 * * *`
-* V 9:30:00 každý den v týdnu: `0 30 9 * * 1-5`
-
-Můžete zadat výraz CRON na portálu nebo zahrnout `settings.job` soubor v kořenovém adresáři vaše webová úloha *.zip* souboru, jako v následujícím příkladu:
+Můžete zadat [výraz CRON](../azure-functions/functions-bindings-timer.md#cron-expressions) na portálu nebo `settings.job` soubor v kořenovém adresáři vaše webová úloha *.zip* souboru, jako v následujícím příkladu:
 
 ```json
 {

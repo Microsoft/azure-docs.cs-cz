@@ -1,12 +1,12 @@
 ---
-title: "Azure doporučení služby Advisor náklady | Microsoft Docs"
-description: "Pomocí Azure Advisor optimalizovat náklady na vašich Azure nasazení."
+title: Azure doporučení služby Advisor náklady | Microsoft Docs
+description: Pomocí Azure Advisor optimalizovat náklady na vašich Azure nasazení.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 7b9c7037271fabd67c1ada80420ad72c340e46bb
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 7a8807a580f1a7f1fe67e026a8fbd4cc0e96c41c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="advisor-cost-recommendations"></a>Náklady na doporučení služby Advisor
 
@@ -31,9 +31,6 @@ Advisor zobrazí odhadované náklady pokračovat ke spuštění virtuálního p
 
 Pokud chcete být agresivnější zjistit nedostatečně virtuální počítače, můžete upravit průměrná pravidlo využití procesoru na základě za předplatné.
 
-## <a name="use-a-cost-effective-solution-to-manage-performance-goals-of-multiple-sql-databases"></a>Použít nákladově efektivní řešení ke správě výkonnostní cíle více databází SQL
-Advisor identifikuje instance serveru SQL, které můžete využít možnost vytvoření fondů elastické databáze. Fondy elastické databáze poskytují jednoduché a nákladově efektivní řešení pro správu výkonu cílů více databází, které mají různou vzorce používání. Další informace o Azure elastické fondy najdete v tématu [co je Azure Elastickém fondu?](https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool/).
-
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Snížení nákladů odstraněním není zřízený okruhy ExpressRoute
 Advisor identifikuje okruhy ExpressRoute, které byly ve stavu zprostředkovatele *není zajišťováno* pro více než jeden měsíc a doporučuje odstraňování okruh, pokud nemáte v plánu poskytnutí okruhu připojení k Zprostředkovatel.
 
@@ -43,7 +40,7 @@ Advisor identifikuje okruhy ExpressRoute, které byly ve stavu zprostředkovatel
 
 2.  Na řídicím panelu služby Advisor, klikněte na **náklady** kartě.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o doporučení služby Advisor najdete v tématu:
 * [Úvod do služby Advisor](advisor-overview.md)

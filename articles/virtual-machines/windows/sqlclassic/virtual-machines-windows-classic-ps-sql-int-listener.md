@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace naslouchací proces ILB pro skupiny dostupnosti Always On v Azure | Microsoft Docs"
-description: "Tento kurz používá prostředky, které jsou vytvořené pomocí modelu nasazení classic a vytvoří Always On naslouchací proces skupiny dostupnosti v Azure, která používá interní nástroj."
+title: Konfigurace naslouchací proces ILB pro skupiny dostupnosti Always On v Azure | Microsoft Docs
+description: Tento kurz používá prostředky, které jsou vytvořené pomocí modelu nasazení classic a vytvoří Always On naslouchací proces skupiny dostupnosti v Azure, která používá interní nástroj.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 291288a0-740b-4cfa-af62-053218beba77
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 418920899612cac7336af14baff75c58a1cd8bef
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0466265ad5a24e8ea6dc5079e2b4006d74e7dde0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Konfigurace naslouchací proces ILB pro skupiny dostupnosti Always On v Azure
 > [!div class="op_single_selector"]
@@ -104,7 +104,7 @@ Vytvořte koncový bod Vyrovnávání zatížení sítě pro každý virtuální
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Po nastavení proměnné, zkopírujte do relace prostředí PowerShell ji spustit skript z textového editoru. Pokud stále zobrazuje řádku  **>>** , stisknutím klávesy Enter zajistěte, aby je skript spuštěn.
+13. Po nastavení proměnné, zkopírujte do relace prostředí PowerShell ji spustit skript z textového editoru. Pokud stále zobrazuje řádku **>>**, stisknutím klávesy Enter zajistěte, aby je skript spuštěn.
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Ověřte, zda KB2854082 nainstalována v případě potřeby
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -133,7 +133,7 @@ Vytvořte naslouchací proces skupiny dostupnosti ve dvou krocích. Nejprve vytv
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
         $IPResourceName = "<IPResourceName>" # the IP address resource name
-        $ILBIP = “<X.X.X.X>” # the IP address of the ILB
+        $ILBIP = "<X.X.X.X>" # the IP address of the ILB
 
         Import-Module FailoverClusters
 
@@ -144,13 +144,13 @@ Vytvořte naslouchací proces skupiny dostupnosti ve dvou krocích. Nejprve vytv
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
         $IPResourceName = "<IPResourceName>" # the IP address resource name
-        $ILBIP = “<X.X.X.X>” # the IP address of the ILB
+        $ILBIP = "<X.X.X.X>" # the IP address of the ILB
 
         Import-Module FailoverClusters
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Po nastavení proměnné, otevřete okno prostředí Windows PowerShell se zvýšenými oprávněními, vložte do relace prostředí PowerShell ji spustit skript z textového editoru. Pokud stále zobrazuje řádku  **>>** , stiskněte klávesu Enter znovu, abyste měli jistotu, že je skript spuštěn.
+3. Po nastavení proměnné, otevřete okno prostředí Windows PowerShell se zvýšenými oprávněními, vložte do relace prostředí PowerShell ji spustit skript z textového editoru. Pokud stále zobrazuje řádku **>>**, stiskněte klávesu Enter znovu, abyste měli jistotu, že je skript spuštěn.
 
 4. Opakujte předchozí kroky pro každý virtuální počítač.  
     Tento skript nakonfiguruje prostředek IP adresy s IP adresou cloudové služby a nastaví dalších parametrů, jako je port testu. Pokud prostředek IP adresy je uvést do režimu online, může reagovat na dotazování na port testu z koncového bodu Vyrovnávání zatížení sítě, který jste vytvořili dříve.

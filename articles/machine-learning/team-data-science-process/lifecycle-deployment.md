@@ -1,24 +1,24 @@
 ---
-title: "Nasazení fáze životního cyklu proces vědecké účely dat Team - Azure | Microsoft Docs"
-description: "Cíle, úlohy a úkoly pro fázi nasazení vašich projektů vědecké zpracování dat"
+title: Nasazení fáze životního cyklu proces vědecké účely dat Team - Azure | Microsoft Docs
+description: Cíle, úlohy a úkoly pro fázi nasazení vašich projektů vědecké zpracování dat
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 45d801bf0096879143f91feb230445625559379f
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: 5cb6361ed674ffaaf776adafd6f3ff87272c73eb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deployment"></a>Nasazení
 
@@ -35,7 +35,7 @@ Zde je vizuální reprezentace životního cyklu TDSP:
 ![Životní cyklus TDSP](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
-## <a name="goal"></a>Cílem
+## <a name="goal"></a>Cíl
 Nasaďte modely datovém kanálu pro produkční nebo prostředí produkčního prostředí pro přijetí konečného uživatele. 
 
 ## <a name="how-to-do-it"></a>Jak to udělat
@@ -43,11 +43,11 @@ Hlavní úloha řešeny v této fázi:
 
 **Zprovoznit model**: nasadit model a kanál pro produkční nebo prostředí produkčního prostředí pro používání aplikace.
 
-### <a name="operationalize-a-model"></a>Zprovoznit model
+### <a name="operationalize-a-model"></a>Zprovoznění modelu
 Až budete mít sadu modely, které provádějí dobře, můžete je u ostatních aplikací využívají zprovoznit. V závislosti na obchodní požadavky jsou vytvářeny předpovědi buď v reálném čase, nebo na základě dávky. Pokud chcete nasadit modely, umístěte je s otevřené rozhraní API. Rozhraní umožňuje modelu, který má snadno využívat z různých aplikací, jako například:
 
    * Online weby
-   * Tabulek 
+   * Tabulky 
    * Řídicí panely
    * Obchodní aplikace 
    * Back-end aplikace 
@@ -61,7 +61,7 @@ Příklady operationalization modelu pomocí webové služby Azure Machine Learn
 * Architektura dokumentu konečné řešení
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tady jsou odkazy na každý krok v životním cyklu TDSP:
 

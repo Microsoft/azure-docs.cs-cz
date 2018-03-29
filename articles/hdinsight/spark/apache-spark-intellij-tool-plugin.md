@@ -1,8 +1,8 @@
 ---
-title: "Azure nástrojů pro IntelliJ: vytvoření aplikací Spark pro cluster služby HDInsight | Microsoft Docs"
-description: "Použití sady nástrojů Azure pro IntelliJ k vývoji aplikací Spark napsané v jazyce Scala a odesílat je na clusteru HDInsight Spark."
+title: 'Azure nástrojů pro IntelliJ: vytvoření aplikací Spark pro cluster služby HDInsight | Microsoft Docs'
+description: Použití sady nástrojů Azure pro IntelliJ k vývoji aplikací Spark napsané v jazyce Scala a odesílat je na clusteru HDInsight Spark.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: 69f5857f89271b3e4865b93e42e5233ead572715
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2ebf87b0436dbc5ee12a1c41d33ff3d17af1f043
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Vytvoření aplikací Spark pro cluster služby HDInsight pomocí nástrojů Azure pro IntelliJ
 
@@ -44,6 +44,10 @@ Chcete-li vytvořit projekt, podívejte se [vytvoření aplikací Spark pomocí 
 
 ## <a name="install-azure-toolkit-for-intellij"></a>Instalace Azure Toolkit pro IntelliJ
 Pokyny k instalaci naleznete v tématu [instalaci nástrojů Azure pro IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation).
+
+## <a name="get-started"></a>Začínáme
+Uživatel může buď [Přihlaste se k předplatnému Azure](#sign-in-to-your-azure-subscription), nebo [odkaz HDInsight cluster](#link-a-cluster) pomocí nástroje Ambari uživatelského jména a hesla nebo domény připojeno přihlašovací údaje pro spuštění.
+
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure.
 
@@ -75,12 +79,14 @@ Můžete propojit normální clusteru pomocí Ambari spravované uživatelské j
 
    ![odkaz clusteru kontextové nabídky](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
-2. Zadejte **název clusteru**, **účet úložiště**, **klíč úložiště**, pak vyberte kontejner z **kontejner úložiště**, last, zadejte uživatelské jméno a heslo. Je potřeba zkontrolovat uživatelské jméno a heslo, pokud selže ověření.
+2. Zadejte **název clusteru**, **uživatelské jméno** a **heslo**. Je třeba zkontrolovat uživatelské jméno a heslo, pokud se tu selhání ověření. Volitelně můžete přidat účet úložiště, klíč k úložišti, pak vyberte kontejner z kontejneru úložiště. Informace o úložiště je pro Průzkumníka úložiště v levém stromu
    
    ![Dialogové okno odkaz clusteru](./media/apache-spark-intellij-tool-plugin/link-a-cluster-dialog.png)
 
    > [!NOTE]
-   > Pokud cluster jak zaznamenána v rámci předplatného Azure a propojené cluster používáme klíč propojené úložiště, uživatelské jméno a heslo. 
+   > Pokud cluster jak zaznamenána v rámci předplatného Azure a propojené cluster používáme klíč propojené úložiště, uživatelské jméno a heslo.
+   > ![Průzkumník úložišť v IntelliJ](./media/apache-spark-intellij-tool-plugin/storage-explorer-in-IntelliJ.png)
+
    
 3. Můžete zobrazit v clusteru s podporou propojené **HDInsight** uzlu, pokud vstupní informace jsou správná. Teď můžete odeslat žádost této propojené clusteru.
 
@@ -285,7 +291,7 @@ Chcete-li odeslat aplikace do Azure Data Lake Store, zvolte **interaktivní** re
 
 Nyní jsme ho vyřešil. Můžete použít Cluster služby Azure Data Lake odeslat vaší aplikace s libovolnou metodu přihlášení.
 
-## <a name="feedback-and-known-issues"></a>Názory a známé problémy
+## <a name="feedback-and-known-issues"></a>Zpětná vazba a známé problémy
 V současné době Spark výstupů zobrazení přímo není podporováno.
 
 Pokud máte jakékoli návrhy či názory, nebo pokud se vyskytnou potíže při použití tento modul plug-in, e-mailu nás na adrese hdivstool@microsoft.com.

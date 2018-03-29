@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus Geo-havárii | Microsoft Docs"
-description: "Jak používat zeměpisné oblasti převzetí služeb při selhání a proveďte obnovení po havárii v Azure Service Bus"
+title: Azure Service Bus Geo-havárii | Microsoft Docs
+description: Jak používat zeměpisné oblasti převzetí služeb při selhání a proveďte obnovení po havárii v Azure Service Bus
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: christianwolf42
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: sethm
-ms.openlocfilehash: 9cbeff82f7a237c813ea91cd83e9273cad934991
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 652adcf78add8ae699a7f827a915e90ce1694c61
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus Geo-havárii
 
@@ -86,12 +86,13 @@ Pokud máte scénář, ve kterém nelze změnit připojení producenti a spotře
 
 ## <a name="samples"></a>Ukázky
 
-[Ukázky z webu GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2) ukazují, jak nastavit a zahájit převzetí služeb při selhání. Tyto ukázky ukazují následující koncepty:
+[Ukázky z webu GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) ukazují, jak nastavit a zahájit převzetí služeb při selhání. Tyto ukázky ukazují následující koncepty:
 
-- Nastavení muset ve službě Azure Active Directory pomocí Azure Resource Manageru službou Service Bus. 
-- Kroky potřebné k provedení ukázkový kód. 
-- Odesílat a přijímat z aktuální primární oboru názvů. 
+- Ukázka rozhraní .net a nastavení potřebné v Azure Active Directory pomocí Azure Resource Manageru službou Service Bus instalační program a povolení geograficky havárii.
+- Kroky potřebné k provedení ukázkový kód.
 - Jak používat existujícího oboru názvů jako alias.
+- Kroky, případně aby geograficky havárii pomocí prostředí PowerShell nebo rozhraní příkazového řádku.
+- [Odesílat a přijímat](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) z aktuální primární nebo sekundární oboru názvů pomocí alias.
 
 ## <a name="considerations"></a>Požadavky
 

@@ -1,24 +1,24 @@
 ---
-title: "Síťová topologie pro Azure SQL DB spravované Instance migrace pomocí služby Azure databáze migrace | Microsoft Docs"
-description: "Další konfigurace zdrojové a cílové služby migrace databáze."
+title: Síťová topologie pro Azure SQL DB spravované Instance migrace pomocí služby Azure databáze migrace | Microsoft Docs
+description: Další konfigurace zdrojové a cílové služby migrace databáze.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
-manager: 
-ms.reviewer: 
+manager: ''
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/06/2018
-ms.openlocfilehash: 892cff02b5b70f09236bb37ae786f180ddca9316
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5904864ffba656dab17e1549ed9832be4258a67f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Síťové topologie pro Azure SQL DB spravované Instance migrace pomocí služby Azure databáze migrace
-V tomto článku se dozvíte o různé topologie sítě, aby služba migrace databáze Azure můžete pracovat a poskytuje prostředí bezproblémovou migraci na Azure SQL Database spravované Instance z místní servery SQL.
+V tomto článku se dozvíte o různé topologie sítě, které služba Azure databáze migrace můžete pracovat a poskytuje prostředí bezproblémovou migraci z místních SQL serverů do Azure SQL Database spravované Instance.
 
 ## <a name="azure-sql-database-managed-instance-configured-for-hybrid-workloads"></a>Azure SQL spravované Instance databáze nakonfigurované pro hybridní úlohy 
 Tato topologie použijte, pokud vaše Azure SQL Database spravované Instance je připojen k síti na pracovišti. Tento přístup poskytuje nejvíc zjednodušené směrování sítě a výsledkem propustnost maximální dat během migrace.
@@ -27,28 +27,42 @@ Tato topologie použijte, pokud vaše Azure SQL Database spravované Instance je
 
 **Požadavky**
 - V tomto scénáři spravované Instance databáze Azure SQL a instanci Azure databáze migrace služby se vytvoří ve stejné virtuální síti Azure, ale používají jinou podsítí.  
-- Virtuální síť používá v tomto scénáři je také připojené k místní síti pomocí ExpressRoute nebo VPN.
+- Virtuální sítě v tomto scénáři používají také připojené k místní síti pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 
 ## <a name="azure-sql-database-managed-instance-isolated-from-the-on-premises-network"></a>Azure Instance databáze serveru SQL spravované izolované z místní sítě
 Tato topologie sítě použijte, pokud vaše prostředí vyžaduje jeden nebo více z následujících scénářů:
 - Spravované Instance databáze Azure SQL je izolovaná od místní připojení, ale instanci služby migrace databáze Azure je připojen k místní síti.
-- Zásady řízení přístupu na základě (RBAC) role jsou na místě a omezit přístup uživatelů ve stejném předplatném, který je hostitelem spravované Instance databáze Azure SQL.
-- Virtuální sítě používá pro provádění příkazu spravované Instance databáze SQL Azure a Azure Service migrace databáze jsou v různých předplatných.
+- Pokud jsou zásady na základě řízení přístupu Role (RBAC) na místě a je nutné omezit uživatele k přístupu do stejného předplatného, který je hostitelem spravované Instance databáze Azure SQL.
+- Virtuální sítě používá pro spravované Instance databáze Azure SQL a službu Azure databáze migrace jsou v různých předplatných.
 
 ![Topologie sítě pro spravované Instance izolované z místní sítě](media\resource-network-topologies\mi-isolated-workload.png)
 
 **Požadavky**
-- Virtuální síť, který používá služba migrace databáze Azure pro tento scénář musí také připojený k místní síti pomocí ExpressRoute nebo VPN.
-- Vytvoření sítě VNET partnerský vztah mezi virtuální sítě používá pro provádění příkazu spravované Instance databáze SQL Azure a služba migrace databáze Azure.
+- Virtuální síť, který používá služba migrace databáze Azure pro tento scénář musí být taky připojen k místní síti pomocí (https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+- Je nutné nastavit [partnerský vztah sítě VNET](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi virtuální sítě používá pro Azure spravované Instance databáze SQL a službu Azure databáze migrace.
 
 
-## <a name="cloud-to-cloud-migrations"></a>Cloudu do cloudu migrace
-Tato topologie použijte, pokud zdroje systému SQL Server je hostovaná ve virtuálním počítači Azure.
+## <a name="cloud-to-cloud-migrations-shared-vnet"></a>Migrace cloudu cloudu: sdílené virtuální sítě
 
-![Topologie sítě pro Cloud-Cloud migrace](media\resource-network-topologies\cloud-to-cloud.png)
+Tato topologie použijte, pokud zdroje systému SQL Server je hostovaná ve virtuálním počítači Azure a sdílí stejnou virtuální síť s Azure spravované Instance databáze SQL a službu Azure databáze migrace.
+
+![Topologie sítě pro Cloud-Cloud migrace s sdílené virtuální sítě](media\resource-network-topologies\cloud-to-cloud.png)
 
 **Požadavky**
-- Vytvoření sítě VNET partnerský vztah mezi virtuální sítě používá pro provádění příkazu spravované Instance databáze SQL Azure a služba migrace databáze Azure.
+- Žádné další požadavky.
+
+## <a name="cloud-to-cloud-migrations-isolated-vnet"></a>Cloudu pro cloud migrace: izolované virtuální sítě
+
+Tato topologie sítě použijte, pokud vaše prostředí vyžaduje jeden nebo více z následujících scénářů:
+- Spravované Instance databáze Azure SQL je zajištěna v izolované virtuální sítě.
+- Pokud jsou zásady na základě řízení přístupu Role (RBAC) na místě a je nutné omezit uživatele k přístupu do stejného předplatného, který je hostitelem spravované Instance databáze Azure SQL.
+- Virtuální sítě používá pro Azure spravované Instance databáze SQL a službu Azure databáze migrace jsou v různých předplatných.
+
+![Topologie sítě pro Cloud-Cloud migrace s izolované virtuální sítě](media\resource-network-topologies\cloud-to-cloud-isolated.png)
+
+**Požadavky**
+- Je nutné nastavit [partnerský vztah sítě VNET](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi virtuální sítě používá pro Azure spravované Instance databáze SQL a službu Azure databáze migrace.
+
 
 ## <a name="see-also"></a>Viz také
 - [Migrace systému SQL Server na spravované Instance databáze Azure SQL](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)

@@ -1,6 +1,6 @@
 ---
-title: "Možnosti překladu názvů DNS pro virtuální počítače s Linuxem v Azure"
-description: "Název služby DNS scénáře pro virtuální počítače s Linuxem v Azure IaaS, včetně poskytuje řešení, hybridní externí DNS a přineste si vlastní DNS server."
+title: Možnosti překladu názvů DNS pro virtuální počítače s Linuxem v Azure
+description: Název služby DNS scénáře pro virtuální počítače s Linuxem v Azure IaaS, včetně poskytuje řešení, hybridní externí DNS a přineste si vlastní DNS server.
 services: virtual-machines
 documentationcenter: na
 author: RicksterCDN
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: cc06ee9305b4d3034154a0825c1aea53fe446f80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a445de3e1bfbeb2cd2e5674418688d6bb610a3c2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Možnosti překlad názvů DNS pro virtuální počítače s Linuxem v Azure
 Azure poskytuje překlad názvu DNS ve výchozím nastavení pro všechny virtuální počítače, které se nacházejí v jedné virtuální sítě. Vlastní řešení rozlišení názvu DNS můžete implementovat podle konfigurace služby DNS pro vaše virtuální počítače Azure který je hostitelem. Následující scénáře by vám pomohou zvolit ten, který se dá použít pro vaši situaci.
@@ -112,7 +112,7 @@ Soubor resolv.conf se generuje automaticky a by neměla být upravována. Konkr�
 2. Spustit 'netconfig aktualizace, aktualizace.
 
 **CentOS softwarem Wave podvodný (dříve OpenLogic)** (používá NetworkManager)
-1. Přidejte 'echo "timeout:1 možnosti pokusů: 5" ' do ' nebo etc/NetworkManager/dispatcher.d/11-dhclient'.
+1. Přidejte ' RES_OPTIONS = "timeout:1 pokusů: 5" ' do '/ etc/sysconfig/síťová'.
 2. Spustit 'služby sítě restartování' Chcete-li aktualizovat.
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>Překlad názvů pomocí serveru DNS

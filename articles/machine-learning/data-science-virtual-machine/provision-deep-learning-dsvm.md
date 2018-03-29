@@ -1,9 +1,9 @@
 ---
-title: "Zřídit hluboká učení datové vědy virtuálního počítače na Azure | Microsoft Docs"
-description: "Konfigurace a vytvoření hloubkové učení Data vědecké účely virtuálního počítače na platformě Azure pro analýzy a strojového učení."
+title: Zřídit hluboká učení datové vědy virtuálního počítače na Azure | Microsoft Docs
+description: Konfigurace a vytvoření hloubkové učení Data vědecké účely virtuálního počítače na platformě Azure pro analýzy a strojového učení.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
 editor: cgronlun
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 75baef65b8a826009cdbaac3a260d021559504da
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4c911937226591124404c95b73b82b78e76649ea
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Zřídit hluboká učení virtuálního počítače na Azure 
 

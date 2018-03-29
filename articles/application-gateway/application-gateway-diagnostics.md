@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2017
+ms.date: 3/23/2018
 ms.author: amitsriva
-ms.openlocfilehash: c739d98f81bafb6474995b141cab3400bcb4dc33
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: dfa451a06fbadbb63c83f800ac164db399efd583
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back-end, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -176,7 +176,7 @@ Přístup k protokolu se vygeneruje pouze v případě, že jste ho povolili ka�
 |clientPort     | Výchozí port pro požadavek.       |
 |HttpMethod     | Metoda HTTP používaný žádosti.       |
 |requestUri     | Identifikátor URI přijatý požadavek.        |
-|RequestQuery     | **Server směrovat**: instance fond Back-end, který vám byl zaslán požadavek. </br> **X-AzureApplicationGateway-LOG-ID**: ID korelace použitou pro danou žádost. Může sloužit k řešení potíží provoz na back-end serverů. </br>**Stav serveru**: kód odpovědi HTTP, který Application Gateway dostali z back-end.       |
+|RequestQuery     | **Server směrovat**: instance fond Back-end, který vám byl zaslán požadavek.</br>**X-AzureApplicationGateway-LOG-ID**: ID korelace použitou pro danou žádost. Může sloužit k řešení potíží provoz na back-end serverů. </br>**Stav serveru**: kód odpovědi HTTP, který Application Gateway dostali z back-end.       |
 |UserAgent     | Agent u uživatele z hlavičky žádosti HTTP.        |
 |httpStatus     | Stavový kód HTTP vrácen do klienta z aplikační brány.       |
 |httpVersion     | Verze protokolu HTTP žádosti.        |
@@ -316,9 +316,21 @@ Můžete také připojit k účtu úložiště a načítat položky protokolu JS
 
 ## <a name="metrics"></a>Metriky
 
-Metriky jsou funkce u některých prostředků Azure, kde můžete zobrazit čítače výkonu v portálu. Pro službu Application Gateway jedna metrika je k dispozici nyní. Tato metrika je propustnost a zobrazí se na portálu. Přejděte do služby application gateway a klikněte na tlačítko **metriky**. Chcete-li zobrazit hodnoty, vyberte propustnost v **dostupné metriky** části. Na následujícím obrázku uvidíte příklad s filtry, které můžete použít k zobrazení dat v různých časových rozsahů.
+Metriky jsou funkce u některých prostředků Azure, kde můžete zobrazit čítače výkonu v portálu. Pro službu Application Gateway jsou k dispozici následující metriky:
 
-![Zobrazení metriky s filtry][5]
+- Aktuální počet připojení
+- Neúspěšné požadavky
+- V pořádku počet hostitele
+- Stav odpovědi
+- Propustnost
+- Požadavky celkem
+- Chybný počet hostitele
+
+Přejděte do služby application gateway, v části **monitorování** klikněte na tlačítko **metriky**. Chcete-li zobrazit dostupné hodnoty, vyberte **METRIKA** rozevíracího seznamu.
+
+Na následujícím obrázku najdete příklad tří metriky zobrazené pro posledních 30 minut:
+
+[![](media/application-gateway-diagnostics/figure5.png "Zobrazení metriky")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 Pokud chcete zobrazit aktuální seznam metriky, najdete v části [podporované metriky s Azure monitorování](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
@@ -336,7 +348,7 @@ Následující příklad vás provede vytvořením pravidlo výstrahy, která od
 
    * V **podmínku** selektor, vyberte jednu ze čtyř hodnot: **větší než**, **větší než nebo rovna**, **menší než**, nebo **Menší než nebo rovna hodnotě**.
 
-   * V **období** selektor, vyberte období od 5 minut do 6 hodin.
+   * V **období** selektor, vyberte období z pěti minut až šest hodin.
 
    * Pokud vyberete **e-mailu vlastníci, přispěvatelé a čtenáři**, e-mailu, může být dynamické podle uživatelů, kteří mají přístup k prostředku. Jinak, můžete zadat čárkami oddělený seznam uživatelů v **email(s) další správce** pole.
 

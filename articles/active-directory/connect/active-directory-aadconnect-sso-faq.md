@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Bezproblémové jednotné přihlašování – nejčastější dotazy | Microsoft Docs"
-description: "Odpovědi na časté otázky o Azure Active Directory bezproblémové jednotné přihlašování."
+title: 'Azure AD Connect: Bezproblémové jednotné přihlašování – nejčastější dotazy | Microsoft Docs'
+description: Odpovědi na časté otázky o Azure Active Directory bezproblémové jednotné přihlašování.
 services: active-directory
-keywords: "Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování"
-documentationcenter: 
+keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 8a91960f150e9298515cd52fe192ec1abdd89f9c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c34293796860e0ab72eecedab9cd8b023237050d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy
 
@@ -38,16 +38,23 @@ Ne. Bezproblémové jednotného přihlašování je k dispozici pouze v celosvě
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>Jaké aplikace využívat `domain_hint` nebo `login_hint` parametr funkce bezproblémové přihlašování?
 
-Níže uvedené je doplňovat seznam aplikací, které tyto parametry odeslat do služby Azure AD a proto poskytuje uživatelům tichou prostředí přihlašování pomocí jednotného přihlašování bezproblémové:
+Níže uvedené je doplňovat seznam aplikací, které tyto parametry odeslat do služby Azure AD a proto poskytuje uživatelům tichou prostředí přihlašování pomocí bezproblémové jednotné přihlašování (tj, není třeba pro vaše uživatele jako vstup jejich uživatelských jmen):
 
 | Název aplikace | Adresa URL aplikace má být použit |
 | -- | -- |
 | Přístupový panel | myapps.microsoft.com/contoso.com |
 | Outlook na webu | outlook.office365.com/contoso.com |
 
-V tabulce nahraďte název domény pro zajištění adresy URL správné aplikace pro vašeho klienta "contoso.com".
+Kromě toho uživatelé získají tichou prostředí přihlašování, když aplikace odešle žádostí o přihlášení k Azure AD nevyužívá dělené tabulky koncové body – to znamená, https://login.microsoftonline.com/contoso.com/<..> nebo https://login.microsoftonline.com/<tenant_ID>/<..> – místo Azure AD společný koncový bod - tedy https://login.microsoftonline.com/common/<...>. Níže uvedené je doplňovat seznam aplikací, které tyto typy žádostí o přihlášení.
 
-Pokud máte jiné aplikace, které vás zajímají, dejte nám vědět v sekci komentáře.
+| Název aplikace | Adresa URL aplikace má být použit |
+| -- | -- |
+| SharePoint Online | contoso.sharepoint.com |
+| Azure Portal | portal.azure.com/contoso.com |
+
+V předchozích tabulkách nahraďte název domény pro zajištění adresy URL správné aplikace pro vašeho klienta "contoso.com".
+
+Pokud chcete jiné aplikace pomocí našich zkušeností tichou přihlašování, dejte nám vědět, v části zpětnou vazbu.
 
 ## <a name="does-seamless-sso-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Podporuje bezproblémové SSO `Alternate ID` jako uživatelské jméno, místo `userPrincipalName`?
 

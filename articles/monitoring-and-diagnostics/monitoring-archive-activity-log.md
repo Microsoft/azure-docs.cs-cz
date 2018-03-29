@@ -1,9 +1,9 @@
 ---
-title: "Archivovat protokol činnosti Azure | Microsoft Docs"
-description: "Zjistěte, jak k archivaci váš protokol činnosti Azure pro dlouhodobé uchovávání v účtu úložiště."
+title: Archivovat protokol činnosti Azure | Microsoft Docs
+description: Zjistěte, jak k archivaci váš protokol činnosti Azure pro dlouhodobé uchovávání v účtu úložiště.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.openlocfilehash: 0b041cc6a986c6f7a11d213f03294c9716c20d04
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ee634b3acf0fa8815b69aef21e6213aee636ce1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="archive-the-azure-activity-log"></a>Archiv protokol činnosti Azure
 V tomto článku jsme ukazují, jak pomocí portálu Azure, rutiny prostředí PowerShell nebo rozhraní příkazového řádku a platformy pro archivaci vaše [ **protokol činnosti Azure** ](monitoring-overview-activity-logs.md) v účtu úložiště. Tato možnost je užitečná, pokud chcete uchovat déle, než 90 dní (s plnou kontrolu nad zásady uchovávání informací) pro audit, statické analýzy nebo zálohování aktivity protokolu. Pokud potřebujete události uchovávány 90 dnů nebo méně není nutné nastavit archivace na účet úložiště, protože aktivity protokolu události se zachovají v platformy Azure za 90 dnů bez povolení archivace.
@@ -164,7 +164,7 @@ V souboru PT1H.json se ukládají všechny události v poli "záznamy" následuj
 > 
 
 ## <a name="next-steps"></a>Další postup
-* [Stáhnout objekty BLOB pro analýzu](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
+* [Stáhnout objekty BLOB pro analýzu](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [Datový proud protokolu aktivit do centra událostí](monitoring-stream-activity-logs-event-hubs.md)
 * [Další informace o protokolu aktivit](monitoring-overview-activity-logs.md)
 

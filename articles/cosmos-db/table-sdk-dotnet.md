@@ -1,24 +1,24 @@
 ---
-title: "Tabulky Azure CosmosDB rozhraní API .NET SDK & prostředky | Microsoft Docs"
-description: "Další informace o Cosmos DB tabulky rozhraní API služby Azure včetně data vydání, vyřazení dat a změny provedené mezi každou verzi."
+title: Tabulky Azure CosmosDB rozhraní API .NET SDK & prostředky | Microsoft Docs
+description: Další informace o Cosmos DB tabulky rozhraní API služby Azure včetně data vydání, vyřazení dat a změny provedené mezi každou verzi.
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: mimig
-ms.openlocfilehash: af14e9dbd5f65d5cefa3d9424b8628f10d8160da
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 2afd7df65e7b223845752fc6bea5bc0ab4d3efd8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB tabulky .NET API: Stažení a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -40,6 +40,11 @@ ms.lasthandoff: 02/23/2018
 >
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+* Přidání ověření poškozený značky etag binárním rozsáhlým v režimu přímého.
+* Opravené chyby dotazu LINQ v režimu brány.
+* Synchronní rozhraní API ve fondu vláken s SynchronizationContext nyní spustit.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 * Přidání TableQueryMaxItemCount, TableQueryEnableScan, TableQueryMaxDegreeOfParallelism a TableQueryContinuationTokenLimitInKb do TableRequestOptions
@@ -63,6 +68,8 @@ Služba odmítne všechny požadavky pro Azure DB Cosmos pomocí vyřazeno sady 
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [1.1.1](#1.1.1) |26 března 2018|--- |
+| [1.1.0](#1.1.0) |21. února 2018|--- |
 | [1.0.0](#1.0.0) |15 listopadu 2017|--- |
 | [0.9.0-preview](#0.9.0-preview) |11 listopadu 2017 |--- |
 

@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: Připojení k virtuálnímu počítači CentOS ke spravované doméně | Microsoft Docs"
-description: "Připojit virtuální počítač systému CentOS Linux k Azure AD Domain Services"
+title: 'Azure Active Directory Domain Services: Připojení k virtuálnímu počítači CentOS ke spravované doméně | Microsoft Docs'
+description: Připojit virtuální počítač systému CentOS Linux k Azure AD Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 9f3b6425f3c13080985fb168f46ea1f6be5d18ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f7095e82605d12221ba7beb0c48fd3eda75a2e7b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>Připojit virtuální počítač systému CentOS Linux k spravované doméně
 Tento článek ukazuje, jak propojit systému CentOS Linux virtuálního počítače v Azure k spravované doméně služby Azure AD Domain Services.
@@ -34,7 +34,7 @@ Chcete-li provést úkoly vypsané v tomto článku, je třeba:
 
 ## <a name="provision-a-centos-linux-virtual-machine"></a>Zřízení virtuálního počítače systému CentOS Linux
 Zřízení virtuálního počítače s CentOS v Azure, pomocí kteréhokoli z následujících metod:
-* [portál Azure Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -133,7 +133,7 @@ Ověřte, zda je počítač byl úspěšně připojen k spravované doméně. P�
 
 
 ## <a name="troubleshooting-domain-join"></a>Řešení potíží s připojení k doméně
-Odkazovat [připojení k doméně Poradce při potížích s](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) článku.
+Odkazovat [připojení k doméně Poradce při potížích s](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) článku.
 
 ## <a name="related-content"></a>Související obsah
 * [Azure AD Domain Services – Příručka Začínáme](active-directory-ds-getting-started.md)

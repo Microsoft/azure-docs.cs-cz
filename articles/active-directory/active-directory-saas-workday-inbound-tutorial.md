@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Konfigurace Workday pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs"
-description: "Další informace o použití Workday jako zdroj dat identity pro Active Directory a Azure Active Directory."
+title: 'Kurz: Konfigurace Workday pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
+description: Další informace o použití Workday jako zdroj dat identity pro Active Directory a Azure Active Directory.
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 976d7e7cb304a24f235e51952ce04826776e2789
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro zřizování automatické uživatelů
 
@@ -373,7 +373,7 @@ V této části nakonfigurujete, jak jsou data uživatele z Workday do služby A
 | **Společnosti**         | Společnosti   |     |  Vytvoření + aktualizace |
 | **SupervisoryOrganization**  | Oddělení  |     |  Vytvoření + aktualizace |
 | **ManagerReference**   | Správce  |     |  Vytvoření + aktualizace |
-| **BusinessTitle**   |  nadpis     |     |  Vytvoření + aktualizace | 
+| **BusinessTitle**   |  název     |     |  Vytvoření + aktualizace | 
 | **AddressLineData**    |  StreetAddress  |     |   Vytvoření + aktualizace |
 | **Okres**   |   l   |     | Vytvoření + aktualizace |
 | **CountryReferenceTwoLetter**      |   co |     |   Vytvoření + aktualizace |
@@ -397,9 +397,9 @@ Po instalaci agenta, spusťte příkazy prostředí Powershell následující ko
 
 **Příkaz #1**
 
-> CD C:\\soubory programu\\Agent synchronizace služby Active Directory Microsoft Azure\\moduly\\AADSyncAgent
+> CD "C:\Program Files\Microsoft Azure AD Connect, zřizování Agent\Modules\AADSyncAgent" agenta\\moduly\\AADSyncAgent
 
-> import-module AADSyncAgent.psd1
+> Import-Module "C:\Program Files\Microsoft Azure AD Connect zřizování Agent\Modules\AADSyncAgent\AADSyncAgent.psd1"
 
 **Příkaz #2**
 
@@ -416,6 +416,9 @@ Po instalaci agenta, spusťte příkazy prostředí Powershell následující ko
 
 >[!IMPORTANT]
 >V současné době se o známý problém s přihlašovacími údaji globální správce nefunguje, pokud používají vlastní domény (Příklad: admin@contoso.com). Jako alternativní řešení, vytvořit a použít účet globálního správce s doméně onmicrosoft.com (Příklad: admin@contoso.onmicrosoft.com)
+
+>[!IMPORTANT]
+>V současné době není známý problém s přihlašovacími údaji globální správce nefunguje, pokud mají povolenou službou Multi-Factor authentication. Jako alternativní řešení zakázání služby Multi-Factor authentication pro globální správce.
 
 
 **Příkaz #4**

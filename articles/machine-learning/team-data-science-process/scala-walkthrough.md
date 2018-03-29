@@ -1,8 +1,8 @@
 ---
-title: "Vědecké zpracování dat pomocí Scala a Spark v Azure | Microsoft Docs"
-description: "Jak používat Scala pro úkoly pod dohledem strojového učení s Spark škálovatelné MLlib a Spark ML balíčky v clusteru Azure HDInsight Spark."
+title: Vědecké zpracování dat pomocí Scala a Spark v Azure | Microsoft Docs
+description: Jak používat Scala pro úkoly pod dohledem strojového učení s Spark škálovatelné MLlib a Spark ML balíčky v clusteru Azure HDInsight Spark.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;deguhath
-ms.openlocfilehash: 940911144993f30723ad395722742c81a4b0a71c
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: dbd68508d83936964d213d94d5a30c15548cbdfc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Vědecké zkoumání dat pomocí Scala a Spark v Azure
 Tento článek ukazuje, jak používat Scala pro úkoly strojového učení s Spark škálovatelné MLlib a Spark ML balíčky v clusteru Azure HDInsight Spark. Provede vás provedou úlohami, které tvoří [vědecké zpracování dat proces](http://aka.ms/datascienceprocess): přijímání dat a zkoumání, vizualizace, funkce analýzy, modelování a spotřeba modelu. Modely v článku zahrnují logistic a lineární regrese, náhodné doménové struktury a přechodu boosted stromy (GBTs), kromě dvě běžné úkoly strojového učení:
@@ -42,7 +42,7 @@ Postup instalace a kódu v tomto článku jsou pro Azure HDInsight 3.4 Spark 1.6
 > 
 
 ## <a name="prerequisites"></a>Požadavky
-* Musíte mít předplatné Azure. Pokud jste již nemají, [získat bezplatnou zkušební verzi Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Mít předplatné Azure. Pokud jste již nemají, [získat bezplatnou zkušební verzi Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Budete potřebovat clusteru Azure HDInsight 3.4 Spark 1.6 proveďte následující postupy. K vytvoření clusteru, postupujte podle pokynů v [Začínáme: Vytvořte Apache Spark v Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Nastavení clusteru typ a verze na **vybrat typ clusteru** nabídky.
 
 ![Konfigurace typu clusteru HDInsight](./media/scala-walkthrough/spark-cluster-on-portal.png)
@@ -77,14 +77,14 @@ Můžete nahrát poznámkového bloku přímo z Githubu se serverem Poznámkový
 
 Kontexty mít přednastavení jádrech Spark, které jsou k dispozici s poznámkovými bloky Jupyter. Nemusíte explicitně nastavit Spark nebo vývoji Hive kontexty před zahájením práce s aplikací. Přednastavené kontexty jsou:
 
-* `sc`pro SparkContext
-* `sqlContext`pro HiveContext
+* `sc` pro SparkContext
+* `sqlContext` pro HiveContext
 
 ### <a name="spark-magics"></a>Spark Magic
 Spark jádra poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které můžete volat s `%%`. V následující ukázky kódu se používají dva z těchto příkazů.
 
-* `%%local`Určuje, že kód na další řádek bude proveden místně. Kód musí být platný kód Scala.
-* `%%sql -o <variable name>`provede dotaz Hive proti `sqlContext`. Pokud `-o` parametr se předává, výsledek dotazu je uchován v `%%local` Scala kontextu jako snímek dat Spark.
+* `%%local` Určuje, že kód na další řádek bude proveden místně. Kód musí být platný kód Scala.
+* `%%sql -o <variable name>` provede dotaz Hive proti `sqlContext`. Pokud `-o` parametr se předává, výsledek dotazu je uchován v `%%local` Scala kontextu jako snímek dat Spark.
 
 Pro další informace o jádrech pro poznámkové bloky Jupyter a jejich předdefinované "magics", volání s `%%` (například `%%local`), najdete v části [jádra dostupná pro poznámkové bloky Jupyter s HDInsight Spark Linux clusterů v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -262,7 +262,7 @@ Po přenést data do Spark, je dalším krokem v procesu vědecké zpracování 
 Ve výchozím nastavení je k dispozici v kontextu relace, která jsou ukládána na pracovních uzlech výstup všech fragment kódu, který spustíte z poznámkového bloku Jupyter. Pokud chcete uložit cestě k pracovním uzlům pro každý výpočty, a pokud všechna data, je třeba vaše výpočetní je dostupný místně na uzel serveru Jupyter (což je hlavního uzlu), můžete použít `%%local` magic ke spuštění fragmentu kódu na Jupyter Server.
 
 * **SQL magic** (`%%sql`). Jádro HDInsight Spark podporuje dotazy na snadno vložené HiveQL pro SQLContext. (`-o VARIABLE_NAME`) Argument potrvají výstup příkazu jazyka SQL jako rámeček Pandas dat na serveru Jupyter. To znamená, že budete mít k dispozici v místním režimu.
-* `%%local`**magic**. `%%local` Magic běží kód místně na serveru Jupyter, což je hlavního uzlu v clusteru HDInsight. Obvykle použijete, `%%local` magic ve spojení s `%%sql` magic s `-o` parametr. `-o` Parametr by zachovat výstup příkazu jazyka SQL místně a potom `%%local` magic by aktivovat další sadu fragment kódu ke spouštění místně na výstupu dotazů SQL, který je místně trvalé.
+* `%%local` **Magic**. `%%local` Magic běží kód místně na serveru Jupyter, což je hlavního uzlu v clusteru HDInsight. Obvykle použijete, `%%local` magic ve spojení s `%%sql` magic s `-o` parametr. `-o` Parametr by zachovat výstup příkazu jazyka SQL místně a potom `%%local` magic by aktivovat další sadu fragment kódu ke spouštění místně na výstupu dotazů SQL, který je místně trvalé.
 
 ### <a name="query-the-data-by-using-sql"></a>Dotaz na data pomocí SQL
 Tento dotaz načte služebních cest taxíkem velikost tarif, osobní počet a velikost tip.
@@ -295,7 +295,7 @@ Můžete zobrazit pomocí kód Python po lokální kontext jako snímek dat Pand
 * Výsečový
 * Perokresba
 * Oblast
-* Panel
+* Pruhový
 
 Tady je kód k vykreslení dat:
 

@@ -1,7 +1,7 @@
 ---
-title: "Kurz k ASP.NET MVC pro službu Azure Cosmos DB: Vývoj webové aplikace | Dokumentace Microsoftu"
-description: "Kurz k ASP.NET MVC, v rámci kterého se vytvoří webová aplikace MVC s použitím služby Azure Cosmos DB. Budete ukládat JSON a přístupová data z aplikace seznamu úkolů hostované na Webech Azure – podrobný kurz ASP.NET MVC."
-keywords: "kurz asp.net mvc, vývoj webových aplikací, aplikace mvc web, kurz asp net mvc krok za krokem"
+title: 'Kurz k ASP.NET MVC pro službu Azure Cosmos DB: Vývoj webové aplikace | Dokumentace Microsoftu'
+description: Kurz k ASP.NET MVC, v rámci kterého se vytvoří webová aplikace MVC s použitím služby Azure Cosmos DB. Budete ukládat JSON a přístupová data z aplikace seznamu úkolů hostované na Webech Azure – podrobný kurz ASP.NET MVC.
+keywords: kurz asp.net mvc, vývoj webových aplikací, aplikace mvc web, kurz asp net mvc krok za krokem
 services: cosmos-db
 documentationcenter: .net
 author: mimig1
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: mimig
 ms.custom: devcenter
-ms.openlocfilehash: a403af0f31823f89cdc79d6769dff61aeaefc4ad
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: e4f9360bfde5f3212f0bbf184c52f59b2dd43d0b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="_Toc395809351"></a>Kurz k ASP.NET MVC: Vývoj webové aplikace s použitím služby Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -30,8 +30,6 @@ ms.lasthandoff: 12/18/2017
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Pro větší názornost, jak lze pomocí služby Azure Cosmos DB efektivně ukládat dokumenty JSON a zadávat na ně dotazy, obsahuje tento článek úplný podrobný návod, jak pomocí služby Azure Cosmos DB vytvořit aplikaci seznamu úkolů. Úkoly se budou ve službě Azure Cosmos DB ukládat jako dokumenty JSON.
 
@@ -205,7 +203,7 @@ Podobným způsobem, jakým jsme vytvořili zobrazení **Index položky**, vytvo
    * V poli **Šablona** vyberte ***Create***.
    * V poli **Třída modelu** vyberte ***Položka (todo.Models)***.
    * Do pole stránky rozložení zadejte ***~/Views/Shared/_Layout.cshtml***.
-   * Klikněte na **Přidat**.
+   * Klikněte na tlačítko **Add** (Přidat).
    
 #### <a name="_Toc395888515"></a>Přidání zobrazení Upravit položku
 A nakonec stejným způsobem jako předtím přidejte jedno poslední zobrazení pro úpravu **položky**.
@@ -217,7 +215,7 @@ A nakonec stejným způsobem jako předtím přidejte jedno poslední zobrazení
    * V poli **Šablona** vyberte ***Edit***.
    * V poli **Třída modelu** vyberte ***Položka (todo.Models)***.
    * Do pole stránky rozložení zadejte ***~/Views/Shared/_Layout.cshtml***.
-   * Klikněte na **Přidat**.
+   * Klikněte na tlačítko **Add** (Přidat).
 
 Až bude vše hotovo, zavřete všechny dokumenty cshtml v nástroji Visual Studio, protože se k těmto zobrazením vrátíme později.
 

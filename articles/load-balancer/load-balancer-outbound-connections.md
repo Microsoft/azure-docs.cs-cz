@@ -14,16 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 3fc9810f2f7f86b4c795a7f008e8e1bd174a84db
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 990abc5c4e546d72d093bcd9e8f37932e93cbeb4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
-
->[!NOTE]
-> Standardní SKU pro vyrovnávání zatížení je aktuálně ve verzi preview. Verzi Preview funkci nemusí mít stejnou úroveň dostupnost a spolehlivost jako verze funkce, které jsou obecné dostupnosti. Další informace najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Použít obecně dostupná [základní SKU služby Vyrovnávání zatížení](load-balancer-overview.md) pro vaše produkční služby. Použít [dostupnost zóny Preview](https://aka.ms/availabilityzones) s touto verzí Preview vyžaduje [samostatné registrace](https://aka.ms/availabilityzones), kromě registrace do služby pro vyrovnávání zatížení [standardní preview](#preview-sign-up).
 
 Azure poskytuje odchozí připojení pro zákaznických nasazení pomocí několika různých mechanismů. Tento článek popisuje, co jsou scénáře, kdy se vztahují, jak pracují a jak spravovat.
 
@@ -55,7 +52,7 @@ Pokud nechcete, aby virtuální počítač ke komunikaci s koncovými body mimo 
 
 V tomto scénáři má virtuální počítač instanci úroveň veřejné IP splnění přiřazen. Co se týče odchozí připojení, nezáleží, jestli virtuální počítač je Vyrovnávané nebo ne. Tento scénář má přednost před ostatní. Pokud se používá splnění, virtuální počítač používá splnění pro všechny odchozí toky.  
 
-Port podvržený (Jan) se nepoužívá a virtuální počítač má všechny dočasné porty, které jsou k dispozici pro použití.
+Veřejné IP adresy, které jsou přiřazené k virtuálnímu počítači je 1:1 relace (místo 1:many) a implementovaný jako bezstavové NAT. 1:1  Port podvržený (Jan) se nepoužívá a virtuální počítač má všechny dočasné porty, které jsou k dispozici pro použití.
 
 Pokud vaše aplikace iniciuje mnoho odchozí toky a dochází k vyčerpání port překládat pomocí SNAT, vezměte v úvahu přiřazení [splnění zmírnit překládat pomocí SNAT omezení](#assignilpip). Zkontrolujte [Správa překládat pomocí SNAT vyčerpání](#snatexhaust) v celé jeho šíři.
 

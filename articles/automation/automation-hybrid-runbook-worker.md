@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/21/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b5dbc4cfd884538c8435371aa353b22cabef7400
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 157db4a9de41c9895d39469d3d42a45c1a929649
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>Automatizaci prostředků v datovém centru nebo v cloudu s hybridní pracovní proces Runbooku
 
@@ -73,7 +73,7 @@ Proveďte následující kroky k automatizaci instalace a konfigurace role Windo
      > Aktuálně jsou pouze automatizace oblasti, které podporuje integraci s analýzy protokolů - **Austrálie – jihovýchod**, **východní USA 2**, **jihovýchodní Asie**, a  **Západní Evropa**. Pokud není váš účet Automation v jednom z těchto oblastí, skript vytvoří pracovní prostor analýzy protokolů ale ho vás varuje, že ho nelze propojit je společně.
 
 2. V počítači, spusťte **prostředí Windows PowerShell** z **spustit** obrazovky v režimu správce.
-3. Z příkazového řádku prostředí PowerShell, přejděte do složky, který obsahuje skript stáhli a provést změnou hodnoty parametrů *- AutomationAccountName*, *- ResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, a *- WorkspaceName*.
+3. Z příkazového řádku prostředí PowerShell, přejděte do složky, který obsahuje skript stáhli a provést změnou hodnoty parametrů *- AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, a *- WorkspaceName*.
 
      > [!NOTE]
      > Zobrazí se výzva k ověření pomocí Azure po spuštění skriptu. Můžete **musí** Přihlaste se pomocí účtu, který je členem role Správci předplatného a spolusprávce předplatného.

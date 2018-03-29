@@ -1,21 +1,21 @@
 ---
-title: "Kopírování místních dat pomocí nástroje pro kopírování dat Azure | Microsoft Docs"
-description: "Vytvořte datovou továrnu Azure a pak pomocí nástroje pro kopírování dat zkopírujte data z místní databáze SQL Serveru do úložiště objektů blob v Azure."
+title: Kopírování místních dat pomocí nástroje pro kopírování dat Azure | Microsoft Docs
+description: Vytvořte datovou továrnu Azure a pak pomocí nástroje pro kopírování dat zkopírujte data z místní databáze SQL Serveru do úložiště objektů blob v Azure.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
 ms.date: 01/04/2018
 ms.author: jingwang
-ms.openlocfilehash: 77090d9a61945c9edc42cde7d647c75e91f54dd6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 85b721df1e666903c4966ca240c433ded01c06b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure pomocí nástroje pro kopírování dat
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ V tomto kurzu pomocí webu Azure Portal vytvoříte datovou továrnu. Pak pomoc�
 > [!NOTE]
 > - Pokud se službou Azure Data Factory teprve začínáte, přečtěte si téma [Seznámení se službou Data Factory](introduction.md).
 >
-> - Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, která je obecně dostupná, přečtěte si téma [Začínáme se službou Data Factory verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> - Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Jestliže používáte verzi 1 služby Data Factory, která je obecně dostupná, podívejte se na téma [Úvod do Data Factory (verze 1)](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 V tomto kurzu budete provádět následující kroky:
 
@@ -121,21 +121,21 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 1. V nabídce vlevo vyberte **Nový** > **Data a analýzy** > **Datová továrna**. 
    
    ![Vytvoření nové datové továrny](./media/tutorial-hybrid-copy-data-tool/new-azure-data-factory-menu.png)
-2. Na stránce **Nová datová továrna** v části **Název** zadejte **ADFTutorialDataFactory**. 
+2. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**. 
       
      ![Nová datová továrna](./media/tutorial-hybrid-copy-data-tool/new-azure-data-factory.png)
  
    Název datové továrny musí být *globálně jedinečný*. Pokud se u pole s názvem zobrazí následující chybová zpráva, změňte název datové továrny (třeba na váš_název_ADFTutorialDataFactory). Pravidla pro přiřazování názvů artefaktům služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
   
    ![Název nové datové továrny](./media/tutorial-hybrid-copy-data-tool/name-not-available-error.png)
-3. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit. 
+3. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit. 
 4. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
      
       - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
 
       - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků. 
          
-      Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).
+      Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).
 5. V části **Verze** vyberte **V2 (Preview)**.
 6. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například služby Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou můžou být v jiných umístěních nebo oblastech.
 7. Zaškrtněte **Připnout na řídicí panel**. 
