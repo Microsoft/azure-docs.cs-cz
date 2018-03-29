@@ -93,7 +93,7 @@
       href: service-fabric-architecture.md
     - name: Terminologie
       href: service-fabric-technical-overview.md
-    - name: Podporované programovací modely
+    - name: Sestavování aplikací
       href: service-fabric-choose-framework.md
       items:
         - name: Kontejnery
@@ -106,10 +106,14 @@
         - name: Reliable Services
           href: service-fabric-reliable-services-introduction.md
           items:
+            - name: Dělení služby
+              href: service-fabric-concepts-partitioning.md
             - name: 'Životní cyklus Reliable Services – C#'
               href: service-fabric-reliable-services-lifecycle.md
             - name: Životní cyklus Reliable Services – Java
               href: service-fabric-reliable-services-lifecycle-java.md
+            - name: Životní cyklus replik a instancí
+              href: service-fabric-concepts-replica-lifecycle.md
             - name: Reliable Collections
               href: service-fabric-reliable-services-reliable-collections.md
             - name: Pokyny a doporučení k Reliable Collection
@@ -122,10 +126,6 @@
               href: service-fabric-reliable-services-reliable-concurrent-queue.md
             - name: Spolehlivá serializace kolekcí
               href: service-fabric-reliable-services-reliable-collections-serialization.md
-            - name: Interní informace Reliable State Manager a Reliable Collection
-              href: service-fabric-reliable-services-reliable-collections-internals.md
-            - name: Pokročilé využití
-              href: service-fabric-reliable-services-advanced-usage.md
         - name: Reliable Actors
           href: service-fabric-reliable-actors-introduction.md
           items:
@@ -153,18 +153,14 @@
           href: service-fabric-application-and-service-manifests.md
         - name: Model hostingu
           href: service-fabric-hosting-model.md
+        - name: Zabezpečení aplikací
+          href: service-fabric-application-and-service-security.md
         - name: Stav služby
           href: service-fabric-concepts-state.md
-        - name: Dělení služby
-          href: service-fabric-concepts-partitioning.md
         - name: Škálovatelnost aplikací
           href: service-fabric-concepts-scalability.md
         - name: Dostupnost služeb
           href: service-fabric-availability-services.md
-        - name: Životní cyklus replik a instancí
-          href: service-fabric-concepts-replica-lifecycle.md
-        - name: Rekonfigurace
-          href: service-fabric-concepts-reconfiguration.md
         - name: Komunikace služeb
           href: service-fabric-connect-and-communicate-with-services.md
           items:
@@ -242,55 +238,29 @@
               href: service-fabric-cluster-resource-manager-movement-cost.md
     - name: Monitorování a diagnostika
       items:
-        - name: Monitorování a diagnostika aplikací
+        - name: Přehled monitorování
           href: service-fabric-diagnostics-overview.md
-        - name: Generování událostí
+        - name: Protokolování clusteru
+          href: service-fabric-diagnostics-event-generation-infra.md
           items:
-            - name: Generování událostí na úrovni platformy
-              href: service-fabric-diagnostics-event-generation-infra.md
-              items:
-                - name: Provozní kanál
-                  href: service-fabric-diagnostics-event-generation-operational.md
-                - name: Události Reliable Services
-                  href: service-fabric-reliable-services-diagnostics.md
-                - name: Události Reliable Actors
-                  href: service-fabric-reliable-actors-diagnostics.md
-                - name: Metriky výkonu
-                  href: service-fabric-diagnostics-event-generation-perf.md
-                - name: Monitorování vzdálené komunikace služeb
-                  href: service-fabric-reliable-serviceremoting-diagnostics.md
-            - name: Generování událostí na úrovni aplikace
-              href: service-fabric-diagnostics-event-generation-app.md
-        - name: Kontrola stavu aplikace a clusteru
-          items:
-            - name: Monitorování stavu Service Fabric
-              href: service-fabric-health-introduction.md
-            - name: Hlášení a kontrola stavu služeb
-              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
-            - name: Přidání vlastních stavových sestav
-              href: service-fabric-report-health.md
-            - name: Řešení potíží se systémovými stavovými sestavami
-              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
-            - name: Zobrazení stavových sestav
-              href: service-fabric-view-entities-aggregated-health.md
-        - name: Agregace událostí
-          items:
-            - name: Agregace událostí s využitím EventFlow
-              href: service-fabric-diagnostics-event-aggregation-eventflow.md
-            - name: Agregace událostí s využitím Azure Diagnostics
-              items:
-                - name: Windows
-                  href: service-fabric-diagnostics-event-aggregation-wad.md
-                - name: Linux
-                  href: service-fabric-diagnostics-event-aggregation-lad.md
-        - name: Analýza událostí
-          items:
-            - name: Analýza událostí s využitím Application Insights
-              href: service-fabric-diagnostics-event-analysis-appinsights.md
-            - name: Analýza událostí s využitím OMS
-              href: service-fabric-diagnostics-event-analysis-oms.md
-        - name: Řešení potíží s místním clusterem
-          href: service-fabric-troubleshoot-local-cluster-setup.md
+            - name: Provozní kanál
+              href: service-fabric-diagnostics-event-generation-operational.md
+            - name: Události Reliable Services
+              href: service-fabric-reliable-services-diagnostics.md
+            - name: Události Reliable Actors
+              href: service-fabric-reliable-actors-diagnostics.md
+            - name: Metriky výkonu
+              href: service-fabric-diagnostics-event-generation-perf.md
+            - name: Monitorování vzdálené komunikace služeb
+              href: service-fabric-reliable-serviceremoting-diagnostics.md
+        - name: Protokolování aplikací
+          href: service-fabric-diagnostics-event-generation-app.md
+        - name: Přehled modelu stavu
+          href: service-fabric-health-introduction.md
+        - name: Reportování událostí stavu
+          href: service-fabric-report-health.md
+        - name: Monitorování pomocí OMS
+          href: service-fabric-diagnostics-event-analysis-oms.md
     - name: Integrace se službou API Management
       href: service-fabric-api-management-overview.md
 - name: Návody
@@ -347,8 +317,10 @@
               href: service-fabric-deploy-multiple-apps.md
         - name: Sestavení služby kontejneru
           items:
-            - name: Zabezpečení kontejneru
+            - name: Použití certifikátu v kontejneru
               href: service-fabric-securing-containers.md
+            - name: Nastavení gMSA pro kontejnery Windows
+              href: service-fabric-setup-gmsa-for-windows-containers.md
             - name: Docker Compose (Preview)
               href: service-fabric-docker-compose.md
             - name: Zásady správného řízení prostředků pro kontejnery a služby
@@ -383,6 +355,8 @@
                   href: service-fabric-reliable-services-secure-communication.md
                 - name: Zabezpečená komunikace – Java
                   href: service-fabric-reliable-services-secure-communication-java.md
+                - name: Zabezpečená komunikace – WCF
+                  href: service-fabric-reliable-services-secure-communication-wcf.md
             - name: Konfigurace
               href: service-fabric-reliable-services-configuration.md
             - name: Odeslat oznámení
@@ -419,8 +393,12 @@
           items:
             - name: Správa tajných klíčů aplikací
               href: service-fabric-application-secret-management.md
-            - name: Konfigurace zásad zabezpečení pro aplikaci
+            - name: Spuštění skriptu spuštění služby jako místní uživatel nebo systémový účet
+              href: service-fabric-run-script-at-service-startup.md
+            - name: Spuštění služby jako místní uživatel nebo systémový účet
               href: service-fabric-application-runas-security.md
+            - name: Přiřazení zásady zabezpečení přístupu pro koncové body
+              href: service-fabric-assign-policy-to-endpoint.md
     - name: Práce ve vývojovém prostředí Windows/VS
       items:
         - name: Správa aplikací v sadě Visual Studio
@@ -531,6 +509,8 @@
               href: service-fabric-cluster-security-update-certs-azure.md
             - name: Odstranění
               href: service-fabric-cluster-delete.md
+            - name: Vzdálené připojení k virtuálnímu počítači uzlu clusteru
+              href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
         - name: Samostatné clustery
           items:
             - name: Vytvořit
@@ -545,8 +525,14 @@
                   href: service-fabric-cluster-standalone-package-contents.md
             - name: Měřítko
               href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: Nastavení řízení přístupu
-              href: service-fabric-cluster-security-roles.md
+            - name: Konfigurace zabezpečení
+              items:
+                - name: Nastavení řízení přístupu
+                  href: service-fabric-cluster-security-roles.md
+                - name: Spuštění služby jako skupina nebo uživatel AD
+                  href: service-fabric-run-service-as-ad-user-or-group.md
+                - name: Spuštění služby jako skupinový účet spravované služby
+                  href: service-fabric-run-service-as-gmsa.md
             - name: Konfigurace
               href: service-fabric-cluster-manifest.md
             - name: Upgrade
@@ -559,7 +545,7 @@
           href: service-fabric-patch-orchestration-application.md
     - name: Monitorování a diagnóza
       items:
-        - name: OMS
+        - name: Analýza s využitím OMS
           items:
             - name: Nastavení OMS Log Analytics
               href: service-fabric-diagnostics-oms-setup.md
@@ -567,10 +553,26 @@
               href: service-fabric-diagnostics-oms-agent.md
             - name: Monitorování kontejnerů
               href: service-fabric-diagnostics-oms-containers.md
-        - name: Sledování výkonu
+        - name: Analýza s využitím Application Insights
+          href: service-fabric-diagnostics-event-analysis-appinsights.md
+        - name: Agregace událostí – EventFlow
+          href: service-fabric-diagnostics-event-aggregation-eventflow.md
+        - name: Agregace událostí – Azure Diagnostics
           items:
-            - name: Sledování výkonu s využitím WAD
-              href: service-fabric-diagnostics-perf-wad.md
+            - name: Windows
+              href: service-fabric-diagnostics-event-aggregation-wad.md
+            - name: Linux
+              href: service-fabric-diagnostics-event-aggregation-lad.md
+        - name: Sledování výkonu s využitím WAD
+          href: service-fabric-diagnostics-perf-wad.md
+        - name: Reportování a kontrola stavu
+          href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+        - name: Řešení potíží se systémovými stavovými sestavami
+          href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+        - name: Zobrazení stavových sestav
+          href: service-fabric-view-entities-aggregated-health.md
+        - name: Řešení potíží s místním clusterem
+          href: service-fabric-troubleshoot-local-cluster-setup.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell

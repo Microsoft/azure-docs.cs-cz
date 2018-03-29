@@ -21,6 +21,10 @@
   items:
     - name: Použít R Serveru
       items:
+        - name: Správa clusteru R Serveru
+          href: r-server-hdinsight-manage.md
+        - name: Zprovoznění clusteru R Serveru
+          href: r-server-operationalize.md
         - name: Možnosti úložiště
           href: r-server-storage.md
         - name: Výpočetní kontext

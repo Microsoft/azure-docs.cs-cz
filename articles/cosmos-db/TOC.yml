@@ -445,3 +445,5 @@
       href: faq.md
     - name: Vysvětlení konzistence dat pomocí baseballu
       href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
+    - name: Řešení potíží s Azure Cosmos DB
+      href: troubleshoot-azure-cosmosdb.md

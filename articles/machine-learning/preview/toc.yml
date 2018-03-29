@@ -3,10 +3,14 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je Azure Machine Learning?
+    - name: Informace o službě Azure Machine Learning
       href: overview-what-is-azure-ml.md
     - name: Přehled správy modelů
       href: model-management-overview.md
+    - name: Další produkty ML
+      href: overview-more-machine-learning.md
+    - name: Co je nového
+      href: azure-machine-learning-release-notes.md
 - name: Šablony Rychlý start
   items:
     - name: Instalace a spuštění
@@ -98,6 +102,8 @@
           href: how-to-setup-ssl-on-mlc.md
         - name: Nasazení webové služby
           href: model-management-service-deploy.md
+        - name: Přizpůsobení kontejneru
+          href: model-management-custom-container.md
         - name: Nasazení do zařízení IoT Edge
           href: deploy-to-iot-edge-device.md
         - name: Využívání webové služby
@@ -180,18 +186,6 @@
           href: model-management-cli-reference.md
         - name: Rozhraní API pro shromažďování dat modelů
           href: model-data-collection-api-reference.md
-    - name: "Poznámky k\_verzi"
-      items:
-        - name: Sprint 0 – říjen 2017
-          href: release-notes-sprint-0.md
-        - name: Sprint 1 – listopad 2017
-          href: release-notes-sprint-1.md
-        - name: Sprint 2 – prosinec 2017
-          href: release-notes-sprint-2.md
-        - name: Sprint 2 QFE – prosinec 2017
-          href: release-notes-sprint-2.1.md
-        - name: Sprint 3 – leden 2018
-          href: release-notes-sprint-3.md
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy

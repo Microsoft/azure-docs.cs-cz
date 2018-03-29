@@ -19,12 +19,16 @@
       href: tutorial-simulate-device-windows.md
     - name: 'Vývoj modulu jazyka C#'
       href: tutorial-csharp-module.md
+    - name: Vývoj modulu jazyka Python
+      href: tutorial-python-module.md
     - name: Nasazení služby Azure Stream Analytics
       href: tutorial-deploy-stream-analytics.md
     - name: Nasazení služby Azure Machine Learning
       href: tutorial-deploy-machine-learning.md
     - name: Nasazení služby Azure Functions
       href: tutorial-deploy-function.md
+    - name: Práce s několika moduly v editoru VS Code
+      href: tutorial-multiple-modules-in-vscode.md
 - name: Návody
   items:
     - name: Vytváření bran

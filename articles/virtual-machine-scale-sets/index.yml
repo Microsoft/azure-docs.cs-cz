@@ -1,0 +1,63 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke škálovacím sadám virtuálních počítačů
+metadata:
+  title: Škálovací sady virtuálních počítačů Azure umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení a automatickým škálováním. Naučte se vytvářet, konfigurovat, spravovat a automaticky škálovat škálovací sady virtuálních počítačů prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+  services: virtual-machine-scale-sets
+  author: carolz
+  manager: czeumault
+  ms.service: virtual-machine-scale-sets
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/14/2018
+  ms.author: carolz
+  ms.openlocfilehash: ea8437adf7224c4605f31ccdea281669b89bb7c9
+  ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/28/2018
+abstract:
+  description: Škálovací sady virtuálních počítačů Azure umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení a automatickým škálováním. Naučte se vytvářet, konfigurovat, spravovat a automaticky škálovat škálovací sady virtuálních počítačů prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+sections:
+- title: Šablony Rychlý start
+  items:
+  - type: paragraph
+    text: Zjistěte, jak do škálovací sady virtuálních počítačů nasadit webový server.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg
+      text: Azure Portal
+      href: /azure/virtual-machine-scale-sets/quick-create-portal
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
+      text: Azure CLI 2.0
+      href: /azure/virtual-machine-scale-sets/quick-create-cli
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/virtual-machine-scale-sets/quick-create-powershell
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Naučte se nasazovat, spravovat a automaticky škálovat škálovací sady virtuálních počítačů v Azure.
+  - type: list
+    style: ordered
+    items:
+    - html: Vytvoření a správa škálovací sady s využitím <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-cli">Azure CLI 2.0</a> nebo <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-powershell">Azure Powershellu</a>
+    - html: Použití datových disků s využitím <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-cli">Azure CLI 2.0</a> nebo <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-powershell">Azure Powershellu</a>
+    - html: Použití image virtuálního počítače s využitím <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">Azure CLI 2.0</a> nebo <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">Azure Powershellu</a>
+    - html: Nasazení aplikací do škálovací sady s využitím <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">Azure CLI 2.0</a> nebo <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">Azure Powershellu</a>
+    - html: Automatické škálování škálovací sady s využitím <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">Azure CLI 2.0</a> nebo <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">Azure Powershellu</a>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: Příklady nasazení škálovací sady virtuálních počítačů
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/virtual-machine-scale-sets/cli-samples">Azure CLI 2.0</a>
+    - html: <a href="/azure/virtual-machine-scale-sets/powershell-samples">Azure PowerShell</a>

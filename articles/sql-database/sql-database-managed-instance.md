@@ -8,20 +8,20 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 03/22/2018
 ms.author: bonova
-ms.openlocfilehash: e13583e0364b01c3a4560d88882eb1dcf82b8c99
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2d07d58114a4d89f40a4ea9e388c58f58494766c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Instance spravované (preview)?
 
 SQL databáze spravované Instance Azure (preview) je nová funkce Azure SQL Database, poskytuje téměř 100 % kompatibilitu s systému SQL Server na místní (Enterprise Edition), poskytuje nativní [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md) implementace, které řeší běžné otázky zabezpečení a [modelu business](https://azure.microsoft.com/pricing/details/sql-database/) uspokojivým pro zákazníky, místní systém SQL Server. Spravované Instance umožňuje stávající zákazníky služby SQL Server a navýšení posunutí své místní aplikace do cloudu s minimálními změnami aplikace a databáze. Ve stejnou dobu spravované Instance uchovává všechny možnosti PaaS (Automatické aktualizace použití dílčích oprav a verze, zálohování, vysokou dostupnost), které výrazně snižuje správní režii a celkové náklady na vlastnictví.
 
 > [!IMPORTANT]
-> Seznam oblastí, ve kterých spravované Instance je aktuálně k dispozici, najdete v části [migrace databáze do plně spravovaná služba s Azure SQL Database spravované Instance](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
+> Seznam oblastí, ve kterých je Managed Instance aktuálně k dispozici, najdete v tématu [Migrace databází do plně spravované služby pomocí Azure SQL Database Managed Instance](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
  
 Následující diagram popisuje klíčové funkce spravované instance:
 
@@ -34,16 +34,16 @@ Spravované Instance je představovali jako upřednostňovaný platformu pro ná
 
 Spravované Instance cílem podle obecné dostupnosti, je k poskytování blízko útoku na 100 % kompatibility s nejnovější verzí systému SQL Server na místě prostřednictvím dvoufázové instalace verze plánu. 
 
-Následující tabulka jsou podrobněji popsány dále klíčové rozdíly a představovali scénáře použití mezi SQL IaaS, databáze SQL Azure a spravovat Instance:
+Následující tabulka jsou podrobněji popsány dále klíčové rozdíly a představovali scénáře použití mezi SQL IaaS, databáze SQL Azure a spravovat Instance databáze SQL:
 
 | | Scénáře použití | 
 | --- | --- | 
-|MI |Pro zákazníky chtějí migrovat velký počet aplikací z místní nebo IaaS, samoobslužné vytvořen nebo ISV, které jsou k dispozici s navrhnout jako nízkou migrace úsilí co možná, spravované Instance. Pomocí plně automatického [služby migrace dat (DMS)](/sql/dma/dma-overview) v Azure, zákazníků navýšení a posunutí jejich místní SQL Server na spravované Instance, která nabízí kompatibilitu s místním SQL serverem a dokončení izolace instance zákazníků s nativní podporou virtuální sítě.  Pomocí programu Software Assurance, můžete vyměňovat své stávající licence pro zvýhodněné sazby na spravované Instance databáze SQL pomocí [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Spravované Instance databáze SQL je nejlepší cíl migrace v cloudu pro instance systému SQL Server, které vyžadují vysoké zabezpečení a bohaté programovatelnosti prostor. |
-|Azure SQL Database |**Elastické fondy**: pro zákazníky vývoj nové víceklientské aplikace SaaS nebo záměrně transformace své stávající místní aplikace do víceklientské aplikace SaaS, navrhnout elastické fondy. Výhody tohoto modelu: <br><ul><li>Převod modelu obchodní prodávané licencí, které chcete prodávané odběry služby (pro ISV)</li></ul><ul><li>Izolace snadný a odrážka ověření klienta</li></ul><ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul><ul><li>Mohlo škálování bez stiskne pevný mezní hodnoty</li></ul>**Jedna databáze**: pro zákazníky vývoji nových aplikací než SaaS více klientů, jejichž zatížení je stabilní a předvídatelné, navrhnout izolované databáze. Výhody tohoto modelu:<ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul>  <ul><li>Předvídatelný výkon pro každou databázi</li></ul>|
-|SQL IaaS |Pro zákazníky museli přizpůsobení operačního systému nebo na serveru databáze, a také zákazníků, kterým se specifické požadavky z hlediska spouštění aplikací třetích stran stranou s SQL serverem (ve stejném virtuálním počítači), navrhnout virtuálním počítačům systému SQL nebo IaaS jako optimální řešení|
+|SQL Database Managed Instance |Pro zákazníky chtějí migrovat velký počet aplikací z místní nebo IaaS, samoobslužné vytvořen nebo ISV, které jsou k dispozici s navrhnout jako nízkou migrace úsilí co možná, spravované Instance. Pomocí plně automatického [služby migrace dat (DMS)](/sql/dma/dma-overview) v Azure, zákazníků navýšení a posunutí jejich místní SQL Server na spravované Instance, která nabízí kompatibilitu s místním SQL serverem a dokončení izolace instance zákazníků s nativní podporou virtuální sítě.  Pomocí programu Software Assurance, můžete vyměňovat své stávající licence pro zvýhodněné sazby na spravované Instance databáze SQL pomocí [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Spravované Instance databáze SQL je nejlepší cíl migrace v cloudu pro instance systému SQL Server, které vyžadují vysoké zabezpečení a bohaté programovatelnosti prostor. |
+|Azure SQL Database (jedna nebo fond) |**Elastické fondy**: pro zákazníky vývoj nové víceklientské aplikace SaaS nebo záměrně transformace své stávající místní aplikace do víceklientské aplikace SaaS, navrhnout elastické fondy. Výhody tohoto modelu: <br><ul><li>Převod modelu obchodní prodávané licencí, které chcete prodávané odběry služby (pro ISV)</li></ul><ul><li>Izolace snadný a odrážka ověření klienta</li></ul><ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul><ul><li>Mohlo škálování bez stiskne pevný mezní hodnoty</li></ul>**Jedna databáze**: pro zákazníky vývoji nových aplikací než SaaS více klientů, jejichž zatížení je stabilní a předvídatelné, navrhnout izolované databáze. Výhody tohoto modelu:<ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul>  <ul><li>Předvídatelný výkon pro každou databázi</li></ul>|
+|Virtuální počítač SQL IaaS|Pro zákazníky museli přizpůsobení operačního systému nebo na serveru databáze, a také zákazníků, kterým se specifické požadavky z hlediska spouštění aplikací třetích stran stranou s SQL serverem (ve stejném virtuálním počítači), navrhnout virtuálním počítačům systému SQL nebo IaaS jako optimální řešení|
 |||
 
-![Umístění](./media/sql-database-managed-instance/positioning.png)
+<!---![positioning](./media/sql-database-managed-instance/positioning.png)--->
 
 ## <a name="how-to-programmatically-identify-a-managed-instance"></a>Jak programově identifikovat a spravovat Instance
 

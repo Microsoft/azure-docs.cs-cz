@@ -9,7 +9,6 @@
 
 # Začínáme
 ## [Pomocí portálu](data-lake-store-get-started-portal.md)
-## [Použití služby Data Lake Store v průzkumníku služby Storage](data-lake-store-in-storage-explorer.md)
 ## [Pomocí PowerShellu](data-lake-store-get-started-powershell.md)
 ## [Použití Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 
@@ -17,7 +16,7 @@
 # Postup
 ## Načtení a přesun dat
 ### [Pomocí služby Azure Data Factory](../data-factory/load-azure-data-lake-store.md)
-### [Použití služby Data Lake Store v průzkumníku služby Storage](data-lake-store-in-storage-explorer.md)
+### [Pomocí Průzkumníka služby Azure Storage](data-lake-store-in-storage-explorer.md)
 ### [Pomocí AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 ### [Pomocí DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [Pomocí Sqoop](data-lake-store-data-transfer-sql-sqoop.md)

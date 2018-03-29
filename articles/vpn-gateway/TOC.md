@@ -66,13 +66,13 @@
 ### [Azure PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [Azure PowerShell (Classic)](vpn-gateway-about-forced-tunneling.md)
 ## Úprava nastavení místní síťové brány
-### [portál Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
+### [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
 ### [Azure PowerShell](vpn-gateway-modify-local-network-gateway.md)
 ### [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 ## [Ověření připojení brány VPN](vpn-gateway-verify-connection-resource-manager.md)
 ## [Resetování brány VPN](vpn-gateway-resetgw-classic.md)
 ## Odstranění brány VPN
-### [portál Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+### [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [Azure PowerShell (Classic)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [Konfigurace brány VPN (Classic)](vpn-gateway-configure-vpn-gateway-mp.md)
@@ -85,8 +85,9 @@
 ### [Ověření propustnosti sítě VPN do virtuální sítě](vpn-gateway-validate-throughput-to-vnet.md)
 ### [Nastavení zařízení brány firewall nebo VPN navrhované komunitou](vpn-gateway-third-party-settings.md)
 ### [Problémy s připojením typu Point-to-Site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-### [Připojení typu Site-to-Site se přerušovaně odpojuje](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
-### [Připojení typu Site-to-Site se nemůže připojit](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
+#### [Problémy s připojením typu Point-to-Site – klient Mac OS X VPN](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+### [Problémy s připojením typu Site-to-Site](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
+#### [Připojení typu Site-to-Site se přerušovaně odpojuje](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [Konfigurace a ověření připojení VPN nebo virtuální sítě](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
 
 # Referenční informace

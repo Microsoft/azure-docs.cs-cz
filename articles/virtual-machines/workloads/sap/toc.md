@@ -39,7 +39,7 @@
 ### Příprava infrastruktury Azure
 #### [Windows se sdíleným diskem pro instanci (A)SCS](sap-high-availability-infrastructure-wsfc-shared-disk.md)
 #### [Windows se sdílenou složkou SOFS pro instanci (A)SCS](sap-high-availability-infrastructure-wsfc-file-share.md)
-#### [SUSE Linux s NFS pro instanci (A)SCS](high-availability-guide-suse.md)
+#### [Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SLES](high-availability-guide-suse-nfs.md)
 #### [Pacemaker na SLES](high-availability-guide-suse-pacemaker.md)
 ### Instalace SAPu
 #### [Windows se sdíleným diskem pro instanci (A)SCS](sap-high-availability-installation-wsfc-shared-disk.md)

@@ -1,6 +1,6 @@
 ---
 title: Síťová řešení pro sledování výkonu v Azure | Microsoft Docs
-description: Sledování výkonu v Azure sítě vám pomůže s monitorováním výkonu vaší sítě-in téměř skutečné čas – chcete zjišťovat a vyhledejte kritická místa výkonu sítě.
+description: Sledování výkonu sítě v Azure umožňuje sledovat výkon sítě, skoro v reálném čase, na zjištění a najít kritické body sítě.
 services: log-analytics
 documentationcenter: ''
 author: abshamsft
@@ -14,196 +14,206 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 90fd9b09f90d5b209e0eb8cc6996ef7fb1e7e0b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 847213a5b8aab908d412ecc9aecec984aec1a9ba
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Síťová řešení pro sledování výkonu v Azure
 
 ![Symbol sledování výkonu sítě](./media/log-analytics-network-performance-monitor/npm-symbol.png)
 
 
-Monitorování výkonu v síti (NPM) je síť hybridní cloudové řešení monitorování, které umožňuje sledovat výkon sítě mezi různými body v síťové infrastruktuře, monitorování síťové připojení ke koncovým bodům služby nebo aplikace a monitorování výkonu Azure ExpressRoute.  
+Sledování výkonu sítě je síť hybridní cloudové řešení monitorování, které umožňuje sledovat výkon sítě mezi různými body v síťové infrastruktuře. To zároveň pomáhá monitorovat síťové připojení k služby a aplikace koncových bodů a monitorování výkonu Azure ExpressRoute. 
 
-NPM zjistí problémy se síťovým jako blackholing provoz, směrování chyb a problémů, které metody monitorování konvenční sítě nejsou schopna zjistit. Řešení generuje výstrahy, upozorní, když prahové hodnoty porušení zabezpečení nebyla pro síťové propojení, zajišťuje možno včas zjistit problémy s výkonem sítě a lokalizováno zdroj problému na určitém segmentu sítě nebo zařízení. 
+Sledování výkonu sítě zjistí problémy se síťovým jako blackholing provoz, směrování chyb a problémů, které metody monitorování konvenční sítě nejsou schopna zjistit. Řešení generuje výstrahy a upozorní vás, když prahové hodnoty je nedodržení pro síťové propojení. Také zajistí možno včas zjistit problémy s výkonem sítě a lokalizováno zdroj problému na určitém segmentu sítě nebo zařízení. 
 
-NPM nabízí tři obecné možnosti: 
+Sledování výkonu sítě nabízí tři obecné možnosti: 
 
-[Sledování výkonu](log-analytics-network-performance-monitor-performance-monitor.md): sledovat připojení k síti v rámci cloudu nasazení a místní umístění, několika datových centrech a firemní pobočky, služba mission kritické vícevrstvé aplikace a micro služby. Pomocí tohoto nástroje můžete zjistit problémy se síťovým před stížnost vaši uživatelé.  
+* [Sledování výkonu](log-analytics-network-performance-monitor-performance-monitor.md): připojení k síti můžete sledovat v rámci nasazení cloudu a místní umístění více datových centrech a pobočky a kritické vícevrstvé aplikace nebo mikroslužeb. Pomocí tohoto nástroje můžete zjistit problémy se síťovým před stížnost uživatele.
 
-[Monitorování koncového bodu služby](log-analytics-network-performance-monitor-service-endpoint.md): můžete sledovat připojení od uživatelů ke službám zajímají, určit, jakou infrastrukturu je v cestě a kde sítě dochází k kritická místa. Vědět o výpadků před uživatelům a zobrazit je přesné umístění problémy podél síťovou cestu. 
+* [Monitorování koncového bodu služby](log-analytics-network-performance-monitor-service-endpoint.md): můžete sledovat připojení od uživatelů ke službám zajímají, určit, jakou infrastrukturu je v cestě a identifikovat, kdy dojde k problémových míst v síti. Můžete vědět o výpadcích před uživatelům a najdete přesné umístění problémy podél síťovou cestu. 
 
-Tato funkce slouží k provádění http, HTTPS, TCP a ICMP na základě testy ke sledování v téměř v reálném čase nebo v minulosti dostupnosti a doba odezvy služby a příspěvku sítě v ztráta paketů a latence. S mapy topologie sítě můžete izolovat zpomalení sítě tím, že určíte body problém, ke kterým došlo v síťové cestě z uzlu službu s data latence jednotlivých směrování. Pomocí předdefinovaných testů monitorování síťové připojení k Office 365 a Dynamics CRM bez jakékoli předběžné konfigurace. Díky této funkci můžete sledovat síťové připojení k žádný TCP podporující koncový bod, jako jsou například weby, SaaS, PaaS aplikace, databáze SQL, atd.  
+    Tato funkce umožňuje provádět testy na základě protokolu HTTP, HTTPS, TCP a ICMP sledování v téměř v reálném čase nebo v minulosti dostupnosti a doba odezvy služby. Také můžete monitorovat příspěvku sítě v ztráta paketů a latenci. S mapy topologie sítě můžete izolovat zpomalení sítě. Můžete identifikovat problém body, ke kterým došlo v síťové cestě z uzlu službu s data latence jednotlivých směrování. Pomocí předdefinovaných testů můžete sledovat síťové připojení k Office 365 a Dynamics CRM bez jakékoli přednastavení. Díky této funkci můžete sledovat síťové připojení ke koncovému bodu žádné podporující TCP/IP, například weby, aplikace SaaS, PaaS aplikací a databází SQL.
 
-[Monitorování ExpressRoute](log-analytics-network-performance-monitor-expressroute.md): sledování začátku do konce připojení a výkonu mezi pobočkami a Azure, přes Azure ExpressRoute.  
+* [Monitorování ExpressRoute](log-analytics-network-performance-monitor-expressroute.md): sledování začátku do konce připojení a výkonu mezi pobočkami a Azure, přes Azure ExpressRoute.  
 
 Další informace o různých možnostech nepodporuje [sledování výkonu sítě](https://docs.microsoft.com/azure/networking/network-monitoring-overview) je k dispozici online.
  
+## <a name="supported-regions"></a>Podporované oblasti
+NPM můžete monitorovat připojení mezi sítěmi a aplikací na celém světě, z pracovního prostoru, který je hostován v jednom z následujících oblastí:
+* Západní Evropa
+* Západní střed USA
+* Východ USA
+* Jihovýchodní Asie
+* Východ Jižní Austrálie
+* Virginia vláda USA
+
+Seznam podporované oblasti pro monitorování ExpressRoute je k dispozici v [dokumentaci](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117#regions).
+
 
 ## <a name="set-up-and-configure"></a>Nastavení a konfigurace
 
 ### <a name="install-and-configure-agents"></a>Instalace a konfigurace agentů 
 
-Použijte k instalaci agentů na základní procesy [počítače se systémem Windows se připojit k analýze protokolů](log-analytics-windows-agents.md) a [připojení nástroje Operations Manager k analýze protokolů](log-analytics-om-agents.md).
+Použijte k instalaci agentů na základní procesy [počítače se systémem Windows se připojit k Azure Log Analytics](log-analytics-windows-agents.md) a [připojení nástroje Operations Manager k analýze protokolů](log-analytics-om-agents.md).
 
 ### <a name="where-to-install-the-agents"></a>Umístění instalace agentů 
 
-**Sledování výkonu:** nainstalovat agenty OMS na nejméně jeden uzel připojení pro každou podsíť, ze kterého chcete monitorovat síťové připojení k jiné podsítě.  
+* **Sledování výkonu**: instalace služby Operations Management Suite agenty na nejméně jeden uzel připojení pro každou podsíť, ze kterého chcete monitorovat síťové připojení k jiné podsítě.
 
-Ke sledování síťového propojení, je nutné nainstalovat agenty na oba koncové body tento odkaz.  Pokud si nejste jistí o topologii sítě, nainstalujte agenty na serverech s kritickým úlohám, mezi kterými chcete monitorovat výkon sítě. Například pokud chcete monitorovat síťové připojení mezi webový server a server se systémem SQL, nainstalujte agenta na obou serverech. Agenti monitorují připojení k síti (odkazy) mezi hostiteli není hostitelů sami. 
+    Pokud chcete monitorovat síťové propojení, nainstalujte agenty na oba koncové body tento odkaz. Pokud si nejste jisti o topologii sítě, nainstalujte agenty na serverech s kritickým úlohám, mezi kterými chcete monitorovat výkon sítě. Například pokud chcete monitorovat síťové připojení mezi webový server a server se systémem SQL, nainstalujte agenta na obou serverech. Agenti monitorují připojení k síti (odkazy) mezi hostiteli, není hostitelů sami. 
 
-**Monitorování koncového bodu služby:** nainstalovat agenta OMS na každém uzlu, ze kterého chcete monitorovat síťové připojení ke koncovému bodu služby. Například pokud máte v úmyslu monitorování připojení k síti pro Office 365 z webu office O1, O2 a O3, pak nainstalujte agenta OMS na nejméně jeden uzel každý O1, O2 a O3. 
+* **Monitorování koncového bodu služby**: nainstalujte agenta Operations Management Suite na každý uzel, ze kterého chcete monitorovat síťové připojení ke koncovému bodu služby. Příkladem je, pokud chcete monitorovat síťové připojení k Office 365 z office lokalit s O1, O2 a O3 názvem bez přípony. Nainstalujte agenta Operations Management Suite na nejméně jeden uzel každý O1, O2 a O3. 
 
-**Monitorování ExpressRoute:** nainstalovat alespoň jeden agent OMS ve vaší virtuální síti Azure a alespoň jeden agent v místní podsítí, které je připojené prostřednictvím ExpressRoute privátní partnerský vztah.  
+* **Monitorování ExpressRoute**: nainstalujte alespoň jeden agenta Operations Management Suite ve vaší virtuální síti Azure. Alespoň jeden agenta nainstalujte také v místní podsíť, která je připojena prostřednictvím soukromého partnerského vztahu ExpressRoute.  
 
-### <a name="configure-oms-agents-for-monitoring"></a>Konfigurace OMS agentů pro monitorování  
+### <a name="configure-operations-management-suite-agents-for-monitoring"></a>Konfigurace služby Operations Management Suite agentů pro monitorování 
 
-NPM používá k monitorování výkonu sítě mezi zdrojovým a cílovým agenty syntetické transakce. Toto řešení umožňuje výběr ze TCP a ICMP jako protokol pro monitorování v nástroji Sledování výkonu a monitorování koncového bodu služby funkce, zatímco TCP se používá pro monitorování ExpressRoute. Ujistěte se, že brána firewall umožňuje komunikaci mezi agenty OMS používá pro monitorování na protokol, na který jste zvolili pro monitorování.  
+Sledování výkonu sítě používá k monitorování výkonu sítě mezi zdrojovým a cílovým agenty syntetické transakce. Můžete zvolit TCP a ICMP jako protokol pro monitorování v nástroji Sledování výkonu a monitorování koncového bodu služby. TCP se používá pro monitorování ExpressRoute. Ujistěte se, že brána firewall umožňuje komunikaci mezi agenty Operations Management Suite použít pro monitorování na protokol, který zvolíte. 
 
-**Protokolu TCP:** Pokud TCP jste vybrali jako protokol pro monitorování, otevřete port brány Firewall na agentech používá pro sledování výkonu a ExpressRoute monitorování možnosti zajistit, že agentů můžete připojit k sobě navzájem. K tomu, spusťte skript prostředí PowerShell EnableRules.ps1 bez parametrů v okně power shell s oprávněními správce.  
+* **Protokolu TCP**: Pokud si zvolíte TCP jako protokol pro monitorování, otevřete port brány firewall týkající se agentů, použít pro sledování výkonu sítě a monitorování ExpressRoute a ujistěte se, že agentů můžete připojit k sobě navzájem. Otevřete port, spusťte skript prostředí PowerShell EnableRules.ps1 bez parametrů v okně prostředí PowerShell s oprávněními správce.
 
-Tento skript vytvoří klíčům registru požadovaným řešení a vytvoří pravidla brány firewall systému Windows povolit agentů k vytvoření připojení TCP mezi sebou. Klíče registru vytvořený skript také určete, zda protokoly pro ladění a cesta k souboru protokoly protokolu. Definuje také agent TCP port používaný pro komunikaci. Hodnoty pro tyto klíče se nastaví automaticky ve skriptu, takže byste neměli měnit ručně tyto klíče. Port otevřít ve výchozím nastavení je 8084. Můžete vytvořit vlastní port tím, že poskytuje číslo_portu parametr skriptu. Však stejný port by měl použít na všech počítačích, kde je skript spuštěn. 
+    Tento skript vytvoří klíčům registru požadovaným řešení. Vytvoří také pravidla brány Windows Firewall povolit agentů k vytvoření připojení TCP mezi sebou. Klíče registru vytvořený skript určete, zda chcete protokoly pro ladění a cesta k souboru protokoly protokolu. Skript také definuje agenta TCP port používaný pro komunikaci. Hodnoty pro tyto klíče se nastaví automaticky skriptem. Tyto klíče nemusíte ručně změnit. Port otevřít ve výchozím nastavení je 8084. Můžete vytvořit vlastní port tím, že poskytuje číslo_portu parametr skriptu. Použijte stejný port na všech počítačích, kde je skript spuštěn. 
 
->[!NOTE]
-> Skript nakonfiguruje jenom brány windows firewall místně. Pokud máte síťovou bránu firewall, měli byste si ověřit, že ho umožňuje provoz určený pro port TCP používán NPM 
+    >[!NOTE]
+    > Skript nakonfiguruje jenom brány Windows Firewall místně. Pokud máte síťovou bránu firewall, ujistěte se, že umožňuje, aby provoz určený pro TCP port je používán nástroj Sledování výkonu sítě.
 
->[!NOTE]
-> Není potřeba spustit skript prostředí PowerShell EnableRules.ps1 pro monitorování koncového bodu služby 
+    >[!NOTE]
+    > Nemusíte spouštění skriptu EnableRules.ps1 PowerShell pro monitorování koncového bodu služby.
 
- 
+    
 
-**Protokol ICMP** – Pokud jste zvolili ICMP jako protokol pro monitorování, povolte následující pravidla brány firewall pro spolehlivě využitím ICMP: 
-
- 
-```
-netsh advfirewall firewall add rule name="NPMDICMPV4Echo" protocol="icmpv4:8,any" dir=in action=allow 
-netsh advfirewall firewall add rule name="NPMDICMPV6Echo" protocol="icmpv6:128,any" dir=in action=allow 
-netsh advfirewall firewall add rule name="NPMDICMPV4DestinationUnreachable" protocol="icmpv4:3,any" dir=in action=allow 
-netsh advfirewall firewall add rule name="NPMDICMPV6DestinationUnreachable" protocol="icmpv6:1,any" dir=in action=allow 
-netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmpv4:11,any" dir=in action=allow 
-netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow 
-```
+* **Protokol ICMP**: Pokud si zvolíte ICMP jako protokol pro monitorování, povolte následující pravidla brány firewall ICMP spolehlivě využívat:
+    
+   ```
+   netsh advfirewall firewall add rule name="NPMDICMPV4Echo" protocol="icmpv4:8,any" dir=in action=allow 
+   netsh advfirewall firewall add rule name="NPMDICMPV6Echo" protocol="icmpv6:128,any" dir=in action=allow 
+   netsh advfirewall firewall add rule name="NPMDICMPV4DestinationUnreachable" protocol="icmpv4:3,any" dir=in action=allow 
+   netsh advfirewall firewall add rule name="NPMDICMPV6DestinationUnreachable" protocol="icmpv6:1,any" dir=in action=allow 
+   netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmpv4:11,any" dir=in action=allow 
+   netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow 
+   ```
  
 
 ### <a name="configure-the-solution"></a>Konfigurace řešení 
 
-1. Přidat řešení monitorování výkonu sítě do pracovního prostoru z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md). 
-2. Otevřete pracovní prostor analýzy protokolů a klikněte na **přehled** dlaždici.  
-3. Klikněte na dlaždici s názvem **sledování výkonu sítě** se zprávou *řešení vyžaduje další konfiguraci*.
+1. Přidat do pracovního prostoru z řešení monitorování výkonu sítě [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Můžete taky použít proces popsaný v [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md). 
+2. Otevřete pracovní prostor analýzy protokolů a vyberte **přehled** dlaždici. 
+3. Vyberte **sledování výkonu sítě** dlaždici se zprávou *řešení vyžaduje další konfiguraci*.
 
-    ![Dlaždice NPM](media/log-analytics-network-performance-monitor/npm-config.png)
+   ![Dlaždice monitorování výkonu sítě](media/log-analytics-network-performance-monitor/npm-config.png)
 
-3. Na **instalace** stránce se zobrazí možnost instalace agentů OMS a konfigurace agentů pro monitorování v **společná nastavení** zobrazení. Jak je popsáno výše, pokud jste již nainstalovali a nakonfigurovali OMS agenty, klikněte na **instalace** zobrazení pro konfiguraci funkce, které vás zajímají pomocí.  
+4. Na **instalace** stránce se zobrazí možnost instalace agentů Operations Management Suite a konfigurace agentů pro monitorování v **společná nastavení** zobrazení. Jak už bylo vysvětleno, pokud jste nainstalovali a nakonfigurovali agenty Operations Management Suite, vyberte **instalace** zobrazení nakonfigurovat možnosti, kterou chcete použít. 
 
-    **Zobrazení monitorování výkonu** – vyberte, jaký protokol pro by měla použít pro syntetické transakce ve výchozí pravidlo pro sledování výkonu a klikněte na Uložit a pokračovat. Tento protokol výběr obsahuje pouze pro generována výchozí pravidlo a je třeba vybrat protokol pokaždé, když chcete vytvořit pravidlo, sledování výkonu explicitně. Vždy můžete přesunout do výchozího nastavení pravidla na kartě Sledování výkonu (zobrazí se po dokončení konfiguraci den-0) a protokol později změnit. V případě, že nejste zájem o rPerfomance funkce monitorování, můžete zakázat výchozí pravidlo od výchozího nastavení pravidla na kartě Sledování výkonu. 
+   **Sledování výkonu**: Zvolte protokol bude použit pro syntetické transakce v **výchozí** pravidlo pro sledování výkonu a vyberte **Uložit & Pokračovat**. Tento protokol výběr obsahuje pouze pro generována výchozí pravidlo. Je třeba vybrat protokol pokaždé, když chcete vytvořit pravidlo, sledování výkonu explicitně. Můžete vždy přesunout **výchozí** pravidla nastavení u **sledování výkonu** karta (zobrazí se po dokončení konfiguraci den-0) a změňte protokol později. Pokud nechcete, aby rPerfomance funkce monitorování, můžete zakázat výchozí pravidlo z **výchozí** pravidla nastavení u **sledování výkonu** kartě.
 
-    ![Konfigurace NPM](media/log-analytics-network-performance-monitor/npm-synthetic-transactions.png)
+   ![Zobrazení nástroje Sledování výkonu](media/log-analytics-network-performance-monitor/npm-synthetic-transactions.png)
     
-    **Zobrazení monitorování koncový bod služby** -možnost poskytuje integrované předkonfigurované testy monitorování síťové připojení k Office 365 a Dynamcis365 z agenty. Zvolte služby Office 365 a Dynamcis365, které vás zajímají monitorování zaškrtnutím políčka vedle je. Zvolte agentů, z nichž chcete sledovat, kliknutím na tlačítko přidat agenty. Pokud nechcete použít tuto funkci, nebo chcete je nastavit později, můžete přeskočit to a přímo klikněte na **Uložit** a **pokračovat** bez nic výběr.  
+   **Monitorování koncového bodu služby**: možnosti poskytuje integrované předkonfigurované testy monitorování připojení k síti a Office 365, Dynamics 365 z agenty. Vyberte služby Office 365 a Dynamics 365, které chcete monitorovat zaškrtnutím políčka vedle je. Chcete-li zvolit agentů, z nichž chcete sledovat, vyberte **přidat agenty**. Pokud nechcete, aby pomocí této funkce nebo chcete je nastavit později, nemusíte nic zvolte a vyberte **Uložit & Pokračovat**.
 
-    ![Konfigurace NPM](media/log-analytics-network-performance-monitor/npm-service-endpoint-monitor.png)
+   ![Zobrazení monitorování koncového bodu služby](media/log-analytics-network-performance-monitor/npm-service-endpoint-monitor.png)
 
-    **Zobrazení monitorování ExpressRoute** – klikněte na **zjistit teď** tlačítko vyhledat všechny ExpressRoute soukromé partnerské vztahy, které jsou připojené k virtuálním sítím v rámci předplatného Azure spojena se tento pracovní prostor analýzy protokolů.  
+   **Monitorování ExpressRoute**: vyberte **zjistit nyní** ke zjišťování všech ExpressRoute soukromé partnerské vztahy, které jsou připojené k virtuálním sítím v rámci předplatného Azure spojena se tento pracovní prostor analýzy protokolů. 
 
+   >[!NOTE] 
+   > Řešení aktuálně zjišťuje pouze soukromé partnerské vztahy ExpressRoute. 
 
-    >[!NOTE] 
-    > Řešení aktuálně zjišťuje pouze soukromé partnerské vztahy ExpressRoute. 
+   >[!NOTE] 
+   > Pouze zjištění soukromé partnerské vztahy, které jsou připojené k virtuálním sítím, které jsou přidružené k předplatnému spojena se tento pracovní prostor analýzy protokolů. Pokud ExpressRoute je připojen k virtuálním sítím mimo předplatné propojené do tohoto pracovního prostoru, vytvořte pracovní prostor analýzy protokolů v těchto předplatných. Ke sledování těchto partnerských vztahů použijte nástroj Sledování výkonu sítě.
 
-    >[!NOTE] 
-    > Pouze ty soukromé partnerské vztahy jsou zjišťovány, které jsou připojené k virtuální sítě přidružený k odběru spojena se tento pracovní prostor analýzy protokolů. Pokud vaše ExpressRoute se připojit k virtuálním sítím mimo předplatné propojené do tohoto pracovního prostoru, budete muset vytvořit pracovní prostor analýzy protokolů v těchto předplatných a monitorování těchto partnerských vztahů pomocí NPM. 
+   ![Zobrazení monitorování ExpressRoute](media/log-analytics-network-performance-monitor/npm-express-route.png)
 
-    ![Konfigurace NPM](media/log-analytics-network-performance-monitor/npm-express-route.png)
+   Po dokončení zjišťování zjištěných soukromé partnerské vztahy jsou uvedeny v tabulce. 
 
-    Po dokončení zjišťování zjištěných soukromé partnerské vztahy jsou uvedené v tabulce.  
-
-    ![Konfigurace NPM](media/log-analytics-network-performance-monitor/npm-private-peerings.png)
+   ![Stránka Konfigurace monitorování výkonu sítě](media/log-analytics-network-performance-monitor/npm-private-peerings.png)
     
-    Monitorování pro tyto partnerské vztahy jsou původně v zakázaném stavu. Klikněte na každý partnerský vztah zájem o monitorování a konfigurace monitorování pro ně z pravé straně (RHS) podrobností zobrazení.  Klikněte na tlačítko Uložit konfiguraci uložit. V tématu [monitorování konfigurace ExpressRoute]() Další informace.  
+Monitorování pro tyto partnerské vztahy zpočátku je v zakázaném stavu. Vyberte každý partnerský vztah, kterou chcete monitorovat a nakonfigurovat monitorování pro ně ze zobrazení podrobností na pravé straně. Vyberte **Uložit** konfiguraci uložíte. Další informace najdete v článku "Konfigurace ExpressRoute monitorování". 
 
-    Po dokončení instalace trvá hodinu k naplnění dat 30 minut. Při řešení je agregování dat z vaší sítě, uvidíte *řešení vyžaduje další konfiguraci* na dlaždici s přehledem NPM. Jakmile data se shromažďují a indexované, přehledu dlaždici změny a informuje souhrnné informace o stavu vaší sítě. Potom můžete upravit monitorování uzlů, ve kterých jsou nainstalováni agenti OMS, a také podsítě zjištěných z prostředí 
+Po dokončení instalace trvá hodinu k naplnění dat 30 minut. Při řešení agreguje data z vaší sítě, zobrazí se zpráva *řešení vyžaduje další konfiguraci* na sledování výkonu sítě **přehled** dlaždici. Po data se shromažďují a indexované, **přehled** dlaždice se změní a informace o stavu vaší sítě v souhrnu. Potom můžete upravit monitorování uzlů, ve které Operations Management Suite jsou nainstalováni agenti, stejně jako podsítě zjištěných z prostředí.
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>Upravte nastavení monitorování pro podsítě a uzly 
 
-Na kartě podsítě na stránce konfigurace jsou uvedeny všechny podsítě alespoň jeden instalaci agenta. 
+Všechny podsítě s nainstalovaným agentem alespoň jeden jsou uvedeny na **podsítě** kartě na stránce konfigurace. 
 
 
-Chcete povolit nebo zakázat monitorování konkrétní podsítě 
+Chcete povolit nebo zakázat monitorování konkrétní podsítě:
 
-1. Vyberte nebo zaškrtněte políčko vedle položky **podsítí ID** a potom ověřte, že **použijte pro monitorování** je vybrané nebo nezaškrtnuté, podle potřeby. Můžete zaškrtněte nebo zrušte více podsítí. Pokud je zakázáno, nejsou monitorována podsítě jako agenti se aktualizují na zastavení otestováním jiné agenty. 
-2. Vyberte uzly, které chcete monitorovat v konkrétní podsíť podsítí výběrem ze seznamu a přesun požadované uzly mezi seznamy obsahující sledována a sledované uzly. Můžete přidat **vlastní popis** podsítě. 
-3. Klikněte na tlačítko **Uložit** konfiguraci uložíte. 
+1. Vyberte nebo zrušte zaškrtnutí políčka vedle **podsítí ID**. Potom zkontrolujte, zda **použijte pro monitorování** je vybrané nebo nezaškrtnuté, podle potřeby. Můžete zaškrtněte nebo zrušte více podsítí. Pokud je zakázáno, nejsou monitorovány podsítě a agenti se aktualizují na zastavení otestováním jiné agenty. 
+2. Vyberte uzly, které chcete monitorovat v konkrétní podsítí. Vyberte ze seznamu podsítí a přesunout požadované uzly mezi seznamy, které obsahují sledována a sledované uzly. Přidáte vlastní popis do podsítě.
+3. Vyberte **Uložit** konfiguraci uložíte. 
 
 #### <a name="choose-nodes-to-monitor"></a>Zvolte uzlů k monitorování
 
-Všechny uzly, které nemá agenta nainstalovaného na jejich jsou uvedeny v **uzly** kartě. 
+Všechny uzly, které nemá agenta nainstalovaného na jejich jsou uvedeny na **uzly** kartě. 
 
 1. Vyberte nebo zrušte uzly, které chcete sledovat nebo zastavení monitorování. 
-2. Klikněte na tlačítko **použijte pro monitorování**, nebo vymazat, podle potřeby. 
-3. Klikněte na **Uložit**. 
+2. Vyberte **použijte pro monitorování**, nebo vymazat, podle potřeby. 
+3. Vyberte **Uložit**. 
 
 
-Konfigurace capability(s), které vás zajímají: 
-- Konfigurace [sledování výkonu](log-analytics-network-performance-monitor-performance-monitor.md#configuration)
-- Konfigurace [monitorování koncového bodu služby](log-analytics-network-performance-monitor-performance-monitor.md#configuration)
-- Konfigurace [monitorování ExpressRoute](log-analytics-network-performance-monitor-expressroute.md#configuration)
+Nakonfigurujte možnosti, které chcete:
+
+- [Sledování výkonu](log-analytics-network-performance-monitor-performance-monitor.md#configuration)
+- [Monitorování koncového bodu služby](log-analytics-network-performance-monitor-performance-monitor.md#configuration)
+- [ExpressRoute Monitor](log-analytics-network-performance-monitor-expressroute.md#configuration)
 
  
 
 ## <a name="data-collection-details"></a>Podrobnosti kolekce dat
-Sledování výkonu sítě používá TCP SYN. SYNACK ACK handshake paketů při výběru TCP a odpověď odezvy ICMP ODEZVU protokolu ICMP při výběru jako protokol ICMP ke shromažďování informací ztrátě a latenci. Příkaz Traceroute slouží také k získání informací o topologii.
+Ke shromažďování informací ztrátě a latence, sledování výkonu sítě používá TCP SYN. SYNACK ACK handshake pakety když zvolíte jako protokol TCP. Sledování výkonu sítě používá odpověď odezvy ICMP ODEZVU protokolu ICMP, když zvolíte jako protokol ICMP. Trasování cesty slouží také k získání informací o topologii.
 
 Následující tabulka uvádí metody shromažďování dat a další podrobnosti o tom, jak se údaje pro sledování výkonu sítě.
 
-| Platforma | Přímé agenta | Agenta nástroje SCOM | Azure Storage | SCOM vyžaduje? | Data agenta SCOM odeslána prostřednictvím skupiny pro správu | Frekvence kolekce |
+| Platforma | Přímé agenta | Agenta System Center Operations Manager | Azure Storage | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows | &#8226; | &#8226; |  |  |  |TCP metodou handshake/ODEZVU protokolu ICMP každých 5 sekund, data odeslána každé 3 minuty |
  
 
  
-Toto řešení využívá k posouzení stavu sítě syntetické transakce. Agenti OMS nainstalovaný na různých místech v síťových paketů TCP exchange nebo odezvu protokolu ICMP (v závislosti na protokol vybraná pro monitorování) sebou. V procesu agenty další operace round-trip čas a paket ztrátě případných. Každý agent pravidelně provádí taky trasování cesty a jiné agenty pro najít všechny různé trasy v síti, která musí být testována. Na základě těchto dat můžete agenty odvodit latence sítě a obrázků ke ztrátě paketů. Testy jsou opakovat každých pět sekund a data se shromažďují pro dobu 3 minut pomocí agentů před nahráním do služby analýzy protokolů. 
+Toto řešení využívá k posouzení stavu sítě syntetické transakce. Agenti nástroje Operations Management Suite nainstalovaný na různých místech v síťových paketů TCP exchange nebo odezvu protokolu ICMP sebou. Jestli agenti použít pakety TCP nebo odezvu protokolu ICMP, závisí na protokol, na který jste vybrali pro monitorování. V procesu agenty další operace round-trip čas a paket ztrátě případných. Každý agent pravidelně provádí taky trasování cesty a jiné agenty pro najít všechny různé trasy v síti, která musí být testována. Na základě těchto dat můžete agenty odvodit latence sítě a obrázků ke ztrátě paketů. Testy jsou opakovat každých pět sekund. Data se shromažďují pro přibližně tři minuty pomocí agentů před odesláním do služby analýzy protokolů.
 
 
 
 >[!NOTE]
-> I když agenti komunikaci mezi sebou často, se negenerují významné síťových přenosů při provádění testů. Agenti spoléhat jenom na pakety handshake TCP SYN. SYNACK ACK k určení ztrátě a čekací doba – žádná data, které se vyměňují paketů. Během tohoto procesu agenty vzájemně komunikovat pouze v případě potřeby a komunikační topologie agenta je optimalizována pro snížení síťový provoz.
+> I když agenti komunikaci mezi sebou často, že při provádění testů negenerovat výrazné navýšení provozu sítě. Agenti spoléhat jenom na pakety handshake TCP SYN. SYNACK ACK k určení ztrátě a latence. Výměny žádné datových paketů. Během tohoto procesu agenty vzájemně komunikovat pouze v případě potřeby. Topologie komunikace agenta je optimalizovaná pro omezení provozu v síti.
 
-## <a name="using-the-solution"></a>Použití řešení 
+## <a name="use-the-solution"></a>Použít řešení 
 
-### <a name="npm-overview-tile"></a>Dlaždice přehledu NPM 
+### <a name="network-performance-monitor-overview-tile"></a>Dlaždice přehledu monitorování výkonu sítě 
 
-Poté, co jste povolili nástroj Sledování výkonu sítě řešení, dlaždice řešení na stránce Přehled poskytuje rychlý přehled o stavu sítě. 
+Po povolení řešení monitorování výkonu sítě na dlaždici řešení **přehled** stránka poskytuje rychlý přehled o stavu sítě. 
 
- ![Dlaždice přehledu NPM](media/log-analytics-network-performance-monitor/npm-overview-tile.png)
+ ![Dlaždice přehledu monitorování výkonu sítě](media/log-analytics-network-performance-monitor/npm-overview-tile.png)
 
 ### <a name="network-performance-monitor-dashboard"></a>Řídicí panel monitorování výkonu sítě 
 
-**Události stavu sítě horní** stránka obsahuje seznam nejaktuálnějších událostí, stavu a výstrahy v systému a čas, vzhledem k tomu, že událost byla aktivní. Událost stavu nebo výstraha je vygenerována vždy, když hodnota vybrané metriky (ztrátě, latenci, doby odezvy nebo využití šířky pásma) pro monitorování pravidlo překročí prahovou hodnotu. 
+* **TOP události stavu sítě**: Tato stránka obsahuje seznam nejaktuálnějších událostí, stavu a výstrahy v systému a čas, vzhledem k tomu, že události byla aktivní. Událost stavu nebo výstraha je vygenerována vždy, když hodnota vybrané metriky (ztrátě, latenci, doby odezvy nebo využití šířky pásma) pro monitorování pravidlo překročí prahovou hodnotu. 
 
- **Sledování výkonu** stránku obsahuje, shrnutí stavu síťová propojení a podsítí propojuje monitorovaných řešení. Na dlaždici topologie informuje o počtu síťových cest, které jsou monitorovány ve vaší síti. Kliknutím na tuto dlaždici přímo můžete přejde do zobrazení topologie. 
+* **Monitorování ExpressRoute**: Tato stránka obsahuje souhrny stavu pro různé připojení partnerského vztahu ExpressRoute řešení monitorování. **Topologie** dlaždice zobrazuje počet síťových cest prostřednictvím okruhy ExpressRoute, které jsou monitorovány ve vaší síti. Vyberte tuto dlaždici přejít na **topologie** zobrazení.
 
- **Monitorování koncového bodu služby** stránku obsahuje, shrnutí stavu různých testy, které jste vytvořili. Na dlaždici topologie informuje počet koncových bodů, které jsou monitorovány. Kliknutím na tuto dlaždici přímo můžete přejde do zobrazení topologie.
+* **Monitorování koncového bodu služby**: Tato stránka obsahuje souhrny stavu pro různé testy, které jste vytvořili. **Topologie** dlaždice ukazuje počet koncových bodů, které jsou monitorovány. Vyberte tuto dlaždici přejít na **topologie** zobrazení.
 
- **ExpressRoute monitorování** stránka poskytuje souhrn stavu různých připojení partnerského vztahu ExpressRoute monitorovaných řešení. Na dlaždici topologie informuje o počtu síťových cest prostřednictvím circuit(s) ExpressRoute monitorovaných ve vaší síti. Kliknutím na tuto dlaždici přímo můžete přejde do zobrazení topologie.
+* **Sledování výkonu**: Tato stránka obsahuje souhrny stavu pro **sítě** odkazy a **podsítí** odkazy, které monitoruje řešení. **Topologie** dlaždice zobrazuje počet síťových cest, které jsou monitorovány ve vaší síti. Vyberte tuto dlaždici přejít na **topologie** zobrazení. 
 
- **Běžné dotazy** stránka obsahuje sadu vyhledávací dotazy, které načíst monitorování dat přímo nezpracovaná sítě. Tyto dotazy můžete použít jako východisko pro vytvoření vlastní dotazy pro vytváření přizpůsobených sestav. 
+* **Běžné dotazy**: Tato stránka obsahuje sadu vyhledávací dotazy, které načíst monitorování dat přímo nezpracovaná sítě. Tyto dotazy jako výchozí bod vám pomůže vytvořit vlastní dotazy pro vytváření přizpůsobených sestav. 
 
-![Řídicí panel NPM](media/log-analytics-network-performance-monitor/npm-dashboard.png)
+   ![Řídicí panel monitorování výkonu sítě](media/log-analytics-network-performance-monitor/npm-dashboard.png)
 
  
 
 ### <a name="drill-down-for-depth"></a>procházení hloubka 
 
-Můžete kliknout na různých odkazy na řídicí panel řešení přejdete dolů hlubší do všech oblastí zájmu. Například pokud se zobrazí výstraha nebo není v pořádku síťové propojení se zobrazují na řídicím panelu, můžete můžete kliknutím na prošetřily. Přejdete na stránku, která uvádí všechna propojení podsítí pro konkrétní síťové propojení. Budete moci zobrazit stav, latence a ztráta stav každé propojení podsítí a rychle zjistěte jaké propojení podsítí jsou příčinou problému. Poté můžete kliknout na **zobrazení uzlu odkazy** zobrazíte všechny odkazy na uzlu odkazu podsíť není v pořádku. Potom můžete zobrazit jednotlivé uzly – odkazy a odkazy uzlů ve špatném stavu. 
+Můžete vybrat různé odkazy na řídicí panel řešení přejdete dolů hlubší do všech oblastí zájmu. Například pokud se zobrazí výstraha nebo není v pořádku síťové propojení se zobrazují na řídicím panelu, vyberte ho k prozkoumání Další. Na stránce uvádí všechna propojení podsítí pro konkrétní síťové propojení. Uvidíte ztrátě, latence a stav každého odkazu podsítí. Můžete rychle zjistit způsobuje problémy, které propojení podsítí. Vyberte **zobrazení uzlu odkazy** zobrazíte všechny odkazy na uzlu odkazu podsíť není v pořádku. Potom můžete zobrazit jednotlivé uzly – odkazy a odkazy uzlů ve špatném stavu. 
 
-Můžete kliknout na **zobrazení topologie** zobrazíte topologii směrování směrování trasy mezi zdrojovým a cílovým uzly. Není v pořádku trasy jsou zobrazené červeně a lze je zobrazit latence přispěli každého směrování, aby mohli rychle identifikovat problém pro konkrétní části sítě. 
+Vyberte **zobrazení topologie** zobrazíte topologii směrování směrování trasy mezi zdrojovým a cílovým uzly. Není v pořádku trasy se zobrazí červeně. Můžete zobrazit latence přispěli každého směrování, aby mohli rychle identifikovat problém pro konkrétní části sítě.
 
  
 
-### <a name="network-state-recorder"></a>Zapisovač stavu sítě 
+### <a name="network-state-recorder-control"></a>Zapisovač řízení stavu sítě
 
-Každé zobrazení zobrazí snímek stavu vaší sítě na určitém místě v čase. Ve výchozím nastavení se zobrazí poslední stav. Na panelu v horní části stránky zobrazí bod v čase, pro který se zobrazuje stav. Můžete přejít zpět v čase a kliknutím na panelu na akce zobrazit snímek stavu vaší sítě. Také můžete k povolení nebo zakázání automatického obnovení pro všechny stránky, zatímco zobrazit nejnovější stav. 
+Každé zobrazení zobrazí snímek stavu vaší sítě na určitém místě v čase. Ve výchozím nastavení se zobrazí poslední stav. Na panelu v horní části stránky zobrazí bod v čase, pro který se zobrazí stav. Pokud chcete zobrazit snímek stavu vaší sítě předchozí najednou, vyberte **akce**. Také můžete povolit nebo zakázat automatické aktualizace pro všechny stránky, zatímco zobrazit nejnovější stav. 
 
  ![Zapisovač stavu sítě](media/log-analytics-network-performance-monitor/network-state-recorder.png)
 
@@ -211,11 +221,11 @@ Každé zobrazení zobrazí snímek stavu vaší sítě na určitém místě v �
 
 ### <a name="trend-charts"></a>Grafy trendů 
 
-Na každé úrovni, který můžete procházet uvidíte trend použít metrika – ztráta, latenci, doby odezvy, využití šířky pásma. Časový interval trendu můžete změnit pomocí ovládacího prvku čas v horní části grafu. 
+Na každé úrovni, který můžete procházet uvidíte trend použít metriku. Může být ztrátě, latenci, doby odezvy nebo využití šířky pásma. Časový interval trendu, můžete změnit čas ovládací prvek v horní části grafu. 
 
-Grafy trendů zobrazit Historický přehled výkonu metriky výkonu. Některé problémy s sítě jsou přechodné ve své podstatě a bude obtížné zachytit pouze na základě aktuálního stavu sítě. Je to proto, že problémy můžete rychle surface a zmizí před nikým oznámení, jenom na objevit znova později v čase. Tyto přechodné problémy může být složité pro správce aplikace také protože ty problémy často prostor jako nevysvětlitelné zvyšování doba odezvy aplikace, i když plynulejší se zobrazují všechny součásti aplikace. 
+Grafy trendů zobrazit Historický přehled výkonu metriky výkonu. Některé problémy se síťovým se přechodný ve své podstatě a jsou těžko catch pohledem na aktuálním stavu sítě. Problémy můžete rychle surface a zmizí před nikým oznámení, jenom na objevit znova později v čase. Tyto přechodné problémy také může být složité pro správce aplikace. Problémy často zobrazují jako nevysvětlitelné zvyšování doba odezvy aplikace, i když všechny součásti aplikace zobrazí plynulejší. 
 
-Tyto druhy problémů můžete snadno zjistit prohlížením graf trendů, kde problém se zobrazí jako nečekané Špička v latence sítě nebo ke ztrátě paketů. Potom můžete prozkoumat problém pomocí zapisovače stavu sítě zobrazit sítě snímku a topologie pro tento bod v čase, pokud měl k problému došlo. 
+Podobné typy potíží můžete snadno zjistit prohlížením graf trendů. Problém se zobrazí jako nečekané Špička v latence sítě nebo ke ztrátě paketů. Chcete-li prozkoumat problém, použijte ovládací prvek zapisovač stavu sítě k zobrazení sítě snímku a topologie pro tento bod v čase, kdy došlo k problému.
 
  
 ![Grafy trendů](media/log-analytics-network-performance-monitor/trend-charts.png)
@@ -223,13 +233,13 @@ Tyto druhy problémů můžete snadno zjistit prohlížením graf trendů, kde p
 
 ### <a name="topology-map"></a>Mapy topologie 
 
-NPM ukazuje topologie směrování směrování tras mezi zdrojovým a cílovým koncového bodu, na mapě interaktivní topologie. Mapy topologie můžete zobrazit kliknutím na **topologie** dlaždici na řídicím panelu řešení nebo kliknutím na **zobrazení topologie** odkaz na stránkách procházení.  
+Sledování výkonu sítě zobrazuje topologii směrování směrování tras mezi zdrojovým a cílovým koncový bod na mapě interaktivní topologie. Chcete-li zobrazit topologickou mapu, vyberte **topologie** dlaždici na řídicím panelu řešení. Také můžete vybrat **zobrazení topologie** odkaz na stránkách procházení. 
 
-Topologie mapa zobrazuje, kolik trasy jsou mezi zdrojové a cílové a co cesty trvat datových paketů. Latence přispěli každého směrování sítě je také viditelné. Všechny cesty, pro které latence celkový cesta je nad prahovou hodnotou (v odpovídajících monitorování pravidle nastavit) se zobrazí červeně.  
+Topologie mapa zobrazuje, kolik trasy jsou mezi zdrojové a cílové a co cesty trvat datových paketů. Latence přispěli každého směrování sítě je také viditelné. Všechny cesty, pro které latence celkový cesta je nad prahovou hodnotou (v odpovídajících monitorování pravidle nastavit) se zobrazí červeně. 
 
-Když kliknete na uzel nebo hover nad ním na mapě topologie, zobrazí se vlastnosti uzlu jako plně kvalifikovaný název domény a IP adresa. Klikněte na tlačítko směrování zobrazíte jeho IP adresu. Směrování problémových sítě lze určit podle vašeho povšimnutí latence se přispěli. Můžete filtrovat pomocí filtrů v podokně Akce sbalitelné konkrétní trasy. Topologie sítě také zjednodušíte skrytí střední směrování pomocí posuvníku v podokně Akce. Můžete zvětšení nebo mimo mapy topologie pomocí kolečko myši. 
+Když vyberete uzel nebo hover se na mapě topologie, zobrazí vlastnosti uzlu, jako je plně kvalifikovaný název domény a IP adresu. Vyberte směrování zobrazíte jeho IP adresu. Směrování problémových sítě lze určit podle vašeho povšimnutí latenci, které přispívá. Chcete-li filtrovat konkrétní trasy, pomocí filtrů v podokně sbalitelné akce. Pro zjednodušení síťové topologie, skryjte střední směrování pomocí posuvníku v podokně Akce. Můžete zvětšit nebo zmenšit mapy topologie pomocí kolečko myši. 
 
-Upozorňujeme, že topologie, zobrazí se v mapě je topologie vrstvy 3 a neobsahuje vrstvy 2 zařízení a připojení. 
+Topologie, zobrazí se v mapě je topologie vrstvy 3 a neobsahuje vrstvy 2 zařízení a připojení. 
 
  
 ![Mapy topologie](media/log-analytics-network-performance-monitor/topology-map.png)
@@ -237,15 +247,15 @@ Upozorňujeme, že topologie, zobrazí se v mapě je topologie vrstvy 3 a neobsa
 
 ## <a name="log-analytics-search"></a>Hledání analýzy protokolů 
 
-Všechna data, která je graficky zveřejněné přes NPM řídicí panel a procházení stránek je také k dispozici nativně [analýzy protokolů hledání](log-analytics-log-search-new.md). Můžete provádět interaktivní analýzu dat v úložišti, korelovat data z různých zdrojů, vytvářet vlastní výstrahy, vytvořte vlastní zobrazení a export dat do aplikace Excel, PowerBI nebo ke sdílení odkaz. Oblasti běžné dotazy na řídicím panelu má některá užitečná dotazy, které můžete použít jako výchozí bod pro vytvoření vlastní dotazy a sestavy. 
+Všechna data, která je graficky zveřejněné prostřednictvím řídicího panelu monitorování výkonu sítě a procházení stránek je také k dispozici nativně [analýzy protokolů hledání](log-analytics-log-search-new.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Také můžete vytvořit vlastní výstrahy a zobrazení a export dat do aplikace Excel, Power BI nebo ke sdílení odkaz.  **Běžné dotazy** oblasti v řídicím panelu má některá užitečná dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
 
  
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby 
 
-**UserVoice** -účtováním pro sledování výkonu sítě funkce, které chcete, abychom mohli pracovat na vašich nápadů. Navštivte naše [stránku UserVoice](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
+* **UserVoice:** můžete účtovat pro sledování výkonu sítě funkce, které chcete, abychom mohli pracovat na vašich nápadů. Přejděte [stránku UserVoice](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 
-**Připojení k naší kohorty** -zajímají nás vždy nutnosti připojení k naší kohorty nové zákazníky. V rámci ho využívat nové funkce a Pomozte nám vylepšit sledování výkonu sítě. Pokud vás zajímá připojení, vyplnění to [rychlé průzkum](https://aka.ms/npmcohort). 
+* **Připojení k naší kohorty:** zajímají nás vždy nutnosti připojení k naší kohorty nové zákazníky. V rámci ji můžete využívat nové funkce a možnost Pomozte nám vylepšit sledování výkonu sítě. Pokud vás zajímá připojení, vyplňte to [rychlé průzkum](https://aka.ms/npmcohort). 
 
 ## <a name="next-steps"></a>Další postup 
-- Další informace o [sledování výkonu](log-analytics-network-performance-monitor-performance-monitor.md), [monitorování koncového bodu služby](log-analytics-network-performance-monitor-performance-monitor.md), a [ExpressRoute monitorování](log-analytics-network-performance-monitor-expressroute.md). 
+Další informace o [sledování výkonu](log-analytics-network-performance-monitor-performance-monitor.md), [monitorování koncového bodu služby](log-analytics-network-performance-monitor-performance-monitor.md), a [ExpressRoute monitorování](log-analytics-network-performance-monitor-expressroute.md). 
