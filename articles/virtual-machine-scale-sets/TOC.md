@@ -1,15 +1,38 @@
-# [Dokumentace ke službě Virtual Machine Scale Sets](index.md)
+# [Dokumentace ke službě Virtual Machine Scale Sets](index.yml)
 
 # Přehled
-## [Co jsou škálovací sady virtuálních počítačů?](virtual-machine-scale-sets-overview.md)
+## [Co jsou škálovací sady virtuálních počítačů?](overview.md)
 
-# Začínáme
-## [Vytvoření na webu Azure Portal](virtual-machine-scale-sets-create-portal.md)
-## [Vytvoření pomocí Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md)
-## [Vytvoření pomocí Azure PowerShellu](virtual-machine-scale-sets-create-powershell.md)
+# Šablony Rychlý start
+## [Vytvoření na webu Azure Portal](quick-create-portal.md)
+## [Vytvoření pomocí Azure CLI 2.0](quick-create-cli.md)
+## [Vytvoření pomocí Azure PowerShellu](quick-create-powershell.md)
 ## Vytvoření pomocí šablony
-### [Škálovací sada pro Linux](virtual-machine-scale-sets-create-template-linux.md)
-### [Škálovací sada pro Windows](virtual-machine-scale-sets-create-template-windows.md)
+### [Škálovací sada pro Linux](quick-create-template-linux.md)
+### [Škálovací sada pro Windows](quick-create-template-windows.md)
+
+# Kurzy
+## 1. Vytvoření/správa škálovací sady
+### [Azure CLI 2.0](tutorial-create-and-manage-cli.md)
+### [Azure PowerShell](tutorial-create-and-manage-powershell.md)
+## 2. Použití datových disků
+### [Azure CLI 2.0](tutorial-use-disks-cli.md)
+### [Azure PowerShell](tutorial-use-disks-powershell.md)
+## 3. Použití vlastní image virtuálního počítače
+### [Azure CLI 2.0](tutorial-use-custom-image-cli.md)
+### [Azure PowerShell](tutorial-use-custom-image-powershell.md)
+## 4. Nasazení aplikací do škálovací sady
+### [Azure CLI 2.0](tutorial-install-apps-cli.md)
+### [Azure PowerShell](tutorial-install-apps-powershell.md)
+### [Šablona](tutorial-install-apps-template.md)
+## 5. Automatické škálování škálovací sady
+### [Azure CLI 2.0](tutorial-autoscale-cli.md)
+### [Azure PowerShell](tutorial-autoscale-powershell.md)
+### [Šablona](tutorial-autoscale-template.md)
+
+# Ukázky
+## [Azure CLI 2.0](cli-samples.md)
+## [PowerShell](powershell-samples.md)
 
 # Postup
 ## Plánování a návrh
@@ -24,12 +47,9 @@
 
 ## Nasazení
 ### [Vytvoření pomocí sady Visual Studio](virtual-machine-scale-sets-vs-create.md)
-### [Škálovací sada se spravovanými disky](virtual-machine-scale-sets-managed-disks.md)
 ### [Použití zón dostupnosti](virtual-machine-scale-sets-use-availability-zones.md)
 ### [Automatické škálování škálovací sady](virtual-machine-scale-sets-autoscale-overview.md)
 #### [Použití portálu Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
-#### [Použití Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
-#### [Použití Azure Powershellu](virtual-machine-scale-sets-autoscale-powershell.md)
 #### [Pokročilé automatické škálování](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Aplikace ve škálovacích sadách](virtual-machine-scale-sets-deploy-app.md)
 ### [Použití datových disků se škálovacími sadami](virtual-machine-scale-sets-attached-disks.md)

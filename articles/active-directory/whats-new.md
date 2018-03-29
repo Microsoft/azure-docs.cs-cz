@@ -1,11 +1,11 @@
 ---
-title: "Co je nového? Poznámky k verzi pro Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, co je nového v Azure Active Directory (Azure AD), jako je například nejnovější poznámky k verzi, známé problémy, opravy chyb, zastaralé funkce a nadcházející změny."
+title: Co je nového? Poznámky k verzi pro Azure Active Directory | Microsoft Docs
+description: Zjistěte, co je nového v Azure Active Directory (Azure AD), jako je například nejnovější poznámky k verzi, známé problémy, opravy chyb, zastaralé funkce a nadcházející změny.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 featureFlags:
 - clicktale
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/28/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a30b5d08377594b8ad7e10b63a23e2a9d168af9c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 9a947de3ad821d4cd65e579357e3c779e8623435
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -39,6 +39,244 @@ Azure AD obdrží vylepšení průběžně. Zůstane aktuální pomocí nejnově
 -   Plány pro změny
 
 Tato stránka se aktualizuje každý měsíc, takže pokroku pravidelně.
+
+## <a name="march-2018"></a>2018 března
+ 
+
+### <a name="certificate-expire-notification"></a>Platnost certifikátu oznámení
+
+**Typ:** pevné  
+**Kategorie služby:** podnikové aplikace  
+**Schopnosti produktu:** jednotného přihlašování
+ 
+Azure AD odešle oznámení, když se certifikát pro galerie nebo jiných Galerie aplikace již brzy vyprší. 
+
+Někteří uživatelé nedostal oznámení pro podnikové aplikace, které jsou nakonfigurované pro na základě SAML jednotné přihlašování. Tento problém byl vyřešen. Azure AD odešle oznámení pro certifikáty platnost vyprší za 7, 30 a 60 dnů. Můžete ere moci zobrazit tato událost v protokolech auditu. 
+
+Další informace naleznete v tématu:
+
+- [Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
+- [Sestavy auditu aktivity na portálu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
+
+ 
+---
+ 
+
+### <a name="twitter-and-github-identity-providers-in-azure-ad-b2c"></a>Twitteru a Githubu poskytovatelů identit v Azure AD B2C
+
+**Typ:** nová funkce  
+**Kategorie služby:** B2C - správu identit uživatelů  
+**Schopnosti produktu:** B2B/B2C
+ 
+Nyní můžete přidat Twitter nebo Githubu jako poskytovatel identit v Azure AD B2C. Twitter přechází z verze public preview na všeobecné Ve verzi public preview je vydán Githubu.
+
+
+Další informace najdete v tématu [co je spolupráce Azure AD B2B?](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+ 
+---
+
+
+### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>Omezit přístup z prohlížeče pomocí podmíněného přístupu na základě aplikací Azure AD Intune Managed Browser pro iOS a Android
+
+**Typ:** nová funkce  
+**Kategorie služby:** podmíněného přístupu  
+**Schopnosti produktu:** Identity zabezpečení a ochrany
+ 
+
+**Nyní ve verzi public preview!**
+
+**Intune Managed Browser jednotné přihlašování:** zaměstnancům můžete použít jednotného přihlašování napříč nativních klientů (jako je Microsoft Outlook) a spravovaný prohlížeč Intune pro všechny Azure aplikace připojená k AD.
+
+**Spravované prohlížeče podmíněného přístupu podpora Intune:** teď může vyžadovat zaměstnancům umožní používat Intune Managed browser pomocí zásady podmíněného přístupu na základě aplikace.
+
+Další informace o to v našich [příspěvku na blogu](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/).
+
+Další informace naleznete v tématu:
+
+- [Nastavení podmíněného přístupu na základě aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+
+- [Nakonfigurujte zásady spravovaného prohlížeče](https://aka.ms/managedbrowser)  
+
+
+
+---
+ 
+
+### <a name="app-proxy-cmdlets-in-powershell-ga-module"></a>Proxy aplikace rutiny v modulu prostředí Powershell GA
+
+**Typ:** nová funkce  
+**Kategorie služby:** Proxy aplikace  
+**Schopnosti produktu:** řízení přístupu
+ 
+Podpora pro rutiny služby Proxy aplikace je nyní v modulu prostředí Powershell GA! Upozorňujeme, že to vyžadují, abyste informováni o moduly Powershellu – Pokud jste se více než jeden rok za, některé rutiny může přestat pracovat. 
+
+
+Další informace najdete v tématu [AzureAD](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0).
+ 
+---
+ 
+### <a name="office-365-native-clients-are-supported-by-seamless-sso-using-a-non-interactive-protocol"></a>Bezproblémové jednotného přihlašování pomocí neinteraktivní protokolu podporuje nativní klientů Office 365
+
+**Typ:** nová funkce  
+**Kategorie služby:** ověřování (přihlášení)  
+**Schopnosti produktu:** ověření uživatele
+ 
+Uživatele s využitím nativních klientů Office 365 (verze 16.0.8730.xxxx a vyšší) získat tichou prostředí přihlašování pomocí bezproblémové jednotné přihlašování. Tato podpora je poskytována přidání neinteraktivní protocol (WS-Trust) do služby Azure AD.
+
+Další informace najdete v tématu [jak přihlášení na nativní klient s pracovní bezproblémové jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-how-it-works#how-does-sign-in-on-a-native-client-with-seamless-sso-work).
+
+ 
+---
+ 
+
+### <a name="users-get-a-silent-sign-on-experience-with-seamless-sso-if-an-application-sends-sign-in-requests-to-azure-ads-tenanted-endpoints"></a>Uživatelé získají tichou přihlašování, s bezproblémové jednotné přihlašování, když aplikace odešle žádostí o přihlášení k Azure AD nevyužívá dělené tabulky koncové body
+
+**Typ:** nová funkce  
+**Kategorie služby:** ověřování (přihlášení)  
+**Schopnosti produktu:** ověření uživatele
+ 
+Uživatelé získají tichou přihlašování, s bezproblémové jednotné přihlašování, když aplikace (například `https://contoso.sharepoint.com`) odešle žádostí o přihlášení k Azure AD nevyužívá dělené tabulky koncové body – to znamená, `https://login.microsoftonline.com/contoso.com/<..>` nebo `https://login.microsoftonline.com/<tenant_ID>/<..>` – místo běžné koncového bodu Azure AD (`https://login.microsoftonline.com/common/<...>` ).
+
+Další informace najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso). 
+
+---
+ 
+
+### <a name="need-to-add-only-one-azure-ad-url-instead-of-two-urls-previously-to-users-intranet-zone-settings-to-roll-out-seamless-sso"></a>Třeba přidat pouze jednu adresu URL Azure AD, místo dříve, dvou adres URL do nastavení zóny intranetu uživatelů k zavedení bezproblémové jednotného přihlašování
+
+**Typ:** nová funkce  
+**Kategorie služby:** ověřování (přihlášení)  
+**Schopnosti produktu:** ověření uživatele
+ 
+K zavedení bezproblémové jednotného přihlašování pro vaše uživatele, je nutné přidat nastavení zón pouze jeden URL Azure AD k intranetu uživatelů pomocí zásad skupiny ve službě Active Directory: `https://autologon.microsoftazuread-sso.com`. Dřív byly zákazníci potřebné k přidání dvou adres URL.
+
+Další informace najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso). 
+ 
+---
+ 
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Nové federované aplikace k dispozici v galerii aplikací Azure AD
+
+**Typ:** nová funkce  
+**Kategorie služby:** podnikové aplikace  
+**Schopnosti produktu:** 3. stran integrace
+ 
+V březnu 2018 jsme doplnili podporu následujících 15 nových aplikací v naší Galerie aplikace s federací:
+
+[Boxcryptor](https://docs.microsoft.com/azure/active-directory/active-directory-saas-boxcryptor-tutorial), [CylancePROTECT](https://docs.microsoft.com/azure/active-directory/active-directory-saas-cylanceprotect-tutorial), Wrike, [SignalFx](https://docs.microsoft.com/azure/active-directory/active-directory-saas-signalfx-tutorial), pomocníka podle FirstAgenda, [YardiOne](https://docs.microsoft.com/azure/active-directory/active-directory-saas-yardione-tutorial), Vtiger CRM, inwink, [amplitudě](https://docs.microsoft.com/azure/active-directory/active-directory-saas-amplitude-tutorial), [Spacio](https://docs.microsoft.com/azure/active-directory/active-directory-saas-spacio-tutorial), [ContractWorks](https://docs.microsoft.com/azure/active-directory/active-directory-saas-contractworks-tutorial), [Bersin](https://docs.microsoft.com/azure/active-directory/active-directory-saas-bersin-tutorial), [Mercell](https://docs.microsoft.com/azure/active-directory/active-directory-saas-mercell-tutorial), [Trisotech digitální Enterprise Server](https://docs.microsoft.com/azure/active-directory/active-directory-saas-trisotechdigitalenterpriseserver-tutorial), [Qumu cloudu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-qumucloud-tutorial).
+ 
+Můžete najít v dokumentaci pro všechny aplikace, zde: [https://aka.ms/appstutorial](https://aka.ms/appstutorial)
+
+
+ 
+---
+ 
+
+### <a name="pim-for-azure-resources-is-generally-available"></a>Je všeobecně dostupná pro prostředky Azure PIM
+
+**Typ:** nová funkce  
+**Kategorie služby:** Privileged Identity Management  
+**Schopnosti produktu:** Privileged Identity Management
+ 
+Pokud používáte Azure AD Privileged Identity Management pro adresář role, můžete teď můžete použít na PIM časově vázaných přístup a přiřazení možností pro role prostředků Azure, jako jsou odběry, skupiny prostředků, virtuální počítače a dalších prostředků, podporované pomocí Azure Resource Manager. Vynutit ověřování Multi-Factor Authentication při aktivaci role těsně za běhu a naplánovat aktivace v koordinaci s windows schválené změny. Kromě toho tato verze přináší vylepšení, včetně aktualizované uživatelského rozhraní, pracovní postupy schválení a možnost rozšíření role, jejichž platnost brzy vyprší a obnovení vypršela platnost role verzi public Preview není k dispozici.
+
+Další informace najdete v tématu [PIM pro prostředky Azure (Preview)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac)
+ 
+---
+ 
+
+### <a name="adding-optional-claims-to-your-apps-tokens-public-preview"></a>Přidání volitelné deklarace do tokenů vaší aplikace (verze public preview)
+
+**Typ:** nová funkce  
+**Kategorie služby:** ověřování (přihlášení)  
+**Schopnosti produktu:** ověření uživatele
+ 
+Aplikace Azure AD můžete nyní žádost vlastní nebo volitelné deklarace identity ve Jwt nebo SAML tokeny.  Toto jsou deklarace identity o uživateli nebo klienta, která nejsou zahrnuta ve výchozím nastavení v tokenu, z důvodu omezení velikosti nebo použitelnosti.  Toto je momentálně ve verzi public preview pro aplikace Azure AD na koncové body verze 1.0 a v2.0.  Najdete v dokumentaci k informace na jaké deklarace identity je možné přidat a úprava manifest aplikace k vyžádání je.  
+
+Další informace najdete v tématu [volitelné deklarace identity ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims).
+ 
+---
+ 
+
+### <a name="azure-ad-supports-pkce-for-more-secure-oauth-flows"></a>Azure AD podporuje PKCE pro bezpečnější toky OAuth
+
+**Typ:** nová funkce  
+**Kategorie služby:** ověřování (přihlášení)  
+**Schopnosti produktu:** ověření uživatele
+ 
+Dokumentace Azure AD se aktualizovaly v rámci Poznámka: podpora pro PKCE, která umožňuje bezpečnější komunikace během grant toku kódu autorizace OAuth 2.0.  U koncových bodů verze 1.0 a v2.0 jsou podporovány code_challenges S256 i ve formátu prostého textu. 
+
+Další informace najdete v tématu autorizační kód požadavku[](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code). 
+
+ 
+---
+ 
+
+### <a name="support-for-provisioning-all-user-attribute-values-available-in-the-workday-getworkers-api"></a>Podpora pro všechny uživatele hodnoty atributů k dispozici v rozhraní API Get_Workers Workday zřizování
+
+**Typ:** nová funkce  
+**Kategorie služby:** zřizování aplikace  
+**Schopnosti produktu:** 3. stran integrace
+ 
+Verzi public preview příchozí zřizování z Workday do služby Active Directory a Azure AD nyní podporuje možnost extrahovat a zřizování pro všechny hodnoty atributů k dispozici v rozhraní API Get_Workers Workday. Tento postup přidá podporuje pro stovky další standardní a vlastní atributy nad rámec těch, které jsou součástí počáteční verze během pracovního dne příchozí zřizování konektor.
+
+Další informace najdete v tématu: [přizpůsobení v seznamu atributů uživatele Workday](https://docs.microsoft.com/azure/active-directory/active-directory-saas-workday-inbound-tutorial#customizing-the-list-of-workday-user-attributes)
+
+---
+
+
+
+### <a name="changing-group-membership-from-dynamic-to-static-and-vice-versa"></a>Změna členství ve skupině z dynamické statický a naopak
+
+**Typ:** nová funkce  
+**Kategorie služby:** skupiny správy  
+**Schopnosti produktu:** spolupráce
+ 
+Je možné změnit, jak se spravuje členství ve skupině. To je užitečné, pokud chcete zachovat stejný název skupiny a ID v systému, takže všechny existující odkazy na skupiny musí být stále platné; Vytvoření nové skupiny by vyžadovaly aktualizace tyto odkazy.
+Aktualizovali jsme do centra pro správu Azure AD přidat podporu této funkce. Nyní zákazníci můžete převést existující skupiny z dynamické členství přiřazené členství a naopak. Stále k dispozici jsou taky existující rutiny prostředí PowerShell.
+
+Další informace najdete v tématu [změna dynamické členství na statické a naopak](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal#changing-dynamic-membership-to-static-and-vice-versa)
+
+ 
+
+ 
+---
+ 
+
+### <a name="improved-sign-out-behavior-with-seamless-sso"></a>Vylepšené chování odhlašování pomocí bezproblémové jednotného přihlašování
+
+**Typ:** změněné funkce  
+**Kategorie služby:** ověřování (přihlášení)  
+**Schopnosti produktu:** ověření uživatele
+ 
+Dříve i v případě, že uživatelé odhlásili explicitně z k aplikaci zabezpečené službou Azure AD, že by být automaticky přihlášeni zpět pomocí bezproblémové jednotné přihlašování, pokud se pokoušeli o přístup k aplikaci Azure AD znovu v rámci své podnikové síti z jejich zařízení připojená k doméně. Díky této změně se odhlaste se podporuje.  To umožňuje uživatelům zvolit Azure stejný nebo jiný účet AD přihlásit zpátky, místo se automaticky přihlásíte pomocí bezproblémové jednotné přihlašování.
+
+Další informace najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)
+
+ 
+---
+ 
+
+### <a name="application-proxy-connector-version-154020-released"></a>Verze konektoru Proxy aplikace 1.5.402.0 vydání
+
+**Typ:** změněné funkce  
+**Kategorie služby:** Proxy aplikace  
+**Schopnosti produktu:** Identity zabezpečení a ochrany
+ 
+Tato verze konektoru je postupně se nasazuje pomocí listopadu. Tato nová verze konektoru obsahuje následující změny:
+
+- Konektor teď Nastaví soubory cookie úrovni domény místo subdomény úroveň. To zajišťuje hladší prostředí jednotného přihlašování a zabraňuje redundantní ověřování výzvy.
+- Podpora pro požadavky na blokové kódování
+- Sledování stavu vylepšené konektoru 
+- Několik oprav chyb a vylepšení stability
+
+Další informace najdete v tématu [pochopit Azure AD Application Proxy konektory](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors).
+
+ 
+---
+ 
+
+ 
 
 
 

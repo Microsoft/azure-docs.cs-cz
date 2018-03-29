@@ -13,9 +13,9 @@
       href: quick-setup-auto-provision.md
     - name: Nastavení automatického zřizování – šablona
       href: quick-setup-auto-provision-rm.md
-    - name: Vytvoření simulovaného zařízení
+    - name: Automatické zřízení simulovaného zařízení
       items:
-        - name: TPM
+        - name: Osvědčení TPM
           items:
             - name: C
               href: quick-create-simulated-device.md
@@ -27,7 +27,7 @@
               href: quick-create-simulated-device-tpm-node.md
             - name: Python
               href: quick-create-simulated-device-tpm-python.md
-        - name: X.509
+        - name: Osvědčení X.509
           items:
             - name: C
               href: quick-create-simulated-device-x509.md
@@ -39,9 +39,9 @@
               href: quick-create-simulated-device-x509-node.md
             - name: Python
               href: quick-create-simulated-device-x509-python.md
-    - name: Registrace zařízení
+    - name: Registrace zařízení pomocí rozhraní API služby zřizování
       items:
-        - name: TPM
+        - name: Osvědčení TPM
           items:
             - name: Java
               href: quick-enroll-device-tpm-java.md
@@ -51,7 +51,7 @@
               href: quick-enroll-device-tpm-node.md
             - name: Python
               href: quick-enroll-device-tpm-python.md
-        - name: X.509
+        - name: Osvědčení X.509
           items:
             - name: Java
               href: quick-enroll-device-x509-java.md
@@ -79,12 +79,14 @@
       href: tutorial-group-enrollments.md
 - name: Koncepty
   items:
-    - name: Koncepty zařízení
+    - name: Automatické zřizování
+      href: concepts-auto-provisioning.md
+    - name: Zařízení
       href: concepts-device.md
-    - name: Koncepty služby
-      href: concepts-service.md
-    - name: Koncepty zabezpečení
+    - name: Zabezpečení
       href: concepts-security.md
+    - name: Služba
+      href: concepts-service.md
 - name: Návody
   items:
     - name: Správa registrací zařízení

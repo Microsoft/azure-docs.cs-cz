@@ -351,6 +351,8 @@
           href: extensions-diagnostics-template.md
         - name: Agent Network Watcher
           href: extensions-nwa.md
+        - name: Omezení instalace rozšíření
+          href: extensions-rmpolicy-howto-ps.md
     - name: Migrace virtuálních počítačů
       items:
         - name: Migrace AWS a místních virtuálních počítačů
@@ -396,6 +398,8 @@
           href: reset-network-interface.md
         - name: Diagnostika spouštění
           href: boot-diagnostics.md
+        - name: Konzola sériového portu
+          href: serial-console.md
         - name: Vytvoření virtuálního počítače
           href: troubleshoot-deployment-new-vm.md
         - name: Problémy při nasazení

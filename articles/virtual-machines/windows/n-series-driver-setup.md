@@ -1,11 +1,11 @@
 ---
-title: "Instalace nástroje Azure ovladač N-series pro Windows | Microsoft Docs"
-description: "Jak nastavit NVIDIA GPU ovladače pro N-series virtuální počítače se systémem Windows v Azure"
+title: Instalace nástroje Azure ovladač N-series pro Windows | Microsoft Docs
+description: Jak nastavit NVIDIA GPU ovladače pro N-series virtuální počítače se systémem Windows v Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f3950c34-9406-48ae-bcd9-c0418607b37d
 ms.service: virtual-machines-windows
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/01/2018
+ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e21115915808899e8455dc6d4f1f4cf8a100f483
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 61bcbe23ec3afd7091084dd0102010a9b8ef0b7c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>Nastavení GPU ovladače pro N-series virtuální počítače se systémem Windows Server
-Abyste mohli využívat možnosti GPU Azure N-series virtuální počítače se systémem Windows Server 2016 nebo Windows Server 2012 R2, nainstalujte podporované NVIDIA grafické ovladače. Tento článek obsahuje kroky instalace ovladačů po nasadit virtuální počítač s N-series. Informace o instalaci ovladačů je také k dispozici pro [virtuální počítače s Linuxem](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Abyste mohli využívat možnosti GPU Azure N-series virtuální počítače se systémem Windows Server 2016 nebo Windows Server 2012 R2, musí být nainstalován NVIDIA grafické ovladače. Tento článek obsahuje kroky instalace ovladačů po nasadit virtuální počítač s N-series. Informace o instalaci ovladačů je také k dispozici pro [virtuální počítače s Linuxem](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Základní specifikace, kapacity úložiště a disku podrobnosti najdete v tématu [velikosti virtuálních počítačů Windows GPU](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
@@ -64,7 +64,7 @@ Chcete-li nainstalovat nejnovější verze 1.1 HpcVMDrivers rozšíření na exi
 Síť RDMA podporuje rozhraní MPI (Message Passing) provozu pro aplikace spuštěné s [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) nebo Intel MPI 5.x. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Vývojářům tvorbu GPU accelerated aplikací pro grafickými procesory tesla – měrná NVIDIA můžete také stáhnout a nainstalovat [CUDA Toolkit 9.1](https://developer.nvidia.com/cuda-downloads). Další informace najdete v tématu [Průvodce instalací CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
 

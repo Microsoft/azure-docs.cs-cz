@@ -419,6 +419,8 @@
           href: extensions-nwa.md
         - name: Rozšíření VMAccess
           href: using-vmaccess-extension.md
+        - name: Omezení instalace rozšíření
+          href: extensions-rmpolicy-howto-cli.md
     - name: Migrace virtuálních počítačů
       items:
         - name: Migrace AWS a místních virtuálních počítačů
@@ -458,6 +460,8 @@
           href: understand-vm-reboot.md
         - name: Diagnostika spouštění
           href: boot-diagnostics.md
+        - name: Konzola sériového portu
+          href: serial-console.md
         - name: Přístup k aplikacím
           href: troubleshoot-app-connection.md
         - name: Selhání přidělení

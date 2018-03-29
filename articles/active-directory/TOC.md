@@ -77,8 +77,8 @@
 ## [Správa skupin a členů](active-directory-manage-groups.md)
 ### Správa skupin
 #### [Azure Portal](active-directory-groups-create-azure-portal.md)
-#### [Azure PowerShell – model Azure Resource Manageru](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-#### [Azure PowerShell – model nasazení Classic](active-directory-accessmanagement-groups-settings-cmdlets.md)
+#### [Azure AD PowerShell pro Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell MSOnline (v1)](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### [Správa členů skupin](active-directory-groups-members-azure-portal.md)
 ### [Správa vlastníků skupin](active-directory-accessmanagement-managing-group-owners.md)
 ### [Správa členství ve skupinách](active-directory-groups-membership-azure-portal.md)

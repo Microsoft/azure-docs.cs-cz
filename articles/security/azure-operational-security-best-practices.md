@@ -1,12 +1,12 @@
 ---
-title: "Azure osvědčené postupy zabezpečení provozní | Microsoft Docs"
-description: "Tento článek obsahuje sadu osvědčené postupy pro zabezpečení provozu Azure."
+title: Azure osvědčené postupy zabezpečení provozní | Microsoft Docs
+description: Tento článek obsahuje sadu osvědčené postupy pro zabezpečení provozu Azure.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: db9840817d92b4f2f63009d30dbd554666d53dbe
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb7e0df046ecc2ffcd3fa59ac53edf36095933c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy provozní zabezpečení Azure
 Zabezpečení provozu Azure se odkazuje na služby, ovládací prvky a funkce, které jsou k dispozici uživatelům pro ochranu svá data, aplikace a dalších prostředků ve službě Microsoft Azure. Zabezpečení provozu Azure je založený na rozhraní, které zahrnuje poznatky získané při různých možnostech, které jsou jedinečné pro společnosti Microsoft, včetně Microsoft SDL Security Development Lifecycle (), programu Microsoft Security Response Center a hloubkové povědomí o povahu hrozeb počítačové bezpečnosti.
@@ -167,12 +167,12 @@ Další informace o tom, jak nakonfigurovat sledovací proces sítě a jak ji po
 Toto jsou některé seznam z Azure DevOps postupy v tomto cloudu Microsoftu prostor, který umožňuje podnikům a týmům produktivní a efektivní.
 
 -   **Infrastruktura jako kód (IaC):** infrastruktury jako kód je sada technik a postupů, které odborníkům v oblasti IT pomohou odeberte zatížení související s den sestavení a správu modulární infrastruktury. To umožňuje IT specialisté tvorbu a udržování jejich prostředí moderní server tak, že je jako jak vývojářům tvorbu a udržování kódu aplikace. Pro Azure, máme [Azure Resource Manager]( https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) umožňuje zřídit aplikace pomocí deklarativní šablony. S jednou šablonou můžete nasadit několik služeb společně s jejich závislostmi. Stejnou šablonu můžete použít k opakovanému nasazení aplikace během každé fáze životního cyklu této aplikace.
--   **Průběžnou integraci a nasazení:** můžete nakonfigurovat Visual Studio Online týmové projekty, aby [automaticky sestavení a nasazení](https://www.visualstudio.com/docs/build/overview) k službě Azure web apps nebo cloudové služby. VSO automaticky nasadí binární soubory po provedení sestavení do Azure po každé změnami kódu. V rámci popsaného procesu sestavení balíčku je ekvivalentní příkaz balíčku v sadě Visual Studio a publikování kroky jsou ekvivalentní příkaz Publikovat v sadě Visual Studio.
+-   **Průběžnou integraci a nasazení:** můžete nakonfigurovat na týmových projektech Visual Studio Team Services (VSTS) [automaticky sestavení a nasazení](https://www.visualstudio.com/docs/build/overview) k službě Azure web apps nebo cloudové služby. Služby VSTS automaticky nasadí binární soubory po provedení sestavení do Azure po každé změnami kódu. V rámci popsaného procesu sestavení balíčku je ekvivalentní příkaz balíčku v sadě Visual Studio a publikování kroky jsou ekvivalentní příkaz Publikovat v sadě Visual Studio.
 -   **Správa verzí:** Visual Studio [řízení vydání](https://msdn.microsoft.com/library/vs/alm/release/overview) je vynikající řešení pro automatizaci více fáze nasazení a správa verzí procesu. Vytvoření spravované průběžné nasazování kanály k uvolnění rychle, snadno a často. Pomocí řízení vydání jsme mnohem můžete automatizovat proces naše verze a jsme může mít předdefinované schválení pracovních postupů. Nasadit místně a v cloudu, rozšířit a přizpůsobit podle potřeby.
 -   **Monitorování výkonu aplikace:** rozpoznat problémy, řešení problémů a neustálé zlepšování aplikací. Rychle diagnostikuje problémy uvedené ve vaší živé aplikaci. Pochopte, co s ní vaši uživatelé dělají. Konfigurace je snadno řádu přidání kódu JS a položku webconfig a zobrazte výsledky v rámci minut na portálu se všechny podrobnosti. [App insights](https://azure.microsoft.com/documentation/articles/app-insights-start-monitoring-app-health-usage/) pomáhá podnikům pro rychlejší detekce problémy & nápravy problému.
--   **Spouštění testování & škálování:** problémy s výkonem jsme můžete najít v naší aplikaci ke zlepšení kvality nasazení a je třeba zajistit vaší aplikace je vždy nahoru a k dispozici pro firmy. Ujistěte se, že vaše aplikace dokáže zpracovat provoz další spuštění nebo marketingové kampaně. Spustit cloudové [spouštění testů](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) v současně s Visual Studio Online.
+-   **Spouštění testování & škálování:** problémy s výkonem jsme můžete najít v naší aplikaci ke zlepšení kvality nasazení a je třeba zajistit vaší aplikace je vždy nahoru a k dispozici pro firmy. Ujistěte se, že vaše aplikace dokáže zpracovat provoz další spuštění nebo marketingové kampaně. Spustit cloudové [spouštění testů](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) v současně s služby VSTS.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace o [provozního zabezpečení Azure](https://docs.microsoft.com/azure/security/azure-operational-security).
 - Další informace [Operations Management Suite | Zabezpečení a dodržování předpisů](https://www.microsoft.com/cloud-platform/security-and-compliance).
 - [Začínáme s Operations Management Suite zabezpečení a Audit řešení](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started).
