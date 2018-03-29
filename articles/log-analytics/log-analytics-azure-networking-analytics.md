@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: richrund
-ms.openlocfilehash: 17dadd784d59a2cc0cab6ffbae144010f896b296
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 12172e81ed6b4d79ee200ee1ca79803ad58d6d19
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Monitorování řešení v analýzy protokolů Azure sítě
 
@@ -28,18 +28,19 @@ Analýzy protokolů nabízí následující řešení pro monitorování vaší 
 * Azure Application Gateway analytics ke kontrole
  * Protokoly služby Azure Application Gateway
  * Metriky Azure Application Gateway
-* Skupina zabezpečení sítě Azure analytics ke kontrole
- * Protokoly skupinu zabezpečení sítě Azure
+* Řešení ke sledování a audit síťové aktivity v síti cloudu
+* [Analýza provozu](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+* Skupina zabezpečení sítě Azure Analytics
 
 ## <a name="network-performance-monitor-npm"></a>Sledování výkonu sítě (NPM)
 
-[Sledování výkonu sítě](log-analytics-network-performance-monitor.md) řešení správy je monitorování řešení, která sleduje stav, dostupnosti a dostupnosti sítě sítě.  Se používá k monitorování připojení mezi:
+[Sledování výkonu sítě](https://docs.microsoft.com/azure/networking/network-monitoring-overview) řešení správy je monitorování řešení, která sleduje stav, dostupnosti a dostupnosti sítě sítě.  Se používá k monitorování připojení mezi:
 
 * veřejný cloud a místní
 * datových center a umístění uživatele (firemních pobočkách)
 * podsítě hostování různé úrovně víceúrovňových aplikací.
 
-Další informace najdete v tématu [sledování výkonu sítě](log-analytics-network-performance-monitor.md).
+Další informace najdete v tématu [sledování výkonu sítě](https://docs.microsoft.com/azure/networking/network-monitoring-overview).
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Analýza Azure Application Gateway a skupinu zabezpečení sítě
 Použití řešení:
@@ -60,7 +61,7 @@ Analýza Azure Application Gateway a řešením pro správu analytics skupinu za
 
 Následující tabulka uvádí metody shromažďování dat a další podrobnosti o tom, jak se data shromažďují pro Azure Application Gateway analýzy a analýzy skupinu zabezpečení sítě.
 
-| Platforma | Přímé agenta | Agent systémy Center Operations Manager | Azure | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
+| Platformy | Přímé agenta | Agent systémy Center Operations Manager | Azure | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- |
 | Azure |  |  |&#8226; |  |  |Při zaznamenání |
 
@@ -222,7 +223,7 @@ Použití aktualizované řešení:
 
 Data jsou shromažďována předtím, než tato změna není zobrazená v nové řešení. Můžete pokračovat se dotázat na tato data pomocí starého typu a názvy polí.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Další postup

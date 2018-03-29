@@ -1,6 +1,6 @@
 ---
-title: "Víc konfigurací IP adres v Azure pro vyrovnávání zatížení | Microsoft Docs"
-description: "Vyrovnávání zatížení napříč primární a sekundární konfigurace protokolu IP."
+title: Víc konfigurací IP adres v Azure pro vyrovnávání zatížení | Microsoft Docs
+description: Vyrovnávání zatížení napříč primární a sekundární konfigurace protokolu IP.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 02388162ac4d2d86255c0a65d8b94253047f3983
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fcd9ff8b726b5dc3e0d447bc384dbcc7cc1a4e88
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Vyrovnávání zatížení na víc konfigurací IP adres pomocí portálu Azure
 
@@ -27,7 +27,6 @@ ms.lasthandoff: 02/21/2018
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [Rozhraní příkazového řádku](load-balancer-multiple-ip-cli.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 V tomto článku vytvoříme ukazují, jak používat nástroj pro vyrovnávání zatížení Azure s více IP adres na sekundární síťový adaptér rozhraní (NIC). Následující diagram znázorňuje náš scénář:
 
@@ -43,7 +42,7 @@ V našem scénáři používáme následující konfiguraci:
 - Azure nástroj pro vyrovnávání zatížení se používá ke zveřejnění dvě front-end IP adresy, jednu pro každý web. Front-endu adresy se používají k distribuci provoz do příslušných konfiguraci protokolu IP pro každý web.
 - Pro front-end IP adresy a fond back-end IP adresy se používá stejné číslo portu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Náš scénář příklad předpokládá, že máte skupinu prostředků s názvem **contosofabrikam** nakonfigurovaný následujícím způsobem:
 
@@ -63,7 +62,7 @@ Proveďte následující kroky k dosažení scénáři uvedeném v tomto článk
 
 Pro každý virtuální počítač ve virtuální síti přidejte konfiguraci protokolu IP pro sekundární síťový adaptér:  
 
-1. Přejděte na portálu Azure: http://portal.azure.com. Přihlaste se pomocí účtu Azure.
+1. Přejděte do portálu Azure: http://portal.azure.com. Přihlaste se pomocí účtu Azure.
 
 2. V levém horním rohu obrazovky, vyberte **skupiny prostředků** ikonu. Pak vyberte skupinu prostředků, kde se nachází virtuální počítače (například **contosofabrikam**). **Skupiny prostředků** podokně se zobrazí všechny prostředky a síťové adaptéry pro virtuální počítače.
 
@@ -87,7 +86,7 @@ Po druhé konfiguraci protokolu IP pro sekundární síťový adaptér je dokon�
 
 Vytvořte nástroj pro vyrovnávání zatížení pro konfiguraci:
 
-1. Přejděte na portálu Azure: http://portal.azure.com. Přihlaste se pomocí účtu Azure.
+1. Přejděte do portálu Azure: http://portal.azure.com. Přihlaste se pomocí účtu Azure.
 
 2. V levém horním rohu obrazovky vyberte **vytvořit prostředek** > **sítě** > **nástroj pro vyrovnávání zatížení**. Potom vyberte **vytvořit**.
 

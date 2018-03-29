@@ -1,8 +1,8 @@
 ---
-title: "Používat Apache Spark ke čtení a zápisu dat do Azure SQL database | Microsoft Docs"
-description: "Zjistěte, jak nastavit připojení mezi clusteru HDInsight Spark a Azure SQL database na data číst, zapisovat data a data datového proudu do databáze SQL"
+title: Používat Apache Spark ke čtení a zápisu dat do Azure SQL database | Microsoft Docs
+description: Zjistěte, jak nastavit připojení mezi clusteru HDInsight Spark a Azure SQL database na data číst, zapisovat data a data datového proudu do databáze SQL
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/29/2018
+ms.date: 03/28/2018
 ms.author: nitinme
-ms.openlocfilehash: 28ed6b9774bb85c7ec806c7775c34f8bc3d66bde
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 011471224d79ae326ccc33fc23fd6fada347497b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Použití clusteru HDInsight Spark ke čtení a zápisu dat do Azure SQL database
 
 Zjistěte, jak připojit cluster Apache Spark v Azure HDInsight s Azure SQL database a pak číst, zapisovat a Streamovat data do databáze SQL. Podle pokynů v tomto článku použít Poznámkový blok Jupyter ke spuštění Scala fragmenty kódu. Můžete však vytvoření samostatné aplikace v Scala nebo Python a provádění stejných úloh. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Cluster Azure HDInsight Spark**.  Postupujte podle pokynů v [vytvářet cluster Apache Spark v HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -234,7 +234,7 @@ V této části jsme Streamovat data do **hvactable** , že jste již vytvořili
         
          var streamingQuery = WriteToSQLQuery.start()
 
-6. Ověřte, že data je přenášen do **hvactable** spuštěním následujícího dotazu. Při spuštění dotazu, zobrazuje počet řádků ve vzestupném tabulky.
+6. Ověřte, že data je přenášen do **hvactable** spuštěním následujícího dotazu v serveru SQL Server Management Studio (SSMS). Při spuštění dotazu, zobrazuje počet řádků ve vzestupném tabulky.
 
         SELECT COUNT(*) FROM hvactable
 

@@ -1,25 +1,25 @@
 ---
-title: "Připojte se k databázi Cosmos Azure pomocí nástrojů BI analytics | Microsoft Docs"
-description: "Naučte se používat ovladač Azure Cosmos DB ODBC k vytvoření tabulky a zobrazení tak, aby normalizovaný data lze zobrazit v softwaru analytics BI a data."
-keywords: "rozhraní ODBC, ovladače odbc"
+title: Připojte se k databázi Cosmos Azure pomocí nástrojů BI analytics | Microsoft Docs
+description: Naučte se používat ovladač Azure Cosmos DB ODBC k vytvoření tabulky a zobrazení tak, aby normalizovaný data lze zobrazit v softwaru analytics BI a data.
+keywords: rozhraní ODBC, ovladače odbc
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 9967f4e5-4b71-4cd7-8324-221a8c789e6b
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 03/22/2018
 ms.author: mimig
-ms.openlocfilehash: 3892f698ec2b0b45f71dc38491687897559821ba
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 445acafeef67027712826f644afaa1784569b30d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojte se k databázi Cosmos Azure pomocí nástrojů BI analýzy pomocí ovladače ODBC
 
@@ -30,7 +30,7 @@ Ovladač Azure Cosmos DB ODBC je kompatibilní s ODBC 3.8 a podporuje syntaxi AN
 ## <a name="why-do-i-need-to-normalize-my-data"></a>Proč musím normalizaci svá data?
 Azure Cosmos DB je schemaless databáze, takže umožňuje rychlý vývoj aplikací povolením aplikace k iteraci jejich datového modelu za chodu a není je omezit striktní schématu. Izolované databáze Azure Cosmos DB může obsahovat dokumenty JSON různé struktur. Tato služba je skvělá pro rychlý vývoj aplikací, ale když chcete k analýze a vytváření sestav dat pomocí analýzy dat a nástroje BI, často potřebuje data vyrovnány a splňovat určité schéma.
 
-Toto je, kde odeslán ovladač ODBC. Pomocí ovladače ODBC, můžete nyní renormalized data v Azure Cosmos DB do tabulek a zobrazení hodí k vašim datovým potřebám analýz a generování sestav. Renormalized schémata nemají žádný vliv na základní data a není omezit jen vývojáři řídit k nim, jednoduše umožňují vám využít kompatibilní s rozhraním ODBC nástroje pro přístup k datům. Takže teď vaše databáze Azure Cosmos DB pouze nebude oblíbená položka pro váš vývojový tým, ale bude datoví analytici skvělé příliš.
+Toto je, kde odeslán ovladač ODBC. Pomocí ovladače ODBC, můžete nyní renormalize data v Azure Cosmos DB do tabulek a zobrazení hodí k vašim datovým potřebám analýz a generování sestav. Renormalized schémata nemají žádný vliv na základní data a není omezit jen vývojáři řídit k nim, umožňují vám využít kompatibilní s rozhraním ODBC nástroje pro přístup k datům. Takže teď vaše databáze Azure Cosmos DB pouze nebude oblíbená položka pro váš vývojový tým, ale bude datoví analytici skvělé příliš.
 
 Teď umožňuje Začínáme pomocí ovladače ODBC.
 
@@ -40,7 +40,7 @@ Teď umožňuje Začínáme pomocí ovladače ODBC.
 
     | Instalační program | Podporované operační systémy| 
     |---|---| 
-    |[Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64) pro 64bitový systém Windows| 64bitová verze Windows 8.1 nebo novější, Windows 8, Windows 7, Windows Server 2012 R2, Windows Server 2012 a Windows Server 2008 R2.| 
+    |[Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64) pro 64bitový systém Windows| 64bitové verze Windows 8.1 nebo novější, Windows 8, Windows 7, Windows Server 2012 R2, Windows Server 2012 a Windows Server 2008 R2.| 
     |[Microsoft Azure Cosmos DB ODBC 32 x 64-bit.msi](https://aka.ms/documentdb-odbc-32x64) pro 32bitovou verzi na 64bitovém systému Windows| 64bitové verze Windows 8.1 nebo novější, Windows 8, Windows 7, Windows XP, Windows Vista, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 a Windows Server 2003.| 
     |[Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32) pro 32bitový systém Windows|32bitové verze Windows 8.1 nebo novější, Windows 8, Windows 7, Windows XP a Windows Vista.|
 
@@ -53,7 +53,7 @@ Teď umožňuje Začínáme pomocí ovladače ODBC.
 
 ## <a id="connect"></a>Krok 2: Připojení k databázi Azure Cosmos DB
 
-1. Po [instalaci ovladače Azure Cosmos DB ODBC](#install)v **správce zdrojů dat ODBC** okně klikněte na tlačítko **přidat**. Můžete vytvořit uživatele nebo název DSN systému. V tomto příkladu vytváříme uživatelské DSN.
+1. Po [instalaci ovladače Azure Cosmos DB ODBC](#install)v **správce zdrojů dat ODBC** okně klikněte na tlačítko **přidat**. Můžete vytvořit uživatele nebo název DSN systému. V tomto příkladu vytvoříte uživatelské DSN.
 2. V **vytvořit nový zdroj dat** vyberte **ovladače ODBC Microsoft Azure Cosmos DB**a potom klikněte na **Dokončit**.
 3. V **Azure Cosmos DB ODBC ovladač SDN instalace** vyplňte následující: 
 
@@ -71,7 +71,7 @@ Teď umožňuje Začínáme pomocí ovladače ODBC.
     - **Soubor se schématem**: Zde máte několik možností.
         - Ve výchozím nastavení tato položka, jako je (prázdný), a kontroluje ovladače data na první stránce pro všechny kolekce k určení schéma každou kolekci. To se označuje jako kolekce mapování. Bez soubor schéma definované ovladače se má provést kontrola pro každou relaci ovladačů a může mít za následek vyšší doba spuštění aplikace pomocí DSN. Doporučujeme vždy přiřadit soubor schématu pro zdroje dat DSN.
         - Pokud již máte soubor schématu (může být ten, který jste vytvořili pomocí [schématu Editor](#schema-editor)), můžete kliknout na **Procházet**, přejděte k souboru, klikněte na **Uložit**a potom klikněte na **OK**.
-        - Pokud chcete vytvořit nové schéma, klikněte na tlačítko **OK**a potom klikněte na **schématu Editor** v hlavním okně. Pak pokračujte [schématu Editor](#schema-editor) informace. Při vytváření nového souboru schématu, nezapomeňte prosím vraťte se **pokročilé možnosti** okno zahrnout schématu nově vytvořený soubor.
+        - Pokud chcete vytvořit nové schéma, klikněte na tlačítko **OK**a potom klikněte na **schématu Editor** v hlavním okně. Pak pokračujte [schématu Editor](#schema-editor) informace. Po vytvoření nového souboru schématu, nezapomeňte se vraťte **pokročilé možnosti** okno zahrnout schématu nově vytvořený soubor.
 
 6. Po dokončení a zavření **Azure Cosmos DB ODBC ovladač DSN instalace** okně Nový uživatelský název DSN se přidá do karty Uživatelské DSN.
 
@@ -114,10 +114,60 @@ Následujících kroků vytvořte schéma pro data v jedné nebo více kolekcí 
 4. Klikněte na **OK**. 
 5. Po dokončení definice mapování pro kolekce, které chcete v ukázkové **schématu Editor** okně klikněte na tlačítko **ukázka**.
      Pro každý sloupec můžete upravit název sloupce SQL, typ SQL, délka SQL (pokud existuje), škálování (pokud existuje), přesnost (pokud existuje) a s možnou hodnotou Null.
-    - Můžete nastavit **skrýt sloupce** k **true** Pokud chcete vyloučit sloupce z výsledků dotazu. Sloupce označena skrýt sloupce = true nebudou zobrazeny pro výběr a projekce, i když jsou stále součástí schématu. Například můžete skrýt všechny vlastnosti požadované systému Azure Cosmos DB počínaje "_".
+    - Můžete nastavit **skrýt sloupce** k **true** Pokud chcete vyloučit sloupce z výsledků dotazu. Sloupce označena skrýt sloupce = true nebudou zobrazeny pro výběr a projekce, i když jsou stále součástí schématu. Například můžete skrýt všechny vlastnosti systém požadovaný Azure Cosmos DB počínaje `_`.
     - **Id** sloupec je pouze pole, které nemohou být skrytá. protože je používán jako primární klíč v normalizovaný schématu. 
 6. Po dokončení definování schématu, klikněte na tlačítko **soubor** | **Uložit**, přejděte do adresáře uložte schématu a pak klikněte na tlačítko **Uložit**.
-7. Zpět v **Azure Cosmos DB ODBC ovladač DSN instalace** okně klikněte na tlačítko ** Rozšířené možnosti **. Pak na **soubor schématu** pole, přejděte na soubor uložený schéma a klikněte na tlačítko **OK**. Klikněte na tlačítko **OK** znovu a uložit DSN. To umožňuje ušetřit schéma, které jste vytvořili s DSN. 
+7. Zpět v **Azure Cosmos DB ODBC ovladač DSN instalace** okně klikněte na tlačítko **pokročilé možnosti**. Pak na **soubor schématu** pole, přejděte na soubor uložený schéma a klikněte na tlačítko **OK**. Klikněte na tlačítko **OK** znovu a uložit DSN. To umožňuje ušetřit schéma, které jste vytvořili s DSN. 
+
+## <a name="optional-set-up-linked-server-connection"></a>(Volitelné) Nastavení připojení odkazovaného serveru
+
+Nastavením připojení odkazovaného serveru se můžete dotazovat Azure Cosmos databáze z SQL Server Management Studio (SSMS).
+
+1. Vytvořte zdroj dat systému, jak je popsáno v [kroku 2](#connect)s názvem například `SDS Name`.
+2. [Nainstalujte SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+3. V editoru dotazů SSMS vytvořit objekt odkazovaný server `DEMOCOSMOS` ke zdroji dat pomocí následujících příkazů. Nahraďte `DEMOCOSMOS` s názvem pro odkazovaný server, a `SDS Name` s názvem zdroje dat systému.
+
+    ```sql
+    USE [master]
+    GO
+    
+    EXEC master.dbo.sp_addlinkedserver @server = N'DEMOCOSMOS', @srvproduct=N'', @provider=N'MSDASQL', @datasrc=N'SDS Name'
+    
+    EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DEMOCOSMOS', @useself=N'False', @locallogin=NULL, @rmtuser=NULL, @rmtpassword=NULL
+    
+    GO
+    ```
+    
+Pokud chcete zobrazit nový název odkazovaný server, aktualizujte seznam odkazované servery.
+
+![Odkazovaný Server v aplikaci SSMS](./media/odbc-driver/odbc-driver-linked-server-ssms.png)
+
+### <a name="query-linked-database"></a>Propojené dotaz do databáze
+
+K dotazování propojené databáze, zadejte dotaz SSMS. V tomto příkladu dotaz vybere z tabulky v kolekci s názvem `customers`:
+
+```sql
+SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT *  FROM [customers].[customers]')
+```
+
+Provedení dotazu. Výsledek by měl vypadat podobně jako tento:
+
+```
+attachments/  1507476156    521 Bassett Avenue, Wikieup, Missouri, 5422   "2602bc56-0000-0000-0000-59da42bc0000"   2015-02-06T05:32:32 +05:00 f1ca3044f17149f3bc61f7b9c78a26df
+attachments/  1507476156    167 Nassau Street, Tuskahoma, Illinois, 5998   "2602bd56-0000-0000-0000-59da42bc0000"   2015-06-16T08:54:17 +04:00 f75f949ea8de466a9ef2bdb7ce065ac8
+attachments/  1507476156    885 Strong Place, Cassel, Montana, 2069       "2602be56-0000-0000-0000-59da42bc0000"   2015-03-20T07:21:47 +04:00 ef0365fb40c04bb6a3ffc4bc77c905fd
+attachments/  1507476156    515 Barwell Terrace, Defiance, Tennessee, 6439     "2602c056-0000-0000-0000-59da42bc0000"   2014-10-16T06:49:04 +04:00      e913fe543490432f871bc42019663518
+attachments/  1507476156    570 Ruby Street, Spokane, Idaho, 9025       "2602c156-0000-0000-0000-59da42bc0000"   2014-10-30T05:49:33 +04:00 e53072057d314bc9b36c89a8350048f3
+```
+
+> [!NOTE]
+> Odkazovaný server Cosmos DB nepodporuje pojmenování sestávající ze čtyř částí. Vrátí se chyba podobná následující zpráva:
+
+```
+Msg 7312, Level 16, State 1, Line 44
+
+Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server "DEMOCOSMOS". A four-part name was supplied, but the provider does not expose the necessary interfaces to use a catalog or schema.
+``` 
 
 ## <a name="optional-creating-views"></a>(Volitelné) Vytváření zobrazení
 Můžete definovat a vytvářet zobrazení v rámci procesu vzorkování. Tato zobrazení jsou ekvivalentní zobrazení SQL. Jsou jen pro čtení a oboru se výběr a definované projekce Azure Cosmos DB SQL. 
@@ -142,12 +192,12 @@ Nové DSN můžete použít pro připojení k žádné kompatibilní s rozhraní
 8. V Power BI Desktop vkládá zcela vlevo, vyberte kartu dat ![Karta data v Power BI Desktop](./media/odbc-driver/odbc-driver-data-tab.png) Potvrďte vaše data byla importována.
 9. Nyní můžete vytvořit vizuální prvky používající Power BI kliknutím na kartu sestavy ![kartu sestavy v Power BI Desktop](./media/odbc-driver/odbc-driver-report-tab.png), kliknete na příkaz **nové Visual**a pak přizpůsobení dlaždice. Další informace o vytváření vizualizací v Power BI Desktop najdete v tématu [typů vizualizace v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se zobrazí následující chyba, zkontrolujte **hostitele** a **přístupový klíč** hodnoty, které jste zkopírovali na portálu Azure v [kroku 2](#connect) jsou správné a opakujte. Pomocí tlačítek kopírovat na pravé straně **hostitele** a **přístupový klíč** hodnoty v portálu Azure a Kopírovat bez hodnoty chyb.
 
     [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o databázi Cosmos Azure najdete v tématu [Vítá vás Azure Cosmos DB](introduction.md).

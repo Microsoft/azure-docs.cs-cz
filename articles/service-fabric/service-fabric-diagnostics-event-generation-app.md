@@ -14,17 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: 258aac722aa1c94ecf2cbf0524a3e4b53b8a788c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f3e7b9c7432538c0f78662213544d4d691652f13
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-and-service-level-logging"></a>Úroveň protokolování služby a aplikace
 
 Instrumentace kód je základem pro většině ostatních aspektů monitorování vašim službám. Instrumentace je jediným způsobem, jak můžete víte, že je něco špatně a ke zjištění toho, co je nutné opravit. Přestože je technicky možné se připojit ladicí program k produkčním služby, není běžnou praxi. Nutnosti podrobně data instrumentace je tedy důležité.
 
 Některé produkty, automaticky instrumentace vašeho kódu. I když tato řešení můžete dobře fungovat, je vyžadováno téměř vždy ruční instrumentace. V části end musí mít dostatek informací k forensically ladění aplikace. Tento dokument popisuje různé přístupy k instrumentaci kódu a kdy zvolit jeden ze způsobů oproti jinému.
+
+Příklady týkající se používání těchto doporučení najdete v tématu [přidání protokolování do aplikace Service Fabric](service-fabric-how-to-diagnostics-log.md).
 
 ## <a name="eventsource"></a>EventSource
 

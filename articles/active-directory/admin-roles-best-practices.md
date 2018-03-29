@@ -1,8 +1,8 @@
 ---
-title: "Osvědčené postupy pro zabezpečení přístup pro správu ve službě Azure AD | Microsoft Docs"
-description: "Zajistěte, aby byly zabezpečené účty pro správu přístupu a správce vaší organizace. Pro systémové architekty a IT specialistů, kteří konfigurují služby Azure AD Azure a služeb Microsoft Online Services."
+title: Osvědčené postupy pro zabezpečení přístup pro správu ve službě Azure AD | Microsoft Docs
+description: Zajistěte, aby byly zabezpečené účty pro správu přístupu a správce vaší organizace. Pro systémové architekty a IT specialistů, kteří konfigurují služby Azure AD Azure a služeb Microsoft Online Services.
 services: active-directory
-keywords: 
+keywords: ''
 author: curtand
 ms.author: curtand
 ms.date: 03/09/2018
@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 166171dc8d8d694ef253ed6809c53b54577535e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 98665ab215c98ea60273ce3aae2757cf20817a90
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro nasazení hybridními a cloudovými ve službě Azure AD
 
@@ -156,7 +156,7 @@ Ujistěte se, že mají všichni uživatelé přihlášení k jejich účty pro 
 
 #### <a name="turn-on-password-synchronization"></a>Zapnutí synchronizace hesel
 
-Synchronizace hesel je funkce používá k synchronizaci hodnoty hash hodnot hash hesla uživatele z místní instance služby Active Directory k Azure cloudové AD instance. I, že pokud se rozhodnete používat federační službou Active Directory Federation Services (AD FS) nebo jiných poskytovatelů identit, můžete volitelně nastavení synchronizace hesel jako záložní v případě vaší místní infrastruktury, jako je AD nebo servery služby AD FS selhat nebo se změní na dočasně nedostupná. To umožňuje uživatelům přihlásit ke službě pomocí stejné heslo, které používají pro přihlášení k místní instanci AD. Také je možné zjistit zneužití přihlašovacích údajů porovnáním hodnot hash těchto hesel s hesly známé došlo k narušení, pokud má uživatel využít jejich stejnou e-mailovou adresu a heslo na jiné služby, které není připojeno k Azure AD Identity Protection.  Další informace najdete v tématu [implementace synchronizace hesel s Azure AD Connect sync](./connect/active-directory-aadconnectsync-implement-password-synchronization.md).
+Synchronizace hesel je funkce používá k synchronizaci hodnoty hash hodnot hash hesla uživatele z místní instance služby Active Directory k Azure cloudové AD instance. I, že pokud se rozhodnete používat federační službou Active Directory Federation Services (AD FS) nebo jiných poskytovatelů identit, můžete volitelně nastavení synchronizace hesel jako záložní v případě vaší místní infrastruktury, jako je AD nebo servery služby AD FS selhat nebo se změní na dočasně nedostupná. To umožňuje uživatelům přihlásit ke službě pomocí stejné heslo, které používají pro přihlášení k místní instanci AD. Také je možné zjistit zneužití přihlašovacích údajů porovnáním hodnot hash těchto hesel s hesly známé došlo k narušení, pokud má uživatel využít jejich stejnou e-mailovou adresu a heslo na jiné služby, které není připojeno k Azure AD Identity Protection.  Další informace najdete v tématu [implementovat synchronizaci hodnoty hash hesla s Azure AD Connect sync](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Vyžadovat vícefaktorové ověřování (MFA) pro uživatele ve všech privilegovaných rolí, jakož i zveřejněné uživatelů
 

@@ -1,11 +1,11 @@
 ---
-title: "Přehled back-endů s více tenanty s použitím služby Azure Application Gateway | Dokumentace Microsoftu"
-description: "Tato stránka poskytuje přehled podpory služby Application Gateway pro back-endy s více tenanty."
+title: Přehled back-endů s více tenanty s použitím služby Azure Application Gateway | Dokumentace Microsoftu
+description: Tato stránka poskytuje přehled podpory služby Application Gateway pro back-endy s více tenanty.
 documentationcenter: na
 services: application-gateway
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
-ms.openlocfilehash: d093af064bca46aa1f454b61b1099f47f61ccd33
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: f5ec916fcf45734ab85751e749bd6bb312f05b1a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>Podpora služby Application Gateway pro back-endy s více tenanty
 
@@ -32,7 +32,7 @@ Možnost určit přepsání hostitele se definuje v nastavení HTTP a během vyt
 2. Schopnost odvodit název hostitele z IP adresy nebo plně kvalifikovaného názvu domény členů fondu back-end. Nastavení HTTP nabízí také možnost vybrat název hostitele z plně kvalifikovaného názvu domény člena fondu back-end, pokud je nakonfigurovaná možnost odvodit název hostitele z jednotlivých členů fondu back-end. Při použití koncového šifrování protokolu SSL se tento název hostitele odvodí z plně kvalifikovaného názvu domény a použije v rozšíření SNI. Tato možnost umožňuje scénáře, kdy může mít fond back-end dvě nebo více služeb PaaS s více tenanty, jako jsou například webové aplikace Azure, a hlavička hostitele požadavku každého člena obsahuje název hostitele odvozený z jeho plně kvalifikovaného názvu domény.
 
 > [!NOTE]
-> V obou předchozích případech má nastavení vliv pouze na chování živého provozu a ne na chování sondy stavu. Vlastní sondy už podporují možnost zadat hlavičku hostitele v konfiguraci sondy. Vlastní sondy nyní podporují také možnost odvodit chování hlavičky hostitele z aktuálně nakonfigurovaného nastavení HTTP. Tuto konfiguraci je možné zadat pomocí parametru `PickHostNameFromback endAddress` v konfiguraci sondy. Aby fungovala funkce koncového šifrování, sondu i nastavení HTTP je potřeba upravit tak, aby odrážely správnou konfiguraci.
+> V obou předchozích případech má nastavení vliv pouze na chování živého provozu a ne na chování sondy stavu. Vlastní sondy už podporují možnost zadat hlavičku hostitele v konfiguraci sondy. Vlastní sondy nyní podporují také možnost odvodit chování hlavičky hostitele z aktuálně nakonfigurovaného nastavení HTTP. Tuto konfiguraci je možné zadat pomocí parametru `PickHostNameFromBackendHttpSettings` v konfiguraci sondy. Aby fungovala funkce koncového šifrování, sondu i nastavení HTTP je potřeba upravit tak, aby odrážely správnou konfiguraci.
 
 Díky této schopnosti můžou zákazníci zadat možnosti v nastavení HTTP a vlastních sondách na odpovídající konfiguraci. Toto nastavení se pak pomocí pravidla naváže na naslouchací proces a fond back-end.
 

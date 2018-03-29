@@ -1,6 +1,6 @@
 ---
 title: Synchronizaci dat Azure SQL (Preview) | Microsoft Docs
-description: "Tento přehled zavádí synchronizaci dat SQL Azure (Preview)"
+description: Tento přehled zavádí synchronizaci dat SQL Azure (Preview)
 services: sql-database
 author: douglaslms
 manager: craigg
@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 5abe3e5a56dfca263f109b86f473ac490da3eac7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e0b8a999cf38cbef37498d4ee0fb2bceae8f292
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL (Preview)
 
@@ -76,7 +76,7 @@ Synchronizaci dat není vhodná pro následující scénáře:
 
 ### <a name="general-considerations"></a>Obecné aspekty
 
-#### <a name="eventual-consistency"></a>Konečná konzistence
+#### <a name="eventual-consistency"></a>Konzistence typu Případné
 Vzhledem k tomu, že synchronizace dat je na základě aktivační události, není zaručena konzistence transakcí. Microsoft zaručuje, že jsou všechny změny provedené nakonec a synchronizaci dat není způsobit ztrátu dat.
 
 #### <a name="performance-impact"></a>Vliv na výkon
@@ -91,6 +91,8 @@ Synchronizace dat se používají vložit, aktualizovat a odstranit aktivačníc
 ### <a name="general-limitations"></a>Obecná omezení
 
 -   Tabulka nemůže obsahovat sloupec identity, který není primární klíč.
+
+-   Data a času datový typ nemůže mít primární klíč.
 
 -   Názvy objektů (databáze, tabulek a sloupců) nesmí obsahovat tisknutelná znaků tečkou (.), zbývající hranaté závorky ([), nebo právo hranatá závorka (]).
 
@@ -158,22 +160,22 @@ Ano. Synchronizaci dat SQL podporuje kolaci v následujících scénářích:
 
 Kořenová databáze federace lze ve službě synchronizaci dat SQL (Preview) bez omezení. Koncový bod federované databázi nelze přidat do aktuální verze synchronizaci dat SQL (Preview).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o synchronizaci dat SQL najdete v tématu:
+Další informace o Synchronizaci dat SQL:
 
--   [Nastavit synchronizaci dat SQL Azure](sql-database-get-started-sql-data-sync.md)
--   [Osvědčené postupy pro synchronizaci dat SQL Azure](sql-database-best-practices-data-sync.md)
--   [Monitorování synchronizaci dat Azure SQL s OMS analýzy protokolů](sql-database-sync-monitor-oms.md)
--   [Řešení problémů s synchronizaci dat SQL Azure](sql-database-troubleshoot-data-sync.md)
+-   [Nastavení Synchronizace dat SQL Azure](sql-database-get-started-sql-data-sync.md)
+-   [Osvědčené postupy pro Synchronizaci dat SQL Azure](sql-database-best-practices-data-sync.md)
+-   [Monitorování Synchronizace dat SQL Azure s využitím OMS Log Analytics](sql-database-sync-monitor-oms.md)
+-   [Řešení potíží se Synchronizací dat SQL Azure](sql-database-troubleshoot-data-sync.md)
 
--   Dokončete příklady prostředí PowerShell, které ukazují, jak nakonfigurovat synchronizaci dat SQL:
+-   Úplné příklady PowerShellu ukazující konfiguraci Synchronizace dat SQL:
     -   [Pomocí prostředí PowerShell k synchronizaci mezi více databází Azure SQL](scripts/sql-database-sync-data-between-sql-databases.md)
-    -   [Synchronizace mezi databáze SQL Azure a místní databáze SQL serveru pomocí prostředí PowerShell](scripts/sql-database-sync-data-between-azure-onprem.md)
+    -   [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
 
--   [Stáhněte si dokumentaci rozhraní API REST synchronizaci dat SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   [Stažení dokumentace k rozhraní REST API Synchronizace dat SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
-Další informace o databázi SQL najdete v tématu:
+Další informace o službě SQL Database:
 
--   [Databáze SQL – přehled](sql-database-technical-overview.md)
+-   [Přehled služby SQL Database](sql-database-technical-overview.md)
 -   [Správa životního cyklu databáze](https://msdn.microsoft.com/library/jj907294.aspx)

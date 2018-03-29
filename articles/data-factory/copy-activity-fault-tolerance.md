@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: c6e1edce7e730b0bce6742b6220149ae7fe97710
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4fef9a9d30adb48f8f68d34e35a7436c04b63125
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Odolnost proti chybám aktivity kopírování v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +44,7 @@ Aktivita kopírování podporuje tři scénáře pro zjišťování, přeskočí
 
     Příklad: kopírování dat ze souboru CSV v úložišti objektů Blob k databázi SQL s definici schématu, která obsahuje šest sloupce. Řádky soubor CSV, které obsahují šesti sloupce jsou úspěšně zkopírovat do úložiště jímky. Řádky soubor CSV, které obsahují více nebo méně než šest sloupce jsou rozpoznána jako nekompatibilní a se přeskočí.
 
-- **Porušení primárního klíče při zápisu do relační databáze**.
+- **Porušení primárního klíče při zápisu do SQL serveru nebo Azure SQL Database nebo Azure Cosmos DB**.
 
     Příklad: kopírování dat z SQL serveru do databáze SQL. Ve službě SQL database podřízený je definovaný primární klíč, ale na zdrojovém serveru SQL je definován žádný primární klíč. Duplicitní řádky, na které existují ve zdroji nelze zkopírovat do jímky. Aktivita kopírování zkopíruje pouze první řádek zdrojová data do jímky. Další zdroje řádky, které obsahují duplicitní hodnotu primárního klíče jsou rozpoznána jako nekompatibilní a se přeskočí.
 

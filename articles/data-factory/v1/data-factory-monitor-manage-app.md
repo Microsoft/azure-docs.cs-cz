@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5aae5057cccdf8dfbe2a42a39da5b9e70b9166f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f5ca5544a217d66d334ff468d2308af1836c7de8
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorování a Správa kanálů služby Azure Data Factory pomocí monitorování a správy aplikace
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/23/2018
 > [!NOTE]
 > Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [sledování a Správa kanálů služby Data Factory v verze 2](../monitor-visually.md).
 
-Tento článek popisuje, jak používat monitorování a správu aplikace monitorovat, spravovat a ladit kanály Data Factory. Nabízí taky informace o tom, jak vytvářet výstrahy, které dostanete upozornění na selhání. Můžete začít s pomocí následujícím videem aplikace:
+Tento článek popisuje, jak používat monitorování a správu aplikace monitorovat, spravovat a ladit kanály Data Factory. Můžete začít s pomocí následujícím videem aplikace:
 
 > [!NOTE]
 > Uživatelské rozhraní zobrazené na videu nemusí přesně odpovídat vidět na portálu. Je mírně starší, ale koncepty zůstávají stejné. 
@@ -160,7 +160,7 @@ Okna aktivity může být v jednom z následujících stavů:
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">Podřízený stav</th><th align="left">Popis</th>
+    <th align="left">Stav</th><th align="left">Podřízený stav</th><th align="left">Popis</th>
 </tr>
 <tr>
     <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Čas ještě nenastal pro okna aktivity ke spuštění.</td>
@@ -178,40 +178,40 @@ Okna aktivity může být v jednom z následujících stavů:
 <td>ActivityResume</td><td>Aktivita je pozastavená a aktivity windows nelze spustit, dokud nebude obnovená.</td>
 </tr>
 <tr>
-<td>Retry</td><td>Probíhá pokus o spuštění aktivity je zopakován.</td>
+<td>Zkusit znovu</td><td>Probíhá pokus o spuštění aktivity je zopakován.</td>
 </tr>
 <tr>
-<td>Ověření</td><td>Ověření se ještě nespustilo.</td>
+<td>Ověřování</td><td>Ověření se ještě nespustilo.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Ověření čeká na opakovat.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Probíhá zpracování.</td><td>Ověřování platnosti</td><td>Probíhá ověřování.</td>
+<td rowspan="2">Probíhá zpracování.</td><td>Ověřuje se</td><td>Probíhá ověřování.</td>
 </tr>
 <td>-</td>
 <td>Okna aktivity je zpracovávána.</td>
 </tr>
 <tr>
-<td rowspan="4">Selhalo</td><td>TimedOut</td><td>Provedení aktivity trvalo déle, než je povolené aktivitou.</td>
+<td rowspan="4">Selhání</td><td>TimedOut</td><td>Provedení aktivity trvalo déle, než je povolené aktivitou.</td>
 </tr>
 <tr>
 <td>Zrušeno</td><td>Okno aktivity zrušil akce uživatele.</td>
 </tr>
 <tr>
-<td>Ověření</td><td>Ověření selhalo.</td>
+<td>Ověřování</td><td>Ověření selhalo.</td>
 </tr>
 <tr>
 <td>-</td><td>Okno aktivity se nepodařilo vygenerovat nebo ověřit.</td>
 </tr>
-<td>Připraveno</td><td>-</td><td>Okna aktivity je připraven ke spotřebování.</td>
+<td>Připravené</td><td>-</td><td>Okna aktivity je připraven ke spotřebování.</td>
 </tr>
 <tr>
 <td>Vynecháno</td><td>-</td><td>Okno aktivity nebyla zpracována.</td>
 </tr>
 <tr>
-<td>Žádný</td><td>-</td><td>Okno s aktivity měl dříve jiný stav, ale byl obnoven.</td>
+<td>Žádná</td><td>-</td><td>Okno s aktivity měl dříve jiný stav, ale byl obnoven.</td>
 </tr>
 </table>
 
@@ -296,42 +296,3 @@ Můžete také v seznamu vyberte více aktivity windows a znovu spustit, je ve s
 Vícenásobný výběr dva nebo víc kanálů můžete pomocí klávesu Ctrl. Pozastavení nebo obnovení je můžete panelu příkazů (které jsou vyznačené na červeným rámečkem na následujícím obrázku).
 
 ![Pozastavení nebo obnovení na panelu příkazů](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
-
-## <a name="create-alerts"></a>Vytváření upozornění
-**Výstrahy** stránky umožňuje vytvářet výstrahy a zobrazení, úpravy nebo odstranění existující výstrahy. Vám může také zapnout/vypnout výstrahu. Chcete-li zobrazit stránku výstrahy, klikněte na tlačítko **výstrahy** kartě.
-
-![Karta výstrahy](./media/data-factory-monitor-manage-app/AlertsTab.png)
-
-### <a name="to-create-an-alert"></a>Vytvoření výstrahy
-1. Klikněte na tlačítko **přidat výstraha** přidat výstrahu. Zobrazí **podrobnosti** stránky.
-
-    ![Vytvářet výstrahy - stránce s podrobnostmi o](./media/data-factory-monitor-manage-app/CreateAlertDetailsPage.png)
-2. Zadejte **název** a **popis** pro výstrahy a klikněte na tlačítko **Další**. Měli byste vidět **filtry** stránky.
-
-    ![Vytvořte upozornění – filtry stránky](./media/data-factory-monitor-manage-app/CreateAlertFiltersPage.png)
-3. Vyberte **událostí**, **stav**, a **substatus** (volitelné) Chcete-li vytvořit výstrahu pro službu Data Factory, a klikněte na **Další**. Měli byste vidět **příjemce** stránky.
-
-    ![Vytvořte upozornění – stránka příjemce](./media/data-factory-monitor-manage-app/CreateAlertRecipientsPage.png)
-4. Vyberte **e-mailem správci předplatného** možnost a zadejte **další správce e-mailu**a klikněte na tlačítko **Dokončit**. Měli byste vidět výstrahu v seznamu.
-
-    ![Seznam výstrah](./media/data-factory-monitor-manage-app/AlertsList.png)
-
-V seznamu výstrah pomocí tlačítek, které jsou přidruženy výstrahu, kterou chcete upravit nebo odstranit nebo zapnout/vypnout výstrahu.
-
-### <a name="eventstatussubstatus"></a>Události, stav/substatus
-Následující tabulka obsahuje seznam dostupných událostí a stavy (a dílčí stavy).
-
-| Název události | Status | Podřízený stav |
-| --- | --- | --- |
-| Aktivity při spuštění Začínáme |Spuštěno |Spouštění |
-| Aktivity při spuštění bylo dokončeno |Úspěch |Úspěch |
-| Aktivity při spuštění bylo dokončeno |Selhalo |Přidělení prostředků se nezdařilo<br/><br/>Spuštění se nezdařilo<br/><br/>Vypršení časového limitu<br/><br/>Ověření se nezdařilo<br/><br/>Abandoned |
-| Vytvoření clusteru HDI na vyžádání Začínáme |Spuštěno |-|
-| Clusteru HDI na vyžádání úspěšně vytvořena. |Úspěch |-|
-| Odstranit clusteru HDI na vyžádání |Úspěch |-|
-
-### <a name="to-edit-delete-or-disable-an-alert"></a>Chcete-li upravit, odstranit nebo zakázat výstrahy
-
-Pomocí následujících tlačítek (zvýrazněné červeně) upravit, odstranit nebo zakázat výstrahu.
-
-![Výstrahy tlačítka](./media/data-factory-monitor-manage-app/AlertButtons.png)

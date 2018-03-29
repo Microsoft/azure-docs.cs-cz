@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/23/2018
 ms.author: amitsriva
-ms.openlocfilehash: dfa451a06fbadbb63c83f800ac164db399efd583
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 885ae8b97175cac4cd29793eb0a935e81d54d0e4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back-end, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -27,7 +27,7 @@ Pomocí Azure Application Gateway můžete sledovat prostředky následujícími
 
 * [Back-end stavu](#back-end-health): Application Gateway poskytuje schopnost sledovat stav serverů v back endové fondy prostřednictvím portálu Azure a pomocí prostředí PowerShell. Můžete také získat stav fondu back-end prostřednictvím protokolování diagnostiky výkonu.
 
-* [Protokoly](#diagnostic-logs): protokoly umožňují pro výkon, přístupu a další data ukládání nebo používán z prostředků pro účely monitorování.
+* [Protokoly](#diagnostic-logging): protokoly umožňují pro výkon, přístupu a další data ukládání nebo používán z prostředků pro účely monitorování.
 
 * [Metriky](#metrics): Aplikační brána má aktuálně jeden metriku. Tato metrika měří propustnost Aplikační brána v bajtech za sekundu.
 
@@ -261,7 +261,7 @@ Protokol brány firewall se vygeneruje pouze v případě, že jste je povolili 
 |RuleId     | ID pravidla spouštěcí události.        |
 |zpráva     | Uživatelsky přívětivý zpráva pro aktivační událost. Další podrobnosti najdete v části Podrobnosti.        |
 |akce     |  Akce v žádosti. Dostupné hodnoty jsou blokované a povolené.      |
-|Web     | Web, pro které byla vygenerována v protokolu. V současné době pouze globální se má zobrazit, protože pravidla jsou globální.|
+|web     | Web, pro které byla vygenerována v protokolu. V současné době pouze globální se má zobrazit, protože pravidla jsou globální.|
 |Podrobnosti     | Podrobnosti o aktivační událost.        |
 |details.Message     | Popis pravidla.        |
 |details.data     | Konkrétní data uvedená v požadavek, který odpovídá pravidlo.         |
@@ -314,7 +314,7 @@ Můžete také připojit k účtu úložiště a načítat položky protokolu JS
 > 
 > 
 
-## <a name="metrics"></a>Metriky
+## <a name="metrics"></a>metriky
 
 Metriky jsou funkce u některých prostředků Azure, kde můžete zobrazit čítače výkonu v portálu. Pro službu Application Gateway jsou k dispozici následující metriky:
 
@@ -334,7 +334,7 @@ Na následujícím obrázku najdete příklad tří metriky zobrazené pro posle
 
 Pokud chcete zobrazit aktuální seznam metriky, najdete v části [podporované metriky s Azure monitorování](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
-### <a name="alert-rules"></a>Pravidla upozornění
+### <a name="alert-rules"></a>Pravidla výstrah
 
 Můžete spustit na základě metriky pro prostředek pravidla výstrah. Výstrahu můžete například volat webhook, jehož nebo e-mailu správce, pokud propustnost aplikační brány je výše, níže nebo na prahovou hodnotu v zadaném období.
 

@@ -1,6 +1,6 @@
 ---
-title: "Šifrování služby úložiště Azure pro Data v klidovém stavu | Microsoft Docs"
-description: "Pomocí funkce šifrování služby úložiště Azure k šifrování úložiště objektů Blob v Azure na straně služby při ukládání dat a při načítání dat ho dešifrovat."
+title: Šifrování služby úložiště Azure pro Data v klidovém stavu | Microsoft Docs
+description: Pomocí funkce šifrování služby úložiště Azure k šifrování úložiště objektů Blob v Azure na straně služby při ukládání dat a při načítání dat ho dešifrovat.
 services: storage
 author: lakasa
 manager: jeconnoc
@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: lakasa
-ms.openlocfilehash: d9df2218acc218a796e502fa4e3b94573af86ca8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1963d011462255d45de327ec17b7fad564d87654
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 
@@ -52,7 +52,7 @@ A: na všechny existující účty úložiště Resource Manager ve výchozím n
 
 **Otázka: jak šifrují data v účtu úložiště, Resource Manager?**
 
-Šifrování služby úložiště A: je povoleno ve výchozím nastavení pro všechny účty úložiště – classic a Resource Manager. Stávající data však nejsou šifrována. K šifrování stávající data, můžete ho zkopírujte do jiný název nebo jiný kontejner a potom odeberte nezašifrované verze. 
+Šifrování služby úložiště A: je povolená ve výchozím nastavení pro všechny účty úložiště – classic a Resource Manager, všechny existující soubory v účtu úložiště vytvořeném předtím, než bylo povoleno šifrování bude zpětně získat zašifrovaná pomocí šifrování proces na pozadí.
 
 **Otázka: je možné vytvořit účty úložiště pomocí šifrování služby úložiště je povolit pomocí Azure PowerShell a rozhraní příkazového řádku Azure?**
 

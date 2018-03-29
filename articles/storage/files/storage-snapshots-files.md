@@ -1,5 +1,5 @@
 ---
-title: Přehled sdílení snímků pro soubory Azure (preview) | Microsoft Docs
+title: Přehled snímků sdílenou složku pro soubory Azure | Microsoft Docs
 description: Sdílené složky snímků je jen pro čtení verze Azure Files sdílené složky, která je provedená v bodě v čase, jako způsob, jak zálohovat sdílenou složku.
 services: storage
 documentationcenter: .net
@@ -14,32 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: 671e3737a620d85c732a091d5a62f35f35c1d515
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6499bdf1af676898f7b2911612cbd206bccfa4fa
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Přehled sdílené složky snímků pro Azure Files 
 Soubory Azure poskytuje schopnost pořizovat snímky sdílenou složku Sdílené složky. Sdílet snímky zachycení stavu sdílení v tomto bodě v čase. V tomto článku jsme popisují, jaké funkce poskytovat sdílené složky snímků a jak můžete využít výhod těchto ve vašem případě vlastní použití.
 
-
 ## <a name="when-to-use-share-snapshots"></a>Kdy použít sdílené složky snímků
 
 ### <a name="protection-against-application-error-and-data-corruption"></a>Ochrana proti poškození chyba a data aplikací
-
 Aplikace, které používají sdílené složky provádět operace, jako je například zápis, čtení, úložiště, přenos a zpracování. Pokud je špatně nakonfigurovaný. aplikace nebo uvádíme neúmyslným chyb, může dojít náhodnému přepsání nebo poškození na několik bloků. K ochraně před těmito případy, může trvat sdílenou složku snímku před nasazením nového kódu aplikace. Jestliže chyb nebo aplikace chyba s nové nasazení, můžete přejít zpět na předchozí verzi vaše data v této sdílené složky. 
 
 ### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>Ochranu před náhodným odstraněním nebo nezamýšleným změny
-
 Představte si, že pracujete s textovým souborem do sdílené složky. Po zavření textového souboru, ztratíte možnost vrátit zpět. V těchto případech je pak potřeba obnovit dřívější verzi souboru. Můžete použít sdílené složky snímků a obnovit předchozí verze souboru v případě, že omylem přejmenován nebo odstraněn.
 
 ### <a name="general-backup-purposes"></a>Obecné účely zálohování
-
 Po vytvoření sdílené složky, můžete vytvořit pravidelně snímku sdílenou složku používat k zálohování dat sdílené složky. Sdílenou složku snímku, při pořízení pravidelně pomáhá udržovat předchozí verze dat, která lze použít pro požadavky budoucí auditu nebo zotavení po havárii.
 
 ## <a name="capabilities"></a>Možnosti
-
 Sdílené složky snímků je kopii dat v okamžiku, jen pro čtení. Můžete vytvořit, odstranit a spravovat snímky pomocí rozhraní REST API. Stejné funkce jsou dostupné i v klientské knihovny, rozhraní příkazového řádku Azure a portálu Azure. 
 
 Snímky sdílené složky můžete zobrazit pomocí rozhraní REST API a protokolu SMB. Můžete načíst seznam verzí adresář nebo soubor, a můžete připojit přímo jako jednotka na konkrétní verzi. 
@@ -59,9 +54,7 @@ Když vytvoříte sdílenou složku snímku sdílené složky, soubory ve vlastn
 
 Sdílené složky, který má snímky, sdílené složky, pokud nejprve odstraňte všechny snímky sdílené složky nelze odstranit.
 
-
 ## <a name="space-usage"></a>Využití místa 
-
 Sdílené složky snímky jsou ve své podstatě přírůstkové. Pouze data, která se změnila po uložení poslední sdílenou složku snímku. To snižuje čas potřebný k vytvoření snímku sdílené složky a šetří náklady na úložiště. Všechny operace zápisu do objektu nebo vlastnost nebo metadata operace aktualizace se počítá směrem k "změněný obsah" a je uložen ve sdílené složce snímku. 
 
 Kvůli úspoře místa, můžete odstranit sdílenou složku snímku dobu, kdy byl nejvyšší provozu.
@@ -71,13 +64,11 @@ Přestože sdílené složky snímků ukládají postupně, je potřeba zachovat
 Snímky nemáte započítávat limit 5 TB sdílené složky. Neexistuje žádné omezení, kolik místa na sdílené složky snímků zabírat celkem. Limity účtu úložiště se stále účtují.
 
 ## <a name="limits"></a>Omezení
-
 Maximální počet snímků sdílené složky, které soubory Azure umožňuje dnes je 200. Po 200 sdílené složky snímků budete muset odstranit starší sdílené složky snímků Chcete-li vytvořit nové. 
 
 Neexistuje žádné omezení souběžných volání pro vytvoření sdílené složky snímků. Neexistuje žádné omezení množství místa na tuto sdílenou složku, kterou může využít snímky konkrétní sdílenou složku. 
 
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Kopírování dat zpět do sdílené složky ze sdílené složky snímku
-
 Operace kopírování, které zahrnují soubory a sdílet snímky postupujte podle těchto pravidel:
 
 Jednotlivé soubory ve sdílené složce snímku souboru přes můžete zkopírovat do jeho základní složky nebo jiného umístění. Můžete obnovit dřívější verzi souboru nebo obnovit dokončení sdílené složky tak, že zkopírujete soubor po souboru ze sdílené složky snímku. Sdílenou složku snímku není povýšen na základní sdílenou složku. 
@@ -89,7 +80,6 @@ Můžete zkopírovat do souboru ve sdílené složce snímku do cílového umís
 Pokud cílový soubor se přepíše s kopií, zachovají všechny snímky sdílené složky přidružené k původní cílového souboru.
 
 ## <a name="general-best-practices"></a>Obecné doporučené postupy 
-
 Pokud používáte infrastrukturu v Azure, automatizovat zálohy pro obnovení dat, kdykoli je to možné. Automatické akce jsou spolehlivější než manuální procesy, pomáhá zvýšit ochranu dat a obnovitelnost. Můžete použít rozhraní REST API, Client SDK nebo skriptování pro automatizaci.
 
 Před nasazením Plánovač sdílenou složku snímku, pečlivě zvažte frekvence snímků sdílené složky a nastavení uchovávání účtovány poplatky zbytečné.
@@ -97,6 +87,8 @@ Před nasazením Plánovač sdílenou složku snímku, pečlivě zvažte frekven
 Sdílené složky snímků zajišťují jenom ochranu souborů. Sdílené složky snímků nemáte zabránit odstranění prstem fat na účet sdílenou složku nebo úložiště souborů. K ochraně účtu úložiště před náhodným odstraněním, můžete uzamčení účtu úložiště nebo skupinu prostředků.
 
 ## <a name="next-steps"></a>Další postup
-* [Práce s snímky sdílené složky](storage-how-to-use-files-snapshots.md)
-* [Sdílená složka snímku – nejčastější dotazy](storage-files-faq.md#share-snapshots)
-
+- Práce s sdílené složky snímků v:
+    - [Azure Portal](storage-how-to-use-files-portal.md#create-and-modify-share-snapshots)
+    - [PowerShell](storage-how-to-use-files-powershell.md#create-and-modify-share-snapshots)
+    - [Rozhraní příkazového řádku](storage-how-to-use-files-cli.md#create-and-modify-share-snapshots)
+- [Sdílená složka snímku – nejčastější dotazy](storage-files-faq.md#share-snapshots)

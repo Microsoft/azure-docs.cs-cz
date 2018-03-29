@@ -10,11 +10,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 338520f273a88866834e43e17da1f8b131ca38f7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d213a3f8bed5af526efba39868855b6f6727a7c0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy (FAQ) 
 Tato stránka odpovědi časté otázky o Azure Active Directory (Azure AD) B2C. Kontrolovat zpět aktualizací.
@@ -28,7 +28,9 @@ Azure AD B2C nelze použít k ověřování uživatelů pro Microsoft Office 365
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Jaké jsou místní účty v Azure AD B2C? Jak budou liší od pracovní nebo školní účty ve službě Azure AD?
 V klientovi služby Azure AD, které uživatelům patřícím do klienta Přihlaste se pomocí e-mailovou adresu ve tvaru `<xyz>@<tenant domain>`.  `<tenant domain>` Je jedním z ověřených domén v klientovi nebo počáteční `<...>.onmicrosoft.com` domény. Tento typ účtu je pracovní nebo školní účet.
 
-V klienta Azure AD B2C, většina aplikací, aby uživatel Přihlaste se pomocí jakékoli libovolné e-mailovou adresu (například joe@comcast.net, bob@gmail.com, sarah@contoso.com, nebo jim@live.com). Tento typ účtu je místní účet.  Také podporujeme libovolný uživatelská jména jako místní účty (například Jan, Roberta, sarah nebo jima). Vyberte jednu z těchto dvou typů místní účet konfigurací Azure AD B2C na portálu Azure.
+V klienta Azure AD B2C, většina aplikací, aby uživatel Přihlaste se pomocí jakékoli libovolné e-mailovou adresu (například joe@comcast.net, bob@gmail.com, sarah@contoso.com, nebo jim@live.com). Tento typ účtu je místní účet.  Také podporujeme libovolný uživatelská jména jako místní účty (například Jan, Roberta, sarah nebo jima). Můžete zvolit jeden z těchto dvou typů místní účet při konfiguraci poskytovatelů identity pro Azure AD B2C na portálu Azure. Ve vašem klientu Azure AD B2C, klikněte na tlačítko **zprostředkovatelů Identity** a pak vyberte **uživatelské jméno** pod místním účtům. 
+
+Uživatelské účty pro aplikace, musí být vždy vytvořený prostřednictvím registrační zásadě, registrace nebo přihlášení – v zásadách, nebo pomocí rozhraní Azure AD Graph API. Uživatelské účty vytvořené na portálu Azure používají jenom pro správu klienta.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Sociální identity poskytovatelů, kteří je podporují nyní? Ty, které plánujete podporovat v budoucnu?
 Momentálně podporujeme sítě Facebook, Google +, LinkedIn, Amazon, služby Twitter (preview), WeChat (preview), Weibo (preview) a QQ (Preview). Přidáme podporou dalších zprostředkovatelů oblíbených sociálních identity na základě poptávky zákazníka.

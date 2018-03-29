@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 455c74ca808f71258a12166c2e36bdd73d9a3e20
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5712e556d7b3bdcce38b8b8d39a08414ce0fd2f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Požadavky na certifikát Azure zásobníku infrastruktura veřejných klíčů
 Sada Azure má síť infrastruktury veřejných pomocí externě dostupný veřejné IP adresy přiřazené k malého služeb Azure zásobníku a které by mohly mít klientské virtuální počítače. Certifikáty PKI s odpovídající názvy DNS pro tyto koncové body Azure zásobníku infrastruktury veřejných jsou nezbytné při nasazení Azure zásobníku. Tento článek obsahuje informace o:
@@ -34,6 +34,9 @@ Sada Azure má síť infrastruktury veřejných pomocí externě dostupný veře
 ## <a name="certificate-requirements"></a>Požadavky na certifikát
 Následující seznam popisuje požadavky na certifikát, které jsou nutné k nasazení Azure zásobníku: 
 - Certifikáty musí být vystavené z interní certifikační autority nebo veřejné certifikační autority. Pokud se používá z veřejné certifikační autority, musí být zahrnut v bitové kopii základní operační systém v rámci programu Microsoft důvěryhodné kořenové autoritě. Úplný seznam najdete: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
+- Infrastruktury Azure zásobníku musí mít přístup k síti na používaný k podepisování certifikátů certifikační autority
+- Když otáčení certifikátů, certifikáty musí být že buď vystavené stejným interní certifikační autorita používaná k podepisování certifikátů uvedených v nasazení nebo všechny veřejné certifikační autority z výše
+- Použití certifikáty podepsané svým držitelem nejsou podporovány.
 - Certifikát může být jeden zástupný znak certifikát zahrnující všechny obory názvů v poli Alternativní název předmětu (SAN). Alternativně můžete vytvořit jednotlivé certifikáty pomocí zástupných znaků pro koncové body, například služby acs a Key Vault, kde jsou vyžadovány. 
 - Algoritmus podpisu certifikátu nemůže být SHA1, jako musí být vyšší. 
 - Certifikát musí být ve formátu PFX, jako veřejné a soukromé klíče jsou požadovány pro instalaci zásobník Azure. 
@@ -42,6 +45,9 @@ Následující seznam popisuje požadavky na certifikát, které jsou nutné k n
 - Tento certifikát "vystaveno pro:" pole nesmí být stejné jako jeho "vydaný:" pole.
 - Hesla, aby všechny soubory pfx certifikátů musí být stejný v době nasazení
 - Zajistěte, aby názvy subjektu a alternativní názvy předmětu certifikátů odpovídaly specifikace popsané v tomto článku, aby se zabránilo selhání nasazení.
+
+> [!NOTE]
+> Vlastní certifikáty podepsaná nejsou podporovány.
 
 > [!NOTE]
 > Přítomnost prostředník certifikačních autorit v řetězu vztahy důvěryhodnosti je certifikát na podporována. 
@@ -88,7 +94,7 @@ Následující tabulka popisuje koncové body a certifikáty potřebné pro adap
 |-----|-----|-----|-----|
 |SQL, MySQL|SQL a MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard)|dbadapter.*&lt;region>.&lt;fqdn>*|
 |App Service|Certifikát SSL výchozí web provoz|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard více doménami<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
-|App Service|Rozhraní API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|App Service|API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|SSO|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 

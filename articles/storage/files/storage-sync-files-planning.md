@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 401542bf61aa27138d26cce522e24078503b77e0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3f3ed53e3c6606ca540cc2e760f2f6280ccf5cc2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Plánování nasazení synchronizace souboru Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -97,6 +97,19 @@ Budoucí verze systému Windows Server bude přidán jako jejich vydání. Star�
 > [!Note]  
 > Jsou podporovány pouze svazky systému souborů NTFS. Odolný systém souborů FAT, FAT32 a jiných systémů souborů nejsou podporovány.
 
+### <a name="files-skipped"></a>Souborů přeskočených
+| Soubor nebo složku | Poznámka |
+|-|-|
+| Desktop.ini | Specifické pro systém souborů |
+| ethumbs.db$ | Dočasný soubor pro miniatury |
+| ~$\*.\* | Dočasný soubor Office |
+| \*TMP. | Dočasný soubor |
+| \*.laccdb | Zamykací soubor přístup DB|
+| 635D02A9D91C401B97884B82B3BCDAEA.* ||
+| \\Informacemi o systémovém svazku | Složky, které jsou specifické pro svazek |
+| $RECYCLE. KOŠ| Složka |
+| \\SyncShareState | Složka pro synchronizaci |
+
 ### <a name="failover-clustering"></a>Clustering převzetí služeb při selhání
 Windows Server Failover Clustering podporuje Azure souboru Sync pro možnost "Souborový Server pro obecné použití" nasazení. Převzetí služeb při selhání není podporováno vytváření clusterů "Souborového serveru Škálovaného na více systémů pro data aplikací" (SOFS) nebo na sdílených svazků clusteru (CSV).
 
@@ -153,23 +166,23 @@ Obecně platí Azure souboru synchronizace by měly podporovat Interoperabilita 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Jiných řešení pro správu hierarchických úložišť (HSM)
 Žádné jiné řešení modulu hardwarového zabezpečení se má použít s Azure synchronizace souboru.
 
-## <a name="region-availability"></a>Dostupnost v oblastech
+## <a name="region-availability"></a>Regionální dostupnost
 Synchronizace služby Azure souboru je k dispozici pouze v následujících oblastech ve verzi preview:
 
 | Oblast | Umístění datového centra |
 |--------|---------------------|
-| Austrálie – východ | Nový Jižní Wales |
-| Střední Kanada | Toronto |
-| Střed USA | Iowa |
+| Východní Austrálie | Nový jižní Wales |
+| Kanada – střed | Toronto |
+| Centrální Spojené státy | Iowa |
 | Východní Asie | Hongkong |
-| Východ USA | Virginie |
+| USA – východ | Virginie |
 | Východní US2 | Virginie |
-| Severní Evropa | Irsko |
+| Evropa – sever | Irsko |
 | Jihovýchodní Asie | Singapur |
 | Spojené království – jih | Londýn |
 | Cental západní USA |
-| Západní Evropa | Nizozemsko |
-| Západní USA | Kalifornie |
+| Evropa – západ | Nizozemsko |
+| USA – západ | Kalifornie |
 
 Ve verzi preview podporujeme synchronizuje pouze s Azure sdílenou, který je ve stejné oblasti jako službu úložiště synchronizace.
 

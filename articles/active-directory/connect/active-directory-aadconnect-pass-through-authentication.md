@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Předávací ověřování | Microsoft Docs"
-description: "Tento článek popisuje předávací ověřování Azure Active Directory (Azure AD) a jak umožňuje Azure AD přihlášení pomocí ověřování hesla uživatelů pro místní službu Active Directory."
+title: 'Azure AD Connect: Předávací ověřování | Microsoft Docs'
+description: Tento článek popisuje předávací ověřování Azure Active Directory (Azure AD) a jak umožňuje Azure AD přihlášení pomocí ověřování hesla uživatelů pro místní službu Active Directory.
 services: active-directory
-keywords: "Co je Azure AD Connect předávací ověřování, nainstalovat službu Active Directory, požadovaných součástí pro Azure AD, jednotné přihlašování, jednotné přihlašování"
-documentationcenter: 
+keywords: Co je Azure AD Connect předávací ověřování, nainstalovat službu Active Directory, požadovaných součástí pro Azure AD, jednotné přihlašování, jednotné přihlašování
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: 5a559c749bc7ba3cabbbb1a171605b8baf601eef
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: d19e63e10f2d42d97bb6fabca9c9e47028cbaf39
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Přihlášení uživatele pomocí ověřování Azure Active Directory průchozí
 
@@ -28,7 +28,7 @@ Předávací ověřování Azure Active Directory (Azure AD) umožňuje uživate
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Tato funkce je alternativa k [synchronizaci hodnoty Hash hesel služby Azure AD](active-directory-aadconnectsync-implement-password-synchronization.md), který poskytuje stejné výhodou cloudové ověřování pro organizace. Zásady zabezpečení a dodržování předpisů v některých organizacích však není povolit tyto organizace k odeslání hesla uživatelů i ve formuláři hash mimo jejich interní hranice. Předávací ověřování je to správné řešení pro takový organizace.
+Tato funkce je alternativa k [synchronizaci hodnoty Hash hesel služby Azure AD](active-directory-aadconnectsync-implement-password-hash-synchronization.md), který poskytuje stejné výhodou cloudové ověřování pro organizace. Zásady zabezpečení a dodržování předpisů v některých organizacích však není povolit tyto organizace k odeslání hesla uživatelů i ve formuláři hash mimo jejich interní hranice. Předávací ověřování je to správné řešení pro takový organizace.
 
 ![Azure AD předávací ověřování](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 

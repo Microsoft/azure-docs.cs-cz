@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 03/09/2017
+ms.date: 03/27/2018
 ms.author: shtabriz
-ms.openlocfilehash: d74c8f568a21168ebe7a34b6bb6296ae5d85fcbe
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6c440acc68583860bc01fdb249833c4c4c6148d8
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-status"></a>Stav Azure
 [Azure stav](https://azure.microsoft.com/en-us/status/) poskytuje globální zobrazení stavu služby Azure. S Azure stav můžete získat nejnovějších informací o dostupnosti služby. Všem uživatelům přístup k Azure stav a můžete zobrazit všechny služby, které sestavy jejich stav služby. 

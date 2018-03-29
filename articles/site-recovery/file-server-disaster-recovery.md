@@ -1,6 +1,6 @@
 ---
-title: "Chránit souborový server s využitím Azure Site Recovery"
-description: "Tento článek popisuje, jak chránit souborový server s využitím Azure Site Recovery"
+title: Chránit souborový server s využitím Azure Site Recovery
+description: Tento článek popisuje, jak chránit souborový server s využitím Azure Site Recovery
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/06/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: f53a8641a50a6c968a6ba7b841e0e8f938b5d9f6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 830f9c76d9d1bf11692fa9f2f5c49cbecdb69f25
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Chránit souborový server s využitím Azure Site Recovery 
 
@@ -48,7 +48,7 @@ Na předchozím obrázku několik souborových serverů, které volá členy akt
 
     * Tento postup můžete použít, pokud vaše virtuální počítače konfiguracemi, které nejsou podporovány službou Site Recovery. Příkladem je disk sdíleného clusteru, někdy běžně používaný v serverových prostředích souboru. DFSR také dobře funguje v prostředí s malou šířkou pásma s střední klidové vytížení. Je potřeba zvážit další náklady na virtuální počítač Azure s a všechny doby spuštění. 
 
-* **Používat synchronizaci souboru Azure replikovat vaše soubory**: Pokud budete chtít použít cloud nebo již použít virtuální počítač Azure, můžete použít soubor synchronizaci. Synchronizace souboru nabízí synchronizuje plně spravované sdílené složky v cloudu, které jsou přístupné přes oborových standardů [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) protokol (SMB). Sdílené složky Azure pak může být připojen současně podle cloudu nebo na místní nasazení systému Windows, Linux a systému macOS. 
+* **Používat synchronizaci souboru Azure replikovat vaše soubory**: Pokud máte v úmyslu použít cloud nebo už používají virtuální počítač Azure, abyste mohli používat Azure souboru Sync. Synchronizace služby Azure souboru nabízí synchronizuje plně spravované sdílené složky v cloudu, které jsou přístupné přes oborových standardů [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) protokol (SMB). Sdílené složky Azure můžete připojit pomocí cloudu nebo na místní nasazení systému Windows, Linux a systému macOS potom souběžně. 
 
 Následující diagram vám pomůže určit, jaká strategie pro vaše serverové prostředí a souboru.
 

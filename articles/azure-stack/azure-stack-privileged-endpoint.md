@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: fb4dea9832e781b2ec9f4cfa573b5a4f630188db
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f786d99718b82dba052909e566f1b0571701127e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Pomocí privilegované koncový bod v Azure zásobníku
 
@@ -76,6 +76,8 @@ Doporučujeme vám, že se připojit k období pouze z hostitele životního cyk
 
       - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *zásobník Azure domény*&gt;\accountname**. (Pro ASDK, uživatelské jméno je **azurestack\accountname**.) 
       - **Heslo**: Zadejte stejné heslo, které jste zadali během instalace pro účet správce domény AzureStackAdmin.
+    > [!NOTE]
+    > Pokud není možné se připojit ke koncovému bodu ERCS, opakujte kroky 1 a 2 znovu s adresou IP ERCS virtuálního počítače, do které jste nebyly již byl proveden pokus o připojení.
     
 3.  Když se připojíte, řádku se změní na **[*ERCS virtuálního počítače nebo IP adresu název*]: PS >** nebo **[azs-ercs01]: PS >**, v závislosti na prostředí. Odtud spustit `Get-Command` zobrazíte seznam dostupných rutin.
 

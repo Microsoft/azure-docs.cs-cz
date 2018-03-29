@@ -1,7 +1,7 @@
 ---
-title: "Migrovat instance systému SQL Server do Azure spravované Instance databáze SQL | Microsoft Docs"
-description: "Zjistěte, jak migrovat instance systému SQL Server do Azure SQL Database spravované Instance."
-keywords: "migrace databáze, migrace databáze systému sql server, nástroje pro migraci databáze, migrace databáze, migrace sql database"
+title: Migrovat instance systému SQL Server do Azure spravované Instance databáze SQL | Microsoft Docs
+description: Zjistěte, jak migrovat instance systému SQL Server do Azure SQL Database spravované Instance.
+keywords: migrace databáze, migrace databáze systému sql server, nástroje pro migraci databáze, migrace databáze, migrace sql database
 services: sql-database
 author: bonova
 ms.reviewer: carlrab
@@ -11,11 +11,11 @@ ms.custom: managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: bonova
-ms.openlocfilehash: fd8225b2c5c4f897bbf3d7e1b2ba7659f564409d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4546f03294ea8ab01ecb2b2777c5b92dbc5a7f4a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance systému SQL Server na instanci spravované databáze Azure SQL
 
@@ -77,7 +77,7 @@ Spravované Instance je plně spravovaná služba, která umožňuje delegovat n
 
 Spravované Instance podporuje následující možnosti migrace databáze (aktuálně to jsou pouze podporovaných migračních metody):
 
-### <a name="azure-database-migration-service"></a>Azure Database Migration Service
+### <a name="azure-database-migration-service"></a>Služba Azure Database Migration
 
 [Azure databáze migrace služby (DMS)](../dms/dms-overview.md) je plně spravovaná služba navržených k povolení bezproblémové migrace z více zdrojů databáze do platformy Azure dat s minimálními výpadky. Tato služba zjednodušuje úkoly vyžadované pro přesun existujících třetích stran a databáze SQL serveru do Azure. Možnosti nasazení ve verzi Public Preview zahrnují Azure SQL Database, spravované Instance a SQL Server v virtuální počítač Azure. Služba DMS patří mezi doporučené metody migrace pro vaše podnikové úlohy. 
 
@@ -125,7 +125,7 @@ K posílení zabezpečení, zvažte použití některých funkcí, které jsou k
 - Auditování a detekce hrozeb sledovat aktivity
 - Řízení přístupu k datům citlivé a privilegovaných ([zabezpečení na úrovni řádků](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) a [dynamického maskování dat](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Informace o instanci spravované najdete v tématu [co je spravované Instance?](sql-database-managed-instance.md)
 - Kurz, který zahrnuje obnovení ze zálohy, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md).

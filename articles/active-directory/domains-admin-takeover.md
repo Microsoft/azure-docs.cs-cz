@@ -1,11 +1,11 @@
 ---
-title: "Správce převzetí nespravované adresáře nebo stínové klienta v Azure Active Directory | Microsoft Docs"
-description: "Jak převzít kontrolu nad název domény DNS do nespravovaných adresář (stínové klientů), který se v Azure Active Directory."
+title: Správce převzetí nespravované adresáře nebo stínové klienta v Azure Active Directory | Microsoft Docs
+description: Jak převzít kontrolu nad název domény DNS do nespravovaných adresář (stínové klientů), který se v Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b9f01876-29d1-4ab8-8b74-04d43d532f4b
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: f18e5883fca9291eb1447c1eebfe0883936fe84f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 16f5c515231f486e3576b95a0d103d2fa34842ff
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzít kontrolu nad adresář nespravované jako správce v Azure Active Directory
 Tento článek popisuje dva způsoby, jak převzít kontrolu nad název domény DNS do adresář nespravované v Azure Active Directory (Azure AD). Když samoobslužný uživatel zaregistruje cloudovou službu, která používá Azure AD, jsou přidány do nespravovaných Azure AD directory založené na jejich e-mailovou doménu. Další informace o samoobslužné nebo "virální" registrace pro služby najdete v tématu [co je samoobslužné registrace pro Azure Active Directory?]()
@@ -57,13 +57,13 @@ Po dokončení předchozích kroků jste nyní globální správce klienta spole
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Přidání názvu domény do spravovaného klienta ve službě Azure AD 
 
 1. Otevřete [centra pro správu Office 365](https://portal.office.com/adminportal/Home).
-2. Vyberte **uživatelé** kartě a vytvořit nový uživatelský účet s názvem jako  *user@fourthcoffeexyz.onmicrosoft.com*  nepoužívá vlastní název domény. 
+2. Vyberte **uživatelé** kartě a vytvořit nový uživatelský účet s názvem jako *user@fourthcoffeexyz.onmicrosoft.com* nepoužívá vlastní název domény. 
 3. Ujistěte se, že nový uživatelský účet má oprávnění globálního správce pro tenanta Azure AD.
 4. Otevřete **domén** kartě v Centru pro správu Office 365, vyberte název domény a vyberte **odebrat**. 
   
   ![název domény odebrání Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Pokud máte uživatelé nebo skupiny v Office 365, které odkazují na název domény odebrána, musí být přejmenován na. onmicrosoft.com domény. Pokud vynutíte odstranit název domény, všichni uživatelé jsou automaticky přejmenovat v tomto příkladu k  *user@fourthcoffeexyz.onmicrosoft.com* .
+5. Pokud máte uživatelé nebo skupiny v Office 365, které odkazují na název domény odebrána, musí být přejmenován na. onmicrosoft.com domény. Pokud vynutíte odstranit název domény, všichni uživatelé jsou automaticky přejmenovat v tomto příkladu k *user@fourthcoffeexyz.onmicrosoft.com*.
   
 6. Přihlaste se k [centra pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který má oprávnění globálního správce pro tenanta Azure AD.
   
@@ -72,7 +72,7 @@ Po dokončení předchozích kroků jste nyní globální správce klienta spole
   ![domény, které jsou přidány do služby Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Uživatelé služby Power BI nebo Azure Rights Management, kteří mají přiřazené v klientovi Office 365 licence musíte uložit svoje řídicí panely, pokud název domény je odebrán. Musíte se přihlásit s uživatelské jméno jako  *user@fourthcoffeexyz.onmicrosoft.com*  místo  *user@fourthcoffee.xyz* .
+> Uživatelé služby Power BI nebo Azure Rights Management, kteří mají přiřazené v klientovi Office 365 licence musíte uložit svoje řídicí panely, pokud název domény je odebrán. Musíte se přihlásit s uživatelské jméno jako *user@fourthcoffeexyz.onmicrosoft.com* místo *user@fourthcoffee.xyz*.
 
 ## <a name="external-admin-takeover"></a>Externí správu převzetí
 
@@ -101,7 +101,7 @@ Plány podporované služby patří:
 - PowerFlow volné
 - Azure Rights Management Service Basic (RMS)
 - Rozlehlé sítě službou Azure Rights Management (RMS)
-- Datový proud Microsoft
+- Microsoft Stream
 - Dynamics 365 bezplatné zkušební verze
 
 Správce převzetí Exernal není podporována pro jakoukoli službu, která má plány služby, které obsahují služby SharePoint, OneDrive nebo Skype pro firmy; například prostřednictvím bezplatné předplatné Office nebo základní SKU Office.
@@ -143,7 +143,7 @@ Rutiny | Využití
     Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
   ````
 
-4. Zkopírujte hodnotu (výzva), která je vrácena z tohoto příkazu. Například:
+4. Zkopírujte hodnotu (výzva), která je vrácena z tohoto příkazu. Příklad:
   ````
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
   ````
@@ -154,7 +154,7 @@ Rutiny | Využití
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
   ````
   
-  Například:
+  Příklad:
   
   ````
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
@@ -162,7 +162,7 @@ Rutiny | Využití
 
 Úspěšné výzvy se vrátíte do příkazového řádku bez chyby.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Přidání vlastního názvu domény do Azure AD](add-custom-domain.md)
 * [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)

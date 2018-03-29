@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření interního nástroje pro vyrovnávání zatížení – šablona Azure | Dokumentace Microsoftu"
-description: "Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí šablony v Resource Manageru"
+title: Vytvoření interního nástroje pro vyrovnávání zatížení – šablona Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí šablony v Resource Manageru
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 7abb8fb5064ca2ab1e4da6e0a32335f63d87ea02
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: f92430cad52edc60a0ab69caec61cc6f20515f61
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí šablony
 
@@ -28,7 +28,6 @@ ms.lasthandoff: 12/18/2017
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Šablona](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 

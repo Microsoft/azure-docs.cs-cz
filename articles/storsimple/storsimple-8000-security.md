@@ -1,24 +1,24 @@
 ---
-title: "Zabezpečení řady StorSimple 8000 | Microsoft Docs"
-description: "Popisuje funkce zabezpečení a ochrana osobních údajů, které chránit služby StorSimple, zařízení a data místně a v cloudu."
+title: Zabezpečení řady StorSimple 8000 | Microsoft Docs
+description: Popisuje funkce zabezpečení a ochrana osobních údajů, které chránit služby StorSimple, zařízení a data místně a v cloudu.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/23/2018
+ms.date: 03/27/2018
 ms.author: alkohli
-ms.openlocfilehash: c14927f82ca01320206ccec83216777b7d1b8708
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: ee0534ab8bc3400854ddf550df9ca2f395f8d80d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple zabezpečení a ochranu dat.
 
@@ -197,7 +197,7 @@ StorSimple používá tyto algoritmy šifrování chránit data uložená v nebo
 
 | Algoritmus | Délka klíče | Protokoly/aplikace/komentáře |
 | --- | --- | --- |
-| RSA |2 048 |V1.5 RSA PKCS č. 1 se používá na portálu Azure k šifrování dat konfigurace, která se odešle do zařízení: například přihlašovací údaje, konfigurace zařízení StorSimple, účtu úložiště a cloudové úložiště šifrovacích klíčů. |
+| RSA |2048 |V1.5 RSA PKCS č. 1 se používá na portálu Azure k šifrování dat konfigurace, která se odešle do zařízení: například přihlašovací údaje, konfigurace zařízení StorSimple, účtu úložiště a cloudové úložiště šifrovacích klíčů. |
 | AES |256 |AES s CBC se používá k šifrování veřejnou část šifrovacího klíče dat služby před odesláním do portálu Azure ze zařízení StorSimple. Také se používá zařízení StorSimple k šifrování dat před odesláním dat účet cloudového úložiště. |
 
 ## <a name="storsimple-cloud-appliance-security"></a>Zabezpečení cloudu zařízení StorSimple
@@ -267,6 +267,20 @@ Následují některé otázky a odpovědi týkající se zabezpečení a Microso
 **Otázka:** co se stane, když vládních entity Microsoft požádá o svá data?
 
 **Odpověď:** vzhledem k tomu, že všechna data se šifrují službu a privátní klíč se uchovává se zařízením, vládních entity musí zákazník zeptat data.
+
+## <a name="gdpr-compliance"></a>GDPR dodržování předpisů
+
+[Obecné Data Protection nařízení (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) je data protection a o ochraně osobních údajů zákon Evropské unie (EU). GDPR obsahuje mnoho požadavky na to, jak shromažďování, ukládání a používat osobní údaje. Pravidla GDPR jsou vynucená pro společnosti, vládních organizací a dalšími organizacemi, které fungují v Evropa a shromažďovat, analyzovat data svázané s obyvatele Evropské unie. 
+
+Správce zařízení StorSimple řady, fyzických i virtuálních je GDPR kompatibilní. Existují dva klíče instance, kde je osobní údaje shromážděné a zobrazí v rámci služby:
+
+- Výstraha uživatelská nastavení, které jsou nakonfigurované e-mailovou adresu uživatele. Tyto informace můžete zobrazit a vymazat správcem. To platí pro řadu zařízení StorSimple 8000 i pole virtuální zařízení StorSimple.
+ * K zobrazení a vymazat nastavení pro řady StorSimple 8000, postupujte podle kroků v [zobrazení a Správa výstrah StorSimple](storsimple-8000-manage-alerts.md#configure-alert-settings)
+ * K zobrazení a vymazat nastavení pro pole virtuální zařízení StorSimple, postupujte podle kroků v [zobrazení a Správa výstrah StorSimple](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
+- Uživatelé, kteří měli přístup k datům, které se nacházejí na sdílené složky. Zobrazí se seznam uživatelů, kteří měli přístup k datům sdílené složky a lze zobrazit. Tento seznam je taky odstranit po odstranění sdílené složky. Vztahuje se pouze na pole virtuální zařízení StorSimple.
+ * Chcete-li zobrazit seznam uživatele, který lze zobrazit nebo odstranit sdílenou složku, postupujte podle kroků v [spravovat sdílené složky v poli virtuální zařízení StorSimple](storsimple-virtual-array-manage-shares.md)
+
+Další informace najdete v tématu Zásady Microsoft Privacy v [Centrum zabezpečení](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>Další postup
 

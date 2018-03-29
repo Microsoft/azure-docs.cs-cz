@@ -1,16 +1,16 @@
 ---
-ms.assetid: 
-title: "Azure Key Vault obnovitelného odstranění | Microsoft Docs"
+ms.assetid: ''
+title: Azure Key Vault obnovitelného odstranění | Microsoft Docs
 ms.service: key-vault
 author: lleonard-msft
 ms.author: alleonar
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: 01357e4fdb9b6f27e9baf5f5c8e4c7d6b582ad35
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 6a3573cf31418309a31126b2a0c6a43ea2e0c745
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Přehled konfigurace soft odstranění služby Azure Key Vault
 
@@ -68,7 +68,14 @@ Trvale odstraníte, čištění, trezoru klíčů je možné prostřednictvím o
 
 Výjimkou je případ, kdy Azure odběr byl označen jako *neodstranitelný*. V takovém případě pouze služby pak může provádět skutečného odstranění a nemá tak jako naplánované proces. 
 
-## <a name="next-steps"></a>Další kroky
+### <a name="billing-implications"></a>Dopady na fakturaci
+
+Obecně platí, pokud objekt (trezoru klíčů nebo klíč nebo tajný klíč) je ve stavu deleted, existují pouze dvě operace možných: 'mazání' a 'obnovit'. Všechny ostatní operace se nezdaří. Proto i když objekt existuje, provádět žádné operace a proto dojde bez využití, takže žádné faktury. Jsou však následující výjimky:
+
+- 'mazání' a 'obnovit' akce se bude započítávat operations normální trezoru klíčů a bude účtován.
+- Pokud se objekt klíč pomocí modulu hardwarového zabezpečení, budou platit 'na klíč chráněný HSM, poplatků za klíče verze za měsíc zdarma Pokud klíče verze byla použita v posledních 30 dnů. Poté vzhledem k tomu, že objekt je ve stavu deleted, můžete provést žádné operace, proti, takže bezplatně budou platit.
+
+## <a name="next-steps"></a>Další postup
 
 Následující dva příručky nabízejí scénáře primárního použití pro používání konfigurace soft odstranění.
 

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: fe79c6e6344bef8f25ae2e343e3301959c4e0ae5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 915f36678b8515c5f4a6bd367843255865f4b34d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurovat vždy na skupiny dostupnosti ve virtuálním počítači Azure ručně
 
@@ -32,7 +32,7 @@ Diagram znázorňuje, co vytvoříte v tomto kurzu.
 
 ![Skupiny dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Kurz předpokládá, že máte základní znalosti o SQL serveru skupin dostupnosti Always On. Pokud potřebujete další informace, přečtěte si [přehled o skupin dostupnosti Always On (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx).
 
@@ -355,7 +355,7 @@ Skupinu dostupnosti SQL Server na virtuálních počítačích Azure, vyžaduje 
    | **Typ** |Interní |
    | **Virtuální síť** |Použijte název virtuální síť Azure. |
    | **Podsíť** |Použijte název podsítě, která je virtuální počítač.  |
-   | **Přiřazení IP adresy** |Statická |
+   | **Přiřazení IP adresy** |Statický |
    | **IP adresa** |Použijte dostupnou adresu z podsítě. Všimněte si, že se to neliší od vaší IP adresu clusteru |
    | **Předplatné** |Pomocí stejného předplatného jako virtuální počítač. |
    | **Umístění** |Použijte stejné umístění jako virtuální počítač. |
@@ -374,22 +374,14 @@ Ke konfiguraci nástroje pro vyrovnávání zatížení, musíte vytvořit fond 
 
    ![Najít nástroj pro vyrovnávání zatížení ve skupině prostředků](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/86-findloadbalancer.png)
 
-1. Klikněte na nástroje pro vyrovnávání zatížení, klikněte na tlačítko **back-endové fondy**a klikněte na tlačítko **+ přidat**. Nastavení fondu back-end následujícím způsobem:
+1. Klikněte na nástroje pro vyrovnávání zatížení, klikněte na tlačítko **back-endové fondy**a klikněte na tlačítko **+ přidat**. 
 
-   | Nastavení | Popis | Příklad:
-   | --- | --- |---
-   | **Název** | Zadejte název text | SQLLBBE
-   | **Přidružené k** | Vybrat ze seznamu | Skupina dostupnosti
-   | **Sady dostupnosti.** | Použijte název sady dostupnosti, která jsou vaše virtuální počítače serveru SQL v | sqlAvailabilitySet |
-   | **Virtual Machines** |Dva názvy virtuální počítač Azure SQL Server | sqlserver-0, sqlserver-1
+1. Fond back-end přidružení skupiny dostupnosti, která obsahuje virtuální počítače.
 
-1. Zadejte název pro fond back-end.
+1. V části **cíle konfigurace protokolu IP sítě**, zkontrolujte **virtuální počítač** a zvolit oba virtuální počítače, které budou hostiteli replik skupin dostupnosti. Nezahrnujte souborový server určující sdílené složky.
 
-1. Klikněte na tlačítko **+ přidat virtuální počítač**.
-
-1. Pro nastavení dostupnosti vyberte že dostupnost nastavit, že jsou servery SQL Server v.
-
-1. Pro virtuální počítače zahrnují oba servery SQL Server. Nezahrnujte souborový server určující sdílené složky.
+   >[!NOTE]
+   >Pokud nejsou zadány oba virtuální počítače, připojení bude úspěšné pouze k primární replice.
 
 1. Klikněte na tlačítko **OK** vytvoření fondu back-end.
 
@@ -399,7 +391,7 @@ Ke konfiguraci nástroje pro vyrovnávání zatížení, musíte vytvořit fond 
 
 1. Test stavu nastavte takto:
 
-   | Nastavení | Popis | Příklad:
+   | Nastavení | Popis | Příklad
    | --- | --- |---
    | **Název** | Text | SQLAlwaysOnEndPointProbe |
    | **Protokol** | Zvolte TCP | TCP |
@@ -414,7 +406,7 @@ Ke konfiguraci nástroje pro vyrovnávání zatížení, musíte vytvořit fond 
 1. Klikněte na nástroje pro vyrovnávání zatížení, klikněte na tlačítko **pravidla Vyrovnávání zatížení**a klikněte na tlačítko **+ přidat**.
 
 1. Nastavte pravidla takto Vyrovnávání zatížení.
-   | Nastavení | Popis | Příklad:
+   | Nastavení | Popis | Příklad
    | --- | --- |---
    | **Název** | Text | SQLAlwaysOnEndPointListener |
    | **Adresa IP front-endu** | Zvolte adresu |Použijte adresu, kterou jste vytvořili, když jste vytvořili pro vyrovnávání zatížení. |
@@ -424,7 +416,7 @@ Ke konfiguraci nástroje pro vyrovnávání zatížení, musíte vytvořit fond 
    | **Test** |Název, který jste zadali pro kontrolu | SQLAlwaysOnEndPointProbe |
    | **Trvalost relace** | Rozevírací seznam | **None** |
    | **Časový limit nečinnosti** | Otevřete minut pro uchování připojení TCP | 4 |
-   | **Plovoucí IP adresa (přímá odpověď ze serveru)** | |Povoleno |
+   | **Plovoucí IP adresa (přímá odpověď ze serveru)** | |Povolená |
 
    > [!WARNING]
    > Přímá odpověď ze serveru se nastavuje během vytváření. Nelze změnit.

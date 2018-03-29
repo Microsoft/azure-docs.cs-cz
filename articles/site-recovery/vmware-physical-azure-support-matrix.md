@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 03/29/2018
 ms.author: raynew
-ms.openlocfilehash: 6f2f28b36fdb3751a469d66f242f9fa2119f9ae8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 28ddecc45faa213d1fd536b5ad8690e151037505
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Podporu pro VMware a fyzické serveru replikaci do Azure.
 
@@ -30,7 +30,7 @@ Fyzické servery | Můžete provést zotavení po havárii do Azure pro místní
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
 VMware | vCenter Server verze 6.5, 6.0, nebo 5.5 nebo vSphere verze 6.5, 6.0 nebo 5,5 | Doporučujeme vám, že používáte vCenter server.
-Fyzické | neuvedeno
+Fyzické | Nevztahuje se.
 
 
 ## <a name="replicated-machines"></a>Replikovaných počítačů
@@ -41,7 +41,7 @@ Následující tabulka shrnuje podporu replikace pro virtuální počítače VMw
 --- | ---
 Nastavení počítače | Počítače, které se replikují do Azure, musí splňovat [požadavky pro Azure](#azure-vm-requirements).
 Operační systém Windows | 64bitová verze systému Windows Server 2016 (jádra serveru, serveru pomocí možnosti práce s počítačem), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s v minimálně SP1. Windows 2016 Nano Server není podporován.
-Operační systém Linux | Red Hat Enterprise Linux: 5.2 k 5,11, 6.1 k 6.9 7.0 až 7,4 <br/><br/>CentOS: 5.2 k 5,11, 6.1 k 6.9 7.0 až 7,4 <br/><br/>Ubuntu 14.04 LTS server[ (podporované verze jádra)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS server[ (podporované verze jádra)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7/Debian 8<br/><br/>Oracle Enterprise Linux 6.4, 6.5 systémem Red Hat kompatibilní jádra nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/>SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4 <br/><br/>Upgrade replikovaných počítačů z SP3 SP4 není podporován. K upgradu, zakažte replikaci a povolte ho znovu po dokončení upgradu.
+Operační systém Linux | Red Hat Enterprise Linux: 5.2 k 5,11, 6.1 k 6.9 7.0 až 7,4 <br/><br/>CentOS: 5.2 k 5,11, 6.1 k 6.9 7.0 až 7,4 <br/><br/>Ubuntu 14.04 LTS server[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS server[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (podporované verze jádra)](#debian-kernel-versions)<br/><br/>Oracle Enterprise Linux 6.4, 6.5 systémem Red Hat kompatibilní jádra nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/>SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4 <br/><br/>Upgrade replikovaných počítačů z SP3 SP4 není podporován. K upgradu, zakažte replikaci a povolte ho znovu po dokončení upgradu.
 
 >[!NOTE]
 >
@@ -55,20 +55,30 @@ Operační systém Linux | Red Hat Enterprise Linux: 5.2 k 5,11, 6.1 k 6.9 7.0 a
 
 **Podporované verze** | **Verze Azure je služba Site Recovery Mobility** | **Verze jádra** |
 --- | --- | --- |
-14.04 LTS | 9.10 | 3.13.0-24-Generic k 3.13.0-121-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-81-generic |
 14.04 LTS | 9.11 | 3.13.0-24-Generic k 3.13.0-128-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-91-generic |
 14.04 LTS | 9.12 | 3.13.0-24-Generic k 3.13.0-132-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-96-generic |
 14.04 LTS | 9.13 | 3.13.0-24-Generic k 3.13.0-137-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-104-generic |
-16.04 LTS | 9.10 | 4.4.0-21-Generic k 4.4.0-81-generic,<br/>4.8.0-34-Generic k 4.8.0-56-generic,<br/>4.10.0-14-Generic k 4.10.0-24-generic |
+14.04 LTS | 9.14 | 3.13.0-24-Generic k 3.13.0-142-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-116-generic |
 16.04 LTS | 9.11 | 4.4.0-21-Generic k 4.4.0-91-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-32-generic |
 16.04 LTS | 9.12 | 4.4.0-21-Generic k 4.4.0-96-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-35-generic |
 16.04 LTS | 9.13 | 4.4.0-21-Generic k 4.4.0-104-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic |
+16.04 LTS | 9.14 | 4.4.0-21-Generic k 4.4.0-116-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-36-generic,<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1011-azure |
+
+
+### <a name="debian-kernel-versions"></a>Verze debian jádra
+
+
+**Podporované verze** | **Verze Azure je služba Site Recovery Mobility** | **Verze jádra** |
+--- | --- | --- |
+Debian 7 | 9.14 | 3.2.0-4-amd64 k 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 8 | 9.14 | 3.16.0-4-amd64 k 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.5-amd64 |
+
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux souboru systémy nebo hosta úložiště
 
 **Komponenta** | **Podporuje se**
 --- | ---
-systémy souborů | ext3, ext4 ReiserFS (Suse Linux Enterprise Server pouze), XFS.
+systémy souborů | ext3, ext4, XFS.
 Správce svazků | LVM2.
 Vícenásobný software | Mapovač zařízení.
 Zařízení úložiště Paravirtualized | Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
@@ -130,7 +140,7 @@ Host server svazek s prokládané disku > 4 TB <br><br/>Správa logických svazk
 Host server - prostory úložiště | Ne
 Disk přidat nebo odebrat aktivní hosta/server | Ne
 Host server - vyloučení disku | Ano
-Multipath hosta/server (MPIO) | neuvedeno
+Multipath hosta/server (MPIO) | Nevztahuje se.
 
 > [!NOTE]
 > Rozhraní UEFI spouštění virtuálních počítačů VMware s Windows serverem 2012 nebo novější se dají migrovat na Azure. Platí následující omezení:
@@ -160,7 +170,7 @@ Koncové body služby virtuální sítě<br/><br/> Úložiště brány firewall 
 
 **Funkce** | **Podporuje se**
 --- | ---
-Skupiny dostupnosti | Ano
+Sady dostupnosti | Ano
 ROZBOČOVAČE | Ano
 Managed Disks | Ano
 

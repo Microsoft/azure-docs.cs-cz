@@ -1,26 +1,26 @@
 ---
-title: "Azure AD SSPR se zpětným zápisem hesel | Microsoft Docs"
-description: "Používání Azure AD a Azure AD Connect pro zpětný zápis hesla do místního adresáře"
+title: Azure AD SSPR se zpětným zápisem hesel | Microsoft Docs
+description: Používání Azure AD a Azure AD Connect pro zpětný zápis hesla do místního adresáře
 services: active-directory
-keywords: "Správa hesel služby Active directory, správou hesel Azure AD samoobslužném resetování hesla služby"
-documentationcenter: 
+keywords: Správa hesel služby Active directory, správou hesel Azure AD samoobslužném resetování hesla služby
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: bcb7074a6d590a08ad683c8746156245bc60c5e8
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a7a81f51e0873da38f25deb687e4d03ccf67e11a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="password-writeback-overview"></a>Přehled zpětný zápis hesla
 
@@ -30,7 +30,7 @@ Zpětný zápis hesla poskytuje následující funkce:
 
 * **Poskytuje zpětnou vazbu nula delay**: zpětný zápis hesla je asynchronní operace. Uživatelé jsou okamžitě upozorněni, pokud své heslo nesplňuje zásady, nebo nelze resetovat nebo změnit z jakéhokoli důvodu.
 * **Resetování hesel podporuje pro uživatele, kteří používají služby Active Directory Federation Services (AD FS) ani jiné technologie federation**: S zpětný zápis hesla, tak dlouho, dokud federované uživatelské účty jsou synchronizovány do vašeho klienta Azure AD, je to možné Správa hesel místní služby Active Directory z cloudu.
-* **Resetování hesel podporuje pro uživatele, kteří používají** [synchronizace hodnot hash hesel](./connect/active-directory-aadconnectsync-implement-password-synchronization.md): Pokud službu resetování hesla zjistí, zda účet synchronizované uživatele je povoleno synchronizace hodnot hash hesel, jsme resetovat obou tohoto účtu na místě a cloud heslo současně.
+* **Resetování hesel podporuje pro uživatele, kteří používají** [synchronizace hodnot hash hesel](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md): Pokud službu resetování hesla zjistí, zda účet synchronizované uživatele je povoleno synchronizace hodnot hash hesel, jsme resetovat obou tohoto účtu na místě a cloud heslo současně.
 * **Resetování hesel podporuje pro uživatele, které používají předávací ověřování**: S zpětný zápis hesla, tak dlouho, dokud účty předávací ověřování jsou synchronizovány do vašeho klienta Azure AD je bylo možné spravovat své místní Active Directory hesla z cloudu.
 * **Změní heslo podporuje z přístupového panelu a Office 365**: když federovaný nebo heslo, které jsou synchronizované uživatele pocházet ke změně hesla vypršela platnost, nebo jiný vypršela platnost, můžeme tyto zpětnému zápisu do místního prostředí služby Active Directory.
 * **Podporuje zpětný zápis hesla, když správce obnoví je na portálu Azure**: vždy, když správce obnoví heslo uživatele v [portál Azure](https://portal.azure.com), pokud je Federovaná tohoto uživatele nebo heslo synchronizován, vytvoříme heslo správce vybere v místní službě Active Directory také. Tato funkce není aktuálně podporována na portálu správy Office.

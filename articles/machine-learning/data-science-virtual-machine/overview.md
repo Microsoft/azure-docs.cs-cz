@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: f62f6c4b2679457e8aaddb81e8a37622ca878ffc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8ee4af162ddaa64d4dbe83bebbb93e22409f041d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Úvod do služby Azure Data vědecké účely virtuálního počítače pro systémy Linux a Windows
 
@@ -29,7 +29,7 @@ Toto téma popisuje, co můžete dělat s virtuálním Počítačem vědecké ú
 
 
 ## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>Jak se Data virtuálního počítače vědecké účely?
-Cílem z virtuálního počítače vědecké účely dat je poskytnout prostředí vědecké účely data bez třecí Odborníci v oblasti dat na všech úrovních dovedností a rolí. Tento virtuální počítač uloží významnou čas strávený by pokud byl nasazen porovnatelný z hlediska prostředí sami. Místo toho spuštění projektu vědecké účely data okamžitě v nově vytvořená instance virtuálních počítačů. 
+Cílem z virtuálního počítače datové vědy (DSVM) je poskytnout Odborníci v oblasti dat na všech úrovních dovedností a ve všech rolích prostředí vědecké účely dat bez tření, předem nakonfigurovaná a plně integrovaná. Místo zavedením porovnatelný z hlediska prostoru sami, můžete zřídit DSVM - ušetřit dny nebo i _týdny_ na instalaci, konfiguraci a procesy správy balíčku. Po přidělení vaší DSVM můžete okamžitě začít pracovat na projektu vědecké účely data.
 
 Virtuální počítač datové vědy a konfigurují pro práci s širokou škálu scénářů použití. Prostředí můžete škálovat nahoru nebo dolů podle projektu změn. Budete moci použít upřednostňovaný jazyk pro úlohy vědecké účely dat programu. Můžete nainstalovat další nástroje a přizpůsobení systému pro vašim konkrétním potřebám.
 

@@ -1,21 +1,21 @@
 ---
 title: Microsoft Graph vazby pro Azure Functions
-description: "Pochopit, jak používat Microsoft Graph triggerů a vazeb v Azure Functions."
+description: Pochopit, jak používat Microsoft Graph triggerů a vazeb v Azure Functions.
 services: functions
 author: mattchenderson
 manager: cfowler
-editor: 
+editor: ''
 ms.service: functions
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: d774f0ca644793235a8c423b052b559d26e289c4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2de80760484ae1869b340898ea1e5f740fbc2883
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph vazby pro Azure Functions
 
@@ -360,7 +360,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tuto vazbu, musí mít následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Čtení souborů uživatele|
+|Microsoft Graph|Umožňuje získat oprávnění ke čtení souborů uživatelů.|
 
 Vazba zveřejňuje následující typy, které mají funkce .NET:
 - řetězec [] –]
@@ -521,7 +521,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tuto vazbu, musí mít následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Mají úplný přístup k souborům uživatele|
+|Microsoft Graph|Úplný přístup k souborům uživatele|
 
 Vazba zveřejňuje následující typy, které mají funkce .NET:
 - řetězec [] –]
@@ -662,7 +662,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tuto vazbu, musí mít následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Čtení souborů uživatele|
+|Microsoft Graph|Umožňuje získat oprávnění ke čtení souborů uživatelů.|
 
 Vazba zveřejňuje následující typy, které mají funkce .NET:
 - Byte
@@ -807,7 +807,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tuto vazbu, musí mít následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Mají úplný přístup k souborům uživatele|
+|Microsoft Graph|Úplný přístup k souborům uživatele|
 
 Vazba zveřejňuje následující typy, které mají funkce .NET:
 - Byte
@@ -1284,11 +1284,11 @@ Následující příklad vytvoří odběr. Můžete [aktualizovat předplatné](
       "direction": "in"
     },
     {
-      "type": "graphwebhook",
+      "type": "graphWebhookSubscription",
       "name": "clientState",
       "direction": "out",
       "action": "create",
-      "listen": "me/mailFolders('Inbox')/messages",
+      "subscriptionResource": "me/mailFolders('Inbox')/messages",
       "changeTypes": [
         "created"
       ],
@@ -1333,11 +1333,11 @@ Následující příklad vytvoří odběr. Můžete [aktualizovat předplatné](
       "direction": "in"
     },
     {
-      "type": "graphwebhook",
+      "type": "graphWebhookSubscription",
       "name": "clientState",
       "direction": "out",
       "action": "create",
-      "listen": "me/mailFolders('Inbox')/messages",
+      "subscriptionResource": "me/mailFolders('Inbox')/messages",
       "changeTypes": [
         "created"
       ],

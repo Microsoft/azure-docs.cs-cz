@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: f4755d6cce0787a411fee7d32c887ae71c134c94
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f1fa79ed32969f5087107d6105fd2f4baf7640e3
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky webové pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +35,7 @@ Z webové tabulky databáze můžete zkopírovat data do úložiště dat žádn
 
 Konkrétně tento Web tabulky konektor podporuje **extrahování obsahu tabulky z stránku HTML**. Pokud chcete načíst data z koncového bodu protokolu HTTP/s, použijte [HTTP konektor](connector-http.md) místo.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít tento konektor tabulky Web, musíte nastavit Self-hosted integrace Runtime. V tématu [Self-hosted integrace Runtime](create-self-hosted-integration-runtime.md) článku.
 
@@ -49,9 +49,9 @@ Následující části obsahují podrobnosti o vlastnosti, které slouží k ur�
 
 Následující vlastnosti jsou podporovány pro webové tabulky propojené služby:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavena na: **Web** |Ano |
+| typ | Vlastnost typu musí být nastavena na: **Web** |Ano |
 | Adresa URL | Adresa URL pro webové zdroje |Ano |
 | authenticationType. | Povolená hodnota je: **anonymní**. |Ano |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Modul Runtime Self-hosted integrace se vyžaduje, jak je uvedeno v [požadavky](#prerequisites). |Ano |
@@ -81,9 +81,9 @@ Následující vlastnosti jsou podporovány pro webové tabulky propojené služ
 
 Ke zkopírování dat z tabulky webové, nastavte vlastnost typu datové sady, která **RelationalTable**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost typu datové sady musí být nastavena na: **WebTable** | Ano |
+| typ | Vlastnost typu datové sady musí být nastavena na: **WebTable** | Ano |
 | path |Relativní adresa URL prostředek, který obsahuje tabulku. |Ne. Pokud cesta není zadána, je použít jenom adresu URL, zadaný v definici propojené služby. |
 | index |Index tabulky v prostředku. V tématu [Get index tabulky v stránku HTML](#get-index-of-a-table-in-an-html-page) části Postup získání index tabulky v stránku HTML. |Ano |
 
@@ -143,6 +143,8 @@ Ke zkopírování dat z tabulky webové, nastavte typ zdroje v aktivitě kopíro
 ```
 
 ## <a name="get-index-of-a-table-in-an-html-page"></a>Na stránce HTML získat index tabulky.
+
+Chcete-li získat index tabulky, který je nutné nakonfigurovat v [vlastnosti datové sady](#dataset-properties), například aplikace Excel 2016 můžete použít jako nástroj následujícím způsobem:
 
 1. Spusťte **Excel 2016** a přepněte do **Data** kartě.
 2. Klikněte na tlačítko **nový dotaz** na panelu nástrojů, přejděte na **z jiných zdrojů** a klikněte na tlačítko **z webové**.

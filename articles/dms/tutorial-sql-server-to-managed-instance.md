@@ -1,21 +1,21 @@
 ---
-title: "Používat službu Azure databáze migrace k migraci na Azure SQL Database spravované Instance systému SQL Server | Microsoft Docs"
-description: "Zjistěte, k migraci z místního serveru SQL do Azure SQL Database spravované Instance pomocí služby Azure databáze migrace."
+title: Používat službu Azure databáze migrace k migraci na Azure SQL Database spravované Instance systému SQL Server | Microsoft Docs
+description: Zjistěte, k migraci z místního serveru SQL do Azure SQL Database spravované Instance pomocí služby Azure databáze migrace.
 services: dms
 author: edmacauley
 ms.author: edmaca
 manager: craigg
-ms.reviewer: 
+ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: d74a273061912ea2bdcc39301ce9a727b07ade41
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 03/29/2018
+ms.openlocfilehash: 8abf3bae3a2274ed5514a5c621675b4c9ec27ae2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance"></a>Migrace systému SQL Server na spravované Instance databáze Azure SQL
 Službu Azure databáze migrace můžete použít k migraci databáze z místní instance systému SQL Server do Azure SQL Database. V tomto kurzu, migrovat **Adventureworks2012** databáze z místní instance systému SQL Server do databáze SQL Azure pomocí služby Azure databáze migrace.
@@ -27,20 +27,21 @@ V tomto kurzu se naučíte:
 > * Spusťte migrace.
 > * Monitorujte migraci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení tohoto kurzu potřebujete:
 
 - Vytvoření virtuální sítě pro službu Azure databáze migrace pomocí modelu nasazení Azure Resource Manager, které poskytuje připojení site-to-site k vaší místní zdrojové servery pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). [Další síťové topologie pro Azure SQL DB spravované Instance migrace pomocí služby Azure databáze migrace](https://aka.ms/dmsnetworkformi).
 - Ujistěte se, že vaše Azure virtuální síť (VNET) skupinu zabezpečení sítě pravidla proveďte bloku následující komunikace porty 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální síť Azure, najdete v článku [filtrování provozu sítě přenosů se skupinami zabezpečení sítě](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg).
-- Konfigurace vaší [konfigurace brány Windows Firewall pro přístup k databázovému stroji zdroj](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-- Otevřete vaší brány Windows Firewall a povolit službu Azure databáze migrace k přístupu ke zdroji systému SQL Server.
+- Konfigurace vaší [brány Windows Firewall pro přístup k databázovému stroji zdroj](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+- Otevřete vaší brány Windows Firewall a povolit službu Azure databáze migrace k přístupu ke zdroji systému SQL Server, který ve výchozím nastavení je TCP port 1433.
+- Pokud používáte více pojmenované instance systému SQL Server pomocí dynamické porty, budete pravděpodobně chtít povolit službu SQL Browser a povolení přístupu k portu UDP 1434 přes vaší brány firewall tak, aby služba migrace databáze Azure může připojit k pojmenovaná instance na svůj zdroj Server.
 - Pokud používáte zařízení brány firewall před zdrojové databáze, musíte přidat pravidla firewallu povolující službu Azure databáze migrace pro přístup k databází zdroje pro migraci, stejně jako soubory přes SMB port 445.
 - Vytvořte instanci Azure spravované Instance databáze SQL pomocí následujících podrobností v článku [vytvoření spravované Instance databáze Azure SQL na portálu Azure](https://aka.ms/sqldbmi).
 - Zajistěte, aby přihlášení použít k připojení systému SQL Server zdrojové a cílové spravované Instance členové role serveru sysadmin.
 - Vytvoření sdílené síťové složky, službu Azure databáze migrace můžete použít k zálohování zdrojové databáze.
 - Ujistěte se, zda má účet služby spuštění instance systému SQL Server zdrojové oprávnění k zápisu ve sdílené síťové složce, kterou jste vytvořili.
-- Poznamenejte si uživatel systému Windows (a heslo), který má oprávnění Úplné řízení ve sdílené síťové složce, kterou jste vytvořili výše. Služba Azure databáze migrace bude zosobnit přihlašovací údaje uživatele pro nahrání záložní soubory do kontejneru úložiště Azure pro operaci obnovení.
-- Vytvořte kontejner objektů blob a načíst jeho identifikátoru URI SAS pomocí kroků v článku [prostředků spravovat Azure Blob Storage pomocí Storage Exploreru (Preview)](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container), je nutné vybrat všechna oprávnění (pro čtení, zápisu, odstranit, seznamu) v okně Zásady Při vytváření identifikátor URI SAS. To bude služba migrace databáze Azure poskytnout přístup k úložiště kontejner účet pro odesílání záložní soubory, které se použijí pro migraci databází, které mají spravované Instance serveru Azure SQL Database
+- Poznamenejte si uživatel systému Windows (a heslo), který má oprávnění Úplné řízení ve sdílené síťové složce, kterou jste vytvořili výše. Služba Azure databáze migrace zosobňuje přihlašovací údaje uživatele pro nahrání záložní soubory do kontejneru úložiště Azure pro operaci obnovení.
+- Vytvořte kontejner objektů blob a načíst jeho identifikátoru URI SAS pomocí kroků v článku [prostředků spravovat Azure Blob Storage pomocí Storage Exploreru (Preview)](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container), je nutné vybrat všechna oprávnění (pro čtení, zápisu, odstranit, seznamu) v okně Zásady Při vytváření identifikátor URI SAS. To poskytuje přístup k vaší kontejneru účtu úložiště pro nahrávání záložní soubory použít k migraci službu Azure databáze migrace databáze Azure SQL Database spravované Instance
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrace poskytovatele prostředků Microsoft.DataMigration
 
@@ -124,10 +125,10 @@ Po vytvoření služby najít na portálu Azure a otevřete jej.
 
     | | |
     |--------|---------|
-    |**Sever umístění zálohy** | Místní síti sdílet, že služba Azure databáze migrace může trvat zdroj zálohy databází na. Účtu služby, zdroj instance systému SQL Server musí mít oprávnění k zápisu v této sdílené síťové složce. |
+    |**Umístění zálohy serveru** | Místní síti sdílet, že služba Azure databáze migrace může trvat zdroj zálohy databází na. Účtu služby, zdroj instance systému SQL Server musí mít oprávnění k zápisu v této sdílené síťové složce. |
     |**Uživatelské jméno** | Uživatelské jméno systému windows, můžete službu Azure databáze migrace zosobnění a nahrát záložní soubory do kontejneru úložiště Azure pro operaci obnovení. |
     |**Heslo** | Heslo pro výše uvedené uživatele. |
-    |**Identifikátor URI SAS úložiště** | Identifikátor URI SAS, která poskytuje přístup k vaší kontejneru účtu úložiště, který služba bude nahrávat soubory zálohování a který se použije pro migraci službu Azure databáze migrace databáze do Azure SQL Database spravované Instance.  [Zjistěte, jak získat identifikátor URI SAS pro kontejner objektů blob](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).|
+    |**Identifikátor URI SAS úložiště** | Identifikátor URI SAS, který zajišťuje, že služba migrace databáze Azure přístup k vaší účet kontejneru úložiště, do které služba odesílá zálohování souborů a který se používá k migraci databází, které mají spravované Instance serveru Azure SQL Database. [Zjistěte, jak získat identifikátor URI SAS pro kontejner objektů blob](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).|
     
     ![Nakonfigurovat nastavení migrace](media\tutorial-sql-server-to-managed-instance\dms-configure-migration-settings.png)
 

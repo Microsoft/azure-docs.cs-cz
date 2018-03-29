@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f3fb7c0be6f69f15b5b761f0c36d983f008282e9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 94b3c1e812bdf3345d5fb1f7308fb7a55be8f922
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů služby Azure Data Factory pomocí portálu Azure a prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/23/2018
 > Aplikace monitorování a správu poskytuje lepší podporu pro monitorování a správy datových kanálů a řešení potíží s problémy. Podrobnosti o použití této aplikace najdete v tématu [sledování a Správa kanálů služby Data Factory pomocí monitorování a správu aplikace](data-factory-monitor-manage-app.md). 
 
 
-Tento článek popisuje, jak monitorovat, spravovat a ladit kanály pomocí portálu Azure a prostředí PowerShell. Tento článek také poskytuje informace o tom, jak vytvářet výstrahy a upozorňování o selhání.
+Tento článek popisuje, jak monitorovat, spravovat a ladit kanály pomocí portálu Azure a prostředí PowerShell.
 
 ## <a name="understand-pipelines-and-activity-states"></a>Pochopit kanály a aktivity stavy
 Pomocí portálu Azure, můžete:
@@ -85,7 +85,7 @@ Dvojitým kliknutím **OutputBlobTable** v **Diagram**, zobrazí se všechny dat
 
 <table>
 <tr>
-    <th align="left">Stav</th><th align="left">Dílčí stav</th><th align="left">Popis</th>
+    <th align="left">Okres</th><th align="left">Dílčí stav</th><th align="left">Popis</th>
 </tr>
 <tr>
     <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Pro spuštění řezu ještě nenastal čas.</td>
@@ -103,40 +103,40 @@ Dvojitým kliknutím **OutputBlobTable** v **Diagram**, zobrazí se všechny dat
 <td>ActivityResume</td><td>Aktivita je pozastavená a zpracování řezů nejde spustit, dokud je obnoveno aktivity.</td>
 </tr>
 <tr>
-<td>Retry</td><td>Probíhá pokus o spuštění aktivity je zopakován.</td>
+<td>Zkusit znovu</td><td>Probíhá pokus o spuštění aktivity je zopakován.</td>
 </tr>
 <tr>
-<td>Ověření</td><td>Ověření se ještě nespustilo.</td>
+<td>Ověřování</td><td>Ověření se ještě nespustilo.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Ověření čeká na opakovat.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Probíhá zpracování.</td><td>Ověřování platnosti</td><td>Probíhá ověřování.</td>
+<td rowspan="2">Probíhá zpracování.</td><td>Ověřuje se</td><td>Probíhá ověřování.</td>
 </tr>
 <td>-</td>
 <td>Řez se zpracovává.</td>
 </tr>
 <tr>
-<td rowspan="4">Selhalo</td><td>TimedOut</td><td>Provedení aktivity trvalo déle, než je povolené aktivitou.</td>
+<td rowspan="4">Selhání</td><td>TimedOut</td><td>Provedení aktivity trvalo déle, než je povolené aktivitou.</td>
 </tr>
 <tr>
 <td>Zrušeno</td><td>Řez zrušil akce uživatele.</td>
 </tr>
 <tr>
-<td>Ověření</td><td>Ověření selhalo.</td>
+<td>Ověřování</td><td>Ověření selhalo.</td>
 </tr>
 <tr>
 <td>-</td><td>Řez se nepodařilo vygenerovat nebo ověřit.</td>
 </tr>
-<td>Připraveno</td><td>-</td><td>Řez je připraven ke spotřebování.</td>
+<td>Připravené</td><td>-</td><td>Řez je připraven ke spotřebování.</td>
 </tr>
 <tr>
-<td>Vynecháno</td><td>Žádné</td><td>Řez se zpracovává.</td>
+<td>Vynecháno</td><td>Žádná</td><td>Řez se zpracovává.</td>
 </tr>
 <tr>
-<td>Žádné</td><td>-</td><td>Řez měl dříve jiný stav, ale byla obnovena.</td>
+<td>Žádná</td><td>-</td><td>Řez měl dříve jiný stav, ale byla obnovena.</td>
 </tr>
 </table>
 
@@ -296,360 +296,6 @@ Typ 'aktualizace, je nastaven na 'UpstreamInPipeline", což znamená, že stavy 
 ```powershell
 Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 ```
-
-## <a name="create-alerts"></a>Vytváření upozornění
-Azure protokoly událostí uživatele při prostředků Azure (například objekt pro vytváření dat) je vytvořen, aktualizovat ani odstranit. Výstrahy můžete vytvořit na těchto událostech. Objekt pro vytváření dat můžete použít k zachycení různé metriky a vytvořit oznámení o metrikách. Doporučujeme použít události pro monitorování v reálném čase a použít metriky pro účely záznamu historie událostí.
-
-### <a name="alerts-on-events"></a>Výstrahy na události
-Azure události poskytují užitečné přehledy co se děje v vašich prostředků Azure. Pokud používáte Azure Data Factory, události se generují při:
-
-* Objekt pro vytváření dat je vytvořen, aktualizovat ani odstranit.
-* Zpracování dat (jako "spuštěno") je spuštěna, nebo byla dokončena.
-* Vytvoření clusteru HDInsight na vyžádání nebo odebrat.
-
-Můžete vytvářet výstrahy na těchto událostech uživatele a nakonfigurovat je pro odeslání e-mailová oznámení pro správce a coadministrators předplatného. Kromě toho můžete zadat další e-mailové adresy uživatelů, kteří potřebují pro příjem e-mailová oznámení, pokud jsou splněny podmínky. Tato funkce je užitečná, když chcete dostat upozornění na selhání a nechcete neustále monitorovat váš služby data factory.
-
-> [!NOTE]
-> V současné době nepodporuje na portálu zobrazit výstrahy na události. Použití [monitorování a správu aplikace](data-factory-monitor-manage-app.md) zobrazíte všechny výstrahy.
-
-
-#### <a name="specify-an-alert-definition"></a>Zadejte definici výstrah
-Pokud chcete zadat výstrahy definice, vytvořte soubor JSON, který popisuje operace, které chcete být upozorněni na. V následujícím příkladu odešle výstrahy e-mailové oznámení pro operaci RunFinished. Být konkrétní, je odeslána e-mailové oznámení, pokud bylo dokončeno spustit v datové továrně a spustit se nezdařila (stav = FailedExecution).
-
-```JSON
-{
-    "contentVersion": "1.0.0.0",
-     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "parameters": {},
-    "resources":
-    [
-        {
-            "name": "ADFAlertsSlice",
-            "type": "microsoft.insights/alertrules",
-            "apiVersion": "2014-04-01",
-            "location": "East US",
-            "properties":
-            {
-                "name": "ADFAlertsSlice",
-                "description": "One or more of the data slices for the Azure Data Factory has failed processing.",
-                "isEnabled": true,
-                "condition":
-                {
-                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition",
-                    "dataSource":
-                    {
-                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource",
-                        "operationName": "RunFinished",
-                        "status": "Failed",
-                        "subStatus": "FailedExecution"   
-                    }
-                },
-                "action":
-                {
-                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-                    "customEmails": [ "<your alias>@contoso.com" ]
-                }
-            }
-        }
-    ]
-}
-```
-
-Můžete odebrat **subStatus** z definice JSON, pokud chcete být upozorněni na konkrétní chyby.
-
-Tento příklad nastaví upozornění pro všechny datové továrny v rámci vašeho předplatného. Pokud chcete výstrahu, kterou chcete být nastavenou službu objekt pro vytváření konkrétní data, můžete zadat objekt pro vytváření dat **resourceUri** v **dataSource**:
-
-```JSON
-"resourceUri" : "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/DATAFACTORIES/<dataFactoryName>"
-```
-
-Následující tabulka obsahuje seznam dostupné operace a stavy (a dílčí stavy).
-
-| Název operace | Status | Podřízený stav |
-| --- | --- | --- |
-| RunStarted |Spuštěno |Spouštění |
-| RunFinished |Nemohl / bylo úspěšné |FailedResourceAllocation<br/><br/>Úspěch<br/><br/>FailedExecution<br/><br/>TimedOut<br/><br/>< zrušena<br/><br/>FailedValidation<br/><br/>Abandoned |
-| OnDemandClusterCreateStarted |Spuštěno | |
-| OnDemandClusterCreateSuccessful |Úspěch | |
-| OnDemandClusterDeleted |Úspěch | |
-
-V tématu [vytvořit pravidlo výstrahy](https://msdn.microsoft.com/library/azure/dn510366.aspx) podrobnosti o elementy JSON, které se používají v příkladu.
-
-#### <a name="deploy-the-alert"></a>Nasazení výstrahy
-Nasadit výstrahy, použijte rutinu prostředí Azure PowerShell **New-AzureRmResourceGroupDeployment**, jak je znázorněno v následujícím příkladu:
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\ADFAlertFailedSlice.json  
-```
-
-Po nasazení skupiny prostředků se úspěšně dokončil, můžete zobrazit následující zprávy:
-
-```
-VERBOSE: 7:00:48 PM - Template is valid.
-WARNING: 7:00:48 PM - The StorageAccountName parameter is no longer used and will be removed in a future release.
-Please update scripts to remove this parameter.
-VERBOSE: 7:00:49 PM - Create template deployment 'ADFAlertFailedSlice'.
-VERBOSE: 7:00:57 PM - Resource microsoft.insights/alertrules 'ADFAlertsSlice' provisioning status is succeeded
-
-DeploymentName    : ADFAlertFailedSlice
-ResourceGroupName : adf
-ProvisioningState : Succeeded
-Timestamp         : 10/11/2014 2:01:00 AM
-Mode              : Incremental
-TemplateLink      :
-Parameters        :
-Outputs           :
-```
-
-> [!NOTE]
-> Můžete použít [vytvořit pravidlo výstrahy](https://msdn.microsoft.com/library/azure/dn510366.aspx) REST API pro vytvoření pravidla výstrahy. Datová část JSON je podobné jako v příkladu JSON.  
-
-
-#### <a name="retrieve-the-list-of-azure-resource-group-deployments"></a>Načtení seznamu nasazení skupiny prostředků Azure.
-Pro načtení seznamu nasazení skupiny prostředků nasazené Azure, použijte rutinu **Get-AzureRmResourceGroupDeployment**, jak je znázorněno v následujícím příkladu:
-
-```powershell
-Get-AzureRmResourceGroupDeployment -ResourceGroupName adf
-```
-
-```
-DeploymentName    : ADFAlertFailedSlice
-ResourceGroupName : adf
-ProvisioningState : Succeeded
-Timestamp         : 10/11/2014 2:01:00 AM
-Mode              : Incremental
-TemplateLink      :
-Parameters        :
-Outputs           :
-```
-
-#### <a name="troubleshoot-user-events"></a>Řešení potíží s událostmi uživatele
-1. Zobrazí všechny události, které jsou generovány po kliknutí na tlačítko **metriky a operace** dlaždici.
-
-    ![Dlaždice metriky a operace](./media/data-factory-monitor-manage-pipelines/metrics-and-operations-tile.png)
-2. Klikněte **události** dlaždice sledovat události.
-
-    ![Dlaždice události](./media/data-factory-monitor-manage-pipelines/events-tile.png)
-3. Na **události** okno, můžete zobrazit podrobnosti o události, filtrované události a tak dále.
-
-    ![Okno události](./media/data-factory-monitor-manage-pipelines/events-blade.png)
-4. Klikněte na tlačítko **operace** v seznamu operací, která způsobuje chybu.
-
-    ![Vyberte operaci](./media/data-factory-monitor-manage-pipelines/select-operation.png)
-5. Klikněte na tlačítko **chyba** událost zobrazíte podrobnosti o této chybě.
-
-    ![Chyba události](./media/data-factory-monitor-manage-pipelines/operation-error-event.png)
-
-V tématu [rutiny Azure přehledy](https://msdn.microsoft.com/library/mt282452.aspx) pro rutiny prostředí PowerShell, které můžete přidat, získat, nebo odeberte výstrahy. Tady je několik příkladů použití **Get-AlertRule** rutiny:
-
-```powershell
-get-alertrule -res $resourceGroup -n ADFAlertsSlice -det
-```
-
-```
-Properties :
-Action      : Microsoft.Azure.Management.Insights.Models.RuleEmailAction
-Condition   :
-DataSource :
-EventName             :
-Category              :
-Level                 :
-OperationName         : RunFinished
-ResourceGroupName     :
-ResourceProviderName  :
-ResourceId            :
-Status                : Failed
-SubStatus             : FailedExecution
-Claims                : Microsoft.Azure.Management.Insights.Models.RuleManagementEventClaimsDataSource
-Condition      :
-Description : One or more of the data slices for the Azure Data Factory has failed processing.
-Status      : Enabled
-Name:       : ADFAlertsSlice
-Tags       :
-$type          : Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage
-Id: /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/ADFAlertsSlice
-Location   : West US
-Name       : ADFAlertsSlice
-```
-
-```powershell
-Get-AlertRule -res $resourceGroup
-```
-```
-Properties : Microsoft.Azure.Management.Insights.Models.Rule
-Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
-Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest0
-Location   : West US
-Name       : FailedExecutionRunsWest0
-
-Properties : Microsoft.Azure.Management.Insights.Models.Rule
-Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
-Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest3
-Location   : West US
-Name       : FailedExecutionRunsWest3
-```
-
-```powershell
-Get-AlertRule -res $resourceGroup -Name FailedExecutionRunsWest0
-```
-
-```
-Properties : Microsoft.Azure.Management.Insights.Models.Rule
-Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
-Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest0
-Location   : West US
-Name       : FailedExecutionRunsWest0
-```
-
-Spusťte následující příkazy get-help zobrazíte podrobnosti a příklady pro rutinu Get-AlertRule.
-
-```powershell
-get-help Get-AlertRule -detailed
-```
-
-```powershell
-get-help Get-AlertRule -examples
-```
-
-
-Pokud uvidíte události generování výstrah v okně portálu, ale nebudete dostávat e-mailová oznámení, zkontrolujte, zda je pro příjem e-mailů z externí odesílatelé nastaven e-mailovou adresu, která je zadána. Výstrahy e-mailů může mít zablokovaný nastavení e-mailu.
-
-### <a name="alerts-on-metrics"></a>Výstrahy na metriky
-V objektu pro vytváření dat můžete zachytit různé metriky a vytvořit oznámení o metrikách. Můžete sledovat a vytvářet upozornění na následující metriky pro řezy v datové továrně:
-
-* **Spustí se nezdařilo**
-* **Úspěšné spuštění**
-
-Tyto metriky jsou užitečné a umožňují získat přehled o celkové úspěšné a neúspěšné spuštění v datové továrně. Metriky jsou vydávány pokaždé, když je spustit řez. Na začátku hodinu, jsou tyto metriky agregovat a instaluje do účtu úložiště. Chcete-li povolit metriky, nastavte účet úložiště.
-
-#### <a name="enable-metrics"></a>Povolit metriky
-Pokud chcete povolit metriky, klikněte na následující z **Data Factory** okno:
-
-**Monitorování** > **metrika** > **nastavení pro diagnostiku** > **diagnostiky**
-
-![Odkaz diagnostiky](./media/data-factory-monitor-manage-pipelines/diagnostics-link.png)
-
-Na **diagnostiky** okně klikněte na tlačítko **na**, vyberte účet úložiště a klikněte na **Uložit**.
-
-![Okno diagnostiky](./media/data-factory-monitor-manage-pipelines/diagnostics-blade.png)
-
-Může trvat až jednu hodinu metrik, které mají být zobrazeny na **monitorování** okno protože metriky agregace se stane každou hodinu.
-
-### <a name="set-up-an-alert-on-metrics"></a>Nastavit výstrahy na metriky
-Klikněte **metriky služby Data Factory** dlaždice:
-
-![Dlaždice metriky objekt pro vytváření dat](./media/data-factory-monitor-manage-pipelines/data-factory-metrics-tile.png)
-
-Na **metrika** okně klikněte na tlačítko **+ přidat upozornění** na panelu nástrojů.
-![Okno metriky objekt pro vytváření dat > Přidat upozornění](./media/data-factory-monitor-manage-pipelines/add-alert.png)
-
-Na **přidání pravidla výstrahy** proveďte následující kroky a klikněte na tlačítko **OK**.
-
-* Zadejte název pro výstrahu (Příklad: "se nezdařilo výstraha").
-* Zadejte popis pro výstrahu (Příklad: "Odeslat e-mail, pokud dojde k selhání").
-* Vyberte metriku (vs "Spuštění se nezdařilo". "Úspěšně spuštěno").
-* Zadejte podmínku a prahová hodnota.   
-* Zadejte časové období.
-* Určete, zda se mají odesílat e-mailu vlastníci, přispěvatelé a čtenáři.
-
-![Okno metriky objekt pro vytváření dat > Přidat pravidlo výstrahy](./media/data-factory-monitor-manage-pipelines/add-an-alert-rule.png)
-
-Po pravidlo výstrahy bylo úspěšně přidáno, zavře okno a uvidíte nové výstrahy na **metrika** okno.
-
-![Okno metriky objekt pro vytváření dat > Přidat nové výstrahy](./media/data-factory-monitor-manage-pipelines/failed-alert-in-metric-blade.png)
-
-Měli byste taky vidět počet výstrah v **výstrah pravidla** dlaždici. Klikněte **výstrah pravidla** dlaždici.
-
-![Data factory metriky okno - pravidla výstrah](./media/data-factory-monitor-manage-pipelines/alert-rules-tile-rules.png)
-
-Na **výstrahy pravidla** okno, zobrazit všechny existující výstrahy. Chcete-li přidat výstrahu, klikněte na tlačítko **přidat upozornění** na panelu nástrojů.
-
-![Okno pravidla výstrah](./media/data-factory-monitor-manage-pipelines/alert-rules-blade.png)
-
-### <a name="alert-notifications"></a>Oznámení o výstrahách
-Po pravidlo výstrahy odpovídá podmínku, měli byste obdržet e-mail s upozorněním, že se aktivuje výstrahu. Jakmile je problém vyřešen a podmínka upozornění se neshoduje se už, získáte e-mail s upozorněním, že výstraha je vyřešený.
-
-Toto chování se liší od událostí, kde jsou oznámení odesílána v každé selhání, který identifikuje pravidlo výstrahy pro.
-
-### <a name="deploy-alerts-by-using-powershell"></a>Výstrahy nasazení pomocí prostředí PowerShell
-Výstrahy metrik, které můžete nasadit stejně, jako je tomu u události.
-
-**Definice upozornění**
-
-```JSON
-{
-    "contentVersion" : "1.0.0.0",
-    "$schema" : "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "parameters" : {},
-    "resources" : [
-    {
-            "name" : "FailedRunsGreaterThan5",
-            "type" : "microsoft.insights/alertrules",
-            "apiVersion" : "2014-04-01",
-            "location" : "East US",
-            "properties" : {
-                "name" : "FailedRunsGreaterThan5",
-                "description" : "Failed Runs greater than 5",
-                "isEnabled" : true,
-                "condition" : {
-                    "$type" : "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.ThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client",
-                    "odata.type" : "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-                    "dataSource" : {
-                        "$type" : "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client",
-                        "odata.type" : "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-                        "resourceUri" : "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<resourceGroupName
->/PROVIDERS/MICROSOFT.DATAFACTORY/DATAFACTORIES/<dataFactoryName>",
-                        "metricName" : "FailedRuns"
-                    },
-                    "threshold" : 5.0,
-                    "windowSize" : "PT3H",
-                    "timeAggregation" : "Total"
-                },
-                "action" : {
-                    "$type" : "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client",
-                    "odata.type" : "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-                    "customEmails" : ["abhinav.gpt@live.com"]
-                }
-            }
-        }
-    ]
-}
-```
-
-Nahraďte *subscriptionId*, *resourceGroupName*, a *dataFactoryName* v ukázce s příslušnými hodnotami.
-
-*metricName* aktuálně podporuje dvě hodnoty:
-
-* FailedRuns
-* SuccessfulRuns
-
-**Nasazení výstrahy**
-
-Nasadit výstrahy, použijte rutinu prostředí Azure PowerShell **New-AzureRmResourceGroupDeployment**, jak je znázorněno v následujícím příkladu:
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\FailedRunsGreaterThan5.json
-```
-
-Měli byste vidět následující zprávou po úspěšné nasazení:
-
-```
-VERBOSE: 12:52:47 PM - Template is valid.
-VERBOSE: 12:52:48 PM - Create template deployment 'FailedRunsGreaterThan5'.
-VERBOSE: 12:52:55 PM - Resource microsoft.insights/alertrules 'FailedRunsGreaterThan5' provisioning status is succeeded
-
-
-DeploymentName    : FailedRunsGreaterThan5
-ResourceGroupName : adf
-ProvisioningState : Succeeded
-Timestamp         : 7/27/2015 7:52:56 PM
-Mode              : Incremental
-TemplateLink      :
-Parameters        :
-Outputs           
-```
-
-Můžete také **přidat AlertRule** nasadíte pravidlo výstrahy. Najdete v článku [přidat AlertRule](https://msdn.microsoft.com/library/mt282468.aspx) téma podrobné informace a příklady.  
 
 ## <a name="move-a-data-factory-to-a-different-resource-group-or-subscription"></a>Přesunout objekt pro vytváření dat do jiné skupině prostředků nebo předplatného
 Objekt pro vytváření dat můžete přesunout na jinou skupinu prostředků nebo jiného předplatného pomocí **přesunout** příkazový řádek na domovské stránce objektu pro vytváření dat tlačítko.

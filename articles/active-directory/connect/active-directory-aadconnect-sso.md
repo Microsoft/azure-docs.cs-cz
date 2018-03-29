@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: b1c82727e97b85fae5f315ceb1cd79cfdd111b45
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6a106ba59f09ffc20f8461c5267ae06695df4cd0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -28,7 +28,7 @@ Azure Active Directory bezproblémové jednotné přihlašování (Azure AD bezp
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Bezproblémové jednotného přihlašování je možné kombinovat s buď [synchronizaci hodnoty Hash hesla](active-directory-aadconnectsync-implement-password-synchronization.md) nebo [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md) metody přihlašování.
+Bezproblémové jednotného přihlašování je možné kombinovat s buď [synchronizaci hodnoty Hash hesla](active-directory-aadconnectsync-implement-password-hash-synchronization.md) nebo [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md) metody přihlašování.
 
 ![Bezproblémové jednotné přihlašování](./media/active-directory-aadconnect-sso/sso1.png)
 
@@ -42,7 +42,7 @@ Bezproblémové jednotného přihlašování je možné kombinovat s buď [synch
   - Uživatelé nemusí zadávat opakovaně jejich hesla.
 - *Snadné nasazení a správě*
   - Žádné další součásti potřebné místní správnou.
-  - Funguje s jakékoli metody objektu cloudové ověřování - [synchronizaci hodnoty Hash hesla](active-directory-aadconnectsync-implement-password-synchronization.md) nebo [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md).
+  - Funguje s jakékoli metody objektu cloudové ověřování - [synchronizaci hodnoty Hash hesla](active-directory-aadconnectsync-implement-password-hash-synchronization.md) nebo [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md).
   - Můžete se vrátit na některých nebo všech uživatelů pomocí zásad skupiny.
   - Registrace zařízení s Windows 10 s Azure AD bez potřeby jakékoliv infrastruktury služby AD FS. Tato funkce musí používat verze 2.1 nebo novější [připojení k pracovišti klienta](https://www.microsoft.com/download/details.aspx?id=53554).
 

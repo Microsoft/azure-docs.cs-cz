@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/27/2018
 ms.author: shlo
-ms.openlocfilehash: f55e85bb424f4f5973fd6d633b6adf9fbca4d0ef
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7d6abb72fca71c213f9810784581a9af2dafb3a2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
 Vyhledávání aktivity slouží ke čtení nebo vyhledat záznam, název tabulky nebo hodnota z externího zdroje. Na tento výstup mohou dále odkazovat následující aktivity. 
@@ -30,12 +30,23 @@ Aktivita vyhledávání je užitečné, pokud chcete dynamicky načíst seznam s
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
 Následující zdroje dat jsou aktuálně podporovány pro vyhledávání:
-- Soubor JSON v Azure Blob storage
-- Soubor JSON v systému souborů
-- Azure SQL Database (JSON dat převedených z dotazu)
-- Azure SQL Data Warehouse (JSON dat převedených z dotazu)
-- SQL Server (JSON dat převedených z dotazu)
-- Azure Table storage (JSON dat převedených z dotazu)
+
+- Amazon Redshift
+- Azure Blob Storage
+- Azure Cosmos DB
+- Azure Data Lake Store
+- Úložiště Azure File
+- Azure SQL Database
+- Azure SQL Data Warehouse
+- Azure Table Storage
+- Dynamics 365
+- Dynamics CRM
+- Systém souborů
+- PostgreSQL
+- Salesforce
+- Cloud služeb Salesforce
+- SFTP
+- SQL Server
 
 Maximální počet řádků vrácených vyhledávání aktivity je **5000**a až do **10MB** velikost.
 
@@ -60,11 +71,16 @@ Maximální počet řádků vrácených vyhledávání aktivity je **5000**a až
 ```
 
 ## <a name="type-properties"></a>Vlastnosti typu
-Název | Popis | Typ | Povinné?
+Jméno | Popis | Typ | Požadováno?
 ---- | ----------- | ---- | --------
-dataset | Poskytuje odkaz na datovou sadu pro vyhledávání. V současné době jsou typy podporované datové sady:<ul><li>`AzureBlobDataset` pro [úložiště objektů Azure Blob](connector-azure-blob-storage.md#dataset-properties) jako zdroj</li><li>`FileShareDataset` pro [systém souborů](connector-file-system.md#dataset-properties) jako zdroj</li><li>`AzureSqlTableDataset` pro [Azure SQL Database](connector-azure-sql-database.md#dataset-properties) nebo [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#dataset-properties) jako zdroj</li><li>`SqlServerTable` pro [systému SQL Server](connector-sql-server.md#dataset-properties) jako zdroj</li><li>`AzureTableDataset` pro [Azure Table storage](connector-azure-table-storage.md#dataset-properties) jako zdroj</li> | Dvojice klíč/hodnota | Ano
+dataset | Poskytuje odkaz na datovou sadu pro vyhledávání. Získáte podrobnosti o z části "Vlastnosti datové sady" v jednotlivých odpovídající konektor článků. | Dvojice klíč/hodnota | Ano
 zdroj | Obsahuje vlastnosti specifické pro datové sady zdroje, stejný jako zdroj kopie aktivity. Získáte podrobnosti o z části "Zkopírovat vlastnosti aktivity" v jednotlivých odpovídající konektor článků. | Dvojice klíč/hodnota | Ano
 firstRowOnly | Určuje, jestli se mají vracet pouze první řádek nebo všechny řádky. | Logická hodnota | Ne. Výchozí hodnota je `true`.
+
+Je třeba počítat s následujícím:
+
+1. Zdrojový sloupec s typem ByteArray není podporován.
+2. Struktura není podporována v definici datové sady. Pro soubory ve formátu textu konkrétně můžete řádek záhlaví zadejte název sloupce.
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Výsledek vyhledávání aktivity použít následné aktivity
 
@@ -100,7 +116,7 @@ Výsledek vyhledávání je vrácený v `output` části aktivity při spuštěn
     } 
     ```
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 V tomto příkladu aktivity kopírování kopíruje data z tabulky SQL ve vaší instanci databáze SQL Azure do Azure Blob storage. Název tabulky SQL je uložené v souboru JSON v úložišti objektů Blob. Aktivita vyhledávání vyhledá název tabulky za běhu. Tento přístup umožňuje JSON má být změněn dynamicky bez nutnosti znovu nasaďte kanály ani datové sady. 
 
 Tento příklad ukazuje vyhledávání pouze první řádek. Vyhledávání pro všechny řádky a zřetězit výsledky pomocí příkazu ForEach aktivity, najdete v části Ukázky [kopírovat více tabulek hromadné pomocí Azure Data Factory](tutorial-bulk-copy.md).

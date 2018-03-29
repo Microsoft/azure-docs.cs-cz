@@ -1,11 +1,11 @@
 ---
-title: "Rozšíření virtuálního počítače OMS Azure pro Linux | Microsoft Docs"
-description: "Nasaďte agenta OMS na virtuální počítač s Linuxem pomocí rozšíření virtuálního počítače."
+title: Rozšíření virtuálního počítače OMS Azure pro Linux | Microsoft Docs
+description: Nasaďte agenta OMS na virtuální počítač s Linuxem pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.date: 03/27/2018
 ms.author: danis
-ms.openlocfilehash: 5174e599f12314a657d142304ffec18fbff847b1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5c0b7224d0f534661950117813e1a4f348810853
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>OMS rozšíření virtuálního počítače pro Linux
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/16/2018
 
 Log Analytics poskytuje možnosti nápravy monitorování, výstrahy a výstrahy v cloudové a místní prostředky. Rozšíření virtuálního počítače OMS agenta pro Linux je publikována a společnost Microsoft podporuje. Rozšíření nainstaluje agenta OMS na virtuálních počítačích Azure a zaregistruje virtuální počítače do existující pracovní prostor analýzy protokolů. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření virtuálního počítače OMS pro Linux.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -95,17 +95,17 @@ Následujícím kódu JSON znázorňuje schéma pro rozšíření agenta OMS. Ro
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota nebo příklad |
+| Jméno | Hodnota nebo příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | Vydavatele | Microsoft.EnterpriseCloud.Monitoring |
-| type | OmsAgentForLinux |
+| typ | OmsAgentForLinux |
 | typeHandlerVersion | 1.4 |
 | ID pracovního prostoru (např.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (např.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 
-## <a name="template-deployment"></a>Nasazení šablon
+## <a name="template-deployment"></a>Nasazení šablony
 
 Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální, pokud nasazujete jednu nebo více virtuálních počítačů, které vyžadují konfiguraci nasazení post jako je registrace k analýze protokolů. Ukázka šablonu Resource Manager, která obsahuje rozšíření virtuálního počítače agenta OMS naleznete na [Azure rychlý Start Galerie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
@@ -195,10 +195,11 @@ Výstupu spuštění rozšíření je zaznamenána do následujícího souboru:
 
 | Kód chyby | Význam | Možné akce |
 | :---: | --- | --- |
+| 9 | Povolit názvem předčasně | [Aktualizovat Azure Linux Agent](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) na nejnovější dostupnou verzi. |
 | 10 | Virtuální počítač je již připojen k pracovnímu prostoru analýzy protokolů | Připojit virtuální počítač do pracovního prostoru, určená ve schématu rozšíření, nastavena na hodnotu false v nastavení veřejných stopOnMultipleConnections nebo odeberte tuto vlastnost. Tento virtuální počítač získá účtován pro každý pracovní prostor po připojení. |
 | 11 | Neplatná konfigurace poskytuje rozšíření | Postupujte podle předchozích ukázkách nastavit všechny hodnoty vlastností nezbytné pro nasazení. |
 | 12 | Správce balíčků dpkg je uzamčena. | Zajistěte, aby všechny dpkg operace aktualizace na počítači dokončení a akci opakujte. |
-| 20 | Povolit názvem předčasně | [Aktualizovat Azure Linux Agent](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) na nejnovější dostupnou verzi. |
+| 20 | Selhání instalace balíčku SCX. |
 | 51 | Toto rozšíření není podporována na operační systém Virtuálního počítače | |
 | 55 | Nelze připojit ke službě Microsoft Operations Management Suite | Zkontrolujte, jestli systém má přístup k Internetu nebo že bylo zadáno platný proxy server HTTP. Kromě toho zkontrolujte správnost ID pracovního prostoru. |
 

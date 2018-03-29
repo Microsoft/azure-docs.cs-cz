@@ -1,8 +1,8 @@
 ---
-title: "Článek Index pro správu aplikací v Azure Active Directory | Microsoft Azure"
-description: "Zjistěte, jak přizpůsobit datum vypršení platnosti federačních certifikátů a jak obnovit certifikáty, jejichž platnost brzy vyprší."
+title: Článek Index pro správu aplikací v Azure Active Directory | Microsoft Azure
+description: Zjistěte, jak přizpůsobit datum vypršení platnosti federačních certifikátů a jak obnovit certifikáty, jejichž platnost brzy vyprší.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 5321b8e4-2afa-4dfe-8d53-4add7abb5ec8
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: ccbe48e4c7fdb25e003aedc048194e041865710e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: ffb8e822644ba8f0bccc3e81edc4da6085ff3ec7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Rejstřík článků o správě aplikací ve službě Azure Active Directory
 Tato stránka obsahuje úplný seznam každému dokumentu zapsána o různých funkcích týkající se aplikace v Azure Active Directory (Azure AD).
@@ -42,8 +42,8 @@ Tato část poskytuje rychlý přístup k příslušné příručky pro řešen�
 |:---:| --- |
 | Federované jednotné přihlašování |[Řešení potíží s na základě SAML jednotné přihlašování](active-directory-saml-debugging.md) |
 | Založené na heslech jednotné přihlašování |[Řešení potíží s příponou Panel přístupu pro Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
-| Aplikační proxy server |[Průvodce odstraňováním potíží Proxy aplikace](active-directory-application-proxy-troubleshoot.md) |
-| Jednotné přihlašování mezi místní AD a Azure AD |[Řešení potíží s synchronizace hesel](connect/active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization)<br /><br />[Řešení potíží s zpětný zápis hesla](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| Proxy aplikací |[Průvodce odstraňováním potíží Proxy aplikace](active-directory-application-proxy-troubleshoot.md) |
+| Jednotné přihlašování mezi místní AD a Azure AD |[Řešení potíží s synchronizaci hodnoty Hash hesla](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Řešení potíží s zpětný zápis hesla](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Dynamické členství ve skupinách |[Řešení potíží s dynamické členství ve skupinách](active-directory-accessmanagement-troubleshooting.md) |
 
 ## <a name="single-sign-on-sso"></a>Jednotné přihlašování
@@ -95,7 +95,7 @@ Pokud vaše organizace udržuje Windows Server Active Directory místní společ
 |:---:| --- |
 | Přehled na volby jednotného přihlašování k dispozici v Azure AD Connect a také informace o správě hybridní prostředí |[Přihlášení uživatele na možnosti v Azure AD Connect](active-directory-aadconnect-user-signin.md) |
 | Obecné pokyny pro správu prostředí s oběma místní služby Active Directory a Azure Active Directory |[Aspekty návrhu Azure AD hybridní Identity](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[Integrace místních identit s Azure Active Directory](active-directory-aadconnect.md) |
-| Pokyny k povolení jednotného přihlašování pomocí synchronizace hesla |[Implementace synchronizace hesel s Azure AD Connect](active-directory-aadconnectsync-implement-password-synchronization.md)<br /><br />[Řešení potíží s synchronizace hesel](https://support.microsoft.com/en-us/kb/2855271) |
+| Pokyny k povolení jednotného přihlašování pomocí synchronizace hesla |[Implementace synchronizace hesel s Azure AD Connect](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Řešení potíží s synchronizace hesel](https://support.microsoft.com/en-us/kb/2855271) |
 | Pokyny k použití zpětný zápis hesla k povolení přihlášení SSO |[Začínáme se správou hesel ve službě Azure AD](active-directory-passwords-getting-started.md)<br /><br />[Řešení potíží se zpětným zápisem hesla](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Pokyny k povolení jednotného přihlašování pomocí poskytovatelů identit třetích stran |[Seznam zprostředkovatelů Identity kompatibilní třetích stran, které slouží k povolení jednotného přihlašování](https://aka.ms/ssoproviders) |
 | Jak uživatelé Windows 10 můžete využívat výhod jednotné přihlašování přes Azure AD Join |[Rozšíření cloudových funkcí na Windows 10 zařízení pomocí služby Azure Active Directory Join](active-directory-azureadjoin-overview.md) |

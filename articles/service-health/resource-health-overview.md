@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 07/01/2017
+ms.date: 03/27/2018
 ms.author: shawn.tabrizi
-ms.openlocfilehash: 661faf8560295dd037364f9509d21719362ae727
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 99e996f182aac774f2e2565d87fd0debaba1b2d1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-resource-health-overview"></a>Přehled Azure Resource Health
  
@@ -36,12 +36,12 @@ Další informace o tom, jak je vyhodnocení stavu, zkontrolujte úplný seznam 
 ## <a name="health-status"></a>Stav
 Stav prostředku je zobrazen jako jeden z následujících stavů.
 
-### <a name="available"></a>Dostupné
+### <a name="available"></a>Dostupný
 Stav **dostupné** znamená, že služba zjistila všechny události, které ovlivňují stav prostředku. V případech, kdy prostředek se obnovila neplánované výpadky během posledních 24 hodin, uvidíte **nedávno vyřešeny problémy s** oznámení.
 
 ![Stav "Dostupný" pro virtuální počítač s "Nedávno vyřešené problémy" oznámení](./media/resource-health-overview/Available.png)
 
-### <a name="unavailable"></a>Není k dispozici
+### <a name="unavailable"></a>Není k dispozici.
 Stav **není k dispozici** znamená, že služba zjistila probíhající platformy nebo události jiné platformy, která má vliv na stav prostředku.
 
 #### <a name="platform-events"></a>Události platformy
@@ -56,7 +56,7 @@ Události jiné platformy se spouštějí akcemi uživatelů. Mezi příklady js
 
 ![Stav "Není k dispozici" pro virtuální počítač z důvodu událost jiné platformy](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
-### <a name="unknown"></a>Neznámý
+### <a name="unknown"></a>Unknown
 Stav **neznámé** označuje, že stav prostředku nedostal informace o tento prostředek pro více než 10 minut. I tento stav není spolehlivý Indikace stavu prostředku, když je bod důležitých dat ve proces řešení potíží.
 
 Pokud prostředek běží podle očekávání, stav prostředku se změní na **dostupné** po několika minutách.
@@ -65,7 +65,7 @@ Pokud dojde k problémům s hledaným prostředkem **neznámé** stav může naz
 
 ![Stav "Neznámý" pro virtuální počítač](./media/resource-health-overview/Unknown.png)
 
-### <a name="degraded"></a>Sníženo
+### <a name="degraded"></a>Snížený výkon
 Stav **snížený** označuje, že prostředku zjistila ke ztrátě výkonu, i když bude stále k dispozici pro použití.
 Různé prostředky mají své vlastní kritéria pro při určí, že je ke snížení prostředku.
 

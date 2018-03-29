@@ -1,12 +1,12 @@
 ---
-title: "Vytvořit nástroj pro vyrovnávání zatížení veřejnou s IPv6 – rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Naučte se vytvořit nástroj pro vyrovnávání zatížení veřejnou s IPv6 ve službě Správce prostředků Azure pomocí rozhraní příkazového řádku Azure."
+title: Vytvořit nástroj pro vyrovnávání zatížení veřejnou s IPv6 – rozhraní příkazového řádku Azure | Microsoft Docs
+description: Naučte se vytvořit nástroj pro vyrovnávání zatížení veřejnou s IPv6 ve službě Správce prostředků Azure pomocí rozhraní příkazového řádku Azure.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
 tags: azure-resource-manager
-keywords: "protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejnou IP adresu, nativní protokol ipv6, mobilní, iot"
+keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejnou IP adresu, nativní protokol ipv6, mobilní, iot
 ms.assetid: a1957c9c-9c1d-423e-9d5c-d71449bc1f37
 ms.service: load-balancer
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3abd47460999f7b059469a58a59a3e297e88effb
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 62f22ccadfabd2f3d6906beb3c241703d4e6383f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-in-azure-resource-manager-by-using-azure-cli"></a>Nástroj pro vyrovnávání zatížení veřejnou s IPv6 ve službě Správce prostředků Azure vytvořit pomocí rozhraní příkazového řádku Azure
 
@@ -28,7 +28,6 @@ ms.lasthandoff: 12/18/2017
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Šablona](load-balancer-ipv6-internet-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP). Nástroje pro vyrovnávání zatížení zajištění vysoké dostupnosti distribucí příchozí komunikaci mezi instance pořádku služby ve cloudových službách nebo virtuálních počítačů v sadě nástroje pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení můžete také k dispozici tyto služby na víc portů nebo více IP adres nebo obojí.
 
@@ -187,7 +186,7 @@ Tento příklad vytvoří následující položky:
 * Pravidlo NAT přeložit všechny příchozí přenosy na portu 3391 k portu 3389 pro protokolu vzdálené plochy (RDP).\*
 * pravidlo Vyrovnávání zatížení vyvážit všechny příchozí přenosy na portu 80 na portu 80 pro adresy ve fondu back-end.
 
-\*Pravidla NAT jsou spojeny s konkrétní instanci virtuálního počítače za nástrojem pro vyrovnávání zatížení. Síťový provoz, který dorazí na portu 3389 posílá konkrétní virtuální počítač a port, který je spojen s je pravidlo překladu adres. Pro pravidlo překladu adres (NAT) je nutné zadat protokol (UDP nebo TCP). Oba protokoly nelze přiřadit stejný port.
+\* Pravidla NAT jsou spojeny s konkrétní instanci virtuálního počítače za nástrojem pro vyrovnávání zatížení. Síťový provoz, který dorazí na portu 3389 posílá konkrétní virtuální počítač a port, který je spojen s je pravidlo překladu adres. Pro pravidlo překladu adres (NAT) je nutné zadat protokol (UDP nebo TCP). Oba protokoly nelze přiřadit stejný port.
 
 1. Nastavení proměnných prostředí PowerShell:
 
@@ -341,7 +340,7 @@ Pokud chcete vytvořit virtuální počítače, musí mít účet úložiště. 
     $vm2 = azure vm create --resource-group $rgname --location $location --availset-name $availabilitySetName --name $vm2Name --nic-id $nic2Id --os-disk-vhd $osDisk2Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Začínáme s konfigurací interního nástroje pro vyrovnávání zatížení](load-balancer-get-started-ilb-arm-cli.md)  
 [Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení](load-balancer-distribution-mode.md)  

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 3/27/2018
 ms.author: shtabriz
-ms.openlocfilehash: 0e233fe537ea37da97ebe5d4e8221d24f656fd10
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8535caf482b10912e6f7bc6df445756094d7603f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Konfigurace oznámení o stavu pro existující systémy správy problém pomocí webhook, jehož
 

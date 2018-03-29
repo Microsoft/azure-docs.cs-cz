@@ -1,11 +1,11 @@
 ---
-title: "Trezor klíčů integraci se službou SQL Server na virtuálních počítačích Windows v Azure (Resource Manager) | Microsoft Docs"
-description: "Zjistěte, jak k automatizaci konfigurace systému SQL Server šifrování pro použití s Azure Key Vault. Toto téma vysvětluje, jak používat Azure Key Vault integrace s SQL Server na virtuální počítače vytvořené pomocí Resource Manageru."
+title: Trezor klíčů integraci se službou SQL Server na virtuálních počítačích Windows v Azure (Resource Manager) | Microsoft Docs
+description: Zjistěte, jak k automatizaci konfigurace systému SQL Server šifrování pro použití s Azure Key Vault. Toto téma vysvětluje, jak používat Azure Key Vault integrace s SQL Server na virtuální počítače vytvořené pomocí Resource Manageru.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: cd66dfb1-0e9b-4fb0-a471-9deaf4ab4ab8
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/23/2017
 ms.author: jroth
-ms.openlocfilehash: 2d24bb839368b4f7fff61f0696c79a00c03af917
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7df0bc4b74694baa6b1c8a30d0c126b248e51168
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurace integrace Azure Key Vault pro SQL Server na virtuálních počítačích Azure (Resource Manager)
 > [!div class="op_single_selector"]
@@ -55,6 +55,11 @@ V **konfigurace systému SQL Server** okně klikněte **upravit** tlačítko v �
 ![Konfigurace integrace se službou AZURE SQL pro existující virtuální počítače](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-configuration.png)
 
 Po dokončení klikněte **OK** tlačítko v dolní části **konfigurace systému SQL Server** okno a uložte změny.
+
+> [!NOTE]
+> Název přihlašovacího údaje, které jsme vytvořili tady budou mapována na přihlášení SQL později. To umožňuje přihlášení k SQL pro přístup k trezoru klíčů. 
+>
+>
 
 > [!NOTE]
 > Můžete také nakonfigurovat integrace se službou AZURE pomocí šablony. Další informace najdete v tématu [šablony Azure rychlý start pro integraci Azure Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update).

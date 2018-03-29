@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 07/07/2017
+ms.date: 03/27/2018
 ms.author: robb
-ms.openlocfilehash: af6871264029c3037ed4b7f1f0581433735563a6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f0efe96684d77fb83b69a4da12d312872da2f768
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="service-health"></a>Service Health
+# <a name="service-health"></a>Stav služby
 Stav služby poskytuje přizpůsobitelné řídicí panel, který sleduje stav služeb Azure v oblastech, kde je používat. V tomto řídicím panelu můžete sledovat active událostmi, jako je problémy s probíhající služby, nadcházející plánované maintence nebo zpravodaje relevantní stavu. Když neaktivní událostí, jejich získat umístěny v historii stavu po dobu 90 dnů. Nakonec můžete pomocí řídicího panelu stavu služby vytvořit a spravovat služby stavu výstrahy, které proaktivně vás upozornit, když problémů služby mají vliv na můžete.
 
 ## <a name="service-health-events"></a>Události stavu služby

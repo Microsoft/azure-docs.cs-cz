@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 1b8a6079a68c50f80b593a1f56bc5256047ef31c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3d3a271bcdd5c507125b8b1a5482f833607a5a78
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Nasazení Azure Machine Learning jako modul IoT Edge – náhled
 
@@ -29,12 +29,14 @@ V tomto kurzu se naučíte:
 
 Modul Azure Machine Learning, který vytvoříte v tomto kurzu přečte prostředí data generována zařízení a popisků zprávy jako neobvyklé, nebo ne. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Azure IoT hraniční zařízení, který jste vytvořili v prvním kurzu nebo rychlý start.
 * Připojovací řetězec služby IoT Hub pro službu IoT hub, která zařízení IoT Edge připojí k.
 * Účet Azure Machine Learning. Chcete-li vytvořit účet, postupujte podle pokynů v [vytvořit Azure Machine Learning účtů a nainstalujte Azure Machine Learning Workbench](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-services-accounts). Není nutné k instalaci aplikace workbench pro účely tohoto kurzu. 
 * Modul správy Azure ML na váš počítač. Nastavení prostředí a vytvoření účtu, postupujte podle pokynů v [nastavení modelu správce](https://docs.microsoft.com/azure/machine-learning/preview/deployment-setup-configuration).
+
+Modul Azure Machine Learning nepodporuje procesory ARM. 
 
 ## <a name="create-the-azure-ml-container"></a>Vytvoření kontejneru Azure ML
 V této části se stáhnout soubory trained model a převést je na kontejner Azure ML.  

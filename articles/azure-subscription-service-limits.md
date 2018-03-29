@@ -1,11 +1,11 @@
 ---
-title: "Limity předplatného Azure a kvóty | Microsoft Docs"
-description: "Poskytuje seznam běžných předplatného Azure a omezení služby, kvóty a omezení. To zahrnuje informace o tom, jak zvýšit omezení spolu s maximální hodnoty."
-services: 
-documentationcenter: 
+title: Limity předplatného Azure a kvóty | Microsoft Docs
+description: Poskytuje seznam běžných předplatného Azure a omezení služby, kvóty a omezení. To zahrnuje informace o tom, jak zvýšit omezení spolu s maximální hodnoty.
+services: ''
+documentationcenter: ''
 author: rothja
 manager: jeffreyg
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/27/2018
 ms.author: byvinyal
-ms.openlocfilehash: f2c747f29d1e35b430b30d9aa4ca0bff2e78476f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 3218778640acc5d08cef94849e25323650c42c6c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé z nejběžnějších omezení Microsoft Azure, což se taky někdy označují jako kvóty. Tento dokument nepokrývá aktuálně všech služeb Azure. V čase v seznamu rozbalit a aktualizovat tak, aby pokrývalo více platformou.
@@ -305,7 +305,7 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 ### <a name="key-vault-limits"></a>Omezení Key Vault
 [!INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
-### <a name="multi-factor-authentication"></a>Multi-factor Authentication
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 [!INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
 ### <a name="automation-limits"></a>Omezení automatizace
