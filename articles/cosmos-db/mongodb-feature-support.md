@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 470ad2fe458c47392b8f55a8f46c75e54ccf87a3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 22ae56d9ebb2ea39acbd9f4536ef9ea5508b9867
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Podpora rozhraní API MongoDB pro MongoDB funkce a syntaxe
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Může komunikovat s rozhraním API databázi MongoDB do některého z klienta s otevřeným zdrojem MongoDB [ovladače](https://docs.mongodb.org/ecosystem/drivers). Rozhraní API MongoDB umožňuje použití existujících ovladačů klienta tak, že se MongoDB [propojit protokol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
-Pomocí rozhraní API služby Azure DB Cosmos MongoDB, můžete využívat výhod API MongoDB jste zvyklí, se všechny funkce enterprise Azure Cosmos DB: [globální distribuční](distribute-data-globally.md), [automatického dělení](partition-data.md), dostupnost a latence záruky automatické indexování každé pole, šifrování v rest, zálohování a mnoho dalšího.
+Pomocí rozhraní API služby Azure DB Cosmos MongoDB, můžete využívat výhod API MongoDB jste zvyklí, se všemi enterprise možností, které poskytuje Azure Cosmos DB: [globální distribuční](distribute-data-globally.md), [automatického dělení](partition-data.md), dostupnosti a latence záruky, automatické indexování každé pole, šifrování v rest, zálohování a mnoho dalšího.
 
 ## <a name="mongodb-query-language-support"></a>MongoDB dotazu jazyková podpora
 
@@ -36,7 +36,7 @@ Rozhraní API MongoDB DB Cosmos Azure poskytuje komplexní podporu pro jazykové
 Azure Cosmos DB podporuje následující databáze příkazy ke všem účtům rozhraní API MongoDB. 
 
 ### <a name="query-and-write-operation-commands"></a>Příkazy pro operaci dotazu a zápisu
-- odstraňovat
+- odstranit
 - Najít
 - findAndModify
 - getLastError
@@ -53,7 +53,7 @@ Azure Cosmos DB podporuje následující databáze příkazy ke všem účtům r
 - dropDatabase
 - listCollections
 - přetažení
-- vytvoření
+- create
 - filemd5
 - createIndexes
 - listIndexes
@@ -213,7 +213,7 @@ Podporuje následující operátory odpovídající příkladů jeho použití. 
 }
 ```
 
-Operátor | Příklad: |
+Operátor | Příklad |
 --- | --- |
 $eq | ``` { "Volcano Name": { $eq: "Rainier" } } ``` |  | -
 $gt | ``` { "Elevation": { $gt: 4000 } } ``` |  | -
@@ -268,7 +268,7 @@ První část použije index omezit výsledky vyhledávání na tyto dokumenty p
 
 ### <a name="geospatial-operators"></a>Geoprostorové operátory
 
-Operátor | Příklad: 
+Operátor | Příklad 
 --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ano
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano
@@ -284,7 +284,7 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 
 ## <a name="additional-operators"></a>Další operátory
 
-Operátor | Příklad: | Poznámky 
+Operátor | Příklad | Poznámky 
 --- | --- | --- |
 $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` | 
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
@@ -298,7 +298,7 @@ Podporovány jsou následující metody:
 
 #### <a name="cursor-methods"></a>Kurzor metody
 
-Metoda | Příklad: | Poznámky 
+Metoda | Příklad | Poznámky 
 --- | --- | --- |
 cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Získat nebyla vrácena dokumenty bez klíč řazení
 

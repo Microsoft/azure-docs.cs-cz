@@ -1,11 +1,11 @@
 ---
-title: "Synchronizace Azure AD Connect: Konfigurace filtrování | Microsoft Docs"
-description: "Vysvětluje, jak nakonfigurovat filtrování v synchronizaci Azure AD Connect."
+title: 'Synchronizace Azure AD Connect: Konfigurace filtrování | Microsoft Docs'
+description: Vysvětluje, jak nakonfigurovat filtrování v synchronizaci Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 880facf6-1192-40e9-8181-544c0759d506
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 5af82e889a80994dd47d4fc3b89f8eece2201355
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 0b4b306d1224b5521774b05a110c862b58450eb3
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování můžete řídit objektů, které se zobrazí v Azure Active Directory (Azure AD) z vašeho místního adresáře. Výchozí konfigurace trvá všechny objekty ve všech doménách v doménové struktuře nakonfigurované. Obecně platí to je doporučená konfigurace. Uživatele, kteří používají úlohami Office 365, jako je Exchange Online a Skype pro firmy, těžit z úplný seznam globální adresy tak, aby jejich odeslání e-mailu a volání everyone. U výchozí konfigurace že by měla mít stejné prostředí, které se mají s implementace místní Exchange nebo Lync.
@@ -44,7 +44,7 @@ Protože filtrování můžete odebrat mnoho objektů ve stejnou dobu, budete ch
 
 Chránit před odstraněním mnoho objektů omylem odstraněný, funkci "[prevence náhodného odstranění](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)" ve výchozím nastavení zapnutý. Pokud odstraníte mnoho objektů z důvodu filtrování (500 ve výchozím nastavení), budete muset postupujte podle kroků v tomto článku Povolit odstranění projít, do Azure AD.
 
-Pokud používáte sestavení před listopad 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)), změňte konfiguraci filtru a použijte synchronizace hesel, budete muset po dokončení konfigurace spustit úplnou synchronizaci všech hesel. Pokyny o tom, jak spustit úplnou synchronizaci hesel, najdete v části [spustit úplnou synchronizaci hesel všech](active-directory-aadconnectsync-troubleshoot-password-synchronization.md#trigger-a-full-sync-of-all-passwords). Pokud jste při sestavování 1.0.9125 nebo novější, pak regular **úplné synchronizace** akce také vypočítá, jestli by měl synchronizovat hesla a pokud tento další krok se už nevyžaduje.
+Pokud používáte sestavení před listopad 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)), změňte konfiguraci filtru a používat synchronizaci hodnoty hash hesla, budete muset po dokončení konfigurace spustit úplnou synchronizaci všech hesel. Pokyny o tom, jak spustit úplnou synchronizaci hesel, najdete v části [spustit úplnou synchronizaci hesel všech](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Pokud jste při sestavování 1.0.9125 nebo novější, pak regular **úplné synchronizace** akce také vypočítá, jestli by měl synchronizovat hesla a pokud tento další krok se už nevyžaduje.
 
 Pokud **uživatele** měla z důvodu chyby filtrování nechtěně odstranit objekty ve službě Azure AD, můžete znovu vytvořit uživatelské objekty ve službě Azure AD odebráním vaše konfigurace filtrování. Pak můžete znovu synchronizujte adresáře. Tato akce obnoví uživatele z koše ve službě Azure AD. Nelze však zrušení odstranění jiné typy objektů. Například Pokud omylem odstraníte skupinu zabezpečení a byla použita k seznamu ACL prostředku, skupiny a její seznamy ACL nelze obnovit.
 
@@ -120,7 +120,7 @@ Pokud jste aktualizovali domény filtru, musíte také aktualizovat profilů spu
     * Úplná synchronizace
     * Delta Import
     * Rozdílová synchronizace
-    * Export
+    * Exportovat
 3. Pro každý profil upravit **přidat** a **odebrat** domén.
     1. Pro každou z pět profilů provést následující kroky pro každý **přidat** domény:
         1. Vyberte profil spuštění a klikněte na tlačítko **nový krok**.
@@ -255,7 +255,7 @@ V tomto příkladu můžete měnit filtrování tak, aby pouze uživatelé, kter
 4. V závislosti na verzi připojení můžete použít buď najít na pravidlo s názvem **Out aad – připojení uživatele k** nebo **Out aad - uživatel připojit SOAInAD**a klikněte na tlačítko **upravit**.
 5. V místní nabídce zodpovědět **Ano** vytvoření kopie pravidla.
 6. Na **popis** změňte **přednost** nepoužívané hodnotu, jako je 50.
-7. Klikněte na tlačítko **Scoping filtru** na levé navigaci a potom klikněte na **přidat klauzuli**. V **atribut**, vyberte **e-mailu**. V **operátor**, vyberte **ENDSWITH**. V **hodnotu**, typ  **@contoso.com** a potom klikněte na **přidat klauzuli**. V **atribut**, vyberte **userPrincipalName**. V **operátor**, vyberte **ENDSWITH**. V **hodnotu**, typ  **@contoso.com** .
+7. Klikněte na tlačítko **Scoping filtru** na levé navigaci a potom klikněte na **přidat klauzuli**. V **atribut**, vyberte **e-mailu**. V **operátor**, vyberte **ENDSWITH**. V **hodnotu**, typ **@contoso.com**a potom klikněte na **přidat klauzuli**. V **atribut**, vyberte **userPrincipalName**. V **operátor**, vyberte **ENDSWITH**. V **hodnotu**, typ **@contoso.com**.
 8. Klikněte na **Uložit**.
 9. Chcete-li dokončit konfiguraci, je potřeba spustit **úplné synchronizace**. Pokračujte ve čtení části [použít a ověřte změny](#apply-and-verify-changes).
 

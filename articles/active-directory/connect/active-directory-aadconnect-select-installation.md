@@ -1,12 +1,12 @@
 ---
 title: 'Azure AD Connect: Vyberte typ instalace | Microsoft Docs'
-description: "Toto téma vás provede jak vybrat typ instalace, který má být použit pro Azure AD Connect"
+description: Toto téma vás provede jak vybrat typ instalace, který má být použit pro Azure AD Connect
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 9b7bcd5856ec94367edd586c28c781ac9569a792
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 76f1ce12ab149f57ec6e995d132de83105c5e0ca
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Vyberte typ instalace, která se má použít pro Azure AD Connect
 Azure AD Connect má dva typy instalace pro novou instalaci: Express a přizpůsobit. V tomto tématu můžete rozhodnout, které můžete použít během instalace.
@@ -34,7 +34,7 @@ Předpokládá:
 
 Můžete získat:
 
-- [Synchronizace hesel](active-directory-aadconnectsync-implement-password-synchronization.md) z místním nasazením a Azure AD pro jednotné přihlašování.
+- [Synchronizaci hodnoty hash hesla](active-directory-aadconnectsync-implement-password-hash-synchronization.md) z místním nasazením a Azure AD pro jednotné přihlašování.
 - Konfigurace, který se synchronizuje [uživatelé, skupiny, kontakty a počítače s Windows 10](active-directory-aadconnectsync-understanding-default-configuration.md).
 - Synchronizace všech oprávněných objektů ve všech doménách a ve všech organizačních.
 - [Automatický upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) je povolena a zajistěte, aby vždy použít nejnovější dostupnou verzi.

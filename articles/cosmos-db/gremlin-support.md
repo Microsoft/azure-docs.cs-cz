@@ -1,25 +1,25 @@
 ---
 title: Podpora Azure Cosmos DB Gremlin | Microsoft Docs
-description: "Další informace o jazyka Gremlin z Apache TinkerPop, která funkcí a kroků a dostupné v Azure Cosmos DB"
+description: Další informace o jazyka Gremlin z Apache TinkerPop. Další informace, které funkce a kroky jsou k dispozici v Azure Cosmos DB
 services: cosmos-db
-documentationcenter: 
-author: luisbosquez
+documentationcenter: ''
+author: LuisBosquez
 manager: jhubbard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: b32838dfaf83ea3acfb7125322bb99124370bd8e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 453e11c31a01b6ce8e77deda89725ecd53fd2db9
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Graf podporu Azure Cosmos DB Gremlin
 Podporuje Azure Cosmos DB [Apache Tinkerpop](http://tinkerpop.apache.org) graf traversal jazyk [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), což je rozhraní Graph API pro vytváření entit grafu a provádění operace dotazů grafu. Jazyk Gremlin slouží k vytvoření grafu entit (vrcholy a okraje), změnit vlastnosti v rámci těchto entit, provádět dotazy a traversals a odstranit entity. 
@@ -35,10 +35,10 @@ Abyste pochopili, jak dotazy mohou být vyjádřeny v Gremlin použijeme Ukázka
 
 Tento graf má následující typy vrchol (nazývané "Popisek" v Gremlin):
 
-- Lidé: graf má tři osoby, každý s každým Thomas a Ben
-- Zájmů: jejich zájmů, v tomto příkladu hra fotbalové
-- Zařízení: zařízení, která uživatelé použití
-- Operační systémy: operační systémy zařízení se systémem
+- Lidé: Graf má tři osoby, každý s každým Thomas a Ben
+- Zájmů: Jejich zájmů, v tomto příkladu hra fotbalové
+- Zařízení: Zařízení, která uživatelé použití
+- Operační systémy: Operační systémy zařízení se systémem
 
 Jsme představují vztahy mezi tyto entity prostřednictvím následující typy edge/popisky:
 
@@ -136,7 +136,7 @@ Vlastnosti používané ve GraphSON pro vrcholy jsou následující:
 | --- | --- |
 | id | ID pro vrchol. Musí být jedinečné (v kombinaci s hodnotou _partition, pokud je k dispozici) |
 | Popisek | Popisek vrchol. Toto je volitelné a slouží k popisu typu entity. |
-| type | Rozlišit vrcholy z jiných grafu dokumentů |
+| typ | Rozlišit vrcholy z jiných grafu dokumentů |
 | properties | Kontejner uživatelem definované vlastnosti související s vrchol. Každá vlastnost může mít více hodnot. |
 | _partition (Konfigurovat) | Klíč oddílu vrcholu. Slouží k škálování grafy pro více serverů |
 | outE | Tato položka obsahuje seznam se okraje z vrchol. Ukládání informací o sousedství s vrchol umožňuje rychlé spuštění traversals. Okraje jsou seskupené podle jejich popisky. |
@@ -165,45 +165,45 @@ Operace gremlin fungují bezproblémově napříč daty grafu, které jsou v roz
 ## <a name="gremlin-steps"></a>Kroky gremlin
 Nyní Podíváme se na postup Gremlin nepodporuje Azure Cosmos DB. Úplný odkaz na Gremlin, najdete v části [TinkerPop odkaz](http://tinkerpop.apache.org/docs/current/reference).
 
-| Krok | Popis | TinkerPop 3.2 dokumentace | Poznámky |
-| --- | --- | --- | --- |
-| `addE` | Přidá okraj mezi dvěma vrcholy | [Krok addE](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) | |
-| `addV` | Přidá vrchol grafu | [Krok addV](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) | |
-| `and` | Zajišťuje, že všechny traversals vrátit hodnotu | [a krok](http://tinkerpop.apache.org/docs/current/reference/#and-step) | |
-| `as` | Krok jedno přiřadit výstup krok proměnné | [jako krok](http://tinkerpop.apache.org/docs/current/reference/#as-step) | |
-| `by` | Jedno krok použít s `group` a `order` | [Tímto krokem](http://tinkerpop.apache.org/docs/current/reference/#by-step) | |
-| `coalesce` | Vrátí první traversal, který vrací výsledek | [sloučení krok](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) | |
-| `constant` | Vrátí konstantní hodnotu. Použít s `coalesce`| [konstantní krok](http://tinkerpop.apache.org/docs/current/reference/#constant-step) | |
-| `count` | Vrátí počet z průchodu | [počet krok](http://tinkerpop.apache.org/docs/current/reference/#count-step) | |
-| `dedup` | Vrátí hodnoty s odebranými duplikáty | [krok odstraňování duplicitních dat](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) | |
-| `drop` | Zahodí hodnoty (vrchol nebo edge) | [Přetáhněte krok.](http://tinkerpop.apache.org/docs/current/reference/#drop-step) | |
-| `fold` | Jednání jako bariéry, která vypočítá agregace výsledků| [fold – krok](http://tinkerpop.apache.org/docs/current/reference/#fold-step) | |
-| `group` | Skupiny podle hodnoty zadané popisků| [Krok skupiny](http://tinkerpop.apache.org/docs/current/reference/#group-step) | |
-| `has` | Použít k filtrování vlastností, vrcholy a okrajů. Podporuje `hasLabel`, `hasId`, `hasNot`, a `has` variant. | [má krok](http://tinkerpop.apache.org/docs/current/reference/#has-step) | |
-| `inject` | Vložení hodnoty do datového proudu| [Vložit krok](http://tinkerpop.apache.org/docs/current/reference/#inject-step) | |
-| `is` | Používá k provádění filtr pomocí logický výraz | [je krok](http://tinkerpop.apache.org/docs/current/reference/#is-step) | |
-| `limit` | Používá k omezení počtu položek v průchodu| [limit krok](http://tinkerpop.apache.org/docs/current/reference/#limit-step) | |
-| `local` | Místní zabalí oddíl traversal podobná poddotazu | [místní krok](http://tinkerpop.apache.org/docs/current/reference/#local-step) | |
-| `not` | Používá se k vytváření negace filtru | [není krok](http://tinkerpop.apache.org/docs/current/reference/#not-step) | |
-| `optional` | Vrátí výsledek zadané traversal Pokud vrací výsledek jinak vrátí volání elementu | [volitelný krok](http://tinkerpop.apache.org/docs/current/reference/#optional-step) | |
-| `or` | Zajišťuje, aby se nejméně jedna z traversals vrací hodnotu | [nebo krok](http://tinkerpop.apache.org/docs/current/reference/#or-step) | |
-| `order` | Vrátí výsledky v určené pořadí řazení | [Krok pořadí](http://tinkerpop.apache.org/docs/current/reference/#order-step) | |
-| `path` | Vrátí úplnou cestu průchodu | [Krok cesty](http://tinkerpop.apache.org/docs/current/reference/#path-step) | |
-| `project` | Projekty vlastnosti jako mapování | [Krok projektu](http://tinkerpop.apache.org/docs/current/reference/#project-step) | |
-| `properties` | Vrací vlastnosti pro zadaný popisky | [Krok vlastnosti](http://tinkerpop.apache.org/docs/current/reference/#properties-step) | |
-| `range` | Filtry pro zadaný rozsah hodnot| [Krok rozsahu](http://tinkerpop.apache.org/docs/current/reference/#range-step) | |
-| `repeat` | V kroku opakuje pro zadaného počtu opakování. Použít pro opakování ve smyčce | [Opakujte krok](http://tinkerpop.apache.org/docs/current/reference/#repeat-step) | |
-| `sample` | Používá k ukázkové výsledky z průchodu | [Ukázka krok](http://tinkerpop.apache.org/docs/current/reference/#sample-step) | |
+| Krok | Popis | TinkerPop 3.2 dokumentace |
+| --- | --- | --- |
+| `addE` | Přidá okraj mezi dvěma vrcholy | [Krok addE](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
+| `addV` | Přidá vrchol grafu | [Krok addV](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
+| `and` | Zajišťuje, že všechny traversals vrátit hodnotu | [a krok](http://tinkerpop.apache.org/docs/current/reference/#and-step) |
+| `as` | Krok jedno přiřadit výstup krok proměnné | [jako krok](http://tinkerpop.apache.org/docs/current/reference/#as-step) |
+| `by` | Jedno krok použít s `group` a `order` | [Tímto krokem](http://tinkerpop.apache.org/docs/current/reference/#by-step) |
+| `coalesce` | Vrátí první traversal, který vrací výsledek | [sloučení krok](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
+| `constant` | Vrátí konstantní hodnotu. Použít s `coalesce`| [konstantní krok](http://tinkerpop.apache.org/docs/current/reference/#constant-step) |
+| `count` | Vrátí počet z průchodu | [počet krok](http://tinkerpop.apache.org/docs/current/reference/#count-step) |
+| `dedup` | Vrátí hodnoty s odebranými duplikáty | [krok odstraňování duplicitních dat](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
+| `drop` | Zahodí hodnoty (vrchol nebo edge) | [Přetáhněte krok.](http://tinkerpop.apache.org/docs/current/reference/#drop-step) |
+| `fold` | Jednání jako bariéry, která vypočítá agregace výsledků| [fold – krok](http://tinkerpop.apache.org/docs/current/reference/#fold-step) |
+| `group` | Skupiny podle hodnoty zadané popisků| [Krok skupiny](http://tinkerpop.apache.org/docs/current/reference/#group-step) |
+| `has` | Použít k filtrování vlastností, vrcholy a okrajů. Podporuje `hasLabel`, `hasId`, `hasNot`, a `has` variant. | [má krok](http://tinkerpop.apache.org/docs/current/reference/#has-step) |
+| `inject` | Vložení hodnoty do datového proudu| [Vložit krok](http://tinkerpop.apache.org/docs/current/reference/#inject-step) |
+| `is` | Používá k provádění filtr pomocí logický výraz | [je krok](http://tinkerpop.apache.org/docs/current/reference/#is-step) |
+| `limit` | Používá k omezení počtu položek v průchodu| [limit krok](http://tinkerpop.apache.org/docs/current/reference/#limit-step) |
+| `local` | Místní zabalí oddíl traversal podobná poddotazu | [místní krok](http://tinkerpop.apache.org/docs/current/reference/#local-step) |
+| `not` | Používá se k vytváření negace filtru | [není krok](http://tinkerpop.apache.org/docs/current/reference/#not-step) |
+| `optional` | Vrátí výsledek zadané traversal Pokud vrací výsledek jinak vrátí volání elementu | [volitelný krok](http://tinkerpop.apache.org/docs/current/reference/#optional-step) |
+| `or` | Zajišťuje, aby se nejméně jedna z traversals vrací hodnotu | [nebo krok](http://tinkerpop.apache.org/docs/current/reference/#or-step) |
+| `order` | Vrátí výsledky v určené pořadí řazení | [Krok pořadí](http://tinkerpop.apache.org/docs/current/reference/#order-step) |
+| `path` | Vrátí úplnou cestu průchodu | [Krok cesty](http://tinkerpop.apache.org/docs/current/reference/#path-step) |
+| `project` | Projekty vlastnosti jako mapování | [Krok projektu](http://tinkerpop.apache.org/docs/current/reference/#project-step) |
+| `properties` | Vrací vlastnosti pro zadaný popisky | [Krok vlastnosti](http://tinkerpop.apache.org/docs/current/reference/#properties-step) |
+| `range` | Filtry pro zadaný rozsah hodnot| [Krok rozsahu](http://tinkerpop.apache.org/docs/current/reference/#range-step) |
+| `repeat` | V kroku opakuje pro zadaného počtu opakování. Použít pro opakování ve smyčce | [Opakujte krok](http://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
+| `sample` | Používá k ukázkové výsledky z průchodu | [Ukázka krok](http://tinkerpop.apache.org/docs/current/reference/#sample-step) |
 | `select` | Používá se k projektu výsledky z průchodu |  [Vyberte krok](http://tinkerpop.apache.org/docs/current/reference/#select-step) | |
-| `store` | Použít pro neblokující agregace z průchodu | [Krok úložiště](http://tinkerpop.apache.org/docs/current/reference/#store-step) | |
-| `tree` | Agregační cesty z vrchol do stromu | [Krok stromu](http://tinkerpop.apache.org/docs/current/reference/#tree-step) | |
-| `unfold` | Nezobrazovaly iterovat jako krok| [unfold – krok](http://tinkerpop.apache.org/docs/current/reference/#unfold-step) | |
-| `union` | Sloučení výsledky z více traversals| [Union krok](http://tinkerpop.apache.org/docs/current/reference/#union-step) | |
-| `V` | Obsahuje kroky potřebné pro traversals mezi vrcholy a okrajů `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV`, a `otherV` pro | [vrchol kroky](http://tinkerpop.apache.org/docs/current/reference/#vertex-steps) | |
-| `where` | Umožňuje filtrovat výsledky z průchodu. Podporuje `eq`, `neq`, `lt`, `lte`, `gt`, `gte`, a `between` operátory  | [kde krok](http://tinkerpop.apache.org/docs/current/reference/#where-step) | |
+| `store` | Použít pro neblokující agregace z průchodu | [Krok úložiště](http://tinkerpop.apache.org/docs/current/reference/#store-step) |
+| `tree` | Agregační cesty z vrchol do stromu | [Krok stromu](http://tinkerpop.apache.org/docs/current/reference/#tree-step) |
+| `unfold` | Nezobrazovaly iterovat jako krok| [unfold – krok](http://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
+| `union` | Sloučení výsledky z více traversals| [Union krok](http://tinkerpop.apache.org/docs/current/reference/#union-step) |
+| `V` | Obsahuje kroky potřebné pro traversals mezi vrcholy a okrajů `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV`, a `otherV` pro | [vrchol kroky](http://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
+| `where` | Umožňuje filtrovat výsledky z průchodu. Podporuje `eq`, `neq`, `lt`, `lte`, `gt`, `gte`, a `between` operátory  | [kde krok](http://tinkerpop.apache.org/docs/current/reference/#where-step) |
 
-Modul optimalizované zápisu Azure Cosmos DB podporuje automatické indexování všech vlastností v rámci vrcholy a okrajů ve výchozím nastavení. Proto dotazy s filtry, rozsahem dotazy, řazení, nebo agregace na žádnou vlastnost jsou zpracovány od indexu a efektivně obsluhovat. Další informace o tom, jak indexování funguje v Azure Cosmos DB najdete na našem dokumentu [vázané na schéma indexu](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
+Modul optimalizované zápisu poskytovaných Azure Cosmos DB podporuje automatické indexování všech vlastností v rámci vrcholy a okrajů ve výchozím nastavení. Proto dotazy s filtry, rozsahem dotazy, řazení, nebo agregace na žádnou vlastnost jsou zpracovány od indexu a efektivně obsluhovat. Další informace o tom, jak indexování funguje v Azure Cosmos DB najdete na našem dokumentu [vázané na schéma indexu](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Začínáme vytvoření grafu aplikace [pomocí naší sady SDK](create-graph-dotnet.md) 
-* Další informace o [podpory Azure Cosmos DB grafu](graph-introduction.md)
+* Další informace o [graf podporu](graph-introduction.md) v Azure Cosmos DB

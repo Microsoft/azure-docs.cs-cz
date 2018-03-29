@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: c34293796860e0ab72eecedab9cd8b023237050d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 819d8ce9793f785726f55a89d49d08d818401b33
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy
 
@@ -26,7 +26,7 @@ V tomto článku jsme adres často kladené otázky o Azure Active Directory bez
 
 ## <a name="what-sign-in-methods-do-seamless-sso-work-with"></a>S jaké metody přihlašování fungují bezproblémové jednotné přihlašování?
 
-Bezproblémové jednotného přihlašování je možné kombinovat s buď [synchronizaci hodnoty Hash hesla](active-directory-aadconnectsync-implement-password-synchronization.md) nebo [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md) metody přihlašování. Tato funkce ale nelze použít s Active Directory Federation Services (ADFS).
+Bezproblémové jednotného přihlašování je možné kombinovat s buď [synchronizaci hodnoty Hash hesla](active-directory-aadconnectsync-implement-password-hash-synchronization.md) nebo [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md) metody přihlašování. Tato funkce ale nelze použít s Active Directory Federation Services (ADFS).
 
 ## <a name="is-seamless-sso-a-free-feature"></a>Je bezproblémové jednotného přihlašování k bezplatné funkce?
 

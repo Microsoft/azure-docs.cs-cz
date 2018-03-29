@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace stavu požadovaného pro přehled Azure | Microsoft Docs"
-description: "Další informace o použití rozšíření obslužná rutina Microsoft Azure pro prostředí PowerShell požadovaného stavu konfigurace (DSC). Článek obsahuje požadavky, architektura a rutiny."
+title: Konfigurace stavu požadovaného pro přehled Azure | Microsoft Docs
+description: Další informace o použití rozšíření obslužná rutina Microsoft Azure pro prostředí PowerShell požadovaného stavu konfigurace (DSC). Článek obsahuje požadavky, architektura a rutiny.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mgreenegit
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: migreene
-ms.openlocfilehash: 14d29223435e9a133b112a61f2ecdde0aad581a2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5b16261c9a9f046b7bc55a06dd71aa154a0cec27
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod do rozšíření obslužné rutiny konfigurace požadovaného stavu Azure
 
@@ -71,7 +71,7 @@ Ve většině scénářů šablony nasazení Resource Manager jsou očekávané 
 
 Rutiny prostředí PowerShell, které se používají ke správě rozšíření DSC jsou nejvhodnější scénáře shromažďování informací a interaktivní řešení potíží. Rutiny můžete použít k balíčku, publikovat a monitorování nasazení rozšíření DSC. Všimněte si, že rutiny pro rozšíření DSC nejsou ještě aktualizovat, aby fungoval s [výchozí konfigurační skript](#default-configuration-script).
 
-**Publikovat AzureRMVMDscConfiguration** rutiny trvá v konfiguračním souboru, hledá závislé prostředky DSC a vytvoří soubor .zip. Soubor ZIP obsahuje konfiguraci a prostředků DSC, které jsou potřebné k uplatní konfigurace. Rutinu můžete také vytvořit balíček místně pomocí *- ConfigurationArchivePath* parametr. Rutiny, jinak hodnota publikuje soubor .zip do úložiště objektů blob a následně zabezpečí k tokenu SAS.
+**Publikovat AzureRMVMDscConfiguration** rutiny trvá v konfiguračním souboru, hledá závislé prostředky DSC a vytvoří soubor .zip. Soubor ZIP obsahuje konfiguraci a prostředků DSC, které jsou potřebné k uplatní konfigurace. Rutinu můžete také vytvořit balíček místně pomocí *- OutputArchivePath* parametr. Rutiny, jinak hodnota publikuje soubor .zip do úložiště objektů blob a následně zabezpečí k tokenu SAS.
 
 .Ps1 konfigurační skript, který vytváří rutina je v souboru ZIP v kořenové složce archivu. Složku modulu je umístěn ve složce archivu v prostředky.
 
@@ -133,7 +133,7 @@ Nastavení DSC na portálu:
 
 Na portálu vyžaduje následující vstup:
 
-* **Konfigurace moduly nebo skriptu**: Toto pole je povinné (nebyla aktualizována formuláře [výchozí konfigurační skript](#default-configuration-script)). Konfigurace moduly a skripty vyžadují souboru .ps1, který má konfigurační skript nebo s .ps1 konfigurační skript v kořenovém adresáři souboru ZIP. Pokud používáte soubor .zip, všechny závislé prostředky musí být součástí modulu složek v ZIP. Můžete vytvořit soubor .zip pomocí **publikovat AzureVMDscConfiguration - ConfigurationArchivePath** rutinu, která je součástí sady SDK Azure PowerShell. Soubor ZIP je nahrán do úložiště objektů blob uživatele a zabezpečené tokenu SAS.
+* **Konfigurace moduly nebo skriptu**: Toto pole je povinné (nebyla aktualizována formuláře [výchozí konfigurační skript](#default-configuration-script)). Konfigurace moduly a skripty vyžadují souboru .ps1, který má konfigurační skript nebo s .ps1 konfigurační skript v kořenovém adresáři souboru ZIP. Pokud používáte soubor .zip, všechny závislé prostředky musí být součástí modulu složek v ZIP. Můžete vytvořit soubor .zip pomocí **publikovat AzureVMDscConfiguration - OutputArchivePath** rutinu, která je součástí sady SDK Azure PowerShell. Soubor ZIP je nahrán do úložiště objektů blob uživatele a zabezpečené tokenu SAS.
 
 * **Soubor konfiguračních dat PSD1**: Toto pole je nepovinné. Pokud vaše konfigurace vyžaduje datový soubor konfigurace v .psd1, použijte toto pole vyberte pole data a odešlete ji do úložiště objektů blob uživatele. Datový soubor konfigurace je zabezpečená službou tokenu SAS v úložišti objektů blob.
 

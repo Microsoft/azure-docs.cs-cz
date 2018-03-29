@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 03/15/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0cfa79b9c44953c613eaec8d701f351c6f2ce212
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 76e7be62caae7e33caefc3f90a5e57c5f71a31d3
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Volitelné deklarace identity ve službě Azure AD (preview)
 
@@ -49,7 +49,7 @@ Níže jsou uvedeny sadu volitelné deklarací identity ve výchozím nastavení
 
 **Tabulka 2: Sada standardní volitelné deklarací identity**
 
-| Název                     | Popis                                                                                                                                                                                     | Typ tokenu | Typ uživatele | Poznámky                                                                                                                                                                                                                                                                                   |
+| Jméno                     | Popis                                                                                                                                                                                     | Typ tokenu | Typ uživatele | Poznámky                                                                                                                                                                                                                                                                                   |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `auth_time`                | Čas při poslední ověřeného uživatele.  Specifikace OpenID Connect najdete v tématu.                                                                                                                                | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `tenant_region_scope`      | Oblast prostředků klienta                                                                                                                                                                   | JWT        |           |                                                                                                                                                                                                                                                                                         |
@@ -69,15 +69,13 @@ Níže jsou uvedeny sadu volitelné deklarací identity ve výchozím nastavení
 | `is_device_managed`        | Označuje, jestli má zařízení MDM, které jsou nainstalované. Týkající se zásad podmíněného přístupu.                                                                                                                  | SAML       |           | Pro tokeny Jwt konvergované do signin_state                                                                                                                                                                                                                                                   |
 | `is_device_compliant`      | Označuje, že MDM bylo zjištěno, že je zařízení kompatibilní se zásadami zabezpečení zařízení organizace.                                                                                  | SAML       |           | Pro tokeny Jwt konvergované do signin_state                                                                                                                                                                                                                                                   |
 | `kmsi`                     | Označuje, pokud uživatel má zvolené možnosti zachovat mi přihlášené.                                                                                                                                    | SAML       |           | Pro tokeny Jwt konvergované do signin_state                                                                                                                                                                                                                                                   |
-| `upn`                      | UserPrincipalName deklarace identity.  I když tento požadavek je automaticky zahrnuty, můžete je zadat jako deklaraci identity volitelné připojit další vlastnosti, jimiž upravíte jeho chování v případě, že uživatel guest. | JWT, SAML  |           | Další vlastnosti: <br> include_externally_authenticated_upn <br> include_externally_authenticated_upn_without_hash                                                                                                                                                                 |
-| `groups`                   | Skupiny, kterých je uživatel členem.                                                                                                                                                               | JWT, SAML  |           | Další vlastnosti: <br> Sam_account_name<br> Dns_domain_and_sam_account_name<br> Netbios_domain_and_sam_account<br> Max_size_limit<br> Emit_as_roles<br>                                                                                                                            |
-
+| `upn`                      | UserPrincipalName deklarace identity.  I když tento požadavek je automaticky zahrnuty, můžete je zadat jako deklaraci identity volitelné připojit další vlastnosti, jimiž upravíte jeho chování v případě, že uživatel guest. | JWT, SAML  |           | Další vlastnosti: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
 ### <a name="v20-optional-claims"></a>Volitelné deklarace identity v2.0
 Tyto deklarace identity jsou vždy součástí tokeny verze 1.0, ale jsou odebrány z v2.0 tokenů, pokud požadovaný.  Tyto deklarace platí pouze pro tokeny Jwt (ID tokeny a přístupové tokeny).  
 
 **Tabulka 3: Pouze V2.0 volitelné deklarace identity**
 
-| Deklarace identity JWT     | Název                            | Popis                                                                                                                    | Poznámky |
+| Deklarace identity JWT     | Jméno                            | Popis                                                                                                                    | Poznámky |
 |---------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------|
 | `ipaddr`      | IP adresa                      | IP adresa klienta se přihlásili.                                                                                      |       |
 | `onprem_sid`  | Identifikátor zabezpečení na místě |                                                                                                                                |       |
@@ -90,26 +88,19 @@ Tyto deklarace identity jsou vždy součástí tokeny verze 1.0, ale jsou odebr�
 
 ### <a name="additional-properties-of-optional-claims"></a>Další vlastnosti volitelné deklarací identity
 
-Chcete-li změnit způsob, jakým se vrátí deklarace identity se dá nakonfigurovat některé volitelné deklarací identity.  Tyto rozsahy další vlastnosti z změny formátování (například `include_externally_authenticated_upn_without_hash`) na měnící se sada dat vrátil (`Dns_domain_and_sam_account_name`).
+Chcete-li změnit způsob, jakým se vrátí deklarace identity se dá nakonfigurovat některé volitelné deklarací identity.  Tyto další vlastnosti se nejčastěji používá ke migrace místní aplikace s odlišnými daty očekávání (například `include_externally_authenticated_upn_without_hash` pomáhá s klienty, kteří nemůže zpracovat hashmarks (`#`) v hlavní název uživatele)
 
 **Tabulka 4: Hodnoty pro konfiguraci standardní volitelné deklarace identity**
 
 | Název vlastnosti                                     | Další název vlastnosti                                                                                                             | Popis |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `Upn`                                                 |                                                                                                                                      |             |
+| `upn`                                                 |                                                                                                                                      |             |
 | | `include_externally_authenticated_upn`              | Zahrnuje Host UPN, jak je uložen v klientovi prostředků.  Například `foo_hometenant.com#EXT#@resourcetenant.com`.                            |             
 | | `include_externally_authenticated_upn_without_hash` | Stejné jako výše, s výjimkou, který hashmarks (`#`) jsou nahrazeny podtržítka (`_`), například `foo_hometenant.com_EXT_@resourcetenant.com` |             
-| `groups`                                              |                                                                                                                                      |             |
-| | `sam_account_name`                                  |                                                                                                                                      |             
-| | `dns_domain_and_sam_account_name`                   |                                                                                                                                      |             
-| | `netbios_domain_and_sam_account_name`               |                                                                                                                                      |             
-| | `max_size_limit`                                    | Vyvolá počet skupin, které jsou vráceny do skupiny maximální limit velikosti (1000).                                                            |             
-| | `emit_as_roles`                                     | Vydá deklaraci identity "role" místo "skupiny" deklarace identity se stejnými hodnotami.  Určený pro aplikace migrace z místní prostředí, kde byla RBAC tradičně řídí prostřednictvím členství ve skupině.   |             
 
 > [!Note]
 >Určení, že volitelné deklarace bez další vlastnosti nezmění žádné chování – chcete-li zobrazit novou deklaraci identity vystavené v tokenu, alespoň jeden další vlastnosti musí být přidán. 
->
->`account_name` Nespolupracují další vlastnosti pro skupiny, a další vlastnosti řazení záleží – pouze první účet název další vlastnosti, které jsou uvedené se použije. 
+
 
 #### <a name="additional-properties-example"></a>Příklad další vlastnosti:
 
@@ -118,15 +109,15 @@ Chcete-li změnit způsob, jakým se vrátí deklarace identity se dá nakonfigu
    {
        "idToken": [ 
              { 
-                "name": "groups", 
+                "name": "upn", 
             "essential": false,
-                "additionalProperties": [ "netbios_domain_and_sam_account_name", "sam_account_name" , "emit_as_roles"]  
+                "additionalProperties": [ "include_externally_authenticated_upn"]  
               }
         ]
 }
 ```
 
-Tento objekt OptionalClaims vrátí stejné `groups` deklarace identity jako `sam_account_name` nebyly zahrnuty –, protože je po `netbios_domain_and_sam_account_name`, bude se ignorovat. 
+Tento objekt OptionalClaims způsobí, že ID token vrácen do klienta zahrnout další upn s další domácí klienta a informace o prostředku klienta.  
 
 ## <a name="configuring-optional-claims"></a>Konfigurace volitelné deklarace identity
 
@@ -170,7 +161,7 @@ Deklaruje volitelné deklarace požadovanou aplikaci. Aplikace můžete nakonfig
 
 **Tabulka 5: Vlastnosti typu OptionalClaims**
 
-| Název        | Typ                       | Popis                                           |
+| Jméno        | Typ                       | Popis                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Kolekce (OptionalClaim) | Volitelné deklarace identity, vrátí se v tokenu JWT ID.     |
 | `accessToken` | Kolekce (OptionalClaim) | Volitelné deklarace identity vrátí přístupový token JWT. |
@@ -184,7 +175,7 @@ Pokud podporovaná konkrétní deklaraci identity, můžete také upravit chová
 
 **Tabulka 6: Vlastnosti typu OptionalClaim**
 
-| Název                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
+| Jméno                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Název volitelné deklarace identity.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Zdroj (directory object) deklarace identity. Existují předdefinované deklarace identity a uživatelem definované z vlastnosti rozšíření. Pokud je zdroj hodnota null, deklarace identity je předdefinované volitelné deklarace identity. Pokud je hodnota zdroj uživatele, vlastnost name hodnotu vlastnosti rozšíření z objektu uživatele. |

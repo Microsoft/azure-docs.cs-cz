@@ -1,29 +1,29 @@
 ---
-title: "Ověřování pomocí Azure AD pro přístup k rozhraní API služby Azure Media Services s .NET | Microsoft Docs"
-description: "Toto téma ukazuje, jak používat ověřování Azure Active Directory (Azure AD) pro přístup k rozhraní API Azure Media Services (AMS) pomocí rozhraní .NET."
+title: Ověřování pomocí Azure AD pro přístup k rozhraní API služby Azure Media Services s .NET | Microsoft Docs
+description: Toto téma ukazuje, jak používat ověřování Azure Active Directory (Azure AD) pro přístup k rozhraní API Azure Media Services (AMS) pomocí rozhraní .NET.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
+ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: a9355200a05a3aa1b494b76977d38ddc42bfe179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8817bb0da526769470e96b63b9c80620309757bf
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Používat ověřování Azure AD pro přístup k rozhraní API služby Azure Media Services pomocí rozhraní .NET
 
 Počínaje windowsazure.mediaservices 4.0.0.4, Azure Media Services podporuje ověřování založené na Azure Active Directory (Azure AD). Toto téma ukazuje, jak používat ověřování Azure AD pro přístup k rozhraní API služby Azure Media Services pomocí rozhraní Microsoft .NET.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure. Podrobnosti najdete na stránce [bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
 - Účet Media Services. Další informace najdete v tématu [vytvoření účtu Azure Media Services pomocí webu Azure portal](media-services-portal-create-account.md).
@@ -36,7 +36,7 @@ Pokud používáte ověřování Azure AD pomocí služby Azure Media Services, 
 - **Objekt zabezpečení ověřování služby** ověřuje služby. Aplikace, které běžně používají tuto metodu ověřování jsou aplikace, které běží služby démon, střední vrstvy služby nebo naplánované úlohy, jako jsou webové aplikace, funkce aplikací, aplikace logiky, rozhraní API nebo mikroslužeb.
 
 >[!IMPORTANT]
->Azure Media Service aktuálně podporuje model ověřování služby Řízení přístupu Azure. Řízení přístupu autorizace však bude na 1. června 2018 zastaralá. Doporučujeme migrovat na Azure Active Directory authentication model co nejdříve.
+>Azure Media Service aktuálně podporuje model ověřování služby Řízení přístupu Azure. Řízení přístupu autorizace však bude na 22 června 2018 zastaralá. Doporučujeme migrovat na Azure Active Directory authentication model co nejdříve.
 
 ## <a name="get-an-azure-ad-access-token"></a>Získání tokenu přístupu Azure AD
 
@@ -185,6 +185,6 @@ Následující příklad ukazuje, jak vytvořit token Azure AD a kontextu:
         }
     }
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Začínáme s [nahrávání souborů do účtu](media-services-dotnet-upload-files.md).

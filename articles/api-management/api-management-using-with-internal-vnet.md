@@ -1,11 +1,11 @@
 ---
-title: "Jak používat Azure API Management s interní virtuální sítě | Microsoft Docs"
-description: "Zjistěte, jak připravit a nakonfigurovat Azure API Management na interní virtuální sítě"
+title: Jak používat Azure API Management s interní virtuální sítě | Microsoft Docs
+description: Zjistěte, jak připravit a nakonfigurovat Azure API Management na interní virtuální sítě
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: kjoshi
-editor: 
+editor: ''
 ms.assetid: dac28ccf-2550-45a5-89cf-192d87369bc3
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: cf062cfcbbb2454adf20a06c31c81a60f6f5719f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: be4aa45c919f579355c6ac6c5682c1537e9cc0cb
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Interní virtuální sítě pomocí služby Azure API Management
 S virtuálními sítěmi Azure Azure API Management můžete spravovat rozhraní API není dostupný na Internetu. Počet technologie VPN jsou k dispozici pro připojení. API Management se dá nasadit v dva hlavní režimy uvnitř virtuální sítě:
@@ -44,7 +44,7 @@ K provedení kroků popsaných v tomto článku, musíte mít:
 
 + **Instance služby Azure API Management**. Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 
-## <a name="enable-vpn"></a>Vytváření API Management v interní virtuální sítě
+## <a name="enable-vpn"> </a>Vytvoření API Management v interní virtuální sítě
 Služby API Management je interní virtuální síť je hostován za vyrovnávání interní zatížení (ILB).
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Povolit připojení virtuální sítě pomocí portálu Azure
@@ -72,7 +72,7 @@ Můžete také povolit připojení k virtuální síti pomocí rutin prostředí
 Když API Management je v režimu externí virtuální síť, DNS spravuje Azure. Pro režim interní virtuální sítě budete muset spravovat vlastní směrování.
 
 > [!NOTE]
-> Služba API Management nepřijímá požadavky na požadavky pocházejících z IP adresy. Pouze reaguje na požadavky na název hostitele, který je nakonfigurovaný na jeho koncové body služby. Tyto koncové body patří brány, portál pro vývojáře, portál Azurethe, přímou správu koncový bod a Git.
+> Služba API Management nepřijímá požadavky na požadavky pocházejících z IP adresy. Pouze reaguje na požadavky na název hostitele, který je nakonfigurovaný na jeho koncové body služby. Tyto koncové body patří brány, portálu Azure a portál pro vývojáře, koncový bod přímé správy a Git.
 
 ### <a name="access-on-default-host-names"></a>Přístup na výchozí názvy hostitelů
 Při vytváření služby API Management, například s názvem "contoso", jsou ve výchozím nastavení nakonfigurované následující služby na koncové body:
@@ -105,13 +105,13 @@ Všechny koncové body služby můžete poté přistoupit z virtuálního počí
 
    2. Potom můžete vytvořit záznamy v serveru DNS pro přístup koncových bodů, které jsou pouze k dispozici v rámci virtuální sítě.
 
-## <a name="routing"></a> Směrování
+## <a name="routing"> </a> Směrování
 + Skupinu s vyrovnáváním zatížení privátní virtuální IP adresu z rozsahu podsítě vyhrazené se použije pro přístup koncových bodů služby API Management z v rámci virtuální sítě.
 + Skupinu s vyrovnáváním zatížení veřejnou IP adresu (VIP) se také vyhrazena pro poskytování přístupu k koncový bod služby správy pouze přes port 3443.
 + IP adresu z rozsahu podsítě IP (DIP) se použije pro přístup k prostředkům v rámci virtuální sítě a veřejnou IP adresu (VIP) se použije pro přístup k prostředkům mimo síť vnet.
 + S vyrovnáváním zatížení se veřejné a soukromé IP adresy najdete v okně Přehled/Essentials na webu Azure portal.
 
-## <a name="related-content"></a>Související obsah
+## <a name="related-content"> </a>Související obsah
 Další informace naleznete v následujících článcích:
 * [Běžné problémy s konfigurací sítě při nastavení Azure API Management ve virtuální síti][Common network configuration problems]
 * [Nejčastější dotazy k virtuální síti](../virtual-network/virtual-networks-faq.md)

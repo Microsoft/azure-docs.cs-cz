@@ -1,12 +1,12 @@
 ---
-title: "Řešení potíží s objekt, který není synchronizované s Azure AD | Microsoft Docs"
-description: "Poradce při potížích se objekt není synchronizované s Azure AD."
+title: Řešení potíží s objekt, který není synchronizované s Azure AD | Microsoft Docs
+description: Poradce při potížích se objekt není synchronizované s Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: e68b70ce87a6fedab1b85bf2800a50e512910dea
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 05b60b091fe87620c88ad9eb761f1028c24d5730
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Řešení potíží s objekt, který není synchronizované s Azure AD
 
@@ -43,7 +43,7 @@ V horní polovině ukazuje všechny běží v chronologickém pořadí. Ve vých
 
 **Stav** je nejdůležitější informace a ukazuje nejzávažnějšího problém pro spuštění. Zde je stručný nejběžnější stavů v pořadí podle priority prozkoumat (kde * znamenat několik řetězců možná chyba).
 
-| Status | Poznámka |
+| Stav | Komentář |
 | --- | --- |
 | ukončeno-* |Spuštění se nepodařilo dokončit. Například pokud vzdálený systém je vypnutý a nelze kontaktovat. |
 | stopped-error-limit |Existuje více než 5 000 chyby. Spustit automaticky zastavila z důvodu velkého počtu chyb. |
@@ -103,14 +103,14 @@ Na kartě rodokmenu můžete získat do úložiště metaverse kliknutím [vlast
 
 V dolní části všechny karty jsou dvě tlačítka: **Preview** a **protokolu**.
 
-### <a name="preview"></a>Preview
+### <a name="preview"></a>Předběžné
 Stránku s náhledem se používá k synchronizaci jeden jednoho objektu. Je vhodné, pokud jsou některá vlastní synchronizační pravidla pro řešení potíží a chcete projevily změny na jednoho objektu. Můžete vybrat mezi **úplné synchronizace** a **rozdílová synchronizace**. Můžete také vybrat mezi **generovat Preview**, který pouze změny uchová paměti, a **potvrdit Preview**, který aktualizovat úložiště metaverse a zpracuje všechny změny do prostor konektoru cíl.  
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/preview.png)  
 Si můžete prohlédnout objekt a pravidlo, které se použijí pro tok konkrétní atribut.  
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/previewresult.png)
 
 ### <a name="log"></a>Protokol
-Na stránce protokol se používá ke zjištění stavu synchronizace hesla a historie. Další informace najdete v tématu [řešení synchronizace hesel](active-directory-aadconnectsync-troubleshoot-password-synchronization.md).
+Na stránce protokol se používá ke zjištění stavu synchronizace hesla a historie. Další informace najdete v tématu [řešení potíží s synchronizaci hodnoty hash hesla](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md).
 
 ## <a name="metaverse-object-properties"></a>Vlastnosti objektu úložiště Metaverse
 Je obvykle lepší zahájeno hledání ze zdroje služby Active Directory [prostoru konektoru](#connector-space). Ale můžete také spustit vyhledávání z úložiště metaverse.

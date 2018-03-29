@@ -7,4 +7,4 @@
 | Čas spuštění úlohy - úroveň Free |500 minut za předplatné za kalendářní měsíc |
 | Maximální množství paměti na úlohu |400 MB |
 | Maximální počet soketů sítě povolené na úlohu |1000 |
-
+| Maximální počet účtů Automation v předplatném. |Bez omezení |

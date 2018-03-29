@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 29c78eb850b418772126dea50b40e924b6e71423
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8b91b76d049d1a7f299b7890665dd9281e08321e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Přidání odolnost proti chybám v aktivitě kopírování přeskočení nekompatibilní řádků
 > [!NOTE]
@@ -39,7 +39,7 @@ Aktivita kopírování podporuje tři scénáře pro zjišťování, přeskočí
 
     Příklad: kopírování dat ze souboru CSV v úložišti objektů Blob k databázi SQL s definici schématu, která obsahuje šest sloupce. Řádky soubor CSV, které obsahují šesti sloupce jsou úspěšně zkopírovat do úložiště jímky. Řádky soubor CSV, které obsahují více nebo méně než šest sloupce jsou rozpoznána jako nekompatibilní a se přeskočí.
 
-- **Porušení primárního klíče při zápisu do relační databáze**
+- **Porušení primárního klíče při zápisu do SQL serveru nebo Azure SQL Database nebo Azure Cosmos DB**
 
     Příklad: kopírování dat z SQL serveru do databáze SQL. Ve službě SQL database podřízený je definovaný primární klíč, ale na zdrojovém serveru SQL je definován žádný primární klíč. Duplicitní řádky, na které existují ve zdroji nelze zkopírovat do jímky. Aktivita kopírování zkopíruje pouze první řádek zdrojová data do jímky. Další zdroje řádky, které obsahují duplicitní hodnotu primárního klíče jsou rozpoznána jako nekompatibilní a se přeskočí.
 
@@ -65,14 +65,14 @@ Následující příklad uvádí definici JSON konfigurace přeskočení nekompa
 }
 ```
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
 | **enableSkipIncompatibleRow** | Povolte přeskočení nekompatibilní řádků při kopírování nebo ne. | True<br/>NEPRAVDA (výchozí) | Ne |
 | **redirectIncompatibleRowSettings** | Skupina vlastností, které může být zadán, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | Ne |
 | **linkedServiceName** | Propojené služby Azure Storage k ukládání protokol, který obsahuje přeskočených řádků. | Název [azurestorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) propojené služby, která odkazuje na instanci úložiště, který chcete použít k uložení souboru protokolu. | Ne |
 | **path** | Cesta souboru protokolu, který obsahuje přeskočených řádků. | Zadejte cestu úložiště objektů Blob, které chcete používat k protokolování nekompatibilní data. Pokud nezadáte cestu, služby pro vás vytvoří kontejner. | Ne |
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 Po dokončení kopírování aktivity při spuštění, zobrazí se počet přeskočených řádků v části monitorování:
 
 ![Monitorování přeskočen nekompatibilní řádků](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)

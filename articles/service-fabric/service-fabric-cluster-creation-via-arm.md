@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření clusteru služby Azure Service Fabric ze šablony | Microsoft Docs"
-description: "Tento článek popisuje postup nastavení zabezpečení clusteru Service Fabric v Azure pomocí Azure Resource Manager, Azure Key Vault a Azure Active Directory (Azure AD) pro ověřování klientů."
+title: Vytvoření clusteru služby Azure Service Fabric ze šablony | Microsoft Docs
+description: Tento článek popisuje postup nastavení zabezpečení clusteru Service Fabric v Azure pomocí Azure Resource Manager, Azure Key Vault a Azure Active Directory (Azure AD) pro ověřování klientů.
 services: service-fabric
 documentationcenter: .net
 author: chackdan
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: e8e5513df5ab412857403382e1940da27c85274a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ebf4ebd563bab1395f32654bc71955a9416c7a5a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Vytvořit cluster Service Fabric pomocí Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Koncept vytváření zabezpečené clusterů je stejný, ať už jsou Linux nebo
 Libovolný počet dalších certifikátů lze zadat pro uživatele nebo správce operací klienta. Ve výchozím nastavení tento certifikát clusteru má oprávnění správce klienta. Tyto další klientské certifikáty by se neměly instalovat do clusteru, pouze musí být zadány jako povolené v konfiguraci clusteru, ale potřebují nainstalovat na klientské počítače, připojte se ke clusteru a provádět všechny správy operace.
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 Koncept vytváření zabezpečené clusterů je stejný, ať už jsou Linux nebo Windows clusterů. Tato příručka popisuje použití prostředí azure powershell nebo rozhraní příkazového řádku azure k vytvoření nových clusterů. Požadavky jsou buď 
 
 -  [Prostředí Azure PowerShell 4.1 a vyšší] [ azure-powershell] nebo [rozhraní příkazového řádku Azure 2.0 a vyšší][azure-CLI].
@@ -132,7 +132,7 @@ $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 $certOutputFolder="c:\certificates"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser –Location $resourceGroupLocation
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser
 
 ```
 

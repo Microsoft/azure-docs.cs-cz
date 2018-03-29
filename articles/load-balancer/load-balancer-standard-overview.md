@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: d7ee74a19f806faed0bcfcfa5f1c5de3937d9f31
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 15bbd32d982bdefc5665421b828ce0c8234b7257
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure standardní nástroje pro vyrovnávání zatížení
 
@@ -30,7 +30,7 @@ Tento článek se zaměřuje na nástroj pro vyrovnávání zatížení.  Dalš�
 
 Nástroj pro vyrovnávání zatížení je nový produkt nástroj pro vyrovnávání zatížení pro všechny TCP a UDP aplikací pomocí funkce ze rozšířené a podrobnější nastavení přes základní nástroj pro vyrovnávání zatížení.  Existuje mnoho podobností, je důležité se seznámit s rozdíly, jak je uvedeno v tomto článku.
 
-Můžete použít standardní zatížení vyrovnávání standardní jako veřejný nebo interní Vyrovnávání zatížení. A virtuální počítač může být připojený k veřejné a jeden interní nástroj pro vyrovnávání zatížení prostředků.
+Nástroj pro vyrovnávání zatížení můžete použít jako veřejný nebo interní Vyrovnávání zatížení. A virtuální počítač může být připojený k veřejné a jeden interní nástroj pro vyrovnávání zatížení prostředků.
 
 Funkce Vyrovnávání zatížení prostředků jsou vždy vyjádřené jako front-end, pravidlo, test stavu a definici fondu back-end.  Prostředek může obsahovat více pravidel. Virtuální počítače můžete umístit do fondu back-end zadáním fondu back-end z prostředku Síťový adaptér virtuálního počítače.  V případě škálovací sadu virtuálních počítačů je tento parametr předána profilu sítě a rozšířit.
 
@@ -61,8 +61,8 @@ Projděte si v následující tabulce základní informace o rozdílech mezi ná
 | Odchozí připojení | Více frontends s každé pravidlo výslovný nesouhlas s. Odchozí scénář _musí_ explicitně vytvořit pro virtuální počítač, abyste mohli použít odchozí připojení.  [Koncové body služby virtuální síť](../virtual-network/virtual-network-service-endpoints-overview.md) dostupný bez odchozí připojení a zpracování dat není započítávat.  Všechny veřejné IP adresy, včetně služeb Azure PaaS není k dispozici jako koncové body služby virtuální sítě, musí být dosaženo přes odchozí připojení a počtu ke zpracování dat. Když virtuální počítač je obsluhuje pouze k interním pro vyrovnávání zatížení, nejsou k dispozici odchozí připojení přes výchozí překládat pomocí SNAT. Odchozí překládat pomocí SNAT programování je transportní protokol konkrétní na základě protokolu Příchozí pravidlo Vyrovnávání zatížení. | Jeden front-endu, náhodně vybrané, pokud existuje více frontends.  Když virtuální počítač je obsluhuje pouze interní nástroj pro vyrovnávání zatížení, použije se výchozí překládat pomocí SNAT. |
 | Více frontends | Příchozí a odchozí | Pouze příchozí |
 | Operace správy | Většinu operací < 30 sekund | 60-90 sekund typické |
-| SLA | 99,99 % pro cestu k datům s dva virtuální počítače v pořádku | Implicitní v SLA k Virtuálním počítačům | 
-| Ceny | Účtovat na základě počtu pravidel, zpracování dat příchozí nebo odchozí přidružené prostředků  | Bez poplatků |
+| Smlouva SLA | 99,99 % pro cestu k datům s dva virtuální počítače v pořádku | Implicitní v SLA k Virtuálním počítačům | 
+| Cena | Účtovat na základě počtu pravidel, zpracování dat příchozí nebo odchozí přidružené prostředků  | Bez poplatků |
 
 Zkontrolujte [omezení služby pro vyrovnávání zatížení](https://aka.ms/lblimits), a také [ceny](https://aka.ms/lbpricing), a [SLA](https://aka.ms/lbsla).
 
@@ -176,6 +176,9 @@ Můžete upravit prostředky nástroj pro vyrovnávání zatížení a přesunut
 
 SKU nejsou měnitelný. Postupujte podle kroků v této části přesunuty z jednoho prostředku SKU do jiného.
 
+>[!IMPORTANT]
+>Zkontrolujte tento dokument a pochopit rozdíly mezi SKU a pečlivě zkoumat, váš scénář.  Budete muset udělat další změny, chcete-li zarovnat váš scénář.
+
 ### <a name="migrate-from-basic-to-standard-sku"></a>Migrovat ze základní standardní SKU
 
 1. Vytvoření nového prostředku standardní (nástroj pro vyrovnávání zatížení a veřejné IP adresy, podle potřeby). Pravidla znovu vytvořit a sběru dat definice.
@@ -204,15 +207,15 @@ SKU nejsou měnitelný. Postupujte podle kroků v této části přesunuty z jed
 >
 >Odpovídající identifikátory SKU musí použít pro nástroj pro vyrovnávání zatížení a veřejnou IP adresu prostředky. Nemůžete mít směs základní SKU a standardní SKU prostředků. Nelze připojit samostatné virtuální počítače, virtuální počítače v prostředek sadu dostupnosti nebo škálování virtuálního počítače nastavte prostředky na obě položky současně.
 
-## <a name="region-availability"></a>Dostupnost v oblastech
+## <a name="region-availability"></a>Regionální dostupnost
 
 Standardní nástroje pro vyrovnávání zatížení je aktuálně k dispozici ve všech oblastech veřejného cloudu.
 
-## <a name="sla"></a>SLA
+## <a name="sla"></a>Smlouva SLA
 
 Nástroje pro vyrovnávání zatížení jsou k dispozici SLA 99,99 %.  Zkontrolujte [standardní SLA nástroje pro vyrovnávání zatížení](https://aka.ms/lbsla) podrobnosti.
 
-## <a name="pricing"></a>Ceny
+## <a name="pricing"></a>Cena
 
 Standardní Vyrovnávání zatížení je odečtena produkt na základě počtu Vyrovnávání zatížení nakonfigurovaná pravidla a všechny příchozí a odchozí data zpracování. Informace o cenách standardní Vyrovnávání zatížení, najdete v článku [ceny služby Vyrovnávání zatížení](https://aka.ms/lbpricing) stránky.
 

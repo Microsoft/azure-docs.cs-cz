@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 0092564dce9424b445240ebd2c3247e763a237e9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3aca66d6922273e78b5100948f1b868c6c9b56af
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Kopírování dat z koncový bod HTTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,6 +41,9 @@ Konkrétně tento konektor HTTP podporuje:
 
 Rozdíl mezi tohoto konektoru a [konektor tabulky webových](connector-web-table.md) je, že k tomu slouží k extrahování obsahu tabulky z HTML webové stránky.
 
+>[!TIP]
+>K testování požadavku HTTP pro načítání před konfigurací konektoru HTTP v ADF data, můžete dozvědět se od specifikace rozhraní API v záhlaví a text požadavky a pomocí nástrojů, jako je Postman nebo webový prohlížeč k ověření.
+
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -51,9 +54,9 @@ Následující části obsahují podrobnosti o vlastnosti, které slouží k ur�
 
 Pro HTTP propojené služby jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavena na: **HttpServer**. | Ano |
+| typ | Vlastnost typu musí být nastavena na: **HttpServer**. | Ano |
 | Adresa URL | Základní adresu URL na webový server | Ano |
 | enableServerCertificateValidation | Určete, zda chcete povolit ověřování certifikátu serveru SSL při připojení ke koncovému bodu HTTP. | Ne, výchozí hodnota je true |
 | authenticationType. | Určuje typ ověřování. Povolené hodnoty jsou: **anonymní**, **základní**, **Digest**, **Windows**, **ClientCertificate**. <br><br> Naleznete v části dál v této tabulce na další vlastnosti a ukázky JSON pro tyto typy ověřování v uvedeném pořadí. | Ano |
@@ -63,7 +66,7 @@ Pro HTTP propojené služby jsou podporovány následující vlastnosti:
 
 Nastavte vlastnost "authenticationType" na **základní**, **Digest**, nebo **Windows**a zadejte následující vlastnosti společně s obecné vlastnosti, které jsou popsané v předchozí části:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | userName | Uživatelské jméno pro přístup k koncový bod HTTP. | Ano |
 | heslo | Heslo pro uživatele (uživatelské jméno). Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -96,7 +99,7 @@ Nastavte vlastnost "authenticationType" na **základní**, **Digest**, nebo **Wi
 
 Chcete-li použít ověřování ClientCertificate, nastavte vlastnost "authenticationType" na **ClientCertificate**a zadejte následující vlastnosti společně s obecné vlastnosti, které jsou popsané v předchozí části:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
 | embeddedCertData | Data certifikátu kódováním base64. | Zadejte buď `embeddedCertData` nebo `certThumbprint`. |
 | certThumbprint | Kryptografický otisk certifikátu, který je nainstalován v úložišti certifikátů počítače Self-hosted integrace Runtime. Platí jenom v případě, že je zadán vlastním hostováním typ integrace Runtime v connectVia. | Zadejte buď `embeddedCertData` nebo `certThumbprint`. |
@@ -159,9 +162,9 @@ Pokud používáte "certThumbprint" pro ověřování a je certifikát nainstalo
 
 Ke zkopírování dat z protokolu HTTP, nastavte vlastnost typu datové sady, která **HttpFile**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost typu datové sady musí být nastavena na: **HttpFile** | Ano |
+| typ | Vlastnost typu datové sady musí být nastavena na: **HttpFile** | Ano |
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Když není tato vlastnost určena, použije se jenom adresu URL, zadaný v definici propojené služby. | Ne |
 | requestMethod | Metoda HTTP.<br/>Povolené hodnoty jsou **získat** (výchozí) nebo **Post**. | Ne |
 | additionalHeaders | Další hlavičky žádosti HTTP. | Ne |
@@ -216,9 +219,9 @@ Ke zkopírování dat z protokolu HTTP, nastavte vlastnost typu datové sady, kt
 
 Ke zkopírování dat z protokolu HTTP, nastavte typ zdroje v aktivitě kopírování do **HttpSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **HttpSource** | Ano |
+| typ | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **HttpSource** | Ano |
 | httpRequestTimeout | Časový limit (TimeSpan) pro získání odezvy požadavku HTTP. Získání odezvy, není časový limit číst data odpovědi je časový limit.<br/> Výchozí hodnota je: 00:01:40  | Ne |
 
 **Příklad:**

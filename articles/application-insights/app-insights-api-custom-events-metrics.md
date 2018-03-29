@@ -1,8 +1,8 @@
 ---
-title: "Application Insights API pro vlastní události a metriky | Microsoft Docs"
-description: "Po zadání několika řádků kódu vložte do vaší aplikace nebo plochy zařízení, webové stránky nebo služby, sledovat využití a diagnostikovat problémy."
+title: Application Insights API pro vlastní události a metriky | Microsoft Docs
+description: Po zadání několika řádků kódu vložte do vaší aplikace nebo plochy zařízení, webové stránky nebo služby, sledovat využití a diagnostikovat problémy.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 80400495-c67b-4468-a92e-abf49793a54d
@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7d797716fb98ac85f11f956e732e08820b56affc
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: ff4b587790872511c7b545233685f5b3ae068291
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API pro vlastní události a metriky
 
@@ -49,13 +49,13 @@ Pokud nemáte k dispozici odkaz na Application Insights SDK ještě:
   * [JavaScript v každé webové stránky](app-insights-javascript.md) 
 * V zařízení nebo webový server kódu patří:
 
-    *C#:*`using Microsoft.ApplicationInsights;`
+    *C#:* `using Microsoft.ApplicationInsights;`
 
-    *Visual Basic:*`Imports Microsoft.ApplicationInsights`
+    *Visual Basic:* `Imports Microsoft.ApplicationInsights`
 
-    *Java:*`import com.microsoft.applicationinsights.TelemetryClient;`
+    *Java:* `import com.microsoft.applicationinsights.TelemetryClient;`
     
-    *Node.js:*`var applicationInsights = require("applicationinsights");`
+    *Node.js:* `var applicationInsights = require("applicationinsights");`
 
 ## <a name="get-a-telemetryclient-instance"></a>Získat TelemetryClient instance
 Získat instanci `TelemetryClient` (s výjimkou v jazyce JavaScript webové stránky):
@@ -79,7 +79,17 @@ Získat instanci `TelemetryClient` (s výjimkou v jazyce JavaScript webové str�
 
 TelemetryClient je bezpečné pro přístup z více vláken.
 
-Pro projekty ASP.NET a Java doporučujeme vytvořit instanci TelemetryClient pro každý modul vaší aplikace. Například můžete mít jednu instanci TelemetryClient ve službě web tak, aby odesílaly příchozích požadavků HTTP a druhý v třídě middleware sestavy obchodní logiky události. Můžete například nastavit vlastnosti `TelemetryClient.Context.User.Id` sledovat uživatele a relace, nebo `TelemetryClient.Context.Device.Id` identifikovat počítač. Tyto informace je připojený k všechny události, které odesílá instance.
+Pro projekty ASP.NET a Java jsou automaticky zachytit příchozí požadavky HTTP. Můžete chtít vytvořit další instance TelemetryClient pro ostatní moduly vaší aplikace. Například můžete mít jednu instanci TelemetryClient v třídě middleware na sestavu obchodní logiky události. Můžete nastavit vlastnosti, například ID uživatele a DeviceId identifikovat počítač. Tyto informace je připojený k všechny události, které instace odešle. 
+
+*C#*
+
+    TelemetryClient.Context.User.Id = "...";
+    TelemetryClient.Context.Device.Id = "...";
+
+*Java*
+
+    telemetry.getContext().getUser().setId("...);
+    telemetry.getContext().getDevice().setId("...");
 
 V projektech, Node.js, můžete použít `new applicationInsights.TelemetryClient(instrumentationKey?)` vytvořit novou instanci, ale to se doporučuje jenom pro scénáře, které vyžadují izolované konfiguraci z singleton `defaultClient`.
 
@@ -156,13 +166,21 @@ Odeslání jednoho metriky hodnoty:
      appInsights.trackMetric("queueLength", 42.0);
  ```
 
-*C#, Java*
+*C#*
 
 ```csharp
     var sample = new MetricTelemetry();
     sample.Name = "metric name";
     sample.Value = 42.3;
     telemetryClient.TrackMetric(sample);
+```
+
+*Java*
+
+```Java
+    
+    telemetry.trackMetric("queueLength", 42.0);
+
 ```
 
 *Node.js*
@@ -331,8 +349,8 @@ Pokud chcete zobrazit výsledky, otevřete Průzkumníka metrik a přidejte nov�
 ### <a name="custom-metrics-in-analytics"></a>Vlastní metriky v Analytics
 
 Je k dispozici v telemetrii `customMetrics` tabulky v [Application Insights Analytics](app-insights-analytics.md). Každý řádek představuje volání `trackMetric(..)` ve vaší aplikaci.
-* `valueSum`-Toto je součet měření. Chcete-li získat střední hodnoty, vydělte `valueCount`.
-* `valueCount`-Počet měření, které byly agregovat do této `trackMetric(..)` volání.
+* `valueSum` -Toto je součet měření. Chcete-li získat střední hodnoty, vydělte `valueCount`.
+* `valueCount` -Počet měření, které byly agregovat do této `trackMetric(..)` volání.
 
 ## <a name="page-views"></a>Zobrazení stránek
 V aplikaci pomocí zařízení nebo webové stránky je odeslána telemetrická zobrazení stránky ve výchozím nastavení při načtení každé obrazovky nebo stránky. Ale můžete změnit, sledovat zobrazení stránky v další nebo různých časech. Například v aplikaci, která zobrazí karty nebo okna, můžete sledovat na stránce vždy, když uživatel otevře nové okno.
@@ -349,6 +367,10 @@ Data uživatele a relace se odešle jako vlastnosti společně s zobrazení str�
 *C#*
 
     telemetry.TrackPageView("GameReviewPage");
+
+*Java*
+
+    telemetry.trackPageView("GameReviewPage");
 
 *Visual Basic*
 
@@ -479,6 +501,14 @@ Sestavy obsahují trasování zásobníku.
        telemetry.TrackException(ex);
     }
 
+*Java*
+
+    try {
+        ...
+    } catch (Exception ex) {
+        telemetry.trackException(ex);
+    }
+
 *JavaScript*
 
     try
@@ -541,11 +571,17 @@ exceptions
 ## <a name="tracktrace"></a>TrackTrace
 Použijte TrackTrace k diagnostice potíží odesláním "záznam s popisem cesty" Application Insights. Můžete odesílat bloky diagnostických dat a je v zkontrolovat [diagnostické vyhledávání](app-insights-diagnostic-search.md).
 
-[Přihlaste se adaptéry](app-insights-asp-net-trace-logs.md) používat toto rozhraní API k odesílání jiných výrobců protokoly na portál.
+V rozhraní .NET [protokolu adaptéry](app-insights-asp-net-trace-logs.md) používat toto rozhraní API k odesílání jiných výrobců protokoly na portál.
+
+V jazyce Java pro [standardní protokolovacích nástrojů, jako Log4J, Logback](app-insights-java-trace-logs.md) používat k odesílání jiných výrobců protokoly na portál Application Insights Log4j nebo Logback Appenders.
 
 *C#*
 
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
+
+*Java*
+
+    telemetry.trackTrace(message, SeverityLevel.Warning, properties);
     
 *Node.js*
 
@@ -559,10 +595,24 @@ Výhodou TrackTrace je, že můžete ukládat poměrně dlouho data ve zprávě.
 
 Kromě toho můžete přidat úroveň závažnosti na zprávu. A, podobně jako ostatní telemetrických dat, můžete přidat hodnoty vlastností, které vám pomohou filtru nebo vyhledávání pro různé skupiny trasování. Příklad:
 
+*C#*
+
+```C#
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
                    SeverityLevel.Warning,
                    new Dictionary<string,string> { {"database", db.ID} });
+```
+
+*Java*
+
+```Java
+
+    Map<String, Integer> properties = new HashMap<>();
+    properties.put("Database", db.ID);
+    telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties);
+
+```
 
 V [vyhledávání](app-insights-diagnostic-search.md), můžete pak snadno odfiltrovat všechny zprávy konkrétní závažnosti úrovně, které se vztahují ke konkrétní databázi.
 
@@ -575,6 +625,8 @@ Pokud [vzorkování](app-insights-sampling.md) je v provozu, vlastnost itemCount
 
 ## <a name="trackdependency"></a>TrackDependency
 Volání TrackDependency použijte ke sledování doby odezvy a úspěšnost volání externí část kódu. Výsledky se zobrazí v grafech závislost na portálu.
+
+*C#*
 
 ```csharp
 var success = false;
@@ -591,6 +643,26 @@ finally
 }
 ```
 
+*Java*
+
+```Java
+    boolean success = false;
+    long startTime = System.currentTimeMillis();
+    try {
+        success = dependency.call();
+    }
+    finally {
+        long endTime = System.currentTimeMillis();
+        long delta = endTime - startTime;
+        RemoteDependencyTelemetry dependencyTelemetry = new RemoteDependencyTelemetry("My Dependency", "myCall", delta, success);
+        telemetry.setTimeStamp(startTime);
+        telemetry.trackDependency(dependencyTelemetry);
+    }
+
+```
+
+*JavaScript*
+
 ```Javascript
 var success = false;
 var startTime = new Date().getTime();
@@ -605,9 +677,13 @@ finally
 }
 ```
 
-Mějte na paměti, že zahrnují sady SDK serveru [závislostí modulu](app-insights-asp-net-dependencies.md) , zjišťuje a sleduje určitých volání závislosti automaticky – například k databázím a rozhraní REST API. Je třeba nainstalovat agenta na vašem serveru, aby se modul fungovat. Toto volání použijte, pokud chcete sledovat volání, které není catch automatizované sledování, nebo pokud nechcete, aby pro instalaci agenta.
+Mějte na paměti, že zahrnují sady SDK serveru [závislostí modulu](app-insights-asp-net-dependencies.md) , zjišťuje a sleduje určitých volání závislosti automaticky – například k databázím a rozhraní REST API. Je třeba nainstalovat agenta na vašem serveru, aby se modul fungovat. 
 
-Chcete-li vypnout standardní modul sledování závislostí, upravit [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) a odstraňte odkaz na `DependencyCollector.DependencyTrackingTelemetryModule`.
+V jazyce Java, určitá závislost volání lze automaticky sledovat pomocí [agenta Java](app-insights-java-agent.md).
+
+Toto volání použijte, pokud chcete sledovat volání, které není catch automatizované sledování, nebo pokud nechcete, aby pro instalaci agenta.
+
+Chcete-li vypnout standardní modul sledování závislostí v jazyce C#, upravit [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) a odstraňte odkaz na `DependencyCollector.DependencyTrackingTelemetryModule`. V jazyce Java prosím nainstalujte agenta java Pokud nechcete automaticky shromažďovat standardní závislosti.
 
 ### <a name="dependencies-in-analytics"></a>Závislosti v Analytics
 
@@ -630,17 +706,29 @@ dependencies
 Za normálních okolností sady SDK odešle data v některých případech se rozhodli minimalizovat dopad na uživatele. Ale v některých případech můžete chtít vyprázdní vyrovnávací paměti – například pokud používáte sady SDK v aplikaci, která ukončí.
 
 *C#*
-
+ 
+ ```C#
     telemetry.Flush();
-
     // Allow some time for flushing before shutdown.
-    System.Threading.Thread.Sleep(1000);
+    System.Threading.Thread.Sleep(5000);
+```
+
+*Java*
+
+```Java
+    telemetry.flush();
+    //Allow some time for flushing before shutting down
+    Thread.sleep(5000);
+```
+
     
 *Node.js*
 
     telemetry.flush();
 
 Upozorňujeme, že je asynchronní pro funkce [kanálu telemetrii serveru](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/).
+
+V ideálním případě by měl metody flush() použít v aktivitě vypnutí aplikace.
 
 ## <a name="authenticated-users"></a>Ověření uživatelé
 Ve webové aplikaci jsou uživatelé (ve výchozím nastavení) identifikovat pomocí souborů cookie. Uživatel může počítají více než jednou, pokud budou přistupovat k vaší aplikace z v jiném počítači či prohlížeči, nebo pokud se soubory cookie odstranit.
@@ -660,7 +748,7 @@ function Authenticated(signInId) {
 
 V technologie ASP.NET MVC aplikace, například:
 
-*Syntaxe Razor*
+*syntaxe Razor*
 
         @if (Request.IsAuthenticated)
         {
@@ -827,11 +915,12 @@ Všimněte si, že:
 
 
 
-## <a name="timed"></a>Časování událostí
+## <a name="timed"></a> Časování událostí
 Někdy budete chtít grafu doba potřebná k provedení akce. Například můžete chtít vědět, jak dlouho uživatelé proveďte vzít v úvahu volbám v hru. Můžete pro tento parametr měření.
 
 *C#*
 
+```C#
     var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
     // ... perform the timed action ...
@@ -847,7 +936,27 @@ Někdy budete chtít grafu doba potřebná k provedení akce. Například může
 
     // Send the event:
     telemetry.TrackEvent("SignalProcessed", properties, metrics);
+```
 
+*Java*
+
+```Java
+    long startTime = System.currentTimeMillis();
+
+    // perform timed action
+
+    long endTime = System.currentTimeMillis();
+    Map<String, Double> metrics = new HashMap<>();
+    metrics.put("ProcessingTime", endTime-startTime);
+
+    // Setup some propereties
+    Map<String, String> properties = new HashMap<>();
+    properties.put("signalSource", currentSignalSource.getName());
+
+    //send the event
+    telemetry.trackEvent("SignalProcessed", properties, metrics);
+
+```
 
 
 ## <a name="defaults"></a>Výchozí vlastnosti pro vlastní telemetrii
@@ -920,6 +1029,14 @@ K *dynamicky zastavit a spustit* shromažďování a předávání telemetrie:
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
+*Java*
+
+```Java
+    
+    telemetry.getConfiguration().setTrackingDisabled(true);
+
+```
+
 K *zakázat vybrané standardní Kolektory*– například čítače výkonu, požadavky HTTP nebo závislosti – odstranit nebo komentář příslušné řádky v [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). To provedete, například pokud chcete odeslat vlastní TrackRequest data.
 
 *Node.js*
@@ -942,7 +1059,7 @@ K *zakázat vybrané standardní Kolektory*– například čítače výkonu, po
         .start();
 ```
 
-Pokud chcete zakázat tyto Kolektory po inicializaci, použijte objekt konfigurace:`applicationInsights.Configuration.setAutoCollectRequests(false)`
+Pokud chcete zakázat tyto Kolektory po inicializaci, použijte objekt konfigurace: `applicationInsights.Configuration.setAutoCollectRequests(false)`
 
 ## <a name="debug"></a>Režim vývojáře
 Během ladění, je užitečné používat telemetrie prostřednictvím kanálu je rychlé, aby mohli zobrazit výsledky okamžitě. Můžete také zprávy Další get, které vám pomůžou trasování všechny problémy s telemetrií. Vypněte ho v produkčním prostředí, protože mohou být zpomaleny vaší aplikace.
@@ -956,7 +1073,7 @@ Během ladění, je užitečné používat telemetrie prostřednictvím kanálu 
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 
-## <a name="ikey"></a>Nastavení pro vybrané vlastní telemetrii klíč instrumentace
+## <a name="ikey"></a> Nastavení pro vybrané vlastní telemetrii klíč instrumentace
 *C#*
 
     var telemetry = new TelemetryClient();
@@ -964,7 +1081,7 @@ Během ladění, je užitečné používat telemetrie prostřednictvím kanálu 
     // ...
 
 
-## <a name="dynamic-ikey"></a>Klíč dynamické instrumentace
+## <a name="dynamic-ikey"></a> Klíč dynamické instrumentace
 Abyste se vyhnuli kombinování až telemetrie z vývoj, testování a provozním prostředí, můžete [vytvořit samostatné prostředky Application Insights](app-insights-create-new-resource.md) a změnit jejich klíče, v závislosti na prostředí.
 
 Místo získání klíč instrumentace z konfiguračního souboru, můžete ho nastavit v kódu. V metodě inicializace, jako jsou například souboru global.aspx.cs v službě ASP.NET nastavte:
@@ -1030,7 +1147,7 @@ Chcete-li určit, jak dlouho se data ukládají najdete v tématu [uchovávání
 * [Rozhraní ASP.NET – reference](https://msdn.microsoft.com/library/dn817570.aspx)
 * [Referenční informace sady Java](http://dl.windowsazure.com/applicationinsights/javadoc/)
 * [Referenční dokumentace technologie JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-* [Sada SDK pro Android](https://github.com/Microsoft/ApplicationInsights-Android)
+* [Android SDK](https://github.com/Microsoft/ApplicationInsights-Android)
 * [Sada SDK pro iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
 
 ## <a name="sdk-code"></a>Kód SDK
@@ -1045,7 +1162,7 @@ Chcete-li určit, jak dlouho se data ukládají najdete v tématu [uchovávání
 ## <a name="questions"></a>Otázky
 * *Jaké výjimky může vyvolat volání Track_()?*
 
-    Žádné. Nemusíte zabalení je v klauzulích try-catch. Pokud sada SDK zaznamená problémy, bude protokolování zpráv ve výstupu konzoly ladění a--zprávy získat prostřednictvím – ve vyhledávání diagnostiky.
+    Žádné Nemusíte zabalení je v klauzulích try-catch. Pokud sada SDK zaznamená problémy, bude protokolování zpráv ve výstupu konzoly ladění a--zprávy získat prostřednictvím – ve vyhledávání diagnostiky.
 * *Je k dispozici rozhraní REST API k získání dat z portálu?*
 
     Ano, [rozhraní API pro přístup k datům](https://dev.applicationinsights.io/). Zahrnout další způsoby, jak extrahovat data [exportovat z analýz do Power BI](app-insights-export-power-bi.md) a [průběžné export](app-insights-export-telemetry.md).

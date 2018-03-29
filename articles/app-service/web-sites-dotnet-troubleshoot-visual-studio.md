@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s webovou aplikaci v Azure App Service pomocí sady Visual Studio"
-description: "Zjistěte, jak řešení webové aplikace Azure pomocí vzdálené ladění, trasování a protokolování nástroje, které jsou součástí sady Visual Studio 2013."
+title: Řešení potíží s webovou aplikaci v Azure App Service pomocí sady Visual Studio
+description: Zjistěte, jak řešení webové aplikace Azure pomocí vzdálené ladění, trasování a protokolování nástroje, které jsou součástí sady Visual Studio 2013.
 services: app-service
 documentationcenter: .net
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.service: app-service
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 6b1d5694c4d80a4db584b0c76a044dd596c5d553
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7973f4311095b7c87ccd2394b048ec92c50f32a9
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s webovou aplikaci v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -125,12 +125,14 @@ V této části ukazuje, jak ladit vzdáleně pomocí projektu vytvoříte v [vy
 
 3. Odstranit `About()` metoda a vložte následující kód na příslušné místo.
 
-        public ActionResult About()
-        {
-            string currentTime = DateTime.Now.ToLongTimeString();
-            ViewBag.Message = "The current time is " + currentTime;
-            return View();
-        }
+``` c#
+public ActionResult About()
+{
+    string currentTime = DateTime.Now.ToLongTimeString();
+    ViewBag.Message = "The current time is " + currentTime;
+    return View();
+}
+```
 4. [Nastavit zarážky](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) na `ViewBag.Message` řádku.
 
 5. V **Průzkumníku řešení**, klikněte pravým tlačítkem na projekt a klikněte na tlačítko **publikovat**.
@@ -171,7 +173,7 @@ V této části ukazuje, jak ladit vzdáleně pomocí projektu vytvoříte v [vy
 
      ![O stránce s novou hodnotou](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-## <a name="remotedebugwj"></a>Vzdálené ladění webové úlohy
+## <a name="remotedebugwj"></a> Vzdálené ladění webové úlohy
 V této části ukazuje, jak ladit vzdáleně pomocí projektu a webové aplikace, které vytvoříte v [Začínáme s Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
 Funkce uvedené v této části jsou k dispozici pouze v sadě Visual Studio 2013 s aktualizací 4 nebo novější.
@@ -241,10 +243,12 @@ Pokud funkce [napsali protokoly](https://github.com/Azure/azure-webjobs-sdk/wiki
 * Při ladění, server, který odesílá data na Visual Studio, které by mohly ovlivnit poplatky šířky pásma. Informace o sazbách šířky pásma najdete v tématu [Azure – ceny](https://azure.microsoft.com/pricing/calculator/).
 * Ujistěte se, že `debug` atribut `compilation` element v *Web.config* soubor je nastaven na hodnotu true. Je nastaven na hodnotu true ve výchozím nastavení při publikování konfiguraci sestavení ladění.
 
-        <system.web>
-          <compilation debug="true" targetFramework="4.5" />
-          <httpRuntime targetFramework="4.5" />
-        </system.web>
+``` xml
+<system.web>
+  <compilation debug="true" targetFramework="4.5" />
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+```
 * Pokud zjistíte, že není ladicího programu kroku do kódu, kterou chcete ladit, budete možná muset změnit nastavení pouze můj kód.  Další informace najdete v tématu [omezit zanoříte se pouze můj kód](http://msdn.microsoft.com/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code).
 * Časovač se spustí na serveru, když povolíte funkci vzdáleného ladění a po 48 hodinách je tato funkce automaticky vypnuta. Tento limit 48 hodin se provádí z důvodů zabezpečení a výkonu. Můžete snadno zapnout funkci zpět jako tolikrát, kolikrát chcete. Doporučujeme ponechat zakázané při nejsou aktivně ladění.
 * Ladicí program můžete ručně připojit k libovolnému procesu, ne jenom webové aplikace proces (w3wp.exe). Další informace o tom, jak používat režim ladění v sadě Visual Studio najdete v tématu [ladění v sadě Visual Studio](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
@@ -277,32 +281,35 @@ Informace o tom, jak vytvořit aplikaci přihlásí webové úlohy, najdete v č
 ### <a name="add-tracing-statements-to-the-application"></a>Přidání příkazů trasování do aplikace
 1. Otevřete *Controllers\HomeController.cs*a nahraďte `Index`, `About`, a `Contact` metody následujícím kódem, aby bylo možné přidat `Trace` příkazy a `using` příkaz pro `System.Diagnostics`:
 
-        public ActionResult Index()
-        {
-            Trace.WriteLine("Entering Index method");
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-            Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
-            Trace.WriteLine("Leaving Index method");
-            return View();
-        }
+```c#
+public ActionResult Index()
+{
+    Trace.WriteLine("Entering Index method");
+    ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+    Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
+    Trace.WriteLine("Leaving Index method");
+    return View();
+}
 
-        public ActionResult About()
-        {
-            Trace.WriteLine("Entering About method");
-            ViewBag.Message = "Your app description page.";
-            Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
-            Trace.WriteLine("Leaving About method");
-            return View();
-        }
+public ActionResult About()
+{
+    Trace.WriteLine("Entering About method");
+    ViewBag.Message = "Your app description page.";
+    Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
+    Trace.WriteLine("Leaving About method");
+    return View();
+}
 
-        public ActionResult Contact()
-        {
-            Trace.WriteLine("Entering Contact method");
-            ViewBag.Message = "Your contact page.";
-            Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
-            Trace.WriteLine("Leaving Contact method");
-            return View();
-        }        
+public ActionResult Contact()
+{
+    Trace.WriteLine("Entering Contact method");
+    ViewBag.Message = "Your contact page.";
+    Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
+    Trace.WriteLine("Leaving Contact method");
+    return View();
+}        
+```
+
 2. Přidat `using System.Diagnostics;` příkaz do horní části souboru.
 
 ### <a name="view-the-tracing-output-locally"></a>Zobrazit výstup trasování místně
@@ -315,23 +322,28 @@ Informace o tom, jak vytvořit aplikaci přihlásí webové úlohy, najdete v č
     Následující kroky ukazují, jak zobrazit výstup trasování na webové stránce, bez kompilace v režimu ladění.
 2. Otevřete soubor Web.config aplikace (jeden, umístěný ve složce projektu) a přidejte `<system.diagnostics>` prvek na konec souboru, těsně před uzavírací `</configuration>` element:
 
-          <system.diagnostics>
-            <trace>
-              <listeners>
-                <add name="WebPageTraceListener"
-                    type="System.Web.WebPageTraceListener,
-                    System.Web,
-                    Version=4.0.0.0,
-                    Culture=neutral,
-                    PublicKeyToken=b03f5f7f11d50a3a" />
-              </listeners>
-            </trace>
-          </system.diagnostics>
+``` xml
+<system.diagnostics>
+<trace>
+  <listeners>
+    <add name="WebPageTraceListener"
+        type="System.Web.WebPageTraceListener,
+        System.Web,
+        Version=4.0.0.0,
+        Culture=neutral,
+        PublicKeyToken=b03f5f7f11d50a3a" />
+  </listeners>
+</trace>
+</system.diagnostics>
+```
 
-    `WebPageTraceListener` Umožňuje zobrazit výstup trasování procházením `/trace.axd`.
+`WebPageTraceListener` Umožňuje zobrazit výstup trasování procházením `/trace.axd`.
 3. Přidat <a href="http://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trasování element</a> pod `<system.web>` v souboru Web.config, jako je například v následujícím příkladu:
 
-        <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
+``` xml
+<trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
+```       
+
 4. Stiskněte klávesy CTRL+F5 a spusťte aplikaci.
 5. Na panelu Adresa v okně prohlížeče přidat *trace.axd* na adresu URL a potom stiskněte klávesu Enter (adresa URL je podobná http://localhost:53370/trace.axd).
 6. Na **trasování aplikací** klikněte na tlačítko **zobrazit podrobnosti** na prvním řádku (ne řádek BrowserLink).
@@ -646,15 +658,18 @@ Na Internetu nejsou k dispozici žádné důkladné a aktuální přehled trasov
 * [Trasování v zobrazení syntaxe Razor rozhraní ASP.NET MVC](http://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
   Kromě toho trasování v zobrazení syntaxe Razor v příspěvku taky vysvětluje, jak vytvořit filtr chyby, aby bylo protokolování všechny neošetřených výjimek v aplikaci MVC. Informace o tom, jak protokolování všechny neošetřených výjimek v aplikaci webových formulářů, podívejte se na příklad souboru Global.asax v [kompletní příklad pro obslužné rutiny chyba](http://msdn.microsoft.com/library/bb397417.aspx) na webu MSDN. V MVC nebo webového formuláře Pokud chcete protokolovat určité výjimky, ale nechat rozhraní výchozí zpracování vstoupí v platnost, můžete zachytit a opětovné jako v následujícím příkladu:
 
-        try
-        {
-           // Your code that might cause an exception to be thrown.
-        }
-        catch (Exception ex)
-        {
-            Trace.TraceError("Exception: " + ex.ToString());
-            throw;
-        }
+``` c#
+try
+{
+   // Your code that might cause an exception to be thrown.
+}
+catch (Exception ex)
+{
+    Trace.TraceError("Exception: " + ex.ToString());
+    throw;
+}
+```
+
 * [Streamování diagnostické trasování protokolování z příkazového řádku Azure (plus balíčku Glimpse!)](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   Postup pomocí příkazového řádku provádět jaké tento kurz ukazuje, jak provést v sadě Visual Studio. [Balíčku glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) je nástroj pro ladění aplikací ASP.NET.
 * [Webové aplikace, protokolování a diagnostiky - pomocí David Ebbo](/documentation/videos/azure-web-site-logging-and-diagnostics/) a [protokoly z webových aplikací – s David Ebbo streamování](/documentation/videos/log-streaming-with-azure-web-sites/)<br>
@@ -669,7 +684,7 @@ Další informace o analýze protokolů webového serveru najdete v následujíc
 
 * [LogParser](http://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Nástroj pro zobrazení dat v protokolů webového serveru (*.log* soubory).
-* [Řešení potíží s problémy s výkonem služby IIS nebo pomocí LogParser chyb aplikací](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+* [Řešení potíží s problémy s výkonem služby IIS nebo pomocí LogParser chyb aplikací ](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Úvod do protokolu analyzátoru nástroj, který můžete použít k analýze protokolů webového serveru.
 * [Příspěvky podle Roberta Mcmurrayho na pomocí LogParser](http://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [Stavový kód HTTP ve službě IIS 7.0, IIS 7.5 a IIS 8.0](http://support.microsoft.com/kb/943891)

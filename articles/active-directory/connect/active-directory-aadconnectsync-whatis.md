@@ -1,11 +1,11 @@
 ---
-title: "Synchronizace Azure AD Connect: pochopení a přizpůsobení synchronizace | Microsoft Docs"
-description: "Vysvětluje, jak Azure AD Connect synchronizovat funguje a jak přizpůsobit."
+title: 'Synchronizace Azure AD Connect: pochopení a přizpůsobení synchronizace | Microsoft Docs'
+description: Vysvětluje, jak Azure AD Connect synchronizovat funguje a jak přizpůsobit.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ee4bf802-045b-4da0-986e-90aba2de58d6
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: d58baa89c9d11b6b7a6bbb3b53974184ef1903b5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: a808f929dcd27b53821f59ed8fd3ab67af81a273
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Synchronizace Azure AD Connect: pochopení a přizpůsobení synchronizace
 Synchronizace služby Azure Active Directory Connect (Azure AD Connect sync) je hlavní součást služby Azure AD Connect. Se stará o všechny operace, které se vztahují k synchronizaci dat identity mezi místním prostředím a Azure AD. Synchronizace Azure AD Connect je nástupcem nástroje DirSync, Azure AD Sync a produktu Forefront Identity Manager s Azure Active Directory Connector nakonfigurované.
@@ -46,7 +46,7 @@ Synchronizační služby se skládá ze dvou komponent, místní **synchronizace
 | **Scénáře a funkce** | |
 | [Prevence náhodného odstranění](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) |Popisuje *prevence náhodného odstranění* funkce a jeho konfiguraci. |
 | [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) |Popisuje předdefinované Plánovač, která je importování, synchronizaci a export dat. |
-| [Implementace synchronizace hesel](active-directory-aadconnectsync-implement-password-synchronization.md) |Popisuje, jak funguje synchronizace hesel, jak implementovat a pracovat a odstraňování souvisejících potíží. |
+| [Implementace synchronizace hesel hash](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |Popisuje, jak funguje synchronizace hesel, jak implementovat a pracovat a odstraňování souvisejících potíží. |
 | [Zpětný zápis zařízení.](active-directory-aadconnect-feature-device-writeback.md) |Popisuje, jak funguje zpětný zápis zařízení v Azure AD Connect. |
 | [Rozšíření adresáře](active-directory-aadconnectsync-feature-directory-extensions.md) |Popisuje, jak rozšířit schéma služby Azure AD s vlastní atributy. |
 | [Office 365 PreferredDataLocation](active-directory-aadconnectsync-feature-preferreddatalocation.md) |Popisuje, jak převést prostředky Office 365 uživatele ve stejné oblasti jako uživatel. |

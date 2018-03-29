@@ -1,24 +1,24 @@
 ---
-title: "Přehled Microsoft Azure StorSimple virtuální pole | Microsoft Docs"
-description: "Popisuje StorSimple virtuální pole o řešení integrované úložiště, který spravuje úlohy úložiště mezi virtuální pole místního a cloudového úložiště Microsoft Azure."
+title: Přehled Microsoft Azure StorSimple virtuální pole | Microsoft Docs
+description: Popisuje StorSimple virtuální pole o řešení integrované úložiště, který spravuje úlohy úložiště mezi virtuální pole místního a cloudového úložiště Microsoft Azure.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/16/2017
+ms.date: 03/28/2018
 ms.author: alkohli
-ms.openlocfilehash: b9a5797751fa970c569c93e5efe300d4d74319ce
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: db06614ebd7dee4b0a320737ea8f575b3a3be70f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Úvod do pole virtuální zařízení StorSimple
 
@@ -73,7 +73,7 @@ Následující tabulka popisuje některé klíčové výhody, které poskytuje �
 
 Souhrnné informace o podporovaných úlohách StorSimple v následující tabulce.
 
-|Scénář     |Úloha     |Podporuje se      |Omezení               |
+|Scénář     |Úloha     |Podporováno      |Omezení               |
 |-------------|-------------|---------------|---------------------------|
 |ROBO  |Sdílení souborů     |Ano      |V tématu [maximální limit pro souborový server](storsimple-ova-limits.md).<br></br>V tématu [požadavky na systém pro podporované verze SMB](storsimple-ova-system-requirements.md).| Všechny verze     |
 |Cloud archivaci  |Sdílení archivaci souborů     |Ano      |V tématu [maximální limit pro souborový server](storsimple-ova-limits.md).<br></br>V tématu [požadavky na systém pro podporované verze SMB](storsimple-ova-system-requirements.md).| Všechny verze     |
@@ -90,7 +90,7 @@ Pole virtuální zařízení StorSimple není vhodný pro úlohy, které vyžadu
 
 Pole virtuální zařízení StorSimple je obzvláště vhodný pro následující pracovních postupů:
 
-* [Správu cloudového úložiště](#cloud-based-storage-management)
+* [správu cloudového úložiště](#cloud-based-storage-management)
 * [Zálohování nezávislých na umístění](#location-independent-backup)
 * [Data protection a zotavení po havárii](#data-protection-and-disaster-recovery)
 
@@ -136,7 +136,7 @@ Virtuální pole má následující funkce:
 > [!NOTE]
 > Virtuální pole nelze rozšířit. Proto je důležité ke zřízení odpovídající úložiště, když vytvoříte virtuální pole.
 
-### <a name="storsimple-device-manager-service"></a>Služba StorSimple Manager zařízení
+### <a name="storsimple-device-manager-service"></a>Služba Správce zařízení StorSimple
 
 Microsoft Azure StorSimple poskytuje webové uživatelské rozhraní, služby StorSimple Manager zařízení, která umožňuje centrálně spravovat úložišti StorSimple. Služby StorSimple Manager zařízení můžete provádět následující úlohy:
 
@@ -206,6 +206,15 @@ StorSimple používá komprese dat a odstranění duplicit Pokud chcete dál sn�
 
 Funkce ochrany dat StorSimple umožňují vytvářet zálohy na vyžádání. Výchozí plán zálohování také zajišťuje, že data zálohovat denně. Zálohy jsou převzaty ve formě přírůstkové snímky, které jsou uložené v cloudu. Snímky, které záznam pouze změny od poslední zálohy, můžete vytvořit a rychle obnovit. Tyto snímky může být důležité ve scénářích zotavení po havárii, protože nahradit sekundární úložných systémů (například zálohování na pásku) a umožňují obnovit data do datového centra nebo do alternativní lokality v případě potřeby.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="gdpr-compliance"></a>GDPR dodržování předpisů
+[Obecné Data Protection nařízení (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) je data protection a o ochraně osobních údajů zákon Evropské unie (EU). GDPR obsahuje mnoho požadavky na to, jak shromažďování, ukládání a používat osobní údaje. Pravidla GDPR jsou vynucená pro společnosti, vládních organizací a dalšími organizacemi, které fungují v Evropa a shromažďovat, analyzovat data svázané s obyvatele Evropské unie.
+
+Správce zařízení StorSimple řady, virtuální je GDPR kompatibilní. Existují dva klíče instance, kde je osobní údaje shromážděné a zobrazí v rámci služby:
+ - Výstraha uživatelská nastavení, které jsou nakonfigurované e-mailové adresy uživatelů. Tyto informace může být zrušena správcem. 
+ - Uživatelé, kteří měli přístup k datům, které se nacházejí na sdílené složky. Seznam uživatelů, kteří měli přístup k datům sdílenou složku se zobrazí a je možné exportovat. Tento seznam je taky odstranit po odstranění sdílené složky.
+
+Další informace najdete v článku [Microsoft Privacy zásady v Centru zabezpečení](https://www.microsoft.com/trustcenter).
+
+## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak [Příprava portálu virtuální pole](storsimple-virtual-array-deploy1-portal-prep.md).

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: cb44f1d456ec12b7fd21e397b749117942560f05
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e203787bffa80b324508f7df8f8e7a8c62355695
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Časté otázky k Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes oborových standardů [zpráva bloku protokol Server (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (také označovaný jako systém souborů běžné Internet nebo CIFS). Sdílené složky Azure můžete ke cloudu nebo na místní nasazení systému Windows, Linux a systému macOS připojit současně. Také můžete mezipaměti Azure sdílené složky na počítačích systému Windows Server pomocí synchronizace souboru Azure (preview) pro rychlý přístup blízko kde data se používají.
@@ -232,7 +232,7 @@ Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubor
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Jak zálohovat Moje Azure soubor sdílet?**  
-    Můžete použít pravidelné [sdílet snímky](storage-how-to-use-files-snapshots.md) pro ochranu před náhodným odstraněním. Také můžete použít AzCopy, Robocopy nebo zálohování nástroj třetí strany, který můžete zálohovat připojené sdílené složky. 
+    Můžete použít pravidelné [sdílet snímky](storage-snapshots-files.md) pro ochranu před náhodným odstraněním. Také můžete použít AzCopy, Robocopy nebo zálohování nástroj třetí strany, který můžete zálohovat připojené sdílené složky. 
 
 ## <a name="share-snapshots"></a>Sdílet snímky
 ### <a name="share-snapshots-general"></a>Sdílet snímky: Obecné

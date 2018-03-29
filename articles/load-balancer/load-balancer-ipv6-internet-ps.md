@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření Vyrovnávání zatížení Azure internetové s IPv6 – prostředí PowerShell | Microsoft Docs"
-description: "Naučte se vytvářet internetovým Vyrovnávání zatížení s IPv6 pomocí prostředí PowerShell pro Resource Manager"
+title: Vytvoření Vyrovnávání zatížení Azure internetové s IPv6 – prostředí PowerShell | Microsoft Docs
+description: Naučte se vytvářet internetovým Vyrovnávání zatížení s IPv6 pomocí prostředí PowerShell pro Resource Manager
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
 tags: azure-resource-manager
-keywords: "protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejnou IP adresu, nativní protokol ipv6, mobilní, iot"
+keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejnou IP adresu, nativní protokol ipv6, mobilní, iot
 ms.assetid: d4c649e3-84ad-4343-8b6a-0e89f0b9e518
 ms.service: load-balancer
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: a84fd69c568e26bbd1ff06b699b804c70e0e9c09
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: da14cc8723df0a6c7c8b15c8af8d519fa2c62283
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Začínáte s vytvářením internetovým Vyrovnávání zatížení s IPv6 pomocí prostředí PowerShell pro Resource Manager
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 > * [Šablona](load-balancer-ipv6-internet-template.md)
 
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP). Nástroj pro vyrovnávání zatížení poskytuje vysokou dostupnost díky distribuci příchozích přenosů mezi instance služeb, které jsou v pořádku, v cloudových službách nebo virtuálních počítačích v sadě nástroje pro vyrovnávání zatížení. Azure Load Balancer můžete také tyto služby prezentovat na více portech, více IP adresách nebo obojím.
 
@@ -230,7 +230,7 @@ Další informace o vytvoření virtuálního počítače najdete v tématu [vyt
     New-AzureRmVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Začínáme s konfigurací interního nástroje pro vyrovnávání zatížení](load-balancer-get-started-ilb-arm-ps.md)
 

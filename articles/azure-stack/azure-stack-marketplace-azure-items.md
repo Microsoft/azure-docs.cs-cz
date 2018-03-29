@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 39a82486b485a761f03244cf8d49f9c79ed9b2f7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: cdce5ad971e345971aa5de9a9bb79379fb1ead48
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure k dispozici pro Azure zásobníku položky Marketplace.
 
@@ -217,7 +217,7 @@ Zásobník Microsoft Azure podporuje následující virtuální počítače Azur
 | ![Izolovaný prostor Hortonworks Data Platform (HDP)](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Izolovaný prostor Hortonworks Data Platform (HDP)](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Používá technologii HDP 2,5 100 % open-source platformu pro Hadoop, Spark, Storm, HBase, Kafka, Hive, Ambari. | Hortonworks |
 | ![KEMP LoadMaster zatížení vyrovnávání ADC obsah přepínače](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster zatížení vyrovnávání ADC obsah přepínače](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | Vyrovnávání zatížení vrstvy 4 7 aplikace doručení řadiče (ADC), přepínače obsahu a Traffic Manageru. | KEMP Technologies Inc. |
 | ![Kompatibilní NooBaa hybridní AWS S3 - Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa hybridní AWS S3 compatibe - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | Služba S3 kompatibilní úložiště, která zahrnuje veřejné a místní prostředky kapacity. | NooBaa |
-| ![Brány Firewall PT aplikací](media/azure-stack-marketplace-azure-items/pt.png) | [Brány Firewall PT aplikací](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.pta) | Brány Firewall aplikací PT detekuje známé & neznámé chyby zabezpečení a zabrání útoky na webové aplikace. <b>Stáhněte si oba položky PT Marketplace.</b> | Kladné technologie |
+| ![Brány Firewall PT aplikací](media/azure-stack-marketplace-azure-items/pt.png) | [Brány Firewall PT aplikací](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | Brány Firewall aplikací PT detekuje známé & neznámé chyby zabezpečení a zabrání útoky na webové aplikace. <b>Stáhněte si oba položky PT Marketplace.</b> | Kladné technologie |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise umožňuje automatizovat celý životní cyklus infrastruktury Azure zásobníku. <b>Stáhněte si oba položky Puppet Marketplace.</b> | Puppet |
 | ![SUSE Manager 3.0 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Správa infrastruktury open-source třídy nejvhodnější. | SUSE |
 | ![Nástroj ZeroDown softwaru](media/azure-stack-marketplace-azure-items/zerodown.png) | [Nástroj ZeroDown softwaru ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | Nástroj v7.1 ZeroDown softwaru - migrovat + HA. | ZeroDown Software |

@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření první webové Java aplikace ve službě Azure"
-description: "Nasazením základní Java aplikace se naučíte, jak spouštět webové aplikace ve službě App Service."
+title: Vytvoření první webové Java aplikace ve službě Azure
+description: Nasazením základní Java aplikace se naučíte, jak spouštět webové aplikace ve službě App Service.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: rmcmurray
 manager: routlaw
-editor: 
+editor: ''
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
 ms.workload: web
@@ -15,15 +15,15 @@ ms.topic: quickstart
 ms.date: 11/08/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: de72b97051daef675ceae7c7af08fb04e21cf849
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e63f8706e28a5d34cc9774cbaecde31415a4b48e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Vytvoření první webové Java aplikace ve službě Azure
 
-Azure [Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz Rychlý start ukazuje, jak nasadit webovou Java aplikaci do služby App Service pomocí [integrovaného vývojového prostředí Eclipse pro vývojáře na platformě Java EE](http://www.eclipse.org/).
+[Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz Rychlý start ukazuje, jak nasadit webovou Java aplikaci do služby App Service pomocí [integrovaného vývojového prostředí Eclipse pro vývojáře na platformě Java EE](http://www.eclipse.org/).
 
 Po dokončení tohoto rychlého startu bude vaše aplikace při zobrazení ve webovém prohlížeči vypadat podobně jako na následujícím obrázku:
 

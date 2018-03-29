@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 733a396117a58d8dc51e55614e503853f13141c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c43973a7e5070676fc0f32a4c8923d57a479f884
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Zkopírujte aktivity výkonu a vyladění Průvodce
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -63,11 +63,11 @@ Všimněte si body:
 * Pro hybridní kopírování mezi místními a cloudovými úložiště dat, každý uzel Self-hosted integrace Runtime byla spuštěna na počítači, který byl samostatné z úložiště dat s níže specifikace. Pokud byla spuštěna jediné aktivity, operace kopírování spotřebováno pouze malou část CPU, paměť či šířku pásma sítě testovací počítač.
     <table>
     <tr>
-        <td>Procesor</td>
+        <td>CPU</td>
         <td>32 jader 2,20 GHz Intel Xeon E5-2660 v2</td>
     </tr>
     <tr>
-        <td>Memory (Paměť)</td>
+        <td>Paměť</td>
         <td>128 GB</td>
     </tr>
     <tr>
@@ -91,7 +91,7 @@ A **jednotky přesun dat cloudu (DMU)** je míra, která reprezentuje výkon (ko
 | Kopírování dat mezi úložišti na základě souborů | Mezi 4 a 32 v závislosti na počtu a velikosti souborů. |
 | Všechny ostatní kopie scénáře | 4 |
 
-Pokud chcete přepsat toto výchozí nastavení, zadejte hodnotu **cloudDataMovementUnits** vlastnost následujícím způsobem. **Povolené hodnoty** pro **cloudDataMovementUnits** vlastnost jsou 2, 4, 8, 16, 32. **Skutečný počet cloudu DMUs** že kopírování se používá v době běhu je rovna nebo menší než nakonfigurovaná hodnota, v závislosti na vaší vzorek dat. Informace o úrovni výkonnější se mohou objevit, když konfigurujete další jednotky pro konkrétní kopie zdroj a jímka najdete v tématu [referenční dokumentace výkonu](#performance-reference).
+Pokud chcete přepsat toto výchozí nastavení, zadejte hodnotu **cloudDataMovementUnits** vlastnost následujícím způsobem. **Povolené hodnoty** pro **cloudDataMovementUnits** vlastnost je **až 256**. **Skutečný počet cloudu DMUs** že kopírování se používá v době běhu je rovna nebo menší než nakonfigurovaná hodnota, v závislosti na vaší vzorek dat. Informace o úrovni výkonnější se mohou objevit, když konfigurujete další jednotky pro konkrétní kopie zdroj a jímka najdete v tématu [referenční dokumentace výkonu](#performance-reference).
 
 Zobrazí se ve skutečnosti použít cloudové jednotky přesun dat pro každou kopii spustit v aktivitě kopírování výstup při spuštění aktivity monitorování. Další informace z podrobností o [kopírovat, pokud chcete monitorování aktivit](copy-activity-overview.md#monitoring).
 
@@ -133,11 +133,14 @@ Objekt pro vytváření dat pro každou aktivitu kopírování, spuštění, ur�
 
 | Kopírování | Výchozí paralelní kopie počet určit službou |
 | --- | --- |
-| Kopírování dat mezi úložišti na základě souborů |Mezi 1 a 64. Závisí na velikosti souborů a počet cloudu jednotek přesun dat (DMUs) používat ke kopírování dat mezi dvěma cloudové úložiště dat nebo fyzické konfigurace počítače Self-hosted integrace Runtime. |
+| Kopírování dat mezi úložišti na základě souborů |Závisí na velikosti souborů a počet cloudu jednotek přesun dat (DMUs) používat ke kopírování dat mezi dvěma cloudové úložiště dat nebo fyzické konfigurace počítače Self-hosted integrace Runtime. |
 | Kopírování dat z jakékoli zdrojového úložiště dat do úložiště Azure Table |4 |
 | Všechny ostatní kopie scénáře |1 |
 
-Obvykle použije se výchozí chování měl dát nejlepší propustnost. Však k řízení zatížení na počítačích, které hostují vaše data ukládá, nebo k ladění výkonu kopie, můžete se rozhodnout přepsat výchozí hodnotu a zadejte hodnotu **parallelCopies** vlastnost. Hodnota musí být celé číslo větší než nebo rovno 1. Za běhu pro nejlepší výkon, používá aktivitu kopírování hodnotu, která je menší než nebo rovna hodnotě, který nastavíte.
+[!TIP]
+> Při kopírování dat mezi úložišti na základě souborů, použije se výchozí chování (automaticky zjistit) obvykle poskytují nejlepší propustnost. 
+
+K řízení zatížení na počítačích, které hostují vaše data ukládá, nebo k ladění výkonu kopie, můžete se rozhodnout přepsat výchozí hodnotu a zadejte hodnotu **parallelCopies** vlastnost. Hodnota musí být celé číslo větší než nebo rovno 1. Za běhu pro nejlepší výkon, používá aktivitu kopírování hodnotu, která je menší než nebo rovna hodnotě, který nastavíte.
 
 ```json
 "activities":[
@@ -188,11 +191,11 @@ V současné době nelze kopírovat data mezi dvěma místní úložišti dat po
 
 Konfigurace **enableStaging** nastavení k určení, zda chcete data, která mají být dvoufázové instalace v úložišti objektů Blob před načtením do cílového úložiště dat v aktivitě kopírování. Když nastavíte **enableStaging** k `TRUE`, zadejte další vlastnosti, které jsou uvedené v další tabulce. Pokud nemáte, je také potřeba vytvořit Azure Storage nebo úložiště sdíleného přístupu podpis propojené služby pro přípravu.
 
-| Vlastnost | Popis | Výchozí hodnota | Požaduje se |
+| Vlastnost | Popis | Výchozí hodnota | Požadováno |
 | --- | --- | --- | --- |
 | **enableStaging** |Zadejte, zda chcete zkopírovat data prostřednictvím jako dočasné pracovní úložiště. |False |Ne |
-| **linkedServiceName** |Zadejte název [azurestorage](connector-azure-blob-storage.md#linked-service-properties) propojené služby, která odkazuje na instanci úložiště, který používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště nelze použít s sdílený přístupový podpis načíst data do SQL Data Warehouse pomocí PolyBase. Můžete ji v jiných scénářích. |neuvedeno |Ano, když **enableStaging** nastaven na hodnotu TRUE |
-| **path** |Zadejte cestu úložiště objektů Blob, která má obsahovat pracovních dat. Pokud nezadáte cestu, služba vytvoří kontejner pro uložení dočasná data. <br/><br/> Zadejte cestu, pouze v případě, že používáte úložiště s sdílený přístupový podpis, nebo vyžadujete dočasná data v konkrétní umístění. |neuvedeno |Ne |
+| **linkedServiceName** |Zadejte název [azurestorage](connector-azure-blob-storage.md#linked-service-properties) propojené služby, která odkazuje na instanci úložiště, který používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště nelze použít s sdílený přístupový podpis načíst data do SQL Data Warehouse pomocí PolyBase. Můžete ji v jiných scénářích. |Nevztahuje se. |Ano, když **enableStaging** nastaven na hodnotu TRUE |
+| **path** |Zadejte cestu úložiště objektů Blob, která má obsahovat pracovních dat. Pokud nezadáte cestu, služba vytvoří kontejner pro uložení dočasná data. <br/><br/> Zadejte cestu, pouze v případě, že používáte úložiště s sdílený přístupový podpis, nebo vyžadujete dočasná data v konkrétní umístění. |Nevztahuje se. |Ne |
 | **enableCompression** |Určuje, zda data by měl být komprimují předtím, než je zkopírován do cílové. Toto nastavení snižuje objem přenášených dat. |False |Ne |
 
 Zde je ukázka definice aktivitou kopírování pomocí vlastnosti, které jsou popsané v předchozí tabulce:

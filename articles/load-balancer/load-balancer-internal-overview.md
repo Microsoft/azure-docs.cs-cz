@@ -1,6 +1,6 @@
 ---
-title: "Přehled služby Azure interní nástroj pro vyrovnávání zatížení | Microsoft Docs"
-description: "Interní nástroj jak funguje ve službě Azure a scénáře pro konfiguraci vnitřních koncových bodů."
+title: Přehled služby Azure interní nástroj pro vyrovnávání zatížení | Microsoft Docs
+description: Interní nástroj jak funguje ve službě Azure a scénáře pro konfiguraci vnitřních koncových bodů.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 54e390dbdb07cb4c45c801b638099aa0dcc6db1a
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 0511165225f5a336291e86e0c504e60989933f3c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="overview-of-azure-internal-load-balancer"></a>Přehled nástroje pro vyrovnávání zatížení Azure interní
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Azure vyrovnávání interní zatížení (ILB) pouze přesměruje přenosy na prostředky, které jsou uvnitř cloudové služby nebo které využívají sítě VPN pro přístup k infrastruktury Azure. V tomto ohledu ILB se liší od Vyrovnávání zatížení internetové brány. Infrastrukturu Azure omezuje přístup na Vyrovnávání zatížení virtuální IP (VIP) adresy cloudové služby nebo k virtuální síti. Virtuální adresa IP adresy a virtuální sítě se zveřejňují nikdy přímo pro koncový bod sítě internet. Interní-obchodní aplikace spustit v Azure a ke kterým se přistupuje z Azure nebo z místních prostředků.
 
@@ -74,7 +74,7 @@ Další možností pro-obchodní aplikace je VPN site-to-site k virtuální sít
 
 Interní nástroj pro vyrovnávání zatížení konfigurace nepodporují překládat pomocí SNAT. V tomto článku překládat pomocí SNAT odkazuje na scénáře, které zahrnují vydávají port překlad síťových adres zdroje. Virtuální počítač ve fondu nástroje pro vyrovnávání zatížení musí být doručena front-end IP adresu služby Vyrovnávání zatížení příslušné interní. Když toku Vyrovnávání zatížení sítě k virtuálnímu počítači, který byl odeslán toku dojde k selhání připojení. Tyto scénáře nejsou podporovány pro ILB. Místo toho je nutné použít nástroj pro vyrovnávání zatížení stylu proxy serveru.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Podporu správce prostředků Azure pro nástroj pro vyrovnávání zatížení Azure](load-balancer-arm.md)
 * [Začínáme s konfigurace vyrovnávání zatížení internetového](load-balancer-get-started-internet-arm-ps.md)

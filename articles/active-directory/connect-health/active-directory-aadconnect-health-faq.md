@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: b4c977b54c87276bd4b168bc56e70f3b918e6634
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 983c2c8aeb4c9d37213061dd70d6d64bae3de9d7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure AD Connect Health
 Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o stavu připojení služby Azure Active Directory (Azure AD). Tyto nejčastější dotazy se týkají dotazy o tom, jak používat službu, která zahrnuje fakturační model, možnosti, omezení a podpory.
@@ -178,6 +178,10 @@ CheckForMS17-010
 **Otázka: Proč se rutiny prostředí PowerShell <i>Get-MsolDirSyncProvisioningError</i> zobrazit méně chyby synchronizace ve výsledku?**
 
 <i>Get-MsolDirSyncProvisioningError</i> vrátí jenom DirSync chyby zřizování. Kromě toho, že portál Connect Health také ukazuje další synchronizaci typů chyb, jako je například export chyby. To je konzistentní s Azure AD Connect rozdílů výsledek. Další informace o [Azure AD Connect Sync chyby](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
+
+**Otázka: Proč se Moje ADFS audity není generované?**
+
+Použijte rutiny prostředí PowerShell <i>Get-AdfsProperties – AuditLevel</i> zajistit protokoly auditování není v zakázané stavu. Další informace o [protokoly auditu služby AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)
 
 
 ## <a name="related-links"></a>Související odkazy

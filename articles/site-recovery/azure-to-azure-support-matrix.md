@@ -7,13 +7,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2018
+ms.date: 03/29/2018
 ms.author: sujayt
-ms.openlocfilehash: 30ee269b3f484256001af211181a517821d79617
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4ddad2d8e5c5323b632b65efaf87d3df7ce8d707
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Podporu pro replikaci z jedné oblasti Azure do jiného
 
@@ -29,7 +29,7 @@ Tento článek shrnuje podporované konfigurace a součásti služby Azure Site 
 **Uživatelské rozhraní** |  **Podporované / nepodporované**
 --- | ---
 **Azure Portal** | Podporováno
-**Portál Classic** | Nepodporuje se
+**Portál Classic** | Nepodporováno
 **PowerShell** | Aktuálně nepodporuje
 **REST API** | Aktuálně nepodporuje
 **Rozhraní příkazového řádku** | Aktuálně nepodporuje
@@ -39,8 +39,8 @@ Tento článek shrnuje podporované konfigurace a součásti služby Azure Site 
 
 **Typ přesunutí prostředku** | **Podporované / nepodporované** | **Poznámky**  
 --- | --- | ---
-**Přesunutí trezoru rámci skupiny prostředků** | Nepodporuje se |Trezor služeb zotavení nelze přesouvat mezi skupinami prostředků.
-**Přesunutí výpočty, úložiště a sítě v rámci skupiny prostředků** | Nepodporuje se |Pokud přesunete po povolení replikace virtuálního počítače (nebo jeho přidružené komponenty, jako je například úložiště a sítě), budete muset zakázat replikaci a zapnout replikaci pro virtuální počítač znovu.
+**Přesunutí trezoru rámci skupiny prostředků** | Nepodporováno |Trezor služeb zotavení nelze přesouvat mezi skupinami prostředků.
+**Přesunutí výpočty, úložiště a sítě v rámci skupiny prostředků** | Nepodporováno |Pokud přesunete po povolení replikace virtuálního počítače (nebo jeho přidružené komponenty, jako je například úložiště a sítě), budete muset zakázat replikaci a zapnout replikaci pro virtuální počítač znovu.
 
 
 
@@ -79,8 +79,8 @@ Níže podpora je dostupná pro jakoukoli úlohu spuštěnou na uvedených opera
 - CentOS 6.5, 6.6, 6.7, 6.8, 6.9, 7.0, 7.1, 7.2, 7.3,7.4
 - Ubuntu 14.04 LTS Server [ (podporované verze jádra)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Ubuntu 16.04 LTS Server [ (podporované verze jádra)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-- Debian 7
-- Debian 8
+- Debian 7 [ (podporované verze jádra)](#supported-debian-kernel-versions-for-azure-virtual-machines)
+- Debian 8 [ (podporované verze jádra)](#supported-debian-kernel-versions-for-azure-virtual-machines)
 - Oracle Enterprise Linux 6.4, 6.5 systémem Red Hat kompatibilní jádra nebo nedělitelné Enterprise jádra verze 3 (UEK3)
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
@@ -95,14 +95,22 @@ Níže podpora je dostupná pro jakoukoli úlohu spuštěnou na uvedených opera
 
 **Verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-14.04 LTS | 9.10 | 3.13.0-24-Generic k 3.13.0-121-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-81-generic |
 14.04 LTS | 9.11 | 3.13.0-24-Generic k 3.13.0-125-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-83-generic |
 14.04 LTS | 9.12 | 3.13.0-24-Generic k 3.13.0-132-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-96-generic |
 14.04 LTS | 9.13 | 3.13.0-24-Generic k 3.13.0-137-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-104-generic |
-16.04 LTS | 9.10 | 4.4.0-21-Generic k 4.4.0-81-generic,<br/>4.8.0-34-Generic k 4.8.0-56-generic,<br/>4.10.0-14-Generic k 4.10.0-24-generic |
+14.04 LTS | 9.14 | 3.13.0-24-Generic k 3.13.0-141-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-112-generic |
 16.04 LTS | 9.11 | 4.4.0-21-Generic k 4.4.0-83-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-27-generic |
 16.04 LTS | 9.12 | 4.4.0-21-Generic k 4.4.0-96-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-35-generic |
 16.04 LTS | 9.13 | 4.4.0-21-Generic k 4.4.0-104-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic |
+16.04 LTS | 9.14 | 4.4.0-21-Generic k 4.4.0-112-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-32-generic,<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1009-azure |
+
+
+### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Podporované verze Debian jádra pro virtuální počítače Azure
+
+**Verze** | **Verze služby mobility** | **Verze jádra** |
+--- | --- | --- |
+Debian 7 | 9.14 | 3.2.0-4-amd64 k 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 8 | 9.14 | 3.16.0-4-amd64 k 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.5-amd64 |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Podporované souborové systémy a konfigurace úložiště hosta na virtuálních počítačích Azure spuštěn operační systém Linux.
 
@@ -134,9 +142,9 @@ Německo | Německo – střed, Německo – severovýchod
 **Konfigurace** | **Podporované/nepodporované** | **Poznámky**
 --- | --- | ---
 Velikost | Jakékoli velikosti virtuálního počítače Azure s nejméně 2 jádra procesoru a 1 GB paměti RAM | Odkazovat na [velikosti virtuálního počítače Azure](../virtual-machines/windows/sizes.md)
-Skupiny dostupnosti | Podporováno | Pokud použijete výchozí možnost během kroku replikaci povolit portálu, skupina dostupnosti je automaticky vytvořit, podle konfigurace oblast zdroje. Můžete změnit skupinu dostupnosti cíl ' replikované položky > Nastavení > výpočty a síť > skupiny dostupnosti, kdykoli.
+Sady dostupnosti | Podporováno | Pokud použijete výchozí možnost během kroku replikaci povolit portálu, skupina dostupnosti je automaticky vytvořit, podle konfigurace oblast zdroje. Můžete změnit skupinu dostupnosti cíl ' replikované položky > Nastavení > výpočty a síť > skupiny dostupnosti, kdykoli.
 Hybridní použití zvýhodnění (ROZBOČOVAČ) virtuálních počítačů | Podporováno | Pokud zdrojový virtuální počítač má licenci ROZBOČOVAČE povolené, testovací převzetí služeb při selhání nebo virtuálního počítače převzetí služeb při selhání také používá licence ROZBOČOVAČE.
-Škálovací sady virtuálních počítačů | Nepodporuje se |
+Škálovací sady virtuálních počítačů | Nepodporováno |
 Publikovaná Microsoft Azure Galerie obrázků- | Podporováno | Podporovány, pokud virtuální počítač běží na podporovaný operační systém pomocí Site Recovery
 Azure Gallery Image - publikovaná třetích stran | Podporováno | Podporovány, pokud virtuální počítač běží na podporovaný operační systém pomocí Site Recovery.
 Vlastní Image - publikovaná třetích stran | Podporováno | Podporovány, pokud virtuální počítač běží na podporovaný operační systém pomocí Site Recovery.
@@ -157,14 +165,14 @@ Standardní disky spravované | Podporované v oblastech Azure, ve kterých je A
 Pro prémiové disky spravované | Podporované v oblastech Azure, ve kterých je Azure Site Recovery podporována. Cloud vlády nejsou aktuálně podporovány. |
 Prostory úložiště | Podporováno |         
 Šifrování v klidovém stavu (SSE) | Podporováno | Pro účty úložiště mezipaměti a cíle můžete vybrat účet úložiště SSE povolena.     
-Azure Disk Encryption (ADE) | Nepodporuje se |
-Přidat nebo odebrat aktivní disku | Nepodporuje se | Je-li přidat nebo odebrat datový disk ve virtuálním počítači, musíte zakázat replikaci a zapnout replikaci pro virtuální počítač znovu.
-Vyloučení disku | Nepodporuje se|   Ve výchozím nastavení je vyloučen dočasné disku.
+Azure Disk Encryption (ADE) | Nepodporováno |
+Přidat nebo odebrat aktivní disku | Nepodporováno | Je-li přidat nebo odebrat datový disk ve virtuálním počítači, musíte zakázat replikaci a zapnout replikaci pro virtuální počítač znovu.
+Vyloučení disku | Nepodporováno|   Ve výchozím nastavení je vyloučen dočasné disku.
 LRS | Podporováno |
 GRS | Podporováno |
 RA-GRS | Podporováno |
-ZRS | Nepodporuje se |  
-Aktivní a studeného úložiště | Nepodporuje se | Disky virtuálního počítače nejsou podporovány na studených a aktivní úložiště
+ZRS | Nepodporováno |  
+Aktivní a studeného úložiště | Nepodporováno | Disky virtuálního počítače nejsou podporovány na studených a aktivní úložiště
 Virtuální síť koncové body služby (brány firewall úložiště Azure a virtuální sítě)  | Ne | Umožňuje přístup ke konkrétní virtuální sítě Azure na účty úložiště mezipaměti používá k ukládání replikovaných dat není podporována.
 Účty úložiště obecné účely V2 (jak horkého a studeného úložiště vrstva) | Ne | Nárůst nákladů transakce podstatně porovnává pro obecné účely účty úložiště V1
 
@@ -187,7 +195,7 @@ Integrace Traffic Manageru | Podporováno | Můžete předkonfigurovat váš spr
 Spravovat Azure DNS | Podporováno |
 Vlastní DNS  | Podporováno |    
 Neověřené Proxy | Podporováno | Odkazovat na [sítě pokyny dokumentu.](site-recovery-azure-to-azure-networking-guidance.md)    
-Ověřené Proxy | Nepodporuje se | Pokud virtuální počítač používá ověřené proxy pro odchozí připojení, nelze replikovat, pomocí Azure Site Recovery.    
+Ověřené Proxy | Nepodporováno | Pokud virtuální počítač používá ověřené proxy pro odchozí připojení, nelze replikovat, pomocí Azure Site Recovery.    
 Site to Site VPN s místním (s nebo bez ExpressRoute)| Podporováno | Ujistěte se, zda Nsg a udr jsou nakonfigurovány tak, že webový provoz obnovení není směrované na místní. Odkazovat na [sítě pokyny dokumentu.](site-recovery-azure-to-azure-networking-guidance.md)  
 Virtuální síť připojení virtuální sítě | Podporováno | Odkazovat na [sítě pokyny dokumentu.](site-recovery-azure-to-azure-networking-guidance.md)  
 

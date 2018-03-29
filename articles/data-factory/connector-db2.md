@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 0ef1ce8b4949c908595473f0183f585a6fd3da80
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7713e1b6a74fd099206804133d2dc8140fe83a8d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopírování dat z DB2 pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,7 +67,6 @@ Pro DB2 propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost typu musí být nastavena na: **Db2** | Ano |
 | server |Název serveru DB2. |Ano |
 | databáze |Název databáze DB2. |Ano |
-| schema |Název schématu v databázi. Název schématu rozlišuje velká a malá písmena. |Ne |
 | authenticationType. |Typ ověřování používaný pro připojení k databázi DB2.<br/>Povolená hodnota je: **základní**. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno pro připojení k databázi DB2. |Ano |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |

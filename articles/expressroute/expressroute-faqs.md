@@ -1,24 +1,24 @@
 ---
-title: "Azure ExpressRoute – nejčastější dotazy | Microsoft Docs"
-description: "ExpressRoute – nejčastější dotazy obsahuje informace o podporované služby Azure, náklady, dat a připojení, SLA, poskytovatelé a umístění, šířky pásma a další technické podrobnosti."
+title: Azure ExpressRoute – nejčastější dotazy | Microsoft Docs
+description: ExpressRoute – nejčastější dotazy obsahuje informace o podporované služby Azure, náklady, dat a připojení, SLA, poskytovatelé a umístění, šířky pásma a další technické podrobnosti.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 09b17bc4-d0b3-4ab0-8c14-eed730e1446e
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2018
+ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 62e532f3750adf8f4defe3e8f8aabe5b9f0446a0
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 3f33703ec86f131d18c89cf4b29514c5002349d1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -340,7 +340,10 @@ V tématu [ExpressRoute partnery a umístění](expressroute-locations.md) infor
 
 ### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>Můžete získat přístup k Office 365 přes Internet, i když ExpressRoute byla nakonfigurována pro Moje organizace?
 
-Ano. Koncové body služby Office 365 jsou dostupné prostřednictvím Internetu, i když ExpressRoute byla nakonfigurována pro vaší sítě. Pokud jste v umístění, které je nakonfigurován pro připojení ke službám Office 365 prostřednictvím ExpressRoute, můžete se připojit prostřednictvím ExpressRoute.
+Ano. Koncové body služby Office 365 jsou dostupné prostřednictvím Internetu, i když ExpressRoute byla nakonfigurována pro vaší sítě. Zkontrolujte síťové týmem vaší organizace, pokud síť ve vaší lokalitě je nakonfigurován pro připojení ke službám Office 365 prostřednictvím ExpressRoute.
+
+### <a name="how-can-i-plan-for-high-availability-for-office-365-network-traffic-on-azure-expressroute"></a>Jak se můžete naplánovat pro zajištění vysoké dostupnosti pro Office 365 síťový provoz na Azure ExpressRoute?
+Viz doporučení pro [vysoké dostupnosti a převzetí služeb při selhání s Azure ExpressRoute](https://aka.ms/erhighavailability)
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Můžete přístup služeb Office 365 US Government komunity (RSZ) přes US Government okruhu Azure ExpressRoute?
 

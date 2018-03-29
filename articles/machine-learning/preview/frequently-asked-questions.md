@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning 2017 Preview – nejčastější dotazy | Microsoft Docs"
-description: "Tento článek obsahuje nejčastější dotazy a odpovědi pro Azure Machine Learning funkce verze preview"
+title: Azure Machine Learning 2017 Preview – nejčastější dotazy | Microsoft Docs
+description: Tento článek obsahuje nejčastější dotazy a odpovědi pro Azure Machine Learning funkce verze preview
 services: machine-learning
 author: serinakaye
 ms.author: serinak
@@ -10,25 +10,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 6146e1ce98144a05bef2ca29705f451aa3f5fb50
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 864e9ff5551637a93b957e5011a8857072c6eaaf
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Nejčastější dotazy k Azure Machine Learning
 
+Azure Machine Learning je plně spravovaná služba Azure, která umožňuje vytváření, testování, správu a nasazení strojového učení a AI modelů. Našich služeb a ke stažení aplikace nabízejí přístup první kód, který využívá cloud, místní a hraniční síti, aby poskytují vlaku, nasazovat a spravovat a monitorovat modelů pomocí možnosti, rychlost a pružnost. Alternativně Azure Machine Learning Studio nabízí založené na prohlížeči visual přetažení myší pro tvorbu prostředí a kde není vyžadováno žádné kódování. 
+
 ## <a name="general-product-questions"></a>Obecné otázky
-
-**Co je Azure Machine Learning?**
-
-Azure Machine Learning je plně spravovaná služba Azure, která umožňuje vytváření, testování, správu a nasazení strojového učení a AI modelů. Naše nových služeb a ke stažení aplikace nabízejí přístup první kód, který využívá cloud, místní a hraniční síti, aby poskytují vlaku, nasazovat a spravovat a monitorovat modelů pomocí možnosti, rychlost a pružnost. Alternativně Azure Machine Learning Studio nabízí založené na prohlížeči visual přetažení myší pro tvorbu prostředí a kde není vyžadováno žádné kódování. 
-
-**Ve které oblasti jsou že nových služeb být k dispozici?**
-
-Vyhledejte podporovaných oblastí Azure pro správu služby experimentování a modelu v Azure Machine Learning na [produkty Azure podle oblasti](https://azure.microsoft.com/regions/services/) stránky.
-
-Další oblastí se přidá, jako produkt.  Pomůžete nám nastavit priority které oblasti k nasazení na našem [Azure Machine Learning zpětné vazby](https://feedback.azure.com/forums/257792-machine-learning) lokality. 
 
 **Jaké jinými službami Azure jsou potřeba?**
 

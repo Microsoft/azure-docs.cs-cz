@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 03/25/2018
 ms.author: johnkem
-ms.openlocfilehash: 69ec5392f034ffe94315c17366a9242d86c69d6d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e09fe4fd48d1806e2194ed3065e7c2edbe2d1aa5
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="get-started-with-azure-monitor"></a>Začínáme se službou Azure Monitor
 Azure Monitor je služba platformy, která poskytuje jeden zdroj pro monitorování prostředků Azure. S monitorováním Azure můžete vizualizovat, dotaz, směrovat, archivaci a v opačném případě proveďte akce na metriky a protokoly pocházejících z prostředků v Azure. Můžete pracovat s dat pomocí pomocí portálu Azure [rutiny prostředí PowerShell monitorování](insights-powershell-samples.md), [rozhraní příkazového řádku a platformy](insights-cli-samples.md), nebo [rozhraní REST API Azure monitorování](https://msdn.microsoft.com/library/dn931943.aspx). V tomto článku vás seznámíme s několika klíčovými komponentami služby Azure Monitor a pro ukázky budeme používat portál.
@@ -27,17 +27,17 @@ Azure Monitor je služba platformy, která poskytuje jeden zdroj pro monitorová
 1. Na portálu, přejděte na **všechny služby** a najděte **monitorování** možnost. Kliknutím na ikonu hvězdičky si tuto možnost přidejte do seznamu oblíbených položek, abyste k ní neustále měli snadný přístup z levého navigačního panelu.
 
     ![Služba Monitor v seznamu služeb](./media/monitoring-get-started/monitor-more-services.png)
-2. Klikněte **monitorování** možnost otevře **monitorování** stránky. Tato stránka spojuje veškeré monitorování nastavení a data do jednoho konsolidované zobrazení. Nejprve se otevře část **Protokol aktivit**.
+2. Klikněte **monitorování** možnost otevře **monitorování** stránky. Tato stránka spojuje veškeré monitorování nastavení a data do jednoho konsolidované zobrazení. Nejprve otevře se **přehled** části. V přehledu zobrazuje souhrn výstrah monitorování, chyb a informační služby stavu zpravodaje, které se vztahují k prostředkům ve vašem předplatném.  
 
     ![Monitorování navigace](./media/monitoring-get-started/monitor-blade-nav.png)
 
     Azure Monitor nabízí tři základní kategorie monitorování dat: **protokol aktivit**, **metriky** a **diagnostické protokoly**.
 3. Kliknutím na **Protokol aktivit** zajistíte zobrazení části s protokolem aktivit.
 
-    ![Protokol aktivit](./media/monitoring-get-started/monitor-act-log-blade.png)
-
     [**Protokol aktivit**](monitoring-overview-activity-logs.md) popisuje všechny operace prováděné s prostředky v rámci vašeho předplatného. Na základě protokolu aktivit můžete určit „co, kdo a kdy“ pro každou operaci vytvoření, aktualizace nebo odstranění týkající se prostředků v rámci vašeho předplatného. Protokol aktivit například obsahuje informace o tom, kdy byla webová aplikace zastavena a kdo ji zastavil. Události protokolu aktivit se ukládají v rámci platformy a pro dotazy jsou k dispozici po dobu 90 dní.
 
+    ![Protokol aktivit](./media/monitoring-get-started/monitor-act-log-blade.png)
+    
     Můžete vytvářet a ukládat dotazy pro běžné filtry a pak připnout nejdůležitější dotazy na řídicí panel portálu. Díky tomu se dozvíte o všech výskytech událostí, které splňují příslušná kritéria.
 4. V zobrazení nastavte filtrování konkrétní skupiny prostředků za poslední týden. Pak klikněte na tlačítko **Uložit**. Zadejte název dotazu. 
 
@@ -60,7 +60,7 @@ Azure Monitor je služba platformy, která poskytuje jeden zdroj pro monitorová
     ![Okno Metrika](./media/monitoring-get-started/monitor-metric-blade.png)
 
    > [!NOTE]
-   > Některé metriky jsou k dispozici jen po povolení [Application Insights](../application-insights/app-insights-overview.md) a případně diagnostiky Azure pro Windows nebo Linux pro příslušný prostředek.
+   > Některé metriky jsou k dispozici pouze povolením [Application Insights](../application-insights/app-insights-overview.md) nebo Windows nebo Linux Azure Diagnostics rozšíření na vašem prostředku.
    >
    >
 9. Až budete s grafem spokojeni, můžete ho připnout na řídicí panel pomocí tlačítka **Pin** (Připnout).
@@ -80,18 +80,19 @@ Azure Monitor je služba platformy, která poskytuje jeden zdroj pro monitorová
     ![Povolení diagnostických protokolů](./media/monitoring-get-started/monitor-diaglogs-enable.png)
 
     Pokud jste nastavili odesílání diagnostických protokolů do Log Analytics, můžete v nich pak hledat na portálu v části **Hledání v protokolu**.
-12. Přejděte na **výstrahy** části stránky monitorování.
+12. Přejděte na **výstrahy (klasické)** části stránky monitorování.
 
     ![Okno upozornění pro veřejnost](./media/monitoring-get-started/monitor-alerts-nopp.png)
 
-    Tady můžete spravovat všechna [**upozornění**](monitoring-overview-alerts.md) týkající se vašich prostředků Azure. To zahrnuje výstrahy na metriky, aktivity protokolu události, testy webu Application Insights (umístění) a proaktivní diagnostics Application Insights. Upozornění můžou aktivovat odeslání e-mailu nebo předání dat typu HTTP POST na adresu URL webhooku.
+    Tady můžete spravovat všechny [ **classic výstrahy** ](monitoring-overview-alerts.md) na vašich prostředků Azure. To zahrnuje výstrahy na metriky, aktivity protokolu události, testy webu Application Insights (umístění) a proaktivní diagnostics Application Insights. Výstrahy se připojit ke skupinám akce. [Akce skupiny](monitoring-action-groups.md) poskytnout způsob, jak upozornit uživatele, kteří nebo provádět určité akce, když se aktivuje výstrahu. 
+    
 13. Klikněte na **Add metric alert** (Přidat upozornění metriky) a vytvořte upozornění.
 
     ![Přidání upozornění metriky](./media/monitoring-get-started/monitor-alerts-add.png)
 
     Pak můžete upozornění připnout na řídicí panel, abyste mohli kdykoli snadno zjistit jeho stav.
 
-    Azure monitorování teď má také [ **metriky výstrahy téměř v reálném čase**](https://aka.ms/azuremonitor/near-real-time-alerts)(preview), může být vyhodnocen frekvencí co nejnižší každou minutu!
+    Azure monitorování teď má také [ **novější výstrahy** ](https://aka.ms/azuremonitor/near-real-time-alerts) který lze vyhodnotit frekvencí co nejnižší každou minutu.
     
 14. Sekce Monitor obsahuje také odkazy na aplikace [Application Insights](../application-insights/app-insights-overview.md) a na řešení správy [Log Analytics](../log-analytics/log-analytics-overview.md). Tyto produkty společnosti Microsoft jsou hluboce integrovány se službou Azure Monitor.
 15. Pokud nepoužíváte Application Insights nebo Log Analytics, je pravděpodobné, že je služba Azure Monitor propojená s vašimi aktuálními produkty zajišťujícími monitorování, protokolování a generování upozornění. Úplný seznam spolu s pokyny k integraci najdete na naší [stránce s přehledem partnerů](monitoring-partners.md).
@@ -101,4 +102,6 @@ Provedením těchto kroků a připnutím všech relevantních dlaždic na řídi
 ![Řídicí panel služby Azure Monitor](./media/monitoring-get-started/monitor-final-dash.png)
 
 ## <a name="next-steps"></a>Další postup
-* Přečtěte si článek [Přehled služby Azure Monitor](monitoring-overview.md)
+* Pro čtení [přehled nástroje pro monitorování všech Azure](monitoring-overview.md) pochopit, jak funguje Azure monitorování s nimi. 
+
+

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: 75615de523f1fba808f44fb1a1015138fb190edc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2982c8ba534b9a93a021a9d3a3819b904f09abc7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení kardiostimulátor na SUSE Linux Enterprise Server v Azure
 
@@ -280,7 +280,7 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
 1. **[A]**  Nastavit rozlišení názvu hostitele   
 
    Můžete buď použít DNS server, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak chcete použít soubor/etc/hosts.
-   Nahraďte adresu IP a název hostitele v následujících příkazech
+   Nahraďte adresu IP a název hostitele v následujících příkazech. Výhodou použití/Etc/Hosts, že je váš cluster nezávislé na DNS, který může být příliš jediný bod selhání.
 
    <pre><code>
    sudo vi /etc/hosts
@@ -329,10 +329,16 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    sudo vi /etc/corosync/corosync.conf   
    </code></pre>
 
-   Do souboru přidejte následující obsah tučně.
+   Do souboru přidejte následující tučné obsah, pokud hodnoty nejsou zde nebo jiný.
    
    <pre><code> 
    [...]
+     <b>token:          5000
+     token_retransmits_before_loss_const: 10
+     join:           60
+     consensus:      6000
+     max_messages:   20</b>
+     
      interface { 
         [...] 
      }

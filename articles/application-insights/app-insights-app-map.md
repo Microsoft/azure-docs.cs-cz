@@ -1,8 +1,8 @@
 ---
-title: "Mapa aplikace ve službě Azure Application Insights | Microsoft Docs"
-description: "Monitorování topologie komplexních aplikací s aplikací mapy"
+title: Mapa aplikace ve službě Azure Application Insights | Microsoft Docs
+description: Monitorování topologie komplexních aplikací s aplikací mapy
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3bbed59bf93eab5e729fbdd3ccae04599ac47081
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 4b95cd947cd977208dee32d18fbc6a1fb099ff3b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Rychlou kontrolu distribuované aplikace
 Mapy aplikací umožňuje přímé kritické body nebo selhání hotspotům pro všechny součásti distribuované aplikace. Každý uzel na mapě představuje komponentu aplikace nebo jeho závislé součásti; a má stav klíčového ukazatele výkonu a výstrahy stavu. Můžete kliknutím z libovolné součásti podrobnější diagnostiku, jako je například události Application Insights. Pokud vaše aplikace používá služby Azure, můžete také kliknutím na Azure diagnostics, jako je například doporučení Poradce pro databáze systému SQL.
@@ -37,7 +37,7 @@ Povolit "Kompozitních aplikací Map" z [verze Preview seznamu](app-insights-pre
 ![Povolit preview mapy](media/app-insights-app-map/preview-from-classic.png)
 
 >[!Note]
-Tato verze preview nahrazuje předchozí verze preview "Map aplikace Mult-role". V tomto okamžiku použijte k zobrazení celého topologie napříč více úrovní závislostí součásti aplikace. Sdělte nám svůj názor, přidáme podobná co classic mapy podporuje další funkce.
+Tato verze preview nahrazuje předchozí verze preview "Mapování více rolí aplikací". V tomto okamžiku použijte k zobrazení celého topologie napříč více úrovní závislostí součásti aplikace. Sdělte nám svůj názor, přidáme podobná co classic mapy podporuje další funkce.
 
 Topologie celou aplikaci můžete zobrazit napříč více úrovní součásti související aplikace. Součástí může být různé prostředky Application Insights, nebo různé role v jednom prostředku. Mapa aplikace vyhledá součásti podle následující HTTP závislostí volání mezi servery s Application Insights SDK nainstalována. 
 
@@ -114,7 +114,7 @@ Ve výchozím nastavení mapy souhrn všech dat k dispozici pro vybrané časov�
 ## <a name="save-filters"></a>Uložit filtry
 Pokud chcete uložit filtry, které jste použili, filtrované zobrazení na připnout [řídicí panel](app-insights-dashboards.md).
 
-![Připnutí na řídicí panel](./media/app-insights-app-map/12.png)
+![Připnout na řídicí panel](./media/app-insights-app-map/12.png)
 
 ## <a name="error-pane"></a>Podokno chyby
 Při kliknutí na uzel v mapě, zobrazí se podokno k chybě na pravé straně shrnutí selhání pro tento uzel. Chyby jsou nejprve seskupené podle ID operace a potom seskupené podle ID problému.
@@ -123,10 +123,10 @@ Při kliknutí na uzel v mapě, zobrazí se podokno k chybě na pravé straně s
 
 Kliknutím na selhání přejdete k nejnovější instanci tohoto selhání.
 
-## <a name="resource-health"></a>Stav prostředků
+## <a name="resource-health"></a>Stav prostředku
 Pro některé typy prostředků v horní části podokna chyba se zobrazí stav prostředku. Například kliknutím na uzel SQL se zobrazí stav databáze a všechny výstrahy, které mají aktivováno.
 
-![Stav prostředků](./media/app-insights-app-map/resource-health.png)
+![Stav prostředku](./media/app-insights-app-map/resource-health.png)
 
 Můžete kliknout na název prostředku zobrazíte standardní přehled metriky pro tento prostředek.
 
@@ -134,7 +134,7 @@ Můžete kliknout na název prostředku zobrazíte standardní přehled metriky 
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
-## <a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Odezva
 Zadejte prosím zpětnou vazbu prostřednictvím možnosti portálu zpětné vazby.
 
 ![Obrázek MapLink-1](./media/app-insights-app-map/13.png)
@@ -142,4 +142,4 @@ Zadejte prosím zpětnou vazbu prostřednictvím možnosti portálu zpětné vaz
 
 ## <a name="next-steps"></a>Další postup
 
-* [portál Azure Portal](https://portal.azure.com)
+* [Azure Portal](https://portal.azure.com)

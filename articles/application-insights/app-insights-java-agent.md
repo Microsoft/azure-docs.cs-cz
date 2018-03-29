@@ -1,6 +1,6 @@
 ---
-title: "Monitorování výkonu pro webové aplikace v jazyce Java ve službě Azure Application Insights | Microsoft Docs"
-description: "Rozšířené výkon a sledování využití vašeho webu Java pomocí Application Insights."
+title: Monitorování výkonu pro webové aplikace v jazyce Java ve službě Azure Application Insights | Microsoft Docs
+description: Rozšířené výkon a sledování využití vašeho webu Java pomocí Application Insights.
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: ecfcf7a3b3698435f98b74474d0ca7223ab2b46c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: b327e7f062cdf3e6b1b34a9540461dcb18caf21c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="monitor-dependencies-exceptions-and-execution-times-in-java-web-apps"></a>Monitorování závislostí, výjimky a časy spuštění webové aplikace v jazyce Java
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycení výjimky a časy spuštění metoda v webové aplikace v jazyce Java
 
 
 Pokud máte [instrumentovány webové aplikace Java pomocí Application Insights][java], můžete agenta Java a získejte detailnější přehledy, beze změn kódu:
 
 * **Závislosti:** Data o volání, které vytváří vaše aplikace pro jiné komponenty, včetně:
-  * **Volání REST** provedené prostřednictvím HttpClient, OkHttp a RestTemplate (pružiny).
-  * **Redis** volání provedená prostřednictvím Jedis klienta. Pokud volání trvá déle, než 10s, agent také načte argumentů volání.
-  * **[Volání JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB nebo Apache Derby DB. "executeBatch" hovory nejsou podporovány. MySQL a PostgreSQL Pokud volání trvá déle, než 10s, bude agent podřízen plán dotazu.
-* **Zachycení výjimky:** Data o výjimky, které jsou zpracovávány vašeho kódu.
-* **Metoda čas spuštění:** Data o doba potřebná k provedení konkrétních metod.
+  * **Volání REST** provedené prostřednictvím HttpClient, OkHttp a RestTemplate (pružiny) zaznamenání.
+  * **Redis** zaznamenání volání provedená prostřednictvím Jedis klienta.
+  * **[Volání JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL, SQL Server a Oracle DB příkazy jsou ukládány automaticky. Pro databázi MySQL Pokud volání trvá déle, než 10s, bude agent podřízen plán dotazu.
+* **Zachycení výjimky:** informace o výjimky, které jsou zpracovávány vašeho kódu.
+* **Metoda čas spuštění:** informace o době potřebné k provedení konkrétních metod.
 
 Pokud chcete používat agenta Java, nainstalujte na vašem serveru. Webové aplikace musí být instrumentovány s [Application Insights Java SDK][java]. 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Nainstalujte agenta Application Insights pro jazyk Java
-1. Na počítači se systémem vašeho serveru Java, [stáhnout agenta](https://aka.ms/aijavasdk).
+1. Na počítači se systémem vašeho serveru Java, [stáhnout agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Ověřte, zda Pokud chcete stáhnout stejné verson agenta Java jako balíčky jádra a web Application Insights Java SDK.
 2. Upravte skript spuštění serveru aplikace a přidejte následující JVM:
    
     `javaagent:`*Úplná cesta k souboru JAR agenta*

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: Kumud
-ms.openlocfilehash: 1d39cdc13e69740dc99e67f935b60db218536044
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7d60925381abe617f6e2fac51176b8e30517c3ba
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Diagnostika stavu a metrik pro nástroj pro vyrovnávání zatížení
 
@@ -88,7 +88,7 @@ Dostupnost VIP selže z následujících důvodů:
 - Nasazení nemá žádné virtuální počítače v pořádku, zbývající ve fondu back-end. 
 - Výpadek infrastruktury došlo k chybě, způsobí, že dostupnost virtuálních IP adres k selhání.
 
-Můžete použít [metriku dostupnosti VIP společně s stav testu k diagnostickým účelům](https://aka.ms/lbdiagnostics#vipavailabilityandhealthprobes).
+Můžete použít [metriku dostupnosti VIP společně s stav testu k diagnostickým účelům](#vipavailabilityandhealthprobes).
 
 Použití **průměrná** jako agregace pro většinu scénářů.
 
@@ -204,9 +204,9 @@ Následující tabulka uvádí stav různých prostředků a jejich popisy.
 
 | Stav prostředku | Popis |
 | --- | --- |
-| Dostupné | Prostředek veřejný Standard pro vyrovnávání zatížení je v pořádku a k dispozici |
-| Není k dispozici | Veřejný Standard pro vyrovnávání zatížení prostředku není v pořádku. Diagnostika stavu prostřednictvím Azure monitorování > metriky. (*Také to může znamenat, že prostředek není veřejný Standard pro vyrovnávání zatížení*) |
-| Neznámý | Stav prostředku pro veřejné standardní nástroj pro vyrovnávání zatížení dosud nebyla aktualizována. (*Také to může znamenat, že prostředek není veřejný Standard pro vyrovnávání zatížení*)  |
+| Dostupný | Prostředek veřejný Standard pro vyrovnávání zatížení je v pořádku a k dispozici |
+| Není k dispozici. | Veřejný Standard pro vyrovnávání zatížení prostředku není v pořádku. Diagnostika stavu prostřednictvím Azure monitorování > metriky. (*Také to může znamenat, že prostředek není veřejný Standard pro vyrovnávání zatížení*) |
+| Unknown | Stav prostředku pro veřejné standardní nástroj pro vyrovnávání zatížení dosud nebyla aktualizována. (*Také to může znamenat, že prostředek není veřejný Standard pro vyrovnávání zatížení*)  |
 
 ## <a name="next-steps"></a>Další kroky
 

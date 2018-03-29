@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Bezproblémové Single Sign-On - úvodní | Microsoft Docs"
-description: "Tento článek popisuje, jak začít pracovat s Azure Active Directory bezproblémové jednotné přihlašování"
+title: 'Azure AD Connect: Bezproblémové Single Sign-On - úvodní | Microsoft Docs'
+description: Tento článek popisuje, jak začít pracovat s Azure Active Directory bezproblémové jednotné přihlašování
 services: active-directory
-keywords: "Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování"
-documentationcenter: 
+keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: billmath
-ms.openlocfilehash: 67f6ca36c334a60b634094f07e5d9696a6961eb8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d026009151f85a01f14ce4dd8a510f60ff407da1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý start
 
@@ -32,7 +32,7 @@ Pokud chcete nasadit bezproblémové jednotné přihlašování, postupujte takt
 
 Ujistěte se, že jsou splněné následující požadavky:
 
-* **Nastavit server Azure AD Connect**: Pokud používáte [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md) jako způsob přihlášení je požadovaná žádné další kontrolu požadovaných součástí. Pokud používáte [synchronizaci hodnoty hash hesla](active-directory-aadconnectsync-implement-password-synchronization.md) jako způsob přihlášení a pokud je brána firewall mezi Azure AD Connect a službou Azure AD, ověřte, že:
+* **Nastavit server Azure AD Connect**: Pokud používáte [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md) jako způsob přihlášení je požadovaná žádné další kontrolu požadovaných součástí. Pokud používáte [synchronizaci hodnoty hash hesla](active-directory-aadconnectsync-implement-password-hash-synchronization.md) jako způsob přihlášení a pokud je brána firewall mezi Azure AD Connect a službou Azure AD, ověřte, že:
    - Používáte verzi 1.1.644.0 nebo novější služby Azure AD Connect. 
    - Pokud brána firewall nebo proxy server umožňuje povolených DNS, povolených připojení k  **\*. msappproxy.net** adresy URL přes port 443. Pokud ne, povolit přístup k [rozsahy IP adres Azure datacenter](https://www.microsoft.com/download/details.aspx?id=41653), se aktualizují každý týden. Tento požadavek se vztahuje pouze v případě, že povolíte funkci. Není nutné pro skutečné uživatelská přihlášení.
 
@@ -87,7 +87,7 @@ Kromě toho je nutné povolit zásadu zóny intranetu názvem **povolit aktualiz
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Proč je třeba změnit nastavení zóny intranetu uživatelů?
 
-Ve výchozím prohlížeči automaticky vypočítá správné zóně, Internetu nebo intranetu, z konkrétní adresy URL. Například "http://contoso/" mapuje do zóny intranetu, zatímco "http://intranet.contoso.com/" mapuje zóně Internet (protože adresa URL obsahuje tečku). Prohlížeče nebude odesílají lístky protokolu Kerberos koncového bodu cloudu, jako je Azure AD adresu URL, pokud explicitně přidat adresu URL do zóny intranetu prohlížeče.
+Ve výchozím prohlížeči automaticky vypočítá správné zóně, Internetu nebo intranetu, z konkrétní adresy URL. Například "http://contoso/"mapy do zóny intranetu, zatímco"http://intranet.contoso.com/" mapuje zóně Internet (protože adresa URL obsahuje tečku). Prohlížeče nebude odesílají lístky protokolu Kerberos koncového bodu cloudu, jako je Azure AD adresu URL, pokud explicitně přidat adresu URL do zóny intranetu prohlížeče.
 
 ### <a name="detailed-steps"></a>Podrobné kroky
 

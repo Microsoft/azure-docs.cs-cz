@@ -14,12 +14,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/20/2017
-ms.openlocfilehash: 17a95ab00ed7bbda85a8fba5456c758f3ee9f116
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 03/28/2018
+ms.openlocfilehash: e7fb545b985968b4d9e5a516c812cbf594352e08
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Machine Learning Studio publikuje modely jako webové služby, které je možné snadno využívat ve vlastních aplikacích nebo nástrojích BI, například v Excelu.
@@ -50,7 +50,7 @@ Vlevo nahoře klikněte na nabídku ![Nabídka](./media/what-is-ml-studio/menu.p
 ### <a name="cortana-intelligence"></a>Cortana Intelligence
 Po kliknutí na **Cortana Intelligence** přejdete na domovskou stránku sady [Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite). Cortana Intelligence Suite je plně spravovaná sada pro pokročilou analýzu velkých objemů dat, která vám umožní získat z dat užitečné informace. Úplnou dokumentaci, včetně příběhů zákazníků, najdete na domovské stránce sady.
 
-### <a name="azure-machine-learning"></a>Azure Machine Learning
+### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 Tady jsou dvě možnosti – **Domů**, což je stránka, na které jste začali, a **Studio**.
 
 Kliknutím na **Studio** přejdete do nástroje **Azure Machine Learning Studio**. Nejprve se zobrazí výzva, abyste se přihlásili účtem Microsoft, případně školním nebo pracovním účtem. Jakmile se přihlásíte, na levé straně uvidíte následující karty:
@@ -112,6 +112,56 @@ S procházením rozsáhlé knihovny dostupných algoritmů strojového učení v
 Jakmile je váš model prediktivní analýzy připraven, můžete jej přímo v nástroji Machine Learning Studio nasadit jako webovou službu. Další podrobnosti k tomuto procesu najdete v tématu [Nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md).
 
 [ml-studio-overview]:./media/what-is-ml-studio/azure-ml-studio-diagram.jpg
+
+
+
+## <a name="key-machine-learning-terms-and-concepts"></a>Klíčová terminologie a koncepty strojového učení
+Pojmy z oblasti strojového učení nemusí být na první pohled úplně jasné. Ke klíčovým pojmům zde najdete definice, které vám leccos objasní. Do komentářů dole na stránce nám můžete napsat, jaké další termíny byste chtěli definovat.
+
+### <a name="data-exploration-descriptive-analytics-and-predictive-analytics"></a>Zkoumání dat, deskriptivní analýza a prediktivní analýza
+
+**Zkoumání dat** je proces shromažďování informací o velké a často nestrukturované datové sadě s cílem najít charakteristiky pro přesně zacílenou analýzu.
+
+**Dolování dat** označuje automatizované zkoumání dat.
+
+**Deskriptivní analýza** je proces analyzování datové sady s cílem shrnout, co se stalo. Velká většina obchodních analýz – například prodejní sestavy, webové metriky a analýzy sociálních sítí – je deskriptivních.
+
+**Prediktivní analýza** je proces vytváření modelů na základě historických nebo aktuální dat s cílem předpovídat budoucí výsledky.
+
+### <a name="supervised-and-unsupervised-learning"></a>Učení se supervizí a bez supervize
+ V algoritmech **učení se supervizí** probíhá trénink na označených datech – jinými slovy na datech zahrnujících příklady žádoucích odpovědí. Například v modelu, který identifikuje podvodné použití platební karty, by trénink probíhal na datové sadě s označenými datovými body transakcí, o kterých se ví, že byly, resp. nebyly podvodné. Většina strojového učení probíhá se supervizí.
+
+ **Učení bez supervize** probíhá na neoznačených datech a cílem je nalezení vztahů a souvislostí v nich. Cílem může být například nalezení demograficky definovaných skupin zákazníků s podobnými nákupními návyky.
+
+### <a name="model-training-and-evaluation"></a>Trénování a hodnocení modelů
+Model strojového učení je abstrakcí otázky, na kterou hledáte odpověď, nebo výsledku, který chcete předpovědět. Modely se trénují a vyhodnocují na základě existujících dat.
+
+#### <a name="training-data"></a>Data pro trénink
+Při tréninku modelů používáte známou datovou sadu a podle charakteru dat model upravujete tak, abyste co nejvíce zpřesnili jeho výstupy. V Azure Machine Learning se model sestavuje z algoritmického modulu, který zpracovává trénovací data a funkční moduly, například modul pro stanovení skóre.
+
+Pokud v rámci učení se supervizí trénujete model pro odhalování podvodů, používáte sadu transakcí, které jsou označeny jako podvodné nebo platné. Datovou sadu náhodně rozdělíte a pak jednu část použijete k natrénování modelu a další část k otestování nebo vyhodnocení modelu.
+
+#### <a name="evaluation-data"></a>Data pro vyhodnocení
+Jakmile model natrénujete, vyhodnotíte ho na zbývajících testovacích datech. Využijete k tomu data, u kterých již znáte výsledky, aby bylo možné určit, zda je váš model schopen přesné predikce.
+
+## <a name="other-common-machine-learning-terms"></a>Další běžné pojmy používané při strojovém učení
+* **algoritmus**: Samostatná sada pravidel používaná k řešení problémů prostřednictvím zpracování dat, matematických výpočtů nebo automatizovaného posuzování.
+* **detekce anomálií**: Model, který nachází a označuje neobvyklé události či hodnoty a pomáhá objevovat problémy. Detektor podvodů s platebními kartami například vyhledává nezvyklé nákupy.
+* **kategorizovaná data**: Data, která jsou uspořádána do kategorií a která lze rozdělit do skupin. Kategorizovaná datová sada pro automobily by například mohla specifikovat rok výroby, značku, model a cenu.
+* **klasifikace**: Model pro uspořádání datových bodů do kategorií na základě datové sady, u které je již seskupení do kategorií známo.
+* **konstruování příznaků**: Proces extrahování nebo výběru příznaků či atributů souvisejících s datovou sadou s cílem zvýšit její využitelnost a vylepšit výsledky. Například využitelnost dat o leteckých tarifech lze vylepšit určením dnů v týdnu a svátků. Viz [Výběr a konstruování příznaků v Azure Machine Learning](../team-data-science-process/create-features.md).
+* **modul**: Funkční součást modelu v nástroji Machine Learning Studio, například modul pro zadávání dat, který umožňuje zadávat a upravovat malé datové sady. Určitým typem modulu v nástroji Machine Learning Studio je i algoritmus.
+* **model**: Model v rámci učení se supervizí představuje produkt experimentu strojového učení a skládá se z dat pro trénink, algoritmického modulu a funkčních modulů, jako je modul Určení skóre modelu.
+* **číselná data**: Data, která mají význam jako měření (spojitá data) nebo počty (diskrétní neboli nespojitá data). Označují se také jako *kvantitativní data*.
+* **rozdělení**: Metoda, podle které data rozdělíte do vzorků. Další informace naleznete v tématu [Rozdělení a vzorky](https://msdn.microsoft.com/library/azure/dn905960.aspx).
+* **predikce**: Hodnota nebo hodnoty předpovězené z modelu strojového učení. Možná jste se také setkali s termínem „predikované skóre“. To však nepředstavuje konečný výstup modelu. Podle skóre se řídí vyhodnocení modelu.
+* **regrese**: Model pro predikci hodnoty na základě nezávislých proměnných, například předpověď ceny automobilu na základě roku výroby a značky.
+* **skóre**: Předpovězená hodnota generovaná z natrénovaného klasifikačního nebo regresního modelu na základě [modulu pro stanovení skóre](https://msdn.microsoft.com/library/azure/dn905995.aspx) v nástroji Machine Learning Studio. Klasifikační modely rovněž vracejí skóre pro pravděpodobnost předpovězené hodnoty. Po vygenerování skóre z modelu můžete vyhodnotit jeho přesnost pomocí [modulu pro vyhodnocení modelu](https://msdn.microsoft.com/library/azure/dn905915.aspx).
+* **vzorek**: Část datové sady, která by měla představovat celek. Vzorky lze vybírat náhodně nebo podle konkrétních příznaků či atributů datové sady.
+
+## <a name="next-steps"></a>Další kroky
+Se základy prediktivní analýzy a strojového učení se můžete seznámit v [podrobném kurzu](create-experiment.md) a [na základě ukázek](sample-experiments.md).  
+
 
 <!-- Module References -->
 [convert-to-arff]: https://msdn.microsoft.com/library/azure/62d2cece-d832-4a7a-a0bd-f01f03af0960/

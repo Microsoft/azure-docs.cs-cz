@@ -1,22 +1,22 @@
 ---
-title: "Výstrahy v protokolu aktivit na oznámení služby Azure | Microsoft Docs"
-description: "SMS, e-mailem nebo webhooku dostat upozornění, když dojde k služby Azure."
+title: Výstrahy v protokolu aktivit na oznámení služby Azure | Microsoft Docs
+description: SMS, e-mailem nebo webhooku dostat upozornění, když dojde k služby Azure.
 author: johnkemnetz
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 03/27/2018
 ms.author: johnkem
-ms.openlocfilehash: 6e011ea3d9d8f8453068d43e390cfba46dfb3277
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: b4c4fdeb825bbcab54f074c5224140282a24d196
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Vytvoření aktivity protokolu upozornění na oznámení o službách
 ## <a name="overview"></a>Přehled
@@ -100,7 +100,7 @@ Po vytvoření výstrahy, se zobrazí na **výstrahy** části **monitorování*
 * Odstraňte ji.
 * Zakázat nebo povolit, pokud chcete dočasně zastavit nebo obnovit příjem oznámení pro výstrahy.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy správy problém](../service-health/service-health-alert-webhook-guide.md).
 - Další informace o [oznámení o stavu služby](monitoring-service-notifications.md).
 - Další informace o [omezení rychlosti oznámení](monitoring-alerts-rate-limiting.md).

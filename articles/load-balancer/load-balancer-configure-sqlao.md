@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace pro vyrovnávání zatížení pro SQL Server vždy na | Microsoft Docs"
-description: "Konfigurace vyrovnávání zatížení, fungovat s SQL serveru Always On a zjistěte, jak pomocí prostředí PowerShell vytvořit nástroj pro vyrovnávání zatížení pro implementaci serveru SQL"
+title: Konfigurace pro vyrovnávání zatížení pro SQL Server vždy na | Microsoft Docs
+description: Konfigurace vyrovnávání zatížení, fungovat s SQL serveru Always On a zjistěte, jak pomocí prostředí PowerShell vytvořit nástroj pro vyrovnávání zatížení pro implementaci serveru SQL
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 5e890f8314c8f191dbfa6c6818d810b91d0e829d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a0c2345b47b9103ac6a7ae998f13a12332e3907e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-a-load-balancer-for-sql-server-always-on"></a>Konfigurace služby Vyrovnávání zatížení pro SQL serveru Always On
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Skupiny dostupnosti SQL serveru Always On s nástrojem pro vyrovnávání zatížení pro vnitřní teď můžete spustit. Skupina dostupnosti je řešení nejdůležitějšího SQL serveru pro vysokou dostupnost a zotavení po havárii. Naslouchací proces skupiny dostupnosti, umožňuje klientským aplikacím bezproblémově připojit k primární replice, bez ohledu na počet replik v konfiguraci.
 
@@ -57,7 +57,7 @@ Pomocí interní vyrovnávání zátěže na naslouchací proces, koncový bod S
 
 Další informace o SQL serveru Always On najdete v tématu [konfigurace interní nástroj pro skupiny dostupnosti Always On v Azure](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Začněte konfiguraci služby Vyrovnávání zatížení veřejnou](load-balancer-get-started-internet-arm-ps.md)
 * [Začínáme s konfigurací interního nástroje pro vyrovnávání zatížení](load-balancer-get-started-ilb-arm-ps.md)
 * [Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení](load-balancer-distribution-mode.md)
