@@ -27,6 +27,8 @@
   items:
     - name: Použití portálu Azure Stack
       href: azure-stack-use-portal.md
+    - name: Použití zásobníku rozhraní API v Azure
+      href: azure-stack-rest-api-use.md
     - name: "Zabezpečení a\_dodržování předpisů"
       items:
         - name: Správa RBAC
