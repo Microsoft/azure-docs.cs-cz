@@ -1,6 +1,6 @@
 ---
 layout: HubPage
-hide_bc: ''
+hide_bc: true
 title: Dokumentace k Microsoft Azure
 description: Naučte se vytvářet a spravovat výkonné aplikace pomocí cloudových služeb Microsoft Azure. Získejte dokumentaci, ukázkový kód, výukové kurzy a další materiály.
 ms.topic: hub-page
