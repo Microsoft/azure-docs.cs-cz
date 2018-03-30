@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
-ms.openlocfilehash: f786d99718b82dba052909e566f1b0571701127e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.reviewer: fiseraci
+ms.openlocfilehash: f176e0689c630a406ab6e2f82e9320a214ff8a1a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Pomocí privilegované koncový bod v Azure zásobníku
 
@@ -43,18 +44,20 @@ OBDOBÍ přistupujete prostřednictvím vzdálené relace prostředí PowerShell
 
 Před zahájením tohoto postupu pro integrovaný systém, ujistěte se, že dostanete období podle IP adresy nebo přes DNS. Po počátečním nasazení Azure zásobníku mít přístup období jen pomocí IP adresy, protože integrace DNS se ještě není nastavený. Dodavatele hardwaru, od výrobců OEM vám poskytne soubor JSON s názvem **AzureStackStampDeploymentInfo** obsahující období IP adresy.
 
-Doporučujeme vám, že se připojit k období pouze z hostitele životního cyklu hardwaru nebo ze zabezpečené, vyhrazené počítače, například [pracovní stanice privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
-1. Přístup k pracovní stanici privilegovaný přístup.
+> [!NOTE]
+> Z bezpečnostních důvodů jsme nutné připojit k období pouze posílené virtuální počítač se systémem na hostiteli životního cyklu hardwaru, nebo z počítače vyhrazené, zabezpečení, například [pracovní stanice privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations). Původní konfiguraci hostitelského hardwaru životního cyklu nesmí změnit z původní konfigurace, včetně instalace nového softwaru, ani by být používána pro připojení k období.
 
-    - Na integrovaný systém spusťte následující příkaz pro přidání období jako důvěryhodného hostitele na hardwaru životního cyklu hostitele nebo pracovní stanice privilegovaný přístup.
+1. Vytvořit vztah důvěryhodnosti.
+
+    - Integrovaný systém spusťte následující příkaz z relace prostředí Windows PowerShell zvýšenými přidejte období jako důvěryhodného hostitele na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo pracovní stanici k privilegovaný přístup.
 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
     - Pokud spouštíte ADSK, přihlaste se k hostiteli development kit.
 
-2. Na hostitele životního cyklu hardwaru nebo privilegovaného přístupu pracovní stanice otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními. Spusťte následující příkazy k vytvoření vzdálené relace na virtuálním počítači, který je hostitelem období:
+2. Na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo privilegovaného přístupu pracovní stanice otevřete relaci prostředí Windows PowerShell. Spusťte následující příkazy k vytvoření vzdálené relace na virtuálním počítači, který je hostitelem období:
  
     - Integrované systému:
       ````PowerShell
@@ -74,11 +77,12 @@ Doporučujeme vám, že se připojit k období pouze z hostitele životního cyk
       ```` 
    Pokud budete vyzváni, použijte následující pověření:
 
-      - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *zásobník Azure domény*&gt;\accountname**. (Pro ASDK, uživatelské jméno je **azurestack\accountname**.) 
+      - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *zásobník Azure domény*&gt;\cloudadmin**. (Pro ASDK, uživatelské jméno je **azurestack\cloudadmin**.)
       - **Heslo**: Zadejte stejné heslo, které jste zadali během instalace pro účet správce domény AzureStackAdmin.
+
     > [!NOTE]
     > Pokud není možné se připojit ke koncovému bodu ERCS, opakujte kroky 1 a 2 znovu s adresou IP ERCS virtuálního počítače, do které jste nebyly již byl proveden pokus o připojení.
-    
+
 3.  Když se připojíte, řádku se změní na **[*ERCS virtuálního počítače nebo IP adresu název*]: PS >** nebo **[azs-ercs01]: PS >**, v závislosti na prostředí. Odtud spustit `Get-Command` zobrazíte seznam dostupných rutin.
 
     Řadu tyto rutiny jsou určena pouze pro prostředí integrovaný systém (například rutiny související s integrací datacenter). V ASDK ověření následující rutiny:
@@ -116,16 +120,16 @@ Alternativně můžete použít [Import-PSSession](https://docs.microsoft.com/en
 
 Chcete-li importovat období relaci na místním počítači, proveďte následující kroky:
 
-1. Přístup k pracovní stanici privilegovaný přístup.
+1. Vytvořit vztah důvěryhodnosti.
 
-    - Na integrovaný systém spusťte následující příkaz pro přidání období jako důvěryhodného hostitele na hardwaru životního cyklu hostitele nebo pracovní stanice privilegovaný přístup.
+    -Na integrovaný systém spusťte následující příkaz z relace prostředí Windows PowerShell zvýšenými přidejte období jako důvěryhodného hostitele na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo pracovní stanici k privilegovaný přístup.
 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
     - Pokud spouštíte ADSK, přihlaste se k hostiteli development kit.
 
-2. Na hostitele životního cyklu hardwaru nebo privilegovaného přístupu pracovní stanice otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními. Spusťte následující příkazy k vytvoření vzdálené relace na virtuálním počítači, který je hostitelem období:
+2. Na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo privilegovaného přístupu pracovní stanice otevřete relaci prostředí Windows PowerShell. Spusťte následující příkazy k vytvoření vzdálené relace na virtuálním počítači, který je hostitelem období:
  
     - Integrované systému:
       ````PowerShell
@@ -145,7 +149,7 @@ Chcete-li importovat období relaci na místním počítači, proveďte následu
       ```` 
    Pokud budete vyzváni, použijte následující pověření:
 
-      - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *zásobník Azure domény*&gt;\accountname**. (Pro ASDK, uživatelské jméno je **azurestack\accountname**.) 
+      - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *zásobník Azure domény*&gt;\cloudadmin**. (Pro ASDK, uživatelské jméno je **azurestack\cloudadmin**.)
       - **Heslo**: Zadejte stejné heslo, které jste zadali během instalace pro účet správce domény AzureStackAdmin.
 
 3. Importovat období relace do místního počítače
@@ -157,7 +161,7 @@ Chcete-li importovat období relaci na místním počítači, proveďte následu
 
 ## <a name="close-the-privileged-endpoint-session"></a>Ukončení relace privilegované koncový bod
 
- Jak už bylo zmíněno dříve, období zaznamená každou akci (a její výstup. odpovídající), které můžete provádět v relaci prostředí PowerShell. Zavřete relaci pomocí `Close-PrivilegedEndpoint` rutiny. Tato rutina správně koncový bod se zavře a přenese soubory protokolů do externí sdílené složky pro uchovávání informací.
+ Jak už bylo zmíněno dříve, období zaznamená každou akci (a její výstup. odpovídající), které můžete provádět v relaci prostředí PowerShell. Relace je třeba nejprve zavřít pomocí `Close-PrivilegedEndpoint` rutiny. Tato rutina správně koncový bod se zavře a přenese soubory protokolů do externí sdílené složky pro uchovávání informací.
 
 K ukončení relace koncového bodu:
 
@@ -167,7 +171,11 @@ K ukončení relace koncového bodu:
 
     ![Zavřít PrivilegedEndpoint výstupu rutiny, který ukazuje, kde zadáte cílovou cestu přepis](media/azure-stack-privileged-endpoint/closeendpoint.png)
 
-Po přepis protokolové soubory jsou úspěšně přenést do sdílené složky, se automaticky odstraní z období. Pokud zavřete relaci období pomocí rutin `Exit-PSSession` nebo `Exit`, nebo jenom zavřete konzolu prostředí PowerShell, protokoly přepis nemáte přenést do sdílené složky. Zůstanou v období. Při příštím spuštění `Close-PrivilegedEndpoint` a zahrnují sdílené složky, přepis protokoly z předchozí relací se také přenosu.
+Po přepis protokolové soubory jsou úspěšně přenést do sdílené složky, se automaticky odstraní z období. 
+
+> [!NOTE]
+> Pokud zavřete relaci období pomocí rutin `Exit-PSSession` nebo `Exit`, nebo jenom zavřete konzolu prostředí PowerShell, protokoly přepis nemáte přenést do sdílené složky. Zůstanou v období. Při příštím spuštění `Close-PrivilegedEndpoint` a zahrnují sdílené složky, přepis protokoly z předchozí relací se také přenosu. Nepoužívejte `Exit-PSSession` nebo `Exit` k ukončení relace období; použít `Close-PrivilegedEndpoint` místo.
+
 
 ## <a name="next-steps"></a>Další postup
 [Azure zásobníku diagnostické nástroje](azure-stack-diagnostics.md)

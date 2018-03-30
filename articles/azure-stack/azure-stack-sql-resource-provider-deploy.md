@@ -1,11 +1,11 @@
 ---
-title: "Používání databáze SQL v Azure zásobníku | Microsoft Docs"
-description: "Zjistěte, jak můžete nasadit databází SQL jako služba na Azure zásobníku a rychlé kroky k nasazení adaptér zprostředkovatele prostředků systému SQL Server."
+title: Používání databáze SQL v Azure zásobníku | Microsoft Docs
+description: Zjistěte, jak můžete nasadit databází SQL jako služba na Azure zásobníku a rychlé kroky k nasazení adaptér zprostředkovatele prostředků systému SQL Server.
 services: azure-stack
-documentationCenter: 
+documentationCenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4d2a00f04e5b07aeb3585fb3ab6c8966e0de7e19
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1754d4b121fdaf4f7b8e4c1954dfd4202ba344b1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Databáze SQL pro použití v zásobníku Microsoft Azure
 
@@ -71,7 +71,7 @@ Musíte vytvořit jednu (nebo více) instance systému SQL Server nebo poskytova
     | 1710: 1.0.171028.1 | [SQL RP verze 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
   
 
-4. Kořenový certifikát zásobník Azure se načtou z privilegovaných koncový bod. Pro zásobník sadu Azure SDK se vytvoří certifikát podepsaný svým držitelem v rámci tohoto procesu. Pro integrované systémy je nutné zadat příslušný certifikát.
+4. Poskytnout požadovaný certifikát. Pro sadu SDK zásobník Azure certifikát podepsaný svým držitelem je vytvořen jako součást tohoto procesu, není třeba žádné další certifikáty. Pro integrované systémy je nutné zadat příslušný certifikát.
 
    Chcete-li přidat vlastní certifikát, umístěte soubor .pfx v **DependencyFilesLocalPath** následujícím způsobem:
 
