@@ -197,7 +197,7 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Ceny
-      href: aml-services-pricing.md
+      href: aml-pricing.md
     - name: Dostupnost v oblastech
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Vědecké zpracování týmových dat

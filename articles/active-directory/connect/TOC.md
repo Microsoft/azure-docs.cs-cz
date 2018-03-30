@@ -56,7 +56,7 @@
 ## Správa synchronizace Azure AD Connect
 ### [Dodržování předpisů GDPR a Azure AD Connect](active-directory-aadconnect-gdpr.md)
 ### [Prevence náhodného odstranění](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
-### [Synchronizace hesel](active-directory-aadconnectsync-implement-password-synchronization.md)
+### [Synchronizace hodnoty hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md)
 ### [Účet služby Azure AD](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [Průvodce instalací](active-directory-aadconnectsync-installation-wizard.md)
 ### [Postup naplnění UserPrincipalName](active-directory-aadconnect-userprincipalname.md)
@@ -86,7 +86,7 @@
 ### [Chyby při synchronizaci](active-directory-aadconnect-troubleshoot-sync-errors.md)
 ### [Objekt není synchronizovaný](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [Synchronizace objektů pomocí úlohy řešení potíží](active-directory-aadconnect-troubleshoot-objectsync.md)
-### [Synchronizace hesel](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
+### [Synchronizace hodnoty hash hesel](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md)
 ### [Chyba LargeObject způsobená certifikátem userCertificate](active-directory-aadconnectsync-largeobjecterror-usercertificate.md)
 ### [Jak provést obnovení při dosažení 10GB limitu pro LocalDB](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 

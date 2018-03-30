@@ -3,8 +3,6 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je Machine Learning?
-      href: what-is-machine-learning.md
     - name: Machine Learning Studio
       href: what-is-ml-studio.md
     - name: Možnosti sady ML Studio
