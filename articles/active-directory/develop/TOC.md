@@ -45,7 +45,7 @@
 ### [Ladění SSO založeného na SAML](active-directory-saml-debugging.md)
 ### [Protokol SAML pro jednotné přihlašování](active-directory-single-sign-on-protocol-reference.md)
 ### [Protokol SAML pro jednotné odhlašování](active-directory-single-sign-out-protocol-reference.md)
-### [Vytvoření klienta](active-directory-howto-tenant.md)
+## [Vytvoření klienta](active-directory-howto-tenant.md)
 ## [Pokyny pro branding](active-directory-branding-guidelines.md)
 ## Jednotné přihlašování na mobilu a počítači
 ### [Povolení jednotného přihlašování v Androidu](active-directory-sso-android.md)
