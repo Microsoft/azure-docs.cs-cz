@@ -1,6 +1,6 @@
 ---
-title: "Prozkoumejte protokoly trasování .NET ve službě Application Insights"
-description: "Vygenerovat pomocí trasování, NLog a Log4Net protokolů hledání."
+title: Prozkoumejte protokoly trasování .NET ve službě Application Insights
+description: Vygenerovat pomocí trasování, NLog a Log4Net protokolů hledání.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6da0bf009fa71885d7d8e3bd5376c5a7c9d4a344
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 574b11f9ba38bda775610f2f9e90fbb2d2b05868
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET ve službě Application Insights
 Pokud používáte NLog log4Net nebo System.Diagnostics.Trace pro diagnostické trasování v aplikaci ASP.NET, může mít vaše protokoly posílá [Azure Application Insights][start], kde můžete prozkoumat a vyhledávání je. Protokoly bude sloučen s další telemetrií pocházející z vaší aplikace, tak, aby mohli identifikovat trasování přidružené údržby každý požadavek uživatele a jejich korelující s jinými události a sestavy výjimek.
@@ -91,15 +91,15 @@ Můžete nakonfigurovat [System.Diagnostics.Tracing.EventSource](https://msdn.mi
 ```
 
 Pro každý zdroj můžete nastavit následující parametry:
- * `Name`Určuje název EventSource ke shromažďování.
- * `Level`Určuje úroveň protokolování ke shromažďování. Může být jedna z `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose`, `Warning`.
- * `Keywords`(Volitelné) Určuje celočíselnou hodnotu kombinace klíčových slov používat.
+ * `Name` Určuje název EventSource ke shromažďování.
+ * `Level` Určuje úroveň protokolování ke shromažďování. Může být jedna z `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose`, `Warning`.
+ * `Keywords` (Volitelné) Určuje celočíselnou hodnotu kombinace klíčových slov používat.
 
 ## <a name="using-diagnosticsource-events"></a>Pomocí DiagnosticSource události
 Můžete nakonfigurovat [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) odeslání do služby Application Insights jako trasování událostí. Nejdřív nainstalujte [ `Microsoft.ApplicationInsights.DiagnosticSourceListener` ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) balíček NuGet. Upravte `TelemetryModules` části [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) souboru.
 
 ```xml
-    <Add Type="Microsoft.ApplicationInsights.DiagnsoticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
+    <Add Type="Microsoft.ApplicationInsights.DiagnosticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
       <Sources>
         <Add Name="MyDiagnosticSourceName" />
       </Sources>
@@ -123,22 +123,22 @@ Můžete nakonfigurovat události trasování událostí pro odeslání do Appli
 ```
 
 Pro každý zdroj můžete nastavit následující parametry:
- * `ProviderName`je název zprostředkovatele trasování událostí pro Windows, který má shromažďovat.
- * `ProviderGuid`Určuje identifikátor GUID zprostředkovatele trasování událostí pro Windows ke shromažďování, můžete použít místo `ProviderName`.
- * `Level`Nastaví úroveň protokolování ke shromažďování. Může být jedna z `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose`, `Warning`.
- * `Keywords`(Volitelné) nastaví celé číslo – klíčové slovo kombinace používat.
+ * `ProviderName` je název zprostředkovatele trasování událostí pro Windows, který má shromažďovat.
+ * `ProviderGuid` Určuje identifikátor GUID zprostředkovatele trasování událostí pro Windows ke shromažďování, můžete použít místo `ProviderName`.
+ * `Level` Nastaví úroveň protokolování ke shromažďování. Může být jedna z `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose`, `Warning`.
+ * `Keywords` (Volitelné) nastaví celé číslo – klíčové slovo kombinace používat.
 
 ## <a name="using-the-trace-api-directly"></a>Přímo pomocí trasování rozhraní API
 Trasování Application Insights API můžete volat přímo. Toto rozhraní API použijte adaptéry protokolování.
 
-Například:
+Příklad:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
 Výhodou TrackTrace je, že můžete ukládat poměrně dlouho data ve zprávě. Například může zakódovat následných dat existuje.
 
-Kromě toho můžete přidat úroveň závažnosti na zprávu. A, podobně jako ostatní telemetrických dat, můžete přidat hodnoty vlastností, které můžete použít k lepšímu filtru nebo vyhledávání pro různé skupiny trasování. Například:
+Kromě toho můžete přidat úroveň závažnosti na zprávu. A, podobně jako ostatní telemetrických dat, můžete přidat hodnoty vlastností, které můžete použít k lepšímu filtru nebo vyhledávání pro různé skupiny trasování. Příklad:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
@@ -168,7 +168,7 @@ Je to možné, například:
 >
 >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Diagnostikovat chyby a výjimky technologie ASP.NET][exceptions]
 
 [Další informace o vyhledávání][diagnostic].

@@ -1,24 +1,25 @@
 ---
-title: "Konfigurovat nastavení aplikace Azure funkce | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat nastavení aplikace Azure funkce."
-services: 
+title: Konfigurovat nastavení aplikace Azure funkce | Microsoft Docs
+description: Zjistěte, jak nakonfigurovat nastavení aplikace Azure funkce.
+services: ''
 documentationcenter: .net
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2017
+ms.date: 03/28/2018
 ms.author: glenga
-ms.openlocfilehash: 2aa35cf814f8de2af89c6f7e0eda1f919301d6a3
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: cc996988-fb4f-47
+ms.openlocfilehash: 8974b2ca243da5dd2f7202c66602f7254496d040
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Správa funkce aplikace na portálu Azure 
 
@@ -27,6 +28,24 @@ Funkce aplikace v Azure Functions poskytuje kontext spuštění pro jednotlivýc
 Chcete-li začít, přejděte na [portál Azure](http://portal.azure.com) a přihlaste se k účtu Azure. Na panelu hledání v horní části portálu zadejte název vaší aplikace Function App a vyberte ji ze seznamu. Po výběru funkce aplikace, se zobrazí následující stránka:
 
 ![Přehled funkce aplikace na portálu Azure](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+
+## <a name="favorite"></a>Oblíbené funkce na portálu 
+
+V některých případech může být obtížné vyhledávat svoje prostředky v [portál Azure]. Aby bylo snazší najít funkce aplikace, které jste vytvořili, přidáte do vašich oblíbených položek na portálu pro funkce aplikace. 
+
+1. Přihlaste se k portálu [portál Azure].
+
+2. Kliknutím na šipku vlevo dole rozbalte všechny služby, do pole **Filtr** zadejte `Functions` a potom klikněte na hvězdičku vedle možnosti **Aplikace Function App**.  
+ 
+    ![Vytvoření aplikace Function App na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/functions-favorite-function-apps.png)
+
+    Tím přidáte do nabídky na levé straně portálu ikonu Funkce.
+
+3. Zavřete nabídku a potom přejděte úplně dolů, kde uvidíte ikonu Funkce. Kliknutím na tuto ikonu zobrazíte seznam všech aplikací Function App. Po kliknutí na určitou aplikaci Function App můžete pracovat s funkcemi této aplikace. 
+ 
+    ![Funkce aplikací v oblíbených položek](./media/functions-how-to-use-azure-function-app-settings/functions-function-apps-hub.png)
+ 
+[portál Azure]: https://portal.azure.com/
 
 ## <a name="manage-app-service-settings"></a>Karta nastavení aplikace – funkce
 
@@ -66,7 +85,7 @@ Další informace o tom, jak pracovat s nastavením služby App Service najdete 
 
 ![Editor služby App Service](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
-### <a name="settings">Nastavení aplikace</a>
+### <a name="settings"></a>Nastavení aplikace
 
 | | |
 |-|-|
@@ -82,7 +101,7 @@ Další informace o tom, jak pracovat s nastavením služby App Service najdete 
 
 ![Funkce aplikace konzoly](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
-### <a name="kudu">Pokročilé nástroje (Kudu)</a>
+### <a name="kudu"></a>Pokročilé nástroje (Kudu)
 
 | | |
 |-|-|
@@ -115,7 +134,7 @@ Další informace o tom, jak pracovat s nastavením služby App Service najdete 
 ![Konfigurovat ověřování pro aplikaci funkce](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
 
-### <a name="swagger">Definice rozhraní API.</a>
+### <a name="swagger"></a>Definice rozhraní API.
 
 | | |
 |-|-|

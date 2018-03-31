@@ -5,7 +5,7 @@ services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a91ed04f-f3ce-4692-a6dd-b56a28d7dee8
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 35935e911f1f17989beb71978396c6d1b7d601d6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d02bcfc7521df9c18edc534e679e597ad2328e6f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="android-sdk-integration-for-azure-mobile-engagement"></a>Integraci sady Android SDK pro Azure Mobile Engagement
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 > [!div class="op_single_selector"]
 > * [Univerzální platforma Windows](mobile-engagement-windows-store-sdk-overview.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-sdk-overview.md)

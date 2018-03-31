@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní – monitorování"
-description: "Naučte se monitorovat data v reálném čase o vaší aplikaci pomocí Azure Mobile Engagement"
+title: Azure Mobile Engagement uživatelské rozhraní – monitorování
+description: Naučte se monitorovat data v reálném čase o vaší aplikaci pomocí Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b91ad89a-b89d-4377-abb0-cc2d16a2836d
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 5f8a02e35db93585e0fe46d77b3ad18b94c99597
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b370a5db1acee37ce234f5ec3f004be20719cfea
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-monitor-real-time-data-about-your-application"></a>Postup sledování v reálném čase dat o aplikaci
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tento článek popisuje **monitorování** kartě **Mobile Engagement** portálu. Můžete použít **Mobile Engagement** portálu ke sledování a správě mobilních aplikací. Všimněte si, že pokud chcete začít používat portál musíte nejprve vytvořit **Azure Mobile Engagement** účtu. 
 
 V části monitorování uživatelského rozhraní obsahuje informace analýzu v reálném čase a umožňuje nastavit výstrahy při dosažení prahové hodnoty pro většinu stejné informace, které je k dispozici v minulosti v [ANALYTICS](mobile-engagement-user-interface-analytics.md) část uživatelského rozhraní. Najdete v článku **Glosář** tématu [koncepty](http://go.microsoft.com/fwlink/?LinkId=525555) tématu definice termínů a zkratek v analýzy a monitorování (například následující: aktivního uživatele, nový uživatel uchovávají uživatele, relace, cesta uživatele Graf, uživatelé mapy, sledování adres URL, trendy, aktivity, události, úlohy, chyba, doplňující informace, havárií a App-info).
@@ -56,7 +60,7 @@ Můžete také zadat minimální rychlost detekce, což je minimální množstv�
 
 ![Monitor4][17]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Koncepty][Link 6]
 * [Řešení potíží s příručce služby][Link 24]
 

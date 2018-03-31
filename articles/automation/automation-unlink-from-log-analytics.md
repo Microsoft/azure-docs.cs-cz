@@ -1,5 +1,5 @@
 ---
-title: Zrušení propojení účtu Azure Automation s Log Analytics
+title: Zrušení propojení účtu Azure Automation z Log Analytics | Microsoft Docs
 description: Tento článek obsahuje přehled postupu zrušení propojení účtu Azure Automation z pracovního prostoru analýzy protokolů.
 services: automation
 ms.service: automation
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 2e6f887a7684ae995e9b7da84dace523843ff555
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b8b00f8a82dd63df13ccd0bc7e10429323c15ab3
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-unlink-your-automation-account-from-a-log-analytics-workspace"></a>Postup zrušení propojení účtu Automation z pracovního prostoru analýzy protokolů
 
@@ -46,4 +46,4 @@ Pokud jste použili spuštění a zastavení virtuálních počítačů během p
 
 ## <a name="next-steps"></a>Další postup
 
-Změna konfigurace účtu Automation k integraci s OMS analýzy protokolů, najdete v části [předávání zpráv o stavu úlohy a datové proudy úlohy z Automatizace analýzy protokolů (OMS)](automation-manage-send-joblogs-log-analytics.md). 
+Změna konfigurace účtu Automation k integraci s analýzy protokolů, najdete v části [předávání zpráv o stavu úlohy a datové proudy úlohy ze služby Automation k analýze protokolů](automation-manage-send-joblogs-log-analytics.md). 

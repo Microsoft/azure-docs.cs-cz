@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní – segmenty"
-description: "Postup vytvoření a správa segmentů uživatelů pro identifikaci vzorů využití pomocí Azure Mobile Engagement"
+title: Azure Mobile Engagement uživatelské rozhraní – segmenty
+description: Postup vytvoření a správa segmentů uživatelů pro identifikaci vzorů využití pomocí Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6a4f2205-4a3c-406e-a04f-5e6f2a36653f
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 087f4a1fef420abe9669f8dfe2b84c7a847ce263
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53c5b1b672a0d7212a3d298c3e411a9cc6ac0807
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-manage-segments-of-users-to-identify-usage-patterns"></a>Postup vytvoření a správa segmentů uživatelů pro identifikaci vzorů využití
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tento článek popisuje **SEGMENTY** kartě **Mobile Engagement** portálu. Můžete použít **Mobile Engagement** portálu ke sledování a správě mobilních aplikací.
 
 Části segmenty rozhraní umožňuje pracovat na segmentace uživatelů na základě různých chování a analýz, které můžete získat z aplikace a můžete také přistupovat prostřednictvím rozhraní API segmenty. Segmenty se vypočítávají nejprve 24 hodin po jejich vytvoření a jejich jsou přepočítávány každých 24 hodin na základě nejnovější analytics informací. Jakmile se počítá segment, zobrazuje graf "Dne do historie den" každý den.
@@ -107,7 +111,7 @@ Po dokončení nastavení kritériem se zobrazí v segmentu trychtýřového gra
 Protože segment je na základě analýzy dat, se vypočítávají segmenty jednou za den.
 V tomto příkladu 47,7 % celkový koncoví uživatelé shodná s kritériem. Měly by být uživatele, kteří mají dobrou prostředí a bude může zajistit vyšší hodnocení, pokud je nabízená oznámení, které je vyzývají k hodnocení aplikace v úložišti.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Koncepty][Link 6]
 * [Řešení potíží s příručce služby][Link 24]
 

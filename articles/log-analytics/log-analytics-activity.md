@@ -1,24 +1,24 @@
 ---
-title: "Shromažďovat a analyzovat protokoly aktivita Azure v Log Analytics | Microsoft Docs"
-description: "Řešení Azure aktivity protokoly můžete použít k analýze a hledání protokol činnosti Azure ve všech vašich předplatných Azure."
+title: Shromažďovat a analyzovat protokoly aktivita Azure v Log Analytics | Microsoft Docs
+description: Řešení Azure aktivity protokoly můžete použít k analýze a hledání protokol činnosti Azure ve všech vašich předplatných Azure.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: c13890862c058701268c07d032d6d990c659287a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b6e823d9338d76a350569091d6794e3ac4a2eae9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Shromažďovat a analyzovat protokoly aktivita Azure v analýzy protokolů
 
@@ -40,7 +40,7 @@ Pokud připojíte k analýze protokolů protokolů aktivita Azure, můžete:
 - Určit vaše prostředky, které mají vliv výpadku nebo služby týkající se stavu
 - Použijte funkci vyhledávání protokolu ke korelaci aktivity uživatelů, operace automatického škálování, změny autorizace a stav služby na jiné protokoly nebo metriky ze svého prostředí
 
-<sup>1</sup>ve výchozím nastavení, analýzy protokolů udržuje protokolů Azure aktivity dobu 90 dnů, i když jsou na úrovni Free. Nebo, pokud máte pracovní prostor nastavení uchování menší než 90 dní. Pokud pracovní prostor uchovávání dat, který je delší než 90 dní, protokoly aktivity budou pro dobu uchování vašeho pracovního prostoru.
+<sup>1</sup>ve výchozím nastavení, analýzy protokolů udržuje protokolů Azure aktivity dobu 90 dnů, i když jsou na úrovni Free. Nebo, pokud máte pracovní prostor nastavení uchování menší než 90 dní. Pokud pracovní prostor uchovávání dat, který je delší než 90 dnů, jsou uchovány protokoly aktivity na základě na dobu uchování vašeho pracovního prostoru.
 
 Analýzy protokolů shromažďuje protokoly aktivity, které jsou zdarma a ukládá protokoly 90 dní zdarma. Pokud ukládáte protokoly víc než 90 dnů, bude platit poplatky uchovávání dat pro data uložená déle než 90 dní.
 

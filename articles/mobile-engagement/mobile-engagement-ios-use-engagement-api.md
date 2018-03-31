@@ -1,11 +1,11 @@
 ---
-title: "Jak používat rozhraní API Engagement v systému iOS"
-description: "Nejnovější iOS SDK - použití rozhraní API Engagement v systému iOS"
+title: Jak používat rozhraní API Engagement v systému iOS
+description: Nejnovější iOS SDK - použití rozhraní API Engagement v systému iOS
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1fb4509e-3804-46c1-949f-1cf727f91f9f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a31424da98205e97bdf57010cccfd044360f03dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 189a3029449a3161da2a20f940b77a5bb63bd1ef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-ios"></a>Jak používat rozhraní API Engagement v systému iOS
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tento dokument je doplněk k dokumentu jak integrovat Engagement v systému iOS: poskytuje hloubka podrobnosti o tom, jak použít rozhraní API Engagement sestavy statistik vaší aplikace.
 
 Mějte na paměti, že pokud chcete pouze Engagement ohlásí aplikace relací, aktivity, dojde k chybě a technické informace, pak nejjednodušší způsob, jak je aby vaše vlastní `UIViewController` objekty dědí odpovídající `EngagementViewController` třídy.
@@ -29,7 +33,7 @@ Pokud chcete informace, například pokud je třeba ohlásit určité události 
 
 Rozhraní API Engagement poskytuje `EngagementAgent` třídy. Instance této třídy může načíst volání `[EngagementAgent shared]` statickou metodu (Všimněte si, že `EngagementAgent` objekt vrácený je typu singleton).
 
-Před všechny volání rozhraní API `EngagementAgent` objekt je nutné inicializovat pomocí volání metody`[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
+Před všechny volání rozhraní API `EngagementAgent` objekt je nutné inicializovat pomocí volání metody `[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
 
 ## <a name="engagement-concepts"></a>Koncepty engagementu
 Následující části Upřesnit nejběžnější [koncepty Mobile Engagementu](mobile-engagement-concepts.md) pro platformu iOS.
@@ -212,13 +216,13 @@ Všimněte si, že funkce může obsahovat `arrays(NSArray, NSMutableArray)`, `n
 > [!NOTE]
 > Speciálním parametrem je serializováno ve formátu JSON. Pokud chcete předat různé objekty než ty, které jsou popsané výše, je nutné implementovat metodu v třídě:
 > 
-> -(NSString*) JSONRepresentation;
+> -(NSString*)JSONRepresentation;
 > 
 > Metoda by měla vrátit reprezentaci JSON objektu.
 > 
 > 
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
     NSMutableDictionary* extras = [NSMutableDictionary dictionaryWithCapacity:2];
     [extras setObject:[NSNumber numberWithInt:123] forKey:@"video_id"];
     [extras setObject:@"http://foobar.com/blog" forKey:@"ref_click"];

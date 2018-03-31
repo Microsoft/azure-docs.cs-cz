@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: fa74f2e2d8fb9fc9f11810a4af4978fb4b443bcc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e0d9d164a85a73dd05456e005cf35ce3f33c408f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>Postup nasazení služby Windows Hybrid Runbook Worker
 
@@ -36,7 +36,7 @@ Instalace a konfigurace Windows Hybrid Runbook Worker, existují dvě metody k d
 
 > [!NOTE]
 > Ke správě konfigurace serverů podpora roli hybridní pracovní proces Runbooku s potřeby konfigurace stavu (DSC), musíte je přidat jako uzly DSC.  Další informace o připojování je pro správu s DSC, najdete v části [registrace počítačů pro správu Azure Automation DSC](automation-dsc-onboarding.md).        
-Pokud povolíte [řešení pro správu aktualizací](../operations-management-suite/oms-solution-update-management.md), jakékoli připojené k pracovní prostor OMS počítač se systémem Windows je automaticky nakonfigurovaný jako hybridní pracovní proces Runbooku na podporu sady runbook, které jsou zahrnuté v tomto řešení.  Však není registrován u žádné skupiny hybridní pracovní proces již definována v účtu Automation.  Počítač lze přidat do skupiny Hybrid Runbook Worker ve vašem účtu Automation na podporu automatizace sady runbook, dokud používáte stejný účet pro řešení a členství ve skupině hybridní pracovní proces Runbooku.  Tuto funkci jsme do funkce Hybrid Runbook Worker přidali ve verzi 7.2.12024.0.  
+Pokud povolíte [řešení pro správu aktualizací](../operations-management-suite/oms-solution-update-management.md), jakékoli připojené k pracovní prostor analýzy protokolů počítač se systémem Windows je automaticky nakonfigurovaný jako hybridní pracovní proces Runbooku na podporu sady runbook, které jsou zahrnuté v tomto řešení.  Však není registrován u žádné skupiny hybridní pracovní proces již definována v účtu Automation.  Počítač lze přidat do skupiny Hybrid Runbook Worker ve vašem účtu Automation na podporu automatizace sady runbook, dokud používáte stejný účet pro řešení a členství ve skupině hybridní pracovní proces Runbooku.  Tuto funkci jsme do funkce Hybrid Runbook Worker přidali ve verzi 7.2.12024.0.  
 
 Zkontrolujte následující informace ohledně [požadavky na hardware a software](automation-offering-get-started.md#hybrid-runbook-worker) a [informace pro přípravu síti](automation-offering-get-started.md#network-planning) než začnete nasazovat hybridní pracovní proces Runbooku.  Po úspěšném nasazení služby runbook worker, zkontrolujte [spuštění sad runbook na hybridní pracovní proces Runbooku](automation-hrw-run-runbooks.md) se dozvíte, jak nakonfigurovat své sady runbook k automatizaci procesů ve své místní datové centrum nebo jiné cloudové prostředí.  
  
@@ -52,10 +52,10 @@ Proveďte následující kroky k automatizaci instalace a konfigurace role Windo
   * *Název skupiny prostředků* (povinné) - název skupiny prostředků spojené s vaším účtem Automation.  
   * *HybridGroupName* (povinné) - název skupiny hybridní pracovní proces Runbooku, který zadáte jako cíl pro sady runbook, podporuje tento scénář. 
   *  *ID předplatného* (povinné) – ID předplatného Azure, který váš účet automatizace je v.
-  *  *WorkspaceName* (volitelné) – název pracovního prostoru OMS.  Pokud nemáte pracovním prostorem OMS, skript se vytvoří a nakonfiguruje jeden.  
+  *  *WorkspaceName* (volitelné) – název pracovního prostoru analýzy protokolů.  Pokud nemáte pracovní prostor analýzy protokolů, skript se vytvoří a nakonfiguruje jeden.  
 
      > [!NOTE]
-     > Aktuálně jsou pouze automatizace oblasti, které podporuje integraci s OMS - **Austrálie – jihovýchod**, **východní USA 2**, **jihovýchodní Asie**, a **západní Evropa**.  Pokud svůj účet Automation není v jednom z těchto oblastí, pracovní prostor služby OMS vytvoří skript ale ho vás varuje, že ho nelze propojit je společně.
+     > Aktuálně jsou pouze automatizace oblasti, které podporuje integraci s analýzy protokolů - **Austrálie – jihovýchod**, **východní USA 2**, **jihovýchodní Asie**, a  **Západní Evropa**.  Pokud není váš účet Automation v jednom z těchto oblastí, skript vytvoří pracovní prostor analýzy protokolů ale ho vás varuje, že ho nelze propojit je společně.
      >
 2. V počítači, spusťte **prostředí Windows PowerShell** z **spustit** obrazovky v režimu správce.  
 3. Z příkazového řádku prostředí PowerShell, přejděte do složky, který obsahuje skript stáhli a provést změnou hodnoty parametrů *- AutomationAccountName*, *- ResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, a *- WorkspaceName*.
@@ -66,7 +66,7 @@ Proveďte následující kroky k automatizaci instalace a konfigurace role Windo
     
         .\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <NameofAutomationAccount> `
         -ResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
-        -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfOMSWorkspace>
+        -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
 
 4. Zobrazí se výzva k souhlas k instalaci **NuGet** a zobrazí se výzva k ověření pomocí přihlašovacích údajů Azure.<br><br>![Spuštění skriptu New-OnPremiseHybridWorker](/media/automation-hybrid-runbook-worker/new-onpremisehybridworker-scriptoutput.png)
 
@@ -76,27 +76,27 @@ Proveďte následující kroky k automatizaci instalace a konfigurace role Windo
 
 Po provedení první dva kroky pro vaše prostředí automatizace a potom zopakujte zbývající kroky pro každý počítač pracovního procesu.
 
-#### <a name="1-create-operations-management-suite-workspace"></a>1. Vytvořit pracovní prostor služby Operations Management Suite
+#### <a name="1-create-log-analytics-workspace"></a>1. Vytvoření pracovního prostoru Log Analytics
 
-Pokud již nemáte pracovní prostor služby Operations Management Suite, vytvořte jednu pomocí pokynů v [pracovního prostoru Správa](../log-analytics/log-analytics-manage-access.md). Pokud již účet máte, můžete použít existujícímu pracovnímu prostoru.
+Pokud již nemáte k pracovnímu prostoru analýzy protokolů, vytvořte jednu pomocí pokynů v [pracovního prostoru Správa](../log-analytics/log-analytics-manage-access.md). Pokud již účet máte, můžete použít existujícímu pracovnímu prostoru.
 
-#### <a name="2-add-automation-solution-to-operations-management-suite-workspace"></a>2. Přidat řešení služby Automation do pracovního prostoru služby Operations Management Suite
+#### <a name="2-add-automation-solution-to-log-analytics-workspace"></a>2. Přidat řešení služby Automation do pracovního prostoru analýzy protokolů
 
-Řešení přidání funkce do Operations Management Suite.  Řešení služby Automation přidá funkce pro Azure Automation, včetně podpory pro hybridní pracovní proces Runbooku.  Když přidáte řešení do pracovního prostoru, automaticky vynutí součásti pracovního procesu na počítači agenta, který budete instalovat v dalším kroku.
+Řešení do služby Log Analytics přidávají funkčnost.  Řešení služby Automation přidá funkce pro Azure Automation, včetně podpory pro hybridní pracovní proces Runbooku.  Když přidáte řešení do pracovního prostoru, automaticky vynutí součásti pracovního procesu na počítači agenta, který budete instalovat v dalším kroku.
 
-Postupujte podle pokynů v [přidat řešení pomocí Galerie řešení](../log-analytics/log-analytics-add-solutions.md) přidat **automatizace** řešení do pracovního prostoru služby Operations Management Suite.
+Postupujte podle pokynů v [přidat řešení pomocí Galerie řešení](../log-analytics/log-analytics-add-solutions.md) přidat **automatizace** řešení do pracovního prostoru analýzy protokolů.
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>3. Instalace agenta Microsoft Monitoring Agent
 
-Microsoft Monitoring Agent připojí počítače k Operations Management Suite.  Při instalaci agenta na místním počítači a připojte ho do pracovního prostoru, bude automaticky stahovat komponent potřebných pro hybridní pracovní proces Runbooku.
+Microsoft Monitoring Agent připojí počítače k analýze protokolů.  Při instalaci agenta na místním počítači a připojte ho do pracovního prostoru, bude automaticky stahovat komponent potřebných pro hybridní pracovní proces Runbooku.
 
 Postupujte podle pokynů v [počítače se systémem Windows se připojit k analýze protokolů](../log-analytics/log-analytics-windows-agent.md) instalace agenta na místním počítači.  Tento proces pro více počítačů, které chcete přidat více pracovníků pro vaše prostředí, můžete opakovat.
 
-Pokud agenta se úspěšně připojila k Operations Management Suite, objeví se na **připojené zdroje** kartě Operations Management Suite **nastavení** podokně.  Můžete ověřit, že agent správně stáhla řešení služby Automation pokud obsahuje složku s názvem **AzureAutomationFiles** v C:\Program Files\Microsoft Monitoring Agent\Agent.  Potvrďte verzi hybridní pracovní proces Runbooku, můžete přejít na C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ a Poznámka \\ *verze* podsložky.   
+Pokud agenta se úspěšně připojila k analýze protokolů, objeví se na **připojené zdroje** kartě analýzy protokolů **nastavení** podokně.  Můžete ověřit, že agent správně stáhla řešení služby Automation pokud obsahuje složku s názvem **AzureAutomationFiles** v C:\Program Files\Microsoft Monitoring Agent\Agent.  Potvrďte verzi hybridní pracovní proces Runbooku, můžete přejít na C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ a Poznámka \\ *verze* podsložky.   
 
 #### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4. Nainstalovat prostředí runbooku a připojte se k Azure Automation.
 
-Když přidáte agenta Operations Management Suite, vynutí se řešení služby Automation **HybridRegistration** modulu PowerShell, který obsahuje **Add-HybridRunbookWorker** rutiny.  Tuto rutinu použijete na počítač nainstalovat prostředí runbooku a zaregistrovat ho u automatizace Azure.
+Když přidáte agenta k analýze protokolů, vynutí se řešení služby Automation **HybridRegistration** modulu PowerShell, který obsahuje **Add-HybridRunbookWorker** rutiny.  Tuto rutinu použijete na počítač nainstalovat prostředí runbooku a zaregistrovat ho u automatizace Azure.
 
 Otevřete relaci prostředí PowerShell v režimu správce a spusťte následující příkazy pro import modulu.
 

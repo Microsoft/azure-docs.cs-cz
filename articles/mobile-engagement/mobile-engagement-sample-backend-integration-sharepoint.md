@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement – integrace back-end"
-description: "Připojení Azure Mobile Engagement s back-end služby SharePoint, k vytvoření kampaně ze služby SharePoint"
+title: Azure Mobile Engagement – integrace back-end
+description: Připojení Azure Mobile Engagement s back-end služby SharePoint, k vytvoření kampaně ze služby SharePoint
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 06297b43-579f-46e6-8a58-961a68f9aa09
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d49f1094f4c3f170f3618f3e19e42266f9ae8858
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf530ca6dce32050487f367aa80b10bf7f20b7e7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement---api-integration"></a>Azure Mobile Engagement – integrace rozhraní API
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 V automatizovaný systém marketing vytvoření a aktivace marketingových kampaní taky dojít automaticky. Pro tento účel - Azure Mobile Engagement umožňuje vytváření takové automatizované marketingových kampaní, které jsou také pomocí rozhraní API. 
 
 Obvykle zákazníkům použít rozhraní front-endu Mobile Engagement k vytvoření oznámení nebo hlasování podobně jako součást svých marketingových kampaní. Ale protože stále vyspělá marketingových kampaní, je zapotřebí využívat data zamknutý v back-end systémy (například systému CRM nebo systém CMS jako SharePoint), aby bylo možné vytvořit plně automatizovaného kanálu vytváří kampaně v Mobile Engagementu dynamicky na základě dat odesílaných v z back-end systémy. 
@@ -155,7 +159,7 @@ V tomto kurzu projde scénář, kde uživatel obchodní SharePoint naplní sezna
 4. Jakmile máte oznámení vytvořen, zobrazí se něco jako následující na portál Mobile Engagement (Všimněte si, že stav = Koncept a aktivované = není k dispozici)
    
     ![][3]
-5. `CreateAzMECampaign`Vytvoří oznámení kampaně a vrátí jeho Id na volajícího. `ActivateAzMECampaign`Toto Id vyžaduje jako parametr k aktivaci kampaně. 
+5. `CreateAzMECampaign` Vytvoří oznámení kampaně a vrátí jeho Id na volajícího. `ActivateAzMECampaign` Toto Id vyžaduje jako parametr k aktivaci kampaně. 
    
         static async Task<bool> ActivateAzMECampaign(int campaignId)
         {

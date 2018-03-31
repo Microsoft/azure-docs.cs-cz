@@ -1,25 +1,24 @@
 ---
-title: "Azure Stream Analytics řízené daty ladění pomocí úlohy diagram | Microsoft Docs"
-description: "Řešení potíží úlohu služby Stream Analytics pomocí úlohy diagram a metriky."
-keywords: 
-documentationcenter: 
+title: Azure Stream Analytics řízené daty ladění pomocí úlohy diagram | Microsoft Docs
+description: Řešení potíží úlohu služby Stream Analytics pomocí úlohy diagram a metriky.
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
-ms.author: samacha
-ms.openlocfilehash: 5b689c07bf8baa531c7a50ca50ed5140c1787e7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 65eeeee7daa22b94074f55defdfd1219049774c9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Řízené daty ladění pomocí diagram úlohy
 
@@ -88,7 +87,7 @@ Pokud v předchozím kroku dotazu je vstupní procesoru, využít vstupní metri
 ## <a name="get-help"></a>Podpora
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Úvod do služby Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme s Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování úlohy Stream Analytics](stream-analytics-scale-jobs.md)

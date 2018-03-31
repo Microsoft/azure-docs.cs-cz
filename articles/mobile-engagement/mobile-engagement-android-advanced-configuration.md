@@ -1,11 +1,11 @@
 ---
-title: "Upřesňující konfigurace pro Azure Mobile Engagement Android SDK"
-description: "Popisuje možnosti pokročilé konfigurace, včetně Android Manifest s Azure Mobile Engagement Android SDK"
+title: Upřesňující konfigurace pro Azure Mobile Engagement Android SDK
+description: Popisuje možnosti pokročilé konfigurace, včetně Android Manifest s Azure Mobile Engagement Android SDK
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 37d2c09a-86fa-473d-8987-c7e35a0eb3e8
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 0301f71c76872714aa1bf727a6c21dd7a63db036
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 29a7bb7daae59e2034504ce27c9ba66755b11e4b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="advanced-configuration-for-azure-mobile-engagement-android-sdk"></a>Upřesňující konfigurace pro Azure Mobile Engagement Android SDK
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 > [!div class="op_single_selector"]
 > * [Univerzální platforma Windows](mobile-engagement-windows-store-advanced-configuration.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -48,7 +52,7 @@ Kód oprávnění vyžaduje, aby vypadala jako následující, kde vyplňte př�
 | ACCESS_NETWORK_STATE |Povinná hodnota. Pro základní vytváření sestav |
 | RECEIVE_BOOT_COMPLETED |Povinná hodnota. Objeví centru oznámení po restartování zařízení |
 | WAKE_LOCK |Nedoporučuje. Umožňuje shromažďování dat při použití Wi-Fi nebo při vypnuté obrazovky |
-| ZAVIBROVAT |Volitelné. Umožňuje vibracím při přijetí oznámení |
+| VIBRATE |Volitelné. Umožňuje vibracím při přijetí oznámení |
 | DOWNLOAD_WITHOUT_NOTIFICATION |Volitelné. Umožňuje oznámení Android velký obrázek |
 | WRITE_EXTERNAL_STORAGE |Volitelné. Umožňuje oznámení Android velký obrázek |
 | ACCESS_COARSE_LOCATION |Volitelné. Umožňuje hlášení polohy v reálném čase |
@@ -88,7 +92,7 @@ Pokud je při volání této funkce aktivní zapojení, může trvat jednu minut
 
 Můžete povolit protokol reporting znovu voláním stejnou funkci s `true`.
 
-### <a name="integration-in-your-own-preferenceactivity"></a>Integrace ve vašem vlastním`PreferenceActivity`
+### <a name="integration-in-your-own-preferenceactivity"></a>Integrace ve vašem vlastním `PreferenceActivity`
 Namísto volání této funkce, můžete také integrovat toto nastavení přímo do existující `PreferenceActivity`.
 
 Zapojení používat vaše předvolby soubor (s požadovanou režim) můžete nakonfigurovat `AndroidManifest.xml` soubor s `application meta-data`:

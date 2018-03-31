@@ -5,7 +5,7 @@ services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9ded187d-5c07-4377-a41c-ce205dd38b50
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-ms.openlocfilehash: d616ad58156a19e89b3e106639a38df67cbd0abb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8c513d5b05afaee4c49d0d2e96a0dcda78761421
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-sdk-integration-for-azure-mobile-engagement"></a>Integrace Windows Universal SDK pro Azure Mobile Engagement
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tento dokument popisuje všech integrace a konfigurace dostupných možnostech pro Azure Mobile Engagement Windows Universal SDK.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -58,7 +62,7 @@ Protokoly konzoly vyprodukované sady SDK teď může být povolena nebo zakáz�
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
-#### <a name="resources"></a>Zdroje
+#### <a name="resources"></a>Zdroje a prostředky
 Bylo vylepšeno Reach překrytí. Je součástí zdroje balíčku NuGet sady SDK.
 
 Při upgradu na novou verzi sady SDK, můžete zvolit, zda chcete zachovat existující soubory ve složce překrytí vašich prostředků, nebo není:

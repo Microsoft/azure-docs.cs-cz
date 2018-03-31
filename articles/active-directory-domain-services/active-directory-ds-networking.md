@@ -1,8 +1,8 @@
 ---
-title: "Azure AD Domain Services: Pokyny pro sítě | Microsoft Docs"
-description: "Požadavky sítě pro Azure Active Directory Domain Services"
+title: 'Azure AD Domain Services: Pokyny pro sítě | Microsoft Docs'
+description: Požadavky sítě pro Azure Active Directory Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: eee7905db4faedef3217118e8d491e2cb019fa30
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a56413490decc928ff2643213084155ae469871c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Požadavky sítě pro Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Jak vybrat virtuální síť Azure
@@ -73,7 +73,7 @@ Následující porty jsou povinné pro Azure AD Domain Services do služby a úd
 **Port 443 (synchronizaci se službou Azure AD)**
 * Slouží k synchronizaci adresáře Azure AD s vaší spravované domény.
 * Je nutné povolit přístup na tento port ve vaší skupině. Bez přístupu na tento port není synchronizována s adresáře Azure AD vaší spravované domény. Uživatelé nebudou moci přihlásit, protože nejsou synchronizovány změny hesla k vaší spravované domény.
-* Příchozí přístup můžete omezit na tento port na IP adresy, které patří do rozsahu Azure IP adres.
+* Příchozí přístup můžete omezit na tento port na IP adresy, které patří do rozsahu Azure IP adres. Všimněte si, že rozsah adres Azure IP jiný rozsah než je rozsah prostředí PowerShell vidět v pravidle níže.
 
 **Port 5986 (Vzdálená komunikace prostředí PowerShell)**
 * Slouží k provádění úloh správy pomocí vzdálenou komunikaci prostředí PowerShell na vaší spravované domény.

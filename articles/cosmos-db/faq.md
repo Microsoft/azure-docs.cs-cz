@@ -1,12 +1,12 @@
 ---
-title: "Nejčastější dotazy k Azure Cosmos DB | Microsoft Docs"
-description: "Získejte odpovědi na nejčastější dotazy týkající se Azure Cosmos databáze, databáze globálně distribuované, více modelu služby. Další informace o kapacitě a úrovně výkonu a škálování."
-keywords: "Otázky k databázi, často kladené otázky, documentdb, azure, Microsoft azure"
+title: Nejčastější dotazy k Azure Cosmos DB | Microsoft Docs
+description: Získejte odpovědi na nejčastější dotazy týkající se Azure Cosmos databáze, databáze globálně distribuované, více modelu služby. Další informace o kapacitě a úrovně výkonu a škálování.
+keywords: Otázky k databázi, často kladené otázky, documentdb, azure, Microsoft azure
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: b68d1831-35f9-443d-a0ac-dad0c89f245b
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: 466abbffd250685baf886b7fc7cc772ee9e327f2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 946d0f6456ce27931c91066d63c028388ecec84c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy Azure Cosmos DB
@@ -76,7 +76,7 @@ Můžete také [emulátoru DB Cosmos Azure](local-emulator.md) pro vývoj a test
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Jak můžete získat další pomoc s Azure Cosmos DB?
 
 Položte technické dotazy, můžete odeslat na jednu z těchto dvou otázku a odpovědět fóra:
-* [Fórum MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)
+* [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Přetečení zásobníku](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Přetečení zásobníku je nejvhodnější pro dotazy programování. Zkontrolujte, že váš dotaz je [na téma](https://stackoverflow.com/help/on-topic) a [zadejte tolik podrobnosti nejdříve provádění na otázku, zrušte zaškrtnutí a který jej](https://stackoverflow.com/help/how-to-ask). 
 
 Pokud chcete požádat o nové funkce, vytvořit novou žádost o na [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
@@ -244,7 +244,7 @@ Pokud některá z těchto rozdílů problém pro svůj projekt obraťte [ askcos
 Váš názor můžete sdílet v některém z následujících způsobů:
 
 * [Uservoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
-* [Fórum MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)
+* [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Přetečení zásobníku](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Přetečení zásobníku je nejvhodnější pro dotazy programování. Zkontrolujte, že váš dotaz je [na téma](https://stackoverflow.com/help/on-topic) a [zadejte tolik podrobnosti nejdříve provádění na otázku, zrušte zaškrtnutí a který jej](https://stackoverflow.com/help/how-to-ask).
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Co je připojovací řetězec, který je nutné použít pro připojení k rozhraní API tabulky?

@@ -1,11 +1,11 @@
 ---
 title: Integraci sady Azure Mobile Engagement Android SDK
-description: "Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement"
+description: Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 11618586-c709-49ca-bcd8-745323ff1af6
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 1f047f93fa8bc852b28c86e91d0c007a94fb4299
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77047cb1dc39fa3c05f58550ceea74e78396157f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="upgrade-procedures"></a>Postupy upgradu
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Pokud již máte integrovanou starší verze naše sady SDK do své aplikace, je nutné zvážit následující body při upgradu sady SDK.
 
 Možná budete muset několik postupy použijte, pokud provedena několik verzí sady SDK. Například pokud migrujete z 1.4.0 1.6.0 budete muset nejdřív postupujte podle pokynů "od 1.4.0 k 1.5.0" pak postupu "od 1.5.0 k 1.6.0".
@@ -141,7 +145,7 @@ Je nutné přidat tato funkce má u těchto kampaně pro práci v 4.0.0:
       </intent-filter>
     </activity>
 
-### <a name="resources"></a>Zdroje
+### <a name="resources"></a>Zdroje a prostředky
 Vložení nové `res/layout/engagement_loading.xml` souboru do projektu.
 
 ## <a name="from-240-to-300"></a>Z 2.4.0 k 3.0.0

@@ -1,11 +1,11 @@
 ---
-title: "Jak používat Engagement rozhraní API v systému Android"
-description: "Nejnovější Android SDK – jak používat Engagement rozhraní API v systému Android"
+title: Jak používat Engagement rozhraní API v systému Android
+description: Nejnovější Android SDK – jak používat Engagement rozhraní API v systému Android
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 09b62659-82ae-4a55-8784-fca0b6b22eaf
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: d353cd2fe47c54a0282cc5bb1b22b4a56e0cd82c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 79d0652be227dd6703a35d31409cf8e0d9c59519
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-android"></a>Jak používat Engagement rozhraní API v systému Android
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tento dokument je doplněk k dokumentu [Reporting rozšířené možnosti pro Android Mobile Engagement SDK](mobile-engagement-android-advanced-reporting.md). Poskytuje hloubka podrobnosti o tom, jak použít rozhraní API Engagement sestavy statistik vaší aplikace.
 
 Mějte na paměti, že pokud chcete pouze Engagement ohlásí aplikace relací, aktivity, dojde k chybě a technické informace, pak nejjednodušší způsob, jak se zajistit všechny vaše `Activity` dílčí třídy dědí odpovídající `EngagementActivity` třídy.
@@ -139,7 +143,7 @@ Následující příklad ukazuje, jak chcete sestavu chybu vždy, když velikost
             }
 
 ## <a name="reporting-jobs"></a>Úlohy sestav
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 Předpokládejme, že chcete nahlásit trvání přihlašovací proces:
 
             [...]
@@ -224,14 +228,14 @@ Libovolná data lze připojit k události, chyb, aktivity a úlohy.
 Tato data mohou být strukturovaná, používá třída sady pro Android (ve skutečnosti, funguje jako další parametry v Android záměry). Všimněte si, že sady může obsahovat pole nebo jiné sady instancí.
 
 > [!IMPORTANT]
-> Ujistěte se, když vložíte v parametrech parcelable nebo serializable, jejich `toString()` je implementována metoda vrátit čitelná pro člověka řetězec. Serializovatelné třídy, které obsahovat jiné přechodné pole, které nejsou serializovatelný provede Android havárií, když budete volat`bundle.putSerializable("key",value);`
+> Ujistěte se, když vložíte v parametrech parcelable nebo serializable, jejich `toString()` je implementována metoda vrátit čitelná pro člověka řetězec. Serializovatelné třídy, které obsahovat jiné přechodné pole, které nejsou serializovatelný provede Android havárií, když budete volat `bundle.putSerializable("key",value);`
 > 
 > [!WARNING]
 > Zhuštěný pole v další parametry nejsou podporovány, to znamená, nebude možné serializovat jako pole. Je třeba je převést na standardní pole před použitím v další parametry.
 > 
 > 
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
             Bundle extras = new Bundle();
             extras.putString("video_id", 123);
             extras.putString("ref_click", "http://foobar.com/blog");
@@ -259,7 +263,7 @@ Všimněte si, že tyto údaje lze odeslat přírůstkově: pouze nejnovější 
 
 Jako událostí funkce sady třída slouží k abstraktní informace o aplikaci, Všimněte si, že pole nebo dílčí sady bude považována za plochý řetězce (pomocí serializace JSON).
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 Zde je ukázka kódu odesílání pohlaví uživatele a datum narození:
 
             Bundle appInfo = new Bundle();

@@ -1,6 +1,6 @@
 ---
-title: "Správa virtuálního počítače Azure se shromažďováním dat pro inventarizaci | Dokumentace Microsoftu"
-description: "Správa virtuálního počítače se shromažďováním dat pro inventarizaci"
+title: Správa virtuálního počítače Azure se shromažďováním dat pro inventarizaci | Dokumentace Microsoftu
+description: Správa virtuálního počítače se shromažďováním dat pro inventarizaci
 services: automation
 keywords: inventory, automation, change, tracking
 author: jennyhunter-msft
@@ -8,11 +8,11 @@ ms.author: jehunte
 ms.date: 09/13/2017
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 7b0e39e98a81231b68414f36ac5c1fc0897304a1
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b23132f6e5693f5d731bf044ac5c2544a9308ee1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Správa virtuálního počítače Azure se shromažďováním dat pro inventarizaci
 
@@ -66,4 +66,4 @@ Odebrání virtuálního počítače ze správy inventáře:
 ## <a name="next-steps"></a>Další postup
 
 * Informace o správě změn nastavení souborů a registru na virtuálních počítačích najdete v tématu [Sledování změn softwaru v prostředí pomocí řešení Change Tracking](../log-analytics/log-analytics-change-tracking.md).
-* Informace o správě aktualizací pro Windows a balíčky na virtuálních počítačích najdete v tématu [Řešení Update Management v OMS](../operations-management-suite/oms-solution-update-management.md).
+* Další informace o správě systému Windows a aktualizace balíčků na virtuálních počítačích najdete v tématu [řešení správy aktualizací v Azure](../operations-management-suite/oms-solution-update-management.md).

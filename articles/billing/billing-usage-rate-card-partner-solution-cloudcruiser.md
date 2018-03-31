@@ -1,11 +1,11 @@
 ---
-title: "Cloud Cruiser a fakturace integrace rozhraní API Microsoft Azure | Microsoft Docs"
-description: "Poskytuje jedinečný perspektivy z Microsoft Azure Billing partnera Cruiser cloudu v jejich prostředí integrace rozhraní API Azure fakturace do svých produktech.  To je obzvláště užitečné pro Azure a cloudu Cruiser zákazníky, kteří se chtějí pomocí nebo pokusu o Cruiser cloudu pro Microsoft Azure Pack."
-services: 
-documentationcenter: 
-author: BryanLa
+title: Cloud Cruiser a fakturace integrace rozhraní API Microsoft Azure | Microsoft Docs
+description: Poskytuje jedinečný perspektivy z Microsoft Azure Billing partnera Cruiser cloudu v jejich prostředí integrace rozhraní API Azure fakturace do svých produktech.  To je obzvláště užitečné pro Azure a cloudu Cruiser zákazníky, kteří se chtějí pomocí nebo pokusu o Cruiser cloudu pro Microsoft Azure Pack.
+services: ''
+documentationcenter: ''
+author: tonguyen
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: b65128cf-5d4d-4cbd-b81e-d3dceab44271
 ms.service: billing
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
 ms.author: mobandyo;sirishap;bryanla
-ms.openlocfilehash: 7d66cac98afa72c807f597403b1e2bd278e45cec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ddb81078e8019284c0481d4ea8d72253d3f0a5a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cloud Cruiser a fakturace integrace rozhraní API Microsoft Azure
 Tento článek popisuje, jak můžete používat informace shromážděné z nové rozhraní Microsoft Azure Billing API v cloudu Cruiser pro simulaci náklady pracovního postupu a analýzu.
 
-## <a name="azure-ratecard-api"></a>Rozhraní API Azure RateCard
+## <a name="azure-ratecard-api"></a>Azure RateCard API
 Rozhraní API RateCard poskytuje míra informace z Azure. Po ověření se správnými přihlašovacími údaji, můžete dát dotaz na rozhraní API ke shromažďování metadat o službách, které jsou k dispozici v Azure, společně s sazby související s vaší nabízejí ID.
 
 Následující ukázková odpověď je z rozhraní API, zobrazuje tyto ceny pro A0 (Windows) instance:

@@ -1,24 +1,23 @@
 ---
-title: "Uživatelem definované funkce Azure Stream Analytics JavaScript | Microsoft Docs"
-description: "Provedení mechanismy rozšířený dotaz s uživatelem definované funkce jazyka JavaScript"
-keywords: "JavaScript, funkce udf definované uživatelem"
+title: Uživatelem definované funkce Azure Stream Analytics JavaScript | Microsoft Docs
+description: Provedení mechanismy rozšířený dotaz s uživatelem definované funkce jazyka JavaScript
+keywords: JavaScript, funkce udf definované uživatelem
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: e8c1c784a598416b478d1430258201053185fdee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: f2b14029ebea7f9cf1fa74a384ecbb72b08b7ad6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-functions"></a>Uživatelem definované funkce Azure Stream Analytics JavaScript
 Azure Stream Analytics podporuje uživatelsky definované funkce, které jsou napsané v jazyce JavaScript. S bohaté sada **řetězec**, **RegExp**, **matematické**, **pole**, a **datum** metody této JavaScript poskytuje, transformace komplexní dat pomocí služby Stream Analytics bude snazší k vytvoření úlohy.
@@ -87,12 +86,12 @@ Existují rozdíly v typech, Stream Analytics query language a podporu jazyka Ja
 Stream Analytics | JavaScript
 --- | ---
 bigint | Číslo (JavaScript může představovat jenom celá čísla přesně 2 ^ 53)
-Data a času | Datum (JavaScript pouze podporuje v milisekundách)
+DateTime | Datum (JavaScript pouze podporuje v milisekundách)
 Double | Číslo
-nvarchar(max) | Řetězec
-záznam | Objekt
+nvarchar(MAX) | Řetězec
+Záznam | Objekt
 Pole | Pole
-HODNOTU NULL | Hodnotu Null
+NULL | Null
 
 
 Zde jsou převody JavaScript Stream Analytics:
@@ -101,11 +100,11 @@ Zde jsou převody JavaScript Stream Analytics:
 JavaScript | Stream Analytics
 --- | ---
 Číslo | Bigint (Pokud je číslo se zaokrouhlí a mezi dlouho. MinValue a dlouho. MaxValue; jinak je dvojité)
-Datum | Data a času
-Řetězec | nvarchar(max)
-Objekt | záznam
+Datum | DateTime
+Řetězec | nvarchar(MAX)
+Objekt | Záznam
 Pole | Pole
-Hodnotu Null, Nedefinovaná | HODNOTU NULL
+Hodnotu Null, Nedefinovaná | NULL
 Jiný typ (například funkce nebo chyba) | Není podporované (výsledky v chybě za běhu)
 
 ## <a name="troubleshooting"></a>Řešení potíží
@@ -141,7 +140,7 @@ FROM
 ## <a name="get-help"></a>Podpora
 Potřebujete další pomoc, zkuste naši [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)

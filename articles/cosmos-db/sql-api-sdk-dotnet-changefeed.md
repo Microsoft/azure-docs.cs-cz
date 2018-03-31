@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: maquaran
-ms.openlocfilehash: 54e366de60e34ef0aac258e16ac585c3b930ebf7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 43ba189332cf012a80c309a0dc0f383e38a0915c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Informační kanál procesor změnu .NET SDK: Stažení a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -29,8 +29,8 @@ ms.lasthandoff: 03/28/2018
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/documentdb/)
-> * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/documentdbresourceprovider/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 
 |   |   |
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/28/2018
 |**Začínáme**|[Začínáme s změnu kanálu procesoru .NET SDK](change-feed.md)|
 |**Aktuální podporovaných prostředí**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Rozhraní Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 * Zlepšení stability.

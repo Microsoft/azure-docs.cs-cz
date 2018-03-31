@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s průvodce – informace o požadavku služby Azure Mobile Engagement."
-description: "Tým podpory pro řešení potíží s Azure Mobile Engagement vyžaduje informace o žádosti o služby"
+title: Řešení potíží s průvodce – informace o požadavku služby Azure Mobile Engagement.
+description: Tým podpory pro řešení potíží s Azure Mobile Engagement vyžaduje informace o žádosti o služby
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 28d49915-d0c2-4fac-b07a-b3e9b6b8528a
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a4497046df74003a733d80f190e82b5e798d398e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d08ccbe6639809f16c41b3399cbe374d34c9a5bb
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="service-request-sr-information"></a>Informace o požadavku (SR) služby
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Když otevřete žádost o službu pro všechny služby Mobile Engagement, zadejte následující informace:
 
 ## <a name="ids-applicable-identifiers-related-to-your-issue"></a>ID: Použít identifikátory týkající se vašeho problému:

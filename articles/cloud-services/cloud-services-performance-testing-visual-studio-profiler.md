@@ -1,12 +1,12 @@
 ---
-title: "Profilace cloudové služby místně v emulátoru služby výpočty v | Microsoft Docs"
+title: Profilace cloudové služby místně v emulátoru služby výpočty v | Microsoft Docs
 services: cloud-services
-description: "Prozkoumat problémy s výkonem v cloudové služby Visual Studio profileru"
-documentationcenter: 
+description: Prozkoumat problémy s výkonem v cloudové služby Visual Studio profileru
+documentationcenter: ''
 author: mikejo
-manager: ghogen
-editor: 
-tags: 
+manager: douge
+editor: ''
+tags: ''
 ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
 ms.service: cloud-services
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: ee7febeb04d3a956b4a0a11b69f8f34acee23067
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8ff7b88a3086488ab669288687c274237ca30b47
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Testování výkonu cloudové služby místně v emulátor výpočtů v Azure pomocí sady Visual Studio profileru
 K dispozici pro testování výkonu cloudové služby jsou různé nástroje a techniky.

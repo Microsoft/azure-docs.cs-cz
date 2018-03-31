@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní - Reach postup"
-description: "Přehled uživatelského rozhraní pro Azure Mobile Engagement"
+title: Azure Mobile Engagement uživatelské rozhraní - Reach postup
+description: Přehled uživatelského rozhraní pro Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 30af87e6-c816-4cce-8609-6cbd3e83de14
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 33a0a9d0c399cb7f0a791c4c16dde2e2d62364ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c536d378023ee4a9675bb2d67262fb485c8052b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-get-started-using-and-managing-pushes-to-reach-out-to-your-end-users"></a>Jak začít pracovat, používáním a správou nabízených oznámení k oslovení koncových uživatelů
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Jakmile sada SDK je plně integrována do vaší aplikace, můžete začít používat pomocí části Reach uživatelského rozhraní pro nabízená oznámení uživatelům vaší aplikace.  
 
 ## <a name="do-your-first-push-notification-campaign"></a>Proveďte své první kampaně nabízených oznámení
@@ -58,13 +62,13 @@ Jakmile sada SDK je plně integrována do vaší aplikace, můžete začít pou�
 ![First7][7]
 
 ## <a name="test-your-push-notification-campaign"></a>Testování kampaň nabízených oznámení
-![test1][8]
+![Test1][8]
 
 * Zaregistrujte zařízení.
 * Klikněte na zaškrtávací políčko zařízení, které chcete push.
 * Klikněte na tlačítko "Test" k odeslání nabízeného oznámení do zařízení.
 
-![test2][9]
+![Test2][9]
 
 * Aktivovat kampaň
 
@@ -83,7 +87,7 @@ Jak je zobrazen výše nabízených oznámení obsah obsahuje značky ${rebate_c
 > [!WARNING]
 > Pokud informace o značce aplikace není definován pro uživatele, uživatel neobdrží nabízeného oznámení.
 
-* výsledek
+* Výsledek
 
 ![Personalize2][12]
 
@@ -114,7 +118,7 @@ Jak je zobrazen výše nabízených oznámení obsah obsahuje značky ${rebate_c
 "Pouze mimo aplikaci" způsob dodání poskytuje nabízené oznámení při ukončení aplikace. Toto je standardní nabízených oznámení.
 Když vyberete "pouze mimo aplikaci", musí již zadanými certifikáty z platformy, na které aplikace je vychází (APNS nebo GCM).
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Certifikáty Apple Push Notification Service –](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging – certifikát](http://developer.android.com/google/gcm/index.html) 
 
 ### <a name="in-app-only-delivery-mode"></a>"v aplikaci pouze" způsob dodání.
@@ -192,7 +196,7 @@ Zobrazení textu umožňuje prezentovat další obsah koncovému uživateli. Tot
 
 ![TextView6][26]
 
-* výsledek
+* Výsledek
 
 ![TextView7][27]
 
@@ -235,7 +239,7 @@ Toto je také možnost k dispozici volání akce, jako je přesměrování na Ap
 * Klikněte na zdroj úpravy tlačítka režimu Přepnout edition a v tématu jak to vypadá.
 * Zapište obsah, který se zobrazí na tlačítko akce (tlačítko akce umožňuje aplikaci, aby se určité akci například otevřete stránku aplikace, přesměrování Store nebo jakýkoli druh zdroje, které můžete zadat).
 * Zápis obsahu, který se zobrazí na tlačítko Konec (kliknutím na tlačítko Konec webového zobrazení zmizí).
-* výsledek
+* Výsledek
 
 ![WebView5][32]
 

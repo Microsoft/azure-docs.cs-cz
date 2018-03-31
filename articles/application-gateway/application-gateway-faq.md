@@ -1,24 +1,19 @@
 ---
-title: Nejčastější dotazy pro Azure Application Gateway | Microsoft Docs
+title: Nejčastější dotazy pro Azure Application Gateway
 description: Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se Azure Application Gateway
-documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: d54ee7ec-4d6b-4db7-8a17-6513fda7e392
+author: vhorne
+manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
-ms.author: davidmu
-ms.openlocfilehash: 5b400b373577fc38fe108a74eb8bad936a82be0c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 3/29/2018
+ms.author: victorh
+ms.openlocfilehash: b4b627d16414ea7e4553a18e6620fba60e95ec91
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy pro službu Application Gateway
 
@@ -38,7 +33,19 @@ Application Gateway je Vyrovnávání zatížení vrstvy 7, což znamená, že p
 
 **Q. Jaké protokoly podporuje Application Gateway?**
 
-Aplikační brána podporuje protokoly HTTP, HTTPS a protokolu WebSocket.
+Aplikační brána podporuje protokoly HTTP, HTTPS, HTTP nebo 2 a protokolu WebSocket.
+
+**Q. Jak Aplikační brána podporuje protokol HTTP/2?**
+
+Podpora protokolu HTTP/2 je k dispozici pro připojení klientů k jenom naslouchací procesy pro aplikační bránu. Komunikace na back-end serveru fondy je přes protokol HTTP/1.1. 
+
+Podpora protokolu HTTP/2 je ve výchozím nastavení zakázaná. Následující příklad fragmentu kódu prostředí Azure PowerShell ukazuje, jak můžete ji povolit:
+
+```
+$gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
+$gw.EnableHttp2 = $true
+Set-AzureRmApplicationGateway -ApplicationGateway $gw
+```
 
 **Q. Jaké prostředky jsou dnes podporovány v rámci fondu back-end?**
 
@@ -314,7 +321,7 @@ Protokoly auditu jsou k dispozici pro službu Application Gateway. Na portálu, 
 
 **Q. Můžete nastavit výstrahy s Application Gateway?**
 
-Ano, aplikační brána podporuje výstrahy, se konfigurují vypnout metriky.  Aplikační brána v současnosti má metriky propustnosti"", kterého lze nakonfigurovat výstrahy. Další informace o výstrahách naleznete [dostávat oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Ano, aplikační brána podporuje výstrahy, se konfigurují vypnout metriky. Aplikační brána v současnosti má metriky propustnosti"", kterého lze nakonfigurovat výstrahy. Další informace o výstrahách naleznete [dostávat oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
 **Q. Back-end stavu vrátí Neznámý stav, co by mohlo být příčinou tento stav?**
 

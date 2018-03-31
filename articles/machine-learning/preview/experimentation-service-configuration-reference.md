@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning experimentování služby konfigurační soubory"
-description: "Tento dokument podrobně popisuje nastavení konfigurace služby Azure ML experimenty."
+title: Azure Machine Learning experimentování služby konfigurační soubory
+description: Tento dokument podrobně popisuje nastavení konfigurace služby Azure ML experimenty.
 services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 75b55b45c355f585fd73bdc1d97bc6adbbc4e9a0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6cec039034f0650d017eb14de584939bb3191223
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning experimentování služby konfigurační soubory
 
@@ -150,6 +150,8 @@ _\<výpočetní cílová > .compute_ soubor Určuje připojení a informace o ko
 
 **userManagedEnvironment**: Tato vlastnost určuje, zda je tento cíl výpočetní přímo spravuje uživatele nebo spravovat pomocí služby experimenty.  
 
+**pythonLocation**: Tato vlastnost určuje umístění na cílovém výpočetní použít ke spuštění programu uživatele modulu runtime jazyka python. 
+
 ### <a name="run-configuration-namerunconfig"></a>\<Spustit název konfigurace > .runconfig
 _\<Spustit název konfigurace > .runconfig_ určuje Azure ML experimentovat chování při spuštění. Můžete nakonfigurovat chování při spuštění například sledování historie spouštění nebo co výpočetní cíle použít společně s mnohé další. Názvy spuštění konfigurační soubory, které slouží k naplnění rozevíracího seznamu kontext spuštění v Azure ML Workbench desktopová aplikace.
 
@@ -213,5 +215,5 @@ Podle výše nahrazení, následující ukázka kódu nyní čte z "myremote.dso
 ```
 df = datasource.load_datasource('mylocal.dsource')
 ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o [konfigurace služby experimentování](experimentation-service-configuration.md).

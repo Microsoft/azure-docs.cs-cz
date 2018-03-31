@@ -1,12 +1,12 @@
 ---
-title: "Vzor návrhu Azure Cosmos DB: sociálních médií aplikace | Microsoft Docs"
-description: "Další informace o vzoru návrhu pro sociální sítě s využitím flexibilitu úložiště Azure Cosmos DB a jinými službami Azure."
-keywords: "Aplikace v sociálních sítích"
+title: 'Vzor návrhu Azure Cosmos DB: sociálních médií aplikace | Microsoft Docs'
+description: Další informace o vzoru návrhu pro sociální sítě s využitím flexibilitu úložiště Azure Cosmos DB a jinými službami Azure.
+keywords: Aplikace v sociálních sítích
 services: cosmos-db
 author: ealsur
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 2dbf83a7-512a-4993-bf1b-ea7d72e095d9
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
-ms.openlocfilehash: c89b2db6d5a80f184ca98ef757605272d385a81c
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: d223187ab1f8338c57e6aa32903ea9b762393ab5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Budete sociálních s Azure Cosmos DB
 Žijí v společnosti massively propojeny znamená, že v určitém okamžiku v životnosti stane součástí **sociálních sítí**. Pro komunikaci s kolegy přátel, rodiny nebo někdy nasdílejte naše nadšení pro osoby s společné zájmy používáme sociálních sítí.
@@ -229,7 +229,7 @@ Podporuje cosmos DB [dynamické rozdělení](https://azure.microsoft.com/blog/10
 
 Jeden je zajímavé bod důležité zmínit, Cosmos DB bude spuštěn své dotazy (včetně [agregace](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) pro všechny oddíly transparentně, nemusíte přidejte veškeré logiky s růstem vaše data.
 
-S časem, můžete se nakonec zvýší v provozu a vaší spotřeby prostředků (měřeno v [RUs](request-units.md), nebo jednotky žádosti) se zvýší. Bude číst a zapisovat častěji, jako vaše userbase zvětšování a začnou vytváření a čtení víc obsahu; schopnost **škálování vašeho propustnost** je životně důležité. Zvýšení naše RUs je velmi snadné, jsme můžete provést pomocí několika kliknutí na portálu Azure nebo pomocí [vydávání příkazů prostřednictvím rozhraní API](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer).
+S časem, můžete se nakonec zvýší v provozu a vaší spotřeby prostředků (měřeno v [RUs](request-units.md), nebo jednotky žádosti) se zvýší. Bude číst a zapisovat častěji, jako vaše userbase zvětšování a začnou vytváření a čtení víc obsahu; schopnost **škálování vašeho propustnost** je životně důležité. Zvýšení naše RUs je velmi snadné, jsme můžete provést pomocí několika kliknutí na portálu Azure nebo pomocí [vydávání příkazů prostřednictvím rozhraní API](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer).
 
 ![Škálování a definování klíč oddílu](./media/social-media-apps/social-media-apps-scaling.png)
 
@@ -250,5 +250,5 @@ Tento článek se pokusí přenesen některé light do alternativy úplně vytv�
 
 Správné je žádné stříbrným odrážka pro tento druh scénářů, je součinnosti vytvořené kombinace kvalitních služeb, které nám s cílem vytvořit skvělé umožňují: rychlostí a volnost Azure Cosmos DB zajistit skvělé sociálních aplikace, Intelligence za prvotřídní hledání řešení jako Azure Search, flexibilní aplikační služby Azure k hostování aplikací není i jazykově nezávislého ale procesy na pozadí výkonný a rozšíření Azure Storage a Azure SQL Database pro ukládání masivní objemy dat a analýzy výkonu Azure Machine Learning vytvořit znalostní báze a intelligence, která může poskytnout zpětnou vazbu pro naše procesy a Pomozte nám správné uživatelům poskytovat s příslušným obsahem.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o případy použití pro Cosmos DB, najdete v části [případy použití běžné DB Cosmos](use-cases.md).

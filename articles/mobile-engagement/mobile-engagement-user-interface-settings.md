@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní – nastavení"
-description: "Zjistěte, jak spravovat globální nastavení aplikace pomocí Azure Mobile Engagement"
+title: Azure Mobile Engagement uživatelské rozhraní – nastavení
+description: Zjistěte, jak spravovat globální nastavení aplikace pomocí Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 858f4cb4-14de-4bb5-826f-28cadbfc928b
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31df9f151febcb7e5f0f2cd4a83053b3aac416a3
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-the-global-settings-of-your-application"></a>Jak spravovat globální nastavení aplikace
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 **Nastavení** možnosti nabídky, které jsou k dispozici pro aplikací měnit, v závislosti na platformě aplikace a oprávnění, budete mít udělená pro aplikaci. Nastavení zahrnuje následující: Podrobnosti, projekty, nativní oznámení, rychlosti Push, značkou Tag (app-info) a komerční naléhavost. Možnost nabídky značky (informace o aplikaci) v části nastavení lze spravovat vaše aplikace (pomocí SDK) nebo váš back-end (pomocí rozhraní API pro zařízení). 
 
 > [!NOTE]
@@ -44,7 +48,7 @@ Další informace najdete v tématu: [dokumentace uživatelského rozhraní – 
 
   ![settings3][48]
 
-## <a name="native-push"></a>Nativního nabízení
+## <a name="native-push"></a>Nativní oznámení
 Můžete zaregistrovat nový certifikát nebo odstraňte a existujícího certifikátu pro použití nativního nabízení. Nativního nabízení umožňuje Azure Mobile Engagement k aplikaci kdykoli, i když není spuštěna. 
 
 Po zadání přihlašovacích údajů nebo certifikáty pro aspoň jednu službu s nativním nabízením, můžete vybrat "Kdykoliv" při vytváření kampaně Reach a použijte parametr "oznamovatelem" v rozhraní API PUSH.
@@ -90,7 +94,7 @@ Zobrazí aktuální rychlost nabízení svojí aplikace a umožňuje definovat r
 ## <a name="commercial-pressure"></a>Komerční naléhavost
 ![settings12][57]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Koncepty][Link 6]
 * [Řešení potíží s příručce služby][Link 24]
 

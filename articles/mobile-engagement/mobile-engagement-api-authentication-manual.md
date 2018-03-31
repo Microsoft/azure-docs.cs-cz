@@ -1,11 +1,11 @@
 ---
-title: "Ověření pomocí rozhraní REST API Mobile Engagement: ruční instalace"
-description: "Popisuje, jak ručně nastavit ověřování rozhraní REST API Mobile Engagement"
+title: 'Ověření pomocí rozhraní REST API Mobile Engagement: ruční instalace'
+description: Popisuje, jak ručně nastavit ověřování rozhraní REST API Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2e79f9c9-41e4-45ac-b427-3b8338675163
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0b4a999c6778040e71f862d3a010b6635e84b26e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 0d71908b34ddf8313aa45014420c9e63a00078c9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="authenticate-with-mobile-engagement-rest-apis-manual-setup"></a>Ověření pomocí rozhraní REST API Mobile Engagement: ruční instalace
+# <a name="authenticate-with-mobile-engagement-rest-apis---manual-setup"></a>Ověření pomocí Mobile Engagement REST API – ruční instalaci
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tato dokumentace je dodatek k [ověřit pomocí rozhraní API REST Mobile Engagement](mobile-engagement-api-authentication.md). Ujistěte se, přečtěte si tento článek nejprve vám pomůže porozumět kontextu. Popisuje také jiný způsob, jak to jednorázové ověření instalace pro rozhraní API REST Mobile Engagement pomocí portálu Azure.
 
 > [!NOTE]
@@ -67,7 +71,7 @@ Tato dokumentace je dodatek k [ověřit pomocí rozhraní API REST Mobile Engage
 
     ![Zkopírujte koncový bod][14]
 
-16. Tento koncový bod je v následující podobě, kde je identifikátor GUID v adrese URL vaší **TENANT_ID**:`https://login.microsoftonline.com/<GUID>/oauth2/token`
+16. Tento koncový bod je v následující podobě, kde je identifikátor GUID v adrese URL vaší **TENANT_ID**: `https://login.microsoftonline.com/<GUID>/oauth2/token`
 
 17. Dále je nutné nakonfigurovat oprávnění v této aplikaci. Chcete-li spustit proces, přejděte na [portál Azure](https://portal.azure.com).
 

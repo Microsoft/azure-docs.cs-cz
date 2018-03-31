@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 398a62cbba952f35f29c1b1f411a6d5b901d2973
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 22da58df653b31c46145ebbbd1f6f6a26b0e9f29
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je seznam často kladené otázky týkající se analýzy protokolů v Microsoft Azure. Pokud máte další dotazy o analýzy protokolů, přejděte k [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte svoje otázky. Dotaz je dotaz, často, přidáme ji k tomuto článku tak, aby se nachází snadno a rychle.
@@ -51,7 +51,7 @@ Odpověď: Ne. Analýzy protokolů je škálovatelná Cloudová služba, která 
 
 ### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>OTÁZKY. Jak odstranit Pokud analýzy protokolů je už shromažďování dat?
 
-Odpověď: Pokud jsou na bezplatnou cenová úroveň a odeslali více než 500 MB dat za den, zastaví se shromažďování dat pro zbytek dne. Dosažení denního limitu je běžným důvodem, který analýzy protokolů zastaví shromažďování dat, nebo se zdá být chybí data.  
+Odpověď: pro předplatné a prostoru vytvořil před 2. dubna 2018, který je na *volné* cenovou úroveň, pokud je více než 500 MB dat odeslaných za den, shromažďování dat zastaví pro zbytek dne. Dosažení denního limitu je běžným důvodem, který analýzy protokolů zastaví shromažďování dat, nebo se zdá být chybí data.  
 
 Analýzy protokolů vytváří událost typu *prezenčního signálu* a slouží k určení, pokud se shromažďování dat zastaví. 
 
@@ -68,7 +68,7 @@ Následující tabulka popisuje důvody, které shromažďování dat zastaví a
 | Dosažen limit volné dat<sup>1</sup>       | Počkejte, až do následujícího měsíce pro kolekci k automatickému restartu, nebo<br> Změnit na placené cenovou úroveň. |
 | Předplatné Azure je v pozastaveném stavu z důvodu: <br> Bezplatná zkušební verze skončila <br> Platnost Azure průchodu <br> Měsíčně útrat dosažen (například na předplatné MSDN nebo v sadě Visual Studio)                          | Převést na placené předplatné <br> Převést na placené předplatné <br> Odeberte limit nebo počkejte, až se obnoví limit |
 
-<sup>1</sup> Pokud pracovního prostoru na cenová úroveň free, jste omezené s odesíláním 500 MB dat za den ke službě. Po dosažení denního limitu shromažďování dat zastaví až další den. Data odeslaná při ukončení shromažďování dat je není indexované a není k dispozici pro vyhledávání. Když se obnoví shromažďování dat, dojde k zpracování pouze pro nová data odeslána. 
+<sup>1</sup> Pokud pracovního prostoru na *volné* cenovou úroveň, jste omezené s odesíláním 500 MB dat za den ke službě. Po dosažení denního limitu shromažďování dat zastaví až další den. Data odeslaná při ukončení shromažďování dat je není indexované a není k dispozici pro vyhledávání. Když se obnoví shromažďování dat, dojde k zpracování pouze pro nová data odeslána. 
 
 Čas UTC využívá analýzy protokolů a spustí každý den o půlnoci času UTC. Pokud v pracovním prostoru dosáhne denního limitu, obnoví zpracování během první hodiny následujícího dne jeden UTC.
 
@@ -96,7 +96,7 @@ A. Ne, není aktuálně možné číst z libovolné tabulky nebo kontejnery v ú
 
 A. Službu analýzy protokolů je postavená na Azure. Log Analytics IP adresy jsou v [Microsoft Azure Datacenter rozsahy IP adres](http://www.microsoft.com/download/details.aspx?id=41653).
 
-Podle nasazení služby jsou vytvářeny, skutečný IP adresy služby analýzy protokolů se nezmění. Názvy DNS umožňuje prostřednictvím brány firewall jsou popsána v [nakonfigurujte nastavení serveru proxy a brány firewall v analýzy protokolů](log-analytics-proxy-firewall.md).
+Podle nasazení služby jsou vytvářeny, skutečný IP adresy služby analýzy protokolů se nezmění. Názvy DNS umožňuje prostřednictvím brány firewall jsou dokumentovány v článku [požadavky na systém](log-analytics-concept-hybrid.md#prerequisites).
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>OTÁZKY. Je možné použít ExpressRoute pro připojení k Azure. Používá Moje analýzy protokolů přenosů Moje připojení ExpressRoute?
 
@@ -144,7 +144,7 @@ A. Plánu úrovně free Nastaví denní cap 500 MB za pracovního prostoru. Plá
 
 Analýzy protokolů agenta byla navržená tak, aby Ujistěte se, že má malé nároky. Datový svazek se liší v závislosti na řešení, která je povolit. Můžete najít podrobné informace o objemu dat a řešení v najdete v části rozdělení [využití](log-analytics-usage.md) stránky.
 
-Další informace si můžete přečíst [zákazníka blog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) o malé nároky agenta OMS.
+Další informace si můžete přečíst [zákazníka blog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) zobrazující jejich výsledky po vyhodnocení využití prostředků (nároků) agenta OMS.
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>OTÁZKY. Při odesílání dat k analýze protokolů, jaký poměr šířky pásma sítě se používá pomocí správy agenta MMA (Microsoft)?
 

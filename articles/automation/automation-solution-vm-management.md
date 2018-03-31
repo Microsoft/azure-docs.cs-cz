@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: da2d95bc100a6160282c93682ad76f7ee881e105
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2838d8fd53d4e2e564bb7784cb5489e9a167d5bb
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Spuštění a zastavení virtuálních počítačů během počítačem nepracujete řešení (preview) ve službě Azure Automation
 
@@ -55,7 +55,7 @@ Proveďte následující kroky k přidání spuštění a zastavení virtuální
 
 1. **Přidat řešení** se zobrazí stránka. Zobrazí se výzva ke konfiguraci řešení, než můžete ho importovat do vašeho předplatného automatizace.
    ![Stránka Přidat řešení pro správu virtuálních počítačů](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
-1. Na **přidat řešení** vyberte **prostoru**. Vyberte pracovní prostor OMS, propojené stejného předplatného Azure, zda má účet Automation v. Pokud nemáte pracovního prostoru, vyberte **vytvořit nový pracovní prostor**. Na **pracovním prostorem OMS** stránky, proveďte následující kroky:
+1. Na **přidat řešení** vyberte **prostoru**. Vyberte pracovní prostor analýzy protokolů, propojené stejného předplatného Azure, zda má účet Automation v. Pokud nemáte pracovního prostoru, vyberte **vytvořit nový pracovní prostor**. Na **pracovním prostorem OMS** stránky, proveďte následující kroky:
    * Zadejte název pro nový **pracovní prostor OMS**.
    * Vyberte **předplatné** propojení s výběrem z rozevíracího seznamu, pokud výchozí vybraný není vhodná.
    * Pro **skupiny prostředků**, můžete vytvořit novou skupinu prostředků nebo vyberte nějaký existující.
@@ -63,13 +63,13 @@ Proveďte následující kroky k přidání spuštění a zastavení virtuální
    * Vyberte možnost u položky **Cenová úroveň**. Řešení nabízí dvě úrovně: **volné** a **na uzel (OMS)**. Úroveň Free limit je množství shromažďovaných dat denně, dobu uchování a minut runtime úlohy sady runbook. Vrstvě podle uzlu nemá na množství dat denně shromážděných omezení.
 
         > [!NOTE]
-        > I když za GB (samostatně) placené vrstvy se zobrazí jako možnost, není použitelný. Pokud ji vyberete a pokračujte vytvoření tohoto řešení v rámci vašeho předplatného, dojde k chybě. Problém bude odstraněn po oficiálním vydání tohoto řešení. Toto řešení pouze používá automatizace úloh minut a přijímání protokolu. Nepřidává žádné další další uzly OMS pro vaše prostředí.
+        > I když za GB (samostatně) placené vrstvy se zobrazí jako možnost, není použitelný. Pokud ji vyberete a pokračujte vytvoření tohoto řešení v rámci vašeho předplatného, dojde k chybě. Problém bude odstraněn po oficiálním vydání tohoto řešení. Toto řešení pouze používá automatizace úloh minut a přijímání protokolu. Nepřidává žádné další další uzly pro vaše prostředí.
 
 1. Po zadání požadovaných informací na **pracovním prostorem OMS** klikněte na tlačítko **vytvořit**. V části jeho průběh můžete sledovat **oznámení** v nabídce, která vám vrací **přidat řešení** stránky po dokončení.
-1. Na **přidat řešení** vyberte **účet Automation**. Pokud vytváříte nový pracovní prostor OMS, budete muset taky vytvořit nový účet Automation se k ní přidružena. Vyberte **vytvořit účet Automation**a na **účet Automation přidat** stránky, zadejte následující:
+1. Na **přidat řešení** vyberte **účet Automation**. Pokud vytváříte nový pracovní prostor analýzy protokolů, budete muset taky vytvořit nový účet Automation se k ní přidružena. Vyberte **vytvořit účet Automation**a na **účet Automation přidat** stránky, zadejte následující:
    * Do pole **Název** zadejte název účtu služby Automation.
 
-    Všechny ostatní možnosti se vyplní automaticky na základě na pracovní prostor OMS vybrané. Tyto možnosti nelze změnit. Účet Spustit v Azure jako představuje výchozí metodu ověřování pro runbooky obsažené v tomto řešení. Po kliknutí na tlačítko **OK**, se ověřují možností konfigurace a vytvoření účtu Automation. Průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.
+    Všechny ostatní možnosti se vyplní automaticky na základě pracovního prostoru analýzy protokolů vybrané. Tyto možnosti nelze změnit. Účet Spustit v Azure jako představuje výchozí metodu ověřování pro runbooky obsažené v tomto řešení. Po kliknutí na tlačítko **OK**, se ověřují možností konfigurace a vytvoření účtu Automation. Průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.
 
 1. Nakonec na **přidat řešení** vyberte **konfigurace**. **Parametry** se zobrazí stránka.
 
@@ -230,7 +230,7 @@ Všechny plány, by neměla být povolena, protože to může vytvořit překrý
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
 
-Automatizace vytvoří dva typy záznamů v úložišti OMS: protokoly úlohy a úlohy datových proudů.
+Automatizace vytvoří dva typy záznamů v pracovním prostoru analýzy protokolů: protokoly úlohy a úlohy datových proudů.
 
 ### <a name="job-logs"></a>Protokoly úloh
 
