@@ -1,11 +1,11 @@
 ---
 title: Integraci sady Azure Mobile Engagement Android SDK
-description: "Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement"
+description: Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a7d719ec-67b3-4be3-9d7f-0b61a57fe978
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 43987962ea2b7b825b88643d18b4db65f1f1670e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c3b8f60333e6096411aad8499bb4bfc36e53f3c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-adm-with-engagement"></a>Postup pro integraci ADM zapojení
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 > [!IMPORTANT]
 > Postupujte podle integrace postup popsaný v tom, jak integrovat Engagement Android dokumentu před těchto pokynů.
 > 
@@ -41,7 +45,7 @@ Datové části ADM nabídnutých do sady SDK vždy obsahovat `azme` klíče v d
 ## <a name="sign-up-to-adm"></a>Zaregistrujte si ADM
 Pokud dosud neučinili, musíte povolit ADM na vašem účtu Amazon.
 
-Postup je podrobně popsán v: [ <https://developer.amazon.com/sdk/adm/credentials.html>].
+Postup je podrobně popsán v: [ <https://developer.amazon.com/sdk/adm/credentials.html> ].
 
 Po dokončení procesu, můžete získat:
 
@@ -104,7 +108,7 @@ Ujistěte se, máte následující oprávnění ve vaší `AndroidManifest.xml` 
 ## <a name="grant-engagement-oauth-credentials"></a>Přihlašovací údaje OAuth grant zapojení
 Odešlete vaše přihlašovací údaje OAuth (ID klienta a tajný klíč klienta) na portálu Engagement.
 
-[< https://developer.amazon.com/sdk/adm/credentials.html>]:https://developer.amazon.com/sdk/adm/credentials.html
+[<https://developer.amazon.com/sdk/adm/credentials.html>]:https://developer.amazon.com/sdk/adm/credentials.html
 [klientské knihovny ADM]:https://developer.amazon.com/sdk/adm/setup.html
 [integrované ADM]:https://developer.amazon.com/sdk/adm/integrating-app.html
 [tento postup]:https://developer.amazon.com/sdk/adm/integrating-app.html#Asset

@@ -1,8 +1,8 @@
 ---
-title: "Uložené hledání a upozornění v OMS řešení | Microsoft Docs"
-description: "Řešení v OMS obvykle obsahují uložená hledání v Log Analytics k analýze dat shromážděných řešením.  Mohou také definovat výstrahy, které uživatele nebo v reakci na kritický problém automaticky provést akci.  Tento článek popisuje, jak definovat analýzy protokolů, které jsou uložené hledání a upozornění v šabloně Resource Manager, můžou být součástí řešení pro správu."
+title: Uložené hledání a upozornění v řešení pro správu | Microsoft Docs
+description: Řešení pro správu měl obvykle zahrnovat uložená hledání v Log Analytics k analýze dat shromážděných řešením.  Mohou také definovat výstrahy, které uživatele nebo v reakci na kritický problém automaticky provést akci.  Tento článek popisuje, jak definovat analýzy protokolů, které jsou uložené hledání a upozornění v šabloně Resource Manager, můžou být součástí řešení pro správu.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -14,29 +14,29 @@ ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e25ad9b9be6d02550b4be9c09496021cd7fe2d2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb787de23022cd7a48ec476968e05dec6560b419
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Přidání analýzy protokolů uložené hledání a výstrahy OMS řešení pro správu (Preview)
+# <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání analýzy protokolů uložit výstrahy a hledání řešení pro správu (Preview)
 
 > [!NOTE]
-> Toto je předběžná dokumentace pro vytváření řešení pro správu v OMS, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.   
+> Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.   
 
 
-[Řešení pro správu v OMS](operations-management-suite-solutions.md) by měl obvykle zahrnovat [uložená hledání](../log-analytics/log-analytics-log-searches.md) v Log Analytics k analýze dat shromážděných řešením.  Může také definovat [výstrahy](../log-analytics/log-analytics-alerts.md) upozornit uživatele, nebo v reakci na kritický problém automaticky provést akci.  Tento článek popisuje, jak definovat uložená hledání analýzy protokolů a výstrahy [Správa prostředků šablony](../resource-manager-template-walkthrough.md) tak můžou být je součástí [řešení pro správu](operations-management-suite-solutions-creating.md).
+[Řešení pro správu](operations-management-suite-solutions.md) by měl obvykle zahrnovat [uložená hledání](../log-analytics/log-analytics-log-searches.md) v Log Analytics k analýze dat shromážděných řešením.  Může také definovat [výstrahy](../log-analytics/log-analytics-alerts.md) upozornit uživatele, nebo v reakci na kritický problém automaticky provést akci.  Tento článek popisuje, jak definovat uložená hledání analýzy protokolů a výstrahy [Správa prostředků šablony](../resource-manager-template-walkthrough.md) tak můžou být je součástí [řešení pro správu](operations-management-suite-solutions-creating.md).
 
 > [!NOTE]
-> Ukázky v tomto článku použít parametry a proměnné, které jsou nutné nebo společné pro řešení pro správu a jsou popsány v [vytváření řešení pro správu v Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md)  
+> Ukázky v tomto článku použít parametry a proměnné, které jsou nutné nebo společné pro řešení pro správu a jsou popsány v [návrhu a sestavení řešení pro správu v Azure](operations-management-suite-solutions-creating.md)  
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že jste již obeznámeni s postupy [vytvoření řešení správy](operations-management-suite-solutions-creating.md) a strukturu [šablony Resource Manageru](../resource-group-authoring-templates.md) a soubor řešení.
 
 
 ## <a name="log-analytics-workspace"></a>Pracovní prostor analýzy protokolů
-Všechny prostředky v analýzy protokolů jsou součástí [prostoru](../log-analytics/log-analytics-manage-access.md).  Jak je popsáno v [OMS pracovní prostor a účet Automation](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account), pracovním prostoru není zahrnutý v řešení pro správu, ale musí existovat před instalací řešení.  Pokud není k dispozici, řešení instalace se nezdaří.
+Všechny prostředky v analýzy protokolů jsou součástí [prostoru](../log-analytics/log-analytics-manage-access.md).  Jak je popsáno v [pracovní prostor analýzy protokolů a účet Automation](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account), pracovním prostoru není zahrnutý v řešení pro správu, ale musí existovat před instalací řešení.  Pokud není k dispozici, řešení instalace se nezdaří.
 
 Název pracovního prostoru je názvu každého prostředku analýzy protokolů.  To se provádí v řešení s **prostoru** parametr jako v následujícím příkladu savedsearch prostředku.
 
@@ -50,7 +50,7 @@ Všechny prostředky analýzy protokolů, které jsou definované v šabloně Re
 | Verze pracovního prostoru | Verze API | Dotaz |
 |:---|:---|:---|
 | V1 (starší)   | 2015-11-01-preview | Starší verze formátu.<br> Příklad: Zadejte = událostí EventLevelName = chyby  |
-| v2 (upgradu) | 2015-11-01-preview | Starší verze formátu.  Převedeny na formát upgradované na instalaci.<br> Příklad: Zadejte = událostí EventLevelName = chyby<br>Převést na: Událost &#124; kde EventLevelName == "Error.  |
+| v2 (upgradu) | 2015-11-01-preview | Starší verze formátu.  Převedeny na formát upgradované na instalaci.<br> Příklad: Zadejte = událostí EventLevelName = chyby<br>Převést na: událost &#124; kde EventLevelName == "Error.  |
 | v2 (upgradu) | 2017-03-03-preview | Upgrade formátu. <br>Příklad: Událost &#124; kde EventLevelName == "Error.  |
 
 

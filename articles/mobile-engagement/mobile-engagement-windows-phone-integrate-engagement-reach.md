@@ -1,11 +1,11 @@
 ---
 title: Windows Phone Silverlight Reach integraci sady SDK
-description: "Postup při integraci Azure Mobile Engagement Reach s aplikacemi pro Windows Phone Silverlight"
+description: Postup při integraci Azure Mobile Engagement Reach s aplikacemi pro Windows Phone Silverlight
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d3516a6b-db9f-4cdb-a475-4148edf81af1
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,17 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0738f33df94d14fbb393bfaaf09e94c6560213cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34e5ce414ebf72fbecef6c921e57128e2658c921
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-phone-silverlight-reach-sdk-integration"></a>Windows Phone Silverlight Reach integraci sady SDK
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Je třeba provést postup integrace popsaný v tématu [integraci sady Windows Phone Silverlight Engagement SDK](mobile-engagement-windows-phone-integrate-engagement.md) před těchto pokynů.
 
 ## <a name="embed-the-engagement-reach-sdk-into-your-windows-phone-silverlight-project"></a>Vložení Engagement Reach SDK do projektu Windows Phone Silverlight
-Nemáte nic přidat. `EngagementReach`odkazy a prostředky jsou už ve vašem projektu.
+Nemáte nic přidat. `EngagementReach` odkazy a prostředky jsou už ve vašem projektu.
 
 > [!TIP]
 > Můžete přizpůsobit bitové kopie, které jsou umístěné v `Resources` složky projektu, zejména ikonu značky (této výchozí ikonu Engagement).

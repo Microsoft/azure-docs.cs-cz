@@ -1,11 +1,11 @@
 ---
-title: "Průvodce - Push nebo Reach odstraňováním potíží s Azure Mobile Engagement."
-description: "Řešení potíží s uživatelské interakce a oznámení v Azure Mobile Engagement"
+title: Průvodce - Push nebo Reach odstraňováním potíží s Azure Mobile Engagement.
+description: Řešení potíží s uživatelské interakce a oznámení v Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3f1886b7-1fdd-47f4-b6b0-d79f158d5ef3
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ef6f34404b97a6972fc136262920a1bdbc4117b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc94353e60288ba1acfb1855b3a7b416a03e73bc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-push-and-reach-issues"></a>Průvodce řešením potíží se službami Push a Reach
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Následují možných problémů se můžete setkat s Azure Mobile Engagement jak odesílá informace pro vaše uživatele.
 
 ## <a name="push-failures"></a>Push selhání

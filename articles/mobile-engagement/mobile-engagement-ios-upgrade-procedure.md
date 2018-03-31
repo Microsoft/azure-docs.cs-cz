@@ -1,11 +1,11 @@
 ---
 title: Azure Mobile Engagement iOS SDK postup upgradu | Microsoft Docs
-description: "Nejnovější aktualizace a postupy pro iOS SDK pro Azure Mobile Engagement"
+description: Nejnovější aktualizace a postupy pro iOS SDK pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 72a9e493-3f14-4e52-b6e2-0490fd04b184
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-ms.openlocfilehash: 37c7f133d079186f828d58cabce0d2a259efd085
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ac03593cf0c983297e583985a3e68ea6c17e39de
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="upgrade-procedures"></a>Postupy upgradu
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Pokud již jste spojili starší verze zapojení do své aplikace, je nutné zvážit následující body při upgradu sady SDK.
 
 Pro každou novou verzi sady SDK je třeba nejprve nahradit (odebrat a znovu importujte v xcode) EngagementSDK a EngagementReach složky.
@@ -48,7 +52,7 @@ XCode 8 je povinný, od verze 4.0.0 sady SDK.
 ### <a name="usernotifications-framework"></a>UserNotifications framework
 Je nutné přidat `UserNotifications` framework ve vašem fáze buildu.
 
-v prohlížeči projektu otevřete podokno váš projekt a vyberte správný cíl. Potom otevřete **"Fáze sestavení"** kartě a v **"Odkaz binárních souborů a knihoven"** nabídce Přidat framework `UserNotifications.framework` -nastavit odkaz jako`Optional`
+v prohlížeči projektu otevřete podokno váš projekt a vyberte správný cíl. Potom otevřete **"Fáze sestavení"** kartě a v **"Odkaz binárních souborů a knihoven"** nabídce Přidat framework `UserNotifications.framework` -nastavit odkaz jako `Optional`
 
 ### <a name="application-push-capability"></a>Funkce nabízené aplikace
 XCode 8 může resetovat vaše aplikace push schopnosti, Překontrolujte ji prosím `capability` kartě vybraný cílový.
@@ -204,7 +208,7 @@ Všechny třídy předponu "CP" přejmenování s předponou "AE".
 
 Příklad:
 
-* `CPModule.h`je přejmenován na `AEModule.h`.
+* `CPModule.h` je přejmenován na `AEModule.h`.
 
 Všechny třídy předponu "Capptain" přejmenování s předponou "Engagement".
 

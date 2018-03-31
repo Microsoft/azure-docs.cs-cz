@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement webové rozhraní API sady SDK | Microsoft Docs"
-description: "Nejnovější aktualizace a postupy pro Web SDK pro Azure Mobile Engagement"
+title: Azure Mobile Engagement webové rozhraní API sady SDK | Microsoft Docs
+description: Nejnovější aktualizace a postupy pro Web SDK pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8a87d5ac-d8b7-4a0d-bdee-414dbcc561b2
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: 54c22ce6a03e382b1bbde102bccc97deec249b30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d2ae75b384b60d0383c1682a00a4fc0d19d0f43
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-the-azure-mobile-engagement-api-in-a-web-application"></a>Ve webové aplikaci pomocí rozhraní API služby Azure Mobile Engagement
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tento dokument je doplňkem k dokumentu, který se dozvíte, jak k [integrovat Mobile Engagement ve webové aplikaci](mobile-engagement-web-integrate-engagement.md). Poskytuje podrobné informace týkající se sestav vaší statistik aplikace pomocí rozhraní API služby Azure Mobile Engagement.
 
 Rozhraní API služby Mobile Engagement poskytuje `engagement.agent` objektu. Výchozí sada SDK webové služby Azure Mobile Engagement alias je `engagement`. Můžete změnit definici tento alias z konfigurace sady SDK.

@@ -1,12 +1,11 @@
 ---
-title: "Řídicí panel Power BI na Azure Stream Analytics | Microsoft Docs"
-description: "Použijte v reálném čase streamování řídicí panel Power BI shromažďovat business intelligence a analýze velkých objemů dat z úlohy Stream Analytics."
-keywords: "Analýza řídicího panelu, řídicí panel v reálném čase"
+title: Řídicí panel Power BI na Azure Stream Analytics | Microsoft Docs
+description: Použijte v reálném čase streamování řídicí panel Power BI shromažďovat business intelligence a analýze velkých objemů dat z úlohy Stream Analytics.
+keywords: Analýza řídicího panelu, řídicí panel v reálném čase
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: fe8db732-4397-4e58-9313-fec9537aa2ad
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
-ms.author: samacha
-ms.openlocfilehash: b446e2296f2747012849936b994c4a4a2044869e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: e1f1d960c312362e0e0cd6d2f83599c28c8c3f05
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro datový proud
 Azure Stream Analytics můžete využít jeden z úvodní nástroje business intelligence [Microsoft Power BI](https://powerbi.com/). V tomto článku se dozvíte, jak vytvořit nástroje business intelligence pomocí Power BI jako výstup pro úlohy Azure Stream Analytics. Také zjistíte, jak vytvořit a použít v reálném čase řídicí panel.
@@ -217,7 +216,7 @@ Vzorce můžete použít k výpočtu hodnoty umožnit okně aplikace v sekundác
 
 ![Equation1](./media/stream-analytics-power-bi-dashboard/equation1.png)  
 
-Například:
+Příklad:
 
 * Máte 1 000 zařízení odesílání dat v intervalech jednu sekundu.
 * Používáte SKU Pro Power BI, který podporuje 1 000 000 řádků za hodinu.
@@ -242,7 +241,7 @@ V této konfiguraci můžete změnit původní dotaz na následující:
         dspl
 
 
-### <a name="renew-authorization"></a>Obnovit ověřování
+### <a name="renew-authorization"></a>Obnovit autorizaci
 Pokud došlo ke změně hesla vzhledem k tomu, že vaše úlohy vytvoření nebo poslední ověření, musíte k novému ověření svůj účet Power BI. Pokud Azure Multi-Factor Authentication nakonfigurován v klientovi služby Azure Active Directory (Azure AD), musíte taky obnovit Power BI autorizace každé dva týdny. Pokud neobnovíte, se může zobrazit příznaky například chybějících výstup úlohy nebo `Authenticate user error` v protokoly operací.
 
 Podobně pokud úloha spustí po vypršení platnosti tokenu, dojde k chybě a úloha se nezdaří. Chcete-li vyřešit tento problém, přejděte na výstupu Power BI a zastavit úlohu, která je spuštěná. Aby nedošlo ke ztrátě dat, vyberte **obnovit autorizace** propojit a pak restartujte úlohu z **naposledy Zastaveno**.
@@ -252,7 +251,7 @@ Po aktualizaci autorizaci s Power BI, Zelená výstraha se zobrazí v oblasti au
 ## <a name="get-help"></a>Podpora
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)

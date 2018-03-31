@@ -1,11 +1,11 @@
 ---
-title: "Správa prostředků Azure pomocí Průzkumníku cloudu | Microsoft Docs"
-description: "Další informace o použití Průzkumníku cloudu k prohlížení a správě prostředků Azure v sadě Visual Studio."
+title: Správa prostředků Azure pomocí Průzkumníku cloudu | Microsoft Docs
+description: Další informace o použití Průzkumníku cloudu k prohlížení a správě prostředků Azure v sadě Visual Studio.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 6347dc53-f497-49d5-b29b-e8b9f0e939d7
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/25/2017
-ms.author: kraigb
-ms.openlocfilehash: 6e6d8d559f0251b71bfa6d529ead82a246cb3235
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 676feb0b01ec5622feff4351ade54e9856e54b13
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>Spravovat prostředky přidružené k vaší účty Azure v cloudu Průzkumníka Visual Studio
 Průzkumník cloudu umožňuje zobrazit skupiny prostředků a prostředků Azure, zkontrolujte jejich vlastnosti a provádět akce diagnostiky klíče vývojáře z Visual Studia. 

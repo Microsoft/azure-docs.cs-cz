@@ -1,25 +1,25 @@
 ---
-title: "Zařízení VPN pro připojení mezi různými místy pomocí Azure | Dokumentace Microsoftu"
-description: "Tento článek probírá zařízení VPN a parametry protokolu IPsec pro připojení mezi různými místy pomocí VPN Gateway typu S2S. V článku najdete také odkazy na pokyny a příklady pro konfiguraci."
+title: Zařízení VPN pro připojení mezi různými místy pomocí Azure | Dokumentace Microsoftu
+description: Tento článek probírá zařízení VPN a parametry protokolu IPsec pro připojení mezi různými místy pomocí VPN Gateway typu S2S. V článku najdete také odkazy na pokyny a příklady pro konfiguraci.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager, azure-service-management
 ms.assetid: ba449333-2716-4b7f-9889-ecc521e4d616
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/18/2017
+ms.date: 03/29/2018
 ms.author: yushwang
-ms.openlocfilehash: f75732761cefd7706fe1555484148efe6cdc0e56
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: HT
+ms.openlocfilehash: 7f69b5268adc857c6e45f8fa11fbcca42f64b71f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway
 
@@ -72,6 +72,7 @@ Pomoc s konfigurací zařízení VPN najdete pod odkazy, které odpovídají př
 | ShareTech | UTM příští generace (řada NU) | 9.0.1.3 | Není kompatibilní | [Průvodce konfigurací](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |Řada TZ, řada NSA<br>Řada SuperMassive<br>Řada E-Class NSA |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Není kompatibilní |[Průvodce konfigurací](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Next Gen Firewall | XG v17 | | [Průvodce konfigurací](https://community.sophos.com/kb/127546) |
+| Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [Protokol BGP prostřednictvím IKEv2 nebo protokolu IPsec](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhelp.ubnt.com%2Fhc%2Fen-us%2Farticles%2F115012374708&data=02%7C01%7Cmaafiri%40microsoft.com%7C7580cdf59eb94528c0de08d4f9fd78bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636408314443168072&sdata=2EF5KFljZwtAGQDSm8%2FF2f6DqI2bkmA2qKG4u0rPgbQ%3D&reserved=0)<br><br>[VTI prostřednictvím IKEv2 nebo protokolu IPsec](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhelp.ubnt.com%2Fhc%2Fen-us%2Farticles%2F115012305347&data=02%7C01%7Cmaafiri%40microsoft.com%7C7580cdf59eb94528c0de08d4f9fd78bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636408314443168072&sdata=ycgiDJCOQYTPN7sAEBSigphzC6mBaADz%2FgdCOm7TsXA%3D&reserved=0)
 | WatchGuard |Vše |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Průvodce konfigurací](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Průvodce konfigurací](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
 > [!NOTE]
@@ -79,6 +80,10 @@ Pomoc s konfigurací zařízení VPN najdete pod odkazy, které odpovídají př
 > (*) Cisco ASA verze 8.4+ přidávají podporu IKEv2 a umožňují připojení ke službě Azure VPN Gateway pomocí vlastních zásad IPsec/IKE s možností UsePolicyBasedTrafficSelectors. Další informace najdete v tomto [článku s postupem](vpn-gateway-connect-multiple-policybased-rm-ps.md).
 >
 > (\*\*) Směrovače řady ISR 7200 podporují jenom sítě VPN typu PolicyBased.
+
+## <a name="Download VPN device configuration scripts from Azure"></a>Stáhněte si skripty konfigurace zařízení VPN z Azure
+
+Pro určité zařízení, můžete stáhnout konfigurační skripty přímo z Azure. Další informace a pokyny ke stažení, najdete v části [skripty konfigurace zařízení VPN Stáhnout](vpn-gateway-download-vpndevicescript.md).
 
 ## <a name="additionaldevices"></a>Neověřená zařízení VPN
 
@@ -140,7 +145,7 @@ V následujících tabulkách:
 | Životnost SA (čas)            |3 600 sekund  |27 000 sekund                                |
 | Životnost SA (bajty)           |102 400 000 kB | -                                           |
 | Metoda Perfect Forward Secrecy (PFS) |Ne             |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
-| Detekce mrtvých partnerských zařízení (DPD)     |Nepodporuje se  |Podporuje se                                    |
+| Detekce mrtvých partnerských zařízení (DPD)     |Nepodporuje se  |Podporováno                                    |
 
 
 ### <a name ="RouteBasedOffers"></a>Nabídky RouteBased VPN IPsec Security Association (rychlý režim IKE SA)
@@ -153,7 +158,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Žádný         |
 | 2 |AES256        |SHA1              |Žádný         |
-| 3 |3DES          |SHA1              |Žádný         |
+| 3 |3DES          |SHA1              |Žádné         |
 | 4 |AES256        |SHA256            |Žádný         |
 | 5 |AES128        |SHA1              |Žádný         |
 | 6 |3DES          |SHA256            |Žádný         |
@@ -164,7 +169,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Žádný         |
 | 2 |AES256        |SHA1              |Žádný         |
-| 3 |3DES          |SHA1              |Žádný         |
+| 3 |3DES          |SHA1              |Žádné         |
 | 4 |AES256        |SHA256            |Žádný         |
 | 5 |AES128        |SHA1              |Žádný         |
 | 6 |3DES          |SHA256            |Žádný         |

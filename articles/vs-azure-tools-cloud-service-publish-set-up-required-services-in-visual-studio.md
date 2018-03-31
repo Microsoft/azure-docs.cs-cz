@@ -1,11 +1,11 @@
 ---
-title: "Příprava na publikování nebo nasazení cloudové služby ze sady Visual Studio | Microsoft Docs"
-description: "Další postupy pro nastavení cloudu a úložiště účet služby a konfiguraci aplikace Azure."
+title: Příprava na publikování nebo nasazení cloudové služby ze sady Visual Studio | Microsoft Docs
+description: Další postupy pro nastavení cloudu a úložiště účet služby a konfiguraci aplikace Azure.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 92ee2f9e-ec49-4c7a-900d-620abe5e9d8a
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/10/2017
-ms.author: kraigb
-ms.openlocfilehash: 5b2043ada193e5a08957656e153b58a61e7eba9e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.author: ghogen
+ms.openlocfilehash: 8a7d6f114bfa10170cdfe7126e01a35b02affd20
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="prepare-to-publish-or-deploy-a-cloud-service-from-visual-studio"></a>Příprava na publikování nebo nasazení cloudové služby ze sady Visual Studio
 
@@ -81,6 +81,6 @@ Portál Azure zobrazuje adresy URL, můžete použít pro přístup k prostředk
 
 Sekundární přístupový klíč poskytuje stejný přístup k účtu úložiště jako primární přístupový klíč a je generována jako záložní ohrožené primární přístupový klíč. Kromě toho se doporučuje znovu vygenerovat klíče pro přístup k v pravidelných intervalech. Můžete upravit nastavení připojovacího řetězce používat sekundární klíč obnovit primární klíč, pak můžete upravit ji používat se znova vygeneroval primární klíč obnovit sekundární klíč.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o publikování aplikace do Azure ze sady Visual Studio, najdete v části [publikování cloudové služby pomocí nástroje Azure](vs-azure-tools-publishing-a-cloud-service.md).

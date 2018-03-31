@@ -1,12 +1,11 @@
 ---
-title: "Použít referenční data a vyhledávací tabulky v Stream Analytics | Microsoft Docs"
-description: "Použití referenčních dat v dotazu Stream Analytics"
-keywords: "vyhledávací tabulky, referenční data"
+title: Použít referenční data a vyhledávací tabulky v Stream Analytics | Microsoft Docs
+description: Použití referenčních dat v dotazu Stream Analytics
+keywords: vyhledávací tabulky, referenční data
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: jseb225
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 06103be5-553a-4da1-8a8d-3be9ca2aff54
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: f7366b4b7d78add47ebab4a6fc72717107814f1f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 77a4a9a28060206a30c658216156d7339bddc398
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-reference-data-or-lookup-tables-in-a-stream-analytics-input-stream"></a>Pomocí referenční data nebo vyhledávací tabulky v datovém proudu vstupní Stream Analytics
 Referenční data (také označované jako vyhledávací tabulky) je omezené datovou sadou, která je statická nebo zpomalení změna ve své podstatě, použít k vyhledávání nebo ke korelaci s datového proudu. Chcete-li použít referenčních dat ve vaší úloze Azure Stream Analytics, obvykle použijete [referenční datové připojení](https://msdn.microsoft.com/library/azure/dn949258.aspx) v dotazu. Stream Analytics používá úložiště objektů Blob v Azure jako vrstva úložiště pro referenční Data, a s odkazem na objekt pro vytváření dat Azure data transformovat a zkopíruje do úložiště objektů Blob v Azure, použít jako referenční Data z [libovolný počet založené na cloudu a místní úložiště dat](../data-factory/copy-activity-overview.md). Referenční data je modelovaná jako pořadí objektů BLOB (definovanou v konfiguraci vstupní) ve vzestupném pořadí podle data a času, zadaný v názvu objektu blob. Ho **pouze** podporuje přidání na konec pořadí pomocí data a času **větší** než určenému poslední objektů blob v pořadí.
@@ -100,7 +99,7 @@ Pokud referenční data pomalu změna datové sady, potom podpora pro obnovení 
 ## <a name="get-help"></a>Podpora
 Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Přečetli jste si úvod do služby Stream Analytics, spravované služby pro analýzy datových proudů z platformy Internet věcí. Další informace o této službě najdete v následujících článcích:
 
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

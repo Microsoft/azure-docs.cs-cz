@@ -1,11 +1,11 @@
 ---
-title: "Správa konfigurace služby a profily | Microsoft Docs"
-description: "Naučte se pracovat se soubory konfigurace profilů a konfigurace služby | které uložit nastavení pro nasazení prostředí a nastavení publikování pro cloudové služby."
+title: Správa konfigurace služby a profily | Microsoft Docs
+description: Naučte se pracovat se soubory konfigurace profilů a konfigurace služby | které uložit nastavení pro nasazení prostředí a nastavení publikování pro cloudové služby.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 7da8c551-fb06-4057-b5c7-c77f4b39d803
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/11/2017
-ms.author: kraigb
-ms.openlocfilehash: af1205f8c3e477d123d4835c80a68b3afd6ee5ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 411daa8892bee1858c6930dfd8b2b811f164ec5d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-service-configurations-and-profiles"></a>Správa konfigurace služby a profily
 ## <a name="overview"></a>Přehled
@@ -99,6 +99,6 @@ Když poprvé spustíte průvodce, vytvoří se výchozí profil. Visual Studio 
 4. Po dokončení změn nastavení, vyberte **Další** se vrátíte k **nastavení** stránky.
 5. (Volitelné) vyberte **publikovat** publikovat cloudové služby pomocí nového nastavení. Pokud se nechcete publikovat cloudové služby v tuto chvíli a zavřít průvodce publikovat, Visual Studio se zobrazí, pokud chcete uložit změny do profilu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o konfiguraci dalších částí projektu Azure ze sady Visual Studio najdete v tématu [konfigurace projektu Azure](http://go.microsoft.com/fwlink/p/?LinkID=623075)
 

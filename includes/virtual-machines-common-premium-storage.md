@@ -45,11 +45,11 @@ Zde jsou některé funkce úložiště Premium Storage:
 
 * **Prémiový účet úložiště**
 
-    Pokud chcete začít používat úložiště úrovně Premium, vytvořte účet úložiště premium pro nespravovaná disky. V [portál Azure](https://portal.azure.com), abyste mohli vytvořit účet úložiště premium, vyberte **Premium** úroveň výkonu. Vyberte **místně redundantní úložiště (LRS)** možnost replikace. Můžete také můžete vytvořit účet úložiště premium nastavením typ na **Premium_LRS** v jednom z následujících umístění:
-    * [Rozhraní API REST úložiště](https://docs.microsoft.com/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference) (verze 2014-02-14 nebo novější)
-    * [REST API pro správu služby](http://msdn.microsoft.com/library/azure/ee460799.aspx) (verze 2014-10-01 nebo novější; pro nasazení Azure classic)
-    * [Azure Storage prostředků zprostředkovatele REST API](https://docs.microsoft.com/rest/api/storagerp) (pro nasazení Azure Resource Manager)
-    * [Prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs.md) (verze 0.8.10 nebo novější)
+    Pokud chcete začít používat úložiště úrovně Premium, vytvořte účet úložiště premium pro nespravovaná disky. V [portál Azure](https://portal.azure.com), abyste mohli vytvořit účet úložiště premium, vyberte **Premium** úroveň výkonu. Vyberte **místně redundantní úložiště (LRS)** možnost replikace. Můžete také můžete vytvořit účet úložiště premium nastavením úroveň výkonu na **Premium_LRS**. Pokud chcete změnit úroveň výkonu, použijte jednu z následujících postupů:
+     
+    - [Prostředí PowerShell pro úložiště Azure](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
+    - [Azure CLI pro úložiště Azure](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
+    - [Azure Storage prostředků zprostředkovatele REST API](https://docs.microsoft.com/rest/api/storagerp) (pro nasazení Azure Resource Manager) nebo jedna z knihovny klienta Azure Storage resource provider
 
     Informace o omezeních účtu úložiště premium najdete v tématu [Storage úrovně Premium škálovatelnosti a cílech výkonnosti](#premium-storage-scalability-and-performance-targets).
 

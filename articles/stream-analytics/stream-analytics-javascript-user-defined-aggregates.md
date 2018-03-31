@@ -1,12 +1,11 @@
 ---
-title: "Azure Stream Analytics JavaScript uživatelem definovaných agregacích | Microsoft Docs"
-description: "Provedení mechanismy rozšířený dotaz s uživatelem definovaných agregacích JavaScript"
-keywords: "JavaScript, uživatelem definované agregace, uda"
+title: Azure Stream Analytics JavaScript uživatelem definovaných agregacích | Microsoft Docs
+description: Provedení mechanismy rozšířený dotaz s uživatelem definovaných agregacích JavaScript
+keywords: JavaScript, uživatelem definované agregace, uda
 services: stream-analytics
 author: minhe-msft
 manager: santoshb
-editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 10/28/2017
 ms.author: minhe
-ms.openlocfilehash: b3863a34ed146e54c6d60e035957b942a1976ff9
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9f9a2e33f97fc90265933ee9941f2d02a92cbc4c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics JavaScript uživatelem definovaných agregacích (Preview)
 
@@ -82,7 +81,7 @@ function main() {
 
 Každý UDA JavaScript je definována deklaraci funkce objektu. Tady jsou důležité elementy v definici UDA.
 
-### <a name="function-alias"></a>Alias – funkce
+### <a name="function-alias"></a>Alias funkce
 
 Funkce alias, je identifikátor UDA. Při volání v dotazu Stream Analytics, vždy použijte UDA alias společně s "uda". Předpona.
 
@@ -179,7 +178,7 @@ Nyní vytvoříme JavaScript UDA pod existující úlohy ASA podle následujíc�
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>Volání metody JavaScript UDA v dotazu ASA
 
-Na portálu Azure a spusťte úlohu, upravte dotaz a volání funkce TWA() s předponou pověření "uda.". Například:
+Na portálu Azure a spusťte úlohu, upravte dotaz a volání funkce TWA() s předponou pověření "uda.". Příklad:
 
 ````SQL
 WITH value AS
@@ -233,7 +232,7 @@ Vytvořit místní soubor JSON s níže obsah, nahrát soubor do úlohy Stream A
 
 Potřebujete další pomoc, zkuste naši [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

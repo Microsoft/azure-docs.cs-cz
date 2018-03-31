@@ -1,11 +1,11 @@
 ---
 title: Integraci sady Azure Mobile Engagement Android SDK
-description: "Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement"
+description: Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9ec3fab3-35ec-458e-bf41-6cdd69e3fa44
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/27/2016
 ms.author: piyushjo
-ms.openlocfilehash: 26ba47b19f3a503693d60d344ad39b9eba74fe99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15e71d8aeb8c8060161ade4262e0be0a093b5650
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-reach-on-android"></a>Postup při integraci Engagement Reach pro Android
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 > [!IMPORTANT]
 > Postupujte podle integrace postup popsaný v tom, jak integrovat Engagement Android dokumentu před těchto pokynů.
 > 
@@ -102,7 +106,7 @@ Upravit vaše `AndroidManifest.xml` souboru:
   
   Bez tohoto oprávnění zabrání Android systémových oznámení se zobrazí, pokud zkontroluje okruhu nebo možnost vibrate ve Správci kampaně Reach.
 
-## <a name="native-push"></a>Nativního nabízení
+## <a name="native-push"></a>Nativní oznámení
 Teď, když jste nakonfigurovali modul Reach, budete muset nakonfigurovat nativního nabízení být schopný přijímat kampaně v zařízení.
 
 V systému Android podporujeme dvě služby:
@@ -160,8 +164,8 @@ Zde je několik doporučení správně zpracovat návratový parametr `onDataPus
 
 Návratový typ se používá pouze pro Reach statistiky:
 
-* `Replied`se zvýší, pokud jeden z všesměrového vysílání příjemci vrácen buď `true` nebo `false`.
-* `Actioned`se zvýší, pouze v případě, že jeden všesměrového vysílání příjemci vrátil `true`.
+* `Replied` se zvýší, pokud jeden z všesměrového vysílání příjemci vrácen buď `true` nebo `false`.
+* `Actioned` se zvýší, pouze v případě, že jeden všesměrového vysílání příjemci vrátil `true`.
 
 ## <a name="how-to-customize-campaigns"></a>Postup přizpůsobení kampaně
 Chcete-li přizpůsobit kampaní, můžete upravit rozložení poskytovaných v sadě SDK dosáhnout.
@@ -233,7 +237,7 @@ Pokud nechcete, aby překrytí přidávaného do vaší aktivity, a pokud nezad�
               <meta-data android:name="engagement:notification:overlay" android:value="false"/>
             </activity>
 
-#### <a name="categories"></a>Kategorie
+#### <a name="categories"></a> Kategorie
 Při úpravě zadané rozložení upravíte vzhledu všechna oznámení. Kategorie umožňují definovat různé cílové vypadá (pravděpodobně chování) pro oznámení. Kategorie lze při vytváření kampaně Reach. Mějte na paměti, že kategorie vám také umožní přizpůsobit oznámení a hlasování, který je popsán dále v tomto dokumentu.
 
 Chcete-li zaregistrovat kategorie obslužnou rutinu pro oznámení, přidejte volání při inicializaci aplikace.
@@ -415,7 +419,7 @@ Pokud chcete změnit, který, budete muset znovu definovat `EngagementDefaultNot
 ##### <a name="system-notifications"></a>Systémová oznámení
 Tím, že rozšíří `EngagementDefaultNotifier`, můžete přepsat `onNotificationPrepared` ke změně oznámení, že byl připraven výchozí implementace.
 
-Například:
+Příklad:
 
             @Override
             protected boolean onNotificationPrepared(Notification notification, EngagementReachInteractiveContent content)

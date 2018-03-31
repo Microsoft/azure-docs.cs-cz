@@ -1,11 +1,11 @@
 ---
-title: "Postupy upgradu systému Windows Universal SDK aplikace"
-description: "Postupy upgradu systému Windows Universal SDK aplikací pro Azure Mobile Engagement"
+title: Postupy upgradu systému Windows Universal SDK aplikace
+description: Postupy upgradu systému Windows Universal SDK aplikací pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4c898175-2cd6-43db-b350-bb408332f24d
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 2bd2329026057a4a23295880d0d304e4e8effd1c
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: a9d6cbcdf353f7eea991c344c3efe65378abe336
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-apps-sdk-upgrade-procedures"></a>Postupy upgradu systému Windows Universal SDK aplikace
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Pokud již jste spojili starší verze zapojení do své aplikace, je nutné zvážit následující body při upgradu sady SDK.
 
 Možná budete muset několik postupy použijte, pokud provedena několik verzí sady SDK. Například pokud migrujete z 0.10.1 0.11.0 budete muset nejdřív postupujte podle pokynů "od 0.9.0 k 0.10.1" pak postupu "od 0.10.1 k 0.11.0".
@@ -32,7 +36,7 @@ Protokoly konzoly vyprodukované sady SDK teď může být povolena nebo zakáz�
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
-### <a name="resources"></a>Zdroje
+### <a name="resources"></a>Zdroje a prostředky
 Bylo vylepšeno Reach překrytí. Je součástí zdroje balíčku NuGet sady SDK.
 
 Při upgradu na novou verzi sady SDK můžete zvolit, zda chcete zachovat existující soubory ve složce překrytí vašich prostředků, nebo není:
@@ -46,11 +50,11 @@ Při upgradu na novou verzi sady SDK můžete zvolit, zda chcete zachovat existu
 > 
 
 ## <a name="from-320-to-330"></a>Z 3.2.0 k 3.3.0
-### <a name="resources"></a>Zdroje
+### <a name="resources"></a>Zdroje a prostředky
 Tento krok se týká jenom vlastní prostředky. Pokud jste upravili prostředky poskytované sadě SDK (html, obrázky, překrytí) budete muset zálohování je před upgradem a znovu použít vlastní na upgradovaný prostředky.
 
 ## <a name="from-310-to-320"></a>Z 3.1.0 k 3.2.0
-### <a name="resources"></a>Zdroje
+### <a name="resources"></a>Zdroje a prostředky
 Tento krok se týká jenom vlastní prostředky. Pokud jste upravili prostředky poskytované sadě SDK (html, obrázky, překrytí) budete muset zálohování je před upgradem a znovu použít vlastní na upgradovaný prostředky.
 
 ### <a name="webview-integration"></a>Integrace webové zobrazení
@@ -169,7 +173,7 @@ A v souboru přidružené .cs:
     }
 
 ## <a name="from-200-to-300"></a>Z 2.0.0 k 3.0.0
-### <a name="resources"></a>Zdroje
+### <a name="resources"></a>Zdroje a prostředky
 Tento krok se týká jenom vlastní prostředky. Pokud jste upravili prostředky poskytované sadě SDK (html, obrázky, překrytí) budete muset zálohování je před upgradem a znovu použít vlastní na upgradovaný prostředky.
 
 ## <a name="from-111-to-200"></a>Z 1.1.1 k 2.0.0

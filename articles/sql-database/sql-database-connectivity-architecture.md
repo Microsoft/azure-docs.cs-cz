@@ -1,6 +1,6 @@
 ---
-title: "Architektura připojení k Azure SQL Database | Microsoft Docs"
-description: "Tento dokument popisuje architekturu připojení k Azure SQLDB z Azure nebo z mimo Azure."
+title: Architektura připojení k Azure SQL Database | Microsoft Docs
+description: Tento dokument popisuje architekturu připojení k Azure SQLDB z Azure nebo z mimo Azure.
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 98784b2d1ede5354c965e483b34b5fcb323394aa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7dc584c8fa9f4452b2bd9288df86492399c036c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura připojení k databázi Azure SQL 
 
@@ -91,7 +91,7 @@ Následující tabulka uvádí primární a sekundární IP adresy brány Azure 
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Změnit zásady připojení databáze SQL Azure
 
-Můžete změnit zásady připojení databáze SQL Azure pro server Azure SQL Database [REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx).
+Můžete změnit zásady připojení databáze SQL Azure pro server Azure SQL Database [připojení objeví zásad](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) příkaz.
 
 - Pokud vaše zásady připojení je nastavený na **Proxy**, všechny síťové pakety toku prostřednictvím brány Azure SQL Database. U tohoto nastavení musíte povolit odchozí pouze IP brány Azure SQL Database. Pomocí nastavení **Proxy** má více latenci než nastavení **přesměrování**.
 - Pokud je nastavení zásady vaší připojení **přesměrování**, všechny síťové pakety toku přímo k proxy serveru middleware. U tohoto nastavení musíte povolit odchozí do víc IP adres.
@@ -181,6 +181,6 @@ az resource update --ids $id --set properties.connectionType=Proxy
 
 ## <a name="next-steps"></a>Další postup
 
-- Informace o tom, jak změnit zásady připojení Azure SQL Database pro databázi Azure SQL server najdete v tématu [vytvoření nebo aktualizace serveru připojení zásady pomocí rozhraní REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx).
+- Informace o tom, jak změnit zásady připojení Azure SQL Database pro databázi Azure SQL server najdete v tématu [připojení objeví zásad](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
 - Informace o chování Azure SQL Database připojení pro klienty, kteří používají ADO.NET 4.5 nebo novější verze najdete v tématu [porty nad rámec 1433 pro technologii ADO.NET 4.5](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Obecná aplikace vývoj přehled informace najdete v tématu [přehled vývoje aplikace databáze SQL](sql-database-develop-overview.md).

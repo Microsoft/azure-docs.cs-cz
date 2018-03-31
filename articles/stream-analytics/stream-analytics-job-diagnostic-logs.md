@@ -1,25 +1,24 @@
 ---
-title: "Řešení potíží s Azure Stream Analytics s protokoly diagnostiky | Microsoft Docs"
-description: "Naučte se analýza protokolů diagnostiky z úlohy Stream Analytics v Microsoft Azure."
-keywords: 
-documentationcenter: 
+title: Řešení potíží s Azure Stream Analytics s protokoly diagnostiky | Microsoft Docs
+description: Naučte se analýza protokolů diagnostiky z úlohy Stream Analytics v Microsoft Azure.
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: c9772df2c216d465ca6e90e69bce011969dd4f02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 164d522d7beaea222dbc408765877fa67a34c203
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Řešení potíží s Azure Stream Analytics s použitím protokolů diagnostiky
 
@@ -77,7 +76,7 @@ V současné době jsme zaznamenat dvě kategorie protokolů diagnostiky:
 
 Všechny protokoly se ukládají ve formátu JSON. Každá položka má následující běžné pole řetězce:
 
-Name (Název) | Popis
+Název | Popis
 ------- | -------
 time | Časové razítko (ve formátu UTC) v protokolu.
 resourceId | ID prostředku, že operace byla provedena, velkými písmeny. Obsahuje ID předplatného, skupinu prostředků a název úlohy. Například   **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
@@ -95,7 +94,7 @@ Protokoly spouštění mít informace o událostech, ke kterým došlo během pr
 
 Všechny chyby, ke které dochází při úlohy je zpracování dat je v této kategorii protokolů. Tyto protokoly nejčastěji se vytvoří během čtení, data serializace a operace zápisu. Tyto protokoly neobsahují chyby připojení. K chybám připojení jsou považovány za obecné události.
 
-Name (Název) | Popis
+Název | Popis
 ------- | -------
 Zdroj | Název úlohy vstupem nebo výstupem, kde došlo k chybě.
 Zpráva | Zpráva přidružená k chybě.
@@ -112,14 +111,14 @@ V závislosti na tom **operationName** hodnotu chyb dat mají následující sch
 
 Obecné události zahrnují nic jiného.
 
-Name (Název) | Popis
+Název | Popis
 -------- | --------
 Chyba | (volitelné) Informace o chybě. Obvykle se jedná o informace o výjimce, pokud je k dispozici.
 Zpráva| Zprávy protokolu.
 Typ | Typ zprávy. Mapuje interní kategorizaci chyb. Například **JobValidationError** nebo **BlobOutputAdapterInitializationFailure**.
 ID korelace | [Identifikátor GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) který jednoznačně identifikuje provádění úlohy. Zahájení úlohy všech položek protokolů provádění od okamžiku, dokud je úloha pozastavena mít stejnou **ID korelace** hodnotu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Úvod do služby Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme s Stream Analytics](stream-analytics-real-time-fraud-detection.md)

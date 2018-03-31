@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s průvodce – rozhraní API Azure Mobile Engagement."
-description: "Řešení potíží s příručky pro Azure Mobile Engagement – rozhraní API"
+title: Řešení potíží s průvodce – rozhraní API Azure Mobile Engagement.
+description: Řešení potíží s příručky pro Azure Mobile Engagement – rozhraní API
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3efc8a52-2b74-4917-b887-815ae8277474
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: piyushjo
-ms.openlocfilehash: a7ae0a83046f2d67b790f672dcd3ae261987357a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cda11c8d2f1d147a807083c5479d2b2cda65462c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-api-issues"></a>Průvodce řešením potíží pro problémy rozhraní API
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Následují možných problémů se můžete setkat s jak správci komunikovat s Azure Mobile Engagement přes rozhraní API.
 
 ## <a name="syntax-issues"></a>Syntaxe problémy
@@ -34,7 +38,7 @@ Následují možných problémů se můžete setkat s jak správci komunikovat s
   * Další běžné problém s integraci sady SDK a využití rozhraní API je zaměnit klíč SDK a klíč rozhraní API.
   * Skripty, které se připojují k rozhraní API je třeba odeslat data minimálně každých 10 minut nebo připojení bude časový limit (zejména v běžné monitorování API skripty naslouchání pro data). Chcete-li zabránit vypršení časových limitů, máte skript odeslání příkazu ping protokolu XMPP každých 10 minut do relace – udržování připojení se serverem.
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Dokumentaci k rozhraní API][Link 4]
 * [Informace o protokolu XMPP protokolu](http://xmpp.org/extensions/xep-0199.html)
 
@@ -45,7 +49,7 @@ Následují možných problémů se můžete setkat s jak správci komunikovat s
 ### <a name="causes"></a>Způsobí, že
 * Potvrzení, že můžete provádět stejné akce z uživatelského rozhraní Azure Mobile Engagement ukazuje, že jste správně spojili tuto funkci Azure Mobile Engagement pomocí sady SDK.
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Dokumentace uživatelského rozhraní][Link 1]
 
 ## <a name="error-messages"></a>Chybové zprávy
@@ -75,7 +79,7 @@ Následují možných problémů se můžete setkat s jak správci komunikovat s
         503        Analytics not available yet (the requested information is not computed yet for an application).
         504        The server was not able to handle your request in a reasonable time (if you make multiple calls to an API very quickly, try to make one call at a time and spread the calls out over time).
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Dokumentace k rozhraní API – pro podrobné chyby na každé konkrétní rozhraní API][Link 4]
 
 ## <a name="silent-failures"></a>Tiché selhání
@@ -86,7 +90,7 @@ Následují možných problémů se můžete setkat s jak správci komunikovat s
 * Mnoho položek bude v uživatelském rozhraní Azure Mobile Engagement zakázáno, pokud není integrován správně, ale bude nezdaří bez upozornění z rozhraní API, proto nezapomeňte otestovat stejné funkce z uživatelského rozhraní a zkontrolujte, pokud funguje.
 * Azure Mobile Engagement a mnoho pokročilých funkcí Azure Mobile Engagement se pokoušíte použít, musí být jednotlivě integrovat do vaší aplikace pomocí sady SDK jako samostatné kroky než budete moci použít.
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Průvodce odstraňováním potíží s - SDK][Link 25]
 
 <!--Link references-->

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fdb8009e3dbca1037cae61ec8627f73190a8263d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b908e8877162a6a1d9292616a1704c1c528e1725
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Monitorovat a aktualizovat virtuální počítač s Windows v prostředí Azure PowerShell
 
@@ -36,6 +36,7 @@ V tomto kurzu se naučíte:
 > * Zobrazení metrik virtuálního počítače
 > * Vytvořit výstrahu
 > * Správa aktualizací Windows
+> * Sledování změn a inventáře
 > * Nastavení pokročilého monitorování
 
 Tento kurz vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
@@ -274,6 +275,7 @@ V tomto kurzu jste nakonfigurovali a zkontrolovat virtuálních počítačů pom
 > * Zobrazení metrik virtuálního počítače
 > * Vytvořit výstrahu
 > * Správa aktualizací Windows
+> * Sledování změn a inventáře
 > * Nastavení pokročilého monitorování
 
 Přechodu na v dalším kurzu se dozvíte o službě Azure security center.

@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s Průvodce - SDK Azure Mobile Engagement."
-description: "Řešení potíží s problémů s integrací sady SDK v Azure Mobile Engagement"
+title: Řešení potíží s Průvodce - SDK Azure Mobile Engagement.
+description: Řešení potíží s problémů s integrací sady SDK v Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: de265cf1-2f88-43ef-8616-156ada5be7b6
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 4d9d6165deb4bd0c65f1841aa7c457363a1f2865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f617b3c3b221a38b63be6f61f7553b390cf2f7c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-sdk-integration-issues"></a>Průvodci odstraňováním potíží problémů s integrací sady SDK
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Následují možných problémů se můžete setkat s jak Azure Mobile Engagement integruje do vaší aplikace.
 
 ## <a name="sdk-issues-discovered-by-a-failure-in-another-area-of-your-application"></a>SDK problémů zjištěných selhání v jiné oblasti vaší aplikace.
@@ -78,7 +82,7 @@ Následují možných problémů se můžete setkat s jak Azure Mobile Engagemen
 * Jsou systému platformu, která Azure Mobile Engagement nemůže řídit (jako jsou jak funguje produktu system center pro mimo aplikaci nabízených oznámení v Android a iOS) určitá omezení.
 * Azure Mobile Engagement publikuje úplný seznam interní balíčky pro referenci používá pro iOS a Android pomocí Azure Mobile Engagement. Mějte na paměti, že některé funkce Azure Mobile Engagement jsou specifické pro platformu (Android, iOS, Web, systém Windows a Windows Phone).
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Průvodce odstraňováním potíží s - Push][Link 23] 
 * [Dokumentaci k sadě SDK – poznámky k verzi][Link 5]
 * [Dokumentaci k sadě SDK - upgradu příručky][Link 5]
@@ -92,7 +96,7 @@ Následují možných problémů se můžete setkat s jak Azure Mobile Engagemen
 * Můžete zjistit ID zařízení testovací zařízení a trvat o stejnou akci, která způsobila, že aplikace havárií pro koncové uživatele k identifikaci příčinu vaší havárií.
 * Známé problémy s Azure Mobile Engagement SDK, které způsobí aplikace došlo k chybě, se někdy vyřeší upgrade na nejnovější verzi sady SDK. Ujistěte se, že zkontrolujte poznámky o vaši platformu při zkoumání dojde k chybě.
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Dokumentaci k sadě SDK – poznámky k verzi][Link 5]
 * [Dokumentaci k sadě SDK - upgradu příručky][Link 5]
 

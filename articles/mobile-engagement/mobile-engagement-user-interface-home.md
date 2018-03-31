@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní - Domů"
-description: "Naučte se spravovat stávající aplikaci a projektů pomocí Azure Mobile Engagement"
+title: Azure Mobile Engagement uživatelské rozhraní - Domů
+description: Naučte se spravovat stávající aplikaci a projektů pomocí Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: aff578d2-40f6-43e4-b0ea-7d2674cb28a1
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0f15cb975f57f6f5cab12d5118ff50a6fab14388
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0379e51a30927af88367fc687d8f8ce66eb827f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-your-existing-application-and-projects"></a>Jak spravovat stávající aplikaci a projektů
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tento článek popisuje **Domů** stránky **Mobile Engagement** portálu. Můžete použít **Mobile Engagement** portálu ke sledování a správě mobilních aplikací. Všimněte si, že pokud chcete začít používat portál musíte nejprve vytvořit **Azure Mobile Engagement** účtu. 
 
 Chcete-li získat na domovskou stránku, klikněte na tlačítko **domácí** v levém horním rohu stránky. Obsahuje seznam všech aplikacích, které jsou součástí vybrané kolekce. Na této stránce zobrazí právě rychlý přehled o vašich aplikací.
@@ -42,7 +46,7 @@ To mimo jiné obsahuje přehled aplikace:
 * **Relace**: relace je jedno použití aplikace prováděná uživatelem, od okamžiku uživatele s používáním začne, až skončí.
 * **Trendy relace**: vývoj relací za poslední dva týdny.
 
-Jakmile kliknete na aplikaci, můžete začít monitorování a správu aplikací v uživatelském rozhraní. Například:    
+Jakmile kliknete na aplikaci, můžete začít monitorování a správu aplikací v uživatelském rozhraní. Příklad:    
 
 * [Monitorování v reálném čase dat o aplikaci](mobile-engagement-user-interface-monitor.md)
 * [Analýza historických dat o aplikaci](mobile-engagement-user-interface-analytics.md)
@@ -64,7 +68,7 @@ Klikněte na projekt k zobrazení všech aplikací, které jsou součástí toho
 
 ![Home2][3]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Koncepty][Link 6]
 * [Řešení potíží s příručce služby][Link 24]
 

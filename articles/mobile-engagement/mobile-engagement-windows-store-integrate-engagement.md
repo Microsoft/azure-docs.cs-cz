@@ -1,11 +1,11 @@
 ---
-title: "Integraci sady Engagement SDK univerzálních aplikací pro Windows"
-description: "Postup pro integraci Azure Mobile Engagement univerzálních aplikací pro Windows"
+title: Integraci sady Engagement SDK univerzálních aplikací pro Windows
+description: Postup pro integraci Azure Mobile Engagement univerzálních aplikací pro Windows
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 71236b68-5ebd-44aa-8c82-c7ca8098ea05
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 56a382a348609df1d1d308aeac39f47ca82ac4c8
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: dc075ffe6565b4ef60e77f74ba4f065629c99952
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-apps-engagement-sdk-integration"></a>Integraci sady Engagement SDK univerzálních aplikací pro Windows
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 > [!div class="op_single_selector"]
 > * [Univerzální platforma Windows](mobile-engagement-windows-store-integrate-engagement.md) 
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
@@ -57,7 +61,7 @@ NuGet automaticky nasadí prostředků sady SDK v `Resources` složku v kořenov
 NuGet automaticky Nenasazuje prostředků sady SDK v aplikaci UWP ještě. Je nutné provést ručně dokud prostředky nasazení je znovu zavedena v NuGet:
 
 1. Otevřete váš Průzkumníka souborů.
-2. Přejděte do následujícího umístění (**x.x.x** je verze Engagement instalujete): *% USERPROFILE %\\.nuget\packages\MicrosoftAzure.MobileEngagement\\**x.x.x**\\content\win81*
+2. Přejděte do následujícího umístění (**x.x.x** je verze Engagement instalujete): *% USERPROFILE %\\.nuget\packages\MicrosoftAzure.MobileEngagement\\  **x.x.x**\\content\win81*
 3. Přetáhnout myší **prostředky** složky v Průzkumníku souborů do kořenového adresáře projektu v sadě Visual Studio.
 4. V sadě Visual Studio vyberte projekt a aktivovat **zobrazit všechny soubory** ikonu na **Průzkumníku řešení**.
 5. Některé soubory nejsou zahrnuty v projektu. K importu je najednou klikněte pravým tlačítkem na **prostředky** složky, **vyloučit z projektu** pak jiné klikněte pravým tlačítkem na **prostředky** složky, **zahrnout do projektu** znovu zahrnout celou složku. Všechny soubory z **prostředky** složky jsou teď součástí projektu.

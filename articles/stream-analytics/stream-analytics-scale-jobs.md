@@ -1,12 +1,11 @@
 ---
-title: "Škálování úlohy Stream Analytics, pokud chcete zvýšit propustnost | Microsoft Docs"
-description: "Postup konfigurace vstupní oddíly, ladění definice dotazu a nastavení úlohu streamování jednotky škálování úlohy Stream Analytics."
-keywords: "data streamování, streamování zpracování dat, optimalizovat analytics"
+title: Škálování úlohy Stream Analytics, pokud chcete zvýšit propustnost | Microsoft Docs
+description: Postup konfigurace vstupní oddíly, ladění definice dotazu a nastavení úlohu streamování jednotky škálování úlohy Stream Analytics.
+keywords: data streamování, streamování zpracování dat, optimalizovat analytics
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JSeb225
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: 781a3b71c35cb48e40202e3b1acc8edbbaf865c4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2e0487a9e4cd6346312c6817ef2768556cba72ba
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="scale-azure-stream-analytics-jobs-to-increase--throughput"></a>Škálování služby Stream Analytics ke zvýšení propustnosti
 Tento článek ukazuje, jak ladit dotaz služby Stream Analytics chcete zvýšit propustnost pro úlohy streamování Analytics. V následujícím průvodci můžete škálovat vaše úloha zpracování větší zátěže a využít výhod více systémových prostředků (například větší šířku pásma, další prostředky procesoru, paměť).
@@ -148,12 +147,12 @@ V následující tabulce jsou uvedeny výsledků, které jsme viděli při odpov
 
 A následující graf ukazuje vizualizaci vztah mezi službou SUs a propustnosti.
 
-![IMG.Stream.Analytics.perfgraph][img.stream.analytics.perfgraph]
+![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## <a name="get-help"></a>Podpora
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)

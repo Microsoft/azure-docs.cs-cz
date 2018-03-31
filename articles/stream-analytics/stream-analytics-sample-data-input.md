@@ -1,13 +1,12 @@
 ---
-title: "Dotaz testování v Azure Stream Analytics | Microsoft Docs"
-description: "Přesně stanovit problémy při řešení potíží s úlohy Stream Analytics."
-keywords: "řešení potíží s vstupní, vstupní vzorkování"
-documentationcenter: 
+title: Dotaz testování v Azure Stream Analytics | Microsoft Docs
+description: Přesně stanovit problémy při řešení potíží s úlohy Stream Analytics.
+keywords: řešení potíží s vstupní, vstupní vzorkování
+documentationcenter: ''
 services: stream-analytics
 author: jseb225
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: e2636b8b89b86bbb2a2991972386462535d5a10f
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 99c9f7f2dc84f53d09b7aee1916c5532427de692
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-query-testing-and-input-stream-sampling"></a>Testování Azure Stream Analytics dotazů a vzorkování vstupu stream
 
@@ -59,7 +58,7 @@ Až budete s výsledky spokojeni, můžete uložit dotazu, spustit úlohu, sledu
 
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)

@@ -1,11 +1,11 @@
 ---
-title: "Použití emotikon Emoji v rámci Azure Mobile Engagement"
-description: "Jak používat Emoji emotikony v rámci nabízených oznámení"
+title: Použití emotikon Emoji v rámci Azure Mobile Engagement
+description: Jak používat Emoji emotikony v rámci nabízených oznámení
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 663317d7-3c93-4e8f-b13d-c6fb342124ee
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: bbb7ce5e95b229a7505c5e97b6866d5a302a1d27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b5b0e7bfe07054d093dc164cb5f72bde4ba28170
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-emoji-emoticon-within-push-notifications"></a>Použití Emoji emotikonu v rámci nabízená oznámení
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Můžete zahrnout Emoji emotikony ve službě nabízených oznámení v několika jednoduchými kroky: 
 
 1. Nejprve budete muset najít Emoji chcete odeslat ve zprávě. Ujistěte se, že Emoji výběru bude podporovat cílové zařízení jako zařízení vyrábí trvat delší dobu, chcete-li přidat nově schválené Emojis na platformách zařízení. 

@@ -1,12 +1,11 @@
 ---
-title: "Pomocí Azure Machine Learning koncové body v Stream Analytics | Microsoft Docs"
-description: "Funkce definované uživatelem počítače jazyk v Stream Analytics"
-keywords: 
-documentationcenter: 
+title: Pomocí Azure Machine Learning koncové body v Stream Analytics | Microsoft Docs
+description: Funkce definované uživatelem počítače jazyk v Stream Analytics
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
+author: jseb225
+manager: ryanw
 ms.assetid: 406b258f-b8c2-4e55-953c-b7f84e8e5354
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: ca656ce11f267340872f4b8566d0ee21791f29d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 5638071e667c5777138f7c25add8b5f60bee21fe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Počítač integrace učení v Stream Analytics
 Stream Analytics podporuje uživatelsky definované funkce, které volají na koncové body Azure Machine Learning. Podpora rozhraní REST API pro tuto funkci je podrobně popsaná v [Stream Analytics REST API knihovny](https://msdn.microsoft.com/library/azure/dn835031.aspx). Tento článek obsahuje doplňující informace potřebné pro úspěšné dokončení implementace tuto funkci v Stream Analytics. Kurz také byl odeslán a je k dispozici [zde](stream-analytics-machine-learning-integration-tutorial.md).
@@ -197,7 +196,7 @@ Nyní dotaz UDF (zde s názvem scoreTweet) pro každý vstupní událost a zápi
 ## <a name="get-help"></a>Podpora
 Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)

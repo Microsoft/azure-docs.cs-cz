@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s Azure Blob storage a Visual Studio připojené služby (ASP.NET) | Microsoft Docs"
-description: "Jak začít pracovat v projektu ASP.NET v sadě Visual Studio pomocí úložiště objektů Blob v Azure po připojení k účtu úložiště pomocí sady Visual Studio připojené služby"
+title: Začínáme s Azure Blob storage a Visual Studio připojené služby (ASP.NET) | Microsoft Docs
+description: Jak začít pracovat v projektu ASP.NET v sadě Visual Studio pomocí úložiště objektů Blob v Azure po připojení k účtu úložiště pomocí sady Visual Studio připojené služby
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: b3497055-bef8-4c95-8567-181556b50d95
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
-ms.author: kraig
-ms.openlocfilehash: cb406e528568dafd1e142943f5273ad58e550609
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.author: ghogen
+ms.openlocfilehash: 657eff077f9a72bad97e8bea3ad3efc0da1420d5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure Blob storage a Visual Studio připojené služby (ASP.NET)
 
@@ -89,7 +89,7 @@ Následující postup vytvoření metody pro připojení k účtu úložiště p
 > [!NOTE]
 > I když *test kontejneru objektů blob* neexistuje ještě, tento kód vytvoří odkaz na něj. Toto je, takže kontejneru lze vytvořit pomocí `CreateIfNotExists` metoda vidět v dalším kroku.
 
-## <a name="create-a-blob-container"></a>Vytvořte kontejner objektů blob
+## <a name="create-a-blob-container"></a>Vytvoření kontejneru objektů blob
 
 Následující kroky ukazují, jak vytvořit kontejner objektů blob:
 

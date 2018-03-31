@@ -1,21 +1,21 @@
 ---
-title: "Řešení potíží s připojené virtuální pevné disky ve virtuálních počítačích s Azure Windows | Microsoft Docs"
-description: "Postup řešení potíží, třeba neočekávané restartování virtuálních počítačů Windows nebo problémy, odstranění účtu úložiště obsahující připojit virtuální pevné disky."
-keywords: "SSH připojení odmítnuto, ssh chyby, azure ssh, připojení SSH se nezdařilo"
+title: Řešení potíží s připojené virtuální pevné disky ve virtuálních počítačích s Azure Windows | Microsoft Docs
+description: Postup řešení potíží, třeba neočekávané restartování virtuálních počítačů Windows nebo problémy, odstranění účtu úložiště obsahující připojit virtuální pevné disky.
+keywords: SSH připojení odmítnuto, ssh chyby, azure ssh, připojení SSH se nezdařilo
 services: virtual-machines-windows
-author: iainfoulds
+author: roygara
 manager: jeconnoc
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/28/2018
-ms.author: iainfou
-ms.openlocfilehash: b4f3382a070894647aa4294fc5b0b63c98eddaab
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: rogarana
+ms.openlocfilehash: d0103d8ea608014e53f70402220b302b6da445e9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-attached-vhds-on-azure-windows-virtual-machines"></a>Řešení potíží s připojené virtuální pevné disky ve virtuálních počítačích s Azure Windows
 
@@ -24,7 +24,7 @@ Virtuální počítače Azure se spoléhají na virtuálních pevných disků (V
   * [Neočekávané restartování virtuálních počítačů s připojených virtuálních pevných disků]
   * [Úložiště odstranění chyby v nasazení Resource Manager]
 
-## <a name="you-are-experiencing-unexpected-reboots">Neočekávané restartování virtuálních počítačů s připojených virtuálních pevných disků</a>
+## <a name="you-are-experiencing-unexpected-reboots"></a>Neočekávané restartování virtuálních počítačů s připojených virtuálních pevných disků
 
 Pokud virtuální počítač Azure (VM) má velký počet připojených virtuálních pevných disků, které jsou ve stejném účtu úložiště, může být vyšší než cíle škálovatelnosti pro účet úložiště jednotlivých způsobuje selhání virtuálního počítače. Zkontrolujte minutu metriky pro účet úložiště (**TotalRequests**/**TotalIngress**/**TotalEgress**) špiček, které překračují cíle škálovatelnosti účtu úložiště. Najdete v části "[Zobrazit metriky na zvýšení PercentThrottlingError]" pro pomoc při určování, zda omezení došlo k chybě na vašem účtu úložiště.
 
@@ -32,7 +32,7 @@ Obecně platí, překládá každé jednotlivé vstupní nebo výstupní operace
 
 Pokud jsou překročení cíle škálovatelnosti účtu úložiště, umístíte virtuální pevné disky ve více účtů úložiště ke snížení aktivity v jednotlivé účty.
 
-## <a name="storage-delete-errors-in-rm">Úložiště odstranění chyby v nasazení Resource Manager</a>
+## <a name="storage-delete-errors-in-rm"></a>Úložiště odstranění chyby v nasazení Resource Manager
 
 Tato část obsahuje pokyny k odstraňování problémů, když jeden z těchto chyb dojít, když se pokoušíte odstranit účet úložiště Azure, kontejneru nebo objektů blob v nasazení Azure Resource Manager.
 

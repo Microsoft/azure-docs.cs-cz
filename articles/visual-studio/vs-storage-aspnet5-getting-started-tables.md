@@ -1,11 +1,11 @@
 ---
-title: "Jak začít pracovat s úložiště tabulek a Visual Studio připojené služby (ASP.NET Core) | Microsoft Docs"
-description: "Jak začít pracovat s Azure Table storage v projektu ASP.NET Core v sadě Visual Studio po připojení k účtu úložiště pomocí sady Visual Studio připojené služby"
+title: Jak začít pracovat s úložiště tabulek a Visual Studio připojené služby (ASP.NET Core) | Microsoft Docs
+description: Jak začít pracovat s Azure Table storage v projektu ASP.NET Core v sadě Visual Studio po připojení k účtu úložiště pomocí sady Visual Studio připojené služby
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: c3c451d1-71ff-4222-a348-c41c98a02b85
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
-ms.author: kraigb
-ms.openlocfilehash: 4693c637597346e5c72bef6ddca9369e67b740f3
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.author: ghogen
+ms.openlocfilehash: c20176b33962760560bbdb1cfe0d41377227d720
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Jak začít pracovat s Azure Table storage a Visual Studio připojené služby
 

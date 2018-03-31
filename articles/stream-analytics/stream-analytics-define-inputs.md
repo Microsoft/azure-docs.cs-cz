@@ -1,12 +1,11 @@
 ---
-title: "Datové připojení: Data stream vstupy z datového proudu událostí | Microsoft Docs"
-description: "Další informace o nastavení připojení dat do služby Stream Analytics s názvem \"vstupy\". Vstupy zahrnout datový proud z událostí a také referenční data."
-keywords: "datový proud, datové připojení, datového proudu událostí"
+title: 'Datové připojení: Data stream vstupy z datového proudu událostí | Microsoft Docs'
+description: Další informace o nastavení připojení dat do služby Stream Analytics s názvem "vstupy". Vstupy zahrnout datový proud z událostí a také referenční data.
+keywords: datový proud, datové připojení, datového proudu událostí
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-editor: cgronlun
 ms.assetid: 8155823c-9dd8-4a6b-8393-34452d299b68
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/11/2017
 ms.author: sngun
-ms.openlocfilehash: e8b55269e861dc010c911491d52973b674dd50ca
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 0ddc3187e9fc0664838dd07f781f4d7e2e4a7fe0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Datové připojení: Další informace o datech vstupy datového proudu z událostí do služby Stream Analytics
 Datové připojení do úlohy Stream Analytics je datový proud událostí ze zdroje dat, který se označuje jako úlohy *vstupní*. Stream Analytics obsahuje prvotřídní integrace s datového proudu zdrojů dat Azure, včetně [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/), a [úložiště objektů Azure Blob](https://azure.microsoft.com/services/storage/blobs/). Tyto vstupního zdroje může být ze stejného předplatného Azure jako vaše úloha analýzy nebo z jiného předplatného.
@@ -106,7 +105,7 @@ Následující tabulka popisuje každou vlastnost v **nové vstup** okno na port
 | --- | --- |
 | **Vstupní alias** |Popisný název, který používáte v dotazu úlohy odkazovat tento vstup.|
 | **Centrum IoT** |Název centra IoT, které chcete použít jako vstup. |
-| **Koncový bod** |Koncový bod pro službu IoT hub.|
+| **Endpoint** |Koncový bod pro službu IoT hub.|
 | **Název zásady sdíleného přístupu** |Zásada sdíleného přístupu, který poskytuje přístup ke službě IoT hub. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
 | **Sdílený přístupový klíč zásad** |Sdílený přístupový klíč použitý k autorizaci přístupu ke službě IoT hub. |
 | **Skupiny příjemců** (volitelné) |Skupinu uživatelů, který se má použít pro načítání dat ze služby IoT hub. Pokud není zadána žádná skupina příjemců, úloha Stream Analytics používá výchozí skupina příjemců. Doporučujeme vám, že používáte skupinu jiný příjemce pro každou úlohu služby Stream Analytics. |
@@ -149,9 +148,9 @@ Následující tabulka popisuje každou vlastnost v **nové vstup** okno na port
 | **Vstupní alias** | Popisný název, který používáte v dotazu úlohy odkazovat tento vstup. |
 | **Účet úložiště** | Název účtu úložiště, kde jsou umístěny soubory objektů blob. |
 | **Klíče účtu úložiště.** | Tajný klíč přidružený k účtu úložiště. |
-| **Kontejner** | Kontejner pro tento objekt blob vstup. Kontejnery poskytují možnost logického seskupování pro objekty BLOB uložené ve službě Microsoft Azure Blob. Při nahrávání do objektu blob ve službě úložiště objektů Blob v Azure, je nutné zadat kontejner pro tento objekt blob. |
-| **Vzorek cesty** (volitelné) | Cesta k souboru používaná k nalezení objektů BLOB v rámci zadaného kontejneru. V této cestě můžete zadat jednu nebo více instancí následujících tří proměnných: `{date}`, `{time}`, nebo`{partition}`<br/><br/>Příklad 1:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2:`cluster1/logs/{date}`<br/><br/>`*` Znak není povolená hodnota pro předponu cestu. Jediné platné <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">objektů blob v Azure znaků</a> jsou povoleny. |
-| **Formát data** (volitelné) | Pokud použijete proměnnou datum v cestě, ve které soubory jsou uspořádány formát data. Příklad:`YYYY/MM/DD` |
+| **kontejner** | Kontejner pro tento objekt blob vstup. Kontejnery poskytují možnost logického seskupování pro objekty BLOB uložené ve službě Microsoft Azure Blob. Při nahrávání do objektu blob ve službě úložiště objektů Blob v Azure, je nutné zadat kontejner pro tento objekt blob. |
+| **Vzorek cesty** (volitelné) | Cesta k souboru používaná k nalezení objektů BLOB v rámci zadaného kontejneru. V této cestě můžete zadat jednu nebo více instancí následujících tří proměnných: `{date}`, `{time}`, nebo `{partition}`<br/><br/>Příklad 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2: `cluster1/logs/{date}`<br/><br/>`*` Znak není povolená hodnota pro předponu cestu. Jediné platné <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">objektů blob v Azure znaků</a> jsou povoleny. |
+| **Formát data** (volitelné) | Pokud použijete proměnnou datum v cestě, ve které soubory jsou uspořádány formát data. Příklad: `YYYY/MM/DD` |
 | **Formát času** (volitelné) |  Pokud použijete proměnnou čas ve formátu času, ve které soubory jsou uspořádány do cesty. Aktuálně je jediná podporovaná hodnota `HH`. |
 | **Formát serializace událostí** | Formát serializace (JSON, CSV nebo Avro) pro příchozí streamy. |
 | **Kódování** | Pro sdílený svazek clusteru a JSON je jediným podporovaným formátem kódování aktuálně UTF-8. |
@@ -179,7 +178,7 @@ FROM Input
 ## <a name="get-help"></a>Podpora
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Když jste se naučili o možnosti připojení dat v Azure pro úlohy Stream Analytics. Další informace o Stream Analytics najdete v tématu:
 
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

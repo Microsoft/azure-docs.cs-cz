@@ -1,11 +1,11 @@
 ---
-title: "Správa rolí v cloudových služeb Azure pomocí sady Visual Studio | Microsoft Docs"
-description: "Zjistěte, jak přidávat a odebírat role ve službě Azure cloud services pomocí sady Visual Studio."
+title: Správa rolí v cloudových služeb Azure pomocí sady Visual Studio | Microsoft Docs
+description: Zjistěte, jak přidávat a odebírat role ve službě Azure cloud services pomocí sady Visual Studio.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 5ec9ae2e-8579-4e5d-999e-8ae05b629bd1
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/21/2017
-ms.author: kraigb
-ms.openlocfilehash: 6ed857b857cf8c14506ca39725c214a7fea4fc95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: fb49eaa69f2265f6b312ecbdab1435e7c50236b8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="managing-roles-in-azure-cloud-services-with-visual-studio"></a>Správa rolí v cloudových služeb Azure pomocí sady Visual Studio
 Po vytvoření cloudové služby Azure, můžete do ní přidejte nové role nebo z něj odebrat existující role. Můžete také importovat existující projekt a ho převést na roli. Například můžete importovat webové aplikace ASP.NET a označit ji jako webové role.
@@ -50,7 +50,7 @@ Následující kroky vás provedou odebrání role web nebo worker z projektu Az
 ## <a name="readding-a-role-to-an-azure-cloud-service-project"></a>Nové přidání role k projektu Azure cloud service
 Pokud odeberete roli z projekt cloudové služby, ale později se rozhodnete přidat roli zpět do projektu, se přidají jenom deklarace role a základní atributy, jako například koncových bodů a diagnostické informace. Žádné další prostředky ani odkazy jsou přidány do `ServiceDefinition.csdef` souboru nebo `ServiceConfiguration.cscfg` souboru. Pokud chcete přidat tyto informace, budete muset ručně přidat zpět do těchto souborů.
 
-Například je možné odebrat role webové služby a později se rozhodnete přidat tato role zpátky do vašeho řešení. Pokud to uděláte, dojde k chybě. Aby se tato chyba, je nutné přidat `<LocalResources>` uvedeného v následující soubor XML zpět do prvku `ServiceDefinition.csdef` souboru. Použijte název role webové služby, které jste přidali zpět do projektu jako součást atributu název pro  **<LocalStorage>**  element. V tomto příkladu je název role webové služby **WCFServiceWebRole1**.
+Například je možné odebrat role webové služby a později se rozhodnete přidat tato role zpátky do vašeho řešení. Pokud to uděláte, dojde k chybě. Aby se tato chyba, je nutné přidat `<LocalResources>` uvedeného v následující soubor XML zpět do prvku `ServiceDefinition.csdef` souboru. Použijte název role webové služby, které jste přidali zpět do projektu jako součást atributu název pro **<LocalStorage>** element. V tomto příkladu je název role webové služby **WCFServiceWebRole1**.
 
     <WebRole name="WCFServiceWebRole1">
         <Sites>
@@ -71,5 +71,5 @@ Například je možné odebrat role webové služby a později se rozhodnete př
        </LocalResources>
     </WebRole>
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Konfigurace role pro cloudové služby Azure pomocí sady Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md)

@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s objektem blob storage a Visual Studio připojené služeb (webové úlohy projekty) | Microsoft Docs"
-description: "Jak začít používat úložiště objektů Blob v projektu webové úlohy po připojení k Azure storage pomocí sady Visual Studio připojené služby."
+title: Začínáme s objektem blob storage a Visual Studio připojené služeb (webové úlohy projekty) | Microsoft Docs
+description: Jak začít používat úložiště objektů Blob v projektu webové úlohy po připojení k Azure storage pomocí sady Visual Studio připojené služby.
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 324c9376-0225-4092-9825-5d1bd5550058
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: kraigb
-ms.openlocfilehash: 7d683f950e8847a18f38158a8f8727b1274fc711
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 60b25dd987e1b959a850614bf375ae434f2c0815
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Blob storage a Visual Studio připojené služeb (webové úlohy projekty)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -79,9 +79,9 @@ Následující ukázka kódu změní přípona souboru, protože kopíruje objek
 ## <a name="types-that-you-can-bind-to-blobs"></a>Typy, které můžete vázat na objekty BLOB
 Můžete použít **BlobTrigger** atribut u následujících typů:
 
-* **řetězec**
+* **Řetězec**
 * **TextReader**
-* **Datový proud**
+* **Stream**
 * **ICloudBlob**
 * **CloudBlockBlob**
 * **CloudPageBlob**
@@ -217,6 +217,6 @@ Související témata popsaná v tomto článku zahrnují následující:
 * Ruční aktivaci funkce
 * Zápis protokolů
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Tento článek poskytl ukázek kódu, které ukazují, jak zpracovat běžné scénáře pro práci s objekty BLOB Azure. Další informace o tom, jak používat Azure WebJobs a WebJobs SDK najdete v tématu [zdrojů dokumentace Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 

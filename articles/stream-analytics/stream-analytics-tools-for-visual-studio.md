@@ -1,12 +1,11 @@
 ---
-title: "Použití Azure Stream Analytics tools pro sadu Visual Studio | Microsoft Docs"
-description: "Úvodní kurz pro Azure Stream Analytics Tools pro sadu Visual Studio"
+title: Použití Azure Stream Analytics tools pro sadu Visual Studio | Microsoft Docs
+description: Úvodní kurz pro Azure Stream Analytics Tools pro sadu Visual Studio
 keywords: Visual studio
-documentationcenter: 
+documentationcenter: ''
 services: stream-analytics
 author: su-jie
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/05/2018
 ms.author: sujie
-ms.openlocfilehash: 71e7247226f9432b3f9590ca87ac33883ea576ce
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 23c4d058a1b045b0d66d8526a94e22774e6e6519
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>Použití Azure Stream Analytics tools pro sadu Visual Studio
 Azure Stream Analytics tools pro Visual Studio jsou obecně dostupné. Tyto nástroje povolte bohatší možnosti pro uživatele Stream Analytics k řešení potíží a také zápisu složitých dotazů a i psát dotazy místně. Úloha Stream Analytics také můžete exportovat do projektu sady Visual Studio.

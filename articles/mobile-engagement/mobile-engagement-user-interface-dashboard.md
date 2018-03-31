@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní – řídicí panel"
-description: "Zjistěte, jak zobrazit a spravovat grafy data o vaší aplikaci pomocí Azure Mobile Engagement"
+title: Azure Mobile Engagement uživatelské rozhraní – řídicí panel
+description: Zjistěte, jak zobrazit a spravovat grafy data o vaší aplikaci pomocí Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 72d5965e-8e79-48a3-9e63-0b66b7457d3c
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,16 +14,20 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: eaf5a2f9fdfcec33e8b4e2ddf77505980cd37c5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d941b9858b964e11308061bae9e6dbc5e2fda767
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-view-and-manage-charts-of-data-about-your-application"></a>Postup zobrazení a Správa grafů dat o aplikaci
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Části řídicí panel rozhraní umožňuje zákazníkům vytvářet vlastní grafy maximalizovat doba pro jejich tím, že poskytuje přesné informace, které chtějí namísto hledání v části analytics. Řídicí panel zobrazuje trendy aplikace, a aktivní uživatele počty pro různé verze vaší aplikace na danou dobu (hodinu/den/týden nebo měsíc/vlastní). Trendy zobrazí jsou založené na za posledních 7 dnů.
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Průvodce odstraňováním potíží s - Analytics][Link 21]
 
 ## <a name="dashboard"></a>Řídicí panel

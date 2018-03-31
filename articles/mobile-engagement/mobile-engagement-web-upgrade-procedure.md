@@ -1,11 +1,11 @@
 ---
 title: Postupy upgradu Azure Mobile Engagement Web SDK | Microsoft Docs
-description: "Nejnovější aktualizace a postupy pro Web SDK pro Azure Mobile Engagement"
+description: Nejnovější aktualizace a postupy pro Web SDK pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a20529b4-ec8d-4503-8ae9-09b5f0846d5b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: afa8037dcb7a53042fa606e2c4014b442d4be326
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42f78b5e6bfa028f3a798f6cb6c0dee3f17b3ebe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-web-sdk-upgrade-procedures"></a>Postupy upgradu Azure Mobile Engagement Web SDK
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Pokud jste již spojili dřívější verzi webové sady Azure Mobile Engagement SDK do své webové aplikace, je potřeba zvážit následující body při upgradu sady SDK.
 
 Při přeskočení více verzí sady SDK Mobile Engagement webové budete možná muset udělat několik postupů během procesu upgradu. Například pokud provádíte migraci z 1.4.0 1.6.0, nejdřív postupujte podle pokynů k upgradu z 1.4.0 1.5.0. Potom postupujte podle pokynů k upgradu z 1.5.0 1.6.0.

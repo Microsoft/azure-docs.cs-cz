@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s Azure queue storage a Visual Studio připojené služby (ASP.NET) | Microsoft Docs"
-description: "Jak začít používat fronty Azure storage v projektu ASP.NET v sadě Visual Studio po připojení k účtu úložiště pomocí Visual Studio připojené Services"
+title: Začínáme s Azure queue storage a Visual Studio připojené služby (ASP.NET) | Microsoft Docs
+description: Jak začít používat fronty Azure storage v projektu ASP.NET v sadě Visual Studio po připojení k účtu úložiště pomocí Visual Studio připojené Services
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 94ca3413-5497-433f-abbe-836f83a9de72
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/23/2016
-ms.author: kraigb
-ms.openlocfilehash: 4687e5dfce72583728068c176d86d100313badf6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 89baa741dcd916b70514f9703255b9e6d01c689b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure queue storage a Visual Studio připojené služby (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -139,7 +139,7 @@ Následující kroky ukazují, jak vytvořit frontu:
 
 1. Spusťte aplikaci a vyberte **fronty vytvořit** a zobrazte výsledky podobné následujícím snímku obrazovky:
   
-    ![Vytvoření fronty](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
+    ![Vytvořit frontu](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
     Jak je uvedeno nahoře, **CloudQueue.CreateIfNotExists** metoda vrátí **true** pouze když neexistuje a k vytvoření fronty. Proto pokud spustíte aplikaci, když fronta existuje, vrátí metoda **false**. Aplikace je třeba spustit vícekrát, je nutné odstranit frontu před spuštěním aplikace znovu. Odstranění fronty, můžete to udělat pomocí **CloudQueue.Delete** metoda. Můžete také odstranit pomocí fronty [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040) nebo [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
@@ -572,9 +572,9 @@ Tato část ukazuje postup odstranění fronty.
 
 1. Spusťte aplikaci a vyberte **získat délka fronty** a zobrazte výsledky podobné následujícím snímku obrazovky:
   
-    ![Odstranění fronty](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
+    ![Odstranit frontu](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Projděte si další průvodce funkcemi, kde najdete další informace o dalších možnostech pro ukládání dat v Azure.
 
   * [Začínáme s Azure blob storage a Visual Studio připojené služby (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)

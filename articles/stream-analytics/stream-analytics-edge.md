@@ -1,12 +1,12 @@
 ---
 title: Azure Stream Analytics IoT hranu (preview)
-description: "Vytvoření úlohy edge v Azure Stream Analytics a nasadit je spuštěna zařízení Azure IoT okraj."
-keywords: "datový proud, iot, edge"
+description: Vytvoření úlohy edge v Azure Stream Analytics a nasadit je spuštěna zařízení Azure IoT okraj.
+keywords: datový proud, iot, edge
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: jseb225
-manager: jhubbard
-ms.assetid: 
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/16/2017
 ms.author: jeanb
-ms.openlocfilehash: f1ff8d6f64a04ab03c8170fd2b6a7c881227da2e
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 475ca357c8445e8a7c672406f919af1d99a0933b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics IoT hranu (preview)
 
@@ -108,7 +108,7 @@ Tyto kroky jsou popsané v dokumentaci k hraniční IoT pro [Windows](https://do
 ##### <a name="add-asa-to-your-deployment"></a>Přidání ASA k nasazení
 - Na portálu Azure otevřete Centrum IoT, přejděte do Průzkumníka Edge IoT a otevřete okno vaše zařízení.
 - Vyberte **nastavit moduly**, pak vyberte **Import Azure služby IoT Edge Module**.
-- Vyberte předplatné a úlohy ASA okraj, který jste vytvořili. Potom vyberte účet úložiště. Klikněte na tlačítko Uložit.
+- Vyberte předplatné a úlohy ASA okraj, který jste vytvořili. Pak vyberte svůj účet úložiště. Klikněte na tlačítko Uložit.
 ![Přidat modul ASA ve vašem nasazení](media/stream-analytics-edge/set_module.png)
 
 
@@ -210,7 +210,7 @@ Další informace najdete v tématu [Docker dokumentaci k systému Windows zde](
 O další pomoc, zkuste [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Další informace o Azure Iot Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [ASA na IoT Edge kurzu](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)

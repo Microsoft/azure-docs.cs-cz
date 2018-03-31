@@ -1,12 +1,11 @@
 ---
-title: "Sledovat a spravovat úlohy Stream Analytics v prostředí PowerShell | Microsoft Docs"
-description: "Naučte se používat rutiny prostředí Azure PowerShell a sledovat a spravovat úlohy Stream Analytics."
-keywords: "prostředí Azure powershell, rutin prostředí azure powershell, příkaz prostředí powershell, skriptů prostředí powershell"
+title: Sledovat a spravovat úlohy Stream Analytics v prostředí PowerShell | Microsoft Docs
+description: Naučte se používat rutiny prostředí Azure PowerShell a sledovat a spravovat úlohy Stream Analytics.
+keywords: prostředí Azure powershell, rutin prostředí azure powershell, příkaz prostředí powershell, skriptů prostředí powershell
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 514f454e-d18c-4081-8304-ab48577e15e8
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: b8d362a2789c4e1f5594baa2b86a16e523757037
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 1dcb6f8fe9f2f26ea0bd6970134b0bec67a50aa5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Sledovat a spravovat úlohy Stream Analytics pomocí rutin prostředí Azure PowerShell
 Zjistěte, jak sledovat a spravovat prostředky Stream Analytics pomocí rutin prostředí Azure PowerShell a skriptů prostředí powershell, které jsou spouštěny základní úlohy Stream Analytics.
@@ -189,7 +188,7 @@ Azure PowerShell 1.0:
 
 Tento příkaz prostředí PowerShell vrátí informace o transformaci názvem StreamingJob v úloze StreamingJob.
 
-### <a name="new-azurestreamanalyticsinput--new-azurermstreamanalyticsinput"></a>Nové AzureStreamAnalyticsInput | Nové AzureRMStreamAnalyticsInput
+### <a name="new-azurestreamanalyticsinput--new-azurermstreamanalyticsinput"></a>New-AzureStreamAnalyticsInput | New-AzureRMStreamAnalyticsInput
 Vytvoří nový vstup v rámci úlohy Stream Analytics nebo aktualizuje existující zadaný vstup.
 
 Název vstupu mohou být zadané v souboru .json nebo na příkazovém řádku. Pokud jsou zadány oba název na příkazovém řádku musí být stejná jako ta, v souboru.
@@ -236,7 +235,7 @@ Azure PowerShell 1.0:
 
 Tento příkaz prostředí PowerShell nahradí definici existující vstupní zdroj s názvem EntryStream s definicí ze souboru.
 
-### <a name="new-azurestreamanalyticsjob--new-azurermstreamanalyticsjob"></a>Nové AzureStreamAnalyticsJob | Nové AzureRMStreamAnalyticsJob
+### <a name="new-azurestreamanalyticsjob--new-azurermstreamanalyticsjob"></a>New-AzureStreamAnalyticsJob | New-AzureRMStreamAnalyticsJob
 Vytvoří novou úlohu služby Stream Analytics v Microsoft Azure nebo aktualizuje definice existující zadanou úlohu.
 
 V souboru .json nebo na příkazovém řádku lze zadat název úlohy. Pokud jsou zadány oba název na příkazovém řádku musí být stejná jako ta, v souboru.
@@ -271,7 +270,7 @@ Azure PowerShell 1.0:
 
 Tento příkaz prostředí PowerShell nahrazuje danou definici úlohy pro StreamingJob.
 
-### <a name="new-azurestreamanalyticsoutput--new-azurermstreamanalyticsoutput"></a>Nové AzureStreamAnalyticsOutput | Nové AzureRMStreamAnalyticsOutput
+### <a name="new-azurestreamanalyticsoutput--new-azurermstreamanalyticsoutput"></a>New-AzureStreamAnalyticsOutput | New-AzureRMStreamAnalyticsOutput
 Vytvoří nový výstupní v rámci úlohy Stream Analytics nebo aktualizuje existující výstup.  
 
 Název výstupu mohou být zadané v souboru .json nebo na příkazovém řádku. Pokud jsou zadány oba název na příkazovém řádku musí být stejná jako ta, v souboru.
@@ -306,7 +305,7 @@ Azure PowerShell 1.0:
 
 Tento příkaz prostředí PowerShell nahradí definici "výstupní" v úloze StreamingJob.
 
-### <a name="new-azurestreamanalyticstransformation--new-azurermstreamanalyticstransformation"></a>Nové AzureStreamAnalyticsTransformation | Nové AzureRMStreamAnalyticsTransformation
+### <a name="new-azurestreamanalyticstransformation--new-azurermstreamanalyticstransformation"></a>New-AzureStreamAnalyticsTransformation | New-AzureRMStreamAnalyticsTransformation
 Vytvoří nový transformaci v rámci úlohy Stream Analytics nebo aktualizuje existující transformace.
 
 V souboru .json nebo na příkazovém řádku, může být zadán název transformace. Pokud jsou zadány oba název na příkazovém řádku musí být stejná jako ta, v souboru.
@@ -341,7 +340,7 @@ Azure PowerShell 1.0:
 
  Tento příkaz prostředí PowerShell nahrazuje definice StreamingJobTransform v úloze StreamingJob.
 
-### <a name="remove-azurestreamanalyticsinput--remove-azurermstreamanalyticsinput"></a>Odebrat AzureStreamAnalyticsInput | Odebrat AzureRMStreamAnalyticsInput
+### <a name="remove-azurestreamanalyticsinput--remove-azurermstreamanalyticsinput"></a>Remove-AzureStreamAnalyticsInput | Remove-AzureRMStreamAnalyticsInput
 Asynchronně odstraní specifický vstup z úlohy Stream Analytics v Microsoft Azure.  
 Zadáte-li parametr-Force, odstraní se vstup bez potvrzení.
 
@@ -357,7 +356,7 @@ Azure PowerShell 1.0:
 
 Tento příkaz prostředí PowerShell odebere vstupní EventStream v úloze StreamingJob.  
 
-### <a name="remove-azurestreamanalyticsjob--remove-azurermstreamanalyticsjob"></a>Odebrat AzureStreamAnalyticsJob | Odebrat AzureRMStreamAnalyticsJob
+### <a name="remove-azurestreamanalyticsjob--remove-azurermstreamanalyticsjob"></a>Remove-AzureStreamAnalyticsJob | Remove-AzureRMStreamAnalyticsJob
 Asynchronně odstraní určité úlohy Stream Analytics v Microsoft Azure.  
 Zadáte-li parametr-Force, úloha se odstraní bez potvrzení.
 
@@ -373,7 +372,7 @@ Azure PowerShell 1.0:
 
 Tento příkaz prostředí PowerShell odebere úlohy StreamingJob.  
 
-### <a name="remove-azurestreamanalyticsoutput--remove-azurermstreamanalyticsoutput"></a>Odebrat AzureStreamAnalyticsOutput | Odebrat AzureRMStreamAnalyticsOutput
+### <a name="remove-azurestreamanalyticsoutput--remove-azurermstreamanalyticsoutput"></a>Remove-AzureStreamAnalyticsOutput | Remove-AzureRMStreamAnalyticsOutput
 Asynchronně odstraní konkrétní výstup z úlohy Stream Analytics v Microsoft Azure.  
 Zadáte-li parametr-Force, odstraní se výstup bez potvrzení.
 
@@ -389,7 +388,7 @@ Azure PowerShell 1.0:
 
 Tato odebere příkaz prostředí PowerShell výstup výstup do úlohy StreamingJob.  
 
-### <a name="start-azurestreamanalyticsjob--start-azurermstreamanalyticsjob"></a>Spuštění AzureStreamAnalyticsJob | Počáteční AzureRMStreamAnalyticsJob
+### <a name="start-azurestreamanalyticsjob--start-azurermstreamanalyticsjob"></a>Start-AzureStreamAnalyticsJob | Start-AzureRMStreamAnalyticsJob
 Asynchronně nasadí a spustí úlohu služby Stream Analytics v Microsoft Azure.
 
 **Příklad 1**
@@ -419,7 +418,7 @@ Azure PowerShell 1.0:
 
 Tento příkaz prostředí PowerShell zastaví úlohu StreamingJob.  
 
-### <a name="test-azurestreamanalyticsinput--test-azurermstreamanalyticsinput"></a>Test AzureStreamAnalyticsInput | Test AzureRMStreamAnalyticsInput
+### <a name="test-azurestreamanalyticsinput--test-azurermstreamanalyticsinput"></a>Test-AzureStreamAnalyticsInput | Test-AzureRMStreamAnalyticsInput
 Testuje schopnost Stream Analytics se připojit k zadaný vstup.
 
 **Příklad 1**
@@ -434,7 +433,7 @@ Azure PowerShell 1.0:
 
 Tento příkaz prostředí PowerShell testů připojení stav vstupní EntryStream v StreamingJob.  
 
-### <a name="test-azurestreamanalyticsoutput--test-azurermstreamanalyticsoutput"></a>Test AzureStreamAnalyticsOutput | Test AzureRMStreamAnalyticsOutput
+### <a name="test-azurestreamanalyticsoutput--test-azurermstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzureRMStreamAnalyticsOutput
 Testuje schopnost Stream Analytics se připojit k zadaným výstupem.
 
 **Příklad 1**
@@ -452,7 +451,7 @@ Tato testy příkaz prostředí PowerShell stav připojení výstupu výstup v S
 ## <a name="get-support"></a>Získat podporu
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics). 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
