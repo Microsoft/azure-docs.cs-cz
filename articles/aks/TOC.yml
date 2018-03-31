@@ -59,6 +59,8 @@
       items:
         - name: Statická IP adresa
           href: static-ip.md
+        - name: Interní nástroj pro vyrovnávání zatížení
+          href: internal-lb.md
         - name: Ingress a protokol TLS
           href: ingress.md
     - name: Zabezpečení a ověřování
