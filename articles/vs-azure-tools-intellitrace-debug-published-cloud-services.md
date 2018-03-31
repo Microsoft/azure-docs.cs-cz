@@ -1,11 +1,11 @@
 ---
-title: "Ladění publikovaný Azure cloud service pomocí sady Visual Studio a IntelliTrace | Microsoft Docs"
-description: "Zjistěte, jak ladit Cloudová služba se Visual Studio a IntelliTrace"
+title: Ladění publikovaný Azure cloud service pomocí sady Visual Studio a IntelliTrace | Microsoft Docs
+description: Zjistěte, jak ladit Cloudová služba se Visual Studio a IntelliTrace
 services: visual-studio-online
 documentationcenter: n/a
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: 5e6662fc-b917-43ea-bf2b-4f2fc3d213dc
 ms.service: visual-studio-online
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/21/2017
 ms.author: mikejo
-ms.openlocfilehash: d33a8338b37f7479196449238388c7dbf391bbb6
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 2ca15bd5ffa88d2e8053decf5b81c265b1d9c6e1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="debugging-a-published-azure-cloud-service-with-visual-studio-and-intellitrace"></a>Ladění publikovaný Azure cloud service sadou Visual Studio a IntelliTrace
 S použitím technologie IntelliTrace můžete protokolovat rozsáhlé ladicí informace pro instanci role při spuštění v Azure. Pokud potřebujete najít příčinu problému, můžete protokoly IntelliTrace krokovat kód ze sady Visual Studio, jako kdyby byly spuštěny v Azure. IntelliTrace záznamy ve skutečnosti klíčů provádění kódu a dat prostředí, když vaše aplikace Azure běží jako cloudová služba v Azure a umožňuje přehrát zaznamenaná data ze sady Visual Studio. 
@@ -78,6 +78,6 @@ Můžete pokračovat v práci v sadě Visual Studio, když jsou stahování prot
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Možnosti pro ladění cloudové služby Azure](vs-azure-tools-debugging-cloud-services-overview.md)
 - [Publikování Azure cloud service pomocí sady Visual Studio](vs-azure-tools-publishing-a-cloud-service.md)

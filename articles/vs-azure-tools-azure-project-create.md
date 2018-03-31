@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření projektu Azure cloud service pomocí sady Visual Studio | Microsoft Docs"
-description: "Naučte se vytvářet projekt Azure cloud service pomocí sady Visual Studio"
+title: Vytvoření projektu Azure cloud service pomocí sady Visual Studio | Microsoft Docs
+description: Naučte se vytvářet projekt Azure cloud service pomocí sady Visual Studio
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: ec580df7-3dcc-45a9-a1d9-8c110678dfb5
 ms.service: multiple
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2017
-ms.author: kraigb
-ms.openlocfilehash: 1f6ded87b551f660853ea4eb0548f3d942e28fa8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 41c2bd0dc1f609b6b7b9cfda43c2378feb1c3b6c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="creating-an-azure-cloud-service-project-with-visual-studio"></a>Vytvoření projektu Azure cloud service pomocí sady Visual Studio
 Nástroje Azure pro sadu Visual Studio poskytuje šablony projektu, který umožňuje vytvářet cloudové služby Azure. Po vytvoření projektu sady Visual Studio umožňuje nakonfigurovat, ladění a nasazení cloudové služby pro Azure.
@@ -26,7 +26,7 @@ Nástroje Azure pro sadu Visual Studio poskytuje šablony projektu, který umož
 ## <a name="steps-to-create-an-azure-cloud-service-project-in-visual-studio"></a>Postup vytvoření projektu Azure cloud service v sadě Visual Studio
 Tato část vás provede procesem vytvoření projektu Azure cloud service v sadě Visual Studio pomocí jedné nebo více webových rolí.  
 
-1. Spuštění sady Visual Studio jako správce.
+1. Spusťte sadu Visual Studio jako správce.
 
 1. V hlavní nabídce vyberte **soubor** > **nový** > **projektu**.
 
@@ -55,5 +55,5 @@ Projekt Visual Studio Azure má přidružení k roli projekty v řešení. Tento
 
 Další informace o těchto souborech najdete v tématu [konfiguraci rolí pro cloudové služby Azure pomocí sady Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Správa rolí v projektech Azure cloud service pomocí sady Visual Studio](./vs-azure-tools-cloud-service-project-managing-roles.md)

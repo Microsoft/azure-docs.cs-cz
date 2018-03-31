@@ -1,11 +1,11 @@
 ---
-title: "Přidat Azure Storage pomocí připojené služby v sadě Visual Studio | Microsoft Docs"
-description: "Přidejte úložiště Azure do vaší aplikace pomocí dialogu Visual Studio přidat připojení služby"
+title: Přidat Azure Storage pomocí připojené služby v sadě Visual Studio | Microsoft Docs
+description: Přidejte úložiště Azure do vaší aplikace pomocí dialogu Visual Studio přidat připojení služby
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 521ec044-ad4b-4828-8864-01decde2e758
 ms.service: storage
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2017
-ms.author: kraigb
-ms.openlocfilehash: 35638083cd75e1b751d00a9c8163a3bc7480f0cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 3252d022222e1c31491a6b111e5e96f8c62ca915
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Přidání úložiště Azure pomocí Visual Studio připojené Services
 Pomocí sady Visual Studio, připojením některý z těchto do služby Azure Storage pomocí **přidat připojení služby** dialogové okno:
@@ -27,7 +27,7 @@ Pomocí sady Visual Studio, připojením některý z těchto do služby Azure St
 - Rozhraní .NET back-end mobilní služby
 - Web ASP.NET nebo služby
 - ASP.NET základní služby
-- Služba Azure webové úlohy 
+- Azure WebJob service 
 
 Funkci připojené služby přidá všechny potřebné odkazy a kód připojení do projektu a odpovídajícím způsobem upravit konfigurační soubory. 
 
@@ -70,7 +70,7 @@ Po dokončení dialogu přidá odkazy na Visual Studio a upraví určité konfig
 - Projekt cloudové služby (webových rolí a rolí pracovního procesu) - [co se stalo – projekty cloudových služeb](http://go.microsoft.com/fwlink/p/?LinkId=516965)
 - Projekt webové úlohy – [co se stalo – projekty webové úlohy](visual-studio/vs-storage-webjobs-what-happened.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Fóru MSDN: Úložiště Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 - [Blog týmu Microsoft Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
 - [Dokumentace k Azure Storage](https://docs.microsoft.com/azure/storage/)

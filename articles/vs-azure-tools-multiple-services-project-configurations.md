@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace projektu Azure pomocí více konfigurace služby | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat změnou ServiceDefinition.csdef, ServiceConfiguration.Local.cscfg a ServiceConfiguration.Cloud.cscfg souborů projektu Azure cloud service."
+title: Konfigurace projektu Azure pomocí více konfigurace služby | Microsoft Docs
+description: Zjistěte, jak nakonfigurovat změnou ServiceDefinition.csdef, ServiceConfiguration.Local.cscfg a ServiceConfiguration.Cloud.cscfg souborů projektu Azure cloud service.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: a4fb79ed-384f-4183-9f74-5cac257206b9
 ms.service: multiple
 ms.devlang: multiple
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2017
-ms.author: kraigb
-ms.openlocfilehash: 8125ef36f730b745d63c39493f48d14a5a33d76c
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.author: ghogen
+ms.openlocfilehash: 919568922ada2d842233ade029a54d474b4a1a0e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>Konfigurace projektu Azure v sadě Visual Studio používat více konfigurace služby
 
 Projektu Azure cloud service v sadě Visual Studio obsahuje tři konfigurační soubory: `ServiceDefinition.csdef`, `ServiceConfiguration.Local.cscfg`, a `ServiceConfiguration.Cloud.cscfg`:
 
-- `ServiceDefinition.csdef`nasazení do Azure k popisu požadavků Cloudová služba a její role a k poskytování nastavení, které se vztahují na všechny instance. Nastavení můžete přečíst v době běhu pomocí služby hostování modulu Runtime rozhraní API služby Azure. Tento soubor můžete aktualizovat v Azure, jenom v případě, že je Cloudová služba je zastavena.
-- `ServiceConfiguration.Local.cscfg`a `ServiceConfiguration.Cloud.cscfg` zadejte hodnoty pro nastavení v definici souboru a zadejte počet instancí pro jednotlivé role. Soubor "Local" obsahuje hodnoty používané v místní ladění. soubor "Cloud" je nasadit do Azure jako `ServiceConfiguration.cscfg` a poskytuje nastavení pro prostředí serveru. Tento soubor můžete aktualizovat, když cloudové služby běží v Azure.
+- `ServiceDefinition.csdef` nasazení do Azure k popisu požadavků Cloudová služba a její role a k poskytování nastavení, které se vztahují na všechny instance. Nastavení můžete přečíst v době běhu pomocí služby hostování modulu Runtime rozhraní API služby Azure. Tento soubor můžete aktualizovat v Azure, jenom v případě, že je Cloudová služba je zastavena.
+- `ServiceConfiguration.Local.cscfg` a `ServiceConfiguration.Cloud.cscfg` zadejte hodnoty pro nastavení v definici souboru a zadejte počet instancí pro jednotlivé role. Soubor "Local" obsahuje hodnoty používané v místní ladění. soubor "Cloud" je nasadit do Azure jako `ServiceConfiguration.cscfg` a poskytuje nastavení pro prostředí serveru. Tento soubor můžete aktualizovat, když cloudové služby běží v Azure.
 
 Nastavení konfigurace jsou spravovaná a upravovat v sadě Visual Studio pomocí stránky vlastností pro příslušné roli (klikněte pravým tlačítkem na roli a vyberte **vlastnosti**, nebo dvakrát kliknout na roli). Změny může být omezená na podle toho, která konfigurace je vybrán v **konfigurace služby** rozevíracího seznamu. Vlastnosti pro webové a pracovní role jsou podobné, s výjimkou kde popsané v následujících částech.
 
@@ -58,7 +58,7 @@ Pokud jste už přidali koncový bod HTTPS, ve výchozím nastavení je povolena
 
 Ve výchozím nastavení jsou diagnostiky povolené pro webovou roli. Účet služby Azure cloud projektu a úložiště jsou nastaveny na používat emulátor místního úložiště. Pokud budete chtít nasadit do Azure, můžete vybrat tlačítko Tvůrce (**...** ) místo toho použít úložiště Azure. Diagnostická data můžou přenášet k účtu úložiště na vyžádání nebo v automaticky naplánovaných intervalech. Další informace o Azure diagnostics najdete v tématu [povolení diagnostiky Azure Cloud Services a virtuálních počítačů](cloud-services/cloud-services-dotnet-diagnostics.md).
 
-## <a name="settings-page"></a>Nastavení stránky
+## <a name="settings-page"></a>Stránka Nastavení
 
 Na **nastavení** stránky, nastavení můžete přidat do konfigurace jako dvojice název hodnota. Kód spuštěný v roli může číst hodnoty nastavení konfigurace v době běhu pomocí třídy poskytované [spravované knihovny Azure](http://go.microsoft.com/fwlink?LinkID=171026), konkrétně [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx) metoda.
 

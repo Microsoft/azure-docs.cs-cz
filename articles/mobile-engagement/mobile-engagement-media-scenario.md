@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement implementace pro mediální aplikace"
-description: "Scénář aplikace média k implementaci Azure Mobile Engagement"
+title: Azure Mobile Engagement implementace pro mediální aplikace
+description: Scénář aplikace média k implementaci Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 48201cc8-4e04-485c-a8dc-d6406d23f3ed
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c1591c3e436981e621830916cf0cdc4b7f395d7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e5d4585b47a4ca26b81b7168aa499f25722415a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="implement-mobile-engagement-with-media-app"></a>Implementace s mediální aplikace Mobile Engagement
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 ## <a name="overview"></a>Přehled
 Jan je správcem mobilní projektu pro společnost big média. Zadá nedávno spuštění nové aplikace, který má stažení velmi vysoký počet. Zadá narazil na jeho cíle pro stahování, ale stále jeho vrátit na Investment(ROI) na uživatele nesplňuje požadavky na jeho. 
 
@@ -56,7 +60,7 @@ Na základě doporučení od týmu IT, byly přidány následující technické 
 Pro každý ukazatel KPI mu klasifikuje data, vyžaduje a mohl zaznamenává do příslušného umístění jeho scénářem.
 
 ## <a name="engagement-program-and-integration"></a>Integrace produktů a program zapojení
-Teď tento Jan dokončí, definování jeho klíčových ukazatelů výkonu, začne jeho fáze strategie zapojení definováním 4 programy zapojení a jejich cíle:![][1]
+Teď tento Jan dokončí, definování jeho klíčových ukazatelů výkonu, začne jeho fáze strategie zapojení definováním 4 programy zapojení a jejich cíle: ![][1]
 
 Jan přejde poté hlubší podle s podrobnostmi o nabízená oznámení pro každý program. Nabízená oznámení jsou definovány pět prvky:
 

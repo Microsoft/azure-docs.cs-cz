@@ -1,12 +1,11 @@
 ---
-title: "Výstup JSON pro Stream Analytics | Microsoft Docs"
-description: "Zjistěte, jak Stream Analytics můžete cílit na Azure Cosmos DB pro výstup JSON, archivace dat a nízkou latencí dotazy na nestrukturovaných dat JSON."
-keywords: "Výstup JSON"
-documentationcenter: 
+title: Výstup JSON pro Stream Analytics | Microsoft Docs
+description: Zjistěte, jak Stream Analytics můžete cílit na Azure Cosmos DB pro výstup JSON, archivace dat a nízkou latencí dotazy na nestrukturovaných dat JSON.
+keywords: Výstup JSON
+documentationcenter: ''
 services: stream-analytics,documentdb
 author: jseb225
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 5d2a61a6-0dbf-4f1b-80af-60a80eb25dd1
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 29be0f5100aabe8374a26e6548effe20ccb9ac86
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8bda2abda6f2b7207a5a7195c24b07da9089fb06
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="target-azure-cosmos-db-for-json-output-from-stream-analytics"></a>Cíl Azure Cosmos DB pro výstup JSON ze služby Stream Analytics
 Stream Analytics můžete cílit na [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) pro výstup JSON, povolení archivace a nízkou latencí dotazy dat na nestrukturovaných dat JSON. Tento dokument popisuje některé osvědčené postupy při implementaci této konfigurace.
@@ -69,5 +68,5 @@ Dělené kolekce | Více kolekcí "Jednoho oddílu"
 * **Vzor názvu** – název kolekce nebo jejich vzor pro kolekce, který se má použít. Formát názvu kolekce se dá vytvořit pomocí tokenu volitelná {partition}, na kterém oddíly začínají od 0. Ukázka platné vstupní hodnoty jsou následující:  
   1\) kolekce – jednu kolekci s názvem "Kolekce" musí existovat.  
   2\) kolekce {partition} – takových kolekcí, musí existovat – "MyCollection0", "MyCollection1", "MyCollection2" a tak dále.  
-* **Klíč oddílu** – volitelné. To je potřeba jenom Pokud používáte tokenu {partition} ve vzoru názvu vaší kolekce. Název pole ve výstupních událostech používaný k určení klíče pro rozdělení výstupu do kolekcí. Pro výstup jedinou kolekci všechny libovolný výstupního sloupce lze použít například ID oddílu.  
+* **Klíč oddílu** – volitelné. To je potřeba jenom Pokud používáte tokenu {partition} ve vzoru názvu vaší kolekce. Název pole ve výstupních událostech používaný k určení klíče pro rozdělení výstupu do kolekcí Pro výstup jedinou kolekci všechny libovolný výstupního sloupce lze použít například ID oddílu.  
 * **ID dokumentu** – volitelné. Název pole ve výstupních událostech používaný k určení primárního klíče, na které insert nebo update jsou založené operace.  

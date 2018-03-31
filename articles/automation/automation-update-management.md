@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e426f2b90e3ac3ac6bcb9825c7848c76e52a1021
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a7891e5bedb6e2ad3cba4780d38fc479d7b0bf4e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
@@ -119,7 +119,7 @@ Heartbeat
 
 Na počítači s Windows můžete zkontrolovat následující k ověření připojení agenta s analýzy protokolů:
 
-1.  V Ovládacích panelech otevřete agenta Microsoft Monitoring Agent a na kartě **Azure Log Analytics (OMS)** agent zobrazí zprávu: **The Microsoft Monitoring Agent has successfully connected to the Microsoft Operations Management Suite service** (Microsoft Monitoring Agent se úspěšně připojil ke službě Microsoft Operations Management Suite).   
+1.  Otevřete Microsoft Monitoring Agent v Ovládacích panelech a na **Azure Log Analytics** agenta na kartě zobrazí zpráva s oznámením: **Microsoft Monitoring Agent se úspěšně připojila k analýze protokolů** .   
 2.  Otevřete protokol událostí systému Windows, přejděte do **Application and Services Logs\Operations Manager** a vyhledejte ID události 3000 a 5002 ze zdrojového konektoru Service Connector. Tyto události znamenat počítač zaregistrován s pracovní prostor analýzy protokolů a přijímá konfigurace.  
 
 Pokud agenta není schopna komunikovat s analýzy protokolů a je nakonfigurován pro komunikaci přes internet prostřednictvím brány firewall nebo proxy server, potvrzení, brány firewall nebo proxy server byl správně nakonfigurován kontrolou [konfiguraci sítě pro Agent webu Windows](../log-analytics/log-analytics-agent-windows.md) nebo [konfiguraci sítě pro agenta systému Linux](../log-analytics/log-analytics-agent-linux.md).
@@ -131,7 +131,7 @@ Pokud agenta není schopna komunikovat s analýzy protokolů a je nakonfigurová
 
 Stav nově přidaných agentů systému Linux bude po provedení vyhodnocení **Aktualizovaný**. Tento proces může trvat až 6 hodin.
 
-Pokud chcete potvrdit skupinu správy nástroje Operations Manager komunikuje s analýzy protokolů, najdete v části [ověření integrace nástroje Operations Manager s OMS](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms).
+Pokud chcete potvrdit skupinu správy nástroje Operations Manager komunikuje s analýzy protokolů, najdete v části [ověření integrace nástroje Operations Manager s analýzy protokolů](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms).
 
 ## <a name="data-collection"></a>Shromažďování dat
 
@@ -173,7 +173,7 @@ Klikněte na tlačítko **chybějící aktualizace** Chcete-li zobrazit seznam a
 
 ## <a name="viewing-update-deployments"></a>Zobrazení nasazení aktualizace
 
-Klikněte na tlačítko **nasazení aktualizací** pro zobrazení seznamu existující nasazení aktualizací. Kliknutím na některé z nasazení aktualizace v seznamu otevře **aktualizace spustit nasazení** stránky pro toto nasazení aktualizace.
+Klikněte **nasazení aktualizací** zobrazíte seznam existující nasazení aktualizací. Kliknutím na některé z nasazení aktualizace v tabulce otevře **aktualizace spustit nasazení** stránky pro toto nasazení aktualizace.
 
 ![Přehled výsledků nasazení aktualizace](./media/automation-update-management/update-deployment-run.png)
 
@@ -213,7 +213,7 @@ Následující tabulka obsahuje ukázkový protokol hledání aktualizace zázna
 
 Zákazníci, kteří investovali do System Center Configuration Manageru pro správu počítačů, serverů a mobilních zařízení využívají jeho odolnost a další přednosti také při správě aktualizací softwaru jako součást cyklu správy softwarových aktualizací (SUM).
 
-Zjistěte, jak integrovat řešení OMS Správa aktualizací pomocí nástroje System Center Configuration Manager, najdete v tématu [integraci se System Center Configuration Manager pomocí správy aktualizací OMS](oms-solution-updatemgmt-sccmintegration.md).
+Další informace o integraci do řešení pro správu pomocí nástroje System Center Configuration Manager naleznete v tématu [integraci se System Center Configuration Manager pomocí správy aktualizací](oms-solution-updatemgmt-sccmintegration.md).
 
 ## <a name="patching-linux-machines"></a>Opravy počítače se systémem Linux
 

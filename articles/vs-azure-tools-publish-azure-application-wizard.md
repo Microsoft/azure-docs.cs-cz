@@ -1,11 +1,11 @@
 ---
-title: "Pomocí sady Visual Studio aplikaci Azure Průvodce publikováním | Microsoft Docs"
-description: "Zjistěte, jak konfigurovat nastavení na různé Visual Studio Průvodci publikováním aplikace Azure"
+title: Pomocí sady Visual Studio aplikaci Azure Průvodce publikováním | Microsoft Docs
+description: Zjistěte, jak konfigurovat nastavení na různé Visual Studio Průvodci publikováním aplikace Azure
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 7d8f1ac9-e439-47e0-a183-0642c4ea1920
 ms.service: multiple
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2017
-ms.author: kraigb
-ms.openlocfilehash: d29cae9710cc9c01dae09e8fd8273ac30dd61827
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: ghogen
+ms.openlocfilehash: 980809bc62f7766971ea4753e1cfb165aa1cffc2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-the-visual-studio-publish-azure-application-wizard"></a>Pomocí sady Visual Studio aplikaci Azure Průvodce publikováním
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vinagara
-ms.openlocfilehash: 76b7481223566f16a5da8c08d9d76f2bdb6b542a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5e8a66214efc27e8e59da354e54d68bb48d274cc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="initiate-extending-alerts-from-oms-into-azure"></a>Zahájit rozšíření výstrahy od OMS do Azure
 Od **23 duben 2018**, všechny zákazníky používající výstrahy, které jsou nakonfigurované v [Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), bude rozšířeno do Azure. Výstrahy, které jsou rozšířené Azure chovají stejným způsobem jako v OMS. Možnosti monitorování zůstanou beze změn. Rozšíření výstrahy vytvořené v OMS do Azure poskytuje řadu výhod. Další informace o výhodách a proces prodloužení výstrahy od OMS do Azure najdete v tématu [rozšířit výstrahy z OMS Azure](monitoring-alerts-extend.md).
@@ -155,7 +155,7 @@ Pokud je požadavek POST úspěšné, musí vrátit odpovědi 200 OK spolu s:
     "version": 2
 }
 ```
-Indikující, že výstrahy se rozšířily do Azure, podle verze 2. Tato verze je jenom pro kontrolu, pokud výstrahy se rozšířily do Azure a mít žádný vliv využití s [Log Analytics vyhledávání API](../log-analytics/log-analytics-api-alerts.md). Jakmile výstrahy jsou rozšířené úspěšně do Azure, získají všechny uživatele, kteří s rolí správce a Přispěvatel v pracovním prostoru e-mail s podrobnosti o změnách provést.
+Indikující, že výstrahy se rozšířily do Azure, podle verze 2. Tato verze je jenom pro kontrolu, pokud výstrahy se rozšířily do Azure a mít žádný vliv využití s [Log Analytics vyhledávání API](../log-analytics/log-analytics-api-alerts.md). Jakmile výstrahy jsou rozšířené úspěšně do Azure, všechny e-mailové adresy zadané během GET zašle sestavu s podrobnostmi provést změny.
 
 
 A nakonec, pokud všechny výstrahy v pracovním prostoru zadaný již naplánované na Azure – odpověď na hodnotu POST bude 403 Zakázáno.

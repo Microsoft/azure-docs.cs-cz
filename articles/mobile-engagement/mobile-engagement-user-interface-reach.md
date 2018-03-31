@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní - Reach"
-description: "Zjistěte, jak k oslovení uživatelů vaší aplikace pomocí nabízených oznámení pomocí Azure Mobile Engagement"
+title: Azure Mobile Engagement uživatelské rozhraní - Reach
+description: Zjistěte, jak k oslovení uživatelů vaší aplikace pomocí nabízených oznámení pomocí Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d96e2590-08dd-4481-a352-2c18f26a1643
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ce30456e41ff1a2f4824bcb64246ee115fdd1ef7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d999b83df7d9d467f08ce8ec72468c738e8acfa5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-reach-out-to-the-users-of-your-application-with-push-notifications"></a>Postup oslovení uživatelů vaší aplikace pomocí nabízených oznámení
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tento článek popisuje **dosáhnout** kartě **Mobile Engagement** portálu. Můžete použít **Mobile Engagement** portálu ke sledování a správě mobilních aplikací. Všimněte si, že pokud chcete začít používat portál musíte nejprve vytvořit **Azure Mobile Engagement** účtu. Další informace najdete v tématu [vytvoření účtu Azure Mobile Engagement](mobile-engagement-create.md).
 
 Části Reach uživatelské rozhraní je nástroj správy kampaň nabízených kde můžete vytvořit nebo upravit nebo aktivovat nebo dokončit nebo monitorování a získat statistiky kampaní nabízených oznámení a funkce, které lze také přistupovat přes rozhraní Reach API (a některé prvky nízkou úroveň Push rozhraní API) . Mějte na paměti, jestli používáte rozhraní API nebo uživatelského rozhraní, bude potřeba integrovat Azure Mobile Engagement a Reach do své aplikace pro každou platformu sadou SDK, abyste mohli používat kampaně Reach.
@@ -80,7 +84,7 @@ Klikněte na **statistiky** a zobrazit podrobnosti kampaně Reach. **Jednoduché
 
 ![Reach2][19]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Koncepty][Link 6]
 * [Řešení potíží s příručce služby][Link 24]
 

@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s fronty úložiště a Visual Studio připojené služeb (webové úlohy projekty) | Microsoft Docs"
-description: "Jak začít pracovat po připojení k účtu úložiště pomocí sady Visual Studio pomocí Azure Queue storage v projektu webové úlohy připojený služby."
+title: Začínáme s fronty úložiště a Visual Studio připojené služeb (webové úlohy projekty) | Microsoft Docs
+description: Jak začít pracovat po připojení k účtu úložiště pomocí sady Visual Studio pomocí Azure Queue storage v projektu webové úlohy připojený služby.
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: kraigb
-ms.openlocfilehash: efd2f1e471f67396d35f11f2eb1044a8afa469af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 52c089d2657d61ee42730a00def060dec74439fc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Queue storage a Visual Studio připojené služeb (webové úlohy projekty)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -79,9 +79,9 @@ Asynchronní funkce může trvat [token zrušení](http://www.asp.net/mvc/overvi
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>Typy atribut QueueTrigger pracuje s
 Můžete použít **QueueTrigger** s následujícími typy:
 
-* **řetězec**
+* **Řetězec**
 * Typ objektů POCO serializovanou jako JSON
-* **Byte]**
+* **byte[]**
 * **CloudQueueMessage**
 
 ## <a name="polling-algorithm"></a>Algoritmus dotazování
@@ -300,9 +300,9 @@ Pokud potřebujete nějakou práci ve vašem funkci před vazby objektu blob na 
 * **TextWriter**
 * **řetězec** (přečíst)
 * **na řetězce** (zapisovat; vytvoří objekt blob jenom v případě, že parametr řetězce je jinou hodnotu než null, pokud funkce vrátí hodnotu)
-* Objektů POCO (čtení)
+* POCO (read)
 * out objektů POCO (zápisu; vždycky vytvoří objekt blob, vytvoří jako objektu null, pokud parametr objektů POCO má hodnotu null, pokud funkce vrátí hodnotu)
-* **CloudBlobStream** (zápisu)
+* **CloudBlobStream** (write)
 * **ICloudBlob** (čtení nebo zápisu)
 * **CloudBlockBlob** (čtení nebo zápisu)
 * **CloudPageBlob** (čtení nebo zápisu)
@@ -511,6 +511,6 @@ A v tabulce Azure **Console.Out** a **Console.Error** protokoly vypadat takto:
 
 ![Protokol chyb v tabulce](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Tento článek poskytl ukázek kódu, které ukazují, jak zpracovat běžné scénáře pro práci s Azure fronty. Další informace o tom, jak používat Azure WebJobs a WebJobs SDK najdete v tématu [zdrojů dokumentace Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 

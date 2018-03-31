@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní - Reach kritérium"
-description: "Další informace o použití cílení kritéria odeslat nabízené kampaně vyberte podmnožině uživatelů pomocí Azure Mobile Engagement"
+title: Azure Mobile Engagement uživatelské rozhraní - Reach kritérium
+description: Další informace o použití cílení kritéria odeslat nabízené kampaně vyberte podmnožině uživatelů pomocí Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a4ed03a0-55b1-4dd8-b0bd-c475005afb66
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 803b44721d0ab1ac7b5a8074e18857fc57adb724
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2adf473c6acea0f128eb14e2616748ff29d5d762
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-targeting-criteria-to-send-push-campaigns-to-a-select-subset-of-your-users"></a>Jak používat cílení kritéria k odesílat nabízené kampaně vyberte podmnožinu uživatelů
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Cílení na cílovou skupinu podle konkrétních kritérií pomocí tlačítka "Nová kritéria" je jedním z nejúčinnějších koncepty v Azure Mobile Engagement, pomáhá odešlete relevantní nabízená oznámení zákazníků bude odpovídat místo everyone spamu. Můžete omezit na základě kritérií standardní cílovou skupinu a simulovat nabízených oznámení k určení, kolik lidí obdrží oznámení.
 
 **Viz také:**

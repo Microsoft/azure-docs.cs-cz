@@ -1,13 +1,11 @@
 ---
-title: "Publikování webové aplikace na virtuální počítač Azure ze sady Visual Studio | Microsoft Docs"
-description: "Publikování aplikace technologie ASP.NET pro virtuální počítač Azure ze sady Visual Studio"
+title: Publikování webové aplikace na virtuální počítač Azure ze sady Visual Studio | Microsoft Docs
+description: Publikování aplikace technologie ASP.NET pro virtuální počítač Azure ze sady Visual Studio
 services: virtual-machines-windows
-documentationcenter: 
-author:
-- kraigb
-- justcla
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 tags: azure-service-management
 ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
 ms.service: virtual-machines-windows
@@ -16,14 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2017
-ms.author:
-- kraigb
-- justcla
-ms.openlocfilehash: 74ac1f27620e4871c3c6972baa949c64d850fe4c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: ghogen
+ms.openlocfilehash: f236a00ef86f58d4d266a19d74485984d9ddb691
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikování aplikace technologie ASP.NET pro virtuální počítač Azure ze sady Visual Studio
 
@@ -115,7 +111,7 @@ Vaše nastavení by měl vypadat přibližně takto:
 
 ![Nastavení – stránka Nastavení publikování]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 ### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Nastavení položky konfigurace nebo CD pro automatické nasazení do virtuálního počítače Azure
 

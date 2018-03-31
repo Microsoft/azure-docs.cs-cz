@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: cshoe
-ms.openlocfilehash: e0a398075b01b3c3750a33a9dd74b5ad1c0f71fd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 73353d3b27b65298d804a138b33cdf2de23726fe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-storage-security-guide"></a>Průvodce zabezpečením služby Azure Storage
 
@@ -357,7 +357,7 @@ Tato funkce zajišťuje, že všechna data na disky virtuálního počítače je
 
 #### <a name="iaas-vms-and-their-vhd-files"></a>Virtuální počítače IaaS a jejich soubory virtuálního pevného disku
 
-Pro datové disky používat virtuální počítače IaaS se doporučuje Azure Disk Encryption. Pokud vytvoříte virtuální počítač pomocí bitovou kopii z Azure Marketplace, provede Azure [Nedávná kopie](https://en.wikipedia.org/wiki/Object_copying) bitové kopie do úložiště není šifrován účtu v Azure Storage ale i v případě, že máte SSE povoleno. Po vytvoří virtuální počítač a spustí aktualizaci bitové kopie, začne SSE šifrování data. Z tohoto důvodu je nejvhodnější použít Azure Disk Encryption na virtuálních počítačích, které jsou vytvořené z bitových kopií v Azure Marketplace, pokud chcete, aby je plně zašifrované.
+Pro datové disky používat virtuální počítače IaaS se doporučuje Azure Disk Encryption. Pokud vytvoříte virtuální počítač s využitím obrázku z Azure Marketplace nespravované disky, provede Azure [Nedávná kopie](https://en.wikipedia.org/wiki/Object_copying) bitové kopie do úložiště není šifrován účtu v Azure Storage ale i v případě, že máte SSE povoleno. Po vytvoří virtuální počítač a spustí aktualizaci bitové kopie, začne SSE šifrování data. Z tohoto důvodu je nejvhodnější použít Azure Disk Encryption na virtuálních počítačích s nespravované disky vytvořené z bitových kopií v Azure Marketplace, pokud chcete, aby je plně zašifrované. Pokud vytvoříte virtuální počítač s spravované disky, SSE šifruje všechna data ve výchozím nastavení pomocí platformy spravované klíče. 
 
 Pokud aktivujete předem šifrované virtuálních počítačů do Azure z místního, bude možné nahrát šifrovací klíče do Azure Key Vault a pokračovat v používání šifrování pro tento virtuální počítač, že jste používali místní. Azure Disk Encryption zapnutá tohoto scénáře.
 

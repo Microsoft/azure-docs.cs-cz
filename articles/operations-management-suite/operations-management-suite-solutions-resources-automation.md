@@ -1,8 +1,8 @@
 ---
-title: "Prostředky služby Azure Automation v OMS řešení | Microsoft Docs"
-description: "Řešení v OMS by měl obvykle zahrnovat sady runbook ve službě Azure Automation k automatizaci procesů, jako je shromažďování a zpracování dat monitorování.  Tento článek popisuje, jak se zahrnuje sady runbook a jejich související prostředky v řešení."
+title: Prostředky služby Azure Automation v řešení pro správu | Microsoft Docs
+description: Řešení pro správu by měl obvykle zahrnovat sady runbook ve službě Azure Automation k automatizaci procesů, jako je shromažďování a zpracování dat monitorování.  Tento článek popisuje, jak se zahrnuje sady runbook a jejich související prostředky v řešení.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1097b1ddd2e8f2fae0ffc809aee63be5c2ed4cb1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5750cd1147ec861ea38ff2ebc9ce481d256c1959
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>Přidání prostředky Azure Automation OMS řešení pro správu (Preview)
+# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Přidání prostředky Azure Automation do řešení pro správu (Preview)
 > [!NOTE]
-> Toto je předběžná dokumentace pro vytváření řešení pro správu v OMS, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.   
+> Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.   
 
 
-[Řešení pro správu v OMS](operations-management-suite-solutions.md) by měl obvykle zahrnovat sady runbook ve službě Azure Automation k automatizaci procesů, jako je shromažďování a zpracování dat monitorování.  Účty Automation kromě sady runbook, obsahuje prostředky, jako jsou proměnné a plány, které podporují sady runbook používá v řešení.  Tento článek popisuje, jak se zahrnuje sady runbook a jejich související prostředky v řešení.
+[Řešení pro správu](operations-management-suite-solutions.md) by měl obvykle zahrnovat sady runbook ve službě Azure Automation k automatizaci procesů, jako je shromažďování a zpracování dat monitorování.  Účty Automation kromě sady runbook, obsahuje prostředky, jako jsou proměnné a plány, které podporují sady runbook používá v řešení.  Tento článek popisuje, jak se zahrnuje sady runbook a jejich související prostředky v řešení.
 
 > [!NOTE]
-> Ukázky v tomto článku použít parametry a proměnné, které jsou nutné nebo společné pro řešení pro správu a jsou popsány v [vytváření řešení pro správu v Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md) 
+> Ukázky v tomto článku použít parametry a proměnné, které jsou nutné nebo společné pro řešení pro správu a jsou popsány v [návrhu a sestavení řešení pro správu v Azure ](operations-management-suite-solutions-creating.md) 
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -40,7 +40,7 @@ Tento článek předpokládá, že jste již obeznámeni s následujícími info
 - Postup [vytváření šablon Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>Účet Automation
-Všechny prostředky ve službě Azure Automation jsou součástí [účet Automation](../automation/automation-security-overview.md#automation-account-overview).  Jak je popsáno v [OMS pracovní prostor a účet Automation](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) účet Automation není zahrnutý v řešení pro správu, ale musí existovat před instalací řešení.  Pokud není k dispozici, se nezdaří instalace řešení.
+Všechny prostředky ve službě Azure Automation jsou součástí [účet Automation](../automation/automation-security-overview.md#automation-account-overview).  Jak je popsáno v [og pracovní prostor analýzy a účet Automation](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) účet Automation není zahrnutý v řešení pro správu, ale musí existovat před instalací řešení.  Pokud není k dispozici, se nezdaří instalace řešení.
 
 Název každého prostředku automatizace obsahuje název svůj účet Automation.  To se provádí v řešení s **accountName** parametr jako v následujícím příkladu runbook prostředku.
 
@@ -118,7 +118,7 @@ Vlastnosti pro automatizaci úloh jsou popsané v následující tabulce.
 
 Úloha obsahuje název sady runbook a všechny hodnoty parametrů pro odeslání do runbooku.  Úloha by měla [závisí na](operations-management-suite-solutions-solution-file.md#resources) před úlohy je třeba vytvořit runbook, která se spouští od runbooku.  Pokud máte více sad runbook, který by měl být spuštěn můžete definovat jejich pořadí tak, že úloha závisí na jiné úlohy, které by měl být spuštěn první.
 
-Název prostředku úlohy musí obsahovat identifikátor GUID, který je obvykle přiřadila parametr.  Další informace o parametrech identifikátor GUID v [vytváření řešení v Operations Management Suite (OMS)](operations-management-suite-solutions-solution-file.md#parameters).  
+Název prostředku úlohy musí obsahovat identifikátor GUID, který je obvykle přiřadila parametr.  Další informace o parametrech identifikátor GUID v [vytvoření souboru sady management řešení v Azure](operations-management-suite-solutions-solution-file.md#parameters).  
 
 
 ## <a name="certificates"></a>Certifikáty

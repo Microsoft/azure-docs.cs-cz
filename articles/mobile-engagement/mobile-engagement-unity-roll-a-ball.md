@@ -1,11 +1,11 @@
 ---
-title: "Vrácení Unity míč kurzu"
-description: "Postup vytvoření klasického Unity vrátit míč hra, který je nezbytný předpoklad pro všechny kurzy Mobile Engagement Unity"
+title: Vrácení Unity míč kurzu
+description: Postup vytvoření klasického Unity vrátit míč hra, který je nezbytný předpoklad pro všechny kurzy Mobile Engagement Unity
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0afd0eca-f74a-43aa-bba8-436a0265c312
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52d5962645b1408fdba61ec1bf4e4f682b80905b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a id="unity-roll-a-ball"></a>Vytvoření Unity vrátit míč hry
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tento kurz vás provede hlavní kroky pro mírně upravenou [Unity vrátit míč kurzu](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial). Tato ukázka hra se skládá z kulovým 'player, objekt, který řídí uživatele aplikace a hry cílem je, shromažďování' collectible objekty podle kolize objektu player se tyto collectible objekty. Toto předpokládá základní znalost prostředí editor Unity. Pokud narazíte na problémy s pak naleznete v úplné kurzu. 
 
 ### <a name="setting-up-the-game"></a>Nastavení hra

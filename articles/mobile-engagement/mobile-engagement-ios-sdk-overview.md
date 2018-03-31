@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement iOS SDK přehled | Microsoft Docs"
-description: "Nejnovější aktualizace a postupy pro iOS SDK pro Azure Mobile Engagement"
+title: Azure Mobile Engagement iOS SDK přehled | Microsoft Docs
+description: Nejnovější aktualizace a postupy pro iOS SDK pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3a03bbd6-bcf8-436c-9775-5a8188629252
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.openlocfilehash: 6acd343782a3ee07750e27ec3022ff81cedfadee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c9d2ddeacd1d05142019f22eedf4eb3bb4f06cd
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="ios-sdk-for-azure-mobile-engagement"></a>iOS SDK pro Azure Mobile Engagement
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Chcete-li získat všechny podrobnosti o tom, jak integrovat Azure Mobile Engagement v aplikaci pro iOS, začněte zde. Pokud chcete a vyzkoušejte ho nejdřív, ujistěte se, můžete udělat naše [15 minut kurzu](mobile-engagement-ios-get-started.md).
 
 Kliknutím zobrazíte [SDK obsahu](mobile-engagement-ios-sdk-content.md)
@@ -69,7 +73,7 @@ XCode 8 je povinný, od verze 4.0.0 sady SDK.
 #### <a name="usernotifications-framework"></a>UserNotifications framework
 Je nutné přidat `UserNotifications` framework ve vašem fáze buildu.
 
-v prohlížeči projektu otevřete podokno váš projekt a vyberte správný cíl. Potom otevřete **"Fáze sestavení"** kartě a v **"Odkaz binárních souborů a knihoven"** nabídce Přidat framework `UserNotifications.framework` -nastavit odkaz jako`Optional`
+v prohlížeči projektu otevřete podokno váš projekt a vyberte správný cíl. Potom otevřete **"Fáze sestavení"** kartě a v **"Odkaz binárních souborů a knihoven"** nabídce Přidat framework `UserNotifications.framework` -nastavit odkaz jako `Optional`
 
 #### <a name="application-push-capability"></a>Funkce nabízené aplikace
 XCode 8 může resetovat vaše aplikace push schopnosti, Překontrolujte ji prosím `capability` kartě vybraný cílový.

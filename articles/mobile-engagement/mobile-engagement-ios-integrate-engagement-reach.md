@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement iOS dosáhnout integraci sady SDK | Microsoft Docs"
-description: "Nejnovější aktualizace a postupy pro iOS SDK pro Azure Mobile Engagement"
+title: Azure Mobile Engagement iOS dosáhnout integraci sady SDK | Microsoft Docs
+description: Nejnovější aktualizace a postupy pro iOS SDK pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1f5f5857-867c-40c5-9d76-675a343a0296
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-ms.openlocfilehash: ba74e0c442ac10f096d465f989e03d2ceae8cd88
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d531f5850e8f7f352774f5894285402bd4cc53e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-reach-on-ios"></a>Jak integrovat Engagement Reach v systému iOS
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Je třeba provést postup integrace popsaný v tématu [jak integrovat Engagement iOS dokumentu](mobile-engagement-ios-integrate-engagement.md) před těchto pokynů.
 
 Tato dokumentace vyžaduje XCode 8. Pokud jste ve skutečnosti závisí na XCode 7 pak můžete použít [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh). Je známého problému na tato předchozí verze při spuštění v zařízení s iOS 10: systémová oznámení nejsou reagovali. Chcete-li tomu máte k implementaci nepoužívané rozhraní API `application:didReceiveRemoteNotification:` ve vaší aplikaci delegovat následujícím způsobem:
@@ -267,7 +271,7 @@ Chcete-li zaregistrovat kategorie obslužnou rutinu pro oznámení, přidejte vo
     [reach registerNotifier:myNotifier forCategory:@"my_category"];
     ...
 
-`myNotifier`musí být instancí objektu, který vyhovuje protokolu `AENotifier`.
+`myNotifier` musí být instancí objektu, který vyhovuje protokolu `AENotifier`.
 
 Můžete implementovat metodu protokolu pomocí sami nebo můžete přeimplementovat existující třída `AEDefaultNotifier` kterém již provádí většinu činností.
 
@@ -292,8 +296,8 @@ Tento jednoduchý příklad kategorie Předpokládejme, že máte soubor s názv
 Soubor poskytnutý nib by měly dodržovat následující pravidla:
 
 * Měl by obsahovat pouze jedno zobrazení.
-* Dílčích zobrazení by měl být typů stejné jako ty, které v zadané nib souboru s názvem`AENotificationView.xib`
-* Dílčích zobrazení musí mít stejné značky jako ty, které uvnitř poskytnutého nib soubor s názvem`AENotificationView.xib`
+* Dílčích zobrazení by měl být typů stejné jako ty, které v zadané nib souboru s názvem `AENotificationView.xib`
+* Dílčích zobrazení musí mít stejné značky jako ty, které uvnitř poskytnutého nib soubor s názvem `AENotificationView.xib`
 
 > [!TIP]
 > Jednoduše zkopírujete soubor zadaný nib, s názvem `AENotificationView.xib`a mohli začít pracovat z ní. Ale buďte opatrní, zobrazení uvnitř tohoto souboru nib je přidružena k třídě `AENotificationView`. Tato třída předefinovat metodu `layoutSubViews` přesouvat a měnit velikost jeho dílčích zobrazení podle kontextu. Můžete chtít nahraďte ho `UIView` nebo vlastní zobrazení třída.
@@ -344,7 +348,7 @@ Můžete rozhodnout pro zahrnutí naše rozložení oznámení do vaší stávaj
        notificationView.tag = NOTIFICATION_AREA_VIEW_TAG;
        [self.view addSubview:notificationView];
 
-`NOTIFICATION_AREA_VIEW_TAG`Makro lze nalézt v `AEDefaultNotifier.h`.
+`NOTIFICATION_AREA_VIEW_TAG` Makro lze nalézt v `AEDefaultNotifier.h`.
 
 > [!NOTE]
 > Výchozí oznamovatel automaticky zjistí, že rozložení oznámení je zahrnuta v tomto zobrazení a nebude pro něj přidat překrytí.

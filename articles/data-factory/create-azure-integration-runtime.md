@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: douglasl
-ms.openlocfilehash: e2ebb3db4d51bf4ec1dea4f2f5cc4cc9dcb2ad70
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: db757c5a8a1b51278ada24a5ff50a2da1b357397
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Jak vytvořit a nakonfigurovat Runtime integrace Azure
 Integrační modul Runtime (IR) je na výpočetní infrastruktuře používá k zajištění funkce integrace dat různých prostředích sítě Azure Data Factory. Další informace o IR najdete v tématu [integrace runtime](concepts-integration-runtime.md).
@@ -29,7 +29,7 @@ Azure IR poskytuje plně spravovaná výpočetní nativně provést přesun a od
 Tento dokument uvádí, jak můžete vytvořit a nakonfigurovat Runtime integrace Azure. 
 
 ## <a name="default-azure-ir"></a>Výchozí Azure reakcí na Incidenty
-Ve výchozím nastavení má každý objekt pro vytváření dat Reakcí Azure v back-end, který podporuje operace v cloudu ukládá data a výpočetní služby ve veřejné síti. Umístění této IR Azure je automaticky vyřešit. Pokud **connectVia** vlastnost není zadaný v definici propojené služby se používá zadaný IR Azure. Potřebujete jenom explicitně vytvořit Reakcí Azure, když chcete explicitně definujte umístění reakcí na Incidenty, nebo pokud byste chtěli prakticky skupiny spuštěních aktivity na jiné finanční úřad za účelem správy. 
+Ve výchozím nastavení má každý objekt pro vytváření dat Reakcí Azure v back-end, který podporuje operace v cloudu ukládá data a výpočetní služby ve veřejné síti. Umístění této IR Azure je automaticky vyřešit. Pokud **connectVia** vlastnost není zadaný v definici propojené služby, výchozí hodnota se používá Azure reakcí na Incidenty. Potřebujete jenom explicitně vytvořit Reakcí Azure, když chcete explicitně definujte umístění reakcí na Incidenty, nebo pokud byste chtěli prakticky skupiny spuštěních aktivity na jiné finanční úřad za účelem správy. 
 
 ## <a name="create-azure-ir"></a>Vytvoření Azure reakcí na Incidenty
 Integrace Runtime lze vytvořit pomocí **Set-AzureRmDataFactoryV2IntegrationRuntime** rutiny prostředí PowerShell. Chcete-li vytvořit Reakcí Azure, zadáte název, umístění a typ k příkazu. Zde je ukázka příkazu k vytvoření služby Azure IR umístění nastavena na "Západní Evropa":

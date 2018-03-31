@@ -1,11 +1,11 @@
 ---
-title: "Testování výkonu cloudové služby | Microsoft Docs"
-description: "Testování výkonu pomocí sady Visual Studio profiler cloudové služby"
+title: Testování výkonu cloudové služby | Microsoft Docs
+description: Testování výkonu pomocí sady Visual Studio profiler cloudové služby
 services: visual-studio-online
 documentationcenter: n/a
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: 7a5501aa-f92c-457c-af9b-92ea50914e24
 ms.service: visual-studio-online
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: 483b8b1c7c75c407cb55a1b3b027ae043c506ebb
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 74ffd70bdb204cee75b86a1e922ac67873a88758
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="testing-the-performance-of-a-cloud-service"></a>Testování výkonu cloudové služby
 ## <a name="overview"></a>Přehled
@@ -106,10 +106,10 @@ Relace profilování se vytvoří pro každou instanci role v rámci cloudové s
 2. Zvolte Azure výpočetní uzel a pak vyberte uzel nasazení Azure pro cloudovou službu, která jste vybrali profil, když jste publikovali ze sady Visual Studio.
 3. K zobrazení sestav profilace pro instanci, vyberte roli v rámci služby, otevřete místní nabídku pro konkrétní instanci a zvolte **zobrazit sestavu profilace**.
    
-    Sestavy, soubor .vsp je nyní stáhne z Azure a stavu stahování, zobrazí se v protokolu aktivit Azure. Po dokončení stahování profilování sestavy se zobrazí na kartě v editoru pro sadu Visual Studio s názvem <Role name>  *<Instance Number>*  <identifier>.vsp. Zobrazí se souhrn dat pro sestavu.
+    Sestavy, soubor .vsp je nyní stáhne z Azure a stavu stahování, zobrazí se v protokolu aktivit Azure. Po dokončení stahování profilování sestavy se zobrazí na kartě v editoru pro sadu Visual Studio s názvem <Role name> *<Instance Number>* <identifier>.vsp. Zobrazí se souhrn dat pro sestavu.
 4. Pokud chcete zobrazit různá zobrazení sestavy, v seznamu aktuální zobrazení, vyberte typ zobrazení, které chcete. Další informace najdete v tématu [zobrazeních sestav nástrojů pro profilaci](https://msdn.microsoft.com/library/azure/bb385755.aspx).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Ladění cloudové služby](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
 [Publikování do cloudové služby Azure ze sady Visual Studio](https://msdn.microsoft.com/library/azure/ee460772.aspx)

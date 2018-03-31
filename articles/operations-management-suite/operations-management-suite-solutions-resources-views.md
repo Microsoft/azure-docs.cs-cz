@@ -1,8 +1,8 @@
 ---
-title: "Zobrazení v řešení pro správu Operations Management Suite (OMS) | Microsoft Docs"
-description: "Řešení pro správu v Operations Management Suite (OMS) bude obvykle obsahovat jedno nebo více zobrazení, která bude vizualizovat data.  Tento článek popisuje, jak exportovat zobrazení vytvořené pomocí návrháře zobrazení a její zahrnutí do řešení pro správu. "
+title: Zobrazení v řešení pro správu | Microsoft Docs
+description: 'Řešení pro správu bude obvykle obsahovat jedno nebo více zobrazení, která bude vizualizovat data.  Tento článek popisuje, jak exportovat zobrazení vytvořené pomocí návrháře zobrazení a její zahrnutí do řešení pro správu. '
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: c103ee748446c4819b7925af04d90c22225a21a3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: b44763fe67b1c70c0b6ecdff73c32d8bb4fab3a4
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Zobrazení v řešení pro správu Operations Management Suite (OMS) (Preview)
+# <a name="views-in-management-solutions-preview"></a>Zobrazení v řešení pro správu (Preview)
 > [!NOTE]
-> Toto je předběžná dokumentace pro vytváření řešení pro správu v OMS, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.    
->
->
+> Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.    
 
-[Řešení pro správu v Operations Management Suite (OMS)](operations-management-suite-solutions.md) bude obvykle obsahovat jedno nebo více zobrazení, která bude vizualizovat data.  Tento článek popisuje, jak exportovat zobrazení vytvořené [Návrhář zobrazení](../log-analytics/log-analytics-view-designer.md) a její zahrnutí do řešení pro správu.  
+
+[Řešení pro správu](operations-management-suite-solutions.md) bude obvykle obsahovat jedno nebo více zobrazení, která bude vizualizovat data.  Tento článek popisuje, jak exportovat zobrazení vytvořené [Návrhář zobrazení](../log-analytics/log-analytics-view-designer.md) a její zahrnutí do řešení pro správu.  
 
 > [!NOTE]
-> Ukázky v tomto článku použít parametry a proměnné, které jsou nutné nebo společné pro řešení pro správu a jsou popsány v [vytváření řešení pro správu v Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md)
+> Ukázky v tomto článku použít parametry a proměnné, které jsou nutné nebo společné pro řešení pro správu a jsou popsány v [návrhu a sestavení řešení pro správu v Azure](operations-management-suite-solutions-creating.md)
 >
 >
 
@@ -48,7 +47,7 @@ Základní postup se zobrazení přidat do řešení se následujícím způsobe
 ## <a name="export-the-view-to-a-file"></a>Zobrazení exportovat do souboru
 Postupujte podle pokynů v [Návrhář zobrazení Log Analytics](../log-analytics/log-analytics-view-designer.md) zobrazení exportovat do souboru.  Exportovaný soubor bude ve formátu JSON se stejným [elementy jako soubor řešení](operations-management-suite-solutions-solution-file.md).  
 
-**Prostředky** prvek zobrazení souboru bude mít prostředek s typem **Microsoft.OperationalInsights/workspaces** představující pracovním prostorem OMS.  Tento prvek bude mít dílčí prvek s typem **zobrazení** , představuje zobrazení a obsahuje podrobné konfiguraci.  Bude kopírovat podrobnosti tohoto elementu a zkopírujte jej do řešení.
+**Prostředky** prvek zobrazení souboru bude mít prostředek s typem **Microsoft.OperationalInsights/workspaces** představující pracovní prostor analýzy protokolů.  Tento prvek bude mít dílčí prvek s typem **zobrazení** , představuje zobrazení a obsahuje podrobné konfiguraci.  Bude kopírovat podrobnosti tohoto elementu a zkopírujte jej do řešení.
 
 ## <a name="create-the-view-resource-in-the-solution"></a>Vytvořte prostředek zobrazení v řešení
 Přidejte následující zobrazení prostředek, který **prostředky** element souboru řešení.  Tato služba využívá proměnné, které jsou popsané níže, musíte taky přidat.  Všimněte si, že **řídicí panel** a **OverviewTile** vlastnosti jsou zástupné symboly, které bude přepsat odpovídající vlastnosti ze zobrazení exportovaného souboru.
@@ -97,7 +96,7 @@ Všechny prostředky analýzy protokolů, které jsou definované v šabloně Re
 | Verze pracovního prostoru | Verze API | Dotaz |
 |:---|:---|:---|
 | V1 (starší)   | 2015-11-01-preview | Starší verze formátu.<br> Příklad: Zadejte = událostí EventLevelName = chyby  |
-| v2 (upgradu) | 2015-11-01-preview | Starší verze formátu.  Převedeny na formát upgradované na instalaci.<br> Příklad: Zadejte = událostí EventLevelName = chyby<br>Převést na: Událost &#124; kde EventLevelName == "Error.  |
+| v2 (upgradu) | 2015-11-01-preview | Starší verze formátu.  Převedeny na formát upgradované na instalaci.<br> Příklad: Zadejte = událostí EventLevelName = chyby<br>Převést na: událost &#124; kde EventLevelName == "Error.  |
 | v2 (upgradu) | 2017-03-03-preview | Upgrade formátu. <br>Příklad: Událost &#124; kde EventLevelName == "Error.  |
 
 
@@ -187,6 +186,6 @@ Například následující příklad ukazuje soubor simple řešení se zobrazen
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další podrobné informace o vytváření [řešení pro správu](operations-management-suite-solutions-creating.md).
 * Zahrnout [runbooků služeb automatizace ve vašem řešení správy](operations-management-suite-solutions-resources-automation.md).

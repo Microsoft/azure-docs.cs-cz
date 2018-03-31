@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/23/2018
 ms.author: mamit
 ms.custom: ''
-ms.openlocfilehash: 356988e8ae743d73c8e2cc7cc106cbc5b0d1a423
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c6252ab063ee074951f098e7814ea1cfec68a8b9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="the-new-alerts-experience-in-azure-monitor"></a>Nové výstrahy na základě zkušeností uživatelů Azure monitorování
 
@@ -62,12 +62,12 @@ Cílem prostředí výstrahy je možné jednotné místo pro zobrazit a spravova
 > [!NOTE]
 > Aktivní výstrahy ukazuje výstrahy jsou omezeny na podporované metrika a aktivity protokolu výstrah; Přehled služby Azure monitorování zobrazuje počet aktivní výstrahy, včetně těch, které ve starší výstrahách Azure
 
- ![alerts-overview](./media/monitoring-overview-unified/alerts-preview-overview.png) 
+ ![alerts-overview](./media/monitoring-overview-unified-alerts/alerts-preview-overview2.png) 
 
 ### <a name="alert-rules-management"></a>Pravidla výstrah správy
 **Monitorování – výstrahy > pravidla** je jediné stránce Spravovat všechny výstrahy pravidla ve vašich předplatných Azure. Zobrazí seznam všech výstrah pravidel (povolit nebo zakázat) a může být seřazeny podle cílové prostředky, skupiny prostředků, název pravidla nebo stavu. Pravidla výstrah můžete také povolení nebo zakázání nebo upravit z této stránky.  
 
- ![alerts-rules](./media/monitoring-overview-unified/alerts-preview-rules.png)
+ ![alerts-rules](./media/monitoring-overview-unified-alerts/alerts-preview-rules.png)
 
 
 ## <a name="one-alert-authoring-experience-across-all-monitoring-sources"></a>Jedna výstraha zážitky ze všech zdrojů monitorování

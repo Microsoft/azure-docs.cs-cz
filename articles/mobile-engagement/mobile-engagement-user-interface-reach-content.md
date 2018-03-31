@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní - Reach obsahu"
-description: "Naučte se spravovat jedinečný obsah s různými typy kampaní nabízených oznámení v Azure Mobile Engagement"
+title: Azure Mobile Engagement uživatelské rozhraní - Reach obsahu
+description: Naučte se spravovat jedinečný obsah s různými typy kampaní nabízených oznámení v Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: add64f06-43c9-475c-8722-51cd00bb844b
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 982cc66ffe98aa6dff8fe290cc1c2d4bad03c9ac
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>Jak spravovat jedinečný obsah s různými typy kampaní nabízených oznámení
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Části obsahu nové kampaně reach můžete upravovat obsah oznámení, hlasování, datová oznámení a dlaždice (pouze Windows Phone). Nastavení obsahu kampaní nabízených je specifické pro daný typ kampaně. 
 
 ### <a name="content-types"></a>Typy obsahu:
@@ -30,14 +34,14 @@ ms.lasthandoff: 10/11/2017
 * Dlaždice (pouze Windows Phone)
 
 ## <a name="content-of-announcements"></a>Obsah oznámení
- ![Reach Content1][30] 
+ ![Reach-Content1][30] 
 
 ### <a name="choose-the-type-of-your-announcement"></a>Zvolte typ sdělení:
 * Pouze oznámení: je jednoduchý standardní oznámení. Znamená to, že pokud uživatel klikne na něm, bez dalšího zobrazení se zobrazí, ale jenom akce, které jsou přidružené k ní dojde.
 * Text oznámení: je oznámení, že zapojí uživateli Podíváme se na zobrazení textu.
 * Sdělení webovém: je oznámení, že zapojí uživateli Podíváme se na webové zobrazení.
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Dosažení – jak Tos – oznámení][Link 3] 
 
 ### <a name="about-web-view-announcements"></a>O sděleních ve webovém zobrazení:
@@ -49,51 +53,51 @@ Pokud chcete vytvořit webové zobrazení na celou obrazovku (bez výchozích tl
 
 ### <a name="choose-your-action"></a>Vyberte akci:
 ### <a name="about-action-urls"></a>O adresy URL akce:
-Jako adresa URL akce se dá použít libovolná adresa URL, která jde interpretovat operačním systémem zacíleného zařízení.
-Jako adresu URL akce můžete použít rovněž jakoukoli vyhrazenou adresu URL, kterou vaše aplikace může podporovat (například k přechodu uživatelů na konkrétní obrazovku).
+Jako adresu URL akce lze použít libovolná adresa URL, která jde interpretovat operačním systémem zacíleného zařízení.
+Jakoukoli vyhrazenou adresu URL, kterou vaše aplikace může podporovat (například k přechodu na konkrétní obrazovku uživatelů) lze také použít jako adresu URL akce.
 Každý výskyt vzoru {deviceid} se automaticky nahradí identifikátorem zařízení, které provádí akce. To můžete použít k snadnému načtení identifikátorů zařízení Azure Mobile Engagement přes externí webovou službu hostovanou na vašem interním systému.
 
 * **Android a iOS akce**
-  * Otevřít webovou stránku
-  * http://\[domény webové lokality\] 
-  * Příklad: http://www.azure.com
+  * Otevření webové stránky
+  * http://\[web-site-domain\] 
+  * Příklad:http://www.azure.com
   * Odeslat e-mail
-  * mailto:\[e-mailu-příjemce\]? subjektu =\[subjektu\]& textu =\[zpráv\] 
-  * Example:mailto:foo@example.com? subjektu = pozdrav % 20from % 20Azure % 20Mobile % 20Engagement! & textu = 20stuff dobrý %!
+  * mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
+  * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
   * Odeslat SMS
-  * SMS:\[telefonní číslo\] 
+  * sms:\[phone-number\] 
   * Příklad: sms:2125551212
   * Vytočit telefonní číslo
-  * Telefon:\[telefonní číslo\] 
-  * Příklad: tel:2125551212
+  * tel:\[phone-number\] 
+  * Example:tel:2125551212
 * **Android pouze akce**
   * Stáhnout aplikaci v obchodě Play
   * Market://details?ID=\[balíček aplikace\] 
-  * Příklad: market://details?id=com.microsoft.office.word
-  * Spustit hledání se zjištěním polohy
+  * Example:market://details?id=com.microsoft.office.word
+  * Spuštění vyhledávání zjištěnou
   * GEO:0, 0? q =\[vyhledávací dotaz.\] 
   * Příklad: geo:0, 0? q = starbucks, Paříž
 * **iOS pouze akce**
-  * Stáhnout aplikaci v obchodě App Store
-  * http://iTunes.Apple.com/ [Země] /app/ [název aplikace] /id [id aplikace]? mt = 8 
-  * Příklad: http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
+  * Stáhnout aplikaci v App Storu
+  * http://itunes.apple.com/[Země] /app/ [název aplikace] /id [id aplikace]? mt = 8 
+  * Příklad:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
   * Akce Windows
-  * Otevřít webovou stránku
-  * http://\[domény webové lokality\] 
-  * Příklad: http://www.azure.com
+  * Otevření webové stránky
+  * http://\[web-site-domain\] 
+  * Příklad:http://www.azure.com
   * Odeslat e-mail
-  * mailto:\[e-mailu-příjemce\]? subjektu =\[subjektu\]& textu =\[zpráv\] 
-  * Example:mailto:foo@example.com? subjektu = pozdrav % 20from % 20Azure % 20Mobile % 20Engagement! & textu = 20stuff dobrý %!
-  * Odeslat SMS (vyžaduje se aplikace Skype pro Store)
-  * SMS:\[telefonní číslo\] 
+  * mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
+  * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
+  * Odeslat SMS (aplikace Skype pro Store požadované)
+  * sms:\[phone-number\] 
   * Příklad: sms:2125551212
-  * Vytočit telefonní číslo (vyžaduje se aplikace Skype pro Store)
-  * Telefon:\[telefonní číslo\] 
-  * Příklad: tel:2125551212
+  * Vytočit telefonní číslo (aplikace Skype pro Store požadované)
+  * tel:\[phone-number\] 
+  * Example:tel:2125551212
   * Stáhnout aplikaci v obchodě Play
   * MS-windows-úložiště: PDP? PFN =\[ID balíčku aplikace\] 
-  * Příklad: ms-windows-úložiště: PDP? PFN = 4d91298a-07cb-40fb-aecc-4cb5615d53c1
-  * Zahájit hledání v Mapách Bing
+  * Example:ms-windows-store:PDP?PFN=4d91298a-07cb-40fb-aecc-4cb5615d53c1
+  * Spuštění vyhledávání bingmaps
   * bingmaps:? q =\[vyhledávací dotaz.\] 
   * Příklad: bingmaps:? q = starbucks, Paříž
   * Použít vlastní schéma
@@ -109,20 +113,20 @@ Každý výskyt vzoru {deviceid} se automaticky nahradí identifikátorem zaří
 ### <a name="define-the-texts-of-your-announcement"></a>Definujte texty sdělení.
 Zadejte název, obsah a tlačítko texty sdělení. Můžete vybrat cílovou skupinu na základě názorů reach o tom, jak odpověděl uživatelé tuto kampaň budoucí kampaně. Cílení na publikum může být založen na zpětnou vazbu o tom, jestli se tato kampaň právě nabídnutých, zodpovězených, reakcí nebo ukončením.
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Nové nabízené kritérium dokumentace - Reach - uživatelského rozhraní][Link 28]
 
 ## <a name="content-of-polls"></a>Obsah hlasování
-![Reach Content2][31] 
+![Reach-Content2][31] 
 
 Zadejte název, popis a tlačítko texty sdělení. Pak přidejte otázky a možnosti pro odpovědi na otázky.
 Můžete vybrat cílovou skupinu na základě názorů reach o tom, jak odpověděl uživatelé tuto kampaň budoucí kampaně. Cílení na publikum může být založené na tom, jestli se tato kampaň právě nabídnutých, zodpovězených, reakcí nebo ukončením. Cílení na publikum může být taky založené na dotazování odpovědí zpětnou vazbu, kde jsou otázka a odpověď volba použít jako kritéria.
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Nové nabízené kritérium dokumentace - Reach - uživatelského rozhraní][Link 28]
 
 ## <a name="content-of-data-pushes"></a>Obsah datová oznámení
-![Reach Content3][32] 
+![Reach-Content3][32] 
 
 ### <a name="choose-the-type-of-your-data"></a>Vyberte typ dat:
 * Text
@@ -134,17 +138,17 @@ Můžete vybrat cílovou skupinu na základě názorů reach o tom, jak odpověd
 * Pokud jste vybrali nabízet data binární nebo base64, pomocí tlačítka "nahrát soubor" k odeslání souboru.
 * Můžete vybrat cílovou skupinu na základě názorů reach o tom, jak odpověděl uživatelé tuto kampaň budoucí kampaně. Cílení na publikum může být založené na tom, jestli se tato kampaň právě nabídnutých, zodpovězených, reakcí nebo ukončením.
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Nové nabízené kritérium dokumentace - Reach - uživatelského rozhraní][Link 28]
 
 ## <a name="content-of-tiles-windows-phone-only"></a>Obsah dlaždice (pouze Windows Phone)
-![Reach Content4][33]
+![Reach-Content4][33]
 
 ### <a name="define-the-content-of-your-tile"></a>Definujte obsah dlaždice.
 Datová část dlaždice je text, který se zobrazí na dlaždici aplikace na zařízení Windows Phone.
 Push dlaždice je verze služby Microsoft nabízených oznámení (MPNS) nativního nabízení pro Windows Phone. Typ nabízeného dlaždice je pouze typ push, který nemá odpověď a proto nemůže být cílové skupiny kampaní budoucí založený na výsledky dlaždice nabízené kampaně. 
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Rozhraní API dokumentace - Reach API - nativního nabízení][Link 4]
 
 <!--Image references-->

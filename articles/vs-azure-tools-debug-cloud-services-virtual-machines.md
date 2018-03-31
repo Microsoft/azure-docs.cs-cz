@@ -1,11 +1,11 @@
 ---
-title: "Ladění služby Azure cloudové služby nebo virtuálního počítače v sadě Visual Studio | Microsoft Docs"
-description: "Ladění cloudové služby nebo virtuálního počítače v sadě Visual Studio"
+title: Ladění služby Azure cloudové služby nebo virtuálního počítače v sadě Visual Studio | Microsoft Docs
+description: Ladění cloudové služby nebo virtuálního počítače v sadě Visual Studio
 services: visual-studio-online
 documentationcenter: na
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: 945e06e0-2100-41af-b218-72347367ddab
 ms.service: visual-studio-online
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: 32f8ba565904682b3bcb9860c641bac18705ad5f
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d230632fe49874385e3c337a7b07d1f1acec585e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>Ladění služby Azure cloudové služby nebo virtuálního počítače v sadě Visual Studio
 

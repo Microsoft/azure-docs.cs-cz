@@ -1,11 +1,11 @@
 ---
-title: "Ke spuštění a ladění Azure cloud service v místním počítači pomocí emulátoru Express | Microsoft Docs"
-description: "Pomocí emulátoru Express ke spouštění a ladění cloudové služby v místním počítači"
+title: Ke spuštění a ladění Azure cloud service v místním počítači pomocí emulátoru Express | Microsoft Docs
+description: Pomocí emulátoru Express ke spouštění a ladění cloudové služby v místním počítači
 services: visual-studio-online
 documentationcenter: n/a
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: 73108f98-a552-4817-b7a1-551367b71906
 ms.service: visual-studio-online
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/06/2017
 ms.author: mikejo
-ms.openlocfilehash: 9c258ad7de5e25b4b304f5e56d93abeff1187f71
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 638aa005321963ce8bdcbb7df4317fc4bdec74ae
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-emulator-express-to-run-and-debug-an-azure-cloud-service-on-a-local-machine"></a>Pomocí emulátoru Express ke spouštění a ladění Azure cloud service v místním počítači
 Pomocí emulátoru Express, můžete si otestovat a ladění cloudové služby bez spuštění sady Visual Studio jako správce. Můžete nastavit nastavení projektu k použití emulátoru Express nebo úplný emulátor, v závislosti na požadavcích vaší cloudové služby. Další informace o úplný emulátor najdete v tématu [spustit aplikaci Azure v emulátoru výpočetní](storage/common/storage-use-emulator.md).
@@ -52,5 +52,5 @@ Omezení expresní emulátor jsou známy následující problémy:
 - Nelze získat přístup čísla portů pod 1 000. Pokud používáte zprostředkovatele ověřování, který obvykle využívá port pod 1 000, může musíte tuto hodnotu změňte číslo portu, která je vyšší než 1 000.
 - Jakákoli omezení, která se týkají výpočetní emulátor Azure se rovněž vztahují na emulátoru Express. Například nemůže mít více než 50 instancí role na nasazení. Další informace o výpočetní emulátor Azure najdete v tématu [spustit aplikaci Azure v emulátoru výpočetní](http://go.microsoft.com/fwlink/p/?LinkId=623050).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Ladění cloudové služby Azure](https://msdn.microsoft.com/library/azure/ee405479.aspx)

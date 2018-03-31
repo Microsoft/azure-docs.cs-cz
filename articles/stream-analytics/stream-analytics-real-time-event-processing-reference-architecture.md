@@ -1,12 +1,11 @@
 ---
-title: "Událostí v reálném čase zpracování pomocí zpracování událostí Stream Analytics | Microsoft Docs"
-description: "Zjistěte, jak můžou spolupracovat sadu Azure services pro povolení zpracování událostí v reálném čase a analýzy."
-keywords: "zpracování v reálném čase, událostí zpracování, referenční architektura"
+title: Událostí v reálném čase zpracování pomocí zpracování událostí Stream Analytics | Microsoft Docs
+description: Zjistěte, jak můžou spolupracovat sadu Azure services pro povolení zpracování událostí v reálném čase a analýzy.
+keywords: zpracování v reálném čase, událostí zpracování, referenční architektura
 services: stream-analytics,event-hubs,storage,sql-database
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: 
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 11af48bc-313c-4527-8c80-91088dc9f3c6
 ms.service: stream-analytics
 ms.workload: big-data
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
-ms.author: samacha
-ms.openlocfilehash: a5206f74e61c3cfd210ff80654e31f466ce08977
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: cf11a80a93a923f038b7d6a0f02a35938794c242
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referenční architektura: událostí v reálném čase zpracování pomocí služby Microsoft Azure Stream Analytics
 Referenční architektura pro zpracování pomocí služby Azure Stream Analytics událostí v reálném čase slouží jako obecný plán, podle kterého pro nasazení v reálném čase platforma jako služba (PaaS) řešení zpracování datového proudu s Microsoft Azure.
@@ -53,7 +52,7 @@ Microsoft Azure poskytuje katalog rozsáhlé analytics technologií, které podp
 ## <a name="get-help"></a>Podpora
 Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)

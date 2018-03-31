@@ -1,29 +1,24 @@
 ---
-title: "Návrh ELT pro Azure SQL Data Warehouse | Microsoft Docs"
-description: "Kombinovat technologie pro přesun dat do Azure a načítání dat do SQL Data Warehouse návrh o proces extrakce, načítání a transformace ELT () pro Azure SQL Data Warehouse."
+title: Místo ETL, návrh ELT pro Azure SQL Data Warehouse | Microsoft Docs
+description: Místo ETL návrh o proces extrakce, načítání a transformace ELT () pro načtení dat nebo Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
-ms.assetid: 2253bf46-cf72-4de7-85ce-f267494d55fa
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 12/12/2017
-ms.author: cakarst;barbkess
-ms.openlocfilehash: e94dca69c77c46034e318205279be5188e1371f5
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.topic: conceptual
+ms.component: design
+ms.date: 03/28/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: c27ad843c9ee9beed871dcc03254cb1266f6ebe2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Navrhování extrakce, načítání a transformace (ELT) pro Azure SQL Data Warehouse
 
-Kombinovat technologie pro cílová data v úložišti Azure a načítání dat do SQL Data Warehouse návrh o proces extrakce, načítání a transformace ELT () pro Azure SQL Data Warehouse. Tento článek představuje technologie, které podporují načítání pomocí funkce Polybase a pak se zaměřuje na návrh ELT proces, který používá k načtení dat do SQL Data Warehouse ze služby Azure Storage PolyBase s T-SQL.
+Místo extrakce, transformace a načítání (ETL) návrh extrakce, načítání a transformace ELT () proces načítání dat do Azure SQL Data Warehouse. Tento článek představuje způsoby, jak navrhnout ELT proces, který přesouvá data do služby Azure data warehouse.
 
 ## <a name="what-is-elt"></a>Co je ELT?
 
@@ -63,7 +58,7 @@ PolyBase načte data z UTF-8 a UTF-16 oddělený textových souborů. Kromě sou
 Pokud vaše data není kompatibilní s funkcí PolyBase, můžete použít [bcp](sql-data-warehouse-load-with-bcp.md) nebo [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP načte přímo do SQL Data Warehouse bez průchodu přes Azure Blob storage a je určena pouze pro malé zatížení. Všimněte si, zatížení výkonu z těchto možností je podstatně pomalejší než PolyBase. 
 
 
-## <a name="extract-source-data"></a>Extrakce zdroje dat
+## <a name="extract-source-data"></a>Extrakce zdrojových dat
 
 Získání dat ze zdrojového systému závisí na zdroji.  Cílem je přesunu dat do textových souborů s oddělovači. Pokud používáte systém SQL Server, můžete použít [nástroj příkazového řádku bcp](/sql/tools/bcp-utility) export dat.  
 
@@ -104,7 +99,7 @@ K formátování textu soubory:
 - Formátování dat v textovém souboru souladu s typy sloupců a data v cílové tabulce SQL Data Warehouse. Řádků, které mají být odmítnuta během zatížení způsobí, že chybné zarovnání mezi datových typů v externích textových souborů a tabulky datového skladu.
 - Samostatné pole v textovém souboru a ukončení.  Nezapomeňte použít znak nebo posloupnost znaků, který nebyl nalezen v zdrojová data. Použít nebyl zadán s [vytvořit EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql).
 
-## <a name="load-to-a-staging-table"></a>Načíst do pracovní tabulky
+## <a name="load-to-a-staging-table"></a>Načítání do pracovní tabulky
 Pokud chcete získat data do datového skladu, funguje dobře pro první zatížení data do pracovní tabulky. Pomocí pracovní tabulky bez zasahování výrobní tabulky může zpracovávat chyby, a můžete spouštění operace vrácení zpět na výrobní tabulce. Pracovní tabulka taky dává příležitost se použije ke spuštění transformace před vložením dat do produkčního tabulek SQL Data Warehouse.
 
 Chcete-li načíst pomocí T-SQL, spusťte [vytvořit tabulku AS vyberte funkce CTAS ()](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) příkaz T-SQL. Tento příkaz vloží výsledky příkazu select do nové tabulky. Pokud příkaz vybere z externí tabulku, naimportuje externí data. 
@@ -124,7 +119,7 @@ AS SELECT * FROM [ext].[Date]
 ## <a name="transform-the-data"></a>Transformace dat
 Když jsou data v přípravné tabulce, proveďte transformace, které vaše úlohy vyžadují. Pak přesuňte data do tabulky produkční.
 
-## <a name="insert-data-into-production-table"></a>Vložení dat do tabulky produkční
+## <a name="insert-data-into-production-table"></a>Vložení dat do produkční tabulky
 
 INSERT INTO... Příkaz SELECT se přesouvají data z pracovní tabulky do trvalé tabulky. 
 
@@ -133,7 +128,7 @@ Při navrhování o proces ETL, spusťte proces na malý zkušební vzorek. Zkus
 ## <a name="partner-loading-solutions"></a>Partnerských řešení načítání
 Mnoho našich partnerů má načítání řešení. Další informace, podívejte se do seznamu naše [partnery poskytujícími řešení](sql-data-warehouse-partner-business-intelligence.md). 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Načítání pokyny, najdete v části [pokyny pro načítání dat](guidance-for-loading-data.md).
 
 

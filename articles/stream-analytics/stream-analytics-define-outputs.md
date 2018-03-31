@@ -1,12 +1,11 @@
 ---
-title: "Stream Analytics výstupy: možnosti pro úložiště, analýzu | Microsoft Docs"
-description: "Informace o cílení na možnosti výstupy Stream Analytics dat včetně Power BI pro analysis výsledky."
-keywords: "transformace dat, výsledky analýzy, možnosti ukládání dat"
+title: 'Stream Analytics výstupy: možnosti pro úložiště, analýzu | Microsoft Docs'
+description: Informace o cílení na možnosti výstupy Stream Analytics dat včetně Power BI pro analysis výsledky.
+keywords: transformace dat, výsledky analýzy, možnosti ukládání dat
 services: stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage
-documentationcenter: 
+documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-editor: cgronlun
 ms.assetid: ba6697ac-e90f-4be3-bafd-5cfcf4bd8f1f
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 02/18/2017
 ms.author: sngun
-ms.openlocfilehash: 6df9a3fafea97638d63c0dc4601c5ced357c410d
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: a641c7e5e792b020be54a2ebc4bac63b545ce71e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-outputs-options-for-storage-analysis"></a>Stream Analytics výstupy: možnosti pro úložiště, analýzy
 Při vytváření úlohy Stream Analytics, zvažte, jak se využívá výsledných datech. Jak můžete zobrazit výsledky úlohu služby Stream Analytics a kde je můžete uložit?
@@ -182,7 +181,7 @@ Existuje několik parametrů, které jsou potřeba ke konfiguraci datové proudy
 | Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup |Popisný název používaný v dotazech na přesměrujte výstup dotazu do tohoto centra událostí. |
-| Názvový prostor služby Service Bus |Obor názvů sběrnice je kontejner sady entit pro zasílání zpráv. Při vytváření nového centra událostí taky vytvoříte obor názvů sběrnice |
+| Service Bus Namespace |Obor názvů sběrnice je kontejner sady entit pro zasílání zpráv. Při vytváření nového centra událostí taky vytvoříte obor názvů sběrnice |
 | Centrum událostí |Název výstupu centra událostí |
 | Název zásady centra událostí |Zásady sdíleného přístupu, které se dají vytvořit na kartě Konfigurace centra událostí. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče |
 | Klíč zásad centra událostí |Sdílený přístupový klíč použitý k ověření přístupu k oboru názvů Service Bus |
@@ -284,7 +283,7 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytváření v�
 | Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup |Popisný název používaný v dotazech na přesměrujte výstup dotazu do této fronty Service Bus. |
-| Názvový prostor služby Service Bus |Obor názvů sběrnice je kontejner sady entit pro zasílání zpráv. |
+| Service Bus Namespace |Obor názvů sběrnice je kontejner sady entit pro zasílání zpráv. |
 | Název fronty |Název fronty Service Bus. |
 | Název zásad fronty |Když vytvoříte frontu, můžete také vytvořit zásady sdíleného přístupu na kartě Konfigurace fronty. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
 | Klíč zásad fronty |Sdílený přístupový klíč použitý k ověření přístupu k oboru názvů Service Bus |
@@ -301,7 +300,7 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytváření v�
 | Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup |Popisný název používaný v dotazech na přesměrujte výstup dotazu k tomuto tématu Service Bus. |
-| Názvový prostor služby Service Bus |Obor názvů sběrnice je kontejner sady entit pro zasílání zpráv. Při vytváření nového centra událostí taky vytvoříte obor názvů sběrnice |
+| Service Bus Namespace |Obor názvů sběrnice je kontejner sady entit pro zasílání zpráv. Při vytváření nového centra událostí taky vytvoříte obor názvů sběrnice |
 | Název tématu |Témata jsou entity pro zasílání zpráv podobné centrům událostí a frontám. Jsou navržené ke shromažďování streamů událostí z mnoha různých zařízení a služeb. Při vytváření téma je rovněž dán určitý název. Zprávy odeslané do tématu není k dispozici, pokud není vytvořená předplatné, zajistěte proto jsou jeden nebo více odběrů v tématu |
 | Název zásad tématu |Když vytvoříte téma, můžete také vytvořit zásady sdíleného přístupu na kartě konfigurace tématu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče |
 | Klíč zásad tématu |Sdílený přístupový klíč použitý k ověření přístupu k oboru názvů Service Bus |
@@ -331,7 +330,7 @@ Azure Stream Analytics vyvolá Azure Functions prostřednictvím protokolu HTTP 
 
 | Název vlastnosti | Popis |
 | --- | --- |
-| Aplikace zajišťující funkci |Název aplikace Azure Functions |
+| Function App |Název aplikace Azure Functions |
 | Funkce |Název funkce v aplikaci funkce Azure |
 | Velikost dávky maximální |Tuto vlastnost lze nastavit maximální velikost každé dávky výstup, které je odesláno funkce Azure. Ve výchozím nastavení tato hodnota je 256 KB |
 | Maximální počet dávek  |Jako název značí, tato vlastnost umožňuje určit maximální počet událostí v každé dávce, která se odešlou do Azure Functions. Počet maximální dávky výchozí hodnota je 100 |

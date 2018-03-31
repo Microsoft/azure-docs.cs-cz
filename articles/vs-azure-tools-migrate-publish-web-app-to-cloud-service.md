@@ -1,11 +1,11 @@
 ---
-title: "Jak migrovat a publikovat webovou aplikaci pro cloudové služby Azure ze sady Visual Studio | Microsoft Docs"
-description: "Zjistěte, jak migrovat a publikovat webovou aplikaci na cloudové služby Azure pomocí sady Visual Studio"
+title: Jak migrovat a publikovat webovou aplikaci pro cloudové služby Azure ze sady Visual Studio | Microsoft Docs
+description: Zjistěte, jak migrovat a publikovat webovou aplikaci na cloudové služby Azure pomocí sady Visual Studio
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 9394adfd-a645-4664-9354-dd5df08e8c91
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/10/2017
-ms.author: kraigb
-ms.openlocfilehash: 1ced364bed821a9391f8ffd049f61ac236d98309
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.author: ghogen
+ms.openlocfilehash: 682be267bbb1cf495d85af5786309a98f885fc23
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>Postupy: migrace a publikovat webovou aplikaci pro cloudové služby Azure ze sady Visual Studio
 
@@ -82,9 +82,9 @@ Následující tabulka obsahuje podrobnosti o spouštění aplikace v Azure:
    | Typ webové aplikace | spuštění v Azure |
    | --- | --- | --- |
    | Webová aplikace ASP.NET<br/>(včetně MVC 2, MVC 3, MVC 4) | Vyberte adresu URL v **nasazení** kartě pro **protokol činnosti Azure**. |
-   | Prázdná webová aplikace ASP.NET | Pokud máte výchozí `.aspx` stránky v aplikaci, vyberte adresu URL v **nasazení** kartě pro **protokol činnosti Azure**. Přejít na jinou stránku, zadejte v prohlížeči adresu URL v následujícím formátu:`<deployment_url>/<page_name>.aspx` |
-   | Aplikace Silverlight<br/>Obchodní aplikace Silverlight<br/>Navigace aplikace Silverlight | Přejděte na stránku specifické pro vaši aplikaci pomocí následující tvar adresy URL:`<deployment_url>/<page_name>.aspx` |
-    Aplikace služby WCF<br/>Aplikace služby pracovního postupu WCF | Nastavte `.svc` souboru jako úvodní stránky pro svůj projekt služby WCF. Potom přejděte na`<deployment_url>/<service_file>.svc` |
+   | Prázdná webová aplikace ASP.NET | Pokud máte výchozí `.aspx` stránky v aplikaci, vyberte adresu URL v **nasazení** kartě pro **protokol činnosti Azure**. Přejít na jinou stránku, zadejte v prohlížeči adresu URL v následujícím formátu: `<deployment_url>/<page_name>.aspx` |
+   | Aplikace Silverlight<br/>Obchodní aplikace Silverlight<br/>Navigace aplikace Silverlight | Přejděte na stránku specifické pro vaši aplikaci pomocí následující tvar adresy URL: `<deployment_url>/<page_name>.aspx` |
+    Aplikace služby WCF<br/>Aplikace služby pracovního postupu WCF | Nastavte `.svc` souboru jako úvodní stránky pro svůj projekt služby WCF. Potom přejděte na `<deployment_url>/<service_file>.svc` |
    | Dynamické ASP.NET Entity<br/>Linq to SQL ASP.NET dynamických dat | Aktualizujte připojovací řetězec, jak je popsáno v následující části. Potom přejděte na `<deployment_url>/<page_name>.aspx`. Pro technologie Linq to SQL musíte použít Azure SQL database. |
 
 ## <a name="update-a-connection-string-for-aspnet-dynamic-entities"></a>Aktualizovat připojovací řetězec pro ASP.NET dynamické entity

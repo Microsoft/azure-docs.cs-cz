@@ -1,11 +1,11 @@
 ---
 title: Integraci sady Azure Mobile Engagement Android SDK
-description: "Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement"
+description: Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a5487793-1a12-4f6c-a1cf-587c5a671e6b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 35bd92e52b7a02f58620a03156902f9f91be57ae
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fffff6de996b8295639b3d595c5f778de8a0f74f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-on-android"></a>Postup při integraci Engagement v systému Android
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 > [!div class="op_single_selector"]
 > * [Univerzální pro Windows](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -267,7 +271,7 @@ V kontextu Mobile Engagement oprávnění, která vyžadují schválení za běh
 
 * `ACCESS_COARSE_LOCATION`
 * `ACCESS_FINE_LOCATION`
-* `WRITE_EXTERNAL_STORAGE`(jenom při cílení na úrovni rozhraní API systému Android 23 pro tato)
+* `WRITE_EXTERNAL_STORAGE` (jenom při cílení na úrovni rozhraní API systému Android 23 pro tato)
 
 Externího úložiště se používá pouze pro funkce velký obrázek Reach. Zjistíte-li toto oprávnění být rušivý požádat uživatele, můžete jej odebrat Pokud se používá pouze pro Mobile Engagement, ale za cenu zakázáním funkce velký obrázek.
 
@@ -352,7 +356,7 @@ Pokud je při volání této funkce aktivní zapojení, může trvat 1 minuta pr
 
 Můžete povolit protokol reporting znovu voláním stejnou funkci s `true`.
 
-### <a name="integration-in-your-own-preferenceactivity"></a>Integrace ve vašem vlastním`PreferenceActivity`
+### <a name="integration-in-your-own-preferenceactivity"></a>Integrace ve vašem vlastním `PreferenceActivity`
 Namísto volání této funkce, můžete také integrovat toto nastavení přímo do existující `PreferenceActivity`.
 
 Zapojení používat vaše předvolby soubor (s požadovanou režim) můžete nakonfigurovat `AndroidManifest.xml` soubor s `application meta-data`:

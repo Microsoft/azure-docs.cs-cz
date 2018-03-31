@@ -1,9 +1,9 @@
 ---
-title: "Vytvářet, zobrazovat a spravovat výstrahy pomocí Azure monitorování – výstrahy (Preview) | Microsoft Docs"
-description: "Pomocí nové sjednocené Azure výstrahy prostředí vytvořit, zobrazit a spravovat metrika a protokolu pravidla výstrah na jednom místě."
+title: Vytvářet, zobrazovat a spravovat výstrahy pomocí Azure monitorování – výstrahy (Preview) | Microsoft Docs
+description: Pomocí nové sjednocené Azure výstrahy prostředí vytvořit, zobrazit a spravovat metrika a protokolu pravidla výstrah na jednom místě.
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 36729da3-e002-4a64-86b2-2513ca2cbb58
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: b6b6bfee5b9e9036a6d7ff17ff1a8d4de542bbd3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 6bd2c452059950f714de304cc30c7b4bd023fd86
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Vytvoření, zobrazení a Správa výstrah pomocí Azure monitorování – výstrahy (Preview)
 
@@ -136,7 +136,7 @@ Pro **protokolu výstrahy** výstrahy může být založené na:
 
 1. V [portál](https://portal.azure.com/), vyberte **monitorování** a v části monitorování – zvolte **výstrahy (Preview)**.  
 
-2. **Výstrahy řídicí panel (Preview)** se zobrazí – ve kterém jsou všechny výstrahy Azure unified a zobrazí v jednotném čísle Tabule ![výstrahy řídicí panel](./media/monitoring-overview-unified/alerts-preview-overview.png)
+2. **Výstrahy řídicí panel (Preview)** se zobrazí – ve kterém jsou všechny výstrahy Azure unified a zobrazí v jednotném čísle Tabule ![výstrahy řídicí panel](./media/monitoring-alerts-unified-usage/alerts-preview-overview.png)
 3. Z horní části zleva doprava řídicího panelu ukazuje na první pohled, následující – které sloužící k najdete podrobné informace:
     - *Aktivováno výstrahy*: počet v současné době výstrahy, které se mají splněna logiku a v aktivováno stavu
     - *Celkový počet pravidla výstrah*: číslo vytvořit pravidla výstrah a v subtext, číslo, které jsou nyní zapnuta
@@ -147,7 +147,7 @@ Pro **protokolu výstrahy** výstrahy může být založené na:
 1. V [portál](https://portal.azure.com/), vyberte **monitorování** a v části monitorování – zvolte **výstrahy (Preview)**.  
 2. Vyberte **spravovat pravidla** tlačítko na horním panelu přejděte do části Správa pravidlo – kde jsou uvedeny všechny výstrahy pravidla vytvořená; včetně výstrahy, které byly zakázány.
 3. Pro konkrétní pravidla výstrah najdete jednu buď pomocí rozevíracího seznamu filtrů v horní části, které umožňují shortlist pravidla výstrah pro konkrétní *předplatné, skupiny prostředků nebo prostředek*. Můžete také na pomocí vyhledávání označena podokně nad seznamu pravidlo výstrahy *filtrování výstrah*, jeden může poskytnout – klíčové slovo, které je shoda na základě *název výstrahy, podmínku a cílový prostředek*; Chcete-li zobrazit pouze odpovídající pravidla.
-   ![Spravovat pravidla výstrah](./media/monitoring-overview-unified/alerts-preview-rules.png)
+   ![Spravovat pravidla výstrah](./media/monitoring-alerts-unified-usage/alerts-preview-rules.png)
 4. Chcete-li zobrazit nebo upravit konkrétní pravidlo výstrahy, klikněte na jeho název, který se bude zobrazovat jako prokliknutelný odkaz.
 5. Se zobrazí výstraha definované – struktura tři fáze: 1) výstraha podmínka výstrahy 2) podrobností (3) akci skupiny. **Cíl kritéria** sloužící k úpravě logice výstrah nebo novou po použití na ikonu koše odstranit starší logiku lze přidat kritéria. Podobně, v části Podrobnosti výstrahy - **popis** a **závažnost** je možné upravit. A skupina akce lze změnit nebo může být tak nový, aby propojení na výstrahy pomocí **nové skupiny akce** tlačítko.
 

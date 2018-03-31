@@ -1,13 +1,13 @@
 ---
-title: "Filtrování provozu sítě s Azure skupin zabezpečení sítě a aplikací (Preview) | Microsoft Docs"
-description: "Informace o vytváření skupin zabezpečení sítě a aplikací (Preview), který omezí typ síťový provoz do/z virtuálních počítačů."
+title: Filtrování provozu sítě s Azure skupin zabezpečení sítě a aplikací (Preview) | Microsoft Docs
+description: Informace o vytváření skupin zabezpečení sítě a aplikací (Preview), který omezí typ síťový provoz do/z virtuálních počítačů.
 services: virtual-network
-documentationcenter: 
+documentationcenter: ''
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/03/2017
 ms.author: jdial
-ms.custom: 
+ms.custom: ''
 ms.openlocfilehash: ac9a1a8c59a26393d32f9c543e630c302b7ced9d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/31/2018
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>Filtrování provozu sítě přenosů se skupinami zabezpečení sítě a aplikací (Preview)
 
@@ -468,7 +468,7 @@ Po dokončení tohoto kurzu můžete chtít odstranit prostředky, které jste v
 2. Na **myResourceGroup** okně klikněte **odstranit** ikonu.
 3. Potvrďte odstranění, v **název skupiny prostředků typu** zadejte **myResourceGroup**a potom klikněte na **odstranit**.
 
-### <a name="delete-cli"></a>Rozhraní příkazového řádku Azure
+### <a name="delete-cli"></a>Azure CLI
 
 V relaci příkazového řádku zadejte následující příkaz:
 
@@ -476,7 +476,7 @@ V relaci příkazového řádku zadejte následující příkaz:
 az group delete --name myResourceGroup --yes
 ```
 
-### <a name="delete-powershell"></a>Prostředí PowerShell
+### <a name="delete-powershell"></a>PowerShell
 
 V relaci prostředí PowerShell zadejte následující příkaz:
 

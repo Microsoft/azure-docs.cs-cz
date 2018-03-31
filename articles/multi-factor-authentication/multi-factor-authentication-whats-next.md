@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: e2b6651f0d341567f1d02d0ca16b8f445e3d26f4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4259715fbb062bfb170509c928b5a1ad898ea394
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
 
@@ -228,11 +228,7 @@ Bez ohledu na to, jestli je povolená funkce důvěryhodné IP adresy je vyžado
 
 Některé aplikace, jako je Office 2010 nebo starší a Apple Mail, nepodporují dvoustupňové ověřování. Aplikace není nakonfigurované tak, aby přijímal druhé ověření. K používání těchto aplikací, využívat výhod _hesla aplikací_ funkce. Umožňuje aplikaci, aby obešla dvoustupňové ověřování a pokračovat v práci můžete použít heslo aplikace místo tradiční heslo.
 
->[!NOTE]
->Moderní ověřování pro klienty, Microsoft Office 2013 a novější
-> 
->Klienti Office 2013 a novější (včetně Outlook), podporu moderních ověřovacích protokolů a lze je povolit pro práci s dvoustupňové ověřování. Po povolení klienta hesla aplikací nejsou požadované pro klienta. Další informace najdete v tématu [oznámení veřejné preview moderní ověřování Office 2013](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
->
+Moderní ověřování je podporováno pro klienty, Microsoft Office 2013 a novější. Klienti Office 2013, Outlook, včetně podpory moderních ověřovacích protokolů a lze je povolit pro práci s dvoustupňové ověřování. Po povolení klienta hesla aplikací nejsou požadované pro klienta.
 
 ### <a name="considerations-about-app-passwords"></a>Důležité informace o heslech aplikací
 

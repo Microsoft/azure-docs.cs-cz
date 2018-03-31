@@ -1,11 +1,11 @@
 ---
-title: "Postup zachovat konstantní virtuální IP adresy pro cloudové služby Azure | Microsoft Docs"
-description: "Zjistěte, jak zajistit, že virtuální IP adresy (VIP) cloudové služby Azure nemění."
+title: Postup zachovat konstantní virtuální IP adresy pro cloudové služby Azure | Microsoft Docs
+description: Zjistěte, jak zajistit, že virtuální IP adresy (VIP) cloudové služby Azure nemění.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 4a58e2c6-7a79-4051-8a2c-99182ff8b881
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/21/2017
-ms.author: kraigb
-ms.openlocfilehash: 96c4ed88db5e24f439825aee5afe457a1e8c81d7
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: ghogen
+ms.openlocfilehash: 6d81e68552b023f2c30e4fc4616d6fa52831c451
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="retain-a-constant-virtual-ip-address-for-an-azure-cloud-service"></a>Zachovat konstantní virtuální IP adresy pro cloudové služby Azure
 Při aktualizaci Cloudová služba, která je hostovaná v Azure, musíte může zajistit, že virtuální adresy IP (VIP) služby nemění. Mnoho služby domény pro použití v systému DNS (Domain Name) pro registraci názvů domén. DNS funguje pouze v případě, že virtuální IP adresa zůstala stejná. Můžete použít **Průvodci publikováním** v nástroje Azure k zajištění, že VIP cloudové služby nezmění. když ho aktualizujete. Další informace o tom, jak používat správu domény DNS pro cloudové služby najdete v tématu [konfigurace vlastního názvu domény pro cloudové služby Azure](cloud-services/cloud-services-custom-domain-name-portal.md).
@@ -55,6 +55,6 @@ Můžete zadat nastavení nasazení **Průvodci publikováním**, který podporu
    
     ![Publikování na stránce Souhrn aplikace Azure](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-summary.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Pomocí sady Visual Studio aplikaci Azure Průvodce publikováním](vs-azure-tools-publish-azure-application-wizard.md)
 

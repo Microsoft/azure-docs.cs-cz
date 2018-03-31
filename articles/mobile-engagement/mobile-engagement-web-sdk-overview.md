@@ -1,11 +1,11 @@
 ---
-title: "Přehled sady SDK webové Azure Mobile Engagement | Microsoft Docs"
-description: "Nejnovější aktualizace a postupy pro Web SDK pro Azure Mobile Engagement"
+title: Přehled sady SDK webové Azure Mobile Engagement | Microsoft Docs
+description: Nejnovější aktualizace a postupy pro Web SDK pro Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 5bbc2fda-0f3f-43d0-a73d-0f2c0f8dc25b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: piyushjo
-ms.openlocfilehash: 770a83131a3e661771db50b22ce7de25b2d541cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad0a83e05c6a60953c2f8a0036f823e7ed497f45
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-web-sdk"></a>Web Azure Mobile Engagement SDK
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Podrobné informace o tom, jak integrovat Azure Mobile Engagement ve webové aplikaci, začněte zde. Pokud chcete a vyzkoušejte ho před Začínáme s webovou aplikaci najdete v tématu naše [15 minut kurzu](mobile-engagement-web-app-get-started.md).
 
 ## <a name="integration-procedures"></a>Integrace procedury

@@ -1,12 +1,11 @@
 ---
-title: "Dotaz příkladů běžných vzorů využití v Stream Analytics | Microsoft Docs"
-description: "Běžné typy dotazů Azure Stream Analytics"
-keywords: "Příklady dotazů"
+title: Dotaz příkladů běžných vzorů využití v Stream Analytics | Microsoft Docs
+description: Běžné typy dotazů Azure Stream Analytics
+keywords: Příklady dotazů
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jenniehubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 6b9a7d00-fbcc-42f6-9cbb-8bbf0bbd3d0e
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/08/2017
-ms.author: samacha
-ms.openlocfilehash: cb0a948416983f33a4ca8d9211a3a114ba011685
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: jeanb
+ms.openlocfilehash: 9632a77afff6ba47d6ce80457e02f1f6194362a1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Dotaz příkladů běžných vzorů využití Stream Analytics
 ## <a name="introduction"></a>Úvod
@@ -396,7 +395,7 @@ Například 2 po sobě jdoucích aut ze stejné zkontrolujte zadali silniční p
 
 | Uživatel | Funkce | Událost | Čas |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |Začátek |2015-01-01T00:00:01.0000000Z |
+| user@location.com |RightMenu |Start |2015-01-01T00:00:01.0000000Z |
 | user@location.com |RightMenu |Konec |2015-01-01T00:00:08.0000000Z |
 
 **Výstup**:  
@@ -512,7 +511,7 @@ Například v domácí trouby scénáře IoT, chceme vygenerovat výstrahu, poku
 
 **Vstup**:
 
-| čas | deviceId | sensorName | hodnota |
+| time | deviceId | sensorName | hodnota |
 | --- | --- | --- | --- |
 | "2018-01-01T16:01:00" | "Oven1" | "temp" |120 |
 | "2018-01-01T16:01:00" | "Oven1" | "power" |15 |
@@ -580,7 +579,7 @@ WHERE
 **Vysvětlení**: první dotaz `max_power_during_last_3_mins`, používá [posuvné okno](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) najít maximální hodnotu senzoru napájení pro každé zařízení během posledních 3 minut. Druhý dotazu je připojený k první dotaz, který vyhledá power hodnotu v okně nejnovější relevantní pro aktuální událost. A pak zadaný podmínky jsou splněny, je vygenerována výstraha pro zařízení.
 
 
-## <a name="get-help"></a>Získat nápovědu
+## <a name="get-help"></a>Podpora
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup

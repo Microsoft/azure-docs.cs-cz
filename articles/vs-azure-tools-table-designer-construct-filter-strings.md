@@ -1,11 +1,11 @@
 ---
-title: "Vytváření řetězců filtru pro návrháře tabulky | Microsoft Docs"
-description: "Vytváření řetězců filtru pro návrháře tabulky"
+title: Vytváření řetězců filtru pro návrháře tabulky | Microsoft Docs
+description: Vytváření řetězců filtru pro návrháře tabulky
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: a1a10ea1-687a-4ee1-a952-6b24c2fe1a22
 ms.service: storage
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: kraigb
-ms.openlocfilehash: 069224d84462b4955912ce1462a65298a5acc04a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 722052e351062efba85eb143b2ea7bd0136002a0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>Vytváření řetězců filtru pro návrháře tabulky
 ## <a name="overview"></a>Přehled
@@ -31,9 +31,9 @@ Pro všechny typy vlastností jsou podporovány následující logické operáto
 
 | Logický operátor | Popis | Příklad řetězec filtru |
 | --- | --- | --- |
-| EQ |Rovná |Město eq 'Redmond. |
+| eq |Rovná |Město eq 'Redmond. |
 | gt |Více než |Cena gt 20 |
-| ge |Větší než nebo rovno |Cena ge 10 |
+| ge |Je větší nebo rovno |Cena ge 10 |
 | lt |Méně než |Cena lt 20 |
 | Le |Menší než nebo rovno |Cena le 100 |
 | Ne |Není rovno |Ne města, Londýn, |
@@ -44,8 +44,8 @@ Pro všechny typy vlastností jsou podporovány následující logické operáto
 Při vytváření řetězec filtru, jsou důležité následující pravidla:
 
 * Logické operátory slouží k porovnání vlastnost na hodnotu. Všimněte si, že není možné k porovnání vlastnost na hodnotu dynamické; jedna strana výrazu musí být konstanta.
-* Všechny části řetězec filtru rozlišují velká a malá písmena.
-* Hodnota konstanty musí být stejného typu dat jako vlastnost v pořadí pro filtr vracet výsledky platný. Další informace o typech podporovaných vlastnost najdete v tématu [Principy datového modelu služby Table](http://go.microsoft.com/fwlink/p/?LinkId=400448).
+* Ve všech částech řetězce filtru se rozlišují malá a velká písmena.
+* Hodnota konstanty musí být stejného datového typu jako vlastnost, aby filtr vrátil platné výsledky. Další informace o podporovaných typech vlastností najdete v tématu [Vysvětlení datového modelu služby Table Service](http://go.microsoft.com/fwlink/p/?LinkId=400448).
 
 ## <a name="filtering-on-string-properties"></a>Filtrování na vlastnosti řetězce.
 Při filtrování pro vlastnosti string, uzavřete řetězcová konstanta v jednoduchých uvozovkách.

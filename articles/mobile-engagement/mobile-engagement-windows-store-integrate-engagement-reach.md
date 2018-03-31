@@ -1,11 +1,11 @@
 ---
-title: "Univerzální aplikace Windows dosáhnout integraci sady SDK"
-description: "Postup pro integraci Azure Mobile Engagement Reach univerzálních aplikací pro Windows"
+title: Univerzální aplikace Windows dosáhnout integraci sady SDK
+description: Postup pro integraci Azure Mobile Engagement Reach univerzálních aplikací pro Windows
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a31ca1d6-856f-4aec-898a-07969ae5f7ec
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,17 +14,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9311e998e67d8d0d56da68fc9460df32ce7ce5a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8472af2ac72a1976871970963851be775b19859b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-apps-reach-sdk-integration"></a>Univerzální aplikace Windows dosáhnout integraci sady SDK
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Je třeba provést postup integrace popsaný v tématu [integraci sady Windows Universal Engagement SDK](mobile-engagement-windows-store-integrate-engagement.md) před těchto pokynů.
 
 ## <a name="embed-the-engagement-reach-sdk-into-your-windows-universal-project"></a>Vložení Engagement Reach SDK do projektu univerzální pro Windows
-Nemáte nic přidat. `EngagementReach`odkazy a prostředky jsou už ve vašem projektu.
+Nemáte nic přidat. `EngagementReach` odkazy a prostředky jsou už ve vašem projektu.
 
 > [!TIP]
 > Můžete přizpůsobit bitové kopie, které jsou umístěné v `Resources` složky projektu, zejména ikonu značky (této výchozí ikonu Engagement). Pro univerzální aplikace také můžete přesunout `Resources` složky v projektu sdíleného sdílet jeho obsah mezi aplikací, ale bude třeba ponechat `Resources\EngagementConfiguration.xml` souborů na výchozího umístění, jako je platforma závislé.
@@ -67,7 +71,7 @@ Volba mezi dvěma integrace může shrnout takto:
 ### <a name="overlay-integration"></a>Integrace překrytí
 Překrytí Engagement dynamicky přidá prvky uživatelského rozhraní slouží k zobrazení kampaně Reach v stránku. Pokud překrytí nebude vyhovovat rozložení byste měli zvážit webové zobrazení ruční integrace místo.
 
-V souboru změny XAML `EngagementPage` odkaz na`EngagementPageOverlay`
+V souboru změny XAML `EngagementPage` odkaz na `EngagementPageOverlay`
 
 * Přidejte do deklarací oborů názvů:
   
@@ -279,7 +283,7 @@ Zpětné volání můžete nastavit vaše metoda "Veřejné App() {}" vaší `Ap
 > 
 > 
 
-## <a id="push-channel-sharing"></a>Push sdílení kanálu
+## <a id="push-channel-sharing"></a> Push sdílení kanálu
 Pokud používáte nabízená oznámení pro jiný účel ve vaší aplikaci budete muset použít nabízenou kanál sdílení funkce sady Engagement SDK. Tím se vyhnete zmeškaných push.
 
 * Můžete zadat vlastní kanál nabízené k inicializaci Engagement Reach. Sada SDK použije místo požaduje novou.

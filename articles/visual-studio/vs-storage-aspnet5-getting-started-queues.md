@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s fronty úložiště a Visual Studio připojené služby (ASP.NET Core) | Microsoft Docs"
-description: "Jak začít používat fronty Azure storage v projektu ASP.NET Core v sadě Visual Studio"
+title: Začínáme s fronty úložiště a Visual Studio připojené služby (ASP.NET Core) | Microsoft Docs
+description: Jak začít používat fronty Azure storage v projektu ASP.NET Core v sadě Visual Studio
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 04977069-5b2d-4cba-84ae-9fb2f5eb1006
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
-ms.author: kraigb
-ms.openlocfilehash: d83ad26e4f96e1a7670c5212b7e9ca8182b7cec4
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.author: ghogen
+ms.openlocfilehash: e2d11102d07eeb151769f81e79abd22dfa1d8734
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Začínáme s fronty úložiště a Visual Studio připojené služby (ASP.NET Core)
 
@@ -172,6 +172,6 @@ Chcete-li odstranit frontu se všemi zprávami, které v ní, zavolejte `Delete`
 messageQueue.Delete();
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
