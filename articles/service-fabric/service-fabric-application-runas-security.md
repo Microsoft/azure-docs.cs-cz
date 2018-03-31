@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: 62917a1d342158ec2114a9204ee1ca9e447284fa
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3df5374911ee6381f25d08d23d565cdf8a7cd12f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Spuštění služby jako účet místního uživatele nebo místní systémový účet
-Pomocí Azure Service Fabric můžete zabezpečit aplikace, které jsou spuštěny v clusteru v rámci jiné uživatelské účty. Ve výchozím nastavení se aplikace Service Fabric běžet pod účtem, proces Fabric.exe kompatibilní se. Service Fabric taky poskytuje možnost spouštět aplikace pod účtem místního uživatelského účtu nebo účtu local system, která se provádí zadáním RunAs zásadu v rámci manifest aplikace. Typy účtů podporovaný místní systém **LocalUser**, **NetworkService**, **LocalService**, a **LocalSystem**.
+Pomocí Azure Service Fabric můžete zabezpečit aplikace, které jsou spuštěny v clusteru v rámci jiné uživatelské účty. Ve výchozím nastavení se aplikace Service Fabric běžet pod účtem, proces Fabric.exe kompatibilní se. Service Fabric taky poskytuje možnost spouštět aplikace pod účtem místního uživatelského účtu nebo účtu local system, která se provádí zadáním RunAs zásadu v rámci manifest aplikace. Typy účtů podporovaný místní systém **LocalUser**, **NetworkService**, **LocalService**, a **LocalSystem**.  Pokud používáte Service Fabric na samostatné clusteru se systémem Windows, můžete spustit službu pod [účtů domény služby Active Directory](service-fabric-run-service-as-ad-user-or-group.md) nebo [skupiny účty spravované služby](service-fabric-run-service-as-gmsa.md).
 
 Můžete také definovat a vytvořit skupiny uživatelů, aby pro každou skupinu pro správu společně lze přidat jeden nebo více uživatelů. To je užitečné, pokud existuje více uživatelů pro různé služby vstupní body a vyžadují, aby byla určité společné oprávnění, které jsou k dispozici na úrovni skupiny.
 

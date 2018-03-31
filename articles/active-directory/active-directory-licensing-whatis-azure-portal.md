@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2018
+ms.date: 03/29/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 1d4151d6c00da618cc008257bcdad4607f8fec49
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1fc4b64a879f090955a5611672acb6b58eb19d73
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Na základě skupiny licencování základy v Azure Active Directory
 
@@ -30,6 +30,9 @@ Použití Microsoft placené cloudové služby, jako je například Office 365, 
 Dosud licence lze přiřadit pouze na úrovni jednotlivých uživatelů, což mohou ztížit správu ve velkém měřítku. Například pokud chcete přidat nebo odebrat uživatelských licencí podle změn v organizaci, jako jsou uživatelé propojení nebo bez organizace nebo oddělení, správce často musíte napsat skript prostředí PowerShell komplexní. Tento skript volá jednotlivé cloudové služby.
 
 Chcete-li tyto problémy vyřešit, obsahuje teď Azure AD na základě skupin licencí. Jeden nebo více licencí produktu můžete přiřadit ke skupině. Azure AD zajistí, že licence jsou přiřazené k všechny členy skupiny. Žádné nové členy, kteří připojit ke skupině jsou přiřazeni příslušné licence. Po skončení skupiny, tyto licence budou odebrány. Tím se eliminuje potřeba pro automatizaci správy licencí pomocí prostředí PowerShell, aby se projevily změny v organizaci a oddělení struktura na jednotlivé uživatele.
+
+>[!NOTE]
+>Tato funkce je aktuálně ve verzi public preview. Připravte se na obnovit nebo odeberte všechny změny. Tato funkce je k dispozici v libovolné předplatné služby Azure Active Directory (Azure AD) verzi public Preview. Když je tato funkce obecně dostupná, může vyžadovat některé aspekty funkce však jeden nebo více licencí Azure Active Directory Premium.
 
 ## <a name="features"></a>Funkce
 

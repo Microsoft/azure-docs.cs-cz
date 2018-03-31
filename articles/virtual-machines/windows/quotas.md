@@ -1,12 +1,12 @@
 ---
-title: "virtuální procesory kvóty pro Azure | Microsoft Docs"
-description: "Další informace o virtuálních procesorů kvóty pro Azure."
-keywords: 
+title: virtuální procesory kvóty pro Azure | Microsoft Docs
+description: Další informace o virtuálních procesorů kvóty pro Azure.
+keywords: ''
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: Drewm3
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
 ms.author: drewm
-ms.openlocfilehash: b481299b62d452bc306c1f9c1fa2cdccd49b818e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 05d84e4b8c0ac84db5d0784e64071931408ec1d6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Virtuální počítač virtuální procesor kvóty
 
@@ -81,8 +81,8 @@ Premium Storage Managed Disks                1 10000 Count
 ## <a name="reserved-vm-instances"></a>Reserved VM Instances
 Vyhrazená instance virtuálních počítačů, která jsou omezená na v rámci jednoho předplatného, bude přidán nový aspekt kvóty virtuální procesory. Tyto hodnoty popisují se počet instancí velikosti stanovené, který musí být nasadit v rámci předplatného. Tyto funkce fungují jako zástupný znak v systému kvóty a zajistit tak, že této kvóty je vyhrazena zajistit vyhrazenou instancí nasadit v rámci předplatného. Například pokud konkrétní předplatné má 10 Standard_D1 vyhrazená instance použití omezení pro vyhrazené instance Standard_D1 bude 10. To způsobí, že Azure a zkontrolujte, zda nejsou vždy alespoň 10 Vcpu k dispozici v celkový místní kvótu Vcpu má být použit pro Standard_D1 instancí a nejsou k dispozici v rámci kvóty virtuální procesor standardní rodiny D má být použit pro instance Standard_D1 minimálně 10 Vcpu.
 
-Pokud zvýšení kvóty je potřeba buď koupit jeden RI předplatné, můžete [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) vaše předplatné.
+Pokud je zvýšení kvóty je nutný k nákupu jeden RI předplatné, můžete [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) vaše předplatné.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o fakturaci a kvóty najdete v tématu [předplatného Azure a omezení služby, kvóty a omezení](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=/azure/billing/TOC.json).

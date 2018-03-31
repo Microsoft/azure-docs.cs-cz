@@ -1,12 +1,12 @@
 ---
-title: "Akcelerace dynamických webů prostřednictvím Azure CDN"
-description: "Podrobné informace akcelerace dynamických webů"
+title: Akcelerace dynamických webů prostřednictvím Azure CDN
+description: Azure CDN podporuje dynamických webů (DSA) acceleration optimalizace pro soubory s dynamickým obsahem.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
 manager: akucer
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli
-ms.openlocfilehash: 713f00f432095b7a8a19996fb7bdb7e5f8d79b63
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d105c88105512df4a9f8d999f64ad001b5d54917
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Akcelerace dynamických webů prostřednictvím Azure CDN
 
@@ -29,9 +29,9 @@ Standardní doručování obsahu (CDN) sítě schopností zahrnuje možnost soub
 **Azure CDN společnosti Akamai** a **Azure CDN společnosti Verizon** nabízejí DSA optimalizace prostřednictvím **optimalizované pro** nabídky během vytvoření koncového bodu.
 
 > [!Important]
-> Pro **Azure CDN společnosti Akamai** pouze profily, k nimž se budete muset změnit optimalizace koncový bod CDN po jeho vytvoření.
+> Pro **Azure CDN společnosti Akamai** profily mají být povoleno změnit optimalizace koncový bod CDN po jeho vytvoření.
 >   
-> **Azure CDN společnosti Verizon** profily, není možné změnit optimalizace koncový bod CDN po jeho vytvoření.
+> Pro **Azure CDN společnosti Verizon** profily, nelze změnit optimalizace koncový bod CDN po jeho vytvoření.
 
 ## <a name="configuring-cdn-endpoint-to-accelerate-delivery-of-dynamic-files"></a>Konfigurace koncového bodu CDN pro urychlení doručování dynamické soubory
 
@@ -104,7 +104,7 @@ Protokol TCP (Transmission Control) je standardní sada protokolů Internet slou
 
 TCP *zpomalit spuštění* je algoritmus, protokolu TCP, která zabraňuje zahlcení sítě omezením množství dat posílaných prostřednictvím sítě. Začíná velikosti okna malé zahlcení mezi odesílatele a příjemce až do dosažení maximální nebo je zjištěna ztráta paketů.
 
- Obě **Azure CDN společnosti Akamai** a **Azure CDN společnosti Verizon** eliminovat TCP pomalé začněte s následující tři kroky:
+ Obě **Azure CDN společnosti Akamai** a **Azure CDN společnosti Verizon** profily eliminovat TCP pomalé začněte s následující tři kroky:
 
 1. Šířka pásma sledování stavu a se používá k měření šířky pásma připojení mezi servery edge PoP.
     
@@ -146,25 +146,38 @@ Komprese Adaptivní bitové kopie | Přípony souborů
 --- | ---  
 Komprese JPEG | .jpg, .jpeg, .jpe, .jig, .jgig, .jgi
 
-## <a name="caching"></a>Mezipaměť
+## <a name="caching"></a>Ukládání do mezipaměti
 
 S DSA, ukládání do mezipaměti je ve výchozím nastavení vypnuté na CDN, i když počátek zahrnuje `Cache-Control` nebo `Expires` hlavičky v odpovědi. DSA se obvykle používá pro dynamické prostředky, které by neměly uložené v mezipaměti, protože jsou jedinečné pro každého klienta. Ukládání do mezipaměti může dojít k narušení toto chování.
 
 Pokud máte web se smíšenými statické a dynamické prostředky, je nejlepší postup hybridní získat nejlepší výkon. 
 
-Pro **Azure CDN společnosti Verizon Premium** profilů, můžete zapnout na ukládání do mezipaměti pro určité případy pomocí [stroj pravidel](cdn-rules-engine.md) pro DSA koncové body. Všechna pravidla, které jsou vytvořené ovlivňují jenom těchto koncových bodů vašeho profilu, které jsou optimalizované pro DSA. 
+Pro **Azure CDN společnosti Verizon Standard** a **Azure CDN společnosti Akamai Standard** profilů, můžete zapnout pomocí ukládání do mezipaměti pro specifické koncové body DSA [ukládání do mezipaměti pravidla](cdn-caching-rules.md).
 
-Pro přístup k stroj pravidel pro koncové body DSA:
+Pro přístup k ukládání do mezipaměti pravidla:
+
+1. Z **profil CDN** stránky v části nastavení, vyberte **ukládání do mezipaměti pravidla**.  
+    
+    ![Ukládání do mezipaměti CDN tlačítko pravidla](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
+
+    **Ukládání do mezipaměti pravidla** otevře se stránka.
+
+2. Vytvořte globální nebo vlastní ukládání do mezipaměti pravidlo pro zapnutí ukládání do mezipaměti pro koncový bod služby DSA. 
+
+Pro **Azure CDN společnosti Verizon Premium** pouze profily, zapnete pomocí ukládání do mezipaměti pro specifické koncové body DSA [stroj pravidel](cdn-rules-engine.md). Všechna pravidla, které jsou vytvořené ovlivňují jenom těchto koncových bodů vašeho profilu, které jsou optimalizované pro DSA. 
+
+Pro přístup k stroj pravidel:
     
 1. Z **profil CDN** vyberte **spravovat**.  
     
-    ![Tlačítko Spravovat profil CDN](./media/cdn-rules-engine/cdn-manage-btn.png)
+    ![Tlačítko Spravovat profil CDN](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     Otevře se na portálu pro správu CDN.
 
 2. Z portálu pro správu CDN vyberte **ADN**, pak vyberte **stroj pravidel**. 
 
-    ![Stroj pravidel pro agenta DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
+    ![Stroj pravidel pro agenta DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
+
 
 
 Alternativně můžete použít dva koncové body CDN: optimalizovaný jeden koncový bod se DSA k poskytování dynamické prostředky a jiným koncovým bodem optimalizovaný se statickou optimalizace typu, například obecné webové přenosy k doručení Uložitelný prostředky. Upravte adresám URL webové stránky na přímý odkaz na prostředek na koncového bodu CDN, které chcete používat. 

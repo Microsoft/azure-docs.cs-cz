@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2018
 ms.author: arramac
-ms.openlocfilehash: e31b66f20c51e95dbc2d8285bb5602590abd4f4f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 567f035bdb293353090ee107f8d24da845e15154
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Jak se bude distribuovat dat globálně pomocí Azure Cosmos DB
 Azure je všudypřítomný – má globální nároků přes 30 + zeměpisné oblasti a průběžně zvětšuje. S jeho po celém světě přítomnosti jeden odlišné možnosti, které Azure nabízí pro jeho vývojáře je schopnost vytvářet, nasazovat a spravovat snadno globálně distribuované aplikace. 
@@ -36,7 +36,7 @@ S připraveného globální distribuční databázi Cosmos Azure, nemají vývoj
 V tomto článku poskytujeme přehled možností globální distribuční databázi Cosmos Azure. Můžeme také popisují Azure Cosmos DB jedinečný přístup k poskytování komplexní SLA. 
 
 ## <a id="EnableGlobalDistribution"></a>Povolení připraveného globální distribuční
-Azure Cosmos DB poskytuje následující funkce, které vám umožní snadno psaní planetu škálování aplikací. Tyto možnosti jsou dostupné prostřednictvím založenou na poskytovateli prostředků Azure Cosmos DB [rozhraní REST API](https://docs.microsoft.com/rest/api/documentdbresourceprovider/) a také na portálu Azure.
+Azure Cosmos DB poskytuje následující funkce, které vám umožní snadno psaní planetu škálování aplikací. Tyto možnosti jsou dostupné prostřednictvím založenou na poskytovateli prostředků Azure Cosmos DB [rozhraní REST API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/) a také na portálu Azure.
 
 V následujícím videu demonstruje Azure manažer programu DB Cosmos Andrew Liu připraveného globální distribuční funkce.
 

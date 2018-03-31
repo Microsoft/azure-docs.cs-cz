@@ -1,6 +1,6 @@
 ---
 title: Předávání dat úloh Azure Automation do Log Analytics
-description: Tento článek ukazuje, jak odesílat stav úlohy a runbook proudy úlohy Microsoft Operations Management Suite Log Analytics k poskytování další aspekty a správu.
+description: Tento článek ukazuje, jak odesílat stav úlohy a runbook proudy úlohy k Azure Log Analytics k poskytování správy a další aspekty.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c9b604b0fc7a3524686bec6832a19ee9f85f6ed2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 116096fb27af299545a0f9a6adf57d794bbb2f6e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Předávání zpráv o stavu úlohy a datové proudy úlohy ze služby Automation k analýze protokolů
 Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pracovního prostoru analýzy protokolů. Protokoly úlohy a datové proudy úlohy jsou viditelné na portálu Azure nebo v prostředí PowerShell pro jednotlivé úlohy a to umožňuje provádět jednoduché šetření. Pomocí analýzy protokolů můžete nyní:

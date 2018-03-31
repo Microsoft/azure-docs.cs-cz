@@ -1,23 +1,23 @@
 ---
-title: "Povolit zálohování virtuálních počítačů Azure při vytváření | Microsoft Docs"
-description: "Prohlédněte si postup povolení zálohování virtuálního počítače Azure během procesu vytváření."
+title: Povolit zálohování virtuálních počítačů Azure při vytváření | Microsoft Docs
+description: Prohlédněte si postup povolení zálohování virtuálního počítače Azure během procesu vytváření.
 services: backup, virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
+ms.assetid: ''
 ms.service: backup, virtual-machines
 ms.devlang: na
 ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2018
 ms.author: trinadhk
-ms.openlocfilehash: 4041fc555fe4b61d10f84236dcae5156c6282fd3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: e16714eee697d9dc8102b5f29d9639d650517562
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="enable-backup-during-azure-virtual-machine-creation"></a>Povolit zálohování při vytvoření virtuálního počítače Azure 
 
@@ -57,6 +57,10 @@ Pokud jste ještě nejsou v přihlášení ke svému účtu, přihlaste se k [po
 ## <a name="initiate-a-backup-after-creating-the-vm"></a>Spustit zálohování, po vytvoření virtuálního počítače 
 
 I když byly vytvořeny zásady zálohování, je vhodné vytvořit prvotní zálohování. Chcete-li zobrazit podrobnosti zálohování pro virtuální počítač po dokončení šablony vytvoření virtuálního počítače, z **operace** nastavit nabídky na levé straně, klikněte na tlačítko **zálohování**. To můžete spustit zálohování na vyžádání, obnovte úplnou virtuálního počítače nebo všechny disky, obnovit soubory ze zálohy virtuálního počítače nebo změnit zásady zálohování, které jsou spojené s virtuálním počítačem.  
+
+## <a name="using-a-resource-manager-template-to-deploy-a-protected-vm"></a>Pomocí šablony Resource Manageru k nasazení chráněných virtuálních počítačů
+
+Předchozí kroky vysvětlují, jak používat portál Azure k vytvoření virtuálního počítače a chránit do trezoru služeb zotavení. Pokud chcete rychle nasadit jeden nebo více virtuálních počítačů a chránily do trezoru služeb zotavení, uvidí šablonu, [nasadit virtuální počítač s Windows a povolení zálohování](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy 
 

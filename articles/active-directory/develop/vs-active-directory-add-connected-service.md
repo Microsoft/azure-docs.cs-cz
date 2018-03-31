@@ -1,11 +1,11 @@
 ---
-title: "Přidání Azure Active Directory pomocí připojené služby v sadě Visual Studio | Microsoft Docs"
-description: "Přidat Azure Active Directory pomocí dialogu Visual Studio přidat připojení služby"
+title: Přidání Azure Active Directory pomocí připojené služby v sadě Visual Studio | Microsoft Docs
+description: Přidat Azure Active Directory pomocí dialogu Visual Studio přidat připojení služby
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
 ms.service: active-directory
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/12/2018
-ms.author: kraigb
-ms.openlocfilehash: b21761b6fc166ecbb2fec9c13e5e207481fa9a39
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: ghogen
+ms.openlocfilehash: 882ba1c7ea8ef6889bc9ad20031070cd54100026
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Přidání Azure Active Directory pomocí připojené služby v sadě Visual Studio
 
@@ -60,8 +60,8 @@ V současné době nepodporuje službu Active Directory, které jsou připojené
 
 1. Po dokončení procesu Visual Studio otevře prohlížeč na jednu z následujících článků, v závislosti na typu vašeho projektu:
 
-    - [Začínáme s .NET MVC projekty](vs-active-directory-dotnet-getting-started.md)
-    - [Začínáme s WebAPI projekty](vs-active-directory-webapi-getting-started.md)
+    - [Začínáme s projekty .NET MVC](vs-active-directory-dotnet-getting-started.md)
+    - [Začínáme s projekty WebAPI](vs-active-directory-webapi-getting-started.md)
 
 1. Domény služby Active Directory můžete také zjistit na [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
@@ -69,10 +69,10 @@ V současné době nepodporuje službu Active Directory, které jsou připojené
 
 Při přidání připojené služby v průvodci, Visual Studio přidá Azure Active Directory a přidružené odkazy na projekt. Přidání podpory pro Azure AD jsou také upravit konfigurační soubory a soubory kódu v projektu. Určité změny, které sada Visual Studio provádí závisí na typu projektu. Najdete v následujících článcích podrobnosti:
 
-- [Co se stalo s .NET MVC projektu?](vs-active-directory-dotnet-what-happened.md)
+- [Co se stalo s mým projektem .NET MVC?](vs-active-directory-dotnet-what-happened.md)
 - [Co se stalo s Moje projekt webového rozhraní API?](vs-active-directory-webapi-what-happened.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Scénáře ověřování pro Azure Active Directory](active-directory-authentication-scenarios.md)
 - [Přidání přihlášení se společností Microsoft do webové aplikace ASP.NET](guidedsetups/active-directory-aspnetwebapp-v1.md)

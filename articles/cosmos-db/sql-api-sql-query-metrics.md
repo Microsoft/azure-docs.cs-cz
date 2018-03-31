@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: a92d2ed1686765a54812ff82066bc30c1d48848d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c0ba9934afef6cb4d546e315c271cc19b6d3fa02
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů s Azure Cosmos DB
 
@@ -138,7 +138,7 @@ Hlavičky odpovědi klíče vrácená z dotazu zahrnují následující:
 | `x-ms-documentdb-query-metrics` | Statistika dotazu pro spuštění. Toto je oddělený řetězec obsahující statistiky času stráveného v různých fázích spuštění dotazu. Vrácené v případě `x-ms-documentdb-populatequerymetrics` je nastaven na `True`. | 
 | `x-ms-request-charge` | Počet [požadované jednotky](request-units.md) spotřebovávají dotazu. | 
 
-Podrobnosti o hlavičky požadavku REST API a možnostech najdete v tématu [dotaz na prostředky, pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/documentdb/querying-documentdb-resources-using-the-rest-api).
+Podrobnosti o hlavičky požadavku REST API a možnostech najdete v tématu [dotaz na prostředky, pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
 
 ## <a name="best-practices-for-query-performance"></a>Osvědčené postupy pro výkon dotazů
 Níže jsou většiny běžných faktorů, které mít vliv na výkon dotazů Azure Cosmos DB. Jsme podrobněji prozkoumat každý z těchto témat v tomto článku.

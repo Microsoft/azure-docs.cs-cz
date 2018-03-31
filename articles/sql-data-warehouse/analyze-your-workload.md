@@ -1,27 +1,21 @@
 ---
-title: "Analyzovat vaše úlohy – Azure SQL Data Warehouse | Microsoft Docs"
-description: "Techniky pro analýzu spustit dotaz pro stanovení priorit pro úlohy v Azure SQL Data Warehouse."
+title: Analyzovat vaše úlohy – Azure SQL Data Warehouse | Microsoft Docs
+description: Techniky pro analýzu spustit dotaz pro stanovení priorit pro úlohy v Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
-ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
-ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 10/23/2017
-ms.author: joeyong;barbkess;kavithaj
-ms.openlocfilehash: 98617f6b8366662e52d00420adc4c81abffc598d
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.topic: conceptual
+ms.component: manage
+ms.date: 03/28/2018
+ms.author: joeyong
+ms.reviewer: jrj
+ms.openlocfilehash: 7fa5bbd8d9a50bb1dcd1ab5be73f4e248cbbf8fc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="analyze-your-workload"></a>Analyzovat vaše úlohy
+# <a name="analyze-your-workload"></a>Analýza úloh
 Techniky pro analýzu spustit dotaz pro stanovení priorit pro úlohy v Azure SQL Data Warehouse.
 
 ## <a name="workload-groups"></a>Skupiny úloh 
@@ -47,7 +41,7 @@ Následující tabulka uvádí důležitosti mapování pro každou skupinu úlo
 Z **přidělení a využití souběžnosti přihrádky** grafu, zjistíte, že DW500 používá 1, 4, 8 nebo 16 souběžnosti sloty pro smallrc, mediumrc, largerc a xlargerc, v uvedeném pořadí. Tyto hodnoty lze vyhledat v předchozí tabulce najít význam pro každou třídu prostředků.
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500 mapování třídy prostředků na význam
-| Třída prostředků | Skupina úlohy | Použít sloty souběžnosti | MB / distribuce | Význam |
+| Třída prostředků | Skupina úlohy | Použít sloty souběžnosti | MB / distribuce | Důležitost |
 |:-------------- |:-------------- |:----------------------:|:-----------------:|:---------- |
 | smallrc        | SloDWGroupC00  | 1                      | 100               | Střednědobé používání     |
 | mediumrc       | SloDWGroupC02  | 4                      | 400               | Střednědobé používání     |
@@ -234,7 +228,7 @@ FROM    sys.dm_pdw_wait_stats w
 ;
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o správě uživatelů a zabezpečení najdete v tématu [zabezpečení databáze v SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Další informace o tom, jak větší třídy prostředků můžete zlepšení kvality indexu columnstore clusteru, najdete v části [nové sestavení indexů ke zlepšení kvality segment].
 
 <!--Image references-->

@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní – kampaně Reach"
-description: "Laern jak vytvářet a spravovat nabízených oznámení kampaně pomocí Azure Mobile Engagement"
+title: Azure Mobile Engagement uživatelské rozhraní – kampaně Reach
+description: Laern jak vytvářet a spravovat nabízených oznámení kampaně pomocí Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2fe124a2-a86f-4136-81ba-a9d298ec798a
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: fc88db8db11d1ed12fa95c2087c9a32b21bf4de5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d457a8d5f68f70f6bf7a5f086b5e1d65bd1ea95
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-manage-push-notification-campaigns"></a>Jak vytvořit a spravovat kampaní nabízených oznámení
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 V části Reach UI slouží k vytvoření nové kampaně nabízených s komplexní vzorec tím, že poskytuje všechny informace, které potřebujete k odesílání nabízených oznámení. Možnosti nabízené kampaně mírně lišit v závislosti na typech čtyři kampaň: oznámení, hlasování, datová oznámení a dlaždice (pouze Windows Phone).
 
 ### <a name="option-applies-to"></a>Možnost se vztahuje na:
@@ -32,12 +36,12 @@ V části Reach UI slouží k vytvoření nové kampaně nabízených s komplexn
 * Časový rámec: oznámení, hlasování, dlaždice
 * Test: Všechny (oznámení, hlasování, datová oznámení, dlaždice)
 
-![Reach Campaign1][20]
+![Reach-Campaign1][20]
 
 ## <a name="languages"></a>Jazyky
 Rozevírací nabídky jazyků můžete použít k odeslání jinou verzi vaší nabízené do zařízení, které jsou nastavené na používají různé jazyky. Ve výchozím nastavení všechna zařízení se zobrazí stejné nabízeného oznámení bez ohledu na to, v jakém jazyce jsou nastaveny na používání. Uživatelé s jejich zařízení nastaven jiný jazyk, se zobrazí výchozí jazykovou verzi nabízeného oznámení. Mnohé z možností kampaň nabízených umožňují zadat alternativní obsah pro každý další jazyky, které vyberete. 
 
-![Reach Campaign2][21]
+![Reach-Campaign2][21]
 
 ### <a name="language-differences-apply-to"></a>Jazyk rozdíly platí pro:
 * Jazyky: Jedinečný jazyky může být vybraný kromě výchozí jazyk
@@ -72,7 +76,7 @@ Rozevírací nabídky jazyků můžete použít k odeslání jinou verzi vaší 
 * Lotyština (lv) 
 * Litevština (lt) 
 * Malajština (macrolanguage) (ms) 
-* Norština, Bokmål (nb) 
+* Norwegian Bokmål (nb) 
 * Polština (pl) 
 * Portugalština (pt) 
 * Rumunština (ro) 
@@ -94,7 +98,7 @@ V části kampaň můžete použít k nastavení názvu a kategorie kampaně tak
 > [!WARNING]
 > Pokud použijete možnost "Ignorovat cílovou skupinu, nabízení se se uživatelům odešle přes rozhraní API" v části "Kampaň" kampaně Reach, kampaň se neodesílal automaticky, musíte ručně odesílání prostřednictvím rozhraní Reach API.
 
-![Reach Campaign3][22]
+![Reach-Campaign3][22]
 
 ### <a name="option-applies-to"></a>Možnost se vztahuje na:
 * Název: všechny
@@ -119,10 +123,10 @@ V části kampaň můžete použít k nastavení názvu a kategorie kampaně tak
 ## <a name="content"></a>Obsah
 Části obsahu můžete upravovat obsah oznámení, hlasování, datová oznámení a dlaždice (pouze Windows Phone). Nastavení obsahu kampaní nabízených je specifické pro daný typ kampaně. 
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Dokumentace k uživatelského rozhraní – dosáhnout – Push obsahu][Link 29]
 
-![Reach Campaign5][24]
+![Reach-Campaign5][24]
 
 ## <a name="audience"></a>Cílová skupina
 V části cílové skupiny můžete definovat standardní seznam položek, které mají omezit kampaně nebo omezení kampaň na základě přizpůsobené kritérií. Standardní sada možností pro omezení cílovou skupinu umožňuje odešlete do nové nebo staré uživatele nebo pouze uživatele nativního nabízení. Můžete také nastavit kvótu omezit počet uživatelů, kteří obdrží nabízeného oznámení. Výraz pro filtrování kampaň zahrnout jeden nebo více kritéria pro cílové uživatele můžete ručně upravit. Výraz cílové skupiny, můžete zadat ručně. Takové výraz musí explicitně definovat vztah mezi kritérii. Kritérium se popisuje identifikátor, který musí začínat velkým písmenem a nesmí obsahovat mezery. Vztah mezi kritéria lze popsat pomocí 'a', 'nebo', 'není operátory a také '(',')'. Příklad: "Criterion1 nebo (Criterion1 a není Criterion2)".
@@ -135,10 +139,10 @@ V části cílové skupiny můžete definovat standardní seznam položek, kter�
 * Push jenom na aktivní uživatele (zaškrtávací políčko "zaujmout jen uživatele, kteří se dají oslovit pomocí nativního nabízení" a "Zaujmout jen aktivní uživatele"), aby pouze vaši uživatelé, kteří stále mít nainstalovanou aplikaci a použít ho bude muset být kontrolována.
   Jakmile je definovány cílovou skupinu, můžete zjistit počet uživatelů, kteří obdrží tato nabízená tlačítko Simulovat. To bude vypočte se počet známých uživatelů potenciálně cílem touto cílovou skupinou (jde o odhad vycházející z náhodného vzorku uživatelů). Uvědomte si, že součástí této cílové skupiny jsou i uživatelé, kteří aplikaci odinstalovali, ale není dostupný.
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Nové nabízené kritérium dokumentace - Reach - uživatelského rozhraní][Link 28]
 
-![Reach Campaign6][25]
+![Reach-Campaign6][25]
 
 ### <a name="edit-expression"></a>Upravit výraz
 ![Reach Campaign7][26]
@@ -157,10 +161,10 @@ Nastavení, když bude zasláno nabízeného oznámení nebo časový rámec mů
 > [!NOTE]
 > Kampaně bez koncové datum může ukládat do mezipaměti nabízených oznámení místně a stále je zobrazit po můžete ručně dokončení kampaně. Aby se zabránilo toto chování konkrétní koncový čas pro kampaně.
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Dosažení – jak Tos – plánování][Link 3] 
 
-![Reach Campaign8][27]
+![Reach-Campaign8][27]
 
 ### <a name="settings-apply-to"></a>Nastavení se vztahují na:
 * Časový rámec: oznámení, hlasování, dlaždice
@@ -171,7 +175,7 @@ Testovací část vám pomůže tento nabízené poslat testovací zařízení p
 > [!NOTE]
 > Žádné na straně serveru, který data se protokolují, když použijete tlačítko pro "test" nabízených oznámení, data se protokolují pouze pro skutečné nabízené kampaně.
 
-### <a name="see-also"></a>Viz také
+### <a name="see-also"></a>Další informace najdete v tématech
 * [Dokumentace k uživatelského rozhraní – Můj účet][Link 14]
 
 ![Reach Campaign9][28]

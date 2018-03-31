@@ -1,6 +1,6 @@
 ---
-title: "Známé problémy a Průvodci odstraňováním potíží | Microsoft Docs"
-description: "Příručka k řešení a seznam známých problémů"
+title: Známé problémy a Průvodci odstraňováním potíží | Microsoft Docs
+description: Příručka k řešení a seznam známých problémů
 services: machine-learning
 author: svankam
 ms.author: svankam
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: 62207fa20c4660d1e828053ee73953cb68af1b9d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3699e2a59061d8a2870a263588917268ca504866
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench – známé problémy a Průvodce odstraňováním potíží s 
 Tento článek vám pomůže najít a opravy chyb nebo selhání došlo jako součást pomocí aplikace Azure Machine Learning Workbench. 
@@ -231,13 +231,21 @@ Také se můžete vyhnout sdílení problém, na malé výkonu náklady, nastave
 ## <a name="wipe-clean-workbench-installation"></a>Vymazání čistou instalaci Workbench
 Obecně nemusíte to udělat. Ale v případě, že je zapotřebí vymazat čisté instalace, tady jsou kroky:
 
-- On Windows:
+- Ve Windows:
   - Nejdříve se ujistěte, používáte _přidat nebo odebrat programy_ aplet v _ovládací panely_ odebrat _Azure Machine Learning Workbench_ aplikaci.  
   - Potom můžete stáhnout a spustit některý z následujících skriptů:
     - [Skript příkazového řádku Windows](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.cmd).
     - [Skript prostředí Windows PowerShell](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1). (Možná budete muset spustit `Set-ExecutionPolicy Unrestricted` v okně prostředí PowerShell oprávněními zvýšenými na úroveň oprávnění před spuštěním skriptu.)
 - On macOS:
   - Právě stažení a spuštění [skript prostředí bash systému macOS](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_mac.sh).
+
+## <a name="azure-ml-using-a-different-python-location-than-the-azure-ml-installed-python-environment"></a>Azure ML použití python jiné umístění než Azure ML nainstalované prostředí python
+Kvůli změnám v nástroji Azure Machine Learning Workbench uživatelé všimnout, že místní spuštění nemusí ukazují prostředí python, který je nainstalován pomocí nástroje Azure ML Workbench už. To může dojít, pokud uživatel mít jiné prostředí python, které jsou v počítači nainstalovanou a nastavení cesty "Python" tak, aby odkazoval na prostředí. Chcete-li používat Azure ML Workbench nainstalovaná prostředí Python, postupujte takto:
+- Přejděte na soubor local.compute složce aml_config v rámci kořenového adresáře projektu.
+- Změna proměnnou "pythonLocation" tak, aby odkazoval na fyzickou cestu nástroje Azure ML workbench nainstalovaná prostředí python. Tuto cestu můžete získat dvěma způsoby:
+    - Umístění Azure ML python najdete na %localappdata%\AmlWorkbench\python\python.exe
+    - můžete otevřít cmd z Azure ML Workbench, zadejte na příkazovém řádku python, importovat sys.exe, spustit sys.executable a získání cesty z ní. 
+
 
 
 ## <a name="some-useful-docker-commands"></a>Některé užitečné příkazy Docker

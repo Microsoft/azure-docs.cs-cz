@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3f33703ec86f131d18c89cf4b29514c5002349d1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 1893601f9fe9018cb51e6e31b6f9c397a0da38da
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -214,7 +214,7 @@ Ano. Budete muset vytvořit bránu ExpressRoute v rámci virtuální sítě. Exi
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Proč se veřejné IP adresy přidružené k bránu virtuální sítě?
 
-Veřejná IP adresa se používá pro interní správu jenom. Tato veřejná IP adresa není přístup k Internetu a nepředstavuje ohrožení zabezpečení vaší virtuální sítě.
+Veřejná IP adresa se používá pro interní správu jenom a nepředstavuje ohrožení zabezpečení vaší virtuální sítě.
 
 ### <a name="what-do-i-need-to-connect-to-azure-storage-over-expressroute"></a>Co je potřeba připojit k úložišti Azure přes ExpressRoute?
 

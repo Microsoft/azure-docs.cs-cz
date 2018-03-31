@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní – Můj účet"
-description: "Zjistěte, jak spravovat váš účet profilu a testovací zařízení pomocí Azure Mobile Engagement"
+title: Azure Mobile Engagement uživatelské rozhraní – Můj účet
+description: Zjistěte, jak spravovat váš účet profilu a testovací zařízení pomocí Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 22832678-3959-4b8c-9fb2-f2ff5974e5d1
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 4e463e973dcfa1faa7b08e4738192161980b3aa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89ef4f97a03ab0334f5474fb5b0ad2fd44f23518
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-your-account-profile-and-test-devices"></a>Správa vašeho účtu profil a testovací zařízení
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tento článek popisuje **Domů** stránky **Mobile Engagement** portálu. Můžete použít **Mobile Engagement** portálu ke sledování a správě mobilních aplikací. 
 
 Abyste se dostali na **Můj účet** klikněte na váš účet horní části stránky.
@@ -57,7 +61,7 @@ Použít rozhraní API Push nebo rozhraní API pro zařízení, musíte znát va
 ## <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží s
 * [Průvodce odstraňováním potíží s – služby][Link 24]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Dokumentace k uživatelského rozhraní – Domovská][Link 13]
 
 <!--Image references-->

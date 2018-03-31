@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní - Analytics"
-description: "Zjistěte, jak analyzovat historická data o vaší aplikaci pomocí Azure Mobile Engagement"
+title: Azure Mobile Engagement uživatelské rozhraní - Analytics
+description: Zjistěte, jak analyzovat historická data o vaší aplikaci pomocí Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6b2533ac-b8ec-4e35-872c-d563895bdc0c
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ad05676919d6c254d60fd010c3f589f663c4745d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fceae1ffff40fc525170121181e21726fe2bd3f7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-analyze-historical-data-about-your-application"></a>Jak analyzovat historická data o vaší aplikace
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tento článek popisuje **ANALYTICS** kartě **Mobile Engagement** portálu. Můžete použít **Mobile Engagement** portálu ke sledování a správě mobilních aplikací. Všimněte si, že pokud chcete začít používat portál musíte nejprve vytvořit **Azure Mobile Engagement** účtu.
 
 Analýza část uživatelského rozhraní obsahuje souhrnné informace o aplikaci na základě historických dat, který se aktualizuje každých 24 hodin. Informace se zobrazí na jiné řídicí panely skládá z řádku, řádku/výsečové grafy, mřížky a mapy. Data můžete také stáhnout jako soubory .csv. Většina stejné informace je k dispozici v reálném čase v části monitorování uživatelského rozhraní a je také přístupný z rozhraní API Analytics.
@@ -31,7 +35,7 @@ Analýza část uživatelského rozhraní obsahuje souhrnné informace o aplikac
 ## <a name="standard-and-custom-analytics"></a>Standardní a vlastní Analytics
 Azure Mobile Engagement poskytuje sadu basic, standard analytické informace o aplikacích, které může být proto vytvořen při integraci aplikace s SDK. Azure Mobile Engagement také poskytuje schopnost shromažďovat informace o další vlastní analýzy, které chcete o chování vlastní koncoví uživatelé. To provedete tak, že vytvoříte plán značek vlastní "značky (app-info)", vytvořené z **nastavení** tak, aby Azure Mobile Engagement může shromažďovat tato další data za vás.
 
-## <a name="analytics"></a>Analýza
+## <a name="analytics"></a>Analýzy
 * Řídicí panel: Zobrazuje obecné informace o nových a aktivující uživatelům a jejich vývoj.
 * Uživatelé: Uživatelé se identifikují podle identifikátoru zařízení: Tento identifikátor je jedinečný pro každé zařízení (jeden nový uživatel je ve skutečnosti jedno nové zařízení). Uživatel se považuje za nové v daném časovém intervalu Pokud uskutečnil během tohoto intervalu uskutečnil první relaci. Uživatel se považuje za udrženého, pokud během posledních 7 dnů uskutečnil alespoň jednu relaci. Aktivní uživatelé jsou uživatelé, kteří provedené alespoň jednu relaci během daného období. Můžete řadit, měsíčně, týdně, denní nebo každou hodinu časových období. Všechny grafy vypadat podobně jako ale umožňují filtrovat podle různých funkcí, jako je například verzi vaší aplikace a potom seřadit podle v časovém intervalu. Standardní informace o shromažďovaných funkcí integraci sady SDK zahrnuje následující: aktivních uživatelů, nového uživatele, počet relací, délka každé relaci, technické informace o zemi, místní hodnoty, umístění, poskytovatel jazyk, zařízení, firmwaru, sítě (Wi-Fi) , verze aplikace a sady SDK, používaných zákazníky. Tuto informaci lze zobrazit v reálném čase z části monitorování.
 
@@ -70,7 +74,7 @@ Přehled uchování je rozdělena uprostřed do několik karet, každý zobrazuj
 4. Označuje hodnoty používané pro výpočet.
 5. Toto je minigraf historii hodnot uchovávání informací. Umožňuje zobrazit hodnoty v minulosti tak, aby měl jak vyvinuly široký zobrazení.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Koncepty][Link 6]
 * [Řešení potíží s příručce služby][Link 24]
 

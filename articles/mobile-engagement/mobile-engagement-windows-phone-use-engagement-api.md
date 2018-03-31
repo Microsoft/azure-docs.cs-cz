@@ -1,11 +1,11 @@
 ---
-title: "Jak používat Engagement rozhraní API na Windows Phone Silverlight"
-description: "Jak používat Engagement rozhraní API na Windows Phone Silverlight"
+title: Jak používat Engagement rozhraní API na Windows Phone Silverlight
+description: Jak používat Engagement rozhraní API na Windows Phone Silverlight
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ae2ba2e8-f75b-4dee-a164-a7dd65d35a23
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ec8b6c13ea052c8063dfde4321cdd286ab6cb817
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03673924ee7734fcf6f1f4f7c744616844fdc87a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-windows-phone-silverlight"></a>Jak používat Engagement rozhraní API na Windows Phone Silverlight
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Tento dokument je doplněk k dokumentu [jak integrovat Mobile Engagement v aplikaci Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md). Poskytuje hloubka podrobnosti o tom, jak použít rozhraní API Engagement sestavy statistik vaší aplikace.
 
 Pokud chcete Engagement ohlásí aplikace relací, aktivity, dojde k chybě a technické informace, pak se nejjednodušší způsob, jak provést všechny vaše `PhoneApplicationPage` dílčí třídy dědí `EngagementPage` třídy.
@@ -51,7 +55,7 @@ Je třeba volat `StartActivity()` pokaždé, když změny aktivity uživatelů. 
 > 
 > 
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
             EngagementAgent.Instance.StartActivity("main", new Dictionary<object, object>() {{"example", "data"}});
 
 ### <a name="user-ends-his-current-activity"></a>Uživatel končí jeho aktuální aktivita
@@ -60,7 +64,7 @@ Je třeba volat `StartActivity()` pokaždé, když změny aktivity uživatelů. 
 
 Je třeba volat `EndActivity()` alespoň jednou po dokončení uživatele poslední aktivita. Tento příkaz informuje sady Engagement SDK, že je uživatel aktuálně nečinnosti, a že relaci uživatele, který je třeba ukončit jednou časový limit relace vyprší (při volání `StartActivity()` předtím, než vyprší časový limit relace, relace se jednoduše pokračuje).
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
             EngagementAgent.Instance.EndActivity();
 
 ## <a name="reporting-jobs"></a>Úlohy sestav
@@ -70,7 +74,7 @@ Je třeba volat `EndActivity()` alespoň jednou po dokončení uživatele posled
 
 Úlohy můžete sledovat certains úlohy v časovém intervalu.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
             // An upload begins...
 
             // Set the extras
@@ -86,7 +90,7 @@ Je třeba volat `EndActivity()` alespoň jednou po dokončení uživatele posled
 
 Jakmile úloha sledovány v rámci úlohy byla ukončena, by měly volat metodu EndJob pro tuto úlohu zadáním název úlohy.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
             // In the previous section, we started an upload tracking with a job
             // Then, the upload ends
 
@@ -105,7 +109,7 @@ Je k dispozici tři typy událostí:
 
 Samostatné události může dojít mimo kontext relace.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
             EngagementAgent.Instance.SendEvent("event", extra);
 
 ### <a name="session-events"></a>Události relací
@@ -114,7 +118,7 @@ Samostatné události může dojít mimo kontext relace.
 
 Relace události se obvykle používají k hlášení akcí prováděná uživatelem během jeho relace.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 **Bez dat:**
 
             EngagementAgent.Instance.SendSessionEvent("sessionEvent");
@@ -135,7 +139,7 @@ Relace události se obvykle používají k hlášení akcí prováděná uživat
 
 Události úlohy jsou obvykle používají k hlášení akcí prováděná uživatelem během úlohy.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
             EngagementAgent.Instance.SendJobEvent("eventName", "jobName", extras);
 
 ## <a name="reporting-errors"></a>Zasílání zpráv o chybách
@@ -151,7 +155,7 @@ Je k dispozici tři typy chyb:
 
 Rozporu s touto relací chyb může dojít k chybám samostatné mimo kontext relace.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
             EngagementAgent.Instance.SendError("errorName", extras);
 
 ### <a name="session-errors"></a>Chyby relace
@@ -160,7 +164,7 @@ Rozporu s touto relací chyb může dojít k chybám samostatné mimo kontext re
 
 Relace chyby jsou obvykle používají k hlášení chyb během jeho relace, které mají vliv uživatele.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
             EngagementAgent.Instance.SendSessionError("errorName", extra);
 
 ### <a name="job-errors"></a>Chyby úloh
@@ -169,7 +173,7 @@ Relace chyby jsou obvykle používají k hlášení chyb během jeho relace, kte
 
 Chyby může souviset s probíhající úlohou místo má vztah k aktuální uživatelskou relaci.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
             EngagementAgent.Instance.SendJobError("errorName", "jobname", extra);
 
 ## <a name="reporting-crashes"></a>Generování sestav havárií
@@ -179,7 +183,7 @@ Agent nabízí dvě metody jak nakládat s havárií.
 #### <a name="reference"></a>Referenční informace
             void SendCrash(Exception e, bool terminateSession = false)
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 Výjimku kdykoli můžete odeslat voláním:
 
             EngagementAgent.Instance.SendCrash(aCatchedException);
@@ -198,7 +202,7 @@ Engagement také poskytuje metodu pro odeslání neošetřených výjimek. To je
 
 Tato metoda bude **vždy** ukončit relaci engagement a úlohy po volání.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 Můžete ho implementovat vlastní obslužnou rutinu UnhandledException (hlavně pokud mají zakázáno automatické hlášení funkci Engagement vytváření sestav). Například v `Application_UnhandledException` metodu `App.xaml.cs` souboru:
 
             // In your App.xaml.cs file
@@ -219,7 +223,7 @@ Když uživatel přejde dopředu, mimo aplikaci, po deaktivováno událost se vy
 
 Je nutné vložit `EngagementAgent.Instance.OnActivated(e)` v `Application_Activated` metoda ze souboru App.xaml.cs resetovat Engagement agenta, když aplikace bylo označeno jako neplatné.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
             // Inside your App.xaml.cs file
 
             // Code to execute when the application is activated (brought to foreground)
@@ -229,7 +233,7 @@ Je nutné vložit `EngagementAgent.Instance.OnActivated(e)` v `Application_Activ
               EngagementAgent.Instance.OnActivated(e);
             }
 
-## <a name="device-id"></a>Id zařízení
+## <a name="device-id"></a>ID zařízení
             String GetDeviceId()
 
 Voláním této metody můžete získat id zařízení v engagement.
@@ -239,7 +243,7 @@ Libovolná data lze připojit k události, k chybě, aktivity nebo úlohy. Tato 
 
 Data funkce se serializují, takže pokud chcete, která se přidá vlastní typ funkce budete muset přidat kontraktu dat pro tento typ.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 Vytvoříme novou třídu "Osoba".
 
             using System.Runtime.Serialization;
@@ -305,7 +309,7 @@ Můžete ručně sestavy sledování informace (nebo všechny ostatní aplikace 
 
 Všimněte si, že tyto údaje lze odeslat přírůstkově: pouze nejnovější hodnotu pro daný klíč budou zachovány pro dané zařízení. Jako funkce událostí použití slovníku\<objektu, objekt\> připojit – informace.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
             Dictionary<object, object> appInfo = new Dictionary<object, object>()
             {
                {"subscription", "2013-12-07"},

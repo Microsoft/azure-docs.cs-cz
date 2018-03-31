@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 3a5d1e897d8ffe063ecf9277bef346c8b7c5092b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f4410932f00f8505ae5a894caa002e1223196d95
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-load-balancer-overview"></a>Azure Load Balancer – přehled
 
@@ -142,7 +142,7 @@ Následující obrázek znázorňuje koncový bod Vyrovnávání zatížení sí
 
 ![Příklad nástroje pro vyrovnávání zatížení veřejnou](./media/load-balancer-overview/IC727496.png)
 
-**Obrázek 1: Zátěže webový provoz použití veřejné služby Vyrovnávání zatížení**
+*Obrázek: Webový provoz použití veřejné služby Vyrovnávání zatížení pro vyrovnávání zatížení*
 
 Pokud internetoví klienti odesílat žádosti o webovou stránku na veřejnou IP adresu webové aplikace na portu TCP 80, Vyrovnávání zatížení Azure distribuuje požadavky mezi tři virtuální počítače v sadě s vyrovnáváním zatížení. Další informace o algoritmy Vyrovnávání zatížení, najdete v článku [stránku přehled nástroje pro vyrovnávání zatížení](load-balancer-overview.md#load-balancer-features).
 
@@ -161,7 +161,7 @@ Interní nástroj pro vyrovnávání zatížení umožňuje následující typy 
 
 ![Příklad nástroje pro vyrovnávání zatížení interní](./media/load-balancer-overview/IC744147.png)
 
-**Obrázek 2 – vícevrstvé aplikace pomocí obou nástroje pro vyrovnávání zatížení veřejné a interní Vyrovnávání zatížení**
+*Obrázek - vícevrstvé aplikace pomocí obou nástroje pro vyrovnávání zatížení veřejné a interní Vyrovnávání zatížení*
 
 ## <a name="pricing"></a>Ceny
 Standardní Vyrovnávání zatížení je odečtena produkt na základě počtu Vyrovnávání zatížení nakonfigurovaná pravidla a všechny příchozí a odchozí data zpracování. Informace o cenách standardní Vyrovnávání zatížení, najdete v článku [ceny služby Vyrovnávání zatížení](https://azure.microsoft.com/pricing/details/load-balancer/) stránky.

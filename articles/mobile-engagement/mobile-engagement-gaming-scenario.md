@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement implementace pro herní aplikace"
-description: "Scénář herní aplikace k implementaci Azure Mobile Engagement"
+title: Azure Mobile Engagement implementace pro herní aplikace
+description: Scénář herní aplikace k implementaci Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2cafc044-4902-4058-8037-49399bf6bf7f
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0ca35a3d634db8eb5c63afacba046a35b8a3e7ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96e827b57e804cc91798859bc906e49046decede
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="implement-mobile-engagement-with-gaming-app"></a>Implementace s herní aplikace Mobile Engagement
 ## <a name="overview"></a>Přehled
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Spuštění herní má spuštění nové aplikace herní play role, strategie rybolovu na základě. Hry byl spuštěný a funkční po dobu 6 měsíců. Tato hra je velký úspěšné a má miliony souborů ke stažení a uchovávání je velmi vysoká ve srovnání s jinými aplikacemi herní spuštění. Na zasedání čtvrtletně zkontrolujte souhlas zúčastněným v prostředí, že které potřebují ke zvýšení průměrný výnos na uživatele. Premium ve hře balíčky jsou k dispozici jako speciální nabídky. Tyto sady pro herní umožňují uživatelům vzhled a výkonu svých rybářských řádky a lures nebo tackles ve hře upgradu. Balíček prodeje jsou však velmi nízké. Proto se rozhodnou nejprve k analýze zkušeností zákazníků se nástroj pro analýzu a vyvíjet engagement program a zvyšte prodeje pomocí pokročilé segmentace.
 
 Na základě [Azure Mobile Engagement – Příručka Začínáme s osvědčenými postupy](mobile-engagement-getting-started-best-practices.md) vytváří strategii zapojení.
@@ -61,7 +65,7 @@ Po 3 měsíce ředitel projektu Mobile shromáždil dostatek dat ke zvýšení j
 * Uživatelé, kteří uplynulo úrovně 20, spustit zatěžovat více než 10 za týden.
 * Uživatelé zpravidla koupit premium balíčky na úrovni 16, 24 a 32.
 
-Díky této analýze ředitel projektu Mobile rozhodne vytvořit konkrétní nabízená oznámení pořadí k nárůstu prodeje aplikace. Vytvoří tři sekvencí nabízených oznámení, které mu volá: Vítejte program, Program prodeje a neaktivní programu. Další informace najdete v části [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)![][1]
+Díky této analýze ředitel projektu Mobile rozhodne vytvořit konkrétní nabízená oznámení pořadí k nárůstu prodeje aplikace. Vytvoří tři sekvencí nabízených oznámení, které mu volá: Vítejte program, Program prodeje a neaktivní programu. Další informace najdete v části [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks) ![][1]
 
 <!--Image references-->
 

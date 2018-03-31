@@ -1,11 +1,11 @@
 ---
-title: "Ověření s Mobile Engagementem rozhraní REST API"
-description: "Popisuje, jak ověřit pomocí rozhraní API REST služby Azure Mobile Engagement"
+title: Ověření s Mobile Engagementem rozhraní REST API
+description: Popisuje, jak ověřit pomocí rozhraní API REST služby Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: da82cb36-957a-4e19-a805-b44733cf6597
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 574e699a1cfca2caef0cf20872570bbb8650117b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 5979ded9afaa31054f835b5f16fe525809f5730d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>Ověření s Mobile Engagementem rozhraní REST API
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
 
 ## <a name="overview"></a>Přehled
 
@@ -102,11 +105,11 @@ Volitelně můžete také podle pokynů [ruční instalaci](mobile-engagement-ap
 
 1. Volání rozhraní API s následujícími parametry. Nezapomeňte nahradit **klienta\_ID**, **klienta\_ID**, a **klienta\_tajný klíč**:
    
-   * **Adresa URL požadavku** jako`https://login.microsoftonline.com/{TENANT_ID}/oauth2/token`
+   * **Adresa URL požadavku** jako `https://login.microsoftonline.com/{TENANT_ID}/oauth2/token`
 
-   * **Hlavičku HTTP Content-Type** jako`application/x-www-form-urlencoded`
+   * **Hlavičku HTTP Content-Type** jako `application/x-www-form-urlencoded`
    
-   * **Text žádosti HTTP** jako`grant_type=client\_credentials&client_id={CLIENT_ID}&client_secret={CLIENT_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F`
+   * **Text žádosti HTTP** jako `grant_type=client\_credentials&client_id={CLIENT_ID}&client_secret={CLIENT_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F`
      
     Toto je požadavek příklad:
     ```

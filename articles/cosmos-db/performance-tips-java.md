@@ -1,12 +1,12 @@
 ---
-title: "Azure Cosmos DB tipy pro zvýšení výkonu pro Javu | Microsoft Docs"
-description: "Další možnosti konfigurace klienta ke zlepšení výkonu databáze Azure Cosmos DB"
-keywords: "tom, jak zvýšit výkon databáze"
+title: Azure Cosmos DB tipy pro zvýšení výkonu pro Javu | Microsoft Docs
+description: Další možnosti konfigurace klienta ke zlepšení výkonu databáze Azure Cosmos DB
+keywords: tom, jak zvýšit výkon databáze
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: dfe8f426-3c98-4edc-8094-092d41f2795e
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: fef5ed126575727c23cdff496c6684b9bf3192cf
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 3a6c7c51810375574895643cea2e0e24508fa382
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/30/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java](performance-tips-java.md)
@@ -110,7 +110,7 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
 
     Při provádění hromadně číst dokumentů pomocí čtení kanálu funkce (například [readDocuments]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.readdocuments#com_microsoft_azure_documentdb__document_client_readDocuments_String_FeedOptions_c) nebo při vydání příkazu jazyka SQL, budou vráceny výsledky segmentovaným způsobem Pokud sadu výsledků dotazu je příliš velký. Ve výchozím nastavení budou vráceny výsledky v bloky 100 položky nebo 1 MB, z těchto omezení dosáhl první.
 
-    Chcete-li snížit počet sítě zaokrouhlit služebních cest potřebnou k načtení všech platných výsledky, můžete zvýšit velikost stránky pomocí [x-ms-max--počet položek](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-request-headers) hlavička požadavku na až 1000. V případech, kdy je třeba zobrazit jen pár výsledky například pokud vaše uživatelské rozhraní nebo aplikací rozhraní API vrátí jenom 10 výsledků na dobu, může také snížit velikost stránky na 10 ke snížení propustnosti využité pro čtení a dotazy.
+    Chcete-li snížit počet sítě zaokrouhlit služebních cest potřebnou k načtení všech platných výsledky, můžete zvýšit velikost stránky pomocí [x-ms-max--počet položek](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) hlavička požadavku na až 1000. V případech, kdy je třeba zobrazit jen pár výsledky například pokud vaše uživatelské rozhraní nebo aplikací rozhraní API vrátí jenom 10 výsledků na dobu, může také snížit velikost stránky na 10 ke snížení propustnosti využité pro čtení a dotazy.
 
     Můžete také nastavit velikost stránky pomocí [setPageSize metoda](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_options_base.setpagesize#com_microsoft_azure_documentdb__feed_options_base_setPageSize_Integer).
 
@@ -143,7 +143,7 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
 
     Složitost dotazu má dopad na tom, kolik jednotek žádosti se spotřebovávají pro operace. Počet predikáty, povaha predikáty, počet UDF a velikost datové sady zdroje, které jsou všechny ovlivnit náklady na operace dotazů.
 
-    K měření režijní náklady na všechny operace (vytvoření, aktualizace nebo odstranění), zkontrolujte [x-ms požadavku poplatků](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-response-headers) záhlaví (nebo ekvivalentní vlastnost RequestCharge v [ResourceResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._resource_response) nebo [FeedResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_response) k měření počtu jednotek žádosti uplatníte tyto operace.
+    K měření režijní náklady na všechny operace (vytvoření, aktualizace nebo odstranění), zkontrolujte [x-ms požadavku poplatků](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) záhlaví (nebo ekvivalentní vlastnost RequestCharge v [ResourceResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._resource_response) nebo [FeedResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_response) k měření počtu jednotek žádosti uplatníte tyto operace.
 
     ```Java
     ResourceResponse<Document> response = client.createDocument(collectionLink, documentDefinition, null, false);
@@ -155,7 +155,7 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
 <a id="429"></a>
 2. **Rychlost omezení nebo požadavků popisovač míra příliš velký**
 
-    Když se klient pokusí delší než vyhrazenou propustností pro účet, není bez snížení výkonu na serveru a bez využití kapacity propustnosti mimo úroveň vyhrazené. Server bude ho preventivně ukončit požadavek s RequestRateTooLarge (kód stavu HTTP 429) a vrátit se [x-ms opakování za ms](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-response-headers) hlavičky, která určuje množství času v milisekundách, která uživatel musí počkat před provedením nového pokusu požadavek.
+    Když se klient pokusí delší než vyhrazenou propustností pro účet, není bez snížení výkonu na serveru a bez využití kapacity propustnosti mimo úroveň vyhrazené. Server bude ho preventivně ukončit požadavek s RequestRateTooLarge (kód stavu HTTP 429) a vrátit se [x-ms opakování za ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) hlavičky, která určuje množství času v milisekundách, která uživatel musí počkat před provedením nového pokusu požadavek.
 
         HTTP Status 429,
         Status Line: RequestRateTooLarge

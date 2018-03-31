@@ -1,11 +1,11 @@
 ---
-title: "Zjistěte, jak zabezpečit přístup k datům v Azure Cosmos DB | Microsoft Docs"
-description: "Seznamte se s koncepty řízení přístupu v Azure DB Cosmos, včetně hlavního klíče, klíče jen pro čtení, uživatelé a oprávnění."
+title: Zjistěte, jak zabezpečit přístup k datům v Azure Cosmos DB | Microsoft Docs
+description: Seznamte se s koncepty řízení přístupu v Azure DB Cosmos, včetně hlavního klíče, klíče jen pro čtení, uživatelé a oprávnění.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 8641225d-e839-4ba6-a6fd-d6314ae3a51c
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
-ms.openlocfilehash: 383e04f91eec2f465b381ce30f2d6d24c488b731
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 771c4a539d240a6bfdc9770adc7cfada01571939
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpečení přístupu k datům v Azure Cosmos DB
 Tento článek obsahuje přehled zabezpečení přístupu k datům uloženým v [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
 Azure Cosmos DB používá dva typy klíčů k ověření uživatelů a poskytovat přístup k jeho datům a prostředkům. 
 
-|Typ klíče|Zdroje|
+|Typ klíče|Zdroje a prostředky|
 |---|---|
 |[Hlavní klíče](#master-keys) |Použít pro správu prostředků: databáze účty, databází, uživatelů a oprávnění|
 |[Tokeny prostředků](#resource-tokens)|Použít pro prostředky aplikace: kolekcí, dokumentů, přílohy, uložené procedury, triggery a UDF|
@@ -104,7 +104,7 @@ Zde je typické návrhový vzor, kterým může požadovaný prostředek tokeny 
 
     ![Prostředek Azure Cosmos DB tokeny pracovního postupu](./media/secure-access-to-data/resourcekeyworkflow.png)
 
-Generování tokenů prostředků a správy se zpracovává souborem nativní knihovny klienta Cosmos DB; ale pokud používáte REST je nutné vytvořit hlavičky požadavku nebo ověřování. Další informace o vytváření ověřovacím hlavičkám pro REST naleznete v tématu [řízení přístupu u prostředků DB Cosmos](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources) nebo [zdrojový kód pro naše sady SDK](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
+Generování tokenů prostředků a správy se zpracovává souborem nativní knihovny klienta Cosmos DB; ale pokud používáte REST je nutné vytvořit hlavičky požadavku nebo ověřování. Další informace o vytváření ověřovacím hlavičkám pro REST naleznete v tématu [řízení přístupu u prostředků DB Cosmos](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) nebo [zdrojový kód pro naše sady SDK](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
 
 Příklad ke generování nebo zprostředkovatel prostředků tokeny služby střední vrstvy, naleznete v části [ResourceTokenBroker aplikace](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
@@ -179,7 +179,7 @@ foreach (Permission perm in permFeed)
 DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o zabezpečení databáze Cosmos DB najdete v tématu [Cosmos databáze: databáze zabezpečení](database-security.md).
 * Další informace o správě klíče hlavní a jen pro čtení, najdete v části [Správa účtu Azure Cosmos DB](manage-account.md#keys).
-* Naučte se vytvořit databázi Cosmos Azure autorizace tokeny, najdete v tématu [řízení přístupu na prostředky Azure Cosmos DB](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources).
+* Naučte se vytvořit databázi Cosmos Azure autorizace tokeny, najdete v tématu [řízení přístupu na prostředky Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

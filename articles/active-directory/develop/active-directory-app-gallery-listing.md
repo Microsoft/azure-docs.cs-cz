@@ -1,32 +1,32 @@
 ---
-title: "Výpis aplikace v galerii aplikací Azure Active Directory | Microsoft Docs"
-description: "Jak zobrazit aplikace, která podporuje jednotné přihlašování v galerii aplikací Azure Active Directory"
+title: Výpis aplikace v galerii aplikací Azure Active Directory | Microsoft Docs
+description: Jak zobrazit aplikace, která podporuje jednotné přihlašování v galerii aplikací Azure Active Directory
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/09/2018
+ms.date: 03/20/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 502fb555bd3b381c9be0ff04e210cc07f9bf6cd8
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: e02c60d46fe709c8d418ea4743ba383147e9ddac
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
 
 ##  <a name="what-is-the-azure-ad-application-gallery"></a>Co je galerii aplikací Azure AD?
 
-Azure Active Directory (Azure AD) je služba cloudových identit. [Galerii aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/) je v obchodě s aplikacemi Azure Marketplace, kde jsou všechny konektory aplikace publikována pro jednotné přihlašování a zřizování uživatelů. Zákazníci, kteří používají Azure AD jako zprostředkovatele identity najít jiné konektory aplikací SaaS publikované. Správci IT přidejte konektory z Galerie aplikace a potom nakonfigurovat a používat konektory pro jednotné přihlašování a zřizování. Azure AD podporuje všechny hlavní federační protokoly pro jednotné přihlašování, včetně SAML 2.0, OpenID Connect, OAuth a WS-Fed. 
+Azure Active Directory (Azure AD) je služba cloudových identit. [Galerii aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/) je v obchodě s aplikacemi Azure Marketplace, kde jsou všechny konektory aplikace publikována pro jednotné přihlašování a zřizování uživatelů. Zákazníci, kteří používají Azure AD jako zprostředkovatele identity najít jiné konektory aplikací SaaS publikované. Správci IT přidejte konektory z Galerie aplikace a potom nakonfigurovat a používat konektory pro jednotné přihlašování a zřizování. Azure AD podporuje všechny hlavní federační protokoly pro jednotné přihlašování, včetně SAML 2.0, OpenID Connect, OAuth a WS-Fed.
 
 ## <a name="what-are-the-benefits-of-listing-an-application-in-the-gallery"></a>Jaké jsou výhody uvedení aplikace v galerii?
 
@@ -51,7 +51,21 @@ Pro zobrazení seznamu aplikace v galerii aplikací Azure AD, musíte nejprve im
 
 *   **SAML 2.0** nebo **WS-Fed**: aplikace musí mít možnost provést integraci SAML/WS-Fed jednotné přihlašování v režimu SP nebo deklarací identity. Pokud vaše aplikace podporuje SAML 2.0, můžete integrovat přímo do klienta služby Azure AD pomocí [pokyny k přidání vlastní aplikace](../active-directory-saas-custom-apps.md).
 
-*   **Heslo jednotného přihlašování k**: vytvoření webové aplikace, který má přihlašovací stránku HTML konfigurace [založené na heslech jednotné přihlašování](../active-directory-appssoaccess-whatis.md). Jednotné přihlašování založené na heslech, také označuje jako heslo vaulting, můžete spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je také užitečné v případech, ve kterých několik uživatelé muset sdílet jeden účet, například k účtům aplikace sociálních médií vaší organizace. 
+*   **Heslo jednotného přihlašování k**: vytvoření webové aplikace, který má přihlašovací stránku HTML konfigurace [založené na heslech jednotné přihlašování](../active-directory-appssoaccess-whatis.md). Jednotné přihlašování založené na heslech, také označuje jako heslo vaulting, můžete spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je také užitečné v případech, ve kterých několik uživatelé muset sdílet jeden účet, například k účtům aplikace sociálních médií vaší organizace.
+
+##  <a name="updateremove-existing-listing"></a>Aktualizovat nebo odebrat existující výpis
+
+Aktualizace nebo odeberte stávající aplikace v galerii aplikací Azure AD, je nutné nejprve odeslat žádost ve [aplikace sítě portál](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Pokud máte účet Office 365, použijte k přihlášení k tomuto portálu. Pokud ne, přihlaste se pomocí účtu Microsoft (například aplikaci Outlook nebo Hotmail).
+
+* Vyberte příslušnou možnost níže bitové kopie
+
+    ![Časová osa uvedení aplikace saml do Galerie](./media/active-directory-app-gallery-listing/updateorremove.png)
+
+    * Pokud chcete aktualizovat stávající aplikaci, vyberte **aktualizovat stávající aplikaci výpis**.
+
+    * Pokud chcete odebrat existující aplikaci z Galerie Azure AD, vyberte **odebrat existující seznam aplikací**
+
+    * Pokud máte problémy týkající se přístupu, obraťte se [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
 ## <a name="submit-the-request-in-the-portal"></a>Odešlete žádost na portálu
 
@@ -75,5 +89,4 @@ Pokud máte problémy týkající se přístupu, obraťte se [týmu Integrace Az
 
 ## <a name="escalations"></a>Eskalací
 
-Pro všechny eskalací odesílat e-mailu [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) a budete odpovíte co nejdříve.
-
+Pro všechny eskalací odesílat e-mailu [týmu Integrace Azure AD jednotného přihlašování k](mailto:SaaSApplicationIntegrations@service.microsoft.com) tedy SaaSApplicationIntegrations@service.microsoft.com a budete odpovíte co nejdříve.

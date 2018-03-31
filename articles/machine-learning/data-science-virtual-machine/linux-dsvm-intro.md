@@ -1,8 +1,8 @@
 ---
-title: "Zřídit CentOS datové vědy virtuální počítač s Linuxem v Azure | Microsoft Docs"
-description: "Nakonfigurujte a vytvořte virtuální počítač s Linuxem datové vědy na Azure a provádět analýzy a strojového učení."
+title: Zřídit CentOS datové vědy virtuální počítač s Linuxem v Azure | Microsoft Docs
+description: Nakonfigurujte a vytvořte virtuální počítač s Linuxem datové vědy na Azure a provádět analýzy a strojového učení.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 550d49e3d6007c6b494deec95b785ea9bc214f3a
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7f683fff142a3654249560ed5299ed3cd7cb9cce
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Zřídit CentOS datové vědy virtuální počítač s Linuxem v Azure
 
@@ -153,14 +153,16 @@ K vyvolání interaktivní relace Python, stačí zadat **python** v prostředí
 
 Pokud chcete nainstalovat další knihovny Python, budete muset spustit ```conda``` nebo ````pip```` příkazu v části sudo a zadejte úplnou cestu Správce balíčků Python (conda nebo pip), chcete-li nainstalovat správnou prostředí Python. Příklad:
 
-    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
+    sudo /anaconda/bin/pip install <package> #pip for Python 2.7
+    sudo /anaconda/envs/py35/bin/pip install <package> #pip for Python 3.5
+    sudo /anaconda/bin/conda install [-n py27] <package> #conda for Python 2.7, default behavior
+    sudo /anaconda/bin/conda install -n py35 <package> #conda for Python 3.5
 
 
 ### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
 Distribuce Anaconda také obsahuje poznámkového bloku Jupyter, prostředí sdílení kódu a analýzy. Poznámkového bloku Jupyter přistupuje prostřednictvím JupyterHub. Přihlášení pomocí místní Linux uživatelské jméno a heslo.
 
-Server poznámkového bloku Jupyter předem nakonfigurovaný s Python 2, Python 3 a R jádra. Není ikony na ploše s názvem "Poznámkový blok Jupyter" spustit prohlížeč pro přístup k serveru poznámkového bloku. Pokud jste na virtuální počítač prostřednictvím protokolu SSH nebo X2Go klienta, můžete také navštívit [https://localhost:8000 /](https://localhost:8000/) pro přístup k serveru poznámkového bloku Jupyter.
+Server poznámkového bloku Jupyter předem nakonfigurovaný s Python 2, Python 3 a R jádra. Není ikony na ploše s názvem "Poznámkový blok Jupyter" spustit prohlížeč pro přístup k serveru poznámkového bloku. Pokud jste na virtuální počítač prostřednictvím protokolu SSH nebo X2Go klienta, můžete také navštívit [ https://localhost:8000/ ](https://localhost:8000/) pro přístup k serveru poznámkového bloku Jupyter.
 
 > [!NOTE]
 > Pokračujte, pokud chcete získat všechna upozornění certifikátu.
@@ -361,7 +363,7 @@ Nyní grafické rozhraní otevře sadu karet. Tady jsou kroky pro rychlé spušt
 7. Klikněte **Evaluate** kartě.
 8. Klikněte na tlačítko **riziko** přepínač a klikněte na tlačítko **Execute** zobrazíte dva pozemků výkonu riziko (kumulativní).
 9. Klikněte **protokolu** zobrazte kód generování R pro předchozí operace.
-   (Z důvodu chyby v aktuální verzi Rattle, je třeba vložit  *#*  znak před *exportovat tento protokol...*  v textu protokolu.)
+   (Z důvodu chyby v aktuální verzi Rattle, je třeba vložit *#* znak před *exportovat tento protokol...*  v textu protokolu.)
 10. Klikněte **exportovat** tlačítko pro uložení souboru skriptu R s názvem *weather_script. R* do domovské složky.
 
 Můžete ukončit Rattle a R. Nyní můžete upravit generovaného skriptu R, nebo ho použít, protože to je vše, co bylo provedeno v rámci rozhraní Rattle opakování ji kdykoli spustit. Zejména pro začátečníky v R je to snadný způsob, jak rychle provést analýzy a strojového učení v jednoduchého grafického rozhraní, při automatické generování kódu v R upravit nebo Další informace.

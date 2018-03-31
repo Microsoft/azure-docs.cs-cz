@@ -1,25 +1,24 @@
 ---
-title: "Použití okna stavu prostředků v Azure Stream Analytics | Microsoft Docs"
-description: "Popisuje, jak přesně určit problémy při řešení potíží s úlohy Stream Analytics."
-keywords: "řešení potíží s vývojový diagram, okna prostředků"
-documentationcenter: 
+title: Použití okna stavu prostředků v Azure Stream Analytics | Microsoft Docs
+description: Popisuje, jak přesně určit problémy při řešení potíží s úlohy Stream Analytics.
+keywords: řešení potíží s vývojový diagram, okna prostředků
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
-ms.author: samacha
-ms.openlocfilehash: 554dec5fbbe5c98585f8be58f5d4e8203d788a00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 598f858c22494bc511ef0e2f04f3c3a6baad1ae8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-resource-health-blade"></a>Okna stavu prostředků analýzy datového proudu
 
@@ -40,7 +39,7 @@ Následující vývojový diagram vám může pomoct rozhodnout o co má být vy
 ## <a name="get-help"></a>Podpora
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Úvod do služby Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme s Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování úlohy Stream Analytics](stream-analytics-scale-jobs.md)

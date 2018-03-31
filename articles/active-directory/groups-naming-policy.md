@@ -1,32 +1,32 @@
 ---
-title: "Název nastavení zásad skupiny pro skupiny Office 365 ve službě Azure Active Directory (preview) | Microsoft Docs"
-description: "Jak nastavit vypršení platnosti pro skupiny Office 365 ve službě Azure Active Directory (preview)"
+title: Název nastavení zásad skupiny pro skupiny Office 365 ve službě Azure Active Directory (preview) | Microsoft Docs
+description: Jak nastavit vypršení platnosti pro skupiny Office 365 ve službě Azure Active Directory (preview)
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: michael.tillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/29/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: cc3ea7f81a924f3f4baa6fd2866c4e552b7c160e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c21706a591d0e1aa00279edf7a5534ada95fd8c1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Vynutit zásady pojmenování pro skupiny Office 365 ve službě Azure Active Directory (preview)
 
 Pokud chcete vynutit konzistentní zásady vytváření názvů pro skupiny Office 365 vytvořená nebo upravená vaši uživatelé, nastavení skupiny pojmenování zásad pro klienty v Azure Active Directory (Azure AD). Například můžete použít pravidla pro názvy komunikovat funkce skupiny, členství, zeměpisnou oblast, nebo který vytvoření skupiny. Můžete také použít pravidla pro názvy můžete uspořádat skupiny v adresáři. Zásady můžete blokovat určitá slova z používá v názvech skupin a aliasy.
 
 > [!IMPORTANT]
-> Licence Azure Active Directory Premium P1 pomocí verze preview zásady pojmenování skupiny Office 365 vyžaduje pro každého uživatele jedinečné, který je členem více skupin Office 365.
+> Použití ve verzi preview zásady pojmenování skupiny Office 365 vyžaduje Azure Active Directory Premium P1 licence nebo Azure AD Basic EDU licence pro každého uživatele jedinečné, který je členem více skupin Office 365.
 
 Pojmenování zásady se použijí k vytvoření nebo úprava skupiny vytvořené napříč zatížení (například Outlook, Teams společnosti Microsoft, SharePoint, Exchange nebo Planner). Je použito k název skupiny a skupiny alias. Pokud nastavíte zásady vaší pojmenování ve službě Azure AD a máte existující skupinu Exchange pojmenování zásady, se použije názvy zásad Azure AD.
 
@@ -174,7 +174,7 @@ Po nastavení pojmenování zásady skupiny ve službě Azure AD, když uživate
 * Náhled A názvu souladu s vašimi zásadami pojmenování (s předpony a přípony) co nejdříve uživatel zadá název skupiny
 * Pokud uživatel zadá blokované slova, chybová zpráva se zobrazí, tak odeberou blokované slova.
 
-Úloha | Kompatibilita
+Úloha | Dodržování předpisů
 ----------- | -------------------------------
 Portály pro Azure Active Directory | Portálu Azure AD a přístupového panelu portálu zobrazit pojmenování název vynucené zásady, když uživatel zadá název skupiny při vytváření nebo úpravách skupiny. Když uživatel zadá vlastní blokované aplikace word, se zobrazí chybová zpráva s blokované aplikace word tak, aby jej odebrat uživatele.
 Outlook Web Access (OWA) | Aplikace Outlook Web Access zobrazuje pravidla pro názvy vynutí název, když uživatel zadá název skupiny nebo alias skupiny. Když uživatelé zadá vlastní blokované aplikace word, chybová zpráva se zobrazí v uživatelském rozhraní společně s blokované aplikace word tak, aby jej odebrat uživatele.

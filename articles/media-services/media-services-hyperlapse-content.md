@@ -1,36 +1,34 @@
 ---
-title: "Zpracování mediálních souborů pomocí Azure Media Hyperlapse | Microsoft Docs"
-description: "Azure Media Hyperlapse vytvoří smooth vypršelo čas videa z první, kdo nebo akce fotoaparát obsah. Toto téma ukazuje způsob použití Media Indexer."
+title: Zpracování mediálních souborů pomocí Azure Media Hyperlapse | Microsoft Docs
+description: Azure Media Hyperlapse vytvoří smooth vypršelo čas videa z první, kdo nebo akce fotoaparát obsah. Toto téma ukazuje způsob použití Media Indexer.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: asolanki
 manager: johndeu
-editor: 
+editor: ''
 ms.assetid: 37d54db6-9cf3-4ae9-b3c6-0d29c744e965
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/28/2018
 ms.author: adsolank
-ms.openlocfilehash: b3163454213db0afb94e668e4c56924d7833d769
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 86a9d44a93d7717d2ed949db2b1d1e94963781d0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Zpracování mediálních souborů pomocí Azure Media Hyperlapse
 Azure Media Hyperlapse je média procesoru (PP) vytvářející smooth vypršelo čas videa z první osoba nebo akce fotoaparát obsahu.  Na stejné úrovni cloudu k [plochy Hyperlapse Pro a mobilního telefonu Hyperlapse Microsoft Research](http://aka.ms/hyperlapse), Microsoft Hyperlapse pro službu Azure Media Services využívá masivním měřítku na platformě Azure Media Services média zpracování vodorovně škálování a paralelní hromadné Hyperlapse zpracování.
 
 > [!IMPORTANT]
-> Microsoft Hyperlapse slouží nejlépe pracovat na první, kdo obsahu s přesunutí fotoaparát.  I když stále kamer můžete i nadále fungovat, výkonu a kvalitě procesor médií Azure Media Hyperlapse nemůže zaručit pro jiné typy obsahu.  Další informace o Microsoft Hyperlapse pro Azure Media Services a zobrazit některé ukázkové video, podívejte se [úvodní příspěvku na blogu](http://aka.ms/azurehyperlapseblog) z verze public preview.
+> Microsoft Hyperlapse slouží nejlépe pracovat na první, kdo obsahu s přesunutí fotoaparát. I když stále kamer můžete i nadále fungovat, výkonu a kvalitě procesor médií Azure Media Hyperlapse nemůže zaručit pro jiné typy obsahu.
 > 
 > 
 
 Azure Media Hyperlapse úlohy vezme jako vstupní asset soubor MP4, MOV nebo WMV společně s konfiguračního souboru, který určuje, které snímky video by měla být vypršelo čas a jaké rychlosti (například první 10 000 rámců na 2 x).  Výstup je stabilizované a čas vypršelo interpretace vstupu videa.
-
-Nejnovější aktualizace Azure Media Hyperlapse, najdete v části [Media Services blogy](https://azure.microsoft.com/blog/topics/media-services/).
 
 ## <a name="hyperlapse-an-asset"></a>Hyperlapse prostředek
 Nejdřív je potřeba nahrát požadované vstupní soubor k Azure Media Services.  Další informace o konceptech, které jsou spojené s odesílání a správu obsahu, najdete [správy obsahu článku](media-services-portal-vod-get-started.md).

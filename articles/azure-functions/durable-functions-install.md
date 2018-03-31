@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3451f268e78df6efa5e3fc489b88415349efe169
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3a83ed5f7dba3e4d68204a2c9dffb4459cadfef9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Nainstalujte rozšíření trvanlivý funkce a ukázky (Azure Functions)
 
 [Trvanlivý funkce](durable-functions-overview.md) rozšíření pro Azure Functions je součástí balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). Tento článek ukazuje, jak nainstalovat balíček a sady vzorků pro následující vývojových prostředí:
 
 * Visual Studio 2017 (doporučeno) 
-
+* Visual Studio Code
 * Azure Portal
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017
@@ -48,11 +48,7 @@ Visual Studio teď poskytuje dosažení co nejlepších výsledků pro vývoj ap
 Postupujte podle pokynů k stejné jako u počínaje ukázku, ale proveďte následující kroky místo stahování *.zip* souboru:
 
 1. Vytvoření projektu funkce aplikace.
-2. Přidejte následující odkaz balíčku NuGet pro vaše *.csproj* souboru:
-
-   ```xml
-   <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DurableTask" Version="1.0.0-beta" />
-   ```
+2. Vyhledejte následující NuGet balíček odkaz použití *spravovat balíčky Nuget* a přidejte ji do projektu: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.1.0-beta2 (zkontrolujte *zahrnout předběžné verze* k vyhledání tohoto balíčku)
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -129,6 +125,8 @@ Pokud dáváte přednost, můžete portál Azure pro vývoj trvanlivý funkce.
 1. Vytvořit novou aplikaci funkce v [functions.azure.com](https://functions.azure.com/signin).
 
 2. Konfigurace funkce aplikaci [použít verzi 2.0 runtime](set-runtime-version.md).
+
+   Rozšíření trvanlivý funkce funguje na 1.X runtime a 2.0 runtime, ale Azure Portal šablony jsou dostupné jenom při cílení na 2.0 modulu runtime.
 
 3. Vytvořte novou funkci tak, že vyberete **"Vytvoření vlastní funkce."** .
 

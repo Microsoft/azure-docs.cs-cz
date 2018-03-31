@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vinagara
-ms.openlocfilehash: 045a7f97d9c4d380e83325c04c209a6afcc761a7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: abab73a047fb923fa2cd57a1c7194e440697bf64
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="extend-alerts-from-oms-into-azure"></a>Rozšíření výstrahy od OMS do Azure
 Nové prostředí výstrahy má teď integrované výstrahy prostředí mezi různé služby a částí v Microsoft Azure. Nové prostředí, které jsou k dispozici jako **výstrahy** v části monitorování Azure na portálu, má shrnuta na běžné místě - aktivity protokolu výstrahy, metriky výstrahy a oznámení protokolu na Log Analytics, jakož i Application Insights. 
@@ -27,9 +27,9 @@ Ale pro některé uživatele, použijte analýzy protokolů a allied funkcí, ja
 ## <a name="benefits-of-extending-your-alerts"></a>Výhody rozšíření upozornění
 Kromě benefit kumulovaných v nemusí přejděte mimo portál Azure existují další nejdůležitějšími výhody rozšíření výstrahy od OMS do Azure
 
-- Na rozdíl od v OMS, kde může být pouze 250 výstrahy vytvořit a zobrazit; v Azure výstrahy toto omezení není k dispozici
-- Z Azure výstrah můžete všechny výstrahy typy lze spravovat, výčet a zobrazit; nejen analýzy protokolů výstrahy jako v případě s OMS
-- Azure výstrahy využívat [skupiny akcí](monitoring-action-groups.md), které vám umožňují mají pro každou výstrahu více než jednu akci, včetně služby SMS, hlasový hovor, sady Automation Runbook, Webhooku, ITSM konektoru a dalších. Kde v OMS výstrahy je omezena číslo jak typu možných akcí
+- Na rozdíl od v OMS, kde může být pouze 250 výstrahy vytvořit a zobrazit; ve výstrahách Azure toto omezení není k dispozici
+- Z Azure výstrah všechny typy výstrah lze spravovat, výčet a zobrazit; výstrahy nejen analýzy protokolů, jako je tomu u OMS
+- Azure výstrahy využívat [skupiny akcí](monitoring-action-groups.md), které umožňují mít více než jednu akci pro každou výstrahu včetně SMS, hlasový hovor, sady Automation Runbook, Webhooku, ITSM konektoru a dalších. Zatímco OMS výstrahy mají omezenou i počet také jako typ možné akce
 
 ## <a name="process-of-extending-your-alerts"></a>Proces rozšíření upozornění
 Proces rozšíření výstrahy od OMS do Azure, nemá **není** zahrnuje změnu vaší definice upozornění, dotaz nebo konfigurace žádným způsobem. Jedinou změnou požadované je, že v Azure, všechny akce, jako je například e-mailové oznámení, webhooku hovoru, při spuštění sady automation runbook nebo připojení k nástroji ITSM hotovi prostřednictvím akce skupiny. Proto pokud příslušné akce skupiny jsou přidružené upozornění - jejich bude stát rozšířit do Azure.

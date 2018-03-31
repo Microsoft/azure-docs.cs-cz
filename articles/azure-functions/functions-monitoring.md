@@ -1,12 +1,12 @@
 ---
-title: "Monitorování Azure Functions"
-description: "Zjistěte, jak použít Azure Application Insights s Azure Functions pro sledování spuštění funkce."
+title: Monitorování Azure Functions
+description: Zjistěte, jak použít Azure Application Insights s Azure Functions pro sledování spuštění funkce.
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů"
+editor: ''
+tags: ''
+keywords: funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: functions
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: d2a61f5f51e3c4a1de6baa79493cb2c7380c76b6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 5b141924266630bfd3b63ec5129f9f225da3170b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -156,12 +156,12 @@ Také zahrnuje protokolovacího nástroje Azure functions *úrovně protokolová
 |LogLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladit       | 1 |
+|Ladění       | 1 |
 |Informace | 2 |
-|Varování     | 3 |
+|Upozornění     | 3 |
 |Chyba       | 4 |
-|Kritické    | 5 |
-|Žádná        | 6 |
+|Kritická    | 5 |
+|Žádný        | 6 |
 
 Úrovně protokolování `None` je vysvětleno v následující části. 
 
@@ -493,7 +493,7 @@ Doporučujeme, abyste Application Insights pro monitorování funkce, protože n
 
 ### <a name="logging-to-storage"></a>Protokolování do úložiště
 
-Integrované protokolování používá účet úložiště určeného připojovací řetězec `AzureWebJobsDashboard` nastavení aplikace. Pokud nastavení této aplikace je nakonfigurovaný, zobrazí se protokolování dat na portálu Azure. Na stránce funkce aplikace, vyberte funkci a pak vyberte **monitorování** kartě a získat seznam spuštěních funkce. Vyberte funkce provádění ke kontrole doba trvání, vstupních dat, chyb a přidružené soubory protokolu.
+Integrované protokolování používá účet úložiště určeného připojovací řetězec `AzureWebJobsDashboard` nastavení aplikace. Pokud nastavení této aplikace je nakonfigurovaný, zobrazí se protokolování dat na portálu Azure. V prostředků úložiště, přejděte na soubory, vyberte soubor služby pro funkci a potom přejděte na `LogFiles > Application > Functions > Function > your_function` k naleznete v souboru protokolu. Na stránce funkce aplikace, vyberte funkci a pak vyberte **monitorování** kartě a získat seznam spuštěních funkce. Vyberte funkce provádění ke kontrole doba trvání, vstupních dat, chyb a přidružené soubory protokolu.
 
 Pokud používáte Application Insights a máte [integrované protokolování zakázáno](#disable-built-in-logging), **monitorování** kartě přejdete do služby Application Insights.
 

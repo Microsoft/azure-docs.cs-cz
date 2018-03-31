@@ -1,11 +1,11 @@
 ---
-title: "Porovnání Azure Mobile Engagement s jinými službami podobné Azure"
-description: "Porovnání s jinými podobné službami Azure - HockeyApp, AppInsights, centra oznámení Azure Mobile Engagement"
+title: Porovnání Azure Mobile Engagement s jinými službami podobné Azure
+description: Porovnání s jinými podobné službami Azure - HockeyApp, AppInsights, centra oznámení Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1f114775-3a9a-4dd4-8d59-b10d1da9a68b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 7df2eb9ecebe3313dad9c15171552a084787f6b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57be3b235c5f439741155a70df7ddbe8a80906f2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="comparing-azure-mobile-engagement-with-other-similar-azure-services"></a>Porovnání Azure Mobile Engagement s jinými službami podobné Azure
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 Seznam služeb, které nabízí Microsoft Azure je někdy rozšiřování a v některých případech může zajímat, jak se liší od této služby, který jste právě číst nebo uslyšíme Azure Mobile Engagement. Tento článek se pokusí vymazat záměně a přesměruje, abyste si zvolili Azure Mobile Engagement, když je nejvhodnější pro vaše použití. 
 
 Azure Mobile Engagement je služba, konkrétně cílem **pro digitální obchodníci/CMOs** , ale může podle **vlastníka mobilní aplikace nebo vydavatele** kdo chce zvýšit využití, uchovávání a možnostmi finančního zhodnocení z jejich mobilních aplikací. 
@@ -38,7 +42,7 @@ Rozdělení tuto definici, máme následující klíčové vlastnosti, které se
 3. **Segmentaci uživatelů v reálném čase**
    
    Po shromáždění dat pro vypracování analýzy chování uživatelů aplikace, nám umožní segmentu cílovou skupinu na základě různých parametrů a shromažďují data vám umožní spustit cílové nabízené kampaně. 
-4. **Software jako služba (SaaS):**
+4. **Software-as-a-service (SaaS):**
    
    Máme nezávislý na portál pro správu Azure, která je optimalizovaná pro interakci a zobrazení bohaté analýzy chování o uživatelích, aplikace a spuštění marketingových kampaní nabízených portál. Produkt je cílem si přejdete v žádný čas!   
 

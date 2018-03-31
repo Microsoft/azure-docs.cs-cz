@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 03/29/2018
 ms.author: jeedes
-ms.openlocfilehash: 038b2337ea49b769c6b19e9d50a5f0f2edd13d56
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6c8c920a801e223e2a8f557ffb7f820a8b6db605
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>Kurz: Azure Active Directory integrace s ADP
 
@@ -210,23 +210,23 @@ Po obdržení potvrzení z vaším zástupcem ADP nakonfigurujte pro řízení p
     
     * **Nyní ADP pracovníků**
         
-        `<User access URL>?Relay State=https://fed.adp.com/saml/fedlanding.html?WFN`
+        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
 
     * **Zaměstnanci ADP teď rozšířené čas**
         
-        `<User access URL>?Relay State=https://fed.adp.com/saml/fedlanding.html?EETDC2`
+        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
     
     * **ADP Vantage HCM**
         
-        `<User access URL>?Relay State=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
+        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
 
     * **ADP Enterprise HR**
 
-        `<User access URL>?Relay State=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
 
     * **MyADP**
 
-        `<User access URL>?Relay State=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
 
 9. **Uložit** změny.
 

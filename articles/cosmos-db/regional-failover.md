@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8da3e2c970ab1e60e3396cb0aaeaba64dba1713c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5a4bdc49c5ab36a5026095b5d7b6f9856b020e1b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Automatické regionální převzetí služeb při selhání pro kontinuitu podnikových procesů v Azure Cosmos DB
 Azure Cosmos DB zjednodušuje globální distribuci dat tím, že nabídka plně spravované, [účty databáze více oblast](distribute-data-globally.md) , poskytovat jasné kompromisy mezi konzistencí, dostupnosti a výkonu, všechny odpovídající záruky. Účty cosmos DB nabízí vysokou dostupnost, jednu číslici ms latenci, [dobře definované úrovně konzistence](consistency-levels.md), transparentní regionální převzetí služeb při selhání s více funkci rozhraní API a schopnost Elasticky škálovat propustnost a úložiště napříč zeměkouli. 
@@ -86,7 +86,7 @@ Jakmile ovlivněný oblast obnoví z se výpadek, se automaticky obnoví všechn
 
 **Co se stane, pokud oblast zápisu má výpadek?**
 
-Pokud ovlivněných oblast je aktuální oblasti zápis a automatické převzetí služeb při selhání je povolen pro účet Azure Cosmos DB, pak oblast je automaticky označeny jako offline. Oblast alternativní se poté vyzval jako oblasti zápisu pro ovlivněné účet Azure Cosmos DB. Můžete povolit automatické převzetí služeb při selhání a plnou kontrolu nad pořadí výběru oblast pro vaše účty Azure Cosmos DB prostřednictvím portálu Azure nebo [prostřednictvím kódu programu](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange). 
+Pokud ovlivněných oblast je aktuální oblasti zápis a automatické převzetí služeb při selhání je povolen pro účet Azure Cosmos DB, pak oblast je automaticky označeny jako offline. Oblast alternativní se poté vyzval jako oblasti zápisu pro ovlivněné účet Azure Cosmos DB. Můžete povolit automatické převzetí služeb při selhání a plnou kontrolu nad pořadí výběru oblast pro vaše účty Azure Cosmos DB prostřednictvím portálu Azure nebo [prostřednictvím kódu programu](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange). 
 
 ![Priorit převzetí služeb při selhání pro Azure Cosmos DB](./media/regional-failover/failover-priorities.png)
 
@@ -98,7 +98,7 @@ Jakmile ovlivněný oblast obnoví z se výpadek, se automaticky obnoví všechn
 
 * Data obsažená v oblasti předchozí zápisu, který nebyl replikován číst oblasti během se výpadek je publikován jako konflikt informačního kanálu. Aplikace můžete číst informační kanál ke konfliktu, řešení konfliktů na základě logiky konkrétní aplikace a zpětný zápis aktualizovaná data do účtu Azure Cosmos DB podle potřeby. 
 * Předchozí oblast zápisu je znovu vytvořen jako čtení oblasti a vrátí do režimu online automaticky. 
-* Můžete změnit konfiguraci čtení oblast, která se vrátí do režimu online automaticky jako oblasti zápisu provedením ruční převzetí služeb při selhání prostřednictvím portálu Azure nebo [prostřednictvím kódu programu](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate).
+* Můžete změnit konfiguraci čtení oblast, která se vrátí do režimu online automaticky jako oblasti zápisu provedením ruční převzetí služeb při selhání prostřednictvím portálu Azure nebo [prostřednictvím kódu programu](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts#DatabaseAccounts_CreateOrUpdate).
 
 Následující fragment kódu ukazuje, jak zpracovat konflikty po oblasti ovlivněných obnoví z se výpadek.
 
@@ -123,7 +123,7 @@ do
 
 ## <a id="ManualFailovers"></a>Ruční převzetí služeb při selhání
 
-Kromě automatické převzetí služeb při selhání aktuální oblasti zápisu daného účtu Cosmos DB můžete ručně změnit dynamicky na jednu z existujících čtení oblasti. Ruční převzetí služeb při selhání lze inicializovat prostřednictvím portálu Azure nebo [prostřednictvím kódu programu](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate). 
+Kromě automatické převzetí služeb při selhání aktuální oblasti zápisu daného účtu Cosmos DB můžete ručně změnit dynamicky na jednu z existujících čtení oblasti. Ruční převzetí služeb při selhání lze inicializovat prostřednictvím portálu Azure nebo [prostřednictvím kódu programu](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts#DatabaseAccounts_CreateOrUpdate). 
 
 Ruční převzetí služeb při selhání zkontrolujte **nula ztráty dat** a **nula dostupnosti** ztrátě a řádně stav zápisu přenos ze starého zapisovat oblast novým pro zadaný účet Cosmos DB. Jako v automatické převzetí služeb při selhání, sada SDK DB Cosmos automaticky zpracuje zápisu oblast změny během ruční převzetí služeb při selhání a zajistí, že volání automaticky přesměrováni na novou oblast zápisu. V aplikaci Správa převzetí služeb při selhání se nevyžadují žádné změny kódu nebo konfigurace. 
 

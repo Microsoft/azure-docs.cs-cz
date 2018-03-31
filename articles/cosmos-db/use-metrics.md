@@ -1,13 +1,13 @@
 ---
-title: "Sledování a ladění pomocí metriky v Azure Cosmos DB | Microsoft Docs"
-description: "Použijte metriky v Azure Cosmos DB ladit běžné problémy a databáze."
-keywords: "Průzkumníku metrik"
+title: Sledování a ladění pomocí metriky v Azure Cosmos DB | Microsoft Docs
+description: Použijte metriky v Azure Cosmos DB ladit běžné problémy a databáze.
+keywords: Průzkumníku metrik
 services: cosmos-db
 author: gnot
 manager: jhubbard
-editor: 
-documentationcenter: 
-ms.assetid: 
+editor: ''
+documentationcenter: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 3b3de91c3850071d7c3fbff1faccde6c17a606e3
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 37ef1bc01bd3679e664e71e6a6e3bede84615305
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Sledování a ladění pomocí metriky v Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Tento článek vás provede běžné případy použití a jak metrik Azure Cosm
 
 ## <a name="understanding-how-many-requests-are-succeeding-or-causing-errors"></a>Principy počet požadavků jsou buď úspěšné nebo způsobuje chyby
 
-Abyste mohli začít, přejděte na [portál Azure](https://portal.azure.com) a přejděte do **metriky** okno. V okně Najít **překročen počet požadavků kapacity za 1 minutu** grafu. Tento graf znázorňuje celkový počet minut pomocí minutu požadavky oddělených stavový kód. Další informace o stavových kódech HTTP najdete v tématu [stavové kódy HTTP pro Azure Cosmos DB](https://docs.microsoft.com/rest/api/documentdb/http-status-codes-for-documentdb).
+Abyste mohli začít, přejděte na [portál Azure](https://portal.azure.com) a přejděte do **metriky** okno. V okně Najít **překročen počet požadavků kapacity za 1 minutu** grafu. Tento graf znázorňuje celkový počet minut pomocí minutu požadavky oddělených stavový kód. Další informace o stavových kódech HTTP najdete v tématu [stavové kódy HTTP pro Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 Nejběžnější stavový kód chyby je 429 (omezení), což znamená, že jsou požadavky na Azure Cosmos DB překročení zřízené propustnosti. Nejběžnější řešením je [škálovat RUs](./set-throughput.md) pro danou kolekci.
 
@@ -93,7 +93,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 *QueryMetrics* poskytuje podrobné informace o tom, jak dlouho trvalo jednotlivé komponenty dotazu k provádění. Nejběžnější příčiny pro dlouho spuštěná dotazy jsou kontroly (dotaz nebylo možné využít indexy), které lze vyřešit s lepší podmínku filtrování.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste se naučili sledování a ladění problémů pomocí metriky v portálu Azure, můžete další informace týkající se vylepšení výkonu databáze přečíst v následujících článcích:
 

@@ -1,13 +1,13 @@
 ---
-title: "Azure Table úložiště vazby pro Azure Functions"
-description: "Pochopit, jak používat Azure Table storage vazby v Azure Functions."
+title: Azure Table úložiště vazby pro Azure Functions
+description: Pochopit, jak používat Azure Table storage vazby v Azure Functions.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru"
+editor: ''
+tags: ''
+keywords: Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 8c028bd20518a07a5fb35e36d0819c001eb2a7d5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e6d2891a8ea531bf5c7cc7e1c74b890e01f2b56b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table úložiště vazby pro Azure Functions
 
@@ -388,6 +388,9 @@ Vstupní vazbu tabulky úložiště podporuje následující scénáře:
 ## <a name="output"></a>Výstup
 
 Pomocí Azure Table storage výstup vazby k zápisu entity do tabulky v účtu Azure Storage.
+
+> [!NOTE]
+> Tato vazba výstup nepodporuje aktualizaci existující entity. Použití `TableOperation.Replace` operace [ze sady SDK úložiště Azure](https://docs.microsoft.com/en-us/azure/cosmos-db/table-storage-how-to-use-dotnet#replace-an-entity) aktualizace stávající entity.   
 
 ## <a name="output---example"></a>Výstup – příklad
 

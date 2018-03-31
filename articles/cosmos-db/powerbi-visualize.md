@@ -1,35 +1,35 @@
 ---
 title: Power BI kurz pro Azure Cosmos DB konektor | Microsoft Docs
-description: "Tento kurz Power BI použijte k importu JSON, vytvářet sestavy pronikavého a vizualizovat data pomocí konektoru Azure Cosmos DB a Power BI."
+description: Tento kurz Power BI použijte k importu JSON, vytvářet sestavy pronikavého a vizualizovat data pomocí konektoru Azure Cosmos DB a Power BI.
 keywords: Power bi kurzu, vizualizaci dat, power bi connector
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: mimig
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: cd1b7f70-ef99-40b7-ab1c-f5f3e97641f7
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2017
+ms.date: 03/29/2018
 ms.author: mimig
-ms.openlocfilehash: 6414cdc942c43f6eb13ca8f050d6503bdd3e0b42
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 74be3e5b25401a7811c1af23a0a7e2887f9055c1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Power BI kurz pro Azure Cosmos DB: vizualizovat data pomocí Power BI connector
-[PowerBI.com](https://powerbi.microsoft.com/) je online služba, kde můžete vytvářet a sdílet řídicí panely a sestavy s daty, která je pro vás i vaši organizaci důležité.  Power BI Desktop je vyhrazené sestavy vývojového nástroje, která umožňuje načíst data z různých zdrojů dat, sloučení a transformaci dat, vytvářet výkonné sestavy a vizualizací a publikovat sestavy do Power BI.  Pomocí nejnovější verze Power BI Desktop můžete teď připojit ke svému účtu Cosmos DB prostřednictvím konektoru Cosmos DB pro Power BI.   
+[PowerBI.com](https://powerbi.microsoft.com/) je online služba, kde můžete vytvářet a sdílet řídicí panely a sestavy s daty, která je pro vás i vaši organizaci důležité.  Power BI Desktop je vyhrazené sestavy vývojového nástroje, která umožňuje načíst data z různých zdrojů dat, sloučení a transformaci dat, vytvářet výkonné sestavy a vizualizací a publikovat sestavy do Power BI.  Pomocí nejnovější verze Power BI Desktop můžete teď připojit k účtu Azure Cosmos DB prostřednictvím konektoru Azure Cosmos DB pro Power BI.   
 
-V tomto kurzu Power BI jsme provede kroky pro připojení k účtu Cosmos DB v Power BI Desktop, přejděte do kolekce, kde chceme extrahovat data pomocí navigátoru, transformovat JSON data v tabulkovém formátu pomocí Power BI Desktop dotazu editoru a vytvářet a publikovat sestavu na PowerBI.com.
+V tomto kurzu Power BI jsme provede kroky pro připojení k účtu Azure Cosmos DB v Power BI Desktop, přejděte do kolekce, kde chceme extrahovat data pomocí navigátoru, transformovat JSON data v tabulkovém formátu pomocí Power BI Desktop dotazu editoru a vytvářet a publikovat sestavu na PowerBI.com.
 
 Po dokončení tohoto kurzu Power BI, budete moct odpovězte si na následující otázky:  
 
-* Jak lze vytvářet sestavy s daty z databáze Cosmos pomocí Power BI Desktop?
-* Jak můžete připojit k účtu Cosmos DB v Power BI Desktop?
+* Jak lze vytvářet sestavy s daty z databáze Cosmos Azure pomocí Power BI Desktop?
+* Jak můžete připojit k účtu Azure Cosmos DB v Power BI Desktop?
 * Jak můžete načítat data z kolekce v Power BI Desktop?
 * Jak můžete převést vnořené data JSON v Power BI Desktop?
 * Jak může sdílet Moje sestavy na PowerBI.com a publikovat?
@@ -44,16 +44,16 @@ Po dokončení tohoto kurzu Power BI, budete moct odpovězte si na následujíc�
 Než budete postupovat podle pokynů v tomto kurzu Power BI, ujistěte se, abyste měli přístup na následujících odkazech:
 
 * [Nejnovější verze Power BI Desktop](https://powerbi.microsoft.com/desktop).
-* Přístup k naší ukázkový účet nebo data ve vašem účtu Cosmos DB.
+* Přístup k naší ukázkový účet nebo data ve vašem účtu Azure Cosmos DB.
   * Ukázkový účet bude zahrnovat sopka data zobrazená v tomto kurzu. Tento ukázkový účet není vázán žádné SLA a je určena pouze pro demonstrační účely.  Jsme vyhrazuje právo k úpravám této ukázkové účtu včetně, ale bez omezení, účet se ukončuje, změníte klíč, omezení přístupu, změna a odstranit data, kdykoli bez předstihu upozornění nebo důvod.
-    * Adresa URL: https://analytics.documents.azure.com
-    * Klíč jen pro čtení: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR + YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw ==
+    * URL: https://analytics.documents.azure.com
+    * Read-only key: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
   * Nebo, pokud chcete vytvořit svůj vlastní účet, najdete v části [vytvoření účtu Azure Cosmos DB databáze pomocí portálu Azure](https://azure.microsoft.com/documentation/articles/create-account/). Potom získat sopka ukázková data, která je podobná co se používá v tomto kurzu (ale neobsahuje bloky GeoJSON) najdete v tématu [NOAA lokality](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5) a pak můžete importovat data pomocí [nástroj pro migraci dat Azure Cosmos DB](import-data.md).
 
-Pokud chcete sdílet si sestavy na PowerBI.com, musí mít účet na PowerBI.com.  Další informace o službě Power BI pro volné a Power BI Pro, navštivte [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing).
+Pokud chcete sdílet si sestavy na PowerBI.com, musí mít účet na PowerBI.com.  Další informace o službě Power BI pro volné a Power BI Pro, navštivte [ https://powerbi.microsoft.com/pricing ](https://powerbi.microsoft.com/pricing).
 
 ## <a name="lets-get-started"></a>Pusťme se do toho
-V tomto kurzu budeme Představte si, že geologist, studujete vulkány po celém světě.  Data sopka je uložený v účtu Cosmos DB a dokumenty JSON vypadat jako následující ukázka dokumentu.
+V tomto kurzu budeme Představte si, že geologist, studujete vulkány po celém světě.  Sopka data jsou uložena v účtu Azure Cosmos DB a dokumenty JSON vypadat jako následující ukázka dokumentu.
 
     {
         "Volcano Name": "Rainier",
@@ -72,7 +72,7 @@ V tomto kurzu budeme Představte si, že geologist, studujete vulkány po celém
           "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
     }
 
-Chcete načíst data sopka z účtu Cosmos DB a vizualizovat data v interaktivní sestavy Power BI jako následující sestavy.
+Chcete načíst data sopka z účtu Azure Cosmos DB a vizualizovat data v interaktivní sestavy Power BI jako následující sestavy.
 
 ![Provedením tohoto kurzu Power BI pomocí Power BI connector, bude možné k vizualizaci dat se sestavou nástroje Power BI Desktop sopka](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
 
@@ -86,16 +86,16 @@ Jste připravení a vyzkoušejte ho? Můžeme začít.
    
     ![Power BI Desktop zobrazení sestavy - Power BI connector](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
 4. Vyberte **Domů** pásu karet, a potom klikněte na **načíst Data**.  **Načíst Data** okno by se měla objevit.
-5. Klikněte na **Azure**, vyberte **Microsoft Azure DocumentDB (Beta)**a potom klikněte na **Connect**. 
+5. Klikněte na **Azure**, vyberte **Azure DB Cosmos (Beta)**a potom klikněte na **Connect**. 
 
     ![Power BI Desktop získat Data - Power BI connector](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
-6. Na **Preview konektor** klikněte na tlačítko **pokračovat**. **Připojit ke službě Microsoft Azure DocumentDB** se zobrazí v okně.
-7. Zadejte Cosmos DB koncový bod adresa URL účtu by chtěli načíst data ze, jak je uvedeno níže a potom klikněte na **OK**. Pokud chcete používat svůj vlastní účet, můžete načíst adresu URL z identifikátoru URI pole v  **[klíče](manage-account.md#keys)**  okno portálu Azure. Chcete-li použít účet ukázku, zadejte `https://analytics.documents.azure.com` pro adresu URL. 
+6. Na **Preview konektor** klikněte na tlačítko **pokračovat**. **Azure Cosmos DB** se zobrazí v okně.
+7. Zadejte databázi Cosmos Azure koncový bod adresa URL účtu by chtěli načíst data ze, jak je uvedeno níže a potom klikněte na **OK**. Pokud chcete používat svůj vlastní účet, můžete načíst adresu URL z identifikátoru URI pole v **[klíče](manage-account.md#keys)** okno portálu Azure. Chcete-li použít účet ukázku, zadejte `https://analytics.documents.azure.com` pro adresu URL. 
    
     Nezadávejte název databáze, název kolekce a příkaz jazyka SQL jako tato pole jsou volitelná.  Místo toho vybrat databázi a kolekci k identifikaci, kdy se data pocházejí z použijeme navigátoru.
    
     ![Power BI kurz pro Azure Cosmos DB Power BI connector – okno připojení plochy](./media/powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
-8. Pokud se připojujete k tomuto koncovému bodu poprvé, budete vyzváni k klíč účtu. Pro svůj vlastní účet načíst klíč z **primární klíč** pole  **[klíče jen pro čtení](manage-account.md#keys)**  okno portálu Azure. Pro účet ukázku klíč je `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`. Zadejte příslušný klíč a pak klikněte na tlačítko **Connect**.
+8. Pokud se připojujete k tomuto koncovému bodu poprvé, budete vyzváni k klíč účtu. Pro svůj vlastní účet načíst klíč z **primární klíč** pole **[klíče jen pro čtení](manage-account.md#keys)** okno portálu Azure. Pro účet ukázku klíč je `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`. Zadejte příslušný klíč a pak klikněte na tlačítko **Connect**.
    
     Doporučujeme používat klíč jen pro čtení, při vytváření sestav.  To zabrání ohrožením hlavního klíče na potenciální rizika zabezpečení. Klíč jen pro čtení má k dispozici [klíče](manage-account.md#keys) okno portálu Azure, nebo můžete použít informace o účtu ukázka výše uvedeného.
    
@@ -218,11 +218,11 @@ Plánovaná aktualizace postupujte takto.
 3. Klikněte na **upravit přihlašovací údaje**. 
    
     Se zobrazí místní okno konfigurace. 
-4. Zadejte klíč k připojení k účtu Cosmos databáze pro tuto datovou sadu a pak klikněte na **přihlášení**. 
+4. Zadejte klíč k připojení k účtu Azure Cosmos DB pro tuto datovou sadu a pak klikněte na **přihlášení**. 
 5. Rozbalte položku **naplánovat aktualizaci** a nastavení plánu, kterou chcete datovou sadu obnovte. 
 6. Klikněte na tlačítko **použít** a dokončení nastavení plánované aktualizace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o službě Power BI naleznete v tématu [Začínáme s Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
-* Další informace o Cosmos DB, najdete v článku [cílovou stránku dokumentace Azure Cosmos DB](https://azure.microsoft.com/documentation/services/cosmos-db/).
+* Další informace o databázi Cosmos Azure, najdete v článku [cílovou stránku dokumentace Azure Cosmos DB](https://azure.microsoft.com/documentation/services/cosmos-db/).
 

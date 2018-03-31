@@ -1,6 +1,6 @@
 ---
 title: Volání runbooku Azure Automation z upozornění Log Analytics
-description: Tento článek obsahuje přehled způsobů, jak vyvolat runbook Automation z upozornění Log Analytics v prostředí Operations Management Suite.
+description: Tento článek obsahuje přehled o tom, jak vyvolat runbook služby automatizace výstraze analýzy protokolů v Azure.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3f95d6b9385b252bce05f19b38ae38f11e88a88c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2a0e497535f783cbffc21004331ccd2a50ab8eef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Volání runbooku Azure Automation z upozornění Log Analytics
 
@@ -23,11 +23,11 @@ Upozornění může například signalizovat dlouhodobý prudký nárůst zatí�
 V konfiguraci upozornění existují dvě možnosti volání runbooku:
 
 * Pomocí webhooku.
-   * Toto je jediná dostupná možnost, pokud váš pracovní prostor Operations Management Suite není propojený s účtem Automation.
-   * Tato možnost je k dispozici i v případě, že již máte účet Automation propojený s pracovním prostorem Operations Management Suite.  
+   * Toto je jedinou možností, které jsou k dispozici, pokud není propojený pracovní prostor analýzy protokolů pro účet Automation.
+   * Pokud již máte účet Automation propojit s pracovní prostor analýzy protokolů, tato možnost je stále k dispozici.  
 
 * Přímým výběrem runbooku.
-   * Tato možnost je dostupná, pouze pokud je pracovní prostor Operations Management Suite propojený s účtem Automation.
+   * Tato možnost je dostupná pouze v případě, že je propojený pracovní prostor analýzy protokolů pro účet Automation.
 
 ## <a name="calling-a-runbook-by-using-a-webhook"></a>Volání runbooku pomocí webhooku
 
@@ -35,7 +35,7 @@ Webhook můžete použít ke spuštění konkrétního runbooku v Azure Automati
 
 ## <a name="calling-a-runbook-directly"></a>Přímé volání runbooku
 
-V pracovním prostoru Operations Management Suite můžete nainstalovat a nakonfigurovat nabídku Automation and Control. Při konfiguraci možnosti akcí runbooku pro upozornění můžete všechny runbooky zobrazit v rozevíracím seznamu **Vybrat sadu runbook** a zvolit konkrétní runbook, který chcete v reakci na upozornění spustit. Vybraný runbook se může spustit v pracovním prostoru Azure nebo v procesu Hybrid Runbook Worker. 
+Můžete nainstalovat a nakonfigurovat automatizace a řízení nabídky v pracovním prostoru analýzy protokolů. Při konfiguraci možnosti akcí runbooku pro upozornění můžete všechny runbooky zobrazit v rozevíracím seznamu **Vybrat sadu runbook** a zvolit konkrétní runbook, který chcete v reakci na upozornění spustit. Vybraný runbook se může spustit v pracovním prostoru Azure nebo v procesu Hybrid Runbook Worker. 
 
 Když vytvoříte upozornění s možností runbooku, pro tento runbook se vytvoří webhook. Webhook zobrazíte tak, že přejdete do účtu Automation a pak otevřete podokno webhooku vybraného runbooku. 
 
@@ -90,7 +90,7 @@ $SearchResult.SvcDisplayName_CF
 
 Když se služba zastaví, pravidlo upozornění v Log Analytics zjistí shodu a aktivuje runbook, do kterého odešle kontext upozornění. Runbook se pokusí ověřit, že je služba zastavená. Pokud ano, runbook se ji pokusí restartovat, ověří, zda se spustila správně, a zobrazí výsledky.     
 
-Pokud případně nemáte účet Automation propojený s pracovním prostředím Operations Management Suite, pravidlo výstrahy můžete nakonfigurovat pomocí akce webhooku. Akce webhooku spustí runbook. Také nakonfiguruje runbook tak, aby podle kroků uvedených výše konvertoval řetězec ve formátu JSON a vyfiltroval hodnotu **SearchResult**.    
+Nemáte účtu Automation propojit s pracovní prostor analýzy protokolů, které můžete nakonfigurovat pravidlo výstrahy se akce webhooku. Akce webhooku spustí runbook. Také nakonfiguruje runbook tak, aby podle kroků uvedených výše konvertoval řetězec ve formátu JSON a vyfiltroval hodnotu **SearchResult**.    
 
 >[!NOTE]
 > Pokud byl váš pracovní prostor upgradován na [nový dotazovací jazyk Log Analytics](../log-analytics/log-analytics-log-search-upgrade.md), datová část webhooku se změnila. Podrobnosti o formátu najdete v tématu [Rozhraní REST API služby Azure Log Analytics](https://aka.ms/loganalyticsapiresponse).

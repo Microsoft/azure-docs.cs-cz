@@ -1,11 +1,11 @@
 ---
-title: "Integrace se službou Azure Mobile Engagement Web SDK | Microsoft Docs"
-description: "Nejnovější aktualizace a postupy pro Web Azure Mobile Engagement SDK"
+title: Integrace se službou Azure Mobile Engagement Web SDK | Microsoft Docs
+description: Nejnovější aktualizace a postupy pro Web Azure Mobile Engagement SDK
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b5daa2a2-942b-489d-aa1d-568c3b25e56f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: piyushjo
-ms.openlocfilehash: 7d8eaa180e277741a583522ee62d68f5247b92bb
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: bccfbdfe9d99900f58d5dbfa44183146c79b9c88
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="integrate-azure-mobile-engagement-in-a-web-application"></a>Integrovat Azure Mobile Engagement ve webové aplikaci
+> [!IMPORTANT]
+> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> 
+
 > [!div class="op_single_selector"]
 > * [Univerzální pro Windows](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -45,11 +49,11 @@ Mobile Engagement Web SDK je dodávána jako jeden soubor JavaScript, azure-enga
 ## <a name="browser-compatibility"></a>Kompatibilita s prohlížeči
 Mobile Engagement Web SDK používá nativní JSON kódování a dekódování kromě požadavky AJAX mezi doménami (spoléhat na specifikace W3C CORS). Je kompatibilní s následujících prohlížečů:
 
-* Microsoft Edge 12 +
-* Internet Explorer 10 +
+* Microsoft Edge 12+
+* Internet Explorer 10+
 * Firefox 3.5 +
 * Chrome 4 +
-* Safari 6 +
+* Safari 6+
 * Opera 12 +
 
 ## <a name="configure-mobile-engagement"></a>Konfigurace Mobile Engagement
@@ -64,7 +68,7 @@ Napsat skript, který vytvoří globální konfiguraci `azureEngagement` objekt 
 `connectionString` Hodnotu pro vaše aplikace se zobrazí na portálu Azure.
 
 > [!NOTE]
-> `appVersionName`a `appVersionCode` jsou volitelné. Doporučujeme však, že jste je nakonfigurovat tak, aby analytics může zpracovat informace o verzi.
+> `appVersionName` a `appVersionCode` jsou volitelné. Doporučujeme však, že jste je nakonfigurovat tak, aby analytics může zpracovat informace o verzi.
 > 
 > 
 

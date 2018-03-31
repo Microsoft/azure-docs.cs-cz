@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 983c2c8aeb4c9d37213061dd70d6d64bae3de9d7
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 05720e6c290b0b54e5b6d5170a6eb22306e9cb04
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure AD Connect Health
 Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o stavu připojení služby Azure Active Directory (Azure AD). Tyto nejčastější dotazy se týkají dotazy o tom, jak používat službu, která zahrnuje fakturační model, možnosti, omezení a podpory.
@@ -181,7 +181,7 @@ CheckForMS17-010
 
 **Otázka: Proč se Moje ADFS audity není generované?**
 
-Použijte rutiny prostředí PowerShell <i>Get-AdfsProperties – AuditLevel</i> zajistit protokoly auditování není v zakázané stavu. Další informace o [protokoly auditu služby AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)
+Použijte rutiny prostředí PowerShell <i>Get-AdfsProperties – AuditLevel</i> zajistit protokoly auditování není v zakázané stavu. Další informace o [protokoly auditu služby AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Všimněte si, že pokud existuje jsou rozšířené nastavení auditu instaluje na server ADFS, veškeré změny s auditpol.exe budou přepsána (událost Pokud aplikace vygeneruje není nakonfigurované). V takovém případě nastavte místní zásady zabezpečení do protokolu chyby aplikací generované a úspěch. 
 
 
 ## <a name="related-links"></a>Související odkazy

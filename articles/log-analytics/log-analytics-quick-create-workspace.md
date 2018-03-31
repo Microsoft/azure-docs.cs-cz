@@ -1,24 +1,24 @@
 ---
-title: "Vytvořit pracovní prostor v Azure Log Analytics | Microsoft Docs"
-description: "Naučte se vytvořit pracovní prostor analýzy protokolů k povolení správy řešení a shromažďování dat z vašich cloudových a místních prostředích."
+title: Vytvořit pracovní prostor v Azure Log Analytics | Microsoft Docs
+description: Naučte se vytvořit pracovní prostor analýzy protokolů k povolení správy řešení a shromažďování dat z vašich cloudových a místních prostředích.
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 5d8b20d5da442aa1f37eb7e2b2cb8049031e7a24
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8ac3d2d90909d740d28eb05396b915280f58c8ba
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Vytvořit pracovní prostor analýzy protokolů na portálu Azure
 Na portálu Azure, které můžete nastavit pracovní prostor analýzy protokolů, které je jedinečné prostředí analýzy protokolů s vlastní úložiště dat, zdroje dat a řešení.  Podle pokynů popsaných v tomto článku jsou požadovány, pokud máte v úmyslu na shromažďování dat z následujících zdrojů:
@@ -40,16 +40,17 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
-1. Na portálu Azure klikněte na tlačítko **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.<br><br> ![portál Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. Klikněte na **Vytvořit** a podle potřeby změňte hodnoty následujících položek:
 
   * Zadejte název nového **pracovního prostoru OMS**, například *DefaultLAWorkspace*. 
   * Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
   * Pro **skupiny prostředků**, využít existující prostředek skupiny již instalační program nebo vytvořte novou.  
   * Vyberte dostupný **umístění**.  Další informace najdete na stránce uvádějící [oblasti, ve kterých je dostupná služba Log Analytics](https://azure.microsoft.com/regions/services/).
-  * V Log Analytics si můžete vybrat mezi třemi různými **cenovými úrovněmi**, ale pro účely tohoto rychlého startu vyberete úroveň **Free**.  Další informace o jednotlivých úrovních najdete v [podrobnostech o cenách Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
+  * Při vytváření pracovního prostoru v nové předplatné vytvořený po 2. dubna 2018, budou automaticky používat *za GB* cenách plán a možnost zvolit cenovou úroveň, nebudete mít k dispozici.  Pokud vytváříte pracovní prostor pro vytvořené před duben 2, nebo k odběru, který je vázaný na existující zápisu EA existujícímu předplatnému, máte možnost si vybrat mezi tři cenové úrovně.  V tento rychlý start kterou budete vyberte úroveň free.  Další informace o jednotlivých úrovních najdete v [podrobnostech o cenách Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
 
-        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-01.png)<br>  
+        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
+
 3. Po zadání požadovaných informací v podokně **Pracovní prostor OMS** klikněte na **OK**.  
 
 Během ověřování informací a vytváření pracovního prostoru můžete průběh zpracování sledovat prostřednictvím položky nabídky **Oznámení**. 
