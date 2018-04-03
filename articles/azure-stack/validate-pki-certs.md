@@ -16,10 +16,10 @@ ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.openlocfilehash: b38e3cc45d14645611c0cd804f2bfa66047810f0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/02/2018
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Ověření Azure zásobníku infrastruktury veřejných KLÍČŮ certifikátů
 Nástroj Azure zásobníku certifikát kontrolu popsané v tomto článku je poskytnutou výrobcem OEM součástí souboru deploymentdata.json, aby bylo možné ověřit, zda [generované certifikáty PKI](azure-stack-get-pki-certs.md) jsou vhodné pro před nasazením. Certifikáty by měly být ověřené pomocí dostatek času k testování a získání certifikátů znova vydat v případě potřeby. 
