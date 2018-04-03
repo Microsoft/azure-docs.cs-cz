@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/02/2018
 ms.author: mabrigg
-ms.openlocfilehash: f495ca12e7cdb1bf61f09bd2d4a8a21654745d8a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2c10dcf185c62f3672be80ad2e3d049eae82fe6b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Údržba zásad Azure zásobníku
 Tento článek popisuje údržby zásady pro Azure zásobníku integrované systémy a co je třeba udělat, aby byl váš systém v podporovaném stavu. 
@@ -41,10 +41,11 @@ Balíček Microsoft aktualizace má následující zásady vytváření názvů,
 Aktualizace softwaru Microsoft vydala 15. června 2017 by měla mít například verze "1.0.170615.1".
 
 ## <a name="keep-your-system-under-support"></a>Udržování systému v rámci podpory
+Chcete-li pokračovat, pokud chcete získat podporu, musí udržovat nasazením Azure zásobníku aktuální. Zásady pro odložení aktualizací je, že pro Azure zásobník zůstat v podporu, musí se nedávno vydaných verzí aktualizace nebo spusťte některý z dvě předchozí verze hlavní aktualizace.  Opravy hotfix nejsou považovány za verze hlavní aktualizací.  Pokud vaše zásobník Azure cloud je za *více než dvě aktualizace*, se považuje za mimo dodržování předpisů a musíte aktualizovat alespoň minimální podporovaná verze Odborná pomoc. 
 
-Pokud chcete získat podporu pro systém, je nutné zachovat zásobník Azure aktualizovat v určitém časovém intervalu. Naše zásady pro odložení aktualizací softwaru společnosti Microsoft jsou tři měsíce. Pokud je systém tři měsíce zastaralé, se považují za mimo dodržování předpisů. Je třeba aktualizovat systém na alespoň minimální podporovaná verze Odborná pomoc. 
+Například pokud je 1805 nejnovější dostupné aktualizace verze a předchozí dva balíčky aktualizací byly verze 1804 a 1803, 1803 i 1804 zůstanou na podporu. 1802 však není podporován. Zásady platí, pokud neexistuje žádná verze pro měsíc nebo dvě. Například pokud aktuální verze je 1805 a došlo bez uvolnění 1804, předchozí dva balíčky aktualizací 1803 a 1802 by zůstanou na podporu.
 
-Balíčky aktualizací softwaru společnosti Microsoft jsou oddělené a vyžaduje, aby předchozí balíček aktualizace předpokladem je. Pokud se rozhodnete odložení jeden nebo více aktualizací, zvažte celkové modulu runtime, pokud chcete získat nejnovější verzi.
+Balíčky aktualizací softwaru společnosti Microsoft jsou oddělené a vyžaduje, aby předchozí balíček aktualizace předpokladem je. Pokud se rozhodnete odložení jeden nebo více aktualizací, zvažte celkové modulu runtime, pokud chcete získat nejnovější verzi. 
 
 Následující tabulka uvádí příklad aktualizace balíčku verze, jejich požadovaných součástí a minimální podporovaná verze systému musí být na pro zachování podpory. Tabulka je založená na počáteční verzi Azure zásobníku integrované systémy (sestavení. 1708), verze první aktualizace balíčku. (1709) v září 2017. 
 
@@ -53,11 +54,12 @@ Následující tabulka uvádí příklad aktualizace balíčku verze, jejich po�
 | 1710 | 1709 | neuvedeno |
 | 1711 | 1710 | 1709 |
 | 1712 | 1711 | 1710 |
-| 1802 | 1801 | 1712 |
-| 1803 | 1802 | 1801 |
+| 1802 | 1712 | 1711 |
+| 1803 | 1802 | 1712 |
 | 1804 | 1803 | 1802 |
 | 1805 | 1804 | 1803 |
 | | | 
+V předchozí tabulce není k dispozici žádné verzi 1801.
 
 ## <a name="next-steps"></a>Další postup
 

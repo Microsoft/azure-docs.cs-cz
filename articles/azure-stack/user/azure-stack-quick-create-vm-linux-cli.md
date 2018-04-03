@@ -1,11 +1,11 @@
 ---
-title: "Vytvořit virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure v zásobníku Azure | Microsoft Docs"
-description: "Vytvořte virtuální počítač s Linuxem pomocí rozhraní příkazového řádku v zásobníku Azure."
+title: Vytvořit virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure v zásobníku Azure | Microsoft Docs
+description: Vytvořte virtuální počítač s Linuxem pomocí rozhraní příkazového řádku v zásobníku Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 21F7D599-1FEC-4827-A5C3-06495C5F53A4
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 160893f5b2e9c78bd62355782c279fb08f7f6b48
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 69036b522b375eced604256340b532ad14a8708e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-linux-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Vytvořit virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure v Azure zásobníku
 
@@ -31,7 +31,7 @@ Rozhraní příkazového řádku Azure slouží k vytváření a správě prost�
 
 * Ověřte, že vaše operátor zásobník Azure má přidaná bitovou kopii "Ubuntu Server 16.04 LTS" do zásobníku Azure marketplace. 
 
-* Azure zásobníku vyžaduje konkrétní verzi rozhraní příkazového řádku Azure k vytváření a správě prostředků. Pokud nemáte nakonfigurován pro Azure zásobníku rozhraní příkazového řádku Azure, přihlaste se k [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo externí klienta se systémem Windows Pokud jste [připojení prostřednictvím VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) a postup [instalace a konfigurace rozhraní příkazového řádku Azure](azure-stack-connect-cli.md).
+* Azure zásobníku vyžaduje konkrétní verzi rozhraní příkazového řádku Azure k vytváření a správě prostředků. Pokud nemáte nakonfigurován pro Azure zásobníku rozhraní příkazového řádku Azure, přihlaste se k [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo externí klienta se systémem Windows Pokud jste [připojení prostřednictvím VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) a postup [instalace a konfigurace rozhraní příkazového řádku Azure](azure-stack-version-profiles-azurecli2.md).
 
 * Veřejný klíč SSH, název id_rsa.pub by se vytvořit v adresáři .ssh profil uživatele systému Windows. Podrobné informace o vytváření klíčů SSH naleznete v tématu [vytváření SSH klíčů v systému Windows](../../virtual-machines/linux/ssh-from-windows.md). 
 

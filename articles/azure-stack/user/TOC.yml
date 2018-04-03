@@ -99,12 +99,19 @@
               href: azure-stack-powershell-download.md
             - name: Konfigurace PowerShellu – uživatel
               href: azure-stack-powershell-configure-user.md
-            - name: Instalace a konfigurace rozhraní příkazového řádku Azure Stacku
-              href: azure-stack-connect-cli.md
             - name: Instalace sady Visual Studio
               href: azure-stack-install-visual-studio.md
-            - name: Správa profilů verzí API
+            - name: Pomocí profilů verze rozhraní API
               href: azure-stack-version-profiles.md
+              items:
+                - name: PowerShell
+                  href: azure-stack-version-profiles-powershell.md
+                - name: Azure CLI 2.0
+                  href: azure-stack-version-profiles-azurecli2.md
+                - name: PŘEJÍT
+                  href: azure-stack-version-profiles-go.md
+                - name: Rozhraní API podporuje profily poskytovatele prostředků
+                  href: azure-stack-profiles-azure-resource-manager-versions.md
         - name: Použití modulu zásad
           href: azure-stack-policy-module.md
         - name: Použití šablon

@@ -1,24 +1,24 @@
 ---
-title: "Nahraďte fyzický disk v zásobníku Azure | Microsoft Docs"
-description: "Popisuje proces pro jak nahradit fyzický disk v zásobníku Azure."
+title: Nahraďte fyzický disk v zásobníku Azure | Microsoft Docs
+description: Popisuje proces pro jak nahradit fyzický disk v zásobníku Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: a95617a8dd2a8f296164c672e2b4b2628574ce5a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: f168c005c729ae75a5369b80b3dc5eab03ee0243
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Nahraďte fyzický disk v Azure zásobníku
 
@@ -40,6 +40,9 @@ Pokud otevřete výstrahu, popis výstrahy obsahuje uzel jednotek škálování 
  ## <a name="replace-the-disk"></a>Výměna disku
 
 Postupujte podle pokynů dodavatele hardwaru OEM FRU určena k nahrazení skutečný disk.
+
+> [!note]
+> Nahradí disky pro jeden uzel jednotky škálování najednou. Počkejte na dokončení než budete pokračovat na další uzel jednotky škálování úloh oprava virtuálního disku
 
 Aby se zabránilo použití nepodporované disku v integrovaném systému, bude systém blokovat disky, které nejsou podporované od dodavatele. Pokud se pokusíte použít nepodporovaný disk, nová výstraha se zprávou, že disk je z důvodu nepodporovaný model nebo firmware v karanténě.
 

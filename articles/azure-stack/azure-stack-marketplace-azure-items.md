@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 04/02/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: cdce5ad971e345971aa5de9a9bb79379fb1ead48
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b91cfdfe89f1f15354595400ed9547496fdcd796
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure k dispozici pro Azure zásobníku položky Marketplace.
 
@@ -220,4 +220,5 @@ Zásobník Microsoft Azure podporuje následující virtuální počítače Azur
 | ![Brány Firewall PT aplikací](media/azure-stack-marketplace-azure-items/pt.png) | [Brány Firewall PT aplikací](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | Brány Firewall aplikací PT detekuje známé & neznámé chyby zabezpečení a zabrání útoky na webové aplikace. <b>Stáhněte si oba položky PT Marketplace.</b> | Kladné technologie |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise umožňuje automatizovat celý životní cyklus infrastruktury Azure zásobníku. <b>Stáhněte si oba položky Puppet Marketplace.</b> | Puppet |
 | ![SUSE Manager 3.0 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Správa infrastruktury open-source třídy nejvhodnější. | SUSE |
+| ![Zálohování Veeam a replikace](media/azure-stack-marketplace-azure-items/veeam.png) | [Zálohování Veeam a replikace ](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication) | & Replikace 9.5 Veeam zálohování. | Veeam |
 | ![Nástroj ZeroDown softwaru](media/azure-stack-marketplace-azure-items/zerodown.png) | [Nástroj ZeroDown softwaru ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | Nástroj v7.1 ZeroDown softwaru - migrovat + HA. | ZeroDown Software |

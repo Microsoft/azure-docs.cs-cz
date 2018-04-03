@@ -1,118 +1,82 @@
 ---
-title: "Správa profilů verze rozhraní API v Azure zásobníku | Microsoft Docs"
-description: "Další informace o profilech verze rozhraní API v Azure zásobníku"
+title: Správa profilů verze rozhraní API v Azure zásobníku | Microsoft Docs
+description: Další informace o profilech verze rozhraní API v Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: 6B749785-DCF5-4AD8-B808-982E7C6BBA0E
+editor: ''
+ms.assetid: 8A336052-8520-41D2-AF6F-0CCE23F727B4
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 03/27/2018
 ms.author: mabrigg
-ms.openlocfilehash: d86a54ea9e165269131eb961df7f74703f0ec6ff
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.reviewer: sijuman
+ms.openlocfilehash: 452ed1de0588b380747edaa44dd0cc3805c51392
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Správa profilů verze rozhraní API v Azure zásobníku
 
-Funkce rozhraní API služby Azure App Service verze profilů poskytuje způsob, jak spravovat verze rozdíly mezi Azure a Azure zásobníku. Profilem verze rozhraní API je sada modulů Powershellu AzureRM s konkrétní verze rozhraní API. Každá platforma cloudu má sadu profilů podporované verze API. Například zásobník Azure podporuje verzi konkrétní, ze profilu, například **2017-03-09profil**, a podporuje Azure *nejnovější* profil verze rozhraní API. Při instalaci profilu jsou nainstalovány na moduly Powershellu AzureRM, které odpovídají zadaný profil.
+*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-## <a name="install-the-powershell-module-required-to-use-api-version-profiles"></a>Nainstalujte modul prostředí PowerShell vyžaduje použití profilů verze rozhraní API
+Profily rozhraní API zadejte poskytovatel prostředků Azure a verze rozhraní API pro koncové body Azure REST. Můžete vytvořit vlastní klientů v různých jazycích pomocí profilů rozhraní API. Každý klient používá rozhraní API profil kontaktovat poskytovatele prostředků vpravo a verzi rozhraní API pro Azure zásobníku. 
 
-**AzureRM.Bootstrapper** modul, který je k dispozici prostřednictvím Galerie prostředí PowerShell poskytuje rutiny prostředí PowerShell, které jsou nutné k práci pomocí profilů verze rozhraní API. Použijte následující rutinu k instalaci **AzureRM.Bootstrapper** modul:
+Můžete vytvořit aplikaci pro práci s zprostředkovatelé prostředků Azure, aniž by bylo nutné vyřešit přesně, jaká verze každý poskytovatel prostředků rozhraní API je kompatibilní s Azure zásobníku. Právě zarovnat vaší aplikace do profilu; Sada SDK se vrátí do správné verze API-Version.
 
-```PowerShell
-Install-Module -Name AzureRm.BootStrapper
-```
-**AzureRM.Bootstrapper** modulu je náhled, takže podrobnosti a funkce se mohou změnit. Pokud chcete stáhnout a nainstalovat nejnovější verzi tento modul z Galerie prostředí PowerShell, spusťte následující rutinu:
 
-```PowerShell
-Update-Module -Name "AzureRm.BootStrapper"
-```
+Toto téma vám pomůže:
+ - Porozumět profily rozhraní API pro Azure zásobníku.
+ - Jak můžete profily rozhraní API pro vývoj řešení.
+ - Kde hledat kód konkrétní pokyny.
 
-## <a name="install-a-profile"></a>Instalace profilu
+## <a name="summary-of-api-profiles"></a>Souhrn rozhraní API profilů
 
-Použití **instalace AzureRmProfile** rutiny s **2017-03-09profil** profil verze rozhraní API pro instalaci modulů AzureRM vyžadovanou zásobník Azure. 
+- Profily rozhraní API se používají k vyjádření sadu zprostředkovatelé prostředků Azure a jejich verze rozhraní API.
+- Profily rozhraní API byly vytvořeny pro vývojáře k vytvoření šablony napříč několika Cloudech Azure. Jsou navrženy splňují vaše potřebu rozhraní kompatibilní a stabilní.
+- Profily jsou vydávány čtyřikrát za rok.
+- Jsou tři profil zásady vytváření názvů:
+    - **latest**  
+        Nejnovější verze rozhraní API vydané v Azure.
+    - **yyyy-mm-dd-hybrid**  
+    Vydání na pololetní cadence, tato verze zaměřuje na konzistenci a stabilitu napříč více cloudy.
+    - **yyyy-mm-dd-profile**  
+    Je umístěna mezi optimální stability a nejnovější funkce.
 
->[!NOTE]
->S tímto profilem verze rozhraní API nejsou nainstalované moduly správce cloudu Azure zásobníku. Moduly Správce by měly být nainstalovány samostatně uvedené v kroku 3 [instalaci prostředí PowerShell pro Azure zásobníku](azure-stack-powershell-install.md) článku.
+## <a name="azure-resource-manager-api-profiles"></a>Azure Resource Manager API profily
 
-```PowerShell 
-Install-AzureRMProfile -Profile 2017-03-09-profile
-```
-## <a name="install-and-import-modules-in-a-profile"></a>Instalace a naimportovat moduly v profilu
+Azure zásobníku nepoužívá nejnovější verzi z verzí rozhraní API v globální Azure nalezen. Při vytváření vlastní řešení, budete muset najít verze rozhraní API pro každý poskytovatel prostředků v Azure, který je kompatibilní s Azure zásobníku.
 
-Použití **použití AzureRmProfile** rutiny k instalaci a naimportovat moduly, které jsou spojeny s profilem verze rozhraní API. V relaci prostředí PowerShell lze importovat jenom jeden profil verze rozhraní API. K importu jiný profil verze rozhraní API, musíte otevřít novou relaci prostředí PowerShell. **Použití AzureRMProfile** rutina spustí následující úlohy:  
-1. Kontroluje, zda moduly Powershellu, které jsou přidružené k zadaný profil verze rozhraní API jsou nainstalovány v aktuálním oboru.  
-2. Stáhne a nainstaluje moduly, pokud již nejsou nainstalovány.   
-3. Moduly naimportuje do aktuální relace prostředí PowerShell. 
+Spíše než výzkum každý poskytovatel prostředků a konkrétní verzi podporovanou serverem zásobník Azure, můžete použít profil aplikace API. Profil určuje sadu zprostředkovatelé prostředků a verze rozhraní API. Sady SDK nebo nástroj vytvořené pomocí sady SDK, se vrátí k cílové verze rozhraní api-zadaná v profilu. Pomocí profilů rozhraní API můžete zadat verze profilu, který se vztahuje na šablonu celý a v době běhu Azure Resource Manager vybere správnou verzi prostředku.
 
-```PowerShell
-# Installs and imports the specified API version profile into the current PowerShell session.
-Use-AzureRmProfile -Profile 2017-03-09-profile -Scope CurrentUser
+Profily rozhraní API pracovat s nástroji, které používají Azure Resource Manager, například prostředí PowerShell, rozhraní příkazového řádku Azure, kódu, které jsou součástí sady SDK a sadu Microsoft Visual Studio. Nástroje a sady SDK můžete použít profily číst kterou verzi modulů a knihovny, které chcete zahrnout při vytváření aplikace.
 
-# Installs and imports the specified API version profile into the current PowerShell session without any prompts.
-Use-AzureRmProfile -Profile 2017-03-09-profile -Scope CurrentUser -Force
-```
+Například, pokud účet pomocí prostředí PowerShell k vytvoření úložiště pomocí **Microsoft.Storage** poskytovatele prostředků, který podporuje rozhraní api-version 2016-03-30 a virtuální počítač pomocí rozhraní api verze 2015-12-01 zprostředkovateli prostředků Microsoft.Compute. , potřebovali byste k vyhledání který podporuje modul prostředí PowerShell 2016-03-30 pro úložiště a které modul podporuje 2015-02-01 pro výpočet a instalovat je. Místo toho můžete k profilu. Použijte rutinu ** instalace profilu * profilename *** a prostředí PowerShell načte správnou verzi modulů.
 
-Chcete-li nainstalovat a naimportovat moduly vybrané AzureRM z profilu verze rozhraní API, spusťte **použití AzureRMProfile** rutiny s *modulu* parametr:
+Podobně pokud používáte Python SDK k vytvoření aplikace na základě Python, můžete zadat profil. Sada SDK načte správné moduly pro poskytovatele prostředků, které jste zadali ve vašem skriptu.
 
-```PowerShell
-# Installs and imports the Compute, Storage, and Network modules from the specified API version profile into your current PowerShell session.
-Use-AzureRmProfile -Profile 2017-03-09-profile -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
-```
+Jako vývojář můžete se zaměřit na zápis vašeho řešení. Místo analýza, které verze api Version, poskytovatel prostředků a které cloudové funguje společně, můžete použít profil a vědět, že váš kód bude fungovat přes všechny cloudy, které podporují tento profil.
 
-## <a name="get-the-installed-profiles"></a>Získejte nainstalované profily
+## <a name="api-profile-code-samples"></a>Ukázky kódu rozhraní API profilu
 
-Použití **Get-AzureRmProfile** rutiny k získání seznamu dostupných profilů verze rozhraní API: 
+Můžete najít ukázky kódu můžete integrovat řešení preferovaný jazyk zásobníkem Azure s použitím profilů. V současné době najdete pokyny a ukázky pro následující jazyky:
 
-```PowerShell
-# Lists all API version profiles provided by the AzureRM.BootStrapper module.
-Get-AzureRmProfile -ListAvailable 
+- **PowerShell**  
+Můžete použít **AzureRM.Bootstrapper** modulu, které jsou k dispozici prostřednictvím Galerie prostředí PowerShell získat rutiny prostředí PowerShell, které jsou nutné k práci pomocí profilů verze rozhraní API.  
+Informace najdete v tématu [profily verze rozhraní API pomocí prostředí PowerShell pro](azure-stack-version-profiles-powershell.md).
+- **Azure CLI 2.0**  
+Můžete aktualizovat konfiguraci prostředí použít profil pro konkrétní verzi rozhraní API zásobník Azure.  
+Informace v tématu [profily verze pomocí rozhraní API pro Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md).
+- **GO**  
+V sadě SDK přejděte profil je kombinaci různých typů prostředků s různými verzemi z jiné služby. profily jsou k dispozici v části profily nebo cestu s jejich verze v **rrrr-MM-DD** formátu.  
+Informace v tématu [profily verze pomocí rozhraní API pro přejděte](azure-stack-version-profiles-go.md).
 
-# Lists the API version profiles that are installed on your machine.
-Get-AzureRmProfile
-```
-## <a name="update-profiles"></a>Aktualizovat profily
-
-Použití **aktualizace AzureRmProfile** rutiny aktualizovat moduly v profilu verze rozhraní API na nejnovější verzi modulů, které jsou k dispozici v galerii prostředí PowerShell. Doporučujeme vám spustit **aktualizace AzureRmProfile** rutiny v nové relaci prostředí PowerShell, aby nedocházelo ke konfliktům, při importu modulů. **Aktualizace AzureRmProfile** rutina spustí následující úlohy:
-
-1. Kontroluje, zda jsou v dané profilu verze rozhraní API pro aktuální obor nainstalovány nejnovější verze moduly.  
-2. Zobrazí výzvu pro instalaci modulů, pokud již nejsou nainstalovány.  
-3. Nainstaluje a naimportuje aktualizované moduly do aktuální relace prostředí PowerShell.  
-
-```PowerShell
-Update-AzureRmProfile -Profile 2017-03-09-profile
-```
-
-K odebrání dříve nainstalovaných verzí moduly, než je aktualizovat na nejnovější dostupnou verzi, použijte **aktualizace AzureRmProfile** rutiny spolu s *- RemovePreviousVersions* parametr:
-
-```PowerShell 
-Update-AzureRmProfile -Profile 2017-03-09-profile -RemovePreviousVersions
-```
-
-Tato rutina se spustí následující úlohy:  
-
-1. Kontroluje, zda jsou v dané profilu verze rozhraní API pro aktuální obor nainstalovány nejnovější verze moduly.  
-2. Odebere starší verze modulů z profilu aktuální verze rozhraní API a v aktuální relaci prostředí PowerShell.  
-3. Zobrazí výzvu k instalaci nejnovější verzi modulů.  
-4. Nainstaluje a naimportuje aktualizované moduly do aktuální relace prostředí PowerShell.  
- 
-## <a name="uninstall-profiles"></a>Odinstalujte profily
-
-Použití **odinstalace AzureRmProfile** rutiny odinstalace zadaný profil verze rozhraní API:
-
-```PowerShell 
-Uninstall-AzureRmProfile -Profile 2017-03-09-profile
-```
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Instalace PowerShellu pro Azure Stack](azure-stack-powershell-install.md)
-* [Konfigurace prostředí PowerShell Azure zásobník uživatele](azure-stack-powershell-configure-user.md)  
+* [Konfigurace prostředí PowerShell Azure zásobník uživatele](azure-stack-powershell-configure-user.md)
+* [Přečtěte si podrobnosti o verze API poskytovatele prostředků podporuje profily](azure-stack-profiles-azure-resource-manager-versions.md).

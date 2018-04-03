@@ -3,7 +3,7 @@ title: Azure požadavky na certifikáty infrastruktury veřejných klíčů zás
 description: Popisuje požadavky na nasazení certifikát PKI zásobník Azure pro Azure zásobníku integrované systémy.
 services: azure-stack
 documentationcenter: ''
-author: mabriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,16 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
-ms.author: mabrigg
+ms.date: 03/29/2018
+ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: a5712e556d7b3bdcce38b8b8d39a08414ce0fd2f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 583f827fe77ef7721b3098dee01c418c9e5cccd8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Požadavky na certifikát Azure zásobníku infrastruktura veřejných klíčů
+
 Sada Azure má síť infrastruktury veřejných pomocí externě dostupný veřejné IP adresy přiřazené k malého služeb Azure zásobníku a které by mohly mít klientské virtuální počítače. Certifikáty PKI s odpovídající názvy DNS pro tyto koncové body Azure zásobníku infrastruktury veřejných jsou nezbytné při nasazení Azure zásobníku. Tento článek obsahuje informace o:
 
 - Jaké certifikáty se vyžadují k nasazení Azure zásobníku
@@ -37,7 +38,7 @@ Následující seznam popisuje požadavky na certifikát, které jsou nutné k n
 - Infrastruktury Azure zásobníku musí mít přístup k síti na používaný k podepisování certifikátů certifikační autority
 - Když otáčení certifikátů, certifikáty musí být že buď vystavené stejným interní certifikační autorita používaná k podepisování certifikátů uvedených v nasazení nebo všechny veřejné certifikační autority z výše
 - Použití certifikáty podepsané svým držitelem nejsou podporovány.
-- Certifikát může být jeden zástupný znak certifikát zahrnující všechny obory názvů v poli Alternativní název předmětu (SAN). Alternativně můžete vytvořit jednotlivé certifikáty pomocí zástupných znaků pro koncové body, například služby acs a Key Vault, kde jsou vyžadovány. 
+- Certifikát může být jeden zástupný znak certifikát zahrnující všechny obory názvů v poli Alternativní název předmětu (SAN). Alternativně můžete použít jednotlivé certifikáty pomocí zástupné znaky pro koncové body, jako třeba **acs** a Key Vault, kde jsou vyžadovány. 
 - Algoritmus podpisu certifikátu nemůže být SHA1, jako musí být vyšší. 
 - Certifikát musí být ve formátu PFX, jako veřejné a soukromé klíče jsou požadovány pro instalaci zásobník Azure. 
 - Soubory certifikátů pfx musí mít hodnotu "Digitální podpis" a "KeyEncipherment" v jeho poli "Použití klíče".
@@ -58,6 +59,23 @@ V tabulce v této části jsou certifikáty infrastruktury veřejných KLÍČŮ 
 Certifikáty s odpovídající názvy DNS pro každý koncový bod Azure zásobníku infrastruktury veřejných se vyžadují. Název DNS každý koncový bod je vyjádřen ve formátu:  *&lt;předpony >.&lt; oblast >. &lt;plně kvalifikovaný název domény >*. 
 
 Pro vaše nasazení [Oblast] a [externalfqdn] hodnoty musí odpovídat oblasti a názvy externí domény, které jste zvolili pro systém Azure zásobníku. Jako příklad, pokud byl název oblasti *Redmond* a název domény externího byl *contoso.com*, názvy DNS by mít formát *&lt;předpony >. redmond.contoso.com*.  *&lt;Předpony >* hodnoty jsou předem definovanou společností Microsoft k popisu zabezpečené certifikát koncového bodu. Kromě toho  *&lt;předpony >* hodnoty koncových bodů externí infrastruktury závisí na službu Azure zásobníku, která používá konkrétní koncový bod. 
+
+> [!note]  
+> Certifikáty může být zadaný jako certifikát jeden zástupný znak zahrnující všechny obory názvů v polích subjektu a alternativní název předmětu (SAN) zkopírovány do všech adresářů, nebo jako jednotlivé certifikáty pro každý koncový bod zkopírován do příslušné adresáře. Pamatujte si, že obě možnosti vyžadují, abyste pomocí certifikáty se zástupnými znaky pro koncové body, jako například **acs** a Key Vault, kde jsou vyžadovány. 
+
+| Složky pro nasazení | Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN) | Obor (podle oblasti) | SubDomain namespace |
+|-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
+| Veřejné portálu | portal.&lt;region>.&lt;fqdn> | Portály | &lt;region>.&lt;fqdn> |
+| Portál pro správu | adminportal.&lt;region>.&lt;fqdn> | Portály | &lt;region>.&lt;fqdn> |
+| Veřejný Azure Resource Manager | Správa. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;region>.&lt;fqdn> |
+| Správce Azure Resource Manager | adminmanagement. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;region>.&lt;fqdn> |
+| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Certifikát SSL typu Wildcard) | Blob Storage | blob.&lt;region>.&lt;fqdn> |
+| ACSTable | * .table. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Table Storage | Tabulka. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(Certifikát SSL typu Wildcard) | Queue Storage | fronty. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(Certifikát SSL typu Wildcard) | Key Vault | trezor. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| KeyVaultInternal | *.adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) |  Internal Keyvault |  adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+
+### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>Pro prostředí Azure zásobníku 1803 předběžné verze
 
 |Složky pro nasazení|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|Obor (podle oblasti)|SubDomain namespace|
 |-----|-----|-----|-----|
@@ -93,8 +111,8 @@ Následující tabulka popisuje koncové body a certifikáty potřebné pro adap
 |Obor (podle oblasti)|Certifikát|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|SubDomain namespace|
 |-----|-----|-----|-----|
 |SQL, MySQL|SQL a MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard)|dbadapter.*&lt;region>.&lt;fqdn>*|
-|App Service|Certifikát SSL výchozí web provoz|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard více doménami<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
-|App Service|API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|App Service|Certifikát SSL výchozí web provoz|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard více doménami<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|App Service|Rozhraní API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|SSO|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 
