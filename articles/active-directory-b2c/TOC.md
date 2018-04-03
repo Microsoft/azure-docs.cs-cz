@@ -33,7 +33,7 @@
 ### [Ochrana rozhraní API ASP.NET](active-directory-b2c-tutorials-web-api.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
 ### [Jádro ASP.NET](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)
-### [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
+### [Node.js](active-directory-b2c-devquickstarts-api-node.md)
 ### [Volání webového rozhraní API .NET](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
 # Průvodci
@@ -67,6 +67,7 @@
 ## [Vlastní zásady](active-directory-b2c-overview-custom.md)
 ## Průvodci
 ### [Začínáme](active-directory-b2c-get-started-custom.md)
+### [Úvodní sada](active-directory-b2c-reference-custom-policies-understanding-contents.md)
 ### Konfigurace zprostředkovatelů OIDC/OAUTH
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
 #### [Účet Microsoft](active-directory-b2c-custom-setup-msa-idp.md)

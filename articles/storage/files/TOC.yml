@@ -18,44 +18,56 @@
       href: storage-how-to-use-files-linux.md
     - name: Připojení v systému Mac
       href: storage-how-to-use-files-mac.md
-    - name: Správa pomocí portálu
+    - name: Správa pomocí webu Azure Portal
       href: storage-how-to-use-files-portal.md
+    - name: Správa pomocí PowerShellu
+      href: storage-how-to-use-files-powershell.md
+    - name: Správa pomocí Azure CLI
+      href: storage-how-to-use-files-cli.md
+    - name: Správa pomocí Průzkumníka služby Storage
+      href: storage-how-to-use-files-storage-explorer.md
 - name: Postup
   items:
-    - name: Plánování a návrh
+    - name: Plánování
       items:
-        - name: Možnosti účtu úložiště
+        - name: Plánování nasazení služby Soubory Azure
+          href: storage-files-planning.md
+        - name: Plánování nasazení služby Azure File Sync
+          href: storage-sync-files-planning.md
+        - name: Vysvětlení účtů úložiště
           href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Nasazení služby Soubory Azure
-          items:
-            - name: Plánování nasazení služby Soubory Azure
-              href: storage-files-planning.md
-            - name: Nasazení služby Soubory Azure
-              href: storage-files-deployment-guide.md
-        - name: Nasazení služby Azure File Sync
-          items:
-            - name: Plánování nasazení služby Azure File Sync
-              href: storage-sync-files-planning.md
-            - name: Nasazení služby Azure File Sync
-              href: storage-sync-files-deployment-guide.md
-            - name: Nastavení proxy a firewallu služby Azure File Sync
-              href: storage-sync-files-firewall-and-proxy.md
-        - name: Informace o snímcích sdílených složek
+        - name: Vysvětlení snímků sdílených složek
           href: storage-snapshots-files.md
-        - name: Jak pracovat se snímky sdílených složek
-          href: storage-how-to-use-files-snapshots.md
-        - name: Replikace
+        - name: Možnosti redundance služby Storage
           href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Škálovatelnost a cíle výkonnosti
           href: storage-files-scale-targets.md
-        - name: Kontrolní seznam pro výkon a škálovatelnost
-          href: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Souběžnost
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Pokyny pro zotavení po havárii
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Poznámky k verzi Azure File Sync
+          href: storage-files-release-notes.md
+    - name: Nasazení
+      items:
+        - name: Nasazení služby Soubory Azure
+          href: storage-files-deployment-guide.md
+        - name: Nasazení služby Azure File Sync
+          href: storage-sync-files-deployment-guide.md
+        - name: Nastavení proxy a firewallu služby Azure File Sync
+          href: storage-sync-files-firewall-and-proxy.md
+    - name: Spravovat
+      items:
+        - name: Registrace serveru pomocí služby Azure File Sync
+          href: storage-sync-files-server-registration.md
+        - name: Přidání koncového bodu serveru Azure File Sync
+          href: storage-sync-files-server-endpoint.md
+        - name: 'PowerShell pro cloudy China, Government a Germany'
+          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Azure Automation
+          href: ../common/storage-manage-with-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Vývoj
       items:
+        - name: Správa souběžnosti
+          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: .NET
           href: storage-dotnet-how-to-use-files.md
         - name: Java
@@ -72,26 +84,6 @@
               href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Konfigurace připojovacích řetězců
           href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Spravovat
-      items:
-        - name: PowerShell for Soubory Azure
-          href: storage-how-to-use-files-powershell.md
-        - name: PowerShell pro Azure Storage
-          href: ../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 'PowerShell pro cloudy China, Government a Germany'
-          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure CLI 2.0
-          href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure CLI 1.0
-          href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Registrace serveru pomocí služby Azure File Sync
-          href: storage-sync-files-server-registration.md
-        - name: Přidání koncového bodu serveru Azure File Sync
-          href: storage-sync-files-server-endpoint.md
-        - name: Použití Storage Exploreru se službou Azure File Storage
-          href: ../../vs-azure-tools-storage-explorer-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure Automation
-          href: ../common/storage-manage-with-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Zabezpečení
       items:
         - name: Příručka zabezpečení
@@ -238,5 +230,3 @@
           href: 'https://github.com/Azure/azure-storage-ruby'
         - name: iOS
           href: 'https://github.com/Azure/azure-storage-ios'
-    - name: Poznámky k verzi Azure File Sync
-      href: storage-files-release-notes.md

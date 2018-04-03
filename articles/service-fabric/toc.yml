@@ -240,7 +240,7 @@
       items:
         - name: Přehled monitorování
           href: service-fabric-diagnostics-overview.md
-        - name: Protokolování clusteru
+        - name: Události clusteru
           href: service-fabric-diagnostics-event-generation-infra.md
           items:
             - name: Provozní kanál
@@ -567,6 +567,8 @@
           href: service-fabric-diagnostics-perf-wad.md
         - name: Reportování a kontrola stavu
           href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+        - name: Přidání protokolování do vaší služby
+          href: service-fabric-how-to-diagnostics-log.md
         - name: Řešení potíží se systémovými stavovými sestavami
           href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
         - name: Zobrazení stavových sestav

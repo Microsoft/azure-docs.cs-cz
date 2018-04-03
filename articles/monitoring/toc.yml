@@ -1,0 +1,106 @@
+- name: Dokumentace k monitorování Azure
+  href: index.md
+- name: Přehled
+  items:
+    - name: Monitorování v Azure
+      href: monitoring-overview.md
+- name: Sdílené služby
+  items:
+    - name: Zobrazení výstrah
+      items:
+        - name: Upozornění Azure
+          href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Skupiny akcí
+          href: ../monitoring-and-diagnostics/monitoring-action-groups.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Import upozornění Operations Manageru
+          href: ../log-analytics/log-analytics-solution-alert-management.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Automatické škálování
+      items:
+        - name: Automatické škálování
+          href: ../monitoring-and-diagnostics/monitoring-overview-autoscale.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Metriky
+      items:
+        - name: Metriky
+          href: ../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Logs
+      items:
+        - name: Protokoly aktivit
+          href: ../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Diagnostické protokoly
+          href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Shromažďování protokolů napříč předplatnými Azure
+          href: ../log-analytics/log-analytics-activity-logs-subscriptions.md?toc=%2fazure%2fmonitoring%2ftoc.json
+- name: Sledování prostředků
+  items:
+    - name: Aplikace
+      items:
+        - name: Application Insights
+          href: ../application-insights/app-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Application Insights Connector
+          href: ../log-analytics/log-analytics-app-insights-connector.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Key Vault Analytics
+          href: ../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Service Fabric Analytics
+          href: ../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Azure Web Apps Analytics
+          href: ../log-analytics/log-analytics-azure-web-apps-analytics.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Kontejnery
+      items:
+        - name: Řešení kontejnerů
+          href: ../log-analytics/log-analytics-containers.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Monitorování aplikací Dockeru
+          href: ../application-insights/app-insights-docker.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Aplikace profilu
+          href: ../application-insights/app-insights-profiler-aspnetcore-linux.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Databáze
+      items:
+        - name: Azure SQL
+          href: ../log-analytics/log-analytics-azure-sql.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Virtuální počítače
+      items:
+        - name: Stav agenta
+          href: ../operations-management-suite/oms-solution-agenthealth.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Analýzy VMWare
+          href: ../log-analytics/log-analytics-vmware.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Mapa služeb
+          items:
+            - name: Názorný postup
+              href: ../operations-management-suite/operations-management-suite-walkthrough-servicemap.md?toc=%2fazure%2fmonitoring%2ftoc.json
+            - name: Použití
+              href: ../operations-management-suite/operations-management-suite-service-map.md?toc=%2fazure%2fmonitoring%2ftoc.json
+            - name: Konfigurace
+              href: ../operations-management-suite/operations-management-suite-service-map-configure.md?toc=%2fazure%2fmonitoring%2ftoc.json
+            - name: Integrace s Operations Managerem
+              href: ../operations-management-suite/operations-management-suite-service-map-scom.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Další prostředky
+      items:
+        - name: Hodnocení stavu služby AD
+          href: ../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Stav replikace AD
+          href: ../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Office 365
+          href: ../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Surface Hub
+          href: ../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Řešení pro správu
+      items:
+        - name: Použití
+          items:
+            - name: Přidání řešení
+              href: ..//log-analytics/log-analytics-add-solutions.md?toc=%2fazure%2fmonitoring%2ftoc.json
+            - name: Cílová řešení
+              href: ../operations-management-suite/operations-management-suite-solution-targeting.md?toc=%2fazure%2fmonitoring%2ftoc.json
+        - name: Vytvořit
+          items:
+            - name: Návrh a sestavení
+              href: ../operations-management-suite/operations-management-suite-solutions-creating.md?toc=%2fazure%2fmonitoring%2ftoc.json
+            - name: Soubor řešení
+              href: ../operations-management-suite/operations-management-suite-solutions-solution-file.md?toc=%2fazure%2fmonitoring%2ftoc.json
+            - name: Prostředky služby Automation
+              href: ../operations-management-suite/operations-management-suite-solutions-resources-automation.md?toc=%2fazure%2fmonitoring%2ftoc.json
+            - name: Prohledávání protokolů a upozornění
+              href: ../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md?toc=%2fazure%2fmonitoring%2ftoc.json
+            - name: Zobrazení
+              href: ../operations-management-suite/operations-management-suite-solutions-resources-views.md?toc=%2fazure%2fmonitoring%2ftoc.json
+            - name: Osvědčené postupy
+              href: ../operations-management-suite/operations-management-suite-solutions-best-practices.md?toc=%2fazure%2fmonitoring%2ftoc.json

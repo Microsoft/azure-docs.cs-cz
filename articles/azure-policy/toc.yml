@@ -25,6 +25,10 @@
   items:
     - name: Struktura definic Azure Policy
       href: policy-definition.md
+- name: Návody
+  items:
+    - name: Programové vytváření zásad
+      href: policy-insights.md
 - name: Referenční informace
   items:
     - name: Azure CLI

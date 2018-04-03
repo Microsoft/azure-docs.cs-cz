@@ -1,0 +1,118 @@
+- name: Dokumentace ke službě Redis Cache
+  href: index.md
+- name: Přehled
+  items:
+    - name: Proč používat mezipaměť Redis Cache
+      href: 'https://azure.microsoft.com/services/cache/'
+    - name: Seznámení s novými funkcemi úrovně Premium
+      href: cache-premium-tier-intro.md
+    - name: Scénáře
+      items:
+        - name: Přístup k položkám v mezipaměti
+          href: 'cache-dotnet-how-to-use-azure-redis-cache.md#add-and-retrieve-objects-from-the-cache'
+        - name: Nakonfigurování vysoké dostupnosti
+          href: 'https://azure.microsoft.com/pricing/details/cache/'
+        - name: Zabezpečené připojení pomocí SSL
+          href: 'cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache'
+        - name: Migrace ze služby Managed Cache Service
+          href: cache-migrate-to-redis.md
+        - name: Vzory a postupy – vodítka pro ukládání do mezipaměti
+          href: ../best-practices-caching.md?toc=%2fazure%2fredis-cache%2ftoc.json
+- name: Začínáme
+  items:
+    - name: ASP.NET
+      href: cache-web-app-howto.md
+    - name: .NET
+      href: cache-dotnet-how-to-use-azure-redis-cache.md
+    - name: Node
+      href: cache-nodejs-get-started.md
+    - name: Java
+      href: cache-java-get-started.md
+    - name: Python
+      href: cache-python-get-started.md
+    - name: Nejčastější dotazy ke službě Redis Cache
+      href: cache-faq.md
+- name: Postup
+  items:
+    - name: Plánování
+      items:
+        - name: Volba úrovně mezipaměti
+          href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+        - name: Zachování mezipaměti pomocí trvalosti dat Redis
+          href: cache-how-to-premium-persistence.md
+        - name: Zabezpečení mezipaměti pomocí virtuální sítě
+          href: cache-how-to-premium-vnet.md
+        - name: Distribuovaná mezipaměť pomocí clusterování
+          href: cache-how-to-premium-clustering.md
+    - name: Automatizace
+      items:
+        - name: Nasazení a správa s využitím Azure PowerShellu
+          href: cache-howto-manage-redis-cache-powershell.md
+        - name: Nasazení a správa pomocí Azure CLI
+          href: cli-samples.md
+        - name: Zřízení mezipaměti Redis Cache
+          href: cache-redis-cache-arm-provision.md
+        - name: Zřízení webové aplikace s mezipamětí Redis Cache
+          href: cache-web-app-arm-with-redis-cache-provision.md
+    - name: Integrace s ASP.NET
+      items:
+        - name: Poskytovatel stavu relace
+          href: cache-aspnet-session-state-provider.md
+        - name: Poskytovatel výstupní mezipaměti
+          href: cache-aspnet-output-cache-provider.md
+    - name: Spravovat
+      items:
+        - name: Konfigurace na webu Azure Portal
+          href: cache-configure.md
+        - name: Konfigurace geografické replikace
+          href: cache-how-to-geo-replication.md
+        - name: Import/export dat
+          href: cache-how-to-import-export-data.md
+        - name: Restartování
+          href: 'cache-administration.md#reboot'
+        - name: Plán aktualizací
+          href: 'cache-administration.md#schedule-updates'
+    - name: Monitorování a odstraňování potíží
+      items:
+        - name: Monitorování na webu Azure Portal
+          href: cache-how-to-monitor.md
+        - name: Řešení potíží s mezipamětí
+          href: cache-how-to-troubleshoot.md
+        - name: Nastavení výstrah pro výjimky
+          href: 'cache-how-to-monitor.md#operations-and-alerts'
+    - name: Měřítko
+      items:
+        - name: "Aktualizace na jinou velikost a\_úroveň"
+          href: cache-how-to-scale.md
+        - name: Použití clusteru Redis pro horizontální snížení nebo zvýšení kapacity
+          href: cache-how-to-premium-clustering.md
+    - name: Integrace se Spring Bootem
+      items:
+        - name: Použití aplikace Spring Boot Initializer s Redis Cache
+          href: cache-java-spring-boot-initializer-with-redis-cache.md
+- name: Referenční informace
+  items:
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.rediscache
+    - name: Azure CLI Preview
+      href: /cli/azure/redis
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.redis
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.redis._redis_cache
+    - name: Klienti Redis
+      href: 'http://redis.io/clients'
+    - name: Příkazy Redis
+      href: 'http://redis.io/commands#'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/redis/'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cache/'
+    - name: Ukázky mezipaměti Redis Cache
+      href: cache-redis-samples.md
