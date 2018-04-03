@@ -1,25 +1,25 @@
 ---
-title: "Azure zásobníku Development Kit základy | Microsoft Docs"
-description: "Popisuje, jak provádět základní správu Development Kit zásobník Azure."
+title: Azure zásobníku Development Kit základy | Microsoft Docs
+description: Popisuje, jak provádět základní správu pro Azure zásobníku Development Kit (ASDK).
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/30/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: cb169c2d2a5aa918fb6d330ebc4677d6c16d308d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 05dd42b049c75b9ea592ffe341f44e3b02b9757f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="asdk-administration-basics"></a>Základy správy ASDK 
 Existuje několik věcí, které potřebujete vědět, pokud začínáte správy Azure zásobníku Development Kit (ASDK). V tomto návodu obsahuje přehled role jako operátor Azure zásobníku v prostředí pro testování a jak ověřit testovací uživatele může být produktivní rychle.
@@ -27,6 +27,17 @@ Existuje několik věcí, které potřebujete vědět, pokud začínáte správy
 Nejdřív byste měli zkontrolovat [co je Azure zásobníku Development Kit?](asdk-what-is.md) článek a ujistěte se, pochopit účel ASDK a její omezení. Měli byste použít development kit jako "izolovaného", kde může vyhodnotit zásobník Azure pro vývoj a testování vaší aplikace v testovacím prostředí. 
 
 Jako je například Azure Azure zásobníku innovates rychle, jsme budete pravidelně sestavení pro vydání nové služby ASDK. Však nelze upgradovat ASDK jako můžete zásobník Azure integrované systémy nasazení. Ano, pokud chcete přesunout na nejnovější verzi, musíte úplně [znovu nasaďte ASDK](asdk-redeploy.md). Nelze použít balíčky aktualizací. Tento proces trvá určitou dobu, ale výhodou je, že můžete vyzkoušet nejnovější funkce Jakmile budou k dispozici. 
+
+## <a name="what-account-should-i-use"></a>Který účet mám použít?
+Existuje několik, které byste měli vědět při správě Azure zásobníku důležité informace o účtu. Zejména v nasazení používáte Windows Server Active Directory Federation Services (AD FS) jako zprostředkovatele identity místo Azure Active Directory (Azure AD). Zásobník Azure integrované systémy a ASDK nasazení, platí následující aspekty účet:
+
+|Účet|Azure AD|AD FS|
+|-----|-----|-----|
+|Místní správce (. \Administrator)|Správce hostitele ASDK|Správce hostitele ASDK|
+|AzureStack\AzureStackAdmin|Správce hostitele ASDK<br><br>Lze použít pro přihlášení k portálu pro správu Azure zásobníku<br><br>Přístup k zobrazení a správě okruhy Service Fabric|Správce hostitele ASDK<br><br>Žádný přístup k portálu pro správu Azure zásobníku<br><br>Přístup k zobrazení a správě okruhy Service Fabric<br><br>Už vlastníkem služby výchozí zprostředkovatel předplatné (distribučních bodů)|
+|AzureStack\CloudAdmin|Můžete používat a spuštění povolených příkazů v rámci privilegované koncový bod|Můžete používat a spuštění povolených příkazů v rámci privilegované koncový bod<br><br>Nemůže přihlásit k hostiteli ASDK<br><br>Vlastník předplatného poskytovatele výchozí (distribučních bodů)|
+|Globální správce Azure AD|Použít během instalace<br><br>Vlastník předplatného poskytovatele výchozí (distribučních bodů)|Neuvedeno|
+|
 
 ## <a name="what-tools-do-i-use-to-manage"></a>Jaké nástroje lze použít ke správě?
 Můžete použít [zásobníku správce portálu Azure](https://adminportal.local.azurestack.external) nebo prostředí PowerShell pro správu Azure zásobníku. Nejjednodušší způsob, jak Seznamte se základními koncepty je prostřednictvím portálu. Pokud chcete pomocí prostředí PowerShell, budete muset nainstalovat [prostředí PowerShell pro Azure zásobníku](asdk-post-deploy.md#install-azure-stack-powershell) a [stažení nástroje Azure zásobníku z Githubu](asdk-post-deploy.md#download-the-azure-stack-tools).

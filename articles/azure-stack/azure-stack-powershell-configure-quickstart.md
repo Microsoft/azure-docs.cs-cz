@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2b306cc9dc9bbf435eb70315cc46e7faf4268b47
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 55fd212a895ed861cb5a9be0e4dae283e3cb5cfd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>A její spuštění pomocí prostředí PowerShell v Azure zásobníku
 
@@ -32,9 +32,6 @@ Tento článek je zhuštěný verzi kroky, které jsou popsané v [instalaci pro
 ## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>Nastavení prostředí PowerShell pro nasazení založené na Azure Active Directory
 
 Pokud jste připojení prostřednictvím sítě VPN, přihlaste se k vaší Azure zásobníku Development Kit nebo externí klienta se systémem Windows. Otevřete relaci prostředí PowerShell ISE zvýšenými oprávněními a spusťte následující skript. Nezapomeňte aktualizovat **TenantName**, **ArmEndpoint**, a **GraphAudience** proměnné v případě potřeby pro konfiguraci prostředí:
-
-> [!IMPORTANT]
-> Verze modulu PowerShell AzureRM 1.2.11 obsahuje seznam nejnovější změny. K upgradu z 1.2.10 verze, najdete v článku [příručka k migraci](https://aka.ms/azspowershellmigration).
 
 ```powershell
 # Specify Azure Active Directory tenant name.

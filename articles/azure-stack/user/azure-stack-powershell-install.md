@@ -1,11 +1,11 @@
 ---
-title: "Instalace prostředí PowerShell pro Azure zásobníku | Microsoft Docs"
-description: "Informace o instalaci prostředí PowerShell pro Azure zásobníku."
+title: Instalace prostředí PowerShell pro Azure zásobníku | Microsoft Docs
+description: Informace o instalaci prostředí PowerShell pro Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: F8D99A91-15B5-4073-BE07-A43514A6D2CF
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: mabrigg
-ms.openlocfilehash: b5cc53387b6867d776059856b6e7793abbc67c9a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 7bf2d9b999db738007f75d72a8818ca0eb6f34ba
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalace prostředí PowerShell pro Azure zásobníku  
 
@@ -53,10 +53,10 @@ Následující části popisují kroky potřebné k instalaci prostředí PowerS
 
 ## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>Instalace prostředí PowerShell ve scénáři připojené (s připojením k Internetu)
 
-Prostřednictvím rozhraní API verze profily jsou nainstalované Azure AzureRM moduly kompatibilní zásobníku. Vyžaduje Azure zásobníku **2017-03-09profil** profil verze rozhraní API, který je k dispozici po instalaci modulu AzureRM.Bootstrapper. Další informace o rozhraní API verze profily a rutiny poskytované jejich, naleznete [spravovat profily verze rozhraní API](azure-stack-version-profiles.md). Kromě AzureRM moduly nainstalujete také moduly Azure PowerShell specifické pro zásobníku. Spusťte následující skript prostředí PowerShell k instalaci těchto modulů na pracovní stanici:
+Prostřednictvím rozhraní API verze profily jsou nainstalované Azure AzureRM moduly kompatibilní zásobníku. Vyžaduje Azure zásobníku **2017-03-09profil** profil verze rozhraní API, který je k dispozici po instalaci modulu AzureRM.Bootstrapper. Další informace o rozhraní API verze profily a rutiny poskytované jejich, naleznete [spravovat profily verze rozhraní API](azure-stack-version-profiles-powershell.md). Kromě AzureRM moduly nainstalujete také moduly Azure PowerShell specifické pro zásobníku. Spusťte následující skript prostředí PowerShell k instalaci těchto modulů na pracovní stanici:
 
-> [!IMPORTANT]
-> Verze modulu PowerShell AzureRM 1.2.11 obsahuje seznam nejnovější změny. K upgradu z 1.2.10 verze, najdete v příručce k migraci na [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration).
+> [!IMPORTANT]  
+> Verze modulu PowerShell AzureRM 1.2.11 obsahuje seznam nejnovější změny. K upgradu z 1.2.10 verze, najdete v příručce k migraci na [ https://aka.ms/azspowershellmigration ](https://aka.ms/azspowershellmigration).
 
   ```powershell
   # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
@@ -85,7 +85,7 @@ Pokud chcete potvrdit instalaci, spusťte následující příkaz:
 Ve scénáři odpojených nebo připojených částečně musíte nejprve stáhnout moduly Powershellu pro počítač, který má připojení k Internetu a potom přenést do Azure zásobníku Development Kit pro instalaci.
 
 > [!IMPORTANT]
-> Verze modulu PowerShell AzureRM 1.2.11 obsahuje seznam nejnovější změny. K upgradu z 1.2.10 verze, najdete v příručce k migraci na [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration).
+> Verze modulu PowerShell AzureRM 1.2.11 obsahuje seznam nejnovější změny. K upgradu z 1.2.10 verze, najdete v příručce k migraci na [ https://aka.ms/azspowershellmigration ](https://aka.ms/azspowershellmigration).
 
 1. Přihlaste se k počítači, kde máte připojení k Internetu a pomocí následujícího skriptu stahování AzureRM a AzureStack balíčky do svého místního počítače:
 
@@ -132,8 +132,8 @@ Ve scénáři odpojených nebo připojených částečně musíte nejprve stáhn
      -Repository $RepoName 
    ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* [Stažení nástroje Azure zásobníku z Githubu](azure-stack-powershell-download.md)
+* [Stažení nástroje Azure zásobníku z Githubu](azure-stack-powershell-download.md)  
 * [Konfigurace prostředí PowerShell Azure zásobník uživatele](azure-stack-powershell-configure-user.md)  
-* [Správa profilů verze rozhraní API v Azure zásobníku](azure-stack-version-profiles.md)  
+* [Správa profilů verze rozhraní API v Azure zásobníku](azure-stack-version-profiles-powershell.md)  

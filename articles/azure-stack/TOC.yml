@@ -6,14 +6,14 @@
       href: azure-stack-poc.md
     - name: "Poznámky k\_verzi"
       items:
+        - name: 1803 aktualizace
+          href: azure-stack-update-1803.md
         - name: 1802 aktualizace
           href: azure-stack-update-1802.md
         - name: aktualizace 1712
           href: azure-stack-update-1712.md
         - name: aktualizace 1711
           href: azure-stack-update-1711.md
-        - name: aktualizace 1710
-          href: azure-stack-update-1710.md
 - name: Šablony Rychlý start
   expanded: true
   items:
@@ -58,9 +58,9 @@
             - name: Získat certifikáty PKI zásobník Azure
               href: azure-stack-get-pki-certs.md
             - name: Příprava certifikátů PKI zásobník Azure
-              href: prepare-pki-certs.md
+              href: azure-stack-prepare-pki-certs.md
             - name: Ověření Azure zásobníku infrastruktury veřejných KLÍČŮ certifikátů
-              href: validate-pki-certs.md
+              href: azure-stack-validate-pki-certs.md
         - name: Integrace identit
           href: azure-stack-integrate-identity.md
         - name: Externí monitorování

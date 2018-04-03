@@ -1,26 +1,26 @@
 ---
-title: "V tomto kurzu vytvoříte zásobník Azure nabízí | Microsoft Docs"
-description: "Naučte se vytvořit nabídku zásobník Azure včetně plány a kvót."
+title: V tomto kurzu vytvoříte zásobník Azure nabízí | Microsoft Docs
+description: Naučte se vytvořit nabídku zásobník Azure včetně plány a kvót.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/16/2018
+ms.date: 03/27/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 083b5e20b89f22cb8e523926858fe9ffb1441319
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 8bcc2f3077e79ff83ac2e90db0bb0fa53ae83adc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-offer-azure-stack-iaas-services"></a>Kurz: nabízet služby Azure IaaS zásobníku
 Jako správce cloudu Azure zásobníku můžete vytvořit nabídky, které vaši uživatelé (někdy označované jako klienty) můžete přihlásit k odběru. Pomocí svého předplatného, mohou uživatelé pak využívání služeb Azure zásobníku.
@@ -112,14 +112,24 @@ Nabízí může být:
 > Změny nabídku nejsou okamžitě viditelné pro uživatele. Chcete-li zobrazit změny, uživatelé možná muset odhlásit a znovu se přihlaste k [portálu user portal](https://portal.local.azurestack.external) zobrazíte nové nabídky.
 
 Nastavení nové nabídky veřejný: 
+   - Verze 1803 a novější: 
+     1. V nabídce řídícího panelu klikněte na tlačítko **nabízí** a pak klikněte na nabídku jste vytvořili.
 
-1. V nabídce řídícího panelu klikněte na tlačítko **nabízí** a pak klikněte na nabídku jste vytvořili.
+     2. Klikněte na tlačítko **usnadnění stavu**a potom klikněte na **veřejné**.
 
-2. Klikněte na **Změnit stav** a potom na **Veřejné**.
+        ![Změnit stav](media/asdk-offer-services/change-state.png)
 
-   ![Veřejné stavu](media/asdk-offer-services/set-public.png)
+     3. Nabídka bude nyní k dispozici na portálu Azure zásobník uživatele.
 
-3. Nabídka bude nyní k dispozici na portálu Azure zásobník uživatele.
+
+   - Starší než verze 1803:  
+     1. V nabídce řídícího panelu klikněte na tlačítko **nabízí** a pak klikněte na nabídku jste vytvořili.
+
+     2. Klikněte na **Změnit stav** a potom na **Veřejné**.
+
+        ![Veřejné stavu](media/asdk-offer-services/set-public.png)
+
+     3. Nabídka bude nyní k dispozici na portálu Azure zásobník uživatele.
 
 ## <a name="next-steps"></a>Další postup
 

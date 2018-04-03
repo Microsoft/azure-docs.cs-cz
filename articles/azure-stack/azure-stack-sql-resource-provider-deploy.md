@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 1754d4b121fdaf4f7b8e4c1954dfd4202ba344b1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d0b287eb61087e90c898aad5273ab5be8c1f98b2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Databáze SQL pro použití v zásobníku Microsoft Azure
 
@@ -71,7 +71,7 @@ Musíte vytvořit jednu (nebo více) instance systému SQL Server nebo poskytova
     | 1710: 1.0.171028.1 | [SQL RP verze 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
   
 
-4. Poskytnout požadovaný certifikát. Pro sadu SDK zásobník Azure certifikát podepsaný svým držitelem je vytvořen jako součást tohoto procesu, není třeba žádné další certifikáty. Pro integrované systémy je nutné zadat příslušný certifikát.
+4. Pro zásobník sadu Azure SDK se vytvoří certifikát podepsaný svým držitelem v rámci tohoto procesu. Pro integrované systémy je nutné zadat příslušný certifikát.
 
    Chcete-li přidat vlastní certifikát, umístěte soubor .pfx v **DependencyFilesLocalPath** následujícím způsobem:
 

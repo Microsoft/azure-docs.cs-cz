@@ -1,24 +1,24 @@
 ---
-title: "Nástroje pro úložiště Azure zásobníku"
-description: "Další informace o Azure zásobníku úložiště dat nástroje pro přenos"
+title: Nástroje pro úložiště Azure zásobníku
+description: Další informace o Azure zásobníku úložiště dat nástroje pro přenos
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2018
+ms.date: 03/30/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 9318b7af3c3dd545207f1896c9008207f562b735
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e26a38b8fd7d008a46eba2c41075c5af09a6616a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tools-for-azure-stack-storage"></a>Nástroje pro úložiště Azure zásobníku
 
@@ -181,7 +181,7 @@ Rozhraní příkazového řádku Azure je prostředí příkazového řádku Azu
 
 Rozhraní příkazového řádku Azure je optimalizovaná pro správu a správě prostředků Azure z příkazového řádku a vytvářet skripty pro automatizaci, které fungují s Azure Resource Manager. Poskytuje řadu nalézt v portálu Azure zásobníku, včetně přístupu k datům bohaté stejné funkce.
 
-Azure zásobníku vyžaduje Azure CLI verze 2.0. Další informace o instalaci a konfiguraci Azure CLI s Azure zásobníku najdete v tématu [instalace a konfigurace rozhraní příkazového řádku Azure zásobníku](azure-stack-connect-cli.md). Další informace o tom, jak pomocí Azure CLI 2.0 provádět několik úloh práci s prostředky v účtu Azure zásobník úložiště najdete v tématu [použití Azure CLI2.0 s Azure Storage](../../storage/storage-azure-cli.md)
+Azure zásobníku vyžaduje Azure CLI verze 2.0. Další informace o instalaci a konfiguraci Azure CLI s Azure zásobníku najdete v tématu [instalace a konfigurace rozhraní příkazového řádku Azure zásobníku](azure-stack-version-profiles-azurecli2.md). Další informace o tom, jak pomocí Azure CLI 2.0 provádět několik úloh práci s prostředky v účtu Azure zásobník úložiště najdete v tématu [použití Azure CLI2.0 s Azure Storage](../../storage/storage-azure-cli.md)
 
 ### <a name="azure-cli-sample-script-for-azure-stack"></a>Azure CLI ukázkový skript pro Azure zásobníku 
 Po dokončení instalace rozhraní příkazového řádku a konfigurace, zkuste následující kroky pro práci s ukázkového skriptu malé prostředí pro interakci s prostředky Azure zásobníku úložiště. Skript nejprve vytvoří nový kontejner ve vašem účtu úložiště, pak odešle existující soubor (jako objekt blob) do tohoto kontejneru, obsahuje seznam všech objektů BLOB v kontejneru a nakonec stáhne soubor do cílového umístění v místním počítači, který určíte. Před spuštěním tohoto skriptu, ujistěte se, můžete úspěšně připojit a přihlásit se k cíli zásobník Azure. 

@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 799651caf937ca2bafc79dc76f99ae43e700673a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: df4a5a17ad034ae5d6ab82791c020634a8758b71
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-administration-basics"></a>Základy správy Azure zásobníku
 Existuje několik věcí, které potřebujete vědět, pokud začínáte Azure zásobníku správy. V tomto návodu najdete přehled role jako operátor zásobník Azure a co je potřeba říct uživatelům pro ně k produktivní rychle.
@@ -31,9 +31,9 @@ Pokud používáte Azure zásobníku integrované systému, aktualizovaných ver
  
 ### <a name="development-kit"></a>Development kit
 
-Pokud používáte Azure zásobníku Development Kit, přečtěte si [co je Azure zásobníku?](azure-stack-poc.md) článek a ujistěte se, pochopit účel development kit a její omezení. Měli byste použít development kit jako "izolovaném prostoru," kde může vyhodnotit Azure zásobníku a vývoj a testování vaší aplikace v testovacím prostředí. (Informace o nasazení naleznete v tématu [nasazení Azure zásobníku Development Kit](azure-stack-deploy-overview.md) rychlý start.)
+Pokud používáte Azure zásobníku Development Kit, přečtěte si [co je Azure zásobníku?](.\asdk\asdk-what-is.md) článek a ujistěte se, pochopit účel development kit a její omezení. Měli byste použít development kit jako "izolovaném prostoru," kde může vyhodnotit Azure zásobníku a vývoj a testování vaší aplikace v testovacím prostředí. (Informace o nasazení naleznete v tématu [nasazení Azure zásobníku Development Kit](.\asdk\asdk-deploy.md) kurzu.)
 
-Jako je například Azure jsme inovacemi. Zajistěte rychle. Jsme budete pravidelně sestavení pro vydání nové. Pokud používáte sadě pro vývoj a chcete přesunout na nejnovější verzi, musíte [znovu nasadit Azure zásobníku](azure-stack-redeploy.md). Nelze použít balíčky aktualizací. Tento proces trvá určitou dobu, ale výhodou je, že můžete vyzkoušet nejnovější funkce. Dokumentaci k sadě development kit na našem webu odráží nejnovější verzi sestavení.
+Jako je například Azure jsme inovacemi. Zajistěte rychle. Jsme budete pravidelně sestavení pro vydání nové. Pokud používáte sadě pro vývoj a chcete přesunout na nejnovější verzi, musíte [znovu nasadit Azure zásobníku](.\asdk\asdk-redeploy.md). Nelze použít balíčky aktualizací. Tento proces trvá určitou dobu, ale výhodou je, že můžete vyzkoušet nejnovější funkce. Dokumentaci k sadě development kit na našem webu odráží nejnovější verzi sestavení.
 
 ## <a name="learn-about-available-services"></a>Další informace o dostupných služeb
 
@@ -63,6 +63,18 @@ Tyto služby vyžadují další konfiguraci, než jste je zpřístupnit uživate
 **Přehled služby**
 
 Azure zásobníku budou nadále přidat podporu pro služby Azure. Předpokládané plán, najdete v článku [Azure zásobník: rozšíření Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) dokument White Paper. Také můžete monitorovat [příspěvcích na blogu Azure zásobníku](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) pro nové oznámení.
+
+## <a name="what-account-should-i-use"></a>Který účet mám použít?
+Existuje několik, které byste měli vědět při správě Azure zásobníku důležité informace o účtu. Zejména v nasazení používáte Windows Server Active Directory Federation Services (AD FS) jako zprostředkovatele identity místo Azure Active Directory (Azure AD). Zásobník Azure integrované systémy a ASDK nasazení, platí následující aspekty účet:
+
+
+|Účet|Azure AD|AD FS|
+|-----|-----|-----|
+|Místní správce (. \Administrator)|Správce hostitele ASDK|Správce hostitele ASDK|
+|AzureStack\AzureStackAdmin|Správce hostitele ASDK<br><br>Lze použít pro přihlášení k portálu pro správu Azure zásobníku<br><br>Přístup k zobrazení a správě okruhy Service Fabric|Správce hostitele ASDK<br><br>Žádný přístup k portálu pro správu Azure zásobníku<br><br>Přístup k zobrazení a správě okruhy Service Fabric<br><br>Už vlastníkem služby výchozí zprostředkovatel předplatné (distribučních bodů)|
+|AzureStack\CloudAdmin|Můžete používat a spuštění povolených příkazů v rámci privilegované koncový bod|Můžete používat a spuštění povolených příkazů v rámci privilegované koncový bod<br><br>Nemůže přihlásit k hostiteli ASDK<br><br>Vlastník předplatného poskytovatele výchozí (distribučních bodů)|
+|Globální správce Azure AD|Použít během instalace<br><br>Vlastník předplatného poskytovatele výchozí (distribučních bodů)|Neuvedeno|
+|
 
 ## <a name="what-tools-do-i-use-to-manage"></a>Jaké nástroje lze použít ke správě?
  
