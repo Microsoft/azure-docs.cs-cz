@@ -39,6 +39,8 @@
       href: connect-google-account.md
     - name: Připojení účtu AWS
       href: connect-aws-account.md
+    - name: Konfigurace účtů úložiště
+      href: storage-accounts.md
     - name: Použití sestav Cost Managementu
       href: use-reports.md
 - name: Zdroje a prostředky

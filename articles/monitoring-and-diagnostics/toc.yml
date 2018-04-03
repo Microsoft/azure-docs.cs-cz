@@ -39,7 +39,7 @@
       href: monitor-alerts-unified-log.md
     - name: Upozornění protokolu aktivit (Preview)
       href: monitoring-activity-log-alerts-new-experience.md
-    - name: Rozšíření upozornění z OMS do Azure
+    - name: Rozšíření upozornění z Log Analytics do Azure
       href: monitoring-alerts-extend.md
     - name: Skupiny akcí
       href: monitoring-action-groups.md
@@ -53,44 +53,44 @@
   items:
     - name: Principy Azure Monitoru
       href: monitoring-get-started.md
+    - name: Vytvoření grafů metrik v Průzkumníku metrik
+      href: monitoring-metric-charts.md
     - name: Použití výstrah
       items:
-        - name: Konfigurace nových upozornění na webu Azure Portal
-          href: monitoring-near-real-time-metric-alerts.md
+        - name: Konfigurace upozornění protokolů nebo nových metrik na webu Azure Portal
+          href: monitor-alerts-unified-usage.md
         - name: Konfigurace klasických upozornění na webu Azure Portal
           href: insights-alerts-portal.md
-        - name: Konfigurace upozornění protokolů nebo metrik na webu Azure Portal
-          href: monitor-alerts-unified-usage.md
-        - name: Konfigurace upozornění pomocí rozhraní příkazového řádku
+        - name: Konfigurace klasických upozornění pomocí rozhraní příkazového řádku
           href: insights-alerts-command-line-interface.md
-        - name: Konfigurace upozornění pomocí Azure PowerShellu
+        - name: Konfigurace klasických upozornění pomocí Azure PowerShellu
           href: insights-alerts-powershell.md
         - name: Akce webhooku pro výstrahy protokolu
           href: monitor-alerts-unified-log-webhook.md
-        - name: Vytvoření upozornění na metriku pomocí šablony Resource Manageru
+        - name: Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
           href: monitoring-enable-alerts-using-template.md
-        - name: Zahájení rozšiřování upozornění z OMS do Azure
+        - name: Zkopírování upozornění z portálu OMS na web Azure Portal
           href: monitoring-alerts-extend-tool.md
-    - name: Použití automatického škálování
+    - name: Použití skupin akcí s upozorněními
       items:
-        - name: Principy automatického škálování
-          href: monitoring-autoscale-get-started.md
-        - name: Vysvětlení nastavení automatického škálování
-          href: monitoring-understanding-autoscale-settings.md
-        - name: Osvědčené postupy
-          href: insights-autoscale-best-practices.md
-        - name: Běžné metriky
-          href: insights-autoscale-common-metrics.md
-        - name: Obvyklé scénáře
-          href: monitoring-autoscale-common-scale-patterns.md
-        - name: Automatické škálování s použitím vlastních metrik
-          href: monitoring-autoscale-scale-by-custom-metric.md
-        - name: Automatické škálování služby VM Scale Sets pomocí šablon Resource Manageru
-          href: insights-advanced-autoscale-virtual-machine-scale-sets.md
-        - name: Automatické škálování počítačů ve škálovací sadě virtuálních počítačů
-          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
-        - name: Konfigurace webhooků a e-mailových oznámení pro automatické škálování
-          href: insights-autoscale-to-webhook-email.md
+        - name: Další informace o schématu webhooků
+          href: monitoring-activity-log-alerts-webhook.md
+        - name: Chování upozornění SMS
+          href: monitoring-sms-alert-behavior.md
+        - name: Omezení četnosti upozornění
+          href: monitoring-alerts-rate-limiting.md
+        - name: Vytvoření skupiny akcí s využitím Resource Manageru
+          href: monitoring-create-action-group-with-resource-manager-template.md
+    - name: Použití diagnostických protokolů
+      items:
+        - name: Archiv
+          href: monitoring-archive-diagnostic-logs.md
+        - name: Odeslání do Log Analytics
+          href: monitor-stream-diagnostic-logs-log-analytics.md
+        - name: Streamování do Event Hubs
+          href: monitoring-stream-diagnostic-logs-to-event-hubs.md
+        - name: Povolení diagnostických nastavení s využitím šablon Resource Manageru
+          href: monitoring-enable-diagnostic-logs-using-template.md
     - name: Použití protokolu aktivit
       items:
         - name: Zobrazení událostí v protokolu aktivit
@@ -113,27 +113,13 @@
           href: monitoring-service-notifications.md
         - name: Konfigurace upozornění pro oznámení služby
           href: monitoring-activity-log-alerts-on-service-notifications.md
-    - name: Použití skupin akcí
+    - name: Programový přístup
       items:
-        - name: Další informace o schématu webhooků
-          href: monitoring-activity-log-alerts-webhook.md
-        - name: Chování upozornění SMS
-          href: monitoring-sms-alert-behavior.md
-        - name: Omezení četnosti upozornění
-          href: monitoring-alerts-rate-limiting.md
-        - name: Vytvoření skupiny akcí s využitím Resource Manageru
-          href: monitoring-create-action-group-with-resource-manager-template.md
-    - name: Použití diagnostických protokolů
-      items:
-        - name: Archiv
-          href: monitoring-archive-diagnostic-logs.md
-        - name: Odeslání do Log Analytics
-          href: monitor-stream-diagnostic-logs-log-analytics.md
-        - name: Streamování do Event Hubs
-          href: monitoring-stream-diagnostic-logs-to-event-hubs.md
-        - name: Povolení diagnostických nastavení pomocí šablon Resource Manageru
-          href: monitoring-enable-diagnostic-logs-using-template.md
-    - name: Použití rozhraní REST API
+        - name: Názorný postup s použitím REST API
+          href: monitoring-rest-api-walkthrough.md
+        - name: Ukázky Azure PowerShellu
+          href: insights-powershell-samples.md
+    - name: Použití rozšíření diagnostiky Azure
       items:
         - name: Odeslání do Application Insights
           href: azure-diagnostics-configure-application-insights.md
@@ -141,12 +127,32 @@
           href: azure-diagnostics-streaming-event-hubs.md
         - name: Řešení potíží
           href: azure-diagnostics-troubleshooting.md
-    - name: Vytvoření grafů metrik v Průzkumníku metrik
-      href: monitoring-metric-charts.md
-    - name: Odeslání metrik do Grafany
-      href: monitor-send-to-grafana.md
-    - name: Odeslání dat monitorování do centra událostí
-      href: monitor-stream-monitoring-data-event-hubs.md
+    - name: Použití automatického škálování
+      items:
+        - name: Principy automatického škálování
+          href: monitoring-autoscale-get-started.md
+        - name: Vysvětlení nastavení automatického škálování
+          href: monitoring-understanding-autoscale-settings.md
+        - name: Osvědčené postupy
+          href: insights-autoscale-best-practices.md
+        - name: Běžné metriky
+          href: insights-autoscale-common-metrics.md
+        - name: Obvyklé scénáře
+          href: monitoring-autoscale-common-scale-patterns.md
+        - name: Automatické škálování s použitím vlastních metrik
+          href: monitoring-autoscale-scale-by-custom-metric.md
+        - name: Automatické škálování služby VM Scale Sets pomocí šablon Resource Manageru
+          href: insights-advanced-autoscale-virtual-machine-scale-sets.md
+        - name: Automatické škálování počítačů ve škálovací sadě virtuálních počítačů
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
+        - name: Konfigurace webhooků a e-mailových oznámení pro automatické škálování
+          href: insights-autoscale-to-webhook-email.md
+    - name: Trasy k dalším umístěním
+      items:
+        - name: Odeslání metrik do Grafany
+          href: monitor-send-to-grafana.md
+        - name: Odeslání dat monitorování do centra událostí
+          href: monitor-stream-monitoring-data-event-hubs.md
 - name: Referenční informace
   items:
     - name: Azure CLI
@@ -157,6 +163,8 @@
       href: /rest/api/monitor/
     - name: Podporované metriky
       href: monitoring-supported-metrics.md
+    - name: Podporované metriky pro novější upozornění
+      href: monitoring-near-real-time-metric-alerts.md
     - name: 'Služby, kategorie a schémata pro diagnostické protokoly'
       href: monitoring-diagnostic-logs-schema.md
     - name: Schéma událostí protokolu aktivit

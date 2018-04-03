@@ -1,0 +1,158 @@
+- name: Dokumentace ke službě CDN
+  href: index.md
+- name: Přehled
+  href: cdn-overview.md
+  items:
+    - name: Co je Azure CDN?
+      href: ../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json
+- name: Začínáme
+  items:
+    - name: Povolení Azure CDN
+      href: cdn-create-new-endpoint.md
+- name: Postup
+  items:
+    - name: Integrace
+      items:
+        - name: Web Apps
+          href: ../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json
+        - name: Cloud Services
+          href: cdn-cloud-service-with-cdn.md
+        - name: Úložiště
+          items:
+            - name: Integrace účtu úložiště
+              href: cdn-create-a-storage-account-with-cdn.md
+            - name: Podpora úložiště SAS
+              href: cdn-sas-storage-support.md
+        - name: Sdílení prostředků různého původu
+          href: cdn-cors.md
+        - name: Přidání vlastní domény do koncového bodu CDN
+          href: cdn-map-content-to-custom-domain.md
+        - name: Konfigurace HTTPS pro vlastní doménu
+          href: cdn-custom-ssl.md
+    - name: Optimalizace obsahu
+      items:
+        - name: Přehled optimalizace
+          href: cdn-optimization-overview.md
+          items:
+            - name: Optimalizace velkých souborů
+              href: cdn-large-file-optimization.md
+            - name: Optimalizace streamování médií
+              href: cdn-media-streaming-optimization.md
+            - name: Akcelerace dynamických webů
+              href: cdn-dynamic-site-acceleration.md
+    - name: Spravovat
+      items:
+        - name: Správa pomocí Azure PowerShellu
+          href: cdn-manage-powershell.md
+        - name: Omezení přístupu podle země
+          href: cdn-restrict-access-by-country.md
+        - name: Vylepšení výkonu prostřednictvím komprimace souborů
+          href: cdn-improve-performance.md
+        - name: Řízení chování při ukládání do mezipaměti
+          items:
+            - name: Jak funguje ukládání do mezipaměti
+              href: cdn-how-caching-works.md
+            - name: Řízení chování při ukládání do mezipaměti s využitím pravidel ukládání do mezipaměti
+              href: cdn-caching-rules.md
+            - name: Ukládání obsahu do mezipaměti podle řetězců dotazu
+              items:
+                - name: Úroveň Standard
+                  href: cdn-query-string.md
+                - name: Úroveň Premium
+                  href: cdn-query-string-premium.md
+            - name: Vyprázdnění prostředků z mezipaměti
+              href: cdn-purge-endpoint.md
+            - name: Předběžné načtení prostředků do mezipaměti
+              href: cdn-preload-endpoint.md
+        - name: Konfigurace hodnoty TTL (time-to-live)
+          items:
+            - name: Webový obsah Azure
+              href: cdn-manage-expiration-of-cloud-service-content.md
+            - name: Azure Blob Storage
+              href: cdn-manage-expiration-of-blob-content.md
+        - name: Ověření tokenu
+          href: cdn-token-auth.md
+        - name: Sledování prostředků
+          href: cdn-resource-health.md
+        - name: Potlačení chování pomocí pravidel
+          href: cdn-rules-engine.md
+        - name: Získávání výstrah v reálném čase
+          href: cdn-real-time-alerts.md
+        - name: Podpora HTTP/2
+          href: cdn-http2.md
+    - name: Analýza
+      items:
+        - name: Analýza vzorů využití Azure CDN
+          href: cdn-log-analysis.md
+          items:
+            - name: Diagnostické protokoly Azure
+              href: cdn-azure-diagnostic-logs.md
+            - name: Analytické nástroje pro Azure CDN od Verizonu
+              items:
+                - name: Základní sestavy od Verizonu
+                  href: cdn-analyze-usage-patterns.md
+                - name: Vlastní sestavy od Verizonu
+                  href: cdn-verizon-custom-reports.md
+            - name: Analytické nástroje pro Azure CDN Premium od Verizonu
+              items:
+                - name: Generování pokročilých sestav HTTP
+                  href: cdn-advanced-http-reports.md
+                - name: Zobrazení statistik v reálném čase
+                  href: cdn-real-time-stats.md
+                - name: Analýza výkonu hraničních uzlů
+                  href: cdn-edge-performance.md
+    - name: Vývoj
+      items:
+        - name: .NET
+          href: cdn-app-dev-net.md
+        - name: Node.js
+          href: cdn-app-dev-node.md
+    - name: Řešení potíží
+      items:
+        - name: Stav 404
+          href: cdn-troubleshoot-endpoint.md
+        - name: Komprese souborů
+          href: cdn-troubleshoot-compression.md
+- name: Referenční informace
+  items:
+    - name: Referenční informace ke stroji pravidel
+      href: cdn-rules-engine-reference.md
+      items:
+        - name: Podmíněné výrazy stroje pravidel
+          href: cdn-rules-engine-reference-conditional-expressions.md
+        - name: Podmínky shody stroje pravidel
+          href: cdn-rules-engine-reference-match-conditions.md
+        - name: Funkce stroje pravidel
+          href: cdn-rules-engine-reference-features.md
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cdn'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.cdn
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.cdn
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.cdn
+    - name: REST
+      href: /rest/api/cdn/
+- name: Zdroje a prostředky
+  items:
+    - name: Lokality POP v Azure CDN
+      items:
+        - name: Lokality POP podle oblastí
+          href: cdn-pop-locations.md
+        - name: Lokality POP podle zkratek
+          href: cdn-pop-abbreviations.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cdn/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=cdn'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-cdn'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'

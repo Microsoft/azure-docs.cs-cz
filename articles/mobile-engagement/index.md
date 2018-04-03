@@ -1,24 +1,28 @@
 ---
-title: "Dokumentace ke službě Azure Mobile Engagement – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se získat přehled o využití mobilních aplikací a segmentaci uživatelů v reálném čase a aktivovat kontextová nabízená oznámení a zasílání zpráv v aplikacích."
+title: Dokumentace ke službě Azure Mobile Engagement – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+description: Naučte se získat přehled o využití mobilních aplikací a segmentaci uživatelů v reálném čase a aktivovat kontextová nabízená oznámení a zasílání zpráv v aplikacích.
 services: mobile-engagement
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: mobile-engagement
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 5f682ba16b52b9a084505b8212c4b6f043bb94c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 874b40e0e1407be9f546c5a5f57cee2d1034a840
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="mobile-engagement-documentation"></a>Dokumentace ke službě Mobile Engagement
+
+> [!IMPORTANT]
+> Azure Mobile Engagement se vyřadí z provozu 31. 3. 2018. Tato stránka bude odstraněna krátce potom.
+> 
 
 Naučte se zvýšit využití, uchovávání informací a finanční zhodnocení mobilních aplikací s použitím služby Mobile Engagement. V kurzech, sadách SDK a další dokumentaci se dozvíte, jak získat přehled o využití mobilních aplikací a segmentaci uživatelů v reálném čase a aktivovat kontextová nabízená oznámení a zasílání zpráv v aplikacích.
 

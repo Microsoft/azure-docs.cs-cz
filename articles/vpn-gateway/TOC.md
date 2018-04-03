@@ -6,6 +6,10 @@
 ## [Předplatné a omezení služeb](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # Začínáme
+## [Vytvoření brány VPN založené na trasách – Azure Portal](create-routebased-vpn-gateway-portal.md)
+## [Vytvoření brány VPN založené na trasách – PowerShell](create-routebased-vpn-gateway-powershell.md)
+
+# Koncepty
 ## [Plánování a návrh pro VPN Gateway](vpn-gateway-plan-design.md)
 ## [Informace o nastavení služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md)
 ## [Informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md)

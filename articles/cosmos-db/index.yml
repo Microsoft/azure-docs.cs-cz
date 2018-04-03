@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace k databázi Azure Cosmos"
+title: Dokumentace k databázi Azure Cosmos
 metadata:
   document_id: e77bd640-1036-8b31-955c-a2cc990c69a1
-  title: "Dokumentace k databázi Azure Cosmos – kurzy, reference k rozhraní API"
-  description: "Naučte se pomocí databáze Azure Cosmos vytvářet globálně distribuované databáze s více modely. V kurzech se dozvíte, jak sestavit a dotazovat databáze dokumentů, klíčů a hodnot nebo grafů."
+  title: Dokumentace k databázi Azure Cosmos – kurzy, reference k rozhraní API
+  description: Naučte se pomocí databáze Azure Cosmos vytvářet globálně distribuované databáze s více modely. V kurzech se dozvíte, jak sestavit a dotazovat databáze dokumentů, klíčů a hodnot nebo grafů.
   services: cosmos-db
-  author: mimig
+  author: mimig1
   manager: jhubbard
   ms.service: cosmos-db
   ms.tgt_pltfrm: na
@@ -14,27 +14,27 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/14/2018
   ms.author: mimig
-  ms.openlocfilehash: 556b60d6489f51e23d09290906b3e0d24b72cbdc
-  ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+  ms.openlocfilehash: 871160c2d4e6619fe2e79d15b5098ed05e8404ec
+  ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/02/2018
+  ms.lasthandoff: 03/29/2018
 abstract:
-  description: "Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů. Tyto Rychlé starty, kurzy a ukázky vám pomůžou s vývojem databází dokumentů, párů klíč-hodnota, širokých sloupců a grafů s použitím oblíbených rozhraní API a programovacích modelů. Potom se naučíte replikovat data do libovolného počtu oblastí Azure a škálovat propustnost nezávisle na úložišti s využitím výhod komplexních smluv SLA."
+  description: Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů. Tyto Rychlé starty, kurzy a ukázky vám pomůžou s vývojem databází dokumentů, párů klíč-hodnota, širokých sloupců a grafů s použitím oblíbených rozhraní API a programovacích modelů. Potom se naučíte replikovat data do libovolného počtu oblastí Azure a škálovat propustnost nezávisle na úložišti s využitím výhod komplexních smluv SLA.
   aside:
     image:
       alt: 
       height: 110
       src: media/index/video.png
       width: 250
-    title: "Vytváření mobilních aplikací v globálním měřítku během několika minut (16:17)"
-    href: https://azure.microsoft.com/en-us/resources/videos/build-2017-azure-cosmos-db-build-planet-scale-mobile-apps-in-minutes/
+    title: Vytváření mobilních aplikací v globálním měřítku během několika minut (16:17)
+    href: https://azure.microsoft.com/resources/videos/build-2017-azure-cosmos-db-build-planet-scale-mobile-apps-in-minutes/
     width: 250
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Zjistěte, jak pomocí služby Azure Cosmos DB vytvořit globálně distribuovanou databázi s použitím jednoho z rozhraní API s více modely:"
+    text: 'Zjistěte, jak pomocí služby Azure Cosmos DB vytvořit globálně distribuovanou databázi s použitím jednoho z rozhraní API s více modely:'
   - type: table
     style: dataMatrix
     columns:
@@ -56,7 +56,7 @@ sections:
       - href: /azure/cosmos-db/create-sql-api-nodejs
       - href: /azure/cosmos-db/create-sql-api-python
       - href: 
-    - title: "Rozhraní MongoDB API"
+    - title: Rozhraní MongoDB API
       values:
       - href: /azure/cosmos-db/create-mongodb-java
       - href: /azure/cosmos-db/create-mongodb-dotnet
@@ -70,34 +70,34 @@ sections:
       - href: /azure/cosmos-db/create-graph-nodejs
       - href: /azure/cosmos-db/create-graph-python
       - href: /azure/cosmos-db/create-graph-gremlin-console
-    - title: "Rozhraní Table API"
+    - title: Rozhraní Table API
       values:
       - href: /azure/cosmos-db/create-table-java
       - href: /azure/cosmos-db/create-table-dotnet
       - href: /azure/cosmos-db/create-table-nodejs
       - href: /azure/cosmos-db/create-table-python
       - href: 
-    - title: "Rozhraní Cassandra API"
+    - title: Rozhraní Cassandra API
       values:
       - href: /azure/cosmos-db/create-cassandra-java
       - href: /azure/cosmos-db/create-cassandra-dotnet
       - href: /azure/cosmos-db/create-cassandra-nodejs
       - href: /azure/cosmos-db/create-cassandra-python
       - href: 
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Informace o vývoji aplikací pomocí služby Azure Cosmos DB&#58;"
+    text: Informace o vývoji aplikací pomocí služby Azure Cosmos DB&#58;
   - type: list
     style: ordered
     items:
-    - html: "Vývoj aplikací pomocí služby Cosmos DB&#58; <a href=\"/azure/cosmos-db/tutorial-develop-sql-api-dotnet\">SQL</a> | <a href=\"/azure/cosmos-db/tutorial-develop-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-develop-table-dotnet\">Table</a> | <a href=\"/azure/cosmos-db/tutorial-develop-graph-dotnet\">Graph</a> | <a href=\"https://aka.ms/cassandratutorial\">Cassandra</a>"
-    - html: "Import dat do služby Cosmos DB&#58; <a href=\"import-data\">SQL</a> | <a href=\"mongodb-migrate\">MongoDB</a> | <a href=\"https://aka.ms/tableapiimporttool\">Table</a> | <a href=\"https://aka.ms/cassandraimport\">Cassandra</a>"
-    - html: "Dotazování dat pomocí služby Cosmos DB&#58; <a href=\"/azure/cosmos-db/tutorial-query-sql-api\">SQL</a> | <a href=\"/azure/cosmos-db/tutorial-query-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-query-table\">Table</a> | <a href=\"/azure/cosmos-db/tutorial-query-graph\">Graph</a>"
-    - html: "Globální replikace databází pomocí služby Cosmos DB&#58; <a href=\"/azure/cosmos-db/tutorial-global-distribution-sql-api\">SQL</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-table\">Table</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-graph\">Graph</a>"
-    - html: "<a href=\"local-emulator\">Lokální vývoj aplikace pomocí emulátoru</a>"
-    - html: "<a href=\"/azure/cosmos-db/tutorial-functions-http-trigger\">Vytvoření triggeru HTTP s využitím vstupní vazby Azure Cosmos DB</a>"
-- title: "Ukázky"
+    - html: Vývoj aplikací pomocí služby Azure Cosmos DB&#58; <a href="/azure/cosmos-db/tutorial-develop-sql-api-dotnet">SQL</a> | <a href="/azure/cosmos-db/tutorial-develop-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-develop-table-dotnet">Table</a> | <a href="/azure/cosmos-db/tutorial-develop-graph-dotnet">Graph</a> | <a href="https://aka.ms/cassandratutorial">Cassandra</a>
+    - html: Import dat do služby Azure Cosmos DB&#58; <a href="import-data">SQL</a> | <a href="mongodb-migrate">MongoDB</a> | <a href="https://aka.ms/tableapiimporttool">Table</a> | <a href="https://aka.ms/cassandraimport">Cassandra</a>
+    - html: Dotazování dat pomocí služby Azure Cosmos DB&#58; <a href="/azure/cosmos-db/tutorial-query-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-query-table">Table</a> | <a href="/azure/cosmos-db/tutorial-query-graph">Graph</a>
+    - html: Globální replikace databází pomocí služby Azure Cosmos DB&#58; <a href="/azure/cosmos-db/tutorial-global-distribution-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-graph">Graph</a>
+    - html: <a href="local-emulator">Lokální vývoj aplikace pomocí emulátoru</a>
+    - html: <a href="/azure/cosmos-db/tutorial-functions-http-trigger">Vytvoření triggeru HTTP s využitím vstupní vazby Azure Cosmos DB</a>
+- title: Ukázky
   items:
   - type: list
     style: unordered
@@ -105,17 +105,17 @@ sections:
     items:
     - html: <a href="/azure/cosmos-db/cli-samples">Azure CLI</a>
     - html: <a href="/azure/cosmos-db/powershell-samples">Azure PowerShell</a>
-- title: "Referenční informace"
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "Rozhraní SQL API"
-      html: "<p><a href=\"sql-api-sdk-dotnet\">.NET</a></p><p><a href=\"sql-api-sdk-dotnet-changefeed\">Kanál změn .NET</a></p><p><a href=\"sql-api-sdk-dotnet-core\">.NET Core</a></p><p><a href=\"sql-api-sdk-node\">Node.js</a></p><p><a href=\"sql-api-sdk-async-java\">Async Java</a></p><p><a href=\"sql-api-sdk-java\">Java</a></p><p><a href=\"sql-api-sdk-python\">Python</a></p><p><a href=\"/rest/api/documentdb/\">REST</a></p><p><a href=\"/rest/api/documentdbresourceprovider/\">Poskytovatel prostředků REST</a></p><p><a href=\"sql-api-sql-query-reference\">SQL</a></p>"
-    - title: "Rozhraní MongoDB API"
+    - title: Rozhraní SQL API
+      html: <p><a href="sql-api-sdk-dotnet">.NET</a></p><p><a href="sql-api-sdk-dotnet-changefeed">Kanál změn .NET</a></p><p><a href="sql-api-sdk-dotnet-core">.NET Core</a></p><p><a href="sql-api-sdk-node">Node.js</a></p><p><a href="sql-api-sdk-async-java">Async Java</a></p><p><a href="sql-api-sdk-java">Java</a></p><p><a href="sql-api-sdk-python">Python</a></p><p><a href="/rest/api/documentdb/">REST</a></p><p><a href="/rest/api/documentdbresourceprovider/">Poskytovatel prostředků REST</a></p><p><a href="sql-api-sql-query-reference">SQL</a></p>
+    - title: Rozhraní MongoDB API
       html: <p><a href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">Wire Protocol</a></p><p><a href="https://mongodb.github.io/node-mongodb-native/ ">Node.js</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>
-    - title: "Rozhraní Table API"
+    - title: Rozhraní Table API
       html: <p><a href="/rest/api/storageservices/fileservices/Table-Service-Concepts">REST</a></p><p><a href="/azure/cosmos-db/table-sdk-dotnet">.NET</a></p><p><a href="/azure/cosmos-db/table-sdk-nodejs">Node.js</a></p><p><a href="/azure/cosmos-db/table-sdk-java">Java</a></p><p><a href="/azure/cosmos-db/table-sdk-python">Python</a></p>
-    - title: "Rozhraní Gremlin API"
+    - title: Rozhraní Gremlin API
       html: <p><a href="http://tinkerpop.apache.org/docs/current/reference/">Gremlin</a></p><p><a href="/azure/cosmos-db/graph-sdk-dotnet">.NET</a></p><p><a href="https://github.com/ZEROFAIL/goblin">Python</a></p><p><a href="http://tinkerpop.apache.org/docs/current/reference/#connecting-via-java">Java</a></p><p><a href="https://github.com/jbmusso/gremlin-javascript">JavaScript</a></p>
