@@ -1,7 +1,7 @@
 ---
-title: "Kódy chyb SQL - Chyba připojení databáze | Microsoft Docs"
-description: "Další informace o kódy chyb SQL pro klientské aplikace SQL Database, například běžných chyb připojení databáze, problémů kopie databáze a obecné chyby. "
-keywords: "Kód chyby SQL, sql přístup, Chyba připojení databáze, kódy chyb sql"
+title: Kódy chyb SQL - Chyba připojení databáze | Microsoft Docs
+description: 'Další informace o kódy chyb SQL pro klientské aplikace SQL Database, například běžných chyb připojení databáze, problémů kopie databáze a obecné chyby. '
+keywords: Kód chyby SQL, sql přístup, Chyba připojení databáze, kódy chyb sql
 services: sql-database
 author: stevestein
 manager: craigg
@@ -62,7 +62,7 @@ Při kopírování databáze Azure SQL Database může být zjištěny následuj
 
 | Kód chyby | Závažnost | Popis |
 | ---:| ---:|:--- |
-| 40635 |16 |Klient s IP adresou '%. & #x2a; ls' je dočasně zakázána. |
+| 40635 |16 |Klient s IP adresou '%.&#x2a;ls' je dočasně zakázána. |
 | 40637 |16 |Vytvoření kopie databáze je aktuálně zakázáno. |
 | 40561 |16 |Kopírování databáze se nezdařilo. Buď zdrojová nebo cílová databáze neexistuje. |
 | 40562 |16 |Kopírování databáze se nezdařilo. Zdrojová databáze byla vyřazena. |
@@ -138,35 +138,35 @@ Následující chyby nespadají do všech předchozích kategorií.
 | Kód chyby | Závažnost | Popis |
 | ---:| ---:|:--- |
 | 15006 |16 |(AdministratorLogin) není platný název, protože obsahuje neplatné znaky. |
-| 18452 |14 |Přihlášení se nezdařilo. Přihlášení proběhlo z nedůvěryhodné domény a nelze použít s Windows authentication.%. & #x2a; ls (přihlášení systému Windows není podporováno v této verzi systému SQL Server). |
-| 18456 |14 |Přihlášení uživatele se nezdařilo. %. & #x2a;ls'.%. & #x2a; ls %. & #x2a; ls (přihlášení se nezdařilo pro uživatele "%. & #x2a; ls". Změna hesla se nezdařila. Změna hesla při přihlašování není podporováno v této verzi systému SQL Server.) |
-| 18470 |14 |Přihlášení se nezdařilo pro uživatele "%. & #x2a; ls". Důvod: Účet je disabled.%. & #x2a; ls |
+| 18452 |14 |Přihlášení se nezdařilo. Přihlášení proběhlo z nedůvěryhodné domény a nelze použít s Windows authentication.%.&#x2a;ls (přihlášení systému Windows není podporováno v této verzi systému SQL Server). |
+| 18456 |14 |Přihlášení uživatele se nezdařilo. '%.&#x2a;ls'.%.&#x2a;ls%.&#x2a;ls(přihlášení se nezdařilo pro uživatele "%.&#x2a;ls". Změna hesla se nezdařila. Změna hesla při přihlašování není podporováno v této verzi systému SQL Server.) |
+| 18470 |14 |Přihlášení se nezdařilo pro uživatele "%.&#x2a;ls". Důvod: Účet je disabled.%.&#x2a;ls |
 | 40014 |16 |Více databází nelze použít ve stejné transakci. |
 | 40054 |16 |Tabulky bez clusterovaného indexu nejsou podporovány v této verzi systému SQL Server. Vytvořit clusterovaný index a zkuste to znovu. |
 | 40133 |15 |Tato operace není podporována v této verzi systému SQL Server. |
 | 40506 |16 |Zadaný kód SID je neplatný pro tuto verzi systému SQL Server. |
-| 40507 |16 |' %. & #x2a; ls se nedá vyvolat, s parametry v této verzi systému SQL Server. |
+| 40507 |16 |%.&#x2a;ls ls se nedá vyvolat, s parametry v této verzi systému SQL Server. |
 | 40508 |16 |Příkaz USE není podporovaný pro přepínání databází. Pro připojení k jiné databázi, použijte nové připojení. |
-| 40510 |16 |Příkaz '%. & #x2a; ls' není podporován v této verzi systému SQL Server |
-| 40511 |16 |Integrovaná funkce '%. & #x2a; ls' není v této verzi systému SQL Server podporována. |
+| 40510 |16 |Příkaz '%.&#x2a;ls' není podporován v této verzi systému SQL Server |
+| 40511 |16 |Integrovaná funkce '%.&#x2a;ls' není v této verzi systému SQL Server podporována. |
 | 40512 |16 |Zastaralé funkce "%ls" v této verzi systému SQL Server nepodporuje. |
-| 40513 |16 |Server proměnné '%. & #x2a; ls' není v této verzi systému SQL Server podporována. |
+| 40513 |16 |Server proměnné '%.&#x2a;ls' není v této verzi systému SQL Server podporována. |
 | 40514 |16 |v této verzi systému SQL Server nepodporuje '%ls'. |
-| 40515 |16 |Odkaz na název databáze nebo serveru v '%. & #x2a; ls' není v této verzi systému SQL Server podporována. |
+| 40515 |16 |Odkaz na název databáze nebo serveru v '%.&#x2a;ls' není v této verzi systému SQL Server podporována. |
 | 40516 |16 |Globální dočasné objekty nejsou v této verzi systému SQL Server podporovány. |
-| 40517 |16 |Možnost klíčového slova nebo příkazu '%. & #x2a; ls' není v této verzi systému SQL Server podporována. |
-| 40518 |16 |Příkaz DBCC '%. & #x2a; ls' není v této verzi systému SQL Server podporována. |
+| 40517 |16 |Možnost klíčového slova nebo příkazu '%.&#x2a;ls' není v této verzi systému SQL Server podporována. |
+| 40518 |16 |Příkaz DBCC '%.&#x2a;ls' není v této verzi systému SQL Server podporována. |
 | 40520 |16 |Zabezpečitelná Třída '% S_MSG' není v této verzi systému SQL Server podporována. |
 | 40521 |16 |Zabezpečitelná Třída '% S_MSG' není v oboru serveru v této verzi systému SQL Server podporována. |
-| 40522 |16 |Typ objektu "%. & #x2a; ls" databáze není podporován v této verzi systému SQL Server. |
-| 40523 |16 |Vytvoření implicitního uživatele '%. & #x2a; ls' není podporován v této verzi systému SQL Server. Před jeho použitím explicitně vytvořte uživateli. |
-| 40524 |16 |Datový typ '%. & #x2a; ls' není v této verzi systému SQL Server podporována. |
+| 40522 |16 |Typ objektu "%.&#x2a;ls" databáze není podporován v této verzi systému SQL Server. |
+| 40523 |16 |Vytvoření implicitního uživatele '%.&#x2a;ls' není podporován v této verzi systému SQL Server. Před jeho použitím explicitně vytvořte uživateli. |
+| 40524 |16 |Datový typ '%.&#x2a;ls' není v této verzi systému SQL Server podporována. |
 | 40525 |16 |S '%.ls' není podporován v této verzi systému SQL Server. |
-| 40526 |16 |' %. & #x2a; zprostředkovatele sady řádků ls' v této verzi systému SQL Server není podporována. |
+| 40526 |16 |%.&#x2a;ls zprostředkovatele sady řádků ls' v této verzi systému SQL Server není podporována. |
 | 40527 |16 |Odkazované servery nejsou v této verzi systému SQL Server podporovány. |
 | 40528 |16 |Nelze mapovat uživatele na certifikáty, asymetrické klíče ani na přihlášení systému Windows v této verzi systému SQL Server. |
-| 40529 |16 |Integrovaná funkce "%. & #x2a; ls" v zosobnění kontextu není podporováno v této verzi systému SQL Server. |
-| 40532 |11 |Nelze otevřít serveru "%. & #x2a; ls" požadovaný v přihlášení. Přihlášení se nezdařilo. |
+| 40529 |16 |Integrovaná funkce "%.&#x2a;ls" v zosobnění kontextu není podporováno v této verzi systému SQL Server. |
+| 40532 |11 |Nelze otevřít serveru "%.&#x2a;ls" požadovaný v přihlášení. Přihlášení se nezdařilo. |
 | 40553 |16 |Relace byla ukončena z důvodu nadměrného využití paměti. Zkuste upravit dotaz zpracovat méně řádků.<br/><br/> Omezení počtu `ORDER BY` a `GROUP BY` operace v kódu jazyka Transact-SQL pomáhá snížit požadavky na paměť tohoto dotazu. |
 | 40604 |16 |Může není CREATE/ALTER DATABASE, protože byste překročili kvótu serveru. |
 | 40606 |16 |V této verzi systému SQL Server nepodporuje připojení databáze. |
@@ -176,12 +176,12 @@ Následující chyby nespadají do všech předchozích kategorií.
 | 40615 |16 |Server {0}' požadovaný v přihlášení nelze otevřít. Klient s IP adresou objekt {1}' nemá povolen přístup k serveru.<br /><br />Pokud chcete povolit přístup, použijte portál databáze SQL nebo spusťte sp\_nastavit\_brány firewall\_pravidlo v hlavní databázi, a vytvořte tak pravidlo brány firewall pro tuto IP adresu nebo rozsah adres. To může trvat až pět minut, než se změna projeví. |
 | 40617 |16 |Název pravidla brány firewall začínající s (název pravidla) je příliš dlouhý. Maximální délka je 128. |
 | 40618 |16 |Název pravidla brány firewall nemůže být prázdný. |
-| 40620 |16 |Přihlášení se nezdařilo pro uživatele "%. & #x2a; ls". Změna hesla se nezdařila. Změna hesla při přihlašování není podporována v této verzi systému SQL Server. |
+| 40620 |16 |Přihlášení se nezdařilo pro uživatele "%.&#x2a;ls". Změna hesla se nezdařila. Změna hesla při přihlašování není podporována v této verzi systému SQL Server. |
 | 40627 |20 |Probíhá operace na serveru: {0} a databáze objekt {1}. Počkejte prosím několik minut, než to zkusíte znovu. |
 | 40630 |16 |Ověření hesla se nezdařilo. Heslo nesplňuje požadavky zásad, protože je příliš krátké. |
 | 40631 |16 |Heslo, které jste zadali, je příliš dlouhý. Heslo musí mít víc než 128 znaků. |
 | 40632 |16 |Ověření hesla se nezdařilo. Heslo nesplňuje požadavky zásad, protože není dostatečně komplexní. |
-| 40636 |16 |Nemůžete použít název vyhrazené databáze "%. & #x2a; ls" v této operaci. |
+| 40636 |16 |Nemůžete použít název vyhrazené databáze "%.&#x2a;ls" v této operaci. |
 | 40638 |16 |Neplatné id odběru (id předplatného). Odběr neexistuje. |
 | 40639 |16 |Požadavek neodpovídá schématu: (Chyba schématu). |
 | 40640 |20 |Serveru došlo k neočekávané výjimce. |
