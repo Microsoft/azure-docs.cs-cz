@@ -1,8 +1,8 @@
 ---
-title: "Služba IIS přihlásí Azure Log Analytics | Microsoft Docs"
-description: "Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které může shromáždit analýzy protokolů.  Tento článek popisuje, jak nakonfigurovat kolekce protokoly služby IIS a podrobnosti o záznamy, které vytvoří v pracovním prostoru analýzy protokolů."
+title: Služba IIS přihlásí Azure Log Analytics | Microsoft Docs
+description: Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které může shromáždit analýzy protokolů.  Tento článek popisuje, jak nakonfigurovat kolekce protokoly služby IIS a podrobnosti o záznamy, které vytvoří v pracovním prostoru analýzy protokolů.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
