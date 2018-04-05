@@ -1,12 +1,12 @@
 ---
-title: "Intel Edison do cloudu (C) - Edison Intel připojit ke službě Azure IoT Hub | Microsoft Docs"
-description: "Zjistěte, jak nastavit a Intel Edison připojit ke službě Azure IoT Hub pro Intel Edison k odesílání dat do Azure Cloudová platforma v tomto kurzu."
+title: Intel Edison do cloudu (C) - Edison Intel připojit ke službě Azure IoT Hub | Microsoft Docs
+description: Zjistěte, jak nastavit a Intel Edison připojit ke službě Azure IoT Hub pro Intel Edison k odesílání dat do Azure Cloudová platforma v tomto kurzu.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: "Azure iot intel edison, intel edison iot hub, intel edison odesílat data do cloudu, intel edison do cloudu"
+tags: ''
+keywords: Azure iot intel edison, intel edison iot hub, intel edison odesílat data do cloudu, intel edison do cloudu
 ms.assetid: 4885fa2c-c2ee-4253-b37f-ccd55f92b006
 ms.service: iot-hub
 ms.devlang: c
@@ -17,10 +17,10 @@ ms.date: 4/17/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: edbdbe0230f742cd7228f04a4a83c9bd567527e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Připojení k Azure IoT Hub (C) Intel Edison
 
@@ -235,7 +235,7 @@ Měli byste vidět následující výstup, který popisuje data snímačů a zpr
 
 ![Výstup – data snímačů odeslaný Intel Edison do služby IoT hub](media/iot-hub-intel-edison-kit-c-get-started/15_message_sent.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Spustíte ukázkovou aplikaci pro shromažďování dat snímačů a odeslat do služby IoT hub.
 

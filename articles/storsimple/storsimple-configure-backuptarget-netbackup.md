@@ -1,12 +1,12 @@
 ---
-title: "Řady StorSimple 8000 jako cíl zálohování s NetBackup | Microsoft Docs"
-description: "Popisuje konfiguraci cíl zálohy zařízení StorSimple s NetBackup této společnosti."
+title: Řady StorSimple 8000 jako cíl zálohování s NetBackup | Microsoft Docs
+description: Popisuje konfiguraci cíl zálohy zařízení StorSimple s NetBackup této společnosti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: harshakirank
 manager: matd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
 ms.openlocfilehash: b1878c181a77ac6d54654fc55228907743243c45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple jako cíl zálohování s NetBackup
 
@@ -91,16 +91,16 @@ Následující tabulky popisují počáteční pokyny modelu architektura zaří
 
 | Kapacita úložiště       | 8100          | 8600            |
 |------------------------|---------------|-----------------|
-| Místní úložiště kapacity | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Kapacita cloudového úložiště | &gt;200 TiB\* | &gt;500 TiB\* |
-\*Velikost úložiště předpokládá bez odstranění duplicitních dat nebo kompresi.
+| Místní úložiště kapacity | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Kapacita cloudového úložiště | &gt; 200 TiB\* | &gt; 500 TiB\* |
+\* Velikost úložiště předpokládá bez odstranění duplicitních dat nebo kompresi.
 
 **StorSimple kapacity pro primární a sekundární zálohování**
 
 | Zálohování scénář  | Místní úložiště kapacity  | Kapacita cloudového úložiště  |
 |---|---|---|
 | Primární zálohu  | Nedávné zálohy uložený v místním úložišti pro rychlé obnovení ke splnění plánovaného bodu obnovení (RPO) | Historie zálohování (RPO) se vejde kapacity cloudu |
-| Sekundární zálohování | Sekundární kopii zálohovaných dat mohou být uloženy ve kapacity cloudu  | Není k dispozici  |
+| Sekundární zálohování | Sekundární kopii zálohovaných dat mohou být uloženy ve kapacity cloudu  | neuvedeno  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako primární cíl zálohování
 
@@ -147,7 +147,7 @@ Je důležité velikost svazku vysoce výkonné, tak, aby ji může zpracovat po
 2.  Agenta zálohování přijímá data ze zálohování serveru.
 3.  Záložní server dokončí úlohu obnovení.
 
-## <a name="deploy-the-solution"></a>Nasazení řešení.
+## <a name="deploy-the-solution"></a>Nasazení řešení
 
 Nasazení tohoto řešení vyžaduje tři kroky:
 1. Připravte síťové infrastruktury.
@@ -256,7 +256,7 @@ Podle předchozích předpokladů, vytvořit 26-TiB StorSimple vrstvené svazek 
 | Roční úplné | 1  | 10 | 10 |
 | Požadavek GFS |   | 38 |   |
 | Další kvóty  | 4  |   | 42 celkový požadavek GFS  |
-\*Násobitel GFS je počet kopií, které potřebujete k ochraně a zachovat podle požadavků vaší zásady zálohování.
+\* Násobitel GFS je počet kopií, které potřebujete k ochraně a zachovat podle požadavků vaší zásady zálohování.
 
 ## <a name="set-up-netbackup-storage"></a>Nastavení úložiště NetBackup
 
@@ -325,7 +325,7 @@ Následující pořadí předpokládá, že jsou v souladu s pokyny agenta NetBa
 
     ![Konzole pro správu NetBackup, typ vyberte zásad](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5.  Vyberte svého hostitele, vyberte **zjistit klientský operační systém** zaškrtněte políčko a potom vyberte **přidat**. Vyberte **Další**.
+5.  Vyberte svého hostitele, vyberte **zjistit klientský operační systém** zaškrtněte políčko a potom vyberte **přidat**. Vyberte **Next** (Další).
 
     ![Konzole pro správu NetBackup, seznamu klienty v nové zásady](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -399,7 +399,7 @@ Následující tabulka ukazuje, jak nastavení zálohování ke spuštění na m
 | Měsíční úplné |StorSimple disku (dlouhodobé) | 1 | 12 | 12 |
 | Roční úplné |StorSimple disku (dlouhodobé) | 1 | 1 | 1 |
 |Požadavek na velikost svazků GFS |  |  |  | 18*|
-\*Celkové kapacity zahrnuje 17 TiB StorSimple disky a 1 TiB místní svazek RAID.
+\* Celkové kapacity zahrnuje 17 TiB StorSimple disky a 1 TiB místní svazek RAID.
 
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>Plán GFS příklad: GFS otočení týdenní, měsíční a roční plán
@@ -420,7 +420,7 @@ Protože NetBackup nabízí širokou škálu možností pro správu úložiště
 
 Po počáteční fondy, které jste definovali, je třeba zadat tři další úložiště zásad životního cyklu, celkem čtyři zásady:
 * LocalRAIDVolume
-* StorSimpleWeek2 4
+* StorSimpleWeek2-4
 * StorSimpleMonthlyFulls
 * StorSimpleYearlyFulls
 
@@ -473,7 +473,7 @@ Po počáteční fondy, které jste definovali, je třeba zadat tři další úl
 | Roční úplné | 1  | 10 | 10 |
 | Požadavek GFS  |     |     | 38 |
 | Další kvóty  | 4  |    | 42 celkový požadavek GFS |
-\*Násobitel GFS je počet kopií, které potřebujete k ochraně a zachovat podle požadavků vaší zásady zálohování.
+\* Násobitel GFS je počet kopií, které potřebujete k ochraně a zachovat podle požadavků vaší zásady zálohování.
 
 ## <a name="storsimple-cloud-snapshots"></a>Cloudové snímky StorSimple
 
@@ -539,7 +539,7 @@ Pro tento článek se odkazuje v následujících dokumentech:
 - [Pomocí GPT jednotky](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Nastavení stínových kopií pro sdílené složky](http://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o tom, jak [obnovení ze zálohovacího skladu](storsimple-restore-from-backup-set-u2.md).
 - Další informace o tom, jak provést [zařízení převzetí služeb při selhání a zotavení po havárii](storsimple-device-failover-disaster-recovery.md).

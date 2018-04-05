@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
 ms.openlocfilehash: f8dac5469e7160fae93e8251ab7f4195a383f8b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Stroj pravidel Azure CDN splňují podmínky 
 Tento článek obsahuje seznam podrobný popis dostupných porovnání podmínky pro Content Delivery Network (CDN) Azure [stroj pravidel](cdn-rules-engine.md).
@@ -783,7 +783,7 @@ Informace o klíči:
 
    Znak | Kódování URL
    ----------|---------
-   Mezera     | %20
+   Kosmické aktivity     | %20
    &         | %25
 
 - Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení tato podmínka shoda není kompatibilní s následující funkce:
@@ -819,7 +819,7 @@ Informace o klíči:
 
        Znak | Kódování URL
        ----------|---------
-       Mezera     | %20
+       Kosmické aktivity     | %20
        &         | %25
 
 - Zadejte více hodnot parametrů řetězce dotazu omezující každé z nich mezerou. Pokud požadavek obsahuje jeden z kombinace zadaný název hodnota splnění této podmínky shody.
@@ -871,7 +871,7 @@ Název  | Hodnota |  Výsledek
 ------|-------|--------
 Uživatel  | Jan   | Tento vzor je nalezena shoda, pokud je řetězec dotazu pro požadovanou adresu URL "? uživatele = Jan."
 Uživatel  | *     | Tento vzor je nalezena shoda, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr uživatele.
-E-mail | Jan\* | Tento vzor je nalezena shoda, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr e-mailu, který začíná "Jan".
+Email | Jan\* | Tento vzor je nalezena shoda, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr e-mailu, který začíná "Jan".
 
 [Zpět na začátek](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -896,7 +896,7 @@ Informace o klíči:
 
    Znak | Kódování URL | Hodnota
    ----------|--------------|------
-   Mezera     | %20          | \%20
+   Kosmické aktivity     | %20          | \%20
    &         | %25          | \%25
 
    Všimněte si, že procento symboly, je nutné uvést.
@@ -938,7 +938,7 @@ Informace o klíči:
 
      Znak | Kódování URL
      ----------|---------
-     Mezera     | %20
+     Kosmické aktivity     | %20
      &         | %25
 
 - Zadejte více hodnot omezující každé z nich mezerou.

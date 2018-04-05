@@ -12,10 +12,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
 ms.openlocfilehash: bb6e4f9f147db2fb70d991922cf0bb8d16b29671
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>Prediktivní údržby pro scénářích reálného světa
 

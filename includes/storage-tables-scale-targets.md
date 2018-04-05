@@ -1,4 +1,4 @@
-| Prostředek | cíl |
+| Prostředek | Cíl |
 |----------|---------------|
 | Maximální velikost jedné tabulky | 500 TiB |
 | Maximální velikost tabulka entity | 1 MiB |

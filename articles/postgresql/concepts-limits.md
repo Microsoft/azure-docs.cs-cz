@@ -10,10 +10,10 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
 ms.openlocfilehash: 7e06cdba7c9c9f7e5c1d621e7421a18c342c0fdb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Omezení v Azure databázi PostgreSQL
 Následující části popisují kapacitu a funkční omezení ve službě databáze.

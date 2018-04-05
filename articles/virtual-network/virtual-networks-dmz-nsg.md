@@ -1,12 +1,12 @@
 ---
-title: "Příklad Azure DMZ – vytvoření jednoduché DMZ pomocí skupin Nsg | Microsoft Docs"
-description: "Sestavení DMZ se skupinami zabezpečení sítě (NSG)"
+title: Příklad Azure DMZ – vytvoření jednoduché DMZ pomocí skupin Nsg | Microsoft Docs
+description: Sestavení DMZ se skupinami zabezpečení sítě (NSG)
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Příklad 1 – Vytvoření jednoduché DMZ pomocí skupin Nsg pomocí šablony Azure Resource Manager
 [Návrat na stránku osvědčené postupy zabezpečení hranic][HOME]
@@ -351,7 +351,7 @@ Pokud chcete odebrat toto nasazení, odstraňte skupinu prostředků a všechny 
 #### <a name="sample-application-scripts"></a>Ukázkové skripty aplikace
 Po úspěšném spuštění šablony můžete nastavit webový server a server aplikace s jednoduchou webovou aplikaci umožňující testování s touto konfigurací hraniční sítě. Instalace ukázkové aplikace pro toto a další příklady hraniční sítě, jednu bylo zadáno na následující odkaz: [ukázkový skript aplikace][SampleApp]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Tento příklad nasazení
 * Vytvoření ukázkové aplikace

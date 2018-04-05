@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
 ms.openlocfilehash: f8b97aeb4c37578b884c924bd1919a59fa0f1cf8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé z nejběžnějších omezení Microsoft Azure, což se taky někdy označují jako kvóty. Tento dokument nepokrývá aktuálně všech služeb Azure. V čase v seznamu rozbalit a aktualizovat tak, aby pokrývalo více platformou.

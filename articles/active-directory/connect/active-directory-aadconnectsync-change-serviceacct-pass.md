@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: faa6d667b514563516c23e0484437ac9572e52b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Změna hesla účtu služby synchronizace Azure AD Connect
 Pokud změníte heslo účtu služby synchronizace Azure AD Connect, synchronizační služby nebude možné spustit správně opuštění šifrovací klíč a heslo účtu služby Azure AD Connect sync znovu inicializován. 

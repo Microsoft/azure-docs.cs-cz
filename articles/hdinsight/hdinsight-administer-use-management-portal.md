@@ -1,8 +1,8 @@
 ---
-title: "Správa clusterů Hadoop založených na systému Windows v prostředí HDInsight pomocí portálu Azure | Microsoft Docs"
-description: "Zjistěte, jak spravovat služby HDInsight. Vytvoření clusteru HDInsight, otevřete konzolu pro interaktivní JavaScript a otevřete konzolu pro příkaz Hadoop."
+title: Správa clusterů Hadoop založených na systému Windows v prostředí HDInsight pomocí portálu Azure | Microsoft Docs
+description: Zjistěte, jak spravovat služby HDInsight. Vytvoření clusteru HDInsight, otevřete konzolu pro interaktivní JavaScript a otevřete konzolu pro příkaz Hadoop.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -17,10 +17,10 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0b34f861b306dc62cbdbf97378a1c370494bbb20
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Hadoop založených na systému Windows v prostředí HDInsight pomocí portálu Azure
 
@@ -40,7 +40,7 @@ Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 * **Účet služby Azure Storage** -clusteru HDInsight používá kontejner úložiště objektů Blob v Azure jako výchozí systém souborů. Další informace o tom, jak Azure Blob storage nabízí jednotné prostředí s clustery HDInsight najdete v tématu [použití Azure Blob Storage s HDInsight](hdinsight-hadoop-use-blob-storage.md). Podrobnosti o vytvoření účtu Azure Storage najdete v tématu [postup vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md).
 
 ## <a name="open-the-portal"></a>Otevřete portál
-1. Přihlaste se k [https://portal.azure.com](https://portal.azure.com).
+1. Přihlaste se k [ https://portal.azure.com ](https://portal.azure.com).
 2. Po otevření portálu můžete:
 
    * Klikněte na tlačítko **vytvořit prostředek** v levé nabídce na vytvoření nového clusteru:
@@ -73,7 +73,7 @@ HDInsight funguje s komponentami široký rozsah Hadoop. Seznam součástí, kte
 Instalace vlastních softwaru v clusteru pomocí připojení ke vzdálené ploše není podporována. Neměli byste ukládat soubory na jednotkách hlavního uzlu, jak budou ztraceny, budete muset znovu vytvořit clustery. Doporučujeme ukládat soubory do úložiště objektů Blob v Azure. Úložiště objektů blob je trvalé.
 
 ## <a name="list-and-show-clusters"></a>Seznam a zobrazit clustery
-1. Přihlaste se k [https://portal.azure.com](https://portal.azure.com).
+1. Přihlaste se k [ https://portal.azure.com ](https://portal.azure.com).
 2. Klikněte na tlačítko **clustery HDInsight** v levé nabídce.
 3. Klikněte na název clusteru. Pokud je seznam clusteru dlouho, můžete použít možnosti filtrovat horní části stránky.
 4. Dvakrát klikněte na cluster ze seznamu a zobrazit podrobnosti.
@@ -283,7 +283,7 @@ Konzole dotazu HDInsight zahrnuje následující funkce:
 
     ![Procházet prohlížeče portálu souboru HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-file-browser.png)
 
-    Na tomto snímku  **<Account>**  typ označuje položku je účet úložiště Azure.  Klikněte na název účtu a vyhledejte soubory.
+    Na tomto snímku **<Account>** typ označuje položku je účet úložiště Azure.  Klikněte na název účtu a vyhledejte soubory.
 * **Uživatelské rozhraní Hadoop**.
 
     ![Portál HDInsight Hadoop uživatelského rozhraní](./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-ui.png)

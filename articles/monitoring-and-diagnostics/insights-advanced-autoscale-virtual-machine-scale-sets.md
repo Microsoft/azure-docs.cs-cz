@@ -1,9 +1,9 @@
 ---
-title: "Rozšířené škálování pomocí Azure Virtual Machines | Microsoft Docs"
-description: "Používá správce prostředků a škálovatelné sady virtuálních počítačů s více pravidel a profily, které odeslání e-mailu a volání adresy URL webhooku s akcí škálování."
+title: Rozšířené škálování pomocí Azure Virtual Machines | Microsoft Docs
+description: Používá správce prostředků a škálovatelné sady virtuálních počítačů s více pravidel a profily, které odeslání e-mailu a volání adresy URL webhooku s akcí škálování.
 author: anirudhcavale
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 7e3576e2-4a2b-4736-b5ae-98c4689cdd2b
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/22/2016
 ms.author: ancav
 ms.openlocfilehash: 80955535c8d863cd3d8d1b77e2ab8bc016b6d9f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Pokročilé škálování konfigurace pomocí šablony Resource Manageru pro škálovatelné sady virtuálních počítačů
 Můžete v škálování a horizontální sady škálování virtuálního počítače na základě výkonu metriky prahových hodnot, podle plánu opakování, nebo podle konkrétní data. Můžete také nakonfigurovat e-mailu a webhooku oznámení pro akce škálování. Tento návod ukazuje příklad konfigurace všechny tyto objekty ve Škálovací sadě virtuálních počítačů pomocí šablony Resource Manageru.
@@ -35,7 +35,7 @@ V tomto návodu použijeme [Průzkumníka prostředků Azure](https://resources.
 1. Nasaďte nové škálování nastavit s nastavením základní škálování. Tento článek používá jeden z Galerie pro rychlý start Azure, který má Windows pomocí šablony základní škálování sady škálování. Sady škálování Linux fungovat stejným způsobem.
 2. Jakmile se vytvoří sada škálování, přejděte do prostředků sady škálování z Průzkumníka prostředků Azure. Zobrazí následující uzlu Microsoft.Insights.
 
-    ![Průzkumník Azure](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+    ![Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
 
     Provádění šablony vytvořil výchozí nastavení automatického škálování s názvem **'autoscalewad'**. Na pravé straně můžete zobrazit úplnou definici tohoto nastavení automatického škálování. V takovém případě výchozí nastavení automatického škálování se dodává s pravidlo Škálováním na více systémů a škálování v % na základě využití procesoru.  
 

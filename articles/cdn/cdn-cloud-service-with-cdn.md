@@ -1,6 +1,6 @@
 ---
-title: "Cloudové služby Azure integrovat Azure CDN | Microsoft Docs"
-description: "Informace o nasazení Cloudová služba, která poskytuje obsah z integrované koncového bodu Azure CDN"
+title: Cloudové služby Azure integrovat Azure CDN | Microsoft Docs
+description: Informace o nasazení Cloudová služba, která poskytuje obsah z integrované koncového bodu Azure CDN
 services: cdn, cloud-services
 documentationcenter: .net
 author: zhangmanling
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f131eb021d85766f12b0fb6cb8b5a07f965f9c97
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="intro"></a>Cloudové služby integrovat Azure CDN
+# <a name="intro"></a> Cloudové služby integrovat Azure CDN
 Cloudové služby můžete integrovat Azure CDN, obsluhující žádný obsah z cloudové služby umístění. Tento přístup poskytuje následující výhody:
 
 * Můžete snadno nasadit a aktualizaci bitové kopie, skriptů a šablon v adresářích projektu cloudové služby
@@ -30,7 +30,7 @@ Cloudové služby můžete integrovat Azure CDN, obsluhující žádný obsah z 
 * ASP.NET sdružování a minimalizace integrovat Azure CDN
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
-V tomto kurzu se dozvíte, jak:
+V tomto kurzu se naučíte, jak:
 
 * [Koncový bod Azure CDN integrovat s cloudovou službou a poskytovat statický obsah na webových stránkách z Azure CDN](#deploy)
 * [Konfigurace nastavení mezipaměti pro statický obsah v rámci cloudové služby](#caching)
@@ -63,7 +63,7 @@ V této části nasazení výchozí šablony aplikace ASP.NET MVC v sadě Visual
 1. V sadě Visual Studio 2015, vytvořte novou službu Azure cloud z řádku nabídek přechodem na **soubor > Nový > Projekt > Cloud > Cloudová služba Azure**. Pojmenujte ho a klikněte na tlačítko **OK**.
    
     ![](media/cdn-cloud-service-with-cdn/cdn-cs-1-new-project.PNG)
-2. Vyberte **webovou roli ASP.NET** a klikněte na  **>**  tlačítko. Klikněte na tlačítko OK.
+2. Vyberte **webovou roli ASP.NET** a klikněte na **>** tlačítko. Klikněte na tlačítko OK.
    
     ![](media/cdn-cloud-service-with-cdn/cdn-cs-2-select-role.PNG)
 3. Vyberte **MVC** a klikněte na tlačítko **OK**.
@@ -138,7 +138,7 @@ Profil CDN je kolekcí koncových bodů CDN.  Jednotlivé profily obsahují jede
    > 
 
 ## <a name="test-the-cdn-endpoint"></a>Testování koncového bodu CDN
-Pokud je stav publikování **dokončeno**, otevřete okno prohlížeče a přejděte do  **http://<cdnName>*.azureedge.net/Content/bootstrap.css**. V části Moje nastavení je tato adresa URL:
+Pokud je stav publikování **dokončeno**, otevřete okno prohlížeče a přejděte do **http://<cdnName>*.azureedge.net/Content/bootstrap.css**. V části Moje nastavení je tato adresa URL:
 
     http://camservice.azureedge.net/Content/bootstrap.css
 
@@ -146,18 +146,18 @@ Která odpovídá následující původní adresu URL na koncový bod CDN:
 
     http://camcdnservice.cloudapp.net/Content/bootstrap.css
 
-Když přejdete na  **http://*&lt;cdnName >*.azureedge.net/Content/bootstrap.css**, v závislosti na prohlížeči, zobrazí se výzva stáhnout nebo otevřít bootstrap.css, které byly dodány z vaší publikované webové aplikace.
+Když přejdete na **http://*&lt;cdnName >*.azureedge.net/Content/bootstrap.css**, v závislosti na prohlížeči, zobrazí se výzva ke stažení nebo otevřete bootstrap.css, které byly dodány z vaší publikované webové aplikace.
 
 ![](media/cdn-cloud-service-with-cdn/cdn-1-browser-access.PNG)
 
-Stejně tak přístup k jakékoli veřejně přístupné URL u  **http://*&lt;serviceName >*.cloudapp.net/** přímo z vašeho koncového bodu CDN. Příklad:
+Stejně tak přístup k jakékoli veřejně přístupné URL u **http://*&lt;serviceName >*.cloudapp.net/**, přímých z koncový bod CDN. Příklad:
 
 * Soubor .js z cesty/Script
 * Všechny soubory obsahu z/Content cesta
 * Kontroler nebo akce
 * Pokud řetězec dotazu je povoleno na koncový bod CDN, libovolná adresa URL s řetězci dotazů
 
-Ve skutečnosti s výše konfigurací, můžete hostovat službu celý cloudu v  **http://*&lt;cdnName >*.azureedge.net/**. Pokud I přejděte na **http://camservice.azureedge.net/**, výsledek akce dostat z domovské nebo Index.
+Ve skutečnosti s výše konfigurací, můžete hostovat službu celý cloudu v **http://*&lt;cdnName >*.azureedge.net/**. Pokud I přejděte na **http://camservice.azureedge.net/**, výsledek akce dostat z domovské nebo Index.
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 
@@ -325,7 +325,7 @@ Výše uvedený postup k nastavení této akce kontroleru:
             <br />
             <input class="btn" type="submit" value="Generate meme" />
         </form>
-5. Znovu publikovat cloudové služby a přejděte do  **http://*&lt;serviceName >*.cloudapp.net/MemeGenerator/Index** v prohlížeči.
+5. Znovu publikovat cloudové služby a přejděte do **http://*&lt;serviceName >*.cloudapp.net/MemeGenerator/Index** v prohlížeči.
 
 Po odeslání formuláře hodnoty tak, aby `/MemeGenerator/Index`, `Index_Post` metoda akce vrací odkaz `Show` metoda akce s příslušnými vstupní identifikátor. Když kliknete na odkaz, dostanete následující kód:  
 
@@ -527,10 +527,10 @@ Pokud z nějakého důvodu selže koncový bod Azure CDN, chcete být dostatečn
    
     Když `CdnFallbackExpression` je hodnotou not null, skript je vložit do kódu HTML do otestovat, zda je sada úspěšně načetl a pokud ne, přístup k sadě přímo z původu webového serveru. Tato vlastnost musí být nastavena na výraz jazyka JavaScript, který kontroluje, zda příslušné sady CDN je načtena správně. Výraz potřebné k testování každého svazku se liší podle obsahu. Pro výchozí sady výše:
    
-   * `window.jquery`je definována v jquery-{version} .js
-   * `$.validator`je definována v jquery.validate.js
-   * `window.Modernizr`je definována v modernizer-{version} .js
-   * `$.fn.modal`je definována v bootstrap.js
+   * `window.jquery` je definována v jquery-{version} .js
+   * `$.validator` je definována v jquery.validate.js
+   * `window.Modernizr` je definována v modernizer-{version} .js
+   * `$.fn.modal` je definována v bootstrap.js
      
      Možná jste si všimli, že I nenastavili CdnFallbackExpression pro `~/Cointent/css` sady. Důvodem je, že je nyní [chyb v System.Web.Optimization](https://aspnetoptimization.codeplex.com/workitem/104) , vloží `<script>` značky pro záložní šablon stylů CSS místo očekávané `<link>` značky.
      

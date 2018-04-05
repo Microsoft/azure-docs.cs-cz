@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: cshoe
 ms.openlocfilehash: 723ef31c0247d2b2b5e546b4e4fb3d91a516773c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Šifrování na straně klienta a Azure Key Vault pro Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]

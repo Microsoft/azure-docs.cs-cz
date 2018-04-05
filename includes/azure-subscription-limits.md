@@ -9,10 +9,10 @@ ms.date: 03/30/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: 99766ca4cc9d77927030f81cff6bb9c009874f89
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |

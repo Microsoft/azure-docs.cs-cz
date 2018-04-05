@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: e68e87bb19b8c64cf06c03831b22cf43d773efde
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 Objekt pro vytváření dat je víceklientské služby, který má následující výchozí omezení na místě a ujistěte se, že předplatná zákazníka jsou chráněny z druhé strany úlohy. Mnoho omezení lze snadno zvýšit pro vaše předplatné až do maximálního limitu kontaktováním podpory.
 

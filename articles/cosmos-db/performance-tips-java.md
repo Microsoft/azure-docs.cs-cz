@@ -15,13 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: 3a6c7c51810375574895643cea2e0e24508fa382
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 7aeb76f59b9489f7c930ef754ccbe6d3712e52a7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 > [!div class="op_single_selector"]
+> * [Async Java](performance-tips-async-java.md)
 > * [Java](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
@@ -80,7 +81,7 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
    <a id="max-connection"></a>
 3. **Při použití režimu brány zvýšit MaxPoolSize na hostitele**
 
-    Azure Cosmos DB požadavky jsou při použití režimu brány proveden prostřednictvím protokolu HTTPS nebo REST a jsou vystaveny výchozí limit připojení pro hostitele nebo IP adresa. Musíte nastavit MaxPoolSize na vyšší hodnotu (200-1000) tak, aby klientské knihovny může využívat víc souběžných připojení k databázi Azure Cosmos. V jazyce Java SDK, výchozí hodnota pro [ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.gsetmaxpoolsize) je 100. Použití [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.setmaxpoolsize) ke změně hodnoty.
+    Azure Cosmos DB požadavky jsou při použití režimu brány proveden prostřednictvím protokolu HTTPS nebo REST a jsou vystaveny výchozí limit připojení pro hostitele nebo IP adresa. Musíte nastavit MaxPoolSize na vyšší hodnotu (200-1000) tak, aby klientské knihovny může využívat víc souběžných připojení k databázi Azure Cosmos. V jazyce Java SDK, výchozí hodnota pro [ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.getmaxpoolsize) je 100. Použití [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.setmaxpoolsize) ke změně hodnoty.
 
 4. **Ladění paralelní dotazy pro dělené kolekce**
 
@@ -103,7 +104,7 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
 
 7. **Použijte název, na základě adresování**
 
-    Použít na základě názvu adresy, kde mají odkazy formát `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`, místo SelfLinks (_self), které mají formát `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` předejdete načítání ResourceIds všechny prostředky použitý k vytvoření odkazu. Navíc ukládání do mezipaměti tyto nemusí pomoci jako tyto prostředky získat znovu vytvoří (i se stejným názvem).
+    Použít na základě názvu adresy, kde mají odkazy formát `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`, místo SelfLinks (\_vlastní), které mají formát `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` předejdete načítání ResourceIds všechny prostředky použitý k vytvoření odkazu. Navíc ukládání do mezipaměti tyto nemusí pomoci jako tyto prostředky získat znovu vytvoří (i se stejným názvem).
 
    <a id="tune-page-size"></a>
 8. **Optimalizovat velikost stránky pro dotazy/číst informační kanály pro lepší výkon**

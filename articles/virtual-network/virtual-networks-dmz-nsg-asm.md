@@ -1,11 +1,11 @@
 ---
-title: "Příklad Azure DMZ – vytvoření jednoduché DMZ pomocí skupin Nsg | Microsoft Docs"
-description: "Sestavení DMZ se skupinami zabezpečení sítě (NSG)"
+title: Příklad Azure DMZ – vytvoření jednoduché DMZ pomocí skupin Nsg | Microsoft Docs
+description: Sestavení DMZ se skupinami zabezpečení sítě (NSG)
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: f8622b1d-c07d-4ea6-b41c-4ae98d998fff
 ms.service: virtual-network
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ed172d552e1e4c9ee27c58abcd7ad2d98df21579
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>Příklad 1 – Vytvoření jednoduché DMZ pomocí skupin Nsg classic PowerShell
 [Návrat na stránku osvědčené postupy zabezpečení hranic][HOME]
@@ -577,7 +577,7 @@ Uložte tento soubor xml s aktualizované umístění a přidat odkaz na tento s
 #### <a name="sample-application-scripts"></a>Ukázkové skripty aplikace
 Pokud chcete nainstalovat ukázkovou aplikaci pro toto a další příklady hraniční sítě, jednu bylo zadáno na následující odkaz: [ukázkový skript aplikace][SampleApp]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Aktualizace a uložte soubor XML
 * Spustit skript prostředí PowerShell k vytvoření prostředí
 * Instalace ukázkové aplikace

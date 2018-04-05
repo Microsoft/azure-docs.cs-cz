@@ -17,10 +17,10 @@ ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
 ms.openlocfilehash: af97f32736959f8ebf8f3c4fbca400d6b0c41f3e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Virtuální počítače zpřístupnit uživatelům Azure zásobníku
 Jako správce cloudu Azure zásobníku můžete vytvořit nabídky, které vaši uživatelé (někdy označované jako klienty) můžete přihlásit k odběru. Pomocí svého předplatného, mohou uživatelé pak využívání služeb Azure zásobníku.
@@ -113,7 +113,7 @@ Teď, když jste vytvořili nabídku, můžete ji otestovat. Přihlaste se jako 
    Nyní je můžete přihlásit k portálu jako uživatel k odběru na nabídku.
 
    a. Přihlaste se k portálu user portal jako uživatele a klikněte na tlačítko **získat předplatné**.
-   - Pro integrovaný systém adresa URL se liší v závislosti na vaší operátor oblast a název externí domény a bude v formátu https://portal.&lt;*oblast*&gt;.&lt;*FQDN*&gt;.
+   - Pro integrovaný systém, se liší v závislosti na vaší operátor oblast a název domény externí adresu URL a bude ve formátu https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
    - Pokud používáte Development Kit Azure zásobníku, portál adresa je https://portal.local.azurestack.external.
 
    ![Získat předplatné](media/azure-stack-subscribe-plan-provision-vm/image01.png)
@@ -131,7 +131,7 @@ Teď, když jste vytvořili nabídku, můžete ji otestovat. Přihlaste se jako 
    Nyní je můžete přihlásit k portálu jako uživatel ke zřízení virtuálního počítače pomocí předplatného. 
 
    a. Přihlaste se k portálu user portal jako uživatel.
-      - Pro integrovaný systém adresa URL se liší v závislosti na vaší operátor oblast a název externí domény a bude v formátu https://portal.&lt;*oblast*&gt;.&lt;*FQDN*&gt;.
+      - Pro integrovaný systém, se liší v závislosti na vaší operátor oblast a název domény externí adresu URL a bude ve formátu https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
    - Pokud používáte Development Kit Azure zásobníku, portál adresa je https://portal.local.azurestack.external.
 
    b.  Na řídicím panelu klikněte na tlačítko **nový** > **výpočetní** > **Windows Server 2016 Datacenter Eval**a pak klikněte na tlačítko **vytvořit**.

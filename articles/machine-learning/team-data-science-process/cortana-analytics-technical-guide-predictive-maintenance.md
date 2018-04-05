@@ -1,8 +1,8 @@
 ---
-title: "V letecký s Azure – technické příručce Cortana Intelligence řešení prediktivní údržby | Microsoft Docs"
-description: "Technické příručce k šabloně řešení s Microsoft Cortana Intelligence pro prediktivní údržby v letecký, nástrojů a Transport."
+title: V letecký s Azure – technické příručce Cortana Intelligence řešení prediktivní údržby | Microsoft Docs
+description: Technické příručce k šabloně řešení s Microsoft Cortana Intelligence pro prediktivní údržby v letecký, nástrojů a Transport.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
 ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technické příručce k šabloně Cortana Intelligence řešení pro prediktivní údržby v letecký a jiné firmy
 
@@ -57,7 +57,7 @@ Pokyny ke stažení a instalaci této aplikace, vyberete prvního uzlu generáto
 
 Aplikace generování událostí naplní centra událostí Azure pouze tehdy, když je prováděna v počítači.
 
-### <a name="azure-event-hub"></a>Centra událostí Azure
+### <a name="azure-event-hub"></a>Azure Event Hub
 [Centra událostí Azure](https://azure.microsoft.com/services/event-hubs/) příjemce vstup syntetické zdroj dat je služba.
 
 ## <a name="data-preparation-and-analysis"></a>Příprava dat a analýzy
@@ -85,7 +85,7 @@ Není pravděpodobné, že datovou sadu odpovídá datové sady používané [Tu
 
 Následující části popisují části šablony, které vyžadují změny, pokud je zavedená nová datová sada.
 
-### <a name="azure-event-hub"></a>Centra událostí Azure
+### <a name="azure-event-hub"></a>Azure Event Hub
 Azure Centrum událostí je obecný; data můžete publikované v centru ve formátu CSV nebo formátu JSON. Žádné speciální zpracování dojde v Centru událostí Azure, ale je důležité, abyste rozuměli tomu data, která je dodáni do ní.
 
 Tento dokument nepopisuje ingestovat data, ale můžete snadno odesílat události nebo data do centra událostí Azure pomocí rozhraní API centra událostí.
@@ -134,7 +134,7 @@ To [kanálu](../../data-factory/v1/data-factory-create-pipelines.md) obsahuje n�
 
 Aktivity, které jsou zahrnuty jsou:
 
-* [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) aktivity pomocí [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , která se spouští [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript k provádění agregací a konstruování potřebné pro [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experiment.
+* [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) aktivity pomocí [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , která se spouští [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript k provádění agregací a konstruování potřebné pro [počítače Azure Učení](https://azure.microsoft.com/services/machine-learning/) experiment.
   [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript pro toto rozdělení úloh je ***PrepareMLInput.hql***.
 * [Kopírování](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivity, která přemísťuje výsledků [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) aktivity na jednu [Azure Storage](https://azure.microsoft.com/services/storage/) blob přístup [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) aktivita.
 * [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) aktivity volání [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentu s výsledky umístit do jednoho [Azure Storage](https://azure.microsoft.com/services/storage/) objektů blob.
@@ -191,7 +191,7 @@ Následující kroky vás o tom, jak připojit soubor pbix k databázi SQL, kter
 3. (Volitelné) Publikovat k řídicímu neaktivní trase [Power BI online](http://www.powerbi.com/). Všimněte si, že tento krok vyžaduje účet Power BI (nebo účtu Office 365).
    
    * Klikněte na tlačítko **"Publikovat"** a později několik sekund zobrazí se okno zobrazení "Publikování Power BI úspěchu!" s zelená značka zaškrtnutí. Kliknutím na odkaz níže "Otevřete PredictiveMaintenanceAerospace.pbix v Power BI". Podrobné pokyny najdete v části [publikování z Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
-   * Chcete-li vytvořit nový řídicí panel: klikněte na tlačítko  **+**  přihlásit do **řídicí panely** část v levém podokně. Zadejte název "Prediktivní údržby ukázku" pro tento nový řídicí panel.
+   * Chcete-li vytvořit nový řídicí panel: klikněte na tlačítko **+** přihlásit do **řídicí panely** část v levém podokně. Zadejte název "Prediktivní údržby ukázku" pro tento nový řídicí panel.
    * Jakmile otevřete sestavu, klikněte na tlačítko ![ikonu PŘIPNUTÍ](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-pin.png) připnete všemi vizualizacemi na řídicí panel. Podrobné pokyny najdete v části [dlaždici připnout na řídicí panel Power BI ze sestavy](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
      Přejděte na stránku řídicího panelu a upravit velikost a umístění vaší vizualizace a upravit jejich názvy. Podrobné pokyny o tom, jak upravit dlaždice naleznete v tématu [Upravit vedle sebe - změny velikosti, přesunout, přejmenovat, kódu pin, odstranit, přidání hypertextového odkazu](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Zde je příklad řídicí panel s vizualizacemi některé neaktivní trase připnuli k němu.  V závislosti na tom, jak dlouho spustíte generátor vaše data může být vaše čísla na vizualizacemi jiný.
      <br/>

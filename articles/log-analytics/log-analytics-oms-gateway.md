@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/14/2018
 ms.author: magoedte
 ms.openlocfilehash: 66e5444f5346a44cfc8a43cf2b43dbaeacffedc9
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-oms-gateway"></a>Připojte počítače bez připojení k Internetu pomocí brány OMS
 Tento dokument popisuje, jak nakonfigurovat komunikaci s Azure Automation a analýzy protokolů pomocí brány OMS při přímo připojené počítače nebo Operations Manager monitorované počítače nemají přístup k Internetu. Brána OMS je předání HTTP proxy server, který podporuje protokol HTTP tunelové propojení pomocí příkazu HTTP připojit. Je-li shromažďovat data a odeslat do Azure Automation a analýzy protokolů jménem počítačů bez připojení k Internetu.  

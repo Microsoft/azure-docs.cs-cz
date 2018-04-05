@@ -1,12 +1,12 @@
 ---
-title: "Rozšíření Azure Diagnostics 1.3 a novější schéma konfigurace | Microsoft Docs"
-description: "Verze schématu 1.3 a novější Azure diagnostics dodávána jako součást Microsoft Azure SDK 2.4 a později."
+title: Rozšíření Azure Diagnostics 1.3 a novější schéma konfigurace | Microsoft Docs
+description: Verze schématu 1.3 a novější Azure diagnostics dodávána jako součást Microsoft Azure SDK 2.4 a později.
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
 ms.openlocfilehash: 02656c5bb4d2acd944f565d1397984ce94ced0bd
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1.3 a novější schéma konfigurace
 > [!NOTE]
@@ -396,7 +396,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**WadCfg**|Povinná hodnota. Na této stránce najdete v popisu jinde.|  
 |**StorageAccount**|Název účtu úložiště Azure pro ukládání dat v. Můžete také zadat jako parametr při spuštění rutiny Set-AzureServiceDiagnosticsExtension.|  
 |**StorageType**|Může být *tabulky*, *Blob*, nebo *TableAndBlob*. Tabulka je výchozí. Při výběru TableAndBlob diagnostická data se zapisují dvakrát – jednou pro každý typ.|  
-|**LocalResourceDirectory**|Adresář na virtuálním počítači, kde Monitoring Agent ukládá data události. Pokud ne, nastavit, používá výchozí adresář:<br /><br /> Pro roli pracovního procesu nebo webové:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Pro virtuální počítač:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Povinné atributy jsou:<br /><br /> - **cesta** -adresáři na serveru, který má být používána Azure Diagnostics.<br /><br /> - **expandEnvironment** -Určuje, zda jsou v názvu cesty rozbalit proměnné prostředí.|  
+|**LocalResourceDirectory**|Adresář na virtuálním počítači, kde Monitoring Agent ukládá data události. Pokud ne, nastavit, používá výchozí adresář:<br /><br /> Pro roli pracovního procesu nebo webové: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Pro virtuální počítač: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Povinné atributy jsou:<br /><br /> - **cesta** -adresáři na serveru, který má být používána Azure Diagnostics.<br /><br /> - **expandEnvironment** -Určuje, zda jsou v názvu cesty rozbalit proměnné prostředí.|  
 
 ## <a name="wadcfg-element"></a>WadCFG Element  
  *Strom: Root - DiagnosticsConfiguration - PublicConfig - WadCFG*
@@ -423,7 +423,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**Adresáře**|Na této stránce najdete v popisu jinde.|  
 |**EtwProviders**|Na této stránce najdete v popisu jinde.|  
 |**Metriky**|Na této stránce najdete v popisu jinde.|  
-|**Čítače výkonu**|Na této stránce najdete v popisu jinde.|  
+|**čítače výkonu**|Na této stránce najdete v popisu jinde.|  
 |**WindowsEventLog**|Na této stránce najdete v popisu jinde.| 
 |**DockerSources**|Na této stránce najdete v popisu jinde. | 
 
@@ -557,7 +557,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízený Element|Popis|  
 |-------------------|-----------------|  
-|**Zdroj dat**|Protokol událostí systému Windows ke shromažďování. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Příklad:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Ke shromažďování všech událostí, zadejte "*"|  
+|**zdroj dat**|Protokol událostí systému Windows ke shromažďování. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Příklad:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Ke shromažďování všech událostí, zadejte "*"|  
 
 
 
@@ -572,9 +572,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**celé číslo bez znaménka**|Volitelné. Určuje maximální množství úložiště systému souboru, který je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferLogLevelFilterr**|**řetězec**|Volitelné. Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí podle nejvíc minimálně informace) jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
+|**scheduledTransferLogLevelFilterr**|**Řetězec**|Volitelné. Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí podle nejvíc minimálně informace) jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
 |**scheduledTransferPeriod**|**Doba trvání**|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
-|**jímky** přidali v 1.5|**řetězec**|Volitelné. Bodů na jímka umístění a také posílat diagnostická data. Například Application Insights.|  
+|**jímky** přidali v 1.5|**Řetězec**|Volitelné. Bodů na jímka umístění a také posílat diagnostická data. Například Application Insights.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Stromu: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources kořen*
@@ -630,8 +630,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atributy|Typ|Popis|  
 |----------------|----------|-----------------|  
-|**logLevel**|**řetězec**|Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí podle nejvíc minimálně informace) jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
-|**name**|**řetězec**|Jedinečný název kanálu k odkazování na|  
+|**logLevel**|**Řetězec**|Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí podle nejvíc minimálně informace) jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
+|**name**|**Řetězec**|Jedinečný název kanálu k odkazování na|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig Element 

@@ -9,14 +9,14 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 05dc8ae48a9164e4f7118d378ab0eb7c30a4249e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-Při vytváření brány virtuální sítě musíte určit SKU brány, které chcete použít. Vyberte SKU, který splňuje vaše požadavky na základě typů úloh, propustnost, funkce a SLA.
+Při vytváření brány virtuální sítě musíte určit SKU brány, které chcete použít. Vyberte jednotku SKU, která splňuje vaše požadavky na základě typů úloh, propustnosti, funkcí a SLA.
 
-###  <a name="benchmark"></a>SKU brány tunelové propojení, připojení a propustnosti
+###  <a name="benchmark"></a>SKU brány podle tunelu, připojení a propustnosti
 
 [!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 

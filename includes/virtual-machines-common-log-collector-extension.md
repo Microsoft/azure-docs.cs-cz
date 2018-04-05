@@ -2,7 +2,7 @@
 Diagnostika problémů s cloudovou službou Microsoft Azure vyžaduje shromažďování souborů protokolů služby u virtuálních počítačů jako dojít k problémům. AzureLogCollector rozšíření na vyžádání můžete použít k provedení jednorázové shromažďování protokolů z jedné nebo více cloudové služby virtuálních počítačů (z webové role i role pracovního procesu) a přenosu shromážděných souborů na účet úložiště Azure – všechny bez vzdálené přihlášení k jakémukoli virtuálních počítačů.
 
 > [!NOTE]
-> Popisy pro většinu zaznamenané informace lze najít na http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.
+> Popisy pro většinu zaznamenané informace naleznete na adrese http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.
 > 
 > 
 
@@ -28,7 +28,7 @@ V obou režimech kolekce složky kolekcí další data lze pomocí kolekce násl
 * Máte účet úložiště pro rozšíření, které chcete ukládat soubory generované zip.
 * Použijte rutiny Azure PowerShell v0.8.0 nebo vyšší. Další informace najdete v tématu [Azure stáhne](https://azure.microsoft.com/downloads/).
 
-## <a name="add-the-extension"></a>Přidejte rozšíření
+## <a name="add-the-extension"></a>Přidání rozšíření
 Můžete použít [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) rutiny nebo [rozhraní API REST pro správu služby](https://msdn.microsoft.com/library/ee460799.aspx) přidat AzureLogCollector rozšíření.
 
 Pro cloudové služby, existující rutiny Azure Powershellu **Set-AzureServiceExtension**, slouží k povolení rozšíření u instancí role cloudové služby. Pokaždé, když je toto rozšíření povolené prostřednictvím této rutiny, aktivuje se v instancích vybranou roli v systému vybrané role shromáždění protokolů.
@@ -124,7 +124,7 @@ Můžete provést jednu z dvě následující kroky k přidání AzureLogCollect
   $StorageAccountKey  = 'YourStorageAccountKey'
   ```
 
-5. Volání SetAzureServiceLogCollector.ps1 (zahrnutá na konci tohoto článku) následujícím způsobem povolit rozšíření AzureLogCollector pro cloudové služby. Po dokončení provádění můžete najít nahrávaný soubor v části`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+5. Volání SetAzureServiceLogCollector.ps1 (zahrnutá na konci tohoto článku) následujícím způsobem povolit rozšíření AzureLogCollector pro cloudové služby. Po dokončení provádění můžete najít nahrávaný soubor v části `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
   ```powershell
   .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
@@ -216,7 +216,7 @@ Postupujte podle pokynů k připojení k vašemu předplatnému Azure PowerShell
   $StorageAccountKey  = 'YourStorageAccountKey'
   ```
 
-3. Volání SetAzureVMLogCollector.ps1 (zahrnutá na konci tohoto článku) následujícím způsobem povolit rozšíření AzureLogCollector pro cloudové služby. Po dokončení provádění můžete najít nahrávaný soubor v části`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+3. Volání SetAzureVMLogCollector.ps1 (zahrnutá na konci tohoto článku) následujícím způsobem povolit rozšíření AzureLogCollector pro cloudové služby. Po dokončení provádění můžete najít nahrávaný soubor v části `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
 Zde je definice parametry předané do skriptu. (To je zkopírovat níže také.)
 

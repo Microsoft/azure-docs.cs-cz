@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.openlocfilehash: 7973f4311095b7c87ccd2394b048ec92c50f32a9
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s webovou aplikaci v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled

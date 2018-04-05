@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: larryfr
 ms.openlocfilehash: bc8078a1681b8977a0748f633df02beb2f2bdc8a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů
 

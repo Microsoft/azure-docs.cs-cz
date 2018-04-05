@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Hightail | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Hightail."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Hightail.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
 ms.openlocfilehash: 2333a56cd9369cb66c4944304472462d2f2f7511
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Kurz: Azure Active Directory integrace s Hightail
 
@@ -110,7 +110,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_url.png)
 
-     V **adresa URL odpovědi** textovému poli, zadejte adresu URL jako:`https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
+     V **adresa URL odpovědi** textovému poli, zadejte adresu URL jako: `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
 
     > [!NOTE] 
     > Předchozí hodnota není skutečné hodnoty. Hodnota bude aktualizován skutečná adresa URL odpovědi, který je vysvětlen později v tomto kurzu.
@@ -121,7 +121,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. Klikněte **zobrazit upřesňující nastavení adresy URL**.
 
-    b. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako:`https://www.hightail.com/loginSSO`
+    b. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako: `https://www.hightail.com/loginSSO`
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 
@@ -135,10 +135,10 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |
-    | FirstName | User.givenName |
-    | Příjmení | User.Surname |
-    | E-mail | User.Mail |    
-    | Identity uživatele | User.Mail |
+    | FirstName | user.givenname |
+    | LastName | user.surname |
+    | Email | user.mail |    
+    | Identity uživatele | user.mail |
     
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -231,7 +231,7 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
 Cílem této části je vytvoření uživatele v Hightail nazývá Britta Simon. 
 
-Neexistuje žádná položka akce pro vás v této části. Hightail podporuje zřizování uživatelů za běhu v závislosti na vlastní deklarace. Pokud jste nakonfigurovali vlastní deklarace identity, jak je uvedeno v části  **[konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  vyšší, se automaticky vytvoří uživatele v aplikaci ještě neexistuje. 
+Neexistuje žádná položka akce pro vás v této části. Hightail podporuje zřizování uživatelů za běhu v závislosti na vlastní deklarace. Pokud jste nakonfigurovali vlastní deklarace identity, jak je uvedeno v části **[konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** vyšší, se automaticky vytvoří uživatele v aplikaci ještě neexistuje. 
 
 >[!NOTE]
 >Pokud potřebujete ručně vytvořit uživatele, budete muset kontaktovat [tým podpory Hightail](mailto:support@hightail.com). 
@@ -273,7 +273,7 @@ Cílem této části je Azure AD jeden přihlašování konfigurace pomocí př�
 Když kliknete na dlaždici Hightail na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Hightail.
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

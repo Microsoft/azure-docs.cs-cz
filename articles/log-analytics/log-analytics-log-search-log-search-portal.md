@@ -1,11 +1,11 @@
 ---
-title: "Pomocí portálu hledání protokolů v Azure Log Analytics | Microsoft Docs"
-description: "Tento článek obsahuje kurz, který popisuje, jak vytvořit protokolu hledání a analyzovat data uložená v pracovním prostoru analýzy protokolů pomocí portálu hledání protokolů.  Tento kurz zahrnuje spuštění několika jednoduchých dotazů, které vrátí různé typy dat, a analýzu výsledků."
+title: Pomocí portálu hledání protokolů v Azure Log Analytics | Microsoft Docs
+description: Tento článek obsahuje kurz, který popisuje, jak vytvořit protokolu hledání a analyzovat data uložená v pracovním prostoru analýzy protokolů pomocí portálu hledání protokolů.  Tento kurz zahrnuje spuštění několika jednoduchých dotazů, které vrátí různé typy dat, a analýzu výsledků.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/19/2018
 ms.author: bwren
 ms.openlocfilehash: 37213012e817f0fae21a47a4334a519bbbca206b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Vytvoření protokolu hledání v Azure Log Analytics pomocí portálu hledání protokolů
 
@@ -63,7 +63,7 @@ Data se vrátí ve výchozím zobrazení seznamu a zobrazí se celkový počet v
 
 Zobrazí se pouze několik prvních vlastností každého záznamu.  Kliknutím na **zobrazit více** zobrazíte všechny vlastnosti konkrétního záznamu.
 
-![Podrobnosti záznamu](media/log-analytics-log-search-log-search-portal/log-search-portal-02.png)
+![Podrobnosti o záznamu](media/log-analytics-log-search-log-search-portal/log-search-portal-02.png)
 
 ## <a name="set-the-time-scope"></a>Nastavit obor čas
 Každý záznam shromažďují analýzy protokolů má **TimeGenerated** vlastnost, která obsahuje datum a čas, který byl vytvořen záznam.  Dotaz na portálu hledání protokolů pouze vrátí záznamy s **TimeGenerated** v rámci oboru čas, který se zobrazí na levé straně obrazovky.  

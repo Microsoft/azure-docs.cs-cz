@@ -1,18 +1,18 @@
 ---
-title: "Reaktivní události Azure Blob Storage | Microsoft Docs"
-description: "Přihlásit k odběru událostí úložiště objektů Blob pomocí Azure událostí mřížky."
+title: Reaktivní události Azure Blob Storage | Microsoft Docs
+description: Přihlásit k odběru událostí úložiště objektů Blob pomocí Azure událostí mřížky.
 services: storage,event-grid
-keywords: 
+keywords: ''
 author: cbrooksmsft
 ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: ea2ec712c8d8b5f85f020535ab0544986f0da53a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktivní události úložiště objektů Blob
 
@@ -48,7 +48,7 @@ Další informace o použití vlastností události mřížky událostí je pops
 > |ID|řetězec|Jedinečný identifikátor, pokud událost|
 > |dataVersion|řetězec|Verze schématu datového objektu.|
 > |metadataVersion|řetězec|Verze schématu vlastností nejvyšší úrovně.|
-> |data|Objekt|Kolekce dat události specifické pro úložiště objektů blob|
+> |data|objekt|Kolekce dat události specifické pro úložiště objektů blob|
 > |data.contentType|řetězec|Typ obsahu objektu blob, jako by vrácená v hlavičce Content-Type z objektu blob|
 > |data.contentLength|číslo|Velikost objektu blob jako celé číslo představující počet bajtů, jako by vrácená v hlavičce Content-Length z objektu blob.  Odeslat s BlobCreated událostí, ale ne při BlobDeleted.|
 > |data.url|řetězec|Adresa url objektu, který je předmětem události|
@@ -57,7 +57,7 @@ Další informace o použití vlastností události mřížky událostí je pops
 > |data.sequencer|řetězec|Hodnotu neprůhledný řetězec představující logické posloupnost událostí pro libovolný název konkrétní objekt blob.  Uživatelé mohou používat standardní řetězec porovnání pochopit relativní pořadí dvou událostí na stejný název objektu blob.|
 > |data.requestId|řetězec|Id žádosti generované služby pro operace úložiště rozhraní API.  Můžete použít ke korelaci do služby Azure Storage diagnostických protokolů pomocí pole "hlavička požadavku id" v protokolech a je vrácena z inicializaci volání rozhraní API v hlavičce "x-ms-request-id". V tématu [formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format).|
 > |data.clientRequestId|řetězec|Id žádosti zadaný klienta pro ukládání operace rozhraní API.  Můžete použít ke korelaci do diagnostickým protokolům Azure Storage pomocí pole "client-request-id" v protokolech a lze zadat do požadavků klientů pomocí hlavičku "x-ms-client-request-id". V tématu [formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format).|
-> |data.storageDiagnostics|Objekt|Diagnostická data příležitostně zahrnuté ve službě Azure Storage.  Pokud jsou k dispozici, třeba ji ignorovat příjemci událostí.|
+> |data.storageDiagnostics|objekt|Diagnostická data příležitostně zahrnuté ve službě Azure Storage.  Pokud jsou k dispozici, třeba ji ignorovat příjemci událostí.|
 |data.blobType|řetězec|Typ objektu blob. Platné hodnoty jsou "BlockBlob" nebo "PageBlob".| 
 
 Tady je příklad BlobCreated události:

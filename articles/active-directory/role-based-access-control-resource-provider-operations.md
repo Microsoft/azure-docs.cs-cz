@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 03/06/2018
 ms.author: rolyon
 ms.openlocfilehash: 0b8c8823c6d21df96dcfd926db1855169f1570e4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace v Azure Resource Manager poskytovatele prostředků
 

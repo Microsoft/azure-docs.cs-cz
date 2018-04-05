@@ -9,10 +9,10 @@ ms.date: 03/09/2018
 ms.author: cynthn;davberg
 ms.custom: include file
 ms.openlocfilehash: fde43e40a7a5bb87b9e63af47ae795616fac8b3f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 Koncept z Azure výpočetní jednotky (ACU) poskytuje způsob porovnání výkonu výpočetní (CPU) napříč Azure SKU. To vám umožní snadno zjistit, jaká jednotka SKU nejlépe vyhoví vašim požadavkům na výkon.  Jednotka ACU je aktuálně stanovená tak, že malý virtuální počítač (Standard_A1) má 100 ACU a ostatní jednotky SKU jsou pak ohodnoceny podle relativního výsledku standardního srovnávacího testu. 
 

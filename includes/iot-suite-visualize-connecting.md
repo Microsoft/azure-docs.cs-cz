@@ -26,7 +26,7 @@ Chcete-li volat metody na zařízení, použijte **zařízení** stránky v ře�
 
 1. Chcete-li zobrazit seznam metod, můžete volat na vašem zařízení, zvolte **plán**. Při plánování metodu pro spuštění na několika zařízeních, můžete vybrat více zařízení v seznamu. **Plán** panelu zobrazí požadované typy metoda společné pro všechny vámi vybraná zařízení.
 
-1. Zvolte **FirmwareUpdate**, nastavte název úlohy na **UpdatePhysicalChiller**. Nastavit **verzi firmwaru** k **2.0.0**, nastavte **Firmware URI** k **http://contoso.com/updates/firmware.bin**a potom zvolte  **Použít**:
+1. Zvolte **FirmwareUpdate**, nastavte název úlohy na **UpdatePhysicalChiller**. Nastavit **verzi firmwaru** k **2.0.0**, nastavte **Firmware URI** k **http://contoso.com/updates/firmware.bin**a potom zvolte **použít**:
 
     ![Plán aktualizace firmwaru](media/iot-suite-visualize-connecting/deviceschedule.png)
 

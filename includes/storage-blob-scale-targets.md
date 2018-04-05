@@ -1,4 +1,4 @@
-| Prostředek | cíl |
+| Prostředek | Cíl |
 |----------|---------------|
 | Maximální velikost jediného objektu blob kontejneru | 500 TiB |
 | Maximální počet bloků v objekt blob bloku nebo přidávání objektů blob | 50 000 bloků |

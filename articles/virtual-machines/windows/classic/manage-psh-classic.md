@@ -1,11 +1,11 @@
 ---
-title: "Správa virtuálních počítačů pomocí Azure PowerShell | Microsoft Docs"
-description: "Další příkazy, které můžete použít k automatizaci úloh v správu virtuálních počítačů."
+title: Správa virtuálních počítačů pomocí Azure PowerShell | Microsoft Docs
+description: Další příkazy, které můžete použít k automatizaci úloh v správu virtuálních počítačů.
 services: virtual-machines-windows
 documentationcenter: windows
 author: singhkays
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: 7cdf9bd3-6578-4069-8a95-e8585f04a394
@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
 ms.openlocfilehash: 88ab031778957f20dd42955c2c1311d731e2f588
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-your-virtual-machines-by-using-azure-powershell"></a>Správa virtuálních počítačů pomocí Azure PowerShellu
 > [!IMPORTANT] 

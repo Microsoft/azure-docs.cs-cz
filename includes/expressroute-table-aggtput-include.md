@@ -9,10 +9,10 @@ ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 2b8491220ec0050605cb503133e916369f0c61b1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 |  | **Megabity za sekundu** | **Pakety za sekundu.** | **Připojení za sekundu** | **Brána sítě VPN a ExpressRoute vedle sebe** |
 | --- | --- | --- | --- | --- |

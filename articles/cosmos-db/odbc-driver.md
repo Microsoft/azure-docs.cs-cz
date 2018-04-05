@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: mimig
 ms.openlocfilehash: 445acafeef67027712826f644afaa1784569b30d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojte se k databázi Cosmos Azure pomocí nástrojů BI analýzy pomocí ovladače ODBC
 
@@ -192,7 +192,7 @@ Nové DSN můžete použít pro připojení k žádné kompatibilní s rozhraní
 8. V Power BI Desktop vkládá zcela vlevo, vyberte kartu dat ![Karta data v Power BI Desktop](./media/odbc-driver/odbc-driver-data-tab.png) Potvrďte vaše data byla importována.
 9. Nyní můžete vytvořit vizuální prvky používající Power BI kliknutím na kartu sestavy ![kartu sestavy v Power BI Desktop](./media/odbc-driver/odbc-driver-report-tab.png), kliknete na příkaz **nové Visual**a pak přizpůsobení dlaždice. Další informace o vytváření vizualizací v Power BI Desktop najdete v tématu [typů vizualizace v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se zobrazí následující chyba, zkontrolujte **hostitele** a **přístupový klíč** hodnoty, které jste zkopírovali na portálu Azure v [kroku 2](#connect) jsou správné a opakujte. Pomocí tlačítek kopírovat na pravé straně **hostitele** a **přístupový klíč** hodnoty v portálu Azure a Kopírovat bez hodnoty chyb.
 

@@ -1,11 +1,11 @@
 ---
-title: "Problém konfigurace hesla jednotné přihlašování pro aplikace bez Galerie | Microsoft Docs"
-description: "Pochopení tučné osoby běžné problémy při konfiguraci hesla jednotné přihlašování pro vlastní aplikace bez galerie, které nejsou uvedené v galerii aplikací Azure AD"
+title: Problém konfigurace hesla jednotné přihlašování pro aplikace bez Galerie | Microsoft Docs
+description: Pochopení tučné osoby běžné problémy při konfiguraci hesla jednotné přihlašování pro vlastní aplikace bez galerie, které nejsou uvedené v galerii aplikací Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: e5c8562b89b70236d9d65a5f8765ae386d6831b4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problém konfigurace hesla jednotné přihlašování pro aplikace bez Galerie
 
@@ -249,7 +249,7 @@ Níže se dozvíte více co každý oznámení položky znamená a jsou uvedeny 
 
 -   **Podrobnosti o** – podrobný popis co došlo k chybě v důsledku operaci
 
-    -   Příklad – **interní adresa url, http://bing.com/' je neplatná, protože je již používán**
+    -   Příklad – **interní adresa url sehttp://bing.com/' je neplatný, protože je již používán**
 
 -   **Chyba při kopírování** – klikněte na tlačítko **ikona kopírování** napravo od **Chyba kopírování** textbox zkopírovat všechny podrobnosti oznámení sdílet s skupiny pracovník podpory nebo produkt
 

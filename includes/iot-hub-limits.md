@@ -16,6 +16,7 @@ Následující tabulka uvádí omezení, která se vztahují na prostředky slu�
 | --- | --- |
 | Maximální počet placených služeb IoT Hub na předplatné Azure |10 |
 | Maximální počet bezplatných služeb IoT Hub na předplatné Azure |1 |
+| Maximální počet znaků v Id zařízení | 128 |
 | Maximální počet identit zařízení<br/> vrácených v jednom volání |1000 |
 | Maximální doba uchování zpráv typu zařízení-cloud ve službě IoT Hub |7 dní |
 | Maximální velikost zprávy typu zařízení-cloud |256 kB |

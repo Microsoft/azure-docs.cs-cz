@@ -1,8 +1,8 @@
 ---
-title: "Použití akce skriptu k instalaci Solr na HDInsight se systémem Linux - Azure | Microsoft Docs"
-description: "Zjistěte, jak nainstalovat Solr na systémem Linux HDInsight Hadoop clustery pomocí akcí skriptů."
+title: Použití akce skriptu k instalaci Solr na HDInsight se systémem Linux - Azure | Microsoft Docs
+description: Zjistěte, jak nainstalovat Solr na systémem Linux HDInsight Hadoop clustery pomocí akcí skriptů.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.openlocfilehash: f642a1f8060f566ec95b23995d0f82191b0c5315
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Na nainstalovat a používat Solr clusterů systému HDInsight Hadoop
 
@@ -39,7 +39,7 @@ Informace o instalaci Solr v Azure HDInsight pomocí akce skriptu. Solr je platf
 > [!WARNING]
 > Microsoft podporuje součásti, které jsou součástí clusteru HDInsight.
 >
-> Vlastní komponenty, například Solr, přijímat vyvineme podporu o pomoci při další řešení problému. Podporu společnosti Microsoft nemusí být schopni vyřešit problémy s vlastními komponentami. Budete muset zaujmout komunit s otevřeným zdrojem o pomoc. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [http://apache.org](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
+> Vlastní komponenty, například Solr, přijímat vyvineme podporu o pomoci při další řešení problému. Podporu společnosti Microsoft nemusí být schopni vyřešit problémy s vlastními komponentami. Budete muset zaujmout komunit s otevřeným zdrojem o pomoc. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
 
 ## <a name="what-the-script-does"></a>Funkci skriptu
 
@@ -61,7 +61,7 @@ Chcete-li vytvořit cluster, který má nainstalovaný Solr, použijte postup v 
 1. Z __clusteru Souhrn__ část, select__Advanced settings__, pak __skript akce__. K naplnění formuláře použijte následující informace:
 
    * **NÁZEV**: Zadejte popisný název akce skriptu.
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
+   * **IDENTIFIKÁTOR URI SKRIPTU**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
    * **HEAD**: zaškrtnete tuto možnost,
    * **PRACOVNÍ**: zaškrtnete tuto možnost,
    * **ZOOKEEPER**: zaškrtnete tuto možnost, chcete-li nainstalovat na uzlu Zookeeper
@@ -116,7 +116,7 @@ Pomocí následujícího postupu můžete přidat do Solr příklad a pak zadat 
     curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
     ```
 
-    Tento příkaz vyhledá **collection1** pro všechny dokumenty odpovídající  **\*:\***  (kódovaná jako \*% 3A\* v řetězci dotazu). V následujícím dokumentu JSON je příklad odpovědi:
+    Tento příkaz vyhledá **collection1** pro všechny dokumenty odpovídající **\*:\*** (kódovaná jako \*% 3A\* v řetězci dotazu). V následujícím dokumentu JSON je příklad odpovědi:
 
             "response": {
                 "numFound": 2,
@@ -194,7 +194,7 @@ Po vytvoření tunelu SSH pomocí řídicího panelu Solr pomocí následující
 
         Hodnota vrácená, uložte, protože se později používá.
 
-2. V prohlížeči se připojte k **http://HOSTNAME:8983/solr / #/**, kde **HOSTNAME** je název, který jste nadefinovali v předchozím kroku.
+2. V prohlížeči se připojte k **http://HOSTNAME:8983/solr/#/**, kde **HOSTNAME** je název, který jste nadefinovali v předchozím kroku.
 
     Požadavek je směrován prostřednictvím tunelu SSH k Solr webového uživatelského rozhraní v clusteru. Podobně jako na následujícím obrázku se zobrazí stránce:
 
@@ -319,7 +319,7 @@ Solr data zálohovat na výchozí úložiště pro váš cluster pomocí násled
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-Další informace o práci s Solr zálohování a obnovení najdete v tématu [https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
+Další informace o práci s Solr zálohování a obnovení najdete v tématu [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
 
 ## <a name="next-steps"></a>Další postup
 

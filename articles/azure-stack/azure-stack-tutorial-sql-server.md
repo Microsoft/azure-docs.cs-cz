@@ -17,10 +17,10 @@ ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
 ms.openlocfilehash: f8d2dd65d9d427872fe78508ed0bcc61e644fdb0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Databáze SQL zpřístupnit uživatelům Azure zásobníku
 Jako správce cloudu Azure zásobníku, můžete vytvořit nabídky, které uživatelům vytvoření databáze SQL, které můžete použít s jejich nativní cloudové aplikace, weby a úlohami (klienty). Tím, že tyto databáze vlastní, na vyžádání, založené na cloudu poskytuje uživatelům, můžete je uložit čas a prostředky. Pokud chcete nastavit tuto možnost, bude takto:

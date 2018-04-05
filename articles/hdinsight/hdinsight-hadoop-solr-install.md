@@ -1,8 +1,8 @@
 ---
-title: "Použití akce skriptu k instalaci Solr na clusteru Hadoop - Azure | Microsoft Docs"
-description: "Zjistěte, jak přizpůsobit clusteru HDInsight pomocí Solr pomocí akce skriptu."
+title: Použití akce skriptu k instalaci Solr na clusteru Hadoop - Azure | Microsoft Docs
+description: Zjistěte, jak přizpůsobit clusteru HDInsight pomocí Solr pomocí akce skriptu.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: 6efb7ea26c3cdf7748fff4b02b5810c85cc41e1a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Nainstalovat a používat Solr v clusterech HDInsight se systémem Windows
 
@@ -30,7 +30,7 @@ Zjistěte, jak přizpůsobit clusteru HDInsight se systémem Windows s Solr pomo
 > Kroky v tomto dokumentu pracovat pouze s clustery HDInsight se systémem Windows. HDInsight je k dispozici pouze v systému Windows verze nižší než HDInsight 3.4. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o používání Solr s clusteru se systémem Linux najdete v tématu [instalací a použitím Solr na clusterů systému HDinsight Hadoop (Linux)](hdinsight-hadoop-solr-install-linux.md).
 
 
-Solr můžete nainstalovat na libovolný typ clusteru (Hadoop, Spark, HBase, Storm) v Azure HDInsight pomocí *akce skriptu*. Ukázkový skript pro instalaci Solr v clusteru HDInsight je k dispozici z objektu blob úložiště Azure jen pro čtení v [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+Solr můžete nainstalovat na libovolný typ clusteru (Hadoop, Spark, HBase, Storm) v Azure HDInsight pomocí *akce skriptu*. Ukázkový skript pro instalaci Solr v clusteru HDInsight je k dispozici z objektu blob úložiště Azure jen pro čtení v [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
 
 Ukázkový skript pracuje pouze s verze clusteru HDInsight verze 3.1. Další informace o verzích clusterů HDInsight, naleznete v části [verze clusteru HDInsight](hdinsight-component-versioning.md).
 
@@ -54,7 +54,7 @@ Ukázkový skript použitým v tomto tématu vytvoří cluster se systémem Wind
 
     <table border='1'>
         <tr><th>Vlastnost</th><th>Hodnota</th></tr>
-        <tr><td>Name (Název)</td>
+        <tr><td>Název</td>
             <td>Zadejte název akce skriptu. Například <b>nainstalovat Solr</b>.</td></tr>
         <tr><td>Identifikátor URI skriptu</td>
             <td>Zadejte identifikátoru URI (Uniform Resource) do skriptu, která je volána, chcete-li přizpůsobit clusteru. Například <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
@@ -83,7 +83,7 @@ Musí začínat indexování Solr s některých datových souborů. Solr potom m
         Time spent: 0:00:01.624
 
     Nástroj post.jar indexuje Solr s dva ukázkové dokumenty **solr.xml** a **monitor.xml**. Nástroj post.jar a ukázkové dokumenty jsou dostupné s Solr instalace.
-3. **Solr řídicí panel můžete použít pro vyhledávání v rámci indexované dokumenty**. V této relaci RDP ke clusteru HDInsight, otevřete Internet Explorer a spusťte Solr řídicí panel v **http://headnodehost:8983/solr / #/**. V levém podokně z **základní selektor** rozevíracího seznamu, vyberte **collection1**a v rámci, klikněte na tlačítko **dotazu**. Jako příklad vyberte a vrátí všechny dokumenty v Solr, zadejte následující hodnoty:
+3. **Solr řídicí panel můžete použít pro vyhledávání v rámci indexované dokumenty**. V této relaci RDP ke clusteru HDInsight, otevřete Internet Explorer a spusťte Solr řídicí panel v **http://headnodehost:8983/solr/#/**. V levém podokně z **základní selektor** rozevíracího seznamu, vyberte **collection1**a v rámci, klikněte na tlačítko **dotazu**. Jako příklad vyberte a vrátí všechny dokumenty v Solr, zadejte následující hodnoty:
 
    * V **q** textové pole, zadejte  **\*:**\*. Tato možnost vrátí všechny dokumenty, které jsou uloženy ve Solr. Pokud chcete vyhledat konkrétní řetězec v rámci dokumenty, můžete zadat sem tento řetězec.
    * V **wt** textové pole, vyberte formát výstupu. Výchozí hodnota je **json**. Klikněte na tlačítko **spuštění dotazu**.
@@ -159,7 +159,7 @@ Musí začínat indexování Solr s některých datových souborů. Solr potom m
              </lst>
              <str name="status">OK</str>
            </response>
-   2. V této relaci vzdálené přejděte na {SOLR_HOME}\{kolekce} \data. Pro cluster vytvořené prostřednictvím ukázkový skript, měl by být **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**. V tomto umístění, měli byste vidět do složky snímku vytvořen s názvem podobná  **snímku.* časové razítko***.
+   2. V této relaci vzdálené přejděte na {SOLR_HOME}\{kolekce} \data. Pro cluster vytvořené prostřednictvím ukázkový skript, měl by být **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**. V tomto umístění, měli byste vidět do složky snímku vytvořen s názvem podobná **snímku.* časové razítko ***.
    3. ZIP složky snímků a nahrajte ho do úložiště objektů Blob Azure. Z příkazového řádku Hadoop přejděte do umístění složky snímků pomocí následujícího příkazu:
 
              hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
@@ -167,12 +167,12 @@ Musí začínat indexování Solr s některých datových souborů. Solr potom m
        Tento příkaz zkopíruje snímku do /example/data nebo v kontejneru v rámci výchozí účet úložiště, které jsou přidruženy ke clusteru.
 
 ## <a name="install-solr-using-aure-powershell"></a>Nainstalujte Solr pomocí prostředí Azure PowerShell
-V tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  Ukázka ukazuje, jak nainstalovat Spark pomocí Azure PowerShell. Je nutné přizpůsobit skript, který chcete použít [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+V tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  Ukázka ukazuje, jak nainstalovat Spark pomocí Azure PowerShell. Je nutné přizpůsobit skript, který chcete použít [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
 
 ## <a name="install-solr-using-net-sdk"></a>Nainstalujte Solr pomocí sady .NET SDK
-V tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). Ukázka ukazuje, jak nainstalovat Spark pomocí sady .NET SDK. Je nutné přizpůsobit skript, který chcete použít [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+V tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). Ukázka ukazuje, jak nainstalovat Spark pomocí sady .NET SDK. Je nutné přizpůsobit skript, který chcete použít [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Na nainstalovat a používat Solr clusterů systému HDinsight Hadoop (Linux)](hdinsight-hadoop-solr-install-linux.md)
 * [Vytvoření clusterů systému Hadoop v HDInsight](hdinsight-provision-clusters.md): Obecné informace o vytváření clusterů HDInsight.
 * [Přizpůsobení clusteru HDInsight pomocí akce skriptu][hdinsight-cluster-customize]: Obecné informace o přizpůsobení clusterů HDInsight pomocí akce skriptu.

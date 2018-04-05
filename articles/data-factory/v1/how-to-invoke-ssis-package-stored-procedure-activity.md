@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/19/2018
 ms.author: jingwang
 ms.openlocfilehash: 309a64c47eb95ca2ca05bb82bc1c41256305823d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Vyvolání balíčku služby SSIS pomocí aktivity uložené procedury v Azure Data Factory
 Tento článek popisuje, jak má být vyvolán balíčku služby SSIS z kanál služby Azure Data Factory pomocí aktivity uložené procedury. 

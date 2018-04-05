@@ -1,12 +1,12 @@
 ---
-title: "Řady StorSimple 8000 jako cíl zálohování s Veeam | Microsoft Docs"
-description: "Popisuje konfiguraci cíl zálohy zařízení StorSimple s Veeam."
+title: Řady StorSimple 8000 jako cíl zálohování s Veeam | Microsoft Docs
+description: Popisuje konfiguraci cíl zálohy zařízení StorSimple s Veeam.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: harshakirank
 manager: matd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
 ms.openlocfilehash: cc1c7a3f77af76c451bb6e97a081a01c119333b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple jako cíl zálohování s Veeam
 
@@ -93,17 +93,17 @@ Následující tabulky popisují počáteční pokyny modelu architektura zaří
 
 | Kapacita úložiště | 8100 | 8600 |
 |---|---|---|
-| Místní úložiště kapacity | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Kapacita cloudového úložiště | &gt;200 TiB\* | &gt;500 TiB\* |
+| Místní úložiště kapacity | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Kapacita cloudového úložiště | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Velikost úložiště předpokládá bez odstranění duplicitních dat nebo kompresi.
+\* Velikost úložiště předpokládá bez odstranění duplicitních dat nebo kompresi.
 
 **StorSimple kapacity pro primární a sekundární zálohování**
 
 | Zálohování scénář  | Místní úložiště kapacity  | Kapacita cloudového úložiště  |
 |---|---|---|
 | Primární zálohu  | Nedávné zálohy uložený v místním úložišti pro rychlé obnovení ke splnění plánovaného bodu obnovení (RPO) | Historie zálohování (RPO) se vejde kapacity cloudu |
-| Sekundární zálohování | Sekundární kopii zálohovaných dat mohou být uloženy ve kapacity cloudu  | Není k dispozici  |
+| Sekundární zálohování | Sekundární kopii zálohovaných dat mohou být uloženy ve kapacity cloudu  | neuvedeno  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako primární cíl zálohování
 
@@ -150,7 +150,7 @@ Je důležité velikost svazku vysoce výkonné, tak, aby ji může zpracovat po
 2.  Agenta zálohování přijímá data ze zálohování serveru.
 3.  Záložní server dokončí úlohu obnovení.
 
-## <a name="deploy-the-solution"></a>Nasazení řešení.
+## <a name="deploy-the-solution"></a>Nasazení řešení
 
 Nasazení řešení vyžaduje tři kroky:
 
@@ -264,7 +264,7 @@ Podle předchozích předpokladů, vytvořit 26-TiB StorSimple vrstvené svazek 
 | Roční úplné | 1  | 10 | 10 |
 | Požadavek GFS |   | 38 |   |
 | Další kvóty  | 4  |   | 42 celkový požadavek GFS  |
-\*Násobitel GFS je počet kopií, které potřebujete k ochraně a zachovat podle požadavků vaší zásady zálohování.
+\* Násobitel GFS je počet kopií, které potřebujete k ochraně a zachovat podle požadavků vaší zásady zálohování.
 
 ## <a name="set-up-veeam-storage"></a>Nastavení úložiště Veeam
 
@@ -274,11 +274,11 @@ Podle předchozích předpokladů, vytvořit 26-TiB StorSimple vrstvené svazek 
 
     ![Konzola pro správu Veeam, stránka úložiště zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  V **nového úložiště zálohování** dialogovém okně zadejte název a popis pro úložiště. Vyberte **Další**.
+2.  V **nového úložiště zálohování** dialogovém okně zadejte název a popis pro úložiště. Vyberte **Next** (Další).
 
     ![Veeam správy konzoly, název a popis stránky](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  Pro typ, vyberte **Microsoft Windows server**. Vyberte server, Veeam. Vyberte **Další**.
+3.  Pro typ, vyberte **Microsoft Windows server**. Vyberte server, Veeam. Vyberte **Next** (Další).
 
     ![Konzola pro správu Veeam, vyberte typ úložiště zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
@@ -291,7 +291,7 @@ Podle předchozích předpokladů, vytvořit 26-TiB StorSimple vrstvené svazek 
 
     ![Konzola pro správu Veeam, nastavení kompatibility úložiště](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  V **nového úložiště zálohování** dialogové okno, vyberte **povolte službu vPower systému souborů NFS na server připojit (doporučeno)** zaškrtávací políčko. Vyberte **Další**.
+6.  V **nového úložiště zálohování** dialogové okno, vyberte **povolte službu vPower systému souborů NFS na server připojit (doporučeno)** zaškrtávací políčko. Vyberte **Next** (Další).
 
     ![Konzola pro správu Veeam, stránka úložiště zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
@@ -383,7 +383,7 @@ Následující tabulka ukazuje, jak nastavení zálohování ke spuštění na m
 | Měsíční úplné |StorSimple disku (dlouhodobé) | 1 | 12 | 12 |
 | Roční úplné |StorSimple disku (dlouhodobé) | 1 | 1 | 1 |
 |Požadavek na velikost svazků GFS |  |  |  | 18*|
-\*Celkové kapacity zahrnuje 17 TiB StorSimple disky a 1 TiB místní svazek RAID.
+\* Celkové kapacity zahrnuje 17 TiB StorSimple disky a 1 TiB místní svazek RAID.
 
 
 ### <a name="gfs-example-schedule"></a>Plán příklad GFS
@@ -513,7 +513,7 @@ Pro tento článek se odkazuje v následujících dokumentech:
 - [Pomocí GPT jednotky](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Nastavení stínových kopií pro sdílené složky](http://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o tom, jak [obnovení ze zálohovacího skladu](storsimple-restore-from-backup-set-u2.md).
 - Další informace o tom, jak provést [zařízení převzetí služeb při selhání a zotavení po havárii](storsimple-device-failover-disaster-recovery.md).
