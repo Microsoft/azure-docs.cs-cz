@@ -124,7 +124,7 @@
             - name: Spravovat kapacita úložiště
               href: azure-stack-manage-storage-shares.md
             - name: Spravovat kapacita fyzické úložiště Azure zásobníku
-              href: azure-stack-manage-storage-physical-capacity.md
+              href: azure-stack-manage-storage-physical-memory-capacity.md
         - name: Výměna hardwaru
           items:
             - name: Uzel akce

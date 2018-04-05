@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/03/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2c10dcf185c62f3672be80ad2e3d049eae82fe6b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e37b63580d8cea4b5772bc54f7b2f79980afc0bc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Údržba zásad Azure zásobníku
 Tento článek popisuje údržby zásady pro Azure zásobníku integrované systémy a co je třeba udělat, aby byl váš systém v podporovaném stavu. 
@@ -47,19 +47,6 @@ Například pokud je 1805 nejnovější dostupné aktualizace verze a předchoz�
 
 Balíčky aktualizací softwaru společnosti Microsoft jsou oddělené a vyžaduje, aby předchozí balíček aktualizace předpokladem je. Pokud se rozhodnete odložení jeden nebo více aktualizací, zvažte celkové modulu runtime, pokud chcete získat nejnovější verzi. 
 
-Následující tabulka uvádí příklad aktualizace balíčku verze, jejich požadovaných součástí a minimální podporovaná verze systému musí být na pro zachování podpory. Tabulka je založená na počáteční verzi Azure zásobníku integrované systémy (sestavení. 1708), verze první aktualizace balíčku. (1709) v září 2017. 
-
-| Nejnovější balíček aktualizace (*příklad*) | Požadavek | Minimální podporovaná verze |
-| -- | -- | -- |
-| 1710 | 1709 | neuvedeno |
-| 1711 | 1710 | 1709 |
-| 1712 | 1711 | 1710 |
-| 1802 | 1712 | 1711 |
-| 1803 | 1802 | 1712 |
-| 1804 | 1803 | 1802 |
-| 1805 | 1804 | 1803 |
-| | | 
-V předchozí tabulce není k dispozici žádné verzi 1801.
 
 ## <a name="next-steps"></a>Další postup
 

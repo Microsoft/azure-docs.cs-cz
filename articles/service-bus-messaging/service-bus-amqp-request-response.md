@@ -24,7 +24,7 @@ ms.lasthandoff: 03/23/2018
 
 Tento článek definuje seznam operací založené na požadavku nebo odpovědi Microsoft Azure Service Bus. Tyto informace jsou založeny na koncept pracovní AMQP správu verze 1.0.  
   
-Podrobné úroveň protokolu AMQP 1.0 protokol průvodce, která vysvětluje, jak Service Bus implementuje a je založený na technické specifikace OASIS AMQP, najdete v článku [protokolu AMQP 1.0 v příručce protokol Azure Service Bus a Event Hubs] [ Průvodce protokolu AMQP 1.0].  
+Podrobné úroveň protokolu AMQP 1.0 protokol průvodce, která vysvětluje, jak Service Bus implementuje a je založený na technické specifikace OASIS AMQP, najdete v článku [protokolu AMQP 1.0 v příručce protokol Azure Service Bus a Event Hubs][Průvodce protokolem AMQP 1.0].  
   
 ## <a name="concepts"></a>Koncepty  
   
