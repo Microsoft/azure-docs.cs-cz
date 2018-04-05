@@ -1,25 +1,25 @@
 ---
-title: "Publikovat vlastní marketplace položky v Azure zásobníku (operátor cloudu) | Microsoft Docs"
-description: "Jako operátor zásobník Azure zjistěte, jak publikovat vlastní marketplace položky v Azure zásobníku."
+title: Publikovat vlastní marketplace položky v Azure zásobníku (operátor cloudu) | Microsoft Docs
+description: Jako operátor zásobník Azure zjistěte, jak publikovat vlastní marketplace položky v Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 60871cbb-eed2-433c-a76d-d605c7aec06c
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 04/03/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: c791708e11b7e9e8bbe046f06233d948d4632c90
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 37587cf5f99ce105413382cbd5a0de9cacc76b7d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Přehled Azure Marketplace zásobníku
 
@@ -43,6 +43,8 @@ Každá položka Marketplace má:
 * Formátování informace o položce v portálu
 
 Každá položka publikovaných na Marketplace s cílem používá formát názvem balíčku Galerie Azure (azpkg). Přidat nasazení nebo modul runtime prostředky (jako je kód, soubory zip s softwaru nebo bitové kopie virtuálních počítačů) do zásobník Azure samostatně, nikoli jako součást položku Marketplace. 
+
+Počínaje 1803, jsou obrázky převedeny na zhuštěných souborů, během stahování z Azure nebo při odesílání pro vlastní Image. Tento proces prodlužuje čas při přidávání obrazu, ale šetří místo a urychluje nasazení těchto bitových kopií. Převod pouze u nových bitových kopií. Existujících bitových kopií, nebudou změněny. 
 
 ## <a name="next-steps"></a>Další postup
 [Vytvoření a publikování položku marketplace.](azure-stack-create-and-publish-marketplace-item.md)

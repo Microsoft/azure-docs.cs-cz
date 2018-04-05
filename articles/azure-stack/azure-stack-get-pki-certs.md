@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 4a7432260167b8740567ad4308e102417abad82c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc2ec96113310f54d32a67ea5fa31725600046c9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="generate-pki-certificates-for-azure-stack-deployment"></a>Generovat certifikáty PKI pro nasazení Azure zásobníku
 Nyní když znáte [požadavcích na certifikáty PKI](azure-stack-pki-certs.md) pro nasazení zásobník Azure, budete muset získat tyto certifikáty z certifikační autority (CA) podle svého výběru. 
@@ -75,4 +75,4 @@ Následující pracovní postup popisuje, jak můžete přizpůsobit a použijte
 5. **Exportovat a kopírovat. Soubor PFX do složek pro nasazení**. Export certifikátu (včetně privátního klíče) jako. Soubor PFX soubor a zkopírujte. Soubor PFX do složek nasazení popsané v [požadavky na Azure zásobníku nasazení infrastruktury veřejných KLÍČŮ](azure-stack-pki-certs.md).
 
 ## <a name="next-steps"></a>Další postup
-[Příprava certifikátů PKI zásobník Azure](prepare-pki-certs.md)
+[Příprava certifikátů PKI zásobník Azure](azure-stack-prepare-pki-certs.md)

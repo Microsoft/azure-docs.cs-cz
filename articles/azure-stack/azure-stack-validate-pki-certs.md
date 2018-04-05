@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 1f234c2529213dfa7f42d6ee11b840236488065d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0bdadadb1f4ee5f76cde9d05b11e8d57b99ac191
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Ověření Azure zásobníku infrastruktury veřejných KLÍČŮ certifikátů
 
@@ -43,7 +43,7 @@ Nástroj pro kontrolu certifikátu (Certchecker) provádí následující kontro
 ## <a name="prerequisites"></a>Požadavky
 Váš systém by měl splňovat následující požadavky před ověřování certifikátů infrastruktury veřejných KLÍČŮ pro nasazení Azure zásobníku:
 - CertChecker (v **PartnerToolKit** pod **\utils\certchecker**)
-- Certifikáty SSL exportovat následující [pokyny k přípravě](prepare-pki-certs.md)
+- Certifikáty SSL exportovat následující [pokyny k přípravě](azure-stack-prepare-pki-certs.md)
 - DeploymentData.json
 - Windows 10 nebo Windows Server 2016
 
