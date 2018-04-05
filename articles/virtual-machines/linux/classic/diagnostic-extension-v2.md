@@ -1,10 +1,10 @@
 ---
-title: "Monitorování virtuálního počítače s Linuxem pomocí rozšíření virtuálního počítače | Microsoft Docs"
-description: "Další informace o použití rozšíření diagnostiky Linux k monitorování výkonu a diagnostických dat virtuálního počítače s Linuxem v Azure."
+title: Monitorování virtuálního počítače s Linuxem pomocí rozšíření virtuálního počítače | Microsoft Docs
+description: Další informace o použití rozšíření diagnostiky Linux k monitorování výkonu a diagnostických dat virtuálního počítače s Linuxem v Azure.
 services: virtual-machines-linux
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: f54a11c5-5a0e-40ff-af6c-e60bd464058b
 ms.service: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: b8c6e2e22d8478b6e92e7b7942f15d37a840fed3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd22188042c60da7c761e1fa00a12921146caf25
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Použití diagnostického rozšíření Linuxu pro monitorování údajů o výkonu a diagnostických dat virtuálního počítače s Linuxem
 
@@ -64,7 +64,7 @@ Všimněte si, že konfigurace metody, které jsou zde popsané nebudou fungovat
 * **Azure Linux Agent verze 2.0.6 nebo novější**.
 
   Všimněte si, že většina Galerie Image virtuálních počítačů Linux Azure zahrnují verze 2.0.6 nebo novější. Můžete spustit **příkaz WAAgent-verze** k potvrzení, která verze je nainstalovaná ve virtuálním počítači. Pokud je virtuální počítač spuštěný na verzi, která je starší než 2.0.6, můžete podle [tyto pokyny na Githubu](https://github.com/Azure/WALinuxAgent "pokyny") jej aktualizovat.
-* **Azure CLI**. Postupujte podle [tyto pokyny pro instalaci rozhraní příkazového řádku](../../../cli-install-nodejs.md) nastavení prostředí příkazového řádku Azure CLI na váš počítač. Po instalaci rozhraní příkazového řádku Azure, můžete použít **azure** příkaz vaše rozhraní příkazového řádku (Bash, Terminálové nebo příkazového řádku) pro přístup k příkazy rozhraní příkazového řádku Azure. Například:
+* **Azure CLI**. Postupujte podle [tyto pokyny pro instalaci rozhraní příkazového řádku](../../../cli-install-nodejs.md) nastavení prostředí příkazového řádku Azure CLI na váš počítač. Po instalaci rozhraní příkazového řádku Azure, můžete použít **azure** příkaz vaše rozhraní příkazového řádku (Bash, Terminálové nebo příkazového řádku) pro přístup k příkazy rozhraní příkazového řádku Azure. Příklad:
 
   * Spustit **sadu rozšíření virtuálního počítače azure – Nápověda** podrobnou nápovědu informace.
   * Spustit **přihlášení k azure** pro přihlášení k Azure.
@@ -88,7 +88,7 @@ Krok 1. Vytvořte soubor s názvem PrivateConfig.json s následujícím obsahem:
         "storageAccountKey" : "the key of the account"
     }
 
-Krok 2. Spustit  **rozšíření virtuálního počítače azure nastavit vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* – privátní config-path PrivateConfig.json**.
+Krok 2. Spustit **vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2 nastavit rozšíření virtuálních počítačů azure.* --private-config-path PrivateConfig.json**.
 
 ### <a name="scenario-2-customize-the-performance-monitor-metrics"></a>Scénář 2. Přizpůsobení metriky sledování výkonu
 
@@ -111,7 +111,7 @@ Ve výchozím nastavení je vždy shromažďují Rsyslog data.
     }
 
 
-Krok 2. Spustit  **rozšíření virtuálního počítače azure nastavit vm_name LinuxDiagnostic Microsoft.OSTCExtensions: 2.*' – privátní config-path PrivateConfig.json – veřejné config-path PublicConfig.json**.
+Krok 2. Spustit **rozšíření virtuálního počítače azure nastavit vm_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' – privátní config-path PrivateConfig.json – veřejné config-path PublicConfig.json**.
 
 ### <a name="scenario-3-upload-your-own-log-files"></a>Scénář 3. Odeslání souborů protokolu
 
@@ -147,7 +147,7 @@ Krok 1. Vytvořte soubor s názvem PrivateConfig.json s obsahem, který je pops�
     }
 
 
-Krok 2. Spustit  **rozšíření virtuálního počítače azure nastavit vm_name LinuxDiagnostic Microsoft.OSTCExtensions: 2.*' – privátní config-path PrivateConfig.json – veřejné config-path PublicConfig.json**.
+Krok 2. Spustit **rozšíření virtuálního počítače azure nastavit vm_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' – privátní config-path PrivateConfig.json – veřejné config-path PublicConfig.json**.
 
 ## <a name="review-your-data"></a>Zkontrolujte vaše data
 
@@ -155,7 +155,7 @@ Výkon a diagnostických dat jsou uložené v tabulce Azure Storage. Zkontrolujt
 
 Kromě toho můžete tyto nástroje uživatelského rozhraní pro přístup k datům:
 
-1. Průzkumníka serveru Visual Studio. Přejděte na svůj účet úložiště. Po dobu asi 5 minut spuštění virtuálního počítače, uvidíte čtyři výchozí tabulky: "LinuxCpu", "LinuxDisk", "LinuxMemory" a "Linuxsyslog". Dvakrát klikněte na názvy tabulek, které chcete zobrazit data.
+1. Visual Studio Server Explorer. Přejděte na svůj účet úložiště. Po dobu asi 5 minut spuštění virtuálního počítače, uvidíte čtyři výchozí tabulky: "LinuxCpu", "LinuxDisk", "LinuxMemory" a "Linuxsyslog". Dvakrát klikněte na názvy tabulek, které chcete zobrazit data.
 1. [Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
 
 ![Bitové kopie](./media/diagnostic-extension/no1.png)

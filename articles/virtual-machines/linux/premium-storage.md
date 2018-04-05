@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
 ms.openlocfilehash: fa64f1f1b25646eeaaf701bb98b1a9bfd7b2166d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 [!INCLUDE [virtual-machines-common-premium-storage.md](../../../includes/virtual-machines-common-premium-storage.md)]
 

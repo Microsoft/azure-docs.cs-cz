@@ -1,12 +1,12 @@
 ---
 title: Metadata OpenAPI v Azure Functions | Microsoft Docs
-description: "Přehled podpory OpenAPI v Azure Functions"
+description: Přehled podpory OpenAPI v Azure Functions
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: b6aacc536e589a2036aba5a0784a4ba71641a59e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Podpora metadat OpenAPI 2.0 v Azure Functions (preview)
 OpenAPI 2.0 (dříve Swagger) podpora metadat v Azure Functions je funkce preview, která můžete použít k zápisu definici OpenAPI 2.0 v aplikaci funkce. Tento soubor pak můžete hostovat pomocí funkce aplikace.
@@ -42,7 +42,7 @@ Podrobné pokyny najdete v tématu [kurz Začínáme](./functions-api-definition
 
 ### <a name="templates"></a>Dostupné šablony
 
-|Name (Název)| Popis |
+|Název| Popis |
 |:-----|:-----|
 |Vygenerovaný definice|Definici OpenAPI s maximální velikostí informace, které lze odvodit z existující metadata funkce.|
 
@@ -50,9 +50,9 @@ Podrobné pokyny najdete v tématu [kurz Začínáme](./functions-api-definition
 
 Následující tabulka představuje nastavení portálu Azure a odpovídajících dat v function.json, jak je mapován na generovaného kostru Swagger.
 
-|Swagger.JSON|Portál uživatelského rozhraní|Function.JSON|
+|Swagger.json|Portál uživatelského rozhraní|Function.json|
 |:----|:-----|:-----|
-|[Hostitele](http://swagger.io/specification/#fixed-fields-15)|**Funkce nastavení aplikace** > **nastavení služby App Service** > **přehled** > **adresy URL**|*Není k dispozici*
+|[Hostitel](http://swagger.io/specification/#fixed-fields-15)|**Funkce nastavení aplikace** > **nastavení služby App Service** > **přehled** > **adresy URL**|*Není k dispozici*
 |[Cesty](http://swagger.io/specification/#paths-object-29)|**Integrovat** > **metody vybrané HTTP**|Vazby: trasy
 |[Položky cesty](http://swagger.io/specification/#path-item-object-32)|**Integrovat** > **šablonu trasy**|Vazby: metody
 |[Zabezpečení](http://swagger.io/specification/#security-scheme-object-112)|**Klíče**|*Není k dispozici*|
@@ -77,7 +77,7 @@ Následující tabulka představuje nastavení portálu Azure a odpovídajícíc
 
 Nyní, jsou změny swagger.json ve svém úložišti hostované funkce aplikace na rozhraní API adresa URL definice a klíč, který jste si poznamenali v kroku 1.c.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Kurz Začínáme](functions-api-definition-getting-started.md). Zkuste naše návod zobrazíte definici OpenAPI v akci.
 * [Azure úložiště GitHub funkce](https://github.com/Azure/Azure-Functions/). Podívejte se na funkce úložiště pro vaše názory na preview podporu definice rozhraní API. Ujistěte se, problém Githubu nic, co chcete zobrazit aktualizovaný.
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md). Další informace o kódování funkcí a definování triggerů a vazeb.

@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 03/27/2018
 ms.author: brenduns
 ms.openlocfilehash: 6a59d0c8144492ef907e5c395f05e4e8a16678a5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Vytvoření nabídky ve službě Azure Stack
 

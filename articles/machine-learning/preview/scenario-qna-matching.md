@@ -1,11 +1,11 @@
 ---
-title: "Q & párování pomocí Azure Machine Learning Workbench | Microsoft Docs"
-description: "Jak používat různé metody efektivní machine learning tak, aby odpovídaly otevřete skončila dotazy na existující – nejčastější dotazy nebo odpovědi na otázky páry."
+title: Q & párování pomocí Azure Machine Learning Workbench | Microsoft Docs
+description: Jak používat různé metody efektivní machine learning tak, aby odpovídaly otevřete skončila dotazy na existující – nejčastější dotazy nebo odpovědi na otázky páry.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: mezmicrosoft
 editor: mezmicrosoft
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -16,10 +16,10 @@ ms.date: 09/15/2017
 ms.author: mez
 manager: tihazen
 ms.openlocfilehash: 33f807a4a0bbc4afd1f2fbe017f8913eccacc34b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/05/2018
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Q & párování pomocí Azure Machine Learning workbench
 Když otevřete zakončeno otázky odpovíte je obtížné a často vyžaduje úsilí od odborníků (malé a střední podniky). Chcete-li snížit požadavky na interní malé a střední podniky, společnosti často vytvořit seznam – nejčastější dotazy (FAQ) jako prostředek, které uživatelé. Tento příklad umožňující prezentovat různé metody efektivní machine learning tak, aby odpovídaly otevřete zakončeno dotazy na existující nejčastější dotazy k odpovědi na otázky nebo páry. Tento příklad ukazuje o snadný vývoj proces pro sestavování řešení pomocí nástroje Azure Machine Learning Workbench. 
@@ -51,7 +51,7 @@ Požadavky na spuštění v tomto příkladu jsou následující:
 
 Vytvořte nový projekt v tomto příkladu jako šablona:
 1.  Otevřete Azure Machine Learning Workbench
-2.  Na **projekty** klikněte na tlačítko  **+**  přihlásit a vybrat **nový projekt**
+2.  Na **projekty** klikněte na tlačítko **+** přihlásit a vybrat **nový projekt**
 3.  V **vytvořit nový projekt** podokně, vyplňte informace pro nový projekt
 4.  V **šablony projektů vyhledávání** vyhledávacího pole zadejte "Q & A odpovídající" a vyberte šablonu
 5.  Klikněte na **Vytvořit**
@@ -82,15 +82,15 @@ Schéma dat a odkazy na stažení přímé tři datových sad naleznete v násle
 
 | Datová sada | Pole | Typ | Popis
 | ----------|------------|------------|--------
-| [otázky](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | ID | Řetězec | Otázka jedinečné ID (primární klíč)
+| [Otázky](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | ID | Řetězec | Otázka jedinečné ID (primární klíč)
 |  | AnswerId | Řetězec | ID jedinečný odpověď na otázku
-|  | text0 | Řetězec | Nezpracovaný text data, včetně nadpis a text na otázku
+|  | Text0 | Řetězec | Nezpracovaný text data, včetně nadpis a text na otázku
 |  | Datum vytvoření | Časové razítko | Pokud byla požádána otázka časové razítko
 | [duplicitní](https://bostondata.blob.core.windows.net/stackoverflow/dup-q.tsv.gz) | ID | Řetězec | Duplikace jedinečné ID (primární klíč)
 |  | AnswerId | Řetězec | ID odpovědí spojené s duplikace
-|  | text0 | Řetězec | Nezpracovaný text data, včetně duplikace na nadpis a text
+|  | Text0 | Řetězec | Nezpracovaný text data, včetně duplikace na nadpis a text
 |  | Datum vytvoření | Časové razítko | Pokud byla požádána duplikace časové razítko
-| [odpovědi](https://bostondata.blob.core.windows.net/stackoverflow/ans.tsv.gz)  | ID | Řetězec | Odpověď jedinečné ID (primární klíč)
+| [answers](https://bostondata.blob.core.windows.net/stackoverflow/ans.tsv.gz)  | ID | Řetězec | Odpověď jedinečné ID (primární klíč)
 |  | text0 | Řetězec | Data nezpracovaný text odpovědi
 
 

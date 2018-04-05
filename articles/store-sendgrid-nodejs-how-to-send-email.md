@@ -1,11 +1,11 @@
 ---
-title: "Jak používat služby sendgrid vám umožňuje e-mailů (Node.js) | Microsoft Docs"
-description: "Zjistěte, jak odeslat e-mailu pomocí e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky kódu jsou vytvořené pomocí rozhraní API Node.js."
-services: 
+title: Jak používat služby sendgrid vám umožňuje e-mailů (Node.js) | Microsoft Docs
+description: Zjistěte, jak odeslat e-mailu pomocí e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky kódu jsou vytvořené pomocí rozhraní API Node.js.
+services: ''
 documentationcenter: nodejs
 author: erikre
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: cac444b4-26b0-45ea-9c3d-eca28d57dacb
 ms.service: multiple
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: 327cea3a24cc47a9cc463b37cc2346ebc475ef7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Postup odesílání e-mailu pomocí sendgrid vám umožňuje z Node.js
 Tato příručka ukazuje, jak provádět běžné úkoly programování s e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky jsou zapsány pomocí rozhraní API Node.js. Pokryté scénáře zahrnují **vytváření e-mailu**, **odesílání e-mailu**, **přidávání příloh**, **pomocí filtrů**, a **aktualizace vlastností**. Další informace o sendgrid vám umožňuje a odesílání e-mailu, najdete v článku [další kroky](#next-steps) části.
@@ -33,7 +33,7 @@ Je sendgrid vám umožňuje [cloudový e-mailovou službu] poskytuje spolehlivé
 * Předávání dotazy zákazníků
 * E-mailových oznámení z vaší aplikace
 
-Další informace najdete v tématu [https://sendgrid.com](https://sendgrid.com).
+Další informace najdete na adrese [https://sendgrid.com](https://sendgrid.com).
 
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu sendgrid vám umožňuje
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -60,7 +60,7 @@ Vytvoření e-mailovou zprávu pomocí modulu sendgrid vám umožňuje zahrnuje 
         text: 'This is a sample email message.'
     });
 
-Můžete také určit zprávu HTML pro klienty, kteří ho podporují nastavením vlastnosti html. Například:
+Můžete také určit zprávu HTML pro klienty, kteří ho podporují nastavením vlastnosti html. Příklad:
 
     html: This is a sample <b>HTML<b> email message.
 
@@ -78,7 +78,7 @@ Po vytvoření e-mailovou zprávu pomocí funkce e-mailu, můžete ho pomocí we
     });
 
 > [!NOTE]
-> Při výše uvedené příklady ukazují předávání v e-mailu funkci objekt a zpětného volání, můžete také přímo vyvolat funkce pro odeslání přímo zadáním vlastnosti e-mailu. Například:  
+> Při výše uvedené příklady ukazují předávání v e-mailu funkci objekt a zpětného volání, můžete také přímo vyvolat funkce pro odeslání přímo zadáním vlastnosti e-mailu. Příklad:  
 > 
 > `````
 > sendgrid.send({
@@ -123,7 +123,7 @@ Filtry můžete použít na zprávy pomocí **filtry** vlastnost.
 Každý filtr je zadána hodnota hash obsahující nastavení pro konkrétní filtru.
 Následující příklady ukazují zápatí a klikněte na tlačítko Sledování filtry:
 
-### <a name="footer"></a>Zápatí stránky
+### <a name="footer"></a>Zápatí
     var email = new sendgrid.Email({
         to: 'john@contoso.com',
         from: 'anna@contoso.com',
@@ -161,7 +161,7 @@ Následující příklady ukazují zápatí a klikněte na tlačítko Sledován�
     sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>Postupy: aktualizovat vlastnosti e-mailu
-Některé vlastnosti e-mailu můžete přepsat pomocí  **nastavit*vlastnost*** nebo připojených pomocí  **přidat*vlastnost***. Například můžete přidat další příjemce pomocí
+Některé vlastnosti e-mailu můžete přepsat pomocí **nastavit * vlastnost*** nebo připojených pomocí **přidat*vlastnost ***. Například můžete přidat další příjemce pomocí
 
     email.addTo('jeff@contoso.com');
 
@@ -180,7 +180,7 @@ Teď, když jste se naučili základy služby sendgrid vám umožňuje e-mailu, 
 
 * Úložiště modul Node.js sendgrid vám umožňuje: [sendgrid vám umožňuje nodejs][sendgrid-nodejs]
 * Dokumentaci k rozhraní API sendgrid vám umožňuje: <https://sendgrid.com/docs>
-* Speciální nabídka sendgrid vám umožňuje Azure zákazníků: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
+* Sendgrid vám umožňuje speciální nabídka pro zákazníky, Azure: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 
 [special offer]: https://sendgrid.com/windowsazure.html
 [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs

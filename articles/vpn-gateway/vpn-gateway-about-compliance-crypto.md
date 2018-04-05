@@ -1,11 +1,11 @@
 ---
-title: "O kryptografických požadavcích a Azure VPN Gateway | Microsoft Docs"
-description: "Tento článek popisuje požadavky na šifrování a brány Azure VPN"
+title: O kryptografických požadavcích a Azure VPN Gateway | Microsoft Docs
+description: Tento článek popisuje požadavky na šifrování a brány Azure VPN
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/22/2017
 ms.author: yushwang
 ms.openlocfilehash: d2f3da47f1d4eebe1b81964790ff6612dd78155d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>O kryptografických požadavky a brány Azure VPN
 
@@ -38,7 +38,7 @@ Například zásady hlavního režimu IKEv2 pro Azure VPN Gateway využívat pou
 ## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>Vlastní zásady protokolu IPsec/IKE pomocí bran Azure VPN
 Azure VPN Gateway teď podporují připojení, vlastní zásady protokolu IPsec/IKE. Site-to-Site nebo připojení VNet-to-VNet lze vybrat konkrétní kombinaci kryptografických algoritmů IPsec a IKE s požadovanou síly klíče, jak je znázorněno v následujícím příkladu:
 
-![zásady protokolu IPSec ike](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
 Můžete vytvořit zásady protokolu IPsec/IKE a použít pro nové nebo existující připojení. 
 
@@ -55,7 +55,7 @@ Můžete vytvořit zásady protokolu IPsec/IKE a použít pro nové nebo existuj
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tématu [zásady Konfigurace protokolu IPsec/IKE](vpn-gateway-ipsecikepolicy-rm-powershell.md) podrobné pokyny ke konfiguraci vlastních zásad protokolu IPsec/IKE na připojení.
 
 Viz také [připojení více zařízení sítě VPN založené na zásadách](vpn-gateway-connect-multiple-policybased-rm-ps.md) Další informace o možnost UsePolicyBasedTrafficSelectors.

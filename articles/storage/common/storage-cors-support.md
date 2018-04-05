@@ -1,6 +1,6 @@
 ---
-title: "Podpora (CORS) pro sdílení prostředků různého původu | Microsoft Docs"
-description: "Zjistěte, jak povolit podporu CORS pro služby Microsoft Azure Storage."
+title: Podpora (CORS) pro sdílení prostředků různého původu | Microsoft Docs
+description: Zjistěte, jak povolit podporu CORS pro služby Microsoft Azure Storage.
 services: storage
 documentationcenter: .net
 author: cbrooksmsft
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Podpora služby Azure Storage (CORS) pro sdílení prostředků různého původu
 Počínaje verzí 2013-08-15, podporu služby Azure storage sdílení prostředků různých původů (CORS) pro služby objektů Blob, tabulky, fronty a souboru. CORS je funkce protokolu HTTP, která umožňuje webové aplikace spuštěna v rámci jednoho domény přístup k prostředkům v jiné doméně. Webové prohlížeče implementovat omezení zabezpečení, označuje jako [stejného původu zásad](http://www.w3.org/Security/wiki/Same_Origin_Policy) která brání webové stránky z volání rozhraní API v jiné doméně. CORS poskytuje zabezpečení způsob, jak povolit jednu doménu (doménu původu) k volání rozhraní API v jiné doméně. Najdete v článku [specifikace CORS](http://www.w3.org/TR/cors/) podrobnosti o CORS.
@@ -71,7 +71,7 @@ Zde je ukázka jednoho pravidla CORS, zadaný prostřednictvím operace nastavit
 
 Každý prvek uvedené v pravidle CORS je popsán dále:
 
-* **AllowedOrigins**: zdrojové domény, které jsou povoleny vytvořte žádost na službě úložiště prostřednictvím CORS. Doménu původu je doména, ze které žádost pochází. Všimněte si, že počátek musí být velká a malá písmena přesně shodovat s původ, který stáří uživatel odešle do služby. Můžete také použít zástupný znak ' *' povolit všechny zdrojové domény provádět požadavky pomocí CORS. V příkladu výše, domén [http://www.contoso.com](http://www.contoso.com) a [http://www.fabrikam.com](http://www.fabrikam.com) provádět požadavků na službu pomocí CORS.
+* **AllowedOrigins**: zdrojové domény, které jsou povoleny vytvořte žádost na službě úložiště prostřednictvím CORS. Doménu původu je doména, ze které žádost pochází. Všimněte si, že počátek musí být velká a malá písmena přesně shodovat s původ, který stáří uživatel odešle do služby. Můžete také použít zástupný znak ' *' povolit všechny zdrojové domény provádět požadavky pomocí CORS. V příkladu výše, domén [ http://www.contoso.com ](http://www.contoso.com) a [ http://www.fabrikam.com ](http://www.fabrikam.com) provádět požadavků na službu pomocí CORS.
 * **AllowedMethods**: metody (příkazy požadavku HTTP), které doménu původu může použít pro požadavek CORS. V předchozím příkladu jsou povoleny pouze požadavky PUT a GET.
 * **AllowedHeaders**: hlavičky žádosti, které může zadejte doménu původu na požadavek CORS. V předchozím příkladu jsou povolené všechny hlavičky metadata počínaje x-ms-meta-data, x-ms-meta cíl a x-ms-meta-abc. Všimněte si, že zástupný znak ' *' označuje, že je povolit všechny hlavičky začíná zadanou předponou.
 * **ExposedHeaders**: hlavičky odpovědi, které může odeslaný v odpovědi na požadavek CORS a zveřejněny v prohlížeči Issuer požadavku. V příkladu nahoře je v prohlížeči pokyn ke zveřejnění počínaje x-ms-meta všechny hlavičky.
@@ -86,7 +86,7 @@ Na pravidla CORS platí následující omezení:
 * Délka povolené hlavičky, vystaveného hlavičce nebo povolený původ nesmí překročit 256 znaků.
 * Povolené hlavičky a zveřejněné záhlaví může být buď:
   * Literál hlavičky, kde je přesný záhlaví je zadaný název, například **x-ms-meta zpracovat**. Je možné zadat maximálně 64 literálu hlavičky v požadavku.
-  * Předponu hlavičky, kde předponu hlavičky, která je k dispozici, jako například **x-ms-meta-data***. Zadání předpony tímto způsobem umožňuje nebo zpřístupní všechny hlavičky, který začíná danou předponu. Je možné zadat maximálně dvě předponou hlavičky v požadavku.
+  * Předponu hlavičky, kde předponu hlavičky, která je k dispozici, jako například ** x-ms-meta-data ***. Zadání předpony tímto způsobem umožňuje nebo zpřístupní všechny hlavičky, který začíná danou předponu. Je možné zadat maximálně dvě předponou hlavičky v požadavku.
 * Metody (nebo příkazy HTTP), zadaný v **AllowedMethods** element musí odpovídat metod podporovaných službou Azure storage rozhraní API. Jsou podporované metody odstranění, GET, HEAD, SLOUČENÍ, POST, možnosti a PUT.
 
 ## <a name="understanding-cors-rule-evaluation-logic"></a>Principy logiku vyhodnocení pravidla CORS
@@ -133,7 +133,7 @@ Dále je třeba zvážit následující požadavků CORS:
 
 | Žádost |  |  | Odpověď |  |
 | --- | --- | --- | --- | --- |
-| **– Metoda** |**Počátek** |**Hlavičky požadavku** |**Pravidla shody** |**Výsledek** |
+| **– Metoda** |**Origin** |**Hlavičky požadavku** |**Pravidla shody** |**výsledek** |
 | **PUT** |http://www.contoso.com |x-ms-blob-content-type |První pravidlo |Úspěch |
 | **GET** |http://www.contoso.com |x-ms-blob-content-type |Druhé pravidlo |Úspěch |
 | **GET** |http://www.contoso.com |x-ms-client-request-id |Druhé pravidlo |Selhání |
@@ -167,7 +167,7 @@ Následující tabulka uvádí, jak Azure storage bude reagovat na požadavky GE
 
 | Žádost | Nastavení účtu a výsledek vyhodnocení pravidla |  |  | Odpověď |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Původ hlavičky v požadavku** |**CORS pravidel zadaný pro tuto službu** |**Existuje odpovídající pravidlo, které umožňuje všechny původy (*)** |**Existuje odpovídající pravidlo pro shodu přesný počátek** |**Odpověď obsahuje záhlaví měnit nastavení pro počátek** |**Odpověď obsahuje Access-Control-povolené-Origin: "*"** |**Odpověď obsahuje Access-Control-zveřejněné-Headers** |
+| **Původ hlavičky v požadavku** |**CORS pravidel zadaný pro tuto službu** |**Existuje odpovídající pravidlo, která umožňuje všechny origins(*)** |**Existuje odpovídající pravidlo pro shodu přesný počátek** |**Odpověď obsahuje záhlaví měnit nastavení pro počátek** |**Odpověď obsahuje Access-Control-povolené-Origin: "*"** |**Odpověď obsahuje Access-Control-zveřejněné-Headers** |
 | Ne |Ne |Ne |Ne |Ne |Ne |Ne |
 | Ne |Ano |Ne |Ne |Ano |Ne |Ne |
 | Ne |Ano |Ano |Ne |Ne |Ano |Ano |
@@ -181,7 +181,7 @@ Kontrola před výstupem úspěšné požadavky se účtují, pokud jste povolil
 
 Neúspěšná předběžných požadavků, nebude platit.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Nastavit vlastnosti služby objektů Blob](https://msdn.microsoft.com/library/hh452235.aspx)
 
 [Nastavit vlastnosti fronty služby](https://msdn.microsoft.com/library/hh452232.aspx)

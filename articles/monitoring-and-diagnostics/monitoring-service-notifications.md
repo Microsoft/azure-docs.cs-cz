@@ -1,12 +1,12 @@
 ---
-title: "Co jsou oznámení o stavu služby Azure? | Dokumenty Microsoft"
-description: "Oznámení o stavu služby umožňují zobrazit zprávy o stavu služby, které zveřejnil Microsoft Azure."
+title: Co jsou oznámení o stavu služby Azure? | Dokumenty Microsoft
+description: Oznámení o stavu služby umožňují zobrazit zprávy o stavu služby, které zveřejnil Microsoft Azure.
 author: anirudhcavale
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
 ms.openlocfilehash: 4a95e9882515e6a2861292829a44847e11f39063
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazit oznámení o stavu služby pomocí portálu Azure
 
@@ -40,11 +40,11 @@ Název vlastnosti | Popis
 kanály | Jeden z následujících hodnot: **správce** nebo **operaci**.
 correlationId | Obvykle GUID ve formátu řetězce. Události, které patří do stejné akce obvykle sdílet stejnou correlationId.
 eventDataId | Jedinečný identifikátor události.
-EventName | Název události.
+eventName | Název události.
 úroveň | Úroveň události. Jeden z následujících hodnot: **kritický**, **chyba**, **upozornění** nebo **informační**.
 resourceProviderName | Název poskytovatele prostředků pro prostředek dopad.
-Typ prostředku| Typ prostředku ovlivněné prostředku.
-Podřízený stav | Stavový kód HTTP odpovídající REST obvykle volání, ale můžou taky patřit jiných řetězců popisující podřízeného stavu. Například: OK (stavový kód HTTP: 200), které byly vytvořeny (stavový kód HTTP: 201), platné (stavový kód HTTP: 202), ne obsahu (stavový kód HTTP: 204), chybný požadavek (stavový kód HTTP: 400), nebyl nalezen (stavový kód HTTP: 404), konflikt (stavový kód HTTP: 409), interní Server Chyba (kód stavu HTTP: 500), služba není k dispozici (kód stavu HTTP: 503) a vypršel časový limit brány (kód stavu HTTP: 504).
+resourceType| Typ prostředku ovlivněné prostředku.
+subStatus | Stavový kód HTTP odpovídající REST obvykle volání, ale můžou taky patřit jiných řetězců popisující podřízeného stavu. Například: OK (stavový kód HTTP: 200), které byly vytvořeny (stavový kód HTTP: 201), platné (stavový kód HTTP: 202), ne obsahu (stavový kód HTTP: 204), chybný požadavek (stavový kód HTTP: 400), nebyl nalezen (stavový kód HTTP: 404), konflikt (stavový kód HTTP: 409), interní Server Chyba (kód stavu HTTP: 500), služba není k dispozici (kód stavu HTTP: 503) a vypršel časový limit brány (kód stavu HTTP: 504).
 eventTimestamp | Časové razítko při zpracování požadavku odpovídající události služby Azure vygenerovalo událost.
 submissionTimestamp | Časové razítko, když jsou události dostupné pro zadávání dotazů.
 subscriptionId | Předplatné Azure, ve kterém se tato událost byla zaznamenána.
@@ -52,8 +52,8 @@ status | Řetězec popisující stav operace. Některé běžné hodnoty jsou: *
 operationName | Název operace.
 category | Tato vlastnost je vždy **ServiceHealth**.
 resourceId | ID prostředku ovlivněných prostředků.
-Properties.Title | Lokalizovaný název pro tuto komunikaci. Výchozí hodnota je angličtina.
-Properties.Communication | Lokalizované podrobnosti o komunikaci se službou značka jazyka HTML. Výchozí hodnota je angličtina.
+Properties.title | Lokalizovaný název pro tuto komunikaci. Výchozí hodnota je angličtina.
+Properties.communication | Lokalizované podrobnosti o komunikaci se službou značka jazyka HTML. Výchozí hodnota je angličtina.
 Properties.incidentType | Jeden z následujících hodnot: **AssistedRecovery**, **ActionRequired**, **informace**, **Incident**,  **Údržby**, nebo **zabezpečení**.
 Properties.trackingId | Incident, ke kterému je přiřazeno této události. Použijte ke korelaci událostí souvisejících s incidentem.
 Properties.impactedServices | Uvozený blob JSON, popisující služby a oblastí, které jsou ovlivněné incidentu. Vlastnost obsahuje seznam služeb, z nichž každá má **ServiceName**a seznam ovlivněných oblastí, z nichž každá má **RegionName**.

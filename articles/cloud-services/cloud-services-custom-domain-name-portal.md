@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace vlastního názvu domény v cloudové služby | Microsoft Docs"
-description: "Zjistěte, jak vystavit aplikaci Azure nebo dat k Internetu na vlastní domény tak, že nakonfigurujete nastavení DNS.  Tyto příklady použití portálu Azure."
+title: Konfigurace vlastního názvu domény v cloudové služby | Microsoft Docs
+description: Zjistěte, jak vystavit aplikaci Azure nebo dat k Internetu na vlastní domény tak, že nakonfigurujete nastavení DNS.  Tyto příklady použití portálu Azure.
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5783a246-a151-4fb1-b488-441bfb29ee44
 ms.service: cloud-services
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
 ms.openlocfilehash: 139ec6578dc9e76039c5fb13e7a7741aa8ba4e0d
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurace vlastního názvu domény pro cloudové služby Azure
 Při vytváření cloudové služby Azure, přiřadí ji k subdoména **cloudapp.net**. Například pokud cloudové služby má název "contoso", uživatelé budou mít přístup k aplikaci na adresu URL podobnou http://contoso.cloudapp.net. Azure také přiřadí virtuální IP adresu.
@@ -84,9 +84,9 @@ Pokud chcete vytvořit záznam CNAME, musí přidáte nový záznam v tabulce DN
 
 Například následující záznam CNAME předává veškerý provoz z **www.contoso.com** k **contoso.cloudapp.net**, vlastní název domény nasazené aplikace:
 
-| Název aliasu/hostitele nebo subdomény | Kanonický domény |
+| Alias/Host name/Subdomain | Kanonický domény |
 | --- | --- |
-| www |contoso.cloudapp.NET |
+| www |contoso.cloudapp.net |
 
 > [!NOTE]
 > Návštěvník z **www.contoso.com** nikdy zobrazit true hostitele (contoso.cloudapp.net), tak, aby procesu předávání neviditelná pro koncového uživatele.
@@ -132,7 +132,7 @@ Tento příklad ukazuje vytvoření záznamu A pro kořenovou doménu. Pokud chc
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Jak spravovat Cloud Services](cloud-services-how-to-manage-portal.md)
 * [Postup mapování obsahu CDN do vlastní domény](../cdn/cdn-map-content-to-custom-domain.md)
 * [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md).

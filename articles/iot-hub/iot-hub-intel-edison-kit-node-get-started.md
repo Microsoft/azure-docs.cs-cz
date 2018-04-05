@@ -1,12 +1,12 @@
 ---
-title: "Intel Edison do cloudu (Node.js) – Edison Intel připojit ke službě Azure IoT Hub | Microsoft Docs"
-description: "Zjistěte, jak nastavit a Intel Edison připojit ke službě Azure IoT Hub pro Intel Edison k odesílání dat do Azure Cloudová platforma v tomto kurzu."
+title: Intel Edison do cloudu (Node.js) – Edison Intel připojit ke službě Azure IoT Hub | Microsoft Docs
+description: Zjistěte, jak nastavit a Intel Edison připojit ke službě Azure IoT Hub pro Intel Edison k odesílání dat do Azure Cloudová platforma v tomto kurzu.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: "Azure iot intel edison, intel edison iot hub, intel edison odesílat data do cloudu, intel edison do cloudu"
+tags: ''
+keywords: Azure iot intel edison, intel edison iot hub, intel edison odesílat data do cloudu, intel edison do cloudu
 ms.assetid: a7c9cf2d-c102-41b0-aa45-41285c6877eb
 ms.service: iot-hub
 ms.devlang: nodejs
@@ -17,10 +17,10 @@ ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5a31efba704045196b5563f7bc467c773bea7805
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-nodejs"></a>Intel Edison připojit ke službě Azure IoT Hub (Node.js)
 
@@ -226,7 +226,7 @@ Měli byste vidět následující výstup, který popisuje data snímačů a zpr
 
 ![Výstup – data snímačů odeslaný Intel Edison do služby IoT hub](media/iot-hub-intel-edison-kit-node-get-started/15_message_sent.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Spustíte ukázkovou aplikaci pro shromažďování dat snímačů a odeslat do služby IoT hub.
 

@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure Data šifrování na Rest | Microsoft Docs"
-description: "Tento článek obsahuje přehled Microsoft Azure data šifrování na rest, celkový možnosti a Obecné aspekty."
+title: Microsoft Azure Data šifrování na Rest | Microsoft Docs
+description: Tento článek obsahuje přehled Microsoft Azure data šifrování na rest, celkový možnosti a Obecné aspekty.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
 ms.openlocfilehash: b02afa77ce99f576fed76b398642ba3f3ce2ba98
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování na Rest Azure dat
 Existuje několik nástrojů v rámci Microsoft Azure k ochraně dat podle potřeb zabezpečení a dodržování předpisů vaší společnosti. Tento dokument se zaměřuje na:
@@ -63,7 +63,7 @@ Umístění úložiště šifrovacích klíčů a řízení přístupu na tyto k
 
 Oprávnění k použití klíče uložené v Azure Key Vault, Správa nebo k nim získat přístup k šifrování na Rest šifrování a dešifrování, je možné přidělit k účtům Azure Active Directory. 
 
-### <a name="key-hierarchy"></a>Klíče hierarchie
+### <a name="key-hierarchy"></a>Key Hierarchy
 
 Více než jeden šifrovací klíč se používá v šifrování v implementaci rest. Asymetrické šifrování je užitečné pro navázání vztahu důvěryhodnosti a ověřování, které jsou potřebné pro přístup ke klíčům a správu. Symetrické šifrování je efektivnější pro hromadné šifrování a dešifrování, povolení pro silnější šifrování a lepší výkon. Kromě toho omezené použití jediný šifrovací klíč snižuje riziko ohrožení zabezpečení klíč a náklady na znova šifrovat při klíč se musí nahradit. Pokud chcete využít výhod asymetrické a symetrického šifrování a omezení použití a ohrožení jeden klíč, použijte na modely rest Azure šifrování klíče hierarchie skládá z následujících typů klíčů:
 
@@ -256,14 +256,14 @@ Sever podporu pro šifrování je nyní k dispozici prostřednictvím funkce SQL
 |                                  | **Správa klíčů** | **Službu spravovat klíče** | **Zákazník spravované v trezoru klíčů** | **Zákazník spravované na místě** |        |
 | **Úložiště a databáze**            |                |                     |                              |                              |        |
 | Disk (IaaS)                      |                | -                   | Ano                          | Ano*                         | -      |
-| Systému SQL Server (IaaS)                |                | Ano                 | Ano                          | Ano                          | Ano    |
+| SQL Server (IaaS)                |                | Ano                 | Ano                          | Ano                          | Ano    |
 | Azure SQL (PaaS)                 |                | Ano                 | Preview                      | -                            | Ano    |
 | Úložiště Azure (objekty BLOB bloku nebo stránky) |                | Ano                 | Preview                      | -                            | Ano    |
 | Úložiště Azure (soubory)            |                | Ano                 | -                            | -                            | -      |
 | Úložiště Azure (tabulky, fronty)   |                | -                   | -                            | -                            | Ano    |
 | Cosmos DB (dokument DB)          |                | Ano                 | -                            | -                            | -      |
 | StorSimple                       |                | Ano                 | -                            | -                            | Ano    |
-| Zálohování                           |                | -                   | -                            | -                            | Ano    |
+| Backup                           |                | -                   | -                            | -                            | Ano    |
 | **Intelligence a analýzy**       |                |                     |                              |                              |        |
 | Azure Data Factory               |                | Ano                 | -                            | -                            | -      |
 | Azure Machine Learning           |                | -                   | Preview                      | -                            | -      |

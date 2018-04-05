@@ -54,9 +54,9 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Pravidla pro konfiguraci protokolu IP | 299 |299 |
 | Konfigurace IP front-endu, Basic | 10 | 200 |
 | Konfigurace IP front-endu, Standard | 10 | 600 |
-| Fond back-end, Basic | 100, jedna skupina dostupnosti | - |
-| Fond back-end, Standard | 1000, jedna virtuální síť | - |
-| HA porty, Standard | 1 na interní front-endu | - |
+| Fond back-end, Basic | 100, jedna skupina dostupnosti | 100, jedna skupina dostupnosti |
+| Fond back-end, Standard | 1000, jedna virtuální síť | 1000, jedna virtuální síť |
+| HA porty, Standard | 1 na interní front-endu | 1 na interní front-endu |
 
 Pokud potřebujete navýšit výchozí omezení, [kontaktujte podporu](../articles/azure-supportability/resource-manager-core-quotas-request.md ).
 

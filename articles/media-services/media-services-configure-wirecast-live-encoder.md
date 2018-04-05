@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace kodér Telestream wirecast odeslat živý datový proud s jednou přenosovou rychlostí | Microsoft Docs"
-description: "Toto téma ukazuje, jak nakonfigurovat za provozu kodér Wirecast k odeslání datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase. "
+title: Konfigurace kodér Telestream wirecast odeslat živý datový proud s jednou přenosovou rychlostí | Microsoft Docs
+description: 'Toto téma ukazuje, jak nakonfigurovat za provozu kodér Wirecast k odeslání datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase. '
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
 ms.service: media-services
 ms.workload: media
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
 ms.openlocfilehash: 0e4fb0b7c915969da1760eaccc77aa399030752e
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Pomocí kodéru Wirecast odesílat živý datový proud s jednou přenosovou rychlostí
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 > * [Elemental za provozu](media-services-configure-elemental-live-encoder.md)
-> * [Čase](media-services-configure-tricaster-live-encoder.md)
+> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 >
 >
@@ -74,7 +74,7 @@ V tomto kurzu se používají následující nastavení výstup. Zbývající č
 
 **Video**:
 
-* Kodeků: H.264
+* Codec: H.264
 * Profil: Vysoká (úroveň 4.0)
 * Přenosovou rychlostí: 5000 kb/s
 * Klíčový snímek: 2 sekund (60 sekund)
@@ -109,7 +109,7 @@ V tomto kurzu se používají následující nastavení výstup. Zbývající č
    * Profil: Main
    * Klíče rámce každých: 60 rámce
 
-    **Zvuk**
+    **zvuk**
 
    * Cílová přenosová rychlost: 192 kbits za sekundu
    * Vzorkovací frekvence: 44 100 kHz

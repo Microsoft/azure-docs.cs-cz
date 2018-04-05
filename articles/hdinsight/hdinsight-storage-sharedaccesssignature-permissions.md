@@ -1,8 +1,8 @@
 ---
-title: "Omezení přístupu pomocí sdílené přístupové podpisy - Azure HDInsight | Microsoft Docs"
-description: "Naučte se používat sdílené přístupové podpisy omezit HDInsight přístup k datům uloženým v objektů BLOB služby Azure storage."
+title: Omezení přístupu pomocí sdílené přístupové podpisy - Azure HDInsight | Microsoft Docs
+description: Naučte se používat sdílené přístupové podpisy omezit HDInsight přístup k datům uloženým v objektů BLOB služby Azure storage.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 01/25/2018
 ms.author: larryfr
 ms.openlocfilehash: d3e37ba0f590cf0572b84a53bdd407af63a19d36
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Použití Azure sdílené přístupové podpisy úložiště omezit přístup k datům v HDInsight
 
@@ -44,7 +44,7 @@ HDInsight má úplný přístup k datům v účtech úložiště Azure, který j
     > [!IMPORTANT]
     > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* V příkladu souborů z [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Toto úložiště obsahuje následující položky:
+* V příkladu souborů z [ https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature ](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Toto úložiště obsahuje následující položky:
 
   * Projekt sady Visual Studio, který můžete vytvořit kontejner úložiště, uložené zásady a SAS pro použití s HDInsight
   * Skript v jazyce Python, můžete vytvořit kontejner úložiště, uložené zásady a SAS pro použití s HDInsight
@@ -196,7 +196,7 @@ Jak dlouho trvá chvíli pro tento skript k dokončení, obvykle přibližně 15
 
 Pokud máte existující cluster založený na Linuxu, můžete přidat SAS k **core-site** konfigurace pomocí následujících kroků:
 
-1. Otevřete webovému uživatelskému rozhraní Ambari pro váš cluster. Adresa pro tuto stránku je https://YOURCLUSTERNAME.azurehdinsight.net. Po zobrazení výzvy ověřování ke clusteru pomocí jméno správce (správce) a heslo použité při vytváření clusteru.
+1. Otevřete webovému uživatelskému rozhraní Ambari pro váš cluster. Adresa pro tuto stránku https://YOURCLUSTERNAME.azurehdinsight.net. Po zobrazení výzvy ověřování ke clusteru pomocí jméno správce (správce) a heslo použité při vytváření clusteru.
 
 2. Na levé straně webovému uživatelskému rozhraní Ambari, vyberte **HDFS** a pak vyberte **konfigurací** kartě uprostřed stránky.
 

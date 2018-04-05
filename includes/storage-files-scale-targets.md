@@ -1,4 +1,4 @@
-| Prostředek | cíl |
+| Prostředek | Cíl |
 |----------|---------------|
 | Maximální velikost sdílené složky | 5 TiB |
 | Maximální velikost souboru ve sdílené složce | 1 TiB |

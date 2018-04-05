@@ -1,11 +1,11 @@
 ---
-title: "Webové aplikace technologie Open source časté otázky k Azure | Microsoft Docs"
-description: "Získejte odpovědi na nejčastější dotazy týkající se technologie open-source ve funkci Web Apps služby Azure App Service."
+title: Webové aplikace technologie Open source časté otázky k Azure | Microsoft Docs
+description: Získejte odpovědi na nejčastější dotazy týkající se technologie open-source ve funkci Web Apps služby Azure App Service.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
 ms.openlocfilehash: 4fb443691e216169dd1322b96d77139ffde752d4
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie Open source nejčastější dotazy pro webové aplikace v Azure
 
@@ -49,10 +49,10 @@ Zapnutí protokolování PHP:
 2. V nabídce nahoře vyberte **ladění konzoly** > **CMD**.
 3. Vyberte **lokality** složky.
 4. Vyberte **wwwroot** složky.
-5. Vyberte  **+**  ikonu a potom vyberte **nový soubor**.
+5. Vyberte **+** ikonu a potom vyberte **nový soubor**.
 6. Nastavte název souboru na **. user.ini**.
 7. Vyberte ikonu tužky vedle **. user.ini**.
-8. V souboru přidejte tento kód:`log_errors=on`
+8. V souboru přidejte tento kód: `log_errors=on`
 9. Vyberte **Uložit**.
 10. Vyberte ikonu tužky vedle **wp-config.php**.
 11. Změňte text na následující kód:
@@ -71,7 +71,7 @@ K zachycení chyb aplikací Python:
 1. Na portálu Azure ve vaší webové aplikaci, vyberte **nastavení**.
 2. Na **nastavení** vyberte **nastavení aplikace**.
 3. V části **nastavení aplikace**, zadejte následující dvojice klíč/hodnota:
-    * Klíč: WSGI_LOG
+    * Key : WSGI_LOG
     * Hodnota: D:\home\site\wwwroot\logs.txt (zadejte vaši volbu názvu souboru)
 
 Teď byste měli vidět chyby v souboru logs.txt ve složce wwwroot.
@@ -100,7 +100,7 @@ Chcete-li změnit verzi aplikace Node.js, můžete použít jednu z následujíc
     Proces řízení nasazení Azure zdroj zahrnuje následující kroky:
     1. Obsah se přesune do webové aplikace Azure.
     2. Vytvoří výchozí skript nasazení, pokud není k dispozici (deploy.cmd, soubory .deployment) v kořenové složce webové aplikace.
-    3. Spustí skript nasazení, ve kterém se vytvoří soubor iisnode.yml Pokud zmínili verze Node.js v souboru package.json > modul`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+    3. Spustí skript nasazení, ve kterém se vytvoří soubor iisnode.yml Pokud zmínili verze Node.js v souboru package.json > modul `"engines": {"node": "5.9.1","npm": "3.7.3"}`
     4. Soubor iisnode.yml má následující řádek kódu:
         ```
         nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -137,22 +137,22 @@ Pro Azure Marketplace a vlastní nasazení:
 
 * Umístění složky: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
 * Soubory, které vás zajímají:
-    * catalina. *rrrr mm-dd*.log
-    * Správce hostitele. *rrrr mm-dd*.log
-    * localhost. *rrrr mm-dd*.log
-    * správce. *rrrr mm-dd*.log
-    * site_access_log. *rrrr mm-dd*.log
+    * catalina.*yyyy-mm-dd*.log
+    * host-manager.*yyyy-mm-dd*.log
+    * localhost.*yyyy-mm-dd*.log
+    * manager.*yyyy-mm-dd*.log
+    * site_access_log.*yyyy-mm-dd*.log
 
 
 Pro portál **nastavení aplikace** nasazení:
 
 * Umístění složky: D:\home\LogFiles
 * Soubory, které vás zajímají:
-    * catalina. *rrrr mm-dd*.log
-    * Správce hostitele. *rrrr mm-dd*.log
-    * localhost. *rrrr mm-dd*.log
-    * správce. *rrrr mm-dd*.log
-    * site_access_log. *rrrr mm-dd*.log
+    * catalina.*yyyy-mm-dd*.log
+    * host-manager.*yyyy-mm-dd*.log
+    * localhost.*yyyy-mm-dd*.log
+    * manager.*yyyy-mm-dd*.log
+    * site_access_log.*yyyy-mm-dd*.log
 
 ## <a name="how-do-i-troubleshoot-jdbc-driver-connection-errors"></a>Jak odstranit chyb připojení ovladač JDBC?
 

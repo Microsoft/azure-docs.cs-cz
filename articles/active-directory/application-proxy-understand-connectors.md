@@ -1,11 +1,11 @@
 ---
-title: "Pochopení konektory proxy aplikace služby Azure AD | Microsoft Docs"
-description: "Popisuje základní informace o Azure AD Application Proxy konektory."
+title: Pochopení konektory proxy aplikace služby Azure AD | Microsoft Docs
+description: Popisuje základní informace o Azure AD Application Proxy konektory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.openlocfilehash: fe8d5c40249431be60dc8844adf7efa1b8e87c5f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Pochopení konektory proxy aplikace služby Azure AD
 
@@ -35,7 +35,7 @@ Pokud chcete úspěšně nasadit Proxy aplikace, budete potřebovat minimálně 
 
 Další informace o síťové požadavky u serveru konektoru najdete v tématu [začít pracovat s Proxy aplikace a nainstalujte konektor](active-directory-application-proxy-enable.md).
 
-## <a name="maintenance"></a>Údržby
+## <a name="maintenance"></a>Údržba
 Konektory a služba postará o všech úloh vysoké dostupnosti. Dají se přidat nebo odebrat dynamicky. Pokaždé, když dorazí novou žádost o je směrována na jednu z konektory, které aktuálně nejsou k dispozici. Pokud konektor není dočasně k dispozici, není reagovat na tento provoz.
 
 Konektory jsou bezstavové a mít žádné konfigurační data v počítači. Pouze data, která ukládají se nastavení připojení služby a její ověřovací certifikát. Při připojování ke službě, všechna požadovaná konfigurační data pro vyžádání obsahu a jej aktualizovat každých několik minut.
@@ -78,7 +78,7 @@ Zatímco spojnic automatické vyvážení v rámci skupiny pro konektor zatíže
 |4|16|320|1150|
 |8|32|270|1190|
 |16|64|245|1200*|
-\*Tento počítač měl připojení limit 800. Pro všechny ostatní počítače jsme použili výchozí limit 200 připojení.
+\* Tento počítač měl připojení limit 800. Pro všechny ostatní počítače jsme použili výchozí limit 200 připojení.
  
 >[!NOTE]
 >Není k dispozici mnoho rozdíl v maximální TPS 4, 8 až 16 jádra počítače. Hlavní rozdíl mezi ty je očekávané latence.  
@@ -157,9 +157,9 @@ Pokud chcete zobrazit protokoly, přejděte do prohlížeče událostí, otevře
 
 Můžete zkontrolovat stav služby v okně služby. Tento konektor zahrnuje dvě služby systému Windows: skutečný konektor a aktualizačního programu. Oba dva musí běžet vždy.
 
- ![Místní služby AzureAD](./media/application-proxy-understand-connectors/aad-connector-services.png)
+ ![AzureAD Services Local](./media/application-proxy-understand-connectors/aad-connector-services.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 
 * [Publikování aplikací na samostatných sítí a umístění pomocí konektoru skupin](active-directory-application-proxy-connectors-azure-portal.md)

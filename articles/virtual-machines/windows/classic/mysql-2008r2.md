@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření klasického virtuálního počítače Azure s MySQL | Microsoft Docs"
-description: "Vytvořte virtuální počítač Azure se systémem Windows Server 2012 R2 a databáze MySQL pomocí modelu nasazení classic."
+title: Vytvoření klasického virtuálního počítače Azure s MySQL | Microsoft Docs
+description: Vytvořte virtuální počítač Azure se systémem Windows Server 2012 R2 a databáze MySQL pomocí modelu nasazení classic.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: timlt
 editor: tysonn
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: cynthn
 ms.openlocfilehash: e4135f96027cc25e1e0a149857ace1672570fc4b
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>Instalace databáze MySQL na virtuální počítač vytvořený s modelem nasazení classic se systémem Windows Server 2016
 [MySQL](https://www.mysql.com) je populární open source, databáze SQL. V tomto kurzu se dozvíte, jak nainstalovat a spustit **komunitní verzi MySQL 5.7.18** jako Server databáze MySQL na virtuálním počítači s **systému Windows Server 2016**. Prostředí může být mírně lišit pro jiné verze MySQL nebo Windows Server.
@@ -51,7 +51,7 @@ Postupujte podle těchto kroků k instalaci, konfiguraci a spuštění komunitn�
 
 1. Po připojení k virtuálnímu počítači pomocí vzdálené plochy, klikněte na tlačítko **Internet Explorer** z obrazovky start.
 2. Vyberte **nástroje** tlačítko v pravém horním rohu (ikona kolečka cogged) a potom klikněte na **Možnosti Internetu**. Klikněte na tlačítko **zabezpečení** , klikněte na **Důvěryhodné servery** ikonu a pak klikněte na tlačítko **lokality** tlačítko. Http://*.mysql.com přidáte do seznamu důvěryhodných serverů. Klikněte na tlačítko **Zavřít**a potom klikněte na **OK**.
-3. V na adresu aplikace Internet Explorer, zadejte https://dev.mysql.com/downloads/mysql/.
+3. Zadejte v na adresu aplikace Internet Explorer, https://dev.mysql.com/downloads/mysql/.
 4. Pomocí serveru MySQL vyhledat a stáhnout nejnovější verzi Instalační služby MySQL pro systém Windows. Při výběru instalační program MySQL, stáhněte si verzi, která má úplný soubor sady (například mysql – instalační program komunity 5.7.18.0.msi a velikost souboru 352.8 MB) a uložte instalační služby.
 5. Když instalační program dokončí stahování, klikněte na tlačítko **spustit** spustíte instalační program.
 6. Na **licenční smlouvy** , přijměte licenční smlouvu a klikněte na tlačítko **Další**.
@@ -114,11 +114,11 @@ K testování vzdálené připojení k virtuálnímu počítači Azure spuštěn
    ![](media/mysql-2008r2/MySQL_DNSName.png)
 3. Z místního počítače se systémem MySQL nebo MySQL klienta spusťte následující příkaz k přihlášení jako uživatel MySQL.
 
-     MySQL -u <yourMysqlUsername> - p -h<yourDNSname>
+     mysql -u <yourMysqlUsername> -p -h <yourDNSname>
 
    Například pomocí uživatelského jména MySQL _dbadmin3_ a _testmysql.cloudapp.net_ na názvy DNS pro virtuální počítač, můžete začít MySQL pomocí následujícího příkazu:
 
-     MySQL -u dbadmin3 -p -h testmysql.cloudapp.net
+     mysql -u dbadmin3 -p -h testmysql.cloudapp.net
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o spouštění MySQL naleznete v tématu [MySQL dokumentaci](http://dev.mysql.com/doc/).

@@ -1,12 +1,12 @@
 ---
-title: "Schéma konfigurace Azure Diagnostics 1.2 | Microsoft Docs"
-description: "Platí pouze pokud používáte Azure SDK 2.5 s Azure virtuálních počítačů sady škálování virtuálního počítače, Service Fabric nebo cloudové služby."
+title: Schéma konfigurace Azure Diagnostics 1.2 | Microsoft Docs
+description: Platí pouze pokud používáte Azure SDK 2.5 s Azure virtuálních počítačů sady škálování virtuálního počítače, Service Fabric nebo cloudové služby.
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
 ms.openlocfilehash: 1e9cc6d0950945df8c4fba74d8e1f6196be224f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Schéma konfigurace Azure Diagnostics 1.2
 > [!NOTE]
@@ -104,7 +104,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |------------------|-----------------|  
 |**WadCfg**|Povinná hodnota. Konfigurace nastavení pro data telemetrie které se mají shromažďovat.|  
 |**StorageAccount**|Název účtu úložiště Azure pro ukládání dat v. To můžete také zadat jako parametr při spuštění rutiny Set-AzureServiceDiagnosticsExtension.|  
-|**LocalResourceDirectory**|Adresář na virtuálním počítači, který bude používat k ukládání dat události Monitoring Agent. Pokud není sada, výchozí adresář slouží:<br /><br /> Pro roli pracovního procesu nebo webové:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Pro virtuální počítač:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Povinné atributy jsou:<br /><br /> -                      **cesta** -adresáři na serveru, který má být používána Azure Diagnostics.<br /><br /> -                      **expandEnvironment** -Určuje, zda jsou v názvu cesty rozbalit proměnné prostředí.|  
+|**LocalResourceDirectory**|Adresář na virtuálním počítači, který bude používat k ukládání dat události Monitoring Agent. Pokud není sada, výchozí adresář slouží:<br /><br /> Pro roli pracovního procesu nebo webové: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Pro virtuální počítač: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Povinné atributy jsou:<br /><br /> -                      **cesta** -adresáři na serveru, který má být používána Azure Diagnostics.<br /><br /> -                      **expandEnvironment** -Určuje, zda jsou v názvu cesty rozbalit proměnné prostředí.|  
 
 ## <a name="wadcfg-element"></a>WadCFG Element  
 Definuje nastavení konfigurace pro telemetrická data, které se mají shromažďovat. Následující tabulka popisuje podřízených elementů:  
@@ -117,7 +117,7 @@ Definuje nastavení konfigurace pro telemetrická data, které se mají shromaž
 |**Adresáře**|Povoluje shromažďování obsah adresáře, protokoly žádost o přístup služby IIS se nezdařilo nebo protokoly služby IIS. Volitelný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 |**EtwProviders**|Nakonfiguruje shromažďování událostí trasování událostí pro Windows z EventSource nebo Manifest trasování událostí pro Windows na základě zprostředkovatele.|  
 |**Metriky**|Tento element umožňuje generovat tabulku čítače výkonu, která je optimalizovaná pro rychlé dotazy. Jednotlivých čítačů výkonu, která je definována v **čítače výkonu** element je uložené v tabulce metriky kromě tabulky čítače výkonu. Požadovaný atribut:<br /><br /> **resourceId** – to je ID prostředku nasazujete Azure Diagnostics do virtuálního počítače. Získat **resourceID** z [portál Azure](https://portal.azure.com). Vyberte **Procházet** -> **skupiny prostředků** -> **< název\>**. Klikněte **vlastnosti** dlaždici a zkopírujte hodnotu z **ID** pole.|  
-|**Čítače výkonu**|Povoluje shromažďování čítačů výkonu. Volitelný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datový typ".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
+|**čítače výkonu**|Povoluje shromažďování čítačů výkonu. Volitelný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datový typ".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 |**WindowsEventLog**|Umožňuje kolekce protokoly událostí systému Windows. Volitelný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datový typ".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 
 ## <a name="crashdumps-element"></a>CrashDumps Element  
@@ -203,4 +203,4 @@ Definuje nastavení konfigurace pro telemetrická data, které se mají shromaž
 
 |Název elementu|Popis|  
 |------------------|-----------------|  
-|**Zdroj dat**|Protokol událostí systému Windows ke shromažďování. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Například:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Ke shromažďování všech událostí, zadejte "*".|
+|**zdroj dat**|Protokol událostí systému Windows ke shromažďování. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Příklad:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Ke shromažďování všech událostí, zadejte "*".|

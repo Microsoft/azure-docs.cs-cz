@@ -1,7 +1,7 @@
 ---
-title: "Jak používat služby sendgrid vám umožňuje e-mailů (Java) | Microsoft Docs"
-description: "Zjistěte, jak odeslat e-mailu pomocí e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky kódu napsanou v jazyce Java."
-services: 
+title: Jak používat služby sendgrid vám umožňuje e-mailů (Java) | Microsoft Docs
+description: Zjistěte, jak odeslat e-mailu pomocí e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky kódu napsanou v jazyce Java.
+services: ''
 documentationcenter: java
 author: thinkingserious
 manager: sendgrid
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Postup odesílání e-mailu pomocí sendgrid vám umožňuje z Javy
 Tato příručka ukazuje, jak provádět běžné úkoly programování s e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky jsou napsané v jazyce Java. Pokryté scénáře zahrnují **vytváření e-mailu**, **odesílání e-mailu**, **přidávání příloh**, **pomocí filtrů**, a **aktualizace vlastností**. Další informace o sendgrid vám umožňuje a odesílání e-mailu, najdete v článku [další kroky](#next-steps) části.
@@ -158,7 +158,7 @@ Sendgrid vám umožňuje poskytuje další e-mailové funkce prostřednictvím *
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>Postupy: aktualizovat vlastnosti e-mailu
-Některé vlastnosti e-mailu můžete přepsat pomocí  **nastavit*vlastnost*** nebo připojených pomocí  **přidat*vlastnost***.
+Některé vlastnosti e-mailu můžete přepsat pomocí **nastavit * vlastnost*** nebo připojených pomocí **přidat*vlastnost ***.
 
 Například zadejte **ReplyTo** adresy, použijte tento příkaz:
 
@@ -176,13 +176,13 @@ Chcete-li přidat **kopie** příjemce, použijte tento příkaz:
 ## <a name="how-to-use-additional-sendgrid-services"></a>Postupy: použití další služby sendgrid vám umožňuje
 Sendgrid vám umožňuje nabízí rozhraní API založené na webu, který můžete využít další funkce sendgrid vám umožňuje aplikaci Azure. Úplné podrobnosti najdete v tématu [dokumentaci k rozhraní API sendgrid vám umožňuje][SendGrid API documentation].
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste se naučili základy služby sendgrid vám umožňuje e-mailu, postupujte podle následujících odkazech na další informace.
 
 * Ukázka, která demonstruje použití sendgrid vám umožňuje v nasazení služby Azure: [postup odesílání e-mailu pomocí sendgrid vám umožňuje z prostředí Java v Azure nasazení](store-sendgrid-java-how-to-send-email-example.md)
 * Sendgrid vám umožňuje Java SDK: <https://sendgrid.com/docs/Code_Examples/java.html>
 * Dokumentaci k rozhraní API sendgrid vám umožňuje: <https://sendgrid.com/docs/API_Reference/index.html>
-* Speciální nabídka sendgrid vám umožňuje Azure zákazníků: <https://sendgrid.com/windowsazure.html>
+* Sendgrid vám umožňuje speciální nabídka pro zákazníky, Azure: <https://sendgrid.com/windowsazure.html>
 
 [http://sendgrid.com]: https://sendgrid.com
 [http://sendgrid.com/pricing.html]: http://sendgrid.com/pricing.html

@@ -98,7 +98,7 @@ Následující konfigurace nejsou aktuálně podporovány.
 | Síť | Classic okruhy Expressroute |Tato možnost není aktuálně podporována. Tyto okruhy se musí migrovat na Azure Resource Manager před zahájením migrace IaaS. Další informace o této najdete [okruhy ExpressRoute přesouvání z klasického modelu nasazení Resource Manager](../articles/expressroute/expressroute-move.md).|
 | Azure App Service |Virtuální sítě, které obsahují služby App Service Environment |Tato možnost není aktuálně podporována. |
 | Azure HDInsight |Virtuální sítě, které obsahují služby HDInsight |Tato možnost není aktuálně podporována. |
-| Služby životního cyklu aplikace Microsoft Dynamics |Virtuální sítě, které obsahují virtuální počítače, které jsou spravovány nástrojem služby Dynamics životního cyklu |Tato možnost není aktuálně podporována. |
+| Microsoft Dynamics Lifecycle Services |Virtuální sítě, které obsahují virtuální počítače, které jsou spravovány nástrojem služby Dynamics životního cyklu |Tato možnost není aktuálně podporována. |
 | Azure AD Domain Services |Virtuální sítě, které obsahují služby Azure AD Domain services |Tato možnost není aktuálně podporována. |
 | Azure RemoteApp |Virtuální sítě, které obsahují nasazení Azure RemoteApp |Tato možnost není aktuálně podporována. |
 | Azure API Management |Virtuální sítě, které obsahují nasazení Azure API Management |Tato možnost není aktuálně podporována. Migrovat virtuální síť IaaS, změňte nasazení API Management, který je žádná operace výpadek sítě VNET. |

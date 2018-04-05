@@ -1,11 +1,11 @@
 ---
-title: "Naučte se používat konektor FTP v aplikace logiky | Microsoft Docs"
-description: "Vytvoření aplikace logiky službou Azure App service. Připojte k serveru FTP spravovat soubory. Můžete provádět různé akce, jako je například nahrávání, aktualizovat, získání a odstranit soubory v serveru FTP."
+title: Naučte se používat konektor FTP v aplikace logiky | Microsoft Docs
+description: Vytvoření aplikace logiky službou Azure App service. Připojte k serveru FTP spravovat soubory. Můžete provádět různé akce, jako je například nahrávání, aktualizovat, získání a odstranit soubory v serveru FTP.
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: d83c55fe-eb59-4b7b-a5ec-afac5c772616
 ms.service: logic-apps
@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/22/2016
 ms.author: mandia; ladocs
 ms.openlocfilehash: 7719e0e90df3a384e870e2e839cb77a27d95ada8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-the-ftp-connector"></a>Začínáme s konektor FTP
 Pomocí konektoru serveru FTP monitorovat, spravovat a vytvoření souborů na serveru FTP. 
@@ -50,7 +50,7 @@ V tomto příkladu I vám ukáže, jak používat **FTP – Pokud je soubor při
    ![Obrázek aktivační událost FTP 2](./media/connectors-create-api-ftp/ftp-trigger-2.png)  
 2. Vyberte **...**  nachází na pravé straně ovládacího prvku. Otevře se ovládací prvek pro výběr složky  
    ![Obrázek aktivační událost FTP 3](./media/connectors-create-api-ftp/ftp-trigger-3.png)  
-3. Vyberte  **>**  (šipka doprava) a procházet a najít složku, kterou chcete sledovat pro nové nebo upravení soubory. Vyberte složku a složku se nyní zobrazí v oznámení **složky** ovládacího prvku.  
+3. Vyberte **>** (šipka doprava) a procházet a najít složku, kterou chcete sledovat pro nové nebo upravení soubory. Vyberte složku a složku se nyní zobrazí v oznámení **složky** ovládacího prvku.  
    ![FTP aktivační událost obrázek 4](./media/connectors-create-api-ftp/ftp-trigger-4.png)   
 
 Aplikace logiky v tomto okamžiku je nakonfigurovaná s aktivační událost, která zahájí spuštění ostatních triggery a akce v pracovním postupu po upravit nebo vytvořit ve složce konkrétní FTP souboru. 

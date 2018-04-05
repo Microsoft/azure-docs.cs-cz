@@ -1,11 +1,11 @@
 ---
-title: "Neočekávaná chyba při provádění souhlasu pro aplikaci | Microsoft Docs"
-description: "Popisuje chyby, které se můžou vyskytnout během procesu souhlasit s aplikace a co můžete dělat o nich"
+title: Neočekávaná chyba při provádění souhlasu pro aplikaci | Microsoft Docs
+description: Popisuje chyby, které se můžou vyskytnout během procesu souhlasit s aplikace a co můžete dělat o nich
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: bbc0cee8a44773c025c6174eaf7eccaba81b8d1b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při provádění souhlas k aplikaci
 
@@ -50,7 +50,7 @@ Tato chyba znamená, že došlo k problému straně přerušované služby. Daj�
 Obraťte se na vývojáře aplikace.
 
 ##  <a name="resource-not-available-in-tenant-error"></a>Prostředek není k dispozici v Chyba klienta
-* **AADSTS65005:** &lt;clientAppDisplayName&gt; požaduje přístup k prostředku &lt;resourceAppDisplayName&gt; není k dispozici ve vaší organizaci &lt; tenantDisplayName&gt;. 
+* **AADSTS65005:** &lt;clientAppDisplayName&gt; požaduje přístup k prostředku &lt;resourceAppDisplayName&gt; není k dispozici ve vaší organizaci &lt;tenantDisplayName &gt;. 
 
 Ujistěte se, že tento prostředek je k dispozici nebo se obraťte na správce &lt;tenantDisplayName&gt;.
 
@@ -71,7 +71,7 @@ Tyto chyby, které všechny dojít při pokusu aplikace uživatele o souhlas vy�
 
     -   Přidání aplikace z Azure AD Application Gallery
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další postup 
 
 [Aplikace, oprávnění a souhlasu v Azure Active Directory (koncový bod v1)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
 

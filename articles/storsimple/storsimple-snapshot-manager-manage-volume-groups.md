@@ -1,11 +1,11 @@
 ---
 title: Skupiny svazek StorSimple Snapshot Manager | Microsoft Docs
-description: "Popisuje, jak pomocí modulu snap-in konzoly MMC StorSimple Snapshot Manager vytvořit a spravovat skupiny svazku."
+description: Popisuje, jak pomocí modulu snap-in konzoly MMC StorSimple Snapshot Manager vytvořit a spravovat skupiny svazku.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: 6067a88cd42d29c3d2f4b74580095424de77561e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Použít k vytvoření a Správa skupin svazku Snapshot Manager zařízení StorSimple
 ## <a name="overview"></a>Přehled
@@ -49,10 +49,10 @@ Pokud kliknete **svazku skupiny** uzlu, **výsledky** podokně zobrazí následu
 
 | Sloupec výsledků | Popis |
 |:--- |:--- |
-| Name (Název) |**Název** sloupec obsahuje název skupiny svazku. |
+| Název |**Název** sloupec obsahuje název skupiny svazku. |
 | Aplikace |**Aplikace** sloupci se zobrazuje počet zapisovače VSS aktuálně nainstalovaná a spuštěná v hostiteli systému Windows. |
 | Vybráno |**Vybrané** sloupci se zobrazuje počet svazků, které jsou obsaženy ve skupině svazku. Nula (0) znamená, že žádná aplikace přidružené svazky ve skupině svazku. |
-| Importovat |**Importovaný** sloupci se zobrazuje počet importovaných svazků. Pokud nastavíte hodnotu **True**, v tomto sloupci označuje, že svazek skupiny naimportované z portálu Azure a v zařízení StorSimple Snapshot Manager nebyla vytvořena. |
+| Naimportováno |**Importovaný** sloupci se zobrazuje počet importovaných svazků. Pokud nastavíte hodnotu **True**, v tomto sloupci označuje, že svazek skupiny naimportované z portálu Azure a v zařízení StorSimple Snapshot Manager nebyla vytvořena. |
 
 > [!NOTE]
 > Skupiny svazek StorSimple Snapshot Manager se zobrazuje také na **zásady zálohování** na portálu Azure.
@@ -124,7 +124,7 @@ Pomocí následujícího postupu můžete odstranit skupinu svazku.
    
     Skupiny odstranila svazek zmizí ze seznamu v **výsledky** podokně a všechny zálohy, které jsou přidružené k této skupině svazku se odstraní z katalogu služby zálohování.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Zjistěte, jak [použít ke správě vašeho řešení StorSimple Snapshot Manager zařízení StorSimple](storsimple-snapshot-manager-admin.md).
 * Zjistěte, jak [pomocí StorSimple Snapshot Manager vytvořit a spravovat zásady zálohování](storsimple-snapshot-manager-manage-backup-policies.md).
 

@@ -1,8 +1,8 @@
 ---
-title: "Požadovat prognózy v technické příručce energie | Microsoft Docs"
-description: "Technické příručce do šablony řešení s Microsoft Cortana Intelligence pro vyžádání prognózy v energie."
+title: Požadovat prognózy v technické příručce energie | Microsoft Docs
+description: Technické příručce do šablony řešení s Microsoft Cortana Intelligence pro vyžádání prognózy v energie.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yijichen
 manager: ilanr9
 editor: yijichen
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
 ms.openlocfilehash: bb3520d36e4c34c752fe388f3126da285e2161cd
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technické příručce k šabloně Cortana Intelligence řešení pro vyžádání prognózy v energie
 ## <a name="overview"></a>**Přehled**
@@ -42,7 +42,7 @@ U této šablony se zdroj dat používaný generují z plochy aplikace, která m
 
 Aplikace generování událostí naplní centra událostí Azure pouze tehdy, když je prováděna v počítači.
 
-### <a name="azure-event-hub"></a>Centra událostí Azure
+### <a name="azure-event-hub"></a>Azure Event Hub
 [Centra událostí Azure](https://azure.microsoft.com/services/event-hubs/) služba je příjemce vstup syntetické zdroj dat popsané.
 
 ## <a name="data-preparation-and-analysis"></a>**Příprava dat a analýzy**
@@ -56,7 +56,7 @@ Služby Azure HDInsight slouží ke spouštění [Hive](http://blogs.msdn.com/b/
 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) služba se používá (řízená Azure Data Factory) Chcete-li prognózy na budoucí spotřebu konkrétní oblasti zadané vstupy přijata.
 
 ## <a name="data-publishing"></a>**Publikování dat**
-### <a name="azure-sql-database-service"></a>Služba Azure SQL Database
+### <a name="azure-sql-database-service"></a>Azure SQL Database Service
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) služby se používá k ukládání (spravované službou Azure Data Factory) předpovědi přijatých službu Azure Machine Learning, která se využívá v [Power BI](https://powerbi.microsoft.com) řídicího panelu.
 
 ## <a name="data-consumption"></a>**Spotřeba dat**
@@ -70,7 +70,7 @@ Není pravděpodobné, že žádné datové sady, které přepnutím odpovídá 
 
 Následující části popisují části šablony, která vyžaduje změny, pokud je zavedená nová datová sada.
 
-### <a name="azure-event-hub"></a>Centra událostí Azure
+### <a name="azure-event-hub"></a>Azure Event Hub
 [Centra událostí Azure](https://azure.microsoft.com/services/event-hubs/) služba je obecný, tak, aby se data můžou být publikované rozbočovače ve formátu CSV nebo formátu JSON. Žádné speciální zpracování dojde v Centru událostí Azure, ale je důležité, že rozumíte data, která je dodáni do ní.
 
 Tento dokument nepopisuje ingestovat data, ale jeden můžete snadno odesílat události nebo data do centra událostí Azure, pomocí [API centra událostí](event-hubs/event-hubs-programming-guide.md).
@@ -136,7 +136,7 @@ To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jediné akt
 #### <a name="copyaggdemandpipeline"></a>*CopyAggDemandPipeline*
 To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jediné aktivity - [kopie](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivity, která se přesouvají data agregované probíhající vyžádání z ***LoadHistoryDemandDataPipeline*** do Azure SQL Databáze, která zřízenou jako součást instalace šablony řešení.
 
-#### <a name="copyregiondatapipeline-copysubstationdatapipeline-copytopologydatapipeline"></a>*CopyTopologyDataPipeline CopyRegionDataPipeline, CopySubstationDataPipeline,*
+#### <a name="copyregiondatapipeline-copysubstationdatapipeline-copytopologydatapipeline"></a>*CopyRegionDataPipeline, CopySubstationDataPipeline, CopyTopologyDataPipeline*
 To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jediné aktivity - [kopie](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivity, která přemísťuje referenční data oblasti nebo transformovny/Topologygeo, která se odešlou do objektu blob Azure Storage v rámci šablony řešení instalace do Azure SQL Database, zřízenou jako součást instalace šablony řešení.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
@@ -182,7 +182,7 @@ Následující kroky vás postupy k vizualizaci dat v reálném čase výstup z 
    * Klikněte na tlačítko **Uložit** nahoře a název sestavy jako "EnergyStreamDataReport". Sestavy s názvem "EnergyStreamDataReport" se zobrazí v části sestavy v podokně Navigátor na levé straně.
    * Klikněte na tlačítko **"Pin Visual"** ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) ikonu v pravém horním rohu tento spojnicový graf, okno "Kód Pin pro řídicí panel" může zobrazovat můžete vybrat řídicí panel. Vyberte "EnergyStreamDataReport" a potom klikněte na tlačítko "Pin".
    * Najeďte myší nad tuto dlaždici na řídicím panelu klikněte na "upravit" ikonu v pravém horním rohu, chcete-li změnit její název jako "Vyžádání podle časového razítka"
-4. Vytvořte další dlaždice řídicího panelu podle příslušné datové sady. Zobrazení řídicího panelu poslední:![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
+4. Vytvořte další dlaždice řídicího panelu podle příslušné datové sady. Zobrazení řídicího panelu poslední: ![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
 
 ### <a name="setup-cold-path-dashboard"></a>Instalační program neaktivní trase řídicí panel
 V datovém kanálu neaktivní trase nezbytné cílem je získat vyžádání předpovězené každou oblast. Power BI se připojí k Azure SQL database jako svůj zdroj dat, kde jsou uložené výsledky předpovědi.
@@ -213,7 +213,7 @@ V datovém kanálu neaktivní trase nezbytné cílem je získat vyžádání př
 3. (Volitelné) Publikovat k řídicímu neaktivní trase [Power BI online](http://www.powerbi.com/). Všimněte si, že tento krok vyžaduje účet Power BI (nebo účtu Office 365).
 
    * Klikněte na tlačítko **"Publikovat"** a později několik sekund zobrazí se okno zobrazení "Publikování Power BI úspěchu!" s zelená značka zaškrtnutí. Kliknutím na následující odkaz "Otevřete demoprediction.pbix v Power BI". Podrobné pokyny najdete v části [publikování z Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
-   * Chcete-li vytvořit nový řídicí panel: klikněte na tlačítko  **+**  přihlásit do **řídicí panely** část v levém podokně. Zadejte název "Vyžádání prognózy ukázku" pro tento nový řídicí panel.
+   * Chcete-li vytvořit nový řídicí panel: klikněte na tlačítko **+** přihlásit do **řídicí panely** část v levém podokně. Zadejte název "Vyžádání prognózy ukázku" pro tento nový řídicí panel.
    * Jakmile otevřete sestavu, klikněte na tlačítko ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) připnete všemi vizualizacemi na řídicí panel. Podrobné pokyny najdete v části [dlaždici připnout na řídicí panel Power BI ze sestavy](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
      Přejděte na stránku řídicího panelu a upravit velikost a umístění vaší vizualizace a upravit jejich názvy. Podrobné pokyny o tom, jak upravit dlaždice naleznete v tématu [Upravit vedle sebe - změny velikosti, přesunout, přejmenovat, kódu pin, odstranit, přidání hypertextového odkazu](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Zde je příklad řídicí panel s vizualizacemi některé neaktivní trase připnuli k němu.
 

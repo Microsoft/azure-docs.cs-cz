@@ -1,12 +1,12 @@
 ---
-title: "Škálování U-SQL místní spuštění a testování pomocí Azure Data Lake U-SQL SDK | Microsoft Docs"
-description: "Zjistěte, jak používat sadu SDK Azure Data Lake U-SQL k místní úlohy škálování U-SQL, spusťte a testování pomocí příkazového řádku a programovací rozhraní na místní pracovní stanici."
+title: Škálování U-SQL místní spuštění a testování pomocí Azure Data Lake U-SQL SDK | Microsoft Docs
+description: Zjistěte, jak používat sadu SDK Azure Data Lake U-SQL k místní úlohy škálování U-SQL, spusťte a testování pomocí příkazového řádku a programovací rozhraní na místní pracovní stanici.
 services: data-lake-analytics
-documentationcenter: 
-author: 
-manager: 
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: ''
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: yanacai
 ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>Škálování U-SQL místní spuštění a testování pomocí Azure Data Lake U-SQL SDK
 
@@ -60,9 +60,9 @@ Můžete je relativní cesta a místní cestou absolutní v skriptů U-SQL. Rela
 
 |Relativní cesta|Absolutní cesty|
 |-------------|-------------|
-|/ABC/DEF/Input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
-|ABC/DEF/Input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
-|D:/ABC/DEF/Input.csv |D:\abc\def\input.csv|
+|/abc/def/input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
+|abc/def/input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
+|D:/abc/def/input.csv |D:\abc\def\input.csv|
 
 ### <a name="working-directory"></a>Pracovní adresář
 
@@ -72,12 +72,12 @@ Při místním spuštění skriptu U-SQL, vytvoří se během kompilace v aktuá
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Řetězec hash verze modulu runtime|Soubory modulu runtime, které jsou potřebné pro provedení místní stínové kopie|
 | |Script_66AE4909AA0ED06C| |Název skriptu + hash řetězec cestu ke skriptu|Výstupy kompilace a provádění krok protokolování|
-| | |\_skript\_.abr|Výstup kompilátoru|Soubor algebra|
+| | |\_script\_.abr|Výstup kompilátoru|Soubor algebra|
 | | |\_ScopeCodeGen\_. *|Výstup kompilátoru|Vygenerovaný spravovaného kódu|
 | | |\_ScopeCodeGenEngine\_. *|Výstup kompilátoru|Vygenerovaný nativního kódu|
 | | |Odkazovaná sestavení|Odkaz na sestavení|Soubory odkazované sestavení|
 | | |deployed_resources|Nasazení prostředků|Soubory nasazení prostředků|
-| | |XXXXXXXX.xxx[1..n]\_\*. *|Spuštění protokolu|Protokol provádění kroků|
+| | |xxxxxxxx.xxx[1..n]\_\*.*|Spuštění protokolu|Protokol provádění kroků|
 
 
 ## <a name="use-the-sdk-from-the-command-line"></a>Použití sady SDK z příkazového řádku
@@ -345,31 +345,31 @@ veřejné LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
 |Vlastnost|Typ|Popis|
 |--------|----|-----------|
-|AlgebraPath|Řetězec|Cesta k souboru algebra (algebra souboru je jednomu z výsledků kompilace)|
-|CodeBehindReferences|Řetězec|Pokud skript má další kódu na pozadí odkazy, zadejte cesty odděleny znakem ";"|
-|CppSdkDir|Řetězec|CppSDK adresáře|
-|CurrentDir|Řetězec|Aktuální adresář|
-|DataRoot|Řetězec|Kořenová cesta dat|
-|DebuggerMailPath|Řetězec|Cesta k zásuvky pošty ladicí program|
+|AlgebraPath|řetězec|Cesta k souboru algebra (algebra souboru je jednomu z výsledků kompilace)|
+|CodeBehindReferences|řetězec|Pokud skript má další kódu na pozadí odkazy, zadejte cesty odděleny znakem ";"|
+|CppSdkDir|řetězec|CppSDK adresáře|
+|CurrentDir|řetězec|Aktuální adresář|
+|Kořenová datová složka|řetězec|Kořenová cesta dat|
+|DebuggerMailPath|řetězec|Cesta k zásuvky pošty ladicí program|
 |GenerateUdoRedirect|BOOL|Pokud chcete generovat načítání sestavení přesměrování přepsat konfigurace|
 |HasCodeBehind|BOOL|Pokud skript má kódu na pozadí|
-|InputDir|Řetězec|Adresář pro vstupní data|
-|MessagePath|Řetězec|Cesta k souboru výpisu zpráv|
-|OutputDir|Řetězec|Adresář pro výstupní data|
+|InputDir|řetězec|Adresář pro vstupní data|
+|MessagePath|řetězec|Cesta k souboru výpisu zpráv|
+|OutputDir|řetězec|Adresář pro výstupní data|
 |Paralelismus|celá čísla|Ke spuštění algebra paralelismus|
 |ParentPid|celá čísla|ID nadřazeného objektu, na kterém služba monitoruje ukončíte, nastavena na hodnotu 0 nebo ignorovat záporná hodnota.|
-|ResultPath|Řetězec|Cesta k souboru výpisu výsledek|
-|RuntimeDir|Řetězec|Adresář modulu runtime|
-|scriptPath|Řetězec|Kde najít skriptu|
+|ResultPath|řetězec|Cesta k souboru výpisu výsledek|
+|RuntimeDir|řetězec|Adresář modulu runtime|
+|ScriptPath|řetězec|Kde najít skriptu|
 |Bez podstruktury|BOOL|Nedávná kompilace, nebo ne|
-|TempDir|Řetězec|Dočasný adresář|
-|UseDataBase|Řetězec|Zadejte databázi, kterou chcete použít pro kódu na pozadí dočasné sestavení registrace, hlavní ve výchozím nastavení|
-|WorkDir|Řetězec|Upřednostňované pracovní adresář|
+|TempDir|řetězec|Dočasný adresář|
+|UseDataBase|řetězec|Zadejte databázi, kterou chcete použít pro kódu na pozadí dočasné sestavení registrace, hlavní ve výchozím nastavení|
+|WorkDir|řetězec|Upřednostňované pracovní adresář|
 
 
 **– Metoda**
 
-|Metoda|Popis|Vrátí|Parametr|
+|Metoda|Popis|Návrat|Parametr|
 |------|-----------|------|---------|
 |veřejné bool DoCompile()|Kompilace skript U-SQL|Hodnota TRUE, v případě úspěchu| |
 |veřejné bool DoExec()|Kompilované výsledek spuštění|Hodnota TRUE, v případě úspěchu| |
@@ -388,7 +388,7 @@ Zkontrolujte následující:
 - Ujistěte se, že jste zkopírovali všechny soubory závislosti v rámci NugetPackage\build\runtime\ do projektu pracovní adresář.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 * Pokud chcete protokolovat diagnostické informace, přečtěte si téma [přístup k protokolů diagnostiky pro Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md).

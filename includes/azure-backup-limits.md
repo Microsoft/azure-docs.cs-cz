@@ -9,10 +9,10 @@ ms.date: 2/7/2018
 ms.author: trinadhk;sogup
 ms.custom: include file
 ms.openlocfilehash: b345283f87c446ff3b583b0c5dd8a4be222303ae
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 Následující omezení platí pro zálohování Azure.
 

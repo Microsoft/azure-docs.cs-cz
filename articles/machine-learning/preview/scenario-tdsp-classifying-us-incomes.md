@@ -1,12 +1,12 @@
 ---
-title: "Klasifikace příjem - Team Data vědecké účely proces – Azure Machine Learning | Microsoft Docs"
-description: "Jak používat šablony Team datové vědy procesu k vytvoření projektu v Azure Machine Learning, který klasifikuje příjmů USA."
+title: Klasifikace příjem - Team Data vědecké účely proces – Azure Machine Learning | Microsoft Docs
+description: Jak používat šablony Team datové vědy procesu k vytvoření projektu v Azure Machine Learning, který klasifikuje příjmů USA.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
 ms.openlocfilehash: dc6279a1bac230146f4f0cebf2fbdbb6333cb7a1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Klasifikace příjem s projektem tým datové vědy procesu (TDSP)
 
@@ -74,7 +74,7 @@ Pokud chcete uložit a verze projektu a její obsah, je potřeba mít ovládací
 
 Vytvořte nový projekt v tomto příkladu jako šablona:
 1.  Otevřete Azure Machine Learning Workbench
-2.  Na **projekty** klikněte na tlačítko  **+**  přihlásit a vybrat **nový projekt**
+2.  Na **projekty** klikněte na tlačítko **+** přihlásit a vybrat **nový projekt**
 3.  V **vytvořit nový projekt** podokně, vyplňte informace pro nový projekt
 4.  V **šablony projektů vyhledávání** vyhledávacího pole zadejte "Klasifikovat USA příjmy – projekt TDSP" a vyberte šablonu
 5.  Klikněte na **Vytvořit**
@@ -108,7 +108,7 @@ Vytvoření projektu podle pokynů [zde](https://aka.ms/how-to-use-tdsp-in-aml).
 
 <img src="./media/scenario-tdsp-classifying-us-incomes/instantiation-4.png" width="900" height="700">
 
-### <a name="execution"></a>Provedení
+### <a name="execution"></a>Spouštěcí
 V tomto příkladu jsme spouštění kódu v **místní výpočetním prostředí**. Azure Machine Learning dokumenty, kde najdete další podrobnosti naleznete v [možnosti provedení](experimentation-service-configuration.md).
 
 Provádění skriptu jazyka Python v místní modul Python runtime je snadné:
@@ -148,7 +148,7 @@ Model doménové struktury náhodných funkce význam (prvních 20) jsou uvedeny
 
 ![](./media/scenario-tdsp-classifying-us-incomes/featImportance.png)
 
-* [**Nasazení**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment)
+* [**nasazení**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment)
 
 Model doménové struktury náhodných jsme nasadili jako webovou službu na cluster [Azure Container Service (ACS)](https://azure.microsoft.com/services/container-service/). Prostředí operationalization zřídí Docker a Kubernetes v clusteru pro správu nasazení webové služby. Můžete najít další informace o procesu operationalization [zde](model-management-service-deploy.md). 
 

@@ -1,12 +1,12 @@
 ---
-title: "Jak migrovat obsah kolekce pracovních prostorů Power BI pro Power BI Embedded | Microsoft Docs"
-description: "Zjistěte, jak migrovat z kolekce pracovních prostorů Power BI pro Power BI Embedded a využívání přejde pro vložení do aplikace."
+title: Jak migrovat obsah kolekce pracovních prostorů Power BI pro Power BI Embedded | Microsoft Docs
+description: Zjistěte, jak migrovat z kolekce pracovních prostorů Power BI pro Power BI Embedded a využívání přejde pro vložení do aplikace.
 services: power-bi-embedded
-documentationcenter: 
+documentationcenter: ''
 author: guyinacube
 manager: erikre
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: asaxton
 ms.openlocfilehash: 069f31c8213bd0d8586f7ca50e543acfdad8a2b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>Jak migrovat obsah kolekce pracovních prostorů Power BI pro Power BI Embedded
 
@@ -107,7 +107,7 @@ Existuje několik typů sestav, každou nutnosti toku různé migrace.
 
 V mezipaměti datové sady odkazují na soubor PBIX soubory, které měl importovali data a živé připojení nebo připojení DirectQuery.
 
-**Tok**
+**Flow**
 
 1. Stáhněte si soubor PBIX rozhraní API volejte z pracovního prostoru kolekce pracovních prostorů Power BI.
 2. Uložte soubor PBIX.
@@ -115,21 +115,21 @@ V mezipaměti datové sady odkazují na soubor PBIX soubory, které měl importo
 
 #### <a name="directquery-dataset-and-report"></a>DirectQuery datovou sadu a sestavu
 
-**Tok**
+**Flow**
 
-1. Volání GET https://api.powerbi.com/v1.0/collections/ {collection_id}/workspaces/{wid}/datasets/{dataset_id}/Default.GetBoundGatewayDataSources a uložte připojovací řetězec přijata.
+1. Volání GET https://api.powerbi.com/v1.0/collections/{collection_id}/workspaces/{wid}/datasets/{dataset_id}/Default.GetBoundGatewayDataSources a uložte připojovací řetězec přijata.
 2. Stáhněte si soubor PBIX rozhraní API volejte z pracovního prostoru kolekce pracovních prostorů Power BI.
 3. Uložte soubor PBIX.
 4. Importovat soubor PBIX volání pro Power BI Embedded pracovním prostoru.
-5. Aktualizovat připojovací řetězec voláním – POST https://api.powerbi.com/v1.0/myorg/datasets/ {dataset_id}/Default.SetAllConnections
-6. Získání ID GW ID a zdroj dat voláním – získat https://api.powerbi.com/v1.0/myorg/datasets/ {dataset_id}/Default.GetBoundGatewayDataSources
-7. Aktualizujte přihlašovací údaje uživatele při volání – oprava /datasources/ https://api.powerbi.com/v1.0/myorg/gateways/ {gateway_id} {datasource_id}
+5. Aktualizujte připojovací řetězec tak, že volání - POST  https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.SetAllConnections
+6. Získání ID GW ID a zdroj dat voláním – získání https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.GetBoundGatewayDataSources
+7. Aktualizujte přihlašovací údaje uživatele při volání - oprava https://api.powerbi.com/v1.0/myorg/gateways/{gateway_id}/datasources/{datasource_id}
 
 #### <a name="old-dataset-and-reports"></a>Původní datové sady a sestavy
 
 Sestavy než října 2016 nepodporují funkci stáhnout soubor PBIX nahrát.
 
-**Tok**
+**Flow**
 
 1. Získáte soubor PBIX z vývojové prostředí (vaše interní zdrojového kódu).
 2. Importovat soubor PBIX volání pro Power BI Embedded pracovním prostoru.
@@ -138,7 +138,7 @@ Sestavy než října 2016 nepodporují funkci stáhnout soubor PBIX nahrát.
 
 Stáhněte si soubor PBIX nepodporuje *Push rozhraní API* datové sady. Doručte datovou sadu rozhraní API, které nelze přenést data z Power BI prostoru kolekcí do Power BI Embedded.
 
-**Tok**
+**Flow**
 
 1. Volání API "Vytvořte datovou sadu" datové sadě Json pro vytvoření datové sady pro Power BI Embedded pracovním prostoru.
 2. Znovu sestavte sestavy pro vytvořenou datovou sadu *.
@@ -189,7 +189,7 @@ Některé čištění je potřeba v rámci kolekce pracovních prostorů Power B
 - Odeberte všechny pracovní prostory z nasazené řešení v rámci Azure služby Power BI prostoru kolekcí.
 - Odstraňte všechny kolekce pracovní prostor, který neexistuje v rámci Azure.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Blahopřejeme. Aplikace je nyní migrovány do Power BI Embedded. Informace o tom, jak vaše řídicí panely Power BI, sestavy a datové sady pro vložení najdete v tématu [postup vložení váš Power BI řídicí panely, sestavy a dlaždice](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/).
 

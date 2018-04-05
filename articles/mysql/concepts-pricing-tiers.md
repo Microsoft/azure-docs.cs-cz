@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 9d4e42df3137108248a043bb0d9def181d766c7a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c9a74aa00ee263b8fb4e19b77ad5be418e31c7d6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure databáze pro databázi MySQL cenové úrovně
 
@@ -24,7 +24,7 @@ Můžete vytvořit databázi Azure pro server databáze MySQL v jednom ze tří 
 | Výpočetní generování | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | Paměť na vCore | Směrný plán | 2x Basic | 2 x obecné účely |
-| Velikost úložiště | 5 GB až 1 TB | 5 GB až 1 TB | 5 GB až 1 TB |
+| Velikost úložiště | 5 GB až 1 TB | 5 GB až 2 TB | 5 GB až 2 TB |
 | Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
 | Doba uchovávání záloh databáze | 7 až 35 dnů | 7 až 35 dnů | 7 až 35 dnů |
 
@@ -46,9 +46,9 @@ Výpočetní prostředky jsou k dispozici jako vCores, která představují logi
 |:---|:----------:|:--------------------:|
 | Střed USA |  | X |
 | Východ USA | X | X |
-| Východní USA 2 | X |  |
+| Východní USA 2 | X | X |
 | Střed USA – sever | X |  |
-| Střed USA – jih | X |  |
+| Střed USA – jih | X | X |
 | Západní USA | X | X |
 | Západní USA 2 |  | X |
 | Střední Kanada | X | X |
@@ -63,8 +63,8 @@ Výpočetní prostředky jsou k dispozici jako vCores, která představují logi
 | Austrálie – východ |  | X |
 | Střed Indie | X |  |
 | Indie – západ | X |  |
-| Japonsko – východ | X |  |
-| Japonsko – západ | X |  |
+| Japonsko – východ | X | X |
+| Japonsko – západ | X | X |
 | Korea – jih |  | X |
 
 V závislosti na cenovou úroveň je zajištěna každý vCore s určitou velikostí paměti. Při zvýšení nebo snížení počtu vCores pro váš server, paměť zvýší nebo sníží úměrně. Úroveň obecné účely poskytuje double množství paměti na vCore ve srovnání s základní vrstvě. Paměťově optimalizovaná vrstvy poskytuje double množství paměti ve srovnání s vrstvě obecné účely.
@@ -76,7 +76,7 @@ V závislosti na cenovou úroveň je zajištěna každý vCore s určitou veliko
 |    | **Basic** | **Obecné účely** | **Paměťově optimalizované** |
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
-| Velikost úložiště | 5 GB až 1 TB | 5 GB až 1 TB | 5 GB až 1 TB |
+| Velikost úložiště | 5 GB až 1 TB | 5 GB až 2 TB | 5 GB až 2 TB |
 | Velikost úložiště přírůstku | 1 GB | 1 GB | 1 GB |
 | IOPS | Proměnná |3 IOPS/GB<br/>Min 100 IOPS | 3 IOPS/GB<br/>Min 100 IOPS |
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/14/2018
 ms.author: sethm;clemensv
 ms.openlocfilehash: 21e9e0a20842e365e40b71ac96888e7cd2056e52
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus řízení přístupu s podpisy sdíleného přístupu
 

@@ -1,12 +1,12 @@
 ---
 title: Jak pracovat s .NET back-end serveru SDK pro Mobile Apps | Microsoft Docs
-description: "Naučte se pracovat s .NET back-end serveru SDK pro Azure App Service Mobile Apps."
-keywords: "služby App service, služby azure app service, mobilní aplikace, mobilní služby, nasazení aplikací nasazení azure škálovatelné, aplikace stupnice"
+description: Naučte se pracovat s .NET back-end serveru SDK pro Azure App Service Mobile Apps.
+keywords: služby App service, služby azure app service, mobilní aplikace, mobilní služby, nasazení aplikací nasazení azure škálovatelné, aplikace stupnice
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: a1a29d87864bff8cb2ecda70d8a0a7833c70d481
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Práce se serverovou sadou .NET back-end SDK v prostředí Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -62,7 +62,7 @@ Sada SDK je k dispozici na [NuGet.org]. Tento balíček obsahuje základní funk
 ### <a name="install-the-sdk"></a>Instalace sady SDK
 Chcete-li nainstalovat sadu SDK, klikněte pravým tlačítkem na serverový projekt v sadě Visual Studio, vyberte **spravovat balíčky NuGet**, vyhledejte [Microsoft.Azure.Mobile.Server] balíček a potom klikněte na **instalace** .
 
-### <a name="server-project-setup"></a>Inicializace serverový projekt
+### <a name="server-project-setup"></a> Inicializace serverový projekt
 Projekt .NET back-end server je inicializován podobně jako ostatní projekty ASP.NET, včetně třídy pro spuštění OWIN. Ujistěte se, že máte odkazuje balíček NuGet `Microsoft.Owin.Host.SystemWeb`. Postup přidání této třídy v sadě Visual Studio, klikněte pravým tlačítkem na serverový projekt a vyberte **přidat** >
 **nová položka**, pak **webové**  >  ** Obecné** > **třídy pro spuštění OWIN**.  Třída je generována následující atribut:
 
@@ -105,12 +105,12 @@ Rychlé spuštění serveru z portálu Azure volání **UseDefaultConfiguration(
 
 Rozšiřující metody používané jsou:
 
-* `AddMobileAppHomeController()`poskytuje výchozí Azure Mobile Apps domovskou stránku.
-* `MapApiControllers()`poskytuje možnosti vlastního rozhraní API pro WebAPI řadiče označených pomocí `[MobileAppController]` atribut.
-* `AddTables()`poskytuje mapování `/tables` koncové body k tabulce řadiče.
-* `AddTablesWithEntityFramework()`je sdružený pro mapování `/tables` používající rozhraní Entity Framework koncových bodů na základě řadiče.
-* `AddPushNotifications()`poskytuje jednoduchý způsob registrace zařízení pro centra oznámení.
-* `MapLegacyCrossDomainController()`poskytuje standardní hlavičky CORS pro místní vývoj.
+* `AddMobileAppHomeController()` poskytuje výchozí Azure Mobile Apps domovskou stránku.
+* `MapApiControllers()` poskytuje možnosti vlastního rozhraní API pro WebAPI řadiče označených pomocí `[MobileAppController]` atribut.
+* `AddTables()` poskytuje mapování `/tables` koncové body k tabulce řadiče.
+* `AddTablesWithEntityFramework()` je sdružený pro mapování `/tables` používající rozhraní Entity Framework koncových bodů na základě řadiče.
+* `AddPushNotifications()` poskytuje jednoduchý způsob registrace zařízení pro centra oznámení.
+* `MapLegacyCrossDomainController()` poskytuje standardní hlavičky CORS pro místní vývoj.
 
 ### <a name="sdk-extensions"></a>Rozšíření sady SDK
 Následující balíčky NuGet prostřednictvím rozšíření poskytují různé mobilní funkce, které mohou být využívána vaší aplikace. Povolit rozšíření během inicializace s použitím **MobileAppConfiguration** objektu.
@@ -144,7 +144,7 @@ V této části se dozvíte, jak k publikování projektu back-end .NET ze sady 
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
-## <a name="define-table-controller"></a>Postupy: definování řadič tabulky
+## <a name="define-table-controller"></a> Postupy: definování řadič tabulky
 Zadejte řadič tabulky vystavit tabulku SQL, aby mobilních klientů.  Konfigurace řadič tabulky vyžaduje tři kroky:
 
 1. Vytvořte třídu objektu pro přenos dat (DTO).

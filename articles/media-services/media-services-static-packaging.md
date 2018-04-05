@@ -1,11 +1,11 @@
 ---
-title: "Pomocí Azure Media Balíčkovač k provádění úloh statické balení | Microsoft Docs"
-description: "Toto téma ukazuje různé úlohy, které jsou provedeny s Balíčkovač média Azure."
+title: Pomocí Azure Media Balíčkovač k provádění úloh statické balení | Microsoft Docs
+description: Toto téma ukazuje různé úlohy, které jsou provedeny s Balíčkovač média Azure.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 0582628e-a525-4a78-90ac-9f7fc1cd909f
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
 ms.openlocfilehash: de6cbf954f175777407432845ece24ac49198e46
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Pomocí Azure Media Balíčkovač k provádění úloh statické balení
 > [!NOTE]
@@ -1466,6 +1466,6 @@ Nezapomeňte aktualizovat následující kód tak, aby odkazoval na složku, kde
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poslat názor
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
