@@ -61,6 +61,10 @@
           items:
             - name: Agenti systému Windows
               href: log-analytics-agent-windows.md
+            - name: Rozšíření virtuálního počítače pro Windows
+              href: ../virtual-machines/windows/extensions-oms.md
+            - name: Rozšíření virtuálního počítače pro Linux
+              href: ../virtual-machines/linux/extensions-oms.md
             - name: Prostředky Azure
               href: log-analytics-azure-storage.md
             - name: Prostředky Azure PaaS

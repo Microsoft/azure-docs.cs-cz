@@ -1,30 +1,30 @@
 ---
-title: "Přehled prostředků Azure PIM RBAC | Microsoft Docs"
-description: "Získat přehled o funkci RBAC v PIM včetně terminologie a oznámení"
+title: Přehled prostředků Azure PIM RBAC | Microsoft Docs
+description: Získat přehled o funkci RBAC v PIM včetně terminologie a oznámení
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/19/2017
-ms.author: barclayn
-ms.openlocfilehash: 19715f800e7d8d40336d8e9fa3bf8073795dce5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 03/30/2018
+ms.author: billmath
+ms.openlocfilehash: 87d349933a8daeaf8b7a4487612ad62dd2b9efc2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="pim-for-azure-resources-preview"></a>PIM pro prostředky Azure (Preview)
+# <a name="pim-for-azure-resources"></a>Pro prostředky Azure PIM
 
-S Azure Active Directory Privileged Identity Management (PIM), teď můžete spravovat, řízení a monitorování přístupu k prostředkům Azure (Preview) v rámci vaší organizace. To zahrnuje odběry, skupiny prostředků a i virtuálních počítačů. Jakémukoli prostředku, v rámci portálu Azure, který využívá funkce Azure na základě řízení přístupu Role (RBAC) můžete využít výhod všech skvělé zabezpečení a možnosti správy životního cyklu, které má Azure AD PIM nabízet a některé skvělé nové funkce plánujeme uvede Azure AD role brzy k dispozici. 
+S Azure Active Directory Privileged Identity Management (PIM), teď můžete spravovat, řízení a monitorování přístupu k prostředkům Azure v rámci vaší organizace. To zahrnuje odběry, skupiny prostředků a i virtuálních počítačů. Jakémukoli prostředku, v rámci portálu Azure, který využívá funkce Azure na základě řízení přístupu Role (RBAC) můžete využít výhod všech skvělé zabezpečení a možnosti správy životního cyklu, které má Azure AD PIM nabízet a některé skvělé nové funkce plánujeme uvede Azure AD role brzy k dispozici. 
 
-## <a name="pim-for-azure-resources-preview-helps-resource-administrators"></a>PIM pro prostředky Azure (Preview) pomáhá správcům prostředků
+## <a name="pim-for-azure-resources-helps-resource-administrators"></a>PIM pro prostředky Azure pomáhá správcům prostředků
 
 - V tématu, kteří uživatelé a skupiny přiřazené role pro prostředky Azure, které spravujete
 - Povolit přístup "právě v čase" ke správě prostředků, jako je například odběry, skupiny prostředků a informace na vyžádání
@@ -49,15 +49,15 @@ Uživatelé nebo skupiny, se přiřadila role vlastníka nebo správce přístup
 
 PIM poskytuje pohodlné přístup k aktivaci rolí, zobrazení čekajících aktivací nebo požadavků, čeká na schválení (pro [role adresář Azure AD](azure-ad-pim-approval-workflow.md)) a kontroluje čekající na vaši odpověď z části úlohy levé navigační nabídce.
 
-Při přístupu k některou z položek nabídky úlohy ze vstupního bodu přehled, výsledné zobrazení obsahuje výsledky pro role adresář Azure AD i role prostředků Azure (Preview). 
+Při přístupu k některou z položek nabídky úlohy ze vstupního bodu přehled, výsledné zobrazení obsahuje výsledky pro role adresář Azure AD i role prostředků Azure. 
 
 ![](media/azure-pim-resource-rbac/role-settings-details.png)
 
-Moje rolí obsahuje seznam vaše přiřazení role active a vhodné role adresář Azure AD, a rolí prostředků Azure (Preview).
+Moje rolí obsahuje seznam vaše aktivní a vhodné role přiřazení role adresář Azure AD, a rolí prostředků Azure.
 
 ## <a name="activate-roles"></a>Aktivace role
 
-Aktivace role pro prostředky Azure (Preview) přináší nové prostředí, které umožňuje členům role vhodné naplánovat aktivace pro budoucí datum a čas a vyberte dobu trvání konkrétní aktivace v rámci maximální (nakonfiguroval správce). Další informace o [aktivace role Azure AD zde](../active-directory-privileged-identity-management-how-to-activate-role.md).
+Aktivace role pro prostředky Azure zavádí nové prostředí, které umožňuje členům role vhodné naplánovat aktivace pro budoucí datum a čas a vyberte dobu trvání konkrétní aktivace v rámci maximální (nakonfiguroval správce). Další informace o [aktivace role Azure AD zde](../active-directory-privileged-identity-management-how-to-activate-role.md).
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 
@@ -73,7 +73,7 @@ Pokud se aktivace je naplánováno budoucí datum a čas, nevyřízené žádost
 
 ## <a name="discover-and-manage-azure-resources"></a>Zjišťovat a spravovat prostředky Azure
 
-Můžete najít a spravovat role pro prostředek služby Azure, vyberte na kartě Správa v levé navigační nabídce prostředky Azure (Preview). Použijte filtry nebo panelu Hledat v horní části stránky se najít prostředek.
+Můžete najít a spravovat role pro prostředek služby Azure, vyberte na kartě Správa v levé navigační nabídce prostředky Azure. Použijte filtry nebo panelu Hledat v horní části stránky se najít prostředek.
 
 ![](media/azure-pim-resource-rbac/azure-resources.png)
 
@@ -176,7 +176,7 @@ Změny nastavení se protokolují na stránce nastavení role, včetně posledn�
 ## <a name="resource-audit"></a>Audit prostředků
 
 Audit prostředků nabízí zobrazení všech aktivit role pro prostředek. Můžete filtrovat pomocí předdefinovaných datum nebo rozsah vlastní informace.
-![](media/azure-pim-resource-rbac/last-day.png)Audit prostředků taky poskytuje rychlý přístup k zobrazení podrobností aktivity uživatele. V zobrazení všechny akce "Aktivovat roli" jsou odkazy na konkrétní žadatele aktivita prostředku.
+![](media/azure-pim-resource-rbac/last-day.png) Audit prostředků taky poskytuje rychlý přístup k zobrazení podrobností aktivity uživatele. V zobrazení všechny akce "Aktivovat roli" jsou odkazy na konkrétní žadatele aktivita prostředku.
 ![](media/azure-pim-resource-rbac/resource-audit.png)
 
 ## <a name="just-enough-administration"></a>Akorát správy
@@ -191,7 +191,7 @@ Z nabídky na levém navigačním vyberete Moje role a vyberte příslušnou rol
 
 ![](media/azure-pim-resource-rbac/my-roles-02.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Předdefinované role pro prostředky Azure](../role-based-access-built-in-roles.md)
 - Další informace o [aktivace zde role Azure AD](../active-directory-privileged-identity-management-how-to-activate-role.md)

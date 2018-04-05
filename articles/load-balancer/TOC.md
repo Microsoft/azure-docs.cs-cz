@@ -20,13 +20,19 @@
 
 # Postup
 
+## [Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard](load-balancer-get-started-internet-az-portal.md)
+### [Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
+### [Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (CLI)](load-balancer-get-started-internet-az-cli.md)
+## [Vytvoření zónového veřejného Load Balanceru úrovně Standard](load-balancer-get-started-internet-availability-zones-zonal-portal.md)
+### [Vytvoření zónového veřejného Load Balanceru úrovně Standard (PowerShell)](load-balancer-get-started-internet-availability-zones-zonal-powershell.md)
+### [Vytvoření zónového veřejného Load Balanceru úrovně Standard (CLI)](load-balancer-get-started-internet-availability-zones-zonal-cli.md)
+## [Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti](load-balancer-standard-public-availability-zones-portal.md)
+###  [Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti (CLI)](load-balancer-standard-public-zone-redundant-cli.md)
+##  [Vyrovnávání zatížení virtuálních počítačů v rámci zóny (CLI)](load-balancer-standard-public-zonal-cli.md)   
+## [Vytvoření Load Balanceru úrovně Basic (šablona)](load-balancer-get-started-internet-arm-template.md)
 ## [Vytvoření veřejného nástroje pro vyrovnávání zatížení s využitím IPv6](load-balancer-ipv6-internet-ps.md)
 ### [Vytvoření veřejného nástroje pro vyrovnávání zatížení s využitím IPv6 (rozhraní příkazového řádku)](load-balancer-ipv6-internet-cli.md)
 ### [Vytvoření veřejného nástroje pro vyrovnávání zatížení s využitím IPv6 (šablona)](load-balancer-ipv6-internet-template.md)
-## [Vytvoření zónově redundantní veřejné služby Load Balancer Standard](load-balancer-get-started-internet-az-portal.md)
-### [Vytvoření zónově redundantní veřejné služby Load Balancer Standard (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
-### [Vytvoření zónově redundantní veřejné služby Load Balancer Standard (rozhraní příkazového řádku)](load-balancer-get-started-internet-az-cli.md)
-## [Vytvoření Load Balanceru úrovně Basic (šablona)](load-balancer-get-started-internet-arm-template.md)
 ## [Konfigurace interního nástroje pro vyrovnávání zatížení](load-balancer-get-started-ilb-arm-portal.md)
 ### [Konfigurace interního nástroje pro vyrovnávání zatížení (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
 ### [Konfigurace interního nástroje pro vyrovnávání zatížení (rozhraní příkazového řádku)](load-balancer-get-started-ilb-arm-cli.md)

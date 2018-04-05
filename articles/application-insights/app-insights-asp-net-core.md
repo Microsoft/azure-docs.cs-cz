@@ -1,6 +1,6 @@
 ---
 title: Azure Application Insights pro ASP.NET Core | Microsoft Docs
-description: "Sledování webových aplikací pro dostupnosti, výkonu a využití."
+description: Sledování webových aplikací pro dostupnosti, výkonu a využití.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 77c48a22f974e027b4e8858d5e38018bbf5bb54f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3f57eb3ede3b57e28c13e053b86ab022fdd21b7e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights pro ASP.NET Core
 
@@ -95,7 +95,7 @@ Spuštění aplikace a pak levým na kolem propojení ručně lze použít k vyg
 
 1. Spuštění aplikace kliknutím IIS Express ![Snímek obrazovky nástroje Visual Studio ikonu IIS Express](./media/app-insights-asp-net-core/0012-iis-express.png)
 
-2. Zkopírujte adresu url z panelu Adresa prohlížeče. Je ve formátu http://localhost: {náhodný port number}
+2. Zkopírujte adresu url z panelu Adresa prohlížeče. Je ve formátu http://localhost:{random číslo portu}
 
    ![Snímek obrazovky panelu Adresa v prohlížeči adresu url](./media/app-insights-asp-net-core/0013-copy-url.png)
 
@@ -159,7 +159,7 @@ Více potvrzení výzvy bude dojít, přečtěte si a přijměte Pokud souhlasí
    ```
      ![Snímek obrazovky změnu kódu _ViewImports.cshtml](./media/app-insights-asp-net-core/00018-view-imports.png)
 
-3. V **Layout.cshtml** přidejte řádek níže před ``</head>`` značky, ale před jiné skripty.
+3. V **_Layout.cshtml** přidejte řádek níže před ``</head>`` značky, ale před jiné skripty.
 
     ```C#
     @Html.Raw(snippet.FullScript)

@@ -1,25 +1,32 @@
-1. V novém okně se přihlaste k webu [Azure Portal](https://portal.azure.com/).
+---
+title: Vytvoření účtu Azure Cosmos DB s rozhraním MongoDB API
+description: Popisuje, jak vytvořit účet Azure Cosmos DB s rozhraním MongoDB API na portálu Azure Portal.
+services: cosmos-db
+author: mimig1
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 03/20/2018
+ms.author: mimig
+ms.custom: include file
+ms.openlocfilehash: 02ea0e011642313b885bc48ec48104fa2789da81
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/28/2018
+---
+1. V novém okně se přihlaste k portálu [Azure Portal](https://portal.azure.com/).
 2. V levé nabídce klikněte na **Vytvořit prostředek**, pak na **Databáze** a nakonec v části **Azure Cosmos DB** klikněte na **Vytvořit**.
    
-   ![Snímek obrazovky webu Azure Portal se zvýrazněním položek Další služby a Databáze Azure Cosmos](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png)
+   ![Snímek obrazovky portálu Azure Portal se zvýrazněním položek Další služby a Databáze Azure Cosmos](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png)
 
-3. V podokně **Nový účet** zadejte požadovanou konfiguraci účtu služby Azure Cosmos DB. 
-
-    Ve službě Azure Cosmos DB můžete vybrat jeden ze čtyř programovacích modelů: Gremlin (graf), MongoDB, SQL a Tabulka (klíč-hodnota). 
-       
-    V tomto rychlém startu budeme programovat s využitím rozhraní API MongoDB, takže při vyplňování formuláře vyberete možnost **MongoDB**. Pokud ale máte data grafu pro aplikaci sociálních médií, data dokumentu z aplikace katalogu nebo data typu klíč/hodnota (tabulka), je dobré si uvědomit, že databáze Azure Cosmos může poskytnout vysoce dostupnou a globálně distribuovanou platformu databázové služby pro všechny důležité podnikové aplikace.
-
-    Vyplňte podokno **Nový účet** a jako vodítko při tom použijte informace uvedené v tabulce.
+3. V okně **Nový účet** určete jako rozhraní API možnost **MongoDB** a zadejte požadovanou konfiguraci účtu Azure Cosmos DB.
  
-    ![Snímek obrazovky podokna Nový účet služby Azure Cosmos DB](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-2.png)
-   
-    Nastavení|Navrhovaná hodnota|Popis
-    ---|---|---
-    ID|*Jedinečná hodnota*|Jedinečný název, pomocí kterého chcete identifikovat účet databáze Azure Cosmos. K zadanému ID se připojí řetězec *documents.azure.com*, čímž vznikne váš identifikátor URI, takže zadejte jedinečné, ale snadno rozpoznatelné ID. ID smí obsahovat jenom malá písmena, číslice a znak spojovníku a musí se skládat ze 3 až 50 znaků.
-    Rozhraní API|MongoDB|Rozhraní API určuje typ účtu, který se má vytvořit. Azure Cosmos DB poskytuje pro splnění požadavků vaší aplikace pět rozhraní API: SQL (databáze dokumentů), Gremlin (databáze grafu), MongoDB (databáze dokumentů), Tabulka Azure a Cassandra, z nichž každé v současné době vyžaduje samostatný účet. <br><br>Vyberte **MongoDB**, protože v tomto rychlém startu vytváříte databázi dokumentů, která umožňuje dotazování pomocí MongoDB.<br><br>[Další informace o rozhraní MongoDB API](../articles/cosmos-db/mongodb-introduction.md)|
-    Předplatné|*Vaše předplatné*|Předplatné Azure, se kterým chcete účet databáze Azure Cosmos používat. 
-    Skupina prostředků|*Stejná hodnota jako ID*|Nový název skupiny prostředků pro váš účet. V zájmu jednoduchosti můžete použít název, který se shoduje s vaším ID. 
-    Umístění|*Oblast nejbližší vašim uživatelům*|Zeměpisné umístění, ve kterém chcete účet databáze Azure Cosmos hostovat. Vyberte umístění, které má nejblíž k vašim uživatelům, abyste jim zajistili nejrychlejší přístup k datům.
+    ![Snímek okna Nový v Azure Cosmos DB](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-2.png)
+
+    * **ID** musí být jedinečný název, který chcete používat k identifikaci svého účtu Azure Cosmos DB. Může obsahovat pouze malá písmena, číslice a znak spojovníku (-) a musí se skládat ze 3 až 50 znaků.
+    * **Předplatné** je vaše předplatné Azure. Portál ho doplní za vás.
+    * **Skupina prostředků** je název skupiny prostředků pro váš účet Azure Cosmos DB.
+    * **Umístění** je zeměpisná poloha, kde se nachází vaše instance Azure Cosmos DB. Zvolte polohu co nejblíž vašim uživatelům.
 
 4. Kliknutím na **Vytvořit** vytvořte účet.
 5. Na panelu nástrojů klikněte na **Oznámení** a sledujte proces nasazení.

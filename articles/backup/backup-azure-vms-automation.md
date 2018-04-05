@@ -1,11 +1,11 @@
 ---
-title: "Nasadit a spravovat zálohy pro správce prostředků virtuálních počítačů nasazených pomocí prostředí PowerShell | Microsoft Docs"
-description: "Pomocí prostředí PowerShell můžete nasadit a spravovat zálohy v Azure pro virtuálních počítačů nasazených Resource Manager"
+title: Nasadit a spravovat zálohy pro správce prostředků virtuálních počítačů nasazených pomocí prostředí PowerShell | Microsoft Docs
+description: Pomocí prostředí PowerShell můžete nasadit a spravovat zálohy v Azure pro virtuálních počítačů nasazených Resource Manager
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 68606e4f-536d-4eac-9f80-8a198ea94d52
 ms.service: backup
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab75c88409c6e20f9bc46ad3b4336da150abd52c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: bac1e679aa46b280596ab09ba40da780c81cac5d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Pomocí rutin AzureRM.RecoveryServices.Backup zálohování virtuálních počítačů
 
@@ -88,7 +88,7 @@ Chcete-li začít:
     PS C:\> Select-AzureRmSubscription -SubscriptionName $SubscriptionName
     ```
 
-5. Pokud používáte Azure Backup poprvé, musíte použít  **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)**  rutiny k registraci poskytovatele služeb zotavení Azure s vaším předplatným.
+5. Pokud používáte Azure Backup poprvé, musíte použít **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** rutiny k registraci poskytovatele služeb zotavení Azure s vaším předplatným.
 
     ```PS
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -100,7 +100,7 @@ Chcete-li začít:
     PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
     ``` 
-Ve výstupu příkazu **RegistrationState** by se nastavit na **registrovaná**. Pokud ne, stačí znovu spustit  **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)**  rutiny uvedené výše.
+Ve výstupu příkazu **RegistrationState** by se nastavit na **registrovaná**. Pokud ne, stačí znovu spustit **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** rutiny uvedené výše.
 
 Následující úlohy je možné automatizovat pomocí prostředí PowerShell:
 
@@ -114,17 +114,17 @@ Následující úlohy je možné automatizovat pomocí prostředí PowerShell:
 
 Následující kroky vás provedou vytvoření trezoru služeb zotavení. Trezor služeb zotavení se liší od úložiště záloh.
 
-1. Trezor služeb zotavení je prostředek Resource Manager, proto musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořte skupinu prostředků s  **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)**  rutiny. Při vytváření skupiny prostředků, zadejte název a umístění pro skupinu prostředků.  
+1. Trezor služeb zotavení je prostředek Resource Manager, proto musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořte skupinu prostředků s **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)** rutiny. Při vytváření skupiny prostředků, zadejte název a umístění pro skupinu prostředků.  
 
     ```PS
     PS C:\> New-AzureRmResourceGroup -Name "test-rg" -Location "West US"
     ```
-2. Použití  **[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault)**  rutiny pro vytvoření trezoru služeb zotavení. Ujistěte se, že zadejte stejné umístění pro úložiště, jako byl použit pro skupinu prostředků.
+2. Použití **[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault)** rutiny pro vytvoření trezoru služeb zotavení. Ujistěte se, že zadejte stejné umístění pro úložiště, jako byl použit pro skupinu prostředků.
 
     ```PS
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
-3. Zadejte typ redundance úložiště se použije. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). Následující příklad ukazuje, že je možnost - BackupStorageRedundancy pro testvault nastavena na GeoRedundant.
+3. Zadejte typ redundance úložiště se použije. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Následující příklad ukazuje, že je možnost - BackupStorageRedundancy pro testvault nastavena na GeoRedundant.
 
     ```PS
     PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault -Name "testvault"
@@ -137,7 +137,7 @@ Následující kroky vás provedou vytvoření trezoru služeb zotavení. Trezor
    >
 
 ## <a name="view-the-vaults-in-a-subscription"></a>Zobrazit trezorů v předplatném.
-Použití  **[Get-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvault)**  Chcete-li zobrazit seznam všech trezorů v aktuálním předplatném. Tento příkaz můžete použít, chcete-li zkontrolovat, zda byl vytvořen nový trezor nebo zobrazíte dostupné trezorů v rámci předplatného.
+Použití **[Get-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvault)** Chcete-li zobrazit seznam všech trezorů v aktuálním předplatném. Tento příkaz můžete použít, chcete-li zkontrolovat, zda byl vytvořen nový trezor nebo zobrazíte dostupné trezorů v rámci předplatného.
 
 Spuštění příkazu Get-AzureRmRecoveryServicesVault, chcete-li zobrazit všechny trezorů v rámci předplatného. Následující příklad ukazuje informace zobrazené pro každý trezor.
 
@@ -157,7 +157,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 Ochrana virtuálních počítačů pomocí trezoru služeb zotavení. Před použitím ochranu nastavit kontext trezoru (typ dat v úložišti) a ověřte zásady ochrany. Zásady ochrany je plán při spuštění úloh zálohování a jak dlouho mají být uchována každý snímek zálohy.
 
 ### <a name="set-vault-context"></a>Kontext sady trezoru
-Než povolíte ochranu na virtuálním počítači, použijte  **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)**  nastavit kontext úložiště. Po nastavení trezoru rámci platí pro všechny následující rutiny. Následující příklad nastaví kontext trezoru trezoru, *testvault*.
+Než povolíte ochranu na virtuálním počítači, použijte **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)** nastavit kontext úložiště. Po nastavení trezoru rámci platí pro všechny následující rutiny. Následující příklad nastaví kontext trezoru trezoru, *testvault*.
 
 ```
 PS C:\> Get-AzureRmRecoveryServicesVault -Name "testvault" | Set-AzureRmRecoveryServicesVaultContext
@@ -166,7 +166,7 @@ PS C:\> Get-AzureRmRecoveryServicesVault -Name "testvault" | Set-AzureRmRecovery
 ### <a name="create-a-protection-policy"></a>Vytvoření zásady ochrany
 Při vytváření trezoru služeb zotavení dodává s výchozí ochrana a zásady uchovávání informací. Výchozí zásady ochrany aktivuje úlohu zálohování každý den v zadanou dobu. Výchozí zásady uchovávání informací zachová denního bodu obnovení po dobu 30 dnů. Výchozí zásady můžete rychle zajistit ochranu virtuálního počítače a upravovat zásady později pomocí různých údajů.
 
-Použití  **[Get-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupprotectionpolicy)**  Chcete-li zobrazit zásady ochrany v trezoru. Tuto rutinu můžete použít, chcete-li získat konkrétní zásadu, nebo pokud chcete zobrazit zásady přidružené typu úlohy. Následující příklad získá zásady pro typ pracovního vytížení, AzureVM.
+Použití **[Get-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupprotectionpolicy)** Chcete-li zobrazit zásady ochrany v trezoru. Tuto rutinu můžete použít, chcete-li získat konkrétní zásadu, nebo pokud chcete zobrazit zásady přidružené typu úlohy. Následující příklad získá zásady pro typ pracovního vytížení, AzureVM.
 
 ```
 PS C:\> Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
@@ -180,7 +180,7 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 >
 >
 
-Zásady zálohování ochrany je přidružen alespoň jeden zásady uchovávání informací. Zásady uchovávání informací definuje, jak dlouho bod obnovení je udržováno před odstraněním. Použití  **[Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject)**  zobrazení výchozí zásady uchovávání informací.  Podobně můžete použít  **[Get-AzureRmRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupschedulepolicyobject)**  získat výchozí plán zásady.  **[New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)**  rutina vytvoří objekt prostředí PowerShell, který obsahuje informace zásady zálohování. Objekty zásad plán a uchovávání dat se používají jako vstupy pro  **[New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)**  rutiny. Následující příklad ukládá v proměnné plán zásad a zásad uchovávání informací. V příkladu používá k definici parametrů při vytváření zásady ochrany, tyto proměnné *NewPolicy*.
+Zásady zálohování ochrany je přidružen alespoň jeden zásady uchovávání informací. Zásady uchovávání informací definuje, jak dlouho bod obnovení je udržováno před odstraněním. Použití **[Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject)** zobrazení výchozí zásady uchovávání informací.  Podobně můžete použít **[Get-AzureRmRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupschedulepolicyobject)** získat výchozí plán zásady. **[New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)** rutina vytvoří objekt prostředí PowerShell, který obsahuje informace zásady zálohování. Objekty zásad plán a uchovávání dat se používají jako vstupy pro **[New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)** rutiny. Následující příklad ukládá v proměnné plán zásad a zásad uchovávání informací. V příkladu používá k definici parametrů při vytváření zásady ochrany, tyto proměnné *NewPolicy*.
 
 ```
 PS C:\> $schPol = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -193,7 +193,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 
 
 ### <a name="enable-protection"></a>Povolení ochrany
-Po definování zásad zálohování ochrany je stále nutné povolit zásady pro položku. Použití  **[povolit AzureRmRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/enable-azurermrecoveryservicesbackupprotection)**  k povolení ochrany. Povolení ochrany vyžaduje dva objekty - položky a zásady. Jakmile zásady je už přidružená k trezoru, aktivuje se v době definované v plán zásad zálohování pracovního postupu.
+Po definování zásad zálohování ochrany je stále nutné povolit zásady pro položku. Použití **[povolit AzureRmRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/enable-azurermrecoveryservicesbackupprotection)** k povolení ochrany. Povolení ochrany vyžaduje dva objekty - položky a zásady. Jakmile zásady je už přidružená k trezoru, aktivuje se v době definované v plán zásad zálohování pracovního postupu.
 
 Následující příklad povolí ochranu pro položku, V2VM, pomocí zásad, NewPolicy. K povolení ochrany na nešifrované virtuálních počítačích Resource Manager
 
@@ -243,7 +243,7 @@ PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $pol  -Retenti
 ```
 
 ## <a name="trigger-a-backup"></a>Spustit zálohu
-Můžete použít  **[zálohování AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem)**  se spustit úlohu zálohování. Pokud je prvotní zálohování, je úplné zálohování. Následné zálohy trvat přírůstkové kopie. Nezapomeňte použít  **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)**  nastavit kontext trezoru před spuštěním úlohy zálohování. V následujícím příkladu se předpokládá, že byl nastaven kontext úložiště.
+Můžete použít **[zálohování AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem)** se spustit úlohu zálohování. Pokud je prvotní zálohování, je úplné zálohování. Následné zálohy trvat přírůstkové kopie. Nezapomeňte použít **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)** nastavit kontext trezoru před spuštěním úlohy zálohování. V následujícím příkladu se předpokládá, že byl nastaven kontext úložiště.
 
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
@@ -260,7 +260,7 @@ V2VM              Backup               InProgress            4/23/2016 5:00:30 P
 >
 
 ## <a name="monitoring-a-backup-job"></a>Monitorování úlohy zálohování
-Dlouhotrvající operace, jako je například úlohy zálohování, můžete monitorovat bez použití portálu Azure. Stav probíhající úlohy, použijte  **[Get-AzureRmRecoveryservicesBackupJob](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupjob)**  rutiny. Tato rutina načte úlohy zálohování pro konkrétní úložiště a tento trezor je uveden v kontextu trezoru. Následující příklad získá stav úlohu v průběhu jako pole a ukládá stav v $joblist proměnné.
+Dlouhotrvající operace, jako je například úlohy zálohování, můžete monitorovat bez použití portálu Azure. Stav probíhající úlohy, použijte **[Get-AzureRmRecoveryservicesBackupJob](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupjob)** rutiny. Tato rutina načte úlohy zálohování pro konkrétní úložiště a tento trezor je uveden v kontextu trezoru. Následující příklad získá stav úlohu v průběhu jako pole a ukládá stav v $joblist proměnné.
 
 ```
 PS C:\> $joblist = Get-AzureRmRecoveryservicesBackupJob –Status "InProgress"
@@ -270,7 +270,7 @@ WorkloadName     Operation            Status               StartTime            
 V2VM             Backup               InProgress            4/23/2016 5:00:30 PM           cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
 ```
 
-Místo dotazování tyto úlohy pro dokončení – což je zbytečné další kód – použít  **[čekání AzureRmRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/wait-azurermrecoveryservicesbackupjob)**  rutiny. Tato rutina pozastaví spuštění až do dokončení úlohy nebo zadaný časový limit.
+Místo dotazování tyto úlohy pro dokončení – což je zbytečné další kód – použít **[čekání AzureRmRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/wait-azurermrecoveryservicesbackupjob)** rutiny. Tato rutina pozastaví spuštění až do dokončení úlohy nebo zadaný časový limit.
 
 ```
 PS C:\> Wait-AzureRmRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200
@@ -295,10 +295,10 @@ Následující obrázek znázorňuje hierarchie objektů z RecoveryServicesVault
 
 ![Hierarchie objektů služby obnovení zobrazující BackupContainer](./media/backup-azure-vms-arm-automation/backuprecoverypoint-only.png)
 
-Chcete-li obnovit zálohovaná data, Identifikujte položku zálohovanou a bod obnovení, který obsahuje data v daném okamžiku. Použití  **[obnovení AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/restore-azurermrecoveryservicesbackupitem)**  rutiny k obnovení dat z trezoru do účtu zákazníka.
+Chcete-li obnovit zálohovaná data, Identifikujte položku zálohovanou a bod obnovení, který obsahuje data v daném okamžiku. Použití **[obnovení AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/restore-azurermrecoveryservicesbackupitem)** rutiny k obnovení dat z trezoru do účtu zákazníka.
 
 ### <a name="select-the-vm"></a>Vyberte virtuální počítač
-GET pro objekt prostředí PowerShell, který označuje správné záložní položku, spusťte z kontejneru v trezoru a směrem dolů hierarchie objektů. Pokud chcete vybrat kontejner, který představuje virtuální počítač, použijte  **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)**  rutiny a prostřednictvím kanálu, který chcete  **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)**  rutiny.
+GET pro objekt prostředí PowerShell, který označuje správné záložní položku, spusťte z kontejneru v trezoru a směrem dolů hierarchie objektů. Pokud chcete vybrat kontejner, který představuje virtuální počítač, použijte **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)** rutiny a prostřednictvím kanálu, který chcete **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** rutiny.
 
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
@@ -306,7 +306,7 @@ PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedCon
 ```
 
 ### <a name="choose-a-recovery-point"></a>Vyberte bod obnovení
-Použití  **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)**  rutiny seznam všech bodů obnovení pro položku zálohování. Zvolte bod obnovení pro obnovení. Pokud si nejste jisti, který bod obnovení používat, je dobrým zvykem zvolte nejnovější RecoveryPointType = AppConsistent bodu v seznamu.
+Použití **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)** rutiny seznam všech bodů obnovení pro položku zálohování. Zvolte bod obnovení pro obnovení. Pokud si nejste jisti, který bod obnovení používat, je dobrým zvykem zvolte nejnovější RecoveryPointType = AppConsistent bodu v seznamu.
 
 V následující skript, proměnné **$rp**, je pole bodů obnovení pro vybranou položku zálohování, v posledních sedmi dnech. Toto pole je seřazen v obráceném pořadí času s indexem 0 nejnovější bod obnovení. Použijte standardní prostředí PowerShell pole indexování a vyberte bod obnovení. V příkladu $rp [0] vybere nejnovější bod obnovení.
 
@@ -331,7 +331,7 @@ BackupManagementType        : AzureVM
 
 
 ### <a name="restore-the-disks"></a>Obnovení disky
-Použití  **[obnovení AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/restore-azurermrecoveryservicesbackupitem)**  rutiny k obnovení dat a konfigurace zálohování položek bodu obnovení. Jakmile jste našli bod obnovení, je využít jako hodnota **- RecoveryPoint** parametr. V předchozím ukázkovém kódu **$rp [0]** byl bod obnovení použít. V následujícím vzorovém kódu **$rp [0]** je bod obnovení pro obnovení disku.
+Použití **[obnovení AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/restore-azurermrecoveryservicesbackupitem)** rutiny k obnovení dat a konfigurace zálohování položek bodu obnovení. Jakmile jste našli bod obnovení, je využít jako hodnota **- RecoveryPoint** parametr. V předchozím ukázkovém kódu **$rp [0]** byl bod obnovení použít. V následujícím vzorovém kódu **$rp [0]** je bod obnovení pro obnovení disku.
 
 Chcete-li obnovit disky a informace o konfiguraci:
 
@@ -343,13 +343,13 @@ WorkloadName     Operation          Status               StartTime              
 V2VM              Restore           InProgress           4/23/2016 5:00:30 PM                        cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
 ```
 
-Použití  **[čekání AzureRmRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/wait-azurermrecoveryservicesbackupjob)**  rutiny čekání na dokončení úlohy obnovení.
+Použití **[čekání AzureRmRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/wait-azurermrecoveryservicesbackupjob)** rutiny čekání na dokončení úlohy obnovení.
 
 ```
 PS C:\> Wait-AzureRmRecoveryServicesBackupJob -Job $restorejob -Timeout 43200
 ```
 
-Po dokončení úlohy obnovení, použijte  **[Get-AzureRmRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupjobdetails)**  rutiny Získejte podrobnosti o operaci obnovení. Vlastnost JobDetails obsahuje informace potřebné pro virtuální počítač znovu sestavit.
+Po dokončení úlohy obnovení, použijte **[Get-AzureRmRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupjobdetails)** rutiny Získejte podrobnosti o operaci obnovení. Vlastnost JobDetails obsahuje informace potřebné pro virtuální počítač znovu sestavit.
 
 ```
 PS C:\> $restorejob = Get-AzureRmRecoveryServicesBackupJob -Job $restorejob
@@ -533,7 +533,7 @@ Toto jsou základní kroky obnovit soubor ze zálohy virtuálního počítače A
 
 
 ### <a name="select-the-vm"></a>Vyberte virtuální počítač
-GET pro objekt prostředí PowerShell, který označuje správné záložní položku, spusťte z kontejneru v trezoru a směrem dolů hierarchie objektů. Pokud chcete vybrat kontejner, který představuje virtuální počítač, použijte  **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)**  rutiny a prostřednictvím kanálu, který chcete  **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)**  rutiny.
+GET pro objekt prostředí PowerShell, který označuje správné záložní položku, spusťte z kontejneru v trezoru a směrem dolů hierarchie objektů. Pokud chcete vybrat kontejner, který představuje virtuální počítač, použijte **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)** rutiny a prostřednictvím kanálu, který chcete **[ Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** rutiny.
 
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
@@ -541,7 +541,7 @@ PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedCon
 ```
 
 ### <a name="choose-a-recovery-point"></a>Vyberte bod obnovení
-Použití  **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)**  rutiny seznam všech bodů obnovení pro položku zálohování. Zvolte bod obnovení pro obnovení. Pokud si nejste jisti, který bod obnovení používat, je dobrým zvykem zvolte nejnovější RecoveryPointType = AppConsistent bodu v seznamu.
+Použití **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)** rutiny seznam všech bodů obnovení pro položku zálohování. Zvolte bod obnovení pro obnovení. Pokud si nejste jisti, který bod obnovení používat, je dobrým zvykem zvolte nejnovější RecoveryPointType = AppConsistent bodu v seznamu.
 
 V následující skript, proměnné **$rp**, je pole bodů obnovení pro vybranou položku zálohování, v posledních sedmi dnech. Toto pole je seřazen v obráceném pořadí času s indexem 0 nejnovější bod obnovení. Použijte standardní prostředí PowerShell pole indexování a vyberte bod obnovení. V příkladu $rp [0] vybere nejnovější bod obnovení.
 
@@ -565,7 +565,7 @@ BackupManagementType        : AzureVM
 
 ### <a name="mount-the-disks-of-recovery-point"></a>Připojit disky bodu obnovení
 
-Použití  **[Get-AzureRmRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprpmountscript)**  rutiny skript, který chcete připojit všechny disky bodu obnovení.
+Použití **[Get-AzureRmRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprpmountscript)** rutiny skript, který chcete připojit všechny disky bodu obnovení.
 
 > [!NOTE]
 > Disky jsou připojené jako disky připojené přes iSCSI na počítači, kde se spouští skript. Proto je téměř okamžitou a nedojde všech poplatků
@@ -582,7 +582,7 @@ Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc54
 Spusťte skript na počítači, ve které chcete obnovit soubory. Budete muset zadat heslo uvedené výše se spustit skript. Poté, co jsou disky připojené, pomocí Průzkumníka Windows souboru procházet nové svazky a soubory. Další informace najdete v části [souboru obnovení dokumentace](backup-azure-restore-files-from-vm.md)
 
 ### <a name="unmount-the-disks"></a>Odpojení disky
-Po zkopírování požadované soubory odpojit disky pomocí  **[zakázat AzureRmRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/disable-azurermrecoveryservicesbackuprpmountscript?view=azurermps-5.0.0)**  rutiny. Se důrazně doporučuje jako zajišťuje, že k souborům bod obnovení je odebrání přístupu k
+Po zkopírování požadované soubory odpojit disky pomocí **[zakázat AzureRmRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/disable-azurermrecoveryservicesbackuprpmountscript?view=azurermps-5.0.0)** rutiny. Se důrazně doporučuje jako zajišťuje, že k souborům bod obnovení je odebrání přístupu k
 
 ```
 PS C:\> Disable-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]

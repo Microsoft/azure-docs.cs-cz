@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/21/2018
+ms.date: 03/29/2018
 ms.author: mfussell
-ms.openlocfilehash: 1cf23a8f564553e65ac2c0fd34d44d81fe2327ea
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7dc467d9977d536011e1c3fcf663fc335f90a492
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>Spuštění služby jako uživatele služby Active Directory nebo skupiny
-Pomocí Azure Service Fabric můžete zabezpečit aplikace, které jsou spuštěny v clusteru v rámci jiné uživatelské účty. Díky spuštěné aplikace, i v prostředí sdílené hostované bezpečnější od sebe navzájem. Ve výchozím nastavení se aplikace Service Fabric běžet pod účtem, proces Fabric.exe kompatibilní se. Pro samostatné cluster Windows Server, můžete spustit službu jako [skupinový účet spravované služby (gMSA)](service-fabric-run-service-as-gmsa.md) nebo uživatele služby Active Directory nebo skupiny pomocí zásad RunAs. Všimněte si, že se používá služby Active Directory místně v rámci domény a není Azure Active Directory (Azure AD).
+Na samostatné clusteru Windows Server můžete spustit službu jako uživatele služby Active Directory nebo skupiny pomocí zásad RunAs.  Ve výchozím nastavení se aplikace Service Fabric běžet pod účtem, proces Fabric.exe kompatibilní se. Spouštění aplikací pod různými účty, i v sdílené hostovaném prostředí, je díky bezpečnější od sebe navzájem. Všimněte si, že se používá služby Active Directory místně v rámci domény a není Azure Active Directory (Azure AD).  Můžete taky spustit služba jako [skupinový účet spravované služby (gMSA)](service-fabric-run-service-as-gmsa.md).
 
 Pomocí účtem uživatele domény nebo skupiny můžete pak přístup k jiným prostředkům v doméně (například sdílené složky), kterým bylo uděleno oprávnění.
 

@@ -1,24 +1,24 @@
 ---
-title: "Správa agenta Azure Log Analytics | Microsoft Docs"
-description: "Tento článek popisuje různé správu úlohy, které obvykle provedete během životního cyklu z monitorování agenta MMA (Microsoft) nasazený na počítači."
+title: Správa agenta Azure Log Analytics | Microsoft Docs
+description: Tento článek popisuje různé správu úlohy, které obvykle provedete během životního cyklu z monitorování agenta MMA (Microsoft) nasazený na počítači.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2018
+ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 2e4daebf18d5edeba92bc14d5a4f699fbd2d94ce
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5ff4f79a607143683b37726f1c02a6057dc6b9b0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správu a údržbu agenta analýzy protokolů pro systém Windows a Linux
 
@@ -69,6 +69,34 @@ $mma.ReloadConfiguration()
 >[!NOTE]
 >Pokud jste použili příkazového řádku nebo skriptu dříve pro instalaci nebo konfiguraci agenta, `EnableAzureOperationalInsights` byl nahrazen `AddCloudWorkspace` a `RemoveCloudWorkspace`.
 >
+
+### <a name="linux-agent"></a>Agenta systému Linux
+Následující kroky ukazují, jak změnit konfiguraci agenta systému Linux, pokud se rozhodnete zaregistrovat ji pomocí různých pracovního prostoru nebo chcete odebrat z její konfigurace pracovního prostoru.  
+
+1.  Chcete-li ověřit, zda že je zaregistrován v pracovním prostoru, spusťte následující příkaz.
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -l` 
+
+    Má být vrácen stav podobně jako v následujícím příkladu- 
+
+    `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
+
+    Je důležité, zda je také stavu agenta je spuštěna, jinak nebude úspěšně dokončit následující kroky a změňte konfiguraci agenta.  
+
+2. Pokud je již zaregistrována k pracovním prostoru, odeberte registrované prostoru spuštěním následujícího příkazu.  Jinak Pokud není registrován, přejděte k dalšímu kroku.
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -X`  
+    
+3. Chcete-li zaregistrovat jiný pracovní prostor, spusťte příkaz `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]` 
+4. Chcete-li ověřit změny trvalo vliv, spusťte příkaz.
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -l` 
+
+    Má být vrácen stav podobně jako v následujícím příkladu- 
+
+    `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
+
+Služba agenta není nutné restartovat, aby změny vstoupily v platnost.
 
 ## <a name="update-proxy-settings"></a>Aktualizovat nastavení proxy serveru 
 Konfigurace agenta pro komunikaci se service pomocí proxy serveru nebo [OMS brány](log-analytics-oms-gateway.md) po nasazení, použijte jednu z následujících metod pro dokončení této úlohy.
@@ -148,7 +176,7 @@ Stažený soubor pro agenta je samostatný instalační balíček vytvořen s IE
 3. Na příkazovém řádku zadejte `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.  
 
 ### <a name="linux-agent"></a>Agenta systému Linux
-Odebrat agenta, spusťte následující příkaz na počítače se systémem Linux.  *– Mazání* argument úplně odebere agent a jeho konfigurace.
+Pokud chcete agenta odebrat, spusťte v počítači s Linuxem následující příkaz.  Argument *--purge* úplně odebere agenta a jeho konfiguraci.
 
    `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 

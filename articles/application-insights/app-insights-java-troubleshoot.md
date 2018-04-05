@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 894b2234074dcfb262de9033a7728cad3bef2248
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6b3205603b91077ca2c3226dcb78589de37d15cf
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
 Dotazy nebo problémy s [Azure Application Insights v jazyce Java][java]? Zde jsou některé tipy.
@@ -48,7 +48,7 @@ Dotazy nebo problémy s [Azure Application Insights v jazyce Java][java]? Zde js
 * Hledáte na správný zdroj AI? Prosím odpovídat iKey vaší aplikace na prostředek, kde se očekává telemetrie. Měly by být stejné.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Všechna data, která se byla očekávána se nezobrazí
-* Otevřete kvóty a ceny okno a zkontrolujte, zda [vzorkování](app-insights-sampling.md) je v provozu. (přenos 100 % znamená, že vzorkování není v provozu.) Službu Application Insights můžete nastavit tak, aby přijímal pouze část telemetrická data přenášená z vaší aplikace. To pomáhá při synchronizaci v rámci vaší měsíční kvóta telemetrie. 
+* Otevřete využití a odhadované náklady na stránku a zkontrolujte jestli [vzorkování](app-insights-sampling.md) je v provozu. (přenos 100 % znamená, že vzorkování není v provozu.) Službu Application Insights můžete nastavit tak, aby přijímal pouze část telemetrická data přenášená z vaší aplikace. To pomáhá při synchronizaci v rámci vaší měsíční kvóta telemetrie. 
 * Máte SDK vzorkování zapnutá? Pokud ano, data by vzorkovat rychlostí zadaný u všech příslušných typů.
 * Běží starší verze sady Java SDK? Počínaje verzí 2.0.1, jsme zavedli odolnost proti chybám mechanismus zpracování přerušované sítě a selhání back-end, jakož i trvalosti dat na místní jednotky.
 * Jsou získávání omezené z důvodu nadměrného telemetrie? Pokud zapnete informace o protokolování, zobrazí se protokol zpráva "Aplikace je omezen". Naše současný limit je 32 kB telemetrie položek za sekundu.

@@ -1,36 +1,34 @@
 ---
-title: "Požadované jednotky & odhadnout propustnost - Azure Cosmos DB | Microsoft Docs"
-description: "Další informace o tom, jak porozumět, zadejte a odhadnout požadavky na jednotky žádosti v Azure Cosmos DB."
+title: Požadované jednotky & odhadnout propustnost - Azure Cosmos DB | Microsoft Docs
+description: Další informace o tom, jak porozumět, zadejte a odhadnout požadavky na jednotky žádosti v Azure Cosmos DB.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: mimig
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: d0a3c310-eb63-4e45-8122-b7724095c32f
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/30/2018
 ms.author: mimig
-ms.openlocfilehash: 3679aa76d4a6b9fd6335371e1639f1f246867fa5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 5f733e9cbd90829eded80b1401093e2331a1eb16
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Požadované jednotky v Azure Cosmos DB
-Nyní k dispozici: Azure Cosmos DB [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner). Další informace v [odhadnout, musí vaše propustnost](request-units.md#estimating-throughput-needs).
 
-![Propustnost kalkulačky][5]
-
-## <a name="introduction"></a>Úvod
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je globálně distribuované databáze více modelu společnosti Microsoft. S Azure DB Cosmos nemáte pronajímat virtuálních počítačů, nasazení softwaru nebo monitorování databází. Azure Cosmos DB je provozována a průběžně monitorovat pomocí Microsoft nejvyšší technici k poskytování world třída data dostupnosti, výkonu a ochrany. Přistupujete k datům pomocí rozhraní API podle vaší volby, například [rozhraní SQL API](documentdb-introduction.md), [MongoDB rozhraní API](mongodb-introduction.md), [tabulky API](table-introduction.md)a Gremlin prostřednictvím [rozhraní Graph API](graph-introduction.md) - všechny nativně podporuje. Měna Azure Cosmos DB je jednotka žádosti (RU). S RUs není potřeba rezervovat kapacity pro čtení a zápis nebo přidělení procesoru, paměti a procesorů.
 
 Azure Cosmos DB podporuje několik rozhraní API s různé operace, od jednoduchého čte a zapisuje do grafu komplexní dotazy. Vzhledem k tomu, že ne všechny požadavky jsou stejné, jsou přiřazeny normalizovaný objemu **požadované jednotky** založenou na velikosti výpočty potřebné k požadavek vyřídit. Počet jednotek žádosti operace je deterministická, a můžete sledovat počet jednotek žádosti spotřebovávají všechny operace v Azure Cosmos DB prostřednictvím hlavičky odpovědi. 
 
-Zajistit předvídatelný výkon, budete muset rezervovat propustnost v jednotkách 100 RU za sekundu. 
+Zajistit předvídatelný výkon, budete muset rezervovat propustnost v jednotkách 100 RU za sekundu. Můžete [odhadnout, musí vaše propustnost](request-units.md#estimating-throughput-needs) pomocí Azure Cosmos DB [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner).
+
+![Propustnost kalkulačky][5]
 
 Po přečtení tohoto článku, budete moct odpovězte si na následující otázky:  
 
@@ -46,9 +44,9 @@ Azure Cosmos DB poskytuje rychlé, předvídatelný výkon pomocí *rezervován�
 
 S Azure Cosmos databáze je zadána vyhrazenou propustností z hlediska jednotek žádosti zpracování za sekundu. Si můžete představit jednotek žádosti jako měnu propustnost, které jste *rezervovat* množství jednotek zaručenou žádosti, které jsou k dispozici pro aplikaci na základě za sekundu.  Každé operace v Azure DB Cosmos - zápis dokumentu, provádění dotazu, aktualizace dokumentu - spotřebuje procesoru, paměti a procesorů.  To znamená, každou operaci způsobuje *požadavku poplatků*, vyjádřeného v *požadované jednotky*.  Principy faktory, které mají vliv poplatky jednotek žádosti, společně s požadavky na propustnost vaší aplikace, umožňuje aplikaci spustit jako efektivně možné náklady. Průzkumníku dat na portálu Azure je také skvělý nástroj pro testování základní dotazu.
 
-Doporučujeme začít následujícím videem, kde vysvětluje Aravind Ramachandran jednotek žádosti a předvídatelného výkonu s Azure Cosmos DB.
+Doporučujeme začít následujícím videem, kde Azure manažer programu DB Cosmos Andrew Liu popisuje jednotek žádosti.
 
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Predictable-Performance-with-DocumentDB/player]
+> [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 
 > 
 

@@ -1,25 +1,25 @@
 ---
-title: "Pomocí závislosti úkolů spouštět úlohy, které jsou založeny na dokončení jiné úlohy – Azure Batch | Microsoft Docs"
-description: "Vytvoření úlohy, které jsou závislé na dokončení jiné úlohy pro zpracování prostředí MapReduce style a podobné velkých objemů dat úlohy v Azure Batch."
+title: Pomocí závislosti úkolů spouštět úlohy, které jsou založeny na dokončení jiné úlohy – Azure Batch | Microsoft Docs
+description: Vytvoření úlohy, které jsou závislé na dokončení jiné úlohy pro zpracování prostředí MapReduce style a podobné velkých objemů dat úlohy v Azure Batch.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 465306d2de8d1dbe6ba1f0cd74be720b78a50de3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba85e075c39251b0b3d7c4b8bc3f8d53a1afadf7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Vytvoření závislosti úkolů ke spouštění úloh, které závisí na jiné úlohy
 
@@ -74,10 +74,10 @@ Tento fragment kódu vytvoří závislé úlohy s ID úlohy "Květy". Úloha "Kv
 ## <a name="dependency-scenarios"></a>Scénáře závislostí
 Existují tři scénáře závislostí základní úlohy, které můžete použít ve službě Azure Batch: 1: 1, 1 n a ID úkolu rozsah závislostí. Ty mohou být kombinovány zajistit scénáři čtvrtý m: n.
 
-| Scénář&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Příklad |  |
+| Scénář&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Příklad: |  |
 |:---:| --- | --- |
-|  [1: 1](#one-to-one) |*Úkolb* závisí na *Úkolua* <p/> *Úkolb* nebude naplánovaných pro spuštění až *Úkolua* byla úspěšně dokončena |![Diagram: Úloha 1: 1 závislostí][1] |
-|  [Jeden mnoho](#one-to-many) |*ÚkolC* závisí na *úkoluA* a *úkoluB* <p/> *Úkolc* nebude naplánovaných pro spuštění, dokud *Úkolua* a *Úkolb* byly úspěšně dokončeny |![Diagram: závislost na více úkolů][2] |
+|  [One-to-one](#one-to-one) |*Úkolb* závisí na *Úkolua* <p/> *Úkolb* nebude naplánovaných pro spuštění až *Úkolua* byla úspěšně dokončena |![Diagram: Úloha 1: 1 závislostí][1] |
+|  [One-to-many](#one-to-many) |*ÚkolC* závisí na *úkoluA* a *úkoluB* <p/> *Úkolc* nebude naplánovaných pro spuštění, dokud *Úkolua* a *Úkolb* byly úspěšně dokončeny |![Diagram: závislost na více úkolů][2] |
 |  [Rozsah ID úkolu](#task-id-range) |*Úkold* závisí na celou řadu úloh <p/> *Úkold* nebude naplánovaných pro spuštění až úlohy s ID *1* prostřednictvím *10* byly úspěšně dokončeny |![Diagram: Úloha id rozsah závislostí][3] |
 
 > [!TIP]
@@ -207,7 +207,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 - Postup vytvoření úlohy, které závisí na jiné úlohy
 - Jak provést tyto úlohy ve fondu výpočetních uzlů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 ### <a name="application-deployment"></a>Nasazení aplikace
 [Balíčky aplikací](batch-application-packages.md) funkce služby Batch poskytuje snadný způsob pro obě nasazení a verze aplikace, které vaše úkoly spouští na výpočetních uzlech.
 

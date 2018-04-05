@@ -1,11 +1,11 @@
 ---
-title: "Aktualizace firmwaru zařízení s Azure IoT Hub (Java nebo Java) | Microsoft Docs"
-description: "Jak používat správu zařízení v Azure IoT Hub zahájíte aktualizaci firmwaru zařízení. Použití zařízení Azure IoT SDK pro jazyk Java k implementaci aplikace simulovaného zařízení a implementovat aplikaci služby, která spustí aktualizaci firmwaru."
+title: Aktualizace firmwaru zařízení s Azure IoT Hub (Java nebo Java) | Microsoft Docs
+description: Jak používat správu zařízení v Azure IoT Hub zahájíte aktualizaci firmwaru zařízení. Použití zařízení Azure IoT SDK pro jazyk Java k implementaci aplikace simulovaného zařízení a implementovat aplikaci služby, která spustí aktualizaci firmwaru.
 services: iot-hub
 documentationcenter: java
 author: msebolt
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 70b84258-bc9f-43b1-b7cf-de1bb715f2cf
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,16 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: v-masebo
-ms.openlocfilehash: 024c2e9bf580f97b412a85913ca29d757872556a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 19d9cc6722d65d8bcd76d73fda0f24a598479647
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-javajava"></a>Použití správy zařízení za účelem zahájení aktualizaci firmwaru zařízení (Java nebo Java)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 V [Začínáme se správou zařízení] [ lnk-dm-getstarted] kurz, jste viděli, jak používat [dvojče zařízení] [ lnk-devtwin] a [přímé metody ] [ lnk-c2dmethod] primitiv vzdáleně restartování zařízení. Tento kurz používá stejné primitiv IoT Hub a ukazuje, jak provést aktualizaci firmwaru simulované začátku do konce.  Tento vzor slouží k implementaci firmwaru aktualizace pro [malin platformy zařízení implementace ukázka][lnk-rpi-implementation].
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 V tomto kurzu získáte informace o následujících postupech:
 
@@ -475,7 +477,7 @@ Nyní jste připraveni aplikaci spustit.
 
     ![Firmware aktualizace byla úspěšná.][img-fwupdate]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu přímá metoda používá k aktivaci aktualizace vzdálené firmwaru v zařízení a umožňuje sledovat průběh aktualizace firmwaru hlášené vlastnosti.
 
 Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá na několika zařízeních, najdete v článku [plán a všesměrového vysílání úlohy] [ lnk-tutorial-jobs] kurzu.

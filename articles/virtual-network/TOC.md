@@ -29,11 +29,11 @@
 ## Nasazení
 
 ### Skupiny zabezpečení sítě
-#### [Azure Portal](virtual-networks-create-nsg-arm-pportal.md)
-#### [Azure PowerShell](virtual-networks-create-nsg-arm-ps.md)
-#### [Azure CLI](virtual-networks-create-nsg-arm-cli.md)
-#### [Šablona](virtual-networks-create-nsg-arm-template.md)
-#### [Skupiny zabezpečení aplikací](create-network-security-group-preview.md)
+#### [Azure PowerShell](tutorial-filter-network-traffic.md)
+#### [Azure CLI](tutorial-filter-network-traffic-cli.md)
+#### Bez skupin zabezpečení aplikací
+##### [Azure Portal](virtual-networks-create-nsg-arm-pportal.md)
+##### [Šablona](virtual-networks-create-nsg-arm-template.md)
 #### Classic
 ##### [Azure PowerShell](virtual-networks-create-nsg-classic-ps.md)
 ##### [Azure CLI 1.0](virtual-networks-create-nsg-classic-cli.md)

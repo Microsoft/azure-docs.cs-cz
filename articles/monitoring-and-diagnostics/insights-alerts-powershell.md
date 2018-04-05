@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 03/28/2018
 ms.author: robb
-ms.openlocfilehash: 03026ee8bedd5277b2bb6cf28dabafabf207b0ae
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8f7df424b27e6899821a9bdd2f1d8397a0de35a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Vytvoření klasického metriky výstrahy v Azure monitorování pro služby Azure – prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -31,18 +31,18 @@ ms.lasthandoff: 03/23/2018
 ## <a name="overview"></a>Přehled
 
 > [!NOTE]
-> Tento článek popisuje postup vytvoření starší metriky výstrahy. Azure nyní podporuje monitorování [novější, lepší metriky výstrahy](monitoring-near-real-time-metric-alerts.md). Tyto výstrahy můžete sledovat více metriky a povolit pro výstrahy na dimenzí metriky. Podpora prostředí PowerShell pro novější metriky výstrahy tu bude brzo dostupná.
+> Tento článek popisuje postup vytvoření starší classic metriky výstrahy. Azure nyní podporuje monitorování [novější, lepší metriky výstrahy](monitoring-near-real-time-metric-alerts.md). Tyto výstrahy můžete sledovat více metriky a povolit pro výstrahy na dimenzí metriky. Podpora prostředí PowerShell pro novější metriky výstrahy tu bude brzo dostupná.
 >
 >
 
-Tento článek ukazuje, jak nastavit Azure metriky výstrah pomocí prostředí PowerShell.  
+Tento článek ukazuje, jak nastavit Azure classic metriky výstrah pomocí prostředí PowerShell.  
 
 Můžete zobrazit upozornění na základě monitorování metriky pro nebo událostí na služeb Azure.
 
 * **Metriky hodnoty** -výstrahy aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu přiřadíte v obou směrech. To znamená, aktivuje obě při nejprve je splněna podmínka, a pak později, pokud podmínka je už plněny.    
 * **Aktivity protokolu události** -výstrahu můžete aktivovat pro *každých* události nebo pouze tehdy, když dojde k určité události. Další informace o výstrahách aktivity protokolu [, klikněte sem](monitoring-activity-log-alerts.md)
 
-Můžete nakonfigurovat metriky výstrahu při aktivaci, proveďte následující:
+Můžete nakonfigurovat classic metriky výstrahu při aktivaci, proveďte následující:
 
 * odesílat oznámení e-mailu Správce služeb a spolusprávci
 * Odeslat e-mail na další e-mailů, které zadáte.
@@ -135,8 +135,8 @@ Další informace najdete vždy zadáte ```Get-Help``` a potom příkaz prostře
 
 ## <a name="next-steps"></a>Další postup
 * [Získat přehled o Azure monitorování](monitoring-overview.md) včetně typy informací, můžete sledovat a shromažďovat.
-* Další informace o [konfigurace webhooky ve výstrahách](insights-webhooks-alerts.md).
-* Další informace o [konfigurace výstrah pro aktivitu protokolu události](monitoring-activity-log-alerts.md).
+* Naučte se [konfigurace webhooky ve výstrahách](insights-webhooks-alerts.md).
+* Naučte se [nakonfigurujte upozornění na aktivitu protokolu události](monitoring-activity-log-alerts.md).
 * Další informace o [sad Azure Automation Runbook](../automation/automation-starting-a-runbook.md).
 * Získat [přehled shromažďování diagnostických protokolů](monitoring-overview-of-diagnostic-logs.md) ke shromažďování metrik podrobné vysoká frekvence vaší služby.
 * Získat [přehled metriky kolekce](insights-how-to-customize-monitoring.md) zkontrolovat služby je k dispozici a dobře reagovaly.

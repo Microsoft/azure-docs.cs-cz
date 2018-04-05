@@ -1,6 +1,6 @@
 ---
-title: "Úvod do Firewallu webových aplikací (WAF) služby Azure Application Gateway | Dokumentace Microsoftu"
-description: "Na této stránce najdete přehled firewallu webových aplikací (WAF) služby Application Gateway."
+title: Úvod do Firewallu webových aplikací (WAF) služby Azure Application Gateway | Microsoft Docs
+description: Na této stránce najdete přehled firewallu webových aplikací (WAF) služby Application Gateway.
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: amsriva
-ms.openlocfilehash: 50863b60f2843f033bdb07f4564d937cd6f0b7be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3945436a369f624ccb1d862b9623b8cfb1ed376
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 
@@ -44,7 +44,7 @@ Tady jsou základní výhody, které poskytují Application Gateway s firewallem
 
 * Můžete monitorovat útoky na své webové aplikace pomocí protokolu WAF generovaného v reálném čase. Tento protokol je integrovaný s [Azure Monitorem](../monitoring-and-diagnostics/monitoring-overview.md) a umožňuje sledování výstrah a protokolů WAF a snadnou identifikaci trendů.
 
-* Brzy budeme integrovat WAF do služby Azure Security Center. Azure Security Center vám poskytne centrální přehled o stavu zabezpečení všech vašich prostředků Azure.
+* WAF se integruje se službou Azure Security Center. Azure Security Center vám poskytne centrální přehled o stavu zabezpečení všech vašich prostředků Azure.
 
 ### <a name="customization"></a>Přizpůsobení
 
@@ -114,7 +114,7 @@ Firewall webových aplikací (WAF) služby Application Gateway lze nakonfigurova
 
 ### <a name="application-gateway-waf-reports"></a>Monitorování WAF
 
-Monitorování stavu službu Application Gateway je velmi důležité. Monitorování stavu vašeho firewallu webových aplikací a aplikací, které chrání, je zajišťována protokolováním a integrací se službami Azure Monitor, Azure Security Center (už brzy) a Log Analytics.
+Monitorování stavu službu Application Gateway je velmi důležité. Monitorování stavu vašeho firewallu webových aplikací a aplikací, které chrání, je zajišťována protokolováním a integrací se službami Azure Monitor, Azure Security Center a Log Analytics.
 
 ![Diagnostika](./media/application-gateway-web-application-firewall-overview/diagnostics.png)
 
@@ -124,7 +124,7 @@ Každý protokol aplikační brány je integrovaný do služby [Azure Monitor](.
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](../security-center/security-center-intro.md) pomáhá předcházet hrozbám, rozpoznávat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Služba Application Gateway je nyní [integrována do služby Azure Security Center](application-gateway-integration-security-center.md). Azure Security Center prohledává vaše prostředí a rozpoznává nechráněné webové aplikace. Nyní může doporučovat firewall webových aplikací (WAF) služby Application Gateway k ochraně těchto citlivých prostředků. Firewall webových aplikací (WAF) služby Application Gateway můžete vytvořit přímo ve službě Azure Security Center.  Tyto instance firewallu webových aplikací (WAF) jsou integrovány se službou Azure Security Center a budou posílat upozornění a informace o stavu zpět do služby Azure Security Center za účelem vytváření sestav.
+[Azure Security Center](../security-center/security-center-intro.md) pomáhá předcházet hrozbám, rozpoznávat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Služba Application Gateway se [integruje do služby Azure Security Center](application-gateway-integration-security-center.md). Azure Security Center prohledává vaše prostředí a rozpoznává nechráněné webové aplikace. Nyní může doporučovat firewall webových aplikací (WAF) služby Application Gateway k ochraně těchto citlivých prostředků. Firewall webových aplikací (WAF) služby Application Gateway můžete vytvořit přímo ve službě Azure Security Center.  Tyto instance firewallu webových aplikací (WAF) jsou integrovány se službou Azure Security Center a budou posílat upozornění a informace o stavu zpět do služby Azure Security Center za účelem vytváření sestav.
 
 ![Obrázek 1](./media/application-gateway-web-application-firewall-overview/figure1.png)
 

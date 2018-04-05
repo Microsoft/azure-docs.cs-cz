@@ -1,42 +1,42 @@
 ---
-title: "Připojit virtuální sítě pomocí virtuální sítě partnerský vztah - rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Zjistěte, jak připojit virtuální sítě pomocí virtuální sítě partnerský vztah."
+title: Připojit virtuální sítě pomocí virtuální sítě partnerský vztah - rozhraní příkazového řádku Azure | Microsoft Docs
+description: V tomto článku zjistěte, jak připojit virtuální sítě pomocí virtuální sítě partnerský vztah, pomocí rozhraní příkazového řádku Azure.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: 
+ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: bbf2e757e2d9ad76c59394ba0138a61fd4029d15
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.custom: ''
+ms.openlocfilehash: 29ab957e97c6aa57be6192e6ee4d86fe642ae95d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Připojit virtuální sítě pomocí virtuální sítě pomocí rozhraní příkazového řádku Azure vytvoření partnerského vztahu.
 
 Virtuální sítě můžete připojit k sobě navzájem s partnerský vztah virtuální sítě. Jakmile se kterými mají partnerský virtuální sítě, prostředky v obě virtuální sítě jsou komunikovat s mezi sebou, se stejnou latenci a šířky pásma, jako kdyby byly prostředky ve stejné virtuální síti. V tomto článku se dozvíte, jak:
 
-> [!div class="checklist"]
-> * Vytvořte dvě virtuální sítě
-> * Připojení dvě virtuální sítě pomocí virtuální sítě partnerského vztahu
-> * Nasazení virtuálního počítače (VM) do každé virtuální sítě
-> * Komunikace mezi virtuálními počítači
+* Vytvořte dvě virtuální sítě
+* Připojení dvě virtuální sítě pomocí virtuální sítě partnerského vztahu
+* Nasazení virtuálního počítače (VM) do každé virtuální sítě
+* Komunikace mezi virtuálními počítači
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, vyžaduje tento rychlý start, že používáte Azure CLI verze 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). 
+Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, v tomto článku vyžaduje, že používáte Azure CLI verze 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). 
 
 ## <a name="create-virtual-networks"></a>Vytvoření virtuálních sítí
 
@@ -197,30 +197,8 @@ Pokud již nepotřebujete, použijte [odstranění skupiny az](/cli/azure/group#
 az group delete --name myResourceGroup --yes
 ```
 
-**<a name="register"></a>Registrace pro partnerského vztahu preview globální virtuální sítě**
+## <a name="next-steps"></a>Další postup
 
-Vytváření partnerských vztahů virtuálních sítí ve stejné oblasti je všeobecně dostupné. Partnerský vztah virtuální sítě v různých oblastech je aktuálně ve verzi preview. V tématu [aktualizace virtuální sítě](https://azure.microsoft.com/updates/?product=virtual-network) pro dostupné oblasti. Rovnocenných počítačů virtuálních sítí v oblastech, nejprve je nutné zaregistrovat verzi Preview, pomocí následujících kroků (v rámci předplatného, které každý virtuální síť, kterou chcete peer se):
+V tomto článku jste zjistili, jak připojit ve stejné oblasti Azure, dvě sítě pomocí virtuální sítě partnerský vztah. Můžete také peer virtuální sítě v různých [podporované oblasti](virtual-network-manage-peering.md#cross-region) a v [různých předplatných Azure](create-peering-different-subscriptions.md#cli), stejně, jako je vytváření [hvězdicové sítě návrhů](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) s partnerský vztah. Další informace o partnerském vztahu virtuální sítě najdete v tématu [partnerského vztahu Přehled virtuálních sítí](virtual-network-peering-overview.md) a [spravovat virtuální sítě partnerských vztahů](virtual-network-manage-peering.md).
 
-1. Registrovat verzi Preview zadáním následujících příkazů:
-
-  ```azurecli-interactive
-  az feature register --name AllowGlobalVnetPeering --namespace Microsoft.Network
-  az provider register --name Microsoft.Network
-  ```
-
-2. Potvrďte, že jste zaregistrováni ve verzi preview tak, že zadáte následující příkaz:
-
-  ```azurecli-interactive
-  az feature show --name AllowGlobalVnetPeering --namespace Microsoft.Network
-  ```
-
-  Pokud se pokusíte rovnocenných počítačů v různých oblastech před virtuální sítě **RegistrationState** výstupu se zobrazí po zadání příkazu předchozí je **registrovaná** oba odběry partnerský vztah selže .
-
-## <a name="next-steps"></a>Další kroky
-
-V tomto článku jste se naučili připojení dvě sítě pomocí virtuální sítě partnerský vztah. V tomto článku jste se naučili připojení dvě sítě, ve stejné oblasti Azure, s partnerský vztah virtuální sítě. Můžete také partnerský uzel virtuálních sítí v [různých oblastech](#register)v [různých předplatných Azure](create-peering-different-subscriptions.md#portal) a dají se vytvářet [hvězdicové sítě návrhů](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) s partnerský vztah. Před partnerský vztah produkční virtuální sítě, je doporučeno, důkladně Seznamte se s [partnerského vztahu přehled](virtual-network-peering-overview.md), [spravovat vztahy](virtual-network-manage-peering.md), a [limity virtuální síťové](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
-
-Můžete [svého počítače připojit k virtuální síti](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) prostřednictvím sítě VPN a komunikovat s prostředky ve virtuální síti, nebo peered virtuální sítě. Nadále ukázky skriptu pro opakovaně použitelné skripty k dokončení mnoho úloh, které jsou popsané v článcích virtuální sítě.
-
-> [!div class="nextstepaction"]
-> [Ukázky skriptu virtuální sítě](../networking/cli-samples.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Můžete [svého počítače připojit k virtuální síti](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) prostřednictvím sítě VPN a komunikovat s prostředky ve virtuální síti, nebo peered virtuální sítě. Znovu použitelné skripty k dokončení mnoho úloh, které jsou popsané v článcích virtuální sítě, naleznete v části [skript ukázky](cli-samples.md).

@@ -1,12 +1,12 @@
 ---
 title: Co je Azure Backup? | Dokumenty Microsoft
-description: "Použijte službu Azure Backup k zálohování a obnovování dat a úloh ze serverů a pracovních stanic s Windows, serverů System Center DPM a virtuálních počítačů Azure."
+description: Použijte službu Azure Backup k zálohování a obnovování dat a úloh ze serverů a pracovních stanic s Windows, serverů System Center DPM a virtuálních počítačů Azure.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "zálohování a obnovení; recovery services; řešení zálohování"
+editor: ''
+keywords: zálohování a obnovení; recovery services; řešení zálohování
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;anuragm
 ms.custom: mvc
-ms.openlocfilehash: 600c4a29d7d7daabbbf6d1825671d109ea499c4b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 00ed2a64c672e1d2ae9a0037905a544b6c4424b7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Přehled funkcí ve službě Azure Backup
 Azure Backup je služba Azure, kterou můžete využívat k zálohování (ochraně) a obnovování vašich dat v Microsoft Cloudu. Azure Backup nahrazuje současná řešení místního nebo odlehlého zálohování spolehlivým, bezpečným a cenově konkurenceschopným cloudovým řešením. Azure Backup nabízí několik komponent, které můžete stáhnout a nasadit na vhodném počítači, na serveru, nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny komponenty služby Azure Backup (bez ohledu na to, jestli chráníte data v místním nebo cloudovém úložišti) je možné použít k zálohování dat do trezoru služby Recovery Services v Azure. Informace o tom, kterou komponentu použít pro ochranu konkrétních data, aplikací nebo úloh, najdete v [tabulce komponent Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (dále v tomto článku).
@@ -34,7 +34,7 @@ Tradiční řešení zálohování se vyvinula tak, že cloud považují za konc
 
 **Neomezené škálování** – Azure Backup používá základní výkon a neomezený rozsah cloudu Azure k zajištění vysoké dostupnosti, a to bez jakékoli režie s údržbou nebo monitorováním. Můžete nastavit výstrahy pro poskytování informací o událostech, ale nemusíte se starat o vysokou dostupnost svých dat v cloudu.
 
-**Více možností úložiště** – Jedním z aspektů vysoké dostupnosti je replikace úložiště. Azure Backup nabízí dva typy replikace: [místně redundantní úložiště](../storage/common/storage-redundancy.md#locally-redundant-storage) a [geograficky redundantní úložiště](../storage/common/storage-redundancy.md#geo-redundant-storage). Možnost úložiště pro zálohování zvolte podle potřeby:
+**Více možností úložiště** – Jedním z aspektů vysoké dostupnosti je replikace úložiště. Azure Backup nabízí dva typy replikace: [místně redundantní úložiště](../storage/common/storage-redundancy-lrs.md) a [geograficky redundantní úložiště](../storage/common/storage-redundancy-grs.md). Možnost úložiště pro zálohování zvolte podle potřeby:
 
 * Místně redundantní úložiště (LRS) replikuje vaše data třikrát (vytváří tři kopie dat) v jednotce škálování úložiště v datacentru. Všechny kopie dat existují ve stejné oblasti. Místně redundantní úložiště nabízí cenově úsporný způsob ochrany dat před selháním místního hardwaru.
 
@@ -219,7 +219,7 @@ Mezi běžné příklady chráněných instancí patří virtuální počítače
 
 
 ## <a name="what-is-a-recovery-services-vault"></a>Co je trezor služby Recovery Services?
-Trezor služby Recovery Services je entita online úložiště v Azure, která slouží k uchovávání dat, jako jsou záložní kopie, body obnovení a zásady zálohování. Trezory služby Recovery Services můžete používat pro uchovávání dat záloh u služeb Azure a místních serverů a pracovních stanic. Trezory služby Recovery Services usnadňují uspořádání dat záloh a současně minimalizují režii spojenou s jejich správou. V každém předplatném Azure můžete vytvořit až 25 trezorů služby Recovery Services pro každou oblast Azure. Pokud zvažujete, kam máte svá data ukládat, ne všechny oblasti jsou stejné. Informace o párování oblastí a další důležité informace o úložišti najdete v tématu popisujícím [geograficky redundantní úložiště](../storage/common/storage-redundancy.md#geo-redundant-storage).
+Trezor služby Recovery Services je entita online úložiště v Azure, která slouží k uchovávání dat, jako jsou záložní kopie, body obnovení a zásady zálohování. Trezory služby Recovery Services můžete používat pro uchovávání dat záloh u služeb Azure a místních serverů a pracovních stanic. Trezory služby Recovery Services usnadňují uspořádání dat záloh a současně minimalizují režii spojenou s jejich správou. V každém předplatném Azure můžete vytvořit až 25 trezorů služby Recovery Services pro každou oblast Azure. Pokud zvažujete, kam máte svá data ukládat, ne všechny oblasti jsou stejné. Informace o párování oblastí a další důležité informace o úložišti najdete v tématu popisujícím [geograficky redundantní úložiště](../storage/common/storage-redundancy-grs.md).
 
 Trezory služby Backup, které byly založené na nástroji Azure Service Manager, byly první verzí trezorů. Trezory služby Recovery Services, které přidávají modelové funkce správce Azure Resource Manager, jsou druhou verzí trezorů. Úplný popis rozdílů funkcí najdete v článku [Přehled trezoru služby Recovery Services](backup-azure-recovery-services-vault-overview.md). Trezory služby Backup už není možné vytvářet a všechny existující trezory služby Backup se upgradovaly na trezory služby Recovery Services. Trezory upgradované na trezory služby Recovery Services můžete spravovat pomocí webu Azure Portal.
 

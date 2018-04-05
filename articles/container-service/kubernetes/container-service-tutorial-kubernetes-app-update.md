@@ -1,6 +1,6 @@
 ---
-title: "Kurz Azure Container Service – Aktualizace aplikace"
-description: "Kurz Azure Container Service – Aktualizace aplikace"
+title: Kurz Azure Container Service – Aktualizace aplikace
+description: Kurz Azure Container Service – Aktualizace aplikace
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5f22bb3ac378bc9b1ff94db486d6ea6053c64514
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 87de0f23a00b035b12bac6cf655781961b1fb9e5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="update-an-application-in-kubernetes"></a>Aktualizace aplikace v Kubernetes
 
@@ -29,7 +29,7 @@ V tomto kurzu, který je šestou částí sedmidílné série, se aktualizuje ap
 > * Nahrání image kontejneru do služby Azure Container Registry
 > * Nasazení aktualizované image kontejneru
 
-V dalších kurzech se Operations Management Suite konfiguruje pro monitorování clusteru Kubernetes.
+V dalších kurzech se služba Log Analytics konfiguruje pro monitorování clusteru Kubernetes.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -71,7 +71,7 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>Testování aplikace v místním prostředí
 
-Přejděte na http://localhost:8080 a prohlédněte si aktualizovanou aplikaci.
+Přejděte na adresu http://localhost:8080 a prohlédněte si aktualizovanou aplikaci.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
@@ -166,7 +166,7 @@ V tomto kurzu jste aktualizovali aplikaci a zavedli tuto aktualizaci do clusteru
 > * Nahrání image kontejneru do služby Azure Container Registry
 > * Nasazení aktualizované aplikace
 
-V dalším kurzu se dozvíte, jak monitorovat Kubernetes s využitím sady Operations Management Suite.
+V dalším kurzu se dozvíte, jak monitorovat Kubernetes s využitím služby Log Analytics.
 
 > [!div class="nextstepaction"]
-> [Monitorování Kubernetes pomocí OMS](./container-service-tutorial-kubernetes-monitor.md)
+> [Monitorování Kubernetes pomocí Log Analytics](./container-service-tutorial-kubernetes-monitor.md)

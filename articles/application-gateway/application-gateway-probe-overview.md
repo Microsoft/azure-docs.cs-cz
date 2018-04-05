@@ -1,25 +1,23 @@
 ---
-title: "Stav monitorování přehled Azure Application Gateway. | Microsoft Docs"
-description: "Další informace o možnosti monitorování v Azure Application Gateway"
+title: Stav monitorování přehled Azure Application Gateway.
+description: Další informace o možnosti monitorování v Azure Application Gateway
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
 tags: azure-resource-manager
-ms.assetid: 7eeba328-bb2d-4d3e-bdac-7552e7900b7f
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
-ms.author: davidmu
-ms.openlocfilehash: 83a0b1be1aba48146aa1aaedb36ad9d9d23f17d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 3/30/2018
+ms.author: victorh
+ms.openlocfilehash: 2f62f01c1178f9529eb46051f088affccc5279a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Monitorování přehled stavu aplikace brány
 
@@ -40,11 +38,30 @@ Příklad: Konfigurace brány aplikace používat back-end serverů A, B a C př
 
 Pokud kontrola výchozí test nezdaří serveru A, služby application gateway odstraní ji z jeho fond back-end a síťový provoz bude zastaven k tomuto serveru. Výchozí kontroly stále bude kontrolovat pro server každých 30 sekund. Pokud serveru A odpoví na žádost o jeden z výchozí stav kontroly úspěšně, ho je přidat do fondu back-end zpět jako v pořádku a provozu spustí předávaných na server znovu.
 
+### <a name="probe-matching"></a>Sběru dat odpovídající
+
+Ve výchozím nastavení je považován za pořádku odpověď HTTP (S) se stavovým kódem 200. Sondy vlastní stavu kromě podporují dva odpovídající kritériím. Vyhovující kritériím umožňuje Volitelně změňte výchozí interpretaci co consititutes pořádku odpovědi.
+
+Toto jsou odpovídající kritériím: 
+
+- **Shoda kódu stavu odpovědi HTTP** – test kritéria pro přijetí přiřazování http odpovědi kódu nebo odpovědi kód rozsahy zadaný uživatel. Jednotlivé oddělených kódy stavu odpovědi nebo rozsah stavový kód není podporováno.
+- **Shoda textu odpovědi HTTP** – test, který vypadá v textu odpovědi HTTP a odpovídá s uživatelem zadaný řetězec kritéria přiřazování. Všimněte si, že na shodu pouze vyhledá přítomnosti uživatele zadaný řetězec v textu odpovědi a není úplné regulárního výrazu.
+
+Kritéria shody je možné zadat pomocí `New-AzureRmApplicationGatewayProbeHealthResponseMatch` rutiny.
+
+Příklad:
+
+```
+$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
+$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
+```
+Jakmile je zadaná kritéria shody, může být připojen testovat pomocí konfigurace `-Match` parametr v prostředí PowerShell.
+
 ### <a name="default-health-probe-settings"></a>Výchozí nastavení kontroly stavu
 
 | Vlastnost testu | Hodnota | Popis |
 | --- | --- | --- |
-| Adresa URL testu |http://127.0.0.1:\<portu\>/ |Cesta adresy URL |
+| Adresa URL testu |http://127.0.0.1:\<port\>/ |Cesta URL |
 | Interval |30 |Interval testu paměti v sekundách |
 | Časový limit |30 |Časový limit testu v sekundách |
 | Prahová hodnota špatného stavu |3 |Počet opakování testu. Back-end serverů je označena po počet po sobě jdoucích test selhání dosáhne prahová hodnota špatného stavu. |
@@ -52,7 +69,7 @@ Pokud kontrola výchozí test nezdaří serveru A, služby application gateway o
 > [!NOTE]
 > Port je stejný port jako nastavení HTTP back-end.
 
-Výchozí kontroly zjistí pouze http://127.0.0.1:\<port\> k určení stavu. Pokud potřebujete nakonfigurovat test stavu na Přejít na vlastní adresu URL nebo změnit další nastavení, musíte použít vlastní testy paměti, jak je popsáno v následujících krocích:
+Výchozí kontroly zjistí pouze http://127.0.0.1: \<port\> k určení stavu. Pokud potřebujete nakonfigurovat test stavu na Přejít na vlastní adresu URL nebo změnit další nastavení, musíte použít vlastní testy paměti, jak je popsáno v následujících krocích:
 
 ## <a name="custom-health-probe"></a>Test vlastní stavu
 
@@ -64,7 +81,7 @@ Následující tabulka obsahuje definice pro vlastnosti test vlastní stavu.
 
 | Vlastnost testu | Popis |
 | --- | --- |
-| Name (Název) |Název kontroly. Tento název se používá k odkazování na test v nastavení HTTP back-end. |
+| Název |Název kontroly. Tento název se používá k odkazování na test v nastavení HTTP back-end. |
 | Protocol (Protokol) |Protokol používaný k odesílání sonda. Tato kontrola používá protokol definované v nastavení HTTP back-end |
 | Hostitel |Název hostitele k odeslání test. Platí jenom v případě více lokalit je nakonfigurovaná na aplikační bránu, v opačném případě použijte "127.0.0.1". Tato hodnota se liší od název hostitele virtuálního počítače. |
 | Cesta |Relativní cesta kontroly. Platná cesta spustí z '/'. |
@@ -76,7 +93,7 @@ Následující tabulka obsahuje definice pro vlastnosti test vlastní stavu.
 > Pokud aplikace brána je nakonfigurovaná pro jednu lokalitu, ve výchozím nastavení hostitele název musí být zadán jako "127.0.0.1", pokud nebudou jinak nakonfigurovaná v vlastní test paměti.
 > Pro referenci vlastní test paměti posílá \<protokol\>://\<hostitele\>:\<port\>\<cestu\>. Port používaný bude stejný port, jak jsou definovány v nastavení HTTP back-end.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Po informací o sledování stavu Application Gateway, můžete nakonfigurovat [test vlastní stavu](application-gateway-create-probe-portal.md) na portálu Azure nebo [test vlastní stavu](application-gateway-create-probe-ps.md) pomocí prostředí PowerShell a modelu nasazení Azure Resource Manager.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png

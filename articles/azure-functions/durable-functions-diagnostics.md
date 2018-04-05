@@ -1,12 +1,12 @@
 ---
-title: "Diagnostika v trvanlivý funkce – Azure"
-description: "Zjistěte, jak diagnostikovat problémy s příponou trvanlivý funkce pro Azure Functions."
+title: Diagnostika v trvanlivý funkce – Azure
+description: Zjistěte, jak diagnostikovat problémy s příponou trvanlivý funkce pro Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 5ebab8660dfe21984e1a7f9a1cb925aea60de213
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2fc1c87a0eee9e822ffc997f67320ed23dd5916
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnostika trvanlivý funkcí (Azure Functions)
 
@@ -50,6 +50,7 @@ Všechny události životního cyklu instance orchestration způsobí vygenerov�
 * **důvod**: další data přidružená k události sledování. Například pokud instance čeká na oznámení o události externí, toto pole označuje název události, kterou se čeká na. Funkce se nezdařila, bude obsahovat podrobnosti o chybě.
 * **isReplay**: přehrány logickou hodnotu udávající, zda je sledování událostí pro spuštění.
 * **extensionVersion**: verzi rozšíření trvanlivý úloh. To je zvláště důležitá data při zasílání zpráv o chybách možné v rozšíření. Dlouho běžící instance může hlásit několik verzí, pokud dojde k aktualizaci, když je spuštěná. 
+* **sequenceNumber**: provádění pořadové číslo pro událost. V kombinaci s časové razítko umožňuje řazení událostí dobu provádění. *Všimněte si, že tato hodnota bude resetování nula, pokud hostitel restartuje je spuštěn instance, proto je důležité vždy seřadíte podle časové razítko nejprve pak sequenceNumber.*
 
 Podrobností sledování dat do služby Application Insights vygenerované se dá nakonfigurovat v `logger` části `host.json` souboru.
 
@@ -72,11 +73,11 @@ Ve výchozím nastavení jsou všechny sledování události vygenerované. Obje
 
 ### <a name="single-instance-query"></a>Jedna instance dotazu
 
-Následující dotaz zobrazí sledování historických dat pro jednu instanci [Hello pořadí](durable-functions-sequence.md) funkce orchestration. Zapsané pomocí [Application Insights dotazu jazyka (AIQL)](https://docs.loganalytics.io/docs/Language-Reference). Odfiltruje opětovného přehrání provádění tak pouze *logické* provádění cesta se zobrazí.
+Následující dotaz zobrazí sledování historických dat pro jednu instanci [Hello pořadí](durable-functions-sequence.md) funkce orchestration. Zapsané pomocí [Application Insights dotazu jazyka (AIQL)](https://docs.loganalytics.io/docs/Language-Reference). Odfiltruje opětovného přehrání provádění tak pouze *logické* provádění cesta se zobrazí. Události lze provést řazení podle řazení podle `timestamp` a `sequenceNumber` jak je znázorněno v následující dotaz: 
 
 ```AIQL
-let targetInstanceId = "bf71335b26564016a93860491aa50c7f";
-let start = datetime(2017-09-29T00:00:00);
+let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
+let start = datetime(2018-03-25T09:20:00);
 traces
 | where timestamp > start and timestamp < start + 30m
 | where customDimensions.Category == "Host.Triggers.DurableTask"
@@ -84,16 +85,17 @@ traces
 | extend instanceId = customDimensions["prop__instanceId"]
 | extend state = customDimensions["prop__state"]
 | extend isReplay = tobool(tolower(customDimensions["prop__isReplay"]))
+| extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"]) 
 | where isReplay == false
 | where instanceId == targetInstanceId
-| project timestamp, functionName, state, instanceId, appName = cloud_RoleName
+| sort by timestamp asc, sequenceNumber asc
+| project timestamp, functionName, state, instanceId, sequenceNumber, appName = cloud_RoleName
 ```
-Výsledkem je seznam sledování události, které se zobrazí cesta provádění orchestration, včetně funkcí, všechny aktivity.
 
-![Application Insights dotazu](media/durable-functions-diagnostics/app-insights-single-instance-query.png)
+Výsledkem je seznam sledování událostí, který zobrazuje provádění cestu Orchestrace, včetně jakékoli funkce aktivity seřazené podle času spuštění ve vzestupném pořadí.
 
-> [!NOTE]
-> Některé z těchto sledování událostí může být mimo pořadí z důvodu nedostatku přesnost v `timestamp` sloupce. To je sledována v Githubu jako [vydání #71](https://github.com/Azure/azure-functions-durable-extension/issues/71).
+![Application Insights dotazu](media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
+
 
 ### <a name="instance-summary-query"></a>Souhrn dotazu instance
 
@@ -202,7 +204,7 @@ To je užitečné pro ladění, protože uvidíte přesně jaké stav orchestrat
 > [!WARNING]
 > I když je vhodné zobrazit historii spouštění ve službě table storage, neberte některé závislé na této tabulce. Se může změnit při zpracovaní rozšíření trvanlivý funkce.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Další informace o použití trvanlivý časovače](durable-functions-timers.md)

@@ -1,6 +1,6 @@
 ---
-title: "Kurz Azure Container Service – Monitorování Kubernetes"
-description: "Kurz Azure Container Service – Monitorování Kubernetes pomocí Microsoft Operations Management Suite (OMS)"
+title: Kurz Azure Container Service – Monitorování Kubernetes
+description: Kurz Azure Container Service – Monitorování Kubernetes pomocí služby Log Analytics
 services: container-service
 author: dlepow
 manager: timlt
@@ -9,26 +9,26 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 965ce4b7e154684fc1d171c90f17498afc828a66
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: e7d55f1579ce45a39f9b07225bc88c8ef8ff6b66
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="monitor-a-kubernetes-cluster-with-operations-management-suite"></a>Monitorování clusteru Kubernetes pomocí Operations Management Suite
+# <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Monitorování clusteru Kubernetes pomocí služby Log Analytics
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 Monitorování clusteru a kontejnerů Kubernetes je důležité, zejména pokud spravujete produkční cluster ve velkém měřítku a s několika aplikacemi. 
 
-Můžete využít několik řešení pro monitorování Kubernetes od Microsoftu nebo jiných poskytovatelů. V tomto kurzu monitorujete cluster Kubernetes pomocí řešení kontejnerů v cloudovém řešení pro správu IT Microsoftu [Operations Management Suite](../../operations-management-suite/operations-management-suite-overview.md). (Řešení kontejnerů v OMS je ve verzi Preview.)
+Můžete využít několik řešení pro monitorování Kubernetes od Microsoftu nebo jiných poskytovatelů. V tomto kurzu monitorujete cluster Kubernetes pomocí řešení kontejnerů ve službě [Log Analytics](../../operations-management-suite/operations-management-suite-overview.md) – cloudovém řešení pro správu IT od společnosti Microsoft. (Řešení kontejnerů je ve verzi Preview.)
 
 V tomto kurzu, který je sedmou částí sedmidílné série, se probírají následující úlohy:
 
 > [!div class="checklist"]
-> * Získání nastavení pracovního prostoru OMS
+> * Získání nastavení pracovního prostoru Log Analytics
 > * Nastavení agentů OMS na uzlech Kubernetes
-> * Přístup k informacím o monitorování na portálu OMS nebo webu Azure Portal
+> * Přístup k informacím o monitorování na portálu OMS nebo Azure Portal
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -40,11 +40,19 @@ Pokud jste tyto kroky neprovedli a chcete si je projít, vraťte se ke [kurzu 1 
 
 Po získání přístupu k [portálu OMS](https://mms.microsoft.com) přejděte do **Nastavení** > **Připojené zdroje** > **Servery s Linuxem**. Tam najdete *ID pracovního prostoru* a primární nebo sekundární *Klíč pracovního prostoru*. Tyto hodnoty si poznamenejte, protože je budete potřebovat k nastavení agentů OMS v clusteru.
 
+## <a name="create-kubernetes-secret"></a>Vytvoření tajného kódu Kubernetes
+
+Pomocí příkazu [kubectl create secret][kubectl-create-secret]t uložte nastavení pracovního prostoru Log Analytics do tajného kódu Kubernetes s názvem `omsagent-secret`. Aktualizujte `WORKSPACE_ID` s použitím ID vašeho pracovního prostoru Log Analytics a `WORKSPACE_KEY` s použitím klíče pracovního prostoru.
+
+```console
+kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
+```
+
 ## <a name="set-up-oms-agents"></a>Nastavení agentů OMS
 
 Tady je soubor YAML pro nastavení agentů OMS na uzlech clusteru s Linuxem. Ten vytvoří [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) Kubernetes, který na každém uzlu clusteru spustí jeden identický pod. Prostředek DaemonSet je ideální pro nasazení agenta monitorování. 
 
-Uložte následující text do souboru `oms-daemonset.yaml` a nahraďte zástupné hodnoty *myWorkspaceID* a *myWorkspaceKey* svým ID a klíčem pracovního prostoru OMS. (V produkčním prostředí můžete tyto hodnoty zakódovat jako tajné kódy.)
+Uložte následující text do souboru `oms-daemonset.yaml` a nahraďte zástupné hodnoty *myWorkspaceID* a *myWorkspaceKey* svým ID a klíčem pracovního prostoru Log Analytics. (V produkčním prostředí můžete tyto hodnoty zakódovat jako tajné kódy.)
 
 ```YAML
 apiVersion: extensions/v1beta1
@@ -56,20 +64,13 @@ spec:
   metadata:
    labels:
     app: omsagent
-    agentVersion: v1.3.4-127
-    dockerProviderVersion: 10.0.0-25
+    agentVersion: 1.4.3-174
+    dockerProviderVersion: 1.0.0-30
   spec:
    containers:
      - name: omsagent 
        image: "microsoft/oms"
        imagePullPolicy: Always
-       env:
-       - name: WSID
-         value: myWorkspaceID
-       - name: KEY 
-         value: myWorkspaceKey
-       - name: DOMAIN
-         value: opinsights.azure.com
        securityContext:
          privileged: true
        ports:
@@ -82,6 +83,11 @@ spec:
           name: docker-sock
         - mountPath: /var/log 
           name: host-log
+        - mountPath: /etc/omsagent-secret
+          name: omsagent-secret
+          readOnly: true
+        - mountPath: /var/lib/docker/containers 
+          name: containerlog-path  
        livenessProbe:
         exec:
          command:
@@ -90,13 +96,27 @@ spec:
          - ps -ef | grep omsagent | grep -v "grep"
         initialDelaySeconds: 60
         periodSeconds: 60
+   nodeSelector:
+    beta.kubernetes.io/os: linux    
+   # Tolerate a NoSchedule taint on master that ACS Engine sets.
+   tolerations:
+    - key: "node-role.kubernetes.io/master"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"     
    volumes:
     - name: docker-sock 
       hostPath:
        path: /var/run/docker.sock
     - name: host-log
       hostPath:
-       path: /var/log
+       path: /var/log 
+    - name: omsagent-secret
+      secret:
+       secretName: omsagent-secret
+    - name: containerlog-path
+      hostPath:
+       path: /var/lib/docker/containers 
 ```
 
 Pomocí následujícího příkazu vytvořte DaemonSet:
@@ -118,30 +138,30 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR 
 omsagent   3         3         3         0            3           <none>          5m
 ```
 
-Po spuštění agentů trvá OMS ingestování a zpracování dat několik minut.
+Po spuštění agentů trvá službě Log Analytics ingestování a zpracování dat několik minut.
 
 ## <a name="access-monitoring-data"></a>Přístup k datům monitorování
 
-Data monitorování kontejnerů OMS můžete zobrazit a analyzovat pomocí [Řešení kontejnerů](../../log-analytics/log-analytics-containers.md) na portálu OMS nebo webu Azure Portal. 
+Data monitorování kontejnerů můžete zobrazit a analyzovat pomocí [Řešení kontejnerů](../../log-analytics/log-analytics-containers.md) na portálu OMS nebo Azure Portal. 
 
 Pokud chcete řešení kontejnerů nainstalovat s použitím [portálu OMS](https://mms.microsoft.com), přejděte do **Galerie řešení**. Pak přidejte **Řešení kontejnerů**. Případně můžete řešení kontejnerů přidat z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
 
-Na portálu OMS vyhledejte na řídicím panelu OMS dlaždici se souhrnem **Kontejnery**. Kliknutím na dlaždici zobrazíte podrobnosti, včetně událostí kontejnerů, chyb, stavu, inventáře imagí a využití procesoru a paměti. Podrobnější informace zobrazíte kliknutím na řádek na dlaždici nebo [prohledáváním protokolu](../../log-analytics/log-analytics-log-searches.md).
+Na portálu OMS vyhledejte na řídicím panelu souhrnnou dlaždici **Kontejnery**. Kliknutím na dlaždici zobrazíte podrobnosti, včetně událostí kontejnerů, chyb, stavu, inventáře imagí a využití procesoru a paměti. Podrobnější informace zobrazíte kliknutím na řádek na dlaždici nebo [prohledáváním protokolu](../../log-analytics/log-analytics-log-searches.md).
 
 ![Řídicí panel Kontejnery na portálu OMS](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
-Podobně na webu Azure Portal přejděte do části **Log Analytics** a vyberte název vašeho pracovního prostoru. Dlaždici se souhrnem **Kontejnery** zobrazíte kliknutím na **Řešení** > **Kontejnery**. Podrobnosti zobrazíte kliknutím na dlaždici.
+Podobně na portálu Azure Portal přejděte do části **Log Analytics** a vyberte název vašeho pracovního prostoru. Dlaždici se souhrnem **Kontejnery** zobrazíte kliknutím na **Řešení** > **Kontejnery**. Podrobnosti zobrazíte kliknutím na dlaždici.
 
 Podrobné pokyny k dotazování a analýze dat monitorování najdete v [dokumentaci k Azure Log Analytics](../../log-analytics/index.yml).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste monitorovali svůj cluster Kubernetes pomocí OMS. Mezi probírané úlohy patří:
+V tomto kurzu jste monitorovali svůj cluster Kubernetes pomocí služby Log Analytics. Mezi probírané úlohy patří:
 
 > [!div class="checklist"]
-> * Získání nastavení pracovního prostoru OMS
+> * Získání nastavení pracovního prostoru Log Analytics
 > * Nastavení agentů OMS na uzlech Kubernetes
-> * Přístup k informacím o monitorování na portálu OMS nebo webu Azure Portal
+> * Přístup k informacím o monitorování na portálu OMS nebo Azure Portal
 
 
 Na tomto odkazu najdete předem připravené ukázky skriptů pro službu Container Service.

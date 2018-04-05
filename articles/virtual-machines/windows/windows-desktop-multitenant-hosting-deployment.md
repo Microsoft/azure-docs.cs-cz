@@ -1,12 +1,12 @@
 ---
-title: "Postup nasazení Windows 10 v Azure s oprávnění víceklientské hostování"
-description: "Zjistěte, jak chcete maximalizovat své výhody Windows Software Assurance a dovést místní licencí do Azure"
+title: Postup nasazení Windows 10 v Azure s oprávnění víceklientské hostování
+description: Zjistěte, jak chcete maximalizovat své výhody Windows Software Assurance a dovést místní licencí do Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: xujing
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 6ad3b294e1d53d03f6ceb61048c8f657d8b471c0
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: c157fd8fded40f08c997c29ef6761f3c09dbd282
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Postup nasazení Windows 10 v Azure s oprávnění víceklientské hostování 
 Víceklientská hostování práva pro Windows 10 pro zákazníky s Windows 10 Enterprise E3/E5 za Windows virtuální plochy přístup uživatele nebo na uživatele (licence předplatného uživatele nebo licence předplatného rozšíření uživatele), umožňuje uvést vaše licence Windows 10 do cloudu a spouštět virtuální počítače s Windows 10 v Azure bez placení pro jiné licence. Další informace najdete v tématu [víceklientské hostování pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -107,7 +107,7 @@ LicenseType              :
 
 ## <a name="additional-information-about-joining-azure-ad"></a>Další informace o připojení Azure AD
 >[!NOTE]
->Azure poskytuje všechny virtuální počítače Windows se předdefinovaný účet správce, který nelze použít pro připojení AAD. Například *Nastavení > účet > přístup k práci nebo škole > + Připojit* nebude fungovat. Musíte vytvořit a přihlaste se jako druhého správce účtu pro připojení mannually Azure AD. Můžete také konfigurovat Azure AD pomocí balíčku pro zřizování, použijte tento odkaz *další kroky* části Další informace.
+>Azure poskytuje všechny virtuální počítače Windows se předdefinovaný účet správce, který nelze použít pro připojení AAD. Například *Nastavení > účet > přístup k práci nebo škole > + Připojit* nebude fungovat. Musíte vytvořit a přihlaste se jako druhého správce účtu pro připojení služby Azure AD ručně. Můžete také konfigurovat Azure AD pomocí balíčku pro zřizování, použijte tento odkaz *další kroky* části Další informace.
 >
 >
 

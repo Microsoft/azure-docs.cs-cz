@@ -1,6 +1,6 @@
 ---
-title: "Kurz služby Azure Container Registry – Příprava geograficky replikovaného registru kontejnerů Azure"
-description: "Vytvořte registr kontejnerů Azure, nakonfigurujte geografickou replikaci, připravte image Dockeru a nasaďte ji do registru. První část třídílné série."
+title: Kurz služby Azure Container Registry – Příprava geograficky replikovaného registru kontejnerů Azure
+description: Vytvořte registr kontejnerů Azure, nakonfigurujte geografickou replikaci, připravte image Dockeru a nasaďte ji do registru. První část třídílné série.
 services: container-registry
 author: mmacy
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: b73222d9b31ff840273bdb91a15f7eaf37ad2508
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3463acc3db3dae9633635aaf7410d876aacf9b38
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="prepare-a-geo-replicated-azure-container-registry"></a>Příprava geograficky replikovaného registru kontejnerů Azure
+# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
 Registr kontejnerů Azure je privátní registr Dockeru nasazený v Azure, který můžete uchovávat v síti blízké vašim nasazením. V této sérií tří kurzů zjistíte, jak s využitím geografické replikace nasadit webovou aplikaci ASP.NET Core spuštěnou v kontejneru Linuxu do dvou instancí služby [Web App for Containers](../app-service/containers/index.yml). Uvidíte, jak Azure automaticky nasadí image do obou instancí webové aplikace z nejbližšího geograficky replikovaného úložiště.
 
@@ -45,11 +45,11 @@ Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kr
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-Přihlaste se k [portálu Azure](http://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](http://portal.azure.com).
 
 Vyberte **Vytvořit prostředek** > **Kontejnery** > **Azure Container Registry**.
 
-![Vytvoření registru kontejnerů na webu Azure Portal][tut-portal-01]
+![Vytvoření registru kontejnerů na portálu Azure Portal][tut-portal-01]
 
 Nakonfiguruje nový registr pomocí následujících nastavení:
 
@@ -61,7 +61,7 @@ Nakonfiguruje nový registr pomocí následujících nastavení:
 
 Vyberte **Vytvořit** a nasaďte instanci služby ACR.
 
-![Vytvoření registru kontejnerů na webu Azure Portal][tut-portal-02]
+![Vytvoření registru kontejnerů na portálu Azure Portal][tut-portal-02]
 
 V celé zbývající části tohoto kurzu používáme `<acrName>` jako zástupný symbol pro **Název registru** kontejnerů, který jste zvolili.
 
@@ -73,21 +73,21 @@ V celé zbývající části tohoto kurzu používáme `<acrName>` jako zástupn
 
 Když teď máte registr úrovně Premium, můžete nakonfigurovat geografickou replikaci. Vaše webová aplikace, kterou v dalším kurzu nakonfigurujete pro spouštění ve dvou oblastech, si pak bude moci stáhnout image kontejnerů z nejbližšího registru.
 
-Na webu Azure Portal přejděte do svého nového registru kontejnerů a v části **SLUŽBY** vyberte **Replikace**.
+Na portálu Azure Portal přejděte do svého nového registru kontejnerů a v části **SLUŽBY** vyberte **Replikace**.
 
-![Replikace v uživatelském rozhraní registru kontejnerů na webu Azure Portal][tut-portal-03]
+![Replikace v uživatelském rozhraní registru kontejnerů na portálu Azure Portal][tut-portal-03]
 
 Zobrazí se mapa se zelenými šestiúhelníky, které představují oblasti Azure dostupné pro geografickou replikaci:
 
- ![Mapa oblastí na webu Azure Portal][tut-map-01]
+ ![Mapa oblastí na portálu Azure Portal][tut-map-01]
 
 Replikujte svůj registr do oblasti USA – východ tak, že vyberete příslušný zelený šestiúhelník a pak v části **Vytvořit replikaci** vyberete **Vytvořit**:
 
- ![Vytvoření replikace v uživatelském rozhraní na webu Azure Portal][tut-portal-04]
+ ![Vytvoření replikace v uživatelském rozhraní na portálu Azure Portal][tut-portal-04]
 
 Po dokončení replikace se na portálu u obou oblastí zobrazí stav *Připraveno*. Pomocí tlačítka **Aktualizovat** aktualizujte stav replikace. Vytvoření a synchronizace replik může trvat několik minut.
 
-![Stav replikace v uživatelském rozhraní na webu Azure Portal][tut-portal-05]
+![Stav replikace v uživatelském rozhraní na portálu Azure Portal][tut-portal-05]
 
 ## <a name="container-registry-login"></a>Přihlášení k registru kontejneru
 

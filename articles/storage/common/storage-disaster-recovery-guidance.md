@@ -1,6 +1,6 @@
 ---
-title: "Co dělat v případě výpadku Azure Storage | Microsoft Docs"
-description: "Co dělat v případě výpadku Azure Storage"
+title: Co dělat v případě výpadku Azure Storage | Microsoft Docs
+description: Co dělat v případě výpadku Azure Storage
 services: storage
 documentationcenter: .net
 author: tamram
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: tamram
-ms.openlocfilehash: 66406ed327f496dce7e77bb9ff650e0eec44bbdd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3c313025917bba06675d3b2d844a6740fab89fbc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Co dělat v případě výpadku služby Azure Storage
 Ve společnosti Microsoft můžeme fungovat pevného a ujistěte se, že jsou vždy k dispozici našich služeb. V některých případech vynutí nad rámec naše řízení dopad nám způsoby, které způsobit neplánované výpadky v jedné nebo více oblastech. Chcete-li zpracovat tyto výjimečných výskytů, poskytujeme vysoké úrovně pokynů pro služby Azure Storage.
@@ -42,10 +42,10 @@ Pokud jeden nebo více služeb úložiště nejsou dostupné na jeden nebo více
 V takovém případě není třeba žádné akce z vaší strany. Pracujeme usilovně obnovit dostupnost služby Azure. Stav služby můžete sledovat na [řídicím panelu stavu služeb Azure](https://azure.microsoft.com/status/).
 
 ### <a name="option-2-copy-data-from-secondary"></a>Možnost 2: Kopírování dat z sekundární
-Pokud jste zvolili [geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (doporučeno) pro účty úložiště, máte přístup pro čtení k datům ze sekundární oblasti. Můžete použít nástroje, jako [AzCopy](storage-use-azcopy.md), [prostředí Azure PowerShell](storage-powershell-guide-full.md)a [knihovna pro přesun dat Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) ke zkopírování dat z oblasti sekundární do jiný účet úložiště v unimpacted oblasti, a pak bodu aplikace k tomuto účtu úložiště pro čtení i zápisu dostupnosti.
+Pokud jste zvolili [geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (doporučeno) pro účty úložiště, máte přístup pro čtení k datům ze sekundární oblasti. Můžete použít nástroje, jako [AzCopy](storage-use-azcopy.md), [prostředí Azure PowerShell](storage-powershell-guide-full.md)a [knihovna pro přesun dat Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) ke zkopírování dat z oblasti sekundární do jiný účet úložiště v unimpacted oblasti, a pak bodu aplikace k tomuto účtu úložiště pro čtení i zápisu dostupnosti.
 
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Co můžete očekávat, pokud dojde k selhání úložiště
-Pokud jste zvolili [geograficky redundantní úložiště (GRS)](storage-redundancy.md#geo-redundant-storage) nebo [geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (doporučeno), Azure Storage bude uchovávat data odolná v dvou oblastí (primární i sekundární). V obou oblastí Azure Storage neustále udržuje víc replik vaše data.
+Pokud jste zvolili [geograficky redundantní úložiště (GRS)](storage-redundancy-grs.md) nebo [geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (doporučeno), Azure Storage bude uchovávat data odolná v dvou oblastí (primární i sekundární). V obou oblastí Azure Storage neustále udržuje víc replik vaše data.
 
 Při místní po havárii ovlivní primární oblasti, jsme se nejdřív pokusí použít k obnovení služby v této oblasti. Závisí na povaze po havárii a jeho dopadů, v některých výjimečných případech jsme nemusí být schopni obnovit primární oblast. V tomto bodě provedeme geo-převzetí služeb při selhání. Replikace dat mezi oblastmi je asynchronní proces, který zahrnuje zpoždění, takže je možné, že změny, které ještě nebyla replikována do sekundární oblasti mohou být ztraceny. Můžete zadat dotaz ["Čas poslední synchronizace" svého účtu úložiště](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) získat podrobné informace o stavu replikace.
 

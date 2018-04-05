@@ -1,12 +1,12 @@
 ---
-title: "Správa zařízení Azure IoT Hub cloudu zasílání zpráv s platformou iothub-explorer | Microsoft Docs"
-description: "Naučte se používat nástroj iothub-explorer rozhraní příkazového řádku k monitorování zařízení cloudu zprávy (D2C) a odesílat cloudu na zařízení (C2D) zpráv ve službě Azure IoT Hub."
+title: Správa zařízení Azure IoT Hub cloudu zasílání zpráv s platformou iothub-explorer | Microsoft Docs
+description: Naučte se používat nástroj iothub-explorer rozhraní příkazového řádku k monitorování zařízení cloudu zprávy (D2C) a odesílat cloudu na zařízení (C2D) zpráv ve službě Azure IoT Hub.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: "iothub Průzkumníku cloudu zařízení zasílání zpráv a iot hub cloudu do zařízení, cloudu pro zasílání zpráv zařízení"
+tags: ''
+keywords: iothub Průzkumníku cloudu zařízení zasílání zpráv a iot hub cloudu do zařízení, cloudu pro zasílání zpráv zařízení
 ms.assetid: 04521658-35d3-4503-ae48-51d6ad3c62cc
 ms.service: iot-hub
 ms.devlang: arduino
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: xshi
-ms.openlocfilehash: 30151b7bdc544bc36e959cc3528d37897198fc7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e74c08849ae2f98d3189c0cd3d340874ea085ff
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Použití iothub Průzkumníka k odesílání a přijímání zpráv mezi zařízením a IoT Hub
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 [iothub-explorer](https://github.com/azure/iothub-explorer) má několik příkazů, který usnadňuje správu IoT Hub. Tento kurz se zaměřuje na použití iothub Průzkumníka odesílat a přijímat zprávy mezi zařízením a službou IoT hub.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
 
@@ -82,7 +84,7 @@ Příkaz bliká DIODU, která je připojena k zařízení a odešle zprávu do z
 > [!Note]
 > Není nutné zařízení k odeslání příkazu samostatné ack zpět do služby IoT hub po přijetí zprávy.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Když jste se naučili sledování zpráv typu zařízení cloud a odesílání zpráv typu cloud zařízení mezi zařízení IoT a Azure IoT Hub.
 

@@ -1,12 +1,12 @@
 ---
-title: "Pomocí agenta Azure Backup k zálohování souborů a složek | Microsoft Docs"
-description: "Zálohování Windows souborů a složek do Azure pomocí Microsoft Azure Backup agent. Vytvoření trezoru služeb zotavení, nainstalujte agenta zálohování, definování zásad zálohování a spusťte prvotní zálohování souborů a složek."
+title: Pomocí agenta Azure Backup k zálohování souborů a složek | Microsoft Docs
+description: Zálohování Windows souborů a složek do Azure pomocí Microsoft Azure Backup agent. Vytvoření trezoru služeb zotavení, nainstalujte agenta zálohování, definování zásad zálohování a spusťte prvotní zálohování souborů a složek.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "Trezor záloh; zálohování na Windows server. zálohování systému windows."
+editor: ''
+keywords: Trezor záloh; zálohování na Windows server. zálohování systému windows.
 ms.assetid: 7f5b1943-b3c1-4ddb-8fb7-3560533c68d5
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/5/2018
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 88a588322d88f817937cf06e25b5b25a147f03d0
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 38f98a29edc2a0bfb0141a0a6fabad2727175f29
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Zálohování klienta nebo Windows Serveru do Azure s využitím modelu nasazení Resource Manager
 Tento článek vysvětluje, jak zálohování Windows serveru (nebo klienta Windows) souborů a složek do Azure s Azure Backup pomocí modelu nasazení Resource Manager.
@@ -94,7 +94,7 @@ Při prvním vytvoření trezoru Služeb zotavení určíte, jak má být úlož
 
   ![volby konfigurace úložiště](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-  Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako primární koncový bod úložiště záloh, pokračujte v používání **geograficky redundantního** úložiště. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md#geo-redundant-storage) a [místně redundantního](../storage/common/storage-redundancy.md#locally-redundant-storage) úložiště najdete v tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md).
+  Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako primární koncový bod úložiště záloh, pokračujte v používání **geograficky redundantního** úložiště. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy-grs.md) a [místně redundantního](../storage/common/storage-redundancy-lrs.md) úložiště najdete v tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md).
 
 Teď, když jste vytvořili trezor, připravte infrastrukturu k zálohování souborů a složek, stahování a instalace agenta služeb zotavení Microsoft Azure, stáhnete pověření k úložišti a následným použitím tyto přihlašovací údaje k registraci agenta s úložištěm.
 

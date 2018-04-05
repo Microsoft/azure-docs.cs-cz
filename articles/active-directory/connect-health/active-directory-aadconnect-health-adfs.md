@@ -1,5 +1,5 @@
 ---
-title: Používání služby Azure AD Connect Health se službou AD FS | Dokumentace Microsoftu
+title: Používání služby Azure AD Connect Health se službou AD FS | Microsoft Docs
 description: Toto je stránka o službě Azure AD Connect Health, která popisuje postup monitorování místní infrastruktury služby AD FS.
 services: active-directory
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e82b1364593ff70ed87efcaa24c135277002904
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ad8ed320a8dd91ea83dbaf71e2e9514b4df4cdb5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health pro synchronizaci](active-directory-aadconnect-health-sync.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](active-directory-aadconnect-health-adds.md).
@@ -126,16 +126,16 @@ Kromě toho je možné, aby se jedna IP adresa pokoušela o přihlášení za n�
 - Sestavy ke stažení pro účely offline analýzy a integrace s dalšími systémy prostřednictvím automatizace
 
 > [!NOTE]
-> Pokud chcete tuto sestavu použít, ujistěte se, že je povolené auditování AD FS. Další informace najdete v článku o [povolení auditování služby AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs).
->
->
+> Pokud chcete tuto sestavu použít, ujistěte se, že je povolené auditování AD FS. Další informace najdete v článku o [povolení auditování služby AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
+> Pro přístup k náhledu jsou vyžadována oprávnění Globálního správce nebo [Čtenáře zabezpečení](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#security-reader).  
+> 
 
 ### <a name="what-is-in-the-report"></a>Obsah sestavy
 Každá položka v sestavě rizikových IP adres ukazuje agregované informace o neúspěšných aktivitách přihlášení ke službě AD FS, které překročí určenou prahovou hodnotu. Obsahuje následující informace: ![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health-adfs/report4a.png)
 
 | Položky sestavy | Popis |
 | ------- | ----------- |
-| Časové razítko | Ukazuje časové razítko na základě místního času webu Azure Portal při zahájení časového intervalu zjišťování.<br /> Všechny denní události se generují o půlnoci UTC. <br />Hodinové události mají hodnotu časového razítka zaokrouhlenou na celou hodinu. Čas spuštění první aktivity můžete vyhledat v položce firstAuditTimestamp v exportovaném souboru. |
+| Časové razítko | Ukazuje časové razítko na základě místního času portálu Azure Portal při zahájení časového intervalu zjišťování.<br /> Všechny denní události se generují o půlnoci UTC. <br />Hodinové události mají hodnotu časového razítka zaokrouhlenou na celou hodinu. Čas spuštění první aktivity můžete vyhledat v položce firstAuditTimestamp v exportovaném souboru. |
 | Typ triggeru | Ukazuje typ časového intervalu zjišťování. Typ triggeru agregace určuje, jestli se aktivuje každou hodinu nebo každý den. To je užitečně k rozpoznání útoku hrubou silou s vysokou frekvencí od pomalého útoku, při kterém se počet pokusů distribuuje během celého dne. |
 | IP adresa | Jedna riziková IP adresa, ze které probíhaly aktivity přihlášení se špatným heslem nebo uzamčením extranetu. Může se jednat o adresu IPv4 nebo IPv6. |
 | Počet chybných zadání hesla | Počet chybných zadání hesla, ke kterým z dané IP adresy došlo během časového intervalu zjišťování. K chybnému zadání hesla může u určitých uživatelů dojít vícekrát. Všimněte si, že toto číslo nezahrnuje neúspěšné pokusy kvůli heslům, kterým vypršela platnost. |

@@ -1,6 +1,6 @@
 ---
-title: "Kurz Azure Container Service – Nasazení aplikace"
-description: "Kurz Azure Container Service – Nasazení aplikace"
+title: Kurz Azure Container Service – Nasazení aplikace
+description: Kurz Azure Container Service – Nasazení aplikace
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 02ec97fecd4759e9f35ab313ffe2d18fa076170a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7119976ada00e10ebeadf6fcff2daf125f439c17
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="run-applications-in-kubernetes"></a>Spuštění aplikací v Kubernetes
 
@@ -26,7 +26,7 @@ V tomto kurzu, který je čtvrtou částí sedmidílné série, se ukázková ap
 > * Spuštění aplikace v Kubernetes
 > * Testování aplikace
 
-V dalších kurzech se u této aplikace horizontálně navýší kapacita, aktualizuje se a nakonfiguruje se Operations Management Suite pro monitorování clusteru Kubernetes.
+V dalších kurzech se tato aplikace bude škálovat a aktualizovat a nakonfiguruje se služba Log Analytics pro monitorování clusteru Kubernetes.
 
 V tomto kurzu se předpokládá základní znalost konceptů Kubernetes. Podrobné informace o Kubernetes najdete v [dokumentaci ke Kubernetes](https://kubernetes.io/docs/home/).
 

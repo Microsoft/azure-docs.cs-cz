@@ -1,11 +1,11 @@
 ---
-title: "Pochopení přímé metody Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře - použijte přímý metody k vyvolání kódu na zařízení z aplikace služby."
+title: Pochopení přímé metody Azure IoT Hub | Microsoft Docs
+description: Příručka vývojáře - použijte přímý metody k vyvolání kódu na zařízení z aplikace služby.
 services: iot-hub
 documentationcenter: .net
 author: nberdy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 9f0535f1-02e6-467a-9fc4-c0950702102d
 ms.service: iot-hub
 ms.devlang: multiple
@@ -15,14 +15,17 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 003b3f6ef8a6fbc1c6fcdfc58f7d35bf6c42c9ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 47bf7437eda09a536aa2d960cf5ec474e23356a6
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Rady pro pochopení a volat přímé metody ze služby IoT Hub
-Centrum IoT vám dává možnost vyvolat přímé metody na zařízení z cloudu. Přímé metody představuje požadavek odpověď interakci s zařízení podobné volání protokolu HTTP v, které budou úspěch nebo neúspěch okamžitě (po časový limit definované uživatelem). Tento přístup je užitečné v případech, kde se liší v závislosti na tom, jestli je zařízení schopné reagovat během okamžitý zásah. Například odesílání služby SMS funkce wake-up do zařízení, pokud je offline (Probíhá dražší než volání metody SMS).
+Centrum IoT vám dává možnost volat přímé metody na zařízení z cloudu. Přímé metody představuje požadavek odpověď interakci s zařízení podobné volání protokolu HTTP v, které budou úspěch nebo neúspěch okamžitě (po časový limit definované uživatelem). Tento přístup je užitečné v případech, kde se liší v závislosti na tom, jestli je zařízení schopné reagovat během okamžitý zásah. Například odesílání služby SMS funkce wake-up do zařízení, pokud je offline (Probíhá dražší než volání metody SMS).
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+
 Každá metoda zařízení cílí jedno zařízení. [Úlohy] [ lnk-devguide-jobs] poskytnout způsob, jak volat přímé metody na několika zařízeních a naplánovat volání metody pro odpojené zařízení.
 
 Každý, kdo má **služba připojit** oprávnění na IoT Hub může vyvolat metodu na zařízení.
@@ -86,7 +89,7 @@ Back-end aplikace obdrží odpověď, který zahrnuje:
 ## <a name="handle-a-direct-method-on-a-device"></a>Popisovač přímá metoda na zařízení
 ### <a name="mqtt"></a>MQTT
 #### <a name="method-invocation"></a>Volání metody
-Zařízení obdrží přímá metoda žádosti k tématu MQTT:`$iothub/methods/POST/{method name}/?$rid={request id}`
+Zařízení obdrží přímá metoda žádosti k tématu MQTT: `$iothub/methods/POST/{method name}/?$rid={request id}`
 
 Text, který zařízení obdrží je v následujícím formátu:
 
@@ -109,7 +112,7 @@ Text se nastavuje pomocí zařízení a může být jakékoli stavu.
 
 ### <a name="amqp"></a>AMQP
 #### <a name="method-invocation"></a>Volání metody
-Zařízení přijímá požadavky přímá metoda vytvořením receive odkaz na adresu`amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
+Zařízení přijímá požadavky přímá metoda vytvořením receive odkaz na adresu `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
 
 AMQP zpráva dorazí na tento odkaz receive, který představuje požadavek metody. Obsahuje následující:
 * Vlastnost ID korelace, který obsahuje ID žádosti, které mají být předány zpět s odpovídající reakce – metoda
@@ -117,7 +120,7 @@ AMQP zpráva dorazí na tento odkaz receive, který představuje požadavek meto
 * Tělo zprávy AMQP obsahující datové části Metoda jako JSON
 
 #### <a name="response"></a>Odpověď
-Zařízení vytvoří propojení odesílání vrátit odpověď metody na adrese`amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
+Zařízení vytvoří propojení odesílání vrátit odpověď metody na adrese `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
 
 Metoda odpověď se vrátí na odesílání odkaz a struktura je následující:
 * Vlastnost ID korelace, který obsahuje ID požadavku předán ve zprávě požadavku metoda

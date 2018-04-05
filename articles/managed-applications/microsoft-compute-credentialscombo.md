@@ -1,6 +1,6 @@
 ---
-title: "Azure spravované aplikace CredentialsCombo elementu uživatelského rozhraní | Microsoft Docs"
-description: "Popisuje element Microsoft.Compute.CredentialsCombo uživatelského rozhraní pro spravované aplikace Azure"
+title: Azure elementu CredentialsCombo uživatelského rozhraní | Microsoft Docs
+description: Popisuje element Microsoft.Compute.CredentialsCombo uživatelského rozhraní pro portál Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: d8faa36aca762bc8d787d5750fcf7efdbaf986ea
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: c17677a9e34de4c1afca8f04c8bd22c2155c3439
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="microsoftcomputecredentialscombo-ui-element"></a>Element Microsoft.Compute.CredentialsCombo uživatelského rozhraní
-Skupina ovládacích prvků pomocí integrované ověřování systému Windows a Linux hesla a veřejného klíče SSH. Pomocí tohoto prvku při [vytváření spravovaných aplikací Azure](publish-service-catalog-app.md).
+# <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI element
+Skupina ovládacích prvků pomocí integrované ověřování systému Windows a Linux hesla a veřejného klíče SSH.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 ![Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo.png)
@@ -82,7 +82,7 @@ Pokud `osPlatform` je **Linux**, je použita na následující schéma:
 ```
 
 ## <a name="remarks"></a>Poznámky
-- `osPlatform`musí být zadán, a může být buď **Windows** nebo **Linux**.
+- `osPlatform` musí být zadán, a může být buď **Windows** nebo **Linux**.
 - Pokud `constraints.required` je nastaven na **true**, pak heslo nebo SSH veřejného klíče textová pole musí obsahovat hodnoty úspěšně ověřit. Výchozí hodnota je **true**.
 - Pokud `options.hideConfirmation` je nastaven na **true**, druhé textové pole pro potvrzení hesla je skrytý. Výchozí hodnota je **false**.
 - Pokud `options.hidePassword` je nastaven na **true**, možnost použít ověřování hesla je skrytý. Lze jej použít pouze tehdy, když `osPlatform` je **Linux**. Výchozí hodnota je **false**.
@@ -106,7 +106,6 @@ Pokud uživatel zadaný veřejný klíč SSH, je očekáván následující výs
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
-* Úvod do spravovaných aplikací, najdete v části [Azure spravovaných aplikací – přehled](overview.md).
+## <a name="next-steps"></a>Další postup
 * Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
 * Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](create-uidefinition-elements.md).

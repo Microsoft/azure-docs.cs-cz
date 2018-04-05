@@ -238,6 +238,9 @@
       items:
         - name: Správa cen a objemu dat
           href: app-insights-pricing.md
+          items:
+            - name: Podrobnosti plánu Enterprise
+              href: app-insights-pricing-enterprise-details.md
         - name: Sledování výkonu aplikací pomocí Application Insights pro SCOM
           href: app-insights-scom.md
     - name: Export

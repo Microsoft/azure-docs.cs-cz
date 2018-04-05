@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 94bf1a8fd9ac37087862823317bde5f3d130a3d6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e9343b4a0049b2eea30f903159fdeff0ae7ff851
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Průvodce Azure Marketplace a AppSource vydavatele
 
@@ -335,7 +335,7 @@ Před zahájením procesu publikování, je vhodné se seznámit s požadované 
 |Budete potřebovat toto publikování artefaktů  |Pro tento typ nabídky  |
 |---------|---------|
 |**Nabízejí (200 znaků) název a popis (2 000 znaků)**    |  Vše        |
-|**MPN ID a možnosti**   |  Konzultační služby       |
+|**ID sítě (MPN) Partner společnosti Microsoft**   |  Vše       |
 |**Země nebo oblast dostupnosti**   | Vše        |
 |**Doba zapojení**     |   Konzultační služby      |
 |**Použít odvětví, kategorie a hledaná klíčová slova**     |  Vše       |
@@ -412,6 +412,7 @@ V této části vám vysvětlíme, postup:
 
 |Krok registrace Marketplace.  |Čas  |Popis  |
 |---------|---------|---------|
+| Registrovat v síti Microoft partnera | 15 minut | Vydavatelé musí být registrované v Microsoft Partner sítě (MPN) Chcete-li mít první úroveň ověření účtu a přijímat další výhody a podpora pro se Azure Marketplace vydavatele |
 |Vytvoření ID společnosti Microsoft     |   15 minut      |   Partneři musí mít účet Microsoft ID. Toto ID Microsoft se použije pro přístup k portálu pro partnery cloudu.       |
 |Odeslání formuláře navrženém marketplace.     |  1 až 3 dnů       |  K odeslání formuláře navrženém ke spuštění procesu schvalování pro marketplace, musí partneři. Po odeslání formuláře se tým registrace marketplace. Zkontrolujte, zda aplikace a ověření žádosti.       |
 |Zaregistrovat v Centru pro vývojáře     |    5 až 10 dnů     | Registrace ve službě Microsoft Developer Center je vyžadována pro Microsoft chcete ověřit, že partner je platný právní subjekt s platnou daňové číslo pro země, ve kterém je zaregistrován. Středisko pro vývojáře vám umožní partnerovi registrované Microsoft developer a poskytnout přístup k programu vývojáře pro službu Azure. <br><br>Všimněte si, že pokud jste nedokončili formuláře navrženém marketplace, zobrazí se výzva zaplatili poplatek registrace $99. Pokud chcete, aby tento poplatek prominuty, vyplňte formulář navrženém marketplace a budete dostávat propagační kód prostřednictvím e-mailu.  |
@@ -425,6 +426,9 @@ Měli byste mít pouze jeden účet Microsoft ID pro Azure Marketplace a AppSour
 
 Vybraný e-mailovou adresu by měl být ve vaší podnikové domény a řídí váš IT tým. Pro pokyny před vytvořením ID, zkontrolujte v částech [pokyny a postupy](#guidelines-and-how-tos). 
 
+#### <a name="register-in-microsoft-partner-network"></a>Registrovat v síti partnera společnosti Microsoft 
+Čím dál AppSource vydavatele vaší společnosti nebo aplikace Azure Marketplace se partnerství se společností Microsoft. Účastí v Microsoft Partner sítě (MPN) bude získávání přístupu k nastavení výhod základní může společnost vývoj řešení pro technické a rozšiřovat vaše podnikání (např: obsahuje technické podpory). Účastí v Marketplace jako vydavatel bude požívat vaší výhod Microsoft Partner Network. Chcete-li zaregistrovat v MPN, navštivte [Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/). Pokud vaše společnost už je zaregistrovaný v MPN, by měl ověřit. Po registraci požádáme pro vaše id MPN ověřit váš účet ověřit váš profil vydavatele v [portál pro partnery cloudu](https://cloudpartner.azure.com/). 
+
 #### <a name="submit-the-marketplace-nomination-form"></a>Odeslání formuláře navrženém marketplace.
 Jako součást procesu registrace marketplace musíte odeslat navrženém formuláře. Formulář obsahuje informace o aplikaci nebo nabídky služeb, informace vaší společnosti a úroveň podpory, který bude poskytovat. 
 
@@ -435,7 +439,7 @@ Po odeslání formuláře se týmem Marketplace. Zkontrolujte, zda aplikace a ov
 
 #### <a name="register-in-the-developer-center"></a>Zaregistrovat v Centru pro vývojáře
 
-[Microsoft Developer Center](https://developer.microsoft.com/) slouží k registraci informace vaší společnosti. Osob žádajících o registraci musí být platný zástupce společnosti a musíte zadat jejich osobní údaje k ověření své identity. Osob žádajících o registraci musí použít Microsoft ID, které se sdílí pro společnost a musí použít stejný účet [portál pro partnery cloudu](https://cloudpartner.azure.com/). 
+[Microsoft Developer Center](https://developer.microsoft.com/) je vyžadován pro publikování aplikací, které budou mít transact funkcí, jako je virtuální počítače, šablony řešení a spravované aplikace Azure. Tento požadavek vám umožní Microsoft k ověření vaší společnosti informace společnosti právní, daň a bankovnictví entity. Osob žádajících o registraci musí být platný zástupce společnosti a musíte zadat jejich osobní údaje k ověření své identity. Osoba, která registrace musí používat Microsoft ID, které se sdílí pro společnost a musí použít stejný účet [portál pro partnery cloudu](https://cloudpartner.azure.com/). 
 
 >[!IMPORTANT]
 >Před pokusem o vytvoření účtu Microsoft Developer Center, ujistěte se, že vaše společnost ho neobsahuje.
@@ -453,9 +457,9 @@ Podrobné vysvětlení tohoto procesu najdete v tématu [pokyny o tom, jak zareg
 
 #### <a name="sign-in-to-the-cloud-partner-portal"></a>Přihlaste se k portálu pro partnery cloudu
 
-Po schválení obdržíte od týmu Marketplace, který název byla schválena a je zaregistrovaný v [Microsoft Developer Center](https://dev.windows.com), je vytvořen účet pro přístup k [portál pro partnery cloudu ](https://cloudpartner.azure.com). Přihlašovací údaje poprvé jsou součástí navrženém schválení e-mailu. 
+Po obdržení schválení od týmu Marketplace, který název byla schválena a je zaregistrovaný v [Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/) a v [Microsoft Developer Center](https://dev.windows.com) (Pokud povinné), účet se vytvoří k přístupu k [portál pro partnery cloudu](https://cloudpartner.azure.com). Přihlašovací údaje poprvé bude součástí navrženém schválení e-mailu. 
 
-Pomocí účtu webu Marketplace (ID služeb Microsoft) pro přístup k váš profil vydavatele. Pokud jste v cloudu portál pro partnery, posledním krokem je přidružit účet středisku pro vývojáře k příslušné profil vydavatele Marketplace k publikaci. Když provedete toto přidružení v portálu pro partnery cloudu ve svém profilu vydavatele, pomocí tlačítka v dolní části obrazovky.
+Pomocí účtu webu Marketplace (ID služeb Microsoft) pro přístup k váš profil vydavatele. V portálu pro partnery cloudu po posledním krokem je přidružení účtu Microsoft Partner Network a středisku pro vývojáře k příslušné Marketplace vydavatele profil publikování (v případě potřeby). To lze provést v portálu pro partnery cloudu ve vašem profilu vydavatele prostřednictvím tlačítka v dolní části obrazovky.
 
 Podrobné informace o tom, jak pomocí portálu pro partnery cloudu, přejděte na [Další](https://cloudpartner.azure.com/#Learn) nabídky v portálu a zkontrolujte **dokumentace** části. 
 
@@ -621,6 +625,5 @@ Pokud máte problémy s registrací středisku pro vývojáře, protokolu líste
    ![Tlačítko "Odeslat incident"](./media/marketplace-publishers-guide/devcentersubmitincident.png)
 
 3. Vyberte **usnadní Dev Center** jako **typ problému**a vyberte **publikování a Správa aplikací** jako **kategorie**. Vyberte **spustit e-mailu** tlačítko.   
-
 4. Na stránce přihlášení používáte libovolný účet Microsoft k přihlášení. Pokud nemáte účet Microsoft, vytvořte ji pomocí odkazu. 
 5. Zadejte podrobnosti o problému a odeslat lístek výběrem **odeslání** tlačítko.

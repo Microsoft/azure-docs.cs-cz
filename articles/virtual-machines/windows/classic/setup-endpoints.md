@@ -1,11 +1,11 @@
 ---
-title: "Nastavení koncových bodů na klasické virtuální počítač s Windows | Microsoft Docs"
-description: "Naučte se nastavit koncové body pro klasické virtuální počítač s Windows v portálu Azure a povolit komunikaci s virtuálního počítače s Windows v Azure."
+title: Nastavení koncových bodů na klasické virtuální počítač s Windows | Microsoft Docs
+description: Naučte se nastavit koncové body pro klasické virtuální počítač s Windows v portálu Azure a povolit komunikaci s virtuálního počítače s Windows v Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 8afc21c2-d3fb-43a3-acce-aa06be448bb6
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 34bfad1e41037f38e950db085c0c13b7066b3e96
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: d64feff341e389df4079c0603a414f0d40b754e7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-set-up-endpoints-on-a-classic-windows-virtual-machine-in-azure"></a>Jak nastavit koncové body na klasické virtuální počítač Windows v Azure
 Všechny systémy Windows, který můžou virtuální počítače, které vytvoříte v Azure pomocí modelu nasazení classic automaticky komunikují přes privátního síťový kanál s jinými virtuálními počítači ve stejné cloudové služby nebo virtuální sítě. Počítače v Internetu nebo k jiným virtuálním sítím však vyžadují koncové body směrovat příchozí síťový provoz do virtuálního počítače. Tento článek je také k dispozici pro [virtuální počítače s Linuxem](../../linux/classic/setup-endpoints.md).
@@ -34,7 +34,7 @@ Při vytváření virtuálního počítače s Windows v portálu Azure, běžné
 
 [!INCLUDE [virtual-machines-common-classic-setup-endpoints](../../../../includes/virtual-machines-common-classic-setup-endpoints.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Nastavit koncový bod virtuálního počítače pomocí rutiny Azure Powershellu naleznete v části [přidat AzureEndpoint](https://msdn.microsoft.com/library/azure/dn495300.aspx).
 * Používat rutiny Azure Powershellu ke správě ACL na koncový bod, najdete v části [seznamy Správa řízení přístupu (ACL) pro koncové body pomocí prostředí PowerShell](../../../virtual-network/virtual-networks-acl-powershell.md).
-* Pokud jste vytvořili virtuální počítač v modelu nasazení Resource Manager, můžete použít prostředí Azure PowerShell [vytvoření skupin zabezpečení sítě](../../../virtual-network/virtual-networks-create-nsg-arm-ps.md) pro řízení přenosu do virtuálního počítače.
+* Pokud jste vytvořili virtuální počítač v modelu nasazení Resource Manager, můžete použít prostředí Azure PowerShell [vytvoření skupin zabezpečení sítě](../../../virtual-network/tutorial-filter-network-traffic.md) pro řízení přenosu do virtuálního počítače.

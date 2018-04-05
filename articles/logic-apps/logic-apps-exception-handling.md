@@ -1,24 +1,24 @@
 ---
-title: "Chyba a zpracování výjimek pro Logic Apps v Azure | Microsoft Docs"
-description: "Vzory pro chybové události a zpracování výjimek v Logic Apps."
+title: Chyba a zpracování výjimek pro Logic Apps v Azure | Microsoft Docs
+description: Vzory pro chybové události a zpracování výjimek v Logic Apps.
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: dereklee
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: e50ab2f2-1fdc-4d2a-be40-995a6cc5a0d4
 ms.service: logic-apps
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/2018
 ms.author: deli; LADocs
-ms.openlocfilehash: 2ae4f0ae9782ada23089d364e8a1700144ef5ff7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 70dd4e98dbffd9dac27752f0b4c2f5ce4ca70bdc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="handle-errors-and-exceptions-in-logic-apps"></a>Zpracování chyb a výjimek v Logic Apps
 
@@ -55,16 +55,16 @@ Pokud nemáte definovat zásady opakování v **retryPolicy** části svou aplik
         "retryPolicy" : {
             "type": "exponential",
             "count": 4,
-            "interval": "PT7.5S",
+            "interval": "PT7S",
             "minimumInterval": "PT5S",
-            "maximumInterval": "PT45S"
+            "maximumInterval": "PT1H"
         }
     },
     "runAfter": {}
 }
 ```
 
-### <a name="none"></a>Žádné
+### <a name="none"></a>Žádný
 
 Pokud nastavíte **retryPolicy** k **žádné**, tato zásada neopakuje neúspěšných požadavků.
 
@@ -177,7 +177,7 @@ I když zachytávání chyb z oboru je užitečné, můžete také kontextu, kte
 
  **@result()** Funkce přijímá jeden parametr (oboru názvu) a vrátí pole všech akce výsledků v rámci tohoto oboru. Tyto objekty akce zahrnují stejné atributy, jako  **@actions()** objektu, například čas zahájení, čas ukončení, stav, vstupy, ID korelace a výstupy akce. Kontext pro všechny akce, které se nezdařilo odeslat v rámci oboru, můžete snadno spárujte  **@result()** fungovat s **runAfter** vlastnost.
 
-Ke spuštění akce *pro každou* akce v oboru, který má **se nezdařilo** výsledek, a pokud chcete filtrovat pole výsledky dolů akce se nezdařila, pair  **@result()** s  **[pole filtru](../connectors/connectors-native-query.md)**  akce a  **[ForEach](../logic-apps/logic-apps-control-flow-loops.md)**  smyčky. Můžete provést pole filtrované výsledek a provedení akce pro každé selhání pomocí **ForEach** smyčky. 
+Ke spuštění akce *pro každou* akce v oboru, který má **se nezdařilo** výsledek, a pokud chcete filtrovat pole výsledky dolů akce se nezdařila, pair  **@result()** s **[pole filtru](../connectors/connectors-native-query.md)** akce a **[ForEach](../logic-apps/logic-apps-control-flow-loops.md)** smyčky. Můžete provést pole filtrované výsledek a provedení akce pro každé selhání pomocí **ForEach** smyčky. 
 
 Tady je příklad, za nímž následuje podrobné vysvětlení, který odesílá požadavek HTTP POST s text odpovědi o všechny akce, které se nepodařilo v rámci oboru "My_Scope":
 

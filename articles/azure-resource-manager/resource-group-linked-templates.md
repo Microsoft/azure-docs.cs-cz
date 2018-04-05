@@ -1,6 +1,6 @@
 ---
-title: "Odkaz šablony pro nasazení Azure | Microsoft Docs"
-description: "Popisuje způsob použití propojených šablon v šablonu Azure Resource Manageru k vytvoření řešení modulární šablony. Ukazuje, jak chcete předat hodnoty parametrů, zadejte soubor parametrů a dynamicky vytvořené adresy URL."
+title: Odkaz šablony pro nasazení Azure | Microsoft Docs
+description: Popisuje způsob použití propojených šablon v šablonu Azure Resource Manageru k vytvoření řešení modulární šablony. Ukazuje, jak chcete předat hodnoty parametrů, zadejte soubor parametrů a dynamicky vytvořené adresy URL.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: c9a7fc0025e6f4f2b793f0616b4bc41c22c2a498
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 326d6873ae78c5f712832c4cfce9c793f1dfbf37
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Pomocí propojená a vnořené šablony při nasazování prostředků Azure
 
@@ -446,7 +446,7 @@ Následující příklad ukazuje, jak předat SAS token při propojení do šabl
 }
 ```
 
-V prostředí PowerShell můžete získat token pro kontejner a nasazení šablon s:
+V prostředí PowerShell můžete získat token pro kontejner a nasazení šablon pomocí následujících příkazů. Všimněte si, že **containerSasToken** parametru je definováno v šabloně. Se nejedná o parametr v **New-AzureRmResourceGroupDeployment** příkaz.
 
 ```powershell
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates

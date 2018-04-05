@@ -1,18 +1,18 @@
 ---
-title: "Přehled služby Azure událostí mřížky"
-description: "Popisuje mřížky událostí Azure a jeho koncepty."
+title: Přehled služby Azure událostí mřížky
+description: Popisuje mřížky událostí Azure a jeho koncepty.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/30/2018
 ms.author: babanisa
-ms.openlocfilehash: 5e700e3e9d17e790083facf00c7f4b8decf9037a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 335d6aba3a3d2098fa64aeda8c58c8dd7f4e6776
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Úvod do Azure událostí mřížky
 
@@ -33,25 +33,26 @@ Událost mřížky v současné době podporuje následující oblasti:
 *   Západní USA
 *   Západní USA 2
 
-Tento článek obsahuje přehled Azure událostí mřížky. Pokud chcete začít pracovat s událostí mřížky, najdete v části [vytvořit a směrování vlastních událostí s Azure událostí mřížky](custom-event-quickstart.md). Následující obrázek ukazuje, jak připojí mřížky události vydavatele a obslužné rutiny, ale neposkytuje úplný seznam podporovaných možností.
+Tento článek obsahuje přehled Azure událostí mřížky. Pokud chcete začít pracovat s událostí mřížky, najdete v části [vytvořit a směrování vlastních událostí s Azure událostí mřížky](custom-event-quickstart.md). Následující obrázek ukazuje, jak událostí mřížky připojí zdroje a obslužné rutiny, ale neposkytuje úplný seznam podporovaných možností.
 
 ![Funkční model událostí mřížky](./media/overview/functional-model.png)
 
-## <a name="event-publishers"></a>Zdroje událostí
+## <a name="event-sources"></a>Zdroje událostí
 
-Následující služby Azure v současné době je integrované vydavatele podpora mřížky událostí:
+Následující služby Azure v současné době podporují odesílání událostí do mřížky událostí:
 
 * Předplatná Azure (operace správy)
 * Vlastní témata
 * Event Hubs
 * IoT Hub
 * Skupiny prostředků (operace správy)
+* Service Bus
 * Objekt Blob úložiště
 * Úložiště pro obecné účely v2 (GPv2)
 
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 
-Následující služby Azure v současné době je podpora předdefinované obslužné rutiny událostí mřížky: 
+Následující služby Azure v současné době podporují zpracování události z události mřížky: 
 
 * Azure Automation
 * Azure Functions
@@ -60,7 +61,7 @@ Následující služby Azure v současné době je podpora předdefinované obsl
 * Microsoft Flow
 * WebHooky
 
-Při použití Azure Functions jako obslužná rutina, používejte aktivační událost mřížky místo obecné aktivace protokolu HTTP. Událost mřížky ověří automaticky aktivuje událost mřížky funkce. S obecné aktivace protokolu HTTP, je nutné implementovat [ověření odpovědi](security-authentication.md#webhook-event-delivery).
+Při použití Azure Functions jako obslužná rutina, používejte aktivační událost mřížky místo obecné aktivace protokolu HTTP. Event Grid automaticky ověřuje aktivační události funkcí Event Grid. U obecných aktivačních událostí HTTP je potřeba implementovat [odpověď ověření](security-authentication.md#webhook-event-delivery).
 
 ## <a name="concepts"></a>Koncepty
 

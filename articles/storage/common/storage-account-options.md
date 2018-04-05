@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: jirwin
-ms.openlocfilehash: 2c69519b865169b477950bc8fa659d5ad9081bbf
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 75d1580df5e36b2c88939fde9077c5a1948f6348
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-storage-account-options"></a>Možnosti účtu Azure Storage
 
@@ -218,7 +218,7 @@ K monitorování existujících účtů úložiště a sesbírání dat můžete
 Další informace najdete na stránkách věnovaných [metrikám Analýzy úložiště](https://msdn.microsoft.com/library/azure/hh343258.aspx) a [tabulkovému schématu metrik Analýzy úložiště](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
 > [!NOTE]
-> Účty úložiště Blob zpřístupňují koncový bod služby Table Storage pouze pro účely ukládání a zpřístupnění dat metrik pro tento účet. Účty zónově redundantního úložiště (ZRS) podporují shromažďování dat metrik, zatímco účty úložiště ZRS Classic toto nepodporují. Další informace o zónově redundantním úložišti najdete v tématu [Zónově redundantní úložiště](storage-redundancy.md#zone-redundant-storage). 
+> Účty úložiště Blob zpřístupňují koncový bod služby Table Storage pouze pro účely ukládání a zpřístupnění dat metrik pro tento účet. 
 
 Pokud chcete monitorovat využití úložiště pro účet úložiště Blob, je potřeba povolit metriky kapacity.
 Když tuto funkci zapnete, data o kapacitě služby Blob pro daný účet úložiště se budou denně zaznamenávat jako zápisy do tabulky *$MetricsCapacityBlob* v rámci stejného účtu úložiště.

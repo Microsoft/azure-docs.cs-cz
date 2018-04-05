@@ -6,8 +6,10 @@
 ## [Předplatné a omezení služeb](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # Začínáme
-## [Vytvoření brány VPN založené na trasách – Azure Portal](create-routebased-vpn-gateway-portal.md)
-## [Vytvoření brány VPN založené na trasách – PowerShell](create-routebased-vpn-gateway-powershell.md)
+## Vytvoření brány VPN založené na trasách
+### [Azure Portal](create-routebased-vpn-gateway-portal.md)
+### [Azure PowerShell](create-routebased-vpn-gateway-powershell.md)
+### [Azure CLI](create-routebased-vpn-gateway-cli.md)
 
 # Koncepty
 ## [Plánování a návrh pro VPN Gateway](vpn-gateway-plan-design.md)
@@ -86,13 +88,16 @@
 ### [Ukázka: Zařízení Cisco ASA (IKEv2/bez BGP)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
 ## [Migrace z modelu Classic do Resource Manageru](vpn-gateway-classic-resource-manager-migration.md)
 ## [Řešení problémů](vpn-gateway-troubleshoot.md)
-### [Ověření propustnosti sítě VPN do virtuální sítě](vpn-gateway-validate-throughput-to-vnet.md)
 ### [Nastavení zařízení brány firewall nebo VPN navrhované komunitou](vpn-gateway-third-party-settings.md)
-### [Problémy s připojením typu Point-to-Site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-#### [Problémy s připojením typu Point-to-Site – klient Mac OS X VPN](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
-### [Problémy s připojením typu Site-to-Site](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
-#### [Připojení typu Site-to-Site se přerušovaně odpojuje](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [Konfigurace a ověření připojení VPN nebo virtuální sítě](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
+### [Ověření propustnosti sítě VPN do virtuální sítě](vpn-gateway-validate-throughput-to-vnet.md)
+### Potíže s připojením typu Point-to-Site
+#### [Problémy s připojením typu Point-to-Site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+#### [Problémy s připojením typu Point-to-Site – klient Mac OS X VPN](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+### Potíže s připojením typu Site-to-Site
+#### [Problémy s připojením typu Site-to-Site](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
+#### [Připojení typu Site-to-Site se přerušovaně odpojuje](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
+
 
 # Referenční informace
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)

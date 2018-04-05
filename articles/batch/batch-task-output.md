@@ -1,24 +1,24 @@
 ---
-title: "Zachovat výsledků nebo protokoly z dokončených úloh a úloh k úložišti dat – Azure Batch | Microsoft Docs"
-description: "Další informace o různé možnosti pro zachování dat výstup z úlohy a úkoly služby Batch. Můžete zachovat data do úložiště Azure nebo do jiného úložiště dat."
+title: Zachovat výsledků nebo protokoly z dokončených úloh a úloh k úložišti dat – Azure Batch | Microsoft Docs
+description: Další informace o různé možnosti pro zachování dat výstup z úlohy a úkoly služby Batch. Můžete zachovat data do úložiště Azure nebo do jiného úložiště dat.
 services: batch
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ca93e823f02b1483ed290cf89de191937d1e2c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb8b1ca3514e27221e95cb2def823c8f89d151e5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="persist-job-and-task-output"></a>Trvalý výstup úloh a funkcí
 
@@ -79,7 +79,7 @@ Pomocí rozhraní API služby Batch lze zachovat úkolů, když výstup:
 - Chcete zachovat data do Azure Storage kontejner s názvem podle [dávkového souboru konvence standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). 
 
 > [!NOTE]
-> Rozhraní API služby Batch nepodporuje zachování dat z úloh spuštěných ve fondech vytvořen s konfigurací cloudové služby. Informace o zachování úloh výstup z fondů systémem konfiguraci cloudových služeb najdete v tématu [zachovat úloh a úkolů data do služby Azure Storage pomocí knihovny Batch souboru konvence pro .NET k uchování](batch-task-output-file-conventions.md)
+> Rozhraní API služby Batch nepodporuje zachování dat z úloh spuštěných ve fondech vytvořen s konfigurací cloudové služby. Informace o zachování úloh výstup z fondů systémem konfiguraci cloudových služeb najdete v tématu [zachovat úloh a úkolů data do služby Azure Storage pomocí knihovny Batch souboru konvence pro .NET k uchování ](batch-task-output-file-conventions.md)
 > 
 > 
 
@@ -113,11 +113,11 @@ Můžete implementovat standardní pojmenování souboru konvence, sami když ch
 
 Můžete také implementovat vlastní řešení Přesun celého souboru. Použít tato metoda při:
 
-- Chcete zachovat data úloh k úložišti dat než Azure Storage. K nahrání souborů do úložiště dat jako Azure SQL nebo Azure DataLake, můžete vytvořit vlastní skript nebo spustitelný soubor nahrát do tohoto umístění. Potom ji můžete volat po spuštění vaší primární spustitelný soubor na příkazovém řádku. V uzlu systému Windows, například může volat tyto dva příkazy:`doMyWork.exe && uploadMyFilesToSql.exe`
+- Chcete zachovat data úloh k úložišti dat než Azure Storage. K nahrání souborů do úložiště dat jako Azure SQL nebo Azure DataLake, můžete vytvořit vlastní skript nebo spustitelný soubor nahrát do tohoto umístění. Potom ji můžete volat po spuštění vaší primární spustitelný soubor na příkazovém řádku. V uzlu systému Windows, například může volat tyto dva příkazy: `doMyWork.exe && uploadMyFilesToSql.exe`
 - Chcete provést kontrolu odkazující nebo časná nahrávání počáteční výsledků.
 - Chcete zachovat podrobnou kontrolu nad zpracování chyb. Například můžete implementovat vlastní řešení, pokud chcete použít k provádění určitých akcí nahrávání založené na konkrétní úkol ukončovací kód akce závislosti úkolů. Další informace o Akce závislosti úkolů najdete v tématu [vytvoření závislosti úkolů ke spouštění úloh, které jsou závislé na dalších úkolech,](batch-task-dependencies.md). 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Prozkoumat pomocí nové funkce v rozhraní API služby Batch uchovávat data úloh v [zachovat data úloh do služby Azure Storage službou Batch služby API](batch-task-output-files.md).
 - Další informace o použití knihovny Batch souboru konvence pro .NET v [zachovat úloh a úkolů data do služby Azure Storage pomocí knihovny Batch souboru konvence pro technologii .NET zachovat ](batch-task-output-file-conventions.md).

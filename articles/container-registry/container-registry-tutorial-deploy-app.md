@@ -1,6 +1,6 @@
 ---
-title: "Kurz pro Azure kontejneru registru – nasazení webové aplikace z registru kontejner Azure"
-description: "Nasazení založené na systému Linux webové aplikace pomocí bitové kopie kontejneru z registru geograficky replikované kontejner Azure. Dva součástí série, třemi částmi."
+title: Kurz služby Azure Container Registry – Nasazení webové aplikace ze služby Azure Container Registry
+description: Nasaďte linuxovou webovou aplikaci pomocí image kontejneru z geograficky replikovaného registru kontejneru Azure. Druhá část třídílné série.
 services: container-registry
 author: mmacy
 manager: timlt
@@ -9,110 +9,110 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: d775a17cb8069a7521788d850d7d52b92cc67526
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: MT
+ms.openlocfilehash: 51aa3c6fc56e974fc1729a1d2fe35c889adf35e2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="deploy-web-app-from-azure-container-registry"></a>Nasazení webové aplikace z registru kontejner Azure
+# <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>Kurz: Nasazení webové aplikace ze služby Azure Container Registry
 
-Toto je část dva v řadě kurz třemi částmi. V [první část](container-registry-tutorial-prepare-registry.md), byl vytvořen privátní, geograficky replikované kontejneru registru a bitovou kopii kontejner byl vytvořen ze zdroje a instaluje do registru. V tomto článku nasadíte do dvě instance webové aplikace ve dvou různých oblastech Azure využívat výhod sítě zavřít aspektů registru geograficky replikované kontejneru.
+Toto je druhá část z třídílné série kurzů. V [první části](container-registry-tutorial-prepare-registry.md) jste vytvořili privátní, geograficky replikovaný registr kontejneru a ze zdroje jste sestavili image kontejneru, kterou jste vložili do registru. V tomto článku nasadíte kontejner do dvou instancí webových aplikací ve dvou různých oblastech Azure a využijete tak aspekt blízkosti sítě u geograficky replikovaného registru.
 
-V tomto kurzu součástí dvě řady:
+V této druhé části série kurzů se naučíte:
 
 > [!div class="checklist"]
-> * Nasazení bitové kopie kontejneru do dvou *webové aplikace pro kontejnery* instancí
-> * Ověřte nasazené aplikace
+> * Nasadit image kontejneru do dvou instancí služby *Web Apps for Containers*.
+> * Ověřit nasazenou aplikaci.
 
-Pokud jste ještě nevytvořili geograficky replikované registru a instaluje bitovou kopii kontejnerizované ukázkové aplikace v registru vrátit k předchozí kurz v této sérii [Příprava geograficky replikované kontejner Azure registru](container-registry-tutorial-prepare-registry.md).
+Pokud jste ještě nevytvořili geograficky replikovaný registr a nevložili jste image kontejnerizované ukázkové aplikace do registru, vraťte se do předchozího kurzu v této sérii: [Příprava geograficky replikovaného registru kontejnerů Azure](container-registry-tutorial-prepare-registry.md).
 
-V další části řady aktualizaci aplikace potom odešlete novou bitovou kopii kontejneru do registru. Nakonec přejdete na každou spuštěnou instanci webové aplikace, abyste zobrazili změny automaticky projeví v obou zobrazující geografická replikace registru kontejner Azure a pomocí webhooků v akci.
+V další části této série aplikaci zaktualizujete a pak vložíte novou image kontejneru do registru. Nakonec přejdete na každou ze spuštěných instancí webové aplikace a přesvědčíte se, že se změny automaticky projevily v obou instancích. Uvidíte tak, jak v praxi funguje geografická replikace registru kontejneru Azure a webhooky.
 
-## <a name="automatic-deployment-to-web-apps-for-containers"></a>Automatické nasazení do webové aplikace pro kontejnery
+## <a name="automatic-deployment-to-web-apps-for-containers"></a>Automatické nasazení do služby Web Apps for Containers
 
-Azure registru kontejneru poskytuje podporu pro nasazování kontejnerizovaných aplikací přímo na [webové aplikace pro kontejnery](../app-service/containers/index.yml). V tomto kurzu použijete portál Azure k nasazení kontejneru bitové kopie vytvořené v předchozí kurzu dva plány webové aplikace umístěné v různých oblastech Azure.
+Služba Azure Container Registry poskytuje podporu pro nasazování kontejnerizovaných aplikací do služby [Web Apps for Containers](../app-service/containers/index.yml). V tomto kurzu nasadíte pomocí portálu Azure Portal image kontejneru, kterou jste vytvořili v předchozím kurzu, do dvou plánů webových aplikací umístěných v různých oblastech Azure.
 
-Při nasazení webové aplikace z image kontejneru v registru, a máte registru geograficky replikované ve stejné oblasti, vytvoří kontejner registru Azure nasazení bitové kopie [webhooku](container-registry-webhook.md) za vás. Po stisknutí novou bitovou kopii do kontejneru úložiště, webhooku převezme změn a nová bitová kopie kontejneru automaticky nasadí do vaší webové aplikace.
+Když nasadíte webovou aplikaci z image kontejneru v registru a máte geograficky replikovaný registr ve stejné oblasti, vytvoří vám služba Azure Container Registry [webhook](container-registry-webhook.md) pro nasazení image. Když do úložiště kontejnerů vložíte novou image, převezme webhook tuto změnu a automaticky nasadí novou image kontejneru do vaší webové aplikace.
 
-## <a name="deploy-a-web-app-for-containers-instance"></a>Nasazení webové aplikace pro instanci kontejnery
+## <a name="deploy-a-web-app-for-containers-instance"></a>Nasazení instance služby Web App for Containers
 
-V tomto kroku vytvoření webové aplikace pro instanci kontejnery v *západní USA* oblast.
+V tomto kroku vytvoříte instanci služby Web App for Containers v oblasti *USA – západ*.
 
-Přihlaste se k [portál Azure](https://portal.azure.com) a přejděte do registru, kterou jste vytvořili v předchozí kurzu.
+Přihlaste se na portál [Azure Portal](https://portal.azure.com) a přejděte do registru, který jste vytvořili v předchozím kurzu.
 
-Vyberte **úložiště** > **acr helloworld**, klikněte pravým tlačítkem na **v1** značky pod **značky** a vyberte **Nasadit do webové aplikace**.
+Vyberte **Úložiště** > **acr helloworld** a pak klikněte pravým tlačítkem na značku **v1** v části **Značky** a vyberte **Nasadit do webové aplikace**.
 
-![Nasazení do služby app service na portálu Azure][deploy-app-portal-01]
+![Nasazení do služby App Service na portálu Azure Portal][deploy-app-portal-01]
 
-V části **webovou aplikaci pro kontejnery** , se zobrazí, zadejte následující hodnoty pro každé nastavení:
-
-| Nastavení | Hodnota |
-|---|---|
-| **Název lokality** | Globálně jedinečného názvu pro webovou aplikaci. V tomto příkladu používáme formát `<acrName>-westus` snadno identifikovat registru a webové aplikace je nasazená z oblasti. |
-| **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
-| **Umístění plánu služby aplikace** | Vytvořit nový plán s názvem `plan-westus` v **západní USA** oblast. |
-| **Bitové kopie** | `acr-helloworld:v1`
-
-Vyberte **vytvořit** ke zřízení webové aplikace na *západní USA* oblast.
-
-![Webové aplikace na konfiguraci systému Linux na portálu Azure][deploy-app-portal-02]
-
-## <a name="view-the-deployed-web-app"></a>Zobrazení nasazené webové aplikace
-
-Po dokončení nasazení můžete zobrazit běžící aplikaci tak, že přejdete na jeho adresu URL v prohlížeči.
-
-Na portálu, vyberte **App Services**, pak webové aplikace, které jste zřídili v předchozím kroku. V tomto příkladu je název webové aplikace *uniqueregistryname westus*.
-
-Vyberte s hypertextovým odkazem adresa URL webové aplikace v pravé horní části **služby App Service** Přehled zobrazíte běžící aplikaci v prohlížeči.
-
-![Webové aplikace na konfiguraci systému Linux na portálu Azure][deploy-app-portal-04]
-
-Po nasazení bitové kopie Docker z registru geograficky replikované kontejneru lokality zobrazí obrázek představující oblast Azure, který je hostitelem kontejneru registru.
-
-![Zobrazit v prohlížeči nasazené webové aplikace][deployed-app-westus]
-
-## <a name="deploy-second-web-app-for-containers-instance"></a>Nasazení druhý webové aplikace pro instanci kontejnery
-
-Podle postupu uvedeného v předchozí části druhý webovou aplikaci k nasazení *východní USA* oblast. V části **webovou aplikaci pro kontejnery**, zadejte následující hodnoty:
+V zobrazené části **Web App for Containers** zadejte u jednotlivých nastavení následující hodnoty:
 
 | Nastavení | Hodnota |
 |---|---|
-| **Název lokality** | Globálně jedinečného názvu pro webovou aplikaci. V tomto příkladu používáme formát `<acrName>-eastus` snadno identifikovat registru a webové aplikace je nasazená z oblasti. |
+| **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-westus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
-| **Umístění plánu služby aplikace** | Vytvořit nový plán s názvem `plan-eastus` v **východní USA** oblast. |
-| **Bitové kopie** | `acr-helloworld:v1`
+| **Plán služby App Service / umístění** | Vytvořte nový plán s názvem `plan-westus` v oblasti **USA – západ**. |
+| **Image** | `acr-helloworld:v1`
 
-Vyberte **vytvořit** ke zřízení webové aplikace na *východní USA* oblast.
+Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *USA – západ*.
 
-![Webové aplikace na konfiguraci systému Linux na portálu Azure][deploy-app-portal-06]
+![Webová aplikace s linuxovou konfigurací na portálu Azure Portal][deploy-app-portal-02]
 
 ## <a name="view-the-deployed-web-app"></a>Zobrazení nasazené webové aplikace
 
-Jako dříve, můžete zobrazit běžící aplikaci tak, že přejdete na jeho adresu URL v prohlížeči.
+Po dokončení nasazování můžete běžící aplikaci zobrazit tak, že přejdete v prohlížeči na její adresu URL.
 
-Na portálu, vyberte **App Services**, pak webové aplikace, které jste zřídili v předchozím kroku. V tomto příkladu je název webové aplikace *uniqueregistryname eastus*.
+Na portálu vyberte **App Services** a pak vyberte webovou aplikaci, kterou jste zřídili v předchozím kroku. V tomto příkladu je název webové aplikace *uniqueregistryname-westus*.
 
-Vyberte s hypertextovým odkazem adresa URL webové aplikace v pravé horní části **Přehled služby App Service** zobrazíte běžící aplikaci v prohlížeči.
+Výběrem hypertextového odkazu na adresu URL webové aplikace v pravé horní části přehledu **App Service** zobrazíte běžící aplikaci v prohlížeči.
 
-![Webové aplikace na konfiguraci systému Linux na portálu Azure][deploy-app-portal-07]
+![Webová aplikace s linuxovou konfigurací na portálu Azure Portal][deploy-app-portal-04]
 
-Po nasazení bitové kopie Docker z registru geograficky replikované kontejneru lokality zobrazí obrázek představující oblast Azure, který je hostitelem kontejneru registru.
+Po nasazení image Dockeru z geograficky replikovaného registru kontejneru se v lokalitě zobrazí obrázek představující oblast Azure, která je hostitelem registru kontejneru.
 
-![Zobrazit v prohlížeči nasazené webové aplikace][deployed-app-eastus]
+![Nasazená webová aplikace zobrazená v prohlížeči][deployed-app-westus]
+
+## <a name="deploy-second-web-app-for-containers-instance"></a>Nasazení druhé instance služby Web App for Containers
+
+Podle postupu uvedeného v předchozí části nasaďte druhou webovou aplikaci do oblasti *USA – východ*. V části **Web App for Containers** zadejte následující hodnoty:
+
+| Nastavení | Hodnota |
+|---|---|
+| **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-eastus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
+| **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
+| **Plán služby App Service / umístění** | Vytvořte nový plán s názvem `plan-eastus` v oblasti **USA – východ**. |
+| **Image** | `acr-helloworld:v1`
+
+Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *USA – východ*.
+
+![Webová aplikace s linuxovou konfigurací na portálu Azure Portal][deploy-app-portal-06]
+
+## <a name="view-the-deployed-web-app"></a>Zobrazení nasazené webové aplikace
+
+Stejně jako v předchozí části můžete běžící aplikaci zobrazit tak, že přejdete v prohlížeči na její adresu URL.
+
+Na portálu vyberte **App Services** a pak vyberte webovou aplikaci, kterou jste zřídili v předchozím kroku. V tomto příkladu je název webové aplikace *uniqueregistryname-eastus*.
+
+Výběrem hypertextového odkazu na adresu URL webové aplikace v pravé horní části přehledu **App Service** zobrazíte běžící aplikaci v prohlížeči.
+
+![Webová aplikace s linuxovou konfigurací na portálu Azure Portal][deploy-app-portal-07]
+
+Po nasazení image Dockeru z geograficky replikovaného registru kontejneru se v lokalitě zobrazí obrázek představující oblast Azure, která je hostitelem registru kontejneru.
+
+![Nasazená webová aplikace zobrazená v prohlížeči][deployed-app-eastus]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu nasadíte dva webové aplikace pro kontejnery instancí z registru geograficky replikované kontejner Azure. Podle kroků v tomto kurzu jste:
+V tomto kurzu jste nasadili dvě instance služby Web App for Containers z geograficky replikovaného registru kontejneru Azure. Podle kroků v tomto kurzu jste:
 
 > [!div class="checklist"]
-> * Nasazení bitové kopie kontejner ke dvěma *webové aplikace pro kontejnery* instancí
-> * Ověřit nasazené aplikace
+> * Nasadili image kontejneru do dvou instancí služby *Web Apps for Containers*.
+> * Ověřili nasazenou aplikaci.
 
-Přechodu na další kurz k aktualizaci a pak nasadit novou bitovou kopii kontejneru registru kontejneru a ověřte, že se automaticky aktualizovaly webové aplikace spuštěné v obou oblastí.
+Přejděte na další kurz, ve kterém provedete aktualizaci a pak nasadíte novou image kontejneru do registru kontejneru. Pak ověříte, že webové aplikace běžící v obou oblastech se automaticky aktualizovaly.
 
 > [!div class="nextstepaction"]
-> [Nasaďte aktualizaci do bitové kopie geograficky replikované kontejneru](./container-registry-tutorial-deploy-update.md)
+> [Nasazení aktualizace image v geograficky replikovaném kontejneru](./container-registry-tutorial-deploy-update.md)
 
 <!-- IMAGES -->
 [deploy-app-portal-01]: ./media/container-registry-tutorial-deploy-app/deploy-app-portal-01.png

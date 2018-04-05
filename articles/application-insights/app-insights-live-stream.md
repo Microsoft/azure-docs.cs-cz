@@ -1,8 +1,8 @@
 ---
-title: "Živý datový proud metriky s vlastní metriky a diagnostiky ve službě Azure Application Insights | Microsoft Docs"
-description: "Monitorování webové aplikace v reálném čase s vlastní metriky a diagnostikovat problémy s za provozu informační kanál selhání, trasování a události."
+title: Živý datový proud metriky s vlastní metriky a diagnostiky ve službě Azure Application Insights | Microsoft Docs
+description: Monitorování webové aplikace v reálném čase s vlastní metriky a diagnostikovat problémy s za provozu informační kanál selhání, trasování a události.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 866fc729b3167863c2d423d0e6ac0d7640e3425e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: f0338642ab99af2fd5ec4f6432bbb8d626daea29
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Živý datový proud metriky: Diagnostikujte s latencí 1 sekundu & monitorovat 
 
@@ -115,12 +115,15 @@ Vlastní kritéria filtry, které zadáte jsou odesílány zpět za provozu metr
 ![Vytvořte klíč rozhraní api](./media/app-insights-live-stream/live-metrics-apikeycreate.png)
 
 ### <a name="add-api-key-to-configuration"></a>Přidat klíč rozhraní API do konfigurace
+
+# <a name="net-standardtabnet-standard"></a>[.NET Standard](#tab/.net-standard)
+
 V souboru applicationinsights.config soubor přidejte AuthenticationApiKey QuickPulseTelemetryModule:
 ``` XML
 
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
       <AuthenticationApiKey>YOUR-API-KEY-HERE</AuthenticationApiKey>
-</Add> 
+</Add>
 
 ```
 Nebo v kódu, nastavte ji na QuickPulseTelemetryModule:
@@ -130,6 +133,34 @@ Nebo v kódu, nastavte ji na QuickPulseTelemetryModule:
     module.AuthenticationApiKey = "YOUR-API-KEY-HERE";
 
 ```
+# <a name="net-core-tabnet-core"></a>[.NET core] (# karta/.net jader)
+
+Úprava souboru startup.cs následujícím způsobem:
+
+Nejprve přidat
+
+``` C#
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+using Microsoft.ApplicationInsights.Extensibility;
+```
+
+Potom v části Konfigurace metodu přidejte:
+
+``` C#
+  QuickPulseTelemetryModule dep;
+            var modules = app.ApplicationServices.GetServices<ITelemetryModule>();
+            foreach (var module in modules)
+            {
+                if (module is QuickPulseTelemetryModule)
+                {
+                    dep = module as QuickPulseTelemetryModule;
+                    dep.AuthenticationApiKey = "YOUR-API-KEY-HERE";
+                    dep.Initialize(TelemetryConfiguration.Active);
+                }
+            }
+```
+
+---
 
 Pokud znáte a důvěřujete všechny propojené servery, můžete zkusit vlastní filtry bez ověřené kanál. Tato možnost je k dispozici po dobu šesti měsíců. Toto přepsání je požadovaná jednou každou novou relaci, nebo při přechodu do režimu online na nový server.
 
@@ -154,7 +185,7 @@ Pokud chcete sledovat účinek zvýšení zatížení, použijte okno Test výko
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Sledování použití s nástrojem Application Insights](app-insights-web-track-usage.md)
 * [Pomocí vyhledávání diagnostiky](app-insights-diagnostic-search.md)
 * [Profiler](app-insights-profiler.md)

@@ -1,6 +1,6 @@
 ---
-title: "Azure Table storage: vytvoření webové aplikace Node.js | Microsoft Docs"
-description: "Kurz, který je založený na webovou aplikaci s Express kurzu přidáním služby Azure Storage a modulu Azure."
+title: 'Azure Table storage: vytvoření webové aplikace Node.js | Microsoft Docs'
+description: Kurz, který je založený na webovou aplikaci s Express kurzu přidáním služby Azure Storage a modulu Azure.
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/29/2018
 ms.author: mimig
-ms.openlocfilehash: 9acd197c26e6365e396fd8f6321d764bba7bbb6c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: b63f6b3be2e4576b304c1a73ff326a937815b27e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-table-storage-nodejs-web-application"></a>Azure Table storage: webové aplikace Node.js
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="overview"></a>Přehled
 V tomto kurzu aplikaci jste vytvořili v [webové aplikace Node.js pomocí Express] kurzu je rozšířeno pomocí knihovny klienta Microsoft Azure pro platformu Node.js pro práci se službami pro správu dat. Vytvoření aplikace založené na webu – seznam úloh, kterou můžete nasadit do Azure můžete rozšířit vaše aplikace. Seznam úloh umožňuje uživateli načíst úlohy, přidat nové úkoly a úkoly označit jako dokončená.
 
-Položky úkolů jsou uložené ve službě Azure Storage. Úložiště Azure poskytuje úložiště nestrukturovaných dat, které je odolné proti chybám a vysoce dostupné. Úložiště Azure obsahuje několik datových struktur, kde můžete ukládat a přistupovat k datům. Můžete použít služby storage z rozhraní API zahrnutý v sadě Azure SDK pro Node.js nebo přes rozhraní REST API. Další informace najdete v tématu [ukládání a přístup k datům v Azure].
+Položky úkolů jsou uloženy v Azure Storage nebo Azure Cosmos DB. Azure Storage a Azure Cosmos DB poskytují nestrukturovaných dat úložiště, které je odolné proti chybám a vysoce dostupné. Azure Storage a Azure Cosmos DB obsahují několik datových struktur, kde můžete ukládat a přistupovat k datům. Můžete použít Azure Cosmos DB služby z rozhraní API zahrnutý v sadě Azure SDK pro Node.js nebo přes rozhraní REST API a služby úložiště. Další informace najdete v tématu [ukládání a přístup k datům v Azure].
 
 V tomto kurzu se předpokládá, že jste dokončili [webové aplikace Node.js] a [Node.js s Express][webové aplikace Node.js pomocí Express] kurzy.
 
@@ -40,7 +40,7 @@ Na následujícím snímku obrazovky je vidět hotová aplikace:
 ![Dokončené webové stránky v aplikaci internet explorer](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
 
 ## <a name="setting-storage-credentials-in-webconfig"></a>Nastavení přihlašovacích údajů úložiště v souboru Web.Config.
-Musíte zadat úložiště pověření pro přístup k úložišti Azure. To se provádí s využitím nastavení web.config aplikace.
+Musíte zadat úložiště pověření pro přístup k Azure Storage nebo Azure Cosmos DB. To se provádí s využitím nastavení web.config aplikace.
 Nastavení web.config jsou předány jako proměnné prostředí do uzlu, které jsou pak přečte sadu Azure SDK.
 
 > [!NOTE]
@@ -144,7 +144,7 @@ V této části základní aplikace vytvořené **express** příkaz je rozší�
     Task.prototype = {
       find: function(query, callback) {
         self = this;
-        self.storageClient.queryEntities(query, function entitiesQueried(error, result) {
+        self.storageClient.queryEntities(this.tablename, query, null, null, function entitiesQueried(error, result) {
           if(error) {
             callback(error);
           } else {
@@ -181,7 +181,7 @@ V této části základní aplikace vytvořené **express** příkaz je rozší�
             callback(error);
           }
           entity.completed._ = true;
-          self.storageClient.updateEntity(self.tableName, entity, function entityUpdated(error) {
+          self.storageClient.replaceEntity(self.tableName, entity, function entityUpdated(error) {
             if(error) {
               callback(error);
             }
@@ -215,7 +215,7 @@ V této části základní aplikace vytvořené **express** příkaz je rozší�
     TaskList.prototype = {
       showTasks: function(req, res) {
         self = this;
-        var query = azure.TableQuery()
+        var query = new azure.TableQuery()
           .where('completed eq ?', false);
         self.task.find(query, function itemsFound(error, items) {
           res.render('index',{title: 'My ToDo List ', tasks: items});
@@ -224,7 +224,10 @@ V této části základní aplikace vytvořené **express** příkaz je rozší�
 
       addTask: function(req,res) {
         var self = this
-        var item = req.body.item;
+        var item = {
+            name: req.body.name, 
+            category: req.body.category
+        };
         self.task.addItem(item, function itemAdded(error) {
           if(error) {
             throw error;
@@ -307,7 +310,7 @@ V této části základní aplikace vytvořené **express** příkaz je rozší�
             td Category
             td Date
             td Complete
-          if tasks != []
+          if tasks == []
             tr
               td
           else
@@ -325,9 +328,9 @@ V této části základní aplikace vytvořené **express** příkaz je rozší�
       hr
       form.well(action="/addtask", method="post")
         label Item Name:
-        input(name="item[name]", type="textbox")
+        input(name="name", type="textbox")
         label Item Category:
-        input(name="item[category]", type="textbox")
+        input(name="category", type="textbox")
         br
         button.btn(type="submit") Add item
     ```
@@ -414,7 +417,7 @@ Následující kroky ukazují, jak zastavení a odstranění vaší aplikace.
    Odstraňování služby může trvat několik minut. Po odstranění služby obdržíte zprávu s upozorněním, že se odstranila služba.
 
 [webové aplikace Node.js pomocí Express]: http://azure.microsoft.com/develop/nodejs/tutorials/web-app-with-express/
-[ukládání a přístup k datům v Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
+[ukládání a přístup k datům v Azure]: https://docs.microsoft.com/azure/storage/
 [webové aplikace Node.js]: http://azure.microsoft.com/develop/nodejs/tutorials/getting-started/
 
 

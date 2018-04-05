@@ -1,11 +1,11 @@
 ---
-title: "Definování strategie Mobile Engagementu | Dokumentace Microsoftu"
-description: "Naučte se ovládat a optimalizovat Mobile Engagement pomocí analytických funkcí a nabízených oznámení."
+title: Definování strategie Mobile Engagementu | Dokumentace Microsoftu
+description: Naučte se ovládat a optimalizovat Mobile Engagement pomocí analytických funkcí a nabízených oznámení.
 services: mobile-engagement
 documentationcenter: Mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7533e318-81b9-4360-aace-b7be8225985b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: db68bd3ebf7efde1d23820445f07c83c8c27dc20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 494dd27acfd59eb79da13dae9bbbe0f80ee41370
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="define-your-mobile-engagement-strategy"></a>Definování strategie Mobile Engagementu
+> [!IMPORTANT]
+> Azure Mobile Engagement se vyřadí z provozu 31. 3. 2018. Tato stránka bude odstraněna krátce potom.
+> 
+
 *Aplikaci jste naprogramovali proto, aby ji vaši uživatelé používali.*
 
 Věříme, že jste se maximálně snažili, aby se z ní stala skvělá aplikace, kterou budou uživatelé milovat. Také jste pravděpodobně investovali značnou částku do marketingového rozpočtu, abyste uživatele získali. Ale po úvodním nadšení možná uživatelé vaši aplikaci pomalu přestávají používat. *A přesně tohle je doména Azure Mobile Engagementu*: zaujmout uživatele a umožnit vám aplikaci neustále zlepšovat testováním a sledováním odezvy.

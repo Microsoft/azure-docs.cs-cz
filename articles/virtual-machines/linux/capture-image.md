@@ -1,11 +1,11 @@
 ---
-title: "Vytvořte bitovou kopii virtuálního počítače s Linuxem v Azure pomocí rozhraní příkazového řádku 2.0 | Microsoft Docs"
-description: "Vytvořte bitovou kopii virtuálního počítače Azure pro velkokapacitní nasazení pomocí Azure CLI 2.0."
+title: Vytvořte bitovou kopii virtuálního počítače s Linuxem v Azure pomocí rozhraní příkazového řádku 2.0 | Microsoft Docs
+description: Vytvořte bitovou kopii virtuálního počítače Azure pro velkokapacitní nasazení pomocí Azure CLI 2.0.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 08/22/2018
 ms.author: cynthn
-ms.openlocfilehash: 15ad240ea9b635cd7995bfae403a93e0b392850a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: e83319b8b4ace495a4301dd850cea27633115426
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Postup vytvoření bitové kopie virtuálního počítače nebo virtuální pevný disk
 
@@ -89,6 +89,8 @@ Pomocí Azure CLI 2.0 označit virtuální počítač jako zobecněn a zachycen�
    
    > [!NOTE]
    > Obrázek se vytvoří ve stejné skupině prostředků jako vašeho zdrojového virtuálního počítače. Virtuální počítače můžete vytvořit v libovolné skupině prostředků v rámci vašeho předplatného z této bitové kopie. Z hlediska správy můžete chtít vytvořit skupinu prostředků specifické pro vaše prostředky virtuálních počítačů a bitové kopie.
+   >
+   > Pokud chcete uložit bitové kopie do zóny odolná úložiště, budete muset vytvořit v oblasti, která podporuje [dostupnost zóny](../../availability-zones/az-overview.md) a zahrnout `--zone-resilient true` parametr.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>Krok 3: Vytvoření virtuálního počítače ze zaznamenané bitové kopie
 Vytvoření virtuálního počítače pomocí bitové kopie vytvořené pomocí [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem *myVMDeployed* z bitové kopie s názvem *myImage*:

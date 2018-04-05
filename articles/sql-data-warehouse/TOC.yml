@@ -141,13 +141,15 @@
       href: sql-data-warehouse-troubleshoot.md
 - name: Návody
   items:
-    - name: Funkce služby
+    - name: Upgrade
+      href: upgrade-to-latest-generation.md
+    - name: Obnovení
       items:
-        - name: Obnovení datového skladu – portál
+        - name: Portál
           href: sql-data-warehouse-restore-database-portal.md
-        - name: Obnovení datového skladu – PowerShell
+        - name: PowerShell
           href: sql-data-warehouse-restore-database-powershell.md
-        - name: Obnovení datového skladu – REST API
+        - name: REST API
           href: sql-data-warehouse-restore-database-rest-api.md
     - name: Zabezpečení
       items:

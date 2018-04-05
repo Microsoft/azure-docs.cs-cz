@@ -1,11 +1,11 @@
 ---
-title: "Začínáme se službou Azure Batch pomocí PowerShellu | Dokumentace Microsoftu"
-description: "Rychlý úvod do rutin prostředí Azure PowerShell, jejichž pomocí lze spravovat prostředky služby Batch"
+title: Začínáme se službou Azure Batch pomocí PowerShellu | Dokumentace Microsoftu
+description: Rychlý úvod do rutin prostředí Azure PowerShell, jejichž pomocí lze spravovat prostředky služby Batch
 services: batch
-documentationcenter: 
-author: tamram
-manager: timlt
-editor: 
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: f9ad62c5-27bf-4e6b-a5bf-c5f5914e6199
 ms.service: batch
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e33be6ed658e00250ea1e80cd7da4d348fb18296
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6767257a540e4f29bb5445a718ad65a31e1f373e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Správa prostředků služby Batch pomocí rutin PowerShellu
 
@@ -42,7 +42,7 @@ Pokud chcete používat Azure PowerShell ke správě prostředků služby Batch,
 
 ## <a name="manage-batch-accounts-and-keys"></a>Správa účtů a klíčů služby Batch
 ### <a name="create-a-batch-account"></a>Vytvoření účtu Batch
-Rutina **New-AzureRmBatchAccount** vytvoří v zadané skupině prostředků účet služby Batch. Pokud skupinu prostředků ještě nemáte, použijte k jejímu vytvoření rutinu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Do parametru **Location** zadejte některou oblast Azure, třeba „Střed USA“. Například:
+Rutina **New-AzureRmBatchAccount** vytvoří v zadané skupině prostředků účet služby Batch. Pokud skupinu prostředků ještě nemáte, použijte k jejímu vytvoření rutinu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Do parametru **Location** zadejte některou oblast Azure, třeba „Střed USA“. Příklad:
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 

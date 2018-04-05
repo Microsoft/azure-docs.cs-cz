@@ -1,25 +1,25 @@
 ---
-title: "Instalovat balíčky aplikací na výpočetní uzly - Azure Batch | Microsoft Docs"
-description: "Použijte funkci balíčků aplikací Azure Batch snadno spravovat více aplikací a verzí pro instalaci na Batch výpočetních uzlů."
+title: Instalovat balíčky aplikací na výpočetní uzly - Azure Batch | Microsoft Docs
+description: Použijte funkci balíčků aplikací Azure Batch snadno spravovat více aplikací a verzí pro instalaci na Batch výpočetních uzlů.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 07/20/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86b5f10cbd79227ccc6acb2004e449f426a6cbd8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 440f7eba99e5fa02a597ae62d5d14329f5e50af7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací na výpočetní uzly pomocí balíčků aplikací Batch
 
@@ -121,7 +121,7 @@ Výběrem této možnosti nabídky otevře **aplikace** okno:
 
 * **Balíčky**: číslo verze přidružené k této aplikaci.
 * **Výchozí verze**: verze aplikace nainstalovat, pokud neuvedete na verzi, když zadáte aplikací pro fond. Toto nastavení je volitelné.
-* **Povolit aktualizace**: hodnota, která určuje, zda balíček aktualizace, odstranění a přidání jsou povoleny. Pokud je nastavena v **ne**, balíček aktualizace a odstranění jsou zakázány pro aplikaci. Můžete přidat pouze nové verze balíčku aplikace. Výchozí hodnota je **Ano**.
+* **Povolit aktualizace**: hodnota, která určuje, zda balíček aktualizace, odstranění a přidání jsou povoleny. Pokud je nastavena v **ne**, balíček aktualizace a odstranění jsou zakázány pro aplikaci. Můžete přidat pouze nové verze balíčku aplikace. Výchozí hodnota je **Yes** (Ano).
 
 ### <a name="view-application-details"></a>Zobrazení podrobností o aplikaci
 Otevřete okno, které zahrnuje podrobné informace pro aplikaci, vyberte aplikaci v **aplikace** okno.
@@ -194,7 +194,7 @@ Když kliknete na tlačítko **aktualizace**, *balíček aktualizace* zobrazí s
 
 Když kliknete na tlačítko **odstranit**, se zobrazí výzva k potvrzení odstranění verze balíčku a Batch odstraní balíček z úložiště Azure. Pokud odstraníte výchozí verze aplikace, **výchozí verze** nastavení se odebere pro aplikaci.
 
-![Odstranit aplikaci][12]
+![Odstranit aplikaci ][12]
 
 ## <a name="install-applications-on-compute-nodes"></a>Instalace aplikací na výpočetní uzly
 Teď, když jste se naučili jak spravovat balíčky aplikací pomocí portálu Azure, můžete pojednává o je nasadit na výpočetní uzly a jejich spuštění s úkoly služby Batch.
@@ -262,14 +262,14 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Na Linuxových uzlů formát se mírně liší. Tečky (.) a pomlčky (-) a tyto znaky (#), se sloučí na podtržené v proměnné prostředí. Všimněte si také, že se zachová, i v případě ID aplikace. Například:
+Na Linuxových uzlů formát se mírně liší. Tečky (.) a pomlčky (-) a tyto znaky (#), se sloučí na podtržené v proměnné prostředí. Všimněte si také, že se zachová, i v případě ID aplikace. Příklad:
 
 ```
 Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID`a `version` jsou hodnoty, které odpovídají verzi aplikací a balíčků, jste určili pro nasazení. Například pokud jste zadali, že verze 2.7 aplikace *digestoru* by měly být nainstalovány na uzlech Windows by vaše příkazové řádky úkolu pomocí této proměnné prostředí pro přístup k jeho soubory:
+`APPLICATIONID` a `version` jsou hodnoty, které odpovídají verzi aplikací a balíčků, jste určili pro nasazení. Například pokud jste zadali, že verze 2.7 aplikace *digestoru* by měly být nainstalovány na uzlech Windows by vaše příkazové řádky úkolu pomocí této proměnné prostředí pro přístup k jeho soubory:
 
 ```
 Windows:
@@ -346,7 +346,7 @@ foreach (ApplicationSummary app in applications)
 ## <a name="wrap-up"></a>Zabalení
 Pomocí balíčků aplikací můžete pomoct vašim zákazníkům vyberte aplikace, pro svou práci a určete přesnou verze se má použít při zpracování úlohy se služby podporují službu Batch. Můžete zadat také možnost pro vaše zákazníky k odesílání a sledování vlastních aplikací ve službě.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Batch REST API] [ api_rest] taky poskytuje podporu pro práci s balíčky aplikací. Například najdete v článku [applicationPackageReferences] [ rest_add_pool_with_packages] element v [přidat fond na účet] [ rest_add_pool] informace o tom, jak zadat balíčků pro instalaci pomocí rozhraní REST API. V tématu [aplikace] [ rest_applications] podrobnosti o tom, jak získat informace o aplikaci pomocí rozhraní REST API služby Batch.
 * Zjistěte, jak programově [spravovat účty Azure Batch a kvóty pomocí rozhraní Batch Management .NET](batch-management-dotnet.md). [Rozhraní Batch Management .NET][api_net_mgmt] knihovny můžete povolit funkce vytváření a odstraňování účtu Batch aplikace nebo služby.
 

@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží s Azure Storage s diagnostiky & Message Analyzer | Microsoft Docs"
-description: "Kurz demonstraci začátku do konce řešení potíží s Azure Storage Analytics, AzCopy a Microsoft Message Analyzer"
+title: Řešení potíží s Azure Storage s diagnostiky & Message Analyzer | Microsoft Docs
+description: Kurz demonstraci začátku do konce řešení potíží s Azure Storage Analytics, AzCopy a Microsoft Message Analyzer
 services: storage
 documentationcenter: dotnet
 author: tamram
@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.openlocfilehash: ee0e4671c31e97816576735b7bd2ee2f1629323e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 324370ae18627a1985e6a40aec11ee2fa871e93b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Začátku do konce řešení potíží s použitím metrik Azure Storage a protokolování, AzCopy a Message Analyzer
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -35,9 +35,6 @@ V tomto kurzu poskytuje praktické zkoumání scénáře řešení potíží za�
   
   * **Metriky úložiště** sleduje transakce metriky a metriky kapacity pro váš účet úložiště. Pomocí metriky, můžete určit, jak vaše aplikace pracuje podle celou řadu různých opatření. V tématu [schématu tabulky metriky Analytics úložiště](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) Další informace o typech metriky sledován pomocí funkce Storage Analytics.
   * **Protokolování úložiště** protokoluje každý požadavek do služby Azure Storage na straně serveru protokolu. Protokol sleduje podrobná data pro každý požadavek, včetně operaci provést, stav operace a informace o latenci. V tématu [úložiště analýzy protokolů formátu](/rest/api/storageservices/Storage-Analytics-Log-Format) Další informace o požadavku a odpovědi data, která jsou zapsána do protokolů analytika úložiště.
-
-> [!NOTE]
-> Účty úložiště s typem replikace Zónově redundantní úložiště (ZRS) podporují metrik a protokolování. ZRS klasické účty nepodporují metriky nebo protokolování. Další informace o ZRS, najdete v části [Zónově redundantní úložiště](storage-redundancy.md#zone-redundant-storage). 
 
 * **Portál Azure**. Můžete nakonfigurovat protokolování a metriky pro svůj účet úložiště [portál Azure](https://portal.azure.com). Můžete také zobrazit grafy, které ukazují, jak se vaše aplikace provádí v čase a konfigurovat výstrahy pro upozornění, pokud aplikace provede odlišně, než se očekávalo příslušné metriky.
   
@@ -363,10 +360,10 @@ Teď, když jste obeznámeni s používáním Message Analyzer k analýze dat pr
 | Doba v protokolech serveru a sítě |#Timestamp > = 2014-10-20T16:36:38 a #Timestamp < = 2014-10-20T16:36:39 |Server, Network |
 | Rozsah čas v protokolech serveru |AzureStorageLog.Timestamp > = 2014-10-20T16:36:38 a AzureStorageLog.Timestamp < = 2014-10-20T16:36:39 |Server |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o odstraňování potíží začátku do konce scénáře ve službě Azure Storage naleznete v následujících zdrojích:
 
-* [Monitorování, Diagnostika a řešení potíží s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)
+* [Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)
 * [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx)
 * [Monitorování účtu úložiště na portálu Azure](storage-monitor-storage-account.md)
 * [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)

@@ -1,9 +1,9 @@
 ---
-title: "Přehled protokolu činnosti Azure | Microsoft Docs"
-description: "Zjistěte, co je protokol činnosti Azure a jak ji použít k pochopení událostí v rámci vašeho předplatného Azure."
+title: Přehled protokolu činnosti Azure | Microsoft Docs
+description: Zjistěte, co je protokol činnosti Azure a jak ji použít k pochopení událostí v rámci vašeho předplatného Azure.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: c274782f-039d-4c28-9ddb-f89ce21052c7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: johnkem
-ms.openlocfilehash: aef427483d647c53ba45688ce33a75f876115d08
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6e373740d6b5af4b3b7d3dca8877c952d79f8b20
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Sledování aktivity předplatné s protokol činnosti Azure
 **Protokol činnosti Azure** je protokol odběru, který poskytuje přehled o události na úrovni předplatného, k nimž došlo v Azure. To zahrnuje celou řadu dat z provozních dat Azure Resource Manager aktualizací na události stavu služby. Protokol aktivit se dřív označovala jako "Protokoly auditu" nebo "Provozní protokoly," od události administrativní kategorie sestavy rovině řízení pro vaše předplatné. Pomocí protokolu činnosti, můžete určit ', kdo a kdy se pro všechny zápisu operace (PUT, POST, DELETE) na prostředky v rámci vašeho předplatného. Můžete také chápou stav operace a další relevantní vlastnosti. Protokol aktivit nezahrnuje operace čtení (GET) nebo operace pro prostředky, které používají Classic nebo model "RDFE".
@@ -38,7 +38,7 @@ Můžete načíst události z protokolu aktivit pomocí portálu Azure, rozhran�
 
 > [!NOTE]
 
->  [Výstrahy (Preview)](monitoring-overview-unified-alerts.md) aktuálně nabízí vylepšené prostředí při vytváření a spravovat pravidla výstrah protokolu aktivit.  [Další informace](monitoring-activity-log-alerts-new-experience.md).
+>  [Novější výstrahy)](monitoring-overview-unified-alerts.md) nabízí vylepšené prostředí při vytváření a správa aktivity protokolu pravidla výstrah.  [Další informace](monitoring-activity-log-alerts-new-experience.md).
 
 
 Zobrazení v následujícím videu Představení protokolu aktivit.
@@ -126,7 +126,7 @@ Můžete datového proudu protokolu aktivit do centra událostí nebo uložit je
   * Namespace Service Bus, ve kterém chcete vytvořit pro streamování tyto události centra událostí.
 
      ![Export protokolu aktivit okno](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
-4. Klikněte na tlačítko **Uložit** uložit tato nastavení. Nastavení se použije okamžitě do vašeho předplatného.
+4. Klikněte na tlačítko **Uložit** uložit tato nastavení. Nastavení se okamžitě použijí pro vaše předplatné.
 
 ### <a name="configure-log-profiles-using-the-azure-powershell-cmdlets"></a>Konfigurace protokolu profilů pomocí rutin prostředí PowerShell Azure
 #### <a name="get-existing-log-profile"></a>Získat stávající profil protokolu

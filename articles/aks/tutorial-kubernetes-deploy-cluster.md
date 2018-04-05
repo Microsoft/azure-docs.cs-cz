@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: d02229739e3f358e4a6510dfbb0585939e947f9c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1f31af4fcc7ef70889ad8bc021bea0796721e5f5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-an-azure-container-service-aks-cluster"></a>Nasazení clusteru Azure Container Service (AKS)
+# <a name="tutorial-deploy-an-azure-container-service-aks-cluster"></a>Kurz: Nasazení clusteru Azure Container Service (AKS)
 
 Kubernetes poskytuje distribuovanou platformu pro kontejnerizované aplikace. Se službou AKS je zřízení clusteru Kubernetes připraveného pro produkční prostředí snadné a rychlé. V tomto kurzu, který je třetí částí osmidílné série, se nasadí cluster Kubernetes ve službě AKS. Mezi dokončené kroky patří:
 
@@ -24,7 +24,7 @@ Kubernetes poskytuje distribuovanou platformu pro kontejnerizované aplikace. Se
 > * Instalace rozhraní příkazového řádku Kubernetes (kubectl)
 > * Konfigurace kubectl
 
-V dalších kurzech se aplikace Azure Vote nasadí do clusteru, škáluje se a aktualizuje a konfiguruje se Operations Management Suite pro monitorování clusteru Kubernetes.
+V dalších kurzech se aplikace Azure Vote nasadí do clusteru a provede škálování a aktualizaci a služba Log Analytics se nakonfiguruje pro monitorování clusteru Kubernetes.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -96,7 +96,7 @@ CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --q
 Získejte ID prostředku registru ACR. Aktualizujte název registru na název vašeho registru ACR a skupinu prostředků na skupinu prostředků, ve které se registr ACR nachází.
 
 ```azurecli
-ACR_ID=$(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
+ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
 ```
 
 Vytvořte přiřazení role udělující řádný přístup.

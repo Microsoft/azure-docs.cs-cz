@@ -1,16 +1,16 @@
 ---
-title: "Přizpůsobit Azure migrovat nastavení assessment | Microsoft Docs"
-description: "Popisuje, jak nastavit a spustit posouzení pro migraci virtuálních počítačů VMware do Azure pomocí Azure Plánovač migrace"
+title: Přizpůsobit Azure migrovat nastavení assessment | Microsoft Docs
+description: Popisuje, jak nastavit a spustit posouzení pro migraci virtuálních počítačů VMware do Azure pomocí Azure Plánovač migrace
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: raynew
-ms.openlocfilehash: efb4ad59d25a0c1209e4f0f6cd406c2f0d48159c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 459a29012ec879d4d4989e51b5688b9042adc1a1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="customize-an-assessment"></a>Přizpůsobení posouzení
 
@@ -24,8 +24,8 @@ ms.lasthandoff: 02/27/2018
 
     **Nastavení** | **Podrobnosti** | **Výchozí**
     --- | --- | ---
-    **Cílové umístění** | Umístění Azure, do kterého chcete migrovat.<br/><br/> Azure migrací aktuálně podporuje 30 oblastí, včetně Austrálie – východ, Austrálie – jihovýchod, Brazílie – Jih, Střední Kanada, Východní Kanada, střed, střed USA, východní Čína, severní Čína, východní Asie, východní USA, Německo centrální, Německo – severovýchod, východní USA 2, Japonsko – Východ, Japonsko – Západ, Korejská – střed, Korejská – Jih, střed USA – sever, Severní Evropa, střed USA – Jih, jihovýchodní Asie, – Jih, Indie, Spojené království – Jih, Spojené království – Západ, střed USA – Západ, západní Evropa, Západní Indie, západ USA a západní US2. |  Západní USA 2 je výchozí umístění.
-    **Redundance úložiště** | Typ redundance úložiště, který bude používat k virtuálním počítačům Azure po migraci. | [Místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) je výchozí hodnota. Azure podporuje pouze migrací spravovaných disků na základě hodnocení a spravované disky se podporují jenom LRS, proto vlastnost aktuálně má jenom možnost LRS. 
+    **Cílové umístění** | Umístění Azure, do kterého chcete migrovat.<br/><br/> Azure Migrate v současné době podporuje 30 oblastí, včetně oblastí Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Indie – střed, USA – střed, Čína – východ, Čína – sever, Východní Asie, USA – východ, Německo – střed, Německo – severovýchod, USA – východ 2, Japonsko – východ, Japonsko – západ, Korea – střed, Korea – jih, Střed USA – sever, Severní Evropa, Střed USA – jih, Jihovýchodní Asie, Indie – jih, Velká Británie – jih, Velká Británie – západ, Střed USA – západ, Západní Evropa, Indie – západ, USA – západ a USA – západ 2. |  Západní USA 2 je výchozí umístění.
+    **Redundance úložiště** | Typ redundance úložiště, který bude používat k virtuálním počítačům Azure po migraci. | [Místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) je výchozí hodnota. Azure podporuje pouze migrací spravovaných disků na základě hodnocení a spravované disky se podporují jenom LRS, proto vlastnost aktuálně má jenom možnost LRS. 
     **Kritéria pro změnu velikosti** | Kritérium, podle kterého Azure Migrate určí správnou velikost virtuálních počítačů pro Azure. Můžete provést buď nezadávejte *na základě výkonu* změně velikosti nebo velikost virtuálních počítačů *jako místní*, bez ohledu historie výkonu. | Nastavení velikosti na základě výkonu je výchozí možností.
     **Historie výkonu** | Doba trvání vzít v úvahu pro vyhodnocení výkonu virtuálních počítačů. Tato vlastnost platí jenom při nastavení velikosti kritérium *výkonu na základě velikosti*. | Výchozí hodnota je jeden den.
     **Percentil využití** | Hodnota percentilu nastavit pro optimalizaci velikosti vzorku výkonu. Tato vlastnost platí jenom při nastavení velikosti kritérium *výkonu na základě velikosti*.  | Výchozí hodnota je 95. percentil.

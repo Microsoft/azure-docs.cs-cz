@@ -1,21 +1,21 @@
 ---
-title: "Spustit Azure Batch úlohy klient server bez nutnosti psaní kódu (Preview) | Microsoft Docs"
-description: "Vytvoření šablony souborů pro rozhraní příkazového řádku Azure k vytvoření dávky fondy, úlohy a úkoly."
+title: Spustit Azure Batch úlohy klient server bez nutnosti psaní kódu (Preview) | Microsoft Docs
+description: Vytvoření šablony souborů pro rozhraní příkazového řádku Azure k vytvoření dávky fondy, úlohy a úkoly.
 services: batch
 author: mscurrell
-manager: timlt
-ms.assetid: 
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
 ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: c2d4a33cd6c4c9db608a76b24935b474b551b291
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: c991a1535b82a76a3d0b9bdbf4ede8f3e22bc866
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Použití šablon rozhraní příkazového řádku služby Batch a přenos souborů (Preview)
 
@@ -259,7 +259,7 @@ Podpora přenos šablonu a soubor aktuálně byly přidány pouze pro rozhraní 
 
 Vyzkoušet rozšíření Batch pro rozhraní příkazového řádku Azure a poskytnout nám žádné zpětnou vazbu nebo návrhy, buď v komentářích k tomuto článku nebo prostřednictvím [fórum Azure Batch](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Naleznete v příspěvku blogu šablony Batch: [úloh systémem Azure Batch pomocí rozhraní příkazového řádku Azure – vyžaduje žádný kód](https://azure.microsoft.com/en-us/blog/running-azure-batch-jobs-using-the-azure-cli-no-code-required/).
 - Podrobnou dokumentaci instalaci a použití, ukázky a zdrojového kódu jsou k dispozici v [úložiště Azure GitHub](https://github.com/Azure/azure-batch-cli-extensions).

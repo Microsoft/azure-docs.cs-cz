@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.date: 03/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1893601f9fe9018cb51e6e31b6f9c397a0da38da
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 557c6a75140f399f74d77543de834af086871032
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -70,11 +70,12 @@ ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings
 
 * Power BI
 * Dynamics 365 Finance a operace (dříve označované jako Dynamics AX Online)
-* Většina služeb Azure s následujícími službami několika výjimkami:
-  * CDN
-  * Visual Studio Team Services zátěžové testování
-  * Multi-factor Authentication
-  * Traffic Manager
+* Většina služeb Azure jsou podporovány. Zkontrolujte prosím přímo se na službu, kterou chcete použít k ověření podpory.<br>
+  NEJSOU podporovány následující služby:
+    * CDN
+    * Visual Studio Team Services zátěžové testování
+    * Multi-factor Authentication
+    * Traffic Manager
 
 ### <a name="microsoft-peering"></a>Partnerský vztah Microsoftu
 
@@ -87,7 +88,8 @@ ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings
 * Pomocí [směrovat filtry](#route-filters-for-microsoft-peering), získat přístup ke službám ve stejné veřejné s partnerského vztahu Microsoftu:
   * Power BI
   * Dynamics 365 Finance a operace
-  * Většina služeb Azure s následujícími službami několika výjimkami:
+  * Většina služeb Azure jsou podporovány. Zkontrolujte prosím přímo se na službu, kterou chcete použít k ověření podpory.<br>
+  NEJSOU podporovány následující služby:
     * CDN
     * Visual Studio Team Services zátěžové testování
     * Multi-factor Authentication

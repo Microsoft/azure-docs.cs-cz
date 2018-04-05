@@ -1,11 +1,11 @@
 ---
-title: "Možnosti cloud zařízení Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře – pokyny k použití metody přímé, dvojče zařízení požadované vlastnosti nebo zprávy typu cloud zařízení pro komunikaci typu cloud zařízení."
+title: Možnosti cloud zařízení Azure IoT Hub | Microsoft Docs
+description: Příručka vývojáře – pokyny k použití metody přímé, dvojče zařízení požadované vlastnosti nebo zprávy typu cloud zařízení pro komunikaci typu cloud zařízení.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1ac90923-1edf-4134-bbd4-77fee9b68d24
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: dc8256022aca37823245ecb9a9326240f1c449c2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 144bd8e0a954e54cf17fb88105759d0e000454fb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Pokyny komunikace cloud zařízení
 Služba IoT Hub zajišťuje tři možnosti aplikací pro zařízení vystavit funkcionalitu do back-end aplikace:
@@ -26,6 +26,8 @@ Služba IoT Hub zajišťuje tři možnosti aplikací pro zařízení vystavit fu
 * [Přímé metody] [ lnk-methods] pro komunikaci, které vyžadují okamžitou potvrzení výsledku. Přímé metody se často používají pro interaktivní kontroly zařízení, například zapnutí ventilátoru.
 * [Twin je potřeby vlastnosti] [ lnk-twins] pro dlouhodobé příkazy určené uvést do určitého zařízení požadovaného stavu. Například nastavte interval odesílání telemetrie na 30 minut.
 * [Zprávy typu cloud zařízení] [ lnk-c2d] jednosměrný oznámení do aplikace zařízení.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Zde je podrobné porovnání různých možností komunikace cloud zařízení.
 

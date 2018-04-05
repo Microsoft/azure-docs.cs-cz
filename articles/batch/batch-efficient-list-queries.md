@@ -1,25 +1,25 @@
 ---
-title: "Návrh efektivní seznamu dotazy – Azure Batch | Microsoft Docs"
-description: "Zvyšuje výkon filtrování vašich dotazů při žádosti o Batch prostředkům, jako jsou fondy, úlohy, úlohy a výpočetní uzly."
+title: Návrh efektivní seznamu dotazy – Azure Batch | Microsoft Docs
+description: Zvyšuje výkon filtrování vašich dotazů při žádosti o Batch prostředkům, jako jsou fondy, úlohy, úlohy a výpočetní uzly.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/02/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a80b207f591bd888d4749287527013c5e554fb6e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 330350d6ac6838ea5b09763fe1f73fab1934710c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Efektivně vytvářet dotazy ke prostředky Batch seznamu
 
@@ -100,8 +100,8 @@ Rozbalte řetězec snižuje počet volání rozhraní API, které jsou nutné k 
 * Všechny názvy vlastností malá a velká písmena, ale hodnoty vlastností se malá a velká písmena.
 * Datum a čas řetězců může mít jednu ze dvou formátů a musí předcházet `DateTime`.
   
-  * Příklad formátu W3C DTF:`creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  * Příklad formátu RFC 1123:`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+  * Příklad formátu W3C DTF: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  * Příklad formátu RFC 1123: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
 * Logická hodnota řetězce jsou buď `true` nebo `false`.
 * Pokud je zadána neplatná vlastnost nebo operátor, `400 (Bad Request)` bude výsledkem chyba.
 
@@ -171,7 +171,7 @@ Názvy vlastností ve filtru, vyberte a rozbalte řetězce *musí* odráží jej
 
 | Typy batch .NET | Rozhraní REST API entity |
 | --- | --- |
-| [Certifikát][net_cert] |[Získání informací o certifikát][rest_get_cert] |
+| [certifikát][net_cert] |[Získání informací o certifikát][rest_get_cert] |
 | [CloudJob][net_job] |[Získání informací o úlohy][rest_get_job] |
 | [CloudJobSchedule][net_schedule] |[Získat informace o plánu úlohy][rest_get_schedule] |
 | [ComputeNode][net_node] |[Získání informací o uzlu][rest_get_node] |
@@ -243,7 +243,7 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 ### <a name="parallel-node-tasks"></a>Uzel paralelní úlohy
 [Maximalizovat využití prostředků Azure Batch výpočetní uzel souběžných úloh](batch-parallel-node-tasks.md) je jiný článek související s výkonem aplikací Batch. Některé typy úloh využívat výhod spouštění paralelní úlohy na větší – ale méně – výpočetní uzly. Podívejte se [ukázkový scénář](batch-parallel-node-tasks.md#example-scenario) v článku podrobnosti o tento případ.
 

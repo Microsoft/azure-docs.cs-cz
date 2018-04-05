@@ -1,11 +1,11 @@
 ---
-title: "Správa sítě zabezpečení skupiny toku protokoly s sledovací proces sítě Azure | Microsoft Docs"
-description: "Tato stránka vysvětluje, jak spravovat protokoly toku skupinu zabezpečení sítě v sledovací proces sítě Azure"
+title: Správa sítě zabezpečení skupiny toku protokoly s sledovací proces sítě Azure | Microsoft Docs
+description: Tato stránka vysvětluje, jak spravovat protokoly toku skupinu zabezpečení sítě v sledovací proces sítě Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
 ms.service: network-watcher
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 633543aba99f5c09b14a9e4b11adf59ca04d0fe5
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cb41781c5ac8fb759cecea01402c08dd716bf7d7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-network-security-group-flow-logs-in-the-azure-portal"></a>Správa sítě zabezpečení skupiny toku protokoly na portálu Azure
 
 > [!div class="op_single_selector"]
-> - [portál Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
@@ -38,7 +38,10 @@ Protokoly toku skupiny zabezpečení sítě jsou funkce sledovací proces sítě
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit instanci sledovací proces sítě](network-watcher-create.md). Tento scénář také předpokládá, že máte skupinu prostředků s platným virtuálním počítačem.
+Pokud chcete provést kroky v tomto článku, je nutné v následujících zdrojích informací:
+
+- Existující sledovací proces sítě. Vytvoření sledovací proces sítě naleznete v tématu [vytvořit instanci sledovací proces sítě](network-watcher-create.md).
+- Existující skupinu prostředků s platným virtuálním počítačem. Pokud nemáte virtuálního počítače, najdete v části vytvořit [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) nebo [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) virtuálního počítače.
 
 ## <a name="register-insights-provider"></a>Registrace zprostředkovatele statistiky
 
@@ -68,7 +71,7 @@ Ze seznamu vyberte skupinu zabezpečení sítě.
 
 ### <a name="step-3"></a>Krok 3 
 
-Na **tok se nastavení protokolů** okno, nastaví stav na **na**a pak nakonfigurujte účet úložiště.  Až budete hotoví, vyberte **OK**. Potom vyberte **Uložit**.
+Na **tok se nastavení protokolů** okno, nastaví stav na **na**a pak nakonfigurujte účet úložiště. Vyberte existující účet úložiště, který má **všechny sítě** (výchozí) vybraný v seznamu **brány firewall a virtuální sítě**v části **nastavení** pro účet úložiště. Po dokončení výběru účtu úložiště, vyberte **OK**a potom vyberte **Uložit**.
 
 ![Přehled protokoly toku][3]
 
@@ -96,7 +99,7 @@ Přejděte do umístění protokolu toku, vyberte ji a potom vyberte **Stáhnout
 
 Informace o struktuře protokolu najdete v článku [přehled protokolu toku skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak [vizualizovat protokolů NSG toku pomocí PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md).
 

@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: db472345bacda916f1b1664ed7803978ab235a2a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání prostředků s skupin pro správu Azure 
 
@@ -42,11 +42,15 @@ Vytvořením hierarchie, která je seskupené podle oddělení, budete moci při
 - Každou skupinu pro správu může mít více podřízených položek. 
 
 ### <a name="preview-subscription-visibility-limitation"></a>Omezení viditelnosti předplatné Preview 
-Není aktuálně omezení ve verzi preview kde nejste schopni zobrazit předplatná, která mají zděděná přístup k. Zdědí přístup k předplatnému, ale Azure Resource Manager není schopna ještě respektovat dědičnosti přístup.  
+Není aktuálně ve verzi preview, kde nejsou zobrazit předplatná, která mají zděděná přístup k omezení. Zdědí přístup k předplatnému, ale není moct respektovat přístup dědičnosti ještě Azure Resource Manager.  
 
-Pomocí rozhraní REST API informace o odběru vrátí podrobnosti, jak máte přístup, ale v rámci portálu Azure a prostředí Azure Powershell nezobrazovat odběrů. 
+Pomocí rozhraní REST API informace o odběru vrátí podrobnosti, jak máte přístup, ale v rámci portálu Azure a prostředí Azure Powershell předplatná nezobrazovat. 
 
-Tato položka je pracuje a vyřeší před skupin pro správu se oznámeno jako "Obecné dostupnosti."  
+Tato položka je pracuje a vyřeší před skupin pro správu jsou oznámeno jako "Obecné dostupnosti."  
+
+### <a name="cloud-solution-providercsp-limitation-during-preview"></a>Cloudové řešení Provider(CSP) omezení během Preview 
+Neexistuje aktuální omezení pro cloudové řešení Provider(CSP) partnery, kde nejsou vytvářet a spravovat skupiny pro správu jejich zákazníka v adresáři zákazníka.  
+Tato položka je pracuje a vyřeší před skupin pro správu jsou oznámeno jako "Obecné dostupnosti."
 
 
 ## <a name="root-management-group-for-each-directory"></a>Skupina pro správu kořenového pro každý adresář

@@ -1,10 +1,10 @@
 ---
-title: "Azure Active Directory pro vývojáře | Dokumentace Microsoftu"
-description: "Tento článek obsahuje přehled přihlašování pracovních a školních účtů Microsoft pomocí Azure Active Directory."
+title: Azure Active Directory pro vývojáře | Microsoft Docs
+description: Tento článek obsahuje přehled přihlašování pracovních a školních účtů Microsoft pomocí Azure Active Directory.
 services: active-directory
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.devlang: na
@@ -14,14 +14,17 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: e1f9fbf6cb80065ea796e2d53d09f48fe57b207b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8d70f36c5e434a26fce4d6b4bd1ddefc22234ab5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory pro vývojáře
-Azure Active Directory (Azure AD) je cloudová služba identit, která vývojářům umožňuje bezpečně přihlásit uživatele s pracovním nebo školním účtem Microsoft. Tato dokumentace vám ukáže, jak do vaší aplikace přidat podporu Azure AD s použitím standardních oborových protokolů OAuth 2.0 a OpenID Connect.
+Azure Active Directory (Azure AD) je cloudová služba identit umožňující vývojářům sestavovat aplikace, které bezpečně přihlásí uživatele s pracovním nebo školním účtem Microsoft. Azure AD podporuje vývojáře vytvářející jak obchodní aplikace s jedním tenantem, tak i vývojáře, kteří se zajímají o vyvíjení aplikací s více tenanty. Kromě základního přihlašování umožňuje Azure AD volat nejen rozhraní API Microsoftu, jako je [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/concepts/overview), ale i vlastní rozhraní API vytvořená na platformě Azure AD.  Tato dokumentace vám ukáže, jak do vlastní aplikace přidat podporu Azure AD s použitím standardních oborových protokolů, jako jsou OAuth 2.0 a OpenID Connect. 
+
+> [!NOTE]
+> Většina obsahu na této stránce se zaměřuje na koncový bod Azure AD v1, který podporuje pouze pracovní nebo školní účty Microsoft. Pokud chcete k přihlášení používat uživatelské nebo soukromé účty Microsoft, naleznete další informace v tématu o [koncovému bodu Azure AD v2.0](active-directory-appmodel-v2-overview.md). Koncový bod Azure AD v2.0 nabízí jednotné vývojářské prostředí pro aplikace, které chtějí umožňovat jak přihlášení pomocí účtů Azure AD (pracovní a školní), tak i pomocí soukromých účtů Microsoft. 
 
 | | |
 | --- | --- |
@@ -29,7 +32,7 @@ Azure Active Directory (Azure AD) je cloudová služba identit, která vývojá�
 |[Typy aplikací](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Přehled scénářů ověřování, které podporuje Azure AD |                                
                                                                               
 ## <a name="get-started"></a>Začínáme
-Následující praktická nastavení vás provedou použitím knihoven ověřování Microsoftu k přihlášení uživatelů Azure AD.
+Následující praktická nastavení vás provedou vytvořením aplikace na preferované platformě pomocí sady SDK Azure Active Directory Library (ADAL). Pokud hledáte informace o použití knihovny Microsoft Authentication Library (MSAL), najdete je v dokumentaci o [koncovému bodu Azure AD v2.0](active-directory-appmodel-v2-overview.md).
 
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -40,7 +43,7 @@ Následující praktická nastavení vás provedou použitím knihoven ověřov�
 | <center>![Služba-služba](./media/active-directory-developers-guide/Service_App.png)<br />Služba-služba</center> | [Přehled](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)|  |
 
 ## <a name="how-to-guides"></a>Návody
-Následující návody obsahují informace o provádění běžných úloh s Azure AD.
+Následující příručky vás provedou nejběžnějšími úkoly v Azure AD.
 
 |                                                                           |  |
 |---------------------------------------------------------------------------| --- |
@@ -58,10 +61,6 @@ Následující články poskytují podrobné informace o rozhraních API, zpráv
 | [Ukázky kódu](active-directory-code-samples.md)                                  | Seznam všech ukázek kódu Azure AD |
 | [Glosář](active-directory-dev-glossary.md)                                      | Terminologie a definice slov, která se používají v této dokumentaci |
 | [Další referenční témata](active-directory-developers-guide-index.md#reference)| Seznam referenčních témat, která jsou k dispozici pro Azure AD   |
-
-
-> [!NOTE]
-> Pokud potřebujete přihlašovat osobní účty Microsoft, měli byste zvážit použití [koncového bodu Azure AD v2.0](active-directory-appmodel-v2-overview.md). Koncový bod Azure AD v2.0 sjednocuje osobní účty Microsoft a pracovní účty Microsoft (z Azure AD) do jednoho ověřovacího systému.
 
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

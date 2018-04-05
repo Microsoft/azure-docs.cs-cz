@@ -15,22 +15,37 @@ ms.topic: article
 ms.date: 03/23/2018
 ms.author: mamit
 ms.custom: ''
-ms.openlocfilehash: c6252ab063ee074951f098e7814ea1cfec68a8b9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 16e0fc493a257504e2708336e05c30b36d4bea15
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="the-new-alerts-experience-in-azure-monitor"></a>Nové výstrahy na základě zkušeností uživatelů Azure monitorování
 
 ## <a name="overview"></a>Přehled
+
+> [!NOTE]
+> Tento článek popisuje novější výstrahy. Starší classic Azure monitorování výstrah jsou popsané v [přehled výstrah classic](monitoring-overview-alerts.md). 
+>
+>
+
 Výstrahy má nové prostředí. Starší výstrahy prostředí je nyní na kartě výstrahy (klasické). Nové výstrahy prostředí má následující výhody přes prostředí výstrahy (klasické):
 
- - **Oddělení Fired výstrahy a výstrahu pravidla** – výstraha pravidla (definice podmínku, která aktivuje výstrahu) a jsou rozlišené aktivováno výstrahy (instance pálení pravidlo výstrahy), takže zobrazení provozu a konfigurace jsou oddělené.
- - **Jednotné prostředí pro vytváření A** – všechny výstrahy vytvoření metrik, protokoly a aktivity protokolu na Azure monitorů, analýzy protokolů a Application Insights je na jednom místě. 
- - **Zobrazení aktivováno analýzy protokolů výstrahy na portálu Azure** – můžete nyní také najdete aktivováno výstrahy analýzy protokolů v rámci vašeho předplatného. Dříve byly tyto samostatné portálu. 
- - **Lepší pracovního postupu** - nové výstrahy pro tvorbu prostředí příručky uživatele společně nakonfigurovat pravidlo výstrahy, takže je jednodušší zjistit správné skutečnosti, které je na problém upozorněni.
+-   **Lepší oznámení systému**: použijte všechny novější výstrahy [skupiny akcí]( https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups), které jsou s názvem skupiny oznámení a akce, které lze znovu použít ve více výstrah.  Classic metriky výstrahy a starší výstrahy analýzy protokolů nepoužívejte skupiny akcí. 
+- **Jednotné prostředí pro vytváření A** – všechny výstrahy vytvoření metrik, protokoly a aktivity protokolu na Azure monitorů, analýzy protokolů a Application Insights je na jednom místě. 
+- **Zobrazení aktivováno analýzy protokolů výstrahy na portálu Azure** – můžete nyní také najdete aktivováno výstrahy analýzy protokolů v rámci vašeho předplatného. Dříve byly tyto samostatné portálu. 
+- **Oddělení Fired výstrahy a výstrahu pravidla** – výstraha pravidla (definice podmínku, která aktivuje výstrahu) a jsou rozlišené aktivováno výstrahy (instance pálení pravidlo výstrahy), takže zobrazení provozu a konfigurace jsou oddělené.
+- **Lepší pracovního postupu** - nové výstrahy pro tvorbu prostředí příručky uživatele společně nakonfigurovat pravidlo výstrahy, takže je jednodušší zjistit správné skutečnosti, které je na problém upozorněni.
  
+Novější metriky výstrahy konkrétně mají následující vylepšení:
+-   **Vylepšené latence**: novější metriky výstrahy můžete spustit často každou minutu. Starší metriky výstrahy vždy spustit v intervalu 5 minut. Výstrahy protokolu ještě delší než 1 minuta zpoždění kvůli době je potřeba k ingestování protokoly. 
+-   **Podpora pro multidimenzionální metriky**: můžete výstrahy na dimenzí metriky, které umožňuje sledovat segment zajímavé metriky.
+-   **Větší kontrolu nad metriky podmínky**: můžete definovat bohatší pravidla výstrah. Výstrahy novější podporují monitorování maximální, minimální, průměrná a celkové hodnoty metrik.
+-   **Kombinaci monitorování více metrik**: můžete sledovat více metriky (v současné době až dvě metriky) s jedním pravidlem. Výstraha se spustí, pokud obě metriky narušit jejich příslušné prahové hodnoty pro zadané časové období.
+-   **Metriky z protokolů** (verze public preview omezené): některé protokolu dat přejdete do analýzy protokolů můžete nyní extrahována a převést do Azure monitorování metriky a potom zobrazí upozornění na stejně jako jiné metriky. 
+
+
 
 Následující části popisují podrobněji, jak funguje na nové prostředí.
 
@@ -82,19 +97,22 @@ Další informace o tom, jak vytvořit následující typy výstrah [zde](monito
 - Výstrahy protokolu (Application Insights)
 
  
-
-## <a name="alert-types-supported"></a>Podporované typy výstrah
+## <a name="alerts-supported-in-new-experience"></a>Výstrahy, které jsou podporovány v nové prostředí
+Výstrahy jsou k dispozici v rámci několik Azure monitorování služeb. Informace o tom, a kdy použít tyto služby [najdete v článku](./monitoring-overview.md). Zde je výčet typů výstrah dostupné v Azure a co v současné době podporuje nové výstrahy prostředí. 
 
 
 | **Typ signálu** | **Monitorování zdroje** | **Popis** | 
 |-------------|----------------|-------------|
-| Metrika | Azure monitorování | Označuje taky jako [ **téměř v reálném čase metrika výstrahy**](monitoring-near-real-time-metric-alerts.md), tyto metriky výstrahy podporují vyhodnocení metriky podmínky často 1 min a povolit pro více metriky pravidla. Seznam typů podporovaných prostředků je k dispozici [zde](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported). Starší metrika výstrahy podle definice [sem](monitoring-overview-alerts.md#alerts-in-different-azure-services) nejsou podporovány v nové výstrahy prostředí. Můžete je vyhledat podle výstrahy (klasické)|
-| Logs  | Log Analytics | Přijímat oznámení nebo spustit automatizované akce, pokud vyhledávací dotaz protokolu nad daty metrika nebo událostí splňuje určitá kritéria.|
-| Protokol aktivit | Protokoly aktivit | Tato kategorie obsahuje záznamy všechny Create, Update a odstraňte akce prováděné prostřednictvím vybraná cílová (skupiny prostředků nebo prostředků nebo předplatného). |
-| Logs  | Protokoly služby stavu | Není podporováno v prostředí výstrahy.   |
-| Logs  | Application Insights | Tato kategorie obsahuje protokoly výkonu podrobné informace o této aplikaci. Pomocí analýzy dotazu, můžete definovat podmínky pro akce, jež mají být provedeny – na základě dat aplikace. |
-| Metrika | Application Insights | Není podporováno v prostředí výstrahy. Je najdete v části výstrahy (klasické) |
-| Testy dostupnosti | Application Insights | Není podporováno v prostředí výstrahy. Je najdete v části výstrahy (klasické) |
+| Metrika | Azure monitorování | Označuje taky jako [metriky výstrahy téměř v reálném čase](monitoring-near-real-time-metric-alerts.md), budou podporovat vyhodnocení metriky podmínky s četností až 1 minutu a povolit pro více metriky a komplexní metriky pravidla. Seznam typů podporovaných prostředků je k dispozici [zde](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported). |
+| Metrika | Azure monitorování | [Starší classic metriky výstrahy](monitoring-overview-alerts.md) nejsou podporovány v nové výstrahy prostředí. Můžete je vyhledat podle výstrahy (klasické) na portálu Azure. Classic výstrahy podporovat některé typy metriky, které dosud nebyla přesunuta novější výstrah. Úplný seznam najdete v tématu [podporované metriky](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-supported-metrics)
+| Logs  | Log Analytics | Přijímat oznámení nebo spustit automatizované akce, pokud vyhledávací dotaz protokolu nad daty metrika nebo událostí splňuje určitá kritéria. Starší výstrahy analýzy protokolů jsou stále k dispozici, ale jsou [kopírovány do nové prostředí](monitoring-alerts-extend.md). Kromě toho [náhled z *analýzy protokolů zaznamená jako metriky* ](monitoring-alerts-extend-tool.md) je k dispozici. Verze preview umožňuje provést některé typy protokolů a jejich převedení na metriky, kde můžete lze pak výstraha na pomocí nové výstrahy prostředí. Ve verzi preview je užitečné, pokud máte protokoly mimo Azure, které chcete získat spolu s nativní metrik Azure monitorování. |
+| Protokol aktivit | Protokoly aktivity (Obecné) | Obsahuje záznamy všechny Create, Update a Delete akce prováděné prostřednictvím vybraná cílová (skupiny prostředků nebo prostředků nebo předplatného). |
+| Protokol aktivit  | Service Health | Nepodporuje se v nové prostředí pro výstrahy. V tématu [vytvářet aktivity protokolu upozornění na oznámení o službách](monitoring-activity-log-alerts-on-service-notifications.md).  |
+| Logs  | Application Insights | Obsahuje protokoly výkonu podrobné informace o této aplikaci. Pomocí analýzy dotazu, můžete definovat podmínky pro akce, jež mají být provedeny – na základě dat aplikace. |
+| Metrika | Application Insights | Nepodporuje se v nové prostředí pro výstrahy. V tématu [metriky výstrahy](../application-insights/app-insights-alerts.md) |
+| Testy dostupnosti webu | Application Insights | Není podporováno v prostředí výstrahy.  V tématu [webového testu výstrahy](../application-insights/app-insights-monitor-web-app-availability.md). Chcete-li k dispozici na žádné web instrumentovány k odesílání dat do služby Application Insights. Přijímat oznámení v případě dostupnosti nebo odezvy webu je nižší než očekávání. |
+
+
 
 
 ## <a name="next-steps"></a>Další postup

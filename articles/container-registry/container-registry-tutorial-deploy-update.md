@@ -1,6 +1,6 @@
 ---
-title: "Kurz pro Azure kontejneru registru – nabízené aktualizovanou bitovou kopii pro místní nasazení"
-description: "Nabízená upravené bitové kopie Docker vaše geograficky replikované Azure přidat registru, a poté automaticky nasadí do webové aplikace běžící v několika oblastech změny nezobrazí. Tři součástí série, třemi částmi."
+title: Kurz služby Azure Container Registry – Nahrání aktualizované image do regionálních nasazení
+description: Nahrajte upravenou image Dockeru do vlastního geograficky replikovaného registru kontejneru Azure a změny se automaticky nasadí do webových aplikací běžících v několika oblastech. Třetí částí z třídílné série.
 services: container-registry
 author: mmacy
 manager: timlt
@@ -9,37 +9,37 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 359fdcabd579d277e40f02eba2d4603ebd9f5f1f
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: MT
+ms.openlocfilehash: f8eab93d1e6633ae4f17c5bb4836d96629d55cd4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="push-an-updated-image-to-regional-deployments"></a>Push aktualizovanou bitovou kopii pro místní nasazení
+# <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>Kurz: Nahrání aktualizované image do regionálních nasazení
 
-Toto je část tři v řadě kurz třemi částmi. V [předchozí kurzu](container-registry-tutorial-deploy-app.md), geografická replikace byl nakonfigurován na dvou různých místní nasazení webové aplikace. V tomto kurzu jste nejprve upravit aplikaci, pak vytvořit novou bitovou kopii kontejneru a poslat ho přímo vaší geograficky replikované registru. Nakonec můžete zobrazit změnu, automaticky nasadit pomocí webhooků registru kontejner Azure, v obou případech webové aplikace.
+Toto je třetí část z třídílné série kurzů. V [předchozím kurzu](container-registry-tutorial-deploy-app.md) se geografická replikace konfigurovala pro dvě různá nasazení regionální webové aplikace. V tomto kurzu nejprve aplikaci upravíte a potom sestavíte novou image kontejneru a nahrajete ji do geograficky replikovaného registru. Nakonec si zobrazíte změnu, která v obou instancích webové aplikace proběhla automaticky díky webhookům služby Azure Container Registry.
 
-V tomto kurzu poslední část v řadě:
+V poslední části série tohoto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Úprava webové aplikace HTML
-> * Sestavení a označit bitovou kopii Docker
-> * Oznámení změn registru kontejner Azure
-> * Zobrazení aktualizované aplikace ve dvou různých oblastech
+> * Upravit webovou aplikaci protokolu HTML
+> * Sestavit a označit image Dockeru
+> * Nahrát změnu do služby Azure Container Registry
+> * Zobrazit aktualizovanou aplikaci ve dvou různých oblastech
 
-Pokud jste nakonfigurovali ještě dva *webovou aplikaci pro kontejnery* místní nasazení vrátit k předchozí kurz v této sérii [nasadit webovou aplikaci z registru kontejner Azure](container-registry-tutorial-deploy-app.md).
+Pokud jste ještě dvě regionální nasazení služby *Web App for Containers* nenakonfigurovali, přejděte na předchozí kurz v této sérii: [Nasazení webové aplikace ze služby Azure Container Registry](container-registry-tutorial-deploy-app.md).
 
 ## <a name="modify-the-web-application"></a>Úprava webové aplikace
 
-V tomto kroku změňte webové aplikace, které se bude po push bitovou kopii aktualizované kontejneru do registru kontejner Azure vysoce viditelné.
+V tomto kroku provedete změnu webové aplikace, která bude po nahrání aktualizované image kontejneru do služby Azure Container Registry snadno rozpoznatelná.
 
-Najít `AcrHelloworld/Views/Home/Index.cshtml` souboru ve zdroji aplikace [klonovat z Githubu](container-registry-tutorial-prepare-registry.md#get-application-code) v předchozí kurzu a otevřete ji ve svém oblíbeném textovém editoru. Přidejte následující řádek pod existující `<h1>` řádku:
+Najděte ve zdroji aplikace soubor `AcrHelloworld/Views/Home/Index.cshtml`, který jste v předchozím kurzu [naklonovali z GitHubu](container-registry-tutorial-prepare-registry.md#get-application-code) a otevřete ho ve svém oblíbeném textovém editoru. Pod řádek `<h1>` přidejte následující řádek:
 
 ```html
 <h1>MODIFIED</h1>
 ```
 
-Vaše změny `Index.cshtml` by měl vypadat podobně jako:
+Upravený soubor `Index.cshtml` by měl vypadat nějak takto:
 
 ```html
 @{
@@ -68,17 +68,17 @@ Vaše změny `Index.cshtml` by měl vypadat podobně jako:
 </div>
 ```
 
-## <a name="rebuild-the-image"></a>Znovu sestavte bitovou kopii
+## <a name="rebuild-the-image"></a>Opětovné sestavení image
 
-Teď, když po aktualizaci webové aplikace, znovu sestavte jeho image kontejneru. Jako dříve použijte název plně kvalifikovaný bitové kopie, včetně adresu URL serveru přihlášení pro značku:
+Nyní, když jste webovou aplikaci aktualizovali, sestavte znovu její image kontejneru. Stejně jako dříve použijte plně kvalifikovaný název image, včetně adresy URL přihlašovacího serveru pro značku:
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-## <a name="push-image-to-azure-container-registry"></a>Push bitové kopie do registru kontejner Azure
+## <a name="push-image-to-azure-container-registry"></a>Nahrání image do služby Azure Container Registry
 
-Nyní, push aktualizovaný *acr helloworld* kontejneru bitovou kopii do vaší geograficky replikované registru. Zde se provádění jedné `docker push` příkazu nasaďte aktualizovanou bitovou kopii do registru replik v obou *západní USA* a *východní USA* oblasti.
+Nyní aktualizovanou image kontejneru *acr-helloworld* nahrajte do svého geograficky replikovaného registru. Zde provedete jediný příkaz `docker push`, kterým nasadíte aktualizovanou image do replik registru v obou oblastech (*West US* a *East US*).
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -98,47 +98,47 @@ a75caa09eb1f: Layer already exists
 v1: digest: sha256:4c3f2211569346fbe2d1006c18cbea2a4a9dcc1eb3a078608cef70d3a186ec7a size: 1792
 ```
 
-## <a name="view-the-webhook-logs"></a>Zobrazit protokoly webhooku
+## <a name="view-the-webhook-logs"></a>Zobrazení webhookových protokolů
 
-Když je právě replikován bitovou kopii, najdete v registru kontejner Azure webhooků, které se aktivuje.
+Během procesu replikace image si můžete všimnout, že dochází k aktivaci webhooků služby Azure Container Registry.
 
-Chcete-li zobrazit místní webhooků, které byly vytvořeny při nasazení kontejner, aby *webové aplikace pro kontejnery* předchozí kurzu, přejděte do kontejneru registr na portálu Azure a pak vyberte **Webhooky**pod **služby**.
+Pokud si chcete zobrazit regionální webhooky, které se vytvořily v předchozím kurzu po nasazení kontejneru do služby *Web Apps for Containers*, přejděte do svého registru kontejneru na portálu Azure Portal a v části **SLUŽBY** vyberte **Webhooky**.
 
-![Kontejner registru Webhooky na portálu Azure][tutorial-portal-01]
+![Webhooky v registru kontejnerů na portálu Azure Portal][tutorial-portal-01]
 
-Vyberte každý Webhooku zobrazíte historii jeho volání a odpovědi. Měli byste vidět řádek pro **nabízené** akce v protokolech obou Webhooky. Tady, se protokol pro Webhook umístěný v *západní USA* oblast ukazuje **nabízené** akce aktivuje `docker push` v předchozím kroku:
+Historii volání a odpovědí webhooku uvidíte po kliknutí na jeden z nich. V protokolech obou webhooků byste měli vidět řadu pro akci **nahrání**. Protokol webhooku umístěného v oblasti *West US* zobrazuje aktivaci akce **nahrání** příkazem `docker push` z předchozího kroku:
 
-![Kontejner registru Webhooku protokolu na portálu Azure (západní USA)][tutorial-portal-02]
+![Protokol webhooku v registru kontejnerů na portálu Azure Portal (West US)][tutorial-portal-02]
 
 ## <a name="view-the-updated-web-app"></a>Zobrazení aktualizované webové aplikace
 
-Webhooků, které jsou upozornit webové aplikace, aby bylo posunuto novou bitovou kopii do registru, které automaticky nasadí aktualizované kontejneru na dva místní webové aplikace.
+Webhooky upozorňují webové aplikace, že byla do registru nahrávána nová image, která automaticky nasadí aktualizovaný kontejner do dvou regionálních webových aplikací.
 
-Ověřte, že aplikace se aktualizovalo v obou nasazení tak, že přejdete do obou místní nasazení webové aplikace ve webovém prohlížeči. Připomínáme můžete získat adresu URL nasazené webové aplikace v pravé horní části každé kartě Přehled služby App Service.
+Přejděte ve svém prohlížeči na obě nasazení regionální webové aplikace a ověřte, že v obou nasazeních už byla aplikace aktualizována. Připomínáme vám, že adresu URL nasazené webové aplikace najdete v pravém horním rohu každé karty přehledu služby App Service.
 
-![Přehled služby App Service na portálu Azure][tutorial-portal-03]
+![Přehled služby App Service na portálu Azure Portal][tutorial-portal-03]
 
-Pokud chcete zobrazit aktualizovanou aplikaci, vyberte odkaz v přehledu služby App Service. Tady je příklad zobrazení aplikace spuštěné v *západní USA*:
+Pokud si chcete aktualizovanou aplikaci zobrazit, vyberte odkaz v přehledu služby App Service. Zde je příklad zobrazení aplikace běžící v oblasti *West US*:
 
-![Zobrazit v prohlížeči upravené webové aplikace spuštěna v oblasti západní USA][deployed-app-westus-modified]
+![Zobrazení prohlížeče s upravenou webovou aplikací běžící v oblasti West US][deployed-app-westus-modified]
 
-Ověřte, že bitovou kopii aktualizované kontejneru byla nasazená taky pro *východní USA* nasazení zobrazením v prohlížeči.
+Ověřte si zobrazením v prohlížeči, že aktualizovaná image kontejneru byla nasazená také v oblasti *East US*.
 
-![Zobrazit v prohlížeči upravené webové aplikace spuštěna v oblasti Východ USA][deployed-app-eastus-modified]
+![Zobrazení prohlížeče s upravenou webovou aplikací běžící v oblasti East US][deployed-app-eastus-modified]
 
-S jedním `docker push`po aktualizaci obou místní nasazení webové aplikace a registru kontejner Azure zpracování obrázků kontejneru z úložiště sítě zavřít.
+Jediným příkazem `docker push` jste aktualizovali obě nasazení regionální webové aplikace a služba Azure Container Registry zpracovala image kontejneru z úložišť v síťové blízkosti.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu aktualizovat a instaluje nové verze webového kontejneru aplikace do vaší geograficky replikované registru. Webhooky v registru kontejner Azure oznámení webové aplikace pro kontejnery aktualizace, která spustí místní vyžádání obsahu z registru replik.
+V tomto kurzu jste aktualizovali a nasadili novou verzi kontejneru webové aplikace do svého geograficky replikovaného registru. Webhooky ve službě Azure Container Registry zaslaly oznámení o aktualizaci službě Web App for Containers, která aktivovala načtení z replik registru.
 
-V tomto posledním kurz v této sérii, můžete:
+V této poslední části série jste:
 
 > [!div class="checklist"]
-> * Aktualizovat webovou aplikaci HTML
-> * Vytvořené a označí bitovou kopii Docker
-> * Instaluje změny do registru kontejner Azure
-> * Zobrazit aktualizovaná aplikace ve dvou různých oblastech
+> * Aktualizovali webovou aplikaci protokolu HTML
+> * Sestavili a označili image Dockeru
+> * Nahráli změnu do služby Azure Container Registry
+> * Zobrazili aktualizovanou aplikaci ve dvou různých oblastech
 
 <!-- IMAGES -->
 [deployed-app-eastus-modified]: ./media/container-registry-tutorial-deploy-update/deployed-app-eastus-modified.png

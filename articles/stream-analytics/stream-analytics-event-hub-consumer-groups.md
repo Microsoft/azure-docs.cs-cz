@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: ba54e4c0146e797e300579415db170fd6d290034
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 48fa5d0274549aa35e67526a758eef1f34198a6a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="debug-azure-stream-analytics-with-event-hub-receivers"></a>Ladění Azure Stream Analytics se příjemců u centra událostí
 
@@ -59,9 +59,9 @@ FROM inputEventHub
 Pomocí tohoto dotazu:
 
 ```
-WITH input (
+WITH data AS (
    SELECT * FROM inputEventHub
-) as data
+)
 
 SELECT foo
 INTO output1

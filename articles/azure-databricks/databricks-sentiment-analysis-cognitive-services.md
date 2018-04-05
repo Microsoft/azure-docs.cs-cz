@@ -1,9 +1,9 @@
 ---
 title: 'Kurz: Analýza mínění na streamovaných datech pomocí Azure Databricks | Microsoft Docs'
-description: Zjistěte, jak pomocí Azure Databricks se službou Event Hubs a rozhraní API služeb Cognitive Services spustit analýzu mínění na streamovaných datech v reálném čase.
+description: Zjistěte, jak můžete pomocí Azure Databricks se službou Event Hubs a rozhraní API služeb Cognitive Services spustit analýzu mínění na streamovaných datech téměř v reálném čase.
 services: azure-databricks
 documentationcenter: ''
-author: nitinme
+author: lenadroid
 manager: cgronlun
 editor: ''
 tags: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/15/2018
-ms.author: nitinme
-ms.openlocfilehash: 00456bdc4dc0e8562af9be6c827e8ab32bf03a31
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.date: 03/20/2018
+ms.author: alehall
+ms.openlocfilehash: 8858df394885ae7820a4bc72458f4f1d851965e6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Kurz: Analýza mínění na streamovaných datech pomocí Azure Databricks
 
-V tomto kurzu se dozvíte, jak spustit analýzu mínění na datovém proudu v reálném čase pomocí Azure Databricks. Pomocí služby Azure Event Hubs nastavíte systém pro příjem dat v reálném čase. Pomocí konektoru služby Event Hubs pro Spark budete přijímat zprávy ze služby Event Hubs do Azure Databricks. Nakonec pomocí rozhraní API služeb Microsoft Cognitive Services spustíte analýzu mínění na těchto streamovaných datech. 
+V tomto kurzu se dozvíte, jak spustit analýzu mínění na streamovaných datech téměř v reálném čase pomocí Azure Databricks. Pomocí služby Azure Event Hubs nastavíte systém pro příjem dat. Pomocí konektoru služby Event Hubs pro Spark budete přijímat zprávy ze služby Event Hubs do Azure Databricks. Nakonec pomocí rozhraní API služeb Microsoft Cognitive Services spustíte analýzu mínění na těchto streamovaných datech.
 
 Na konci tohoto kurzu budete streamovat tweety z Twitteru, které obsahují výraz Azure, a na těchto tweetech spustíte analýzu mínění.
 
@@ -32,12 +32,12 @@ Následující obrázek ukazuje běh aplikace:
 
 ![Azure Databricks se službami Event Hubs a Cognitive Services](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-tutorial.png "Azure Databricks se službami Event Hubs a Cognitive Services")
 
-Tento kurz se zabývá následujícími úkony: 
+Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Vytvoření pracovního prostoru Azure Databricks
 > * Vytvoření clusteru Spark v Azure Databricks
-> * Vytvoření aplikace Twitter pro přístup k datům v reálném čase
+> * Vytvoření twitterové aplikace pro přístup ke streamovaným datům
 > * Vytvoření poznámkových bloků v Azure Databricks
 > * Připojení knihoven pro službu Event Hubs a rozhraní Twitter API
 > * Vytvoření účtu služeb Microsoft Cognitive Services a načtení přístupového klíče
@@ -52,7 +52,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 - Obor názvů služby Azure Event Hubs.
 - Centrum událostí v rámci tohoto oboru názvů.
-- Připojovací řetězec pro přístup k oboru názvů služby Event Hubs. Připojovací řetězec by měl mít formát podobný tomuto: `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>”`.
+- Připojovací řetězec pro přístup k oboru názvů služby Event Hubs. Připojovací řetězec by měl mít formát podobný tomuto: `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`.
 - Název zásady sdíleného přístupu a klíč zásady pro službu Event Hubs.
 
 Tyto požadavky můžete splnit dokončením kroků v článku [Vytvoření oboru názvů služby Azure Event Hubs a centra událostí](../event-hubs/event-hubs-create.md).
@@ -63,20 +63,18 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
-V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks. 
+V této části vytvoříte pomocí portálu Azure Portal pracovní prostor služby Azure Databricks.
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Data a analýzy** > **Azure Databricks (Preview)**.
+1. Na portálu Azure Portal vyberte **Vytvořit prostředek** > **Data + analýzy** > **Azure Databricks**.
 
-    ![Databricks na portálu Azure](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Databricks na portálu Azure")
-
-2. V části **Azure Databricks (Preview)** vyberte **Vytvořit**.
+    ![Databricks na portálu Azure Portal](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Databricks na portálu Azure Portal")
 
 3. V části **Služba Azure Databricks** zadejte hodnoty pro vytvoření pracovního prostoru Databricks.
 
     ![Vytvoření pracovního prostoru služby Azure Databricks](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-workspace.png "Vytvoření pracovního prostoru služby Azure Databricks")
 
-    Zadejte následující hodnoty: 
-     
+    Zadejte následující hodnoty:
+
     |Vlastnost  |Popis  |
     |---------|---------|
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
@@ -93,7 +91,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Vytvoření clusteru Spark ve službě Databricks
 
-1. Na webu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a vyberte **Spustit pracovní prostor**.
+1. Na portálu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a vyberte **Spustit pracovní prostor**.
 
 2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Cluster**.
 
@@ -106,28 +104,28 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     Přijměte všechny výchozí hodnoty kromě následujících:
 
     * Zadejte název clusteru.
-    * Pro účely tohoto článku vytvořte cluster s modulem runtime verze **4.0 (beta)**. 
+    * Pro účely tohoto článku vytvořte cluster s modulem runtime verze **4.0 (beta)**.
     * Nezapomeňte zaškrtnout políčko **Terminate after ____ minutes of inactivity** (Ukončit po ____ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
     Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
-## <a name="create-a-twitter-application"></a>Vytvoření aplikace Twitter
+## <a name="create-a-twitter-application"></a>Vytvoření twitterové aplikace
 
-Pro příjem datového proudu tweetů v reálném čase je potřeba vytvořit aplikaci v Twitteru. Postupujte podle pokynů k vytvoření aplikace Twitter a poznamenejte si hodnoty, které potřebujete k dokončení tohoto kurzu.
+Pro příjem streamovaných tweetů je potřeba vytvořit aplikaci na Twitteru. Postupujte podle pokynů k vytvoření twitterové aplikace a poznamenejte si hodnoty, které potřebujete k dokončení tohoto kurzu.
 
-1. Ve webovém prohlížeči přejděte na stránku [Twitter Application Management](http://twitter.com/app) (Správa aplikací Twitter) a vyberte **Create New App** (Vytvořit novou aplikaci).
+1. Ve webovém prohlížeči přejděte na stránku [Twitter Application Management](http://twitter.com/app) (Správa twitterových aplikací) a vyberte **Create New App** (Vytvořit novou aplikaci).
 
-    ![Vytvoření aplikace Twitter](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-twitter-app.png "Vytvoření aplikace Twitter")
+    ![Vytvoření twitterové aplikace](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-twitter-app.png "Vytvoření twitterové aplikace")
 
-2. Na stránce **Create an application** (Vytvoření aplikace) zadejte podrobnosti o nové aplikaci a pak vyberte **Create your Twitter application** (Vytvořit aplikaci Twitter).
+2. Na stránce **Create an application** (Vytvoření aplikace) zadejte podrobnosti o nové aplikaci a pak vyberte **Create your Twitter application** (Vytvořit twitterovou aplikaci).
 
-    ![Podrobnosti o aplikaci Twitter](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details.png "Podrobnosti o aplikaci Twitter")
+    ![Podrobnosti o twitterové aplikaci](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details.png "Podrobnosti o twitterové aplikaci")
 
-3. Na stránce aplikace vyberte kartu **Keys and Access Tokens** (Klíče a přístupové tokeny) a zkopírujte hodnoty **Consumer Key** (Uživatelský klíč) a **Consumer Secret** (Uživatelský tajný klíč). Kromě toho vyberte **Create my access token** (Vytvořit přístupový token) a vygenerujte přístupové tokeny. Zkopírujte hodnoty **Access Token** (Přístupový token) a **Access Token Secret** (Tajný klíč přístupového tokenu).
+3. Na stránce aplikace vyberte kartu **Keys and Access Tokens** (Klíče a přístupové tokeny) a zkopírujte hodnoty **Consumer Key** (Uživatelský klíč) a **Consumer Secret** (Uživatelský tajný kód). Kromě toho vyberte **Create my access token** (Vytvořit přístupový token) a vygenerujte přístupové tokeny. Zkopírujte hodnoty **Access Token** (Přístupový token) a **Access Token Secret** (Tajný kód přístupového tokenu).
 
-    ![Podrobnosti o aplikaci Twitter](./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "Podrobnosti o aplikaci Twitter")
+    ![Podrobnosti o twitterové aplikaci](./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "Podrobnosti o twitterové aplikaci")
 
-Uložte hodnoty, které jste načetli pro aplikaci Twitter. Tyto hodnoty budete potřebovat v pozdější části kurzu.
+Uložte hodnoty, které jste načetli pro twitterovou aplikaci. Tyto hodnoty budete potřebovat v pozdější části kurzu.
 
 ## <a name="attach-libraries-to-spark-cluster"></a>Připojení knihoven ke clusteru Spark
 
@@ -139,7 +137,7 @@ V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní 
 
 2. Na stránce Nová knihovna jako **Zdroj** vyberte **Souřadnice Maven**. V části **Souřadnice** zadejte souřadnice balíčku, který chcete přidat. Tady jsou souřadnice Maven pro knihovny použité v tomto kurzu:
 
-    * Konektor služby Event Hubs pro Spark – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.0`
+    * Konektor služby Event Hubs pro Spark – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.1`
     * Rozhraní Twitter API – `org.twitter4j:twitter4j-core:4.0.6`
 
     ![Zadání souřadnic Maven](./media/databricks-sentiment-analysis-cognitive-services/databricks-eventhub-specify-maven-coordinate.png "Zadání souřadnic Maven")
@@ -158,12 +156,12 @@ V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní 
 
 ## <a name="get-a-cognitive-services-access-key"></a>Získání přístupového klíče služeb Cognitive Services
 
-V tomto kurzu spustíte analýzu mínění na datovém proudu tweetů v reálném čase pomocí [rozhraní API služeb Cognitive Services pro analýzu textu](../cognitive-services/text-analytics/overview.md). Před použitím těchto rozhraní API je potřeba vytvořit v Azure účet služeb Microsoft Cognitive Services a načíst přístupový klíč pro použití s rozhraními API pro analýzu textu.
+V tomto kurzu spustíte analýzu mínění na streamu tweetů téměř v reálném čase pomocí [rozhraní API Analýzy textu služeb Microsoft Cognitive Services](../cognitive-services/text-analytics/overview.md). Před použitím těchto rozhraní API je potřeba vytvořit v Azure účet služeb Microsoft Cognitive Services a načíst přístupový klíč pro použití s rozhraními API pro analýzu textu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **+ Vytvořit prostředek**.
- 
+
 3. V části Azure Marketplace vyberte **AI a Cognitive Services** > **Rozhraní API pro analýzu textu**.
 
     ![Vytvoření účtu služeb Cognitive Services](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Vytvoření účtu služeb Cognitive Services")
@@ -213,13 +211,13 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 
 ## <a name="send-tweets-to-event-hubs"></a>Odeslání tweetů do služby Event Hubs
 
-Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro váš obor názvů služby Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok v reálném čase streamuje tweety s klíčovým slovem Azure do služby Event Hubs.
+Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro váš obor názvů služby Event Hubs a twitterovou aplikaci, kterou jste vytvořili dříve. Tento poznámkový blok v reálném čase streamuje tweety s klíčovým slovem Azure do služby Event Hubs.
 
     import java.util._
     import scala.collection.JavaConverters._
     import com.microsoft.azure.eventhubs._
     import java.util.concurrent._
-    
+
     val namespaceName = "<EVENT HUBS NAMESPACE>"
     val eventHubName = "<EVENT HUB NAME>"
     val sasKeyName = "<POLICY NAME>"
@@ -229,51 +227,51 @@ Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a n
                 .setEventHubName(eventHubName)
                 .setSasKeyName(sasKeyName)
                 .setSasKey(sasKey)
-    
+
     val pool = Executors.newFixedThreadPool(1)
     val eventHubClient = EventHubClient.create(connStr.toString(), pool)
-    
+
     def sendEvent(message: String) = {
       val messageData = EventData.create(message.getBytes("UTF-8"))
-      eventHubClient.get().send(messageData) 
+      eventHubClient.get().send(messageData)
       System.out.println("Sent event: " + message + "\n")
     }
-    
+
     import twitter4j._
     import twitter4j.TwitterFactory
     import twitter4j.Twitter
     import twitter4j.conf.ConfigurationBuilder
-    
+
     // Twitter configuration!
     // Replace values below with yours
-    
+
     val twitterConsumerKey = "<CONSUMER KEY>"
     val twitterConsumerSecret = "<CONSUMER SECRET>"
     val twitterOauthAccessToken = "<ACCESS TOKEN>"
     val twitterOauthTokenSecret = "<TOKEN SECRET>"
-    
+
     val cb = new ConfigurationBuilder()
       cb.setDebugEnabled(true)
       .setOAuthConsumerKey(twitterConsumerKey)
       .setOAuthConsumerSecret(twitterConsumerSecret)
       .setOAuthAccessToken(twitterOauthAccessToken)
       .setOAuthAccessTokenSecret(twitterOauthTokenSecret)
-    
+
     val twitterFactory = new TwitterFactory(cb.build())
     val twitter = twitterFactory.getInstance()
-    
+
     // Getting tweets with keyword "Azure" and sending them to the Event Hub in realtime!
-    
+
     val query = new Query(" #Azure ")
     query.setCount(100)
     query.lang("en")
     var finished = false
     while (!finished) {
-      val result = twitter.search(query) 
+      val result = twitter.search(query)
       val statuses = result.getTweets()
       var lowestStatusId = Long.MaxValue
       for (status <- statuses.asScala) {
-        if(!status.isRetweet()){ 
+        if(!status.isRetweet()){
           sendEvent(status.getText())
         }
         lowestStatusId = Math.min(status.getId(), lowestStatusId)
@@ -281,24 +279,24 @@ Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a n
       }
       query.setMaxId(lowestStatusId - 1)
     }
-    
+
     // Closing connection to the Event Hub
     eventHubClient.get().close()
 
-Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí se výstup jako v následujícím fragmentu kódu. Každá událost ve výstupu představuje tweet v reálném čase, který se ingestuje do služby Event Hubs. 
+Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí se výstup jako v následujícím fragmentu kódu. Každá událost ve výstupu představuje tweet, který se ingestuje do služby Event Hubs.
 
     Sent event: @Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence
 
     Sent event: Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
-    https://t.co/7vs7cKtvah 
+    https://t.co/7vs7cKtvah
     #cloudcomputing #Azure
-    
+
     Sent event: 4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie
-    
+
     Sent event: Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
-    
+
     Sent event: Top 10 Tricks to #Save Money with #Azure Virtual Machines https://t.co/F2wshBXdoz #Cloud
-    
+
     ...
     ...
 
@@ -308,26 +306,26 @@ Do poznámkového bloku **AnalyzeTweetsFromEventHub** vložte následující kó
 
     import org.apache.spark.eventhubs._
 
-    // Build connection string with the above information 
+    // Build connection string with the above information
     val connectionString = ConnectionStringBuilder("<EVENT HUBS CONNECTION STRING>")
       .setEventHubName("<EVENT HUB NAME>")
       .build
-    
-    val customEventhubParameters = 
+
+    val customEventhubParameters =
       EventHubsConf(connectionString)
       .setMaxEventsPerTrigger(5)
-    
+
     val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
-    
+
     incomingStream.printSchema
-    
+
     // Sending the incoming stream into the console.
     // Data comes in batches!
     incomingStream.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
 
 Zobrazí se následující výstup:
 
-  
+
     root
      |-- body: binary (nullable = true)
      |-- offset: long (nullable = true)
@@ -335,7 +333,7 @@ Zobrazí se následující výstup:
      |-- enqueuedTime: long (nullable = true)
      |-- publisher: string (nullable = true)
      |-- partitionKey: string (nullable = true)
-   
+
     -------------------------------------------
     Batch: 0
     -------------------------------------------
@@ -343,9 +341,9 @@ Zobrazí se následující výstup:
     |body  |offset|sequenceNumber|enqueuedTime   |publisher|partitionKey|
     +------+------+--------------+---------------+---------+------------+
     |[50 75 62 6C 69 63 20 70 72 65 76 69 65 77 20 6F 66 20 4A 61 76 61 20 6F 6E 20 41 70 70 20 53 65 72 76 69 63 65 2C 20 62 75 69 6C 74 2D 69 6E 20 73 75 70 70 6F 72 74 20 66 6F 72 20 54 6F 6D 63 61 74 20 61 6E 64 20 4F 70 65 6E 4A 44 4B 0A 68 74 74 70 73 3A 2F 2F 74 2E 63 6F 2F 37 76 73 37 63 4B 74 76 61 68 20 0A 23 63 6C 6F 75 64 63 6F 6D 70 75 74 69 6E 67 20 23 41 7A 75 72 65]                              |0     |0             |2018-03-09 05:49:08.86 |null     |null        |
-    |[4D 69 67 72 61 74 65 20 79 6F 75 72 20 64 61 74 61 62 61 73 65 73 20 74 6F 20 61 20 66 75 6C 6C 79 20 6D 61 6E 61 67 65 64 20 73 65 72 76 69 63 65 20 77 69 74 68 20 41 7A 75 72 65 20 53 51 4C 20 44 61 74 61 62 61 73 65 20 4D 61 6E 61 67 65 64 20 49 6E 73 74 61 6E 63 65 20 7C 20 23 41 7A 75 72 65 20 7C 20 23 43 6C 6F 75 64 20 68 74 74 70 73 3A 2F 2F 74 2E 63 6F 2F 73 4A 48 58 4E 34 74 72 44 6B]            |168   |1             |2018-03-09 05:49:24.752|null     |null        | 
+    |[4D 69 67 72 61 74 65 20 79 6F 75 72 20 64 61 74 61 62 61 73 65 73 20 74 6F 20 61 20 66 75 6C 6C 79 20 6D 61 6E 61 67 65 64 20 73 65 72 76 69 63 65 20 77 69 74 68 20 41 7A 75 72 65 20 53 51 4C 20 44 61 74 61 62 61 73 65 20 4D 61 6E 61 67 65 64 20 49 6E 73 74 61 6E 63 65 20 7C 20 23 41 7A 75 72 65 20 7C 20 23 43 6C 6F 75 64 20 68 74 74 70 73 3A 2F 2F 74 2E 63 6F 2F 73 4A 48 58 4E 34 74 72 44 6B]            |168   |1             |2018-03-09 05:49:24.752|null     |null        |
     +------+------+--------------+---------------+---------+------------+
-    
+
     -------------------------------------------
     Batch: 1
     -------------------------------------------
@@ -356,19 +354,19 @@ Vzhledem k tomu, že se výstup zobrazuje v binárním režimu, pomocí následu
 
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._
-    
+
     // Event Hub message format is JSON and contains "body" field
     // Body is binary, so we cast it to string to see the actual content of the message
-    val messages = 
+    val messages =
       incomingStream
       .withColumn("Offset", $"offset".cast(LongType))
       .withColumn("Time (readable)", $"enqueuedTime".cast(TimestampType))
       .withColumn("Timestamp", $"enqueuedTime".cast(LongType))
       .withColumn("Body", $"body".cast(StringType))
       .select("Offset", "Time (readable)", "Timestamp", "Body")
-    
+
     messages.printSchema
-    
+
     messages.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
 
 Výstup teď vypadá podobně jako následující fragment kódu:
@@ -378,7 +376,7 @@ Výstup teď vypadá podobně jako následující fragment kódu:
      |-- Time (readable): timestamp (nullable = true)
      |-- Timestamp: long (nullable = true)
      |-- Body: string (nullable = true)
-    
+
     -------------------------------------------
     Batch: 0
     -------------------------------------------
@@ -386,7 +384,7 @@ Výstup teď vypadá podobně jako následující fragment kódu:
     |Offset|Time (readable)  |Timestamp |Body
     +------+-----------------+----------+-------+
     |0     |2018-03-09 05:49:08.86 |1520574548|Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
-    https://t.co/7vs7cKtvah 
+    https://t.co/7vs7cKtvah
     #cloudcomputing #Azure          |
     |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
     |0     |2018-03-09 05:49:02.936|1520574542|@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|
@@ -406,12 +404,12 @@ Začněte tím, že do poznámkového bloku přidáte novou buňku kódu a vlož
 
     import java.io._
     import java.net._
-    import java.util._    
+    import java.util._
 
-    class Document(var id: String, var text: String, var language: String = "", var sentiment: Double = 0.0) extends Serializable 
+    class Document(var id: String, var text: String, var language: String = "", var sentiment: Double = 0.0) extends Serializable
 
     class Documents(var documents: List[Document] = new ArrayList[Document]()) extends Serializable {
-    
+
         def add(id: String, text: String, language: String = "") {
             documents.add (new Document(id, text, language))
         }
@@ -436,9 +434,9 @@ Přidejte novou buňku kódu a vložte do ní níže uvedený fragment kódu. Te
     import com.google.gson.JsonObject
     import com.google.gson.JsonParser
     import scala.util.parsing.json._
-    
+
     object SentimentDetector extends Serializable {
-      
+
       // Cognitive Services API connection settings
       val accessKey = "<PROVIDE ACCESS KEY HERE>"
       val host = "<PROVIDE HOST HERE>"
@@ -446,7 +444,7 @@ Přidejte novou buňku kódu a vložte do ní níže uvedený fragment kódu. Te
       val sentimentPath = "/text/analytics/v2.0/sentiment"
       val languagesUrl = new URL(host+languagesPath)
       val sentimenUrl = new URL(host+sentimentPath)
-      
+
       def getConnection(path: URL): HttpsURLConnection = {
         val connection = path.openConnection().asInstanceOf[HttpsURLConnection]
         connection.setRequestMethod("POST")
@@ -455,14 +453,14 @@ Přidejte novou buňku kódu a vložte do ní níže uvedený fragment kódu. Te
         connection.setDoOutput(true)
         return connection
       }
-      
+
       def prettify (json_text: String): String = {
         val parser = new JsonParser()
         val json = parser.parse(json_text).getAsJsonObject()
         val gson = new GsonBuilder().setPrettyPrinting().create()
         return gson.toJson(json)
       }
-      
+
       // Handles the call to Cognitive Services API.
       // Expects Documents as parameters and the address of the API to call.
       // Returns an instance of Documents in response.
@@ -474,7 +472,7 @@ Přidejte novou buňku kódu a vložte do ní níže uvedený fragment kódu. Te
         wr.write(encoded_text, 0, encoded_text.length)
         wr.flush()
         wr.close()
-    
+
         val response = new StringBuilder()
         val in = new BufferedReader(new InputStreamReader(connection.getInputStream()))
         var line = in.readLine()
@@ -485,10 +483,10 @@ Přidejte novou buňku kódu a vložte do ní níže uvedený fragment kódu. Te
         in.close()
         return response.toString()
       }
-      
+
       // Calls the language API for specified documents.
       // Returns a documents with language field set.
-      def getLanguage (inputDocs: Documents): Documents = { 
+      def getLanguage (inputDocs: Documents): Documents = {
         try {
           val response = processUsingApi(inputDocs, languagesUrl)
           // In case we need to log the json response somewhere
@@ -511,7 +509,7 @@ Přidejte novou buňku kódu a vložte do ní níže uvedený fragment kódu. Te
               case e: Exception => return new Documents()
         }
       }
-      
+
       // Calls the sentiment API for specified documents. Needs a language field to be set for each of them.
       // Returns documents with sentiment field set, taking a value in the range from 0 to 1.
       def getSentiment (inputDocs: Documents): Documents = {
@@ -535,7 +533,7 @@ Přidejte novou buňku kódu a vložte do ní níže uvedený fragment kódu. Te
         }
       }
     }
-    
+
     // User Defined Function for processing content of messages to return their sentiment.
     val toSentiment = udf((textContent: String) => {
       val inputDocs = new Documents()
@@ -554,7 +552,7 @@ Přidejte poslední buňku kódu pro přípravu datového rámce s obsahem tweet
 
     // Prepare a dataframe with Content and Sentiment columns
     val streamingDataFrame = incomingStream.selectExpr("cast (body as string) AS Content").withColumn("Sentiment", toSentiment($"Content"))
-    
+
     // Display the streaming data with the sentiment
     streamingDataFrame.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
 
@@ -571,11 +569,11 @@ Zobrazený výstup by měl vypadat přibližně jako následující fragment kó
     |Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |0.8558163642883301|
     |@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|0.5               |
     |4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |0.5               |
-    +--------------------------------+------------------+ 
+    +--------------------------------+------------------+
 
-Hodnota ve sloupci **Sentiment** (Mínění) blížící se **1** značí skvělé zkušenosti s Azure. Hodnota blížící se **0** značí, že se uživatel při práci s Microsoft Azure setkal s problémy. 
+Hodnota ve sloupci **Sentiment** (Mínění) blížící se **1** značí skvělé zkušenosti s Azure. Hodnota blížící se **0** značí, že se uživatel při práci s Microsoft Azure setkal s problémy.
 
-A to je vše! Pomocí Azure Databricks jste úspěšně streamovali data v reálném čase do služby Azure Event Hubs, streamovaná data jste použili pomocí konektoru služby Event Hubs a pak jste na streamovaných datech spustili analýzu mínění.
+A to je vše! Pomocí Azure Databricks jste úspěšně streamovali data do služby Azure Event Hubs, streamovaná data jste použili pomocí konektoru služby Event Hubs a pak jste na streamovaných datech spustili analýzu mínění – téměř v reálném čase.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -585,12 +583,12 @@ Po dokončení tohoto kurzu můžete cluster ukončit. Pokud to chcete udělat, 
 
 Pokud cluster neukončíte ručně, zastaví se automaticky za předpokladu, že jste při vytváření clusteru zaškrtli políčko **Ukončit po __ minutách nečinnosti**. V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak pomocí Azure Databricks streamovat data do služby Azure Event Hubs a pak streamovaná data v reálném čase číst ze služby Event Hubs. Naučili jste se tyto postupy:
 > [!div class="checklist"]
 > * Vytvoření pracovního prostoru Azure Databricks
 > * Vytvoření clusteru Spark v Azure Databricks
-> * Vytvoření aplikace Twitter pro přístup k datům v reálném čase
+> * Vytvoření twitterové aplikace pro přístup ke streamovaným datům
 > * Vytvoření poznámkových bloků v Azure Databricks
 > * Přidání a připojení knihoven pro službu Event Hubs a rozhraní Twitter API
 > * Vytvoření účtu služeb Microsoft Cognitive Services a načtení přístupového klíče

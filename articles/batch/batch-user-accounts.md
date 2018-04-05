@@ -1,24 +1,24 @@
 ---
-title: "Spuštění úlohy v části uživatelské účty ve službě Azure Batch | Microsoft Docs"
-description: "Konfigurace uživatelských účtů pro spuštění úloh v Azure Batch"
+title: Spuštění úlohy v části uživatelské účty ve službě Azure Batch | Microsoft Docs
+description: Konfigurace uživatelských účtů pro spuštění úloh v Azure Batch
 services: batch
-author: tamram
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: tamram
-ms.openlocfilehash: d408c0565c0ed81fc97cc2b3976a4fc233e31302
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: 1b9c0514e93fa89f8776d830ef242fc4963a6f7b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Spuštění úlohy v části uživatelské účty ve službě Batch
 
@@ -312,7 +312,7 @@ Verze služby Batch 2017-01-01.4.0 zavádí narušující změně nahrazení **r
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated`není zadaná. | Bez aktualizace                                                                                               |
+| `CloudTask.RunElevated` Není zadaná. | Bez aktualizace                                                                                               |
 
 ### <a name="batch-java"></a>Batch Java
 
@@ -320,7 +320,7 @@ Verze služby Batch 2017-01-01.4.0 zavádí narušující změně nahrazení **r
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated`není zadaná. | Bez aktualizace                                                                                                                     |
+| `CloudTask.withRunElevated` Není zadaná. | Bez aktualizace                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
@@ -328,10 +328,10 @@ Verze služby Batch 2017-01-01.4.0 zavádí narušující změně nahrazení **r
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin)) `                |
 | `run_elevated=False`                      | `user_identity=user`, kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin)) `             |
-| `run_elevated`není zadaná. | Bez aktualizace                                                                                                                                  |
+| `run_elevated` Není zadaná. | Bez aktualizace                                                                                                                                  |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 ### <a name="batch-forum"></a>Fórum batch
 

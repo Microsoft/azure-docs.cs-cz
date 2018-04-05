@@ -25,9 +25,15 @@
 ### Load Balancer
 #### [Co je nástroj pro vyrovnávání zatížení?](../load-balancer/load-balancer-standard-overview.md)
 #### [Load Balancer úrovně Standard a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md)
-#### [Vytvoření zónově redundantní veřejné služby Load Balancer Standard s využitím webu Azure Portal](../load-balancer/load-balancer-get-started-internet-az-portal.md)
-#### [Vytvoření zónově redundantní služby Load Balancer Standard s využitím PowerShellu](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
-#### [Vytvoření zónově redundantní veřejné služby Load Balancer Standard s využitím rozhraní příkazového řádku](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+
+#### [Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard](../load-balancer/load-balancer-get-started-internet-az-portal.md)
+##### [Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (PowerShell)](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
+##### [Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (CLI)](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+#### [Vytvoření zónového veřejného Load Balanceru úrovně Standard](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md)
+##### [Vytvoření zónového veřejného Load Balanceru úrovně Standard (PowerShell)](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md)
+##### [Vytvoření zónového veřejného Load Balanceru úrovně Standard (CLI)](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md)
+#### [Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti](../load-balancer/load-balancer-standard-public-availability-zones-portal.md)
+##### [Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti s využitím Azure (CLI)](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 
 ### [Veřejná IP adresa](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
@@ -35,7 +41,7 @@
 #### [Zóny dostupnosti pro SQL Database](../sql-database/sql-database-high-availability.md#availability-zones)
 
 ### Úložiště
-#### [Zónově redundantní úložiště](../storage/common/storage-redundancy.md#zone-redundant-storage)
+#### [Zónově redundantní úložiště](../storage/common/storage-redundancy-zrs.md)
 
 # Zotavení po havárii
 ## [Použití Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)

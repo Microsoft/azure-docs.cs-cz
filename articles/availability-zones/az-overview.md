@@ -1,10 +1,10 @@
 ---
-title: Dostupnost zóny přehled | Microsoft Docs
-description: Tento článek obsahuje přehled o dostupnosti zóny v Azure.
+title: Přehled Azure dostupnost zóny | Microsoft Docs
+description: Tento článek obsahuje přehled o tom, jak pomocí dostupnost zóny můžete vytvořit vysoce dostupné a odolné aplikace v Azure
 services: ''
 documentationcenter: ''
-author: markgalioto
-manager: carmonm
+author: iainfoulds
+manager: jeconnoc
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -13,31 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2018
-ms.author: markgal
+ms.date: 03/21/2018
+ms.author: iainfou
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: b4db442a54b4360b75df40156ca0d4e4ee1eb0d1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a4133779538e412a19a11de678b1527fb8023a87
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="overview-of-availability-zones-in-azure-preview"></a>Přehled dostupnosti zón v Azure (Preview)
+# <a name="overview-of-availability-zones-in-azure"></a>Přehled dostupnosti zón v Azure
+Dostupnost zóny je vysoká dostupnost nabízející, které chrání vaše aplikace a data před selháním datového centra. Dostupnost zóny jsou jedinečné fyzické umístění v rámci oblasti Azure. Každé zóny se skládá z jedné nebo více datových centrech vybaven nezávislé napájení, chlazení a práci v síti. K zajištění odolnosti, je minimálně tři samostatné zóny ve všech oblastech povoleno. Fyzické oddělení dostupnost zóny v rámci oblasti chrání aplikace a data před selháním datového centra. Zónově redundantní služby replikaci mezi zón dostupnosti pro ochranu před jedním bodů z selháním aplikacím a datům. Dostupnost zón Azure nabízí odvětví nejlepší 99,99 % virtuálních počítačů smlouva SLA. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
 
-Dostupnost zóny pomoci při ochraně před selháním úrovni datového centra. Jsou umístěny uvnitř oblasti Azure, a každé z nich má svou vlastní nezávisle spotřeby zdroje, sítě a chlazení. K zajištění odolnosti, je minimálně tři samostatné zóny ve všech oblastech povoleno. Fyzické a logické oddělení dostupnost zóny v rámci oblasti chrání aplikace a data před selháním úrovni zóny. 
+Sestavte vysokou dostupností do vaší aplikace architektury společné umísťování prostředkům výpočty, úložiště, sítě a data v rámci zóny a replikuje v jiných oblastech. Služby Azure, které podporují dostupnost zóny rozdělit do dvou kategorií:
 
+- **Oblastmi služby** – prostředek pro konkrétní zónu (například virtuální počítače, spravované disky, IP adresy), připnete nebo
+- **Zónově redundantní služby** – platforma automaticky replikuje přes zóny (například zónově redundantní úložiště, databáze SQL).
+
+Zajistit komplexní provozní kontinuitu v Azure vytvořte architektuře aplikace pomocí kombinace dostupnost zóny s páry oblast Azure. Můžete replikovat synchronně vaší aplikace a data pomocí dostupnost zóny v rámci oblasti Azure pro vysokou dostupnost a asynchronně replikovat mezi oblastmi Azure pro ochranu pro zotavení po havárii.
+ 
 ![koncepční zobrazení jednu zónu směrem dolů v oblasti.](./media/az-overview/az-graphic-two.png)
 
 ## <a name="regions-that-support-availability-zones"></a>Oblasti, které podporují dostupnost zóny
 
-- Východní USA 2
 - USA – střed
-- Západní Evropa
 - Francie – střed
-- Jihovýchodní Asie
+- Východní USA 2 (Preview)
+- Západní Evropa (Preview)
+- Asie a Tichomoří – jihovýchod (Preview)
+
 
 ## <a name="services-that-support-availability-zones"></a>Služby, které podporují dostupnost zóny
-
 Služby Azure, které podporují dostupnost zóny jsou:
 
 - Virtuální počítače s Linuxem
@@ -49,18 +55,20 @@ Služby Azure, které podporují dostupnost zóny jsou:
 - Zónově redundantní úložiště
 - Databáze SQL
 
-## <a name="get-started-with-the-availability-zones-preview"></a>Začínáme s preview dostupnost zóny
 
-Dostupnost zóny náhled je dostupný v východní USA 2, nám centrální, západní Evropa a Francie centrální oblasti pro konkrétní služby Azure. 
+## <a name="pricing"></a>Ceny
+Není k dispozici pro virtuální počítače nasazené v zóně dostupnosti bez dalších nákladů. 99,99 % SLA provozu virtuálního počítače je nabídnuta při nasazení dvou nebo více virtuálních počítačů mezi dva nebo víc zón dostupnosti v rámci oblasti Azure. Budou existovat další poplatky přenos dat mezi dostupnost zóny virtuálních počítačů VM. Další informace najdete v článku [šířky pásma ceny](https://azure.microsoft.com/pricing/details/bandwidth/) stránky.
 
-1. [Registrace pro náhled zóny dostupnosti](http://aka.ms/azenroll). 
-2. Přihlaste se k předplatnému Azure.
-3. Vyberte oblast, která podporuje dostupnost zóny.
-4. Ke spuštění pomocí služby dostupnost zóny, použijte jednu z následujících odkazů. 
-    - [Vytvoření virtuálního počítače](../virtual-machines/windows/create-portal-availability-zone.md)
-    - [Vytvoření škálovací sady virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-    - [Přidejte Disk spravované pomocí prostředí PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-    - [Load Balancer](../load-balancer/load-balancer-standard-overview.md)
+
+## <a name="get-started-with-availability-zones"></a>Začínáme s dostupnost zóny
+- [Vytvoření virtuálního počítače](../virtual-machines/windows/create-portal-availability-zone.md)
+- [Přidejte Disk spravované pomocí prostředí PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
+- [Vytvoření sady škálování zóny redundantní virtuální počítač](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
+- [Nástroj pro vyrovnávání zatížení virtuálních počítačů mezi různými pásmy pomocí standardní Vyrovnávání zatížení s front-end zónově redundantní](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [Nástroj pro vyrovnávání zatížení virtuálních počítačů v rámci zóny pomocí standardní Vyrovnávání zatížení s front-end oblastmi](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [Zónově redundantní úložiště](../storage/common/storage-redundancy-zrs.md)
+- [SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration-preview)
+
 
 ## <a name="next-steps"></a>Další postup
 - [Šablony Rychlý start](http://aka.ms/azqs)

@@ -1,8 +1,8 @@
 ---
-title: "Používání služby Azure AD Connect Health se synchronizací | Dokumentace Microsoftu"
-description: "Toto je stránka o službě Azure AD Connect Health, která popisuje sledování synchronizace Azure AD Connect."
+title: Používání služby Azure AD Connect Health se synchronizací | Microsoft Docs
+description: Toto je stránka o službě Azure AD Connect Health, která popisuje sledování synchronizace Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 821d4bd7e6b526ad826caf005456edf8235291b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cff8be88e23d57545a9926df366289c6ba264886
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Sledování synchronizace Azure AD Connect pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health.  Informace o sledování služby AD FS pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD FS](active-directory-aadconnect-health-adfs.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](active-directory-aadconnect-health-adds.md).
@@ -35,7 +35,7 @@ Výběrem některého upozornění zobrazíte doplňující informace, kroky, kt
 ### <a name="limited-evaluation-of-alerts"></a>Omezené vyhodnocení upozornění
 Pokud služba Azure AD Connect nepoužívá výchozí konfiguraci (například když je filtrování atributů změněné z výchozí konfigurace na vlastní), agent služby Azure AD Connect Health nebude odesílat chybové události související se službou Azure AD Connect.
 
-Služba tak bude při vyhodnocování upozornění omezená. Zobrazí se banner, který v rámci služby upozorňuje na tento stav na webu Azure Portal.
+Služba tak bude při vyhodnocování upozornění omezená. Zobrazí se banner, který v rámci služby upozorňuje na tento stav na portálu Azure Portal.
 
 ![Azure AD Connect Health pro synchronizaci](./media/active-directory-aadconnect-health-sync/banner.png)
 
@@ -83,11 +83,12 @@ Sestava zařazuje stávající chyby synchronizace do následujících kategori�
 | Duplicitní atribut |Chyby vzniklé při pokusu služby Azure AD Connect o vytvoření nebo aktualizaci objektů s duplicitními hodnotami atributů ve službě Azure AD, které musí být v tenantovi jedinečné, například proxyAddresses, UserPrincipalName |
 | Neshoda dat |Chyby synchronizace vzniklé v důsledku neúspěšného měkkého párování objektů |
 | Chyba ověřování dat |Chyby vzniklé v důsledku neplatných dat, jako jsou nepodporované znaky v klíčových atributech (např. UserPrincipalName), chyby formátování, které se před zápisem do Azure AD nepodaří ověřit |
+| Změna federované domény | Chyby, když účty používají jinou federovanou doménu. |
 | Rozsáhlý atribut |Chyby vzniklé v důsledku toho, že některé atributy překračují povolenou velikost, délku nebo počet |
 | Ostatní |Všechny ostatní chyby, které nevyhovují uvedeným kategoriím Na základě zpětné vazby rozdělíme tuto kategorii do podkategorií. |
 
 ![Souhrnná sestava chyb synchronizace](./media/active-directory-aadconnect-health-sync/errorreport01.png)
-![Kategorie sestavy chyb synchronizace](./media/active-directory-aadconnect-health-sync/errorreport02.png)
+![Kategorie sestavy chyb synchronizace](./media/active-directory-aadconnect-health-sync/SyncErrorByTypes.PNG)
 
 ### <a name="list-of-objects-with-error-per-category"></a>Seznam chybných objektů podle kategorie
 Rozbalením jednotlivých kategorií zobrazíte seznam objektů, které mají chybu v dané kategorii.

@@ -35,9 +35,11 @@
       href: container-instances-multi-container-group.md
     - name: Nasazení ze služby Azure Container Registry
       href: container-instances-using-azure-container-registry.md
+    - name: Spuštění příkazu (exec)
+      href: container-instances-exec.md
     - name: Spouštění kontejnerizovaných úloh
       href: container-instances-restart-policy.md
-    - name: Nastavení proměnných prostředí
+    - name: Nastavení proměnných prostředí (env)
       href: container-instances-environment-variables.md
     - name: Řešení potíží s nasazeními
       href: container-instances-troubleshooting.md

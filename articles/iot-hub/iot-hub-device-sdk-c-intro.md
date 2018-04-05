@@ -1,11 +1,11 @@
 ---
-title: "Zařízení Azure IoT SDK pro jazyk C | Microsoft Docs"
-description: "Začínáme s Azure IoT zařízení SDK pro jazyk C a informace o vytváření aplikací pro zařízení, které komunikují pomocí služby IoT hub."
+title: Zařízení Azure IoT SDK pro jazyk C | Microsoft Docs
+description: Začínáme s Azure IoT zařízení SDK pro jazyk C a informace o vytváření aplikací pro zařízení, které komunikují pomocí služby IoT hub.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: yzhong94
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e448b061-6bdd-470a-a527-15ec03cca7b9
 ms.service: iot-hub
 ms.devlang: cpp
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: cc559a19f6d7c31b3bc00a74851f4d42719832de
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6a85ae65a0f20892b3a20656abac05e90538a1bd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Pro zařízení Azure IoT SDK pro jazyk C
 
 **Zařízení Azure IoT SDK** je sada knihoven navržený tak, aby zjednodušit proces odesílání zpráv a příjem zpráv z **Azure IoT Hub** služby. Existují různé varianty sady SDK, každý cílení na konkrétní platformu, ale tento článek popisuje **zařízení Azure IoT SDK pro jazyk C**.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 Zařízení Azure IoT SDK pro jazyk C je napsán v ANSI C (C99) a maximalizovat tak přenositelnost. Tato funkce zpřístupňuje v knihovnách vhodné pracovat na několika platformách a zařízeních, zejména v případě, že minimalizovat disku a spotřeba paměti je prioritu.
 

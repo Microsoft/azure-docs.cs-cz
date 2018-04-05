@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: kgremban
-ms.openlocfilehash: 6f1a40f254473ae7d02168f0cfd6ad5c0d461d82
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7f64783f5e1c79436b671ef98f30f5e3594b94e6
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Odeslání souborů ze zařízení do cloudu s centrem IoT
 
@@ -29,7 +29,7 @@ V tomto kurzu následuje postup použití [souboru nahrávání služby IoT Hub]
 - Bezpečně zadejte kontejner úložiště pro nahrání souboru.
 - Pomocí klienta Python pro nahrání souboru prostřednictvím služby IoT hub.
 
-[Začínáme se službou IoT Hub](iot-hub-node-node-getstarted.md) a [odesílání zpráv typu Cloud-zařízení s centrem IoT](iot-hub-node-node-c2d.md) kurzy zobrazit základních funkcí zařízení cloud a z cloudu do zařízení zasílání zpráv služby IoT Hub. Ale v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně malý zprávy typu zařízení cloud, které IoT Hub přijímá. Když potřebujete hornatých soubory ze zařízení, když můžete nadále používat zabezpečení a spolehlivost služby IoT Hub.
+[Začínáme se službou IoT Hub](iot-hub-node-node-getstarted.md) kurz představuje základní funkce zasílání zpráv typu zařízení cloud IoT Hub. Ale v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně malý zprávy typu zařízení cloud, které IoT Hub přijímá. Když potřebujete hornatých soubory ze zařízení, když můžete nadále používat zabezpečení a spolehlivost služby IoT Hub.
 
 > [!NOTE]
 > IoT Hub Python SDK aktuálně podporuje jenom jako nahrávání souborů znakový **.txt** soubory.

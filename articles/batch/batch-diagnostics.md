@@ -1,11 +1,11 @@
 ---
-title: "Povolit protokolování diagnostiky pro Batch události - Azure | Microsoft Docs"
-description: "Zaznamenávat a analyzovat události protokolů diagnostiky pro prostředkům účet Azure Batch, jako jsou fondy a úkoly."
+title: Povolit protokolování diagnostiky pro Batch události - Azure | Microsoft Docs
+description: Zaznamenávat a analyzovat události protokolů diagnostiky pro prostředkům účet Azure Batch, jako jsou fondy a úkoly.
 services: batch
-documentationcenter: 
-author: tamram
-manager: timlt
-editor: 
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: e14e611d-12cd-4671-91dc-bc506dc853e5
 ms.service: batch
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7bc6fd9921ab0f2374ace33ea5c1ab93a78f860
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c41c8c9f8fd9302c610ce356b0485e33ea3c967d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>Události protokolu diagnostiky hodnocení a sledování řešení Batch
 
@@ -89,7 +89,7 @@ Služba Batch aktuálně vysílá následující události služby protokolu. Te
 | [Dokončení úkolů][task_complete] |
 | [Selhání úlohy][task_fail] |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Kromě ukládání diagnostických protokolů událostí v účtu Azure Storage, můžete také stream události protokolu služby Batch [centra událostí Azure](../event-hubs/event-hubs-what-is-event-hubs.md)a pošlete je [Azure Log Analytics](../log-analytics/log-analytics-overview.md).
 
 * [Stream Azure diagnostických protokolů do centra událostí](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)

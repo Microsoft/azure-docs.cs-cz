@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f64d79cd3929a279c7e279e74b0b21d163c0fa45
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 948fc84db2fd2d6f2059f9807b84194ebac59472
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Hierarchický model prostředků a základní koncepty databáze Azure Cosmos
 
@@ -158,7 +158,7 @@ V rámci zřizování a správa databázového účtu můžete nakonfigurovat a 
     </tbody>
 </table>
 
-Kromě zřizování, konfigurace a Správa účtu databáze z portálu Azure můžete také programově vytvořit a spravovat účty Cosmos DB databáze pomocí [rozhraní API REST Azure Cosmos DB](/rest/api/documentdb/) i [klientskou sadu SDK](sql-api-sdk-dotnet.md).  
+Kromě zřizování, konfigurace a Správa účtu databáze z portálu Azure můžete také programově vytvořit a spravovat účty Cosmos DB databáze pomocí [rozhraní API REST Azure Cosmos DB](/rest/api/cosmos-db/) i [klientskou sadu SDK](sql-api-sdk-dotnet.md).  
 
 ## <a name="databases"></a>Databáze
 Cosmos DB databáze je logický kontejner jeden nebo více kolekcí a uživatelů, jak je znázorněno v následujícím diagramu. Můžete vytvořit libovolný počet databází pod účtem databáze Cosmos DB vztahují omezení nabídky.  
@@ -177,7 +177,7 @@ Můžete vytvořit libovolný počet kolekcí v databázi v závislosti nabídku
 
 Databázi Azure Cosmos DB je také kontejner uživatelů. Uživatel, naopak, je logický obor názvů pro sadu oprávnění, která poskytuje jemně odstupňovaných autorizace a přístupu do kolekcí, dokumentů a příloh.  
 
-Jako s další prostředky ve model prostředků Azure Cosmos DB databáze se dají vytvářet, nahrazen, odstranit, čtení, nebo vytvořit její výčet snadno buď pomocí [rozhraní REST API](/rest/api/documentdb/) ani v žádné z [klientskou sadu SDK](sql-api-sdk-dotnet.md). Azure Cosmos DB zaručuje silnou konzistenci pro čtení nebo dotazování metadata databáze prostředků. Odstranění databáze automaticky zajistí, že nemůžete použít žádnou z kolekce nebo uživatelé jsou v něm obsažena.   
+Jako s další prostředky ve model prostředků Azure Cosmos DB databáze se dají vytvářet, nahrazen, odstranit, čtení, nebo vytvořit její výčet snadno buď pomocí [rozhraní REST API](/rest/api/cosmos-db/) ani v žádné z [klientskou sadu SDK](sql-api-sdk-dotnet.md). Azure Cosmos DB zaručuje silnou konzistenci pro čtení nebo dotazování metadata databáze prostředků. Odstranění databáze automaticky zajistí, že nemůžete použít žádnou z kolekce nebo uživatelé jsou v něm obsažena.   
 
 ## <a name="collections"></a>Kolekce
 Cosmos DB kolekce je kontejner dokumentů JSON. 
@@ -195,7 +195,7 @@ Zásady indexování jednotlivých kolekcí můžete výkonu a úložiště komp
 * Vyberte, zda chcete zahrnout nebo vyloučit konkrétní cesty nebo vzory v dokumentech z indexu. Můžete dosáhnout to tak, že nastavení includedPaths a excludedPaths na indexingPolicy kolekce v uvedeném pořadí. Můžete také nakonfigurovat úložiště a výkon kompromisy pro dotazy na rozsah a hodnota hash pro vzory konkrétní cesty. 
 * Výběr mezi synchronní (konzistentní) a aktualizace asynchronní indexu (lazy). Ve výchozím nastavení je synchronně aktualizace indexu na každý insert, replace nebo odstranění dokumentu do kolekce. To umožňuje dotazy vyhovět stejnou úroveň konzistence jako čtení dokumentu. Zatímco Azure Cosmos DB je optimalizovaná zápisu která podporuje dlouhodobě svazky zápisů dokumentu společně s synchronní indexu údržby a poskytování konzistentní dotazů, můžete nakonfigurovat určité kolekce k aktualizaci svého indexu líné. Opožděné indexování součást zvyšuje výkon zápisu další a je ideální pro hromadné přijímání scénáře pro především pro čtení náročné kolekce.
 
-Zásady indexování lze změnit spuštěním PUT na kolekci. To může být buď prostřednictvím dosáhnout [klienta SDK](sql-api-sdk-dotnet.md), [portál Azure](https://portal.azure.com) nebo [rozhraní REST API](/rest/api/documentdb/).
+Zásady indexování lze změnit spuštěním PUT na kolekci. To může být buď prostřednictvím dosáhnout [klienta SDK](sql-api-sdk-dotnet.md), [portál Azure](https://portal.azure.com) nebo [rozhraní REST API](/rest/api/cosmos-db/).
 
 ### <a name="querying-a-collection"></a>Dotazování na kolekci
 Dokumenty v rámci kolekce může obsahovat libovolný schémata a můžete dát dotaz na dokumenty v rámci kolekce bez zadání žádné schéma nebo předem sekundárních indexů. Můžete zadat dotaz na kolekce pomocí [reference syntaxe Azure Cosmos DB SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx), která nabízí bohaté hierarchické, relační a prostorových operátory a rozšiřitelnost prostřednictvím bázi jazyka JavaScript UDF. Gramatika JSON umožňuje modelování dokumentů JSON jako stromy s popisky formě uzlů stromu. To je zneužití, jak rozhraní SQL API automatických technikách indexování, jakož i dialekt Azure Cosmos DB SQL. Dotazovací jazyk SQL se skládá ze tří hlavních aspekty:   
@@ -204,7 +204,7 @@ Dokumenty v rámci kolekce může obsahovat libovolný schémata a můžete dát
 2. Podmnožinu relační operacím, včetně složení, filtr, projekce, agregace a vlastní spojení. 
 3. Čistý JavaScript na základě UDF, které pracují s (1) a (2).  
 
-Model Azure Cosmos DB dotazu se pokusí vytvořit rovnováhu mezi funkce, jednoduchost a efektivitu. Databázový stroj Azure Cosmos DB nativně kompilovaný a provede příkazy dotaz SQL. Můžete dát dotaz na kolekce pomocí [rozhraní REST API](/rest/api/documentdb/) nebo [klientskou sadu SDK](sql-api-sdk-dotnet.md). .NET SDK se dodává s LINQ zprostředkovatele.
+Model Azure Cosmos DB dotazu se pokusí vytvořit rovnováhu mezi funkce, jednoduchost a efektivitu. Databázový stroj Azure Cosmos DB nativně kompilovaný a provede příkazy dotaz SQL. Můžete dát dotaz na kolekce pomocí [rozhraní REST API](/rest/api/cosmos-db/) nebo [klientskou sadu SDK](sql-api-sdk-dotnet.md). .NET SDK se dodává s LINQ zprostředkovatele.
 
 > [!TIP]
 > Můžete vyzkoušet rozhraní SQL API a spouštění dotazů SQL na našem datovou sadu v [Query Playground](https://www.documentdb.com/sql/demo).
@@ -226,7 +226,7 @@ Logiky Javascriptové registrované na úrovni kolekce potom můžete vydat data
 
 Možnost spuštění JavaScript přímo v rámci databázového stroje v adresním prostoru stejné jako fondu vyrovnávací paměti umožňuje původce a transakční provádění databázové operace proti dokumentům v kolekci. Kromě toho Cosmos DB databázový stroj usnadňuje hloubkové závazek do formátu JSON a JavaScript eliminuje jakákoli neshoda odpor mezi systémy typu aplikace a databáze.   
 
-Po vytvoření kolekce, můžete zaregistrovat uložené procedury, triggery a UDF pomocí kolekce [rozhraní REST API](/rest/api/documentdb/) nebo [klientskou sadu SDK](sql-api-sdk-dotnet.md). Po registraci můžete odkazovat a jejich provedení. Vezměte v úvahu následující uložené procedury vytvořené zcela v JavaScriptu, následující kód má dva argumenty (název adresáře a jméno autora) a vytvoří nový dokument, dotazy pro dokument a pak ho – vše v rámci implicitní transakci ACID aktualizuje. Kdykoli během provádění Pokud je vyvolána výjimka JavaScript, celá transakce zruší.
+Po vytvoření kolekce, můžete zaregistrovat uložené procedury, triggery a UDF pomocí kolekce [rozhraní REST API](/rest/api/cosmos-db/) nebo [klientskou sadu SDK](sql-api-sdk-dotnet.md). Po registraci můžete odkazovat a jejich provedení. Vezměte v úvahu následující uložené procedury vytvořené zcela v JavaScriptu, následující kód má dva argumenty (název adresáře a jméno autora) a vytvoří nový dokument, dotazy pro dokument a pak ho – vše v rámci implicitní transakci ACID aktualizuje. Kdykoli během provádění Pokud je vyvolána výjimka JavaScript, celá transakce zruší.
 
     function businessLogic(name, author) {
         var context = getContext();
@@ -279,10 +279,10 @@ Všimněte si, že vzhledem k tomu, že databáze nativně funguje s technologi�
 
 Uložené procedury a triggery komunikovat s kolekce a dokumenty v kolekci prostřednictvím dobře definovaný objekt modelu, který zveřejňuje aktuální kontext kolekce.  
 
-Kolekce v rozhraní SQL API lze vytvořit, odstraní, čtení nebo výčtové snadno buď pomocí [rozhraní REST API](/rest/api/documentdb/) ani v žádné z [klientskou sadu SDK](sql-api-sdk-dotnet.md). Rozhraní SQL API vždy poskytuje silnou konzistenci pro čtení nebo dotazování metadata kolekce. Odstranění kolekce automaticky zajistí, že nemůžete použít žádnou dokumenty, přílohy, uložené procedury, triggery a jsou v něm obsažena UDF.   
+Kolekce v rozhraní SQL API lze vytvořit, odstraní, čtení nebo výčtové snadno buď pomocí [rozhraní REST API](/rest/api/cosmos-db/) ani v žádné z [klientskou sadu SDK](sql-api-sdk-dotnet.md). Rozhraní SQL API vždy poskytuje silnou konzistenci pro čtení nebo dotazování metadata kolekce. Odstranění kolekce automaticky zajistí, že nemůžete použít žádnou dokumenty, přílohy, uložené procedury, triggery a jsou v něm obsažena UDF.   
 
 ## <a name="stored-procedures-triggers-and-user-defined-functions-udf"></a>Uložené procedury, triggery a uživatel definované funkce (UDF)
-Jak je popsáno v předchozí části, můžete napsat aplikační logiku a spustit přímo v rámci transakce uvnitř databázového stroje. Aplikace logiky můžete vytvořené zcela v JavaScriptu a můžete modelován jako uložené procedury, aktivační události nebo uživatelem definovanou FUNKCI. Kód jazyka JavaScript v rámci uložené procedury nebo aktivační událost lze vložit, nahradí, odstranit, číst nebo dotazování dokumentů v rámci kolekce. Na druhé straně JavaScript v rámci uživatelem definovanou FUNKCI nelze vložit, nahradí nebo odstranit dokumenty. Funkce UDF výčet dokumenty sadu výsledků dotazu a vytvořit jinou sadu výsledků. Víceklientský Azure Cosmos DB vynucuje přísné založené na vyhrazené prostředků řízení. Každý uložené procedury, aktivační události nebo uživatelem definovanou FUNKCI získá pevné quantum operačního systému prostředků ke své práci. Kromě toho uložené procedury, aktivační události nebo UDF nemůže propojit s externí knihovny jazyka JavaScript a jsou zakázány, pokud se překročí rozpočty prostředků přidělené k nim. Můžete zaregistrovat, zrušení registrace uložené procedury, aktivační události nebo UDF v kolekci pomocí rozhraní REST API.  Po registraci se uložené procedury, aktivační události nebo uživatelem definovanou FUNKCI předem zkompilovat a uložené jako bajtové kód, který se provede později. Následující ssection illustrateshow Azure Cosmos DB JavaScript SDK můžete použít k registraci, spouštění a zrušit registraci uložené procedury, aktivační události a UDF. JavaScript SDK je jednoduché obálku nad [rozhraní REST API](/rest/api/documentdb/). 
+Jak je popsáno v předchozí části, můžete napsat aplikační logiku a spustit přímo v rámci transakce uvnitř databázového stroje. Aplikace logiky můžete vytvořené zcela v JavaScriptu a můžete modelován jako uložené procedury, aktivační události nebo uživatelem definovanou FUNKCI. Kód jazyka JavaScript v rámci uložené procedury nebo aktivační událost lze vložit, nahradí, odstranit, číst nebo dotazování dokumentů v rámci kolekce. Na druhé straně JavaScript v rámci uživatelem definovanou FUNKCI nelze vložit, nahradí nebo odstranit dokumenty. Funkce UDF výčet dokumenty sadu výsledků dotazu a vytvořit jinou sadu výsledků. Víceklientský Azure Cosmos DB vynucuje přísné založené na vyhrazené prostředků řízení. Každý uložené procedury, aktivační události nebo uživatelem definovanou FUNKCI získá pevné quantum operačního systému prostředků ke své práci. Kromě toho uložené procedury, aktivační události nebo UDF nemůže propojit s externí knihovny jazyka JavaScript a jsou zakázány, pokud se překročí rozpočty prostředků přidělené k nim. Můžete zaregistrovat, zrušení registrace uložené procedury, aktivační události nebo UDF v kolekci pomocí rozhraní REST API.  Po registraci se uložené procedury, aktivační události nebo uživatelem definovanou FUNKCI předem zkompilovat a uložené jako bajtové kód, který se provede později. Následující ssection illustrateshow Azure Cosmos DB JavaScript SDK můžete použít k registraci, spouštění a zrušit registraci uložené procedury, aktivační události a UDF. JavaScript SDK je jednoduché obálku nad [rozhraní REST API](/rest/api/cosmos-db/). 
 
 ### <a name="registering-a-stored-procedure"></a>Registrace uložené procedury
 Registrace uložená procedura vytvoří nový prostředek uložené procedury na kolekci přes HTTP POST.  
@@ -410,7 +410,7 @@ Zrušení registrace UDF jednoduše provádí vydáním HTTP DELETE se proti exi
             console.log("Error");
         });
 
-I když výše uvedené fragmenty kódu vám ukázal registrace (POST), zrušení registrace (PUT), pro čtení nebo jejich výpisu (GET) a provádění (POST) prostřednictvím [JavaScript SDK](https://github.com/Azure/azure-documentdb-js), můžete použít také [rozhraní REST API](/rest/api/documentdb/) nebo jiných [klientskou sadu SDK](sql-api-sdk-dotnet.md). 
+I když výše uvedené fragmenty kódu vám ukázal registrace (POST), zrušení registrace (PUT), pro čtení nebo jejich výpisu (GET) a provádění (POST) prostřednictvím [JavaScript SDK](https://github.com/Azure/azure-documentdb-js), můžete použít také [rozhraní REST API](/rest/api/cosmos-db/) nebo jiných [klientskou sadu SDK](sql-api-sdk-dotnet.md). 
 
 ## <a name="documents"></a>Dokumenty
 Můžete vložit, nahradí, odstranit, číst, výčet a dotaz na libovolné dokumenty JSON v kolekci. Azure Cosmos DB nenutí žádné schéma a nevyžaduje sekundární indexy za účelem podpory dotazování s dokumenty v kolekci. Maximální velikost pro dokument je 2 MB.   

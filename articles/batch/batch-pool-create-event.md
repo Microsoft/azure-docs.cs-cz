@@ -1,24 +1,24 @@
 ---
-title: "Vytvoření fondu služby Azure Batch události | Microsoft Docs"
-description: "Referenční dokumentace pro fondu Batch vytvoření události."
+title: Vytvoření fondu služby Azure Batch události | Microsoft Docs
+description: Referenční dokumentace pro fondu Batch vytvoření události.
 services: batch
-author: tamram
-manager: timlt
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: tamram
-ms.openlocfilehash: 67edaa55d7ccd00d4aebb309f11bcf95486e87fa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: bf7dfc2600c3d94faeb8d03561f6f2b30a0ee2d2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="pool-create-event"></a>Vytvoření fondu události
+# <a name="pool-create-event"></a>Událost vytvoření fondu
 
  Tato událost je vygenerované po vytvoření fondu. Obsah protokolu zveřejní obecné informace o fondu. Všimněte si, že pokud cílovou velikost fondu je větší než 0 výpočetní uzly, bude následovat počáteční událost změny velikosti fondu ihned po této události.
 
@@ -56,43 +56,43 @@ ms.lasthandoff: 10/11/2017
 |[networkConfiguration](#bk_netconf)|Komplexní typ|Konfigurace sítě pro fond.|
 |resizeTimeout|Čas|Časový limit pro přidělení výpočetní uzly fondu zadané pro poslední operace změny velikosti ve fondu.  (Počáteční dimenzování při vytváření fondu počítá jako změny velikosti.)|
 |targetDedicated|Int32|Počet výpočetních uzlů, které jsou požadovány pro fond.|
-|enableAutoScale|BOOL|Určuje, zda velikost fondu automaticky přizpůsobí v čase.|
-|enableInterNodeCommunication|BOOL|Určuje, zda je nastavení fondu pro přímou komunikaci mezi uzly.|
-|isAutoPool|BOOL|Speficies jestli fondu se vytvořil prostřednictvím mechanismu AutoPool úlohy.|
+|enableAutoScale|Logická hodnota (Bool)|Určuje, zda velikost fondu automaticky přizpůsobí v čase.|
+|enableInterNodeCommunication|Logická hodnota (Bool)|Určuje, zda je nastavení fondu pro přímou komunikaci mezi uzly.|
+|isAutoPool|Logická hodnota (Bool)|Speficies jestli fondu se vytvořil prostřednictvím mechanismu AutoPool úlohy.|
 |maxTasksPerNode|Int32|Maximální počet úloh, které můžou běžet současně na jednom výpočetním uzlu ve fondu.|
 |vmFillType|Řetězec|Definuje způsob, jakým služba Batch distribuuje úkoly mezi výpočetní uzly ve fondu. Platné hodnoty jsou rozloženy nebo aktualizací Service Pack.|
 
-###  <a name="bk_csconf"></a>cloudServiceConfiguration
+###  <a name="bk_csconf"></a> cloudServiceConfiguration
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
 |atribut osFamily|Řetězec|Rodina Azure hostovaného operačního systému na virtuální počítače ve fondu.<br /><br /> Možné hodnoty:<br /><br /> **2** – operační systém řady 2, ekvivalentní na Windows Server 2008 R2 SP1.<br /><br /> **3** – operačního systému rodiny 3, ekvivalentní na Windows Server 2012.<br /><br /> **4** – 4 operačního systému rodiny, ekvivalentní na Windows Server 2012 R2.<br /><br /> Další informace najdete v tématu [verzí hostovaného operačního systému Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
-|targetOSVersion|Řetězec|Verze Azure hostovaného operačního systému na virtuální počítače ve fondu.<br /><br /> Výchozí hodnota je  **\***  který určuje nejnovější verze operačního systému pro zadané řady.<br /><br /> Pro ostatní povolené hodnoty, najdete v části [verzí hostovaného operačního systému Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|targetOSVersion|Řetězec|Verze Azure hostovaného operačního systému na virtuální počítače ve fondu.<br /><br /> Výchozí hodnota je **\*** který určuje nejnovější verze operačního systému pro zadané řady.<br /><br /> Pro ostatní povolené hodnoty, najdete v části [verzí hostovaného operačního systému Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 
-###  <a name="bk_vmconf"></a>virtualMachineConfiguration
+###  <a name="bk_vmconf"></a> virtualMachineConfiguration
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|[Element imageReference](#bk_imgref)|Komplexní typ|Určuje informace o platformu nebo Marketplace obrázek, který má použít.|
+|[imageReference](#bk_imgref)|Komplexní typ|Určuje informace o platformu nebo Marketplace obrázek, který má použít.|
 |nodeAgentSKUId|Řetězec|SKU agenta uzlu Batch zřídit na výpočetním uzlu.|
 |[windowsConfiguration](#bk_winconf)|Komplexní typ|Určuje nastavení operačního systému Windows na virtuálním počítači. Tato vlastnost nesmí být zadán, pokud element imageReference odkazuje na bitovou kopii operačního systému Linux.|
 
-###  <a name="bk_imgref"></a>Element imageReference
+###  <a name="bk_imgref"></a> Element imageReference
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
 |Vydavatele|Řetězec|Vydavatel bitovou kopii.|
-|Nabídka|Řetězec|Nabídka obrázku.|
-|SKU|Řetězec|SKU bitovou kopii.|
-|Verze|Řetězec|Verze bitové kopie.|
+|nabídka|Řetězec|Nabídka obrázku.|
+|sku|Řetězec|SKU bitovou kopii.|
+|verze|Řetězec|Verze bitové kopie.|
 
-###  <a name="bk_winconf"></a>windowsConfiguration
+###  <a name="bk_winconf"></a> windowsConfiguration
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
 |enableAutomaticUpdates|Logická hodnota|Určuje, zda virtuální počítač povolena pro automatické aktualizace. Pokud není tato vlastnost určena, výchozí hodnota je true.|
 
-###  <a name="bk_netconf"></a>networkConfiguration
+###  <a name="bk_netconf"></a> networkConfiguration
 
 |Název elementu|Typ|Poznámky|
 |------------------|--------------|----------|

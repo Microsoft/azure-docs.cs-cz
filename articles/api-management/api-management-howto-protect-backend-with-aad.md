@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 3caa3d2b8640c83f1001aeac3b0a5e9ada143183
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2c05407d761a8848f9e032aa219960cd7ea6fa93
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-protect-an-api-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrana rozhraní API pomocí Azure Active Directory a API Management OAuth 2.0
 
@@ -181,9 +181,9 @@ Klikněte na tlačítko **odeslat** a mělo by být možné úspěšně volat ro
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>Konfigurace zásad ověřování JWT předem autorizovat požadavků
 
-Nyní když se uživatel pokusí o volání z konzole pro vývojáře, uživatel se vyzve k přihlášení a konzole pro vývojáře získá jménem uživatele tokenu přístupu. Všechno funguje podle očekávání. Co když však někdo volá našem rozhraní API bez token nebo se neplatný token? Například můžete zkusit odstranit `Authorization` záhlaví a zjistí, stále možné volat rozhraní API. Důvodem je, protože APIM nelze ověřit Token přístupu v tomto okamžiku. Pak předá `Auhtorization` hlavičky k back-end rozhraní API.
+Nyní když se uživatel pokusí o volání z konzole pro vývojáře, uživatel se vyzve k přihlášení a konzole pro vývojáře získá jménem uživatele tokenu přístupu. Všechno funguje podle očekávání. Co když však někdo volá našem rozhraní API bez token nebo se neplatný token? Například můžete zkusit odstranit `Authorization` záhlaví a zjistí, stále možné volat rozhraní API. Důvodem je, protože APIM nelze ověřit Token přístupu v tomto okamžiku. Jednoduše předává `Auhtorization` hlavičky k back-end rozhraní API.
 
-Můžeme použít [ověření JWT](api-management-access-restriction-policies.md#ValidateJWT) zásad předem autorizovat požadavků v APIM ověřením přístupových tokenů každého příchozího požadavku. Pokud požadavek nemá platný token, je blokována API Management a není předají back-end. Nyní můžete přidat níže zásady `Echo API`. 
+Můžeme použít [ověření JWT](api-management-access-restriction-policies.md#ValidateJWT) zásad předem autorizovat požadavků v APIM ověřením přístupových tokenů každého příchozího požadavku. Pokud požadavek nemá platný token, je blokována API Management a není předají back-end. Například nyní můžete přidat níže zásady `<inbound>` část zásady `Echo API`. Kterou kontroluje deklarace cílové skupiny v přístupový token a vrátí chybovou zprávu, pokud token není platný. Informace o tom, jak nakonfigurovat zásady najdete v tématu [nastavit nebo upravit zásady](set-edit-policies.md).
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -196,7 +196,12 @@ Můžeme použít [ověření JWT](api-management-access-restriction-policies.md
 </validate-jwt>
 ```
 
+## <a name="build-an-application-to-call-the-api"></a>Sestavit aplikaci pro volání rozhraní API
+
+V této příručce, použili jsme konzole pro vývojáře v APIM jako ukázkovou aplikaci klienta k volání `Echo API` chráněn OAuth 2.0. Další informace o tom, jak sestavit aplikaci a implementovat toku OAuth 2.0, najdete v tématu [ukázky kódu Azure Active Directory](../active-directory/develop/active-directory-code-samples.md).
+
 ## <a name="next-steps"></a>Další postup
+* Další informace o [Azure Active Directory a OAuth2.0](../active-directory/develop/active-directory-authentication-scenarios.md)
 * Podívejte se na další [videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o službě API Management.
 * Další způsoby zabezpečení back-end službu, naleznete v části [vzájemného ověření certifikátů](api-management-howto-mutual-certificates.md).
 

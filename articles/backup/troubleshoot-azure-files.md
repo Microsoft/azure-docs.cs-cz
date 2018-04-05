@@ -1,30 +1,29 @@
 ---
-title: "Řešení potíží se zálohováním Souborů Azure"
-description: "Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně Souborů Azure (sdílených složek) v Azure."
+title: Řešení potíží se zálohováním Souborů Azure
+description: Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně sdílených složek Azure.
 services: backup
 ms.service: backup
-keywords: "Nepřidávejte ani neupravujte klíčová slova, aniž byste se poradili se svým odborníkem na SEO."
+keywords: Nepřidávejte ani neupravujte klíčová slova, aniž byste se poradili se svým odborníkem na SEO.
 author: markgalioto
 ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 3bc259245df86406e23418bac598c8b1e062d512
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: c803118ccdafa8db0e8f8ddee608f60311f65e05
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>Řešení problémů se zálohováním Souborů Azure
-
 K řešení problémů a chyb, ke kterým dochází při používání zálohování Souborů Azure, můžete využít informace uvedené v následujících tabulkách.
 
 ## <a name="preview-boundaries"></a>Hranice verze Preview
 Zálohování Souborů Azure je ve verzi Preview. Následující scénáře zálohování se nepodporují u sdílených složek Azure:
-- Ochrana sdílených složek v účtech úložiště s replikací do [zónově redundantního úložiště](../storage/common/storage-redundancy.md#zone-redundant-storage) (ZRS) nebo [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS).
-- Ochrana sdílených složek v účtech úložiště s povolenými virtuálními sítěmi.
-- Zálohování Souborů Azure pomocí PowerShellu nebo rozhraní příkazového řádku.
+- Ochrana sdílených složek Azure v účtech úložiště s replikací do [zónově redundantního úložiště](../storage/common/storage-redundancy.md#zone-redundant-storage) (ZRS) nebo [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS).
+- Ochrana sdílených složek Azure v účtech úložiště s povolenými virtuálními sítěmi.
+- Zálohování sdílených složek Azure pomocí PowerShellu nebo rozhraní příkazového řádku.
 
 ### <a name="limitations"></a>Omezení
 - Maximální počet plánovaných záloh na den je 1.
@@ -42,7 +41,7 @@ Následující tabulka se týká konfigurace zálohování:
 | Nepodařilo se ověřit nebo zaregistrovat vybraný účet úložiště.| Zkuste operaci zopakovat. Pokud problém přetrvává, kontaktujte podporu.|
 | Nepodařilo se vypsat nebo najít sdílené složky ve vybraném účtu úložiště. | <ul><li> Ujistěte se, že účet úložiště existuje ve skupině prostředků (a nebyl odstraněn nebo přesunut po posledním ověření nebo registraci v trezoru).<li>Ujistěte se, že sdílená složka, kterou chcete chránit, nebyla odstraněná. <li>Ujistěte se, že účet úložiště podporuje zálohování sdílených složek.<li>Zkontrolujte, jestli daná sdílená složka již není chráněná ve stejném trezoru služby Recovery Services.|
 | Konfigurace zálohování sdílené složky (nebo konfigurace zásad ochrany) se nedaří. | <ul><li>Zkuste operaci zopakovat a zjistěte, jestli problém přetrvává. <li> Ujistěte se, že sdílená složka, kterou chcete chránit, nebyla odstraněná. <li> Pokud se pokoušíte chránit více sdílených složek najednou a u některých z nich se to nedaří, zkuste znovu nakonfigurovat zálohování sdílených složek, u kterých došlo k chybě. |
-| Po zrušení ochrany sdílené složky nejde odstranit trezor služby Recovery Services. | Na webu Azure Portal otevřete **Infrastruktura zálohování** > **Účty úložiště** a kliknutím na **Zrušit registraci** odeberte příslušný účet úložiště z trezoru služby Recovery Services.|
+| Po zrušení ochrany sdílené složky nejde odstranit trezor služby Recovery Services. | Na portálu Azure Portal otevřete **Infrastruktura zálohování** > **Účty úložiště** a kliknutím na **Zrušit registraci** odeberte příslušný účet úložiště z trezoru služby Recovery Services.|
 
 
 ## <a name="error-messages-for-backup-or-restore-job-failures"></a>Chybové zprávy pro selhání úloh zálohování nebo obnovení
@@ -51,7 +50,7 @@ Následující tabulka se týká konfigurace zálohování:
 | -------------- | ----------------------------- |
 | Operace selhala, protože se sdílená složka nenašla. | Ujistěte se, že sdílená složka, kterou chcete chránit, nebyla odstraněná.|
 | Účet úložiště se nenašel nebo se nepodporuje. | <ul><li>Ujistěte se, že účet úložiště existuje ve skupině prostředků a nebyl z ní odstraněn nebo odebrán po posledním ověření. <li> Ujistěte se, že účet úložiště podporuje zálohování sdílených složek.|
-| Dosáhli jste maximálního počtu snímků pro tuto sdílenou složku, další snímky budete moci pořídit po vypršení platnosti starších snímků. | <ul><li> K této chybě může dojít v případě, že vytvoříte více záloh souboru na vyžádání. <li> Platí omezení 200 snímků na sdílenou složku, a to včetně snímků pořízených službou Azure Backup. Starší naplánované zálohy (nebo snímky) se čistí automaticky. Zálohy (nebo snímky) na vyžádání se musí odstranit, pokud dojde k dosažení maximálního omezení.<li> Odstraňte zálohy na vyžádání (snímky sdílené složky Azure) na portálu Souborů Azure. **Poznámka:** Pokud odstraníte snímky vytvořené službou Azure Backup, přijdete o body obnovení. |
+| Dosáhli jste maximálního počtu snímků pro tuto sdílenou složku, další snímky budete moci pořídit po vypršení platnosti starších snímků. | <ul><li> K této chybě může dojít v případě, že vytvoříte více záloh souboru na vyžádání. <li> Platí omezení 200 snímků na sdílenou složku, a to včetně snímků pořízených službou Azure Backup. Starší naplánované zálohy (nebo snímky) se čistí automaticky. Zálohy (nebo snímky) na vyžádání se musí odstranit, pokud dojde k dosažení maximálního omezení.<li> Odstraňte zálohy na vyžádání (snímky sdílené složky Azure) na portálu Soubory Azure. **Poznámka:** Pokud odstraníte snímky vytvořené službou Azure Backup, přijdete o body obnovení. |
 | Zálohování nebo obnovení sdílené složky selhalo kvůli omezování služby úložiště. Pravděpodobnou příčinou je zaneprázdněnost služby úložiště zpracováním jiných požadavků pro daný účet úložiště.| Po nějaké době zkuste operaci zopakovat. |
 | Obnovení selhalo s chybou Cílová sdílená složka se nenašla. | <ul><li>Ujistěte se, že vybraný účet úložiště existuje a cílová sdílená složka není odstraněná. <li> Ujistěte se, že účet úložiště podporuje zálohování sdílených složek. |
 | Azure Backup se v současné době nepodporuje pro Soubory Azure v účtech úložiště s povolenými virtuálními sítěmi. | Zakažte ve svém účtu úložiště virtuální sítě, abyste zajistili úspěšné operace zálohování nebo obnovení. |

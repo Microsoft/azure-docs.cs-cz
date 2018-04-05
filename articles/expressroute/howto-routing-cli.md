@@ -1,13 +1,13 @@
 ---
-title: "Postup konfigurace směrování pro okruh Azure ExpressRoute: rozhraní příkazového řádku | Microsoft Docs"
-description: "Tento článek vám pomůže vytvořit a zřizování soukromého a veřejného a partnerského vztahu Microsoftu okruhu ExpressRoute. Tento článek také ukazuje, jak kontrolovat stav partnerských vztahů pro váš okruh, aktualizovat je nebo je odstranit."
+title: 'Postup konfigurace směrování pro okruh Azure ExpressRoute: rozhraní příkazového řádku | Microsoft Docs'
+description: Tento článek vám pomůže vytvořit a zřizování soukromého a veřejného a partnerského vztahu Microsoftu okruhu ExpressRoute. Tento článek také ukazuje, jak kontrolovat stav partnerských vztahů pro váš okruh, aktualizovat je nebo je odstranit.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: b54f7768e64e1689e5b25b94905beea6bd5471df
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f4ad959de1425e828ce11fb658f8b5304e9d8775
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit-using-cli"></a>Vytvoření a úprava směrování pro okruh ExpressRoute pomocí rozhraní příkazového řádku
 
 Tento článek vám pomůže vytvořit a spravovat konfigurace směrování pro okruh ExpressRoute v modelu nasazení Resource Manager pomocí rozhraní příkazového řádku. Můžete také zkontrolovat stav, aktualizace nebo odstranění a zrušení zřízení partnerských vztahů pro okruh ExpressRoute. Pokud chcete použít jinou metodu pro práci se váš okruh, vyberte článek z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Video - soukromého partnerského vztahu](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
@@ -55,8 +55,6 @@ Tato část vám umožňuje vytvořit, získat, aktualizovat a odstranit konfigu
 > 
 
 ### <a name="to-create-microsoft-peering"></a>Vytvoření partnerského vztahu Microsoftu
-
-[!INCLUDE [Premium](../../includes/expressroute-mspeering-premium-include.md)]
 
 1. Nainstalujte nejnovější verzi rozhraní příkazového řádku Azure. Použít nejnovější verzi z rozhraní příkazového řádku Azure (CLI). * Zkontrolujte [požadavky](expressroute-prerequisites.md) a [pracovních](expressroute-workflows.md) před zahájením konfigurace.
 
@@ -457,7 +455,7 @@ Konfiguraci partnerského vztahu můžete odebrat spuštěním následující p�
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Dalším krokem je [Propojení virtuální sítě s okruhem ExpressRoute](howto-linkvnet-cli.md).
 

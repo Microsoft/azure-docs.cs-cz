@@ -1,12 +1,12 @@
 ---
-title: "Překladač IoT DevKit pomocí funkce Azure a kognitivní služby | Microsoft Docs"
-description: "Použijte mikrofon na IoT DevKit přijímat hlasové zprávy a kognitivní služby Azure pro zpracování do přeložený text v angličtině."
+title: Překladač IoT DevKit pomocí funkce Azure a kognitivní služby | Microsoft Docs
+description: Použijte mikrofon na IoT DevKit přijímat hlasové zprávy a kognitivní služby Azure pro zpracování do přeložený text v angličtině.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: liydu
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.service: iot-hube
 ms.devlang: arduino
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: 5f74e43d20b5954ae4808f82a34372d1e2190481
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d17f117d71eb0616201df18aea6dc48749ae24a8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>Používat IoT DevKit AZ3166 se funkce Azure a kognitivní Services k vytvoření překladač jazyk
 
@@ -35,7 +35,7 @@ Dokončit [Příručka Začínáme](https://docs.microsoft.com/azure/iot-hub/iot
 
 Aktivní předplatné Azure. Pokud jeden nemáte, můžete zaregistrovat pomocí jedné z těchto dvou metod:
 
-* Aktivovat [Bezplatný zkušební účet Microsoft Azure 30 dnů](https://azureinfo.microsoft.com/us-freetrial.html)
+* Aktivovat [Bezplatný zkušební účet Microsoft Azure 30 dnů](https://azure.microsoft.com/en-us/free/)
 * Deklarace identity vaší [kreditu Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) jste předplatitelem MSDN nebo v sadě Visual Studio
 
 ## <a name="step-1-open-the-project-folder"></a>Krok 1. Otevřete složku projektu

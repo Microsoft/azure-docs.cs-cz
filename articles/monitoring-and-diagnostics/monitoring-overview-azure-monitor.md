@@ -1,25 +1,25 @@
 ---
-title: "Přehled Azure monitorování | Microsoft Docs"
-description: "Azure monitorování shromažďuje statistiky pro použití v výstrahy, webhooků, škálování a automatizace. Článek taky seznam dalších možností monitorování společnosti Microsoft."
+title: Přehled Azure monitorování | Microsoft Docs
+description: Azure monitorování shromažďuje statistiky pro použití v výstrahy, webhooků, škálování a automatizace. Článek taky seznam dalších možností monitorování společnosti Microsoft.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 03/28/2018
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: ed9ace24778f000b42013cc0ce4d7dacf4a1d4fb
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 448711b7b2e102662bc157485561c33bf7f5fba1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-azure-monitor"></a>Přehled Azure monitorování
 Tento článek obsahuje přehled služby Azure monitorování v Microsoft Azure. Popisuje, co monitorování Azure nepodporuje a poskytuje odkazy na další informace o tom, jak používat Azure monitorování.  Pokud upřednostňujete video úvod, najdete v části Další kroky odkazy v dolní části tohoto článku. 
@@ -35,15 +35,13 @@ Azure monitorování má cílová stránka, která pomáhá uživatelům:
 - Seznamte se s monitorování možnostmi, které nabízí Azure.
 - Zjišťovat, konfigurovat a integrovaného Azure platformy a možnosti monitorování premium.
 
-Při vydání službu Azure sledování, je cílová stránka Přehled ve verzi preview. 
-
 Stránce je výchozím bodem pro navigaci, včetně Startovní. Zobrazuje kurátorované významné problémy z různých služeb a umožňuje uživateli přejděte k nim v kontextu.
  
 ![Model pro monitorování a Diagnostika pro jiný výpočetní prostředky](./media/monitoring-overview-azure-monitor/monitor-overview-ux2.png)
 
 Při otevření stránky, můžete vybrat mezi odběry, které máte přístup pro čtení. Pro vybrané předplatné se zobrazí:
 
-- **Aktivaci výstrahy a výstrahu zdroje** – Tato tabulka obsahuje souhrn počtu výstrah zdrojů, a jak často výstrahy aktivováno pro vybrané doby trvání. Platí pro metriku a aktivity protokolu výstrahy. *< upravit: výstrahy (Preview) s jednotném rozhraní také pro všechny výstrahy - protokoly, metriky a události uvedené >*
+- **Aktivaci výstrahy a výstrahu zdroje** – Tato tabulka obsahuje souhrn počtu výstrah zdrojů, a jak často výstrahy aktivováno pro vybrané doby trvání. Platí pro výstrahy starší a novější. Další informace o [novější výstrahy Azure](monitoring-overview-unified-alerts.md). 
 - **Chyby v protokolu aktivit** – Pokud některé z vašich prostředků Azure protokolu události se závažností úroveň chyb, můžete zobrazit podrobný počet a klikněte na tlačítko prostřednictvím na stránce Protokol aktivit můžete prozkoumat všechny události.
 - **Azure stavu služby** -uvidíte počet problémů služby stav služby, události plánované údržby a zpravodaje stavu. Azure služba stavu poskytuje přizpůsobené informace o při problémy v infrastruktuře Azure vliv na vaše služby.  V tématu [stavu služby Azure](../service-health/service-health-overview.md) Další informace.  
 - **Application Insights** -najdete v části klíčových ukazatelů výkonu pro každý zdroj AppInsights v aktuálním předplatném. Klíčové ukazatele výkonu jsou optimalizované pro aplikace na straně serveru monitorování napříč webové aplikace ASP.NET, Java, uzel a obecné typy aplikací. Klíčové ukazatele výkonu zahrnují metriky pro rychlost požadavků, doba odezvy, míra selhání a dostupnosti %. 
@@ -143,25 +141,25 @@ Několik metod vizualizace patří:
 
 ### <a name="automate"></a>Automatizace
 > [!NOTE]
-> Jako součást probíhající vývoj výstrah v Microsoft Azure teď jednotné prostředí pro výstrahy pracujete v náhledu. Další informace o [výstrahy Azure (Preview)](monitoring-overview-unified-alerts.md)
+> Jako součást probíhající vývoj výstrah v Microsoft Azure teď jednotné prostředí pro zobrazení výstrah je k dispozici. Další informace o [nové výstrahy Azure](monitoring-overview-unified-alerts.md)
 
-Standardní Azure výstrahy můžete data monitorování výstrahy aktivační události nebo dokonce celé procesy. Příklady obsahují:
+V Azure výstrahy můžete data monitorování výstrahy aktivační události nebo dokonce celé procesy. Příklady obsahují:
 
 * Data pro automatické škálování výpočetních instancích použijte nahoru nebo dolů podle zatížení aplikace.
-* Odesílání e-mailů, když metriky překračuje předem určené prahové hodnoty.
+* Odesílání e-mailů na základě podmínek, Metrika nebo protokolu. 
 * Volání adresu URL webu (webhooku) k provedení akce v rámci systému mimo Azure
 * Spuštění sady runbook ve službě Azure automation k provedení jakékoli řadu úloh
 
 ## <a name="methods-of-accessing-azure-monitor"></a>Metody přístupu k Azure monitorování
 Obecně platí můžete upravit data sledování, směrování a načítání pomocí jedné z následujících metod. Ne všechny metody jsou k dispozici pro všechny akce nebo datové typy.
 
-* [portál Azure Portal](https://portal.azure.com)
+* [Azure Portal](https://portal.azure.com)
 * [PowerShell](insights-powershell-samples.md)  
 * [Napříč platformami rozhraní příkazového řádku (CLI)](insights-cli-samples.md)
 * [REST API](https://docs.microsoft.com/rest/api/monitor/)
 * [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o
 - Je k dispozici na video s návodem právě Azure monitorování  
 [Začínáme s Azure monitorování](https://channel9.msdn.com/Blogs/Azure-Monitoring/Get-Started-with-Azure-Monitor). 

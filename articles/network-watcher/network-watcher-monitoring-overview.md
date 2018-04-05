@@ -1,11 +1,11 @@
 ---
-title: "Úvod do sledovací proces sítě Azure | Microsoft Docs"
-description: "Tato stránka obsahuje přehled služby sledovací proces sítě pro monitorování a detekční síť připojená prostředky ve službě Azure"
+title: Úvod do sledovací proces sítě Azure | Microsoft Docs
+description: Tato stránka obsahuje přehled služby sledovací proces sítě pro monitorování a detekční síť připojená prostředky ve službě Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: b8a8e0653221af126ea137b1450ce27c29791ae3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 792b96e4f5ba5dc0f2f943f099a2fee339407d66
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-network-monitoring-overview"></a>Přehled monitorování sítě Azure
 
@@ -47,6 +47,7 @@ Sledovací proces sítě aktuálně má následující možnosti:
 * **[Sítě limity předplatného](#network-subscription-limits)**  -umožňuje zobrazit využití prostředků sítě proti omezení.
 * **[Konfigurace protokolu diagnostiky](#diagnostic-logs)**  – poskytuje k povolení nebo zakázání diagnostické protokoly pro síťové prostředky ve skupině prostředků.
 * **[Poradce při potížích připojení](network-watcher-connectivity-overview.md)**  -ověří možnost pro přímé připojení TCP z virtuálního počítače do daného rozšíření s Azure kontext koncového bodu.
+* **[Monitorování připojení](connection-monitor.md)**  -sledovat problémy latence a konfiguraci mezi virtuální počítač Azure a IP adresu, pomocí zdrojové a cílové IP adresy a portu.
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>Řízení přístupu na základě role (RBAC) v sledovací proces sítě
 

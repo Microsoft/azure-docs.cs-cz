@@ -1,62 +1,66 @@
 ---
-title: "Kurz služby Azure Container Instances – Nasazení aplikace"
-description: "Kurz služby Azure Container Instances, část 3 ze 3 – Nasazení aplikace"
+title: Kurz služby Azure Container Instances – Nasazení aplikace
+description: Kurz služby Azure Container Instances, část 3 ze 3 – Nasazení aplikace
 services: container-instances
-author: seanmck
+author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 02/22/2018
-ms.author: seanmck
+ms.date: 03/21/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 0532d255b271b2155ae3115f8f96c4cbb53916e4
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 29d7114f288f7387d0c7cd5c6afe2eaaa7a8c560
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-a-container-to-azure-container-instances"></a>Nasazení kontejneru do služby Azure Container Instances
+# <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>Kurz: Nasazení kontejneru do služby Azure Container Instances
 
-Toto je poslední kurz třídílné série. V předchozích částech série se [vytvořila image kontejneru](container-instances-tutorial-prepare-app.md) a [nasdílela se do služby Azure Container Registry](container-instances-tutorial-prepare-acr.md). Tento článek uzavírá sérii kurzů nasazením kontejneru do služby Azure Container Instances.
+Toto je poslední kurz třídílné série. V předchozích částech série se [vytvářela image kontejneru](container-instances-tutorial-prepare-app.md) a [odesílala se do služby Azure Container Registry](container-instances-tutorial-prepare-acr.md). Tento článek sérii uzavírá nasazením kontejneru do služby Azure Container Instances.
 
-V tomto kurzu jste:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nasazení kontejneru ze služby Azure Container Registry pomocí Azure CLI
-> * Zobrazení aplikace v prohlížeči
-> * Zobrazení protokolů kontejneru
+> * Nasadit kontejner ze služby Azure Container Registry do služby Azure Container Instances
+> * Zobrazit spuštěnou aplikaci v prohlížeči
+> * Zobrazit protokoly kontejneru
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento kurz vyžaduje použití Azure CLI verze 2.0.27 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0][azure-cli-install].
-
-K dokončení tohoto kurzu potřebujete vývojové prostředí pro Docker nainstalované místně. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakémkoli [Macu][docker-mac] nebo systému [Windows][docker-windows] či [Linux][docker-linux].
-
-Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kroků v tomto kurzu. Je nutné nainstalovat do místního počítače rozhraní příkazového řádku Azure a vývojové prostředí Dockeru, aby bylo možné tento kurz dokončit.
+[!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
 ## <a name="deploy-the-container-using-the-azure-cli"></a>Nasazení kontejneru pomocí Azure CLI
 
-Azure CLI umožňuje nasazení kontejneru do služby Azure Container Instances jediným příkazem. Vzhledem k tomu, že je image kontejneru hostovaná v privátní službě Azure Container Registry, musíte zahrnout přihlašovací údaje vyžadované pro přístup k ní. Přihlašovací údaje získáte pomocí následujících příkazů Azure CLI.
+V této části budete používat Azure CLI k nasazení image sestavené v [první části kurzu](container-instances-tutorial-prepare-app.md) a odeslané do služby Azure Container Registry v [druhé části kurzu](container-instances-tutorial-prepare-acr.md). Než budete pokračovat, přesvědčte se, že jste tyto kurzy dokončili.
 
-Přihlašovací server registru kontejneru (použijte název vašeho registru):
+### <a name="get-registry-credentials"></a>Získání přihlašovacích údajů registru
+
+Když nasazujete image hostovanou v privátním registru kontejneru, jako je ten, který jste vytvořili v [druhé části kurzu](container-instances-tutorial-prepare-acr.md), musíte zadat přihlašovací údaje daného registru.
+
+Nejprve získejte úplný název přihlašovacího serveru registru kontejneru (nahraďte zástupný text `<acrName>` názvem svého registru):
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
 ```
 
-Heslo registru kontejneru:
+Potom získejte heslo registru kontejneru:
 
 ```azurecli
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-Vaše aplikace bude muset být [připravená předem][prepare-app]. Pokud chcete nasadit svou image kontejneru z registru kontejneru s požadavkem na prostředky 1 jádra procesoru a 1 GB paměti, spusťte následující příkaz [az container create][az-container-create]. Nahraďte `<acrLoginServer>` a `<acrPassword>` hodnotami, které jste získali z předchozích dvou příkazů. Nahraďte `<acrName>` názvem vašeho registru kontejneru. Můžete také nahradit `aci-tutorial-app` názvem, který chcete použít pro novou aplikaci.
+### <a name="deploy-container"></a>Nasazení kontejneru
+
+Nyní nasaďte kontejner pomocí příkazu [az container create][az-container-create]. Nahraďte `<acrLoginServer>` a `<acrPassword>` hodnotami, které jste získali z předchozích dvou příkazů. Nahraďte položku `<acrName>` názvem svého registru kontejneru.
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
 ```
 
-Během několika sekund by se měla zobrazit první odezva z Azure Resource Manageru. Hodnota `--dns-name-label` musí být jedinečná v rámci oblasti Azure, ve které vytváříte instanci kontejneru. Pokud se po spuštění příkazu zobrazí chybová zpráva týkající se **popisku názvu DNS**, aktualizujte hodnotu v předchozím příkladu.
+Během několika sekund by se měla zobrazit první odezva z Azure. Hodnota `--dns-name-label` musí být jedinečná v rámci oblasti Azure, ve které vytváříte instanci kontejneru. Pokud se po spuštění příkazu zobrazí chybová zpráva týkající se **popisku názvu DNS**, upravte hodnotu v předchozím příkazu.
+
+### <a name="verify-deployment-progress"></a>Ověření průběhu nasazení
 
 Pokud chcete zobrazit stav nasazení, použijte příkaz [az container show][az-container-show]:
 
@@ -74,7 +78,11 @@ Po úspěšném nasazení zobrazte plně kvalifikovaný název domény kontejner
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Příklad výstupu: `"aci-demo.eastus.azurecontainer.io"`
+Příklad:
+```console
+$ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
+"aci-demo.eastus.azurecontainer.io"
+```
 
 Pokud chcete zobrazit spuštěnou aplikaci, v oblíbeném prohlížeči přejděte na zobrazený název DNS:
 
@@ -86,12 +94,13 @@ Můžete zobrazit také výstup protokolu kontejneru:
 az container logs --resource-group myResourceGroup --name aci-tutorial-app
 ```
 
-Výstup:
+Příklad výstupu:
 
 ```bash
+$ az container logs --resource-group myResourceGroup --name aci-tutorial-app
 listening on port 80
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
-::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://13.88.176.27/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -104,12 +113,17 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste dokončili proces nasazení kontejnerů do služby Azure Container Instances. Dokončili jste následující kroky:
+V tomto kurzu jste dokončili proces nasazení kontejneru do služby Azure Container Instances. Dokončili jste následující kroky:
 
 > [!div class="checklist"]
 > * Nasadili jste kontejner ze služby Azure Container Registry pomocí Azure CLI.
 > * Zobrazili jste aplikaci v prohlížeči.
 > * Zobrazili jste protokoly kontejneru.
+
+Když už máte základy zvládnuté, můžete pokračovat dalšími informacemi o službě Azure Container Instances. Například tím, jak fungují skupiny kontejnerů:
+
+> [!div class="nextstepaction"]
+> [Skupiny kontejnerů ve službě Azure Container Instances](container-instances-container-groups.md)
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png

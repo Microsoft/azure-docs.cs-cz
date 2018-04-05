@@ -1,8 +1,8 @@
 ---
-title: "Automatizace Azure Application Insights v prostředí PowerShell | Microsoft Docs"
-description: "Automatizovat vytváření prostředků, výstrahy a dostupnost testů v prostředí PowerShell pomocí šablony Azure Resource Manager."
+title: Automatizace Azure Application Insights v prostředí PowerShell | Microsoft Docs
+description: Automatizovat vytváření prostředků, výstrahy a dostupnost testů v prostředí PowerShell pomocí šablony Azure Resource Manager.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: f4f9d1558d2ef9dc5e1b7b248ad5bc8753f59cf9
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 46ba4ce992640e8a6d171ab839dd7cdb24e0b404
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Vytváření prostředků Application Insights v prostředí PowerShell
 Tento článek ukazuje, jak automatizovat vytváření a aktualizace [Application Insights](app-insights-overview.md) prostředky automaticky pomocí nástroje Správa prostředků Azure. Může například uděláte jako součást procesu sestavení. Společně s základní prostředku Application Insights, můžete vytvořit [testy dostupnosti webu](app-insights-monitor-web-app-availability.md), nastavte [výstrahy](app-insights-alerts.md), nastavte [ceny schéma](app-insights-pricing.md)a vytvořte další prostředky Azure .
@@ -166,9 +166,9 @@ Vytvořte nový soubor .json – umožňuje volání `template1.json` v tomto p�
 
     ``` 
    
-   * `-ResourceGroupName`je skupina, kde chcete vytvořit nové prostředky.
-   * `-TemplateFile`musí nastat před vlastní parametry.
-   * `-appName`Název prostředek pro vytvoření.
+   * `-ResourceGroupName` je skupina, kde chcete vytvořit nové prostředky.
+   * `-TemplateFile` musí nastat před vlastní parametry.
+   * `-appName` Název prostředek pro vytvoření.
 
 Můžete přidat další parametry – jejich popisy najdete v sekci parametrů šablony.
 
@@ -196,7 +196,7 @@ Chcete-li vytvořit prostředek aplikace s plánem cena Enterprise, pomocí vý�
                -appName myNewApp
 ```
 
-|priceCode|Plánování|
+|priceCode|plán|
 |---|---|
 |1|Basic|
 |2|Enterprise|
@@ -204,7 +204,7 @@ Chcete-li vytvořit prostředek aplikace s plánem cena Enterprise, pomocí vý�
 * Pokud chcete použít výchozí plán základní ceny, můžete vynechat CurrentBillingFeatures prostředků ze šablony.
 * Pokud chcete změnit plán cena po vytvoření součásti prostředků, můžete šablonu, která vynechá prostředků "microsoft.insights/components". Navíc vynechejte `dependsOn` uzel z fakturace prostředku. 
 
-Chcete-li ověřit, aktualizovaná cena plánu, podívejte se "Funkce + ceny" okna v prohlížeči. **Aktualizujte zobrazení prohlížeče** a ujistěte se, vidíte nejnovější stav.
+Chcete-li ověřit, aktualizovaná cena plánu, podívejte se **využití a odhadované náklady na stránce** okna v prohlížeči. **Aktualizujte zobrazení prohlížeče** a ujistěte se, vidíte nejnovější stav.
 
 
 
@@ -426,7 +426,7 @@ Zde jsou příklady nahrazení, který budete chtít provést. Existuje několik
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"`(malá písmena) |`"[toLower(parameters('appName'))]"` |
+| `"myappname"` (malá písmena) |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>` Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Odstranit Guid a ID. |
 
 ### <a name="set-dependencies-between-the-resources"></a>Nastavte závislosti mezi prostředky
@@ -441,7 +441,7 @@ Azure měli nastavit prostředky v striktní pořadí. Pokud chcete mít jistotu
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další články automatizace:
 
 * [Vytvořte prostředek Application Insights](app-insights-powershell-script-create-resource.md) -rychlý způsob bez použití šablony.

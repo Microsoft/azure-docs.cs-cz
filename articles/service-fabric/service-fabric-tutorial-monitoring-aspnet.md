@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 0f51b52d9f4d5c8979ba636311e63089c11cd114
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 030c6fbfb5eb76a745a1089acab54e74ce7a01e3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Kurz: Monitorování a diagnostika aplikace ASP.NET Core v Service Fabric
 Tento kurz je čtvrtou částí série. Prochází kroky k nastavení monitorování a diagnostiky pro aplikaci ASP.NET Core spuštěnou v clusteru Service Fabric pomocí Application Insights. Budeme shromažďovat telemetrii z aplikace vyvinuté v první části kurzu [Sestavení aplikace .NET pro Service Fabric](service-fabric-tutorial-create-dotnet-app.md). 
@@ -83,7 +83,7 @@ Nezapomeňte výše uvedené kroky provést pro **obě** služby v aplikaci. Tí
 
 ## <a name="add-the-microsoftapplicationinsightsservicefabricnative-nuget-to-the-services"></a>Přidání balíčku NuGet Microsoft.ApplicationInsights.ServiceFabric.Native do služeb
 
-Application Insights má dva balíčky NuGet specifické pro Service Fabric, které je možné použít v závislosti na scénáři. Jeden se používá s nativními službami Service Fabric a druhý s kontejnery a spustitelnými soubory hosta. V tomto případě použijeme balíček NuGet Microsoft.ApplicationInsights.ServiceFabric.Native, abychom mohli využít znalost kontextu služby, kterou poskytuje. Další informace o sadě SDK pro Application Insights a balíčcích NuGet specifických pro Service Fabric najdete v tématu [Microsoft Application Insights pro Service Fabric](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/develop/README.md). 
+Application Insights má dva balíčky NuGet specifické pro Service Fabric, které je možné použít v závislosti na scénáři. Jeden se používá s nativními službami Service Fabric a druhý s kontejnery a spustitelnými soubory hosta. V tomto případě použijeme balíček NuGet Microsoft.ApplicationInsights.ServiceFabric.Native, abychom mohli využít znalost kontextu služby, kterou poskytuje. Další informace o sadě SDK pro Application Insights a balíčcích NuGet specifických pro Service Fabric najdete v tématu [Microsoft Application Insights pro Service Fabric](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md). 
 
 Tady je postup nastavení balíčku NuGet:
 1. Klikněte pravým tlačítkem na **Řešení Voting** v horní části Průzkumníku řešení a pak klikněte na **Spravovat balíčky NuGet pro řešení**.

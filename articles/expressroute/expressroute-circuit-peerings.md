@@ -1,11 +1,11 @@
 ---
-title: "Azure okruhy ExpressRoute a domény směrování | Microsoft Docs"
-description: "Tato stránka obsahuje přehled okruhy ExpressRoute a domény směrování."
+title: Azure okruhy ExpressRoute a domény směrování | Microsoft Docs
+description: Tato stránka obsahuje přehled okruhy ExpressRoute a domény směrování.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6f0c5d8e-cc60-4a04-8641-2c211bda93d9
 ms.service: expressroute
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: 943305c78a17031d647bf2fa0977d10c51213ef5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0e060e67d615f0d6aa8ca6cbe305670956ac3faf
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>Okruhy ExpressRoute a domény směrování
  Musíte uspořádat *okruh ExpressRoute* pro připojení k místní infrastruktuře společnosti Microsoft prostřednictvím poskytovatele připojení. Následující obrázek ukazuje vytvoření logického vyjádření připojení mezi vaší sítě WAN a společnosti Microsoft.
@@ -72,7 +72,7 @@ Najdete v článku [stránka s nejčastějšími dotazy](expressroute-faqs.md) D
 ## <a name="routing-domain-comparison"></a>Porovnání směrování domény
 Následující tabulka porovnává tři domény směrování:
 
-|  | **Soukromého partnerského vztahu** | **Veřejný partnerský vztah** | **Partnerský vztah Microsoftu*** |
+|  | **Soukromého partnerského vztahu** | **Veřejný partnerský vztah** (zastaralé pro vytvoření nové) | **Partnerský vztah Microsoftu** |
 | --- | --- | --- | --- |
 | **Max. # předpony podporované na partnerský vztah** |4000 standardně 10 000 s ExpressRoute Premium |200 |200 |
 | **Podporované rozsahy IP adres** |Všechny platnou IP adresu v rámci vaší sítě WAN. |Veřejné IP adresy vlastníkem vy nebo váš poskytovatel připojení. |Veřejné IP adresy vlastníkem vy nebo váš poskytovatel připojení. |
@@ -81,7 +81,7 @@ Následující tabulka porovnává tři domény směrování:
 | **Směrování rozhraní IP adresy** |RFC1918 a veřejné IP adresy |Veřejné IP adresy zaregistrované na vás v registrech směrování. |Veřejné IP adresy zaregistrované na vás v registrech směrování. |
 | **Hodnota Hash MD5 podpory** |Ano |Ano |Ano |
 
-(*) Vyžaduje úroveň Premium rozšíření SKU
+
 
 Můžete povolit jeden nebo více domén směrování v rámci okruhu ExpressRoute. Můžete mít všechny domény směrování umístit na stejnou síť VPN, pokud chcete sloučit je do jedné domény směrování. Můžete je také umístit na různé domény směrování, podobně jako na obrázku. Doporučená konfigurace je soukromého partnerského vztahu je připojený přímo k základní síti, a veřejných a odkazy partnerského vztahu Microsoftu jsou připojené k vaší hraniční sítě.
 

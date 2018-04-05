@@ -1,6 +1,6 @@
 ---
-title: "Kurz Kubernetes v Azure – Škálování aplikace"
-description: "Kurz AKS – Škálování aplikace"
+title: Kurz Kubernetes v Azure – Škálování aplikace
+description: Kurz AKS – Škálování aplikace
 services: container-service
 author: dlepow
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 556f4bfb204504de55c41da9615e61d5a88c75b2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5e35be84df53386398deaca19d60d4a93f53e541
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="scale-application-in-azure-container-service-aks"></a>Škálování aplikace ve službě Azure Container Service (AKS)
+# <a name="tutorial-scale-application-in-azure-container-service-aks"></a>Kurz: Škálování aplikace ve službě Azure Container Service (AKS)
 
 Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes ve službě AKS a nasadili jste aplikaci Azure Vote.
 
@@ -26,7 +26,7 @@ V tomto kurzu, který je pátou částí osmidílné série, budete škálovat p
 > * Ruční škálování podů Kubernetes
 > * Konfigurace automatického škálování podů, ve kterých běží front-end aplikace
 
-V dalších kurzech se aktualizuje aplikace Azure Vote a konfiguruje Operations Management Suite pro monitorování clusteru Kubernetes.
+V dalších kurzech se aktualizuje aplikace Azure Vote a nakonfiguruje se služba Log Analytics pro monitorování clusteru Kubernetes.
 
 ## <a name="before-you-begin"></a>Než začnete
 

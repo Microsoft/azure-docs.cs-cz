@@ -6,14 +6,14 @@ author: jovanpop-msft
 ms.reviewer: bonova, carlrab
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 03/30/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 842c65987dc97872751071dbcf138794a14940e2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d8adf097d6bee404cff8e7b15782c6c59531a897
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server 
 
@@ -114,13 +114,13 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Set – příkazy](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | Většina - najdete jednotlivé příkazy | Ano – najdete v části [rozdíly T-SQL](sql-database-managed-instance-transact-sql-information.md)|
 | [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | Ano | Ano |
 | [Spatial](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) | Ano | Ano |
-| [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Ano | Ano |
+| [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Ano | Ne |
 | [SQL Operations Studio](https://docs.microsoft.com/sql/sql-operations-studio/what-is) | Ano | Ano |
 | [Agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Ne – najdete v části [elastické úlohy](sql-database-elastic-jobs-getting-started.md) | Ano – najdete v části [rozdíly agenta systému SQL Server](sql-database-managed-instance-transact-sql-information.md#sql-server-agent) |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Ne – najdete v části [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | Ne – najdete v části [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
 | [Auditování SQL serveru](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Ne – najdete v části [auditování databáze SQL](sql-database-auditing.md) | Ano – najdete v části [auditování rozdíly](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [SQL Server Data Tools (SSDT)] (https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Ano | Ano |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Partial – vývoj balíčku v SQL Server Data Tools není podporována. | Ne, není ve verzi Public Preview |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ano, s spravované SSIS v prostředí Azure Data Factory (ADF), kde jsou uložené balíčky v SSISDB hostované ve službě Azure SQL Database a spouštět v [Runtime integrace Azure SSIS](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md). | Ano, s spravované SSIS v prostředí Azure Data Factory (ADF), kde jsou uložené balíčky v SSISDB hostované spravované Instance a spouštět v [Runtime integrace Azure SSIS](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md). |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Ano | Ano |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Ano | Ano |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Ne – najdete v části [rozšířené události](sql-database-xevent-db-diff-from-svr.md) | Ano |

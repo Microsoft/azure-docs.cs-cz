@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/21/2018
+ms.date: 03/28/2018
 ms.author: glenga
-ms.custom: mvc, devcenter
-ms.openlocfilehash: c1f7c1a12aea8336b71d6e3eb47037d193841ddb
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.custom: mvc, devcenter, cc996988-fb4f-47
+ms.openlocfilehash: 86cc435a7d632f1cc1b9a0e4a2e6508059d4d675
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Vytvoření první funkce na webu Azure Portal
 
@@ -40,13 +40,11 @@ K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace 
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
-
 Dál vytvoříte v nové aplikaci Function App funkci.
 
 ## <a name="create-function"></a>Vytvoření funkce aktivované protokolem HTTP
 
-1. Rozbalte novou aplikaci Function App a potom klikněte na tlačítko  **+**  vedle položky **Funkce**.
+1. Rozbalte novou aplikaci Function App a potom klikněte na tlačítko **+** vedle položky **Funkce**.
 
 2.  Na stránce **Začněte rychle** vyberte **Webhook + API**, **Zvolte jazyk** funkce a klikněte na **Vytvořit tuto funkci**. 
    

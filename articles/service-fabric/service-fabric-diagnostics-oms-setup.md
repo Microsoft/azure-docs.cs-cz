@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric - nastavení monitorování s OMS Log Analytics | Microsoft Docs"
-description: "Zjistěte, jak pro nastavení služby Operations Management Suite pro vizualizaci a analýzu událostí k monitorování clusterů Azure Service Fabric."
+title: Azure Service Fabric - nastavení monitorování s OMS Log Analytics | Microsoft Docs
+description: Zjistěte, jak pro nastavení služby Operations Management Suite pro vizualizaci a analýzu událostí k monitorování clusterů Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/17/2017
-ms.author: dekapur
-ms.openlocfilehash: 98ac32b011744ce388762322edd538b467f93494
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 3/30/2018
+ms.author: dekapur; srrengar
+ms.openlocfilehash: 2589efa1808a394f2e32b842efa2ee70809da232
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>Nastavení pro cluster s podporou Operations Management Suite Log Analytics
 
@@ -75,7 +75,7 @@ Pokud používáte systém Windows, pokračujte následujícími kroky pro přip
 
 Když nasadíte cluster pomocí šablony Resource Manageru, šablona vytvoří nový pracovní prostor OMS, Service Fabric řešení přidá do pracovního prostoru a nakonfiguruje jej číst data z tabulky příslušné úložiště.
 
-Můžete použít a změnit [Tato ukázka šablona](https://azure.microsoft.com/resources/templates/service-fabric-oms/) podle svých požadavků. Šablony, které poskytují různé možnosti pro nastavení pracovním prostorem OMS naleznete na adrese [Service Fabric a OMS šablony](https://azure.microsoft.com/resources/templates/?term=service+fabric+OMS).
+Můžete použít a změnit [Tato ukázka šablona](https://github.com/krnese/azure-quickstart-templates/tree/master/service-fabric-oms) podle svých požadavků.
 
 Proveďte následující změny:
 1. Přidat `omsWorkspaceName` a `omsRegion` na parametry přidáním následující fragment kódu do parametrech definovaných v vaše *template.json* souboru. Nebojte se, že podle potřeby upravte výchozí hodnoty. Také přidejte dva nové parametry ve vaší *Parameters.JSON tímto kódem* souboru definujte jejich hodnoty pro nasazení prostředků:
@@ -219,7 +219,7 @@ Když jste hotovi, postupujte podle kroků v předchozím oddílu pro připojen�
 
 Můžete také přidat další řešení nebo provádět další úpravy vaším pracovním prostorem OMS pomocí prostředí PowerShell. Další informace najdete v tématu [Spravovat analýzy protokolů pomocí prostředí PowerShell](../log-analytics/log-analytics-powershell-workspace-configuration.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Nasazení agenta OMS](service-fabric-diagnostics-oms-agent.md) na uzly shromáždit čítače výkonu a shromažďovat protokoly pro vaše kontejnery a statistiky docker
 * Získat familiarized s [vyhledávání a dotazování protokolu](../log-analytics/log-analytics-log-searches.md) funkcím poskytovaným jako součást analýzy protokolů
 * [Pomocí zobrazení návrhu můžete vytvořit vlastní zobrazení v analýzy protokolů](../log-analytics/log-analytics-view-designer.md)

@@ -1,12 +1,12 @@
 ---
-title: "Zachovat IP adres při přebírání služeb při selhání virtuálních počítačích Azure jiné oblasti Azure | Microsoft Docs"
-description: "Popisuje, jak chcete zachovat IP adresy pro scénáře převzetí služeb při selhání Azure do Azure s Azure Site Recovery"
+title: Zachovat IP adres při přebírání služeb při selhání virtuálních počítačích Azure jiné oblasti Azure | Microsoft Docs
+description: Popisuje, jak chcete zachovat IP adresy pro scénáře převzetí služeb při selhání Azure do Azure s Azure Site Recovery
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 15f87ba87d90cee765f52d3188796bc1ff7b8a35
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8e128e057e45f6966067ebaaf039d9b14349d926
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Uchování IP adresu pro převzetí služeb při selhání virtuálního počítače Azure
 
@@ -84,11 +84,7 @@ Výše izolované převzetí služeb při selhání můžete příklad rozšíř
 
 ### <a name="further-considerations"></a>Další informace
 
-Brány sítě VPN využívat veřejné IP adresy a segmentů směrování brány k navázání připojení. Pokud nechcete použít veřejnou IP adresu, nebo chcete vyhnout další směrování, teď můžete partnerský vztah globální virtuální síť rovnocenných počítačů virtuálních sítí v oblastech Azure.
-
-Tato funkce je aktuálně ve verzi public preview a je rozbalována pro podporu více oblastí – povolení přímé připojení virtuálních počítačů do virtuálního počítače bez zapojení žádné veřejný internet nebo žádné další segmenty směrování.
-
-Další informace najdete v části [partnerského vztahu dokumentaci](../virtual-network/tutorial-connect-virtual-networks-portal.md#register) a [ceny](https://azure.microsoft.com/pricing/details/virtual-network/).
+Brány sítě VPN využívat veřejné IP adresy a segmentů směrování brány k navázání připojení. Pokud nechcete použít veřejnou IP adresu, nebo chcete vyhnout další směrování, můžete použít Azure [partnerský vztah virtuální sítě](../virtual-network/virtual-network-peering-overview.md) rovnocenných počítačů virtuální sítě přes [podporované oblasti Azure](../virtual-network/virtual-network-manage-peering.md#cross-region).
 
 ## <a name="on-premises-to-azure-connectivity"></a>Připojení na místní do Azure
 

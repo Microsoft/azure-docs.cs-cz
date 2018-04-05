@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/19/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 241f872b3069a58a35df7104f3335964298c7a20
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2ad995c4b48c2c298edd7c6b4da92ea8f3c4a060
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="authorize-access-to-web-applications-using-oauth-20-and-azure-active-directory"></a>Autorizace přístupu k webovým aplikacím s použitím OAuth 2.0 a Azure Active Directory
 Azure Active Directory (Azure AD) používá OAuth 2.0 umožnit autorizace přístupu k webové aplikace a webové rozhraní API v klientovi služby Azure AD. Tato příručka je závislý na jazyce a popisuje, jak odesílat a přijímat zprávy HTTP bez použití některé z našich knihovny open-source.
@@ -59,7 +59,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | řádku |nepovinné |Označuje typ interakci s uživatelem, který je vyžadován.<p> Platné hodnoty jsou: <p> *přihlášení*: uživatel měla zobrazit výzva k novému ověření. <p> *souhlas*: souhlas uživatele byla udělena, ale je třeba aktualizovat. Uživatel měla zobrazit výzva k souhlas. <p> *admin_consent*: Správce měla zobrazit výzva k souhlas jménem všichni uživatelé v organizaci |
 | login_hint |nepovinné |Slouží k předem vyplnit pole uživatelské jméno nebo e-mailové adresy na stránce přihlášení pro uživatele, pokud znáte svoje uživatelské jméno předem.  Tento parametr použijte často aplikace během opětovné ověření, uživatelské jméno s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity. |
 | domain_hint |nepovinné |Poskytuje informace o klientovi nebo doménu, která uživatel by měl použít pro přihlášení. Hodnota domain_hint je registrované domény pro klienta. Pokud klient federovaný na místní adresář, AAD přesměruje na federační server zadaného klienta. |
-| code_challenge_method | nepovinné    | Metoda použitá ke kódování `code_verifier` pro `code_challenge` parametr. Může být jedna z `plain` nebo `S256`.  Pokud vyloučená, `code_challenge` bude ve formátu prostého textu, pokud hodnota `code_challenge` je součástí.  Azure AAD v2.0 podporuje obě `plain` a `S256`. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge_method | nepovinné    | Metoda použitá ke kódování `code_verifier` pro `code_challenge` parametr. Může být jedna z `plain` nebo `S256`.  Pokud vyloučená, `code_challenge` bude ve formátu prostého textu, pokud hodnota `code_challenge` je součástí.  Azure verze 1.0 AAD podporuje obě `plain` a `S256`. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 | code_challenge        | nepovinné    | Používá k zabezpečení uděluje autorizační kód prostřednictvím ověření klíče pro Exchange kódu (PKCE) z nativního klienta. Požadováno pokud `code_challenge_method` je součástí.  Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 > [!NOTE]
@@ -95,7 +95,7 @@ error=access_denied
 
 | Parametr | Popis |
 | --- | --- |
-| chyba |K chybě kódu hodnota definovaná v části 5.2 z [Framework autorizace OAuth 2.0](http://tools.ietf.org/html/rfc6749). V další tabulce jsou kódy chyb, které vrátí Azure AD. |
+| error |K chybě kódu hodnota definovaná v části 5.2 z [Framework autorizace OAuth 2.0](http://tools.ietf.org/html/rfc6749). V další tabulce jsou kódy chyb, které vrátí Azure AD. |
 | error_description |Podrobnější popis chyby. Tato zpráva neměla být popisný koncového uživatele. |
 | state |Hodnota stavu je náhodně generované hodnoty znovu použít, které se odesílají v požadavku a vrátí se v reakci na zabránit útokům (proti útokům CSRF) padělání požadavku posílaného mezi weby. |
 
@@ -241,7 +241,7 @@ Ukázková chyba odpověď může vypadat například takto:
 ```
 | Parametr | Popis |
 | --- | --- |
-| chyba |Řetězec kódu chyby, který můžete použít ke klasifikaci typů chyb, ke kterým došlo a slouží k reagovat na chyby. |
+| error |Řetězec kódu chyby, který můžete použít ke klasifikaci typů chyb, ke kterým došlo a slouží k reagovat na chyby. |
 | error_description |Konkrétní chybová zpráva, která může pomoci vývojář určit hlavní příčinu chyby ověřování. |
 | error_codes |Seznam tokenů zabezpečení specifické chybové kódy, které vám můžou pomoct při diagnostiky. |
 | časové razítko |Čas, kdy se stala chyba. |
@@ -294,7 +294,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 | Parametr | Popis |
 | --- | --- |
 | authorization_uri |Identifikátor URI (fyzické koncový bod) serveru ověřování. Tato hodnota se také používá jako klíč vyhledávání získat další informace o serveru z koncového bodu zjišťování. <p><p> Klient musíte ověřit, že server ověřování je důvěryhodný. Když prostředek je chráněný službou Azure AD, je dostačující k ověření, že adresa URL začíná https://login.microsoftonline.com nebo jiný název hostitele, který podporuje Azure AD. Prostředek konkrétního klienta by měl vrátit vždy identifikátor URI autorizace konkrétního klienta. |
-| chyba |K chybě kódu hodnota definovaná v části 5.2 z [Framework autorizace OAuth 2.0](http://tools.ietf.org/html/rfc6749). |
+| error |K chybě kódu hodnota definovaná v části 5.2 z [Framework autorizace OAuth 2.0](http://tools.ietf.org/html/rfc6749). |
 | error_description |Podrobnější popis chyby. Tato zpráva neměla být popisný koncového uživatele. |
 | ID_prostředku |Vrací jedinečný identifikátor prostředku. Klientská aplikace můžete použít tento identifikátor jako hodnotu `resource` parametr při požadavku na token pro prostředek. <p><p> Je důležité pro klientskou aplikaci ověřit tuto hodnotu, jinak může být škodlivý služby moci vyvolat **zvýšení oprávnění** útoku <p><p> Pro zabránění útoku doporučujeme ověřit, jestli `resource_id` odpovídá základní webové adresy URL rozhraní API, která přistupuje. Například pokud https://service.contoso.com/data se přistupuje, `resource_id` může být htttps://service.contoso.com/. Klientská aplikace musí odmítnout `resource_id` , nemá na začátku základní adresu URL Pokud nejsou spolehlivé alternativní způsob, jak ověřit id. |
 
@@ -372,7 +372,7 @@ Ukázková chyba odpověď může vypadat například takto:
 
 | Parametr | Popis |
 | --- | --- |
-| chyba |Řetězec kódu chyby, který můžete použít ke klasifikaci typů chyb, ke kterým došlo a slouží k reagovat na chyby. |
+| error |Řetězec kódu chyby, který můžete použít ke klasifikaci typů chyb, ke kterým došlo a slouží k reagovat na chyby. |
 | error_description |Konkrétní chybová zpráva, která může pomoci vývojář určit hlavní příčinu chyby ověřování. |
 | error_codes |Seznam tokenů zabezpečení specifické chybové kódy, které vám můžou pomoct při diagnostiky. |
 | časové razítko |Čas, kdy se stala chyba. |

@@ -1,11 +1,11 @@
 ---
-title: "Plánování úloh službou Azure IoT Hub (.NET nebo uzel) | Microsoft Docs"
-description: "Popisuje, jak naplánovat úlohu služby Azure IoT Hub pro vyvolání přímé metody na několika zařízeních. Zařízení Azure IoT SDK pro Node.js použijete k implementaci aplikace simulovaného zařízení a sady SDK pro .NET k implementaci aplikace service chcete spustit úlohu služby Azure IoT."
+title: Plánování úloh službou Azure IoT Hub (.NET nebo uzel) | Microsoft Docs
+description: Popisuje, jak naplánovat úlohu služby Azure IoT Hub pro vyvolání přímé metody na několika zařízeních. Zařízení Azure IoT SDK pro Node.js použijete k implementaci aplikace simulovaného zařízení a sady SDK pro .NET k implementaci aplikace service chcete spustit úlohu služby Azure IoT.
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2233356e-b005-4765-ae41-3a4872bda943
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: juanpere
-ms.openlocfilehash: 3efe4612c6d628e070ba6e99808f79f61ead426e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 360daf918051ce901a81f96d1873dc90af238e19
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-and-broadcast-jobs-netnodejs"></a>Úlohy plán a všesměrového vysílání (.NET/Node.js)
 
@@ -36,6 +36,8 @@ Další informace o každém z těchto funkcí najdete v tématu:
 
 * Dvojče zařízení a vlastností: [začít pracovat s dvojčata zařízení] [ lnk-get-started-twin] a [kurz: použití dvojici vlastností zařízení][lnk-twin-props]
 * Přímé metody: [Příručka vývojáře pro službu IoT Hub - přímé metody] [ lnk-dev-methods] a [kurz: použijte přímý metody][lnk-c2d-methods]
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 V tomto kurzu získáte informace o následujících postupech:
 

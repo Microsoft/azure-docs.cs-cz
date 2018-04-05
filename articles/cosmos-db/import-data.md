@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/30/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 1276fb119199b9dbb9b50bed8ac12cff0a55d2dd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 317e5f2696635d28b5dbab302e45960af9c8aee2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Nástroj pro migraci dat
 
@@ -59,7 +59,7 @@ Nástroj pro migraci dat je řešení open source, který importuje data do Azur
 Při importu nástroj obsahuje grafické uživatelské rozhraní (dtui.exe), můžete také vycházejí z příkazového řádku (dt.exe). Ve skutečnosti je možnost výstup přidružený příkaz po nastavení importu v uživatelském rozhraní. Tabulkové zdroje dat (např. SQL Server nebo CSV soubory) lze je transformovat tak, aby hierarchické vztahy (vnořené dokumenty) lze vytvořit při importu. Zachovat čtení Další informace o možnosti nastavení zdroje, ukázkové příkazové řádky pro import z každého zdroje, target – možnosti a import zobrazení výsledků.
 
 ## <a id="Install"></a>Instalace
-Migrace nástroj zdrojový kód je k dispozici na Githubu v [toto úložiště](https://github.com/azure/azure-documentdb-datamigrationtool). Můžete stáhnout a zkompilovat řešení místně a pak spustit buď:
+Migrace nástroj zdrojový kód je k dispozici na Githubu v [toto úložiště](https://github.com/azure/azure-documentdb-datamigrationtool). Můžete stáhnout a zkompilovat řešení místně, nebo [stáhnout předem kompilovaném binární](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip), spusťte buď:
 
 * **Dtui.exe**: grafické rozhraní verze nástroje
 * **DT.exe**: příkazového řádku verze nástroje

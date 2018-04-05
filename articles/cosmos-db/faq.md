@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: 946d0f6456ce27931c91066d63c028388ecec84c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 7039b87c80aecb837059d80087c97e8691da2988
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy Azure Cosmos DB
@@ -122,7 +122,7 @@ Když nastavíte oblast, mějte na paměti, že Azure Cosmos DB respektuje suver
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Jak spustit vývoj proti rozhraní SQL API?
 Nejprve musíte zaregistrovat předplatné Azure. Jakmile si zaregistrujete předplatné Azure, můžete přidat kontejner rozhraní SQL API k předplatnému Azure. Pokyny k přidání účtu Azure Cosmos DB najdete v tématu [vytvoření účtu Azure Cosmos DB databáze](create-sql-api-dotnet.md#create-account). 
 
-[Sady SDK](sql-api-sdk-dotnet.md) pro rozhraní .NET, Python, Node.js, JavaScript a Javu jsou k dispozici. Vývojáři mohou použít také [RESTful HTTP API](/rest/api/documentdb/) pracovat s prostředky Azure Cosmos DB z různých platforem a jazyků.
+[Sady SDK](sql-api-sdk-dotnet.md) pro rozhraní .NET, Python, Node.js, JavaScript a Javu jsou k dispozici. Vývojáři mohou použít také [RESTful HTTP API](/rest/api/cosmos-db/) pracovat s prostředky Azure Cosmos DB z různých platforem a jazyků.
 
 ### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>Může přistupovat ke profesionální některé připravených vzorků?
 Ukázky pro rozhraní SQL API [.NET](sql-api-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](sql-api-nodejs-samples.md), a [Python](sql-api-python-samples.md) sady SDK jsou k dispozici na Githubu.
@@ -140,10 +140,10 @@ Kolekce je skupina dokumentů a jejich přidružené logiky Javascriptové aplik
 Kolekce jsou také entitami fakturace pro Azure Cosmos DB. Každá kolekce se fakturuje každou hodinu, podle zřízené propustnosti a využitého prostoru úložiště. Další informace najdete v tématu [Azure Cosmos DB ceny](https://azure.microsoft.com/pricing/details/cosmos-db/). 
 
 ### <a name="how-do-i-create-a-database"></a>Jak vytvořím databázi?
-Databáze můžete vytvořit pomocí [portál Azure](https://portal.azure.com), jak je popsáno v [přidat do kolekce](create-sql-api-dotnet.md#create-collection), jeden z [SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md), nebo [rozhraní REST API](/rest/api/documentdb/). 
+Databáze můžete vytvořit pomocí [portál Azure](https://portal.azure.com), jak je popsáno v [přidat do kolekce](create-sql-api-dotnet.md#create-collection), jeden z [SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md), nebo [rozhraní REST API](/rest/api/cosmos-db/). 
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>Jak nastavím uživatele a oprávnění?
-Uživatele a oprávnění můžete vytvořit pomocí jedné z [Cosmos DB rozhraní API sady SDK](sql-api-sdk-dotnet.md) nebo [rozhraní REST API](/rest/api/documentdb/).  
+Uživatele a oprávnění můžete vytvořit pomocí jedné z [Cosmos DB rozhraní API sady SDK](sql-api-sdk-dotnet.md) nebo [rozhraní REST API](/rest/api/cosmos-db/).  
 
 ### <a name="does-the-sql-api-support-sql"></a>Podporuje rozhraní SQL API SQL?
 Dotazovací jazyk SQL nepodporuje účty rozhraní API pro SQL je vylepšená podmnožina dotazovacích funkcí podporovaným systémem SQL Server. Dotazovací jazyk Azure Cosmos DB SQL nabízí bohaté hierarchické a relační operátory a rozšiřitelnost prostřednictvím bázi jazyka JavaScript, uživatelsky definované funkce (UDF). Gramatika JSON umožňuje modelování dokumentů JSON ve formě stromů ve s popiskem uzly, které jsou používány Azure Cosmos DB automatických technikách indexování a dialektu dotazování SQL v Azure Cosmos DB. Informace o používání gramatiky SQL najdete v tématu [dotazu SQL] [ query] článku.

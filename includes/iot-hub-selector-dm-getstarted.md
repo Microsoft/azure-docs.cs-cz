@@ -7,6 +7,8 @@
 
 Back-end aplikace můžete použít Azure IoT Hub primitiv, jako například [dvojče zařízení] [ lnk-devtwin] a [přímé metody][lnk-c2dmethod], abyste mohli vzdáleně spuštění a monitorování zařízení akce správy na zařízeních. Tento kurz ukazuje, jak back-end aplikace a aplikace na zařízení vzájemně spolupracují na zahájení a monitorování restartování vzdáleného zařízení pomocí služby IoT Hub.
 
+[!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
+
 Přímá metoda používají k navázání akce správy zařízení (například restartování, obnovení továrního nastavení a aktualizaci firmwaru) z back-end aplikace v cloudu. Zařízení je zodpovědná za:
 
 * Zpracování metoda požadavek odeslaný ze služby IoT Hub.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 15bbd32d982bdefc5665421b828ce0c8234b7257
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b5443cb1d883bd829a13b6d941d2c87c6205c64f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure standardní nástroje pro vyrovnávání zatížení
 
@@ -61,8 +61,8 @@ Projděte si v následující tabulce základní informace o rozdílech mezi ná
 | Odchozí připojení | Více frontends s každé pravidlo výslovný nesouhlas s. Odchozí scénář _musí_ explicitně vytvořit pro virtuální počítač, abyste mohli použít odchozí připojení.  [Koncové body služby virtuální síť](../virtual-network/virtual-network-service-endpoints-overview.md) dostupný bez odchozí připojení a zpracování dat není započítávat.  Všechny veřejné IP adresy, včetně služeb Azure PaaS není k dispozici jako koncové body služby virtuální sítě, musí být dosaženo přes odchozí připojení a počtu ke zpracování dat. Když virtuální počítač je obsluhuje pouze k interním pro vyrovnávání zatížení, nejsou k dispozici odchozí připojení přes výchozí překládat pomocí SNAT. Odchozí překládat pomocí SNAT programování je transportní protokol konkrétní na základě protokolu Příchozí pravidlo Vyrovnávání zatížení. | Jeden front-endu, náhodně vybrané, pokud existuje více frontends.  Když virtuální počítač je obsluhuje pouze interní nástroj pro vyrovnávání zatížení, použije se výchozí překládat pomocí SNAT. |
 | Více frontends | Příchozí a odchozí | Pouze příchozí |
 | Operace správy | Většinu operací < 30 sekund | 60-90 sekund typické |
-| Smlouva SLA | 99,99 % pro cestu k datům s dva virtuální počítače v pořádku | Implicitní v SLA k Virtuálním počítačům | 
-| Cena | Účtovat na základě počtu pravidel, zpracování dat příchozí nebo odchozí přidružené prostředků  | Bez poplatků |
+| SLA | 99,99 % pro cestu k datům s dva virtuální počítače v pořádku | Implicitní v SLA k Virtuálním počítačům | 
+| Ceny | Účtovat na základě počtu pravidel, zpracování dat příchozí nebo odchozí přidružené prostředků  | Bez poplatků |
 
 Zkontrolujte [omezení služby pro vyrovnávání zatížení](https://aka.ms/lblimits), a také [ceny](https://aka.ms/lbpricing), a [SLA](https://aka.ms/lbsla).
 
@@ -76,9 +76,6 @@ Back-endový fond může obsahovat samostatné virtuální počítače, skupiny 
 Při zvažování návrhu back-endového fondu, můžete navrhnout pro nejmenší počet jednotlivých back-end fondu prostředků optimalizovat trvání operace správy.  Není žádný rozdíl ve výkonu roviny dat nebo určený počet číslic.
 
 ## <a name="az"></a>Dostupnost zóny
-
->[!NOTE]
-> Použít [dostupnost zóny Preview](https://aka.ms/availabilityzones) s nástroj pro vyrovnávání zatížení vyžaduje [registrace pro dostupnost zóny](https://aka.ms/availabilityzones).
 
 Nástroj pro vyrovnávání zatížení podporuje další dalo v oblastech, kde dostupnost zóny jsou k dispozici.  Tyto funkce jsou přírůstkové všechny standardní Vyrovnávání zatížení poskytuje.  Konfigurace zón dostupnosti jsou k dispozici pro veřejné a interní standardní Vyrovnávání zatížení.
 
@@ -207,15 +204,15 @@ SKU nejsou měnitelný. Postupujte podle kroků v této části přesunuty z jed
 >
 >Odpovídající identifikátory SKU musí použít pro nástroj pro vyrovnávání zatížení a veřejnou IP adresu prostředky. Nemůžete mít směs základní SKU a standardní SKU prostředků. Nelze připojit samostatné virtuální počítače, virtuální počítače v prostředek sadu dostupnosti nebo škálování virtuálního počítače nastavte prostředky na obě položky současně.
 
-## <a name="region-availability"></a>Regionální dostupnost
+## <a name="region-availability"></a>Dostupnost v oblastech
 
 Standardní nástroje pro vyrovnávání zatížení je aktuálně k dispozici ve všech oblastech veřejného cloudu.
 
-## <a name="sla"></a>Smlouva SLA
+## <a name="sla"></a>SLA
 
 Nástroje pro vyrovnávání zatížení jsou k dispozici SLA 99,99 %.  Zkontrolujte [standardní SLA nástroje pro vyrovnávání zatížení](https://aka.ms/lbsla) podrobnosti.
 
-## <a name="pricing"></a>Cena
+## <a name="pricing"></a>Ceny
 
 Standardní Vyrovnávání zatížení je odečtena produkt na základě počtu Vyrovnávání zatížení nakonfigurovaná pravidla a všechny příchozí a odchozí data zpracování. Informace o cenách standardní Vyrovnávání zatížení, najdete v článku [ceny služby Vyrovnávání zatížení](https://aka.ms/lbpricing) stránky.
 

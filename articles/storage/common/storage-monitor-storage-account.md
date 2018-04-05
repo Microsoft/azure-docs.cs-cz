@@ -1,8 +1,8 @@
 ---
-title: "Postup sledování účtu Azure Storage | Microsoft Docs"
-description: "Naučte se monitorovat účet úložiště v Azure pomocí portálu Azure."
+title: Postup sledování účtu Azure Storage | Microsoft Docs
+description: Naučte se monitorovat účet úložiště v Azure pomocí portálu Azure.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tamram
-ms.openlocfilehash: 20cb425b64bfba06d64b3c6c41f9ef496395ad8e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ffc7d46bbfa4db47a47e416c395efdfc451cadc1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorování účtu úložiště na portálu Azure
 
@@ -28,8 +28,6 @@ ms.lasthandoff: 01/24/2018
 > Existují náklady spojené s zkoumání dat monitorování na portálu Azure. Další informace najdete v tématu [Storage Analytics a fakturace](/rest/api/storageservices/Storage-Analytics-and-Billing).
 >
 > Soubory Azure aktuálně podporuje metriky analytika úložiště, ale zatím nepodporuje protokolování.
->
-> Účty úložiště s typem replikace Zónově redundantní úložiště (ZRS) podporují metrik a protokolování. Předchozí ZRS účty, které byly přejmenovány ZRS Classic, proveďte není metriky podporu protokolování. Další informace o ZRS, najdete v části [Zónově redundantní úložiště](storage-redundancy.md#zone-redundant-storage). 
 > 
 > Podrobné informace týkající se použití analytika úložiště a dalších nástrojů pro identifikovat, diagnostikovat a řešit problémy související s Azure Storage najdete v tématu [monitorování, Diagnostika a řešení Microsoft Azure Storage](../storage-monitoring-diagnosing-troubleshooting.md).
 >
@@ -47,7 +45,7 @@ ms.lasthandoff: 01/24/2018
 
    Existují dva typy metrik, které můžete povolit u každé služby, které jsou povolené ve výchozím nastavení pro nové účty úložiště:
 
-   * **Agregační**: shromažďuje metriky například procenta vstupní/výstupní, dostupnosti, latence a úspěch. Tyto metriky se shromažďují pro objekt blob, fronty, tabulky a souborové služby.
+   * **Agregační**: shromažďuje metriky například procenta vstupní/výstupní, dostupnosti, latence a úspěch. Tyto metriky se agregují pro služby objektů blob, front, tabulek a souborů.
    * **Na rozhraní API**: kromě agregovaná metrika shromažďuje stejnou sadu metriky pro každé operace úložiště v rozhraní API služby Azure Storage.
 
    Chcete-li nastavit zásady uchovávání dat, přesunout **uchovávání dat (dny)** posuvníku nebo zadejte počet dnů od 1 do 365 uchovávání dat. Výchozí pro nové účty úložiště je sedm dní. Pokud nechcete nastavit zásady uchovávání informací, zadejte nula. Pokud nejsou žádné zásady uchovávání informací, je na vás odstranit data sledování.

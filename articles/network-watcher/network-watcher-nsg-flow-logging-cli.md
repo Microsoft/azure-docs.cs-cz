@@ -1,11 +1,11 @@
 ---
-title: "Správa protokolů toku skupiny zabezpečení sítě pomocí sledovací proces sítě Azure - rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Tato stránka vysvětluje, jak spravovat protokoly toku skupiny zabezpečení sítě v Azure sledovací proces sítě pomocí rozhraní příkazového řádku Azure"
+title: Správa protokolů toku skupiny zabezpečení sítě pomocí sledovací proces sítě Azure - rozhraní příkazového řádku Azure | Microsoft Docs
+description: Tato stránka vysvětluje, jak spravovat protokoly toku skupiny zabezpečení sítě v Azure sledovací proces sítě pomocí rozhraní příkazového řádku Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2dfc3112-8294-4357-b2f8-f81840da67d3
 ms.service: network-watcher
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 51683e937b7985bb61671645f3e2e1be6d786201
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: b8c2ff527328fe5f486362db416a99a1c711c9c2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Konfigurace protokolů toku skupiny zabezpečení sítě pomocí rozhraní příkazového řádku Azure
 
 > [!div class="op_single_selector"]
-> - [portál Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
@@ -51,6 +51,8 @@ Příkaz pro povolení protokolů toku je znázorněno v následujícím příkl
 az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName
 ```
 
+Účet úložiště, který určíte, nemůže mít nakonfigurovaná pro něj pravidla sítě, které omezují přístup k síti pouze služby společnosti Microsoft nebo konkrétní virtuálních sítí.
+
 ## <a name="disable-network-security-group-flow-logs"></a>Protokoly toku zakázat skupinu zabezpečení sítě
 
 Pomocí následujícího příkladu zakázat toku protokoly:
@@ -61,7 +63,7 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 
 ## <a name="download-a-flow-log"></a>Stáhnout protokolu toku
 
-Umístění úložiště toku protokolu se definuje při vytvoření. Je vhodné nástroj pro přístup k tyto protokoly toku uložit do účtu úložiště Microsoft Azure Storage Explorer, kterou můžete stáhnout tady: http://storageexplorer.com/
+Umístění úložiště toku protokolu se definuje při vytvoření. Je vhodné nástroj pro přístup k tyto protokoly toku uložit do účtu úložiště Microsoft Azure Storage Explorer, kterou můžete stáhnout tady:  http://storageexplorer.com/
 
 Pokud je zadaný účet úložiště, soubory zachytávání paketů ukládají na účet úložiště v následujícím umístění:
 

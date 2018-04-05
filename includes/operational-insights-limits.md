@@ -1,27 +1,40 @@
-
->[!NOTE]
->Pro Log Analytics se dřív používal název Operational Insights.
->
->
-
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: log-analytics
+author: MGoedtel
+ms.service: log-analytics
+ms.topic: include
+ms.date: 03/29/2018
+ms.author: magoedte
+ms.custom: include file
+ms.openlocfilehash: 29256b3bcfedb7fe5045ff4c6c3842eb25e00a28
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/03/2018
+---
 Pro prostředky Log Analytics na jedno předplatné platí tato omezení:
 
 | Prostředek | Výchozí omezení | Komentáře
 | --- | --- | --- |
 | Počet bezplatných pracovních prostorů na předplatné | 10 | Toto omezení nejde zvýšit. |
-| Počet placených pracovních prostorů na předplatné | Není dostupné. | Jste omezení počtem prostředků v rámci skupiny prostředků a počtem skupin prostředků na předplatné. | 
+| Počet placených pracovních prostorů na předplatné | neuvedeno | Jste omezení počtem prostředků v rámci skupiny prostředků a počtem skupin prostředků na předplatné. | 
 
+>[!NOTE]
+>Od verze 2. dubna 2018, budou automaticky používat nové pracovní prostory v nové předplatné *za GB* ceny plánu.  Pro existující odběry vytvořil před duben 2, nebo předplatné, které bylo vázané na existující EA zápisu můžete pokračovat v výběru mezi tři cenové úrovně pro nové pracovní prostory. 
+>
 
 Na pracovní prostory Log Analytics se vztahují na následující omezení:
 
-|  | Free | Standard | Premium | Standalone | OMS |
-| --- | --- | --- | --- | --- | --- |
-| Objem shromážděných dat za den |500 MB<sup>1</sup> |Žádný |Žádný | Žádný | Žádný
-| Doba uchování dat |7 dní |1 měsíc |12 měsíců | 1 měsíc<sup>2</sup> | 1 měsíc<sup>2</sup>|
+|  | Free | Standard | Premium | Standalone | OMS | za GB |
+| --- | --- | --- | --- | --- | --- |--- |
+| Objem shromážděných dat za den |500 MB<sup>1</sup> |Žádné |Žádný | Žádný | Žádný | Žádný
+| Doba uchování dat |7 dní |1 měsíc |12 měsíců | 1 měsíc<sup>2</sup> | 1 měsíc<sup>2</sup>| 1 měsíc<sup>2</sup>|
 
 <sup>1</sup> Když zákazník dosáhne svého denního limitu přenosu dat (500 MB), analýza dat se zastaví a bude pokračovat na začátku dalšího dne. Den vychází ze standardu UTC.
 
-<sup>2</sup> Dobu uchování dat pro cenové plány Standalone a OMS je možné prodloužit na 730 dnů.
+<sup>2</sup> období uchovávání dat pro samostatnou, OMS a GB za cenových plánů je možné zvýšit na 730 dnů.
 
 | Kategorie | Omezení | Komentáře
 | --- | --- | --- |

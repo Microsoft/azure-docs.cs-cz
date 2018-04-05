@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 13/22/2018
 ms.author: mikeray
-ms.openlocfilehash: faa849fc53aa15a47e850a20531c4fa30544f750
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 425310f50cebc920a71090d2017dca2a6c135991
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace Instance clusteru převzetí služeb při selhání systému SQL Server na virtuálních počítačích Azure
 
@@ -375,27 +375,13 @@ Pokud chcete vytvořit pro vyrovnávání zatížení:
 
 1. Vraťte se na skupiny prostředků Azure s virtuálními počítači a vyhledejte nové nástroje pro vyrovnávání zatížení. Možná budete muset aktualizovat zobrazení ve skupině prostředků. Klikněte na nástroje pro vyrovnávání zatížení.
 
-1. V okně nástroje pro vyrovnávání zatížení, klikněte na **back-endové fondy**.
+1. Klikněte na tlačítko **back-endové fondy** a klikněte na tlačítko **+ přidat** přidat fond back-end.
 
-1. Klikněte na tlačítko **+ přidat** přidat fond back-end.
+1. Fond back-end přidružení skupiny dostupnosti, která obsahuje virtuální počítače.
 
-1. Zadejte název pro fond back-end.
+1. V části **cíle konfigurace protokolu IP sítě**, zkontrolujte **virtuální počítač** a zvolit virtuální počítače, které se budou podílet jako uzly clusteru. Nezapomeňte zahrnout všechny virtuální počítače, které budou hostiteli FCI. 
 
-1. Klikněte na tlačítko **přidat virtuální počítač**.
-
-1. Na **vyberte virtuální počítače** okně klikněte na tlačítko **zvolit skupinu dostupnosti**.
-
-1. Vyberte, že dostupnost nastavit, že jste umístili virtuální počítače v systému SQL Server.
-
-1. Na **vyberte virtuální počítače** okně klikněte na tlačítko **zvolit virtuální počítače**.
-
-   Portálu Azure by měl vypadat jako na následujícím obrázku:
-
-   ![CreateLoadBalancerBackEnd](./media/virtual-machines-windows-portal-sql-create-failover-cluster/33-load-balancer-back-end.png)
-
-1. Klikněte na tlačítko **vyberte** na **vyberte virtuální počítače** okno.
-
-1. Klikněte na tlačítko **OK** dvakrát.
+1. Klikněte na tlačítko **OK** vytvoření fondu back-end.
 
 ### <a name="configure-a-load-balancer-health-probe"></a>Konfigurace stavu sondu nástroje pro vyrovnávání zatížení.
 

@@ -43,11 +43,12 @@
 ## Použití MXChip IoT DevKit
 ### [Překlad hlasové zprávy pomocí Azure Cognitive Services](iot-hub-arduino-iot-devkit-az3166-translator.md)
 ### [Načtení zprávy Twitteru s využitím Azure Functions](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
+### [Monitorování magnetických senzorů a odesílání e-mailových oznámení pomocí Azure Functions](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
 # Návody
 ## Plánování
 ### [Porovnání služeb IoT Hub a Event Hubs](iot-hub-compare-event-hubs.md)
-### [Škálování vlastního řešení](iot-hub-scaling.md)
+### [Výběr správné úrovně](iot-hub-scaling.md)
 ### [Vysoká dostupnost a zotavení po havárii](iot-hub-ha-dr.md)
 ### [Podpora dalších protokolů](iot-hub-protocol-gateway.md)
 ### [Porovnání směrování událostí a zpráv](iot-hub-event-grid-routing-comparison.md)
@@ -147,6 +148,7 @@
 ### [Monitorování s diagnostikou](iot-hub-monitor-resource-health.md)
 #### [Migrace do nastavení diagnostiky](iot-hub-migrate-to-diagnostics-settings.md)
 #### [Monitorování operací](iot-hub-operations-monitoring.md)
+### [Upgrade IoT Hubu](iot-hub-upgrade.md)
 ### [Metriky využití](iot-hub-metrics.md)
 ### [Hromadná správa zařízení IoT](iot-hub-bulk-identity-mgmt.md)
 ### [Konfigurace filtrování IP](iot-hub-ip-filtering.md)

@@ -1,6 +1,6 @@
 ---
-title: "Azure spravované aplikace PublicIpAddressCombo elementu uživatelského rozhraní | Microsoft Docs"
-description: "Popisuje element Microsoft.Network.PublicIpAddressCombo uživatelského rozhraní pro spravované aplikace Azure"
+title: Azure elementu PublicIpAddressCombo uživatelského rozhraní | Microsoft Docs
+description: Popisuje element Microsoft.Network.PublicIpAddressCombo uživatelského rozhraní pro portál Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 990b84cf0df74b7b08a5fa105c2c2213aa251f9d
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: bced85abaf24beb0997ec906a68e5947f0e67cca
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Element Microsoft.Network.PublicIpAddressCombo uživatelského rozhraní
-Skupina ovládacích prvků pro výběr nový nebo existující veřejnou IP adresu. Pomocí tohoto prvku při [vytváření spravovaných aplikací Azure](publish-service-catalog-app.md).
+Skupina ovládacích prvků pro výběr nový nebo existující veřejnou IP adresu.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 ![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
@@ -44,7 +44,7 @@ Skupina ovládacích prvků pro výběr nový nebo existující veřejnou IP adr
   },
   "defaultValue": {
     "publicIpAddressName": "ip01",
-    "domainNameLabel": "foobar"
+    "domainNameLabel": "mydomain"
   },
   "constraints": {
     "required": {
@@ -79,7 +79,7 @@ Pokud uživatel vybere nový nebo existující IP adresu, se předpokládá, že
 {
   "name": "ip01",
   "resourceGroup": "rg01",
-  "domainNameLabel": "foobar",
+  "domainNameLabel": "mydomain",
   "publicIPAllocationMethod": "Dynamic",
   "newOrExistingOrNone": "new"
 }
@@ -88,6 +88,5 @@ Pokud uživatel vybere nový nebo existující IP adresu, se předpokládá, že
 - Když `options.hideDomainNameLabel` je zadán jako **true**, `domainNameLabel` není deklarován.
 
 ## <a name="next-steps"></a>Další postup
-* Úvod do spravovaných aplikací, najdete v části [Azure spravovaných aplikací – přehled](overview.md).
 * Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
 * Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](create-uidefinition-elements.md).
