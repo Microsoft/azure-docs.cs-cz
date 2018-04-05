@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: ff4b587790872511c7b545233685f5b3ae068291
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 072ce2952e3cdea47b02ef7656ca67d4bc0ae8f1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API pro vlastní události a metriky
 
@@ -1113,7 +1113,7 @@ Na webových stránkách můžete ho nastavit ze stavu webový server, než kód
     }({instrumentationKey:  
       // Generate from server property:
       @Microsoft.ApplicationInsights.Extensibility.
-         TelemetryConfiguration.Active.InstrumentationKey"
+         TelemetryConfiguration.Active.InstrumentationKey;
     }) // ...
 
 
@@ -1147,7 +1147,7 @@ Chcete-li určit, jak dlouho se data ukládají najdete v tématu [uchovávání
 * [Rozhraní ASP.NET – reference](https://msdn.microsoft.com/library/dn817570.aspx)
 * [Referenční informace sady Java](http://dl.windowsazure.com/applicationinsights/javadoc/)
 * [Referenční dokumentace technologie JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-* [Android SDK](https://github.com/Microsoft/ApplicationInsights-Android)
+* [Sada SDK pro Android](https://github.com/Microsoft/ApplicationInsights-Android)
 * [Sada SDK pro iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
 
 ## <a name="sdk-code"></a>Kód SDK
@@ -1162,7 +1162,7 @@ Chcete-li určit, jak dlouho se data ukládají najdete v tématu [uchovávání
 ## <a name="questions"></a>Otázky
 * *Jaké výjimky může vyvolat volání Track_()?*
 
-    Žádné Nemusíte zabalení je v klauzulích try-catch. Pokud sada SDK zaznamená problémy, bude protokolování zpráv ve výstupu konzoly ladění a--zprávy získat prostřednictvím – ve vyhledávání diagnostiky.
+    Žádné. Nemusíte zabalení je v klauzulích try-catch. Pokud sada SDK zaznamená problémy, bude protokolování zpráv ve výstupu konzoly ladění a--zprávy získat prostřednictvím – ve vyhledávání diagnostiky.
 * *Je k dispozici rozhraní REST API k získání dat z portálu?*
 
     Ano, [rozhraní API pro přístup k datům](https://dev.applicationinsights.io/). Zahrnout další způsoby, jak extrahovat data [exportovat z analýz do Power BI](app-insights-export-power-bi.md) a [průběžné export](app-insights-export-telemetry.md).

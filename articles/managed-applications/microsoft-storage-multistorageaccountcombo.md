@@ -1,6 +1,6 @@
 ---
-title: "Azure spravované aplikace MultiStorageAccountCombo elementu uživatelského rozhraní | Microsoft Docs"
-description: "Popisuje element Microsoft.Storage.MultiStorageAccountCombo uživatelského rozhraní pro spravované aplikace Azure"
+title: Azure elementu MultiStorageAccountCombo uživatelského rozhraní | Microsoft Docs
+description: Popisuje element Microsoft.Storage.MultiStorageAccountCombo uživatelského rozhraní pro portál Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: e1dda7917988146807ca6cfab10a3a4eac0b7bb2
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: c395c076a4910e124c1b93ebc61b5e491b2b53ff
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Element Microsoft.Storage.MultiStorageAccountCombo uživatelského rozhraní
-Skupina ovládacích prvků pro vytváření více účtů úložiště, jejichž názvy začínají s předponou běžné. Pomocí tohoto prvku při [vytváření spravovaných aplikací Azure](publish-service-catalog-app.md).
+Skupina ovládacích prvků pro vytváření více účtů úložiště, jejichž názvy začínají s předponou běžné.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 ![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
@@ -56,7 +56,7 @@ Skupina ovládacích prvků pro vytváření více účtů úložiště, jejich�
 - Názvy účtů úložiště jsou generovány lexicographically podle `count`. Například pokud `count` je 10 a názvy účtů úložiště končit celá čísla 2 číslice (01, 02, 03, atd.).
 - Výchozí hodnota pro `defaultValue.prefix` je **null**a pro `defaultValue.type` je **Premium_LRS**.
 - Žádný typ, nebyly zadány v `constraints.allowedTypes` skryt a jakýmikoli nebyly zadány v `constraints.excludedTypes` se zobrazí.
-`constraints.allowedTypes`a `constraints.excludedTypes` obě jsou nepovinné, ale nelze používat současně.
+`constraints.allowedTypes` a `constraints.excludedTypes` obě jsou nepovinné, ale nelze používat současně.
 - Kromě vytváření názvy účtů úložiště `count` slouží k nastavení odpovídající multiplikátor pro element. Podporuje statické hodnoty, jako je třeba **2**, nebo jako dynamické hodnoty z jiný element `[steps('step1').storageAccountCount]`. Výchozí hodnota je **1**.
 
 ## <a name="sample-output"></a>Ukázkový výstup
@@ -69,7 +69,6 @@ Skupina ovládacích prvků pro vytváření více účtů úložiště, jejich�
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
-* Úvod do spravovaných aplikací, najdete v části [Azure spravovaných aplikací – přehled](overview.md).
+## <a name="next-steps"></a>Další postup
 * Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
 * Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](create-uidefinition-elements.md).

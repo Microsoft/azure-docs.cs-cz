@@ -1,11 +1,11 @@
 ---
-title: "Odeslání souborů ze zařízení do služby Azure IoT Hub s uzlem | Microsoft Docs"
-description: "Postup nahrání souborů ze zařízení do cloudu pomocí zařízení Azure IoT SDK pro Node.js. Odeslané soubory jsou uloženy v kontejneru objektů blob úložiště Azure."
+title: Odeslání souborů ze zařízení do služby Azure IoT Hub s uzlem | Microsoft Docs
+description: Postup nahrání souborů ze zařízení do cloudu pomocí zařízení Azure IoT SDK pro Node.js. Odeslané soubory jsou uloženy v kontejneru objektů blob úložiště Azure.
 services: iot-hub
 documentationcenter: nodejs
 author: msebolt
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
 ms.devlang: node
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: v-masebo
-ms.openlocfilehash: cff0f2fc664e0c09bfa1f8f0e0d488a049a6f448
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: dd6f25173806d6e420bfeebaae3f81e39f8fd97f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Odeslání souborů ze zařízení do cloudu s centrem IoT
 
@@ -29,7 +29,7 @@ V tomto kurzu vychází kód [odesílání zpráv typu Cloud-zařízení s centr
 - Bezpečně zadejte zařízení s Azure blob identifikátor URI pro nahrání souboru.
 - Oznámení o odeslání souboru IoT Hub použijte k aktivaci zpracování souboru ve vaší aplikaci back-end.
 
-[Začínáme se službou IoT Hub](iot-hub-node-node-getstarted.md) a [odesílání zpráv typu Cloud-zařízení s centrem IoT](iot-hub-node-node-c2d.md) kurzy zobrazit základních funkcí zařízení cloud a z cloudu do zařízení zasílání zpráv služby IoT Hub. Ale v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně malý zprávy typu zařízení cloud, které IoT Hub přijímá. Příklad:
+[Začínáme se službou IoT Hub](iot-hub-node-node-getstarted.md) kurz představuje základní funkce zasílání zpráv typu zařízení cloud IoT Hub. Ale v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně malý zprávy typu zařízení cloud, které IoT Hub přijímá. Příklad:
 
 * Velkých souborů, které obsahují Image
 * Videa

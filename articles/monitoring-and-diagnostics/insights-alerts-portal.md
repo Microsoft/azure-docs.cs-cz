@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
-ms.openlocfilehash: 4acf1f549a6c901fb0b772c4591f1f35d61365ad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b0d938112aaea4d86dd539b53a1749cc800607a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Vytvoření klasického metriky výstrahy v Azure monitorování pro služby Azure - portálu Azure
 > [!div class="op_single_selector"]
@@ -31,25 +31,25 @@ ms.lasthandoff: 03/23/2018
 ## <a name="overview"></a>Přehled
 
 > [!NOTE]
-> Tento článek popisuje postup vytvoření starší metriky výstrahy. Azure nyní monitorování podporuje novější, lepší metriky výstrahy. Tyto výstrahy můžete sledovat více metriky a povolit pro výstrahy na dimenzí metriky. Další informace o [téměř v reálném čase metrika výstrahy](monitoring-near-real-time-metric-alerts.md).
+> Tento článek popisuje postup vytvoření starší classic metriky výstrahy. Azure nyní podporuje monitorování [novější metriky výstrahy](monitoring-near-real-time-metric-alerts.md). 
 >
 >
 
-Tento článek ukazuje, jak nastavit Azure metriky výstrah pomocí portálu Azure. 
+Tento článek ukazuje, jak nastavit classic Azure metriky výstrah pomocí portálu Azure. 
 
 Můžete zobrazit upozornění na základě monitorování metriky pro nebo událostí na služeb Azure.
 
 * **Metriky hodnoty** -výstrahy aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu přiřadíte v obou směrech. To znamená, aktivuje obě při nejprve je splněna podmínka, a pak později, pokud podmínka je už plněny.    
 * **Aktivity protokolu události** -výstrahu můžete aktivovat pro *každých* události nebo pouze tehdy, když dojde k určité události. Další informace o [aktivity protokolu výstrahy](monitoring-activity-log-alerts.md).
 
-Můžete nakonfigurovat metriky výstrahu při aktivaci, proveďte následující:
+Můžete nakonfigurovat classic metriky výstrahu při aktivaci, proveďte následující:
 
 * odesílat oznámení e-mailu Správce služeb a spolusprávci
 * Odeslat e-mail na další e-mailů, které zadáte.
 * Volat webhook, jehož
 * Spusťte provádění runbook služby Azure (pouze z portálu Azure)
 
-Můžete nakonfigurovat a získat informace o použití metriky pravidla výstrah
+Můžete nakonfigurovat a získat informace o classic metriky pravidla výstrah pomocí
 
 * [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
@@ -63,7 +63,7 @@ Můžete nakonfigurovat a získat informace o použití metriky pravidla výstra
 
     ![Monitorování](./media/insights-alerts-portal/AlertRulesButton.png)
 
-3. Vyberte **přidat metriky upozornění** příkazů a vyplňte příslušná pole.
+3. Vyberte **přidat metriky upozornění (klasické)** příkazů a vyplňte příslušná pole.
 
     ![Přidat výstrahu](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 

@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 03/15/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 76e7be62caae7e33caefc3f90a5e57c5f71a31d3
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: f9cc4f900428e1337fc9b9d428879d6527c60017
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Volitelné deklarace identity ve službě Azure AD (preview)
 
@@ -49,7 +49,7 @@ Níže jsou uvedeny sadu volitelné deklarací identity ve výchozím nastavení
 
 **Tabulka 2: Sada standardní volitelné deklarací identity**
 
-| Jméno                     | Popis                                                                                                                                                                                     | Typ tokenu | Typ uživatele | Poznámky                                                                                                                                                                                                                                                                                   |
+| Název                     | Popis                                                                                                                                                                                     | Typ tokenu | Typ uživatele | Poznámky                                                                                                                                                                                                                                                                                   |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `auth_time`                | Čas při poslední ověřeného uživatele.  Specifikace OpenID Connect najdete v tématu.                                                                                                                                | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `tenant_region_scope`      | Oblast prostředků klienta                                                                                                                                                                   | JWT        |           |                                                                                                                                                                                                                                                                                         |
@@ -65,17 +65,13 @@ Níže jsou uvedeny sadu volitelné deklarací identity ve výchozím nastavení
 | `fwd`                      | IP adresa.  Přidá původní adresu IPv4 klienta, který (uvnitř virtuální sítě)                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `ctry`                     | Země uživatele                                                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `tenant_ctry`              | Země prostředků klienta                                                                                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `is_device_known`          | Označuje, zda je zařízení připojené k pracovní ploše. Související s zásady podmíněného přístupu                                                                                                                 | SAML       |           | Pro tokeny Jwt konvergované do signin_state                                                                                                                                                                                                                                                   |
-| `is_device_managed`        | Označuje, jestli má zařízení MDM, které jsou nainstalované. Týkající se zásad podmíněného přístupu.                                                                                                                  | SAML       |           | Pro tokeny Jwt konvergované do signin_state                                                                                                                                                                                                                                                   |
-| `is_device_compliant`      | Označuje, že MDM bylo zjištěno, že je zařízení kompatibilní se zásadami zabezpečení zařízení organizace.                                                                                  | SAML       |           | Pro tokeny Jwt konvergované do signin_state                                                                                                                                                                                                                                                   |
-| `kmsi`                     | Označuje, pokud uživatel má zvolené možnosti zachovat mi přihlášené.                                                                                                                                    | SAML       |           | Pro tokeny Jwt konvergované do signin_state                                                                                                                                                                                                                                                   |
 | `upn`                      | UserPrincipalName deklarace identity.  I když tento požadavek je automaticky zahrnuty, můžete je zadat jako deklaraci identity volitelné připojit další vlastnosti, jimiž upravíte jeho chování v případě, že uživatel guest. | JWT, SAML  |           | Další vlastnosti: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
 ### <a name="v20-optional-claims"></a>Volitelné deklarace identity v2.0
 Tyto deklarace identity jsou vždy součástí tokeny verze 1.0, ale jsou odebrány z v2.0 tokenů, pokud požadovaný.  Tyto deklarace platí pouze pro tokeny Jwt (ID tokeny a přístupové tokeny).  
 
 **Tabulka 3: Pouze V2.0 volitelné deklarace identity**
 
-| Deklarace identity JWT     | Jméno                            | Popis                                                                                                                    | Poznámky |
+| Deklarace identity JWT     | Název                            | Popis                                                                                                                    | Poznámky |
 |---------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------|
 | `ipaddr`      | IP adresa                      | IP adresa klienta se přihlásili.                                                                                      |       |
 | `onprem_sid`  | Identifikátor zabezpečení na místě |                                                                                                                                |       |
@@ -161,7 +157,7 @@ Deklaruje volitelné deklarace požadovanou aplikaci. Aplikace můžete nakonfig
 
 **Tabulka 5: Vlastnosti typu OptionalClaims**
 
-| Jméno        | Typ                       | Popis                                           |
+| Název        | Typ                       | Popis                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Kolekce (OptionalClaim) | Volitelné deklarace identity, vrátí se v tokenu JWT ID.     |
 | `accessToken` | Kolekce (OptionalClaim) | Volitelné deklarace identity vrátí přístupový token JWT. |
@@ -175,7 +171,7 @@ Pokud podporovaná konkrétní deklaraci identity, můžete také upravit chová
 
 **Tabulka 6: Vlastnosti typu OptionalClaim**
 
-| Jméno                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
+| Název                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Název volitelné deklarace identity.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Zdroj (directory object) deklarace identity. Existují předdefinované deklarace identity a uživatelem definované z vlastnosti rozšíření. Pokud je zdroj hodnota null, deklarace identity je předdefinované volitelné deklarace identity. Pokud je hodnota zdroj uživatele, vlastnost name hodnotu vlastnosti rozšíření z objektu uživatele. |

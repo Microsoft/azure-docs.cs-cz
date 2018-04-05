@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Vlastní instalace | Dokumentace Microsoftu"
-description: "Tento dokument podrobně popisuje možnosti vlastní instalace Azure AD Connect. Použijte tyto pokyny, pokud chcete nainstalovat službu Active Directory přes Azure AD Connect."
+title: 'Azure AD Connect: Vlastní instalace | Microsoft Docs'
+description: Tento dokument podrobně popisuje možnosti vlastní instalace Azure AD Connect. Použijte tyto pokyny, pokud chcete nainstalovat službu Active Directory přes Azure AD Connect.
 services: active-directory
-keywords: "co je Azure AD Connect, instalace služby Active Directory, požadované součásti služby Azure AD"
-documentationcenter: 
+keywords: co je Azure AD Connect, instalace služby Active Directory, požadované součásti služby Azure AD
+documentationcenter: ''
 author: billmath
 manager: mtillman
 ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/15/2018
+ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: ee16fe9e15e52fea482e0db34857780449c2ccb4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 680e70ce572e182aa35c736f61036415d8714ea0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](active-directory-aadconnect-get-started-express.md) nevyhovuje nasazení nebo topologii.
@@ -49,7 +49,7 @@ Po instalaci požadovaných součástí budete vyzváni, abyste vybrali metodu j
 
 | Možnost jednotného přihlašování | Popis |
 | --- | --- |
-| Synchronizace hodnoty hash hesel |Uživatelé se můžou přihlašovat ke cloudovým službám Microsoft, například Office 365, stejným heslem jako v místní síti. Hesla uživatelů se synchronizují do Azure AD, protože ověření a hash hesla probíhá v cloudu. Další informace najdete v tématu [Synchronizace hodnoty hash hesel](active-directory-aadconnectsync-implement-password-synchronization.md). |
+| Synchronizace hodnot hash hesel |Uživatelé se můžou přihlašovat ke cloudovým službám Microsoft, například Office 365, stejným heslem jako v místní síti. Hesla uživatelů se synchronizují do Azure AD, protože ověření a hash hesla probíhá v cloudu. Další informace najdete v tématu [Synchronizace hodnot hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md). |
 |Předávací ověřování|Uživatelé se můžou přihlašovat ke cloudovým službám Microsoft, například Office 365, stejným heslem jako v místní síti.  Heslo uživatele se předává k ověření do místního kontroleru domény Active Directory.
 | Federace se službou AD FS |Uživatelé se můžou přihlašovat ke cloudovým službám Microsoft, například Office 365, stejným heslem jako v místní síti.  Uživatelé jsou k přihlášení přesměrováni do místní instance služby AD FS a ověření probíhá místně. |
 | Nekonfigurovat |Nenainstaluje a nenakonfiguruje se žádná funkce přihlašování uživatelů. Tuto možnost zvolte, pokud už využíváte federační server třetí strany nebo jiné existující řešení. |
@@ -165,7 +165,7 @@ Na této obrazovce můžete vybrat volitelné funkce pro konkrétní scénáře.
 | Hybridní nasazení systému Exchange |Funkce Hybridní nasazení systému Exchange umožňuje souběžnou existenci poštovních schránek serveru Exchange jak místně, tak v Office 365. Azure AD Connect synchronizuje konkrétní sadu [atributů](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) z Azure AD zpátky do místního adresáře. |
 | Veřejné složky e-mailu Exchange | Funke veřejné složky e-mailu Exchange umožňuje synchronizaci pro e-mail povolených objektů veřejných složek z místní služby Active Directory do Azure AD. |
 | Filtrování aplikací a atributů Azure AD |Když zapnete filtrování aplikací a atributů Azure AD, můžete přizpůsobit sadu synchronizovaných atributů. Tato možnost rozšíří průvodce o další dvě stránky konfigurace. Další informace najdete v tématu [Filtrování aplikací a atributů Azure AD](#azure-ad-app-and-attribute-filtering). |
-| Synchronizace hesel |Tuto možnost můžete povolit, pokud jste jako řešení přihlašování vybrali federaci. Synchronizaci hesel je pak možné použít jako záložní možnost. Další informace najdete v tématu [Synchronizace hesel](active-directory-aadconnectsync-implement-password-synchronization.md). </br></br>Pokud jste vybrali předávací ověřování, lze tuto možnost také povolit pro zajištění podpory starších klientů a jako záložní možnost. Další informace najdete v tématu [Synchronizace hesel](active-directory-aadconnectsync-implement-password-synchronization.md).|
+| Synchronizace hodnot hash hesel |Tuto možnost můžete povolit, pokud jste jako řešení přihlašování vybrali federaci. Synchronizaci hodnot hash hesel je pak možné použít jako záložní možnost. Další informace najdete v tématu [Synchronizace hodnot hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md). </br></br>Pokud jste vybrali předávací ověřování, lze tuto možnost také povolit pro zajištění podpory starších klientů a jako záložní možnost. Další informace najdete v tématu [Synchronizace hodnot hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md).|
 | Zpětný zápis hesla |Když zapnete zpětný zápis hesla, změny hesel vzniklé ve službě Azure AD se zapíšou zpátky do místního adresáře. Další informace najdete v tématu [Začínáme se správou hesel](../active-directory-passwords-getting-started.md). |
 | Zpětný zápis skupin |Pokud použijete funkci **Skupiny Office 365**, tyto skupiny můžou být zastoupeny v místní službě Active Directory. Tato možnost je dostupná jenom v případě, že se v místní službě Active Directory nachází Exchange. Další informace najdete v tématu [Zpětný zápis skupin](active-directory-aadconnect-feature-preview.md#group-writeback). |
 | Zpětný zápis zařízení |Umožňuje zpětný zápis objektů zařízení ve službě Azure AD do místní služby Active Directory pro potřeby podmíněného přístupu. Další informace najdete v tématu [Povolení zpětného zápisu zařízení v Azure AD Connect](active-directory-aadconnect-feature-device-writeback.md). |

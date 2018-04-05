@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 721799703923339d397113fc278cdeb6c6dbb88f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 245bd348b9eb5b434360d734e219efd7c663a406
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -60,7 +60,7 @@ Plánu podnikového způsobuje poplatků za každý den, které každý uzel web
 
 ## <a name="how-much-is-it-costing"></a>Kolik je je výpočet nákladů?
 
-* Otevřete **funkce + ceny** stránky v prostředek Application Insights. Je graf posledního použití. Svazek cap data, můžete nastavit, pokud chcete.
+* Otevřete **využití a odhadované náklady na stránce** stránky v prostředek Application Insights. Je graf posledního použití. Svazek cap data, můžete nastavit, pokud chcete.
 * Otevřete [Azure fakturace okno](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) zobrazíte vaší faktur mezi všechny prostředky.
 
 ## <a name="q14"></a>Co Application Insights v projektu změnit?

@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 95ca66f34548f86e25c1e7af331fa88797847906
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 11c737adb6578437a3708bb97397a24114e39585
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>Vývoj a nasazení modul IoT Edge C# na simulovaného zařízení – náhled
 
@@ -223,6 +223,7 @@ Následující kroky zobrazení můžete jak vytvořit modul IoT Edge založené
    ```csh/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
+   Uživatelské jméno, heslo a přihlášení serveru pro použití v tomto příkazu najdete na [portál Azure] (https://portal.azure.com). Z **všechny prostředky**, klikněte na dlaždici pro váš kontejner Azure registru otevřete jeho vlastnosti a pak klikněte na **přístupové klíče**. Zkopírujte hodnoty v **uživatelské jméno**, **heslo**, a **přihlášení na server** pole. 
 
 2. V Průzkumníku VS Code, klikněte pravým tlačítkem myši **module.json** souboru a klikněte na tlačítko **sestavení a Push IoT Edge modulu Docker image**. Do pole automaticky otevírané okno rozevírací seznam v horní části okna VS Code vyberte kontejner platformu, buď **amd64** pro kontejner Linux nebo **windows amd64** kontejneru systému Windows. VS Code pak sestavení kódu, containerize `FilterModule.dll` a poslat ho do kontejneru registru, který jste zadali.
 

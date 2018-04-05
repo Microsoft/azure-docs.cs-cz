@@ -1,11 +1,11 @@
 ---
-title: "Příručka Začínáme k Azure Mobile Engagement s osvědčenými postupy"
-description: "Příručka Začínáme k Azure Mobile Engagement s osvědčenými postupy k zahájení práce"
+title: Příručka Začínáme k Azure Mobile Engagement s osvědčenými postupy
+description: Příručka Začínáme k Azure Mobile Engagement s osvědčenými postupy k zahájení práce
 services: mobile-engagement
 documentationcenter: mobile
 author: wesmc7777
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: dfce1183-6398-466e-aa7e-ed702fb52818
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 0cb54f6c4b84597fbc21fa691f88f6f7a37beedd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf9dc5febeae27473d2adb8a024536b945bb9d13
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement---getting-started-guide-with-best-practices"></a>Azure Mobile Engagement – příručka Začínáme s osvědčenými postupy
+> [!IMPORTANT]
+> Azure Mobile Engagement se vyřadí z provozu 31. 3. 2018. Tato stránka bude odstraněna krátce potom.
+> 
+
 ## <a name="overview"></a>Přehled
 **Mobilní obrazovka je velmi frekventované místo:** Studie z roku 2013 zjistila, že na průměrném mobilním zařízení je nainstalováno 27 aplikací. Uživatelé obvykle stráví používáním svých aplikací asi 30 hodin měsíčně. Většina této doby připadá na používání sociálních sítí a hraní (asi 20 hodin). V roce 2014 si mohli uživatelé na trhu aplikací pro Android vybírat z více než 1,5 milionu produktů. V Apple App Storu pak bylo k dispozici asi 1,2 milionu aplikací. Popularita mobilních aplikací stále roste a vývojáři neustále uvádějí na trh nové mobilní aplikace. 
 

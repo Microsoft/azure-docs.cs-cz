@@ -1,6 +1,6 @@
 ---
-title: "Skupiny dostupnosti SQL serveru – virtuální počítače Azure - Prereqs | Microsoft Docs"
-description: "Tento kurz ukazuje, jak konfigurovat požadavky pro vytvoření skupiny dostupnosti SQL serveru Always On na virtuálních počítačích Azure."
+title: Skupiny dostupnosti SQL serveru – virtuální počítače Azure - Prereqs | Microsoft Docs
+description: Tento kurz ukazuje, jak konfigurovat požadavky pro vytvoření skupiny dostupnosti SQL serveru Always On na virtuálních počítačích Azure.
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -14,13 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/09/2017
+ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 85ad53f0b7b4b14784bb0755ee22763d124e63ba
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f2a0af65af068f3a78a08e46e0e42caefd87d7b1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Splnit požadavky pro vytváření skupin dostupnosti Always On na virtuálních počítačích Azure
 
@@ -42,7 +42,7 @@ Potřebujete mít účet Azure. Můžete [otevřít bezplatný účet Azure](/pr
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 1. Přihlaste se k [portálu Azure](http://portal.azure.com).
-2. Klikněte na tlačítko  **+**  k vytvoření nového objektu na portálu.
+2. Klikněte na tlačítko **+** k vytvoření nového objektu na portálu.
 
    ![Nový objekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
 
@@ -51,9 +51,9 @@ Potřebujete mít účet Azure. Můžete [otevřít bezplatný účet Azure](/pr
    ![Skupina prostředků](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. Klikněte na tlačítko **skupiny prostředků**.
 5. Klikněte na možnost **Vytvořit**.
-6. Na **skupinu prostředků** okno v části **název skupiny prostředků**, zadejte název pro skupinu prostředků. Můžete například zadat **sql-ha-rg**.
+6. V části **název skupiny prostředků**, zadejte název pro skupinu prostředků. Můžete například zadat **sql-ha-rg**.
 7. Pokud máte víc předplatných Azure, ověřte, že odběr je předplatné Azure, kterou chcete vytvořit skupiny dostupnosti v.
-8. Vyberte umístění. Umístění je oblast Azure, kde chcete vytvořit skupinu dostupnosti. V tomto kurzu vytvoříme sestavení všechny prostředky v jednom místě, Azure.
+8. Vyberte umístění. Umístění je oblast Azure, kde chcete vytvořit skupinu dostupnosti. Tento článek vytvoří všechny prostředky v jednom místě, Azure.
 9. Ověřte, že **připnout na řídicí panel** je zaškrtnuté. Toto volitelné nastavení umístí zástupce pro skupinu prostředků na řídicím panelu portálu Azure.
 
    ![Skupina prostředků](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
@@ -69,14 +69,14 @@ Toto řešení využívá jednu virtuální síť se dvěma podsítěmi. [Přehl
 
 Vytvoření virtuální sítě:
 
-1. Na portálu Azure ve vaší skupině prostředků, klikněte na tlačítko **+ přidat**. Azure otevře **všechno, co** okno.
+1. Na portálu Azure ve vaší skupině prostředků, klikněte na tlačítko **+ přidat**. 
 
    ![Nová položka](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/02-newiteminrg.png)
 2. Vyhledejte **virtuální sítě**.
 
      ![Hledání virtuální sítě](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/04-findvirtualnetwork.png)
 3. Klikněte na tlačítko **virtuální síť**.
-4. Na **virtuální síť** okně klikněte na tlačítko **Resource Manager** modelu nasazení a pak klikněte na tlačítko **vytvořit**.
+4. Na **virtuální síť**, klikněte na tlačítko **Resource Manager** modelu nasazení a pak klikněte na tlačítko **vytvořit**.
 
     Následující tabulka uvádí nastavení virtuální sítě:
 
@@ -106,14 +106,14 @@ Nové virtuální sítě obsahuje jednu podsíť, s názvem **správce**. Řadi�
 1. Na řídicím panelu, klikněte na skupinu prostředků, kterou jste vytvořili, **SQL-HA-RG**. Vyhledejte ve skupině prostředků v síti **prostředky**.
 
     Pokud **SQL-HA-RG** není viditelná, klepněte na tlačítko **skupiny prostředků** a filtrování podle názvu skupiny prostředků.
-2. Klikněte na tlačítko **autoHAVNET** v seznamu prostředků. Azure se otevře okno Konfigurace sítě.
-3. Na **autoHAVNET** okna virtuální sítě v části **nastavení** , klikněte na tlačítko **podsítě**.
+2. Klikněte na tlačítko **autoHAVNET** v seznamu prostředků. 
+3. Na **autoHAVNET** virtuální sítě, v části **nastavení** , klikněte na tlačítko **podsítě**.
 
     Všimněte si, podsítě, které jste už vytvořili.
 
    ![Konfigurace virtuální sítě](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/07-addsubnet.png)
 5. Vytvořte druhou podsíť. Klikněte na tlačítko **+ podsítě**.
-6. Na **přidat podsíť** okně nakonfigurovat podsíť zadáním **sqlsubnet** pod **název**. Azure automaticky určuje platná **rozsahu adres**. Ověřte, zda tento rozsah adres má minimálně 10 adresy v ní. V produkčním prostředí může vyžadovat další adresy.
+6. Na **přidat podsíť**, nakonfigurujte podsíť zadáním **sqlsubnet** pod **název**. Azure automaticky určuje platná **rozsahu adres**. Ověřte, zda tento rozsah adres má minimálně 10 adresy v ní. V produkčním prostředí může vyžadovat další adresy.
 7. Klikněte na **OK**.
 
     ![Konfigurace virtuální sítě](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/08-configuresubnet.png)
@@ -157,9 +157,9 @@ Po vytvoření sítě, podsítě, skupiny dostupnosti a k straně Internetu pro 
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>Vytváření virtuálních počítačů pro řadiče domény
 Chcete-li vytvořit a nakonfigurovat řadiče domény, vraťte se k **SQL-HA-RG** skupinu prostředků.
 
-1. Klikněte na tlačítko **Add** (Přidat). **Všechno, co** otevře se okno.
+1. Klikněte na tlačítko **Add** (Přidat). 
 2. Typ **systému Windows Server 2016 Datacenter**.
-3. Klikněte na tlačítko **systému Windows Server 2016 Datacenter**. V **Windows Server 2016 Datacenter** okno, ověřte, zda je model nasazení **Resource Manager**a potom klikněte na **vytvořit**. Azure otevře **vytvořit virtuální počítač** okno.
+3. Klikněte na tlačítko **systému Windows Server 2016 Datacenter**. V **Windows Server 2016 Datacenter**, ověřte, zda je model nasazení **Resource Manager**a potom klikněte na **vytvořit**. 
 
 Opakujte předchozí kroky k vytvoření dvou virtuálních počítačů. Název dva virtuální počítače:
 
@@ -202,7 +202,7 @@ Po vytvoření virtuálních počítačů, konfigurace řadiče domény.
 ### <a name="configure-the-domain-controller"></a>Konfigurace řadiče domény
 V následujících krocích konfigurace **řadiče domény ad primární** počítače jako řadič domény pro spolecnost.contoso.com.
 
-1. Na portálu, otevřete **SQL-HA-RG** prostředku, skupiny a vyberte **řadiče domény ad primární** počítače. Na **řadiče domény ad primární** okně klikněte na tlačítko **Connect** otevřete soubor RDP pro přístup ke vzdálené ploše.
+1. Na portálu, otevřete **SQL-HA-RG** prostředku, skupiny a vyberte **řadiče domény ad primární** počítače. Na **řadiče domény ad primární**, klikněte na tlačítko **Connect** otevřete soubor RDP pro přístup ke vzdálené ploše.
 
     ![Připojit k virtuálnímu počítači](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/20-connectrdp.png)
 2. Přihlaste se pomocí účtu správce nakonfigurované (**\DomainAdmin**) a heslo (**Contoso! 0000**).
@@ -246,7 +246,7 @@ Jeden způsob, jak získat IP adresu řadiče domény je prostřednictvím port�
 
 2. Klikněte na primárním řadiči domény.
 
-3. V okně řadiče domény, klikněte na **síťových rozhraní**.
+3. Na primárním řadiči domény, klikněte na tlačítko **síťových rozhraní**.
 
 ![Síťová rozhraní](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/25-primarydcip.png)
 
@@ -266,7 +266,7 @@ Když vytvoříte první řadič domény a povolit DNS na prvním serveru, nakon
 ### <a name="configure-the-second-domain-controller"></a>Konfigurace druhého řadiče domény
 Po restartování počítače primárním řadiči domény, můžete nakonfigurovat druhého řadiče domény. Tento volitelný krok je pro vysokou dostupnost. Postupujte podle těchto kroků nakonfigurujete druhého řadiče domény:
 
-1. Na portálu, otevřete **SQL-HA-RG** prostředku, skupiny a vyberte **řadiče domény ad sekundární** počítače. Na **řadiče domény ad sekundární** okně klikněte na tlačítko **Connect** otevřete soubor RDP pro přístup ke vzdálené ploše.
+1. Na portálu, otevřete **SQL-HA-RG** prostředku, skupiny a vyberte **řadiče domény ad sekundární** počítače. Na **řadiče domény ad sekundární**, klikněte na tlačítko **Connect** otevřete soubor RDP pro přístup ke vzdálené ploše.
 2. Přihlaste se k virtuálnímu počítači pomocí účtu správce nakonfigurované (**BUILTIN\DomainAdmin**) a heslo (**Contoso! 0000**).
 3. Změňte upřednostňovanou adresu serveru DNS na adresu řadiče domény.
 4. V **Centrum sítí a sdílení**, klikněte na síťové rozhraní.
@@ -305,7 +305,7 @@ Jakmile server dokončí změny konfigurace, restartujte server.
 
 ### <a name="add-the-private-ip-address-to-the-second-domain-controller-to-the-vpn-dns-server"></a>Přidejte privátní IP adresa druhého řadiče domény na server DNS sítě VPN
 
-Na portálu Azure v rámci virtuální sítě změňte obsahující IP adresu řadiče domény sekundární Server DNS. To umožňuje redundance služby DNS.
+Na portálu Azure v rámci virtuální sítě změňte obsahující IP adresu řadiče domény sekundární Server DNS. Toto nastavení umožňuje redundance služby DNS.
 
 ### <a name=DomainAccounts></a> Konfigurovat účty domény
 
@@ -313,7 +313,7 @@ V dalších krocích můžete nakonfigurovat účty služby Active Directory. N�
 
 | |Účet instalace<br/> |sqlserver-0 <br/>Účet systému SQL Server a služba SQL Agent |sqlserver-1<br/>Účet systému SQL Server a služba SQL Agent
 | --- | --- | --- | ---
-|Křestní jméno |Instalace |SQLSvc1 | SQLSvc2
+|**Křestní jméno** |Instalace |SQLSvc1 | SQLSvc2
 |**SamAccountName uživatele** |Instalace |SQLSvc1 | SQLSvc2
 
 K vytvoření každého účtu použijte následující postup.
@@ -350,7 +350,7 @@ Teď, když jste dokončili konfigurace služby Active Directory a uživatelský
 
 Vytvořte tři další virtuální počítače. Řešení vyžaduje dva virtuální počítače s instancí systému SQL Server. Třetí virtuální počítač bude fungovat jako určující. Můžete použít Windows Server 2016 [cloudu určující](http://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness), ale tento dokument konzistenci předchozích operačních systémech používá virtuální počítač pro určující.  
 
-Než budete pokračovat, zvažte následující rozhodnutí deisign.
+Než budete pokračovat, zvažte následující rozhodnutí o návrhu.
 
 * **Úložiště – spravované Azure disky**
 
@@ -358,7 +358,7 @@ Než budete pokračovat, zvažte následující rozhodnutí deisign.
 
 * **Síť – privátní IP adresy v produkčním prostředí**
 
-   Pro virtuální počítače tento kurz používá veřejné IP adresy. To umožňuje vzdálené připojení přímo k virtuálnímu počítači přes internet – umožňuje jednodušší kroky konfigurace. V produkčním prostředí společnost Microsoft doporučuje pouze privátních IP adres kvůli snížení nároků ohrožení zabezpečení instance serveru SQL Server prostředků virtuálního počítače.
+   Pro virtuální počítače tento kurz používá veřejné IP adresy. Veřejná IP adresa umožňuje vzdálené připojení přímo k virtuálnímu počítači přes internet – umožňuje jednodušší kroky konfigurace. V produkčním prostředí společnost Microsoft doporučuje pouze privátních IP adres kvůli snížení nároků ohrožení zabezpečení instance serveru SQL Server prostředků virtuálního počítače.
 
 ### <a name="create-and-configure-the-sql-server-vms"></a>Vytvoření a konfigurace virtuálních počítačů serveru SQL
 Dále vytvořte tři virtuální počítače – dva virtuální počítače serveru SQL a virtuálního počítače pro do dodatečného uzlu clusteru. Chcete-li vytvořit všech virtuálních počítačích, přejděte zpět na **SQL-HA-RG** skupinu prostředků, klikněte na tlačítko **přidat**, vyhledejte položku odpovídající galerie, klikněte na **virtuálního počítače**a potom klikněte na **z Galerie**. Použijte informace v následující tabulce vám pomohou vytvořit virtuální počítače:
@@ -383,7 +383,7 @@ Po tři virtuální počítače jsou plně zřízený, je nutné připojit, aby 
 
 ### <a name="joinDomain"></a>Připojení serveru k doméně
 
-Teď už moct připojit virtuální počítače na **corp.contoso.com**. Udělejte pro virtuální počítače SQL serveru i souborovém serveru určující sdílené složky:
+Teď už moct připojit virtuální počítače na **corp.contoso.com**. Pro virtuální počítače SQL serveru i souborovém serveru určující sdílenou složku proveďte následující kroky:
 
 1. Vzdálené připojení k virtuálnímu počítači s **BUILTIN\DomainAdmin**.
 2. V **správce serveru**, klikněte na tlačítko **místní Server**.
@@ -449,7 +449,7 @@ Opakujte předchozí kroky na další počítač serveru SQL.
 
 ## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>Přidání funkcí Clustering převzetí služeb při selhání do obou virtuálním počítačům systému SQL Server
 
-Pokud chcete přidat funkce Clustering převzetí služeb při selhání, udělejte na oba virtuální počítače SQL serveru:
+K přidání funkcí Clustering převzetí služeb při selhání, proveďte tyto kroky u virtuálních počítačů i SQL serveru:
 
 1. Připojit k virtuálnímu počítači systému SQL Server pomocí protokol RDP (Remote Desktop) pomocí *CORP\install* účtu. Otevřete **řídicí panel Správce serveru**.
 2. Klikněte **přidat role a funkce** odkaz na řídicím panelu.
@@ -493,6 +493,36 @@ Způsob otevření portů závisí na řešení brány firewall, který použív
 
 Opakujte tyto kroky na druhý virtuální počítač SQL Server.
 
-## <a name="next-steps"></a>Další postup
+## <a name="configure-system-account-permissions"></a>Konfigurace oprávnění pro uživatelský účet systému
+
+K vytvoření účtu pro účet system a udělení příslušných oprávnění, proveďte tyto kroky u každé instance systému SQL Server:
+
+1. Vytvoření účtu pro `[NT AUTHORITY\SYSTEM]` na každou instanci serveru SQL. Tento skript vytvoří tento účet:
+
+   ```sql
+   USE [master]
+   GO
+   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+   GO 
+   ```
+
+1. Udělit následující oprávnění k `[NT AUTHORITY\SYSTEM]` na jednotlivé instance SQL serveru:
+
+   - `ALTER ANY AVAILABILITY GROUP`
+   - `CONNECT SQL`
+   - `VIEW SERVER STATE`
+
+   Následující skript uděluje tato oprávnění:
+
+   ```sql
+   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+   GO 
+   ```
+
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření skupiny dostupnosti SQL serveru Always On na virtuálních počítačích Azure](virtual-machines-windows-portal-sql-availability-group-tutorial.md)

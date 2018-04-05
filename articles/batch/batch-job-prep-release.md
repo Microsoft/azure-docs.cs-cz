@@ -1,25 +1,25 @@
 ---
-title: "Vytvořte úkoly přípravy úlohy a dokončení úlohy na výpočetních uzlech - Azure Batch | Microsoft Docs"
-description: "Minimalizovat přenos dat do výpočetních uzlech Azure Batch pomocí úkolů úrovní úlohy přípravy a uvolnění úlohy pro vyčištění uzlu na dokončení úlohy."
+title: Vytvořte úkoly přípravy úlohy a dokončení úlohy na výpočetních uzlech - Azure Batch | Microsoft Docs
+description: Minimalizovat přenos dat do výpočetních uzlech Azure Batch pomocí úkolů úrovní úlohy přípravy a uvolnění úlohy pro vyčištění uzlu na dokončení úlohy.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aecce83b4d4444f2651f48475b596fa76cb5f44a
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 543c03c22b31389c3d6e048cc9f13c24add5aae7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Spuštění úlohy přípravy a uvolnění úloh na Batch výpočetních uzlů
 
@@ -57,17 +57,17 @@ Můžete chtít zachovat kopii soubory protokolů, které vaše úlohy generují
 > 
 > 
 
-## <a name="job-preparation-task"></a>Úkol přípravy úlohy
+## <a name="job-preparation-task"></a>Příprava na úlohu
 Před spuštěním úlohy služba Batch provádí úkol přípravy úlohy na každém výpočetním uzlu, který je naplánováno spuštění úlohy. Ve výchozím nastavení čeká služba Batch úkol přípravy úlohy provést před spuštěním úlohy naplánován ke spuštění na uzlu. Můžete ale nakonfigurovat službu nechcete čekat. Pokud se uzel restartuje, spustí úkol přípravy úlohy znovu, ale můžete také zakázat toto chování.
 
 Úkol přípravy úlohy je provést pouze u uzlů, které jsou naplánovány pro spuštění úlohy. To zabraňuje zbytečným provádění přípravy úlohy v případě, že uzel není přiřazen úlohu. Tato situace může nastat, pokud je počet úloh pro úlohu menší než počet uzlů ve fondu. Také platí, když [provedení souběžné úlohy](batch-parallel-node-tasks.md) je povoleno, což ponechá nečinnosti Pokud některé uzly počet úloh je nižší než celkový počet možných souběžných úkolů. Spuštěním není úkol přípravy úlohy na nečinných uzlů, strávíte nižší cenu na poplatky za přenos dat.
 
 > [!NOTE]
-> [JobPreparationTask] [ net_job_prep_cloudjob] se liší od [CloudPool.StartTask] [ pool_starttask] v tom, že JobPreparationTask provede na začátku každé úlohy, zatímco StartTask se spustí pouze v případě, že výpočetního uzlu nejprve připojí fondu nebo restartování.
+> [JobPreparationTask] [ net_job_prep_cloudjob] se liší od [CloudPool.StartTask] [ pool_starttask] v tom, že JobPreparationTask provede na začátku každé úlohy, zatímco StartTask spustí, pouze když výpočetního uzlu nejprve spojí fond nebo restartování.
 > 
 > 
 
-## <a name="job-release-task"></a>Úkol uvolnění úlohy
+## <a name="job-release-task"></a>Uvolnění úlohy
 Jakmile úloha je označena jako dokončená, úkol uvolnění úlohy se spustí na každém uzlu ve fondu, která spouští alespoň jeden úkol. Úlohu můžete označit jako vydáním žádost o ukončení. Služba Batch potom nastaví stav úlohy na *ukončení*, ukončí všechny aktivní nebo spuštěné úkoly spojené s úlohou a úkol uvolnění úlohy se spustí. Úloha je následně přesunuto do *Dokončit* stavu.
 
 > [!NOTE]
@@ -183,7 +183,7 @@ Na snímku obrazovky níže ukazuje **přípravy úlohy okno** na portálu Azure
 
 ![Vlastnosti přípravy úlohy na portálu Azure][1]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 ### <a name="application-packages"></a>Balíčky aplikací
 Kromě úkol přípravy úlohy, můžete také použít [balíčky aplikací](batch-application-packages.md) služby Batch pro přípravu výpočetních uzlů pro provedení úlohy. Tato funkce je užitečná zejména při nasazení aplikací, které nevyžadují systémem instalační program, aplikace, které obsahují mnoho (100 +) souborů nebo aplikace, které vyžadují striktní verzí.
 

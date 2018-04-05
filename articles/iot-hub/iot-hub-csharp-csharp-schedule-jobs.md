@@ -1,11 +1,11 @@
 ---
-title: "Plánování úloh s Azure IoT Hub (.NET/.NET) | Microsoft Docs"
-description: "Popisuje, jak naplánovat úlohu služby Azure IoT Hub pro vyvolání přímé metody na několika zařízeních. Použití zařízení Azure IoT sady SDK pro .NET k implementaci aplikace simulovaného zařízení a aplikační služby, který chcete spustit úlohu."
+title: Plánování úloh s Azure IoT Hub (.NET/.NET) | Microsoft Docs
+description: Popisuje, jak naplánovat úlohu služby Azure IoT Hub pro vyvolání přímé metody na několika zařízeních. Použití zařízení Azure IoT sady SDK pro .NET k implementaci aplikace simulovaného zařízení a aplikační služby, který chcete spustit úlohu.
 services: iot-hub
 documentationcenter: .net
 author: msebolt
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2233356e-b005-4765-ae41-3a4872bda943
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 012/16/2018
 ms.author: v-masebo
-ms.openlocfilehash: 0cdc23683489e103b061044856d68a8b014d3535
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 59d78c390e479acd16d47b70e8af5e164d746905
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Úlohy plán a všesměrového vysílání (.NET/.NET)
 
@@ -36,6 +36,8 @@ Další informace o každém z těchto funkcí najdete v tématu:
 
 * Dvojče zařízení a vlastností: [začít pracovat s dvojčata zařízení] [ lnk-get-started-twin] a [kurz: použití dvojici vlastností zařízení][lnk-twin-props]
 * Přímé metody: [Příručka vývojáře pro službu IoT Hub - přímé metody] [ lnk-dev-methods] a [kurz: použijte přímý metody][lnk-c2d-methods]
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 V tomto kurzu získáte informace o následujících postupech:
 

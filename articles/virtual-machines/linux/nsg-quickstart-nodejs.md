@@ -1,11 +1,11 @@
 ---
-title: "Otevřete porty, které se virtuální počítač s Linuxem pomocí Azure CLI 1.0 | Microsoft Docs"
-description: "Zjistěte, jak otevřít port / create koncového bodu virtuálním počítačům s Linuxem pomocí modelu nasazení Azure resource manager a Azure CLI 1.0"
+title: Otevřete porty, které se virtuální počítač s Linuxem pomocí Azure CLI 1.0 | Microsoft Docs
+description: Zjistěte, jak otevřít port / create koncového bodu virtuálním počítačům s Linuxem pomocí modelu nasazení Azure resource manager a Azure CLI 1.0
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 847bc76c37ed929851712ba1c12463a01032e267
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13998e583c5b4e04d5930d7a117ac7e0a183a344
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure-using-the-azure-cli-10"></a>Otevření portů a koncové body pro virtuální počítač s Linuxem v Azure pomocí Azure CLI 1.0
 Otevření portu nebo vytvořte koncového bodu, virtuální počítač (VM) v Azure vytvořením filtr sítě na podsíť nebo rozhraní sítě virtuálních počítačů. Tyto filtry, které řídí příchozí a odchozí přenosy, můžete umístit na skupinu zabezpečení sítě, který je připojen k prostředku, který přijímá provoz. Použijeme Běžným příkladem webové přenosy na portu 80. Tento článek ukazuje, jak otevřít port k virtuálnímu počítači pomocí Azure CLI 1.0.
@@ -81,13 +81,13 @@ azure network vnet subnet set \
 ```
 
 ## <a name="more-information-on-network-security-groups"></a>Další informace o skupinách zabezpečení sítě
-Rychlé příkazy umožňují zprovoznění s provoz do virtuálního počítače. Skupiny zabezpečení sítě zadejte mnoho funkcí a členitosti pro řízení přístupu k prostředkům. Další informace o [vytvoření skupiny zabezpečení sítě a seznamu ACL pravidla zde](../../virtual-network/virtual-networks-create-nsg-arm-cli.md).
+Rychlé příkazy umožňují zprovoznění s provoz do virtuálního počítače. Skupiny zabezpečení sítě zadejte mnoho funkcí a členitosti pro řízení přístupu k prostředkům. Další informace o [vytvoření skupiny zabezpečení sítě a seznamu ACL pravidla zde](../../virtual-network/tutorial-filter-network-traffic-cli.md).
 
 Skupiny zabezpečení sítě a pravidla seznamu ACL můžete definovat v rámci šablon Azure Resource Manager. Další informace o [vytvoření skupin zabezpečení sítě pomocí šablony](../../virtual-network/virtual-networks-create-nsg-arm-template.md).
 
 Pokud budete muset použít předávání portů pro mapování jedinečný externí port pro interní port na vašem virtuálním počítači, použijte nástroj pro vyrovnávání zatížení a pravidla překladu adres (NAT). Můžete například chtít vystavit externě TCP port 8080 a mít data na port TCP 80 na virtuálním počítači. Dozvíte se o [zařízení na Vyrovnávání zatížení internetového](../../load-balancer/load-balancer-get-started-internet-arm-cli.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto příkladu jste vytvořili jednoduché pravidlo umožňující přenos HTTP. Můžete najít informace o vytváření podrobnější prostředí v těchto článcích:
 
 * [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md)

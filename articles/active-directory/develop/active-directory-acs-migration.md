@@ -1,11 +1,11 @@
 ---
-title: "Migrace ze služby Řízení přístupu Azure | Microsoft Docs"
-description: "Možnosti pro přesun aplikace a služby ze služby Řízení přístupu Azure"
+title: Migrace ze služby Řízení přístupu Azure | Microsoft Docs
+description: Možnosti pro přesun aplikace a služby ze služby Řízení přístupu Azure
 services: active-directory
 documentationcenter: dev-center-name
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
 ms.author: dastrock
-ms.openlocfilehash: f634adbacc8e1fc128ecef15ad38f2f8b28eb25d
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 6c22f85d3e76a005c45a4679ddfd8948a46acffc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrace ze služby Řízení přístupu Azure
 
-Azure řízení přístupu, což je služba Azure Active Directory (Azure AD), bude vyřazeno v listopadu 2018. Aplikace a služby, které používají řízení přístupu musí být plně migrovat na jiný mechanismus ověřování té. Tento článek popisuje doporučení pro aktuální zákazníci při plánování přestat používat použití řízení přístupu. Pokud nepoužijete aktuálně řízení přístupu, nemusíte provádět žádnou akci.
+Azure řízení přístupu, což je služba Azure Active Directory (Azure AD), bude vyřazeno na 7 listopadu 2018. Aplikace a služby, které používají řízení přístupu musí být plně migrovat na jiný mechanismus ověřování té. Tento článek popisuje doporučení pro aktuální zákazníci při plánování přestat používat použití řízení přístupu. Pokud nepoužijete aktuálně řízení přístupu, nemusíte provádět žádnou akci.
 
 
 ## <a name="overview"></a>Přehled
@@ -54,11 +54,9 @@ Pokud chcete použít tyto součásti, je nutné vytvořit jeden nebo více obor
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-Veškerá komunikace s služby tokenů zabezpečení a operace správy se provádějí na této adrese URL. Můžete použít různé cesty pro jiné účely. Pokud chcete zjistit, jestli služby nebo aplikace pomocí řízení přístupu, monitorování pro všechny přenosy na https://\<obor názvů\>. accesscontrol.windows.net. Přenosy dat pro tuto adresu URL se zpracovává souborem řízení přístupu a musí být zastaveny. 
+Veškerá komunikace s služby tokenů zabezpečení a operace správy se provádějí na této adrese URL. Můžete použít různé cesty pro jiné účely. Pokud chcete zjistit, jestli služby nebo aplikace pomocí řízení přístupu, monitorování pro všechny přenosy na https://<namespace>. accesscontrol.windows.net. Přenosy dat pro tuto adresu URL se zpracovává souborem řízení přístupu a musí být zastaveny. 
 
-Výjimkou jsou všechny přenosy do https://accounts.accesscontrol.windows.net. Data na tuto adresu URL již zpracovává jiný službou a nemá vliv vyřazení řízení přístupu. 
-
-Musí také přihlášení k portálu Azure classic a zkontrolujte všechny obory názvů řízení přístupu v odběry, které vlastníte. Obory názvů řízení přístupu jsou uvedené na **obory názvů řízení přístupu** v části **služby Active Directory** služby.
+Výjimkou je přenosy dat do `https://accounts.accesscontrol.windows.net`. Provoz tato adresa URL již zpracovává jiný službou a **není** vliv vyřazení řízení přístupu. 
 
 Další informace o řízení přístupu najdete v tématu [2.0 služby Řízení přístupu (archivovat)](https://msdn.microsoft.com/library/hh147631.aspx).
 
@@ -68,9 +66,9 @@ Od listopadu 2017 všechny součásti řízení přístupu jsou plně podporovan
 
 Tady je plán pro místo začne součásti řízení přístupu:
 
-- **2017 listopadu**: Správce Azure AD na základě zkušeností uživatelů portálu Azure classic [je vyřazeno](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). V tomto okamžiku je k dispozici v nové, vyhrazené URL správu oboru názvů pro řízení přístupu: http://manage.windowsazure.com?restoreClassic=true. Zobrazit existující obory, povolení a zakázání obory názvů a k odstranění obory názvů, pokud zvolíte možnost, použijte tuto adresu URl.
-- **2018 duben**: obor názvů řízení přístupu již není k dispozici na adrese URL http://manage.windowsazure.com?restoreClassic=true vyhrazené. V tomto okamžiku nelze zakázat nebo povolit, odstranit nebo výčet obory řízení přístupu. Portálu pro správu řízení přístupu však budou plně funkční a umístěné na https://\<obor názvů\>. accesscontrol.windows.net. Všechny součásti řízení přístupu i nadále fungovat normálně.
-- **2018 listopadu**: všechny řízení přístupu součásti jsou trvale vypnout. To zahrnuje portálu pro správu řízení přístupu, služba správy, služba tokenů zabezpečení a tokenu transformační pravidlo modul. V tomto okamžiku všechny požadavky, které byly odeslány na řízení přístupu (umístěné v \<obor názvů\>. accesscontrol.windows.net) nezdaří. Jste měli migrovali všechny existující aplikace a služby do jiných technologií dobře před tímto časem.
+- **2017 listopadu**: Správce Azure AD na základě zkušeností uživatelů portálu Azure classic [je vyřazeno](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). V tomto okamžiku je k dispozici v nové, vyhrazené URL správu oboru názvů pro řízení přístupu: `http://manage.windowsazure.com?restoreClassic=true`. Zobrazit existující obory, povolení a zakázání obory názvů a k odstranění obory názvů, pokud zvolíte možnost, použijte tuto adresu URl.
+- **2. dubna 2018**: portál Azure classic je zcela vyřazen z provozu, znamená obor názvů řízení přístupu již není k dispozici prostřednictvím libovolná adresa URL. V tomto okamžiku nelze zakázat nebo povolit, odstranit nebo výčet obory řízení přístupu. Portálu pro správu řízení přístupu však budou plně funkční a v umístění `https://\<namespace\>.accesscontrol.windows.net`. Všechny součásti řízení přístupu i nadále fungovat normálně.
+- **7 listopadu 2018**: všechny řízení přístupu součásti jsou trvale vypnout. To zahrnuje portálu pro správu řízení přístupu, služba správy, služba tokenů zabezpečení a tokenu transformační pravidlo modul. V tomto okamžiku všechny požadavky, které byly odeslány na řízení přístupu (umístěné v \<obor názvů\>. accesscontrol.windows.net) nezdaří. Jste měli migrovali všechny existující aplikace a služby do jiných technologií dobře před tímto časem.
 
 
 ## <a name="migration-strategies"></a>Strategie migrace
@@ -98,6 +96,17 @@ Jednotlivých cloudových služeb společnosti Microsoft, které přijímá toke
 <!-- Azure StorSimple: TODO -->
 <!-- Azure SiteRecovery: TODO -->
 
+
+### <a name="sharepoint-customers"></a>Zákazníci služby SharePoint
+
+SharePoint 2013, 2016 a SharePoint Online zákazníci použili dlouho služby ACS pro účely ověření v cloudu, místní a hybridní scénáře. Některé funkce služby SharePoint a případy použití ovlivní vyřazení služby ACS, zatímco ostatní není. Níže uvedená tabulka shrnuje migrace pokyny pro některé z nejčastěji používané SharePoint funkce této využívání služby ACS:
+
+| Funkce | Doprovodné materiály |
+| ------- | -------- |
+| Ověřování uživatelů z Azure AD | Dříve Azure AD nepodporuje tokeny SAML 1.1 vyžaduje SharePoint pro ověřování a služby ACS byl použit jako prostředník, který vytvořil token s aktualizací služby SharePoint se službou Azure AD formátuje. Teď můžete [připojení služby SharePoint přímo do služby Azure AD pomocí zásad vystavování tokenů](https://docs.microsoft.com/Office365/Enterprise/using-azure-ad-for-sharepoint-server-authentication). |
+| [Ověřování aplikací & ověřování serveru na server v SharePoint místní](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Není ovlivněné služby ACS vyřazení; nejsou nutné žádné změny. | 
+| [Autorizace nízkou vztahu důvěryhodnosti pro SharePoint doplňky (poskytovatele a hostované služby SharePoint)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Není ovlivněné služby ACS vyřazení; nejsou nutné žádné změny. |
+| [Vyhledávání hybridní cloudové služby SharePoint](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Není ovlivněné služby ACS vyřazení; nejsou nutné žádné změny. |
 
 ### <a name="web-applications-that-use-passive-authentication"></a>Webové aplikace, které používají pasivní ověřování
 
@@ -243,7 +252,7 @@ V těchto případech můžete chtít zvažte migraci webovou aplikaci na jinou 
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) je flexibilní Cloudová služba identity, která si vytvořila [vysoké úrovně migrace pokyny pro zákazníky, řízení přístupu](https://auth0.com/acs)a podporuje téměř každý funkce, která nemá služby ACS. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Příkaz ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobná služby ACS. PingOne je Cloudová služba identity, která podporuje mnoho stejných funkcí jako služby ACS a PingFederate je podobné produktu místní identity, který nabízí větší flexibilitu. Odkazovat na [pokyny vyřazení služby ACS na příkaz Ping](https://www.pingidentity.com/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů.  |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Příkaz ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobná služby ACS. PingOne je Cloudová služba identity, která podporuje mnoho stejných funkcí jako služby ACS a PingFederate je podobné produktu místní identity, který nabízí větší flexibilitu. Odkazovat na [pokyny vyřazení služby ACS na příkaz Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů.  |
 
 Naše cílem při práci s příkazem Ping Identity a Auth0 je zajistit, aby měly všechny zákazníky využívající řízení přístupu migrace cestu pro své aplikace a služby, která minimalizuje množství práce potřebné k přesunutí z řízení přístupu.
 
@@ -305,7 +314,7 @@ V těchto případech můžete zvážit migrace webové aplikace do jiné cloudo
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) je flexibilní Cloudová služba identity, která si vytvořila [vysoké úrovně migrace pokyny pro zákazníky, řízení přístupu](https://auth0.com/acs)a podporuje téměř každý funkce, která nemá služby ACS. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Příkaz ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobná služby ACS. PingOne je Cloudová služba identity, která podporuje mnoho stejných funkcí jako služby ACS a PingFederate je podobné produktu místní identity, který nabízí větší flexibilitu. Odkazovat na [pokyny vyřazení služby ACS na příkaz Ping](https://www.pingidentity.com/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů.  |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Příkaz ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobná služby ACS. PingOne je Cloudová služba identity, která podporuje mnoho stejných funkcí jako služby ACS a PingFederate je podobné produktu místní identity, který nabízí větší flexibilitu. Odkazovat na [pokyny vyřazení služby ACS na příkaz Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů.  |
 
 Naše cílem při práci s příkazem Ping Identity a Auth0 je zajistit, aby měly všechny zákazníky využívající řízení přístupu migrace cestu pro své aplikace a služby, která minimalizuje množství práce potřebné k přesunutí z řízení přístupu.
 

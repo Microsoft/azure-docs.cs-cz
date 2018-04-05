@@ -1,24 +1,24 @@
 ---
-title: "Vytvoření služby IoT Hub pomocí portálu Azure | Microsoft Docs"
-description: "Postup vytvoření, správě a odstranění služby Azure IoT hubs prostřednictvím portálu Azure. Obsahuje informace o cenových úrovní, škálování, zabezpečení a zasílání zpráv konfigurace."
+title: Vytvoření služby IoT Hub pomocí portálu Azure | Microsoft Docs
+description: Postup vytvoření, správě a odstranění služby Azure IoT hubs prostřednictvím portálu Azure. Obsahuje informace o cenových úrovní, škálování, zabezpečení a zasílání zpráv konfigurace.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0909cd2b-4c1e-49e0-b68a-75532caf0a6a
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: ac1a52355ffa5354bebe3b98fdb75783bcd57697
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 6ffde076caff6217bf6255c9294eca63d3e39b85
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Vytvoření služby IoT hub pomocí portálu Azure
 
@@ -53,18 +53,9 @@ Vytvoření služby IoT hub, název služby IoT hub. Tento název musí být jed
 
 ### <a name="choose-the-pricing-tier"></a>Vyberte cenovou úroveň
 
-Můžete si vybrat z čtyři úrovně: **volné**, **standardní 1** a **standardní 2**, a **úrovně Standard S3**. Úroveň free umožňuje pouze 500 zařízení k připojení ke službě IoT hub a maximálně 8 000 jednotek zpráv za den.
+Můžete vybrat z několika vrstev v závislosti na tom, kolik funkce chcete a kolik zprávy odesílat prostřednictvím řešení za den. Úroveň free je určený pro testování a vyhodnocení. To umožňuje 500 zařízení k připojení ke službě IoT hub a maximálně 8 000 jednotek zpráv za den. Každé předplatné Azure můžete vytvořit jeden IoT Hub v úrovni free. 
 
-**Standard S1**: pomocí edice S1 pro řešení IoT velký počet zařízení, že každý generovat malé množství dat. Každá jednotka edice S1 umožňuje přenášet v rámci všech připojených zařízení až 400 000 zpráv denně.
-
-**Standard S2**: pro řešení IoT, ve kterých zařízení generovat velké objemy dat použít edici S2. Jednotlivé jednotky S2 edice umožňuje až 6 milionu zpráv za den mezi všech připojených zařízeních.
-
-**Úrovně Standard S3**: pro řešení IoT, které generují velké objemy dat použít edici S3. Jednotlivé jednotky S3 edice umožňuje až 300 milionů zpráv za den mezi všech připojených zařízeních.
-
-![][4]
-
-> [!NOTE]
-> IoT Hub umožňuje jenom jednu bezplatnou rozbočovače za předplatné Azure.
+Podrobnosti o další úroveň možnosti najdete v tématu [Volba správné úrovně služby IoT Hub](iot-hub-scaling.md).
 
 ### <a name="iot-hub-units"></a>Jednotky centra IoT hub
 
@@ -118,7 +109,7 @@ Klikněte na tlačítko **koncové body** zobrazíte seznam koncových bodů pro
 
 ![][11]
 
-### <a name="built-in-endpoints"></a>Předdefinované koncové body
+### <a name="built-in-endpoints"></a>Integrované koncové body
 
 Existují dva předdefinované koncové body: **cloudu na zařízení připomínky** a **události**.
 
@@ -154,22 +145,11 @@ Kliknutím můžete přidat trasy do služby IoT hub **přidat** v horní část
 
 ![][15]
 
-## <a name="pricing-and-scale"></a>Ceny a škálování
-
-Ceny stávající služby IoT hub lze změnit pomocí **cenová** nastavení s těmito výjimkami:
-
-* V aktuální implementace služby IoT hub s bezplatnou SKU nelze změnit vrstvy do jednoho z placené SKU, nebo naopak.
-* Může existovat pouze jedna úroveň free IoT hub v rámci předplatného Azure.
-
-![][12]
-
-Můžete přesunout z vyššího nižší úrovně jenom v případě, že počet zpráv odeslaných daný den překročili kvótu pro nižší úroveň. Například pokud počet zpráv za den překračuje 400,000, pak vrstvy pro službu IoT hub lze změnit. Ale pokud změníte k vrstvě S1 pak službu IoT hub je omezen pro daný den.
-
 ## <a name="delete-the-iot-hub"></a>Odstranit službu IoT hub
 
 Můžete procházet ke službě IoT hub, který chcete odstranit kliknutím **Procházet**a pak vyberete příslušné rozbočovače k odstranění. Pokud chcete odstranit centrum IoT, klikněte na tlačítko **odstranit** tlačítko pod název centra IoT.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o správě Azure IoT Hub na následujících odkazech:
 
@@ -180,7 +160,7 @@ Další informace o správě Azure IoT Hub na následujících odkazech:
 Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
 * [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
-* [Nasazení AI do hraniční zařízení s Azure IoT Edge][lnk-iotedge]
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
 * [Zabezpečení řešení IoT od základů nahoru][lnk-securing]
 
 [4]: ./media/iot-hub-create-through-portal/create-iothub.png

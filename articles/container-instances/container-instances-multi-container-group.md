@@ -1,19 +1,19 @@
 ---
-title: "Nasazení skupiny více kontejnerů v Azure kontejner instancí"
-description: "Postup nasazení kontejneru skupiny pomocí několika kontejnerů v Azure kontejner instancí."
+title: Nasazení skupiny více kontejnerů v Azure kontejner instancí
+description: Postup nasazení kontejneru skupiny pomocí několika kontejnerů v Azure kontejner instancí.
 services: container-instances
 author: neilpeterson
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/30/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 41a47adb1f1da417038757934f0a6cf7e11555da
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 58fd4c18df5ec0a5d02be0e6e89cb2b4af26b20e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-a-container-group"></a>Nasazení kontejneru skupiny
 
@@ -22,7 +22,7 @@ Podporuje nasazení několika kontejnerů do jednoho hostitele pomocí Azure ins
 Tento dokument vás provede službou Jednoduché něho více kontejneru konfigurace a nasazení šablonu Azure Resource Manager.
 
 > [!NOTE]
-> Více kontejner skupiny jsou aktuálně omezeno na kontejnery Linux. Při pracujeme, aby všechny funkce Windows kontejnery, můžete najít aktuální platformy rozdíly v [kvóty a dostupnost v oblastech Azure kontejner instancí](container-instances-quotas.md).
+> Více kontejner skupiny jsou aktuálně omezeno na kontejnery Linux. Pracujeme na tom, aby všechny funkce byly dostupné i pro kontejnery Windows. Aktuální rozdíly pro tyto platformy najdete v tématu věnovaném [kvótám a dostupnosti oblastí pro Azure Container Instances](container-instances-quotas.md).
 
 ## <a name="configure-the-template"></a>Konfigurace šablony
 
@@ -45,7 +45,7 @@ V této ukázce skupina kontejneru s dvěma kontejnery veřejnou IP adresu, port
     {
       "name": "myContainerGroup",
       "type": "Microsoft.ContainerInstance/containerGroups",
-      "apiVersion": "2017-10-01-preview",
+      "apiVersion": "2018-04-01",
       "location": "[resourceGroup().location]",
       "properties": {
         "containers": [
@@ -202,7 +202,7 @@ Jak můžete vidět, je něho pravidelně zajistit požadavek HTTP je hlavní we
 Tento článek popsané kroky potřebné pro nasazení s více kontejnerů Azure container instance. Prostředí Azure kontejner instancí začátku do konce naleznete v kurzu instancí kontejnerů Azure.
 
 > [!div class="nextstepaction"]
-> [Kurz pro Azure instancí kontejnerů][aci-tutorial]
+> [Kurz služby Azure Container Instances][aci-tutorial]
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

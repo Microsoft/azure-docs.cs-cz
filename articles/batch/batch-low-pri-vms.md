@@ -3,7 +3,7 @@ title: Spuštění úloh služby Azure Batch na virtuálních počítačích ná
 description: Zjistěte, jak zřídit virtuální počítače s nízkou prioritou snížit náklady na úloh služby Azure Batch.
 services: batch
 author: mscurrell
-manager: timlt
+manager: jeconnoc
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.devlang: multiple
@@ -11,11 +11,11 @@ ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
-ms.openlocfilehash: 68240e29429b4c6321e8627b62ad65ce7ecb468e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a05c816bd876f7c66a1e62515dea44c6fd969c8c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Pomocí služby Batch použijte virtuální počítače s nízkou prioritou
 

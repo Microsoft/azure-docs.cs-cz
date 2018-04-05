@@ -1,8 +1,8 @@
 ---
-title: "Dotaz Hive prostřednictvím ovladač JDBC - Azure HDInsight | Microsoft Docs"
-description: "Ovladač JDBC z aplikace Java použijte k odesílání dotazů Hive k systému Hadoop v HDInsight. Připojte prostřednictvím kódu programu a z klienta SQuirrel SQL."
+title: Dotaz Hive prostřednictvím ovladač JDBC - Azure HDInsight | Microsoft Docs
+description: Ovladač JDBC z aplikace Java použijte k odesílání dotazů Hive k systému Hadoop v HDInsight. Připojte prostřednictvím kódu programu a z klienta SQuirrel SQL.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/20/2018
+ms.date: 04/02/2018
 ms.author: larryfr
-ms.openlocfilehash: c56a4ec4d1abea5a862172966697747cbb3d234c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 876d6169f1ecb2f9cdecc59f3f7c8d0a82a8fe7e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotaz Hive prostřednictvím ovladač JDBC v HDInsight
 
@@ -32,7 +32,7 @@ Další informace o rozhraní JDBC Hive naleznete v tématu [HiveJDBCInterface](
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Hadoop v clusteru HDInsight. Clustery se systémem Linux nebo systému Windows fungovat.
+* Hadoop v clusteru HDInsight.
 
   > [!IMPORTANT]
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [HDInsight 3.3 vyřazení](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -65,76 +65,49 @@ DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
 
 SQuirreL SQL je klient JDBC, který umožňuje vzdáleně spouštět dotazy Hive k vašemu clusteru HDInsight. Následující postup předpokládá, že jste již nainstalovali SQuirreL SQL.
 
-1. Zkopírujte z clusteru HDInsight Hive JDBC ovladače.
+1. Vytvořte adresář, který obsahuje soubory. Například, `mkdir hivedriver`.
 
-    * Pro **HDInsight se systémem Linux** clusteru verze 3.5 nebo 3.6, použijte následující postup ke stažení jar požadované soubory.
+2. Z příkazového řádku použijte následující příkazy pro kopírování souborů z clusteru HDInsight:
 
-        1. Vytvořte adresář, který obsahuje soubory. Například, `mkdir hivedriver`.
+    ```bash
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-common.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libfb*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
+    ```
 
-        2. Z příkazového řádku použijte následující příkazy pro kopírování souborů z clusteru HDInsight:
+    Nahraďte `USERNAME` s názvem účtu uživatele SSH pro cluster. Nahraďte `CLUSTERNAME` s názvem clusteru HDInsight.
 
-            ```bash
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-common.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libfb*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
-            ```
-
-            Nahraďte `USERNAME` s názvem účtu uživatele SSH pro cluster. Nahraďte `CLUSTERNAME` s názvem clusteru HDInsight.
-
-    * Pro **HDInsight se systémem Windows**, použijte následující postup ke stažení souborů jar.
-
-        1. Z portálu Azure vyberte HDInsight cluster a pak vyberte **vzdálené plochy** ikonu.
-
-            ![Ikona vzdálené plochy](./media/apache-hadoop-connect-hive-jdbc-driver/remotedesktopicon.png)
-
-        2. V části vzdálené plochy pomocí **připojit** tlačítko Připojit ke clusteru. Pokud Vzdálená plocha není povolená, pomocí formuláře zadejte uživatelské jméno a heslo a pak vyberte **povolit** k povolení služby Vzdálená plocha pro cluster.
-
-            ![Část vzdálené plochy](./media/apache-hadoop-connect-hive-jdbc-driver/remotedesktopblade.png)
-
-            Po výběru **Connect**,. Stáhne soubor RDP. Tento soubor lze použijte ke spuštění klienta vzdálené plochy. Pokud budete vyzváni, použijte uživatelské jméno a heslo, které jste zadali pro přístup ke vzdálené ploše.
-
-        3. Po připojení, zkopírujte následující soubory z relace vzdálené plochy do místního počítače. Umístí je do místního adresáře s názvem `hivedriver`.
-
-            * C:\apps\dist\hive-0.14.0.2.2.9.1-7\lib\hive-jdbc-0.14.0.2.2.9.1-7-standalone.jar
-            * C:\apps\dist\hadoop-2.6.0.2.2.9.1-7\share\hadoop\common\hadoop-common-2.6.0.2.2.9.1-7.jar
-            * C:\apps\dist\hadoop-2.6.0.2.2.9.1-7\share\hadoop\common\lib\hadoop-auth-2.6.0.2.2.9.1-7.jar
-
-            > [!NOTE]
-            > Čísla verzí, které jsou součástí cesty a názvy souborů se může lišit pro váš cluster.
-
-        4. Odpojení relace vzdálené plochy po dokončení kopírování souborů.
-
-2. Spusťte aplikaci SQuirreL SQL. V levé části okna vyberte **ovladače**.
+3. Spusťte aplikaci SQuirreL SQL. V levé části okna vyberte **ovladače**.
 
     ![Karta ovladače na levé straně okna](./media/apache-hadoop-connect-hive-jdbc-driver/squirreldrivers.png)
 
-3. Z ikony v horní části **ovladače** dialogovém okně, vyberte  **+**  vytvořte ovladač.
+4. Z ikony v horní části **ovladače** dialogovém okně, vyberte **+** vytvořte ovladač.
 
     ![Ikony ovladače](./media/apache-hadoop-connect-hive-jdbc-driver/driversicons.png)
 
-4. V dialogovém okně Přidat ovladač přidejte následující informace:
+5. V dialogovém okně Přidat ovladač přidejte následující informace:
 
     * **Název**: Hive
     * **Příklad adresy URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Navíc cesty tříd**: použijte tlačítko Přidat na přidání souborů jar předtím stáhli
+    * **Navíc cesty tříd**: přidání všech souborů jar předtím stáhli pomocí tlačítka Přidat
     * **Class Name**: org.apache.hive.jdbc.HiveDriver
 
    ![Přidat dialogové okno ovladače](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
 
    Klikněte na tlačítko **OK** uložit tato nastavení.
 
-5. Na levé straně okna SQuirreL SQL, vyberte **aliasy**. Klikněte  **+**  ikonu vytvořit alias připojení.
+6. Na levé straně okna SQuirreL SQL, vyberte **aliasy**. Klikněte **+** ikonu vytvořit alias připojení.
 
     ![Přidat nový alias](./media/apache-hadoop-connect-hive-jdbc-driver/aliases.png)
 
-6. Použijte následující hodnoty pro **přidat Alias** dialogové okno.
+7. Použijte následující hodnoty pro **přidat Alias** dialogové okno.
 
     * **Název**: Hive v HDInsight
 
@@ -150,15 +123,16 @@ SQuirreL SQL je klient JDBC, který umožňuje vzdáleně spouštět dotazy Hive
 
  ![alias dialogové okno Přidání](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
 
-    Použití **Test** tlačítko ověřte, že připojení funguje. Když **připojit k: Hive v HDInsight** otevře se dialogové okno, vyberte **Connect** k provedení testu. Pokud je test úspěšný, zobrazí **úspěšné připojení** dialogové okno. Pokud dojde k chybě, projděte si téma [Poradce při potížích s](#troubleshooting).
+    > [!IMPORTANT] 
+    > Použití **Test** tlačítko ověřte, že připojení funguje. Když **připojit k: Hive v HDInsight** otevře se dialogové okno, vyberte **Connect** k provedení testu. Pokud je test úspěšný, zobrazí **úspěšné připojení** dialogové okno. Pokud dojde k chybě, projděte si téma [Poradce při potížích s](#troubleshooting).
 
     Chcete-li uložit alias připojení, použijte **Ok** tlačítko v dolní části **přidat Alias** dialogové okno.
 
-7. Z **připojit k** rozevírací seznam v horní části SQuirreL SQL, vyberte **Hive v HDInsight**. Po zobrazení výzvy vyberte **Connect**.
+8. Z **připojit k** rozevírací seznam v horní části SQuirreL SQL, vyberte **Hive v HDInsight**. Po zobrazení výzvy vyberte **Connect**.
 
     ![Dialogové okno připojení](./media/apache-hadoop-connect-hive-jdbc-driver/connect.png)
 
-8. Po připojení, zadejte následující dotaz do dialogu dotaz SQL a potom vyberte **spustit** ikonu. Oblasti výsledky by měl zobrazit výsledky dotazu.
+9. Po připojení, zadejte následující dotaz do dialogu dotaz SQL a potom vyberte **spustit** ikonu. Oblasti výsledky by měl zobrazit výsledky dotazu.
 
         select * from hivesampletable limit 10;
 
@@ -166,7 +140,7 @@ SQuirreL SQL je klient JDBC, který umožňuje vzdáleně spouštět dotazy Hive
 
 ## <a name="connect-from-an-example-java-application"></a>Připojení z příklad aplikace Java
 
-Příklad použití Java klienta tak, aby dotaz Hive v HDInsight je k dispozici na [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc). Postupujte podle pokynů v úložišti sestavení a spuštění ukázky.
+Příklad použití Java klienta tak, aby dotaz Hive v HDInsight je k dispozici na [ https://github.com/Azure-Samples/hdinsight-java-hive-jdbc ](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc). Postupujte podle pokynů v úložišti sestavení a spuštění ukázky.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

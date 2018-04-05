@@ -1,25 +1,25 @@
 ---
-title: "Na virtuálním počítači spusťte Linuxových výpočetních uzlů - Azure Batch | Microsoft Docs"
-description: "Zjistěte, jak zpracovat paralelní výpočty úlohy na fondech virtuálních počítačích s Linuxem v Azure Batch."
+title: Na virtuálním počítači spusťte Linuxových výpočetních uzlů - Azure Batch | Microsoft Docs
+description: Zjistěte, jak zpracovat paralelní výpočty úlohy na fondech virtuálních počítačích s Linuxem v Azure Batch.
 services: batch
 documentationcenter: python
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 05/22/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b2257917e2368478beb75957677de23d4157865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9aa896bfc4c860c87757f9379fc44cc5ee8d18a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřídit Linux výpočetních uzlů ve fondech Batch
 
@@ -57,8 +57,8 @@ Když konfigurujete odkaz bitové kopie virtuálního počítače, můžete zada
 ### <a name="node-agent-sku"></a>Uzel agenta SKU
 Agent uzlu Batch je program, který běží na každém uzlu ve fondu a poskytuje rozhraní příkazu a řízení mezi uzlu a služby Batch. Existují různé implementace uzlu agenta, označuje jako SKU, pro různé operační systémy. V podstatě při vytváření konfigurace virtuálního počítače, nejprve zadat odkaz na obrázek virtuálního počítače a pak zadejte uzlu agenta k instalaci na bitovou kopii. Obvykle každého uzlu agenta SKU je kompatibilní s více bitových kopií virtuálního počítače. Tady je několik příkladů uzlu agenta SKU:
 
-* batch.Node.Ubuntu 14.04
-* batch.Node.centos 7
+* batch.node.ubuntu 14.04
+* batch.node.centos 7
 * batch.Node.Windows amd64
 
 > [!IMPORTANT]
@@ -213,27 +213,27 @@ Následující tabulka uvádí Marketplace Image virtuálních počítačů, kte
 >
 >
 
-| **Vydavatele** | **Nabídka** | **Obrázek SKU** | **Verze** | **Uzel agenta SKU ID** |
+| **Publisher** | **Nabídka** | **Obrázek SKU** | **Verze** | **Uzel agenta SKU ID** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| Canonical | UbuntuServer | 14.04.5-LTS | nejnovější | batch.Node.Ubuntu 14.04 |
-| Canonical | UbuntuServer | 16.04.0-LTS | nejnovější | batch.Node.Ubuntu 16.04 |
+| Canonical | UbuntuServer | 14.04.5-LTS | nejnovější | batch.node.ubuntu 14.04 |
+| Canonical | UbuntuServer | 16.04.0-LTS | nejnovější | batch.node.ubuntu 16.04 |
 | Credativ | Debian | 8 | nejnovější | batch.Node.debian 8 |
-| OpenLogic | CentOS | 7.0 | nejnovější | batch.Node.centos 7 |
-| OpenLogic | CentOS | 7.1 | nejnovější | batch.Node.centos 7 |
-| OpenLogic | CentOS HPC | 7.1 | nejnovější | batch.Node.centos 7 |
-| OpenLogic | CentOS | 7.2 | nejnovější | batch.Node.centos 7 |
-| Oracle | Oracle Linux | 7.0 | nejnovější | batch.Node.centos 7 |
-| Oracle | Oracle Linux | 7.2 | nejnovější | batch.Node.centos 7 |
-| SUSE | openSUSE | 13.2 | nejnovější | batch.Node.opensuse 13.2 |
+| OpenLogic | CentOS | 7.0 | nejnovější | batch.node.centos 7 |
+| OpenLogic | CentOS | 7.1 | nejnovější | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.1 | nejnovější | batch.node.centos 7 |
+| OpenLogic | CentOS | 7.2 | nejnovější | batch.node.centos 7 |
+| Oracle | Oracle-Linux | 7.0 | nejnovější | batch.node.centos 7 |
+| Oracle | Oracle-Linux | 7.2 | nejnovější | batch.node.centos 7 |
+| SUSE | openSUSE | 13.2 | nejnovější | batch.node.opensuse 13.2 |
 | SUSE | openSUSE přestupného | 42.1 | nejnovější | batch.Node.opensuse 42.1 |
 | SUSE | SLES | 12-SP1 | nejnovější | batch.Node.opensuse 42.1 |
-| SUSE | SLES HPC | 12-SP1 | nejnovější | batch.Node.opensuse 42.1 |
-| Microsoft služby Active Directory | data-vědecké účely-virtuálního počítače s linuxem | linuxdsvm | nejnovější | batch.Node.centos 7 |
-| Microsoft služby Active Directory | Standard-data-vědecké účely vm | Standard-data-vědecké účely vm | nejnovější | batch.Node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | AKTUALIZACE SP1 2008 R2 | nejnovější | batch.Node.Windows amd64 |
+| SUSE | SLES-HPC | 12-SP1 | nejnovější | batch.Node.opensuse 42.1 |
+| microsoft-ads | linux-data-science-vm | linuxdsvm | nejnovější | batch.node.centos 7 |
+| microsoft-ads | standard-data-science-vm | standard-data-science-vm | nejnovější | batch.Node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | nejnovější | batch.Node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | nejnovější | batch.Node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | nejnovější | batch.Node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016 Datacenter | nejnovější | batch.Node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | nejnovější | batch.Node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2016 datového centra s kontejnery | nejnovější | batch.Node.Windows amd64 |
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>Připojení k Linuxových uzlů pomocí protokolu SSH
@@ -315,14 +315,14 @@ Azure Batch je založený na technologii cloudových služeb Azure a virtuální
 
 Pokud nasazujete aplikace na uzly Batch pomocí [balíčky aplikací](batch-application-packages.md), se účtují poplatky za prostředky Azure Storage, aby balíčky aplikací používat. Obecně platí jsou minimální, náklady na úložiště Azure. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 ### <a name="batch-python-tutorial"></a>Kurz k Batch Pythonu
 Pro více podrobný kurz o tom, jak pracovat s Batch pomocí Python, podívejte se na [Začínáme s klientem Azure Batch Python](batch-python-tutorial.md). Jeho doprovodné [ukázka kódu] [ github_samples_pyclient] zahrnuje podpůrná funkce `get_vm_config_for_distro`, který ukazuje další technika, jak získat konfiguraci virtuálního počítače.
 
 ### <a name="batch-python-code-samples"></a>Ukázek kódu služby batch Python
 [Ukázky kódu jsou Python] [ github_samples_py] v [azure-batch-samples] [ github_samples] úložišti na Githubu obsahovat skripty, které ukazují, jak provádět běžné operace Batch, například fond, úlohy a vytváření úlohy. [README] [ github_py_readme] doprovodný Python ukázky obsahuje podrobnosti o tom, jak nainstalovat požadované balíčky.
 
-### <a name="batch-forum"></a>Fórum k službě Batch
+### <a name="batch-forum"></a>Fórum služby Batch
 [Fóru služby Azure Batch] [ forum] na webu MSDN je skvělým místem popisují Batch a klást otázky týkající se služby. Užitečné pro čtení "připnutý" účtuje a zveřejněte svoje otázky, kterým dochází při sestavování řešení Batch.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx

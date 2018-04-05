@@ -1,8 +1,8 @@
 ---
-title: "Podpora Azure Application Insights pro několik komponent, mikroslužeb a kontejnery | Microsoft Docs"
-description: "Monitorování aplikací, které se skládají z několika součástí nebo role pro výkonu a využití."
+title: Podpora Azure Application Insights pro několik komponent, mikroslužeb a kontejnery | Microsoft Docs
+description: Monitorování aplikací, které se skládají z několika součástí nebo role pro výkonu a využití.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 046661bf7903b4e5ea528282ad5170901a45b35c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 9b03aff140eec5b355383447f0a815220d6408e3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Monitorování více součásti aplikací s nástrojem Application Insights (preview)
 
@@ -42,7 +42,7 @@ Chcete-li získat více součásti aplikace mapy, těchto cílů dosáhnout:
 
 * **Nainstalujte nejnovější předběžnou verzi** balíček Application Insights v jednotlivých součástí aplikace. 
 * **Sdílet jeden prostředek Application Insights** pro všechny součásti aplikace.
-* **Povolit aplikaci mapování více rolí** v okně verze Preview.
+* **Povolit kompozitních aplikací mapy** v okně verze Preview.
 
 Nakonfigurujte jednotlivé komponenty pomocí příslušné metody pro tento typ aplikace. ([ASP.NET](app-insights-asp-net.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), [JavaScript](app-insights-javascript.md).)
 
@@ -68,14 +68,14 @@ Aktualizujte nebo instalaci balíčků Application Insights v projektu pro každ
 
    1. V [portál Azure](https://portal,azure.com), otevřete prostředek Application Insights jste již vytvořili pro jiné komponenty.
    2. V okně přehledu, otevřete rozevírací Essentials kartě a zkopírujte **klíč instrumentace.**
-   3. V projektu otevřete soubor ApplicationInsights.config a vložit:`<InstrumentationKey>your copied key</InstrumentationKey>`
+   3. V projektu otevřete soubor ApplicationInsights.config a vložit: `<InstrumentationKey>your copied key</InstrumentationKey>`
 
 ![Zkopírovat klíč instrumentace do souboru .config](./media/app-insights-monitor-multi-role-apps/copy-instrumentation-key.png)
 
 
-### <a name="3-enable-multi-role-application-map"></a>3. Povolit aplikaci mapování více rolí
+### <a name="3-enable-composite-application-map"></a>3. Povolit mapy kompozitních aplikací
 
-Na portálu Azure otevřete prostředek vaší aplikace. V okně verze Preview povolit *mapování aplikace s více rolí*.
+Na portálu Azure otevřete prostředek vaší aplikace. V části Konfigurace dílčí záhlaví, klikněte na verze Preview a otevřete okno verze Preview. V okně verze Preview povolit *kompozitních aplikací mapy*.
 
 ### <a name="4-enable-docker-metrics-optional"></a>4. Povolit Docker metriky (volitelné) 
 
@@ -125,6 +125,6 @@ Klikněte na tlačítko prostřednictvím korelační seznam telemetrická data 
 ![Hledání mezi komponentami](./media/app-insights-monitor-multi-role-apps/search-across-components.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Samostatné telemetrie z vývoj, testování a provozním](app-insights-separate-resources.md)

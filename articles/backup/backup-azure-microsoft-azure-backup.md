@@ -1,12 +1,12 @@
 ---
-title: "Zálohování úloh do Azure pomocí serveru Azure Backup | Microsoft Docs"
-description: "Použijte Azure Backup Server při ochraně nebo zálohovat úlohy na portál Azure."
+title: Zálohování úloh do Azure pomocí serveru Azure Backup | Microsoft Docs
+description: Použijte Azure Backup Server při ochraně nebo zálohovat úlohy na portál Azure.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: PVRK
 manager: shivamg
-editor: 
-keywords: "Azure backup server; chránit úlohy; zálohování úloh"
+editor: ''
+keywords: Azure backup server; chránit úlohy; zálohování úloh
 ms.assetid: e7fb1907-9dc1-4ca1-8c61-50423d86540c
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: c33cea62dac1c06dd1cb4031897af8c822e61661
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 95c11de3a1aed680d37dd86c1783ac8bee7ffec3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Příprava zálohování úloh pomocí Azure Backup Serveru
 > [!div class="op_single_selector"]
@@ -67,10 +67,10 @@ Pokud nechcete spustit základní server v Azure, můžete spustit server na vir
 
 > [!NOTE]
 > Azure Backup Server je určená ke spuštění na vyhrazeném samostatném jednoúčelovém serveru. Azure Backup Server nejde nainstalovat na:
-> - Počítač se systémem jako řadič domény
-> - Počítač, na kterém je nainstalována role aplikačního serveru
-> - Počítač, který je serveru pro správu System Center Operations Manager
-> - Počítač, na kterém běží systém Exchange Server
+> - Počítač spuštěný jako řadič domény
+> - Počítač, na kterém je nainstalovaná role aplikačního serveru
+> - Počítač, který je serverem pro správu nástroje System Center Operations Manager
+> - Počítač, na kterém je spuštěný server Exchange
 > - Počítač, který je uzlem clusteru
 
 Vždycky připojení k serveru Azure Backup k doméně. Pokud budete chtít přesunout server do jiné domény, doporučujeme připojení serveru k nové doméně před instalací serveru pro zálohování Azure. Přesunutí existující počítač serveru Azure Backup do nové domény po nasazení *nepodporuje*.
@@ -101,7 +101,7 @@ Vytvoření trezoru Recovery Services:
    Po vytvoření svůj trezor otevře na portálu.
 
 ### <a name="set-storage-replication"></a>Nastavení replikace úložiště
-Možnost replikace úložiště umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud tento trezor trezoru primární, ponechte možnost úložiště do geograficky redundantní úložiště. Zvolte místně redundantní úložiště, pokud chcete levnější možnost, která není tak trvanlivá. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md#geo-redundant-storage) a [místně redundantního](../storage/common/storage-redundancy.md#locally-redundant-storage) úložiště naleznete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
+Možnost replikace úložiště umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud tento trezor trezoru primární, ponechte možnost úložiště do geograficky redundantní úložiště. Zvolte místně redundantní úložiště, pokud chcete levnější možnost, která není tak trvanlivá. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy-grs.md) a [místně redundantního](../storage/common/storage-redundancy-lrs.md) úložiště naleznete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
 
 Chcete-li upravit nastavení replikace úložiště:
 

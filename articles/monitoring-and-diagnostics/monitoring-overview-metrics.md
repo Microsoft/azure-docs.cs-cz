@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 88020b27403f06ab8f1c0a1c45b798db02f517f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4598267e92716529774f42d22ab7c47d944d4495
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Přehled metriky v Microsoft Azure
 Tento článek popisuje, co metriky jsou ve službě Microsoft Azure jejich výhody a jak je začít používat.  
@@ -116,7 +116,7 @@ Metriky výstrahy: můžete se pak upozornění e-mailem nebo fire webhooku, kte
 
  ![Metriky a pravidla výstrah v monitorování Azure](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
-V blízkosti upozornění v reálném čase (preview): tyto mít možnost sledovat více metriky a prahové hodnoty pro prostředek a potom oznámíme vám prostřednictvím [akce skupiny](/monitoring-action-groups.md). Další informace o [téměř v reálném čase metrika výstrahy zde](https://aka.ms/azuremonitor/near-real-time-alerts).
+Novější metriky výstrahy mají možnost sledovat více metriky a prahové hodnoty pro prostředek a potom oznámíme vám prostřednictvím [akce skupiny](/monitoring-action-groups.md). Další informace o [novější výstrahy zde](https://aka.ms/azuremonitor/near-real-time-alerts).
 
 
 ### <a name="autoscale-your-azure-resources"></a>Škálování vašeho Azure prostředky

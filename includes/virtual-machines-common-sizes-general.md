@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 32d1330b60de139a1ac16c4d8d70f76873dbd4c2
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 4eeff0d89fa8a73b8f7f4b73fb5bfb85cda26184
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 Velikosti virtuálních počítačů pro obecné účely poskytují vyrovnáváním poměr paměť procesoru. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. Tento článek obsahuje informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro každou velikost v této skupině. 
 
@@ -96,7 +96,7 @@ ACU: 210–250
 ACU: 210–250
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových adaptérů / očekává šířku pásma sítě (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_D1_v2 |1 |3,5 |4 |50 |3000 / 46 / 23 |4 / 4×500 |2 / 750 |
 | Standard_D2_v2 |2 |7 |8 |100 |6000 / 93 / 46 |8 / 8×500 |2 / 1 500 |
 | Standard_D3_v2 |4 |14 |16 |200 |12000 / 187 / 93 |16 / 16×500 |4 / 3 000 |

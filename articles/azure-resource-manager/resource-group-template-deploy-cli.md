@@ -1,6 +1,6 @@
 ---
-title: "Nasazení prostředků pomocí Azure CLI a šablony | Microsoft Docs"
-description: "Nasazení prostředky do Azure pomocí Azure Resource Manageru a rozhraní příkazového řádku Azure. Prostředky jsou definovány v šabloně Resource Manageru."
+title: Nasazení prostředků pomocí Azure CLI a šablony | Microsoft Docs
+description: Nasazení prostředky do Azure pomocí Azure Resource Manageru a rozhraní příkazového řádku Azure. Prostředky jsou definovány v šabloně Resource Manageru.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9c8b352194e3a624097a48b5d312356a0ead4276
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f920165448f4197778faec07c9d49e0bddf1b555
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI
 
@@ -34,7 +34,7 @@ Pokud nemáte nainstalované rozhraní příkazového řádku Azure, můžete po
 
 Při nasazování prostředků do Azure, můžete:
 
-1. Přihlaste se k účtu Azure
+1. Přihlaste se ke svému účtu Azure.
 2. Vytvořte skupinu prostředků, která slouží jako kontejner pro nasazené prostředky. Název skupiny prostředků může obsahovat pouze alfanumerické znaky, tečky, podtržítka, pomlčky a závorky. Může být až 90 znaků. Nemůže končit tečkou.
 3. Nasazení do skupiny prostředků definující zdrojů pro vytvoření šablony
 
@@ -82,10 +82,12 @@ V předchozím příkladu vyžaduje veřejně přístupná identifikátor URI pr
 
 V prostředí cloudu použijte následující příkazy:
 
-   ```azurecli-interactive
-   az group create --name examplegroup --location "South Central US"
-   az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageAccountType=Standard_GRS
-   ```
+```azurecli-interactive
+az group create --name examplegroup --location "South Central US"
+az group deployment create --resource-group examplegroup \
+  --template-uri <copied URL> \
+  --parameters storageAccountType=Standard_GRS
+```
 
 ## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Nasazení na více než jedné skupiny prostředků nebo předplatného
 
@@ -185,7 +187,7 @@ az group deployment create \
     --parameters storageAccountType=Standard_GRS
 ```
 
-## <a name="sample-template"></a>Ukázka šablony
+## <a name="sample-template"></a>Ukázková šablona
 
 Příklady v tomto článku se používá následující šablony. Zkopírujte a uložte ho jako soubor s názvem storage.json. Chcete-li pochopit, jak k vytvoření této šablony, přečtěte si téma [vytvoření vaší první šablony Azure Resource Manager](resource-manager-create-first-template.md).  
 

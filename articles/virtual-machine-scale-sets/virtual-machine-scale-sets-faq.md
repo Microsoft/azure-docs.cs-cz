@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 4dd908908877a222c708c9b2ab6255ab9a4b414a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e7fc12c9b4cc79109975e34f64f236394c33af25
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy k sadách škálování virtuálních počítačů Azure
 
@@ -63,7 +63,11 @@ Získejte odpovědi na nejčastější dotazy týkající se sady škálování 
 
 **Otázka:** Spolupracují škálovací sady se skupinami dostupnosti Azure?
 
-**Odpověď:** Ano. Škálovací sada je implicitní skupina dostupnosti s pěti doménami selhání a pěti aktualizačními doménami. Škálovací sady s více než 100 virtuálních počítačů pokrývají více *skupin umístění* odpovídajících více skupinám dostupnosti. Další informace o skupinách umístění najdete v tématu [Práce s velkými škálovacími sadami virtuálních počítačů](virtual-machine-scale-sets-placement-groups.md). Skupina dostupnosti virtuálních počítačů může existovat ve stejné virtuální síti jako škálovací sada virtuálních počítačů. Běžnou konfigurací je umístění virtuálních počítačů řídicích uzlů, které často vyžadují jedinečnou konfiguraci, do skupiny dostupnosti, a datových uzlů do škálovací sady.
+**Odpověď:** Místní (bez oblastmi) škálovací sady používá *umístění skupiny*, z nichž každý lze nastavit tak, aby fungoval jako implicitní sada dostupnosti s pěti domén selhání a pět aktualizaci domény. Sady škálování virtuálních počítačů více než 100 span více skupin pro umístění. Další informace o skupinách umístění najdete v tématu [Práce s velkými škálovacími sadami virtuálních počítačů](virtual-machine-scale-sets-placement-groups.md). Skupina dostupnosti virtuálních počítačů může existovat ve stejné virtuální síti jako škálovací sada virtuálních počítačů. Běžnou konfigurací je umístění virtuálních počítačů řídicích uzlů, které často vyžadují jedinečnou konfiguraci, do skupiny dostupnosti, a datových uzlů do škálovací sady.
+
+**Otázka:** Škálování pracovní sady zón. Azure dostupnosti?
+
+**Odpověď:** Ano! Další informace najdete v tématu [sady škálování zóny doc](./virtual-machine-scale-sets-use-availability-zones.md).
 
 
 ## <a name="autoscale"></a>Automatické škálování

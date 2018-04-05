@@ -1,13 +1,13 @@
 ---
-title: "Připojit datový disk pro virtuální počítač s Windows v Azure pomocí prostředí PowerShell | Microsoft Docs"
-description: "Jak připojit nové nebo stávající datový disk k virtuálnímu počítači Windows PowerShell pomocí modelu nasazení Resource Manager."
+title: Připojit datový disk pro virtuální počítač s Windows v Azure pomocí prostředí PowerShell | Microsoft Docs
+description: Jak připojit nové nebo stávající datový disk k virtuálnímu počítači Windows PowerShell pomocí modelu nasazení Resource Manager.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: cynthn
-ms.openlocfilehash: 6bc52262105fd9b162ad8ada9ae5cc3dbf623df2
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 9733b17718aaa2f3e24d56fa15c7b84e2e5c72dd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-using-powershell"></a>Připojit datový disk pro virtuální počítač s Windows pomocí prostředí PowerShell
 
@@ -47,7 +47,7 @@ $location = 'East US'
 $storageType = 'PremiumLRS'
 $dataDiskName = $vmName + '_datadisk1'
 
-$diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location $location -CreateOption Empty -DiskSizeGB 128
+$diskConfig = New-AzureRmDiskConfig -SkuName $storageType -Location $location -CreateOption Empty -DiskSizeGB 128
 $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk $diskConfig -ResourceGroupName $rgName
 
 $vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName 
@@ -59,7 +59,6 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 ### <a name="using-managed-disks-in-an-availability-zone"></a>Pomocí spravovaného disků v zóně dostupnosti
 K vytvoření disku v zóně dostupnosti, použijte [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) s `-Zone` parametr. Následující příklad vytvoří disk v zóně *1*.
 
-[!INCLUDE [availability-zones-preview-statement.md](../../../includes/availability-zones-preview-statement.md)]
 
 ```powershell
 $rgName = 'myResourceGroup'
@@ -68,7 +67,7 @@ $location = 'East US 2'
 $storageType = 'PremiumLRS'
 $dataDiskName = $vmName + '_datadisk1'
 
-$diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location $location -CreateOption Empty -DiskSizeGB 128 -Zone 1
+$diskConfig = New-AzureRmDiskConfig -SkuName $storageType -Location $location -CreateOption Empty -DiskSizeGB 128 -Zone 1
 $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk $diskConfig -ResourceGroupName $rgName
 
 $vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName 
@@ -127,6 +126,6 @@ $vm = Add-AzureRmVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $
 Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vytvoření [snímku](snapshot-copy-managed-disk.md).

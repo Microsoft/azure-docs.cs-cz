@@ -1,12 +1,12 @@
 ---
-title: "Řešení potíží s Azure Backup selhání: hosta stavu agenta není k dispozici | Microsoft Docs"
-description: "Příznaky, příčiny a řešení Azure Backup chyby související s agenta, rozšíření a disky."
+title: 'Řešení potíží s Azure Backup selhání: hosta stavu agenta není k dispozici | Microsoft Docs'
+description: Příznaky, příčiny a řešení Azure Backup chyby související s agenta, rozšíření a disky.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
-keywords: "Zálohování Azure; Agent virtuálního počítače; Připojení k síti;"
+editor: ''
+keywords: Zálohování Azure; Agent virtuálního počítače; Připojení k síti;
 ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: a18718aba3ef7f70caa541c6eb56311082d02bed
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 81678f6a8659ffb763ebfe418098e510c73f6ae0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: problémy s agenta nebo rozšíření
 
@@ -27,7 +27,7 @@ Tento článek obsahuje kroky řešení potíží, které vám mohou pomoci vyř
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Agent virtuálního počítače nemůže komunikovat s Azure Backup
+## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Nelze navázat komunikaci s Azure Backup agent virtuálního počítače
 
 Chybová zpráva: "Nelze navázat komunikaci s Azure Backup Agent virtuálního počítače"
 
@@ -78,21 +78,6 @@ Po registraci a naplánovat virtuálního počítače pro službu Azure zálohov
 **Příčina 4: [nelze načíst stav snímku ani snímku nelze provést.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **Příčina 5: [rozšíření zálohování se nezdaří aktualizace nebo zatížení](#the-backup-extension-fails-to-update-or-load)**  
 **Příčina 6: [zálohování služby nemá oprávnění k odstranění staré body obnovení z důvodu zámek skupiny prostředků](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
-
-## <a name="disk-configuration-is-not-supported"></a>Konfigurace disku nejsou podporovány
-
-Chybová zpráva: "zadané konfigurace disku nejsou podporovány."
-
-> [!NOTE]
-> Máme privátní Preview verzi pro podporu zálohování pro virtuální počítače, které mají disky, které jsou větší než 1 TB. Podrobnosti najdete v tématu [privátní Preview verzi pro podporu zálohování virtuálních počítačů velké diskové](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
->
->
-
-Zálohování Azure v současné době nepodporuje disky, které jsou [větší než 1,023 GB](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm). Pokud máte disky, které jsou větší než 1 TB:  
-1. [Připojte nový disky](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) , které jsou menší než 1 TB.  
-2. Zkopírování dat z disků, které jsou větší než 1 TB na nově vytvořený disky, které jsou menší než 1 TB.  
-3. Ujistěte se, že byl zkopírován všechna data. Potom odeberte disky, které jsou větší než 1 TB.  
-4. Zahajte zálohování.
 
 ## <a name="causes-and-solutions"></a>Příčiny a řešení
 

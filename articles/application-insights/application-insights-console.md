@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights pro konzolové aplikace | Microsoft Docs"
-description: "Sledování webových aplikací pro dostupnosti, výkonu a využití."
+title: Azure Application Insights pro konzolové aplikace | Microsoft Docs
+description: Sledování webových aplikací pro dostupnosti, výkonu a využití.
 services: application-insights
 documentationcenter: .net
 author: lmolkova
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: lmolkova
-ms.openlocfilehash: 57f5670eec36ff2c4332da592dd2a3eef73fdefc
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: lmolkova; mbullwin
+ms.openlocfilehash: f9d734abeb644fc865d5dc86afc8ad0e586bfc0a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro rozhraní .NET Konzolová aplikace
 [Application Insights](app-insights-overview.md) umožňuje monitorování vaší webové aplikace pro dostupnosti, výkonu a využití.
@@ -26,8 +26,8 @@ Potřebujete předplatné s [Microsoft Azure](http://azure.com). Přihlaste se p
 
 ## <a name="getting-started"></a>Začínáme
 
-* Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](app-insights-create-new-resource.md). Jako typ aplikace vyberte aplikaci ASP.NET.
-* Zkopírujte klíč instrumentace. V rozevíracím Essentials nového prostředku, kterou jste vytvořili najít klíč. 
+* Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](app-insights-create-new-resource.md). Typ aplikace, vyberte **Obecné**.
+* Zkopírujte klíč instrumentace. Vyhledání klíče v **Essentials** rozevíracího seznamu nového prostředku jste vytvořili. 
 * Nainstalujte nejnovější [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) balíčku.
 * Nastavte klíč instrumentace před sledování všech telemetrie v kódu (nebo nastavená proměnná prostředí APPINSIGHTS_INSTRUMENTATIONKEY). Potom byste měli ručně sledovat telemetrie a zobrazit ji na portálu Azure
 
@@ -39,7 +39,10 @@ telemetryClient.TrackTrace("Hello World!");
 
 * Nainstalujte nejnovější verzi [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) balíček - automaticky sleduje HTTP, SQL nebo jiná volání vnější závislosti.
 
-Může inicializace a konfigurace Application Insights z kódu nebo použití `ApplicationInsights.config` souboru. Zajistěte, aby co nejdříve se stane inicializace.
+Může inicializace a konfigurace Application Insights z kódu nebo použití `ApplicationInsights.config` souboru. Zajistěte, aby co nejdříve se stane inicializace. 
+
+> [!NOTE]
+> Odkazy na pokyny **souboru ApplicationInsights.config** platí pouze pro aplikace, které jsou cílené .NET Standard a neplatí pro aplikace .NET Core. 
 
 ### <a name="using-config-file"></a>Použití konfiguračního souboru
 

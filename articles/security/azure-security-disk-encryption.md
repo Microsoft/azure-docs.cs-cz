@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: 73212a231d11136854115922df423a7cb5b08f05
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5219ebc22e56ad4b5cdfc125f7fa5882c61adb9f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption pro systém Windows a virtuálních počítačů Linux IaaS
 Microsoft Azure se důrazně zaměřuje na zajištění ochrany osobních údajů, suverenity data a umožňuje vám řízení vaší Azure hostované data prostřednictvím řadu pokročilých technologiích k šifrování, řídit a spravovat šifrovací klíče, řízení a audit přístupu k datům. To poskytuje Azure zákazníkům flexibilitu zvolit si řešení, které nejlépe vyhovuje potřebám své firmy. V tomto dokumentu jsme vás seznámí s nové řešení technologie "Azure Disk Encryption pro systém Windows a Linux IaaS virtuálního počítače je" k ochraně a ochranu dat, aby splňovaly vaše organizace zabezpečení a dodržování předpisů závazky. Dokumentu poskytuje podrobné pokyny k použití funkcí Azure disk encryption, včetně Podporované scénáře a uživatel dojde.
@@ -780,14 +780,10 @@ Použití [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 
 > Příprava virtuálního počítače s samostatné dat nebo prostředků virtuálního pevného disku pro získání externí klíče pomocí nástroje BitLocker.
 
 #### <a name="encrypting-an-os-drive-on-a-running-linux-vm"></a>Šifrování jednotce operačního systému na spuštěný virtuální počítač s Linuxem
-Šifrování jednotky operačního systému na spuštěný virtuální počítač Linux je podporována v následujících rozdělení:
-
-* RHEL 7.2
-* CentOS 7.2
-* Ubuntu 16.04
 
 ##### <a name="prerequisites-for-os-disk-encryption"></a>Požadavky pro šifrování disku operačního systému
 
+* Virtuální počítač musí používat kompatibilní s šifrování disku operačního systému distribučního popsaných [Azure Disk Encryption – nejčastější dotazy](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq#what-linux-distributions-does-azure-disk-encryption-support) 
 * Virtuální počítač musí být vytvořený z Marketplace image ve službě Správce prostředků Azure.
 * Virtuální počítač Azure s minimálně 4 GB paměti RAM (doporučená velikost je 7 GB).
 * (Pro RHEL a CentOS) Zakážete SELinux. Pokud chcete zakázat SELinux, najdete v části "4.4.2. Zakázání SELinux"v [Průvodce SELinux uživatele a správce](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) ve virtuálním počítači.

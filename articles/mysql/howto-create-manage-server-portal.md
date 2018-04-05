@@ -1,19 +1,19 @@
 ---
-title: "Vytvoření a správě Azure databáze pro server databáze MySQL pomocí portálu Azure"
-description: "Tento článek popisuje, jak můžete rychle vytvořit novou databázi MySQL server Azure a spravovat server pomocí portálu Azure."
+title: Vytvoření a správě Azure databáze pro server databáze MySQL pomocí portálu Azure
+description: Tento článek popisuje, jak můžete rychle vytvořit novou databázi MySQL server Azure a spravovat server pomocí portálu Azure.
 services: mysql
 author: ajlam
-ms.author: nolanwu
+ms.author: andrela
 editor: jasonwhowell
 manager: kfile
 ms.service: mysql-database
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 0e274c0ada3de5e9000ae41516e5b9b67ef1490b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4b52cb9e42e582d42424c2814e2e30f764a8679b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Vytvoření a správě Azure databáze pro server databáze MySQL pomocí portálu Azure
 Toto téma popisuje, jak můžete rychle vytvořit novou databázi MySQL serveru Azure. Zahrnuje také informace o tom, jak spravovat server pomocí portálu Azure. Správa serveru zahrnuje zobrazení Podrobnosti o serveru a databází, resetuje se heslo, škálování prostředky a odstranění serveru.

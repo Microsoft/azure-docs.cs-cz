@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 03/29/2018
 ms.author: kumud
-ms.openlocfilehash: 9f5a68972015f54e2333199652075cda2535a3c8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f5d46fda6bdb32c1a5000883c6aedb2da15e796a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Nástroj pro vyrovnávání zatížení standardní a dostupnosti zón
 
 Podporuje Azure Vyrovnávání zatížení standardní SKU [dostupnost zóny](../availability-zones/az-overview.md) scénáře. Několik nových konceptů jsou k dispozici s standardní pro vyrovnávání zatížení, které umožňují optimalizovat dostupnosti ve vašem scénáři začátku do konce zarovnání prostředky zón a také rozprostřít do zóny.  Zkontrolujte [dostupnost zóny](../availability-zones/az-overview.md) pro co dostupnost zóny jsou pokyny, které oblasti v současné době podporují dostupnost zóny a další související koncepty a produkty. Dostupnost zóny v kombinaci s nástroj pro vyrovnávání zatížení je sada funkcí obsáhlou a flexibilní, můžete vytvořit mnoho různých scénářů.  Přečtěte si tento dokument pochopit tyto [koncepty](#concepts) a základní scénáře [návrh pokyny](#design).
 
 >[!NOTE]
->Zkontrolujte [dostupnost zóny Preview](https://aka.ms/availabilityzones) další související témata. 
+>Zkontrolujte [dostupnost zóny](https://aka.ms/availabilityzones) další související témata. 
 
 ## <a name="concepts"></a> Koncepty dostupnost zóny použít nástroj pro vyrovnávání zatížení
 
@@ -43,7 +43,7 @@ Samotný prostředek pro vyrovnávání zatížení je místní a nikdy oblastmi
 
 Konfigurace IP front-endu odkazující na prostředek veřejné IP adresy nebo privátní IP adresy v rámci podsítě virtuální sítě prostředku je front-end pro vyrovnávání zatížení.  Ho tvoří koncový bod Vyrovnávání zatížení, kde je vystaven služby.
 
-Nástroj pro vyrovnávání zatížení prostředků může obsahovat oblastmi a zónově redundantní frontends současně.
+Nástroj pro vyrovnávání zatížení prostředků může obsahovat oblastmi a zónově redundantní frontends současně. 
 
 Pokud prostředek veřejné IP má byla zaručena na zónu, zonality (nebo neexistenci) není měnitelný.  Pokud chcete změnit nebo vynechejte zonality z veřejných IP front-endu, budete muset znovu vytvořit veřejné IP adresy v příslušnou zónu.  
 
@@ -219,3 +219,5 @@ Neexistuje žádné obecné pokyny, že jeden je vhodnější než jiné, aniž 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [dostupnost zóny](../availability-zones/az-overview.md)
 - Další informace o [nástroj pro vyrovnávání zatížení](load-balancer-standard-overview.md)
+- Zjistěte, jak [vyrovnávat zatížení virtuálních počítačů v rámci zóny pomocí standardní Vyrovnávání zatížení s front-end oblastmi](load-balancer-standard-public-zonal-cli.md)
+- Zjistěte, jak [vyrovnávat zatížení virtuálních počítačů ve zón pomocí standardní Vyrovnávání zatížení s front-end zónově redundantní](load-balancer-standard-public-zone-redundant-cli.md)

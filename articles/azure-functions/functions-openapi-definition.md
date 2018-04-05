@@ -1,13 +1,13 @@
 ---
-title: "Vytvoření definice OpenAPI pro funkci | Dokumentace Microsoftu"
-description: "Vytvořte definici OpenAPI, která umožní ostatním aplikacím a službám volat vaši funkci v Azure."
+title: Vytvoření definice OpenAPI pro funkci | Dokumentace Microsoftu
+description: Vytvořte definici OpenAPI, která umožní ostatním aplikacím a službám volat vaši funkci v Azure.
 services: functions
 keywords: OpenAPI, Swagger, cloud apps, cloud services,
-documentationcenter: 
+documentationcenter: ''
 author: mgblythe
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/15/2017
 ms.author: mblythe; glenga
-ms.custom: mvc
-ms.openlocfilehash: 29e78bbb8e3d4d4feb3f7d32cf0a5ef1b02a6268
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.custom: mvc, cc996988-fb4f-47
+ms.openlocfilehash: 8caea30196a7ecdd4226b18963cd8b2040dc7e35
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>Vytvoření definice OpenAPI pro funkci
 Rozhraní REST API se často popisují pomocí definice OpenAPI (dříve označované jako soubor [Swagger](http://swagger.io/)). Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API.
@@ -40,8 +40,6 @@ V tomto kurzu se naučíte:
 K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků. 
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
 
 ## <a name="create-the-function"></a>Vytvoření funkce

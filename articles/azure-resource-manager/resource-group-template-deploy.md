@@ -1,6 +1,6 @@
 ---
-title: "Nasazení prostředků pomocí prostředí PowerShell a šablony | Microsoft Docs"
-description: "Nasazení prostředky do Azure pomocí Azure Resource Manageru a prostředí Azure PowerShell. Prostředky jsou definovány v šabloně Resource Manageru."
+title: Nasazení prostředků pomocí prostředí PowerShell a šablony | Microsoft Docs
+description: Nasazení prostředky do Azure pomocí Azure Resource Manageru a prostředí Azure PowerShell. Prostředky jsou definovány v šabloně Resource Manageru.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3378c13934a5a0743aa40ebb19940f1afa71fc71
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: eb4ebe0b1c0e4799aea6401b068d881e5aa47026
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu
 
@@ -34,7 +34,7 @@ V případě potřeby nainstalujte modul Azure PowerShell pomocí pokynů v [pro
 
 Při nasazování prostředků do Azure, můžete:
 
-1. Přihlaste se k účtu Azure
+1. Přihlaste se ke svému účtu Azure.
 2. Vytvořte skupinu prostředků, která slouží jako kontejner pro nasazené prostředky. Název skupiny prostředků může obsahovat pouze alfanumerické znaky, tečky, podtržítka, pomlčky a závorky. Může být až 90 znaků. Nemůže končit tečkou.
 3. Nasazení do skupiny prostředků definující zdrojů pro vytvoření šablony
 
@@ -78,7 +78,9 @@ V prostředí cloudu použijte následující příkazy:
 
 ```powershell
 New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile "C:\users\ContainerAdministrator\CloudDrive\templates\azuredeploy.json" -storageAccountType Standard_GRS
+New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
+  -TemplateUri <copied URL> `
+  -storageAccountType Standard_GRS
 ```
 
 ## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Nasazení na více než jedné skupiny prostředků nebo předplatného
@@ -134,7 +136,7 @@ Pokud vaše šablona obsahuje parametr se stejným názvem jako jeden z parametr
 K otestování šablony a parametr hodnoty bez ve skutečnosti nasazení všechny prostředky, použijte [Test-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/test-azurermresourcegroupdeployment). 
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+Test-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 

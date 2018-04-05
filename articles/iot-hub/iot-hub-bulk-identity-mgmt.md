@@ -14,21 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 74645f3fdece14790311592a0fdd4ce6570a5bae
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 97b0e4c4dd8c67fdcd422fb04b7c32815b6c3fdb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Spravovat vaše identit zařízení IoT Hub hromadně
 
 Každé centrum IoT má registru identit, které můžete použít k vytvoření prostředků na zařízení ve službě. Registr identit umožňuje řídit přístup k zařízení přístupem koncových bodů. Tento článek popisuje, jak importovat a exportovat identit zařízení hromadné do a z registru identit.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Import a export operace proběhla v kontextu *úlohy* které umožňují provádět hromadné operace služby proti služby IoT hub.
 
 **RegistryManager** třída zahrnuje **ExportDevicesAsync** a **ImportDevicesAsync** metody, které používají **úlohy** framework. Tyto metody umožňují exportovat, import a synchronizaci celého registru identit IoT hub.
 
 Toto téma popisuje použití **RegistryManager** třídy a **úlohy** systému a provést hromadný import a export zařízení do a z registru identit služby IoT hub. Azure IoT Hub zařízení zřizování Service můžete také povolit nula-dotykového ovládání, v běhu zřizování na jeden nebo více centra IoT bez nutnosti lidského zásahu. Další informace najdete v tématu [zřizování dokumentace ke službě][lnk-dps].
+
 
 ## <a name="what-are-jobs"></a>Jaké jsou úlohy?
 

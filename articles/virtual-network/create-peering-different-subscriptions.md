@@ -4,7 +4,7 @@ description: Naučte se vytvořit virtuální síť partnerský vztah mezi virtu
 services: virtual-network
 documentationcenter: ''
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: e4ca1f62be8185dd7e0e45f6736bc0273b466309
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 92cbcad42508f2ae6113d13449aba7eed5acd251
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Vytvoření virtuální sítě partnerský vztah – Resource Manager, různých předplatných 
 
@@ -35,7 +35,7 @@ Postup vytvoření virtuální sítě partnerského vztahu se liší v závislos
 
 Virtuální síť partnerský vztah nelze vytvořit mezi dvěma virtuálními sítěmi nasazené prostřednictvím modelu nasazení classic. Pokud potřebujete připojení virtuální sítě, které byly obě vytvořené pomocí modelu nasazení classic, můžete použít Azure [brány VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) připojení virtuální sítě. 
 
-V tomto kurzu partnerský vztah virtuálních sítí ve stejné oblasti. Schopnost peer virtuální sítě v různých oblastech je aktuálně ve verzi preview. Proveďte kroky v [zaregistrovat pro partnerský vztah globální virtuální sítě](#register) před pokusem o partnerský uzel virtuálních sítí v různých oblastech nebo partnerského vztahu selže. Možnost propojit virtuální sítě v různých oblastech s Azure [brány VPN](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) je všeobecně dostupná a nevyžaduje registraci.
+V tomto kurzu partnerský vztah virtuálních sítí ve stejné oblasti. Můžete také peer virtuální sítě v různých [podporované oblasti](virtual-network-manage-peering.md#cross-region). 
 
 Můžete použít [portál Azure](#portal), Azure [rozhraní příkazového řádku](#cli) (CLI) Azure [prostředí PowerShell](#powershell), nebo [šablony Azure Resource Manageru](#template)vytvoření virtuální sítě partnerského vztahu. Klikněte na libovolný předchozí odkaz nástroj přejít přímo na kroky pro vytvoření virtuální sítě partnerský vztah nástroji vašeho výběru.
 
@@ -43,7 +43,7 @@ Můžete použít [portál Azure](#portal), Azure [rozhraní příkazového řá
 
 Tento kurz používá různé účty pro každé předplatné. Pokud používáte účet, který má oprávnění pro oba odběry, můžete použít stejný účet pro všechny kroky, přeskočte postup protokolování mimo portál a přeskočit kroky pro přiřazení jiný uživatel oprávnění k virtuálním sítím.
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) jako uživatele. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Najdete v článku [oprávnění](#permissions) tohoto článku podrobnosti.
+1. Přihlaste se k [portál Azure](https://portal.azure.com) jako uživatele. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Seznam oprávnění najdete v tématu [virtuální sítě partnerského vztahu oprávnění](virtual-network-manage-peering.md#permissions).
 2. Klikněte na tlačítko **+ nový**, klikněte na tlačítko **sítě**, pak klikněte na tlačítko **virtuální síť**.
 3. V **vytvořit virtuální síť** okno, zadejte, nebo vyberte hodnoty pro následující nastavení a potom klikněte na tlačítko **vytvořit**:
     - **Name**: *myVnetA*
@@ -106,7 +106,7 @@ Následující skript:
 
 Místo instalace rozhraní příkazového řádku a jeho závislé součásti, můžete použít prostředí cloudové služby Azure. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. Klikněte **vyzkoušet** tlačítko ve skriptu, který následuje, které vyvolá prostředí cloudu, který se může přihlásit k účtu Azure s. 
 
-1. Otevřete relaci rozhraní příkazového řádku a přihlaste se k Azure jako uživatele pomocí `azure login` příkaz. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Najdete v článku [oprávnění](#permissions) tohoto článku podrobnosti.
+1. Otevřete relaci rozhraní příkazového řádku a přihlaste se k Azure jako uživatele pomocí `azure login` příkaz. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Seznam oprávnění najdete v tématu [virtuální sítě partnerského vztahu oprávnění](virtual-network-manage-peering.md#permissions).
 2. Zkopírujte následující skript do textového editoru ve vašem počítači, nahraďte `<SubscriptionA-Id>` s ID SubscriptionA, zkopírujte upravené skriptu, vložte jej v relaci příkazového řádku a stiskněte klávesu `Enter`. Pokud si nejste jisti Id předplatného, zadejte příkaz 'az účet zobrazit'. Hodnota **id** ve výstupu je ID vašeho předplatného.
 
     ```azurecli-interactive
@@ -129,7 +129,7 @@ Místo instalace rozhraní příkazového řádku a jeho závislé součásti, m
       --scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
     ```
     
-3. Odhlaste se z Azure jako uživatele pomocí `az logout` příkazů a přihlaste se k Azure jako b. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Najdete v článku [oprávnění](#permissions) tohoto článku podrobnosti.
+3. Odhlaste se z Azure jako uživatele pomocí `az logout` příkazů a přihlaste se k Azure jako b. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Seznam oprávnění najdete v tématu [virtuální sítě partnerského vztahu oprávnění](virtual-network-manage-peering.md#permissions).
 4. Vytvořte myVnetB. Zkopírujte obsah skriptů v kroku 2 do textového editoru ve vašem počítači. Nahraďte `<SubscriptionA-Id>` s ID SubscriptionB. Změna 10.0.0.0/16 10.1.0.0/16, změnit všechny, B a všechny Bs A. kopií upravené skript, vložte jej do relace rozhraní příkazového řádku a stiskněte klávesu `Enter`. 
 5. Odhlaste se z Azure jako b a přihlaste se k Azure jako uživatele.
 6. Vytvoření partnerského vztahu z myVnetA k myVnetB virtuální sítě. Zkopírujte následující skript obsah do textového editoru ve vašem počítači. Nahraďte `<SubscriptionB-Id>` s ID SubscriptionB. Spustit skript, zkopírujte upravené skript, vložte jej do relace rozhraní příkazového řádku a stiskněte klávesu Enter.
@@ -179,7 +179,7 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
 
 1. Nainstalujte nejnovější verzi modulu [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) pro PowerShell. Pokud s Azure PowerShellem začínáte, podívejte se na [Přehled Azure PowerShellu](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Spusťte relaci prostředí PowerShell.
-3. V prostředí PowerShell, přihlaste se k Azure jako uživatele tak, že zadáte `login-azurermaccount` příkaz. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Najdete v článku [oprávnění](#permissions) tohoto článku podrobnosti.
+3. V prostředí PowerShell, přihlaste se k Azure jako uživatele tak, že zadáte `login-azurermaccount` příkaz. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Seznam oprávnění najdete v tématu [virtuální sítě partnerského vztahu oprávnění](virtual-network-manage-peering.md#permissions).
 4. Vytvořte skupinu prostředků a virtuální síť A. kopie následující skript do textového editoru ve vašem počítači. Nahraďte `<SubscriptionA-Id>` s ID SubscriptionA. Pokud si nejste jisti Id předplatného, zadejte `Get-AzureRmSubscription` příkaz k jeho zobrazení. Hodnota **Id** ve vrácené výstupu je ID vašeho předplatného. Spustit skript, zkopírujte upravené skript, vložte jej do prostředí PowerShell a potom stiskněte klávesu `Enter`.
 
     ```powershell
@@ -202,7 +202,7 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
       -Scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
     ```
 
-5. Odhlášení uživatele z Azure a přihlaste se b. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Najdete v článku [oprávnění](#permissions) tohoto článku podrobnosti.
+5. Odhlášení uživatele z Azure a přihlaste se b. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Seznam oprávnění najdete v tématu [virtuální sítě partnerského vztahu oprávnění](virtual-network-manage-peering.md#permissions).
 6. Zkopírujte obsah skriptů v kroku 4 do textového editoru ve vašem počítači. Nahraďte `<SubscriptionA-Id>` s ID předplatného B. změnu 10.0.0.0/16 k 10.1.0.0/16. Změňte všechny, B a všechny Bs A. Se spustit skript, zkopírujte upravené skript, vložte do prostředí PowerShell a potom stiskněte klávesu `Enter`.
 7. Odhlaste se b z Azure a přihlášení uživatele.
 8. Vytvoření partnerského vztahu z myVnetA k myVnetB. Zkopírujte následující skript do textového editoru ve vašem počítači. Nahraďte `<SubscriptionB-Id>` s ID předplatného B. Se spustit skript, zkopírujte upravené skript, vložte v prostředí PowerShell a potom stiskněte klávesu `Enter`.
@@ -241,7 +241,7 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
 
 ## <a name="template"></a>Vytvoření partnerského vztahu - šablony Resource Manageru
 
-1. Vytvořte virtuální síť a přiřaďte odpovídající [oprávnění](#permissions) účet v každém předplatném, proveďte kroky v [portál](#portal), [rozhraní příkazového řádku Azure](#cli), nebo [Prostředí PowerShell](#powershell) části tohoto článku.
+1. Vytvořte virtuální síť a přiřaďte odpovídající [oprávnění](virtual-network-manage-peering.md#permissions), proveďte kroky v [portál](#portal), [rozhraní příkazového řádku Azure](#cli), nebo [prostředí PowerShell](#powershell)části tohoto článku.
 2. Uložte text, který následuje do souboru v místním počítači. Nahraďte `<subscription ID>` s ID uživatele pro předplatné. Soubor může uložit jako vnetpeeringA.json, např.
 
     ```json
@@ -279,17 +279,6 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
 5. Dokončení kroku 3 znovu, přihlášení do Azure jako b.
 6. **Volitelné**: když vytváření virtuálních počítačů není zahrnutý v tomto kurzu, můžete vytvořit virtuální počítač v každé virtuální sítě a připojení z jednoho virtuálního počítače na druhý k ověření připojení.
 7. **Volitelné**: Pokud chcete odstranit prostředky, které vytvoříte v tomto kurzu, proveďte kroky v [odstranit prostředky](#delete) tohoto článku, pomocí portálu Azure, PowerShell nebo rozhraní příkazového řádku Azure.
-
-## <a name="permissions"></a>Oprávnění
-
-Účty, které použijete k vytvoření virtuální sítě partnerského vztahu musí mít potřebné role nebo oprávnění. Například, pokud byly partnerský vztah dvě virtuální sítě s názvem **myVnetA** a **myVnetB**, musí mít váš účet přiřazenou následující minimální role nebo oprávnění pro každou virtuální síť:
-    
-|Virtuální síť|Role|Oprávnění|
-|---|---|---|
-|myVnetA|[Přispěvatel sítě](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-|myVnetB|[Přispěvatel sítě](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
-
-Další informace o [předdefinované role](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) a přiřazení specifické oprávnění pro [vlastní role](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (pouze Resource Manager).
 
 ## <a name="delete"></a>Odstraňte prostředky
 Po dokončení tohoto kurzu, můžete chtít odstranit z prostředků, které jste vytvořili v tomto kurzu, aby vám zbytečně nenabíhaly poplatky za používání. Odstranění skupiny prostředků se také odstraní všechny prostředky, které jsou ve skupině prostředků.
@@ -331,54 +320,6 @@ Po dokončení tohoto kurzu, můžete chtít odstranit z prostředků, které js
     ```powershell
     Remove-AzureRmResourceGroup -Name myResourceGroupB -force
     ```
-
-## <a name="register"></a>Registrace pro partnerského vztahu preview globální virtuální sítě
-
-Vytváření partnerských vztahů virtuálních sítí ve stejné oblasti je všeobecně dostupné. Partnerský vztah virtuální sítě v různých oblastech je aktuálně ve verzi preview. V tématu [aktualizace virtuální sítě](https://azure.microsoft.com/en-us/updates/?product=virtual-network) pro dostupné oblasti. Rovnocenných počítačů virtuálních sítí v oblastech, nejprve je nutné zaregistrovat verzi Preview, pomocí následujících kroků (v rámci předplatného je každá virtuální síť chcete rovnocenných počítačů v) pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure:
-
-### <a name="powershell"></a>PowerShell
-
-1. Nainstalujte nejnovější verzi modulu [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) pro PowerShell. Pokud s Azure PowerShellem začínáte, podívejte se na [Přehled Azure PowerShellu](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. Spusťte relaci prostředí PowerShell a přihlaste se k Azure pomocí `Login-AzureRmAccount` příkaz.
-3. Registrujte předplatné, které každý virtuální síť, které chcete peer se ve verzi Preview zadáním následujících příkazů:
-
-    ```powershell
-    Register-AzureRmProviderFeature `
-      -FeatureName AllowGlobalVnetPeering `
-      -ProviderNamespace Microsoft.Network
-    
-    Register-AzureRmResourceProvider `
-      -ProviderNamespace Microsoft.Network
-    ```
-4. Potvrďte, že jste zaregistrováni ve verzi preview tak, že zadáte následující příkaz:
-
-    ```powershell    
-    Get-AzureRmProviderFeature `
-      -FeatureName AllowGlobalVnetPeering `
-      -ProviderNamespace Microsoft.Network
-    ```
-
-    Neprovádějte kroky v části šablony portálu, rozhraní příkazového řádku Azure, PowerShell nebo správce prostředků tohoto článku, dokud **RegistrationState** výstupu se zobrazí po zadání příkazu předchozí je **registrovaná**  pro oba odběry.
-
-### <a name="azure-cli"></a>Azure CLI
-
-1. [Instalace a konfigurace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?toc=%2Fazure%2Fvirtual-network%2Ftoc.json).
-2. Ujistěte se, že používáte verzi 2.0.18 nebo vyšší rozhraní příkazového řádku Azure tak, že zadáte `az --version` příkaz. Pokud si nejste, nainstalujte nejnovější verzi.
-3. Přihlaste se k Azure pomocí `az login` příkaz.
-4. Registrovat verzi Preview zadáním následujících příkazů:
-
-   ```azurecli-interactive
-   az feature register --name AllowGlobalVnetPeering --namespace Microsoft.Network
-   az provider register --name Microsoft.Network
-   ```
-
-5. Potvrďte, že jste zaregistrováni ve verzi preview tak, že zadáte následující příkaz:
-
-    ```azurecli-interactive
-    az feature show --name AllowGlobalVnetPeering --namespace Microsoft.Network
-    ```
-
-    Neprovádějte kroky v části šablony portálu, rozhraní příkazového řádku Azure, PowerShell nebo správce prostředků tohoto článku, dokud **RegistrationState** výstupu se zobrazí po zadání příkazu předchozí je **registrovaná**  pro oba odběry.
 
 ## <a name="next-steps"></a>Další postup
 

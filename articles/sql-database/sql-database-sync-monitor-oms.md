@@ -1,6 +1,6 @@
 ---
-title: "Monitorování synchronizaci dat Azure SQL s OMS Log Analytics | Microsoft Docs"
-description: "Naučte se monitorovat synchronizaci dat SQL Azure s využitím analýzy protokolů OMS"
+title: Monitorování synchronizaci dat Azure SQL (Preview) s OMS Log Analytics | Microsoft Docs
+description: Naučte se monitorovat synchronizaci dat SQL Azure (Preview) pomocí OMS analýzy protokolů
 services: sql-database
 ms.date: 11/07/2017
 ms.topic: article
@@ -9,17 +9,17 @@ author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 423614227b16ad6cfa6dadfab1c5f2b93c5bbe62
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c106d5bbea118c9b78cbccee187b8eb5c347f232
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>Synchronizaci dat SQL (Preview) monitorování s OMS analýzy protokolů 
 
 Zkontrolujte protokol aktivit synchronizaci dat SQL a zjištění chyby a upozornění, dříve bylo nutné ručně zkontrolujte synchronizaci dat SQL na portálu Azure nebo pomocí Powershellu nebo rozhraní REST API. Postupujte podle kroků v tomto článku nakonfigurovat vlastní řešení, který zlepšuje synchronizaci dat možností monitorování. Toto řešení vyhovovat vašemu scénáři můžete přizpůsobit.
 
-Přehled synchronizaci dat SQL najdete v tématu [synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure (Preview)](sql-database-sync-data.md).
+Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure (Preview)](sql-database-sync-data.md).
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Řídicí panel monitorování pro všechny skupiny pro synchronizaci 
 
@@ -189,21 +189,21 @@ Stáhněte si ukázky kódu, které jsou popsané v tomto článku v následují
 
 -   [Zobrazení OMS protokolu synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-## <a name="next-steps"></a>Další kroky
-Další informace o synchronizaci dat SQL najdete v tématu:
+## <a name="next-steps"></a>Další postup
+Další informace o Synchronizaci dat SQL:
 
--   [Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure](sql-database-sync-data.md)
--   [Nastavit synchronizaci dat SQL Azure](sql-database-get-started-sql-data-sync.md)
--   [Osvědčené postupy pro synchronizaci dat SQL Azure](sql-database-best-practices-data-sync.md)
--   [Řešení problémů s synchronizaci dat SQL Azure](sql-database-troubleshoot-data-sync.md)
+-   [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](sql-database-sync-data.md)
+-   [Nastavení Synchronizace dat SQL Azure](sql-database-get-started-sql-data-sync.md)
+-   [Osvědčené postupy pro Synchronizaci dat SQL Azure](sql-database-best-practices-data-sync.md)
+-   [Řešení potíží se Synchronizací dat SQL Azure](sql-database-troubleshoot-data-sync.md)
 
--   Dokončete příklady prostředí PowerShell, které ukazují, jak nakonfigurovat synchronizaci dat SQL:
+-   Úplné příklady PowerShellu ukazující konfiguraci Synchronizace dat SQL:
     -   [Pomocí prostředí PowerShell k synchronizaci mezi více databází Azure SQL](scripts/sql-database-sync-data-between-sql-databases.md)
-    -   [Synchronizace mezi databáze SQL Azure a místní databáze SQL serveru pomocí prostředí PowerShell](scripts/sql-database-sync-data-between-azure-onprem.md)
+    -   [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
 
--   [Stáhněte si dokumentaci rozhraní API REST synchronizaci dat SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   [Stažení dokumentace k rozhraní REST API Synchronizace dat SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
-Další informace o databázi SQL najdete v tématu:
+Další informace o službě SQL Database:
 
--   [Databáze SQL – přehled](sql-database-technical-overview.md)
+-   [Přehled služby SQL Database](sql-database-technical-overview.md)
 -   [Správa životního cyklu databáze](https://msdn.microsoft.com/library/jj907294.aspx)

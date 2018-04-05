@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/21/2018
+ms.date: 03/29/2018
 ms.author: mfussell
-ms.openlocfilehash: cd36d52df24610af1d2cb2d9e6e41f33bb7ea5fe
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e22c656218abcd0564faec6fae6d6979f09b386a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Spuštění služby jako skupinový účet spravované služby
-Pomocí Azure Service Fabric můžete zabezpečit aplikace, které jsou spuštěny v clusteru v rámci jiné uživatelské účty. Spouštění aplikací pod různými účty, i v sdílené hostovaném prostředí, je díky bezpečnější od sebe navzájem. Ve výchozím nastavení se aplikace Service Fabric běžet pod účtem, proces Fabric.exe kompatibilní se. Pro samostatné cluster Windows Server, můžete spustit služby jako skupinový účet spravované služby (gMSA) nebo [uživatele služby Active Directory nebo skupiny](service-fabric-run-service-as-ad-user-or-group.md) pomocí zásad RunAs. Všimněte si, že se používá služby Active Directory místně v rámci domény a není Azure Active Directory (Azure AD). Pomocí gMSA neexistuje žádné heslo nebo zašifrované heslo uložené v `Application Manifest`.
+Na samostatné clusteru Windows Server můžete spustit službu jako skupina pomocí zásad RunAs účet spravované služby (gMSA).  Ve výchozím nastavení se aplikace Service Fabric běžet pod účtem, proces Fabric.exe kompatibilní se. Spouštění aplikací pod různými účty, i v sdílené hostovaném prostředí, je díky bezpečnější od sebe navzájem. Všimněte si, že se používá služby Active Directory místně v rámci domény a není Azure Active Directory (Azure AD). Pomocí gMSA neexistuje žádné heslo nebo zašifrované heslo, které jsou uložené v manifestu aplikace.  Můžete taky spustit služba jako [uživatele služby Active Directory nebo skupiny](service-fabric-run-service-as-ad-user-or-group.md).
 
 Následující příklad ukazuje, jak vytvořit účet gMSA s názvem *svc Test$*; pro nasazení tohoto účtu spravované služby pro uzly clusteru; a jak nakonfigurovat hlavní název uživatele.
 

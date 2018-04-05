@@ -1,6 +1,6 @@
 ---
-title: "Kurz Kubernetes v Azure – Aktualizace aplikace"
-description: "Kurz AKS – Aktualizace aplikace"
+title: Kurz Kubernetes v Azure – Aktualizace aplikace
+description: Kurz AKS – Aktualizace aplikace
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 82a6b6580fbe69b11fdb8a47e2ca09c19b341bbc
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 97a7e0b8e33042739ccea9a086642d9019c15e5b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="update-an-application-in-azure-container-service-aks"></a>Aktualizace aplikace ve službě Azure Container Service (AKS)
+# <a name="tutorial-update-an-application-in-azure-container-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Container Service (AKS)
 
 Aplikaci je možné po nasazení v Kubernetes aktualizovat zadáním nové image kontejneru nebo verze image. Aktualizace je přitom fázovaná, takže se současně aktualizuje jenom část nasazení. Tato fázovaná aktualizace umožňuje, aby aplikace během aktualizace běžela. Poskytuje také mechanismus vrácení zpět pro případ, že dojde k selhání nasazení. 
 
@@ -27,7 +27,7 @@ V tomto kurzu, který je šestou částí osmidílné série, se aktualizuje apl
 > * Nahrání image kontejneru do služby Azure Container Registry
 > * Nasazení aktualizované image kontejneru
 
-V dalších kurzech se Operations Management Suite konfiguruje pro monitorování clusteru Kubernetes.
+V dalších kurzech se služba Log Analytics konfiguruje pro monitorování clusteru Kubernetes.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -89,7 +89,7 @@ K označení image použijte [docker tag][docker-tag]. Místo `<acrLoginServer>`
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-Pomocí příkazu [docker push][docker-push] odešlete image do registru. Místo `<acrLoginServer>` použijte název přihlašovacího serveru služby Azure Container Registry.
+Pomocí příkazu [docker push][docker-push] odešlete image do registru. Místo `<acrLoginServer>` použijte název přihlašovacího serveru služby Azure Container Registry. Pokud máte s nahráváním do registru ACR problémy, ujistěte se, že jste spustili příkaz [az acr login][az-acr-login].
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -164,7 +164,7 @@ V tomto kurzu jste aktualizovali aplikaci a zavedli tuto aktualizaci do clusteru
 > * Nahrání image kontejneru do služby Azure Container Registry
 > * Nasazení aktualizované aplikace
 
-V dalším kurzu se dozvíte, jak monitorovat Kubernetes s využitím sady Operations Management Suite.
+V dalším kurzu se dozvíte, jak monitorovat Kubernetes s využitím služby Log Analytics.
 
 > [!div class="nextstepaction"]
 > [Monitorování Kubernetes pomocí Log Analytics][aks-tutorial-monitor]
@@ -179,3 +179,4 @@ V dalším kurzu se dozvíte, jak monitorovat Kubernetes s využitím sady Opera
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md
+[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login

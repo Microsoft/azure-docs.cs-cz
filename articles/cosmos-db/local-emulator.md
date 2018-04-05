@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2018
+ms.date: 03/27/2018
 ms.author: danoble
-ms.openlocfilehash: 4a393887d8e82e833b0c956666bf36e5adb19e70
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e0d23a163f16763dd4764eb7857dec8076f4754c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Použití emulátoru DB Cosmos Azure pro místní vývoj a testování
 
@@ -136,7 +136,7 @@ Emulátor serveru můžete spustit v místní síti. Pokud chcete povolit přís
 Pokud chcete povolit přístup k síti první uživatel by měl vypnutí emulátoru a odstranit adresář data na emulátoru (C:\Users\user_name\AppData\Local\CosmosDBEmulator).
 
 ## <a name="developing-with-the-emulator"></a>Vývoj v emulátoru
-Jakmile máte emulátoru DB Cosmos Azure spuštěna na pracovní ploše, můžete použít libovolnou podporované [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) nebo [REST API služby Azure Cosmos DB](/rest/api/documentdb/) pro interakci s emulátor. Emulátor DB Cosmos Azure také zahrnuje integrovanou Průzkumníku dat, která umožňuje vytvářet kolekce pro SQL a rozhraní API MongoDB a zobrazení a úpravám dokumentů bez psaní jakéhokoli kódu.   
+Jakmile máte emulátoru DB Cosmos Azure spuštěna na pracovní ploše, můžete použít libovolnou podporované [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) nebo [REST API služby Azure Cosmos DB](/rest/api/cosmos-db/) pro interakci s emulátor. Emulátor DB Cosmos Azure také zahrnuje integrovanou Průzkumníku dat, která umožňuje vytvářet kolekce pro SQL a rozhraní API MongoDB a zobrazení a úpravám dokumentů bez psaní jakéhokoli kódu.   
 
     // Connect to the Azure Cosmos DB Emulator running locally
     DocumentClient client = new DocumentClient(
@@ -342,17 +342,41 @@ Zde je uveden seznam příkazů pro řízení emulátoru z prostředí PowerShel
 
 ### `Get-CosmosDbEmulatorStatus`
 
+#### <a name="syntax"></a>Syntaxe
+
+`Get-CosmosDbEmulatorStatus`
+
+#### <a name="remarks"></a>Poznámky
+
 Vrátí jednu z těchto hodnot ServiceControllerStatus: ServiceControllerStatus.StartPending, ServiceControllerStatus.Running nebo ServiceControllerStatus.Stopped.
 
-### `Start-CosmosDbEmulator [-NoWait]`
+### `Start-CosmosDbEmulator`
+
+#### <a name="syntax"></a>Syntaxe
+
+`Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>]  [<CommonParameters>]`
+
+#### <a name="remarks"></a>Poznámky
 
 Spustí se emulátor. Ve výchozím nastavení příkaz bude čekat, dokud emulátor je připravena přijímat požadavky. Pokud chcete, aby se rutina mohla vrátit, jakmile se spustí se emulátor, použijte parametr - NoWait.
 
-### `Stop-CosmosDbEmulator [-NoWait]`
+### `Stop-CosmosDbEmulator`
+
+#### <a name="syntax"></a>Syntaxe
+
+ `Stop-CosmosDbEmulator [-NoWait]`
+
+#### <a name="remarks"></a>Poznámky
 
 Zastaví emulátor. Ve výchozím nastavení tento příkaz bude čekat, dokud emulátor je plně vypnutí. Pokud chcete, aby se rutina mohla vrátit co nejrychleji emulátoru začne vypnout, použijte parametr - NoWait.
 
-### `Uninstall-CosmosDbEmulator [-RemoveData]`
+### `Uninstall-CosmosDbEmulator`
+
+#### <a name="syntax"></a>Syntaxe
+
+`Uninstall-CosmosDbEmulator [-RemoveData]`
+
+#### <a name="remarks"></a>Poznámky
 
 Odinstaluje emulátoru a volitelně odstraní úplný obsah $env: LOCALAPPDATA\CosmosDbEmulator.
 Rutina zajišťuje, že je emulátor je zastavena před odinstalací jej.
@@ -454,6 +478,20 @@ Chcete-li shromažďovat trasování ladění, spusťte následující příkazy
 ## <a name="change-list"></a>Seznam změn
 
 Číslo verze můžete zkontrolovat tak, že kliknete pravým tlačítkem na ikonu emulátoru místního na hlavním panelu a klikněte na o položku nabídky.
+
+### <a name="12106-released-on-march-27-2018"></a>1.21.0.6 vydala 27 března 2018
+
+Kromě aktualizace služeb emulátoru parita s cloudovými službami Cosmos DB, jsme zahrnuli nová funkce a opravy chyb pro dvě v této verzi.
+
+#### <a name="features"></a>Funkce
+
+1. Příkaz Start-CosmosDbEmulator nyní zahrnuje možnosti spuštění.
+
+#### <a name="bug-fixes"></a>Opravy chyb
+
+1. Modul prostředí Microsoft.Azure.CosmosDB.Emulator PowerShell teď zajišťuje, že `ServiceControllerStatus` výčtu je načtena.
+
+2. Modul prostředí Microsoft.Azure.CosmosDB.Emulator PowerShell teď obsahuje manifest; opomenutí z prvního vydání.
 
 ### <a name="1201084-released-on-february-14-2018"></a>1.20.108.4 vydané 14. února 2018
 

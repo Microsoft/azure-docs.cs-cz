@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: c36a3451dabbb0d08e5e475e0eec14f861bd41ce
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: efb24f5e55d7ba0077797d3f7d0f2177020f92b3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Vytvoření, změnit nebo odstranit veřejnou IP adresu
 
@@ -58,7 +58,7 @@ Veřejné IP adresy mají nominální poplatků. Zobrazit cenách, přečtěte s
     |Předplatné|Ano|Musí existovat ve stejné [předplatné](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) jako prostředek, který chcete přidružit veřejnou IP adresu, která.|
     |Skupina prostředků|Ano|Může existovat ve stejné nebo jiné, [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) jako prostředek, který chcete přidružit veřejnou IP adresu, která.|
     |Umístění|Ano|Musí existovat ve stejné [umístění](https://azure.microsoft.com/regions), také nazývaný jako oblasti jako prostředek, který chcete přidružit veřejnou IP adresu, které se.|
-    |Zóna dostupnosti| Ne | Toto nastavení se zobrazí, pouze pokud jste vybrali podporovaných umístění. Seznam podporovaných umístění najdete v tématu [dostupnost zóny přehled](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dostupnost zóny jsou aktuálně ve verzi preview. Před výběrem zóny nebo zónově redundantní možnost, musíte nejdřív dokončit kroky v [zaregistrovat verzi Preview zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#get-started-with-the-availability-zones-preview). Pokud jste vybrali **základní** SKU, *žádné* je automaticky vybrána pro vás. Pokud dáváte přednost zaručit konkrétní zónu, můžete vybrat konkrétní zónu. Jednu z těchto možností není zónově redundantní. Pokud jste vybrali **standardní** SKU: Zónově redundantní se vybere automaticky pro vás a provede cestu k datům odolné selhání zóny. Pokud chcete zaručit konkrétní zóně, což není odolný proti selhání zóny, můžete vybrat konkrétní zónu.
+    |Zóna dostupnosti| Ne | Toto nastavení se zobrazí, pouze pokud jste vybrali podporovaných umístění. Seznam podporovaných umístění najdete v tématu [dostupnost zóny přehled](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud jste vybrali **základní** SKU, *žádné* je automaticky vybrána pro vás. Pokud dáváte přednost zaručit konkrétní zónu, můžete vybrat konkrétní zónu. Jednu z těchto možností není zónově redundantní. Pokud jste vybrali **standardní** SKU: Zónově redundantní se vybere automaticky pro vás a provede cestu k datům odolné selhání zóny. Pokud chcete zaručit konkrétní zóně, což není odolný proti selhání zóny, můžete vybrat konkrétní zónu.
   
 
 **Příkazy**

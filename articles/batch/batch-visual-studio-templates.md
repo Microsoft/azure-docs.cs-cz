@@ -1,25 +1,25 @@
 ---
-title: "Začněte vytvářet řešení Batch pomocí šablony projektů Visual Studio – Azure | Microsoft Docs"
-description: "Zjistěte, jak pomocí šablony projektů Visual Studio můžete implementovat a spouštět úlohy náročné na Azure Batch."
+title: Sestavení řešení Batch pomocí šablony sady Visual Studio – Azure | Microsoft Docs
+description: Zjistěte, jak pomocí šablony projektů Visual Studio můžete implementovat a spouštět úlohy náročné na Azure Batch.
 services: batch
 documentationcenter: .net
-author: fayora
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da77ce827c65deb18d9d84ce5cf768d89788e205
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5241c62e8b423b20477fc72c87303daf3d4ab43c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Sestavování řešení Batch pomocí šablony projektů Visual Studio
 
@@ -434,7 +434,7 @@ Parameters.JSON tímto kódem a pokud zjistila, že ho načte jako slovník para
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>Zachovat výstup úlohy a úkolů do úložiště Azure.
 Další užitečné nástroje při vývoji řešení Batch je [Azure Batch souboru konvence][nuget_package]. Tato knihovna tříd rozhraní .NET (momentálně ve verzi preview) v aplikacích Batch .NET pomocí snadno ukládání a načítání úloh výstupy do a z Azure Storage. [Zachovat výstup úlohy a úlohy Azure Batch](batch-task-output.md) obsahuje úplnou diskusi o knihovně a jeho použití.
 

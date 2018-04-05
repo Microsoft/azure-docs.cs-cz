@@ -1,5 +1,5 @@
 ---
-title: Pomocí vlastního nastavení jazyka – Azure AD B2C | Microsoft Docs
+title: Vlastní nastavení jazyka v Azure AD B2C | Microsoft Docs
 description: Informace o přizpůsobení nastavení jazyka počítače.
 services: active-directory-b2c
 documentationcenter: ''
@@ -11,73 +11,77 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 7c72c1d43d9a5fa541c72a8ba7a5ccedeafdaaff
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3d0f1f2ffd02873df2e2e7eab9894d9c3421b0f7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="azure-active-directory-b2c-using-language-customization"></a>Azure Active Directory B2C: Přizpůsobení jazyka pomocí
+# <a name="language-customization-in-azure-active-directory-b2c"></a>Vlastní nastavení jazyka v Azure Active Directory B2C
 
 >[!NOTE]
 >Tato funkce je ve verzi public preview.
 >
 
-Přizpůsobení jazyka umožňuje vaše zásady pro uložení různých jazycích, aby vyhovovaly potřebám vašeho zákazníka.  Společnost Microsoft poskytuje převody pro 36 jazyků (viz [Další informace](#additional-information)), ale můžete taky zadat vlastní překladů pro žádný jazyk.  I když prostředí je k dispozici pouze pro jeden jazyk, můžete přizpůsobit jakýkoli text na stránkách.  
+Vlastní nastavení jazyka v Azure Active Directory B2C (Azure AD B2C) umožňuje vaše zásady pro uložení různých jazycích, aby vyhovovaly potřebám vašeho zákazníka.  Společnost Microsoft poskytuje převody pro [36 jazyků](#supported-languages), ale můžete taky zadat vlastní překladů pro žádný jazyk. I v případě, že je dispozici prostředí pouze jeden jazyk, můžete přizpůsobit jakýkoli text na stránkách.  
 
-## <a name="how-does-language-customization-work"></a>Jak funguje jazyk přizpůsobení?
-Vlastní nastavení jazyka umožňuje vyberte jazyky, které vám dobře slouží uživatele je k dispozici v.  Jakmile je funkce zapnutá, můžete zadat parametr řetězce dotazu, ui_locales, z vaší aplikace.  Při volání do Azure AD B2C, jsme převede stránku pro národní prostředí, které jste označili.  Tento typ konfigurace vám poskytuje úplnou kontrolu nad jazyky vám dobře slouží uživatele a ignoruje nastavení jazyka prohlížeče zákazníka. Můžete taky nemusí být nutné tuto úroveň kontroly nad jaké jazyky, najdete v části vašich zákazníků.  Pokud nezadáte parametr ui_locales, zkušeností zákazníků se závisí na nastavení svého prohlížeče.  Můžete řídit jazyky, které vám dobře slouží uživatele převádějí na přidáním v podporovaném jazyce.  Pokud prohlížeč zákazníka je nastavena na Zobrazit jazyk, že nechcete, aby pro podporu, zobrazí se místo toho jazyk, který jste vybrali jako výchozí hodnotu v podporované jazykové verze.
+## <a name="how-language-customization-works"></a>Jak funguje přizpůsobení jazyka
+Vyberte jazyky, které vám dobře slouží uživatele je k dispozici v použijete vlastní nastavení jazyka. Když je funkce povolená, můžete zadat parametr řetězce dotazu `ui_locales`, z vaší aplikace. Při volání do Azure AD B2C je národní prostředí, které jste označili přeložit stránku. Tento typ konfigurace vám poskytuje úplnou kontrolu nad jazyky vám dobře slouží uživatele a ignoruje nastavení jazyka prohlížeče zákazníka. 
 
-1. **Zadaný jazyk uživatelského rozhraní – národní prostředí** -Jakmile povolíte jazyk přizpůsobení, vám dobře slouží uživatele převádějí na jazyce určeném v tomto poli
-2. **Požadovaný jazyk prohlížeče** – Pokud nebyly zadány žádné uživatelské rozhraní národní prostředí, překládá do prohlížeče požadovaný jazyk, **Pokud byl součástí podporované jazyky**
-3. **Výchozí jazyk zásad** – Pokud prohlížeč neurčuje jazyk nebo Určuje jednu, která není podporována, překládá pro výchozí jazyk zásad
+Nemusí potřebovat tuto úroveň kontroly nad jaké jazyky uvidí vašich zákazníků. Pokud nezadáte `ui_locales` parametr zkušeností zákazníků se závisí na nastavení svého prohlížeče.  Můžete řídit jazyky, které vám dobře slouží uživatele převádějí na přidáním v podporovaném jazyce. Pokud prohlížeč zákazníka je nastavena na Zobrazit jazyk, který nechcete, aby pro podporu, zobrazí se místo toho jazyk, který jste vybrali jako výchozí hodnotu v podporované jazykové verze.
+
+- **Zadaný jazyk uživatelského rozhraní – národní prostředí**: Jakmile povolíte jazyk přizpůsobení, vám dobře slouží uživatele převádějí na jazyk, který je zde stanovený.
+- **Prohlížeč požadovaný jazyk**: Pokud žádné `ui_locales` byl zadán parametr, vám dobře slouží uživatele je přeložit na jazyk prohlížeče požadovaný *Pokud je podporován jazyk*.
+- **Výchozí jazyk zásad**: Pokud v prohlížeči neurčuje jazyk nebo Určuje jednu, která není podporována, je cesty uživatele převedeny na výchozí jazyk zásad.
 
 >[!NOTE]
->Pokud používáte vlastní uživatelské atributy, budete muset zadat vlastní překladů. Najdete v části "[přizpůsobit vaší řetězce](#customize-your-strings)' Podrobnosti.
+>Pokud používáte vlastní uživatelské atributy, budete muset zadat vlastní překladů. Další informace najdete v tématu [přizpůsobit vaší řetězce](#customize-your-strings).
 >
 
-## <a name="support-uilocales-requested-languages"></a>Podpora ui_locales požadované jazyky 
-Zásady, které byly vytvořeny před vydáním jazyk přizpůsobení obecné dostupnosti bude nutné nejprve povolit tuto funkci.  Zásady vytvořené po bude mít přizpůsobení jazyk, ve výchozím nastavení povolené.  Když zapnete jazyk přizpůsobení na zásadu, nyní je možné určit jazyk cesty uživatele tak, že přidáte parametr ui_locales.
-1. [Postupujte podle těchto kroků přejít na stránku funkce B2C na portálu Azure.](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration#navigate-to-b2c-settings)
-2. Přejděte na zásadu, která chcete povolit pro překlad.
-3. Klikněte na tlačítko **jazyk přizpůsobení**.  
-4. Klikněte na **povolit jazyk přizpůsobení** nahoře.
-5. Přečtěte si dialogové okno a klikněte na tlačítko "Ano".
+## <a name="support-requested-languages-for-uilocales"></a>Podpora požadované jazyky pro ui_locales 
+Zásady, které byly vytvořeny před zveřejněním přizpůsobení jazyk je třeba nejprve povolit tuto funkci. Zásady, které byly vytvořeny po mít přizpůsobení jazyk, ve výchozím nastavení povolené. 
+
+Když povolíte vlastní nastavení jazyka v zásadách, můžete řídit jazyk uživatele cesty přidáním `ui_locales` parametr.
+1. [Přejděte na stránku funkce B2C na portálu Azure](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration#navigate-to-b2c-settings).
+2. Vyhledejte zásadu, která chcete povolit pro překlad.
+3. Vyberte **jazyk přizpůsobení**.  
+4. Vyberte **povolit jazyk přizpůsobení**.
+5. Přečtěte si informace v dialogovém okně a vyberte **Ano**.
 
 ## <a name="select-which-languages-in-your-user-journey-are-enabled"></a>Vyberte jazyky, které ve vaší cesty uživatele jsou povolené. 
-Povolte sadu jazyky pro vaše uživatele cestu k převodu v, pokud není zadán parametr ui_locales.
-1. Zajistěte, aby byl jazyk přizpůsobení z předchozích pokynů zapnout vaše zásady.
-2. Z vaší **upravit zásady** vyberte **jazyk přizpůsobení**.
-3. Vyberte jazyk, které chcete podporovat.
-4. V podokně vlastností přepnutí **povoleno** na Ano.  
-5. Klikněte na tlačítko **Uložit** v horní části podokna Vlastnosti.
+Povolit sadu jazyky pro vaše uživatele cestu mají být převedeny na kdy `ui_locales` není zadán parametr.
+1. Zajistěte, aby vaše zásady jazyk přizpůsobení z předchozích pokynů zapnout.
+2. Z **upravit zásady** vyberte **jazyk přizpůsobení**.
+3. Vyberte jazyk, který chcete podporovat.
+4. V podokně vlastností změnit **povoleno** k **Ano**.  
+5. Vyberte **Uložit** v horní části podokna Vlastnosti.
 
 >[!NOTE]
->Pokud parametr ui_locales není k dispozici, pak stránce převádějí na jazyk prohlížeče zákazníka pouze v případě, že je povoleno
+>Pokud `ui_locales` není zadán parametr, stránky je převedeny na jazyk prohlížeče zákazníka, pouze pokud je povolen.
 >
 
 ## <a name="customize-your-strings"></a>Přizpůsobení vaší řetězce
-'Jazyk vlastní nastavení' umožňuje přizpůsobit libovolného řetězce v vám dobře slouží uživatele.
-1. Zajistěte, aby byl jazyk přizpůsobení z předchozích pokynů zapnout vaše zásady.
-2. Z vaší **upravit zásady** vyberte **jazyk přizpůsobení**.
+Přizpůsobení jazyka umožňuje přizpůsobit libovolného řetězce v vám dobře slouží uživatele.
+1. Zajistěte, aby vaše zásady jazyk přizpůsobení z předchozích pokynů zapnout.
+2. Z **upravit zásady** vyberte **jazyk přizpůsobení**.
 3. Vyberte jazyk, který chcete přizpůsobit.
 4. Vyberte stránku, kterou chcete upravit.
-5. Klikněte na tlačítko **stáhnout výchozí** (nebo **stáhnout přepsání** Pokud jste dříve upravili tento jazyk). 
+5. Vyberte **stáhnout výchozí** (nebo **stáhnout přepsání** Pokud jste dříve upravili tento jazyk). 
 
 Tyto kroky poskytnout soubor JSON, který vám pomůže začít upravovat vaše řetězce.
 
-### <a name="changing-any-string-on-the-page"></a>Změna libovolného řetězce na stránce
+### <a name="change-any-string-on-the-page"></a>Změnit libovolného řetězce na stránce
 1. Otevřete soubor JSON stažený z předchozích pokynů v editoru JSON.
-2. Najděte na element, který chcete změnit.  Můžete najít `StringId` řetězce, který hledáte, nebo Hledat `Value` chcete změnit.
+2. Najděte element, který chcete změnit.  Můžete najít `StringId` řetězce díváte, nebo vyhledejte `Value` atribut, který chcete změnit.
 3. Aktualizace `Value` atributem, co chcete zobrazit.
-4. Pro každý řetězec, kterou chcete změnit, nezapomeňte přepnout `Override` k **True**.
-5. Soubor uložte a odešlete své změny (ovládací prvek pro uložení můžete najít na stejném místě jako kam jste stáhli soubor JSON). 
+4. Pro každý řetězec, který chcete změnit, změňte `Override` k `true`.
+5. Soubor uložte a odešlete své změny. (Můžete najít ovládací prvek pro uložení na stejném místě jako kam jste stáhli soubor JSON.) 
 
 >[!IMPORTANT]
 >Pokud potřebujete k přepsání řetězec, nezapomeňte nastavit `Override` hodnotu `true`.  Pokud není hodnota změněna, tato položka je ignorována. 
 >
 
-### <a name="changing-extension-attributes"></a>Změna atributů rozšíření
+### <a name="change-extension-attributes"></a>Změna atributů rozšíření
 Pokud chcete změnit řetězec pro vlastní uživatelský atribut, nebo chcete přidat do formátu JSON, je v následujícím formátu:
 ```JSON
 {
@@ -97,8 +101,8 @@ Nahraďte `<ExtensionAttribute>` s názvem vaší atribut vlastní uživatele.
 
 Nahraďte `<ExtensionAttributeValue>` nové řetězcem, který se má zobrazit.
 
-### <a name="using-localizedcollections"></a>Pomocí LocalizedCollections
-Pokud chcete zadat seznam sadu hodnot pro odpovědi, je nutné vytvořit `LocalizedCollections`.  A `LocalizedCollections` je pole `Name` a `Value` páry.  `Name` Je určeno a `Value` je co je vrácený v deklaraci identity.  Chcete-li přidat `LocalizedCollections`, má následující formát:
+### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Zadejte seznam hodnot pomocí LocalizedCollections
+Pokud chcete zadat seznam sadu hodnot pro odpovědi, je nutné vytvořit `LocalizedCollections` atribut.  `LocalizedCollections` je pole `Name` a `Value` páry. Chcete-li přidat `LocalizedCollections`, použijte následující formát:
 
 ```JSON
 {
@@ -122,58 +126,59 @@ Pokud chcete zadat seznam sadu hodnot pro odpovědi, je nutné vytvořit `Locali
 }
 ```
 
-* `ElementId` je uživatel atribut, který tato `LocalizedCollections` je odpovědí na
-* `Name` je hodnota zobrazí uživateli
-* `Value` Co je vrácený v deklaraci identity, pokud je vybraná tato možnost je
+* `ElementId` je uživatel atribut, který tato `LocalizedCollections` atribut je odpovědí na.
+* `Name` je hodnota, která se zobrazí uživateli.
+* `Value` je, co je vrácený v deklaraci identity, pokud je vybraná tato možnost.
 
 ### <a name="upload-your-changes"></a>Odeslat změny
-1. Jakmile dokončíte změny do souboru JSON, přejděte zpět do svého klienta B2C.
-2. Z vaší **upravit zásady** vyberte **jazyk přizpůsobení**.
-3. Vyberte jazyk, které byste chtěli poskytnout překladů.
-4. Vyberte stránku byste chtěli poskytnout překladů.
-5. Klikněte na ikonu složky a vyberte soubor JSON k odeslání.
-6. To změnit je uložit do vaší zásady automaticky.
+1. Po dokončení změn do souboru JSON, přejděte zpět na svého klienta B2C.
+2. Z **upravit zásady** vyberte **jazyk přizpůsobení**.
+3. Vyberte jazyk, který chcete převést na.
+4. Vyberte stránku, kde chcete zadat překladů.
+5. Vyberte ikonu složky a vyberte soubor JSON k odeslání.
+ 
+Změny se automaticky uloží do vaší zásady.
 
-## <a name="using-page-ui-customization-with-language-customization"></a>Přizpůsobení uživatelského rozhraní stránky pomocí vlastního nastavení jazyka
+## <a name="customize-the-page-ui-by-using-language-customization"></a>Přizpůsobení stránce uživatelského rozhraní pomocí vlastního nastavení jazyka
 
-Existují dva způsoby k lokalizaci obsah HTML.  Když zapnete ['Jazyk přizpůsobení'](active-directory-b2c-reference-language-customization.md).  Povolení této funkce umožňuje Azure AD B2C předávat parametr Open ID Connect `ui-locales`, na váš koncový bod.  Vaše servery obsahu můžete zajistit vlastní stránky HTML, které jsou specifické pro jazyk použít tento parametr.
+Existují dva způsoby k lokalizaci obsah HTML. Jedním ze způsobů je zapnout [jazyk přizpůsobení](active-directory-b2c-reference-language-customization.md). Povolení této funkce umožňuje Azure AD B2C předávat parametr Open ID Connect `ui-locales`, na váš koncový bod.  Vaše servery obsahu můžete použít tento parametr poskytnout vlastní stránky HTML, které jsou jenom určitých jazyků.
 
-Alternativně jsme vyžádání obsahu z různých míst, podle národního prostředí používá.  V povolení CORS koncový bod, můžete nastavit strukturu složek jako hostitele obsahu pro konkrétní jazyky a zavoláme vám ten správný Pokud vložte hodnotu do zástupný znak `{Culture:RFC5646}`.  Například, pokud to je nutné jako identifikátor URI Mé vlastní stránky:
+Alternativně můžete načítat obsah z různých místech podle národního prostředí, který se používá. Váš koncový bod s povoleným CORS můžete nastavit strukturu složek jako hostitele obsahu pro konkrétní jazyky. Ten správný budete volat, pokud nechcete použít zástupný znak hodnotu `{Culture:RFC5646}`.  Předpokládejme například, že se jedná o stránku vlastní identifikátor URI:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
 ```
-I můžete načíst stránka Moje v `fr` a když ho je vyžádání obsah html a css, bude načítat z:
+Můžete načíst stránku v `fr`. Pokud stránky vrátí kód HTML a CSS obsah, je stahování z:
 ```
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ```
 
-## <a name="custom-locales"></a>Vlastní národní prostředí
+## <a name="add-custom-locales"></a>Přidat vlastní národní prostředí
 
-Můžete také přidat jazyky, které společnost Microsoft aktuálně neposkytuje překladů pro.  Musíte zajistit překladů pro všechny řetězce v zásadách.
+Můžete také přidat jazyky, které společnost Microsoft aktuálně neposkytuje překladů pro. Budete muset zadat překladů pro všechny řetězce v zásadách.
 
-1. Z vaší **upravit zásady** vyberte **jazyk přizpůsobení**.
+1. Z **upravit zásady** vyberte **jazyk přizpůsobení**.
 2. Vyberte **přidat vlastní jazyk** z horní části stránky.
-3. V podokně kontextu, které se otevře určete, který jazyk je poskytují překladů pro zadáním kódu platný národního prostředí.
+3. V podokně kontextu, které se otevře určete, který jazyk zadáváte překladů pro zadáním kódu platný národního prostředí.
 4. Pro jednotlivé stránky můžete stáhnout sadu přepsání pro angličtinu a pracovat na překlady.
 5. Jakmile jste hotovi s soubory JSON, můžete je načíst pro jednotlivé stránky.
-6. Vyberte **povolit** a zásady můžete nyní zobrazit tento jazyk pro vaše uživatele.
-7. Nezapomeňte uložit jazyk Jakmile povolíte ji.
+6. Vyberte **povolit**, a zásady můžete nyní zobrazit tento jazyk pro vaše uživatele.
+7. Uložte jazyk.
 
 ## <a name="additional-information"></a>Další informace
 
-### <a name="page-ui-customization-labels-are-persisted-as-your-first-set-of-overrides-once-language-customization-is-enabled"></a>Popisky přizpůsobení uživatelského rozhraní stránky jsou trvalé jako svou první sadu přepsání, jakmile je povoleno, přizpůsobení jazyk.
-Když povolíte 'Jazyk přizpůsobení', vaše předchozích úprav pro popisky pomocí přizpůsobení uživatelského rozhraní stránky zůstávají v souboru JSON pro angličtinu (en).  Chcete-li změnit štítky a jiných řetězců tím, že nahrajete prostředků jazyka v 'jazyk přizpůsobení, můžete pokračovat.
-### <a name="microsoft-is-committed-to-provide-the-most-up-to-date-translations-for-your-use"></a>Společnost Microsoft se zavazuje zajistit nejaktuálnější překladů pro vaše použití
-Jsme bude nepřetržitě zlepšit překlady a zůstanou v dodržování předpisů pro vás.  Jsme se identifikovat chyby a změny v globálních terminologie a bezproblémově zkontrolujte aktualizace, které budou fungovat v vám dobře slouží uživatele.
+### <a name="page-ui-customization-labels-as-overrides"></a>Popisky přizpůsobení uživatelského rozhraní stránky jako přepsání
+Když povolíte jazyk přizpůsobení, vaše předchozích úprav pro popisky pomocí přizpůsobení uživatelského rozhraní stránky zůstávají v souboru JSON pro angličtinu (en). Můžete změnit štítky a jiných řetězců tím, že nahrajete jazyk prostředky do vlastního nastavení jazyka.
+### <a name="up-to-date-translations"></a>Aktuální převody
+Společnost Microsoft se zavazuje poskytuje nejaktuálnější překladů pro vaše použití. Společnost Microsoft průběžně zvyšuje překlady a zajišťuje jejich dodržování předpisů pro vás. Společnost Microsoft bude identifikovat chyby a změny v globálních terminologie a bezproblémově zkontrolujte aktualizace, které budou fungovat v vám dobře slouží uživatele.
 ### <a name="support-for-right-to-left-languages"></a>Podpora jazyků zprava doleva
-Jsme aktuálně nejsou zajištění podpory jazyků zprava doleva, chcete-li tuto funkci prosím hlasovat pro tuto funkci na [zpětnou vazbu Azure](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
-### <a name="social-identity-provider-translations"></a>Sociální překlady zprostředkovatele Identity
-Poskytujeme parametru OIDC ui_locales sociálních přihlášení, ale není dodrženo některé poskytovateli sociální identity, včetně Facebook a Google. 
+Microsoft aktuálně neposkytuje podporu pro jazyky zprava doleva. Pokud potřebujete tuto funkci, prosím hlasovat pro něj [zpětnou vazbu Azure](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
+### <a name="social-identity-provider-translations"></a>Překlady zprostředkovatele sociální identity
+Společnost Microsoft poskytuje `ui_locales` OIDC parametru sociálních přihlášení. Ale někteří poskytovatelé sociálních identity, včetně Facebook a Google, nemusíte respektovat je. 
 ### <a name="browser-behavior"></a>Chování prohlížeče
-Chrome a Firefox obě žádosti pro své jazykové sady a pokud je podporovaném jazyce, se zobrazí před výchozí.  Hraniční aktuálně neuvede v požadavku jazyk a přejde se rovnou na výchozí jazyk.
+Chrome a Firefox, které obě žádosti pro své jazykové sady. Pokud je podporovaném jazyce, se zobrazí před výchozí. Hraniční aktuálně neuvede v požadavku jazyk a přejde se rovnou na výchozí jazyk.
 
-### <a name="what-languages-are-supported"></a>Jaké jazyky jsou podporovány?
+### <a name="supported-languages"></a>Podporované jazyky
 
 | Jazyk              | Kód jazyka |
 |-----------------------|---------------|

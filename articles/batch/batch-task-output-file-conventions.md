@@ -1,25 +1,25 @@
 ---
-title: "Zachovat úloh a úkolů výstup do služby Azure Storage s knihovnou souboru konvence pro platformu .NET – Azure Batch | Microsoft Docs"
-description: "Další informace o použití knihovny konvence souboru Azure Batch pro .NET pro zachování výstup úlohy a úlohy Batch do služby Azure Storage a zobrazení trvalou výstup na portálu Azure."
+title: Zachovat úloh a úkolů výstup do služby Azure Storage s knihovnou souboru konvence pro platformu .NET – Azure Batch | Microsoft Docs
+description: Další informace o použití knihovny konvence souboru Azure Batch pro .NET pro zachování výstup úlohy a úlohy Batch do služby Azure Storage a zobrazení trvalou výstup na portálu Azure.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9de327c20463469bc91d9720aa17333a36f919e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bbfb40b3740f9ea43df327a01ba6f4cf52d80457
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net-to-persist"></a>Zachovat úloh a úkolů data do služby Azure Storage pomocí knihovny Batch souboru konvence pro .NET k uchování 
 
@@ -222,7 +222,7 @@ Chcete-li zobrazit úlohy výstupní soubory a protokoly na portálu Azure, pře
 5. **Spustit** (spustit) **PersistOutputs** projektu.
 6. Po zobrazení výzvy vyberte technologie trvalost použít ke spuštění ukázky, zadejte **1** spustit ukázku pomocí souboru konvence knihovny se zachovat výstup úlohy. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>Získání knihovny Batch souboru konvence pro rozhraní .NET
 

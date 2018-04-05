@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2018
 ms.author: yushwang
-ms.openlocfilehash: 7f69b5268adc857c6e45f8fa11fbcca42f64b71f
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: b3d9d45da0fb62445867d13c9dff7502af77e8a8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway
 
@@ -81,9 +81,13 @@ Pomoc s konfigurací zařízení VPN najdete pod odkazy, které odpovídají př
 >
 > (\*\*) Směrovače řady ISR 7200 podporují jenom sítě VPN typu PolicyBased.
 
-## <a name="Download VPN device configuration scripts from Azure"></a>Stáhněte si skripty konfigurace zařízení VPN z Azure
+## <a name="configscripts"></a>Stáhněte si skripty konfigurace zařízení VPN z Azure
 
 Pro určité zařízení, můžete stáhnout konfigurační skripty přímo z Azure. Další informace a pokyny ke stažení, najdete v části [skripty konfigurace zařízení VPN Stáhnout](vpn-gateway-download-vpndevicescript.md).
+
+### <a name="devices-with-available-configuration-scripts"></a>Zařízení s dostupné konfiguračních skriptů
+
+[!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
 ## <a name="additionaldevices"></a>Neověřená zařízení VPN
 
@@ -158,7 +162,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Žádný         |
 | 2 |AES256        |SHA1              |Žádný         |
-| 3 |3DES          |SHA1              |Žádné         |
+| 3 |3DES          |SHA1              |Žádný         |
 | 4 |AES256        |SHA256            |Žádný         |
 | 5 |AES128        |SHA1              |Žádný         |
 | 6 |3DES          |SHA256            |Žádný         |
@@ -169,7 +173,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Žádný         |
 | 2 |AES256        |SHA1              |Žádný         |
-| 3 |3DES          |SHA1              |Žádné         |
+| 3 |3DES          |SHA1              |Žádný         |
 | 4 |AES256        |SHA256            |Žádný         |
 | 5 |AES128        |SHA1              |Žádný         |
 | 6 |3DES          |SHA256            |Žádný         |

@@ -1,25 +1,22 @@
 ---
-title: Monitorovat přístup k protokolům, protokolování výkonu, back-end stavu a metrik pro službu Application Gateway | Microsoft Docs
+title: Přístup k protokolům monitorování a protokolování výkonu, stavu back-end, metriky pro službu Application Gateway
 description: Zjistěte, jak povolit a spravovat přístup k protokolům a protokolování výkonu pro službu Application Gateway
 services: application-gateway
-documentationcenter: na
 author: amitsriva
 manager: rossort
-editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 300628b8-8e3d-40ab-b294-3ecc5e48ef98
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/23/2018
+ms.date: 4/2/2018
 ms.author: amitsriva
-ms.openlocfilehash: 885ae8b97175cac4cd29793eb0a935e81d54d0e4
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 982ae712320cb390b1822de6a7a3980ebfb6251e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back-end, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -29,7 +26,7 @@ Pomocí Azure Application Gateway můžete sledovat prostředky následujícími
 
 * [Protokoly](#diagnostic-logging): protokoly umožňují pro výkon, přístupu a další data ukládání nebo používán z prostředků pro účely monitorování.
 
-* [Metriky](#metrics): Aplikační brána má aktuálně jeden metriku. Tato metrika měří propustnost Aplikační brána v bajtech za sekundu.
+* [Metriky](#metrics): Aplikační brána v současnosti má sedm metriky, chcete-li zobrazit čítače výkonu.
 
 ## <a name="back-end-health"></a>Back-end stavu
 
@@ -261,7 +258,7 @@ Protokol brány firewall se vygeneruje pouze v případě, že jste je povolili 
 |RuleId     | ID pravidla spouštěcí události.        |
 |zpráva     | Uživatelsky přívětivý zpráva pro aktivační událost. Další podrobnosti najdete v části Podrobnosti.        |
 |akce     |  Akce v žádosti. Dostupné hodnoty jsou blokované a povolené.      |
-|web     | Web, pro které byla vygenerována v protokolu. V současné době pouze globální se má zobrazit, protože pravidla jsou globální.|
+|Web     | Web, pro které byla vygenerována v protokolu. V současné době pouze globální se má zobrazit, protože pravidla jsou globální.|
 |Podrobnosti     | Podrobnosti o aktivační událost.        |
 |details.Message     | Popis pravidla.        |
 |details.data     | Konkrétní data uvedená v požadavek, který odpovídá pravidlo.         |
@@ -314,17 +311,26 @@ Můžete také připojit k účtu úložiště a načítat položky protokolu JS
 > 
 > 
 
-## <a name="metrics"></a>metriky
+## <a name="metrics"></a>Metriky
 
 Metriky jsou funkce u některých prostředků Azure, kde můžete zobrazit čítače výkonu v portálu. Pro službu Application Gateway jsou k dispozici následující metriky:
 
-- Aktuální počet připojení
-- Neúspěšné požadavky
-- V pořádku počet hostitele
-- Stav odpovědi
-- Propustnost
-- Požadavky celkem
-- Chybný počet hostitele
+- **Aktuální počet připojení**
+- **Neúspěšné požadavky**
+- **V pořádku počet hostitele**
+
+   Můžete filtrovat podle za základ fond back-end pro zobrazení v pořádku nebo není v pořádku hostitelích v konkrétní back-endový fond.
+
+
+- **Stav odpovědi**
+
+   Rozdělení kódu stavu odpovědi můžete dále dělí zobrazíte odpovědí 2xx, 3xx, 4xx a 5xx kategorií.
+
+- **Propustnost**
+- **Celkový počet požadavků**
+- **Chybný počet hostitele**
+
+   Můžete filtrovat podle za základ fond back-end pro zobrazení v pořádku nebo není v pořádku hostitelích v konkrétní back-endový fond.
 
 Přejděte do služby application gateway, v části **monitorování** klikněte na tlačítko **metriky**. Chcete-li zobrazit dostupné hodnoty, vyberte **METRIKA** rozevíracího seznamu.
 
@@ -334,7 +340,7 @@ Na následujícím obrázku najdete příklad tří metriky zobrazené pro posle
 
 Pokud chcete zobrazit aktuální seznam metriky, najdete v části [podporované metriky s Azure monitorování](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
-### <a name="alert-rules"></a>Pravidla výstrah
+### <a name="alert-rules"></a>Pravidla upozornění
 
 Můžete spustit na základě metriky pro prostředek pravidla výstrah. Výstrahu můžete například volat webhook, jehož nebo e-mailu správce, pokud propustnost aplikační brány je výše, níže nebo na prahovou hodnotu v zadaném období.
 

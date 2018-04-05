@@ -1,11 +1,11 @@
 ---
-title: "Pochopení zasílání zpráv typu cloud zařízení Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře - použití službou IoT Hub zasílání zpráv typu cloud zařízení. Obsahuje informace o životní cyklus zpráv a možnosti konfigurace."
+title: Pochopení zasílání zpráv typu cloud zařízení Azure IoT Hub | Microsoft Docs
+description: Příručka vývojáře - použití službou IoT Hub zasílání zpráv typu cloud zařízení. Obsahuje informace o životní cyklus zpráv a možnosti konfigurace.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -13,15 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: d265d35c7d5a394afa0e59f40ff1a5741e0ec35c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 670cf45a48ca4b72576cedddd4678c0d569401cd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Odesílání zpráv typu cloud zařízení ze služby IoT Hub
 
 Odesílat jednosměrný oznámení do aplikace zařízení z vaší back-end řešení, odesílání zpráv typu cloud zařízení z služby IoT hub na vaše zařízení. Informace dalších možností cloudu zařízení podporované službou IoT Hub, naleznete v [Cloud zařízení komunikace pokyny][lnk-c2d-guidance].
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Odesílání zpráv typu cloud zařízení prostřednictvím koncového bodu služby přístupem (**/zprávy/devicebound**). Zařízení pak přijímá zprávy prostřednictvím koncového bodu konkrétní zařízení (**/devices/ {deviceId} / zprávy/devicebound**).
 

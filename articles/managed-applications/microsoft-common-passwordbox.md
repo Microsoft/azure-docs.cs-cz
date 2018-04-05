@@ -1,6 +1,6 @@
 ---
-title: "Azure spravované aplikace Položka PasswordBox elementu uživatelského rozhraní | Microsoft Docs"
-description: "Popisuje element Microsoft.Common.PasswordBox uživatelského rozhraní pro spravované aplikace Azure"
+title: Azure elementu Položka PasswordBox uživatelského rozhraní | Microsoft Docs
+description: Popisuje element Microsoft.Common.PasswordBox uživatelského rozhraní pro portál Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d9f2b7cf56375d3a609cff20e928307c13bf2b8
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 19c027819b83f10a7a3de714d690964507311da0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Element Microsoft.Common.PasswordBox uživatelského rozhraní
-Ovládací prvek, který slouží k zadání a potvrzení hesla. Pomocí tohoto prvku při [vytváření spravovaných aplikací Azure](publish-service-catalog-app.md).
+Ovládací prvek, který slouží k zadání a potvrzení hesla.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 ![Microsoft.Common.PasswordBox](./media/managed-application-elements/microsoft.common.passwordbox.png)
@@ -57,7 +57,6 @@ Ovládací prvek, který slouží k zadání a potvrzení hesla. Pomocí tohoto 
 "p4ssw0rd"
 ```
 
-## <a name="next-steps"></a>Další kroky
-* Úvod do spravovaných aplikací, najdete v části [Azure spravovaných aplikací – přehled](overview.md).
+## <a name="next-steps"></a>Další postup
 * Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
 * Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](create-uidefinition-elements.md).

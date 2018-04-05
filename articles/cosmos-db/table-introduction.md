@@ -1,12 +1,12 @@
 ---
-title: "Úvod do rozhraní API tabulky Azure Cosmos DB | Dokumentace Microsoftu"
-description: "Zjistěte, jak můžete používat Azure Cosmos DB k ukládání a dotazování velkých objemů dat s klíčovými hodnotami s nízkou latencí pomocí oblíbených rozhraní API OSS MongoDB."
+title: Úvod do rozhraní API tabulky Azure Cosmos DB | Dokumentace Microsoftu
+description: Zjistěte, jak můžete používat Azure Cosmos DB k ukládání a dotazování velkých objemů dat s klíčovými hodnotami s nízkou latencí pomocí oblíbených rozhraní API OSS MongoDB.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/20/2017
 ms.author: mimig
-ms.openlocfilehash: 7e116400f55375afe1e57abc6dadae0536cdfceb
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: ee5ceb29a3782967b0b9682a4b1f3d69cffd0e03
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Úvod do rozhraní API tabulky Azure Cosmos DB
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Úvod do Azure Cosmos DB: API tabulka
 
 [Azure Cosmos DB](introduction.md) poskytuje rozhraní API tabulky pro aplikace napsané pro službu Azure Table Storage, které vyžadují prémiové funkce, jako například:
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/23/2018
 
 Pomocí rozhraní API tabulky je možné migrovat aplikace napsané pro Azure Table Storage beze změn kódu na službu Azure Cosmos DB a využít tak prémiové funkce. Rozhraní API tabulky má klientské sady SDK dostupné pro .NET, Java, Python a Node.js.
 
-Doporučujeme vám zhlédnout následující video, ve kterém Aravind Ramachandran vysvětluje, jak začít s rozhraním API tabulky pro službu Azure Cosmos DB:
+Doporučujeme vám zhlédnout následující video, ve kterém Aravind Krishna vysvětluje, jak začít s rozhraním Table API služby Azure Cosmos DB:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Table-API-for-Azure-Cosmos-DB/player]
 > 

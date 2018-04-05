@@ -1,6 +1,6 @@
 ---
-title: "Azure migrace úložiště – nejčastější dotazy | Microsoft Docs"
-description: "Odpovědi na časté otázky týkající se migrace úložiště Azure"
+title: Azure migrace úložiště – nejčastější dotazy | Microsoft Docs
+description: Odpovědi na časté otázky týkající se migrace úložiště Azure
 services: storage
 documentationcenter: na
 author: genlin
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/16/2017
 ms.author: genli
-ms.openlocfilehash: 362614d28cf62bd288d8aff10539c81381474955
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 89d1a4767c240c7e4fedb9d7ac47d6d4fb0aa737
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Nejčastější dotazy o migraci úložiště Azure
 
@@ -168,7 +168,7 @@ Chcete-li stáhnout data pomocí nástroje AzCopy. Další informace najdete v t
 
 **Změna sekundárního umístění pro Evropu oblast pro účet úložiště**
 
-Pokud vytvoříte účet úložiště, vyberte primární oblasti pro účet. Výběr sekundární oblast je založený na primární oblasti a nelze ji změnit. Další informace najdete v tématu [replikace Azure Storage](storage-redundancy.md).
+Pokud vytvoříte účet úložiště, vyberte primární oblasti pro účet. Výběr sekundární oblast je založený na primární oblasti a nelze ji změnit. Další informace najdete v tématu [geograficky redundantní úložiště (GRS): mezi místní replikace pro Azure Storage](storage-redundancy.md).
 
 **Kde je můžete získat další informace o šifrování pro služby úložiště Azure (SSE)?**  
   
@@ -284,7 +284,7 @@ Ostatní uživatelé poskytnout přístup k prostředkům úložiště:
 
     - **SAS token**: použití tokenu SAS pro přístup k datům z koncového bodu. Další informace najdete v tématu [pomocí sdílené přístupové podpisy](storage-dotnet-shared-access-signature-part-1.md).
 
-**Jak používat vlastní doménu HTTPS s svůj účet úložiště? Příklad, jak lze vytvořit "https://mystorageaccountname.blob.core.windows.net/images/image.gif" zobrazí jako "https://www.contoso.com/images/image.gif"?**
+**Jak používat vlastní doménu HTTPS s svůj účet úložiště? Příklad, jak lze vytvořit "https://mystorageaccountname.blob.core.windows.net/images/image.gif"jsou uvedeny jako"https://www.contoso.com/images/image.gif"?**
 
 V účtech úložiště s vlastní domény není aktuálně podporován protokol SSL.
 Ale můžete použít vlastní domény není HTTPS. Další informace najdete v tématu [konfigurace vlastního názvu doménu pro koncový bod služby Blob storage](../blobs/storage-custom-domain-name.md).

@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření aplikace Azure Mobile Engagement | Dokumentace Microsoftu"
-description: "Popisuje, jak v Azure vytvořit novou kolekci aplikací Mobile Engagement a jak začít tyto aplikace spravovat přes portál Mobile Engagement."
+title: Vytvoření aplikace Azure Mobile Engagement | Dokumentace Microsoftu
+description: Popisuje, jak v Azure vytvořit novou kolekci aplikací Mobile Engagement a jak začít tyto aplikace spravovat přes portál Mobile Engagement.
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b8aa1798-28c6-424c-a5b5-8a264d5a0ff0
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: 47c1e122f6f38654cd63bb59e50e68803f76c83d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f47133a466f00de43ebfb2652eaf9058899f140
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-an-azure-mobile-engagement-app"></a>Vytvoření aplikace Azure Mobile Engagement
+> [!IMPORTANT]
+> Azure Mobile Engagement se vyřadí z provozu 31. 3. 2018. Tato stránka bude odstraněna krátce potom.
+> 
+
 Tento článek ukazuje, jak metodou **Rychlé vytvoření** vytvořit novou aplikaci **Azure Mobile Engagement**. Také se zde dozvíte, jak se orientovat na portálu **Mobile Engagement**, když chcete spustit sledování a správu aplikací. 
 
 Nezapomeňte, že pokud chcete pro svou aplikaci shromažďovat data a odesílat nabízená oznámení, je nutné přidat minimální sadu „základní integrace“. Kompletní dokumentaci k integraci najdete v článku [Integrace Mobile Engagement](mobile-engagement-windows-store-integrate-engagement.md).

@@ -9,18 +9,18 @@
 
 ## <a name="introduction"></a>Úvod
 
-V [začít pracovat s dvojčata zařízení IoT Hub][lnk-twin-tutorial], jste se dozvěděli, jak nastavit metadat zařízení z back-end vašeho řešení pomocí *značky*, sestavy podmínky zařízení z aplikace na zařízení pomocí *hlášené vlastnosti*a tyto informace pomocí jazyka SQL jako dotaz.
+V [začít pracovat s dvojčata zařízení IoT Hub][lnk-twin-tutorial], jste se dozvěděli, jak nastavit pomocí metadat zařízení *značky*. Přijaté podmínky zařízení z aplikace zařízení pomocí *hlášené vlastnosti*a pak tyto informace pomocí jazyka SQL jako dotaz.
 
-V tomto kurzu zjistíte, jak používat dvojče zařízení *potřeby vlastnosti* spolu s *hlášené vlastnosti*, pro vzdálenou konfiguraci aplikací pro zařízení. Přesněji řečeno tento kurz ukazuje, jak dvojče zařízení hlášené a požadované vlastnosti povolte vícekrokový konfiguraci aplikace zařízení a poskytovat viditelnost na back-end řešení stavu této operace na všech zařízeních. Můžete najít další informace o roli konfigurací zařízení v [přehled správy zařízení s centrem IoT][lnk-dm-overview].
+Tento kurz popisuje, jak používat dvojče zařízení *potřeby vlastnosti* a *hlášené vlastnosti* pro vzdálenou konfiguraci aplikací pro zařízení. Hlášení a požadované vlastnosti v dvojče zařízení povolit několika kroky konfigurace aplikace zařízení a poskytují přehled o stavu tuto operaci na všech zařízeních. Můžete najít další informace o roli konfigurací zařízení v [přehled správy zařízení s centrem IoT][lnk-dm-overview].
 
-Použití dvojčata zařízení na vysoké úrovni, umožňuje řešení back-endu zadejte požadovanou konfiguraci pro spravovaná zařízení, místo abyste odesílali určité příkazy. Toto zařízení starosti nastavení nejlepší způsob, jak aktualizaci konfigurace (důležité ve scénářích IoT, kde určité zařízení podmínky vliv na schopnost okamžitě provádět určité příkazy), vloží při průběžně reporting na back-end řešení aktuální stav a potenciální chybové stavy procesu aktualizace. Tento vzor je instrumentálního na správu velkých sad zařízení, protože umožňuje back-end řešení tak, aby měl úplný přehled o stavu procesu konfigurace ve všech zařízeních.
+[!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
-> [!NOTE]
-> Ve scénářích, kde jsou ovládaná zařízení více interaktivní způsobem (zapněte ventilátor z aplikace řízené uživatele), zvažte použití [přímé metody][lnk-methods].
-> 
-> 
+Použití dvojčata zařízení na vysoké úrovni, umožňuje řešení back-endu zadejte požadovanou konfiguraci pro spravovaná zařízení, místo abyste odesílali určité příkazy. Zařízení má na starosti nastavení nejlepší způsob, jak aktualizaci konfigurace (důležité ve scénářích IoT, kde určité zařízení podmínky vliv na schopnost okamžitě provádět určité příkazy), při průběžně reporting aktuální stav a potenciální chybové stavy procesu aktualizace. Tento vzor je instrumentálního na správu velkých sad zařízení, protože nabízí back-end řešení úplný přehled o stavu procesu konfigurace ve všech zařízeních.
 
-V tomto kurzu back-end řešení změny konfigurace telemetrie cílové zařízení a v důsledku této, aplikace zařízení odpovídá několika krocích k instalaci aktualizace konfigurace (například nutnosti restartování modulu softwaru, které tento kurz simuluje s jednoduché zpožděním).
+> [!TIP]
+> Ve scénářích, kde jsou ovládaná zařízení více interaktivní způsobem (například zapnutí ventilátor z aplikace řízené uživatele), zvažte použití [přímé metody][lnk-methods].
+
+V tomto kurzu back-end řešení změní konfiguraci telemetrie cílové zařízení tak, aby aplikace zařízení se vztahují aktualizaci konfigurace. Aktualizace konfigurace například by vyžadující restartování modulu software, který v tomto kurzu simuluje s jednoduché zpožděním.
 
 Back-end řešení ukládá konfiguraci v požadované vlastnosti dvojče zařízení následujícím způsobem:
 
@@ -39,10 +39,8 @@ Back-end řešení ukládá konfiguraci v požadované vlastnosti dvojče zaří
             ...
         }
 
-> [!NOTE]
-> Vzhledem k tomu, že konfigurace může být složité objekty, jsou přiřazeny jedinečné ID (hodnoty hash nebo [identifikátory GUID][lnk-guid]) ke zjednodušení jejich porovnání.
-> 
-> 
+Vzhledem k tomu, že konfigurace může být složité objekty, jsou přiřazeny jedinečné ID (hodnoty hash nebo [identifikátory GUID][lnk-guid]).
+
 
 Aplikace zařízení sestavy své aktuální konfiguraci zrcadlení požadovanou vlastnost **telemetryConfig** ve vlastnostech hlášené:
 
@@ -62,7 +60,7 @@ Aplikace zařízení sestavy své aktuální konfiguraci zrcadlení požadovanou
 
 Poznámka: jak hlášení **telemetryConfig** má další vlastnost **stav**používané nahlásit stav procesu aktualizace konfigurace.
 
-Po přijetí nové požadované konfigurace aplikace zařízení sestavy čekající konfigurace změnou informace:
+Po přijetí nové požadované konfigurace aplikace zařízení sestavy čekající konfigurace změnou stavu:
 
         {
             "properties": {
@@ -82,8 +80,7 @@ Po přijetí nové požadované konfigurace aplikace zařízení sestavy čekaj�
             }
         }
 
-Potom později některé aplikace zařízení hlásí úspěch nebo selhání této operace aktualizací vlastnost výše.
-Všimněte si, jak je možné, back-end řešení kdykoli dotaz na stav procesu konfigurace ve všech zařízeních.
+Potom později některé aplikace zařízení hlásí úspěch nebo selhání této operace aktualizací vlastnost. Back-end řešení můžete kdykoli dotaz na stav procesu konfigurace ve všech zařízeních.
 
 V tomto kurzu získáte informace o následujících postupech:
 

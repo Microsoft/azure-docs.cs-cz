@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s síti na pracovišti ve službě Facebook. | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a síti na pracovišti ve službě Facebook."
+title: 'Kurz: Azure Active Directory integrace s síti na pracovišti ve službě Facebook. | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a síti na pracovišti ve službě Facebook.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 03/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 524319deea957809440436b3cac2b0256516923a
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: a1f4243eafc6a2d5c632220ec80b28b29f8ae985
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Kurz: Azure Active Directory integrace s síti na pracovišti ve službě Facebook.
 
@@ -45,6 +45,9 @@ Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+
+> [!NOTE]
+> Facebook má dva produkty, síti na pracovišti Standard (zdarma) a síti na pracovišti Premium (placené). Všechny klienta síti na pracovišti Premium můžete nakonfigurovat žádné dopady náklady nebo licence potřebné integrace SCIM a jednotné přihlašování. Jednotné přihlašování a SCIM nejsou k dispozici v síti na pracovišti standardní instancí.
 
 ## <a name="scenario-description"></a>Popis scénáře
 V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
@@ -111,9 +114,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-workplacebyfacebook-tutorial/tutorial_workplacebyfacebook_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<instancename>.facebook.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<instancename>.facebook.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://www.facebook.com/company/<instanceID>`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://www.facebook.com/company/<instanceID>`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou reálné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Naleznete na stránce ověřování na řídicím panelu firemní síti na pracovišti pro správné hodnoty pro vaše pracoviště komunity. 
@@ -159,10 +162,6 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 15. **SAML odhlášení přesměrovat (volitelné)** - 
 
     Můžete volitelně lze konfigurovat adresu Url odhlašovací SAML, který můžete použít tak, aby odkazoval na Azure AD odhlašovací stránce. Pokud je toto nastavení povolené a nakonfigurované, se uživatel přesměruje už k síti na pracovišti odhlašovací stránce. Místo toho bude uživatel přesměrován na adresu url, která byla přidána do nastavení přesměrování odhlašovací SAML.
-
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="configuring-reauthentication-frequency"></a>Konfiguraci frekvence opětovné ověření
 
@@ -271,4 +270,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-workplacebyfacebook-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-workplacebyfacebook-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-workplacebyfacebook-tutorial/tutorial_general_203.png
-

@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights pro webové aplikace JavaScript | Dokumentace Microsoftu"
-description: "Načtení zobrazení stránek a počty relací, data webového klienta a sledování vzorů využití. Zjištění výjimek a problémů s výkonem na webových stránkách v jazyce JavaScript."
+title: Azure Application Insights pro webové aplikace JavaScript | Dokumentace Microsoftu
+description: Načtení zobrazení stránek a počty relací, data webového klienta a sledování vzorů využití. Zjištění výjimek a problémů s výkonem na webových stránkách v jazyce JavaScript.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7cc061b921109f173837352199ff64f055ae2483
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a2cb3d504abcd3f9c50df2427884d478ad2240c4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 Zjistěte informace o výkonu a využití webové stránky nebo aplikace. Když přidáte [Application Insights](app-insights-overview.md) do skriptu stránky, získáte časování načtení stránky a volání AJAX, počty a podrobnosti výjimek prohlížeče a selhání AJAX, a také počty uživatelů a relací. Všechny tyto hodnoty mohou být segmentovány podle stránky, klientského operačního systému a verze prohlížeče, zeměpisné polohy a ostatních dimenzí. Můžete nastavit výstrahy na počet selhání nebo pomalé načítání stránky. A vložíte-li do kódu JavaScript trasování volání, můžete sledovat využití různých funkcí aplikace webové stránky.
@@ -26,7 +26,7 @@ Application Insights můžete použít s jakýmikoli webovými stránkami – st
 
 ![Na stránce portal.azure.com otevřete prostředek vaší aplikace a klikněte na Prohlížeč.](./media/app-insights-javascript/03.png)
 
-Potřebujete předplatné [Microsoft Azure](https://azure.com). Pokud má váš tým předplatné pro společnosti, požádejte vlastníka, aby do něj přidal váš účet Microsoft. Vývoj a méně rozsáhlé používání vás nebudou nic stát.
+Potřebujete předplatné [Microsoft Azure](https://azure.com). Pokud má váš tým předplatné pro společnosti, požádejte vlastníka, aby do něj přidal váš účet Microsoft.
 
 ## <a name="set-up-application-insights-for-your-web-page"></a>Nastavte Application Insights pro svou webovou stránku
 Na webové stránky přidejte následující fragment kódu zavaděče.
@@ -51,7 +51,29 @@ V části Rychlý start získáte skript pro webové stránky:
 
 ![V okně přehledu aplikace zvolte Rychlý start, získat kód ke sledování webové stránky. Zkopírujte skript.](./media/app-insights-javascript/02-monitor-web-page.png)
 
-Vložte skript těsně před značku `</head>` každé stránky, kterou chcete sledovat. Pokud má daný web stránku předlohy, můžete se skript vložit. Například:
+> [!NOTE]
+> Prostředí *Začínáme* se liší podle typu aplikace, který vyberete při vytváření prostředku Application Insights. Pokud pro vaši aplikaci není k dispozici skript, jak je znázorněno na předchozím snímku obrazovky, stačí použít následující skript.
+
+```HTML
+<!-- 
+To collect end-user usage analytics about your application, 
+insert the following script into each page you want to track.
+Place this code immediately before the closing </head> tag,
+and before any other scripts. Your first data will appear 
+automatically in just a few seconds.
+-->
+<script type="text/javascript">
+var appInsights=window.appInsights||function(a){
+  function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+  }({
+      instrumentationKey:"<your instrumentation key>"
+  });
+  
+window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script>
+```
+
+Vložte skript těsně před značku `</head>` každé stránky, kterou chcete sledovat. Pokud má daný web stránku předlohy, můžete se skript vložit. Příklad:
 
 * Vložíte ho do projektu aplikace ASP.NET MVC do složky `View\Shared\_Layout.cshtml`.
 * Na webu služby SharePoint, v Ovládacích panelech, otevřete [Nastavení webu / stránky předlohy](app-insights-sharepoint.md).

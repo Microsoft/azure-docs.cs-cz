@@ -1,19 +1,19 @@
 ---
-title: "Nasazení služby Azure Stream Analytics s hranou Azure IoT | Microsoft Docs"
-description: "Nasazení služby Azure Stream Analytics jako modul pro hraniční zařízení"
+title: Nasazení služby Azure Stream Analytics s hranou Azure IoT | Microsoft Docs
+description: Nasazení služby Azure Stream Analytics jako modul pro hraniční zařízení
 services: iot-edge
-keywords: 
-author: msebolt
+keywords: ''
+author: kgremban
 manager: timlt
-ms.author: v-masebo
+ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f40fb81fc03e796b906db12bf3bf6904b27b46eb
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: c94652017216bd9c8ff319e0b19fa3597c75e81c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Nasazení služby Azure Stream Analytics jako modul IoT Edge – náhled
 
@@ -132,7 +132,7 @@ Nyní jste připraveni k nasazení úlohy Azure Stream Analytics na vašem zař�
 
 1. Na portálu Azure ve službě IoT hub, přejděte na **IoT okraj (preview)**a pak otevřete stránku podrobností pro vaše zařízení IoT okraj.
 
-2. Vyberte **nastavit moduly**.  
+2. Vyberte **Set modules** (Nastavit moduly).  
     Pokud jste předtím nasadili modul tempSensor na tomto zařízení, může být autopopulate. Pokud není, přidejte modul následujícím způsobem:
 
    a. Vyberte **přidání okraj IoT modulu**.
@@ -172,9 +172,9 @@ Nyní jste připraveni k nasazení úlohy Azure Stream Analytics na vašem zař�
     }
     ```
 
-9. Vyberte **Další**.
+9. Vyberte **Next** (Další).
 
-10. V **šablona kontrolní** krok, vyberte **odeslání**.
+10. V kroku **kontroly šablony** vyberte **Submit** (Odeslat).
 
 11. Vraťte se na stránce s podrobnostmi o zařízení a potom vyberte **aktualizovat**.  
     Měli byste vidět nového modulu Stream Analytics spuštěna, společně s modul agenta IoT okraj a okraj IoT hub.

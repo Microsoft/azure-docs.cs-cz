@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 57296d828156184aa36532cd649fbec0c81b5e27
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0e7ab68075fbce729d3905375acce0dace22c483
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Simulace selhání při přístupu k redundantnímu úložišti jen pro čtení
 
-Tento kurz je druhá část série.  V tomto kurzu můžete simulovat selhání žádostí na primární koncový bod vašeho účtu [geograficky redundantního úložiště jen pro čtení](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) pomocí [Fiddleru](#simulate-a-failure-with-fiddler) nebo [statického směrování](#simulate-a-failure-with-an-invalid-static-route).
+Tento kurz je druhá část série.  V tomto kurzu můžete simulovat selhání žádostí na primární koncový bod vašeho účtu [geograficky redundantního úložiště jen pro čtení](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) pomocí [Fiddleru](#simulate-a-failure-with-fiddler) nebo [statického směrování](#simulate-a-failure-with-an-invalid-static-route).
 
 ![Aplikace scénáře](media/storage-simulate-failure-ragrs-account-app/scenario.png)
 
@@ -117,7 +117,7 @@ Potom obnovte chod aplikace stisknutím **libovolné klávesy**. Aplikace bude p
 
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Simulace selhání pomocí neplatné statické trasy 
-Pro všechny žádosti na primární koncový bod vašeho účtu [geograficky redundantního úložiště jen pro čtení](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) můžete vytvořit neplatnou statickou trasu. V tomto kurzu se používá místní hostitel jako brána pro směrování žádostí na účet úložiště. Použití místního hostitele jako brány způsobí, že všechny žádosti na primární koncový bod vašeho účtu úložiště se ve smyčce vrátí zpět do hostitele, což následně povede k selhání. Následujícím postupem nasimulujete selhání a obnovení primárního koncového bodu pomocí neplatné statické trasy. 
+Pro všechny žádosti na primární koncový bod vašeho účtu [geograficky redundantního úložiště jen pro čtení](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) můžete vytvořit neplatnou statickou trasu. V tomto kurzu se používá místní hostitel jako brána pro směrování žádostí na účet úložiště. Použití místního hostitele jako brány způsobí, že všechny žádosti na primární koncový bod vašeho účtu úložiště se ve smyčce vrátí zpět do hostitele, což následně povede k selhání. Následujícím postupem nasimulujete selhání a obnovení primárního koncového bodu pomocí neplatné statické trasy. 
 
 ### <a name="start-and-pause-the-application"></a>Spuštění a pozastavení aplikace
 

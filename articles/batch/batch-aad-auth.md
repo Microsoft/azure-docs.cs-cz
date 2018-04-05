@@ -1,25 +1,25 @@
 ---
-title: "Pomocí Azure Active Directory k ověření řešení služby Azure Batch | Microsoft Docs"
-description: "Batch podporuje Azure AD pro ověřování ze služby Batch."
+title: Pomocí Azure Active Directory k ověření řešení služby Azure Batch | Microsoft Docs
+description: Batch podporuje Azure AD pro ověřování ze služby Batch.
 services: batch
 documentationcenter: .net
 author: dlepow
 manager: jeconnoc
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
-ms.openlocfilehash: 8ad9c3a779ca52140a78ae905e4825f3144976aa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e2d97929ada820a1ce969c59fb69b3518fe2eb6c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověření řešení služby Batch se službou Active Directory
 
@@ -138,7 +138,7 @@ K ověření s hlavní službou, musíte přiřadit role RBAC do vaší aplikace
 
 1. Na portálu Azure přejděte k účtu Batch používá vaše aplikace.
 2. V **nastavení** okno účtu Batch, vyberte **řízení přístupu (IAM)**.
-3. Klikněte **přidat** tlačítko. 
+3. Klikněte na tlačítko **Přidat**. 
 4. Z **Role** rozevíracího seznamu, vyberte buď _Přispěvatel_ nebo _čtečky_ role pro vaši aplikaci. Další informace o těchto rolí najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure](../active-directory/role-based-access-control-what-is.md).  
 5. V **vyberte** pole, zadejte název vaší aplikace. Vybrat aplikaci ze seznamu a klikněte na tlačítko **Uložit**.
 

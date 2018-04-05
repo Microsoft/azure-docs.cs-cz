@@ -1,6 +1,6 @@
 ---
-title: "Spravované aplikace Azure vytvořit definici funkcí uživatelského rozhraní | Microsoft Docs"
-description: "Popisuje funkce pro použití při vytváření definice uživatelského rozhraní pro spravované aplikace Azure"
+title: Azure vytvořit element definice uživatelského rozhraní | Microsoft Docs
+description: Popisuje elementy pro použití při vytváření definice uživatelského rozhraní pro portál Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 23e407bf93bc51116ca45339bffcb801d69290f0
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: d6f96d4aa66839518023b4d567caf1ff839a29fb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition elementy
-Tento článek popisuje vlastnosti schématu a pro všechny podporované elementy CreateUiDefinition. Tyto prvky můžete použít při [vytváření spravovaných aplikací Azure](publish-service-catalog-app.md). Schéma pro většinu prvků vypadá takto:
+Tento článek popisuje vlastnosti schématu a pro všechny podporované elementy CreateUiDefinition. Schéma pro většinu prvků vypadá takto:
 
 ```json
 {
   "name": "element1",
   "type": "Microsoft.Common.TextBox",
   "label": "Some text box",
-  "defaultValue": "foobar",
-  "toolTip": "Keep calm and visit the [Azure Portal](portal.azure.com).",
+  "defaultValue": "my value",
+  "toolTip": "Provide a descriptive name.",
   "constraints": {},
   "options": {},
   "visible": true
@@ -64,6 +64,5 @@ V dokumentaci pro každý prvek obsahuje ukázku uživatelského rozhraní, sch�
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
 
-## <a name="next-steps"></a>Další kroky
-* Úvod do spravovaných aplikací, najdete v části [Azure spravovaných aplikací – přehled](overview.md).
-* Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+## <a name="next-steps"></a>Další postup
+Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).

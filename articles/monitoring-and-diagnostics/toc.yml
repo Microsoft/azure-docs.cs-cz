@@ -187,3 +187,5 @@
       href: 'https://stackoverflow.com/search?q=monitoring'
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=monitor'
+    - name: Využití a odhadované náklady
+      href: monitoring-usage-and-estimated-costs.md

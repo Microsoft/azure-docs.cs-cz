@@ -7,6 +7,8 @@
 
 Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu zařízení (metadata, konfigurace a podmínky). IoT Hub trvá dvojče zařízení pro každé zařízení, která se k němu připojuje.
 
+[!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
+
 Použijte dvojčata zařízení na:
 
 * Ukládání metadat ze zařízení z back end vašeho řešení.
@@ -14,8 +16,7 @@ Použijte dvojčata zařízení na:
 * Synchronizujte stav pracovních dlouho běžící (například aktualizací firmwaru a konfigurace) mezi aplikací zařízení a back-end aplikace.
 * Dotaz na vaše zařízení metadata, konfigurace nebo stavu.
 
-> [!NOTE]
-> Dvojčata zařízení jsou navrženy pro synchronizaci a pro dotazování konfigurací zařízení a podmínky. Další informace o použití dvojčata zařízení naleznete v [pochopit dvojčata zařízení][lnk-twins].
+Dvojčata zařízení jsou navrženy pro synchronizaci a pro dotazování konfigurací zařízení a podmínky. Další informace o použití dvojčata zařízení naleznete v [pochopit dvojčata zařízení][lnk-twins].
 
 Dvojčata zařízení se ukládají do služby IoT hub a obsahovat:
 

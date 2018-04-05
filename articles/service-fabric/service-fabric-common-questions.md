@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 0ecce5581e8f14a02ad0ad618a226f4671e92f4b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 38de0886de1d6068b2edad9aadc89d8048b48a55
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Často kladené otázky Service Fabric
 
@@ -89,6 +89,28 @@ Při pracujeme na vylepšené uživatelské prostředí, v současné době jste
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Můžete šifrovat připojené datové disky v typu uzlu clusteru (škálovací sadu virtuálních počítačů)?
 Ano.  Další informace najdete v tématu [vytvořit cluster s disky připojené data](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [šifrování disků (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md), a [šifrování disků (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
 
+### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster-"></a>Co jsou adresáře a procesy, které je nutné vyloučit při spuštění antivirového programu v mé clusteru?
+
+| **Antivirový Vyloučené adresáře** |
+| --- |
+| Program Files\Microsoft Service Fabric |
+| Proměnná FabricDataRoot (z konfigurace clusteru) |
+| Adresáři FabricLogRoot (z konfigurace clusteru) |
+
+| **Antivirový vyloučené procesy** |
+| --- |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
  
 ## <a name="application-design"></a>Návrh aplikace
 

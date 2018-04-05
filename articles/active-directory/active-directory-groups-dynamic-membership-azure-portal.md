@@ -12,31 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 03/30/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 2b42840bc1053e9574e7c8ab1c68611c3b2bc7df
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a4ed9ddabe19406fa694992f29cf529b491438c0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Vytvořit pravidla založená na atributu pro dynamické členství ve skupině v Azure Active Directory
-V Azure Active Directory (Azure AD) můžete vytvořit rozšířených pravidel povolit komplexní založená na atributu dynamické členství skupiny. Tento článek podrobně atributy a syntaxe k vytvoření pravidla dynamické členství pro uživatele nebo zařízení.
+V Azure Active Directory (Azure AD) můžete vytvořit rozšířených pravidel povolit komplexní založená na atributu dynamické členství skupiny. Tento článek podrobně atributy a syntaxe k vytvoření pravidla dynamické členství pro uživatele nebo zařízení. Pravidlo pro dynamické členství můžete nastavit pro skupiny zabezpečení nebo pro skupiny Office 365.
 
 Pokud žádné atributy uživatele nebo zařízení změnit, systém vyhodnotí všechna pravidla dynamické skupiny v adresáři, abyste zjistili, zda by změna aktivovat libovolnou skupinu přidá nebo odebere. Pokud na uživatele nebo zařízení splňuje pravidlo ve skupině, přidají se jako člena této skupiny. Pokud se už splňovat pravidla, se odeberou.
 
 > [!NOTE]
-> Pravidlo pro dynamické členství můžete nastavit pro skupiny zabezpečení nebo pro skupiny Office 365.
->
 > Tato funkce vyžaduje pro každého člena uživatel přidán do alespoň jednu skupinu dynamické licenci Azure AD Premium P1. Není to povinné ve skutečnosti přiřaďte licence uživatelům pro ně mají být členy v dynamických skupin, ale musíte mít minimální počet licencí v klientovi nepokrývají všechny tyto uživatele. Například: Pokud máte celkem 1 000 jedinečných uživatelů, kteří ve všech dynamických skupin ve vašem klientovi, musíte mít alespoň 1 000 licencí pro Azure AD Premium P1 nebo vyšší, aby splňovala požadavky licence.
 >
 > Můžete vytvořit skupinu dynamické pro zařízení nebo uživatelů, ale nelze vytvořit pravidlo, které obsahuje uživatele a zařízení.
 > 
 > V tuto chvíli není možné vytvořit skupinu zařízení na základě atributů vlastnícím uživatele. Pravidla členství zařízení může odkazovat pouze na okamžitou atributy zařízení objektů v adresáři.
-> 
-> Microsoft Teams zatím nepodporuje dynamické členství ve skupině. Můžete ověřit chybu v protokolech přidružené "Nelze migrovat dynamické členství skupiny"
 
 ## <a name="to-create-an-advanced-rule"></a>Vytvoření pokročilé pravidla
 1. Přihlaste se k [centra pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globální správce nebo správce účtu uživatele.
@@ -74,7 +70,7 @@ Následují příklady správně strukturovaný pokročilé pravidla:
 Celková délka textu rozšířeného pravidla nesmí překročit hodnotu 2048 znaků.
 
 > [!NOTE]
-> Operace řetězec a regex se nerozlišují malá a velká písmena. Můžete také provést kontroly hodnoty null, pomocí *null* jako konstanta, například user.department - eq *$null*.
+> Operace řetězec a regex se nerozlišují malá a velká písmena. Můžete také provést kontroly Null pomocí *null* jako konstanta, například user.department - eq *null*.
 > Řetězce obsahující uvozovky "by měly být ukončeny pomocí, například znak user.department - eq \`"Prodej".
 
 ## <a name="supported-expression-rule-operators"></a>Podporované výraz pravidlo operátory
@@ -106,11 +102,11 @@ Níže jsou uvedeny všechny operátory za prioritu z nižší na vyšší. Oper
 Všechny operátory lze použít s nebo bez předpony pomlčkou. Závorky jsou potřeba jenom v případě, že přednost nesplňuje vaše požadavky.
 Příklad:
 ```
-   user.department -eq "Marketing" -and user.country -eq "US"
+   user.department –eq "Marketing" –and user.country –eq "US"
 ```
 je ekvivalentní:
 ```
-   (user.department -eq "Marketing") -and (user.country -eq "US")
+   (user.department –eq "Marketing") –and (user.country –eq "US")
 ```
 ## <a name="using-the--in-and--notin-operators"></a>Pomocí-v a notIn – operátory
 
@@ -160,32 +156,32 @@ Povolené operátory
 
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
-| city |Žádné hodnota typu řetězec nebo *$null* |(user.city - eq "value") |
-| Země |Žádné hodnota typu řetězec nebo *$null* |(User.Country. - eq "value") |
-| companyName | Žádné hodnota typu řetězec nebo *$null* | (user.companyName -eq "value") |
-| Oddělení |Žádné hodnota typu řetězec nebo *$null* |(user.department -eq "value") |
+| city |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.city - eq "value") |
+| Země |Žádné hodnota typu řetězec nebo *hodnotu null.* |(User.Country. - eq "value") |
+| companyName | Žádné hodnota typu řetězec nebo *hodnotu null.* | (user.companyName -eq "value") |
+| Oddělení |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.department -eq "value") |
 | displayName |Libovolnou hodnotu řetězce |(user.displayName -eq "value") |
-| číslo zaměstnance |Libovolnou hodnotu řetězce |(user.employeeId - eq "value")<br>(user.employeeId - ne *$null*) |
-| facsimileTelephoneNumber |Žádné hodnota typu řetězec nebo *$null* |(user.facsimileTelephoneNumber -eq "value") |
-| givenName |Žádné hodnota typu řetězec nebo *$null* |(user.givenName -eq "value") |
-| pracovní funkce |Žádné hodnota typu řetězec nebo *$null* |(user.jobTitle -eq "value") |
-| mail |Žádné hodnota typu řetězec nebo *$null* (adresa SMTP uživatele) |(user.mail - eq "value") |
+| číslo zaměstnance |Libovolnou hodnotu řetězce |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
+| facsimileTelephoneNumber |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.facsimileTelephoneNumber -eq "value") |
+| givenName |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.givenName -eq "value") |
+| pracovní funkce |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.jobTitle -eq "value") |
+| mail |Žádné hodnota typu řetězec nebo *null* (adresa SMTP uživatele) |(user.mail - eq "value") |
 | mailNickName |Libovolnou hodnotu řetězce (e-mailu alias uživatele) |(user.mailNickName -eq "value") |
-| mobilní |Žádné hodnota typu řetězec nebo *$null* |(user.mobile - eq "value") |
+| mobilní |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.mobile - eq "value") |
 | objectId |GUID objektu uživatele |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Místní identifikátor zabezpečení (SID) pro uživatele, kteří se synchronizovaly z místní do cloudu. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Žádný DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |Žádné hodnota typu řetězec nebo *$null* |(user.physicalDeliveryOfficeName - eq "value") |
-| PSČ |Žádné hodnota typu řetězec nebo *$null* |(user.postalCode - eq "value") |
+| physicalDeliveryOfficeName |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.physicalDeliveryOfficeName - eq "value") |
+| PSČ |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.postalCode - eq "value") |
 | preferredLanguage |Kód ISO 639-1 |(user.preferredLanguage -eq "en-US") |
-| sipProxyAddress |Žádné hodnota typu řetězec nebo *$null* |(user.sipProxyAddress -eq "value") |
-| state |Žádné hodnota typu řetězec nebo *$null* |(user.state - eq "value") |
-| StreetAddress |Žádné hodnota typu řetězec nebo *$null* |(user.streetAddress - eq "value") |
-| surname |Žádné hodnota typu řetězec nebo *$null* |(user.surname -eq "value") |
-| telephoneNumber |Žádné hodnota typu řetězec nebo *$null* |(user.telephoneNumber - eq "value") |
+| sipProxyAddress |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.sipProxyAddress -eq "value") |
+| state |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.state - eq "value") |
+| StreetAddress |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.streetAddress - eq "value") |
+| surname |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.surname -eq "value") |
+| telephoneNumber |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.telephoneNumber - eq "value") |
 | usageLocation |Dva písmeny směrové číslo země |(user.usageLocation - eq "US") |
 | userPrincipalName |Libovolnou hodnotu řetězce |(user.userPrincipalName -eq "alias@domain") |
-| userType |člen hosta *$null* |(user.userType - eq "Člen") |
+| userType |člen hosta *hodnotu null.* |(user.userType - eq "Člen") |
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti typu řetězec kolekce
 Povolené operátory
@@ -226,9 +222,9 @@ Následující výraz vybere všechny uživatele, kteří mají plán žádné s
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-## <a name="use-of-null-values"></a>Použití hodnoty null
+## <a name="use-of-null-values"></a>Použití hodnoty Null
 
-Chcete-li zadat hodnotu null v pravidle, můžete použít *null* hodnotu. Dejte pozor, abyste použít uvozovky, do kterých slovo *null* – v takovém případě bude interpretovat jako hodnotu řetězcového literálu. Správný způsob, jak odkazovat na hodnotu null je následující:
+Chcete-li zadat hodnotu null v pravidle, můžete použít *null* hodnotu. Dejte pozor, abyste použít uvozovky, do kterých slovo *null* – v takovém případě bude interpretovat jako hodnotu řetězcového literálu. -Není operátor nelze použít jako srovnávací operátor pro hodnotu null. Pokud chcete použít, ať už používáte hodnotu null nebo $null dojde k chybě. Místo toho použijte - eq nebo - ne. Správný způsob, jak odkazovat na hodnotu null je následující:
 ```
    user.mail –ne $null
 ```
@@ -253,14 +249,15 @@ Můžete vytvořit skupina obsahující všechny přímé podřízené manažera
 
 > [!NOTE]
 > 1. Pravidla pro práci, zajistěte, aby **Manager ID** vlastnost je správně nastavena na uživatele ve vašem klientovi. Aktuální hodnota pro uživatele můžete zkontrolovat na jejich **kartu profil**.
-> 2. Toto pravidlo podporuje pouze **přímé** sestavy. Aktuálně není možné vytvořit skupinu pro vnořené hierarchie, například ke skupině, která obsahuje přímé podřízené a jejich sestavy.
+> 2. Toto pravidlo podporuje pouze **přímé** sestavy. Aktuálně není možné vytvořit skupinu pro vnořené hierarchii; například skupina, která zahrnuje přímé podřízené a jejich sestavy.
+> 3. Toto pravidlo nelze kombinovat s jinými pravidly Upřesnit.
 
 **Konfigurace skupiny**
 
 1. Postupujte podle kroků 1 až 5 z oddílu [k vytvoření rozšířeného pravidla](#to-create-the-advanced-rule)a vyberte **typ členství** z **dynamické uživatele**.
 2. Na **pravidla dynamické členství** okno, zadejte pravidlo s následující syntaxí:
 
-    *Přímé podřízené pro "{obectID_of_manager}"*
+    *Přímé podřízené pro "{objectID_of_manager}"*
 
     Příklad platné pravidlo:
 ```
@@ -295,19 +292,43 @@ Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členst
 ## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>Změna dynamické členství na statické a naopak
 Je možné změnit, jak se spravuje členství ve skupině. To je užitečné, pokud chcete zachovat stejný název skupiny a ID v systému, takže všechny existující odkazy na skupiny musí být stále platné; Vytvoření nové skupiny by vyžadovaly aktualizace tyto odkazy.
 
-Probíhá aktualizace portál Azure pro tuto funkci podporují. Do té doby můžete použít rutiny prostředí PowerShell, jak je uvedeno níže.
+Aktualizovali jsme do centra pro správu Azure AD přidat podporu této funkce. Nyní zákazníci můžete převést existující skupiny z dynamické členství přiřazené členství a naopak prostřednictvím centra pro správu Azure AD nebo rutiny prostředí PowerShell, jak je uvedeno níže.
 
 > [!WARNING]
 > Při změně existující statická skupina pro skupinu dynamické, všechny stávající členy se odeberou ze skupiny, a pak se zpracují pravidlo členství pro přidání nové členy. Pokud skupině se používá k řízení přístupu k aplikacím nebo prostředkům, původní členy může ztratit přístup, dokud plně zpracování pravidla členství se.
 >
-> Je doporučený postup pro testování pravidla členství v předem a ujistěte se, že nové členství ve skupině je podle očekávání.
+> Doporučujeme, abyste otestovali pravidla členství v předem a ujistěte se, že nové členství ve skupině je podle očekávání.
 
-**Chcete-li změnit správy členství ve skupině pomocí prostředí PowerShell**
+### <a name="using-azure-ad-admin-center-to-change-membership-management-on-a-group"></a>Chcete-li změnit správy členství ve skupině pomocí centra pro správu Azure AD 
+
+1. Přihlaste se k [centra pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globální správce nebo správce účtu uživatele ve vašem klientovi.
+2. Vyberte **skupiny**.
+3. Z **všechny skupiny** seznamu, otevřete skupinu, kterou chcete změnit.
+4. Vyberte **vlastnosti**.
+5. Na **vlastnosti** stránce skupiny, vyberte **typ členství** přiřazeno (statické), dynamické uživatele nebo dynamické zařízení, v závislosti na vaší požadované členské typu. Pro dynamické členství můžete Tvůrce pravidla vyberte možnosti pro jednoduché pravidlo nebo Zapisovat rozšířené pravidlo sami. 
+
+Následující kroky jsou například změny skupiny ze statické na dynamické členství ve skupině uživatelů. 
+
+1. Na **vlastnosti** stránky pro vybrané skupiny, vyberte **typ členství** z **dynamické uživatele**, pak vyberte možnost Ano v dialogovém okně vysvětlením změny do skupiny členství pokračujte. 
+  
+   ![Vyberte typ členství dynamické uživatele](./media/active-directory-groups-dynamic-membership-azure-portal/select-group-to-convert.png)
+  
+2. Vyberte **přidat dynamické dotazu**a pak zadejte pravidlo.
+  
+   ![Zadejte pravidla](./media/active-directory-groups-dynamic-membership-azure-portal/enter-rule.png)
+  
+3. Po vytvoření pravidla, vyberte **přidat dotazu** v dolní části stránky.
+4. Vyberte **Uložit** na **vlastnosti** stránce skupiny a uložit provedené změny. **Typ členství** skupiny se ihned projeví v seznamu skupiny.
+
+> [!TIP]
+> Skupiny převod může selhat, pokud byl rozšířené pravidlo, které jste zadali nesprávný. V pravém dolním rohu portálu, který obsahuje vysvětlení, proč nelze přijmout, pravidlo v systému se zobrazí oznámení. Přečtěte si ho pečlivě, abyste pochopili, jak můžete nastavit pravidlo, aby platný.
+
+### <a name="using-powershell-to-change-membership-management-on-a-group"></a>Chcete-li změnit správy členství ve skupině pomocí prostředí PowerShell
 
 > [!NOTE]
-> Chcete-li změnit vlastnosti dynamické skupiny budete muset použít rutiny z **verze preview** [Azure AD PowerShell verze 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). Můžete nainstalovat ve verzi preview z [zde](https://www.powershellgallery.com/packages/AzureADPreview).
+> Chcete-li změnit vlastnosti dynamické skupiny budete muset použít rutiny z **verze preview** [Azure AD PowerShell verze 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). Můžete nainstalovat z verze preview [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
 
-Tady je příklad funkcí, které přepínač na existující skupinu pro správu členství. Všimněte si, pozor správně pracovat s vlastnost GroupTypes a zároveň zachovat všechny hodnoty, které mohou existovat existuje, který nesouvisí se dynamické členství.
+Tady je příklad funkcí, které přepínač na existující skupinu pro správu členství. V tomto příkladu je pozor správně pracovat s vlastnost GroupTypes a zároveň zachovat všechny hodnoty, které se nevztahují ke dynamické členství.
 
 ```
 #The moniker for dynamic groups as used in the GroupTypes property of a group object

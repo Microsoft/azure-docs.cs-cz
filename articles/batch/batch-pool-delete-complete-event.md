@@ -1,24 +1,24 @@
 ---
-title: "Odstranit událost complete fondu Azure Batch | Microsoft Docs"
-description: "Referenční dokumentace pro fondu Batch odstranit událost complete."
+title: Odstranit událost complete fondu Azure Batch | Microsoft Docs
+description: Referenční dokumentace pro fondu Batch odstranit událost complete.
 services: batch
-author: tamram
-manager: timlt
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: tamram
-ms.openlocfilehash: 890f2ba7fda37060c56177868d6214d517d91831
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: bfcbcf40efc64ab1c79ee1a86e02502c68ad6d47
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="pool-delete-complete-event"></a>Událost complete odstranění fondu
+# <a name="pool-delete-complete-event"></a>Událost dokončení odstranění fondu
 
  Tato událost je vygenerované při operaci odstranění fondu byla dokončena.
 
@@ -35,8 +35,8 @@ ms.lasthandoff: 10/11/2017
 |Element|Typ|Poznámky|
 |-------------|----------|-----------|
 |id|Řetězec|Id fondu.|
-|startTime|Data a času|Odstranění fondu čas spuštění.|
-|endTime|Data a času|Čas odstranění fondu byla dokončena.|
+|startTime|DateTime|Odstranění fondu čas spuštění.|
+|endTime|DateTime|Čas odstranění fondu byla dokončena.|
 
 ## <a name="remarks"></a>Poznámky
 Další informace o stavu a kódy chyb pro operace změny velikosti fondu najdete v tématu [odstranění fondu z účtu](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).

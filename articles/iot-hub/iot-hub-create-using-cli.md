@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření služby IoT Hub pomocí rozhraní příkazového řádku Azure (az.py) | Microsoft Docs"
-description: "Postup vytvoření služby Azure IoT hub pomocí Azure CLI a platformy 2.0 (az.py)."
+title: Vytvoření služby IoT Hub pomocí rozhraní příkazového řádku Azure (az.py) | Microsoft Docs
+description: Postup vytvoření služby Azure IoT hub pomocí Azure CLI a platformy 2.0 (az.py).
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: azurecli
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 161089159999a4a63a39b059e69a08b7a9297445
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: c89ecc31754d355d6469d54dcd45e1cc2ef106f0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli-20"></a>Vytvoření služby IoT hub pomocí Azure CLI 2.0
 
@@ -36,27 +36,27 @@ K dokončení úlohy můžete využít jednu z následujících verzí rozhraní
 Pro absolvování tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].
-* [Rozhraní příkazového řádku Azure 2.0][lnk-CLI-install].
+* [Azure CLI 2.0][lnk-CLI-install].
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Přihlaste se a nastavit váš účet Azure
 
-Přihlaste se k účtu Azure a vybrat své předplatné.
+Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 
-1. Na příkazovém řádku, spusťte [přihlášení příkaz][lnk-login-command]:
+1. Na příkazovém řádku spusťte [příkaz pro přihlášení][lnk-login-command]:
     
     ```azurecli
     az login
     ```
 
-    Postupujte podle pokynů k ověření pomocí kódu a přihlaste se k účtu Azure prostřednictvím webového prohlížeče.
+    Postupujte podle pokynů pro ověření pomocí kódu a přihlaste se ke svému účtu Azure ve webovém prohlížeči.
 
-2. Pokud máte víc předplatných Azure, přihlášení do Azure uděluje přístup k Azure účty přidružené přihlašovací údaje. Použijte následující [seznam účtů Azure příkazu] [ lnk-az-account-command] k dispozici pro použití:
+2. Pokud máte více předplatných Azure, přihlášením k Azure získáte přístup ke všem účtům Azure přidruženým k vašim přihlašovacím údajům. Pomocí následujícího [příkazu zobrazte výpis účtů Azure][lnk-az-account-command], které můžete použít:
     
     ```azurecli
     az account list 
     ```
 
-    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů pro vytvoření služby IoT hub. Z výstupu předchozí příkaz můžete použít buď název odběru nebo ID:
+    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů pro vytvoření centra IoT. Můžete použít název nebo ID předplatného z výstupu předchozího příkazu:
 
     ```azurecli
     az account set --subscription {your subscription name or id}
@@ -66,14 +66,14 @@ Přihlaste se k účtu Azure a vybrat své předplatné.
 
 Pomocí rozhraní příkazového řádku Azure k vytvoření skupiny prostředků a poté přidejte služby IoT hub.
 
-1. Když vytvoříte Centrum IoT, musíte ji vytvořit ve skupině prostředků. Použijte existující skupinu prostředků nebo spusťte následující [příkazu vytvořte skupinu prostředků][lnk-az-resource-command]:
+1. Když vytvoříte Centrum IoT, musíte ji vytvořit ve skupině prostředků. Použijte existující skupinu prostředků, nebo spusťte následující [příkaz pro vytvoření skupiny prostředků][lnk-az-resource-command]:
     
     ```azurecli
      az group create --name {your resource group name} --location westus
     ```
 
     > [!TIP]
-    > Předchozí příklad vytvoří skupinu prostředků v umístění západní USA. Spuštěním příkazu můžete zobrazit seznam dostupných umístění `az account list-locations -o table`.
+    > Předchozí příklad vytvoří skupinu prostředků v umístění USA – západ. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az account list-locations -o table`.
     >
     >
 
@@ -88,7 +88,6 @@ Pomocí rozhraní příkazového řádku Azure k vytvoření skupiny prostředk�
 
 > [!NOTE]
 > Předchozí příkaz vytvoří služby IoT hub S1 cenovou úroveň, pro kterou se účtují. Další informace najdete v tématu [ceny služby Azure IoT Hub][lnk-iot-pricing].
->
 >
 
 ## <a name="remove-an-iot-hub"></a>Odeberte služby IoT Hub
@@ -107,7 +106,7 @@ Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusť
 az group delete --name {your resource group name}
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o vývoji pro Centrum IoT, naleznete v následujících článcích:
 
 * [Příručka vývojáře pro službu IoT Hub][lnk-devguide]

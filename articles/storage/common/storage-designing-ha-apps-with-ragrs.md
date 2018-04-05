@@ -1,6 +1,6 @@
 ---
-title: "Navrhování vysoce dostupné aplikace pomocí Azure přístup pro čtení geograficky redundantní úložiště (RA-GRS) | Microsoft Docs"
-description: "Jak používat Azure RA-GRS úložiště do architektury vysokou dostupností aplikace dostatečně flexibilní, aby zpracování výpadků."
+title: Navrhování vysoce dostupné aplikace pomocí Azure přístup pro čtení geograficky redundantní úložiště (RA-GRS) | Microsoft Docs
+description: Jak používat Azure RA-GRS úložiště do architektury vysokou dostupností aplikace dostatečně flexibilní, aby zpracování výpadků.
 services: storage
 documentationcenter: .net
 author: tamram
@@ -12,28 +12,26 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/21/2018
 ms.author: tamram
-ms.openlocfilehash: fe7c6d1f2530b43ac7b10c5b6b0723452452a97a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: f7f3f2d99e5582a1bcb672cc176258dfff9c3217
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Navrhování pomocí RA-GRS vysoce dostupných aplikací.
 
 Běžné funkce cloudové infrastruktury, jako je Azure Storage je, že poskytují vysokou dostupností platformu pro hostování aplikací. Vývojáři cloudové aplikace musíte pečlivě zvažte, jak využít této platformě, aby poskytovat vysoce dostupné aplikace uživatelům. Tento článek se zaměřuje na tom, jak mohou vývojáři geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) ujistěte se, které svých aplikací Azure Storage jsou vysoce dostupné.
 
-Úložiště Azure nabízí čtyři volby pro redundanci dat ve vašem účtu úložiště:
-
-- LRS (místně redundantní úložiště)
-- ZRS (zóny redundantní úložiště) 
-- GRS (geograficky redundantní úložiště)
-- RA-GRS (geograficky redundantní úložiště s přístupem pro čtení). 
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
 Tento článek se zaměřuje na GRS a RA-GRS. S GRS udržovaly tři kopie dat v primární oblast, kterou jste vybrali při nastavování účtu úložiště. Tři další kopie je udržováno asynchronně v sekundární oblasti definované v Azure. RA-GRS je totéž jako GRS, s tím rozdílem, že máte přístup pro čtení k sekundární kopie. Další informace o různých možnostech redundance úložiště Azure najdete v tématu [replikace Azure Storage](https://docs.microsoft.com/azure/storage/storage-redundancy). Replikace článek také ukazuje dvojice primární a sekundární oblasti.
 
 Existují fragmenty kódu, které jsou zahrnuté v tomto článku a odkaz na ucelenou ukázku na konci, kterou můžete stáhnout a spustit.
+
+> [!NOTE]
+> Úložiště Azure nyní podporuje zónově redundantní úložiště (ZRS) pro vytváření vysoce dostupných aplikací. ZRS nabízí jednoduchým řešením pro potřeby redundance mnoho aplikací. ZRS poskytuje ochranu proti selhání hardwaru nebo závažné havárie, které mají vliv na jeden datového centra. Další informace najdete v tématu [Zónově redundantní úložiště (ZRS): aplikace s vysokou dostupností Azure Storage](storage-redundancy-zrs.md).
 
 ## <a name="key-features-of-ra-grs"></a>Klíčové funkce RA-GRS
 
@@ -105,7 +103,7 @@ Existuje mnoho způsobů pro zpracování žádosti o aktualizaci při spuštěn
 
 Jak budete vědět, které chyby se opakovatelná? To je dáno Klientská knihovna pro úložiště. Například chybu 404 (prostředek nebyl nalezen) není opakovatelná, protože ho opakování není mohlo vést úspěch. Na druhé straně je opakovatelné 500 Chyba, protože je k serverové chybě a může být přechodný problém. Další podrobnosti, projděte si [otevřete zdrojového kódu pro třídu ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) v klientské knihovny .NET úložiště. (Podívejte se na metodu ShouldRetry.)
 
-### <a name="read-requests"></a>Požadavky pro čtení
+### <a name="read-requests"></a>Požadavky na čtení
 
 Čtení požadavky můžete přesměrovat do sekundárního úložiště, pokud dojde k problému s primární úložiště. Uvedené výše v [pomocí nakonec konzistentních dat](#using-eventually-consistent-data), musí být přijatelné pro vaši aplikaci potenciálně číst zastaralá data. Pokud používáte Klientská knihovna pro úložiště pro přístup k datům RA-GRS, můžete zadat chování opakovat požadavek čtení nastavením hodnoty pro **LocationMode** vlastnost na jednu z následujících akcí:
 
@@ -135,7 +133,7 @@ U těchto scénářů byste měli určit, existuje se probíhající problém s 
 
 Vzor jistič lze použít také k aktualizaci požadavky. Žádosti o aktualizaci však nelze přesměrovat do sekundárního úložiště, která je jen pro čtení. Pro tyto požadavky, ponechte **LocationMode** vlastnost nastavena na hodnotu **PrimaryOnly** (výchozí). Ke zpracování těchto chyb, můžete použít metriky na tyto požadavky – například 10 selhání v řádku – a vaše prahová hodnota při splnění, přepnout aplikace do režimu jen pro čtení. Stejné metody pro vrácení slouží k aktualizaci režimu tak, jak je popsáno níže v další části o vzoru jistič.
 
-## <a name="circuit-breaker-pattern"></a>Vzor jistič
+## <a name="circuit-breaker-pattern"></a>Model Jistič (Circuit Breaker)
 
 Použití vzoru jistič v aplikaci, můžete zabránit v opakování operace, která je pravděpodobně selžou opakovaně. Umožňuje aplikaci nadále spouštět spíše než zabírají čas při operaci je exponenciálnímu opakovat. Navíc rozpozná, když byl opraven chyby, po kterém aplikace to zkuste znovu.
 
@@ -200,11 +198,11 @@ Třetí scénář, jakmile otestováním koncový bod primárního úložiště 
 
 ## <a name="handling-eventually-consistent-data"></a>Zpracování nakonec byl konzistentní dat
 
-RA-GRS funguje tak, že replikace transakce z primárního na sekundární oblast. Tento proces replikace zaručuje, že se data v sekundární oblasti *nakonec byl konzistentní*. To znamená, že všechny transakce v primární oblasti se nakonec objeví v sekundární oblasti, ale že mohou být prodleva předtím, než se objeví, a že neexistuje žádná záruka transakce přicházející do sekundární oblasti ve stejném pořadí jako, ve kterém byly původně uplatňují v primární oblasti. Pokud vaše transakce přicházejí v sekundární oblasti mimo pořadí, můžete *může* vezměte v úvahu vaše data v sekundární oblasti, kterou chcete být v nekonzistentním stavu, dokud služba zachytí.
+Geograficky redundantní účet úložiště jen pro čtení funguje tak, že replikuje transakce z primární oblasti do sekundární. Tento proces replikace zaručuje, že se data v sekundární oblasti *nakonec byl konzistentní*. To znamená, že všechny transakce v primární oblasti se nakonec objeví v sekundární oblasti, ale že mohou být prodleva předtím, než se objeví, a že neexistuje žádná záruka transakce přicházející do sekundární oblasti ve stejném pořadí jako, ve kterém byly původně uplatňují v primární oblasti. Pokud vaše transakce přicházejí v sekundární oblasti mimo pořadí, můžete *může* vezměte v úvahu vaše data v sekundární oblasti, kterou chcete být v nekonzistentním stavu, dokud služba zachytí.
 
 Následující tabulka znázorňuje příklad co může dojít v případě, že aktualizujete podrobnosti zaměstnanec, aby se mu členem *správci* role. Z důvodu v tomto příkladu to vyžaduje, můžete aktualizovat **zaměstnanec** entitu a aktualizace **role správce** entity s počtem celkový počet správců. Všimněte si, jak aktualizace jsou použity mimo pořadí v sekundární oblasti.
 
-| **Čas** | **Transakce**                                            | **Replikace**                       | **Čas poslední synchronizace** | **Výsledek** |
+| **Čas** | **Transakce**                                            | **Replikace**                       | **Čas poslední synchronizace** | **výsledek** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Transakce A: <br> Vložit zaměstnance <br> entity v primární |                                   |                    | Transakce A vložit do primární,<br> není ještě nereplikovaly. |
 | T1       |                                                            | Transakce A <br> replikovat do<br> sekundární | T1 | Replikovat do sekundárního A transakce. <br>Čas poslední synchronizace aktualizovat.    |

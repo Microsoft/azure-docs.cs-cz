@@ -1,26 +1,27 @@
 ---
-title: "Připojit virtuální sítě pomocí virtuální sítě partnerský vztah - portálu Azure | Microsoft Docs"
-description: "Zjistěte, jak připojit virtuální sítě pomocí virtuální sítě partnerský vztah."
+title: Připojit virtuální sítě pomocí virtuální sítě partnerský vztah - portálu Azure | Microsoft Docs
+description: V tomto článku zjistěte, jak připojit virtuální sítě pomocí virtuální sítě partnerský vztah, pomocí portálu Azure.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: 
+ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 0962a917186277a34abbda17b8fea87bcf4ad1e9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.custom: ''
+ms.openlocfilehash: b864c71a62289b3abef13a98b52683f7d928b8e1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Připojit virtuální sítě pomocí virtuální sítě pomocí portálu Azure vytvoření partnerského vztahu.
 
@@ -32,11 +33,13 @@ Virtuální sítě můžete připojit k sobě navzájem s partnerský vztah virt
 > * Nasazení virtuálního počítače (VM) do každé virtuální sítě
 > * Komunikace mezi virtuálními počítači
 
+Pokud dáváte přednost, můžete dokončit pomocí tohoto článku [rozhraní příkazového řádku Azure](tutorial-connect-virtual-networks-cli.md) nebo [prostředí Azure PowerShell](tutorial-connect-virtual-networks-powershell.md).
+
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure 
 
-Přihlaste se k portálu Azure v https://portal.azure.com.
+Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-virtual-networks"></a>Vytvoření virtuálních sítí
 
@@ -51,7 +54,7 @@ Přihlaste se k portálu Azure v https://portal.azure.com.
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **vytvořit nový** a zadejte *myResourceGroup*.|
     |Umístění| Vyberte **východní USA**.|
-    |Název podsítě.|Podsíť Subnet1|
+    |Název podsítě|Podsíť Subnet1|
     |Rozsah adres podsítě|10.0.0.0/24|
 
       ![Vytvoření virtuální sítě](./media/tutorial-connect-virtual-networks-portal/create-virtual-network.png)
@@ -147,7 +150,7 @@ Virtuální počítače trvat několik minut pro vytvoření. Příklady zbývaj
 3. Chcete-li připojit k virtuálnímu počítači, otevřete stažený soubor RDP. Po zobrazení výzvy vyberte **Connect**.
 4. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače (budete muset vybrat možnost **další možnosti**, pak **použít jiný účet**, zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače), potom vyberte **OK**.
 5. Během procesu přihlášení se může zobrazit upozornění certifikátu. Vyberte **Ano** pokračovat v připojení.
-6. V pozdější fázi, ping slouží ke komunikaci s *Můjvp2* virtuální počítač z *myVm1* virtuálních počítačů. Příkaz ping používá zprávu protokolu ICMP (Internet Control), který byl odepřen přes bránu Windows Firewall ve výchozím nastavení. Na *myVm1* virtuálních počítačů, povolit tak může odeslat příkaz ping tento virtuální počítač z brány firewall zprávu protokolu ICMP (Internet Control) prostřednictvím Windows *Můjvp2* v pozdější fázi, pomocí prostředí PowerShell:
+6. V pozdější fázi, ping slouží ke komunikaci s *Můjvp2* virtuální počítač z *myVm1* virtuálních počítačů. Příkaz ping používá zprávu protokolu ICMP (Internet Control), který byl odepřen přes bránu Windows Firewall ve výchozím nastavení. Na *myVm1* virtuálních počítačů, povolit protokol ICMP přes bránu Windows firewall tak, aby se může odeslat příkaz ping tento virtuální počítač z *Můjvp2* v pozdější fázi, pomocí prostředí PowerShell:
 
     ```powershell
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
@@ -177,15 +180,8 @@ Pokud již nepotřebujete, odstraňte skupinu prostředků a všechny prostředk
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Zadejte *myResourceGroup* pro **název skupiny prostředků typu:** a vyberte **odstranit**.
 
-**<a name="register"></a>Registrace pro partnerského vztahu preview globální virtuální sítě**
+## <a name="next-steps"></a>Další postup
 
-Vytváření partnerských vztahů virtuálních sítí ve stejné oblasti je všeobecně dostupné. Partnerský vztah virtuální sítě v různých oblastech je aktuálně ve verzi preview. V tématu [aktualizace virtuální sítě](https://azure.microsoft.com/updates/?product=virtual-network) pro dostupné oblasti. Rovnocenných počítačů virtuálních sítí v oblastech, nejprve je nutné zaregistrovat verzi Preview. Nelze zaregistrovat pomocí portálu, ale můžete zaregistrovat pomocí [prostředí PowerShell](tutorial-connect-virtual-networks-powershell.md#register) nebo [rozhraní příkazového řádku Azure](tutorial-connect-virtual-networks-cli.md#register). Pokud se pokusíte peer virtuální sítě v různých oblastech před registrací pro funkce, partnerský vztah selže.
+V tomto článku jste zjistili, jak připojit ve stejné oblasti Azure, dvě sítě pomocí virtuální sítě partnerský vztah. Můžete také peer virtuální sítě v různých [podporované oblasti](virtual-network-manage-peering.md#cross-region) a v [různých předplatných Azure](create-peering-different-subscriptions.md#portal), stejně, jako je vytváření [hvězdicové sítě návrhů](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) s partnerský vztah. Další informace o partnerském vztahu virtuální sítě najdete v tématu [partnerského vztahu Přehled virtuálních sítí](virtual-network-peering-overview.md) a [spravovat virtuální sítě partnerských vztahů](virtual-network-manage-peering.md).
 
-## <a name="next-steps"></a>Další kroky
-
-V tomto článku jste se naučili připojení dvě sítě, ve stejné oblasti Azure, s partnerský vztah virtuální sítě. Můžete také partnerský uzel virtuálních sítí v [různých oblastech](#register)v [různých předplatných Azure](create-peering-different-subscriptions.md#portal) a dají se vytvářet [hvězdicové sítě návrhů](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) s partnerský vztah. Před partnerský vztah produkční virtuální sítě, je doporučeno, důkladně Seznamte se s [partnerského vztahu přehled](virtual-network-peering-overview.md), [spravovat vztahy](virtual-network-manage-peering.md), a [limity virtuální síťové](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
-
-Dál svého počítače připojit k virtuální síti prostřednictvím sítě VPN a pracovat s prostředky ve virtuální síti, nebo peered virtuální sítě.
-
-> [!div class="nextstepaction"]
-> [Připojení počítače k virtuální síti.](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Připojit k virtuální síti prostřednictvím sítě VPN svého počítače a komunikovat s prostředky ve virtuální síti, nebo peered virtuální sítě najdete v tématu [připojení počítače k virtuální síti](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

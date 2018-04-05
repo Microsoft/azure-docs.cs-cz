@@ -1,12 +1,12 @@
 ---
-title: "Aktualizace firmwaru zařízení s Azure IoT Hub (.NET/.NET) | Microsoft Docs"
-description: "Jak používat správu zařízení v Azure IoT Hub zahájíte aktualizaci firmwaru zařízení. Použití zařízení Azure IoT sady SDK pro .NET k implementaci aplikace simulovaného zařízení a sady SDK pro .NET k implementaci služby aplikaci, která spustí aktualizaci firmwaru služby Azure IoT."
+title: Aktualizace firmwaru zařízení s Azure IoT Hub (.NET/.NET) | Microsoft Docs
+description: Jak používat správu zařízení v Azure IoT Hub zahájíte aktualizaci firmwaru zařízení. Použití zařízení Azure IoT sady SDK pro .NET k implementaci aplikace simulovaného zařízení a sady SDK pro .NET k implementaci služby aplikaci, která spustí aktualizaci firmwaru služby Azure IoT.
 services: iot-hub
 documentationcenter: .net
 author: JimacoMS2
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/19/2017
 ms.author: v-jamebr
-ms.openlocfilehash: bd0a227861d75dc66af8fb4865a17a3b6d0f70ba
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 984fd7516b5c05973c45891f4eda31c41a5a2be5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>Použití správy zařízení za účelem zahájení aktualizaci firmwaru zařízení (.NET/.NET)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 ## <a name="introduction"></a>Úvod
 V [Začínáme se správou zařízení] [ lnk-dm-getstarted] kurz, jste viděli, jak používat [dvojče zařízení] [ lnk-devtwin] a [přímé metody ] [ lnk-c2dmethod] primitiv vzdáleně restartování zařízení. Tento kurz používá stejné primitiv IoT Hub a ukazuje, jak provést aktualizaci firmwaru simulované začátku do konce.  Tento vzor slouží k implementaci firmwaru aktualizace pro [malin platformy zařízení implementace ukázka][lnk-rpi-implementation].
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 V tomto kurzu získáte informace o následujících postupech:
 
@@ -75,7 +77,7 @@ V této části vytvoříte konzolové aplikace .NET (pomocí jazyka C#), zaháj
     static string targetDevice = "{deviceIdForTargetDevice}";
     ```
         
-6. Přidejte následující metodu do **Program** třídy. Tato metoda dotazuje dvojče zařízení pro aktualizovaný stav každých 500 milisekund. Jenom v případě, že stav se změnil ve skutečnosti, zapíše se do konzoly. Pro tuto ukázku, aby se zabránilo využívání zprávy navíc IoT Hub v rámci vašeho předplatného, dotazování zastaví, když zařízení ohlásí, stav **applyComplete** nebo došlo k chybě.  
+6. Do třídy **Program** přidejte následující metodu. Tato metoda dotazuje dvojče zařízení pro aktualizovaný stav každých 500 milisekund. Jenom v případě, že stav se změnil ve skutečnosti, zapíše se do konzoly. Pro tuto ukázku, aby se zabránilo využívání zprávy navíc IoT Hub v rámci vašeho předplatného, dotazování zastaví, když zařízení ohlásí, stav **applyComplete** nebo došlo k chybě.  
    
     ```csharp   
     public static async Task QueryTwinFWUpdateReported(DateTime startTime)
@@ -386,7 +388,7 @@ Nyní jste připraveni aplikaci spustit.
     ![Aplikace služby a zařízení spustit][img-combinedrun]
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu přímá metoda používá k aktivaci aktualizace vzdálené firmwaru v zařízení a umožňuje sledovat průběh aktualizace firmwaru hlášené vlastnosti.
 
 Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá na několika zařízeních, najdete v článku [plán a všesměrového vysílání úlohy] [ lnk-tutorial-jobs] kurzu.

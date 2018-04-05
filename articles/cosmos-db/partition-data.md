@@ -1,33 +1,33 @@
 ---
-title: "Vytváření oddílů a horizontální škálování v Azure Cosmos DB | Microsoft Docs"
-description: "Další informace o tom, jak rozdělení funguje v Azure Cosmos DB, jak nakonfigurovat, vytváření oddílů a oddílu klíče a jak vybrat klíč správné oddílu pro vaši aplikaci."
+title: Vytváření oddílů a horizontální škálování v Azure Cosmos DB | Microsoft Docs
+description: Další informace o tom, jak rozdělení funguje v Azure Cosmos DB, jak nakonfigurovat, vytváření oddílů a oddílu klíče a jak vybrat klíč správné oddílu pro vaši aplikaci.
 services: cosmos-db
 author: arramac
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: cac9a8cd-b5a3-4827-8505-d40bb61b2416
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 03/30/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0032a00883cedfe754e14293dc13a1009f6dd3a0
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 149d2ba5108fb49741203fbe5c50add6c0d523ae
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Oddíl a škálování v Azure Cosmos DB
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je služba globálně distribuované, multimodel databáze navržené tak, aby vám pomohou dosáhnout rychlé, předvídatelný výkon. Se škáluje bezproblémově společně s vaší aplikace ho s růstem. Tento článek obsahuje přehled jak modely dělení platí pro všechna data v Azure Cosmos DB. Také popisuje konfiguraci kontejnery Azure Cosmos DB efektivní škálování vašich aplikací.
 
-Dělení a klíče oddílu jsou popsané v této Azure pátek video s Scott Hanselman a Azure Cosmos DB hlavní inženýrství manažer Shireesh Thota:
+Dělení a klíče oddílu jsou popsané v tomto videu Azure Cosmos DB Program Správce Andrew Liu:
 
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-DocumentDB-Elastic-Scale-Partitioning/player]
+> [!VIDEO https://www.youtube.com/embed/SS6WrQ-HJ30]
 > 
 
 ## <a name="partitioning-in-azure-cosmos-db"></a>Vytváření oddílů v Azure Cosmos DB
@@ -53,7 +53,7 @@ Stručně řečeno zde je Princip vytváření oddílů v Azure Cosmos DB:
 * Na pozadí Azure Cosmos DB zřídí oddíly, které jsou potřebné k obsluze **T** požadavků za sekundu. Pokud **T** je vyšší než maximální propustnost na oddíl **t**, pak Azure Cosmos DB zřizuje **N = T/t** oddíly.
 * Azure Cosmos DB přiděluje místo na klíče oddílu klíče hash rovnoměrně napříč **N** oddíly. Takže každý oddíl (fyzickém oddílu) hostitele **1 nebo N** oddílu hodnoty klíče (logické oddíly).
 * Při fyzickém oddílu **p** dosáhnou limitu úložiště Azure Cosmos DB bezproblémově rozdělí **p** do dvou nových oddílů, **p1** a **p2** . Distribuuje hodnoty odpovídající přibližně poloviční klíče pro každou nadefinovaných oddílů. Toto rozdělení operace je pro vaše aplikace skrytá. Pokud fyzickém oddílu dosáhne limitu úložiště a všechna data na fyzickém oddílu patří do stejného klíče logický oddíl, neproběhne operaci rozdělení. Je to proto, že všechna data pro klíč jeden logický oddíl se musí nacházet v jednom fyzickém oddílu, a proto fyzickém oddílu nelze rozdělit na p1 a p2. V takovém případě měly by být použity strategie klíče jiný oddíl.
-* Pokud zřídíte propustnost vyšší než  **t*N**, Azure Cosmos DB rozdělí jeden nebo více oddíly mohou podporovat vyšší propustnost.
+* Pokud zřídíte propustnost vyšší než **t * N**, Azure Cosmos DB rozdělí jeden nebo více oddíly mohou podporovat vyšší propustnost.
 
 Sémantika pro klíče oddílů je mírně odlišný tak, aby odpovídaly sémantika každé rozhraní API, jak je znázorněno v následující tabulce:
 
@@ -70,7 +70,7 @@ Azure Cosmos DB používá algoritmus HMAC rozdělení do oddílů. Při zápisu
 > Je vhodné mít klíč oddílu s mnoha jedinečných hodnot (několika set k tisícům minimálně).
 >
 
-Kontejnery Azure Cosmos DB se dá vytvořit jako *pevné* nebo *neomezená* na portálu Azure. Kontejnery pevné velikosti mají maximální limit 10 GB a propustnost 10 000 RU/s. Pokud chcete vytvořit kontejner jako neomezená, musíte zadat minimální propustnost 1000 RU/s a je nutné zadat klíč oddílu.
+Kontejnery Azure Cosmos DB se dá vytvořit jako *pevné* nebo *neomezená* na portálu Azure. Kontejnery s pevnou velikostí mají omezení maximální velikosti 10 GB a propustnosti 10 000 RU/s. Pokud chcete vytvořit kontejner jako neomezená, musíte zadat minimální propustnost 1000 RU/s a je nutné zadat klíč oddílu.
 
 Je vhodné zkontrolovat, jak se vaše data rozděluje v oddílech. Chcete-li zaškrtněte toto políčko portálu, přejděte ke svému účtu Azure Cosmos DB a klikněte na **metriky** v **monitorování** tématu a potom v pravém podokně klikněte na **úložiště** zjistit, jak vaše data jsou oddíly v různých fyzických oddílu.
 

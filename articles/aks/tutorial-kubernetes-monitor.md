@@ -1,6 +1,6 @@
 ---
 title: Kurz Kubernetes v Azure – Monitorování Kubernetes
-description: Kurz AKS – Monitorování Kubernetes pomocí Microsoft Operations Management Suite (OMS)
+description: Kurz AKS – Monitorování Kubernetes pomocí služby Azure Log Analytics
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 227601858dbe07e6cb774a2d24878ddca05aaf56
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 86ae0c5ab302c49fa58df887d9dffef6cec31708
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="monitor-azure-container-service-aks"></a>Monitorování služby Azure Container Service (AKS)
+# <a name="tutorial-monitor-azure-container-service-aks"></a>Kurz: Monitorování služby Azure Container Service (AKS)
 
 Monitorování clusteru a kontejnerů Kubernetes je důležité, zejména pokud provozujete produkční cluster ve velkém měřítku a s několika aplikacemi.
 
@@ -26,7 +26,7 @@ V tomto kurzu, který je sedmou částí osmidílné série, se probírají nás
 > [!div class="checklist"]
 > * Konfigurace řešení pro monitorování kontejnerů
 > * Konfigurace agentů monitorování
-> * Přístup k informacím o monitorování na webu Azure Portal
+> * Přístup k informacím o monitorování na portálu Azure Portal
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -36,19 +36,19 @@ Pokud jste tyto kroky neprovedli a chcete si je projít, vraťte se ke [kurzu 1 
 
 ## <a name="configure-the-monitoring-solution"></a>Konfigurace řešení pro monitorování
 
-Na webu Azure Portal vyberte **Vytvořit prostředek** a vyhledejte řešení `Container Monitoring Solution`. Jakmile řešení najdete, vyberte **Vytvořit**.
+Na portálu Azure Portal vyberte **Vytvořit prostředek** a vyhledejte řešení `Container Monitoring Solution`. Jakmile řešení najdete, vyberte **Vytvořit**.
 
 ![Přidání řešení](./media/container-service-tutorial-kubernetes-monitor/add-solution.png)
 
-Vytvořte nový pracovní prostor OMS nebo vyberte existující. Tímto procesem vás provede formulář Pracovní prostor OMS.
+Vytvořte nový pracovní prostor Log Analytics nebo vyberte existující. Tímto procesem vás provede formulář pracovního prostor Log Analytics.
 
 Při vytváření pracovního prostoru vyberte **Připnout na řídicí panel**, abyste k němu měli snadný přístup.
 
-![Pracovní prostor OMS](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
+![Pracovní prostor Log Analytics](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
 
 Až budete hotovi, vyberte **OK**. Po dokončení ověřování vyberte **Vytvořit** a vytvořte řešení pro monitorování kontejnerů.
 
-Po vytvoření se pracovní prostor zobrazí na webu Azure Portal.
+Po vytvoření se pracovní prostor zobrazí na portálu Azure Portal.
 
 ## <a name="get-workspace-settings"></a>Získání nastavení pracovního prostoru
 
@@ -56,9 +56,9 @@ Ke konfiguraci agenta řešení na uzlech Kubernetes se vyžaduje ID a klíč pr
 
 Tyto hodnoty načtete výběrem možnosti **Pracovní prostor Log Analytics** v levé nabídce řešení kontejnerů. Vyberte **Upřesnit nastavení** a poznamenejte si **ID PRACOVNÍHO PROSTORU** a **PRIMÁRNÍ KLÍČ**.
 
-## <a name="create-kubernetes-secret"></a>Vytvoření tajného klíče Kubernetes
+## <a name="create-kubernetes-secret"></a>Vytvoření tajného kódu Kubernetes
 
-Pomocí příkazu [kubectl create secret][kubectl-create-secret] uložte nastavení pracovního prostoru OMS do tajného klíče Kubernetes `omsagent-secret`. Aktualizujte `WORKSPACE_ID` s použitím ID vašeho pracovního prostoru OMS a `WORKSPACE_KEY` s použitím klíče pracovního prostoru.
+Pomocí příkazu [kubectl create secret][kubectl-create-secret] uložte nastavení pracovního prostoru Log Analytics do tajného kódu Kubernetes `omsagent-secret`. Aktualizujte `WORKSPACE_ID` s použitím ID vašeho pracovního prostoru Log Analytics a `WORKSPACE_KEY` s použitím klíče pracovního prostoru.
 
 ```console
 kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
@@ -154,11 +154,11 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR 
 omsagent   3         3         3         3            3           beta.kubernetes.io/os=linux   8m
 ```
 
-Po spuštění agentů trvá OMS ingestování a zpracování dat několik minut.
+Po spuštění agentů trvá službě Log Analytics ingestování a zpracování dat několik minut.
 
 ## <a name="access-monitoring-data"></a>Přístup k datům monitorování
 
-Na webu Azure Portal vyberte pracovní prostor Log Analytics, který se připnul na řídicí panel portálu. Klikněte na dlaždici **Řešení pro monitorování kontejnerů**. Tady najdete informace o clusteru AKS a jeho kontejnerech.
+Na portálu Azure Portal vyberte pracovní prostor Log Analytics, který se připnul na řídicí panel portálu. Klikněte na dlaždici **Řešení pro monitorování kontejnerů**. Tady najdete informace o clusteru AKS a jeho kontejnerech.
 
 ![Řídicí panel](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
@@ -166,12 +166,12 @@ Podrobné pokyny k dotazování a analýze dat monitorování najdete v [dokumen
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste monitorovali svůj cluster Kubernetes pomocí OMS. Mezi probírané úlohy patří:
+V tomto kurzu jste monitorovali svůj cluster Kubernetes pomocí služby Log Analytics. Mezi probírané úlohy patří:
 
 > [!div class="checklist"]
 > * Konfigurace řešení pro monitorování kontejnerů
 > * Konfigurace agentů monitorování
-> * Přístup k informacím o monitorování na webu Azure Portal
+> * Přístup k informacím o monitorování na portálu Azure Portal
 
 Přejděte k dalšímu kurzu, kde se seznámíte s upgradem Kubernetes na novou verzi.
 

@@ -1,12 +1,12 @@
 ---
-title: "Zálohování souborů a složek z Windows do Azure (Resource Manager) | Dokumentace Microsoftu"
-description: "Postup zálohování souborů a složek z Windows do Azure v nasazení podle modelu Resource Manager."
+title: Zálohování souborů a složek z Windows do Azure (Resource Manager) | Dokumentace Microsoftu
+description: Postup zálohování souborů a složek z Windows do Azure v nasazení podle modelu Resource Manager.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "postup zálohování; zálohování souborů a složek"
+editor: ''
+keywords: postup zálohování; zálohování souborů a složek
 ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 8/15/2017
 ms.author: markgal;
-ms.openlocfilehash: bb631eff77932b6bdcf858256c47c9d7381a58c1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 55f83bda1a9de9274194ec220fa9a4a5c8b7f0fb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>První pohled: Zálohování souborů a složek v nasazení podle modelu Resource Manager
 Tento článek vysvětluje, jak postupovat při zálohování souborů a složek z Windows Serveru (nebo z počítače s Windows) do Azure pomocí nasazení podle modelu Resource Manager. Tento kurz vás má provést základy. Chcete-li začít používat Azure Backup, jste na správném místě.
@@ -87,7 +87,7 @@ Při vytváření trezoru služby Recovery Services se ujistěte, že je redunda
 
     ![volby konfigurace úložiště](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako primární koncový bod úložiště záloh, pokračujte v používání **geograficky redundantního** úložiště. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md#geo-redundant-storage) a [místně redundantního](../storage/common/storage-redundancy.md#locally-redundant-storage) úložiště najdete v tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md).
+    Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako primární koncový bod úložiště záloh, pokračujte v používání **geograficky redundantního** úložiště. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy-grs.md) a [místně redundantního](../storage/common/storage-redundancy-lrs.md) úložiště najdete v tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md).
 
 Teď když jste vytvořili trezor, nakonfigurujte pro něj zálohování souborů a složek.
 

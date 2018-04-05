@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží s instancí Azure kontejnerů"
-description: "Zjistěte, jak vyřešit problémy s instancí kontejnerů Azure"
+title: Řešení potíží s instancí Azure kontejnerů
+description: Zjistěte, jak vyřešit problémy s instancí kontejnerů Azure
 services: container-instances
 author: seanmck
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a527939d6bc73e3dee5701bc53ef8312e68d2953
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ac7ddbccdef736bce941716883cf821a0f5c1f34
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Řešení potíží s nasazením s instancemi Azure kontejneru
+# <a name="troubleshoot-container-and-deployment-issues-in-azure-container-instances"></a>Řešení problémů kontejneru a nasazení v Azure kontejner instancí
 
 Tento článek ukazuje, jak vyřešit problémy při nasazení kontejnerů do Azure kontejner instancí. Také popisuje některé běžné problémy, které můžete narazit na.
 
@@ -51,7 +51,7 @@ Traceback (most recent call last):
 urllib.error.HTTPError: HTTP Error 404: Not Found
 ```
 
-### <a name="attach-output-streams"></a>Připojte výstupní datové proudy
+### <a name="attach-output-streams"></a>Připojení výstupních datových proudů
 
 [Az kontejneru připojit] [ az-container-attach] příkaz nabízí diagnostické informace během spouštění kontejneru. Po zahájení kontejneru, proudů STDOUT a STDERR do místní konzoly.
 

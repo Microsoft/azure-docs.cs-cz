@@ -1,26 +1,26 @@
 ---
-title: "Vytvoření funkce aktivované službou Blob Storage v Azure | Dokumentace Microsoftu"
-description: "Pomocí služby Azure Functions vytvoříte funkci bez serveru, kterou volají položky přidané do úložiště služby Azure Blob Storage."
+title: Vytvoření funkce aktivované službou Blob Storage v Azure | Dokumentace Microsoftu
+description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, kterou volají položky přidané do úložiště služby Azure Blob Storage.
 services: azure-functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.service: functions
 ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/07/2017
+ms.date: 03/27/2018
 ms.author: glenga
-ms.custom: mvc
-ms.openlocfilehash: e34d3634b592efe4581135f9dee52bf77d7506cd
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.custom: mvc, cc996988-fb4f-47
+ms.openlocfilehash: 928ea1dbb68206e128f0593ba15cb48935ab1ccf
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Vytvoření funkce aktivované službou Azure Blob Storage
 
@@ -32,8 +32,6 @@ Dozvíte se, jak vytvořit funkci, která se aktivuje při odesílání souborů
 
 + Stáhnout a nainstalovat [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
 + Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
 ## <a name="create-an-azure-function-app"></a>Vytvoření aplikace Azure Function App
 

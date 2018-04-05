@@ -1,18 +1,18 @@
 ---
-title: "Úloha průběh sledovat prostřednictvím počítání úlohy podle stavu – Azure Batch | Microsoft Docs"
-description: "Monitorování průběhu úlohy voláním operace získat úloh spočítá počet úloh pro úlohu. Můžete získat počet aktivní, spuštěné a dokončené úlohy a úlohy, které mají byla úspěšná nebo neúspěšná."
+title: Úloha průběh sledovat prostřednictvím počítání úlohy podle stavu – Azure Batch | Microsoft Docs
+description: Monitorování průběhu úlohy voláním operace získat úloh spočítá počet úloh pro úlohu. Můžete získat počet aktivní, spuštěné a dokončené úlohy a úlohy, které mají byla úspěšná nebo neúspěšná.
 services: batch
-author: tamram
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: tamram
-ms.openlocfilehash: ceff59d7063b60a1344a47489d3d73e0e8ee07df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: bc112ed5b481560362962d6b550d336de6b3d9b4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="count-tasks-by-state-to-monitor-a-jobs-progress-preview"></a>Počet úloh podle stavu můžete sledovat průběh úlohy (Preview)
 
@@ -31,7 +31,7 @@ Operace získání úkolů počty počty úlohy podle stavu, následujícím zp�
 - Úloha se počítá jako **systémem** když byl přiřazen do výpočetního uzlu, ale zatím není dokončený. Úloha se počítá jako **systémem** při její stav je buď `preparing` nebo `running`, jak je uvedené [získat informace o úkolu] [ rest_get_task] operaci.
 - Úloha se počítá jako **Dokončit** Pokud již není vhodné spouštět. Úloha se počítají jako **Dokončit** má obvykle buď bylo dokončeno úspěšně, nebo je neúspěšně dokončené a také již vyčerpán limitu opakování. 
 
-Operace získání počty úloh také sestavy, kolik úlohy mají byla úspěšná nebo neúspěšná. Batch Určuje, jestli má úloha byla úspěšná nebo neúspěšná kontrolou **výsledek** vlastnost vlastnosti [executionInfo] [https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo]:
+Operace získání počty úloh také sestavy, kolik úlohy mají byla úspěšná nebo neúspěšná. Batch Určuje, jestli má úloha byla úspěšná nebo neúspěšná kontrolou **výsledek** vlastností [executionInfo] [https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo] vlastnost:
 
     - Úloha se počítá jako **úspěšné** Pokud je výsledek provádění úlohy `success`.
     - Úloha se počítá jako **se nezdařilo** Pokud je výsledek provádění úlohy `failure`.
@@ -70,7 +70,7 @@ Volání operace získání počty úloh je nejúčinnější způsob, jak vrát
 
 Operace získání úkolů počty starší než 2017-06-01.5.1 není k dispozici ve verzích služby Batch. Pokud používáte starší verzi služby, potom pomocí seznamu dotazu místo počet úkoly v úloze. Další informace najdete v tématu [dotazy vytvořit seznam Batch efektivně prostředky](batch-efficient-list-queries.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o koncepcích a funkcích služby Batch najdete v článku [Přehled funkcí Batch](batch-api-basics.md). Článek popisuje primární prostředky služby Batch například fondy, výpočetní uzly, úlohy a úkoly a nabízí přehled funkcí služby.
 * Seznamte se se základy vývoje aplikací s podporou služby Batch pomocí [klientské knihovny Batch .NET](batch-dotnet-get-started.md) nebo [Pythonu](batch-python-tutorial.md). Tyto články úvodní vás provede funkční aplikaci, která používá službu Batch při spouštění úlohy na několika výpočetních uzlech.

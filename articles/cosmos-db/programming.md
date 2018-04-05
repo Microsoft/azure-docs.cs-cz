@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 2b55307c3122513b414c3f90a6a36d230f3459c2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 328cf016c98575ecd0fa7be023b48e670211babf
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure programování na straně serveru Cosmos DB: uložené procedury, triggery databáze a UDF
 
@@ -54,7 +54,7 @@ Tento přístup z *"JavaScript jako moderní den T-SQL"* uvolní vývojáři apl
   * Přidá abstraktní vrstvu nad nezpracovaná data, která umožňuje data architekty vyvíjí svých aplikací nezávisle data. Tato abstraktní vrstvu, je výhodné, když jsou data bez schémat, z důvodu křehká předpokladů, které možná muset zaručená do aplikace, pokud mají jak nakládat s daty přímo.  
   * Tato abstrakce umožňuje podnikům zabezpečit svá data pomocí zjednodušení přístup z skripty.  
 
-Vytvoření a spuštění databáze aktivační události, uložené procedury a operátory vlastního dotazu jsou podporovány prostřednictvím [portál Azure](https://portal.azure.com), [REST API](/rest/api/documentdb/), [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases), a [klientskou sadu SDK](sql-api-sdk-dotnet.md) na spoustě platforem včetně .NET, Node.js a JavaScript.
+Vytvoření a spuštění databáze aktivační události, uložené procedury a operátory vlastního dotazu jsou podporovány prostřednictvím [portál Azure](https://portal.azure.com), [REST API](/rest/api/cosmos-db/), [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases), a [klientskou sadu SDK](sql-api-sdk-dotnet.md) na spoustě platforem včetně .NET, Node.js a JavaScript.
 
 Tento kurz používá [Node.js SDK Q lišící](http://azure.github.io/azure-documentdb-node-q/) pro ilustraci syntaxi a použití uložené procedury, triggery a UDF.   
 

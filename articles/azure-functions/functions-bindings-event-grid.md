@@ -1,13 +1,13 @@
 ---
-title: "Aktivační událost mřížky pro Azure Functions"
-description: "Pochopení způsobu zpracování události událostí mřížky v Azure Functions."
+title: Aktivační událost mřížky pro Azure Functions
+description: Pochopení způsobu zpracování události událostí mřížky v Azure Functions.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 5039798d76017d93b77d724b2e6bca6712af0370
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a2d8f66b0364535cbb7e8cadd8067dd8f7facb2c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Aktivační událost mřížky pro Azure Functions
 
 Tento článek vysvětluje, jak bude zpracováván [událostí mřížky](../event-grid/overview.md) události v Azure Functions.
 
-Mřížky událostí je služba Azure, která odešle požadavky HTTP s oznámením o událostech, které ve dojde *vydavatelů*. Vydavatel je služba nebo prostředek, který pochází událost. Například účet úložiště objektů blob v Azure je vydavatelem a nahrání objektu blob nebo odstranění je událost. Některé [služby Azure mají integrovanou podporu pro publikování událostí do mřížky událostí](../event-grid/overview.md#event-publishers). 
+Mřížky událostí je služba Azure, která odešle požadavky HTTP s oznámením o událostech, které ve dojde *vydavatelů*. Vydavatel je služba nebo prostředek, který pochází událost. Například účet úložiště objektů blob v Azure je vydavatelem a nahrání objektu blob nebo odstranění je událost. Některé [služby Azure mají integrovanou podporu pro publikování událostí do mřížky událostí](../event-grid/overview.md#event-sources). 
 
 Událost *obslužné rutiny* přijímat a zpracovávat události. Azure Functions je jedním z několika [služby Azure, které mají integrovanou podporu pro zpracování událostí mřížky událostí](../event-grid/overview.md#event-handlers). V tomto článku zjistěte, jak použít aktivační událost INSTEAD mřížky události k vyvolání funkce při přijetí události z události mřížky.
 

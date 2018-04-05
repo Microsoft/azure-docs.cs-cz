@@ -1,8 +1,8 @@
 ---
-title: "Python: Operace správy účtů v Azure Data Lake Store | Dokumentace Microsoftu"
-description: "Zjistěte, jak pomocí sady Python SDK pracovat s operacemi správy účtů Data Lake Store."
+title: 'Python: Operace správy účtů v Azure Data Lake Store | Dokumentace Microsoftu'
+description: Zjistěte, jak pomocí sady Python SDK pracovat s operacemi správy účtů Data Lake Store.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 834dbc93348e00b0a0821bcbca989b0c2d539056
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 5f060dfd061af07f220576f17110afccd01fdae5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-python"></a>Operace správy účtů v Azure Data Lake Store pomocí Pythonu
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Zjistěte, jak pomocí sady Python SDK pro Azure Data Lake Store provádět zák
 Abyste mohli pracovat se službou Data Lake Store pomocí Pythonu, je nutné nainstalovat tři moduly.
 
 * Modul `azure-mgmt-resource`, který zahrnuje moduly Azure pro Active Directory atd.
-* Modul `azure-mgmt-datalake-store`, který zahrnuje operace správy účtů Azure Data Lake Store. Další informace o tomto modulu najdete v [referenčních informacích k modulu Azure Data Lake Store Management](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html).
+* Modul `azure-mgmt-datalake-store`, který zahrnuje operace správy účtů Azure Data Lake Store. Další informace o tomto modulu najdete v [referenčních informacích k modulu Azure Data Lake Store Management](http://azure-sdk-for-python.readthedocs.io/sample_azure-mgmt-datalake-store.html).
 * Modul `azure-datalake-store`, který zahrnuje operace systému souborů Azure Data Lake Store. Další informace o tomto modulu najdete v [referenčních informacích k modulu Azure Data Lake Store Filesystem](http://azure-datalake-store.readthedocs.io/en/latest/).
 
 Pomocí následujících příkazů tyto moduly nainstalujte.

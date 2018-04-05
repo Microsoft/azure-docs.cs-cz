@@ -1,11 +1,11 @@
 ---
-title: "Zálohování Azure – zálohování úloh DPM pomocí Powershellu | Microsoft Docs"
-description: "Zjistěte, jak nasadit a spravovat Azure Backup pro Data Protection Manager (DPM) pomocí prostředí PowerShell"
+title: Zálohování Azure – zálohování úloh DPM pomocí Powershellu | Microsoft Docs
+description: Zjistěte, jak nasadit a spravovat Azure Backup pro Data Protection Manager (DPM) pomocí prostředí PowerShell
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: NKolli1
 manager: shreeshd
-editor: 
+editor: ''
 ms.assetid: e9bd223c-2398-4eb1-9bf3-50e08970fea7
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
 ms.author: adigan;anuragm;trinadhk;markgal
-ms.openlocfilehash: 9322037427c84f0b8a91cc76f5c0fed52167bc3c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 89dd965208cd473e47de9e0c9bdbfa3ab986c3d5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery DPM (Data Protection Manager) pomocí PowerShellu
 Tento článek ukazuje, jak pomocí prostředí PowerShell instalační program Azure Backup na serveru DPM a ke správě zálohování a obnovení.
@@ -77,7 +77,7 @@ Následující kroky vás provedou vytvoření trezoru služeb zotavení. Trezor
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
-4. Zadejte typ redundance úložiště se použije. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). Následující příklad ukazuje, že je možnost - BackupStorageRedundancy pro testVault nastavena na GeoRedundant.
+4. Zadejte typ redundance úložiště se použije. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Následující příklad ukazuje, že je možnost - BackupStorageRedundancy pro testVault nastavena na GeoRedundant.
 
    > [!TIP]
    > Mnoho rutin Azure Backup vyžadují objekt trezoru služeb zotavení jako vstup. Z tohoto důvodu je vhodné pro uložení objektu trezoru služeb zotavení zálohování v proměnné.
@@ -119,7 +119,7 @@ Tím se nainstaluje agent s výchozími možnostmi. Instalace trvá několik min
 
 Agenta se zobrazí v seznamu nainstalovaných programů. Chcete-li zobrazit seznam nainstalovaných programů, přejděte na **ovládací panely** > **programy** > **programy a funkce**.
 
-![Instalaci agenta](./media/backup-dpm-automation/installed-agent-listing.png)
+![Agent nainstalován](./media/backup-dpm-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Možnosti instalace
 Aby se zobrazily všechny možnosti, které jsou k dispozici prostřednictvím příkazového řádku, použijte následující příkaz:
@@ -140,8 +140,8 @@ Mezi dostupné možnosti patří:
 | /d |Odinstaluje Agenta Microsoft Azure Recovery Services. |- |
 | /pH |Adresa proxy hostitele |- |
 | /Po |Číslo portu proxy hostitele |- |
-| /Pu |Uživatelské jméno proxy hostitele |- |
-| /pW |Heslo pro proxy server |- |
+| /pu |Uživatelské jméno proxy hostitele |- |
+| /pw |Heslo pro proxy server |- |
 
 ## <a name="registering-dpm-to-a-recovery-services-vault"></a>Registrace aplikace DPM k obnovení služby úložiště
 Po vytvoření trezoru služeb zotavení, stáhněte si nejnovější verzi agenta a přihlašovací údaje trezoru a uložte ho do vhodného umístění jako C:\Downloads.
@@ -309,10 +309,10 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 V předchozím příkladu ```$onlineSch``` je pole se čtyřmi prvky, které obsahuje existující plán ochranu online pro skupinu ochrany ve schématu GFS:
 
-1. ```$onlineSch[0]```obsahuje denní plán
-2. ```$onlineSch[1]```obsahuje Týdenní plán
-3. ```$onlineSch[2]```obsahuje plánování měsíčně
-4. ```$onlineSch[3]```obsahuje roční plán
+1. ```$onlineSch[0]``` obsahuje denní plán
+2. ```$onlineSch[1]``` obsahuje Týdenní plán
+3. ```$onlineSch[2]``` obsahuje plánování měsíčně
+4. ```$onlineSch[3]``` obsahuje roční plán
 
 Takže pokud budete muset upravit týdenní plán, budete muset naleznete ```$onlineSch[1]```.
 
@@ -334,8 +334,8 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ## <a name="view-the-backup-points"></a>Zobrazení body zálohy
 Můžete použít [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) rutiny se získat seznam všech bodů obnovení pro zdroj dat. V tomto příkladu provedeme následující:
 
-* načtení všech PGs na serveru DPM a uloženy do pole```$PG```
-* získání zdroje dat odpovídající```$PG[0]```
+* načtení všech PGs na serveru DPM a uloženy do pole ```$PG```
+* získání zdroje dat odpovídající ```$PG[0]```
 * získání všech bodů obnovení pro zdroj dat.
 
 ```
@@ -365,5 +365,5 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 
 Příkazy můžete snadno rozšířit pro jakýkoli typ datasource.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o DPM pro zálohování Azure najdete v části [Úvod k zálohování aplikace DPM](backup-azure-dpm-introduction.md)

@@ -1,31 +1,31 @@
 ---
-title: "Správa prostředků účtu Batch pomocí klientské knihovny pro platformu .NET – Azure | Microsoft Docs"
-description: "Vytvořit, odstranit a upravit prostředků účtu Azure Batch pomocí knihovny Batch Management .NET."
+title: Správa prostředků účtu Batch pomocí klientské knihovny pro platformu .NET – Azure | Microsoft Docs
+description: Vytvořit, odstranit a upravit prostředků účtu Azure Batch pomocí knihovny Batch Management .NET.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 16279b23-60ff-4b16-b308-5de000e4c028
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/24/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eafde9258222a2ab09ade2e366f9cc595a303dec
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 7f2d0b261a991dc02b670488c14392697ea984ec
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Spravovat účty Batch a kvóty pomocí klientské knihovny správy Batch pro .NET
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](batch-account-create-portal.md)
+> * [Azure Portal](batch-account-create-portal.md)
 > * [Knihovna Batch Management .NET](batch-management-dotnet.md)
 > 
 > 
@@ -35,7 +35,7 @@ Můžete snížit údržby režie v aplikacích Azure Batch pomocí [rozhraní B
 * **Vytvářet a odstraňovat účty Batch** v libovolné oblasti. Pokud například jako nezávislý dodavatel softwaru (ISV) z nich poskytovat služby pro klienty ve kterých každý je přiřazen samostatný účet Batch pro účely fakturace, můžete přidat možnosti vytváření a odstraňování účtu na portál zákazníka.
 * **Získat a obnovit klíče účtu** prostřednictvím kódu programu pro všechny účty Batch. To vám může pomoct souladu se zásadami zabezpečení, které vynucují pravidelné výměny nebo vypršení platnosti klíče účtu. Pokud máte několik účty Batch v různých oblastech Azure, automatizaci procesu tato změna se zvyšuje efektivita vaše řešení.
 * **Zkontrolujte účet kvóty** a určení, které účty Batch mají jaké limity průběhu zkušební verze a chyby. Kontrolou kvóty vašeho účtu před spuštěním úlohy vytváření fondů nebo přidání výpočetní uzly, můžete upravit proaktivně kde nebo když tyto výpočetní prostředky jsou vytvořeny. Můžete určit, které účty vyžadují, že kvóta zvyšuje před přiděluje další prostředky v těchto účtů.
-* **Kombinování funkcí jinými službami Azure** pro správu plnohodnotné prostředí – pomocí rozhraní Batch Management .NET [Azure Active Directory][aad_about]a [Azure Resource Manager] [ resman_overview] společně ve stejné aplikaci. Pomocí těchto funkcí a jejich rozhraní API mohou poskytnout prostředí hladký ověřování, umožňuje vytvářet a odstraňovat skupiny prostředků a možnosti, které jsou popsané výše začátku do konce řešení pro správu.
+* **Kombinování funkcí jinými službami Azure** pro správu plnohodnotné prostředí – pomocí rozhraní Batch Management .NET [Azure Active Directory][aad_about]a [Azure Správce prostředků] [ resman_overview] společně ve stejné aplikaci. Pomocí těchto funkcí a jejich rozhraní API mohou poskytnout prostředí hladký ověřování, umožňuje vytvářet a odstraňovat skupiny prostředků a možnosti, které jsou popsané výše začátku do konce řešení pro správu.
 
 > [!NOTE]
 > Když tento článek se zaměřuje na programové správy účtů Batch, klíče a kvóty, je mnoho tyto aktivity provést pomocí [portál Azure][azure_portal]. Další informace najdete v tématu [vytvoření účtu Azure Batch pomocí portálu Azure](batch-account-create-portal.md) a [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md).

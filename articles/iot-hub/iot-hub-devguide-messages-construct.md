@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2018
 ms.author: dobett
-ms.openlocfilehash: 832010181059e2ec42834e54622f374c367c8d4f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5979c0d79a0abd9897fd3970ccea1d9ba07f9dfd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv služby IoT Hub
 
-Pro podporu bezproblémové vzájemná funkční spolupráce mezi protokoly, definuje IoT Hub běžný formát zprávy pro všechny protokoly zařízení přístupem. Používá se tento formát zprávy pro [zařízení cloud] [ lnk-d2c] a [cloud zařízení] [ lnk-c2d] zprávy. [IoT Hub zpráva] [ lnk-messaging] se skládá z:
+Pro podporu bezproblémové vzájemná funkční spolupráce mezi protokoly, definuje IoT Hub běžný formát zprávy pro všechny protokoly zařízení přístupem. Používá se tento formát zprávy pro [zařízení cloud] [ lnk-d2c] a [cloud zařízení] [ lnk-c2d] zprávy. 
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
+
+[IoT Hub zpráva] [ lnk-messaging] se skládá z:
 
 * Sadu *vlastnosti systému*. Vlastnosti, které Centrum IoT interpretuje nebo nastaví. Tato sada je předem určený.
 * Sadu *vlastnosti aplikace*. Slovník vlastnosti řetězce, které aplikace můžete definovat a přístup, aniž by museli deserializaci textu zprávy. IoT Hub nikdy upravuje tyto vlastnosti.

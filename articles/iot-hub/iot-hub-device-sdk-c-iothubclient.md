@@ -1,11 +1,11 @@
 ---
-title: "Pro zařízení Azure IoT SDK pro jazyk C - IoTHubClient | Microsoft Docs"
-description: "Jak používat knihovnu IoTHubClient v zařízení Azure IoT SDK pro jazyk C vytvoření aplikace pro zařízení, které komunikují pomocí služby IoT hub."
+title: Pro zařízení Azure IoT SDK pro jazyk C - IoTHubClient | Microsoft Docs
+description: Jak používat knihovnu IoTHubClient v zařízení Azure IoT SDK pro jazyk C vytvoření aplikace pro zařízení, které komunikují pomocí služby IoT hub.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: yzhong94
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 828cf2bf-999d-4b8a-8a28-c7c901629600
 ms.service: iot-hub
 ms.devlang: cpp
@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: yizhon
-ms.openlocfilehash: 6efd2980ce4dde99d934b3fe174d341fb68fac03
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 0fa07b2a785bd7d1a26924918e4428fd420e1547
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Pro zařízení Azure IoT SDK pro jazyk C – informace o IoTHubClient
 [Nejprve článek](iot-hub-device-sdk-c-intro.md) této série zavedená **zařízení Azure IoT SDK pro jazyk C**. Tento článek vysvětluje, SDK jsou dvě vrstvy architektury. Na bázi je **IoTHubClient** knihovnu, která přímo spravuje komunikace se službou IoT Hub. K dispozici je také **serializátor** knihovny, který sestaví v horní části daného k poskytování služeb serializace. V tomto článku jsme vám poskytují další podrobnosti na **IoTHubClient** knihovny.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 Předchozí článek popisuje postup použití **IoTHubClient** k odesílání událostí do služby IoT Hub a příjem zpráv knihovnu. Tento článek rozšiřuje této diskuzi o vysvětlením, jak spravovat přesněji *při* odesílat a přijímat data, Představujeme vám **nižší úrovně rozhraní API**. Dále vysvětlíme postup připojení vlastnosti k události (a je načtou ze zprávy) pomocí vlastnosti zpracování funkce **IoTHubClient** knihovny. Nakonec poskytujeme další vysvětlení různých způsobů zpracování zprávy přijaté ze služby IoT Hub.
 

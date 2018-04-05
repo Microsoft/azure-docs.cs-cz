@@ -317,10 +317,6 @@
               href: service-fabric-deploy-multiple-apps.md
         - name: Sestavení služby kontejneru
           items:
-            - name: Použití certifikátu v kontejneru
-              href: service-fabric-securing-containers.md
-            - name: Nastavení gMSA pro kontejnery Windows
-              href: service-fabric-setup-gmsa-for-windows-containers.md
             - name: Docker Compose (Preview)
               href: service-fabric-docker-compose.md
             - name: Zásady správného řízení prostředků pro kontejnery a služby
@@ -383,22 +379,30 @@
               href: service-fabric-reliable-actors-fabrictransportsettings.md
             - name: Konfigurace ReliableDictionaryActorStateProvider
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
-        - name: Migrace staré aplikace v Javě pro podporu Mavenu
-          href: service-fabric-migrate-old-javaapp-to-use-maven.md
-        - name: Konfigurace reverzního proxy serveru pro zabezpečenou komunikaci
-          href: service-fabric-reverseproxy-configure-secure-communication.md
         - name: Sestavení služby ASP.NET Core
           href: service-fabric-add-a-web-frontend.md
         - name: Konfigurace zabezpečení
           items:
             - name: Správa tajných klíčů aplikací
               href: service-fabric-application-secret-management.md
+            - name: Konfigurace reverzního proxy serveru pro zabezpečenou komunikaci
+              href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: Spuštění skriptu spuštění služby jako místní uživatel nebo systémový účet
               href: service-fabric-run-script-at-service-startup.md
             - name: Spuštění služby jako místní uživatel nebo systémový účet
               href: service-fabric-application-runas-security.md
             - name: Přiřazení zásady zabezpečení přístupu pro koncové body
               href: service-fabric-assign-policy-to-endpoint.md
+            - name: Spuštění služby jako skupina nebo uživatel AD
+              href: service-fabric-run-service-as-ad-user-or-group.md
+            - name: Spuštění služby jako skupinový účet spravované služby
+              href: service-fabric-run-service-as-gmsa.md
+            - name: Použití certifikátu v kontejneru
+              href: service-fabric-securing-containers.md
+            - name: Nastavení gMSA pro kontejnery Windows
+              href: service-fabric-setup-gmsa-for-windows-containers.md
+        - name: Migrace staré aplikace v Javě pro podporu Mavenu
+          href: service-fabric-migrate-old-javaapp-to-use-maven.md
     - name: Práce ve vývojovém prostředí Windows/VS
       items:
         - name: Správa aplikací v sadě Visual Studio
@@ -501,8 +505,6 @@
               href: service-fabric-cluster-upgrade.md
             - name: Nastavení řízení přístupu
               href: service-fabric-cluster-security-roles.md
-            - name: Konfigurace
-              href: service-fabric-cluster-fabric-settings.md
             - name: Otevření portu v nástroji pro vyrovnávání zatížení
               href: create-load-balancer-rule.md
             - name: Správa certifikátů clusteru
@@ -525,14 +527,8 @@
                   href: service-fabric-cluster-standalone-package-contents.md
             - name: Měřítko
               href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: Konfigurace zabezpečení
-              items:
-                - name: Nastavení řízení přístupu
-                  href: service-fabric-cluster-security-roles.md
-                - name: Spuštění služby jako skupina nebo uživatel AD
-                  href: service-fabric-run-service-as-ad-user-or-group.md
-                - name: Spuštění služby jako skupinový účet spravované služby
-                  href: service-fabric-run-service-as-gmsa.md
+            - name: Nastavení řízení přístupu
+              href: service-fabric-cluster-security-roles.md
             - name: Konfigurace
               href: service-fabric-cluster-manifest.md
             - name: Upgrade
@@ -614,6 +610,8 @@
       href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
     - name: REST
       href: /rest/api/servicefabric
+    - name: Konfigurace nastavení clusteru a zásad upgradu prostředků infrastruktury
+      href: service-fabric-cluster-fabric-settings.md
     - name: Schéma XML modelu služeb
       href: service-fabric-service-model-schema.md
     - name: Proměnné prostředí

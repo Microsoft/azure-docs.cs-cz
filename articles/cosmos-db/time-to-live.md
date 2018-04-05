@@ -1,12 +1,12 @@
 ---
-title: "Vypršení platnosti dat v Azure Cosmos DB s Hodnota time to live | Microsoft Docs"
-description: "Microsoft Azure Cosmos DB s TTL, poskytuje schopnost dokumenty z systém automaticky vymazány po určitou dobu."
+title: Vypršení platnosti dat v Azure Cosmos DB s Hodnota time to live | Microsoft Docs
+description: Microsoft Azure Cosmos DB s TTL, poskytuje schopnost dokumenty z systém automaticky vymazány po určitou dobu.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 keywords: Hodnota Time to live
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 25fcbbda-71f7-414a-bf57-d8671358ca3f
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: 3737a240d92d9420bac7d42475622182fb425a2b
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 6f8ce4e270b94bf1043c27ba879878e20372ffe7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Vypršení platnosti dat v kolekcích Azure Cosmos DB automaticky s Hodnota time to live
 Aplikace můžete vytvářet a ukládat velká množství dat. Některé z těchto dat, jako například počítač generuje data, protokoly a uživatelské relace události, které informace jsou užitečné pouze omezenou dobu. Jakmile se změní na data přebytečných potřebám aplikace je bezpečné mazání tato data a snížit požadavkům na ukládání aplikace.
@@ -49,7 +49,7 @@ Výše uvedené logiku lze zobrazit v matici následující:
 | --- |:--- |:--- |:--- |
 | Hodnota TTL chybí v dokumentu |Nic k přepsání na úrovni dokumentu vzhledem k tomu, že dokument i kolekce nemají žádný koncept TTL. |Vypršení platnosti žádné dokumenty v této kolekci. |Dokumenty v této kolekci vyprší po uplynutí intervalu n. |
 | Hodnota TTL = -1 v dokumentu |Nic k přepsání na úrovni dokumentu od kolekce nedefinuje vlastnost DefaultTTL, který můžete přepsat dokumentu. Hodnota TTL na dokument je zrušení interpretovaný v systému. |Vypršení platnosti žádné dokumenty v této kolekci. |Dokument s TTL =-1 v této kolekci nikdy nevyprší. Všechny ostatní dokumenty vyprší po intervalu "n". |
-| Hodnota TTL = n dokumentu |Nic k přepsání na úrovni dokumentu. Hodnota TTL na dokument v zrušení interpretovaný v systému. |Dokument s TTL = n vyprší po n interval v sekundách. Další dokumenty budou dědit interval-1 a jeho platnost nikdy nevypršela. |Dokument s TTL = n vyprší po n interval v sekundách. Další dokumenty zdědí "n" interval z kolekce. |
+| Hodnota TTL = n dokumentu |Nic k přepsání na úrovni dokumentu. Hodnota TTL na dokument je zrušení interpretovaný v systému. |Dokument s TTL = n vyprší po n interval v sekundách. Další dokumenty budou dědit interval-1 a jeho platnost nikdy nevypršela. |Dokument s TTL = n vyprší po n interval v sekundách. Další dokumenty zdědí "n" interval z kolekce. |
 
 ## <a name="configuring-ttl"></a>Konfigurace TTL
 Ve výchozím nastavení je hodnota time to live zakázané ve výchozím nastavení ve všech kolekcích Cosmos DB a na všechny dokumenty. Hodnota TTL jde nastavit prostřednictvím kódu programu nebo na portálu Azure v **nastavení** části pro kolekci. 
@@ -176,6 +176,6 @@ Hodnota TTL se vztahuje na celý dokument. Pokud chcete vyprší pouze část do
 
 Ano. Kolekce musí mít [indexování sady zásad](indexing-policies.md) konzistentní nebo Lazy. Při pokusu o nastavení DefaultTTL kolekce s indexování nastaven na žádný způsobí chybu, protože se pokouší vypnout indexování na kolekce, která má DefaultTTL, již nastaven.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o databázi Cosmos Azure, najdete v tématu službu [ *dokumentace* ](https://azure.microsoft.com/documentation/services/cosmos-db/) stránky.
 

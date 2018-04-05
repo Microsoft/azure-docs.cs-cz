@@ -1,11 +1,11 @@
 ---
-title: "Co dělat v případě Azure služby přerušení, která má dopad na Azure Cloud Services | Microsoft Docs"
-description: "Zjistěte, co dělat v případě přerušení služby Azure, který má dopad na Azure Cloud Services."
+title: Co dělat v případě Azure služby přerušení, která má dopad na Azure Cloud Services | Microsoft Docs
+description: Zjistěte, co dělat v případě přerušení služby Azure, který má dopad na Azure Cloud Services.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e52634ab-003d-4f1e-85fa-794f6cd12ce4
 ms.service: cloud-services
 ms.workload: cloud-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: mmccrory
-ms.openlocfilehash: db6a980b85ea5ef8cbbba4ba5a36f9d033739df1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7028417c95aa6969793c00d0bb270c96e56164fb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Co dělat v případě Azure služby přerušení, která má dopad na Azure Cloud Services
 Ve společnosti Microsoft můžeme fungovat pevného a ujistěte se, že našich služeb jsou vždy k dispozici a když je potřebujete. Vynutí nad rámec naše řízení někdy vliv nám způsoby, které způsobit přerušení poskytování služeb neplánované.
@@ -30,7 +30,7 @@ Azure již obsahuje mnoho funkcí integrovanou platformu, které podporují apli
 Tento článek se zabývá true zotavení po havárii, když dojde výpadku způsobeného hlavní přírodní katastrofě nebo přerušení služeb rozšířeným celou oblast. Toto jsou výjimečných výskytů, ale je nutné připravit možnost, že je k výpadku celou oblast. Když celou oblast dojde přerušení služby, místně redundantní kopie dat by být dočasně k dispozici. Pokud jste povolili geografická replikace, tři další kopie objektů BLOB služby Azure Storage a tabulek jsou uložené v jiné oblasti. V případě výpadku dokončení místní nebo havárii, ve kterém není použitelná pro obnovení primární oblasti znovu mapuje Azure, všechny položky DNS pro danou oblast geograficky replikované.
 
 > [!NOTE]
-> Uvědomte si, že nemáte žádné kontrolu nad tento proces a se vztahuje pouze na přerušení datacenter úrovni služeb. Z tohoto důvodu musíte také spoléhat na další specifické pro aplikaci Zálohování strategie k dosažení nejvyšší úroveň dostupnosti. Další informace najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace založené na Microsoft Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Pokud chcete být schopni ovlivnit vlastní převzetí služeb při selhání, můžete chtít zvažte použití [geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage), která vytvoří kopii dat jen pro čtení v jiné oblasti.
+> Uvědomte si, že nemáte žádné kontrolu nad tento proces a se vztahuje pouze na přerušení datacenter úrovni služeb. Z tohoto důvodu musíte také spoléhat na další specifické pro aplikaci Zálohování strategie k dosažení nejvyšší úroveň dostupnosti. Další informace najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace založené na Microsoft Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Pokud chcete být schopni ovlivnit vlastní převzetí služeb při selhání, můžete chtít zvažte použití [geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage), která vytvoří kopii dat jen pro čtení v jiné oblasti.
 >
 >
 
@@ -49,14 +49,14 @@ Další podrobnosti o tom, jak vytvořit a nasadit aplikace cloudové služby, n
 
 V závislosti na vašich zdrojů dat aplikace musíte ke kontrole postupy obnovení pro zdroj dat aplikace.
 
-* U zdrojů dat úložiště Azure, najdete v části [replikace Azure Storage](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) kontrolu na možnosti, které jsou k dispozici na základě modelu pokusit replikace pro vaši aplikaci.
+* U zdrojů dat úložiště Azure, najdete v části [replikace Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) kontrolu na možnosti, které jsou k dispozici na základě modelu pokusit replikace pro vaši aplikaci.
 * Databáze SQL zdroje, najdete v tématu [přehled: obchodní kontinuitu a databáze zotavení po havárii s databází SQL v cloudu](../sql-database/sql-database-business-continuity.md) kontrolu na možnosti, které jsou k dispozici na základě modelu zvolené replikace pro vaši aplikaci.
 
 
 ## <a name="option-3-wait-for-recovery"></a>Možnost 3: Počkejte obnovení
 V takovém případě není třeba žádné akce z vaší strany, ale služby nebude k dispozici, dokud je obnoven oblasti. Aktuální stav služby můžete zobrazit na [řídicím panelu stavu služeb Azure](https://azure.microsoft.com/status/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o tom, jak implementovat strategie vysoké dostupnosti a zotavení po havárii, najdete v části [zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
 K vývoji podrobné technické vysvětlení funkcí Cloudová platforma, najdete v části [technické pokyny Azure odolnosti](../resiliency/resiliency-technical-guidance.md).

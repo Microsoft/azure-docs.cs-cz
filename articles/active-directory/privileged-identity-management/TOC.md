@@ -2,7 +2,7 @@
 ## [Zabezpečení privilegovaného přístupu](active-directory-securing-privileged-access.md)
 ## [Co je Azure AD PIM](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Role](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [PIM pro prostředky Azure (Preview)](azure-pim-resource-rbac.md)
+## [PIM pro prostředky Azure](azure-pim-resource-rbac.md)
 ## [Pracovní postupy schvalování Privileged Identity Management](azure-ad-pim-approval-workflow.md)
 
 # Začínáme
@@ -29,7 +29,7 @@
 
 # Související
 ## [Azure Active Directory](/azure/active-directory/)
-## [Řízení přístupu na základě rolí](../role-based-access-control-what-is.md)
+## [Řízení přístupu na základě role](../role-based-access-control-what-is.md)
 # Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)

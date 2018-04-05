@@ -1,26 +1,26 @@
 ---
-title: "Přístup k ovládacím prvkům v Azure Active Directory podmíněného přístupu | Microsoft Docs"
-description: "Zjistěte, jak řízení přístupu v pracovním podmíněného přístupu Azure Active Directory."
+title: Přístup k ovládacím prvkům v Azure Active Directory podmíněného přístupu | Microsoft Docs
+description: Zjistěte, jak řízení přístupu v pracovním podmíněného přístupu Azure Active Directory.
 services: active-directory
-keywords: "podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu"
-documentationcenter: 
+keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 03/28/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c5a2ab3b8d2fe55eee1f67e4b697a1e5b0dd2daf
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: e38b7db2699cd3e4cf76d4a8e8fc558b133dd35b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="access-controls-in-azure-active-directory-conditional-access"></a>Řízení přístupu v Azure Active Directory podmíněného přístupu 
 
@@ -75,11 +75,15 @@ Pomocí služby Multi-Factor authentication pomáhá chránit prostředky z při
 
 ### <a name="compliant-device"></a>Odpovídající zařízení
 
-Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu na základě zařízení je k udělení přístupu k prostředkům nakonfigurované pouze z důvěryhodných zařízení. Vyžadování vyhovující zařízení je jednou z možností je nutné definovat je důvěryhodné zařízení. Další informace najdete v tématu [nastavit zásady podmíněného přístupu na základě zařízení služby Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
+Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu na základě zařízení je k udělení přístupu k prostředkům nakonfigurované pouze z důvěryhodných zařízení. Vyžadování vyhovující zařízení je jednou z možností je nutné definovat je důvěryhodné zařízení. Pokud je vybraná tato možnost, zásady podmíněného přístupu uděluje pokusy o přístup k přístupu pomocí zařízení, která jsou připojená k Azure Active Directory a jsou označeny jako kompatibilní řešení pro správu.
+
+Další informace najdete v tématu [nastavit zásady podmíněného přístupu na základě zařízení služby Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
 ### <a name="domain-joined-device"></a>Zařízení připojených k doméně
 
-Vyžadování, že je zařízení připojené k doméně jinou možnost, budete muset nakonfigurovat zásady podmíněného přístupu podle zařízení. Tento požadavek se odkazuje na stolních počítačů, laptopů a tablety enterprise, které jsou připojeny k místní službě Active Directory systému Windows. Další informace najdete v tématu [nastavit zásady podmíněného přístupu na základě zařízení služby Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
+Vyžadování, že je zařízení připojené k doméně jinou možnost, budete muset nakonfigurovat zásady podmíněného přístupu podle zařízení. Tento požadavek se odkazuje na stolních počítačů, laptopů a tablety enterprise, které jsou připojeny k místní službě Active Directory systému Windows. Pokud je vybraná tato možnost, zásady podmíněného přístupu uděluje pokusy o přístup k přístupu pomocí zařízení, které jsou připojené k vaší místní Active Directory a Azure Active Directory.  
+
+Další informace najdete v tématu [nastavit zásady podmíněného přístupu na základě zařízení služby Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
 
 

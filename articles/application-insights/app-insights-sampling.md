@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 300b9b7786c17972c5c48df7e5b6d28491adc095
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d0614e2eae0f60068e69b7a4687fc62fbe082c64
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -30,7 +30,7 @@ Vzorkování snižuje náklady na provoz a data a umožňuje vyhnout se omezení
 ## <a name="in-brief"></a>Stručný postup:
 * Vzorkování uchovává 1 v *n* zaznamenává a zahodí zbytek. Například je může zachovat události 1 v 5, vzorkovací frekvenci 20 %. 
 * Vzorkování se stane automaticky, když vaše aplikace odešle velké množství telemetrických dat, v aplikacích pro ASP.NET web server.
-* Vzorkování ručně, můžete také nastavit buď na portálu v na stránce s cenami; nebo v sadě SDK technologie ASP.NET v souboru config; nebo v jazyce Java SDK v souboru ApplicationInsights.xml také omezit přenos v síti.
+* Můžete také nastavit ručně vzorkování, buď v portálu na využití a odhadované náklady na stránce; nebo v sadě SDK technologie ASP.NET v souboru config; nebo v jazyce Java SDK v souboru ApplicationInsights.xml také omezit přenos v síti.
 * Pokud protokolu vlastní události a chcete zajistit, že sadu událostí, které je buď uchovávají nebo zrušených společně, ujistěte se, že mají stejnou hodnotu OperationId.
 * Vzorkování dělitel *n* údajně všechny záznamy ve vlastnosti `itemCount`, která v hledání se zobrazí pod popisným názvem "počtu žádostí o" nebo "počet událostí". Pokud vzorkování není v provozu se `itemCount==1`.
 * Pokud píšete analytické dotazy, měli byste [vzít v úvahu vzorkování](app-insights-analytics-tour.md#counting-sampled-data). Konkrétně místo jednoduše počítání záznamy, měli byste použít `summarize sum(itemCount)`.
@@ -49,7 +49,7 @@ Tato forma vzorkování funguje v okamžiku, kdy telemetrie z vaší webový ser
 
 Tento typ vzorkování použijte, pokud vaše aplikace často prochází přes jeho měsíční kvóta a nemáte možnost pomocí sady SDK na základě typů vzorkování. 
 
-Nastavení míry vzorkování v kvóty a ceny okno:
+Nastavení míry vzorkování ve využití a odhadované náklady na stránce:
 
 ![V okně Přehled aplikace klikněte na tlačítko Nastavení, kvóty a ukázky, pak vyberte vzorkovací frekvenci a kliknutím na tlačítko Aktualizovat.](./media/app-insights-sampling/04.png)
 

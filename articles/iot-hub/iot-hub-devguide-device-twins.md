@@ -1,11 +1,11 @@
 ---
-title: "Pochopení dvojčata zařízení Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře - dvojčata zařízení použít k synchronizaci dat stavu a konfiguraci mezi IoT Hub a zařízení"
+title: Pochopení dvojčata zařízení Azure IoT Hub | Microsoft Docs
+description: Příručka vývojáře - dvojčata zařízení použít k synchronizaci dat stavu a konfiguraci mezi IoT Hub a zařízení
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 8a3da072-a5bf-46e5-8de4-24cdbb2a03fa
 ms.service: iot-hub
 ms.devlang: multiple
@@ -15,16 +15,19 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5bf2d24d0d5eadfea5ec8fd239a115c05a54fe99
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 01e94298aa3691d5bce33a12745b54fd398c7ad3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Rady pro pochopení a použít dvojčata zařízení IoT hub
 
-*Dvojčata zařízení* jsou dokumenty JSON, které obsahují informace o stavu zařízení včetně metadata, konfigurace a podmínky. Azure IoT Hub uchovává dvojče zařízení pro každé zařízení, které se připojujete ke službě IoT Hub. Tento článek popisuje:
+*Dvojčata zařízení* jsou dokumenty JSON, které obsahují informace o stavu zařízení včetně metadata, konfigurace a podmínky. Azure IoT Hub uchovává dvojče zařízení pro každé zařízení, které se připojujete ke službě IoT Hub. 
 
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+
+Tento článek popisuje:
 
 * Struktura dvojče zařízení: *značky*, *požadované* a *hlášené vlastnosti*.
 * Operace, které aplikace pro zařízení a back-EndY můžete provádět na dvojčata zařízení.

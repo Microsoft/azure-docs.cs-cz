@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: dc4c690633d14163eddfa70e8417a645f95a0861
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c8804dce7dd8291b65f704ba36aaa1cd05eb4518
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření modulu runtime integrace Azure SSIS v Azure Data Factory
 Tento článek popisuje kroky pro zřizování modulu runtime integrace Azure SSIS v Azure Data Factory. Následně můžete pomocí SQL Server Data Tools (SSDT) nebo aplikace SQL Server Management Studio (SSMS) do tohoto modulu runtime v Azure nasadit balíčky SSIS (SQL Server Integration Services).
 
 Kurz: [kurz: nasadit balíčky SQL Server Integration Services (služby SSIS) do Azure](tutorial-create-azure-ssis-runtime-portal.md) ukázal, jak vytvořit modul Runtime integrace Azure SSIS (IR) pomocí Azure SQL Database jako úložiště pro katalog služby SSIS. Tento článek se rozšíří na kurz a ukazuje, jak provést následující akce: 
 
-- Použijte spravované Instance Azure SQL (soukromém náhledu) pro hostování katalog služby SSIS (databáze SSISDB).
+- Použijte spravované Instance Azure SQL (Preview) pro hostování katalog služby SSIS (databáze SSISDB).
 - Připojení Azure SSIS Reakcí do virtuální sítě Azure (VNet). Koncepční informace o připojení Azure SSIS IR k virtuální síti a konfiguraci virtuální sítě na portálu Azure najdete v tématu [připojení k Azure SSIS Reakcí do virtuální sítě](join-azure-ssis-integration-runtime-virtual-network.md). 
 
 > [!NOTE]
@@ -44,11 +44,11 @@ Když zřizujete instanci Azure-SSIS IR, nainstaluje se také Azure Feature Pack
 ## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure**. Pokud předplatné nemáte, můžete si vytvořit [bezplatný zkušební](http://azure.microsoft.com/pricing/free-trial/) účet.
-- **Server služby Azure SQL Database** nebo **spravovaná instance SQL Serveru (privátní verze Preview) (rozšířená verze Private Preview)**. Pokud ještě nemáte databázový server, vytvořte si ho na webu Azure Portal před tím, než začnete. Tento server hostuje databázi katalogu služby SSIS (SSISDB). Doporučujeme vytvořit databázový server ve stejné oblasti Azure jako prostředí Integration Runtime. Tato konfigurace umožňuje prostředí Integration Runtime zapisovat protokoly spuštění do databáze SSISDB bez přecházení mezi oblastmi Azure. Poznamenejte si cenové úrovně se server Azure SQL. Seznam podporovaných cenové úrovně pro databázi SQL Azure najdete v tématu [limitů prostředků databáze SQL](../sql-database/sql-database-resource-limits.md).
+- **Server Azure SQL Database** nebo **spravované Instance systému SQL Server (Preview) (Extended soukromém náhledu)**. Pokud ještě nemáte databázový server, vytvořte si ho na webu Azure Portal před tím, než začnete. Tento server hostuje databázi katalogu služby SSIS (SSISDB). Doporučujeme vytvořit databázový server ve stejné oblasti Azure jako prostředí Integration Runtime. Tato konfigurace umožňuje prostředí Integration Runtime zapisovat protokoly spuštění do databáze SSISDB bez přecházení mezi oblastmi Azure. Poznamenejte si cenové úrovně se server Azure SQL. Seznam podporovaných cenové úrovně pro databázi SQL Azure najdete v tématu [limitů prostředků databáze SQL](../sql-database/sql-database-resource-limits.md).
 
-    Potvrďte, že serveru Azure SQL Database nebo spravované Instance systému SQL Server (rozšířené soukromém náhledu) nemá katalog služby SSIS (SSIDB databáze). Zřízení Azure-SSIS IR nepodporuje používání existujícího katalogu služby SSIS.
+    Potvrďte, že serveru Azure SQL Database nebo spravované Instance systému SQL Server (Preview) nemá katalog služby SSIS (SSIDB databáze). Zřízení Azure-SSIS IR nepodporuje používání existujícího katalogu služby SSIS.
 - **Classic nebo Azure Resource Manager virtuální Network(VNet) (volitelné)**. Virtuální síť Azure musíte mít v případě, že platí alespoň jedna z následujících podmínek:
-    - Databázi katalogu služby SSIS hostujete na spravované instanci SQL Serveru (privátní verze Preview), která je součástí virtuální sítě.
+    - Jsou hostiteli databáze služby SSIS katalogu na spravované Instance systému SQL Server (Preview), který je součástí virtuální sítě.
     - Z balíčků SSIS spuštěných v prostředí Azure SSIS Integration Runtime se chcete připojit k místním úložištím dat.
 - **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-azurerm-ps). PowerShell použijete ke spuštění skriptu, který zřídí prostředí Azure SSIS Integration Runtime spouštějící balíčky SSIS v cloudu. 
 
@@ -181,15 +181,15 @@ $AzureSSISNodeNumber = 2
 $AzureSSISMaxParallelExecutionsPerNode = 2 
 
 # SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or your Azure SQL Managed Instance (private preview) server endpoint]"
+$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or your Azure SQL Managed Instance (Preview) server endpoint]"
 $SSISDBServerAdminUserName = "[your server admin username]"
 $SSISDBServerAdminPassword = "[your server admin password]"
 
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (private preview)
+# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
 # This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
 $SSISDBPricingTier = "[your Azure SQL Database pricing tier. Examples: Basic, S0, S1, S2, S3, etc.]"
 
-## These two parameters apply if you are using a VNet and an Azure SQL Managed Instance (private preview) 
+## These two parameters apply if you are using a VNet and an Azure SQL Managed Instance (Preview) 
 # Specify information about your classic or Azure Resource Manager virtual network (VNet). 
 $VnetId = "[your VNet resource ID or leave it empty]" 
 $SubnetName = "[your subnet name or leave it empty]" 
@@ -204,7 +204,7 @@ Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 ```
 
 ### <a name="validate-the-connection-to-database"></a>Ověření připojení k databázi
-Přidejte následující skript, který chcete ověřit vaše server.database.windows.net serveru Azure SQL Database nebo koncový bod serveru vaší spravované Instance SQL Azure (soukromém náhledu). 
+Přidejte následující skript, který chcete ověřit vaše server.database.windows.net serveru Azure SQL Database nebo váš koncový bod serveru spravované Instance Azure SQL (Preview). 
 
 ```powershell
 $SSISDBConnectionString = "Data Source=" + $SSISDBServerEndpoint + ";User ID="+ $SSISDBServerAdminUserName +";Password="+ $SSISDBServerAdminPassword
@@ -263,7 +263,7 @@ Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
 ```
 
 ### <a name="create-an-integration-runtime"></a>Vytvoření prostředí Integration Runtime
-Spusťte následující příkaz k vytvoření modulu runtime integrace Azure SSIS, který běží v Azure balíčky SSIS: pomocí tohoto skriptu z části na základě typu databáze (Azure SQL Database vs. Azure SQL spravované Instance (soukromém náhledu)) používáte. 
+Spusťte následující příkaz k vytvoření modulu runtime integrace Azure SSIS, který běží v Azure balíčky SSIS: pomocí tohoto skriptu z části na základě typu databáze (Azure SQL Database vs. Azure SQL spravované Instance (Preview)) používáte. 
 
 #### <a name="azure-sql-database-to-host-the-ssisdb-database-ssis-catalog"></a>Databáze SQL Azure k hostování databáze SSISDB (SSIS katalog) 
 
@@ -286,7 +286,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
 
 Nemusíte předat hodnoty pro VNetId a podsíť, pokud budete potřebovat přístup k datům místně, tedy máte cíle zdroje dat na místě ve vašich balíčcích SSIS. Je nutné předat hodnotu pro parametr CatalogPricingTier. Seznam podporovaných cenové úrovně pro databázi SQL Azure najdete v tématu [limitů prostředků databáze SQL](../sql-database/sql-database-resource-limits.md).
 
-#### <a name="azure-sql-managed-instance-private-preview-to-host-the-ssisdb-database"></a>Azure spravované Instance SQL (soukromém náhledu) k hostování databáze SSISDB
+#### <a name="azure-sql-managed-instance-preview-to-host-the-ssisdb-database"></a>Azure spravované Instance systému SQL (Preview) k hostování databáze SSISDB
 
 ```powershell
 $secpasswd = ConvertTo-SecureString $SSISDBServerAdminPassword -AsPlainText -Force
@@ -306,7 +306,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
                                             -Subnet $SubnetName
 ```
 
-Je třeba předat hodnoty parametrů VnetId a podsíť s Azure spravované Instance SQL (soukromém náhledu) které připojí virtuální sítě. Parametr CatalogPricingTier nelze použít pro spravované Instance SQL Azure. 
+Je třeba předat hodnoty parametrů VnetId a podsíť s Azure spravované Instance SQL (Preview) které připojí virtuální sítě. Parametr CatalogPricingTier nelze použít pro spravované Instance Azure SQL (Preview). 
 
 ### <a name="start-integration-runtime"></a>Spuštění prostředí Integration Runtime
 Spuštěním následujícího příkazu spusťte prostředí Azure SSIS Integration Runtime: 
@@ -325,7 +325,7 @@ Dokončení tohoto příkazu trvá **20 až 30 minut**.
 
 
 ### <a name="full-script"></a>Celý skript
-Zde je úplná skript, který vytvoří Azure SSIS reakcí na Incidenty a připojí k virtuální síti. Tento skript předpokládá, že používáte Azure SQL spravované Instance (MI) pro hostování katalogu služby SSIS. 
+Zde je úplná skript, který vytvoří Azure SSIS reakcí na Incidenty a připojí k virtuální síti. Tento skript předpokládá, že používáte Azure spravované Instance SQL (Preview) pro hostování katalogu služby SSIS. 
 
 ```powershell
 # Azure Data Factory version 2 information 
@@ -351,7 +351,7 @@ $AzureSSISMaxParallelExecutionsPerNode = 2
 $SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
 $SSISDBServerAdminUserName = "<Azure SQL server - user name>"
 $SSISDBServerAdminPassword = "<Azure SQL server - user password>"
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (private preview)
+# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
 # This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
 $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S0, S1, S2, S3, etc.>" 
 

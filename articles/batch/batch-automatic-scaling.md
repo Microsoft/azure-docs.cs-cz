@@ -1,25 +1,25 @@
 ---
-title: "Automatické škálování výpočetních uzlů ve fondu Azure Batch | Microsoft Docs"
-description: "Povolte automatické škálování ve fondu cloudu dynamicky upravit počet výpočetních uzlů ve fondu."
+title: Automatické škálování výpočetních uzlů ve fondu Azure Batch | Microsoft Docs
+description: Povolte automatické škálování ve fondu cloudu dynamicky upravit počet výpočetních uzlů ve fondu.
 services: batch
-documentationcenter: 
-author: tamram
-manager: timlt
-editor: tysonn
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
 ms.service: batch
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0e49cd8a64a48c53f5b6104703164a597c797f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1114ea90ae6976a3bc3580ebae5fd853de0274a1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvořit automatické škálování vzorec škálování výpočetních uzlů ve fondu služby Batch
 
@@ -125,10 +125,10 @@ Tyto typy jsou podporovány v vzorec:
 * Double
 * doubleVec
 * doubleVecList
-* Řetězec
+* řetězec
 * časové razítko – časové razítko je složené struktura, která obsahuje následující členy:
 
-  * Rok
+  * rok
   * měsíc (1-12)
   * den (1-31)
   * den v týdnu (ve formátu číslo; příklad: 1 pro pondělí)
@@ -163,7 +163,7 @@ Tyto operace jsou povoleny na typy, které jsou uvedeny v předchozí části.
 | časové razítko *operátor* timeinterval |+ |časové razítko |
 | časové razítko *operátor* časové razítko |- |TimeInterval |
 | *operátor*double |-, ! |Double |
-| *operátor*timeinterval |- |TimeInterval |
+| *operator*timeinterval |- |TimeInterval |
 | dvojité *operátor* double |<, <=, ==, >=, >, != |Double |
 | řetězec *operátor* řetězec |<, <=, ==, >=, >, != |Double |
 | časové razítko *operátor* časové razítko |<, <=, ==, >=, >, != |Double |
@@ -193,11 +193,11 @@ Tyto předdefinované **funkce** jsou k dispozici pro použití k definování v
 | Range(doubleVecList) |Double |Vrátí rozdíl mezi minimální a maximální hodnoty doubleVecList. |
 | STD(doubleVecList) |Double |Vrátí směrodatnou odchylku ukázkové hodnoty v doubleVecList. |
 | stop() | |Zastaví vyhodnocování výrazu automatické škálování. |
-| SUM(doubleVecList) |Double |Vrátí součet všech součástí doubleVecList. |
+| sum(doubleVecList) |Double |Vrátí součet všech součástí doubleVecList. |
 | čas (řetězce data a času = "") |časové razítko |Vrátí časového razítka aktuální čas, pokud jsou předány bez parametrů nebo časového razítka řetězce data a času, je-li předán. Data a času podporované formáty jsou W3C DTF a RFC 1123. |
 | Val (doubleVec v dvojité i) |Double |Vrátí hodnotu elementu, který je v umístění i u funkce vector v, počáteční index nula. |
 
-Některé funkce, které jsou popsané v předchozí tabulce může přijmout seznam jako argument. Čárkami oddělený seznam je libovolnou kombinaci *dvojité* a *doubleVec*. Například:
+Některé funkce, které jsou popsané v předchozí tabulce může přijmout seznam jako argument. Čárkami oddělený seznam je libovolnou kombinaci *dvojité* a *doubleVec*. Příklad:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -212,11 +212,11 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 
 | Metoda | Popis |
 | --- | --- |
-| GetSample() |`GetSample()` Metoda vrátí Vektor vzorků dat.<br/><br/>Ukázka je 30 sekund vhodné dat metriky. Jinými slovy ukázky jsou získávány každých 30 sekund. Ale dole uvedených položek, dochází ke zpoždění mezi při shromažďování ukázku a kdy je k dispozici pro vzorec. Ne všechny ukázky pro dané časové období jako takový, může být dostupné pro vyhodnocení podle vzorce.<ul><li>`doubleVec GetSample(double count)`<br/>Určuje počet vzorků získat z nejnovější vzorků, které byly shromážděny.<br/><br/>`GetSample(1)`vrací posledního vzorku k dispozici. Pro metriky `$CPUPercent`, ale to nesmí použít, protože není možné vědět *při* vzorku nebyla shromážděna. Může to být poslední, nebo kvůli problémům s systému, může být mnohem starší. Je lepší v takových případech používat časový interval, jak je uvedeno níže.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Určuje časový rámec pro shromažďování ukázková data. Volitelně můžete také určuje procento vzorků, které musí být k dispozici v požadovaný časový rámec.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)`Vrátí 20 vzorků v případě se nacházejí v historii CPUPercent všechny ukázky pro posledních 10 minut. Pokud poslední minutu historie nebyl k dispozici, ale pouze 18 ukázky by byla vrácena. V takovém případě:<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)`selže, protože nejsou k dispozici pouze 90 procent ukázky.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)`mohla být úspěšná.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Určuje časový rámec pro shromažďování dat, s počáteční čas a koncový čas.<br/><br/>Jak je uvedeno nahoře, dochází ke zpoždění mezi při shromažďování ukázku a kdy je k dispozici pro vzorec. Vezměte v úvahu tato prodleva při použití `GetSample` metoda. V tématu `GetSamplePercent` níže. |
+| GetSample() |`GetSample()` Metoda vrátí Vektor vzorků dat.<br/><br/>Ukázka je 30 sekund vhodné dat metriky. Jinými slovy ukázky jsou získávány každých 30 sekund. Ale dole uvedených položek, dochází ke zpoždění mezi při shromažďování ukázku a kdy je k dispozici pro vzorec. Ne všechny ukázky pro dané časové období jako takový, může být dostupné pro vyhodnocení podle vzorce.<ul><li>`doubleVec GetSample(double count)`<br/>Určuje počet vzorků získat z nejnovější vzorků, které byly shromážděny.<br/><br/>`GetSample(1)` vrací posledního vzorku k dispozici. Pro metriky `$CPUPercent`, ale to nesmí použít, protože není možné vědět *při* vzorku nebyla shromážděna. Může to být poslední, nebo kvůli problémům s systému, může být mnohem starší. Je lepší v takových případech používat časový interval, jak je uvedeno níže.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Určuje časový rámec pro shromažďování ukázková data. Volitelně můžete také určuje procento vzorků, které musí být k dispozici v požadovaný časový rámec.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)` Vrátí 20 vzorků v případě se nacházejí v historii CPUPercent všechny ukázky pro posledních 10 minut. Pokud poslední minutu historie nebyl k dispozici, ale pouze 18 ukázky by byla vrácena. V takovém případě:<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` selže, protože nejsou k dispozici pouze 90 procent ukázky.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` mohla být úspěšná.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Určuje časový rámec pro shromažďování dat, s počáteční čas a koncový čas.<br/><br/>Jak je uvedeno nahoře, dochází ke zpoždění mezi při shromažďování ukázku a kdy je k dispozici pro vzorec. Vezměte v úvahu tato prodleva při použití `GetSample` metoda. V tématu `GetSamplePercent` níže. |
 | GetSamplePeriod() |Vrátí dobu vzorků, které byly provedeny v datové sadě historických ukázka. |
 | Count() |Vrátí celkový počet vzorků, které se v historii metriky. |
 | HistoryBeginTime() |Vrátí časového razítka nejstarší ukázková data k dispozici pro metriku. |
-| GetSamplePercent() |Vrátí podíl vzorků, které jsou k dispozici v daném časovém intervalu. Například:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Protože `GetSample` metoda selže, pokud procento vzorků, které se vrátí, je menší než `samplePercent` zadána, můžete použít `GetSamplePercent` metoda nejprve ke kontrole. Poté můžete provádět alternativní akce když dostatek ukázky jsou přítomny, bez zastavení automatické škálování vyhodnocení. |
+| GetSamplePercent() |Vrátí podíl vzorků, které jsou k dispozici v daném časovém intervalu. Příklad:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Protože `GetSample` metoda selže, pokud procento vzorků, které se vrátí, je menší než `samplePercent` zadána, můžete použít `GetSamplePercent` metoda nejprve ke kontrole. Poté můžete provádět alternativní akce když dostatek ukázky jsou přítomny, bez zastavení automatické škálování vyhodnocení. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Ukázky, ukázka procento a *GetSample()* – metoda
 Základní provoz od vzorce automatického škálování je získat data úlohy a prostředku metriky a upravte velikost fondu podle data. Jako takový je důležité mít vědět, jak vzorce automatického škálování pracovat s daty metrik (Ukázky).
@@ -241,7 +241,7 @@ Chcete-li to provést, použijte `GetSample(interval look-back start, interval l
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Při výše řádku je vyhodnocován Batch, vrátí oblast ukázky vektor hodnot. Například:
+Při výše řádku je vyhodnocován Batch, vrátí oblast ukázky vektor hodnot. Příklad:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -397,7 +397,7 @@ Minimální interval je pět minut a maximální hodnota je 168 hodin. Pokud je 
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Povolit automatické škálování na existující fond
 
-Každý Batch SDK poskytuje způsob, jak povolit automatické škálování. Například:
+Každý Batch SDK poskytuje způsob, jak povolit automatické škálování. Příklad:
 
 * [BatchClient.PoolOperations.EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
 * [Povolit automatické škálování ve fondu][rest_enableautoscale] (REST API)
@@ -655,7 +655,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Maximalizovat využití prostředků Azure Batch výpočetní uzel souběžných úloh](batch-parallel-node-tasks.md) obsahuje podrobnosti o tom, jak můžete spustit více úkolů současně na výpočetních uzlech ve fondu. Kromě automatického škálování tato funkce může pomoci snížit dobu trvání úlohy pro některé úlohy, ušetřit peníze.
 * Pro jiné podpůrná efektivitu zajistěte, aby aplikace Batch dotazuje služba Batch optimální způsobem. V tématu [efektivní dotazování na službu Azure Batch](batch-efficient-list-queries.md) se dozvíte, jak omezit množství dat, která protne sítě při dotazu na stav potenciálně tisíce výpočetních uzlů nebo úlohy.
 

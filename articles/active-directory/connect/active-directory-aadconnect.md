@@ -1,33 +1,35 @@
 ---
-title: "Připojení Active Directory s Azure Active Directory | Dokumenty Microsoft"
-description: "Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro aplikace Office 365, Azure a SaaS integrované s Azure AD."
-keywords: "Úvod k Azure AD Connect, přehled Azure AD Connect, co je Azure AD Connect, instalace active directory"
+title: Připojení Active Directory s Azure Active Directory | Microsoft Docs
+description: Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro aplikace Office 365, Azure a SaaS integrované s Azure AD.
+keywords: Úvod k Azure AD Connect, přehled Azure AD Connect, co je Azure AD Connect, instalace active directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 59bd209e-30d7-4a89-ae7a-e415969825ea
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/02/2017
+ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 83654a406019c4ac3837a3e961a6de640c98f31c
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 6f0b5cd7b981cddeda7e5630967f5f8dba18bb98
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>Integrace místních adresářů do služby Azure Active Directory
 Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD. V tomto tématu vás provedeme kroky plánování, nasazení a provozu. Jedná se o kolekci odkazů na témata, která souvisejí s touto oblastí.
 
 > [!IMPORTANT]
-> [Azure AD Connect je nejlepší způsob, jak propojit místní adresář s Azure AD a Office 365. Teď je nejvhodnější doba pro upgrade na Azure AD Connect z Azure Active Directory Sync (DirSync) nebo Azure AD Sync pro Windows, protože tyto nástroje jsou už zastaralé a jejich podpora skončila 13. dubna 2017.](active-directory-aadconnect-dirsync-deprecated.md)
+> [Azure AD Connect je nejlepší způsob, jak propojit místní adresář s Azure AD a Office 365. Teď je nejvhodnější doba pro upgrade na Azure AD Connect z Azure Active Directory Sync (DirSync) nebo Azure AD Sync pro Windows, protože tyto nástroje jsou už zastaralé a jejich podpora skončila 13. dubna 2017.](active-directory-aadconnect-dirsync-deprecated.md)  Navíc:
 > 
-> 
+> - Synchronizace uživatelů do služby Azure AD je **bezplatnou funkcí**, která nevyžaduje, aby zákazníci měli placené předplatné.
+>- Synchronizovaní uživatelé **automaticky nezískají** *žádnou* licenci. Správci mají nad přiřazováním licencí stále plnou kontrolu. 
+> - Microsoft doporučuje správcům IT všechny uživatele synchronizovat. Nejen že to odblokuje přístup uživatelů ke všem integrovaným prostředkům Azure AD, ale navíc správci IT získají mnohem lepší představu o tom, k jakým aplikacím uživatelé přistupují. 
 
 ![Co je služba Azure AD Connect](media/active-directory-aadconnect/arch.png)
 

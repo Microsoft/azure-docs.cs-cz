@@ -118,6 +118,8 @@
   items:
     - name: Vizuální vytváření datových továren
       href: author-visually.md
+    - name: "Průběžná integrace a\_nasazování"
+      href: continuous-integration-deployment.md
     - name: Kopírování dat
       items:
         - name: Kopírování dat pomocí aktivit kopírování

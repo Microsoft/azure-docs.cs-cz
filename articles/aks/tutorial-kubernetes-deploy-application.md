@@ -1,6 +1,6 @@
 ---
-title: "Kurz Kubernetes v Azure – Nasazení aplikace"
-description: "Kurz AKS – Nasazení aplikace"
+title: Kurz Kubernetes v Azure – Nasazení aplikace
+description: Kurz AKS – Nasazení aplikace
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 095bfe328f3e3ed220de71b3410e34b9be86cff1
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9fad9627be453fb00508d1f6ec9594bd2bde6fad
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="run-applications-in-azure-container-service-aks"></a>Spouštění aplikací ve službě Azure Container Service (AKS)
+# <a name="tutorial-run-applications-in-azure-container-service-aks"></a>Kurz: Spouštění aplikací ve službě Azure Container Service (AKS)
 
 V tomto kurzu, který je čtvrtou částí osmidílné série, se ukázková aplikace nasadí do clusteru Kubernetes. Mezi dokončené kroky patří:
 
@@ -24,7 +24,7 @@ V tomto kurzu, který je čtvrtou částí osmidílné série, se ukázková apl
 > * Spuštění aplikace v Kubernetes
 > * Testování aplikace
 
-V dalších kurzech se u této aplikace horizontálně navýší kapacita, aktualizuje se a nakonfiguruje se Operations Management Suite pro monitorování clusteru Kubernetes.
+V dalších kurzech se tato aplikace bude škálovat a aktualizovat a nakonfiguruje se služba Log Analytics pro monitorování clusteru Kubernetes.
 
 V tomto kurzu se předpokládá základní znalost konceptů Kubernetes. Podrobné informace o Kubernetes najdete v [dokumentaci ke Kubernetes][kubernetes-documentation].
 
@@ -115,7 +115,7 @@ Pokud se chcete na aplikaci podívat, přejděte na externí IP adresu.
 
 Pokud se aplikace nenačetla, může být důvodem problém s ověřením v registru imagí.
 
-Postupujte podle těchto kroků a [povolte přístup prostřednictvím tajného klíče Kubernetes](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret).
+Postupujte podle těchto kroků a [povolte přístup prostřednictvím tajného kódu Kubernetes](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret).
 
 ## <a name="next-steps"></a>Další kroky
 

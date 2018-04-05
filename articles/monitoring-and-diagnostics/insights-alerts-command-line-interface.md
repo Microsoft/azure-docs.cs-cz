@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
-ms.openlocfilehash: cf93c95a37c9c32333727059317e05cfcc252905
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9ea7da35acefc139625e71904c8aa1b01b87e4df
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Vytvoření classic metriky výstrah v monitorování Azure pro služby Azure - napříč platformami rozhraní příkazového řádku
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="overview"></a>Přehled
 > [!NOTE]
-> Tento článek popisuje postup vytvoření starší metriky výstrahy. Azure nyní podporuje monitorování [novější, lepší metriky výstrahy](monitoring-near-real-time-metric-alerts.md). Tyto výstrahy můžete sledovat více metriky a povolit pro výstrahy na dimenzí metriky. Podpora rozhraní příkazového řádku pro novější metriky výstrahy tu bude brzo dostupná.
+> Tento článek popisuje postup vytvoření starší classic metriky výstrahy. Azure nyní podporuje monitorování [novější, lepší metriky výstrahy](monitoring-near-real-time-metric-alerts.md). Tyto výstrahy můžete sledovat více metriky a povolit pro výstrahy na dimenzí metriky. Podpora rozhraní příkazového řádku pro novější metriky výstrahy tu bude brzo dostupná.
 >
 >
 
-Tento článek ukazuje, jak nastavit Azure metriky výstrah pomocí napříč platformami rozhraní příkazového řádku (CLI).
+Tento článek ukazuje, jak nastavit Azure classic metriky výstrah pomocí napříč platformami rozhraní příkazového řádku (CLI).
 
 > [!NOTE]
 > Azure monitorování je nový název pro co byla volána "Statistika Azure" až 25 září 2016. Však obory názvů a proto níže uvedených příkazů stále obsahovat "insights".
@@ -46,14 +46,14 @@ Můžete zobrazit upozornění na základě monitorování metriky pro nebo udá
 * **Metriky hodnoty** -výstrahy aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu přiřadíte v obou směrech. To znamená, aktivuje obě při nejprve je splněna podmínka, a pak později, pokud podmínka je už plněny.    
 * **Aktivity protokolu události** -výstrahu můžete aktivovat pro *každých* události nebo pouze tehdy, když dojde k určité události. Další informace o výstrahách aktivity protokolu [, klikněte sem](monitoring-activity-log-alerts.md)
 
-Můžete nakonfigurovat metriky výstrahu při aktivaci, proveďte následující:
+Můžete nakonfigurovat classic metriky výstrahu při aktivaci, proveďte následující:
 
 * odesílat oznámení e-mailu Správce služeb a spolusprávci
 * Odeslat e-mail na další e-mailů, které zadáte.
 * Volat webhook, jehož
 * Spusťte provádění runbook služby Azure (pouze z portálu Azure v tuto chvíli)
 
-Můžete nakonfigurovat a získat informace o použití metriky pravidla výstrah
+Můžete nakonfigurovat a získat informace o classic metriky pravidla výstrah pomocí
 
 * [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
@@ -112,7 +112,7 @@ Vždy dostanete nápovědy pro příkazy zadáním příkazu a - pomoci na konci
     azure insights alerts rule metric set myrule eastus myreasourcegroup PT5M GreaterThan 2 /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename BytesReceived Total
 
     ```
-5. K vytvoření webhooku nebo odeslat e-mail, když se aktivuje upozornění na metriky, je nutné nejprve vytvořte e-mailu nebo webhooky. Pravidlo okamžitě vytvořit později. Nelze přidružit webhooku nebo e-mailů s již vytvořili pravidla pomocí rozhraní příkazového řádku.
+5. K vytvoření webhooku nebo odeslat e-mail, když se aktivuje upozornění na classic metriky, je nutné nejprve vytvořte e-mailu nebo webhooky. Pravidlo okamžitě vytvořit později. Nelze přidružit webhooku nebo e-mailů s již vytvořili pravidla pomocí rozhraní příkazového řádku.
 
     ```console
     azure insights alerts actions email create --customEmails myemail@contoso.com

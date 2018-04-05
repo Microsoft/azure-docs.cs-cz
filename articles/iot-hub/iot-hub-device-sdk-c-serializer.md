@@ -1,11 +1,11 @@
 ---
-title: "Pro zařízení Azure IoT SDK pro jazyk C - serializátor | Microsoft Docs"
-description: "Jak používat knihovnu serializátor v zařízení Azure IoT SDK pro jazyk C vytvoření aplikace pro zařízení, které komunikují pomocí služby IoT hub."
+title: Pro zařízení Azure IoT SDK pro jazyk C - serializátor | Microsoft Docs
+description: Jak používat knihovnu serializátor v zařízení Azure IoT SDK pro jazyk C vytvoření aplikace pro zařízení, které komunikují pomocí služby IoT hub.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: yzhong94
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: defbed34-de73-429c-8592-cd863a38e4dd
 ms.service: iot-hub
 ms.devlang: cpp
@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: yizhon
-ms.openlocfilehash: da9a2dd8bad68c03bb75d1772cf9e5dc539892aa
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 04b5ebf6d8c568fbfd9b291bef95af973ec5d6d7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Pro zařízení Azure IoT SDK pro jazyk C – informace o serializátor
 [Nejprve článek](iot-hub-device-sdk-c-intro.md) této série zavedená **zařízení Azure IoT SDK pro jazyk C**. Další článek poskytuje podrobnější popis [ **IoTHubClient**](iot-hub-device-sdk-c-iothubclient.md). Tento článek poskytuje podrobnější popis zbývající součásti dokončí pokrytí sady SDK: **serializátor** knihovny.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 Úvodní článek popisuje postup použití **serializátor** knihovnu, která se události odesílat a přijímat zprávy ze služby IoT Hub. V tomto článku jsme rozšířit tento diskuzi o podrobnější vysvětlení způsobu modelu svá data pomocí **serializátor** makro jazyk. Článek také obsahuje další podrobnosti o tom, jak knihovny serializuje zprávy (a v některých případech, jak můžete řídit chování serializace). Popíšeme také některé parametry, které můžete upravit určující velikost modely, které vytvoříte.
 
