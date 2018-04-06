@@ -1,13 +1,13 @@
 ---
-title: "Azure zápisu akcelerátoru pro nasazení SAP | Microsoft Docs"
-description: "Provozní příručka pro SAP HANA systémy, které jsou nasazeny na virtuálních počítačích Azure."
+title: Azure zápisu akcelerátoru pro nasazení SAP | Microsoft Docs
+description: Provozní příručka pro SAP HANA systémy, které jsou nasazeny na virtuálních počítačích Azure.
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: msjuergent
 manager: patfilot
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d1ca15028590824cef95e3e9c2d957f9883a0e3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 177bc05eea3aa05231c71a42950fa622b68afc53
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Azure zápisu akcelerátoru pro nasazení SAP
 Azure akcelerátoru zápisu je funkce, které je získávání vrácena výhradně pro virtuální počítače M-Series. Zápis akcelerátoru Azure není k dispozici žádné další VM-Series v Azure, s výjimkou M-Series. Jako název stavy, je účelem funkce vstupně-výstupních operací latenci zápisů Azure Premium Storage. 
@@ -28,10 +28,11 @@ Azure akcelerátoru zápisu je funkce, které je získávání vrácena výhradn
 >[!NOTE]
 > V tomto okamžiku je ve verzi public preview akcelerátoru zápisu Azure a vyžaduje prázdný seznam svoje ID předplatného Azure
 
-Funkce zápisu akcelerátoru Azure je k dispozici jako ve verzi public preview v:
+Funkce zápisu akcelerátoru Azure k dispozici pro nasazení řady M jako ve verzi public preview v:
 
 - Západní US2
 - Západní Evropa
+- Jihovýchodní Asie
 
 ## <a name="planning-for-using-azure-write-accelerator"></a>Plánování pro používání Azure zápisu akcelerátoru
 Azure akcelerátoru zápisu by měl použít pro svazky, které obsahují transakčního protokolu nebo vrátit protokoly databázového systému. Nedoporučuje se používat Azure zápisu akcelerátoru pro svazcích dat databázového systému. Důvod tohoto omezení je, že akcelerátoru zápisu Azure vyžaduje Azure Premium úložiště VHD upevnění bez další čtení ukládání do mezipaměti, který je k dispozici pro úložiště Premium. Větší výhody s tímto typem ukládání do mezipaměti, můžete vidět u tradičních databází. Vzhledem k tomu, že zápis akcelerátoru se týká pouze aktivity zápisu a není urychlit čtení, je podporované návrhu pro SAP použijte zápis akcelerátoru proti transakčního protokolu nebo vrátit jednotky protokolu SAP podporované databází. 

@@ -1,12 +1,12 @@
 ---
-title: "Přehled služby Azure bez serveru | Microsoft Docs"
-description: "Vytvořte výkonné řešení v cloudu, bez nutnosti vezměte v úvahu infrastruktury."
-keywords: 
+title: Přehled služby Azure bez serveru | Microsoft Docs
+description: Vytvořte výkonné řešení v cloudu, bez nutnosti vezměte v úvahu infrastruktury.
+keywords: ''
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5cc6837ed0b0f4467e48c736f5d596a51a799fae
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 30c7dd36efca5ffcae770fe310a43a107d9136af
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-of-azure-serverless-with-functions-and-logic-apps"></a>Přehled služby Azure bez serveru s funkcí a Logic Apps
 
@@ -45,7 +45,7 @@ Chcete-li začít s Logic Apps, můžete začít s [vytvoření první aplikace 
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Jak můžete vytvořit a nasadit bez serveru aplikace v Azure?
 
-Azure poskytuje bohatou sadu nástrojů pro vývoj, nasazení a správu aplikací bez serveru.  Aplikace se dají vytvářet přímo na portálu Azure nebo s [tooling ze sady Visual Studio](logic-apps-serverless-get-started-vs.md).  Jakmile aplikace byla vytvořena, může být [nasadit okamžitě](logic-apps-create-deploy-template.md).  Azure poskytuje také monitorování pro aplikace, bez serveru.  Toto monitorování je přístupná z portálu Azure, prostřednictvím rozhraní API nebo sady SDK nebo pomocí integrovaného nástroje OMS a Application Insights.
+Azure poskytuje bohatou sadu nástrojů pro vývoj, nasazení a správu aplikací bez serveru.  Aplikace se dají vytvářet přímo na portálu Azure nebo s [tooling ze sady Visual Studio](logic-apps-serverless-get-started-vs.md).  Jakmile aplikace byla vytvořena, může být [nasadit okamžitě](logic-apps-create-deploy-template.md).  Azure poskytuje také monitorování pro aplikace, bez serveru.  Toto monitorování je přístupná z portálu Azure, prostřednictvím rozhraní API nebo sady SDK nebo pomocí integrovaného nástroje analýzy protokolů a Application Insights.
 
 ## <a name="next-steps"></a>Další postup
 

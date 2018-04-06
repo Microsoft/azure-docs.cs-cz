@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: rli
-ms.openlocfilehash: d105c88105512df4a9f8d999f64ad001b5d54917
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: rli; v-deasim
+ms.openlocfilehash: 2ffe547d1d1333a5469d313f9f9cc60f5118f814
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Akcelerace dynamických webů prostřednictvím Azure CDN
 
@@ -152,7 +152,7 @@ S DSA, ukládání do mezipaměti je ve výchozím nastavení vypnuté na CDN, i
 
 Pokud máte web se smíšenými statické a dynamické prostředky, je nejlepší postup hybridní získat nejlepší výkon. 
 
-Pro **Azure CDN společnosti Verizon Standard** a **Azure CDN společnosti Akamai Standard** profilů, můžete zapnout pomocí ukládání do mezipaměti pro specifické koncové body DSA [ukládání do mezipaměti pravidla](cdn-caching-rules.md).
+Pro **Azure CDN Standard od společnosti Verizon** a **Azure CDN Standard od společnosti Akamai** profilů, můžete zapnout pomocí ukládání do mezipaměti pro specifické koncové body DSA [ukládání do mezipaměti pravidla](cdn-caching-rules.md).
 
 Pro přístup k ukládání do mezipaměti pravidla:
 
@@ -164,7 +164,7 @@ Pro přístup k ukládání do mezipaměti pravidla:
 
 2. Vytvořte globální nebo vlastní ukládání do mezipaměti pravidlo pro zapnutí ukládání do mezipaměti pro koncový bod služby DSA. 
 
-Pro **Azure CDN společnosti Verizon Premium** pouze profily, zapnete pomocí ukládání do mezipaměti pro specifické koncové body DSA [stroj pravidel](cdn-rules-engine.md). Všechna pravidla, které jsou vytvořené ovlivňují jenom těchto koncových bodů vašeho profilu, které jsou optimalizované pro DSA. 
+Pro **Azure CDN Premium od společnosti Verizon** pouze profily, zapnete pomocí ukládání do mezipaměti pro specifické koncové body DSA [stroj pravidel](cdn-rules-engine.md). Všechna pravidla, které jsou vytvořené ovlivňují jenom těchto koncových bodů vašeho profilu, které jsou optimalizované pro DSA. 
 
 Pro přístup k stroj pravidel:
     

@@ -1,20 +1,20 @@
 ---
-title: "Zotavení po havárii pro databáze SQL | Microsoft Docs"
-description: "Naučte se obnovit databázi z místního datového centra výpadku nebo chyby s Azure SQL Database aktivní geografickou replikaci a možnosti geografické obnovení."
+title: Zotavení po havárii pro databáze SQL | Microsoft Docs
+description: Naučte se obnovit databázi z místního datového centra výpadku nebo chyby s Azure SQL Database aktivní geografickou replikaci a možnosti geografické obnovení.
 services: sql-database
 author: anosov1960
 manager: jhubbard
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e9ec0a0a602965561b77619123588db57c59993c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: dc97c0703150df9773427b13fc07371c3593ce9f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Obnova databáze SQL Azure nebo převzetí služeb při selhání na sekundární
 Azure SQL Database nabízí následující možnosti pro zotavení po výpadku:
@@ -26,7 +26,7 @@ Azure SQL Database nabízí následující možnosti pro zotavení po výpadku:
 Další informace o obchodních scénářů kontinuity a podpora těchto scénářů funkcí najdete v tématu [kontinuity podnikových procesů](sql-database-business-continuity.md).
 
 > [!NOTE]
-> Pokud používáte zónově redundantní prémiových databází nebo fondy, je automatizované procesu obnovení a zbytek tomto materiálu nevztahuje. 
+> Pokud používáte zónově redundantní Premium nebo kritické obchodní databází nebo fondy (preview), je automatizované procesu obnovení a zbytek tomto materiálu nevztahuje. 
 
 ### <a name="prepare-for-the-event-of-an-outage"></a>Příprava pro událost výpadku
 Pro úspěšné dokončení obnovení na jiné datové oblasti pomocí skupin převzetí služeb při selhání nebo geograficky redundantní zálohy, je nutné připravit server v jiném datovém centru výpadku stane novým primárním serverem by potřeba nastat a také mít dobře definované kroků popsaných a otestovat zajistit bezproblémovou obnovení. Tyto kroky přípravy zahrnují:
@@ -95,7 +95,7 @@ Další informace o databázi pravidla výstrah najdete v tématu [přijímat oz
 ### <a name="enable-auditing"></a>Povolení auditování
 Pokud auditování je nutné pro přístup k databázi, budete muset povolit auditování po obnovení databáze. Další informace najdete v tématu [auditování databáze](sql-database-auditing.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o Azure SQL Database automatizované zálohování najdete v tématu [automatizované zálohování SQL Database](sql-database-automated-backups.md)
 * Další informace o obchodních scénářů návrhu a obnovení kontinuity najdete v tématu [kontinuity scénáře](sql-database-business-continuity.md)
 * Další informace o použití automatizované zálohování pro obnovení, najdete v části [obnovit databázi ze zálohy spouštěná služba](sql-database-recovery-using-backups.md)

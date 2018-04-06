@@ -1,6 +1,6 @@
 ---
-title: "Osvědčené postupy pro podniky Přesun do Azure | Microsoft Docs"
-description: "Popisuje zobrazení vygenerovaného uživatelského rozhraní, které podniky můžete použít k zajištění zabezpečeného a spravovat prostředí."
+title: Osvědčené postupy pro podniky Přesun do Azure | Microsoft Docs
+description: Popisuje zobrazení vygenerovaného uživatelského rozhraní, které podniky můžete použít k zajištění zabezpečeného a spravovat prostředí.
 services: azure-resource-manager
 documentationcenter: na
 author: rdendtler
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 3b5087faaf3db087b15b77fedac8df0d7e4a899a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 02553bb59cb37bab21d53adafc42fddcf08795a7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Azure enterprise vygenerované uživatelské rozhraní – zásady správného řízení doporučený předplatného
 Podniky jsou stále přijetí veřejného cloudu pro jeho její agilnost a flexibilitu. Budou se využívá v cloudu síly ke generování výnosy nebo optimalizovat prostředky pro firmy. Microsoft Azure poskytuje různé služby, aby podniky můžete sestavit jako stavební bloky k řešení široké škály úlohy a aplikace. 
@@ -135,7 +135,7 @@ Azure Resource Manager zásady jsou výkonný nástroj v sadě nástrojů Azure.
 > 
 
 ### <a name="audit---what-happened"></a>Audit - co se stalo?
-Pokud chcete zobrazit, jak funguje prostředí, budete muset audit aktivity uživatelů. Většina typů prostředků v rámci Azure vytvořit diagnostických protokolů, které můžete analyzovat pomocí některého nástroje, protokolu nebo v Azure Operations Management Suite. Můžete shromáždit protokoly aktivity mezi více předplatných k poskytování oddělení nebo enterprise zobrazení. Záznamy auditu jsou důležité diagnostický nástroj i zásadní mechanismus pro aktivační události v prostředí Azure.
+Pokud chcete zobrazit, jak funguje prostředí, budete muset audit aktivity uživatelů. Většina typů prostředků v rámci Azure vytvořit diagnostických protokolů, které můžete analyzovat pomocí některého nástroje, protokolu nebo v Azure Log Analytics. Můžete shromáždit protokoly aktivity mezi více předplatných k poskytování oddělení nebo enterprise zobrazení. Záznamy auditu jsou důležité diagnostický nástroj i zásadní mechanismus pro aktivační události v prostředí Azure.
 
 Protokoly aktivity z nasazení Resource Manager umožňují určit **operations** která trvala místní a kdo je provedl. Protokoly aktivity se můžou shromažďovat a agregovat pomocí nástroje, například analýzy protokolů.
 
@@ -149,7 +149,7 @@ Značky prostředku jsou flexibilní a by měl být připojen nejvíce zdrojů. 
 * Prostředí (vývoj pro produkční fázi)
 * Úroveň (webová vrstva, aplikační vrstvě)
 * Majitel aplikace
-* Název projektu
+* ProjectName
 
 ![tags](./media/resource-manager-subscription-governance/resource-group-tagging.png)
 
@@ -190,7 +190,7 @@ Tento, jak narůstá počet odběrů již není potřeba. Pomocí řízení př�
 > * Připojte vaše podnikové identitě úložiště (nejčastěji Active Directory) do Azure Active Directory pomocí nástroje AD Connect.
 > * Řízení správce nebo Spolusprávce předplatného pomocí spravovaného identity. **Nemáte** správce nebo spolusprávce přiřadit nový vlastník předplatného. Místo toho použijte role RBAC zajistit **vlastníka** práv na skupinu nebo jednotlivé.
 > * Azure uživatele přidáte do skupiny (například X vlastníci aplikace) ve službě Active Directory. Pomocí synchronizoval skupiny lze zadat členy skupiny příslušná oprávnění ke správě skupinu prostředků obsahující aplikaci.
-> * Postupujte podle Princip přidělování **nejnižší oprávnění** potřeba očekávané práci. Například:
+> * Postupujte podle Princip přidělování **nejnižší oprávnění** potřeba očekávané práci. Příklad:
 >   * Nasazení skupiny: Skupina, která je možné instalovat prostředky.
 >   * Správa virtuálních počítačů: Skupiny, která je možné spustit virtuální počítače (pro operace)
 > 
@@ -207,7 +207,7 @@ Z předdefinovaných rolí pouze vlastník a správce přístupu uživatelů maj
 > [!TIP]
 > Základní možnosti sítě by měly být chráněné s zámky. Nechtěnému odstranění brány, site-to-site VPN by katastrofální k předplatnému Azure. Azure vám odstranit virtuální síť, která je používána neumožňuje, ale použijí další omezení, která je užitečné opatření. 
 > 
-> * Virtuální sítě: CanNotDelete
+> * Virtual Network: CanNotDelete
 > * Skupina zabezpečení sítě: CanNotDelete
 > * Zásady: CanNotDelete
 > 
@@ -252,6 +252,6 @@ Jeden z největších blokování do cloudu přijetí možná byl, aby si nemuse
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Teď, když jste se naučili o zásad správného řízení předplatné, je čas zobrazíte tato doporučení v praxi. V tématu [příklady implementace zásad správného řízení předplatného Azure](resource-manager-subscription-examples.md).
 

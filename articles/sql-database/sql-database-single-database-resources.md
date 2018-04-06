@@ -1,19 +1,19 @@
 ---
-title: "Izolované databáze Azure SQL Database | Microsoft Docs"
-description: "Spravovat úrovně služby, úroveň výkonu a množství storagea pro jednu databázi Azure SQL."
+title: Izolované databáze Azure SQL Database | Microsoft Docs
+description: Spravovat úrovně služby, úroveň výkonu a množství storagea pro jednu databázi Azure SQL.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 167a72ae55052b8ac1dfe8f032f136a9bf8bcedf
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 87cd4c565a7429ffb7096034823a1f5ff49df195
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Spravovat prostředky pro jednu databázi v databázi SQL Azure
 
@@ -34,7 +34,7 @@ Klikněte na tlačítko **přehled** monitorování nebo zrušte probíhající 
 ![Operace zrušení](./media/sql-database-single-database-resources/cancel-operation.png)
 
 > [!IMPORTANT]
-> Zkontrolujte [aktuální omezení P11 a P15 databází s maximální velikost 4 TB](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb) při výběru P11 nebo P15 vrstvy služeb.
+> Zkontrolujte [aktuální omezení P11 a P15 databází s maximální velikost 4 TB](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb) při výběru P11 nebo P15 vrstvy služeb.
 >
 
 ## <a name="manage-single-database-resources-using-powershell"></a>Spravovat prostředky jedné databáze pomocí prostředí PowerShell
@@ -107,7 +107,7 @@ Nastavit nebo změnit databáze Azure SQL úrovně služeb, úrovně výkonu a m
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o úrovních služeb, úrovně výkonu a objemy úložiště, najdete v tématu [úrovních služeb](sql-database-service-tiers.md).
 - Další informace o elastické fondy najdete v tématu [elastické fondy](sql-database-elastic-pool.md).

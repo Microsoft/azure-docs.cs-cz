@@ -1,13 +1,13 @@
 ---
-title: "Automatické upgrady operačního systému se virtuální počítač Azure škálování nastaví | Microsoft Docs"
-description: "Zjistěte, jak automaticky upgradovat operační systém v instancích virtuálního počítače ve škálovací sadě"
+title: Automatické upgrady operačního systému se virtuální počítač Azure škálování nastaví | Microsoft Docs
+description: Zjistěte, jak automaticky upgradovat operační systém v instancích virtuálního počítače ve škálovací sadě
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: negat
-ms.openlocfilehash: 59dad832977c4afc39db3773edf9789cd1a704e7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 28a9b3d68037aac0c1198da4232c045487b01174
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Automatické upgrady operačního systému sadu škálování virtuálního počítače Azure
 
@@ -93,9 +93,9 @@ Aktuálně jsou podporovány následující SKU (více se přidají):
 > [!NOTE]
 > Tato část se vztahuje pouze na sady škálování bez Service Fabric. Service Fabric má svou vlastní představu o stavu aplikace. Při použití automatické upgrady operačního systému pomocí Service Fabric, je doména aktualizace podle domény aktualizace kvůli udržení vysoké dostupnosti se služby spuštěné v Service Fabric nasazuje novou bitovou kopii operačního systému. Další informace o vlastnostech odolnost clusterů Service Fabric, najdete v tématu [této dokumentace](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
 
-Během upgradu operačního systému, instance virtuálního počítače ve škálovací sadě upgradují jeden batch najednou. Upgrade by měly pokračovat pouze, pokud je v pořádku na upgradovaná instance virtuálních počítačů zákazníků aplikace. Doporučujeme vám, že aplikace poskytuje stavu signály, které modul upgradu operačního systému sada škálování. Ve výchozím nastavení během upgradu operačního systému platformy zvažuje rozšíření zřizování stavu, pokud instance virtuálního počítače je v pořádku po upgradu a stav napájení virtuálního počítače. Během upgradu operačního systému v instanci virtuálního počítače disk operačního systému v instanci virtuálního počítače se nahradí nový disk založené na nejnovější verzi bitové kopie. Po dokončení upgradu operačního systému, nakonfigurovaných rozšíření se spouštějí na těchto virtuálních počítačích. Jenom v případě, že všechna rozšíření na virtuálním počítači se úspěšně zřízený, aplikace považuje za v pořádku. 
+Během upgradu operačního systému, instance virtuálního počítače ve škálovací sadě upgradují jeden batch najednou. Upgrade by měly pokračovat pouze, pokud je v pořádku na upgradovaná instance virtuálních počítačů zákazníků aplikace. Z tohoto důvodu je nutné, aby aplikace poskytuje stavu signály, které modul upgradu operačního systému sadu škálování. Během upgradu operačního systému platformu zvažuje rozšíření zřizování stavu, pokud instance virtuálního počítače je v pořádku po upgradu a stav napájení virtuálního počítače. Během upgradu operačního systému v instanci virtuálního počítače disk operačního systému v instanci virtuálního počítače se nahradí nový disk založené na nejnovější verzi bitové kopie. Po dokončení upgradu operačního systému, nakonfigurovaných rozšíření se spouštějí na těchto virtuálních počítačích. Jenom v případě, že všechna rozšíření na virtuálním počítači se úspěšně zřízený, aplikace považuje za v pořádku. 
 
-Škálovací sadu můžete volitelně nakonfigurovaný s testy stavu aplikace platformy poskytnout přesné informace o probíhající stavu aplikace. Testy stavu aplikace jsou vlastní zatížení vyrovnávání sond používané jako signál stavu. Aplikace běžící na instanci škálovací sadu virtuálních počítačů může reagovat na externí HTTP nebo TCP požadavky určující, zda je v pořádku. Další informace o fungování vlastní načíst vyrovnávání sondy najdete v tématu [sondy nástroje pro vyrovnávání zatížení Rady pro pochopení](../load-balancer/load-balancer-custom-probe-overview.md). Stav aplikace testu není vyžadován pro automatické upgrady operačního systému, ale důrazně doporučujeme.
+Kromě toho sada škálování *musí* nakonfigurováni testy stavu aplikace platformy poskytnout přesné informace o probíhající stavu aplikace. Testy stavu aplikace jsou vlastní zatížení vyrovnávání sond používané jako signál stavu. Aplikace běžící na instanci škálovací sadu virtuálních počítačů může reagovat na externí HTTP nebo TCP požadavky určující, zda je v pořádku. Další informace o fungování vlastní načíst vyrovnávání sondy najdete v tématu [sondy nástroje pro vyrovnávání zatížení Rady pro pochopení](../load-balancer/load-balancer-custom-probe-overview.md).
 
 Pokud byly sadou škálování je nakonfigurovaný na použití více skupin umístění, sondy pomocí [nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) zapotřebí.
 
@@ -110,7 +110,7 @@ Doporučený postup obnovení virtuálních počítačů a znovu povolte automat
 * Nasazení aktualizované škálovací sadu, která aktualizuje všechny instance virtuálních počítačů, včetně těch se nezdařilo. 
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Konfigurace služby Řízení Probe vyrovnávání vlastní zatížení zpráv jako sběru dat stavu aplikace na škále nastavit
-Jako osvědčený postup vytvoření explicitně sondu nástroje pro vyrovnávání zatížení, pro sadu škálování stavu. Může použít stejný koncový bod pro existující sondu HTTP nebo TCP testu, ale test stavu může vyžadovat různé chování z sondu tradiční Vyrovnávání zatížení. Například může vrátit sondu nástroje pro vyrovnávání zatížení obvykle není v pořádku, pokud zatížení instance je příliš vysoká, zatímco, nemusí být vhodný pro určování stavu instance během automatického upgradu operačního systému. Konfigurace testu do mají vysokou míru testování méně než dvě minuty.
+Můžete *musí* explicitně vytvořit sondu nástroje pro vyrovnávání zatížení pro sadu škálování stavu. Může použít stejný koncový bod pro existující sondu HTTP nebo TCP testu, ale test stavu může vyžadovat různé chování z sondu tradiční Vyrovnávání zatížení. Například může vrátit sondu nástroje pro vyrovnávání zatížení obvykle není v pořádku, pokud zatížení instance je příliš vysoká, zatímco, nemusí být vhodný pro určování stavu instance během automatického upgradu operačního systému. Konfigurace testu do mají vysokou míru testování méně než dvě minuty.
 
 Test Vyrovnávání zatížení, které může být odkazováno v *networkProfile* měřítka nastavit a může být přidružené buď k interní nebo veřejné přístupných Vyrovnávání zatížení, následujícím způsobem:
 
@@ -227,7 +227,7 @@ Rozšířit na sondy stavu aplikace, upgrady operačního systému sadu škálov
 2. Určete další dávku instance virtuálních počítačů, které chcete upgradovat, s dávce s maximální 20 % počet celkový počet instancí.
 3. Upgrade operačního systému další dávku instance virtuálních počítačů.
 4. Pokud se více než 20 % upgradovaná instance jsou není v pořádku, zastavte upgradu; v opačném případě pokračujte.
-5. Pokud zákazník nakonfiguroval testy stavu aplikace, upgrade čeká, až 5 minut sondy se v pořádku, bude okamžitě pokračovat na další dávku; v opačném počká 30 minut, než přejdete na další dávku.
+5. Pro sady škálování, které nejsou součástí clusteru Service Fabric upgrade čeká, až 5 minut sondy se v pořádku, bude okamžitě pokračovat na další dávku. Měřítko pro sady škálování, které jsou součástí clusteru Service Fabric, nastavte počká 30 minut, než přejdete na další dávku.
 6. Pokud zbývají instance, které chcete upgradovat, goto krok 1) pro další dávku; v opačném případě bude dokončen upgrade.
 
 Měřítko nastavit modul Upgrade operačního systému kontroluje celkový stav instance virtuálních počítačů před upgradem každou dávku. Při upgradu dávce, mohou existovat další souběžných plánovaná nebo neplánovaná Údržba děje v datových centrech Azure, který může mít vliv na dostupnost virtuálních počítačů. Proto je možné, že dočasně víc než 20 % instancí může být mimo provoz. V takových případech na konci aktuální dávku nastavit měřítka upgradu zastaví.
@@ -237,7 +237,8 @@ Měřítko nastavit modul Upgrade operačního systému kontroluje celkový stav
 
 Následující šablonu můžete použít k nasazení sadu škálování, který používá automatické upgrady <a href='https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json'>automatické vrácení upgraduje - Ubuntu 16.04-LTS</a>
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"> <img src="http://azuredeploy.net/deploybutton.png"/>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
 

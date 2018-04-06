@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 5f1fa378c8eea68181d4596700238d03f360c5d0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5cdc67a138e2316c2e87a72371a6df527cc36ac
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Přístup k diagnostickým protokolům pro Azure Data Lake Store
 Informace o povolení protokolování pro váš účet Data Lake Store a postup zobrazení shromážděné pro váš účet protokoly diagnostiky.
@@ -47,7 +47,7 @@ Organizace může povolit protokolování diagnostiky ke svému účtu Azure Dat
         
         * Vyberte možnost **datový proud do centra událostí** na datový proud protokolu data do centra událostí Azure. Bude s největší pravděpodobností používat tuto možnost, pokud máte kanálu zpracování příjmu dat pro analýzu příchozích protokolů v reálném čase. Pokud vyberete tuto možnost, je nutné zadat podrobnosti pro centra událostí Azure, kterou chcete použít.
 
-        * Vyberte možnost **odeslat k analýze protokolů** používat službu Azure Log Analytics k analýze dat generovaný protokolu. Pokud vyberete tuto možnost, je nutné zadat podrobnosti pro pracovní prostor služby Operations Management Suite se, že používáte analýzy protokolů provést. V tématu [zobrazit a analyzovat data shromážděná pomocí hledání protokolů analýzy protokolů](../log-analytics/log-analytics-tutorial-viewdata.md) podrobnosti o použití analýzy protokolů.
+        * Vyberte možnost **odeslat k analýze protokolů** používat službu Azure Log Analytics k analýze dat generovaný protokolu. Pokud vyberete tuto možnost, musíte upravit podrobnosti pro pracovní prostor analýzy protokolů by, že používáte analýzy protokolů provést. V tématu [zobrazit a analyzovat data shromážděná pomocí hledání protokolů analýzy protokolů](../log-analytics/log-analytics-tutorial-viewdata.md) podrobnosti o použití analýzy protokolů.
      
    * Určete, jestli chcete získat protokoly auditu nebo protokoly požadavku nebo obě.
    * Zadejte počet dnů, pro které se musí uchovávat data. Uchování platí pouze pokud používáte k archivaci dat protokolu účtu úložiště Azure.

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 624a40b1e40db6ceac9c567926b3932449e7bf7e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 12f63bc42f8450f086ed9f0e8d598c9c91a0c3d4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Seznámení s vlastní zásady Startovní sady Azure AD B2C vlastních zásad
 
@@ -39,7 +39,7 @@ Tato deklarace identity, schémata je rozdělené do tří částí:
 3.  A nakonec třetí oddíl, který obsahuje seznam dalších, volitelných deklarace identity, které mohou být shromažďovány z uživatele, uložené v adresáři a odeslány v tokenech během přihlášení. V této části můžete přidat nový typ deklarace identity a shromažďovat od uživatelů nebo odeslat v tokenu.
 
 > [!IMPORTANT]
-> Schéma deklarací identity obsahuje omezení na určité deklarace identity, jako jsou uživatelská jména a hesla. Zásady důvěryhodnosti Framework TF zpracovává Azure AD jako ostatní poskytovatele deklarací identity a všechny její omezení jsou modelována v zásadách premium. Zásady je možné upravovat přidat další omezení, nebo použijte jiného poskytovatele deklarací identity pro úložiště přihlašovacích údajů, který bude mít svůj vlastní omezení.
+> Schéma deklarací identity obsahuje omezení na určité deklarace identity, jako jsou uživatelská jména a hesla. Zásady důvěryhodnosti Framework TF zpracovává Azure AD jako ostatní poskytovatele deklarací identity a všechny její omezení jsou modelována ve vlastních zásadách. Zásady je možné upravovat přidat další omezení, nebo použijte jiného poskytovatele deklarací identity pro úložiště přihlašovacích údajů, který bude mít svůj vlastní omezení.
 
 Typy deklarací identity k dispozici jsou uvedeny níže.
 
@@ -51,12 +51,12 @@ Následující deklarace identity jsou požadovány pro uživatele cesty ke spr�
 |-------------|-------------|
 | *UserId* | Uživatelské jméno |
 | *signInName* | Přihlaste se název |
-| *tenantId* | Identifikátor klienta (ID) objektu uživatele v Azure AD B2C Premium |
-| *objectId* | Identifikátor objektu (ID) objektu uživatele v Azure AD B2C Premium |
+| *tenantId* | Identifikátor klienta (ID) objektu uživatele v Azure AD B2C |
+| *objectId* | Identifikátor objektu (ID) objektu uživatele v Azure AD B2C |
 | *password* | Heslo |
 | *newPassword* | |
 | *reenterPassword* | |
-| *passwordPolicies* | Zásady pro hesla používají Azure AD B2C Premium k určení síly hesla, vypršení platnosti, atd. |
+| *passwordPolicies* | Zásady pro hesla používají Azure AD B2C k určení síly hesla, vypršení platnosti, atd. |
 | *sub* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
@@ -66,9 +66,9 @@ Následující deklarace identity jsou požadovány pro uživatele cesty ke spr�
 | *E-mailu* | E-mailovou adresu, které je možné kontaktovat uživatele |
 | *signInNamesInfo.emailAddress* | E-mailovou adresu, která uživatel může použít pro přihlášení |
 | *otherMails* | E-mailové adresy, které lze použít ke kontaktování uživatele |
-| *userPrincipalName* | Uživatelské jméno dle záznamu v Azure AD B2C Premium |
+| *userPrincipalName* | Uživatelské jméno, jak je uložen v Azure AD B2C |
 | *upnUserName* | Uživatelské jméno pro vytváření hlavní název uživatele |
-| *mailNickName* | Uživatelské jméno e-mailu nick uložen v Azure AD B2C Premium |
+| *mailNickName* | Uživatelské jméno e-mailu nick uložen v Azure AD B2C |
 | *newUser* | |
 | *executed-SelfAsserted-Input* | Deklarace identity, která určuje, zda byly shromažďovány atributy od uživatele |
 | *executed-PhoneFactor-Input* | Deklarace identity, která určuje, zda nové telefonní číslo bylo odebráno od uživatele |

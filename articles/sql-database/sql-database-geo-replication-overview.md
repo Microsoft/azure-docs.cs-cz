@@ -1,19 +1,20 @@
 ---
-title: "Převzetí služeb při selhání skupiny a aktivní geografickou replikaci - Azure SQL Database | Microsoft Docs"
-description: "Použití skupin automatické převzetí služeb při selhání s aktivní geografickou replikací a povolte autoomatic převzetí služeb při selhání v případě výpadku."
+title: Převzetí služeb při selhání skupiny a aktivní geografickou replikaci - Azure SQL Database | Microsoft Docs
+description: Použití skupin automatické převzetí služeb při selhání s aktivní geografickou replikací a povolte autoomatic převzetí služeb při selhání v případě výpadku.
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 45ddc4070e2162715eefab21841d75f1fa2a29e5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: carlrab
+ms.openlocfilehash: d241bfb6245eb5a70f1e4fcedc86c969766019f4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Přehled: Převzetí služeb při selhání skupiny a aktivní geografickou replikaci
 Aktivní geografickou replikaci můžete nakonfigurovat až čtyři čitelný sekundární databáze v umístění center stejný nebo jiný dat (oblastí). Sekundární databáze jsou k dispozici pro dotazování a převzetí služeb při selhání v případě výpadku datacentra nebo neschopnost se připojit k primární databázi. Převzetí služeb při selhání musí ručně zahájit aplikace uživatele. Po převzetí služeb při selhání má nový primární koncový bod jiné připojení. 
@@ -69,7 +70,7 @@ Tato funkce aktivní geografickou replikací poskytuje následující základní
    >
 
 * **Podpora fondu elastické databáze**: aktivní geografickou replikací je možné nakonfigurovat pro všechny databáze v každém elastického fondu. Sekundární databáze může být v jiném elastického fondu. Pro normální databáze lze sekundární elastický fond a naopak naopak tak dlouho, dokud úrovně služeb jsou stejné. 
-* **Úroveň výkonu konfigurovat sekundární databáze**: primární i sekundární databáze je potřeba mít stejnou vrstvu služby (Basic, Standard, Premium). Sekundární databáze může být vytvořen pomocí nižší úroveň výkonu (Dtu) než primární. Tato možnost není doporučeno pro aplikace s aktivitou write vysoké databáze, protože vyšší replikace funkce lag zvyšuje riziko ztráty významné dat po selhání. Kromě toho po převzetí služeb při selhání aplikace je ovlivněn výkon dokud nový primární je upgrade na vyšší úroveň výkonu. Graf procento vstupně-výstupní operace protokolu na portál Azure poskytuje vhodný způsob, jak odhad úrovně výkonu minimální sekundární, který je požadován pro udržení zatížení replikace. Například, pokud je primární databáze P6 (1 000 DTU) a protokol vstupně-výstupní operace v procentech je 50 % sekundární musí být alespoň P4 (500 DTU). Můžete také načíst data protokolu vstupně-výstupní operace s využitím [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nebo [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) databáze zobrazení.  Další informace o úrovně výkonu databáze SQL najdete v tématu [výkon a možnosti databáze SQL](sql-database-service-tiers.md). 
+* **Úroveň výkonu konfigurovat sekundární databáze**: primární i sekundární databáze musí mít stejnou vrstvu služeb. Sekundární databáze může být vytvořen pomocí nižší úroveň výkonu (Dtu) než primární. Tato možnost není doporučeno pro aplikace s aktivitou write vysoké databáze, protože vyšší replikace funkce lag zvyšuje riziko ztráty významné dat po selhání. Kromě toho po převzetí služeb při selhání aplikace je ovlivněn výkon dokud nový primární je upgrade na vyšší úroveň výkonu. Graf procento vstupně-výstupní operace protokolu na portál Azure poskytuje vhodný způsob, jak odhad úrovně výkonu minimální sekundární, který je požadován pro udržení zatížení replikace. Například, pokud je primární databáze P6 (1 000 DTU) a protokol vstupně-výstupní operace v procentech je 50 % sekundární musí být alespoň P4 (500 DTU). Můžete také načíst data protokolu vstupně-výstupní operace s využitím [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nebo [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) databáze zobrazení.  Další informace o úrovně výkonu databáze SQL najdete v tématu [co jsou úrovních služby databáze SQL](sql-database-service-tiers.md). 
 * **Uživatelem řízená převzetí služeb při selhání a navrácení služeb po obnovení**: sekundární databáze je explicitně možné přepnout do primární role kdykoli aplikace nebo uživatele. Během výpadku skutečné možnost "neplánované" by měl použít, která okamžitě zvýší úroveň sekundárního jako primární. Při selhání primární obnoví a opět k dispozici, systém automaticky označí jako sekundární obnovené primární a převeďte ho do aktuální s nový primární. Vzhledem k asynchronní povaze replikace malé množství dat může dojít ke ztrátě během neplánované převzetí služeb při selhání před replikuje nejnovější změny sekundární selže primární. Při selhání primárního serveru s více sekundárních systém automaticky změní konfiguraci relace replikace a propojuje zbývající sekundární repliky na nově propagovaných primární bez nutnosti zásahu uživatele. Jakmile se výpadek, která způsobila, že převzetí služeb při selhání zmírnit, může být žádoucí návrat aplikace na primární oblasti. Kvůli tomu by měla být volána příkaz převzetí služeb při selhání s parametrem "plánované". 
 * **Udržování synchronizace přihlašovacích údajů a pravidel brány firewall**: doporučujeme používat [databáze pravidla brány firewall](sql-database-firewall-configure.md) pro geograficky replikované databáze, takže tato pravidla je možné replikovat s databází a zkontrolujte všechny sekundární databáze stejná pravidla brány firewall jako primární. Tento přístup eliminuje potřebu zákazníkům ručně konfigurovat a spravovat pravidla brány firewall na servery, které hostují jak primární a sekundární databáze. Podobně [obsažené uživatelů databáze](sql-database-manage-logins.md) pro data přístup zajišťuje primární i sekundární databáze mají vždy stejné přihlašovací údaje uživatele, takže během převzetí služeb při selhání není k dispozici žádné přerušení z důvodu neshody s jména a hesla. Po přidání [Azure Active Directory](../active-directory/active-directory-whatis.md), zákazníků můžete spravovat přístup uživatelů k primární i sekundární databáze a odstraňuje potřebu správy pověření v databázích úplně.
 
@@ -184,11 +185,11 @@ Jak je popsáno dříve, skupiny automatické převzetí služeb při selhání 
 | [Převzetí služeb při selhání skupiny aktualizací](/rest/api/sql/failovergroups/update) | Aktualizuje skupinu převzetí služeb při selhání. |
 |  | |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Ukázkové skripty najdete v části:
-   - [Konfigurace a převzetí služeb při selhání jedné databáze používá aktivní geografickou replikaci](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-   - [Konfigurace a převzetí služeb při selhání ve fondu databáze používá aktivní geografickou replikaci](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-   - [Konfigurace a převzetí služeb při selhání a převzetí služeb při selhání skupiny pro jednu databázi (preview)](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+   - [Konfigurace a převzetí služeb při selhání izolované databáze s využitím aktivní geografické replikace](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+   - [Konfigurace a převzetí služeb při selhání databáze ve fondu s využitím aktivní geografické replikace](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+   - [Konfigurace a převzetí služeb při selhání skupiny převzetí služeb při selhání pro izolovanou databázi (Preview)](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
 * Přehled kontinuity obchodních a scénářů najdete v tématu [obchodní kontinuity přehled](sql-database-business-continuity.md)
 * Další informace o Azure SQL Database automatizované zálohování najdete v tématu [automatizované zálohování SQL Database](sql-database-automated-backups.md).
 * Další informace o použití automatizované zálohování pro obnovení, najdete v části [obnovit databázi ze zálohy spouštěná služba](sql-database-recovery-using-backups.md).

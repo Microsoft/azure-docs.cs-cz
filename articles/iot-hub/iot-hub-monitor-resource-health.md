@@ -1,12 +1,12 @@
 ---
-title: "Monitorování stavu služby Azure IoT Hub | Microsoft Docs"
-description: "Použít ke sledování služby IoT Hub a rychle diagnostikovat problémy Azure monitorování a stav prostředků Azure"
+title: Monitorování stavu služby Azure IoT Hub | Microsoft Docs
+description: Použít ke sledování služby IoT Hub a rychle diagnostikovat problémy Azure monitorování a stav prostředků Azure
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/09/2017
 ms.author: kgremban
-ms.openlocfilehash: 3051af03d0c1433db98bcc674a072188e7ce80e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28903c4cc530937b4b39a5239d2a6d1ea6896924
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychle diagnostikovat problémy
 
 Podnikům, které implementují Azure IoT Hub očekávat spolehlivý výkon z jejich prostředky. Chcete-li udržovat zavřít sledovat na vaše operace, IoT Hub je plně integrována s [Azure monitorování] [ lnk-AM] a [stav prostředku Azure] [ lnk-ARH]. Tyto dvě služby fungovat v kombinaci, kde přinášejí dat je třeba zachovat řešení IoT nahoru a spouštění v dobrém stavu. 
 
-Azure monitorování je jednoho zdroje sledování a protokolování pro všechny vaše služby Azure. Můžete odeslat protokoly, které Azure monitorování vygeneruje analýzy protokolů OMS, Event Hubs nebo úložiště Azure pro vlastní zpracování. Nastavení metriky a diagnostiky Azure monitorování získáte v reálném čase přehled o výkonu z vašich prostředků. Pokračujte ve čtení v tomto článku se dozvíte jak [použití Azure monitorování](#use-azure-monitor) službou IoT hub. 
+Azure monitorování je jednoho zdroje sledování a protokolování pro všechny vaše služby Azure. Můžete odeslat protokoly, které generuje monitorování Azure Log Analytics, Event Hubs nebo úložiště Azure pro vlastní zpracování. Nastavení metriky a diagnostiky Azure monitorování získáte v reálném čase přehled o výkonu z vašich prostředků. Pokračujte ve čtení v tomto článku se dozvíte jak [použití Azure monitorování](#use-azure-monitor) službou IoT hub. 
 
 Azure Resource Health umožňuje diagnostikovat a získat podporu, když Azure problémy ovlivní vaše prostředky. Přizpůsobený řídicí panel poskytuje aktuální a starší stav pro vaše centra IoT. Pokračujte ve čtení v tomto článku se dozvíte jak [pomocí Azure Resource Health](#use-azure-resource-health) službou IoT hub. 
 
@@ -322,7 +322,7 @@ Pokud chcete zkontrolovat stav vašeho centra IoT, postupujte takto:
 
 Další informace o tom, jak interpretovat data o stavu, v tématu [přehled stavu prostředků Azure.][lnk-ARH]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Pochopení metriky služby IoT Hub][lnk-metrics]
 - [IoT pro vzdálené monitorování a oznámení službou Azure Logic Apps připojení služby IoT hub a poštovní schránky][lnk-monitoring-notifications]

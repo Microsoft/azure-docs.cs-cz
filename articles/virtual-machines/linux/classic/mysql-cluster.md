@@ -1,11 +1,11 @@
 ---
-title: "Clusterize MySQL s vyrovnáváním zatížení sad | Microsoft Docs"
-description: "Nastavení pro zařízení s vyrovnáváním zatížení, vysokou dostupnost clusteru Linux MySQL vytvořené pomocí modelu nasazení classic na platformě Azure"
+title: Clusterize MySQL s vyrovnáváním zatížení sad | Microsoft Docs
+description: Nastavení pro zařízení s vyrovnáváním zatížení, vysokou dostupnost clusteru Linux MySQL vytvořené pomocí modelu nasazení classic na platformě Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: bureado
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 6c413a16-e9b5-4ffe-a8a3-ae67046bbdf3
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
-ms.openlocfilehash: 8b39da7b96002e14c7d9a567ddc4f1dbc9d45c60
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e2671def47879e3d4eae000c9084cd458e29b933
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>Pomocí vyrovnávání zatížení sítě nastaví clusterize MySQL v systému Linux
 > [!IMPORTANT]
@@ -48,7 +48,7 @@ Budete potřebovat následující prostředky a dalo:
 ### <a name="tested-environment"></a>Otestované prostředí
 * Ubuntu 13.10
   * DRBD
-  * Server databáze MySQL
+  * MySQL Server
   * Corosync a kardiostimulátor
 
 ### <a name="affinity-group"></a>Skupina vztahů
@@ -335,7 +335,7 @@ Platí následující omezení:
 
 * Skript linbit DRBD prostředku, který spravuje DRBD jako prostředek v kardiostimulátor používá `drbdadm down` při vypnutí uzlu, i když uzlu se právě děje pohotovostní režim. Toto není ideální vzhledem k tomu, že podřízená nebude možné synchronizace DRBD prostředků při hlavní získá zápisy. Pokud je hlavní server neselže zdvořile, že podřízená může trvat přes starší stav systému souborů. Existují dva způsoby potenciální toto řešení:
   * Vynucení `drbdadm up r0` ve všech uzlech clusteru prostřednictvím místní sledovací zařízení (ne clusterized)
-  * Úpravy linbit DRBD skript, a ověřte, zda `down` není volán`/usr/lib/ocf/resource.d/linbit/drbd`
+  * Úpravy linbit DRBD skript, a ověřte, zda `down` není volán `/usr/lib/ocf/resource.d/linbit/drbd`
 * Nástroje pro vyrovnávání zatížení potřeba alespoň pět sekund reagovat, takže aplikace by měla být clustery a být větší toleranci vůči časový limit. Jiné architektury, jako v aplikaci fronty a middlewares dotaz, může také pomoct.
 * Ladění MySQL je nutné zajistit, že zápis se provádí spravovat tempem a mezipaměti jsou vyprazdňuje na disk se často chcete-li minimalizovat ztrátu paměti.
 * Zápis výkonu je závislý na virtuální počítač propojení ve virtuálním přepínači, protože to je používáno DRBD k replikaci zařízení.

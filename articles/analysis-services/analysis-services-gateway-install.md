@@ -1,25 +1,25 @@
 ---
-title: "Nainstalovat bránu dat místní | Microsoft Docs"
-description: "Zjistěte, jak nainstalovat a nakonfigurovat bránu místní data."
+title: Nainstalovat bránu dat místní | Microsoft Docs
+description: Zjistěte, jak nainstalovat a nakonfigurovat bránu místní data.
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: analysis-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 04/03/2018
 ms.author: owend
-ms.openlocfilehash: c2cbe1c60f67c689a38d1585245610a6fa73bff4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b57ee7d9617f8bf2e54122ac37f351ae0cf9db26
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Nainstalujte a nakonfigurujte bránu místní data
 Místní brána dat je potřeba při jeden nebo více serverů ve stejné oblasti Azure Analysis Services připojení ke zdrojům dat v místě. Další informace o bráně najdete v tématu [místní brána dat](analysis-services-gateway.md).
@@ -44,6 +44,7 @@ Místní brána dat je potřeba při jeden nebo více serverů ve stejné oblast
 * Bránu nainstalujte na počítač, který zůstává na a není přejít do režimu spánku.
 * Neinstalujte bránu v počítači se bezdrátově připojený k síti. Výkon může být snížena.
 * Přihlaste se k Azure pomocí účtu ve službě Azure AD pro stejné [klienta](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) jako předplatné registrujete brána. Azure B2B účty (Host) nejsou podporována při instalaci a registraci brány.
+* (Jednotné) gateway popsané tady není podporována v Azure Government (Fairfax). Použijte vyhrazenou místní bránu pro Azure Analysis Services. Vyhrazené brána nepodporuje další služby, jako je Power BI a výkonu aplikací. Vyhrazené brána je nainstalovaná z vašich serverů rychlý Start na portálu.
 
 
 ## <a name="download"></a>Stahování

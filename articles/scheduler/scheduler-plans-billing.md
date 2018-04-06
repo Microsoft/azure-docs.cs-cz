@@ -1,11 +1,11 @@
 ---
-title: "Plány a fakturace ve Azure Scheduler"
-description: "Plány a fakturace ve Azure Scheduler"
+title: Plány a fakturace ve Azure Scheduler
+description: Plány a fakturace ve Azure Scheduler
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,33 +14,27 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: f0662230c5d1663e37ee2be58f234934ec3d55dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b25e97b0f0d0b6f63134a774856eb7ec8f77b679
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="plans-and-billing-in-azure-scheduler"></a>Plány a fakturace ve Azure Scheduler
 ## <a name="job-collection-plans"></a>Plány kolekce úloh
-Kolekce úloh jsou fakturovatelné entity ve službě Azure Scheduler. Kolekce úloh obsahují určitý počet úloh a mají tři plány – Free, Standard a Premium –, které jsou popsány níže.
+Kolekce úloh jsou fakturovatelné entity ve službě Azure Scheduler. Kolekce úloh obsahují určitý počet úloh a mají tři plány – standardní, P10 Premium a P20 Premium –, které jsou popsány níže.
 
 | **Plán kolekce úloh** | **Maximální počet úloh na kolekci úloh** | **Maximální počet opakování** | **Kolekce maximální počet úloh na předplatné** | **Omezení** |
 |:--- |:--- |:--- |:--- |:--- |
-| **Volné** |5 úloh na kolekci úloh |Jednou za hodinu. Nelze provést úlohy častěji než jednou za hodinu |Předplatné je povoleno maximálně 1 bezplatná kolekce úloh |Nelze použít [objekt odchozí autorizace HTTP](scheduler-outbound-authentication.md) |
 | **Standard** |50 úloh na kolekci úloh |Jednou za minutu. Nelze provést úlohy častěji než jednou za minutu |Předplatné je povolená na 100 kolekce standardní úloh |Přístup k úplná sada funkcí služby plánovače |
-| **P10 úrovně Premium** |50 úloh na kolekci úloh |Jednou za minutu. Nelze provést úlohy častěji než jednou za minutu |Předplatné je povolená kolekce úloh až 10 000 P10 úrovně Premium. <a href="mailto:wapteams@microsoft.com">Kontaktujte nás</a> Další informace. |Přístup k úplná sada funkcí služby plánovače |
+| **P10 Premium** |50 úloh na kolekci úloh |Jednou za minutu. Nelze provést úlohy častěji než jednou za minutu |Předplatné je povolená kolekce úloh až 10 000 P10 úrovně Premium. <a href="mailto:wapteams@microsoft.com">Kontaktujte nás</a> Další informace. |Přístup k úplná sada funkcí služby plánovače |
 | **P20 Premium** |1000 úloh na kolekci úloh |Jednou za minutu. Nelze provést úlohy častěji než jednou za minutu |Předplatné je povolená kolekce úloh až 10 000 P20 Premium. <a href="mailto:wapteams@microsoft.com">Kontaktujte nás</a> Další informace. |Přístup k úplná sada funkcí služby plánovače |
 
 ## <a name="upgrades-and-downgrades-of-job-collection-plans"></a>Upgrady a dírám plány kolekce úloh
-Můžete upgradovat nebo starší verzi plán kolekce úloh kdykoli mezi plánech Free, Standard a Premium. Ale při přechod na starší verzi na kolekci úloh free, downgrade může selhat pro jednu z následujících důvodů:
-
-* Kolekce úloh free již existuje v rámci předplatného
-* Úloha v kolekci úloh má vyšší opakování, než je povoleno pro úlohy v kolekcích úloh free. Maximální počet opakování povolené v kolekci úloh free je jednou za hodinu
-* Existuje více než 5 úloh v kolekci úloh
-* V kolekci úloh má protokolu HTTP nebo HTTPS akci, která se používá [objekt odchozí autorizace HTTP](scheduler-outbound-authentication.md)
+Můžete upgradovat nebo starší verzi plán kolekce úloh kdykoli mezi standardní, P10 Premium a P20 Premium plány.
 
 ## <a name="billing-and-azure-plans"></a>Plány fakturace a Azure
-Předplatné není účtován bezplatné kolekce úloh. Pokud máte více než 100 kolekce standardní úloh (10 standardní fakturace jednotky), je lepší pozornosti mít všechny kolekce úloh v plánu premium.
+Pokud máte více než 100 kolekce standardní úloh (10 standardní fakturace jednotky), je lepší pozornosti mít všechny kolekce úloh v plánu premium.
 
 Pokud máte jednu kolekci standardní úlohy a kolekce úloh jeden premium, jste fakturovaná jednu standardní fakturace jednotku *a* jednu jednotku fakturace premium. Kusovník služby Plánovač na základě počtu aktivní úloha kolekce, které jsou nastaveny na standard nebo premium; To se vysvětluje dále v následujících dvou částech.
 

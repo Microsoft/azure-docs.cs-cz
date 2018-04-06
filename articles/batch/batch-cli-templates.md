@@ -11,49 +11,49 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: c991a1535b82a76a3d0b9bdbf4ede8f3e22bc866
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4b4a5b9199fe648425304eaa8db0130bb1b4264d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Použití šablon rozhraní příkazového řádku služby Batch a přenos souborů (Preview)
 
 Pomocí rozhraní příkazového řádku Azure je možné spustit úlohy Batch bez nutnosti psaní kódu.
 
-Vytvořit a použít soubory šablon pomocí rozhraní příkazového řádku Azure k vytvoření dávky fondy, úlohy a úkoly. Vstupní soubory úlohy můžete snadno nahrán do účtu úložiště přidruženého k dávkového účtu a úlohy výstupní soubory stáhnout.
+Vytvořit a použít soubory šablon pomocí rozhraní příkazového řádku Azure k vytvoření dávky fondy, úlohy a úkoly. Snadno odeslání úlohy vstupní soubory k účtu úložiště přidružené k účtu Batch a stažení výstupní soubory.
 
 ## <a name="overview"></a>Přehled
 
-Rozšíření pro rozhraní příkazového řádku Azure umožňuje Batch být použité kompletní uživatelé, kteří nejsou vývojáři. Fond lze vytvořit, nahrán vstupních dat, úlohy a přidružených úloh vytvoření a výsledný výstupní data stáhnout – potřeba žádný kód, rozhraní příkazového řádku používá přímo, nebo se integrovaný do skriptů.
+Rozšíření pro rozhraní příkazového řádku Azure umožňuje Batch být použité kompletní uživatelé, kteří nejsou vývojáři. Jenom příkazy rozhraní příkazového řádku můžete vytvořit fond, nahrát vstupních dat, vytvoření úlohy a související úlohy a stáhnout výsledný výstupní data. Vyžaduje se žádný další kód. Přímo spustit příkazy rozhraní příkazového řádku nebo jejich integraci do skriptů.
 
-Vytvoření šablony batch ve [existující Batch podpora v rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/batch/batch-cli-get-started#json-files-for-resource-creation) umožňuje soubory JSON k určení hodnoty vlastností pro vytváření fondů, úloh, úlohy a další položky. S šablonami Batch jsou přidány následující možnosti přes co je možné pomocí soubory JSON:
+Vytvoření šablony batch ve [existující Batch podpora v rozhraní příkazového řádku Azure](batch-cli-get-started.md#json-files-for-resource-creation) pro soubory JSON k určení hodnoty vlastností, při vytváření fondů, úloh, úlohy a další položky. S šablonami Batch jsou přidány následující možnosti přes co je možné pomocí soubory JSON:
 
 -   Parametry lze definovat. Pokud se použije šablona, jsou pro vytvoření položky s jiné položky hodnoty vlastností specifikované v těle šablony zadat pouze hodnoty parametru. Uživatel, který jste srozuměni s tím Batch a aplikace, které se má spustit Batch můžete vytvořit šablony, fond, úlohy a hodnoty vlastností úlohy. Menší neznáte Batch nebo aplikace potřebuje uživatel jen zadat hodnoty pro parametry definované.
 
 -   Objekty pro vytváření úloh úlohy vytvořit jeden nebo více úkoly spojené s úlohu, zabraňující potřebu mnoho definic úloh vytvoření a výrazně zjednodušit úlohy.
 
 
-Vstupní data soubory musí být zadaný pro úlohy a často vytváří výstupní datové soubory. Je přidružený účet úložiště, ve výchozím nastavení se každého účtu Batch a soubory je možné snadno přenést do a z tohoto účtu úložiště pomocí rozhraní příkazového řádku bez kódování a vyžadují přihlašovací údaje žádné úložiště.
+Úlohy obvykle použít vstupních datových souborů a vytvoření výstupní datové soubory. Ve výchozím nastavení se každého účtu Batch je přidružený účet úložiště. Přenos souborů do a z tohoto účtu úložiště pomocí rozhraní příkazového řádku s žádné kódování a žádné přihlašovací údaje úložiště.
 
-Například [ffmpeg](http://ffmpeg.org/) je Oblíbené aplikace, která zpracovává soubory audia a videa. Rozhraní příkazového řádku Azure Batch můžete použít k vyvolání ffmpeg převeďte zdroje videosoubory pro různá řešení.
+Například [ffmpeg](http://ffmpeg.org/) je Oblíbené aplikace, která zpracovává soubory audia a videa. Tady jsou kroky, pomocí rozhraní příkazového řádku Azure Batch pro vyvolání ffmpeg převeďte zdroje videosoubory pro různá řešení.
 
--   Je-li vytvořit šablonu fondu. Uživatel vytváření šablony umí volání aplikace ffmpeg a požadavky na jeho; určí příslušné operačního systému, počítač velikost, jak ffmpeg je nainstalovaná (z balíčku aplikace nebo pomocí Správce balíčků, například) a dalších fond hodnoty vlastností. Parametry jsou vytvořeny tak, že pokud se použije šablona, je potřeba zadat ID fondu a počet virtuálních počítačů.
+-   Vytvořte šablonu fondu. Uživatel vytváření šablony umí volání aplikace ffmpeg a požadavky na jeho; určí příslušné operačního systému, počítač velikost, jak ffmpeg je nainstalovaná (z balíčku aplikace nebo pomocí Správce balíčků, například) a dalších fond hodnoty vlastností. Parametry jsou vytvořeny tak, že pokud se použije šablona, je potřeba zadat ID fondu a počet virtuálních počítačů.
 
--   Je-li vytvořit šablonu úlohy. Uživatel vytváření šablony vědět, jak se ffmpeg musí být volána převod zdroj videa na jiné rozlišení a určuje příkazový řádek úkolu; také věděli, že je složka obsahující zdrojové soubory videa, s úloha vyžaduje pro vstupní soubor.
+-   Vytvoření šablony úlohy. Uživatel vytváření šablony vědět, jak se ffmpeg musí být volána převod zdroj videa na jiné rozlišení a určuje příkazový řádek úkolu; také věděli, že je složka obsahující zdrojové soubory videa, s úloha vyžaduje pro vstupní soubor.
 
--   Koncový uživatel se sadou videosouborů převod nejprve vytvoří fond pomocí šablony fondu, zadáte jenom ID fondu a počet virtuálních počítačů, které jsou potřeba. Převod se pak můžete nahrát zdrojové soubory. Úlohy lze odeslat pak pomocí šablony úlohy, zadáte jenom ID fondu a umístění zdrojových souborů nahrát. Jeden úkol za vstupní soubor generován se vytvoří dávkovou úlohu. Nakonec převodu výstupních souborů může být stahování.
+-   Koncový uživatel se sadou videosouborů převod nejprve vytvoří fond pomocí šablony fondu, zadáte jenom ID fondu a počet virtuálních počítačů, které jsou potřeba. Převod se pak můžete nahrát zdrojové soubory. Úlohy lze odeslat pak pomocí šablony úlohy, zadáte jenom ID fondu a umístění zdrojových souborů nahrát. Jeden úkol za vstupní soubor generován se vytvoří dávkovou úlohu. Nakonec můžete stáhnout výstupní soubory převodu.
 
 ## <a name="installation"></a>Instalace
 
-Možnosti přenosu šablonu a soubor vyžadují rozšíření k instalaci.
+Nainstalujte rozšíření rozhraní příkazového řádku Azure Batch pomocí této šablony a souborů možnosti přenosu.
 
-Pokyny o tom, jak nainstalovat rozhraní příkazového řádku Azure najdete v tématu [nainstalovat Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokyny o tom, jak nainstalovat rozhraní příkazového řádku Azure najdete v tématu [nainstalovat Azure CLI 2.0](/cli/azure/install-azure-cli).
 
-Po instalaci rozhraní příkazového řádku Azure, může být nainstalována nejnovější verze rozšíření Batch, pomocí následujícího příkazu příkazového řádku:
+Po instalaci rozhraní příkazového řádku Azure, nainstalujte nejnovější verzi rozšíření Batch pomocí rozhraní příkazového řádku následující příkaz:
 
 ```azurecli
-az extension add --source https://github.com/Azure/azure-batch-cli-extensions/releases/download/azure-batch-cli-extensions-2.0.1/azure_batch_cli_extensions-2.0.1-py2.py3-none-any.whl
+az extension add --name azure-batch-cli-extensions
 ```
 
 Další informace o rozšíření Batch najdete v tématu [Microsoft Azure Batch CLI rozšíření pro Windows, Mac a Linux](https://github.com/Azure/azure-batch-cli-extensions#microsoft-azure-batch-cli-extensions-for-windows-mac-and-linux).
@@ -76,23 +76,23 @@ az batch pool create –-json-file AppPool.json
 
 -   **Proměnné**
 
-    -   Povolit parametr jednoduché nebo komplexní hodnoty zadané v jednom místě a použít na jeden nebo více místech v těle šablony. Proměnné můžete zjednodušit a zmenšit velikost šablony, a také zkontrolujte více udržovatelný tak, že jedno umístění, jehož hodnota může změnit vlastnosti chcete změnit.
+    -   Povolit parametr jednoduché nebo komplexní hodnoty zadané v jednom místě a použít na jeden nebo více místech v těle šablony. Proměnné můžete zjednodušit a zmenšit velikost šablony, a také zkontrolujte více udržovatelný tak, že jedno umístění vlastnosti chcete změnit.
 
 -   **Konstrukce vyšší úrovně**
 
-    -   Některé konstrukce vyšší úrovně jsou k dispozici v šabloně, které ještě nejsou k dispozici v rozhraní API služby Batch. Například objekt pro vytváření úloh lze definovat v šabloně úlohy, která vytvoří více úloh pro úlohu pomocí společná definice úlohy. Tyto konstrukce nemuseli kód dynamicky vytvořte několik souborů JSON, jako je například jeden soubor pro úlohy, a také vytvořit skript soubory k instalaci aplikací prostřednictvím Správce balíčků, například.
+    -   Některé konstrukce vyšší úrovně jsou k dispozici v šabloně, které ještě nejsou k dispozici v rozhraní API služby Batch. Například objekt pro vytváření úloh lze definovat v šabloně úlohy, která vytvoří více úloh pro úlohu pomocí společná definice úlohy. Tyto konstrukce nemuseli kód dynamicky vytvořte několik souborů JSON, jako je například jeden soubor pro úlohy, a také vytvořit skript soubory k instalaci aplikací prostřednictvím Správce balíčků.
 
-    -   V určitém okamžiku kde je to možné, tyto konstrukce může být přidány do služby Batch a k dispozici v rozhraní API služby Batch, uživatelská atd.
+    -   V určitém okamžiku může být tyto konstrukce přidané do služby Batch a k dispozici v rozhraní API služby Batch, uživatelská atd.
 
 ### <a name="pool-templates"></a>Šablony fondu
 
-Kromě možností standardní šablona parametry a proměnné jsou podporovány následující konstrukce vyšší úrovně šablonou fondu:
+Šablony fondu podporují možnosti standardní šablona parametry a proměnné. Také podporují následující konstrukce vyšší úrovně:
 
 -   **Odkazy na balíček**
 
-    -   Umožňuje volitelně softwaru zkopírují na uzly fondu pomocí Správce balíčků. Správce balíčků a ID balíčku nejsou zadány. Schopnost deklarovat jeden nebo více balíčků zabraňuje potřeba vytvořit skript, který získá požadované balíčky, nainstalujte skript a spusťte skript na všech uzlech fondu.
+    -   Umožňuje volitelně softwaru zkopírují na uzly fondu pomocí Správce balíčků. Správce balíčků a ID balíčku nejsou zadány. Deklarování jeden nebo více balíčků, vyhnete vytváření skript, který získá požadované balíčky, skript instalace a spuštění skriptu na všech uzlech fondu.
 
-Následuje příklad šablony, která vytvoří fond virtuálních počítačů Linux s ffmpeg nainstalovaná a pouze vyžaduje řetězec ID fondu a počet virtuálních počítačů k dodání použít:
+Následuje příklad šablony, která vytvoří fond virtuálních počítačů Linux s ffmpeg nainstalována. Pokud chcete použít, zadejte pouze ID řetězec fondu a počet virtuálních počítačů ve fondu:
 
 ```json
 {
@@ -139,7 +139,7 @@ Následuje příklad šablony, která vytvoří fond virtuálních počítačů 
 }
 ```
 
-Pokud se název souboru šablony _fondu ffmpeg.json_, pak šablona by být volána následujícím způsobem:
+Pokud se název souboru šablony _fondu ffmpeg.json_, pak vyvolání šablony následujícím způsobem:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
@@ -147,13 +147,13 @@ az batch pool create --template pool-ffmpeg.json
 
 ### <a name="job-templates"></a>Šablony úloh
 
-Kromě možností standardní šablona parametry a proměnné jsou podporovány následující konstrukce vyšší úrovně šablonou úlohy:
+Šablony úloh podporují možnosti standardní šablona parametry a proměnné. Také podporují následující konstrukce vyšší úrovně:
 
 -   **Objekt pro vytváření úloh**
 
     -   Vytvoří více úkolů pro úlohu z definice jeden úkol. Tři typy objektu pro vytváření úloh jsou podporovány – čištění oblouku úloh na soubor a kolekce úloh.
 
-Následuje příklad šablony, která vytvoří úlohu, která používá ffmpeg převod MP4 videosoubory na jednu ze dvou nižší rozlišení, s vytvořenými pro jednotlivé zdroje videosoubor úloh:
+Následuje příklad šablony, která vytvoří úlohu převod s videosoubory MP4 s ffmpeg na jednu ze dvou nižší rozlišení. Vytvoří jeden úkol na video zdrojového souboru:
 
 ```json
 {
@@ -229,7 +229,7 @@ Následuje příklad šablony, která vytvoří úlohu, která používá ffmpeg
 }
 ```
 
-Pokud se název souboru šablony _úlohy ffmpeg.json_, pak šablona by být volána následujícím způsobem:
+Pokud se název souboru šablony _úlohy ffmpeg.json_, pak vyvolání šablony následujícím způsobem:
 
 ```azurecli
 az batch job create --template job-ffmpeg.json
@@ -237,11 +237,11 @@ az batch job create --template job-ffmpeg.json
 
 ## <a name="file-groups-and-file-transfer"></a>Skupiny souborů a přenos souborů
 
-Většina úloh a úloh vyžadují vstupní soubory a vytvoří výstupní soubory. Obě soubory vstupní a výstupní soubory je obvykle nutné převést, od klienta k uzlu, nebo z uzlu do klienta. Rozšíření rozhraní příkazového řádku Azure Batch abstrahuje přenos nepřítomnosti souborů a využívá účet úložiště, který se vytvoří ve výchozím nastavení pro každý účet Batch.
+Většina úloh a úloh vyžadují vstupní soubory a vytvoří výstupní soubory. Obvykle soubory vstupní a výstupní soubory se přenášejí, od klienta k uzlu, nebo z uzlu do klienta. Rozšíření rozhraní příkazového řádku Azure Batch abstrahuje přenos nepřítomnosti souborů a využívá účet úložiště, který se vytvoří ve výchozím nastavení pro každý účet Batch.
 
 Skupinu souborů rovná kontejner, který je vytvořen v účtu úložiště Azure. Skupina souborů může mít podsložky.
 
-Rozšíření rozhraní příkazového řádku Batch poskytuje příkazy pro odesílání souborů z klienta do skupiny zadaný soubor a stahování souborů z zadané skupině souborů klienta.
+Rozšíření rozhraní příkazového řádku Batch poskytuje příkazy, které soubory z klienta do skupiny zadaný soubor nahrávání a stahování souborů ze skupiny zadaný soubor pro klienta.
 
 ```azurecli
 az batch file upload --local-path c:\source_videos\*.mp4 
@@ -251,7 +251,7 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-Šablony fondu a úlohy umožňují soubory uložené v souboru skupiny pro kopírování na uzly fondu nebo vypnout uzly fondu zpět do skupiny souborů. Například v šabloně projektů dříve zadaný soubor skupiny "ffmpeg – vstup" je zadán pro objekt pro vytváření úloh jako umístění zdrojových souborů video zkopírovat dolů na uzel pro překódování; soubor skupiny "ffmpeg-output" se používá jako umístění, kde se převodu výstupní soubory zkopírují do uzlu systémem každý úkol.
+Šablony fondu a úlohy umožňují soubory uložené v souboru skupiny pro kopírování na uzly fondu nebo vypnout uzly fondu zpět do skupiny souborů. Například v šabloně projektů dříve zadaný soubor skupiny "ffmpeg – vstup" je zadán pro objekt pro vytváření úloh jako umístění zdrojových souborů video zkopírovat dolů na uzel pro překódování; soubor skupiny "ffmpeg-output" je umístění, kam převodu výstupní soubory jsou zkopírovány z uzlu systémem každý úkol.
 
 ## <a name="summary"></a>Souhrn
 

@@ -1,8 +1,8 @@
 ---
-title: "Správa clusterů systému Hadoop v HDInsight pomocí portálu Azure | Microsoft Docs"
-description: "Naučte se vytvářet a spravovat clusterů HDInsight pomocí portálu Azure."
+title: Správa clusterů systému Hadoop v HDInsight pomocí portálu Azure | Microsoft Docs
+description: Naučte se vytvářet a spravovat clusterů HDInsight pomocí portálu Azure.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: b0a9b808f2c1a65d10c1c12500325a9b5a34bc5a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9b5df3d5e355fac0c0ea4203d28170a2d3c04ad9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů systému Hadoop v HDInsight pomocí portálu Azure
 
@@ -33,7 +33,7 @@ Pomocí [portál Azure][azure-portal], můžete spravovat clustery systému Hado
 Chcete-li postupujte podle kroků v tomto článku, budete potřebovat **předplatné**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="open-the-azure-portal"></a>Otevřete portál Azure
-1. Přihlaste se k [https://portal.azure.com](https://portal.azure.com).
+1. Přihlaste se k [ https://portal.azure.com ](https://portal.azure.com).
 2. Po otevření portálu můžete:
 
    * Klikněte na tlačítko **vytvořit prostředek** v levé nabídce na vytvoření nového clusteru:
@@ -75,7 +75,7 @@ Předplatné Azure je třeba zadat při vytváření clusteru HDInsight. Cluster
 Pokud se zobrazí chyba NoRegisteredProviderFound nebo MissingSubscriptionRegistration chyba, přečtěte si téma [odstraňování běžných chyb nasazení Azure pomocí Azure Resource Manageru](../azure-resource-manager/resource-manager-common-deployment-errors.md).
 
 ## <a name="list-and-show-clusters"></a>Seznam a zobrazit clustery
-1. Přihlaste se k [https://portal.azure.com](https://portal.azure.com).
+1. Přihlaste se k [ https://portal.azure.com ](https://portal.azure.com).
 2. Klikněte na tlačítko **clustery HDInsight** v levé nabídce seznam stávajících clusterů. Pokud nevidíte **clustery HDInsight**, klikněte na tlačítko **všechny služby** první.
 3. Klikněte na název clusteru. Pokud je seznam clusteru dlouho, můžete použít možnosti filtrovat horní části stránky.
 4. Klikněte na cluster, ze seznamu na stránce Přehled v tématu:
@@ -103,7 +103,7 @@ Pokud se zobrazí chyba NoRegisteredProviderFound nebo MissingSubscriptionRegist
     * **Externí Metaúložiště**: Zobrazit metaúložiště Hive a Oozie. Metaúložiště se dá nakonfigurovat jenom během procesu vytváření clusteru. V tématu [použít metaúložiště Hive nebo Oozie](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore).
     * **Skript akce**: Spusťte Bash skripty v clusteru. V tématu [HDInsight se systémem Linux přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
     * **Aplikace**: aplikace HDInsight přidat nebo odebrat.  V tématu [instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
-    * **Monitorování**: sledování clusteru v Azure Operations Management Suite a Azure Log Analytics.
+    * **Monitorování**: monitorování clusteru, analýzy protokolů Azure.
     * **Vlastnosti**: zobrazení vlastností clusteru.
     * **Účty úložiště**: Zobrazit účty úložiště a klíče. Účty úložiště jsou nakonfigurované během procesu vytváření clusteru.
     * **Data Lake Store přístup**: Konfigurace přístupu ukládá Data Lake.  V tématu [Tvorba clusterů HDInsight s Data Lake Store pomocí portálu Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
@@ -345,7 +345,7 @@ V tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhran
 ## <a name="browse-files"></a>Procházet soubory
 Pomocí portálu Azure, můžete procházet obsah výchozí kontejner.
 
-1. Přihlaste se k [https://portal.azure.com](https://portal.azure.com).
+1. Přihlaste se k [ https://portal.azure.com ](https://portal.azure.com).
 2. Klikněte na tlačítko **clustery HDInsight** v levé nabídce seznam stávajících clusterů.
 3. Klikněte na název clusteru. Pokud je seznam clusteru dlouho, můžete použít možnosti filtrovat horní části stránky.
 4. Klikněte na tlačítko **účty úložiště** v levé nabídce clusteru.

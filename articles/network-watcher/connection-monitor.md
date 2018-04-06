@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2018
 ms.author: jdial
-ms.openlocfilehash: 0d550d3bda119cfcb9ecc6f852006d5e325fdfa3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b0eb10d373f47191933eb1c3c22b779e9e8d6685
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>Monitorování připojení k síti s sledovací proces sítě Azure pomocí portálu Azure
 
@@ -29,7 +29,7 @@ Před dokončením kroků v tomto článku, musí splňovat následující poža
 
 * Instance sledovací proces sítě v oblasti, kterou chcete sledovat pro připojení. Pokud jste již nemáte, můžete vytvořit jeden pomocí kroků v [vytvoření instance sledovací proces sítě Azure](network-watcher-create.md).
 * Virtuální počítač z monitorování. Postup vytvoření virtuálního počítače, najdete v části vytvořit [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) nebo [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) virtuálních počítačů.
-* Máte `AzureNetworkWatcherExtension` nainstalovaná ve virtuálním počítači, který chcete sledovat připojení z. Instalaci rozšíření ve virtuálním počítači Windows naleznete v tématu [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a nainstalovat rozšíření najdete v tématu virtuálního počítače s Linuxem [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+* Máte `AzureNetworkWatcherExtension` nainstalovaná ve virtuálním počítači, který chcete sledovat připojení z. Instalaci rozšíření ve virtuálním počítači Windows naleznete v tématu [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a nainstalovat rozšíření najdete v tématu virtuálního počítače s Linuxem [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozšíření není nutná v cílovém koncovým bodem, který chcete monitorovat.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 

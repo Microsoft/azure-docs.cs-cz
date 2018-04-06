@@ -1,13 +1,13 @@
 ---
-title: "Monitorování HBase s Operations Management Suite (OMS) - Azure HDInsight | Microsoft Docs"
-description: "Monitorování clusterů HDInsight HBase pomocí Azure Log Analytics OMS."
+title: Monitorování HBase s Azure Log Analytics - Azure HDInsight | Microsoft Docs
+description: Analýza protokolů Azure slouží k monitorování clusterů HDInsight HBase.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data
@@ -16,23 +16,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: f78d570cfa8b040cd7673a5e14e6a992511f60bb
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3746713cdadff0a4c6f4fe25d278e8d78555f9d6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="monitor-hbase-with-operations-management-suite-oms"></a>Monitorování HBase s služby Operations Management Suite (OMS)
+# <a name="monitor-hbase-with-log-analytics"></a>Monitorování HBase s analýzy protokolů
 
 Analýza protokolů Azure HDInsight HBase monitorování používá ke shromažďování metrik výkonu HDInsight HBase z uzlů clusteru HDInsight. Monitorování poskytuje vizualizace specifické HBase a řídicí panely, nástrojů pro vyhledávání metriky a možnost vytvářet vlastní pravidla monitorování a výstrahy. Metriky pro víc clusterů HDInsight HBase můžete sledovat v rámci více předplatných Azure.
 
-Analýzy protokolů je služba v [Operations Management Suite (OMS)](../../operations-management-suite/operations-management-suite-overview.md) , sleduje vaše cloudové a místní prostředí k udržování své dostupnosti a výkonu. Analýzy protokolů shromažďuje data generována prostředky ve vašich cloudových a místních prostředích a z dalších nástrojů monitorování, poskytnout analýzu napříč více zdrojů.
+Analýzy protokolů je služba v [Azure](../../operations-management-suite/operations-management-suite-overview.md) , sleduje vaše cloudové a místní prostředí k udržování své dostupnosti a výkonu. Analýzy protokolů shromažďuje data generována prostředky ve vašich cloudových a místních prostředích a z dalších nástrojů monitorování, poskytnout analýzu napříč více zdrojů.
 
-[Protokolu řešení pro správu Analytics](../../log-analytics/log-analytics-add-solutions.md) přidání funkce do OMS, poskytuje další data a nástrojů pro analýzu. Řešení pro správu protokolu Analytics jsou kolekce logiku, vizualizace a data pořízení pravidel, které poskytují metriky pro konkrétní oblasti. Řešení může také definovat nové typy záznamů, které se mají shromažďovat, a tyto záznamy lze analyzovat pomocí protokolu hledání nebo pomocí nové funkce uživatelského rozhraní.
+[Protokolu řešení pro správu Analytics](../../log-analytics/log-analytics-add-solutions.md) přidat funkce k analýze protokolů poskytnutí dalších dat a nástrojů pro analýzu. Řešení pro správu protokolu Analytics jsou kolekce logiku, vizualizace a data pořízení pravidel, které poskytují metriky pro konkrétní oblasti. Řešení může také definovat nové typy záznamů, které se mají shromažďovat, a tyto záznamy lze analyzovat pomocí protokolu hledání nebo pomocí nové funkce uživatelského rozhraní.
 
 [Přehledy a analýzy](https://azure.microsoft.com/pricing/details/insight-analytics/) je založený na platformě analýzy protokolů. Můžete rozhodnout použít funkce analýzy protokolů a platit za GB požity ve službě, nebo přepněte pracovního prostoru k vrstvě přehledy a analýzy a platba za uzlu prostřednictvím služby spravovány. Přehledy a analýzy nabízí nadmnožinou možnosti, které nabízí analýzy protokolů. Řešení monitorování HBase je k dispozici s analýzy protokolů nebo přehledy a analýzy.
 
-Při zřizování řešení s HDInsight HBase monitorování, můžete vytvořit pracovní prostor služby OMS. Každý pracovní prostor jako jedinečné prostředí analýzy protokolů s vlastní úložiště dat, zdroje dat a řešení. V rámci vašeho předplatného pro podporu více prostředích, jako je například produkční a testování můžete vytvořit několik pracovních prostorů.
+Při zřizování řešení s HDInsight HBase monitorování, můžete vytvořit pracovní prostor analýzy protokolů. Každý pracovní prostor jako jedinečné prostředí analýzy protokolů s vlastní úložiště dat, zdroje dat a řešení. V rámci vašeho předplatného pro podporu více prostředích, jako je například produkční a testování můžete vytvořit několik pracovních prostorů.
 
 ## <a name="provision-hdinsight-hbase-monitoring"></a>Zřízení prostředí HDInsight HBase monitorování
 
@@ -50,7 +50,7 @@ Při zřizování řešení s HDInsight HBase monitorování, můžete vytvořit
 
     ![Podokno řešení pro správu](./media/apache-hbase-monitor-with-oms/hbase-solution.png)  
 6. V podokně Správa řešení zkontrolujte informace o řešení pro správu a pak vyberte **vytvořit**. 
-7. V *název řešení pro správu* podokně, vyberte existující pracovní prostor chcete přidružit k řešení pro správu, nebo vytvořit nový pracovní prostor OMS a pak ho vyberte.
+7. V *název řešení pro správu* podokně, vyberte existující pracovní prostor chcete přidružit k řešení pro správu, nebo vytvořit nový pracovní prostor analýzy protokolů a pak ho vyberte.
 8. Změňte nastavení pracovního prostoru pro předplatné, skupinu prostředků a umístění podle potřeby. 
     ![pracovní prostor řešení](./media/apache-hbase-monitor-with-oms/solution-workspace.png)  
 9. Vyberte **Vytvořit**.  
@@ -68,9 +68,9 @@ Při zřizování řešení s HDInsight HBase monitorování, můžete vytvořit
 
 Chcete-li použít nástroje poskytované subsystémem pro monitorování HDInsight HBase, musíte nakonfigurovat cluster tak, aby se přenáší metriky z jeho serveru oblast, head uzlů a uzly ZooKeeper k analýze protokolů. Tato konfigurace se provádí tak, že spustíte akci skriptu pro váš cluster HDInsight HBase.
 
-### <a name="get-oms-workspace-id-and-workspace-key"></a>Získání ID pracovního prostoru OMS a klíč pracovního prostoru
+### <a name="get-log-analytics-workspace-id-and-workspace-key"></a>Získání ID pracovního prostoru analýzy protokolů a klíč pracovního prostoru
 
-Je třeba vaše OMS ID a klíč pracovního prostoru povolit uzlů v clusteru k ověření pomocí analýzy protokolů. Pokud chcete získat tyto hodnoty:
+Budete potřebovat vaše ID pracovního prostoru analýzy protokolů a klíč pracovního prostoru povolit uzlů v clusteru k ověření pomocí analýzy protokolů. Pokud chcete získat tyto hodnoty:
 
 1. V podokně vaší HBase monitorování na portálu Azure vyberte Přehled.
 
@@ -146,5 +146,5 @@ Po dokončení akce skriptu, měli byste vidět dat v řešení pro monitorován
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vytváření výstrah v OMS analýzy protokolů](../../log-analytics/log-analytics-alerts-creating.md)
+* [Vytváření výstrah v analýzy protokolů](../../log-analytics/log-analytics-alerts-creating.md)
 * [Najít data pomocí protokolu hledání v Azure Log Analytics](../../log-analytics/log-analytics-log-searches.md).

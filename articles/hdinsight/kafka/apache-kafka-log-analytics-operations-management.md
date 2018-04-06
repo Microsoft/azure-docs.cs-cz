@@ -1,30 +1,30 @@
 ---
-title: "Analýza protokolu Apache Kafka - Azure HDInsight | Microsoft Docs"
-description: "Naučte se používat k analýze protokolů z clusteru Apache Kafka v Azure HDInsight Operations Management Suite."
+title: Analýza protokolu Apache Kafka - Azure HDInsight | Microsoft Docs
+description: Další informace o použití Log Analytics k analýze protokolů z clusteru Apache Kafka v Azure HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 6fcb925829e33704c94c96209a61346b0404e13b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 15107a0fbcd6242ac13f366b16be10efaeaad6bb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka v HDInsight
 
-Další informace o použití Microsoft Operations Management Suite k analýze protokolů generovaných Apache Kafka v HDInsight.
+Další informace o použití Log Analytics k analýze protokolů generovaných Apache Kafka v HDInsight.
 
-## <a name="enable-oms-for-kafka"></a>Povolit OMS pro Kafka
+## <a name="enable-log-analytics-for-kafka"></a>Povolit analýzy protokolů pro Kafka
 
 Postup povolení analýzy protokolů pro HDInsight jsou stejné pro všechny clustery HDInsight. Pomocí následujících odkazů pochopit, jak vytvořit a nakonfigurovat požadované služby:
 
@@ -38,8 +38,8 @@ Postup povolení analýzy protokolů pro HDInsight jsou stejné pro všechny clu
     > Můžete také nakonfigurovat cluster používat analýzy protokolů pomocí `Enable-AzureRmHDInsightOperationsManagementSuite` rutiny. Tento příkaz cmdlet vyžaduje následující informace:
     >
     > * Název clusteru HDInsight.
-    > * ID pracovního prostoru analýzy protokolů. ID pracovního prostoru můžete najít v pracovním prostoru OMS pro váš pracovní prostor log analytics.
-    > * Primární klíč pro připojení k OMS. Primární klíč, vyberete instanci analýzy protokolů a potom __portálu OMS__. Na portálu OMS vyberte __nastavení__, __připojené zdroje__a potom __servery se systémem Linux__.
+    > * ID pracovního prostoru analýzy protokolů. ID pracovního prostoru můžete najít v pracovním prostoru analýzy protokolů.
+    > * Primární klíč pro připojení k analýze protokolů. Primární klíč, vyberete instanci analýzy protokolů a potom __portálu OMS__. Na portálu OMS vyberte __nastavení__, __připojené zdroje__a potom __servery se systémem Linux__.
 
 
 > [!IMPORTANT]
@@ -51,14 +51,14 @@ Postup povolení analýzy protokolů pro HDInsight jsou stejné pro všechny clu
 
 2. Vyberte __protokolu vyhledávání__. Tady můžete hledat data shromážděná z Kafka. Tady jsou některé příklady hledání:
 
-    * Využití disku:`Type=Perf ObjectName="Logical Disk" (CounterName="Free Megabytes")  InstanceName="_Total" Computer='hn*-*' or Computer='wn*-*' | measure avg(CounterValue) by   Computer interval 1HOUR`
-    * Využití procesoru:`Type:Perf CounterName="% Processor Time" InstanceName="_Total" Computer='hn*-*' or Computer='wn*-*' | measure avg(CounterValue) by Computer interval 1HOUR`
-    * Příchozích zpráv za sekundu:`Type=metrics_kafka_CL ClusterName_s="your_kafka_cluster_name" InstanceName_s="kafka-BrokerTopicMetrics-MessagesInPerSec-Count" | measure avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s interval 1HOUR`
-    * Příchozí bajty za sekundu:`Type=metrics_kafka_CL HostName_s="wn0-kafka" InstanceName_s="kafka-BrokerTopicMetrics-BytesInPerSec-Count" | measure avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) interval 1HOUR`
-    * Odchozí bajty za sekundu:`Type=metrics_kafka_CL ClusterName_s="your_kafka_cluster_name" InstanceName_s="kafka-BrokerTopicMetrics-BytesOutPerSec-Count" |  measure avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) interval 1HOUR`
+    * Využití disku: `Type=Perf ObjectName="Logical Disk" (CounterName="Free Megabytes")  InstanceName="_Total" Computer='hn*-*' or Computer='wn*-*' | measure avg(CounterValue) by   Computer interval 1HOUR`
+    * Využití procesoru: `Type:Perf CounterName="% Processor Time" InstanceName="_Total" Computer='hn*-*' or Computer='wn*-*' | measure avg(CounterValue) by Computer interval 1HOUR`
+    * Příchozích zpráv za sekundu: `Type=metrics_kafka_CL ClusterName_s="your_kafka_cluster_name" InstanceName_s="kafka-BrokerTopicMetrics-MessagesInPerSec-Count" | measure avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s interval 1HOUR`
+    * Příchozí bajty za sekundu: `Type=metrics_kafka_CL HostName_s="wn0-kafka" InstanceName_s="kafka-BrokerTopicMetrics-BytesInPerSec-Count" | measure avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) interval 1HOUR`
+    * Odchozí bajty za sekundu: `Type=metrics_kafka_CL ClusterName_s="your_kafka_cluster_name" InstanceName_s="kafka-BrokerTopicMetrics-BytesOutPerSec-Count" |  measure avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) interval 1HOUR`
 
     > [!IMPORTANT]
-    > Nahraďte hodnoty dotazu clusteru konkrétní informace. Například `ClusterName_s` musí být nastavena na název clusteru. `HostName_s`musí být nastavena na název domény pracovního uzlu v clusteru.
+    > Nahraďte hodnoty dotazu clusteru konkrétní informace. Například `ClusterName_s` musí být nastavena na název clusteru. `HostName_s` musí být nastavena na název domény pracovního uzlu v clusteru.
 
     Můžete také zadat `*` k vyhledání všech typů protokolována. Tyto protokoly jsou aktuálně k dispozici pro dotazy:
 

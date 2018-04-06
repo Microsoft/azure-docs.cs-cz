@@ -1,11 +1,11 @@
 ---
-title: "Sledování stavu v Service Fabric | Microsoft Docs"
-description: "Úvod do Azure Service Fabric stav monitorování model, který poskytuje sledování clusteru a příslušné aplikace a služby."
+title: Sledování stavu v Service Fabric | Microsoft Docs
+description: Úvod do Azure Service Fabric stav monitorování model, který poskytuje sledování clusteru a příslušné aplikace a služby.
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1d979210-b1eb-4022-be24-799fd9d8e003
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d226b8f8b3252fe82cd5077d235f301cfaa83654
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c5ce0a765451171f7cbd6d875d4302d1e406b4f6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
 Azure Service Fabric zavádí stavu model, který poskytuje bohatý, flexibilní a rozšiřitelný stavu vyhodnocení a vytváření sestav. Model umožňuje téměř v reálném čase monitorování stavu clusteru a služby spuštěné v ní. Můžete snadno získat informace o stavu a opravte potenciální problémy předtím, než v kaskádě a způsobit masivní výpadků. V typické modelu služby odesílat sestavy založené na jejich místní zobrazení, a že informace se shromažďují zajistit celkovou clusteru úrovni zobrazení.
@@ -199,7 +199,7 @@ Zpravodaje, která pokud chcete odeslat data o stavu k úložišti stavů, musí
 * **SourceId**. Řetězec, který jednoznačně identifikuje ohlašování stavu události.
 * **Identifikátor entity**. Identifikuje entity, kde je použito sestavy. Liší se i na základě [typ entity](service-fabric-health-introduction.md#health-entities-and-hierarchy):
   
-  * Cluster. Žádné
+  * Cluster. Žádné.
   * Uzel. Název uzlu (string).
   * Aplikace. Název aplikace (URI). Představuje název instance aplikace nasazené v clusteru.
   * Služba. Název služby (URI). Představuje název instance služby, který je nasazen v clusteru.

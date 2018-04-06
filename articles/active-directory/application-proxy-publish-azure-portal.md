@@ -1,8 +1,8 @@
 ---
-title: "Publikování aplikací pomocí proxy aplikace služby Azure AD | Dokumentace Microsoftu"
-description: "Publikujte místní aplikace do cloudu s Azure AD Application Proxy na portálu Azure."
+title: Publikování aplikací pomocí proxy aplikace služby Azure AD | Dokumentace Microsoftu
+description: Publikujte místní aplikace do cloudu s Azure AD Application Proxy na portálu Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
@@ -15,11 +15,11 @@ ms.date: 12/06/2017
 ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 43cabb03a698dd87f12fef8e9a4dd54ee42c3ec9
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 1bf72b450747e98e254db77514fc7a902bbe70cc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Publikování aplikací pomocí proxy aplikace služby Azure AD
 
@@ -53,7 +53,7 @@ Postupujte podle těchto kroků k publikování aplikací pomocí Proxy aplikace
    - **Interní adresa URL**: adresa URL, který používáte pro přístup k aplikaci uvnitř vaší privátní sítě. Můžete zadat konkrétní cestu na beck-endovém serveru, kterou chcete publikovat, zatímco zbytek serveru publikovaný nebude. Tímto způsobem můžete publikovat různé stránky na stejném serveru jako různé aplikace a dejte každé z nich vlastní název a pravidla přístupu.
 
      > [!TIP]
-     > Pokud publikujete cestu, ujistěte se, že zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Pokud například vaše aplikace je v cestě https://yourapp/app a používá obrázky nacházející se v cestě https://yourapp/media, pak byste měli publikujete https://yourapp/ jako cestu. Tato interní adresa URL nemusí být cílová stránka, která se uživatelům zobrazí. Další informace najdete v tématu [nastavit vlastní domovskou stránku pro publikované aplikace](application-proxy-office365-app-launcher.md).
+     > Pokud publikujete cestu, ujistěte se, že zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Například, pokud je vaše aplikace v https://yourapp/app a pomocí bitové kopie, které jsou umístěné v https://yourapp/media, pak byste měli publikovat https://yourapp/ jako cestu. Tato interní adresa URL nemusí být cílová stránka, která se uživatelům zobrazí. Další informace najdete v tématu [nastavit vlastní domovskou stránku pro publikované aplikace](application-proxy-office365-app-launcher.md).
 
    - **Externí adresu URL**: adresu vaši uživatelé budou moct pro přístup k aplikaci mimo vaši síť. Pokud nechcete použít výchozí doménu Proxy aplikací, přečtěte si informace o [vlastních domén v Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md).
    - **Předběžné ověřování**: jak Proxy aplikace ověřuje uživatele, než jim poskytne přístup k aplikaci. 
@@ -61,6 +61,9 @@ Postupujte podle těchto kroků k publikování aplikací pomocí Proxy aplikace
      - Azure Active Directory: Proxy aplikace přesměruje uživatele na stránku pro přihlášení ke službě Azure AD, která ověří jejich oprávnění k adresáři a aplikaci. Doporučujeme zachovat tuto možnost jako výchozí, tak, aby můžete využít výhod funkcí zabezpečení Azure AD jako podmíněného přístupu a vícefaktorového ověřování.
      - Průchod: Uživatelé nemají k ověřování na základě Azure Active Directory pro přístup k aplikaci. Přesto můžete nastavit požadavky na ověřování na back-end.
    - **Konektor skupiny**: konektory zpracovat vzdálený přístup k vaší aplikaci a konektor skupiny k uspořádání konektory a aplikace podle oblasti, sítě nebo účel. Pokud nemáte žádné skupiny konektor dosud vytvořena, vaše aplikace je přiřazen k **výchozí**.
+
+>[!NOTE]
+>Pokud vaše aplikace používá pro připojení, ujistěte se, že máte verzi konektoru 1.5.612.0 nebo vyšší s podporou protokolu websocket a skupiny přiřazené konektor používá jenom tyto konektory.
 
    ![Konfigurace aplikace](./media/application-proxy-publish-azure-portal/configure-app.png)
 5. V případě potřeby nakonfigurujte další nastavení. Pro většinu aplikací byste měli mít tato nastavení na jejich výchozí stavy. 

@@ -1,6 +1,6 @@
 ---
 title: Správa nákladů dat v Azure Log Analytics | Microsoft Docs
-description: Zjistěte, jak změnit cenový plán a spravovat zásady svazku a uchovávání dat pro pracovní prostor analýzy protokolů na portálu Azure.
+description: Zjistěte, jak změnit cenový plán a spravovat zásady svazku a uchovávání dat pro pracovní prostor analýzy protokolů v Azure.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 629031310eba21bc3308754706bd7ba227009ac6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 8fb20fc9e6249a2d19d62df1ce331ce873d5fd3d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="manage-cost-by-controlling-data-volume-and-retention-with-your-log-analytics-workspace"></a>Správa nákladů kontrolou datový svazek a uchovávání se pracovní prostor analýzy protokolů
+# <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Správa nákladů kontrolou datový svazek a uchovávání v analýzy protokolů
 Analýzy protokolů je navržený tak, aby škálování a podpora shromažďování, indexování a ukládání masivní objemy dat za den z jakéhokoli zdroje ve vašem podniku nebo nasazené v Azure.  To může být primární ovladač pro vaši organizaci, je základní ovladač nakonec efektivitu nákladů. Za tímto účelem je jeho důležité si uvědomit, že náklady na pracovním prostoru Analytisc protokolu není právě na základě objemu dat shromažďovaných, je také závislý na plán vybraný a jak dlouho jste se rozhodli uložit data generovaná z připojených zdrojů.  
 
 V tomto článku jsme zkontrolujte, jak můžete proaktivně sledovat nárůst svazek a úložiště dat a definování omezení pro řízení těchto souvisejících nákladů. 

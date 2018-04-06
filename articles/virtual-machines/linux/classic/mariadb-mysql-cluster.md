@@ -1,11 +1,11 @@
 ---
 title: Spustit cluster MariaDB (MySQL) v Azure | Microsoft Docs
-description: "Vytvoření MariaDB + Galera MySQL clusteru na virtuálních počítačích Azure"
+description: Vytvoření MariaDB + Galera MySQL clusteru na virtuálních počítačích Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: sabbour
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: d0d21937-7aac-4222-8255-2fdc4f2ea65b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
-ms.openlocfilehash: 53e9bf18b26338212411ea7c4f260eb308486738
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5438bfb75abaac2bed55a76b38f69790f7fc87fa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="mariadb-mysql-cluster-azure-tutorial"></a>MariaDB (MySQL) clusteru: kurz pro Azure
 > [!IMPORTANT]
@@ -163,10 +163,10 @@ Tento článek popisuje, jak provést následující kroky:
             service mysql stop
 7. Vytvoření konfigurace zástupný symbol.
 
-   a. Upravte konfiguraci databáze MySQL vytvořit zástupný symbol pro nastavení clusteru. Nepřepisovat existující  **`<Variables>`**  nebo zrušte komentář u teď. Který se stane po vytvoření virtuálního počítače z této šablony.
+   a. Upravte konfiguraci databáze MySQL vytvořit zástupný symbol pro nastavení clusteru. Nepřepisovat existující **`<Variables>`** nebo zrušte komentář u teď. Který se stane po vytvoření virtuálního počítače z této šablony.
 
             vi /etc/my.cnf.d/server.cnf
-   b. Upravit  **[galera]**  části a vyčistit ho.
+   b. Upravit **[galera]** části a vyčistit ho.
 
    c. Upravit **[mariadb]** části.
 
@@ -184,11 +184,11 @@ Tento článek popisuje, jak provést následující kroky:
            #wsrep_node_name='<NodeName>' # CHANGE: Uncomment and set the node name of this server
 8. Otevřete požadované porty v bráně firewall pomocí FirewallD na CentOS 7.
 
-   * MySQL:`firewall-cmd --zone=public --add-port=3306/tcp --permanent`
-   * GALERA:`firewall-cmd --zone=public --add-port=4567/tcp --permanent`
-   * GALERA IST:`firewall-cmd --zone=public --add-port=4568/tcp --permanent`
-   * RSYNC:`firewall-cmd --zone=public --add-port=4444/tcp --permanent`
-   * Znovu načtete brány firewall:`firewall-cmd --reload`
+   * MySQL: `firewall-cmd --zone=public --add-port=3306/tcp --permanent`
+   * GALERA: `firewall-cmd --zone=public --add-port=4567/tcp --permanent`
+   * GALERA IST: `firewall-cmd --zone=public --add-port=4568/tcp --permanent`
+   * RSYNC: `firewall-cmd --zone=public --add-port=4444/tcp --permanent`
+   * Znovu načtete brány firewall: `firewall-cmd --reload`
 
 9. Optimalizujte výkon systému. Další informace najdete v tématu [strategie ladění výkonu](optimize-mysql.md).
 
@@ -281,8 +281,8 @@ Vytvořte tři virtuální počítače pomocí šablony vytvořili a potom nakon
 
         sudo vi /etc/my.cnf.d/server.cnf
 
-    Zrušením komentáře u  **`wsrep_cluster_name`**  a  **`wsrep_cluster_address`**  odebráním  **#**  na začátek řádku.
-    Kromě toho nahradit  **`<ServerIP>`**  v  **`wsrep_node_address`**  a  **`<NodeName>`**  v  **`wsrep_node_name`**  s Virtuálního počítače IP adresou a name, a zrušte komentář u také tyto řádky.
+    Zrušením komentáře u **`wsrep_cluster_name`** a **`wsrep_cluster_address`** odebráním **#** na začátek řádku.
+    Kromě toho nahradit **`<ServerIP>`** v **`wsrep_node_address`** a **`<NodeName>`** v **`wsrep_node_name`** s Virtuálního počítače IP adresou a name, a zrušte komentář u také tyto řádky.
 5. Start clusteru na MariaDB1 a nechat ji spustit při spuštění.
 
         sudo service mysql bootstrap
@@ -299,7 +299,7 @@ Teď použijte nástroj pro vyrovnávání zatížení Azure k vyrovnávání po
 
 Spusťte následující příkazy v počítači pomocí rozhraní příkazového řádku Azure.
 
-Struktura parametry příkazu je:`azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
+Struktura parametry příkazu je: `azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
 
     azure vm endpoint create-multiple mariadb1 3306:3306:tcp:false:MySQL:tcp:3306
     azure vm endpoint create-multiple mariadb2 3306:3306:tcp:false:MySQL:tcp:3306
@@ -344,7 +344,7 @@ Vrátí databázi, kterou jste vytvořili v následující tabulce:
     2 rows in set (0.00 sec)
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jste vytvořili tři uzly MariaDB + Galera vysoce dostupný cluster v Azure virtuální počítače spuštěné CentOS 7. Virtuální počítače jsou zatížení vyrovnávaném pomocí vyrovnávání zatížení Azure.
 
 Můžete se podívat na [jiný způsob, jak cluster MySQL v systému Linux](mysql-cluster.md) a způsoby, jak [optimalizace a testování výkonu databáze MySQL na virtuálních počítačích Azure Linux](optimize-mysql.md).

@@ -1,11 +1,11 @@
 ---
-title: "Spustit OpenFOAM pomocí sady HPC Pack na virtuální počítače s Linuxem | Microsoft Docs"
-description: "Nasazení clusteru s podporou sady Microsoft HPC Pack v Azure a spusťte úlohu OpenFOAM v několika výpočetních uzlech Linux přes sítě RDMA."
+title: Spustit OpenFOAM pomocí sady HPC Pack na virtuální počítače s Linuxem | Microsoft Docs
+description: Nasazení clusteru s podporou sady Microsoft HPC Pack v Azure a spusťte úlohu OpenFOAM v několika výpočetních uzlech Linux přes sítě RDMA.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: c0bb1637-bb19-48f1-adaa-491808d3441f
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: ef124a8983fa112d499252460bff9ed2fcccc02b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f43790d3495e1c09730e90b5077ec840731a7d83
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Spuštění OpenFoam se sadou Microsoft HPC Pack v clusteru Linux RDMA v Azure
 Tento článek ukazuje jeden ze způsobů spuštění OpenFoam ve virtuálních počítačích Azure. V tomto nasazení clusteru Microsoft HPC Pack s Linux výpočetní uzly na Azure a spusťte [OpenFoam](http://openfoam.com/) úlohy s Intel MPI. RDMA podporovat virtuálních počítačích Azure můžete použít pro výpočetní uzly, výpočetní uzly komunikovat přes síť Azure RDMA. Další možnosti spuštění OpenFoam v Azure zahrnují kompletně nakonfigurovaný komerční obrázky, které jsou k dispozici na webu Marketplace, jako je například na UberCloud [OpenFoam 2.3 na CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/)a spuštěním na [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/). 
@@ -36,7 +36,7 @@ Microsoft HPC Pack poskytuje funkce, které chcete spouštět ve velkém měří
 > 
 
 ## <a name="prerequisites"></a>Požadavky
-* **HPC Pack clusteru s podporou RDMA Linux výpočetní uzly** – nasazení clusteru HPC Pack velikosti A8, A9, H16r, nebo H16rm Linuxových výpočetních uzlů, buď pomocí [šablony Azure Resource Manageru](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) nebo [skript prostředí Azure PowerShell](hpcpack-cluster-powershell-script.md). V tématu [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](hpcpack-cluster.md) pro požadavky a kroky pro jednu z možností. Pokud zvolíte možnost nasazení skriptu prostředí PowerShell, naleznete v souboru konfigurace ukázka v ukázkové soubory na konci tohoto článku. Tuto konfiguraci můžete použijte k nasazení clusteru služby založené na Azure HPC Pack skládající se z hlavního uzlu velikosti A8 Windows Server 2012 R2 a 2 velikosti A8 SUSE Linux Enterprise Server 12 výpočetních uzlů. Nahraďte příslušnými hodnotami pro vaše předplatné a služby názvy. 
+* **HPC Pack clusteru s podporou RDMA Linux výpočetní uzly** – nasazení clusteru HPC Pack velikosti A8, A9, H16r, nebo H16rm Linuxových výpočetních uzlů, buď pomocí [šablony Azure Resource Manageru](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) nebo [Azure Skript prostředí PowerShell](hpcpack-cluster-powershell-script.md). V tématu [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](hpcpack-cluster.md) pro požadavky a kroky pro jednu z možností. Pokud zvolíte možnost nasazení skriptu prostředí PowerShell, naleznete v souboru konfigurace ukázka v ukázkové soubory na konci tohoto článku. Tuto konfiguraci můžete použijte k nasazení clusteru služby založené na Azure HPC Pack skládající se z hlavního uzlu velikosti A8 Windows Server 2012 R2 a 2 velikosti A8 SUSE Linux Enterprise Server 12 výpočetních uzlů. Nahraďte příslušnými hodnotami pro vaše předplatné a služby názvy. 
   
   **Další co potřebujete vědět**
   
@@ -267,9 +267,9 @@ V tomto kroku vytvoříte soubor hostitele (seznam výpočetní uzly) který **m
    
    1. Nastaví proměnné prostředí pro **mpirun**a některé parametry přidání příkaz ke spuštění úlohy MPI přes síť RDMA. V takovém případě nastaví následující proměnné:
       
-      * I_MPI_FABRICS = shm:dapl
-      * I_MPI_DAPL_PROVIDER = správcem v2-ib0
-      * I_MPI_DYNAMIC_CONNECTION = 0
+      * I_MPI_FABRICS=shm:dapl
+      * I_MPI_DAPL_PROVIDER=ofa-v2-ib0
+      * I_MPI_DYNAMIC_CONNECTION=0
    2. Vytvoří soubor hostitele podle prostředí proměnné $CCP_NODES_CORES, který je nastaven pomocí hlavního uzlu HPC, když se aktivuje úlohu.
       
       Formát $CCP_NODES_CORES zahrnuje tento vzor:
@@ -280,9 +280,9 @@ V tomto kroku vytvoříte soubor hostitele (seznam výpočetní uzly) který **m
       
       kde
       
-      * `<Number of nodes>`-počet uzlů přidělených pro tuto úlohu.  
-      * `<Name of node_n_...>`-název každého uzlu přidělené této úlohy.
-      * `<Cores of node_n_...>`-počet jader na uzel přidělené této úlohy.
+      * `<Number of nodes>` -počet uzlů přidělených pro tuto úlohu.  
+      * `<Name of node_n_...>` -název každého uzlu přidělené této úlohy.
+      * `<Cores of node_n_...>` -počet jader na uzel přidělené této úlohy.
       
       Například pokud úlohy dvou uzlech pro spuštění, $CCP_NODES_CORES je podobná
       
@@ -291,8 +291,8 @@ V tomto kroku vytvoříte soubor hostitele (seznam výpočetní uzly) který **m
       ```
    3. Volání **mpirun** příkazů a připojí dva parametry na příkazovém řádku.
       
-      * `--hostfile <hostfilepath>: <hostfilepath>`-cestu k souboru hostitele vytvoří skript
-      * `-np ${CCP_NUMCPUS}: ${CCP_NUMCPUS}`– Proměnná prostředí, která nastavuje hlavního uzlu HPC Pack, která ukládá počet celkový počet jader přidělené této úlohy. V takovém případě určuje počet procesů pro **mpirun**.
+      * `--hostfile <hostfilepath>: <hostfilepath>` -cestu k souboru hostitele vytvoří skript
+      * `-np ${CCP_NUMCPUS}: ${CCP_NUMCPUS}` – Proměnná prostředí, která nastavuje hlavního uzlu HPC Pack, která ukládá počet celkový počet jader přidělené této úlohy. V takovém případě určuje počet procesů pro **mpirun**.
 
 ## <a name="submit-an-openfoam-job"></a>Odeslat úlohu OpenFOAM
 Teď můžete odeslat úlohu ve Správci clusteru HPC. Je třeba předat hpcimpirun.sh skriptu příkazových řádků pro některé úlohy, úlohy.
@@ -305,7 +305,7 @@ Teď můžete odeslat úlohu ve Správci clusteru HPC. Je třeba předat hpcimpi
    ![Podrobnosti úlohy][job_details]
 5. V **úlohy prostředky**, vyberte typ prostředku jako "Uzel" a nastavte minimálně na 2. Tato konfigurace se spouští úlohy na dva uzly Linux, z nichž každá má osm jader v tomto příkladu.
    
-   ![Úloha prostředky][job_resources]
+   ![Prostředky úlohy][job_resources]
 6. Klikněte na tlačítko **upravit úlohy** v levém navigačním panelu a pak klikněte na tlačítko **přidat** k přidání úkolu do úlohy. Přidání čtyři úkolů do úlohy s následující nastavení a příkazové řádky.
    
    > [!NOTE]
@@ -344,7 +344,7 @@ Teď můžete odeslat úlohu ve Správci clusteru HPC. Je třeba předat hpcimpi
    
    Ve výchozím nastavení HPC Pack předá úlohu jako váš aktuální účet přihlášeného uživatele. Po kliknutí na tlačítko **odeslání**, může se zobrazit dialogové okno s výzvou k zadání uživatelského jména a hesla.
    
-   ![Přihlašovací údaje úlohy][creds]
+   ![Přihlašovací údaje k úloze][creds]
    
    Za určitých podmínek HPC Pack pamatuje informace o uživateli, zadejte před a nezobrazí tohoto dialogového okna. Chcete-li HPC Pack jej znovu zobrazit, zadejte následující příkaz na příkazovém řádku a potom odeslání úlohy.
    
@@ -364,7 +364,7 @@ Teď můžete odeslat úlohu ve Správci clusteru HPC. Je třeba předat hpcimpi
 Volitelně použijte [EnSight](https://www.ceisoftware.com/) k vizualizaci a analýzu výsledky OpenFOAM úlohy. Další informace o vizualizace a animace v EnSight najdete v tématu to [video průvodce](http://www.ceisoftware.com/wp-content/uploads/screencasts/vof_visualization/vof_visualization.html).
 
 1. Po instalaci EnSight z hlavního uzlu, spusťte ji.
-2. Otevřete C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case.
+2. Open C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case.
    
    Zobrazí se nádrží v prohlížeči.
    

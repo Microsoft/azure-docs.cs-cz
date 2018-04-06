@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 6cec039034f0650d017eb14de584939bb3191223
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 0bd9786d0c6a6e6ba571c58e7fdc4ad86cc20024
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning experimentování služby konfigurační soubory
 
@@ -190,7 +190,7 @@ print(os.environ.get("EXAMPLE_ENV_VAR1"))
 
 **TrackedRun**: Tento příznak signály službu experimentování, zda chcete sledovat spustit v Azure ML Workbench spustit historie infrastruktury. Výchozí hodnota je _true_. 
 
-**UseSampling**: _UseSampling_ Určuje, jestli active ukázkových datových sad pro zdroje dat se používá pro spuštění. Pokud nastavena na _false_, zdroje dat ingestování a úplná data načíst z úložiště dat použít. Pokud nastavena na _true_, aktivní vzorky se používají. Uživatelé mohou používat ** DataSourceSettings "k určení, které konkrétní ukázkových datových sad má použít, pokud chtějí přepsat active vzorku. 
+**UseSampling**: _UseSampling_ Určuje, jestli active ukázkových datových sad pro zdroje dat se používá pro spuštění. Pokud nastavena na _false_, zdroje dat ingestování a úplná data načíst z úložiště dat použít. Pokud nastavena na _true_, aktivní vzorky se používají. Uživatelé mohou používat **DataSourceSettings** k určení, které konkrétní ukázkových datových sad má použít, pokud chtějí přepsat active vzorku. 
 
 **DataSourceSettings**: nastavení zdroje dat určuje tento konfigurační oddíl. V této části určuje uživatele, které existující vzorek dat pro určitý zdroj dat se používá jako součást spuštění. 
 

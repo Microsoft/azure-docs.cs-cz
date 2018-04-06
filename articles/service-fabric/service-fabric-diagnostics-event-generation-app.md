@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: f3e7b9c7432538c0f78662213544d4d691652f13
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7af0dd37b5c16e48ce4e504211e68a29cf8bce77
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="application-and-service-level-logging"></a>Úroveň protokolování služby a aplikace
 
@@ -36,10 +36,11 @@ Když vytvoříte řešení Service Fabric ze šablony v sadě Visual Studio **E
 
 Je důležité pečlivě naplánovat, jak bude instrumentace vašeho kódu. Plán správné instrumentace můžete vyhnout potenciálně destabilizing vaše základu kódu a pak se museli reinstrument kód. Aby se snížilo riziko, můžete knihovna nástrojů, jako je [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/), který je součástí Microsoft ASP.NET Core. ASP.NET Core má [objektu ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) rozhraní, které můžete použít s poskytovatelem podle vaší volby, a současně minimalizujete její vliv na existující kód. Můžete použít kód v ASP.NET Core v systému Windows a Linux, a v úplné rozhraní .NET Framework, takže je váš kód instrumentace standardizované.
 
-## <a name="choosing-a-logging-provider"></a>Výběr zprostředkovatele protokolování
+## <a name="application-insights-sdk"></a>Application Insights SDK
 
-Pokud vaše aplikace využívá vysoký výkon, **EventSource** je obvykle dobrou přístup. **EventSource** *obecně* využívá méně prostředků a provede lépe než ASP.NET Core protokolování ani žádný z dostupných řešení třetí strany.  Tato akce není problém pro mnoho služby, ale pokud je vaše služba orientovaných na výkon, pomocí **EventSource** může být vhodnější. Však získat tyto výhody strukturovaná protokolování, **EventSource** vyžaduje větší investice z technickému týmu. Pokud je to možné nezadávejte rychlé prototyp několik možností protokolování a potom vyberte ten, který nejlépe vyhovuje vašim potřebám.
+Application Insights obsahuje bohatou integrace s Service Fabric mimo pole. Uživatele můžete přidat balíčky nuget AI Service Fabric a přijímat data a protokoly vytvořené a shromažďují lze zobrazit v portálu Azure. Uživatelé navíc doporučujeme přidat vlastní telemetrii diagnostikovat a ladit jejich aplikace a sledování, které jsou služby a částí jejich aplikace používají nejvíc. [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) třídy v sadě SDK poskytuje mnoho způsobů, jak sledovat telemetrie ve svých aplikacích. Podívejte se na příklad instrumentace a přidat službu application insights do vaší aplikace v našem kurzu pro [monitorování a diagnostice aplikace .NET](service-fabric-tutorial-monitoring-aspnet.md)
+
 
 ## <a name="next-steps"></a>Další postup
 
-Jakmile jste vybrali poskytovatele protokolování a instrumentace aplikací a služeb, protokolů a událostí muset agregovat před odesláním pro žádnou platformu analysis. Přečtěte si informace o [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) a [WAD](service-fabric-diagnostics-event-aggregation-wad.md) lépe pochopit některé doporučené možnosti.
+Jakmile jste vybrali poskytovatele protokolování a instrumentace aplikací a služeb, protokolů a událostí muset agregovat před odesláním pro žádnou platformu analysis. Přečtěte si informace o [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md), [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md), a [WAD](service-fabric-diagnostics-event-aggregation-wad.md) lépe pochopit některé doporučené možnosti.

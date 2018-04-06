@@ -1,11 +1,11 @@
 ---
-title: "Vytváření pracovních postupů z šablon - Azure Logic Apps | Microsoft Docs"
-description: "Vytváření pracovních postupů rychlejší pomocí šablony aplikace logiky"
+title: Vytváření pracovních postupů z šablon - Azure Logic Apps | Microsoft Docs
+description: Vytváření pracovních postupů rychlejší pomocí šablony aplikace logiky
 author: kevinlam1
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e9145b9cb85cda9179f7ce46de017a0ab3a38924
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a2e939143d7181722df17ea7837658d96272e3a3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Vytvořit pracovní postupy aplikace logiky z přednastavených šablony
 
@@ -42,7 +42,7 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
 
 1. Pokud jste to ještě neudělali, přihlaste se k [portál Azure](https://portal.azure.com "portál Azure").
 
-2. Z hlavní nabídky Azure, zvolte **vytvořit prostředek** > **Enterprise integrace** > **aplikace logiky**.
+2. V hlavní nabídce Azure zvolte **Vytvořit prostředek** > **Podniková integrace** > **Aplikace logiky**.
 
    ![Azure Portal, Nový, Podniková integrace, Aplikace logiky](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 
@@ -56,7 +56,7 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
    | **Předplatné** | *název_vašeho_předplatného_Azure* | Vyberte předplatné Azure, které chcete použít. | 
    | **Skupina prostředků** | *název_vaší_skupiny_prostředků_Azure* | Vytvořte nebo vyberte [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) pro tuto aplikaci logiky a uspořádat všechny prostředky přidružené k této aplikaci. | 
    | **Umístění** | *oblast_vašeho_datového_centra_Azure* | Vyberte oblast datového centra pro nasazení aplikace logiky, například USA – západ. | 
-   | **Log Analytics** | **Vypnout** (výchozí) nebo **na** | Zapnout [protokolování diagnostiky](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) pro svou aplikaci logiky prostřednictvím [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Vyžaduje se, že už máte [Operations Management Suite](../operations-management-suite/operations-management-suite-overview.md) pracovního prostoru. | 
+   | **Log Analytics** | **Vypnout** (výchozí) nebo **na** | Zapnout [protokolování diagnostiky](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) pro svou aplikaci logiky prostřednictvím [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Vyžaduje se, že už máte pracovní prostor analýzy protokolů. | 
    |||| 
 
 4. Až budete připraveni, vyberte **Připnout na řídicí panel**. Aplikace logiky se tak automaticky zobrazí na řídicím panelu Azure a po nasazení se automaticky otevře. Zvolte **Vytvořit**.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mazha
-ms.openlocfilehash: 87f00575e0c2c4cd7a8525df96b2f5b13d470643
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ed6f0b2c021fc4b31b85986c07df0502dba826f2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Ovládací prvek Azure CDN ukládání do mezipaměti chování řetězce dotazu - úrovně standard
 > [!div class="op_single_selector"]
@@ -36,8 +36,13 @@ S v ukládání do mezipaměti řetězce dotazu Azure Content Delivery Network (
 K dispozici jsou tři režimy řetězec dotazu:
 
 - **Ignorovat řetězce dotazů**: výchozí režim. V tomto režimu uzlu CDN bodů přítomnosti (POP) předává řetězce dotazu z žadatel na zdrojový server na první požadavek a ukládá do mezipaměti asset. Všechny následné požadavky asset ze serveru POP ignorovat řetězců dotazů do mezipaměti asset vypršení platnosti.
+
 - **Nepoužívat ukládání do mezipaměti pro řetězce dotazů**: V tomto režimu žádostí s řetězci dotazu se neukládají do mezipaměti v uzlu CDN POP. Uzel POP načte asset přímo ze zdrojového serveru a předává je pro žadatele s každou žádostí.
-- **Ukládat do mezipaměti každou jedinečnou adresu URL**: V tomto režimu každou žádost s jedinečnou adresou URL, včetně řetězce dotazu, je považován za jedinečný prostředek s vlastní mezipaměti. Například odpověď ze zdrojového serveru pro žádost o `example.ashx?q=test1` je uloží do mezipaměti na uzlu POP a vrátit pro následné mezipaměti s stejné řetězec dotazu. Žádost o `example.ashx?q=test2` se uloží do mezipaměti jako samostatné asset s vlastní nastavení time to live.
+
+- **Ukládat do mezipaměti každou jedinečnou adresu URL**: V tomto režimu každou žádost s jedinečnou adresou URL, včetně řetězce dotazu, je považován za jedinečný prostředek s vlastní mezipaměti. Například odpověď ze zdrojového serveru pro žádost o example.ashx?q=test1 je uloží do mezipaměti na uzlu POP a vrátit pro následné mezipaměti s stejné řetězec dotazu. Žádost o example.ashx?q=test2 se uloží do mezipaměti jako samostatné asset s vlastní nastavení time to live.
+   
+    >[!IMPORTANT] 
+    > Pokud řetězec dotazu obsahuje parametry, které změní s každou žádostí, jako je například ID relace nebo uživatelské jméno, protože výsledkem bude nízkou poměr přístupů do mezipaměti, nepoužívejte tento režim.
 
 ## <a name="changing-query-string-caching-settings-for-standard-cdn-profiles"></a>Změna nastavení pro standardní profily CDN ukládání řetězců s dotazy
 1. Otevřete profil CDN a potom vyberte koncového bodu CDN, které chcete spravovat.

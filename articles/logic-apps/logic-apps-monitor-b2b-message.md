@@ -1,11 +1,11 @@
 ---
-title: "Monitorování transakcí B2B a nastavení protokolování - Azure Logic Apps | Microsoft Docs"
-description: "Monitorování pro AS2, X 12 a EDIFACT zprávy, spusťte protokolování diagnostiky pro váš účet integrace"
+title: Monitorování transakcí B2B a nastavení protokolování - Azure Logic Apps | Microsoft Docs
+description: Monitorování pro AS2, X 12 a EDIFACT zprávy, spusťte protokolování diagnostiky pro váš účet integrace
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -15,22 +15,22 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f717dae9a70a96944b623f22b90cf8c5a943f382
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6afab12b9e2d6e8686ecbc95be9743afbe70d98c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-and-set-up-diagnostics-logging-for-b2b-communication-in-integration-accounts"></a>Sledování a protokolování diagnostiky pro komunikace B2B ve účty pro integraci
 
-Po nastavení komunikace B2B mezi dvěma systémem obchodních procesů nebo aplikací prostřednictvím účtu integrace tyto entity můžou vyměňovat zprávy mezi sebou. Potvrďte tuto komunikaci funguje podle očekávání, můžete nastavit pro AS2, X12, monitorování a EDIFACT zprávy, spolu s protokolování diagnostiky pro váš účet integrace prostřednictvím [Azure Log Analytics](../log-analytics/log-analytics-overview.md) služby. Tato služba v [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) monitoruje své cloudové a místní prostředí, což pomáhá udržovat jejich dostupnost a výkon a taky shromažďuje podrobnosti runtime a událostí pro širší ladění. Můžete také [pomocí diagnostických dat s jinými službami](#extend-diagnostic-data), jako jsou služby Azure Storage a Azure Event Hubs.
+Po nastavení komunikace B2B mezi dvěma systémem obchodních procesů nebo aplikací prostřednictvím účtu integrace tyto entity můžou vyměňovat zprávy mezi sebou. Potvrďte tuto komunikaci funguje podle očekávání, můžete nastavit pro AS2, X12, monitorování a EDIFACT zprávy, spolu s protokolování diagnostiky pro váš účet integrace prostřednictvím [Azure Log Analytics](../log-analytics/log-analytics-overview.md) služby. Tato služba monitoruje své cloudové a místní prostředí, což pomáhá udržovat jejich dostupnost a výkon a taky shromažďuje podrobnosti runtime a událostí pro širší ladění. Můžete také [pomocí diagnostických dat s jinými službami](#extend-diagnostic-data), jako jsou služby Azure Storage a Azure Event Hubs.
 
 ## <a name="requirements"></a>Požadavky
 
 * Aplikace logiky, který je nastavený s protokolování diagnostiky. Další informace [postup nastavení protokolování pro tuto aplikaci logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
   > [!NOTE]
-  > Po splnění tohoto požadavku, měli byste pracovního prostoru [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Při nastavení protokolování pro váš účet integrace, měli byste použít stejné pracovním prostorem OMS. Pokud nemáte pracovním prostorem OMS, přečtěte si [jak vytvořit pracovní prostor služby OMS](../log-analytics/log-analytics-get-started.md).
+  > Po splnění tohoto požadavku, měli byste mít pracovního prostoru v analýzy protokolů. Při nastavení protokolování pro váš účet integrace, měli byste použít stejné pracovní prostor analýzy protokolů. Pokud nemáte pracovní prostor analýzy protokolů, přečtěte si [jak vytvořit pracovní prostor analýzy protokolů](../log-analytics/log-analytics-quick-create-workspace.md).
 
 * Integrace účet, který je propojený s svou aplikaci logiky. Další informace [postup vytvoření účtu integrace se zobrazí odkaz na svou aplikaci logiky](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 
@@ -58,17 +58,17 @@ Můžete zapnout protokolování buď přímo z vašeho účtu integrace nebo [p
 
    ![Zapněte diagnostiku Azure](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account-2.png)
 
-4. Nyní vyberte pracovní prostor OMS a data se mají použít pro protokolování, jak je znázorněno:
+4. Nyní vyberte pracovní prostor analýzy protokolů a data se mají použít pro protokolování, jak je znázorněno:
 
    1. Vyberte **odeslat k analýze protokolů**. 
    2. V části **analýzy protokolů**, zvolte **konfigurace**. 
-   3. V části **pracovních prostorů OMS**, vyberte pracovní prostor OMS pro protokolování.
+   3. V části **pracovních prostorů OMS**, vyberte pracovní prostor analýzy protokolů pro protokolování.
    4. V části **protokolu**, vyberte **IntegrationAccountTrackingEvents** kategorie.
    5. Zvolte **Uložit**.
 
    ![Nastavení analýzy protokolů tak může odesílat data diagnostiky protokolu](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-5. Nyní [nastavení sledování zpráv B2B v OMS](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+5. Nyní [nastavení sledování zpráv B2B v analýzy protokolů](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 <a name="azure-monitor-service"></a>
 
@@ -92,17 +92,17 @@ Můžete zapnout protokolování buď přímo z vašeho účtu integrace nebo [p
 
    ![Zapněte diagnostiku Azure](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account-2.png)
 
-4. Nyní vyberte OMS pracovní prostor a událostí kategorie pro protokolování, jak je znázorněno:
+4. Nyní vyberte kategorii pracovní prostor a událostí analýzy protokolů pro protokolování, jak je znázorněno:
 
    1. Vyberte **odeslat k analýze protokolů**. 
    2. V části **analýzy protokolů**, zvolte **konfigurace**. 
-   3. V části **pracovních prostorů OMS**, vyberte pracovní prostor OMS pro protokolování.
+   3. V části **pracovních prostorů OMS**, vyberte pracovní prostor analýzy protokolů pro protokolování.
    4. V části **protokolu**, vyberte **IntegrationAccountTrackingEvents** kategorie.
-   5. Až budete hotoví, zvolte **Uložit**.
+   5. Jakmile budete hotoví, vyberte **Uložit**.
 
    ![Nastavení analýzy protokolů tak může odesílat data diagnostiky protokolu](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-5. Nyní [nastavení sledování zpráv B2B v OMS](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+5. Nyní [nastavení sledování zpráv B2B v analýzy protokolů](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>Rozšíření jak a kde používáte diagnostických dat s jinými službami
 
@@ -111,7 +111,7 @@ Společně s Azure Log Analytics můžete rozšířit použití aplikace logiky 
 * [Archiv, který Azure Diagnostics protokolů v úložišti Azure](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 * [Datový proud protokolů Azure Diagnostics do služby Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
-Můžete pak monitorování pomocí telemetrie a analýzy z jiných služeb, jako například get v reálném čase [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../log-analytics/log-analytics-powerbi.md). Například:
+Můžete pak monitorování pomocí telemetrie a analýzy z jiných služeb, jako například get v reálném čase [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../log-analytics/log-analytics-powerbi.md). Příklad:
 
 * [Datový proud dat ze služby Event Hubs do služby Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analýza dat pomocí služby Stream Analytics a vytvořit řídicí panel analýzu v reálném čase v Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -131,8 +131,8 @@ Azure podporuje tyto typy schémat, které stanoveny schémata kromě vlastní t
 * [Schéma sledování X12](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [Vlastní schémata sledování](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* [Sledování zpráv B2B v OMS](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "zpráv B2B sledování v OMS")
+* [Sledování zpráv B2B ve analýzy protokolů](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "zpráv B2B sledování v OMS")
 * [Další informace o integračního balíčku Enterprise](../logic-apps/logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku")
 

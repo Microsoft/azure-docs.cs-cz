@@ -1,19 +1,20 @@
 ---
-title: "Obnovení ze zálohy Azure SQL database | Microsoft Docs"
-description: "Další informace o obnovení bodu v čase, která umožňuje vrácení databáze SQL Azure do předchozího bodu v čase (až 35 dnů)."
+title: Obnovení ze zálohy Azure SQL database | Microsoft Docs
+description: Další informace o obnovení bodu v čase, která umožňuje vrácení databáze SQL Azure do předchozího bodu v čase (až 35 dnů).
 services: sql-database
-author: CarlRabeler
+author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 02/13/2018
-ms.author: carlrab
-ms.openlocfilehash: d2cc2e44c13750b654e2d6acf39d4f6a80cac98a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/04/2018
+ms.author: sashan
+ms.reviewer: carlrab
+ms.openlocfilehash: afe06d6e61d4b2b99a47f3d3348299c61863fec3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit pomocí zálohy automatizované databáze Azure SQL database
 SQL Database nabízí tyto možnosti pro databázi pomocí obnovení [automatizované zálohování databáze](sql-database-automated-backups.md) a [záloh v dlouhodobé uchovávání](sql-database-long-term-retention.md). Můžete obnovit ze zálohy databáze pro:
@@ -30,7 +31,7 @@ Obnovené databáze způsobuje náklady na úložiště navíc za následující
 - Obnovení P11 – P15 S4 S12 nebo P1 – P6 pokud maximální velikost databáze je větší než 500 GB.
 - Obnovení P1 – P6 k S4 S12 pokud maximální velikost databáze je větší než 250 GB.
 
-Nadbytečné není náklady, protože maximální velikost obnovené databáze je větší než velikost úložiště, které jsou zahrnuté pro úrovně výkonu a je velmi účtovat žádné dodatečné úložiště zřízený výše zahrnuté množství.  Ceny navíc úložiště, najdete v článku [SQL Database stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/).  Pokud skutečná velikost využitého místa je menší než velikost úložiště, které jsou zahrnuty, pak tato zpoplatněné se vyhnout snížením maximální velikost databáze na zahrnuté množství. Další informace o velikosti úložiště databáze a Změna maximální velikosti databáze najdete v tématu [jednotné limitů databáze prostředků](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels).  
+Nadbytečné není náklady, protože maximální velikost obnovené databáze je větší než velikost úložiště, které jsou zahrnuté pro úrovně výkonu a je velmi účtovat žádné dodatečné úložiště zřízený výše zahrnuté množství.  Ceny navíc úložiště, najdete v článku [SQL Database stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/).  Pokud skutečná velikost využitého místa je menší než velikost úložiště, které jsou zahrnuty, pak tato zpoplatněné se vyhnout snížením maximální velikost databáze na zahrnuté množství. Další informace o velikosti úložiště databáze a Změna maximální velikosti databáze najdete v tématu [jednotné limitů prostředků na základě DTU databáze](sql-database-dtu-resource-limits.md#single-database-storage-sizes-and-performance-levels) a [jednotné limitů databáze prostředků na základě vCore](sql-database-vcore-resource-limits.md#single-database-storage-sizes-and-performance-levels).  
 
 > [!NOTE]
 > [Automatizované zálohování databáze](sql-database-automated-backups.md) se používají při vytváření [kopírování databáze](sql-database-copy.md). 
@@ -117,7 +118,7 @@ Geografické obnovení je výchozí možnost, když databáze není k dispozici 
 Obnovení bodu v čase geo sekundární není aktuálně podporován. V okamžiku obnovení lze provést pouze v primární databázi. Podrobné informace o používání geografické obnovení obnovit výpadku, najdete v části [zotavit výpadku](sql-database-disaster-recovery.md).
 
 > [!IMPORTANT]
-> Obnovení ze zálohy je nejzákladnější řešení zotavení po havárii, která je k dispozici v databázi SQL s cíl bodu nejdelší obnovení (RPO) a odhad obnovení čas (Vložit). Pro řešení pomocí základní databáze geografické obnovení je často přiměřené řešení zotavení po Havárii s vložit 12 hodin. Pro řešení pomocí větší Standard nebo Premium databází, které vyžadují kratší časy obnovení, měli byste zvážit použití [aktivní geografickou replikací](sql-database-geo-replication-overview.md). Aktivní geografickou replikací nabízí mnohem menší plánovaný bod obnovení a vložit jako vyžaduje pouze zahájit převzetí služeb při selhání na nepřetržitě replikované sekundární. Další informace o možnosti kontinuity obchodních najdete v tématu [přehled kontinuity podnikových procesů](sql-database-business-continuity.md).
+> Obnovení ze zálohy je nejzákladnější řešení zotavení po havárii, která je k dispozici v databázi SQL s cíl bodu nejdelší obnovení (RPO) a odhad obnovení čas (Vložit). Pro řešení pomocí malá velikost databáze (například základní služby vrstvy nebo malá velikost databáze v elastické fondy klienta) geografické obnovení je často přiměřené řešení zotavení po Havárii s vložit 12 hodin. Pro řešení pomocí velké databáze a vyžadují obnovení kratší dobu, měli byste zvážit použití [převzetí služeb při selhání skupiny a aktivní geografickou replikací](sql-database-geo-replication-overview.md). Aktivní geografickou replikací nabízí mnohem menší plánovaný bod obnovení a vložit jako vyžaduje pouze zahájit převzetí služeb při selhání na nepřetržitě replikované sekundární. Další informace o možnosti kontinuity obchodních najdete v tématu [přehled kontinuity podnikových procesů](sql-database-business-continuity.md).
 > 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -146,9 +147,8 @@ Jako uvedeno výše, kromě portálu Azure lze provést obnovení databáze prog
 ## <a name="summary"></a>Souhrn
 Automatické zálohování chránit vaše databáze z uživatelů a chyby aplikace, databáze náhodného odstranění a provozu v případě delších výpadků. Tato integrované funkce je dostupná pro všechny úrovně služeb a úrovně výkonu. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Přehled kontinuity obchodních a scénářů najdete v tématu [obchodní kontinuity přehled](sql-database-business-continuity.md).
 * Další informace o Azure SQL Database automatizované zálohování najdete v tématu [automatizované zálohování SQL Database](sql-database-automated-backups.md).
-* Další informace o dlouhodobé uchovávání záloh, najdete v části [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
-* Pokud chcete konfigurovat, spravovat a obnovit ze dlouhodobé uchovávání automatické zálohy v trezoru služeb zotavení Azure pomocí portálu Azure najdete v tématu [konfigurace a použití dlouhodobé zálohování uchování](sql-database-long-term-backup-retention-configure.md). 
+* Další informace o dlouhodobé uchovávání najdete v tématu [dlouhodobé uchovávání](sql-database-long-term-retention.md).
 * Další informace o možnosti rychlejší obnovení najdete v tématu [převzetí služeb při selhání skupiny a aktivní geografickou replikací](sql-database-geo-replication-overview.md).  

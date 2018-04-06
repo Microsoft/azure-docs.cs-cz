@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mazha
-ms.openlocfilehash: 87845df92c77ace484a7afdde3ee20b570cf9cbb
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9d92602ef5071579e0c741dd24a4e3e9f7b2c747
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Ovládací prvek Azure CDN ukládání do mezipaměti chování řetězce dotazu - úrovni premium
 > [!div class="op_single_selector"]
@@ -44,9 +44,10 @@ K dispozici jsou tři režimy řetězec dotazu:
 
 - **Ne mezipaměti**: V tomto režimu žádostí s řetězci dotazu se neukládají do mezipaměti v uzlu CDN POP. Uzel POP načte asset přímo ze zdrojového serveru a předává je pro žadatele s každou žádostí.
 
-- **Jedinečný mezipaměti**: V tomto režimu každou žádost s jedinečnou adresou URL, včetně řetězce dotazu, je považován za jedinečný prostředek s vlastní mezipaměti. Například odpověď ze zdrojového serveru pro žádost o `example.ashx?q=test1` je uloží do mezipaměti na uzlu POP a vrátit pro následné mezipaměti s stejné řetězec dotazu. Žádost o `example.ashx?q=test2` se uloží do mezipaměti jako samostatné asset s vlastní nastavení time to live.
+- **Jedinečný mezipaměti**: V tomto režimu každou žádost s jedinečnou adresou URL, včetně řetězce dotazu, je považován za jedinečný prostředek s vlastní mezipaměti. Například odpověď ze zdrojového serveru pro žádost o example.ashx?q=test1 je uloží do mezipaměti na uzlu POP a vrátit pro následné mezipaměti s stejné řetězec dotazu. Žádost o example.ashx?q=test2 se uloží do mezipaměti jako samostatné asset s vlastní nastavení time to live.
    
-    Pokud řetězec dotazu obsahuje parametry, které změní s každou žádostí, jako je například ID relace nebo uživatelské jméno, protože výsledkem bude nízkou poměr přístupů do mezipaměti, nepoužívejte tento režim.
+    >[!IMPORTANT] 
+    > Pokud řetězec dotazu obsahuje parametry, které změní s každou žádostí, jako je například ID relace nebo uživatelské jméno, protože výsledkem bude nízkou poměr přístupů do mezipaměti, nepoužívejte tento režim.
 
 ## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>Změna nastavení pro profily CDN premium ukládání řetězců s dotazy
 1. Otevřete profil CDN a pak klikněte na **spravovat**.

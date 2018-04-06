@@ -1,11 +1,11 @@
 ---
-title: "Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? | Dokumenty Microsoft"
-description: "Můžete povolit jednotné přihlašování ke všem SaaS a webové aplikace, které potřebujete pro firmy pomocí Azure Active Directory."
+title: Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? | Dokumenty Microsoft
+description: Můžete povolit jednotné přihlašování ke všem SaaS a webové aplikace, které potřebujete pro firmy pomocí Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 75d1a3fd-b3c5-4495-a5c8-c4c24145ff00
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 42a24654eb059894a855474c922a4dd2da185149
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: f19d33c905d6153dffa1e7d5cdaea92ed1b94ff7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?
 Jednotné přihlašování znamená schopnost přístup ke všem aplikacím a prostředkům, které musíte udělat podnikání, po přihlášení pouze po pomocí jediného uživatelského účtu. Jakmile se přihlásíte, dostanete všechny aplikace, bez nutnosti ověřování (zadejte například heslo) ještě jednou.
@@ -68,7 +68,7 @@ Konfigurace založené na heslech jednotné přihlašování umožňuje uživate
 Azure AD může podporovat založené na heslech jednotné přihlašování pro všechny cloudové aplikaci, která má HTML na přihlašovací stránku. Pomocí modulu plug-in vlastním prohlížeči AAD automatizuje proces přihlašování uživatele prostřednictvím bezpečně načítání pověření aplikací, jako je například uživatelské jméno a heslo z adresáře a zadá tyto přihlašovací údaje do aplikace přihlašovací stránky jménem uživatel. Existují dva případy použití:
 
 1. **Správce spravuje přihlašovací údaje** – správci mohou vytvořit a spravovat aplikace pověření a přiřaďte tyto přihlašovací údaje uživatele nebo skupiny, kteří potřebují přístup k aplikaci. V těchto případech koncového uživatele není potřeba znát přihlašovací údaje, ale stále jednoduše tak, že na ni kliknete v jejich přístupového panelu nebo prostřednictvím zadaný odkaz získá přístup jediné přihlášení k aplikaci. To umožňuje obě, Správa životního cyklu přihlašovacích údajů správce, jakož i pohodlí pro koncové uživatele, kterým se nemusíte mějte na paměti, nebo spravovat hesla konkrétní aplikaci. Přihlašovací údaje jsou zamaskované z koncový uživatel během automatizovaného procesu přihlášení; jsou ale technicky zjistitelný uživatelem pomocí nástroje pro ladění webových a uživatelům a správcům by měl podle stejné zásady zabezpečení, jako v případě, že přihlašovací údaje prezentovaly přímo uživatelem. Zadaný správce přihlašovacích údajů jsou užitečné při poskytování přístupu účtu, která je sdílena mezi mnoha uživateli, jako je například sociálních médií nebo aplikace pro sdílení dokumentu.
-2. **Spravuje přihlašovací údaje uživatele** – správci můžete přiřadit aplikace pro koncové uživatele nebo skupiny a povolit koncovým uživatelům zadat svoje vlastní přihlašovací údaje přímo při přístupu k aplikaci poprvé v jejich přístupového panelu. Tím se vytvoří v zájmu usnadnění pro koncové uživatele, kterým se nemusíte průběžně zadejte konkrétní aplikaci hesla při každém přístupu k aplikaci. Tento případ použití mohou sloužit také jako taktování kamenem správu správy přihlašovacích údajů, které správce může nastavit nové přihlašovací údaje pro aplikace v budoucnosti beze změny aplikační přístup prostředí koncového uživatele.
+2. **Spravuje přihlašovací údaje uživatele** – správci můžete přiřadit aplikace pro koncové uživatele nebo skupiny a povolit koncovým uživatelům zadat svoje vlastní přihlašovací údaje přímo při přístupu k aplikaci poprvé v jejich přístupového panelu. Tím se vytvoří v zájmu usnadnění pro koncové uživatele, kterým se nemusíte průběžně zadejte konkrétní aplikaci hesla při každém přístupu k aplikaci. Uživatelé mohou i nadále spravovat hesla aktualizaci nebo odstranění je podle potřeby. Tento případ použití mohou sloužit také jako taktování kamenem správu správy přihlašovacích údajů, které správce může nastavit nové přihlašovací údaje pro aplikace v budoucnosti beze změny aplikační přístup prostředí koncového uživatele.
 
 V obou případech přihlašovací údaje jsou uložené v šifrovaném stavu v adresáři a jsou pouze předán přes protokol HTTPS během automatizovaného procesu přihlášení. Pomocí založené na heslech jednotné přihlašování, Azure AD nabízí řešení pro aplikace, které nejsou podporovat protokoly federační správu přístupu pohodlný identity.
 
@@ -151,7 +151,7 @@ Azure AD poskytuje několik způsobů přizpůsobitelné k nasazení aplikací p
 Které metody rozhodnete nasadit ve vaší organizaci je vašeho vlastního rozhodnutí.
 
 ### <a name="azure-ad-access-panel"></a>Azure AD přístupového panelu
-Přístupový Panel v https://myapps.microsoft.com je webový portál, který umožňuje koncový uživatel s účtem organizace v Azure Active Directory k zobrazení a spuštění cloudové aplikace do kterých budou byl udělen přístup správce Azure AD . Pokud jste koncovým uživatelem s [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), můžete také používat skupiny samoobslužné služby možnosti správy prostřednictvím na přístupovém panelu.
+Přístupovému panelu na adrese https://myapps.microsoft.com je webový portál, který umožňuje koncový uživatel s účtem organizace v Azure Active Directory k zobrazení a spuštění cloudové aplikace ke kterým mají byl udělen přístup správce Azure AD. Pokud jste koncovým uživatelem s [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), můžete také používat skupiny samoobslužné služby možnosti správy prostřednictvím na přístupovém panelu.
 
 ![Azure AD přístupového panelu](media/active-directory-appssoaccess-whatis/azure-ad-access-panel.png)
 
@@ -160,7 +160,7 @@ Přístupový Panel je nezávislý na portálu Azure a nevyžaduje, aby uživate
 Další informace o přístupový panel Azure AD, najdete v článku [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
 ### <a name="office-365-application-launcher"></a>Spouštěč aplikace Office 365
-Pro organizace, které jste nasadili Office 365 aplikace, které jsou přiřazené k uživatelům prostřednictvím služby Azure AD zobrazí také na https://portal.office.com/myapps portál Office 365. To je snadný a pohodlný pro uživatele v organizaci spustíte svoje aplikace bez nutnosti použít portál druhý a je doporučenou aplikaci spuštění řešení pro organizace používá Office 365.
+Pro organizace, které jste nasadili Office 365, aplikace přiřazené k uživatelům prostřednictvím služby Azure AD se také zobrazí na portálu Office 365 v https://portal.office.com/myapps. To je snadný a pohodlný pro uživatele v organizaci spustíte svoje aplikace bez nutnosti použít portál druhý a je doporučenou aplikaci spuštění řešení pro organizace používá Office 365.
 
 ![][4]
 

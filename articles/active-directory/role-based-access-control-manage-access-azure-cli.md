@@ -1,8 +1,8 @@
 ---
-title: "Správa řízení přístupu na základě rolí (RBAC) pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Naučte se spravovat na základě rolí řízení přístupu (RBAC) pomocí rozhraní příkazového řádku Azure tak, že uvedete role a role akce a přiřazení rolí k oborům předplatné a aplikace."
+title: Správa řízení přístupu na základě rolí (RBAC) pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Naučte se spravovat na základě rolí řízení přístupu (RBAC) pomocí rozhraní příkazového řádku Azure tak, že uvedete role a role akce a přiřazení rolí k oborům předplatné a aplikace.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2018
+ms.date: 04/03/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
-ms.openlocfilehash: 6c9df11e528601d94cb72a8e3ef0868dc7781e12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4efae8aa8a016849193b67ea7481e18ee48811d0
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Správa řízení přístupu na základě rolí pomocí rozhraní příkazového řádku Azure
 
@@ -28,17 +28,15 @@ ms.lasthandoff: 03/09/2018
 > * [REST API](role-based-access-control-manage-access-rest.md)
 
 
-S na základě rolí řízení přístupu (RBAC), můžete definovat přístupu pro uživatele, skupiny a objekty služby podle přiřazení rolí v určitém rozsahu. Tento článek popisuje, jak můžete spravovat přístup pomocí rozhraní příkazového řádku Azure (CLI).
+Pomocí řízení přístupu na základě rolí (RBAC) kterou definujte přístupu pro uživatele, skupiny a objekty služby přiřazení rolí v určitém rozsahu. Tento článek popisuje, jak spravovat přiřazení rolí pomocí rozhraní příkazového řádku Azure (CLI).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li spravovat RBAC pomocí rozhraní příkazového řádku Azure, musíte mít následující požadavky:
+Pokud chcete spravovat přiřazení rolí pomocí rozhraní příkazového řádku Azure, musíte mít následující požadavky:
 
 * [Azure CLI 2.0](/cli/azure). Můžete ho používat v prohlížeči přes [Azure Cloud Shell](../cloud-shell/overview.md) nebo si ho můžete [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows a spouštět z příkazového řádku.
 
-## <a name="list-roles"></a>Seznam rolí
-
-### <a name="list-role-definitions"></a>Definice rolí seznamu
+## <a name="list-role-definitions"></a>Definice rolí seznamu
 
 K zobrazení seznamu všech definic rolí k dispozici, použijte [seznamu definice role az](/cli/azure/role/definition#az_role_definition_list):
 
@@ -49,7 +47,7 @@ az role definition list
 Následující příklad uvádí název a popis všech definic rolí k dispozici:
 
 ```azurecli
-az role definition list --output json | jq '.[] | {"roleName":.properties.roleName, "description":.properties.description}'
+az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
 ```
 
 ```Output
@@ -72,24 +70,24 @@ az role definition list --output json | jq '.[] | {"roleName":.properties.roleNa
 Následující příklad vypíše všechny definice předdefinovaná role:
 
 ```azurecli
-az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.properties.roleName, "description":.properties.description, "type":.properties.type}'
+az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
 ```
 
 ```Output
 {
   "roleName": "API Management Service Contributor",
   "description": "Can manage service and the APIs",
-  "type": "BuiltInRole"
+  "roleType": "BuiltInRole"
 }
 {
   "roleName": "API Management Service Operator Role",
   "description": "Can manage service but not the APIs",
-  "type": "BuiltInRole"
+  "roleType": "BuiltInRole"
 }
 {
   "roleName": "API Management Service Reader Role",
   "description": "Read-only access to service and APIs",
-  "type": "BuiltInRole"
+  "roleType": "BuiltInRole"
 }
 
 ...
@@ -110,36 +108,31 @@ az role definition list --name "Contributor"
 ```
 
 ```Output
-[
   {
+    "additionalProperties": {},
+    "assignableScopes": [
+      "/"
+    ],
+    "description": "Lets you manage everything except access to resources.",
     "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
     "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
-    "properties": {
-      "additionalProperties": {
-        "createdBy": null,
-        "createdOn": "0001-01-01T08:00:00.0000000Z",
-        "updatedBy": null,
-        "updatedOn": "2016-12-14T02:04:45.1393855Z"
-      },
-      "assignableScopes": [
-        "/"
-      ],
-      "description": "Lets you manage everything except access to resources.",
-      "permissions": [
-        {
-          "actions": [
-            "*"
-          ],
-          "notActions": [
-            "Microsoft.Authorization/*/Delete",
-            "Microsoft.Authorization/*/Write",
-            "Microsoft.Authorization/elevateAccess/Action"
-          ]
-        }
-      ],
-      "roleName": "Contributor",
-      "type": "BuiltInRole"
-    },
+    "permissions": [
+      {
+        "actions": [
+          "*"
+        ],
+        "additionalProperties": {},
+        "dataActions": [],
+        "notActions": [
+          "Microsoft.Authorization/*/Delete",
+          "Microsoft.Authorization/*/Write",
+          "Microsoft.Authorization/elevateAccess/Action"
+        ],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "Contributor",
+    "roleType": "BuiltInRole",
     "type": "Microsoft.Authorization/roleDefinitions"
   }
 ]
@@ -148,7 +141,7 @@ az role definition list --name "Contributor"
 Následující příklad zobrazí *akce* a *notActions* z *Přispěvatel* role:
 
 ```azurecli
-az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.properties.permissions[0].actions, "notActions":.properties.permissions[0].notActions}'
+az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
 ```
 
 ```Output
@@ -167,7 +160,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 Následující příklad uvádí akce *Přispěvatel virtuálních počítačů* role:
 
 ```azurecli
-az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .properties.permissions[0].actions'
+az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
 ```
 
 ```Output
@@ -188,7 +181,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 ]
 ```
 
-## <a name="list-access"></a>Přístup k seznamu
+## <a name="list-role-assignments"></a>Přiřazení rolí seznamu
 
 ### <a name="list-role-assignments-for-a-user"></a>Seznam přiřazení role pro uživatele
 
@@ -200,10 +193,10 @@ az role assignment list --assignee <assignee>
 
 Ve výchozím nastavení se zobrazí pouze přiřazení obor k předplatnému. Chcete-li zobrazit přiřazení vymezeny prostředek nebo skupina, použijte `--all`.
 
-Následující příklad vypíše přiřazení rolí, které jsou přiřazeny přímo na  *patlong@contoso.com*  uživatele:
+Následující příklad vypíše přiřazení rolí, které jsou přiřazeny přímo na *patlong@contoso.com* uživatele:
 
 ```azurecli
-az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.properties.principalName, "roleDefinitionName":.properties.roleDefinitionName, "scope":.properties.scope}'
+az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
 ```Output
@@ -230,7 +223,7 @@ az role assignment list --resource-group <resource_group>
 Následující příklad vypíše přiřazení rolí pro *pharma. prodej projectforecast* skupiny prostředků:
 
 ```azurecli
-az role assignment list --resource-group pharma-sales-projectforecast --output json | jq '.[] | {"roleDefinitionName":.properties.roleDefinitionName, "scope":.properties.scope}'
+az role assignment list --resource-group pharma-sales-projectforecast --output json | jq '.[] | {"roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
 ```Output
@@ -246,25 +239,25 @@ az role assignment list --resource-group pharma-sales-projectforecast --output j
 ...
 ```
 
-## <a name="assign-access"></a>Přiřadit přístup pro
+## <a name="create-role-assignments"></a>Vytvoření přiřazení role
 
-### <a name="assign-a-role-to-a-user"></a>Přiřazení role uživatele
+### <a name="create-a-role-assignment-for-a-user"></a>Umožňuje vytvořit přiřazení role pro uživatele
 
-Chcete-li přiřadit role pro uživatele v oboru skupiny prostředků, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az_role_assignment_create):
+Chcete-li vytvořit přiřazení role pro uživatele v oboru skupiny prostředků, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az_role_assignment_create):
 
 ```azurecli
 az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Následující příklad přiřadí *Přispěvatel virtuálních počítačů* role  *patlong@contoso.com*  uživatel na *pharma. prodej projectforecast* oboru skupiny prostředků:
+Následující příklad přiřadí *Přispěvatel virtuálních počítačů* role *patlong@contoso.com* uživatel na *pharma. prodej projectforecast* oboru skupiny prostředků:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales-projectforecast
 ```
 
-### <a name="assign-a-role-to-a-group"></a>Přiřazení role do skupiny
+### <a name="create-a-role-assignment-for-a-group"></a>Umožňuje vytvořit přiřazení role pro skupinu
 
-Chcete-li přiřadit roli do skupiny, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az_role_assignment_create):
+Chcete-li vytvořit přiřazení role pro skupinu, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az_role_assignment_create):
 
 ```azurecli
 az role assignment create --role <role> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
@@ -282,9 +275,9 @@ Následující příklad přiřadí *Přispěvatel virtuálních počítačů* r
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/11111111-1111-1111-1111-111111111111/resourcegroups/pharma-sales-projectforecast/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network
 ```
 
-### <a name="assign-a-role-to-an-application"></a>Přiřazení role k aplikaci
+### <a name="create-a-role-assignment-for-an-application"></a>Umožňuje vytvořit přiřazení role pro aplikaci
 
-K přiřazení rolí k aplikaci, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az_role_assignment_create):
+Chcete-li vytvořit roli pro aplikaci, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az_role_assignment_create):
 
 ```azurecli
 az role assignment create --role <role> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
@@ -296,9 +289,7 @@ Následující příklad přiřadí *Přispěvatel virtuálních počítačů* r
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
 ```
 
-## <a name="remove-access"></a>Odebrání přístupu
-
-### <a name="remove-a-role-assignment"></a>Odebrat přiřazení role
+## <a name="remove-a-role-assignment"></a>Odebrat přiřazení role
 
 Pokud chcete odstranit přiřazení role, použijte [odstranit přiřazení role az](/cli/azure/role/assignment#az_role_assignment_delete):
 
@@ -306,7 +297,7 @@ Pokud chcete odstranit přiřazení role, použijte [odstranit přiřazení role
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
 ```
 
-Následující příklad odebere *Přispěvatel virtuálních počítačů* přiřazení role z  *patlong@contoso.com*  uživatele na *pharma. prodej projectforecast* prostředků Skupina:
+Následující příklad odebere *Přispěvatel virtuálních počítačů* přiřazení role z *patlong@contoso.com* uživatele na *pharma. prodej projectforecast* prostředků Skupina:
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast
@@ -327,11 +318,11 @@ K zobrazení seznamu rolí, které jsou k dispozici pro přiřazení v oboru, po
 Obě následující příklady seznamu všechny vlastní role v aktuálním předplatném:
 
 ```azurecli
-az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.properties.roleName, "type":.properties.type}'
+az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "roleType":.roleType}'
 ```
 
 ```azurecli
-az role definition list --output json | jq '.[] | if .properties.type == "CustomRole" then {"roleName":.properties.roleName, "type":.properties.type} else empty end'
+az role definition list --output json | jq '.[] | if .roleType == "CustomRole" then {"roleName":.roleName, "roleType":.roleType} else empty end'
 ```
 
 ```Output

@@ -1,11 +1,11 @@
 ---
-title: "Resetovat heslo pro virtuální počítač s Linuxem a klíč SSH z rozhraní příkazového řádku | Microsoft Docs"
-description: "Jak používat rozšíření VMAccess z rozhraní příkazového řádku Azure (CLI) k obnovení virtuálního počítače s Linuxem heslo nebo klíč SSH, opravit konfiguraci SSH a kontrola konzistence disku"
+title: Resetovat heslo pro virtuální počítač s Linuxem a klíč SSH z rozhraní příkazového řádku | Microsoft Docs
+description: Jak používat rozšíření VMAccess z rozhraní příkazového řádku Azure (CLI) k obnovení virtuálního počítače s Linuxem heslo nebo klíč SSH, opravit konfiguraci SSH a kontrola konzistence disku
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: d975eb70-5ff1-40d1-a634-8dd2646dcd17
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: cynthn
-ms.openlocfilehash: 4577b6b9656b6a1cf83e6f9a227526701ba297b4
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: c36498d2f4fef506dc7047fe91666aceec73c13d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>Jak obnovit virtuální počítač s Linuxem heslo nebo klíč SSH, opravit konfiguraci SSH a kontrola konzistence disku pomocí rozšíření VMAccess
 Pokud se nemůžete připojit k virtuální počítač s Linuxem v Azure z důvodu zapomenuté heslo, nesprávného klíče Secure Shell (SSH), nebo problém s konfigurací SSH, používají rozšíření VMAccessForLinux s Azure CLI resetovat heslo nebo klíč SSH, opravte SSH Konfigurace a kontrolu konzistence disku. 
@@ -53,7 +53,7 @@ Musíte provést následující akce:
 * Pokud chcete obnovit některý mají nové heslo nebo sadu klíče SSH. Pokud chcete resetovat konfiguraci SSH tyto nepotřebujete.
 
 ## <a name="pwresetcli"></a>Resetování hesla
-1. Vytvořte soubor do místního počítače s názvem PrivateConf.json se tyto řádky. Nahraďte **uživatelské_jméno** a ** myP@ssW0rd ** s vlastní uživatelské jméno a heslo a nastavit vlastní datum vypršení platnosti.
+1. Vytvořte soubor do místního počítače s názvem PrivateConf.json se tyto řádky. Nahraďte **uživatelské_jméno** a **myP@ssW0rd** s vlastní uživatelské jméno a heslo a nastavit vlastní datum vypršení platnosti.
 
     ```   
         {
@@ -83,7 +83,7 @@ Musíte provést následující akce:
         azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
 
 ## <a name="resetbothcli"></a>Resetovat heslo a klíč SSH
-1. Vytvořte soubor s názvem PrivateConf.json se tyto obsah. Nahraďte **uživatelské_jméno**, **mySSHKey** a ** myP@ssW0rd ** hodnoty nahraďte svými vlastními informacemi.
+1. Vytvořte soubor s názvem PrivateConf.json se tyto obsah. Nahraďte **uživatelské_jméno**, **mySSHKey** a **myP@ssW0rd** hodnoty nahraďte svými vlastními informacemi.
 
     ``` 
         {

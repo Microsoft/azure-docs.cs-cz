@@ -1,8 +1,8 @@
 ---
-title: "Přidat řešení pro správu clusteru HDInsight k analýze protokolů Azure | Microsoft Docs"
-description: "Naučte se používat Azure Log Analytics vytvářet vlastní zobrazení pro clustery služby HDInsight."
+title: Přidat řešení pro správu clusteru HDInsight k analýze protokolů Azure | Microsoft Docs
+description: Naučte se používat Azure Log Analytics vytvářet vlastní zobrazení pro clustery služby HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: f8a073fbf40feaef97053bb1165d63bbca3e3feb
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ab959d2cdaf840a1a88a71a0b8f29d84a8979330
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="add-hdinsight-cluster-management-solutions-to-log-analytics"></a>Přidat řešení pro správu clusteru HDInsight k analýze protokolů
 
-HDInsight nabízí řešení pro správu specifických pro cluster, které můžete přidat pro analýzy protokolů Azure. [Řešení pro správu](../log-analytics/log-analytics-add-solutions.md) přidat funkce [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), že poskytuje další data a nástrojů pro analýzu k analýze protokolů. Tato řešení shromažďování metrik výkonu. důležité z clusterům HDInsight a poskytují nástroje pro hledání metriky. Tato řešení také poskytují vizualizace a řídicí panely pro většinu clusteru typy podporované v HDInsight. Pomocí metriky, které shromažďujete s řešením, můžete vytvořit vlastní pravidla monitorování a výstrahy. 
+HDInsight nabízí řešení pro správu specifických pro cluster, které můžete přidat pro analýzy protokolů Azure. [Řešení pro správu](../log-analytics/log-analytics-add-solutions.md) přidat funkce k analýze protokolů poskytnutí dalších dat a nástrojů pro analýzu. Tato řešení shromažďování metrik výkonu. důležité z clusterům HDInsight a poskytují nástroje pro hledání metriky. Tato řešení také poskytují vizualizace a řídicí panely pro většinu clusteru typy podporované v HDInsight. Pomocí metriky, které shromažďujete s řešením, můžete vytvořit vlastní pravidla monitorování a výstrahy. 
 
-V tomto článku zjistěte, jak přidat do pracovní prostor služby Operations Management Suite řešení pro správu specifických pro cluster.
+V tomto článku zjistěte, jak přidat do pracovního prostoru analýzy protokolů řešení pro správu specifických pro cluster.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,15 +33,15 @@ V tomto článku zjistěte, jak přidat do pracovní prostor služby Operations 
 
 ## <a name="add-cluster-specific-management-solutions"></a>Přidat řešení pro správu specifických pro cluster
 
-V této části přidáte do řešení pro správu clusteru HBase k existujícímu pracovnímu prostoru služby Operations Management Suite.
+V této části přidáte do řešení pro správu clusteru HBase k existujícímu pracovnímu prostoru analýzy protokolů.
 
-1. Klikněte na Otevřít clusteru služby HDInsigt na portálu Azure **monitorování**a potom klikněte na **otevřete řídicí panel OMS**.
+1. Klikněte na Otevřít clusteru HDInsight na portálu Azure **monitorování**a potom klikněte na **otevřete řídicí panel OMS**.
 
     ![Otevřete řídicí panel služby Operations Management Suite](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-log-analytics-open-oms-dashboard.png "OMS otevřete řídicí panel")
 
-1. Na řídicím panelu OMS, klikněte na tlačítko **řešení Galerie** nebo **Návrhář zobrazení** ikona v levém podokně.
+1. Na řídicím panelu klikněte na tlačítko **řešení Galerie** nebo **Návrhář zobrazení** ikona v levém podokně.
 
-    ![Přidat řešení pro správu v Operations Management Suite](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-add-management-solution-oms-portal.png "přidat řešení pro správu v Operations Management Suite")
+    ![Přidat řešení pro správu v analýzy protokolů](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-add-management-solution-oms-portal.png "přidat řešení pro správu v Operations Management Suite")
 
 2. V Galerii řešení klikněte na jednu z následujících dlaždic:
 
@@ -55,7 +55,7 @@ V této části přidáte do řešení pro správu clusteru HBase k existující
 
      ![Přidat řešení pro správu HBase](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/add-hbase-management-solution.png "řešení pro správu přidat HBase")
 
-4. Se zobrazí na dlaždici na řídicím panelu OMS HBase řešení pro správu. Pokud cluster, který je přidružený k Operations Management Suite (jako součást předpokladem pro tento článek) je HBase cluster, dlaždici se zobrazuje název clusteru a počet uzlů v clusteru.
+4. Se zobrazí na dlaždici na řídicím panelu řešení pro správu HBase. Pokud cluster, který je přidružený k Operations Management Suite (jako součást předpokladem pro tento článek) je HBase cluster, dlaždici se zobrazuje název clusteru a počet uzlů v clusteru.
 
     ![Přidat řešení pro správu HBase](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/added-hbase-management-solution.png "HBase řešení pro správu přidán")
 
@@ -65,5 +65,5 @@ V této části přidáte do řešení pro správu clusteru HBase k existující
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Práce s Operations Management Suite Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [Práce s analýzy protokolů](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
 * [Vytvořit pravidla výstrah v analýzy protokolů](../log-analytics/log-analytics-alerts-creating.md)

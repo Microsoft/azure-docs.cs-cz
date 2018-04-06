@@ -1,6 +1,6 @@
 ---
-title: "Vytvořit a spravovat servery Azure SQL & databáze | Microsoft Docs"
-description: "Informace o serveru Azure SQL Database a databázových koncepcí a o vytváření a správě serverů a databází."
+title: Vytvořit a spravovat servery Azure SQL & databáze | Microsoft Docs
+description: Informace o serveru Azure SQL Database a databázových koncepcí a o vytváření a správě serverů a databází.
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 2e05be2131ca89a084da5eeffc0b025b38432a8d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 18f904a2bac70bce3e1208945a7b94b59f6225f7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Vytvářet a spravovat servery Azure SQL Database a databáze
 
@@ -26,7 +26,7 @@ SQL Database nabízí tři typy databází:
 Microsoft Azure SQL Database podporuje tabular data stream (TDS) protokol klienta verze 7.3 nebo novější a umožňuje šifrované připojení TCP/IP.
 
 > [!IMPORTANT]
-> Instance databáze serveru SQL spravované, aktuálně ve verzi public preview, nabízí jedné vrstvy služby obecné účely. Další informace najdete v tématu [spravované Instance databáze SQL](sql-database-managed-instance.md). Zbývající část tohoto článku se nevztahuje na spravované Instance.
+> Instance databáze serveru SQL spravované, aktuálně ve verzi public preview, nabízí jedné vrstvy služby obecné účely. Další informace najdete v tématu [SQL Database Managed Instance](sql-database-managed-instance.md). Zbývající část tohoto článku se nevztahuje na spravované Instance.
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Co je logickému serveru Azure SQL?
 
@@ -53,7 +53,7 @@ Logický server Azure Database:
 - Poskytuje přístup k metadatům, která se vztahují k obsaženým prostředkům, přes zobrazení dynamických zpráv díky připojení k hlavní databázi. 
 - Poskytuje oboru pro zásady správy, které platí pro její databáze - přihlášení, brány firewall, audit, hrozby detekce atd. 
 - Je omezené na základě kvótu v rámci nadřazeného předplatného (šesti serverů na jedno předplatné, ve výchozím nastavení - [najdete v části předplatné omezuje zde](../azure-subscription-service-limits.md))
-- Poskytuje obor pro kvóty databáze a kvóty DTU pro prostředky, které obsahuje (jako je například 45 000 DTU)
+- Poskytuje oboru pro DTU nebo vCore kvót a kvóty databáze pro prostředky, které obsahuje (jako je například 45 000 DTU)
 - Je v rozsahu správy verzí pro možnosti zapnuta obsažených prostředků 
 - Hlavní přihlášení na úrovni serveru můžou spravovat všechny databáze na serveru.
 - Může obsahovat přihlašovací údaje podobné těm, která se místně používají v instancích SQL Serveru, a udělit jim přístup k jedné nebo několika databázím na serveru spolu s omezenými právy pro správu. Další informace najdete v tématu [Přihlašovací údaje](sql-database-manage-logins.md).
@@ -135,7 +135,7 @@ Vytvoření a Správa serveru Azure SQL, databáze a brány firewall se [rozhran
 |[seznam edicí az sql db](/cli/azure/sql/db#az_sql_db_list_editions)|Seznamy, které jsou k dispozici služby cíle a limity úložiště|
 |[db sql az seznamu – použití](/cli/azure/sql/db#az_sql_db_list_usages)|Vrátí databáze použití|
 |[AZ sql db zobrazit](/cli/azure/sql/db#az_sql_db_show)|Získá databáze nebo datového skladu|
-|[aktualizace databáze sql az](/cli/azure/sql/db#az_sql_db_update)|Aktualizuje databázi|
+|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|Aktualizuje databázi|
 |[Odstranění databáze sql az](/cli/azure/sql/db#az_sql_db_delete)|Odebere databáze|
 |[az group create](/cli/azure/group#az_group_create)|Vytvoří skupinu prostředků.|
 |[az sql server create](/cli/azure/sql/server#az_sql_server_create)|Vytvoří serveru|
@@ -169,7 +169,7 @@ Vytvoření a Správa serveru Azure SQL, databáze a brány firewall pomocí jaz
 |[Příkaz ALTER databáze (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Upravuje datovým skladem Azure SQL.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Odstraní databázi.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Vrátí edition (vrstva služby), cíl služby (cenové úrovně) a název elastického fondu, pokud existuje, pro databázi Azure SQL nebo Azure SQL Data Warehouse. Pokud přihlášení k hlavní databázi serveru Azure SQL Database, vrátí informace na všechny databáze. Pro Azure SQL Data Warehouse musí být připojen k hlavní databázi.|
-|[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Vrátí spotřeby procesoru, vstupně-výstupních operací a paměti pro databázi Azure SQL Database. Jeden řádek existuje pro každých 15 sekund, i když je v databázi žádná aktivita.|
+|[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Vrátí spotřeby procesoru, vstupně-výstupní operace a paměti pro databázi Azure SQL Database. Jeden řádek existuje pro každých 15 sekund, i když je v databázi žádná aktivita.|
 |[Sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Vrátí data o využití a úložiště procesoru pro Azure SQL Database. Data jsou nasbírána a shrnuta v pěti minutách.|
 |[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Obsahuje statistiku pro události připojení databáze SQL Database, umožní získat přehled o databáze připojení úspěchy a selhání. |
 |[sys.event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Vrátí úspěšné připojení databáze Azure SQL Database, připojení selhání a zablokování. Tyto informace můžete sledovat a řešit potíže aktivitu vaší databáze SQL Database.|

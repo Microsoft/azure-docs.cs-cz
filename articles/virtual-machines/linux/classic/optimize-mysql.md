@@ -1,11 +1,11 @@
 ---
-title: "Optimalizace výkonu databáze MySQL na systému Linux | Microsoft Docs"
-description: "Informace o optimalizaci MySQL spuštěna na virtuálním počítači Azure (VM) s Linuxem."
+title: Optimalizace výkonu databáze MySQL na systému Linux | Microsoft Docs
+description: Informace o optimalizaci MySQL spuštěna na virtuálním počítači Azure (VM) s Linuxem.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 0c1c7fc5-a528-4d84-b65d-2df225f2233f
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: ningk
-ms.openlocfilehash: 7e7582a31cb3e74fd8c3cd0dd54961392d9c53bb
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 447532452a848c88fd927f42e4263cef4742dd89
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="optimize-mysql-performance-on-azure-linux-vms"></a>Optimalizace výkonu databáze MySQL na virtuálních počítačích Azure Linux
 Existuje celá řada faktorů, které ovlivňují výkon databáze MySQL na Azure, jak v výběr virtuální hardwarové a softwarové konfigurace. Tento článek se zaměřuje na optimalizace výkonu úložiště, systému a konfigurace databáze.
@@ -187,7 +187,7 @@ Pokud chcete zvýšit maximální povolené souběžných obslužných rutin, p�
 
     * logicky nofile 65536
     * pevné nofile 65536
-    * logicky nproc 65536
+    * soft nproc 65536
     * pevné nproc 65536
 
 ### <a name="update-the-system-for-the-new-limits"></a>Aktualizujte systém na nový limity
@@ -311,7 +311,7 @@ Velikosti souborů použít pro toto testování 30 GB 1 GB, v uvedeném pořad�
 | Parametry | Výchozí | Optimalizace |
 | --- | --- | --- |
 | **innodb_buffer_pool_size** |Žádný |7 GB |
-| **innodb_log_file_size** |5 MB. |512 MB |
+| **innodb_log_file_size** |5 MB |512 MB |
 | **max_connections** |100 |5000 |
 | **innodb_file_per_table** |0 |1 |
 | **innodb_flush_log_at_trx_commit** |1 |2 |

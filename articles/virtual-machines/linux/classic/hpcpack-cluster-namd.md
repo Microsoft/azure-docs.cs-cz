@@ -1,11 +1,11 @@
 ---
-title: "NAMD pomocí sady Microsoft HPC Pack na virtuální počítače s Linuxem | Microsoft Docs"
-description: "Nasazení clusteru s podporou sady Microsoft HPC Pack v Azure a spustit simulaci NAMD s charmrun v několika výpočetních uzlech Linux"
+title: NAMD pomocí sady Microsoft HPC Pack na virtuální počítače s Linuxem | Microsoft Docs
+description: Nasazení clusteru s podporou sady Microsoft HPC Pack v Azure a spustit simulaci NAMD s charmrun v několika výpočetních uzlech Linux
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 76072c6b-ac35-4729-ba67-0d16f9443bd7
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
-ms.openlocfilehash: 0c0b9875b4153edcc0ec0096577d041d394a842f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61dd49d4bd3183b6b9a78036d6d7d01798e4dc89
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>Spuštění NAMD se sadou Microsoft HPC Pack ve výpočetních uzlech Linuxu v Azure
 Tento článek ukazuje jeden ze způsobů spuštění Linux vysoce výkonné výpočty (HPC) zatížení na virtuálních počítačích Azure. Zde můžete nastavit [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) cluster v Azure s Linuxem výpočetních uzlů a spusťte [NAMD](http://www.ks.uiuc.edu/Research/namd/) simulace vypočítat a vizualizovat strukturu velké biomolekulárních systému.  
@@ -30,7 +30,7 @@ Tento článek ukazuje jeden ze způsobů spuštění Linux vysoce výkonné vý
 * **Microsoft HPC Pack** poskytuje funkce, které chcete spouštět ve velkém měřítku HPC a paralelní aplikace v clusterech místního počítače nebo virtuální počítače Azure. Původně vyvinut jako řešení pro úlohy Windows HPC, HPC Pack teď podporuje spouštění aplikací prostředí HPC pro Linux v systému Linux výpočetní uzel virtuální počítače nasazené na clusteru HPC Pack. V tématu [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](hpcpack-cluster.md) úvod.
 
 ## <a name="prerequisites"></a>Požadavky
-* **Výpočetní uzly clusteru HPC Pack operačního systému Linux** -nasazení clusteru HPC Pack s Linux výpočetní uzly v Azure pomocí buď [šablony Azure Resource Manageru](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) nebo [skript prostředí Azure PowerShell](hpcpack-cluster-powershell-script.md) . V tématu [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](hpcpack-cluster.md) pro požadavky a kroky pro jednu z možností. Pokud zvolíte možnost nasazení skriptu prostředí PowerShell, naleznete v souboru konfigurace ukázka v ukázkové soubory na konci tohoto článku. Tento soubor nakonfiguruje clusteru služby založené na Azure HPC Pack skládající se z hlavního uzlu systému Windows Server 2012 R2 a čtyři výpočetní uzly velké 6.6 CentOS velikost. Tento soubor přizpůsobte podle potřeby pro vaše prostředí.
+* **Výpočetní uzly clusteru HPC Pack operačního systému Linux** -nasazení clusteru HPC Pack s Linux výpočetní uzly v Azure pomocí buď [šablony Azure Resource Manageru](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) nebo [skript prostředí Azure PowerShell](hpcpack-cluster-powershell-script.md). V tématu [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](hpcpack-cluster.md) pro požadavky a kroky pro jednu z možností. Pokud zvolíte možnost nasazení skriptu prostředí PowerShell, naleznete v souboru konfigurace ukázka v ukázkové soubory na konci tohoto článku. Tento soubor nakonfiguruje clusteru služby založené na Azure HPC Pack skládající se z hlavního uzlu systému Windows Server 2012 R2 a čtyři výpočetní uzly velké 6.6 CentOS velikost. Tento soubor přizpůsobte podle potřeby pro vaše prostředí.
 * **Soubory softwaru a kurzu NAMD** -NAMD stažení softwaru pro Linux z [NAMD](http://www.ks.uiuc.edu/Research/namd/) lokality (vyžaduje registraci). Tento článek je založena na NAMD verze 2.10 a používá [Linux-x86_64 (64-bit Intel nebo AMD s sítě Ethernet)](http://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1310) archivu. Také stáhnout [NAMD kurz soubory](http://www.ks.uiuc.edu/Training/Tutorials/#namd). Stahování jsou soubory .tar a potřebujete nástroj Windows extrahujte soubory z hlavního uzlu clusteru. Extrahujte soubory, postupujte podle pokynů dále v tomto článku. 
 * **VMD** (volitelné) – Chcete-li zobrazit výsledky úlohy NAMD, stáhněte a nainstalujte program molekulární vizualizace [VMD](http://www.ks.uiuc.edu/Research/vmd/) na počítači podle svého výběru. Aktuální verze je 1.9.2. V tématu VMD ke stažení začít pracovat.  
 
@@ -208,7 +208,7 @@ host <Name of node2> ++cpus <Cores of node2>
 …
 ```
 
-Například:
+Příklad:
 
 ```
 group main
@@ -228,11 +228,11 @@ Nyní jste připraveni se odeslat úlohu NAMD ve Správci clusteru HPC.
    ![Nové úlohy HPC][namd_job]
 5. Na **podrobnosti úlohy** v části **úlohy prostředky**, vyberte typ prostředku jako **uzlu** a nastavte **minimální** na 3. , jsme spustit úlohu na tři uzly Linux a každý uzel má čtyři jádra.
    
-   ![Úloha prostředky][job_resources]
+   ![Prostředky úlohy][job_resources]
 6. Klikněte na tlačítko **upravit úlohy** v levém navigačním panelu a pak klikněte na tlačítko **přidat** k přidání úkolu do úlohy.    
 7. Na **podrobností úlohy a přesměrování vstupu a výstupu** nastavte následující hodnoty:
    
-   * **Příkazový řádek**-
+   * **Příkazový řádek** -
      `/namd2/hpccharmrun.sh ++remote-shell ssh /namd2/namd2 /namd2/namdsample/1-2-sphere/ubq_ws_eq.conf > /namd2/namd2_hpccharmrun.log`
      
      > [!TIP]
@@ -242,7 +242,7 @@ Nyní jste připraveni se odeslat úlohu NAMD ve Správci clusteru HPC.
    * **Pracovní adresář** -/namd2
    * **Minimální** – 3
      
-     ![Podrobnosti úlohy][task_details]
+     ![Detail úlohy][task_details]
      
      > [!NOTE]
      > Pracovní adresář tady nastavíte protože **charmrun** pokusí přejděte na stejný pracovní adresář na každém uzlu. Pokud není nastavena pracovní adresář, HPC Pack spustí příkaz náhodným názvem složky vytvořené v jednom z uzlů Linux. To způsobí, že k následující chybě na ostatních uzlech: `/bin/bash: line 37: cd: /tmp/nodemanager_task_94_0.mFlQSN: No such file or directory.` k tomuto problému nedošlo, zadejte cestu ke složce, která je přístupná ve všech uzlech jako pracovní adresář.
@@ -252,7 +252,7 @@ Nyní jste připraveni se odeslat úlohu NAMD ve Správci clusteru HPC.
    
    Ve výchozím nastavení HPC Pack předá úlohu jako váš aktuální účet přihlášeného uživatele. Dialogové okno může zobrazit výzva k zadání uživatelského jména a hesla, po kliknutí na tlačítko **odeslání**.
    
-   ![Přihlašovací údaje úlohy][creds]
+   ![Přihlašovací údaje k úloze][creds]
    
    Za určitých podmínek HPC Pack pamatuje informace o uživateli, zadejte před a nezobrazí tohoto dialogového okna. Chcete-li HPC Pack jej znovu zobrazit, zadejte následující příkaz na příkazovém řádku a potom odeslání úlohy.
    

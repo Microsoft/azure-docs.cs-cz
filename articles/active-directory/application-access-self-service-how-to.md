@@ -1,23 +1,23 @@
 ---
-title: "Postup konfigurace samoobslužné služby aplikace přiřazení | Microsoft Docs"
-description: "Povolit přístup k aplikaci Samoobslužné služby umožnit uživatelům najít vlastní aplikace"
+title: Postup konfigurace samoobslužné služby aplikace přiřazení | Microsoft Docs
+description: Povolit přístup k aplikaci Samoobslužné služby umožnit uživatelům najít vlastní aplikace
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 04/02/2018
 ms.author: asteen
-ms.openlocfilehash: 8aeda498847759debab18ddf4b44a75cd739a56c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: cf70da4933f5513b75f84aef01dec1ef902eab85
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Postup konfigurace samoobslužné služby aplikace přiřazení
 
@@ -64,7 +64,10 @@ Pokud chcete povolit samoobslužné služby aplikaci přístup k aplikaci, postu
 8.  Pokud chcete povolit přístup k aplikaci Samoobslužné služby pro tuto aplikaci, zapněte **povolit uživatelům žádat o přístup k této aplikaci?** přepnutím **Ano.**
 
 9.  V dalším kroku vyberte skupiny, které uživatelům, kteří požadují by se měl přístup k této aplikaci přidat, klikněte na tlačítko modulu pro výběr vedle popisek **skupinu, pro kterou má přiřazené byli přidáni uživatelé?** a vyberte skupinu.
-
+  
+  > [!NOTE]
+  > Skupin synchronizovaných z místní nejsou podporovány, který se má použít pro skupinu, do které by měl přidány uživatelů, kteří požadují přístup k této aplikaci.
+  
 10. **Volitelné:** nastaví, pokud chcete vyžadovat schválení obchodní před uživatelé mají povolen přístup **vyžadovat schválení před udělením přístupu k této aplikaci?** přepnutím **Ano**.
 
 11. **Volitelné: pro aplikace pomocí hesla jednotné přihlašování na pouze** Pokud chcete povolit tyto firmy schvalovatelů k zadání hesla, které se odesílají na tuto žádost o schválení uživatelé, nastavte **povolit schvalovatelů nastavit uživatele hesla pro tuto aplikaci?**  přepnutím **Ano**.

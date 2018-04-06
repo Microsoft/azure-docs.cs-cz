@@ -1,11 +1,11 @@
 ---
-title: "Schémata sledování AS2 pro monitorování B2B - Azure Logic Apps | Microsoft Docs"
-description: "Ke sledování zpráv B2B z transakcí v účtu Azure integrace použijte schémata sledování AS2."
+title: Schémata sledování AS2 pro monitorování B2B - Azure Logic Apps | Microsoft Docs
+description: Ke sledování zpráv B2B z transakcí v účtu Azure integrace použijte schémata sledování AS2.
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31bd296dc5ed5ac6998a6c05ee80fd38b12d662c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8605950f3cc07730ee13b91999076e3a093e8d92
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="start-or-enable-tracking-of-as2-messages-and-mdns-to-monitor-success-errors-and-message-properties"></a>Spuštění nebo povolení sledování AS2 zpráv a MDNs k úspěchu monitorování, chyb a vlastnosti zprávy
 Tato schémata sledování AS2 můžete ve vašem účtu integrace se službou Azure vám pomohou monitorovat business-to-business transakce (B2B):
@@ -66,7 +66,7 @@ Tato schémata sledování AS2 můžete ve vašem účtu integrace se službou A
 | as2To | Řetězec | Příjemce zprávu AS2 název ze záhlaví zprávy AS2. (Povinné) |
 | as2From | Řetězec | Název odesílatele zprávy AS2 z hlavičky AS2 zprávy. (Povinné) |
 | agreementName | Řetězec | Název smlouvy AS2, ke kterému jsou vyřešeny zprávy. (Volitelné) |
-| Směr | Řetězec | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
+| směr | Řetězec | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
 | messageId | Řetězec | ID zprávy AS2, z hlavičky AS2 zprávy (volitelné) |
 | dispositionType |Řetězec | Hodnota typu dispozice zpráva dispozice oznámení (MDN). (Volitelné) |
 | fileName | Řetězec | Název souboru z hlavičky AS2 zprávy. (Volitelné) |
@@ -118,7 +118,7 @@ Tato schémata sledování AS2 můžete ve vašem účtu integrace se službou A
 | as2To | Řetězec | Název partnera, který obdrží zprávu AS2. (Povinné) |
 | as2From | Řetězec | Název partnera, který odešle zprávu AS2. (Povinné) |
 | agreementName | Řetězec | Název smlouvy AS2, ke kterému jsou vyřešeny zprávy. (Volitelné) |
-| Směr |Řetězec | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
+| směr |Řetězec | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
 | messageId | Řetězec | ID AS2 zprávy. (Volitelné) |
 | OriginalMessageId |Řetězec | ID AS2 původní zprávy. (Volitelné) |
 | dispositionType | Řetězec | Hodnota typu MDN dispozice. (Volitelné) |
@@ -131,9 +131,9 @@ Tato schémata sledování AS2 můžete ve vašem účtu integrace se službou A
 | incomingHeaders | Slovník JToken | Určuje podrobnosti záhlaví příchozí zprávy. (Volitelné) |
 | outgoingHeaders |Slovník JToken | Určuje odchozí podrobnosti záhlaví zprávy. (Volitelné) |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o [Enterprise integračního balíčku](../logic-apps/logic-apps-enterprise-integration-overview.md).    
 * Další informace o [sledování zpráv B2B](logic-apps-monitor-b2b-message.md).   
 * Další informace o [B2B vlastní sledování schémata](logic-apps-track-integration-account-custom-tracking-schema.md).   
 * Další informace o [X12 sledování schémata](logic-apps-track-integration-account-x12-tracking-schema.md).   
-* Další informace o [sledování zpráv B2B na portálu služby Operations Management Suite](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Další informace o [sledování zpráv B2B ve analýzy protokolů](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).

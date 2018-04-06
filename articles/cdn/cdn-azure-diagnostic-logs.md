@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: f9711f9cfaab1ef22da220a773689c95b1103970
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9c61fe7c62f0718d390509d3b0ff3327bd193f43
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -26,7 +26,7 @@ S Azure diagnostické protokoly můžete zobrazit analýzu základní a uložit 
 
  - Účet služby Azure Storage
  - Azure Event Hubs
- - [Úložiště analýzy protokolů OMS](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
+ - [Pracovní prostor analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
 Tato funkce je k dispozici pro všechny koncové body CDN patřící do Verizon (Standard a Premium) a profilů CDN Akamai (Standard). 
 
@@ -34,7 +34,7 @@ Azure diagnostics protokoly umožňují, aby můžete využívat požadovaným z
 
 - Exportujte data do úložiště objektů blob, exportovat do souboru CSV a generovat grafy v aplikaci Excel.
 - Exportovat data do centra událostí a korelovat s daty z jiné služby Azure.
-- Exportovat data do protokolu analýzy a zobrazení dat ve vlastní pracovní prostor OMS
+- Exportovat data do protokolu analýzy a zobrazení dat ve vlastní pracovní prostor analýzy protokolů
 
 Následující obrázek znázorňuje typické zobrazení základní analýza CDN data.
 
@@ -68,9 +68,9 @@ Přihlaste se k [portálu Azure](http://portal.azure.com). Pokud ještě nemáte
 
 *Obrázek 2 – protokolování s Azure Storage*
 
-### <a name="logging-with-oms-log-analytics"></a>Protokolování s OMS analýzy protokolů
+### <a name="logging-with-log-analytics"></a>Protokolování s analýzy protokolů
 
-OMS Log Analytics k ukládání protokolů, postupujte podle těchto kroků:
+Analýzy protokolů k ukládání protokolů, postupujte podle těchto kroků:
 
 1. Z **protokolů diagnostiky** vyberte **odeslat k analýze protokolů**. 
 
@@ -84,7 +84,7 @@ OMS Log Analytics k ukládání protokolů, postupujte podle těchto kroků:
 
     ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. Zadejte nový název pracovní prostor OMS. Název pracovní prostor OMS musí být jedinečný a obsahovat pouze písmena, číslice a pomlčky; nejsou povoleny mezery a podtržítka. 
+4. Zadejte nový název pracovního prostoru analýzy protokolů. Název pracovního prostoru analýzy protokolů musí být jedinečný a obsahovat pouze písmena, číslice a pomlčky; nejsou povoleny mezery a podtržítka. 
 5. Potom vyberte existující předplatné, skupinu prostředků (nová nebo stávající), umístění a cenovou úroveň. Máte také možnost Připnutí na řídicí panel tuto konfiguraci. Klikněte na tlačítko **OK** k dokončení konfigurace.
 
     ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/08_Workspace-resource.png)
@@ -97,11 +97,11 @@ OMS Log Analytics k ukládání protokolů, postupujte podle těchto kroků:
 
 6. Klikněte na **Uložit**.
 
-7. Chcete-li zobrazit nový pracovní prostor OMS, přejděte do řídicího panelu portálu Azure a klikněte na název pracovního prostoru analýzy protokolů. Klikněte na portálu OMS dlaždici zobrazení pracovního prostoru v úložišti OMS. 
+7. Chcete-li zobrazit nový pracovní prostor analýzy protokolů, přejděte do řídicího panelu portálu Azure a klikněte na název pracovního prostoru analýzy protokolů. Klikněte na dlaždici portálu OMS zobrazíte pracovní prostor analýzy protokolů. 
 
     ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
 
-    Úložiště OMS je nyní připraven k protokolovat data. Aby bylo možné využívat data, musíte použít [OMS řešení](#consuming-oms-log-analytics-data), zahrnuté později v tomto článku.
+    Pracovní prostor analýzy protokolů je nyní připraven k protokolovat data. Aby bylo možné využívat data, je nutné použít [řešení protokolu analýzy](#consuming-diagnostics-logs-from-a-log-analytics-workspace), zahrnuté později v tomto článku.
 
 Další informace o zpoždění dat protokolu najdete v tématu [protokolu zpoždění data](#log-data-delays).
 
@@ -123,7 +123,7 @@ K povolení diagnostických protokolů v účtu úložiště použijte tento př
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
 ```
-K povolení protokolů diagnostiky v pracovním prostoru OMS použijte tento příkaz:
+K povolení protokolů diagnostiky v pracovním prostoru analýzy protokolů použijte tento příkaz:
 
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
@@ -179,16 +179,16 @@ Zde je, jak můžete použít nástroj:
 4.  Spusťte nástroj.
 5.  Výsledný soubor CSV zobrazuje analytická data v jednoduchých ploché hierarchii.
 
-## <a name="consuming-diagnostics-logs-from-an-oms-log-analytics-repository"></a>Použití protokolů diagnostiky z úložiště analýzy protokolů OMS
-Analýzy protokolů je služba v Operations Management Suite (OMS), který monitoruje své cloudové a místní prostředí k udržování své dostupnosti a výkonu. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji. 
+## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Použití protokolů diagnostiky z pracovního prostoru analýzy protokolů
+Log Analytics je služba v Azure, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji. 
 
-Chcete-li použít analýzy protokolů, je nutné [povolit protokolování](#enable-logging-with-azure-storage) do úložiště analýzy protokolů Azure OMS, které je popsané výše v tomto článku.
+Chcete-li použít analýzy protokolů, je nutné [povolit protokolování](#enable-logging-with-azure-storage) do pracovního prostoru analýzy protokolů Azure, které je popsané výše v tomto článku.
 
-### <a name="using-the-oms-repository"></a>Použití úložiště OMS
+### <a name="using-the-log-analytics-workspace"></a>Použití pracovního prostoru analýzy protokolů
 
  Následující diagram znázorňuje architekturu vstupy a výstupy úložiště:
 
-![Úložiště analýzy protokolů OMS](./media/cdn-diagnostics-log/12_Repo-overview.png)
+![Pracovní prostor Log Analytics](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
 *Obrázek 3 - úložiště analýzy protokolů*
 
@@ -196,7 +196,7 @@ Data můžete zobrazit v mnoha různými způsoby pomocí řešení pro správu.
 
 Řešení pro správu můžete nainstalovat z Azure marketplace kliknutím **ho získat** odkaz na konci každé řešení.
 
-### <a name="adding-an-oms-cdn-management-solution"></a>Přidávání do řešení pro správu OMS CDN
+### <a name="adding-a-log-analytics-cdn-management-solution"></a>Přidání řešení pro správu protokolu analýzy CDN
 
 Použijte následující postup přidání řešení pro správu:
 
@@ -219,7 +219,7 @@ Použijte následující postup přidání řešení pro správu:
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6.  Po kliknutí na **vytvořit**, zobrazí se výzva k vytvoření nové pracovní prostor OMS nebo použijte existující. 
+6.  Po kliknutí na **vytvořit**, zobrazí se výzva k vytvoření nové pracovní prostor analýzy protokolů nebo použijte existující. 
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
@@ -241,11 +241,11 @@ Použijte následující postup přidání řešení pro správu:
 
     Klikněte na pracovní prostor analýzy protokolů, které jste vytvořili pro přejděte do pracovního prostoru. 
 
-11. Klikněte **portálu OMS** dlaždice zobrazíte nové řešení na portálu OMS.
+11. Klikněte **portálu OMS** dlaždice zobrazíte nové řešení.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/23_workspace.png)
 
-12. Na portálu OMS by teď měl vypadat jako následující obrazovka:
+12. Portálu by teď měl vypadat jako následující obrazovka:
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
@@ -261,11 +261,11 @@ Použijte následující postup přidání řešení pro správu:
 
 ### <a name="offers-and-pricing-tiers"></a>Nabídky a cenové úrovně
 
-Můžete zobrazit nabídky a cenové úrovně pro řešení pro správu OMS [zde](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers).
+Můžete zobrazit nabídky a cenové úrovně pro řešení pro správu [zde](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers).
 
 ### <a name="customizing-views"></a>Přizpůsobení zobrazení
 
-Zobrazení lze přizpůsobit do vašich dat pomocí **Návrhář zobrazení**. Chcete-li začít návrh, přejděte do pracovního prostoru OMS a klikněte na **Návrhář zobrazení** dlaždici.
+Zobrazení lze přizpůsobit do vašich dat pomocí **Návrhář zobrazení**. Chcete-li začít návrh, přejděte do pracovního prostoru analýzy protokolů a klikněte na **Návrhář zobrazení** dlaždici.
 
 ![Návrhář zobrazení](./media/cdn-diagnostics-log/27_Designer.png)
 
@@ -410,7 +410,7 @@ Příklad vlastnosti:
 
 * [Azure diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Základní analýza prostřednictvím doplňkovém portálu Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Analýzy protokolů Azure OMS](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Analýza protokolů Azure rozhraní REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 

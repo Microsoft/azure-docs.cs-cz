@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s úlohami elastické databáze | Microsoft Docs"
-description: "Spuštění skriptů T-SQL, které jsou rozmístěny v několika databází pomocí úlohy elastické databáze."
+title: Začínáme s úlohami elastické databáze | Microsoft Docs
+description: Spuštění skriptů T-SQL, které jsou rozmístěny v několika databází pomocí úlohy elastické databáze.
 services: sql-database
 manager: craigg
 author: stevestein
@@ -9,11 +9,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: sstein
-ms.openlocfilehash: 5d55ae225ca1b550bbf70314e2f48fc0161ad107
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 85fd04966822f8dd6a0c3086002e4388411d1051
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Začínáme s úlohami elastické databáze
 Elastické databáze úlohy (preview) pro databázi SQL Azure umožňuje spolehlivě spuštění skriptů T-SQL, které jsou rozmístěny v několika databází při automaticky opakování a poskytování případné dokončení záruky. Další informace o funkci úlohy elastické databáze najdete v tématu [elastické úlohy](sql-database-elastic-jobs-overview.md).
@@ -456,11 +456,11 @@ Odebrat aktivační události úlohy zastavení úlohy z se spouští podle plá
 
 Všechny řádky z **zákazníci** tabulky, uložené v různých horizontálních oddílů naplnit listu aplikace Excel.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď můžete použít funkce dat v aplikaci Excel. Použijte připojovací řetězec s názvem serveru, názvu databáze a pověření pro připojení k databázi elastické dotazu vaše integrace nástrojů BI a data. Ujistěte se, že systém SQL Server je podporovaný jako zdroj dat pro vaše nástroje. Viz elastické dotaz do databáze a externí tabulky stejně jako všechny ostatní databáze systému SQL Server a SQL Server tabulky, které by se připojit k vaší nástrojem.
 
 ### <a name="cost"></a>Náklady
-Není k dispozici pro použití funkce dotazu elastické databáze bez dalších poplatků. V tuto chvíli tato funkce je dostupná pouze v databázích premium jako koncový bod, ale horizontálních oddílů lze vrstvy jakékoli služby.
+Není k dispozici pro použití funkce dotazu elastické databáze bez dalších poplatků. Ale v tuto chvíli tato funkce je dostupná jenom na Premium a kritické obchodní (preview) databáze i elastické fondy jako koncový bod, ale horizontálních oddílů lze vrstvy jakékoli služby.
 
 Informace o cenách najdete v části [podrobnosti o cenách na SQL databázi](https://azure.microsoft.com/pricing/details/sql-database/).
 

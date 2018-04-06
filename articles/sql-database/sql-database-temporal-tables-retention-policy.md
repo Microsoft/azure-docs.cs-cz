@@ -1,6 +1,6 @@
 ---
-title: "Správa historických dat v dočasných tabulek se zásady uchovávání informací | Microsoft Docs"
-description: "Další informace o použití zásad dočasné uchovávání informací pro historických dat pod kontrolou."
+title: Správa historických dat v dočasných tabulek se zásady uchovávání informací | Microsoft Docs
+description: Další informace o použití zásad dočasné uchovávání informací pro historických dat pod kontrolou.
 services: sql-database
 author: bonova
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: develop databases
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: bonova
-ms.openlocfilehash: 36ce6889cccbf5ae7df519c5c73846f12eed4a08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1ebfab93c94c27de8e765ac3f8278372c8f0690f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Správa historických dat v dočasných tabulek se zásady uchovávání informací
 Dočasné tabulky může zvýšit velikost databáze více než regulérních tabulkách, zejména v případě, že zachováte historických dat pro delší časové období. Proto zásady uchovávání historických dat je důležitým aspektem plánování a správu životního cyklu každých dočasnou tabulku. Dočasné tabulky v databázi SQL Azure se dodávají s snadno použitelné uchování mechanismus, který umožňuje provedení této úlohy.
@@ -102,7 +102,7 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 
 ## <a name="how-sql-database-deletes-aged-rows"></a>Jak SQL Database odstraní stará řádky?
 Proces vyčištění závisí na rozložení indexu tabulky historie. Je důležité si všimněte si, že *pouze tabulky historie clusterovaný index (B-stromu nebo columnstore) může mít omezený uchování zásady nakonfigurované*. Úlohy na pozadí se vytvoří pro Vyčistit stará data pro všechny dočasné tabulky s dobou uchování omezené.
-Vyčištění logiku pro clusterovaný index rowstore (B-stromu) odstraňuje zastaralá řádek v menší bloky dat (až 10 kB) minimalizovat tlak na protokol databáze a vstupně-výstupních operací subsystému. I když čištění logiku využívá požadovaným indexem B-stromu, pořadí odstranění starší než doba uchování dat se nedá zaručit pevně řádků. Proto *nepřebírají žádné závislostí v pořadí čištění ve svých aplikacích*.
+Vyčištění logiku pro clusterovaný index rowstore (B-stromu) odstraňuje zastaralá řádek v menší bloky dat (až 10 kB) minimalizovat tlak na protokol databáze a subsystému vstupně-výstupní operace. I když čištění logiku využívá požadovaným indexem B-stromu, pořadí odstranění starší než doba uchování dat se nedá zaručit pevně řádků. Proto *nepřebírají žádné závislostí v pořadí čištění ve svých aplikacích*.
 
 Úloha vyčištění pro Clusterované columnstore odebere celý [řádek skupiny](https://msdn.microsoft.com/library/gg492088.aspx) najednou (obvykle obsahují 1 milionu řádků každý), což je velmi efektivní, zejména v případě, že historická data se generuje vysoký tempem.
 
@@ -174,7 +174,7 @@ ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
 ````
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o použití dočasných tabulek v aplikacích, projděte si [Začínáme s dočasné tabulky v databázi SQL Azure](sql-database-temporal-tables.md).
 
 Navštivte Channel 9 a poslechnout [scénáře úspěchu dočasné implementace skutečné zákazníka](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) a sledujte [live dočasné ukázkový](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).

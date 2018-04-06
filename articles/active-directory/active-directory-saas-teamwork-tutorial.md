@@ -1,10 +1,10 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Teamwork.com | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Teamwork.com."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Teamwork.com.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: bd4413c2-0d7c-41a7-aba4-b7a7a28c9448
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2017
+ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 00292d0aed24ea034eba8686bcd9cbdd1ef676e3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 07b4be1256b77ac35efab9c6b2d593b4763cdf86
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamworkcomhttpswwwteamworkcomprojects"></a>Kurz: Azure Active Directory integrace s [Teamwork.com](https://www.teamwork.com/projects)
+# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>Kurz: Azure Active Directory integrace s Teamwork.com
 
 V tomto kurzu zjistěte, jak integrovat Teamwork.com s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, n
 Konfigurace integrace Azure AD s Teamwork.com, potřebujete následující položky:
 
 - Předplatné služby Azure AD
-- A [Teamwork.com](https://www.teamwork.com/projects) předplatné Pro plán nebo vyšší
+- Teamwork.com jednotné přihlašování povolené předplatné
 
 > [!NOTE]
 > K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
@@ -108,10 +108,17 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Teamwork.com domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_url.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<company name>.teamwork.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<company name>.teamwork.com`
+
+    b. V **identifikátor** textovému poli, zadejte adresu URL:
+
+    |||
+    |-|-|
+    | `https://teamwork.com/saml`|
+    | `https://eu.teamwork.com/saml`|
 
     > [!NOTE] 
-    > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Teamwork.com](mailto:support@teamwork.com) získat tuto hodnotu. 
+    > Tato hodnota přihlašovací adresa URL není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Teamwork.com](mailto:support@teamwork.com) získat tuto hodnotu. 
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
@@ -122,10 +129,6 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-teamwork-tutorial/tutorial_general_400.png)
 
 6. Konfigurace jednotného přihlašování na **Teamwork.com** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory Teamwork.com](mailto:support@teamwork.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -200,12 +203,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Teamwork.com na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Teamwork.com.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

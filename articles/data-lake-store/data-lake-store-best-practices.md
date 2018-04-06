@@ -1,8 +1,8 @@
 ---
-title: "Osvědčené postupy pro používání Azure Data Lake Store | Microsoft Docs"
-description: "Další informace o přijímání dat, datum zabezpečení a výkonu související s použitím Azure Data Lake Store doporučené postupy"
+title: Osvědčené postupy pro používání Azure Data Lake Store | Microsoft Docs
+description: Další informace o přijímání dat, datum zabezpečení a výkonu související s použitím Azure Data Lake Store doporučené postupy
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: c394142ba40fc580bdcec11430dcae2816fa9760
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: daa6a0fd6927a166ee4809dc1dc5df612765403a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Doporučené postupy pro používání Azure Data Lake Store
 V tomto článku se dozvíte o osvědčených postupech a důležité informace týkající se práce s Azure Data Lake Store. Tento článek obsahuje informace o zabezpečení, výkonu, odolnost proti chybám a monitorování pro Data Lake Store. Před Data Lake Store práci s skutečně velkých objemů dat v služby, jako je Azure HDInsight byl složitý. Bylo sdílení dat mezi více účtů úložiště Blob tak, aby bylo možné dosáhnout petabajty úložiště a optimální výkon v tomto měřítku. S Data Lake Store jsou odstraněna většina pevných limitů pro velikost a výkon. Existují však stále některé aspekty, které tento článek se týká, abyste měli k dosažení nejlepšího výkonu s Data Lake Store. 
@@ -129,7 +129,7 @@ Data Lake Store poskytuje podrobné diagnostické protokoly a auditování. Data
 
 ### <a name="export-data-lake-store-diagnostics"></a>Diagnostika export Data Lake Store 
 
-Jedním z nejrychlejší způsobů, jak získat přístup k protokolům prohledávatelné z Data Lake Store je umožnit přesouvání protokolu pro **Operations Management Suite (OMS)** pod **diagnostiky** okně účtu Data Lake Store. To poskytuje okamžitý přístup k příchozí protokoly čas a obsahu filtry, společně s možností (e-mailu nebo webhooku) výstrah, aktivuje v intervalech 15 minut. Pokyny najdete v tématu [přístupu k diagnostickým protokolům pro Azure Data Lake Store](data-lake-store-diagnostic-logs.md). 
+Jedním z nejrychlejší způsobů, jak získat přístup k protokolům prohledávatelné z Data Lake Store je umožnit přesouvání protokolu pro **analýzy protokolů** pod **diagnostiky** okně účtu Data Lake Store. To poskytuje okamžitý přístup k příchozí protokoly čas a obsahu filtry, společně s možností (e-mailu nebo webhooku) výstrah, aktivuje v intervalech 15 minut. Pokyny najdete v tématu [přístupu k diagnostickým protokolům pro Azure Data Lake Store](data-lake-store-diagnostic-logs.md). 
 
 Pro další výstrahy v reálném čase a větší kontrolu, ve kterém můžete zobrazovat v protokolech vezměte v úvahu export protokolů k centru EventHub Azure, kde obsah lze analyzovat jednotlivě nebo po časové okno aby bylo možné odeslat oznámení v reálném čase do fronty. Samostatná aplikace, jako [aplikace logiky](../connectors/connectors-create-api-azure-event-hubs.md) můžete pak využívat a komunikaci výstrahy na správný kanál, a také odeslání pro monitorování nástroje, například nástrojů NewRelic, Datadog nebo AppDynamics nastavení. Případně, pokud používáte nástroje třetích stran, jako je ElasticSearch, můžete exportovat protokoly do úložiště objektů Blob a použít [modul plug-in Azure Logstash](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob) využívat data do vaší Elasticsearch, Kibana a Logstash (ELK) zásobníku.
 
@@ -139,7 +139,7 @@ Pokud Data Lake Store přesouvání protokolu není zapnutý, Azure HDInsight ta
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG 
 
-Jakmile je vlastnost nastavena a uzly se restartují, diagnostiky Data Lake Store je zapsán do protokolů YARN na uzlech (/tmp/<user>/yarn.log) a důležité podrobnosti jako chyby nebo omezení (kód chyby HTTP 429) lze sledovat. Stejné informace je možné monitorovat také v OMS nebo kdekoli jsou protokoly odeslaná do v [diagnostiky](data-lake-store-diagnostic-logs.md) okně účtu Data Lake Store. Doporučuje se alespoň zapnout protokolování na straně klienta nebo využívat možnost s Data Lake Store provozní viditelnost a snadnější ladění přesouvání protokolu.
+Jakmile je vlastnost nastavena a uzly se restartují, diagnostiky Data Lake Store je zapsán do protokolů YARN na uzlech (/tmp/<user>/yarn.log) a důležité podrobnosti jako chyby nebo omezení (kód chyby HTTP 429) lze sledovat. Stejné informace je možné monitorovat také v analýzy protokolů nebo kdekoli jsou protokoly odeslaná do v [diagnostiky](data-lake-store-diagnostic-logs.md) okně účtu Data Lake Store. Doporučuje se alespoň zapnout protokolování na straně klienta nebo využívat možnost s Data Lake Store provozní viditelnost a snadnější ladění přesouvání protokolu.
 
 ### <a name="run-synthetic-transactions"></a>Spustit syntetické transakce 
 
@@ -178,7 +178,7 @@ Například marketing firma přijímá denní extrahuje data zákazníků aktual
  
 V běžně dávky dat zpracovává přímo do databáze, například Hive nebo tradiční databází SQL, není potřeba **/in** nebo **/out** vzhledem k tomu, že výstup již přejde do složky samostatné složky pro tabulku Hive nebo externí databáze. Například by denní extrahuje od zákazníků zobrazovat do svých příslušných složek a orchestration podle něco podobného jako Azure Data Factory Apache Oozie nebo Apache vzduchu by aktivaci každodenní úlohy Hive nebo Spark ke zpracování a zápis dat do tabulky Hive.
 
-## <a name="next-steps"></a>Další kroky     
+## <a name="next-steps"></a>Další postup     
 
 * [Přehled Azure Data Lake Store](data-lake-store-overview.md) 
 * [Řízení přístupu v Azure Data Lake Store](data-lake-store-access-control.md) 

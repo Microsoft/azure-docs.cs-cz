@@ -5,16 +5,16 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/02/2018
+ms.date: 04/03/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 6ad9c365894feed61fa4f55d442194d1cf996889
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 81357bce92bb8bd2f77f7aaabc8e3b1d49047a1b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
-**Poslední aktualizace dokumentů**: 2. dubna 10:00 AM PST.
+**Poslední aktualizace dokumentů**: duben 3, 3:00 PM PST.
 
 Poslední zveřejnění [nová třída ohrožení zabezpečení procesoru](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) se označuje jako spekulativní provádění straně kanál útoky má za následek otázky z zákazníky, kteří potřebují další přehlednost.  
 
@@ -25,7 +25,7 @@ Kromě toho je Azure rozšíření použití [paměti zachování údržby](http
 > [!NOTE] 
 > V pozdní února 2018 publikovaná Intel Corporation aktualizované [mikrokódu revize pokyny](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) stav mikrokódu verzích, které zlepšení stability a zmírňuje nebezpečí, že poslední ohrožení zabezpečení, budou mít přístup podle [Projektu Google nula](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Jejich zmírnění umístí na místě Azure [3 leden 2018](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/) nemá vliv aktualizace mikrokódu společnosti Intel. Microsoft už zavedena silné jejich zmírnění pro ochranu Azure zákazníků z jiných virtuálních počítačích Azure.  
 >
-> Společnosti Intel mikrokódu adresy typu variant 2 spektrum ([CVE. 2017 5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715)) k ochraně před útoky, které bude odesláno pouze použít kterém spouštíte sdílených nebo nedůvěryhodné úlohy uvnitř virtuální počítače na platformě Azure. Naše technici testování stabilitu pro minimalizaci dopadů výkonu mikrokódu, před zpřístupnění Azure zákazníků.  Jako velmi několik zákazníků spustit nedůvěryhodné zatížení v rámci jejich virtuální počítače, nebudete muset povolit tuto funkci po vydání většina zákazníků. 
+> Společnosti Intel mikrokódu adresy typu variant 2 spektrum ([CVE. 2017 5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715) nebo vkládání cíl větev) k ochraně před útoky, které bude odesláno pouze použít kterém spouštíte sdílených nebo nedůvěryhodné úlohy uvnitř virtuální počítače na platformě Azure. Naše technici testování stabilitu pro minimalizaci dopadů výkonu mikrokódu, před zpřístupnění Azure zákazníků.  Jako velmi několik zákazníků spustit nedůvěryhodné zatížení v rámci jejich virtuální počítače, nebudete muset povolit tuto funkci po vydání většina zákazníků. 
 >
 > Tato stránka bude aktualizován, protože je k dispozici další informace.  
 
@@ -64,7 +64,7 @@ Pokud používáte nedůvěryhodnými není vyžadována žádná akce další o
 
 
 ### <a name="windows"></a>Windows 
-Pokud používáte systém Windows a hostování nedůvěryhodnými, byste měli taky povolit funkci Windows seznamu Zastínění virtuální adresy jádra (KVA), který zajišťuje zvýšenou ochranu proti spekulativní provádění ohrožení zabezpečení straně kanál (konkrétně variant 3 meltdown [CVE. 2017 5754](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754)). Tato funkce je ve výchozím nastavení vypnuté a mohou ovlivnit výkon, pokud je povoleno. Postupujte podle [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) pokyny pro povolení ochrany na serveru. Pokud používáte Azure Cloud Services, ověřte, že používáte WA-hosta-operačního systému-5.15_201801-01 nebo WA-hosta-operačního systému-4.50_201801-01 (dostupné od na 10 leden 2018) a povolit registru klíče prostřednictvím úkolu spuštění.
+Pokud používáte systém Windows a hostování nedůvěryhodnými, měli byste také povolit funkci Windows seznamu Zastínění virtuální adresy jádra (KVA), který zajišťuje zvýšenou ochranu před chybami zabezpečení kanálu straně spekulativní provádění (konkrétně pro variant 3 Meltdown, [CVE. 2017 5754](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754), nebo zatížení mezipaměti podvodný data). Tato funkce je ve výchozím nastavení vypnuté a mohou ovlivnit výkon, pokud je povoleno. Postupujte podle [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) pokyny pro povolení ochrany na serveru. Pokud používáte Azure Cloud Services, ověřte, že používáte WA-hosta-operačního systému-5.15_201801-01 nebo WA-hosta-operačního systému-4.50_201801-01 (dostupné od na 10 leden 2018) a povolit registru klíče prostřednictvím úkolu spuštění.
 
 
 ### <a name="linux"></a>Linux

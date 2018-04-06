@@ -1,11 +1,11 @@
 ---
-title: "Virtuální počítač Azure Linux Agent přehled | Microsoft Docs"
-description: "Informace o instalaci a konfiguraci agenta systému Linux (příkaz waagent) ke správě virtuálního počítače interakci s Kontroleru prostředků infrastruktury Azure."
+title: Virtuální počítač Azure Linux Agent přehled | Microsoft Docs
+description: Informace o instalaci a konfiguraci agenta systému Linux (příkaz waagent) ke správě virtuálního počítače interakci s Kontroleru prostředků infrastruktury Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: szarkos
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59266c6d6452eeff56b05e60389ac14f0b2c3f1f
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: be3955c670382af1a2b558e8e7d656ca5a1f353d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Informace o používání Azure Linux Agent
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -48,7 +48,7 @@ Microsoft Azure Linux Agent (příkaz waagent) spravuje Linux & FreeBSD zřizov�
   
   * Spravuje trasy zlepšit kompatibilitu s servery DHCP platformy
   * Zajišťuje stabilitu název síťového rozhraní
-* **Jádra**
+* **Kernel**
   
   * Nakonfiguruje virtuální technologie NUMA (zakázat jádra < 2.6.37)
   * Využívá šifrování technologie Hyper-V pro /dev/random
@@ -79,7 +79,7 @@ Tyto systémy byly testovány a jsou známé pro práci s Azure Linux Agent:
 > 
 
 * CoreOS
-* CentOS 6.3 +
+* CentOS 6.3+
 * Red Hat Enterprise Linux 6.7 +
 * Debian 7.0 +
 * Ubuntu 12.04 +
@@ -220,7 +220,7 @@ Typ: Řetězec
 Výchozí: 6
 
 Algoritmus používaný crypt při generování hodnoty hash hesla.  
- 1 - ALGORITMUS MD5  
+ 1 - MD5  
  2a - Blowfish  
  5 - SHA-256  
  6 - SHA-512  
@@ -273,7 +273,7 @@ Výchozí: n
 
 Pokud je boosted sady podrobností protokolu. Příkaz Waagent /var/log/waagent.log v protokolech a využívá funkce logrotate systému otočení protokoly.
 
-**OPERAČNÍ SYSTÉM. EnableRDMA**  
+**OS.EnableRDMA**  
 Typ: logická hodnota  
 Výchozí: n
 
@@ -285,13 +285,13 @@ Výchozí: 300
 
 Tím se nakonfiguruje SCSI časový limit v sekundách na disku a datové jednotky operačního systému. Pokud není nastavena, systém, které budou použity výchozí hodnoty.
 
-**OPERAČNÍ SYSTÉM. OpensslPath:**  
+**OS.OpensslPath:**  
 Typ: Řetězec  
 Výchozí: žádná
 
 Tímto lze zadat alternativní cestu ke openssl binární pro kryptografické operace.
 
-**HttpProxy.Host HttpProxy.Port**  
+**HttpProxy.Host, HttpProxy.Port**  
 Typ: Řetězec  
 Výchozí: žádná
 

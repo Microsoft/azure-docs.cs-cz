@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 269b65662796c092190cd2622c240756f6bd1cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4c09fa5c454cee6ca9a0ed0d3fd4582b222c0c1a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C: Vlastní zásady
 
@@ -48,7 +48,7 @@ Doporučujeme použít tři typy souborů zásad:
 - **soubor předávající strany (RP)** tedy jednoho souboru zaměřené na úlohy, která je volána přímo z aplikace nebo služby (neboli předávající strany).  Přečtěte si článek na soubor definice zásad Další informace.  Každý úkol jedinečný vyžaduje vlastní RP a v závislosti na branding požadavky číslo může být "Celkový počet aplikací x celkový počet případů použití".
 
 
-Předdefinované zásady v Azure AD B2C, postupujte podle vzoru souboru 3, které popsané výše, ale vývojář se zobrazují pouze soubor předávající strany (RP), zatímco na portálu provede změny na pozadí EXTenstions souboru.
+Předdefinované zásady v Azure AD B2C, postupujte podle vzoru souboru 3, které popsané výše, ale vývojář se zobrazují pouze soubor předávající strany (RP), zatímco na portálu provede změny na pozadí v souboru rozšíření.
 
 ## <a name="core-concepts-you-should-know-when-using-custom-policies"></a>Základní koncepty, které byste měli vědět při použití vlastních zásad
 
@@ -89,7 +89,7 @@ Vlastní zásady je reprezentován jako jednoho nebo několika souborů ve form�
 
 | Typ zásad souboru | Příklady název souboru | Doporučené použití | Dědí z |
 |---------------------|--------------------|-----------------|---------------|
-| ZÁKLADNÍ |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_BASE1.xml | Obsahuje základní deklarace identity schématu, transformace deklarací, zprostředkovatelů deklarací identit a cesty uživatele konfigurovat tak, že Microsoft<br><br>Ujistěte se, minimální změny do tohoto souboru | Žádné |
+| ZÁKLADNÍ |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_BASE1.xml | Obsahuje základní deklarace identity schématu, transformace deklarací, zprostředkovatelů deklarací identit a cesty uživatele konfigurovat tak, že Microsoft<br><br>Ujistěte se, minimální změny do tohoto souboru | Žádný |
 | Rozšíření (EXT) | TrustFrameworkExtensions.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_EXT.xml | Konsolidovat všechny změny základního souboru<br><br>Zprostředkovatelé upravené deklarací<br><br>Cesty upravené uživatele<br><br>Vlastní definice vlastní schéma | ZÁKLADNÍHO souboru |
 | Předávající stranu | B2C_1A_sign_up_sign_in.xml| Token tvar a relace nastavení změnit tady| Soubor Extensions(ext) |
 

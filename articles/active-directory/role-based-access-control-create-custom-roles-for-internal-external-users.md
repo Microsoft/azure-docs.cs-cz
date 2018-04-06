@@ -1,26 +1,26 @@
 ---
-title: "Vytvořit vlastní přístupu na základě rolí role řízení a přiřadit uživatelům interních a externích v Azure | Microsoft Docs"
-description: "Přiřadit vlastní role RBAC vytvořené pomocí prostředí PowerShell a rozhraní příkazového řádku pro interních a externích uživatelů"
+title: Vytvořit vlastní přístupu na základě rolí role řízení a přiřadit uživatelům interních a externích v Azure | Microsoft Docs
+description: Přiřadit vlastní role RBAC vytvořené pomocí prostředí PowerShell a rozhraní příkazového řádku pro interních a externích uživatelů
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: kgremban
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/06/2017
+ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 75a45b492c230b19d2f7237f8ea7fe2c49de29bf
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b60b30e3a5a4f5adec4fbef8c4e981ad034a7f6c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="intro-on-role-based-access-control"></a>Úvod na řízení přístupu na základě rolí
 
@@ -53,10 +53,10 @@ Existují dvě běžných příkladů, když RBAC je použít (ale mimo jiné):
 * Práce s uživateli uvnitř organizace (jsou součástí klienta Azure Active Directory uživatele), ale součást různé týmy nebo skupiny, které potřebují granulární přístup k celé předplatné nebo pro určité skupiny prostředků nebo prostředek oborů v prostředí
 
 ## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>Udělení přístupu na úrovni předplatného pro uživatele mimo Azure Active Directory
-Role RBAC lze udělit pouze systémem **vlastníky** předplatného proto uživatel s oprávněními správce musíte být přihlášeni pomocí uživatelského jména, která má tato role předběžně zařazená nebo vytvořil předplatné Azure.
+Role RBAC lze udělit pouze systémem **vlastníky** předplatného. Proto správce, musíte být přihlášení jako uživatel, který má tato role předběžně zařazená nebo vytvořil předplatné Azure.
 
-Z portálu Azure po přihlášení jako správce, vyberte možnost "Odběry" a vyberte požadované.
-![okno odběru na portálu Azure](./media/role-based-access-control-create-custom-roles-for-internal-external-users/0.png) ve výchozím nastavení, pokud uživatel s oprávněními správce koupil předplatné Azure, uživateli se zobrazí jako **správce účtu**, tím se roli předplatného. Další informace o rolích předplatné Azure, najdete v části [přidání nebo změna role Správce služby Azure, které spravují předplatné nebo služby](/billing/billing-add-change-azure-subscription-administrator.md).
+Z portálu Azure vyberte po přihlášení jako správce "Odběry" a vyberte požadované.
+![okno odběru na portálu Azure](./media/role-based-access-control-create-custom-roles-for-internal-external-users/0.png) ve výchozím nastavení, pokud uživatel s oprávněními správce koupil předplatné Azure, uživateli se zobrazí jako **správce účtu**, tím se roli předplatného. Další informace o rolích předplatného Azure najdete v tématu [přidání nebo změna role Správce služby Azure, které spravují předplatné nebo služby](/billing/billing-add-change-azure-subscription-administrator.md).
 
 V tomto příkladu uživatel "alflanigan@outlook.com" je **vlastníka** z "Bezplatnou zkušební verzi" předplatné v AAD klienta "Výchozí klienta Azure". Vzhledem k tomu, že je tento uživatel Tvůrce předplatného Azure se počáteční Account Microsoft "Outlook" (Account Microsoft = Outlook, Live atd.) bude výchozí název domény pro všechny uživatele přidán do tohoto klienta **"@alflaniganuoutlook.onmicrosoft.com"**. Návrh syntaxe nové domény je tvořen uvedení společně název uživatelské jméno a doménu uživatele, který vytvořil klienta a přidání rozšíření **". onmicrosoft.com"**.
 Kromě toho uživatelé mohou přihlásit pomocí vlastního názvu domény v klientovi po přidání a ověření pro nového klienta. Další informace o tom, jak ověřit vlastní název domény v klienta služby Azure Active Directory najdete v tématu [přidání vlastního názvu domény do adresáře](/active-directory/active-directory-add-domain).
@@ -185,154 +185,154 @@ Stejným způsobem jako pro skupiny Azure Active Directory s perspektivy, že u�
 Tyto skupiny jsou skupiny zabezpečení, které jsou zřizovat a spravovat pouze v rámci Azure Active Directory.
 
 ## <a name="create-a-custom-rbac-role-to-open-support-requests-using-powershell"></a>Vytvořit vlastní role RBAC otevření žádosti o podporu pomocí prostředí PowerShell
-Předdefinované role RBAC, které jsou dostupné v Azure zkontrolujte určité úrovně oprávnění na základě dostupných prostředků v prostředí. Pokud žádná z těchto rolí potřebám Správce uživatelů, existuje však možnost omezit přístup i další vytvořením vlastní role RBAC.
+Předdefinované role, které jsou dostupné v Azure zkontrolujte určité úrovně oprávnění na základě dostupných prostředků v prostředí. Ale pokud předdefinované role nevyhovuje vašim potřebám, můžete vytvořit vlastní role.
 
-Vytvoření vlastní role RBAC vyžaduje trvat jednu předdefinovaná role, upravovat a importujte ji zpět do prostředí. Stažení a nahrání role se spravují pomocí prostředí PowerShell nebo rozhraní příkazového řádku.
+Pokud chcete vytvořit vlastní roli, může začínat předdefinovaná role, upravit a poté vytvořit novou roli. V tomto příkladu integrované **čtečky** role byl přizpůsoben, aby uživatel povolit možnost otevření žádosti o podporu.
 
-Je důležité pochopit požadavky vytváření vlastní roli, které můžete udělit granulární přístup na úrovni předplatného a taky umožnit pozvané uživatele možnost otevření žádosti o podporu.
+V prostředí PowerShell, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) příkaz pro export **čtečky** role ve formátu JSON.
 
-Například předdefinovaná role **čtečky**, což umožňuje uživatelům přístup k zobrazení všech oborů prostředků, ale nechcete je upravit nebo vytvořit nové, byl přizpůsoben, aby uživatel povolit možnost otevření žádosti o podporu.
-
-Je první akcí exportu **čtečky** spustili role musí být dokončena v prostředí PowerShell se zvýšenými oprávněními jako správce.
-
-```
-Login-AzureRMAccount
-
-Get-AzureRMRoleDefinition -Name "Reader"
-
-Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\rbacrole2.json
-
+```powershell
+Get-AzureRmRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\rbacrole2.json
 ```
 
+Na obrázku je výstup JSON pro roli čtečky.
 
+```json
+{
+    "Name":  "Reader",
+    "Id":  "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "IsCustom":  false,
+    "Description":  "Lets you view everything, but not make any changes.",
+    "Actions":  [
+                    "*/read"
+                ],
+    "NotActions":  [
 
-
-
-![Snímek obrazovky prostředí PowerShell pro role RBAC čtečky](./media/role-based-access-control-create-custom-roles-for-internal-external-users/15.png)
-
-Budete potřebovat k extrakci šablona JSON role.
-
-
-
-
-
-![Šablona JSON pro vlastní role RBAC čtečky](./media/role-based-access-control-create-custom-roles-for-internal-external-users/16.png)
-
-Typické role RBAC se skládá ze tří hlavních částí **akce**, **NotActions** a **AssignableScopes**.
-
-V **akce** části jsou uvedeny všechny operace, které jsou povolené pro tuto roli. Je důležité si uvědomit, že každá akce je přiřazený od zprostředkovatele prostředků. V takovém případě pro vytvoření lístky žádostí o podporu **Microsoft.Support** poskytovatele prostředků musí být uvedený.
-
-Abyste mohli zobrazit všech poskytovatelů prostředků k dispozici a registrovaný v rámci vašeho předplatného, můžete použít PowerShell.
-```
-Get-AzureRMResourceProvider
-
-```
-Kromě toho můžete zkontrolovat všechny dostupné rutin prostředí PowerShell ke správě zprostředkovatelé prostředků.
-    ![Snímek obrazovky prostředí PowerShell pro správu zprostředkovatele prostředků](./media/role-based-access-control-create-custom-roles-for-internal-external-users/17.png)
-
-Pokud chcete omezit všechny akce pro konkrétní role RBAC, zprostředkovatelé prostředků jsou uvedeny v části **NotActions**.
-Poslední je povinný, že RBAC role obsahuje explicitní předplatné ID, kde se používá. ID předplatného jsou uvedeny v seznamu **AssignableScopes**, jinak bude nebude povolen import role v rámci vašeho předplatného.
-
-Po vytvoření a vlastní nastavení RBAC role, je nutné naimportovat zpátky prostředí.
-
-```
-New-AzureRMRoleDefinition -InputFile "C:\rbacrole2.json"
-
+                   ],
+    "AssignableScopes":  [
+                             "/"
+                         ]
+}
 ```
 
-V tomto příkladu je vlastní název pro tuto roli RBAC "Čtečky podporu lístky úroveň přístupu" uživatel zobrazit vše, co v rámci předplatného a také otevření žádosti o podporu.
+Dále můžete upravit výstup vytvořit vlastní roli ve formátu JSON.
+
+```json
+{
+    "Name":  "Reader support tickets access level",
+    "IsCustom":  true,
+    "Description":  "View everything in the subscription and also open support requests.",
+    "Actions":  [
+                    "*/read",
+                    "Microsoft.Support/*"
+                ],
+    "NotActions":  [
+
+                   ],
+    "AssignableScopes":  [
+                             "/subscriptions/11111111-1111-1111-1111-111111111111"
+                         ]
+}
+```
+
+Typické role se skládá ze tří hlavních částí **akce**, **NotActions**, a **AssignableScopes**.
+
+**Akce** části je uveden seznam povolených operací pro roli. V takovém případě vytvářet podporu lístků, **Microsoft.Support/&ast;**  operace musí být přidán. Je důležité si uvědomit, že každou operaci je k dispozici od zprostředkovatele prostředků. Chcete-li získat seznam operací pro poskytovatele prostředků, můžete použít [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) příkaz nebo najdete [poskytovatel prostředků Azure Resource Manager operations](role-based-access-control-resource-provider-operations.md).
+
+Pokud chcete omezit všechny akce pro konkrétní roli, zprostředkovatelé prostředků jsou uvedeny v seznamu **NotActions** části.
+Je povinný, že role obsahuje explicitní předplatné ID, kde se používá. ID předplatného jsou uvedeny v části **AssignableScopes**, v opačném případě můžete nebude moct importovat role do vašeho předplatného.
+
+Chcete-li vytvořit vlastní roli, je použít [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) příkazů a poskytnout aktualizovaný soubor definice role JSON.
+
+```powershell
+New-AzureRmRoleDefinition -InputFile "C:\rbacrole2.json"
+```
+
+V tomto příkladu je název pro tuto vlastní roli, "úroveň přístupu lístky žádostí o podporu čtečky". Umožňuje uživatelům zobrazit vše, co v dané předplatné a také žádosti o podporu otevřete.
 
 > [!NOTE]
-> Jsou pouze dvě předdefinované role RBAC povolení akce otevření žádosti o podporu **vlastníka** a **Přispěvatel**. Uživatel nebude moci otevřít žádosti o podporu musí mohl být přiřazena role RBAC pouze v oboru předplatné, všechny žádosti o podporu se vytváří podle předplatného Azure.
+> Pouze dva předdefinované role, které umožňují uživatele k otevření žádosti o podporu jsou **vlastníka** a **Přispěvatel**. Uživatel nebude moci otevřít žádosti o podporu musí mohl být přiřazena role v oboru předplatné všechny žádosti o podporu se vytváří podle předplatného Azure.
 
-Tato nová vlastní role byl přiřazen uživateli ze stejného adresáře.
+Nové vlastní role je nyní k dispozici na webu Azure portal a můžete přiřadit uživatelům.
 
+![snímek obrazovky vlastní roli, které jsou importovány na portálu Azure](./media/role-based-access-control-create-custom-roles-for-internal-external-users/18.png)
 
+![snímek obrazovky přiřazení vlastní importované role pro uživatele ve stejném adresáři](./media/role-based-access-control-create-custom-roles-for-internal-external-users/19.png)
 
+![snímek obrazovky oprávnění pro vlastní importované role](./media/role-based-access-control-create-custom-roles-for-internal-external-users/20.png)
 
+Uživatelé s tuto vlastní roli, mohou nyní vytvářet nové žádosti o podporu.
 
-![snímek obrazovky vlastní role RBAC importovat na portálu Azure](./media/role-based-access-control-create-custom-roles-for-internal-external-users/18.png)
+![snímek obrazovky vytváření žádosti o podporu vlastní role](./media/role-based-access-control-create-custom-roles-for-internal-external-users/21.png)
 
+Uživatelé s tuto vlastní roli nelze provádět další akce, jako například vytvořit virtuální počítače nebo skupiny prostředků.
 
+![snímek obrazovky vlastní roli nelze vytvořit virtuální počítače](./media/role-based-access-control-create-custom-roles-for-internal-external-users/22.png)
 
-
-
-![snímek obrazovky přiřazení vlastní importované role RBAC pro uživatele ve stejném adresáři](./media/role-based-access-control-create-custom-roles-for-internal-external-users/19.png)
-
-
-
-
-
-![snímek obrazovky oprávnění pro vlastní importované role RBAC](./media/role-based-access-control-create-custom-roles-for-internal-external-users/20.png)
-
-V příkladu byla další podrobné zdůraznit omezení této vlastní role RBAC následujícím způsobem:
-* Můžete vytvořit nové žádosti o podporu
-* Nelze vytvořit nové obory prostředků (například: virtuálního počítače)
-* Nelze vytvořit nové skupiny prostředků
-
-
-
-
-
-![snímek obrazovky vytváření žádosti o podporu vlastní role RBAC](./media/role-based-access-control-create-custom-roles-for-internal-external-users/21.png)
-
-
-
-
-
-![snímek obrazovky vlastní role RBAC Nepodařilo se vytvořit virtuální počítače](./media/role-based-access-control-create-custom-roles-for-internal-external-users/22.png)
-
-
-
-
-
-![snímek obrazovky vlastní role RBAC nelze vytvořit nové RGs](./media/role-based-access-control-create-custom-roles-for-internal-external-users/23.png)
+![snímek obrazovky vlastní roli nelze vytvořit nové RGs](./media/role-based-access-control-create-custom-roles-for-internal-external-users/23.png)
 
 ## <a name="create-a-custom-rbac-role-to-open-support-requests-using-azure-cli"></a>Vytvořit vlastní role RBAC otevření žádosti o podporu pomocí rozhraní příkazového řádku Azure
-Spouštění v Macu a bez nutnosti přístup k prostředí PowerShell, rozhraní příkazového řádku Azure je způsob, jak můžete přejít.
 
-Postup vytvoření vlastních rolí jsou stejné, s jedinou výjimku, která pomocí rozhraní příkazového řádku roli nelze stáhnout v šabloně JSON, ale lze ji zobrazit v rozhraní příkazového řádku.
+Postup vytvoření vlastní role pomocí rozhraní příkazového řádku Azure jsou podobná pomocí prostředí PowerShell, s tím rozdílem, že výstup JSON se liší.
 
-V tomto příkladu I vybrali integrované role **zálohování čtečky**.
+V tomto příkladu můžete spustit pomocí integrované **čtečky** role. K zobrazení seznamu akce role Čtenář, použijte [seznamu definice role az](/cli/azure/role/definition#az_role_definition_list) příkaz.
 
+```azurecli
+az role definition list --name "Reader" --output json
 ```
 
-azure role show "backup reader" --json
-
+```json
+[
+  {
+    "additionalProperties": {},
+    "assignableScopes": [
+      "/"
+    ],
+    "description": "Lets you view everything, but not make any changes.",
+    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "permissions": [
+      {
+        "actions": [
+          "*/read"
+        ],
+        "additionalProperties": {},
+        "notActions": []
+      }
+    ],
+    "roleName": "Reader",
+    "roleType": "BuiltInRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
 ```
 
+Vytvořte soubor JSON v následujícím formátu. **Microsoft.Support/&ast;**  operaci byla přidána do **akce** částech, aby tento uživatel může otevřít žádosti o podporu přitom dál být čtečka čipových karet. Je nutné přidat kde tato role se použije v ID předplatného **AssignableScopes** části.
 
+```json
+{
+    "Name":  "Reader support tickets access level",
+    "IsCustom":  true,
+    "Description":  "View everything in the subscription and also open support requests.",
+    "Actions":  [
+                    "*/read",
+                    "Microsoft.Support/*"
+                ],
+    "NotActions":  [
 
-
-
-![Snímek obrazovky rozhraní příkazového řádku zálohování čtečky role zobrazit](./media/role-based-access-control-create-custom-roles-for-internal-external-users/24.png)
-
-Úpravy roli v sadě Visual Studio po kopírování vlastnosti v šabloně JSON **Microsoft.Support** poskytovatele prostředků byla přidána do **akce** částech tak, aby tento uživatel může otevřít podpory požadavky můžete nadále být čtečku pro trezorů záloh. Akci je potřeba přidat kde tato role se použije v ID předplatného **AssignableScopes** části.
-
+                   ],
+    "AssignableScopes": [
+                            "/subscriptions/11111111-1111-1111-1111-111111111111"
+                        ]
+}
 ```
 
-azure role create --inputfile <path>
+Chcete-li vytvořit vlastní roli, použijte [vytvoření definice role az](/cli/azure/role/definition#az_role_definition_create) příkaz.
 
+```azurecli
+az role definition create --role-definition ~/roles/rbacrole1.json
 ```
 
+Nové vlastní role je nyní k dispozici na webu Azure portal a proces pomocí této role je stejné jako v předchozí části prostředí PowerShell.
 
-
-
-
-![Rozhraní příkazového řádku snímek obrazovky importování vlastní role RBAC](./media/role-based-access-control-create-custom-roles-for-internal-external-users/25.png)
-
-Nová role je nyní k dispozici na webu Azure portal a proces assignation je stejné jako v předchozích příkladech.
-
-
-
-
-
-![Azure portálu snímek obrazovky vlastní role RBAC vytvořené pomocí rozhraní příkazového řádku 1.0](./media/role-based-access-control-create-custom-roles-for-internal-external-users/26.png)
-
-Od verze nejnovější 2017 sestavení je všeobecně dostupná prostředí cloudové služby Azure. Prostředí Azure Cloud je doplněk k IDE a portálu Azure. S touto službou můžete získat prostředí založené na prohlížeči, který je ověřen a je hostovaná v Azure a můžete ji použít místo rozhraní příkazového řádku v počítači nainstalován.
-
-
-
-
-
-![Azure Cloud Shell](./media/role-based-access-control-create-custom-roles-for-internal-external-users/27.png)
+![Azure portálu snímek obrazovky vlastní roli, které jsou vytvořené pomocí rozhraní příkazového řádku 1.0](./media/role-based-access-control-create-custom-roles-for-internal-external-users/26.png)

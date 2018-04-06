@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s připojení s sledovací proces sítě Azure - rozhraní REST API Azure | Microsoft Docs"
-description: "Naučte se používat připojení k řešení potíží s schopností sledovací proces sítě Azure pomocí rozhraní REST API Azure."
+title: Řešení potíží s připojení s sledovací proces sítě Azure - rozhraní REST API Azure | Microsoft Docs
+description: Naučte se používat připojení k řešení potíží s schopností sledovací proces sítě Azure pomocí rozhraní REST API Azure.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: jdial
-ms.openlocfilehash: fc0392e8a6bc8662c7b664710b7073ae09c49a7c
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 26acb70ac5ac017fc8162e8abeec48b8b9ecfa7f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Poradce při potížích připojení s sledovací proces sítě Azure pomocí rozhraní REST API Azure
 
@@ -37,7 +37,7 @@ Tento článek předpokládá, že máte v následujících zdrojích informací
 * Virtuální počítače potíží s připojením s.
 
 > [!IMPORTANT]
-> Řešení potíží s připojení vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension`. Instalaci rozšíření na virtuální počítač s Windows najdete v článku [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md) a u virtuálního počítače s Linuxem, navštivte [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md).
+> Řešení potíží s připojení vyžaduje, aby řešení z virtuálního počítače `AzureNetworkWatcherExtension` nainstalovat rozšíření virtuálního počítače. Instalaci rozšíření na virtuální počítač s Windows najdete v článku [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a u virtuálního počítače s Linuxem, navštivte [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Na cílovém koncový bod není vyžadován rozšíření.
 
 ## <a name="log-in-with-armclient"></a>Přihlaste se pomocí ARMClient
 

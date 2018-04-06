@@ -1,11 +1,11 @@
 ---
-title: "Spravovat vypršení platnosti webového obsahu v síti pro doručování obsahu Azure | Microsoft Docs"
-description: "Zjistěte, jak spravovat platnost obsahu Azure webové aplikace nebo cloudové služby, ASP.NET nebo služby IIS v Azure CDN."
+title: Spravovat vypršení platnosti webového obsahu v síti pro doručování obsahu Azure | Microsoft Docs
+description: Zjistěte, jak spravovat platnost obsahu Azure webové aplikace nebo cloudové služby, ASP.NET nebo služby IIS v Azure CDN.
 services: cdn
 documentationcenter: .NET
 author: dksimpson
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
 ms.service: cdn
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: mazha
-ms.openlocfilehash: db7b5053cb926d2ec86c7feea4ac411acbeb1ae2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d1a12e0d5bd5852cf8de3d5fec93f2bfdd3ab257
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>Spravovat vypršení platnosti webového obsahu v síti pro doručování obsahu Azure
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Nastavení mezipaměti na portálu Azure můžete také ovládat nastavením [CD
 Upřednostňovanou metodou pro nastavení webového serveru `Cache-Control` záhlaví je používat ukládání do mezipaměti pravidla na portálu Azure. Další informace o ukládání do mezipaměti pravidla CDN najdete v tématu [Azure CDN ovládacího prvku s ukládáním do mezipaměti pravidla chování ukládání do mezipaměti](cdn-caching-rules.md).
 
 > [!NOTE] 
-> Jsou k dispozici pouze pro ukládání do mezipaměti pravidla **Azure CDN společnosti Verizon Standard** a **Azure CDN společnosti Akamai Standard** profily. Pro **Azure CDN společnosti Verizon Premium** profily, je nutné použít [stroj pravidel Azure CDN](cdn-rules-engine.md) v **spravovat** portálu pro podobné funkce.
+> Jsou k dispozici pouze pro ukládání do mezipaměti pravidla **Azure CDN Standard od společnosti Verizon** a **Azure CDN Standard od společnosti Akamai** profily. Pro **Azure CDN Premium od společnosti Verizon** profily, je nutné použít [stroj pravidel Azure CDN](cdn-rules-engine.md) v **spravovat** portálu pro podobné funkce.
 
 **Přejděte na stránku pravidla ukládání do mezipaměti pro CDN**:
 

@@ -6,13 +6,13 @@ keywords: ansible, role, matice, verze, azure, devops
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
-ms.date: 01/19/2018
+ms.date: 03/25/2018
 ms.topic: article
-ms.openlocfilehash: f62cc2df9e4ce815c4427b80e271ddc672748e4f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 011cb173ffdecc7a22c2e470209719ccaf6bda58
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="ansible-module-and-version-matrix"></a>Matice Ansible modul a verze
 
@@ -20,7 +20,7 @@ ms.lasthandoff: 02/01/2018
 Ansible se dodává s číslem modulů, které mohou být provedeny přímo na vzdáleným hostitelům nebo prostřednictvím playbooks.
 V tomto článku jsou uvedené moduly Ansible pro Azure, který můžete zřizovat Azure cloudové prostředky, jako je například virtuální počítač, sítě a služby kontejneru. Tyto moduly můžete získat z oficiálního vydání Ansible nebo z následujících rolí playbook publikovaný microsoftem.
 
-| Modul Ansible pro Azure.                   |  Ansible 2.4 |  Playbook Role [azure_module](#introduction-to-azuremodule) |  Playbook Role [azure_preview_module](#introduction-to-azurepreviewmodule) | 
+| Modul Ansible pro Azure.                   |  Ansible 2.4 |  Ansible 2.5 |  Playbook Role [azure_preview_module](#introduction-to-azurepreviewmodule) | 
 |---------------------------------------------|--------------|-----------------------------|-------------------------------------| 
 | **Compute**                    |           |                          |                                  | 
 | azure_rm_availabilityset                    | Ano          | Ano                         | Ano                                 | 
@@ -54,7 +54,7 @@ V tomto článku jsou uvedené moduly Ansible pro Azure, který můžete zřizov
 | azure_rm_appgwroute_facts                   | -            | -                           | Ano                                 |
 | azure_rm_appgwroutetable                    | -            | -                           | Ano                                 |
 | azure_rm_securitygroup                      | Ano          | Ano                         | Ano                                 | 
-| azure_rm_appgwroutetable_facts              | Ano          | Ano                         | Ano                                 | 
+| azure_rm_appgwroutetable_facts              | -            | -                           | Ano                                 | 
 | **Úložiště**                    |           |                          |                                  | 
 | azure_rm_storageaccount                     | Ano          | Ano                         | Ano                                 | 
 | azure_rm_storageaccount_facts               | Ano          | Ano                         | Ano                                 | 
@@ -76,7 +76,7 @@ V tomto článku jsou uvedené moduly Ansible pro Azure, který můžete zřizov
 | azure_rm_functionapp_facts                  | Ano          | Ano                         | Ano                                 | 
 | **Databáze**                    |           |                          |                                  | 
 | azure_rm_sqlserver                          | -            | Ano                         | Ano                                 | 
-| azure_rm_sqlserver_facts                    | -            | -                           | Ano                                 | 
+| azure_rm_sqlserver_facts                    | -            | Ano                         | Ano                                 | 
 | azure_rm_sqldatabase                        | -            | Ano                         | Ano                                 | 
 | azure_rm_sqldatabase_facts                  | -            | -                           | Ano                                 | 
 | azure_rm_sqlelasticpool                     | -            | -                           | Ano                                 | 
@@ -100,17 +100,13 @@ V tomto článku jsou uvedené moduly Ansible pro Azure, který můžete zřizov
 | azure_rm_postgresqlconfiguration            | -            | -                           | Ano                                 | 
 | azure_rm_postgresqlconfiguration_facts      | -            | -                           | Ano                                 | 
 | **Key Vault**                    |           |                          |                                  | 
-| azure_rm_keyvault                           | -            | -                           | Ano                                 |
+| azure_rm_keyvault                           | -            | Ano                         | Ano                                 |
 | azure_rm_keyvault_facts                     | -            | -                           | Ano                                 |
-| azure_rm_keyvaultkey                        | -            | -                           | Ano                                 |
-| azure_rm_keyvaultsecret                     | -            | -                           | Ano                                 |
+| azure_rm_keyvaultkey                        | -            | Ano                         | Ano                                 |
+| azure_rm_keyvaultsecret                     | -            | Ano                         | Ano                                 |
 
-## <a name="introduction-to-azuremodule"></a>Úvod do azure_module
-[Azure_module playbook role](https://galaxy.ansible.com/Azure/azure_modules/) zahrnuje nejnovější změny a opravy chyb pro Azure moduly z [devel větev úložiště Ansible](https://github.com/ansible/ansible/tree/devel). Pokud nemůžete počkat Ansible na další vydání, instalace azure_module role je vhodné použít.
 
-Azure_module playbook role vydání každé tři týdny.
-
-## <a name="introduction-to-azurepreviewmodule"></a>Úvod do azure_preview_module
+## <a name="introduction-to-playbook-role-for-azure"></a>Úvod do role scénářem pro Azure.
 [Azure_preview_module playbook role](https://galaxy.ansible.com/Azure/azure_preview_modules/) je nejúplnější role a obsahuje nejnovější Azure modulů. Aktualizace a opravy chyb hotovi včas více než oficiální Ansible verze. Pokud používáte Ansible pro účely zřizování prostředků Azure, můžete se doporučujeme nainstalovat roli azure_preview_module.
 
 Azure_preview_module playbook role vydání každé tři týdny.
