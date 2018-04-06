@@ -1,6 +1,6 @@
 ---
-title: "Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Go | Microsoft Docs"
-description: "V tomto rychlém startu vytvoříte účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Go k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru."
+title: Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Go | Microsoft Docs
+description: V tomto rychlém startu vytvoříte účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Go k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: seguler
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/22/2018
 ms.author: seguler
-ms.openlocfilehash: a30d012ea663b04028a4b0ebb2880532a596500b
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5572eaafa49200be0b2a8156dbc96bffd48be925
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Go
 
@@ -211,6 +211,13 @@ containerURL.Delete(ctx, azblob.ContainerAccessConditions{})
 file.Close()
 os.Remove(fileName)
 ```
+
+## <a name="resources-for-developing-go-applications-with-blobs"></a>Zdroje informací pro vývoj aplikací v jazyce Go s využitím objektů blob
+
+Prohlédněte si tyto další zdroje informací o vývoji v jazyce Go s využitím úložiště objektů blob:
+
+- Prohlédněte si a nainstalujte [zdrojový kód klientské knihovny pro jazyk Go](https://github.com/Azure/azure-storage-blob-go) pro službu Azure Storage na GitHubu.
+- Prozkoumejte [ukázky pro úložiště objektů blob](https://godoc.org/github.com/Azure/azure-storage-blob-go/2016-05-31/azblob#pkg-examples) napsané s využitím klientské knihovny pro jazyk Go.
 
 ## <a name="next-steps"></a>Další kroky
  

@@ -11,15 +11,15 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-daveng
-ms.openlocfilehash: e479b0445e0055b77773554bb5b725cb04498ba2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ae13f6e3c530e2807d1f52e322663b65aebbb076
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-go-to-query-an-azure-sql-database"></a>Použití jazyka Go k dotazování databáze SQL Azure
 
-Tento rychlý start ukazuje, jak se pomocí jazyka [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) připojit k databázi SQL Azure. Ukazuje se také použití příkazů jazyka Transact-SQL k dotazování a úpravě dat.
+Tento rychlý úvodní kurz ukazuje použití jazyka [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) k připojení k databázi SQL Azure. Ukazuje se také použití příkazů jazyka Transact-SQL k dotazování a úpravě dat.
 
 ## <a name="prerequisites"></a>Požadavky
 

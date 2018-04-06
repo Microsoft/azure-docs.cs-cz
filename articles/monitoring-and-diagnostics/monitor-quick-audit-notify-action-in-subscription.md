@@ -1,6 +1,6 @@
 ---
-title: "Audit a přijímání oznámení o důležitých akcích ve vašem předplatném Azure | Dokumentace Microsoftu"
-description: "Seznámíte se s historií správy prostředků, stavu služeb a dalších aktivit předplatného v protokolu aktivit a pak použijete upozornění protokolu aktivit k přijímání oznámení v případě provedení vysoce privilegované operace ve vašem předplatném."
+title: Audit a přijímání oznámení o důležitých akcích ve vašem předplatném Azure | Dokumentace Microsoftu
+description: Seznámíte se s historií správy prostředků, stavu služeb a dalších aktivit předplatného v protokolu aktivit a pak použijete upozornění protokolu aktivit k přijímání oznámení v případě provedení vysoce privilegované operace ve vašem předplatném.
 author: johnkemnetz
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: b0a79f46788dc7efb588110dc50805c45c373a49
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: dd04cd9c8074d49df168b32840d12901da83c834
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Audit a přijímání oznámení o důležitých akcích ve vašem předplatném Azure
 
@@ -74,7 +74,7 @@ Klikněte na kartu **JSON** a zobrazte úplné podrobnosti o události. Mezi tyt
 
 5. V části **Upozornit přes** vyberte **Nová** skupina akcí a zadejte **název** a **krátký název** skupiny akcí. Skupina akcí definuje sadu akcí, které se provedou při aktivaci upozornění (když kritéria odpovídají nové události).
 
-6. V části **Akce** přidejte 1 nebo několik akcí tak, že zadáte **Název akce**, **Typ akce** (například e-mail nebo SMS) a **Podrobnosti** pro příslušný konkrétní typ akce (například adresa URL webhooku, e-mailová adresa nebo číslo SMS).
+6. V části **Akce** přidejte 1 nebo několik akcí tak, že zadáte **Název akce**, **Typ akce** (například e-mail, SMS nebo webhook) a **Podrobnosti** pro příslušný konkrétní typ akce (například adresa URL webhooku, e-mailová adresa nebo číslo SMS).
 
     ![Vytvoření skupiny zabezpečení sítě na portálu](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-alert-actions.png)
 
@@ -83,7 +83,7 @@ Klikněte na kartu **JSON** a zobrazte úplné podrobnosti o události. Mezi tyt
 ## <a name="test-the-activity-log-alert"></a>Testování upozornění protokolu aktivit
 
 > [!NOTE]
-> Úplné povolení upozornění protokolu aktivit trvá přibližně 10 minut. Nové události, ke kterým dojde před úplným povolením upozornění protokolu aktivit, nevygenerují oznámení.
+> Úplné povolení upozornění protokolu aktivit trvá přibližně 5 minut. Nové události, ke kterým dojde před úplným povolením upozornění protokolu aktivit, nevygenerují oznámení.
 >
 >
 

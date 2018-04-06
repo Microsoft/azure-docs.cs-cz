@@ -1,6 +1,6 @@
 ---
 title: Zálohování Souborů Azure do Azure
-description: Tento článek podrobně popisuje, jak zálohovat a obnovit sdílené složky Azure, a vysvětluje úlohy správy.
+description: Tento článek podrobně popisuje, jak zálohovat a obnovovat sdílené složky Azure, a vysvětluje úlohy správy.
 services: backup
 keywords: Nepřidávejte ani neupravujte klíčová slova, aniž byste se poradili se svým odborníkem na SEO.
 author: markgalioto
@@ -9,15 +9,14 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: ba457daca030d3219fe32177b0b5f8b5565ff544
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3eab85aa4f7fde190a93239fc396cb9c04c2396c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="back-up-azure-file-shares-preview"></a>Zálohování sdílených složek Azure (Preview)
-
-Tento článek vysvětluje, jak používat portál Azure Portal k zálohování a obnovení [sdílených složek Azure](../storage/files/storage-files-introduction.md) v Azure.
+# <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
+Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
 
 V této příručce se naučíte:
 > [!div class="checklist"]
@@ -29,20 +28,19 @@ V této příručce se naučíte:
 > * Odstranění zálohovaných dat
 
 ## <a name="prerequisites"></a>Požadavky
-Než budete moci zálohovat sdílenou složku Azure, ujistěte se, že se nachází v jednom z [podporovaných typů účtu úložiště](troubleshoot-azure-files.md#preview-boundaries). Po ověření můžete chránit své sdílené složky.
+Než budete moct zálohovat sdílenou složku Azure, ujistěte se, že se nachází v jednom z [podporovaných typů účtu úložiště](troubleshoot-azure-files.md#preview-boundaries). Po ověření můžete chránit své sdílené složky.
 
-## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Omezení pro zálohování sdílených složek Azure během využívání verze Preview
-Zálohování Souborů Azure je ve verzi Preview. Během využívání verze Preview mějte na paměti následující omezení:
-- Sdílené složky v účtech úložiště s replikací do [zónově redundantního úložiště](../storage/common/storage-redundancy.md#zone-redundant-storage) (ZRS) nebo [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) nemůžete chránit.
-- Sdílené složky v účtech úložiště s povolenými virtuálními sítěmi také nemůžete chránit.
+## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Omezení zálohování sdílených složek Azure během období Preview
+Zálohování sdílených složek Azure je ve verzi Preview. Během využívání verze Preview mějte na paměti následující omezení:
+- Nemůžete chránit sdílené složky Azure v účtech úložiště s replikací do [zónově redundantního úložiště (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) nebo [geograficky redundantního úložiště jen pro čtení (RA-GRS)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage).
+- Nemůžete chránit sdílené složky Azure v účtech úložiště s povolenými virtuálními sítěmi.
 - PowerShell ani CLI nejsou pro ochranu souborů Azure dostupné.
 - Maximální počet plánovaných záloh je jedna za den.
 - Maximální počet záloh na vyžádání jsou čtyři za den.
 - Používejte v účtu úložiště [zámky prostředků](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest), abyste zabránili nechtěnému odstranění záloh v trezoru služby Recovery Services.
 - Neodstraňujte snímky vytvořené službou Azure Backup. Odstranění snímků může způsobit ztrátu bodů obnovení nebo selhání obnovení. 
 
-## <a name="configuring-azure-file-shares-backup"></a>Konfigurace zálohování sdílených složek Azure
-
+## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurace zálohování sdílené složky Azure
 Veškerá zálohovaná data se ukládají v trezorech služby Recovery Services. Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Zálohování sdílené složky Azure:
 
 1. Vytvořte trezor služby Recovery Services ve stejné oblasti, ve které je vaše sdílená složka. Pokud už trezor máte, otevřete stránku Přehled vašeho trezoru a klikněte na **Zálohování**.
@@ -100,7 +98,7 @@ Pokud potřebujete obnovit celou sdílenou složku nebo jednotlivé soubory nebo
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/select-restore-location.png)
 
 ## <a name="restore-individual-files-or-folders-from-backup-of-azure-file-shares"></a>Obnovení jednotlivých souborů nebo složek ze zálohy sdílených složek Azure
-Azure Backup poskytuje možnost procházet bod obnovení v rámci portálu Azure Portal. Pokud chcete obnovit požadovaný soubor nebo složku, klikněte na Obnovení souborů na stránce Zálohovaná položka a zvolte některý ze seznamu bodů obnovení. Vyberte cíl obnovení a pak klikněte na **Vybrat soubor**, abyste mohli procházet bod obnovení. Vyberte požadovaný soubor nebo složku a klikněte na **Obnovit**.
+Azure Backup poskytuje možnost procházet bod obnovení v rámci webu Azure Portal. Pokud chcete obnovit požadovaný soubor nebo složku, klikněte na Obnovení souborů na stránce Zálohovaná položka a zvolte některý ze seznamu bodů obnovení. Vyberte cíl obnovení a pak klikněte na **Vybrat soubor**, abyste mohli procházet bod obnovení. Vyberte požadovaný soubor nebo složku a klikněte na **Obnovit**.
 
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/restore-individual-files-folders.png)
 
@@ -192,4 +190,4 @@ Následující postup předpokládá, že se úloha zálohování virtuálního 
 ## <a name="see-also"></a>Viz také
 Další informace o sdílených složkách Azure najdete tady:
 - [Nejčastější dotazy k zálohování sdílených složek Azure](backup-azure-files-faq.md)
-- [Řešení problémů se zálohováním sdílených složek Azure](troubleshoot-azure-files.md)
+- [Řešení potíží se zálohováním sdílených složek Azure](troubleshoot-azure-files.md)

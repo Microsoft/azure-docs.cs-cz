@@ -1,26 +1,26 @@
 ---
-title: "Vytváření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell | Microsoft Docs"
-description: "Kurz – Vytváření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell"
+title: Vytváření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell | Microsoft Docs
+description: Kurz – Vytváření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 02/09/2018
+ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4cf406dfbab40631c99da70085e99ba90f563411
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9bc5154486bf09072bdf3da6bbeb05407a140354
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-and-manage-windows-vms-with-the-azure-powershell-module"></a>Vytváření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell
 
@@ -90,9 +90,11 @@ Pomocí následujícího příkazu na svém místním počítači vytvořte s vi
 mstsc /v:<publicIpAddress>
 ```
 
+V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte uživatelské jméno a heslo, které jste vytvořili pro virtuální počítač, a pak klikněte na **OK**.
+
 ## <a name="understand-vm-images"></a>Vysvětlení imagí virtuálních počítačů
 
-Azure Marketplace obsahuje celou řadu imagí virtuálních počítačů, které jde využít k vytvoření nového virtuálního počítače. V předchozích krocích jsme vytvořili virtuální počítač pomocí image systému Windows Server 2016 Datacenter. V tomto kroku pomocí modulu PowerShell na webu Marketplace vyhledáme další image Windows, které je také možné použít jako základ pro nové virtuální počítače. Tento proces se skládá z vyhledání vydavatele, nabídky a názvu image (Sku). 
+Azure Marketplace obsahuje celou řadu imagí virtuálních počítačů, které jde využít k vytvoření nového virtuálního počítače. V předchozích krocích jsme vytvořili virtuální počítač pomocí image systému Windows Server 2016 Datacenter. V tomto kroku pomocí modulu PowerShell na webu Marketplace vyhledáme další image Windows, které je také možné použít jako základ pro nové virtuální počítače. Tento proces se skládá z vyhledání vydavatele, nabídky, skladové položky a volitelně čísla verze pro [identifikaci](cli-ps-findimage.md#terminology) image. 
 
 Seznam vydavatelů imagí můžete získat pomocí příkazu [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher):
 
@@ -139,7 +141,7 @@ Skus                                      Offer         PublisherName          L
 2016-Nano-Server                          WindowsServer MicrosoftWindowsServer EastUS
 ```
 
-Pomocí těchto informací můžete nasadit virtuální počítač s konkrétní imagí. Tento příklad nasadí virtuální počítač pomocí image systému Windows Server 2016 s kontejnery.
+Pomocí těchto informací můžete nasadit virtuální počítač s konkrétní imagí. Tento příklad nasadí virtuální počítač s použitím nejnovější verze image Windows Serveru 2016 s kontejnery.
 
 ```azurepowershell-interactive
 New-AzureRmVm `

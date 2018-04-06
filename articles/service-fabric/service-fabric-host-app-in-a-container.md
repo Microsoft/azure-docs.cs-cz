@@ -1,24 +1,24 @@
 ---
-title: "Nasazení aplikace .NET v kontejneru do Azure Service Fabric | Microsoft Docs"
-description: "Naučíte se, jak v sadě Visual Studio zabalit aplikaci .NET do kontejneru Dockeru. Tato nová aplikace typu kontejner se pak nasadí do clusteru Service Fabric."
+title: Nasazení aplikace .NET v kontejneru do Azure Service Fabric | Microsoft Docs
+description: Naučíte se, jak v sadě Visual Studio zabalit aplikaci .NET do kontejneru Dockeru. Tato nová aplikace typu kontejner se pak nasadí do clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/19/2017
+ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: cd1c3b063132ae549bfbf1e059667c5056c91046
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 11bb34939e5fa3699973051664e85f9ef2147ff7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabric
 
@@ -49,13 +49,6 @@ Aplikace Service Fabric se spouští v clusteru, což je síťově propojená sa
 Když teď máte v Azure spuštěný cluster Service Fabric, jste připraveni vytvořit a nasadit kontejnerizovanou aplikaci. Abychom naši aplikaci mohli začít spouštět v kontejneru, potřebujeme do projektu v sadě Visual Studio přidat **podporu Dockeru**. Po přidání **podpory Dockeru** do aplikace se stanou dvě věci. Zaprvé se do projektu přidá soubor _Dockerfile_. Tento nový soubor popisuje způsob sestavení image kontejneru. Zadruhé se pak do řešení přidá nový projekt _docker-compose_. Tento nový projekt obsahuje několik souborů docker-compose. Soubory docker-compose je možné použít k popisu způsobu spouštění kontejneru.
 
 Další informace o práci s [kontejnerovými nástroji v sadě Visual Studio][link-visualstudio-container-tools].
-
->[!NOTE]
->Pokud na svém počítači spouštíte image kontejnerů Windows poprvé, Docker CE musí stáhnout základní image pro vaše kontejnery. Image použité v tomto kurzu mají velikost 14 GB. Pokračujte a spuštěním následujícího příkazu terminálu stáhněte základní image:
->```cmd
->docker pull microsoft/mssql-server-windows-developer
->docker pull microsoft/aspnet:4.6.2
->```
 
 ### <a name="add-docker-support"></a>Přidání podpory Dockeru
 

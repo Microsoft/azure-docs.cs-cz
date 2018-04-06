@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/24/2018
 ms.author: sedusch
-ms.openlocfilehash: f8c01c4e3f060c6a5ad52f1ed16103ea42d8cd2b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: e3fb06309dabd7f66d5873e4c5faa48b468854f6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure (VM)
 
@@ -34,6 +34,7 @@ ms.lasthandoff: 03/29/2018
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2388694]:https://launchpad.support.sap.com/#/notes/2388694
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -155,15 +156,36 @@ Můžete jeden z šablony rychlý start na githubu nasadit všechny požadované
         1. Zadejte název nové kontroly stavu (například hana-hp)
         1. Vyberte TCP jako protokol, port 625**03**, zachovat Interval 5 a prahová hodnota špatného stavu 2
         1. Klikněte na tlačítko OK
-    1. Vytvoření pravidel vyrovnávání zatížení
+    1. SAP HANA 1.0: Vytvoření pravidla Vyrovnávání zatížení
         1. Otevřete nástroj pro vyrovnávání zatížení, zvolte pravidla Vyrovnávání zatížení a klikněte na tlačítko Přidat
         1. Zadejte název nové pravidlo Vyrovnávání zatížení (například hana-lb-3**03**15)
+        1. Vyberte front-endovou IP adresu, fond back-end a test stavu, který jste vytvořili dříve (pro front-endu – příklad hana)
+        1. Zachovat protokol TCP, zadejte port 3**03**15
+        1. Časový limit nečinnosti zvýšení do 30 minut
+        1. **Nezapomeňte povolit plovoucí IP adresa**
+        1. Klikněte na tlačítko OK
+        1. Opakujte předchozí kroky pro port 3**03**17
+    1. SAP HANA 2.0: Vytvoření pravidel pro systémovou databázi Vyrovnávání zatížení
+        1. Otevřete nástroj pro vyrovnávání zatížení, zvolte pravidla Vyrovnávání zatížení a klikněte na tlačítko Přidat
+        1. Zadejte název nové pravidlo Vyrovnávání zatížení (například hana-lb-3**03**13)
         1. Vyberte front-endovou IP adresu, fond back-end a test stavu, který jste vytvořili dříve (pro front-endu – příklad hana)
         1. Zachovat protokol TCP, zadejte port 3**03**13
         1. Časový limit nečinnosti zvýšení do 30 minut
         1. **Nezapomeňte povolit plovoucí IP adresa**
         1. Klikněte na tlačítko OK
-        1. Opakujte předchozí kroky pro port 3**03**15 a 3**03**17
+        1. Opakujte předchozí kroky pro port 3**03**14
+    1. SAP HANA 2.0: Vytvoření pravidel pro první Vyrovnávání zatížení databáze klienta
+        1. Otevřete nástroj pro vyrovnávání zatížení, zvolte pravidla Vyrovnávání zatížení a klikněte na tlačítko Přidat
+        1. Zadejte název nové pravidlo Vyrovnávání zatížení (například hana-lb-3**03**40)
+        1. Vyberte front-endovou IP adresu, fond back-end a test stavu, který jste vytvořili dříve (pro front-endu – příklad hana)
+        1. Zachovat protokol TCP, zadejte port 3**03**40
+        1. Časový limit nečinnosti zvýšení do 30 minut
+        1. **Nezapomeňte povolit plovoucí IP adresa**
+        1. Klikněte na tlačítko OK
+        1. Opakujte předchozí kroky pro port 3**03**41 a 3**03**42
+
+Další informace o požadované porty pro SAP HANA, najdete v kapitole [připojení k databázím klienta](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) z [SAP HANA klienta databází](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) průvodce nebo [2388694 Poznámka SAP] [2388694].
+
 
 ## <a name="create-pacemaker-cluster"></a>Vytvoření clusteru kardiostimulátor
 

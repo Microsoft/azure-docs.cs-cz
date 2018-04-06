@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření kanálu datové továrny pomocí portálu Azure Portal | Microsoft Docs"
-description: "Tento kurz obsahuje podrobné pokyny k vytvoření datové továrny s kanálem pomocí portálu Azure Portal. Kanál využívá aktivitu kopírování ke kopírování dat z úložiště Azure Blob Storage do databáze SQL Database."
+title: Vytvoření kanálu datové továrny pomocí portálu Azure Portal | Microsoft Docs
+description: Tento kurz obsahuje podrobné pokyny k vytvoření datové továrny s kanálem pomocí portálu Azure Portal. Kanál využívá aktivitu kopírování ke kopírování dat z úložiště Azure Blob Storage do databáze SQL Database.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 116832175a4b7e4497c9005be7841cb56c1d235b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 34c78a114c1d106c400a94941aa113153383e206
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště Azure Blob Storage do databáze SQL Database pomocí služby Azure Data Factory
 V tomto kurzu vytvoříte datovou továrnu pomocí uživatelského rozhraní služby Azure Data Factory. Kanál v této datové továrně kopíruje data z úložiště Azure Blob Storage do databáze SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -92,7 +92,7 @@ V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní
       
      ![Nová datová továrna](./media/tutorial-copy-data-portal/new-azure-data-factory.png)
  
-   Název datové továrny Azure Data Factory musí být *globálně jedinečný*. Pokud se u pole s názvem zobrazí následující chybová zpráva, tak název datové továrny změňte (třeba na vaše_jméno_ADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se u pole s názvem zobrazí následující chybová zpráva, tak název datové továrny změňte (třeba na vaše_jméno_ADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
   
    ![Chybová zpráva](./media/tutorial-copy-data-portal/name-not-available-error.png)
 4. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit. 
@@ -112,7 +112,7 @@ V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní
     ![Dlaždice Nasazování datové továrny](media/tutorial-copy-data-portal/deploying-data-factory.png)
 11. Po dokončení procesu vytváření se zobrazí stránka **Datová továrna**, kterou vidíte na obrázku.
    
-    ![Domovská stránka Datová továrna](./media/tutorial-copy-data-portal/data-factory-home-page.png)
+    ![Domovská stránka objektu pro vytváření dat](./media/tutorial-copy-data-portal/data-factory-home-page.png)
 12. Vyberte **Vytvořit a monitorovat**. Na samostatné kartě se spustí uživatelské rozhraní služby Data Factory.
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
@@ -178,7 +178,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
     ![Rozpoznání schématu zdroje](./media/tutorial-copy-data-portal/detect-source-schema.png)  
 15. Teď přejděte na kartu s kanálem (vyberte kanál na levé straně).
 
-    ![Karta kanálu](./media/tutorial-copy-data-portal/pipeline-tab.png)
+    ![Karta Kanál](./media/tutorial-copy-data-portal/pipeline-tab.png)
 16. Ověřte, že je v rozevíracím seznamu **Zdrojová datová sada** v okně **Vlastnosti** vybraná sada **SourceBlobDataset**. Pokud se na této stránce chcete podívat na náhled dat, vyberte **Náhled dat**. 
     
     ![Zdrojová datová sada](./media/tutorial-copy-data-portal/source-dataset-selected.png)
@@ -214,7 +214,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 
 22. V rozevíracím seznamu **Tabulka** vyberte **[dbo].[emp]**. 
 
-    ![Tabulka](./media/tutorial-copy-data-portal/select-emp-table.png)
+    ![Table](./media/tutorial-copy-data-portal/select-emp-table.png)
 23. Přejděte na kartu **Schéma** a vyberte **Importovat schéma**. 
 
     ![Výběr tlačítka Importovat schéma](./media/tutorial-copy-data-portal/import-destination-schema.png)
@@ -303,7 +303,7 @@ Před publikováním artefaktů (propojených služeb, datových sad a kanálu)
     ![Zobrazit oznámení](./media/tutorial-copy-data-portal/show-notifications.png)
 
 ## <a name="configure-code-repository"></a>Konfigurace úložiště kódu
-Kód přidružený k artefaktům datové továrny můžete publikovat do úložiště kódu Visual Studio Team Services. V tomto kroku vytvoříte úložiště kódu. 
+Kód přidružený k artefaktům datové továrny můžete publikovat do úložiště kódu Visual Studio Team Services. V tomto kroku vytvoříte úložiště kódu.  Další informace o vizuálním vytváření s využitím integrace VSTS najdete v tématu popisujícím [vytváření s využitím integrace VSTS Git](author-visually.md#author-with-vsts-git-integration).
 
 Pokud s úložištěm kódu Visual Studio Team Services pracovat nechcete, můžete tento krok přeskočit. Můžete dál publikovat do služby Data Factory, jako jste to dělali v předchozím kroku. 
 
@@ -404,7 +404,7 @@ V tomto kroku vytvoříte pro kanál aktivační událost plánovače. Tato akt
 
     g. Zaškrtněte políčko **Aktivováno**. Pomocí tohoto zaškrtávacího políčka můžete aktivační událost deaktivovat a aktivovat ji později.
 
-    h. Vyberte **Další**.
+    h. Vyberte **Next** (Další).
 
     ![Zaškrtávací políčko Aktivováno](./media/tutorial-copy-data-portal/trigger-activiated-next.png)
 

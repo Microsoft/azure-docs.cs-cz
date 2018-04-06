@@ -1,6 +1,6 @@
 ---
-title: "Přehled služby relačních databází Azure Database for PostgreSQL"
-description: "Přehled služby relačních databází Azure Database for PostgreSQL."
+title: Přehled služby relačních databází Azure Database for PostgreSQL
+description: Přehled služby relačních databází Azure Database for PostgreSQL.
 services: postgresql
 author: kamathsun
 ms.author: sukamat
@@ -10,15 +10,15 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 02/28/2018
-ms.openlocfilehash: ef7f710fb39c3745ff5a20a73cd4dc5c1fa1fece
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 766373f4b9390e576285db73d9e9e9942eb6624f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Co je Azure Database for PostgreSQL?
 
-Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře na základě komunitní verze opensourcového databázového stroje [PostgreSQL](https://www.postgresql.org/). Tato služba je ve verzi Public Preview. Azure Database for PostgreSQL nabízí:
+Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře na základě komunitní verze opensourcového databázového stroje [PostgreSQL](https://www.postgresql.org/). Azure Database for PostgreSQL nabízí:
 
 - Integrovanou vysokou dostupnost bez dalších poplatků
 - Předvídatelný výkon a všeobecné ceny při průběžných platbách
@@ -45,10 +45,10 @@ Služba Azure Database for PostgreSQL nabízí tři cenové úrovně: Basic, Obe
 Jak se rozhodnout, kdy přidat a kdy odebrat výkon? Můžete použít integrované funkce monitorování a upozorňování Azure. Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity v závislosti na stávajících nebo předpokládaných požadavcích na výkon nebo úložiště. Podrobnosti najdete v tématu [Upozornění](howto-alert-on-metric.md).
 
 ## <a name="keep-your-app-and-business-running"></a>Udržujte své aplikace a podnikáni v chodu
-Dostupnost služby Azure se smlouvou o úrovní služeb (SLA) dosahuje špičkové hodnoty 99,99 % (není k dispozici ve verzi Preview), protože staví na globální síti Microsoftem spravovaných datacenter. Může tedy udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. S každým serverem Azure Database for PostgreSQL využíváte integrované zabezpečení, odolnost proti chybám a ochranu dat, které byste jinak museli kupovat nebo navrhovat, sestavovat a spravovat. Azure Database for PostgreSQL nabízí v každé cenové úrovni komplexní sadu funkcí a možností pro zajištění provozní kontinuity, které můžete využít k zahájení a udržení provozu. Můžete využít [obnovení databáze do určitého bodu v čase](howto-restore-server-portal.md), a to až 35 dnů zpět. Kromě toho, pokud dojde k výpadku datacentra hostujícího vaše databáze, můžete databáze obnovit z geograficky redundantních kopií nedávných záloh.
+Dostupnost služby Azure se smlouvou o úrovní služeb (SLA) dosahuje špičkové hodnoty 99,99 %, protože staví na globální síti Microsoftem spravovaných datových center. Může tedy udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. S každým serverem Azure Database for PostgreSQL využíváte integrované zabezpečení, odolnost proti chybám a ochranu dat, které byste jinak museli kupovat nebo navrhovat, sestavovat a spravovat. Azure Database for PostgreSQL nabízí v každé cenové úrovni komplexní sadu funkcí a možností pro zajištění provozní kontinuity, které můžete využít k zahájení a udržení provozu. Můžete využít [obnovení databáze do určitého bodu v čase](howto-restore-server-portal.md), a to až 35 dnů zpět. Kromě toho, pokud dojde k výpadku datacentra hostujícího vaše databáze, můžete databáze obnovit z geograficky redundantních kopií nedávných záloh.
 
 ## <a name="secure-your-data"></a>Zabezpečení dat
-Databázové služby Azure mají tradici zabezpečení dat, kterou služba Azure Database for PostgreSQL zachovává díky funkcím, které omezují přístup, chrání data a pomáhají s monitorováním aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx).
+Databázové služby Azure mají tradici zabezpečení dat, kterou služba Azure Database for PostgreSQL zachovává díky funkcím, které omezují přístup, chrání data a pomáhají s monitorováním aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/security).
 
 Služba Azure Database for PostgreSQL používá pro neaktivní uložená data šifrování úložiště. Data včetně záloh se šifrují na disku (s výjimkou dočasných souborů vytvořených databázovým strojem při spouštění dotazů). Služba používá 256bitové šifrování AES, které je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 

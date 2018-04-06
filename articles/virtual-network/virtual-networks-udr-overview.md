@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 9afaa7d34665f5c8ef4c4c819fe3b7e995bd71d3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 34fdf45094fae8e751d6b3e5c57d5b4df2e78200
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -130,11 +130,9 @@ Při odeslání odchozího provozu z podsítě vybere Azure trasu na základě c
 Pokud několik tras obsahuje stejnou předponu adresy, Azure vybere typ trasy na základě následující priority:
 
 1. Trasa definovaná uživatelem
+2. Systémová trasa s typem segmentu směrování *Virtuální síť*, *Partnerský vztah virtuálních sítí* nebo *VirtualNetworkServiceEndpoint*.
 2. Trasa protokolu BGP
-3. Systémová trasa
-
-> [!NOTE]
-> Pro provoz související s virtuální sítí, partnerskými vztahy virtuálních sítí nebo koncovými body služby virtuální sítě doporučujeme používat systémové trasy, i když jsou trasy protokolu BGP konkrétnější.
+3. Systémová trasa s jiným typem segmentu směrování než *Virtuální síť*, *Partnerský vztah virtuálních sítí* nebo *VirtualNetworkServiceEndpoint*.
 
 Směrovací tabulka obsahuje například následující trasy:
 

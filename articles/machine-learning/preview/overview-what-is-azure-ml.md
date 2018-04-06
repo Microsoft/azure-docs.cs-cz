@@ -1,6 +1,6 @@
 ---
 title: Co je Azure Machine Learning? | Dokumenty Microsoft
-description: Přehled experimentování a správy modelů ve službě Azure Machine Learning, která představuje integrované, komplexní řešení datové vědy pro profesionální datové vědce sloužící k přípravě dat, experimentování a nasazování pokročilých analytických aplikací na úrovni cloudu.
+description: Dočtete se o základních konceptech strojového učení v cloudu, dozvíte se, k čemu ho můžete využít, a seznámíte se s terminologií strojového učení. Přehled služby Azure Machine Learning, která představuje integrované, komplexní řešení datové vědy pro profesionální datové vědce, které slouží k vývoji, experimentování a nasazování pokročilých analytických aplikací na úrovni cloudu.
 services: machine-learning
 author: mwinkle
 ms.author: mwinkle
@@ -9,14 +9,19 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: get-started-article
 ms.date: 09/21/2017
-ms.openlocfilehash: e5716e3fc519c48aaea3ec17939d11008a1b1fd4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8a92f42ecee926042e9e0662f6b0bd9438024248
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
+# <a name="what-is-machine-learning"></a>Co je strojové učení?
 
+Strojové učení je technika datové vědy, která umožňuje počítačům s využitím existujících dat předvídat budoucí chování, výsledky a trendy. Pomocí strojového učení se počítače můžou učit, aniž by byly explicitně naprogramované.
+
+Díky předpovědím neboli predikcím ze strojového učení můžou být aplikace a zařízení chytřejší. Při online nakupování je díky strojovému učení možné na základě již pořízeného zboží doporučit produkty, které by se vám mohly líbit. Po protažení platební karty čtečkou porovnává strojově učený proces danou transakci s databází, a pomáhá tak odhalovat podvody. A takový robotický vysavač na základě strojového učení zjišťuje, jestli už v místnosti dostatečně uklidil.
+
+## <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 Azure Machine Learning je integrované, komplexní řešení datové vědy a pokročilé analýzy. Umožňuje datovým vědcům připravovat data, vyvíjet experimenty a nasazovat modely na úrovni cloudu.
 
 Azure Machine Learning má tyto hlavní součásti:
@@ -29,6 +34,7 @@ Azure Machine Learning má tyto hlavní součásti:
 Tyto aplikace a služby společně pomáhají výrazně urychlit vývoj a nasazení vašich projektů datové vědy. 
 
 ![Koncepty služby Azure Machine Learning](media/overview-what-is-azure-ml/aml-concepts.png)
+
 
 ## <a name="open-source-compatible"></a>Kompatibilita s technologiemi open source
 

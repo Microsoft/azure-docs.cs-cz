@@ -1,31 +1,46 @@
+---
+title: Globální distribuce služby Azure Cosmos DB
+description: Zjistěte, jak globálně replikovat data pomocí služby Azure Cosmos DB na webu Azure Portal.
+services: cosmos-db
+author: mimig1
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 03/26/2018
+ms.author: mimig
+ms.custom: include file
+ms.openlocfilehash: b62d1cc3b7ea79adbf24f214ba3bb9e92c3a1f0c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/28/2018
+---
+Informace o globální distribuci služby Azure Cosmos DB najdete v následujícím videu, kde Andrew Liu, manažer programu Azure Cosmos DB, prochází funkce globální distribuce.
 
-Můžete informace o Azure Cosmos DB globální distribuce v této Azure pátek video s Scott Hanselman a Karthik Raman hlavní manažer inženýrství.
+>[!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
 
->[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
+Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Cosmos DB](../articles/cosmos-db/distribute-data-globally.md).
 
-Další informace o tom, jak globální replikace databáze v Azure Cosmos DB funguje, najdete v části [distribuci dat globálně pomocí Cosmos DB](../articles/cosmos-db/distribute-data-globally.md).
+## <a id="addregion"></a>Přidání globálních oblastí databáze pomocí webu Azure Portal
+Služba Azure Cosmos DB je dostupná ve všech [oblastech Azure][azureregions] po celém světe. Po výběru výchozí úrovně konzistence účtu databáze k němu můžete přidružit jednu nebo několik oblastí (v závislosti na výběru výchozí úrovně konzistence a potřebách globální distribuce).
 
-## <a id="addregion"></a>Přidejte globální databáze oblastí pomocí portálu Azure
-Je k dispozici ve všech Azure Cosmos DB [oblastí Azure] [ azureregions] celém světě. Po výběru výchozí úroveň konzistence pro váš účet databáze, můžete přidružit jeden nebo více oblastí (v závislosti na vaši volbu výchozí konzistence úrovně a globální distribuci potřeby).
-
-1. V [portál Azure](https://portal.azure.com/), v levém panelu klikněte na **Azure Cosmos DB**.
-2. V **Azure Cosmos DB** okně, vyberte databázi účet změnit.
-3. V okně účtu klikněte na **replikovat data globálně** z nabídky.
-4. V **replikovat data globálně** okně vyberte oblasti, které chcete přidat nebo odebrat tak, že kliknete na oblasti v mapě a pak klikněte na **Uložit**. A náklady na přidání oblastí najdete [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) nebo [distribuci dat globálně pomocí Azure Cosmos DB](../articles/cosmos-db/distribute-data-globally.md) Další informace najdete v článku.
+1. V levém panelu na webu [Azure Portal](https://portal.azure.com/) klikněte na **Azure Cosmos DB**.
+2. Na stránce **Azure Cosmos DB** vyberte účet databáze, který chcete upravit.
+3. V nabídce na stránce účtu klikněte na **Globální replikace dat**.
+4. Na stránce **Globální replikace dat** vyberte kliknutím na oblasti na mapě oblasti, které chcete přidat nebo odebrat, a pak klikněte na **Uložit**. Za přidání oblastí se neúčtují žádné poplatky. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) nebo v článku [Globální distribuce dat pomocí služby Azure Cosmos DB](../articles/cosmos-db/distribute-data-globally.md).
    
-    ![Klikněte na oblasti v mapě přidat nebo odebrat je][1]
+    ![Přidání nebo odebrání oblastí kliknutím na oblasti na mapě][1]
     
-Jakmile přidáte druhý oblasti, **ruční převzetí služeb při selhání** je zapnuta možnost **replikovat data globálně** okno na portálu. Tuto možnost můžete testovat proces převzetí služeb při selhání nebo změňte oblasti primární zápisu. Jakmile přidáte třetí oblasti, **priorit převzetí služeb při selhání** možnost je povolená na stejné okno, ve kterém můžete změnit pořadí převzetí služeb při selhání pro čtení.  
+Po přidání druhé oblasti se na stránce portálu **Globální replikace dat** povolí možnost **Ruční převzetí služeb při selhání**. Pomocí této možnosti můžete otestovat proces převzetí služeb při selhání nebo změnit primární oblast pro zápis. Po přidání třetí oblasti se na stejné stránce povolí možnost **Priority převzetí služeb při selhání**, abyste mohli změnit pořadí převzetí služeb při selhání pro čtení.  
 
-### <a name="selecting-global-database-regions"></a>Výběr oblasti globální databáze
-Existují dvě běžné scénáře pro konfiguraci dvou nebo více oblastí:
+### <a name="selecting-global-database-regions"></a>Výběr globálních oblastí databáze
+Pro konfiguraci dvou nebo více oblastí existují dva běžné scénáře:
 
-1. Doručování s nízkou latencí přístup k datům pro koncové uživatele bez ohledu na to, kde se nachází po celém světě
-2. Přidání místní odolnost pro provozní kontinuitu a zotavení po havárii (BCDR)
+1. Poskytování přístupu k datům s nízkou latencí koncovým uživatelům po celém světe bez ohledu na to, kde se nacházejí.
+2. Přidání oblastní odolnosti pro zajištění provozní kontinuity a zotavení po havárii (BCDR).
 
-Pro doručení s nízkou latencí pro koncové uživatele, doporučujeme nasadit obě aplikace a přidat Azure Cosmos DB v oblastech, které je odpovídají k umístění aplikace uživatele.
+Pro zajištění nízké latence pro koncové uživatele se doporučuje nasadit aplikaci i službu Azure Cosmos DB v oblastech, které odpovídají umístění uživatelů aplikace.
 
-Pro BCDR, doporučuje se přidat na základě páru oblasti popsané v oblastech [obchodní kontinuitu a zotavení po havárii (BCDR): spárovat oblasti Azure] [ bcdr] článku.
+Pro zajištění BCDR se doporučuje přidat oblasti podle spárovaných oblastí popsaných v článku [Provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti Azure][bcdr].
 
 <!--
 

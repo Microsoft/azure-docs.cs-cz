@@ -1,6 +1,6 @@
 ---
-title: "Seznámení se službou Azure Container Service pro Kubernetes"
-description: "Azure Container Service pro Kubernetes zjednodušuje nasazování a správu aplikací založených na kontejnerech v Azure."
+title: Seznámení se službou Azure Container Service pro Kubernetes
+description: Azure Container Service pro Kubernetes zjednodušuje nasazování a správu aplikací založených na kontejnerech v Azure.
 services: container-service
 author: gabrtv
 manager: timlt
@@ -9,17 +9,21 @@ ms.topic: overview
 ms.date: 11/13/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 2980d4733dcf138c3a9aa1713cff994bbf5a296c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5bfa445eb11ed8be608278d0b95249372f9976ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="introduction-to-azure-container-service-aks"></a>Seznámení se službou Azure Container Service (AKS)
+# <a name="introduction-to-azure-container-service-aks-preview"></a>Seznámení se službou Azure Container Service (AKS) ve verzi Preview
 
 Služba Azure Container Service (AKS) zjednodušuje vytváření, konfiguraci a správu clusteru virtuálních počítačů, ve kterých je předem nakonfigurované spouštění kontejnerizovaných aplikací. Díky tomu můžete při nasazování a správě kontejnerových aplikací v Microsoft Azure využívat své stávající dovednosti nebo stavět na rozsáhlých a stále se rozšiřujících odborných znalostech komunity.
 
 Díky používání AKS můžete využívat výhody funkcí Azure na podnikové úrovni, a přitom zachovávat přenositelnost aplikací prostřednictvím Kubernetes a formátu image Dockeru.
+
+> [!IMPORTANT]
+> Azure Container Service (AKS) je aktuálně ve verzi **Preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
+>
 
 ## <a name="managed-kubernetes-in-azure"></a>Managed Kubernetes v Azure
 

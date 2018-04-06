@@ -1,11 +1,11 @@
 ---
-title: "Připojení počítače k virtuální síti Azure typu Point-to-Site s použitím nativního ověřování certifikátů Azure: Azure Portal | Dokumentace Microsoftu"
-description: "Připojíte zabezpečeně klienty Windows a Mac OS X k virtuální síti Azure pomocí P2S (Point-to-Site) a certifikátů podepsaných svým držitelem (self-signed certificate) nebo vydaných certifikační autoritou. V tomto článku se používá Azure Portal."
+title: 'Připojení počítače k virtuální síti Azure typu Point-to-Site s použitím nativního ověřování certifikátů Azure: Azure Portal | Dokumentace Microsoftu'
+description: Připojíte zabezpečeně klienty Windows a Mac OS X k virtuální síti Azure pomocí P2S (Point-to-Site) a certifikátů podepsaných svým držitelem (self-signed certificate) nebo vydaných certifikační autoritou. V tomto článku se používá Azure Portal.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: a15ad327-e236-461f-a18e-6dbedbf74943
 ms.service: vpn-gateway
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2018
+ms.date: 03/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0a45430491e1e06080ae2eca2124088402c17f54
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4603131c31ab3792efc1df504eb95dfde2eccb17
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím nativního ověřování certifikátů Azure: Azure Portal
 
@@ -78,6 +78,10 @@ Po vytvoření virtuální sítě můžete přidat IP adresu serveru DNS, aby by
 
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
+>[!NOTE]
+>Skladová položka Basic nepodporuje ověřování IKEv2 ani RADIUS.
+>
+
 ## <a name="generatecert"></a>5. Generování certifikátů
 
 Azure používá certifikáty k ověřování klientů, kteří se připojují k virtuální síti přes připojení VPN typu Point-to-Site. Jakmile získáte kořenový certifikát, [nahrajete](#uploadfile) do Azure informace o veřejném klíči. Azure pak kořenový certifikát považuje za důvěryhodný pro připojení k virtuální síti přes Point-to-Site. Z kořenového certifikátu také generujete klientské certifikáty, které pak nainstalujete na každém klientském počítači. Klientský certifikát se používá k ověřování klienta při zahájení připojení k virtuální síti. 
@@ -103,6 +107,10 @@ Fond adres klienta je rozsah privátních IP adres, který zadáte. Klienti při
 3. Na stránce konfigurace **Point-to-Site** přidejte do pole **Fond adres** rozsah privátních IP adres, který chcete použít. Klienti VPN dynamicky obdrží IP adresu z rozsahu, který zadáte. Kliknutím na **Uložit** ověřte a uložte nastavení.
 
   ![Fond adres klienta](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
+
+  >[!NOTE]
+  >Pokud se na této stránce portálu nezobrazí typ tunelu nebo typ ověřování, vaše brána používá skladovou položku Basic. Skladová položka Basic nepodporuje ověřování IKEv2 ani RADIUS.
+  >
 
 ## <a name="tunneltype"></a>7. Konfigurace typu tunelového propojení
 

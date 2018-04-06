@@ -1,44 +1,42 @@
 ---
-title: "Azure Cosmos DB: Vývoj pomocí rozhraní SQL API v rozhraní .NET | Microsoft Docs"
-description: "Naučte se vyvíjet s rozhraním API Azure Cosmos DB SQL pomocí rozhraní .NET"
+title: 'Azure Cosmos DB: Vývoj v .NET s využitím rozhraní SQL API | Microsoft Docs'
+description: Naučte se vyvíjet v .NET s využitím rozhraní SQL API služby Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: rafats
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: e37a0993567b6cec7ed6a91e6dad1f2e2c097198
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 7fca9f184097ed50ace665cde0c5ef8fb180feda
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="azure-cosmosdb-develop-with-the-sql-api-in-net"></a>Azure CosmosDB: Vývoj pomocí rozhraní SQL API v rozhraní .NET
+# <a name="azure-cosmosdb-develop-with-the-sql-api-in-net"></a>Azure Cosmos DB: Vývoj v .NET s využitím rozhraní SQL API
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
+V tomto kurzu se dozvíte, jak pomocí webu Azure Portal vytvořit účet služby Azure Cosmos DB a pak pomocí rozhraní [SQL API pro .NET](sql-api-introduction.md) vytvořit databázi dokumentů a kolekci s [klíčem oddílu](sql-api-partition-data.md#partition-keys). Když při vytváření kolekce definujete klíč oddílu, vaše aplikace bude připravená na bezproblémové škálování s ohledem na růst objemu dat. 
 
-Tento kurz ukazuje, jak vytvořit účet Azure Cosmos DB pomocí portálu Azure a pak vytvořte databázi dokumentů a kolekce s [klíč oddílu](sql-api-partition-data.md#partition-keys) pomocí [SQL .NET API](sql-api-introduction.md). Definováním klíč oddílu, když vytvoříte kolekci, je připraven aplikace pak moci bez obtíží škálujte podle rozšiřujícího se vaše data. 
-
-Tento kurz se zaměřuje na tyto úlohy pomocí [SQL .NET API](sql-api-sdk-dotnet.md):
+Tento kurz se zabývá následujícími úkony s použitím rozhraní [SQL API pro .NET](sql-api-sdk-dotnet.md):
 
 > [!div class="checklist"]
 > * Vytvoření účtu služby Azure Cosmos DB
 > * Vytvoření databáze a kolekce s klíčem oddílu
 > * Vytvoření dokumentů JSON
 > * Aktualizace dokumentu
-> * Dotaz na dělené kolekce
-> * Spuštění uložené procedury
+> * Dotazování dělených kolekcí
+> * Spuštění uložených procedur
 > * Odstranění dokumentu
 > * Odstranění databáze
 
@@ -53,11 +51,11 @@ Ujistěte se prosím, že máte následující:
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
-Začněme vytvořením účtu Azure Cosmos DB na portálu Azure.
+Začněme vytvořením účtu služby Azure Cosmos DB na webu Azure Portal.
 
 > [!TIP]
-> * Již máte účet Azure Cosmos DB? Pokud ano, přeskočit na [nastavit řešení sady Visual Studio](#SetupVS)
-> * Pokud používáte emulátor DB Cosmos Azure, postupujte podle kroků v [emulátoru DB Cosmos Azure](local-emulator.md) nastavit emulátoru a přeskočit na [nastavení řešení v nástroji Visual Studio](#SetupVS). 
+> * Už máte účet služby Azure Cosmos DB? Pokud ano, přeskočte k části [Nastavení řešení v sadě Visual Studio](#SetupVS).
+> * Pokud používáte emulátor služby Azure Cosmos DB, nastavte emulátor pomocí postupu v tématu [Emulátor služby Azure Cosmos DB](local-emulator.md) a přeskočte k části [Nastavení řešení v sadě Visual Studio](#SetupVS). 
 >
 >
 
@@ -66,24 +64,24 @@ Začněme vytvořením účtu Azure Cosmos DB na portálu Azure.
 ## <a id="SetupVS"></a>Nastavení řešení v sadě Visual Studio
 1. Otevřete na svém počítači sadu **Visual Studio**.
 2. V nabídce **Soubor** vyberte **Nový** a zvolte **Projekt**.
-3. V **nový projekt** dialogovém okně, vyberte **šablony** / **Visual C#** / **konzolovou aplikaci (rozhraní .NET Framework)** , pojmenujte svůj projekt a potom klikněte na **OK**.
+3. V dialogovém okně **Nový projekt** vyberte **Šablony** / **Visual C#** / **Konzolová aplikace (.NET Framework)**, pojmenujte svůj projekt a klikněte na **OK**.
    ![Snímek obrazovky okna Nový projekt](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-new-project-2.png)
 
 4. V **Průzkumníku řešení** klikněte pravým tlačítkem na novou konzolovou aplikaci v rámci řešení sady Visual Studio a pak klikněte na **Spravovat balíčky NuGet**.
     
     ![Snímek obrazovky místní nabídky projektu](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-manage-nuget-pacakges.png)
-5. V **NuGet** , klikněte na **Procházet**a typ **documentdb** do vyhledávacího pole.
+5. Na kartě **NuGet** klikněte na **Procházet** a do vyhledávacího pole zadejte **documentdb**.
 <!---stopped here--->
 6. Najděte ve výsledcích **Microsoft.Azure.DocumentDB** a klikněte na **Nainstalovat**.
-   Je třeba ID balíčku klientské knihovny Azure Cosmos DB [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB).
-   ![Snímek obrazovky nabídky NuGet pro vyhledání Azure Cosmos DB Client SDK](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-manage-nuget-pacakges-2.png)
+   ID balíčku s klientskou knihovnou služby Azure Cosmos DB je [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB).
+   ![Snímek obrazovky s nabídkou NuGet pro vyhledání klientské sady SDK služby Azure Cosmos DB](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-manage-nuget-pacakges-2.png)
 
     Pokud se vám zobrazí zpráva týkající se kontroly změn řešení, klikněte na **OK**. Pokud se vám zobrazí zpráva týkající se přijetí licence, klikněte na **Souhlasím**.
 
-## <a id="Connect"></a>Přidejte odkazy na projekt
-Příklady zbývajících kroků v tomto kurzu poskytují fragmenty kódu rozhraní API pro SQL, který je nutná k vytváření a aktualizují Azure Cosmos DB prostředky ve vašem projektu.
+## <a id="Connect"></a>Přidání referencí do projektu
+Zbývající kroky v tomto kurzu poskytují fragmenty kódu rozhraní SQL API, které jsou potřeba k vytvoření a aktualizaci prostředků služby Azure Cosmos DB ve vašem projektu.
 
-Nejprve přidejte tyto odkazy na aplikace.
+Nejprve do své aplikace přidejte tyto reference.
 <!---These aren't added by default when you install the pkg?--->
 
 ```csharp
@@ -95,7 +93,7 @@ using Newtonsoft.Json;
 
 ## <a id="add-references"></a>Připojení aplikace
 
-V dalším kroku přidejte tyto dvě konstanty a *klienta* proměnné ve vaší aplikaci.
+Dále do své aplikace přidejte tyto dvě konstanty a proměnnou *client*.
 
 ```csharp
 private const string EndpointUrl = "<your endpoint URL>";
@@ -103,17 +101,17 @@ private const string PrimaryKey = "<your primary key>";
 private DocumentClient client;
 ```
 
-Potom head zpátky [portál Azure](https://portal.azure.com) získat adresu URL koncového bodu a primární klíč. Adresa URL koncového bodu a primární klíč jsou potřeba k tomu, aby aplikace věděla, kam se má připojit, a aby služba Azure Cosmos DB důvěřovala připojení aplikace.
+Pak přejděte zpět na [Azure Portal](https://portal.azure.com) a získejte adresu URL koncového bodu a primární klíč. Adresa URL koncového bodu a primární klíč jsou potřeba k tomu, aby aplikace věděla, kam se má připojit, a aby služba Azure Cosmos DB důvěřovala připojení aplikace.
 
-Na portálu Azure přejděte ke svému účtu Azure Cosmos DB, klikněte na **klíče**a potom klikněte na **klíče pro čtení a zápis**.
+Na webu Azure Portal přejděte do svého účtu služby Azure Cosmos DB, klikněte na **Klíče** a pak na **Klíče pro čtení i zápis**.
 
-Zkopírujte URI z portálu a vložte ji přes `<your endpoint URL>` v souboru program.cs. Poté zkopírujte primární klíč z portálu a vložte ji přes `<your primary key>`. Nezapomeňte odebrat `<` a `>` z hodnoty.
+Zkopírujte identifikátor URI z portálu a vložte ho místo `<your endpoint URL>` v souboru program.cs. Pak zkopírujte PRIMÁRNÍ KLÍČ z portálu a vložte ho místo `<your primary key>`. Nezapomeňte ve svých hodnotách odebrat `<` a `>`.
 
-![Snímek obrazovky portálu Azure používá v kurzu NoSQL k vytvoření konzolové aplikace jazyka C#. Zobrazuje účet Azure Cosmos DB s klíče v okně účtu Azure Cosmos DB a hodnotami URI a primární klíč v okně klíče](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-keys.png)
+![Snímek obrazovky webu Azure Portal, který se v kurzu NoSQL používá k vytvoření konzolové aplikace v jazyce C#. Ukazuje účet služby Azure Cosmos DB se zvýrazněnou možností KLÍČE v okně účtu služby Azure Cosmos DB a zvýrazněnými hodnotami IDENTIFIKÁTOR URI a PRIMÁRNÍ KLÍČ v okně Klíče.](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-keys.png)
 
 ## <a id="instantiate"></a>Vytvoření instance DocumentClient
 
-Teď vytvořte novou instanci třídy **DocumentClient**.
+Teď vytvořte novou instanci **DocumentClient**.
 
 ```csharp
 DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
@@ -121,27 +119,27 @@ DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
 
 ## <a id="create-database"></a>Vytvoření databáze
 
-Dále vytvořte Azure DB Cosmos [databáze](sql-api-resources.md#databases) pomocí [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) metoda nebo [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metodu  **DocumentClient** třídy z [SQL .NET SDK](sql-api-sdk-dotnet.md). Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
+Dále vytvořte [databázi](sql-api-resources.md#databases) Azure Cosmos DB pomocí metody [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) nebo [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) třídy **DocumentClient** v sadě [SQL SDK pro .NET](sql-api-sdk-dotnet.md). Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
 
 ```csharp
 await client.CreateDatabaseAsync(new Database { Id = "db" });
 ```
-## <a name="decide-on-a-partition-key"></a>Vyberte klíč oddílu 
+## <a name="decide-on-a-partition-key"></a>Výběr klíče oddílu 
 
-Kolekce jsou kontejnery pro ukládání dokumentů. Jsou logické prostředky a můžete [span jeden nebo více fyzických oddílů](partition-data.md). A [klíč oddílu](sql-api-partition-data.md) je vlastnost (nebo cestu) v rámci vaší dokumenty, které slouží k distribuci dat mezi servery nebo oddíly. Všechny dokumenty se stejným klíčem oddílu ukládají do stejného oddílu. 
+Kolekce jsou kontejnery pro ukládání dokumentů. Jedná se o logické prostředky, které můžou [využívat jeden nebo více fyzických oddílů](partition-data.md). [Klíč oddílu](sql-api-partition-data.md) je vlastnost (nebo cesta) v rámci dokumentů, která slouží k distribuci dat napříč servery nebo oddíly. Všechny dokumenty se stejným klíčem oddílu se ukládají do stejného oddílu. 
 
-Rozhodnutí o důležité, aby předtím, než vytvoříte kolekci, je určení klíč oddílu. Klíče oddílů jsou vlastnosti (nebo cestu) ve vaší dokumenty, které můžete používat k distribuci dat mezi několika servery nebo oddíly Azure Cosmos DB. Cosmos DB hashuje hodnotu klíče oddílu a hash výsledek používá k určení oddílu pro uložení dokumentů. Všechny dokumenty se stejným klíčem oddílu ukládají do stejného oddílu a klíče oddílů nelze změnit po vytvoření kolekce. 
+Určení klíče oddílu představuje důležité rozhodnutí, které je potřeba provést před vytvořením kolekce. Klíče oddílů jsou vlastnost (nebo cesta) v rámci dokumentů, kterou služba Azure Cosmos DB používá k distribuci dat napříč několika servery nebo oddíly. Cosmos DB hashuje hodnotu klíče oddílu a výslednou hodnotu hash používá k určení oddílu, do kterého má dokument uložit. Všechny dokumenty se stejným klíčem oddílu se ukládají do stejného oddílu a klíče oddílů není možné po vytvoření kolekce změnit. 
 
-V tomto kurzu vytvoříme nastavit klíč oddílu na `/deviceId` tak, aby všechna data pro jedno zařízení je uložen v jeden oddíl. Chcete vybrat klíč oddílu, který má velký počet hodnot, z nichž každý se používají v o stejnou frekvenci zajistit, že Cosmos DB můžete vyrovnávat zatížení, podle vašich dat roste a dosáhnout úplnou propustnost kolekce. 
+Pro účely tohoto kurzu nastavíme klíč oddílu na `/deviceId`, aby se všechna data pro jedno zařízení ukládala do jednoho oddílu. Doporučujeme zvolit klíč oddílu s velkým rozsahem hodnot, z nichž každá se bude používat přibližně stejně často, aby se zajistilo, že Cosmos DB dokáže vyrovnávat zatížení s ohledem na růst objemu dat a dosáhnout úplné propustnosti kolekce. 
 
-Další informace o oddílech najdete v tématu [postup oddílu a škálování v Azure Cosmos DB?](partition-data.md) 
+Další informace o dělení najdete v tématu [Jak dělit a škálovat ve službě Azure Cosmos DB?](partition-data.md) 
 
 ## <a id="CreateColl"></a>Vytvoření kolekce 
 
-Teď, když jsme si vědomi naše klíč oddílu `/deviceId`, umožňuje vytvořit [kolekce](sql-api-resources.md#collections) pomocí [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) metoda nebo [CreateDocumentCollectionIfNotExistsAsync ](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) metodu **DocumentClient** třídy. Kolekce je kontejner dokumentů JSON a všechny přidružené logiky Javascriptové aplikace. 
+Když už známe klíč oddílu `/deviceId`, vytvoříme [kolekci](sql-api-resources.md#collections) pomocí metody [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) nebo [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) třídy **DocumentClient**. Kolekce je kontejner dokumentů JSON a přidružené logiky javascriptové aplikace. 
 
 > [!WARNING]
-> Vytvoření kolekce hradí, jako jsou rezervování propustnost pro aplikace komunikovat s Azure Cosmos DB. Další podrobnosti, navštivte naše [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)
+> Za vytvoření kolekce se hradí poplatky, protože rezervujete propustnost pro komunikaci aplikace se službou Azure Cosmos DB. Další podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
 > 
 > 
 
@@ -160,10 +158,10 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 2500 });
 ```
 
-Tato metoda umožňuje volání Azure Cosmos DB a služby zřizuje počet oddílů podle propustnosti, požadované rozhraní REST API. Propustnost kolekce můžete změnit, protože výkon musí momentální pomocí sady SDK nebo [portál Azure](set-throughput.md).
+Tato metoda provádí volání rozhraní REST API do služby Azure Cosmos DB a ta na základě požadované propustnosti zřídí několik oddílů. S ohledem na měnící se požadavky na výkon můžete propustnost kolekce měnit pomocí sady SDK nebo webu [Azure Portal](set-throughput.md).
 
 ## <a id="CreateDoc"></a>Vytvoření dokumentů JSON
-Umožňuje vložit některé dokumenty JSON do Azure Cosmos DB. [Dokument](sql-api-resources.md#documents) je možné vytvořit pomocí metody [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) třídy **DocumentClient**. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Tato ukázka třída obsahuje zařízení, čtení a volání CreateDocumentAsync vložit nového zařízení čtení do kolekce.
+Teď do služby Azure Cosmos DB přidáme několik dokumentů JSON. [Dokument](sql-api-resources.md#documents) je možné vytvořit pomocí metody [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) třídy **DocumentClient**. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Tato ukázková třída obsahuje čtení zařízení a volání metody CreateDocumentAsync, která vloží nové čtení zařízení do kolekce.
 
 ```csharp
 public class DeviceReading
@@ -204,7 +202,7 @@ await client.CreateDocumentAsync(
 ```
 ## <a name="read-data"></a>Čtení dat
 
-Umožňuje čtení dokumentu svým klíč oddílu a Id pomocí metody ReadDocumentAsync. Všimněte si, že čtení obsahují hodnotu PartitionKey (odpovídající `x-ms-documentdb-partitionkey` hlavička požadavku v rozhraní REST API).
+Teď pomocí metody ReadDocumentAsync přečteme dokument podle jeho klíče oddílu a ID. Všimněte si, že operace čtení zahrnují hodnotu PartitionKey (ta odpovídá záhlaví požadavku`x-ms-documentdb-partitionkey` v rozhraní REST API).
 
 ```csharp
 // Read document. Needs the partition key and the Id to be specified
@@ -217,7 +215,7 @@ DeviceReading reading = (DeviceReading)(dynamic)result;
 
 ## <a name="update-data"></a>Aktualizace dat
 
-Teď umožňuje aktualizovat některé data pomocí metody ReplaceDocumentAsync.
+Teď pomocí metody ReplaceDocumentAsync některá data aktualizujeme.
 
 ```csharp
 // Update the document. Partition key is not required, again extracted from the document
@@ -231,7 +229,7 @@ await client.ReplaceDocumentAsync(
 
 ## <a name="delete-data"></a>Odstranění dat
 
-Teď umožňuje odstranit dokument klíčem oddílu a id pomocí metody DeleteDocumentAsync.
+Teď pomocí metody DeleteDocumentAsync odstraníme dokument podle jeho klíče oddílu a ID.
 
 ```csharp
 // Delete a document. The partition key is required.
@@ -239,9 +237,9 @@ await client.DeleteDocumentAsync(
   UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
   new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 ```
-## <a name="query-partitioned-collections"></a>Dotaz na dělené kolekce
+## <a name="query-partitioned-collections"></a>Dotazování dělených kolekcí
 
-Pro dotazování dat v kolekcích oddílů Azure Cosmos DB automaticky směruje dotaz na oddíly odpovídající hodnoty klíče oddílu zadaných ve filtru (pokud existují). Například tento dotaz se směruje na právě oddílu klíč oddílu "XMS-0001".
+Při dotazování dat v dělených kolekcích služba Azure Cosmos DB automaticky směruje dotaz do oddílů, které odpovídají hodnotám klíčů oddílů zadaných ve filtru (pokud existují). Například tento dotaz se směruje jenom do oddílu, který obsahuje klíč oddílu XMS-0001.
 
 ```csharp
 // Query using partition key
@@ -250,7 +248,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
     .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
 ```
     
-Následující dotaz na klíč oddílu (DeviceId) nemá filtr a je fanned pro všechny oddíly, kde je u indexu oddílu spustit. Všimněte si, že budete muset určit EnableCrossPartitionQuery (`x-ms-documentdb-query-enablecrosspartition` v rozhraní REST API) tak, aby měl sady SDK při spuštění dotazu napříč oddíly.
+Následující dotaz neobsahuje filtr klíče oddílu (DeviceId) a distribuuje se do všech oddílů, ve kterých se provede na index oddílu. Poznámka: Pokud chcete, aby sada SDK provedla dotaz ve všech oddílech, musíte zadat EnableCrossPartitionQuery (`x-ms-documentdb-query-enablecrosspartition` v rozhraní REST API).
 
 ```csharp
 // Query across partition keys
@@ -260,8 +258,8 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
 
-## <a name="parallel-query-execution"></a>Provádění paralelního dotazu
-Azure Cosmos DB SQL SDK 1.9.0 a vyšší možnosti provádění paralelního dotazu podpory, které umožňují provádět dotazy s nízkou latencí pro dělené kolekce, i v případě, že potřebují k touch velký počet oddílů. Například následující dotaz je nakonfigurována pro spuštění paralelně napříč oddíly.
+## <a name="parallel-query-execution"></a>Paralelní provádění dotazů
+Sady SQL SDK služby Azure Cosmos DB verze 1.9.0 a novější podporují možnosti paralelního provádění dotazů. Díky tomu můžete provádět dotazy s nízkou latencí na dělené kolekce i v případě, že je potřeba pracovat s velkým počtem oddílů. Například následující dotaz je nakonfigurovaný tak, aby se spustil paralelně napříč oddíly.
 
 ```csharp
 // Cross-partition Order By queries
@@ -272,15 +270,15 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .OrderBy(m => m.MetricValue);
 ```
     
-Provádění paralelního dotazu můžete spravovat pomocí ladění následující parametry:
+Paralelní provádění dotazů můžete spravovat laděním následujících parametrů:
 
-* Nastavením `MaxDegreeOfParallelism`, můžete řídit stupně paralelního zpracování tedy maximální počet souběžných síťové připojení k kolekce oddíly. Pokud nastavíte na hodnotu -1, stupně paralelního zpracování spravuje sady SDK. Pokud `MaxDegreeOfParallelism` není zadaný, nebo je nastavený na 0, což je výchozí hodnota, bude jedno síťové připojení k oddílům kolekce.
-* Nastavením `MaxBufferedItemCount`, můžete kompromisy využití paměti dotazu latence a na straně klienta. Pokud tento parametr vynecháte nebo tuto možnost nastavíte na hodnotu -1, počet položek do vyrovnávací paměti při provádění paralelního dotazu, které spravuje sady SDK.
+* Nastavením `MaxDegreeOfParallelism` můžete řídit stupeň paralelismu, tj. maximální počet souběžných síťových připojení k oddílům kolekce. Pokud nastavíte hodnotu -1, stupeň paralelismu bude spravovat sada SDK. Pokud hodnota `MaxDegreeOfParallelism` není zadaná nebo je nastavená na 0, což je výchozí hodnota, k oddílům kolekce bude existovat jediné síťové připojení.
+* Nastavením `MaxBufferedItemCount` můžete zvolit kompromis mezi latencí dotazů a využitím paměti na straně klienta. Pokud tento parametr vynecháte nebo ho nastavíte na hodnotu -1, počet položek ukládaných do vyrovnávací paměti během paralelního provádění dotazů bude spravovat sada SDK.
 
-Zadaný stav stejné kolekce, paralelní dotaz vrátí výsledky ve stejném pořadí jako sériové provádění. Při provádění dotazu mezi oddílu, který zahrnuje řazení (ORDER BY a/nebo horní), sadu SDK SQL vydá dotaz paralelně napříč oddíly a sloučí částečně seřazená výsledky na straně klienta k vytvoření globální seřazené výsledky.
+Za předpokladu stejného stavu kolekce vrátí paralelní dotaz výsledky ve stejném pořadí jako při sériovém provedení. Při provádění dotazu napříč oddíly, který zahrnuje řazení (ORDER BY nebo TOP) sada SQL SDK provede dotaz paralelně napříč oddíly a sloučením částečně seřazených výsledků na straně klienta vytvoří globálně seřazené výsledky.
 
-## <a name="execute-stored-procedures"></a>Provedení uložené procedury
-Nakonec můžete provést jednotlivé transakce na dokumenty se stejným ID zařízení, například pokud jste údržbě agregace nebo nejnovější stav zařízení do jednoho dokumentu přidáním následující kód do projektu.
+## <a name="execute-stored-procedures"></a>Provádění uložených procedur
+A konečně, přidáním následujícího kódu do svého projektu můžete provádět atomické transakce s dokumenty se stejným ID zařízení, například pokud v jednom dokumentu uchováváte agregace nebo poslední stav zařízení.
 
 ```csharp
 await client.ExecuteStoredProcedureAsync<DeviceReading>(
@@ -289,30 +287,30 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
     "XMS-001-FE24C");
 ```
 
-A je to! ty jsou hlavními součástmi Azure Cosmos DB aplikaci, která používá klíč oddílu efektivně škálovat distribuci dat mezi oddílů.  
+A to je vše! Toto jsou hlavní komponenty aplikace Azure Cosmos DB, která pomocí klíče oddílu efektivně škáluje distribuci dat napříč oddíly.  
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nechcete pokračovat v používání této aplikace, odstraňte všechny prostředky, které jsou vytvořené v tomto kurzu na portálu Azure pomocí následujících kroků:
+Pokud nebudete tuto aplikace nadále používat, pomocí následujících kroků odstraňte všechny prostředky vytvořené v rámci tohoto kurzu na webu Azure Portal:
 
-1. Z nabídky na levé straně na portálu Azure, klikněte na tlačítko **skupiny prostředků** a pak klikněte na jedinečný název prostředku, který jste vytvořili. 
+1. V nabídce vlevo na webu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na jedinečný název vytvořeného prostředku. 
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující: 
+V tomto kurzu jste provedli následující: 
 
 > [!div class="checklist"]
-> * Vytvoření účtu Azure Cosmos DB
-> * Vytvořit databázi a kolekci s klíčem oddílu
-> * Vytvoření dokumentů JSON
-> * Aktualizovat dokumentu
-> * Dotaz dělené kolekce
-> * Byla spuštěna uložené procedury
-> * Odstranit dokumentu
-> * Odstranit databázi
+> * Vytvořili jste účet služby Azure Cosmos DB.
+> * Vytvořili jste databázi a kolekci s klíčem oddílu.
+> * Vytvořili jste dokumenty JSON.
+> * Aktualizovali jste dokument.
+> * Dotazovali jste dělené kolekce.
+> * Spustili jste uloženou proceduru.
+> * Odstranili jste dokument.
+> * Odstranili jste databázi.
 
-Teď můžete pokračovat v dalším kurzu a další data importovat do účtu Cosmos DB. 
+Teď můžete přejít k dalšímu kurzu a importovat do účtu služby Cosmos DB další data. 
 
 > [!div class="nextstepaction"]
 > [Importování dat do služby Azure Cosmos DB](import-data.md)

@@ -10,15 +10,15 @@ ms.custom: mvc,DBs & servers
 ms.topic: quickstart
 ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: e5c1a5a991284fcbeac53d2ce35be4e2634514fa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 97b14de64c4aa6bf134f2c293e4bb8b5725810d3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal: Použití editoru dotazů SQL k připojení a dotazování dat
 
-Editor dotazů SQL je dotazovací nástroj založený na prohlížeči, který poskytuje efektivní a jednoduchý způsob zpracování dotazů SQL pro Azure SQL Database nebo Azure SQL Data Warehouse, aniž byste museli opustit Azure Portal. Tento rychlý start ukazuje použití editoru dotazů pro připojení k databázi SQL a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.
+Editor dotazů SQL je dotazovací nástroj založený na prohlížeči, který poskytuje efektivní a jednoduchý způsob zpracování dotazů SQL pro Azure SQL Database nebo Azure SQL Data Warehouse, aniž byste museli opustit Azure Portal. Tento rychlý úvodní kurz ukazuje použití editoru dotazů k připojení k databázi SQL a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -142,19 +142,25 @@ Použijte následující kód k odstranění nového produktu, který jste přid
 
 ## <a name="query-editor-considerations"></a>Požadavky editoru dotazů
 
-Při práci s editorem dotazů ve verzi Preview byste měli vědět pár věcí:
+Při práci s editorem dotazů byste měli vědět pár věcí:
 
 1. Ověřte, že jste v nastavení brány firewall Azure SQL Serveru zapnuli možnost Povolit přístup ke službám Azure. Tato možnost poskytuje editoru dotazů SQL přístup k datovým skladům a databázím SQL.
 
-2. Přihlášení správce Azure Active Directory nefunguje pro účty, které mají povolené dvoufaktorové ověřování.
+2. Editor dotazů není možné použít k dotazování databází na serveru SQL, který je ve virtuální síti.
 
-3. E-mailové účty (například outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) se zatím jako správce Active Directory nepodporují. Nezapomeňte vybrat uživatele, který byl buď v Azure Active Directory vytvořený nativně, nebo který byl do Azure Active Directory federovaný.
+3. Stisknutí klávesy F5 aktualizuje stránku editoru dotazů a způsobí ztrátu dotazu, který se právě zpracovává. K provádění dotazů použijte tlačítko Spustit na panelu nástrojů.
 
-4. Editor dotazů ještě nepodporuje dotazy na prostorové datové typy. Výsledkem dotazu na prostorový sloupec bude chyba System.IO.FileNotFoundException.
+4. Editor dotazů nepodporuje připojení k hlavní databázi.
 
-5. IntelliSense pro databázové tabulky a zobrazení se nepodporuje. Editor ale podporuje automatické dokončování názvů, které jste už zadali.
+5. Pro provedení dotazu platí časový limit 5 minut.
 
-6. Stisknutí klávesy F5 aktualizuje stránku editoru dotazů a způsobí ztrátu dotazu, který se právě zpracovává. K provádění dotazů použijte tlačítko Spustit na panelu nástrojů.
+6. Přihlášení správce Azure Active Directory nefunguje pro účty, které mají povolené dvoufaktorové ověřování.
+
+7. E-mailové účty (například outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) se zatím jako správce Active Directory nepodporují. Nezapomeňte vybrat uživatele, který byl buď v Azure Active Directory vytvořený nativně, nebo který byl do Azure Active Directory federovaný.
+
+8. Editor dotazů podporuje pouze válcové zobrazení geografických datových typů.
+
+9. IntelliSense pro databázové tabulky a zobrazení se nepodporuje. Editor ale podporuje automatické dokončování názvů, které jste už zadali.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,10 +1,14 @@
-Pokud nechcete pokračovat v používání této aplikace, odstraňte všechny prostředky, které jsou vytvořené tento rychlý start pomocí následujících kroků, aby vám zbytečně nenabíhaly žádné poplatky za:
+Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu všechny prostředky vytvořené podle tohoto rychlého startu, aby se vám neúčtovaly žádné poplatky:
 
-1. Na portálu Azure vyberte **skupiny prostředků** zcela vlevo.  
+1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků** a pak vyberte skupinu prostředků, kterou jste vytvořili.  
 
-   ![Metriky na portálu Azure](./media/cosmos-db-delete-resource-group/delete-resources.png)
+    Pokud je nabídka vlevo sbalená, kliknutím na ![tlačítko Rozbalit](./media/cosmos-db-delete-resource-group/expand.png) ji rozbalte.
 
-2. Ze seznamu skupin prostředků, vyberte skupinu prostředků, které jste vytvořili a pak klikněte na tlačítko **odstranit skupinu prostředků**.
+   ![Metriky na webu Azure Portal](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
 
-3. Zadejte název skupiny prostředků odstranit, a pak klikněte na **odstranit**.
+2. V novém okně vyberte skupinu prostředků a klikněte na **Odstranit skupinu prostředků**.
+
+   ![Metriky na webu Azure Portal](./media/cosmos-db-delete-resource-group/delete-resources.png)   
+
+3. V novém okně zadejte název skupiny prostředků, kterou chcete odstranit, a pak klikněte na **Odstranit**.
 

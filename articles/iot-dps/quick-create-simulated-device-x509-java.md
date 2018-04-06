@@ -1,22 +1,22 @@
 ---
-title: "Zřízení simulovaného zařízení X.509 pro službu Azure IoT Hub pomocí Javy | Dokumentace Microsoftu"
-description: "Rychlý start Azure – Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Java SDK pro zařízení pro službu IoT Hub Device Provisioning"
+title: Zřízení simulovaného zařízení X.509 pro službu Azure IoT Hub pomocí Javy | Dokumentace Microsoftu
+description: Rychlý start Azure – Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Java SDK pro zařízení pro službu IoT Hub Device Provisioning
 services: iot-dps
-keywords: 
+keywords: ''
 author: msebolt
 ms.author: v-masebo
 ms.date: 12/21/2017
 ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 7e4ad361df8a37d4a82c1bc50c6fb134a1ad5159
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: f9eb572897854cfb2927b0282d25d5c272abd0e8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Java SDK pro zařízení pro službu IoT Hub Device Provisioning
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -25,6 +25,7 @@ Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Wind
 
 Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení služby IoT Hub Device Provisioning pomocí webu Azure Portal](./quick-setup-auto-provision.md).
 
+[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí 
 
@@ -39,7 +40,12 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
-
+1. Přejděte do kořenového adresáře azure-iot-sdk-java a sestavte projekt, aby se stáhly všechny potřebné balíčky.
+   
+   ```cmd/sh
+   cd azure-iot-sdk-java
+   mvn install -DskipTests=true
+   ```
 1. Přejděte k projektu generátoru certifikátů a sestavte ho. 
 
     ```cmd/sh

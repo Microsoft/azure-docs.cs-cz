@@ -1,8 +1,8 @@
 ---
-title: "Přehled řízení přístupu ve službě Data Lake Store | Dokumentace Microsoftu"
-description: "Zde se dozvíte, jak funguje řízení přístupu v Azure Data Lake Store"
+title: Přehled řízení přístupu ve službě Data Lake Store | Dokumentace Microsoftu
+description: Zde se dozvíte, jak funguje řízení přístupu v Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ec0d1fa9c422dbe4958c5d5f0b7a6e093aeb32da
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: a2e29fd6f2dbd4bd573b780a14bd09c0cd03395f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Řízení přístupu v Azure Data Lake Store
 
@@ -124,15 +124,15 @@ Dále jsou uvedeny některé obvyklé scénáře, které vám pomohou pochopit, 
 
 ## <a name="viewing-permissions-in-the-azure-portal"></a>Oprávnění k zobrazení v rámci Azure Portal
 
-V okně **Průzkumník dat** účtu Data Lake Store klikněte na **Přístup**. Zobrazí se seznamy ACL pro soubor nebo složku. Po kliknutí na **Přístup** se zobrazí seznamy ACL pro složku **catalog** v rámci účtu **mydatastore**.
+V okně **Průzkumník dat** účtu Data Lake Store klikněte na **Přístup**. V Průzkumníku dat se zobrazí seznamy ACL pro prohlížený soubor nebo složku. Po kliknutí na **Přístup** se zobrazí seznamy ACL pro složku **catalog** v rámci účtu **mydatastore**.
 
 ![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
 
-V tomto okně se v horní části zobrazí přehled vašich oprávnění. (Na snímku obrazovky je uživatel Bob.) Pod tím jsou uvedena přístupová oprávnění. Poté v okně **Přístup** kliknutím na **Jednoduché zobrazení** přejděte k jednoduššímu zobrazení.
+V horní části tohoto okna se zobrazí oprávnění vlastníka. (Na snímku obrazovky je vlastnícím uživatelem Bob.) Pod tím se zobrazí přiřazené přístupové seznamy ACL. 
 
 ![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
 
-Kliknutím na **Rozšířené zobrazení** přejdete k podrobnějšímu zobrazení, kde jsou uvedené koncepty výchozích seznamů ACL, masky a superuživatele.
+Kliknutím na **Rozšířené zobrazení** přejdete k podrobnějšímu zobrazení, kde jsou uvedené výchozí seznamy ACL, maska a popis superuživatelů.  Toto okno nabízí také možnost rekurzivního nastavení přístupových a výchozích seznamů ACL pro podřízené soubory a složky na základě oprávnění aktuální složky.
 
 ![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
@@ -164,7 +164,7 @@ Uživatel, který položku vytvořil, je automaticky jejím vlastníkem. Vlastn�
 * Měnit vlastnící skupinu pro vlastněný soubor, pokud je vlastnící uživatel členem cílové skupiny.
 
 > [!NOTE]
-> Vlastnící uživatel *nemůže* měnit vlastnícího uživatele u jiného vlastněného souboru. Vlastnícího uživatele souboru nebo složky, mohou měnit pouze superuživatelé.
+> Vlastnící uživatel *nemůže* měnit vlastnícího uživatele souboru nebo složky. Vlastnícího uživatele souboru nebo složky, mohou měnit pouze superuživatelé.
 >
 >
 
@@ -177,9 +177,14 @@ Když je vytvořena nová položka systému souborů, Data Lake Store přiřadí
 * **Případ 1:** Kořenová složka „/“. Tato složka se vytvoří při vytvoření účtu Data Lake Store. V takovém případě je vlastnící skupina nastavena podle uživatele, který účet vytvořil.
 * **Případ 2** (všechny ostatní případy): Při vytvoření nové položky se vlastnící skupina zkopíruje z nadřazené složky.
 
+Jinak se vlastnící skupina chová podobně jako přiřazená oprávnění pro jiné uživatele nebo skupiny.
+
 Vlastnící skupinu smí změnit:
 * Všichni superuživatelé.
 * Vlastnící uživatel, pokud je také členem cílové skupiny.
+
+> [!NOTE]
+> Vlastnící skupina *nemůže* měnit přístupové seznamy souboru nebo složky.
 
 ## <a name="access-check-algorithm"></a>Algoritmus kontroly přístupu
 
@@ -209,7 +214,7 @@ Pro informaci je zde uvedeno, kde masku pro soubor nebo složku najdete na webu 
 ![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
 
 > [!NOTE]
-> Pro nový účet Data Lake Store je použita výchozí maska přístupového seznamu ACL a výchozího seznamu ACL kořenové složky („/“) s hodnotou RWX.
+> Pro nový účet Data Lake Store je použita výchozí maska přístupového seznamu ACL kořenové složky („/“) s hodnotou RWX.
 >
 >
 
@@ -308,7 +313,7 @@ Identifikátor GUID se zobrazí v případě, že daný uživatel již ve služb
 
 ### <a name="does-data-lake-store-support-inheritance-of-acls"></a>Podporuje služba Data Lake Store dědění seznamů ACL?
 
-Ne.
+Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro podřízené soubory a složku nově vytvořené v nadřazené složce.  
 
 ### <a name="what-is-the-difference-between-mask-and-umask"></a>Jaký je rozdíl mezi vlastnostmi maska a umask?
 
@@ -317,7 +322,7 @@ Ne.
 | Vlastnost **maska** je k dispozici u všech souborů a složek. | **Umask** je vlastnost účtu Data Lake Store. Ve službě Data Lake Store tedy existuje pouze jedna vlastnost umask.    |
 | Vlastnost maska pro soubor nebo složku může změnit vlastnící uživatel nebo vlastnící skupina souboru či superuživatel. | Vlastnost umask nemůže změnit žádný uživatel, dokonce ani superuživatel. Tato hodnota je neměnná, konstantní.|
 | Vlastnost maska se používá při provádění algoritmu kontroly přístupu za běhu a slouží k určení, zda má uživatel oprávnění k provedení operace se souborem nebo složkou. Rolí masky je vytvoření „efektivních oprávnění“ v době kontroly přístupu. | Vlastnost umask se během kontroly přístupu vůbec nepoužívá. Vlastnost umask se používá k určení přístupového seznamu ACL nových podřízených položek složky. |
-| Maska je 3bitová hodnota RWX, která se vztahuje na pojmenovaného uživatele, pojmenovanou skupinu a vlastnícího uživatele v době kontroly přístupu.| Vlastnost umask je 9bitová hodnota a vztahuje se na vlastnícího uživatele, vlastnící skupinu a **jiné** pro novou podřízenou položku.|
+| Maska je 3bitová hodnota RWX, která se vztahuje na pojmenovaného uživatele, vlastnící skupinu a pojmenovanou skupinu v době kontroly přístupu.| Vlastnost umask je 9bitová hodnota a vztahuje se na vlastnícího uživatele, vlastnící skupinu a **jiné** pro novou podřízenou položku.|
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Kde najdu další informace o modelu řízení přístupu POSIX?
 

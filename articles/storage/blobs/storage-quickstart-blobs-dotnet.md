@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: 716e61840f4bfb5a68a995683e67dae0b43d3854
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b84a56996a335f8a137c4219c55b9878e39b5a3b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí .NET
 
@@ -25,21 +25,23 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Abyste mohli absolvovat tento rychlý start, nejprve na webu [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) vytvořte účet úložiště Azure. Nápovědu k vytvoření účtu najdete v tématu [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
 
-Dále stáhněte a nainstalujte .NET Core 2.0 pro váš operační systém. Můžete také nainstalovat editor pro použití ve vašem operačním systému.
+Dále stáhněte a nainstalujte .NET Core 2.0 pro váš operační systém. Pokud používáte Windows, můžete nainstalovat sadu Visual Studio a použít .NET Framework, pokud chcete. Můžete také nainstalovat editor pro použití ve vašem operačním systému.
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-- Nainstalujte [.NET Core pro Windows](https://www.microsoft.com/net/download/windows/build). 
-- Volitelně nainstalujte sadu [Visual Studio pro Windows](https://www.visualstudio.com/). 
+- Nainstalujte [.NET Core pro Windows](https://www.microsoft.com/net/download/windows) nebo [.NET Framework](https://www.microsoft.com/net/download/windows) (ten je součástí sady Visual Studio pro Windows).
+- Nainstalujte sadu [Visual Studio pro Windows](https://www.visualstudio.com/). Pokud používáte .NET Core, instalace sady Visual Studio je volitelná.  
+
+Informace o výběru mezi .NET Core a .NET Framework najdete v tématu [Výběr mezi .NET Core a .NET Framework pro serverové aplikace](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-- Nainstalujte [.NET Core pro Linux](https://www.microsoft.com/net/download/linux/build).
+- Nainstalujte [.NET Core pro Linux](https://www.microsoft.com/net/download/linux).
 - Volitelně nainstalujte [Visual Studio Code](https://www.visualstudio.com/) a [rozšíření jazyka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp&dotnetid=963890049.1518206068).
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-- Nainstalujte [.NET Core pro macOS](https://www.microsoft.com/net/download/macos/build).
+- Nainstalujte [.NET Core pro macOS](https://www.microsoft.com/net/download/macos).
 - Volitelně nainstalujte sadu [Visual Studio pro Mac](https://www.visualstudio.com/vs/visual-studio-mac/).
 
 ---
@@ -58,7 +60,22 @@ Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chc
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 
-Pro spuštění aplikace je potřeba zadat připojovací řetězec pro váš účet úložiště. Tento připojovací řetězec můžete uložit do proměnné prostředí v místním počítači, na kterém aplikaci spouštíte. Vytvořte proměnnou prostředí pomocí jednoho z následujících příkazů v závislosti na vašem operačním systému. Nahraďte `<yourconnectionstring>` skutečným připojovacím řetězcem.
+Pro spuštění aplikace je potřeba zadat připojovací řetězec pro váš účet úložiště. Zkopírujte svůj připojovací řetězec z webu Azure Portal a zapište ho do nové proměnné prostředí. Ukázka načte připojovací řetězec z proměnné prostředí a použije ho k ověření vašich požadavků ve službě Azure Storage.
+
+### <a name="copy-your-connection-string-from-the-azure-portal"></a>Zkopírování připojovacího řetězce z webu Azure Portal
+
+Zkopírování připojovacího řetězce:
+
+1. Přejděte na [Azure Portal](https://portal.azure.com).
+2. Vyhledejte svůj účet úložiště.
+3. V části **Nastavení** v přehledu účtu úložiště vyberte **Přístupové klíče**.
+4. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a kliknutím na tlačítko **Kopírovat** zkopírujte připojovací řetězec.  
+
+    ![Snímek obrazovky ukazující zkopírování připojovacího řetězce z webu Azure Portal](media/storage-quickstart-blobs-dotnet/portal-connection-string.png)
+
+## <a name="write-your-connection-string-to-an-environment-variable"></a>Zápis připojovacího řetězce do proměnné prostředí
+
+Dále na místním počítači, na kterém je aplikace spuštěná, napište novou proměnnou prostředí. Proměnnou prostředí nastavíte tak, že otevřete okno konzoly a budete postupovat podle pokynů pro váš operační systém. Nahraďte `<yourconnectionstring>` svým skutečným připojovacím řetězcem:
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -66,21 +83,25 @@ Pro spuštění aplikace je potřeba zadat připojovací řetězec pro váš ú�
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
+Po přidání proměnné prostředí možná bude nutné restartovat všechny spuštěné programy, které budou potřebovat číst tuto proměnnou prostředí, a to včetně okna konzoly. Pokud například jako editor používáte sadu Visual Studio, před spuštěním ukázky sadu Visual Studio restartujte. 
+
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 ```bash
 export storageconnectionstring=<yourconnectionstring>
 ```
 
+Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změna projevila.
+
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
 Upravte svůj soubor .bash_profile a přidejte do něj proměnnou prostředí:
 
-```
-export STORAGE_CONNECTION_STRING=
+```bash
+export STORAGE_CONNECTION_STRING=<yourconnectionstring>
 ```
 
-Po přidání proměnné prostředí se odhlaste a znovu přihlaste, aby se změna projevila. Alternativně můžete v terminálu zadat source .bash_profile.
+Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změny projevily.
 
 ---
 
@@ -88,23 +109,50 @@ Po přidání proměnné prostředí se odhlaste a znovu přihlaste, aby se změ
 
 Tato ukázka vytvoří v místní složce **Dokumenty** testovací soubor a nahraje ho do úložiště objektů blob. Ukázka pak vypíše objekty blob v kontejneru a stáhne soubor s novým názvem, abyste mohli porovnat starý a nový soubor. 
 
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+Pokud jako editor používáte sadu Visual Studio, můžete ukázku spustit stisknutím **F5**. 
+
+Jinak, přejděte do adresáře aplikace a spusťte aplikaci příkazem `dotnet run`.
+
+```
+dotnet run
+```
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
 Přejděte do adresáře aplikace a spusťte aplikaci příkazem `dotnet run`.
 
 ```
 dotnet run
 ```
 
-Výstup se podobá následujícímu příkladu:
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+
+Přejděte do adresáře aplikace a spusťte aplikaci příkazem `dotnet run`.
 
 ```
-Azure Blob storage quick start sample
-Temp file = /home/admin/QuickStart_b73f2550-bf20-4b3b-92ec-b9b31c56b374.txt
-Uploading to Blob storage as blob 'QuickStart_b73f2550-bf20-4b3b-92ec-b9b31c56b374.txt'
-List blobs in container.
-https://mystorageaccount.blob.core.windows.net/quickstartblobs/QuickStart_b73f2550-bf20-4b3b-92ec-b9b31c56b374.txt
-Downloading blob to /home/admin/QuickStart_b73f2550-bf20-4b3b-92ec-b9b31c56b374_DOWNLOADED.txt
-The program has completed successfully.
-Press the 'Enter' key while in the console to delete the sample files, example container, and exit the application.
+dotnet run
+```
+
+---
+
+Výstup ukázkové aplikace je podobný jako v následujícím příkladu:
+
+```
+Azure Blob storage - .NET Quickstart sample
+
+Created container 'quickstartblobs33c90d2a-eabd-4236-958b-5cc5949e731f'
+
+Temp file = C:\Users\myusername\Documents\QuickStart_c5e7f24f-a7f8-4926-a9da-9697c748f4db.txt
+Uploading to Blob storage as blob 'QuickStart_c5e7f24f-a7f8-4926-a9da-9697c748f4db.txt'
+
+Listing blobs in container.
+https://storagesamples.blob.core.windows.net/quickstartblobs33c90d2a-eabd-4236-958b-5cc5949e731f/QuickStart_c5e7f24f-a7f8-4926-a9da-9697c748f4db.txt
+
+Downloading blob to C:\Users\myusername\Documents\QuickStart_c5e7f24f-a7f8-4926-a9da-9697c748f4db_DOWNLOADED.txt
+
+Press any key to delete the sample files and example container.
 ```
 
 Když stisknete klávesu **Enter**, aplikace odstraní kontejner úložiště i soubory. Před jejich odstraněním zkontrolujte, jestli složka **Dokumenty** obsahuje příslušné dva soubory. Můžete je otevřít a podívat se, že jsou identické. Obsah objektu blob můžete zobrazit zkopírováním adresy URL objektu blob z okna konzoly a jejím vložením do prohlížeče.
@@ -123,8 +171,8 @@ Ukázka jako první zkontroluje, že proměnná prostředí obsahuje připojovac
 // Retrieve the connection string for use with the application. The storage connection string is stored
 // in an environment variable on the machine running the application called storageconnectionstring.
 // If the environment variable is created after the application is launched in a console or with Visual
-// Studio, the shell needs to be closed and reloaded to take the environment variable into account.
-string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring", EnvironmentVariableTarget.User);
+// Studio, the shell or application needs to be closed and reloaded to take the environment variable into account.
+string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
 
 // Check whether the connection string can be parsed.
 if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))

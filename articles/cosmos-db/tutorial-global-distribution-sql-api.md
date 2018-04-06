@@ -1,9 +1,9 @@
 ---
-title: "Globální distribuční kurz pro Azure Cosmos DB pro rozhraní SQL API | Microsoft Docs"
-description: "Zjistěte, jak nastavit globální distribuční databázi Cosmos Azure pomocí rozhraní SQL API."
+title: Kurz globální distribuce služby Azure Cosmos DB pro rozhraní SQL API | Microsoft Docs
+description: Zjistěte, jak nastavit globální distribuci služby Azure Cosmos DB pomocí rozhraní SQL API.
 services: cosmos-db
-keywords: "Globální distribuční"
-documentationcenter: 
+keywords: globální distribuce
+documentationcenter: ''
 author: rafats
 manager: jhubbard
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
@@ -15,53 +15,51 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: 0cee55673c8abca29b7e389fa4fd62a48566904b
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 58cfa4f8898febf6d0bbe4c5a7a1dad4fcc6c854
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Jak nastavit globální distribuční databázi Cosmos Azure pomocí rozhraní SQL API
+# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní SQL API
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+V tomto článku si ukážeme, jak pomocí webu Azure Portal nastavit globální distribuci služby Azure Cosmos DB a pak se k ní připojit pomocí rozhraní SQL API.
 
-V tomto článku jsme ukazují, jak nastavit globální distribuční databázi Cosmos Azure a potom se připojte pomocí rozhraní API SQL pomocí portálu Azure.
-
-Tento článek obsahuje následující úlohy: 
+Tento článek se zabývá následujícími úkony: 
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální distribuci pomocí portálu Azure
-> * Nakonfigurujte globální distribuční pomocí [rozhraní SQL API](sql-api-introduction.md)
+> * Konfigurace globální distribuce pomocí webu Azure Portal
+> * Konfigurace globální distribuce pomocí rozhraní [SQL API](sql-api-introduction.md)
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>Připojování k upřednostňovaná oblast pomocí rozhraní SQL API
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>Připojení k preferované oblasti pomocí rozhraní SQL API
 
-Aby bylo možné využít výhod [globální distribuční](distribute-data-globally.md), klientské aplikace můžete zadat seznam seřazený předvoleb oblastí se používá k provádění operací dokumentu. Tento krok můžete provést nastavením zásad pro připojení. Na základě konfigurace účtu Azure Cosmos DB, aktuální místní dostupnosti a seznamu předvoleb zadán, bude vybrána optimální koncový bod SDK SQL k provedení operace zápisu a operace čtení.
+Aby mohly využívat [globální distribuci](distribute-data-globally.md), můžou mít klientské aplikace určený seřazený seznam preferovaných oblastí, které se mají použít k provádění operací s dokumenty. To je možné provést nastavením zásady připojení. V závislosti na konfiguraci účtu služby Azure Cosmos DB, aktuální regionální dostupnosti a zadaného seznamu preferencí zvolí sada SQL SDK optimální koncový bod, který bude provádět operace čtení a zápisu.
 
-Tento seznam předvoleb je zadána při inicializaci připojení pomocí sady SDK SQL. Sady SDK přijmout volitelný parametr "PreferredLocations" tedy uspořádaný seznam oblastí Azure.
+Tento seznam preferencí se zadává při inicializaci připojení pomocí sad SQL SDK. Sady SDK přijímají volitelný parametr PreferredLocations, což je seřazený seznam oblastí Azure.
 
-Sada SDK automaticky odesílat všechny zápisy na aktuální zápisu oblast.
+Sada SDK bude automaticky odesílat všechny operace zápisu do aktuální oblasti pro zápis.
 
-Všechny operace čtení odešle první oblasti k dispozici v seznamu PreferredLocations. Pokud se požadavek nezdaří, klient se nezdaří dolů v seznamu další oblasti a tak dále.
+Všechny operace čtení se budou odesílat do první dostupné oblasti v seznamu PreferredLocations. Pokud požadavek selže, klient přejde k další oblasti v seznamu atd.
 
-Sady SDK se pouze pokusí číst z oblastí, zadaný v PreferredLocations. Ano například pokud databázového účtu je k dispozici v oblastech čtyři, ale klient určuje pro PreferredLocations pouze dvou read(non-write) oblastí, potom žádné čtení se zpracuje mimo oblasti pro čtení, které není zadané v PreferredLocations. Pokud oblasti čtení specifikované v PreferredLocations nejsou k dispozici, čte se zpracuje mimo oblast zápisu.
+Sady SDK se budou pokoušet číst pouze z oblastí uvedených v seznamu PreferredLocations. Takže pokud je například účet databáze dostupný ve čtyřech oblastech, ale v seznamu PreferredLocations klienta jsou uvedené pouze dvě oblasti pro čtení (nikoli zápis), z oblastí, které nejsou uvedené v seznamu PreferredLocations, se číst nebude. V případě nedostupnosti oblastí pro čtení uvedených v seznamu PreferredLocations se čtení bude provádět z oblasti pro zápis.
 
-Aplikace můžete ověřit aktuální koncový bod zápisu a čtení koncový bod vybrali SDK kontrolou dvě vlastnosti WriteEndpoint a ReadEndpoint dostupné ve verzi sady SDK 1.8 a výše.
+Aplikace může ověřit aktuální koncový bod pro čtení a koncový bod pro zápis, které sada SDK zvolila, kontrolou dvou vlastností WriteEndpoint a ReadEndpoint, které jsou dostupné v sadě SDK verze 1.8 a novější.
 
-Pokud není nastavena vlastnost PreferredLocations, bude z oblasti aktuální zápisu zpracovat všechny požadavky.
+Pokud vlastnost PreferredLocations není nastavená, všechny požadavky se budou obsluhovat z aktuální oblasti pro zápis.
 
 ## <a name="net-sdk"></a>.NET SDK
-Sady SDK můžete použít beze změn kódu. V takovém případě sady SDK automaticky přesměruje obě operace čtení a zapíše do aktuální oblasti zápisu.
+Sadu SDK můžete využívat bez jakýchkoli změn kódu. V tomto případě sada SDK automaticky směruje operace čtení i zápisu do aktuální oblasti pro zápis.
 
-Ve verzi 1,8 a později sady .NET SDK ConnectionPolicy parametr pro konstruktor DocumentClient má vlastnost s názvem Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Tato vlastnost je typu kolekce `<string>` a musí obsahovat seznam názvů oblast. Řetězcové hodnoty jsou formátovány na sloupci Název oblasti na [oblasti Azure] [ regions] stránky, bez mezer před nebo po první a poslední znak v uvedeném pořadí.
+V sadě .NET SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient vlastnost Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Tato vlastnost je typu Kolekce `<string>` a měla by obsahovat seznam názvů oblastí. Řetězcové hodnoty se formátují podle sloupce Název oblasti na stránce [Oblasti Azure][regions] a před prvním ani za posledním znakem nejsou žádné mezery.
 
-V uvedeném pořadí jsou k dispozici v DocumentClient.WriteEndpoint a DocumentClient.ReadEndpoint aktuální zápisu a čtení koncové body.
+Aktuální koncové body pro čtení a zápis jsou k dispozici ve vlastnostech DocumentClient.WriteEndpoint a DocumentClient.ReadEndpoint.
 
 > [!NOTE]
-> Adresy URL pro koncové body by se neměla považovat jako dlohotrvající konstanty. Služba může aktualizovat tyto v libovolném bodě. Sada SDK zpracovává tuto změnu automaticky.
+> Adresy URL koncových bodů by se neměly považovat za dlouhodobé konstanty. Služba je může kdykoli aktualizovat. Sada SDK tuto změnu zpracuje automaticky.
 >
 >
 
@@ -87,19 +85,19 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejs-javascript-and-python-sdks"></a>NodeJS, JavaScript a Python SDK
-Sady SDK můžete použít beze změn kódu. V takovém případě sada SDK bude automaticky přímé čtení i zápisy na aktuální zápisu oblast.
+## <a name="nodejs-javascript-and-python-sdks"></a>Sady SDK pro Node.js, JavaScript a Python
+Sadu SDK můžete využívat bez jakýchkoli změn kódu. V tomto případě bude sada SDK automaticky směrovat operace čtení i zápisu do aktuální oblasti pro zápis.
 
-Ve verzi 1,8 a novější každý SDK ConnectionPolicy parametr pro konstruktor DocumentClient novou vlastnost s názvem DocumentClient.ConnectionPolicy.PreferredLocations. To je parametr pole řetězců, která přebírá seznam názvů oblast. Názvy jsou formátovány za ve sloupci Název oblasti [oblasti Azure] [ regions] stránky. Také můžete použít předdefinované konstanty v objektu pohodlí AzureDocuments.Regions
+V jednotlivých sadách SDK verze 1.8 a novější má parametr ConnectionPolicy pro konstruktor DocumentClient novou vlastnost DocumentClient.ConnectionPolicy.PreferredLocations. Tento parametr je pole řetězců, které přebírá seznam názvů oblastí. Názvy se formátují podle sloupce Název oblasti na stránce [Oblasti Azure][regions]. Můžete použít také předdefinované konstanty v pomocném objektu AzureDocuments.Regions.
 
-V uvedeném pořadí jsou k dispozici v DocumentClient.getWriteEndpoint a DocumentClient.getReadEndpoint aktuální zápisu a čtení koncové body.
+Aktuální koncové body pro čtení a zápis jsou k dispozici ve vlastnostech DocumentClient.getWriteEndpoint a DocumentClient.getReadEndpoint.
 
 > [!NOTE]
-> Adresy URL pro koncové body by se neměla považovat jako dlohotrvající konstanty. Služba může aktualizovat tyto v libovolném bodě. Tato změna bude zpracována sady SDK automaticky.
+> Adresy URL koncových bodů by se neměly považovat za dlouhodobé konstanty. Služba je může kdykoli aktualizovat. Sada SDK tuto změnu zpracuje automaticky.
 >
 >
 
-Níže je příklad kódu pro NodeJS/Javascript. Python a Java bude postupují stejným způsobem.
+Níže je příklad kódu pro Node.js nebo JavaScript. U Pythonu a Javy bude postup podobný.
 
 ```java
 // Creating a ConnectionPolicy object
@@ -116,11 +114,11 @@ var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPoli
 ```
 
 ## <a name="rest"></a>REST
-Jakmile se databázový účet má k dispozici v několika oblastech, klienti mohou odesílat dotazy jeho dostupnost provedením požadavek GET na následující identifikátor URI.
+Po zpřístupnění účtu databáze ve více oblastech můžou klienti dotazovat její dostupnost provedením požadavku GET na následující identifikátor URI.
 
     https://{databaseaccount}.documents.azure.com/
 
-Služba, vrátí se seznam oblastí a jejich odpovídající Azure Cosmos DB koncový bod identifikátory URI pro repliky. Aktuální oblasti zápisu budou uvedené v odpovědi. Klienta můžete pak vybrat příslušný koncový bod pro všechny další požadavky REST API následujícím způsobem.
+Služba vrátí seznam oblastí a jejich odpovídajících identifikátorů URI koncových bodů služby Azure Cosmos DB pro repliky. V odpovědi bude uvedená aktuální oblast pro zápis. Klient si pak může vybrat vhodný koncový bod pro všechny další požadavky rozhraní REST API následujícím způsobem.
 
 Příklad odpovědi
 
@@ -155,27 +153,27 @@ Příklad odpovědi
     }
 
 
-* Požadavky PUT, POST a DELETE musí přejít do uvedeného zápisu identifikátoru URI
-* Získá všechny a ostatních jen pro čtení požadavků (například dotazy) může přejděte na libovolný koncový bod podle svého výběru
+* Všechny požadavky PUT,POST a DELETE musí směřovat na uvedený identifikátor URI pro zápis.
+* Všechny požadavky GET a další požadavky jen pro čtení (například dotazy) můžou směřovat do koncového bodu podle výběru klienta.
 
-Zápis, požadavky na jen pro čtení oblasti selže s kódem chyby protokolu HTTP 403 "(zakázáno).
+Požadavky na zápis do oblastí jen pro čtení se lžou s kódem chyby HTTP 403 (Zakázáno).
 
-Pokud oblasti zápisu změn po počáteční zjišťování fáze klienta, následné zápisy do oblasti předchozí zápis selže s kódem chyby protokolu HTTP 403 "(zakázáno). Klient pak měli získat seznam oblastí znovu k získání oblasti aktualizované zápisu.
+Pokud se po počáteční fázi zjišťování klienta oblast pro zápis změní, další zápisy do předchozí oblasti pro zápis selžou s kódem chyby HTTP 403 (Zakázáno). Klient pak musí pomocí požadavku GET znovu získat seznam oblastí, aby získal aktualizovanou oblast pro zápis.
 
-Je to, že dokončení tohoto kurzu. Můžete naučit ke správě konzistence účtu globálně replikované načtením [úrovně konzistence v Azure Cosmos DB](consistency-levels.md). A další informace o tom, jak globální replikace databáze v Azure Cosmos DB funguje, najdete v části [distribuci dat globálně pomocí Azure Cosmos DB](distribute-data-globally.md).
+To je vše, tento kurz je u konce. Informace o správě konzistence vašeho globálně replikovaného účtu najdete v tématu [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální distribuci pomocí portálu Azure
-> * Nakonfigurujte globální distribuční pomocí rozhraní API SQL
+> * Konfigurace globální distribuce pomocí webu Azure Portal
+> * Konfigurace globální distribuce pomocí rozhraní SQL API
 
-Nyní můžete přejít k dalším kurzu se dozvíte, jak vyvíjet místně pomocí emulátoru místního Azure Cosmos DB.
+Teď můžete přejít k dalšímu kurzu, ve kterém se naučíte vyvíjet místně s využitím místního emulátoru služby Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Vývoj místně pomocí emulátoru](local-emulator.md)
+> [Místní vývoj s využitím emulátoru](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
 

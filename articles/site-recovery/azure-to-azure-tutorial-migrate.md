@@ -1,18 +1,18 @@
 ---
-title: "Migrace virtuálních počítačů Azure mezi oblastmi Azure pomocí služby Azure Site Recovery | Microsoft Docs"
-description: "Použijte službu Azure Site Recovery k migraci virtuálních počítačů Azure IaaS z jedné oblasti Azure do jiné."
+title: Migrace virtuálních počítačů Azure mezi oblastmi Azure pomocí služby Azure Site Recovery | Microsoft Docs
+description: Použijte službu Azure Site Recovery k migraci virtuálních počítačů Azure IaaS z jedné oblasti Azure do jiné.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 03/24/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: abae7cbd21a2c7f49dc1fe85711b80dc43a10517
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8de067ece55e13d32af6822e114cb9dab000bdff
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Migrace virtuálních počítačů Azure do jiné oblasti
 
@@ -35,7 +35,15 @@ V tomto kurzu se předpokládá, že už máte předplatné Azure. Pokud ho nem
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete virtuální počítače Azure v oblasti Azure, ze které chcete migraci provést. Než začnete, je také potřeba ověřit některá nastavení.
+- Ujistěte se, že se vaše virtuální počítače Azure nacházejí v oblasti Azure, ze které chcete migraci provést.
+- Ujistěte se, že rozumíte [komponentám a architektuře řešení](azure-to-azure-architecture.md).
+- Zkontrolujte [omezení podpory a požadavky](azure-to-azure-support-matrix.md).
+
+
+
+## <a name="before-you-start"></a>Než začnete
+
+Před nastavením replikace dokončete tyto kroky.
 
 
 ### <a name="verify-target-resources"></a>Ověření cílových prostředků
@@ -114,9 +122,7 @@ Služba Site Recovery načte seznam virtuálních počítačů přidružených k
 
     ![Povolení replikace](media/tutorial-migrate-azure-to-azure/settings.png)
 
->[!NOTE]
-  >
-  > Replikace virtuálních počítačů Azure se spravovanými disky není v současné době podporovaná. 
+ 
 
 ## <a name="run-a-failover"></a>Spuštění převzetí služeb při selhání
 

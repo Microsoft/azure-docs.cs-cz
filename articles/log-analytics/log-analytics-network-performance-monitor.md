@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9b3c4efc712ebe9c0fe209d2ca0478367872d3b7
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9d5e189720a92ca17289d0c9717e9e10bf8691d1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Síťová řešení pro sledování výkonu v Azure
 
@@ -250,7 +250,9 @@ Topologie, zobrazí se v mapě je topologie vrstvy 3 a neobsahuje vrstvy 2 zař�
 
 Všechna data, která je graficky zveřejněné prostřednictvím řídicího panelu monitorování výkonu sítě a procházení stránek je také k dispozici nativně [analýzy protokolů hledání](log-analytics-log-search-new.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Také můžete vytvořit vlastní výstrahy a zobrazení a export dat do aplikace Excel, Power BI nebo ke sdílení odkaz.  **Běžné dotazy** oblasti v řídicím panelu má některá užitečná dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
 
- 
+##<a name="pricing"></a>Ceny
+
+Informace o cenách jsou k dispozici [online](log-analytics-network-performance-monitor-pricing-faq.md).
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby 
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/23/2018
+ms.date: 03/27/2018
 ms.author: alehall
-ms.openlocfilehash: 94b09b824becc8a67adf4edfd2d4b44496a6169c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c43edc6673c42a8b69bfa296e288e77adee4d0af
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Kurz: Streamování dat do Azure Databricks pomocí služby Event Hubs
 
@@ -63,7 +63,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 1. Na portálu Azure Portal vyberte **Vytvořit prostředek** > **Data + analýzy** > **Azure Databricks**.
 
-    ![Databricks na portálu Azure Portal](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Databricks na portálu Azure Portal")
+    ![Databricks na portálu Azure](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Databricks na portálu Azure")
 
 3. V části **Služba Azure Databricks** zadejte hodnoty pro vytvoření pracovního prostoru Databricks.
 
@@ -87,7 +87,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Vytvoření clusteru Spark ve službě Databricks
 
-1. Na portálu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a vyberte **Spustit pracovní prostor**.
+1. Na webu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a vyberte **Spustit pracovní prostor**.
 
 2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Cluster**.
 
@@ -117,7 +117,7 @@ Pro příjem streamovaných tweetů je potřeba vytvořit aplikaci na Twitteru. 
 
     ![Podrobnosti o aplikaci Twitter](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details.png "Podrobnosti o aplikaci Twitter")
 
-3. Na stránce aplikace vyberte kartu **Keys and Access Tokens** (Klíče a přístupové tokeny) a zkopírujte hodnoty **Consumer Key** (Uživatelský klíč) a **Consumer Secret** (Uživatelský tajný kód). Kromě toho vyberte **Create my access token** (Vytvořit přístupový token) a vygenerujte přístupové tokeny. Zkopírujte hodnoty **Access Token** (Přístupový token) a **Access Token Secret** (Tajný kód přístupového tokenu).
+3. Na stránce aplikace vyberte kartu **Keys and Access Tokens** (Klíče a přístupové tokeny) a zkopírujte hodnoty **Consumer Key** (Uživatelský klíč) a **Consumer Secret** (Uživatelský tajný klíč). Kromě toho vyberte **Create my access token** (Vytvořit přístupový token) a vygenerujte přístupové tokeny. Zkopírujte hodnoty **Access Token** (Přístupový token) a **Access Token Secret** (Tajný klíč přístupového tokenu).
 
     ![Podrobnosti o aplikaci Twitter](./media/databricks-stream-from-eventhubs/twitter-app-key-secret.png "Podrobnosti o aplikaci Twitter")
 
@@ -356,7 +356,7 @@ Výstup teď vypadá podobně jako následující fragment kódu:
     ...
     ...
 
-A to je vše! Pomocí Azure Databricks jste úspěšně streamovali data do služby Azure Event Hubs téměř v reálném čase. Následně jste streamovaná data použili pomocí konektoru služby Event Hubs pro Apache Spark.
+A to je vše! Pomocí Azure Databricks jste úspěšně streamovali data do služby Azure Event Hubs téměř v reálném čase. Následně jste streamovaná data použili pomocí konektoru služby Event Hubs pro Apache Spark. Další informace o použití konektoru služby Event Hubs pro Spark najdete v [dokumentaci ke konektorům](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

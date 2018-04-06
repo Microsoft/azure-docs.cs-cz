@@ -1,12 +1,12 @@
 ---
-title: "Připojení sdílené složky Azure a přístup k ní v systému Windows | Dokumentace Microsoftu"
-description: "Připojení sdílené složky Azure a přístup k ní v systému Windows."
+title: Připojení sdílené složky Azure a přístup k ní v systému Windows | Dokumentace Microsoftu
+description: Připojení sdílené složky Azure a přístup k ní v systému Windows.
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 5134fab447f1d1842369aeda4ebc1948a5d78262
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 5d6d81678d1b3c63b52b34e79979d06fdc981ad0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Připojení sdílené složky Azure a přístup k ní v systému Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows a Windows Server. Tento článek ukazuje tři různé způsoby připojení sdílené složky Azure v systému Windows: pomocí uživatelského rozhraní Průzkumníka souborů, přes PowerShell a přes příkazový řádek. 
@@ -50,6 +50,31 @@ Sdílené složky Azure můžete připojit v instalaci Windows na virtuálním p
 * **Klíč účtu úložiště:** Pro připojení sdílené složky Azure budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
 * **Ujistěte se, že je otevřený port 445:** Služba Soubory Azure používá protokol SMB. Protokol SMB komunikuje přes protokol TCP 445 – zkontrolujte, že brána firewall neblokuje port TCP 445 z klientského počítače.
+
+## <a name="persisting-connections-across-reboots"></a>Zachování připojení mezi restartováními
+### <a name="cmdkey"></a>CmdKey
+Nejjednodušším způsobem, jak navazovat trvalá připojení, je uložit přihlašovací údaje účtu úložiště ve Windows pomocí nástroje příkazového řádku CmdKey. Následuje příklad příkazového řádku pro trvalé uložení přihlašovacích údajů účtu úložiště na virtuálním počítači:
+```
+C:\>cmdkey /add:<yourstorageaccountname>.file.core.windows.net /user:<domainname>\<yourstorageaccountname> /pass:<YourStorageAccountKeyWhichEndsIn==>
+```
+> [!Note]
+> Název domény zde bude AZURE.
+
+Nástroj CmdKey vám také umožní vypsat přihlašovací údaje, které uložil:
+
+```
+C:\>cmdkey /list
+```
+Výstup bude vypadat následovně:
+
+```
+Currently stored credentials:
+
+Target: Domain:target=<yourstorageaccountname>.file.core.windows.net
+Type: Domain Password
+User: AZURE\<yourstorageaccountname>
+```
+Po trvalém uložení přihlašovacích údajů už je při připojování ke sdílené složce nebudete muset zadávat. Místo toho se můžete připojit bez zadávání přihlašovacích údajů.
 
 ## <a name="mount-the-azure-file-share-with-file-explorer"></a>Připojení sdílené složky Azure pomocí Průzkumníka souborů
 > [!Note]  

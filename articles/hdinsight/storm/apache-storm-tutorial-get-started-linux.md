@@ -1,9 +1,9 @@
 ---
-title: "Příklady topologie Storm Starter v systému Apache Storm v HDInsight – Azure | Dokumentace Microsoftu"
-description: "Přečtěte si, jak provádět analýzu velkých objemů dat a zpracovávat data v reálném časem pomocí Apache Storm a příkladů topologie Storm Starter ve službě HDInsight."
-keywords: "Storm Starter, příklad Apache Storm"
+title: Příklady topologie Storm Starter v systému Apache Storm v HDInsight – Azure | Dokumentace Microsoftu
+description: Přečtěte si, jak provádět analýzu velkých objemů dat a zpracovávat data v reálném časem pomocí Apache Storm a příkladů topologie Storm Starter ve službě HDInsight.
+keywords: Storm Starter, příklad Apache Storm
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -16,13 +16,13 @@ ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 6abdb15917508152529990c434eb48a9983b9432
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 0490ba63e651b0ef16175dca46b85a3e48bfd26f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Začínáme s Apache Storm v HDInsight pomocí příkladů topologie Storm Starter
+# <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Začínáme s Apache Storm v HDInsight pomocí příkladů topologie Storm Starter
 
 Naučte se používat systém Apache Storm v HDInsight pomocí příkladů topologie Storm Starter.
 
@@ -108,7 +108,7 @@ Pomocí následujících kroků můžete vytvořit Storm na clusteru HDInsight:
     >
     > Příklad WordCount a další příklady topologie Storm Starter jsou již zahrnuty v clusteru na `/usr/hdp/current/storm-client/contrib/storm-starter/`.
 
-Pokud si chcete prohlédnout zdrojové kódy příkladů topologie Storm Starter, najdete je na [https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter). Tento odkaz je pro Storm 1.1.x, který je součástí služby HDInsight 3.6. Pro ostatní verze Stormu použijte tlačítko __Větev__ v horní části stránky a vyberte jinou verzi Stormu.
+Pokud chcete zobrazit zdroj ukázek storm-starter, jejich kód najdete na [https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter). Tento odkaz je pro Storm 1.1.x, který je součástí služby HDInsight 3.6. Pro ostatní verze Stormu použijte tlačítko __Větev__ v horní části stránky a vyberte jinou verzi Stormu.
 
 ## <a name="monitor-the-topology"></a>Monitorování topologie
 

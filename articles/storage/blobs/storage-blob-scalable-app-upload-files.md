@@ -1,21 +1,21 @@
 ---
-title: "Paralelní nahrávání velkých objemů náhodných dat do služby Azure Storage | Microsoft Docs"
-description: "Zjistěte, jak pomocí sady Azure SDK nahrávat velké objemy náhodných dat do účtu služby Azure Storage."
+title: Paralelní nahrávání velkých objemů náhodných dat do služby Azure Storage | Microsoft Docs
+description: Zjistěte, jak pomocí sady Azure SDK nahrávat velké objemy náhodných dat do účtu služby Azure Storage.
 services: storage
-author: tamram
+author: roygara
 manager: jeconnoc
 ms.service: storage
 ms.workload: web
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/20/2018
-ms.author: tamram
+ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 39a48007bdcd055df4529074a67b5b8a6db2d8b4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 668700cf3ff3d1a90f9639129ef2953ddca016f1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralelní nahrávání velkých objemů náhodných dat do úložiště Azure
 
@@ -73,7 +73,7 @@ Kromě nastavení dělení na vlákna a omezení připojení se ve třídě [Blo
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount?view=azure-dotnet)| 8| Toto nastavení při nahrávání rozdělí objekty blob do bloků. Pro zajištění nejvyššího výkonu by tato hodnota měla být osminásobkem počtu jader. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true (pravda)| Tato vlastnost zakazuje kontrolu hodnoty hash MD5 nahrávaného obsahu. Zakázáním ověřování MD5 dosáhnete rychlejšího přenosu. Neprovádí se však potvrzení platnosti ani integrity přenášených souborů.   |
-|[StorBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false (nepravda)| Tato vlastnost určuje, jestli se počítá a společně se souborem ukládá hodnota hash MD5.   |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false (nepravda)| Tato vlastnost určuje, jestli se počítá a společně se souborem ukládá hodnota hash MD5.   |
 | [RetryPolicy](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.retrypolicy?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_RetryPolicy)| 2sekundové omezení rychlosti a maximálně 10 opakování |Určuje zásady opakování požadavků. Chybná připojení se opakují. V tomto příkladu je v zásadě [ExponentialRetry](/dotnet/api/microsoft.windowsazure.storage.retrypolicies.exponentialretry?view=azure-dotnet) nakonfigurované 2sekundové omezení rychlosti a maximální počet 10 opakování. Toto nastavení je důležité, když se vaše aplikace blíží dosažení [cílů škálovatelnosti úložiště objektů blob](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |
 
 Úloha `UploadFilesAsync` je znázorněná v následujícím příkladu:

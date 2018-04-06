@@ -1,8 +1,8 @@
 ---
-title: "Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio | Dokumentace Microsoftu"
-description: "Naučte se nainstalovat nástroje Data Lake pro Visual Studio a vyvíjet a testovat skripty U-SQL."
+title: Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio | Dokumentace Microsoftu
+description: Naučte se nainstalovat nástroje Data Lake pro Visual Studio a vyvíjet a testovat skripty U-SQL.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/28/2017
 ms.author: saveenr, yanacai
-ms.openlocfilehash: a48ce209bf3d5b7e5060acf2850144df5418828d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b94c035083a00867139b6c58bc8b2ded08e970b0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -36,7 +36,17 @@ Naučte se používat sadu Visual Studio k vytváření účtů Azure Data Lake 
 * Sada **Microsoft Azure SDK pro .NET** verze 2.7.1 nebo novější.  Nainstalujte ji pomocí [Instalačního programu webové platformy](http://www.microsoft.com/web/downloads/platform.aspx).
 * **Účet Data Lake Analytics**. Informace o vytvoření účtu najdete v tématu [Začínáme s Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-get-started-portal.md).
 
-## <a name="install-azure-data-lake-tools-for-visual-studio"></a>Instalace nástrojů Azure Data Lake pro Visual Studio 
+## <a name="install-azure-data-lake-tools-for-visual-studio"></a>Instalace nástrojů Azure Data Lake pro Visual Studio
+
+### <a name="install-azure-data-lake-tools-for-visual-studio-2017"></a>Instalace nástrojů Azure Data Lake pro Visual Studio 2017
+
+Nástroje Azure Data Lake pro Visual Studio se podporují v sadě Visual Studio 2017 verze 15.3 nebo novější. Tento nástroj je součástí sad funkcí **Ukládání a zpracování dat** a **Vývoj pro Azure** v Instalačním programu pro Visual Studio. V rámci instalace sady Visual Studio povolte jednu z těchto dvou sad funkcí.  
+
+Sadu funkcí **Ukládání a zpracování dat** povolíte následujícím způsobem: ![Povolení sady funkcí Ukládání a zpracování dat](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
+
+Sadu funkcí **Vývoj pro Azure** povolíte následujícím způsobem: ![Povolení sady funkcí Vývoj pro Azure](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
+
+### <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>Instalace nástrojů Azure Data Lake pro Visual Studio 2013 a 2015
 
 Stáhněte nástroje Azure Data Lake pro Visual Studio z webu [Download Center](http://aka.ms/adltoolsvs) a nainstalujte je. Po instalaci si všimněte, že:
 * Uzel **Průzkumník serveru** > **Azure** obsahuje uzel **Data Lake Analytics**. 

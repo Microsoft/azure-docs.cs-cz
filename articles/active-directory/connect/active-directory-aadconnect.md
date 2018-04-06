@@ -1,5 +1,5 @@
 ---
-title: Připojení Active Directory s Azure Active Directory | Microsoft Docs
+title: Připojení Active Directory s Azure Active Directory | Dokumenty Microsoft
 description: Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro aplikace Office 365, Azure a SaaS integrované s Azure AD.
 keywords: Úvod k Azure AD Connect, přehled Azure AD Connect, co je Azure AD Connect, instalace active directory
 services: active-directory
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 6f0b5cd7b981cddeda7e5630967f5f8dba18bb98
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: febe055348efb49ea1e6bc670333f435de654cfc
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>Integrace místních adresářů do služby Azure Active Directory
 Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD. V tomto tématu vás provedeme kroky plánování, nasazení a provozu. Jedná se o kolekci odkazů na témata, která souvisejí s touto oblastí.
@@ -88,7 +88,7 @@ Azure AD Connect obsahuje několik funkcí, které můžete volitelně zapnout n
 
 [Filtrování](active-directory-aadconnectsync-configure-filtering.md) se používá, pokud chcete omezit, které objekty jsou synchronizovány do Azure AD. Ve výchozím nastavení jsou synchronizováni všichni uživatelé, kontakty, skupiny a počítače s Windows 10. Můžete měnit filtrování podle domén, organizačních jednotek nebo atributů.
 
-[Synchronizace hesel](active-directory-aadconnectsync-implement-password-synchronization.md) synchronizuje hodnoty hash hesla ve službě Active Directory do služby Azure AD. Koncový uživatel může používat stejné heslo v místní síti i na cloudu, a přitom ho spravovat pouze na jednom místě. Protože se jako autorita používá vaše místní služba Active Directory, můžete také použít vlastní zásady hesel.
+[Synchronizace hodnot hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md) synchronizuje hodnoty hash hesel ve službě Active Directory do služby Azure AD. Koncový uživatel může používat stejné heslo v místní síti i na cloudu, a přitom ho spravovat pouze na jednom místě. Protože se jako autorita používá vaše místní služba Active Directory, můžete také použít vlastní zásady hesel.
 
 [Zpětný zápis hesel](../active-directory-passwords-getting-started.md) umožňuje uživatelům měnit a resetovat vlastní hesla v cloudu a používat přitom vaše místní zásady hesel.
 
@@ -102,7 +102,7 @@ Funkce pro [prevenci náhodného odstranění](active-directory-aadconnectsync-f
 |Téma |Odkaz|  
 | --- | --- |
 |Konfigurace filtrování | [Synchronizace Azure AD Connect: Konfigurace filtrování](active-directory-aadconnectsync-configure-filtering.md)|
-|Synchronizace hesel | [Synchronizace Azure AD Connect: Implementace synchronizace hesel](active-directory-aadconnectsync-implement-password-synchronization.md)|
+|Synchronizace hodnot hash hesel | [Synchronizace Azure AD Connect: Implementace synchronizace hodnot hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md)|
 |Zpětný zápis hesla | [Začínáme se správou hesel](../active-directory-passwords-getting-started.md)|
 |Zpětný zápis zařízení | [Povolení zpětného zápisu zařízení v Azure AD Connect](active-directory-aadconnect-feature-device-writeback.md)|
 |Prevence náhodného odstranění | [Synchronizace Azure AD Connect: Prevence náhodného odstranění](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)|

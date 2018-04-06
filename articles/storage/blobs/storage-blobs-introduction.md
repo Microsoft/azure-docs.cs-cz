@@ -1,22 +1,22 @@
 ---
-title: "Seznámení se službou Azure Blob Storage | Microsoft Docs"
-description: "Seznámení se službou Azure Blob Storage"
+title: Seznámení se službou Blob Storage – Úložiště objektů v Azure | Microsoft Docs
+description: Služba Azure Blob Storage je navržená k ukládání velkých objemů nestrukturovaných dat objektů, jako jsou textová nebo binární data. Vaše aplikace můžou k objektům ve službě Blob Storage přistupovat z PowerShellu nebo Azure CLI, z kódu prostřednictvím klientských knihoven pro Azure Storage nebo přes REST.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: overview
-ms.date: 09/28/2017
+ms.date: 03/27/2018
 ms.author: tamram
-ms.openlocfilehash: aabc10b1c1c501e4fa0eb31835c2818cfb8942c6
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0fff0032ec2452413bcd1df3175634b14a64208f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-blob-storage"></a>Seznámení se službou Blob Storage
 
-Azure Blob Storage je služba, která slouží k ukládání velkých objemů nestrukturovaných dat objektů, například textu nebo binárních dat, která jsou přístupná odkudkoli na světě prostřednictvím protokolů HTTP nebo HTTPS. Službu Blob Storage můžete používat ke zveřejňování dat pro celý svět, nebo k soukromému ukládání dat aplikací.
+Azure Blob Storage je řešení cloudového úložiště Microsoftu pro datové objekty. Blob Storage dokáže ukládat velké objemy nestrukturovaných dat objektů, jako jsou textová nebo binární data. Přístup k datům ve službě Blob Storage je možný odkudkoli na světě přes protokol HTTP nebo HTTPS. Službu Blob Storage můžete používat ke zveřejňování dat pro celý svět, nebo k soukromému ukládání dat aplikací.
 
 Mezi běžná použití služby Blob Storage patří:
 
@@ -25,6 +25,7 @@ Mezi běžná použití služby Blob Storage patří:
 * streamování videa a zvuku
 * ukládání dat pro zálohování a obnovování, zotavení po havárii a pro archivaci
 * ukládání dat, které bude analyzovat místní nebo v Azure hostovaná služba
+* ukládání virtuálních pevných disků pro použití se službou Azure Virtual Machines
 
 ## <a name="blob-service-concepts"></a>Koncepty služby Blob service
 

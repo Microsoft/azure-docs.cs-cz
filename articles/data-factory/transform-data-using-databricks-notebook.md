@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.date: 3/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: d1dcec26529c747a209dd10fcefbbadaa40365a3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7a90906f0bb41b0ced368e9010e0c8a4981f038c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Spuštění poznámkového bloku Databricks s využitím aktivity poznámkového bloku ve službě Azure Data Factory
+# <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Spuštění poznámkového bloku Databricks s využitím aktivity poznámkového bloku Databricks ve službě Azure Data Factory
 
 V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Azure Data Factory, který spustí poznámkový blok Databricks pro cluster úloh Databricks. Kanál do poznámkového bloku Databricks během provádění také předá parametry Azure Data Factory.
 
@@ -149,7 +149,7 @@ V této části vytvoříte propojenou službu Databricks. Tato propojená služ
 
           ![Vytvoření nové složky](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       3. [Vytvořte nový poznámkový blok](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python) **mynotebook** ve složce **adftutorial** a klikněte na **Vytvořit**.
+       3. [Vytvořte nový poznámkový blok](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python) **mynotebook** ve složce **adftutorial** a**** klikněte na **Vytvořit.**
 
           ![Vytvoření nového poznámkového bloku](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 

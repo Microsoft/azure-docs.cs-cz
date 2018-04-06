@@ -1,11 +1,11 @@
 ---
-title: "Začínáme se službou Azure Notification Hubs pro aplikace Univerzální platformy Windows | Dokumentace Microsoftu"
-description: "V tomto kurzu zjistíte, jak pomocí služby Azure Notification Hubs odesílat nabízená oznámení do aplikace Univerzální platformy Windows."
+title: Začínáme se službou Azure Notification Hubs pro aplikace Univerzální platformy Windows | Dokumentace Microsoftu
+description: V tomto kurzu zjistíte, jak pomocí služby Azure Notification Hubs odesílat nabízená oznámení do aplikace Univerzální platformy Windows.
 services: notification-hubs
 documentationcenter: windows
 author: jwhitedev
 manager: kpiteira
-editor: 
+editor: ''
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: c09621d1152aafbe15039130f6ca24082dc5bd21
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 8464a7e48a02be39fb624322fac6c26f4c6c6806
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-notification-hubs-for-universal-windows-platform-apps"></a>Začínáme se službou Notification Hubs pro aplikace Univerzální platformy Windows
 
@@ -94,11 +94,11 @@ Vaše centrum oznámení je teď nakonfigurované pro práci se službou WNS. M�
 1. V sadě Visual Studio klikněte pravým tlačítkem na řešení a pak vyberte **Spravovat balíčky NuGet**.  
     Otevře se okno **Spravovat balíčky NuGet**.
 
-2. Do vyhledávacího pole zadejte **WindowsAzure.Messaging.Managed**, vyberte **Nainstalovat** a přijměte podmínky použití.
+2. Do vyhledávacího pole zadejte **Microsoft.Azure.NotificationHubs**, vyberte **Nainstalovat** a přijměte podmínky použití.
    
     ![Okno Spravovat balíčky NuGet][20]
    
-    Tato akce stáhne, nainstaluje a přidá odkaz na knihovnu zasílání zpráv Azure pro Windows pomocí [balíčku NuGet WindowsAzure.Messaging.Managed](http://nuget.org/packages/WindowsAzure.Messaging).
+    Tato akce stáhne a nainstaluje knihovnu služby Azure Notification Hubs pro Windows a přidá na ni odkaz pomocí [balíčku NuGet Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs).
 
 3. Otevřete soubor projektu App.xaml.cs a přidejte následující příkazy `using`: 
    

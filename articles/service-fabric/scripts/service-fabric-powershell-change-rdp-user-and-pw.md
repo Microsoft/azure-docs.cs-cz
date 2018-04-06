@@ -1,31 +1,31 @@
 ---
-title: "Azure skript prostředí PowerShell ukázkový – aktualizovat RDP uživatelské jméno a heslo | Microsoft Docs"
-description: "Azure skript prostředí PowerShell ukázkový – aktualizovat RDP uživatelské jméno a heslo pro všechny uzly clusteru Service Fabric určitý typ uzlu."
+title: Ukázkový skript Azure PowerShellu – Aktualizace uživatelského jména a hesla protokolu RDP | Microsoft Docs
+description: Ukázkový skript Azure PowerShellu – Aktualizace uživatelského jména a hesla protokolu RDP pro všechny uzly clusteru Service Fabric konkrétního typu
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
-ms.date: 11/17/2017
+ms.date: 03/19/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 3b97cee11c9a85cbd60a05bdbdcd010a0f0a106f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
-ms.translationtype: MT
+ms.openlocfilehash: ff9cfabc4ac7b759a916ddaaeb3f4c95ceecd452
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Aktualizace jméno a heslo správce virtuálních počítačů v clusteru
+# <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Aktualizace uživatelského jména a hesla správce virtuálních počítačů v clusteru
 
-Každý typ uzlu v clusteru Service Fabric je škálovací sadu virtuálních počítačů. Tento ukázkový skript aktualizuje uživatelské jméno správce a heslo pro virtuální počítače clusteru v konkrétním uzlu typu.  Přidejte rozšíření VMAccessAgent k sadě škálování, protože heslo správce není upravitelnými škálování nastavte vlastnost.  Uživatelské jméno a heslo změny použít na všech uzlech v sadě škálování. Podle potřeby upravte parametry.
+Každý [typ uzlu](../service-fabric-cluster-nodetypes.md) v clusteru Service Fabric je škálovací sada virtuálních počítačů. Tento ukázkový skript aktualizuje uživatelské jméno a heslo správce virtuálních počítačů v clusteru na konkrétním typu uzlu.  Přidejte do škálovací sady rozšíření VMAccessAgent, protože heslo správce není upravitelná vlastnost škálovací sady.  Změny uživatelského jména a hesla se použijí pro všechny uzly ve škálovací sadě. Podle potřeby upravte parametry.
 
-V případě potřeby nainstalujte prostředí Azure PowerShell pomocí instrukce v nalezen [prostředí Azure PowerShell průvodce](/powershell/azure/overview). 
+V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -33,16 +33,16 @@ V případě potřeby nainstalujte prostředí Azure PowerShell pomocí instrukc
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy: každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá následující příkazy: Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) | Získá vlastnosti typu uzlu clusteru (škálovací sadu virtuálních počítačů).   |
-| [Přidat AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension)| Přidá rozšíření do sady škálování virtuálního počítače.|
-| [Aktualizace AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss)|Aktualizuje stav škálování virtuálních počítačů, nastavit stav místního VMSS objektu.|
+| [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) | Získá vlastnosti typu uzlu clusteru (škálovací sada virtuálních počítačů).   |
+| [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension)| Přidá do škálovací sady virtuálních počítačů rozšíření.|
+| [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss)|Aktualizuje stav škálovací sady virtuálních počítačů na stav místního objektu škálovací sady virtuálních počítačů.|
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Další ukázky pro Azure Service Fabric Azure Powershell lze nalézt v [prostředí Azure PowerShell ukázky](../service-fabric-powershell-samples.md).
+Další ukázky Azure PowerShellu pro Azure Service Fabric najdete v [ukázkách Azure PowerShellu](../service-fabric-powershell-samples.md).
