@@ -1,24 +1,19 @@
 ---
-title: "Přehled Azure Automation | Dokumentace Microsoftu"
-description: "Zjistěte, jako pomocí Azure Automation automatizovat životní cyklus infrastruktury a aplikací."
+title: Přehled Azure Automation
+description: Zjistěte, jako pomocí Azure Automation automatizovat životní cyklus infrastruktury a aplikací.
 services: automation
-author: eamonoreilly
-documentationcenter: 
-keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical
-ms.assetid: 0cf1f3e8-dd30-4f33-b52a-e148e97802a9
 ms.service: automation
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/13/2017
+author: eamonoreilly
 ms.author: eamono
+keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical
+ms.date: 03/15/2018
 ms.custom: mvc
-ms.openlocfilehash: 896bcd9630a6a7c942bd3f1a986832442a474cce
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.topic: overview
+ms.openlocfilehash: c44968dbceee2fdd29818a65e14f5b64ffcccade
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
 

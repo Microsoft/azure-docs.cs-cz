@@ -1,79 +1,114 @@
 ---
-title: "Správa služby Soubory Azure z webu Azure Portal | Dokumentace Microsoftu"
-description: "Zjistěte, jak pomocí webu Azure Portal spravovat službu Soubory Azure."
+title: Správa sdílených složek Azure pomocí webu Azure Portal
+description: Zjistěte, jak pomocí webu Azure Portal spravovat službu Soubory Azure.
 services: storage
-documentationcenter: 
-author: RenaShahMSFT
-manager: aungoo
-editor: tysonn
-ms.assetid: 
+documentationcenter: ''
+author: wmgries
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
-ms.author: renash
-ms.openlocfilehash: e56f8bf1057a8bc2cfcde841f69022104bafff27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 03/26/2018
+ms.author: wgries
+ms.openlocfilehash: 588d260bb939c8f6439ca66828296ea455f1524a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="how-to-use-azure-files-from-the-azure-portal"></a>Použití služby Soubory Azure z webu Azure Portal
-[Azure Portal](https://portal.azure.com) nabízí uživatelské rozhraní pro správu služby Soubory Azure. Z webového prohlížeče můžete provádět následující akce:
+# <a name="managing-azure-file-shares-with-the-azure-portal"></a>Správa sdílených složek Azure pomocí webu Azure Portal 
+Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows, Linux a macOS. Tato příručka vás provede základy práce se sdílenými složkami Azure pomocí webu [Azure Portal](https://portal.azure.com/). Naučte se:
 
-* Vytvoření sdílené složky
-* Ukládat soubory do sdílené složky a stahovat soubory ze sdílené složky.
-* Monitorovat skutečné využití každé sdílené složky.
-* Upravit kvótu velikosti sdílené složky.
-* Kopírovat příkazy pro připojení a použít je k připojení sdílené složky z klienta pro Windows nebo Linux.
+> [!div class="checklist"]
+> * Vytvoření skupiny prostředků a účtu úložiště
+> * Vytvoření sdílené složky Azure 
+> * Vytvoření adresáře
+> * Nahrání souboru 
+> * Stažení souboru
+> * Vytvoření a použití snímku sdílené složky
 
-## <a name="create-file-share"></a>Vytvoření sdílené složky
-1. Přihlaste se k portálu Azure.
-2. V navigační nabídce klikněte na **Účty úložiště** nebo **Účty úložiště (klasické)**.
-    
-    ![Snímek obrazovky, který ukazuje vytvoření sdílené složky v portálu.](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share1.png)
+Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-3. Vyberte svůj účet úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+[!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
 
-    ![Snímek obrazovky, který ukazuje vytvoření sdílené složky v portálu.](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share2.png)
+## <a name="create-a-file-share"></a>Vytvoření sdílené složky
+Vytvoření sdílené složky:
 
-4. Vyberte službu „Files“.
+1. Vyberte účet úložiště na řídicím panelu.
+2. Na stránce účtu úložiště v části **Služby** vyberte **Soubory**.
+    ![Snímek obrazovky účtu úložiště s částí Služby; výběr služby Soubory](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-    ![Snímek obrazovky, který ukazuje vytvoření sdílené složky v portálu.](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share3.png)
+3. V nabídce v horní části stránky **Souborová služba** klikněte na **+ Sdílená složka**. Rozbalí se stránka **Nová sdílená složka**.
+4. Do pole **Název** zadejte *myshare*.
+5. Kliknutím na **OK** vytvořte sdílenou složku Azure.
 
-5. Klikněte na „Sdílené složky“ a pomocí odkazu vytvořte svou první sdílenou složku.
+## <a name="manipulating-the-contents-of-the-azure-file-share"></a>Práce s obsahem sdílené složky Azure
+Teď, když jste vytvořili sdílenou složku Azure, můžete sdílenou složku připojit pomocí protokolu SMB v systému [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) nebo [macOS](storage-how-to-use-files-mac.md). Alternativně můžete se sdílenou složkou Azure pracovat pomocí webu Azure Portal. Všechny požadavky provedené přes Azure Portal se provedou pomocí souborového rozhraní REST API, které umožňuje vytvářet, upravovat a odstraňovat soubory a adresáře na klientech bez přístupu k protokolu SMB.
 
-    ![Snímek obrazovky, který ukazuje vytvoření sdílené složky v portálu.](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share4.png)
+### <a name="create-directory"></a>Vytvoření adresáře
+Vytvoření nového adresáře *myDirectory* v kořenovém adresáři sdílené složky Azure:
 
-6. Zadejte název sdílené složky a její velikost (max. 5120 GB) a vaše první složka se vytvoří. Po vytvoření sdílené složky ji můžete připojit z jakéhokoli souborové systému, který podporuje SMB 2.1 nebo SMB 3.0. Po kliknutí na **Kvóta** sdílené složky můžete změnit velikost souboru až do velikosti 5 120 GB. Pro odhad nákladů na úložiště při použití služby Soubory Azure použijte [cenovou kalkulačku funkcí Azure](https://azure.microsoft.com/pricing/calculator/).
+1. Na stránce **Souborová služba** vyberte sdílenou složku **myshare**. Otevře se stránka vaší sdílené složky.
+2. V nabídce v horní části stránky vyberte **+ Přidat adresář**. Rozbalí se stránka **Nový adresář**.
+3. Zadejte *myDirectory* a pak klikněte na **OK**.
 
-    ![Snímek obrazovky, který ukazuje vytvoření sdílené složky v portálu.](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share5.png)
+### <a name="upload-a-file"></a>Nahrání souboru 
+Abychom si předvedli nahrání souboru, nejprve musíte vytvořit nebo vybrat soubor k nahrání. Můžete to provést jakýmkoli způsobem, který vám vyhovuje. Po výběru souboru, který chcete nahrát:
 
-## <a name="upload-and-download-files"></a>Ukládání a stahování souborů
-1. Vyberte jednu sdílenou složku, kterou jste už vytvořili.
+1. Klikněte na adresář **myDirectory**. Otevře se panel **myDirectory**.
+2. V nabídce v horní části klikněte na **Nahrát**. Otevře se panel **Nahrání souborů**.  
+    ![Snímek obrazovky s panelem Nahrání souborů](media/storage-how-to-use-files-portal/upload-file-1.png)
 
-    ![Snímek obrazovky, který ukazuje ukládání a stahování souborů z portálu.](./media/storage-how-to-use-files-portal/use-files-portal-upload-file1.png)
+3. Kliknutím na ikonu složky otevřete okno, ve kterém můžete procházet místní soubory. 
+4. Vyberte soubor a pak klikněte na **Otevřít**. 
+5. Na stránce **Nahrání souborů** ověřte název souboru a pak klikněte na **Nahrát**.
+6. Po dokončení by se soubor měl zobrazit v seznamu na stránce **myDirectory**.
 
-2. Klikněte na **Uložit** a otevře se uživatelské prostředí pro ukládání souborů.
+### <a name="download-a-file"></a>Stažení souboru
+Kliknutím pravým tlačítkem na soubor, který jste nahráli, můžete stáhnout jeho kopii. Po kliknutí na tlačítko pro stažení bude konkrétní prostředí záviset na operačním systému a prohlížeči, které používáte.
 
-    ![Snímek obrazovky, který ukazuje ukládání souborů z portálu.](./media/storage-how-to-use-files-portal/use-files-portal-upload-file2.png)
+## <a name="create-and-modify-share-snapshots"></a>Vytváření a úpravy snímků sdílených složek
+Další užitečnou úlohou, kterou se sdílenými složkami Azure můžete provádět, je vytváření snímků sdílených složek. Snímek uchovává sdílenou složku Azure k určitému bodu v čase. Snímky sdílených složek jsou podobné technologiím operačního systému, které už možná znáte, jako například:
+- [Služba Stínová kopie svazku (VSS)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee923636) v případě systémů souborů Windows, jako jsou NTFS a ReFS.
+- Snímky [Správce logických svazků (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) v případě systémů Linux.
+- Snímky [systému souborů Apple (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) v případě macOS. 
 
-## <a name="connect-to-file-share"></a>Připojení ke sdílené složce
--  Klikněte na **Připojit** a zobrazí se příkazový řádek pro připojení sdílené složky z Windows a Linuxu. Pokud jste uživatelem Linuxu, další informace o připojení pro jiné distribuce Linuxu najdete v tématu [Jak používat Soubory Azure s Linuxem](../storage-how-to-use-files-linux.md).
+Vytvoření snímku sdílené složky:
 
-    ![Snímek obrazovky, který ukazuje připojení sdílené složky.](./media/storage-how-to-use-files-portal/use-files-portal-connect.png)
--  Můžete zkopírovat příkazy pro připojení sdílené složky ve Windows nebo Linuxu a spustit je z virtuálního počítače Azure nebo místního počítače.
+1. Otevřete stránku sdílené složky otevřením účtu úložiště v části řídicí panel > **Soubory** > **myshare**. 
+2. V nabídce v horní části stránky sdílené složky klikněte na tlačítko **Snímek** a pak vyberte **Vytvořit snímek**.  
+    ![Snímek obrazovky ukazující umístění tlačítka pro vytvoření snímku](media/storage-how-to-use-files-portal/create-snapshot-1.png)
 
-    ![Snímek obrazovky, který ukazuje příkazy pro připojení pro Windows a Linux](./media/storage-how-to-use-files-portal/use-files-portal-show-mount-commands.png)
+### <a name="list-and-browse-share-snapshots"></a>Výpis a procházení snímků sdílených složek
+Po vytvoření snímku můžete znovu kliknout na **Snímek** a pak výběrem možnosti **Zobrazit snímky** vypsat snímky dané sdílené složky. Ve výsledném podokně se zobrazí snímky dané sdílené složky. Kliknutím na snímek sdílené složky ho můžete procházet.
 
-**Tip:**  
-Přístupový klíč účtu úložiště pro připojení najdete tak, že kliknete na **Zobrazit přístupové klíče pro tento účet úložiště** ve spodní části stránky připojení.
+### <a name="restore-from-a-share-snapshot"></a>Obnovení ze snímku sdílené složky
+Abychom si předvedli obnovení souboru ze snímku sdílené složky, nejprve musíme odstranit soubor z aktivní sdílené složky Azure. Přejděte do složky *myDirectory*, klikněte pravým tlačítkem na soubor, který jste nahráli, a pak klikněte na **Odstranit**. Následné obnovení daného souboru ze snímku sdílené složky:
 
-## <a name="see-also"></a>Viz také
-Další informace o službě Soubory Azure najdete na těchto odkazech.
+1. Klikněte na **Snímky** v horní nabídce a vyberte **Zobrazit snímky**. 
+2. Klikněte na snímek, který jste vytvořili dříve. Otevře se nová stránka s jeho obsahem. 
+3. Ve snímku klikněte na složku **myDirectory** a měl by se zobrazit soubor, který jste odstranili. 
+4. Klikněte na odstraněný soubor pravým tlačítkem a vyberte **Obnovit**.
+5. Zobrazí se automaticky otevírané okno s možností výběru mezi obnovením souboru jako kopie a přepsáním původního souboru. Vzhledem k tomu, že jsme odstranili původní soubor, můžeme vybrat možnost **Přepsat původní soubor** a obnovit soubor do stavu, v jakém byl před odstraněním. Kliknutím na **OK** obnovte soubor do sdílené složky Azure.  
+    ![Snímek obrazovky s dialogovým oknem pro obnovení souboru](media/storage-how-to-use-files-portal/restore-snapshot-1.png)
 
-* [Nejčastější dotazy](../storage-files-faq.md)
-* [Řešení potíží ve Windows](storage-troubleshoot-windows-file-connection-problems.md)      
-* [Řešení potíží v Linuxu](storage-troubleshoot-linux-file-connection-problems.md)    
+6. Po obnovení souboru zavřete stránku snímku a vraťte se do části **myshare** > **myDirectory**. Soubor by měl být zpět v původním umístění.
+
+### <a name="delete-a-share-snapshot"></a>Odstranění snímku sdílené složky
+Pokud chcete odstranit snímek sdílené složky, [přejděte k seznamu snímků sdílené složky](#list-and-browse-a-share-snapshot). Klikněte na zaškrtávací políčko vedle názvu snímku sdílené složky a vyberte tlačítko **Odstranit**.
+
+![Snímek obrazovky s odstraněním snímku sdílené složky](media/storage-how-to-use-files-portal/delete-snapshot-1.png)
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+[!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
+
+## <a name="next-steps"></a>Další kroky
+- [Správa sdílených složek pomocí Azure PowerShellu](storage-how-to-use-files-powershell.md)
+- [Správa sdílených složek pomocí Azure CLI](storage-how-to-use-files-cli.md)
+- [Správa sdílených složek pomocí Průzkumníka služby Azure Storage](storage-how-to-use-files-storage-explorer.md)
+- [Plánování nasazení služby Soubory Azure](storage-files-planning.md)

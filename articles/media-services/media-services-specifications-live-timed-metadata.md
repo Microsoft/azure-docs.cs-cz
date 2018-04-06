@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2018
 ms.author: johndeu;
-ms.openlocfilehash: ae726b141f5f44b1eb0887cbd988881e41e163c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cf4541aebe0c735d66f42532c74e97bf9bbc4a5f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace vypršel časový limit Metadata v živé vysílání datového proudu
 
@@ -134,7 +134,7 @@ Pole 'stsd' by MĚLO obsahovat MetaDataSampleEntry pole s názvem kódování, j
 
 Zhuštěný sledovat fragmenty obsahovat pole Fragment Movie (moof) a pole Data média (mdat).
 
-MUSÍ obsahovat pole MovieFragmentBox (moof) **TrackFragmentExtendedHeaderBox (uuid)** pole, jak jsou definovány v [FMP4] s následující pole:
+MUSÍ obsahovat pole MovieFragmentBox (moof) **TrackFragmentExtendedHeaderBox (uuid)** pole, jak jsou definovány v [MS-SSTR] s následující pole:
 
 | **Název pole**         | **Typ pole**          | **Vyžaduje?** | **Popis**                                                                               |
 |------------------------|-------------------------|---------------|-----------------------------------------------------------------------------------------------|
@@ -177,7 +177,7 @@ Data události datového proudu je plné krytí ke službě Media Services. Slu�
 
 ## <a name="31-smooth-streaming-delivery"></a>3.1 smooth streamovaný
 
-Odkazovat na zhuštěný sledování zpracování podrobnosti v specifikace [FMP4] a [MS-SSTR].
+Naleznete zhuštěných sledování zpracování podrobnosti v [MS-SSTR].
 
 #### <a name="smooth-client-manifest-example"></a>Příklad manifestu Smooth klienta
 ~~~ xml
@@ -267,7 +267,7 @@ Fragments(video=480000000,format=m3u8-aapl)
 
 #### <a name="hls-message-handling"></a>Zpracování zpráv HLS
 
-V seznamu stop segment každý dráhy videa a zvuku jsou signál události. Pozice EXT-X-CUE značky se vždy musí být buď bezprostředně před první HLS segmentu (pro uživatele programu splice out nebo segment spuštění) nebo bezprostředně po poslední HLS segment (pro uživatele programu splice v nebo segment end) které označují jeho atributy čas a dobu trvání, podle požadavku [[ HLS].
+V seznamu stop segment každý dráhy videa a zvuku jsou signál události. Pozice EXT-X-CUE značky se vždy musí být buď bezprostředně před první HLS segmentu (pro uživatele programu splice out nebo segment spuštění) nebo bezprostředně po poslední HLS segment (pro uživatele programu splice v nebo segment end) které označují jeho atributy čas a dobu trvání, podle požadavku [HLS].
 
 Pokud je povoleno posuvné okno prezentace, značce EXT-X-CUE opakuje často, uživatele programu splice nebo segmentu je vždy plně popsané v seznamu stop segmentu a atribut uplynulý musí použít k označení množství času uživatele programu splice nebo má segment byla aktivní, podle požadavků [HLS].
 
@@ -407,13 +407,11 @@ Technologie Smooth Streaming ingestování vyžaduje, které musí obsahovat pol
 
 **[AMF0]**  ["Akce zpráva formátu AMF0"](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
-**[FMP4]**  [IIS funkce Smooth streamování specifikaci formátu souboru nebo přenosu](https://microsoft.sharepoint.com/teams/mediaservices/_layouts/15/WopiFrame.aspx?sourcedoc=%7bAC5A31A4-E455-4000-96E1-AB17BD083144%7d&file=IIS%20Smooth%20Streaming%20File%20Format%20Specification%20-%20v%202%203%2001%20latest%20draft.docx&action=default)
-
-**[LIVE FMP4]**  [Služby azure Media Services fragmentovaných MP4 Live Ingestování specifikace](https://microsoft.sharepoint.com/teams/mediaservices/_layouts/15/WopiFrame.aspx?sourcedoc=%7b5CEE1122-AA28-4368-BC8E-9C0048BF1529%7d&file=AMS%20F-MP4%20Live%20Ingest%20Specification.docx&action=default)
+**[LIVE FMP4]**  [Služby azure Media Services fragmentovaných MP4 Live Ingestování specifikace](https://docs.microsoft.com/en-us/azure/media-services/media-services-fmp4-live-ingest-overview)
 
 **[ISO-14496-12]**  ISO/IEC 14496 – 12: část 12 ISO média základní formát souboru, čtvrtý 2012 edice-07-15.
 
-**[RTMP]**  ["Na adobe v reálném čase zasílání zpráv protokolu", 21 prosince 2012](http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/rtmp/pdf/rtmp_specification_1.0.pdf) 
+**[RTMP]**  ["Na adobe v reálném čase zasílání zpráv protokolu", 21 prosince 2012](https://www.adobe.com/devnet/rtmp.html) 
 
 ------------------------------------------
 

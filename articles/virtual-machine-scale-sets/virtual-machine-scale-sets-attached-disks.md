@@ -1,11 +1,11 @@
 ---
-title: "Škálovací sady virtuálních počítačů Azure – připojené datové disky | Dokumentace Microsoftu"
-description: "Naučte se používat připojené datové disky se škálovacími sadami virtuálních počítačů."
+title: Škálovací sady virtuálních počítačů Azure – připojené datové disky | Dokumentace Microsoftu
+description: Naučte se používat připojené datové disky se škálovacími sadami virtuálních počítačů.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -15,55 +15,30 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: 52ea7e35b941d5b1e45f39203757e4a3644cc9a5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ec11a2d66530129fb61d97681e6882b887c8654c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Škálovací sady virtuálních počítačů Azure a připojené datové disky
-[Škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure teď podporují virtuální počítače s připojenými datovými disky. Datové disky můžete definovat v profilu úložiště pro škálovací sady vytvořené pomocí služby Azure Managed Disks. Dříve byly u virtuálních počítačů ve škálovacích sadách jedinou dostupnou možností přímo připojeného úložiště jednotka operačního systému a dočasné jednotky.
+[Škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure podporují instance virtuálních počítačů s připojenými datovými disky a umožňují tak rozšíření úložiště, které máte k dispozici. Datové disky můžete připojit při vytváření škálovací sady nebo k existující škálovací sadě.
 
 > [!NOTE]
->  Když vytvoříte škálovací sadu s definovanými připojenými datovými disky, před jejich použitím stále musíte disky připojit a naformátovat na virtuálním počítači (stejně jako u samostatných virtuálních počítačů Azure). Praktický způsob, jak to provést, je použít rozšíření v podobě vlastního skriptu, které volá standardní skript, který všechny datové disky virtuálního počítače rozdělí do oddílů a naformátuje je.
+>  Když vytvoříte škálovací sadu s připojenými datovými disky, před jejich použitím musíte disky připojit a naformátovat na virtuálním počítači (stejně jako u samostatných virtuálních počítačů Azure). Praktický způsob, jak to provést, je použít rozšíření vlastních skriptů, které volá skript, který všechny datové disky virtuálního počítače rozdělí do oddílů a naformátuje je. Tady najdete příklady pro [Azure CLI 2.0](tutorial-use-disks-cli.md#prepare-the-data-disks) a [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks).
 
-## <a name="create-a-scale-set-with-attached-data-disks"></a>Vytvoření škálovací sady s připojenými datovými disky
-Jednoduchý způsob, jak vytvořit škálovací sadu s připojenými disky, je použít příkaz [az vmss create](/cli/azure/vmss#az_vmss_create). Následující příklad vytvoří skupinu prostředků Azure a škálovací sadu virtuálních počítačů s 10 virtuálními počítači s Ubuntu, z nichž každý bude mít 2 připojené datové disky o velikosti 50 a 100 GB.
 
-```bash
-az group create -l southcentralus -n dsktest
-az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --data-disk-sizes-gb 50 100
-```
+## <a name="create-and-manage-disks-in-a-scale-set"></a>Vytváření a správa disků ve škálovací sadě
+Podrobné informace o vytvoření škálovací sady s připojenými datovými disky a o přípravě, formátování, přidávání a odebírání datových disků najdete v následujících kurzech:
 
-Příkaz [az vmss create](/cli/azure/vmss#az_vmss_create) použije určité výchozí konfigurační hodnoty, pokud nezadáte jiné. Pokud chcete zobrazit dostupné možnosti, které můžete přepsat, vyzkoušejte:
+- [Azure CLI 2.0](tutorial-use-disks-cli.md)
+- [Azure PowerShell](tutorial-use-disks-powershell.md)
 
-```bash
-az vmss create --help
-```
+Zbývající část tohoto článku popisuje konkrétní případy použití, jako jsou například clustery Service Fabric vyžadující datové disky nebo připojení existujících datových disků s obsahem ke škálovací sadě.
 
-Dalším způsobem, jak vytvořit škálovací sadu s připojenými datovými disky, je definovat škálovací sadu v šabloně Azure Resource Manageru, vložit část _dataDisks_ do profilu _storageProfile_ a nasadit šablonu. Definice 50GB a 100GB disků z předchozího příkladu je vidět na následujícím příkladu šablony:
-
-```json
-"dataDisks": [
-    {
-    "lun": 1,
-    "createOption": "Empty",
-    "caching": "ReadOnly",
-    "diskSizeGB": 50
-    },
-    {
-    "lun": 2,
-    "createOption": "Empty",
-    "caching": "ReadOnly",
-    "diskSizeGB": 100
-    }
-]
-```
-
-Kompletní příklad šablony škálovací sady s nadefinovaným připojeným diskem připravený k nasazení najdete tady: [https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data](https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data).
 
 ## <a name="create-a-service-fabric-cluster-with-attached-data-disks"></a>Vytvoření clusteru Service Fabric s připojenými datovými disky
-Každý [typ uzlu](../service-fabric/service-fabric-cluster-nodetypes.md) v clusteru [Service Fabric](/azure/service-fabric) spuštěném v Azure využívá škálovací sadu virtuálních počítačů.  Pomocí šablony Azure Resource Manageru můžete ke škálovacím sadám, ze kterých se skládá cluster Service Fabric, připojit datové disky. Jako výchozí bod můžete použít [existující šablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates). V šabloně do části _storageProfile_ prostředků _Microsoft.Compute/virtualMachineScaleSets_ vložte část _dataDisks_ a pak šablonu nasaďte. Následující příklad připojí 128GB datový disk:
+Každý [typ uzlu](../service-fabric/service-fabric-cluster-nodetypes.md) v clusteru [Service Fabric](/azure/service-fabric) spuštěném v Azure využívá škálovací sadu virtuálních počítačů.  Pomocí šablony Azure Resource Manageru můžete připojit datové disky ke škálovacím sadám, ze kterých se skládá cluster Service Fabric. Jako výchozí bod můžete použít [existující šablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates). V šabloně do části _storageProfile_ prostředků _Microsoft.Compute/virtualMachineScaleSets_ vložte část _dataDisks_ a pak šablonu nasaďte. Následující příklad připojí 128GB datový disk:
 
 ```json
 "dataDisks": [
@@ -115,56 +90,6 @@ Pokud chcete automaticky připravovat datové disky v clusteru s Linuxem, přide
 }
 ```
 
-## <a name="adding-a-data-disk-to-an-existing-scale-set"></a>Přidání datového disku do existující škálovací sady
-> [!NOTE]
->  Datové disky můžete připojit jen ke škálovací sadě vytvořené službou [Azure Managed Disks](./virtual-machine-scale-sets-managed-disks.md).
-
-Datový disk můžete do škálovací sady virtuálních počítačů přidat příkazem Azure CLI _az vmss disk attach_. Zkontrolujte, že jste zadali logickou jednotku (LUN), která se ještě nepoužívá. Následující příklad rozhraní příkazového řádku přidá 50GB disk k logické jednotce 3:
-
-```bash
-az vmss disk attach -g dsktest -n dskvmss --size-gb 50 --lun 3
-```
-
-Následující příklad PowerShellu přidá 50GB disk k logické jednotce 3:
-
-```powershell
-$vmss = Get-AzureRmVmss -ResourceGroupName myvmssrg -VMScaleSetName myvmss
-$vmss = Add-AzureRmVmssDataDisk -VirtualMachineScaleSet $vmss -Lun 3 -Caching 'ReadWrite' -CreateOption Empty -DiskSizeGB 50 -StorageAccountType StandardLRS
-Update-AzureRmVmss -ResourceGroupName myvmssrg -Name myvmss -VirtualMachineScaleSet $vmss
-```
-
-> [!NOTE]
-> Různé velikosti virtuálních počítačů mají různá omezení počtu podporovaných připojených disků. Před přidáním nového disku zkontrolujte [charakteristiky velikostí virtuálních počítačů](../virtual-machines/windows/sizes.md).
-
-Disk můžete přidat také přidáním nového záznamu do vlastnosti _dataDisks_ v profilu _storageProfile_ definice škálovací sady a aplikováním změn. Pokud to chcete otestovat, vyhledejte existující definici škálovací sady v [Průzkumníku prostředků Azure](https://resources.azure.com/). Vyberte _Upravit_ a přidejte do seznamu datových disků nový disk podle následujícího příkladu:
-
-```json
-"dataDisks": [
-    {
-    "lun": 1,
-    "createOption": "Empty",
-    "caching": "ReadOnly",
-    "diskSizeGB": 50
-    },
-    {
-    "lun": 2,
-    "createOption": "Empty",
-    "caching": "ReadOnly",
-    "diskSizeGB": 100
-    },
-    {
-    "lun": 3,
-    "createOption": "Empty",
-    "caching": "ReadOnly",
-    "diskSizeGB": 20
-    }          
-]
-```
-
-Potom vyberte _PUT_ a aplikujte změny na škálovací sadu. Uvedený příklad bude fungovat, pokud použijete tak velké virtuální počítače, aby podporovaly více než dva připojené datové disky.
-
-> [!NOTE]
-> Když provedete změnu definice škálovací sady, například přidáním nebo odebráním datového disku, změna se aplikuje na všechny nově vytvořené virtuální počítače. Na existující virtuální počítače se ale aplikuje pouze pokud je vlastnost _upgradePolicy_ nastavena na Automatic. Pokud je nastavena na Manual, je třeba nový model na existující virtuální počítače aplikovat ručně. To můžete udělat na portálu, pomocí příkazu PowerShellu _Update-AzureRmVmssInstance_ nebo pomocí příkazu rozhraní příkazového řádku _az vmss update-instances_.
 
 ## <a name="adding-pre-populated-data-disks-to-an-existent-scale-set"></a>Přidání disků předem naplněných daty do existující škálovací sady 
 > Když přidáváte disky do stávajícího modelu škálovací sady, vytvoří se z principu vždy prázdný disk. Tento scénář také zahrnuje nové instance vytvořené škálovací sadou. Toto chování je způsobené tím, že definice škálovací sady obsahuje prázdný datový disk. Chcete-li vytvořit pro model existující škálovací sady diskové jednotky předem naplněné daty, můžete zvolit jednu z následujících dvou možností:
@@ -176,12 +101,6 @@ Potom vyberte _PUT_ a aplikujte změny na škálovací sadu. Uvedený příklad 
 
 > Uživatel musí zachytit instanci 0 virtuálního počítače s požadovanými daty a pak tento virtuální pevný disk použít k definici image.
 
-## <a name="removing-a-data-disk-from-a-scale-set"></a>Odebrání datového disku ze škálovací sady
-Datový disk můžete ze škálovací sady virtuálních počítačů odebrat příkazem Azure CLI _az vmss disk detach_. Například následující příkaz odebere disk definovaný na logické jednotce 2:
-```bash
-az vmss disk detach -g dsktest -n dskvmss --lun 2
-```  
-Podobně můžete odebrat disk ze škálovací sady také odebráním záznamu z vlastnosti _dataDisks_ v profilu _storageProfile_ a aplikováním změny. 
 
 ## <a name="additional-notes"></a>Další poznámky
 Podpora služby Azure Managed Disks a připojených datových disků škálovacích sad je dostupná v rozhraní Microsoft.Compute API verze [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) nebo novější.

@@ -1,8 +1,8 @@
 ---
-title: "Přehled Azure Data Lake Storu | Dokumentace Microsoftu"
-description: "Seznámení se službou Azure Data Lake Store a jejími výhodami oproti jiným úložištím dat"
+title: Přehled Azure Data Lake Storu | Dokumentace Microsoftu
+description: Seznámení se službou Azure Data Lake Store a jejími výhodami oproti jiným úložištím dat
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 88c44f2e47562f9992e7c6e228b9a4c917f806ba
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 111906bc9e7e85e30a879d7bacff37edb4b204ac
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="overview-of-azure-data-lake-store"></a>Přehled Azure Data Lake Store
 Azure Data Lake Store je celopodnikové, flexibilně škálovatelné úložiště pro analytické úlohy s velkými objemy dat. Azure Data Lake umožňuje zaznamenávat data libovolné velikosti, typu a rychlosti příjmu do jediného místa pro účely provozní a zjišťovací analýzy.
@@ -61,7 +61,7 @@ Azure Data Lake Store využívá k ověřování službu Azure Active Directory 
 | Funkce | Popis |
 | --- | --- |
 | Authentication |Služba Azure Data Lake Store se integruje se službou Azure Active Directory (AAD) v oblasti správy identit a přístupu veškerých dat uložených v Azure Data Lake Store. Díky této integraci získává služba Azure Data Lake všechny funkce AAD, včetně vícefaktorového ověřování, podmíněného přístupu, řízení přístupu na základě role, sledování využití aplikací, sledování a výstrah zabezpečení atd. Azure Data Lake Store podporuje protokol OAuth 2.0 pro ověřování v rozhraní REST. Viz [Ověřování pomocí služby Data Lake Store](data-lakes-store-authentication-using-azure-active-directory.md).|
-| Řízení přístupu |Azure Data Lake Store zajišťuje řízení přístupu tím, že podporuje oprávnění ve stylu POSIX zpřístupněná protokolem WebHDFS. V Data Lake Store Public Preview (aktuální verze) jde seznamy řízení přístupu zapnout u kořenové složky, podsložek a jednotlivých souborů. Další informace o fungování seznamů řízení přístupu v souvislosti s Data Lake Storem najdete v tématu [Řízení přístupu v Data Lake Storu](data-lake-store-access-control.md). |
+| Řízení přístupu |Azure Data Lake Store zajišťuje řízení přístupu tím, že podporuje oprávnění ve stylu POSIX zpřístupněná protokolem WebHDFS. Seznamy ACL je možné povolit pro kořenovou složku, podsložky a jednotlivé soubory. Další informace o fungování seznamů řízení přístupu v souvislosti s Data Lake Storem najdete v tématu [Řízení přístupu v Data Lake Storu](data-lake-store-access-control.md). |
 | Šifrování |Data Lake Store také zajišťuje šifrování dat, která jsou uložená v účtu. Nastavení šifrování se zadává při vytváření účtu Data Lake Storu. Můžete zvolit, aby se vaše data šifrovala, nebo zvolit možnost bez šifrování. Další informace najdete v tématu [Šifrování ve službě Data Lake Store](data-lake-store-encryption.md). Pokyny k provedení konfigurace související se šifrováním najdete v tématu [Začínáme s Azure Data Lake Store pomocí webu Azure Portal](data-lake-store-get-started-portal.md). |
 
 Chcete se dozvědět víc o zabezpečení dat v Data Lake Store? Použijte následující odkazy.

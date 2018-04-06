@@ -64,9 +64,9 @@ Shromážděte následující čítače, pokud nasazujete služeb .NET do cluste
 | Využívání paměti rozhraním .NET CLR (pro službu) | # Celkový počet potvrzených bajtů |
 | Využívání paměti rozhraním .NET CLR (pro službu) | # Celkový počet vyhrazené bajtů |
 | Využívání paměti rozhraním .NET CLR (pro službu) | Počet bajtů ve všech haldách |
-| Využívání paměti rozhraním .NET CLR (pro službu) | Počet úklidů 0 |
-| Využívání paměti rozhraním .NET CLR (pro službu) | # 1. generace kolekce |
-| Využívání paměti rozhraním .NET CLR (pro službu) | # Úklidů 2. generace |
+| Využívání paměti rozhraním .NET CLR (pro službu) | # Počet úklidů 0 |
+| Využívání paměti rozhraním .NET CLR (pro službu) | # Počet úklidů 1 |
+| Využívání paměti rozhraním .NET CLR (pro službu) | # Počet úklidů 2 |
 | Využívání paměti rozhraním .NET CLR (pro službu) | Čas |
 
 ### <a name="service-fabrics-custom-performance-counters"></a>Čítače výkonu vlastní Service Fabric

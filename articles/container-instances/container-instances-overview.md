@@ -6,14 +6,14 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: overview
-ms.date: 03/23/2018
+ms.date: 03/29/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: d6e0637974d8076fc610d7154ad507f4e7af0cfa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e10d4046f543fbcc479421f4ca8f10221abc806f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -25,6 +25,10 @@ Azure Container Instances je skvělým řešením pro jakýkoli scénář, kter�
 
 Kontejnery nabízejí významné výhody při spouštění oproti virtuálním počítačům. Služba Azure Container Instances může spouštět kontejnery v Azure během několika sekund a bez nutnosti zřizovat a spravovat virtuální počítače.
 
+## <a name="public-ip-connectivity-and-dns-name"></a>Připojení pomocí veřejné IP adresy a název DNS
+
+Služba Azure Container Instances umožňuje zveřejňovat kontejnery přímo na internetu s použitím IP adresy a plně kvalifikovaného názvu domény. Při vytváření instance kontejneru můžete zadat vlastní popisek názvu DNS a zpřístupnit tak aplikaci na adrese *vlastní_popisek*.*oblast_Azure*.azurecontainer.io.
+
 ## <a name="hypervisor-level-security"></a>Zabezpečení na úrovni hypervisoru
 
 Kontejnery tradičně nabízejí izolaci závislostí aplikace a zásady správného řízení prostředků, ale nebyly považovány za dostatečně odolné pro použití v nehostinném prostředí více tenantů. Služba Azure Container Instances zaručuje izolaci vaší aplikace v kontejneru stejně, jako by byla na virtuálním počítači.
@@ -32,10 +36,6 @@ Kontejnery tradičně nabízejí izolaci závislostí aplikace a zásady správn
 ## <a name="custom-sizes"></a>Vlastní velikosti
 
 Kontejnery jsou obvykle optimalizované pro spouštění jenom jedné aplikace, ale konkrétní požadavky těchto aplikací se můžou značně lišit. Služba Azure Container Instances zajišťuje optimální využití díky tomu, že umožňuje přesnou specifikaci jader procesoru a paměti. Platíte podle toho, co potřebujete, a účtuje se po sekundách, takže můžete podrobně upravovat náklady podle vašich aktuálních potřeb.
-
-## <a name="public-ip-connectivity"></a>Připojení pomocí veřejné IP adresy
-
-Služba Azure Container Instances umožňuje zveřejňovat kontejnery přímo na internetu s použitím veřejné IP adresy a popisku názvu DNS. V budoucnu plánujeme možnosti sítě rozšířit o integraci s virtuálními sítěmi, nástroji pro vyrovnávání zatížení a dalšími základními částmi síťové infrastruktury Azure.
 
 ## <a name="persistent-storage"></a>Trvalé úložiště
 
@@ -53,4 +53,7 @@ Azure Container Instances podporuje plánování [skupin více kontejnerů](cont
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte si nasazení kontejneru do Azure jediným příkazem s využitím naší [příručky Rychlý start](container-instances-quickstart.md).
+Vyzkoušejte si nasazení kontejneru do Azure jediným příkazem s využitím naší příručky Rychlý start:
+
+> [!div class="nextstepaction"]
+> [Rychlý úvod ke službě Azure Container Instances](container-instances-quickstart.md)

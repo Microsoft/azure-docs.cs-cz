@@ -1,11 +1,11 @@
 ---
-title: "Transformace dat pomocí Hivu ve službě Azure Virtual Network | Dokumentace Microsoftu"
-description: "Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Hivu v Azure Data Factory."
+title: Transformace dat pomocí Hivu ve službě Azure Virtual Network | Dokumentace Microsoftu
+description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Hivu v Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shengc
-ms.openlocfilehash: 04323e5f6b729cdadf5ede748a1178dfa9460cd2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: fda9cab53290d7af69e243ce47df702b25d1de67
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny, který transformuje data pomocí aktivity Hivu v clusteru HDInsight, který je ve službě Azure Virtual Network. V tomto kurzu provedete následující kroky:
@@ -223,7 +223,7 @@ V definici propojené služby aktualizujte hodnoty následujících vlastností:
 
 - **userName**. Uživatelské jméno pro přihlášení clusteru, které jste zadali při vytváření clusteru. 
 - **password**. Heslo pro tohoto uživatele.
-- **clusterUri**. Zadejte adresu URL clusteru HDInsight ve formátu https://<clustername>.azurehdinsight.net.  V tomto článku se předpokládá, že máte ke clusteru přístup přes internet. To znamená, že se ke clusteru můžete připojit třeba na `https://clustername.azurehdinsight.net`. Tato adresa se používá veřejnou brány, která není dostupná, pokud jste k omezení přístupu z internetu použili skupiny zabezpečení sítě (NSG) nebo uživatelem definované trasy (UDR). Aby datová továrna mohla odesílat úlohy do clusteru HDInsight ve službě Azure Virtual Network, musíte ji nakonfigurovat tak, aby tuto adresu URL bylo možné přeložit na privátní IP adresu brány, kterou používá HDInsight.
+- **clusterUri**. Zadejte adresu URL clusteru HDInsight v následujícím formátu: https://<clustername>.azurehdinsight.net.  V tomto článku se předpokládá, že máte ke clusteru přístup přes internet. To znamená, že se ke clusteru můžete připojit třeba na `https://clustername.azurehdinsight.net`. Tato adresa se používá veřejnou brány, která není dostupná, pokud jste k omezení přístupu z internetu použili skupiny zabezpečení sítě (NSG) nebo uživatelem definované trasy (UDR). Aby služba Data Factory mohla odesílat úlohy do clusterů HDInsight ve službě Azure Virtual Network, musíte ji nakonfigurovat tak, aby tuto adresu URL bylo možné přeložit na privátní IP adresu brány, kterou používá HDInsight.
 
   1. Na webu Azure Portal otevřete službu Virtual Network, ve které je HDInsight. Otevřete síťové rozhraní s názvem začínajícím textem `nic-gateway-0`. Poznamenejte si jeho privátní IP adresu. Příklad: 10.6.0.15. 
   2. Pokud Azure Virtual Network má server DNS, aktualizujte záznam DNS tak, aby se adresa URL clusteru HDInsight `https://<clustername>.azurehdinsight.net` dala přeložit na `10.6.0.15`. Toto je doporučený postup. Pokud ve službě Azure Virtual Network nemáte server DNS, můžete to dočasně obejít tak, že upravíte soubor hosts (C:\Windows\System32\drivers\etc) všech virtuálních počítačů, které se registrovaly jako uzly místního prostředí Integration Runtime, a to přidáním položky jako je tato: 

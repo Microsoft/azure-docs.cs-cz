@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s DNS Azure pomocí PowerShellu | Dokumentace Microsoftu"
-description: "Naučíte se vytvořit zónu a záznam DNS v DNS Azure. Pomocí tohoto podrobného průvodce můžete vytvořit a spravovat první zónu a záznam DNS pomocí PowerShellu."
+title: Začínáme s DNS Azure pomocí PowerShellu | Dokumentace Microsoftu
+description: Naučíte se vytvořit zónu a záznam DNS v DNS Azure. Pomocí tohoto podrobného průvodce můžete vytvořit a spravovat první zónu a záznam DNS pomocí PowerShellu.
 services: dns
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
 ms.service: dns
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: kumud
-ms.openlocfilehash: 3f67d4f537a832d1d3e13ff2a67645ae17ed8669
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 050111f4a5e8459e89d049ccb879b5079ff68527
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-dns-using-powershell"></a>Začínáme s DNS Azure pomocí PowerShellu
 
@@ -50,6 +50,7 @@ Zóna DNS se vytvoří pomocí rutiny `New-AzureRmDnsZone`. Následující pří
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyResourceGroup
 ```
+Azure DNS teď podporuje také privátní zóny DNS (aktuálně ve verzi Public Preview).  Další informace o privátních zónách DNS najdete v tématu [Použití DNS Azure pro privátní domény](private-dns-overview.md). Příklad vytvoření privátní zóny DNS najdete v tématu [Začínáme s privátními zónami Azure DNS pomocí PowerShellu](./private-dns-getstarted-powershell.md).
 
 ## <a name="create-a-dns-record"></a>Vytvoření záznamu DNS
 

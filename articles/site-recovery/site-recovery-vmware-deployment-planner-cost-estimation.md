@@ -1,12 +1,12 @@
 ---
-title: "Azure Site Recovery Deployment Planner pro nasazení VMware do Azure | Dokumentace Microsoftu"
-description: "Toto je uživatelská příručka k Azure Site Recovery Deployment Planneru."
+title: Azure Site Recovery Deployment Planner pro nasazení VMware do Azure | Dokumentace Microsoftu
+description: Toto je uživatelská příručka k Azure Site Recovery Deployment Planneru.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: 63963804b81aa57e914e18fa474963a3830d04d5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 337217e66fe4d3780af197911a0e72c6f936e411
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Sestava odhadu nákladů Plánovače nasazení služby Azure Site Recovery  
 
@@ -110,7 +110,7 @@ Ruční přidání virtuálních počítačů:
 * Each DR drill duration (Days) 
 * OS Type
 * Data redundancy 
-* Azure Hybrid Use Benefit
+* Zvýhodněné hybridní využití Azure
 
 3.  Pokud chcete použít stejnou hodnotu pro všechny virtuální počítače v tabulce, klikněte na tlačítko Apply to all (Použít u všech) pro sloupce DR-Drills in a year, Each DR-Drill duration (Days), Data redundancy a Azure Hybrid Use Benefit.
 
@@ -136,7 +136,7 @@ Ruční přidání virtuálních počítačů:
 
 **Data redundancy:** Může to být jedna z následujících hodnot: Locally redundant storage (LRS), Geo-redundant storage (GRS) nebo Read-access geo-redundant storage (RA-GRS). Výchozí nastavení je LRS. Můžete změnit typ na základě vašeho účtu úložiště nebo použít nový typ pro všechny virtuální počítače, a to zadáním změnou typu v horním řádku a kliknutím na tlačítko Apply to all (Použít u všech).  Náklady na úložiště pro replikaci se počítají na základě ceny pro redundanci dat, kterou jste vybrali. 
 
-**Azure Hybrid Use Benefit:** Pro virtuální počítače s Windows můžete využít program Zvýhodněné hybridní využití Azure, pokud je k dispozici.  Výchozí hodnota je Yes (Ano). Můžete změnit nastavení pro konkrétní virtuální počítače nebo aktualizovat všechny virtuální počítače kliknutím na tlačítko Apply to all (Použít u všech).
+**Zvýhodněné hybridní využití Azure:** Pro virtuální počítače s Windows můžete využít program Zvýhodněné hybridní využití Azure, pokud je k dispozici.  Výchozí hodnota je Yes (Ano). Můžete změnit nastavení pro konkrétní virtuální počítače nebo aktualizovat všechny virtuální počítače kliknutím na tlačítko Apply to all (Použít u všech).
 
 **Total Azure consumption:** Náklady na výpočetní funkce, úložiště a licence Azure Site Recovery pro vaše zotavení po havárii. Na základě vašeho výběru se náklady zobrazují jako měsíční nebo roční.
 

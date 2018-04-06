@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: bf0a03ace2f6b6e6b1c845785a452d0b75f35de8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 81265dd61faee38d578a380ca392e7851662329c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Nastavení vývojového prostředí v Mac OS X
 > [!div class="op_single_selector"]
@@ -44,13 +44,7 @@ Azure Service Fabric nefunguje v Mac OS X nativně. Pro spuštění místního c
 ## <a name="create-a-local-container-and-set-up-service-fabric"></a>Vytvoření místního kontejneru a nastavení Service Fabric
 Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný cluster Service Fabric, proveďte následující kroky:
 
-1. Vyžádejte si image kontejneru Service Fabric onebox z úložiště Docker Hub. Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hubu](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
-
-    ```bash
-    docker pull microsoft/service-fabric-onebox
-    ```
-
-2. Aktualizujte konfiguraci démona Dockeru na hostiteli pomocí následujícího nastavení a potom démon Dockeru restartujte: 
+1. Aktualizujte konfiguraci démona Dockeru na hostiteli pomocí následujícího nastavení a potom démon Dockeru restartujte: 
 
     ```json
     {
@@ -66,12 +60,47 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
     >
     >Doporučený postup je přímo upravit nastavení konfigurace démona v Dockeru. Vyberte **ikonu Docker** a potom vyberte **Předvolby** > **Démon** > **Upřesnit**.
     >
+    >Při testování rozsáhlých aplikací doporučujeme zvýšit množství prostředků přidělených Dockeru. Můžete to provést tak, že vyberete **ikonu Dockeru**, pak vyberete **Upřesnit** a upravíte počet jader a velikost paměti.
 
-3. Spusťte instanci kontejneru Service Fabric onebox a použijte image, kterou jste si vyžádali v prvním kroku:
+2. V novém adresáři vytvořte soubor `.Dockerfile` pro sestavení vaší image Service Fabric:
 
-    ```bash
-    docker run -itd -p 19080:19080 --name sfonebox microsoft/service-fabric-onebox
+    ```dockerfile
+    FROM microsoft/service-fabric-onebox
+    WORKDIR /home/ClusterDeployer
+    RUN ./setup.sh
+    #Generate the local
+    RUN locale-gen en_US.UTF-8
+    #Set environment variables
+    ENV LANG=en_US.UTF-8
+    ENV LANGUAGE=en_US:en
+    ENV LC_ALL=en_US.UTF-8
+    EXPOSE 19080 19000 80 443
+    #Start SSH before running the cluster
+    CMD /etc/init.d/ssh start && ./run.sh
     ```
+
+    >[!NOTE]
+    >Úpravou tohoto souboru můžete do kontejneru přidat další programy nebo závislosti.
+    >Například přidáním `RUN apt-get install nodejs -y` se povolí podpora aplikací `nodejs` jako spustitelných souborů typu Host.
+    
+    >[!TIP]
+    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hubu](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
+
+3. Pokud ze souboru `.Dockerfile` chcete sestavit opakovatelně použitelnou image, otevřete terminál, pomocí příkazu `cd` přejděte přímo do adresáře s vaším souborem `.Dockerfile` a pak spusťte:
+
+    ```bash 
+    docker build -t mysfcluster .
+    ```
+    
+    >[!NOTE]
+    >Tato operace nějakou dobu trvá, ale stačí ji provést jenom jednou.
+
+4. Teď můžete rychle spustit místní kopii Service Fabric, kdykoli budete potřebovat, spuštěním:
+
+    ```bash 
+    docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
+    ```
+
     >[!TIP]
     >Zadejte název instance kontejneru, aby s ní šlo pracovat srozumitelněji. 
     >
@@ -80,20 +109,20 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-4. Přihlaste se ke kontejneru Dockeru v interaktivním režimu SSH:
+5. Spuštění clusteru bude chvíli trvat. Pomocí následujícího příkazu můžete zobrazit protokoly nebo můžete přejít na řídicí panel na adrese [http://localhost:19080](http://localhost:19080) a zobrazit stav clusteru:
 
-    ```bash
-    docker exec -it sfonebox bash
+    ```bash 
+    docker logs sftestcluster
     ```
 
-5. Spusťte instalační skript, který načte požadované závislosti a spustí cluster v kontejneru:
 
-    ```bash
-    ./setup.sh     # Fetches and installs the dependencies required for Service Fabric to run
-    ./run.sh       # Starts the local cluster
+
+6. Jakmile budete hotovi, můžete kontejner zastavit a vyčistit pomocí tohoto příkazu:
+
+    ```bash 
+    docker rm -f sftestcluster
     ```
 
-6. Po dokončení kroku 5 přejděte na počítači Mac na adresu `http://localhost:19080`. Měl by se zobrazit Service Fabric Explorer.
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Nastavení Service Fabric CLI (sfctl) na počítači Mac
 

@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření funkce aktivované službou Azure Cosmos DB | Dokumentace Microsoftu"
-description: "Pomocí služby Azure Functions vytvoříte funkci bez serveru, která se vyvolá při přidání dat do databáze ve službě Azure Cosmos DB."
+title: Vytvoření funkce aktivované službou Azure Cosmos DB | Dokumentace Microsoftu
+description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, která se vyvolá při přidání dat do databáze ve službě Azure Cosmos DB.
 services: azure-functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.service: functions; cosmos-db
 ms.devlang: multiple
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/07/2017
 ms.author: glenga
-ms.custom: 
-ms.openlocfilehash: 9ee3eddda53052c47f2cecff80f971f5eadac414
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: ''
+ms.openlocfilehash: 435c4bf1c2619e91bbdd089375914ce06fdac6c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Vytvoření funkce aktivované službou Azure Cosmos DB
 
@@ -74,7 +74,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
     | Nastavení      | Navrhovaná hodnota  | Popis                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | Název databáze | Jedinečné ID databáze Azure Cosmos DB  |
-    | **Rozhraní API** | SQL (DocumentDB) | Toto téma používá rozhraní API databáze dokumentů.  |
+    | **Rozhraní API** | SQL | V tomto tématu se používá rozhraní SQL API.  |
     | **Předplatné** | předplatné Azure | Předplatné, ve kterém se tento nový účet služby Cosmos DB vytvoří.  |
     | **Skupina prostředků** | myResourceGroup |  Použijte existující skupinu prostředků, která obsahuje vaši aplikací funkcí. |
     | **Umístění**  | WestEurope | Vyberte umístění blízko vaší aplikaci funkcí nebo jiným aplikacím, které používají uložené dokumenty.  |

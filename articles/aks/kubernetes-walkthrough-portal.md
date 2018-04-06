@@ -1,6 +1,6 @@
 ---
-title: "Rychlý start – rychlý start práce na portálu Azure s clusterem Kubernetes"
-description: "Rychle se naučíte, jak pomocí portálu Azure vytvořit cluster Kubernetes pro kontejnery Linuxu ve službě AKS."
+title: Rychlý start – rychlý start práce na portálu Azure s clusterem Kubernetes
+description: Rychle se naučíte, jak pomocí portálu Azure vytvořit cluster Kubernetes pro kontejnery Linuxu ve službě AKS.
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 35886217328d35229a59b9713f5bb4bf0244569a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 4aad45559d167e6c046822200c9bbb98113d463b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-an-azure-container-service-aks-cluster"></a>Nasazení clusteru Azure Container Service (AKS)
+# <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>Rychlý start: Nasazení clusteru Azure Container Service (AKS)
 
 V tomto rychlém startu nasadíte cluster AKS pomocí portálu Azure. Následně se na tomto clusteru spustí vícekontejnerová aplikace skládající se z front-endu webu a instance Redis. Po dokončení bude aplikace přístupná přes internet.
 
@@ -25,7 +25,7 @@ Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Pod
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na portál Azure na adrese http://portal.azure.com.
+Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 ## <a name="create-service-principal"></a>Vytvoření instančního objektu
 

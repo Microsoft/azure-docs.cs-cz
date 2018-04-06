@@ -1,6 +1,6 @@
 ---
-title: "Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Průzkumníka služby Azure Storage | Microsoft Docs"
-description: "V tomto rychlém startu pomocí Průzkumníka služby Azure Storage vytvoříte účet úložiště a kontejner. Pak použijete Průzkumníka služby Storage k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru."
+title: Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Průzkumníka služby Azure Storage | Microsoft Docs
+description: V tomto rychlém startu pomocí Průzkumníka služby Azure Storage vytvoříte účet úložiště a kontejner. Pak použijete Průzkumníka služby Storage k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/22/2018
 ms.author: tamram
-ms.openlocfilehash: 72503dd0216d9d987d1222491c6e11d46a4d38a3
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f44d42b949eae0d017e3bba218234fd1e2ead78e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Průzkumníka služby Azure Storage
 
@@ -47,7 +47,7 @@ Po dokončení připojení se Průzkumník služby Azure Storage otevře se zobr
 
 Objekty blob se vždy nahrávají do kontejneru. Díky tomu můžete organizovat skupiny objektů blob podobně, jako organizujete soubory do složek na svém počítači.
 
-Pokud chcete vytvořit kontejner, rozbalte účet úložiště, který jste vytvořili v předchozím kroku. Klikněte pravým tlačítkem na **Kontejnery objektů blob** a vyberte **Vytvořit kontejner objektů blob**. Zadejte název kontejneru objektů blob. V části popisující [pravidla pojmenování kontejneru](storage-dotnet-how-to-use-blobs.md#create-a-container) najdete seznam pravidel a omezení pro pojmenování kontejnerů. Až budete hotovi, stisknutím **Enter** vytvoříte kontejner objektů blob. Až se kontejner objektů blob úspěšně vytvoří, zobrazí se ve složce **Kontejnery objektů blob** v příslušném účtu úložiště.
+Pokud chcete vytvořit kontejner, rozbalte účet úložiště, který jste vytvořili v předchozím kroku. Klikněte pravým tlačítkem na **Kontejnery objektů blob** a vyberte **Vytvořit kontejner objektů blob**. Zadejte název kontejneru objektů blob. V části [Vytvoření kontejneru a nastavení oprávnění](storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) najdete seznam pravidel a omezení pro pojmenování kontejnerů objektů blob. Až budete hotovi, stisknutím **Enter** vytvoříte kontejner objektů blob. Až se kontejner objektů blob úspěšně vytvoří, zobrazí se ve složce **Kontejnery objektů blob** v příslušném účtu úložiště.
 
 ## <a name="upload-blobs-to-the-container"></a>Nahrání objektů blob do kontejneru
 

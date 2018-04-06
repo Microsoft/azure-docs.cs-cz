@@ -1,49 +1,49 @@
 ---
-title: "Vytvoření střední hodnotu zásobníku na virtuální počítač s Linuxem v Azure | Microsoft Docs"
-description: "Naučte se vytvářet zásobníku MongoDB, Express, AngularJS a Node.js (střední) na virtuální počítač s Linuxem v Azure."
+title: Vytvoření stacku MEAN na virtuálním počítači s Linuxem v Azure | Microsoft Docs
+description: Zjistěte, jak vytvořit stack MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: davidmu1
-manager: timlt
-editor: tysonn
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
-ms.author: davidmu
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1d74ead08dfb63276afb08bdcb7f4e3e3db5bfd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 2bd89bf25f619caef07ae099232add55dbe0cda7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a>Na virtuální počítač s Linuxem v Azure vytvořit zásobníku MongoDB, Express, AngularJS a Node.js (střední)
+# <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a>Vytvoření stacku MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure
 
-V tomto kurzu se dozvíte, jak implementovat zásobníku MongoDB, Express, AngularJS a Node.js (střední) na virtuální počítač s Linuxem v Azure. Střední zásobníku, který vytvoříte umožňuje přidávání, odstraňování a výpis knihy v databázi. Získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak implementovat stack MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure. Stack MEAN, který vytvoříte, umožňuje přidávání, odstraňování a výpis knih v databázi. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače s Linuxem
 > * Instalovat Node.js
-> * Nainstalujte MongoDB a nastavení serveru
-> * Expresní instalace a nastavení trasy k serveru
-> * Přístup k tras se AngularJS
+> * Instalace MongoDB a nastavení serveru
+> * Instalace Express a nastavení tras k serveru
+> * Přístup k trasám pomocí AngularJS
 > * Spuštění aplikace
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, tento kurz vyžaduje, že používáte Azure CLI verze verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 
 ## <a name="create-a-linux-vm"></a>Vytvoření virtuálního počítače s Linuxem
 
-Vytvořte skupinu prostředků s [vytvořit skupinu az](https://docs.microsoft.com/cli/azure/group#az_group_create) příkazů a vytvoření virtuálního počítače s Linuxem pomocí [vytvořit virtuální počítač az](https://docs.microsoft.com/cli/azure/vm#az_vm_create) příkaz. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) a pak vytvořte virtuální počítač s Linuxem pomocí příkazu [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Následující příklad používá rozhraní příkazového řádku Azure k vytvoření skupiny prostředků s názvem *myResourceGroupMEAN* v *eastus* umístění. Virtuální počítač je vytvořen s názvem *Můjvp* s klíči SSH, pokud už neexistují ve výchozím umístění klíče. Pokud chcete použít konkrétní sady klíčů, použijte možnost--ssh klíč hodnota.
+Následující příklad pomocí Azure CLI vytvoří skupinu prostředků *myResourceGroupMEAN* v umístění *eastus*. Vytvoří se virtuální počítač *myVM* s klíči SSH, pokud ještě neexistují ve výchozím umístění klíčů. Pokud chcete použít konkrétní sadu klíčů, použijte možnost --ssh-key-value.
 
 ```azurecli-interactive
 az group create --name myResourceGroupMEAN --location eastus
@@ -57,7 +57,7 @@ az vm create \
 az vm open-port --port 3300 --resource-group myResourceGroupMEAN --name myVM
 ```
 
-Po vytvoření virtuálního počítače Azure CLI uvádí informace podobně jako v následujícím příkladu: 
+Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu: 
 
 ```azurecli-interactive
 {
@@ -73,7 +73,7 @@ Po vytvoření virtuálního počítače Azure CLI uvádí informace podobně ja
 ```
 Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.
 
-Použijte následující příkaz k vytvoření relace SSH s virtuálním Počítačem. Nezapomeňte použít správné veřejnou IP adresu. V našem příkladu výše naše IP adresa byla 13.72.77.9.
+Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci SSH. Ujistěte se, že používáte správnou veřejnou IP adresu. V našem příkladu byla IP adresa 13.72.77.9.
 
 ```bash
 ssh azureuser@13.72.77.9
@@ -81,25 +81,25 @@ ssh azureuser@13.72.77.9
 
 ## <a name="install-nodejs"></a>Instalovat Node.js
 
-[Node.js](https://nodejs.org/en/) je prostředí JavaScript runtime, který je založený na JavaScript v8: modul pro Chrome. Node.js se používá v tomto kurzu nastavit Express trasy a AngularJS řadiče.
+[Node.js](https://nodejs.org/en/) je modul runtime JavaScriptu založený na modulu JavaScript V8 v Chrome. Node.js se v tomto kurzu používá k nastavení tras Express a kontrolerů AngularJS.
 
-Ve virtuálním počítači, pomocí prostředí bash, kterou jste otevřeli pomocí protokolu SSH nainstalujte si Node.js.
+Pomocí prostředí Bash, které jste otevřeli pomocí SSH, na virtuálním počítači nainstalujte Node.js.
 
 ```bash
 sudo apt-get install -y nodejs
 ```
 
-## <a name="install-mongodb-and-set-up-the-server"></a>Nainstalujte MongoDB a nastavení serveru
-[MongoDB](http://www.mongodb.com) ukládá data v dokumentech flexibilní, jako JSON. Pole v databázi se může lišit z dokumentu do dokumentu a struktura dat lze změnit v čase. Pro naše ukázková aplikace přidáváme kniha záznamy MongoDB, které obsahují název adresáře, číslo isbn, autora a počet stránek. 
+## <a name="install-mongodb-and-set-up-the-server"></a>Instalace MongoDB a nastavení serveru
+[MongoDB](http://www.mongodb.com) ukládá data ve flexibilních dokumentech podobných formátu JSON. Pole v databázi se můžou v jednotlivých dokumentech lišit a datová struktura se může v průběhu času měnit. V naší ukázkové aplikaci přidáváme do MongoDB záznamy o knihách, které obsahují název knihy, číslo ISBN, autora a počet stran. 
 
-1. Ve virtuálním počítači, pomocí prostředí bash, kterou jste otevřeli pomocí protokolu SSH nastavte klíč MongoDB.
+1. Pomocí prostředí Bash, které jste otevřeli pomocí SSH, na virtuálním počítači nastavte klíč MongoDB.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
     echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     ```
 
-2. Aktualizujte správce balíčků s klíčem.
+2. Aktualizujte klíč ve správci balíčků.
   
     ```bash
     sudo apt-get update
@@ -111,27 +111,27 @@ sudo apt-get install -y nodejs
     sudo apt-get install -y mongodb
     ```
 
-4. Spuštění serveru.
+4. Spusťte server.
 
     ```bash
     sudo service mongodb start
     ```
 
-5. Také je potřeba nainstalovat [textu analyzátor](https://www.npmjs.com/package/body-parser-json) balíček a pomoci tak zpracování JSON předané požadavky na server.
+5. Musíme nainstalovat také balíček [body-parser](https://www.npmjs.com/package/body-parser-json), který nám pomůže zpracovávat JSON předávaný v požadavcích na server.
 
-    Nainstalujte npm Správce balíčků.
+    Nainstalujte správce balíčků npm.
 
     ```bash
     sudo apt-get install npm
     ```
 
-    Nainstalujte balíček analyzátor textu.
+    Nainstalujte balíček body-parser.
     
     ```bash
     sudo npm install body-parser
     ```
 
-6. Vytvořte složku s názvem *knihy* a přidejte do ní s názvem souboru *server.js* obsahující konfigurace na webovém serveru.
+6. Vytvořte složku *Books* a přidejte do ní soubor *server.js*, který obsahuje konfiguraci webového serveru.
 
     ```node.js
     var express = require('express');
@@ -146,17 +146,17 @@ sudo apt-get install -y nodejs
     });
     ```
 
-## <a name="install-express-and-set-up-routes-to-the-server"></a>Expresní instalace a nastavení trasy k serveru
+## <a name="install-express-and-set-up-routes-to-the-server"></a>Instalace Express a nastavení tras k serveru
 
-[Express](https://expressjs.com) je minimalistické a flexibilní Node.js webové aplikace rozhraní, které poskytuje funkce pro webové a mobilní aplikace. Express se používá v tomto kurzu předat sešit informací na Internet a z našich databáze MongoDB. [Mongoose](http://mongoosejs.com) poskytuje jednoduché a na základě schématu řešení pro modelování data aplikací. Mongoose se používá v tomto kurzu poskytuje schéma adresáře pro databázi.
+[Express](https://expressjs.com) je minimální a flexibilní architektura webových aplikací Node.js, která poskytuje funkce pro webové a mobilní aplikace. Express se v tomto kurzu používá k předávání informací o knihách do a z naší databáze MongoDB. [Mongoose](http://mongoosejs.com) poskytuje jednoduché řešení modelování dat aplikací založené na schématu. Mongoose s v tomto kurzu používá k poskytování schématu knih pro databázi.
 
-1. Expresní instalace a Mongoose.
+1. Nainstalujte Express a Mongoose.
 
     ```bash
     sudo npm install express mongoose
     ```
 
-2. V *knihy* složky, vytvořte složku s názvem *aplikace* a přidejte do souboru s názvem *routes.js* s express trasy definované.
+2. Ve složce *Books* vytvořte složku *apps* a přidejte do ní soubor *routes.js* s definicemi tras Express.
 
     ```node.js
     var Book = require('./models/book');
@@ -198,7 +198,7 @@ sudo apt-get install -y nodejs
     };
     ```
 
-3. V *aplikace* složky, vytvořte složku s názvem *modely* a přidejte do souboru s názvem *book.js* pomocí modelu konfigurace adresáře definované.  
+3. Ve složce *apps* vytvořte složku *models* a přidejte do ní soubor *book.js* s definicí konfigurace modelu book.  
 
     ```node.js
     var mongoose = require('mongoose');
@@ -216,11 +216,11 @@ sudo apt-get install -y nodejs
     module.exports = mongoose.model('Book', bookSchema); 
     ```
 
-## <a name="access-the-routes-with-angularjs"></a>Přístup k tras se AngularJS
+## <a name="access-the-routes-with-angularjs"></a>Přístup k trasám pomocí AngularJS
 
-[AngularJS](https://angularjs.org) poskytuje webové rozhraní pro vytváření dynamického zobrazení v webových aplikací. V tomto kurzu používáme AngularJS připojit naše webové stránky s Express a provádět akce na databázi našich seznamu.
+[AngularJS](https://angularjs.org) poskytuje webovou architekturu pro vytváření dynamických zobrazení ve webových aplikacích. V tomto kurzu používáme AngularJS k propojení naší webové stránky s Express a provádění akcí s naší databází knih.
 
-1. Změna adresáře zpět do *knihy* (`cd ../..`) a pak vytvořte složku s názvem *veřejné* a přidejte do souboru s názvem *script.js* s konfigurací řadiče definované.
+1. Vraťte se do adresáře *Books* (`cd ../..`), vytvořte v něm složku *public* a přidejte do ní soubor *script.js* s definicí konfigurace kontroleru.
 
     ```node.js
     var app = angular.module('myApp', []);
@@ -262,7 +262,7 @@ sudo apt-get install -y nodejs
     });
     ```
     
-2. V *veřejné* složky, vytvořte soubor s názvem *index.html* s webovou stránkou definované.
+2. Ve složce *public* vytvořte soubor *index.html* s definicí webové stránky.
 
     ```html
     <!doctype html>
@@ -317,39 +317,39 @@ sudo apt-get install -y nodejs
 
 ##  <a name="run-the-application"></a>Spuštění aplikace
 
-1. Změna adresáře zpět do *knihy* (`cd ..`) a spustí se server tak, že spustíte tento příkaz:
+1. Vraťte se do adresáře *Books* (`cd ..`) a spuštěním následujícího příkazu spusťte server:
 
     ```bash
     nodejs server.js
     ```
 
-2. Otevřete webový prohlížeč na adrese, které jste si poznamenali pro virtuální počítač. Například *http://13.72.77.9:3300*. Měli byste vidět něco podobného jako na následující stránce:
+2. Otevřete webový prohlížeč na adrese, kterou jste si pro virtuální počítač poznamenali. Například *http://13.72.77.9:3300*. Zobrazená stránka by měla vypadat přibližně takto:
 
-    ![Záznam adresáře](media/tutorial-mean/meanstack-init.png)
+    ![Záznam o knize](media/tutorial-mean/meanstack-init.png)
 
-3. Zadejte data do textových polí a klikněte na tlačítko **přidat**. Například:
+3. Do textových polí zadejte data a klikněte na **Add** (Přidat). Příklad:
 
-    ![Přidejte záznam adresáře](media/tutorial-mean/meanstack-add.png)
+    ![Přidání záznamu o knize](media/tutorial-mean/meanstack-add.png)
 
-4. Po aktualizaci stránky, měli byste vidět něco podobného jako na této stránce:
+4. Po aktualizaci stránky by se měla zobrazit stránka podobná této:
 
-    ![Seznam záznamů adresáře](media/tutorial-mean/meanstack-list.png)
+    ![Výpis záznamů o knihách](media/tutorial-mean/meanstack-list.png)
 
-5. Uživatel může klepnout **odstranit** a odebrat záznam adresáře z databáze.
+5. Můžete kliknout na **Delete** (Odstranit) a odstranit záznam o knize z databáze.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili webovou aplikaci, která uchovává informace o seznamu záznamů pomocí střední hodnotu zásobníku na virtuální počítač s Linuxem. Naučili jste se tyto postupy:
+V tomto kurzu jste pomocí stacku MEAN na virtuálním počítači s Linuxem vytvořili webovou aplikaci, která uchovává záznamy o knihách. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače s Linuxem
 > * Instalovat Node.js
-> * Nainstalujte MongoDB a nastavení serveru
-> * Expresní instalace a nastavení trasy k serveru
-> * Přístup k tras se AngularJS
+> * Instalace MongoDB a nastavení serveru
+> * Instalace Express a nastavení tras k serveru
+> * Přístup k trasám pomocí AngularJS
 > * Spuštění aplikace
 
-Přechodu na v dalším kurzu se dozvíte, jak zabezpečit webové servery s certifikáty protokolu SSL.
+V dalším kurzu se dozvíte, jak zabezpečit webové servery pomocí certifikátů SSL.
 
 > [!div class="nextstepaction"]
-> [Zabezpečení webového serveru pomocí protokolu SSL](tutorial-secure-web-server.md)
+> [Zabezpečení webového serveru pomocí SSL](tutorial-secure-web-server.md)

@@ -1,6 +1,6 @@
 ---
-title: "Kurz ke službě Azure Cosmos DB: Vytváření, zadávání dotazů a procházení v konzole Apache TinkerPops Gremlin | Dokumentace Microsoftu"
-description: "Rychlý start ke službě Azure Cosmos DB vám pomůže s vytvářením vrcholů, okrajů a dotazů pomocí rozhraní Graph API služby Azure Cosmos DB."
+title: 'Kurz ke službě Azure Cosmos DB: Vytváření, zadávání dotazů a procházení v konzole Apache TinkerPops Gremlin | Dokumentace Microsoftu'
+description: Rychlý start ke službě Azure Cosmos DB vám pomůže s vytvářením vrcholů, okrajů a dotazů pomocí rozhraní Graph API služby Azure Cosmos DB.
 services: cosmos-db
 author: luisbosquez
 manager: jhubbard
@@ -13,17 +13,17 @@ ms.devlang: terminal
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 2729ad97b49e7284022adae06c5b5f006647849c
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 3f0ec59ccee61fd0dbb7587a9d2ec3e17b1cf873
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Služba Azure Cosmos DB: Vytváření, zadávání dotazů a procházení grafu v konzole Gremlin
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
 
-Tento rychlý start popisuje způsob vytvoření účtu služby Azure Cosmos DB, databáze a grafu (kontejneru) pomocí webu Azure Portal a následné použití v [konzole Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z [webu Apache TinkerPop](http://tinkerpop.apache.org) pro práci s daty rozhraní Graph API. V tomto kurzu se naučíte vytvářet vrcholy a okraje a zadávat k nim dotazy, a to aktualizací vlastnosti vrcholu, a dále zadávat dotazy pro vrcholy, procházet graf a vyřadit konkrétní vrchol.
+Tento rychlý start popisuje způsob vytvoření účtu rozhraní [Graph API](graph-introduction.md) služby Azure Cosmos DB, databáze a grafu (kontejneru) pomocí webu Azure Portal a následné použití [konzoly Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z webu [Apache TinkerPop](http://tinkerpop.apache.org) pro práci s daty rozhraní Graph API. V tomto kurzu se naučíte vytvářet vrcholy a okraje a zadávat k nim dotazy, a to aktualizací vlastnosti vrcholu, a dále zadávat dotazy pro vrcholy, procházet graf a vyřadit konkrétní vrchol.
 
 ![Služba Azure Cosmos DB z konzoly Apache Gremlin](./media/create-graph-gremlin-console/gremlin-console.png)
 

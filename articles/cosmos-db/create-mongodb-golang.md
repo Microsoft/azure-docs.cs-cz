@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: Sestavení aplikace konzoly v jazyce Go s rozhraním API MongoDB na webu Azure Portal | Dokumentace Microsoftu"
-description: "Obsahuje vzorový kód v jazyce Go, který můžete použít pro připojení ke službě Azure Cosmos DB a zadávání dotazů."
+title: 'Azure Cosmos DB: Sestavení aplikace konzoly v jazyce Go s rozhraním API MongoDB na webu Azure Portal | Dokumentace Microsoftu'
+description: Obsahuje vzorový kód v jazyce Go, který můžete použít pro připojení ke službě Azure Cosmos DB a zadávání dotazů.
 services: cosmos-db
 author: Durgaprasad-Budhwani
 manager: jhubbard
@@ -10,17 +10,17 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 29a47646074819492e2c5179276a0c4de7f0d2d9
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 49bf6aed5a8daa482be9d22ecd97b6ab43cae5fe
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Sestavení aplikace konzoly v jazyce Go s rozhraním API MongoDB na webu Azure Portal
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB.
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos.
 
-Tento rychlý start popisuje způsob použití stávající aplikace [MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) napsané v jazyce [Go](https://golang.org/) a připojení k databázi Azure Cosmos DB, která podporuje připojení klienta MongoDB.
+Tento rychlý start popisuje způsob použití stávající aplikace MongoDB napsané v jazyce [Go](https://golang.org/) a její připojení k databázi Azure Cosmos DB, která podporuje klientská připojení MongoDB pomocí rozhraní [MongoDB API](mongodb-introduction.md).
 
 Jinými slovy: aplikace v jazyce Go ví pouze to, že se připojuje k databázi pomocí rozhraní API MongoDB. V aplikaci se transparentně zobrazuje, že data jsou uložena ve službě Azure Cosmos DB.
 
@@ -229,7 +229,7 @@ Vraťte se na web Azure Portal a zobrazte dokument v Průzkumníku dat.
     
 2. S dokumentem pak můžete přímo pracovat a kliknutím na **Aktualizovat** ho uložit. Můžete také odstranit dokument nebo vytvořit nové dokumenty nebo dotazy.
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
+## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -242,7 +242,7 @@ Pokud nebudete tuto aplikace nadále používat, odstraňte na základě násled
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure Cosmos DB a spuštění aplikace v jazyce Go pomocí rozhraní API pro MongoDB. Teď můžete do účtu databáze Cosmos importovat další data. 
+V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure Cosmos DB a spuštění aplikace v jazyce Go pomocí rozhraní API pro MongoDB. Teď můžete do účtu Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
 > [Import dat do databáze Azure Cosmos pro rozhraní API MongoDB](mongodb-migrate.md)

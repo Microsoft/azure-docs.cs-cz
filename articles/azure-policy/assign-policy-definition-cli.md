@@ -9,11 +9,11 @@ ms.date: 03/13/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: f56f00aabbef2cfa86264d3e962af9a9c0bafa98
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1ff1240073e25bf406e7da6b79135264376a5b3f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure pomocí Azure CLI
 
@@ -46,7 +46,7 @@ Předchozí příkaz používá následující informace:
 - **Name** – Zobrazovaný název přiřazení zásady. V tomto případě používáte přiřazení *Audit virtuálních počítačů bez spravovaných disků*.
 - **Policy** – ID definice zásady, kterou používáte k vytvoření tohoto přiřazení. V tomto případě je to definice zásady *Audit virtuálních počítačů bez spravovaných disků*. ID definice zásady získáte spuštěním příkazu `az policy definition show --name 'Audit Virtual Machines without Managed Disks Assignment'`.
 - **Scope** – Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat. Může sahat od předplatného až po skupinu prostředků. Nezapomeňte nahradit &lt;scope&gt; názvem vaší skupiny prostředků.
-- **Sku** – Tento příkaz vytvoří přiřazení zásady s úrovní Standard. Úroveň Standard vám umožní dosáhnout správy, vyhodnocování dodržování předpisů a odstraňování problémů ve velkém měřítku. V současné době je úroveň Standard bezplatná. V budoucnu se za úroveň Standard budou účtovat náklady. Až dojde ke změně cen, oznámení a další podrobnosti najdete v tématu [Ceny služby Azure Policy](https://azure.microsoft.com/pricing/details/azure-policy).
+- **Sku** – Tento příkaz vytvoří přiřazení zásady s úrovní Standard. Úroveň Standard vám umožní dosáhnout správy, vyhodnocování dodržování předpisů a odstraňování problémů ve velkém měřítku. Další podrobnosti o cenových úrovních najdete v tématu [Ceny služby Azure Policy](https://azure.microsoft.com/pricing/details/azure-policy).
 
 
 ## <a name="identify-non-compliant-resources"></a>Identifikace prostředků, které nedodržují předpisy

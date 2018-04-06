@@ -1,11 +1,12 @@
 ---
-title: "Nejčastější dotazy ke službě Azure Machine Learning | Dokumentace Microsoftu"
-description: "Představení služby Azure Machine Learning: časté otázky k fakturaci, schopnostem a omezením cloudové služby pro efektivní prediktivní modelování"
-keywords: "úvod ke strojovému učení, prediktivní modelování, co je strojové učení"
+title: Nejčastější dotazy ke službě Azure Machine Learning | Dokumentace Microsoftu
+description: 'Představení služby Azure Machine Learning: časté otázky k fakturaci, schopnostem a omezením cloudové služby pro efektivní prediktivní modelování'
+keywords: úvod ke strojovému učení, prediktivní modelování, co je strojové učení
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: paulettm
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.author: garye
-ms.openlocfilehash: b162d7534eff0d1f79808fc86bacf92dbfc2f84a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: ceec69ee822e118adfa3825620a31575109894ea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Nejčastější dotazy ke službě Azure Machine Learning: fakturace, možnosti, omezení a podpora
 Zde jsou některé nejčastější dotazy (a příslušné odpovědi) týkající se cloudové služby Azure Machine Learning, která slouží k vývoji prediktivních modelů a zprovozňování řešení prostřednictvím webových služeb. Najdete tu dotazy ke způsobu používání této služby, včetně modelu fakturace, možností, omezení a podpory.
@@ -548,7 +548,7 @@ Služba Machine Learning je víceklientská. Skutečné výpočetní prostředky
 ### <a name="guest-access"></a>Přístup hosta
 **Co je přístup hosta ke službě Azure Machine Learning Studio?**
 
-Přístup hosta je omezený zkušební přístup. Umožňuje vytvářet a spouštět experimenty v Azure Machine Learning Studiu zdarma a bez ověřování. Relace hosta jsou dočasné (nejdou ukládat) a omezené na 8 hodin. Mezi další omezení patří chybějící podpora jazyků R a Python, chybějící rozhraní API přípravného prostředí a omezená velikost datové sady a úložiště. Naproti tomu uživatelé, kteří se přihlásí pomocí účtu Microsoft, získají v Machine Learning Studiu plný přístup k úrovni Free, která je popsaná výše a která zahrnuje stálý pracovní prostor a pokročilejší možnosti. Je na vás, jak službu Machine Learning bezplatně vyzkoušíte. Na webu [https://studio.azureml.net](https://studio.azureml.net) klikněte na **Začínáme** a vyberte **přístup hosta** nebo se přihlaste pomocí účtu Microsoft.
+Přístup hosta je omezený zkušební přístup. Umožňuje vytvářet a spouštět experimenty v Azure Machine Learning Studiu zdarma a bez ověřování. Relace hosta jsou dočasné (nejdou ukládat) a omezené na 8 hodin. Mezi další omezení patří chybějící podpora jazyků R a Python, chybějící rozhraní API přípravného prostředí a omezená velikost datové sady a úložiště. Naproti tomu uživatelé, kteří se přihlásí pomocí účtu Microsoft, získají v Machine Learning Studiu plný přístup k úrovni Free, která je popsaná výše a která zahrnuje stálý pracovní prostor a pokročilejší možnosti. Je na vás, jak službu Machine Learning bezplatně vyzkoušíte. Na webu [https://studio.azureml.net](https://studio.azureml.net) klikněte na **Začínáme** a vyberte **Přístup hosta** nebo se přihlaste pomocí účtu Microsoft.
 
 <!-- Module References -->
 [image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e7dab67b46a2853e9585c88c8e4d4263f844c3b2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 487ffffca445fb3f98dcaa6550b0b1b74290b803
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI
 
@@ -91,7 +91,7 @@ exit
 
 ## <a name="understand-vm-images"></a>Vysvětlení imagí virtuálních počítačů
 
-Azure Marketplace obsahuje celou řadu imagí, které jde využít k vytváření virtuálních počítačů. V předchozích krocích jsme vytvořili virtuální počítač pomocí image Ubuntu. V tomto kroku pomocí Azure CLI vyhledáme na webu Marketplace image CentOS, kterou pak použijeme k nasazení druhého virtuálního počítače.  
+Azure Marketplace obsahuje celou řadu imagí, které jde využít k vytváření virtuálních počítačů. V předchozích krocích jsme vytvořili virtuální počítač pomocí image Ubuntu. V tomto kroku pomocí Azure CLI vyhledáme na webu Marketplace image CentOS, kterou pak použijeme k nasazení druhého virtuálního počítače. 
 
 Pokud chcete zobrazit seznam nejčastěji používaných imagí, použijte příkaz [az vm image list](/cli/azure/vm/image#az_vm_image_list).
 
@@ -136,7 +136,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20160309     
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207       6.5.20170207
 ```
 
-Pokud chcete nasadit virtuální počítače pomocí konkrétní image, poznamenejte si hodnotu ve sloupci *Urn*. Při zadávání image můžete její číslo verze nahradit klíčovým slovem latest. To zajistí, aby se vybrala nejnovější verze dané distribuce. V tomto příkladu pomocí argumentu `--image` určíme nejnovější verzi image CentOS 6.5.  
+Pokud chcete nasadit virtuální počítač s použitím konkrétní image, poznamenejte si hodnotu ve sloupci *Urn*, která se skládá z vydavatele, nabídky, skladové položky a volitelně čísla verze pro [identifikaci](cli-ps-findimage.md#terminology) image. Při zadávání image můžete její číslo verze nahradit klíčovým slovem latest. To zajistí, aby se vybrala nejnovější verze dané distribuce. V tomto příkladu pomocí argumentu `--image` určíme nejnovější verzi image CentOS 6.5.  
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
@@ -259,7 +259,7 @@ Virtuální počítač Azure může mít jeden z mnoha stavů napájení. Tento 
 
 ### <a name="find-power-state"></a>Zjištění stavu napájení
 
-Pokud chcete zjistit stav konkrétního virtuálního počítače, použijte příkaz [az vm get instance-view](/cli/azure/vm#az_vm_get_instance_view). Nezapomeňte zadat platný název virtuálního počítače a skupiny prostředků. 
+Pokud chcete zjistit stav konkrétního virtuálního počítače, použijte příkaz [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view). Nezapomeňte zadat platný název virtuálního počítače a skupiny prostředků. 
 
 ```azurecli-interactive 
 az vm get-instance-view \

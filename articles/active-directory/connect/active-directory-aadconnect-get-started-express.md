@@ -1,8 +1,7 @@
 ---
-title: 'Azure AD Connect: Začínáme s použitím expresního nastavení | Microsoft Docs'
+title: 'Azure AD Connect: Začínáme s použitím expresního nastavení | Dokumentace Microsoftu'
 description: Přečtěte si, jak stáhnout, nainstalovat a spustit Průvodce instalací pro Azure AD Connect.
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -12,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/21/2018
+ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: 46fc01bfd7fada529ff1416e8ad46d2ea34792bd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 024736ed76e9b268e85db3ecc62b853d6c276fbf
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Začínáme se službou Azure AD Connect s použitím expresního nastavení
-**Expresní nastavení** Azure AD Connect se používá, pokud máte jednoduchou doménovou strukturu a [synchronizaci hesel](active-directory-aadconnectsync-implement-password-synchronization.md) pro ověřování. **Expresní nastavení** je výchozí možnost a používá se u scénáře, který je nasazován nejčastěji. Stačí jen několik kliknutí a budete moci svůj místní adresář rozšířit do cloudu.
+**Expresní nastavení** Azure AD Connect se používá, pokud máte jednoduchou doménovou strukturu a [synchronizaci hodnot hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md) pro ověřování. **Expresní nastavení** je výchozí možnost a používá se u scénáře, který je nasazován nejčastěji. Stačí jen několik kliknutí a budete moci svůj místní adresář rozšířit do cloudu.
 
 Před zahájením instalace služby Azure AD Connect nezapomeňte [stáhnout službu Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771) a dokončit nezbytné kroky uvedené v tématu [Azure AD Connect: Hardware a nezbytné předpoklady](active-directory-aadconnect-prerequisites.md).
 

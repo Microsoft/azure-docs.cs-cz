@@ -1,31 +1,31 @@
 ---
-title: "Azure Cosmos DB: Sestavení webové aplikace Flask pomocí jazyka Python a rozhraní API MongoDB | Microsoft Docs"
-description: "Představuje ukázku kódu Python Flask, kterou můžete použít k připojení a dotazování do rozhraní API MongoDB služby Azure Cosmos DB."
+title: 'Azure Cosmos DB: Sestavení webové aplikace Flask pomocí jazyka Python a rozhraní API MongoDB | Microsoft Docs'
+description: Představuje ukázku kódu Python Flask, kterou můžete použít k připojení a dotazování do rozhraní API MongoDB služby Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: hshapiro
 manager: scicoria
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
-ms.openlocfilehash: e4d90e69edb67cf070bb54b9d60a986eb5d0e386
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: ea6920c179bfee22c0aa545ccc3d0386940205e4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: Sestavení aplikace Flask pomocí rozhraní API MongoDB
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos.
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos.
 
-Tato úvodní příručka používá následující [příklad Flask](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) a ukazuje, jak vytvořit jednoduchou aplikaci seznamu úkolů Flask pomocí [emulátoru Azure Cosmos DB](/local-emulator.md) místo MongoDB.
+Tato úvodní příručka používá následující [příklad Flask](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) a ukazuje, jak vytvořit jednoduchou aplikaci seznamu úkolů Flask pomocí [emulátoru služby Azure Cosmos DB](/local-emulator.md) a rozhraní [MongoDB API](mongodb-introduction.md) služby Azure Cosmos DB místo MongoDB.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -116,7 +116,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 ## <a name="deploy-to-azure"></a>Nasazení do Azure
 
-Pokud chcete tuto aplikaci nasadit, můžete v Azure vytvořit novou webovou aplikaci a povolit průběžné nasazování ve forku tohoto úložiště GitHub. Postup nastavení průběžného nasazování pomocí GitHubu v Azure najdete v tomto [kurzu](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-continuous-deployment).
+Pokud chcete tuto aplikaci nasadit, můžete v Azure vytvořit novou webovou aplikaci a povolit průběžné nasazování ve forku tohoto úložiště GitHub. Postup nastavení průběžného nasazování pomocí GitHubu v Azure najdete v tomto [kurzu](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment).
 
 Při nasazování do Azure je potřeba odebrat klíče aplikace a ujistit se, následující část není označená jako komentář:
 
@@ -126,7 +126,7 @@ Při nasazování do Azure je potřeba odebrat klíče aplikace a ujistit se, n�
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-Potom musíte přidat do nastavení aplikace vaše položky MONGOURL, MONGO_PASSWORD a MONGO_USERNAME. V tomto [kurzu](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-configure#application-settings) se dozvíte další informace o nastavení aplikace ve službě Azure Web Apps.
+Potom musíte přidat do nastavení aplikace vaše položky MONGOURL, MONGO_PASSWORD a MONGO_USERNAME. V tomto [kurzu](https://docs.microsoft.com/azure/app-service-web/web-sites-configure#application-settings) se dozvíte další informace o nastavení aplikace ve službě Azure Web Apps.
 
 Pokud nechcete vytvořit fork tohoto úložiště, můžete také kliknout na níže uvedené tlačítko Nasazení do Azure. Pak byste měli přejít do Azure a upravit nastavení aplikace pomocí údajů o vašem účtu služby Cosmos DB.
 
@@ -137,7 +137,7 @@ Pokud nechcete vytvořit fork tohoto úložiště, můžete také kliknout na n�
 > [!NOTE]
 > Pokud máte v plánu uložit svůj kód na GitHub nebo chcete použít jiné možnosti správy zdrojového kódu, nezapomeňte z kódu odebrat připojovací řetězce. Ty je možné místo toho nastavit pomocí nastavení dané webové aplikace.
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
+## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 

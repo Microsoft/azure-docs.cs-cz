@@ -1,8 +1,8 @@
 ---
-title: "Začínáme s Data Lake Storem pomocí webu Azure Portal | Dokumentace Microsoftu"
-description: "Jak používat Azure Portal k vytvoření účtu Data Lake Store a provádění základních operací v Data Lake Storu"
+title: Začínáme s Data Lake Storem pomocí webu Azure Portal | Dokumentace Microsoftu
+description: Jak používat Azure Portal k vytvoření účtu Data Lake Store a provádění základních operací v Data Lake Storu
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: c5b0f5250a08915e987a1eb5229f2c4648e660fd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 91ed55e5f12c10e67653bdadfca80bd072779711
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Začínáme s Azure Data Lake Store pomocí webu Azure Portal
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
 ## <a name="create-an-azure-data-lake-store-account"></a>Vytvoření účtu Azure Data Lake Store
 
 1. Přihlaste se k novému webu [Azure Portal](https://portal.azure.com).
-2. Klikněte na **Vytvořit prostředek**, pak na **Data a úložiště** a pak klikněte na **Azure Data Lake Store**. Přečtěte si informace v okně **Azure Data Lake Store** a potom klikněte v levém dolním rohu okna na tlačítko **Vytvořit**.
+2. Klikněte na **Vytvořit prostředek > Úložiště > Data Lake Store**.
 3. V okně **Nová služba Data Lake Store** zadejte hodnoty tak, jak ukazuje následující snímek obrazovky:
    
     ![Vytvoření nového účtu Azure Data Lake Store](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Vytvoření nového účtu Azure Data Lake Store")
@@ -50,7 +50,7 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
    * **Nastavení šifrování**. Existují tři možnosti:
      
      * **Nepovolovat šifrování**.
-     * **Používat klíče spravované službou Azure Data Lake**.  Vyberte tuto možnost, pokud chcete, aby služba Azure Data Lake Store spravovala vaše šifrovací klíče.
+     * **Používat klíče spravované službou Data Lake Store**.  Vyberte tuto možnost, pokud chcete, aby služba Azure Data Lake Store spravovala vaše šifrovací klíče.
      * **Použít klíče z vašeho vlastního trezoru klíčů**. Můžete vybrat existující službu Azure Key Vault nebo vytvořit novou. Pokud chcete používat klíče ze služby Key Vault, musíte účtu Azure Data Lake Store přiřadit oprávnění pro přístup ke službě Azure Key Vault. Pokyny najdete v části [Přiřazení oprávnění pro Azure Key Vault](#assign-permissions-to-azure-key-vault).
        
         ![Šifrování Data Lake Storu](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Šifrování Data Lake Storu")
@@ -61,7 +61,7 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
 
 4. Klikněte na možnost **Vytvořit**. Pokud jste se rozhodli připnout účet na řídicí panel, vrátíte se na řídicí panel, kde uvidíte průběh zřizování účtu Data Lake Store. Po zřízení účtu Data Lake Store se zobrazí okno účtu.
 
-### <a name="assign-permissions-to-azure-key-vault"></a>Přiřazení oprávnění pro Azure Key Vault
+## <a name="assign-permissions-to-azure-key-vault"></a>Přiřazení oprávnění pro Azure Key Vault
 Pokud jste ke konfiguraci šifrování pro účet Data Lake Store použili klíče z Azure Key Vaultu, musíte nakonfigurovat přístup mezi účtem Data Lake Store a účtem Azure Key Vault. To uděláte podle následujících kroků.
 
 1. Pokud jste použili klíče z Azure Key Vaultu, v okně účtu Data Lake Store se nahoře zobrazí upozornění. Kliknutím na upozornění otevřete **Šifrování**.
@@ -87,7 +87,7 @@ Pokud jste ke konfiguraci šifrování pro účet Data Lake Store použili klí�
 ## <a name="createfolder"></a>Vytváření složek v účtu služby Azure Data Lake Store
 V rámci účtu Data Lake Store můžete vytvářet složky, které slouží ke správě a ukládání dat.
 
-1. Otevřete účet Data Lake Store, který jste vytvořili. V levém podokně klikněte na možnost **Procházet**, klikněte na možnost **Data Lake Store** a potom v okně Data Lake Store klikněte na název účtu, ve kterém chcete vytvořit složky. Pokud jste účet připnuli na úvodní panel, klikněte na dlaždici tohoto účtu.
+1. Otevřete účet Data Lake Store, který jste vytvořili. V levém podokně klikněte na **Všechny prostředky** a pak v okně Všechny prostředky klikněte na název účtu, ve kterém chcete vytvořit složky. Pokud jste účet připnuli na úvodní panel, klikněte na dlaždici tohoto účtu.
 2. V okně účtu Data Lake Store klikněte na možnost **Průzkumník dat**.
    
     ![Vytváření složek v účtu Data Lake Store](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Vytváření složek v účtu Data Lake Store")

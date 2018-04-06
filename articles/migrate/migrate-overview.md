@@ -1,21 +1,21 @@
 ---
-title: "Informace o službě Azure Migrate | Dokumentace Microsoftu"
-description: "Obsahuje přehled služby Azure Migrate."
+title: Informace o službě Azure Migrate | Dokumentace Microsoftu
+description: Obsahuje přehled služby Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 02/26/2018
+ms.date: 03/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 45eac1d1ecb173ba0a62ab13f47b7ee6e12f7af3
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 857dab5474cba24445daf7d139ae49d923038196
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
-Služba Azure Migrate posuzuje místní úlohy pro migraci do Azure. Služba posuzuje vhodnost místních počítačů k migraci do Azure a velikost na základě výkonu a poskytuje odhad nákladů na provoz místních počítačů v Azure. Pokud zvažujete migrace metodou „lift and shift“ nebo se nacházíte v počátečních fázích posuzování migrace, tato služba je určená přímo pro vás. Po posouzení můžete počítače migrovat do Azure pomocí služeb, jako jsou [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview).
+Služba Azure Migrate posuzuje místní úlohy pro migraci do Azure. Služba posuzuje vhodnost místních počítačů k migraci a velikost na základě výkonu a poskytuje odhad nákladů na provoz místních počítačů v Azure. Pokud zvažujete migrace metodou „lift and shift“ nebo se nacházíte v počátečních fázích posuzování migrace, tato služba je určená přímo pro vás. Po posouzení můžete počítače migrovat do Azure pomocí služeb, jako jsou [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview).
 
 ## <a name="why-use-azure-migrate"></a>Proč používat službu Azure Migrate?
 
@@ -28,14 +28,12 @@ Azure Migrate vám pomůže s následujícími úlohami:
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-- Aktuálně můžete posuzovat vhodnost k migraci na virtuální počítače Azure pouze u místních virtuálních počítačů VMware. Virtuální počítače VMware musí být spravované systémem vCenter Server (verze 5.5, 6.0 nebo 6.5).
-
-> [!NOTE]
-> Podpora Hyper-V se plánuje a bude brzy povolená. Prozatím doporučujeme k plánování migrace úloh Hyper-V použít [Plánovač nasazení služby Azure Site Recovery](http://aka.ms/asr-dp-hyperv-doc). 
-
+- Aktuálně můžete posuzovat vhodnost k migraci na virtuální počítače Azure pouze u místních virtuálních počítačů VMware. Virtuální počítače VMware musí být spravované přes vCenter Server (verze 5.5, 6.0 nebo 6.5).
+- Podpora Hyper-V se plánuje. Prozatím doporučujeme k plánování migrace úloh Hyper-V použít [Plánovač nasazení služby Azure Site Recovery](http://aka.ms/asr-dp-hyperv-doc). 
 - Je možné vyhledat až 1 000 virtuálních počítačů v rámci jednoho zjišťování a až 1 500 virtuálních počítačů v jednom projektu. Kromě toho můžete v rámci jednoho interního hodnocení vyhodnotit až 400 virtuálních počítačů. Pokud jich potřebuje vyhledat nebo posoudit víc, můžete zvýšit počet zjišťování nebo hodnocení. [Další informace](how-to-scale-assessment.md).
 - Projekt Azure Migrate můžete vytvořit pouze v oblasti Západní USA – střed nebo USA – východ. To však nemá vliv na možnost plánování migrace pro jiné cílové umístění Azure. Umístění projektu migrace slouží pouze k uložení metadat zjištěných v místním prostředí.
 - Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
+
 
 ## <a name="what-do-i-need-to-pay-for"></a>Za co musím platit?
 

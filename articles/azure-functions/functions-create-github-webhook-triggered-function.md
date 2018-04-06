@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření funkce aktivované webhookem GitHubu v Azure | Dokumentace Microsoftu"
-description: "Pomocí služby Azure Functions vytvoříte funkci bez serveru, která je vyvolána webhookem GitHubu."
+title: Vytvoření funkce aktivované webhookem GitHubu v Azure | Dokumentace Microsoftu
+description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, která je vyvolána webhookem GitHubu.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 36ef34b8-3729-4940-86d2-cb8e176fcc06
 ms.service: functions
 ms.devlang: multiple
@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 98632c3276e7d9cccf29d05b903c2fac62a7d68e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: cd446c64b8e7627db1c76d652ea1ab6f496eee65
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>Vytvoření funkce aktivované webhookem GitHubu
 
@@ -69,11 +69,15 @@ Dále vytvoříte webhook ve vašem úložišti GitHub.
 
 1. V GitHubu přejděte do úložiště, které vlastníte. Můžete také použít libovolné úložiště, které máte rozvětvené. Pokud potřebujete vytvořit fork úložiště, použijte <https://github.com/Azure-Samples/functions-quickstart>.
 
-1. Klikněte na **Settings** (Nastavení), pak na **Webhooks** (Webhooky) a **Add webhook** (Přidat webhook).
+2. Zvolte **Nastavení** > **Možnosti** a ujistěte se, že je povolená možnost **Problémy** v části **Funkce**.
+
+   ![Povolení možnosti Problémy](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook.png)
+
+1. V **Nastavení** zvolte **Webhooky** > **Přidat webhook**.
 
     ![Přidání webhooku GitHubu](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-2.png)
 
-1. Použijte nastavení uvedené v tabulce a potom klikněte na **Přidat webhook**.
+1. Použijte nastavení uvedené v následující tabulce a pak klikněte na **Přidat webhook**.
 
     ![Nastavení adresy URL a tajného klíče webhooku](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-3.png)
 

@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/03/2018
 ms.author: bonova
-ms.openlocfilehash: 2d07d58114a4d89f40a4ea9e388c58f58494766c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ffe25e911273b93f1c16224d30fea5c920425f03
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Instance spravované (preview)?
 
@@ -69,6 +69,23 @@ Následující tabulka uvádí několik vlastností, přístupný prostřednictv
 
 ![Jednotné přihlašování](./media/sql-database-managed-instance/sso.png) 
 
+## <a name="vcore-based-purchasing-model"></a>na základě vCore nákupní model
+
+Na základě vCore nákupní model poskytuje flexibilitu, řízení, průhlednost a snadný způsob, jak převede místní požadavků na zatížení do cloudu. Tento model umožňuje škálování výpočetní kapacity, paměť a úložiště podle jejich potřeb pracovního vytížení. Je také vhodné pro až na 30 procent úspor s modelem vCore [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+
+Virtuální základní představuje logický procesor nabízí s možností si vybrat mezi generací hardwaru.
+- Gen 4 logické procesory jsou založené na Intel E5-2673 v3 (Haswell) 2,4 GHz procesory.
+- Gen 5 logické procesory jsou založené na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesory.
+
+Následující tabulka vám pomůže pochopit postup výběru optimální konfigurace výpočtů, paměť, úložiště a vstupně-výstupních prostředků.
+
+||Gen 4|Gen 5|
+|----|------|-----|
+|Hardware|Intel E5-2673 v3 (Haswell) 2,4 GHz procesory připojené SSD vCore = 1 PP (fyzických jader)|Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorů, rychlé eNVM SSD, vCore = 1 lineárního programování ÚLOH (hyper vláken)|
+|Úrovně výkonu|8, 16, 24 vCores|8, 16, 24, 32, 40 vCores|
+|Memory (Paměť)|7GB za vCore|Verzi 5.5GB za vCore|
+||||
+
 ## <a name="managed-instance-service-tier"></a>Spravované Instance vrstvy služby
 
 Spravované Instance je k dispozici zatím v vrstvu služby jednotného - obecné účely – je určené pro aplikace s typické dostupnosti a běžné požadavky na latenci vstupně-výstupní operace.
@@ -89,11 +106,11 @@ Následující část popisuje klíčové funkce vrstvy služby s obecné účel
 
 |Funkce | Popis|
 |---|---|
-| Počet vCores * | 8, 16, 24|
+| Počet vCores * | 8, 16, 24 (fin 4)<br>8, 16, 24, 32, 40 (Gen5)|
 | Verze systému SQL Server / sestavení | SQL Server nejnovější (k dispozici) |
 | Minimální velikost úložiště | 32 GB |
 | Maximální velikost úložiště | 8 TB |
-| Maximální počet úložiště na databázi | 4 TB |
+| Maximální počet úložiště na databázi | 8 TB |
 | Očekávaný úložiště IOPS | 500-7500 IOPS na datový soubor (závisí na datový soubor). V tématu [Storage úrovně Premium](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) |
 | Počet datových souborů (řádky) na databázi | Několik | 
 | Počet souborů protokolu (protokol) na databázi | 1 | 
@@ -106,7 +123,7 @@ Následující část popisuje klíčové funkce vrstvy služby s obecné účel
 | Podpora portálu | Ano|
 |||
 
-\* Virtuální základní představuje logický procesor nabízí s možností si vybrat mezi generací hardwaru. Gen 4 logické procesory jsou založené na Intel E5-2673 v3 (Haswell) procesorů 2,4 GHz a logických procesorů 5 generace jsou založené na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesory.  
+\* Virtuální základní představuje logický procesor nabízí s možností si vybrat mezi generací hardwaru. Gen 4 logické procesory jsou založené na Intel E5-2673 v3 (Haswell) procesorů 2,4 GHz a logických procesorů 5 generace jsou založené na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesory. 
 
 ## <a name="advanced-security-and-compliance"></a>Pokročilé zabezpečení a dodržování předpisů 
 
@@ -152,7 +169,7 @@ SQL Database umožňuje centrálně spravovat identity uživatele databáze a da
 Ověřování databáze SQL se odkazuje na tom, jak uživatelé prokázání své identity při připojování k databázi. SQL Database podporuje dva typy ověřování:  
 
 - Ověřování SQL, který používá uživatelské jméno a heslo.
-- Azure Active Directory, ověřování, která používá identity spravované službou Azure Active Directory a je podporována pro spravované a integrované domén.  
+- Azure Active Directory, ověřování, která používá identity spravované službou Azure Active Directory a je podporována pro spravované a integrované domén. 
 
 ### <a name="authorization"></a>Autorizace
 
@@ -160,11 +177,11 @@ Autorizace odkazuje uživatele, můžete provést v rámci Azure SQL Database a 
 
 ## <a name="database-migration"></a>Migrace databáze 
 
-Spravovat instanci cíle uživatelské scénáře s velkokapacitního databáze migrace z místní nebo implementace databáze IaaS.  Spravované Instance podporuje několik možností migrace databáze: 
+Spravovat instanci cíle uživatelské scénáře s velkokapacitního databáze migrace z místní nebo implementace databáze IaaS. Spravované Instance podporuje několik možností migrace databáze: 
 
 ### <a name="data-migration-service"></a>Služba migrace dat
 
-Služba Azure databáze migrace je plně spravovaná služba navržených k povolení bezproblémové migrace z více zdrojů databáze do platformy Azure dat s minimálními výpadky.   Tato služba zjednodušuje úkoly vyžadované pro přesun existujících třetích stran a databáze SQL serveru do Azure. Možnosti nasazení zahrnout do virtuálního počítače Azure ve verzi Public Preview služby Azure SQL Database, spravované Instance a SQL Server. V tématu [jak migrovat místní databázi k instanci spravované pomocí DMS](https://aka.ms/migratetoMIusingDMS).  
+Služba Azure databáze migrace je plně spravovaná služba navržených k povolení bezproblémové migrace z více zdrojů databáze do platformy Azure dat s minimálními výpadky. Tato služba zjednodušuje úkoly vyžadované pro přesun existujících třetích stran a databáze SQL serveru do Azure. Možnosti nasazení zahrnout do virtuálního počítače Azure ve verzi Public Preview služby Azure SQL Database, spravované Instance a SQL Server. V tématu [jak migrovat místní databázi k instanci spravované pomocí DMS](https://aka.ms/migratetoMIusingDMS). 
 
 ### <a name="backup-and-restore"></a>Zálohování a obnovení  
 
@@ -174,7 +191,7 @@ Postup migrace využívá zálohování SQL na úložiště objektů blob v Azur
 
 Spravované Instance cílem poskytování blízko útoku na 100 % kompatibilitu s místní SQL Server již ve fázích, dokud obecné dostupnosti služby. Pro funkce a porovnání seznamu, najdete v části [společné funkce SQL](sql-database-features.md).
  
-Spravované Instance podporuje zpětné kompatibility k databázím SQL 2008.  Přímé migrace ze serverů databáze SQL 2005 se podporuje, jsou aktualizovány úroveň kompatibility pro migrované databáze SQL 2005 na SQL 2008. 
+Spravované Instance podporuje zpětné kompatibility k databázím SQL 2008. Přímé migrace ze serverů databáze SQL 2005 se podporuje, jsou aktualizovány úroveň kompatibility pro migrované databáze SQL 2005 na SQL 2008. 
  
 Následující diagram popisuje útoku kompatibilita ve spravované Instance:  
 
@@ -182,7 +199,7 @@ Následující diagram popisuje útoku kompatibilita ve spravované Instance:
 
 ### <a name="key-differences-between-sql-server-on-premises-and-managed-instance"></a>Hlavní rozdíly mezi místní SQL Server a spravované Instance 
 
-Spravované Instance výhody nebudou vyřazené vždy až--datum v cloudu, což znamená, že některé funkce v místní SQL Server může být buď zastaralé, nebo mají alternativy.  Když je potřeba, aby konkrétní funkce funguje trochu jiným způsobem nebo že není spuštěná v prostředí, které nebudete plně řídit nástroje existují konkrétní případy: 
+Spravované Instance výhody nebudou vyřazené vždy až--datum v cloudu, což znamená, že některé funkce v místní SQL Server může být buď zastaralé, nebo mají alternativy. Když je potřeba, aby konkrétní funkce funguje trochu jiným způsobem nebo že není spuštěná v prostředí, které nebudete plně řídit nástroje existují konkrétní případy: 
 
 - Vysoké dostupnosti je součástí a předem nakonfigurované. Funkce vysoké dostupnosti Always On se nezobrazí v stejným způsobem, protože je v SQL IaaS implementace 
 - Automatizované zálohování a bod v době obnovení. Můžete zahájit zákazníka `copy-only` zálohování, které nebudou v konfliktu s automatické řetěz záloh. 
@@ -192,7 +209,7 @@ Spravované Instance výhody nebudou vyřazené vždy až--datum v cloudu, což 
  
 ### <a name="managed-instance-administration-features"></a>Funkce správy spravované Instance  
 
-Spravované Instance povolení správce systému a zaměřit se na čem nejvíc pro firmy. Řada aktivit Správce nebo správce databáze systému nejsou vyžadovány, nebo jsou jednoduché. Například operačního systému / instalace RDBMS a opravy chyb, dynamické instance změny velikosti a konfigurace, zálohování, replikace databáze (včetně systémových databází), konfigurace vysoké dostupnosti a konfigurace dat sledování stavu a výkonu datové proudy.  
+Spravované Instance povolení správce systému a zaměřit se na čem nejvíc pro firmy. Řada aktivit Správce nebo správce databáze systému nejsou vyžadovány, nebo jsou jednoduché. Například operačního systému / instalace RDBMS a opravy chyb, dynamické instance změny velikosti a konfigurace, zálohování, replikace databáze (včetně systémových databází), konfigurace vysoké dostupnosti a konfigurace dat sledování stavu a výkonu datové proudy. 
 
 > [!IMPORTANT]
 > Seznam podporovaných, částečně podporované a nepodporované funkce najdete v tématu [funkce SQL Database](sql-database-features.md). Seznam rozdíly T-SQL ve spravované instance oproti systému SQL Server najdete v tématu [spravované Instance T-SQL rozdíly v systému SQL Server](sql-database-managed-instance-transact-sql-information.md)

@@ -1,216 +1,266 @@
 ---
-title: "Vytvoření interního nástroje pro vyrovnávání zatížení – rozhraní příkazového řádku Azure | Dokumentace Microsoftu"
-description: "Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí rozhraní příkazového řádku Azure v Resource Manageru"
+title: Vytvoření interního Load Balanceru úrovně Basic – Azure CLI 2.0 | Microsoft Docs
+description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí Azure CLI 2.0.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: c7a24e92-b4da-43c0-90f2-841c1b7ce489
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/27/2017
 ms.author: kumud
-ms.openlocfilehash: 920ddecbf81296fd83606f2908e432f5327d4b7e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d90a4e74b6ad3bb95e91ad3a5327c887a87784bd
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="create-an-internal-load-balancer-by-using-the-azure-cli"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí rozhraní příkazového řádku Azure
+# <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI 2.0
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
-> * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
-> * [Šablona](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
+V tomto kurzu se dozvíte, jak vytvořit interní nástroj pro vyrovnávání zatížení virtuálních počítačů. K otestování nástroje pro vyrovnávání zatížení nasadíte dva virtuální počítače se serverem Ubuntu, které budou vyrovnávat zatížení webové aplikace.
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-[!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
-
-[!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
-
-## <a name="deploy-the-solution-by-using-the-azure-cli"></a>Nasazení řešení pomocí rozhraní příkazového řádku Azure
-
-Následující postup ukazuje, jak vytvořit internetový nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru s rozhraním příkazového řádku. S Azure Resource Managerem se jednotlivé prostředky vytvoří a nakonfigurují zvlášť, následně se spojí dohromady a vytvoří prostředek.
-
-Pokud chcete nasadit nástroj pro vyrovnávání zatížení, je nutné vytvořit a nakonfigurovat následující objekty:
-
-* **Konfigurace front-endových IP adres**: obsahuje veřejné IP adresy pro příchozí síťový provoz.
-* **Back-endový fond adres**: obsahuje síťová rozhraní, která umožňují virtuálním počítačům přijímat síťový provoz z nástroje pro vyrovnávání zatížení.
-* **Pravidla vyrovnávání zatížení**: obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port v back-endovém fondu adres.
-* **Pravidla příchozího překladu adres (NAT)**: obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port konkrétního virtuálního počítače v back-endovém fondu adres.
-* **Testy**: obsahuje testy stavu sloužící ke kontrole dostupnosti instancí virtuálních počítačů v back-endovém fondu adres.
-
-Další informace najdete v tématu [Podpora služby Load Balancer v Azure Resource Manageru](load-balancer-arm.md).
-
-## <a name="set-up-cli-to-use-resource-manager"></a>Nastavení rozhraní příkazového řádku pro použití Resource Manageru
-
-1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md). Postupujte podle pokynů až do chvíle, kdy máte vybrat svůj účet a předplatné Azure.
-2. Spuštěním příkazu **azure config mode** přejděte do režimu Resource Manager, jak vidíte níže:
-
-    ```azurecli
-    azure config mode arm
-    ```
-
-    Očekávaný výstup:
-
-        info:    New mode is arm
-
-## <a name="create-an-internal-load-balancer-step-by-step"></a>Vytvoření interního nástroje pro vyrovnávání zatížení krok za krokem
-
-1. Přihlaste se k Azure.
-
-    ```azurecli
-    azure login
-    ```
-
-    Po zobrazení výzvy zadejte své přihlašovací údaje Azure.
-
-2. Přepněte nástroje příkazového řádku do režimu Azure Resource Manager.
-
-    ```azurecli
-    azure config mode arm
-    ```
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.28 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Všechny prostředky v Azure Resource Manageru jsou přidruženy ke skupině prostředků. Pokud jste tak ještě neučinili, vytvořte skupinu prostředků.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group#create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-```azurecli
-azure group create <resource group name> <location>
+Následující příklad vytvoří skupinu prostředků *myResourceGroupILB* v umístění *eastus*:
+
+```azurecli-interactive
+  az group create \
+    --name myResourceGroupILB \
+    --location eastus
+```
+## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
+
+Pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) vytvořte virtuální síť *myVnet* s podsítí *mySubnet* ve skupině prostředků *myResourceGroup*.
+
+```azurecli-interactive
+  az network vnet create \
+    --name myVnet
+    --resource-group myResourceGroupILB \
+    --location eastus \
+    --subnet-name mySubnet
+```
+## <a name="create-basic-load-balancer"></a>Vytvoření Load Balanceru úrovně Basic
+
+Tato část podrobně popisuje vytvoření a konfiguraci následujících komponent nástroje pro vyrovnávání zatížení:
+  - Konfigurace front-endových IP adres, které přijímají příchozí síťový provoz do nástroje pro vyrovnávání zatížení.
+  - Back-endový fond IP adres, kam front-endový fond odesílá síťový provoz s vyrovnáváním zatížení.
+  - Sonda stavu, která určuje stav back-endových instancí virtuálních počítačů.
+  - Pravidlo nástroje pro vyrovnávání zatížení, které definuje způsob distribuce provozu do virtuálních počítačů.
+
+### <a name="create-the-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
+
+Pomocí příkazu [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) vytvořte veřejný Load Balancer úrovně Basic **myLoadBalancer**, který obsahuje konfiguraci front-endových IP adres **myFrontEnd** a back-endový fond **myBackEndPool** přidružený k privátní IP adrese **10.0.0.7.
+
+```azurecli-interactive
+  az network lb create \
+    --resource-group myResourceGroupILB \
+    --name myLoadBalancer \
+    --frontend-ip-name myFrontEnd \
+    --private-ip-address 10.0.0.7 \
+    --backend-pool-name myBackEndPool \
+    --vnet-name myVnet \
+    --subnet mySubnet      
+  ```
+### <a name="create-the-health-probe"></a>Vytvoření sondy stavu
+
+Sonda stavu kontroluje všechny instance virtuálních počítačů a ověřuje, že můžou přijímat síťový provoz. Instance virtuálního počítače, u níž se kontroly testu nezdaří, se odebere z nástroje pro vyrovnávání zatížení do té doby, než znovu přejde do režimu online a kontrola testu určí, že je v pořádku. Pomocí příkazu [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) vytvořte sondu stavu pro monitorování stavu virtuálních počítačů. 
+
+```azurecli-interactive
+  az network lb probe create \
+    --resource-group myResourceGroupILB \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80   
 ```
 
-## <a name="create-an-internal-load-balancer-set"></a>Vytvoření sady interního nástroje pro vyrovnávání zatížení
+### <a name="create-the-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-1. Vytvořte interní nástroj pro vyrovnávání zatížení.
+Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu *myLoadBalancerRuleWeb* vytvořte pravidlo nástroje pro vyrovnávání zatížení [myLoadBalancerRuleWeb](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) pro naslouchání na portu 80 ve front-endovém fondu *myFrontEndPool* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool* rovněž na portu 80. 
 
-    V následujícím scénáři se vytvoří skupina prostředků nrprg v oblasti Východní USA.
-
-    ```azurecli
-    azure network lb create --name nrprg --location eastus
-    ```
-
-   > [!NOTE]
-   > Všechny prostředky interního nástroje pro vyrovnávání zatížení, jako jsou virtuální sítě a podsítě virtuálních sítí, musí být ve stejné skupině prostředků a ve stejné oblasti.
-
-2. Vytvořte front-endovou IP adresu pro tento interní nástroj pro vyrovnávání zatížení.
-
-    IP adresa, kterou použijete, se musí nacházet v rozsahu podsítě vaší virtuální sítě.
-
-    ```azurecli
-    azure network lb frontend-ip create --resource-group nrprg --lb-name ilbset --name feilb --private-ip-address 10.0.0.7 --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet
-    ```
-
-3. Vytvořte back-endový fond adres.
-
-    ```azurecli
-    azure network lb address-pool create --resource-group nrprg --lb-name ilbset --name beilb
-    ```
-
-    Po definování front-endové IP adresy a back-endového fondu adres můžete vytvořit pravidla nástroje pro vyrovnávání zatížení, pravidla příchozího překladu adres (NAT) a vlastní testy stavu.
-
-4. Vytvořte pravidlo nástroje pro vyrovnávání zatížení pro tento interní nástroj pro vyrovnávání zatížení.
-
-    Po provedení předchozích kroků vytvoří tento příkaz pravidlo nástroje pro vyrovnávání zatížení pro naslouchání na portu 1433 ve front-endovém fondu a posílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres rovněž na portu 1433.
-
-    ```azurecli
-    azure network lb rule create --resource-group nrprg --lb-name ilbset --name ilbrule --protocol tcp --frontend-port 1433 --backend-port 1433 --frontend-ip-name feilb --backend-address-pool-name beilb
-    ```
-
-5. Vytvořte pravidla příchozího překladu adres (NAT).
-
-    Pravidla příchozího překladu adres (NAT) slouží k vytvoření koncových bodů v nástroji pro vyrovnávání zatížení, které vedou ke konkrétním instancím virtuálních počítačů. Předchozí kroky vytvořily dvě pravidla překladu adres (NAT) pro vzdálenou plochu.
-
-    ```azurecli
-    azure network lb inbound-nat-rule create --resource-group nrprg --lb-name ilbset --name NATrule1 --protocol TCP --frontend-port 5432 --backend-port 3389
-
-    azure network lb inbound-nat-rule create --resource-group nrprg --lb-name ilbset --name NATrule2 --protocol TCP --frontend-port 5433 --backend-port 3389
-    ```
-
-6. Vytvořte testy stavu pro tento nástroj pro vyrovnávání zatížení.
-
-    Test stavu kontroluje všechny instance virtuálních počítačů a ověřuje, že mohou posílat síťový provoz. Instance virtuálního počítače, u níž se kontroly testu nezdaří, se odebere z nástroje pro vyrovnávání zatížení do té doby, než znovu přejde do režimu online a kontrola testu určí, že je v pořádku.
-
-    ```azurecli
-    azure network lb probe create --resource-group nrprg --lb-name ilbset --name ilbprobe --protocol tcp --interval 300 --count 4
-    ```
-
-    > [!NOTE]
-    > Platforma Microsoft Azure používá pro řadu scénářů správy statickou, veřejně směrovatelnou IPv4 adresu. Jedná se o IP adresu 168.63.129.16. Tuto IP adresu by neměla blokovat žádná brána firewall, protože by to mohlo způsobit neočekávané chování.
-    > Vzhledem k internímu vyrovnávání zatížení Azure slouží tato IP adresa monitorovacím testům z nástroje pro vyrovnávání zatížení k určování stavu virtuálních počítačů v sadě s vyrovnáváním zatížení. Pokud se k omezení provozu na virtuální počítače Azure v sadě s interním vyrovnáváním zatížení používá skupina zabezpečení sítě nebo pokud je použita na podsíti virtuální sítě, ujistěte se, že je přidáno pravidlo zabezpečení sítě umožňující provoz z adresy 168.63.129.16.
-
-## <a name="create-nics"></a>Vytvoření síťových rozhraní
-
-Je nutné vytvořit síťová rozhraní (nebo upravit stávající) a potom je přidružit k pravidlům překladu adres (NAT), pravidlům nástroje pro vyrovnávání zatížení a testům.
-
-1. Vytvořte síťové rozhraní s názvem *lb-nic1-be* a přidružte jej k pravidlu překladu adres (NAT) *rdp1* a back-endovému fondu adres *beilb*.
-
-    ```azurecli
-    azure network nic create --resource-group nrprg --name lb-nic1-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet --lb-address-pool-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/beilb" --lb-inbound-nat-rule-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1" --location eastus
-    ```
-
-    Očekávaný výstup:
-
-        info:    Executing command network nic create
-        + Looking up the network interface "lb-nic1-be"
-        + Looking up the subnet "nrpvnetsubnet"
-        + Creating network interface "lb-nic1-be"
-        + Looking up the network interface "lb-nic1-be"
-        data:    Id                              : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/networkInterfaces/lb-nic1-be
-        data:    Name                            : lb-nic1-be
-        data:    Type                            : Microsoft.Network/networkInterfaces
-        data:    Location                        : eastus
-        data:    Provisioning state              : Succeeded
-        data:    Enable IP forwarding            : false
-        data:    IP configurations:
-        data:      Name                          : NIC-config
-        data:      Provisioning state            : Succeeded
-        data:      Private IP address            : 10.0.0.4
-        data:      Private IP Allocation Method  : Dynamic
-        data:      Subnet                        : /subscriptions/####################################/resourceGroups/NRPRG/providers/Microsoft.Network/virtualNetworks/NRPVnet/subnets/NRPVnetSubnet
-        data:      Load balancer backend address pools
-        data:        Id                          : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/NRPbackendpool
-        data:      Load balancer inbound NAT rules:
-        data:        Id                          : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1
-        data:
-        info:    network nic create command OK
-
-2. Vytvořte síťové rozhraní s názvem *lb-nic2-be* a přidružte jej k pravidlu překladu adres (NAT) *rdp2* a back-endovému fondu adres *beilb*.
-
-    ```azurecli
-    azure network nic create --resource-group nrprg --name lb-nic2-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet --lb-address-pool-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/beilb" --lb-inbound-nat-rule-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp2" --location eastus
-    ```
-
-3. Vytvořte virtuální počítač s názvem *DB1* a přidružte jej k síťovému rozhraní s názvem *lb-nic1-be*. Účet úložiště s názvem *web1nrp* je vytvořen ještě před spuštěním následujícího příkazu:
-
-    ```azurecli
-    azure vm create --resource--resource-grouproup nrprg --name DB1 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic1-be --availset-name nrp-avset --storage-account-name web1nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
-    ```
-    > [!IMPORTANT]
-    > Virtuální počítače v nástroji pro vyrovnávání zatížení musí být ve stejné skupině dostupnosti. Skupinu dostupnosti vytvoříte pomocí příkazu `azure availset create`.
-
-4. Vytvořte virtuální počítač s názvem *DB2* a přidružte jej k síťovému rozhraní s názvem *lb-nic2-be*. Účet úložiště s názvem *web1nrp* byl vytvořen ještě před spuštěním následujícího příkazu.
-
-    ```azurecli
-    azure vm create --resource--resource-grouproup nrprg --name DB2 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic2-be --availset-name nrp-avset --storage-account-name web2nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
-    ```
-
-## <a name="delete-a-load-balancer"></a>Odstranění nástroje pro vyrovnávání zatížení
-
-K odebrání nástroje pro vyrovnávání zatížení použijte následující příkaz:
-
-```azurecli
-azure network lb delete --resource-group nrprg --name ilbset
+```azurecli-interactive
+  az network lb rule create \
+    --resource-group myResourceGroupILB \
+    --lb-name myLoadBalancer \
+    --name myHTTPRule \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe  
 ```
+
+## <a name="create-servers-for-the-backend-address-pool"></a>Vytvoření serverů pro back-endový fond adres
+
+Než nasadíte několik virtuálních počítačů a budete moci otestovat svůj nástroj pro vyrovnávání zatížení, vytvořte podpůrné prostředky virtuální sítě.
+
+###  <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
+Vytvořte skupinu zabezpečení sítě, která definuje příchozí připojení k vaší virtuální síti.
+
+```azurecli-interactive
+  az network nsg create \
+    --resource-group myResourceGroupILB \
+    --name myNetworkSecurityGroup
+```
+
+### <a name="create-a-network-security-group-rule"></a>Vytvoření pravidla skupiny zabezpečení sítě
+
+Vytvořte pravidlo skupiny zabezpečení sítě, které povolí příchozí připojení přes port 80.
+
+```azurecli-interactive
+  az network nsg rule create \
+    --resource-group myResourceGroupILB \
+    --nsg-name myNetworkSecurityGroup \
+    --name myNetworkSecurityGroupRuleHTTP \
+    --protocol tcp \
+    --direction inbound \
+    --source-address-prefix '*' \
+    --source-port-range '*' \
+    --destination-address-prefix '*' \
+    --destination-port-range 22 \
+    --access allow \
+    --priority 300
+```
+### <a name="create-nics"></a>Vytvoření síťových rozhraní
+
+Pomocí příkazu [az network nic create](/cli/azure/network/nic#az_network_nic_create) vytvořte dvě síťová rozhraní a přiřaďte je k privátní IP adrese a skupině zabezpečení sítě. 
+
+```azurecli-interactive
+for i in `seq 1 2`; do
+  az network nic create \
+    --resource-group myResourceGroupILB \
+    --name myNic$i \
+    --vnet-name myVnet \
+    --subnet mySubnet \
+    --network-security-group myNetworkSecurityGroup \
+    --lb-name myLoadBalancer \
+    --lb-address-pools myBackEndPool
+done
+```
+
+## <a name="create-backend-servers"></a>Vytvoření serverů back-end
+
+V tomto příkladu vytvoříte dva virtuální počítače, které se použijí jako servery back-end pro nástroj pro vyrovnávání zatížení. K ověření úspěšného vytvoření nástroje pro vyrovnávání zatížení také na virtuální počítače nainstalujete server NGINX.
+
+### <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
+
+Vytvořte skupinu dostupnosti pomocí příkazu [az vm availabilityset create](/cli/azure/network/nic#az_network_availabilityset_create).
+
+ ```azurecli-interactive
+  az vm availability-set create \
+    --resource-group myResourceGroupILB \
+    --name myAvailabilitySet
+```
+
+### <a name="create-two-virtual-machines"></a>Vytvoření dvou virtuálních počítačů
+
+K instalaci serveru NGINX a spuštění aplikace Hello World v Node.js na virtuálním počítači s Linuxem můžete použít konfigurační soubor cloud-init. V aktuálním prostředí vytvořte soubor cloud-init.txt a zkopírujte následující konfiguraci a vložte ji do prostředí. Ujistěte se, že správně kopírujete celý soubor cloud-init, zejména první řádek:
+
+```yaml
+#cloud-config
+package_upgrade: true
+packages:
+  - nginx
+  - nodejs
+  - npm
+write_files:
+  - owner: www-data:www-data
+  - path: /etc/nginx/sites-available/default
+    content: |
+      server {
+        listen 80;
+        location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection keep-alive;
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+        }
+      }
+  - owner: azureuser:azureuser
+  - path: /home/azureuser/myapp/index.js
+    content: |
+      var express = require('express')
+      var app = express()
+      var os = require('os');
+      app.get('/', function (req, res) {
+        res.send('Hello World from host ' + os.hostname() + '!')
+      })
+      app.listen(3000, function () {
+        console.log('Hello world app listening on port 3000!')
+      })
+runcmd:
+  - service nginx restart
+  - cd "/home/azureuser/myapp"
+  - npm init
+  - npm install express -y
+  - nodejs index.js
+``` 
+ 
+Vytvořte virtuální počítače pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create).
+
+ ```azurecli-interactive
+for i in `seq 1 2`; do
+  az vm create \
+    --resource-group myResourceGroupILB \
+    --name myVM$i \
+    --availability-set myAvailabilitySet \
+    --nics myNic$i \
+    --image UbuntuLTS \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt
+    done
+```
+Nasazení virtuálních počítačů může několik minut trvat.
+
+### <a name="create-a-vm-for-testing-the-load-balancer"></a>Vytvoření virtuálního počítače pro otestování nástroje pro vyrovnávání zatížení
+
+Pokud chcete nástroj pro vyrovnávání zatížení otestovat, vytvořte virtuální počítač *myVMTest* a přidružte ho k síťovému rozhraní *myNic3*.
+
+```azurecli-interactive
+ az vm create \
+    --resource-group myResourceGroupILB \
+    --name myVMTest \
+    --image win2016datacenter \
+    --admin-username azureuser \
+    --admin-password myPassword123456!
+```
+
+## <a name="test-the-internal-load-balancer"></a>Test interního nástroje pro vyrovnávání zatížení
+
+Abyste mohli nástroj pro vyrovnávání zatížení otestovat, musíte nejprve získat jeho privátní IP adresu. Pak se přihlaste k virtuálnímu počítači myVMTest a na něm zadejte privátní IP adresu do adresního řádku webového prohlížeče.
+
+Privátní IP adresu nástroje pro vyrovnávání zatížení získáte pomocí příkazu [az network lb show](/cli/azure/network/public-ip##az-network-lb-show). Zkopírujte privátní IP adresu a vložte ji do adresního řádku webového prohlížeče na svém virtuálním počítači *myVMTest*.
+
+```azurecli-interactive
+  az network lb show \
+    --name myLoadBalancer
+    --resource-group myResourceGroupILB
+``` 
+![Test nástroje pro vyrovnávání zatížení](./media/load-balancer-get-started-ilb-arm-cli/load-balancer-test.png)
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, nástroje pro vyrovnávání zatížení a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az_group_delete).
+
+```azurecli-interactive 
+  az group delete --name myResourceGroupILB
+```
+
 
 ## <a name="next-steps"></a>Další kroky
-
-[Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení pomocí spřažení se zdrojovou IP adresou](load-balancer-distribution-mode.md)
-
-[Konfigurace nastavení časového limitu nečinnosti protokolu TCP pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md)
-
+V rámci tohoto článku jste vytvořili interní Load Balancer úrovně Basic, připojili jste k němu virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Další informace o nástrojích pro vyrovnávání zatížení a jejich souvisejících prostředcích najdete v dalších článcích s postupy.

@@ -1,10 +1,10 @@
 ---
-title: "Úplný text search engine (Lucene) architektura ve službě Azure Search | Microsoft Docs"
-description: "Vysvětlení Lucene dotaz zpracování a dokumentu načtení koncepty pro fulltextové vyhledávání v souvislosti s Azure Search."
+title: Úplný text search engine (Lucene) architektura ve službě Azure Search | Microsoft Docs
+description: Vysvětlení Lucene dotaz zpracování a dokumentu načtení koncepty pro fulltextové vyhledávání v souvislosti s Azure Search.
 services: search
 manager: jhubbard
 author: yahnoosh
-documentationcenter: 
+documentationcenter: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
 ms.openlocfilehash: 0b2e66cd40c1b49832b865e5bf59edcf78996eb8
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Jak úplné textové vyhledávání funguje ve službě Azure Search
 
@@ -282,7 +282,7 @@ Pro **popis** pole indexu je následujícím způsobem:
 | – sever | 2
 | oceánu | 1, 2, 3
 | z | 2
-| na |2
+| zapnuto |2
 | quiet | 4
 | místnosti  | 1, 3
 | secluded | 4
@@ -292,7 +292,7 @@ Pro **popis** pole indexu je následujícím způsobem:
 | na | 1
 | zobrazit | 1, 2, 3
 | procházení | 1
-| S | 3
+| with | 3
 
 
 **Odpovídající vyhledávacích dotazů vůči indexované podmínky**
@@ -318,7 +318,7 @@ Celkově v dotazu, jsou dokumenty, které odpovídají 1, 2, 3.
 
 ## <a name="stage-4-scoring"></a>Fáze 4: vyhodnocování  
 
-Každému dokumentu v sadě výsledků hledání je přiřazen relevance skóre. Funkce skóre relevance je vyšší pořadí těchto dokumentů, které nejlépe odpověď na otázku uživatele jako vyjádřená vyhledávací dotaz. Výpočet skóre je založen na statistické vlastnosti podmínky, které odpovídá. Základem vyhodnocování vzorec je [TF/IDF (termín frekvence inverzní dokumentu frekvenci)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). V dotazech obsahující výjimečná a běžné podmínky TF/IDF zvýší úroveň výsledky obsahující výjimečných podmínek. Například v hypotetický index s všechny články Wikipedia z dokumentů odpovídající zadaným dotaz *ředitel*, dokumentů, které vyhovují na *ředitel* jsou považovány za relevantní více než dokumenty porovnávání *s*.
+Každému dokumentu v sadě výsledků hledání je přiřazen relevance skóre. Funkce skóre relevance je vyšší pořadí těchto dokumentů, které nejlépe odpověď na otázku uživatele jako vyjádřená vyhledávací dotaz. Výpočet skóre je založen na statistické vlastnosti podmínky, které odpovídá. Základem vyhodnocování vzorec je [TF/IDF (termín frekvence inverzní dokumentu frekvenci)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). V dotazech obsahující výjimečná a běžné podmínky TF/IDF zvýší úroveň výsledky obsahující výjimečných podmínek. Například v hypotetický index s všechny články Wikipedia z dokumentů odpovídající zadaným dotaz *ředitel*, dokumentů, které vyhovují na *ředitel* jsou považovány za relevantní více než dokumenty porovnávání s **.
 
 
 ### <a name="scoring-example"></a>Příklad vyhodnocování
@@ -363,7 +363,7 @@ Příklad ukazuje, proč to záleží. Vyhledávání pomocí zástupných znak�
 Existují dva způsoby, jak ladit relevance skóre ve službě Azure Search:
 
 1. **Vyhodnocování profily** povýšit dokumenty v seřazený seznam výsledků na základě sady pravidel. V našem příkladu jsme zvažte dokumenty, které odpovídá v poli Název relevantnější než dokumenty, které odpovídá do pole Popis. Kromě toho Pokud index měli pole ceny pro každý hotelů, jsme může zvýšit úroveň dokumenty s nižší cenou. Zjistěte, jak Další [profily vyhodnocování přidat do indexu vyhledávání.](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. **Zvýšení skóre termínu** (k dispozici pouze v syntaxe dotazů Lucene úplná) poskytuje zvýšení skóre operátor `^` , který lze použít na všechny části stromu dotazu. V našem příkladu, namísto hledání na předponě *air-condition*\*, jeden může hledat buď přesnou termín *air-condition* nebo předponu, ale dokumenty, které odpovídají na přesný termín řazeny výše použitím nárůst termín dotazu: *letecké podmínku ^ 2 || AIR-condition**. Další informace o [zvýšení skóre termínu](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+2. **Zvýšení skóre termínu** (k dispozici pouze v syntaxe dotazů Lucene úplná) poskytuje zvýšení skóre operátor `^` , který lze použít na všechny části stromu dotazu. V našem příkladu, namísto hledání na předponě *air-condition*\*, jeden může hledat buď přesnou termín *air-condition* nebo předponu, ale dokumenty, které odpovídají na přesný termín řazeny výše použitím nárůst termín dotazu: * letecké podmínku ^ 2 || AIR-Condition **. Další informace o [zvýšení skóre termínu](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Vyhodnocování v distribuované indexu
@@ -382,7 +382,7 @@ Z hlediska technické fulltextové vyhledávání je vysoce komplexní, vyžaduj
 
 Tento článek prozkoumali fulltextového vyhledávání v rámci Azure Search. Věříme, že poskytuje dostatečnou pozadí rozpoznat možné příčiny a řešení pro řešení běžných problémů s dotazu. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 + Sestavení indexu ukázkové, vyzkoušejte různé dotazy a zkontrolovat výsledky. Pokyny najdete v tématu [sestavení a dotazování indexu na portálu](search-get-started-portal.md#query-index).
 
@@ -396,7 +396,7 @@ Tento článek prozkoumali fulltextového vyhledávání v rámci Azure Search. 
 
 + [Porovnání standardní a anglické analyzátorů](http://alice.unearth.ai/)) na tento ukázkový web vedle sebe. 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Hledání dokumentů rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

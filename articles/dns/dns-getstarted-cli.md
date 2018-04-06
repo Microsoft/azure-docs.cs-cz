@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s DNS Azure pomocí Azure CLI 2.0 | Dokumentace Microsoftu"
-description: "Naučíte se vytvořit zónu a záznam DNS v DNS Azure. Pomocí tohoto podrobného průvodce můžete vytvořit a spravovat první zónu a záznam DNS pomocí Azure CLI 2.0."
+title: Začínáme s DNS Azure pomocí Azure CLI 2.0 | Dokumentace Microsoftu
+description: Naučíte se vytvořit zónu a záznam DNS v DNS Azure. Pomocí tohoto podrobného průvodce můžete vytvořit a spravovat první zónu a záznam DNS pomocí Azure CLI 2.0.
 services: dns
 documentationcenter: na
 author: KumuD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
 ms.service: dns
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: kumud
-ms.openlocfilehash: 76782ac1e78cd0f7da4bc1aad8eff00d79865ed7
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d24eaa4974f8bff09b337384e4fd139edb6ebd70
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-dns-using-azure-cli-20"></a>Začínáme s DNS Azure pomocí Azure CLI 2.0
 
@@ -33,6 +33,8 @@ Tento článek vás provede kroky k vytvoření první zóny a záznamu DNS pomo
 K hostování záznamů DNS v určité doméně se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Nakonec, pokud chcete zónu DNS publikovat na internetu, bude potřeba nakonfigurovat pro doménu názvové servery. Jednotlivé kroky jsou popsány níže.
 
 Tyto pokyny předpokládají, že již máte nainstalované Azure CLI 2.0 a jste k němu přihlášeni. Nápovědu získáte v tématu [Správa zón DNS pomocí Azure CLI 2.0](dns-operations-dnszones-cli.md).
+
+Azure DNS teď podporuje také privátní zóny DNS (aktuálně ve verzi Public Preview). Další informace o privátních zónách DNS najdete v tématu [Použití DNS Azure pro privátní domény](private-dns-overview.md). Příklad vytvoření privátní zóny DNS najdete v tématu [Začínáme s privátními zónami Azure DNS pomocí rozhraní příkazového řádku](./private-dns-getstarted-cli.md).
 
 ## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -52,7 +54,6 @@ Následující příklad vytvoří zónu DNS s názvem *contoso.com* ve skupině
 az network dns zone create -g MyResourceGroup -n contoso.com
 ```
 
-
 ## <a name="create-a-dns-record"></a>Vytvoření záznamu DNS
 
 K vytvoření záznamu DNS použijte příkaz `az network dns record-set [record type] add-record`. Například nápovědu k záznamům A získáte příkazem `azure network dns record-set A add-record -h`.
@@ -65,7 +66,6 @@ az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www 
 
 Informace o dalších typech záznamů, sadách záznamů s více než jedním záznamem, alternativních hodnotách TTL a úpravě existujících záznamů najdete v tématu [Správa záznamů a sad záznamů DNS pomocí Azure CLI 2.0](dns-operations-recordsets-cli.md).
 
-
 ## <a name="view-records"></a>Zobrazení záznamů
 
 K výpisu záznamů DNS ve vaší zóně použijte:
@@ -73,7 +73,6 @@ K výpisu záznamů DNS ve vaší zóně použijte:
 ```azurecli
 az network dns record-set list -g MyResourceGroup -z contoso.com
 ```
-
 
 ## <a name="update-name-servers"></a>Aktualizace názvových serverů
 

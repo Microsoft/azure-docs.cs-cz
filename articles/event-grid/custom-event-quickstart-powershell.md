@@ -1,29 +1,27 @@
 ---
-title: "Vlastní události pro Azure Event Grid pomocí PowerShellu | Dokumentace Microsoftu"
-description: "Pomocí Azure Event Gridu a PowerShellu můžete publikovat téma a přihlásit se k odběru příslušné události."
+title: Vlastní události pro Azure Event Grid pomocí PowerShellu | Dokumentace Microsoftu
+description: Pomocí Azure Event Gridu a PowerShellu můžete publikovat téma a přihlásit se k odběru příslušné události.
 services: event-grid
-keywords: 
+keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 01/30/2018
+ms.date: 03/20/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 24366df54fa4fc32ebbff7c1303183707dea17c6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 183bafad9b38ccb0e7eaae222c5569e45b15ac21
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-route-custom-events-with-azure-powershell-and-event-grid"></a>Vytvoření a směrování vlastních událostí pomocí Azure PowerShellu a Event Gridu
 
-Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku pomocí Azure PowerShellu vytvoříte vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který na událost reaguje například webhookem nebo funkcí Azure Functions. Pro zjednodušení tohoto článku však budete události odesílat na adresu URL, která jenom shromažďuje zprávy. Tuto adresu URL vytvoříte pomocí nástrojů třetích stran [RequestBin](https://requestb.in/) nebo [Hookbin](https://hookbin.com/).
+Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku pomocí Azure PowerShellu vytvoříte vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který na událost reaguje například webhookem nebo funkcí Azure Functions. Pro zjednodušení tohoto článku však budete události odesílat na adresu URL, která jenom shromažďuje zprávy. Tuto adresu URL vytvoříte pomocí nástroje třetí strany z webu [Hookbin](https://hookbin.com/).
 
 >[!NOTE]
->**RequestBin** a **Hookbin** nejsou určené pro použití s vysokou propustností. Použití těchto nástrojů je čistě demonstrativní. Pokud najednou nabídnete více než jednu událost, možná se v nástroji nezobrazí všechny.
+>**Hookbin** není určený pro použití s vysokou propustností. Použití tohoto nástroje je čistě demonstrativní. Pokud najednou nabídnete více než jednu událost, možná se v nástroji nezobrazí všechny.
 
-Až budete hotovi, uvidíte, že se data událostí odeslala do koncového bodu.
-
-![Data událostí](./media/custom-event-quickstart-powershell/request-result.png)
+Až budete hotovi, uvidíte, že se data události odeslala do koncového bodu.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +41,7 @@ New-AzureRmResourceGroup -Name gridResourceGroup -Location westus2
 
 ## <a name="create-a-custom-topic"></a>Vytvoření vlastního tématu
 
-Téma poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. Následující příklad vytvoří téma ve vaší skupině prostředků. Nahraďte `<topic_name>` jedinečným názvem vašeho tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS.
+Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. Následující příklad vytvoří vlastní téma ve vaší skupině prostředků. Nahraďte `<topic_name>` jedinečným názvem vašeho tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS.
 
 ```powershell
 New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2 -Name <topic_name>
@@ -51,11 +49,11 @@ New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
-Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy události. Místo psaní kódu, který by na událost reagoval, vytvoříme koncový bod, který bude shromažďovat zprávy, abyste je mohli zobrazit. RequestBin a Hookbin jsou nástroje třetích stran, které umožňují vytvořit koncový bod a zobrazit požadavky, které se do nich odesílají. Přejděte na nástroj [RequestBin](https://requestb.in/) a klikněte na **Create a RequestBin** (Vytvořit RequestBin) nebo přejděte na nástroj [Hookbin](https://hookbin.com/) a klikněte na **Create New Endpoint** (Vytvořit nový koncový bod).  Zkopírujte adresu URL přihrádky, protože ji budete potřebovat při přihlašování k odběru tématu.
+Před přihlášením k odběru vlastního tématu vytvoříme koncový bod pro zprávy události. Místo psaní kódu, který by na událost reagoval, vytvoříme koncový bod, který bude shromažďovat zprávy, abyste je mohli zobrazit. Hookbin je nástroj třetí strany, který umožňuje vytvořit koncový bod a zobrazit požadavky, které se do něj odesílají. Přejděte na web [Hookbin](https://hookbin.com/) a klikněte na **Create New Endpoint** (Vytvořit nový koncový bod).  Zkopírujte adresu URL přihrádky, protože ji budete potřebovat při přihlašování k odběru tématu.
 
 ## <a name="subscribe-to-a-topic"></a>Přihlášení k odběru tématu
 
-K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat. Následující příklad se přihlásí k odběru tématu, které jste vytvořili, a předá adresu URL z nástroje RequestBin nebo Hookbin jako koncový bod pro oznámení události. Nahraďte `<event_subscription_name>` jedinečným názvem vašeho odběru a `<endpoint_URL>` hodnotou adresy URL z nástroje RequestBin z předchozí části. Díky zadání koncového bodu při přihlašování k odběru bude služba Event Grid zpracovávat směrování událostí do tohoto koncového bodu. Místo `<topic_name>` použijte hodnotu názvu tématu, který jste vytvořili dříve.
+K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat. Následující příklad se přihlásí k odběru tématu, které jste vytvořili, a předá adresu URL z webu Hookbin jako koncový bod pro oznámení události. Nahraďte `<event_subscription_name>` jedinečným názvem vašeho odběru a `<endpoint_URL>` hodnotou adresy URL z nástroje RequestBin z předchozí části. Díky zadání koncového bodu při přihlašování k odběru bude služba Event Grid zpracovávat směrování událostí do tohoto koncového bodu. Místo `<topic_name>` použijte hodnotu názvu tématu, který jste vytvořili dříve.
 
 ```powershell
 New-AzureRmEventGridSubscription -EventSubscriptionName <event_subscription_name> -Endpoint <endpoint_URL> -ResourceGroupName gridResourceGroup -TopicName <topic_name>
@@ -63,14 +61,14 @@ New-AzureRmEventGridSubscription -EventSubscriptionName <event_subscription_name
 
 ## <a name="send-an-event-to-your-topic"></a>Odeslání události do tématu
 
-Nyní aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Nejprve získáme adresu URL a klíč tématu. Znovu místo `<topic_name>` použijte název vašeho tématu.
+Teď aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Nejprve získáme adresu URL a klíč tématu. Znovu místo `<topic_name>` použijte název vašeho tématu.
 
 ```powershell
 $endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Endpoint
 $keys = Get-AzureRmEventGridTopicKey -ResourceGroupName gridResourceGroup -Name <topic-name>
 ```
 
-Pro zjednodušení tohoto článku nastavíme ukázková data události pro odeslání do tématu. Obvykle by aplikace nebo služba Azure odesílala data události. Následující příklad pomocí zatřiďovací tabulky vytvoří objekt `htbody` s daty události a pak ho převede na objekt datové části JSON `$body` ve správném formátu:
+Pro zjednodušení tohoto článku nastavíme ukázková data události pro odeslání do vlastního tématu. Obvykle by aplikace nebo služba Azure odesílala data události. Následující příklad pomocí zatřiďovací tabulky vytvoří objekt `htbody` s daty události a pak ho převede na objekt datové části JSON `$body` ve správném formátu:
 
 ```powershell
 $eventID = Get-Random 99999
@@ -124,7 +122,7 @@ Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncov
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředky vytvořené v rámci tohoto článku. Pokud pokračovat nechcete, pomocí následujícího příkazu odstraňte prostředky, které jste v rámci tohoto článku vytvořili.
+Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředky vytvořené v rámci tohoto článku. Jinak pomocí následujícího příkazu odstraňte prostředky, které jste v rámci tohoto článku vytvořili.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name gridResourceGroup

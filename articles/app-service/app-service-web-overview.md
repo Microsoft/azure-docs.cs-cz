@@ -15,15 +15,15 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: e789d3c6e10399491eb055b850a590ae10aacd11
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 85a3898145f7aea5d3f668caeafb62286006230d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="web-apps-overview"></a>Přehled Web Apps
 
-*Azure App Service Web Apps* (nebo jenom Web Apps) je služba pro hostování webových aplikací, rozhraní REST API a mobilních back-endů. Můžete vyvíjet ve svém oblíbeném jazyce, ať už jde o .NET, .NET Core, Javu, Ruby, Node.js, PHP nebo Python. Aplikace můžete snadno spouštět a škálovat na virtuálních počítačích s Windows nebo Linuxem (viz [App Service v Linuxu](containers/app-service-linux-intro.md)). 
+*Azure App Service Web Apps* (nebo jenom Web Apps) je služba pro hostování webových aplikací, rozhraní REST API a mobilních back-endů. Můžete vyvíjet ve svém oblíbeném jazyce, ať už jde o .NET, .NET Core, Javu, Ruby, Node.js, PHP nebo Python. Aplikace se snadno spouštějí a škálují v prostředích založených na Windows. Informace o prostředích založených na Linuxu najdete v tématu [App Service v Linuxu](containers/app-service-linux-intro.md). 
 
 Služba Web Apps nejen že do vaší aplikace přináší výkon Microsoft Azure v podobě zabezpečení, vyrovnávání zatížení, automatického škálování nebo automatizované správy. Můžete také využívat její možnosti DevOps, jako jsou průběžné nasazování z VSTS, GitHubu, Docker Hubu a dalších zdrojů, správa balíčků, přípravná prostředí, vlastní doména a certifikáty SSL. 
 

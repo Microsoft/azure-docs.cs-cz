@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 01/22/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 7e3fd12b2157d28c5d61bfa8d5fb69a00557a1f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5b7af290a5e5c45d3f64ccb50586db0811dd592
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Vytvoření datové továrny a kanálu s využitím .NET SDK
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -102,12 +102,12 @@ Názorný postup v tomto článku využívá Visual Studio 2017. Můžete také 
 Stáhněte sadu [Azure .NET SDK](http://azure.microsoft.com/downloads/) a nainstalujte ji do svého počítače.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Vytvoření aplikace v Azure Active Directory
-Postupujte podle pokynů v [tomto článku](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) a proveďte následující úlohy: 
+Postupujte podle pokynů v jednotlivých částech v [tomto článku](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) a proveďte následující úlohy: 
 
 1. **Vytvořte aplikaci Azure Active Directory**. V Azure Active Directory vytvořte aplikaci reprezentující aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).
-2. Pomocí pokynů v části tohoto článku věnované **získání ID aplikace a ověřovacího klíče** získejte **ID aplikace** a **ověřovací klíč****. Poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
-3. Pomocí pokynů v části tohoto článku věnované **získání ID tenanta** získejte **ID tenanta**. Poznamenejte si tuto hodnotu. 
-4. Přiřaďte aplikaci k roli **Přispěvatel** na úrovni předplatného, aby aplikace mohla v předplatném vytvářet datové továrny. Pomocí pokynů v části tohoto článku věnované **přiřazení aplikace k roli**. 
+2. Získejte **ID aplikace** a **ověřovací klíč** a poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
+3. Získejte **ID tenanta** a poznamenejte si tuto hodnotu, kterou použijete později v tomto kurzu.
+4. Přiřaďte aplikaci k roli **Přispěvatel** na úrovni předplatného, aby aplikace mohla v předplatném vytvářet datové továrny.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 

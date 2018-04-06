@@ -1,11 +1,11 @@
 ---
-title: "Horké, studené a archivní úložiště Azure pro objekty blob | Dokumentace Microsoftu"
-description: "Horké, studené a archivní úložiště pro účty úložiště Azure."
+title: Horké, studené a archivní úložiště Azure pro objekty blob | Dokumentace Microsoftu
+description: Horké, studené a archivní úložiště pro účty úložiště Azure.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: kuhussai
 manager: jwillis
-editor: 
+editor: ''
 ms.assetid: eb33ed4f-1b17-4fd6-82e2-8d5372800eef
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: 2adb301f1d047c7762a35880da6e6094a5afbd75
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c62f3a92e6199f6467556054c9f58c20b6ceba2c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň úložiště
 
@@ -79,7 +79,7 @@ V rámci jednoho účtu mohou současně existovat objekty blob ve všech třech
 
 ### <a name="blob-level-tiering-billing"></a>Fakturace ovládání datových vrstev na úrovni objektů blob
 
-Když se objekt blob přesune do chladnější úrovně (horká -> studená, horká -> archivní nebo studená -> archivní), operace se fakturuje jako zápis do cílové úrovně. Účtují se poplatky za operace zápisu (za 10 000) a zápis dat (za GB) pro cílovou úroveň. Když se objekt blob přesune do teplejší úrovně (archivní -> studená, archivní -> horká nebo studená -> horká), operace se fakturuje jako čtení ze zdrojové úrovně. Účtují se poplatky za operace čtení (za 10 000) a načítání dat (za GB) pro zdrojovou úroveň.
+Když se objekt blob přesune do chladnější úrovně (horká -> studená, horká -> archivní nebo studená -> archivní), operace se fakturuje jako zápis cílové úrovně. Účtují se poplatky za operace zápisu (za 10 000) a zápis dat (za GB) pro cílovou úroveň. Když se objekt blob přesune do teplejší úrovně (archivní -> studená, archivní -> horká nebo studená -> horká), operace se fakturuje jako čtení ze zdrojové úrovně. Účtují se poplatky za operace čtení (za 10 000) a načítání dat (za GB) pro zdrojovou úroveň.
 
 Pokud přepnete úroveň účtu z horké na studenou, budou se vám účtovat operace zápisu (za 10 000) za všechny objekty blob bez nastavené úrovně pouze v účtech GPv2. V účtech Blob Storage to není nijak zpoplatněno. Pokud přepnete svůj účet Blob Storage nebo GPv2 z horké na studenou úroveň, budou se vám účtovat operace čtení (za 10 000) i načítání dat (za GB). Můžou se účtovat také poplatky za předčasné odstranění objektů blob přesunutých ze studené nebo archivní úrovně.
 

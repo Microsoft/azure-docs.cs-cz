@@ -1,6 +1,6 @@
 ---
-title: "Přijímání oznámení, když hodnota metriky splní určitou podmínku | Dokumentace Microsoftu"
-description: "Úvodní příručka, pomocí které můžou uživatelé vytvořit metriku pro aplikaci logiky."
+title: Přijímání oznámení, když hodnota metriky splní určitou podmínku | Dokumentace Microsoftu
+description: Úvodní příručka, pomocí které můžou uživatelé vytvořit metriku pro aplikaci logiky.
 author: anirudhcavale
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 3c1a6271d0cb2157cb23f1dd4193eadba2c1679b
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 0bbb7d7036c18675a64171a8bbf5c7fa46d53336
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Přijímání oznámení, když hodnota metriky splní určitou podmínku
 
@@ -34,20 +34,20 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyhledejte a vyberte **Aplikace logiky**. Klikněte na tlačítko **Vytvořit**.
 
-3. Zadejte informace o aplikaci logiky, jak je znázorněno na následujícím obrázku.  Použijte výchozí umístění. Zaškrtněte možnost **Připnout na řídicí panel**.  Jakmile budete hotovi, klikněte na **Vytvořit**. 
+3. Zadejte název myLogicApp a skupinu prostředků myResourceGroup. Použijte své předplatné.  Použijte výchozí umístění. Zaškrtněte možnost **Připnout na řídicí panel**.  Jakmile budete hotovi, klikněte na **Vytvořit**. 
 
-    ![Zadání základních informací o aplikaci logiky na portálu](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
+    ![Zadání základních informací o aplikaci logiky na portálu](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
 
 
 4. Aplikace logiky by měla být připnutá na řídicím panelu. Kliknutím na aplikaci logiky do ní přejděte.
 
 5. Na panelu aplikace logiky vyberte **Návrhář aplikace logiky**.
 
-     ![Vytvoření triggeru opakování v návrháři aplikace logiky na panelu portálu](./media/monitoring-quick-resource-metric-alert-portal/logic-app-designer.png)  
+     ![Vytvoření triggeru opakování v návrháři aplikace logiky na panelu portálu](./media/monitor-quick-resource-metric-alert-portal/logic-app-designer.png)  
 
 6. Nastavte hodnoty podle následujícího diagramu.
 
-    ![Konfigurace triggeru aplikace logiky na panelu portálu](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-triggers.png). 
+    ![Konfigurace triggeru aplikace logiky na panelu portálu](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-triggers.png). 
 
 7. V návrháři vyberte trigger **Opakování**.
 
@@ -75,7 +75,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 5. Nyní byste měli vidět, jak graf vykresluje celkový počet běhů, které vaše aplikace logiky spustila za poslední hodinu. Pokud se žádné nezobrazí, ujistěte se, že jste počkali alespoň 5 minut, jak je uvedeno v předchozím kroku. Potok aktualizujte svůj prohlížeč. 
 
-    ![Vykreslování grafu metrik pro prostředek aplikace logiky](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
+    ![Vykreslování grafu metrik pro prostředek aplikace logiky](./media/monitor-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
 
 ## <a name="create-a-metric-alert-for-your-logic-app"></a>Vytvoření upozornění metriky pro aplikaci logiky
 
@@ -87,7 +87,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 4. Nakonec v části **Další e-maily správce** zadejte svou e-mailovou adresu. Toto upozornění zajišťuje, že obdržíte e-mail v případě, že ve vaší aplikaci logiky dojde během 5 minut k více než 10 běhům, které selžou.
 
-    ![Konfigurace upozornění aplikace logiky na panelu portálu](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metrics-alert-portal.png)
+    ![Konfigurace upozornění aplikace logiky na panelu portálu](./media/monitor-quick-resource-metric-alert-portal/logic-app-metrics-alert-portal.png)
 
 ## <a name="receive-metric-alert-notifications-for-your-logic-app"></a>Přijímání oznámení na upozornění metrik pro aplikaci logiky
 1. Během chvíle byste měli od odesilatele Microsoft Azure Alerts obdržet e-mail s informací o aktivaci upozornění.

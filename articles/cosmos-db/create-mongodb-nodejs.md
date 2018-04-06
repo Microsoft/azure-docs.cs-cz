@@ -1,31 +1,31 @@
 ---
-title: "Připojení aplikace MongoDB ke službě Azure Cosmos DB pomocí Node.js | Dokumentace Microsoftu"
-description: "Naučte se připojovat stávající aplikaci MongoDB s podporou Node.js ke službě Azure Cosmos DB"
+title: Připojení aplikace MongoDB ke službě Azure Cosmos DB pomocí Node.js | Dokumentace Microsoftu
+description: Naučte se připojovat stávající aplikaci MongoDB s podporou Node.js ke službě Azure Cosmos DB
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc, devcenter
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: mimig
-ms.openlocfilehash: 1b63c56e055a6dd5220a6c5e8050d493390e9168
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6357e1f71d96a1ec4894f9cf1130fc1e8808d3f4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Služba Azure Cosmos DB: Migrace stávající webové aplikace MongoDB s podporou Node.js 
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
 
-Tento rychlý start popisuje způsob použití stávající aplikace [MongoDB](mongodb-introduction.md) napsané v Node.js a připojení ke službě Azure Cosmos DB, která podporuje připojení klienta MongoDB. Jinými slovy: aplikace Node.js ví pouze to, že se připojuje k databázi pomocí rozhraní API MongoDB. V aplikaci se transparentně zobrazuje, že data jsou uložena ve službě Azure Cosmos DB.
+Tento rychlý start popisuje způsob použití stávající aplikace MongoDB napsané v Node.js a její připojení k databázi Azure Cosmos DB, která podporuje klientská připojení MongoDB pomocí rozhraní [MongoDB API](mongodb-introduction.md). Jinými slovy: aplikace Node.js ví pouze to, že se připojuje k databázi pomocí rozhraní API MongoDB. V aplikaci se transparentně zobrazuje, že data jsou uložena ve službě Azure Cosmos DB.
 
 Po dokončení budete mít ve službě [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) spuštěnou aplikaci MEAN (MongoDB, Express, Angular a Node.js). 
 

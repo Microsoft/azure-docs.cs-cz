@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: db112f7f8f486093509a86f9781c30133925c25f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7ea0ae9c0c071a08c9ff99587cd8c5dc8034fe69
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="create-a-container-registry-using-the-azure-portal"></a>Vytvoření registru kontejnerů pomocí webu Azure Portal
+# <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>Rychlý start: Vytvoření registru kontejnerů pomocí webu Azure Portal
 
 Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete ukládat a spravovat privátní image kontejnerů Dockeru. V tomto rychlém startu pomocí webu Azure Portal vytvoříte registr kontejneru, nasdílíte do registru image kontejneru a nakonec nasadíte kontejner z registru do služby Azure Container Instances (ACI).
 

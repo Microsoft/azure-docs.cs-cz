@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření první funkce v Azure pomocí Javy a Mavenu | Dokumentace Microsoftu"
-description: "Vytvořte a publikujte do Azure jednoduchou funkci aktivovanou protokolem HTTP pomocí Javy a Mavenu."
+title: Vytvoření první funkce v Azure pomocí Javy a Mavenu | Dokumentace Microsoftu
+description: Vytvořte a publikujte do Azure jednoduchou funkci aktivovanou protokolem HTTP pomocí Javy a Mavenu.
 services: functions
 documentationcenter: na
 author: rloutlaw
@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c0984075cd8e372cce09ea100378dcd4e8cddabe
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 81d9d8790a750f34133f3f00dafc15c56185d7b1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Vytvoření první funkce pomocí Javy a Mavenu (Preview)
 
@@ -34,18 +34,25 @@ Tento rychlý start vás provede vytvořením funkce [bez serveru](https://azure
 ## <a name="prerequisites"></a>Požadavky
 K vývoji aplikace funkcí pomocí Javy potřebujete následující:
 
--  Nejnovější verzi [.NET Core](https://www.microsoft.com/net/core).
 -  [Java Developer Kit](https://www.azul.com/downloads/zulu/) verze 8.
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
 -  [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější.
--  [Node.js](https://nodejs.org/download/) verze 8.6 nebo novější.
+-  [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 > [!IMPORTANT] 
 > Pro dokončení tohoto rychlého startu musí být proměnná prostředí JAVA_HOME nastavená na umístění instalace sady JDK.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalace nástrojů Azure Functions Core
 
-[Nástroje Azure Functions Core 2.0](https://www.npmjs.com/package/azure-functions-core-tools) poskytují místní vývojové prostředí pro psaní, spouštění a ladění funkcí Azure Functions. Nainstalujte nástroje pomocí příkazu [npm](https://www.npmjs.com/), který je součástí [Node.js](https://nodejs.org/).
+[Nástroje Azure Functions Core 2.0](https://www.npmjs.com/package/azure-functions-core-tools) poskytují místní vývojové prostředí pro psaní, spouštění a ladění funkcí Azure Functions. 
+
+Pokud je chcete nainstalovat, přejděte do části [Installing](https://github.com/azure/azure-functions-core-tools#installing) (Instalace) a vyhledejte konkrétní pokyny pro váš zvolený operační systém (Windows, Linux, Mac).
+
+Můžete je nainstalovat také ručně pomocí správce balíčků [npm](https://www.npmjs.com/), který je součástí [Node.js](https://nodejs.org/). Před tím je však potřeba nainstalovat následující požadované součásti:
+
+-  Nejnovější verzi [.NET Core](https://www.microsoft.com/net/core).
+-  [Node.js](https://nodejs.org/download/) verze 8.6 nebo novější.
+
+Pokud chcete pokračovat v instalaci založené na npm, spusťte:
 
 ```
 npm install -g azure-functions-core-tools@core
@@ -185,6 +192,4 @@ Vytvořili jste aplikaci funkcí v Javě s jednoduchým triggerem HTTP a nasadil
 - V [příručce pro vývojáře funkcí v Javě](functions-reference-java.md) najdete další informace o vývoji funkcí v Javě.
 - Do svého projektu můžete přidat další funkce s jinými triggery s použitím cíle Maven `azure-functions:add`.
 - Funkce můžete ladit místně pomocí Visual Studio Code. S nainstalovaným [balíčkem rozšíření Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) a projektem Functions otevřeným ve Visual Studio Code [připojte ladicí program](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations) k portu 5005. Pak v editoru nastavte zarážku a aktivujte vaši funkci, zatímco je místně spuštěná: ![Ladění funkcí ve Visual Studio Code](media/functions-create-java-maven/vscode-debug.png).
-
-
-
+- Funkce můžete ladit vzdáleně pomocí Visual Studio Code. Pokyny najdete v dokumentaci popisující [psaní aplikací bez serveru v Javě](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud).

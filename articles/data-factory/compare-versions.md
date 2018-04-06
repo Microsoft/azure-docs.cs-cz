@@ -1,11 +1,10 @@
 ---
-title: "Porovnání verzí 1 a 2 služby Azure Data Factory | Dokumentace Microsoftu"
-description: "Tento článek porovnává Azure Data Factory V1 a Azure Data Factory V2."
+title: Porovnání verzí 1 a 2 služby Azure Data Factory | Dokumentace Microsoftu
+description: Tento článek porovnává Azure Data Factory V1 a Azure Data Factory V2.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: kromerm
-manager: jhubbard
-editor: spelluru
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/24/2018
 ms.author: makromer
-ms.openlocfilehash: 673bc4e0d1609e445e3d18e7cf516ad532be4bc2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9aed1e903b5af3e5bcf53987ba80c1dcdb06f202
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Porovnání Azure Data Factory V1 a V2
 Tento článek porovnává verzi 1 a 2 Azure Data Factory. Úvodní informace o verzi 1 najdete v tématu [Úvod do Azure Data Factory](v1/data-factory-introduction.md). Úvodní informace o verzi 2 najdete v tématu [Úvod do Azure Data Factory (V2 – preview)](introduction.md).
@@ -112,7 +111,7 @@ Ve verzi 1 implementujete (vlastní) kód aktivity DotNet tak, že projekt kniho
 
 Ve vlastní aktivitě ve verzi 2 nemusíte implementovat rozhraní .NET. Můžete přímo spouštět příkazy, skripty a vlastní kód, který je zkompilovaný jako spustitelný soubor. 
 
-Další informace najdete v tématu věnovaném [rozdílu mezi vlastní aktivitou ve verzi V1 a V2](transform-data-using-dotnet-custom-activity.md#difference-between-custom-activity-in-azure-data-factory-v2-and-custom-dotnet-activity-in-azure-data-factory-v1).
+Další informace najdete v tématu věnovaném [rozdílu mezi vlastní aktivitou ve verzi V1 a V2](transform-data-using-dotnet-custom-activity.md#compare-v2-v1).
 
 ## <a name="sdks"></a>Sady SDK
  Data Factory verze 2 nabízí širší nabídku sad SDK, které můžete použít k vytváření, správě a monitorování kanálů.
@@ -138,6 +137,13 @@ Sady SDK aktualizované pro verzi 2 nejsou zpětně kompatibilní s klienty verz
 | Python SDK | [Ano](quickstart-create-data-factory-python.md) | Ne |
 | Šablona Resource Manageru | [Ano](quickstart-create-data-factory-resource-manager-template.md) | [Ano](data-factory-build-your-first-pipeline-using-arm.md) | 
 
+## <a name="roles-and-permissions"></a>Role a oprávnění
+
+Vytváření a správa podřízených prostředků pro službu Data Factory v2:
+
+-   K vytváření a správě prostředků v2 není možné použít roli přispěvatele služby Data Factory verze 1.
+-   Standardní role přispěvatele ARM vytvořená pro prostředek služby Data Factory je dostatečná k vytváření a správě podřízených prostředků pro službu Data Factory v2 nasazenou pomocí PowerShellu nebo sad SDK. Není však dostatečná k vytváření a správě podřízených prostředků pro službu Data Factory v2 nasazenou z webu Azure Portal nebo pomocí šablony ARM.
+-   Pokud chcete vytvářet a spravovat podřízené prostředky pro službu Data Factory v2 nasazenou z webu Azure Portal nebo pomocí šablony ARM, musíte být členem role Operátor úloh Automation na úrovni skupiny prostředků nebo na úrovni předplatného. Vaše organizace také může vytvořit vlastní roli, která v seznamu Akce obsahuje Microsoft.Resources/deployments/*, jak je popsáno v tématu [Vytváření vlastních rolí pro řízení přístupu na základě role Azure](../active-directory/role-based-access-control-custom-roles.md).
 
 ## <a name="monitoring-experience"></a>Prostředí pro monitorování
 Ve V2 můžete k monitorování datových továren použít také [Azure Monitor](monitor-using-azure-monitor.md). Nové rutiny PowerShellu podporují monitorování prostředí [Integration Runtime](monitor-integration-runtime.md). Verze 1 i 2 podporují vizuální monitorování prostřednictvím monitorovací aplikace, kterou můžete spustit z webu Azure Portal.
