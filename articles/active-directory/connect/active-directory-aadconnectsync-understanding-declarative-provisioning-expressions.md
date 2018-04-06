@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: Výrazů deklarativního zřizování | Microsoft Docs"
-description: "Vysvětluje výrazů deklarativního zřizování."
+title: 'Azure AD Connect: Výrazů deklarativního zřizování | Microsoft Docs'
+description: Vysvětluje výrazů deklarativního zřizování.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
 ms.service: active-directory
 ms.workload: identity
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 797c0949aceea415652a72df5ee23ef9888ab975
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizace Azure AD Connect: Principy výrazů deklarativní zřizování
 Synchronizace Azure AD Connect je založený na deklarativní zřizování poprvé dostupné ve verzi produktu Forefront Identity Manager 2010. Umožňuje implementovat obchodní logiku integrace kompletní identity bez nutnosti napsat zkompilovaný kód.
@@ -80,9 +80,9 @@ Operátory se vyhodnocují zleva doprava a se stejnou prioritou vyhodnocení. To
 Funkce mohou pracovat s jednou hodnotou i více hodnot atributů. Pro více hodnot atributů funkce funguje v každé hodnotě a platí stejnou funkci ke každé hodnotě.
 
 Příklad:  
-`Trim([proxyAddresses])`Proveďte operace Trim každé hodnoty v atributu proxyAddress.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`Pro každou hodnotu s @-sign, nahraďte doméně s @contoso.com.  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Vyhledejte adresu SIP a odebere ji z hodnot.
+`Trim([proxyAddresses])` Proveďte operace Trim každé hodnoty v atributu proxyAddress.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"` Pro každou hodnotu s @-sign, nahraďte doméně s @contoso.com.  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` Vyhledejte adresu SIP a odebere ji z hodnot.
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o konfiguraci modelu v [Principy deklarativní zřizování](active-directory-aadconnectsync-understanding-declarative-provisioning.md).

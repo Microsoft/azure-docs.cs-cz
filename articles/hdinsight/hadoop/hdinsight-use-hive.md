@@ -1,9 +1,9 @@
 ---
 title: Co je Apache Hive a HiveQL - Azure HDInsight | Microsoft Docs
-description: "Apache Hive je systém datového skladu pro Hadoop. Můžete dát dotaz na data uložená v Hive pomocí HiveQL, který podobná Transact-SQL. V tomto dokumentu další informace o použití Hive a HiveQL s Azure HDInsight."
-keywords: "hiveql, co je hive, hadoop hiveql, postup používání hive, přečtěte si, hive, co je hive"
+description: Apache Hive je systém datového skladu pro Hadoop. Můžete dát dotaz na data uložená v Hive pomocí HiveQL, který podobná Transact-SQL. V tomto dokumentu další informace o použití Hive a HiveQL s Azure HDInsight.
+keywords: hiveql, co je hive, hadoop hiveql, postup používání hive, přečtěte si, hive, co je hive
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -18,10 +18,10 @@ ms.workload: big-data
 ms.date: 01/26/2018
 ms.author: larryfr
 ms.openlocfilehash: afd2bc95beb2458ec149824723ec62381b31b2da
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL v Azure HDInsight?
 
@@ -78,7 +78,7 @@ STORED AS TEXTFILE LOCATION '/example/data/';
 
 Hive podporuje i vlastní **serializátor/deserializers (SerDe)** složitý nebo nepravidelně strukturovaných dat. Další informace najdete v tématu [použití vlastní SerDe JSON s HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx) dokumentu.
 
-Další informace o souboru formátů podporovaných Hive naleznete v tématu [jazyk ručně (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+Další informace o souboru formátů podporovaných Hive naleznete v tématu [ruční (jazykhttps://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
 ### <a name="hive-internal-tables-vs-external-tables"></a>Interní tabulky vs externích tabulek Hive
 

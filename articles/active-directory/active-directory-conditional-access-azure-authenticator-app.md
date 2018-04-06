@@ -1,11 +1,11 @@
 ---
 title: Azure Authenticator pro Android | Microsoft Docs
-description: "Aplikace Microsoft Azure Authenticator lze použít k přihlášení pro přístup k pracovním prostředkům. Aplikace Azure Authenticator vás čekající dvoufaktorové ověření požadavku upozorní zobrazením upozornění na vaše mobilní zařízení."
+description: Aplikace Microsoft Azure Authenticator lze použít k přihlášení pro přístup k pracovním prostředkům. Aplikace Azure Authenticator vás čekající dvoufaktorové ověření požadavku upozorní zobrazením upozornění na vaše mobilní zařízení.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: b7ceca0d-5c9d-45c4-942c-b3a9b6bad36c
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
 ms.openlocfilehash: 349649e015aae7198d2c40efc3c1865cad087e8a
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-authenticator-for-android"></a>Azure Authenticator pro Android
 Váš správce IT vám možná doporučil vám používat Microsoft Azure Authenticator k přihlášení pro přístup k prostředkům na pracovišti. Tuto aplikaci nabízí tyto dvě možnosti, přihlášení:

@@ -1,11 +1,11 @@
 ---
-title: "Pomocí Azure CDN CORS | Microsoft Docs"
-description: "Další informace o použití Azure Content Delivery Network (CDN) k s sdílení prostředků různých původů (CORS)."
+title: Pomocí Azure CDN CORS | Microsoft Docs
+description: Další informace o použití Azure Content Delivery Network (CDN) k s sdílení prostředků různých původů (CORS).
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
 ms.service: cdn
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="using-azure-cdn-with-cors"></a>Azure CDN pomocí CORS
 ## <a name="what-is-cors"></a>Co je CORS?
@@ -29,13 +29,13 @@ Existují dva typy požadavků CORS *jednoduchých požadavků* a *komplexní po
 
 ### <a name="for-simple-requests"></a>Pro jednoduché požadavky:
 
-1. Prohlížeč odešle požadavek CORS s další **původu** hlavičku požadavku HTTP. Hodnotu této hlavičky je původ, který obsluhuje nadřazená stránka, která je definována jako kombinace *protokol,* *domény,* a *portu.*  Když stránku z https://www.contoso.com pokusí o přístup k datům uživatele v původu fabrikam.com, bude odesláno následující hlavičky žádosti na fabrikam.com:
+1. Prohlížeč odešle požadavek CORS s další **původu** hlavičku požadavku HTTP. Hodnotu této hlavičky je původ, který obsluhuje nadřazená stránka, která je definována jako kombinace *protokol,* *domény,* a *portu.*  Pokud na stránce z https://www.contoso.com pokusy o přístup k datům uživatele v fabrikam.com počátek, následující hlavičku požadavku, které mají být odeslány na fabrikam.com:
 
    `Origin: https://www.contoso.com`
 
 2. Server odpoví některé z následujících:
 
-   * **Access-Control-Allow-Origin** hlavičky v odpovědi označující původ lokality, která je povolena. Například:
+   * **Access-Control-Allow-Origin** hlavičky v odpovědi označující původ lokality, která je povolena. Příklad:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 

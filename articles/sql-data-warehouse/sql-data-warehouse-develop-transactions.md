@@ -1,11 +1,11 @@
 ---
 title: Transakce v SQL Data Warehouse | Microsoft Docs
-description: "Tipy pro provádění transakcí v Azure SQL Data Warehouse na vývoj řešení."
+description: Tipy pro provádění transakcí v Azure SQL Data Warehouse na vývoj řešení.
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ae621788-e575-41f5-8bfe-fa04dc4b0b53
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 ms.openlocfilehash: 29d53e18539f2c24dd64090b2ac6f9dd4c783961
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="transactions-in-sql-data-warehouse"></a>Transakce v SQL Data Warehouse
 Jak jste zvyklí, SQL Data Warehouse podporuje transakce v rámci úlohy datového skladu. Ale zajistit, že výkon služby SQL Data Warehouse je udržován na úrovni škálování některé funkce omezeny ve srovnání s systému SQL Server. V tomto článku klade důraz rozdíly a uvádí ostatní. 
@@ -38,7 +38,7 @@ V následující tabulce následující předpoklady byly provedeny:
 | [DWU][DWU] | Cap za distribuční (GiB) | Počet distribuce | MAXIMÁLNÍ velikost transakce (GiB) | # Řádků na jeden distribuce | Maximální počet řádků na transakci |
 | --- | --- | --- | --- | --- | --- |
 | OD DW100 |1 |60 |60 |4,000,000 |240,000,000 |
-| DW200 |1.5 |60 |90 |6 000 000 |360,000,000 |
+| DW200 |1,5 |60 |90 |6 000 000 |360,000,000 |
 | DW300 |2.25 |60 |135 |9,000,000 |540,000,000 |
 | DW400 |3 |60 |180 |12,000,000 |720,000,000 |
 | DW500 |3.75 |60 |225 |15,000,000 |900,000,000 |
@@ -175,7 +175,7 @@ Ty jsou následující:
 * Žádné označené transakce
 * Žádná podpora pro DDL jako `CREATE TABLE` uvnitř uživatele definované transakce
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o optimalizaci transakce, najdete v části [transakce osvědčené postupy][Transactions best practices].  Další informace o ostatní osvědčené postupy pro SQL Data Warehouse najdete v tématu [osvědčené postupy pro SQL Data Warehouse][SQL Data Warehouse best practices].
 
 <!--Image references-->

@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric výkonu monitorování | Microsoft Docs"
-description: "Další informace o čítače výkonu pro monitorování a Diagnostika Azure Service Fabric clusterů."
+title: Azure Service Fabric výkonu monitorování | Microsoft Docs
+description: Další informace o čítače výkonu pro monitorování a Diagnostika Azure Service Fabric clusterů.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: b19a2db85b2e1cc4c5f79f6b0dee97965f40ef88
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="performance-metrics"></a>Metriky výkonu
 
@@ -30,20 +30,20 @@ Pro počítače v clusteru vezměte v úvahu shromažďování následující č
 
 | Kategorie čítače | Název čítače |
 | --- | --- |
-| Fyzický disk (na disku) | Střední Délka fronty disku pro čtení |
-| Fyzický disk (na disku) | Střední Délka fronty disku zápisu |
-| Fyzický disk (na disku) | Střední Doba disku/čtení |
-| Fyzický disk (na disku) | Střední Doba disku/zápis |
-| Fyzický disk (na disku) | Čtení disku/s |
-| Fyzický disk (na disku) | Čtení z disku bajtů/s |
-| Fyzický disk (na disku) | Zápis disku/s |
-| Fyzický disk (na disku) | Bajty zapisování na disk/s |
+| PhysicalDisk(per Disk) | Střední Délka fronty disku pro čtení |
+| PhysicalDisk(per Disk) | Střední Délka fronty disku zápisu |
+| PhysicalDisk(per Disk) | Střední Doba disku/čtení |
+| PhysicalDisk(per Disk) | Střední Doba disku/zápis |
+| PhysicalDisk(per Disk) | Čtení disku/s |
+| PhysicalDisk(per Disk) | Bajty čtení z disku/s |
+| PhysicalDisk(per Disk) | Zápis disku/s |
+| PhysicalDisk(per Disk) | Bajty zapisování na disk/s |
 | Memory (Paměť) | Počet MB k dispozici |
 | Soubor stránkování | % Využití |
 | Processor(Total) | % Času procesoru |
 | Proces (pro službu) | % Času procesoru |
 | Proces (pro službu) | ID procesu |
-| Proces (pro službu) | Soukromé bajty |
+| Proces (pro službu) | Privátní bajty |
 | Proces (pro službu) | Počet vláken |
 | Proces (pro službu) | Virtuální bajty |
 | Proces (pro službu) | Pracovní sada |
@@ -80,7 +80,7 @@ Pokud používáte spolehlivé služby, podobně jako máme `Service Fabric Serv
 Pokud používáte spolehlivé kolekcí, doporučujeme přidání `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` ke shromažďování latenci průměrná potvrzení za metrika transakce.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o [generování událostí na úrovni platformy](service-fabric-diagnostics-event-generation-infra.md) v Service Fabric
 * Shromažďování metrik výkonu prostřednictvím [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md)

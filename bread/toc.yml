@@ -132,9 +132,24 @@
       tocHref: '/azure/#pivot=products&panel=ai'
       topicHref: '/azure/#pivot=products&panel=ai'
       items:
+        - name: Automatické návrhy Bingu
+          tocHref: /azure/cognitive-services/Bing-Autosuggest/
+          topicHref: /azure/cognitive-services/Bing-Autosuggest/
         - name: Vlastní vyhledávání Bingu
           tocHref: /azure/cognitive-services/bing-custom-search/
           topicHref: /azure/cognitive-services/bing-custom-search/
+        - name: Vyhledávání entit Bingu
+          tocHref: /azure/cognitive-services/bing-entities-search/
+          topicHref: /azure/cognitive-services/bing-entities-search/
+        - name: Vyhledávání obrázků Bingu
+          tocHref: /azure/cognitive-services/bing-image-search/
+          topicHref: /azure/cognitive-services/bing-image-search/
+        - name: Vyhledávání zpráv Bingu
+          tocHref: /azure/cognitive-services/bing-news-search/
+          topicHref: /azure/cognitive-services/bing-news-search/
+        - name: Vyhledávání videí Bingu
+          tocHref: /azure/cognitive-services/Bing-Video-Search/
+          topicHref: /azure/cognitive-services/Bing-Video-Search/
         - name: Webové vyhledávání Bingu
           tocHref: /azure/cognitive-services/bing-web-search/
           topicHref: /azure/cognitive-services/bing-web-search/
@@ -144,6 +159,9 @@
         - name: Počítačové zpracování obrazu
           tocHref: /azure/cognitive-services/computer-vision/
           topicHref: /azure/cognitive-services/computer-vision/
+        - name: Custom Decision Service
+          tocHref: /azure/cognitive-services/custom-decision-service/custom-decision-service-overview/
+          topicHref: /azure/cognitive-services/custom-decision-service/custom-decision-service-overview/
         - name: Custom Speech Service
           tocHref: /azure/cognitive-services/custom-speech-service/
           topicHref: /azure/cognitive-services/custom-speech-service/
@@ -151,23 +169,26 @@
           tocHref: /azure/cognitive-services/custom-vision-service/
           topicHref: /azure/cognitive-services/custom-vision-service/
         - name: Emoce
-          tocHref: /azure/cognitive-services/emotion/home
-          topicHref: /azure/cognitive-services/emotion/home
+          tocHref: /azure/cognitive-services/emotion/home/
+          topicHref: /azure/cognitive-services/emotion/home/
         - name: Tvář
           tocHref: /azure/cognitive-services/face/
           topicHref: /azure/cognitive-services/face/
         - name: Rozpoznávání jazyka (LUIS)
           tocHref: /azure/cognitive-services/LUIS/
           topicHref: /azure/cognitive-services/LUIS/
+        - name: QnA Maker
+          tocHref: /azure/cognitive-services/qnamaker/home/
+          topicHref: /azure/cognitive-services/qnamaker/home/
         - name: Analýza textu
           tocHref: /azure/cognitive-services/text-analytics/
-          topicHref: /azure/cognitive-services/text-analytics/overview
+          topicHref: /azure/cognitive-services/text-analytics/
         - name: Video Indexer
-          tocHref: /azure/cognitive-services/video-indexer/video-indexer-overview
-          topicHref: /azure/cognitive-services/video-indexer/video-indexer-overview
+          tocHref: /azure/cognitive-services/video-indexer/video-indexer-overview/
+          topicHref: /azure/cognitive-services/video-indexer/video-indexer-overview/
         - name: Content Moderator
-          tocHref: /azure/cognitive-services/content-moderator/overview
-          topicHref: /azure/cognitive-services/content-moderator/overview
+          tocHref: /azure/cognitive-services/content-moderator/overview/
+          topicHref: /azure/cognitive-services/content-moderator/overview/
     - name: Konektory
       tocHref: /azure/connectors/
       topicHref: /azure/connectors/
