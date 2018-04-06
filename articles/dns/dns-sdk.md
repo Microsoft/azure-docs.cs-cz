@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření zóny DNS a sady záznamů v Azure DNS pomocí sady .NET SDK | Microsoft Docs"
-description: "Postup vytvoření zóny DNS a sady záznamů v Azure DNS pomocí .NET SDK."
+title: Vytvoření zóny DNS a sady záznamů v Azure DNS pomocí sady .NET SDK | Microsoft Docs
+description: Postup vytvoření zóny DNS a sady záznamů v Azure DNS pomocí .NET SDK.
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: jonatul
 ms.openlocfilehash: c0fb0be8da1c0ca48a4d43ea027d30a0bc17fe30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Vytvoření zóny DNS a sad záznamů pomocí sady .NET SDK
 
@@ -41,7 +41,7 @@ Obvykle je programový přístup k prostředkům Azure udělit prostřednictvím
 Pokud chcete používat .NET SDK služby Azure DNS, musíte nainstalovat **Knihovna správy Azure DNS** balíček NuGet a další požadované balíčky Azure.
 
 1. V **Visual Studio**, otevřete projekt nebo nový projekt.
-2. Přejděte na **nástroje**  **>**  **Správce balíčků NuGet**  **>**  **spravovat balíčky NuGet pro řešení...** .
+2. Přejděte na **nástroje** **>** **Správce balíčků NuGet** **>** **spravovat balíčky NuGet pro řešení...** .
 3. Klikněte na tlačítko **Procházet**, povolte **zahrnout předběžné verze** zaškrtávací políčko a typ **Microsoft.Azure.Management.Dns** do vyhledávacího pole.
 4. Vyberte balíček a klikněte na tlačítko **nainstalovat** tím ho přidáte do projektu sady Visual Studio.
 5. Opakujte tento postup výše a také instalace následujících balíčků: **Microsoft.Rest.ClientRuntime.Azure.Authentication** a **Microsoft.Azure.Management.ResourceManager**.
@@ -162,6 +162,6 @@ while (page.NextPageLink != null)
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Stažení [.NET SDK služby Azure DNS ukázkového projektu](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True), který obsahuje další příklady použití DNS .NET SDK služby Azure, včetně příkladů pro jiné typy záznamů DNS.

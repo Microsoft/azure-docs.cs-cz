@@ -1,9 +1,9 @@
 ---
-title: "Správa účtu Azure Cosmos DB prostřednictvím portálu Azure | Microsoft Docs"
-description: "Zjistěte, jak spravovat váš účet Azure Cosmos DB prostřednictvím portálu Azure. Najít průvodce na pomocí portálu Azure k zobrazení, kopírování, odstranění a přístup k účtům."
+title: Správa účtu Azure Cosmos DB prostřednictvím portálu Azure | Microsoft Docs
+description: Zjistěte, jak spravovat váš účet Azure Cosmos DB prostřednictvím portálu Azure. Najít průvodce na pomocí portálu Azure k zobrazení, kopírování, odstranění a přístup k účtům.
 keywords: Azure Portal, azure, Microsoft azure
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: kirillg
 manager: jhubbard
 editor: cgronlun
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: kirillg
 ms.openlocfilehash: e5820cb17cfbaa15f10f24881f02a37aec617267
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>Správa účtu Azure Cosmos DB
 Zjistěte, jak nastavit globální konzistence, práce s klíči a odstranit účet Azure Cosmos DB na portálu Azure.
@@ -50,7 +50,7 @@ Klíče jen pro čtení jsou také k dispozici na této stránce. Čtení a dota
 ### <a name="copy-an-access-key-or-password-in-the-azure-portal"></a>Zkopírování přístupového klíče nebo hesla na portálu Azure
 Na **klíče** stránky (nebo **připojovací řetězec** stránku pro účty MongoDB rozhraní API), klikněte na tlačítko **kopie** tlačítko napravo od klíče nebo hesla, které chcete kopírovat.
 
-![Zobrazení a zkopírování přístupového klíče v Azure stránky portálu, klíče](./media/manage-account/copykeys.png)
+![Zobrazení a zkopírování přístupového klíče na portálu Azure na stránce Klíče](./media/manage-account/copykeys.png)
 
 ### <a name="regenerate-access-keys-and-passwords"></a>Opětovné vytváření přístupových klíčů a hesel
 Měli byste změnit přístupové klávesy (a hesla pro účty MongoDB rozhraní API) ke svému účtu Azure Cosmos DB pravidelně zvýšení zabezpečení připojení. Dva přístup klíče a hesla jsou přiřazeny k vám umožní zachovat připojení k účtu Azure Cosmos DB používat jeden přístupový klíč, zatímco si znovu vygenerujete druhý přístupový klíč.
@@ -86,7 +86,7 @@ Pokud chcete načíst připojovací řetězec, postupujte takto:
 
 Pokud používáte připojovací řetězec [nástroj pro migraci databáze Azure Cosmos DB](import-data.md), připojte na konec připojovací řetězec název databáze. `AccountEndpoint=< >;AccountKey=< >;Database=< >`.
 
-## <a id="delete"></a>Odstranit účet Azure Cosmos DB
+## <a id="delete"></a> Odstranit účet Azure Cosmos DB
 Chcete-li odebrat účet pro Azure Cosmos DB z portálu Azure, který už nepoužíváte, klikněte pravým tlačítkem na název účtu a klikněte na **odstranit účet**.
 
 ![Postup odstranění účtu Azure Cosmos DB na portálu Azure](./media/manage-account/deleteaccount.png)

@@ -1,8 +1,8 @@
 ---
-title: "Spravovat účty pro správu přístupu nouze ve službě Azure AD | Microsoft Docs"
-description: "Tento článek popisuje, jak použít účty pro nouzový přístup umožňující organizacím omezit privilegovaný přístup v rámci stávajícího prostředí Azure Active Directory."
+title: Spravovat účty pro správu přístupu nouze ve službě Azure AD | Microsoft Docs
+description: Tento článek popisuje, jak použít účty pro nouzový přístup umožňující organizacím omezit privilegovaný přístup v rámci stávajícího prostředí Azure Active Directory.
 services: active-directory
-keywords: "Nemáte přidat nebo upravit klíčová slova bez konzultace ohledně specialistou na SEO."
+keywords: Nepřidávejte ani neupravujte klíčová slova, aniž byste se poradili se svým odborníkem na SEO.
 author: markwahl-msft
 ms.author: billmath
 ms.date: 12/13/2017
@@ -12,10 +12,10 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.openlocfilehash: 1545fb9a89794a74efbb855c4480040973c3308e
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>Spravovat účty pro správu přístupu nouze ve službě Azure AD 
 

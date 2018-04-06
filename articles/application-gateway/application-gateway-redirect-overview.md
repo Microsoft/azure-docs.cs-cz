@@ -1,11 +1,11 @@
 ---
-title: "Přesměrování přehled Azure Application Gateway. | Microsoft Docs"
-description: "Další informace o funkci přesměrování v Azure Application Gateway"
+title: Přesměrování přehled Azure Application Gateway. | Microsoft Docs
+description: Další informace o funkci přesměrování v Azure Application Gateway
 services: application-gateway
 documentationcenter: na
 author: amsriva
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: amsriva
 ms.openlocfilehash: ea9ae8373ff67bf9557b06bbc8a4b0d82a03e2d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="application-gateway-redirect-overview"></a>Přehled přesměrování brány aplikace
 
@@ -32,6 +32,6 @@ Běžný scénář pro mnoho webových aplikací je podpora automatického HTTP 
 
 Díky této změně by zákazníci muset vytvořit nový objekt přesměrování konfigurace, který určuje naslouchací proces cílové nebo externí web, ke kterému se požaduje přesměrování. Konfigurační element také podporuje možnosti Povolit připojení řetězce identifikátoru URI cesta a dotaz k přesměrované adresy URL. Zákazníci mohou také zvolte, jestli je přesměrování dočasného (kód stavu HTTP 302) nebo trvalé přesměrování (kód stavu protokolu HTTP 301). Po vytvoření této konfigurace přesměrování je připojený k zdroj naslouchací proces prostřednictvím nové pravidlo. Pokud používáte základní pravidlo, konfigurace přesměrování je přidružený naslouchací proces zdroje a globální přesměrování. Při použití pravidla na základě cesty konfigurace přesměrování je definován na mapě cestu adresy URL a proto se vztahuje pouze na konkrétní cestu oblasti lokality.
 
-### <a name="next-steps"></a>Další kroky
+### <a name="next-steps"></a>Další postup
 
 [Konfigurace adresy URL přesměrování na služby application gateway](application-gateway-configure-redirect-powershell.md)

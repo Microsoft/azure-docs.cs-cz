@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: Problémů s připojením | Microsoft Docs"
-description: "Vysvětluje, jak chcete-li vyřešit potíže se službou Azure AD Connect."
+title: 'Azure AD Connect: Problémů s připojením | Microsoft Docs'
+description: Vysvětluje, jak chcete-li vyřešit potíže se službou Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
 ms.service: active-directory
 ms.workload: identity
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 1c8bbbde653ed8e927ab1550c32ae86a4dc2ffac
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Řešení potíží s připojením službou Azure AD Connect
 Tento článek vysvětluje, jak funguje připojení mezi Azure AD Connect a službou Azure AD a jak vyřešit problémy s připojením. Tyto problémy budou pravděpodobně se zobrazí v prostředí s proxy serverem.
@@ -40,7 +40,7 @@ Proxy server musí mít také otevřít požadované adresy URL. Oficiální sez
 
 Tyto adresy URL v následující tabulce je absolutní minimum, abyste mohli připojit ke službě Azure AD ve všech. Tento seznam neobsahuje žádné volitelné funkce, jako je například zpětný zápis hesla nebo Azure AD Connect Health. Je popsané v tomto poli při řešení potíží pro počáteční konfiguraci.
 
-| Adresa URL | Port | Popis |
+| zprostředkovatele identity | Port | Popis |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Používá ke stahování seznamů CRL. |
 | \*.verisign.com |HTTP/80 |Používá ke stahování seznamů CRL. |
@@ -75,7 +75,7 @@ Tato chyba se zobrazí, pokud koncový bod **https://secure.aadcdn.microsoftonli
 Pokud Průvodce instalací byl úspěšný v připojení k Azure AD, ale heslo samotné nelze ověřit, že se zobrazí tato chyba:  
 ![BadPassword](./media/active-directory-aadconnect-troubleshoot-connectivity/badpassword.png)
 
-* Heslo je dočasné heslo a je třeba změnit? Je ve skutečnosti správné heslo? Pokuste se přihlásit k https://login.microsoftonline.com (na jiném počítači než server Azure AD Connect) a ověřte, že účet je možné použít.
+* Heslo je dočasné heslo a je třeba změnit? Je ve skutečnosti správné heslo? Zkuste se přihlásit k https://login.microsoftonline.com (na jiném počítači než server Azure AD Connect) a ověřte účet je možné použít.
 
 ### <a name="verify-proxy-connectivity"></a>Ověřte připojení k proxy serveru
 Pokud chcete ověřit, zda má server Azure AD Connect skutečné připojení k proxy serveru a Internet, použijte některé PowerShell zobrazíte, pokud proxy server umožňuje webových požadavků nebo ne. V příkazovém řádku prostředí PowerShell, spusťte `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`. (Technicky prvním volání je https://login.microsoftonline.com a tento identifikátor URI funguje stejně, ale jiné URI se rychleji reagovat.)
@@ -101,7 +101,7 @@ Pokud Azure AD Connect odešle žádost o export do služby Azure AD, Azure AD m
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Vzor komunikace mezi Azure AD Connect a službou Azure AD
 Pokud jste provedli všechny předchozí kroky a pořád nemůžete připojit, může v tuto chvíli spustit vyhledávání v síťových protokolech. Tato část je dokumentace se vzorem normálního a úspěšné připojení. Je také je výpis běžné red herrings, které můžete ignorovat při čtení protokoly sítě.
 
-* There are calls to https://dc.services.visualstudio.com. Není nutné mít tuto adresu URL, otevřete v proxy server pro instalace proběhla úspěšně a těchto volání můžete ignorovat.
+* Existují volání https://dc.services.visualstudio.com. Není nutné mít tuto adresu URL, otevřete v proxy server pro instalace proběhla úspěšně a těchto volání můžete ignorovat.
 * Uvidíte, že překlad názvů dns uvádí skutečné hostitelů v nsatc.net místo názvu DNS a jiných oborech názvů není v části microsoftonline.com. Ale na serveru skutečné názvy nejsou k dispozici žádné žádosti webové služby a není třeba přidávat tyto adresy URL k proxy serveru.
 * Koncové body adminwebservice a provisioningapi jsou koncové body pro zjišťování a použít k vyhledání skutečný koncový bod používat. Tyto koncové body se liší v závislosti na vaší oblasti.
 
@@ -110,7 +110,7 @@ Tady je výpis z protokolu skutečné proxy serveru a na stránku průvodce inst
 
 **Připojení k Azure AD**
 
-| Čas | Adresa URL |
+| Čas | zprostředkovatele identity |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -121,7 +121,7 @@ Tady je výpis z protokolu skutečné proxy serveru a na stránku průvodce inst
 
 **Konfigurace**
 
-| Čas | Adresa URL |
+| Čas | zprostředkovatele identity |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
@@ -137,7 +137,7 @@ Tady je výpis z protokolu skutečné proxy serveru a na stránku průvodce inst
 
 **Počáteční synchronizace**
 
-| Čas | Adresa URL |
+| Čas | zprostředkovatele identity |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |

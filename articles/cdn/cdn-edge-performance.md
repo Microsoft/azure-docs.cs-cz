@@ -1,11 +1,11 @@
 ---
-title: "Analýza výkonu hraničního uzlu v Azure CDN | Microsoft Docs"
-description: "Analýza výkonu hraničního uzlu v Microsoft Azure CDN. Analýza výkonu Edge poskytuje podrobné informace o provozu a využití šířky pásma pro CDN."
+title: Analýza výkonu hraničního uzlu v Azure CDN | Microsoft Docs
+description: Analýza výkonu hraničního uzlu v Microsoft Azure CDN. Analýza výkonu Edge poskytuje podrobné informace o provozu a využití šířky pásma pro CDN.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8cc596a7-3e01-4f76-af7b-a05a1421517e
 ms.service: cdn
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: ad285b4e2226c85859acb22ba214cc44c77c08e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analýza výkonu hraničního uzlu v Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -120,7 +120,7 @@ Tento řídicí panel se skládá z:
 | Rychlost komprimované požadavků |Informuje o procentu přístupů, které byly dodány od CDN (servery edge) žadateli (např. webový prohlížeč) v komprimovaném formátu. |
 | Míra chyb 4xx |Informuje o procentu přístupů, které generuje stavový kód 4xx. |
 | Míra chyb 5xx |Informuje o procentu přístupů, které generuje 5xx stavový kód. |
-| Přístupů |Určuje počet požadavků na obsahu CDN. |
+| Přístupy |Určuje počet požadavků na obsahu CDN. |
 
 #### <a name="secure-traffic-metrics"></a>Zabezpečený provoz metriky
 Účelem tyto metriky je sledovat výkon CDN pro komunikaci přes protokol HTTPS.
@@ -152,9 +152,9 @@ Každou sestavu v tomhle module obsahuje graf a statistiku využití šířky p�
 | Hodinové souhrn |Umožňuje zobrazit každou hodinu provoz trendy za zadané časové období. Každý pruh na tomto grafu představuje jednu hodinu v konkrétní datum. Velikost panelu určuje celkový počet přístupů, které došlo k chybě danou dobu. |
 | Protokoly |Zobrazí výčet provozu mezi protokoly HTTP a HTTPS. Graf prstenec informuje o procentu přístupů, které pro každý typ protokolu došlo k chybě. |
 | Metody HTTP |Umožňuje získáte rychlý přehled HTTP, které metody jsou používány k žádosti o data. Obvykle jsou nejběžnější metody požadavek HTTP GET, POST a HEAD. Graf prstenec informuje o procentu přístupů, které pro každý typ metoda požadavku HTTP došlo k chybě. |
-| Adresy URL |Obsahuje graf zobrazující hlavní 10 požadované adresy URL. Pro každou adresu URL se zobrazí panelu. Výška panelu určuje, kolik přístupů generovaných konkrétní adresu URL přes časové rozpětí předmětem sestavy. Statistika pro prvních 100 požadovaného že adresy URL se zobrazí pod tohoto grafu. |
+| URLs |Obsahuje graf zobrazující hlavní 10 požadované adresy URL. Pro každou adresu URL se zobrazí panelu. Výška panelu určuje, kolik přístupů generovaných konkrétní adresu URL přes časové rozpětí předmětem sestavy. Statistika pro prvních 100 požadovaného že adresy URL se zobrazí pod tohoto grafu. |
 | Záznamů CNAME |Obsahuje graf zobrazující top 10 záznamů CNAME, které slouží k vyžádání prostředky přes časový rozsah sestavy. Statistika pro prvních 100 požadovaného že záznamů CNAME se zobrazí pod tohoto grafu. |
-| Zdroje |Obsahuje graf zobrazující hlavní 10 CDN nebo zákazníků původu servery, ze kterých se požadovaly prostředky v zadaném časovém období. Statistika pro prvních 100 požadovaného přímo níže tohoto grafu se zobrazují servery původu CDN nebo zákazníků. Zákazník počátek servery se identifikují podle názvu definované v možnosti název adresáře. |
+| Počátky |Obsahuje graf zobrazující hlavní 10 CDN nebo zákazníků původu servery, ze kterých se požadovaly prostředky v zadaném časovém období. Statistika pro prvních 100 požadovaného přímo níže tohoto grafu se zobrazují servery původu CDN nebo zákazníků. Zákazník počátek servery se identifikují podle názvu definované v možnosti název adresáře. |
 | Geograficky bodů POP |Zobrazuje, kolik provozu je směrovány přes konkrétní point of presence (POP). Zkratka tří písmen představuje POP v naše síť CDN. |
 | Klienti |Obsahuje graf zobrazující hlavní 10 klientů, kteří požadované prostředky v zadaném časovém období. Pro účely této sestavy jsou považovány za všechny požadavky, které pocházejí z stejnou IP adresu jako ze stejného klienta. Statistika pro horní 100 klientů se zobrazí pod tohoto grafu. Tato sestava je užitečné pro určení aktivity vzory stahování pro horní klienty. |
 | Stavy mezipaměti |Poskytuje podrobné rozpis chování mezipaměti, který může odhalit přístupy pro zlepšení celkové činnost koncového uživatele. Vzhledem k tomu, že nejrychlejší výkon pochází z přístupů k mezipaměti, můžete optimalizovat rychlosti doručování dat minimalizovat Neúspěšné přístupy do mezipaměti a přístupů k mezipaměti vypršela platnost. |
@@ -167,7 +167,7 @@ Každou sestavu v tomhle module obsahuje graf a statistiku využití šířky p�
 | Podrobnosti o TCP_EXPIRED_MISS |Obsahuje graf zobrazující hlavní 10 adresy URL pro zastaralé prostředků, pro které musel být načtena ze zdrojového serveru na novou verzi. Statistiky pro horní 100 adresy URL pro tyto typy prostředků se zobrazí pod tohoto grafu. |
 | Podrobnosti o TCP_CLIENT_REFRESH_MISS |Obsahuje pruhový graf, který zobrazí prvních 10 adresy URL pro prostředky, které byly získány ze zdrojový server z důvodu ne mezipaměti požadavek od klienta. Přímo níže tento graf se zobrazují statistiky pro horní 100 adresy URL pro tyto typy požadavků. |
 | Typy žádostí klienta |Označuje typ požadavků, které byly provedeny podle klientů protokolu HTTP (například prohlížeče). Tato sestava obsahuje prstenec graf, který poskytuje představu o tom, jak dochází ke zpracování požadavků. Informace o šířku pásma a provozu pro každý typ žádosti se zobrazí pod grafem. |
-| Uživatelský Agent |Obsahuje zobrazení top 10 Uživatelští agenti pro vyžádání obsahu prostřednictvím našich CDN pruhový graf. Uživatelský agent je obvykle webový prohlížeč, přehrávač médií nebo prohlížeče mobilního telefonu. Statistika pro horní 100 Uživatelští agenti se zobrazí pod tento graf. |
+| Identifikační řetězec |Obsahuje zobrazení top 10 Uživatelští agenti pro vyžádání obsahu prostřednictvím našich CDN pruhový graf. Uživatelský agent je obvykle webový prohlížeč, přehrávač médií nebo prohlížeče mobilního telefonu. Statistika pro horní 100 Uživatelští agenti se zobrazí pod tento graf. |
 | Odkazující servery |Obsahuje zobrazení top 10 odkazující servery k obsahu přistupovat prostřednictvím našich CDN pruhový graf. Obvykle odkazující server je adresa URL webové stránky nebo prostředek, který obsahuje odkazy na obsah. Podrobné informace najdete níže grafu pro odkazujících prvních 100 serverů. |
 | Typy komprese |Obsahuje prstenec grafu, jež rozdělí požadované prostředky podle jestli byly komprimované servery edge. Procento komprimované prostředky je členěné podle typ komprese použít. Podrobné informace najdete níže grafu pro každý typ komprese a stav. |
 | Typy souborů |Obsahuje pruhový graf zobrazující hlavní typy 10 souborů, které bylo vyzváno prostřednictvím našich CDN pro váš účet. Pro účely této sestavy je definován typ souboru příponu názvu souboru assetu a typ média Internetu (například .html \[text/html\], .htm \[text/html\], .aspx \[text/html\]atd.). Podrobné informace najdete níže grafu pro hlavní typy 100 souborů. |
@@ -182,7 +182,7 @@ Každou sestavu v tomhle module obsahuje graf a statistiku využití šířky p�
 | Chyby 502 |Obsahuje pruhový graf, který vám umožní zobrazit top 10 požadavků, které 502 kód odpovědi Chybná brána. Kód odpovědi 502 Chybná brána nastane, když dojde k chybě protokolu HTTP mezi serverem a proxy serveru HTTP. V případě naší CDN 502 kód odpovědi Chybná brána obvykle dojde v případě neplatnou odpověď na hraniční server vrátí zdrojový server zákazníka. Odpověď je neplatný, pokud nelze analyzovat nebo pokud je neúplný. |
 | Chyby 5xx |Obsahuje pruhový graf, který vám umožní zobrazit top 10 požadavků, které kód odpovědi v rozsahu 500.  Vyloučeny z této sestavy jsou 502 Chybná brána a kódů odpovědi 504 limitu brány. |
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Přehled Azure CDN](cdn-overview.md)
 * [Statistiky v reálném čase v Microsoft Azure CDN](cdn-real-time-stats.md)
 * [Přepsání výchozího nastavení HTTP používá stroj pravidel](cdn-rules-engine.md)

@@ -1,8 +1,8 @@
 ---
-title: "Práce s daty geoprostorové v Azure Cosmos DB | Microsoft Docs"
-description: "Pochopit, jak vytvářet, index a dotaz prostorových objekty s Azure Cosmos DB a rozhraní SQL API."
+title: Práce s daty geoprostorové v Azure Cosmos DB | Microsoft Docs
+description: Pochopit, jak vytvářet, index a dotaz prostorových objekty s Azure Cosmos DB a rozhraní SQL API.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
 editor: monicar
@@ -16,10 +16,10 @@ ms.date: 10/20/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3e778f4a9b7ec4935d53eb335462f3c414ff99cd
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Práce s geoprostorové a GeoJSON umístění dat v Azure Cosmos DB
 Tento článek je úvodem k funkci geoprostorové v [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Po přečtení to, budete moct odpovězte si na následující otázky:
@@ -192,7 +192,7 @@ Prostorové funkcí lze provádět dotazy blízkosti proti prostorová data. Tad
     FROM Families f 
     WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
 
-**Výsledky**
+**Results**
 
     [{
       "id": "WakefieldFamily"
@@ -213,7 +213,7 @@ Argumenty mnohoúhelníku v ST_WITHIN může obsahovat pouze jedno zazvonění, 
         'coordinates': [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
     })
 
-**Výsledky**
+**Results**
 
     [{
       "id": "WakefieldFamily",
@@ -233,7 +233,7 @@ Azure Cosmos DB také podporuje provádění inverzní dotazy, tedy můžete ind
     WHERE ST_WITHIN({'type': 'Point', 'coordinates':[31.9, -4.8]}, a.location)
 
 
-**Výsledky**
+**Results**
 
     [{
       "id": "MyDesignatedLocation",
@@ -249,7 +249,7 @@ ST_ISVALID a ST_ISVALIDDETAILED slouží ke kontrole, jestli je objekt prostorov
 
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 
-**Výsledky**
+**Results**
 
     [{
       "$1": false
@@ -263,7 +263,7 @@ Tyto funkce lze také ověřit mnohoúhelníky. Například tady používáme ST
         [ 31.8, -5 ], [ 31.8, -4.7 ], [ 32, -4.7 ], [ 32, -5 ] 
         ]]})
 
-**Výsledky**
+**Results**
 
     [{
        "$1": { 
@@ -391,7 +391,7 @@ A tady je, jak můžete upravit existující kolekci využít prostorových inde
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Nolearned, které jste dozvědí o tom, jak začít pracovat s geoprostorové podpory v Azure Cosmos DB, můžete postupovat následovně:
 
 * Psaní s [ukázky kódu .NET geoprostorové na Githubu](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)

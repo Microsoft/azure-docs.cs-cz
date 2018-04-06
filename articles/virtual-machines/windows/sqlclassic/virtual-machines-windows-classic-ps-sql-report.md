@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření virtuálního počítače se serverem sestav v nativním režimu pomocí prostředí PowerShell | Microsoft Docs"
-description: "Toto téma popisuje a provede nasazení a konfiguraci serveru sestav v nativním režimu SQL Server Reporting Services ve virtuální počítač Azure. "
+title: Vytvoření virtuálního počítače se serverem sestav v nativním režimu pomocí prostředí PowerShell | Microsoft Docs
+description: 'Toto téma popisuje a provede nasazení a konfiguraci serveru sestav v nativním režimu SQL Server Reporting Services ve virtuální počítač Azure. '
 services: virtual-machines-windows
 documentationcenter: na
 author: guyinacube
@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Použití PowerShellu k vytvoření virtuálního počítače Azure se serverem sestav v nativním režimu
 > [!IMPORTANT] 
@@ -55,7 +55,7 @@ Toto téma popisuje a provede nasazení a konfiguraci serveru sestav v nativním
     ![nový virtuální počítač z Galerie](./media/virtual-machines-windows-classic-ps-sql-report/IC692020.gif)
 5. Klikněte na tlačítko **SQL Server 2014 RTM Standard – Windows Server 2012 R2** a pak klikněte na šipku pokračujte.
    
-    ![Další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+    ![další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
    
     Pokud potřebujete data služby Reporting Services řízené funkce předplatných, vyberte **SQL Server 2014 RTM Enterprise – Windows Server 2012 R2**. Další informace o edicích systému SQL Server a podporovaných funkcích najdete v tématu [funkce, které jsou podporovány edice systému SQL Server 2012](https://msdn.microsoft.com/library/cc645993.aspx#Reporting).
 6. Na **konfigurace virtuálního počítače** stránky, upravte následující pole:
@@ -66,7 +66,7 @@ Toto téma popisuje a provede nasazení a konfiguraci serveru sestav v nativním
    * **Velikost: A3** je doporučená velikost virtuálního počítače pro úlohy SQL serveru. Pokud virtuální počítač je použít jenom jako server sestav, je dostatečná velikost virtuálního počítače z A2, pokud server sestav vyskytne velké zatížení. Informace o cenách virtuálních počítačů, najdete v části [ceny služeb Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/).
    * **Nové uživatelské jméno**: jméno zadáte se vytvoří jako správce ve virtuálním počítači.
    * **Nové heslo** a **potvrďte**. Toto heslo se používá pro nový účet správce a doporučuje se, že používáte silné heslo.
-   * Klikněte na **Další**. ![Další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * Klikněte na **Další**. ![next](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 7. Na další stránce upravte následující pole:
    
    * **Cloudová služba**: vyberte **vytvořte novou Cloudovou službu**.
@@ -78,7 +78,7 @@ Toto téma popisuje a provede nasazení a konfiguraci serveru sestav v nativním
      
      * **HTTP**: výchozí veřejné a privátní porty jsou **80**. Všimněte si, že pokud používáte privátní port než 80, změňte **$HTTPport = 80** ve skriptu http.
      * **HTTPS**: výchozí veřejné a privátní porty jsou **443**. Nejlepším postupem zabezpečení je změnit privátní port a konfiguraci brány firewall a server sestav použít privátní port. Další informace o koncových bodů najdete v tématu [jak nastavit komunikaci s virtuálním počítačem](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Všimněte si, že pokud používáte jiný port než 443, změňte parametr **$HTTPsport = 443** ve skriptu HTTPS.
-   * Klikněte na tlačítko Další. ![Další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * Klikněte na tlačítko Další. ![další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. Na poslední stránce průvodce, ponechte výchozí **nainstalujte agenta virtuálního počítače** vybrané. Kroky v tomto tématu využívají není agent virtuálního počítače, ale pokud budete chtít zachovat tento virtuální počítač, agent virtuálního počítače a rozšíření vám umožní vylepšit mu CM.  Další informace o agenta virtuálního počítače najdete v tématu [agenta virtuálního počítače a rozšíření – část 1](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/). Jedním z výchozí nainstalovaná rozšíření služby ad systémem je rozšíření "BGINFO", která zobrazuje na ploše virtuálního počítače, informace o systému, jako je například interní IP adresy a volného místa na disku.
 9. Klikněte na dokončení. ![Ok](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. **Stav** virtuálního počítače zobrazí jako **počáteční (zřizování)** během procesu zřizování a potom zobrazí jako **systémem** Pokud virtuální počítač je zřízený a připravené k použití.
@@ -124,7 +124,7 @@ Certifikát podepsaný svým držitelem byl vytvořen ve virtuálním počítač
        Například na následujícím obrázku je název virtuálního počítače **ssrsnativecloud** a uživatelské jméno je **testuser**.
       
        ![název virtuálního počítače jejíž součástí přihlášení](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
-   2. Spusťte mmc.exe. Další informace najdete v tématu [postupy: zobrazení certifikátů pomocí modulu Snap-in konzoly MMC](https://msdn.microsoft.com/library/ms788967.aspx).
+   2. Run mmc.exe. Další informace najdete v tématu [postupy: zobrazení certifikátů pomocí modulu Snap-in konzoly MMC](https://msdn.microsoft.com/library/ms788967.aspx).
    3. V konzolové aplikaci **soubor** nabídky, přidejte **certifikáty** modul snap-in, vyberte **účet počítače** při zobrazení výzvy a potom klikněte na **Další**.
    4. Vyberte **místního počítače** pro správu a pak klikněte na tlačítko **Dokončit**.
    5. Klikněte na tlačítko **Ok** a potom rozbalte **certifikáty – osobní** uzly a pak klikněte na tlačítko **certifikáty**. Certifikát je pojmenovaný po název DNS virtuálního počítače a končí **cloudapp.net**. Klikněte pravým tlačítkem na název certifikátu a klikněte na tlačítko **kopie**.
@@ -596,7 +596,7 @@ Následující tabulka shrnuje některé možnosti, které jsou k dispozici pro 
 > Chcete-li minimalizovat náklady pro virtuální počítače Azure když není používán, vypněte virtuální počítač z portálu Azure. Pokud použijete možnosti napájení Windows uvnitř virtuálního počítače vypnout virtuální počítač, jsou stále účtovat stejnou úroveň pro virtuální počítač. Chcete-li snížit náklady, je potřeba vypnout virtuální počítač na portálu Azure. Pokud již nepotřebujete virtuální počítač, nezapomeňte odstranit virtuální počítač a soubory VHD související náklady na úložiště. Další informace najdete v tématu v části Nejčastější dotazy na [podrobnosti o cenách virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
 ## <a name="more-information"></a>Další informace
-### <a name="resources"></a>Zdroje
+### <a name="resources"></a>Zdroje a prostředky
 * Podobně jako obsah týkající se nasazení jednoho serveru SQL Server Business Intelligence a SharePoint 2013, najdete v části [použití prostředí Windows PowerShell k vytvoření virtuálního počítače Azure s SQL Server BI a SharePoint 2013](https://msdn.microsoft.com/library/azure/dn385843.aspx).
 * Podobně jako obsah týkající se nasazení s více servery SQL Server Business Intelligence a SharePoint 2013, najdete v části [nasazení SQL Server Business Intelligence v Azure Virtual Machines](https://msdn.microsoft.com/library/dn321998.aspx).
 * Obecné informace týkající se nasazení systému SQL Server Business Intelligence v Azure Virtual Machines najdete v tématu [SQL Server Business Intelligence v Azure Virtual Machines](virtual-machines-windows-classic-ps-sql-bi.md).

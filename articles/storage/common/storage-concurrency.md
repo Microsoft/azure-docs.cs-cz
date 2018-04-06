@@ -1,8 +1,8 @@
 ---
-title: "Správa souběžnosti v Microsoft Azure Storage"
-description: "Jak spravovat souběžnosti pro služby objektů Blob, fronty, tabulky a soubor"
+title: Správa souběžnosti v Microsoft Azure Storage
+description: Jak spravovat souběžnosti pro služby objektů Blob, fronty, tabulky a soubor
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: jasontang501
 manager: tadb
 editor: tysonn
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.openlocfilehash: 937cca66a0af0674b868e6a87681adbea330e91c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
@@ -197,7 +197,7 @@ Další informace naleznete v tématu:
 
 * [Určení podmíněného hlavičky pro operace služby objektů Blob](http://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Zapůjčení kontejneru](http://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Objekt Blob zapůjčení](http://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Objekt Blob zapůjčení ](http://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>Správa souběžnost v služby Table
 Služba table používá optimistickou metodu, souběžnosti kontroly jako výchozí chování při práci s entitami, na rozdíl od služby objektů blob, kde je nutné provést kontroly optimistickou metodu souběžného explicitně vybrat. Rozdíl mezi službami tabulky a objektů blob je, že službou objektů blob můžete spravovat souběžnosti kontejnery a objekty BLOB můžete pouze spravovat souběžnosti chování entit.  

@@ -1,11 +1,11 @@
 ---
-title: "Omezení systému řady StorSimple 8000 | Microsoft Docs"
-description: "Popisuje doporučená velikost pro připojení a součásti řady StorSimple 8000 a omezení systému."
+title: Omezení systému řady StorSimple 8000 | Microsoft Docs
+description: Popisuje doporučená velikost pro připojení a součásti řady StorSimple 8000 a omezení systému.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c7392678-0924-46c6-9c59-1665cb9b6586
 ms.service: storsimple
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc3c0ad193af7625c8c4c1c2e82b6bdc8be33310
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>Jaká jsou omezení systému řady StorSimple 8000?
 
@@ -53,10 +53,10 @@ StorSimple poskytuje škálovatelná a flexibilní úložiště vašeho datovéh
 | Propustnost pro čtení a zápis maximálního počtu klientů (Pokud obsluhovat z vrstvy HDD) * |120/250 MB/s | |
 | Propustnost pro čtení a zápis maximálního počtu klientů (Pokud obsluhovat z vrstvy cloudu) * pro Update 3 a vyšší ** |40/60 MB/s pro vrstvené svazky<br><br>60/80 MB/s pro vrstvené svazky s archivace zvolené během vytvoření svazku |Propustnost čtení závisí na klientech generování a údržbu dostatečná hloubku fronty vstupně-výstupní operace. <br><br>Rychlost dosáhnout závisí na rychlosti základní účtu úložiště používat. |
 
-&#42; Maximální propustnost podle typu vstupně-výstupních operací se měří s 100 procent čtení a zápisu 100 procent scénáře. Skutečná propustnost může být nižší a závisí na vstupně-výstupních operací kombinovat a síťové podmínky.
+&#42;Maximální propustnost podle typu vstupně-výstupních operací se měří s 100 procent čtení a zápisu 100 procent scénáře. Skutečná propustnost může být nižší a závisí na vstupně-výstupních operací kombinovat a síťové podmínky.
 
-&#42; &#42; Výkon čísla před Update 3 může být nižší.
+&#42;&#42;Výkon čísla před Update 3 může být nižší.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Zkontrolujte [požadavky na systém StorSimple](storsimple-8000-system-requirements.md).
 

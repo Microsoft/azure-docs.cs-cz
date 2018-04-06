@@ -1,11 +1,11 @@
 ---
-title: "Provedení zjišťování neoprávněných vniknutí sítě s otevřeným zdrojem nástroje a sledovací proces sítě Azure | Microsoft Docs"
-description: "Tento článek popisuje, jak použít sledovací proces sítě Azure a otevřete source nástroje k provedení zjišťování neoprávněných vniknutí sítě"
+title: Provedení zjišťování neoprávněných vniknutí sítě s otevřeným zdrojem nástroje a sledovací proces sítě Azure | Microsoft Docs
+description: Tento článek popisuje, jak použít sledovací proces sítě Azure a otevřete source nástroje k provedení zjišťování neoprávněných vniknutí sítě
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Provedení zjišťování neoprávněných vniknutí sítě s sledovací proces sítě a open source nástroje
 
 Zachycení paketu jsou klíčovou komponentou pro implementace systémy zjišťování neoprávněných vniknutí sítě (ID) a provádění monitorování zabezpečení sítě (NSM). Existuje několik nástrojů ID s otevřeným zdrojem, které zpracování paketů zachycení a vyhledejte podpis vniknutí možné sítě a škodlivé aktivity. Pomocí paketu zaznamená zadaný ve sledovací proces sítě, můžete analyzovat vaše síť pro všechny škodlivé vniknutí nebo ohrožení zabezpečení.
 
-Jeden takový nástroj s otevřeným zdrojem je Suricata, modul ID, která používá sady pravidel pro monitorování síťového provozu a aktivuje upozornění pokaždé, když dojde k podezřelé události. Suricata nabízí modul Vícevláknová, což znamená, že ho můžete provádět analýzy zatížení sítě s vyšší rychlostí a efektivitu. Další podrobnosti o Suricata a jeho funkce navštivte jejich na https://suricata-ids.org/.
+Jeden takový nástroj s otevřeným zdrojem je Suricata, modul ID, která používá sady pravidel pro monitorování síťového provozu a aktivuje upozornění pokaždé, když dojde k podezřelé události. Suricata nabízí modul Vícevláknová, což znamená, že ho můžete provádět analýzy zatížení sítě s vyšší rychlostí a efektivitu. Další podrobnosti o Suricata a jeho funkce, navštivte webovou jejich na https://suricata-ids.org/.
 
 ## <a name="scenario"></a>Scénář
 
@@ -232,7 +232,7 @@ Další pokyny k instalaci Logstash naleznete [oficiální dokumentaci](https://
     ./bin/kibana
     ```
 
-1. Chcete-li zobrazit vaše Kibana webové rozhraní, přejděte na`http://localhost:5601`
+1. Chcete-li zobrazit vaše Kibana webové rozhraní, přejděte na `http://localhost:5601`
 1. V tomto scénáři je vzor indexu používá pro protokoly Suricata "logstash-*"
 
 1. Pokud chcete zobrazit řídicí panel Kibana vzdáleně, vytvoření příchozího pravidla NSG povolení přístupu k **portu 5601**.
@@ -279,7 +279,7 @@ Další dokumentaci týkající se vytvoření vlastního vizualizace a řídic�
 
 Kombinací paketu zaznamená zadaný sledovací proces sítě a ID nástroje s otevřeným zdrojem, jako je Suricata, je možné provést zjišťování neoprávněných vniknutí sítě pro širokou škálu hrozeb. Tyto řídicí panely vám umožňují rychle rozpoznat trendy a anomálie v rámci vaší sítě, jako dobře dig do data, která mají-li zjistit, že hlavní příčiny výstrahy, jako je například uživatel se zlými úmysly agentů nebo citlivé porty. S Tento extrahovaná data můžete provést informované rozhodnutí o tom, jak reagovat na ochránit síť před všechny pokusy o škodlivé vniknutí a vytvářet pravidla pro budoucí před proniknutím k vaší síti.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak aktivovat zachycení paketů, které jsou založeny na výstrahách navštivte stránky [pomocí zachytáváním paketů provádět monitorování proaktivní sítě s Azure Functions](network-watcher-alert-triggered-packet-capture.md)
 
