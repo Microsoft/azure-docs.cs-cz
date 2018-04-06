@@ -1,11 +1,11 @@
 ---
-title: "Přidejte disk do virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Zjistěte, jak přidat trvalé disk k virtuálním počítačům s Linuxem pomocí Azure CLI 1.0 a 2.0."
-keywords: "virtuální počítač Linux, přidejte disk prostředků"
+title: Přidejte disk do virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Zjistěte, jak přidat trvalé disk k virtuálním počítačům s Linuxem pomocí Azure CLI 1.0 a 2.0.
+keywords: virtuální počítač Linux, přidejte disk prostředků
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 3005a066-7a84-4dc5-bdaa-574c75e6e411
@@ -17,18 +17,18 @@ ms.devlang: azurecli
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9db7d300b745001906bdc38769dcbe6e4d7c7b83
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c3d3e3468b491f366473899f5d073704ea9a95ea
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Přidání disku do virtuálního počítače s Linuxem
 Tento článek ukazuje, jak připojit trvalé disk k virtuálnímu počítači tak, aby můžete zachovat data - i v případě, že virtuální počítač je znovu poskytnuto z důvodu údržby nebo změnou velikosti. 
 
 
 ## <a name="use-managed-disks"></a>Používat spravované disky
-Disky systému Azure spravované usnadňuje správu disku pro virtuální počítače Azure pomocí správy účty úložiště přidružené disky virtuálních počítačů. Budete muset zadat typ (Standard nebo Premium) a velikost disku je nutné, a Azure vytváří a spravuje disku za vás. Další informace najdete v tématu [spravované disky přehled](managed-disks-overview.md).
+Služba Azure Managed Disks zjednodušuje správu pro virtuální počítače Azure, neboť spravuje účty úložiště přidružené k diskům virtuálních počítačů. Stačí jenom zadat typ (Premium nebo Standard) a velikosti disku, který potřebujete, a Azure ho vytvoří a bude spravovat za vás. Další informace najdete v tématu [spravované disky přehled](managed-disks-overview.md).
 
 
 ### <a name="attach-a-new-disk-to-a-vm"></a>Připojit nový disk k virtuálnímu počítači
@@ -254,7 +254,7 @@ Existují dva způsoby, jak povolit TRIM podporují ve virtuálním počítačů
     sudo fstrim /datadrive
     ```
   
-    **RHEL nebo CentOS**
+    **RHEL/CentOS**
 
     ```bash
     sudo yum install util-linux
@@ -264,7 +264,7 @@ Existují dva způsoby, jak povolit TRIM podporují ve virtuálním počítačů
 ## <a name="troubleshooting"></a>Řešení potíží
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Mějte na paměti, že nový disk není k dispozici pro virtuální počítač, pokud dojde k restartování Pokud napíšete tyto informace k vaší [fstab](http://en.wikipedia.org/wiki/Fstab) souboru.
 * Aby systém Linux virtuálního počítače je správně nakonfigurovaná, zkontrolujte [optimalizovat výkon počítače Linux](optimization.md) doporučení.
 * Rozbalte vaše kapacita úložiště přidáním dalších disků a [konfigurace RAID](configure-raid.md) další výkonu.

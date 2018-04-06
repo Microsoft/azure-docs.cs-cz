@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: e9343b4a0049b2eea30f903159fdeff0ae7ff851
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 07fb601b2cf6e3fe3cc9bfb7bca3bdcbec7e9ca7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Průvodce Azure Marketplace a AppSource vydavatele
 
@@ -121,7 +121,8 @@ Každý výkladní skříň podporuje více publikování možnosti a nabídka t
 Obraťte se na mě možnost použijte, pokud zapojení úrovni zkušební verze nebo transakce není možné. Výhodou tohoto přístupu je, že umožňuje vydavatelé s řešením na trhu pro okamžitě začne zájemce, které můžete by měla vycházet do základní nabídky zahájíte setrvačníku vaší firmy. Nevýhodou je ale, že je omezená, porovnání s jinými typy nabídka zákaznické engagement.
 
 >[!IMPORTANT]
->Nedoporučujeme kontakt mi typ seznamu. Používejte jenom v situacích, kde neexistuje žádný způsob, jak vytvořit zkušební prostředí. Zákaznické engagement je vhodné s nabídkami zkušební verze a transakce. Pokud máte libovolného typu zkušební verze, naše procesu registrace vám pomohou jednu z těchto možností, v závislosti na vašem scénáři.
+<<<<<<< HEAD zákaznické engagement je nejvhodnější zkušební verzi a nabízí Transact. Obraťte se na mě hodnotu realizace, která se zobrazí, pokud si zvolíte tento typ výpis, zajistěte proto že realizace cíl je nakonfigurována a jste připraveni k maximalizaci zájemce. === Nedoporučujeme kontakt mi typ seznamu. Používejte jenom v situacích, kde neexistuje žádný způsob, jak vytvořit zkušební prostředí. Zákaznické engagement je vhodné s nabídkami zkušební verze a transakce. Pokud máte libovolného typu zkušební verze, naše procesu registrace vám pomohou jednu z těchto možností, v závislosti na vašem scénáři.
+>>>>>>> 2874631130f763b6e91e8725781400bcb76d6a62
 
 Nabídka se primárně skládá z profesionální služby (například hodnocení, implementace, pracovních konferencí), použijte nabídnout služby konzultace ohledně typu. Nabídka oboru, doba trvání a cena musí být vyřešeny, musí být pro jednoho zákazníka a musí být provedeny v lokalitě.
 

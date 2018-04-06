@@ -1,24 +1,24 @@
 ---
-title: "Začínáme se správou zařízení Azure IoT Hub (.NET/.NET) | Microsoft Docs"
-description: "Jak používat k zahájení restartu zařízení vzdálenou správou zařízení Azure IoT Hub. Zařízení Azure IoT SDK pro platformu .NET, kterou použijete k implementaci aplikaci ze simulovaného zařízení, která zahrnuje přímá metoda a sady SDK pro .NET k implementaci aplikační služby, která volá metodu přímé služby Azure IoT."
+title: Začínáme se správou zařízení Azure IoT Hub (.NET/.NET) | Microsoft Docs
+description: Jak používat k zahájení restartu zařízení vzdálenou správou zařízení Azure IoT Hub. Zařízení Azure IoT SDK pro platformu .NET, kterou použijete k implementaci aplikaci ze simulovaného zařízení, která zahrnuje přímá metoda a sady SDK pro .NET k implementaci aplikační služby, která volá metodu přímé služby Azure IoT.
 services: iot-hub
 documentationcenter: .net
-author: JimacoMS2
+author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/15/2017
-ms.author: v-jamebr
-ms.openlocfilehash: 3af7fbfb9740e00d9ff9c2b077cb444a8057b8c3
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.author: v-jamebr;dobett
+ms.openlocfilehash: 44160eeb90f0f65c974b7188dd7c70cce382bf21
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-device-management-netnet"></a>Začínáme se správou zařízení (.NET/.NET)
 
@@ -68,7 +68,7 @@ V této části vytvoříte konzolové aplikace .NET (pomocí jazyka C#) iniciov
         static ServiceClient client;
         static string targetDevice = "myDeviceId";
         
-6. Přidejte následující metodu do **Program** třídy.  Tento kód získá dvojče zařízení pro restartování zařízení a výstupy hlášené vlastnosti.
+6. Do třídy **Program** přidejte následující metodu.  Tento kód získá dvojče zařízení pro restartování zařízení a výstupy hlášené vlastnosti.
    
         public static async Task QueryTwinRebootReported()
         {
@@ -76,7 +76,7 @@ V této části vytvoříte konzolové aplikace .NET (pomocí jazyka C#) iniciov
             Console.WriteLine(twin.Properties.Reported.ToJson());
         }
         
-7. Přidejte následující metodu do **Program** třídy.  Tento kód zahájí restartování v zařízení s přímá metoda.
+7. Do třídy **Program** přidejte následující metodu.  Tento kód zahájí restartování v zařízení s přímá metoda.
 
         public static async Task StartReboot()
         {

@@ -1,38 +1,38 @@
 ---
 title: Omezit síťový přístup k prostředkům PaaS - prostředí Azure PowerShell | Microsoft Docs
-description: Zjistěte, jak chcete omezit a omezit přístup k síti na prostředky Azure, například Azure Storage a Azure SQL Database, s koncovými body služby virtuální sítě pomocí prostředí PowerShell.
+description: V tomto článku zjistěte, jak chcete omezit a omezit přístup k síti na prostředky Azure, například Azure Storage a Azure SQL Database, s koncovými body služby virtuální sítě pomocí prostředí Azure PowerShell.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: ''
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 7e402af74babda2ce32d4a1597c61d71aba89b9e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 28c95e1333b4641e50284a869135a9608dd3242f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Omezit přístup k síti na PaaS prostředky s koncovými body služby virtuální sítě pomocí prostředí PowerShell
 
 Koncové body služby virtuální sítě umožňují omezit přístup k síti k některým prostředkům služby Azure do podsítě virtuální sítě. Můžete také odebrat přístup k Internetu k prostředkům. Koncové body služby poskytují přímé připojení z virtuální sítě k podporované služby Azure, budete moci použít privátní adresní prostor vaší virtuální sítě pro přístup ke službám Azure. Přenosy určené prostředky Azure prostřednictvím koncových bodů služby vždy zůstává na páteřní síti Microsoft Azure. V tomto článku se dozvíte, jak:
 
-> [!div class="checklist"]
-> * Vytvořit virtuální síť s jednou podsítí
-> * Přidat podsíť a povolení koncového bodu služby
-> * Vytvořit prostředek služby Azure a povolit přístup k síti z jenom podsítě
-> * Nasazení virtuálního počítače (VM) pro každou podsíť
-> * Potvrďte přístup k prostředku z podsítě
-> * Potvrďte, že byl odepřen přístup k prostředku z podsítě a z Internetu
+* Vytvořit virtuální síť s jednou podsítí
+* Přidat podsíť a povolení koncového bodu služby
+* Vytvořit prostředek služby Azure a povolit přístup k síti z jenom podsítě
+* Nasazení virtuálního počítače (VM) pro každou podsíť
+* Potvrďte přístup k prostředku z podsítě
+* Potvrďte, že byl odepřen přístup k prostředku z podsítě a z Internetu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -93,7 +93,7 @@ $subnetConfigPrivate = Add-AzureRmVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="restrict-network-access-to-and-from-a-subnet"></a>Omezit přístup k síti do a z podsítě
+## <a name="restrict-network-access-for-a-subnet"></a>Omezit přístup k síti pro podsíť
 
 Vytvoření pravidel skupiny zabezpečení s zabezpečení sítě [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig). Následující pravidlo umožňuje odchozí přístup na veřejné IP adresy přiřazené ke službě Azure Storage: 
 
@@ -114,7 +114,7 @@ Následující pravidlo odepře přístup k všechny veřejné IP adresy. Předc
 
 ```azurepowershell-interactive
 $rule2 = New-AzureRmNetworkSecurityRuleConfig `
-  -Name Deny-internet-All `
+  -Name Deny-Internet-All `
   -Access Deny `
   -DestinationAddressPrefix Internet `
   -DestinationPortRange * `
@@ -372,9 +372,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste povolili koncového bodu služby pro podsíť virtuální sítě. Jste zjistili, že koncových bodů služby se dá nastavit pro prostředky nasazené s více službami Azure. Vytvořili jste účet úložiště Azure a omezený přístup k síti k účtu úložiště na pouze prostředky v podsíti virtuální sítě. Před vytvořením koncové body služby v produkčním prostředí virtuální sítě, se doporučuje, aby důkladně Seznamte se s [koncové body služby](virtual-network-service-endpoints-overview.md).
+V tomto článku jste povolili koncového bodu služby pro podsíť virtuální sítě. Jste zjistili, že koncových bodů služby se dá nastavit pro prostředky nasazené s více službami Azure. Vytvořili jste účet úložiště Azure a omezený přístup k síti k účtu úložiště na pouze prostředky v podsíti virtuální sítě. Další informace o koncových bodů služby najdete v tématu [přehled koncové body služby](virtual-network-service-endpoints-overview.md) a [spravovat podsítě](virtual-network-manage-subnet.md).
 
-Pokud máte více virtuálních sítí ve vašem účtu, můžete k propojení dvou virtuálních sítí tak prostředky v rámci jedné virtuální sítě může komunikovat navzájem. Přechodu na v dalším kurzu se dozvíte, jak připojit virtuální sítě.
-
-> [!div class="nextstepaction"]
-> [Připojit virtuální sítě](./tutorial-connect-virtual-networks-powershell.md)
+Pokud máte více virtuálních sítí ve vašem účtu, můžete k propojení dvou virtuálních sítí tak prostředky v rámci jedné virtuální sítě může komunikovat navzájem. Další informace, jak zjistit, [připojení virtuální sítě](tutorial-connect-virtual-networks-powershell.md).

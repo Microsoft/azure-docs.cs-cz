@@ -1,13 +1,13 @@
 ---
-title: "Jak změnit velikost virtuálního počítače s Linuxem pomocí Azure CLI 1.0 | Microsoft Docs"
-description: "Jak škálovat nahoru i dolů virtuální počítač s Linuxem změnou velikosti virtuálního počítače."
+title: Jak změnit velikost virtuálního počítače s Linuxem pomocí Azure CLI 1.0 | Microsoft Docs
+description: Jak škálovat nahoru i dolů virtuální počítač s Linuxem změnou velikosti virtuálního počítače.
 services: virtual-machines-linux
 documentationcenter: na
 author: mikewasson
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/16/2016
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 72f5a3cd6463befd5108040ed166984281bfc5f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bb5ad082336c92a397f2590d9b06e94552c8744
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="resize-a-linux-vm-with-azure-cli-10"></a>Změnit velikost virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure 1.0
 
@@ -73,7 +73,7 @@ Ke změně velikosti virtuálního počítače, proveďte následující kroky.
    > 
    > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pro další škálovatelnost spustit více instancí virtuálního počítače a horizontální rozšíření kapacity. Další informace najdete v tématu [automaticky škálovat počítače se systémem Linux v sadě škálování virtuálního počítače][scale-set]. 
 
 <!-- links -->

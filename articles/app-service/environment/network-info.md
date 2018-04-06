@@ -1,6 +1,6 @@
 ---
-title: "Aspekty sítě pomocí služby Azure App Service environment"
-description: "Vysvětluje App Service Environment síťový provoz a jak nastavit skupiny Nsg a udr s vaší App Service Environment"
+title: Aspekty sítě pomocí služby Azure App Service environment
+description: Vysvětluje App Service Environment síťový provoz a jak nastavit skupiny Nsg a udr s vaší App Service Environment
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 03/20/2018
 ms.author: ccompy
-ms.openlocfilehash: c4779ada60fab2db5249a107abfc7ca6f80cb16f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 54257ae3e02a00c5097aa7880fa356da3bc0ecce
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Aspekty sítě služby App Service Environment #
 
@@ -163,7 +163,7 @@ První dva příchozí požadavky pro App Service Environment funkce se zobrazí
 
 ![Příchozí pravidla zabezpečení][4]
 
-Výchozí pravidlo umožňuje IP adresy ve virtuální síti, aby komunikoval s App Service Environment podsítě. Jiné výchozí pravidlo umožňuje Vyrovnávání zatížení, také známé jako veřejné VIP, ke komunikaci s App Service Environment. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle **přidat** ikonu. Když vložíte odepření všechno ostatní pravidla po pravidla NSG uvedené, abyste zabránili provoz mezi virtuální IP adresu a App Service Environment. Pokud chcete zabránit provoz přicházející ze uvnitř virtuální sítě, přidáte vlastní pravidlo povolující příchozí. Použít zdroj rovna AzureLoadBalancer s cílovým serverem **žádné** a rozsah portů  **\*** . Protože pravidla NSG se použije k podsíti App Service Environment, nemusíte být v cílovém specifické.
+Výchozí pravidlo umožňuje IP adresy ve virtuální síti, aby komunikoval s App Service Environment podsítě. Jiné výchozí pravidlo umožňuje Vyrovnávání zatížení, také známé jako veřejné VIP, ke komunikaci s App Service Environment. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle **přidat** ikonu. Když vložíte odepření všechno ostatní pravidla po pravidla NSG uvedené, abyste zabránili provoz mezi virtuální IP adresu a App Service Environment. Pokud chcete zabránit provoz přicházející ze uvnitř virtuální sítě, přidáte vlastní pravidlo povolující příchozí. Použít zdroj rovna AzureLoadBalancer s cílovým serverem **žádné** a rozsah portů **\***. Protože pravidla NSG se použije k podsíti App Service Environment, nemusíte být v cílovém specifické.
 
 Pokud jste přiřadili IP adresu do vaší aplikace, zajistěte, aby že nechat otevřené porty. Pokud chcete zobrazit porty, vyberte **App Service Environment** > **IP adresy**.  
 
@@ -175,31 +175,10 @@ Po skupin Nsg jsou definovány, přiřadíte k podsíti, který vaše App Servic
 
 ## <a name="routes"></a>Trasy ##
 
-Zásadním aspektem vynuceného tunelového propojení a toho, jak s ním naložit, jsou trasy. Ve virtuální síti Azure se směrování provádí na základě nejdelší shody předpony (LPM). Pokud existuje víc tras se stejnou shodou LPM, trasa se vybere na základě původu v tomto pořadí:
+Vynucené tunelování je nastavena tras ve vaší virtuální síti, nebude odchozí přenosy přejděte přímo k Internetu, ale jinde jako bránu ExpressRoute nebo virtuální zařízení.  Pokud potřebujete nakonfigurovat vaše App Service Environment takovým způsobem, pak dokument číst na [konfigurace služby App Service Environment se vynucené tunelování][forcedtunnel].  Tento dokument vás bude informovat možnosti práce s ExpressRoute a vynucené tunelování.
 
-- Trasa definovaná uživatelem (UDR)
-- Trasa protokolu BGP (pokud se používá služba ExpressRoute)
-- Systémová trasa
-
-Další informace o směrování ve virtuální síti najdete v tématu [Trasy definované uživatelem a předávání IP][UDRs].
-
-Azure SQL database, která App Service Environment se používá ke správě systému má bránu firewall. To vyžaduje komunikaci z veřejné VIP App Service Environment. Připojení k databázi SQL z App Service Environment bude odepřen, pokud jsou odesílány mimo provoz připojení ExpressRoute a na jinou IP adresu.
-
-Pokud jsou odpovědi na příchozí požadavky na správu odeslat dolů ExpressRoute, se liší od původního cíle na zpáteční adresu. Tato neshoda dělí komunikaci TCP.
-
-Pro vaše App Service Environment, kterou práci, zatímco jsou vaše virtuální síť nakonfigurované ExpressRoute je nejjednodušší cesta:
-
--   Konfigurace ExpressRoute a nabídnout _0.0.0.0/0_. Ve výchozím nastavení provede vynucené tunelové propojení veškerých odchozích přenosů do místní sítě.
--   Vytvořte trasu UDR. Platí pro podsíť, která obsahuje App Service Environment se předponu adresy z _0.0.0.0/0_ a dalšího směrování typ _Internet_.
-
-Pokud provedete tyto dvě změny, určené internetové komunikaci z podsítě App Service Environment není vynutit dolů ExpressRoute a App Service Environment funguje. 
-
-> [!IMPORTANT]
-> Trasy definované v trase UDR musí být dost konkrétní, aby měly přednost před všemi trasami inzerovanými konfigurací ExpressRoute. V předchozím příkladu se používá široký rozsah adres 0.0.0.0/0. Může nechtěně dojít k jeho potlačení z důvodu inzerování tras, které používají konkrétnější rozsahy adres.
->
-> Konfigurace ExpressRoute, které mezi Inzerovat trasy z cesty partnerského vztahu veřejný partnerský vztah privátní cestu ASEs nepodporuje. Konfigurace ExpressRoute s nakonfigurovanými veřejnými partnerskými uzly přijímají inzerci tras od Microsoftu. Tyto inzerce obsahují velkou sadu rozsahů IP adres Microsoft Azure. Pokud rozsahy adres ohlášené mezi v cestě k vytvoření soukromého partnerského vztahu, jsou všechny odchozí síťových paketů z podsítě App Service Environment force tunelovým propojením zákazníka místní síťové infrastruktuře. ASEs aktuálně nepodporuje tento tok sítě. Jedním řešením tohoto problému je ukončit křížovou inzerci tras z cesty s veřejnými partnerskými uzly do cesty se soukromými partnerskými uzly.
-
-Pokud chcete vytvořit UDR, postupujte takto:
+Při vytváření App Service Environment portálu jsme také vytvořit sadu směrovací tabulky na podsíť, která je vytvořena pomocí App Service Environment.  Tyto trasy, že jednoduše odeslat odchozí přenos přímo k Internetu.  
+Ruční vytvoření tras, postupujte takto:
 
 1. Přejděte na portálu Azure. Vyberte **sítě** > **směrovacích tabulek**.
 
@@ -217,17 +196,15 @@ Pokud chcete vytvořit UDR, postupujte takto:
 
     ![Skupiny Nsg a trasy][7]
 
-### <a name="deploy-into-existing-azure-virtual-networks-that-are-integrated-with-expressroute"></a>Nasazení do virtuální sítě Azure, které jsou integrované s ExpressRoute ###
+## <a name="service-endpoints"></a>Koncové body služeb ##
 
-K nasazení vaší App Service Environment do virtuální sítě, která je integrovaná s ExpressRoute, předem nakonfigurujte podsítě, kam chcete App Service Environment nasazení. Potom ji nasadit pomocí šablony Resource Manageru. Vytvořit App Service Environment ve virtuální síti, již má nakonfigurované ExpressRoute:
+Koncové body služby umožňují omezit přístup k víceklientským službám na sadu virtuálních sítí a podsítí Azure. Další informace o koncových bodech služby najdete v dokumentaci pro [koncové body služby virtuální sítě][serviceendpoints]. 
 
-- Vytvoření podsítě pro hostování App Service Environment.
+Když pro prostředek povolíte koncové body služby, vytvoří se trasy s vyšší prioritou než všechny ostatní trasy. Pokud použijete koncové body služby se službou ASE s vynuceným tunelováním, nebude se vynucovat tunelování provozu správy SQL Azure a služby Azure Storage. 
 
-    > [!NOTE]
-    > V podsíti, ale App Service Environment může být nic jiného. Je třeba zvolit adresní prostor, který umožňuje růstem do budoucna. Nelze změnit, tato nastavení později. Doporučujeme velikost `/25` adresy 128.
+Pokud jsou koncové body služby povolené v podsíti s instancí SQL Azure, musí mít koncové body služby povolené i všechny instance SQL Azure, ke kterým se z této podsítě připojuje. Pokud chcete ze stejné podsítě přistupovat k několika instancím SQL Azure, není možné povolit koncové body služby v jedné instanci SQL Azure a v jiné ne. Služba Azure Storage se nechová stejně jako SQL Azure. Když povolíte koncové body služby se službou Azure Storage, uzamknete přístup k danému prostředku z vaší podsítě, ale stále budete mít přístup k ostatním účtům služby Azure Storage, a to i v případě, že nemají povolené koncové body služby.  
 
-- Vytvoření udr (například směrovací tabulky), jak je popsáno výše a nastavte ho na podsíť.
-- Vytvořit App Service Environment pomocí šablony Resource Manageru, jak je popsáno v [vytvořit App Service Environment pomocí šablony Resource Manageru][MakeASEfromTemplate].
+![Koncové body služeb][8]
 
 <!--Image references-->
 [1]: ./media/network_considerations_with_an_app_service_environment/networkase-overflow.png
@@ -237,6 +214,7 @@ K nasazení vaší App Service Environment do virtuální sítě, která je inte
 [5]: ./media/network_considerations_with_an_app_service_environment/networkase-outboundnsg.png
 [6]: ./media/network_considerations_with_an_app_service_environment/networkase-udr.png
 [7]: ./media/network_considerations_with_an_app_service_environment/networkase-subnet.png
+[8]: ./media/network_considerations_with_an_app_service_environment/serviceendpoint.png
 
 <!--Links-->
 [Intro]: ./intro.md
@@ -258,3 +236,6 @@ K nasazení vaší App Service Environment do virtuální sítě, která je inte
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ASEManagement]: ./management-addresses.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[forcedtunnel]: ./forced-tunnel-support.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md

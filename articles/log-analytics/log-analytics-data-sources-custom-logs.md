@@ -1,8 +1,8 @@
 ---
-title: "Shromažďovat vlastní protokoly v Azure Log Analytics | Microsoft Docs"
-description: "Analýzy protokolů můžete shromažďovat události z textových souborů v počítačích Windows a Linux.  Tento článek popisuje, jak můžete definovat podrobnosti záznamů, které vytvoří v pracovním prostoru analýzy protokolů a nový vlastní protokol."
+title: Shromažďovat vlastní protokoly v Azure Log Analytics | Microsoft Docs
+description: Analýzy protokolů můžete shromažďovat události z textových souborů v počítačích Windows a Linux.  Tento článek popisuje, jak můžete definovat podrobnosti záznamů, které vytvoří v pracovním prostoru analýzy protokolů a nový vlastní protokol.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2017
+ms.date: 04/04/2018
 ms.author: bwren
-ms.openlocfilehash: 401fbb39194a24721274f55f0fc2a4cdc235a32b
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: bf9acd5d7130a5e35182271f07593adab19d448b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="custom-logs-in-log-analytics"></a>Vlastní protokoly v analýzy protokolů
 Zdroj dat vlastní protokoly ve analýzy protokolů umožňuje shromažďování událostí z textových souborů v počítačích Windows a Linux. Mnoho aplikací protokolování informací k textovým souborům místo standardní protokolování služby, jako je například protokol událostí systému Windows nebo Syslog.  Jakmile se shromažďují, můžete analyzovat každý záznam v přihlášení do jednotlivých polí pomocí [vlastní pole](log-analytics-custom-fields.md) funkce analýzy protokolů.
@@ -31,7 +31,7 @@ Soubory protokolů, které se mají shromažďovat musí splňují následujíc�
 
     RRRR MM-DD HH: MM:<br>M/D/RRRR HH: MM: SS DOP. / ODP <br>MON DD, rrrr hh: mm:
 
-- Soubor protokolu nesmí povolit cyklické aktualizací, kde je soubor přepsán pomocí nové položky.
+- Soubor protokolu nesmí povolit cyklické protokolování nebo oběh protokolu, kde je soubor přepsán pomocí nové položky.
 - Soubor protokolu musí používat kódování ASCII nebo UTF-8.  Ostatní formáty například UTF-16 nejsou podporovány.
 
 >[!NOTE]
@@ -78,7 +78,7 @@ Následující tabulka obsahuje příklady platných vzorů k určení různých
 | Všechny soubory v */var/log/audit* s názvem počínaje protokolu a příponu .txt na agenta systému Linux |/var/log/audit/log\*.txt |
 
 1. Chcete-li určit formát cesty vyberte systému Windows nebo Linux, které přidáváte.
-2. Zadejte cestu a klikněte na  **+**  tlačítko.
+2. Zadejte cestu a klikněte na **+** tlačítko.
 3. Opakujte postup pro žádné další cesty.
 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Zadejte název a popis pro protokol

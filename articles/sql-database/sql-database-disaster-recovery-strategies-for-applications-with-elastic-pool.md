@@ -1,20 +1,20 @@
 ---
-title: "Návrh řešení zotavení po havárii – Azure SQL Database | Microsoft Docs"
-description: "Informace o návrhu cloudové řešení pro zotavení po havárii výběrem vzoru správné převzetí služeb při selhání."
+title: Návrh řešení zotavení po havárii – Azure SQL Database | Microsoft Docs
+description: Informace o návrhu cloudové řešení pro zotavení po havárii výběrem vzoru správné převzetí služeb při selhání.
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 6ec202237a0b3fb1b7f0b7158c0aa454b4d65770
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1f2f0819f987bf389ff4b2816ad422fdd8a81f82
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategie zotavení po havárii pro aplikace pomocí fondů elastické databáze SQL
 V průběhu let, které jsme se dozvěděli cloudové služby nejsou spolehlivá a závažné incidenty dojít. Databáze SQL obsahuje několik funkcí, které poskytují pro kontinuitu podnikových procesů vaší aplikace, když dojde k tyto incidenty. [Elastické fondy](sql-database-elastic-pool.md) a jedné databáze podporují stejný druh možnosti obnovení po havárii. Tento článek popisuje několik strategie zotavení po Havárii pro elastických fondů, které využívají tyto funkce kontinuity obchodních databáze SQL.
@@ -26,7 +26,7 @@ Tento článek používá následující kanonický vzor aplikací SaaS ISV:
 Tento článek popisuje zahrnující celou řadu scénářů z aplikací citlivé spuštění náklady na těch, které jsou s požadavky na přísné dostupnosti strategie zotavení po Havárii.
 
 > [!NOTE]
-> Pokud používáte Premium databáze a fondy, můžete provést je odolný regionální výpadkům převede konfigurace redundantní nasazení zóny (momentálně ve verzi preview). V tématu [Zónově redundantní databáze](sql-database-high-availability.md).
+> Pokud používáte Premium nebo kritické obchodní (preview) databáze i elastické fondy, můžete je provést odolné vůči regionální výpadků převede konfigurace redundantní nasazení zóny (momentálně ve verzi preview). V tématu [Zónově redundantní databáze](sql-database-high-availability.md).
 
 ## <a name="scenario-1-cost-sensitive-startup"></a>Scénář 1. Náklady citlivé spuštění
 <i>Jsem obchodní spuštění a mě náklady velmi citlivé.  Chcete zjednodušit nasazení a správu aplikace a mám omezené SLA pro jednotlivé zákazníky. Ale chceme se ujistit aplikaci jako celek se nikdy offline.</i>
@@ -65,7 +65,7 @@ Klíč **těžit** tuto strategii je nízké náklady probíhající pro redunda
 ## <a name="scenario-2-mature-application-with-tiered-service"></a>Scénář 2. Vyspělá aplikace vrstvené službou
 <i>Jsem vyspělá aplikace SaaS s nabídek vrstvené služby a jiné smlouvy SLA pro zkušební zákazníků a platícího zákazníků. Zkušební verze zákazníků nutné snížit náklady na co nejvíc. Zkušební verze zákazníkům může trvat výpadek, ale chcete snížit jeho pravděpodobnost. Pro platící zákazníky žádné výpadky je riziko letu. Tak chcete Ujistěte se, že platícího zákazníci mohou vždy přístup k datům.</i> 
 
-Pro podporu tohoto scénáře, oddělte zkušební klienty z placené klienty vložit do samostatné elastické fondy. Zkušební verze zákazníci mají nižší eDTU na klienta a nižší smlouvy SLA s delší dobu obnovení. Platící zákazníky jsou ve fondu s vyšší eDTU na klienta a vyšší SLA. Pokud chcete zajistit nejnižší čas obnovení, jsou platící zákazníky klienta databáze, geograficky replikované. Tato konfigurace je znázorněna v další diagramu. 
+Pro podporu tohoto scénáře, oddělte zkušební klienty z placené klienty vložit do samostatné elastické fondy. Zkušební verze zákazníci mají nižší eDTU nebo vCores na klienta a nižší smlouvy SLA s delší dobu obnovení. Platící zákazníky jsou ve fondu s vyšší eDTU nebo vCores na klienta a vyšší SLA. Pokud chcete zajistit nejnižší čas obnovení, jsou platící zákazníky klienta databáze, geograficky replikované. Tato konfigurace je znázorněna v další diagramu. 
 
 ![Obrázek 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
@@ -80,7 +80,7 @@ Pokud dojde k výpadku v primární oblasti, postup obnovení, aby vaše aplikac
 * Okamžitě převzetí služeb při selhání databáze správy oblasti zotavení po Havárii (3).
 * Změňte připojovací řetězec aplikace tak, aby odkazoval na oblasti zotavení po Havárii. Nyní všechny nové účty a databáze klienta se vytvoří v oblasti zotavení po Havárii. Stávající zkušební zákazníky zobrazit tato data není dočasně k dispozici.
 * Selhání klienta placené databáze ve fondu v oblasti zotavení po Havárii okamžitě obnovit jejich dostupnost (4). Vzhledem k tomu, že převzetí služeb při selhání je rychlý Změna úrovně, zvažte optimalizaci kde jednotlivé převzetí služeb při selhání jsou aktivovány na vyžádání připojení koncových uživatelů. 
-* Pokud velikost vašeho sekundární fondu eDTU byl nižší než primární, protože sekundární databáze pouze požadované kapacitu pro zpracovat protokol změn během byly sekundární repliky, okamžitě zvýšení kapacity fondu teď zohlednit úplné zatížení všech klientů (5). 
+* Pokud hodnota velikost nebo vCore eDTU fondu sekundární byl nižší než primární, protože sekundární databáze pouze požadované kapacitu pro zpracovat protokol změn během byly sekundární repliky, okamžitě zvýšení kapacity fondu teď zohlednit úplné pracovního vytížení všechny klienty (5). 
 * Vytvořte nový elastický fond se stejným názvem a stejnou konfiguraci v oblasti zotavení po Havárii pro databáze zkušební zákazníků (6). 
 * Jakmile je vytvořen fond zkušební zákazníků, použijte k obnovení databáze jednotlivých zkušební verzi klienta do nového fondu (7) geografické obnovení. Zvažte spouštění jednotlivých obnovení koncového uživatele připojeními nebo používat některé další schéma s prioritou specifické pro aplikaci.
 
@@ -108,7 +108,7 @@ Klíč **těžit** této strategie je, že poskytuje nejvyšší smlouvě SLA pr
 ## <a name="scenario-3-geographically-distributed-application-with-tiered-service"></a>Scénář 3. Geograficky distribuovaná aplikace s vrstvami služby
 <i>Je nutné vyspělá aplikace SaaS s nabídkami vrstvené služby. Chcete nabízet velmi agresivní SLA Moje placené zákazníkům a minimalizovat riziko dopad, když dojde k výpadku, protože i stručný přerušení může způsobit nespokojenosti zákazníka. Je důležité, aby platící zákazníky můžete vždy přístup k datům. Zkušební verze jsou zdarma a SLA není nabídnuta během zkušebního období. </i> 
 
-Pro podporu tohoto scénáře, použijte tři samostatné elastické fondy. Zřídit dvě stejná velikost fondy s vysokou Edtu na databázi ve dvou různých oblastech tak, aby obsahovala databáze klienta placené zákazníků. Třetí fondu obsahujícího zkušební klienty může mít nižší počet jednotek Edtu na databázi a zřídit v jednom ze dvou oblastí.
+Pro podporu tohoto scénáře, použijte tři samostatné elastické fondy. Zřídit dvě stejná velikost fondy s vysokou Edtu nebo vCores na databázi ve dvou různých oblastech tak, aby obsahovala databáze klienta placené zákazníků. Třetí fondu obsahujícího zkušební klienty může mít nižší Edtu nebo vCores na databázi a zřídit v jednom ze dvou oblastí.
 
 Pokud chcete zajistit nejnižší obnovení době výpadky, jsou platící zákazníky klienta databáze, geograficky replikované 50 % primární databází v těchto dvou oblastech. Podobně každou oblast má 50 % sekundární databáze. Tímto způsobem, pokud oblast je v režimu offline, jen 50 % placené zákazníkům databáze dopad a mít k převzetí služeb při selhání. Ostatní databáze zůstanou beze změn. Tato konfigurace je znázorněno v následujícím diagramu:
 
@@ -125,7 +125,7 @@ Další diagram ukazuje postup obnovení v případě, že dojde k výpadku v ob
 * Okamžitě převzetí služeb při selhání databáze správy oblasti B (3).
 * Změňte připojovací řetězec aplikace přejděte na správu databází v oblasti B. upravit zajistěte, aby nové účty a databáze klienta se vytvoří v oblasti B a stávající databáze klienta jsou v ní existuje také správu databáze. Stávající zkušební zákazníky zobrazit tato data není dočasně k dispozici.
 * Selhání placené klienta databází do fondu 2 v oblasti B okamžitě obnovit jejich dostupnost (4). Vzhledem k tomu, že převzetí služeb při selhání je rychlý Změna úrovně, zvažte optimalizaci kde jednotlivé převzetí služeb při selhání jsou aktivovány na vyžádání připojení koncových uživatelů. 
-* Od nyní fond 2 obsahuje pouze primární databáze, celkový počet úloh ve fondu zvyšuje a můžete okamžitě zvětšete jeho velikost eDTU (5). 
+* Od nyní fond 2 obsahuje pouze primární databáze, celkový počet úloh ve fondu zvyšuje a okamžitě zvětšují její velikost eDTU (5) nebo počet vCores. 
 * Vytvořte nový elastický fond se stejným názvem a stejnou konfiguraci v oblasti B pro zkušební zákazníkům databáze (6). 
 * Po vytvoření fondu pomocí geografické obnovení obnovte databázi jednotlivé zkušební verzi klienta do fondu (7). Můžete zvážit spouštění jednotlivých obnovení koncového uživatele připojeními nebo použít některé další schéma s prioritou specifické pro aplikaci.
 
@@ -142,7 +142,7 @@ Když je obnovena oblast A musíte se rozhodnout, pokud budete chtít použít o
 * Zrušte všechny zbývající geografické obnovení žádosti o zkušební verzi fondu zotavení po Havárii.   
 * Selhání databázi pro správu (8). Po obnovení oblasti z původního primárního se automaticky sekundární. Nyní bude primární znovu.  
 * Vyberte, které placené klienta databází navrácení služeb po obnovení fond 1 a inicializovat převzetí služeb při selhání jejich sekundární repliky (9). Po obnovení oblasti jsou všechny databáze ve fondu 1 automaticky sekundární repliky. Nyní 50 % z nich stanou základní barvy znovu. 
-* Snižte velikost fondu 2 na původní eDTU (10).
+* Snížení velikosti fondu 2 původní eDTU (10) nebo počet vCores.
 * Všechny sady obnovit zkušební databází v oblasti B do jen pro čtení (11).
 * Pro každou databázi ve fondu zkušební zotavení po Havárii, který se změnil od obnovení přejmenovat nebo odstranit příslušné databáze ve fondu zkušební primární (12). 
 * Zkopírujte aktualizované databází z fondu zotavení po Havárii primární fondu (13). 

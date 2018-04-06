@@ -1,11 +1,11 @@
 ---
-title: "Spustit HVĚZDIČKY – CCM + s HPC Pack na virtuální počítače s Linuxem | Microsoft Docs"
-description: "Nasazení clusteru s podporou sady Microsoft HPC Pack v Azure a spuštění HVĚZDIČKOU – CCM + úlohy na několika Linux výpočetní uzly přes sítě RDMA."
+title: Spustit HVĚZDIČKY – CCM + s HPC Pack na virtuální počítače s Linuxem | Microsoft Docs
+description: Nasazení clusteru s podporou sady Microsoft HPC Pack v Azure a spuštění HVĚZDIČKOU – CCM + úlohy na několika Linux výpočetní uzly přes sítě RDMA.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: xpillons
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 75523406-d268-4623-ac3e-811c7b74de4b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
-ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8689d7abfd5ab45277df3b5672a1f6e7e874d88e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Spustit HVĚZDIČKY – CCM + pomocí sady Microsoft HPC Pack na Linux RDMA cluster v Azure
 Tento článek ukazuje, jak nasadit cluster sady Microsoft HPC Pack na Azure a spusťte [HVĚZDIČKY CD adapco-CCM +](http://www.cd-adapco.com/products/star-ccm%C2%AE) úlohy na několika výpočetních uzlech Linux, které jsou vzájemně propojeny InfiniBand.
@@ -284,7 +284,7 @@ Nahraďte **runner.java** vaše upřednostňované hvězdičkou-Spouštěče mod
     exit ${RTNSTS}
 ```
 
-V našem testu jsme použili token licence Power na vyžádání. Pro tento token, budete muset nastavit **$CDLMD_LICENSE_FILE** proměnnou prostředí  **1999@flex.cd-adapco.com**  a klíč v **- podkey** možnost příkazového řádku.
+V našem testu jsme použili token licence Power na vyžádání. Pro tento token, budete muset nastavit **$CDLMD_LICENSE_FILE** proměnnou prostředí **1999@flex.cd-adapco.com** a klíč v **- podkey** možnost příkazového řádku.
 
 Po inicializaci, skript extrahuje--z **$CCP_NODES_CORES** proměnné prostředí tohoto HPC Pack nastavit – seznam uzlů k sestavení hostfile, který Spouštěč MPI používá. Tato hostfile bude obsahovat seznam názvů výpočetní uzel, které se používají pro úlohy, jeden název na každý řádek.
 
@@ -296,19 +296,19 @@ Formát **$CCP_NODES_CORES** následuje tento vzor:
 
 Kde:
 
-* `<Number of nodes>`je počet uzlů přidělených pro tuto úlohu.
-* `<Name of node_n_...>`je název každého uzlu přidělené této úlohy.
-* `<Cores of node_n_...>`je počet jader na uzel přidělené této úlohy.
+* `<Number of nodes>` je počet uzlů přidělených pro tuto úlohu.
+* `<Name of node_n_...>` je název každého uzlu přidělené této úlohy.
+* `<Cores of node_n_...>` je počet jader na uzel přidělené této úlohy.
 
 Počet jader (**$NBCORES**) se také vypočítává podle počtu uzlů (**$NBNODES**) a počet jader na uzel (jako parametr **$NBCORESPERNODE**).
 
 Možnosti MPI jsou ty, které se používají s Intel MPI ve službě Azure:
 
-* `-mpi intel`Chcete-li určit Intel MPI.
-* `-fabric UDAPL`používat příkazy Azure InfiniBand.
-* `-cpubind bandwidth,v`za účelem optimalizace šířky pásma pro MPI s HVĚZDIČKOU – CCM +.
-* `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"`Chcete-li pracovat s Azure InfiniBand MPI Intel a nastavit požadovaný počet jader na uzel.
-* `-batch`Spusťte HVĚZDIČKY – CCM + v dávkovém režimu s žádné uživatelské rozhraní.
+* `-mpi intel` Chcete-li určit Intel MPI.
+* `-fabric UDAPL` používat příkazy Azure InfiniBand.
+* `-cpubind bandwidth,v` za účelem optimalizace šířky pásma pro MPI s HVĚZDIČKOU – CCM +.
+* `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"` Chcete-li pracovat s Azure InfiniBand MPI Intel a nastavit požadovaný počet jader na uzel.
+* `-batch` Spusťte HVĚZDIČKY – CCM + v dávkovém režimu s žádné uživatelské rozhraní.
 
 Nakonec chcete-li spustit úlohu, ujistěte se, že uzly jsou spuštěny a jsou online ve Správci clusteru. Z příkazového řádku prostředí PowerShell, spusťte toto:
 
@@ -324,7 +324,7 @@ Později po dokončení testů, můžete použít následující příkazy prost
     Start-HPCIaaSNode.ps1 -Name <prefix>-00*
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Zkuste spuštěny další zátěže systému Linux. Například v tématu:
 
 * [Spuštění NAMD pomocí sady Microsoft HPC Pack v systému Linux výpočetních uzlech v Azure](hpcpack-cluster-namd.md)

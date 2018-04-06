@@ -1,11 +1,11 @@
 ---
-title: "Nastavit Apache Tomcat na virtuální počítač s Linuxem | Microsoft Docs"
-description: "Zjistěte, jak nastavit Apache Tomcat7 pomocí virtuální počítače Azure s Linuxem."
+title: Nastavit Apache Tomcat na virtuální počítač s Linuxem | Microsoft Docs
+description: Zjistěte, jak nastavit Apache Tomcat7 pomocí virtuální počítače Azure s Linuxem.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 45ecc89c-1cb0-4e80-8944-bd0d0bbedfdc
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: f3bd3167c9a879a876774e5d91fbb10fd340c6a8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 161a56a019f8c2c8ce5e3890e73ad5c5710e7b82
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Nastavit Tomcat7 na virtuální počítač s Linuxem v Azure
 Apache Tomcat (nebo jednoduše Tomcat, také dříve se označovaly jako Jakarta Tomcat) je webový server s otevřeným zdrojem a kontejner servlet vyvinuté pomocí softwaru Foundation Apache (amp). Tomcat implementuje Java Servlet a specifikace JavaServer stránky (JSP) z Sun Microsystems. Tomcat poskytuje čistý Java HTTP prostředí webového serveru ke spouštění kódu v jazyce Java. V nejjednodušší konfiguraci Tomcat běží v procesu jednoho operačního systému. Tento proces se spustí nástroje Java virtual machine (JVM). Každý požadavek HTTP z prohlížeče do Tomcat zpracovávány jako samostatné vláken v procesu Tomcat.  
@@ -90,9 +90,9 @@ TCP port 8080 je výchozí číslo portu, který Tomcat používá k naslouchán
 
    1. Pro koncový bod, zadejte název koncového bodu v **koncový bod**a pak zadejte 80 v **veřejný Port**.  
 
-      Pokud je nastavena na 80, nemusíte zahrnovat číslo portu v adrese URL, který se používá pro přístup k Tomcat. Například http://tomcatdemo.cloudapp.net.    
+      Pokud je nastavena na 80, nemusíte zahrnovat číslo portu v adrese URL, který se používá pro přístup k Tomcat. Například, http://tomcatdemo.cloudapp.net.    
 
-      Pokud je nastavena na jinou hodnotu, jako je například 81, budete muset přidat číslo portu na adresu URL pro přístup k Tomcat. Například http://tomcatdemo.cloudapp.net:81 /.
+      Pokud je nastavena na jinou hodnotu, jako je například 81, budete muset přidat číslo portu na adresu URL pro přístup k Tomcat. Například http://tomcatdemo.cloudapp.net:81/.
    2. Zadejte 8080 v **privátní Port**. Ve výchozím nastavení Tomcat naslouchá na portu TCP 8080. Pokud jste změnili výchozí naslouchání portu Tomcat, by měl aktualizovat **privátní Port** být stejné jako Tomcat port pro naslouchání.  
       ![Snímek obrazovky z uživatelské rozhraní, které se zobrazuje příkaz přidat, veřejný Port a privátní Port][7]
 4. Klikněte na tlačítko **OK** přidat koncový bod k virtuálnímu počítači.
@@ -184,7 +184,7 @@ Použijte následující příkaz k instalaci Tomcat7.
 Pokud nepoužíváte Tomcat7, použijte jeho odpovídající variantu tohoto příkazu.  
 
 #### <a name="confirm-that-tomcat7-installation-is-successful"></a>Potvrďte, že je instalace Tomcat7 úspěšné
-Kontrola, pokud je úspěšně nainstalována Tomcat7, vyhledejte název DNS Tomcat server. Příklad adresy URL v tomto článku je http://tomcatexample.cloudapp.net/. Pokud se zobrazí zpráva podobná následující, Tomcat7 je správně nainstalován.
+Kontrola, pokud je úspěšně nainstalována Tomcat7, vyhledejte název DNS Tomcat server. V tomto článku je příklad adresy URL http://tomcatexample.cloudapp.net/. Pokud se zobrazí zpráva podobná následující, Tomcat7 je správně nainstalován.
 ![Zpráva úspěšné instalace Tomcat7][16]
 
 ### <a name="install-other-tomcat7-components"></a>Instalace součásti Tomcat7
@@ -231,7 +231,7 @@ Po úpravě tohoto souboru, musíte restartovat Tomcat7 službám pomocí násle
 
     sudo /etc/init.d/tomcat7 restart  
 
-Otevřete prohlížeč a zadejte **http://<your tomcat server DNS name>/manager/html** jako adresu URL. Například v tomto článku adresa URL je http://tomcatexample.cloudapp.net/manager/html.  
+Otevřete prohlížeč a zadejte **http://<your tomcat server DNS name>/manager/html** jako adresu URL. Například v tomto článku, adresa URL je http://tomcatexample.cloudapp.net/manager/html.  
 
 Po připojení, měli byste vidět něco podobného jako následující:  
 ![Snímek obrazovky Správce aplikací webové Tomcat][18]

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: d8adf097d6bee404cff8e7b15782c6c59531a897
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bca2629ea4a0c859e92d829b49072fbdf3f9ffe2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server 
 
@@ -45,7 +45,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Funkce Change data capture](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Ne | Ano |
 | [Sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | Ano |Ano |
 | [Kolace příkazy](https://docs.microsoft.com/sql/t-sql/statements/collations) | Ano | Ano |
-| [Indexy Columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Ano – [úroveň Premium a úroveň Standard - S3 a novější](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ano |
+| [Indexy Columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Ano – [úroveň Premium, úrovně Standard - S3 a vyšší úroveň obecné účely a kritické obchodní vrstvy](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ano |
 | [Modul common language runtime (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Ne | Ano – najdete v části [rozdíly CLR](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [Databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Ano | Ano |
 | [Uživatelů s omezením](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Ano | Ano |
@@ -82,7 +82,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Geo-restore](sql-database-recovery-using-backups.md#geo-restore) | Ano | Ne – můžete obnovit COPY_ONLY najdete úplné zálohy, které můžete provést pravidelně - [zálohování rozdíly](sql-database-managed-instance-transact-sql-information.md#backup) a [obnovit rozdíly](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
 | [Geografická replikace](sql-database-geo-replication-overview.md) | Ano | Ne |
 | [Zpracování grafu](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Ano | Ano |
-| [Optimalizace v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ano – [pouze ve verzi Premium](sql-database-in-memory.md) | Ne |
+| [Optimalizace v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ano – [Premium a Critial obchodní vrstvy](sql-database-in-memory.md) | Ne |
 | [Podpora data JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | Ano | Ano |
 | [Jazykové elementy](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Většina - najdete jednotlivé elementy |  Ano – najdete v části [rozdíly T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Odkazované servery](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne – najdete v části [elastické dotazu](sql-database-elastic-query-horizontal-partitioning.md) | Pouze k systému SQL Server |

@@ -1,12 +1,12 @@
 ---
-title: "Monitorování a získání přehledy o aplikaci logiky spouští pomocí OMS - Azure Logic Apps | Microsoft Docs"
-description: "Monitorování vaší logiku aplikace běží s analýzy protokolů a Operations Management Suite (OMS), chcete-li získat přehledy a bohatší ladění podrobnosti pro řešení potíží a diagnostiku"
+title: Monitorování a získání přehledy o aplikaci logiky spouští pomocí analýzy protokolů - Azure Logic Apps | Microsoft Docs
+description: Monitorování vaší logiku aplikace běží s analýzy protokolů získat přehledy a bohatší ladění podrobnosti pro řešení potíží a diagnostiku
 author: divyaswarnkar
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 2f9f27dc74348909b89941c2bb17ccdf610dba33
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d484aaf7d7582bd474d7437a7a62f41880690dbc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>Monitorovat a získat přehled o logiku aplikace běží s Operations Management Suite (OMS) a analýzy protokolů
+# <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Monitorovat a získat přehled o logiku aplikace běží s analýzy protokolů
 
-Pro monitorování a bohatší informace o ladění můžete zapnout analýzy protokolů ve stejnou dobu, po vytvoření aplikace logiky. Log Analytics poskytuje možnosti pro diagnostiku protokolování a monitorování pro svou aplikaci logiky spouští prostřednictvím portálu Operations Management Suite (OMS). Když přidáte do řešení pro správu aplikací logiky na OMS, zobrazí agregovaný stav pro logiku aplikace běží a konkrétní podrobnosti, jako je stav, čas spuštění, opakované odeslání stavu a ID korelace.
+Pro monitorování a bohatší informace o ladění můžete zapnout analýzy protokolů ve stejnou dobu, po vytvoření aplikace logiky. Log Analytics poskytuje možnosti pro diagnostiku protokolování a monitorování pro svou aplikaci logiky spouští prostřednictvím portálu Azure. Když přidáte do řešení pro správu aplikace logiky, zobrazí agregovaný stav pro logiku aplikace běží a konkrétní podrobnosti, jako je stav, čas spuštění, opakované odeslání stavu a ID korelace.
 
-Toto téma ukazuje, jak zapnout analýzy protokolů nebo nainstalujte řešení pro správu aplikace logiky v OMS, můžete zobrazit události modulu runtime a data pro svou aplikaci logiky spustit.
+Toto téma ukazuje, jak zapnout analýzy protokolů, aby lze zobrazit události modulu runtime a spusťte data pro svou aplikaci logiky.
 
  > [!TIP]
- > Pokud chcete sledovat existující aplikace logiky, použijte následující postup [zapnout protokolování diagnostiky a posílat data runtime aplikace logiky OMS](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+ > Pokud chcete sledovat existující aplikace logiky, použijte následující postup [zapnout protokolování diagnostiky a odesílání dat za běhu aplikace logiky k analýze protokolů](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 ## <a name="requirements"></a>Požadavky
 
-Než začnete, musíte mít pracovním prostorem OMS. Další informace [jak vytvořit pracovní prostor služby OMS](../log-analytics/log-analytics-get-started.md). 
+Než začnete, musíte mít pracovní prostor analýzy protokolů. Další informace [jak vytvořit pracovní prostor analýzy protokolů](../log-analytics/log-analytics-quick-create-workspace.md). 
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>Zapnutí protokolování diagnostiky při vytváření aplikací logiky
 
@@ -44,56 +44,47 @@ Než začnete, musíte mít pracovním prostorem OMS. Další informace [jak vyt
    1. Zadejte název pro svou aplikaci logiky a vyberte předplatné Azure. 
    2. Vytvořte nebo vyberte skupinu prostředků Azure.
    3. Nastavit **protokolu analýzy** k **na**. 
-   Vyberte pracovní prostor OMS, kde chcete odeslat data pro svou aplikaci logiky spouští. 
+   Vyberte pracovní prostor analýzy protokolů, které chcete odeslat data pro svou aplikaci logiky spouští. 
    4. Až budete připraveni, zvolte **připnout na řídicí panel** > **vytvořit**.
 
       ![Vytvoření aplikace logiky](./media/logic-apps-monitor-your-logic-apps-oms/create-logic-app.png)
 
-      Po dokončení tohoto kroku, Azure vytvoří aplikace logiky, která je teď spojené s vaším pracovním prostorem OMS. 
-      Tento krok navíc také automaticky nainstaluje řešení pro správu aplikace logiky v pracovním prostoru OMS.
+      Po dokončení tohoto kroku, Azure vytvoří aplikace logiky, která je teď přidružené pracovní prostor analýzy protokolů. 
+      Tento krok navíc také automaticky nainstaluje řešení pro správu aplikace logiky v pracovním prostoru.
 
-3. Chcete-li zobrazit logiky aplikace běží v OMS, [pokračovat v těchto krocích](#view-logic-app-runs-oms).
+3. Chcete-li zobrazit aplikaci logiky běží, [pokračovat v těchto krocích](#view-logic-app-runs-oms).
 
-## <a name="install-the-logic-apps-management-solution-in-oms"></a>Nainstalujte do řešení pro správu aplikace logiky v OMS
+## <a name="install-the-logic-apps-management-solution"></a>Nainstalujte do řešení pro správu aplikace logiky
 
-Pokud jste již zapnuli analýzy protokolů při vytvoření aplikace logiky, tento krok přeskočte. Už máte nainstalovaný v OMS řešení pro správu aplikace logiky.
+Pokud jste již zapnuli analýzy protokolů při vytvoření aplikace logiky, tento krok přeskočte. Už máte nainstalovaný řešení pro správu aplikace logiky.
 
 1. V [portál Azure](https://portal.azure.com), zvolte **více služeb**. Vyhledejte "analýzy protokolů" jako filtr a vyberte **analýzy protokolů** znázorněné:
 
    ![Zvolte "Analýzy protokolů"](media/logic-apps-monitor-your-logic-apps-oms/find-log-analytics.png)
 
-2. V části **analýzy protokolů**, najděte a vyberte pracovní prostor OMS. 
+2. V části **analýzy protokolů**, najděte a vyberte pracovní prostor analýzy protokolů. 
 
-   ![Vyberte pracovní prostor OMS](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
+   ![Vyberte pracovní prostor analýzy protokolů](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
 
 3. V části **správy**, zvolte **portálu OMS**.
 
    ![Zvolte "Portál OMS"](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
 
-4. Na domovské stránce OMS Pokud se zobrazí Banner informující o upgradu, zvolte Banner informující o tak, aby nejprve upgradovat vaším pracovním prostorem OMS. Zvolte **řešení Galerie**.
-
-   ![Zvolte "Galerie řešení"](media/logic-apps-monitor-your-logic-apps-oms/solutions-gallery.png)
-
-5. V části **všechna řešení**, najít a vybrat na dlaždici **správy Logic Apps** řešení.
+4. V části **všechna řešení**, najít a vybrat na dlaždici **správy Logic Apps** řešení.
 
    ![Zvolte "Správa aplikace logiky"](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-management-tile2.png)
 
-6. Chcete-li nainstalovat řešení v pracovním prostoru OMS, zvolte **přidat**.
+5. Chcete-li nainstalovat řešení v pracovním prostoru analýzy protokolů, zvolte **přidat**.
 
    ![Zvolte "Přidat" pro "Správa aplikace logiky"](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
 
 <a name="view-logic-app-runs-oms"></a>
 
-## <a name="view-your-logic-app-runs-in-your-oms-workspace"></a>Zobrazení, které běží vaše aplikace logiky v pracovním prostoru OMS
+## <a name="view-your-logic-app-runs-in-your-log-analytics-workspace"></a>Zobrazení, které běží vaše aplikace logiky v pracovním prostoru analýzy protokolů
 
-1. Chcete-li zobrazit počet a stav pro vaše aplikace běží logiku, přejděte na stránku přehled pro pracovní prostor OMS. Zkontrolujte podrobnosti v **správy Logic Apps** dlaždici.
+1. Chcete-li zobrazit počet a stav pro vaše aplikace běží logiku, přejděte na stránku přehled pro pracovní prostor analýzy protokolů. Zkontrolujte podrobnosti v **správy Logic Apps** dlaždici.
 
    ![Dlaždice přehledu se zobrazuje počet logiku aplikace spustit a stav](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
-
-   > [!Note]
-   > Pokud se zobrazí banner upgradu místo dlaždici správy Logic Apps, zvolte Banner informující o tak, aby nejprve upgradovat vaším pracovním prostorem OMS.
-  
-   > ![Upgrade "Pracovním prostorem OMS"](media/logic-apps-monitor-your-logic-apps-oms/oms-upgrade-banner.png)
 
 2. Chcete-li zobrazit souhrn s dalšími podrobnostmi o vašem logiku aplikace běží, vyberte **správy Logic Apps** dlaždici.
 

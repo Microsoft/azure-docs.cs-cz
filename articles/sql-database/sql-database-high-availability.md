@@ -6,14 +6,14 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: d26fe28d301cf563dc6bdb3d9e17903dea3e73fc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 69d004ae4c2408e5749d0a7d21b996cec8dba722
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 Od zahájení nabídky PaaS databáze SQL Azure společnost Microsoft vyvinula potenciálu svým zákazníkům, které vysoké dostupnosti (HA) je součástí služby a zákazníků nemusejí fungovat, přidejte speciální logiku pro nebo rozhodnutí ohledně HA. Společnost Microsoft udržuje plnou kontrolu nad konfigurace systému HA a operace, zákazníkům nabídnout SLA. HA SLA platí pro databáze SQL v oblasti a neposkytuje ochranu v případě selhání celkový oblasti, které je faktory, které mimo Microsoft nemohla ovlivnit (například přírodní katastrofě, war, jednání teroristický útok, povstáním, government akci, nebo síťové zařízení selhání nebo externí vzhledem k datových centrech společnosti Microsoft, včetně v lokalitách zákazníka nebo mezi lokalitami zákazníka a datového centra společnosti Microsoft).
@@ -29,7 +29,7 @@ Tyto jednotlivé události jsou jen zřídka, v cloudovém měřítku, k nim doj
 Zákazníci se nejvíc zajímat odolnost vlastní databáze a jsou méně zájem o odolnost službě SQL Database jako celek. 99,99 % dostupnost služby je smysl, pokud "databáze" je součástí 0,01 % databází, které jsou vypnuté. Každé databáze musí být odolné proti chybám a zmírnění chyby by nikdy dojít ke ztrátě potvrzené transakce. 
 
 Databáze SQL pro data, používá místní úložiště (LS) založené na přímé připojené disky nebo virtuální pevné disky a vzdálené úložiště (r) založené na objekty BLOB stránky Azure Premium Storage. 
-- Místní úložiště se používá v Premium databáze a fondy, které jsou určené pro nepostradatelné OLTP aplikace s vysokou požadavky IOPS. 
+- Místní úložiště se používá v Premium nebo kritické obchodní (preview) databází a elastické fondy, které jsou určené pro mise kritické aplikace OLTP s požadavky na vysokou IOPS. 
 - Vzdálené úložiště se používá pro úrovně služeb Basic a Standard, určený pro nároky zaměřené na konkrétní firemních procesů, které vyžadují úložiště a výpočetního výkonu nezávisle škálovat. Objekt blob jednostránkové používají pro databázi a soubory protokolu a mechanismy pro replikaci a převzetí služeb při selhání integrovanou úložiště.
 
 V obou případech replikace, detekce chyb a převzetí služeb při selhání mechanismy databáze SQL jsou plně automatizované a pracovat i bez lidského zásahu. Tato architektura umožňuje potvrdit data musí být nikdy ztraceny a že odolnost dat má přednost před všechno ostatní.
@@ -52,7 +52,7 @@ Klíčové výhody:
 
 V této konfiguraci každou databázi do režimu online pomocí služby správy (MS) v rámci prstenec ovládacího prvku. Jedna primární replika a alespoň dvě sekundární repliky (kvora set) jsou umístěné v rámci prstenec klienta, která zahrnuje tři nezávislých fyzických subsystémů v rámci stejného datového centra. Všechny čtení a zápisy se odesílají bránou (GW) na primární repliku a zápisů asynchronně replikovány na sekundárních replikách. Databáze SQL používá schéma na základě kvora potvrzení, kde data se zapisují do primárním serverem a nejméně jedna sekundární replika před potvrzení transakce.
 
-[Service Fabric](../service-fabric/service-fabric-overview.md) převzetí služeb při selhání systému automaticky znovu vytvoří repliky jako uzly selžou a udržuje sadu kvora členství jako uzly odchylují a připojení k systému. Plánované údržby je pečlivě koordinována, aby se zabránilo kvora set směrem dolů nižší než počet minimální repliky (obvykle 2). Tento model funguje dobře u prémiových databází, ale vyžaduje redundance součástí výpočetních operací a úložiště a má za následek vyšší náklady.
+[Service Fabric](../service-fabric/service-fabric-overview.md) převzetí služeb při selhání systému automaticky znovu vytvoří repliky jako uzly selžou a udržuje sadu kvora členství jako uzly odchylují a připojení k systému. Plánované údržby je pečlivě koordinována, aby se zabránilo kvora set směrem dolů nižší než počet minimální repliky (obvykle 2). Tento model funguje dobře pro Premium a kritické obchodní databáze (preview), ale vyžaduje redundance součástí výpočetních operací a úložiště a má za následek vyšší náklady.
 
 ## <a name="remote-storage-configuration"></a>Konfigurace vzdáleného úložiště
 
@@ -73,16 +73,25 @@ Pro vzdálené úložiště konfigurace SQL databáze používá funkce Always O
 
 ## <a name="zone-redundant-configuration-preview"></a>Konfigurace redundantního zóny (preview)
 
-Ve výchozím nastavení jsou kvora sady replik pro místní úložiště konfigurace vytváří ve stejném datovém centru. Se zavedením [Azure dostupnost zóny](../availability-zones/az-overview.md), máte možnost umístit jiné repliky sady kvora do zóny různých dostupnosti ve stejné oblasti. K vyloučení jediný bod selhání, je ovládací prvek prstenec duplicitní napříč několika zón jako tři prstence brány (GW) také. Směrování do konkrétní gateway prstenec řídí [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Vzhledem k tomu, že konfigurace redundantního zóny nevytvoří redundance další databáze, použijte zón dostupnosti ve vrstvě služeb Premium je k dispozici bez jakýchkoli nákladů. Tak, že vyberete databázi redundantní zóny, můžete provést prémiových databází, které jsou odolné mnohem větší sadu chyb, včetně výpadků závažné datového centra bez uložení změn logiku aplikace. Všechny existující databáze Premium nebo fond můžete také převést konfigurace redundantního zóny.
+Ve výchozím nastavení jsou kvora sady replik pro místní úložiště konfigurace vytváří ve stejném datovém centru. Se zavedením [Azure dostupnost zóny](../availability-zones/az-overview.md), máte možnost umístit jiné repliky sady kvora do zóny různých dostupnosti ve stejné oblasti. K vyloučení jediný bod selhání, je ovládací prvek prstenec duplicitní napříč několika zón jako tři prstence brány (GW) také. Směrování do konkrétní gateway prstenec řídí [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Protože konfigurace redundantního zóny nevytvoří redundance další databáze, použití dostupnosti zón v Premium nebo kritické obchodní (preview) úrovně služeb je k dispozici bez jakýchkoli nákladů. Tak, že vyberete databázi redundantní zóny, můžete provést vaší Premium nebo kritické obchodní (preview) databáze odolné vůči mnohem větší sadu chyb, včetně výpadků závažné datového centra bez uložení změn logiku aplikace. Všechny existující databáze Premium nebo kritický stav firmy nebo fondů (preview) můžete také převést konfigurace redundantního zóny.
 
 Protože zóny redundantní kvora set má repliky v různých datových centrech s některé vzdálenost mezi nimi, latence sítě vyšší může prodloužit doba potvrzení a proto mít dopad na výkon některé úlohy OLTP. Ke konfiguraci zóny jedním může vždy vrátit zakázáním nastavení redundance zóny. Tento proces je velikost operace dat a je podobná aktualizace cíle na úrovni (SLO) regulární služby. Na konci procesu je databáze nebo fondu migrovat z prstenec redundantní zóny v jedné oblasti prstenec nebo naopak.
 
 > [!IMPORTANT]
-> Ve vrstvě služeb Premium jsou podporovány pouze zóny redundantní databáze i elastické fondy. Během verzi public preview, zálohování a audit záznamy jsou uloženy v úložišti RA-GRS a proto nemusí být automaticky k dispozici v případě výpadku celou zónu. 
+> Zóny redundantní databáze i elastické fondy jsou podporovány pouze v Premium a kritické obchodní (preview) úrovních služeb. Během verzi public preview, zálohování a audit záznamy jsou uloženy v úložišti RA-GRS a proto nemusí být automaticky k dispozici v případě výpadku celou zónu. 
 
 Zóny redundantní verzi Architektura vysoké dostupnosti je zobrazená ve následující diagram:
  
 ![Vysoká dostupnost architektura zónově redundantní](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
+
+## <a name="read-scale-out"></a>Přečtěte si Škálováním na více systémů
+Jak je popsáno, Premium a kritické obchodní (preview) služby využívají vrstev kvora sad a technologii AlwaysON pro zajištění vysoké dostupnosti v jedné oblasti i redundantní konfigurace zóny. Jednou z výhod AlwasyON je, že repliky jsou vždycky ve stavu transakční konzistence stavu. Vzhledem k tomu, že repliky na stejnou úroveň výkonu jako primární, aplikace mohou využít výhod tuto další kapacitu pro obsluhu úlohy jen pro čtení bez jakýchkoli nákladů (čtení Škálováním na více systémů). Tímto způsobem dotazy jen pro čtení bude izolovaná od hlavní úloh pro čtení a zápis a nebude mít vliv na jeho výkon. Číst funkce škálování je určená pro aplikace, které zahrnují logicky oddělené jen pro čtení úlohy, jako jsou například analýzy a proto může využít tuto dodatečnou kapacitu bez připojení k primární. 
+
+Pokud chcete používat funkce škálování pro čtení s danou databází, je potřeba explicitně povolit ho při vytváření databáze nebo později změnou jeho konfigurace pomocí prostředí PowerShell vyvoláním [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [ Nový-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) rutiny nebo prostřednictvím rozhraní REST API Azure Resource Manager [databáze - vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate) metoda.
+
+Po povolení škálování pro čtení pro databázi aplikace připojení k databázi přesměrováni do repliky pro čtení a zápis nebo repliku jen pro čtení této databáze podle `ApplicationIntent` vlastnost nakonfigurované do aplikace připojovací řetězec. Informace o `ApplicationIntent` vlastnost, najdete v části [zadání záměru aplikace](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent) 
+
+Funkce pro čtení Škálováním na více systémů podporuje úrovně konzistence typu relace. Pokud relace jen pro čtení znovu připojí po připojení chyba způsobit podle nedostupnosti repliky, můžete přesměrovat na jinou repliku. Při nepravděpodobné, může být při zpracování datové sady, která je zastaralá. Podobně pokud aplikace zapisuje data pomocí relace pro čtení a zápis a okamžitě přečte pomocí relace jen pro čtení, je možné, že nová data není okamžitě viditelné.
 
 ## <a name="conclusion"></a>Závěr
 Databáze SQL Azure je úzce integrovaná s platformou Azure a vysoce závisí na Service Fabric pro zjištění selhání a obnovení, objektů BLOB služby Azure Storage pro ochranu dat a dostupnost zóny pro vyšší odolnosti proti chybám. Ve stejnou dobu Azure SQL database plně využívá technologie Always On z pole produktu SQL Server pro replikaci a převzetí služeb při selhání. Kombinace těchto technologií umožňuje aplikacím plně výhody modelu smíšený úložiště a podporu nejnáročnější SLA. 

@@ -1,44 +1,44 @@
 ---
-title: "Shromažďování dat v Azure Security Center | Microsoft Docs"
+title: Shromažďování dat v Azure Security Center | Microsoft Docs
 description: " Informace o povolení shromažďování dat v Azure Security Center. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/12/2018
+ms.date: 04/03/2018
 ms.author: terrylan
-ms.openlocfilehash: d5f2c9960b720fc44f37956f9150e89d6425d154
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 90a73545afa82276256a021588eaa594b95ee8da
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat v Azure Security Center
-Security Center shromažďuje data z Azure virtuální počítače (VM) a počítače mimo Azure pro monitorování ohrožení zabezpečení a hrozbami. Data jsou shromažďována pomocí Microsoft Monitoring Agent, který čte různé konfigurace související se zabezpečením a protokoly událostí z počítače a zkopíruje data do pracovního prostoru pro analýzu. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Microsoft Monitoring Agent taky zkopíruje soubory se stavem systému do pracovního prostoru.
+Security Center shromažďuje data z Azure virtuální počítače (VM) a počítače mimo Azure pro monitorování ohrožení zabezpečení a hrozbami. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Microsoft Monitoring Agent taky zkopíruje soubory se stavem systému do pracovního prostoru.
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>Zapněte automatické zřizování služby Microsoft Monitoring Agent     
-Pokud je povoleno automatické zřizování, podporované Security Center zřizuje agenta Microsoft Monitoring Agent na všech virtuálních počítačích Azure a všechny nové, které jsou vytvořeny. Automatické zřizování se důrazně doporučuje a je vyžadovaný pro odběry ve standardní vrstvě služby Security Center.
+Pokud je povoleno automatické zřizování, podporované Security Center zřizuje agenta Microsoft Monitoring Agent na všech virtuálních počítačích Azure a všechny nové, které jsou vytvořeny. Automatické zřizování důrazně doporučujeme, ale instalace ručního agenta je také k dispozici. [Naučte se nainstalovat rozšíření pro Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
 
 > [!NOTE]
-> Zakázání automatické zřizování omezení sledování zabezpečení pro vaše prostředky. Další informace najdete v tématu [vypnout automatické zřizování](security-center-enable-data-collection.md#disable-automatic-provisioning) v tomto článku. I když automatické zřizování je zakázán, jsou povoleny snímků disku virtuálního počítače a kolekce artefaktů.
+> Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky. Další informace najdete v tématu [vypnout automatické zřizování](security-center-enable-data-collection.md#disable-automatic-provisioning) v tomto článku. I když automatické zřizování je zakázán, jsou povoleny snímků disku virtuálního počítače a kolekce artefaktů.
 >
 >
 
-Zapněte automatické zřizování služby Microsoft Monitoring Agent:
-1. V části v hlavní nabídce Security Center, vyberte **zásady zabezpečení**.
+Povolení automatického zřizování agenta Microsoft Monitoring Agent:
+1. V hlavní nabídce služby Security Center vyberte **Zásady zabezpečení**.
 2. Vyberte předplatné.
-3. V části **zásady zabezpečení**, vyberte **shromažďování dat**.
+3. V části **Zásady zabezpečení** vyberte **Shromažďování dat**.
 4. V části **registrace**, vyberte **na** zapněte automatické zřizování.
 5. Vyberte **Uložit**.
 
-![Zapněte automatické zřizování][1]
+![Povolení automatického zřizování][1]
 
 ## <a name="default-workspace-configuration"></a>Výchozí konfigurace pracovního prostoru
 Data shromážděná pomocí služby Security Center je uložen v pracovních prostorů analýzy protokolů.  Můžete vybrat, zda má data shromážděná z virtuálních počítačů Azure uložená v pracovních prostorů vytvořit pomocí služby Security Center nebo v existujícímu pracovnímu prostoru, kterou jste vytvořili.
@@ -101,7 +101,7 @@ Tady je úplnému selhání zabezpečení a AppLocker událost ID pro každou sa
 | --- | --- |
 | Minimální | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
-| Běžné (výchozí) | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,461,4622, |
+| Společné | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,461,4622, |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
 | | 4700,4702,4704,4705,4716,4717,4718,4719,4720,4722,4723,4724,4725,4726,4727,4728,4729,4733,4732,4735,4737, |
 | | 4738,4739,4740,4742,4744,4745,4746,4750,4751,4752,4754,4755,4756,4757,4760,4761,4762,4764,4767,4768,4771, |
@@ -124,7 +124,7 @@ Chcete-li zvolit filtrování zásady:
 Můžete zakázat automatické zřizování z prostředků kdykoli vypnutím tohoto nastavení v zásadě zabezpečení. Automatické zřizování důrazně doporučujeme, aby bylo možné získat výstrahy zabezpečení a doporučení ohledně aktualizací systému, ohrožení zabezpečení operačního systému a endpoint protection.
 
 > [!NOTE]
-> Zakázání automatické zřizování neodebere agenta Microsoft Monitoring Agent z virtuálních počítačů Azure, kde byla vytvořena na agenta.
+> Vypnutím automatického zřizování neodeberete agenta Microsoft Monitoring Agent z virtuálních počítačů Azure, na kterých byl agent zřízen.
 >
 >
 
@@ -132,7 +132,7 @@ Můžete zakázat automatické zřizování z prostředků kdykoli vypnutím toh
 
    ![Vypnout automatické zřizování][6]
 
-2. Vyberte předplatné, které chcete vypnout automatické zřizování.
+2. Vyberte předplatné, pro které chcete vypnout automatické zřizování.
 3. Na **zásady zabezpečení – shromažďování dat** okno, v části **registrace** vyberte **vypnout** zakázat automatické zřizování.
 4. Vyberte **Uložit**.  
 

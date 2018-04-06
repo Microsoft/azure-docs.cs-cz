@@ -1,23 +1,22 @@
 ---
-title: "Provozní kontinuita v cloudu – obnovení databází – SQL Database | Dokumentace Microsoftu"
-description: "Zjistěte, jak Azure SQL Database podporuje provozní kontinuitu v cloudu a obnovení databází a jak pomáhá udržovat klíčové cloudové aplikace v chodu."
-keywords: "provozní kontinuita, provozní kontinuita v cloudu, zotavení databáze po havárii, obnovení databáze"
+title: Provozní kontinuita v cloudu – obnovení databází – SQL Database | Dokumentace Microsoftu
+description: Zjistěte, jak Azure SQL Database podporuje provozní kontinuitu v cloudu a obnovení databází a jak pomáhá udržovat klíčové cloudové aplikace v chodu.
+keywords: provozní kontinuita, provozní kontinuita v cloudu, zotavení databáze po havárii, obnovení databáze
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 08/25/2017
+ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 160e65130efc78bc1a98a0feceb1c824cf226156
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: carlrab
+ms.openlocfilehash: 1f125596a6cc874f285611290d5c42700009afbe
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -27,20 +26,20 @@ Tento přehled popisuje možnosti, které služba Azure SQL Database nabízí pr
 
 SQL Database poskytuje řadu funkcí provozní kontinuity, včetně automatizovaných záloh a volitelné replikace databáze. Každá má jiné vlastnosti ohledně odhadovaného času obnovení (ERT) a potenciální ztráty dat posledních transakcí. Jakmile tyto možnosti pochopíte, můžete si mezi nimi vybírat a ve většině scénářů je spolu kombinovat a používat pro různé scénáře. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu úplného obnovení aplikace po ničivé události – to je vaše plánovaná doba obnovení (RTO). Také musíte porozumět maximální objem dat poslední aktualizace (časový interval) aplikace může tolerovat ztráty při obnovování po nepříjemným událostem – to je cíl bodu obnovení (RPO).
 
-Následující tabulka porovnává ERT a RPO pro tři nejběžnější scénáře.
+Následující tabulka porovnává vložit a plánovaný bod obnovení pro jednotlivé úrovně služby pro tři nejběžnější scénáře.
 
-| Schopnost | Úroveň Basic | Úroveň Standard | Úroveň Premium |
-| --- | --- | --- | --- |
-| Obnovení k určitému bodu v čase ze zálohy |Libovolný bod obnovení do 7 dní |Libovolný bod obnovení do 35 dní |Libovolný bod obnovení do 35 dní |
-| Geografické obnovení ze zálohy geograficky replikované |ERT < 12 h, RPO < 1 h |ERT < 12 h, RPO < 1 h |ERT < 12 h, RPO < 1 h |
-| Obnovení z úložiště záloh Azure Backup Vault |ERT < 12 h, RPO < 1 týden |ERT < 12 h, RPO < 1 týden |ERT < 12 h, RPO < 1 týden |
-| Aktivní geografickou replikaci |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s |
+| Schopnost | Basic | Standard | Premium  | Obecné použití | Obchodně klíčové
+| --- | --- | --- | --- |--- |--- |
+| Obnovení k určitému bodu v čase ze zálohy |Libovolný bod obnovení do 7 dní |Libovolný bod obnovení do 35 dní |Libovolný bod obnovení do 35 dní |Všechny body obnovení v rámci nastaveném časovém intervalu (až 35 dnů)|Všechny body obnovení v rámci nastaveném časovém intervalu (až 35 dnů)|
+| Geografické obnovení ze zálohy geograficky replikované |ERT < 12 h, RPO < 1 h |ERT < 12 h, RPO < 1 h |ERT < 12 h, RPO < 1 h |ERT < 12 h, RPO < 1 h|ERT < 12 h, RPO < 1 h|
+| Obnovení z úložiště záloh Azure Backup Vault |ERT < 12 h, RPO < 1 týden |ERT < 12 h, RPO < 1 týden |ERT < 12 h, RPO < 1 týden |ERT < 12 h, RPO < 1 týden|ERT < 12 h, RPO < 1 týden|
+| Aktivní geografickou replikaci |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s|ERT < 30 s, RPO < 5 s|
 
-### <a name="use-database-backups-to-recover-a-database"></a>Obnovení databáze pomocí záloh databáze
+### <a name="use-point-in-time-restore-to-recover-a-database"></a>Použít obnovení bodu v čase k obnovení databáze
 
-SQL Database automaticky provede kombinaci databáze úplné zálohování každý týden, databáze rozdílové zálohy každou hodinu a transakce protokolu zálohování každých pět - deset minut chránit vaši firmu před ztrátou dat. Tyto zálohy se ukládají v geograficky redundantní úložiště 35 dní pro databáze v úrovně služeb Standard a Premium a pro databáze ve vrstvě služeb základní 7 dní. Další informace najdete v tématu [úrovních služeb](sql-database-service-tiers.md). Pokud doba uchovávání vaší úrovně služby nevyhovuje požadavkům vaší organizace, můžete dobu uchovávání prodloužit [změnou úrovně služby](sql-database-service-tiers.md). Pro zajištění ochrany před výpadkem datového centra se úplné a rozdílové zálohy databáze také replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md). Další informace najdete v tématu [automatické zálohování databází](sql-database-automated-backups.md).
+SQL Database automaticky provede kombinaci databáze úplné zálohování každý týden, databáze rozdílové zálohy každou hodinu a transakce protokolu zálohování každých pět - deset minut chránit vaši firmu před ztrátou dat. Tyto zálohy jsou uloženy v úložišti RA-GRS 35 dní pro databáze v úrovně služeb Standard a Premium a pro databáze ve vrstvě služeb základní 7 dní. V obecné účely a obchodními úrovněmi kritické služby (preview) je možné konfigurovat až na 35 dní uchovávání záloh. Další informace najdete v tématu [úrovních služeb](sql-database-service-tiers.md). Pokud doba uchovávání vaší úrovně služby nevyhovuje požadavkům vaší organizace, můžete dobu uchovávání prodloužit [změnou úrovně služby](sql-database-service-tiers.md). Pro zajištění ochrany před výpadkem datového centra se úplné a rozdílové zálohy databáze také replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md). Další informace najdete v tématu [automatické zálohování databází](sql-database-automated-backups.md).
 
-Pokud doba uchování předdefinované není dostatečná pro aplikaci, můžete ji rozšířit tak, že nakonfigurujete zásady dlouhodobé uchovávání informací databáze. Další informace najdete v tématu [dlouhodobé uchovávání](sql-database-long-term-retention.md).
+Pokud maximální doba uchování podporované možnosti PITR není dostatečná pro aplikaci, můžete ji rozšířit tak, že nakonfigurujete zásady dlouhodobé uchovávání informací (zleva doprava) pro databáze. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
 Tyto automatické zálohy databáze můžete použít k obnovení databáze po různých ničivých událostech, a to jak v rámci vašeho datového centra, tak do jiného datového centra. Při použití automatických záloh databáze závisí odhadovaný čas obnovení na několika faktorech. Patří mezi ně celkový počet obnovovaných databází ve stejném regionu a ve stejnou dobu, velikost databáze, velikost protokolu transakcí a šířka pásma sítě. Doba obnovení je obvykle menší než 12 hodin. Při obnovování do jiné oblasti dat je potenciální ztráta dat omezena na 1 hodinu díky geograficky redundantnímu úložišti s rozdílovými zálohami prováděnými každou hodinu.
 
@@ -55,7 +54,7 @@ Automatizované zálohování použijte pro zajištění provozní kontinuity a 
 * Pracuje s nízkou mírou změn dat (málo transakcí za hodinu) a ztráta změn provedených během až jedné hodiny je přijatelnou ztrátou dat.
 * Je citlivá na změny nákladů.
 
-Pokud potřebujete rychlejší obnovení, použijte [aktivní geografickou replikací](sql-database-geo-replication-overview.md) (popsané dále). Pokud potřebujete mít možnost obnovit data z období starší než 35 dní, použijte [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md). 
+Pokud potřebujete rychlejší obnovení, použijte [aktivní geografickou replikací](sql-database-geo-replication-overview.md) (popsané dále). Pokud potřebujete mít možnost obnovit data z období starší než 35 dní, použijte [dlouhodobé uchovávání](sql-database-long-term-retention.md). 
 
 ### <a name="use-active-geo-replication-and-auto-failover-groups-in-preview-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>Pomocí aktivní geografickou replikaci a automatické převzetí služeb při selhání skupiny (v preview) můžete zkrátit čas obnovení a omezit ztrátě dat, které jsou přidružené k obnovení
 
@@ -77,12 +76,12 @@ Použijte active geografická replikace a automatické převzetí služeb při s
 * Pracuje s vysokou mírou změn dat a ztráta dat za jednu hodinu je nepřijatelná.
 * Další náklady na aktivní geografickou replikaci jsou nižší než potenciální finanční závazky a související ztráta podnikání.
 
->
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
 
 ## <a name="recover-a-database-after-a-user-or-application-error"></a>Obnovení databáze po chybě uživatele nebo aplikace
-* Nikdo není dokonalý! Uživatel může omylem odstranit některá data, nedopatřením smazat důležitou tabulku nebo dokonce smazat celou databázi. Nebo může aplikace kvůli vadě náhodou přepsat dobrá data chybnými daty.
+
+Žádná je ideální! Uživatel může omylem odstranit některá data, nedopatřením smazat důležitou tabulku nebo dokonce smazat celou databázi. Nebo může aplikace kvůli vadě náhodou přepsat dobrá data chybnými daty.
 
 V takovém scénáři máte následující možnosti obnovení.
 
@@ -101,8 +100,9 @@ Další informace a podrobné pokyny k obnovení odstraněné databáze pomocí 
 >
 >
 
-### <a name="restore-from-azure-backup-vault"></a>Obnovení z úložiště záloh Azure Backup Vault
-Pokud došlo k chybě ztrátou dat mimo aktuální dobu uchování pro automatizované zálohování a je databáze nakonfigurovaná pro dlouhodobé uchovávání, můžete obnovit ze zálohy týdně v trezoru zálohování Azure pro novou databázi. V tuto chvíli můžete původní databázi nahradit obnovenou databází nebo zkopírovat potřebná data z obnovené databáze do původní databáze. Pokud budete potřebovat načíst starší verzi databáze před upgradem hlavní aplikace, splnit žádost od auditory nebo právní pořadí, že můžete vytvořit databázi pomocí úplné zálohy uložené v trezoru zálohování Azure.  Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
+### <a name="restore-backups-from-long-term-retention"></a>Obnovit zálohy z dlouhodobé uchovávání
+
+Pokud došlo k chybě ztrátou dat mimo aktuální dobu uchování pro automatizované zálohování a je databáze nakonfigurovaná pro dlouhodobé uchovávání, můžete pro novou databázi obnovit z úplné zálohy v úložišti zleva doprava. V tuto chvíli můžete původní databázi nahradit obnovenou databází nebo zkopírovat potřebná data z obnovené databáze do původní databáze. Pokud budete potřebovat načíst starší verzi databáze před upgradem hlavní aplikace, splnit žádost od auditory nebo právní pořadí, že můžete vytvořit databázi pomocí úplné zálohy uložené v trezoru zálohování Azure.  Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Obnovení databáze do jiné oblasti po výpadku regionálního datového centra Azure
 <!-- Explain this scenario -->
@@ -152,5 +152,5 @@ Po obnovení s použitím libovolného mechanismu musíte provést následujíc�
 ## <a name="upgrade-an-application-with-minimal-downtime"></a>Upgrade aplikace s minimálními výpadky
 Někdy aplikace musí být převedeno do režimu offline z důvodu plánované údržby, jako je například upgradu aplikace. [Spravovat aplikace upgrady](sql-database-manage-application-rolling-upgrade.md) popisuje, jak pomocí aktivní geografickou replikaci můžete povolit postupné upgrady vaší cloudové aplikace minimalizovat prostoje při upgradech a zadejte cestu obnovení, pokud dojde k chybě. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Diskuzi o aspektech návrhu aplikací pro samostatné databáze a pro elastické fondy najdete v tématech [Návrh aplikace pro zotavení po havárii cloudu](sql-database-designing-cloud-solutions-for-disaster-recovery.md) a [Strategie zotavení po havárii elastických fondů](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

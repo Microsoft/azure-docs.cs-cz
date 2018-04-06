@@ -1,8 +1,8 @@
 ---
-title: "Použít k monitorování clusterů Azure HDInsight Log Analytics | Microsoft Docs"
-description: "Naučte se používat Azure Log Analytics ke sledování úloh spuštěných v clusteru služby HDInsight."
+title: Použít k monitorování clusterů Azure HDInsight Log Analytics | Microsoft Docs
+description: Naučte se používat Azure Log Analytics ke sledování úloh spuštěných v clusteru služby HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 2c43b9aabda56e1204870575e86934bf93d05882
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: be71b065999c30546432895804df8633da21b43e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Monitorování clusterů HDInsight pomocí Azure Log Analytics
 
 Naučte se používat Azure Log Analytics ke sledování operací clusteru Hadoop v HDInsight.
 
-[Analýza protokolu](../log-analytics/log-analytics-overview.md) je služba v [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) , sleduje vaše cloudové a místní prostředí k udržování své dostupnosti a výkonu. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji. 
+[Analýza protokolu](../log-analytics/log-analytics-overview.md) je služba, která monitoruje své cloudové a místní prostředí k udržování své dostupnosti a výkonu. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Než začnete tento kurz, musíte mít předplatné Azure. Přečtěte si téma [Bezplatné vytvoření účtu Microsoft Azure ještě dnes](https://azure.microsoft.com/free).
 
-* **Cluster Azure HDInsight**. V současné době můžete použít Azure Operations Management Suite s těmito typy clusteru HDInsight:
+* **Cluster Azure HDInsight**. V současné době můžete provádět analýzy protokolů s těmito typy clusteru HDInsight:
 
     * Hadoop
     * HBase

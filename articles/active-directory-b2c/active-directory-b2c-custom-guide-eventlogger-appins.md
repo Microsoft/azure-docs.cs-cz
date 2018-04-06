@@ -1,6 +1,6 @@
 ---
-title: Tom, jak sledovat chování uživatele pomocí událostí ve službě Application Insights z Azure AD B2C | Microsoft Docs
-description: Podrobný návod, jak povolit protokoly událostí ve službě Application Insights z cesty uživatele Azure AD B2C, používat vlastní zásady - PREVIEW
+title: Sledovat chování uživatele pomocí událostí ve službě Application Insights z Azure AD B2C | Microsoft Docs
+description: Podrobný průvodce pro povolení protokoly událostí ve službě Application Insights z cesty uživatele Azure AD B2C pomocí vlastních zásad (preview)
 services: active-directory-b2c
 documentationcenter: dev-center-name
 author: davidmu1
@@ -10,46 +10,53 @@ ms.topic: article
 ms.workload: identity
 ms.date: 3/15/2018
 ms.author: davidmu
-ms.openlocfilehash: 1e8c4a53266072db71952ee35b15e5de54fabb95
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 28c4cefdd7604dbddf6887dcf494ecea65d658f1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="tracking-user-behavior-inside-azure-ad-b2c-journeys-using-application-insights"></a>Sledování chování uživatele v Azure AD B2C cesty pomocí Application Insights
+# <a name="track-user-behavior-in-azure-ad-b2c-journeys-by-using-application-insights"></a>Sledovat chování uživatele v Azure AD B2C cesty pomocí Application Insights
 
-Azure Active Directory B2C pracuje s Azure Application Insights.  Obsahují podrobnější a vlastní protokoly událostí pro vaše vlastní vytvořeného uživatele cesty.  Tato příručka ukazuje, jak začít pracovat, abyste mohli: 
-* získáte přehled o chování uživatele
-* řešení potíží se zásadami, vlastní vývoj nebo v produkčním prostředí
-* míra výkonu
-* Vytvoření oznámení z Application Insights
+Azure Active Directory B2C (Azure AD B2C) pracuje s Azure Application Insights. Obsahují podrobnější a vlastní protokoly událostí pro vaše uživatele vytvořit vlastní cesty. Tento článek ukazuje, jak začít pracovat, abyste mohli: 
+* Získáte přehled o chování uživatele.
+* Řešení potíží se zásadami, vlastní vývoj nebo v produkčním prostředí.
+* Měření výkonu.
+* Vytvoření oznámení z Application Insights.
+
+> [!NOTE]
+> Tato funkce je ve verzi preview.
 
 ## <a name="how-it-works"></a>Jak to funguje
-Nový zprostředkovatel byl přidán do Azure AD B2C Identity rozhraní Framework: `Handler="Web.TPEngine.Providers.UserJourneyContextProvider, Web.TPEngine, Version=1.0.0.0`.  Odešle data události přímo pomocí zadané do Azure AD B2C klíč instrumentace Application Insights.  Profil technické používá k definování událost na základě B2C tohoto zprostředkovatele.  Profil určuje název události, deklarace identity, které budou zaznamenány a klíč instrumentace.  Odeslat událost, technické profil pak přidat, protože se `orchestration step` nebo jako `validation technical profile` vlastní uživatelské cesty.  Události můžete unified pomocí Application Insights pomocí ID korelace k zaznamenání relace uživatele.  Application Insights zpřístupní události a relace během několika sekund a uvede mnoho vizualizace, export a analytické nástroje.
+Rozhraní Identity prostředí v Azure AD B2C nyní zahrnuje zprostředkovatele `Handler="Web.TPEngine.Providers.UserJourneyContextProvider, Web.TPEngine, Version=1.0.0.0`. Odešle data události přímo do služby Application Insights pomocí klíč instrumentace poskytované Azure AD B2C. 
+
+Profil technické používá k definování událost na základě B2C tohoto zprostředkovatele. Profil určuje název události, deklarace identity, které budou zaznamenány a klíč instrumentace. Odeslat událost, se pak přidá technické profil jako *orchestration krok* nebo jako *technické profil ověření* vlastní uživatelské cesty. 
+
+Application Insights můžete sjednotit události pomocí ID korelace k zaznamenání relace uživatele. Application Insights zpřístupní události a relace v sekundách a uvede mnoho vizualizace, export a analytické nástroje.
 
 
 
 ## <a name="prerequisites"></a>Požadavky
-Proveďte kroky v [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md).  Tato příručka předpokládá, že je použit úvodní sada vlastní zásady.  Ale není nutné.
+Proveďte kroky v [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md). Tento článek předpokládá, že používáte sadu starter vlastní zásady. Ale starter pack není povinné.
 
 
 
 ## <a name="step-1-create-an-application-insights-resource-and-get-the-instrumentation-key"></a>Krok 1. Vytvořte prostředek Application Insights a získat klíč instrumentace
 
-Application Insights je výkonný nástroj. Při používání s Azure AD B2C, jediným požadavkem je vytvoření prostředku a získání kód instrumentace.  Application Insights musí být vytvořen v [portálu Azure.](https://portal.azure.com)
+Když používáte Application Insights s Azure AD B2C, jediným požadavkem je vytvoření prostředku a získání kód instrumentace. Vytvořit prostředek v [portál Azure](https://portal.azure.com).
 
-[Úplnou dokumentaci pro službu Application Insights](https://docs.microsoft.com/azure/application-insights/)
+1. Na portálu Azure v rámci vašeho předplatného klienta, vyberte **+ vytvořit prostředek**. Tohoto klienta není vašeho klienta Azure AD B2C.  
+2. Vyhledejte a vyberte **Application Insights**.  
+3. Vytvořit prostředek, který používá **webové aplikace ASP.NET** jako **typ aplikace**, v rámci předplatného vaši volbu.
+4. Po vytvoření prostředku Application Insights, otevřete ho a poznamenejte si klíč instrumentace. 
 
-1. Klikněte na `+ Create a resource` na portálu Azure v rámci vašeho předplatného klienta.  Tohoto klienta není vašeho klienta Azure AD B2C.  
-2. Vyhledejte a vyberte `Application Insights`  
-3. Vytvořte prostředek z `Application Type` `ASP.NET web application` v rámci předplatného vaši volbu.
-4. Po vytvoření otevřete prostředek Application Insights a Poznámka  `Instrumentation Key` 
+![Přehled a instrumentace klíč statistiky aplikace](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-key.png)
 
-![Přehled Application Insights a klíč instrumentace](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-key.png)
+Další informace najdete v tématu [úplné dokumentaci pro službu Application Insights](https://docs.microsoft.com/azure/application-insights/).
 
-## <a name="step-2-add-new-claimtype-definitions-to-your-trust-framework-extension-file"></a>Krok 2. Přidat nové definice typ ClaimType do souboru rozšíření důvěřovat Framework
+## <a name="step-2-add-new-claimtype-definitions-to-your-trust-framework-extension-file"></a>Krok 2. Přidat nové definice typ ClaimType do souboru rozšíření framework vztahu důvěryhodnosti
 
-### <a name="open-the-extension-file-from-the-starter-pack-and-add-the-following-elements-to-the-buildingblocks-node--the-extensions-filename-is-typically-yourtenantonmicrosoftcom-b2c1atrustframeworkextensionsxml"></a>Otevřete soubor rozšíření z balíčku starter a přidejte následující prvky na `<BuildingBlocks>` uzlu.  Název souboru rozšíření je obvykle `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`
+Otevřete soubor rozšíření z balíčku starter a přidejte následující prvky na `<BuildingBlocks>` uzlu. Název souboru je obvykle `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`.
 
 ```xml
 
@@ -78,7 +85,7 @@ Application Insights je výkonný nástroj. Při používání s Azure AD B2C, j
         <AdminHelpText />
         <UserHelpText />
       </ClaimType>
-      <!--Additional claims used for passing claims to Application Insights Provider -->
+      <!-- Additional claims used for passing claims to the Application Insights provider. -->
       <ClaimType Id="federatedUser">
         <DisplayName>federatedUser</DisplayName>
         <DataType>boolean</DataType>
@@ -100,20 +107,20 @@ Application Insights je výkonný nástroj. Při používání s Azure AD B2C, j
 
 ## <a name="step-3-add-new-technical-profiles-that-use-the-application-insights-provider"></a>Krok 3. Přidejte nové technické profily, které používají zprostředkovatele Application Insights
 
-Technické profily lze považovat za funkcí v Azure AD B2C Identity rozhraní Framework.  Pět technické profily jsou definované v tomto příkladu otevřete relaci a odesílat události.
+Technické profily lze považovat za funkcí v Identity rozhraní Framework z Azure AD B2C. Tento příklad definuje pět profilů technické otevřete relaci a odesílají události:
 
 | Technické profilu       | Úkol |
 | ----------------------------- |:---------------------------------------------|
-| AzureInsights-Common | společné sady parametrů, které mají být zahrnuty ve všech profilech technické Statistika Azure     | 
-| JourneyContextForInsights   | Otevře relaci v aplikaci přehled a odešle ID korelace |
-| AzureInsights-SignInRequest     | vytvoří "Přihlášení" události s sadu deklarací identity, pokud byla přijata žádost o přihlášení      | 
-| AzureInsights-UserSignup | vytváří událost volána "UserSignup", když se uživatel cesty registrace nebo přihlášení byla aktivována možnost registrace     | 
+| AzureInsights-Common | Vytvoří společnou sadu parametrů, které mají být zahrnuty ve všech `AzureInsights` technické profily     | 
+| JourneyContextForInsights   | Otevře relaci ve službě Application Insights a odešle ID korelace |
+| AzureInsights-SignInRequest     | Vytvoří `SignIn` událost s sadu deklarací identity, pokud byla přijata žádost o přihlášení      | 
+| AzureInsights-UserSignup | Vytvoří `UserSignup` událost, když uživatel spustí registrace možnost cesty registrace-množství nebo přihlášení     | 
 | AzureInsights-SignInComplete | zaznamenává úspěšné dokončení ověření, pokud token byl odeslán do aplikace předávající strany     | 
 
-Přidejte profily do souboru rozšíření z balíčku starter přidáním tyto prvky, aby `<ClaimsProviders>` uzlu.  Název souboru rozšíření je obvykle `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`
+Přidejte profily do souboru rozšíření z balíčku starter přidáním tyto prvky, aby `<ClaimsProviders>` uzlu. Název souboru je obvykle `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`.
 
 > [!IMPORTANT]
-> Změna `Instrumentation Key` v `ApplicationInsights-Common` technické profilu na identifikátor GUID poskytované prostředku Application Insights.
+> Změnit klíč instrumentace do `ApplicationInsights-Common` technické profilu na identifikátor GUID, který poskytuje prostředku Application Insights.
 
 ```xml
 <ClaimsProvider>
@@ -130,10 +137,7 @@ Přidejte profily do souboru rozšíření z balíčku starter přidáním tyto 
 
         <TechnicalProfile Id="AzureInsights-SignInRequest">
           <InputClaims>
-            <!-- 
-                            An input claim with a PartnerClaimType="eventName" is required. This is used by the AzureApplicationInsightsProvider
-                            to create an event with the specified value.
-                        -->
+            <!-- An input claim with PartnerClaimType="eventName" is required. The Application Insights provider uses it to create an event with the specified value. -->
             <InputClaim ClaimTypeReferenceId="EventType" PartnerClaimType="eventName" DefaultValue="SignInRequest" />
           </InputClaims>
           <IncludeTechnicalProfile ReferenceId="AzureInsights-Common" />
@@ -159,23 +163,15 @@ Přidejte profily do souboru rozšíření z balíčku starter přidáním tyto 
           <DisplayName>Alternate Email</DisplayName>
           <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.Insights.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
           <Metadata>
-            <!-- The ApplicationInsights instrumentation key which will be used for logging the events -->
+            <!-- The Application Insights instrumentation key that will be used for logging the events. -->
             <Item Key="InstrumentationKey">xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</Item>
-            <!-- 
-                            A boolean indicating whether delevoper mode is enabled. This controls how events are buffered. In a development environment
-                            with minimal event volume, enabling developer mode results in events being sent immediately to ApplicationInsights.
-                        -->
+            <!-- A Boolean that indicates whether developer mode is enabled. This controls how events are buffered. In a development environment with minimal event volume, enabling developer mode results in events being sent immediately to Application Insights.   -->
             <Item Key="DeveloperMode">false</Item>
-            <!-- 
-                            A boolean indicating whether telemetry should be enabled or not.
-                        -->
+            <!-- A Boolean that indicates whether telemetry should be enabled or not.   -->
             <Item Key="DisableTelemetry ">false</Item>
           </Metadata>
           <InputClaims>
-            <!--
-                            Properties of an event are added using the syntax {property:NAME} where NAME is the name of the property being added
-                            to the event. DefaultValue can be either a static value or one resolved by one of the supported DefaultClaimResolvers.
-                        -->
+            <!-- Properties of an event are added through the syntax {property:NAME}, where NAME is the name of the property being added to the event. DefaultValue can be either a static value or a value that's resolved by one of the supported DefaultClaimResolvers. -->
             <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
             <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" />
             <InputClaim ClaimTypeReferenceId="Culture" PartnerClaimType="{property:Culture}" DefaultValue="{Culture:RFC5646}" />
@@ -186,12 +182,12 @@ Přidejte profily do souboru rozšíření z balíčku starter přidáním tyto 
 
 ```
 
-## <a name="step-4-add-the-technical-profiles-for-application-insights-as-orchestration-steps-in-an-existing-user-journey"></a>Krok 4. Přidejte technické profily pro službu Application Insights jako orchestration kroky existující cesty uživatele.
+## <a name="step-4-add-the-technical-profiles-for-application-insights-as-orchestration-steps-in-an-existing-user-journey"></a>Krok 4. Přidejte technické profily pro službu Application Insights jako orchestration kroky existující cesty uživatele
 
-Volání `JournyeContextForInsights` jako orchestration krok 1
+Volání `JournyeContextForInsights` jako orchestration krok 1:
 
 ```xml
-<!-- Initialize a session with Application Insights -->
+<!-- Initialize a session with Application Insights. -->
 <OrchestrationStep Order="1" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="JourneyContextForInsights" TechnicalProfileReferenceId="JourneyContextForInsights" />
@@ -199,10 +195,10 @@ Volání `JournyeContextForInsights` jako orchestration krok 1
         </OrchestrationStep>
 ```
 
-Volání `Azure-Insights-SignInRequest` jako orchestration krok 2 pro sledování, zda přihlašovací v nebo registrace-množství žádost byla přijata.
+Volání `Azure-Insights-SignInRequest` jako orchestration krok 2 pro sledování, zda přihlašovací v nebo registrace-množství žádost byla přijata:
 
 ```xml
-<!-- Track that we have received a sign in request -->
+<!-- Track that we have received a sign-in request. -->
         <OrchestrationStep Order="2" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="TrackSignInRequest" TechnicalProfileReferenceId="AzureInsights-SignInRequest" />
@@ -210,10 +206,10 @@ Volání `Azure-Insights-SignInRequest` jako orchestration krok 2 pro sledován�
         </OrchestrationStep>
 ```
 
-Okamžitě **před** `SendClaims` orchestration kroku, přidejte nový krok, který volá `Azure-Insights-UserSignup`. Spuštění při kliknutí na tlačítko registrace cesty registrace nebo přihlášení.
+Okamžitě *před* `SendClaims` orchestration kroku, přidejte nový krok, který volá `Azure-Insights-UserSignup`. Ho se aktivuje, když uživatel vybere tlačítko registrace cesty registrace-množství nebo přihlášení.
 
 ```xml
-        <!-- Handles the user clicking the sign up link in the local account sign in page -->
+        <!-- Handles the user selecting the sign-up link in the local account sign-in page. -->
         <OrchestrationStep Order="9" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
@@ -231,10 +227,10 @@ Okamžitě **před** `SendClaims` orchestration kroku, přidejte nový krok, kte
           </ClaimsExchanges>
 ```
 
-Ihned po `SendClaims` krok orchestration, volání `Azure-Insights-SignInComplete`.   Tento krok bude odrážet úspěšně dokončila cesty.
+Ihned po `SendClaims` krok orchestration, volání `Azure-Insights-SignInComplete`. Tento krok odráží úspěšně dokončila cesty.
 
 ```xml
-        <!-- Track that we have successfully sent a token -->
+        <!-- Track that we have successfully sent a token. -->
         <OrchestrationStep Order="11" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="TrackSignInComplete" TechnicalProfileReferenceId="AzureInsights-SignInComplete" />
@@ -244,26 +240,26 @@ Ihned po `SendClaims` krok orchestration, volání `Azure-Insights-SignInComplet
 ```
 
 > [!IMPORTANT]
-> Po přidání nové kroků Orchestrace, přečíslování kroky postupně bez přeskočení žádné celá čísla od 1 do N
+> Po přidání nové kroky orchestration přečíslování kroky postupně bez přeskočení žádné celá čísla od 1 do N.
 
 
 ## <a name="step-5-upload-your-modified-extensions-file-run-the-policy-and-view-events-in-application-insights"></a>Krok 5. Nahrát soubor upravené rozšíření, spusťte zásady a zobrazení událostí ve službě Application Insights
 
-Uložte a nahrát nový soubor rozšíření framework vztah důvěryhodnosti.  Potom zavolejte předávající strana zásady z vaší aplikace nebo použití `Run Now` v rozhraní Azure AD B2C.  Během několika sekund bude k dispozici ve službě Application Insights události.
+Uložte a nahrát nový soubor rozšíření framework vztah důvěryhodnosti. Potom zavolejte předávající strany zásady z vaší aplikace nebo použití **spustit nyní** v rozhraní Azure AD B2C. V sekundách jsou události dostupné ve službě Application Insights.
 
 1. Otevřete prostředek Application Insights v klientovi služby Azure Active Directory.
-2. Klikněte na `Events` v `USAGE` podnabídky.
-3. Nastavit `During` k `Last hour` a `By` k `3 minutes`.  Je třeba kliknout na `Refresh` zobrazení výsledků
+2. Vyberte **události** v **využití** podnabídky.
+3. Nastavit **během** k **poslední hodinu** a **podle** k **3 minut**. Možná budete muset vybrat možnost **aktualizovat** Chcete-li zobrazit výsledky.
 
-![Statistika využití události aplikace Blase](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-graphic.png)
-
-
+![Graf využití událostem Application Insights](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-graphic.png)
 
 
 
-##  <a name="next-steps"></a>DALŠÍ KROKY
 
-Přidáte další typy a události do vašeho cesty uživatele podle vašich potřeb.  Tady je seznam možných deklarací identity pomocí překladače další deklarace identity.
+
+## <a name="next-steps"></a>Další postup
+
+Přidáte typy deklarací identity a události na váš cesty uživatele podle vašich potřeb. Tady je seznam možných deklarace identity pomocí překladače další deklarace identity.
 
 ### <a name="culture-specific-claims"></a>Deklarace identity specifické pro jazykovou verzi
 
@@ -313,7 +309,7 @@ Referenced using {Policy:One of the property names below}
 
 ```
 
-### <a name="openidconnect-specific-claims"></a>Deklarace identity specifické pro OpenIDConnect
+### <a name="openid-connect-specific-claims"></a>Deklarace identity specifické pro OpenID Connect
 
 ```xml
 OpenIDConnect Specific Claims
@@ -354,20 +350,20 @@ Referenced using {OIDC:One of the property names below}
  
 ```
 
-### <a name="non-protocol-parameters-included-with-oidc--oauth2-requests"></a>Parametry protokolu není součástí OIDC & OAuth2 požadavky
+### <a name="non-protocol-parameters-included-with-oidc-and-oauth2-requests"></a>Parametry protokolu není součástí OIDC a OAuth2 požadavky
 
 ```xml
 Referenced using { OAUTH-KV:Querystring parameter name }
 ```
 
-Libovolný název parametru jsou součástí požadavek OIDC nebo OAuth2 lze mapovat na deklaraci identity v cesty uživatele.  Můžete se pak zaznamenávat v události. Žádosti z aplikace může obsahovat třeba parametr řetězce dotazu s názvem `app_session`, `loyalty_number` nebo `any_string`.
+Libovolný název parametru jsou součástí požadavek OIDC nebo OAuth2 lze mapovat na deklaraci identity v cesty uživatele. Potom ji můžete zaznamenat události. Žádosti z aplikace může například obsahovat parametr řetězce dotazu s názvem `app_session`, `loyalty_number`, nebo `any_string`.
 
-Ukázková žádost z aplikace:
+Zde je ukázka požadavku z aplikace:
 ```
 https://login.microsoftonline.com/sampletenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=e1d2612f-c2bc-4599-8e7b-d874eaca1ae1&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&app_session=0a2b45c&loyalty_number=1234567
 
 ```
-Deklarace identity lze přidat pomocí události Application Insights přidáním element vstupní deklarace identity:
+Poté můžete přidat deklarací identity tak, že přidáte `InputClaim` element události Application Insights:
 ```
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="app_session" DefaultValue="{OAUTH-KV:app_session}" />
 <InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="loyalty_number" DefaultValue="{OAUTH-KV:loyalty_number}" />
@@ -375,7 +371,7 @@ Deklarace identity lze přidat pomocí události Application Insights přidání
 
 ### <a name="other-system-claims"></a>Další deklarace identity systému
 
-Některé systému deklarace identity musí být přidán do kontejneru deklarace identity, než jsou k dispozici pro záznam jako události. Technické profil `SimpleUJContext` před tyto deklarace identity jsou k dispozici, musí být volána jako na krok orchestration nebo technické profil ověření.
+Některé systému deklarace identity musí být přidán do kontejneru deklarace identity, než jsou k dispozici k zaznamenání jako události. Technické profil `SimpleUJContext` před tyto deklarace identity jsou k dispozici, musí být volána jako na krok orchestration nebo technické profil ověření.
 
 ```xml
 <ClaimsProvider>

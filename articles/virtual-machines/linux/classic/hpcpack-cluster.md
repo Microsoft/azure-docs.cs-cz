@@ -1,11 +1,11 @@
 ---
-title: "Linuxových výpočetních virtuálních počítačů v clusteru služby HPC Pack | Microsoft Docs"
-description: "Postup vytvoření a používání clusteru HPC Pack v Azure pro Linux s vysokým výkonem úloh (prostředí HPC)"
+title: Linuxových výpočetních virtuálních počítačů v clusteru služby HPC Pack | Microsoft Docs
+description: Postup vytvoření a používání clusteru HPC Pack v Azure pro Linux s vysokým výkonem úloh (prostředí HPC)
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 4d080fdd-5ffe-4f54-a78d-4c818f6eb3fb
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 809d3944311badf265117d353b65642e044d900c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57ad5d5d2e7e068f47d51408527f1f7553917279
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Začínáme s výpočetními uzly Linuxu v clusteru HPC Pack v Azure
 Nastavení [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) clusteru v Azure, který obsahuje hlavního uzlu se systémem Windows Server a několika výpočetních uzlech systémem podporované distribuce systému Linux. Prozkoumejte možnosti pro přesun dat mezi uzly Linux a Windows hlavnímu uzlu clusteru. Zjistěte, jak k odesílání úloh Linux HPC do clusteru.
@@ -153,7 +153,7 @@ Upravte soubor podle potřeby pro vaše prostředí a konfiguraci požadovaných
    
     c. Po ověření úspěšně, skript zobrazí seznam prostředků clusteru k vytvoření. Zadejte *Y* pokračujte.
    
-    ![Zdroje][resources]
+    ![Zdroje a prostředky][resources]
    
     d. Skript spustí nasazení clusteru HPC Pack a dokončení konfigurace bez další ruční kroky. Tento skript můžete spustit několik minut.
    
@@ -296,7 +296,7 @@ HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) nástroj
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Zkuste škálování na větší počet uzlů clusteru, nebo zkuste spustit úlohu Linux v clusteru. Příklad, naleznete v části [spustit NAMD pomocí sady Microsoft HPC Pack v systému Linux výpočetních uzlech v Azure](hpcpack-cluster-namd.md).
 * Zkuste cluster s [virtuální počítače podporuje RDMA, náročné](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ke spuštění úlohy MPI. Příklad, naleznete v části [spustit OpenFOAM pomocí sady Microsoft HPC Pack na Linux RDMA cluster v Azure](hpcpack-cluster-openfoam.md).
 * Pokud vás zajímá při práci s Linux uzly v clusteru HPC Pack služby místně, najdete v článku [TechNet pokyny](https://technet.microsoft.com/library/mt595803.aspx).

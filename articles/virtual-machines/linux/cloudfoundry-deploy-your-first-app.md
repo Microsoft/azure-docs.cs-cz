@@ -1,13 +1,13 @@
 ---
-title: "Nasazení vaší první aplikace do cloudu Foundry v Microsoft Azure | Microsoft Docs"
-description: "Nasazení aplikace do cloudu Foundry v Azure"
+title: Nasazení vaší první aplikace do cloudu Foundry v Microsoft Azure | Microsoft Docs
+description: Nasazení aplikace do cloudu Foundry v Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: seanmck
-manager: timlt
-editor: 
-tags: 
-keywords: 
+manager: jeconnoc
+editor: ''
+tags: ''
+keywords: ''
 ms.assetid: 8fa04a58-56ad-4e6c-bef4-d02c80d4b60f
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: b617127fc0a3f8dcae293e356ea669edcfa5deff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e7b321c9fc8f8568cd8109cea0ae877048d3663
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Nasazení vaší první aplikace do cloudu Foundry v Microsoft Azure
 
@@ -35,7 +35,7 @@ Existuje několik možností pro vytvoření Foundry cloudové prostředí v Azu
 - [Nasazení balíčků cloudu Foundry open-source přímo] [ oss-cf-bosh] nastavením [BOSH](http://bosh.io) ředitel, virtuální počítač, který koordinuje nasazení Foundry cloudové prostředí.
 
 > [!IMPORTANT] 
-> Pokud nasazujete PCF z Azure Marketplace, poznamenejte si SYSTEMDOMAINURL a přihlašovací údaje správce potřebné pro přístup správce hrají aplikace, které jsou popsané v Průvodci nasazením aplikace marketplace. Že jsou nutné k dokončení tohoto kurzu. Pro nasazení webu marketplace je SYSTEMDOMAINURL v https://system formuláře. *ip adresu*. cf.pcfazure.com.
+> Pokud nasazujete PCF z Azure Marketplace, poznamenejte si SYSTEMDOMAINURL a přihlašovací údaje správce potřebné pro přístup správce hrají aplikace, které jsou popsané v Průvodci nasazením aplikace marketplace. Že jsou nutné k dokončení tohoto kurzu. Pro nasazení webu marketplace SYSTEMDOMAINURL je ve formátu https://system. *IP adresa*. cf.pcfazure.com.
 
 ## <a name="connect-to-the-cloud-controller"></a>Připojení k řadiči cloudu
 
@@ -141,7 +141,7 @@ cf scale -i 2 hello-spring-cloud
 Spuštění `cf app` příkaz u aplikace zobrazí, že cloudové Foundry vytváří jiná instance aplikace. Po spuštění aplikace Foundry cloudu se automaticky spustí přenosů do ní služby Vyrovnávání zatížení.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Přečtěte si dokumentaci cloudu Foundry][cloudfoundry-docs]
 - [Nastavení modulu plug-in Visual Studio Team Services pro Cloud Foundry][vsts-plugin]

@@ -1,6 +1,6 @@
 ---
-title: "Přehled služby Azure SQL Database srovnávacího testu"
-description: "Toto téma popisuje databáze Azure SQL, srovnávací test měření výkonu databáze SQL Azure."
+title: Přehled služby Azure srovnávacího testu DTU databáze SQL
+description: Toto téma popisuje databáze Azure SQL, srovnávací test měření výkonu databáze SQL Azure.
 services: sql-database
 author: jan-eng
 manager: jhubbard
@@ -9,15 +9,18 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 06/21/2016
 ms.author: janeng
-ms.openlocfilehash: 25685f663d976674ad877bcfa1409ef016dd02ae
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 684ae62400adbde6f0624b802b79a926c06961c8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="azure-sql-database-benchmark-overview"></a>Přehled služby Azure SQL Database srovnávacího testu
+# <a name="azure-sql-database-dtu-benchmark-overview"></a>Přehled služby Azure srovnávacího testu DTU databáze SQL
 ## <a name="overview"></a>Přehled
-Microsoft Azure SQL Database nabízí tři [úrovních služeb](sql-database-service-tiers.md) s více úrovněmi výkonu. Každá úroveň výkonu poskytuje roste sadu prostředků, nebo "power" navržený tak, aby stále vyšší propustnost.
+V nákupu modelu na základě DTU Microsoft Azure SQL Database nabízí tři [úrovních služeb](sql-database-service-tiers.md) s více úrovněmi výkonu. Každá úroveň výkonu poskytuje roste sadu prostředků, nebo "power" navržený tak, aby stále vyšší propustnost.
+
+> [!IMPORTANT]
+> Databáze SQL Azure teď taky podporuje nákupní model (preview) na základě vCore. Informace najdete v tématu [nákupní model (preview) na základě vCore](sql-database-service-tiers.md#vcore-based-purchasing-model-preview).
 
 Je důležité, abyste mohli vyčíslení jak roste sílu každou úroveň výkonu překládá do databáze vyšší výkon. Uděláte to této společnost Microsoft vyvinula srovnávacího testu pro databáze SQL Azure (ASDB). Testu výkonnosti vykonává směs základní operace v všechny úlohy OLTP nalezen. Jsme měření propustnosti dá dosáhnout databáze spuštěné v každé úrovni výkonu.
 

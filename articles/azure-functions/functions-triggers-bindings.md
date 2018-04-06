@@ -1,13 +1,13 @@
 ---
-title: "Triggerů a vazeb v Azure Functions"
-description: "Další informace o použití triggerů a vazeb v Azure Functions k připojení vašeho provádění kódu k online události a cloudové služby."
+title: Triggerů a vazeb v Azure Functions
+description: Další informace o použití triggerů a vazeb v Azure Functions k připojení vašeho provádění kódu k online události a cloudové služby.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů"
+editor: ''
+tags: ''
+keywords: funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/07/2018
 ms.author: glenga
-ms.openlocfilehash: 559cfee1a8116703371a5641cf4534b7ad6f7578
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d008e94186dd3c5a18c92617ebddfffa966358d5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure funkce triggerů a vazeb koncepty
 
@@ -49,7 +49,7 @@ Ve verzi 2.x modulu runtime Azure Functions, je nutné explicitně zaregistrovat
 
 Rozšíření se dodávají jako balíčky NuGet, kde název balíčku obvykle začíná [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions).  Způsob instalace a registrace vazby rozšíření závisí na tom, jak vyvíjet funkcí: 
 
-+ [Místně v jazyce C# pomocí sady Visual Studio nebo VS Code](#precompiled-functions-c)
++ [Místně v jazyce C# pomocí sady Visual Studio nebo VS Code](#local-c-development-using-visual-studio-or-vs-code)
 + [Místně pomocí nástroje základní funkce Azure](#local-development-azure-functions-core-tools)
 + [Na portálu Azure](#azure-portal-development) 
 
@@ -635,7 +635,7 @@ V jazyce C# a jinými jazyky rozhraní .NET, můžete použít imperativní vazb
 
 ## <a name="functionjson-file-schema"></a>Schéma souboru Function.JSON
 
-*Function.json* schéma souboru je k dispozici na [http://json.schemastore.org/function](http://json.schemastore.org/function).
+*Function.json* schéma souboru je k dispozici na [ http://json.schemastore.org/function ](http://json.schemastore.org/function).
 
 ## <a name="handling-binding-errors"></a>Zpracování chyb vazby
 

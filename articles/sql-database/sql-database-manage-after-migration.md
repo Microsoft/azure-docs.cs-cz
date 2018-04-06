@@ -1,6 +1,6 @@
 ---
-title: "Správa po migraci – Azure SQL Database | Microsoft Docs"
-description: "Naučte se spravovat vaše databáze po dokončení migrace do Azure SQL Database."
+title: Správa po migraci – Azure SQL Database | Microsoft Docs
+description: Naučte se spravovat vaše databáze po dokončení migrace do Azure SQL Database.
 services: sql-database
 author: joesackmsft
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 4e50a1be3437ab1b027c1ca0f160402239e13e92
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 96bc75e15c99897414fad8c138c8a34ef790af21
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – správu databáze v databázi SQL Azure
 
-Přechod z tradiční samoobslužné spravované, může to vypadat trochu čtenáře samoobslužné řízeného prostředí do prostředí PaaS na první. Jako vývojář aplikace nebo DBA by budete chtít vědět základní funkce platformy, na které by vám pomůže ochránit vaše aplikace k dispozici, původce, zabezpečení a odolné - vždy. K tomu přesně cílem je v tomto článku. Článek stručně uspořádá prostředky a dává některé pokyny o tom, jak nejlépe pomocí klíčové funkce SQL Database můžete spravovat a udržovat vaši aplikaci běžící efektivně a dosažení optimálních výsledků v cloudu. Typické cílová skupina pro tento článek by ty, kdo:-
+Přechod z tradiční samoobslužné spravované, může to vypadat trochu čtenáře samoobslužné řízeného prostředí do prostředí PaaS na první. Jako vývojář aplikace nebo DBA by budete chtít vědět základní funkce platformy, na které by vám pomůže ochránit vaše aplikace k dispozici, původce, zabezpečení a odolné - vždy. K tomu přesně cílem je v tomto článku. Článek stručně uspořádá prostředky a dává některé pokyny o tom, jak nejlépe pomocí klíčové funkce SQL Database můžete spravovat a udržovat vaši aplikaci běžící efektivně a dosažení optimálních výsledků v cloudu. Typické cílová skupina pro tento článek by ty, kdo: 
 - Hodnocení migrace příslušných aplikacích k databázi SQL Azure – Modernizing vaší aplikace.
 - Probíhá migrace příslušných aplikacích – průběžné scénář migrace.
 - Nedávném dokončení migrace na Azure SQL DB – nové DBA v cloudu.
@@ -218,7 +218,7 @@ Pomocí funkcí inteligentního výrazně využívat vašeho přístupu k řeše
 
 Při odstraňování potíží výkonu, je potřeba zjistit, jestli je právě aplikace nebo jejich zálohování databáze, která je ovlivňující výkon aplikace. Často problému s výkonem spočívá v aplikační vrstvě. Může to být architekturu nebo vzor přístupu data. Zvažte například, že máte chatty aplikaci, která je citlivá na latenci sítě. V takovém případě aplikace vyskytne, protože by byl mnoho krátké požadavků přejdete oběma směry ("chatty") mezi aplikací a serveru a na přetížení sítě, přidejte tyto zbytečné komunikace až fast. Chcete-li zlepšit výkon v tomto případě, můžete použít [Batch dotazy](sql-database-performance-guidance.md#batch-queries). Použití dávek usnadňuje vytváření vyžadovalo nadměrné protože teď své žádosti zpracovat v dávce; Proto vám pomáhá omezit latenci zvyšuje výkon a zlepšit výkon aplikace. 
 
-Kromě toho, pokud si všimnete snížení celkového výkonu databáze, můžete sledovat [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) zobrazení dynamické správy za účelem pochopení spotřeby procesoru, vstupně-výstupních operací a paměti. Výkon může být dopad, protože databáze je nedostatek prostředků. Může to být, že budete muset změnit úroveň výkonu nebo podle zvětšování a zmenšování vytížení úrovně služby. 
+Kromě toho, pokud si všimnete snížení celkového výkonu databáze, můžete sledovat [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) zobrazení dynamické správy za účelem pochopení spotřeby procesoru, vstupně-výstupní operace a paměti. Výkon může být dopad, protože databáze je nedostatek prostředků. Může to být, že budete muset změnit úroveň výkonu nebo podle zvětšování a zmenšování vytížení úrovně služby. 
 
 Komplexní sadu doporučení pro ladění problémů s výkonem, najdete v tématu: [ladit databáze](sql-database-performance-guidance.md#tune-your-database).
 

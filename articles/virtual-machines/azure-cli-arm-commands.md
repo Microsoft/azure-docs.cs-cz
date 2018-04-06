@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI příkazy v režimu Resource Manager | Microsoft Docs"
-description: "Příkazy rozhraní příkazového řádku Azure (CLI) ke správě prostředků v modelu nasazení Resource Manager"
+title: Azure CLI příkazy v režimu Resource Manager | Microsoft Docs
+description: Příkazy rozhraní příkazového řádku Azure (CLI) ke správě prostředků v modelu nasazení Resource Manager
 services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: be37da5b-72fe-41a1-9fa0-8937b69464ec
 ms.service: multiple
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 12835039478b71f86b68218442e321b1a5b404a1
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 8a2bae12fae6a1bf8f5ecbdb2ae01dea5260f3cb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Azure CLI příkazy v režimu Resource Manager
 Tento článek obsahuje syntaxi a možnosti pro příkazy rozhraní příkazového řádku Azure (CLI), které by běžně používat k vytváření a správě prostředků Azure v modelu nasazení Azure Resource Manager. Tyto příkazy přistupujete pomocí rozhraní příkazového řádku v režimu Resource Manager (arm). Toto není odkazem na dokončení a CLI verze může zobrazovat mírně odlišné příkazy nebo parametry. Obecné přehled prostředků Azure a skupiny prostředků, najdete v tématu [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).  
@@ -131,7 +131,7 @@ Informace o vašem předplatném Azure se používá nástrojem pro připojení 
 
     config set <name> <value>
 
-**Nastaví pracovní režim rozhraní příkazového řádku Azure k buď `arm` nebo`asm`**
+**Nastaví pracovní režim rozhraní příkazového řádku Azure k buď `arm` nebo `asm`**
 
     config mode [options] <modename>
 
@@ -968,7 +968,7 @@ Parametr možnosti:
      -s, --subscription <subscription>      the subscription identifier
 
 <BR>
-    Odstranit fond adres vyrovnáváním zatížení sítě [možnosti] < resource-group >< lb-name ><name>
+    Odstranit fond adres vyrovnáváním zatížení sítě [možnosti] < resource-group >< lb-name > <name>
 
 Odebere prostředku rozsah fondu back-end IP z nástroje pro vyrovnávání zatížení.
 
@@ -1353,7 +1353,7 @@ Parametr možnosti:
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
 <BR>
-    veřejné ip sítě zobrazit [možnosti] < resource-group ><name>
+    veřejné ip sítě zobrazit [možnosti] < resource-group > <name>
 
 Zobrazí vlastnosti veřejné IP adresy pro prostředek veřejné IP adresy v rámci skupiny prostředků.
 

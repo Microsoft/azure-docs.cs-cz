@@ -1,24 +1,24 @@
 ---
-title: "Správa přístupu k cloudových aplikací tak, že omezíte klienti – Azure | Microsoft Docs"
-description: "Postup použití omezení klienta ke správě uživatelů, kteří mají přístup k aplikace založené na jejich klienta Azure AD."
+title: Správa přístupu k cloudových aplikací tak, že omezíte klienti – Azure | Microsoft Docs
+description: Postup použití omezení klienta ke správě uživatelů, kteří mají přístup k aplikace založené na jejich klienta Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
 editor: yossib
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 04/03/2018
 ms.author: kgremban
-ms.openlocfilehash: 63e0fa54433a60fe7384d21cf7d215cc8283afca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a6b498b38e76dfa2553bf3a916b723cd774d950d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Omezení použití klienta můžete spravovat přístup k SaaS cloudové aplikace.
 
@@ -71,8 +71,8 @@ Následující konfigurace je potřeba povolit omezení přístupu klientů pros
 Pro každého příchozího požadavku login.microsoftonline.com, login.microsoft.com a login.windows.net vložit dvě hlavičky protokolu HTTP: *omezit přístup k klienty* a *omezit-Access-kontext*.
 
 Hlavičky by měla obsahovat tyto prvky: 
-- Pro *omezit přístup k klienty*, hodnota \<povolené klienta seznamu\>, což je textový soubor s oddělovači seznam klientů, které chcete povolit uživatelům přístup k. Do libovolné domény, která je zaregistrovaná u klienta slouží k identifikaci klienta v tomto seznamu. Chcete-li povolit přístup klientům Contoso a Fabrikam, například dvojici název – hodnota vypadá takto:`Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
-- Pro *omezit-Access-kontext*, hodnotu a ID jednoho adresářového deklarace, které klient je nastavení omezení klienta. Deklarovat Contoso jako klienta, který nastavit zásady omezení klienta, například dvojici název – hodnota vypadá takto:`Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
+- Pro *omezit přístup k klienty*, hodnota \<povolené klienta seznamu\>, což je textový soubor s oddělovači seznam klientů, které chcete povolit uživatelům přístup k. Do libovolné domény, která je zaregistrovaná u klienta slouží k identifikaci klienta v tomto seznamu. Chcete-li povolit přístup klientům Contoso a Fabrikam, například dvojici název – hodnota vypadá takto:  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
+- Pro *omezit-Access-kontext*, hodnotu a ID jednoho adresářového deklarace, které klient je nastavení omezení klienta. Deklarovat Contoso jako klienta, který nastavit zásady omezení klienta, například dvojici název – hodnota vypadá takto: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
 > Vaše ID adresáře v můžete najít [portál Azure](https://portal.azure.com). Přihlaste se jako správce, vyberte **Azure Active Directory**, pak vyberte **vlastnosti**.
@@ -112,7 +112,9 @@ Odkazovat na [moderní ověřování Office 365 aktualizovat](https://blogs.offi
 
 Omezení klienta v současné době podporuje aplikace založené na prohlížeči Office 365 (služby SharePoint portálu Office, Yammer, lokality, Outlook Web, např.). Pro silné klienty (Outlook, Skype pro firmy, Word, Excel, PowerPoint, atd.) Omezení klienta můžete vynutit pouze, pokud se používá moderní ověřování.  
 
-Outlook a Skype pro firmy klienty, kteří podporují moderní ověřování jsou stále moci používat starších protokolů pro klienty, kde není povolené moderní ověřování, efektivně obcházení omezení klienta. Pro aplikaci Outlook v systému Windows zákazníci rozhodnout k implementaci omezení brání koncovým uživatelům v přidávání neschválený e-mailové účty do jejich profilů. Například najdete v článku [zabránit přidání jiné než výchozí účty serveru Exchange](http://gpsearch.azurewebsites.net/default.aspx?ref=1) nastavení zásad skupiny. Pro aplikaci Outlook na platformách systému Windows a pro Skype pro firmy na všech platformách není aktuálně k dispozici plnou podporu pro omezení klienta.
+Outlook a Skype pro firmy klienty, kteří podporují moderní ověřování může stále moci používat starších protokolů pro klienty, kde není povolené moderní ověřování, efektivně obcházení omezení klienta. Aplikace, které používají starší verze protokoly mohou být blokovány omezení klienta, pokud kontaktovat login.microsoftonline.com, login.microsoft.com nebo login.windows.net během ověřování.
+
+Pro aplikaci Outlook v systému Windows zákazníci rozhodnout k implementaci omezení brání koncovým uživatelům v přidávání neschválený e-mailové účty do jejich profilů. Například najdete v článku [zabránit přidání jiné než výchozí účty serveru Exchange](http://gpsearch.azurewebsites.net/default.aspx?ref=1) nastavení zásad skupiny. Pro aplikaci Outlook na platformách systému Windows a pro Skype pro firmy na všech platformách není aktuálně k dispozici plnou podporu pro omezení klienta.
 
 ## <a name="testing"></a>Testování
 
@@ -132,7 +134,7 @@ Fiddler je bezplatných webových ladění proxy server, který slouží k zazna
   if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
   ```
 
-  Pokud je potřeba povolit více klientů, oddělte názvy klienta pomocí čárkou. Například:
+  Pokud je potřeba povolit více klientů, oddělte názvy klienta pomocí čárkou. Příklad:
 
   ```
   oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";
@@ -151,7 +153,7 @@ V závislosti na možnosti infrastruktury proxy nebudete moct dvoufázové nasaz
 
 Naleznete v dokumentaci k proxy serveru pro konkrétní podrobnosti.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si informace o [moderní ověřování Office 365 aktualizovat](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)
 

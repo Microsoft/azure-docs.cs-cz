@@ -1,13 +1,13 @@
 ---
-title: "Konfigurace programu Sledování výkonu sítě pro okruhy Azure ExpressRoute | Microsoft Docs"
-description: "Konfigurace monitorování sítě založené na cloudu pro okruhy Azure ExpressRoute."
+title: Konfigurace programu Sledování výkonu sítě pro okruhy Azure ExpressRoute | Microsoft Docs
+description: Konfigurace monitorování sítě založené na cloudu pro okruhy Azure ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: ajaycode
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 586d78e29177dd4a627c94cd754c21cc2b6f37d4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7d6f064be21f717c825843780fac28bc874f46ce
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace programu Sledování výkonu sítě pro ExpressRoute
 
-Monitorování výkonu v síti (NPM) je síť cloudové řešení monitorování, které monitoruje připojení mezi nasazení cloudu Azure a místní umístění (firemní pobočky, atd.). NPM je součástí nástroje Microsoft Operations Management Suite (OMS). NPM teď nabízí rozšíření pro ExpressRoute, který vám umožní monitorovat výkon sítě přes okruhy ExpressRoute, které jsou nakonfigurovány pro použití soukromého partnerského vztahu. Když konfigurujete NPM pro ExpressRoute, můžete zjistit problémy se síťovým k identifikaci a odstranění.
+Monitorování výkonu v síti (NPM) je síť cloudové řešení monitorování, které monitoruje připojení mezi nasazení cloudu Azure a místní umístění (firemní pobočky, atd.). NPM je součástí analýzy protokolů. NPM teď nabízí rozšíření pro ExpressRoute, který vám umožní monitorovat výkon sítě přes okruhy ExpressRoute, které jsou nakonfigurovány pro použití soukromého partnerského vztahu. Když konfigurujete NPM pro ExpressRoute, můžete zjistit problémy se síťovým k identifikaci a odstranění.
 
 Můžete:
 
@@ -72,11 +72,11 @@ Vytvořte pracovní prostor v odběru, který má propojení virtuálních sít�
 
 1. V [portál Azure](https://portal.azure.com), vyberte odběr, který má virtuální sítě peered pro váš okruh ExpressRoute. Potom v seznamu služeb v Hledat **Marketplace** pro sledování výkonu sítě. V vrácení, klikněte na tlačítko Otevřít **sledování výkonu sítě** stránky.
 
->[!NOTE]
->Můžete vytvořit nový pracovní prostor nebo použít stávající pracovní prostor.  Pokud chcete použít existujícímu pracovnímu prostoru, je nutné zajistit, že v pracovním prostoru se migroval na nový dotazovací jazyk. [Další informace...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
->
+   >[!NOTE]
+   >Můžete vytvořit nový pracovní prostor nebo použít stávající pracovní prostor.  Pokud chcete použít existujícímu pracovnímu prostoru, je nutné zajistit, že v pracovním prostoru se migroval na nový dotazovací jazyk. [Další informace...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+   >
 
-  ![portál](.\media\how-to-npm\3.png)<br><br>
+   ![portál](.\media\how-to-npm\3.png)<br><br>
 2. V dolní části hlavní **sledování výkonu sítě** klikněte na tlačítko **vytvořit** otevřete **sledování výkonu sítě - vytvořit nové řešení** stránky. Klikněte na tlačítko **pracovním prostorem OMS - vyberte pracovní prostor** chcete otevřít stránku pracovní prostory. Klikněte na tlačítko **+ vytvořit nový pracovní prostor** chcete otevřít stránku pracovní prostor.
 3. Na **pracovním prostorem OMS** vyberte **vytvořit nový** a nakonfigurujte následující nastavení:
 
@@ -86,15 +86,15 @@ Vytvořte pracovní prostor v odběru, který má propojení virtuálních sít�
   * Umístění –, je nutné vybrat [podporované oblasti](#regions).
   * Cenová úroveň - vyberte 'volné.
   
-  >[!NOTE]
-  >Okruh ExpressRoute může být kdekoliv na světě a nemusí být ve stejné oblasti jako pracovním prostoru.
-  >
+    >[!NOTE]
+    >Okruh ExpressRoute může být kdekoliv na světě a nemusí být ve stejné oblasti jako pracovním prostoru.
+    >
   
-  ![Pracovní prostor](.\media\how-to-npm\4.png)<br><br>
+    ![Pracovní prostor](.\media\how-to-npm\4.png)<br><br>
 4. Klikněte na tlačítko **OK** uložte a nasaďte nastavení šablonu. Jakmile ověří šablony, klikněte na možnost **vytvořit** k nasazení v pracovním prostoru.
 5. Po nasazení pracovním prostoru, přejděte na **NetworkMonitoring(name)** prostředek, který jste vytvořili. Ověřte nastavení a pak klikněte na **řešení vyžaduje další konfiguraci**.
 
-  ![další konfigurace](.\media\how-to-npm\5.png)
+   ![další konfigurace](.\media\how-to-npm\5.png)
 
 ## <a name="agents"></a>Krok 2: Instalace a konfigurace agentů
 
@@ -126,9 +126,9 @@ Doporučujeme nainstalovat aspoň dva agenty na každé straně připojení Expr
 2. Na **úvodní** stránce klikněte na **Další**.
 3. Na **licenční podmínky** si přečtěte licenční a pak klikněte na tlačítko **souhlasím**.
 4. Na **cílovou složku** stránky, změnit nebo ponechat výchozí instalační složku a pak klikněte na tlačítko **Další**.
-5. Na **možnosti instalace agenta** stránky, můžete k připojení agenta k Azure Log Analytics (OMS) nebo nástroje Operations Manager. Nebo můžete nechat volby prázdné Pokud chcete provést konfiguraci agenta později. Po provedení vybrané položky, klikněte na **Další**.
+5. Na **možnosti instalace agenta** stránky, můžete pro připojení agenta k analýze protokolů Azure nebo Operations Manager. Nebo můžete nechat volby prázdné Pokud chcete provést konfiguraci agenta později. Po provedení vybrané položky, klikněte na **Další**.
 
-  * Pokud jste zvolili pro připojení k **Azure Log Analytics (OMS)**, vložte **ID pracovního prostoru** a **klíč pracovního prostoru** (primární klíč), že jste zkopírovali do poznámkového bloku v předchozí části. Pak klikněte na **Další**.
+  * Pokud jste zvolili pro připojení k **Azure Log Analytics**, vložte **ID pracovního prostoru** a **klíč pracovního prostoru** (primární klíč), že jste zkopírovali do poznámkového bloku v předchozí části. Pak klikněte na **Další**.
 
     ![ID a klíč](.\media\how-to-npm\8.png)
   * Pokud jste zvolili pro připojení k **nástroje Operations Manager**na **konfigurace skupiny pro správu** stránky, zadejte **název skupiny pro správu**, **serveru pro správu** a **Port serveru pro správu**. Pak klikněte na **Další**.
@@ -139,7 +139,7 @@ Doporučujeme nainstalovat aspoň dva agenty na každé straně připojení Expr
     ![Účet](.\media\how-to-npm\10.png)
 6. Na **připraveno k instalaci** stránka, zkontrolujte vybrané možnosti a pak klikněte na tlačítko **nainstalovat**.
 7. Na stránce **Konfigurace byla úspěšně dokončena** klikněte na **Dokončit**.
-8. Po dokončení se zobrazí v ovládacím panelu Microsoft Monitoring Agent. Můžete zkontrolovat konfiguraci existuje a ověřte, zda agent je připojena k provozní přehledy (OMS). Při připojení k OMS, agent zobrazí zpráva s oznámením: **Microsoft Monitoring Agent úspěšně připojil ke službě Microsoft Operations Management Suite**.
+8. Po dokončení se zobrazí v ovládacím panelu Microsoft Monitoring Agent. Můžete zkontrolovat konfiguraci existuje a ověřte, zda agent je připojena k Azure Log Analytics (OMS). Když se připojí, agent zobrazí zpráva s oznámením: **Microsoft Monitoring Agent úspěšně připojil ke službě Microsoft Operations Management Suite**.
 
 9. Prosím tento postup opakujte pro každý virtuální síť, že je potřeba sledovat.
 
@@ -162,8 +162,8 @@ Snadno můžete ověřit, zda jsou komunikaci agenty.
 
 1. Na serveru s agent monitorování, otevřete **ovládací panely**.
 2. Otevřete **agenta Microsoft Monitoring Agent**.
-3. Klikněte **Azure Log Analytics (OMS)** kartě.
-4. V **stav** sloupce, měli byste vidět úspěšně připojení agenta ke službě Operations Management Suite.
+3. Klikněte **Azure Log Analytics** kartě.
+4. V **stav** sloupce, měli byste vidět úspěšně připojení agenta k analýze protokolů.
 
   ![status](.\media\how-to-npm\12.png)
 

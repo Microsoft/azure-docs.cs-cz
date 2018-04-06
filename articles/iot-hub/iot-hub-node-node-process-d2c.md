@@ -1,11 +1,11 @@
 ---
-title: "Směrování zpráv službou Azure IoT Hub (uzel) | Microsoft Docs"
-description: "Postupy zpracování zpráv typu zařízení cloud Azure IoT Hub pomocí pravidel směrování a vlastní koncové body k odeslání zprávy do dalších služeb back-end."
+title: Směrování zpráv službou Azure IoT Hub (uzel) | Microsoft Docs
+description: Postupy zpracování zpráv typu zařízení cloud Azure IoT Hub pomocí pravidel směrování a vlastní koncové body k odeslání zprávy do dalších služeb back-end.
 services: iot-hub
 documentationcenter: node
-author: msebolt
+author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bd9af5f9-a740-4780-a2a6-8c0e2752cf48
 ms.service: iot-hub
 ms.devlang: node
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2017
-ms.author: v-masebo
-ms.openlocfilehash: f314d24250330a4dadf99d98b94c98b3db03f22c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: v-masebo;dobett
+ms.openlocfilehash: 02edb06d2d871cffac717358e33a6720c444a9b3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="routing-messages-with-iot-hub-node"></a>Směrování zpráv službou IoT Hub (uzel)
 

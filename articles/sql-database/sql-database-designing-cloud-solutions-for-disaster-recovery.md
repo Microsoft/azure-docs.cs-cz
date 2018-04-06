@@ -1,28 +1,28 @@
 ---
-title: "Návrh službu s vysokou dostupností pomocí Azure SQL Database | Microsoft Docs"
-description: "Další informace o návrhu aplikace pro používání Azure SQL Database služeb s vysokou dostupností."
-keywords: "cloud zotavení po havárii, řešení zotavení po havárii, zálohování dat aplikace, geografická replikace, obchodní kontinuity plánování"
+title: Návrh službu s vysokou dostupností pomocí Azure SQL Database | Microsoft Docs
+description: Další informace o návrhu aplikace pro používání Azure SQL Database služeb s vysokou dostupností.
+keywords: cloud zotavení po havárii, řešení zotavení po havárii, zálohování dat aplikace, geografická replikace, obchodní kontinuity plánování
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: c596006e33c2c4f0228c14a65f58e82bcf300727
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d19087743740799ec9972bed7a602073afea9f26
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Navrhování služeb s vysokou dostupností pomocí Azure SQL Database
 
 Při vytváření a nasazování služeb s vysokou dostupností v databázi SQL Azure, je použít [převzetí služeb při selhání skupiny a aktivní geografickou replikací](sql-database-geo-replication-overview.md) zajistit odolnost proti místní výpadky a závažné selhání. Taky umožňuje rychlé obnovení do sekundární databáze. Tento článek se zaměřuje na běžných vzorů aplikace a popisuje výhody a kompromis jednotlivých možností. Informace o aktivní geografickou replikaci s elastické fondy najdete v tématu [strategie zotavení po havárii elastický fond](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 > [!NOTE]
-> Pokud používáte Premium databáze a fondy, můžete provést je odolný regionální výpadkům převede konfigurace redundantní nasazení zóny (momentálně ve verzi preview). V tématu [Zónově redundantní databáze](sql-database-high-availability.md).  
+> Pokud používáte Premium nebo kritické obchodní (preview) databáze i elastické fondy, můžete je provést odolné vůči regionální výpadků převede konfigurace redundantní nasazení zóny (momentálně ve verzi preview). V tématu [Zónově redundantní databáze](sql-database-high-availability.md).  
 
 ## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Scénář 1: Použití dvou oblastí Azure pro kontinuitu podnikových procesů s minimálními výpadky
 V tomto scénáři aplikací mít následující vlastnosti: 
@@ -156,7 +156,7 @@ Strategie zotavení po havárii konkrétní cloudové můžete kombinovat nebo r
 ||Přístup pro čtení a zápis = nula. | Přístup pro čtení a zápis = čas detekce selhání + období odkladu ztráty dat. |
 |||
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Přehled kontinuity obchodních a scénářů najdete v tématu [obchodní kontinuity přehled](sql-database-business-continuity.md)
 * Další informace o skupinách geografická replikace a převzetí služeb při selhání najdete v tématu [aktivní geografickou replikaci](sql-database-geo-replication-overview.md)  
 * Informace o aktivní geografickou replikaci s elastické fondy najdete v tématu [strategie zotavení po havárii elastický fond](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

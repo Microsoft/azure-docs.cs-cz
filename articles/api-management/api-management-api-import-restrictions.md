@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: d4229a3ecbcf8aa044eb448290c243e9920bd5cb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ab4bc4024248675c6325159b5507add1274addc9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Omezení import rozhraní API a známé problémy
 ## <a name="about-this-list"></a>O tomto seznamu
@@ -27,9 +27,11 @@ Při importu rozhraní API, můžete setkat při určitá omezení a identifikov
 ## <a name="open-api"> </a>Otevřete rozhraní API/Swagger
 Pokud obdržíte chyby import dokumentu otevřené rozhraní API, ujistěte se, jste ověřili jeho – buď pomocí návrháře na portálu Azure (návrhu - Front-endu - otevřené rozhraní API specifikace Editor), nebo s třetích stran nástroje, jako <a href="http://www.swagger.io">editoru Swagger</a>.
 
-* **Název hostitele** APIM vyžaduje atribut název hostitele.
-* **Základní cesta** APIM vyžaduje atribut základní cesta.
-* **Schémata** APIM vyžaduje schéma pole.
+* Je podporován pouze formátu JSON pro OpenAPI.
+* Schémata odkazovat pomocí **$ref** vlastnosti nemůže obsahovat jiné **$ref** vlastnosti.
+* **$ref** ukazatele nemůže odkazovat na externí soubory.
+* **x-ms cesty** a **x servery** jsou pouze podporované přípony.
+* Vlastní rozšíření se ignoruje při importu a nejsou uloženy ani zachovají pro export.
 
 > [!IMPORTANT]
 > Toto [dokumentu](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/) důležité informace a tipy související s OpenAPI importu.

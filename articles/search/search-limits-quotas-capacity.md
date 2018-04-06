@@ -13,20 +13,24 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 03/26/2018
+ms.date: 04/04/2018
 ms.author: heidist
-ms.openlocfilehash: fb2234e79e8deb98a94068f31a40c8f0b415d7ba
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 77ea75bf66f4b6ae6ec7d6ede4364db6b7fa82a0
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby ve službě Azure Search
-Maximální omezuje na úložiště, úlohy a počty indexů, dokumenty a další objekty závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) na **volné**, **základní**, nebo **Standardní** cenová úroveň.
+Maximální omezení na úložiště, úlohy a počty indexů, dokumentů, a další objekty závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) v **volné**, **základní**, nebo **Standardní** cenové úrovně.
 
-* **Volné** je víceklientské sdílené služby, která se dodává s předplatným Azure. 
-* **Základní** poskytuje vyhrazený výpočetní prostředky pro úlohy v produkčním prostředí v menším měřítku.
-* **Standardní** běží na vyhrazené počítače s další kapacitou úložiště a zpracování na všech úrovních. Standard je rozdělena na čtyři úrovně: S1, S2, S3 a S3 (S3 HD) s vysokou hustotou.
++ **Volné** je víceklientské sdílené služby, která se dodává s předplatným Azure.
+
++ **Základní** poskytuje vyhrazený výpočetní prostředky pro úlohy v produkčním prostředí v menším měřítku.
+
++ **Standardní** běží na vyhrazené počítače s další kapacitou úložiště a zpracování na všech úrovních. Standard je rozdělena na čtyři úrovně: S1, S2, S3 a S3 HD.
+
+  S3 (S3 HD) s vysokou hustotou je navržen s důrazem na konkrétní zatížení: [víceklientský](search-modeling-multitenant-saas-applications.md) a velké množství malých indexy (jeden milión dokumentů na index, tisíc tři indexy za služby). Tato úroveň neposkytuje [funkce indexeru](search-indexer-overview.md). Na S3 HD musí přijímání dat využít nabízené přístup, pomocí volání API vložit data ze zdroje na index. 
 
 > [!NOTE]
 > Služba se zřídí v konkrétní úroveň. Přechod k získání kapacity vrstvy zahrnuje zřizování (neexistuje žádné místní upgrade) nové služby. Další informace najdete v tématu [zvolte SKU nebo vrstvě](search-sku-tier.md). Další informace o úpravě kapacity v rámci služby jste už zřízené, najdete v části [škálovat prostředek úrovně pro dotaz a indexování úlohy](search-capacity-planning.md).
@@ -35,41 +39,76 @@ Maximální omezuje na úložiště, úlohy a počty indexů, dokumenty a dalš�
 ## <a name="subscription-limits"></a>Limity předplatného
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
 
-## <a name="service-limits"></a>Omezení služby
+## <a name="storage-limits"></a>Limity úložiště
 [!INCLUDE [azure-search-limits-per-service](../../includes/azure-search-limits-per-service.md)]
+
+<a name="index-limits"></a>
 
 ## <a name="index-limits"></a>Omezení indexu
 
-| Prostředek | Free | Basic | S1 | S2 | S3 | S3 HD |
-| --- | --- | --- | --- | --- | --- | --- |
-| Maximální počet polí na index |1000 |100 <sup>1</sup> |1000 |1000 |1000 |1000 |
+| Prostředek | Free | Základní&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD |
+| -------- | ---- | ------------------- | --- | --- | --- | --- |
+| Maximální počet indexů |3 |5 nebo 15 |50 |200 |200 |1 000 na oddíl nebo 3 000 na službu |
+| Maximální počet polí na index |1000 |100 |1000 |1000 |1000 |1000 |
 | Maximální vyhodnocování profily pro jednotlivé indexu |100 |100 |100 |100 |100 |100 |
 | Maximální funkce jeden profil |8 |8 |8 |8 |8 |8 |
 
-<sup>1</sup> úroveň basic je určená jenom SKU s nižší limit 100 polí na index.
+<sup>1</sup> základní služby vytvořené po pozdní 2017 mít vyšší limit 15 indexy, indexery a zdroje dat. Služba vytvořený mají 5. Úroveň Basic je určená jenom SKU s nižší limit 100 polí na index.
+
+## <a name="document-limits"></a>Omezení dokumentů vztahuje 
+
+Ve většině oblastí Azure Search cenové úrovně (Basic, S1, S2, S3, S3 HD) počty neomezená dokumentů pro všechny služby vytvořili po listopadu/prosinci 2017. Tato část identifikuje oblastí, kde limity platí a jak určit, zda je vliv na vaši službu. 
+
+Chcete-li určit, zda má vaše služba limity, zkontrolujte dlaždice využití na stránce Přehled služby. Zdokumentujte počty jsou neomezená nebo předmět k omezení podle úrovně.
+
+  ![Dlaždice využití](media/search-limits-quotas-capacity/portal-usage-tile.png)
+
+### <a name="regions-and-services-having-document-limits"></a>Oblasti a služby s limity
+
+Služby s limity byly vytvořeny před pozdní 2017, nebo jsou spuštěné v datových centrech pomocí clusterů nižší kapacitu pro hostování služby vyhledávání systému Azure. Ovlivněné datových centrech jsou v následujících oblastech:
+
++ Austrálie – východ
++ Východní Asie
++ Střed Indie
++ Japonsko – západ
++ Západní střed USA
+
+Pro služby vztahují omezení dokumentů vztahuje platí následující maximální limit:
+
+|  Free | Basic | S1 | S2 | S3 | S3&nbsp;HD |
+|-------|-------|----|----|----|-------|
+|  10 000 |1 milion |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
+
+> [!Note] 
+> Pro služby S3 s vysokou hustotou vytvořené po pozdní 2017 200 milionů dokumentů na oddíl odebral ale 1 milion dokumentů na index limit zůstanou.
+
+
+### <a name="document-size-limits-per-api-call"></a>Omezení velikosti dokumentu na volání rozhraní API
+
+Dokument maximální velikost při volání rozhraní API Index je přibližně 16 MB.
+
+Velikost dokument je ve skutečnosti omezení velikosti obsahu žádosti Index rozhraní API. Vzhledem k tomu, že můžete předat dávky více dokumentů do indexu API najednou, omezení velikosti reálně závisí na tom, kolik dokumenty jsou v dávce. Dokument maximální velikost dávky s jedním dokumentem, je 16 MB JSON.
+
+Snížení velikosti dokumentu, nezapomeňte vyloučit-dotazovatelný data z požadavku. Obrázky a další binární data nejsou přímo dotazovatelný a by neměly být uloženy v indexu. K integraci dat bez dotazovatelné výsledky hledání, definujte není prohledávatelné pole, které obsahuje adresu URL odkaz na prostředek.
 
 ## <a name="indexer-limits"></a>Indexer omezení
 
-| Prostředek | Free | Basic | S1 | S2 | S3 | S3 HD |
-| --- | --- | --- | --- | --- | --- | --- |
-| Maximální indexování zatížení na vyvolání |10 000 dokumentů |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |NENÍ K DISPOZICI <sup>1</sup> |
-| Maximální dobu běhu | 1-3 minuty, <sup>2</sup> |24 hodin |24 hodin |24 hodin |24 hodin |NENÍ K DISPOZICI <sup>1</sup> |
-| Indexer objektů blob: velikost maximální objektu blob, MB |16 |16 |128 |256 |256 |NENÍ K DISPOZICI <sup>1</sup> |
-| Indexer objektů blob: maximální počet znaků z objektu blob extrahovat obsahu |32,000 |64,000 |4 miliony |4 miliony |4 miliony |NENÍ K DISPOZICI <sup>1</sup> |
+Základní služby vytvořené po pozdní 2017 mít vyšší limit 15 indexy, indexery a zdroje dat.
 
-<sup>1</sup> S3 HD aktuálně nepodporuje indexery. Pokud máte naléhavá potřeba pro tuto funkci, kontaktujte podporu Azure.
+| Prostředek | Volné&nbsp;<sup>1</sup> | Základní&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
+| -------- | ----------------- | ----------------- | --- | --- | --- | --- |
+| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |neuvedeno |
+| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |neuvedeno |
+| Maximální indexování zatížení na vyvolání |10 000 dokumentů |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |neuvedeno |
+| Maximální dobu běhu | 1 – 3 minut |24 hodin |24 hodin |24 hodin |24 hodin |neuvedeno  |
+| Indexer objektů blob: velikost maximální objektu blob, MB |16 |16 |128 |256 |256 |neuvedeno  |
+| Indexer objektů blob: maximální počet znaků z objektu blob extrahovat obsahu |32,000 |64,000 |4 miliony |4 miliony |4 miliony |neuvedeno |
 
-<sup>2</sup> maximální dobu spuštění indexeru pro úroveň Free je 3 minut zdroje blob a pro všechny ostatní zdroje dat 1 minuta.
+<sup>1</sup> bezplatné služby mít maximální dobu spuštění indexeru 3 minut zdroje blob a pro všechny ostatní zdroje dat 1 minuta.
 
+<sup>2</sup> základní služby vytvořené po pozdní 2017 mít vyšší limit 15 indexy, indexery a zdroje dat. Služba vytvořený mají 5.
 
-## <a name="document-size-limits"></a>Omezení velikosti dokumentu
-| Prostředek | Free | Basic | S1 | S2 | S3 | S3 HD |
-| --- | --- | --- | --- | --- | --- | --- |
-| Velikosti jednotlivých dokumentů na Index rozhraní API |<16 MB |<16 MB |<16 MB |<16 MB |<16 MB |<16 MB |
-
-Odkazuje na dokument maximální velikost při volání rozhraní API Index. Velikost dokument je ve skutečnosti omezení velikosti obsahu žádosti Index rozhraní API. Vzhledem k tomu, že můžete předat dávky více dokumentů do indexu API najednou, omezení velikosti ve skutečnosti závisí na tom, kolik dokumenty jsou v dávce. Dokument maximální velikost dávky s jedním dokumentem, je 16 MB JSON.
-
-Snížení velikosti dokumentu, nezapomeňte vyloučit-dotazovatelný data z požadavku. Obrázky a další binární data nejsou přímo dotazovatelný a by neměly být uloženy v indexu. K integraci dat bez dotazovatelné výsledky hledání, definujte není prohledávatelné pole, které obsahuje adresu URL odkaz na prostředek.
+<sup>3</sup> služby S3 HD Nezahrnovat podpora indexeru.
 
 ## <a name="queries-per-second-qps"></a>Dotazy na za sekundu (QPS)
 

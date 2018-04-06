@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží s výkonem databáze SQL Azure s inteligentního Insights | Microsoft Docs"
-description: "Inteligentní přehledy vám pomůže vyřešit problémy s výkonem databáze SQL Azure."
+title: Řešení potíží s výkonem databáze SQL Azure s inteligentního Insights | Microsoft Docs
+description: Inteligentní přehledy vám pomůže vyřešit problémy s výkonem databáze SQL Azure.
 services: sql-database
 author: danimir
 manager: craigg
@@ -8,13 +8,13 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/04/2018
 ms.author: v-daljep
-ms.openlocfilehash: 0f23a76506a6692dd907a0b9fc7cfadfe7cd8f40
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7830a8a4bfc43e158069cc7cdc186e289e166751
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení potíží s výkonem databáze SQL Azure s inteligentního statistiky
 
@@ -30,7 +30,7 @@ Problémy s výkonem inteligentního Insights automaticky rozpozná s databází
 
 | Vzory rozpoznat výkonu | Podrobnosti o výstupem |
 | :------------------- | ------------------- |
-| [Dosažení limitů prostředků](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Spotřeba dostupné prostředky (Dtu), databáze pracovních vláken nebo relace přihlášení databáze, které jsou k dispozici na monitorovaných předplatné bylo dosaženo omezení, což způsobí, že problémy s výkonem databáze SQL. |
+| [Rozsáhlejší limitů prostředků](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Spotřeba dostupné prostředky (Dtu), databáze pracovních vláken nebo relace přihlášení databáze, které jsou k dispozici na monitorovaných předplatné bylo dosaženo omezení, což způsobí, že problémy s výkonem databáze SQL. |
 | [Zvýšení zatížení](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Zvýšení zatížení nebo průběžné akumulace úlohy v databázi byla zjištěna, což způsobí, že problémy s výkonem databáze SQL. |
 | [Přetížení paměti](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Pracovní procesy, které požadovaly uděluje paměti musí čekat přidělení paměti pro statisticky významné množství času. Nebo nahromadění vyšší pracovních procesů, který uděluje paměti požadovaná existuje, jenž ovlivňuje výkon databáze SQL. |
 | [Zamykání](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Zamykání nadměrné databáze byla zjištěna, jenž ovlivňuje výkon databáze SQL. |
@@ -52,13 +52,13 @@ Problémy s výkonem inteligentního Insights automaticky rozpozná s databází
 
 Následující část popisuje vzory výše uvedených rozpoznat výkonu podrobněji.
 
-## <a name="reaching-resource-limits"></a>Dosažení limitů prostředků
+## <a name="reaching-resource-limits"></a>Rozsáhlejší limitů prostředků
 
 ### <a name="what-is-happening"></a>Co se děje
 
 Tento vzor rozpoznat výkonu kombinuje problémy s výkonem, které se vztahují k dosažení limitů dostupných prostředků, pracovní limity a omezení relací. Po zjištění tento problém s výkonem se pole Popis protokolu diagnostiky označuje, zda problémy s výkonem se prostředků, worker nebo omezení relací.
 
-Prostředky v databázi SQL se obvykle označují jako [DTU prostředky](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu). Skládají se z kombinaci měření procesoru a vstupně-výstupních prostředků (dat a transakční protokol vstupně-výstupních operací). Vzor dosažení limitů prostředků se rozpozná, když zjistí snížení výkonu dotazu je způsobena dosažení žádné omezení měřená prostředků.
+Prostředky v databázi SQL se obvykle označují jako [DTU prostředky](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu). Skládají se z kombinaci měření prostředků procesoru a vstupů/výstupů (dat a transakční protokol vstupů/výstupů). Vzor dosažení limitů prostředků se rozpozná, když zjistí snížení výkonu dotazu je způsobena dosažení žádné omezení měřená prostředků.
 
 Prostředek omezení relace označuje počet dostupných souběžných přihlášení k databázi SQL. Tento vzor výkonu se rozpozná, když aplikace, které jsou připojené k databázím SQL bylo dosaženo počtu dostupných souběžných přihlášení k databázi. Pokud se aplikace pokusí použít více relací, než je k dispozici v databázi, je vliv na výkon dotazu.
 
@@ -152,9 +152,9 @@ Tento vzor výkonu označuje aktuální snížení výkonu zatížení databáze
 
 Zámky jsou mechanismy zjednodušené synchronizace použít SQL Database k povolení více vláken. Jejich zaručit konzistenci struktury v paměti, které zahrnují indexy, datových stránek a ostatní interní struktury.
 
-V databázi SQL nejsou k dispozici mnoho typů zámků. Pro účely jednoduchost vyrovnávací paměti západek slouží k ochraně stránky v paměti ve fondu vyrovnávací paměti. Zámky vstupně-výstupních operací se používají k ochraně stránky ještě nebyla načtena do fondu vyrovnávací paměti. Vždy, když data jsou zapsána do nebo ze stránky ve fondu vyrovnávací paměti pro čtení, je potřeba nejdřív získat západku vyrovnávací paměti pro stránku pracovní vlákno. Vždy, když pracovní vlákno se pokusí přistoupit ke stránce, která už není k dispozici ve fondu vyrovnávací paměti v paměti, Přišla žádost o vstupně-výstupních operací načíst požadované informace z úložiště. Tato posloupnost událostí, které označuje závažnější formu snížení výkonu.
+V databázi SQL nejsou k dispozici mnoho typů zámků. Pro účely jednoduchost vyrovnávací paměti západek slouží k ochraně stránky v paměti ve fondu vyrovnávací paměti. Zámky vstupně-výstupní operace se používají k ochraně stránky ještě nebyla načtena do fondu vyrovnávací paměti. Vždy, když data jsou zapsána do nebo ze stránky ve fondu vyrovnávací paměti pro čtení, je potřeba nejdřív získat západku vyrovnávací paměti pro stránku pracovní vlákno. Vždy, když pracovní vlákno se pokusí přistoupit ke stránce, která už není k dispozici ve fondu vyrovnávací paměti v paměti, Přišla žádost o vstupně-výstupní operace načíst požadované informace z úložiště. Tato posloupnost událostí, které označuje závažnější formu snížení výkonu.
 
-Kolize na stránce západek nastane, když více vláken současně pokusí získat zámky na stejnou strukturu v paměti, které představuje vyšší čekací dobu pro spuštění dotazu. V případě sporu pagelatch vstupně-výstupních operací, když je přístupná z úložiště, data tato čekací doba je i větší. Výrazně se může ovlivnit výkon pracovního vytížení. Pagelatch kolizí je nejběžnější scénář vláken čekajících na sebe navzájem a neslučitelných pro prostředky na více systémů procesoru.
+Kolize na stránce západek nastane, když více vláken současně pokusí získat zámky na stejnou strukturu v paměti, které představuje vyšší čekací dobu pro spuštění dotazu. V případě sporu pagelatch vstupně-výstupní operace, když je přístupná z úložiště, data tato čekací doba je i větší. Výrazně se může ovlivnit výkon pracovního vytížení. Pagelatch kolizí je nejběžnější scénář vláken čekajících na sebe navzájem a neslučitelných pro prostředky na více systémů procesoru.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
@@ -162,7 +162,7 @@ Protokol diagnostiky výstupy pagelatch kolizí podrobnosti. Tyto informace mů�
 
 Protože pagelatch je mechanismus řízení interní databáze SQL, automaticky určují, kdy je použít. Rozhodnutí o aplikaci, včetně návrhu schématu může ovlivnit chování pagelatch z důvodu deterministické chování zámků.
 
-Jednu metodu pro zpracování západky kolizí je nahradit počátečních klíč rovnoměrně distribuuje vložení přes rozsah index klíče sekvenční indexu. Obvykle počáteční sloupec v indexu distribuuje úměrně zatížení. Další metodou pro vezměte v úvahu je vytváření oddílů tabulky. Vytvoření hodnotu hash schéma s počítaný sloupec v tabulce rozdělené na oddíly je běžný postup pro minimalizaci nadměrné západky kolizí. V případě sporu pagelatch vstupně-výstupních operací představení indexy pomáhá zmírnit tento problém s výkonem. 
+Jednu metodu pro zpracování západky kolizí je nahradit počátečních klíč rovnoměrně distribuuje vložení přes rozsah index klíče sekvenční indexu. Obvykle počáteční sloupec v indexu distribuuje úměrně zatížení. Další metodou pro vezměte v úvahu je vytváření oddílů tabulky. Vytvoření hodnotu hash schéma s počítaný sloupec v tabulce rozdělené na oddíly je běžný postup pro minimalizaci nadměrné západky kolizí. V případě sporu pagelatch vstupně-výstupní operace představení indexy pomáhá zmírnit tento problém s výkonem. 
 
 Další informace najdete v tématu [Diagnostikujte a vyřešte opatřit kolizí v systému SQL Server](http://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (ke stažení PDF).
 
@@ -220,7 +220,7 @@ Další informace o optimalizaci výkonu dotazů najdete v tématu [ladění dot
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor rozpoznat výkonu označuje podmínku výkonu databáze, ve kterém existuje úzkým místem vláken pokusu o přístup k prostředkům databáze tempDB. (Tato podmínka není vstupně-výstupních operací souvisejících s). Typický scénář pro tento problém s výkonem je stovky souběžných dotazů, všechny vytvářet, používat a potom zrušit malé databáze tempDB tabulky. Systém zjistil, že počet souběžných dotazů pomocí stejné tabulky databáze tempDB vyšší s dostatečnou statistické násobek ovlivnit výkon databáze ve srovnání s posledních sedmi dnů výkonu směrného plánu.
+Tento vzor rozpoznat výkonu označuje podmínku výkonu databáze, ve kterém existuje úzkým místem vláken pokusu o přístup k prostředkům databáze tempDB. (Tato podmínka není vstupně-výstupní operace související s). Typický scénář pro tento problém s výkonem je stovky souběžných dotazů, všechny vytvářet, používat a potom zrušit malé databáze tempDB tabulky. Systém zjistil, že počet souběžných dotazů pomocí stejné tabulky databáze tempDB vyšší s dostatečnou statistické násobek ovlivnit výkon databáze ve srovnání s posledních sedmi dnů výkonu směrného plánu.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
@@ -234,7 +234,7 @@ Další informace najdete v tématu [Úvod k paměťově optimalizované tabulky
 
 Tento vzor rozpoznat výkonu označuje snížení v aktuální zatížení výkonu databáze porovnání se směrným plánem posledních sedmi dnů. Je z důvodu nedostatku dostupné Dtu ve fondu elastické vašeho předplatného. 
 
-Prostředky v databázi SQL se obvykle označují jako [DTU prostředky](sql-database-what-is-a-dtu.md), které zahrnují kombinaci měření procesoru a vstupně-výstupních prostředků (dat a transakční protokol vstupně-výstupních operací). [Prostředky Azure elastický fond](sql-database-elastic-pool.md) slouží jako fond prostředky k dispozici eDTU, které jsou sdílené mezi více databází pro účely škálování. Pokud nejsou k dispozici eDTU prostředky ve vašem fondu elastické dostatečně velký pro podporu všechny databáze ve fondu, je zjištěna problém výkonu nedostatku DTU elastického fondu v systému.
+Prostředky v databázi SQL se obvykle označují jako [DTU prostředky](sql-database-what-is-a-dtu.md), které zahrnují kombinaci měření prostředků procesoru a vstupů/výstupů (dat a transakční protokol vstupů/výstupů). [Prostředky Azure elastický fond](sql-database-elastic-pool.md) slouží jako fond prostředky k dispozici eDTU, které jsou sdílené mezi více databází pro účely škálování. Pokud nejsou k dispozici eDTU prostředky ve vašem fondu elastické dostatečně velký pro podporu všechny databáze ve fondu, je zjištěna problém výkonu nedostatku DTU elastického fondu v systému.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
@@ -325,7 +325,7 @@ Statistika inteligentního přístup prostřednictvím portálu Azure tak, že p
 
 Inteligentní Insights je obvykle nutné jednu hodinu čas k provedení analýza hlavní příčiny problémy s výkonem. Pokud problém nelze najít v inteligentního přehledy a je pro vás velmi důležité, použijte k identifikaci ručně hlavní příčinu problémy s výkonem úložiště dotazů. (Tyto problémy jsou obvykle méně než hodinu stará.) Další informace najdete v tématu [monitorování výkonu pomocí úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace [inteligentního Statistika](sql-database-intelligent-insights.md) koncepty.
 - Použití [protokolu diagnostiky výkonu inteligentního Statistika Azure SQL Database](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Monitorování [Azure SQL Database pomocí Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).

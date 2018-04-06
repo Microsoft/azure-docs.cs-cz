@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c41c8c9f8fd9302c610ce356b0485e33ea3c967d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c4c68df9650fa300ea20ea0621c732cb96d167ef
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>Události protokolu diagnostiky hodnocení a sledování řešení Batch
 
@@ -97,7 +97,7 @@ Kromě ukládání diagnostických protokolů událostí v účtu Azure Storage,
   Stream diagnostických událostí Batch ke službě příjem příchozích dat vysoce škálovatelné datového centra událostí. Centra událostí můžete přijímat miliony událostí za sekundu, které můžete transformovat a ukládat pomocí libovolného zprostředkovatele analýzu v reálném čase.
 * [Analýza Azure diagnostických protokolů pomocí analýzy protokolů](../log-analytics/log-analytics-azure-storage.md)
   
-  Odesílání diagnostických protokolů k analýze protokolů, kde můžete analyzovat na portálu Operations Management Suite (OMS), nebo exportovat pro analýzu v Power BI nebo Excelu.
+  Odesílání diagnostických protokolů k analýze protokolů, kde můžete analyzovat na portálu Azure nebo exportovat pro analýzu v Power BI nebo Excelu.
 
 [pool_create]: https://msdn.microsoft.com/library/azure/mt743615.aspx
 [pool_delete_start]: https://msdn.microsoft.com/library/azure/mt743610.aspx

@@ -1,6 +1,6 @@
 ---
-title: "OLTP v paměti zlepšuje SQL txn výkonu | Microsoft Docs"
-description: "Přijímat OLTP v paměti pro zlepšení výkonu transakcí v existující databázi SQL."
+title: OLTP v paměti zlepšuje SQL txn výkonu | Microsoft Docs
+description: Přijímat OLTP v paměti pro zlepšení výkonu transakcí v existující databázi SQL.
 services: sql-database
 author: jodebrui
 manager: craigg
@@ -10,14 +10,14 @@ ms.custom: develop databases
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: jodebrui
-ms.openlocfilehash: 77e73ec1004babb5fce1e293acfade9264cd6945
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 00823ca44ec7135a9937bb37dd4ed58ec996c89d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Použití OLTP v paměti pro zlepšení výkonu vaší aplikace v databázi SQL
-[OLTP v paměti](sql-database-in-memory.md) lze zlepšit výkon zpracování transakcí, přijímání dat a scénáře přechodný dat v [Premium](sql-database-service-tiers.md) databází SQL Azure bez zvýšení cenovou úroveň. 
+[OLTP v paměti](sql-database-in-memory.md) lze zlepšit výkon zpracování transakcí, přijímání dat a scénáře přechodný dat v [úroveň Premium a kritické obchodní](sql-database-service-tiers.md) databází bez zvýšení cenovou úroveň. 
 
 > [!NOTE] 
 > Zjistěte, jak [kvora zdvojnásobí klíče databáze zatížení při snížení DTU 70 % s databází SQL](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
@@ -25,8 +25,8 @@ ms.lasthandoff: 03/16/2018
 
 Postupujte podle těchto kroků přijmout OLTP v paměti v existující databázi.
 
-## <a name="step-1-ensure-you-are-using-a-premium-database"></a>Krok 1: Ujistěte se, že používáte databáze Premium
-OLTP v paměti je podporována pouze v databázích Premium. V paměti je podporována, pokud je výsledek vrácený 1 (ne 0):
+## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>Krok 1: Ujistěte se, že používáte databáze Premium a kritické obchodní vrstvy
+OLTP v paměti je podporována pouze v databázích Premium a kritické obchodní vrstvy. V paměti je podporována, pokud je výsledek vrácený 1 (ne 0):
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: d49a1c97a578726c26f8533476042646b0b302d3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d8ed5747f29f969535bbafc1624d9d02e54c8418
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: Toku kódu autorizace OAuth 2.0
 Udělení autorizačního kódu OAuth 2.0 v aplikace nainstalované v zařízení můžete použít k získání přístupu k chráněným prostředkům, jako jsou webová rozhraní API. Pomocí Azure Active Directory B2C (Azure AD B2C) provádění OAuth 2.0, můžete přidat registrace, přihlašování a jiných správu identity úkolů mobilních a desktopových aplikací. Tento článek je nezávislé na jazyku. V následujícím článku jsme popisují, jak odesílat a přijímat zprávy HTTP bez použití žádné knihovny open-source.
@@ -195,7 +195,8 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 | Parametr | Povinné? | Popis |
 | --- | --- | --- |
 | p |Požaduje se |Zásada, která byla použita k získání původní token obnovení. V této žádosti nelze použít jinou zásadu. Všimněte si, že přidáte tento parametr *řetězec dotazu*, není v textu POST. |
-| client_id |Doporučené |ID aplikace přiřazené vaší aplikaci v [portál Azure](https://portal.azure.com). |
+| client_id |Požaduje se |ID aplikace přiřazené vaší aplikaci v [portál Azure](https://portal.azure.com). |
+| client_secret |Požaduje se |Tajný klíč client_secret přidružené k vaší client_id v [portál Azure](https://portal.azure.com). |
 | grant_type |Požaduje se |Typ udělení. Pro tuto větev tok autorizačního kódu, musí být typ udělení `refresh_token`. |
 | Obor |Doporučené |Seznam obory oddělených mezerami. Hodnota jeden obor označuje do služby Azure AD i oprávnění, která se vyžadují. Pomocí ID klienta podle oboru ukazuje, že vaše aplikace vyžaduje přístupový token, který můžete použít u službou nebo webové rozhraní API, reprezentována stejné ID klienta.  `offline_access` Oboru označuje, že vaše aplikace budete potřebovat obnovovací token pro dlouhodobé přístup k prostředkům.  Můžete taky použít `openid` oboru požadavku na ID token z Azure AD B2C. |
 | redirect_uri |Nepovinné |Identifikátor URI přesměrování aplikace, kterou jste dostali autorizační kód. |

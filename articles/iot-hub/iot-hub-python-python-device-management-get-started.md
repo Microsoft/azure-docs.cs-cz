@@ -1,11 +1,11 @@
 ---
-title: "Začínáme se správou zařízení Azure IoT Hub (Python) | Microsoft Docs"
-description: "Jak používat k zahájení restartu zařízení vzdálenou správou zařízení IoT Hub. Sada Azure IoT SDK pro Python kterou použijete k implementaci aplikaci simulovaného zařízení, která zahrnuje přímá metoda a aplikační služby, která volá metodu direct."
+title: Začínáme se správou zařízení Azure IoT Hub (Python) | Microsoft Docs
+description: Jak používat k zahájení restartu zařízení vzdálenou správou zařízení IoT Hub. Sada Azure IoT SDK pro Python kterou použijete k implementaci aplikaci simulovaného zařízení, která zahrnuje přímá metoda a aplikační služby, která volá metodu direct.
 services: iot-hub
 documentationcenter: .net
-author: msebolt
+author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e044006d-ffd6-469b-bc63-c182ad066e31
 ms.service: iot-hub
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
-ms.author: v-masebo
-ms.openlocfilehash: b9dfbd775de3bb54e405e4054bca4e2b878305a3
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.author: v-masebo;kgremban
+ms.openlocfilehash: 001a5d180e2b97894174ba7c63ec3947c9968364
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-device-management-python"></a>Začínáme se správou zařízení (Python)
 
@@ -39,8 +39,8 @@ Na konci tohoto kurzu máte dvě aplikace Python konzoly:
 Pro absolvování tohoto kurzu potřebujete:
 
 * [Python 2.x nebo 3.x][lnk-python-download]. Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. Po zobrazení výzvy v průběhu instalace nezapomeňte přidat Python do proměnné prostředí pro konkrétní platformu. Pokud používáte Python 2.x, možná bude nutné [nainstalovat nebo upgradovat *pip*, systém pro správu balíčků Pythonu][lnk-install-pip].
-    * Nainstalujte [azure-iothub zařízení client](https://pypi.org/project/azure-iothub-device-client/) balíčku, pomocí příkazu`pip install azure-iothub-device-client`
-    * Nainstalujte [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) balíčku, pomocí příkazu`pip install azure-iothub-service-client`
+    * Nainstalujte [azure-iothub zařízení client](https://pypi.org/project/azure-iothub-device-client/) balíčku, pomocí příkazu   `pip install azure-iothub-device-client`
+    * Nainstalujte [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) balíčku, pomocí příkazu   `pip install azure-iothub-service-client`
 * Pokud používáte operační systém Windows, je k povolení používání nativních knihoven DLL z Pythonu potřeba [balíček distribuovatelných součástí Visual C++][lnk-visual-c-redist].
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
 

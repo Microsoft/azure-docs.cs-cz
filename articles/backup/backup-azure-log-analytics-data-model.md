@@ -1,11 +1,11 @@
 ---
-title: "Datový model Log Analytics pro Azure Backup"
-description: "V tomto článku bude zmíněn podrobnosti modelu dat analýzy protokolů pro data Azure Backup."
+title: Datový model Log Analytics pro Azure Backup
+description: V tomto článku bude zmíněn podrobnosti modelu dat analýzy protokolů pro data Azure Backup.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: 
+editor: ''
 ms.assetid: dfd5c73d-0d34-4d48-959e-1936986f9fc0
 ms.service: backup
 ms.devlang: na
@@ -15,14 +15,14 @@ ms.workload: storage-backup-recovery
 ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 041a8835a1dd185739b23d4073fd5811bb4490b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d55ec8ac4416fe0a082812584552462292b6dbb7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Model dat analýzy protokolů pro zálohování Azure data
-Tento článek popisuje model dat použitý pro vkládání data pro generování sestav k analýze protokolů. Tento datový model můžete vytvářet vlastní dotazy, řídicí panely a využívat v OMS. 
+Tento článek popisuje model dat použitý pro vkládání data pro generování sestav k analýze protokolů. Tento datový model můžete vytvářet vlastní dotazy, řídicí panely a využívat v analýzy protokolů. 
 
 ## <a name="using-azure-backup-data-model"></a>Pomocí Azure Backup datový model
 Následující pole zadaný jako součást modelu dat můžete použít k vytváření vizuálních prvků, vlastních dotazů a řídicí panel podle vašich požadavků.
@@ -30,12 +30,12 @@ Následující pole zadaný jako součást modelu dat můžete použít k vytvá
 ### <a name="alert"></a>Výstrahy
 Tato tabulka obsahuje podrobnosti o výstrahy související pole.
 
-| Pole | Datový typ | Popis |
+| Pole | Typ dat | Popis |
 | --- | --- | --- |
 | AlertUniqueId_s |Text |Jedinečné Id generované výstrahy |
 | AlertType_s |Text |Typu generované výstrahy, například zálohování |
 | AlertStatus_s |Text |Stav výstrahy, například aktivní |
-| AlertOccurenceDateTime_s |Datum a čas |Datum a čas vytvoření výstrahy |
+| AlertOccurenceDateTime_s |Datum/čas |Datum a čas vytvoření výstrahy |
 | AlertSeverity_s |Text |Závažnost výstrahy, například kritický |
 | EventName_s |Text |Toto pole představuje název této události, je vždy AzureBackupCentralReport |
 | BackupItemUniqueId_s |Text |Jedinečné Id položky zálohování, do které patří tato výstraha |
@@ -57,7 +57,7 @@ Tato tabulka obsahuje podrobnosti o výstrahy související pole.
 ### <a name="backupitem"></a>BackupItem
 Tato tabulka obsahuje podrobné informace o zálohování související s položkou pole.
 
-| Pole | Datový typ | Popis |
+| Pole | Typ dat | Popis |
 | --- | --- | --- |
 | EventName_s |Text |Toto pole představuje název této události, je vždy AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Text |Jedinečné Id položky zálohování |
@@ -83,7 +83,7 @@ Tato tabulka obsahuje podrobné informace o zálohování související s polož
 ### <a name="backupitemassociation"></a>BackupItemAssociation
 Tato tabulka obsahuje podrobné informace o přidružení položky zálohování s různými entitami.
 
-| Pole | Datový typ | Popis |
+| Pole | Typ dat | Popis |
 | --- | --- | --- |
 | EventName_s |Text |Toto pole představuje název této události, je vždy AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Text |Jedinečné Id položky zálohování |
@@ -106,7 +106,7 @@ Tato tabulka obsahuje podrobné informace o přidružení položky zálohování
 ### <a name="job"></a>Úloha
 Tato tabulka obsahuje podrobnosti o pole související úlohy.
 
-| Pole | Datový typ | Popis |
+| Pole | Typ dat | Popis |
 | --- | --- | --- |
 | EventName_s |Text |Toto pole představuje název této události, je vždy AzureBackupCentralReport |
 | BackupItemUniqueId_s |Text |Jedinečné Id položky zálohování, do které patří tato úloha |
@@ -121,7 +121,7 @@ Tato tabulka obsahuje podrobnosti o pole související úlohy.
 | JobOperation_s |Text |Operaci, pro kterou úlohy je třeba spustit zálohování, obnovení, nakonfigurujte zálohování |
 | JobStatus_s |Text |Stav dokončení úlohy, například dokončeno, se nezdařilo |
 | JobFailureCode_s |Text |Selhání kódu řetězec kvůli které došlo k selhání úlohy |
-| JobStartDateTime_s |Datum a čas |Datum a čas, kdy úloha spustila spuštěná |
+| JobStartDateTime_s |Datum/čas |Datum a čas, kdy úloha spustila spuštěná |
 | BackupStorageDestination_s |Text |Cílové úložiště záloh, například cloudu, disku  |
 | JobDurationInSecs_s | Číslo |Celkový počet úloh doby v sekundách |
 | DataTransferredInMB_s | Číslo |Data přenesená v MB pro tuto úlohu|
@@ -136,7 +136,7 @@ Tato tabulka obsahuje podrobnosti o pole související úlohy.
 ### <a name="policy"></a>Zásada
 Tato tabulka obsahuje podrobnosti o pole související se zásadami.
 
-| Pole | Datový typ | Popis |
+| Pole | Typ dat | Popis |
 | --- | --- | --- |
 | EventName_s |Text |Toto pole představuje název této události, je vždy AzureBackupCentralReport |
 | SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu, je **V1** |
@@ -176,7 +176,7 @@ Tato tabulka obsahuje podrobnosti o pole související se zásadami.
 ### <a name="policyassociation"></a>PolicyAssociation
 Tato tabulka obsahuje podrobné informace o přidružení zásady s různými entitami.
 
-| Pole | Datový typ | Popis |
+| Pole | Typ dat | Popis |
 | --- | --- | --- |
 | EventName_s |Text |Toto pole představuje název této události, je vždy AzureBackupCentralReport |
 | SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu, je **V1** |
@@ -197,7 +197,7 @@ Tato tabulka obsahuje podrobné informace o přidružení zásady s různými en
 ### <a name="protectedserver"></a>ProtectedServer
 Tato tabulka obsahuje podrobnosti o chráněný server související pole.
 
-| Pole | Datový typ | Popis |
+| Pole | Typ dat | Popis |
 | --- | --- | --- |
 | EventName_s |Text |Toto pole představuje název této události, je vždy AzureBackupCentralReport |
 | ProtectedServerName_s |Text |Název chráněného serveru |
@@ -222,7 +222,7 @@ Tato tabulka obsahuje podrobnosti o chráněný server související pole.
 ### <a name="protectedserverassociation"></a>ProtectedServerAssociation
 Tato tabulka obsahuje podrobné informace o přidružení chráněném serveru s jinými entitami.
 
-| Pole | Datový typ | Popis |
+| Pole | Typ dat | Popis |
 | --- | --- | --- |
 | EventName_s |Text |Toto pole představuje název této události, je vždy AzureBackupCentralReport |
 | SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu, je **V1** |
@@ -243,7 +243,7 @@ Tato tabulka obsahuje podrobné informace o přidružení chráněném serveru s
 ### <a name="storage"></a>Úložiště
 Tato tabulka obsahuje podrobnosti o pole související s úložištěm.
 
-| Pole | Datový typ | Popis |
+| Pole | Typ dat | Popis |
 | --- | --- | --- |
 | CloudStorageInBytes_s |Desetinné číslo |Cloudové zálohování úložiště používané zálohování, počítá na základě nejnovější hodnoty |
 | ProtectedInstances_s |Desetinné číslo |Počet instancí chráněné sloužící k výpočtu front-endu úložiště v fakturace, počítaný na základě nejnovější hodnotu. |
@@ -266,7 +266,7 @@ Tato tabulka obsahuje podrobnosti o pole související s úložištěm.
 ### <a name="vault"></a>Trezor
 Tato tabulka obsahuje podrobné informace o trezoru související pole.
 
-| Pole | Datový typ | Popis |
+| Pole | Typ dat | Popis |
 | --- | --- | --- |
 | EventName_s |Text |Toto pole představuje název této události, je vždy AzureBackupCentralReport |
 | SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu, je **V1** |
@@ -285,5 +285,5 @@ Tato tabulka obsahuje podrobné informace o trezoru související pole.
 | ResourceProvider |Text |Toto pole představuje poskytovatele prostředků pro které se shromažďují data - Microsoft.RecoveryServices |
 | ResourceType |Text |Toto pole představuje typ prostředku, pro které se shromažďují data - trezory |
 
-## <a name="next-steps"></a>Další kroky
-Po prostudování datový model pro vytváření sestav Azure Backup, můžete spustit [vytváření řídicího panelu](../log-analytics/log-analytics-dashboards.md) analýzy protokolů a OMS.
+## <a name="next-steps"></a>Další postup
+Po prostudování datový model pro vytváření sestav Azure Backup, můžete spustit [vytváření řídicího panelu](../log-analytics/log-analytics-dashboards.md) v analýzy protokolů.

@@ -1,8 +1,8 @@
 ---
-title: "Dotaz na Azure Log Analytics k monitorování clusterů Azure HDInsight | Microsoft Docs"
-description: "Zjistěte, jak ke spouštění dotazů na Azure Log Analytics ke sledování úloh spuštěných v clusteru služby HDInsight."
+title: Dotaz na Azure Log Analytics k monitorování clusterů Azure HDInsight | Microsoft Docs
+description: Zjistěte, jak ke spouštění dotazů na Azure Log Analytics ke sledování úloh spuštěných v clusteru služby HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: f9e023ae8d6c50049b588cf056629cd8d46ee603
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1b2f5fc9bd4f8fc8cd70437e38831595d0a8a819
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Dotaz Azure Log Analytics k monitorování clusterů HDInsight
 
@@ -33,7 +33,7 @@ Další informace o tom, jak pomocí Azure Log Analytics monitorovat Azure HDIns
 
 * Musíte nakonfigurovat cluster služby HDInsight používat Azure Log Analytics. Pokyny najdete v tématu [použití Azure Log Analytics s clustery HDInsight](hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
-* Je třeba přidat řešení správy specifických pro cluster HDInsight [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) pracovního prostoru, jak je popsáno v [řešení pro správu clusteru přidat HDInsight k analýze protokolů](hdinsight-hadoop-oms-log-analytics-management-solutions.md).
+* Je třeba přidat řešení správy specifických pro cluster HDInsight [analýzy protokolů](../operations-management-suite/operations-management-suite-overview.md) pracovního prostoru, jak je popsáno v [řešení pro správu clusteru přidat HDInsight k analýze protokolů](hdinsight-hadoop-oms-log-analytics-management-solutions.md).
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>Analyzujte metriky clustery HDInsight
 
@@ -86,7 +86,7 @@ Zjistěte, jak hledat chybové zprávy během konkrétního časového okna. Kro
 
     ![Otevřete řídicí panel OMS](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-open-oms-dashboard.png "OMS otevřete řídicí panel")
 
-2. Na řídicím panelu OMS z domovské obrazovce, klikněte na tlačítko **hledání protokolů**.
+2. Na portálu OMS z domovské obrazovce, klikněte na tlačítko **hledání protokolů**.
 
     ![Otevřete vyhledávání protokolu](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-click-log-search.png "otevřete vyhledávání protokolu")
 
@@ -126,7 +126,7 @@ Můžete použít jakýkoli dotaz, který chcete vytvořit výstrahu.
 
     ![Otevřete řídicí panel OMS](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-open-oms-dashboard.png "OMS otevřete řídicí panel")
 
-2. Na řídicím panelu OMS z domovské obrazovce, klikněte na tlačítko **hledání protokolů**.
+2. Na portálu OMS z domovské obrazovce, klikněte na tlačítko **hledání protokolů**.
 
     ![Otevřete vyhledávání protokolu](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-click-log-search.png "otevřete vyhledávání protokolu")
 
@@ -152,5 +152,5 @@ Můžete použít jakýkoli dotaz, který chcete vytvořit výstrahu.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Práce s Operations Management Suite Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [Práce s analýzy protokolů](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
 * [Vytvořit pravidla výstrah v analýzy protokolů](../log-analytics/log-analytics-alerts-creating.md)

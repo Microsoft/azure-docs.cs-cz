@@ -1,6 +1,6 @@
 ---
-title: "Ladění pokyny Azure SQL Database výkonu | Microsoft Docs"
-description: "Další informace o použití doporučení pro zlepšení výkonu dotazů Azure SQL Database."
+title: Ladění pokyny Azure SQL Database výkonu | Microsoft Docs
+description: Další informace o použití doporučení pro zlepšení výkonu dotazů Azure SQL Database.
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 63a8b9f8c81ad3dc122bf25d8a06cdf242a0f35b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 89575f94e95c5ae378d95220d63c162e53158069
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Ladění výkonu v Azure SQL Database
 
@@ -39,8 +39,8 @@ Azure SQL Database nabízí čtyři [úrovních služeb](sql-database-service-ti
   * **Máte databázi s jedním uživatelem**. Aplikace, které uživatel s jednotným přidružit databáze obvykle nemají vysokou požadavky na souběžnost a výkon. Tyto aplikace jsou kandidáty pro úroveň služby na úrovni Basic.
 * **Standardní**: ve standardu vrstvy služeb nabízí lepší výkon, předvídatelnost a poskytuje dobrý výkon u databází, které mají více souběžných žádostí, jako je pracovní skupiny a webové aplikace. Když vyberete databázi vrstvy služby na úrovni Standard, může Velikost databáze aplikace založené na předvídatelný výkon, minutu přes minutu.
   * **Databáze má více souběžných požadavků**. Aplikace, které služeb více uživatelů najednou obvykle nutné vyšší úrovně výkonu. Například pracovní skupině nebo webové aplikace, které mají nedostatek na střední vstupně-VÝSTUPNÍMI požadavky provoz podpora více souběžných dotazů jsou vhodnými kandidáty pro úroveň služby na úrovni Standard.
-* **Premium**: úroveň služeb Premium poskytuje předvídatelný výkon, druhý přes druhý, pro každou databázi Premium. Pokud vyberete úroveň služeb Premium, můžete měnit velikost databáze aplikace založené na zátěž ve špičce pro tuto databázi. Plán odebere případy, ve které výkonu může způsobit odchylku malé dotazy trvá déle, než bylo očekáváno v operacích citlivý na latenci. Tento model může výrazně zjednodušit ověření cykly vývoj a produktu pro aplikace, které musí být silné prohlášení o potřebných prostředků ve špičce, odchylku výkonu nebo latence dotazu. Většina případy použití vrstvy služby Premium mít jeden nebo více z těchto vlastností:
-  * **Zátěž ve špičce vysokou**. Aplikaci, která vyžaduje významné CPU, paměť či vstupní a výstupní (I/O) k dokončení operace vyžaduje úroveň vyhrazené a vysoce výkonné. Operace databáze známé využívat několik jader procesoru po delší dobu, je třeba kandidátem na úroveň služeb Premium.
+* **Premium**: úroveň služeb Premium poskytuje předvídatelný výkon databáze sekundu přes sekundu pro každou Premium nebo kritické obchodní (preview). Pokud vyberete úroveň služeb Premium, můžete měnit velikost databáze aplikace založené na zátěž ve špičce pro tuto databázi. Plán odebere případy, ve které výkonu může způsobit odchylku malé dotazy trvá déle, než bylo očekáváno v operacích citlivý na latenci. Tento model může výrazně zjednodušit ověření cykly vývoj a produktu pro aplikace, které musí být silné prohlášení o potřebných prostředků ve špičce, odchylku výkonu nebo latence dotazu. Většina případy použití vrstvy služby Premium mít jeden nebo více z těchto vlastností:
+  * **Zátěž ve špičce vysokou**. Aplikaci, která vyžaduje významné CPU, paměť či vstup/výstup (IO) k dokončení operace vyžaduje úroveň vyhrazené a vysoce výkonné. Operace databáze známé využívat několik jader procesoru po delší dobu, je třeba kandidátem na úroveň služeb Premium.
   * **Mnoha souběžnými požadavky**. Některé databáze aplikace služby mnoho souběžných žádostí, například když obsluhuje web, který má intenzivní provoz. Úrovně Basic a Standard úrovně služeb omezit počet souběžných požadavků na databázi. Aplikace, které vyžadují více připojení bude muset zvolit příslušné rezervace velikost pro zpracování maximální počet potřebných požadavků.
   * **Nízká latence**. Některé aplikace potřebují zaručit minimální včas odpověď z databáze. Pokud konkrétní uložená procedura je volána v rámci širší operace zákazníka, bude pravděpodobně potřeba mít návratový z tohoto volání v milisekundách více než 20, 99 procent času. Tento typ aplikace výhody z úroveň služeb Premium, abyste měli jistotu, že je k dispozici požadované výpočetní výkon.
 
@@ -134,7 +134,7 @@ Po vytvoření, že stejný příkaz SELECT vybere jiný plán, který místo ko
 
 ![Plán dotazu s opravené indexy](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-Přehled klíčů je omezenější než počítač vyhrazený server vstupně-výstupní kapacita sdílené, komoditním systému. Je na minimalizovat nepotřebné vstupně-výstupních operací maximální využívat systému v jednotek DTU úrovně výkonu jednotlivých úrovní služby Azure SQL Database premium. Fyzické databázi návrhu volby může výrazně zlepšit latenci pro jednotlivé dotazy zlepšit propustnost souběžných požadavků zpracovaných za jednotku škálování a minimalizovat náklady potřebných k tomu dotazu. Další informace o chybějící index zobrazení dynamické správy najdete v tématu [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+Přehled klíče je omezenější než počítač vyhrazený server kapacita v/v, sdílené, komoditním systému. Je na minimalizovat nepotřebné vstupně-výstupní operace maximální využívat systému v jednotek DTU úrovně výkonu jednotlivých úrovní služby Azure SQL Database premium. Fyzické databázi návrhu volby může výrazně zlepšit latenci pro jednotlivé dotazy zlepšit propustnost souběžných požadavků zpracovaných za jednotku škálování a minimalizovat náklady potřebných k tomu dotazu. Další informace o chybějící index zobrazení dynamické správy najdete v tématu [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
 
 ### <a name="query-tuning-and-hinting"></a>Ladění dotazu a zobrazování rad
 Optimalizátor dotazů v databázi SQL Azure je podobná tradičním Optimalizátor dotazů systému SQL Server. Většina osvědčených postupů pro ladění dotazy a seznámit se s odůvodněním modelu omezení pro Optimalizátor dotazů platí také pro Azure SQL Database. Pokud je optimalizace dotazů v databázi SQL Azure, může získat další výhody snižuje nároky na agregační prostředků. Aplikace může být možné spustit při nižších nákladech, než naladěného ekvivalentní, protože můžete spustit na nižší úrovni výkonu.
@@ -264,12 +264,12 @@ Pokud používáte architekturu škálování ve službě Azure SQL Database, je
 ### <a name="batch-queries"></a>Batch dotazy
 Pro aplikace, které přístup k datům s použitím vysoký počet časté, ad hoc dotazy, vyžadovat značné množství doba odezvy je stráví na síťovou komunikaci mezi aplikační vrstvě a vrstvy databáze SQL Azure. I v případě, že aplikace i databáze SQL Azure jsou ve stejném datovém centru, latence sítě mezi těmito dvěma může zvětšit podle velké množství dat operace přístupu. Ke snížení sítě zpátečních cest pro operací přístupu k datům, zvažte použití možnost buď dávky ad hoc dotazy, nebo jejich kompilace jako uložené procedury. Pokud jste dávky ad hoc dotazy, můžete odeslat více dotazů jako jeden velký batch v jedné cestě k databázi SQL Azure. Pokud zkompilujete ad hoc dotazy v uložené proceduře, může se jako v případě, že jste dávky je dosažení stejného výsledku. Pomocí uložené procedury poskytuje také výhodou zvyšuje šance na ukládání do mezipaměti plány dotazů v databázi SQL Azure, abyste mohli používat uloženou proceduru znovu.
 
-Některé aplikace jsou náročné na zápis. V některých případech můžete snížit celkové zatížení vstupně-výstupních operací v databázi pomocí vzhledem k tomu, jak dávky zápisu společně. Často je stejně jednoduché jako používání explicitních transakcí místo automatického potvrzení transakce v uložené procedury a ad hoc dávky. Vyhodnocení různých technik, které můžete použít, najdete v části [dávkování techniky pro aplikace, databáze SQL v Azure](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Experimentujte s vlastními zatížení najít správné modelu pro dávkové zpracování. Ujistěte se, abyste pochopili, že model může mít mírně odlišný transakční konzistence záruky. Hledání správné zatížení, které snižuje využití prostředků vyžaduje hledání tu správnou kombinaci konzistencí a výkonem kompromis.
+Některé aplikace jsou náročné na zápis. Někdy můžete snížit celkové zatížení vstupně-výstupní operace v databázi pomocí vzhledem k tomu, jak dávky zápisu společně. Často je stejně jednoduché jako používání explicitních transakcí místo automatického potvrzení transakce v uložené procedury a ad hoc dávky. Vyhodnocení různých technik, které můžete použít, najdete v části [dávkování techniky pro aplikace, databáze SQL v Azure](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Experimentujte s vlastními zatížení najít správné modelu pro dávkové zpracování. Ujistěte se, abyste pochopili, že model může mít mírně odlišný transakční konzistence záruky. Hledání správné zatížení, které snižuje využití prostředků vyžaduje hledání tu správnou kombinaci konzistencí a výkonem kompromis.
 
 ### <a name="application-tier-caching"></a>Ukládání do mezipaměti aplikační vrstvy
-Některé databázových aplikací mít úlohy náročné na čtení. Ukládání do mezipaměti vrstvy může vést ke snížení zatížení databáze a může potenciálně snížit úroveň výkonu, které jsou potřebné k podpoře databáze pomocí Azure SQL Database. S [Azure Redis Cache](https://azure.microsoft.com/services/cache/), pokud máte úlohy náročné na čtení, můžete číst data jednou (nebo případně jednou za aplikační vrstvy počítače, v závislosti na tom, jak je nakonfigurovaná) a potom tato data mimo vaší databázi SQL. Toto je způsob, jak snížit zatížení databáze (procesoru a čtení vstupně-výstupních operací), ale není vliv na transakční konzistence, protože data se načten z mezipaměti může být synchronizována s daty v databázi. V mnoha aplikacích určité úrovně, ke kterému je přijatelné, není, platí pro všechny úlohy. Všechny požadavky aplikace byste měli plně rozumět před implementací strategie pro ukládání do mezipaměti aplikační vrstvy.
+Některé databázových aplikací mít úlohy náročné na čtení. Ukládání do mezipaměti vrstvy může vést ke snížení zatížení databáze a může potenciálně snížit úroveň výkonu, které jsou potřebné k podpoře databáze pomocí Azure SQL Database. S [Azure Redis Cache](https://azure.microsoft.com/services/cache/), pokud máte úlohy náročné na čtení, můžete číst data jednou (nebo případně jednou za aplikační vrstvy počítače, v závislosti na tom, jak je nakonfigurovaná) a potom tato data mimo vaší databázi SQL. Toto je způsob, jak snížit zatížení databáze (procesoru a vstupů/výstupů pro čtení), ale není vliv na transakční konzistence, protože data se načten z mezipaměti může být synchronizována s daty v databázi. V mnoha aplikacích určité úrovně, ke kterému je přijatelné, není, platí pro všechny úlohy. Všechny požadavky aplikace byste měli plně rozumět před implementací strategie pro ukládání do mezipaměti aplikační vrstvy.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o úrovních služeb najdete v tématu [výkon a možnosti databáze SQL](sql-database-service-tiers.md)
 * Další informace o elastické fondy najdete v tématu [co je Azure elastickém fondu?](sql-database-elastic-pool.md)
 * Informace o výkonu a Elastická fondy najdete v tématu [při vzít v úvahu fondu elastické databáze](sql-database-elastic-pool-guidance.md)

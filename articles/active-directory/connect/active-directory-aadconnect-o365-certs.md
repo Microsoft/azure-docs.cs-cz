@@ -1,8 +1,8 @@
 ---
-title: "Certifikát obnovení pro uživatele služeb Office 365 a Azure AD | Microsoft Docs"
-description: "Tento článek vysvětluje uživatelům služeb Office 365, jak řešit problémy s e-mailů, které je informovat o obnovení certifikátu."
+title: Certifikát obnovení pro uživatele služeb Office 365 a Azure AD | Microsoft Docs
+description: Tento článek vysvětluje uživatelům služeb Office 365, jak řešit problémy s e-mailů, které je informovat o obnovení certifikátu.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: billmath
-ms.openlocfilehash: a0e3b65c108f8d839b8107e98a5cd59df78e1ab0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f0435f1c5aae9381c76441b1233a47799af94768
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Obnovení federačních certifikátů pro Office 365 a Azure Active Directory
 ## <a name="overview"></a>Přehled
@@ -55,7 +55,7 @@ Azure AD se pokusí monitorování federačních metadat a aktualizovat podle ta
 >
 >
 
-## Zkontrolujte, pokud je nutné aktualizovat certifikáty<a name="managecerts"></a>
+## Zkontrolujte, pokud je nutné aktualizovat certifikáty <a name="managecerts"></a>
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>Krok 1: Kontrola stavu AutoCertificateRollover
 Na serveru služby AD FS otevřete prostředí PowerShell. Zkontrolujte, jestli je hodnota AutoCertificateRollover nastavena na hodnotu True.
 
@@ -95,7 +95,7 @@ Ve výstupu Get-MsolFederationProperty nebo Get-AdfsCertificate zkontrolujte dat
 
 \[-] Nezáleží.
 
-## Obnovit automaticky podpisový certifikát tokenu (doporučeno)<a name="autorenew"></a>
+## Obnovit automaticky podpisový certifikát tokenu (doporučeno) <a name="autorenew"></a>
 Nemusíte provádět žádné ruční kroky, pokud jsou splněny obě z následujících akcí:
 
 * Nasazení Proxy webových aplikací, které můžete povolit přístup k metadatům federace z extranetu.
@@ -107,13 +107,12 @@ Zkontrolujte následující potvrďte, že certifikát automaticky aktualizován
 
 **2. Federační metadata služby AD FS je veřejně přístupná.** Zkontrolujte, jestli federačních metadat veřejně přístupná tak, že přejdete na tuto adresu URL z počítače v veřejného Internetu (mimo firemní síť):
 
-/federationmetadata/2007-06/federationmetadata.xml https:// (your_FS_name)
+https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 kde `(your_FS_name) `se nahradí název federační služby hostitele vaše organizace používá, třeba fs.contoso.com.  Pokud budete moci ověřit oba z těchto nastavení úspěšně, můžete nemusíte dělat žádné další kroky.  
 
 Příklad: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
-
-## Obnovte ručně podpisový certifikát tokenu<a name="manualrenew"></a>
+## Obnovte ručně podpisový certifikát tokenu <a name="manualrenew"></a>
 Můžete se rozhodnout obnovit ručně podpisových certifikátů tokenu. Následující scénáře mohou například fungují lépe pro ruční obnovení:
 
 * Token, podpisové certifikáty jsou certifikáty podepsané držitelem. Nejčastější příčinou je, že vaše organizace spravuje certifikáty služby AD FS zapsané od organizace certifikační autority.
@@ -150,17 +149,17 @@ Teď by měl být uvedený dva certifikáty, z nichž jeden je **neplatí po** d
 Aktualizace Office 365 s nový token podepisování certifikátů, které se použije pro vztah důvěryhodnosti, následujícím způsobem.
 
 1. Otevřete modul Microsoft Azure Active Directory pro prostředí Windows PowerShell.
-2. Spustit $cred = Get-Credential. Když tato rutina vás vyzve k zadání přihlašovacích údajů, zadejte přihlašovací údaje účtu správce cloudové služby.
+2. Run $cred=Get-Credential. Když tato rutina vás vyzve k zadání přihlašovacích údajů, zadejte přihlašovací údaje účtu správce cloudové služby.
 3. Spustit Connect-MsolService – $cred na přihlašovací údaje. Tato rutina je připojí ke cloudové službě. Vytváření kontextu, která vás spojí se Cloudová služba se vyžaduje před spuštěním další rutiny nainstalován nástrojem.
-4. Pokud spustíte tyto příkazy v počítači, který není primární federační server služby AD FS, spusťte sadu MSOLAdfscontext-počítače <AD FS primary server>, kde <AD FS primary server> je interní název plně kvalifikovaný název domény primárního serveru služby AD FS. Tato rutina vytvoří kontext, který vás spojí se služby AD FS.
-5. Spuštění aktualizace MSOLFederatedDomain – DomainName <domain>. Tato rutina aktualizuje nastavení ze služby AD FS do cloudové služby a nakonfiguruje vztah důvěryhodnosti mezi nimi.
+4. Pokud spustíte tyto příkazy v počítači, který není primární federační server služby AD FS, spusťte sadu MSOLAdfscontext-počítače &lt;primární server služby AD FS&gt;, kde &lt;primární server služby AD FS&gt; je interní plně kvalifikovaný název domény název primárního serveru služby AD FS. Tato rutina vytvoří kontext, který vás spojí se služby AD FS.
+5. Run Update-MSOLFederatedDomain –DomainName &lt;domain&gt;. Tato rutina aktualizuje nastavení ze služby AD FS do cloudové služby a nakonfiguruje vztah důvěryhodnosti mezi nimi.
 
 > [!NOTE]
 > Pokud potřebujete podporu více domén nejvyšší úrovně, jako je například contoso.com a fabrikam.com, musíte použít **SupportMultipleDomain** přepínač s rutiny. Další informace najdete v tématu [podpory pro víc domén nejvyšší úrovně](active-directory-aadconnect-multiple-domains.md).
 >
 
 
-## Opravte vztah důvěryhodnosti služby Azure AD pomocí Azure AD Connect<a name="connectrenew"></a>
+## Opravte vztah důvěryhodnosti služby Azure AD pomocí Azure AD Connect <a name="connectrenew"></a>
 Pokud jste nakonfigurovali farma služby AD FS a vztah důvěryhodnosti služby Azure AD pomocí Azure AD Connect, můžete zjistit, pokud je třeba provádět žádnou akci podpisové certifikáty tokenu Azure AD Connect. Pokud potřebujete obnovit certifikáty, můžete to udělat Azure AD Connect.
 
 Další informace najdete v tématu [opravu vztahu důvěryhodnosti](active-directory-aadconnect-federation-management.md).

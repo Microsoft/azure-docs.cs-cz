@@ -1,11 +1,11 @@
 ---
-title: "Zachycení virtuálního počítače Azure Linux chcete použít jako šablonu | Microsoft Docs"
-description: "Informace o zaznamenání a generalize bitové kopie založené na systému Linux Azure virtuálního počítače (VM) vytvořené pomocí modelu nasazení Azure Resource Manager."
+title: Zachycení virtuálního počítače Azure Linux chcete použít jako šablonu | Microsoft Docs
+description: Informace o zaznamenání a generalize bitové kopie založené na systému Linux Azure virtuálního počítače (VM) vytvořené pomocí modelu nasazení Azure Resource Manager.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: f990a0da0be7f10dc16aa2e5a6320b456cfffed1
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 71c60c8d29e4db8aab1932a1bece03396a12e4da
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="capture-a-linux-virtual-machine-running-on-azure"></a>Zachytit virtuální počítač Linux spuštěné v Azure
 Postupujte podle kroků v tomto článku generalize a zachycení Azure Linux virtuálního počítače (VM) v modelu nasazení Resource Manager. Při průchodu generalize virtuálního počítače, můžete odebrat informace o osobní účet a připravit virtuální počítač, který se má použít jako obrázek. Můžete potom zachycení bitové kopie zobecněný virtuální pevný disk (VHD) pro operační systém, virtuální pevné disky pro připojené datových disků, a [šablony Resource Manageru](../../azure-resource-manager/resource-group-overview.md) pro nová nasazení virtuálních počítačů. Tento článek popisuje, jak zachytit image virtuálního počítače s 1.0 rozhraní příkazového řádku Azure pro virtuální počítač pomocí nespravované disků. Můžete také [zachytit virtuální počítač Azure spravované disky pomocí Azure CLI 2.0](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Spravované disky jsou zpracovávány platformy Azure a nevyžadují, aby všechny přípravné nebo umístění pro uložení. Další informace najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
@@ -86,12 +86,12 @@ Pomocí rozhraní příkazového řádku Azure generalize a zachycení virtuáln
    > [!IMPORTANT]
    > Soubory VHD image vytvářeny ve výchozím nastavení ve stejném účtu úložiště, který používá původní virtuální počítač. Použití *stejný účet úložiště* k ukládání virtuálních pevných disků pro všechny nové virtuální počítače, můžete vytvořit z image. 
 
-6. Najít umístění zaznamenané bitové kopie, otevřete šablonu JSON v textovém editoru. V **storageProfile**, Najít **uri** z **image** umístěný v **systému** kontejneru. Například je podobná identifikátor URI bitové kopie disku operačního systému`https://xxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
+6. Najít umístění zaznamenané bitové kopie, otevřete šablonu JSON v textovém editoru. V **storageProfile**, Najít **uri** z **image** umístěný v **systému** kontejneru. Například je podobná identifikátor URI bitové kopie disku operačního systému `https://xxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>Krok 3: Vytvoření virtuálního počítače ze zaznamenané bitové kopie
 Chcete-li vytvořit virtuální počítač s Linuxem teď použijte bitovou kopii pomocí šablony. Tyto kroky ukazují, jak používat rozhraní příkazového řádku Azure a šablona souboru JSON, kterou zachycené vytvořte virtuální počítač v nové virtuální sítě.
 
-### <a name="create-network-resources"></a>Vytvoření síťové prostředky
+### <a name="create-network-resources"></a>Vytvoření síťových prostředků
 Abyste mohli použít šablonu, musíte nejprve nastavit virtuální sítě a síťovou kartu pro nový virtuální počítač. Doporučujeme že vytvořit skupinu prostředků pro tyto prostředky v umístění, kde jsou uložené vaše image virtuálního počítače. Příkazy spouštějte podobná následující, nahraďte názvy pro vaše prostředky a příslušné umístění Azure ("centralus" v těchto příkazech):
 
 ```azurecli
@@ -113,7 +113,7 @@ Pokud chcete nasadit virtuální počítač z bitové kopie pomocí JSON, který
 azure network nic show myResourceGroup1 myNIC
 ```
 
-**Id** ve výstupu je podobná`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup1/providers/Microsoft.Network/networkInterfaces/myNic`
+**Id** ve výstupu je podobná `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup1/providers/Microsoft.Network/networkInterfaces/myNic`
 
 ### <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 Nyní spusťte následující příkaz pro vytvoření virtuálního počítače ze zaznamenané bitové kopie virtuálního počítače. Použití **-f** parametru určete cestu k souboru šablony JSON jste uložili.
@@ -177,7 +177,7 @@ Pomocí zaznamenané bitové kopie a šablony můžete nasadit další virtuáln
 Zaznamenané bitové kopie a šablony, postupujte podle těchto kroků (popsané v předchozí části):
 
 * Zajistěte, aby vaše image virtuálního počítače ve stejném účtu úložiště, který je hostitelem virtuálního pevného disku Virtuálního počítače.
-* Zkopírujte soubor šablony JSON a zadejte jedinečný název pro disk operačního systému nový virtuální počítač virtuálního pevného disku (nebo virtuální pevné disky). Například v **storageProfile**v části **virtuálního pevného disku**v **uri**, zadejte jedinečný název pro **osDisk** virtuálního pevného disku, podobně jako`https://xxxxxxxxxxxxxx.blob.core.windows.net/vhds/MyNewVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
+* Zkopírujte soubor šablony JSON a zadejte jedinečný název pro disk operačního systému nový virtuální počítač virtuálního pevného disku (nebo virtuální pevné disky). Například v **storageProfile**v části **virtuálního pevného disku**v **uri**, zadejte jedinečný název pro **osDisk** virtuálního pevného disku, podobně jako `https://xxxxxxxxxxxxxx.blob.core.windows.net/vhds/MyNewVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
 * Vytvořte síťový adaptér ve stejné nebo jiné virtuální síti.
 * Ve skupině prostředků, ve kterém můžete nastavit virtuální sítě pomocí souboru JSON změny šablony, vytvořte nasazení.
 
@@ -203,6 +203,6 @@ azure vm create -g myResourceGroup1 -n myNewVM -l eastus -y Linux \
 
 Další příkaz Možnosti spustit `azure help vm create`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud chcete spravovat virtuální počítače pomocí rozhraní příkazového řádku, najdete v části úlohy v [nasadit a spravovat virtuální počítače pomocí šablony Azure Resource Manager a rozhraní příkazového řádku Azure](create-ssh-secured-vm-from-template.md).
 

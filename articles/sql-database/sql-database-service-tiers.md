@@ -6,50 +6,64 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/04/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 3fe7add4ad4c5563a6307db0dec27c658913429b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a4474aec212084006becd02f317dabae6e731d98
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Co je Azure SQL Database úrovně služeb?
 
-[Azure SQL Database](sql-database-technical-overview.md) nabízí **základní**, **standardní**, a **Premium** úrovních služeb pro obě [jedna databáze](sql-database-single-database-resources.md) a [elastické fondy](sql-database-elastic-pool.md). SQL Database nabízí vrstvy služeb pro obecné účely [Azure SQL Database spravované Instance](sql-database-managed-instance.md#managed-instance-service-tier). Úrovně služeb jsou primárně rozlišené pomocí celou řadu úroveň výkonu a možnosti velikosti úložiště a ceny.  Všechny úrovně služeb poskytují flexibilitu při změně velikosti výkonu úroveň a úložiště.  Izolované databáze i elastické fondy se fakturuje po hodinách podle úrovně služby, úroveň výkonu a velikost úložiště.   
+[Azure SQL Database](sql-database-technical-overview.md) nabízí dva modely nákupu pro výpočty, úložiště a vstupně-výstupní operace prostředky: nákupní model na základě DTU a nákupní model (preview) na základě vCore. Následující tabulku a graf porovnání a porovnejte tyto dva modely nákupu.
+
+|**Nákupní model**|**Popis**|**Nejvhodnější pro**|
+|---|---|---|
+|Na základě DTU modelu|Tento model je založen na připojené měření výpočty, úložiště a vstupně-výstupní operace prostředky. Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o Dtu a Edtu najdete v tématu [co jsou Dtu a Edtu](sql-database-what-is-a-dtu.md)?|Nejvhodnější pro zákazníky, kteří chtějí možnosti jednoduchý, předem nakonfigurovaných prostředků.| 
+|na základě vCore modelu|Tento model můžete nezávisle škálovat výpočetní a úložnou kapacitu. Také umožňuje použít k získání úsporu nákladů Benefit hybridní Azure pro systém SQL Server.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a průhlednost.|
+||||  
+
+![cenový model](./media/sql-database-service-tiers/pricing-model.png)
+
+## <a name="dtu-based-purchasing-model"></a>Na základě DTU nákupní model
+
+Jednotky propustnosti databáze (DTU) představuje kombinaci měření procesoru, paměti, čte a zapisuje. Na základě DTU nákupní model nabízí sadu předkonfigurované sady výpočetní prostředky a zahrnuty úložiště na jednotce různé úrovně výkonu aplikace. Zákazníci, kteří raději jednoduchost sady předkonfigurovaná a pevných plateb každý měsíc, možná modelu na základě DTU vhodnější pro své potřeby. V na základě DTU nákupu modelu, můžete zvolit zákazníci **základní**, **standardní**, a **Premium** úrovních služeb pro obě [jedna databáze](sql-database-single-database-resources.md) a [elastické fondy](sql-database-elastic-pool.md). Úrovně služeb jsou rozlišené pomocí rozsah úrovně výkonu s pevnou velikostí součástí úložiště, pevné dobu uchování záloh a pevné ceny. Všechny úrovně služeb poskytují flexibilitu Změna úrovně výkonu bez výpadků. Izolované databáze i elastické fondy se fakturuje po hodinách podle úrovně služeb a výkonu.
 
 > [!IMPORTANT]
-> Instance databáze serveru SQL spravované, aktuálně ve verzi public preview, nabízí vrstvu služby jednotného pro obecné účely. Další informace najdete v tématu [Azure SQL Database spravované Instance](sql-database-managed-instance.md). Zbývající část tohoto článku se nevztahuje na spravované Instance.
+> Instance databáze serveru SQL spravované, aktuálně ve verzi public preview nepodporuje nákupní model na základě DTU. Další informace najdete v tématu [Azure SQL Database spravované Instance](sql-database-managed-instance.md). 
 
-## <a name="choosing-a-service-tier"></a>Výběr úrovně služeb
+### <a name="choosing-a-service-tier-in-the-dtu-based-purchasing-model"></a>Volba úrovně služby v nákupu modelu na základě DTU
 
 Volba úrovně služby závisí hlavně na kontinuity podnikových procesů, úložiště a požadavky na výkon.
-| | **Basic** | **Standard** |**Premium**  |
+||Basic|Standard|Premium|
 | :-- | --: |--:| --:| --:| 
 |Cíl pracovního vytížení|Vývoj a výroby|Vývoj a výroby|Vývoj a výroby||
 |Smlouva SLA o provozuschopnosti|99,99 %|99,99 %|99,99 %|Není k dispozici při ve verzi preview|
 |Uchování záloh|7 dní|35 dní|35 dní|
 |Procesor|Nízká|Nízká, střední, vysoká|Střední, vysoká|
-|Propustnost vstupně-výstupní operace (přibližnou) |2.5 IOPS na DTU  | 2.5 IOPS na DTU | 48 IOPS na DTU|
+|Propustnost vstupně-výstupní operace (přibližnou) |2.5 IOPS na DTU| 2.5 IOPS na DTU | 48 IOPS na DTU|
 |Latence vstupně-výstupní operace (přibližnou)|5 ms (načíst), 10 ms (zápisu)|5 ms (načíst), 10 ms (zápisu)|2 ms (čtení a zápis)|
 |Indexu Columnstore |neuvedeno|S3 a novější|Podporováno|
 |OLTP v paměti|neuvedeno|neuvedeno|Podporováno|
 |||||
 
-## <a name="performance-level-and-storage-size-limits"></a>Omezení velikosti úroveň výkonu a úložiště
+### <a name="performance-level-and-storage-size-limits-in-the-dtu-based-purchasing-model"></a>Výkon úroveň a úložiště omezení velikosti v nákupu modelu na základě DTU
 
-Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o Dtu a Edtu najdete v tématu [co jsou Dtu a Edtu?](sql-database-what-is-a-dtu.md)
+Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o Dtu a Edtu najdete v tématu [co jsou Dtu a Edtu](sql-database-what-is-a-dtu.md)?
 
-### <a name="single-databases"></a>Izolované databáze
+#### <a name="single-databases"></a>Izolované databáze
 
-|  | **Basic** | **Standard** | **Premium** | 
+||Basic|Standard|Premium|
 | :-- | --: | --: | --: | --: |
 | Maximální velikost úložiště velikost * | 2 GB | 1 TB | 4 TB  | 
 | Maximální počet jednotek Dtu | 5 | 3000 | 4000 | |
 ||||||
 
-### <a name="elastic-pools"></a>Elastické fondy
+Podrobnosti o konkrétní úrovně výkonu a možnosti velikosti úložiště k dispozici pro izolované databáze najdete v tématu [limitů prostředků na základě DTU databáze SQL pro izolované databáze](sql-database-dtu-resource-limits.md#single-database-storage-sizes-and-performance-levels).
+
+#### <a name="elastic-pools"></a>Elastické fondy
 
 | | **Basic** | **Standard** | **Premium** | 
 | :-- | --: | --: | --: | --: |
@@ -63,17 +77,123 @@ Volba úrovně služby závisí hlavně na kontinuity podnikových procesů, úl
 > [!IMPORTANT]
 > \* Velikosti úložiště větší než velikost zahrnutého úložiště jsou ve verzi Preview a účtují se za ně další poplatky. Podrobnosti najdete na stránce s [cenami služby SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
 >
-> \* Na úrovni Premium je úložiště větší než 1 TB aktuálně dostupné v následujících oblastech: Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, USA – střed, Francie – střed, Německo – střed, Japonsko – východ, Japonsko – západ, Korea – střed, Střed USA – sever, Severní Evropa, Střed USA – jih, Asie – jihovýchod, Velká Británie – jih, Velká Británie – západ, USA – východ 2, USA – západ, USA (Gov) – Virginia a Západní Evropa. Viz [Aktuální omezení pro P11–P15](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> \* Na úrovni Premium je úložiště větší než 1 TB aktuálně dostupné v následujících oblastech: Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, USA – střed, Francie – střed, Německo – střed, Japonsko – východ, Japonsko – západ, Korea – střed, Střed USA – sever, Severní Evropa, Střed USA – jih, Asie – jihovýchod, Velká Británie – jih, Velká Británie – západ, USA – východ 2, USA – západ, USA (Gov) – Virginia a Západní Evropa. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > 
 
-Podrobnosti o konkrétní úrovně výkonu a možnosti velikosti úložiště k dispozici v tématu [limitů prostředků databáze SQL](sql-database-resource-limits.md).
+Podrobnosti o konkrétní úrovně výkonu a možnosti velikosti úložiště k dispozici pro elastické fondy najdete v tématu [limitů prostředků na základě DTU databáze SQL](sql-database-dtu-resource-limits.md#elastic-pool-storage-sizes-and-performance-levels).
 
+## <a name="vcore-based-purchasing-model-preview"></a>na základě vCore nákupní model (preview)
+
+Virtuální základní představuje logický procesor nabízí s možností si vybrat mezi generací hardwaru. Nákupní model (preview) na základě vCore poskytuje flexibilitu, řízení, průhlednost spotřebu jednotlivých prostředků a snadný způsob, jak převede místní požadavků na zatížení do cloudu. Tento model umožňuje škálování výpočetní kapacity, paměť a úložiště podle jejich potřeb pracovního vytížení. V nákupu modelu na základě vCore zákazníkům můžete vybrat mezi obecné účely a obchodními úrovněmi kritické služby (preview) pro obě [jedna databáze](sql-database-single-database-resources.md) a [elastické fondy](sql-database-elastic-pool.md). 
+
+Úrovně služeb jsou rozlišené pomocí rozsah úrovně výkonu, vysoká dostupnost, selhání izolace, typy úložiště a vstupně-výstupní operace. Zákazník musí nakonfigurovat samostatně požadované úložiště a jejich uchovávání období pro zálohování. Při použití modelu vCore, jsou způsobilé pro až na 30 procent úspor s izolované databáze i elastické fondy [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+
+Základě vCore nákupu modelu zákazníkům mzdy pro:
+- Výpočetní (úroveň služby + číslo vCores + generování hardwaru) *
+- Typ a velikost úložiště, protokolu a data 
+- Počet IOs **
+- Zálohování úložiště (RA-GRS) ** 
+
+\* V původní verzi public preview, logických procesorů 4 generace jsou založené na v3 Intel E5-2673 2,4 GHz procesorů (Haswell)
+
+\*\* Verzi Preview jsou zdarma zálohy a IOs 7 dnů
+
+> [!IMPORTANT]
+> Výpočetní, IOs, data a budou se účtovat úložiště protokolů pro databáze nebo elastického fondu. Úložiště zálohy je účtován na každou databázi. Podrobnosti instance spravované poplatky najdete [Azure SQL Database spravované Instance](sql-database-managed-instance.md).
+
+### <a name="choosing-service-tier-compute-memory-storage-and-io-resources"></a>Výběr vrstvy služeb, výpočetní, paměť, úložiště a vstupně-výstupní operace prostředky
+
+Převádění na základě vCore nákupní model, můžete nezávisle škálovat výpočetní a úložnou kapacitu, odpovídající místní výkonu a optimalizovat cena. Pokud vaše databáze nebo elastického fondu spotřebovává více než 300 DTU převod na vCore může snížit vaše náklady. Můžete převést pomocí rozhraní API podle volby nebo pomocí portálu Azure, nedojde k výpadku. Převod však není požadováno. Pokud nákupní model DTU splňuje vaše požadavky na výkon a business, by měly pokračovat, jeho použití. Pokud se rozhodnete převést z modelu DTU vCore-model, měli byste vybrat úroveň výkonu pomocí následující pravidlo: každý 100 DTU ve standardní vrstvě vyžaduje minimálně 1 vCore a každý 125 DTU v úrovni Premium vyžaduje minimálně 1 vCore.
+
+Následující tabulka vám pomůže pochopit rozdíly mezi těmito dvěma vrstvami:
+
+||**Obecné účely**|**Kritické obchodní**|
+|---|---|---|
+|Nejvhodnější pro|Většinu úloh firmy. Nabízí rozpočet orientované vyrovnáváním a škálovatelné možnosti výpočetního prostředí a úložiště.|Obchodní aplikace s vysokým vstupně-VÝSTUPNÍMI požadavky. Nabízí nejvyšší odolnost proti selhání pomocí několika izolované repliky.|
+|Compute|1 až 16 vCore|1 až 16 vCore|
+|Memory (Paměť)|7 GB za jádra |7 GB za jádra |
+|Úložiště|Vzdálené úložiště Premium, 5 GB – 4 TB|Místní úložiště SSD, 5 GB – 1 TB|
+|Propustnost vstupně-výstupní operace (přibližnou)|500 IOPS na vCore s 7500 maximální IOPS|5000 IOPS za jádra|
+|Dostupnost|1 repliky, bez škálování pro čtení|repliky 3, 1 [čtení škálování](sql-database-read-scale-out.md), zónu redundantní HA|
+|Zálohování|RA-GRS, 7-35 dní (7 dní ve výchozím nastavení)|RA-GRS, 7-35 dní (7 dní ve výchozím nastavení) *|
+|V paměti|neuvedeno|Podporováno|
+|||
+
+\* Během preview doba uchovávání záloh není Konfigurovatelný a je nastaven na 7 dní.
+
+> [!IMPORTANT]
+> Pokud budete potřebovat méně než jeden vCore výpočetní kapacitu, použijte na základě DTU nákupní model.
+
+Podrobnosti o konkrétní úrovně výkonu a možnosti velikosti úložiště k dispozici pro izolované databáze najdete v tématu [limitů na základě vCore prostředků databáze SQL pro izolované databáze](sql-database-vcore-resource-limits.md#single-database-storage-sizes-and-performance-levels) a elastické fondy najdete v tématu [databáze SQL omezení zdrojů na základě vCore pro elastické fondy](sql-database-vcore-resource-limits.md#elastic-pool-storage-sizes-and-performance-levels).
+
+V tématu [nejčastější dotazy k databázi SQL](sql-database-faq.md) odpovědi na nejčastější dotazy. 
+
+### <a name="storage-considerations"></a>Aspekty úložišť
+
+Zvažte použití těchto zdrojů:
+- Úložiště přidělené používá datových souborů (MDF) a soubory protokolu souborů (LDF).
+- Každá úroveň výkonu podporuje maximální velikost databáze, s výchozí maximální velikost 32 GB.
+- Když konfigurujete velikost požadovaná databáze (velikost MDF), 30 % dodatečné úložiště se automaticky přidá k podpoře LDF
+- Můžete vybrat všechny velikosti databáze mezi 10 GB a maximální podporované
+ - Pro standardní úložiště zvýšení nebo snížení velikosti v přírůstcích po 10 GB
+ - Pro storage úrovně Premium zvětšit nebo zmenšit velikost v přírůstcích po 250 GB
+- Ve vrstvě služeb obecné účely `tempdb` používá připojené SSD a toto úložiště náklady je součástí vCore ceny.
+- V rámci firmy kritické úrovně služby `tempdb` připojené SSD s soubory MDF a LDF a úložiště databáze tempDB náklady je součástí ceny vCore sdílené složky.
+
+> [!IMPORTANT]
+> Budou účtovat celkové úložiště přidělené MDF a LDF.
+
+Chcete-li monitorovat aktuální celková velikost MDF a LDF, použijte [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql). Chcete-li monitorovat aktuální velikost jednotlivých souborů MDF a LDF, použijte [katalogu sys.database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql).
+
+### <a name="backups-and-storage"></a>Zálohování a úložiště
+
+Úložiště pro zálohování databáze je přidělen pro podporu bodem v možnostech doba obnovení (Možnosti PITR) a dlouhou dobu uchování zleva doprava databáze SQL. Toto úložiště je přidělen samostatně pro každou databázi a účtován jako dva samostatné za databáze poplatky. 
+
+- **Možnosti PITR**: jednotlivé databáze zálohy se zkopírují do úložiště RA-GRS jsou automaticky. Velikost úložiště zvyšuje dynamicky vytvářené nových záloh.  Úložiště se používá týdenní úplné zálohování, denní rozdílové zálohy a transakce protokolu zálohování zkopírovat každých 5 minut. Spotřeba úložiště závisí na míru změn databáze a dobu uchování. Můžete nakonfigurovat doby uchování samostatné pro každou databázi mezi 7 až 35 dnů. Velikost minimální úložiště rovna 1 x velikost dat je k dispozici bez dalších poplatků. Pro většinu databáze je toto množství dost pro ukládání záloh 7 dní.
+- **Zleva doprava**: SQL Database nabízí možnost konfigurace dlouhodobé uchovávání úplných záloh pro až 10 let. Pokud je LTR zásada povolena, tato zálohy se ukládají do úložiště RA-GRS automaticky, ale můžete řídit, jak často se zkopírují zálohy. Chcete-li splnit požadavky různých kompatibility, můžete vybrat odlišných období uchování pro týdenní, měsíční nebo roční zálohy. Tato konfigurace bude definovat, jak velké úložiště se použije pro zálohy zleva doprava. Cenová Kalkulačka zleva doprava. můžete použít k zjištění přibližné hodnoty náklady na úložiště zleva doprava. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
+
+### <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
+
+V na základě vCore nákupu modelu, můžete exchange stávající licence pro zvýhodněné sazby na databázi SQL pomocí [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Této výhody Azure umožňuje používat místní licencí systému SQL Server uložit až 30 % na Azure SQL Database pomocí programu Software Assurance místní licencí systému SQL Server.
+
+![Ceny](./media/sql-database-service-tiers/pricing.png)
+
+#### <a name="migration-of-single-databases-with-geo-replication-links"></a>Migrace jednotlivých databází s odkazy geografická replikace
+
+Migrace z na základě DTU modelu na základě vCore modelu je podobná upgrade nebo přechod na starší verzi geografická replikace vztahy mezi databázemi Standard a Premium. Nevyžaduje se, že se ukončuje geografická replikace, ale uživatel musí odpovídat pravidlům sekvencování. Při upgradu, musíte napřed upgradovat sekundární databázi a pak upgradovat primární. Když přechod na starší verzi, změnit pořadí: je nutné nejprve starší verzi primární databázi a poté downgradovat sekundární. 
+
+Pokud používáte geografická replikace mezi dvěma elastické fondy, důrazně doporučujeme vyhradit jeden fond jako primární a druhá – jako sekundární. Migrace elastické fondy by měl v takovém případě použijte stejné pokyny.  Je však že technicky je možné, že fondu elastické databáze obsahuje primární i sekundární databáze. V takovém případě správně můžete migrovat by měl považují fond s vyšší využití jako "primární" a postupujte podle pravidla sekvencování odpovídajícím způsobem.  
+
+Následující tabulka obsahuje pokyny pro migraci konkrétních scénářů: 
+
+|Aktuální úroveň služby|Cílové úrovně služby|Typ migrace|Akce uživatele|
+|---|---|---|---|
+|Standard|Obecné účely|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
+|Premium|Obchodně klíčové|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
+|Standard|Obchodně klíčové|Upgrade|Musíte migrovat sekundární nejprve|
+|Obchodně klíčové|Standard|Downgradovat|Musíte migrovat nejprve primární|
+|Premium|Obecné účely|Downgradovat|Musíte migrovat nejprve primární|
+|Obecné účely|Premium|Upgrade|Musíte migrovat sekundární nejprve|
+|Obchodně klíčové|Obecné účely|Downgradovat|Musíte migrovat nejprve primární|
+|Obecné účely|Obchodně klíčové|Upgrade|Musíte migrovat sekundární nejprve|
+||||
+
+\* Každý 100 DTU ve standardní vrstvě vyžaduje minimálně 1 vCore a každý 125 DTU v úrovni Premium vyžaduje minimálně 1 vCore
+
+#### <a name="migration-of-failover-groups"></a>Migrace skupin převzetí služeb při selhání 
+
+Migrace skupin převzetí služeb při selhání s více databází vyžaduje jednotlivých migrace primárních a sekundárních databází. Během tohoto procesu stejné aspekty a sekvencování pravidla použít. Po databáze jsou převedeny na modelu na základě vCore, převzetí služeb při selhání skupiny zůstane v platnosti se stejným nastavením zásad. 
+
+#### <a name="creation-of-a-geo-replication-secondary"></a>Vytvoření sekundární geografická replikace
+
+Můžete vytvořit pouze sekundární geograficky pomocí stejné vrstvě služby jako primární. Pro databázi s míru generování vysoké protokolu se důrazně doporučuje, aby sekundární je vytvořen se stejnou úrovní výkonu jako primární. Pokud vytváříte geo sekundární v elastický fond pro jednu primární databázi, se důrazně doporučuje, aby ve fondu není `maxVCore` nastavení, která odpovídá na úroveň výkonu primární databáze. Pokud vytváříte geo sekundární v elastický fond pro primární v jiném elastického fondu, se důrazně doporučuje, že fondy mají stejné `maxVCore` nastavení
+
+#### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Kopie databáze pomocí převést databázi na základě jednotek DTU na databázi na základě vCore.
+
+Všechny databáze s úrovní výkonu na základě DTU můžete zkopírovat do databáze s výkonu na základě vCore úrovni bez omezení nebo speciální pořadí úloh také podporuje úrovně výkonu cílové databáze maximální velikost zdrojové databáze. Je to proto, že kopírování databáze vytvoří snímek dat od počáteční čas operace kopírování a nebude provádět synchronizaci dat mezi zdrojem a cílem. 
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [jedna databáze prostředků](sql-database-single-database-resources.md).
-- Další informace o elastické fondy najdete v tématu [elastické fondy](sql-database-elastic-pool.md).
+- Podrobnosti o konkrétní úrovně výkonu a možnosti velikosti úložiště k dispozici v tématu [limitů prostředků na základě DTU databáze SQL](sql-database-dtu-resource-limits.md) a [limitů prostředků na základě vCore SQL Database](sql-database-vcore-resource-limits.md).
+- V tématu [nejčastější dotazy k databázi SQL](sql-database-faq.md) odpovědi na nejčastější dotazy.
 - Další informace o [předplatného Azure a omezení služby, kvóty a omezení](../azure-subscription-service-limits.md)
-* Další informace o [Dtu a Edtu](sql-database-what-is-a-dtu.md).
-* Další informace o sledování využití v jednotkách DTU najdete v tématu [monitorování a optimalizace výkonu](sql-database-troubleshoot-performance.md).
-

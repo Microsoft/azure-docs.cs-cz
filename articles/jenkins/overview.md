@@ -1,6 +1,6 @@
 ---
-title: "Přehled volaných a Azure | Microsoft Docs"
-description: "Hostování volaných sestavení a nasazení serveru automation v Azure a pomocí Azure výpočetní a úložnou kapacitu rozšířit nepřetržité integrace a nasazení kanály (CI/CD)."
+title: Přehled volaných a Azure | Microsoft Docs
+description: Hostování volaných sestavení a nasazení serveru automation v Azure a pomocí Azure výpočetní a úložnou kapacitu rozšířit nepřetržité integrace a nasazení kanály (CI/CD).
 services: jenkins
 author: rloutlaw
 manager: justhe
@@ -11,11 +11,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: routlaw
 ms.custom: mvc
-ms.openlocfilehash: 08906939ecc80999de94ad7e7141081f959fb6f2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ca4a6cb886b0453848dc7b29e15de2063878a65d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-and-jenkins"></a>Azure a volaných
 
@@ -31,7 +31,7 @@ Růst volaných hostitele v Azure a centralizovat vaše sestavení automatizace 
 - [Virtuální počítače Azure](/azure/virtual-machines/linux/overview). V tématu naše [kurzu](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd) k vytvoření instance volaných na virtuálním počítači.
 - Na Kubernetes cluster se systémem [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), najdete v našich [postupy](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
-Monitorovat a spravovat pomocí nasazení Azure volaných [analýzy protokolů](/azure/log-analytics/log-analytics-overview), [Operations Management Suite](/azure/operations-management-suite/operations-management-suite-overview)a [rozhraní příkazového řádku Azure](/cli/azure).
+Monitorovat a spravovat pomocí nasazení Azure volaných [analýzy protokolů](/azure/log-analytics/log-analytics-overview) a [rozhraní příkazového řádku Azure](/cli/azure).
 
 ## <a name="scale-your-build-automation-on-demand"></a>Škálovat vaše automatizace sestavení na vyžádání
 

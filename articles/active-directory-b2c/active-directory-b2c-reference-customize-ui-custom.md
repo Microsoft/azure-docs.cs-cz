@@ -1,8 +1,7 @@
 ---
-title: 'Azure Active Directory B2C: Referenční: přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad | Microsoft Docs'
-description: Téma na Azure Active Directory B2C vlastní zásady
+title: Přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad | Microsoft Docs
+description: Další informace o vlastních zásad Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
 editor: ''
@@ -11,31 +10,31 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: b0f68f76bfb746b91cb82b2b7e9e750f15f14253
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4fe9e90996c56773480eb147e5aef7475453fe43
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 > [!NOTE]
-> Tento článek slouží k pokročilé popis fungování přizpůsobení uživatelského rozhraní a povolení s B2C vlastních zásad, pomocí rozhraní prostředí Identity
+> Tento článek slouží k pokročilé popis fungování přizpůsobení uživatelského rozhraní a povolení pomocí vlastních zásad Azure AD B2C, pomocí rozhraní prostředí Identity.
 
 
 Integrované uživatelské prostředí je klíč pro řešení business k příjemce. Integrované uživatelské prostředí je prostředí, na zařízení nebo prohlížeče, kde je lišit od zákazníků služby, kterou používají uživatelské cesty přes službu.
 
 ## <a name="understand-the-cors-way-for-ui-customization"></a>Pochopení způsobu CORS pro přizpůsobení uživatelského rozhraní
 
-Azure AD B2C umožňuje přizpůsobení vzhledu a chování činnost koncového uživatele (UX) na různých stránkách, které jsou zpracovat a zobrazit pomocí Azure AD B2C pomocí vlastních zásad.
+Azure AD B2C umožňuje přizpůsobení vzhledu a chování činnost koncového uživatele (UX) na různých stránkách, které jsou zpracovat a zobrazit pomocí Azure AD B2C, používat vlastní zásady.
 
 K tomuto účelu, Azure AD B2C spuštěním kódu v prohlížeči vaše příjemce a používá moderní a standard přístup [sdílení prostředků různých původů (CORS)](http://www.w3.org/TR/cors/) se načíst vlastní obsah z konkrétní adresy URL, kterou zadáte v vlastní zásady tak, aby odkazoval na vaše šablony HTML5 nebo šablon stylů CSS. CORS je mechanismus, který umožňuje omezené prostředky, jako je písem a na webové stránce budou vyžádány z jiné domény mimo doménu, z něhož pochází prostředku.
 
 Ve srovnání s původním tradičním způsobem, jakým, kde jsou vlastní šablony stránky řešení, které jste zadali omezené textu a obrázků, tam, kde omezené řízení rozložení a chování byla nabízí vedoucí k více než problémy zajistit uživatelům prostředí, tak CORS podporuje HTML5 a šablon stylů CSS a umožňují:
 
-- Hostování daného obsahu a řešení vloží jeho ovládacích prvků pomocí skript na straně klienta.
+- Hostování daného obsahu a řešení vloží jeho ovládacích prvků pomocí skriptu na straně klienta.
 - Máte plnou kontrolu nad každý pixel rozložení a chování.
 
 Můžete zadat libovolný počet obsahu stránek jako tím, že vytvoří soubory HTML5 nebo šablon stylů CSS podle potřeby.
@@ -66,7 +65,7 @@ Chcete-li zajistit, že vše funguje podle očekávání, postupujte takto:
 - Zajistěte, aby byl váš obsah HTML5 kompatibilní a dostupné
 - Zajistěte, aby že vaše servery obsahu je povolený pro CORS.
 - Poskytovat obsah přes protokol HTTPS.
-- Používejte absolutní adresy URL, například https://yourdomain/content pro všechny odkazy a obsah šablon stylů CSS.
+- Například používat absolutní adresy URL https://yourdomain/content pro všechny odkazy a obsah šablon stylů CSS.
 
 > [!TIP]
 > Ověřte, zda jsou hostování obsahu na lokalitu má povolení CORS a testování požadavků CORS, můžete použít webu http://test-cors.org/. Díky této lokalitě můžete odeslat požadavek CORS na vzdálený server (abyste zjistili, zda je podporován CORS) nebo odeslat požadavek CORS na testovací server (Chcete-li prozkoumat určité funkce CORS).
@@ -115,7 +114,7 @@ Pokud jste postupovali podle předchozích kroků, soubory jazyka HTML5 a šablo
 
 ## <a name="ensure-the-storage-account-has-cors-enabled"></a>Zajistěte, aby byl účet úložiště povolení CORS
 
-CORS (sdílení prostředků různého původu) musí být povolené na váš koncový bod pro Azure AD B2C Premium a načtěte svůj obsah, protože obsah je hostované na jinou doménu než doménu, kterou obsluhuje stránku z Azure AD B2C Premium.
+CORS (sdílení prostředků různého původu) musí být povolené na váš koncový bod pro Azure AD B2C načíst obsah. Je to proto, že obsah je hostovaná v jiné doméně než doménu, kterou Azure AD B2C bude obsluhující stránku z.
 
 Ověřte, že úložiště, které jsou hostiteli obsahu na má povolení CORS, pokračujte následující kroky:
 
@@ -162,10 +161,10 @@ Následující tabulka popisuje sadu ID definice rozpoznáno identit Azure AD B2
 | *api.localaccountpasswordreset* | **Zapomněli jste heslo**. Tato stránka obsahuje formulář, který má uživatel k vyplnění zahájíte jejich resetování hesla.  |
 | *api.localaccountsignin* | **Přihlašovací stránka místní účet**. Tato stránka obsahuje formulář přihlášení, který má uživatel vyplnit při přihlášení pomocí místního účtu, který je založený na e-mailovou adresu nebo uživatelské jméno. Formulář může obsahovat vstupní textové pole a pole pro zadání hesla. |
 | *api.localaccountsignup* | **Místní účet stránku**. Tato stránka obsahuje registrační formulář, který má uživatel vyplnit při registraci pro místní účet, který je založený na e-mailovou adresu nebo uživatelské jméno. Formulář může obsahovat různé vstupní ovládací prvky jako vstupní textové pole, pole pro zadání hesla, přepínač, polí rozevíracího seznamu vyberte jeden a více vyberte zaškrtávací políčka. |
-| *api.phonefactor* | **Stránka služby Multi-Factor authentication**. Na této stránce si uživatelé mohli ověřit jejich telefonních čísel (pomocí textové nebo hlasové) při přihlašování registrace nebo přihlášení. |
-| *api.selfasserted* | **Stránku pro přihlášení sociálních účet**. Tato stránka obsahuje registrační formulář, který má uživatel vyplnit při registraci pomocí existujícího účtu od poskytovatele identity sociálních třeba Facebook nebo Google +. Tato stránka je podobná předchozí sociálních účet registrační stránku s výjimkou pole pro zadání hesla. |
-| *api.selfasserted.profileupdate* | **Stránka pro aktualizaci profilu**. Tato stránka obsahuje formulář, který uživatel může použít k aktualizaci svůj profil. Tato stránka je podobná předchozí sociálních účet registrační stránku s výjimkou pole pro zadání hesla. |
-| *api.signuporsignin* | **Jednotná stránku registrace nebo přihlášení**.  Tato stránka zpracovává obou přihlašovací nahoru a přihlášení uživatelů, kteří můžou využívat poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook nebo Google + nebo místní účty.
+| *api.phonefactor* | **Stránka služby Multi-Factor authentication**. Na této stránce si uživatelé mohli ověřit jejich telefonních čísel (pomocí textové nebo hlasové) během registrace nebo přihlášení. |
+| *api.selfasserted* | **Stránku pro přihlášení sociálních účet**. Tato stránka obsahuje registrační formulář, který má uživatel vyplnit při registraci pomocí existujícího účtu od poskytovatele identity sociálních třeba Facebook nebo Google +. Tato stránka je podobný na předchozí stránku registrace sociálních účtu s výjimkou pole pro zadání hesla. |
+| *api.selfasserted.profileupdate* | **Stránka pro aktualizaci profilu**. Tato stránka obsahuje formulář, který uživatel může použít k aktualizaci svůj profil. Tato stránka je podobný na předchozí stránku registrace sociálních účtu s výjimkou pole pro zadání hesla. |
+| *api.signuporsignin* | **Jednotná stránku registrace nebo přihlášení**.  Tato stránka zpracovává obě registrace a přihlášení uživatelů, kteří můžou využívat poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook nebo Google + nebo místní účty.
 
 ## <a name="next-steps"></a>Další postup
 [Referenční dokumentace: Pochopit, jak vlastních zásad práce s rozhraní Identity prostředí v B2C](active-directory-b2c-reference-custom-policies-understanding-contents.md)

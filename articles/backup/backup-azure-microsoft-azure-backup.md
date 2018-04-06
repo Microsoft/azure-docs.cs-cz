@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: 95c11de3a1aed680d37dd86c1783ac8bee7ffec3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3b37afc9d768313f6cc202eeecca22528cc57b07
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Příprava zálohování úloh pomocí Azure Backup Serveru
 > [!div class="op_single_selector"]
@@ -183,7 +183,7 @@ Po dokončení procesu extrahování políčko Spustit čerstvě extrahované *s
 2. Na úvodní obrazovce klikněte **Další** tlačítko. Tím přejdete *požadovaných součástí kontroluje* části. Na této obrazovce klikněte na tlačítko **zkontrolujte** k určení, pokud byly splněny požadavky hardware a software pro Azure Backup Server. Pokud jsou úspěšně splněny všechny požadavky, zobrazí zprávu s upozorněním, že počítač splňuje požadavky. Klikněte na **Další** tlačítko.
 
     ![Zkontrolujte Server Azure Backup - uvítací a požadavky](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Microsoft Azure Backup Server vyžaduje SQL Server Standard a serveru Azure Backup instalační balíček obsahuje připojené příslušné binární soubory systému SQL Server potřebné. Při spouštění s novou instalací serveru Azure Backup, měli byste vybrat možnost **nainstalovat nové Instance systému SQL Server s tímto nastavením** a klikněte na **zkontrolovat a nainstalovat** tlačítko. Jakmile požadavky jsou úspěšně nainstalováni, klikněte na možnost **Další**.
+3. Microsoft Azure Backup Server vyžaduje SQL Server Standard. Navíc instalační balíček serveru Azure Backup obsahuje připojené příslušné binární soubory systému SQL Server nutný v případě, že nechcete používat vlastní SQL. Při spouštění s novou instalací serveru Azure Backup, měli byste vybrat možnost **nainstalovat nové Instance systému SQL Server s tímto nastavením** a klikněte na **zkontrolovat a nainstalovat** tlačítko. Jakmile požadavky jsou úspěšně nainstalováni, klikněte na možnost **Další**.
 
     ![Server Azure Backup - kontrola SQL](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 

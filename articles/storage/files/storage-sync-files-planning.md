@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 3f3ed53e3c6606ca540cc2e760f2f6280ccf5cc2
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 9af1a82530d6e2d694f56322b7107796df73a2d5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Plánování nasazení synchronizace souboru Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -166,23 +166,23 @@ Obecně platí Azure souboru synchronizace by měly podporovat Interoperabilita 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Jiných řešení pro správu hierarchických úložišť (HSM)
 Žádné jiné řešení modulu hardwarového zabezpečení se má použít s Azure synchronizace souboru.
 
-## <a name="region-availability"></a>Regionální dostupnost
+## <a name="region-availability"></a>Dostupnost v oblastech
 Synchronizace služby Azure souboru je k dispozici pouze v následujících oblastech ve verzi preview:
 
 | Oblast | Umístění datového centra |
 |--------|---------------------|
-| Východní Austrálie | Nový jižní Wales |
-| Kanada – střed | Toronto |
-| Centrální Spojené státy | Iowa |
+| Austrálie – východ | Nový Jižní Wales |
+| Střední Kanada | Toronto |
+| Východní Kanada | Québec |
+| Střed USA | Iowa |
 | Východní Asie | Hongkong |
-| USA – východ | Virginie |
+| Východ USA | Virginie |
 | Východní US2 | Virginie |
-| Evropa – sever | Irsko |
+| Severní Evropa | Irsko |
 | Jihovýchodní Asie | Singapur |
 | Spojené království – jih | Londýn |
-| Cental západní USA |
-| Evropa – západ | Nizozemsko |
-| USA – západ | Kalifornie |
+| Západní Evropa | Nizozemsko |
+| Západní USA | Kalifornie |
 
 Ve verzi preview podporujeme synchronizuje pouze s Azure sdílenou, který je ve stejné oblasti jako službu úložiště synchronizace.
 

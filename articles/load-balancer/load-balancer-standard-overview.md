@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 04/02/2018
 ms.author: kumud
-ms.openlocfilehash: b5443cb1d883bd829a13b6d941d2c87c6205c64f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 684c226e566d6a5a2db456d24ad2fc5811f08067
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure standardní nástroje pro vyrovnávání zatížení
 
@@ -43,7 +43,7 @@ Prostředky nástroje pro vyrovnávání zatížení jsou objekty v rámci kter�
 
 ## <a name="why-use-standard-load-balancer"></a>Proč používat nástroj pro vyrovnávání zatížení?
 
-Nástroj pro vyrovnávání zatížení můžete použít pro celou řadu virtuální datových centrech v menším měřítku nasazení zóny s více architekturami velké a komplexní na.
+Nástroj pro vyrovnávání zatížení umožňuje škálování aplikací a vytvoření vysoké dostupnosti pro nasazení v menším měřítku do zóny s více architekturami velké a komplexní.
 
 Projděte si v následující tabulce základní informace o rozdílech mezi nástroj pro vyrovnávání zatížení a základní nástroj pro vyrovnávání zatížení:
 

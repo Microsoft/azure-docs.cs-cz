@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: 89469af2b1d02ef00fc347e47719956885e7f142
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2bc2559dc1cf737e018895ffae61d0da0e56fc85
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
@@ -171,8 +171,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**Typ** | neuvedeno | Musí být nastavena na "timerTrigger". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
 |**Směr** | neuvedeno | Musí být nastavena na "v". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
 |**name** | neuvedeno | Název proměnné, který představuje objekt časovače v kódu funkce. | 
-|**schedule**|**ScheduleExpression**|A [výraz CRON](#cron-expressions) nebo [časový interval](#timespan) hodnotu. A `TimeSpan` lze použít pouze pro funkce aplikace, která běží na plán služby App Service. Můžete uvést výraz plán v nastavení aplikace a nastavte tuto vlastnost na název uzavřen do nastavení aplikace **%** znaky, jako v následujícím příkladě: "% NameOfAppSettingWithScheduleExpression %". |
-|**runOnStartup**|**RunOnStartup**|Pokud `true`, funkce je volána při spuštění modulu runtime. Například modul runtime spustí, když aplikaci funkce probudí po přechodu nečinnosti z důvodu nečinnosti. funkce aplikace při restartování z důvodu změn funkce a horizontálně navýší kapacitu aplikaci funkce. Proto **runOnStartup** musí zřídka Pokud někdy být nastavena na `true`, jak bude kód provést v vysoce nepředvídatelným časech. Pokud potřebujete aktivovat funkci mimo plán časovače, můžete vytvořit druhý funkci s typem různých aktivační události a sdílet kód mezi dvě funkce. Například k aktivaci na nasazení můžete [přizpůsobení nasazení](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) k vyvolání funkce second tím, že požadavek HTTP, po dokončení nasazení.|
+|**schedule**|**ScheduleExpression**|A [výraz CRON](#cron-expressions) nebo [časový interval](#timespan) hodnotu. A `TimeSpan` lze použít pouze pro funkce aplikace, která běží na plán služby App Service. Můžete uvést výraz plán v nastavení aplikace a nastavte tuto vlastnost na název uzavřen do nastavení aplikace **%** znaky, jako v následujícím příkladě: "% ScheduleAppSetting %". |
+|**runOnStartup**|**RunOnStartup**|Pokud `true`, funkce je volána při spuštění modulu runtime. Například modul runtime spustí, když aplikaci funkce probudí po přechodu nečinnosti z důvodu nečinnosti. funkce aplikace při restartování z důvodu změn funkce a horizontálně navýší kapacitu aplikaci funkce. Proto **runOnStartup** musí zřídka Pokud někdy být nastavena na `true`, jak bude kód provést v vysoce nepředvídatelným časech.|
 |**useMonitor**|**UseMonitor**|Nastavte na `true` nebo `false` indikující, zda plán by se měly monitorovat. Plán monitorování trvá výskytů plán a usnadňuje zajištění, že plán je udržován správně i v případě, že instance funkce aplikaci restartovat. Pokud není explicitně nastavena, výchozí hodnota je `true` pro plány, které mají interval opakování, který je větší než 1 minuta. Pro plány, které aktivují více než jednou za minutu, výchozí hodnota je `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

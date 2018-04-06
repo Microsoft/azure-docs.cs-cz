@@ -1,6 +1,6 @@
 ---
-title: "Povolit automatické ladění pro Azure SQL Database | Microsoft Docs"
-description: "Můžete povolit automatické ladění na vaší databázi SQL Azure, snadno."
+title: Povolit automatické ladění pro Azure SQL Database | Microsoft Docs
+description: Můžete povolit automatické ladění na vaší databázi SQL Azure, snadno.
 services: sql-database
 author: veljko-msft
 manager: drasumic
@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: vvasic
-ms.openlocfilehash: cfee95f5978073277a5351b976156cafefb87c16
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2ea5c0e640ac7e635692dafac1f30f377aa79625
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="enable-automatic-tuning"></a>Povolení automatického ladění
 
@@ -22,7 +22,7 @@ Databáze SQL Azure je služba automaticky spravovaná data, která neustále mo
 ## <a name="enable-automatic-tuning-on-server"></a>Povolit automatické ladění na serveru
 Na úrovni serveru můžete nastavit dědění automatickou konfiguraci ladění z "Azure je výchozí" nebo zdědit konfiguraci. Azure výchozí hodnoty jsou povolené FORCE_LAST_GOOD_PLAN, CREATE_INDEX povolené a zakázané DROP_INDEX.
 
-## <a name="configure-automiatic-tuning-e-mail-notifications"></a>Konfigurace automiatic ladění e-mailových oznámení
+## <a name="configure-automatic-tuning-e-mail-notifications"></a>Konfigurovat automatické ladění e-mailových oznámení
 
 V tématu [automatické ladění e-mailových oznámení](sql-database-automatic-tuning-email-notifications.md)
 

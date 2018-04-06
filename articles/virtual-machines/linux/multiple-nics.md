@@ -1,11 +1,11 @@
 ---
-title: "Vytvořte virtuální počítač s Linuxem v Azure s více síťovými kartami | Microsoft Docs"
-description: "Naučte se vytvořit virtuální počítač s Linuxem s více síťovými kartami připojit se pomocí šablony Azure CLI 2.0 nebo správce prostředků."
+title: Vytvořte virtuální počítač s Linuxem v Azure s více síťovými kartami | Microsoft Docs
+description: Naučte se vytvořit virtuální počítač s Linuxem s více síťovými kartami připojit se pomocí šablony Azure CLI 2.0 nebo správce prostředků.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 635d1373a51f2f2e4d4f7ab5053e520f5b9363a6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 79c5d70d201b54e7ca1c8d421a5f0dc5e6b53bcd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Vytvoření virtuální počítač s Linuxem v Azure s více síťových karet
 Virtuální počítač (VM) můžete vytvořit v Azure, který má více rozhraní virtuální sítě (NIC) je připojený. Obvyklým scénářem je mít různé podsítě pro připojení front-end a back-end nebo síť vyhrazený pro řešení monitorování nebo zálohování. Tento článek podrobně popisuje postup vytvoření virtuálního počítače s více síťovými kartami k němu připojen a postup přidání nebo odebrání síťové adaptéry ze stávajícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporu různých počet síťových adaptérů, takže odpovídajícím způsobem upravit velikost virtuálního počítače.
@@ -190,7 +190,7 @@ echo "200 eth0-rt" >> /etc/iproute2/rt_tables
 echo "201 eth1-rt" >> /etc/iproute2/rt_tables
 ```
 
-Udělat změnu trvalé a použitých při aktivaci zásobník sítě, upravit */etc/sysconfig/network-scipts/ifcfg-eth0* a */etc/sysconfig/network-scipts/ifcfg-eth1*. Příkaz ALTER řádku *"NM_CONTROLLED = yes"* k *"NM_CONTROLLED = ne"*. Bez tohoto kroku další pravidla nebo směrování se nepoužívají automaticky.
+Udělat změnu trvalé a použitých při aktivaci zásobník sítě, upravit */etc/sysconfig/network-scripts/ifcfg-eth0* a */etc/sysconfig/network-scripts/ifcfg-eth1*. Příkaz ALTER řádku *"NM_CONTROLLED = yes"* k *"NM_CONTROLLED = ne"*. Bez tohoto kroku další pravidla nebo směrování se nepoužívají automaticky.
  
 Dále rozšiřte směrovacích tabulek. Předpokládejme, že máme následující nastavení na místě:
 

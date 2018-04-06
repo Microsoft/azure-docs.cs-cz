@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 442c860a13e2af1d5398fb30a6069a0e3764ee64
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 36a6b32851c4778db3405b6b9b35d9551181abf4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizace výkonu pomocí technologie v paměti v databázi SQL
 
@@ -22,7 +22,7 @@ Použití technologií v paměti ve službě Azure SQL Database, můžete dosáh
 Zde jsou dva příklady, jak článek OLTP v paměti pomůže výrazně zlepšit výkon:
 
 - Pomocí OLTP v paměti, [kvora obchodními řešeními bylo možné dvakrát jejich zatížení při současném zvyšování Dtu 70 %](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
-    - DTU znamená *jednotek propustnosti databáze*, a obsahuje měření spotřeby prostředků.
+    - DTU znamená *jednotky transakcí databáze*, a obsahuje měření spotřeby prostředků.
 - Toto video ukazuje výrazné zlepšení spotřeby prostředků s ukázky pracovního vytížení: [OLTP v paměti v Azure SQL Database Video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
     - Další informace naleznete v příspěvku blogu: [OLTP v paměti v příspěvku blogu databáze SQL Azure](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
@@ -36,7 +36,7 @@ Následující video vysvětluje potenciální zvýšení výkonu s technologiem
 
 Azure SQL Database má následující technologie v paměti:
 
-- *OLTP v paměti* zvyšuje propustnost a snižuje latence pro zpracování transakcí. Scénáře využívající OLTP v paměti jsou: transakce vysokou propustností zpracování například obchodní a hraní, přijímání dat ze zařízení IoT, ukládání do mezipaměti, načtení dat a dočasné tabulky a scénáře proměnné tabulky nebo události.
+- *OLTP v paměti* zvyšuje transakce a snižuje latence pro zpracování transakcí. Scénáře využívající OLTP v paměti jsou: transakce vysokou propustností zpracování například obchodní a hraní, přijímání dat ze zařízení IoT, ukládání do mezipaměti, načtení dat a dočasné tabulky a scénáře proměnné tabulky nebo události.
 - *Clusterované indexy columnstore* redukuje vašeho úložiště (až 10 x) a zlepšení výkonu pro dotazy analýz a generování sestav. Můžete ji pomocí tabulky faktů v datová Tržiště nevejde se do databáze více dat a zlepšíte výkon. Navíc můžete ho s historických dat v provozní databázi nástroje k archivaci a moct dotaz až 10 x další data.
 - *Neclusterovaných indexů columnstore* pro HTAP umožňují v reálném čase proniknout do vaší firmy prostřednictvím dotazování provozní databáze přímo, aniž by bylo nutné spustit nákladné extrakce, transformace a načítání (ETL) proces a počkejte datový sklad vyplnit. Neclusterovaných indexů columnstore povolí velmi rychlé spuštění analytické dotazy na databáze OLTP navíc snižuje dopad na provozní úlohy.
 - Můžete taky nechat kombinace paměťově optimalizované tabulky s indexem columnstore. Tato kombinace umožňuje provádět zpracování velmi rychlé transakcí a *souběžně* velmi rychle spustit analytické dotazy na stejná data.
@@ -71,7 +71,7 @@ Podrobný videa o technologiích:
 
 OLTP v paměti obsahuje paměťově optimalizované tabulky, které se používají k ukládání dat uživatele. Tyto tabulky musí nevejdou se do paměti. Vzhledem k tomu, že budete spravovat paměti přímo ve službě SQL Database, máme koncept kvótu pro data uživatelů. Toto je vhodné se označuje jako *OLTP v paměti úložiště*.
 
-Každý podporovaný samostatná databáze cenová úroveň a každý elastického fondu cenová úroveň zahrnuje množství OLTP v paměti úložiště. V době psaní získat gigabajt úložiště pro každý 125 jednotky transakcí databáze (Dtu) nebo jednotky transakcí elastické databáze (Edtu). Další informace najdete v tématu [limitů prostředků](sql-database-resource-limits.md).
+Každý podporovaný samostatná databáze cenová úroveň a každý elastického fondu cenová úroveň zahrnuje množství OLTP v paměti úložiště. V tématu [limitů prostředků na základě DTU](sql-database-dtu-resource-limits.md) a [limitů prostředků na základě vCore](sql-database-vcore-resource-limits.md).
 
 Následující položky započítávat vašeho úložiště cap OLTP v paměti:
 
@@ -87,8 +87,8 @@ Podrobnosti o sledování využití úložiště OLTP v paměti a konfiguraci v�
 
 S elastické fondy úložiště OLTP v paměti je sdílet všechny databáze ve fondu. Proto využití v jedné databáze může potenciálně ovlivnit jiné databáze. Jsou dvě jejich zmírnění pro toto:
 
-- Nakonfigurujte maximální-počet jednotek eDTU pro databáze, která je nižší než počet eDTU pro fond jako celek. Tento maximální caps využití úložiště OLTP v paměti, všechny databáze ve fondu, velikost, která odpovídá počet eDTU.
-- Nakonfigurujte Min eDTU, která je větší než 0. Toto minimum zaručuje, že každá databáze ve fondu má velikost úložiště k dispozici OLTP v paměti, která odpovídá nakonfigurované jednotek eDTU Min.
+- Konfigurace `Max-eDTU` nebo `MaxvCore` pro databáze, které je nižší než počet eDTU nebo vCore pro fond jako celek. Tento maximální caps využití úložiště OLTP v paměti, všechny databáze ve fondu, velikost, která odpovídá počet eDTU.
+- Konfigurace `Min-eDTU` nebo `MinvCore` větší než 0. Toto minimum zaručuje, že každá databáze ve fondu má velikost úložiště k dispozici OLTP v paměti, která odpovídá konfigurovaného `Min-eDTU` nebo `vCore`.
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Velikost dat a úložiště pro indexy columnstore
 
@@ -152,7 +152,7 @@ Více zneužívající vlastností prohlížeče, ale vizuálně výkonu ukázku
 
 #### <a name="installation-steps"></a>Postup instalace
 
-1. V [portál Azure](https://portal.azure.com/), vytvořte na serveru databáze Premium. Nastavte **zdroj** ukázkové databáze AdventureWorksLT. Podrobné pokyny najdete v tématu [vytvořit svoji první databázi Azure SQL](sql-database-get-started-portal.md).
+1. V [portál Azure](https://portal.azure.com/), vytvořit Premium nebo kritické obchodní (preview) databáze na serveru. Nastavte **zdroj** ukázkové databáze AdventureWorksLT. Podrobné pokyny najdete v tématu [vytvořit svoji první databázi Azure SQL](sql-database-get-started-portal.md).
 
 2. Připojení k databázi s SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx).
 

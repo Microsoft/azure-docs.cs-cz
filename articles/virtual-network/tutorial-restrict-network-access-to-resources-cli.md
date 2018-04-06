@@ -1,38 +1,38 @@
 ---
 title: Omezit síťový přístup k prostředkům PaaS - rozhraní příkazového řádku Azure | Microsoft Docs
-description: Zjistěte, jak chcete omezit a omezit přístup k síti na prostředky Azure, například Azure Storage a Azure SQL Database, s koncovými body služby virtuální sítě pomocí rozhraní příkazového řádku Azure.
+description: V tomto článku zjistěte, jak chcete omezit a omezit přístup k síti na prostředky Azure, například Azure Storage a Azure SQL Database, s koncovými body služby virtuální sítě pomocí rozhraní příkazového řádku Azure.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: ''
+ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 5c0c6a802c931b71f5be8b01c610cf0810b0b4d1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f357861a7a44b249e06f091a8693b7f2d8dd5178
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Omezit přístup k síti na PaaS prostředky s koncovými body služby virtuální sítě pomocí rozhraní příkazového řádku Azure
 
 Koncové body služby virtuální sítě umožňují omezit přístup k síti k některým prostředkům služby Azure do podsítě virtuální sítě. Můžete také odebrat přístup k Internetu k prostředkům. Koncové body služby poskytují přímé připojení z virtuální sítě k podporované služby Azure, budete moci použít privátní adresní prostor vaší virtuální sítě pro přístup ke službám Azure. Přenosy určené prostředky Azure prostřednictvím koncových bodů služby vždy zůstává na páteřní síti Microsoft Azure. V tomto článku se dozvíte, jak:
 
-> [!div class="checklist"]
-> * Vytvořit virtuální síť s jednou podsítí
-> * Přidat podsíť a povolení koncového bodu služby
-> * Vytvořit prostředek služby Azure a povolit přístup k síti z jenom podsítě
-> * Nasazení virtuálního počítače (VM) pro každou podsíť
-> * Potvrďte přístup k prostředku z podsítě
-> * Potvrďte, že byl odepřen přístup k prostředku z podsítě a z Internetu
+* Vytvořit virtuální síť s jednou podsítí
+* Přidat podsíť a povolení koncového bodu služby
+* Vytvořit prostředek služby Azure a povolit přístup k síti z jenom podsítě
+* Nasazení virtuálního počítače (VM) pro každou podsíť
+* Potvrďte přístup k prostředku z podsítě
+* Potvrďte, že byl odepřen přístup k prostředku z podsítě a z Internetu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -82,7 +82,7 @@ az network vnet subnet create \
   --service-endpoints Microsoft.Storage
 ```
 
-## <a name="restrict-network-access-to-and-from-subnet"></a>Omezit přístup k síti do a z podsítě
+## <a name="restrict-network-access-for-a-subnet"></a>Omezit přístup k síti pro podsíť
 
 Vytvořit skupinu zabezpečení sítě s [vytvořit az sítě nsg](/cli/azure/network/nsg#az_network_nsg_create). Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNsgPrivate*.
 
@@ -311,7 +311,7 @@ Vytvořte adresář pro bod připojení:
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Pokus o připojení Azure sdílené složky do adresáře, kterou jste vytvořili. Tento kurz předpokládá, že jste nasadili nejnovější verze Ubuntu. Pokud používáte starší verze Ubuntu, přečtěte si téma [připojení v systému Linux](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) další pokyny o připojení sdílené složky. Před spuštěním následujícího příkazu, nahraďte `<storage-account-name>` s názvem účtu a `<storage-account-key>` s klíčem, který jste získali v [vytvořit účet úložiště](#create-a-storage-account):
+Pokus o připojení Azure sdílené složky do adresáře, kterou jste vytvořili. Tento článek předpokládá, že jste nasadili nejnovější verze Ubuntu. Pokud používáte starší verze Ubuntu, přečtěte si téma [připojení v systému Linux](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) další pokyny o připojení sdílené složky. Před spuštěním následujícího příkazu, nahraďte `<storage-account-name>` s názvem účtu a `<storage-account-key>` s klíčem, který jste získali v [vytvořit účet úložiště](#create-a-storage-account):
 
 ```bash
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -341,9 +341,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste povolili koncového bodu služby pro podsíť virtuální sítě. Jste zjistili, že koncových bodů služby se dá nastavit pro prostředky nasazené s více službami Azure. Vytvořili jste účet úložiště Azure a omezený přístup k síti k účtu úložiště na pouze prostředky v podsíti virtuální sítě. Před vytvořením koncové body služby v produkčním prostředí virtuální sítě, se doporučuje, aby důkladně Seznamte se s [koncové body služby](virtual-network-service-endpoints-overview.md).
+V tomto článku jste povolili koncového bodu služby pro podsíť virtuální sítě. Jste zjistili, že koncových bodů služby se dá nastavit pro prostředky nasazené s více službami Azure. Vytvořili jste účet úložiště Azure a omezený přístup k síti k účtu úložiště na pouze prostředky v podsíti virtuální sítě. Další informace o koncových bodů služby najdete v tématu [přehled koncové body služby](virtual-network-service-endpoints-overview.md) a [spravovat podsítě](virtual-network-manage-subnet.md).
 
-Pokud máte více virtuálních sítí ve vašem účtu, můžete k propojení dvou virtuálních sítí tak prostředky v rámci jedné virtuální sítě může komunikovat navzájem. Přechodu na v dalším kurzu se dozvíte, jak připojit virtuální sítě.
-
-> [!div class="nextstepaction"]
-> [Připojit virtuální sítě](./tutorial-connect-virtual-networks-cli.md)
+Pokud máte více virtuálních sítí ve vašem účtu, můžete k propojení dvou virtuálních sítí tak prostředky v rámci jedné virtuální sítě může komunikovat navzájem. Další informace, jak zjistit, [připojení virtuální sítě](tutorial-connect-virtual-networks-cli.md).

@@ -1,12 +1,13 @@
 ---
 title: Směrování síťového provozu - rozhraní příkazového řádku Azure | Microsoft Docs
-description: Zjistěte, jak ke směrování síťového provozu s směrovací tabulku pomocí rozhraní příkazového řádku Azure.
+description: V tomto článku zjistěte, jak ke směrování síťového provozu s směrovací tabulku pomocí rozhraní příkazového řádku Azure.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
@@ -16,24 +17,23 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 871b562fa12b93d1b65e23ca58615d35ef6bb34b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eb4a28b5a57d7e301e800cd4ad87c56b7c5df6d2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Směrovat síťový provoz s směrovací tabulku pomocí rozhraní příkazového řádku Azure
 
-Azure automaticky trasy provoz mezi všech podsítí v rámci virtuální sítě, ve výchozím nastavení. Můžete vytvořit vlastní trasy k přepsání Azure výchozí směrování. Možnost vytvářet vlastní trasy je užitečné, pokud například chcete směrovat přenos mezi podsítěmi přes virtuální síťové zařízení (hodnocení chyb zabezpečení). V tomto článku zjistíte, jak:
+Azure automaticky trasy provoz mezi všech podsítí v rámci virtuální sítě, ve výchozím nastavení. Můžete vytvořit vlastní trasy k přepsání Azure výchozí směrování. Možnost vytvářet vlastní trasy je užitečné, pokud například chcete směrovat přenos mezi podsítěmi přes virtuální síťové zařízení (hodnocení chyb zabezpečení). V tomto článku se dozvíte, jak:
 
-> [!div class="checklist"]
-> * Vytvořit směrovací tabulku
-> * Vytvořit trasu
-> * Vytvoření virtuální sítě s několika podsítěmi
-> * Přidružení tabulku směrování pro podsíť
-> * Vytvoření hodnocení chyb zabezpečení, který směruje provoz
-> * Nasazení virtuálních počítačů (VM) do různých podsítí
-> * Směrovat provoz z jedné podsítě do jiné prostřednictvím hodnocení chyb zabezpečení
+* Vytvořit směrovací tabulku
+* Vytvořit trasu
+* Vytvoření virtuální sítě s několika podsítěmi
+* Přidružení tabulku směrování pro podsíť
+* Vytvoření hodnocení chyb zabezpečení, který směruje provoz
+* Nasazení virtuálních počítačů (VM) do různých podsítí
+* Směrovat provoz z jedné podsítě do jiné prostřednictvím hodnocení chyb zabezpečení
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -215,7 +215,7 @@ ssh azureuser@<publicIpAddress>
 
 Po zobrazení výzvy k zadání hesla, zadejte heslo, které jste vybrali v [vytváření virtuálních počítačů](#create-virtual-machines).
 
-Použijte následující příkaz k instalaci traceroute na *myVmPrivate* virtuálních počítačů:
+Použijte následující příkaz k instalaci trasování cesty na *myVmPrivate* virtuálních počítačů:
 
 ```bash 
 sudo apt-get install traceroute
@@ -242,7 +242,7 @@ Pomocí následujícího příkazu SSH k *myVmPublic* virtuální počítač z *
 ssh azureuser@myVmPublic
 ```
 
-Použijte následující příkaz k instalaci traceroute na *myVmPublic* virtuálních počítačů:
+Použijte následující příkaz k instalaci trasování cesty na *myVmPublic* virtuálních počítačů:
 
 ```bash 
 sudo apt-get install traceroute
@@ -275,9 +275,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku vytvořit směrovací tabulku a přidružené k podsíti. Můžete vytvořit jednoduché chyb zabezpečení, který směruje provoz z veřejné podsítě privátní podsítě. Nasazení celou řadu předem nakonfigurovaná NVAs, které provádějí síťových funkcí, jako jsou brány firewall a optimalizace sítě WAN z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Před nasazením směrovací tabulky pro použití v provozním prostředí, doporučujeme, aby důkladně Seznamte se s [směrování v Azure](virtual-networks-udr-overview.md), [spravovat směrovací tabulky](manage-route-table.md), a [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+V tomto článku vytvořit směrovací tabulku a přidružené k podsíti. Můžete vytvořit jednoduché chyb zabezpečení, který směruje provoz z veřejné podsítě privátní podsítě. Nasazení celou řadu předem nakonfigurovaná NVAs, které provádějí síťových funkcí, jako jsou brány firewall a optimalizace sítě WAN z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Další informace o směrování, najdete v části [Přehled směrování](virtual-networks-udr-overview.md) a [spravovat směrovací tabulku](manage-route-table.md).
 
-Když nasadíte mnoho prostředků Azure v rámci virtuální sítě, zdrojů u některých služeb Azure PaaS nelze nasadit do virtuální sítě. Můžete dál omezit přístup k prostředkům některé služby Azure PaaS provoz jenom z podsítě virtuální sítě, když. Přechodu na v dalším kurzu se dozvíte, jak omezit přístup k síti na Azure PaaS prostředky.
-
-> [!div class="nextstepaction"]
-> [Omezit přístup k síti na PaaS prostředky](tutorial-restrict-network-access-to-resources-cli.md)
+Když nasadíte mnoho prostředků Azure v rámci virtuální sítě, zdrojů u některých služeb Azure PaaS nelze nasadit do virtuální sítě. Můžete dál omezit přístup k prostředkům některé služby Azure PaaS provoz jenom z podsítě virtuální sítě, když. Další informace, jak zjistit, [omezit síťový přístup k prostředkům PaaS](tutorial-restrict-network-access-to-resources-cli.md).

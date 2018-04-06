@@ -1,12 +1,12 @@
 ---
-title: "Azure Event Hubs metriky v nástroji Sledování Azure (preview) | Microsoft Docs"
-description: "Použití Azure monitorování ke sledování služby Event Hubs"
+title: Azure Event Hubs metriky v nástroji Sledování Azure (preview) | Microsoft Docs
+description: Použití Azure monitorování ke sledování služby Event Hubs
 services: event-hubs
 documentationcenter: .NET
 author: ShubhaVijayasarathy
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/19/2017
 ms.author: sethm
-ms.openlocfilehash: c3ee6a87592145801167b35ff281c04062e525da
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 8ca00b234c00bfeb52a5b601e8780d56a0732dd9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Azure Event Hubs metriky v nástroji Sledování Azure (preview)
 
@@ -46,7 +46,7 @@ Pro podporu dimenze metriky musí filtrovat hodnotou požadované dimenze, jak j
 
 ## <a name="billing"></a>Fakturace
 
-Použití metriky v Azure monitorování není aktuálně volné při ve verzi preview. Ale pokud používáte další řešení, které ingestují data metriky, může být fakturuje podle těchto řešení. Například fakturuje se podle Azure Storage archivujete metriky dat do účtu Azure Storage. Také fakturuje se podle sady Management operace (OMS) Pokud stream metriky dat do OMS pro účely provádění pokročilých analýz.
+Použití metriky v Azure monitorování není aktuálně volné při ve verzi preview. Ale pokud používáte další řešení, které ingestují data metriky, může být fakturuje podle těchto řešení. Například fakturuje se podle Azure Storage archivujete metriky dat do účtu Azure Storage. Také fakturuje se službou Azure Pokud stream metriky dat k analýze protokolů pro účely provádění pokročilých analýz.
 
 Následující metriky vám poskytl přehled o stavu služby. 
 
@@ -109,7 +109,7 @@ Azure Event Hubs podporuje následující dimenze pro metriky v Azure monitorov�
 | ------------------- | ----------------- |
 |entityName| Služba Event Hubs podporuje entit centra událostí pod oborem názvů.|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Najdete v článku [Přehled monitorování Azure](../monitoring-and-diagnostics/monitoring-overview.md).
 * [Načtení metrik Azure monitorování s .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) ukázku na Githubu. 

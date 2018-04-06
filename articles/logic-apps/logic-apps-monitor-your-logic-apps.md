@@ -1,11 +1,11 @@
 ---
-title: "Zkontrolujte stav, nastavení protokolování a získat upozornění – Azure Logic Apps | Microsoft Docs"
-description: "Monitorovat stav a výkon pro aplikace logiky, protokolu diagnostická data a nastavení výstrah"
+title: Zkontrolujte stav, nastavení protokolování a získat upozornění – Azure Logic Apps | Microsoft Docs
+description: Monitorovat stav a výkon pro aplikace logiky, protokolu diagnostická data a nastavení výstrah
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 0dc8bc81ca6125d40d1784ce39fd0facaf9e736a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: fdc986fb32225f94e5a257c46a7b943abc0edf8f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorování stavu, nastavit protokolování diagnostiky a zapnutí výstrah pro Azure Logic Apps
 
@@ -76,9 +76,9 @@ Pokud chcete dostávat oznámení o selhání nebo jiné možné problémy, nast
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>Zapněte diagnostiku protokolování pro svou aplikaci logiky
 
-Pro širší ladění s podrobnostmi runtime a události, můžete nastavit protokolování s diagnostiky [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Analýzy protokolů je služba v [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) , sleduje vaše cloudové a místní prostředí pro správu jejich dostupnost a výkon. 
+Pro širší ladění s podrobnostmi runtime a události, můžete nastavit protokolování s diagnostiky [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Analýzy protokolů je služba v Azure, který monitoruje své cloudové a místní prostředí pro správu jejich dostupnost a výkon. 
 
-Než začnete, musíte mít pracovním prostorem OMS. Další informace [jak vytvořit pracovní prostor služby OMS](../log-analytics/log-analytics-get-started.md).
+Než začnete, musíte mít pracovní prostor analýzy protokolů. Další informace [jak vytvořit pracovní prostor analýzy protokolů](../log-analytics/log-analytics-quick-create-workspace.md).
 
 1. V [portál Azure](https://portal.azure.com), najděte a vyberte svou aplikaci logiky. 
 
@@ -90,16 +90,16 @@ Než začnete, musíte mít pracovním prostorem OMS. Další informace [jak vyt
 
    ![Zapnout diagnostické protokoly](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
-4. Nyní vyberte OMS pracovní prostor a událostí kategorie pro protokolování, jak je znázorněno:
+4. Nyní vyberte kategorii pracovní prostor a událostí analýzy protokolů pro protokolování, jak je znázorněno:
 
    1. Vyberte **odeslat k analýze protokolů**. 
    2. V části **analýzy protokolů**, zvolte **konfigurace**. 
-   3. V části **pracovních prostorů OMS**, vyberte pracovní prostor OMS pro protokolování.
+   3. V části **pracovních prostorů OMS**, vyberte pracovní prostor analýzy protokolů pro protokolování.
    4. V části **protokolu**, vyberte **modul runtime pracovního postupu** kategorie.
    5. Zvolte metriky interval.
    6. Jakmile budete hotoví, vyberte **Uložit**.
 
-   ![Vyberte pracovní prostor OMS a dat pro protokolování](media/logic-apps-monitor-your-logic-apps/send-diagnostics-data-log-analytics-workspace.png)
+   ![Vyberte pracovní prostor analýzy protokolů a dat pro protokolování](media/logic-apps-monitor-your-logic-apps/send-diagnostics-data-log-analytics-workspace.png)
 
 Teď můžete najít události a dalších dat pro aktivační události, spustit události a události akce.
 
@@ -113,23 +113,23 @@ Vyhledat a zobrazit události ve vaší aplikaci logiky, jako například aktivo
 
    ![Zvolte "Analýzy protokolů"](media/logic-apps-monitor-your-logic-apps/browseloganalytics.png)
 
-2. V části **analýzy protokolů**, najděte a vyberte pracovní prostor OMS. 
+2. V části **analýzy protokolů**, najděte a vyberte pracovní prostor analýzy protokolů. 
 
-   ![Vyberte pracovní prostor OMS](media/logic-apps-monitor-your-logic-apps/selectla.png)
+   ![Vyberte pracovní prostor analýzy protokolů](media/logic-apps-monitor-your-logic-apps/selectla.png)
 
 3. V části **správy**, zvolte **portálu OMS**.
 
    ![Zvolte "Portál OMS"](media/logic-apps-monitor-your-logic-apps/omsportalpage.png)
 
-4. Na domovské stránce OMS, zvolte **hledání protokolů**.
+4. Na domovské stránce, zvolte **hledání protokolů**.
 
-   ![Na domovské stránce OMS zvolte "Hledání protokolů"](media/logic-apps-monitor-your-logic-apps/logsearch.png)
+   ![Na domovské stránce zvolte "Hledání protokolů"](media/logic-apps-monitor-your-logic-apps/logsearch.png)
 
    -nebo-
 
-   ![V nabídce OMS zvolte "Protokolu hledání"](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
+   ![V nabídce zvolte "Hledání protokolů"](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
 
-5. Do vyhledávacího pole zadejte pole, které chcete najít a stiskněte klávesu **Enter**. Když začnete psát, ukazuje OMS je možné shody a operací, které můžete použít. 
+5. Do vyhledávacího pole zadejte pole, které chcete najít a stiskněte klávesu **Enter**. Když začnete psát, zobrazí možné shody a operací, které můžete použít. 
 
    Například pokud chcete najít prvních 10 události, které se stalo, zadejte a vyberte tento vyhledávací dotaz: **hledání kategorie == "Runtime pracovního postupu" | omezit 10**
 

@@ -1,23 +1,23 @@
 ---
-title: "Referenční dokumentace Azure IoT EdgeAgent a EdgeHub | Microsoft Docs"
-description: "Zkontrolujte konkrétní vlastnosti a jejich hodnoty pro modul dvojčata edgeAgent a edgeHub"
+title: Referenční dokumentace Azure IoT EdgeAgent a EdgeHub | Microsoft Docs
+description: Zkontrolujte konkrétní vlastnosti a jejich hodnoty pro modul dvojčata edgeAgent a edgeHub
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 17c97c6f233c9861ac42abc0a1f11089bb938e7c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0971d5bba59ce3c7b1a6409ef3248f33a41e37c9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Vlastnosti agenta okraj a okraj rozbočovače modul dvojčata
 
-Agent okraj a okraj centra jsou dva moduly, které tvoří runtime IoT okraj. Další informace o jaké povinností každý modul provádí najdete v tématu [pochopit modulu runtime Azure IoT okraj a jeho architecture]](iot-edge-runtime.md). 
+Agent okraj a okraj centra jsou dva moduly, které tvoří runtime IoT okraj. Další informace o jaké povinností každý modul provádí najdete v tématu [pochopit modulu runtime Azure IoT okraj a jeho architektura](iot-edge-runtime.md). 
 
 Tento článek obsahuje požadované vlastnosti a vlastnosti hlášené dvojčata modulu runtime. V tématu [nasazení a monitorování] [ lnk-deploy] Další informace o tom, jak nasadit modulů na IoT hraniční zařízení.
 
@@ -110,7 +110,7 @@ Je volána twin modulu pro rozbočovač na hraniční `$edgeHub` a koordinuje ko
 | Klienti. {identity zařízení nebo modul} .lastConnectTime | Poslední čas modulu připojení na zařízení |
 | Klienti. {identity zařízení nebo modul} .lastDisconnectTime | Čas poslední zařízení nebo modul odpojení |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Naučte se používat tyto vlastnosti k sestavení se manifesty nasazení, najdete v tématu [pochopit, jak IoT Edge moduly můžete použít, nakonfigurovat a znovu použít](module-composition.md).
 

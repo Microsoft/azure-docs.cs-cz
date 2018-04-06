@@ -1,10 +1,10 @@
 ---
-title: "Vytvoření klasického virtuálního počítače s Linuxem pomocí Azure CLI 1.0 | Microsoft Docs"
-description: "Naučte se vytvořit virtuální počítač s Linuxem pomocí Azure CLI 1.0 pomocí modelu nasazení Classic"
+title: Vytvoření klasického virtuálního počítače s Linuxem pomocí Azure CLI 1.0 | Microsoft Docs
+description: Naučte se vytvořit virtuální počítač s Linuxem pomocí Azure CLI 1.0 pomocí modelu nasazení Classic
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ROBOTS: NOINDEX
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: 6e8f7e7e4bf26ac83612a73888cd0aea9eaa4c90
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 6d3f0dd0c82ad32df4d6e17058d9b1bea57c301f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-create-a-classic-linux-vm-with-the-azure-cli-10"></a>Postup vytvoření klasické virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure 1.0
 > [!IMPORTANT] 

@@ -10,11 +10,11 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: sstein
-ms.openlocfilehash: 5031ab1ec8c7b42c65fb35e47c32d10ff2898501
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a4fa0d542d755e783f422a62e9135d06133385f8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kódy chyb SQL pro klientské aplikace SQL Database: Databáze chyb připojení a další problémy
 
@@ -104,8 +104,8 @@ K vytváření a používání elastické fondy se vztahují k následujícím c
 
 | Argument číslo chyby | ErrorSeverity | ErrorFormat | ErrorInserts | ErrorCause | ErrorCorrectiveAction |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| 1132 |EX_RESOURCE |Elastický fond bylo dosaženo limitu úložiště. Využití úložiště pro elastický fond nesmí překročit (%d) MB. |Omezení prostoru na elastického fondu v MB. |Probíhá pokus o zápisu dat do databáze, pokud bylo dosaženo limitu úložiště elastického fondu. |Zvažte zvýšení Chcete-li zvýšit limit úložiště, snížit úložiště používané jednotlivých databází v rámci fondu elastické jednotky Dtu elastického fondu pokud je to možné, nebo odebrat z fondu elastické databáze. |
-| 10929 |EX_USER |Minimální záruka %s je %d, maximální limit je %d a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněn pro podporu požadavků, které jsou větší než %d pro tuto databázi. V tématu [ http://go.microsoft.com/fwlink/?LinkId=267637 ](http://go.microsoft.com/fwlink/?LinkId=267637) o pomoc. Jinak zkuste to prosím znovu později. |Minimální počet jednotek DTU na databázi; Maximální počet jednotek DTU na databázi |Celkový počet souběžných pracovních procesů (počet požadavků) mezi všechny databáze v elastickém fondu se pokusil překračují limit fondu. |Zvažte zvýšení limitu pracovní zvýšit počet jednotek Dtu elastického fondu pokud je to možné, nebo odebrat z fondu elastické databáze. |
+| 1132 |EX_RESOURCE |Elastický fond bylo dosaženo limitu úložiště. Využití úložiště pro elastický fond nesmí překročit (%d) MB. |Omezení prostoru na elastického fondu v MB. |Probíhá pokus o zápisu dat do databáze, pokud bylo dosaženo limitu úložiště elastického fondu. |Zvažte zvýšení počet jednotek Dtu nebo přidání úložiště do pružného fondu pokud je to možné zvýšení limitu úložiště snížit použité jednotlivých databází v elastickém fondu úložiště nebo odebrat z fondu elastické databáze. |
+| 10929 |EX_USER |Minimální záruka %s je %d, maximální limit je %d a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněn pro podporu požadavků, které jsou větší než %d pro tuto databázi. V tématu [ http://go.microsoft.com/fwlink/?LinkId=267637 ](http://go.microsoft.com/fwlink/?LinkId=267637) o pomoc. Jinak zkuste to prosím znovu později. |DTU / minimální vCore na databázi; DTU / vCore maximální na databázi |Celkový počet souběžných pracovních procesů (počet požadavků) mezi všechny databáze v elastickém fondu se pokusil překračují limit fondu. |Zvažte zvýšení limitu pracovní zvýšit počet jednotek Dtu nebo vCores, pokud je to možné elastického fondu nebo odebrat z fondu elastické databáze. |
 | 40844 |EX_USER |Databáze: %ls"na serveru '%ls' je databáze edice"%ls"v elastickém fondu a nemůže mít relaci průběžná kopie. |Název databáze, edice databáze, název serveru |Příkaz StartDatabaseCopy je vydán pro jiný premium databáze v elastickém fondu. |Již brzy |
 | 40857 |EX_USER |Elastický fond pro server nebyl nalezen: '%ls', název elastického fondu: '%ls'. |název serveru. Název elastického fondu |Zadaný elastického fondu v zadaný server neexistuje. |Zadejte název platné elastického fondu. |
 | 40858 |EX_USER |Elastický fond '%ls' již existuje v serveru: '%ls' |Název elastického fondu, název serveru |Zadaný fond elastické již existuje v zadané logického serveru. |Zadejte nový název elastického fondu. |
@@ -203,7 +203,7 @@ Následující chyby nespadají do všech předchozích kategorií.
 | 45168 |16 |V systému SQL Azure je zatížen a umísťuje horní limit na souběžných operací DB CRUD pro jeden server (například vytvořit databázi). Server určený v chybové zprávě byla překročena maximální počet souběžných připojení. Zkuste to znovu později. |
 | 45169 |16 |V systému SQL azure je zatížení a je umístění horní limit počtu souběžných serveru operace CRUD pro v rámci jednoho předplatného (například vytvořit serveru). Předplatné zadané v chybové zprávě byla překročena maximální počet souběžných připojení a žádost byla odepřena. Zkuste to znovu později. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Přečtěte si informace o [funkce databáze Azure SQL](sql-database-features.md).
 * Přečtěte si informace o [úrovních služeb](sql-database-service-tiers.md).
 
