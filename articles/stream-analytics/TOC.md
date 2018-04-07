@@ -94,7 +94,7 @@
 ## [Blog](http://blogs.msdn.com/b/streamanalytics/)
 ## [Videa](https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest)
 ## [Fórum pro názory](http://feedback.azure.com/forums/270577-azure-stream-analytics)
-## [Fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+## [Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 ## [Ceny](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Poznámky k verzi](stream-analytics-release-notes.md)
