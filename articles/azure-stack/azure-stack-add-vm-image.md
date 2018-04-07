@@ -1,24 +1,24 @@
 ---
-title: "Přidání bitové kopie virtuálních počítačů do protokolů Azure | Microsoft Docs"
-description: "Přidejte vaše organizace vlastní Windows nebo virtuálního počítače s Linuxem bitovou kopii pro klienty použít."
+title: Přidání bitové kopie virtuálních počítačů do protokolů Azure | Microsoft Docs
+description: Přidejte vaše organizace vlastní Windows nebo virtuálního počítače s Linuxem bitovou kopii pro klienty použít.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: e5a4236b-1b32-4ee6-9aaa-fcde297a020f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2018
+ms.date: 04/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 0ba0bc4e8350a65a95dc41788c93d5c89fc48334
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: eb2035f6e667a9b3ab642d42cb9bb5ecf5c86fb1
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Zpřístupnit image vlastní virtuálního počítače v Azure zásobníku
 
@@ -126,6 +126,7 @@ Chcete-li přidat bitovou kopii do Azure Marketplace zásobníku, proveďte nás
     -osDiskLocalPath 'C:\Users\AzureStackAdmin\Desktop\UbuntuServer.vhd' `
   ```
 
+
 Příkaz provede následující akce:
 
 * Ověřuje do prostředí Azure zásobníku.
@@ -133,9 +134,9 @@ Příkaz provede následující akce:
 * Přidá image virtuálního počítače do úložiště bitové kopie virtuálního počítače.
 * Vytvoří položku Marketplace.
 
-Chcete-li ověřit, jestli se příkaz úspěšně spustila na portálu, přejděte na Marketplace. Ověřte, zda je k dispozici v imagi virtuálního počítače **virtuálních počítačů** kategorie.
+Chcete-li ověřit, jestli se příkaz úspěšně spustila na portálu, přejděte na Marketplace. Ověřte, zda je k dispozici v imagi virtuálního počítače **výpočetní** kategorie.
 
-![Image virtuálního počítače úspěšně přidán](./media/azure-stack-add-vm-image/image5.PNG)
+![Image virtuálního počítače úspěšně přidán](./media/azure-stack-add-vm-image/verify-vm.png)
 
 ## <a name="remove-a-vm-image-by-using-powershell"></a>Odebrání image virtuálního počítače pomocí prostředí PowerShell
 
@@ -154,9 +155,9 @@ Remove-AzsVMImage `
 | Parametr | Popis |
 | --- | --- |
 | **publisher** |Segment název vydavatele bitové kopie virtuálního počítače, který uživatelé používají, když nasadí bitovou kopii. Příkladem je **Microsoft**. V tomto poli nezahrnují mezery nebo speciální znaky. |
-| **nabídka** |Segment nabídka název bitové kopie virtuálního počítače, který uživatelé používají, když nasadí bitovou kopii virtuálního počítače. Příkladem je **Windows Server**. V tomto poli nezahrnují mezery nebo speciální znaky. |
+| **Nabídka** |Segment nabídka název bitové kopie virtuálního počítače, který uživatelé používají, když nasadí bitovou kopii virtuálního počítače. Příkladem je **Windows Server**. V tomto poli nezahrnují mezery nebo speciální znaky. |
 | **sku** |Segment SKU název bitové kopie virtuálního počítače, který uživatelé používají, když nasadí bitovou kopii virtuálního počítače. Příkladem je **Datacenter2016**. V tomto poli nezahrnují mezery nebo speciální znaky. |
-| **verze** |Verze bitové kopie virtuálního počítače, který uživatelé používají, když nasadí bitovou kopii virtuálního počítače. Tato verze je ve formátu  *\#.\#. \#*. Příkladem je **1.0.0**. V tomto poli nezahrnují mezery nebo speciální znaky. |
+| **Verze** |Verze bitové kopie virtuálního počítače, který uživatelé používají, když nasadí bitovou kopii virtuálního počítače. Tato verze je ve formátu  *\#.\#. \#*. Příkladem je **1.0.0**. V tomto poli nezahrnují mezery nebo speciální znaky. |
 | **osType** |OsType bitové kopie musí být buď **Windows** nebo **Linux**. |
 | **osDiskLocalPath** |Místní cesta k disku operačního systému virtuálního pevného disku, který odesíláte jako image virtuálního počítače do protokolů Azure. |
 | **dataDiskLocalPaths** |Volitelné pole místní cesty pro datové disky, které mohou být nahrány jako součást image virtuálního počítače. |
@@ -185,7 +186,7 @@ Bitové kopie musí být schopen odkazovat úložiště objektů Blob identifik�
 
    * Když nahrajete [image virtuálního počítače Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), je nezbytné nahradit **přihlášení k Azure** s krokem [nakonfigurovat prostředí PowerShell Azure zásobníku operátor](azure-stack-powershell-configure-admin.md) krok.  
 
-   * Úložiště objektů Blob identifikátor URI, kde můžete nahrát bitovou kopii si poznamenejte. Identifikátor URI úložiště objektů Blob má následující formát:  *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* VHD.
+   * Úložiště objektů Blob identifikátor URI, kde můžete nahrát bitovou kopii si poznamenejte. Identifikátor URI úložiště objektů Blob má následující formát: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*VHD.
 
    * Zpřístupněte objektu blob anonymně, přejděte do kontejneru objektů blob účet úložiště kde byl odeslán image virtuálního počítače virtuální pevný disk. Vyberte **Blob**a potom vyberte **zásady přístupu**. Volitelně můžete místo toho vygenerovat sdílený přístupový podpis kontejneru a vložit jako součást identifikátor URI objektu blob.
 
